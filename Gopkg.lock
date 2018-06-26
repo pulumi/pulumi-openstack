@@ -520,10 +520,11 @@
   version = "v1.0.1"
 
 [[projects]]
+  branch = "pulumi-master"
   name = "github.com/terraform-providers/terraform-provider-openstack"
   packages = ["openstack"]
-  revision = "3f22e5a76e1a260b2f5bc25835804da0f178866b"
-  version = "v1.6.0"
+  revision = "84ab2439bded44ebb4ab07df8728734c8ef361a5"
+  source = "github.com/Frassle/terraform-provider-openstack"
 
 [[projects]]
   name = "github.com/uber/jaeger-client-go"
@@ -688,6 +689,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "57f9f68acea12cc40b4c11739072f52dea7455cae75f04ffdafc8287e7acd176"
+  inputs-digest = "dabe8591afd57f4ac289e30254f2123f13603c3576cf0e2f5414eca2de0d2669"
   solver-name = "gps-cdcl"
   solver-version = 1
