@@ -1,0 +1,12 @@
+Metadata-Version: 1.0
+Name: pulumi-openstack
+Version: 0.0.0.post1530055544
+Summary: A Pulumi package for creating and managing OpenStack cloud resources.
+Home-page: https://pulumi.io
+Author: UNKNOWN
+Author-email: UNKNOWN
+License: Apache 2.0
+Project-URL: Repository, https://github.com/pulumi/pulumi-openstack
+Description: UNKNOWN
+Keywords: pulumi openstack
+Platform: UNKNOWN
