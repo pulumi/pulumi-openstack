@@ -35,8 +35,7 @@ To use from Go, use `go get` to grab the latest version of the library
 
 The `@pulumi/openstack` package provides a strongly-typed means to build cloud applications that create
 and interact closely with OpenStack resources.  Resources are exposed for the entire OpenStack surface area,
-including (but not limited to), 'appinsights', 'compute', 'cosmosdb', 'keyvault', and more.
-TODO: Replace examples
+including (but not limited to), 'blockstorage', 'compute', 'identity', 'loadbalancer', and more.
 
 ## Reference
 
