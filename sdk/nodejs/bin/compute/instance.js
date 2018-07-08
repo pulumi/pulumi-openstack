@@ -39,6 +39,7 @@ class Instance extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
             inputs["networks"] = state ? state.networks : undefined;
             inputs["personalities"] = state ? state.personalities : undefined;
+            inputs["powerState"] = state ? state.powerState : undefined;
             inputs["region"] = state ? state.region : undefined;
             inputs["schedulerHints"] = state ? state.schedulerHints : undefined;
             inputs["securityGroups"] = state ? state.securityGroups : undefined;
@@ -63,6 +64,7 @@ class Instance extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["networks"] = args ? args.networks : undefined;
             inputs["personalities"] = args ? args.personalities : undefined;
+            inputs["powerState"] = args ? args.powerState : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["schedulerHints"] = args ? args.schedulerHints : undefined;
             inputs["securityGroups"] = args ? args.securityGroups : undefined;

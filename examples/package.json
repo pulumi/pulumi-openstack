@@ -11,5 +11,9 @@
     },
     "dependencies": {
         "@pulumi/pulumi": "latest"
+    },
+    "peerDependencies": {
+        "@pulumi/openstack": "latest"
     }
+
 }

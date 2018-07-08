@@ -1,6 +1,6 @@
 Metadata-Version: 1.0
 Name: pulumi-openstack
-Version: 0.0.0.post1530055544
+Version: 0.1.0+dirty
 Summary: A Pulumi package for creating and managing OpenStack cloud resources.
 Home-page: https://pulumi.io
 Author: UNKNOWN

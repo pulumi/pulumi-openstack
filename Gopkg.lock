@@ -183,6 +183,7 @@
     "openstack/identity/v3/users",
     "openstack/imageservice/v2/imagedata",
     "openstack/imageservice/v2/images",
+    "openstack/networking/v2/extensions/external",
     "openstack/networking/v2/extensions/fwaas/firewalls",
     "openstack/networking/v2/extensions/fwaas/policies",
     "openstack/networking/v2/extensions/fwaas/routerinsertion",
@@ -487,6 +488,9 @@
     "pkg/util/rpcutil",
     "pkg/util/rpcutil/rpcerror",
     "pkg/workspace",
+    "sdk/go/pulumi",
+    "sdk/go/pulumi/asset",
+    "sdk/go/pulumi/config",
     "sdk/proto/go"
   ]
   revision = "6c62a6e198d5bd1acf0e8ffec652283262f2b09d"
@@ -508,6 +512,12 @@
   revision = "2ab6b7470a54bfa9b5b0289f9b4e8fc4839838f7"
 
 [[projects]]
+  name = "github.com/spf13/cast"
+  packages = ["."]
+  revision = "8965335b8c7107321228e3e3702cab9832751bac"
+  version = "v1.2.0"
+
+[[projects]]
   name = "github.com/spf13/cobra"
   packages = ["."]
   revision = "ef82de70bb3f60c65fb8eebacbb2d122ef517385"
@@ -523,7 +533,7 @@
   branch = "pulumi-master"
   name = "github.com/terraform-providers/terraform-provider-openstack"
   packages = ["openstack"]
-  revision = "84ab2439bded44ebb4ab07df8728734c8ef361a5"
+  revision = "2c044c115d02e044491d80c1060259a7bc2b3340"
   source = "github.com/Frassle/terraform-provider-openstack"
 
 [[projects]]
@@ -689,6 +699,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "dabe8591afd57f4ac289e30254f2123f13603c3576cf0e2f5414eca2de0d2669"
+  inputs-digest = "f72674f5bcdcc949663d9522683ed1e3b392a8f23f367c40f12580d2bb5f7d30"
   solver-name = "gps-cdcl"
   solver-version = 1

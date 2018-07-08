@@ -84,7 +84,7 @@ export class SiteConnection extends pulumi.CustomResource {
      * You must specify this parameter with the local_ep_group_id parameter unless in backward-compatible mode
      * where peer_cidrs is provided with a subnet_id for the VPN service.
      */
-    public readonly peerEpGroupId: pulumi.Output<string>;
+    public readonly peerEpGroupId: pulumi.Output<string | undefined>;
     /**
      * The peer router identity for authentication. A valid value is an IPv4 address, IPv6 address, e-mail address, key ID, or FQDN.
      * Typically, this value matches the peer_address value.
@@ -157,9 +157,6 @@ export class SiteConnection extends pulumi.CustomResource {
             }
             if (!args || args.peerAddress === undefined) {
                 throw new Error("Missing required property 'peerAddress'");
-            }
-            if (!args || args.peerEpGroupId === undefined) {
-                throw new Error("Missing required property 'peerEpGroupId'");
             }
             if (!args || args.peerId === undefined) {
                 throw new Error("Missing required property 'peerId'");
@@ -365,7 +362,7 @@ export interface SiteConnectionArgs {
      * You must specify this parameter with the local_ep_group_id parameter unless in backward-compatible mode
      * where peer_cidrs is provided with a subnet_id for the VPN service.
      */
-    readonly peerEpGroupId: pulumi.Input<string>;
+    readonly peerEpGroupId?: pulumi.Input<string>;
     /**
      * The peer router identity for authentication. A valid value is an IPv4 address, IPv6 address, e-mail address, key ID, or FQDN.
      * Typically, this value matches the peer_address value.

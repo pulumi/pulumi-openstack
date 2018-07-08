@@ -134,9 +134,7 @@ class SiteConnection(pulumi.CustomResource):
         """
         __props__['peerCidrs'] = peer_cidrs
 
-        if not peer_ep_group_id:
-            raise TypeError('Missing required property peer_ep_group_id')
-        elif not isinstance(peer_ep_group_id, basestring):
+        if peer_ep_group_id and not isinstance(peer_ep_group_id, basestring):
             raise TypeError('Expected property peer_ep_group_id to be a basestring')
         __self__.peer_ep_group_id = peer_ep_group_id
         """

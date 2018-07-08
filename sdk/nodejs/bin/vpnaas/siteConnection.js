@@ -53,9 +53,6 @@ class SiteConnection extends pulumi.CustomResource {
             if (!args || args.peerAddress === undefined) {
                 throw new Error("Missing required property 'peerAddress'");
             }
-            if (!args || args.peerEpGroupId === undefined) {
-                throw new Error("Missing required property 'peerEpGroupId'");
-            }
             if (!args || args.peerId === undefined) {
                 throw new Error("Missing required property 'peerId'");
             }

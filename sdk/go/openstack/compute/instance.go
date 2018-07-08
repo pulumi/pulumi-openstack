@@ -33,6 +33,7 @@ func NewInstance(ctx *pulumi.Context,
 		inputs["name"] = nil
 		inputs["networks"] = nil
 		inputs["personalities"] = nil
+		inputs["powerState"] = nil
 		inputs["region"] = nil
 		inputs["schedulerHints"] = nil
 		inputs["securityGroups"] = nil
@@ -55,6 +56,7 @@ func NewInstance(ctx *pulumi.Context,
 		inputs["name"] = args.Name
 		inputs["networks"] = args.Networks
 		inputs["personalities"] = args.Personalities
+		inputs["powerState"] = args.PowerState
 		inputs["region"] = args.Region
 		inputs["schedulerHints"] = args.SchedulerHints
 		inputs["securityGroups"] = args.SecurityGroups
@@ -92,6 +94,7 @@ func GetInstance(ctx *pulumi.Context,
 		inputs["name"] = state.Name
 		inputs["networks"] = state.Networks
 		inputs["personalities"] = state.Personalities
+		inputs["powerState"] = state.PowerState
 		inputs["region"] = state.Region
 		inputs["schedulerHints"] = state.SchedulerHints
 		inputs["securityGroups"] = state.SecurityGroups
@@ -226,6 +229,14 @@ func (r *Instance) Personalities() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["personalities"])
 }
 
+// Provide the VM state. Only 'active' and 'shutoff'
+// are supported values. *Note*: If the initial power_state is the shutoff
+// the VM will be stopped immediately after build and the provisioners like
+// remote-exec or files are not supported.
+func (r *Instance) PowerState() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["powerState"])
+}
+
 // The region in which to create the server instance. If
 // omitted, the `region` argument of the provider is used. Changing this
 // creates a new server.
@@ -323,6 +334,11 @@ type InstanceState struct {
 	// defining one or more files and their contents. The personality structure
 	// is described below.
 	Personalities interface{}
+	// Provide the VM state. Only 'active' and 'shutoff'
+	// are supported values. *Note*: If the initial power_state is the shutoff
+	// the VM will be stopped immediately after build and the provisioners like
+	// remote-exec or files are not supported.
+	PowerState interface{}
 	// The region in which to create the server instance. If
 	// omitted, the `region` argument of the provider is used. Changing this
 	// creates a new server.
@@ -404,6 +420,11 @@ type InstanceArgs struct {
 	// defining one or more files and their contents. The personality structure
 	// is described below.
 	Personalities interface{}
+	// Provide the VM state. Only 'active' and 'shutoff'
+	// are supported values. *Note*: If the initial power_state is the shutoff
+	// the VM will be stopped immediately after build and the provisioners like
+	// remote-exec or files are not supported.
+	PowerState interface{}
 	// The region in which to create the server instance. If
 	// omitted, the `region` argument of the provider is used. Changing this
 	// creates a new server.

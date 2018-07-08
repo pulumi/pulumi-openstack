@@ -33,6 +33,12 @@ export class Network extends pulumi.CustomResource {
      */
     public readonly availabilityZoneHints: pulumi.Output<string[]>;
     /**
+     * Specifies whether the network resource has the
+     * external routing facility. Valid values are true and false. Defaults to
+     * false. Changing this updates the external attribute of the existing network.
+     */
+    public readonly external: pulumi.Output<boolean>;
+    /**
      * The name of the network. Changing this updates the name of
      * the existing network.
      */
@@ -78,6 +84,7 @@ export class Network extends pulumi.CustomResource {
             const state: NetworkState = argsOrState as NetworkState | undefined;
             inputs["adminStateUp"] = state ? state.adminStateUp : undefined;
             inputs["availabilityZoneHints"] = state ? state.availabilityZoneHints : undefined;
+            inputs["external"] = state ? state.external : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["region"] = state ? state.region : undefined;
             inputs["segments"] = state ? state.segments : undefined;
@@ -88,6 +95,7 @@ export class Network extends pulumi.CustomResource {
             const args = argsOrState as NetworkArgs | undefined;
             inputs["adminStateUp"] = args ? args.adminStateUp : undefined;
             inputs["availabilityZoneHints"] = args ? args.availabilityZoneHints : undefined;
+            inputs["external"] = args ? args.external : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["segments"] = args ? args.segments : undefined;
@@ -116,6 +124,12 @@ export interface NetworkState {
      * creates a new network.
      */
     readonly availabilityZoneHints?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Specifies whether the network resource has the
+     * external routing facility. Valid values are true and false. Defaults to
+     * false. Changing this updates the external attribute of the existing network.
+     */
+    readonly external?: pulumi.Input<boolean>;
     /**
      * The name of the network. Changing this updates the name of
      * the existing network.
@@ -166,6 +180,12 @@ export interface NetworkArgs {
      * creates a new network.
      */
     readonly availabilityZoneHints?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Specifies whether the network resource has the
+     * external routing facility. Valid values are true and false. Defaults to
+     * false. Changing this updates the external attribute of the existing network.
+     */
+    readonly external?: pulumi.Input<boolean>;
     /**
      * The name of the network. Changing this updates the name of
      * the existing network.

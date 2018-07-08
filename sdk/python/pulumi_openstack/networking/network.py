@@ -9,7 +9,7 @@ class Network(pulumi.CustomResource):
     """
     Manages a V2 Neutron network resource within OpenStack.
     """
-    def __init__(__self__, __name__, __opts__=None, admin_state_up=None, availability_zone_hints=None, name=None, region=None, segments=None, shared=None, tenant_id=None, value_specs=None):
+    def __init__(__self__, __name__, __opts__=None, admin_state_up=None, availability_zone_hints=None, external=None, name=None, region=None, segments=None, shared=None, tenant_id=None, value_specs=None):
         """Create a Network resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
@@ -40,6 +40,16 @@ class Network(pulumi.CustomResource):
         creates a new network.
         """
         __props__['availabilityZoneHints'] = availability_zone_hints
+
+        if external and not isinstance(external, bool):
+            raise TypeError('Expected property external to be a bool')
+        __self__.external = external
+        """
+        Specifies whether the network resource has the
+        external routing facility. Valid values are true and false. Defaults to
+        false. Changing this updates the external attribute of the existing network.
+        """
+        __props__['external'] = external
 
         if name and not isinstance(name, basestring):
             raise TypeError('Expected property name to be a basestring')
@@ -107,6 +117,8 @@ class Network(pulumi.CustomResource):
             self.admin_state_up = outs['adminStateUp']
         if 'availabilityZoneHints' in outs:
             self.availability_zone_hints = outs['availabilityZoneHints']
+        if 'external' in outs:
+            self.external = outs['external']
         if 'name' in outs:
             self.name = outs['name']
         if 'region' in outs:

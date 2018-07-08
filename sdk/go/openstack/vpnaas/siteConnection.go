@@ -25,9 +25,6 @@ func NewSiteConnection(ctx *pulumi.Context,
 	if args == nil || args.PeerAddress == nil {
 		return nil, errors.New("missing required argument 'PeerAddress'")
 	}
-	if args == nil || args.PeerEpGroupId == nil {
-		return nil, errors.New("missing required argument 'PeerEpGroupId'")
-	}
 	if args == nil || args.PeerId == nil {
 		return nil, errors.New("missing required argument 'PeerId'")
 	}

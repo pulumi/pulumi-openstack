@@ -19,6 +19,7 @@ func NewNetwork(ctx *pulumi.Context,
 	if args == nil {
 		inputs["adminStateUp"] = nil
 		inputs["availabilityZoneHints"] = nil
+		inputs["external"] = nil
 		inputs["name"] = nil
 		inputs["region"] = nil
 		inputs["segments"] = nil
@@ -28,6 +29,7 @@ func NewNetwork(ctx *pulumi.Context,
 	} else {
 		inputs["adminStateUp"] = args.AdminStateUp
 		inputs["availabilityZoneHints"] = args.AvailabilityZoneHints
+		inputs["external"] = args.External
 		inputs["name"] = args.Name
 		inputs["region"] = args.Region
 		inputs["segments"] = args.Segments
@@ -50,6 +52,7 @@ func GetNetwork(ctx *pulumi.Context,
 	if state != nil {
 		inputs["adminStateUp"] = state.AdminStateUp
 		inputs["availabilityZoneHints"] = state.AvailabilityZoneHints
+		inputs["external"] = state.External
 		inputs["name"] = state.Name
 		inputs["region"] = state.Region
 		inputs["segments"] = state.Segments
@@ -87,6 +90,13 @@ func (r *Network) AdminStateUp() *pulumi.StringOutput {
 // creates a new network.
 func (r *Network) AvailabilityZoneHints() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["availabilityZoneHints"])
+}
+
+// Specifies whether the network resource has the
+// external routing facility. Valid values are true and false. Defaults to
+// false. Changing this updates the external attribute of the existing network.
+func (r *Network) External() *pulumi.BoolOutput {
+	return (*pulumi.BoolOutput)(r.s.State["external"])
 }
 
 // The name of the network. Changing this updates the name of
@@ -137,6 +147,10 @@ type NetworkState struct {
 	// so that they are scheduled on different availability zones. Changing this
 	// creates a new network.
 	AvailabilityZoneHints interface{}
+	// Specifies whether the network resource has the
+	// external routing facility. Valid values are true and false. Defaults to
+	// false. Changing this updates the external attribute of the existing network.
+	External interface{}
 	// The name of the network. Changing this updates the name of
 	// the existing network.
 	Name interface{}
@@ -169,6 +183,10 @@ type NetworkArgs struct {
 	// so that they are scheduled on different availability zones. Changing this
 	// creates a new network.
 	AvailabilityZoneHints interface{}
+	// Specifies whether the network resource has the
+	// external routing facility. Valid values are true and false. Defaults to
+	// false. Changing this updates the external attribute of the existing network.
+	External interface{}
 	// The name of the network. Changing this updates the name of
 	// the existing network.
 	Name interface{}

@@ -131,6 +131,13 @@ export declare class Instance extends pulumi.CustomResource {
         file: string;
     }[] | undefined>;
     /**
+     * Provide the VM state. Only 'active' and 'shutoff'
+     * are supported values. *Note*: If the initial power_state is the shutoff
+     * the VM will be stopped immediately after build and the provisioners like
+     * remote-exec or files are not supported.
+     */
+    readonly powerState: pulumi.Output<string | undefined>;
+    /**
      * The region in which to create the server instance. If
      * omitted, the `region` argument of the provider is used. Changing this
      * creates a new server.
@@ -302,6 +309,13 @@ export interface InstanceState {
         file: pulumi.Input<string>;
     }[]>;
     /**
+     * Provide the VM state. Only 'active' and 'shutoff'
+     * are supported values. *Note*: If the initial power_state is the shutoff
+     * the VM will be stopped immediately after build and the provisioners like
+     * remote-exec or files are not supported.
+     */
+    readonly powerState?: pulumi.Input<string>;
+    /**
      * The region in which to create the server instance. If
      * omitted, the `region` argument of the provider is used. Changing this
      * creates a new server.
@@ -457,6 +471,13 @@ export interface InstanceArgs {
         content: pulumi.Input<string>;
         file: pulumi.Input<string>;
     }[]>;
+    /**
+     * Provide the VM state. Only 'active' and 'shutoff'
+     * are supported values. *Note*: If the initial power_state is the shutoff
+     * the VM will be stopped immediately after build and the provisioners like
+     * remote-exec or files are not supported.
+     */
+    readonly powerState?: pulumi.Input<string>;
     /**
      * The region in which to create the server instance. If
      * omitted, the `region` argument of the provider is used. Changing this

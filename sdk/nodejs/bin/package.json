@@ -1,6 +1,6 @@
 {
     "name": "@pulumi/openstack",
-    "version": "v0.0.0-1530055544-g3cc3098",
+    "version": "v0.1.0-dirty",
     "description": "A Pulumi package for creating and managing OpenStack cloud resources.",
     "keywords": [
         "pulumi",

@@ -9,7 +9,7 @@ class Instance(pulumi.CustomResource):
     """
     Manages a V2 VM instance resource within OpenStack.
     """
-    def __init__(__self__, __name__, __opts__=None, access_ip_v4=None, access_ip_v6=None, admin_pass=None, availability_zone=None, block_devices=None, config_drive=None, flavor_id=None, flavor_name=None, force_delete=None, image_id=None, image_name=None, key_pair=None, metadata=None, name=None, networks=None, personalities=None, region=None, scheduler_hints=None, security_groups=None, stop_before_destroy=None, user_data=None):
+    def __init__(__self__, __name__, __opts__=None, access_ip_v4=None, access_ip_v6=None, admin_pass=None, availability_zone=None, block_devices=None, config_drive=None, flavor_id=None, flavor_name=None, force_delete=None, image_id=None, image_name=None, key_pair=None, metadata=None, name=None, networks=None, personalities=None, power_state=None, region=None, scheduler_hints=None, security_groups=None, stop_before_destroy=None, user_data=None):
         """Create a Instance resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
@@ -173,6 +173,17 @@ class Instance(pulumi.CustomResource):
         """
         __props__['personalities'] = personalities
 
+        if power_state and not isinstance(power_state, basestring):
+            raise TypeError('Expected property power_state to be a basestring')
+        __self__.power_state = power_state
+        """
+        Provide the VM state. Only 'active' and 'shutoff'
+        are supported values. *Note*: If the initial power_state is the shutoff
+        the VM will be stopped immediately after build and the provisioners like
+        remote-exec or files are not supported.
+        """
+        __props__['powerState'] = power_state
+
         if region and not isinstance(region, basestring):
             raise TypeError('Expected property region to be a basestring')
         __self__.region = region
@@ -270,6 +281,8 @@ class Instance(pulumi.CustomResource):
             self.networks = outs['networks']
         if 'personalities' in outs:
             self.personalities = outs['personalities']
+        if 'powerState' in outs:
+            self.power_state = outs['powerState']
         if 'region' in outs:
             self.region = outs['region']
         if 'schedulerHints' in outs:

@@ -114,6 +114,13 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly personalities: pulumi.Output<{ content: string, file: string }[] | undefined>;
     /**
+     * Provide the VM state. Only 'active' and 'shutoff'
+     * are supported values. *Note*: If the initial power_state is the shutoff
+     * the VM will be stopped immediately after build and the provisioners like
+     * remote-exec or files are not supported.
+     */
+    public readonly powerState: pulumi.Output<string | undefined>;
+    /**
      * The region in which to create the server instance. If
      * omitted, the `region` argument of the provider is used. Changing this
      * creates a new server.
@@ -173,6 +180,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
             inputs["networks"] = state ? state.networks : undefined;
             inputs["personalities"] = state ? state.personalities : undefined;
+            inputs["powerState"] = state ? state.powerState : undefined;
             inputs["region"] = state ? state.region : undefined;
             inputs["schedulerHints"] = state ? state.schedulerHints : undefined;
             inputs["securityGroups"] = state ? state.securityGroups : undefined;
@@ -196,6 +204,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["networks"] = args ? args.networks : undefined;
             inputs["personalities"] = args ? args.personalities : undefined;
+            inputs["powerState"] = args ? args.powerState : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["schedulerHints"] = args ? args.schedulerHints : undefined;
             inputs["securityGroups"] = args ? args.securityGroups : undefined;
@@ -305,6 +314,13 @@ export interface InstanceState {
      * is described below.
      */
     readonly personalities?: pulumi.Input<{ content: pulumi.Input<string>, file: pulumi.Input<string> }[]>;
+    /**
+     * Provide the VM state. Only 'active' and 'shutoff'
+     * are supported values. *Note*: If the initial power_state is the shutoff
+     * the VM will be stopped immediately after build and the provisioners like
+     * remote-exec or files are not supported.
+     */
+    readonly powerState?: pulumi.Input<string>;
     /**
      * The region in which to create the server instance. If
      * omitted, the `region` argument of the provider is used. Changing this
@@ -430,6 +446,13 @@ export interface InstanceArgs {
      * is described below.
      */
     readonly personalities?: pulumi.Input<{ content: pulumi.Input<string>, file: pulumi.Input<string> }[]>;
+    /**
+     * Provide the VM state. Only 'active' and 'shutoff'
+     * are supported values. *Note*: If the initial power_state is the shutoff
+     * the VM will be stopped immediately after build and the provisioners like
+     * remote-exec or files are not supported.
+     */
+    readonly powerState?: pulumi.Input<string>;
     /**
      * The region in which to create the server instance. If
      * omitted, the `region` argument of the provider is used. Changing this

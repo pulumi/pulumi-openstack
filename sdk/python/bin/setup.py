@@ -8,10 +8,10 @@ from subprocess import check_call
 class InstallPluginCommand(install):
     def run(self):
         install.run(self)
-        check_call(['pulumi', 'plugin', 'install', 'resource', 'openstack', 'v0.0.0-1530055544-g3cc3098'])
+        check_call(['pulumi', 'plugin', 'install', 'resource', 'openstack', 'v0.1.0-dirty'])
 
 setup(name='pulumi_openstack',
-      version='0.0.0.post1530055544',
+      version='0.1.0+dirty',
       description='A Pulumi package for creating and managing OpenStack cloud resources.',
       cmdclass={
           'install': InstallPluginCommand,

@@ -24,6 +24,7 @@ class Network extends pulumi.CustomResource {
             const state = argsOrState;
             inputs["adminStateUp"] = state ? state.adminStateUp : undefined;
             inputs["availabilityZoneHints"] = state ? state.availabilityZoneHints : undefined;
+            inputs["external"] = state ? state.external : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["region"] = state ? state.region : undefined;
             inputs["segments"] = state ? state.segments : undefined;
@@ -35,6 +36,7 @@ class Network extends pulumi.CustomResource {
             const args = argsOrState;
             inputs["adminStateUp"] = args ? args.adminStateUp : undefined;
             inputs["availabilityZoneHints"] = args ? args.availabilityZoneHints : undefined;
+            inputs["external"] = args ? args.external : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["segments"] = args ? args.segments : undefined;
