@@ -1,6 +1,6 @@
 {
     "name": "@pulumi/openstack",
-    "version": "v0.1.0-dirty",
+    "version": "v0.1.0-1531087992-ga990fb3-dirty",
     "description": "A Pulumi package for creating and managing OpenStack cloud resources.",
     "keywords": [
         "pulumi",
@@ -13,7 +13,7 @@
         "build": "tsc"
     },
     "dependencies": {
-        "@pulumi/pulumi": "^0.14.0-rc1"
+        "@pulumi/pulumi": "^0.14.0"
     },
     "devDependencies": {
         "@types/node": "^8.0.25",

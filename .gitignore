@@ -1,6 +1,5 @@
-/pack/
 /vendor/
-/bin/
-/node_modules/
 .pulumi
 Pulumi.*.yaml
+
+**/command-output/

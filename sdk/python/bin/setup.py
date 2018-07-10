@@ -8,10 +8,10 @@ from subprocess import check_call
 class InstallPluginCommand(install):
     def run(self):
         install.run(self)
-        check_call(['pulumi', 'plugin', 'install', 'resource', 'openstack', 'v0.1.0-dirty'])
+        check_call(['pulumi', 'plugin', 'install', 'resource', 'openstack', 'v0.1.0-1531087992-ga990fb3-dirty'])
 
 setup(name='pulumi_openstack',
-      version='0.1.0+dirty',
+      version='0.1.0.post1531087992+dirty',
       description='A Pulumi package for creating and managing OpenStack cloud resources.',
       cmdclass={
           'install': InstallPluginCommand,
@@ -24,6 +24,6 @@ setup(name='pulumi_openstack',
       license='Apache 2.0',
       packages=find_packages(),
       install_requires=[
-          'pulumi>=0.14.0rc1,<0.15.0'
+          'pulumi>=0.14.0,<0.15.0'
       ],
       zip_safe=False)
