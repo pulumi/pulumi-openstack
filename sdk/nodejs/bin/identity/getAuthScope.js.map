@@ -1,1 +1,0 @@
-{"version":3,"file":"getAuthScope.js","sourceRoot":"","sources":["../../identity/getAuthScope.ts"],"names":[],"mappings":";AAAA,wFAAwF;AACxF,iFAAiF;;AAEjF,yCAAyC;AAEzC;;;;GAIG;AACH,sBAA6B,IAAsB;IAC/C,OAAO,MAAM,CAAC,OAAO,CAAC,MAAM,CAAC,8CAA8C,EAAE;QACzE,MAAM,EAAE,IAAI,CAAC,IAAI;QACjB,QAAQ,EAAE,IAAI,CAAC,MAAM;KACxB,CAAC,CAAC;AACP,CAAC;AALD,oCAKC"}
