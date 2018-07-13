@@ -74,6 +74,7 @@
     "aws/signer/v4",
     "internal/sdkio",
     "internal/sdkrand",
+    "internal/sdkuri",
     "internal/shareddefaults",
     "private/protocol",
     "private/protocol/eventstream",
@@ -89,8 +90,8 @@
     "service/s3",
     "service/sts"
   ]
-  revision = "e79e9fd4ec11ccc242a472f980be78830f9eba80"
-  version = "v1.14.13"
+  revision = "9e9afa0895e9daff556cc18f90dc53eb91f41ffd"
+  version = "v1.14.26"
 
 [[projects]]
   branch = "master"
@@ -165,8 +166,8 @@
 [[projects]]
   name = "github.com/go-ini/ini"
   packages = ["."]
-  revision = "06f5f3d67269ccec1fe5fe4134ba6e982984f7f5"
-  version = "v1.37.0"
+  revision = "358ee7663966325963d4e8b2e1fbd570c5195153"
+  version = "v1.38.1"
 
 [[projects]]
   branch = "master"
@@ -263,13 +264,13 @@
     "openstack/utils",
     "pagination"
   ]
-  revision = "19abc56a8cd8d3630ab9735173cb92c0bf635f33"
+  revision = "ea2f0eefdc4eeac2e4db99e1a37ede0314efbff4"
 
 [[projects]]
   branch = "master"
   name = "github.com/gophercloud/utils"
   packages = ["openstack/clientconfig"]
-  revision = "18450e98e12dae90303d0483730333797d04be9b"
+  revision = "a4a9aeb470b8613c9c609fbb23c17836de44d05c"
 
 [[projects]]
   branch = "master"
@@ -296,7 +297,7 @@
     ".",
     "helper/url"
   ]
-  revision = "3f60ec5cfbb2a39731571b9ddae54b303bb0a969"
+  revision = "a33f09ce9feed989941a4dfe08b3890a0f8aceb9"
 
 [[projects]]
   branch = "master"
@@ -349,7 +350,7 @@
     "hcldec",
     "hclparse"
   ]
-  revision = "36446359d27574bf110611001414da561731b62d"
+  revision = "1718a963e6321c0d8b663ca3f2224be366d59905"
 
 [[projects]]
   branch = "master"
@@ -577,8 +578,8 @@
     "sdk/go/pulumi/config",
     "sdk/proto/go"
   ]
-  revision = "6c62a6e198d5bd1acf0e8ffec652283262f2b09d"
-  version = "v0.14.0"
+  revision = "67a06a1e9d6425cabf0e8f8dc1e20dbecefffa08"
+  version = "v0.14.2"
 
 [[projects]]
   name = "github.com/pulumi/pulumi-terraform"
@@ -697,7 +698,7 @@
     "cty/json",
     "cty/set"
   ]
-  revision = "c96d660229f9ad0a16eb5869819ea51e1ed49896"
+  revision = "3ccef1ae92b0ac73b92d86f274f0ff781e2d9b3b"
 
 [[projects]]
   branch = "master"
@@ -740,7 +741,7 @@
     "internal/timeseries",
     "trace"
   ]
-  revision = "afe8f62b1d6bbd81f31868121a50b06d8188e1f9"
+  revision = "d0887baf81f4598189d4e12a37c6da86f0bba4d0"
 
 [[projects]]
   branch = "master"
@@ -749,7 +750,7 @@
     "unix",
     "windows"
   ]
-  revision = "a200a19cb90b19de298170992778b1fda7217bd6"
+  revision = "1b2967e3c290b7c545b3db0deeda16e9be4f98a2"
 
 [[projects]]
   name = "golang.org/x/text"
@@ -776,7 +777,7 @@
   branch = "master"
   name = "google.golang.org/genproto"
   packages = ["googleapis/rpc/status"]
-  revision = "80063a038e333bbe006c878e4c5ce4c74d055498"
+  revision = "e92b116572682a5b432ddd840aeaba2a559eeff1"
 
 [[projects]]
   name = "google.golang.org/grpc"
@@ -868,8 +869,8 @@
     "utils/merkletrie/internal/frame",
     "utils/merkletrie/noder"
   ]
-  revision = "b23570073eaee3489e5e3d666f22ba5cbeb53243"
-  version = "v4.4.1"
+  revision = "3bd5e82b2512d85becae9677fa06b5a973fd4cfb"
+  version = "v4.5.0"
 
 [[projects]]
   name = "gopkg.in/warnings.v0"
