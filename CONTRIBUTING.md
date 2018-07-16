@@ -17,16 +17,18 @@ provider are installed by running `make ensure` in the root of the repository.
 
 ## Running Integration Tests
 
-// TODO: This probably needs changing
-
-The examples and integration tests in this repository will create and destroy real OpenSTack
+The examples and integration tests in this repository will create and destroy real OpenStack
 cloud resources while running. Before running these tests, make sure that you have
-[configured Pulumi with OpenStack](https://pulumi.io/install/openstack.html) successfully once before.
+configured environment variables for deploying to your target OpenStack cloud provider.  For example, you can use the following as created by an "OpenStack configuration file" provided by your OpenStack provider:
 
-The only additional step you need to take to run tests in this repo is to set the
-`ARM_ENVIRONMENT` environment variable to the ARM environment you'd like to create test resources in.
-The integration tests do try to clean up after themselves by deleting everything that was
-created, but in the event of bugs or test failures you may need to go into the OpenStack portal
-and delete resources yourself.
+* `OS_AUTH_URL`
+* `OS_IDENTITY_API_VERSION`
+* `OS_TENANT_ID`
+* `OS_TENANT_NAME` 
+* `OS_USERNAME`
+* `OS_PASSWORD`
+* `OS_REGION_NAME`
 
-Once you have set `ARM_ENVIRONMENT` and configured your OpenStack credentials, `make test_all` will run all integration tests.
+After you have these environment variables set, `make test_all` will run all integration tests.
+
+Test runs in TravisCI currently deploy to [OVH](https://www.ovh.com/world/public-cloud/instances/).
