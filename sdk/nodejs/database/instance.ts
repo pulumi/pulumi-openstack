@@ -124,7 +124,7 @@ export interface InstanceState {
      * An array of database name, charset and collate. The database
      * object structure is documented below.
      */
-    readonly databases?: pulumi.Input<{ charset?: pulumi.Input<string>, collate?: pulumi.Input<string>, name: pulumi.Input<string> }[]>;
+    readonly databases?: pulumi.Input<pulumi.Input<{ charset?: pulumi.Input<string>, collate?: pulumi.Input<string>, name: pulumi.Input<string> }>[]>;
     /**
      * An array of database engine type and version. The datastore
      * object structure is documented below. Changing this creates a new instance.
@@ -145,7 +145,7 @@ export interface InstanceState {
      * instance. The network object structure is documented below. Changing this
      * creates a new instance.
      */
-    readonly networks?: pulumi.Input<{ fixedIpV4?: pulumi.Input<string>, fixedIpV6?: pulumi.Input<string>, port?: pulumi.Input<string>, uuid?: pulumi.Input<string> }[]>;
+    readonly networks?: pulumi.Input<pulumi.Input<{ fixedIpV4?: pulumi.Input<string>, fixedIpV6?: pulumi.Input<string>, port?: pulumi.Input<string>, uuid?: pulumi.Input<string> }>[]>;
     /**
      * The region in which to create the db instance. Changing this
      * creates a new instance.
@@ -159,7 +159,7 @@ export interface InstanceState {
      * An array of username, password, host and databases. The user
      * object structure is documented below.
      */
-    readonly users?: pulumi.Input<{ databases?: pulumi.Input<pulumi.Input<string>[]>, host?: pulumi.Input<string>, name: pulumi.Input<string>, password?: pulumi.Input<string> }[]>;
+    readonly users?: pulumi.Input<pulumi.Input<{ databases?: pulumi.Input<pulumi.Input<string>[]>, host?: pulumi.Input<string>, name: pulumi.Input<string>, password?: pulumi.Input<string> }>[]>;
 }
 
 /**
@@ -175,7 +175,7 @@ export interface InstanceArgs {
      * An array of database name, charset and collate. The database
      * object structure is documented below.
      */
-    readonly databases?: pulumi.Input<{ charset?: pulumi.Input<string>, collate?: pulumi.Input<string>, name: pulumi.Input<string> }[]>;
+    readonly databases?: pulumi.Input<pulumi.Input<{ charset?: pulumi.Input<string>, collate?: pulumi.Input<string>, name: pulumi.Input<string> }>[]>;
     /**
      * An array of database engine type and version. The datastore
      * object structure is documented below. Changing this creates a new instance.
@@ -196,7 +196,7 @@ export interface InstanceArgs {
      * instance. The network object structure is documented below. Changing this
      * creates a new instance.
      */
-    readonly networks?: pulumi.Input<{ fixedIpV4?: pulumi.Input<string>, fixedIpV6?: pulumi.Input<string>, port?: pulumi.Input<string>, uuid?: pulumi.Input<string> }[]>;
+    readonly networks?: pulumi.Input<pulumi.Input<{ fixedIpV4?: pulumi.Input<string>, fixedIpV6?: pulumi.Input<string>, port?: pulumi.Input<string>, uuid?: pulumi.Input<string> }>[]>;
     /**
      * The region in which to create the db instance. Changing this
      * creates a new instance.
@@ -210,5 +210,5 @@ export interface InstanceArgs {
      * An array of username, password, host and databases. The user
      * object structure is documented below.
      */
-    readonly users?: pulumi.Input<{ databases?: pulumi.Input<pulumi.Input<string>[]>, host?: pulumi.Input<string>, name: pulumi.Input<string>, password?: pulumi.Input<string> }[]>;
+    readonly users?: pulumi.Input<pulumi.Input<{ databases?: pulumi.Input<pulumi.Input<string>[]>, host?: pulumi.Input<string>, name: pulumi.Input<string>, password?: pulumi.Input<string> }>[]>;
 }

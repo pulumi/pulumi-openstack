@@ -31,6 +31,7 @@ func LookupAuthScope(ctx *pulumi.Context, args *GetAuthScopeArgs) (*GetAuthScope
 		UserDomainName: outputs["userDomainName"],
 		UserId: outputs["userId"],
 		UserName: outputs["userName"],
+		Id: outputs["id"],
 	}, nil
 }
 
@@ -66,4 +67,6 @@ type GetAuthScopeResult struct {
 	UserId interface{}
 	// The username of the scope.
 	UserName interface{}
+	// id is the provider-assigned unique ID for this managed resource.
+	Id interface{}
 }

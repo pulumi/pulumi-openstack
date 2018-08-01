@@ -87,7 +87,7 @@ export interface ConfigurationState {
     /**
      * An array of configuration parameter name and value. Can be specified multiple times. The configuration object structure is documented below.
      */
-    readonly configurations?: pulumi.Input<{ name: pulumi.Input<string>, value: pulumi.Input<string> }[]>;
+    readonly configurations?: pulumi.Input<pulumi.Input<{ name: pulumi.Input<string>, value: pulumi.Input<string> }>[]>;
     /**
      * An array of database engine type and version. The datastore
      * object structure is documented below. Changing this creates resource.
@@ -115,7 +115,7 @@ export interface ConfigurationArgs {
     /**
      * An array of configuration parameter name and value. Can be specified multiple times. The configuration object structure is documented below.
      */
-    readonly configurations?: pulumi.Input<{ name: pulumi.Input<string>, value: pulumi.Input<string> }[]>;
+    readonly configurations?: pulumi.Input<pulumi.Input<{ name: pulumi.Input<string>, value: pulumi.Input<string> }>[]>;
     /**
      * An array of database engine type and version. The datastore
      * object structure is documented below. Changing this creates resource.

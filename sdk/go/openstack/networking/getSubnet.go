@@ -45,6 +45,7 @@ func LookupSubnet(ctx *pulumi.Context, args *GetSubnetArgs) (*GetSubnetResult, e
 		SubnetId: outputs["subnetId"],
 		SubnetpoolId: outputs["subnetpoolId"],
 		TenantId: outputs["tenantId"],
+		Id: outputs["id"],
 	}, nil
 }
 
@@ -104,4 +105,6 @@ type GetSubnetResult struct {
 	SubnetId interface{}
 	SubnetpoolId interface{}
 	TenantId interface{}
+	// id is the provider-assigned unique ID for this managed resource.
+	Id interface{}
 }

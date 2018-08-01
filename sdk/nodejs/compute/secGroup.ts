@@ -107,7 +107,7 @@ export interface SecGroupState {
      * security group rules. As shown in the example above, multiple rule blocks
      * may be used.
      */
-    readonly rules?: pulumi.Input<{ cidr?: pulumi.Input<string>, fromGroupId?: pulumi.Input<string>, fromPort: pulumi.Input<number>, id?: pulumi.Input<string>, ipProtocol: pulumi.Input<string>, self?: pulumi.Input<boolean>, toPort: pulumi.Input<number> }[]>;
+    readonly rules?: pulumi.Input<pulumi.Input<{ cidr?: pulumi.Input<string>, fromGroupId?: pulumi.Input<string>, fromPort: pulumi.Input<number>, id?: pulumi.Input<string>, ipProtocol: pulumi.Input<string>, self?: pulumi.Input<boolean>, toPort: pulumi.Input<number> }>[]>;
 }
 
 /**
@@ -137,5 +137,5 @@ export interface SecGroupArgs {
      * security group rules. As shown in the example above, multiple rule blocks
      * may be used.
      */
-    readonly rules?: pulumi.Input<{ cidr?: pulumi.Input<string>, fromGroupId?: pulumi.Input<string>, fromPort: pulumi.Input<number>, id?: pulumi.Input<string>, ipProtocol: pulumi.Input<string>, self?: pulumi.Input<boolean>, toPort: pulumi.Input<number> }[]>;
+    readonly rules?: pulumi.Input<pulumi.Input<{ cidr?: pulumi.Input<string>, fromGroupId?: pulumi.Input<string>, fromPort: pulumi.Input<number>, id?: pulumi.Input<string>, ipProtocol: pulumi.Input<string>, self?: pulumi.Input<boolean>, toPort: pulumi.Input<number> }>[]>;
 }

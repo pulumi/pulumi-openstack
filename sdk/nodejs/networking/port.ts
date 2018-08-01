@@ -179,7 +179,7 @@ export interface PortState {
      * addresses that can be active on this port. The structure is described
      * below.
      */
-    readonly allowedAddressPairs?: pulumi.Input<{ ipAddress: pulumi.Input<string>, macAddress?: pulumi.Input<string> }[]>;
+    readonly allowedAddressPairs?: pulumi.Input<pulumi.Input<{ ipAddress: pulumi.Input<string>, macAddress?: pulumi.Input<string> }>[]>;
     /**
      * The ID of the device attached to the port. Changing this
      * creates a new port.
@@ -194,7 +194,7 @@ export interface PortState {
      * An array of desired IPs for this port. The structure is
      * described below.
      */
-    readonly fixedIps?: pulumi.Input<{ ipAddress?: pulumi.Input<string>, subnetId: pulumi.Input<string> }[]>;
+    readonly fixedIps?: pulumi.Input<pulumi.Input<{ ipAddress?: pulumi.Input<string>, subnetId: pulumi.Input<string> }>[]>;
     /**
      * The additional MAC address.
      */
@@ -257,7 +257,7 @@ export interface PortArgs {
      * addresses that can be active on this port. The structure is described
      * below.
      */
-    readonly allowedAddressPairs?: pulumi.Input<{ ipAddress: pulumi.Input<string>, macAddress?: pulumi.Input<string> }[]>;
+    readonly allowedAddressPairs?: pulumi.Input<pulumi.Input<{ ipAddress: pulumi.Input<string>, macAddress?: pulumi.Input<string> }>[]>;
     /**
      * The ID of the device attached to the port. Changing this
      * creates a new port.
@@ -272,7 +272,7 @@ export interface PortArgs {
      * An array of desired IPs for this port. The structure is
      * described below.
      */
-    readonly fixedIps?: pulumi.Input<{ ipAddress?: pulumi.Input<string>, subnetId: pulumi.Input<string> }[]>;
+    readonly fixedIps?: pulumi.Input<pulumi.Input<{ ipAddress?: pulumi.Input<string>, subnetId: pulumi.Input<string> }>[]>;
     /**
      * The additional MAC address.
      */

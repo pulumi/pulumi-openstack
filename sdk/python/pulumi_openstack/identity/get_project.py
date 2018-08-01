@@ -9,7 +9,7 @@ class GetProjectResult(object):
     """
     A collection of values returned by getProject.
     """
-    def __init__(__self__, description=None, domain_id=None, region=None):
+    def __init__(__self__, description=None, domain_id=None, region=None, id=None):
         if description and not isinstance(description, basestring):
             raise TypeError('Expected argument description to be a basestring')
         __self__.description = description
@@ -27,6 +27,12 @@ class GetProjectResult(object):
         __self__.region = region
         """
         The region the project is located in.
+        """
+        if id and not isinstance(id, basestring):
+            raise TypeError('Expected argument id to be a basestring')
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
 
 def get_project(domain_id=None, enabled=None, is_domain=None, name=None, parent_id=None, region=None):
@@ -46,4 +52,5 @@ def get_project(domain_id=None, enabled=None, is_domain=None, name=None, parent_
     return GetProjectResult(
         description=__ret__.get('description'),
         domain_id=__ret__.get('domainId'),
-        region=__ret__.get('region'))
+        region=__ret__.get('region'),
+        id=__ret__.get('id'))

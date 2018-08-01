@@ -5,7 +5,7 @@
 # Export this package's modules as members:
 from flavor import *
 from floating_ip_associate import *
-from floating_i_p import *
+from floating_ip import *
 from instance import *
 from keypair import *
 from sec_group import *

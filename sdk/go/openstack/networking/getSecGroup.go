@@ -23,6 +23,7 @@ func LookupSecGroup(ctx *pulumi.Context, args *GetSecGroupArgs) (*GetSecGroupRes
 	return &GetSecGroupResult{
 		Region: outputs["region"],
 		TenantId: outputs["tenantId"],
+		Id: outputs["id"],
 	}, nil
 }
 
@@ -45,4 +46,6 @@ type GetSecGroupResult struct {
 	// See Argument Reference above.
 	Region interface{}
 	TenantId interface{}
+	// id is the provider-assigned unique ID for this managed resource.
+	Id interface{}
 }

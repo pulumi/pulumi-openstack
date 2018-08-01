@@ -25,26 +25,26 @@ export interface GetProjectArgs {
     /**
      * The domain this project belongs to.
      */
-    readonly domainId?: pulumi.Input<string>;
+    readonly domainId?: string;
     /**
      * Whether the project is enabled or disabled. Valid
      * values are `true` and `false`.
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    readonly enabled?: boolean;
     /**
      * Whether this project is a domain. Valid values
      * are `true` and `false`.
      */
-    readonly isDomain?: pulumi.Input<boolean>;
+    readonly isDomain?: boolean;
     /**
      * The name of the project.
      */
-    readonly name?: pulumi.Input<string>;
+    readonly name?: string;
     /**
      * The parent of this project.
      */
-    readonly parentId?: pulumi.Input<string>;
-    readonly region?: pulumi.Input<string>;
+    readonly parentId?: string;
+    readonly region?: string;
 }
 
 /**
@@ -63,4 +63,8 @@ export interface GetProjectResult {
      * The region the project is located in.
      */
     readonly region: string;
+    /**
+     * id is the provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
 }

@@ -9,7 +9,7 @@ class GetSubnetResult(object):
     """
     A collection of values returned by getSubnet.
     """
-    def __init__(__self__, allocation_pools=None, cidr=None, dns_nameservers=None, enable_dhcp=None, gateway_ip=None, host_routes=None, ip_version=None, ipv6_address_mode=None, ipv6_ra_mode=None, name=None, network_id=None, region=None, subnet_id=None, subnetpool_id=None, tenant_id=None):
+    def __init__(__self__, allocation_pools=None, cidr=None, dns_nameservers=None, enable_dhcp=None, gateway_ip=None, host_routes=None, ip_version=None, ipv6_address_mode=None, ipv6_ra_mode=None, name=None, network_id=None, region=None, subnet_id=None, subnetpool_id=None, tenant_id=None, id=None):
         if allocation_pools and not isinstance(allocation_pools, list):
             raise TypeError('Expected argument allocation_pools to be a list')
         __self__.allocation_pools = allocation_pools
@@ -70,6 +70,12 @@ class GetSubnetResult(object):
         if tenant_id and not isinstance(tenant_id, basestring):
             raise TypeError('Expected argument tenant_id to be a basestring')
         __self__.tenant_id = tenant_id
+        if id and not isinstance(id, basestring):
+            raise TypeError('Expected argument id to be a basestring')
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
 
 def get_subnet(cidr=None, dhcp_disabled=None, dhcp_enabled=None, gateway_ip=None, ip_version=None, ipv6_address_mode=None, ipv6_ra_mode=None, name=None, network_id=None, region=None, subnet_id=None, subnetpool_id=None, tenant_id=None):
     """
@@ -107,4 +113,5 @@ def get_subnet(cidr=None, dhcp_disabled=None, dhcp_enabled=None, gateway_ip=None
         region=__ret__.get('region'),
         subnet_id=__ret__.get('subnetId'),
         subnetpool_id=__ret__.get('subnetpoolId'),
-        tenant_id=__ret__.get('tenantId'))
+        tenant_id=__ret__.get('tenantId'),
+        id=__ret__.get('id'))

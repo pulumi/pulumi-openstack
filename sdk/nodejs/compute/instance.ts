@@ -106,7 +106,7 @@ export class Instance extends pulumi.CustomResource {
      * instance. The network object structure is documented below. Changing this
      * creates a new server.
      */
-    public readonly networks: pulumi.Output<{ accessNetwork?: boolean, fixedIpV4: string, fixedIpV6: string, floatingIp: string, mac: string, name: string, port: string, uuid: string }[]>;
+    public readonly networks: pulumi.Output<{ accessNetwork?: boolean, fixedIpV4: string, fixedIpV6: string, mac: string, name: string, port: string, uuid: string }[]>;
     /**
      * Customize the personality of an instance by
      * defining one or more files and their contents. The personality structure
@@ -252,7 +252,7 @@ export interface InstanceState {
      * following [reference](http://docs.openstack.org/developer/nova/block_device_mapping.html)
      * for more information.
      */
-    readonly blockDevices?: pulumi.Input<{ bootIndex?: pulumi.Input<number>, deleteOnTermination?: pulumi.Input<boolean>, destinationType?: pulumi.Input<string>, guestFormat?: pulumi.Input<string>, sourceType: pulumi.Input<string>, uuid?: pulumi.Input<string>, volumeSize?: pulumi.Input<number> }[]>;
+    readonly blockDevices?: pulumi.Input<pulumi.Input<{ bootIndex?: pulumi.Input<number>, deleteOnTermination?: pulumi.Input<boolean>, destinationType?: pulumi.Input<string>, guestFormat?: pulumi.Input<string>, sourceType: pulumi.Input<string>, uuid?: pulumi.Input<string>, volumeSize?: pulumi.Input<number> }>[]>;
     /**
      * Whether to use the config_drive feature to
      * configure the instance. Changing this creates a new server.
@@ -307,13 +307,13 @@ export interface InstanceState {
      * instance. The network object structure is documented below. Changing this
      * creates a new server.
      */
-    readonly networks?: pulumi.Input<{ accessNetwork?: pulumi.Input<boolean>, fixedIpV4?: pulumi.Input<string>, fixedIpV6?: pulumi.Input<string>, floatingIp?: pulumi.Input<string>, mac?: pulumi.Input<string>, name?: pulumi.Input<string>, port?: pulumi.Input<string>, uuid?: pulumi.Input<string> }[]>;
+    readonly networks?: pulumi.Input<pulumi.Input<{ accessNetwork?: pulumi.Input<boolean>, fixedIpV4?: pulumi.Input<string>, fixedIpV6?: pulumi.Input<string>, mac?: pulumi.Input<string>, name?: pulumi.Input<string>, port?: pulumi.Input<string>, uuid?: pulumi.Input<string> }>[]>;
     /**
      * Customize the personality of an instance by
      * defining one or more files and their contents. The personality structure
      * is described below.
      */
-    readonly personalities?: pulumi.Input<{ content: pulumi.Input<string>, file: pulumi.Input<string> }[]>;
+    readonly personalities?: pulumi.Input<pulumi.Input<{ content: pulumi.Input<string>, file: pulumi.Input<string> }>[]>;
     /**
      * Provide the VM state. Only 'active' and 'shutoff'
      * are supported values. *Note*: If the initial power_state is the shutoff
@@ -331,7 +331,7 @@ export interface InstanceState {
      * Provide the Nova scheduler with hints on how
      * the instance should be launched. The available hints are described below.
      */
-    readonly schedulerHints?: pulumi.Input<{ additionalProperties?: pulumi.Input<{[key: string]: any}>, buildNearHostIp?: pulumi.Input<string>, differentHosts?: pulumi.Input<pulumi.Input<string>[]>, group?: pulumi.Input<string>, queries?: pulumi.Input<pulumi.Input<string>[]>, sameHosts?: pulumi.Input<pulumi.Input<string>[]>, targetCell?: pulumi.Input<string> }[]>;
+    readonly schedulerHints?: pulumi.Input<pulumi.Input<{ additionalProperties?: pulumi.Input<{[key: string]: any}>, buildNearHostIp?: pulumi.Input<string>, differentHosts?: pulumi.Input<pulumi.Input<string>[]>, group?: pulumi.Input<string>, queries?: pulumi.Input<pulumi.Input<string>[]>, sameHosts?: pulumi.Input<pulumi.Input<string>[]>, targetCell?: pulumi.Input<string> }>[]>;
     /**
      * An array of one or more security group names
      * to associate with the server. Changing this results in adding/removing
@@ -384,7 +384,7 @@ export interface InstanceArgs {
      * following [reference](http://docs.openstack.org/developer/nova/block_device_mapping.html)
      * for more information.
      */
-    readonly blockDevices?: pulumi.Input<{ bootIndex?: pulumi.Input<number>, deleteOnTermination?: pulumi.Input<boolean>, destinationType?: pulumi.Input<string>, guestFormat?: pulumi.Input<string>, sourceType: pulumi.Input<string>, uuid?: pulumi.Input<string>, volumeSize?: pulumi.Input<number> }[]>;
+    readonly blockDevices?: pulumi.Input<pulumi.Input<{ bootIndex?: pulumi.Input<number>, deleteOnTermination?: pulumi.Input<boolean>, destinationType?: pulumi.Input<string>, guestFormat?: pulumi.Input<string>, sourceType: pulumi.Input<string>, uuid?: pulumi.Input<string>, volumeSize?: pulumi.Input<number> }>[]>;
     /**
      * Whether to use the config_drive feature to
      * configure the instance. Changing this creates a new server.
@@ -439,13 +439,13 @@ export interface InstanceArgs {
      * instance. The network object structure is documented below. Changing this
      * creates a new server.
      */
-    readonly networks?: pulumi.Input<{ accessNetwork?: pulumi.Input<boolean>, fixedIpV4?: pulumi.Input<string>, fixedIpV6?: pulumi.Input<string>, floatingIp?: pulumi.Input<string>, mac?: pulumi.Input<string>, name?: pulumi.Input<string>, port?: pulumi.Input<string>, uuid?: pulumi.Input<string> }[]>;
+    readonly networks?: pulumi.Input<pulumi.Input<{ accessNetwork?: pulumi.Input<boolean>, fixedIpV4?: pulumi.Input<string>, fixedIpV6?: pulumi.Input<string>, mac?: pulumi.Input<string>, name?: pulumi.Input<string>, port?: pulumi.Input<string>, uuid?: pulumi.Input<string> }>[]>;
     /**
      * Customize the personality of an instance by
      * defining one or more files and their contents. The personality structure
      * is described below.
      */
-    readonly personalities?: pulumi.Input<{ content: pulumi.Input<string>, file: pulumi.Input<string> }[]>;
+    readonly personalities?: pulumi.Input<pulumi.Input<{ content: pulumi.Input<string>, file: pulumi.Input<string> }>[]>;
     /**
      * Provide the VM state. Only 'active' and 'shutoff'
      * are supported values. *Note*: If the initial power_state is the shutoff
@@ -463,7 +463,7 @@ export interface InstanceArgs {
      * Provide the Nova scheduler with hints on how
      * the instance should be launched. The available hints are described below.
      */
-    readonly schedulerHints?: pulumi.Input<{ additionalProperties?: pulumi.Input<{[key: string]: any}>, buildNearHostIp?: pulumi.Input<string>, differentHosts?: pulumi.Input<pulumi.Input<string>[]>, group?: pulumi.Input<string>, queries?: pulumi.Input<pulumi.Input<string>[]>, sameHosts?: pulumi.Input<pulumi.Input<string>[]>, targetCell?: pulumi.Input<string> }[]>;
+    readonly schedulerHints?: pulumi.Input<pulumi.Input<{ additionalProperties?: pulumi.Input<{[key: string]: any}>, buildNearHostIp?: pulumi.Input<string>, differentHosts?: pulumi.Input<pulumi.Input<string>[]>, group?: pulumi.Input<string>, queries?: pulumi.Input<pulumi.Input<string>[]>, sameHosts?: pulumi.Input<pulumi.Input<string>[]>, targetCell?: pulumi.Input<string> }>[]>;
     /**
      * An array of one or more security group names
      * to associate with the server. Changing this results in adding/removing

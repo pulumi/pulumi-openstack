@@ -9,7 +9,7 @@ class GetRoleResult(object):
     """
     A collection of values returned by getRole.
     """
-    def __init__(__self__, domain_id=None, region=None):
+    def __init__(__self__, domain_id=None, region=None, id=None):
         if domain_id and not isinstance(domain_id, basestring):
             raise TypeError('Expected argument domain_id to be a basestring')
         __self__.domain_id = domain_id
@@ -21,6 +21,12 @@ class GetRoleResult(object):
         __self__.region = region
         """
         See Argument Reference above.
+        """
+        if id and not isinstance(id, basestring):
+            raise TypeError('Expected argument id to be a basestring')
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
 
 def get_role(domain_id=None, name=None, region=None):
@@ -36,4 +42,5 @@ def get_role(domain_id=None, name=None, region=None):
 
     return GetRoleResult(
         domain_id=__ret__.get('domainId'),
-        region=__ret__.get('region'))
+        region=__ret__.get('region'),
+        id=__ret__.get('id'))

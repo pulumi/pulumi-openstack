@@ -9,7 +9,7 @@ class GetDnsZoneResult(object):
     """
     A collection of values returned by getDnsZone.
     """
-    def __init__(__self__, attributes=None, created_at=None, masters=None, pool_id=None, project_id=None, region=None, serial=None, transferred_at=None, updated_at=None, version=None):
+    def __init__(__self__, attributes=None, created_at=None, masters=None, pool_id=None, project_id=None, region=None, serial=None, transferred_at=None, updated_at=None, version=None, id=None):
         if attributes and not isinstance(attributes, dict):
             raise TypeError('Expected argument attributes to be a dict')
         __self__.attributes = attributes
@@ -70,6 +70,12 @@ class GetDnsZoneResult(object):
         """
         The version of the zone.
         """
+        if id and not isinstance(id, basestring):
+            raise TypeError('Expected argument id to be a basestring')
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
 
 def get_dns_zone(attributes=None, created_at=None, description=None, email=None, masters=None, name=None, pool_id=None, project_id=None, region=None, serial=None, status=None, transferred_at=None, ttl=None, type=None, updated_at=None, version=None):
     """
@@ -105,4 +111,5 @@ def get_dns_zone(attributes=None, created_at=None, description=None, email=None,
         serial=__ret__.get('serial'),
         transferred_at=__ret__.get('transferredAt'),
         updated_at=__ret__.get('updatedAt'),
-        version=__ret__.get('version'))
+        version=__ret__.get('version'),
+        id=__ret__.get('id'))

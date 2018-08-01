@@ -26,6 +26,7 @@ func LookupProject(ctx *pulumi.Context, args *GetProjectArgs) (*GetProjectResult
 		Description: outputs["description"],
 		DomainId: outputs["domainId"],
 		Region: outputs["region"],
+		Id: outputs["id"],
 	}, nil
 }
 
@@ -54,4 +55,6 @@ type GetProjectResult struct {
 	DomainId interface{}
 	// The region the project is located in.
 	Region interface{}
+	// id is the provider-assigned unique ID for this managed resource.
+	Id interface{}
 }

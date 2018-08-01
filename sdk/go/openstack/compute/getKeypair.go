@@ -21,6 +21,7 @@ func LookupKeypair(ctx *pulumi.Context, args *GetKeypairArgs) (*GetKeypairResult
 	return &GetKeypairResult{
 		PublicKey: outputs["publicKey"],
 		Region: outputs["region"],
+		Id: outputs["id"],
 	}, nil
 }
 
@@ -39,4 +40,6 @@ type GetKeypairResult struct {
 	PublicKey interface{}
 	// See Argument Reference above.
 	Region interface{}
+	// id is the provider-assigned unique ID for this managed resource.
+	Id interface{}
 }

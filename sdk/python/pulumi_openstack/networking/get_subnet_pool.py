@@ -9,7 +9,7 @@ class GetSubnetPoolResult(object):
     """
     A collection of values returned by getSubnetPool.
     """
-    def __init__(__self__, address_scope_id=None, created_at=None, default_prefixlen=None, default_quota=None, description=None, ip_version=None, is_default=None, max_prefixlen=None, min_prefixlen=None, name=None, prefixes=None, project_id=None, region=None, revision_number=None, shared=None, updated_at=None):
+    def __init__(__self__, address_scope_id=None, created_at=None, default_prefixlen=None, default_quota=None, description=None, ip_version=None, is_default=None, max_prefixlen=None, min_prefixlen=None, name=None, prefixes=None, project_id=None, region=None, revision_number=None, shared=None, updated_at=None, id=None):
         if address_scope_id and not isinstance(address_scope_id, basestring):
             raise TypeError('Expected argument address_scope_id to be a basestring')
         __self__.address_scope_id = address_scope_id
@@ -104,6 +104,12 @@ class GetSubnetPoolResult(object):
         """
         The time at which subnetpool was created.
         """
+        if id and not isinstance(id, basestring):
+            raise TypeError('Expected argument id to be a basestring')
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
 
 def get_subnet_pool(address_scope_id=None, default_prefixlen=None, default_quota=None, description=None, ip_version=None, is_default=None, max_prefixlen=None, min_prefixlen=None, name=None, project_id=None, region=None, shared=None):
     """
@@ -141,4 +147,5 @@ def get_subnet_pool(address_scope_id=None, default_prefixlen=None, default_quota
         region=__ret__.get('region'),
         revision_number=__ret__.get('revisionNumber'),
         shared=__ret__.get('shared'),
-        updated_at=__ret__.get('updatedAt'))
+        updated_at=__ret__.get('updatedAt'),
+        id=__ret__.get('id'))

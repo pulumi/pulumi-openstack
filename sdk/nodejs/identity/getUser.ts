@@ -27,33 +27,33 @@ export interface GetUserArgs {
     /**
      * The domain this user belongs to.
      */
-    readonly domainId?: pulumi.Input<string>;
+    readonly domainId?: string;
     /**
      * Whether the user is enabled or disabled. Valid
      * values are `true` and `false`.
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    readonly enabled?: boolean;
     /**
      * The identity provider ID of the user.
      */
-    readonly idpId?: pulumi.Input<string>;
+    readonly idpId?: string;
     /**
      * The name of the user.
      */
-    readonly name?: pulumi.Input<string>;
+    readonly name?: string;
     /**
      * Query for expired passwords. See the [OpenStack API docs](https://developer.openstack.org/api-ref/identity/v3/#list-users) for more information on the query format.
      */
-    readonly passwordExpiresAt?: pulumi.Input<string>;
+    readonly passwordExpiresAt?: string;
     /**
      * The protocol ID of the user.
      */
-    readonly protocolId?: pulumi.Input<string>;
-    readonly region?: pulumi.Input<string>;
+    readonly protocolId?: string;
+    readonly region?: string;
     /**
      * The unique ID of the user.
      */
-    readonly uniqueId?: pulumi.Input<string>;
+    readonly uniqueId?: string;
 }
 
 /**
@@ -72,4 +72,8 @@ export interface GetUserResult {
      * The region the user is located in.
      */
     readonly region: string;
+    /**
+     * id is the provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
 }

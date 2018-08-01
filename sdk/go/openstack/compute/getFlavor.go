@@ -28,6 +28,7 @@ func LookupFlavor(ctx *pulumi.Context, args *GetFlavorArgs) (*GetFlavorResult, e
 	return &GetFlavorResult{
 		IsPublic: outputs["isPublic"],
 		Region: outputs["region"],
+		Id: outputs["id"],
 	}, nil
 }
 
@@ -59,4 +60,6 @@ type GetFlavorResult struct {
 	// Whether the flavor is public or private.
 	IsPublic interface{}
 	Region interface{}
+	// id is the provider-assigned unique ID for this managed resource.
+	Id interface{}
 }

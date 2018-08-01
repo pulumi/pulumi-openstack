@@ -150,7 +150,7 @@ export interface VolumeState {
      * display the Attachment ID, Instance ID, and the Device as the Instance
      * sees it.
      */
-    readonly attachments?: pulumi.Input<{ device?: pulumi.Input<string>, id?: pulumi.Input<string>, instanceId?: pulumi.Input<string> }[]>;
+    readonly attachments?: pulumi.Input<pulumi.Input<{ device?: pulumi.Input<string>, id?: pulumi.Input<string>, instanceId?: pulumi.Input<string> }>[]>;
     /**
      * The availability zone for the volume.
      * Changing this creates a new volume.

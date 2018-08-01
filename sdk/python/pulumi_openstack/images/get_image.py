@@ -9,7 +9,7 @@ class GetImageResult(object):
     """
     A collection of values returned by getImage.
     """
-    def __init__(__self__, checksum=None, container_format=None, disk_format=None, file=None, metadata=None, min_disk_gb=None, min_ram_mb=None, protected=None, region=None, schema=None, size_bytes=None, updated_at=None):
+    def __init__(__self__, checksum=None, container_format=None, disk_format=None, file=None, metadata=None, min_disk_gb=None, min_ram_mb=None, protected=None, region=None, schema=None, size_bytes=None, updated_at=None, id=None):
         if checksum and not isinstance(checksum, basestring):
             raise TypeError('Expected argument checksum to be a basestring')
         __self__.checksum = checksum
@@ -74,6 +74,12 @@ class GetImageResult(object):
         if updated_at and not isinstance(updated_at, basestring):
             raise TypeError('Expected argument updated_at to be a basestring')
         __self__.updated_at = updated_at
+        if id and not isinstance(id, basestring):
+            raise TypeError('Expected argument id to be a basestring')
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
 
 def get_image(member_status=None, most_recent=None, name=None, owner=None, properties=None, region=None, size_max=None, size_min=None, sort_direction=None, sort_key=None, tag=None, visibility=None):
     """
@@ -107,4 +113,5 @@ def get_image(member_status=None, most_recent=None, name=None, owner=None, prope
         region=__ret__.get('region'),
         schema=__ret__.get('schema'),
         size_bytes=__ret__.get('sizeBytes'),
-        updated_at=__ret__.get('updatedAt'))
+        updated_at=__ret__.get('updatedAt'),
+        id=__ret__.get('id'))

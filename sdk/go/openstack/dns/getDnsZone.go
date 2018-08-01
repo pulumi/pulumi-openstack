@@ -43,6 +43,7 @@ func LookupDnsZone(ctx *pulumi.Context, args *GetDnsZoneArgs) (*GetDnsZoneResult
 		TransferredAt: outputs["transferredAt"],
 		UpdatedAt: outputs["updatedAt"],
 		Version: outputs["version"],
+		Id: outputs["id"],
 	}, nil
 }
 
@@ -97,4 +98,6 @@ type GetDnsZoneResult struct {
 	UpdatedAt interface{}
 	// The version of the zone.
 	Version interface{}
+	// id is the provider-assigned unique ID for this managed resource.
+	Id interface{}
 }

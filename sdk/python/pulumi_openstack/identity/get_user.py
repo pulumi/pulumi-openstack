@@ -9,7 +9,7 @@ class GetUserResult(object):
     """
     A collection of values returned by getUser.
     """
-    def __init__(__self__, default_project_id=None, domain_id=None, region=None):
+    def __init__(__self__, default_project_id=None, domain_id=None, region=None, id=None):
         if default_project_id and not isinstance(default_project_id, basestring):
             raise TypeError('Expected argument default_project_id to be a basestring')
         __self__.default_project_id = default_project_id
@@ -27,6 +27,12 @@ class GetUserResult(object):
         __self__.region = region
         """
         The region the user is located in.
+        """
+        if id and not isinstance(id, basestring):
+            raise TypeError('Expected argument id to be a basestring')
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
 
 def get_user(domain_id=None, enabled=None, idp_id=None, name=None, password_expires_at=None, protocol_id=None, region=None, unique_id=None):
@@ -48,4 +54,5 @@ def get_user(domain_id=None, enabled=None, idp_id=None, name=None, password_expi
     return GetUserResult(
         default_project_id=__ret__.get('defaultProjectId'),
         domain_id=__ret__.get('domainId'),
-        region=__ret__.get('region'))
+        region=__ret__.get('region'),
+        id=__ret__.get('id'))

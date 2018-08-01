@@ -181,7 +181,7 @@ export interface UserState {
      * [Ocata release notes](https://docs.openstack.org/releasenotes/keystone/ocata.html)
      * for more information on how to use mulit-factor rules.
      */
-    readonly multiFactorAuthRules?: pulumi.Input<{ rules: pulumi.Input<pulumi.Input<string>[]> }[]>;
+    readonly multiFactorAuthRules?: pulumi.Input<pulumi.Input<{ rules: pulumi.Input<pulumi.Input<string>[]> }>[]>;
     /**
      * The name of the user.
      */
@@ -249,7 +249,7 @@ export interface UserArgs {
      * [Ocata release notes](https://docs.openstack.org/releasenotes/keystone/ocata.html)
      * for more information on how to use mulit-factor rules.
      */
-    readonly multiFactorAuthRules?: pulumi.Input<{ rules: pulumi.Input<pulumi.Input<string>[]> }[]>;
+    readonly multiFactorAuthRules?: pulumi.Input<pulumi.Input<{ rules: pulumi.Input<pulumi.Input<string>[]> }>[]>;
     /**
      * The name of the user.
      */
