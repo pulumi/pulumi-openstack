@@ -9,7 +9,7 @@ class GetFlavorResult(object):
     """
     A collection of values returned by getFlavor.
     """
-    def __init__(__self__, is_public=None, region=None):
+    def __init__(__self__, is_public=None, region=None, id=None):
         if is_public and not isinstance(is_public, bool):
             raise TypeError('Expected argument is_public to be a bool')
         __self__.is_public = is_public
@@ -19,6 +19,12 @@ class GetFlavorResult(object):
         if region and not isinstance(region, basestring):
             raise TypeError('Expected argument region to be a basestring')
         __self__.region = region
+        if id and not isinstance(id, basestring):
+            raise TypeError('Expected argument id to be a basestring')
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
 
 def get_flavor(disk=None, min_disk=None, min_ram=None, name=None, ram=None, region=None, rx_tx_factor=None, swap=None, vcpus=None):
     """
@@ -39,4 +45,5 @@ def get_flavor(disk=None, min_disk=None, min_ram=None, name=None, ram=None, regi
 
     return GetFlavorResult(
         is_public=__ret__.get('isPublic'),
-        region=__ret__.get('region'))
+        region=__ret__.get('region'),
+        id=__ret__.get('id'))

@@ -170,7 +170,7 @@ export interface SubnetState {
      * dynamic allocation to ports. The allocation_pool object structure is
      * documented below. Changing this creates a new subnet.
      */
-    readonly allocationPools?: pulumi.Input<{ end: pulumi.Input<string>, start: pulumi.Input<string> }[]>;
+    readonly allocationPools?: pulumi.Input<pulumi.Input<{ end: pulumi.Input<string>, start: pulumi.Input<string> }>[]>;
     /**
      * CIDR representing IP range for this subnet, based on IP
      * version. Changing this creates a new subnet.
@@ -201,7 +201,7 @@ export interface SubnetState {
      * object structure is documented below. Changing this updates the host routes
      * for the existing subnet.
      */
-    readonly hostRoutes?: pulumi.Input<{ destinationCidr: pulumi.Input<string>, nextHop: pulumi.Input<string> }[]>;
+    readonly hostRoutes?: pulumi.Input<pulumi.Input<{ destinationCidr: pulumi.Input<string>, nextHop: pulumi.Input<string> }>[]>;
     /**
      * IP version, either 4 (default) or 6. Changing this creates a
      * new subnet.
@@ -263,7 +263,7 @@ export interface SubnetArgs {
      * dynamic allocation to ports. The allocation_pool object structure is
      * documented below. Changing this creates a new subnet.
      */
-    readonly allocationPools?: pulumi.Input<{ end: pulumi.Input<string>, start: pulumi.Input<string> }[]>;
+    readonly allocationPools?: pulumi.Input<pulumi.Input<{ end: pulumi.Input<string>, start: pulumi.Input<string> }>[]>;
     /**
      * CIDR representing IP range for this subnet, based on IP
      * version. Changing this creates a new subnet.
@@ -294,7 +294,7 @@ export interface SubnetArgs {
      * object structure is documented below. Changing this updates the host routes
      * for the existing subnet.
      */
-    readonly hostRoutes?: pulumi.Input<{ destinationCidr: pulumi.Input<string>, nextHop: pulumi.Input<string> }[]>;
+    readonly hostRoutes?: pulumi.Input<pulumi.Input<{ destinationCidr: pulumi.Input<string>, nextHop: pulumi.Input<string> }>[]>;
     /**
      * IP version, either 4 (default) or 6. Changing this creates a
      * new subnet.

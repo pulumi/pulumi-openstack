@@ -25,29 +25,29 @@ export interface GetNetworkArgs {
     /**
      * The CIDR of a subnet within the network.
      */
-    readonly matchingSubnetCidr?: pulumi.Input<string>;
+    readonly matchingSubnetCidr?: string;
     /**
      * The name of the network.
      */
-    readonly name?: pulumi.Input<string>;
+    readonly name?: string;
     /**
      * The ID of the network.
      */
-    readonly networkId?: pulumi.Input<string>;
+    readonly networkId?: string;
     /**
      * The region in which to obtain the V2 Neutron client.
      * A Neutron client is needed to retrieve networks ids. If omitted, the
      * `region` argument of the provider is used.
      */
-    readonly region?: pulumi.Input<string>;
+    readonly region?: string;
     /**
      * The status of the network.
      */
-    readonly status?: pulumi.Input<string>;
+    readonly status?: string;
     /**
      * The owner of the network.
      */
-    readonly tenantId?: pulumi.Input<string>;
+    readonly tenantId?: string;
 }
 
 /**
@@ -71,4 +71,8 @@ export interface GetNetworkResult {
      * by any tenant or not.
      */
     readonly shared: string;
+    /**
+     * id is the provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
 }

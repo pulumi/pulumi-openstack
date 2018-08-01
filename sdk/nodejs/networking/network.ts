@@ -145,7 +145,7 @@ export interface NetworkState {
     /**
      * An array of one or more provider segment objects.
      */
-    readonly segments?: pulumi.Input<{ networkType?: pulumi.Input<string>, physicalNetwork?: pulumi.Input<string>, segmentationId?: pulumi.Input<number> }[]>;
+    readonly segments?: pulumi.Input<pulumi.Input<{ networkType?: pulumi.Input<string>, physicalNetwork?: pulumi.Input<string>, segmentationId?: pulumi.Input<number> }>[]>;
     /**
      * Specifies whether the network resource can be accessed
      * by any tenant or not. Changing this updates the sharing capabalities of the
@@ -201,7 +201,7 @@ export interface NetworkArgs {
     /**
      * An array of one or more provider segment objects.
      */
-    readonly segments?: pulumi.Input<{ networkType?: pulumi.Input<string>, physicalNetwork?: pulumi.Input<string>, segmentationId?: pulumi.Input<number> }[]>;
+    readonly segments?: pulumi.Input<pulumi.Input<{ networkType?: pulumi.Input<string>, physicalNetwork?: pulumi.Input<string>, segmentationId?: pulumi.Input<number> }>[]>;
     /**
      * Specifies whether the network resource can be accessed
      * by any tenant or not. Changing this updates the sharing capabalities of the

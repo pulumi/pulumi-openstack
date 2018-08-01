@@ -151,7 +151,7 @@ export interface IpsecPolicyState {
      * - `value` - (Optional) The value for the lifetime of the security association. Must be a positive integer.
      * Default is 3600.
      */
-    readonly lifetimes?: pulumi.Input<{ units?: pulumi.Input<string>, value?: pulumi.Input<number> }[]>;
+    readonly lifetimes?: pulumi.Input<pulumi.Input<{ units?: pulumi.Input<string>, value?: pulumi.Input<number> }>[]>;
     /**
      * The name of the policy. Changing this updates the name of
      * the existing policy.
@@ -216,7 +216,7 @@ export interface IpsecPolicyArgs {
      * - `value` - (Optional) The value for the lifetime of the security association. Must be a positive integer.
      * Default is 3600.
      */
-    readonly lifetimes?: pulumi.Input<{ units?: pulumi.Input<string>, value?: pulumi.Input<number> }[]>;
+    readonly lifetimes?: pulumi.Input<pulumi.Input<{ units?: pulumi.Input<string>, value?: pulumi.Input<number> }>[]>;
     /**
      * The name of the policy. Changing this updates the name of
      * the existing policy.

@@ -9,7 +9,7 @@ class GetSecGroupResult(object):
     """
     A collection of values returned by getSecGroup.
     """
-    def __init__(__self__, region=None, tenant_id=None):
+    def __init__(__self__, region=None, tenant_id=None, id=None):
         if region and not isinstance(region, basestring):
             raise TypeError('Expected argument region to be a basestring')
         __self__.region = region
@@ -19,6 +19,12 @@ class GetSecGroupResult(object):
         if tenant_id and not isinstance(tenant_id, basestring):
             raise TypeError('Expected argument tenant_id to be a basestring')
         __self__.tenant_id = tenant_id
+        if id and not isinstance(id, basestring):
+            raise TypeError('Expected argument id to be a basestring')
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
 
 def get_sec_group(name=None, region=None, secgroup_id=None, tenant_id=None):
     """
@@ -34,4 +40,5 @@ def get_sec_group(name=None, region=None, secgroup_id=None, tenant_id=None):
 
     return GetSecGroupResult(
         region=__ret__.get('region'),
-        tenant_id=__ret__.get('tenantId'))
+        tenant_id=__ret__.get('tenantId'),
+        id=__ret__.get('id'))

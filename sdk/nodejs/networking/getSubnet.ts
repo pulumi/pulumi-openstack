@@ -32,59 +32,59 @@ export interface GetSubnetArgs {
     /**
      * The CIDR of the subnet.
      */
-    readonly cidr?: pulumi.Input<string>;
+    readonly cidr?: string;
     /**
      * If the subnet has DHCP disabled.
      */
-    readonly dhcpDisabled?: pulumi.Input<boolean>;
+    readonly dhcpDisabled?: boolean;
     /**
      * If the subnet has DHCP enabled.
      */
-    readonly dhcpEnabled?: pulumi.Input<boolean>;
+    readonly dhcpEnabled?: boolean;
     /**
      * The IP of the subnet's gateway.
      */
-    readonly gatewayIp?: pulumi.Input<string>;
+    readonly gatewayIp?: string;
     /**
      * The IP version of the subnet (either 4 or 6).
      */
-    readonly ipVersion?: pulumi.Input<number>;
+    readonly ipVersion?: number;
     /**
      * The IPv6 address mode. Valid values are
      * `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.
      */
-    readonly ipv6AddressMode?: pulumi.Input<string>;
+    readonly ipv6AddressMode?: string;
     /**
      * The IPv6 Router Advertisement mode. Valid values
      * are `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.
      */
-    readonly ipv6RaMode?: pulumi.Input<string>;
+    readonly ipv6RaMode?: string;
     /**
      * The name of the subnet.
      */
-    readonly name?: pulumi.Input<string>;
+    readonly name?: string;
     /**
      * The ID of the network the subnet belongs to.
      */
-    readonly networkId?: pulumi.Input<string>;
+    readonly networkId?: string;
     /**
      * The region in which to obtain the V2 Neutron client.
      * A Neutron client is needed to retrieve subnet ids. If omitted, the
      * `region` argument of the provider is used.
      */
-    readonly region?: pulumi.Input<string>;
+    readonly region?: string;
     /**
      * The ID of the subnet.
      */
-    readonly subnetId?: pulumi.Input<string>;
+    readonly subnetId?: string;
     /**
      * The ID of the subnetpool associated with the subnet.
      */
-    readonly subnetpoolId?: pulumi.Input<string>;
+    readonly subnetpoolId?: string;
     /**
      * The owner of the subnet.
      */
-    readonly tenantId?: pulumi.Input<string>;
+    readonly tenantId?: string;
 }
 
 /**
@@ -121,4 +121,8 @@ export interface GetSubnetResult {
     readonly subnetId: string;
     readonly subnetpoolId: string;
     readonly tenantId: string;
+    /**
+     * id is the provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
 }

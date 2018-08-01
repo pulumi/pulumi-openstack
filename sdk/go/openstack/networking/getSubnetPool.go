@@ -45,6 +45,7 @@ func LookupSubnetPool(ctx *pulumi.Context, args *GetSubnetPoolArgs) (*GetSubnetP
 		RevisionNumber: outputs["revisionNumber"],
 		Shared: outputs["shared"],
 		UpdatedAt: outputs["updatedAt"],
+		Id: outputs["id"],
 	}, nil
 }
 
@@ -115,4 +116,6 @@ type GetSubnetPoolResult struct {
 	Shared interface{}
 	// The time at which subnetpool was created.
 	UpdatedAt interface{}
+	// id is the provider-assigned unique ID for this managed resource.
+	Id interface{}
 }

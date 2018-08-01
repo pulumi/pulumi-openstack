@@ -159,7 +159,7 @@ export interface PoolState {
      * whether connections in the same session will be processed by the same Pool
      * member or not. Changing this creates a new pool.
      */
-    readonly persistences?: pulumi.Input<{ cookieName?: pulumi.Input<string>, type: pulumi.Input<string> }[]>;
+    readonly persistences?: pulumi.Input<pulumi.Input<{ cookieName?: pulumi.Input<string>, type: pulumi.Input<string> }>[]>;
     /**
      * See Argument Reference above.
      */
@@ -219,7 +219,7 @@ export interface PoolArgs {
      * whether connections in the same session will be processed by the same Pool
      * member or not. Changing this creates a new pool.
      */
-    readonly persistences?: pulumi.Input<{ cookieName?: pulumi.Input<string>, type: pulumi.Input<string> }[]>;
+    readonly persistences?: pulumi.Input<pulumi.Input<{ cookieName?: pulumi.Input<string>, type: pulumi.Input<string> }>[]>;
     /**
      * See Argument Reference above.
      */

@@ -9,7 +9,7 @@ class GetNetworkResult(object):
     """
     A collection of values returned by getNetwork.
     """
-    def __init__(__self__, admin_state_up=None, availability_zone_hints=None, region=None, shared=None):
+    def __init__(__self__, admin_state_up=None, availability_zone_hints=None, region=None, shared=None, id=None):
         if admin_state_up and not isinstance(admin_state_up, basestring):
             raise TypeError('Expected argument admin_state_up to be a basestring')
         __self__.admin_state_up = admin_state_up
@@ -35,6 +35,12 @@ class GetNetworkResult(object):
         (Optional)  Specifies whether the network resource can be accessed
         by any tenant or not.
         """
+        if id and not isinstance(id, basestring):
+            raise TypeError('Expected argument id to be a basestring')
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
 
 def get_network(matching_subnet_cidr=None, name=None, network_id=None, region=None, status=None, tenant_id=None):
     """
@@ -54,4 +60,5 @@ def get_network(matching_subnet_cidr=None, name=None, network_id=None, region=No
         admin_state_up=__ret__.get('adminStateUp'),
         availability_zone_hints=__ret__.get('availabilityZoneHints'),
         region=__ret__.get('region'),
-        shared=__ret__.get('shared'))
+        shared=__ret__.get('shared'),
+        id=__ret__.get('id'))

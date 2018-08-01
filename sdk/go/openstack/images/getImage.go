@@ -41,6 +41,7 @@ func LookupImage(ctx *pulumi.Context, args *GetImageArgs) (*GetImageResult, erro
 		Schema: outputs["schema"],
 		SizeBytes: outputs["sizeBytes"],
 		UpdatedAt: outputs["updatedAt"],
+		Id: outputs["id"],
 	}, nil
 }
 
@@ -105,4 +106,6 @@ type GetImageResult struct {
 	// The size of the image (in bytes).
 	SizeBytes interface{}
 	UpdatedAt interface{}
+	// id is the provider-assigned unique ID for this managed resource.
+	Id interface{}
 }

@@ -32,55 +32,55 @@ export interface GetSubnetPoolArgs {
      * The Neutron address scope that subnetpools
      * is assigned to.
      */
-    readonly addressScopeId?: pulumi.Input<string>;
+    readonly addressScopeId?: string;
     /**
      * The size of the subnetpool default prefix
      * length.
      */
-    readonly defaultPrefixlen?: pulumi.Input<number>;
+    readonly defaultPrefixlen?: number;
     /**
      * The per-project quota on the prefix space that
      * can be allocated from the subnetpool for project subnets.
      */
-    readonly defaultQuota?: pulumi.Input<number>;
+    readonly defaultQuota?: number;
     /**
      * The human-readable description for the subnetpool.
      */
-    readonly description?: pulumi.Input<string>;
+    readonly description?: string;
     /**
      * The IP protocol version.
      */
-    readonly ipVersion?: pulumi.Input<number>;
+    readonly ipVersion?: number;
     /**
      * Whether the subnetpool is default subnetpool or not.
      */
-    readonly isDefault?: pulumi.Input<boolean>;
+    readonly isDefault?: boolean;
     /**
      * The size of the subnetpool max prefix length.
      */
-    readonly maxPrefixlen?: pulumi.Input<number>;
+    readonly maxPrefixlen?: number;
     /**
      * The size of the subnetpool min prefix length.
      */
-    readonly minPrefixlen?: pulumi.Input<number>;
+    readonly minPrefixlen?: number;
     /**
      * The name of the subnetpool.
      */
-    readonly name?: pulumi.Input<string>;
+    readonly name?: string;
     /**
      * The owner of the subnetpool.
      */
-    readonly projectId?: pulumi.Input<string>;
+    readonly projectId?: string;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to retrieve a subnetpool id. If omitted, the
      * `region` argument of the provider is used.
      */
-    readonly region?: pulumi.Input<string>;
+    readonly region?: string;
     /**
      * Whether this subnetpool is shared across all projects.
      */
-    readonly shared?: pulumi.Input<boolean>;
+    readonly shared?: boolean;
 }
 
 /**
@@ -149,4 +149,8 @@ export interface GetSubnetPoolResult {
      * The time at which subnetpool was created.
      */
     readonly updatedAt: string;
+    /**
+     * id is the provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
 }

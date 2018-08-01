@@ -20,12 +20,12 @@ export interface GetKeypairArgs {
     /**
      * The unique name of the keypair.
      */
-    readonly name: pulumi.Input<string>;
+    readonly name: string;
     /**
      * The region in which to obtain the V2 Compute client.
      * If omitted, the `region` argument of the provider is used.
      */
-    readonly region?: pulumi.Input<string>;
+    readonly region?: string;
 }
 
 /**
@@ -40,4 +40,8 @@ export interface GetKeypairResult {
      * See Argument Reference above.
      */
     readonly region: string;
+    /**
+     * id is the provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
 }

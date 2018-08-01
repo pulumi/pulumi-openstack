@@ -211,7 +211,7 @@ export interface SiteConnectionState {
      * A valid value is clear, hold, restart, disabled, or restart-by-peer.
      * Default value is hold.
      */
-    readonly dpds?: pulumi.Input<{ action?: pulumi.Input<string>, interval?: pulumi.Input<number>, timeout?: pulumi.Input<number> }[]>;
+    readonly dpds?: pulumi.Input<pulumi.Input<{ action?: pulumi.Input<string>, interval?: pulumi.Input<number>, timeout?: pulumi.Input<number> }>[]>;
     /**
      * The ID of the IKE policy. Changing this creates a new connection.
      */
@@ -313,7 +313,7 @@ export interface SiteConnectionArgs {
      * A valid value is clear, hold, restart, disabled, or restart-by-peer.
      * Default value is hold.
      */
-    readonly dpds?: pulumi.Input<{ action?: pulumi.Input<string>, interval?: pulumi.Input<number>, timeout?: pulumi.Input<number> }[]>;
+    readonly dpds?: pulumi.Input<pulumi.Input<{ action?: pulumi.Input<string>, interval?: pulumi.Input<number>, timeout?: pulumi.Input<number> }>[]>;
     /**
      * The ID of the IKE policy. Changing this creates a new connection.
      */

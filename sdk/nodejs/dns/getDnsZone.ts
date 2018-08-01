@@ -32,45 +32,45 @@ export function getDnsZone(args?: GetDnsZoneArgs): Promise<GetDnsZoneResult> {
  * A collection of arguments for invoking getDnsZone.
  */
 export interface GetDnsZoneArgs {
-    readonly attributes?: pulumi.Input<{[key: string]: any}>;
-    readonly createdAt?: pulumi.Input<string>;
+    readonly attributes?: {[key: string]: any};
+    readonly createdAt?: string;
     /**
      * A description of the zone.
      */
-    readonly description?: pulumi.Input<string>;
+    readonly description?: string;
     /**
      * The email contact for the zone record.
      */
-    readonly email?: pulumi.Input<string>;
-    readonly masters?: pulumi.Input<pulumi.Input<string>[]>;
+    readonly email?: string;
+    readonly masters?: string[];
     /**
      * The name of the zone.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly poolId?: pulumi.Input<string>;
-    readonly projectId?: pulumi.Input<string>;
+    readonly name?: string;
+    readonly poolId?: string;
+    readonly projectId?: string;
     /**
      * The region in which to obtain the V2 DNS client.
      * A DNS client is needed to retrieve zone ids. If omitted, the
      * `region` argument of the provider is used.
      */
-    readonly region?: pulumi.Input<string>;
-    readonly serial?: pulumi.Input<number>;
+    readonly region?: string;
+    readonly serial?: number;
     /**
      * The zone's status.
      */
-    readonly status?: pulumi.Input<string>;
-    readonly transferredAt?: pulumi.Input<string>;
+    readonly status?: string;
+    readonly transferredAt?: string;
     /**
      * The time to live (TTL) of the zone.
      */
-    readonly ttl?: pulumi.Input<number>;
+    readonly ttl?: number;
     /**
      * The type of the zone. Can either be `PRIMARY` or `SECONDARY`.
      */
-    readonly type?: pulumi.Input<string>;
-    readonly updatedAt?: pulumi.Input<string>;
-    readonly version?: pulumi.Input<number>;
+    readonly type?: string;
+    readonly updatedAt?: string;
+    readonly version?: number;
 }
 
 /**
@@ -117,4 +117,8 @@ export interface GetDnsZoneResult {
      * The version of the zone.
      */
     readonly version: number;
+    /**
+     * id is the provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
 }

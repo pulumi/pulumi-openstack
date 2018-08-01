@@ -27,6 +27,7 @@ func LookupNetwork(ctx *pulumi.Context, args *GetNetworkArgs) (*GetNetworkResult
 		AvailabilityZoneHints: outputs["availabilityZoneHints"],
 		Region: outputs["region"],
 		Shared: outputs["shared"],
+		Id: outputs["id"],
 	}, nil
 }
 
@@ -59,4 +60,6 @@ type GetNetworkResult struct {
 	// (Optional)  Specifies whether the network resource can be accessed
 	// by any tenant or not.
 	Shared interface{}
+	// id is the provider-assigned unique ID for this managed resource.
+	Id interface{}
 }

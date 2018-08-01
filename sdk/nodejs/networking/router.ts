@@ -169,7 +169,7 @@ export interface RouterState {
      * has to be set in order to set this property. Changing this updates the
      * external fixed IPs of the router.
      */
-    readonly externalFixedIps?: pulumi.Input<{ ipAddress?: pulumi.Input<string>, subnetId?: pulumi.Input<string> }[]>;
+    readonly externalFixedIps?: pulumi.Input<pulumi.Input<{ ipAddress?: pulumi.Input<string>, subnetId?: pulumi.Input<string> }>[]>;
     /**
      * The
      * network UUID of an external gateway for the router. A router with an
@@ -247,7 +247,7 @@ export interface RouterArgs {
      * has to be set in order to set this property. Changing this updates the
      * external fixed IPs of the router.
      */
-    readonly externalFixedIps?: pulumi.Input<{ ipAddress?: pulumi.Input<string>, subnetId?: pulumi.Input<string> }[]>;
+    readonly externalFixedIps?: pulumi.Input<pulumi.Input<{ ipAddress?: pulumi.Input<string>, subnetId?: pulumi.Input<string> }>[]>;
     /**
      * The
      * network UUID of an external gateway for the router. A router with an

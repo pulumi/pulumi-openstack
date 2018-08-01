@@ -9,7 +9,7 @@ class GetKeypairResult(object):
     """
     A collection of values returned by getKeypair.
     """
-    def __init__(__self__, public_key=None, region=None):
+    def __init__(__self__, public_key=None, region=None, id=None):
         if public_key and not isinstance(public_key, basestring):
             raise TypeError('Expected argument public_key to be a basestring')
         __self__.public_key = public_key
@@ -21,6 +21,12 @@ class GetKeypairResult(object):
         __self__.region = region
         """
         See Argument Reference above.
+        """
+        if id and not isinstance(id, basestring):
+            raise TypeError('Expected argument id to be a basestring')
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
 
 def get_keypair(name=None, region=None):
@@ -35,4 +41,5 @@ def get_keypair(name=None, region=None):
 
     return GetKeypairResult(
         public_key=__ret__.get('publicKey'),
-        region=__ret__.get('region'))
+        region=__ret__.get('region'),
+        id=__ret__.get('id'))

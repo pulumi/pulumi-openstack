@@ -21,16 +21,16 @@ export interface GetRoleArgs {
     /**
      * The domain the role belongs to.
      */
-    readonly domainId?: pulumi.Input<string>;
+    readonly domainId?: string;
     /**
      * The name of the role.
      */
-    readonly name: pulumi.Input<string>;
+    readonly name: string;
     /**
      * The region in which to obtain the V3 Keystone client.
      * If omitted, the `region` argument of the provider is used.
      */
-    readonly region?: pulumi.Input<string>;
+    readonly region?: string;
 }
 
 /**
@@ -45,4 +45,8 @@ export interface GetRoleResult {
      * See Argument Reference above.
      */
     readonly region: string;
+    /**
+     * id is the provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
 }

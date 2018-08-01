@@ -28,40 +28,40 @@ export interface GetFlavorArgs {
     /**
      * The exact amount of disk (in gigabytes).
      */
-    readonly disk?: pulumi.Input<number>;
+    readonly disk?: number;
     /**
      * The minimum amount of disk (in gigabytes).
      */
-    readonly minDisk?: pulumi.Input<number>;
+    readonly minDisk?: number;
     /**
      * The minimum amount of RAM (in megabytes).
      */
-    readonly minRam?: pulumi.Input<number>;
+    readonly minRam?: number;
     /**
      * The name of the flavor.
      */
-    readonly name?: pulumi.Input<string>;
+    readonly name?: string;
     /**
      * The exact amount of RAM (in megabytes).
      */
-    readonly ram?: pulumi.Input<number>;
+    readonly ram?: number;
     /**
      * The region in which to obtain the V2 Compute client.
      * If omitted, the `region` argument of the provider is used.
      */
-    readonly region?: pulumi.Input<string>;
+    readonly region?: string;
     /**
      * The `rx_tx_factor` of the flavor.
      */
-    readonly rxTxFactor?: pulumi.Input<number>;
+    readonly rxTxFactor?: number;
     /**
      * The amount of swap (in gigabytes).
      */
-    readonly swap?: pulumi.Input<number>;
+    readonly swap?: number;
     /**
      * The amount of VCPUs.
      */
-    readonly vcpus?: pulumi.Input<number>;
+    readonly vcpus?: number;
 }
 
 /**
@@ -73,4 +73,8 @@ export interface GetFlavorResult {
      */
     readonly isPublic: boolean;
     readonly region: string;
+    /**
+     * id is the provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
 }

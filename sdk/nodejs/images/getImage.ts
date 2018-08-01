@@ -32,57 +32,57 @@ export interface GetImageArgs {
      * The status of the image. Must be one of
      * "accepted", "pending", "rejected", or "all".
      */
-    readonly memberStatus?: pulumi.Input<string>;
+    readonly memberStatus?: string;
     /**
      * If more than one result is returned, use the most
      * recent image.
      */
-    readonly mostRecent?: pulumi.Input<boolean>;
+    readonly mostRecent?: boolean;
     /**
      * The name of the image.
      */
-    readonly name?: pulumi.Input<string>;
+    readonly name?: string;
     /**
      * The owner (UUID) of the image.
      */
-    readonly owner?: pulumi.Input<string>;
+    readonly owner?: string;
     /**
      * a map of key/value pairs to match an image with.
      * All specified properties must be matched.
      */
-    readonly properties?: pulumi.Input<{[key: string]: any}>;
+    readonly properties?: {[key: string]: any};
     /**
      * The region in which to obtain the V2 Glance client.
      * A Glance client is needed to create an Image that can be used with
      * a compute instance. If omitted, the `region` argument of the provider
      * is used.
      */
-    readonly region?: pulumi.Input<string>;
+    readonly region?: string;
     /**
      * The maximum size (in bytes) of the image to return.
      */
-    readonly sizeMax?: pulumi.Input<number>;
+    readonly sizeMax?: number;
     /**
      * The minimum size (in bytes) of the image to return.
      */
-    readonly sizeMin?: pulumi.Input<number>;
+    readonly sizeMin?: number;
     /**
      * Order the results in either `asc` or `desc`.
      */
-    readonly sortDirection?: pulumi.Input<string>;
+    readonly sortDirection?: string;
     /**
      * Sort images based on a certain key. Defaults to `name`.
      */
-    readonly sortKey?: pulumi.Input<string>;
+    readonly sortKey?: string;
     /**
      * Search for images with a specific tag.
      */
-    readonly tag?: pulumi.Input<string>;
+    readonly tag?: string;
     /**
      * The visibility of the image. Must be one of
      * "public", "private", "community", or "shared". Defaults to "private".
      */
-    readonly visibility?: pulumi.Input<string>;
+    readonly visibility?: string;
 }
 
 /**
@@ -129,4 +129,8 @@ export interface GetImageResult {
      */
     readonly sizeBytes: number;
     readonly updatedAt: string;
+    /**
+     * id is the provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
 }

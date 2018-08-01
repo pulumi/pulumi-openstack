@@ -23,21 +23,21 @@ export interface GetSecGroupArgs {
     /**
      * The name of the security group.
      */
-    readonly name?: pulumi.Input<string>;
+    readonly name?: string;
     /**
      * The region in which to obtain the V2 Neutron client.
      * A Neutron client is needed to retrieve security groups ids. If omitted, the
      * `region` argument of the provider is used.
      */
-    readonly region?: pulumi.Input<string>;
+    readonly region?: string;
     /**
      * The ID of the security group.
      */
-    readonly secgroupId?: pulumi.Input<string>;
+    readonly secgroupId?: string;
     /**
      * The owner of the security group.
      */
-    readonly tenantId?: pulumi.Input<string>;
+    readonly tenantId?: string;
 }
 
 /**
@@ -49,4 +49,8 @@ export interface GetSecGroupResult {
      */
     readonly region: string;
     readonly tenantId: string;
+    /**
+     * id is the provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
 }

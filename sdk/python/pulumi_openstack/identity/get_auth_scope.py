@@ -9,7 +9,7 @@ class GetAuthScopeResult(object):
     """
     A collection of values returned by getAuthScope.
     """
-    def __init__(__self__, project_domain_id=None, project_domain_name=None, project_id=None, project_name=None, region=None, roles=None, user_domain_id=None, user_domain_name=None, user_id=None, user_name=None):
+    def __init__(__self__, project_domain_id=None, project_domain_name=None, project_id=None, project_name=None, region=None, roles=None, user_domain_id=None, user_domain_name=None, user_id=None, user_name=None, id=None):
         if project_domain_id and not isinstance(project_domain_id, basestring):
             raise TypeError('Expected argument project_domain_id to be a basestring')
         __self__.project_domain_id = project_domain_id
@@ -67,6 +67,12 @@ class GetAuthScopeResult(object):
         """
         The username of the scope.
         """
+        if id and not isinstance(id, basestring):
+            raise TypeError('Expected argument id to be a basestring')
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
 
 def get_auth_scope(name=None, region=None):
     """
@@ -90,4 +96,5 @@ def get_auth_scope(name=None, region=None):
         user_domain_id=__ret__.get('userDomainId'),
         user_domain_name=__ret__.get('userDomainName'),
         user_id=__ret__.get('userId'),
-        user_name=__ret__.get('userName'))
+        user_name=__ret__.get('userName'),
+        id=__ret__.get('id'))
