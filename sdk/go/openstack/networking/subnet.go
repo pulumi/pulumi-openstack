@@ -110,7 +110,8 @@ func (r *Subnet) AllocationPools() *pulumi.ArrayOutput {
 }
 
 // CIDR representing IP range for this subnet, based on IP
-// version. Changing this creates a new subnet.
+// version. You can omit this option if you are creating a subnet from a
+// subnet pool.
 func (r *Subnet) Cidr() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["cidr"])
 }
@@ -212,7 +213,8 @@ type SubnetState struct {
 	// documented below. Changing this creates a new subnet.
 	AllocationPools interface{}
 	// CIDR representing IP range for this subnet, based on IP
-	// version. Changing this creates a new subnet.
+	// version. You can omit this option if you are creating a subnet from a
+	// subnet pool.
 	Cidr interface{}
 	// An array of DNS name server names used by hosts
 	// in this subnet. Changing this updates the DNS name servers for the existing
@@ -271,7 +273,8 @@ type SubnetArgs struct {
 	// documented below. Changing this creates a new subnet.
 	AllocationPools interface{}
 	// CIDR representing IP range for this subnet, based on IP
-	// version. Changing this creates a new subnet.
+	// version. You can omit this option if you are creating a subnet from a
+	// subnet pool.
 	Cidr interface{}
 	// An array of DNS name server names used by hosts
 	// in this subnet. Changing this updates the DNS name servers for the existing

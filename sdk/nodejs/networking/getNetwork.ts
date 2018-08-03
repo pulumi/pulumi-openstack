@@ -9,6 +9,7 @@ import * as pulumi from "@pulumi/pulumi";
 export function getNetwork(args?: GetNetworkArgs): Promise<GetNetworkResult> {
     args = args || {};
     return pulumi.runtime.invoke("openstack:networking/getNetwork:getNetwork", {
+        "external": args.external,
         "matchingSubnetCidr": args.matchingSubnetCidr,
         "name": args.name,
         "networkId": args.networkId,
@@ -22,6 +23,10 @@ export function getNetwork(args?: GetNetworkArgs): Promise<GetNetworkResult> {
  * A collection of arguments for invoking getNetwork.
  */
 export interface GetNetworkArgs {
+    /**
+     * The external routing facility of the network.
+     */
+    readonly external?: boolean;
     /**
      * The CIDR of a subnet within the network.
      */

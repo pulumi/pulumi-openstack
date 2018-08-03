@@ -23,9 +23,12 @@ export class FloatingIp extends pulumi.CustomResource {
     }
 
     /**
-     * The actual floating IP address itself.
+     * The actual/specific floating IP to obtain. By default,
+     * non-admin users are not able to specify a floating IP, so you must either be
+     * an admin user or have had a custom policy or role applied to your OpenStack
+     * user or project.
      */
-    public /*out*/ readonly address: pulumi.Output<string>;
+    public readonly address: pulumi.Output<string>;
     /**
      * Fixed IP of the port to associate with this floating IP. Required if
      * the port has multiple fixed IPs.
@@ -91,6 +94,7 @@ export class FloatingIp extends pulumi.CustomResource {
             if (!args || args.pool === undefined) {
                 throw new Error("Missing required property 'pool'");
             }
+            inputs["address"] = args ? args.address : undefined;
             inputs["fixedIp"] = args ? args.fixedIp : undefined;
             inputs["pool"] = args ? args.pool : undefined;
             inputs["portId"] = args ? args.portId : undefined;
@@ -98,7 +102,6 @@ export class FloatingIp extends pulumi.CustomResource {
             inputs["subnetId"] = args ? args.subnetId : undefined;
             inputs["tenantId"] = args ? args.tenantId : undefined;
             inputs["valueSpecs"] = args ? args.valueSpecs : undefined;
-            inputs["address"] = undefined /*out*/;
         }
         super("openstack:networking/floatingIp:FloatingIp", name, inputs, opts);
     }
@@ -109,7 +112,10 @@ export class FloatingIp extends pulumi.CustomResource {
  */
 export interface FloatingIpState {
     /**
-     * The actual floating IP address itself.
+     * The actual/specific floating IP to obtain. By default,
+     * non-admin users are not able to specify a floating IP, so you must either be
+     * an admin user or have had a custom policy or role applied to your OpenStack
+     * user or project.
      */
     readonly address?: pulumi.Input<string>;
     /**
@@ -157,6 +163,13 @@ export interface FloatingIpState {
  * The set of arguments for constructing a FloatingIp resource.
  */
 export interface FloatingIpArgs {
+    /**
+     * The actual/specific floating IP to obtain. By default,
+     * non-admin users are not able to specify a floating IP, so you must either be
+     * an admin user or have had a custom policy or role applied to your OpenStack
+     * user or project.
+     */
+    readonly address?: pulumi.Input<string>;
     /**
      * Fixed IP of the port to associate with this floating IP. Required if
      * the port has multiple fixed IPs.

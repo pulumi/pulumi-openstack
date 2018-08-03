@@ -1,3 +1,4 @@
+README.rst
 pulumi_openstack/__init__.py
 pulumi_openstack.egg-info/PKG-INFO
 pulumi_openstack.egg-info/SOURCES.txt
@@ -14,6 +15,7 @@ pulumi_openstack/blockstorage/volume_v2.py
 pulumi_openstack/compute/__init__.py
 pulumi_openstack/compute/flavor.py
 pulumi_openstack/compute/floating_i_p.py
+pulumi_openstack/compute/floating_ip.py
 pulumi_openstack/compute/floating_ip_associate.py
 pulumi_openstack/compute/get_flavor.py
 pulumi_openstack/compute/get_keypair.py
@@ -35,10 +37,13 @@ pulumi_openstack/dns/record_set.py
 pulumi_openstack/dns/zone.py
 pulumi_openstack/firewall/__init__.py
 pulumi_openstack/firewall/firewall.py
+pulumi_openstack/firewall/get_policy.py
 pulumi_openstack/firewall/policy.py
 pulumi_openstack/firewall/rule.py
 pulumi_openstack/identity/__init__.py
 pulumi_openstack/identity/get_auth_scope.py
+pulumi_openstack/identity/get_endpoint.py
+pulumi_openstack/identity/get_group.py
 pulumi_openstack/identity/get_project.py
 pulumi_openstack/identity/get_role.py
 pulumi_openstack/identity/get_user.py
@@ -62,6 +67,7 @@ pulumi_openstack/loadbalancer/vip.py
 pulumi_openstack/networking/__init__.py
 pulumi_openstack/networking/floating_ip.py
 pulumi_openstack/networking/floating_ip_associate.py
+pulumi_openstack/networking/get_floating_ip.py
 pulumi_openstack/networking/get_network.py
 pulumi_openstack/networking/get_sec_group.py
 pulumi_openstack/networking/get_subnet.py

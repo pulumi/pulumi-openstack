@@ -27,7 +27,8 @@ export class Subnet extends pulumi.CustomResource {
     public readonly allocationPools: pulumi.Output<{ end: string, start: string }[]>;
     /**
      * CIDR representing IP range for this subnet, based on IP
-     * version. Changing this creates a new subnet.
+     * version. You can omit this option if you are creating a subnet from a
+     * subnet pool.
      */
     public readonly cidr: pulumi.Output<string>;
     /**
@@ -173,7 +174,8 @@ export interface SubnetState {
     readonly allocationPools?: pulumi.Input<pulumi.Input<{ end: pulumi.Input<string>, start: pulumi.Input<string> }>[]>;
     /**
      * CIDR representing IP range for this subnet, based on IP
-     * version. Changing this creates a new subnet.
+     * version. You can omit this option if you are creating a subnet from a
+     * subnet pool.
      */
     readonly cidr?: pulumi.Input<string>;
     /**
@@ -266,7 +268,8 @@ export interface SubnetArgs {
     readonly allocationPools?: pulumi.Input<pulumi.Input<{ end: pulumi.Input<string>, start: pulumi.Input<string> }>[]>;
     /**
      * CIDR representing IP range for this subnet, based on IP
-     * version. Changing this creates a new subnet.
+     * version. You can omit this option if you are creating a subnet from a
+     * subnet pool.
      */
     readonly cidr?: pulumi.Input<string>;
     /**

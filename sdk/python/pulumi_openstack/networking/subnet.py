@@ -35,7 +35,8 @@ class Subnet(pulumi.CustomResource):
         __self__.cidr = cidr
         """
         CIDR representing IP range for this subnet, based on IP
-        version. Changing this creates a new subnet.
+        version. You can omit this option if you are creating a subnet from a
+        subnet pool.
         """
         __props__['cidr'] = cidr
 

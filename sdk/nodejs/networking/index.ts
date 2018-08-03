@@ -4,6 +4,7 @@
 // Export members:
 export * from "./floatingIp";
 export * from "./floatingIpAssociate";
+export * from "./getFloatingIP";
 export * from "./getNetwork";
 export * from "./getSecGroup";
 export * from "./getSubnet";

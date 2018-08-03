@@ -6,3 +6,4 @@
 from firewall import *
 from policy import *
 from rule import *
+from get_policy import *

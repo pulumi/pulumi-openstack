@@ -28,6 +28,11 @@ func GetCloud(ctx *pulumi.Context) string {
 	return config.Get(ctx, "openstack:cloud")
 }
 
+// The name of the Domain ID to scope to if no other domain is specified. Defaults to `default` (Identity v3).
+func GetDefaultDomain(ctx *pulumi.Context) string {
+	return config.Get(ctx, "openstack:defaultDomain")
+}
+
 // The ID of the Domain to scope to (Identity v3).
 func GetDomainId(ctx *pulumi.Context) string {
 	return config.Get(ctx, "openstack:domainId")

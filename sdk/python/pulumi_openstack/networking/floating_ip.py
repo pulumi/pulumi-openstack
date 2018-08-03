@@ -12,7 +12,7 @@ class FloatingIp(pulumi.CustomResource):
     These are similar to Nova (compute) floating IP resources,
     but only compute floating IPs can be used with compute instances.
     """
-    def __init__(__self__, __name__, __opts__=None, fixed_ip=None, pool=None, port_id=None, region=None, subnet_id=None, tenant_id=None, value_specs=None):
+    def __init__(__self__, __name__, __opts__=None, address=None, fixed_ip=None, pool=None, port_id=None, region=None, subnet_id=None, tenant_id=None, value_specs=None):
         """Create a FloatingIp resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
@@ -22,6 +22,17 @@ class FloatingIp(pulumi.CustomResource):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
+
+        if address and not isinstance(address, basestring):
+            raise TypeError('Expected property address to be a basestring')
+        __self__.address = address
+        """
+        The actual/specific floating IP to obtain. By default,
+        non-admin users are not able to specify a floating IP, so you must either be
+        an admin user or have had a custom policy or role applied to your OpenStack
+        user or project.
+        """
+        __props__['address'] = address
 
         if fixed_ip and not isinstance(fixed_ip, basestring):
             raise TypeError('Expected property fixed_ip to be a basestring')
@@ -91,11 +102,6 @@ class FloatingIp(pulumi.CustomResource):
         Map of additional options.
         """
         __props__['valueSpecs'] = value_specs
-
-        __self__.address = pulumi.runtime.UNKNOWN
-        """
-        The actual floating IP address itself.
-        """
 
         super(FloatingIp, __self__).__init__(
             'openstack:networking/floatingIp:FloatingIp',
