@@ -223,9 +223,11 @@
     "openstack/dns/v2/zones",
     "openstack/identity/v2/tenants",
     "openstack/identity/v2/tokens",
+    "openstack/identity/v3/endpoints",
     "openstack/identity/v3/groups",
     "openstack/identity/v3/projects",
     "openstack/identity/v3/roles",
+    "openstack/identity/v3/services",
     "openstack/identity/v3/tokens",
     "openstack/identity/v3/users",
     "openstack/imageservice/v2/imagedata",
@@ -641,7 +643,7 @@
   branch = "pulumi-master"
   name = "github.com/terraform-providers/terraform-provider-openstack"
   packages = ["openstack"]
-  revision = "2c044c115d02e044491d80c1060259a7bc2b3340"
+  revision = "d6323690c8d3e4d6fbc8ff6cc047b2aa25abaafc"
   source = "github.com/Frassle/terraform-provider-openstack"
 
 [[projects]]
