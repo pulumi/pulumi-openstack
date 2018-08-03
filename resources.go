@@ -176,6 +176,8 @@ func Provider() tfbridge.ProviderInfo {
 			"openstack_identity_role_v3":       {Tok: openstackDataSource(identityMod, "getRole")},
 			"openstack_identity_user_v3":       {Tok: openstackDataSource(identityMod, "getUser")},
 			"openstack_identity_auth_scope_v3": {Tok: openstackDataSource(identityMod, "getAuthScope")},
+			"openstack_identity_endpoint_v3":   {Tok: openstackDataSource(identityMod, "getEndpoint")},
+			"openstack_identity_group_v3":      {Tok: openstackDataSource(identityMod, "getGroup")},
 
 			// Images
 			"openstack_images_image_v2": {Tok: openstackDataSource(imagesMod, "getImage")},
@@ -185,6 +187,10 @@ func Provider() tfbridge.ProviderInfo {
 			"openstack_networking_secgroup_v2":   {Tok: openstackDataSource(networkingMod, "getSecGroup")},
 			"openstack_networking_subnet_v2":     {Tok: openstackDataSource(networkingMod, "getSubnet")},
 			"openstack_networking_subnetpool_v2": {Tok: openstackDataSource(networkingMod, "getSubnetPool")},
+			"openstack_networking_floatingip_v2": {Tok: openstackDataSource(networkingMod, "getFloatingIP")},
+
+			// Firewall
+			"openstack_fw_policy_v1": {Tok: openstackDataSource(firewallMod, "getPolicy")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			DevDependencies: map[string]string{
