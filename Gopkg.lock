@@ -266,7 +266,7 @@
     "openstack/utils",
     "pagination"
   ]
-  revision = "ea2f0eefdc4eeac2e4db99e1a37ede0314efbff4"
+  revision = "9cdae6530f121aca6d530dc54a6c82a49108328c"
 
 [[projects]]
   branch = "master"
@@ -640,11 +640,10 @@
   version = "v1.2.2"
 
 [[projects]]
-  branch = "pulumi-master"
+  branch = "master"
   name = "github.com/terraform-providers/terraform-provider-openstack"
   packages = ["openstack"]
-  revision = "d6323690c8d3e4d6fbc8ff6cc047b2aa25abaafc"
-  source = "github.com/Frassle/terraform-provider-openstack"
+  revision = "7d8c4a9a86ef7a05bd697a38be00a2d76673c6a0"
 
 [[projects]]
   name = "github.com/uber/jaeger-client-go"
@@ -889,6 +888,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "32c480495ce3c1d6e34062905a984a80ca0de514a9a274290c5568516a81e574"
+  inputs-digest = "b1611c6c50b2406a96b220768be9d6852ceb827203ac53b043fb2a344d101089"
   solver-name = "gps-cdcl"
   solver-version = 1
