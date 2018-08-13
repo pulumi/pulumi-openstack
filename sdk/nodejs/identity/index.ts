@@ -3,6 +3,8 @@
 
 // Export members:
 export * from "./getAuthScope";
+export * from "./getEndpoint";
+export * from "./getGroup";
 export * from "./getProject";
 export * from "./getRole";
 export * from "./getUser";

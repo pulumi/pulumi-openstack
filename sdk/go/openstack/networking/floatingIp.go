@@ -24,6 +24,7 @@ func NewFloatingIp(ctx *pulumi.Context,
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["address"] = nil
 		inputs["fixedIp"] = nil
 		inputs["pool"] = nil
 		inputs["portId"] = nil
@@ -32,6 +33,7 @@ func NewFloatingIp(ctx *pulumi.Context,
 		inputs["tenantId"] = nil
 		inputs["valueSpecs"] = nil
 	} else {
+		inputs["address"] = args.Address
 		inputs["fixedIp"] = args.FixedIp
 		inputs["pool"] = args.Pool
 		inputs["portId"] = args.PortId
@@ -40,7 +42,6 @@ func NewFloatingIp(ctx *pulumi.Context,
 		inputs["tenantId"] = args.TenantId
 		inputs["valueSpecs"] = args.ValueSpecs
 	}
-	inputs["address"] = nil
 	s, err := ctx.RegisterResource("openstack:networking/floatingIp:FloatingIp", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
@@ -80,7 +81,10 @@ func (r *FloatingIp) ID() *pulumi.IDOutput {
 	return r.s.ID
 }
 
-// The actual floating IP address itself.
+// The actual/specific floating IP to obtain. By default,
+// non-admin users are not able to specify a floating IP, so you must either be
+// an admin user or have had a custom policy or role applied to your OpenStack
+// user or project.
 func (r *FloatingIp) Address() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["address"])
 }
@@ -133,7 +137,10 @@ func (r *FloatingIp) ValueSpecs() *pulumi.MapOutput {
 
 // Input properties used for looking up and filtering FloatingIp resources.
 type FloatingIpState struct {
-	// The actual floating IP address itself.
+	// The actual/specific floating IP to obtain. By default,
+	// non-admin users are not able to specify a floating IP, so you must either be
+	// an admin user or have had a custom policy or role applied to your OpenStack
+	// user or project.
 	Address interface{}
 	// Fixed IP of the port to associate with this floating IP. Required if
 	// the port has multiple fixed IPs.
@@ -164,6 +171,11 @@ type FloatingIpState struct {
 
 // The set of arguments for constructing a FloatingIp resource.
 type FloatingIpArgs struct {
+	// The actual/specific floating IP to obtain. By default,
+	// non-admin users are not able to specify a floating IP, so you must either be
+	// an admin user or have had a custom policy or role applied to your OpenStack
+	// user or project.
+	Address interface{}
 	// Fixed IP of the port to associate with this floating IP. Required if
 	// the port has multiple fixed IPs.
 	FixedIp interface{}

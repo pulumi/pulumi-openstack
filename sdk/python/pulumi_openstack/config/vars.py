@@ -27,6 +27,11 @@ cloud = __config__.get('cloud')
 An entry in a `clouds.yaml` file to use.
 """
 
+default_domain = __config__.get('defaultDomain')
+"""
+The name of the Domain ID to scope to if no other domain is specified. Defaults to `default` (Identity v3).
+"""
+
 domain_id = __config__.get('domainId')
 """
 The ID of the Domain to scope to (Identity v3).

@@ -15,6 +15,7 @@ from sec_group import *
 from subnet_route import *
 from subnet import *
 from subnet_pool import *
+from get_floating_ip import *
 from get_network import *
 from get_sec_group import *
 from get_subnet import *

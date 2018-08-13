@@ -3,5 +3,6 @@
 
 // Export members:
 export * from "./firewall";
+export * from "./getPolicy";
 export * from "./policy";
 export * from "./rule";

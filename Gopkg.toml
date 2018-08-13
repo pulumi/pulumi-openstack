@@ -6,7 +6,6 @@
   name = "github.com/pulumi/pulumi-terraform"
   branch = "master"
 
-[[override]]
+[[constraint]]
   name = "github.com/terraform-providers/terraform-provider-openstack"
-  source = "github.com/Frassle/terraform-provider-openstack"
-  branch = "pulumi-master"
+  branch = "master"

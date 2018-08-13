@@ -22,6 +22,10 @@ export let cert: string | undefined = __config.get("cert");
  */
 export let cloud: string | undefined = __config.get("cloud");
 /**
+ * The name of the Domain ID to scope to if no other domain is specified. Defaults to `default` (Identity v3).
+ */
+export let defaultDomain: string | undefined = __config.get("defaultDomain");
+/**
  * The ID of the Domain to scope to (Identity v3).
  */
 export let domainId: string | undefined = __config.get("domainId");
