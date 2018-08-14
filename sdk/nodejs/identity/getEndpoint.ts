@@ -8,14 +8,14 @@ import * as pulumi from "@pulumi/pulumi";
  * 
  * Note: This usually requires admin privileges.
  */
-export function getEndpoint(args?: GetEndpointArgs): Promise<GetEndpointResult> {
+export function getEndpoint(args?: GetEndpointArgs, opts?: pulumi.InvokeOptions): Promise<GetEndpointResult> {
     args = args || {};
     return pulumi.runtime.invoke("openstack:identity/getEndpoint:getEndpoint", {
         "interface": args.interface,
         "region": args.region,
         "serviceId": args.serviceId,
         "serviceName": args.serviceName,
-    });
+    }, opts);
 }
 
 /**

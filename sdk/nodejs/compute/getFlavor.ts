@@ -6,7 +6,7 @@ import * as pulumi from "@pulumi/pulumi";
 /**
  * Use this data source to get the ID of an available OpenStack flavor.
  */
-export function getFlavor(args?: GetFlavorArgs): Promise<GetFlavorResult> {
+export function getFlavor(args?: GetFlavorArgs, opts?: pulumi.InvokeOptions): Promise<GetFlavorResult> {
     args = args || {};
     return pulumi.runtime.invoke("openstack:compute/getFlavor:getFlavor", {
         "disk": args.disk,
@@ -18,7 +18,7 @@ export function getFlavor(args?: GetFlavorArgs): Promise<GetFlavorResult> {
         "rxTxFactor": args.rxTxFactor,
         "swap": args.swap,
         "vcpus": args.vcpus,
-    });
+    }, opts);
 }
 
 /**

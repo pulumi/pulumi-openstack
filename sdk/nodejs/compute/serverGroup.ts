@@ -53,8 +53,8 @@ export class ServerGroup extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: ServerGroupArgs, opts?: pulumi.ResourceOptions)
-    constructor(name: string, argsOrState?: ServerGroupArgs | ServerGroupState, opts?: pulumi.ResourceOptions) {
+    constructor(name: string, args?: ServerGroupArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: ServerGroupArgs | ServerGroupState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state: ServerGroupState = argsOrState as ServerGroupState | undefined;

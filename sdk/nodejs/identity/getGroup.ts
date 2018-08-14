@@ -8,12 +8,12 @@ import * as pulumi from "@pulumi/pulumi";
  * 
  * Note: This usually requires admin privileges.
  */
-export function getGroup(args: GetGroupArgs): Promise<GetGroupResult> {
+export function getGroup(args: GetGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupResult> {
     return pulumi.runtime.invoke("openstack:identity/getGroup:getGroup", {
         "domainId": args.domainId,
         "name": args.name,
         "region": args.region,
-    });
+    }, opts);
 }
 
 /**

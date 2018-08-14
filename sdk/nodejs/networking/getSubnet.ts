@@ -6,7 +6,7 @@ import * as pulumi from "@pulumi/pulumi";
 /**
  * Use this data source to get the ID of an available OpenStack subnet.
  */
-export function getSubnet(args?: GetSubnetArgs): Promise<GetSubnetResult> {
+export function getSubnet(args?: GetSubnetArgs, opts?: pulumi.InvokeOptions): Promise<GetSubnetResult> {
     args = args || {};
     return pulumi.runtime.invoke("openstack:networking/getSubnet:getSubnet", {
         "cidr": args.cidr,
@@ -22,7 +22,7 @@ export function getSubnet(args?: GetSubnetArgs): Promise<GetSubnetResult> {
         "subnetId": args.subnetId,
         "subnetpoolId": args.subnetpoolId,
         "tenantId": args.tenantId,
-    });
+    }, opts);
 }
 
 /**

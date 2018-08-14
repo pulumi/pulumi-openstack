@@ -87,6 +87,7 @@
         "objectstorage/container.ts",
         "objectstorage/containerObject.ts",
         "objectstorage/index.ts",
+        "provider.ts",
         "vpnaas/endpointGroup.ts",
         "vpnaas/ikePolicy.ts",
         "vpnaas/index.ts",

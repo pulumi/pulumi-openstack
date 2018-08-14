@@ -46,8 +46,8 @@ export class FloatingIpAssociate extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: FloatingIpAssociateArgs, opts?: pulumi.ResourceOptions)
-    constructor(name: string, argsOrState?: FloatingIpAssociateArgs | FloatingIpAssociateState, opts?: pulumi.ResourceOptions) {
+    constructor(name: string, args: FloatingIpAssociateArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: FloatingIpAssociateArgs | FloatingIpAssociateState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state: FloatingIpAssociateState = argsOrState as FloatingIpAssociateState | undefined;

@@ -81,8 +81,8 @@ export class Pool extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: PoolArgs, opts?: pulumi.ResourceOptions)
-    constructor(name: string, argsOrState?: PoolArgs | PoolState, opts?: pulumi.ResourceOptions) {
+    constructor(name: string, args: PoolArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: PoolArgs | PoolState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state: PoolState = argsOrState as PoolState | undefined;

@@ -6,11 +6,11 @@ import * as pulumi from "@pulumi/pulumi";
 /**
  * Use this data source to get the ID and public key of an OpenStack keypair.
  */
-export function getKeypair(args: GetKeypairArgs): Promise<GetKeypairResult> {
+export function getKeypair(args: GetKeypairArgs, opts?: pulumi.InvokeOptions): Promise<GetKeypairResult> {
     return pulumi.runtime.invoke("openstack:compute/getKeypair:getKeypair", {
         "name": args.name,
         "region": args.region,
-    });
+    }, opts);
 }
 
 /**

@@ -8,11 +8,11 @@ import * as pulumi from "@pulumi/pulumi";
  * auth scope in use. This can be used as self-discovery or introspection of
  * the username or project name currently in use.
  */
-export function getAuthScope(args: GetAuthScopeArgs): Promise<GetAuthScopeResult> {
+export function getAuthScope(args: GetAuthScopeArgs, opts?: pulumi.InvokeOptions): Promise<GetAuthScopeResult> {
     return pulumi.runtime.invoke("openstack:identity/getAuthScope:getAuthScope", {
         "name": args.name,
         "region": args.region,
-    });
+    }, opts);
 }
 
 /**

@@ -6,7 +6,7 @@ import * as pulumi from "@pulumi/pulumi";
 /**
  * Use this data source to get the ID of an available OpenStack image.
  */
-export function getImage(args?: GetImageArgs): Promise<GetImageResult> {
+export function getImage(args?: GetImageArgs, opts?: pulumi.InvokeOptions): Promise<GetImageResult> {
     args = args || {};
     return pulumi.runtime.invoke("openstack:images/getImage:getImage", {
         "memberStatus": args.memberStatus,
@@ -21,7 +21,7 @@ export function getImage(args?: GetImageArgs): Promise<GetImageResult> {
         "sortKey": args.sortKey,
         "tag": args.tag,
         "visibility": args.visibility,
-    });
+    }, opts);
 }
 
 /**
