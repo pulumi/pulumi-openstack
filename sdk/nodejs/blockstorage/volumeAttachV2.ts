@@ -109,8 +109,8 @@ export class VolumeAttachV2 extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: VolumeAttachV2Args, opts?: pulumi.ResourceOptions)
-    constructor(name: string, argsOrState?: VolumeAttachV2Args | VolumeAttachV2State, opts?: pulumi.ResourceOptions) {
+    constructor(name: string, args: VolumeAttachV2Args, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: VolumeAttachV2Args | VolumeAttachV2State, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state: VolumeAttachV2State = argsOrState as VolumeAttachV2State | undefined;

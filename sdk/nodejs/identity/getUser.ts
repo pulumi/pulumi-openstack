@@ -6,7 +6,7 @@ import * as pulumi from "@pulumi/pulumi";
 /**
  * Use this data source to get the ID of an OpenStack user.
  */
-export function getUser(args?: GetUserArgs): Promise<GetUserResult> {
+export function getUser(args?: GetUserArgs, opts?: pulumi.InvokeOptions): Promise<GetUserResult> {
     args = args || {};
     return pulumi.runtime.invoke("openstack:identity/getUser:getUser", {
         "domainId": args.domainId,
@@ -17,7 +17,7 @@ export function getUser(args?: GetUserArgs): Promise<GetUserResult> {
         "protocolId": args.protocolId,
         "region": args.region,
         "uniqueId": args.uniqueId,
-    });
+    }, opts);
 }
 
 /**

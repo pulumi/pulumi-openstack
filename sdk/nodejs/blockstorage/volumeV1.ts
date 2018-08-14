@@ -84,8 +84,8 @@ export class VolumeV1 extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: VolumeV1Args, opts?: pulumi.ResourceOptions)
-    constructor(name: string, argsOrState?: VolumeV1Args | VolumeV1State, opts?: pulumi.ResourceOptions) {
+    constructor(name: string, args: VolumeV1Args, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: VolumeV1Args | VolumeV1State, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state: VolumeV1State = argsOrState as VolumeV1State | undefined;

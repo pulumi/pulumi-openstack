@@ -6,7 +6,7 @@ import * as pulumi from "@pulumi/pulumi";
 /**
  * Use this data source to get the ID of an available OpenStack network.
  */
-export function getNetwork(args?: GetNetworkArgs): Promise<GetNetworkResult> {
+export function getNetwork(args?: GetNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkResult> {
     args = args || {};
     return pulumi.runtime.invoke("openstack:networking/getNetwork:getNetwork", {
         "external": args.external,
@@ -16,7 +16,7 @@ export function getNetwork(args?: GetNetworkArgs): Promise<GetNetworkResult> {
         "region": args.region,
         "status": args.status,
         "tenantId": args.tenantId,
-    });
+    }, opts);
 }
 
 /**

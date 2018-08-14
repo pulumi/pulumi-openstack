@@ -6,14 +6,14 @@ import * as pulumi from "@pulumi/pulumi";
 /**
  * Use this data source to get firewall policy information of an available OpenStack firewall policy.
  */
-export function getPolicy(args?: GetPolicyArgs): Promise<GetPolicyResult> {
+export function getPolicy(args?: GetPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicyResult> {
     args = args || {};
     return pulumi.runtime.invoke("openstack:firewall/getPolicy:getPolicy", {
         "name": args.name,
         "policyId": args.policyId,
         "region": args.region,
         "tenantId": args.tenantId,
-    });
+    }, opts);
 }
 
 /**

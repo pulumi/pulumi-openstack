@@ -86,8 +86,8 @@ export class IpsecPolicy extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: IpsecPolicyArgs, opts?: pulumi.ResourceOptions)
-    constructor(name: string, argsOrState?: IpsecPolicyArgs | IpsecPolicyState, opts?: pulumi.ResourceOptions) {
+    constructor(name: string, args?: IpsecPolicyArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: IpsecPolicyArgs | IpsecPolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state: IpsecPolicyState = argsOrState as IpsecPolicyState | undefined;

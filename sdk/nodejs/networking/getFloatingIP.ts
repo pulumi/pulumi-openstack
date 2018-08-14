@@ -6,7 +6,7 @@ import * as pulumi from "@pulumi/pulumi";
 /**
  * Use this data source to get the ID of an available OpenStack floating IP.
  */
-export function getFloatingIP(args?: GetFloatingIPArgs): Promise<GetFloatingIPResult> {
+export function getFloatingIP(args?: GetFloatingIPArgs, opts?: pulumi.InvokeOptions): Promise<GetFloatingIPResult> {
     args = args || {};
     return pulumi.runtime.invoke("openstack:networking/getFloatingIP:getFloatingIP", {
         "address": args.address,
@@ -16,7 +16,7 @@ export function getFloatingIP(args?: GetFloatingIPArgs): Promise<GetFloatingIPRe
         "region": args.region,
         "status": args.status,
         "tenantId": args.tenantId,
-    });
+    }, opts);
 }
 
 /**

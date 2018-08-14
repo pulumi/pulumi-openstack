@@ -6,7 +6,7 @@ import * as pulumi from "@pulumi/pulumi";
 /**
  * Use this data source to get the ID of an available OpenStack DNS zone.
  */
-export function getDnsZone(args?: GetDnsZoneArgs): Promise<GetDnsZoneResult> {
+export function getDnsZone(args?: GetDnsZoneArgs, opts?: pulumi.InvokeOptions): Promise<GetDnsZoneResult> {
     args = args || {};
     return pulumi.runtime.invoke("openstack:dns/getDnsZone:getDnsZone", {
         "attributes": args.attributes,
@@ -25,7 +25,7 @@ export function getDnsZone(args?: GetDnsZoneArgs): Promise<GetDnsZoneResult> {
         "type": args.type,
         "updatedAt": args.updatedAt,
         "version": args.version,
-    });
+    }, opts);
 }
 
 /**

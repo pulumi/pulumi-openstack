@@ -6,7 +6,7 @@ import * as pulumi from "@pulumi/pulumi";
 /**
  * Use this data source to get the ID of an available OpenStack subnetpool.
  */
-export function getSubnetPool(args?: GetSubnetPoolArgs): Promise<GetSubnetPoolResult> {
+export function getSubnetPool(args?: GetSubnetPoolArgs, opts?: pulumi.InvokeOptions): Promise<GetSubnetPoolResult> {
     args = args || {};
     return pulumi.runtime.invoke("openstack:networking/getSubnetPool:getSubnetPool", {
         "addressScopeId": args.addressScopeId,
@@ -21,7 +21,7 @@ export function getSubnetPool(args?: GetSubnetPoolArgs): Promise<GetSubnetPoolRe
         "projectId": args.projectId,
         "region": args.region,
         "shared": args.shared,
-    });
+    }, opts);
 }
 
 /**

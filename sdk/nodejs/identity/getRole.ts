@@ -6,12 +6,12 @@ import * as pulumi from "@pulumi/pulumi";
 /**
  * Use this data source to get the ID of an OpenStack role.
  */
-export function getRole(args: GetRoleArgs): Promise<GetRoleResult> {
+export function getRole(args: GetRoleArgs, opts?: pulumi.InvokeOptions): Promise<GetRoleResult> {
     return pulumi.runtime.invoke("openstack:identity/getRole:getRole", {
         "domainId": args.domainId,
         "name": args.name,
         "region": args.region,
-    });
+    }, opts);
 }
 
 /**

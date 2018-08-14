@@ -6,14 +6,14 @@ import * as pulumi from "@pulumi/pulumi";
 /**
  * Use this data source to get the ID of an available OpenStack security group.
  */
-export function getSecGroup(args?: GetSecGroupArgs): Promise<GetSecGroupResult> {
+export function getSecGroup(args?: GetSecGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetSecGroupResult> {
     args = args || {};
     return pulumi.runtime.invoke("openstack:networking/getSecGroup:getSecGroup", {
         "name": args.name,
         "region": args.region,
         "secgroupId": args.secgroupId,
         "tenantId": args.tenantId,
-    });
+    }, opts);
 }
 
 /**

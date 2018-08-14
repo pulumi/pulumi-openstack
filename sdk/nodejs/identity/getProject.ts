@@ -6,7 +6,7 @@ import * as pulumi from "@pulumi/pulumi";
 /**
  * Use this data source to get the ID of an OpenStack project.
  */
-export function getProject(args?: GetProjectArgs): Promise<GetProjectResult> {
+export function getProject(args?: GetProjectArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectResult> {
     args = args || {};
     return pulumi.runtime.invoke("openstack:identity/getProject:getProject", {
         "domainId": args.domainId,
@@ -15,7 +15,7 @@ export function getProject(args?: GetProjectArgs): Promise<GetProjectResult> {
         "name": args.name,
         "parentId": args.parentId,
         "region": args.region,
-    });
+    }, opts);
 }
 
 /**
