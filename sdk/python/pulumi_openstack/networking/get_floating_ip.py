@@ -5,9 +5,9 @@
 import pulumi
 import pulumi.runtime
 
-class GetFloatingIPResult(object):
+class GetFloatingIpResult(object):
     """
-    A collection of values returned by getFloatingIP.
+    A collection of values returned by getFloatingIp.
     """
     def __init__(__self__, id=None):
         if id and not isinstance(id, basestring):
@@ -30,7 +30,7 @@ def get_floating_ip(address=None, fixed_ip=None, pool=None, port_id=None, region
     __args__['region'] = region
     __args__['status'] = status
     __args__['tenantId'] = tenant_id
-    __ret__ = pulumi.runtime.invoke('openstack:networking/getFloatingIP:getFloatingIP', __args__)
+    __ret__ = pulumi.runtime.invoke('openstack:networking/getFloatingIp:getFloatingIp', __args__)
 
-    return GetFloatingIPResult(
+    return GetFloatingIpResult(
         id=__ret__.get('id'))
