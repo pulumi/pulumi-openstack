@@ -95,7 +95,7 @@ func Provider() tfbridge.ProviderInfo {
 
 			// Compute
 			"openstack_compute_flavor_v2":               {Tok: openstackResource(computeMod, "Flavor")},
-			"openstack_compute_floatingip_v2":           {Tok: openstackResource(computeMod, "FloatingIP")},
+			"openstack_compute_floatingip_v2":           {Tok: openstackResource(computeMod, "FloatingIp")},
 			"openstack_compute_floatingip_associate_v2": {Tok: openstackResource(computeMod, "FloatingIpAssociate")},
 			"openstack_compute_instance_v2":             {Tok: openstackResource(computeMod, "Instance")},
 			"openstack_compute_keypair_v2":              {Tok: openstackResource(computeMod, "Keypair")},
@@ -157,7 +157,7 @@ func Provider() tfbridge.ProviderInfo {
 			"openstack_objectstorage_object_v1":    {Tok: openstackResource(osMod, "ContainerObject")},
 
 			// VPNaaS
-			"openstack_vpnaas_ipsec_policy_v2":    {Tok: openstackResource(vpnaasMod, "IpsecPolicy")},
+			"openstack_vpnaas_ipsec_policy_v2":    {Tok: openstackResource(vpnaasMod, "IpSecPolicy")},
 			"openstack_vpnaas_ike_policy_v2":      {Tok: openstackResource(vpnaasMod, "IkePolicy")},
 			"openstack_vpnaas_service_v2":         {Tok: openstackResource(vpnaasMod, "Service")},
 			"openstack_vpnaas_endpoint_group_v2":  {Tok: openstackResource(vpnaasMod, "EndpointGroup")},
@@ -187,7 +187,7 @@ func Provider() tfbridge.ProviderInfo {
 			"openstack_networking_secgroup_v2":   {Tok: openstackDataSource(networkingMod, "getSecGroup")},
 			"openstack_networking_subnet_v2":     {Tok: openstackDataSource(networkingMod, "getSubnet")},
 			"openstack_networking_subnetpool_v2": {Tok: openstackDataSource(networkingMod, "getSubnetPool")},
-			"openstack_networking_floatingip_v2": {Tok: openstackDataSource(networkingMod, "getFloatingIP")},
+			"openstack_networking_floatingip_v2": {Tok: openstackDataSource(networkingMod, "getFloatingIp")},
 
 			// Firewall
 			"openstack_fw_policy_v1": {Tok: openstackDataSource(firewallMod, "getPolicy")},

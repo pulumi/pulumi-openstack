@@ -5,7 +5,7 @@
 import pulumi
 import pulumi.runtime
 
-class FloatingIP(pulumi.CustomResource):
+class FloatingIp(pulumi.CustomResource):
     """
     Manages a V2 floating IP resource within OpenStack Nova (compute)
     that can be used for compute instances.
@@ -16,7 +16,7 @@ class FloatingIP(pulumi.CustomResource):
     resource instead, which uses the OpenStack Networking API.
     """
     def __init__(__self__, __name__, __opts__=None, pool=None, region=None):
-        """Create a FloatingIP resource with the given unique name, props, and options."""
+        """Create a FloatingIp resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, basestring):
@@ -62,8 +62,8 @@ class FloatingIP(pulumi.CustomResource):
         UUID of the compute instance associated with the floating IP.
         """
 
-        super(FloatingIP, __self__).__init__(
-            'openstack:compute/floatingIP:FloatingIP',
+        super(FloatingIp, __self__).__init__(
+            'openstack:compute/floatingIp:FloatingIp',
             __name__,
             __props__,
             __opts__)

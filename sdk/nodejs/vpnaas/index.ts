@@ -4,6 +4,6 @@
 // Export members:
 export * from "./endpointGroup";
 export * from "./ikePolicy";
-export * from "./ipsecPolicy";
+export * from "./ipSecPolicy";
 export * from "./service";
 export * from "./siteConnection";

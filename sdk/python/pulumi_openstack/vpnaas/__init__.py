@@ -5,6 +5,6 @@
 # Export this package's modules as members:
 from endpoint_group import *
 from ike_policy import *
-from ipsec_policy import *
+from ip_sec_policy import *
 from service import *
 from site_connection import *
