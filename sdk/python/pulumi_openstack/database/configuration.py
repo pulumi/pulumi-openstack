@@ -53,7 +53,7 @@ class Configuration(pulumi.CustomResource):
             raise TypeError('Expected property name to be a basestring')
         __self__.name = name
         """
-        Configuration parameter name. Changing this creates a new resource.
+        A unique name for the resource.
         """
         __props__['name'] = name
 

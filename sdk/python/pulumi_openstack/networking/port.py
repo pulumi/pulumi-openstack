@@ -71,7 +71,8 @@ class Port(pulumi.CustomResource):
             raise TypeError('Expected property mac_address to be a basestring')
         __self__.mac_address = mac_address
         """
-        The additional MAC address.
+        Specify a specific MAC address for the port. Changing
+        this creates a new port.
         """
         __props__['macAddress'] = mac_address
 

@@ -209,8 +209,7 @@ func (r *Instance) Metadata() *pulumi.MapOutput {
 	return (*pulumi.MapOutput)(r.s.State["metadata"])
 }
 
-// The human-readable
-// name of the network. Changing this creates a new server.
+// A unique name for the resource.
 func (r *Instance) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
@@ -323,8 +322,7 @@ type InstanceState struct {
 	// Metadata key/value pairs to make available from
 	// within the instance. Changing this updates the existing server metadata.
 	Metadata interface{}
-	// The human-readable
-	// name of the network. Changing this creates a new server.
+	// A unique name for the resource.
 	Name interface{}
 	// An array of one or more networks to attach to the
 	// instance. The network object structure is documented below. Changing this
@@ -409,8 +407,7 @@ type InstanceArgs struct {
 	// Metadata key/value pairs to make available from
 	// within the instance. Changing this updates the existing server metadata.
 	Metadata interface{}
-	// The human-readable
-	// name of the network. Changing this creates a new server.
+	// A unique name for the resource.
 	Name interface{}
 	// An array of one or more networks to attach to the
 	// instance. The network object structure is documented below. Changing this

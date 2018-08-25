@@ -97,8 +97,8 @@ class PoolV1(pulumi.CustomResource):
             raise TypeError('Expected property tenant_id to be a basestring')
         __self__.tenant_id = tenant_id
         """
-        The owner of the member. Required if admin wants to
-        create a pool member for another tenant. Changing this creates a new member.
+        The owner of the pool. Required if admin wants to
+        create a pool member for another tenant. Changing this creates a new pool.
         """
         __props__['tenantId'] = tenant_id
 

@@ -111,8 +111,7 @@ func (r *Instance) FlavorId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["flavorId"])
 }
 
-// Database to be created on new instance. Changing this creates a
-// new instance.
+// A unique name for the resource.
 func (r *Instance) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
@@ -155,8 +154,7 @@ type InstanceState struct {
 	// The flavor ID of the desired flavor for the instance.
 	// Changing this creates new instance.
 	FlavorId interface{}
-	// Database to be created on new instance. Changing this creates a
-	// new instance.
+	// A unique name for the resource.
 	Name interface{}
 	// An array of one or more networks to attach to the
 	// instance. The network object structure is documented below. Changing this
@@ -186,8 +184,7 @@ type InstanceArgs struct {
 	// The flavor ID of the desired flavor for the instance.
 	// Changing this creates new instance.
 	FlavorId interface{}
-	// Database to be created on new instance. Changing this creates a
-	// new instance.
+	// A unique name for the resource.
 	Name interface{}
 	// An array of one or more networks to attach to the
 	// instance. The network object structure is documented below. Changing this

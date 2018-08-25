@@ -130,8 +130,8 @@ func (r *PoolV1) SubnetId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["subnetId"])
 }
 
-// The owner of the member. Required if admin wants to
-// create a pool member for another tenant. Changing this creates a new member.
+// The owner of the pool. Required if admin wants to
+// create a pool member for another tenant. Changing this creates a new pool.
 func (r *PoolV1) TenantId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["tenantId"])
 }
@@ -163,8 +163,8 @@ type PoolV1State struct {
 	// located. Only members that are on this network can be added to the pool.
 	// Changing this creates a new pool.
 	SubnetId interface{}
-	// The owner of the member. Required if admin wants to
-	// create a pool member for another tenant. Changing this creates a new member.
+	// The owner of the pool. Required if admin wants to
+	// create a pool member for another tenant. Changing this creates a new pool.
 	TenantId interface{}
 }
 
@@ -195,7 +195,7 @@ type PoolV1Args struct {
 	// located. Only members that are on this network can be added to the pool.
 	// Changing this creates a new pool.
 	SubnetId interface{}
-	// The owner of the member. Required if admin wants to
-	// create a pool member for another tenant. Changing this creates a new member.
+	// The owner of the pool. Required if admin wants to
+	// create a pool member for another tenant. Changing this creates a new pool.
 	TenantId interface{}
 }

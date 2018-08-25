@@ -141,7 +141,8 @@ func (r *Port) FixedIps() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["fixedIps"])
 }
 
-// The additional MAC address.
+// Specify a specific MAC address for the port. Changing
+// this creates a new port.
 func (r *Port) MacAddress() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["macAddress"])
 }
@@ -219,7 +220,8 @@ type PortState struct {
 	// An array of desired IPs for this port. The structure is
 	// described below.
 	FixedIps interface{}
-	// The additional MAC address.
+	// Specify a specific MAC address for the port. Changing
+	// this creates a new port.
 	MacAddress interface{}
 	// A unique name for the port. Changing this
 	// updates the `name` of an existing port.
@@ -269,7 +271,8 @@ type PortArgs struct {
 	// An array of desired IPs for this port. The structure is
 	// described below.
 	FixedIps interface{}
-	// The additional MAC address.
+	// Specify a specific MAC address for the port. Changing
+	// this creates a new port.
 	MacAddress interface{}
 	// A unique name for the port. Changing this
 	// updates the `name` of an existing port.

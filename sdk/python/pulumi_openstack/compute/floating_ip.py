@@ -12,7 +12,7 @@ class FloatingIp(pulumi.CustomResource):
     
     Please note that managing floating IPs through the OpenStack Compute API has
     been deprecated. Unless you are using an older OpenStack environment, it is
-    recommended to use the [`openstack_networking_floatingip_v2`](networking_floatingip_v2.html)
+    recommended to use the `openstack_networking_floatingip_v2`
     resource instead, which uses the OpenStack Networking API.
     """
     def __init__(__self__, __name__, __opts__=None, pool=None, region=None):

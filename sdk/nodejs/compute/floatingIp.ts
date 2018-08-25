@@ -9,7 +9,7 @@ import * as pulumi from "@pulumi/pulumi";
  * 
  * Please note that managing floating IPs through the OpenStack Compute API has
  * been deprecated. Unless you are using an older OpenStack environment, it is
- * recommended to use the [`openstack_networking_floatingip_v2`](networking_floatingip_v2.html)
+ * recommended to use the `openstack_networking_floatingip_v2`
  * resource instead, which uses the OpenStack Networking API.
  */
 export class FloatingIp extends pulumi.CustomResource {
