@@ -15,15 +15,13 @@
 package openstack
 
 import (
-	"strings"
 	"unicode"
 
 	"github.com/hashicorp/terraform/helper/schema"
-	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi-terraform/pkg/tfbridge"
-	"github.com/pulumi/pulumi/pkg/resource"
-	"github.com/pulumi/pulumi/pkg/tokens"
 	"github.com/terraform-providers/terraform-provider-openstack/openstack"
+
+	"github.com/pulumi/pulumi-terraform/pkg/tfbridge"
+	"github.com/pulumi/pulumi/pkg/tokens"
 )
 
 // all of the OpenStack token components used below.
@@ -216,69 +214,18 @@ func Provider() tfbridge.ProviderInfo {
 	const openstackName = "name"
 	for resname, res := range prov.Resources {
 		if schema := p.ResourcesMap[resname]; schema != nil {
-			if _, has := schema.Schema[openstackName]; has {
+			// Only apply auto-name to input properties (Optional || Required) named `name`
+			if tfs, has := schema.Schema[openstackName]; has && (tfs.Optional || tfs.Required) {
 				if _, hasfield := res.Fields[openstackName]; !hasfield {
 					if res.Fields == nil {
 						res.Fields = make(map[string]*tfbridge.SchemaInfo)
 					}
 					// Use conservative options that apply broadly for OpenStack.
-					res.Fields[openstackName] = AutoName(openstackName, AutoNameOptions{
-						ForceLowercase: true,
-						Separator:      "",
-						Maxlen:         24,
-						Randlen:        8,
-					})
+					res.Fields[openstackName] = tfbridge.AutoName(openstackName, 255)
 				}
 			}
 		}
 	}
 
 	return prov
-}
-
-// IDEA: Consider moving this refactoring of AutoName to allow more flexible configuration back into pulumi-terraform.
-
-// AutoNameOptions provides parameters to AutoName to control how names will be generated
-type AutoNameOptions struct {
-	// A separator between name and random portions of the
-	Separator string
-	// Maximum length of the generated name
-	Maxlen int
-	// Number of characters of random hex digits to add to the name
-	Randlen int
-	// A transform to apply to the name prior to adding random characters
-	Transform func(string) string
-	// Force the name to be lowercase prior to adding random characters
-	ForceLowercase bool
-}
-
-// AutoName creates custom schema for a Terraform name property which is automatically populated from the resource's URN
-// name, and tranformed based on the provided options.
-func AutoName(name string, options AutoNameOptions) *tfbridge.SchemaInfo {
-	return &tfbridge.SchemaInfo{
-		Name: name,
-		Default: &tfbridge.DefaultInfo{
-			From: FromName(options),
-		},
-	}
-}
-
-// FromName automatically propagates a resource's URN onto the resulting default info.
-func FromName(options AutoNameOptions) func(res *tfbridge.PulumiResource) (interface{}, error) {
-	return func(res *tfbridge.PulumiResource) (interface{}, error) {
-		// Take the URN name part, transform it if required, and then append some unique characters if requested.
-		vs := string(res.URN.Name())
-		if options.Transform != nil {
-			vs = options.Transform(vs)
-		} else if options.ForceLowercase {
-			vs = strings.ToLower(vs)
-		}
-		if options.Randlen > 0 {
-			return resource.NewUniqueHex(vs+options.Separator, options.Randlen, options.Maxlen)
-		}
-		if len(vs) > options.Maxlen {
-			return "", errors.Errorf("name '%s' is longer than maximum length %d", vs, options.Maxlen)
-		}
-		return vs, nil
-	}
 }
