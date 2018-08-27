@@ -148,8 +148,7 @@ class Instance(pulumi.CustomResource):
             raise TypeError('Expected property name to be a basestring')
         __self__.name = name
         """
-        The human-readable
-        name of the network. Changing this creates a new server.
+        A unique name for the resource.
         """
         __props__['name'] = name
 
