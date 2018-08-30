@@ -6,17 +6,17 @@ import * as pulumi from "@pulumi/pulumi";
 /**
  * Manages a V2 Neutron IPSec policy resource within OpenStack.
  */
-export class IpsecPolicy extends pulumi.CustomResource {
+export class IpSecPolicy extends pulumi.CustomResource {
     /**
-     * Get an existing IpsecPolicy resource's state with the given name, ID, and optional extra
+     * Get an existing IpSecPolicy resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: IpsecPolicyState): IpsecPolicy {
-        return new IpsecPolicy(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: IpSecPolicyState): IpSecPolicy {
+        return new IpSecPolicy(name, <any>state, { id });
     }
 
     /**
@@ -80,17 +80,17 @@ export class IpsecPolicy extends pulumi.CustomResource {
     public readonly valueSpecs: pulumi.Output<{[key: string]: any} | undefined>;
 
     /**
-     * Create a IpsecPolicy resource with the given unique name, arguments, and options.
+     * Create a IpSecPolicy resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: IpsecPolicyArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: IpsecPolicyArgs | IpsecPolicyState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: IpSecPolicyArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: IpSecPolicyArgs | IpSecPolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: IpsecPolicyState = argsOrState as IpsecPolicyState | undefined;
+            const state: IpSecPolicyState = argsOrState as IpSecPolicyState | undefined;
             inputs["authAlgorithm"] = state ? state.authAlgorithm : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["encapsulationMode"] = state ? state.encapsulationMode : undefined;
@@ -103,7 +103,7 @@ export class IpsecPolicy extends pulumi.CustomResource {
             inputs["transformProtocol"] = state ? state.transformProtocol : undefined;
             inputs["valueSpecs"] = state ? state.valueSpecs : undefined;
         } else {
-            const args = argsOrState as IpsecPolicyArgs | undefined;
+            const args = argsOrState as IpSecPolicyArgs | undefined;
             inputs["authAlgorithm"] = args ? args.authAlgorithm : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["encapsulationMode"] = args ? args.encapsulationMode : undefined;
@@ -116,14 +116,14 @@ export class IpsecPolicy extends pulumi.CustomResource {
             inputs["transformProtocol"] = args ? args.transformProtocol : undefined;
             inputs["valueSpecs"] = args ? args.valueSpecs : undefined;
         }
-        super("openstack:vpnaas/ipsecPolicy:IpsecPolicy", name, inputs, opts);
+        super("openstack:vpnaas/ipSecPolicy:IpSecPolicy", name, inputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering IpsecPolicy resources.
+ * Input properties used for looking up and filtering IpSecPolicy resources.
  */
-export interface IpsecPolicyState {
+export interface IpSecPolicyState {
     /**
      * The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.
      * Default is sha1. Changing this updates the algorithm of the existing policy.
@@ -186,9 +186,9 @@ export interface IpsecPolicyState {
 }
 
 /**
- * The set of arguments for constructing a IpsecPolicy resource.
+ * The set of arguments for constructing a IpSecPolicy resource.
  */
-export interface IpsecPolicyArgs {
+export interface IpSecPolicyArgs {
     /**
      * The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.
      * Default is sha1. Changing this updates the algorithm of the existing policy.
