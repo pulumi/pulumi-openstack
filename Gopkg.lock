@@ -583,7 +583,7 @@
     "sdk/go/pulumi/config",
     "sdk/proto/go"
   ]
-  revision = "d83774ca96a8ba0dc99f078cdfe368c57cb4d659"
+  revision = "1ebd698a7ab2926ef88eb97a8f268e6c95f44816"
 
 [[projects]]
   branch = "master"
@@ -592,7 +592,7 @@
     "pkg/tfbridge",
     "pkg/tfgen"
   ]
-  revision = "6dbdf127816048211afa682b4877f1c502710878"
+  revision = "e99038fbd5adaa4a170843970a24df0fc33f53bf"
 
 [[projects]]
   branch = "master"

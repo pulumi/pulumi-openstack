@@ -31,6 +31,9 @@ func TestExamples(t *testing.T) {
 			Dependencies: []string{
 				"@pulumi/openstack",
 			},
+			// One change is known to occur during refresh of the resources in this example:
+			// `~  openstack:compute:Instance test updated changes: + blockDevices,personalities,schedulerHints``
+			ExpectRefreshChanges: true,
 		}),
 	}
 
