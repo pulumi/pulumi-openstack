@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as utilities from "./utilities";
 
 /**
  * The provider type for the openstack package
@@ -18,29 +19,29 @@ export class Provider extends pulumi.ProviderResource {
     constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let inputs: pulumi.Inputs = {};
         {
-            inputs["authUrl"] = args ? args.authUrl : undefined;
-            inputs["cacertFile"] = args ? args.cacertFile : undefined;
-            inputs["cert"] = args ? args.cert : undefined;
-            inputs["cloud"] = args ? args.cloud : undefined;
-            inputs["defaultDomain"] = args ? args.defaultDomain : undefined;
-            inputs["domainId"] = args ? args.domainId : undefined;
-            inputs["domainName"] = args ? args.domainName : undefined;
-            inputs["endpointType"] = args ? args.endpointType : undefined;
-            inputs["insecure"] = args ? args.insecure : undefined;
-            inputs["key"] = args ? args.key : undefined;
-            inputs["password"] = args ? args.password : undefined;
-            inputs["projectDomainId"] = args ? args.projectDomainId : undefined;
-            inputs["projectDomainName"] = args ? args.projectDomainName : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["swauth"] = args ? args.swauth : undefined;
-            inputs["tenantId"] = args ? args.tenantId : undefined;
-            inputs["tenantName"] = args ? args.tenantName : undefined;
-            inputs["token"] = args ? args.token : undefined;
-            inputs["useOctavia"] = args ? args.useOctavia : undefined;
-            inputs["userDomainId"] = args ? args.userDomainId : undefined;
-            inputs["userDomainName"] = args ? args.userDomainName : undefined;
-            inputs["userId"] = args ? args.userId : undefined;
-            inputs["userName"] = args ? args.userName : undefined;
+            inputs["authUrl"] = (args ? args.authUrl : undefined) || utilities.getEnv("OS_AUTH_URL");
+            inputs["cacertFile"] = (args ? args.cacertFile : undefined) || utilities.getEnv("OS_CACERT");
+            inputs["cert"] = (args ? args.cert : undefined) || utilities.getEnv("OS_CERT");
+            inputs["cloud"] = (args ? args.cloud : undefined) || utilities.getEnv("OS_CLOUD");
+            inputs["defaultDomain"] = (args ? args.defaultDomain : undefined) || (utilities.getEnv("OS_DEFAULT_DOMAIN") || "default");
+            inputs["domainId"] = (args ? args.domainId : undefined) || utilities.getEnv("OS_DOMAIN_ID");
+            inputs["domainName"] = (args ? args.domainName : undefined) || utilities.getEnv("OS_DOMAIN_NAME");
+            inputs["endpointType"] = (args ? args.endpointType : undefined) || utilities.getEnv("OS_ENDPOINT_TYPE");
+            inputs["insecure"] = (args ? args.insecure : undefined) || utilities.getEnvBoolean("OS_INSECURE");
+            inputs["key"] = (args ? args.key : undefined) || utilities.getEnv("OS_KEY");
+            inputs["password"] = (args ? args.password : undefined) || utilities.getEnv("OS_PASSWORD");
+            inputs["projectDomainId"] = (args ? args.projectDomainId : undefined) || utilities.getEnv("OS_PROJECT_DOMAIN_ID");
+            inputs["projectDomainName"] = (args ? args.projectDomainName : undefined) || utilities.getEnv("OS_PROJECT_DOMAIN_NAME");
+            inputs["region"] = (args ? args.region : undefined) || utilities.getEnv("OS_REGION_NAME");
+            inputs["swauth"] = (args ? args.swauth : undefined) || utilities.getEnvBoolean("OS_SWAUTH");
+            inputs["tenantId"] = (args ? args.tenantId : undefined) || utilities.getEnv("OS_TENANT_ID", "OS_PROJECT_ID");
+            inputs["tenantName"] = (args ? args.tenantName : undefined) || utilities.getEnv("OS_TENANT_NAME", "OS_PROJECT_NAME");
+            inputs["token"] = (args ? args.token : undefined) || utilities.getEnv("OS_TOKEN", "OS_AUTH_TOKEN");
+            inputs["useOctavia"] = (args ? args.useOctavia : undefined) || utilities.getEnvBoolean("OS_USE_OCTAVIA");
+            inputs["userDomainId"] = (args ? args.userDomainId : undefined) || utilities.getEnv("OS_USER_DOMAIN_ID");
+            inputs["userDomainName"] = (args ? args.userDomainName : undefined) || utilities.getEnv("OS_USER_DOMAIN_NAME");
+            inputs["userId"] = (args ? args.userId : undefined) || utilities.getEnv("OS_USER_ID");
+            inputs["userName"] = (args ? args.userName : undefined) || utilities.getEnv("OS_USERNAME");
         }
         super("openstack", name, inputs, opts);
     }

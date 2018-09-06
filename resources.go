@@ -83,6 +83,133 @@ func Provider() tfbridge.ProviderInfo {
 		Homepage:    "https://pulumi.io",
 		License:     "Apache 2.0",
 		Repository:  "https://github.com/pulumi/pulumi-openstack",
+		Config: map[string]*tfbridge.SchemaInfo{
+			"auth_url": &tfbridge.SchemaInfo{
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"OS_AUTH_URL"},
+				},
+			},
+			"region": &tfbridge.SchemaInfo{
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"OS_REGION_NAME"},
+				},
+			},
+			"user_name": &tfbridge.SchemaInfo{
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"OS_USERNAME"},
+				},
+			},
+			"user_id": &tfbridge.SchemaInfo{
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"OS_USER_ID"},
+				},
+			},
+			"tenant_id": &tfbridge.SchemaInfo{
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{
+						"OS_TENANT_ID",
+						"OS_PROJECT_ID",
+					},
+				},
+			},
+			"tenant_name": &tfbridge.SchemaInfo{
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{
+						"OS_TENANT_NAME",
+						"OS_PROJECT_NAME",
+					},
+				},
+			},
+			"password": &tfbridge.SchemaInfo{
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"OS_PASSWORD"},
+				},
+			},
+			"token": &tfbridge.SchemaInfo{
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{
+						"OS_TOKEN",
+						"OS_AUTH_TOKEN",
+					},
+				},
+			},
+			"user_domain_name": &tfbridge.SchemaInfo{
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"OS_USER_DOMAIN_NAME"},
+				},
+			},
+			"user_domain_id": &tfbridge.SchemaInfo{
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"OS_USER_DOMAIN_ID"},
+				},
+			},
+			"project_domain_name": &tfbridge.SchemaInfo{
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"OS_PROJECT_DOMAIN_NAME"},
+				},
+			},
+			"project_domain_id": &tfbridge.SchemaInfo{
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"OS_PROJECT_DOMAIN_ID"},
+				},
+			},
+			"domain_id": &tfbridge.SchemaInfo{
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"OS_DOMAIN_ID"},
+				},
+			},
+			"domain_name": &tfbridge.SchemaInfo{
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"OS_DOMAIN_NAME"},
+				},
+			},
+			"default_domain": &tfbridge.SchemaInfo{
+				Default: &tfbridge.DefaultInfo{
+					Value:   "default",
+					EnvVars: []string{"OS_DEFAULT_DOMAIN"},
+				},
+			},
+			"insecure": &tfbridge.SchemaInfo{
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"OS_INSECURE"},
+				},
+			},
+			"endpoint_type": &tfbridge.SchemaInfo{
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"OS_ENDPOINT_TYPE"},
+				},
+			},
+			"cacert_file": &tfbridge.SchemaInfo{
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"OS_CACERT"},
+				},
+			},
+			"cert": &tfbridge.SchemaInfo{
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"OS_CERT"},
+				},
+			},
+			"key": &tfbridge.SchemaInfo{
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"OS_KEY"},
+				},
+			},
+			"swauth": &tfbridge.SchemaInfo{
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"OS_SWAUTH"},
+				},
+			},
+			"use_octavia": &tfbridge.SchemaInfo{
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"OS_USE_OCTAVIA"},
+				},
+			},
+			"cloud": &tfbridge.SchemaInfo{
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"OS_CLOUD"},
+				},
+			},
+		},
 		Resources: map[string]*tfbridge.ResourceInfo{
 			// Block Storage
 			"openstack_blockstorage_volume_v1":        {Tok: openstackResource(blockstorageMod, "VolumeV1")},
