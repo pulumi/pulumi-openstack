@@ -4,13 +4,14 @@
 
 import pulumi
 import pulumi.runtime
+from .. import utilities
 
-class IpsecPolicy(pulumi.CustomResource):
+class IpSecPolicy(pulumi.CustomResource):
     """
     Manages a V2 Neutron IPSec policy resource within OpenStack.
     """
     def __init__(__self__, __name__, __opts__=None, auth_algorithm=None, description=None, encapsulation_mode=None, encryption_algorithm=None, lifetimes=None, name=None, pfs=None, region=None, tenant_id=None, transform_protocol=None, value_specs=None):
-        """Create a IpsecPolicy resource with the given unique name, props, and options."""
+        """Create a IpSecPolicy resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, basestring):
@@ -123,8 +124,8 @@ class IpsecPolicy(pulumi.CustomResource):
         """
         __props__['valueSpecs'] = value_specs
 
-        super(IpsecPolicy, __self__).__init__(
-            'openstack:vpnaas/ipsecPolicy:IpsecPolicy',
+        super(IpSecPolicy, __self__).__init__(
+            'openstack:vpnaas/ipSecPolicy:IpSecPolicy',
             __name__,
             __props__,
             __opts__)

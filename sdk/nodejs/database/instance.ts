@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as utilities from "../utilities";
 
 /**
  * Manages a V1 DB instance resource within OpenStack.
@@ -40,8 +41,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly flavorId: pulumi.Output<string>;
     /**
-     * Database to be created on new instance. Changing this creates a
-     * new instance.
+     * A unique name for the resource.
      */
     public readonly name: pulumi.Output<string>;
     /**
@@ -136,8 +136,7 @@ export interface InstanceState {
      */
     readonly flavorId?: pulumi.Input<string>;
     /**
-     * Database to be created on new instance. Changing this creates a
-     * new instance.
+     * A unique name for the resource.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -187,8 +186,7 @@ export interface InstanceArgs {
      */
     readonly flavorId?: pulumi.Input<string>;
     /**
-     * Database to be created on new instance. Changing this creates a
-     * new instance.
+     * A unique name for the resource.
      */
     readonly name?: pulumi.Input<string>;
     /**

@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as utilities from "../utilities";
 
 /**
  * Manages a V2 port resource within OpenStack.
@@ -57,7 +58,8 @@ export class Port extends pulumi.CustomResource {
      */
     public readonly fixedIps: pulumi.Output<{ ipAddress?: string, subnetId: string }[] | undefined>;
     /**
-     * The additional MAC address.
+     * Specify a specific MAC address for the port. Changing
+     * this creates a new port.
      */
     public readonly macAddress: pulumi.Output<string>;
     /**
@@ -196,7 +198,8 @@ export interface PortState {
      */
     readonly fixedIps?: pulumi.Input<pulumi.Input<{ ipAddress?: pulumi.Input<string>, subnetId: pulumi.Input<string> }>[]>;
     /**
-     * The additional MAC address.
+     * Specify a specific MAC address for the port. Changing
+     * this creates a new port.
      */
     readonly macAddress?: pulumi.Input<string>;
     /**
@@ -274,7 +277,8 @@ export interface PortArgs {
      */
     readonly fixedIps?: pulumi.Input<pulumi.Input<{ ipAddress?: pulumi.Input<string>, subnetId: pulumi.Input<string> }>[]>;
     /**
-     * The additional MAC address.
+     * Specify a specific MAC address for the port. Changing
+     * this creates a new port.
      */
     readonly macAddress?: pulumi.Input<string>;
     /**

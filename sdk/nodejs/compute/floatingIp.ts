@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as utilities from "../utilities";
 
 /**
  * Manages a V2 floating IP resource within OpenStack Nova (compute)
@@ -9,20 +10,20 @@ import * as pulumi from "@pulumi/pulumi";
  * 
  * Please note that managing floating IPs through the OpenStack Compute API has
  * been deprecated. Unless you are using an older OpenStack environment, it is
- * recommended to use the [`openstack_networking_floatingip_v2`](networking_floatingip_v2.html)
+ * recommended to use the `openstack_networking_floatingip_v2`
  * resource instead, which uses the OpenStack Networking API.
  */
-export class FloatingIP extends pulumi.CustomResource {
+export class FloatingIp extends pulumi.CustomResource {
     /**
-     * Get an existing FloatingIP resource's state with the given name, ID, and optional extra
+     * Get an existing FloatingIp resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: FloatingIPState): FloatingIP {
-        return new FloatingIP(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: FloatingIpState): FloatingIp {
+        return new FloatingIp(name, <any>state, { id });
     }
 
     /**
@@ -52,24 +53,24 @@ export class FloatingIP extends pulumi.CustomResource {
     public readonly region: pulumi.Output<string>;
 
     /**
-     * Create a FloatingIP resource with the given unique name, arguments, and options.
+     * Create a FloatingIp resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: FloatingIPArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: FloatingIPArgs | FloatingIPState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: FloatingIpArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: FloatingIpArgs | FloatingIpState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: FloatingIPState = argsOrState as FloatingIPState | undefined;
+            const state: FloatingIpState = argsOrState as FloatingIpState | undefined;
             inputs["address"] = state ? state.address : undefined;
             inputs["fixedIp"] = state ? state.fixedIp : undefined;
             inputs["instanceId"] = state ? state.instanceId : undefined;
             inputs["pool"] = state ? state.pool : undefined;
             inputs["region"] = state ? state.region : undefined;
         } else {
-            const args = argsOrState as FloatingIPArgs | undefined;
+            const args = argsOrState as FloatingIpArgs | undefined;
             if (!args || args.pool === undefined) {
                 throw new Error("Missing required property 'pool'");
             }
@@ -79,14 +80,14 @@ export class FloatingIP extends pulumi.CustomResource {
             inputs["fixedIp"] = undefined /*out*/;
             inputs["instanceId"] = undefined /*out*/;
         }
-        super("openstack:compute/floatingIP:FloatingIP", name, inputs, opts);
+        super("openstack:compute/floatingIp:FloatingIp", name, inputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering FloatingIP resources.
+ * Input properties used for looking up and filtering FloatingIp resources.
  */
-export interface FloatingIPState {
+export interface FloatingIpState {
     /**
      * The actual floating IP address itself.
      */
@@ -115,9 +116,9 @@ export interface FloatingIPState {
 }
 
 /**
- * The set of arguments for constructing a FloatingIP resource.
+ * The set of arguments for constructing a FloatingIp resource.
  */
-export interface FloatingIPArgs {
+export interface FloatingIpArgs {
     /**
      * The name of the pool from which to obtain the floating
      * IP. Changing this creates a new floating IP.

@@ -91,7 +91,7 @@ func (r *Configuration) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
 }
 
-// Configuration parameter name. Changing this creates a new resource.
+// A unique name for the resource.
 func (r *Configuration) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
@@ -111,7 +111,7 @@ type ConfigurationState struct {
 	Datastore interface{}
 	// Description of the resource.
 	Description interface{}
-	// Configuration parameter name. Changing this creates a new resource.
+	// A unique name for the resource.
 	Name interface{}
 	// The region in which to create the db instance. Changing this
 	// creates a new instance.
@@ -127,7 +127,7 @@ type ConfigurationArgs struct {
 	Datastore interface{}
 	// Description of the resource.
 	Description interface{}
-	// Configuration parameter name. Changing this creates a new resource.
+	// A unique name for the resource.
 	Name interface{}
 	// The region in which to create the db instance. Changing this
 	// creates a new instance.

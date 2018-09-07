@@ -13,15 +13,15 @@ import (
 // 
 // Please note that managing floating IPs through the OpenStack Compute API has
 // been deprecated. Unless you are using an older OpenStack environment, it is
-// recommended to use the [`openstack_networking_floatingip_v2`](networking_floatingip_v2.html)
+// recommended to use the `openstack_networking_floatingip_v2`
 // resource instead, which uses the OpenStack Networking API.
-type FloatingIP struct {
+type FloatingIp struct {
 	s *pulumi.ResourceState
 }
 
-// NewFloatingIP registers a new resource with the given unique name, arguments, and options.
-func NewFloatingIP(ctx *pulumi.Context,
-	name string, args *FloatingIPArgs, opts ...pulumi.ResourceOpt) (*FloatingIP, error) {
+// NewFloatingIp registers a new resource with the given unique name, arguments, and options.
+func NewFloatingIp(ctx *pulumi.Context,
+	name string, args *FloatingIpArgs, opts ...pulumi.ResourceOpt) (*FloatingIp, error) {
 	if args == nil || args.Pool == nil {
 		return nil, errors.New("missing required argument 'Pool'")
 	}
@@ -36,17 +36,17 @@ func NewFloatingIP(ctx *pulumi.Context,
 	inputs["address"] = nil
 	inputs["fixedIp"] = nil
 	inputs["instanceId"] = nil
-	s, err := ctx.RegisterResource("openstack:compute/floatingIP:FloatingIP", name, true, inputs, opts...)
+	s, err := ctx.RegisterResource("openstack:compute/floatingIp:FloatingIp", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &FloatingIP{s: s}, nil
+	return &FloatingIp{s: s}, nil
 }
 
-// GetFloatingIP gets an existing FloatingIP resource's state with the given name, ID, and optional
+// GetFloatingIp gets an existing FloatingIp resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
-func GetFloatingIP(ctx *pulumi.Context,
-	name string, id pulumi.ID, state *FloatingIPState, opts ...pulumi.ResourceOpt) (*FloatingIP, error) {
+func GetFloatingIp(ctx *pulumi.Context,
+	name string, id pulumi.ID, state *FloatingIpState, opts ...pulumi.ResourceOpt) (*FloatingIp, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
 		inputs["address"] = state.Address
@@ -55,41 +55,41 @@ func GetFloatingIP(ctx *pulumi.Context,
 		inputs["pool"] = state.Pool
 		inputs["region"] = state.Region
 	}
-	s, err := ctx.ReadResource("openstack:compute/floatingIP:FloatingIP", name, id, inputs, opts...)
+	s, err := ctx.ReadResource("openstack:compute/floatingIp:FloatingIp", name, id, inputs, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &FloatingIP{s: s}, nil
+	return &FloatingIp{s: s}, nil
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *FloatingIP) URN() *pulumi.URNOutput {
+func (r *FloatingIp) URN() *pulumi.URNOutput {
 	return r.s.URN
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *FloatingIP) ID() *pulumi.IDOutput {
+func (r *FloatingIp) ID() *pulumi.IDOutput {
 	return r.s.ID
 }
 
 // The actual floating IP address itself.
-func (r *FloatingIP) Address() *pulumi.StringOutput {
+func (r *FloatingIp) Address() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["address"])
 }
 
 // The fixed IP address corresponding to the floating IP.
-func (r *FloatingIP) FixedIp() *pulumi.StringOutput {
+func (r *FloatingIp) FixedIp() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["fixedIp"])
 }
 
 // UUID of the compute instance associated with the floating IP.
-func (r *FloatingIP) InstanceId() *pulumi.StringOutput {
+func (r *FloatingIp) InstanceId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["instanceId"])
 }
 
 // The name of the pool from which to obtain the floating
 // IP. Changing this creates a new floating IP.
-func (r *FloatingIP) Pool() *pulumi.StringOutput {
+func (r *FloatingIp) Pool() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["pool"])
 }
 
@@ -98,12 +98,12 @@ func (r *FloatingIP) Pool() *pulumi.StringOutput {
 // a compute instance. If omitted, the `region` argument of the provider
 // is used. Changing this creates a new floating IP (which may or may not
 // have a different address).
-func (r *FloatingIP) Region() *pulumi.StringOutput {
+func (r *FloatingIp) Region() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["region"])
 }
 
-// Input properties used for looking up and filtering FloatingIP resources.
-type FloatingIPState struct {
+// Input properties used for looking up and filtering FloatingIp resources.
+type FloatingIpState struct {
 	// The actual floating IP address itself.
 	Address interface{}
 	// The fixed IP address corresponding to the floating IP.
@@ -121,8 +121,8 @@ type FloatingIPState struct {
 	Region interface{}
 }
 
-// The set of arguments for constructing a FloatingIP resource.
-type FloatingIPArgs struct {
+// The set of arguments for constructing a FloatingIp resource.
+type FloatingIpArgs struct {
 	// The name of the pool from which to obtain the floating
 	// IP. Changing this creates a new floating IP.
 	Pool interface{}

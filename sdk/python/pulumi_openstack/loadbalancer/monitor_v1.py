@@ -4,6 +4,7 @@
 
 import pulumi
 import pulumi.runtime
+from .. import utilities
 
 class MonitorV1(pulumi.CustomResource):
     """

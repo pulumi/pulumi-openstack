@@ -3,7 +3,7 @@
 
 // Export members:
 export * from "./flavor";
-export * from "./floatingIP";
+export * from "./floatingIp";
 export * from "./floatingIpAssociate";
 export * from "./getFlavor";
 export * from "./getKeypair";

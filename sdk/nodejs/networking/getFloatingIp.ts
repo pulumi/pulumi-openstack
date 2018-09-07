@@ -2,13 +2,14 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as utilities from "../utilities";
 
 /**
  * Use this data source to get the ID of an available OpenStack floating IP.
  */
-export function getFloatingIP(args?: GetFloatingIPArgs, opts?: pulumi.InvokeOptions): Promise<GetFloatingIPResult> {
+export function getFloatingIp(args?: GetFloatingIpArgs, opts?: pulumi.InvokeOptions): Promise<GetFloatingIpResult> {
     args = args || {};
-    return pulumi.runtime.invoke("openstack:networking/getFloatingIP:getFloatingIP", {
+    return pulumi.runtime.invoke("openstack:networking/getFloatingIp:getFloatingIp", {
         "address": args.address,
         "fixedIp": args.fixedIp,
         "pool": args.pool,
@@ -20,9 +21,9 @@ export function getFloatingIP(args?: GetFloatingIPArgs, opts?: pulumi.InvokeOpti
 }
 
 /**
- * A collection of arguments for invoking getFloatingIP.
+ * A collection of arguments for invoking getFloatingIp.
  */
-export interface GetFloatingIPArgs {
+export interface GetFloatingIpArgs {
     /**
      * The IP address of the floating IP.
      */
@@ -53,9 +54,9 @@ export interface GetFloatingIPArgs {
 }
 
 /**
- * A collection of values returned by getFloatingIP.
+ * A collection of values returned by getFloatingIp.
  */
-export interface GetFloatingIPResult {
+export interface GetFloatingIpResult {
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

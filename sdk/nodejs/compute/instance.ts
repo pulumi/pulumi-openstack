@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as utilities from "../utilities";
 
 /**
  * Manages a V2 VM instance resource within OpenStack.
@@ -97,8 +98,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly metadata: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * The human-readable
-     * name of the network. Changing this creates a new server.
+     * A unique name for the resource.
      */
     public readonly name: pulumi.Output<string>;
     /**
@@ -298,8 +298,7 @@ export interface InstanceState {
      */
     readonly metadata?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The human-readable
-     * name of the network. Changing this creates a new server.
+     * A unique name for the resource.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -430,8 +429,7 @@ export interface InstanceArgs {
      */
     readonly metadata?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The human-readable
-     * name of the network. Changing this creates a new server.
+     * A unique name for the resource.
      */
     readonly name?: pulumi.Input<string>;
     /**

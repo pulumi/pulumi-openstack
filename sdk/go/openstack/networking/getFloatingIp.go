@@ -8,7 +8,7 @@ import (
 )
 
 // Use this data source to get the ID of an available OpenStack floating IP.
-func LookupFloatingIP(ctx *pulumi.Context, args *GetFloatingIPArgs) (*GetFloatingIPResult, error) {
+func LookupFloatingIp(ctx *pulumi.Context, args *GetFloatingIpArgs) (*GetFloatingIpResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
 		inputs["address"] = args.Address
@@ -19,17 +19,17 @@ func LookupFloatingIP(ctx *pulumi.Context, args *GetFloatingIPArgs) (*GetFloatin
 		inputs["status"] = args.Status
 		inputs["tenantId"] = args.TenantId
 	}
-	outputs, err := ctx.Invoke("openstack:networking/getFloatingIP:getFloatingIP", inputs)
+	outputs, err := ctx.Invoke("openstack:networking/getFloatingIp:getFloatingIp", inputs)
 	if err != nil {
 		return nil, err
 	}
-	return &GetFloatingIPResult{
+	return &GetFloatingIpResult{
 		Id: outputs["id"],
 	}, nil
 }
 
-// A collection of arguments for invoking getFloatingIP.
-type GetFloatingIPArgs struct {
+// A collection of arguments for invoking getFloatingIp.
+type GetFloatingIpArgs struct {
 	// The IP address of the floating IP.
 	Address interface{}
 	// The specific IP address of the internal port which should be associated with the floating IP.
@@ -47,8 +47,8 @@ type GetFloatingIPArgs struct {
 	TenantId interface{}
 }
 
-// A collection of values returned by getFloatingIP.
-type GetFloatingIPResult struct {
+// A collection of values returned by getFloatingIp.
+type GetFloatingIpResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

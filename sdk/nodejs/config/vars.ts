@@ -2,95 +2,96 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as utilities from "../utilities";
 
 let __config = new pulumi.Config("openstack");
 
 /**
  * The Identity authentication URL.
  */
-export let authUrl: string | undefined = __config.get("authUrl");
+export let authUrl: string | undefined = __config.get("authUrl") || utilities.getEnv("OS_AUTH_URL");
 /**
  * A Custom CA certificate.
  */
-export let cacertFile: string | undefined = __config.get("cacertFile");
+export let cacertFile: string | undefined = __config.get("cacertFile") || utilities.getEnv("OS_CACERT");
 /**
  * A client certificate to authenticate with.
  */
-export let cert: string | undefined = __config.get("cert");
+export let cert: string | undefined = __config.get("cert") || utilities.getEnv("OS_CERT");
 /**
  * An entry in a `clouds.yaml` file to use.
  */
-export let cloud: string | undefined = __config.get("cloud");
+export let cloud: string | undefined = __config.get("cloud") || utilities.getEnv("OS_CLOUD");
 /**
  * The name of the Domain ID to scope to if no other domain is specified. Defaults to `default` (Identity v3).
  */
-export let defaultDomain: string | undefined = __config.get("defaultDomain");
+export let defaultDomain: string | undefined = __config.get("defaultDomain") || (utilities.getEnv("OS_DEFAULT_DOMAIN") || "default");
 /**
  * The ID of the Domain to scope to (Identity v3).
  */
-export let domainId: string | undefined = __config.get("domainId");
+export let domainId: string | undefined = __config.get("domainId") || utilities.getEnv("OS_DOMAIN_ID");
 /**
  * The name of the Domain to scope to (Identity v3).
  */
-export let domainName: string | undefined = __config.get("domainName");
-export let endpointType: string | undefined = __config.get("endpointType");
+export let domainName: string | undefined = __config.get("domainName") || utilities.getEnv("OS_DOMAIN_NAME");
+export let endpointType: string | undefined = __config.get("endpointType") || utilities.getEnv("OS_ENDPOINT_TYPE");
 /**
  * Trust self-signed certificates.
  */
-export let insecure: boolean | undefined = __config.getObject<boolean>("insecure");
+export let insecure: boolean | undefined = __config.getObject<boolean>("insecure") || utilities.getEnvBoolean("OS_INSECURE");
 /**
  * A client private key to authenticate with.
  */
-export let key: string | undefined = __config.get("key");
+export let key: string | undefined = __config.get("key") || utilities.getEnv("OS_KEY");
 /**
  * Password to login with.
  */
-export let password: string | undefined = __config.get("password");
+export let password: string | undefined = __config.get("password") || utilities.getEnv("OS_PASSWORD");
 /**
  * The ID of the domain where the proejct resides (Identity v3).
  */
-export let projectDomainId: string | undefined = __config.get("projectDomainId");
+export let projectDomainId: string | undefined = __config.get("projectDomainId") || utilities.getEnv("OS_PROJECT_DOMAIN_ID");
 /**
  * The name of the domain where the project resides (Identity v3).
  */
-export let projectDomainName: string | undefined = __config.get("projectDomainName");
+export let projectDomainName: string | undefined = __config.get("projectDomainName") || utilities.getEnv("OS_PROJECT_DOMAIN_NAME");
 /**
  * The OpenStack region to connect to.
  */
-export let region: string | undefined = __config.get("region");
+export let region: string | undefined = __config.get("region") || utilities.getEnv("OS_REGION_NAME");
 /**
  * Use Swift's authentication system instead of Keystone. Only used for interaction with Swift.
  */
-export let swauth: boolean | undefined = __config.getObject<boolean>("swauth");
+export let swauth: boolean | undefined = __config.getObject<boolean>("swauth") || utilities.getEnvBoolean("OS_SWAUTH");
 /**
  * The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.
  */
-export let tenantId: string | undefined = __config.get("tenantId");
+export let tenantId: string | undefined = __config.get("tenantId") || utilities.getEnv("OS_TENANT_ID", "OS_PROJECT_ID");
 /**
  * The name of the Tenant (Identity v2) or Project (Identity v3) to login with.
  */
-export let tenantName: string | undefined = __config.get("tenantName");
+export let tenantName: string | undefined = __config.get("tenantName") || utilities.getEnv("OS_TENANT_NAME", "OS_PROJECT_NAME");
 /**
  * Authentication token to use as an alternative to username/password.
  */
-export let token: string | undefined = __config.get("token");
+export let token: string | undefined = __config.get("token") || utilities.getEnv("OS_TOKEN", "OS_AUTH_TOKEN");
 /**
  * If set to `true`, API requests will go the Load Balancer service (Octavia) instead of the Networking service (Neutron).
  */
-export let useOctavia: boolean | undefined = __config.getObject<boolean>("useOctavia");
+export let useOctavia: boolean | undefined = __config.getObject<boolean>("useOctavia") || utilities.getEnvBoolean("OS_USE_OCTAVIA");
 /**
  * The ID of the domain where the user resides (Identity v3).
  */
-export let userDomainId: string | undefined = __config.get("userDomainId");
+export let userDomainId: string | undefined = __config.get("userDomainId") || utilities.getEnv("OS_USER_DOMAIN_ID");
 /**
  * The name of the domain where the user resides (Identity v3).
  */
-export let userDomainName: string | undefined = __config.get("userDomainName");
+export let userDomainName: string | undefined = __config.get("userDomainName") || utilities.getEnv("OS_USER_DOMAIN_NAME");
 /**
  * Username to login with.
  */
-export let userId: string | undefined = __config.get("userId");
+export let userId: string | undefined = __config.get("userId") || utilities.getEnv("OS_USER_ID");
 /**
  * Username to login with.
  */
-export let userName: string | undefined = __config.get("userName");
+export let userName: string | undefined = __config.get("userName") || utilities.getEnv("OS_USERNAME");

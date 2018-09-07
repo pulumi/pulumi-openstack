@@ -4,6 +4,7 @@
 
 import pulumi
 import pulumi.runtime
+from .. import utilities
 
 class SecGroup(pulumi.CustomResource):
     """
@@ -11,8 +12,8 @@ class SecGroup(pulumi.CustomResource):
     
     Please note that managing security groups through the OpenStack Compute API
     has been deprecated. Unless you are using an older OpenStack environment, it is
-    recommended to use the [`openstack_networking_secgroup_v2`](networking_secgroup_v2.html)
-    and [`openstack_networking_secgroup_rule_v2`](networking_secgroup_rule_v2.html)
+    recommended to use the `openstack_networking_secgroup_v2`
+    and `openstack_networking_secgroup_rule_v2`
     resources instead, which uses the OpenStack Networking API.
     """
     def __init__(__self__, __name__, __opts__=None, description=None, name=None, region=None, rules=None):

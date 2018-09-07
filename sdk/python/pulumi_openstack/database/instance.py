@@ -4,6 +4,7 @@
 
 import pulumi
 import pulumi.runtime
+from .. import utilities
 
 class Instance(pulumi.CustomResource):
     """
@@ -62,8 +63,7 @@ class Instance(pulumi.CustomResource):
             raise TypeError('Expected property name to be a basestring')
         __self__.name = name
         """
-        Database to be created on new instance. Changing this creates a
-        new instance.
+        A unique name for the resource.
         """
         __props__['name'] = name
 
