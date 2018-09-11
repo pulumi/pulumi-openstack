@@ -422,6 +422,12 @@
   revision = "0b12d6b5"
 
 [[projects]]
+  branch = "master"
+  name = "github.com/kballard/go-shellquote"
+  packages = ["."]
+  revision = "95032a82bc518f77982ea72343cc1ade730072f0"
+
+[[projects]]
   name = "github.com/kevinburke/ssh_config"
   packages = ["."]
   revision = "9fc7bb800b555d63157c65a904c86a2cc7b4e795"
@@ -438,6 +444,12 @@
   packages = ["."]
   revision = "0360b2af4f38e8d38c7fce2a9f4e702702d73a39"
   version = "v0.0.3"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/mgutz/ansi"
+  packages = ["."]
+  revision = "9520e82c474b0a04dd04f8a40959027271bab992"
 
 [[projects]]
   branch = "master"
@@ -539,13 +551,13 @@
   version = "v1.1.1"
 
 [[projects]]
-  branch = "master"
   name = "github.com/pulumi/pulumi"
   packages = [
     "pkg/apitype",
     "pkg/apitype/migrate",
     "pkg/backend",
-    "pkg/backend/local",
+    "pkg/backend/display",
+    "pkg/backend/filestate",
     "pkg/diag",
     "pkg/diag/colors",
     "pkg/encoding",
@@ -572,6 +584,7 @@
     "pkg/util/httputil",
     "pkg/util/logging",
     "pkg/util/mapper",
+    "pkg/util/result",
     "pkg/util/retry",
     "pkg/util/rpcutil",
     "pkg/util/rpcutil/rpcerror",
@@ -583,16 +596,17 @@
     "sdk/go/pulumi/config",
     "sdk/proto/go"
   ]
-  revision = "1ebd698a7ab2926ef88eb97a8f268e6c95f44816"
+  revision = "c7d3cc5731d0ca2b26ad5e18e6a23b43b74b44b7"
+  version = "v0.15.1"
 
 [[projects]]
-  branch = "master"
   name = "github.com/pulumi/pulumi-terraform"
   packages = [
     "pkg/tfbridge",
     "pkg/tfgen"
   ]
-  revision = "95c5ae2284ada1866845359ac2fec69329c67ab8"
+  revision = "8808584154671f6480f5adff72da24f2a773cbfc"
+  version = "v0.15.1"
 
 [[projects]]
   branch = "master"
@@ -652,6 +666,12 @@
   name = "github.com/terraform-providers/terraform-provider-openstack"
   packages = ["openstack"]
   revision = "7d8c4a9a86ef7a05bd697a38be00a2d76673c6a0"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/texttheater/golang-levenshtein"
+  packages = ["levenshtein"]
+  revision = "d188e65d659ef53fcdb0691c12f1bba64928b649"
 
 [[projects]]
   name = "github.com/uber/jaeger-client-go"
@@ -823,6 +843,16 @@
   version = "v1.13.0"
 
 [[projects]]
+  name = "gopkg.in/AlecAivazis/survey.v1"
+  packages = [
+    ".",
+    "core",
+    "terminal"
+  ]
+  revision = "f30c5d1830c892f533140f29a1de89141dc217f5"
+  version = "v1.6.2"
+
+[[projects]]
   name = "gopkg.in/src-d/go-billy.v4"
   packages = [
     ".",
@@ -896,6 +926,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "a575f3b2325b7df2a4ec0840c18224611179ad8e9a158c30356c745b8e053048"
+  inputs-digest = "3cff4d74c89b6533fb0a1dcae260884c214516dfc97905b3fac67866d69946bb"
   solver-name = "gps-cdcl"
   solver-version = 1
