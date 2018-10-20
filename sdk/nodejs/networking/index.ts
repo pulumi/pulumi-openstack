@@ -6,6 +6,7 @@ export * from "./floatingIp";
 export * from "./floatingIpAssociate";
 export * from "./getFloatingIp";
 export * from "./getNetwork";
+export * from "./getRouter";
 export * from "./getSecGroup";
 export * from "./getSubnet";
 export * from "./getSubnetPool";

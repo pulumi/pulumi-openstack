@@ -10,7 +10,7 @@ class Instance(pulumi.CustomResource):
     """
     Manages a V2 VM instance resource within OpenStack.
     """
-    def __init__(__self__, __name__, __opts__=None, access_ip_v4=None, access_ip_v6=None, admin_pass=None, availability_zone=None, block_devices=None, config_drive=None, flavor_id=None, flavor_name=None, force_delete=None, image_id=None, image_name=None, key_pair=None, metadata=None, name=None, networks=None, personalities=None, power_state=None, region=None, scheduler_hints=None, security_groups=None, stop_before_destroy=None, user_data=None):
+    def __init__(__self__, __name__, __opts__=None, access_ip_v4=None, access_ip_v6=None, admin_pass=None, availability_zone=None, block_devices=None, config_drive=None, flavor_id=None, flavor_name=None, force_delete=None, image_id=None, image_name=None, key_pair=None, metadata=None, name=None, networks=None, personalities=None, power_state=None, region=None, scheduler_hints=None, security_groups=None, stop_before_destroy=None, user_data=None, vendor_options=None):
         """Create a Instance resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
@@ -234,6 +234,15 @@ class Instance(pulumi.CustomResource):
         """
         __props__['userData'] = user_data
 
+        if vendor_options and not isinstance(vendor_options, dict):
+            raise TypeError('Expected property vendor_options to be a dict')
+        __self__.vendor_options = vendor_options
+        """
+        Map of additional vendor-specific options.
+        Supported options are described below.
+        """
+        __props__['vendorOptions'] = vendor_options
+
         __self__.all_metadata = pulumi.runtime.UNKNOWN
         """
         Contains all instance metadata, even metadata not set
@@ -293,3 +302,5 @@ class Instance(pulumi.CustomResource):
             self.stop_before_destroy = outs['stopBeforeDestroy']
         if 'userData' in outs:
             self.user_data = outs['userData']
+        if 'vendorOptions' in outs:
+            self.vendor_options = outs['vendorOptions']

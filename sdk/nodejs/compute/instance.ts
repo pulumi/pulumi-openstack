@@ -150,6 +150,11 @@ export class Instance extends pulumi.CustomResource {
      * Changing this creates a new server.
      */
     public readonly userData: pulumi.Output<string | undefined>;
+    /**
+     * Map of additional vendor-specific options.
+     * Supported options are described below.
+     */
+    public readonly vendorOptions: pulumi.Output<{ ignoreResizeConfirmation?: boolean } | undefined>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -186,6 +191,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["securityGroups"] = state ? state.securityGroups : undefined;
             inputs["stopBeforeDestroy"] = state ? state.stopBeforeDestroy : undefined;
             inputs["userData"] = state ? state.userData : undefined;
+            inputs["vendorOptions"] = state ? state.vendorOptions : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
             inputs["accessIpV4"] = args ? args.accessIpV4 : undefined;
@@ -210,6 +216,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["securityGroups"] = args ? args.securityGroups : undefined;
             inputs["stopBeforeDestroy"] = args ? args.stopBeforeDestroy : undefined;
             inputs["userData"] = args ? args.userData : undefined;
+            inputs["vendorOptions"] = args ? args.vendorOptions : undefined;
             inputs["allMetadata"] = undefined /*out*/;
         }
         super("openstack:compute/instance:Instance", name, inputs, opts);
@@ -350,6 +357,11 @@ export interface InstanceState {
      * Changing this creates a new server.
      */
     readonly userData?: pulumi.Input<string>;
+    /**
+     * Map of additional vendor-specific options.
+     * Supported options are described below.
+     */
+    readonly vendorOptions?: pulumi.Input<{ ignoreResizeConfirmation?: pulumi.Input<boolean> }>;
 }
 
 /**
@@ -481,4 +493,9 @@ export interface InstanceArgs {
      * Changing this creates a new server.
      */
     readonly userData?: pulumi.Input<string>;
+    /**
+     * Map of additional vendor-specific options.
+     * Supported options are described below.
+     */
+    readonly vendorOptions?: pulumi.Input<{ ignoreResizeConfirmation?: pulumi.Input<boolean> }>;
 }

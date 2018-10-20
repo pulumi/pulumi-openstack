@@ -53,8 +53,8 @@ export class Port extends pulumi.CustomResource {
      */
     public readonly deviceOwner: pulumi.Output<string>;
     /**
-     * An array of desired IPs for this port. The structure is
-     * described below.
+     * An array of desired IPs for
+     * this port. The structure is described below.
      */
     public readonly fixedIps: pulumi.Output<{ ipAddress?: string, subnetId: string }[] | undefined>;
     /**
@@ -72,6 +72,12 @@ export class Port extends pulumi.CustomResource {
      * this creates a new port.
      */
     public readonly networkId: pulumi.Output<string>;
+    /**
+     * Create a port with no fixed
+     * IP address. This will also remove any fixed IPs previously set on a port. `true`
+     * is the only valid value for this argument.
+     */
+    public readonly noFixedIp: pulumi.Output<boolean | undefined>;
     /**
      * If set to
      * `true`, then no security groups are applied to the port. If set to `false` and
@@ -126,6 +132,7 @@ export class Port extends pulumi.CustomResource {
             inputs["macAddress"] = state ? state.macAddress : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["networkId"] = state ? state.networkId : undefined;
+            inputs["noFixedIp"] = state ? state.noFixedIp : undefined;
             inputs["noSecurityGroups"] = state ? state.noSecurityGroups : undefined;
             inputs["region"] = state ? state.region : undefined;
             inputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
@@ -144,6 +151,7 @@ export class Port extends pulumi.CustomResource {
             inputs["macAddress"] = args ? args.macAddress : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["networkId"] = args ? args.networkId : undefined;
+            inputs["noFixedIp"] = args ? args.noFixedIp : undefined;
             inputs["noSecurityGroups"] = args ? args.noSecurityGroups : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
@@ -193,8 +201,8 @@ export interface PortState {
      */
     readonly deviceOwner?: pulumi.Input<string>;
     /**
-     * An array of desired IPs for this port. The structure is
-     * described below.
+     * An array of desired IPs for
+     * this port. The structure is described below.
      */
     readonly fixedIps?: pulumi.Input<pulumi.Input<{ ipAddress?: pulumi.Input<string>, subnetId: pulumi.Input<string> }>[]>;
     /**
@@ -212,6 +220,12 @@ export interface PortState {
      * this creates a new port.
      */
     readonly networkId?: pulumi.Input<string>;
+    /**
+     * Create a port with no fixed
+     * IP address. This will also remove any fixed IPs previously set on a port. `true`
+     * is the only valid value for this argument.
+     */
+    readonly noFixedIp?: pulumi.Input<boolean>;
     /**
      * If set to
      * `true`, then no security groups are applied to the port. If set to `false` and
@@ -272,8 +286,8 @@ export interface PortArgs {
      */
     readonly deviceOwner?: pulumi.Input<string>;
     /**
-     * An array of desired IPs for this port. The structure is
-     * described below.
+     * An array of desired IPs for
+     * this port. The structure is described below.
      */
     readonly fixedIps?: pulumi.Input<pulumi.Input<{ ipAddress?: pulumi.Input<string>, subnetId: pulumi.Input<string> }>[]>;
     /**
@@ -291,6 +305,12 @@ export interface PortArgs {
      * this creates a new port.
      */
     readonly networkId: pulumi.Input<string>;
+    /**
+     * Create a port with no fixed
+     * IP address. This will also remove any fixed IPs previously set on a port. `true`
+     * is the only valid value for this argument.
+     */
+    readonly noFixedIp?: pulumi.Input<boolean>;
     /**
      * If set to
      * `true`, then no security groups are applied to the port. If set to `false` and
