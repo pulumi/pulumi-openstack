@@ -82,7 +82,7 @@ func Provider() tfbridge.ProviderInfo {
 		Description: "A Pulumi package for creating and managing OpenStack cloud resources.",
 		Keywords:    []string{"pulumi", "openstack"},
 		Homepage:    "https://pulumi.io",
-		License:     "Apache 2.0",
+		License:     "Apache-2.0",
 		Repository:  "https://github.com/pulumi/pulumi-openstack",
 		Config: map[string]*tfbridge.SchemaInfo{
 			"auth_url": &tfbridge.SchemaInfo{
