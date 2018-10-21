@@ -29,6 +29,7 @@ func NewPort(ctx *pulumi.Context,
 		inputs["macAddress"] = nil
 		inputs["name"] = nil
 		inputs["networkId"] = nil
+		inputs["noFixedIp"] = nil
 		inputs["noSecurityGroups"] = nil
 		inputs["region"] = nil
 		inputs["securityGroupIds"] = nil
@@ -43,6 +44,7 @@ func NewPort(ctx *pulumi.Context,
 		inputs["macAddress"] = args.MacAddress
 		inputs["name"] = args.Name
 		inputs["networkId"] = args.NetworkId
+		inputs["noFixedIp"] = args.NoFixedIp
 		inputs["noSecurityGroups"] = args.NoSecurityGroups
 		inputs["region"] = args.Region
 		inputs["securityGroupIds"] = args.SecurityGroupIds
@@ -74,6 +76,7 @@ func GetPort(ctx *pulumi.Context,
 		inputs["macAddress"] = state.MacAddress
 		inputs["name"] = state.Name
 		inputs["networkId"] = state.NetworkId
+		inputs["noFixedIp"] = state.NoFixedIp
 		inputs["noSecurityGroups"] = state.NoSecurityGroups
 		inputs["region"] = state.Region
 		inputs["securityGroupIds"] = state.SecurityGroupIds
@@ -135,8 +138,8 @@ func (r *Port) DeviceOwner() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["deviceOwner"])
 }
 
-// An array of desired IPs for this port. The structure is
-// described below.
+// An array of desired IPs for
+// this port. The structure is described below.
 func (r *Port) FixedIps() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["fixedIps"])
 }
@@ -157,6 +160,13 @@ func (r *Port) Name() *pulumi.StringOutput {
 // this creates a new port.
 func (r *Port) NetworkId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["networkId"])
+}
+
+// Create a port with no fixed
+// IP address. This will also remove any fixed IPs previously set on a port. `true`
+// is the only valid value for this argument.
+func (r *Port) NoFixedIp() *pulumi.BoolOutput {
+	return (*pulumi.BoolOutput)(r.s.State["noFixedIp"])
 }
 
 // If set to
@@ -217,8 +227,8 @@ type PortState struct {
 	// The device owner of the Port. Changing this creates
 	// a new port.
 	DeviceOwner interface{}
-	// An array of desired IPs for this port. The structure is
-	// described below.
+	// An array of desired IPs for
+	// this port. The structure is described below.
 	FixedIps interface{}
 	// Specify a specific MAC address for the port. Changing
 	// this creates a new port.
@@ -229,6 +239,10 @@ type PortState struct {
 	// The ID of the network to attach the port to. Changing
 	// this creates a new port.
 	NetworkId interface{}
+	// Create a port with no fixed
+	// IP address. This will also remove any fixed IPs previously set on a port. `true`
+	// is the only valid value for this argument.
+	NoFixedIp interface{}
 	// If set to
 	// `true`, then no security groups are applied to the port. If set to `false` and
 	// no `security_group_ids` are specified, then the Port will yield to the default
@@ -268,8 +282,8 @@ type PortArgs struct {
 	// The device owner of the Port. Changing this creates
 	// a new port.
 	DeviceOwner interface{}
-	// An array of desired IPs for this port. The structure is
-	// described below.
+	// An array of desired IPs for
+	// this port. The structure is described below.
 	FixedIps interface{}
 	// Specify a specific MAC address for the port. Changing
 	// this creates a new port.
@@ -280,6 +294,10 @@ type PortArgs struct {
 	// The ID of the network to attach the port to. Changing
 	// this creates a new port.
 	NetworkId interface{}
+	// Create a port with no fixed
+	// IP address. This will also remove any fixed IPs previously set on a port. `true`
+	// is the only valid value for this argument.
+	NoFixedIp interface{}
 	// If set to
 	// `true`, then no security groups are applied to the port. If set to `false` and
 	// no `security_group_ids` are specified, then the Port will yield to the default

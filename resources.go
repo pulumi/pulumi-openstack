@@ -29,17 +29,18 @@ const (
 	// packages:
 	openstackPkg = "openstack"
 	// modules:
-	blockstorageMod = "blockstorage"  // Block Storage
-	computeMod      = "compute"       // Compute
-	databaseMod     = "database"      // Database
-	dnsMod          = "dns"           // DNS
-	identityMod     = "identity"      // Identity
-	imagesMod       = "images"        // Images
-	networkingMod   = "networking"    // Networking
-	lbMod           = "loadbalancer"  // Load Balancer
-	firewallMod     = "firewall"      // Firewall
-	osMod           = "objectstorage" // Object Storage
-	vpnaasMod       = "vpnaas"        // VPNaaS
+	blockstorageMod   = "blockstorage"   // Block Storage
+	computeMod        = "compute"        // Compute
+	containerinfraMod = "containerinfra" // Container Infrastructure
+	databaseMod       = "database"       // Database
+	dnsMod            = "dns"            // DNS
+	identityMod       = "identity"       // Identity
+	imagesMod         = "images"         // Images
+	networkingMod     = "networking"     // Networking
+	lbMod             = "loadbalancer"   // Load Balancer
+	firewallMod       = "firewall"       // Firewall
+	osMod             = "objectstorage"  // Object Storage
+	vpnaasMod         = "vpnaas"         // VPNaaS
 )
 
 // openstackMember manufactures a type token for the OpenStack package and the given module and type.
@@ -228,6 +229,10 @@ func Provider() tfbridge.ProviderInfo {
 			"openstack_compute_servergroup_v2":          {Tok: openstackResource(computeMod, "ServerGroup")},
 			"openstack_compute_volume_attach_v2":        {Tok: openstackResource(computeMod, "VolumeAttach")},
 
+			// Container Infrastructure
+			"openstack_containerinfra_cluster_v1":         {Tok: openstackResource(containerinfraMod, "Cluster")},
+			"openstack_containerinfra_clustertemplate_v1": {Tok: openstackResource(containerinfraMod, "ClusterTemplate")},
+
 			// Database
 			"openstack_db_instance_v1":      {Tok: openstackResource(databaseMod, "Instance")},
 			"openstack_db_database_v1":      {Tok: openstackResource(databaseMod, "Database")},
@@ -280,6 +285,7 @@ func Provider() tfbridge.ProviderInfo {
 			// Object Storage
 			"openstack_objectstorage_container_v1": {Tok: openstackResource(osMod, "Container")},
 			"openstack_objectstorage_object_v1":    {Tok: openstackResource(osMod, "ContainerObject")},
+			"openstack_objectstorage_tempurl_v1":   {Tok: openstackResource(osMod, "TempUrl")},
 
 			// VPNaaS
 			"openstack_vpnaas_ipsec_policy_v2":    {Tok: openstackResource(vpnaasMod, "IpSecPolicy")},
@@ -292,6 +298,9 @@ func Provider() tfbridge.ProviderInfo {
 			// Compute
 			"openstack_compute_flavor_v2":  {Tok: openstackDataSource(computeMod, "getFlavor")},
 			"openstack_compute_keypair_v2": {Tok: openstackDataSource(computeMod, "getKeypair")},
+
+			// Container Infrastructure
+			"openstack_containerinfra_clustertemplate_v1": {Tok: openstackDataSource(containerinfraMod, "getClusterTemplate")},
 
 			// DNS
 			"openstack_dns_zone_v2": {Tok: openstackDataSource(dnsMod, "getDnsZone")},
@@ -309,6 +318,7 @@ func Provider() tfbridge.ProviderInfo {
 
 			// Networking
 			"openstack_networking_network_v2":    {Tok: openstackDataSource(networkingMod, "getNetwork")},
+			"openstack_networking_router_v2":     {Tok: openstackDataSource(networkingMod, "getRouter")},
 			"openstack_networking_secgroup_v2":   {Tok: openstackDataSource(networkingMod, "getSecGroup")},
 			"openstack_networking_subnet_v2":     {Tok: openstackDataSource(networkingMod, "getSubnet")},
 			"openstack_networking_subnetpool_v2": {Tok: openstackDataSource(networkingMod, "getSubnetPool")},

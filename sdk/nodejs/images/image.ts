@@ -89,7 +89,8 @@ export class Image extends pulumi.CustomResource {
     public /*out*/ readonly owner: pulumi.Output<string>;
     /**
      * A map of key/value pairs to set freeform
-     * information about an image.
+     * information about an image. See the "Notes" section for further
+     * information about properties.
      */
     public readonly properties: pulumi.Output<{[key: string]: any}>;
     /**
@@ -283,7 +284,8 @@ export interface ImageState {
     readonly owner?: pulumi.Input<string>;
     /**
      * A map of key/value pairs to set freeform
-     * information about an image.
+     * information about an image. See the "Notes" section for further
+     * information about properties.
      */
     readonly properties?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -383,7 +385,8 @@ export interface ImageArgs {
     readonly name?: pulumi.Input<string>;
     /**
      * A map of key/value pairs to set freeform
-     * information about an image.
+     * information about an image. See the "Notes" section for further
+     * information about properties.
      */
     readonly properties?: pulumi.Input<{[key: string]: any}>;
     /**

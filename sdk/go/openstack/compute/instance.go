@@ -39,6 +39,7 @@ func NewInstance(ctx *pulumi.Context,
 		inputs["securityGroups"] = nil
 		inputs["stopBeforeDestroy"] = nil
 		inputs["userData"] = nil
+		inputs["vendorOptions"] = nil
 	} else {
 		inputs["accessIpV4"] = args.AccessIpV4
 		inputs["accessIpV6"] = args.AccessIpV6
@@ -62,6 +63,7 @@ func NewInstance(ctx *pulumi.Context,
 		inputs["securityGroups"] = args.SecurityGroups
 		inputs["stopBeforeDestroy"] = args.StopBeforeDestroy
 		inputs["userData"] = args.UserData
+		inputs["vendorOptions"] = args.VendorOptions
 	}
 	inputs["allMetadata"] = nil
 	s, err := ctx.RegisterResource("openstack:compute/instance:Instance", name, true, inputs, opts...)
@@ -100,6 +102,7 @@ func GetInstance(ctx *pulumi.Context,
 		inputs["securityGroups"] = state.SecurityGroups
 		inputs["stopBeforeDestroy"] = state.StopBeforeDestroy
 		inputs["userData"] = state.UserData
+		inputs["vendorOptions"] = state.VendorOptions
 	}
 	s, err := ctx.ReadResource("openstack:compute/instance:Instance", name, id, inputs, opts...)
 	if err != nil {
@@ -271,6 +274,12 @@ func (r *Instance) UserData() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["userData"])
 }
 
+// Map of additional vendor-specific options.
+// Supported options are described below.
+func (r *Instance) VendorOptions() *pulumi.Output {
+	return r.s.State["vendorOptions"]
+}
+
 // Input properties used for looking up and filtering Instance resources.
 type InstanceState struct {
 	// The first detected Fixed IPv4 address _or_ the
@@ -357,6 +366,9 @@ type InstanceState struct {
 	// The user data to provide when launching the instance.
 	// Changing this creates a new server.
 	UserData interface{}
+	// Map of additional vendor-specific options.
+	// Supported options are described below.
+	VendorOptions interface{}
 }
 
 // The set of arguments for constructing a Instance resource.
@@ -442,4 +454,7 @@ type InstanceArgs struct {
 	// The user data to provide when launching the instance.
 	// Changing this creates a new server.
 	UserData interface{}
+	// Map of additional vendor-specific options.
+	// Supported options are described below.
+	VendorOptions interface{}
 }
