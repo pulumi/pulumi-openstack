@@ -26,7 +26,7 @@ setup(name='pulumi_openstack',
       project_urls={
           'Repository': 'https://github.com/pulumi/pulumi-openstack'
       },
-      license='Apache 2.0',
+      license='Apache-2.0',
       packages=find_packages(),
       install_requires=[
           'pulumi>=0.15.1,<0.16.0'
