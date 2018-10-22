@@ -12,7 +12,7 @@ class SecGroupRule(pulumi.CustomResource):
     Unlike Nova security groups, neutron separates the group from the rules
     and also allows an admin to target a specific tenant_id.
     """
-    def __init__(__self__, __name__, __opts__=None, direction=None, ethertype=None, port_range_max=None, port_range_min=None, protocol=None, region=None, remote_group_id=None, remote_ip_prefix=None, security_group_id=None, tenant_id=None):
+    def __init__(__self__, __name__, __opts__=None, description=None, direction=None, ethertype=None, port_range_max=None, port_range_min=None, protocol=None, region=None, remote_group_id=None, remote_ip_prefix=None, security_group_id=None, tenant_id=None):
         """Create a SecGroupRule resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
@@ -22,6 +22,14 @@ class SecGroupRule(pulumi.CustomResource):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
+
+        if description and not isinstance(description, basestring):
+            raise TypeError('Expected property description to be a basestring')
+        __self__.description = description
+        """
+        A description of the rule. Changing this creates a new security group rule.
+        """
+        __props__['description'] = description
 
         if not direction:
             raise TypeError('Missing required property direction')
@@ -153,6 +161,8 @@ class SecGroupRule(pulumi.CustomResource):
             __opts__)
 
     def set_outputs(self, outs):
+        if 'description' in outs:
+            self.description = outs['description']
         if 'direction' in outs:
             self.direction = outs['direction']
         if 'ethertype' in outs:

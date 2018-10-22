@@ -198,7 +198,8 @@ func (r *Image) Owner() *pulumi.StringOutput {
 }
 
 // A map of key/value pairs to set freeform
-// information about an image.
+// information about an image. See the "Notes" section for further
+// information about properties.
 func (r *Image) Properties() *pulumi.MapOutput {
 	return (*pulumi.MapOutput)(r.s.State["properties"])
 }
@@ -302,7 +303,8 @@ type ImageState struct {
 	// The id of the openstack user who owns the image.
 	Owner interface{}
 	// A map of key/value pairs to set freeform
-	// information about an image.
+	// information about an image. See the "Notes" section for further
+	// information about properties.
 	Properties interface{}
 	// If true, image will not be deletable.
 	// Defaults to false.
@@ -364,7 +366,8 @@ type ImageArgs struct {
 	// The name of the image.
 	Name interface{}
 	// A map of key/value pairs to set freeform
-	// information about an image.
+	// information about an image. See the "Notes" section for further
+	// information about properties.
 	Properties interface{}
 	// If true, image will not be deletable.
 	// Defaults to false.

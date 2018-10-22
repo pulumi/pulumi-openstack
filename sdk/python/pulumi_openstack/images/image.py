@@ -105,7 +105,8 @@ class Image(pulumi.CustomResource):
         __self__.properties = properties
         """
         A map of key/value pairs to set freeform
-        information about an image.
+        information about an image. See the "Notes" section for further
+        information about properties.
         """
         __props__['properties'] = properties
 

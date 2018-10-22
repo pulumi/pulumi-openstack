@@ -29,6 +29,7 @@ func NewSecGroupRule(ctx *pulumi.Context,
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["description"] = nil
 		inputs["direction"] = nil
 		inputs["ethertype"] = nil
 		inputs["portRangeMax"] = nil
@@ -40,6 +41,7 @@ func NewSecGroupRule(ctx *pulumi.Context,
 		inputs["securityGroupId"] = nil
 		inputs["tenantId"] = nil
 	} else {
+		inputs["description"] = args.Description
 		inputs["direction"] = args.Direction
 		inputs["ethertype"] = args.Ethertype
 		inputs["portRangeMax"] = args.PortRangeMax
@@ -64,6 +66,7 @@ func GetSecGroupRule(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *SecGroupRuleState, opts ...pulumi.ResourceOpt) (*SecGroupRule, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["description"] = state.Description
 		inputs["direction"] = state.Direction
 		inputs["ethertype"] = state.Ethertype
 		inputs["portRangeMax"] = state.PortRangeMax
@@ -90,6 +93,11 @@ func (r *SecGroupRule) URN() *pulumi.URNOutput {
 // ID is this resource's unique identifier assigned by its provider.
 func (r *SecGroupRule) ID() *pulumi.IDOutput {
 	return r.s.ID
+}
+
+// A description of the rule. Changing this creates a new security group rule.
+func (r *SecGroupRule) Description() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["description"])
 }
 
 // The direction of the rule, valid values are __ingress__
@@ -181,6 +189,8 @@ func (r *SecGroupRule) TenantId() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering SecGroupRule resources.
 type SecGroupRuleState struct {
+	// A description of the rule. Changing this creates a new security group rule.
+	Description interface{}
 	// The direction of the rule, valid values are __ingress__
 	// or __egress__. Changing this creates a new security group rule.
 	Direction interface{}
@@ -242,6 +252,8 @@ type SecGroupRuleState struct {
 
 // The set of arguments for constructing a SecGroupRule resource.
 type SecGroupRuleArgs struct {
+	// A description of the rule. Changing this creates a new security group rule.
+	Description interface{}
 	// The direction of the rule, valid values are __ingress__
 	// or __egress__. Changing this creates a new security group rule.
 	Direction interface{}

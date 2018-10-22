@@ -10,7 +10,7 @@ class Port(pulumi.CustomResource):
     """
     Manages a V2 port resource within OpenStack.
     """
-    def __init__(__self__, __name__, __opts__=None, admin_state_up=None, allowed_address_pairs=None, device_id=None, device_owner=None, fixed_ips=None, mac_address=None, name=None, network_id=None, no_security_groups=None, region=None, security_group_ids=None, tenant_id=None, value_specs=None):
+    def __init__(__self__, __name__, __opts__=None, admin_state_up=None, allowed_address_pairs=None, device_id=None, device_owner=None, fixed_ips=None, mac_address=None, name=None, network_id=None, no_fixed_ip=None, no_security_groups=None, region=None, security_group_ids=None, tenant_id=None, value_specs=None):
         """Create a Port resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
@@ -63,8 +63,8 @@ class Port(pulumi.CustomResource):
             raise TypeError('Expected property fixed_ips to be a list')
         __self__.fixed_ips = fixed_ips
         """
-        An array of desired IPs for this port. The structure is
-        described below.
+        An array of desired IPs for
+        this port. The structure is described below.
         """
         __props__['fixedIps'] = fixed_ips
 
@@ -96,6 +96,16 @@ class Port(pulumi.CustomResource):
         this creates a new port.
         """
         __props__['networkId'] = network_id
+
+        if no_fixed_ip and not isinstance(no_fixed_ip, bool):
+            raise TypeError('Expected property no_fixed_ip to be a bool')
+        __self__.no_fixed_ip = no_fixed_ip
+        """
+        Create a port with no fixed
+        IP address. This will also remove any fixed IPs previously set on a port. `true`
+        is the only valid value for this argument.
+        """
+        __props__['noFixedIp'] = no_fixed_ip
 
         if no_security_groups and not isinstance(no_security_groups, bool):
             raise TypeError('Expected property no_security_groups to be a bool')
@@ -186,6 +196,8 @@ class Port(pulumi.CustomResource):
             self.name = outs['name']
         if 'networkId' in outs:
             self.network_id = outs['networkId']
+        if 'noFixedIp' in outs:
+            self.no_fixed_ip = outs['noFixedIp']
         if 'noSecurityGroups' in outs:
             self.no_security_groups = outs['noSecurityGroups']
         if 'region' in outs:
