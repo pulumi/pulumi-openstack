@@ -11,20 +11,20 @@ class GetEndpointResult(object):
     A collection of values returned by getEndpoint.
     """
     def __init__(__self__, region=None, url=None, id=None):
-        if region and not isinstance(region, basestring):
-            raise TypeError('Expected argument region to be a basestring')
+        if region and not isinstance(region, str):
+            raise TypeError('Expected argument region to be a str')
         __self__.region = region
         """
         The region the endpoint is located in.
         """
-        if url and not isinstance(url, basestring):
-            raise TypeError('Expected argument url to be a basestring')
+        if url and not isinstance(url, str):
+            raise TypeError('Expected argument url to be a str')
         __self__.url = url
         """
         The endpoint URL
         """
-        if id and not isinstance(id, basestring):
-            raise TypeError('Expected argument id to be a basestring')
+        if id and not isinstance(id, str):
+            raise TypeError('Expected argument id to be a str')
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.

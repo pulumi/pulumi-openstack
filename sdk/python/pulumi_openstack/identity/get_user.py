@@ -11,26 +11,26 @@ class GetUserResult(object):
     A collection of values returned by getUser.
     """
     def __init__(__self__, default_project_id=None, domain_id=None, region=None, id=None):
-        if default_project_id and not isinstance(default_project_id, basestring):
-            raise TypeError('Expected argument default_project_id to be a basestring')
+        if default_project_id and not isinstance(default_project_id, str):
+            raise TypeError('Expected argument default_project_id to be a str')
         __self__.default_project_id = default_project_id
         """
         See Argument Reference above.
         """
-        if domain_id and not isinstance(domain_id, basestring):
-            raise TypeError('Expected argument domain_id to be a basestring')
+        if domain_id and not isinstance(domain_id, str):
+            raise TypeError('Expected argument domain_id to be a str')
         __self__.domain_id = domain_id
         """
         See Argument Reference above.
         """
-        if region and not isinstance(region, basestring):
-            raise TypeError('Expected argument region to be a basestring')
+        if region and not isinstance(region, str):
+            raise TypeError('Expected argument region to be a str')
         __self__.region = region
         """
         The region the user is located in.
         """
-        if id and not isinstance(id, basestring):
-            raise TypeError('Expected argument id to be a basestring')
+        if id and not isinstance(id, str):
+            raise TypeError('Expected argument id to be a str')
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.

@@ -16,58 +16,21 @@ class SecGroup(pulumi.CustomResource):
         """Create a SecGroup resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
-        if delete_default_rules and not isinstance(delete_default_rules, bool):
-            raise TypeError('Expected property delete_default_rules to be a bool')
-        __self__.delete_default_rules = delete_default_rules
-        """
-        Whether or not to delete the default
-        egress security rules. This is `false` by default. See the below note
-        for more information.
-        """
         __props__['deleteDefaultRules'] = delete_default_rules
 
-        if description and not isinstance(description, basestring):
-            raise TypeError('Expected property description to be a basestring')
-        __self__.description = description
-        """
-        A unique name for the security group.
-        """
         __props__['description'] = description
 
-        if name and not isinstance(name, basestring):
-            raise TypeError('Expected property name to be a basestring')
-        __self__.name = name
-        """
-        A unique name for the security group.
-        """
         __props__['name'] = name
 
-        if region and not isinstance(region, basestring):
-            raise TypeError('Expected property region to be a basestring')
-        __self__.region = region
-        """
-        The region in which to obtain the V2 networking client.
-        A networking client is needed to create a port. If omitted, the
-        `region` argument of the provider is used. Changing this creates a new
-        security group.
-        """
         __props__['region'] = region
 
-        if tenant_id and not isinstance(tenant_id, basestring):
-            raise TypeError('Expected property tenant_id to be a basestring')
-        __self__.tenant_id = tenant_id
-        """
-        The owner of the security group. Required if admin
-        wants to create a port for another tenant. Changing this creates a new
-        security group.
-        """
         __props__['tenantId'] = tenant_id
 
         super(SecGroup, __self__).__init__(
@@ -76,14 +39,3 @@ class SecGroup(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'deleteDefaultRules' in outs:
-            self.delete_default_rules = outs['deleteDefaultRules']
-        if 'description' in outs:
-            self.description = outs['description']
-        if 'name' in outs:
-            self.name = outs['name']
-        if 'region' in outs:
-            self.region = outs['region']
-        if 'tenantId' in outs:
-            self.tenant_id = outs['tenantId']

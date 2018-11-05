@@ -17,14 +17,14 @@ class GetPolicyResult(object):
         """
         The audit status of the firewall policy.
         """
-        if description and not isinstance(description, basestring):
-            raise TypeError('Expected argument description to be a basestring')
+        if description and not isinstance(description, str):
+            raise TypeError('Expected argument description to be a str')
         __self__.description = description
         """
         The description of the firewall policy.
         """
-        if region and not isinstance(region, basestring):
-            raise TypeError('Expected argument region to be a basestring')
+        if region and not isinstance(region, str):
+            raise TypeError('Expected argument region to be a str')
         __self__.region = region
         """
         See Argument Reference above.
@@ -41,14 +41,14 @@ class GetPolicyResult(object):
         """
         The sharing status of the firewall policy.
         """
-        if tenant_id and not isinstance(tenant_id, basestring):
-            raise TypeError('Expected argument tenant_id to be a basestring')
+        if tenant_id and not isinstance(tenant_id, str):
+            raise TypeError('Expected argument tenant_id to be a str')
         __self__.tenant_id = tenant_id
         """
         See Argument Reference above.
         """
-        if id and not isinstance(id, basestring):
-            raise TypeError('Expected argument id to be a basestring')
+        if id and not isinstance(id, str):
+            raise TypeError('Expected argument id to be a str')
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.

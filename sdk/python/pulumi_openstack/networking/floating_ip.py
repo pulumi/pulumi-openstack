@@ -17,91 +17,29 @@ class FloatingIp(pulumi.CustomResource):
         """Create a FloatingIp resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
-        if address and not isinstance(address, basestring):
-            raise TypeError('Expected property address to be a basestring')
-        __self__.address = address
-        """
-        The actual/specific floating IP to obtain. By default,
-        non-admin users are not able to specify a floating IP, so you must either be
-        an admin user or have had a custom policy or role applied to your OpenStack
-        user or project.
-        """
         __props__['address'] = address
 
-        if fixed_ip and not isinstance(fixed_ip, basestring):
-            raise TypeError('Expected property fixed_ip to be a basestring')
-        __self__.fixed_ip = fixed_ip
-        """
-        Fixed IP of the port to associate with this floating IP. Required if
-        the port has multiple fixed IPs.
-        """
         __props__['fixedIp'] = fixed_ip
 
         if not pool:
             raise TypeError('Missing required property pool')
-        elif not isinstance(pool, basestring):
-            raise TypeError('Expected property pool to be a basestring')
-        __self__.pool = pool
-        """
-        The name of the pool from which to obtain the floating
-        IP. Changing this creates a new floating IP.
-        """
         __props__['pool'] = pool
 
-        if port_id and not isinstance(port_id, basestring):
-            raise TypeError('Expected property port_id to be a basestring')
-        __self__.port_id = port_id
-        """
-        ID of an existing port with at least one IP address to
-        associate with this floating IP.
-        """
         __props__['portId'] = port_id
 
-        if region and not isinstance(region, basestring):
-            raise TypeError('Expected property region to be a basestring')
-        __self__.region = region
-        """
-        The region in which to obtain the V2 Networking client.
-        A Networking client is needed to create a floating IP that can be used with
-        another networking resource, such as a load balancer. If omitted, the
-        `region` argument of the provider is used. Changing this creates a new
-        floating IP (which may or may not have a different address).
-        """
         __props__['region'] = region
 
-        if subnet_id and not isinstance(subnet_id, basestring):
-            raise TypeError('Expected property subnet_id to be a basestring')
-        __self__.subnet_id = subnet_id
-        """
-        The subnet ID of the floating IP pool. Specify this if
-        the floating IP network has multiple subnets.
-        """
         __props__['subnetId'] = subnet_id
 
-        if tenant_id and not isinstance(tenant_id, basestring):
-            raise TypeError('Expected property tenant_id to be a basestring')
-        __self__.tenant_id = tenant_id
-        """
-        The target tenant ID in which to allocate the floating
-        IP, if you specify this together with a port_id, make sure the target port
-        belongs to the same tenant. Changing this creates a new floating IP (which
-        may or may not have a different address)
-        """
         __props__['tenantId'] = tenant_id
 
-        if value_specs and not isinstance(value_specs, dict):
-            raise TypeError('Expected property value_specs to be a dict')
-        __self__.value_specs = value_specs
-        """
-        Map of additional options.
-        """
         __props__['valueSpecs'] = value_specs
 
         super(FloatingIp, __self__).__init__(
@@ -110,20 +48,3 @@ class FloatingIp(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'address' in outs:
-            self.address = outs['address']
-        if 'fixedIp' in outs:
-            self.fixed_ip = outs['fixedIp']
-        if 'pool' in outs:
-            self.pool = outs['pool']
-        if 'portId' in outs:
-            self.port_id = outs['portId']
-        if 'region' in outs:
-            self.region = outs['region']
-        if 'subnetId' in outs:
-            self.subnet_id = outs['subnetId']
-        if 'tenantId' in outs:
-            self.tenant_id = outs['tenantId']
-        if 'valueSpecs' in outs:
-            self.value_specs = outs['valueSpecs']

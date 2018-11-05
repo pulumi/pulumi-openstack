@@ -20,7 +20,7 @@ class TempUrl(pulumi.CustomResource):
         """Create a TempUrl resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -29,71 +29,25 @@ class TempUrl(pulumi.CustomResource):
 
         if not container:
             raise TypeError('Missing required property container')
-        elif not isinstance(container, basestring):
-            raise TypeError('Expected property container to be a basestring')
-        __self__.container = container
-        """
-        The container name the object belongs to.
-        """
         __props__['container'] = container
 
-        if method and not isinstance(method, basestring):
-            raise TypeError('Expected property method to be a basestring')
-        __self__.method = method
-        """
-        The method allowed when accessing this URL.
-        Valid values are `GET`, and `POST`. Default is `GET`.
-        """
         __props__['method'] = method
 
         if not object:
             raise TypeError('Missing required property object')
-        elif not isinstance(object, basestring):
-            raise TypeError('Expected property object to be a basestring')
-        __self__.object = object
-        """
-        The object name the tempurl is for.
-        """
         __props__['object'] = object
 
-        if regenerate and not isinstance(regenerate, bool):
-            raise TypeError('Expected property regenerate to be a bool')
-        __self__.regenerate = regenerate
-        """
-        Whether to automatically regenerate the URL when
-        it has expired. If set to true, this will create a new resource with a new
-        ID and new URL. Defaults to false.
-        """
         __props__['regenerate'] = regenerate
 
-        if region and not isinstance(region, basestring):
-            raise TypeError('Expected property region to be a basestring')
-        __self__.region = region
-        """
-        The region the tempurl is located in.
-        """
         __props__['region'] = region
 
-        if split and not isinstance(split, basestring):
-            raise TypeError('Expected property split to be a basestring')
-        __self__.split = split
         __props__['split'] = split
 
         if not ttl:
             raise TypeError('Missing required property ttl')
-        elif not isinstance(ttl, int):
-            raise TypeError('Expected property ttl to be a int')
-        __self__.ttl = ttl
-        """
-        The TTL, in seconds, for the URL. For how long it should
-        be valid.
-        """
         __props__['ttl'] = ttl
 
-        __self__.url = pulumi.runtime.UNKNOWN
-        """
-        The URL
-        """
+        __props__['url'] = None
 
         super(TempUrl, __self__).__init__(
             'openstack:objectstorage/tempUrl:TempUrl',
@@ -101,20 +55,3 @@ class TempUrl(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'container' in outs:
-            self.container = outs['container']
-        if 'method' in outs:
-            self.method = outs['method']
-        if 'object' in outs:
-            self.object = outs['object']
-        if 'regenerate' in outs:
-            self.regenerate = outs['regenerate']
-        if 'region' in outs:
-            self.region = outs['region']
-        if 'split' in outs:
-            self.split = outs['split']
-        if 'ttl' in outs:
-            self.ttl = outs['ttl']
-        if 'url' in outs:
-            self.url = outs['url']
