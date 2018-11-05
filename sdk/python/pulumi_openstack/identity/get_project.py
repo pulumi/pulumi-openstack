@@ -11,26 +11,26 @@ class GetProjectResult(object):
     A collection of values returned by getProject.
     """
     def __init__(__self__, description=None, domain_id=None, region=None, id=None):
-        if description and not isinstance(description, basestring):
-            raise TypeError('Expected argument description to be a basestring')
+        if description and not isinstance(description, str):
+            raise TypeError('Expected argument description to be a str')
         __self__.description = description
         """
         The description of the project.
         """
-        if domain_id and not isinstance(domain_id, basestring):
-            raise TypeError('Expected argument domain_id to be a basestring')
+        if domain_id and not isinstance(domain_id, str):
+            raise TypeError('Expected argument domain_id to be a str')
         __self__.domain_id = domain_id
         """
         See Argument Reference above.
         """
-        if region and not isinstance(region, basestring):
-            raise TypeError('Expected argument region to be a basestring')
+        if region and not isinstance(region, str):
+            raise TypeError('Expected argument region to be a str')
         __self__.region = region
         """
         The region the project is located in.
         """
-        if id and not isinstance(id, basestring):
-            raise TypeError('Expected argument id to be a basestring')
+        if id and not isinstance(id, str):
+            raise TypeError('Expected argument id to be a str')
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.

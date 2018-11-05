@@ -29,14 +29,14 @@ class GetRouterResult(object):
         """
         The external fixed IPs of the router.
         """
-        if external_network_id and not isinstance(external_network_id, basestring):
-            raise TypeError('Expected argument external_network_id to be a basestring')
+        if external_network_id and not isinstance(external_network_id, str):
+            raise TypeError('Expected argument external_network_id to be a str')
         __self__.external_network_id = external_network_id
         """
         The network UUID of an external gateway for the router.
         """
-        if id and not isinstance(id, basestring):
-            raise TypeError('Expected argument id to be a basestring')
+        if id and not isinstance(id, str):
+            raise TypeError('Expected argument id to be a str')
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.

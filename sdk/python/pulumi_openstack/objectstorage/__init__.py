@@ -3,6 +3,6 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
-from container import *
-from container_object import *
-from temp_url import *
+from .container import *
+from .container_object import *
+from .temp_url import *

@@ -75,12 +75,12 @@ func GetIpSecPolicy(ctx *pulumi.Context,
 
 // URN is this resource's unique name assigned by Pulumi.
 func (r *IpSecPolicy) URN() *pulumi.URNOutput {
-	return r.s.URN
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
 func (r *IpSecPolicy) ID() *pulumi.IDOutput {
-	return r.s.ID
+	return r.s.ID()
 }
 
 // The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.
