@@ -53,23 +53,18 @@ func openstackType(mod string, typ string) tokens.Type {
 	return tokens.Type(openstackMember(mod, typ))
 }
 
-// openstackDataSource manufactures a standard resource token given a module and resource name.  It automatically uses the OpenStack
-// package and names the file by simply lower casing the data source's first character.
+// openstackDataSource manufactures a standard resource token given a module and resource name.  It automatically uses
+// the OpenStack package and names the file by simply lower casing the data source's first character.
 func openstackDataSource(mod string, res string) tokens.ModuleMember {
 	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
 	return openstackMember(mod+"/"+fn, res)
 }
 
-// openstackResource manufactures a standard resource token given a module and resource name.  It automatically uses the OpenStack
-// package and names the file by simply lower casing the resource's first character.
+// openstackResource manufactures a standard resource token given a module and resource name.  It automatically uses
+// the OpenStack package and names the file by simply lower casing the resource's first character.
 func openstackResource(mod string, res string) tokens.Type {
 	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
 	return openstackType(mod+"/"+fn, res)
-}
-
-// boolRef returns a reference to the bool argument.
-func boolRef(b bool) *bool {
-	return &b
 }
 
 // Provider returns additional overlaid schema and metadata associated with the openstack package.
@@ -85,27 +80,27 @@ func Provider() tfbridge.ProviderInfo {
 		License:     "Apache-2.0",
 		Repository:  "https://github.com/pulumi/pulumi-openstack",
 		Config: map[string]*tfbridge.SchemaInfo{
-			"auth_url": &tfbridge.SchemaInfo{
+			"auth_url": {
 				Default: &tfbridge.DefaultInfo{
 					EnvVars: []string{"OS_AUTH_URL"},
 				},
 			},
-			"region": &tfbridge.SchemaInfo{
+			"region": {
 				Default: &tfbridge.DefaultInfo{
 					EnvVars: []string{"OS_REGION_NAME"},
 				},
 			},
-			"user_name": &tfbridge.SchemaInfo{
+			"user_name": {
 				Default: &tfbridge.DefaultInfo{
 					EnvVars: []string{"OS_USERNAME"},
 				},
 			},
-			"user_id": &tfbridge.SchemaInfo{
+			"user_id": {
 				Default: &tfbridge.DefaultInfo{
 					EnvVars: []string{"OS_USER_ID"},
 				},
 			},
-			"tenant_id": &tfbridge.SchemaInfo{
+			"tenant_id": {
 				Default: &tfbridge.DefaultInfo{
 					EnvVars: []string{
 						"OS_TENANT_ID",
@@ -113,7 +108,7 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"tenant_name": &tfbridge.SchemaInfo{
+			"tenant_name": {
 				Default: &tfbridge.DefaultInfo{
 					EnvVars: []string{
 						"OS_TENANT_NAME",
@@ -121,12 +116,12 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"password": &tfbridge.SchemaInfo{
+			"password": {
 				Default: &tfbridge.DefaultInfo{
 					EnvVars: []string{"OS_PASSWORD"},
 				},
 			},
-			"token": &tfbridge.SchemaInfo{
+			"token": {
 				Default: &tfbridge.DefaultInfo{
 					EnvVars: []string{
 						"OS_TOKEN",
@@ -134,78 +129,78 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"user_domain_name": &tfbridge.SchemaInfo{
+			"user_domain_name": {
 				Default: &tfbridge.DefaultInfo{
 					EnvVars: []string{"OS_USER_DOMAIN_NAME"},
 				},
 			},
-			"user_domain_id": &tfbridge.SchemaInfo{
+			"user_domain_id": {
 				Default: &tfbridge.DefaultInfo{
 					EnvVars: []string{"OS_USER_DOMAIN_ID"},
 				},
 			},
-			"project_domain_name": &tfbridge.SchemaInfo{
+			"project_domain_name": {
 				Default: &tfbridge.DefaultInfo{
 					EnvVars: []string{"OS_PROJECT_DOMAIN_NAME"},
 				},
 			},
-			"project_domain_id": &tfbridge.SchemaInfo{
+			"project_domain_id": {
 				Default: &tfbridge.DefaultInfo{
 					EnvVars: []string{"OS_PROJECT_DOMAIN_ID"},
 				},
 			},
-			"domain_id": &tfbridge.SchemaInfo{
+			"domain_id": {
 				Default: &tfbridge.DefaultInfo{
 					EnvVars: []string{"OS_DOMAIN_ID"},
 				},
 			},
-			"domain_name": &tfbridge.SchemaInfo{
+			"domain_name": {
 				Default: &tfbridge.DefaultInfo{
 					EnvVars: []string{"OS_DOMAIN_NAME"},
 				},
 			},
-			"default_domain": &tfbridge.SchemaInfo{
+			"default_domain": {
 				Default: &tfbridge.DefaultInfo{
 					Value:   "default",
 					EnvVars: []string{"OS_DEFAULT_DOMAIN"},
 				},
 			},
-			"insecure": &tfbridge.SchemaInfo{
+			"insecure": {
 				Default: &tfbridge.DefaultInfo{
 					EnvVars: []string{"OS_INSECURE"},
 				},
 			},
-			"endpoint_type": &tfbridge.SchemaInfo{
+			"endpoint_type": {
 				Default: &tfbridge.DefaultInfo{
 					EnvVars: []string{"OS_ENDPOINT_TYPE"},
 				},
 			},
-			"cacert_file": &tfbridge.SchemaInfo{
+			"cacert_file": {
 				Default: &tfbridge.DefaultInfo{
 					EnvVars: []string{"OS_CACERT"},
 				},
 			},
-			"cert": &tfbridge.SchemaInfo{
+			"cert": {
 				Default: &tfbridge.DefaultInfo{
 					EnvVars: []string{"OS_CERT"},
 				},
 			},
-			"key": &tfbridge.SchemaInfo{
+			"key": {
 				Default: &tfbridge.DefaultInfo{
 					EnvVars: []string{"OS_KEY"},
 				},
 			},
-			"swauth": &tfbridge.SchemaInfo{
+			"swauth": {
 				Default: &tfbridge.DefaultInfo{
 					EnvVars: []string{"OS_SWAUTH"},
 				},
 			},
-			"use_octavia": &tfbridge.SchemaInfo{
+			"use_octavia": {
 				Default: &tfbridge.DefaultInfo{
 					EnvVars: []string{"OS_USE_OCTAVIA"},
 				},
 			},
-			"cloud": &tfbridge.SchemaInfo{
+			"cloud": {
 				Default: &tfbridge.DefaultInfo{
 					EnvVars: []string{"OS_CLOUD"},
 				},
