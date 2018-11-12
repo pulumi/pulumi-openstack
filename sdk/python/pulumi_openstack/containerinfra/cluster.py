@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Cluster(pulumi.CustomResource):
     """
@@ -23,13 +23,13 @@ class Cluster(pulumi.CustomResource):
 
         if not cluster_template_id:
             raise TypeError('Missing required property cluster_template_id')
-        __props__['clusterTemplateId'] = cluster_template_id
+        __props__['cluster_template_id'] = cluster_template_id
 
-        __props__['createTimeout'] = create_timeout
+        __props__['create_timeout'] = create_timeout
 
-        __props__['discoveryUrl'] = discovery_url
+        __props__['discovery_url'] = discovery_url
 
-        __props__['dockerVolumeSize'] = docker_volume_size
+        __props__['docker_volume_size'] = docker_volume_size
 
         __props__['flavor'] = flavor
 
@@ -37,13 +37,13 @@ class Cluster(pulumi.CustomResource):
 
         __props__['labels'] = labels
 
-        __props__['masterCount'] = master_count
+        __props__['master_count'] = master_count
 
-        __props__['masterFlavor'] = master_flavor
+        __props__['master_flavor'] = master_flavor
 
         __props__['name'] = name
 
-        __props__['nodeCount'] = node_count
+        __props__['node_count'] = node_count
 
         __props__['region'] = region
 
@@ -63,4 +63,11 @@ class Cluster(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class GetDnsZoneResult(object):
     """
@@ -78,7 +78,7 @@ class GetDnsZoneResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-def get_dns_zone(attributes=None, created_at=None, description=None, email=None, masters=None, name=None, pool_id=None, project_id=None, region=None, serial=None, status=None, transferred_at=None, ttl=None, type=None, updated_at=None, version=None):
+async def get_dns_zone(attributes=None, created_at=None, description=None, email=None, masters=None, name=None, pool_id=None, project_id=None, region=None, serial=None, status=None, transferred_at=None, ttl=None, type=None, updated_at=None, version=None):
     """
     Use this data source to get the ID of an available OpenStack DNS zone.
     """
@@ -100,7 +100,7 @@ def get_dns_zone(attributes=None, created_at=None, description=None, email=None,
     __args__['type'] = type
     __args__['updatedAt'] = updated_at
     __args__['version'] = version
-    __ret__ = pulumi.runtime.invoke('openstack:dns/getDnsZone:getDnsZone', __args__)
+    __ret__ = await pulumi.runtime.invoke('openstack:dns/getDnsZone:getDnsZone', __args__)
 
     return GetDnsZoneResult(
         attributes=__ret__.get('attributes'),

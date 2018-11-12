@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class GetUserResult(object):
     """
@@ -36,7 +36,7 @@ class GetUserResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-def get_user(domain_id=None, enabled=None, idp_id=None, name=None, password_expires_at=None, protocol_id=None, region=None, unique_id=None):
+async def get_user(domain_id=None, enabled=None, idp_id=None, name=None, password_expires_at=None, protocol_id=None, region=None, unique_id=None):
     """
     Use this data source to get the ID of an OpenStack user.
     """
@@ -50,7 +50,7 @@ def get_user(domain_id=None, enabled=None, idp_id=None, name=None, password_expi
     __args__['protocolId'] = protocol_id
     __args__['region'] = region
     __args__['uniqueId'] = unique_id
-    __ret__ = pulumi.runtime.invoke('openstack:identity/getUser:getUser', __args__)
+    __ret__ = await pulumi.runtime.invoke('openstack:identity/getUser:getUser', __args__)
 
     return GetUserResult(
         default_project_id=__ret__.get('defaultProjectId'),

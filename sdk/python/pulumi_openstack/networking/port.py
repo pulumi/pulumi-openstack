@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Port(pulumi.CustomResource):
     """
@@ -21,35 +21,35 @@ class Port(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['adminStateUp'] = admin_state_up
+        __props__['admin_state_up'] = admin_state_up
 
-        __props__['allowedAddressPairs'] = allowed_address_pairs
+        __props__['allowed_address_pairs'] = allowed_address_pairs
 
-        __props__['deviceId'] = device_id
+        __props__['device_id'] = device_id
 
-        __props__['deviceOwner'] = device_owner
+        __props__['device_owner'] = device_owner
 
-        __props__['fixedIps'] = fixed_ips
+        __props__['fixed_ips'] = fixed_ips
 
-        __props__['macAddress'] = mac_address
+        __props__['mac_address'] = mac_address
 
         __props__['name'] = name
 
         if not network_id:
             raise TypeError('Missing required property network_id')
-        __props__['networkId'] = network_id
+        __props__['network_id'] = network_id
 
-        __props__['noFixedIp'] = no_fixed_ip
+        __props__['no_fixed_ip'] = no_fixed_ip
 
-        __props__['noSecurityGroups'] = no_security_groups
+        __props__['no_security_groups'] = no_security_groups
 
         __props__['region'] = region
 
-        __props__['securityGroupIds'] = security_group_ids
+        __props__['security_group_ids'] = security_group_ids
 
-        __props__['tenantId'] = tenant_id
+        __props__['tenant_id'] = tenant_id
 
-        __props__['valueSpecs'] = value_specs
+        __props__['value_specs'] = value_specs
 
         __props__['all_fixed_ips'] = None
         __props__['all_security_group_ids'] = None
@@ -59,4 +59,11 @@ class Port(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class SubnetPool(pulumi.CustomResource):
     """
@@ -21,21 +21,21 @@ class SubnetPool(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['addressScopeId'] = address_scope_id
+        __props__['address_scope_id'] = address_scope_id
 
-        __props__['defaultPrefixlen'] = default_prefixlen
+        __props__['default_prefixlen'] = default_prefixlen
 
-        __props__['defaultQuota'] = default_quota
+        __props__['default_quota'] = default_quota
 
         __props__['description'] = description
 
-        __props__['ipVersion'] = ip_version
+        __props__['ip_version'] = ip_version
 
-        __props__['isDefault'] = is_default
+        __props__['is_default'] = is_default
 
-        __props__['maxPrefixlen'] = max_prefixlen
+        __props__['max_prefixlen'] = max_prefixlen
 
-        __props__['minPrefixlen'] = min_prefixlen
+        __props__['min_prefixlen'] = min_prefixlen
 
         __props__['name'] = name
 
@@ -43,13 +43,13 @@ class SubnetPool(pulumi.CustomResource):
             raise TypeError('Missing required property prefixes')
         __props__['prefixes'] = prefixes
 
-        __props__['projectId'] = project_id
+        __props__['project_id'] = project_id
 
         __props__['region'] = region
 
         __props__['shared'] = shared
 
-        __props__['valueSpecs'] = value_specs
+        __props__['value_specs'] = value_specs
 
         __props__['created_at'] = None
         __props__['revision_number'] = None
@@ -60,4 +60,11 @@ class SubnetPool(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

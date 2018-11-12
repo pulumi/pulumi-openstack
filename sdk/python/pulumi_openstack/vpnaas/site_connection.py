@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class SiteConnection(pulumi.CustomResource):
     """
@@ -21,7 +21,7 @@ class SiteConnection(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['adminStateUp'] = admin_state_up
+        __props__['admin_state_up'] = admin_state_up
 
         __props__['description'] = description
 
@@ -29,17 +29,17 @@ class SiteConnection(pulumi.CustomResource):
 
         if not ikepolicy_id:
             raise TypeError('Missing required property ikepolicy_id')
-        __props__['ikepolicyId'] = ikepolicy_id
+        __props__['ikepolicy_id'] = ikepolicy_id
 
         __props__['initiator'] = initiator
 
         if not ipsecpolicy_id:
             raise TypeError('Missing required property ipsecpolicy_id')
-        __props__['ipsecpolicyId'] = ipsecpolicy_id
+        __props__['ipsecpolicy_id'] = ipsecpolicy_id
 
-        __props__['localEpGroupId'] = local_ep_group_id
+        __props__['local_ep_group_id'] = local_ep_group_id
 
-        __props__['localId'] = local_id
+        __props__['local_id'] = local_id
 
         __props__['mtu'] = mtu
 
@@ -47,15 +47,15 @@ class SiteConnection(pulumi.CustomResource):
 
         if not peer_address:
             raise TypeError('Missing required property peer_address')
-        __props__['peerAddress'] = peer_address
+        __props__['peer_address'] = peer_address
 
-        __props__['peerCidrs'] = peer_cidrs
+        __props__['peer_cidrs'] = peer_cidrs
 
-        __props__['peerEpGroupId'] = peer_ep_group_id
+        __props__['peer_ep_group_id'] = peer_ep_group_id
 
         if not peer_id:
             raise TypeError('Missing required property peer_id')
-        __props__['peerId'] = peer_id
+        __props__['peer_id'] = peer_id
 
         if not psk:
             raise TypeError('Missing required property psk')
@@ -63,17 +63,24 @@ class SiteConnection(pulumi.CustomResource):
 
         __props__['region'] = region
 
-        __props__['tenantId'] = tenant_id
+        __props__['tenant_id'] = tenant_id
 
-        __props__['valueSpecs'] = value_specs
+        __props__['value_specs'] = value_specs
 
         if not vpnservice_id:
             raise TypeError('Missing required property vpnservice_id')
-        __props__['vpnserviceId'] = vpnservice_id
+        __props__['vpnservice_id'] = vpnservice_id
 
         super(SiteConnection, __self__).__init__(
             'openstack:vpnaas/siteConnection:SiteConnection',
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

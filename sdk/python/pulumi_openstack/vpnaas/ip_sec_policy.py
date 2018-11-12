@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class IpSecPolicy(pulumi.CustomResource):
     """
@@ -21,13 +21,13 @@ class IpSecPolicy(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['authAlgorithm'] = auth_algorithm
+        __props__['auth_algorithm'] = auth_algorithm
 
         __props__['description'] = description
 
-        __props__['encapsulationMode'] = encapsulation_mode
+        __props__['encapsulation_mode'] = encapsulation_mode
 
-        __props__['encryptionAlgorithm'] = encryption_algorithm
+        __props__['encryption_algorithm'] = encryption_algorithm
 
         __props__['lifetimes'] = lifetimes
 
@@ -37,15 +37,22 @@ class IpSecPolicy(pulumi.CustomResource):
 
         __props__['region'] = region
 
-        __props__['tenantId'] = tenant_id
+        __props__['tenant_id'] = tenant_id
 
-        __props__['transformProtocol'] = transform_protocol
+        __props__['transform_protocol'] = transform_protocol
 
-        __props__['valueSpecs'] = value_specs
+        __props__['value_specs'] = value_specs
 
         super(IpSecPolicy, __self__).__init__(
             'openstack:vpnaas/ipSecPolicy:IpSecPolicy',
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

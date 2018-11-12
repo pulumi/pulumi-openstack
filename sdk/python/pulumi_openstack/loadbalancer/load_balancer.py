@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class LoadBalancer(pulumi.CustomResource):
     """
@@ -21,27 +21,27 @@ class LoadBalancer(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['adminStateUp'] = admin_state_up
+        __props__['admin_state_up'] = admin_state_up
 
         __props__['description'] = description
 
         __props__['flavor'] = flavor
 
-        __props__['loadbalancerProvider'] = loadbalancer_provider
+        __props__['loadbalancer_provider'] = loadbalancer_provider
 
         __props__['name'] = name
 
         __props__['region'] = region
 
-        __props__['securityGroupIds'] = security_group_ids
+        __props__['security_group_ids'] = security_group_ids
 
-        __props__['tenantId'] = tenant_id
+        __props__['tenant_id'] = tenant_id
 
-        __props__['vipAddress'] = vip_address
+        __props__['vip_address'] = vip_address
 
         if not vip_subnet_id:
             raise TypeError('Missing required property vip_subnet_id')
-        __props__['vipSubnetId'] = vip_subnet_id
+        __props__['vip_subnet_id'] = vip_subnet_id
 
         __props__['vip_port_id'] = None
 
@@ -50,4 +50,11 @@ class LoadBalancer(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class MonitorV1(pulumi.CustomResource):
     """
@@ -21,23 +21,23 @@ class MonitorV1(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['adminStateUp'] = admin_state_up
+        __props__['admin_state_up'] = admin_state_up
 
         if not delay:
             raise TypeError('Missing required property delay')
         __props__['delay'] = delay
 
-        __props__['expectedCodes'] = expected_codes
+        __props__['expected_codes'] = expected_codes
 
-        __props__['httpMethod'] = http_method
+        __props__['http_method'] = http_method
 
         if not max_retries:
             raise TypeError('Missing required property max_retries')
-        __props__['maxRetries'] = max_retries
+        __props__['max_retries'] = max_retries
 
         __props__['region'] = region
 
-        __props__['tenantId'] = tenant_id
+        __props__['tenant_id'] = tenant_id
 
         if not timeout:
             raise TypeError('Missing required property timeout')
@@ -47,11 +47,18 @@ class MonitorV1(pulumi.CustomResource):
             raise TypeError('Missing required property type')
         __props__['type'] = type
 
-        __props__['urlPath'] = url_path
+        __props__['url_path'] = url_path
 
         super(MonitorV1, __self__).__init__(
             'openstack:loadbalancer/monitorV1:MonitorV1',
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

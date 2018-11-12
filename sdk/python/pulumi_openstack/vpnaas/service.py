@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Service(pulumi.CustomResource):
     """
@@ -21,7 +21,7 @@ class Service(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['adminStateUp'] = admin_state_up
+        __props__['admin_state_up'] = admin_state_up
 
         __props__['description'] = description
 
@@ -31,13 +31,13 @@ class Service(pulumi.CustomResource):
 
         if not router_id:
             raise TypeError('Missing required property router_id')
-        __props__['routerId'] = router_id
+        __props__['router_id'] = router_id
 
-        __props__['subnetId'] = subnet_id
+        __props__['subnet_id'] = subnet_id
 
-        __props__['tenantId'] = tenant_id
+        __props__['tenant_id'] = tenant_id
 
-        __props__['valueSpecs'] = value_specs
+        __props__['value_specs'] = value_specs
 
         __props__['external_v4_ip'] = None
         __props__['external_v6_ip'] = None
@@ -48,4 +48,11 @@ class Service(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

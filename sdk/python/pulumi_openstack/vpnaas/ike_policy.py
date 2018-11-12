@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class IkePolicy(pulumi.CustomResource):
     """
@@ -21,13 +21,13 @@ class IkePolicy(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['authAlgorithm'] = auth_algorithm
+        __props__['auth_algorithm'] = auth_algorithm
 
         __props__['description'] = description
 
-        __props__['encryptionAlgorithm'] = encryption_algorithm
+        __props__['encryption_algorithm'] = encryption_algorithm
 
-        __props__['ikeVersion'] = ike_version
+        __props__['ike_version'] = ike_version
 
         __props__['lifetimes'] = lifetimes
 
@@ -35,17 +35,24 @@ class IkePolicy(pulumi.CustomResource):
 
         __props__['pfs'] = pfs
 
-        __props__['phase1NegotiationMode'] = phase1_negotiation_mode
+        __props__['phase1_negotiation_mode'] = phase1_negotiation_mode
 
         __props__['region'] = region
 
-        __props__['tenantId'] = tenant_id
+        __props__['tenant_id'] = tenant_id
 
-        __props__['valueSpecs'] = value_specs
+        __props__['value_specs'] = value_specs
 
         super(IkePolicy, __self__).__init__(
             'openstack:vpnaas/ikePolicy:IkePolicy',
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

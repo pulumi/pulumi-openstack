@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class FloatingIpAssociate(pulumi.CustomResource):
     """
@@ -25,11 +25,11 @@ class FloatingIpAssociate(pulumi.CustomResource):
 
         if not floating_ip:
             raise TypeError('Missing required property floating_ip')
-        __props__['floatingIp'] = floating_ip
+        __props__['floating_ip'] = floating_ip
 
         if not port_id:
             raise TypeError('Missing required property port_id')
-        __props__['portId'] = port_id
+        __props__['port_id'] = port_id
 
         __props__['region'] = region
 
@@ -38,4 +38,11 @@ class FloatingIpAssociate(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

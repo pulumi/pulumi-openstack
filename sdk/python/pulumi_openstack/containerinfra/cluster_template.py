@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class ClusterTemplate(pulumi.CustomResource):
     """
@@ -21,65 +21,65 @@ class ClusterTemplate(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['apiserverPort'] = apiserver_port
+        __props__['apiserver_port'] = apiserver_port
 
-        __props__['clusterDistro'] = cluster_distro
+        __props__['cluster_distro'] = cluster_distro
 
         if not coe:
             raise TypeError('Missing required property coe')
         __props__['coe'] = coe
 
-        __props__['dnsNameserver'] = dns_nameserver
+        __props__['dns_nameserver'] = dns_nameserver
 
-        __props__['dockerStorageDriver'] = docker_storage_driver
+        __props__['docker_storage_driver'] = docker_storage_driver
 
-        __props__['dockerVolumeSize'] = docker_volume_size
+        __props__['docker_volume_size'] = docker_volume_size
 
-        __props__['externalNetworkId'] = external_network_id
+        __props__['external_network_id'] = external_network_id
 
-        __props__['fixedNetwork'] = fixed_network
+        __props__['fixed_network'] = fixed_network
 
-        __props__['fixedSubnet'] = fixed_subnet
+        __props__['fixed_subnet'] = fixed_subnet
 
         __props__['flavor'] = flavor
 
-        __props__['floatingIpEnabled'] = floating_ip_enabled
+        __props__['floating_ip_enabled'] = floating_ip_enabled
 
-        __props__['httpProxy'] = http_proxy
+        __props__['http_proxy'] = http_proxy
 
-        __props__['httpsProxy'] = https_proxy
+        __props__['https_proxy'] = https_proxy
 
         if not image:
             raise TypeError('Missing required property image')
         __props__['image'] = image
 
-        __props__['insecureRegistry'] = insecure_registry
+        __props__['insecure_registry'] = insecure_registry
 
-        __props__['keypairId'] = keypair_id
+        __props__['keypair_id'] = keypair_id
 
         __props__['labels'] = labels
 
-        __props__['masterFlavor'] = master_flavor
+        __props__['master_flavor'] = master_flavor
 
-        __props__['masterLbEnabled'] = master_lb_enabled
+        __props__['master_lb_enabled'] = master_lb_enabled
 
         __props__['name'] = name
 
-        __props__['networkDriver'] = network_driver
+        __props__['network_driver'] = network_driver
 
-        __props__['noProxy'] = no_proxy
+        __props__['no_proxy'] = no_proxy
 
         __props__['public'] = public
 
         __props__['region'] = region
 
-        __props__['registryEnabled'] = registry_enabled
+        __props__['registry_enabled'] = registry_enabled
 
-        __props__['serverType'] = server_type
+        __props__['server_type'] = server_type
 
-        __props__['tlsDisabled'] = tls_disabled
+        __props__['tls_disabled'] = tls_disabled
 
-        __props__['volumeDriver'] = volume_driver
+        __props__['volume_driver'] = volume_driver
 
         __props__['created_at'] = None
         __props__['project_id'] = None
@@ -91,4 +91,11 @@ class ClusterTemplate(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

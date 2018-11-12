@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class PoolV1(pulumi.CustomResource):
     """
@@ -23,11 +23,11 @@ class PoolV1(pulumi.CustomResource):
 
         if not lb_method:
             raise TypeError('Missing required property lb_method')
-        __props__['lbMethod'] = lb_method
+        __props__['lb_method'] = lb_method
 
-        __props__['lbProvider'] = lb_provider
+        __props__['lb_provider'] = lb_provider
 
-        __props__['monitorIds'] = monitor_ids
+        __props__['monitor_ids'] = monitor_ids
 
         __props__['name'] = name
 
@@ -39,13 +39,20 @@ class PoolV1(pulumi.CustomResource):
 
         if not subnet_id:
             raise TypeError('Missing required property subnet_id')
-        __props__['subnetId'] = subnet_id
+        __props__['subnet_id'] = subnet_id
 
-        __props__['tenantId'] = tenant_id
+        __props__['tenant_id'] = tenant_id
 
         super(PoolV1, __self__).__init__(
             'openstack:loadbalancer/poolV1:PoolV1',
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

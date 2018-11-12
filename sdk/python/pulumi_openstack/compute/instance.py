@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Instance(pulumi.CustomResource):
     """
@@ -21,29 +21,29 @@ class Instance(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['accessIpV4'] = access_ip_v4
+        __props__['access_ip_v4'] = access_ip_v4
 
-        __props__['accessIpV6'] = access_ip_v6
+        __props__['access_ip_v6'] = access_ip_v6
 
-        __props__['adminPass'] = admin_pass
+        __props__['admin_pass'] = admin_pass
 
-        __props__['availabilityZone'] = availability_zone
+        __props__['availability_zone'] = availability_zone
 
-        __props__['blockDevices'] = block_devices
+        __props__['block_devices'] = block_devices
 
-        __props__['configDrive'] = config_drive
+        __props__['config_drive'] = config_drive
 
-        __props__['flavorId'] = flavor_id
+        __props__['flavor_id'] = flavor_id
 
-        __props__['flavorName'] = flavor_name
+        __props__['flavor_name'] = flavor_name
 
-        __props__['forceDelete'] = force_delete
+        __props__['force_delete'] = force_delete
 
-        __props__['imageId'] = image_id
+        __props__['image_id'] = image_id
 
-        __props__['imageName'] = image_name
+        __props__['image_name'] = image_name
 
-        __props__['keyPair'] = key_pair
+        __props__['key_pair'] = key_pair
 
         __props__['metadata'] = metadata
 
@@ -53,19 +53,19 @@ class Instance(pulumi.CustomResource):
 
         __props__['personalities'] = personalities
 
-        __props__['powerState'] = power_state
+        __props__['power_state'] = power_state
 
         __props__['region'] = region
 
-        __props__['schedulerHints'] = scheduler_hints
+        __props__['scheduler_hints'] = scheduler_hints
 
-        __props__['securityGroups'] = security_groups
+        __props__['security_groups'] = security_groups
 
-        __props__['stopBeforeDestroy'] = stop_before_destroy
+        __props__['stop_before_destroy'] = stop_before_destroy
 
-        __props__['userData'] = user_data
+        __props__['user_data'] = user_data
 
-        __props__['vendorOptions'] = vendor_options
+        __props__['vendor_options'] = vendor_options
 
         __props__['all_metadata'] = None
 
@@ -74,4 +74,11 @@ class Instance(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

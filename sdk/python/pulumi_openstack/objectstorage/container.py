@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Container(pulumi.CustomResource):
     """
@@ -21,17 +21,17 @@ class Container(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['containerRead'] = container_read
+        __props__['container_read'] = container_read
 
-        __props__['containerSyncKey'] = container_sync_key
+        __props__['container_sync_key'] = container_sync_key
 
-        __props__['containerSyncTo'] = container_sync_to
+        __props__['container_sync_to'] = container_sync_to
 
-        __props__['containerWrite'] = container_write
+        __props__['container_write'] = container_write
 
-        __props__['contentType'] = content_type
+        __props__['content_type'] = content_type
 
-        __props__['forceDestroy'] = force_destroy
+        __props__['force_destroy'] = force_destroy
 
         __props__['metadata'] = metadata
 
@@ -44,4 +44,11 @@ class Container(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

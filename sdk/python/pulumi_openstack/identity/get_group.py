@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class GetGroupResult(object):
     """
@@ -30,7 +30,7 @@ class GetGroupResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-def get_group(domain_id=None, name=None, region=None):
+async def get_group(domain_id=None, name=None, region=None):
     """
     Use this data source to get the ID of an OpenStack group.
     
@@ -41,7 +41,7 @@ def get_group(domain_id=None, name=None, region=None):
     __args__['domainId'] = domain_id
     __args__['name'] = name
     __args__['region'] = region
-    __ret__ = pulumi.runtime.invoke('openstack:identity/getGroup:getGroup', __args__)
+    __ret__ = await pulumi.runtime.invoke('openstack:identity/getGroup:getGroup', __args__)
 
     return GetGroupResult(
         domain_id=__ret__.get('domainId'),

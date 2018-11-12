@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class GetKeypairResult(object):
     """
@@ -30,7 +30,7 @@ class GetKeypairResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-def get_keypair(name=None, region=None):
+async def get_keypair(name=None, region=None):
     """
     Use this data source to get the ID and public key of an OpenStack keypair.
     """
@@ -38,7 +38,7 @@ def get_keypair(name=None, region=None):
 
     __args__['name'] = name
     __args__['region'] = region
-    __ret__ = pulumi.runtime.invoke('openstack:compute/getKeypair:getKeypair', __args__)
+    __ret__ = await pulumi.runtime.invoke('openstack:compute/getKeypair:getKeypair', __args__)
 
     return GetKeypairResult(
         public_key=__ret__.get('publicKey'),

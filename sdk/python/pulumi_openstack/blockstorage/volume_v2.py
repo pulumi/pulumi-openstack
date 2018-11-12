@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class VolumeV2(pulumi.CustomResource):
     """
@@ -21,13 +21,13 @@ class VolumeV2(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['availabilityZone'] = availability_zone
+        __props__['availability_zone'] = availability_zone
 
-        __props__['consistencyGroupId'] = consistency_group_id
+        __props__['consistency_group_id'] = consistency_group_id
 
         __props__['description'] = description
 
-        __props__['imageId'] = image_id
+        __props__['image_id'] = image_id
 
         __props__['metadata'] = metadata
 
@@ -39,13 +39,13 @@ class VolumeV2(pulumi.CustomResource):
             raise TypeError('Missing required property size')
         __props__['size'] = size
 
-        __props__['snapshotId'] = snapshot_id
+        __props__['snapshot_id'] = snapshot_id
 
-        __props__['sourceReplica'] = source_replica
+        __props__['source_replica'] = source_replica
 
-        __props__['sourceVolId'] = source_vol_id
+        __props__['source_vol_id'] = source_vol_id
 
-        __props__['volumeType'] = volume_type
+        __props__['volume_type'] = volume_type
 
         __props__['attachments'] = None
 
@@ -54,4 +54,11 @@ class VolumeV2(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

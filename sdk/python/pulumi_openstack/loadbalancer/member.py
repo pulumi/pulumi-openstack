@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Member(pulumi.CustomResource):
     """
@@ -25,23 +25,23 @@ class Member(pulumi.CustomResource):
             raise TypeError('Missing required property address')
         __props__['address'] = address
 
-        __props__['adminStateUp'] = admin_state_up
+        __props__['admin_state_up'] = admin_state_up
 
         __props__['name'] = name
 
         if not pool_id:
             raise TypeError('Missing required property pool_id')
-        __props__['poolId'] = pool_id
+        __props__['pool_id'] = pool_id
 
         if not protocol_port:
             raise TypeError('Missing required property protocol_port')
-        __props__['protocolPort'] = protocol_port
+        __props__['protocol_port'] = protocol_port
 
         __props__['region'] = region
 
-        __props__['subnetId'] = subnet_id
+        __props__['subnet_id'] = subnet_id
 
-        __props__['tenantId'] = tenant_id
+        __props__['tenant_id'] = tenant_id
 
         __props__['weight'] = weight
 
@@ -50,4 +50,11 @@ class Member(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

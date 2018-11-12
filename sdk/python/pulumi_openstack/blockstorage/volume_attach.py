@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class VolumeAttach(pulumi.CustomResource):
     """
@@ -33,21 +33,21 @@ class VolumeAttach(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['attachMode'] = attach_mode
+        __props__['attach_mode'] = attach_mode
 
         __props__['device'] = device
 
         if not host_name:
             raise TypeError('Missing required property host_name')
-        __props__['hostName'] = host_name
+        __props__['host_name'] = host_name
 
         __props__['initiator'] = initiator
 
-        __props__['ipAddress'] = ip_address
+        __props__['ip_address'] = ip_address
 
         __props__['multipath'] = multipath
 
-        __props__['osType'] = os_type
+        __props__['os_type'] = os_type
 
         __props__['platform'] = platform
 
@@ -55,7 +55,7 @@ class VolumeAttach(pulumi.CustomResource):
 
         if not volume_id:
             raise TypeError('Missing required property volume_id')
-        __props__['volumeId'] = volume_id
+        __props__['volume_id'] = volume_id
 
         __props__['wwnn'] = wwnn
 
@@ -70,4 +70,11 @@ class VolumeAttach(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

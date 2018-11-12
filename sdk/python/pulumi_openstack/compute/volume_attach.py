@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class VolumeAttach(pulumi.CustomResource):
     """
@@ -26,17 +26,24 @@ class VolumeAttach(pulumi.CustomResource):
 
         if not instance_id:
             raise TypeError('Missing required property instance_id')
-        __props__['instanceId'] = instance_id
+        __props__['instance_id'] = instance_id
 
         __props__['region'] = region
 
         if not volume_id:
             raise TypeError('Missing required property volume_id')
-        __props__['volumeId'] = volume_id
+        __props__['volume_id'] = volume_id
 
         super(VolumeAttach, __self__).__init__(
             'openstack:compute/volumeAttach:VolumeAttach',
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

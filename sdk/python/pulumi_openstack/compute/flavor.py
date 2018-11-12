@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Flavor(pulumi.CustomResource):
     """
@@ -27,9 +27,9 @@ class Flavor(pulumi.CustomResource):
 
         __props__['ephemeral'] = ephemeral
 
-        __props__['extraSpecs'] = extra_specs
+        __props__['extra_specs'] = extra_specs
 
-        __props__['isPublic'] = is_public
+        __props__['is_public'] = is_public
 
         __props__['name'] = name
 
@@ -39,7 +39,7 @@ class Flavor(pulumi.CustomResource):
 
         __props__['region'] = region
 
-        __props__['rxTxFactor'] = rx_tx_factor
+        __props__['rx_tx_factor'] = rx_tx_factor
 
         __props__['swap'] = swap
 
@@ -52,4 +52,11 @@ class Flavor(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 
