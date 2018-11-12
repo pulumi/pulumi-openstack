@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Firewall(pulumi.CustomResource):
     """
@@ -21,29 +21,36 @@ class Firewall(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['adminStateUp'] = admin_state_up
+        __props__['admin_state_up'] = admin_state_up
 
-        __props__['associatedRouters'] = associated_routers
+        __props__['associated_routers'] = associated_routers
 
         __props__['description'] = description
 
         __props__['name'] = name
 
-        __props__['noRouters'] = no_routers
+        __props__['no_routers'] = no_routers
 
         if not policy_id:
             raise TypeError('Missing required property policy_id')
-        __props__['policyId'] = policy_id
+        __props__['policy_id'] = policy_id
 
         __props__['region'] = region
 
-        __props__['tenantId'] = tenant_id
+        __props__['tenant_id'] = tenant_id
 
-        __props__['valueSpecs'] = value_specs
+        __props__['value_specs'] = value_specs
 
         super(Firewall, __self__).__init__(
             'openstack:firewall/firewall:Firewall',
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

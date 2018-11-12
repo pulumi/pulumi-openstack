@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class SecGroup(pulumi.CustomResource):
     """
@@ -23,7 +23,7 @@ class SecGroup(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['deleteDefaultRules'] = delete_default_rules
+        __props__['delete_default_rules'] = delete_default_rules
 
         __props__['description'] = description
 
@@ -31,11 +31,18 @@ class SecGroup(pulumi.CustomResource):
 
         __props__['region'] = region
 
-        __props__['tenantId'] = tenant_id
+        __props__['tenant_id'] = tenant_id
 
         super(SecGroup, __self__).__init__(
             'openstack:networking/secGroup:SecGroup',
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

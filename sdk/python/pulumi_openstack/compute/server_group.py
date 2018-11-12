@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class ServerGroup(pulumi.CustomResource):
     """
@@ -27,7 +27,7 @@ class ServerGroup(pulumi.CustomResource):
 
         __props__['region'] = region
 
-        __props__['valueSpecs'] = value_specs
+        __props__['value_specs'] = value_specs
 
         __props__['members'] = None
 
@@ -36,4 +36,11 @@ class ServerGroup(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

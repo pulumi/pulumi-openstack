@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Network(pulumi.CustomResource):
     """
@@ -21,9 +21,9 @@ class Network(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['adminStateUp'] = admin_state_up
+        __props__['admin_state_up'] = admin_state_up
 
-        __props__['availabilityZoneHints'] = availability_zone_hints
+        __props__['availability_zone_hints'] = availability_zone_hints
 
         __props__['external'] = external
 
@@ -35,13 +35,20 @@ class Network(pulumi.CustomResource):
 
         __props__['shared'] = shared
 
-        __props__['tenantId'] = tenant_id
+        __props__['tenant_id'] = tenant_id
 
-        __props__['valueSpecs'] = value_specs
+        __props__['value_specs'] = value_specs
 
         super(Network, __self__).__init__(
             'openstack:networking/network:Network',
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

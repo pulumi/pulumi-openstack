@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class EndpointGroup(pulumi.CustomResource):
     """
@@ -29,15 +29,22 @@ class EndpointGroup(pulumi.CustomResource):
 
         __props__['region'] = region
 
-        __props__['tenantId'] = tenant_id
+        __props__['tenant_id'] = tenant_id
 
         __props__['type'] = type
 
-        __props__['valueSpecs'] = value_specs
+        __props__['value_specs'] = value_specs
 
         super(EndpointGroup, __self__).__init__(
             'openstack:vpnaas/endpointGroup:EndpointGroup',
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

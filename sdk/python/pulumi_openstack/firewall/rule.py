@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Rule(pulumi.CustomResource):
     """
@@ -27,13 +27,13 @@ class Rule(pulumi.CustomResource):
 
         __props__['description'] = description
 
-        __props__['destinationIpAddress'] = destination_ip_address
+        __props__['destination_ip_address'] = destination_ip_address
 
-        __props__['destinationPort'] = destination_port
+        __props__['destination_port'] = destination_port
 
         __props__['enabled'] = enabled
 
-        __props__['ipVersion'] = ip_version
+        __props__['ip_version'] = ip_version
 
         __props__['name'] = name
 
@@ -43,17 +43,24 @@ class Rule(pulumi.CustomResource):
 
         __props__['region'] = region
 
-        __props__['sourceIpAddress'] = source_ip_address
+        __props__['source_ip_address'] = source_ip_address
 
-        __props__['sourcePort'] = source_port
+        __props__['source_port'] = source_port
 
-        __props__['tenantId'] = tenant_id
+        __props__['tenant_id'] = tenant_id
 
-        __props__['valueSpecs'] = value_specs
+        __props__['value_specs'] = value_specs
 
         super(Rule, __self__).__init__(
             'openstack:firewall/rule:Rule',
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

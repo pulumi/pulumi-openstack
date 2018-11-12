@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class GetFloatingIpResult(object):
     """
@@ -18,7 +18,7 @@ class GetFloatingIpResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-def get_floating_ip(address=None, fixed_ip=None, pool=None, port_id=None, region=None, status=None, tenant_id=None):
+async def get_floating_ip(address=None, fixed_ip=None, pool=None, port_id=None, region=None, status=None, tenant_id=None):
     """
     Use this data source to get the ID of an available OpenStack floating IP.
     """
@@ -31,7 +31,7 @@ def get_floating_ip(address=None, fixed_ip=None, pool=None, port_id=None, region
     __args__['region'] = region
     __args__['status'] = status
     __args__['tenantId'] = tenant_id
-    __ret__ = pulumi.runtime.invoke('openstack:networking/getFloatingIp:getFloatingIp', __args__)
+    __ret__ = await pulumi.runtime.invoke('openstack:networking/getFloatingIp:getFloatingIp', __args__)
 
     return GetFloatingIpResult(
         id=__ret__.get('id'))

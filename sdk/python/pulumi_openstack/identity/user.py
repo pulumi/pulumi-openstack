@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class User(pulumi.CustomResource):
     """
@@ -24,25 +24,25 @@ class User(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['defaultProjectId'] = default_project_id
+        __props__['default_project_id'] = default_project_id
 
         __props__['description'] = description
 
-        __props__['domainId'] = domain_id
+        __props__['domain_id'] = domain_id
 
         __props__['enabled'] = enabled
 
         __props__['extra'] = extra
 
-        __props__['ignoreChangePasswordUponFirstUse'] = ignore_change_password_upon_first_use
+        __props__['ignore_change_password_upon_first_use'] = ignore_change_password_upon_first_use
 
-        __props__['ignoreLockoutFailureAttempts'] = ignore_lockout_failure_attempts
+        __props__['ignore_lockout_failure_attempts'] = ignore_lockout_failure_attempts
 
-        __props__['ignorePasswordExpiry'] = ignore_password_expiry
+        __props__['ignore_password_expiry'] = ignore_password_expiry
 
-        __props__['multiFactorAuthEnabled'] = multi_factor_auth_enabled
+        __props__['multi_factor_auth_enabled'] = multi_factor_auth_enabled
 
-        __props__['multiFactorAuthRules'] = multi_factor_auth_rules
+        __props__['multi_factor_auth_rules'] = multi_factor_auth_rules
 
         __props__['name'] = name
 
@@ -55,4 +55,11 @@ class User(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

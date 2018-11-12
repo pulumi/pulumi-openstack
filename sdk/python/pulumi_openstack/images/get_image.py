@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class GetImageResult(object):
     """
@@ -82,7 +82,7 @@ class GetImageResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-def get_image(member_status=None, most_recent=None, name=None, owner=None, properties=None, region=None, size_max=None, size_min=None, sort_direction=None, sort_key=None, tag=None, visibility=None):
+async def get_image(member_status=None, most_recent=None, name=None, owner=None, properties=None, region=None, size_max=None, size_min=None, sort_direction=None, sort_key=None, tag=None, visibility=None):
     """
     Use this data source to get the ID of an available OpenStack image.
     """
@@ -100,7 +100,7 @@ def get_image(member_status=None, most_recent=None, name=None, owner=None, prope
     __args__['sortKey'] = sort_key
     __args__['tag'] = tag
     __args__['visibility'] = visibility
-    __ret__ = pulumi.runtime.invoke('openstack:images/getImage:getImage', __args__)
+    __ret__ = await pulumi.runtime.invoke('openstack:images/getImage:getImage', __args__)
 
     return GetImageResult(
         checksum=__ret__.get('checksum'),

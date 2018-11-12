@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class FloatingIp(pulumi.CustomResource):
     """
@@ -26,25 +26,32 @@ class FloatingIp(pulumi.CustomResource):
 
         __props__['address'] = address
 
-        __props__['fixedIp'] = fixed_ip
+        __props__['fixed_ip'] = fixed_ip
 
         if not pool:
             raise TypeError('Missing required property pool')
         __props__['pool'] = pool
 
-        __props__['portId'] = port_id
+        __props__['port_id'] = port_id
 
         __props__['region'] = region
 
-        __props__['subnetId'] = subnet_id
+        __props__['subnet_id'] = subnet_id
 
-        __props__['tenantId'] = tenant_id
+        __props__['tenant_id'] = tenant_id
 
-        __props__['valueSpecs'] = value_specs
+        __props__['value_specs'] = value_specs
 
         super(FloatingIp, __self__).__init__(
             'openstack:networking/floatingIp:FloatingIp',
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

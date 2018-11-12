@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class RouterRoute(pulumi.CustomResource):
     """
@@ -23,21 +23,28 @@ class RouterRoute(pulumi.CustomResource):
 
         if not destination_cidr:
             raise TypeError('Missing required property destination_cidr')
-        __props__['destinationCidr'] = destination_cidr
+        __props__['destination_cidr'] = destination_cidr
 
         if not next_hop:
             raise TypeError('Missing required property next_hop')
-        __props__['nextHop'] = next_hop
+        __props__['next_hop'] = next_hop
 
         __props__['region'] = region
 
         if not router_id:
             raise TypeError('Missing required property router_id')
-        __props__['routerId'] = router_id
+        __props__['router_id'] = router_id
 
         super(RouterRoute, __self__).__init__(
             'openstack:networking/routerRoute:RouterRoute',
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

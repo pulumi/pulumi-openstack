@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Listener(pulumi.CustomResource):
     """
@@ -21,19 +21,19 @@ class Listener(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['adminStateUp'] = admin_state_up
+        __props__['admin_state_up'] = admin_state_up
 
-        __props__['connectionLimit'] = connection_limit
+        __props__['connection_limit'] = connection_limit
 
-        __props__['defaultPoolId'] = default_pool_id
+        __props__['default_pool_id'] = default_pool_id
 
-        __props__['defaultTlsContainerRef'] = default_tls_container_ref
+        __props__['default_tls_container_ref'] = default_tls_container_ref
 
         __props__['description'] = description
 
         if not loadbalancer_id:
             raise TypeError('Missing required property loadbalancer_id')
-        __props__['loadbalancerId'] = loadbalancer_id
+        __props__['loadbalancer_id'] = loadbalancer_id
 
         __props__['name'] = name
 
@@ -43,17 +43,24 @@ class Listener(pulumi.CustomResource):
 
         if not protocol_port:
             raise TypeError('Missing required property protocol_port')
-        __props__['protocolPort'] = protocol_port
+        __props__['protocol_port'] = protocol_port
 
         __props__['region'] = region
 
-        __props__['sniContainerRefs'] = sni_container_refs
+        __props__['sni_container_refs'] = sni_container_refs
 
-        __props__['tenantId'] = tenant_id
+        __props__['tenant_id'] = tenant_id
 
         super(Listener, __self__).__init__(
             'openstack:loadbalancer/listener:Listener',
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

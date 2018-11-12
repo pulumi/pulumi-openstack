@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class SecGroupRule(pulumi.CustomResource):
     """
@@ -33,27 +33,34 @@ class SecGroupRule(pulumi.CustomResource):
             raise TypeError('Missing required property ethertype')
         __props__['ethertype'] = ethertype
 
-        __props__['portRangeMax'] = port_range_max
+        __props__['port_range_max'] = port_range_max
 
-        __props__['portRangeMin'] = port_range_min
+        __props__['port_range_min'] = port_range_min
 
         __props__['protocol'] = protocol
 
         __props__['region'] = region
 
-        __props__['remoteGroupId'] = remote_group_id
+        __props__['remote_group_id'] = remote_group_id
 
-        __props__['remoteIpPrefix'] = remote_ip_prefix
+        __props__['remote_ip_prefix'] = remote_ip_prefix
 
         if not security_group_id:
             raise TypeError('Missing required property security_group_id')
-        __props__['securityGroupId'] = security_group_id
+        __props__['security_group_id'] = security_group_id
 
-        __props__['tenantId'] = tenant_id
+        __props__['tenant_id'] = tenant_id
 
         super(SecGroupRule, __self__).__init__(
             'openstack:networking/secGroupRule:SecGroupRule',
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

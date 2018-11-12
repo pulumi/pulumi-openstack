@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Vip(pulumi.CustomResource):
     """
@@ -23,13 +23,13 @@ class Vip(pulumi.CustomResource):
 
         __props__['address'] = address
 
-        __props__['adminStateUp'] = admin_state_up
+        __props__['admin_state_up'] = admin_state_up
 
-        __props__['connLimit'] = conn_limit
+        __props__['conn_limit'] = conn_limit
 
         __props__['description'] = description
 
-        __props__['floatingIp'] = floating_ip
+        __props__['floating_ip'] = floating_ip
 
         __props__['name'] = name
 
@@ -37,7 +37,7 @@ class Vip(pulumi.CustomResource):
 
         if not pool_id:
             raise TypeError('Missing required property pool_id')
-        __props__['poolId'] = pool_id
+        __props__['pool_id'] = pool_id
 
         if not port:
             raise TypeError('Missing required property port')
@@ -51,9 +51,9 @@ class Vip(pulumi.CustomResource):
 
         if not subnet_id:
             raise TypeError('Missing required property subnet_id')
-        __props__['subnetId'] = subnet_id
+        __props__['subnet_id'] = subnet_id
 
-        __props__['tenantId'] = tenant_id
+        __props__['tenant_id'] = tenant_id
 
         __props__['port_id'] = None
 
@@ -62,4 +62,11 @@ class Vip(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

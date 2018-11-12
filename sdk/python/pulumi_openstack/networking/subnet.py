@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Subnet(pulumi.CustomResource):
     """
@@ -21,43 +21,50 @@ class Subnet(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['allocationPools'] = allocation_pools
+        __props__['allocation_pools'] = allocation_pools
 
         __props__['cidr'] = cidr
 
-        __props__['dnsNameservers'] = dns_nameservers
+        __props__['dns_nameservers'] = dns_nameservers
 
-        __props__['enableDhcp'] = enable_dhcp
+        __props__['enable_dhcp'] = enable_dhcp
 
-        __props__['gatewayIp'] = gateway_ip
+        __props__['gateway_ip'] = gateway_ip
 
-        __props__['hostRoutes'] = host_routes
+        __props__['host_routes'] = host_routes
 
-        __props__['ipVersion'] = ip_version
+        __props__['ip_version'] = ip_version
 
-        __props__['ipv6AddressMode'] = ipv6_address_mode
+        __props__['ipv6_address_mode'] = ipv6_address_mode
 
-        __props__['ipv6RaMode'] = ipv6_ra_mode
+        __props__['ipv6_ra_mode'] = ipv6_ra_mode
 
         __props__['name'] = name
 
         if not network_id:
             raise TypeError('Missing required property network_id')
-        __props__['networkId'] = network_id
+        __props__['network_id'] = network_id
 
-        __props__['noGateway'] = no_gateway
+        __props__['no_gateway'] = no_gateway
 
         __props__['region'] = region
 
-        __props__['subnetpoolId'] = subnetpool_id
+        __props__['subnetpool_id'] = subnetpool_id
 
-        __props__['tenantId'] = tenant_id
+        __props__['tenant_id'] = tenant_id
 
-        __props__['valueSpecs'] = value_specs
+        __props__['value_specs'] = value_specs
 
         super(Subnet, __self__).__init__(
             'openstack:networking/subnet:Subnet',
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

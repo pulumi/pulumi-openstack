@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class ContainerObject(pulumi.CustomResource):
     """
@@ -23,23 +23,23 @@ class ContainerObject(pulumi.CustomResource):
 
         if not container_name:
             raise TypeError('Missing required property container_name')
-        __props__['containerName'] = container_name
+        __props__['container_name'] = container_name
 
         __props__['content'] = content
 
-        __props__['contentDisposition'] = content_disposition
+        __props__['content_disposition'] = content_disposition
 
-        __props__['contentEncoding'] = content_encoding
+        __props__['content_encoding'] = content_encoding
 
-        __props__['contentType'] = content_type
+        __props__['content_type'] = content_type
 
-        __props__['copyFrom'] = copy_from
+        __props__['copy_from'] = copy_from
 
-        __props__['deleteAfter'] = delete_after
+        __props__['delete_after'] = delete_after
 
-        __props__['deleteAt'] = delete_at
+        __props__['delete_at'] = delete_at
 
-        __props__['detectContentType'] = detect_content_type
+        __props__['detect_content_type'] = detect_content_type
 
         __props__['etag'] = etag
 
@@ -47,7 +47,7 @@ class ContainerObject(pulumi.CustomResource):
 
         __props__['name'] = name
 
-        __props__['objectManifest'] = object_manifest
+        __props__['object_manifest'] = object_manifest
 
         __props__['region'] = region
 
@@ -63,4 +63,11 @@ class ContainerObject(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

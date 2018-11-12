@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Router(pulumi.CustomResource):
     """
@@ -21,33 +21,40 @@ class Router(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['adminStateUp'] = admin_state_up
+        __props__['admin_state_up'] = admin_state_up
 
-        __props__['availabilityZoneHints'] = availability_zone_hints
+        __props__['availability_zone_hints'] = availability_zone_hints
 
         __props__['distributed'] = distributed
 
-        __props__['enableSnat'] = enable_snat
+        __props__['enable_snat'] = enable_snat
 
-        __props__['externalFixedIps'] = external_fixed_ips
+        __props__['external_fixed_ips'] = external_fixed_ips
 
-        __props__['externalGateway'] = external_gateway
+        __props__['external_gateway'] = external_gateway
 
-        __props__['externalNetworkId'] = external_network_id
+        __props__['external_network_id'] = external_network_id
 
         __props__['name'] = name
 
         __props__['region'] = region
 
-        __props__['tenantId'] = tenant_id
+        __props__['tenant_id'] = tenant_id
 
-        __props__['valueSpecs'] = value_specs
+        __props__['value_specs'] = value_specs
 
-        __props__['vendorOptions'] = vendor_options
+        __props__['vendor_options'] = vendor_options
 
         super(Router, __self__).__init__(
             'openstack:networking/router:Router',
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

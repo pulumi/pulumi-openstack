@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class FloatingIpAssociate(pulumi.CustomResource):
     """
@@ -22,23 +22,30 @@ class FloatingIpAssociate(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['fixedIp'] = fixed_ip
+        __props__['fixed_ip'] = fixed_ip
 
         if not floating_ip:
             raise TypeError('Missing required property floating_ip')
-        __props__['floatingIp'] = floating_ip
+        __props__['floating_ip'] = floating_ip
 
         if not instance_id:
             raise TypeError('Missing required property instance_id')
-        __props__['instanceId'] = instance_id
+        __props__['instance_id'] = instance_id
 
         __props__['region'] = region
 
-        __props__['waitUntilAssociated'] = wait_until_associated
+        __props__['wait_until_associated'] = wait_until_associated
 
         super(FloatingIpAssociate, __self__).__init__(
             'openstack:compute/floatingIpAssociate:FloatingIpAssociate',
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

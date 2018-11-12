@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class RecordSet(pulumi.CustomResource):
     """
@@ -33,15 +33,22 @@ class RecordSet(pulumi.CustomResource):
 
         __props__['type'] = type
 
-        __props__['valueSpecs'] = value_specs
+        __props__['value_specs'] = value_specs
 
         if not zone_id:
             raise TypeError('Missing required property zone_id')
-        __props__['zoneId'] = zone_id
+        __props__['zone_id'] = zone_id
 
         super(RecordSet, __self__).__init__(
             'openstack:dns/recordSet:RecordSet',
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 
