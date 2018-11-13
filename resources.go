@@ -327,7 +327,7 @@ func Provider() tfbridge.ProviderInfo {
 				"@types/node": "^8.0.25", // so we can access strongly typed node definitions.
 			},
 			Dependencies: map[string]string{
-				"@pulumi/pulumi": "^0.15.1",
+				"@pulumi/pulumi": "^0.16.4",
 			},
 			Overlay: &tfbridge.OverlayInfo{
 				Files:   []string{},
@@ -336,7 +336,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		Python: &tfbridge.PythonInfo{
 			Requires: map[string]string{
-				"pulumi": ">=0.15.1,<0.16.0",
+				"pulumi": ">=0.16.4,<0.17.0",
 			},
 		},
 	}
