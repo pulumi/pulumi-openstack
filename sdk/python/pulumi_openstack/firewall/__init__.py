@@ -3,7 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
-from firewall import *
-from policy import *
-from rule import *
-from get_policy import *
+from .firewall import *
+from .policy import *
+from .rule import *
+from .get_policy import *

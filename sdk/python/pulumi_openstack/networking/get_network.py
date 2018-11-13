@@ -4,15 +4,15 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class GetNetworkResult(object):
     """
     A collection of values returned by getNetwork.
     """
     def __init__(__self__, admin_state_up=None, availability_zone_hints=None, region=None, shared=None, id=None):
-        if admin_state_up and not isinstance(admin_state_up, basestring):
-            raise TypeError('Expected argument admin_state_up to be a basestring')
+        if admin_state_up and not isinstance(admin_state_up, str):
+            raise TypeError('Expected argument admin_state_up to be a str')
         __self__.admin_state_up = admin_state_up
         """
         (Optional) The administrative state of the network.
@@ -23,27 +23,27 @@ class GetNetworkResult(object):
         """
         (Optional) The availability zone candidates for the network.
         """
-        if region and not isinstance(region, basestring):
-            raise TypeError('Expected argument region to be a basestring')
+        if region and not isinstance(region, str):
+            raise TypeError('Expected argument region to be a str')
         __self__.region = region
         """
         See Argument Reference above.
         """
-        if shared and not isinstance(shared, basestring):
-            raise TypeError('Expected argument shared to be a basestring')
+        if shared and not isinstance(shared, str):
+            raise TypeError('Expected argument shared to be a str')
         __self__.shared = shared
         """
         (Optional)  Specifies whether the network resource can be accessed
         by any tenant or not.
         """
-        if id and not isinstance(id, basestring):
-            raise TypeError('Expected argument id to be a basestring')
+        if id and not isinstance(id, str):
+            raise TypeError('Expected argument id to be a str')
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
         """
 
-def get_network(external=None, matching_subnet_cidr=None, name=None, network_id=None, region=None, status=None, tenant_id=None):
+async def get_network(external=None, matching_subnet_cidr=None, name=None, network_id=None, region=None, status=None, tenant_id=None):
     """
     Use this data source to get the ID of an available OpenStack network.
     """
@@ -56,7 +56,7 @@ def get_network(external=None, matching_subnet_cidr=None, name=None, network_id=
     __args__['region'] = region
     __args__['status'] = status
     __args__['tenantId'] = tenant_id
-    __ret__ = pulumi.runtime.invoke('openstack:networking/getNetwork:getNetwork', __args__)
+    __ret__ = await pulumi.runtime.invoke('openstack:networking/getNetwork:getNetwork', __args__)
 
     return GetNetworkResult(
         admin_state_up=__ret__.get('adminStateUp'),

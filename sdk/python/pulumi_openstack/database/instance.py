@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Instance(pulumi.CustomResource):
     """
@@ -14,97 +14,35 @@ class Instance(pulumi.CustomResource):
         """Create a Instance resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
-        if configuration_id and not isinstance(configuration_id, basestring):
-            raise TypeError('Expected property configuration_id to be a basestring')
-        __self__.configuration_id = configuration_id
-        """
-        Configuration ID to be attached to the instance. Database instance
-        will be rebooted when configuration is detached.
-        """
-        __props__['configurationId'] = configuration_id
+        __props__['configuration_id'] = configuration_id
 
-        if databases and not isinstance(databases, list):
-            raise TypeError('Expected property databases to be a list')
-        __self__.databases = databases
-        """
-        An array of database name, charset and collate. The database
-        object structure is documented below.
-        """
         __props__['databases'] = databases
 
         if not datastore:
             raise TypeError('Missing required property datastore')
-        elif not isinstance(datastore, dict):
-            raise TypeError('Expected property datastore to be a dict')
-        __self__.datastore = datastore
-        """
-        An array of database engine type and version. The datastore
-        object structure is documented below. Changing this creates a new instance.
-        """
         __props__['datastore'] = datastore
 
-        if flavor_id and not isinstance(flavor_id, basestring):
-            raise TypeError('Expected property flavor_id to be a basestring')
-        __self__.flavor_id = flavor_id
-        """
-        The flavor ID of the desired flavor for the instance.
-        Changing this creates new instance.
-        """
-        __props__['flavorId'] = flavor_id
+        __props__['flavor_id'] = flavor_id
 
-        if name and not isinstance(name, basestring):
-            raise TypeError('Expected property name to be a basestring')
-        __self__.name = name
-        """
-        A unique name for the resource.
-        """
         __props__['name'] = name
 
-        if networks and not isinstance(networks, list):
-            raise TypeError('Expected property networks to be a list')
-        __self__.networks = networks
-        """
-        An array of one or more networks to attach to the
-        instance. The network object structure is documented below. Changing this
-        creates a new instance.
-        """
         __props__['networks'] = networks
 
         if not region:
             raise TypeError('Missing required property region')
-        elif not isinstance(region, basestring):
-            raise TypeError('Expected property region to be a basestring')
-        __self__.region = region
-        """
-        The region in which to create the db instance. Changing this
-        creates a new instance.
-        """
         __props__['region'] = region
 
         if not size:
             raise TypeError('Missing required property size')
-        elif not isinstance(size, int):
-            raise TypeError('Expected property size to be a int')
-        __self__.size = size
-        """
-        Specifies the volume size in GB. Changing this creates new instance.
-        """
         __props__['size'] = size
 
-        if users and not isinstance(users, list):
-            raise TypeError('Expected property users to be a list')
-        __self__.users = users
-        """
-        An array of username, password, host and databases. The user
-        object structure is documented below.
-        """
         __props__['users'] = users
 
         super(Instance, __self__).__init__(
@@ -113,22 +51,10 @@ class Instance(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'configurationId' in outs:
-            self.configuration_id = outs['configurationId']
-        if 'databases' in outs:
-            self.databases = outs['databases']
-        if 'datastore' in outs:
-            self.datastore = outs['datastore']
-        if 'flavorId' in outs:
-            self.flavor_id = outs['flavorId']
-        if 'name' in outs:
-            self.name = outs['name']
-        if 'networks' in outs:
-            self.networks = outs['networks']
-        if 'region' in outs:
-            self.region = outs['region']
-        if 'size' in outs:
-            self.size = outs['size']
-        if 'users' in outs:
-            self.users = outs['users']
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

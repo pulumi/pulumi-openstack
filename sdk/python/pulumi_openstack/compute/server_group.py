@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class ServerGroup(pulumi.CustomResource):
     """
@@ -14,55 +14,22 @@ class ServerGroup(pulumi.CustomResource):
         """Create a ServerGroup resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
-        if name and not isinstance(name, basestring):
-            raise TypeError('Expected property name to be a basestring')
-        __self__.name = name
-        """
-        A unique name for the server group. Changing this creates
-        a new server group.
-        """
         __props__['name'] = name
 
-        if policies and not isinstance(policies, list):
-            raise TypeError('Expected property policies to be a list')
-        __self__.policies = policies
-        """
-        The set of policies for the server group. Only two
-        two policies are available right now, and both are mutually exclusive. See
-        the Policies section for more information. Changing this creates a new
-        server group.
-        """
         __props__['policies'] = policies
 
-        if region and not isinstance(region, basestring):
-            raise TypeError('Expected property region to be a basestring')
-        __self__.region = region
-        """
-        The region in which to obtain the V2 Compute client.
-        If omitted, the `region` argument of the provider is used. Changing
-        this creates a new server group.
-        """
         __props__['region'] = region
 
-        if value_specs and not isinstance(value_specs, dict):
-            raise TypeError('Expected property value_specs to be a dict')
-        __self__.value_specs = value_specs
-        """
-        Map of additional options.
-        """
-        __props__['valueSpecs'] = value_specs
+        __props__['value_specs'] = value_specs
 
-        __self__.members = pulumi.runtime.UNKNOWN
-        """
-        The instances that are part of this server group.
-        """
+        __props__['members'] = None
 
         super(ServerGroup, __self__).__init__(
             'openstack:compute/serverGroup:ServerGroup',
@@ -70,14 +37,10 @@ class ServerGroup(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'members' in outs:
-            self.members = outs['members']
-        if 'name' in outs:
-            self.name = outs['name']
-        if 'policies' in outs:
-            self.policies = outs['policies']
-        if 'region' in outs:
-            self.region = outs['region']
-        if 'valueSpecs' in outs:
-            self.value_specs = outs['valueSpecs']
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

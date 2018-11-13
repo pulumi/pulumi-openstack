@@ -4,27 +4,27 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class GetImageResult(object):
     """
     A collection of values returned by getImage.
     """
     def __init__(__self__, checksum=None, container_format=None, disk_format=None, file=None, metadata=None, min_disk_gb=None, min_ram_mb=None, protected=None, region=None, schema=None, size_bytes=None, updated_at=None, id=None):
-        if checksum and not isinstance(checksum, basestring):
-            raise TypeError('Expected argument checksum to be a basestring')
+        if checksum and not isinstance(checksum, str):
+            raise TypeError('Expected argument checksum to be a str')
         __self__.checksum = checksum
         """
         The checksum of the data associated with the image.
         """
-        if container_format and not isinstance(container_format, basestring):
-            raise TypeError('Expected argument container_format to be a basestring')
+        if container_format and not isinstance(container_format, str):
+            raise TypeError('Expected argument container_format to be a str')
         __self__.container_format = container_format
-        if disk_format and not isinstance(disk_format, basestring):
-            raise TypeError('Expected argument disk_format to be a basestring')
+        if disk_format and not isinstance(disk_format, str):
+            raise TypeError('Expected argument disk_format to be a str')
         __self__.disk_format = disk_format
-        if file and not isinstance(file, basestring):
-            raise TypeError('Expected argument file to be a basestring')
+        if file and not isinstance(file, str):
+            raise TypeError('Expected argument file to be a str')
         __self__.file = file
         """
         the trailing path after the glance endpoint that represent the
@@ -56,11 +56,11 @@ class GetImageResult(object):
         """
         Whether or not the image is protected.
         """
-        if region and not isinstance(region, basestring):
-            raise TypeError('Expected argument region to be a basestring')
+        if region and not isinstance(region, str):
+            raise TypeError('Expected argument region to be a str')
         __self__.region = region
-        if schema and not isinstance(schema, basestring):
-            raise TypeError('Expected argument schema to be a basestring')
+        if schema and not isinstance(schema, str):
+            raise TypeError('Expected argument schema to be a str')
         __self__.schema = schema
         """
         The path to the JSON-schema that represent
@@ -72,17 +72,17 @@ class GetImageResult(object):
         """
         The size of the image (in bytes).
         """
-        if updated_at and not isinstance(updated_at, basestring):
-            raise TypeError('Expected argument updated_at to be a basestring')
+        if updated_at and not isinstance(updated_at, str):
+            raise TypeError('Expected argument updated_at to be a str')
         __self__.updated_at = updated_at
-        if id and not isinstance(id, basestring):
-            raise TypeError('Expected argument id to be a basestring')
+        if id and not isinstance(id, str):
+            raise TypeError('Expected argument id to be a str')
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
         """
 
-def get_image(member_status=None, most_recent=None, name=None, owner=None, properties=None, region=None, size_max=None, size_min=None, sort_direction=None, sort_key=None, tag=None, visibility=None):
+async def get_image(member_status=None, most_recent=None, name=None, owner=None, properties=None, region=None, size_max=None, size_min=None, sort_direction=None, sort_key=None, tag=None, visibility=None):
     """
     Use this data source to get the ID of an available OpenStack image.
     """
@@ -100,7 +100,7 @@ def get_image(member_status=None, most_recent=None, name=None, owner=None, prope
     __args__['sortKey'] = sort_key
     __args__['tag'] = tag
     __args__['visibility'] = visibility
-    __ret__ = pulumi.runtime.invoke('openstack:images/getImage:getImage', __args__)
+    __ret__ = await pulumi.runtime.invoke('openstack:images/getImage:getImage', __args__)
 
     return GetImageResult(
         checksum=__ret__.get('checksum'),

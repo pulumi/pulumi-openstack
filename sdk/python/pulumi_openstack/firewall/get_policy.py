@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class GetPolicyResult(object):
     """
@@ -17,14 +17,14 @@ class GetPolicyResult(object):
         """
         The audit status of the firewall policy.
         """
-        if description and not isinstance(description, basestring):
-            raise TypeError('Expected argument description to be a basestring')
+        if description and not isinstance(description, str):
+            raise TypeError('Expected argument description to be a str')
         __self__.description = description
         """
         The description of the firewall policy.
         """
-        if region and not isinstance(region, basestring):
-            raise TypeError('Expected argument region to be a basestring')
+        if region and not isinstance(region, str):
+            raise TypeError('Expected argument region to be a str')
         __self__.region = region
         """
         See Argument Reference above.
@@ -41,20 +41,20 @@ class GetPolicyResult(object):
         """
         The sharing status of the firewall policy.
         """
-        if tenant_id and not isinstance(tenant_id, basestring):
-            raise TypeError('Expected argument tenant_id to be a basestring')
+        if tenant_id and not isinstance(tenant_id, str):
+            raise TypeError('Expected argument tenant_id to be a str')
         __self__.tenant_id = tenant_id
         """
         See Argument Reference above.
         """
-        if id and not isinstance(id, basestring):
-            raise TypeError('Expected argument id to be a basestring')
+        if id and not isinstance(id, str):
+            raise TypeError('Expected argument id to be a str')
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
         """
 
-def get_policy(name=None, policy_id=None, region=None, tenant_id=None):
+async def get_policy(name=None, policy_id=None, region=None, tenant_id=None):
     """
     Use this data source to get firewall policy information of an available OpenStack firewall policy.
     """
@@ -64,7 +64,7 @@ def get_policy(name=None, policy_id=None, region=None, tenant_id=None):
     __args__['policyId'] = policy_id
     __args__['region'] = region
     __args__['tenantId'] = tenant_id
-    __ret__ = pulumi.runtime.invoke('openstack:firewall/getPolicy:getPolicy', __args__)
+    __ret__ = await pulumi.runtime.invoke('openstack:firewall/getPolicy:getPolicy', __args__)
 
     return GetPolicyResult(
         audited=__ret__.get('audited'),

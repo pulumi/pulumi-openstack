@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class FloatingIpAssociate(pulumi.CustomResource):
     """
@@ -16,7 +16,7 @@ class FloatingIpAssociate(pulumi.CustomResource):
         """Create a FloatingIpAssociate resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -25,35 +25,12 @@ class FloatingIpAssociate(pulumi.CustomResource):
 
         if not floating_ip:
             raise TypeError('Missing required property floating_ip')
-        elif not isinstance(floating_ip, basestring):
-            raise TypeError('Expected property floating_ip to be a basestring')
-        __self__.floating_ip = floating_ip
-        """
-        IP Address of an existing floating IP.
-        """
-        __props__['floatingIp'] = floating_ip
+        __props__['floating_ip'] = floating_ip
 
         if not port_id:
             raise TypeError('Missing required property port_id')
-        elif not isinstance(port_id, basestring):
-            raise TypeError('Expected property port_id to be a basestring')
-        __self__.port_id = port_id
-        """
-        ID of an existing port with at least one IP address to
-        associate with this floating IP.
-        """
-        __props__['portId'] = port_id
+        __props__['port_id'] = port_id
 
-        if region and not isinstance(region, basestring):
-            raise TypeError('Expected property region to be a basestring')
-        __self__.region = region
-        """
-        The region in which to obtain the V2 Networking client.
-        A Networking client is needed to create a floating IP that can be used with
-        another networking resource, such as a load balancer. If omitted, the
-        `region` argument of the provider is used. Changing this creates a new
-        floating IP (which may or may not have a different address).
-        """
         __props__['region'] = region
 
         super(FloatingIpAssociate, __self__).__init__(
@@ -62,10 +39,10 @@ class FloatingIpAssociate(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'floatingIp' in outs:
-            self.floating_ip = outs['floatingIp']
-        if 'portId' in outs:
-            self.port_id = outs['portId']
-        if 'region' in outs:
-            self.region = outs['region']
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

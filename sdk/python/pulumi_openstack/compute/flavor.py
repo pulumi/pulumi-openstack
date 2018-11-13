@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Flavor(pulumi.CustomResource):
     """
@@ -14,7 +14,7 @@ class Flavor(pulumi.CustomResource):
         """Create a Flavor resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -23,95 +23,28 @@ class Flavor(pulumi.CustomResource):
 
         if not disk:
             raise TypeError('Missing required property disk')
-        elif not isinstance(disk, int):
-            raise TypeError('Expected property disk to be a int')
-        __self__.disk = disk
-        """
-        The amount of disk space in gigabytes to use for the root
-        (/) partition. Changing this creates a new flavor.
-        """
         __props__['disk'] = disk
 
-        if ephemeral and not isinstance(ephemeral, int):
-            raise TypeError('Expected property ephemeral to be a int')
-        __self__.ephemeral = ephemeral
         __props__['ephemeral'] = ephemeral
 
-        if extra_specs and not isinstance(extra_specs, dict):
-            raise TypeError('Expected property extra_specs to be a dict')
-        __self__.extra_specs = extra_specs
-        """
-        Key/Value pairs of metadata for the flavor.
-        """
-        __props__['extraSpecs'] = extra_specs
+        __props__['extra_specs'] = extra_specs
 
-        if is_public and not isinstance(is_public, bool):
-            raise TypeError('Expected property is_public to be a bool')
-        __self__.is_public = is_public
-        """
-        Whether the flavor is public. Changing this creates
-        a new flavor.
-        """
-        __props__['isPublic'] = is_public
+        __props__['is_public'] = is_public
 
-        if name and not isinstance(name, basestring):
-            raise TypeError('Expected property name to be a basestring')
-        __self__.name = name
-        """
-        A unique name for the flavor. Changing this creates a new
-        flavor.
-        """
         __props__['name'] = name
 
         if not ram:
             raise TypeError('Missing required property ram')
-        elif not isinstance(ram, int):
-            raise TypeError('Expected property ram to be a int')
-        __self__.ram = ram
-        """
-        The amount of RAM to use, in megabytes. Changing this
-        creates a new flavor.
-        """
         __props__['ram'] = ram
 
-        if region and not isinstance(region, basestring):
-            raise TypeError('Expected property region to be a basestring')
-        __self__.region = region
-        """
-        The region in which to obtain the V2 Compute client.
-        Flavors are associated with accounts, but a Compute client is needed to
-        create one. If omitted, the `region` argument of the provider is used.
-        Changing this creates a new flavor.
-        """
         __props__['region'] = region
 
-        if rx_tx_factor and not isinstance(rx_tx_factor, float):
-            raise TypeError('Expected property rx_tx_factor to be a float')
-        __self__.rx_tx_factor = rx_tx_factor
-        """
-        RX/TX bandwith factor. The default is 1. Changing
-        this creates a new flavor.
-        """
-        __props__['rxTxFactor'] = rx_tx_factor
+        __props__['rx_tx_factor'] = rx_tx_factor
 
-        if swap and not isinstance(swap, int):
-            raise TypeError('Expected property swap to be a int')
-        __self__.swap = swap
-        """
-        The amount of disk space in megabytes to use. If
-        unspecified, the default is 0. Changing this creates a new flavor.
-        """
         __props__['swap'] = swap
 
         if not vcpus:
             raise TypeError('Missing required property vcpus')
-        elif not isinstance(vcpus, int):
-            raise TypeError('Expected property vcpus to be a int')
-        __self__.vcpus = vcpus
-        """
-        The number of virtual CPUs to use. Changing this creates
-        a new flavor.
-        """
         __props__['vcpus'] = vcpus
 
         super(Flavor, __self__).__init__(
@@ -120,24 +53,10 @@ class Flavor(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'disk' in outs:
-            self.disk = outs['disk']
-        if 'ephemeral' in outs:
-            self.ephemeral = outs['ephemeral']
-        if 'extraSpecs' in outs:
-            self.extra_specs = outs['extraSpecs']
-        if 'isPublic' in outs:
-            self.is_public = outs['isPublic']
-        if 'name' in outs:
-            self.name = outs['name']
-        if 'ram' in outs:
-            self.ram = outs['ram']
-        if 'region' in outs:
-            self.region = outs['region']
-        if 'rxTxFactor' in outs:
-            self.rx_tx_factor = outs['rxTxFactor']
-        if 'swap' in outs:
-            self.swap = outs['swap']
-        if 'vcpus' in outs:
-            self.vcpus = outs['vcpus']
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class RecordSet(pulumi.CustomResource):
     """
@@ -14,84 +14,30 @@ class RecordSet(pulumi.CustomResource):
         """Create a RecordSet resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
-        if description and not isinstance(description, basestring):
-            raise TypeError('Expected property description to be a basestring')
-        __self__.description = description
-        """
-        A description of the  record set.
-        """
         __props__['description'] = description
 
-        if name and not isinstance(name, basestring):
-            raise TypeError('Expected property name to be a basestring')
-        __self__.name = name
-        """
-        The name of the record set. Note the `.` at the end of the name.
-        Changing this creates a new DNS  record set.
-        """
         __props__['name'] = name
 
-        if records and not isinstance(records, list):
-            raise TypeError('Expected property records to be a list')
-        __self__.records = records
-        """
-        An array of DNS records.
-        """
         __props__['records'] = records
 
-        if region and not isinstance(region, basestring):
-            raise TypeError('Expected property region to be a basestring')
-        __self__.region = region
-        """
-        The region in which to obtain the V2 DNS client.
-        If omitted, the `region` argument of the provider is used.
-        Changing this creates a new DNS  record set.
-        """
         __props__['region'] = region
 
-        if ttl and not isinstance(ttl, int):
-            raise TypeError('Expected property ttl to be a int')
-        __self__.ttl = ttl
-        """
-        The time to live (TTL) of the record set.
-        """
         __props__['ttl'] = ttl
 
-        if type and not isinstance(type, basestring):
-            raise TypeError('Expected property type to be a basestring')
-        __self__.type = type
-        """
-        The type of record set. Examples: "A", "MX".
-        Changing this creates a new DNS  record set.
-        """
         __props__['type'] = type
 
-        if value_specs and not isinstance(value_specs, dict):
-            raise TypeError('Expected property value_specs to be a dict')
-        __self__.value_specs = value_specs
-        """
-        Map of additional options. Changing this creates a
-        new record set.
-        """
-        __props__['valueSpecs'] = value_specs
+        __props__['value_specs'] = value_specs
 
         if not zone_id:
             raise TypeError('Missing required property zone_id')
-        elif not isinstance(zone_id, basestring):
-            raise TypeError('Expected property zone_id to be a basestring')
-        __self__.zone_id = zone_id
-        """
-        The ID of the zone in which to create the record set.
-        Changing this creates a new DNS  record set.
-        """
-        __props__['zoneId'] = zone_id
+        __props__['zone_id'] = zone_id
 
         super(RecordSet, __self__).__init__(
             'openstack:dns/recordSet:RecordSet',
@@ -99,20 +45,10 @@ class RecordSet(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'description' in outs:
-            self.description = outs['description']
-        if 'name' in outs:
-            self.name = outs['name']
-        if 'records' in outs:
-            self.records = outs['records']
-        if 'region' in outs:
-            self.region = outs['region']
-        if 'ttl' in outs:
-            self.ttl = outs['ttl']
-        if 'type' in outs:
-            self.type = outs['type']
-        if 'valueSpecs' in outs:
-            self.value_specs = outs['valueSpecs']
-        if 'zoneId' in outs:
-            self.zone_id = outs['zoneId']
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

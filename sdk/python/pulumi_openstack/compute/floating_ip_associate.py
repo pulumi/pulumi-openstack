@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class FloatingIpAssociate(pulumi.CustomResource):
     """
@@ -15,62 +15,26 @@ class FloatingIpAssociate(pulumi.CustomResource):
         """Create a FloatingIpAssociate resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
-        if fixed_ip and not isinstance(fixed_ip, basestring):
-            raise TypeError('Expected property fixed_ip to be a basestring')
-        __self__.fixed_ip = fixed_ip
-        """
-        The specific IP address to direct traffic to.
-        """
-        __props__['fixedIp'] = fixed_ip
+        __props__['fixed_ip'] = fixed_ip
 
         if not floating_ip:
             raise TypeError('Missing required property floating_ip')
-        elif not isinstance(floating_ip, basestring):
-            raise TypeError('Expected property floating_ip to be a basestring')
-        __self__.floating_ip = floating_ip
-        """
-        The floating IP to associate.
-        """
-        __props__['floatingIp'] = floating_ip
+        __props__['floating_ip'] = floating_ip
 
         if not instance_id:
             raise TypeError('Missing required property instance_id')
-        elif not isinstance(instance_id, basestring):
-            raise TypeError('Expected property instance_id to be a basestring')
-        __self__.instance_id = instance_id
-        """
-        The instance to associte the floating IP with.
-        """
-        __props__['instanceId'] = instance_id
+        __props__['instance_id'] = instance_id
 
-        if region and not isinstance(region, basestring):
-            raise TypeError('Expected property region to be a basestring')
-        __self__.region = region
-        """
-        The region in which to obtain the V2 Compute client.
-        Keypairs are associated with accounts, but a Compute client is needed to
-        create one. If omitted, the `region` argument of the provider is used.
-        Changing this creates a new floatingip_associate.
-        """
         __props__['region'] = region
 
-        if wait_until_associated and not isinstance(wait_until_associated, bool):
-            raise TypeError('Expected property wait_until_associated to be a bool')
-        __self__.wait_until_associated = wait_until_associated
-        """
-        In cases where the OpenStack environment
-        does not automatically wait until the association has finished, set this
-        option to have Terraform poll the instance until the floating IP has been
-        associated. Defaults to false.
-        """
-        __props__['waitUntilAssociated'] = wait_until_associated
+        __props__['wait_until_associated'] = wait_until_associated
 
         super(FloatingIpAssociate, __self__).__init__(
             'openstack:compute/floatingIpAssociate:FloatingIpAssociate',
@@ -78,14 +42,10 @@ class FloatingIpAssociate(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'fixedIp' in outs:
-            self.fixed_ip = outs['fixedIp']
-        if 'floatingIp' in outs:
-            self.floating_ip = outs['floatingIp']
-        if 'instanceId' in outs:
-            self.instance_id = outs['instanceId']
-        if 'region' in outs:
-            self.region = outs['region']
-        if 'waitUntilAssociated' in outs:
-            self.wait_until_associated = outs['waitUntilAssociated']
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class PoolV1(pulumi.CustomResource):
     """
@@ -14,7 +14,7 @@ class PoolV1(pulumi.CustomResource):
         """Create a PoolV1 resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -23,85 +23,25 @@ class PoolV1(pulumi.CustomResource):
 
         if not lb_method:
             raise TypeError('Missing required property lb_method')
-        elif not isinstance(lb_method, basestring):
-            raise TypeError('Expected property lb_method to be a basestring')
-        __self__.lb_method = lb_method
-        """
-        The algorithm used to distribute load between the
-        members of the pool. The current specification supports 'ROUND_ROBIN' and
-        'LEAST_CONNECTIONS' as valid values for this attribute.
-        """
-        __props__['lbMethod'] = lb_method
+        __props__['lb_method'] = lb_method
 
-        if lb_provider and not isinstance(lb_provider, basestring):
-            raise TypeError('Expected property lb_provider to be a basestring')
-        __self__.lb_provider = lb_provider
-        """
-        The backend load balancing provider. For example:
-        `haproxy`, `F5`, etc.
-        """
-        __props__['lbProvider'] = lb_provider
+        __props__['lb_provider'] = lb_provider
 
-        if monitor_ids and not isinstance(monitor_ids, list):
-            raise TypeError('Expected property monitor_ids to be a list')
-        __self__.monitor_ids = monitor_ids
-        """
-        A list of IDs of monitors to associate with the
-        pool.
-        """
-        __props__['monitorIds'] = monitor_ids
+        __props__['monitor_ids'] = monitor_ids
 
-        if name and not isinstance(name, basestring):
-            raise TypeError('Expected property name to be a basestring')
-        __self__.name = name
-        """
-        The name of the pool. Changing this updates the name of
-        the existing pool.
-        """
         __props__['name'] = name
 
         if not protocol:
             raise TypeError('Missing required property protocol')
-        elif not isinstance(protocol, basestring):
-            raise TypeError('Expected property protocol to be a basestring')
-        __self__.protocol = protocol
-        """
-        The protocol used by the pool members, you can use
-        either 'TCP, 'HTTP', or 'HTTPS'. Changing this creates a new pool.
-        """
         __props__['protocol'] = protocol
 
-        if region and not isinstance(region, basestring):
-            raise TypeError('Expected property region to be a basestring')
-        __self__.region = region
-        """
-        The region in which to obtain the V2 Networking client.
-        A Networking client is needed to create an LB pool. If omitted, the
-        `region` argument of the provider is used. Changing this creates a new
-        LB pool.
-        """
         __props__['region'] = region
 
         if not subnet_id:
             raise TypeError('Missing required property subnet_id')
-        elif not isinstance(subnet_id, basestring):
-            raise TypeError('Expected property subnet_id to be a basestring')
-        __self__.subnet_id = subnet_id
-        """
-        The network on which the members of the pool will be
-        located. Only members that are on this network can be added to the pool.
-        Changing this creates a new pool.
-        """
-        __props__['subnetId'] = subnet_id
+        __props__['subnet_id'] = subnet_id
 
-        if tenant_id and not isinstance(tenant_id, basestring):
-            raise TypeError('Expected property tenant_id to be a basestring')
-        __self__.tenant_id = tenant_id
-        """
-        The owner of the pool. Required if admin wants to
-        create a pool member for another tenant. Changing this creates a new pool.
-        """
-        __props__['tenantId'] = tenant_id
+        __props__['tenant_id'] = tenant_id
 
         super(PoolV1, __self__).__init__(
             'openstack:loadbalancer/poolV1:PoolV1',
@@ -109,20 +49,10 @@ class PoolV1(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'lbMethod' in outs:
-            self.lb_method = outs['lbMethod']
-        if 'lbProvider' in outs:
-            self.lb_provider = outs['lbProvider']
-        if 'monitorIds' in outs:
-            self.monitor_ids = outs['monitorIds']
-        if 'name' in outs:
-            self.name = outs['name']
-        if 'protocol' in outs:
-            self.protocol = outs['protocol']
-        if 'region' in outs:
-            self.region = outs['region']
-        if 'subnetId' in outs:
-            self.subnet_id = outs['subnetId']
-        if 'tenantId' in outs:
-            self.tenant_id = outs['tenantId']
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

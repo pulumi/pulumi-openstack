@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class GetFlavorResult(object):
     """
@@ -17,17 +17,17 @@ class GetFlavorResult(object):
         """
         Whether the flavor is public or private.
         """
-        if region and not isinstance(region, basestring):
-            raise TypeError('Expected argument region to be a basestring')
+        if region and not isinstance(region, str):
+            raise TypeError('Expected argument region to be a str')
         __self__.region = region
-        if id and not isinstance(id, basestring):
-            raise TypeError('Expected argument id to be a basestring')
+        if id and not isinstance(id, str):
+            raise TypeError('Expected argument id to be a str')
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
         """
 
-def get_flavor(disk=None, min_disk=None, min_ram=None, name=None, ram=None, region=None, rx_tx_factor=None, swap=None, vcpus=None):
+async def get_flavor(disk=None, min_disk=None, min_ram=None, name=None, ram=None, region=None, rx_tx_factor=None, swap=None, vcpus=None):
     """
     Use this data source to get the ID of an available OpenStack flavor.
     """
@@ -42,7 +42,7 @@ def get_flavor(disk=None, min_disk=None, min_ram=None, name=None, ram=None, regi
     __args__['rxTxFactor'] = rx_tx_factor
     __args__['swap'] = swap
     __args__['vcpus'] = vcpus
-    __ret__ = pulumi.runtime.invoke('openstack:compute/getFlavor:getFlavor', __args__)
+    __ret__ = await pulumi.runtime.invoke('openstack:compute/getFlavor:getFlavor', __args__)
 
     return GetFlavorResult(
         is_public=__ret__.get('isPublic'),

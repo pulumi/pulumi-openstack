@@ -4,30 +4,30 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class GetSecGroupResult(object):
     """
     A collection of values returned by getSecGroup.
     """
     def __init__(__self__, region=None, tenant_id=None, id=None):
-        if region and not isinstance(region, basestring):
-            raise TypeError('Expected argument region to be a basestring')
+        if region and not isinstance(region, str):
+            raise TypeError('Expected argument region to be a str')
         __self__.region = region
         """
         See Argument Reference above.
         """
-        if tenant_id and not isinstance(tenant_id, basestring):
-            raise TypeError('Expected argument tenant_id to be a basestring')
+        if tenant_id and not isinstance(tenant_id, str):
+            raise TypeError('Expected argument tenant_id to be a str')
         __self__.tenant_id = tenant_id
-        if id and not isinstance(id, basestring):
-            raise TypeError('Expected argument id to be a basestring')
+        if id and not isinstance(id, str):
+            raise TypeError('Expected argument id to be a str')
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
         """
 
-def get_sec_group(name=None, region=None, secgroup_id=None, tenant_id=None):
+async def get_sec_group(name=None, region=None, secgroup_id=None, tenant_id=None):
     """
     Use this data source to get the ID of an available OpenStack security group.
     """
@@ -37,7 +37,7 @@ def get_sec_group(name=None, region=None, secgroup_id=None, tenant_id=None):
     __args__['region'] = region
     __args__['secgroupId'] = secgroup_id
     __args__['tenantId'] = tenant_id
-    __ret__ = pulumi.runtime.invoke('openstack:networking/getSecGroup:getSecGroup', __args__)
+    __ret__ = await pulumi.runtime.invoke('openstack:networking/getSecGroup:getSecGroup', __args__)
 
     return GetSecGroupResult(
         region=__ret__.get('region'),

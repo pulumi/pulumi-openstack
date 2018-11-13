@@ -4,33 +4,33 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class GetKeypairResult(object):
     """
     A collection of values returned by getKeypair.
     """
     def __init__(__self__, public_key=None, region=None, id=None):
-        if public_key and not isinstance(public_key, basestring):
-            raise TypeError('Expected argument public_key to be a basestring')
+        if public_key and not isinstance(public_key, str):
+            raise TypeError('Expected argument public_key to be a str')
         __self__.public_key = public_key
         """
         The OpenSSH-formatted public key of the keypair.
         """
-        if region and not isinstance(region, basestring):
-            raise TypeError('Expected argument region to be a basestring')
+        if region and not isinstance(region, str):
+            raise TypeError('Expected argument region to be a str')
         __self__.region = region
         """
         See Argument Reference above.
         """
-        if id and not isinstance(id, basestring):
-            raise TypeError('Expected argument id to be a basestring')
+        if id and not isinstance(id, str):
+            raise TypeError('Expected argument id to be a str')
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
         """
 
-def get_keypair(name=None, region=None):
+async def get_keypair(name=None, region=None):
     """
     Use this data source to get the ID and public key of an OpenStack keypair.
     """
@@ -38,7 +38,7 @@ def get_keypair(name=None, region=None):
 
     __args__['name'] = name
     __args__['region'] = region
-    __ret__ = pulumi.runtime.invoke('openstack:compute/getKeypair:getKeypair', __args__)
+    __ret__ = await pulumi.runtime.invoke('openstack:compute/getKeypair:getKeypair', __args__)
 
     return GetKeypairResult(
         public_key=__ret__.get('publicKey'),

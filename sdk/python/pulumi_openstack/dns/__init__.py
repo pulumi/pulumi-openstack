@@ -3,6 +3,6 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
-from record_set import *
-from zone import *
-from get_dns_zone import *
+from .record_set import *
+from .zone import *
+from .get_dns_zone import *

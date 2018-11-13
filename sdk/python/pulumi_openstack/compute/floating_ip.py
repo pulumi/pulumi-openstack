@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class FloatingIp(pulumi.CustomResource):
     """
@@ -20,7 +20,7 @@ class FloatingIp(pulumi.CustomResource):
         """Create a FloatingIp resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -29,39 +29,13 @@ class FloatingIp(pulumi.CustomResource):
 
         if not pool:
             raise TypeError('Missing required property pool')
-        elif not isinstance(pool, basestring):
-            raise TypeError('Expected property pool to be a basestring')
-        __self__.pool = pool
-        """
-        The name of the pool from which to obtain the floating
-        IP. Changing this creates a new floating IP.
-        """
         __props__['pool'] = pool
 
-        if region and not isinstance(region, basestring):
-            raise TypeError('Expected property region to be a basestring')
-        __self__.region = region
-        """
-        The region in which to obtain the V2 Compute client.
-        A Compute client is needed to create a floating IP that can be used with
-        a compute instance. If omitted, the `region` argument of the provider
-        is used. Changing this creates a new floating IP (which may or may not
-        have a different address).
-        """
         __props__['region'] = region
 
-        __self__.address = pulumi.runtime.UNKNOWN
-        """
-        The actual floating IP address itself.
-        """
-        __self__.fixed_ip = pulumi.runtime.UNKNOWN
-        """
-        The fixed IP address corresponding to the floating IP.
-        """
-        __self__.instance_id = pulumi.runtime.UNKNOWN
-        """
-        UUID of the compute instance associated with the floating IP.
-        """
+        __props__['address'] = None
+        __props__['fixed_ip'] = None
+        __props__['instance_id'] = None
 
         super(FloatingIp, __self__).__init__(
             'openstack:compute/floatingIp:FloatingIp',
@@ -69,14 +43,10 @@ class FloatingIp(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'address' in outs:
-            self.address = outs['address']
-        if 'fixedIp' in outs:
-            self.fixed_ip = outs['fixedIp']
-        if 'instanceId' in outs:
-            self.instance_id = outs['instanceId']
-        if 'pool' in outs:
-            self.pool = outs['pool']
-        if 'region' in outs:
-            self.region = outs['region']
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

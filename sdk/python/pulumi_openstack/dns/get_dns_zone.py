@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class GetDnsZoneResult(object):
     """
@@ -17,8 +17,8 @@ class GetDnsZoneResult(object):
         """
         Attributes of the DNS Service scheduler.
         """
-        if created_at and not isinstance(created_at, basestring):
-            raise TypeError('Expected argument created_at to be a basestring')
+        if created_at and not isinstance(created_at, str):
+            raise TypeError('Expected argument created_at to be a str')
         __self__.created_at = created_at
         """
         The time the zone was created.
@@ -29,20 +29,20 @@ class GetDnsZoneResult(object):
         """
         An array of master DNS servers. When `type` is  `SECONDARY`.
         """
-        if pool_id and not isinstance(pool_id, basestring):
-            raise TypeError('Expected argument pool_id to be a basestring')
+        if pool_id and not isinstance(pool_id, str):
+            raise TypeError('Expected argument pool_id to be a str')
         __self__.pool_id = pool_id
         """
         The ID of the pool hosting the zone.
         """
-        if project_id and not isinstance(project_id, basestring):
-            raise TypeError('Expected argument project_id to be a basestring')
+        if project_id and not isinstance(project_id, str):
+            raise TypeError('Expected argument project_id to be a str')
         __self__.project_id = project_id
         """
         The project ID that owns the zone.
         """
-        if region and not isinstance(region, basestring):
-            raise TypeError('Expected argument region to be a basestring')
+        if region and not isinstance(region, str):
+            raise TypeError('Expected argument region to be a str')
         __self__.region = region
         """
         See Argument Reference above.
@@ -53,14 +53,14 @@ class GetDnsZoneResult(object):
         """
         The serial number of the zone.
         """
-        if transferred_at and not isinstance(transferred_at, basestring):
-            raise TypeError('Expected argument transferred_at to be a basestring')
+        if transferred_at and not isinstance(transferred_at, str):
+            raise TypeError('Expected argument transferred_at to be a str')
         __self__.transferred_at = transferred_at
         """
         The time the zone was transferred.
         """
-        if updated_at and not isinstance(updated_at, basestring):
-            raise TypeError('Expected argument updated_at to be a basestring')
+        if updated_at and not isinstance(updated_at, str):
+            raise TypeError('Expected argument updated_at to be a str')
         __self__.updated_at = updated_at
         """
         The time the zone was last updated.
@@ -71,14 +71,14 @@ class GetDnsZoneResult(object):
         """
         The version of the zone.
         """
-        if id and not isinstance(id, basestring):
-            raise TypeError('Expected argument id to be a basestring')
+        if id and not isinstance(id, str):
+            raise TypeError('Expected argument id to be a str')
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
         """
 
-def get_dns_zone(attributes=None, created_at=None, description=None, email=None, masters=None, name=None, pool_id=None, project_id=None, region=None, serial=None, status=None, transferred_at=None, ttl=None, type=None, updated_at=None, version=None):
+async def get_dns_zone(attributes=None, created_at=None, description=None, email=None, masters=None, name=None, pool_id=None, project_id=None, region=None, serial=None, status=None, transferred_at=None, ttl=None, type=None, updated_at=None, version=None):
     """
     Use this data source to get the ID of an available OpenStack DNS zone.
     """
@@ -100,7 +100,7 @@ def get_dns_zone(attributes=None, created_at=None, description=None, email=None,
     __args__['type'] = type
     __args__['updatedAt'] = updated_at
     __args__['version'] = version
-    __ret__ = pulumi.runtime.invoke('openstack:dns/getDnsZone:getDnsZone', __args__)
+    __ret__ = await pulumi.runtime.invoke('openstack:dns/getDnsZone:getDnsZone', __args__)
 
     return GetDnsZoneResult(
         attributes=__ret__.get('attributes'),

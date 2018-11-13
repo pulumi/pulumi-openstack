@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Project(pulumi.CustomResource):
     """
@@ -17,71 +17,25 @@ class Project(pulumi.CustomResource):
         """Create a Project resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
-        if description and not isinstance(description, basestring):
-            raise TypeError('Expected property description to be a basestring')
-        __self__.description = description
-        """
-        A description of the project.
-        """
         __props__['description'] = description
 
-        if domain_id and not isinstance(domain_id, basestring):
-            raise TypeError('Expected property domain_id to be a basestring')
-        __self__.domain_id = domain_id
-        """
-        The domain this project belongs to.
-        """
-        __props__['domainId'] = domain_id
+        __props__['domain_id'] = domain_id
 
-        if enabled and not isinstance(enabled, bool):
-            raise TypeError('Expected property enabled to be a bool')
-        __self__.enabled = enabled
-        """
-        Whether the project is enabled or disabled. Valid
-        values are `true` and `false`.
-        """
         __props__['enabled'] = enabled
 
-        if is_domain and not isinstance(is_domain, bool):
-            raise TypeError('Expected property is_domain to be a bool')
-        __self__.is_domain = is_domain
-        """
-        Whether this project is a domain. Valid values
-        are `true` and `false`.
-        """
-        __props__['isDomain'] = is_domain
+        __props__['is_domain'] = is_domain
 
-        if name and not isinstance(name, basestring):
-            raise TypeError('Expected property name to be a basestring')
-        __self__.name = name
-        """
-        The name of the project.
-        """
         __props__['name'] = name
 
-        if parent_id and not isinstance(parent_id, basestring):
-            raise TypeError('Expected property parent_id to be a basestring')
-        __self__.parent_id = parent_id
-        """
-        The parent of this project.
-        """
-        __props__['parentId'] = parent_id
+        __props__['parent_id'] = parent_id
 
-        if region and not isinstance(region, basestring):
-            raise TypeError('Expected property region to be a basestring')
-        __self__.region = region
-        """
-        The region in which to obtain the V3 Keystone client.
-        If omitted, the `region` argument of the provider is used. Changing this
-        creates a new User.
-        """
         __props__['region'] = region
 
         super(Project, __self__).__init__(
@@ -90,18 +44,10 @@ class Project(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'description' in outs:
-            self.description = outs['description']
-        if 'domainId' in outs:
-            self.domain_id = outs['domainId']
-        if 'enabled' in outs:
-            self.enabled = outs['enabled']
-        if 'isDomain' in outs:
-            self.is_domain = outs['isDomain']
-        if 'name' in outs:
-            self.name = outs['name']
-        if 'parentId' in outs:
-            self.parent_id = outs['parentId']
-        if 'region' in outs:
-            self.region = outs['region']
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

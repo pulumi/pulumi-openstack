@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class SecGroupRule(pulumi.CustomResource):
     """
@@ -16,143 +16,40 @@ class SecGroupRule(pulumi.CustomResource):
         """Create a SecGroupRule resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
-        if description and not isinstance(description, basestring):
-            raise TypeError('Expected property description to be a basestring')
-        __self__.description = description
-        """
-        A description of the rule. Changing this creates a new security group rule.
-        """
         __props__['description'] = description
 
         if not direction:
             raise TypeError('Missing required property direction')
-        elif not isinstance(direction, basestring):
-            raise TypeError('Expected property direction to be a basestring')
-        __self__.direction = direction
-        """
-        The direction of the rule, valid values are __ingress__
-        or __egress__. Changing this creates a new security group rule.
-        """
         __props__['direction'] = direction
 
         if not ethertype:
             raise TypeError('Missing required property ethertype')
-        elif not isinstance(ethertype, basestring):
-            raise TypeError('Expected property ethertype to be a basestring')
-        __self__.ethertype = ethertype
-        """
-        The layer 3 protocol type, valid values are __IPv4__
-        or __IPv6__. Changing this creates a new security group rule.
-        """
         __props__['ethertype'] = ethertype
 
-        if port_range_max and not isinstance(port_range_max, int):
-            raise TypeError('Expected property port_range_max to be a int')
-        __self__.port_range_max = port_range_max
-        """
-        The higher part of the allowed port range, valid
-        integer value needs to be between 1 and 65535. Changing this creates a new
-        security group rule.
-        """
-        __props__['portRangeMax'] = port_range_max
+        __props__['port_range_max'] = port_range_max
 
-        if port_range_min and not isinstance(port_range_min, int):
-            raise TypeError('Expected property port_range_min to be a int')
-        __self__.port_range_min = port_range_min
-        """
-        The lower part of the allowed port range, valid
-        integer value needs to be between 1 and 65535. Changing this creates a new
-        security group rule.
-        """
-        __props__['portRangeMin'] = port_range_min
+        __props__['port_range_min'] = port_range_min
 
-        if protocol and not isinstance(protocol, basestring):
-            raise TypeError('Expected property protocol to be a basestring')
-        __self__.protocol = protocol
-        """
-        The layer 4 protocol type, valid values are following. Changing this creates a new security group rule. This is required if you want to specify a port range.
-        * __tcp__
-        * __udp__
-        * __icmp__
-        * __ah__
-        * __dccp__
-        * __egp__
-        * __esp__
-        * __gre__
-        * __igmp__
-        * __ipv6-encap__
-        * __ipv6-frag__
-        * __ipv6-icmp__
-        * __ipv6-nonxt__
-        * __ipv6-opts__
-        * __ipv6-route__
-        * __ospf__
-        * __pgm__
-        * __rsvp__
-        * __sctp__
-        * __udplite__
-        * __vrrp__
-        """
         __props__['protocol'] = protocol
 
-        if region and not isinstance(region, basestring):
-            raise TypeError('Expected property region to be a basestring')
-        __self__.region = region
-        """
-        The region in which to obtain the V2 networking client.
-        A networking client is needed to create a port. If omitted, the
-        `region` argument of the provider is used. Changing this creates a new
-        security group rule.
-        """
         __props__['region'] = region
 
-        if remote_group_id and not isinstance(remote_group_id, basestring):
-            raise TypeError('Expected property remote_group_id to be a basestring')
-        __self__.remote_group_id = remote_group_id
-        """
-        The remote group id, the value needs to be an
-        Openstack ID of a security group in the same tenant. Changing this creates
-        a new security group rule.
-        """
-        __props__['remoteGroupId'] = remote_group_id
+        __props__['remote_group_id'] = remote_group_id
 
-        if remote_ip_prefix and not isinstance(remote_ip_prefix, basestring):
-            raise TypeError('Expected property remote_ip_prefix to be a basestring')
-        __self__.remote_ip_prefix = remote_ip_prefix
-        """
-        The remote CIDR, the value needs to be a valid
-        CIDR (i.e. 192.168.0.0/16). Changing this creates a new security group rule.
-        """
-        __props__['remoteIpPrefix'] = remote_ip_prefix
+        __props__['remote_ip_prefix'] = remote_ip_prefix
 
         if not security_group_id:
             raise TypeError('Missing required property security_group_id')
-        elif not isinstance(security_group_id, basestring):
-            raise TypeError('Expected property security_group_id to be a basestring')
-        __self__.security_group_id = security_group_id
-        """
-        The security group id the rule should belong
-        to, the value needs to be an Openstack ID of a security group in the same
-        tenant. Changing this creates a new security group rule.
-        """
-        __props__['securityGroupId'] = security_group_id
+        __props__['security_group_id'] = security_group_id
 
-        if tenant_id and not isinstance(tenant_id, basestring):
-            raise TypeError('Expected property tenant_id to be a basestring')
-        __self__.tenant_id = tenant_id
-        """
-        The owner of the security group. Required if admin
-        wants to create a port for another tenant. Changing this creates a new
-        security group rule.
-        """
-        __props__['tenantId'] = tenant_id
+        __props__['tenant_id'] = tenant_id
 
         super(SecGroupRule, __self__).__init__(
             'openstack:networking/secGroupRule:SecGroupRule',
@@ -160,26 +57,10 @@ class SecGroupRule(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'description' in outs:
-            self.description = outs['description']
-        if 'direction' in outs:
-            self.direction = outs['direction']
-        if 'ethertype' in outs:
-            self.ethertype = outs['ethertype']
-        if 'portRangeMax' in outs:
-            self.port_range_max = outs['portRangeMax']
-        if 'portRangeMin' in outs:
-            self.port_range_min = outs['portRangeMin']
-        if 'protocol' in outs:
-            self.protocol = outs['protocol']
-        if 'region' in outs:
-            self.region = outs['region']
-        if 'remoteGroupId' in outs:
-            self.remote_group_id = outs['remoteGroupId']
-        if 'remoteIpPrefix' in outs:
-            self.remote_ip_prefix = outs['remoteIpPrefix']
-        if 'securityGroupId' in outs:
-            self.security_group_id = outs['securityGroupId']
-        if 'tenantId' in outs:
-            self.tenant_id = outs['tenantId']
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

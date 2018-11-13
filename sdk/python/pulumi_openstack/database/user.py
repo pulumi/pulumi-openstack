@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class User(pulumi.CustomResource):
     """
@@ -14,59 +14,29 @@ class User(pulumi.CustomResource):
         """Create a User resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
-        if databases and not isinstance(databases, list):
-            raise TypeError('Expected property databases to be a list')
-        __self__.databases = databases
-        """
-        A list of database user should have access to.
-        """
         __props__['databases'] = databases
 
-        if host and not isinstance(host, basestring):
-            raise TypeError('Expected property host to be a basestring')
-        __self__.host = host
         __props__['host'] = host
 
         if not instance_id:
             raise TypeError('Missing required property instance_id')
-        elif not isinstance(instance_id, basestring):
-            raise TypeError('Expected property instance_id to be a basestring')
-        __self__.instance_id = instance_id
-        __props__['instanceId'] = instance_id
+        __props__['instance_id'] = instance_id
 
-        if name and not isinstance(name, basestring):
-            raise TypeError('Expected property name to be a basestring')
-        __self__.name = name
-        """
-        A unique name for the resource.
-        """
         __props__['name'] = name
 
         if not password:
             raise TypeError('Missing required property password')
-        elif not isinstance(password, basestring):
-            raise TypeError('Expected property password to be a basestring')
-        __self__.password = password
-        """
-        User's password.
-        """
         __props__['password'] = password
 
         if not region:
             raise TypeError('Missing required property region')
-        elif not isinstance(region, basestring):
-            raise TypeError('Expected property region to be a basestring')
-        __self__.region = region
-        """
-        Openstack region resource is created in.
-        """
         __props__['region'] = region
 
         super(User, __self__).__init__(
@@ -75,16 +45,10 @@ class User(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'databases' in outs:
-            self.databases = outs['databases']
-        if 'host' in outs:
-            self.host = outs['host']
-        if 'instanceId' in outs:
-            self.instance_id = outs['instanceId']
-        if 'name' in outs:
-            self.name = outs['name']
-        if 'password' in outs:
-            self.password = outs['password']
-        if 'region' in outs:
-            self.region = outs['region']
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

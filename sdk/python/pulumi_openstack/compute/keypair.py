@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Keypair(pulumi.CustomResource):
     """
@@ -20,61 +20,23 @@ class Keypair(pulumi.CustomResource):
         """Create a Keypair resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
-        if name and not isinstance(name, basestring):
-            raise TypeError('Expected property name to be a basestring')
-        __self__.name = name
-        """
-        A unique name for the keypair. Changing this creates a new
-        keypair.
-        """
         __props__['name'] = name
 
-        if public_key and not isinstance(public_key, basestring):
-            raise TypeError('Expected property public_key to be a basestring')
-        __self__.public_key = public_key
-        """
-        A pregenerated OpenSSH-formatted public key.
-        Changing this creates a new keypair. If a public key is not specified, then
-        a public/private key pair will be automatically generated. If a pair is
-        created, then destroying this resource means you will lose access to that
-        keypair forever.
-        """
-        __props__['publicKey'] = public_key
+        __props__['public_key'] = public_key
 
-        if region and not isinstance(region, basestring):
-            raise TypeError('Expected property region to be a basestring')
-        __self__.region = region
-        """
-        The region in which to obtain the V2 Compute client.
-        Keypairs are associated with accounts, but a Compute client is needed to
-        create one. If omitted, the `region` argument of the provider is used.
-        Changing this creates a new keypair.
-        """
         __props__['region'] = region
 
-        if value_specs and not isinstance(value_specs, dict):
-            raise TypeError('Expected property value_specs to be a dict')
-        __self__.value_specs = value_specs
-        """
-        Map of additional options.
-        """
-        __props__['valueSpecs'] = value_specs
+        __props__['value_specs'] = value_specs
 
-        __self__.fingerprint = pulumi.runtime.UNKNOWN
-        """
-        The fingerprint of the public key.
-        """
-        __self__.private_key = pulumi.runtime.UNKNOWN
-        """
-        The generated private key when no public key is specified.
-        """
+        __props__['fingerprint'] = None
+        __props__['private_key'] = None
 
         super(Keypair, __self__).__init__(
             'openstack:compute/keypair:Keypair',
@@ -82,16 +44,10 @@ class Keypair(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'fingerprint' in outs:
-            self.fingerprint = outs['fingerprint']
-        if 'name' in outs:
-            self.name = outs['name']
-        if 'privateKey' in outs:
-            self.private_key = outs['privateKey']
-        if 'publicKey' in outs:
-            self.public_key = outs['publicKey']
-        if 'region' in outs:
-            self.region = outs['region']
-        if 'valueSpecs' in outs:
-            self.value_specs = outs['valueSpecs']
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

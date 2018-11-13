@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class MemberV1(pulumi.CustomResource):
     """
@@ -14,7 +14,7 @@ class MemberV1(pulumi.CustomResource):
         """Create a MemberV1 resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -23,74 +23,22 @@ class MemberV1(pulumi.CustomResource):
 
         if not address:
             raise TypeError('Missing required property address')
-        elif not isinstance(address, basestring):
-            raise TypeError('Expected property address to be a basestring')
-        __self__.address = address
-        """
-        The IP address of the member. Changing this creates a
-        new member.
-        """
         __props__['address'] = address
 
-        if admin_state_up and not isinstance(admin_state_up, bool):
-            raise TypeError('Expected property admin_state_up to be a bool')
-        __self__.admin_state_up = admin_state_up
-        """
-        The administrative state of the member.
-        Acceptable values are 'true' and 'false'. Changing this value updates the
-        state of the existing member.
-        """
-        __props__['adminStateUp'] = admin_state_up
+        __props__['admin_state_up'] = admin_state_up
 
         if not pool_id:
             raise TypeError('Missing required property pool_id')
-        elif not isinstance(pool_id, basestring):
-            raise TypeError('Expected property pool_id to be a basestring')
-        __self__.pool_id = pool_id
-        """
-        The ID of the LB pool. Changing this creates a new
-        member.
-        """
-        __props__['poolId'] = pool_id
+        __props__['pool_id'] = pool_id
 
         if not port:
             raise TypeError('Missing required property port')
-        elif not isinstance(port, int):
-            raise TypeError('Expected property port to be a int')
-        __self__.port = port
-        """
-        An integer representing the port on which the member is
-        hosted. Changing this creates a new member.
-        """
         __props__['port'] = port
 
-        if region and not isinstance(region, basestring):
-            raise TypeError('Expected property region to be a basestring')
-        __self__.region = region
-        """
-        The region in which to obtain the V2 Networking client.
-        A Networking client is needed to create an LB member. If omitted, the
-        `region` argument of the provider is used. Changing this creates a new
-        LB member.
-        """
         __props__['region'] = region
 
-        if tenant_id and not isinstance(tenant_id, basestring):
-            raise TypeError('Expected property tenant_id to be a basestring')
-        __self__.tenant_id = tenant_id
-        """
-        The owner of the member. Required if admin wants to
-        create a member for another tenant. Changing this creates a new member.
-        """
-        __props__['tenantId'] = tenant_id
+        __props__['tenant_id'] = tenant_id
 
-        if weight and not isinstance(weight, int):
-            raise TypeError('Expected property weight to be a int')
-        __self__.weight = weight
-        """
-        The load balancing weight of the member. This is currently unable
-        to be set through Terraform.
-        """
         __props__['weight'] = weight
 
         super(MemberV1, __self__).__init__(
@@ -99,18 +47,10 @@ class MemberV1(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'address' in outs:
-            self.address = outs['address']
-        if 'adminStateUp' in outs:
-            self.admin_state_up = outs['adminStateUp']
-        if 'poolId' in outs:
-            self.pool_id = outs['poolId']
-        if 'port' in outs:
-            self.port = outs['port']
-        if 'region' in outs:
-            self.region = outs['region']
-        if 'tenantId' in outs:
-            self.tenant_id = outs['tenantId']
-        if 'weight' in outs:
-            self.weight = outs['weight']
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

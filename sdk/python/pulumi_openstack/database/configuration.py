@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class Configuration(pulumi.CustomResource):
     """
@@ -14,59 +14,27 @@ class Configuration(pulumi.CustomResource):
         """Create a Configuration resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
-        if configurations and not isinstance(configurations, list):
-            raise TypeError('Expected property configurations to be a list')
-        __self__.configurations = configurations
-        """
-        An array of configuration parameter name and value. Can be specified multiple times. The configuration object structure is documented below.
-        """
         __props__['configurations'] = configurations
 
         if not datastore:
             raise TypeError('Missing required property datastore')
-        elif not isinstance(datastore, dict):
-            raise TypeError('Expected property datastore to be a dict')
-        __self__.datastore = datastore
-        """
-        An array of database engine type and version. The datastore
-        object structure is documented below. Changing this creates resource.
-        """
         __props__['datastore'] = datastore
 
         if not description:
             raise TypeError('Missing required property description')
-        elif not isinstance(description, basestring):
-            raise TypeError('Expected property description to be a basestring')
-        __self__.description = description
-        """
-        Description of the resource.
-        """
         __props__['description'] = description
 
-        if name and not isinstance(name, basestring):
-            raise TypeError('Expected property name to be a basestring')
-        __self__.name = name
-        """
-        A unique name for the resource.
-        """
         __props__['name'] = name
 
         if not region:
             raise TypeError('Missing required property region')
-        elif not isinstance(region, basestring):
-            raise TypeError('Expected property region to be a basestring')
-        __self__.region = region
-        """
-        The region in which to create the db instance. Changing this
-        creates a new instance.
-        """
         __props__['region'] = region
 
         super(Configuration, __self__).__init__(
@@ -75,14 +43,10 @@ class Configuration(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'configurations' in outs:
-            self.configurations = outs['configurations']
-        if 'datastore' in outs:
-            self.datastore = outs['datastore']
-        if 'description' in outs:
-            self.description = outs['description']
-        if 'name' in outs:
-            self.name = outs['name']
-        if 'region' in outs:
-            self.region = outs['region']
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

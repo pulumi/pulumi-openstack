@@ -4,22 +4,22 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class GetSubnetPoolResult(object):
     """
     A collection of values returned by getSubnetPool.
     """
     def __init__(__self__, address_scope_id=None, created_at=None, default_prefixlen=None, default_quota=None, description=None, ip_version=None, is_default=None, max_prefixlen=None, min_prefixlen=None, name=None, prefixes=None, project_id=None, region=None, revision_number=None, shared=None, updated_at=None, id=None):
-        if address_scope_id and not isinstance(address_scope_id, basestring):
-            raise TypeError('Expected argument address_scope_id to be a basestring')
+        if address_scope_id and not isinstance(address_scope_id, str):
+            raise TypeError('Expected argument address_scope_id to be a str')
         __self__.address_scope_id = address_scope_id
         """
         See Argument Reference above.
         * `ip_version` -The IP protocol version.
         """
-        if created_at and not isinstance(created_at, basestring):
-            raise TypeError('Expected argument created_at to be a basestring')
+        if created_at and not isinstance(created_at, str):
+            raise TypeError('Expected argument created_at to be a str')
         __self__.created_at = created_at
         """
         The time at which subnetpool was created.
@@ -36,8 +36,8 @@ class GetSubnetPoolResult(object):
         """
         See Argument Reference above.
         """
-        if description and not isinstance(description, basestring):
-            raise TypeError('Expected argument description to be a basestring')
+        if description and not isinstance(description, str):
+            raise TypeError('Expected argument description to be a str')
         __self__.description = description
         """
         See Argument Reference above.
@@ -63,8 +63,8 @@ class GetSubnetPoolResult(object):
         """
         See Argument Reference above.
         """
-        if name and not isinstance(name, basestring):
-            raise TypeError('Expected argument name to be a basestring')
+        if name and not isinstance(name, str):
+            raise TypeError('Expected argument name to be a str')
         __self__.name = name
         """
         See Argument Reference above.
@@ -75,14 +75,14 @@ class GetSubnetPoolResult(object):
         """
         See Argument Reference above.
         """
-        if project_id and not isinstance(project_id, basestring):
-            raise TypeError('Expected argument project_id to be a basestring')
+        if project_id and not isinstance(project_id, str):
+            raise TypeError('Expected argument project_id to be a str')
         __self__.project_id = project_id
         """
         See Argument Reference above.
         """
-        if region and not isinstance(region, basestring):
-            raise TypeError('Expected argument region to be a basestring')
+        if region and not isinstance(region, str):
+            raise TypeError('Expected argument region to be a str')
         __self__.region = region
         """
         See Argument Reference above.
@@ -99,20 +99,20 @@ class GetSubnetPoolResult(object):
         """
         See Argument Reference above.
         """
-        if updated_at and not isinstance(updated_at, basestring):
-            raise TypeError('Expected argument updated_at to be a basestring')
+        if updated_at and not isinstance(updated_at, str):
+            raise TypeError('Expected argument updated_at to be a str')
         __self__.updated_at = updated_at
         """
         The time at which subnetpool was created.
         """
-        if id and not isinstance(id, basestring):
-            raise TypeError('Expected argument id to be a basestring')
+        if id and not isinstance(id, str):
+            raise TypeError('Expected argument id to be a str')
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
         """
 
-def get_subnet_pool(address_scope_id=None, default_prefixlen=None, default_quota=None, description=None, ip_version=None, is_default=None, max_prefixlen=None, min_prefixlen=None, name=None, project_id=None, region=None, shared=None):
+async def get_subnet_pool(address_scope_id=None, default_prefixlen=None, default_quota=None, description=None, ip_version=None, is_default=None, max_prefixlen=None, min_prefixlen=None, name=None, project_id=None, region=None, shared=None):
     """
     Use this data source to get the ID of an available OpenStack subnetpool.
     """
@@ -130,7 +130,7 @@ def get_subnet_pool(address_scope_id=None, default_prefixlen=None, default_quota
     __args__['projectId'] = project_id
     __args__['region'] = region
     __args__['shared'] = shared
-    __ret__ = pulumi.runtime.invoke('openstack:networking/getSubnetPool:getSubnetPool', __args__)
+    __ret__ = await pulumi.runtime.invoke('openstack:networking/getSubnetPool:getSubnetPool', __args__)
 
     return GetSubnetPoolResult(
         address_scope_id=__ret__.get('addressScopeId'),

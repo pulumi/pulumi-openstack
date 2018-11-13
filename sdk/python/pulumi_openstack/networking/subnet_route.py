@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class SubnetRoute(pulumi.CustomResource):
     """
@@ -14,7 +14,7 @@ class SubnetRoute(pulumi.CustomResource):
         """Create a SubnetRoute resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -23,47 +23,17 @@ class SubnetRoute(pulumi.CustomResource):
 
         if not destination_cidr:
             raise TypeError('Missing required property destination_cidr')
-        elif not isinstance(destination_cidr, basestring):
-            raise TypeError('Expected property destination_cidr to be a basestring')
-        __self__.destination_cidr = destination_cidr
-        """
-        CIDR block to match on the packet’s destination IP. Changing
-        this creates a new routing entry.
-        """
-        __props__['destinationCidr'] = destination_cidr
+        __props__['destination_cidr'] = destination_cidr
 
         if not next_hop:
             raise TypeError('Missing required property next_hop')
-        elif not isinstance(next_hop, basestring):
-            raise TypeError('Expected property next_hop to be a basestring')
-        __self__.next_hop = next_hop
-        """
-        IP address of the next hop gateway.  Changing
-        this creates a new routing entry.
-        """
-        __props__['nextHop'] = next_hop
+        __props__['next_hop'] = next_hop
 
-        if region and not isinstance(region, basestring):
-            raise TypeError('Expected property region to be a basestring')
-        __self__.region = region
-        """
-        The region in which to obtain the V2 networking client.
-        A networking client is needed to configure a routing entry on a subnet. If omitted, the
-        `region` argument of the provider is used. Changing this creates a new
-        routing entry.
-        """
         __props__['region'] = region
 
         if not subnet_id:
             raise TypeError('Missing required property subnet_id')
-        elif not isinstance(subnet_id, basestring):
-            raise TypeError('Expected property subnet_id to be a basestring')
-        __self__.subnet_id = subnet_id
-        """
-        ID of the subnet this routing entry belongs to. Changing
-        this creates a new routing entry.
-        """
-        __props__['subnetId'] = subnet_id
+        __props__['subnet_id'] = subnet_id
 
         super(SubnetRoute, __self__).__init__(
             'openstack:networking/subnetRoute:SubnetRoute',
@@ -71,12 +41,10 @@ class SubnetRoute(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'destinationCidr' in outs:
-            self.destination_cidr = outs['destinationCidr']
-        if 'nextHop' in outs:
-            self.next_hop = outs['nextHop']
-        if 'region' in outs:
-            self.region = outs['region']
-        if 'subnetId' in outs:
-            self.subnet_id = outs['subnetId']
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+
