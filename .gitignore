@@ -3,3 +3,4 @@
 Pulumi.*.yaml
 
 **/command-output/
+yarn.lock
