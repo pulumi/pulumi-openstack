@@ -26,6 +26,7 @@ func LookupFlavor(ctx *pulumi.Context, args *GetFlavorArgs) (*GetFlavorResult, e
 		return nil, err
 	}
 	return &GetFlavorResult{
+		ExtraSpecs: outputs["extraSpecs"],
 		IsPublic: outputs["isPublic"],
 		Region: outputs["region"],
 		Id: outputs["id"],
@@ -57,6 +58,8 @@ type GetFlavorArgs struct {
 
 // A collection of values returned by getFlavor.
 type GetFlavorResult struct {
+	// Key/Value pairs of metadata for the flavor.
+	ExtraSpecs interface{}
 	// Whether the flavor is public or private.
 	IsPublic interface{}
 	Region interface{}

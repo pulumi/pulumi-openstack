@@ -16,8 +16,8 @@ export class Network extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: NetworkState): Network {
-        return new Network(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: NetworkState, opts?: pulumi.CustomResourceOptions): Network {
+        return new Network(name, <any>state, { ...opts, id: id });
     }
 
     /**
@@ -62,6 +62,10 @@ export class Network extends pulumi.CustomResource {
      */
     public readonly shared: pulumi.Output<string>;
     /**
+     * A set of string tags for the network. 
+     */
+    public readonly tags: pulumi.Output<string[] | undefined>;
+    /**
      * The owner of the network. Required if admin wants to
      * create a network for another tenant. Changing this creates a new network.
      */
@@ -90,6 +94,7 @@ export class Network extends pulumi.CustomResource {
             inputs["region"] = state ? state.region : undefined;
             inputs["segments"] = state ? state.segments : undefined;
             inputs["shared"] = state ? state.shared : undefined;
+            inputs["tags"] = state ? state.tags : undefined;
             inputs["tenantId"] = state ? state.tenantId : undefined;
             inputs["valueSpecs"] = state ? state.valueSpecs : undefined;
         } else {
@@ -101,6 +106,7 @@ export class Network extends pulumi.CustomResource {
             inputs["region"] = args ? args.region : undefined;
             inputs["segments"] = args ? args.segments : undefined;
             inputs["shared"] = args ? args.shared : undefined;
+            inputs["tags"] = args ? args.tags : undefined;
             inputs["tenantId"] = args ? args.tenantId : undefined;
             inputs["valueSpecs"] = args ? args.valueSpecs : undefined;
         }
@@ -153,6 +159,10 @@ export interface NetworkState {
      * existing network.
      */
     readonly shared?: pulumi.Input<string>;
+    /**
+     * A set of string tags for the network. 
+     */
+    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The owner of the network. Required if admin wants to
      * create a network for another tenant. Changing this creates a new network.
@@ -209,6 +219,10 @@ export interface NetworkArgs {
      * existing network.
      */
     readonly shared?: pulumi.Input<string>;
+    /**
+     * A set of string tags for the network. 
+     */
+    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The owner of the network. Required if admin wants to
      * create a network for another tenant. Changing this creates a new network.

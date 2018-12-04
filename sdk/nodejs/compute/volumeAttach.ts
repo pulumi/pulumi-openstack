@@ -17,8 +17,8 @@ export class VolumeAttach extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: VolumeAttachState): VolumeAttach {
-        return new VolumeAttach(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: VolumeAttachState, opts?: pulumi.CustomResourceOptions): VolumeAttach {
+        return new VolumeAttach(name, <any>state, { ...opts, id: id });
     }
 
     /**
@@ -34,6 +34,10 @@ export class VolumeAttach extends pulumi.CustomResource {
      * The ID of the Instance to attach the Volume to.
      */
     public readonly instanceId: pulumi.Output<string>;
+    /**
+     * Enable attachment of multiattach-capable volumes.
+     */
+    public readonly multiattach: pulumi.Output<boolean | undefined>;
     /**
      * The region in which to obtain the V2 Compute client.
      * A Compute client is needed to create a volume attachment. If omitted, the
@@ -60,6 +64,7 @@ export class VolumeAttach extends pulumi.CustomResource {
             const state: VolumeAttachState = argsOrState as VolumeAttachState | undefined;
             inputs["device"] = state ? state.device : undefined;
             inputs["instanceId"] = state ? state.instanceId : undefined;
+            inputs["multiattach"] = state ? state.multiattach : undefined;
             inputs["region"] = state ? state.region : undefined;
             inputs["volumeId"] = state ? state.volumeId : undefined;
         } else {
@@ -72,6 +77,7 @@ export class VolumeAttach extends pulumi.CustomResource {
             }
             inputs["device"] = args ? args.device : undefined;
             inputs["instanceId"] = args ? args.instanceId : undefined;
+            inputs["multiattach"] = args ? args.multiattach : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["volumeId"] = args ? args.volumeId : undefined;
         }
@@ -96,6 +102,10 @@ export interface VolumeAttachState {
      * The ID of the Instance to attach the Volume to.
      */
     readonly instanceId?: pulumi.Input<string>;
+    /**
+     * Enable attachment of multiattach-capable volumes.
+     */
+    readonly multiattach?: pulumi.Input<boolean>;
     /**
      * The region in which to obtain the V2 Compute client.
      * A Compute client is needed to create a volume attachment. If omitted, the
@@ -126,6 +136,10 @@ export interface VolumeAttachArgs {
      * The ID of the Instance to attach the Volume to.
      */
     readonly instanceId: pulumi.Input<string>;
+    /**
+     * Enable attachment of multiattach-capable volumes.
+     */
+    readonly multiattach?: pulumi.Input<boolean>;
     /**
      * The region in which to obtain the V2 Compute client.
      * A Compute client is needed to create a volume attachment. If omitted, the

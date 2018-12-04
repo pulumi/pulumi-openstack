@@ -26,6 +26,7 @@ func NewRouter(ctx *pulumi.Context,
 		inputs["externalNetworkId"] = nil
 		inputs["name"] = nil
 		inputs["region"] = nil
+		inputs["tags"] = nil
 		inputs["tenantId"] = nil
 		inputs["valueSpecs"] = nil
 		inputs["vendorOptions"] = nil
@@ -39,6 +40,7 @@ func NewRouter(ctx *pulumi.Context,
 		inputs["externalNetworkId"] = args.ExternalNetworkId
 		inputs["name"] = args.Name
 		inputs["region"] = args.Region
+		inputs["tags"] = args.Tags
 		inputs["tenantId"] = args.TenantId
 		inputs["valueSpecs"] = args.ValueSpecs
 		inputs["vendorOptions"] = args.VendorOptions
@@ -65,6 +67,7 @@ func GetRouter(ctx *pulumi.Context,
 		inputs["externalNetworkId"] = state.ExternalNetworkId
 		inputs["name"] = state.Name
 		inputs["region"] = state.Region
+		inputs["tags"] = state.Tags
 		inputs["tenantId"] = state.TenantId
 		inputs["valueSpecs"] = state.ValueSpecs
 		inputs["vendorOptions"] = state.VendorOptions
@@ -153,6 +156,11 @@ func (r *Router) Region() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["region"])
 }
 
+// A set of string tags for the router.
+func (r *Router) Tags() *pulumi.ArrayOutput {
+	return (*pulumi.ArrayOutput)(r.s.State["tags"])
+}
+
 // The owner of the floating IP. Required if admin wants
 // to create a router for another tenant. Changing this creates a new router.
 func (r *Router) TenantId() *pulumi.StringOutput {
@@ -212,6 +220,8 @@ type RouterState struct {
 	// `region` argument of the provider is used. Changing this creates a new
 	// router.
 	Region interface{}
+	// A set of string tags for the router.
+	Tags interface{}
 	// The owner of the floating IP. Required if admin wants
 	// to create a router for another tenant. Changing this creates a new router.
 	TenantId interface{}
@@ -264,6 +274,8 @@ type RouterArgs struct {
 	// `region` argument of the provider is used. Changing this creates a new
 	// router.
 	Region interface{}
+	// A set of string tags for the router.
+	Tags interface{}
 	// The owner of the floating IP. Required if admin wants
 	// to create a router for another tenant. Changing this creates a new router.
 	TenantId interface{}

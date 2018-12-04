@@ -10,7 +10,7 @@ class Network(pulumi.CustomResource):
     """
     Manages a V2 Neutron network resource within OpenStack.
     """
-    def __init__(__self__, __name__, __opts__=None, admin_state_up=None, availability_zone_hints=None, external=None, name=None, region=None, segments=None, shared=None, tenant_id=None, value_specs=None):
+    def __init__(__self__, __name__, __opts__=None, admin_state_up=None, availability_zone_hints=None, external=None, name=None, region=None, segments=None, shared=None, tags=None, tenant_id=None, value_specs=None):
         """Create a Network resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
@@ -34,6 +34,8 @@ class Network(pulumi.CustomResource):
         __props__['segments'] = segments
 
         __props__['shared'] = shared
+
+        __props__['tags'] = tags
 
         __props__['tenant_id'] = tenant_id
 

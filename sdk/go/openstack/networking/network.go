@@ -24,6 +24,7 @@ func NewNetwork(ctx *pulumi.Context,
 		inputs["region"] = nil
 		inputs["segments"] = nil
 		inputs["shared"] = nil
+		inputs["tags"] = nil
 		inputs["tenantId"] = nil
 		inputs["valueSpecs"] = nil
 	} else {
@@ -34,6 +35,7 @@ func NewNetwork(ctx *pulumi.Context,
 		inputs["region"] = args.Region
 		inputs["segments"] = args.Segments
 		inputs["shared"] = args.Shared
+		inputs["tags"] = args.Tags
 		inputs["tenantId"] = args.TenantId
 		inputs["valueSpecs"] = args.ValueSpecs
 	}
@@ -57,6 +59,7 @@ func GetNetwork(ctx *pulumi.Context,
 		inputs["region"] = state.Region
 		inputs["segments"] = state.Segments
 		inputs["shared"] = state.Shared
+		inputs["tags"] = state.Tags
 		inputs["tenantId"] = state.TenantId
 		inputs["valueSpecs"] = state.ValueSpecs
 	}
@@ -125,6 +128,11 @@ func (r *Network) Shared() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["shared"])
 }
 
+// A set of string tags for the network. 
+func (r *Network) Tags() *pulumi.ArrayOutput {
+	return (*pulumi.ArrayOutput)(r.s.State["tags"])
+}
+
 // The owner of the network. Required if admin wants to
 // create a network for another tenant. Changing this creates a new network.
 func (r *Network) TenantId() *pulumi.StringOutput {
@@ -165,6 +173,8 @@ type NetworkState struct {
 	// by any tenant or not. Changing this updates the sharing capabalities of the
 	// existing network.
 	Shared interface{}
+	// A set of string tags for the network. 
+	Tags interface{}
 	// The owner of the network. Required if admin wants to
 	// create a network for another tenant. Changing this creates a new network.
 	TenantId interface{}
@@ -201,6 +211,8 @@ type NetworkArgs struct {
 	// by any tenant or not. Changing this updates the sharing capabalities of the
 	// existing network.
 	Shared interface{}
+	// A set of string tags for the network. 
+	Tags interface{}
 	// The owner of the network. Required if admin wants to
 	// create a network for another tenant. Changing this creates a new network.
 	TenantId interface{}

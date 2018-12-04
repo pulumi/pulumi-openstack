@@ -16,8 +16,8 @@ export class SubnetPool extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SubnetPoolState): SubnetPool {
-        return new SubnetPool(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SubnetPoolState, opts?: pulumi.CustomResourceOptions): SubnetPool {
+        return new SubnetPool(name, <any>state, { ...opts, id: id });
     }
 
     /**
@@ -107,6 +107,10 @@ export class SubnetPool extends pulumi.CustomResource {
      */
     public readonly shared: pulumi.Output<boolean | undefined>;
     /**
+     * A set of string tags for the subnetpool.
+     */
+    public readonly tags: pulumi.Output<string[] | undefined>;
+    /**
      * The time at which subnetpool was created.
      */
     public /*out*/ readonly updatedAt: pulumi.Output<string>;
@@ -142,6 +146,7 @@ export class SubnetPool extends pulumi.CustomResource {
             inputs["region"] = state ? state.region : undefined;
             inputs["revisionNumber"] = state ? state.revisionNumber : undefined;
             inputs["shared"] = state ? state.shared : undefined;
+            inputs["tags"] = state ? state.tags : undefined;
             inputs["updatedAt"] = state ? state.updatedAt : undefined;
             inputs["valueSpecs"] = state ? state.valueSpecs : undefined;
         } else {
@@ -162,6 +167,7 @@ export class SubnetPool extends pulumi.CustomResource {
             inputs["projectId"] = args ? args.projectId : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["shared"] = args ? args.shared : undefined;
+            inputs["tags"] = args ? args.tags : undefined;
             inputs["valueSpecs"] = args ? args.valueSpecs : undefined;
             inputs["createdAt"] = undefined /*out*/;
             inputs["revisionNumber"] = undefined /*out*/;
@@ -262,6 +268,10 @@ export interface SubnetPoolState {
      */
     readonly shared?: pulumi.Input<boolean>;
     /**
+     * A set of string tags for the subnetpool.
+     */
+    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * The time at which subnetpool was created.
      */
     readonly updatedAt?: pulumi.Input<string>;
@@ -353,6 +363,10 @@ export interface SubnetPoolArgs {
      * subnetpool.
      */
     readonly shared?: pulumi.Input<boolean>;
+    /**
+     * A set of string tags for the subnetpool.
+     */
+    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Map of additional options.
      */

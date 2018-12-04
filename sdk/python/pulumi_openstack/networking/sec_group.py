@@ -12,7 +12,7 @@ class SecGroup(pulumi.CustomResource):
     Unlike Nova security groups, neutron separates the group from the rules
     and also allows an admin to target a specific tenant_id.
     """
-    def __init__(__self__, __name__, __opts__=None, delete_default_rules=None, description=None, name=None, region=None, tenant_id=None):
+    def __init__(__self__, __name__, __opts__=None, delete_default_rules=None, description=None, name=None, region=None, tags=None, tenant_id=None):
         """Create a SecGroup resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
@@ -30,6 +30,8 @@ class SecGroup(pulumi.CustomResource):
         __props__['name'] = name
 
         __props__['region'] = region
+
+        __props__['tags'] = tags
 
         __props__['tenant_id'] = tenant_id
 

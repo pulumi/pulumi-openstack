@@ -10,7 +10,7 @@ class Volume(pulumi.CustomResource):
     """
     Manages a V3 volume resource within OpenStack.
     """
-    def __init__(__self__, __name__, __opts__=None, availability_zone=None, consistency_group_id=None, description=None, enable_online_resize=None, image_id=None, metadata=None, name=None, region=None, size=None, snapshot_id=None, source_replica=None, source_vol_id=None, volume_type=None):
+    def __init__(__self__, __name__, __opts__=None, availability_zone=None, consistency_group_id=None, description=None, enable_online_resize=None, image_id=None, metadata=None, multiattach=None, name=None, region=None, size=None, snapshot_id=None, source_replica=None, source_vol_id=None, volume_type=None):
         """Create a Volume resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
@@ -32,6 +32,8 @@ class Volume(pulumi.CustomResource):
         __props__['image_id'] = image_id
 
         __props__['metadata'] = metadata
+
+        __props__['multiattach'] = multiattach
 
         __props__['name'] = name
 

@@ -16,8 +16,8 @@ export class MonitorV1 extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: MonitorV1State): MonitorV1 {
-        return new MonitorV1(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: MonitorV1State, opts?: pulumi.CustomResourceOptions): MonitorV1 {
+        return new MonitorV1(name, <any>state, { ...opts, id: id });
     }
 
     /**
@@ -32,7 +32,7 @@ export class MonitorV1 extends pulumi.CustomResource {
      */
     public readonly delay: pulumi.Output<number>;
     /**
-     * equired for HTTP(S) types. Expected HTTP codes
+     * Required for HTTP(S) types. Expected HTTP codes
      * for a passing HTTP(S) monitor. You can either specify a single status like
      * "200", or a range like "200-202". Changing this updates the expected_codes
      * of the existing monitor.
@@ -148,7 +148,7 @@ export interface MonitorV1State {
      */
     readonly delay?: pulumi.Input<number>;
     /**
-     * equired for HTTP(S) types. Expected HTTP codes
+     * Required for HTTP(S) types. Expected HTTP codes
      * for a passing HTTP(S) monitor. You can either specify a single status like
      * "200", or a range like "200-202". Changing this updates the expected_codes
      * of the existing monitor.
@@ -214,7 +214,7 @@ export interface MonitorV1Args {
      */
     readonly delay: pulumi.Input<number>;
     /**
-     * equired for HTTP(S) types. Expected HTTP codes
+     * Required for HTTP(S) types. Expected HTTP codes
      * for a passing HTTP(S) monitor. You can either specify a single status like
      * "200", or a range like "200-202". Changing this updates the expected_codes
      * of the existing monitor.

@@ -10,7 +10,13 @@ class GetFlavorResult(object):
     """
     A collection of values returned by getFlavor.
     """
-    def __init__(__self__, is_public=None, region=None, id=None):
+    def __init__(__self__, extra_specs=None, is_public=None, region=None, id=None):
+        if extra_specs and not isinstance(extra_specs, dict):
+            raise TypeError('Expected argument extra_specs to be a dict')
+        __self__.extra_specs = extra_specs
+        """
+        Key/Value pairs of metadata for the flavor.
+        """
         if is_public and not isinstance(is_public, bool):
             raise TypeError('Expected argument is_public to be a bool')
         __self__.is_public = is_public
@@ -45,6 +51,7 @@ async def get_flavor(disk=None, min_disk=None, min_ram=None, name=None, ram=None
     __ret__ = await pulumi.runtime.invoke('openstack:compute/getFlavor:getFlavor', __args__)
 
     return GetFlavorResult(
+        extra_specs=__ret__.get('extraSpecs'),
         is_public=__ret__.get('isPublic'),
         region=__ret__.get('region'),
         id=__ret__.get('id'))

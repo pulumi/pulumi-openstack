@@ -27,6 +27,7 @@ func NewVolume(ctx *pulumi.Context,
 		inputs["enableOnlineResize"] = nil
 		inputs["imageId"] = nil
 		inputs["metadata"] = nil
+		inputs["multiattach"] = nil
 		inputs["name"] = nil
 		inputs["region"] = nil
 		inputs["size"] = nil
@@ -41,6 +42,7 @@ func NewVolume(ctx *pulumi.Context,
 		inputs["enableOnlineResize"] = args.EnableOnlineResize
 		inputs["imageId"] = args.ImageId
 		inputs["metadata"] = args.Metadata
+		inputs["multiattach"] = args.Multiattach
 		inputs["name"] = args.Name
 		inputs["region"] = args.Region
 		inputs["size"] = args.Size
@@ -70,6 +72,7 @@ func GetVolume(ctx *pulumi.Context,
 		inputs["enableOnlineResize"] = state.EnableOnlineResize
 		inputs["imageId"] = state.ImageId
 		inputs["metadata"] = state.Metadata
+		inputs["multiattach"] = state.Multiattach
 		inputs["name"] = state.Name
 		inputs["region"] = state.Region
 		inputs["size"] = state.Size
@@ -139,6 +142,11 @@ func (r *Volume) Metadata() *pulumi.MapOutput {
 	return (*pulumi.MapOutput)(r.s.State["metadata"])
 }
 
+// Allow the volume to be attached to more than one Compute instance.
+func (r *Volume) Multiattach() *pulumi.BoolOutput {
+	return (*pulumi.BoolOutput)(r.s.State["multiattach"])
+}
+
 // A unique name for the volume. Changing this updates the
 // volume's name.
 func (r *Volume) Name() *pulumi.StringOutput {
@@ -205,6 +213,8 @@ type VolumeState struct {
 	// Metadata key/value pairs to associate with the volume.
 	// Changing this updates the existing volume metadata.
 	Metadata interface{}
+	// Allow the volume to be attached to more than one Compute instance.
+	Multiattach interface{}
 	// A unique name for the volume. Changing this updates the
 	// volume's name.
 	Name interface{}
@@ -248,6 +258,8 @@ type VolumeArgs struct {
 	// Metadata key/value pairs to associate with the volume.
 	// Changing this updates the existing volume metadata.
 	Metadata interface{}
+	// Allow the volume to be attached to more than one Compute instance.
+	Multiattach interface{}
 	// A unique name for the volume. Changing this updates the
 	// volume's name.
 	Name interface{}

@@ -70,6 +70,10 @@ export interface GetFlavorArgs {
  */
 export interface GetFlavorResult {
     /**
+     * Key/Value pairs of metadata for the flavor.
+     */
+    readonly extraSpecs: {[key: string]: any};
+    /**
      * Whether the flavor is public or private.
      */
     readonly isPublic: boolean;

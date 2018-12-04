@@ -34,6 +34,7 @@ func NewSubnetPool(ctx *pulumi.Context,
 		inputs["projectId"] = nil
 		inputs["region"] = nil
 		inputs["shared"] = nil
+		inputs["tags"] = nil
 		inputs["valueSpecs"] = nil
 	} else {
 		inputs["addressScopeId"] = args.AddressScopeId
@@ -49,6 +50,7 @@ func NewSubnetPool(ctx *pulumi.Context,
 		inputs["projectId"] = args.ProjectId
 		inputs["region"] = args.Region
 		inputs["shared"] = args.Shared
+		inputs["tags"] = args.Tags
 		inputs["valueSpecs"] = args.ValueSpecs
 	}
 	inputs["createdAt"] = nil
@@ -82,6 +84,7 @@ func GetSubnetPool(ctx *pulumi.Context,
 		inputs["region"] = state.Region
 		inputs["revisionNumber"] = state.RevisionNumber
 		inputs["shared"] = state.Shared
+		inputs["tags"] = state.Tags
 		inputs["updatedAt"] = state.UpdatedAt
 		inputs["valueSpecs"] = state.ValueSpecs
 	}
@@ -203,6 +206,11 @@ func (r *SubnetPool) Shared() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["shared"])
 }
 
+// A set of string tags for the subnetpool.
+func (r *SubnetPool) Tags() *pulumi.ArrayOutput {
+	return (*pulumi.ArrayOutput)(r.s.State["tags"])
+}
+
 // The time at which subnetpool was created.
 func (r *SubnetPool) UpdatedAt() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["updatedAt"])
@@ -271,6 +279,8 @@ type SubnetPoolState struct {
 	// all projects. Changing this updates the shared status of the existing
 	// subnetpool.
 	Shared interface{}
+	// A set of string tags for the subnetpool.
+	Tags interface{}
 	// The time at which subnetpool was created.
 	UpdatedAt interface{}
 	// Map of additional options.
@@ -331,6 +341,8 @@ type SubnetPoolArgs struct {
 	// all projects. Changing this updates the shared status of the existing
 	// subnetpool.
 	Shared interface{}
+	// A set of string tags for the subnetpool.
+	Tags interface{}
 	// Map of additional options.
 	ValueSpecs interface{}
 }

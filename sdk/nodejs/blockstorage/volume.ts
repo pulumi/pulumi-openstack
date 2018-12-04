@@ -16,8 +16,8 @@ export class Volume extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: VolumeState): Volume {
-        return new Volume(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: VolumeState, opts?: pulumi.CustomResourceOptions): Volume {
+        return new Volume(name, <any>state, { ...opts, id: id });
     }
 
     /**
@@ -57,6 +57,10 @@ export class Volume extends pulumi.CustomResource {
      * Changing this updates the existing volume metadata.
      */
     public readonly metadata: pulumi.Output<{[key: string]: any}>;
+    /**
+     * Allow the volume to be attached to more than one Compute instance.
+     */
+    public readonly multiattach: pulumi.Output<boolean | undefined>;
     /**
      * A unique name for the volume. Changing this updates the
      * volume's name.
@@ -111,6 +115,7 @@ export class Volume extends pulumi.CustomResource {
             inputs["enableOnlineResize"] = state ? state.enableOnlineResize : undefined;
             inputs["imageId"] = state ? state.imageId : undefined;
             inputs["metadata"] = state ? state.metadata : undefined;
+            inputs["multiattach"] = state ? state.multiattach : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["region"] = state ? state.region : undefined;
             inputs["size"] = state ? state.size : undefined;
@@ -129,6 +134,7 @@ export class Volume extends pulumi.CustomResource {
             inputs["enableOnlineResize"] = args ? args.enableOnlineResize : undefined;
             inputs["imageId"] = args ? args.imageId : undefined;
             inputs["metadata"] = args ? args.metadata : undefined;
+            inputs["multiattach"] = args ? args.multiattach : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["size"] = args ? args.size : undefined;
@@ -183,6 +189,10 @@ export interface VolumeState {
      * Changing this updates the existing volume metadata.
      */
     readonly metadata?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * Allow the volume to be attached to more than one Compute instance.
+     */
+    readonly multiattach?: pulumi.Input<boolean>;
     /**
      * A unique name for the volume. Changing this updates the
      * volume's name.
@@ -254,6 +264,10 @@ export interface VolumeArgs {
      * Changing this updates the existing volume metadata.
      */
     readonly metadata?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * Allow the volume to be attached to more than one Compute instance.
+     */
+    readonly multiattach?: pulumi.Input<boolean>;
     /**
      * A unique name for the volume. Changing this updates the
      * volume's name.
