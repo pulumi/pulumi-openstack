@@ -19,8 +19,8 @@
 [[projects]]
   name = "github.com/Sirupsen/logrus"
   packages = ["."]
-  revision = "c155da19408a8799da419ed3eeb0cb5db0ad5dbc"
-  version = "v1.0.5"
+  revision = "bcd833dfe83d3cebad139e4a29ed79cb2318bf95"
+  version = "v1.2.0"
 
 [[projects]]
   name = "github.com/Unknwon/com"
@@ -67,6 +67,8 @@
     "aws/request",
     "aws/session",
     "aws/signer/v4",
+    "internal/ini",
+    "internal/s3err",
     "internal/sdkio",
     "internal/sdkrand",
     "internal/sdkuri",
@@ -85,8 +87,8 @@
     "service/s3",
     "service/sts"
   ]
-  revision = "9e9afa0895e9daff556cc18f90dc53eb91f41ffd"
-  version = "v1.14.26"
+  revision = "ddc06f9fad886ea5daa5f828f3ca094084f8c2a7"
+  version = "v1.15.90"
 
 [[projects]]
   name = "github.com/bgentry/go-netrc"
@@ -117,8 +119,8 @@
 [[projects]]
   name = "github.com/djherbis/times"
   packages = ["."]
-  revision = "95292e44976d1217cf3611dc7c8d9466877d3ed5"
-  version = "v1.0.1"
+  revision = "faa5b9ca02e9fe5d12023adddc0afa603d489fa8"
+  version = "v1.1.0"
 
 [[projects]]
   name = "github.com/docker/docker"
@@ -148,8 +150,8 @@
     "trees/binaryheap",
     "utils"
   ]
-  revision = "f6c17b524822278a87e3b3bd809fec33b51f5b46"
-  version = "v1.9.0"
+  revision = "1615341f118ae12f353cc8a983f35b584342c9b3"
+  version = "v1.12.0"
 
 [[projects]]
   name = "github.com/fatih/color"
@@ -161,11 +163,6 @@
   name = "github.com/gedex/inflector"
   packages = ["."]
   revision = "16278e9db8130ac7ec405dc174cfb94344f16325"
-
-[[projects]]
-  name = "github.com/go-ini/ini"
-  packages = ["."]
-  revision = "766e555c68dc8bda90d197ee8946c37519c19409"
 
 [[projects]]
   branch = "master"
@@ -198,6 +195,7 @@
     "openstack/blockstorage/v1/volumes",
     "openstack/blockstorage/v2/volumes",
     "openstack/blockstorage/v3/volumes",
+    "openstack/compute/v2/extensions/attachinterfaces",
     "openstack/compute/v2/extensions/availabilityzones",
     "openstack/compute/v2/extensions/bootfromvolume",
     "openstack/compute/v2/extensions/floatingips",
@@ -231,7 +229,9 @@
     "openstack/identity/v3/users",
     "openstack/imageservice/v2/imagedata",
     "openstack/imageservice/v2/images",
+    "openstack/networking/v2/extensions/attributestags",
     "openstack/networking/v2/extensions/external",
+    "openstack/networking/v2/extensions/extradhcpopts",
     "openstack/networking/v2/extensions/fwaas/firewalls",
     "openstack/networking/v2/extensions/fwaas/policies",
     "openstack/networking/v2/extensions/fwaas/routerinsertion",
@@ -250,6 +250,7 @@
     "openstack/networking/v2/extensions/security/groups",
     "openstack/networking/v2/extensions/security/rules",
     "openstack/networking/v2/extensions/subnetpools",
+    "openstack/networking/v2/extensions/trunks",
     "openstack/networking/v2/extensions/vpnaas/endpointgroups",
     "openstack/networking/v2/extensions/vpnaas/ikepolicies",
     "openstack/networking/v2/extensions/vpnaas/ipsecpolicies",
@@ -265,12 +266,12 @@
     "openstack/utils",
     "pagination"
   ]
-  revision = "50b061b8db2238f774135e3652a2e1630a609c8b"
+  revision = "0719c6b22f30132b0ae6c90b038e0d50992107b0"
 
 [[projects]]
   name = "github.com/gophercloud/utils"
   packages = ["openstack/clientconfig"]
-  revision = "5e68bc58a3c253175728d083244013b5effd69b2"
+  revision = "a45c12ccd8b0ce73306762607a60568a1bca4bbe"
 
 [[projects]]
   branch = "master"
@@ -418,8 +419,14 @@
 [[projects]]
   name = "github.com/kevinburke/ssh_config"
   packages = ["."]
-  revision = "9fc7bb800b555d63157c65a904c86a2cc7b4e795"
-  version = "0.4"
+  revision = "81db2a75821ed34e682567d48be488a1c3121088"
+  version = "0.5"
+
+[[projects]]
+  name = "github.com/konsorten/go-windows-terminal-sequences"
+  packages = ["."]
+  revision = "5c8c8bd35d3832f5d134ae1e1e375b69a4d25242"
+  version = "v1.0.1"
 
 [[projects]]
   name = "github.com/mattn/go-colorable"
@@ -568,7 +575,7 @@
     "sdk/go/pulumi/config",
     "sdk/proto/go"
   ]
-  revision = "a337fd73793c8fba7db7b602fec9cf32aab1c72f"
+  revision = "84ea2f0df750e313e64afb2a1ed982529e4c8598"
 
 [[projects]]
   branch = "master"
@@ -577,7 +584,7 @@
     "pkg/tfbridge",
     "pkg/tfgen"
   ]
-  revision = "8c7d4154b4c9bed966f720e4e10941d1d391b2a9"
+  revision = "aeb04b53ed680f8212d8ef2a86107c22be4cf94e"
 
 [[projects]]
   branch = "master"
@@ -599,8 +606,8 @@
 [[projects]]
   name = "github.com/spf13/cast"
   packages = ["."]
-  revision = "8965335b8c7107321228e3e3702cab9832751bac"
-  version = "v1.2.0"
+  revision = "8c9545af88b134710ab1cd196795e7f2388358d7"
+  version = "v1.3.0"
 
 [[projects]]
   name = "github.com/spf13/cobra"
@@ -611,8 +618,8 @@
 [[projects]]
   name = "github.com/spf13/pflag"
   packages = ["."]
-  revision = "583c0c0531f06d5278b7d917446061adc344b5cd"
-  version = "v1.0.1"
+  revision = "298182f68c66c05229eb03ac171abe6e309ee79a"
+  version = "v1.0.3"
 
 [[projects]]
   name = "github.com/src-d/gcfg"
@@ -622,8 +629,8 @@
     "token",
     "types"
   ]
-  revision = "f187355171c936ac84a82793659ebb4936bc1c23"
-  version = "v1.3.0"
+  revision = "1ac3a1ac202429a54835fe8408a92880156b489d"
+  version = "v1.4.0"
 
 [[projects]]
   name = "github.com/stretchr/testify"
@@ -634,8 +641,8 @@
 [[projects]]
   name = "github.com/terraform-providers/terraform-provider-openstack"
   packages = ["openstack"]
-  revision = "ec896a2bc6b34cba53dadc56308226a35ce01849"
-  version = "v1.10.0"
+  revision = "508765e66992e6c813f4ca7762d6e94c32379754"
+  version = "v1.12.0"
 
 [[projects]]
   branch = "master"
@@ -659,8 +666,8 @@
     "transport/zipkin",
     "utils"
   ]
-  revision = "b043381d944715b469fd6b37addfd30145ca1758"
-  version = "v2.14.0"
+  revision = "1a782e2da844727691fef1757c72eb190c2909f0"
+  version = "v2.15.0"
 
 [[projects]]
   name = "github.com/uber/jaeger-lib"
@@ -810,8 +817,8 @@
     "core",
     "terminal"
   ]
-  revision = "f30c5d1830c892f533140f29a1de89141dc217f5"
-  version = "v1.6.2"
+  revision = "fb519f89e19299d852ffdd9b734af122d2dcbd30"
+  version = "v1.7.0"
 
 [[projects]]
   name = "gopkg.in/src-d/go-billy.v4"
@@ -822,8 +829,8 @@
     "osfs",
     "util"
   ]
-  revision = "83cf655d40b15b427014d7875d10850f96edba14"
-  version = "v4.2.0"
+  revision = "982626487c60a5252e7d0b695ca23fb0fa2fd670"
+  version = "v4.3.0"
 
 [[projects]]
   name = "gopkg.in/src-d/go-git.v4"
@@ -869,8 +876,8 @@
     "utils/merkletrie/internal/frame",
     "utils/merkletrie/noder"
   ]
-  revision = "3bd5e82b2512d85becae9677fa06b5a973fd4cfb"
-  version = "v4.5.0"
+  revision = "3dbfb89e0f5bce0008724e547b999fe3af9f60db"
+  version = "v4.8.1"
 
 [[projects]]
   name = "gopkg.in/warnings.v0"
@@ -886,6 +893,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "9b7eae122435f1670f7afdc4f2e0fdd223c48bedec1cc9008f8ec36de7ae51b1"
+  inputs-digest = "1e5f44a5b7d4b4a5b3c68a0519e6f6d1c89e6195209bf9049247f7fd22653908"
   solver-name = "gps-cdcl"
   solver-version = 1
