@@ -20,3 +20,4 @@ export * from "./secGroupRule";
 export * from "./subnet";
 export * from "./subnetPool";
 export * from "./subnetRoute";
+export * from "./trunk";

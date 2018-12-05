@@ -262,6 +262,7 @@ func Provider() tfbridge.ProviderInfo {
 			"openstack_networking_subnetpool_v2":           {Tok: openstackResource(networkingMod, "SubnetPool")},
 			"openstack_networking_secgroup_v2":             {Tok: openstackResource(networkingMod, "SecGroup")},
 			"openstack_networking_secgroup_rule_v2":        {Tok: openstackResource(networkingMod, "SecGroupRule")},
+			"openstack_networking_trunk_v2":                {Tok: openstackResource(networkingMod, "Trunk")},
 
 			// Load Balancer
 			"openstack_lb_member_v1":       {Tok: openstackResource(lbMod, "MemberV1")},

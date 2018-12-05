@@ -91,6 +91,7 @@
         "networking/subnet.ts",
         "networking/subnetPool.ts",
         "networking/subnetRoute.ts",
+        "networking/trunk.ts",
         "objectstorage/container.ts",
         "objectstorage/containerObject.ts",
         "objectstorage/index.ts",
