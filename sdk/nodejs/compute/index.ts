@@ -9,6 +9,7 @@ export * from "./floatingIpAssociate";
 export * from "./getFlavor";
 export * from "./getKeypair";
 export * from "./instance";
+export * from "./interfaceAttach";
 export * from "./keypair";
 export * from "./secGroup";
 export * from "./serverGroup";

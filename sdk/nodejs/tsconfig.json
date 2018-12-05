@@ -22,6 +22,7 @@
         "compute/getKeypair.ts",
         "compute/index.ts",
         "compute/instance.ts",
+        "compute/interfaceAttach.ts",
         "compute/keypair.ts",
         "compute/secGroup.ts",
         "compute/serverGroup.ts",

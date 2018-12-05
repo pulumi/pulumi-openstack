@@ -220,6 +220,7 @@ func Provider() tfbridge.ProviderInfo {
 			"openstack_compute_floatingip_v2":           {Tok: openstackResource(computeMod, "FloatingIp")},
 			"openstack_compute_floatingip_associate_v2": {Tok: openstackResource(computeMod, "FloatingIpAssociate")},
 			"openstack_compute_instance_v2":             {Tok: openstackResource(computeMod, "Instance")},
+			"openstack_compute_interface_attach_v2":     {Tok: openstackResource(computeMod, "InterfaceAttach")},
 			"openstack_compute_keypair_v2":              {Tok: openstackResource(computeMod, "Keypair")},
 			"openstack_compute_secgroup_v2":             {Tok: openstackResource(computeMod, "SecGroup")},
 			"openstack_compute_servergroup_v2":          {Tok: openstackResource(computeMod, "ServerGroup")},
