@@ -16,8 +16,8 @@ export class Router extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: RouterState): Router {
-        return new Router(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: RouterState, opts?: pulumi.CustomResourceOptions): Router {
+        return new Router(name, <any>state, { ...opts, id: id });
     }
 
     /**
@@ -79,6 +79,10 @@ export class Router extends pulumi.CustomResource {
      */
     public readonly region: pulumi.Output<string>;
     /**
+     * A set of string tags for the router.
+     */
+    public readonly tags: pulumi.Output<string[] | undefined>;
+    /**
      * The owner of the floating IP. Required if admin wants
      * to create a router for another tenant. Changing this creates a new router.
      */
@@ -114,6 +118,7 @@ export class Router extends pulumi.CustomResource {
             inputs["externalNetworkId"] = state ? state.externalNetworkId : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["region"] = state ? state.region : undefined;
+            inputs["tags"] = state ? state.tags : undefined;
             inputs["tenantId"] = state ? state.tenantId : undefined;
             inputs["valueSpecs"] = state ? state.valueSpecs : undefined;
             inputs["vendorOptions"] = state ? state.vendorOptions : undefined;
@@ -128,6 +133,7 @@ export class Router extends pulumi.CustomResource {
             inputs["externalNetworkId"] = args ? args.externalNetworkId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["region"] = args ? args.region : undefined;
+            inputs["tags"] = args ? args.tags : undefined;
             inputs["tenantId"] = args ? args.tenantId : undefined;
             inputs["valueSpecs"] = args ? args.valueSpecs : undefined;
             inputs["vendorOptions"] = args ? args.vendorOptions : undefined;
@@ -198,6 +204,10 @@ export interface RouterState {
      * router.
      */
     readonly region?: pulumi.Input<string>;
+    /**
+     * A set of string tags for the router.
+     */
+    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The owner of the floating IP. Required if admin wants
      * to create a router for another tenant. Changing this creates a new router.
@@ -276,6 +286,10 @@ export interface RouterArgs {
      * router.
      */
     readonly region?: pulumi.Input<string>;
+    /**
+     * A set of string tags for the router.
+     */
+    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The owner of the floating IP. Required if admin wants
      * to create a router for another tenant. Changing this creates a new router.

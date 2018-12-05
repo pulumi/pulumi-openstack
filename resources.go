@@ -216,9 +216,11 @@ func Provider() tfbridge.ProviderInfo {
 
 			// Compute
 			"openstack_compute_flavor_v2":               {Tok: openstackResource(computeMod, "Flavor")},
+			"openstack_compute_flavor_access_v2":        {Tok: openstackResource(computeMod, "FlavorAccess")},
 			"openstack_compute_floatingip_v2":           {Tok: openstackResource(computeMod, "FloatingIp")},
 			"openstack_compute_floatingip_associate_v2": {Tok: openstackResource(computeMod, "FloatingIpAssociate")},
 			"openstack_compute_instance_v2":             {Tok: openstackResource(computeMod, "Instance")},
+			"openstack_compute_interface_attach_v2":     {Tok: openstackResource(computeMod, "InterfaceAttach")},
 			"openstack_compute_keypair_v2":              {Tok: openstackResource(computeMod, "Keypair")},
 			"openstack_compute_secgroup_v2":             {Tok: openstackResource(computeMod, "SecGroup")},
 			"openstack_compute_servergroup_v2":          {Tok: openstackResource(computeMod, "ServerGroup")},
@@ -260,6 +262,7 @@ func Provider() tfbridge.ProviderInfo {
 			"openstack_networking_subnetpool_v2":           {Tok: openstackResource(networkingMod, "SubnetPool")},
 			"openstack_networking_secgroup_v2":             {Tok: openstackResource(networkingMod, "SecGroup")},
 			"openstack_networking_secgroup_rule_v2":        {Tok: openstackResource(networkingMod, "SecGroupRule")},
+			"openstack_networking_trunk_v2":                {Tok: openstackResource(networkingMod, "Trunk")},
 
 			// Load Balancer
 			"openstack_lb_member_v1":       {Tok: openstackResource(lbMod, "MemberV1")},

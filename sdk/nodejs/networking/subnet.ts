@@ -16,8 +16,8 @@ export class Subnet extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SubnetState): Subnet {
-        return new Subnet(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SubnetState, opts?: pulumi.CustomResourceOptions): Subnet {
+        return new Subnet(name, <any>state, { ...opts, id: id });
     }
 
     /**
@@ -100,6 +100,10 @@ export class Subnet extends pulumi.CustomResource {
      */
     public readonly subnetpoolId: pulumi.Output<string | undefined>;
     /**
+     * A set of string tags for the subnet.
+     */
+    public readonly tags: pulumi.Output<string[] | undefined>;
+    /**
      * The owner of the subnet. Required if admin wants to
      * create a subnet for another tenant. Changing this creates a new subnet.
      */
@@ -135,6 +139,7 @@ export class Subnet extends pulumi.CustomResource {
             inputs["noGateway"] = state ? state.noGateway : undefined;
             inputs["region"] = state ? state.region : undefined;
             inputs["subnetpoolId"] = state ? state.subnetpoolId : undefined;
+            inputs["tags"] = state ? state.tags : undefined;
             inputs["tenantId"] = state ? state.tenantId : undefined;
             inputs["valueSpecs"] = state ? state.valueSpecs : undefined;
         } else {
@@ -156,6 +161,7 @@ export class Subnet extends pulumi.CustomResource {
             inputs["noGateway"] = args ? args.noGateway : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["subnetpoolId"] = args ? args.subnetpoolId : undefined;
+            inputs["tags"] = args ? args.tags : undefined;
             inputs["tenantId"] = args ? args.tenantId : undefined;
             inputs["valueSpecs"] = args ? args.valueSpecs : undefined;
         }
@@ -246,6 +252,10 @@ export interface SubnetState {
      * The ID of the subnetpool associated with the subnet.
      */
     readonly subnetpoolId?: pulumi.Input<string>;
+    /**
+     * A set of string tags for the subnet.
+     */
+    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The owner of the subnet. Required if admin wants to
      * create a subnet for another tenant. Changing this creates a new subnet.
@@ -340,6 +350,10 @@ export interface SubnetArgs {
      * The ID of the subnetpool associated with the subnet.
      */
     readonly subnetpoolId?: pulumi.Input<string>;
+    /**
+     * A set of string tags for the subnet.
+     */
+    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The owner of the subnet. Required if admin wants to
      * create a subnet for another tenant. Changing this creates a new subnet.

@@ -11,7 +11,7 @@ class VolumeAttach(pulumi.CustomResource):
     Attaches a Block Storage Volume to an Instance using the OpenStack
     Compute (Nova) v2 API.
     """
-    def __init__(__self__, __name__, __opts__=None, device=None, instance_id=None, region=None, volume_id=None):
+    def __init__(__self__, __name__, __opts__=None, device=None, instance_id=None, multiattach=None, region=None, volume_id=None):
         """Create a VolumeAttach resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
@@ -27,6 +27,8 @@ class VolumeAttach(pulumi.CustomResource):
         if not instance_id:
             raise TypeError('Missing required property instance_id')
         __props__['instance_id'] = instance_id
+
+        __props__['multiattach'] = multiattach
 
         __props__['region'] = region
 

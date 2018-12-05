@@ -30,6 +30,7 @@ func NewFloatingIp(ctx *pulumi.Context,
 		inputs["portId"] = nil
 		inputs["region"] = nil
 		inputs["subnetId"] = nil
+		inputs["tags"] = nil
 		inputs["tenantId"] = nil
 		inputs["valueSpecs"] = nil
 	} else {
@@ -39,6 +40,7 @@ func NewFloatingIp(ctx *pulumi.Context,
 		inputs["portId"] = args.PortId
 		inputs["region"] = args.Region
 		inputs["subnetId"] = args.SubnetId
+		inputs["tags"] = args.Tags
 		inputs["tenantId"] = args.TenantId
 		inputs["valueSpecs"] = args.ValueSpecs
 	}
@@ -61,6 +63,7 @@ func GetFloatingIp(ctx *pulumi.Context,
 		inputs["portId"] = state.PortId
 		inputs["region"] = state.Region
 		inputs["subnetId"] = state.SubnetId
+		inputs["tags"] = state.Tags
 		inputs["tenantId"] = state.TenantId
 		inputs["valueSpecs"] = state.ValueSpecs
 	}
@@ -122,6 +125,11 @@ func (r *FloatingIp) SubnetId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["subnetId"])
 }
 
+// A set of string tags for the floating IP.
+func (r *FloatingIp) Tags() *pulumi.ArrayOutput {
+	return (*pulumi.ArrayOutput)(r.s.State["tags"])
+}
+
 // The target tenant ID in which to allocate the floating
 // IP, if you specify this together with a port_id, make sure the target port
 // belongs to the same tenant. Changing this creates a new floating IP (which
@@ -160,6 +168,8 @@ type FloatingIpState struct {
 	// The subnet ID of the floating IP pool. Specify this if
 	// the floating IP network has multiple subnets.
 	SubnetId interface{}
+	// A set of string tags for the floating IP.
+	Tags interface{}
 	// The target tenant ID in which to allocate the floating
 	// IP, if you specify this together with a port_id, make sure the target port
 	// belongs to the same tenant. Changing this creates a new floating IP (which
@@ -194,6 +204,8 @@ type FloatingIpArgs struct {
 	// The subnet ID of the floating IP pool. Specify this if
 	// the floating IP network has multiple subnets.
 	SubnetId interface{}
+	// A set of string tags for the floating IP.
+	Tags interface{}
 	// The target tenant ID in which to allocate the floating
 	// IP, if you specify this together with a port_id, make sure the target port
 	// belongs to the same tenant. Changing this creates a new floating IP (which

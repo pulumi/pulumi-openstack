@@ -1,0 +1,17 @@
+[[constraint]]
+  name = "github.com/pulumi/pulumi"
+  branch = "master"
+
+[[constraint]]
+  name = "github.com/pulumi/pulumi-terraform"
+  branch = "master"
+
+[[constraint]]
+  name = "github.com/terraform-providers/terraform-provider-openstack"
+  version = "v1.12.0"
+
+  [constraint.metadata]
+    govendor-override = true
+    govendor-exclude-prefixes = [
+      "github.com/golang/protobuf",
+    ]

@@ -23,12 +23,14 @@ func NewSecGroup(ctx *pulumi.Context,
 		inputs["description"] = nil
 		inputs["name"] = nil
 		inputs["region"] = nil
+		inputs["tags"] = nil
 		inputs["tenantId"] = nil
 	} else {
 		inputs["deleteDefaultRules"] = args.DeleteDefaultRules
 		inputs["description"] = args.Description
 		inputs["name"] = args.Name
 		inputs["region"] = args.Region
+		inputs["tags"] = args.Tags
 		inputs["tenantId"] = args.TenantId
 	}
 	s, err := ctx.RegisterResource("openstack:networking/secGroup:SecGroup", name, true, inputs, opts...)
@@ -48,6 +50,7 @@ func GetSecGroup(ctx *pulumi.Context,
 		inputs["description"] = state.Description
 		inputs["name"] = state.Name
 		inputs["region"] = state.Region
+		inputs["tags"] = state.Tags
 		inputs["tenantId"] = state.TenantId
 	}
 	s, err := ctx.ReadResource("openstack:networking/secGroup:SecGroup", name, id, inputs, opts...)
@@ -92,6 +95,11 @@ func (r *SecGroup) Region() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["region"])
 }
 
+// A set of string tags for the security group.
+func (r *SecGroup) Tags() *pulumi.ArrayOutput {
+	return (*pulumi.ArrayOutput)(r.s.State["tags"])
+}
+
 // The owner of the security group. Required if admin
 // wants to create a port for another tenant. Changing this creates a new
 // security group.
@@ -114,6 +122,8 @@ type SecGroupState struct {
 	// `region` argument of the provider is used. Changing this creates a new
 	// security group.
 	Region interface{}
+	// A set of string tags for the security group.
+	Tags interface{}
 	// The owner of the security group. Required if admin
 	// wants to create a port for another tenant. Changing this creates a new
 	// security group.
@@ -135,6 +145,8 @@ type SecGroupArgs struct {
 	// `region` argument of the provider is used. Changing this creates a new
 	// security group.
 	Region interface{}
+	// A set of string tags for the security group.
+	Tags interface{}
 	// The owner of the security group. Required if admin
 	// wants to create a port for another tenant. Changing this creates a new
 	// security group.

@@ -35,6 +35,7 @@ func NewSubnet(ctx *pulumi.Context,
 		inputs["noGateway"] = nil
 		inputs["region"] = nil
 		inputs["subnetpoolId"] = nil
+		inputs["tags"] = nil
 		inputs["tenantId"] = nil
 		inputs["valueSpecs"] = nil
 	} else {
@@ -52,6 +53,7 @@ func NewSubnet(ctx *pulumi.Context,
 		inputs["noGateway"] = args.NoGateway
 		inputs["region"] = args.Region
 		inputs["subnetpoolId"] = args.SubnetpoolId
+		inputs["tags"] = args.Tags
 		inputs["tenantId"] = args.TenantId
 		inputs["valueSpecs"] = args.ValueSpecs
 	}
@@ -82,6 +84,7 @@ func GetSubnet(ctx *pulumi.Context,
 		inputs["noGateway"] = state.NoGateway
 		inputs["region"] = state.Region
 		inputs["subnetpoolId"] = state.SubnetpoolId
+		inputs["tags"] = state.Tags
 		inputs["tenantId"] = state.TenantId
 		inputs["valueSpecs"] = state.ValueSpecs
 	}
@@ -195,6 +198,11 @@ func (r *Subnet) SubnetpoolId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["subnetpoolId"])
 }
 
+// A set of string tags for the subnet.
+func (r *Subnet) Tags() *pulumi.ArrayOutput {
+	return (*pulumi.ArrayOutput)(r.s.State["tags"])
+}
+
 // The owner of the subnet. Required if admin wants to
 // create a subnet for another tenant. Changing this creates a new subnet.
 func (r *Subnet) TenantId() *pulumi.StringOutput {
@@ -259,6 +267,8 @@ type SubnetState struct {
 	Region interface{}
 	// The ID of the subnetpool associated with the subnet.
 	SubnetpoolId interface{}
+	// A set of string tags for the subnet.
+	Tags interface{}
 	// The owner of the subnet. Required if admin wants to
 	// create a subnet for another tenant. Changing this creates a new subnet.
 	TenantId interface{}
@@ -319,6 +329,8 @@ type SubnetArgs struct {
 	Region interface{}
 	// The ID of the subnetpool associated with the subnet.
 	SubnetpoolId interface{}
+	// A set of string tags for the subnet.
+	Tags interface{}
 	// The owner of the subnet. Required if admin wants to
 	// create a subnet for another tenant. Changing this creates a new subnet.
 	TenantId interface{}

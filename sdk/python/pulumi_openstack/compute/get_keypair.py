@@ -10,7 +10,13 @@ class GetKeypairResult(object):
     """
     A collection of values returned by getKeypair.
     """
-    def __init__(__self__, public_key=None, region=None, id=None):
+    def __init__(__self__, fingerprint=None, public_key=None, region=None, id=None):
+        if fingerprint and not isinstance(fingerprint, str):
+            raise TypeError('Expected argument fingerprint to be a str')
+        __self__.fingerprint = fingerprint
+        """
+        The fingerprint of the OpenSSH key.
+        """
         if public_key and not isinstance(public_key, str):
             raise TypeError('Expected argument public_key to be a str')
         __self__.public_key = public_key
@@ -41,6 +47,7 @@ async def get_keypair(name=None, region=None):
     __ret__ = await pulumi.runtime.invoke('openstack:compute/getKeypair:getKeypair', __args__)
 
     return GetKeypairResult(
+        fingerprint=__ret__.get('fingerprint'),
         public_key=__ret__.get('publicKey'),
         region=__ret__.get('region'),
         id=__ret__.get('id'))

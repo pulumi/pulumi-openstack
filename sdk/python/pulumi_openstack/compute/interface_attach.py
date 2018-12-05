@@ -6,12 +6,13 @@ import pulumi
 import pulumi.runtime
 from .. import utilities, tables
 
-class Network(pulumi.CustomResource):
+class InterfaceAttach(pulumi.CustomResource):
     """
-    Manages a V2 Neutron network resource within OpenStack.
+    Attaches a Network Interface (a Port) to an Instance using the OpenStack
+    Compute (Nova) v2 API.
     """
-    def __init__(__self__, __name__, __opts__=None, admin_state_up=None, availability_zone_hints=None, external=None, name=None, region=None, segments=None, shared=None, tags=None, tenant_id=None, value_specs=None):
-        """Create a Network resource with the given unique name, props, and options."""
+    def __init__(__self__, __name__, __opts__=None, fixed_ip=None, instance_id=None, network_id=None, port_id=None, region=None):
+        """Create a InterfaceAttach resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):
@@ -21,28 +22,20 @@ class Network(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['admin_state_up'] = admin_state_up
+        __props__['fixed_ip'] = fixed_ip
 
-        __props__['availability_zone_hints'] = availability_zone_hints
+        if not instance_id:
+            raise TypeError('Missing required property instance_id')
+        __props__['instance_id'] = instance_id
 
-        __props__['external'] = external
+        __props__['network_id'] = network_id
 
-        __props__['name'] = name
+        __props__['port_id'] = port_id
 
         __props__['region'] = region
 
-        __props__['segments'] = segments
-
-        __props__['shared'] = shared
-
-        __props__['tags'] = tags
-
-        __props__['tenant_id'] = tenant_id
-
-        __props__['value_specs'] = value_specs
-
-        super(Network, __self__).__init__(
-            'openstack:networking/network:Network',
+        super(InterfaceAttach, __self__).__init__(
+            'openstack:compute/interfaceAttach:InterfaceAttach',
             __name__,
             __props__,
             __opts__)

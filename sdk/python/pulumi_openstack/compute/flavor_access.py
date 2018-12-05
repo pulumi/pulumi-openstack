@@ -6,12 +6,17 @@ import pulumi
 import pulumi.runtime
 from .. import utilities, tables
 
-class Network(pulumi.CustomResource):
+class FlavorAccess(pulumi.CustomResource):
     """
-    Manages a V2 Neutron network resource within OpenStack.
+    Manages a project access for flavor V2 resource within OpenStack.
+    
+    Note: You _must_ have admin privileges in your OpenStack cloud to use
+    this resource.
+    
+    ---
     """
-    def __init__(__self__, __name__, __opts__=None, admin_state_up=None, availability_zone_hints=None, external=None, name=None, region=None, segments=None, shared=None, tags=None, tenant_id=None, value_specs=None):
-        """Create a Network resource with the given unique name, props, and options."""
+    def __init__(__self__, __name__, __opts__=None, flavor_id=None, region=None, tenant_id=None):
+        """Create a FlavorAccess resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
         if not isinstance(__name__, str):
@@ -21,28 +26,18 @@ class Network(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['admin_state_up'] = admin_state_up
-
-        __props__['availability_zone_hints'] = availability_zone_hints
-
-        __props__['external'] = external
-
-        __props__['name'] = name
+        if not flavor_id:
+            raise TypeError('Missing required property flavor_id')
+        __props__['flavor_id'] = flavor_id
 
         __props__['region'] = region
 
-        __props__['segments'] = segments
-
-        __props__['shared'] = shared
-
-        __props__['tags'] = tags
-
+        if not tenant_id:
+            raise TypeError('Missing required property tenant_id')
         __props__['tenant_id'] = tenant_id
 
-        __props__['value_specs'] = value_specs
-
-        super(Network, __self__).__init__(
-            'openstack:networking/network:Network',
+        super(FlavorAccess, __self__).__init__(
+            'openstack:compute/flavorAccess:FlavorAccess',
             __name__,
             __props__,
             __opts__)
