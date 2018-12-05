@@ -216,6 +216,7 @@ func Provider() tfbridge.ProviderInfo {
 
 			// Compute
 			"openstack_compute_flavor_v2":               {Tok: openstackResource(computeMod, "Flavor")},
+			"openstack_compute_flavor_access_v2":        {Tok: openstackResource(computeMod, "FlavorAccess")},
 			"openstack_compute_floatingip_v2":           {Tok: openstackResource(computeMod, "FloatingIp")},
 			"openstack_compute_floatingip_associate_v2": {Tok: openstackResource(computeMod, "FloatingIpAssociate")},
 			"openstack_compute_instance_v2":             {Tok: openstackResource(computeMod, "Instance")},

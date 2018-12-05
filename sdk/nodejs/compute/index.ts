@@ -3,6 +3,7 @@
 
 // Export members:
 export * from "./flavor";
+export * from "./flavorAccess";
 export * from "./floatingIp";
 export * from "./floatingIpAssociate";
 export * from "./getFlavor";

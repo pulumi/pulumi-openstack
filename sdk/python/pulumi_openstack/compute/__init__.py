@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
+from .flavor_access import *
 from .flavor import *
 from .floating_ip_associate import *
 from .floating_ip import *

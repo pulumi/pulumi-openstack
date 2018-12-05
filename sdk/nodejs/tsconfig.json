@@ -15,6 +15,7 @@
         "blockstorage/volumeV1.ts",
         "blockstorage/volumeV2.ts",
         "compute/flavor.ts",
+        "compute/flavorAccess.ts",
         "compute/floatingIp.ts",
         "compute/floatingIpAssociate.ts",
         "compute/getFlavor.ts",
