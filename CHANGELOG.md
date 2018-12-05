@@ -1,5 +1,10 @@
+## 0.16.4 (unreleased)
 
-## 0.16.3 (unreleased)
+## 0.16.3 (Released December 5th, 2018)
+
+### Improvements
+
+- Update provider version to v1.12.0
 
 ## 0.16.2 (Released Novemeber 13th, 2018)
 
