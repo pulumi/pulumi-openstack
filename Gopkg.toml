@@ -8,7 +8,7 @@
 
 [[constraint]]
   name = "github.com/terraform-providers/terraform-provider-openstack"
-  version = "v1.12.0"
+  version = "v1.13.0"
 
   [constraint.metadata]
     govendor-exclude-prefixes = ["github.com/golang/protobuf"]
@@ -54,7 +54,7 @@
 
 [[override]]
   name = "github.com/aws/aws-sdk-go"
-  version = "v1.8.34"
+  version = "=v1.8.34"
   [override.metadata]
     govendor-overridden=true
 
@@ -102,7 +102,7 @@
 
 [[override]]
   name = "github.com/gophercloud/gophercloud"
-  revision = "0719c6b22f30132b0ae6c90b038e0d50992107b0"
+  revision = "bdd8b1ecd793ffb03d43314c66565be3d6a7a582"
   [override.metadata]
     govendor-overridden=true
 
@@ -275,6 +275,12 @@
     govendor-overridden=true
 
 [[override]]
+  name = "github.com/pmezard/go-difflib"
+  revision = "792786c7400a136282c1664665ae0a8db921c6c2"
+  [override.metadata]
+    govendor-overridden=true
+
+[[override]]
   name = "github.com/posener/complete"
   revision = "e037c22b2fcfa85e74495388f03892ed194bba76"
   [override.metadata]
@@ -289,6 +295,12 @@
 [[override]]
   name = "github.com/satori/go.uuid"
   revision = "b061729afc07e77a8aa4fad0a2fd840958f1942a"
+  [override.metadata]
+    govendor-overridden=true
+
+[[override]]
+  name = "github.com/stretchr/testify"
+  revision = "8019298d9fa5a04fc2ad10ae03349df3483096a6"
   [override.metadata]
     govendor-overridden=true
 
@@ -348,6 +360,6 @@
 
 [[override]]
   name = "k8s.io/kubernetes"
-  version = "v1.6.1"
+  version = "=v1.6.1"
   [override.metadata]
     govendor-overridden=true

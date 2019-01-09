@@ -60,22 +60,14 @@
     "aws/credentials/ec2rolecreds",
     "aws/credentials/endpointcreds",
     "aws/credentials/stscreds",
-    "aws/csm",
     "aws/defaults",
     "aws/ec2metadata",
     "aws/endpoints",
     "aws/request",
     "aws/session",
     "aws/signer/v4",
-    "internal/ini",
-    "internal/s3err",
-    "internal/sdkio",
-    "internal/sdkrand",
-    "internal/sdkuri",
     "internal/shareddefaults",
     "private/protocol",
-    "private/protocol/eventstream",
-    "private/protocol/eventstream/eventstreamapi",
     "private/protocol/json/jsonutil",
     "private/protocol/jsonrpc",
     "private/protocol/query",
@@ -87,8 +79,8 @@
     "service/s3",
     "service/sts"
   ]
-  revision = "ddc06f9fad886ea5daa5f828f3ca094084f8c2a7"
-  version = "v1.15.90"
+  revision = "be4fa13e47938e4801fada8c8ca3d1867ad3dcb3"
+  version = "v1.8.34"
 
 [[projects]]
   name = "github.com/bgentry/go-netrc"
@@ -165,6 +157,11 @@
   revision = "16278e9db8130ac7ec405dc174cfb94344f16325"
 
 [[projects]]
+  name = "github.com/go-ini/ini"
+  packages = ["."]
+  revision = "766e555c68dc8bda90d197ee8946c37519c19409"
+
+[[projects]]
   branch = "master"
   name = "github.com/golang/glog"
   packages = ["."]
@@ -193,7 +190,9 @@
     "openstack",
     "openstack/blockstorage/extensions/volumeactions",
     "openstack/blockstorage/v1/volumes",
+    "openstack/blockstorage/v2/snapshots",
     "openstack/blockstorage/v2/volumes",
+    "openstack/blockstorage/v3/snapshots",
     "openstack/blockstorage/v3/volumes",
     "openstack/compute/v2/extensions/attachinterfaces",
     "openstack/compute/v2/extensions/availabilityzones",
@@ -242,6 +241,7 @@
     "openstack/networking/v2/extensions/lbaas/monitors",
     "openstack/networking/v2/extensions/lbaas/pools",
     "openstack/networking/v2/extensions/lbaas/vips",
+    "openstack/networking/v2/extensions/lbaas_v2/l7policies",
     "openstack/networking/v2/extensions/lbaas_v2/listeners",
     "openstack/networking/v2/extensions/lbaas_v2/loadbalancers",
     "openstack/networking/v2/extensions/lbaas_v2/monitors",
@@ -263,10 +263,12 @@
     "openstack/objectstorage/v1/containers",
     "openstack/objectstorage/v1/objects",
     "openstack/objectstorage/v1/swauth",
+    "openstack/sharedfilesystems/v2/securityservices",
+    "openstack/sharedfilesystems/v2/sharenetworks",
     "openstack/utils",
     "pagination"
   ]
-  revision = "0719c6b22f30132b0ae6c90b038e0d50992107b0"
+  revision = "bdd8b1ecd793ffb03d43314c66565be3d6a7a582"
 
 [[projects]]
   name = "github.com/gophercloud/utils"
@@ -516,7 +518,6 @@
   name = "github.com/pmezard/go-difflib"
   packages = ["difflib"]
   revision = "792786c7400a136282c1664665ae0a8db921c6c2"
-  version = "v1.0.0"
 
 [[projects]]
   name = "github.com/posener/complete"
@@ -635,14 +636,13 @@
 [[projects]]
   name = "github.com/stretchr/testify"
   packages = ["assert"]
-  revision = "f35b8ab0b5a2cef36673838d662e249dd9c94686"
-  version = "v1.2.2"
+  revision = "8019298d9fa5a04fc2ad10ae03349df3483096a6"
 
 [[projects]]
   name = "github.com/terraform-providers/terraform-provider-openstack"
   packages = ["openstack"]
-  revision = "508765e66992e6c813f4ca7762d6e94c32379754"
-  version = "v1.12.0"
+  revision = "27ccfdac401b3a74c8892b79dfbc1d8389e6ef7e"
+  version = "v1.13.0"
 
 [[projects]]
   branch = "master"
@@ -893,6 +893,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "1e5f44a5b7d4b4a5b3c68a0519e6f6d1c89e6195209bf9049247f7fd22653908"
+  inputs-digest = "75a8bcd14ef69cddd9c6cb9dfa3486f8ceee0441cf70e0c7cffeb0606497822f"
   solver-name = "gps-cdcl"
   solver-version = 1
