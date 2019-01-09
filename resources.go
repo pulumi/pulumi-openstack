@@ -29,18 +29,19 @@ const (
 	// packages:
 	openstackPkg = "openstack"
 	// modules:
-	blockstorageMod   = "blockstorage"   // Block Storage
-	computeMod        = "compute"        // Compute
-	containerinfraMod = "containerinfra" // Container Infrastructure
-	databaseMod       = "database"       // Database
-	dnsMod            = "dns"            // DNS
-	identityMod       = "identity"       // Identity
-	imagesMod         = "images"         // Images
-	networkingMod     = "networking"     // Networking
-	lbMod             = "loadbalancer"   // Load Balancer
-	firewallMod       = "firewall"       // Firewall
-	osMod             = "objectstorage"  // Object Storage
-	vpnaasMod         = "vpnaas"         // VPNaaS
+	blockstorageMod     = "blockstorage"     // Block Storage
+	computeMod          = "compute"          // Compute
+	containerinfraMod   = "containerinfra"   // Container Infrastructure
+	databaseMod         = "database"         // Database
+	dnsMod              = "dns"              // DNS
+	identityMod         = "identity"         // Identity
+	imagesMod           = "images"           // Images
+	networkingMod       = "networking"       // Networking
+	lbMod               = "loadbalancer"     // Load Balancer
+	firewallMod         = "firewall"         // Firewall
+	osMod               = "objectstorage"    // Object Storage
+	sharedfilesystemMod = "sharedfilesystem" // Shared FileSystem
+	vpnaasMod           = "vpnaas"           // VPNaaS
 )
 
 // openstackMember manufactures a type token for the OpenStack package and the given module and type.
@@ -285,6 +286,10 @@ func Provider() tfbridge.ProviderInfo {
 			"openstack_objectstorage_object_v1":    {Tok: openstackResource(osMod, "ContainerObject")},
 			"openstack_objectstorage_tempurl_v1":   {Tok: openstackResource(osMod, "TempUrl")},
 
+			// Shared Filesystem
+			"openstack_sharedfilesystem_securityservice_v2": {Tok: openstackResource(sharedfilesystemMod, "SecurityService")},
+			"openstack_sharedfilesystem_sharenetwork_v2":    {Tok: openstackResource(sharedfilesystemMod, "ShareNetwork")},
+
 			// VPNaaS
 			"openstack_vpnaas_ipsec_policy_v2":    {Tok: openstackResource(vpnaasMod, "IpSecPolicy")},
 			"openstack_vpnaas_ike_policy_v2":      {Tok: openstackResource(vpnaasMod, "IkePolicy")},
@@ -293,11 +298,16 @@ func Provider() tfbridge.ProviderInfo {
 			"openstack_vpnaas_site_connection_v2": {Tok: openstackResource(vpnaasMod, "SiteConnection")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
+			// Block Storage
+			"openstack_blockstorage_snapshot_v2": {Tok: openstackDataSource(blockstorageMod, "getSnapshotV2")},
+			"openstack_blockstorage_snapshot_v3": {Tok: openstackDataSource(blockstorageMod, "getSnapshotV3")},
+
 			// Compute
 			"openstack_compute_flavor_v2":  {Tok: openstackDataSource(computeMod, "getFlavor")},
 			"openstack_compute_keypair_v2": {Tok: openstackDataSource(computeMod, "getKeypair")},
 
 			// Container Infrastructure
+			"openstack_containerinfra_cluster_v1":         {Tok: openstackDataSource(containerinfraMod, "getCluster")},
 			"openstack_containerinfra_clustertemplate_v1": {Tok: openstackDataSource(containerinfraMod, "getClusterTemplate")},
 
 			// DNS

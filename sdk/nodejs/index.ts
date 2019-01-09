@@ -17,5 +17,6 @@ import * as images from "./images/index";
 import * as loadbalancer from "./loadbalancer/index";
 import * as networking from "./networking/index";
 import * as objectstorage from "./objectstorage/index";
+import * as sharedfilesystem from "./sharedfilesystem/index";
 import * as vpnaas from "./vpnaas/index";
-export {blockstorage, compute, config, containerinfra, database, dns, firewall, identity, images, loadbalancer, networking, objectstorage, vpnaas};
+export {blockstorage, compute, config, containerinfra, database, dns, firewall, identity, images, loadbalancer, networking, objectstorage, sharedfilesystem, vpnaas};
