@@ -13,7 +13,7 @@ class FloatingIp(pulumi.CustomResource):
     These are similar to Nova (compute) floating IP resources,
     but only compute floating IPs can be used with compute instances.
     """
-    def __init__(__self__, __name__, __opts__=None, address=None, fixed_ip=None, pool=None, port_id=None, region=None, subnet_id=None, tags=None, tenant_id=None, value_specs=None):
+    def __init__(__self__, __name__, __opts__=None, address=None, description=None, fixed_ip=None, pool=None, port_id=None, region=None, subnet_id=None, tags=None, tenant_id=None, value_specs=None):
         """Create a FloatingIp resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
@@ -25,6 +25,8 @@ class FloatingIp(pulumi.CustomResource):
         __props__ = dict()
 
         __props__['address'] = address
+
+        __props__['description'] = description
 
         __props__['fixed_ip'] = fixed_ip
 

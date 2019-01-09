@@ -30,10 +30,9 @@ export class ServerGroup extends pulumi.CustomResource {
      */
     public readonly name: pulumi.Output<string>;
     /**
-     * The set of policies for the server group. Only two
-     * two policies are available right now, and both are mutually exclusive. See
-     * the Policies section for more information. Changing this creates a new
-     * server group.
+     * The set of policies for the server group. All policies
+     * are mutually exclusive. See the Policies section for more information.
+     * Changing this creates a new server group.
      */
     public readonly policies: pulumi.Output<string[] | undefined>;
     /**
@@ -90,10 +89,9 @@ export interface ServerGroupState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The set of policies for the server group. Only two
-     * two policies are available right now, and both are mutually exclusive. See
-     * the Policies section for more information. Changing this creates a new
-     * server group.
+     * The set of policies for the server group. All policies
+     * are mutually exclusive. See the Policies section for more information.
+     * Changing this creates a new server group.
      */
     readonly policies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -118,10 +116,9 @@ export interface ServerGroupArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The set of policies for the server group. Only two
-     * two policies are available right now, and both are mutually exclusive. See
-     * the Policies section for more information. Changing this creates a new
-     * server group.
+     * The set of policies for the server group. All policies
+     * are mutually exclusive. See the Policies section for more information.
+     * Changing this creates a new server group.
      */
     readonly policies?: pulumi.Input<pulumi.Input<string>[]>;
     /**

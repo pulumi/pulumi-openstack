@@ -26,6 +26,7 @@ func NewContainer(ctx *pulumi.Context,
 		inputs["metadata"] = nil
 		inputs["name"] = nil
 		inputs["region"] = nil
+		inputs["versioning"] = nil
 	} else {
 		inputs["containerRead"] = args.ContainerRead
 		inputs["containerSyncKey"] = args.ContainerSyncKey
@@ -36,6 +37,7 @@ func NewContainer(ctx *pulumi.Context,
 		inputs["metadata"] = args.Metadata
 		inputs["name"] = args.Name
 		inputs["region"] = args.Region
+		inputs["versioning"] = args.Versioning
 	}
 	s, err := ctx.RegisterResource("openstack:objectstorage/container:Container", name, true, inputs, opts...)
 	if err != nil {
@@ -59,6 +61,7 @@ func GetContainer(ctx *pulumi.Context,
 		inputs["metadata"] = state.Metadata
 		inputs["name"] = state.Name
 		inputs["region"] = state.Region
+		inputs["versioning"] = state.Versioning
 	}
 	s, err := ctx.ReadResource("openstack:objectstorage/container:Container", name, id, inputs, opts...)
 	if err != nil {
@@ -133,6 +136,11 @@ func (r *Container) Region() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["region"])
 }
 
+// Enable object versioning. The structure is described below.
+func (r *Container) Versioning() *pulumi.Output {
+	return r.s.State["versioning"]
+}
+
 // Input properties used for looking up and filtering Container resources.
 type ContainerState struct {
 	// Sets an access control list (ACL) that grants
@@ -164,6 +172,8 @@ type ContainerState struct {
 	// omitted, the `region` argument of the provider is used. Changing this
 	// creates a new container.
 	Region interface{}
+	// Enable object versioning. The structure is described below.
+	Versioning interface{}
 }
 
 // The set of arguments for constructing a Container resource.
@@ -197,4 +207,6 @@ type ContainerArgs struct {
 	// omitted, the `region` argument of the provider is used. Changing this
 	// creates a new container.
 	Region interface{}
+	// Enable object versioning. The structure is described below.
+	Versioning interface{}
 }

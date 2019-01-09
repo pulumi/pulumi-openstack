@@ -19,6 +19,7 @@ func NewNetwork(ctx *pulumi.Context,
 	if args == nil {
 		inputs["adminStateUp"] = nil
 		inputs["availabilityZoneHints"] = nil
+		inputs["description"] = nil
 		inputs["external"] = nil
 		inputs["name"] = nil
 		inputs["region"] = nil
@@ -30,6 +31,7 @@ func NewNetwork(ctx *pulumi.Context,
 	} else {
 		inputs["adminStateUp"] = args.AdminStateUp
 		inputs["availabilityZoneHints"] = args.AvailabilityZoneHints
+		inputs["description"] = args.Description
 		inputs["external"] = args.External
 		inputs["name"] = args.Name
 		inputs["region"] = args.Region
@@ -54,6 +56,7 @@ func GetNetwork(ctx *pulumi.Context,
 	if state != nil {
 		inputs["adminStateUp"] = state.AdminStateUp
 		inputs["availabilityZoneHints"] = state.AvailabilityZoneHints
+		inputs["description"] = state.Description
 		inputs["external"] = state.External
 		inputs["name"] = state.Name
 		inputs["region"] = state.Region
@@ -93,6 +96,12 @@ func (r *Network) AdminStateUp() *pulumi.StringOutput {
 // creates a new network.
 func (r *Network) AvailabilityZoneHints() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["availabilityZoneHints"])
+}
+
+// Human-readable description of the network. Changing this
+// updates the name of the existing network.
+func (r *Network) Description() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["description"])
 }
 
 // Specifies whether the network resource has the
@@ -155,6 +164,9 @@ type NetworkState struct {
 	// so that they are scheduled on different availability zones. Changing this
 	// creates a new network.
 	AvailabilityZoneHints interface{}
+	// Human-readable description of the network. Changing this
+	// updates the name of the existing network.
+	Description interface{}
 	// Specifies whether the network resource has the
 	// external routing facility. Valid values are true and false. Defaults to
 	// false. Changing this updates the external attribute of the existing network.
@@ -193,6 +205,9 @@ type NetworkArgs struct {
 	// so that they are scheduled on different availability zones. Changing this
 	// creates a new network.
 	AvailabilityZoneHints interface{}
+	// Human-readable description of the network. Changing this
+	// updates the name of the existing network.
+	Description interface{}
 	// Specifies whether the network resource has the
 	// external routing facility. Valid values are true and false. Defaults to
 	// false. Changing this updates the external attribute of the existing network.

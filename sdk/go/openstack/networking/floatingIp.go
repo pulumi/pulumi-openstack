@@ -25,6 +25,7 @@ func NewFloatingIp(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["address"] = nil
+		inputs["description"] = nil
 		inputs["fixedIp"] = nil
 		inputs["pool"] = nil
 		inputs["portId"] = nil
@@ -35,6 +36,7 @@ func NewFloatingIp(ctx *pulumi.Context,
 		inputs["valueSpecs"] = nil
 	} else {
 		inputs["address"] = args.Address
+		inputs["description"] = args.Description
 		inputs["fixedIp"] = args.FixedIp
 		inputs["pool"] = args.Pool
 		inputs["portId"] = args.PortId
@@ -58,6 +60,7 @@ func GetFloatingIp(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if state != nil {
 		inputs["address"] = state.Address
+		inputs["description"] = state.Description
 		inputs["fixedIp"] = state.FixedIp
 		inputs["pool"] = state.Pool
 		inputs["portId"] = state.PortId
@@ -90,6 +93,11 @@ func (r *FloatingIp) ID() *pulumi.IDOutput {
 // user or project.
 func (r *FloatingIp) Address() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["address"])
+}
+
+// Human-readable description for the floating IP.
+func (r *FloatingIp) Description() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["description"])
 }
 
 // Fixed IP of the port to associate with this floating IP. Required if
@@ -150,6 +158,8 @@ type FloatingIpState struct {
 	// an admin user or have had a custom policy or role applied to your OpenStack
 	// user or project.
 	Address interface{}
+	// Human-readable description for the floating IP.
+	Description interface{}
 	// Fixed IP of the port to associate with this floating IP. Required if
 	// the port has multiple fixed IPs.
 	FixedIp interface{}
@@ -186,6 +196,8 @@ type FloatingIpArgs struct {
 	// an admin user or have had a custom policy or role applied to your OpenStack
 	// user or project.
 	Address interface{}
+	// Human-readable description for the floating IP.
+	Description interface{}
 	// Fixed IP of the port to associate with this floating IP. Required if
 	// the port has multiple fixed IPs.
 	FixedIp interface{}

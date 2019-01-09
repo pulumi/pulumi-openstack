@@ -27,12 +27,13 @@ class GetSecGroupResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_sec_group(name=None, region=None, secgroup_id=None, tenant_id=None):
+async def get_sec_group(description=None, name=None, region=None, secgroup_id=None, tenant_id=None):
     """
     Use this data source to get the ID of an available OpenStack security group.
     """
     __args__ = dict()
 
+    __args__['description'] = description
     __args__['name'] = name
     __args__['region'] = region
     __args__['secgroupId'] = secgroup_id

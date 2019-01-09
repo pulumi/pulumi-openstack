@@ -10,7 +10,7 @@ class GetSubnetResult(object):
     """
     A collection of values returned by getSubnet.
     """
-    def __init__(__self__, allocation_pools=None, cidr=None, dns_nameservers=None, enable_dhcp=None, gateway_ip=None, host_routes=None, ip_version=None, ipv6_address_mode=None, ipv6_ra_mode=None, name=None, network_id=None, region=None, subnet_id=None, subnetpool_id=None, tenant_id=None, id=None):
+    def __init__(__self__, allocation_pools=None, cidr=None, description=None, dns_nameservers=None, enable_dhcp=None, gateway_ip=None, host_routes=None, ip_version=None, ipv6_address_mode=None, ipv6_ra_mode=None, name=None, network_id=None, region=None, subnet_id=None, subnetpool_id=None, tenant_id=None, id=None):
         if allocation_pools and not isinstance(allocation_pools, list):
             raise TypeError('Expected argument allocation_pools to be a list')
         __self__.allocation_pools = allocation_pools
@@ -20,6 +20,9 @@ class GetSubnetResult(object):
         if cidr and not isinstance(cidr, str):
             raise TypeError('Expected argument cidr to be a str')
         __self__.cidr = cidr
+        if description and not isinstance(description, str):
+            raise TypeError('Expected argument description to be a str')
+        __self__.description = description
         if dns_nameservers and not isinstance(dns_nameservers, list):
             raise TypeError('Expected argument dns_nameservers to be a list')
         __self__.dns_nameservers = dns_nameservers
@@ -78,13 +81,14 @@ class GetSubnetResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_subnet(cidr=None, dhcp_disabled=None, dhcp_enabled=None, gateway_ip=None, ip_version=None, ipv6_address_mode=None, ipv6_ra_mode=None, name=None, network_id=None, region=None, subnet_id=None, subnetpool_id=None, tenant_id=None):
+async def get_subnet(cidr=None, description=None, dhcp_disabled=None, dhcp_enabled=None, gateway_ip=None, ip_version=None, ipv6_address_mode=None, ipv6_ra_mode=None, name=None, network_id=None, region=None, subnet_id=None, subnetpool_id=None, tenant_id=None):
     """
     Use this data source to get the ID of an available OpenStack subnet.
     """
     __args__ = dict()
 
     __args__['cidr'] = cidr
+    __args__['description'] = description
     __args__['dhcpDisabled'] = dhcp_disabled
     __args__['dhcpEnabled'] = dhcp_enabled
     __args__['gatewayIp'] = gateway_ip
@@ -102,6 +106,7 @@ async def get_subnet(cidr=None, dhcp_disabled=None, dhcp_enabled=None, gateway_i
     return GetSubnetResult(
         allocation_pools=__ret__.get('allocationPools'),
         cidr=__ret__.get('cidr'),
+        description=__ret__.get('description'),
         dns_nameservers=__ret__.get('dnsNameservers'),
         enable_dhcp=__ret__.get('enableDhcp'),
         gateway_ip=__ret__.get('gatewayIp'),

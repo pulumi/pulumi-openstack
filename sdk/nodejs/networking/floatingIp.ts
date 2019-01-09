@@ -31,6 +31,10 @@ export class FloatingIp extends pulumi.CustomResource {
      */
     public readonly address: pulumi.Output<string>;
     /**
+     * Human-readable description for the floating IP.
+     */
+    public readonly description: pulumi.Output<string | undefined>;
+    /**
      * Fixed IP of the port to associate with this floating IP. Required if
      * the port has multiple fixed IPs.
      */
@@ -87,6 +91,7 @@ export class FloatingIp extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state: FloatingIpState = argsOrState as FloatingIpState | undefined;
             inputs["address"] = state ? state.address : undefined;
+            inputs["description"] = state ? state.description : undefined;
             inputs["fixedIp"] = state ? state.fixedIp : undefined;
             inputs["pool"] = state ? state.pool : undefined;
             inputs["portId"] = state ? state.portId : undefined;
@@ -101,6 +106,7 @@ export class FloatingIp extends pulumi.CustomResource {
                 throw new Error("Missing required property 'pool'");
             }
             inputs["address"] = args ? args.address : undefined;
+            inputs["description"] = args ? args.description : undefined;
             inputs["fixedIp"] = args ? args.fixedIp : undefined;
             inputs["pool"] = args ? args.pool : undefined;
             inputs["portId"] = args ? args.portId : undefined;
@@ -125,6 +131,10 @@ export interface FloatingIpState {
      * user or project.
      */
     readonly address?: pulumi.Input<string>;
+    /**
+     * Human-readable description for the floating IP.
+     */
+    readonly description?: pulumi.Input<string>;
     /**
      * Fixed IP of the port to associate with this floating IP. Required if
      * the port has multiple fixed IPs.
@@ -181,6 +191,10 @@ export interface FloatingIpArgs {
      * user or project.
      */
     readonly address?: pulumi.Input<string>;
+    /**
+     * Human-readable description for the floating IP.
+     */
+    readonly description?: pulumi.Input<string>;
     /**
      * Fixed IP of the port to associate with this floating IP. Required if
      * the port has multiple fixed IPs.

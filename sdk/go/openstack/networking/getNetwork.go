@@ -11,6 +11,7 @@ import (
 func LookupNetwork(ctx *pulumi.Context, args *GetNetworkArgs) (*GetNetworkResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
+		inputs["description"] = args.Description
 		inputs["external"] = args.External
 		inputs["matchingSubnetCidr"] = args.MatchingSubnetCidr
 		inputs["name"] = args.Name
@@ -34,6 +35,8 @@ func LookupNetwork(ctx *pulumi.Context, args *GetNetworkArgs) (*GetNetworkResult
 
 // A collection of arguments for invoking getNetwork.
 type GetNetworkArgs struct {
+	// Human-readable description of the network.
+	Description interface{}
 	// The external routing facility of the network.
 	External interface{}
 	// The CIDR of a subnet within the network.

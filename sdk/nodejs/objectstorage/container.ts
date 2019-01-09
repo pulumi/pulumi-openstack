@@ -67,6 +67,10 @@ export class Container extends pulumi.CustomResource {
      * creates a new container.
      */
     public readonly region: pulumi.Output<string>;
+    /**
+     * Enable object versioning. The structure is described below.
+     */
+    public readonly versioning: pulumi.Output<{ location: string, type: string } | undefined>;
 
     /**
      * Create a Container resource with the given unique name, arguments, and options.
@@ -89,6 +93,7 @@ export class Container extends pulumi.CustomResource {
             inputs["metadata"] = state ? state.metadata : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["region"] = state ? state.region : undefined;
+            inputs["versioning"] = state ? state.versioning : undefined;
         } else {
             const args = argsOrState as ContainerArgs | undefined;
             inputs["containerRead"] = args ? args.containerRead : undefined;
@@ -100,6 +105,7 @@ export class Container extends pulumi.CustomResource {
             inputs["metadata"] = args ? args.metadata : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["region"] = args ? args.region : undefined;
+            inputs["versioning"] = args ? args.versioning : undefined;
         }
         super("openstack:objectstorage/container:Container", name, inputs, opts);
     }
@@ -156,6 +162,10 @@ export interface ContainerState {
      * creates a new container.
      */
     readonly region?: pulumi.Input<string>;
+    /**
+     * Enable object versioning. The structure is described below.
+     */
+    readonly versioning?: pulumi.Input<{ location: pulumi.Input<string>, type: pulumi.Input<string> }>;
 }
 
 /**
@@ -209,4 +219,8 @@ export interface ContainerArgs {
      * creates a new container.
      */
     readonly region?: pulumi.Input<string>;
+    /**
+     * Enable object versioning. The structure is described below.
+     */
+    readonly versioning?: pulumi.Input<{ location: pulumi.Input<string>, type: pulumi.Input<string> }>;
 }

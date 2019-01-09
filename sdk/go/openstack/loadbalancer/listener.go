@@ -109,7 +109,7 @@ func (r *Listener) ConnectionLimit() *pulumi.IntOutput {
 }
 
 // The ID of the default pool with which the
-// Listener is associated. Changing this creates a new Listener.
+// Listener is associated.
 func (r *Listener) DefaultPoolId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["defaultPoolId"])
 }
@@ -184,7 +184,7 @@ type ListenerState struct {
 	// for the Listener.
 	ConnectionLimit interface{}
 	// The ID of the default pool with which the
-	// Listener is associated. Changing this creates a new Listener.
+	// Listener is associated.
 	DefaultPoolId interface{}
 	// A reference to a Barbican Secrets
 	// container which stores TLS information. This is required if the protocol
@@ -231,7 +231,7 @@ type ListenerArgs struct {
 	// for the Listener.
 	ConnectionLimit interface{}
 	// The ID of the default pool with which the
-	// Listener is associated. Changing this creates a new Listener.
+	// Listener is associated.
 	DefaultPoolId interface{}
 	// A reference to a Barbican Secrets
 	// container which stores TLS information. This is required if the protocol

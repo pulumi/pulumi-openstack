@@ -12,6 +12,7 @@ func LookupFloatingIp(ctx *pulumi.Context, args *GetFloatingIpArgs) (*GetFloatin
 	inputs := make(map[string]interface{})
 	if args != nil {
 		inputs["address"] = args.Address
+		inputs["description"] = args.Description
 		inputs["fixedIp"] = args.FixedIp
 		inputs["pool"] = args.Pool
 		inputs["portId"] = args.PortId
@@ -32,6 +33,8 @@ func LookupFloatingIp(ctx *pulumi.Context, args *GetFloatingIpArgs) (*GetFloatin
 type GetFloatingIpArgs struct {
 	// The IP address of the floating IP.
 	Address interface{}
+	// Human-readable description of the floating IP.
+	Description interface{}
 	// The specific IP address of the internal port which should be associated with the floating IP.
 	FixedIp interface{}
 	// The name of the pool from which the floating IP belongs to.

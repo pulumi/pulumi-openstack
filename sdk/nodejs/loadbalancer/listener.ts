@@ -32,7 +32,7 @@ export class Listener extends pulumi.CustomResource {
     public readonly connectionLimit: pulumi.Output<number>;
     /**
      * The ID of the default pool with which the
-     * Listener is associated. Changing this creates a new Listener.
+     * Listener is associated.
      */
     public readonly defaultPoolId: pulumi.Output<string>;
     /**
@@ -156,7 +156,7 @@ export interface ListenerState {
     readonly connectionLimit?: pulumi.Input<number>;
     /**
      * The ID of the default pool with which the
-     * Listener is associated. Changing this creates a new Listener.
+     * Listener is associated.
      */
     readonly defaultPoolId?: pulumi.Input<string>;
     /**
@@ -229,7 +229,7 @@ export interface ListenerArgs {
     readonly connectionLimit?: pulumi.Input<number>;
     /**
      * The ID of the default pool with which the
-     * Listener is associated. Changing this creates a new Listener.
+     * Listener is associated.
      */
     readonly defaultPoolId?: pulumi.Input<string>;
     /**

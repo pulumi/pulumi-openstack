@@ -11,6 +11,7 @@ export function getRouter(args?: GetRouterArgs, opts?: pulumi.InvokeOptions): Pr
     args = args || {};
     return pulumi.runtime.invoke("openstack:networking/getRouter:getRouter", {
         "adminStateUp": args.adminStateUp,
+        "description": args.description,
         "distributed": args.distributed,
         "enableSnat": args.enableSnat,
         "name": args.name,
@@ -29,6 +30,10 @@ export interface GetRouterArgs {
      * Administrative up/down status for the router (must be "true" or "false" if provided).
      */
     readonly adminStateUp?: boolean;
+    /**
+     * Human-readable description of the router.
+     */
+    readonly description?: string;
     /**
      * Indicates whether or not to get a distributed router.
      */

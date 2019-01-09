@@ -10,6 +10,7 @@ import * as utilities from "../utilities";
 export function getSecGroup(args?: GetSecGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetSecGroupResult> {
     args = args || {};
     return pulumi.runtime.invoke("openstack:networking/getSecGroup:getSecGroup", {
+        "description": args.description,
         "name": args.name,
         "region": args.region,
         "secgroupId": args.secgroupId,
@@ -21,6 +22,10 @@ export function getSecGroup(args?: GetSecGroupArgs, opts?: pulumi.InvokeOptions)
  * A collection of arguments for invoking getSecGroup.
  */
 export interface GetSecGroupArgs {
+    /**
+     * Human-readable description the the subnet.
+     */
+    readonly description?: string;
     /**
      * The name of the security group.
      */

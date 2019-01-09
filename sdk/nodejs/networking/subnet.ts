@@ -33,6 +33,11 @@ export class Subnet extends pulumi.CustomResource {
      */
     public readonly cidr: pulumi.Output<string>;
     /**
+     * Human-readable description of the subnet. Changing this
+     * updates the name of the existing subnet.
+     */
+    public readonly description: pulumi.Output<string | undefined>;
+    /**
      * An array of DNS name server names used by hosts
      * in this subnet. Changing this updates the DNS name servers for the existing
      * subnet.
@@ -127,6 +132,7 @@ export class Subnet extends pulumi.CustomResource {
             const state: SubnetState = argsOrState as SubnetState | undefined;
             inputs["allocationPools"] = state ? state.allocationPools : undefined;
             inputs["cidr"] = state ? state.cidr : undefined;
+            inputs["description"] = state ? state.description : undefined;
             inputs["dnsNameservers"] = state ? state.dnsNameservers : undefined;
             inputs["enableDhcp"] = state ? state.enableDhcp : undefined;
             inputs["gatewayIp"] = state ? state.gatewayIp : undefined;
@@ -149,6 +155,7 @@ export class Subnet extends pulumi.CustomResource {
             }
             inputs["allocationPools"] = args ? args.allocationPools : undefined;
             inputs["cidr"] = args ? args.cidr : undefined;
+            inputs["description"] = args ? args.description : undefined;
             inputs["dnsNameservers"] = args ? args.dnsNameservers : undefined;
             inputs["enableDhcp"] = args ? args.enableDhcp : undefined;
             inputs["gatewayIp"] = args ? args.gatewayIp : undefined;
@@ -185,6 +192,11 @@ export interface SubnetState {
      * subnet pool.
      */
     readonly cidr?: pulumi.Input<string>;
+    /**
+     * Human-readable description of the subnet. Changing this
+     * updates the name of the existing subnet.
+     */
+    readonly description?: pulumi.Input<string>;
     /**
      * An array of DNS name server names used by hosts
      * in this subnet. Changing this updates the DNS name servers for the existing
@@ -283,6 +295,11 @@ export interface SubnetArgs {
      * subnet pool.
      */
     readonly cidr?: pulumi.Input<string>;
+    /**
+     * Human-readable description of the subnet. Changing this
+     * updates the name of the existing subnet.
+     */
+    readonly description?: pulumi.Input<string>;
     /**
      * An array of DNS name server names used by hosts
      * in this subnet. Changing this updates the DNS name servers for the existing

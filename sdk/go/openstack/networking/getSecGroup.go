@@ -11,6 +11,7 @@ import (
 func LookupSecGroup(ctx *pulumi.Context, args *GetSecGroupArgs) (*GetSecGroupResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
+		inputs["description"] = args.Description
 		inputs["name"] = args.Name
 		inputs["region"] = args.Region
 		inputs["secgroupId"] = args.SecgroupId
@@ -29,6 +30,8 @@ func LookupSecGroup(ctx *pulumi.Context, args *GetSecGroupArgs) (*GetSecGroupRes
 
 // A collection of arguments for invoking getSecGroup.
 type GetSecGroupArgs struct {
+	// Human-readable description the the subnet.
+	Description interface{}
 	// The name of the security group.
 	Name interface{}
 	// The region in which to obtain the V2 Neutron client.

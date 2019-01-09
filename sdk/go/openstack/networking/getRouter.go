@@ -12,6 +12,7 @@ func LookupRouter(ctx *pulumi.Context, args *GetRouterArgs) (*GetRouterResult, e
 	inputs := make(map[string]interface{})
 	if args != nil {
 		inputs["adminStateUp"] = args.AdminStateUp
+		inputs["description"] = args.Description
 		inputs["distributed"] = args.Distributed
 		inputs["enableSnat"] = args.EnableSnat
 		inputs["name"] = args.Name
@@ -37,6 +38,8 @@ func LookupRouter(ctx *pulumi.Context, args *GetRouterArgs) (*GetRouterResult, e
 type GetRouterArgs struct {
 	// Administrative up/down status for the router (must be "true" or "false" if provided).
 	AdminStateUp interface{}
+	// Human-readable description of the router.
+	Description interface{}
 	// Indicates whether or not to get a distributed router.
 	Distributed interface{}
 	EnableSnat interface{}

@@ -23,6 +23,7 @@ func NewPort(ctx *pulumi.Context,
 	if args == nil {
 		inputs["adminStateUp"] = nil
 		inputs["allowedAddressPairs"] = nil
+		inputs["description"] = nil
 		inputs["deviceId"] = nil
 		inputs["deviceOwner"] = nil
 		inputs["extraDhcpOptions"] = nil
@@ -40,6 +41,7 @@ func NewPort(ctx *pulumi.Context,
 	} else {
 		inputs["adminStateUp"] = args.AdminStateUp
 		inputs["allowedAddressPairs"] = args.AllowedAddressPairs
+		inputs["description"] = args.Description
 		inputs["deviceId"] = args.DeviceId
 		inputs["deviceOwner"] = args.DeviceOwner
 		inputs["extraDhcpOptions"] = args.ExtraDhcpOptions
@@ -74,6 +76,7 @@ func GetPort(ctx *pulumi.Context,
 		inputs["allFixedIps"] = state.AllFixedIps
 		inputs["allSecurityGroupIds"] = state.AllSecurityGroupIds
 		inputs["allowedAddressPairs"] = state.AllowedAddressPairs
+		inputs["description"] = state.Description
 		inputs["deviceId"] = state.DeviceId
 		inputs["deviceOwner"] = state.DeviceOwner
 		inputs["extraDhcpOptions"] = state.ExtraDhcpOptions
@@ -130,6 +133,12 @@ func (r *Port) AllSecurityGroupIds() *pulumi.ArrayOutput {
 // below.
 func (r *Port) AllowedAddressPairs() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["allowedAddressPairs"])
+}
+
+// Human-readable description of the floating IP. Changing
+// this updates the `description` of an existing port.
+func (r *Port) Description() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["description"])
 }
 
 // The ID of the device attached to the port. Changing this
@@ -239,6 +248,9 @@ type PortState struct {
 	// addresses that can be active on this port. The structure is described
 	// below.
 	AllowedAddressPairs interface{}
+	// Human-readable description of the floating IP. Changing
+	// this updates the `description` of an existing port.
+	Description interface{}
 	// The ID of the device attached to the port. Changing this
 	// creates a new port.
 	DeviceId interface{}
@@ -300,6 +312,9 @@ type PortArgs struct {
 	// addresses that can be active on this port. The structure is described
 	// below.
 	AllowedAddressPairs interface{}
+	// Human-readable description of the floating IP. Changing
+	// this updates the `description` of an existing port.
+	Description interface{}
 	// The ID of the device attached to the port. Changing this
 	// creates a new port.
 	DeviceId interface{}

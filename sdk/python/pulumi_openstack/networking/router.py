@@ -10,7 +10,7 @@ class Router(pulumi.CustomResource):
     """
     Manages a V2 router resource within OpenStack.
     """
-    def __init__(__self__, __name__, __opts__=None, admin_state_up=None, availability_zone_hints=None, distributed=None, enable_snat=None, external_fixed_ips=None, external_gateway=None, external_network_id=None, name=None, region=None, tags=None, tenant_id=None, value_specs=None, vendor_options=None):
+    def __init__(__self__, __name__, __opts__=None, admin_state_up=None, availability_zone_hints=None, description=None, distributed=None, enable_snat=None, external_fixed_ips=None, external_gateway=None, external_network_id=None, name=None, region=None, tags=None, tenant_id=None, value_specs=None, vendor_options=None):
         """Create a Router resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
@@ -24,6 +24,8 @@ class Router(pulumi.CustomResource):
         __props__['admin_state_up'] = admin_state_up
 
         __props__['availability_zone_hints'] = availability_zone_hints
+
+        __props__['description'] = description
 
         __props__['distributed'] = distributed
 
