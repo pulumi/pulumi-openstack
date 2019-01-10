@@ -42,13 +42,14 @@ class GetRouterResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_router(admin_state_up=None, distributed=None, enable_snat=None, name=None, region=None, router_id=None, status=None, tenant_id=None):
+async def get_router(admin_state_up=None, description=None, distributed=None, enable_snat=None, name=None, region=None, router_id=None, status=None, tenant_id=None):
     """
     Use this data source to get the ID of an available OpenStack router.
     """
     __args__ = dict()
 
     __args__['adminStateUp'] = admin_state_up
+    __args__['description'] = description
     __args__['distributed'] = distributed
     __args__['enableSnat'] = enable_snat
     __args__['name'] = name

@@ -11,6 +11,7 @@ export function getSubnet(args?: GetSubnetArgs, opts?: pulumi.InvokeOptions): Pr
     args = args || {};
     return pulumi.runtime.invoke("openstack:networking/getSubnet:getSubnet", {
         "cidr": args.cidr,
+        "description": args.description,
         "dhcpDisabled": args.dhcpDisabled,
         "dhcpEnabled": args.dhcpEnabled,
         "gatewayIp": args.gatewayIp,
@@ -34,6 +35,10 @@ export interface GetSubnetArgs {
      * The CIDR of the subnet.
      */
     readonly cidr?: string;
+    /**
+     * Human-readable description for the subnet.
+     */
+    readonly description?: string;
     /**
      * If the subnet has DHCP disabled.
      */
@@ -97,6 +102,7 @@ export interface GetSubnetResult {
      */
     readonly allocationPools: { end: string, start: string }[];
     readonly cidr: string;
+    readonly description: string;
     /**
      * DNS Nameservers of the subnet.
      */

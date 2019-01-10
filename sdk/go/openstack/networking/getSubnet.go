@@ -12,6 +12,7 @@ func LookupSubnet(ctx *pulumi.Context, args *GetSubnetArgs) (*GetSubnetResult, e
 	inputs := make(map[string]interface{})
 	if args != nil {
 		inputs["cidr"] = args.Cidr
+		inputs["description"] = args.Description
 		inputs["dhcpDisabled"] = args.DhcpDisabled
 		inputs["dhcpEnabled"] = args.DhcpEnabled
 		inputs["gatewayIp"] = args.GatewayIp
@@ -32,6 +33,7 @@ func LookupSubnet(ctx *pulumi.Context, args *GetSubnetArgs) (*GetSubnetResult, e
 	return &GetSubnetResult{
 		AllocationPools: outputs["allocationPools"],
 		Cidr: outputs["cidr"],
+		Description: outputs["description"],
 		DnsNameservers: outputs["dnsNameservers"],
 		EnableDhcp: outputs["enableDhcp"],
 		GatewayIp: outputs["gatewayIp"],
@@ -53,6 +55,8 @@ func LookupSubnet(ctx *pulumi.Context, args *GetSubnetArgs) (*GetSubnetResult, e
 type GetSubnetArgs struct {
 	// The CIDR of the subnet.
 	Cidr interface{}
+	// Human-readable description for the subnet.
+	Description interface{}
 	// If the subnet has DHCP disabled.
 	DhcpDisabled interface{}
 	// If the subnet has DHCP enabled.
@@ -88,6 +92,7 @@ type GetSubnetResult struct {
 	// Allocation pools of the subnet.
 	AllocationPools interface{}
 	Cidr interface{}
+	Description interface{}
 	// DNS Nameservers of the subnet.
 	DnsNameservers interface{}
 	// Whether the subnet has DHCP enabled or not.

@@ -75,10 +75,9 @@ func (r *ServerGroup) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
-// The set of policies for the server group. Only two
-// two policies are available right now, and both are mutually exclusive. See
-// the Policies section for more information. Changing this creates a new
-// server group.
+// The set of policies for the server group. All policies
+// are mutually exclusive. See the Policies section for more information.
+// Changing this creates a new server group.
 func (r *ServerGroup) Policies() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["policies"])
 }
@@ -102,10 +101,9 @@ type ServerGroupState struct {
 	// A unique name for the server group. Changing this creates
 	// a new server group.
 	Name interface{}
-	// The set of policies for the server group. Only two
-	// two policies are available right now, and both are mutually exclusive. See
-	// the Policies section for more information. Changing this creates a new
-	// server group.
+	// The set of policies for the server group. All policies
+	// are mutually exclusive. See the Policies section for more information.
+	// Changing this creates a new server group.
 	Policies interface{}
 	// The region in which to obtain the V2 Compute client.
 	// If omitted, the `region` argument of the provider is used. Changing
@@ -120,10 +118,9 @@ type ServerGroupArgs struct {
 	// A unique name for the server group. Changing this creates
 	// a new server group.
 	Name interface{}
-	// The set of policies for the server group. Only two
-	// two policies are available right now, and both are mutually exclusive. See
-	// the Policies section for more information. Changing this creates a new
-	// server group.
+	// The set of policies for the server group. All policies
+	// are mutually exclusive. See the Policies section for more information.
+	// Changing this creates a new server group.
 	Policies interface{}
 	// The region in which to obtain the V2 Compute client.
 	// If omitted, the `region` argument of the provider is used. Changing

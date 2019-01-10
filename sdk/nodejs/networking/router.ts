@@ -33,6 +33,10 @@ export class Router extends pulumi.CustomResource {
      */
     public readonly availabilityZoneHints: pulumi.Output<string[]>;
     /**
+     * Human-readable description for the router.
+     */
+    public readonly description: pulumi.Output<string | undefined>;
+    /**
      * Indicates whether or not to create a
      * distributed router. The default policy setting in Neutron restricts
      * usage of this property to administrative users only.
@@ -111,6 +115,7 @@ export class Router extends pulumi.CustomResource {
             const state: RouterState = argsOrState as RouterState | undefined;
             inputs["adminStateUp"] = state ? state.adminStateUp : undefined;
             inputs["availabilityZoneHints"] = state ? state.availabilityZoneHints : undefined;
+            inputs["description"] = state ? state.description : undefined;
             inputs["distributed"] = state ? state.distributed : undefined;
             inputs["enableSnat"] = state ? state.enableSnat : undefined;
             inputs["externalFixedIps"] = state ? state.externalFixedIps : undefined;
@@ -126,6 +131,7 @@ export class Router extends pulumi.CustomResource {
             const args = argsOrState as RouterArgs | undefined;
             inputs["adminStateUp"] = args ? args.adminStateUp : undefined;
             inputs["availabilityZoneHints"] = args ? args.availabilityZoneHints : undefined;
+            inputs["description"] = args ? args.description : undefined;
             inputs["distributed"] = args ? args.distributed : undefined;
             inputs["enableSnat"] = args ? args.enableSnat : undefined;
             inputs["externalFixedIps"] = args ? args.externalFixedIps : undefined;
@@ -158,6 +164,10 @@ export interface RouterState {
      * this creates a new router.
      */
     readonly availabilityZoneHints?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Human-readable description for the router.
+     */
+    readonly description?: pulumi.Input<string>;
     /**
      * Indicates whether or not to create a
      * distributed router. The default policy setting in Neutron restricts
@@ -240,6 +250,10 @@ export interface RouterArgs {
      * this creates a new router.
      */
     readonly availabilityZoneHints?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Human-readable description for the router.
+     */
+    readonly description?: pulumi.Input<string>;
     /**
      * Indicates whether or not to create a
      * distributed router. The default policy setting in Neutron restricts

@@ -23,6 +23,7 @@ func NewSubnet(ctx *pulumi.Context,
 	if args == nil {
 		inputs["allocationPools"] = nil
 		inputs["cidr"] = nil
+		inputs["description"] = nil
 		inputs["dnsNameservers"] = nil
 		inputs["enableDhcp"] = nil
 		inputs["gatewayIp"] = nil
@@ -41,6 +42,7 @@ func NewSubnet(ctx *pulumi.Context,
 	} else {
 		inputs["allocationPools"] = args.AllocationPools
 		inputs["cidr"] = args.Cidr
+		inputs["description"] = args.Description
 		inputs["dnsNameservers"] = args.DnsNameservers
 		inputs["enableDhcp"] = args.EnableDhcp
 		inputs["gatewayIp"] = args.GatewayIp
@@ -72,6 +74,7 @@ func GetSubnet(ctx *pulumi.Context,
 	if state != nil {
 		inputs["allocationPools"] = state.AllocationPools
 		inputs["cidr"] = state.Cidr
+		inputs["description"] = state.Description
 		inputs["dnsNameservers"] = state.DnsNameservers
 		inputs["enableDhcp"] = state.EnableDhcp
 		inputs["gatewayIp"] = state.GatewayIp
@@ -117,6 +120,12 @@ func (r *Subnet) AllocationPools() *pulumi.ArrayOutput {
 // subnet pool.
 func (r *Subnet) Cidr() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["cidr"])
+}
+
+// Human-readable description of the subnet. Changing this
+// updates the name of the existing subnet.
+func (r *Subnet) Description() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["description"])
 }
 
 // An array of DNS name server names used by hosts
@@ -224,6 +233,9 @@ type SubnetState struct {
 	// version. You can omit this option if you are creating a subnet from a
 	// subnet pool.
 	Cidr interface{}
+	// Human-readable description of the subnet. Changing this
+	// updates the name of the existing subnet.
+	Description interface{}
 	// An array of DNS name server names used by hosts
 	// in this subnet. Changing this updates the DNS name servers for the existing
 	// subnet.
@@ -286,6 +298,9 @@ type SubnetArgs struct {
 	// version. You can omit this option if you are creating a subnet from a
 	// subnet pool.
 	Cidr interface{}
+	// Human-readable description of the subnet. Changing this
+	// updates the name of the existing subnet.
+	Description interface{}
 	// An array of DNS name server names used by hosts
 	// in this subnet. Changing this updates the DNS name servers for the existing
 	// subnet.

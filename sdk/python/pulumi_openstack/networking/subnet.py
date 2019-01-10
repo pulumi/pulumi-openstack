@@ -10,7 +10,7 @@ class Subnet(pulumi.CustomResource):
     """
     Manages a V2 Neutron subnet resource within OpenStack.
     """
-    def __init__(__self__, __name__, __opts__=None, allocation_pools=None, cidr=None, dns_nameservers=None, enable_dhcp=None, gateway_ip=None, host_routes=None, ip_version=None, ipv6_address_mode=None, ipv6_ra_mode=None, name=None, network_id=None, no_gateway=None, region=None, subnetpool_id=None, tags=None, tenant_id=None, value_specs=None):
+    def __init__(__self__, __name__, __opts__=None, allocation_pools=None, cidr=None, description=None, dns_nameservers=None, enable_dhcp=None, gateway_ip=None, host_routes=None, ip_version=None, ipv6_address_mode=None, ipv6_ra_mode=None, name=None, network_id=None, no_gateway=None, region=None, subnetpool_id=None, tags=None, tenant_id=None, value_specs=None):
         """Create a Subnet resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
@@ -24,6 +24,8 @@ class Subnet(pulumi.CustomResource):
         __props__['allocation_pools'] = allocation_pools
 
         __props__['cidr'] = cidr
+
+        __props__['description'] = description
 
         __props__['dns_nameservers'] = dns_nameservers
 

@@ -10,7 +10,7 @@ class Port(pulumi.CustomResource):
     """
     Manages a V2 port resource within OpenStack.
     """
-    def __init__(__self__, __name__, __opts__=None, admin_state_up=None, allowed_address_pairs=None, device_id=None, device_owner=None, extra_dhcp_options=None, fixed_ips=None, mac_address=None, name=None, network_id=None, no_fixed_ip=None, no_security_groups=None, region=None, security_group_ids=None, tags=None, tenant_id=None, value_specs=None):
+    def __init__(__self__, __name__, __opts__=None, admin_state_up=None, allowed_address_pairs=None, description=None, device_id=None, device_owner=None, extra_dhcp_options=None, fixed_ips=None, mac_address=None, name=None, network_id=None, no_fixed_ip=None, no_security_groups=None, region=None, security_group_ids=None, tags=None, tenant_id=None, value_specs=None):
         """Create a Port resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
@@ -24,6 +24,8 @@ class Port(pulumi.CustomResource):
         __props__['admin_state_up'] = admin_state_up
 
         __props__['allowed_address_pairs'] = allowed_address_pairs
+
+        __props__['description'] = description
 
         __props__['device_id'] = device_id
 

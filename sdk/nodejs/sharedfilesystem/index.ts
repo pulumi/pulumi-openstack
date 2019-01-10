@@ -2,7 +2,5 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 // Export members:
-export * from "./cluster";
-export * from "./clusterTemplate";
-export * from "./getCluster";
-export * from "./getClusterTemplate";
+export * from "./securityService";
+export * from "./shareNetwork";

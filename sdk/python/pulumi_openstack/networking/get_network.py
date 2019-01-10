@@ -43,12 +43,13 @@ class GetNetworkResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_network(external=None, matching_subnet_cidr=None, name=None, network_id=None, region=None, status=None, tenant_id=None):
+async def get_network(description=None, external=None, matching_subnet_cidr=None, name=None, network_id=None, region=None, status=None, tenant_id=None):
     """
     Use this data source to get the ID of an available OpenStack network.
     """
     __args__ = dict()
 
+    __args__['description'] = description
     __args__['external'] = external
     __args__['matchingSubnetCidr'] = matching_subnet_cidr
     __args__['name'] = name

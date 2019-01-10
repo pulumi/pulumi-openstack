@@ -8,6 +8,8 @@
         "sourceMap": true
     },
     "files": [
+        "blockstorage/getSnapshotV2.ts",
+        "blockstorage/getSnapshotV3.ts",
         "blockstorage/index.ts",
         "blockstorage/volume.ts",
         "blockstorage/volumeAttach.ts",
@@ -31,6 +33,7 @@
         "config/vars.ts",
         "containerinfra/cluster.ts",
         "containerinfra/clusterTemplate.ts",
+        "containerinfra/getCluster.ts",
         "containerinfra/getClusterTemplate.ts",
         "containerinfra/index.ts",
         "database/configuration.ts",
@@ -97,6 +100,9 @@
         "objectstorage/index.ts",
         "objectstorage/tempUrl.ts",
         "provider.ts",
+        "sharedfilesystem/index.ts",
+        "sharedfilesystem/securityService.ts",
+        "sharedfilesystem/shareNetwork.ts",
         "utilities.ts",
         "vpnaas/endpointGroup.ts",
         "vpnaas/ikePolicy.ts",

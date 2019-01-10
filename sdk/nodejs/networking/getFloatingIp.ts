@@ -11,6 +11,7 @@ export function getFloatingIp(args?: GetFloatingIpArgs, opts?: pulumi.InvokeOpti
     args = args || {};
     return pulumi.runtime.invoke("openstack:networking/getFloatingIp:getFloatingIp", {
         "address": args.address,
+        "description": args.description,
         "fixedIp": args.fixedIp,
         "pool": args.pool,
         "portId": args.portId,
@@ -28,6 +29,10 @@ export interface GetFloatingIpArgs {
      * The IP address of the floating IP.
      */
     readonly address?: string;
+    /**
+     * Human-readable description of the floating IP.
+     */
+    readonly description?: string;
     /**
      * The specific IP address of the internal port which should be associated with the floating IP.
      */

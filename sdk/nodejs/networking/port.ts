@@ -43,6 +43,11 @@ export class Port extends pulumi.CustomResource {
      */
     public readonly allowedAddressPairs: pulumi.Output<{ ipAddress: string, macAddress?: string }[] | undefined>;
     /**
+     * Human-readable description of the floating IP. Changing
+     * this updates the `description` of an existing port.
+     */
+    public readonly description: pulumi.Output<string | undefined>;
+    /**
      * The ID of the device attached to the port. Changing this
      * creates a new port.
      */
@@ -136,6 +141,7 @@ export class Port extends pulumi.CustomResource {
             inputs["allFixedIps"] = state ? state.allFixedIps : undefined;
             inputs["allSecurityGroupIds"] = state ? state.allSecurityGroupIds : undefined;
             inputs["allowedAddressPairs"] = state ? state.allowedAddressPairs : undefined;
+            inputs["description"] = state ? state.description : undefined;
             inputs["deviceId"] = state ? state.deviceId : undefined;
             inputs["deviceOwner"] = state ? state.deviceOwner : undefined;
             inputs["extraDhcpOptions"] = state ? state.extraDhcpOptions : undefined;
@@ -157,6 +163,7 @@ export class Port extends pulumi.CustomResource {
             }
             inputs["adminStateUp"] = args ? args.adminStateUp : undefined;
             inputs["allowedAddressPairs"] = args ? args.allowedAddressPairs : undefined;
+            inputs["description"] = args ? args.description : undefined;
             inputs["deviceId"] = args ? args.deviceId : undefined;
             inputs["deviceOwner"] = args ? args.deviceOwner : undefined;
             inputs["extraDhcpOptions"] = args ? args.extraDhcpOptions : undefined;
@@ -204,6 +211,11 @@ export interface PortState {
      * below.
      */
     readonly allowedAddressPairs?: pulumi.Input<pulumi.Input<{ ipAddress: pulumi.Input<string>, macAddress?: pulumi.Input<string> }>[]>;
+    /**
+     * Human-readable description of the floating IP. Changing
+     * this updates the `description` of an existing port.
+     */
+    readonly description?: pulumi.Input<string>;
     /**
      * The ID of the device attached to the port. Changing this
      * creates a new port.
@@ -299,6 +311,11 @@ export interface PortArgs {
      * below.
      */
     readonly allowedAddressPairs?: pulumi.Input<pulumi.Input<{ ipAddress: pulumi.Input<string>, macAddress?: pulumi.Input<string> }>[]>;
+    /**
+     * Human-readable description of the floating IP. Changing
+     * this updates the `description` of an existing port.
+     */
+    readonly description?: pulumi.Input<string>;
     /**
      * The ID of the device attached to the port. Changing this
      * creates a new port.

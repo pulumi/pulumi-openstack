@@ -18,13 +18,14 @@ class GetFloatingIpResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_floating_ip(address=None, fixed_ip=None, pool=None, port_id=None, region=None, status=None, tenant_id=None):
+async def get_floating_ip(address=None, description=None, fixed_ip=None, pool=None, port_id=None, region=None, status=None, tenant_id=None):
     """
     Use this data source to get the ID of an available OpenStack floating IP.
     """
     __args__ = dict()
 
     __args__['address'] = address
+    __args__['description'] = description
     __args__['fixedIp'] = fixed_ip
     __args__['pool'] = pool
     __args__['portId'] = port_id

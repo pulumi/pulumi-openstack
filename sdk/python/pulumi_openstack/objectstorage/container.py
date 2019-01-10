@@ -10,7 +10,7 @@ class Container(pulumi.CustomResource):
     """
     Manages a V1 container resource within OpenStack.
     """
-    def __init__(__self__, __name__, __opts__=None, container_read=None, container_sync_key=None, container_sync_to=None, container_write=None, content_type=None, force_destroy=None, metadata=None, name=None, region=None):
+    def __init__(__self__, __name__, __opts__=None, container_read=None, container_sync_key=None, container_sync_to=None, container_write=None, content_type=None, force_destroy=None, metadata=None, name=None, region=None, versioning=None):
         """Create a Container resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
@@ -38,6 +38,8 @@ class Container(pulumi.CustomResource):
         __props__['name'] = name
 
         __props__['region'] = region
+
+        __props__['versioning'] = versioning
 
         super(Container, __self__).__init__(
             'openstack:objectstorage/container:Container',
