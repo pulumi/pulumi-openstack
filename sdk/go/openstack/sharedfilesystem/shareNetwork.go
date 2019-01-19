@@ -100,11 +100,11 @@ func (r *ShareNetwork) Description() *pulumi.StringOutput {
 }
 
 // The IP version of the share network. Can either be 4 or 6.
-func (r *ShareNetwork) IpVersion() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["ipVersion"])
+func (r *ShareNetwork) IpVersion() *pulumi.IntOutput {
+	return (*pulumi.IntOutput)(r.s.State["ipVersion"])
 }
 
-// The name of the share network. Changing this updates the name
+// The name for the share network. Changing this updates the name
 // of the existing share network.
 func (r *ShareNetwork) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
@@ -149,8 +149,8 @@ func (r *ShareNetwork) SecurityServiceIds() *pulumi.ArrayOutput {
 }
 
 // The share network segmentation ID.
-func (r *ShareNetwork) SegmentationId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["segmentationId"])
+func (r *ShareNetwork) SegmentationId() *pulumi.IntOutput {
+	return (*pulumi.IntOutput)(r.s.State["segmentationId"])
 }
 
 // Input properties used for looking up and filtering ShareNetwork resources.
@@ -162,7 +162,7 @@ type ShareNetworkState struct {
 	Description interface{}
 	// The IP version of the share network. Can either be 4 or 6.
 	IpVersion interface{}
-	// The name of the share network. Changing this updates the name
+	// The name for the share network. Changing this updates the name
 	// of the existing share network.
 	Name interface{}
 	// The share network type. Can either be VLAN, VXLAN, GRE, or flat.
@@ -194,7 +194,7 @@ type ShareNetworkArgs struct {
 	// The human-readable description for the share network.
 	// Changing this updates the description of the existing share network.
 	Description interface{}
-	// The name of the share network. Changing this updates the name
+	// The name for the share network. Changing this updates the name
 	// of the existing share network.
 	Name interface{}
 	// The UUID of a neutron network when setting up or updating

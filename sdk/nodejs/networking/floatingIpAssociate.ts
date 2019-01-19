@@ -8,6 +8,21 @@ import * as utilities from "../utilities";
  * Associates a floating IP to a port. This is useful for situations
  * where you have a pre-allocated floating IP or are unable to use the
  * `openstack_networking_floatingip_v2` resource to create a floating IP.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ * 
+ * const openstack_networking_port_v2_port_1 = new openstack.networking.Port("port_1", {
+ *     networkId: "a5bbd213-e1d3-49b6-aed1-9df60ea94b9a",
+ * });
+ * const openstack_networking_floatingip_associate_v2_fip_1 = new openstack.networking.FloatingIpAssociate("fip_1", {
+ *     floatingIp: "1.2.3.4",
+ *     portId: openstack_networking_port_v2_port_1.id,
+ * });
+ * ```
  */
 export class FloatingIpAssociate extends pulumi.CustomResource {
     /**

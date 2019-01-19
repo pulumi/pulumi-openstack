@@ -9,6 +9,39 @@ import * as utilities from "../utilities";
  * 
  * Note: You _must_ have admin privileges in your OpenStack cloud to use
  * this resource.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ * 
+ * const openstack_identity_project_v3_project_1 = new openstack.identity.Project("project_1", {
+ *     name: "project_1",
+ * });
+ * const openstack_identity_user_v3_user_1 = new openstack.identity.User("user_1", {
+ *     defaultProjectId: openstack_identity_project_v3_project_1.id,
+ *     description: "A user",
+ *     extra: {
+ *         email: "user_1@foobar.com",
+ *     },
+ *     ignoreChangePasswordUponFirstUse: true,
+ *     multiFactorAuthEnabled: true,
+ *     multiFactorAuthRules: [
+ *         {
+ *             rules: [
+ *                 "password",
+ *                 "totp",
+ *             ],
+ *         },
+ *         {
+ *             rules: ["password"],
+ *         },
+ *     ],
+ *     name: "user_1",
+ *     password: "password123",
+ * });
+ * ```
  */
 export class User extends pulumi.CustomResource {
     /**

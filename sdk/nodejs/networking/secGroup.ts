@@ -8,6 +8,18 @@ import * as utilities from "../utilities";
  * Manages a V2 neutron security group resource within OpenStack.
  * Unlike Nova security groups, neutron separates the group from the rules
  * and also allows an admin to target a specific tenant_id.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ * 
+ * const openstack_networking_secgroup_v2_secgroup_1 = new openstack.networking.SecGroup("secgroup_1", {
+ *     description: "My neutron security group",
+ *     name: "secgroup_1",
+ * });
+ * ```
  */
 export class SecGroup extends pulumi.CustomResource {
     /**

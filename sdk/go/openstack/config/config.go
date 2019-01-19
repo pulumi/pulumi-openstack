@@ -92,6 +92,11 @@ func GetDomainName(ctx *pulumi.Context) string {
 	return v
 }
 
+// A map of services with an endpoint to override what was from the Keystone catalog
+func GetEndpointOverrides(ctx *pulumi.Context) string {
+	return config.Get(ctx, "openstack:endpointOverrides")
+}
+
 func GetEndpointType(ctx *pulumi.Context) string {
 	v, err := config.Try(ctx, "openstack:endpointType")
 	if err == nil {
@@ -125,6 +130,11 @@ func GetKey(ctx *pulumi.Context) string {
 		return dv
 	}
 	return v
+}
+
+// How many times HTTP connection should be retried until giving up.
+func GetMaxRetries(ctx *pulumi.Context) int {
+	return config.GetInt(ctx, "openstack:maxRetries")
 }
 
 // Password to login with.

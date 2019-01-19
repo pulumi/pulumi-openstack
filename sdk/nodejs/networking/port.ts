@@ -6,6 +6,23 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a V2 port resource within OpenStack.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ * 
+ * const openstack_networking_network_v2_network_1 = new openstack.networking.Network("network_1", {
+ *     adminStateUp: "true",
+ *     name: "network_1",
+ * });
+ * const openstack_networking_port_v2_port_1 = new openstack.networking.Port("port_1", {
+ *     adminStateUp: true,
+ *     name: "port_1",
+ *     networkId: openstack_networking_network_v2_network_1.id,
+ * });
+ * ```
  */
 export class Port extends pulumi.CustomResource {
     /**

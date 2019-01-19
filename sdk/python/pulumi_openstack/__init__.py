@@ -4,3 +4,6 @@
 
 # Make subpackages available:
 __all__ = ['blockstorage', 'compute', 'config', 'containerinfra', 'database', 'dns', 'firewall', 'identity', 'images', 'loadbalancer', 'networking', 'objectstorage', 'sharedfilesystem', 'vpnaas']
+
+# Export this package's modules as members:
+from .provider import *

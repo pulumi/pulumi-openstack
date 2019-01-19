@@ -9,6 +9,67 @@ import * as utilities from "../utilities";
  * 
  * A share network stores network information that share servers can use when
  * shares are created.
+ * 
+ * ## Example Usage
+ * 
+ * ### Basic share network
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ * 
+ * const openstack_networking_network_v2_network_1 = new openstack.networking.Network("network_1", {
+ *     adminStateUp: "true",
+ *     name: "network_1",
+ * });
+ * const openstack_networking_subnet_v2_subnet_1 = new openstack.networking.Subnet("subnet_1", {
+ *     cidr: "192.168.199.0/24",
+ *     ipVersion: 4,
+ *     name: "subnet_1",
+ *     networkId: openstack_networking_network_v2_network_1.id,
+ * });
+ * const openstack_sharedfilesystem_sharenetwork_v2_sharenetwork_1 = new openstack.sharedfilesystem.ShareNetwork("sharenetwork_1", {
+ *     description: "test share network",
+ *     name: "test_sharenetwork",
+ *     neutronNetId: openstack_networking_network_v2_network_1.id,
+ *     neutronSubnetId: openstack_networking_subnet_v2_subnet_1.id,
+ * });
+ * ```
+ * ### Share network with associated security services
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ * 
+ * const openstack_networking_network_v2_network_1 = new openstack.networking.Network("network_1", {
+ *     adminStateUp: "true",
+ *     name: "network_1",
+ * });
+ * const openstack_sharedfilesystem_securityservice_v2_securityservice_1 = new openstack.sharedfilesystem.SecurityService("securityservice_1", {
+ *     description: "created by terraform",
+ *     dnsIp: "192.168.199.10",
+ *     domain: "example.com",
+ *     name: "security",
+ *     ou: "CN=Computers,DC=example,DC=com",
+ *     password: "s8cret",
+ *     server: "192.168.199.10",
+ *     type: "active_directory",
+ *     user: "joinDomainUser",
+ * });
+ * const openstack_networking_subnet_v2_subnet_1 = new openstack.networking.Subnet("subnet_1", {
+ *     cidr: "192.168.199.0/24",
+ *     ipVersion: 4,
+ *     name: "subnet_1",
+ *     networkId: openstack_networking_network_v2_network_1.id,
+ * });
+ * const openstack_sharedfilesystem_sharenetwork_v2_sharenetwork_1 = new openstack.sharedfilesystem.ShareNetwork("sharenetwork_1", {
+ *     description: "test share network with security services",
+ *     name: "test_sharenetwork",
+ *     neutronNetId: openstack_networking_network_v2_network_1.id,
+ *     neutronSubnetId: openstack_networking_subnet_v2_subnet_1.id,
+ *     securityServiceIds: [openstack_sharedfilesystem_securityservice_v2_securityservice_1.id],
+ * });
+ * ```
  */
 export class ShareNetwork extends pulumi.CustomResource {
     /**
@@ -35,9 +96,9 @@ export class ShareNetwork extends pulumi.CustomResource {
     /**
      * The IP version of the share network. Can either be 4 or 6.
      */
-    public /*out*/ readonly ipVersion: pulumi.Output<string>;
+    public /*out*/ readonly ipVersion: pulumi.Output<number>;
     /**
-     * The name of the share network. Changing this updates the name
+     * The name for the share network. Changing this updates the name
      * of the existing share network.
      */
     public readonly name: pulumi.Output<string>;
@@ -76,7 +137,7 @@ export class ShareNetwork extends pulumi.CustomResource {
     /**
      * The share network segmentation ID.
      */
-    public /*out*/ readonly segmentationId: pulumi.Output<string>;
+    public /*out*/ readonly segmentationId: pulumi.Output<number>;
 
     /**
      * Create a ShareNetwork resource with the given unique name, arguments, and options.
@@ -141,9 +202,9 @@ export interface ShareNetworkState {
     /**
      * The IP version of the share network. Can either be 4 or 6.
      */
-    readonly ipVersion?: pulumi.Input<string>;
+    readonly ipVersion?: pulumi.Input<number>;
     /**
-     * The name of the share network. Changing this updates the name
+     * The name for the share network. Changing this updates the name
      * of the existing share network.
      */
     readonly name?: pulumi.Input<string>;
@@ -182,7 +243,7 @@ export interface ShareNetworkState {
     /**
      * The share network segmentation ID.
      */
-    readonly segmentationId?: pulumi.Input<string>;
+    readonly segmentationId?: pulumi.Input<number>;
 }
 
 /**
@@ -195,7 +256,7 @@ export interface ShareNetworkArgs {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * The name of the share network. Changing this updates the name
+     * The name for the share network. Changing this updates the name
      * of the existing share network.
      */
     readonly name?: pulumi.Input<string>;

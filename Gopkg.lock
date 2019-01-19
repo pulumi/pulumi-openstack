@@ -19,8 +19,8 @@
 [[projects]]
   name = "github.com/Sirupsen/logrus"
   packages = ["."]
-  revision = "bcd833dfe83d3cebad139e4a29ed79cb2318bf95"
-  version = "v1.2.0"
+  revision = "e1e72e9de974bd926e5c56f83753fba2df402ce5"
+  version = "v1.3.0"
 
 [[projects]]
   name = "github.com/Unknwon/com"
@@ -111,8 +111,8 @@
 [[projects]]
   name = "github.com/djherbis/times"
   packages = ["."]
-  revision = "faa5b9ca02e9fe5d12023adddc0afa603d489fa8"
-  version = "v1.1.0"
+  revision = "847c5208d8924cea0acea3376ff62aede93afe39"
+  version = "v1.2.0"
 
 [[projects]]
   name = "github.com/docker/docker"
@@ -160,6 +160,12 @@
   name = "github.com/go-ini/ini"
   packages = ["."]
   revision = "766e555c68dc8bda90d197ee8946c37519c19409"
+
+[[projects]]
+  name = "github.com/gofrs/flock"
+  packages = ["."]
+  revision = "7f43ea2e6a643ad441fc12d0ecc0d3388b300c53"
+  version = "v0.7.0"
 
 [[projects]]
   branch = "master"
@@ -251,6 +257,7 @@
     "openstack/networking/v2/extensions/security/rules",
     "openstack/networking/v2/extensions/subnetpools",
     "openstack/networking/v2/extensions/trunks",
+    "openstack/networking/v2/extensions/vlantransparent",
     "openstack/networking/v2/extensions/vpnaas/endpointgroups",
     "openstack/networking/v2/extensions/vpnaas/ikepolicies",
     "openstack/networking/v2/extensions/vpnaas/ipsecpolicies",
@@ -263,12 +270,16 @@
     "openstack/objectstorage/v1/containers",
     "openstack/objectstorage/v1/objects",
     "openstack/objectstorage/v1/swauth",
+    "openstack/sharedfilesystems/v2/errors",
+    "openstack/sharedfilesystems/v2/messages",
     "openstack/sharedfilesystems/v2/securityservices",
     "openstack/sharedfilesystems/v2/sharenetworks",
+    "openstack/sharedfilesystems/v2/shares",
+    "openstack/sharedfilesystems/v2/snapshots",
     "openstack/utils",
     "pagination"
   ]
-  revision = "bdd8b1ecd793ffb03d43314c66565be3d6a7a582"
+  revision = "b8a40d168295758ab3dbb63759c8476a02750551"
 
 [[projects]]
   name = "github.com/gophercloud/utils"
@@ -511,8 +522,8 @@
 [[projects]]
   name = "github.com/pkg/errors"
   packages = ["."]
-  revision = "645ef00459ed84a119197bfb8d8205042c6df63d"
-  version = "v0.8.0"
+  revision = "ba968bfe8b2f7e042a574c888954fccecfa385b4"
+  version = "v0.8.1"
 
 [[projects]]
   name = "github.com/pmezard/go-difflib"
@@ -576,7 +587,7 @@
     "sdk/go/pulumi/config",
     "sdk/proto/go"
   ]
-  revision = "84ea2f0df750e313e64afb2a1ed982529e4c8598"
+  revision = "0b8fd47fb541a3ceae04b8661d8ad9ed642f711e"
 
 [[projects]]
   branch = "master"
@@ -585,7 +596,7 @@
     "pkg/tfbridge",
     "pkg/tfgen"
   ]
-  revision = "2c187fb6f5e33adbc3c54c4dff4c86f7c9af7379"
+  revision = "b0770d37ae5ab50be1a2d316a6b5a7b41e8043cb"
 
 [[projects]]
   branch = "master"
@@ -641,8 +652,8 @@
 [[projects]]
   name = "github.com/terraform-providers/terraform-provider-openstack"
   packages = ["openstack"]
-  revision = "27ccfdac401b3a74c8892b79dfbc1d8389e6ef7e"
-  version = "v1.13.0"
+  revision = "fc59fbc222dbaf1e8ede6095882f99af7f239204"
+  version = "v1.14.0"
 
 [[projects]]
   branch = "master"
@@ -817,8 +828,8 @@
     "core",
     "terminal"
   ]
-  revision = "fb519f89e19299d852ffdd9b734af122d2dcbd30"
-  version = "v1.7.0"
+  revision = "38cdfa1242b19e0eb8b6f33004bf8e89832b8743"
+  version = "v1.8.0"
 
 [[projects]]
   name = "gopkg.in/src-d/go-billy.v4"
@@ -893,6 +904,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "75a8bcd14ef69cddd9c6cb9dfa3486f8ceee0441cf70e0c7cffeb0606497822f"
+  inputs-digest = "4ad7c4b16e41b191a902e36845945110b9cf4901dcba98e39996157677754439"
   solver-name = "gps-cdcl"
   solver-version = 1

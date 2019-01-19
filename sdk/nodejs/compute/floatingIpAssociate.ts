@@ -7,6 +7,60 @@ import * as utilities from "../utilities";
 /**
  * Associate a floating IP to an instance. This can be used instead of the
  * `floating_ip` options in `openstack_compute_instance_v2`.
+ * 
+ * ## Example Usage
+ * 
+ * ### Automatically detect the correct network
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ * 
+ * const openstack_compute_instance_v2_instance_1 = new openstack.compute.Instance("instance_1", {
+ *     flavorId: "3",
+ *     imageId: "ad091b52-742f-469e-8f3c-fd81cadf0743",
+ *     keyPair: "my_key_pair_name",
+ *     name: "instance_1",
+ *     securityGroups: ["default"],
+ * });
+ * const openstack_networking_floatingip_v2_fip_1 = new openstack.networking.FloatingIp("fip_1", {
+ *     pool: "my_pool",
+ * });
+ * const openstack_compute_floatingip_associate_v2_fip_1 = new openstack.compute.FloatingIpAssociate("fip_1", {
+ *     floatingIp: openstack_networking_floatingip_v2_fip_1.address,
+ *     instanceId: openstack_compute_instance_v2_instance_1.id,
+ * });
+ * ```
+ * ### Explicitly set the network to attach to
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ * 
+ * const openstack_compute_instance_v2_instance_1 = new openstack.compute.Instance("instance_1", {
+ *     flavorId: "3",
+ *     imageId: "ad091b52-742f-469e-8f3c-fd81cadf0743",
+ *     keyPair: "my_key_pair_name",
+ *     name: "instance_1",
+ *     networks: [
+ *         {
+ *             name: "my_network",
+ *         },
+ *         {
+ *             name: "default",
+ *         },
+ *     ],
+ *     securityGroups: ["default"],
+ * });
+ * const openstack_networking_floatingip_v2_fip_1 = new openstack.networking.FloatingIp("fip_1", {
+ *     pool: "my_pool",
+ * });
+ * const openstack_compute_floatingip_associate_v2_fip_1 = new openstack.compute.FloatingIpAssociate("fip_1", {
+ *     fixedIp: openstack_compute_instance_v2_instance_1.networks.apply(__arg0 => __arg0[1].fixedIpV4),
+ *     floatingIp: openstack_networking_floatingip_v2_fip_1.address,
+ *     instanceId: openstack_compute_instance_v2_instance_1.id,
+ * });
+ * ```
  */
 export class FloatingIpAssociate extends pulumi.CustomResource {
     /**

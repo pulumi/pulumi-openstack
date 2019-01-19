@@ -18,6 +18,27 @@ import * as utilities from "../utilities";
  * 
  * This does not actually attach a volume to an instance. Please use
  * the `openstack_compute_volume_attach_v3` resource for that.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ * 
+ * const openstack_blockstorage_volume_v3_volume_1 = new openstack.blockstorage.Volume("volume_1", {
+ *     name: "volume_1",
+ *     size: 1,
+ * });
+ * const openstack_blockstorage_volume_attach_v3_va_1 = new openstack.blockstorage.VolumeAttach("va_1", {
+ *     device: "auto",
+ *     hostName: "devstack",
+ *     initiator: "iqn.1993-08.org.debian:01:e9861fb1859",
+ *     ipAddress: "192.168.255.10",
+ *     osType: "linux2",
+ *     platform: "x86_64",
+ *     volumeId: openstack_blockstorage_volume_v3_volume_1.id,
+ * });
+ * ```
  */
 export class VolumeAttach extends pulumi.CustomResource {
     /**

@@ -6,6 +6,59 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a V1 container object resource within OpenStack.
+ * 
+ * ## Example Usage
+ * 
+ * ### Example with simple content
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ * 
+ * const openstack_objectstorage_container_v1_container_1 = new openstack.objectstorage.Container("container_1", {
+ *     contentType: "application/json",
+ *     metadata: {
+ *         test: "true",
+ *     },
+ *     name: "tf-test-container-1",
+ *     region: "RegionOne",
+ * });
+ * const openstack_objectstorage_object_v1_doc_1 = new openstack.objectstorage.ContainerObject("doc_1", {
+ *     containerName: openstack_objectstorage_container_v1_container_1.name,
+ *     content: "               {\n                 \"foo\" : \"bar\"\n               }\n",
+ *     contentType: "application/json",
+ *     metadata: {
+ *         test: "true",
+ *     },
+ *     name: "test/default.json",
+ *     region: "RegionOne",
+ * });
+ * ```
+ * ### Example with content from file
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ * 
+ * const openstack_objectstorage_container_v1_container_1 = new openstack.objectstorage.Container("container_1", {
+ *     contentType: "application/json",
+ *     metadata: {
+ *         test: "true",
+ *     },
+ *     name: "tf-test-container-1",
+ *     region: "RegionOne",
+ * });
+ * const openstack_objectstorage_object_v1_doc_1 = new openstack.objectstorage.ContainerObject("doc_1", {
+ *     containerName: openstack_objectstorage_container_v1_container_1.name,
+ *     contentType: "application/json",
+ *     metadata: {
+ *         test: "true",
+ *     },
+ *     name: "test/default.json",
+ *     region: "RegionOne",
+ *     source: "./default.json",
+ * });
+ * ```
  */
 export class ContainerObject extends pulumi.CustomResource {
     /**

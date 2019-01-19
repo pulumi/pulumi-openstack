@@ -18,6 +18,8 @@ from .subnet_pool import *
 from .trunk import *
 from .get_floating_ip import *
 from .get_network import *
+from .get_port_ids import *
+from .get_port import *
 from .get_router import *
 from .get_sec_group import *
 from .get_subnet import *

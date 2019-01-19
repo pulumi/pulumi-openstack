@@ -6,6 +6,31 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a DNS record set in the OpenStack DNS Service.
+ * 
+ * ## Example Usage
+ * 
+ * ### Automatically detect the correct network
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ * 
+ * const openstack_dns_zone_v2_example_zone = new openstack.dns.Zone("example_zone", {
+ *     description: "a zone",
+ *     email: "email2@example.com",
+ *     name: "example.com.",
+ *     ttl: 6000,
+ *     type: "PRIMARY",
+ * });
+ * const openstack_dns_recordset_v2_rs_example_com = new openstack.dns.RecordSet("rs_example_com", {
+ *     description: "An example record set",
+ *     name: "rs.example.com.",
+ *     records: ["10.0.0.1"],
+ *     ttl: 3000,
+ *     type: "A",
+ *     zoneId: openstack_dns_zone_v2_example_zone.id,
+ * });
+ * ```
  */
 export class RecordSet extends pulumi.CustomResource {
     /**

@@ -9,6 +9,17 @@ import * as utilities from "../utilities";
  * that can be used for load balancers.
  * These are similar to Nova (compute) floating IP resources,
  * but only compute floating IPs can be used with compute instances.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ * 
+ * const openstack_networking_floatingip_v2_floatip_1 = new openstack.networking.FloatingIp("floatip_1", {
+ *     pool: "public",
+ * });
+ * ```
  */
 export class FloatingIp extends pulumi.CustomResource {
     /**

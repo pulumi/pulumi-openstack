@@ -6,6 +6,32 @@ import * as utilities from "../utilities";
 
 /**
  * Creates a routing entry on a OpenStack V2 subnet.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ * 
+ * const openstack_networking_network_v2_network_1 = new openstack.networking.Network("network_1", {
+ *     adminStateUp: "true",
+ *     name: "network_1",
+ * });
+ * const openstack_networking_router_v2_router_1 = new openstack.networking.Router("router_1", {
+ *     adminStateUp: true,
+ *     name: "router_1",
+ * });
+ * const openstack_networking_subnet_v2_subnet_1 = new openstack.networking.Subnet("subnet_1", {
+ *     cidr: "192.168.199.0/24",
+ *     ipVersion: 4,
+ *     networkId: openstack_networking_network_v2_network_1.id,
+ * });
+ * const openstack_networking_subnet_route_v2_subnet_route_1 = new openstack.networking.SubnetRoute("subnet_route_1", {
+ *     destinationCidr: "10.0.1.0/24",
+ *     nextHop: "192.168.199.254",
+ *     subnetId: openstack_networking_subnet_v2_subnet_1.id,
+ * });
+ * ```
  */
 export class SubnetRoute extends pulumi.CustomResource {
     /**

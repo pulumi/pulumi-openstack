@@ -6,6 +6,17 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a V2 loadbalancer resource within OpenStack.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ * 
+ * const openstack_lb_loadbalancer_v2_lb_1 = new openstack.loadbalancer.LoadBalancer("lb_1", {
+ *     vipSubnetId: "d9415786-5f1a-428b-b35f-2f1523e146d2",
+ * });
+ * ```
  */
 export class LoadBalancer extends pulumi.CustomResource {
     /**

@@ -270,6 +270,8 @@ func Provider() tfbridge.ProviderInfo {
 			"openstack_lb_monitor_v1":      {Tok: openstackResource(lbMod, "MonitorV1")},
 			"openstack_lb_pool_v1":         {Tok: openstackResource(lbMod, "PoolV1")},
 			"openstack_lb_vip_v1":          {Tok: openstackResource(lbMod, "Vip")},
+			"openstack_lb_l7policy_v2":     {Tok: openstackResource(lbMod, "L7PolicyV2")},
+			"openstack_lb_l7rule_v2":       {Tok: openstackResource(lbMod, "L7RuleV2")},
 			"openstack_lb_loadbalancer_v2": {Tok: openstackResource(lbMod, "LoadBalancer")},
 			"openstack_lb_listener_v2":     {Tok: openstackResource(lbMod, "Listener")},
 			"openstack_lb_pool_v2":         {Tok: openstackResource(lbMod, "Pool")},
@@ -288,6 +290,8 @@ func Provider() tfbridge.ProviderInfo {
 
 			// Shared Filesystem
 			"openstack_sharedfilesystem_securityservice_v2": {Tok: openstackResource(sharedfilesystemMod, "SecurityService")},
+			"openstack_sharedfilesystem_share_v2":           {Tok: openstackResource(sharedfilesystemMod, "Share")},
+			"openstack_sharedfilesystem_share_access_v2":    {Tok: openstackResource(sharedfilesystemMod, "ShareAccess")},
 			"openstack_sharedfilesystem_sharenetwork_v2":    {Tok: openstackResource(sharedfilesystemMod, "ShareNetwork")},
 
 			// VPNaaS
@@ -326,6 +330,8 @@ func Provider() tfbridge.ProviderInfo {
 
 			// Networking
 			"openstack_networking_network_v2":    {Tok: openstackDataSource(networkingMod, "getNetwork")},
+			"openstack_networking_port_v2":       {Tok: openstackDataSource(networkingMod, "getPort")},
+			"openstack_networking_port_ids_v2":   {Tok: openstackDataSource(networkingMod, "getPortIds")},
 			"openstack_networking_router_v2":     {Tok: openstackDataSource(networkingMod, "getRouter")},
 			"openstack_networking_secgroup_v2":   {Tok: openstackDataSource(networkingMod, "getSecGroup")},
 			"openstack_networking_subnet_v2":     {Tok: openstackDataSource(networkingMod, "getSubnet")},
@@ -334,6 +340,11 @@ func Provider() tfbridge.ProviderInfo {
 
 			// Firewall
 			"openstack_fw_policy_v1": {Tok: openstackDataSource(firewallMod, "getPolicy")},
+
+			// Shared Filesystem
+			"openstack_sharedfilesystem_share_v2":        {Tok: openstackDataSource(sharedfilesystemMod, "getShare")},
+			"openstack_sharedfilesystem_sharenetwork_v2": {Tok: openstackDataSource(sharedfilesystemMod, "getShareNetwork")},
+			"openstack_sharedfilesystem_snapshot_v2":     {Tok: openstackDataSource(sharedfilesystemMod, "getSnapshot")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			DevDependencies: map[string]string{

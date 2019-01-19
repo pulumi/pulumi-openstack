@@ -6,6 +6,21 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to get the ID of an available OpenStack image.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ * 
+ * const openstack_images_image_v2_ubuntu = pulumi.output(openstack.images.getImage({
+ *     mostRecent: true,
+ *     name: "Ubuntu 16.04",
+ *     properties: {
+ *         key: "value",
+ *     },
+ * }));
+ * ```
  */
 export function getImage(args?: GetImageArgs, opts?: pulumi.InvokeOptions): Promise<GetImageResult> {
     args = args || {};

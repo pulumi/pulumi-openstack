@@ -6,6 +6,17 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to get the ID of an OpenStack role.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ * 
+ * const openstack_identity_role_v3_admin = pulumi.output(openstack.identity.getRole({
+ *     name: "admin",
+ * }));
+ * ```
  */
 export function getRole(args: GetRoleArgs, opts?: pulumi.InvokeOptions): Promise<GetRoleResult> {
     return pulumi.runtime.invoke("openstack:identity/getRole:getRole", {

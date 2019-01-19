@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 // Export members:
+export * from "./l7PolicyV2";
+export * from "./l7RuleV2";
 export * from "./listener";
 export * from "./loadBalancer";
 export * from "./member";

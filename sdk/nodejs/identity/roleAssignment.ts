@@ -9,6 +9,29 @@ import * as utilities from "../utilities";
  * 
  * Note: You _must_ have admin privileges in your OpenStack cloud to use
  * this resource.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ * 
+ * const openstack_identity_project_v3_project_1 = new openstack.identity.Project("project_1", {
+ *     name: "project_1",
+ * });
+ * const openstack_identity_role_v3_role_1 = new openstack.identity.Role("role_1", {
+ *     name: "role_1",
+ * });
+ * const openstack_identity_user_v3_user_1 = new openstack.identity.User("user_1", {
+ *     defaultProjectId: openstack_identity_project_v3_project_1.id,
+ *     name: "user_1",
+ * });
+ * const openstack_identity_role_assignment_v3_role_assignment_1 = new openstack.identity.RoleAssignment("role_assignment_1", {
+ *     projectId: openstack_identity_project_v3_project_1.id,
+ *     roleId: openstack_identity_role_v3_role_1.id,
+ *     userId: openstack_identity_user_v3_user_1.id,
+ * });
+ * ```
  */
 export class RoleAssignment extends pulumi.CustomResource {
     /**

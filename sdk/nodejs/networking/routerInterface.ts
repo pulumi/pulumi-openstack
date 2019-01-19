@@ -6,6 +6,31 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a V2 router interface resource within OpenStack.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ * 
+ * const openstack_networking_network_v2_network_1 = new openstack.networking.Network("network_1", {
+ *     adminStateUp: "true",
+ *     name: "tf_test_network",
+ * });
+ * const openstack_networking_router_v2_router_1 = new openstack.networking.Router("router_1", {
+ *     externalNetworkId: "f67f0d72-0ddf-11e4-9d95-e1f29f417e2f",
+ *     name: "my_router",
+ * });
+ * const openstack_networking_subnet_v2_subnet_1 = new openstack.networking.Subnet("subnet_1", {
+ *     cidr: "192.168.199.0/24",
+ *     ipVersion: 4,
+ *     networkId: openstack_networking_network_v2_network_1.id,
+ * });
+ * const openstack_networking_router_interface_v2_router_interface_1 = new openstack.networking.RouterInterface("router_interface_1", {
+ *     routerId: openstack_networking_router_v2_router_1.id,
+ *     subnetId: openstack_networking_subnet_v2_subnet_1.id,
+ * });
+ * ```
  */
 export class RouterInterface extends pulumi.CustomResource {
     /**

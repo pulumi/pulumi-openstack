@@ -5,7 +5,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The provider type for the openstack package
+ * The provider type for the openstack package. By default, resources use package-wide configuration
+ * settings, however an explicit `Provider` instance may be created and passed during resource
+ * construction to achieve fine-grained programmatic control over provider settings. See the
+ * [documentation](https://pulumi.io/reference/programming-model.html#providers) for more information.
  */
 export class Provider extends pulumi.ProviderResource {
 
@@ -26,9 +29,11 @@ export class Provider extends pulumi.ProviderResource {
             inputs["defaultDomain"] = (args ? args.defaultDomain : undefined) || (utilities.getEnv("OS_DEFAULT_DOMAIN") || "default");
             inputs["domainId"] = (args ? args.domainId : undefined) || utilities.getEnv("OS_DOMAIN_ID");
             inputs["domainName"] = (args ? args.domainName : undefined) || utilities.getEnv("OS_DOMAIN_NAME");
+            inputs["endpointOverrides"] = pulumi.output(args ? args.endpointOverrides : undefined).apply(JSON.stringify);
             inputs["endpointType"] = (args ? args.endpointType : undefined) || utilities.getEnv("OS_ENDPOINT_TYPE");
             inputs["insecure"] = pulumi.output((args ? args.insecure : undefined) || utilities.getEnvBoolean("OS_INSECURE")).apply(JSON.stringify);
             inputs["key"] = (args ? args.key : undefined) || utilities.getEnv("OS_KEY");
+            inputs["maxRetries"] = pulumi.output(args ? args.maxRetries : undefined).apply(JSON.stringify);
             inputs["password"] = (args ? args.password : undefined) || utilities.getEnv("OS_PASSWORD");
             inputs["projectDomainId"] = (args ? args.projectDomainId : undefined) || utilities.getEnv("OS_PROJECT_DOMAIN_ID");
             inputs["projectDomainName"] = (args ? args.projectDomainName : undefined) || utilities.getEnv("OS_PROJECT_DOMAIN_NAME");
@@ -79,6 +84,10 @@ export interface ProviderArgs {
      * The name of the Domain to scope to (Identity v3).
      */
     readonly domainName?: pulumi.Input<string>;
+    /**
+     * A map of services with an endpoint to override what was from the Keystone catalog
+     */
+    readonly endpointOverrides?: pulumi.Input<{[key: string]: any}>;
     readonly endpointType?: pulumi.Input<string>;
     /**
      * Trust self-signed certificates.
@@ -88,6 +97,10 @@ export interface ProviderArgs {
      * A client private key to authenticate with.
      */
     readonly key?: pulumi.Input<string>;
+    /**
+     * How many times HTTP connection should be retried until giving up.
+     */
+    readonly maxRetries?: pulumi.Input<number>;
     /**
      * Password to login with.
      */

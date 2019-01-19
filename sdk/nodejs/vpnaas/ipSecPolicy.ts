@@ -6,6 +6,17 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a V2 Neutron IPSec policy resource within OpenStack.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ * 
+ * const openstack_vpnaas_ipsec_policy_v2_policy_1 = new openstack.vpnaas.IpSecPolicy("policy_1", {
+ *     name: "my_policy",
+ * });
+ * ```
  */
 export class IpSecPolicy extends pulumi.CustomResource {
     /**

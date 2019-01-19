@@ -6,6 +6,22 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a V1 load balancer pool resource within OpenStack.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ * 
+ * const openstack_lb_pool_v1_pool_1 = new openstack.loadbalancer.PoolV1("pool_1", {
+ *     lbMethod: "ROUND_ROBIN",
+ *     lbProvider: "haproxy",
+ *     monitorIds: ["67890"],
+ *     name: "tf_test_lb_pool",
+ *     protocol: "HTTP",
+ *     subnetId: "12345",
+ * });
+ * ```
  */
 export class PoolV1 extends pulumi.CustomResource {
     /**

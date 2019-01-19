@@ -6,6 +6,51 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a V2 Neutron network resource within OpenStack.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ * 
+ * const openstack_compute_secgroup_v2_secgroup_1 = new openstack.compute.SecGroup("secgroup_1", {
+ *     description: "a security group",
+ *     name: "secgroup_1",
+ *     rules: [{
+ *         cidr: "0.0.0.0/0",
+ *         fromPort: 22,
+ *         ipProtocol: "tcp",
+ *         toPort: 22,
+ *     }],
+ * });
+ * const openstack_networking_network_v2_network_1 = new openstack.networking.Network("network_1", {
+ *     adminStateUp: "true",
+ *     name: "network_1",
+ * });
+ * const openstack_networking_subnet_v2_subnet_1 = new openstack.networking.Subnet("subnet_1", {
+ *     cidr: "192.168.199.0/24",
+ *     ipVersion: 4,
+ *     name: "subnet_1",
+ *     networkId: openstack_networking_network_v2_network_1.id,
+ * });
+ * const openstack_networking_port_v2_port_1 = new openstack.networking.Port("port_1", {
+ *     adminStateUp: true,
+ *     fixedIps: [{
+ *         ipAddress: "192.168.199.10",
+ *         subnetId: openstack_networking_subnet_v2_subnet_1.id,
+ *     }],
+ *     name: "port_1",
+ *     networkId: openstack_networking_network_v2_network_1.id,
+ *     securityGroupIds: [openstack_compute_secgroup_v2_secgroup_1.id],
+ * });
+ * const openstack_compute_instance_v2_instance_1 = new openstack.compute.Instance("instance_1", {
+ *     name: "instance_1",
+ *     networks: [{
+ *         port: openstack_networking_port_v2_port_1.id,
+ *     }],
+ *     securityGroups: [openstack_compute_secgroup_v2_secgroup_1.name],
+ * });
+ * ```
  */
 export class Network extends pulumi.CustomResource {
     /**
@@ -62,7 +107,7 @@ export class Network extends pulumi.CustomResource {
     public readonly segments: pulumi.Output<{ networkType?: string, physicalNetwork?: string, segmentationId?: number }[] | undefined>;
     /**
      * Specifies whether the network resource can be accessed
-     * by any tenant or not. Changing this updates the sharing capabalities of the
+     * by any tenant or not. Changing this updates the sharing capabilities of the
      * existing network.
      */
     public readonly shared: pulumi.Output<string>;
@@ -75,6 +120,13 @@ export class Network extends pulumi.CustomResource {
      * create a network for another tenant. Changing this creates a new network.
      */
     public readonly tenantId: pulumi.Output<string>;
+    /**
+     * Specifies whether the network resource has the
+     * VLAN transparent attribute set. Valid values are true and false. Defaults to
+     * false. Changing this updates the `transparent_vlan` attribute of the existing
+     * network.
+     */
+    public readonly transparentVlan: pulumi.Output<boolean>;
     /**
      * Map of additional options.
      */
@@ -102,6 +154,7 @@ export class Network extends pulumi.CustomResource {
             inputs["shared"] = state ? state.shared : undefined;
             inputs["tags"] = state ? state.tags : undefined;
             inputs["tenantId"] = state ? state.tenantId : undefined;
+            inputs["transparentVlan"] = state ? state.transparentVlan : undefined;
             inputs["valueSpecs"] = state ? state.valueSpecs : undefined;
         } else {
             const args = argsOrState as NetworkArgs | undefined;
@@ -115,6 +168,7 @@ export class Network extends pulumi.CustomResource {
             inputs["shared"] = args ? args.shared : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["tenantId"] = args ? args.tenantId : undefined;
+            inputs["transparentVlan"] = args ? args.transparentVlan : undefined;
             inputs["valueSpecs"] = args ? args.valueSpecs : undefined;
         }
         super("openstack:networking/network:Network", name, inputs, opts);
@@ -167,7 +221,7 @@ export interface NetworkState {
     readonly segments?: pulumi.Input<pulumi.Input<{ networkType?: pulumi.Input<string>, physicalNetwork?: pulumi.Input<string>, segmentationId?: pulumi.Input<number> }>[]>;
     /**
      * Specifies whether the network resource can be accessed
-     * by any tenant or not. Changing this updates the sharing capabalities of the
+     * by any tenant or not. Changing this updates the sharing capabilities of the
      * existing network.
      */
     readonly shared?: pulumi.Input<string>;
@@ -180,6 +234,13 @@ export interface NetworkState {
      * create a network for another tenant. Changing this creates a new network.
      */
     readonly tenantId?: pulumi.Input<string>;
+    /**
+     * Specifies whether the network resource has the
+     * VLAN transparent attribute set. Valid values are true and false. Defaults to
+     * false. Changing this updates the `transparent_vlan` attribute of the existing
+     * network.
+     */
+    readonly transparentVlan?: pulumi.Input<boolean>;
     /**
      * Map of additional options.
      */
@@ -232,7 +293,7 @@ export interface NetworkArgs {
     readonly segments?: pulumi.Input<pulumi.Input<{ networkType?: pulumi.Input<string>, physicalNetwork?: pulumi.Input<string>, segmentationId?: pulumi.Input<number> }>[]>;
     /**
      * Specifies whether the network resource can be accessed
-     * by any tenant or not. Changing this updates the sharing capabalities of the
+     * by any tenant or not. Changing this updates the sharing capabilities of the
      * existing network.
      */
     readonly shared?: pulumi.Input<string>;
@@ -245,6 +306,13 @@ export interface NetworkArgs {
      * create a network for another tenant. Changing this creates a new network.
      */
     readonly tenantId?: pulumi.Input<string>;
+    /**
+     * Specifies whether the network resource has the
+     * VLAN transparent attribute set. Valid values are true and false. Defaults to
+     * false. Changing this updates the `transparent_vlan` attribute of the existing
+     * network.
+     */
+    readonly transparentVlan?: pulumi.Input<boolean>;
     /**
      * Map of additional options.
      */

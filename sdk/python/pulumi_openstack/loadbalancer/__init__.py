@@ -3,6 +3,8 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
+from .l7_policy_v2 import *
+from .l7_rule_v2 import *
 from .listener import *
 from .load_balancer import *
 from .member_v1 import *

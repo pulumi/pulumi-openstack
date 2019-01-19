@@ -6,6 +6,23 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a V1 Magnum cluster resource within OpenStack.
+ * 
+ * ## Example Usage
+ * 
+ * ### Create a Cluster
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ * 
+ * const openstack_containerinfra_cluster_v1_cluster_1 = new openstack.containerinfra.Cluster("cluster_1", {
+ *     clusterTemplateId: "b9a45c5c-cd03-4958-82aa-b80bf93cb922",
+ *     keypair: "ssh_keypair",
+ *     masterCount: 3,
+ *     name: "cluster_1",
+ *     nodeCount: 5,
+ * });
+ * ```
  */
 export class Cluster extends pulumi.CustomResource {
     /**

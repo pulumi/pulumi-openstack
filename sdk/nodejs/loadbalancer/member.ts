@@ -6,6 +6,18 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a V2 member resource within OpenStack.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ * 
+ * const openstack_lb_member_v2_member_1 = new openstack.loadbalancer.Member("member_1", {
+ *     address: "192.168.199.23",
+ *     protocolPort: 8080,
+ * });
+ * ```
  */
 export class Member extends pulumi.CustomResource {
     /**

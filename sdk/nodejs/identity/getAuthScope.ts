@@ -8,6 +8,17 @@ import * as utilities from "../utilities";
  * Use this data source to get authentication information about the current
  * auth scope in use. This can be used as self-discovery or introspection of
  * the username or project name currently in use.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ * 
+ * const openstack_identity_auth_scope_v3_scope = pulumi.output(openstack.identity.getAuthScope({
+ *     name: "my_scope",
+ * }));
+ * ```
  */
 export function getAuthScope(args: GetAuthScopeArgs, opts?: pulumi.InvokeOptions): Promise<GetAuthScopeResult> {
     return pulumi.runtime.invoke("openstack:identity/getAuthScope:getAuthScope", {
