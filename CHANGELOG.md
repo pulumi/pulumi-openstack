@@ -1,4 +1,12 @@
-## 0.16.4 (unreleased)
+## 0.16.5 (unreleased)
+
+## 0.16.4 (Released January 19th, 2019)
+
+### Improvements
+
+- Updated to the v1.14.0 version of the AWS OpenStack Provider.
+
+- Documentation comments for the Node.js SDK now include examples
 
 ## 0.16.3 (Released December 5th, 2018)
 
