@@ -6,6 +6,21 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a V1 load balancer monitor resource within OpenStack.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ * 
+ * const openstack_lb_monitor_v1_monitor_1 = new openstack.loadbalancer.MonitorV1("monitor_1", {
+ *     adminStateUp: "true",
+ *     delay: 30,
+ *     maxRetries: 3,
+ *     timeout: 5,
+ *     type: "PING",
+ * });
+ * ```
  */
 export class MonitorV1 extends pulumi.CustomResource {
     /**

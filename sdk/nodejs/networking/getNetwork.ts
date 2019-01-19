@@ -6,6 +6,17 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to get the ID of an available OpenStack network.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ * 
+ * const openstack_networking_network_v2_network = pulumi.output(openstack.networking.getNetwork({
+ *     name: "tf_test_network",
+ * }));
+ * ```
  */
 export function getNetwork(args?: GetNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkResult> {
     args = args || {};
@@ -18,6 +29,7 @@ export function getNetwork(args?: GetNetworkArgs, opts?: pulumi.InvokeOptions): 
         "region": args.region,
         "status": args.status,
         "tenantId": args.tenantId,
+        "transparentVlan": args.transparentVlan,
     }, opts);
 }
 
@@ -59,6 +71,11 @@ export interface GetNetworkArgs {
      * The owner of the network.
      */
     readonly tenantId?: string;
+    /**
+     * The VLAN transparent attribute for the
+     * network.
+     */
+    readonly transparentVlan?: boolean;
 }
 
 /**

@@ -34,6 +34,10 @@ export let domainId: string | undefined = __config.get("domainId") || utilities.
  * The name of the Domain to scope to (Identity v3).
  */
 export let domainName: string | undefined = __config.get("domainName") || utilities.getEnv("OS_DOMAIN_NAME");
+/**
+ * A map of services with an endpoint to override what was from the Keystone catalog
+ */
+export let endpointOverrides: {[key: string]: any} | undefined = __config.getObject<{[key: string]: any}>("endpointOverrides");
 export let endpointType: string | undefined = __config.get("endpointType") || utilities.getEnv("OS_ENDPOINT_TYPE");
 /**
  * Trust self-signed certificates.
@@ -43,6 +47,10 @@ export let insecure: boolean | undefined = __config.getObject<boolean>("insecure
  * A client private key to authenticate with.
  */
 export let key: string | undefined = __config.get("key") || utilities.getEnv("OS_KEY");
+/**
+ * How many times HTTP connection should be retried until giving up.
+ */
+export let maxRetries: number | undefined = __config.getObject<number>("maxRetries");
 /**
  * Password to login with.
  */

@@ -7,6 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Attaches a Block Storage Volume to an Instance using the OpenStack
  * Compute (Nova) v2 API.
+ * It is recommended to use `depends_on` for the attach resources
+ * to enforce the volume attachments to happen one at a time.
+ * 
  */
 export class VolumeAttach extends pulumi.CustomResource {
     /**

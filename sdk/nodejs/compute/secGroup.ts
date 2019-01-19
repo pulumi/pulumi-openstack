@@ -12,6 +12,32 @@ import * as utilities from "../utilities";
  * recommended to use the `openstack_networking_secgroup_v2`
  * and `openstack_networking_secgroup_rule_v2`
  * resources instead, which uses the OpenStack Networking API.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ * 
+ * const openstack_compute_secgroup_v2_secgroup_1 = new openstack.compute.SecGroup("secgroup_1", {
+ *     description: "my security group",
+ *     name: "my_secgroup",
+ *     rules: [
+ *         {
+ *             cidr: "0.0.0.0/0",
+ *             fromPort: 22,
+ *             ipProtocol: "tcp",
+ *             toPort: 22,
+ *         },
+ *         {
+ *             cidr: "0.0.0.0/0",
+ *             fromPort: 80,
+ *             ipProtocol: "tcp",
+ *             toPort: 80,
+ *         },
+ *     ],
+ * });
+ * ```
  */
 export class SecGroup extends pulumi.CustomResource {
     /**

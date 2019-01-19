@@ -6,6 +6,32 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a V1 Magnum cluster template resource within OpenStack.
+ * 
+ * ## Example Usage
+ * 
+ * ### Create a Cluster template
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ * 
+ * const openstack_containerinfra_clustertemplate_v1_clustertemplate_1 = new openstack.containerinfra.ClusterTemplate("clustertemplate_1", {
+ *     coe: "kubernetes",
+ *     dnsNameserver: "1.1.1.1",
+ *     dockerStorageDriver: "devicemapper",
+ *     dockerVolumeSize: 10,
+ *     flavor: "m1.small",
+ *     floatingIpEnabled: false,
+ *     image: "Fedora-Atomic-27",
+ *     labels: "kube_tag=1.11.1,kube_dashboard_enabled=true,prometheus_monitoring=true,influx_grafana_dashboard_enabled=true",
+ *     masterFlavor: "m1.medium",
+ *     masterLbEnabled: true,
+ *     name: "clustertemplate_1",
+ *     networkDriver: "flannel",
+ *     serverType: "vm",
+ *     volumeDriver: "cinder",
+ * });
+ * ```
  */
 export class ClusterTemplate extends pulumi.CustomResource {
     /**

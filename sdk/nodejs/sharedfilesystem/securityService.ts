@@ -13,6 +13,25 @@ import * as utilities from "../utilities";
  * Microsoft Active Directory.
  * 
  * Minimum supported Manila microversion is 2.7.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ * 
+ * const openstack_sharedfilesystem_securityservice_v2_securityservice_1 = new openstack.sharedfilesystem.SecurityService("securityservice_1", {
+ *     description: "created by terraform",
+ *     dnsIp: "192.168.199.10",
+ *     domain: "example.com",
+ *     name: "security",
+ *     ou: "CN=Computers,DC=example,DC=com",
+ *     password: "s8cret",
+ *     server: "192.168.199.10",
+ *     type: "active_directory",
+ *     user: "joinDomainUser",
+ * });
+ * ```
  */
 export class SecurityService extends pulumi.CustomResource {
     /**

@@ -6,6 +6,22 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a V2 Neutron Endpoint Group resource within OpenStack.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ * 
+ * const openstack_vpnaas_endpoint_group_v2_group_1 = new openstack.vpnaas.EndpointGroup("group_1", {
+ *     endpoints: [
+ *         "10.2.0.0/24",
+ *         "10.3.0.0/24",
+ *     ],
+ *     name: "Group 1",
+ *     type: "cidr",
+ * });
+ * ```
  */
 export class EndpointGroup extends pulumi.CustomResource {
     /**

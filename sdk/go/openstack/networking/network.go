@@ -27,6 +27,7 @@ func NewNetwork(ctx *pulumi.Context,
 		inputs["shared"] = nil
 		inputs["tags"] = nil
 		inputs["tenantId"] = nil
+		inputs["transparentVlan"] = nil
 		inputs["valueSpecs"] = nil
 	} else {
 		inputs["adminStateUp"] = args.AdminStateUp
@@ -39,6 +40,7 @@ func NewNetwork(ctx *pulumi.Context,
 		inputs["shared"] = args.Shared
 		inputs["tags"] = args.Tags
 		inputs["tenantId"] = args.TenantId
+		inputs["transparentVlan"] = args.TransparentVlan
 		inputs["valueSpecs"] = args.ValueSpecs
 	}
 	s, err := ctx.RegisterResource("openstack:networking/network:Network", name, true, inputs, opts...)
@@ -64,6 +66,7 @@ func GetNetwork(ctx *pulumi.Context,
 		inputs["shared"] = state.Shared
 		inputs["tags"] = state.Tags
 		inputs["tenantId"] = state.TenantId
+		inputs["transparentVlan"] = state.TransparentVlan
 		inputs["valueSpecs"] = state.ValueSpecs
 	}
 	s, err := ctx.ReadResource("openstack:networking/network:Network", name, id, inputs, opts...)
@@ -131,7 +134,7 @@ func (r *Network) Segments() *pulumi.ArrayOutput {
 }
 
 // Specifies whether the network resource can be accessed
-// by any tenant or not. Changing this updates the sharing capabalities of the
+// by any tenant or not. Changing this updates the sharing capabilities of the
 // existing network.
 func (r *Network) Shared() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["shared"])
@@ -146,6 +149,14 @@ func (r *Network) Tags() *pulumi.ArrayOutput {
 // create a network for another tenant. Changing this creates a new network.
 func (r *Network) TenantId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["tenantId"])
+}
+
+// Specifies whether the network resource has the
+// VLAN transparent attribute set. Valid values are true and false. Defaults to
+// false. Changing this updates the `transparent_vlan` attribute of the existing
+// network.
+func (r *Network) TransparentVlan() *pulumi.BoolOutput {
+	return (*pulumi.BoolOutput)(r.s.State["transparentVlan"])
 }
 
 // Map of additional options.
@@ -182,7 +193,7 @@ type NetworkState struct {
 	// An array of one or more provider segment objects.
 	Segments interface{}
 	// Specifies whether the network resource can be accessed
-	// by any tenant or not. Changing this updates the sharing capabalities of the
+	// by any tenant or not. Changing this updates the sharing capabilities of the
 	// existing network.
 	Shared interface{}
 	// A set of string tags for the network. 
@@ -190,6 +201,11 @@ type NetworkState struct {
 	// The owner of the network. Required if admin wants to
 	// create a network for another tenant. Changing this creates a new network.
 	TenantId interface{}
+	// Specifies whether the network resource has the
+	// VLAN transparent attribute set. Valid values are true and false. Defaults to
+	// false. Changing this updates the `transparent_vlan` attribute of the existing
+	// network.
+	TransparentVlan interface{}
 	// Map of additional options.
 	ValueSpecs interface{}
 }
@@ -223,7 +239,7 @@ type NetworkArgs struct {
 	// An array of one or more provider segment objects.
 	Segments interface{}
 	// Specifies whether the network resource can be accessed
-	// by any tenant or not. Changing this updates the sharing capabalities of the
+	// by any tenant or not. Changing this updates the sharing capabilities of the
 	// existing network.
 	Shared interface{}
 	// A set of string tags for the network. 
@@ -231,6 +247,11 @@ type NetworkArgs struct {
 	// The owner of the network. Required if admin wants to
 	// create a network for another tenant. Changing this creates a new network.
 	TenantId interface{}
+	// Specifies whether the network resource has the
+	// VLAN transparent attribute set. Valid values are true and false. Defaults to
+	// false. Changing this updates the `transparent_vlan` attribute of the existing
+	// network.
+	TransparentVlan interface{}
 	// Map of additional options.
 	ValueSpecs interface{}
 }

@@ -6,6 +6,19 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a V2 Neutron VPN service resource within OpenStack.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ * 
+ * const openstack_vpnaas_service_v2_service_1 = new openstack.vpnaas.Service("service_1", {
+ *     adminStateUp: true,
+ *     name: "my_service",
+ *     routerId: "14a75700-fc03-4602-9294-26ee44f366b3",
+ * });
+ * ```
  */
 export class Service extends pulumi.CustomResource {
     /**

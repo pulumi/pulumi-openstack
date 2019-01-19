@@ -6,6 +6,17 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to get the ID of an available OpenStack Magnum cluster.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ * 
+ * const openstack_containerinfra_cluster_v1_cluster_1 = pulumi.output(openstack.containerinfra.getCluster({
+ *     name: "cluster_1",
+ * }));
+ * ```
  */
 export function getCluster(args: GetClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterResult> {
     return pulumi.runtime.invoke("openstack:containerinfra/getCluster:getCluster", {

@@ -19,6 +19,7 @@ func LookupNetwork(ctx *pulumi.Context, args *GetNetworkArgs) (*GetNetworkResult
 		inputs["region"] = args.Region
 		inputs["status"] = args.Status
 		inputs["tenantId"] = args.TenantId
+		inputs["transparentVlan"] = args.TransparentVlan
 	}
 	outputs, err := ctx.Invoke("openstack:networking/getNetwork:getNetwork", inputs)
 	if err != nil {
@@ -53,6 +54,9 @@ type GetNetworkArgs struct {
 	Status interface{}
 	// The owner of the network.
 	TenantId interface{}
+	// The VLAN transparent attribute for the
+	// network.
+	TransparentVlan interface{}
 }
 
 // A collection of values returned by getNetwork.

@@ -6,6 +6,23 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a V2 Image resource within OpenStack Glance.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ * 
+ * const openstack_images_image_v2_rancheros = new openstack.images.Image("rancheros", {
+ *     containerFormat: "bare",
+ *     diskFormat: "qcow2",
+ *     imageSourceUrl: "https://releases.rancher.com/os/latest/rancheros-openstack.img",
+ *     name: "RancherOS",
+ *     properties: {
+ *         key: "value",
+ *     },
+ * });
+ * ```
  */
 export class Image extends pulumi.CustomResource {
     /**

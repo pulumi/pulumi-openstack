@@ -7,6 +7,17 @@ import * as utilities from "../utilities";
 /**
  * Use this data source to get the ID of an available OpenStack Magnum cluster
  * template.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ * 
+ * const openstack_containerinfra_clustertemplate_v1_clustertemplate_1 = pulumi.output(openstack.containerinfra.getClusterTemplate({
+ *     name: "clustertemplate_1",
+ * }));
+ * ```
  */
 export function getClusterTemplate(args: GetClusterTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterTemplateResult> {
     return pulumi.runtime.invoke("openstack:containerinfra/getClusterTemplate:getClusterTemplate", {

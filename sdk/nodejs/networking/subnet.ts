@@ -6,6 +6,22 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a V2 Neutron subnet resource within OpenStack.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ * 
+ * const openstack_networking_network_v2_network_1 = new openstack.networking.Network("network_1", {
+ *     adminStateUp: "true",
+ *     name: "tf_test_network",
+ * });
+ * const openstack_networking_subnet_v2_subnet_1 = new openstack.networking.Subnet("subnet_1", {
+ *     cidr: "192.168.199.0/24",
+ *     networkId: openstack_networking_network_v2_network_1.id,
+ * });
+ * ```
  */
 export class Subnet extends pulumi.CustomResource {
     /**

@@ -6,6 +6,28 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a V1 DB configuration resource within OpenStack.
+ * 
+ * ## Example Usage
+ * 
+ * ### Configuration
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ * 
+ * const openstack_db_configuration_v1_test = new openstack.database.Configuration("test", {
+ *     configurations: [{
+ *         name: "max_connections",
+ *         value: "200",
+ *     }],
+ *     datastore: {
+ *         type: "mysql",
+ *         version: "mysql-5.7",
+ *     },
+ *     description: "description",
+ *     name: "test",
+ * });
+ * ```
  */
 export class Configuration extends pulumi.CustomResource {
     /**

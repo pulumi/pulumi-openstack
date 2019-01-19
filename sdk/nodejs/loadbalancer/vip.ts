@@ -6,6 +6,21 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a V1 load balancer vip resource within OpenStack.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ * 
+ * const openstack_lb_vip_v1_vip_1 = new openstack.loadbalancer.Vip("vip_1", {
+ *     name: "tf_test_lb_vip",
+ *     poolId: "67890",
+ *     port: 80,
+ *     protocol: "HTTP",
+ *     subnetId: "12345",
+ * });
+ * ```
  */
 export class Vip extends pulumi.CustomResource {
     /**

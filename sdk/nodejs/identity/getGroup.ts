@@ -8,6 +8,17 @@ import * as utilities from "../utilities";
  * Use this data source to get the ID of an OpenStack group.
  * 
  * Note: This usually requires admin privileges.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ * 
+ * const openstack_identity_group_v3_admins = pulumi.output(openstack.identity.getGroup({
+ *     name: "admins",
+ * }));
+ * ```
  */
 export function getGroup(args: GetGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupResult> {
     return pulumi.runtime.invoke("openstack:identity/getGroup:getGroup", {

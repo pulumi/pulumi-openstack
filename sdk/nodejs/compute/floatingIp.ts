@@ -12,6 +12,17 @@ import * as utilities from "../utilities";
  * been deprecated. Unless you are using an older OpenStack environment, it is
  * recommended to use the `openstack_networking_floatingip_v2`
  * resource instead, which uses the OpenStack Networking API.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ * 
+ * const openstack_compute_floatingip_v2_floatip_1 = new openstack.compute.FloatingIp("floatip_1", {
+ *     pool: "public",
+ * });
+ * ```
  */
 export class FloatingIp extends pulumi.CustomResource {
     /**

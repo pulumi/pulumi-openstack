@@ -6,6 +6,45 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a V2 Neutron subnetpool resource within OpenStack.
+ * 
+ * ## Example Usage
+ * 
+ * ### Create a Subnet Pool
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ * 
+ * const openstack_networking_subnetpool_v2_subnetpool_1 = new openstack.networking.SubnetPool("subnetpool_1", {
+ *     ipVersion: 6,
+ *     name: "subnetpool_1",
+ *     prefixes: [
+ *         "fdf7:b13d:dead:beef::/64",
+ *         "fd65:86cc:a334:39b7::/64",
+ *     ],
+ * });
+ * ```
+ * ### Create a Subnet from a Subnet Pool
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ * 
+ * const openstack_networking_network_v2_network_1 = new openstack.networking.Network("network_1", {
+ *     adminStateUp: "true",
+ *     name: "network_1",
+ * });
+ * const openstack_networking_subnetpool_v2_subnetpool_1 = new openstack.networking.SubnetPool("subnetpool_1", {
+ *     name: "subnetpool_1",
+ *     prefixes: ["10.11.12.0/24"],
+ * });
+ * const openstack_networking_subnet_v2_subnet_1 = new openstack.networking.Subnet("subnet_1", {
+ *     cidr: "10.11.12.0/25",
+ *     name: "subnet_1",
+ *     networkId: openstack_networking_network_v2_network_1.id,
+ *     subnetpoolId: openstack_networking_subnetpool_v2_subnetpool_1.id,
+ * });
+ * ```
  */
 export class SubnetPool extends pulumi.CustomResource {
     /**

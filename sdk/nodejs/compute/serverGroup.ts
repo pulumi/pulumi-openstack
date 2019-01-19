@@ -6,6 +6,18 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a V2 Server Group resource within OpenStack.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ * 
+ * const openstack_compute_servergroup_v2_test_sg = new openstack.compute.ServerGroup("test-sg", {
+ *     name: "my-sg",
+ *     policies: ["anti-affinity"],
+ * });
+ * ```
  */
 export class ServerGroup extends pulumi.CustomResource {
     /**

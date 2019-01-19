@@ -6,6 +6,20 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a V2 volume resource within OpenStack.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ * 
+ * const openstack_blockstorage_volume_v2_volume_1 = new openstack.blockstorage.VolumeV2("volume_1", {
+ *     description: "first test volume",
+ *     name: "volume_1",
+ *     region: "RegionOne",
+ *     size: 3,
+ * });
+ * ```
  */
 export class VolumeV2 extends pulumi.CustomResource {
     /**

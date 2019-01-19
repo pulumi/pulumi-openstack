@@ -6,6 +6,22 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a v1 firewall rule resource within OpenStack.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ * 
+ * const openstack_fw_rule_v1_rule_1 = new openstack.firewall.Rule("rule_1", {
+ *     action: "deny",
+ *     description: "drop TELNET traffic",
+ *     destinationPort: "23",
+ *     enabled: true,
+ *     name: "my_rule",
+ *     protocol: "tcp",
+ * });
+ * ```
  */
 export class Rule extends pulumi.CustomResource {
     /**
