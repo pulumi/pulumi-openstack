@@ -55,7 +55,7 @@ class Image(pulumi.CustomResource):
     """
     The metadata associated with the image.
     Image metadata allow for meaningfully define the image properties
-    and tags. See http://docs.openstack.org/developer/glance/metadefs-concepts.html.
+    and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
     """
     min_disk_gb: pulumi.Output[int]
     """
@@ -113,6 +113,10 @@ class Image(pulumi.CustomResource):
     At this time, it is not possible to delete all tags of an image.
     """
     update_at: pulumi.Output[str]
+    """
+    (**Deprecated** - use `updated_at` instead)
+    """
+    updated_at: pulumi.Output[str]
     """
     The date the image was last updated.
     """
@@ -220,6 +224,7 @@ class Image(pulumi.CustomResource):
         __props__['size_bytes'] = None
         __props__['status'] = None
         __props__['update_at'] = None
+        __props__['updated_at'] = None
 
         super(Image, __self__).__init__(
             'openstack:images/image:Image',

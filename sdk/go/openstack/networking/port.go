@@ -59,6 +59,7 @@ func NewPort(ctx *pulumi.Context,
 	}
 	inputs["allFixedIps"] = nil
 	inputs["allSecurityGroupIds"] = nil
+	inputs["allTags"] = nil
 	s, err := ctx.RegisterResource("openstack:networking/port:Port", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
@@ -75,6 +76,7 @@ func GetPort(ctx *pulumi.Context,
 		inputs["adminStateUp"] = state.AdminStateUp
 		inputs["allFixedIps"] = state.AllFixedIps
 		inputs["allSecurityGroupIds"] = state.AllSecurityGroupIds
+		inputs["allTags"] = state.AllTags
 		inputs["allowedAddressPairs"] = state.AllowedAddressPairs
 		inputs["description"] = state.Description
 		inputs["deviceId"] = state.DeviceId
@@ -126,6 +128,12 @@ func (r *Port) AllFixedIps() *pulumi.ArrayOutput {
 // which have been explicitly and implicitly added.
 func (r *Port) AllSecurityGroupIds() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["allSecurityGroupIds"])
+}
+
+// The collection of tags assigned on the port, which have been
+// explicitly and implicitly added.
+func (r *Port) AllTags() *pulumi.ArrayOutput {
+	return (*pulumi.ArrayOutput)(r.s.State["allTags"])
 }
 
 // An IP/MAC Address pair of additional IP
@@ -244,6 +252,9 @@ type PortState struct {
 	// The collection of Security Group IDs on the port
 	// which have been explicitly and implicitly added.
 	AllSecurityGroupIds interface{}
+	// The collection of tags assigned on the port, which have been
+	// explicitly and implicitly added.
+	AllTags interface{}
 	// An IP/MAC Address pair of additional IP
 	// addresses that can be active on this port. The structure is described
 	// below.

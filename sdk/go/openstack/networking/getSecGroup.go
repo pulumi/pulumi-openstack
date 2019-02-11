@@ -15,6 +15,7 @@ func LookupSecGroup(ctx *pulumi.Context, args *GetSecGroupArgs) (*GetSecGroupRes
 		inputs["name"] = args.Name
 		inputs["region"] = args.Region
 		inputs["secgroupId"] = args.SecgroupId
+		inputs["tags"] = args.Tags
 		inputs["tenantId"] = args.TenantId
 	}
 	outputs, err := ctx.Invoke("openstack:networking/getSecGroup:getSecGroup", inputs)
@@ -22,6 +23,7 @@ func LookupSecGroup(ctx *pulumi.Context, args *GetSecGroupArgs) (*GetSecGroupRes
 		return nil, err
 	}
 	return &GetSecGroupResult{
+		AllTags: outputs["allTags"],
 		Region: outputs["region"],
 		TenantId: outputs["tenantId"],
 		Id: outputs["id"],
@@ -40,12 +42,16 @@ type GetSecGroupArgs struct {
 	Region interface{}
 	// The ID of the security group.
 	SecgroupId interface{}
+	// The list of security group tags to filter.
+	Tags interface{}
 	// The owner of the security group.
 	TenantId interface{}
 }
 
 // A collection of values returned by getSecGroup.
 type GetSecGroupResult struct {
+	// The set of string tags applied on the security group.
+	AllTags interface{}
 	// See Argument Reference above.
 	Region interface{}
 	TenantId interface{}

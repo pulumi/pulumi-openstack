@@ -13,42 +13,42 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_networking_network_v2_network_1 = new openstack.networking.Network("network_1", {
- *     adminStateUp: "true",
+ * const network1 = new openstack.networking.Network("network_1", {
+ *     adminStateUp: true,
  *     name: "network_1",
  * });
- * const openstack_networking_subnet_v2_subnet_1 = new openstack.networking.Subnet("subnet_1", {
+ * const subnet1 = new openstack.networking.Subnet("subnet_1", {
  *     cidr: "192.168.1.0/24",
  *     enableDhcp: true,
  *     ipVersion: 4,
  *     name: "subnet_1",
- *     networkId: openstack_networking_network_v2_network_1.id,
+ *     networkId: network1.id,
  *     noGateway: true,
  * });
- * const openstack_networking_port_v2_parent_port_1 = new openstack.networking.Port("parent_port_1", {
+ * const parentPort1 = new openstack.networking.Port("parent_port_1", {
  *     adminStateUp: true,
  *     name: "parent_port_1",
- *     networkId: openstack_networking_network_v2_network_1.id,
- * }, {dependsOn: [openstack_networking_subnet_v2_subnet_1]});
- * const openstack_networking_port_v2_subport_1 = new openstack.networking.Port("subport_1", {
+ *     networkId: network1.id,
+ * }, {dependsOn: [subnet1]});
+ * const subport1 = new openstack.networking.Port("subport_1", {
  *     adminStateUp: true,
  *     name: "subport_1",
- *     networkId: openstack_networking_network_v2_network_1.id,
- * }, {dependsOn: [openstack_networking_subnet_v2_subnet_1]});
- * const openstack_networking_trunk_v2_trunk_1 = new openstack.networking.Trunk("trunk_1", {
+ *     networkId: network1.id,
+ * }, {dependsOn: [subnet1]});
+ * const trunk1 = new openstack.networking.Trunk("trunk_1", {
  *     adminStateUp: true,
  *     name: "trunk_1",
- *     portId: openstack_networking_port_v2_parent_port_1.id,
+ *     portId: parentPort1.id,
  *     subPorts: [{
- *         portId: openstack_networking_port_v2_subport_1.id,
+ *         portId: subport1.id,
  *         segmentationId: 1,
  *         segmentationType: "vlan",
  *     }],
  * });
- * const openstack_compute_instance_v2_instance_1 = new openstack.compute.Instance("instance_1", {
+ * const instance1 = new openstack.compute.Instance("instance_1", {
  *     name: "instance_1",
  *     networks: [{
- *         port: openstack_networking_trunk_v2_trunk_1.portId,
+ *         port: trunk1.portId,
  *     }],
  *     securityGroups: ["default"],
  * });
@@ -74,8 +74,18 @@ export class Trunk extends pulumi.CustomResource {
      */
     public readonly adminStateUp: pulumi.Output<boolean | undefined>;
     /**
-     * A unique name for the port. Changing this
-     * updates the `name` of an existing port.
+     * The collection of tags assigned on the trunk, which have been
+     * explicitly and implicitly added.
+     */
+    public /*out*/ readonly allTags: pulumi.Output<string[]>;
+    /**
+     * Human-readable description of the trunk. Changing this
+     * updates the name of the existing trunk.
+     */
+    public readonly description: pulumi.Output<string | undefined>;
+    /**
+     * A unique name for the trunk. Changing this
+     * updates the `name` of an existing trunk.
      */
     public readonly name: pulumi.Output<string>;
     /**
@@ -96,6 +106,9 @@ export class Trunk extends pulumi.CustomResource {
      * The structure of each subport is described below.
      */
     public readonly subPorts: pulumi.Output<{ portId: string, segmentationId: number, segmentationType: string }[] | undefined>;
+    /**
+     * A set of string tags for the port.
+     */
     public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * The owner of the Trunk. Required if admin wants
@@ -116,6 +129,8 @@ export class Trunk extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state: TrunkState = argsOrState as TrunkState | undefined;
             inputs["adminStateUp"] = state ? state.adminStateUp : undefined;
+            inputs["allTags"] = state ? state.allTags : undefined;
+            inputs["description"] = state ? state.description : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["portId"] = state ? state.portId : undefined;
             inputs["region"] = state ? state.region : undefined;
@@ -128,12 +143,14 @@ export class Trunk extends pulumi.CustomResource {
                 throw new Error("Missing required property 'portId'");
             }
             inputs["adminStateUp"] = args ? args.adminStateUp : undefined;
+            inputs["description"] = args ? args.description : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["portId"] = args ? args.portId : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["subPorts"] = args ? args.subPorts : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["tenantId"] = args ? args.tenantId : undefined;
+            inputs["allTags"] = undefined /*out*/;
         }
         super("openstack:networking/trunk:Trunk", name, inputs, opts);
     }
@@ -150,8 +167,18 @@ export interface TrunkState {
      */
     readonly adminStateUp?: pulumi.Input<boolean>;
     /**
-     * A unique name for the port. Changing this
-     * updates the `name` of an existing port.
+     * The collection of tags assigned on the trunk, which have been
+     * explicitly and implicitly added.
+     */
+    readonly allTags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Human-readable description of the trunk. Changing this
+     * updates the name of the existing trunk.
+     */
+    readonly description?: pulumi.Input<string>;
+    /**
+     * A unique name for the trunk. Changing this
+     * updates the `name` of an existing trunk.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -172,6 +199,9 @@ export interface TrunkState {
      * The structure of each subport is described below.
      */
     readonly subPorts?: pulumi.Input<pulumi.Input<{ portId: pulumi.Input<string>, segmentationId: pulumi.Input<number>, segmentationType: pulumi.Input<string> }>[]>;
+    /**
+     * A set of string tags for the port.
+     */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The owner of the Trunk. Required if admin wants
@@ -191,8 +221,13 @@ export interface TrunkArgs {
      */
     readonly adminStateUp?: pulumi.Input<boolean>;
     /**
-     * A unique name for the port. Changing this
-     * updates the `name` of an existing port.
+     * Human-readable description of the trunk. Changing this
+     * updates the name of the existing trunk.
+     */
+    readonly description?: pulumi.Input<string>;
+    /**
+     * A unique name for the trunk. Changing this
+     * updates the `name` of an existing trunk.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -213,6 +248,9 @@ export interface TrunkArgs {
      * The structure of each subport is described below.
      */
     readonly subPorts?: pulumi.Input<pulumi.Input<{ portId: pulumi.Input<string>, segmentationId: pulumi.Input<number>, segmentationType: pulumi.Input<string> }>[]>;
+    /**
+     * A set of string tags for the port.
+     */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The owner of the Trunk. Required if admin wants

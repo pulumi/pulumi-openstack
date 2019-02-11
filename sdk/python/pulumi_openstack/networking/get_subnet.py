@@ -11,7 +11,13 @@ class GetSubnetResult(object):
     """
     A collection of values returned by getSubnet.
     """
-    def __init__(__self__, allocation_pools=None, cidr=None, description=None, dns_nameservers=None, enable_dhcp=None, gateway_ip=None, host_routes=None, ip_version=None, ipv6_address_mode=None, ipv6_ra_mode=None, name=None, network_id=None, region=None, subnet_id=None, subnetpool_id=None, tenant_id=None, id=None):
+    def __init__(__self__, all_tags=None, allocation_pools=None, cidr=None, description=None, dns_nameservers=None, enable_dhcp=None, gateway_ip=None, host_routes=None, ip_version=None, ipv6_address_mode=None, ipv6_ra_mode=None, name=None, network_id=None, region=None, subnet_id=None, subnetpool_id=None, tenant_id=None, id=None):
+        if all_tags and not isinstance(all_tags, list):
+            raise TypeError('Expected argument all_tags to be a list')
+        __self__.all_tags = all_tags
+        """
+        A set of string tags applied on the subnet.
+        """
         if allocation_pools and not isinstance(allocation_pools, list):
             raise TypeError('Expected argument allocation_pools to be a list')
         __self__.allocation_pools = allocation_pools
@@ -82,7 +88,7 @@ class GetSubnetResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_subnet(cidr=None, description=None, dhcp_disabled=None, dhcp_enabled=None, gateway_ip=None, ip_version=None, ipv6_address_mode=None, ipv6_ra_mode=None, name=None, network_id=None, region=None, subnet_id=None, subnetpool_id=None, tenant_id=None):
+async def get_subnet(cidr=None, description=None, dhcp_disabled=None, dhcp_enabled=None, gateway_ip=None, ip_version=None, ipv6_address_mode=None, ipv6_ra_mode=None, name=None, network_id=None, region=None, subnet_id=None, subnetpool_id=None, tags=None, tenant_id=None):
     """
     Use this data source to get the ID of an available OpenStack subnet.
     """
@@ -101,10 +107,12 @@ async def get_subnet(cidr=None, description=None, dhcp_disabled=None, dhcp_enabl
     __args__['region'] = region
     __args__['subnetId'] = subnet_id
     __args__['subnetpoolId'] = subnetpool_id
+    __args__['tags'] = tags
     __args__['tenantId'] = tenant_id
     __ret__ = await pulumi.runtime.invoke('openstack:networking/getSubnet:getSubnet', __args__)
 
     return GetSubnetResult(
+        all_tags=__ret__.get('allTags'),
         allocation_pools=__ret__.get('allocationPools'),
         cidr=__ret__.get('cidr'),
         description=__ret__.get('description'),

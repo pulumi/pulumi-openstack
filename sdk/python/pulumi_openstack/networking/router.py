@@ -14,6 +14,11 @@ class Router(pulumi.CustomResource):
     (must be "true" or "false" if provided). Changing this updates the
     `admin_state_up` of an existing router.
     """
+    all_tags: pulumi.Output[list]
+    """
+    The collection of tags assigned on the router, which have been
+    explicitly and implicitly added.
+    """
     availability_zone_hints: pulumi.Output[list]
     """
     An availability zone is used to make 
@@ -170,6 +175,8 @@ class Router(pulumi.CustomResource):
         __props__['value_specs'] = value_specs
 
         __props__['vendor_options'] = vendor_options
+
+        __props__['all_tags'] = None
 
         super(Router, __self__).__init__(
             'openstack:networking/router:Router',

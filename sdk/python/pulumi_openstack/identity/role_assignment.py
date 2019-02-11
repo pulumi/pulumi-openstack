@@ -20,6 +20,7 @@ class RoleAssignment(pulumi.CustomResource):
     """
     The project to assign the role in.
     """
+    region: pulumi.Output[str]
     role_id: pulumi.Output[str]
     """
     The role to assign.
@@ -28,7 +29,7 @@ class RoleAssignment(pulumi.CustomResource):
     """
     The user to assign the role to.
     """
-    def __init__(__self__, __name__, __opts__=None, domain_id=None, group_id=None, project_id=None, role_id=None, user_id=None):
+    def __init__(__self__, __name__, __opts__=None, domain_id=None, group_id=None, project_id=None, region=None, role_id=None, user_id=None):
         """
         Manages a V3 Role assignment within OpenStack Keystone.
         
@@ -41,6 +42,7 @@ class RoleAssignment(pulumi.CustomResource):
         :param pulumi.Input[str] domain_id: The domain to assign the role in.
         :param pulumi.Input[str] group_id: The group to assign the role to.
         :param pulumi.Input[str] project_id: The project to assign the role in.
+        :param pulumi.Input[str] region
         :param pulumi.Input[str] role_id: The role to assign.
         :param pulumi.Input[str] user_id: The user to assign the role to.
         """
@@ -58,6 +60,8 @@ class RoleAssignment(pulumi.CustomResource):
         __props__['group_id'] = group_id
 
         __props__['project_id'] = project_id
+
+        __props__['region'] = region
 
         if not role_id:
             raise TypeError('Missing required property role_id')

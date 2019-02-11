@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_compute_flavor_v2_small = pulumi.output(openstack.compute.getFlavor({
+ * const small = pulumi.output(openstack.compute.getFlavor({
  *     ram: 512,
  *     vcpus: 1,
  * }));
@@ -23,6 +23,7 @@ export function getFlavor(args?: GetFlavorArgs, opts?: pulumi.InvokeOptions): Pr
     args = args || {};
     return pulumi.runtime.invoke("openstack:compute/getFlavor:getFlavor", {
         "disk": args.disk,
+        "flavorId": args.flavorId,
         "minDisk": args.minDisk,
         "minRam": args.minRam,
         "name": args.name,
@@ -43,15 +44,22 @@ export interface GetFlavorArgs {
      */
     readonly disk?: number;
     /**
-     * The minimum amount of disk (in gigabytes).
+     * The ID of the flavor. Conflicts with the `name`,
+     * `min_ram` and `min_disk`
+     */
+    readonly flavorId?: string;
+    /**
+     * The minimum amount of disk (in gigabytes). Conflicts
+     * with the `flavor_id`.
      */
     readonly minDisk?: number;
     /**
-     * The minimum amount of RAM (in megabytes).
+     * The minimum amount of RAM (in megabytes). Conflicts
+     * with the `flavor_id`.
      */
     readonly minRam?: number;
     /**
-     * The name of the flavor.
+     * The name of the flavor. Conflicts with the `flavor_id`.
      */
     readonly name?: string;
     /**

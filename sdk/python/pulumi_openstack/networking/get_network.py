@@ -11,12 +11,18 @@ class GetNetworkResult(object):
     """
     A collection of values returned by getNetwork.
     """
-    def __init__(__self__, admin_state_up=None, availability_zone_hints=None, region=None, shared=None, id=None):
+    def __init__(__self__, admin_state_up=None, all_tags=None, availability_zone_hints=None, region=None, shared=None, id=None):
         if admin_state_up and not isinstance(admin_state_up, str):
             raise TypeError('Expected argument admin_state_up to be a str')
         __self__.admin_state_up = admin_state_up
         """
         (Optional) The administrative state of the network.
+        """
+        if all_tags and not isinstance(all_tags, list):
+            raise TypeError('Expected argument all_tags to be a list')
+        __self__.all_tags = all_tags
+        """
+        The set of string tags applied on the network.
         """
         if availability_zone_hints and not isinstance(availability_zone_hints, list):
             raise TypeError('Expected argument availability_zone_hints to be a list')
@@ -44,7 +50,7 @@ class GetNetworkResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_network(description=None, external=None, matching_subnet_cidr=None, name=None, network_id=None, region=None, status=None, tenant_id=None, transparent_vlan=None):
+async def get_network(description=None, external=None, matching_subnet_cidr=None, name=None, network_id=None, region=None, status=None, tags=None, tenant_id=None, transparent_vlan=None):
     """
     Use this data source to get the ID of an available OpenStack network.
     """
@@ -57,12 +63,14 @@ async def get_network(description=None, external=None, matching_subnet_cidr=None
     __args__['networkId'] = network_id
     __args__['region'] = region
     __args__['status'] = status
+    __args__['tags'] = tags
     __args__['tenantId'] = tenant_id
     __args__['transparentVlan'] = transparent_vlan
     __ret__ = await pulumi.runtime.invoke('openstack:networking/getNetwork:getNetwork', __args__)
 
     return GetNetworkResult(
         admin_state_up=__ret__.get('adminStateUp'),
+        all_tags=__ret__.get('allTags'),
         availability_zone_hints=__ret__.get('availabilityZoneHints'),
         region=__ret__.get('region'),
         shared=__ret__.get('shared'),

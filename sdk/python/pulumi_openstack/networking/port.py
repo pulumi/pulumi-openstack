@@ -24,6 +24,11 @@ class Port(pulumi.CustomResource):
     The collection of Security Group IDs on the port
     which have been explicitly and implicitly added.
     """
+    all_tags: pulumi.Output[list]
+    """
+    The collection of tags assigned on the port, which have been
+    explicitly and implicitly added.
+    """
     allowed_address_pairs: pulumi.Output[list]
     """
     An IP/MAC Address pair of additional IP
@@ -210,6 +215,7 @@ class Port(pulumi.CustomResource):
 
         __props__['all_fixed_ips'] = None
         __props__['all_security_group_ids'] = None
+        __props__['all_tags'] = None
 
         super(Port, __self__).__init__(
             'openstack:networking/port:Port',

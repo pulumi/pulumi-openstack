@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_dns_zone_v2_zone_1 = pulumi.output(openstack.dns.getDnsZone({
+ * const zone1 = pulumi.output(openstack.dns.getDnsZone({
  *     name: "example.com",
  * }));
  * ```

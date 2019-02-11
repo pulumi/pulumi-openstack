@@ -23,6 +23,7 @@ func LookupSubnetPool(ctx *pulumi.Context, args *GetSubnetPoolArgs) (*GetSubnetP
 		inputs["projectId"] = args.ProjectId
 		inputs["region"] = args.Region
 		inputs["shared"] = args.Shared
+		inputs["tags"] = args.Tags
 	}
 	outputs, err := ctx.Invoke("openstack:networking/getSubnetPool:getSubnetPool", inputs)
 	if err != nil {
@@ -30,6 +31,7 @@ func LookupSubnetPool(ctx *pulumi.Context, args *GetSubnetPoolArgs) (*GetSubnetP
 	}
 	return &GetSubnetPoolResult{
 		AddressScopeId: outputs["addressScopeId"],
+		AllTags: outputs["allTags"],
 		CreatedAt: outputs["createdAt"],
 		DefaultPrefixlen: outputs["defaultPrefixlen"],
 		DefaultQuota: outputs["defaultQuota"],
@@ -80,6 +82,8 @@ type GetSubnetPoolArgs struct {
 	Region interface{}
 	// Whether this subnetpool is shared across all projects.
 	Shared interface{}
+	// The list of subnetpool tags to filter.
+	Tags interface{}
 }
 
 // A collection of values returned by getSubnetPool.
@@ -87,6 +91,8 @@ type GetSubnetPoolResult struct {
 	// See Argument Reference above.
 	// * `ip_version` -The IP protocol version.
 	AddressScopeId interface{}
+	// The set of string tags applied on the subnetpool.
+	AllTags interface{}
 	// The time at which subnetpool was created.
 	CreatedAt interface{}
 	// See Argument Reference above.

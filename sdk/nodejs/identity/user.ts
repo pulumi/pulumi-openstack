@@ -16,11 +16,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_identity_project_v3_project_1 = new openstack.identity.Project("project_1", {
+ * const project1 = new openstack.identity.Project("project_1", {
  *     name: "project_1",
  * });
- * const openstack_identity_user_v3_user_1 = new openstack.identity.User("user_1", {
- *     defaultProjectId: openstack_identity_project_v3_project_1.id,
+ * const user1 = new openstack.identity.User("user_1", {
+ *     defaultProjectId: project1.id,
  *     description: "A user",
  *     extra: {
  *         email: "user_1@foobar.com",

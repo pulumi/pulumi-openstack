@@ -19,7 +19,9 @@ class RecordSet(pulumi.CustomResource):
     """
     records: pulumi.Output[list]
     """
-    An array of DNS records.
+    An array of DNS records. _Note:_ if an IPv6 address
+    contains brackets (`[ ]`), the brackets will be stripped and the modified
+    address will be recorded in the state.
     """
     region: pulumi.Output[str]
     """
@@ -56,7 +58,9 @@ class RecordSet(pulumi.CustomResource):
         :param pulumi.Input[str] description: A description of the  record set.
         :param pulumi.Input[str] name: The name of the record set. Note the `.` at the end of the name.
                Changing this creates a new DNS  record set.
-        :param pulumi.Input[list] records: An array of DNS records.
+        :param pulumi.Input[list] records: An array of DNS records. _Note:_ if an IPv6 address
+               contains brackets (`[ ]`), the brackets will be stripped and the modified
+               address will be recorded in the state.
         :param pulumi.Input[str] region: The region in which to obtain the V2 DNS client.
                If omitted, the `region` argument of the provider is used.
                Changing this creates a new DNS  record set.

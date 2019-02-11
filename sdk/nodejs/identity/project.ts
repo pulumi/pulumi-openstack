@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_identity_project_v3_project_1 = new openstack.identity.Project("project_1", {
+ * const project1 = new openstack.identity.Project("project_1", {
  *     description: "A project",
  *     name: "project_1",
  * });

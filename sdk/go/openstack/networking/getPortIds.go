@@ -25,6 +25,7 @@ func LookupPortIds(ctx *pulumi.Context, args *GetPortIdsArgs) (*GetPortIdsResult
 		inputs["securityGroupIds"] = args.SecurityGroupIds
 		inputs["sortDirection"] = args.SortDirection
 		inputs["sortKey"] = args.SortKey
+		inputs["status"] = args.Status
 		inputs["tags"] = args.Tags
 		inputs["tenantId"] = args.TenantId
 	}
@@ -69,6 +70,8 @@ type GetPortIdsArgs struct {
 	SortDirection interface{}
 	// Sort ports based on a certain key. Defaults to none.
 	SortKey interface{}
+	// The status of the port.
+	Status interface{}
 	// The list of port tags to filter.
 	Tags interface{}
 	TenantId interface{}

@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_identity_user_v3_user_1 = pulumi.output(openstack.identity.getUser({
+ * const user1 = pulumi.output(openstack.identity.getUser({
  *     name: "user_1",
  * }));
  * ```

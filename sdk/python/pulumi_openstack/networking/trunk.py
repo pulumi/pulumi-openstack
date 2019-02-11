@@ -14,10 +14,20 @@ class Trunk(pulumi.CustomResource):
     (must be "true" or "false" if provided). Changing this updates the
     `admin_state_up` of an existing trunk.
     """
+    all_tags: pulumi.Output[list]
+    """
+    The collection of tags assigned on the trunk, which have been
+    explicitly and implicitly added.
+    """
+    description: pulumi.Output[str]
+    """
+    Human-readable description of the trunk. Changing this
+    updates the name of the existing trunk.
+    """
     name: pulumi.Output[str]
     """
-    A unique name for the port. Changing this
-    updates the `name` of an existing port.
+    A unique name for the trunk. Changing this
+    updates the `name` of an existing trunk.
     """
     port_id: pulumi.Output[str]
     """
@@ -38,12 +48,15 @@ class Trunk(pulumi.CustomResource):
     The structure of each subport is described below.
     """
     tags: pulumi.Output[list]
+    """
+    A set of string tags for the port.
+    """
     tenant_id: pulumi.Output[str]
     """
     The owner of the Trunk. Required if admin wants
     to create a trunk on behalf of another tenant. Changing this creates a new trunk.
     """
-    def __init__(__self__, __name__, __opts__=None, admin_state_up=None, name=None, port_id=None, region=None, sub_ports=None, tags=None, tenant_id=None):
+    def __init__(__self__, __name__, __opts__=None, admin_state_up=None, description=None, name=None, port_id=None, region=None, sub_ports=None, tags=None, tenant_id=None):
         """
         Manages a networking V2 trunk resource within OpenStack.
         
@@ -53,8 +66,10 @@ class Trunk(pulumi.CustomResource):
         :param pulumi.Input[bool] admin_state_up: Administrative up/down status for the trunk
                (must be "true" or "false" if provided). Changing this updates the
                `admin_state_up` of an existing trunk.
-        :param pulumi.Input[str] name: A unique name for the port. Changing this
-               updates the `name` of an existing port.
+        :param pulumi.Input[str] description: Human-readable description of the trunk. Changing this
+               updates the name of the existing trunk.
+        :param pulumi.Input[str] name: A unique name for the trunk. Changing this
+               updates the `name` of an existing trunk.
         :param pulumi.Input[str] port_id: The ID of the port to be used as the parent port of the
                trunk. This is the port that should be used as the compute instance network
                port. Changing this creates a new trunk.
@@ -64,7 +79,7 @@ class Trunk(pulumi.CustomResource):
                trunk.
         :param pulumi.Input[list] sub_ports: The set of ports that will be made subports of the trunk.
                The structure of each subport is described below.
-        :param pulumi.Input[list] tags
+        :param pulumi.Input[list] tags: A set of string tags for the port.
         :param pulumi.Input[str] tenant_id: The owner of the Trunk. Required if admin wants
                to create a trunk on behalf of another tenant. Changing this creates a new trunk.
         """
@@ -79,6 +94,8 @@ class Trunk(pulumi.CustomResource):
 
         __props__['admin_state_up'] = admin_state_up
 
+        __props__['description'] = description
+
         __props__['name'] = name
 
         if not port_id:
@@ -92,6 +109,8 @@ class Trunk(pulumi.CustomResource):
         __props__['tags'] = tags
 
         __props__['tenant_id'] = tenant_id
+
+        __props__['all_tags'] = None
 
         super(Trunk, __self__).__init__(
             'openstack:networking/trunk:Trunk',

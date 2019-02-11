@@ -27,12 +27,14 @@ func NewRoleAssignment(ctx *pulumi.Context,
 		inputs["domainId"] = nil
 		inputs["groupId"] = nil
 		inputs["projectId"] = nil
+		inputs["region"] = nil
 		inputs["roleId"] = nil
 		inputs["userId"] = nil
 	} else {
 		inputs["domainId"] = args.DomainId
 		inputs["groupId"] = args.GroupId
 		inputs["projectId"] = args.ProjectId
+		inputs["region"] = args.Region
 		inputs["roleId"] = args.RoleId
 		inputs["userId"] = args.UserId
 	}
@@ -52,6 +54,7 @@ func GetRoleAssignment(ctx *pulumi.Context,
 		inputs["domainId"] = state.DomainId
 		inputs["groupId"] = state.GroupId
 		inputs["projectId"] = state.ProjectId
+		inputs["region"] = state.Region
 		inputs["roleId"] = state.RoleId
 		inputs["userId"] = state.UserId
 	}
@@ -87,6 +90,10 @@ func (r *RoleAssignment) ProjectId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["projectId"])
 }
 
+func (r *RoleAssignment) Region() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["region"])
+}
+
 // The role to assign.
 func (r *RoleAssignment) RoleId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["roleId"])
@@ -105,6 +112,7 @@ type RoleAssignmentState struct {
 	GroupId interface{}
 	// The project to assign the role in.
 	ProjectId interface{}
+	Region interface{}
 	// The role to assign.
 	RoleId interface{}
 	// The user to assign the role to.
@@ -119,6 +127,7 @@ type RoleAssignmentArgs struct {
 	GroupId interface{}
 	// The project to assign the role in.
 	ProjectId interface{}
+	Region interface{}
 	// The role to assign.
 	RoleId interface{}
 	// The user to assign the role to.

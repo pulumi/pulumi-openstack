@@ -14,22 +14,22 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_compute_instance_v2_instance_1 = new openstack.compute.Instance("instance_1", {
+ * const instance1 = new openstack.compute.Instance("instance_1", {
  *     name: "instance_1",
  *     securityGroups: ["default"],
  * });
- * const openstack_networking_network_v2_network_1 = new openstack.networking.Network("network_1", {
- *     adminStateUp: "true",
+ * const network1 = new openstack.networking.Network("network_1", {
+ *     adminStateUp: true,
  *     name: "network_1",
  * });
- * const openstack_networking_port_v2_port_1 = new openstack.networking.Port("port_1", {
+ * const port1 = new openstack.networking.Port("port_1", {
  *     adminStateUp: true,
  *     name: "port_1",
- *     networkId: openstack_networking_network_v2_network_1.id,
+ *     networkId: network1.id,
  * });
- * const openstack_compute_interface_attach_v2_ai_1 = new openstack.compute.InterfaceAttach("ai_1", {
- *     instanceId: openstack_compute_instance_v2_instance_1.id,
- *     portId: openstack_networking_port_v2_port_1.id,
+ * const ai1 = new openstack.compute.InterfaceAttach("ai_1", {
+ *     instanceId: instance1.id,
+ *     portId: port1.id,
  * });
  * ```
  * ### Attaching Multiple Interfaces
@@ -39,27 +39,27 @@ import * as utilities from "../utilities";
  * import * as openstack from "@pulumi/openstack";
  * import sprintf = require("sprintf-js");
  * 
- * const openstack_compute_instance_v2_instance_1 = new openstack.compute.Instance("instance_1", {
+ * const instance1 = new openstack.compute.Instance("instance_1", {
  *     name: "instance_1",
  *     securityGroups: ["default"],
  * });
- * const openstack_networking_network_v2_network_1 = new openstack.networking.Network("network_1", {
- *     adminStateUp: "true",
+ * const network1 = new openstack.networking.Network("network_1", {
+ *     adminStateUp: true,
  *     name: "network_1",
  * });
- * const openstack_networking_port_v2_ports: openstack.networking.Port[] = [];
+ * const ports: openstack.networking.Port[] = [];
  * for (let i = 0; i < 2; i++) {
- *     openstack_networking_port_v2_ports.push(new openstack.networking.Port(`ports-${i}`, {
+ *     ports.push(new openstack.networking.Port(`ports-${i}`, {
  *         adminStateUp: true,
  *         name: sprintf.sprintf("port-%02d", (i + 1)),
- *         networkId: openstack_networking_network_v2_network_1.id,
+ *         networkId: network1.id,
  *     }));
  * }
- * const openstack_compute_interface_attach_v2_attachments: openstack.compute.InterfaceAttach[] = [];
+ * const attachments: openstack.compute.InterfaceAttach[] = [];
  * for (let i = 0; i < 2; i++) {
- *     openstack_compute_interface_attach_v2_attachments.push(new openstack.compute.InterfaceAttach(`attachments-${i}`, {
- *         instanceId: openstack_compute_instance_v2_instance_1.id,
- *         portId: pulumi.all(openstack_networking_port_v2_ports.map(v => v.id)).apply(__arg0 => __arg0.map(v => v)[i]),
+ *     attachments.push(new openstack.compute.InterfaceAttach(`attachments-${i}`, {
+ *         instanceId: instance1.id,
+ *         portId: pulumi.all(ports.map(v => v.id)).apply(id => id.map(v => v)[i]),
  *     }));
  * }
  * ```
@@ -75,29 +75,29 @@ import * as utilities from "../utilities";
  * import * as openstack from "@pulumi/openstack";
  * import sprintf = require("sprintf-js");
  * 
- * const openstack_compute_instance_v2_instance_1 = new openstack.compute.Instance("instance_1", {
+ * const instance1 = new openstack.compute.Instance("instance_1", {
  *     name: "instance_1",
  *     securityGroups: ["default"],
  * });
- * const openstack_networking_network_v2_network_1 = new openstack.networking.Network("network_1", {
- *     adminStateUp: "true",
+ * const network1 = new openstack.networking.Network("network_1", {
+ *     adminStateUp: true,
  *     name: "network_1",
  * });
- * const openstack_networking_port_v2_ports: openstack.networking.Port[] = [];
+ * const ports: openstack.networking.Port[] = [];
  * for (let i = 0; i < 2; i++) {
- *     openstack_networking_port_v2_ports.push(new openstack.networking.Port(`ports-${i}`, {
+ *     ports.push(new openstack.networking.Port(`ports-${i}`, {
  *         adminStateUp: true,
  *         name: sprintf.sprintf("port-%02d", (i + 1)),
- *         networkId: openstack_networking_network_v2_network_1.id,
+ *         networkId: network1.id,
  *     }));
  * }
- * const openstack_compute_interface_attach_v2_ai_1 = new openstack.compute.InterfaceAttach("ai_1", {
- *     instanceId: openstack_compute_instance_v2_instance_1.id,
- *     portId: pulumi.all(openstack_networking_port_v2_ports.map(v => v.id)).apply(__arg0 => __arg0.map(v => v)[0]),
+ * const ai1 = new openstack.compute.InterfaceAttach("ai_1", {
+ *     instanceId: instance1.id,
+ *     portId: pulumi.all(ports.map(v => v.id)).apply(id => id.map(v => v)[0]),
  * });
- * const openstack_compute_interface_attach_v2_ai_2 = new openstack.compute.InterfaceAttach("ai_2", {
- *     instanceId: openstack_compute_instance_v2_instance_1.id,
- *     portId: pulumi.all(openstack_networking_port_v2_ports.map(v => v.id)).apply(__arg0 => __arg0.map(v => v)[1]),
+ * const ai2 = new openstack.compute.InterfaceAttach("ai_2", {
+ *     instanceId: instance1.id,
+ *     portId: pulumi.all(ports.map(v => v.id)).apply(id => id.map(v => v)[1]),
  * });
  * ```
  */

@@ -3,9 +3,11 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
+from .address_scope import *
 from .floating_ip_associate import *
 from .floating_ip import *
 from .network import *
+from .port_sec_group_associate import *
 from .port import *
 from .router_interface import *
 from .router_route import *

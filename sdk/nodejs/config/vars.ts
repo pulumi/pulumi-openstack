@@ -7,6 +7,18 @@ import * as utilities from "../utilities";
 let __config = new pulumi.Config("openstack");
 
 /**
+ * Application Credential ID to login with.
+ */
+export let applicationCredentialId: string | undefined = __config.get("applicationCredentialId");
+/**
+ * Application Credential name to login with.
+ */
+export let applicationCredentialName: string | undefined = __config.get("applicationCredentialName");
+/**
+ * Application Credential secret to login with.
+ */
+export let applicationCredentialSecret: string | undefined = __config.get("applicationCredentialSecret");
+/**
  * The Identity authentication URL.
  */
 export let authUrl: string | undefined = __config.get("authUrl") || utilities.getEnv("OS_AUTH_URL");

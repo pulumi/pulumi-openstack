@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_images_image_v2_rancheros = new openstack.images.Image("rancheros", {
+ * const rancheros = new openstack.images.Image("rancheros", {
  *     containerFormat: "bare",
  *     diskFormat: "qcow2",
  *     imageSourceUrl: "https://releases.rancher.com/os/latest/rancheros-openstack.img",
@@ -83,7 +83,7 @@ export class Image extends pulumi.CustomResource {
     /**
      * The metadata associated with the image.
      * Image metadata allow for meaningfully define the image properties
-     * and tags. See http://docs.openstack.org/developer/glance/metadefs-concepts.html.
+     * and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
      */
     public /*out*/ readonly metadata: pulumi.Output<{[key: string]: any}>;
     /**
@@ -142,9 +142,13 @@ export class Image extends pulumi.CustomResource {
      */
     public readonly tags: pulumi.Output<string[] | undefined>;
     /**
-     * The date the image was last updated.
+     * (**Deprecated** - use `updated_at` instead)
      */
     public /*out*/ readonly updateAt: pulumi.Output<string>;
+    /**
+     * The date the image was last updated.
+     */
+    public /*out*/ readonly updatedAt: pulumi.Output<string>;
     /**
      * If false, the checksum will not be verified
      * once the image is finished uploading. Defaults to true.
@@ -190,6 +194,7 @@ export class Image extends pulumi.CustomResource {
             inputs["status"] = state ? state.status : undefined;
             inputs["tags"] = state ? state.tags : undefined;
             inputs["updateAt"] = state ? state.updateAt : undefined;
+            inputs["updatedAt"] = state ? state.updatedAt : undefined;
             inputs["verifyChecksum"] = state ? state.verifyChecksum : undefined;
             inputs["visibility"] = state ? state.visibility : undefined;
         } else {
@@ -223,6 +228,7 @@ export class Image extends pulumi.CustomResource {
             inputs["sizeBytes"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
             inputs["updateAt"] = undefined /*out*/;
+            inputs["updatedAt"] = undefined /*out*/;
         }
         super("openstack:images/image:Image", name, inputs, opts);
     }
@@ -278,7 +284,7 @@ export interface ImageState {
     /**
      * The metadata associated with the image.
      * Image metadata allow for meaningfully define the image properties
-     * and tags. See http://docs.openstack.org/developer/glance/metadefs-concepts.html.
+     * and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
      */
     readonly metadata?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -337,9 +343,13 @@ export interface ImageState {
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The date the image was last updated.
+     * (**Deprecated** - use `updated_at` instead)
      */
     readonly updateAt?: pulumi.Input<string>;
+    /**
+     * The date the image was last updated.
+     */
+    readonly updatedAt?: pulumi.Input<string>;
     /**
      * If false, the checksum will not be verified
      * once the image is finished uploading. Defaults to true.

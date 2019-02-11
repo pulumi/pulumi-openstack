@@ -38,7 +38,7 @@ class Instance(pulumi.CustomResource):
     structure is documented below. Changing this creates a new server.
     You can specify multiple block devices which will create an instance with
     multiple disks. This configuration is very flexible, so please see the
-    following [reference](http://docs.openstack.org/developer/nova/block_device_mapping.html)
+    following [reference](https://docs.openstack.org/nova/latest/user/block-device-mapping.html)
     for more information.
     """
     config_drive: pulumi.Output[bool]
@@ -161,7 +161,7 @@ class Instance(pulumi.CustomResource):
                structure is documented below. Changing this creates a new server.
                You can specify multiple block devices which will create an instance with
                multiple disks. This configuration is very flexible, so please see the
-               following [reference](http://docs.openstack.org/developer/nova/block_device_mapping.html)
+               following [reference](https://docs.openstack.org/nova/latest/user/block-device-mapping.html)
                for more information.
         :param pulumi.Input[bool] config_drive: Whether to use the config_drive feature to
                configure the instance. Changing this creates a new server.

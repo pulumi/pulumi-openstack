@@ -251,19 +251,21 @@ func Provider() tfbridge.ProviderInfo {
 			"openstack_images_image_v2": {Tok: openstackResource(imagesMod, "Image")},
 
 			// Networking
-			"openstack_networking_floatingip_v2":           {Tok: openstackResource(networkingMod, "FloatingIp")},
-			"openstack_networking_floatingip_associate_v2": {Tok: openstackResource(networkingMod, "FloatingIpAssociate")},
-			"openstack_networking_network_v2":              {Tok: openstackResource(networkingMod, "Network")},
-			"openstack_networking_port_v2":                 {Tok: openstackResource(networkingMod, "Port")},
-			"openstack_networking_router_interface_v2":     {Tok: openstackResource(networkingMod, "RouterInterface")},
-			"openstack_networking_router_route_v2":         {Tok: openstackResource(networkingMod, "RouterRoute")},
-			"openstack_networking_router_v2":               {Tok: openstackResource(networkingMod, "Router")},
-			"openstack_networking_subnet_v2":               {Tok: openstackResource(networkingMod, "Subnet")},
-			"openstack_networking_subnet_route_v2":         {Tok: openstackResource(networkingMod, "SubnetRoute")},
-			"openstack_networking_subnetpool_v2":           {Tok: openstackResource(networkingMod, "SubnetPool")},
-			"openstack_networking_secgroup_v2":             {Tok: openstackResource(networkingMod, "SecGroup")},
-			"openstack_networking_secgroup_rule_v2":        {Tok: openstackResource(networkingMod, "SecGroupRule")},
-			"openstack_networking_trunk_v2":                {Tok: openstackResource(networkingMod, "Trunk")},
+			"openstack_networking_addressscope_v2":            {Tok: openstackResource(networkingMod, "AddressScope")},
+			"openstack_networking_floatingip_v2":              {Tok: openstackResource(networkingMod, "FloatingIp")},
+			"openstack_networking_floatingip_associate_v2":    {Tok: openstackResource(networkingMod, "FloatingIpAssociate")},
+			"openstack_networking_network_v2":                 {Tok: openstackResource(networkingMod, "Network")},
+			"openstack_networking_port_v2":                    {Tok: openstackResource(networkingMod, "Port")},
+			"openstack_networking_port_secgroup_associate_v2": {Tok: openstackResource(networkingMod, "PortSecGroupAssociate")},
+			"openstack_networking_router_interface_v2":        {Tok: openstackResource(networkingMod, "RouterInterface")},
+			"openstack_networking_router_route_v2":            {Tok: openstackResource(networkingMod, "RouterRoute")},
+			"openstack_networking_router_v2":                  {Tok: openstackResource(networkingMod, "Router")},
+			"openstack_networking_subnet_v2":                  {Tok: openstackResource(networkingMod, "Subnet")},
+			"openstack_networking_subnet_route_v2":            {Tok: openstackResource(networkingMod, "SubnetRoute")},
+			"openstack_networking_subnetpool_v2":              {Tok: openstackResource(networkingMod, "SubnetPool")},
+			"openstack_networking_secgroup_v2":                {Tok: openstackResource(networkingMod, "SecGroup")},
+			"openstack_networking_secgroup_rule_v2":           {Tok: openstackResource(networkingMod, "SecGroupRule")},
+			"openstack_networking_trunk_v2":                   {Tok: openstackResource(networkingMod, "Trunk")},
 
 			// Load Balancer
 			"openstack_lb_member_v1":       {Tok: openstackResource(lbMod, "MemberV1")},
@@ -351,7 +353,7 @@ func Provider() tfbridge.ProviderInfo {
 				"@types/node": "^8.0.25", // so we can access strongly typed node definitions.
 			},
 			Dependencies: map[string]string{
-				"@pulumi/pulumi": "^0.16.4",
+				"@pulumi/pulumi": "^0.16.14",
 			},
 			Overlay: &tfbridge.OverlayInfo{
 				Files:   []string{},
@@ -360,7 +362,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		Python: &tfbridge.PythonInfo{
 			Requires: map[string]string{
-				"pulumi": ">=0.16.4,<0.17.0",
+				"pulumi": ">=0.16.14,<0.17.0",
 			},
 		},
 	}

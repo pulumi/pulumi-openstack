@@ -10,7 +10,7 @@ from .. import utilities, tables
 class ShareAccess(pulumi.CustomResource):
     access_level: pulumi.Output[str]
     """
-    The access level to the share. Can either be rw or ro.
+    The access level to the share. Can either be `rw` or `ro`.
     """
     access_to: pulumi.Output[str]
     """
@@ -21,21 +21,30 @@ class ShareAccess(pulumi.CustomResource):
     """
     The access rule type. Can either be an ip, user or cert.
     """
+    region: pulumi.Output[str]
+    """
+    The region in which to obtain the V2 Shared File System client.
+    A Shared File System client is needed to create a share access. Changing this
+    creates a new share access.
+    """
     share_id: pulumi.Output[str]
     """
     The UUID of the share to which you are granted access.
     """
-    def __init__(__self__, __name__, __opts__=None, access_level=None, access_to=None, access_type=None, share_id=None):
+    def __init__(__self__, __name__, __opts__=None, access_level=None, access_to=None, access_type=None, region=None, share_id=None):
         """
         Use this resource to control the share access lists.
         
         
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
-        :param pulumi.Input[str] access_level: The access level to the share. Can either be rw or ro.
+        :param pulumi.Input[str] access_level: The access level to the share. Can either be `rw` or `ro`.
         :param pulumi.Input[str] access_to: The value that defines the access. Can either be an IP
                address or a username verified by configured Security Service of the Share Network.
         :param pulumi.Input[str] access_type: The access rule type. Can either be an ip, user or cert.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Shared File System client.
+               A Shared File System client is needed to create a share access. Changing this
+               creates a new share access.
         :param pulumi.Input[str] share_id: The UUID of the share to which you are granted access.
         """
         if not __name__:
@@ -58,6 +67,8 @@ class ShareAccess(pulumi.CustomResource):
         if not access_type:
             raise TypeError('Missing required property access_type')
         __props__['access_type'] = access_type
+
+        __props__['region'] = region
 
         if not share_id:
             raise TypeError('Missing required property share_id')

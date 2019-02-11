@@ -25,18 +25,18 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_blockstorage_volume_v2_volume_1 = new openstack.blockstorage.VolumeV2("volume_1", {
+ * const volume1 = new openstack.blockstorage.VolumeV2("volume_1", {
  *     name: "volume_1",
  *     size: 1,
  * });
- * const openstack_blockstorage_volume_attach_v2_va_1 = new openstack.blockstorage.VolumeAttachV2("va_1", {
+ * const va1 = new openstack.blockstorage.VolumeAttachV2("va_1", {
  *     device: "auto",
  *     hostName: "devstack",
  *     initiator: "iqn.1993-08.org.debian:01:e9861fb1859",
  *     ipAddress: "192.168.255.10",
  *     osType: "linux2",
  *     platform: "x86_64",
- *     volumeId: openstack_blockstorage_volume_v2_volume_1.id,
+ *     volumeId: volume1.id,
  * });
  * ```
  */

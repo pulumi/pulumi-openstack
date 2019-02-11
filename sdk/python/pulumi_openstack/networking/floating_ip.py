@@ -15,6 +15,11 @@ class FloatingIp(pulumi.CustomResource):
     an admin user or have had a custom policy or role applied to your OpenStack
     user or project.
     """
+    all_tags: pulumi.Output[list]
+    """
+    The collection of tags assigned on the floating IP, which have
+    been explicitly and implicitly added.
+    """
     description: pulumi.Output[str]
     """
     Human-readable description for the floating IP.
@@ -127,6 +132,8 @@ class FloatingIp(pulumi.CustomResource):
         __props__['tenant_id'] = tenant_id
 
         __props__['value_specs'] = value_specs
+
+        __props__['all_tags'] = None
 
         super(FloatingIp, __self__).__init__(
             'openstack:networking/floatingIp:FloatingIp',

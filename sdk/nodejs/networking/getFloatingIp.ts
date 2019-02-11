@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_networking_floatingip_v2_floatingip_1 = pulumi.output(openstack.networking.getFloatingIp({
+ * const floatingip1 = pulumi.output(openstack.networking.getFloatingIp({
  *     address: "192.168.0.4",
  * }));
  * ```
@@ -28,6 +28,7 @@ export function getFloatingIp(args?: GetFloatingIpArgs, opts?: pulumi.InvokeOpti
         "portId": args.portId,
         "region": args.region,
         "status": args.status,
+        "tags": args.tags,
         "tenantId": args.tenantId,
     }, opts);
 }
@@ -62,7 +63,14 @@ export interface GetFloatingIpArgs {
      * `region` argument of the provider is used.
      */
     readonly region?: string;
+    /**
+     * status of the floating IP (ACTIVE/DOWN).
+     */
     readonly status?: string;
+    /**
+     * The list of floating IP tags to filter.
+     */
+    readonly tags?: string[];
     /**
      * The owner of the floating IP.
      */
@@ -73,6 +81,10 @@ export interface GetFloatingIpArgs {
  * A collection of values returned by getFloatingIp.
  */
 export interface GetFloatingIpResult {
+    /**
+     * A set of string tags applied on the floating IP.
+     */
+    readonly allTags: string[];
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

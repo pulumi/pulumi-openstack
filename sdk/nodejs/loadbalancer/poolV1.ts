@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_lb_pool_v1_pool_1 = new openstack.loadbalancer.PoolV1("pool_1", {
+ * const pool1 = new openstack.loadbalancer.PoolV1("pool_1", {
  *     lbMethod: "ROUND_ROBIN",
  *     lbProvider: "haproxy",
  *     monitorIds: ["67890"],

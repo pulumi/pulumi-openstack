@@ -154,7 +154,7 @@ func (r *Instance) AvailabilityZone() *pulumi.StringOutput {
 // structure is documented below. Changing this creates a new server.
 // You can specify multiple block devices which will create an instance with
 // multiple disks. This configuration is very flexible, so please see the
-// following [reference](http://docs.openstack.org/developer/nova/block_device_mapping.html)
+// following [reference](https://docs.openstack.org/nova/latest/user/block-device-mapping.html)
 // for more information.
 func (r *Instance) BlockDevices() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["blockDevices"])
@@ -300,7 +300,7 @@ type InstanceState struct {
 	// structure is documented below. Changing this creates a new server.
 	// You can specify multiple block devices which will create an instance with
 	// multiple disks. This configuration is very flexible, so please see the
-	// following [reference](http://docs.openstack.org/developer/nova/block_device_mapping.html)
+	// following [reference](https://docs.openstack.org/nova/latest/user/block-device-mapping.html)
 	// for more information.
 	BlockDevices interface{}
 	// Whether to use the config_drive feature to
@@ -388,7 +388,7 @@ type InstanceArgs struct {
 	// structure is documented below. Changing this creates a new server.
 	// You can specify multiple block devices which will create an instance with
 	// multiple disks. This configuration is very flexible, so please see the
-	// following [reference](http://docs.openstack.org/developer/nova/block_device_mapping.html)
+	// following [reference](https://docs.openstack.org/nova/latest/user/block-device-mapping.html)
 	// for more information.
 	BlockDevices interface{}
 	// Whether to use the config_drive feature to

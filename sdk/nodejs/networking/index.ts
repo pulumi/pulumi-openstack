@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 // Export members:
+export * from "./addressScope";
 export * from "./floatingIp";
 export * from "./floatingIpAssociate";
 export * from "./getFloatingIp";
@@ -14,6 +15,7 @@ export * from "./getSubnet";
 export * from "./getSubnetPool";
 export * from "./network";
 export * from "./port";
+export * from "./portSecGroupAssociate";
 export * from "./router";
 export * from "./routerInterface";
 export * from "./routerRoute";

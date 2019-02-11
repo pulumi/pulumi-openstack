@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_compute_servergroup_v2_test_sg = new openstack.compute.ServerGroup("test-sg", {
+ * const test_sg = new openstack.compute.ServerGroup("test-sg", {
  *     name: "my-sg",
  *     policies: ["anti-affinity"],
  * });

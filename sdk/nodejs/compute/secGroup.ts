@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_compute_secgroup_v2_secgroup_1 = new openstack.compute.SecGroup("secgroup_1", {
+ * const secgroup1 = new openstack.compute.SecGroup("secgroup_1", {
  *     description: "my security group",
  *     name: "my_secgroup",
  *     rules: [

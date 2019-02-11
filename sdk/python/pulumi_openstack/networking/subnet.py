@@ -8,6 +8,11 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class Subnet(pulumi.CustomResource):
+    all_tags: pulumi.Output[list]
+    """
+    The collection of ags assigned on the subnet, which have been
+    explicitly and implicitly added.
+    """
     allocation_pools: pulumi.Output[list]
     """
     An array of sub-ranges of CIDR available for
@@ -202,6 +207,8 @@ class Subnet(pulumi.CustomResource):
         __props__['tenant_id'] = tenant_id
 
         __props__['value_specs'] = value_specs
+
+        __props__['all_tags'] = None
 
         super(Subnet, __self__).__init__(
             'openstack:networking/subnet:Subnet',

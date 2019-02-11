@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_identity_endpoint_v3_endpoint_1 = pulumi.output(openstack.identity.getEndpoint({
+ * const endpoint1 = pulumi.output(openstack.identity.getEndpoint({
  *     serviceName: "demo",
  * }));
  * ```

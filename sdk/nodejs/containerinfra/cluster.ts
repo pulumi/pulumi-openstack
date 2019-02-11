@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_containerinfra_cluster_v1_cluster_1 = new openstack.containerinfra.Cluster("cluster_1", {
+ * const cluster1 = new openstack.containerinfra.Cluster("cluster_1", {
  *     clusterTemplateId: "b9a45c5c-cd03-4958-82aa-b80bf93cb922",
  *     keypair: "ssh_keypair",
  *     masterCount: 3,

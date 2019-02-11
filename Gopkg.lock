@@ -237,7 +237,7 @@
   version = "v1.2.0"
 
 [[projects]]
-  digest = "1:0a8cec8cd1dff71e307660e563081caf4ce7d86a6bc87e7797c63c67b4bbf9bd"
+  digest = "1:e5e9d63c9349bdacf0df4cd84b1d4d07deebd2f9efe8dde07438b5449624b176"
   name = "github.com/gophercloud/gophercloud"
   packages = [
     ".",
@@ -290,6 +290,7 @@
     "openstack/networking/v2/extensions/fwaas/policies",
     "openstack/networking/v2/extensions/fwaas/routerinsertion",
     "openstack/networking/v2/extensions/fwaas/rules",
+    "openstack/networking/v2/extensions/layer3/addressscopes",
     "openstack/networking/v2/extensions/layer3/floatingips",
     "openstack/networking/v2/extensions/layer3/routers",
     "openstack/networking/v2/extensions/lbaas/members",
@@ -329,14 +330,14 @@
     "pagination",
   ]
   pruneopts = ""
-  revision = "b8a40d168295758ab3dbb63759c8476a02750551"
+  revision = "bb1ef8ce758cba00104a697a03ab07c77940f87e"
 
 [[projects]]
-  digest = "1:990f3e58e415d58ca3d4eecb9587bdd27c366a038c20fca72160d3558be40424"
+  digest = "1:eb0e823da4b39fb70ab49f85146fcb7e94a32e05a5f56e14c4ba3899a95ab308"
   name = "github.com/gophercloud/utils"
   packages = ["openstack/clientconfig"]
   pruneopts = ""
-  revision = "a45c12ccd8b0ce73306762607a60568a1bca4bbe"
+  revision = "fbb6ab446f0167dfa4d25b8eb0c0d2f873924516"
 
 [[projects]]
   branch = "master"
@@ -794,12 +795,12 @@
   revision = "8019298d9fa5a04fc2ad10ae03349df3483096a6"
 
 [[projects]]
-  digest = "1:edd85f173c25e4ccdf8b2d40f837b9626b91383b8d5b6b2a9bf013f9e4811662"
+  digest = "1:31522f985c873016f5a3a80f4e3544ecae37d395189acacb5982b3ea14f9cf26"
   name = "github.com/terraform-providers/terraform-provider-openstack"
   packages = ["openstack"]
   pruneopts = ""
-  revision = "fc59fbc222dbaf1e8ede6095882f99af7f239204"
-  version = "v1.14.0"
+  revision = "87fa8c913b6bb002ad8b761fa4bf83f908c50a5c"
+  version = "v1.15.1"
 
 [[projects]]
   branch = "master"

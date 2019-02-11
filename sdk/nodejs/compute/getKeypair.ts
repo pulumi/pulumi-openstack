@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_compute_keypair_v2_kp = pulumi.output(openstack.compute.getKeypair({
+ * const kp = pulumi.output(openstack.compute.getKeypair({
  *     name: "sand",
  * }));
  * ```

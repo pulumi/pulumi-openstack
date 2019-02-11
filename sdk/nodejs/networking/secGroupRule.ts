@@ -15,18 +15,18 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_networking_secgroup_v2_secgroup_1 = new openstack.networking.SecGroup("secgroup_1", {
+ * const secgroup1 = new openstack.networking.SecGroup("secgroup_1", {
  *     description: "My neutron security group",
  *     name: "secgroup_1",
  * });
- * const openstack_networking_secgroup_rule_v2_secgroup_rule_1 = new openstack.networking.SecGroupRule("secgroup_rule_1", {
+ * const secgroupRule1 = new openstack.networking.SecGroupRule("secgroup_rule_1", {
  *     direction: "ingress",
  *     ethertype: "IPv4",
  *     portRangeMax: 22,
  *     portRangeMin: 22,
  *     protocol: "tcp",
  *     remoteIpPrefix: "0.0.0.0/0",
- *     securityGroupId: openstack_networking_secgroup_v2_secgroup_1.id,
+ *     securityGroupId: secgroup1.id,
  * });
  * ```
  */

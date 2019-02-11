@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_networking_router_v2_router_1 = new openstack.networking.Router("router_1", {
+ * const router1 = new openstack.networking.Router("router_1", {
  *     adminStateUp: true,
  *     externalNetworkId: "f67f0d72-0ddf-11e4-9d95-e1f29f417e2f",
  *     name: "my_router",
@@ -39,6 +39,11 @@ export class Router extends pulumi.CustomResource {
      * `admin_state_up` of an existing router.
      */
     public readonly adminStateUp: pulumi.Output<boolean>;
+    /**
+     * The collection of tags assigned on the router, which have been
+     * explicitly and implicitly added.
+     */
+    public /*out*/ readonly allTags: pulumi.Output<string[]>;
     /**
      * An availability zone is used to make 
      * network resources highly available. Used for resources with high availability so that they are scheduled on different availability zones. Changing
@@ -127,6 +132,7 @@ export class Router extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state: RouterState = argsOrState as RouterState | undefined;
             inputs["adminStateUp"] = state ? state.adminStateUp : undefined;
+            inputs["allTags"] = state ? state.allTags : undefined;
             inputs["availabilityZoneHints"] = state ? state.availabilityZoneHints : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["distributed"] = state ? state.distributed : undefined;
@@ -156,6 +162,7 @@ export class Router extends pulumi.CustomResource {
             inputs["tenantId"] = args ? args.tenantId : undefined;
             inputs["valueSpecs"] = args ? args.valueSpecs : undefined;
             inputs["vendorOptions"] = args ? args.vendorOptions : undefined;
+            inputs["allTags"] = undefined /*out*/;
         }
         super("openstack:networking/router:Router", name, inputs, opts);
     }
@@ -171,6 +178,11 @@ export interface RouterState {
      * `admin_state_up` of an existing router.
      */
     readonly adminStateUp?: pulumi.Input<boolean>;
+    /**
+     * The collection of tags assigned on the router, which have been
+     * explicitly and implicitly added.
+     */
+    readonly allTags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * An availability zone is used to make 
      * network resources highly available. Used for resources with high availability so that they are scheduled on different availability zones. Changing

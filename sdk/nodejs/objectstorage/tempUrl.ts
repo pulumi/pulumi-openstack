@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_objectstorage_tempurl_v1_obj_tempurl = new openstack.objectstorage.TempUrl("obj_tempurl", {
+ * const objTempurl = new openstack.objectstorage.TempUrl("obj_tempurl", {
  *     container: "test",
  *     method: "post",
  *     object: "container",

@@ -8,11 +8,16 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class Network(pulumi.CustomResource):
-    admin_state_up: pulumi.Output[str]
+    admin_state_up: pulumi.Output[bool]
     """
     The administrative state of the network.
     Acceptable values are "true" and "false". Changing this value updates the
     state of the existing network.
+    """
+    all_tags: pulumi.Output[list]
+    """
+    The collection of tags assigned on the network, which have been
+    explicitly and implicitly added.
     """
     availability_zone_hints: pulumi.Output[list]
     """
@@ -48,7 +53,7 @@ class Network(pulumi.CustomResource):
     """
     An array of one or more provider segment objects.
     """
-    shared: pulumi.Output[str]
+    shared: pulumi.Output[bool]
     """
     Specifies whether the network resource can be accessed
     by any tenant or not. Changing this updates the sharing capabilities of the
@@ -81,7 +86,7 @@ class Network(pulumi.CustomResource):
         
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
-        :param pulumi.Input[str] admin_state_up: The administrative state of the network.
+        :param pulumi.Input[bool] admin_state_up: The administrative state of the network.
                Acceptable values are "true" and "false". Changing this value updates the
                state of the existing network.
         :param pulumi.Input[list] availability_zone_hints: An availability zone is used to make
@@ -100,7 +105,7 @@ class Network(pulumi.CustomResource):
                `region` argument of the provider is used. Changing this creates a new
                network.
         :param pulumi.Input[list] segments: An array of one or more provider segment objects.
-        :param pulumi.Input[str] shared: Specifies whether the network resource can be accessed
+        :param pulumi.Input[bool] shared: Specifies whether the network resource can be accessed
                by any tenant or not. Changing this updates the sharing capabilities of the
                existing network.
         :param pulumi.Input[list] tags: A set of string tags for the network. 
@@ -144,6 +149,8 @@ class Network(pulumi.CustomResource):
         __props__['transparent_vlan'] = transparent_vlan
 
         __props__['value_specs'] = value_specs
+
+        __props__['all_tags'] = None
 
         super(Network, __self__).__init__(
             'openstack:networking/network:Network',

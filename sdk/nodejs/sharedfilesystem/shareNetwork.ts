@@ -18,21 +18,21 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_networking_network_v2_network_1 = new openstack.networking.Network("network_1", {
- *     adminStateUp: "true",
+ * const network1 = new openstack.networking.Network("network_1", {
+ *     adminStateUp: true,
  *     name: "network_1",
  * });
- * const openstack_networking_subnet_v2_subnet_1 = new openstack.networking.Subnet("subnet_1", {
+ * const subnet1 = new openstack.networking.Subnet("subnet_1", {
  *     cidr: "192.168.199.0/24",
  *     ipVersion: 4,
  *     name: "subnet_1",
- *     networkId: openstack_networking_network_v2_network_1.id,
+ *     networkId: network1.id,
  * });
- * const openstack_sharedfilesystem_sharenetwork_v2_sharenetwork_1 = new openstack.sharedfilesystem.ShareNetwork("sharenetwork_1", {
+ * const sharenetwork1 = new openstack.sharedfilesystem.ShareNetwork("sharenetwork_1", {
  *     description: "test share network",
  *     name: "test_sharenetwork",
- *     neutronNetId: openstack_networking_network_v2_network_1.id,
- *     neutronSubnetId: openstack_networking_subnet_v2_subnet_1.id,
+ *     neutronNetId: network1.id,
+ *     neutronSubnetId: subnet1.id,
  * });
  * ```
  * ### Share network with associated security services
@@ -41,11 +41,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_networking_network_v2_network_1 = new openstack.networking.Network("network_1", {
- *     adminStateUp: "true",
+ * const network1 = new openstack.networking.Network("network_1", {
+ *     adminStateUp: true,
  *     name: "network_1",
  * });
- * const openstack_sharedfilesystem_securityservice_v2_securityservice_1 = new openstack.sharedfilesystem.SecurityService("securityservice_1", {
+ * const securityservice1 = new openstack.sharedfilesystem.SecurityService("securityservice_1", {
  *     description: "created by terraform",
  *     dnsIp: "192.168.199.10",
  *     domain: "example.com",
@@ -56,18 +56,18 @@ import * as utilities from "../utilities";
  *     type: "active_directory",
  *     user: "joinDomainUser",
  * });
- * const openstack_networking_subnet_v2_subnet_1 = new openstack.networking.Subnet("subnet_1", {
+ * const subnet1 = new openstack.networking.Subnet("subnet_1", {
  *     cidr: "192.168.199.0/24",
  *     ipVersion: 4,
  *     name: "subnet_1",
- *     networkId: openstack_networking_network_v2_network_1.id,
+ *     networkId: network1.id,
  * });
- * const openstack_sharedfilesystem_sharenetwork_v2_sharenetwork_1 = new openstack.sharedfilesystem.ShareNetwork("sharenetwork_1", {
+ * const sharenetwork1 = new openstack.sharedfilesystem.ShareNetwork("sharenetwork_1", {
  *     description: "test share network with security services",
  *     name: "test_sharenetwork",
- *     neutronNetId: openstack_networking_network_v2_network_1.id,
- *     neutronSubnetId: openstack_networking_subnet_v2_subnet_1.id,
- *     securityServiceIds: [openstack_sharedfilesystem_securityservice_v2_securityservice_1.id],
+ *     neutronNetId: network1.id,
+ *     neutronSubnetId: subnet1.id,
+ *     securityServiceIds: [securityservice1.id],
  * });
  * ```
  */

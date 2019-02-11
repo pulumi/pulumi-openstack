@@ -34,13 +34,14 @@ class GetFlavorResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_flavor(disk=None, min_disk=None, min_ram=None, name=None, ram=None, region=None, rx_tx_factor=None, swap=None, vcpus=None):
+async def get_flavor(disk=None, flavor_id=None, min_disk=None, min_ram=None, name=None, ram=None, region=None, rx_tx_factor=None, swap=None, vcpus=None):
     """
     Use this data source to get the ID of an available OpenStack flavor.
     """
     __args__ = dict()
 
     __args__['disk'] = disk
+    __args__['flavorId'] = flavor_id
     __args__['minDisk'] = min_disk
     __args__['minRam'] = min_ram
     __args__['name'] = name

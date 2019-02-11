@@ -15,20 +15,20 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_dns_zone_v2_example_zone = new openstack.dns.Zone("example_zone", {
+ * const exampleZone = new openstack.dns.Zone("example_zone", {
  *     description: "a zone",
  *     email: "email2@example.com",
  *     name: "example.com.",
  *     ttl: 6000,
  *     type: "PRIMARY",
  * });
- * const openstack_dns_recordset_v2_rs_example_com = new openstack.dns.RecordSet("rs_example_com", {
+ * const rsExampleCom = new openstack.dns.RecordSet("rs_example_com", {
  *     description: "An example record set",
  *     name: "rs.example.com.",
  *     records: ["10.0.0.1"],
  *     ttl: 3000,
  *     type: "A",
- *     zoneId: openstack_dns_zone_v2_example_zone.id,
+ *     zoneId: exampleZone.id,
  * });
  * ```
  */
@@ -55,7 +55,9 @@ export class RecordSet extends pulumi.CustomResource {
      */
     public readonly name: pulumi.Output<string>;
     /**
-     * An array of DNS records.
+     * An array of DNS records. _Note:_ if an IPv6 address
+     * contains brackets (`[ ]`), the brackets will be stripped and the modified
+     * address will be recorded in the state.
      */
     public readonly records: pulumi.Output<string[] | undefined>;
     /**
@@ -136,7 +138,9 @@ export interface RecordSetState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * An array of DNS records.
+     * An array of DNS records. _Note:_ if an IPv6 address
+     * contains brackets (`[ ]`), the brackets will be stripped and the modified
+     * address will be recorded in the state.
      */
     readonly records?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -180,7 +184,9 @@ export interface RecordSetArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * An array of DNS records.
+     * An array of DNS records. _Note:_ if an IPv6 address
+     * contains brackets (`[ ]`), the brackets will be stripped and the modified
+     * address will be recorded in the state.
      */
     readonly records?: pulumi.Input<pulumi.Input<string>[]>;
     /**

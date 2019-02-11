@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_db_instance_v1_test = new openstack.database.Instance("test", {
+ * const test = new openstack.database.Instance("test", {
  *     datastore: {
  *         type: "mysql",
  *         version: "mysql-5.7",

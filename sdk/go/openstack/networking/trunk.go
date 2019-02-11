@@ -22,6 +22,7 @@ func NewTrunk(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["adminStateUp"] = nil
+		inputs["description"] = nil
 		inputs["name"] = nil
 		inputs["portId"] = nil
 		inputs["region"] = nil
@@ -30,6 +31,7 @@ func NewTrunk(ctx *pulumi.Context,
 		inputs["tenantId"] = nil
 	} else {
 		inputs["adminStateUp"] = args.AdminStateUp
+		inputs["description"] = args.Description
 		inputs["name"] = args.Name
 		inputs["portId"] = args.PortId
 		inputs["region"] = args.Region
@@ -37,6 +39,7 @@ func NewTrunk(ctx *pulumi.Context,
 		inputs["tags"] = args.Tags
 		inputs["tenantId"] = args.TenantId
 	}
+	inputs["allTags"] = nil
 	s, err := ctx.RegisterResource("openstack:networking/trunk:Trunk", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
@@ -51,6 +54,8 @@ func GetTrunk(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if state != nil {
 		inputs["adminStateUp"] = state.AdminStateUp
+		inputs["allTags"] = state.AllTags
+		inputs["description"] = state.Description
 		inputs["name"] = state.Name
 		inputs["portId"] = state.PortId
 		inputs["region"] = state.Region
@@ -82,8 +87,20 @@ func (r *Trunk) AdminStateUp() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["adminStateUp"])
 }
 
-// A unique name for the port. Changing this
-// updates the `name` of an existing port.
+// The collection of tags assigned on the trunk, which have been
+// explicitly and implicitly added.
+func (r *Trunk) AllTags() *pulumi.ArrayOutput {
+	return (*pulumi.ArrayOutput)(r.s.State["allTags"])
+}
+
+// Human-readable description of the trunk. Changing this
+// updates the name of the existing trunk.
+func (r *Trunk) Description() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["description"])
+}
+
+// A unique name for the trunk. Changing this
+// updates the `name` of an existing trunk.
 func (r *Trunk) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
@@ -109,6 +126,7 @@ func (r *Trunk) SubPorts() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["subPorts"])
 }
 
+// A set of string tags for the port.
 func (r *Trunk) Tags() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["tags"])
 }
@@ -125,8 +143,14 @@ type TrunkState struct {
 	// (must be "true" or "false" if provided). Changing this updates the
 	// `admin_state_up` of an existing trunk.
 	AdminStateUp interface{}
-	// A unique name for the port. Changing this
-	// updates the `name` of an existing port.
+	// The collection of tags assigned on the trunk, which have been
+	// explicitly and implicitly added.
+	AllTags interface{}
+	// Human-readable description of the trunk. Changing this
+	// updates the name of the existing trunk.
+	Description interface{}
+	// A unique name for the trunk. Changing this
+	// updates the `name` of an existing trunk.
 	Name interface{}
 	// The ID of the port to be used as the parent port of the
 	// trunk. This is the port that should be used as the compute instance network
@@ -140,6 +164,7 @@ type TrunkState struct {
 	// The set of ports that will be made subports of the trunk.
 	// The structure of each subport is described below.
 	SubPorts interface{}
+	// A set of string tags for the port.
 	Tags interface{}
 	// The owner of the Trunk. Required if admin wants
 	// to create a trunk on behalf of another tenant. Changing this creates a new trunk.
@@ -152,8 +177,11 @@ type TrunkArgs struct {
 	// (must be "true" or "false" if provided). Changing this updates the
 	// `admin_state_up` of an existing trunk.
 	AdminStateUp interface{}
-	// A unique name for the port. Changing this
-	// updates the `name` of an existing port.
+	// Human-readable description of the trunk. Changing this
+	// updates the name of the existing trunk.
+	Description interface{}
+	// A unique name for the trunk. Changing this
+	// updates the `name` of an existing trunk.
 	Name interface{}
 	// The ID of the port to be used as the parent port of the
 	// trunk. This is the port that should be used as the compute instance network
@@ -167,6 +195,7 @@ type TrunkArgs struct {
 	// The set of ports that will be made subports of the trunk.
 	// The structure of each subport is described below.
 	SubPorts interface{}
+	// A set of string tags for the port.
 	Tags interface{}
 	// The owner of the Trunk. Required if admin wants
 	// to create a trunk on behalf of another tenant. Changing this creates a new trunk.

@@ -14,6 +14,11 @@ class SubnetPool(pulumi.CustomResource):
     subnetpool. Changing this updates the address scope id of the existing
     subnetpool.
     """
+    all_tags: pulumi.Output[list]
+    """
+    The collection of tags assigned on the subnetpool, which have been
+    explicitly and implicitly added.
+    """
     created_at: pulumi.Output[str]
     """
     The time at which subnetpool was created.
@@ -196,6 +201,7 @@ class SubnetPool(pulumi.CustomResource):
 
         __props__['value_specs'] = value_specs
 
+        __props__['all_tags'] = None
         __props__['created_at'] = None
         __props__['revision_number'] = None
         __props__['updated_at'] = None

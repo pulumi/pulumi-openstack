@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_fw_policy_v1_policy = pulumi.output(openstack.firewall.getPolicy({
+ * const policy = pulumi.output(openstack.firewall.getPolicy({
  *     name: "tf_test_policy",
  * }));
  * ```

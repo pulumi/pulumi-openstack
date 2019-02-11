@@ -59,6 +59,7 @@ func NewSubnet(ctx *pulumi.Context,
 		inputs["tenantId"] = args.TenantId
 		inputs["valueSpecs"] = args.ValueSpecs
 	}
+	inputs["allTags"] = nil
 	s, err := ctx.RegisterResource("openstack:networking/subnet:Subnet", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
@@ -72,6 +73,7 @@ func GetSubnet(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *SubnetState, opts ...pulumi.ResourceOpt) (*Subnet, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["allTags"] = state.AllTags
 		inputs["allocationPools"] = state.AllocationPools
 		inputs["cidr"] = state.Cidr
 		inputs["description"] = state.Description
@@ -106,6 +108,12 @@ func (r *Subnet) URN() *pulumi.URNOutput {
 // ID is this resource's unique identifier assigned by its provider.
 func (r *Subnet) ID() *pulumi.IDOutput {
 	return r.s.ID()
+}
+
+// The collection of ags assigned on the subnet, which have been
+// explicitly and implicitly added.
+func (r *Subnet) AllTags() *pulumi.ArrayOutput {
+	return (*pulumi.ArrayOutput)(r.s.State["allTags"])
 }
 
 // An array of sub-ranges of CIDR available for
@@ -225,6 +233,9 @@ func (r *Subnet) ValueSpecs() *pulumi.MapOutput {
 
 // Input properties used for looking up and filtering Subnet resources.
 type SubnetState struct {
+	// The collection of ags assigned on the subnet, which have been
+	// explicitly and implicitly added.
+	AllTags interface{}
 	// An array of sub-ranges of CIDR available for
 	// dynamic allocation to ports. The allocation_pool object structure is
 	// documented below. Changing this creates a new subnet.

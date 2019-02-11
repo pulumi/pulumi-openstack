@@ -31,6 +31,7 @@ func LookupImage(ctx *pulumi.Context, args *GetImageArgs) (*GetImageResult, erro
 	return &GetImageResult{
 		Checksum: outputs["checksum"],
 		ContainerFormat: outputs["containerFormat"],
+		CreatedAt: outputs["createdAt"],
 		DiskFormat: outputs["diskFormat"],
 		File: outputs["file"],
 		Metadata: outputs["metadata"],
@@ -40,6 +41,7 @@ func LookupImage(ctx *pulumi.Context, args *GetImageArgs) (*GetImageResult, erro
 		Region: outputs["region"],
 		Schema: outputs["schema"],
 		SizeBytes: outputs["sizeBytes"],
+		Tags: outputs["tags"],
 		UpdatedAt: outputs["updatedAt"],
 		Id: outputs["id"],
 	}, nil
@@ -85,13 +87,17 @@ type GetImageResult struct {
 	// The checksum of the data associated with the image.
 	Checksum interface{}
 	ContainerFormat interface{}
+	// The date the image was created.
+	// * `container_format`: The format of the image's container.
+	// * `disk_format`: The format of the image's disk.
+	CreatedAt interface{}
 	DiskFormat interface{}
 	// the trailing path after the glance endpoint that represent the
 	// location of the image or the path to retrieve it.
 	File interface{}
 	// The metadata associated with the image.
 	// Image metadata allow for meaningfully define the image properties
-	// and tags. See http://docs.openstack.org/developer/glance/metadefs-concepts.html.
+	// and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
 	Metadata interface{}
 	// The minimum amount of disk space required to use the image.
 	MinDiskGb interface{}
@@ -105,6 +111,9 @@ type GetImageResult struct {
 	Schema interface{}
 	// The size of the image (in bytes).
 	SizeBytes interface{}
+	// The tags list of the image.
+	Tags interface{}
+	// The date the image was last updated.
 	UpdatedAt interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}

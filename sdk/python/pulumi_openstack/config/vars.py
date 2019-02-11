@@ -9,6 +9,21 @@ from .. import utilities, tables
 
 __config__ = pulumi.Config('openstack')
 
+application_credential_id = __config__.get('applicationCredentialId')
+"""
+Application Credential ID to login with.
+"""
+
+application_credential_name = __config__.get('applicationCredentialName')
+"""
+Application Credential name to login with.
+"""
+
+application_credential_secret = __config__.get('applicationCredentialSecret')
+"""
+Application Credential secret to login with.
+"""
+
 auth_url = __config__.get('authUrl') or utilities.get_env('OS_AUTH_URL')
 """
 The Identity authentication URL.

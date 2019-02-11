@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_identity_group_v3_admins = pulumi.output(openstack.identity.getGroup({
+ * const admins = pulumi.output(openstack.identity.getGroup({
  *     name: "admins",
  * }));
  * ```

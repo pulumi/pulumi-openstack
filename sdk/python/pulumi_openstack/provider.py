@@ -8,7 +8,7 @@ import pulumi.runtime
 from . import utilities, tables
 
 class Provider(pulumi.ProviderResource):
-    def __init__(__self__, __name__, __opts__=None, auth_url=None, cacert_file=None, cert=None, cloud=None, default_domain=None, domain_id=None, domain_name=None, endpoint_overrides=None, endpoint_type=None, insecure=None, key=None, max_retries=None, password=None, project_domain_id=None, project_domain_name=None, region=None, swauth=None, tenant_id=None, tenant_name=None, token=None, use_octavia=None, user_domain_id=None, user_domain_name=None, user_id=None, user_name=None):
+    def __init__(__self__, __name__, __opts__=None, application_credential_id=None, application_credential_name=None, application_credential_secret=None, auth_url=None, cacert_file=None, cert=None, cloud=None, default_domain=None, domain_id=None, domain_name=None, endpoint_overrides=None, endpoint_type=None, insecure=None, key=None, max_retries=None, password=None, project_domain_id=None, project_domain_name=None, region=None, swauth=None, tenant_id=None, tenant_name=None, token=None, use_octavia=None, user_domain_id=None, user_domain_name=None, user_id=None, user_name=None):
         """
         The provider type for the openstack package. By default, resources use package-wide configuration
         settings, however an explicit `Provider` instance may be created and passed during resource
@@ -17,6 +17,9 @@ class Provider(pulumi.ProviderResource):
         
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param pulumi.Input[str] application_credential_id
+        :param pulumi.Input[str] application_credential_name
+        :param pulumi.Input[str] application_credential_secret
         :param pulumi.Input[str] auth_url
         :param pulumi.Input[str] cacert_file
         :param pulumi.Input[str] cert
@@ -51,6 +54,12 @@ class Provider(pulumi.ProviderResource):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
+
+        __props__['application_credential_id'] = application_credential_id
+
+        __props__['application_credential_name'] = application_credential_name
+
+        __props__['application_credential_secret'] = application_credential_secret
 
         if not auth_url:
             auth_url = utilities.get_env('OS_AUTH_URL')

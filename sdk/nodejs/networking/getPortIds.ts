@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_networking_port_ids_v2_ports = pulumi.output(openstack.networking.getPortIds({
+ * const ports = pulumi.output(openstack.networking.getPortIds({
  *     name: "port",
  * }));
  * ```
@@ -35,6 +35,7 @@ export function getPortIds(args?: GetPortIdsArgs, opts?: pulumi.InvokeOptions): 
         "securityGroupIds": args.securityGroupIds,
         "sortDirection": args.sortDirection,
         "sortKey": args.sortKey,
+        "status": args.status,
         "tags": args.tags,
         "tenantId": args.tenantId,
     }, opts);
@@ -99,6 +100,10 @@ export interface GetPortIdsArgs {
      * Sort ports based on a certain key. Defaults to none.
      */
     readonly sortKey?: string;
+    /**
+     * The status of the port.
+     */
+    readonly status?: string;
     /**
      * The list of port tags to filter.
      */

@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_networking_subnetpool_v2_subnetpool_1 = new openstack.networking.SubnetPool("subnetpool_1", {
+ * const subnetpool1 = new openstack.networking.SubnetPool("subnetpool_1", {
  *     ipVersion: 6,
  *     name: "subnetpool_1",
  *     prefixes: [
@@ -30,19 +30,19 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_networking_network_v2_network_1 = new openstack.networking.Network("network_1", {
- *     adminStateUp: "true",
+ * const network1 = new openstack.networking.Network("network_1", {
+ *     adminStateUp: true,
  *     name: "network_1",
  * });
- * const openstack_networking_subnetpool_v2_subnetpool_1 = new openstack.networking.SubnetPool("subnetpool_1", {
+ * const subnetpool1 = new openstack.networking.SubnetPool("subnetpool_1", {
  *     name: "subnetpool_1",
  *     prefixes: ["10.11.12.0/24"],
  * });
- * const openstack_networking_subnet_v2_subnet_1 = new openstack.networking.Subnet("subnet_1", {
+ * const subnet1 = new openstack.networking.Subnet("subnet_1", {
  *     cidr: "10.11.12.0/25",
  *     name: "subnet_1",
- *     networkId: openstack_networking_network_v2_network_1.id,
- *     subnetpoolId: openstack_networking_subnetpool_v2_subnetpool_1.id,
+ *     networkId: network1.id,
+ *     subnetpoolId: subnetpool1.id,
  * });
  * ```
  */
@@ -65,6 +65,11 @@ export class SubnetPool extends pulumi.CustomResource {
      * subnetpool.
      */
     public readonly addressScopeId: pulumi.Output<string | undefined>;
+    /**
+     * The collection of tags assigned on the subnetpool, which have been
+     * explicitly and implicitly added.
+     */
+    public /*out*/ readonly allTags: pulumi.Output<string[]>;
     /**
      * The time at which subnetpool was created.
      */
@@ -171,6 +176,7 @@ export class SubnetPool extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state: SubnetPoolState = argsOrState as SubnetPoolState | undefined;
             inputs["addressScopeId"] = state ? state.addressScopeId : undefined;
+            inputs["allTags"] = state ? state.allTags : undefined;
             inputs["createdAt"] = state ? state.createdAt : undefined;
             inputs["defaultPrefixlen"] = state ? state.defaultPrefixlen : undefined;
             inputs["defaultQuota"] = state ? state.defaultQuota : undefined;
@@ -208,6 +214,7 @@ export class SubnetPool extends pulumi.CustomResource {
             inputs["shared"] = args ? args.shared : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["valueSpecs"] = args ? args.valueSpecs : undefined;
+            inputs["allTags"] = undefined /*out*/;
             inputs["createdAt"] = undefined /*out*/;
             inputs["revisionNumber"] = undefined /*out*/;
             inputs["updatedAt"] = undefined /*out*/;
@@ -226,6 +233,11 @@ export interface SubnetPoolState {
      * subnetpool.
      */
     readonly addressScopeId?: pulumi.Input<string>;
+    /**
+     * The collection of tags assigned on the subnetpool, which have been
+     * explicitly and implicitly added.
+     */
+    readonly allTags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The time at which subnetpool was created.
      */

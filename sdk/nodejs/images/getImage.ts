@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_images_image_v2_ubuntu = pulumi.output(openstack.images.getImage({
+ * const ubuntu = pulumi.output(openstack.images.getImage({
  *     mostRecent: true,
  *     name: "Ubuntu 16.04",
  *     properties: {
@@ -110,6 +110,12 @@ export interface GetImageResult {
      */
     readonly checksum: string;
     readonly containerFormat: string;
+    /**
+     * The date the image was created.
+     * * `container_format`: The format of the image's container.
+     * * `disk_format`: The format of the image's disk.
+     */
+    readonly createdAt: string;
     readonly diskFormat: string;
     /**
      * the trailing path after the glance endpoint that represent the
@@ -119,7 +125,7 @@ export interface GetImageResult {
     /**
      * The metadata associated with the image.
      * Image metadata allow for meaningfully define the image properties
-     * and tags. See http://docs.openstack.org/developer/glance/metadefs-concepts.html.
+     * and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
      */
     readonly metadata: {[key: string]: any};
     /**
@@ -144,6 +150,13 @@ export interface GetImageResult {
      * The size of the image (in bytes).
      */
     readonly sizeBytes: number;
+    /**
+     * The tags list of the image.
+     */
+    readonly tags: string[];
+    /**
+     * The date the image was last updated.
+     */
     readonly updatedAt: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.

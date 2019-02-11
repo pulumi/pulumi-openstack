@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_compute_instance_v2_basic = new openstack.compute.Instance("basic", {
+ * const basic = new openstack.compute.Instance("basic", {
  *     flavorId: "3",
  *     imageId: "ad091b52-742f-469e-8f3c-fd81cadf0743",
  *     keyPair: "my_key_pair_name",
@@ -35,11 +35,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_blockstorage_volume_v2_myvol = new openstack.blockstorage.VolumeV2("myvol", {
+ * const myvol = new openstack.blockstorage.VolumeV2("myvol", {
  *     name: "myvol",
  *     size: 1,
  * });
- * const openstack_compute_instance_v2_myinstance = new openstack.compute.Instance("myinstance", {
+ * const myinstance = new openstack.compute.Instance("myinstance", {
  *     flavorId: "3",
  *     imageId: "ad091b52-742f-469e-8f3c-fd81cadf0743",
  *     keyPair: "my_key_pair_name",
@@ -49,9 +49,9 @@ import * as utilities from "../utilities";
  *     }],
  *     securityGroups: ["default"],
  * });
- * const openstack_compute_volume_attach_v2_attached = new openstack.compute.VolumeAttach("attached", {
- *     instanceId: openstack_compute_instance_v2_myinstance.id,
- *     volumeId: openstack_blockstorage_volume_v2_myvol.id,
+ * const attached = new openstack.compute.VolumeAttach("attached", {
+ *     instanceId: myinstance.id,
+ *     volumeId: myvol.id,
  * });
  * ```
  * ### Boot From Volume
@@ -60,7 +60,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_compute_instance_v2_boot_from_volume = new openstack.compute.Instance("boot-from-volume", {
+ * const boot_from_volume = new openstack.compute.Instance("boot-from-volume", {
  *     blockDevices: [{
  *         bootIndex: 0,
  *         deleteOnTermination: true,
@@ -84,18 +84,18 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_blockstorage_volume_v1_myvol = new openstack.blockstorage.VolumeV1("myvol", {
+ * const myvol = new openstack.blockstorage.VolumeV1("myvol", {
  *     imageId: "<image-id>",
  *     name: "myvol",
  *     size: 5,
  * });
- * const openstack_compute_instance_v2_boot_from_volume = new openstack.compute.Instance("boot-from-volume", {
+ * const boot_from_volume = new openstack.compute.Instance("boot-from-volume", {
  *     blockDevices: [{
  *         bootIndex: 0,
  *         deleteOnTermination: true,
  *         destinationType: "volume",
  *         sourceType: "volume",
- *         uuid: openstack_blockstorage_volume_v1_myvol.id,
+ *         uuid: myvol.id,
  *     }],
  *     flavorId: "3",
  *     keyPair: "my_key_pair_name",
@@ -112,7 +112,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_compute_instance_v2_instance_1 = new openstack.compute.Instance("instance_1", {
+ * const instance1 = new openstack.compute.Instance("instance_1", {
  *     blockDevices: [
  *         {
  *             bootIndex: 0,
@@ -142,11 +142,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_blockstorage_volume_v2_volume_1 = new openstack.blockstorage.VolumeV2("volume_1", {
+ * const volume1 = new openstack.blockstorage.VolumeV2("volume_1", {
  *     name: "volume_1",
  *     size: 1,
  * });
- * const openstack_compute_instance_v2_instance_1 = new openstack.compute.Instance("instance_1", {
+ * const instance1 = new openstack.compute.Instance("instance_1", {
  *     blockDevices: [
  *         {
  *             bootIndex: 0,
@@ -160,7 +160,7 @@ import * as utilities from "../utilities";
  *             deleteOnTermination: true,
  *             destinationType: "volume",
  *             sourceType: "volume",
- *             uuid: openstack_blockstorage_volume_v2_volume_1.id,
+ *             uuid: volume1.id,
  *         },
  *     ],
  *     flavorId: "3",
@@ -176,7 +176,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_compute_instance_v2_multi_net = new openstack.compute.Instance("multi-net", {
+ * const multi_net = new openstack.compute.Instance("multi-net", {
  *     flavorId: "3",
  *     imageId: "ad091b52-742f-469e-8f3c-fd81cadf0743",
  *     keyPair: "my_key_pair_name",
@@ -191,13 +191,13 @@ import * as utilities from "../utilities";
  *     ],
  *     securityGroups: ["default"],
  * });
- * const openstack_networking_floatingip_v2_myip = new openstack.networking.FloatingIp("myip", {
+ * const myipFloatingIp = new openstack.networking.FloatingIp("myip", {
  *     pool: "my_pool",
  * });
- * const openstack_compute_floatingip_associate_v2_myip = new openstack.compute.FloatingIpAssociate("myip", {
- *     fixedIp: openstack_compute_instance_v2_multi_net.networks.apply(__arg0 => __arg0[1].fixedIpV4),
- *     floatingIp: openstack_networking_floatingip_v2_myip.address,
- *     instanceId: openstack_compute_instance_v2_multi_net.id,
+ * const myipFloatingIpAssociate = new openstack.compute.FloatingIpAssociate("myip", {
+ *     fixedIp: multi_net.networks.apply(networks => networks[1].fixedIpV4),
+ *     floatingIp: myipFloatingIp.address,
+ *     instanceId: multi_net.id,
  * });
  * ```
  * ### Instance With Personality
@@ -206,7 +206,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_compute_instance_v2_personality = new openstack.compute.Instance("personality", {
+ * const personality = new openstack.compute.Instance("personality", {
  *     flavorId: "3",
  *     imageId: "ad091b52-742f-469e-8f3c-fd81cadf0743",
  *     keyPair: "my_key_pair_name",
@@ -227,7 +227,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_compute_instance_v2_multi_eph = new openstack.compute.Instance("multi-eph", {
+ * const multi_eph = new openstack.compute.Instance("multi-eph", {
  *     blockDevices: [
  *         {
  *             bootIndex: 0,
@@ -264,7 +264,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_compute_instance_v2_instance_1 = new openstack.compute.Instance("instance_1", {
+ * const instance1 = new openstack.compute.Instance("instance_1", {
  *     flavorId: "3",
  *     imageId: "ad091b52-742f-469e-8f3c-fd81cadf0743",
  *     keyPair: "my_key_pair_name",
@@ -273,7 +273,9 @@ import * as utilities from "../utilities";
  *         name: "my_network",
  *     }],
  *     securityGroups: ["default"],
- *     userData: "#cloud-config\nhostname: instance_1.example.com\nfqdn: instance_1.example.com",
+ *     userData: `#cloud-config
+ * hostname: instance_1.example.com
+ * fqdn: instance_1.example.com`,
  * });
  * ```
  * `user_data` can come from a variety of sources: inline, read in from the `file`
@@ -322,7 +324,7 @@ export class Instance extends pulumi.CustomResource {
      * structure is documented below. Changing this creates a new server.
      * You can specify multiple block devices which will create an instance with
      * multiple disks. This configuration is very flexible, so please see the
-     * following [reference](http://docs.openstack.org/developer/nova/block_device_mapping.html)
+     * following [reference](https://docs.openstack.org/nova/latest/user/block-device-mapping.html)
      * for more information.
      */
     public readonly blockDevices: pulumi.Output<{ bootIndex?: number, deleteOnTermination?: boolean, destinationType?: string, deviceType?: string, diskBus?: string, guestFormat?: string, sourceType: string, uuid?: string, volumeSize?: number }[] | undefined>;
@@ -529,7 +531,7 @@ export interface InstanceState {
      * structure is documented below. Changing this creates a new server.
      * You can specify multiple block devices which will create an instance with
      * multiple disks. This configuration is very flexible, so please see the
-     * following [reference](http://docs.openstack.org/developer/nova/block_device_mapping.html)
+     * following [reference](https://docs.openstack.org/nova/latest/user/block-device-mapping.html)
      * for more information.
      */
     readonly blockDevices?: pulumi.Input<pulumi.Input<{ bootIndex?: pulumi.Input<number>, deleteOnTermination?: pulumi.Input<boolean>, destinationType?: pulumi.Input<string>, deviceType?: pulumi.Input<string>, diskBus?: pulumi.Input<string>, guestFormat?: pulumi.Input<string>, sourceType: pulumi.Input<string>, uuid?: pulumi.Input<string>, volumeSize?: pulumi.Input<number> }>[]>;
@@ -665,7 +667,7 @@ export interface InstanceArgs {
      * structure is documented below. Changing this creates a new server.
      * You can specify multiple block devices which will create an instance with
      * multiple disks. This configuration is very flexible, so please see the
-     * following [reference](http://docs.openstack.org/developer/nova/block_device_mapping.html)
+     * following [reference](https://docs.openstack.org/nova/latest/user/block-device-mapping.html)
      * for more information.
      */
     readonly blockDevices?: pulumi.Input<pulumi.Input<{ bootIndex?: pulumi.Input<number>, deleteOnTermination?: pulumi.Input<boolean>, destinationType?: pulumi.Input<string>, deviceType?: pulumi.Input<string>, diskBus?: pulumi.Input<string>, guestFormat?: pulumi.Input<string>, sourceType: pulumi.Input<string>, uuid?: pulumi.Input<string>, volumeSize?: pulumi.Input<number> }>[]>;

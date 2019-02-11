@@ -54,7 +54,8 @@ class Share(pulumi.CustomResource):
     region: pulumi.Output[str]
     """
     The region in which to obtain the V2 Shared File System client.
-    A Shared File System client is needed to create a share network.
+    A Shared File System client is needed to create a share. Changing this
+    creates a new share.
     """
     replication_type: pulumi.Output[str]
     """
@@ -90,7 +91,7 @@ class Share(pulumi.CustomResource):
     The UUID of the share's base snapshot. Changing this creates
     a new share.
     """
-    def __init__(__self__, __name__, __opts__=None, availability_zone=None, description=None, is_public=None, metadata=None, name=None, share_network_id=None, share_proto=None, share_type=None, size=None, snapshot_id=None):
+    def __init__(__self__, __name__, __opts__=None, availability_zone=None, description=None, is_public=None, metadata=None, name=None, region=None, share_network_id=None, share_proto=None, share_type=None, size=None, snapshot_id=None):
         """
         Use this resource to configure a share.
         
@@ -108,6 +109,9 @@ class Share(pulumi.CustomResource):
                strings.
         :param pulumi.Input[str] name: The name of the share. Changing this updates the name
                of the existing share.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Shared File System client.
+               A Shared File System client is needed to create a share. Changing this
+               creates a new share.
         :param pulumi.Input[str] share_network_id: The UUID of a share network where the share server exists
                or will be created. If `share_network_id` is not set and you provide a `snapshot_id`,
                the share_network_id value from the snapshot is used. Changing this creates a new share.
@@ -139,6 +143,8 @@ class Share(pulumi.CustomResource):
 
         __props__['name'] = name
 
+        __props__['region'] = region
+
         __props__['share_network_id'] = share_network_id
 
         if not share_proto:
@@ -157,7 +163,6 @@ class Share(pulumi.CustomResource):
         __props__['has_replicas'] = None
         __props__['host'] = None
         __props__['project_id'] = None
-        __props__['region'] = None
         __props__['replication_type'] = None
         __props__['share_server_id'] = None
 

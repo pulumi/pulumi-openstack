@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_sharedfilesystem_securityservice_v2_securityservice_1 = new openstack.sharedfilesystem.SecurityService("securityservice_1", {
+ * const securityservice1 = new openstack.sharedfilesystem.SecurityService("securityservice_1", {
  *     description: "created by terraform",
  *     dnsIp: "192.168.199.10",
  *     domain: "example.com",

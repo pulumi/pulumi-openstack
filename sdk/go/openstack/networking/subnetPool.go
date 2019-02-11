@@ -53,6 +53,7 @@ func NewSubnetPool(ctx *pulumi.Context,
 		inputs["tags"] = args.Tags
 		inputs["valueSpecs"] = args.ValueSpecs
 	}
+	inputs["allTags"] = nil
 	inputs["createdAt"] = nil
 	inputs["revisionNumber"] = nil
 	inputs["updatedAt"] = nil
@@ -70,6 +71,7 @@ func GetSubnetPool(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if state != nil {
 		inputs["addressScopeId"] = state.AddressScopeId
+		inputs["allTags"] = state.AllTags
 		inputs["createdAt"] = state.CreatedAt
 		inputs["defaultPrefixlen"] = state.DefaultPrefixlen
 		inputs["defaultQuota"] = state.DefaultQuota
@@ -110,6 +112,12 @@ func (r *SubnetPool) ID() *pulumi.IDOutput {
 // subnetpool.
 func (r *SubnetPool) AddressScopeId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["addressScopeId"])
+}
+
+// The collection of tags assigned on the subnetpool, which have been
+// explicitly and implicitly added.
+func (r *SubnetPool) AllTags() *pulumi.ArrayOutput {
+	return (*pulumi.ArrayOutput)(r.s.State["allTags"])
 }
 
 // The time at which subnetpool was created.
@@ -227,6 +235,9 @@ type SubnetPoolState struct {
 	// subnetpool. Changing this updates the address scope id of the existing
 	// subnetpool.
 	AddressScopeId interface{}
+	// The collection of tags assigned on the subnetpool, which have been
+	// explicitly and implicitly added.
+	AllTags interface{}
 	// The time at which subnetpool was created.
 	CreatedAt interface{}
 	// The size of the prefix to allocate when the cidr

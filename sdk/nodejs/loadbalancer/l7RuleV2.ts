@@ -13,43 +13,43 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_networking_network_v2_network_1 = new openstack.networking.Network("network_1", {
- *     adminStateUp: "true",
+ * const network1 = new openstack.networking.Network("network_1", {
+ *     adminStateUp: true,
  *     name: "network_1",
  * });
- * const openstack_networking_subnet_v2_subnet_1 = new openstack.networking.Subnet("subnet_1", {
+ * const subnet1 = new openstack.networking.Subnet("subnet_1", {
  *     cidr: "192.168.199.0/24",
  *     ipVersion: 4,
  *     name: "subnet_1",
- *     networkId: openstack_networking_network_v2_network_1.id,
+ *     networkId: network1.id,
  * });
- * const openstack_lb_loadbalancer_v2_loadbalancer_1 = new openstack.loadbalancer.LoadBalancer("loadbalancer_1", {
+ * const loadbalancer1 = new openstack.loadbalancer.LoadBalancer("loadbalancer_1", {
  *     name: "loadbalancer_1",
- *     vipSubnetId: openstack_networking_subnet_v2_subnet_1.id,
+ *     vipSubnetId: subnet1.id,
  * });
- * const openstack_lb_listener_v2_listener_1 = new openstack.loadbalancer.Listener("listener_1", {
- *     loadbalancerId: openstack_lb_loadbalancer_v2_loadbalancer_1.id,
+ * const listener1 = new openstack.loadbalancer.Listener("listener_1", {
+ *     loadbalancerId: loadbalancer1.id,
  *     name: "listener_1",
  *     protocol: "HTTP",
  *     protocolPort: 8080,
  * });
- * const openstack_lb_l7policy_v2_l7policy_1 = new openstack.loadbalancer.L7PolicyV2("l7policy_1", {
+ * const l7policy1 = new openstack.loadbalancer.L7PolicyV2("l7policy_1", {
  *     action: "REDIRECT_TO_URL",
  *     description: "test description",
- *     listenerId: openstack_lb_listener_v2_listener_1.id,
+ *     listenerId: listener1.id,
  *     name: "test",
  *     position: 1,
  *     redirectUrl: "http://www.example.com",
  * });
- * const openstack_lb_l7rule_v2_l7rule_1 = new openstack.loadbalancer.L7RuleV2("l7rule_1", {
+ * const l7rule1 = new openstack.loadbalancer.L7RuleV2("l7rule_1", {
  *     compareType: "EQUAL_TO",
- *     l7policyId: openstack_lb_l7policy_v2_l7policy_1.id,
+ *     l7policyId: l7policy1.id,
  *     type: "PATH",
  *     value: "/api",
  * });
- * const openstack_lb_pool_v2_pool_1 = new openstack.loadbalancer.Pool("pool_1", {
+ * const pool1 = new openstack.loadbalancer.Pool("pool_1", {
  *     lbMethod: "ROUND_ROBIN",
- *     loadbalancerId: openstack_lb_loadbalancer_v2_loadbalancer_1.id,
+ *     loadbalancerId: loadbalancer1.id,
  *     name: "pool_1",
  *     protocol: "HTTP",
  * });

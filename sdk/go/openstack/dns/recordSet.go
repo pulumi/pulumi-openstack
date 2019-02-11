@@ -89,7 +89,9 @@ func (r *RecordSet) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
-// An array of DNS records.
+// An array of DNS records. _Note:_ if an IPv6 address
+// contains brackets (`[ ]`), the brackets will be stripped and the modified
+// address will be recorded in the state.
 func (r *RecordSet) Records() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["records"])
 }
@@ -131,7 +133,9 @@ type RecordSetState struct {
 	// The name of the record set. Note the `.` at the end of the name.
 	// Changing this creates a new DNS  record set.
 	Name interface{}
-	// An array of DNS records.
+	// An array of DNS records. _Note:_ if an IPv6 address
+	// contains brackets (`[ ]`), the brackets will be stripped and the modified
+	// address will be recorded in the state.
 	Records interface{}
 	// The region in which to obtain the V2 DNS client.
 	// If omitted, the `region` argument of the provider is used.
@@ -157,7 +161,9 @@ type RecordSetArgs struct {
 	// The name of the record set. Note the `.` at the end of the name.
 	// Changing this creates a new DNS  record set.
 	Name interface{}
-	// An array of DNS records.
+	// An array of DNS records. _Note:_ if an IPv6 address
+	// contains brackets (`[ ]`), the brackets will be stripped and the modified
+	// address will be recorded in the state.
 	Records interface{}
 	// The region in which to obtain the V2 DNS client.
 	// If omitted, the `region` argument of the provider is used.

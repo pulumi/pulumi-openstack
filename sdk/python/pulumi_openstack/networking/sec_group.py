@@ -8,6 +8,11 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class SecGroup(pulumi.CustomResource):
+    all_tags: pulumi.Output[list]
+    """
+    The collection of tags assigned on the security group, which have
+    been explicitly and implicitly added.
+    """
     delete_default_rules: pulumi.Output[bool]
     """
     Whether or not to delete the default
@@ -82,6 +87,8 @@ class SecGroup(pulumi.CustomResource):
         __props__['tags'] = tags
 
         __props__['tenant_id'] = tenant_id
+
+        __props__['all_tags'] = None
 
         super(SecGroup, __self__).__init__(
             'openstack:networking/secGroup:SecGroup',

@@ -11,13 +11,19 @@ class GetSubnetPoolResult(object):
     """
     A collection of values returned by getSubnetPool.
     """
-    def __init__(__self__, address_scope_id=None, created_at=None, default_prefixlen=None, default_quota=None, description=None, ip_version=None, is_default=None, max_prefixlen=None, min_prefixlen=None, name=None, prefixes=None, project_id=None, region=None, revision_number=None, shared=None, updated_at=None, id=None):
+    def __init__(__self__, address_scope_id=None, all_tags=None, created_at=None, default_prefixlen=None, default_quota=None, description=None, ip_version=None, is_default=None, max_prefixlen=None, min_prefixlen=None, name=None, prefixes=None, project_id=None, region=None, revision_number=None, shared=None, updated_at=None, id=None):
         if address_scope_id and not isinstance(address_scope_id, str):
             raise TypeError('Expected argument address_scope_id to be a str')
         __self__.address_scope_id = address_scope_id
         """
         See Argument Reference above.
         * `ip_version` -The IP protocol version.
+        """
+        if all_tags and not isinstance(all_tags, list):
+            raise TypeError('Expected argument all_tags to be a list')
+        __self__.all_tags = all_tags
+        """
+        The set of string tags applied on the subnetpool.
         """
         if created_at and not isinstance(created_at, str):
             raise TypeError('Expected argument created_at to be a str')
@@ -113,7 +119,7 @@ class GetSubnetPoolResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_subnet_pool(address_scope_id=None, default_prefixlen=None, default_quota=None, description=None, ip_version=None, is_default=None, max_prefixlen=None, min_prefixlen=None, name=None, project_id=None, region=None, shared=None):
+async def get_subnet_pool(address_scope_id=None, default_prefixlen=None, default_quota=None, description=None, ip_version=None, is_default=None, max_prefixlen=None, min_prefixlen=None, name=None, project_id=None, region=None, shared=None, tags=None):
     """
     Use this data source to get the ID of an available OpenStack subnetpool.
     """
@@ -131,10 +137,12 @@ async def get_subnet_pool(address_scope_id=None, default_prefixlen=None, default
     __args__['projectId'] = project_id
     __args__['region'] = region
     __args__['shared'] = shared
+    __args__['tags'] = tags
     __ret__ = await pulumi.runtime.invoke('openstack:networking/getSubnetPool:getSubnetPool', __args__)
 
     return GetSubnetPoolResult(
         address_scope_id=__ret__.get('addressScopeId'),
+        all_tags=__ret__.get('allTags'),
         created_at=__ret__.get('createdAt'),
         default_prefixlen=__ret__.get('defaultPrefixlen'),
         default_quota=__ret__.get('defaultQuota'),

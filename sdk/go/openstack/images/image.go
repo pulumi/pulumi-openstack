@@ -63,6 +63,7 @@ func NewImage(ctx *pulumi.Context,
 	inputs["sizeBytes"] = nil
 	inputs["status"] = nil
 	inputs["updateAt"] = nil
+	inputs["updatedAt"] = nil
 	s, err := ctx.RegisterResource("openstack:images/image:Image", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
@@ -97,6 +98,7 @@ func GetImage(ctx *pulumi.Context,
 		inputs["status"] = state.Status
 		inputs["tags"] = state.Tags
 		inputs["updateAt"] = state.UpdateAt
+		inputs["updatedAt"] = state.UpdatedAt
 		inputs["verifyChecksum"] = state.VerifyChecksum
 		inputs["visibility"] = state.Visibility
 	}
@@ -170,7 +172,7 @@ func (r *Image) LocalFilePath() *pulumi.StringOutput {
 
 // The metadata associated with the image.
 // Image metadata allow for meaningfully define the image properties
-// and tags. See http://docs.openstack.org/developer/glance/metadefs-concepts.html.
+// and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
 func (r *Image) Metadata() *pulumi.MapOutput {
 	return (*pulumi.MapOutput)(r.s.State["metadata"])
 }
@@ -241,9 +243,14 @@ func (r *Image) Tags() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["tags"])
 }
 
-// The date the image was last updated.
+// (**Deprecated** - use `updated_at` instead)
 func (r *Image) UpdateAt() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["updateAt"])
+}
+
+// The date the image was last updated.
+func (r *Image) UpdatedAt() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["updatedAt"])
 }
 
 // If false, the checksum will not be verified
@@ -290,7 +297,7 @@ type ImageState struct {
 	LocalFilePath interface{}
 	// The metadata associated with the image.
 	// Image metadata allow for meaningfully define the image properties
-	// and tags. See http://docs.openstack.org/developer/glance/metadefs-concepts.html.
+	// and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
 	Metadata interface{}
 	// Amount of disk space (in GB) required to boot image.
 	// Defaults to 0.
@@ -325,8 +332,10 @@ type ImageState struct {
 	// The tags of the image. It must be a list of strings.
 	// At this time, it is not possible to delete all tags of an image.
 	Tags interface{}
-	// The date the image was last updated.
+	// (**Deprecated** - use `updated_at` instead)
 	UpdateAt interface{}
+	// The date the image was last updated.
+	UpdatedAt interface{}
 	// If false, the checksum will not be verified
 	// once the image is finished uploading. Defaults to true.
 	VerifyChecksum interface{}

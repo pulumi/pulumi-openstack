@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_networking_secgroup_v2_secgroup_1 = new openstack.networking.SecGroup("secgroup_1", {
+ * const secgroup1 = new openstack.networking.SecGroup("secgroup_1", {
  *     description: "My neutron security group",
  *     name: "secgroup_1",
  * });
@@ -34,6 +34,11 @@ export class SecGroup extends pulumi.CustomResource {
         return new SecGroup(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * The collection of tags assigned on the security group, which have
+     * been explicitly and implicitly added.
+     */
+    public /*out*/ readonly allTags: pulumi.Output<string[]>;
     /**
      * Whether or not to delete the default
      * egress security rules. This is `false` by default. See the below note
@@ -78,6 +83,7 @@ export class SecGroup extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state: SecGroupState = argsOrState as SecGroupState | undefined;
+            inputs["allTags"] = state ? state.allTags : undefined;
             inputs["deleteDefaultRules"] = state ? state.deleteDefaultRules : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -92,6 +98,7 @@ export class SecGroup extends pulumi.CustomResource {
             inputs["region"] = args ? args.region : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["tenantId"] = args ? args.tenantId : undefined;
+            inputs["allTags"] = undefined /*out*/;
         }
         super("openstack:networking/secGroup:SecGroup", name, inputs, opts);
     }
@@ -101,6 +108,11 @@ export class SecGroup extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SecGroup resources.
  */
 export interface SecGroupState {
+    /**
+     * The collection of tags assigned on the security group, which have
+     * been explicitly and implicitly added.
+     */
+    readonly allTags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Whether or not to delete the default
      * egress security rules. This is `false` by default. See the below note

@@ -13,26 +13,26 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_networking_network_v2_network_1 = new openstack.networking.Network("network_1", {
- *     adminStateUp: "true",
+ * const network1 = new openstack.networking.Network("network_1", {
+ *     adminStateUp: true,
  *     name: "network_1",
  * });
- * const openstack_networking_subnet_v2_subnet_1 = new openstack.networking.Subnet("subnet_1", {
+ * const subnet1 = new openstack.networking.Subnet("subnet_1", {
  *     cidr: "192.168.199.0/24",
  *     ipVersion: 4,
  *     name: "subnet_1",
- *     networkId: openstack_networking_network_v2_network_1.id,
+ *     networkId: network1.id,
  * });
- * const openstack_sharedfilesystem_sharenetwork_v2_sharenetwork_1 = new openstack.sharedfilesystem.ShareNetwork("sharenetwork_1", {
+ * const sharenetwork1 = new openstack.sharedfilesystem.ShareNetwork("sharenetwork_1", {
  *     description: "test share network with security services",
  *     name: "test_sharenetwork",
- *     neutronNetId: openstack_networking_network_v2_network_1.id,
- *     neutronSubnetId: openstack_networking_subnet_v2_subnet_1.id,
+ *     neutronNetId: network1.id,
+ *     neutronSubnetId: subnet1.id,
  * });
- * const openstack_sharedfilesystem_share_v2_share_1 = new openstack.sharedfilesystem.Share("share_1", {
+ * const share1 = new openstack.sharedfilesystem.Share("share_1", {
  *     description: "test share description",
  *     name: "nfs_share",
- *     shareNetworkId: openstack_sharedfilesystem_sharenetwork_v2_sharenetwork_1.id,
+ *     shareNetworkId: sharenetwork1.id,
  *     shareProto: "NFS",
  *     size: 1,
  * });
@@ -96,9 +96,10 @@ export class Share extends pulumi.CustomResource {
     public /*out*/ readonly projectId: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 Shared File System client.
-     * A Shared File System client is needed to create a share network.
+     * A Shared File System client is needed to create a share. Changing this
+     * creates a new share.
      */
-    public /*out*/ readonly region: pulumi.Output<string>;
+    public readonly region: pulumi.Output<string>;
     /**
      * The share replication type.
      */
@@ -176,6 +177,7 @@ export class Share extends pulumi.CustomResource {
             inputs["isPublic"] = args ? args.isPublic : undefined;
             inputs["metadata"] = args ? args.metadata : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["region"] = args ? args.region : undefined;
             inputs["shareNetworkId"] = args ? args.shareNetworkId : undefined;
             inputs["shareProto"] = args ? args.shareProto : undefined;
             inputs["shareType"] = args ? args.shareType : undefined;
@@ -185,7 +187,6 @@ export class Share extends pulumi.CustomResource {
             inputs["hasReplicas"] = undefined /*out*/;
             inputs["host"] = undefined /*out*/;
             inputs["projectId"] = undefined /*out*/;
-            inputs["region"] = undefined /*out*/;
             inputs["replicationType"] = undefined /*out*/;
             inputs["shareServerId"] = undefined /*out*/;
         }
@@ -242,7 +243,8 @@ export interface ShareState {
     readonly projectId?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 Shared File System client.
-     * A Shared File System client is needed to create a share network.
+     * A Shared File System client is needed to create a share. Changing this
+     * creates a new share.
      */
     readonly region?: pulumi.Input<string>;
     /**
@@ -311,6 +313,12 @@ export interface ShareArgs {
      * of the existing share.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The region in which to obtain the V2 Shared File System client.
+     * A Shared File System client is needed to create a share. Changing this
+     * creates a new share.
+     */
+    readonly region?: pulumi.Input<string>;
     /**
      * The UUID of a share network where the share server exists
      * or will be created. If `share_network_id` is not set and you provide a `snapshot_id`,
