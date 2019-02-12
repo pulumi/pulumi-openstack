@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from .. import utilities, tables
@@ -52,13 +53,16 @@ class PoolV1(pulumi.CustomResource):
     The owner of the pool. Required if admin wants to
     create a pool member for another tenant. Changing this creates a new pool.
     """
-    def __init__(__self__, __name__, __opts__=None, lb_method=None, lb_provider=None, monitor_ids=None, name=None, protocol=None, region=None, subnet_id=None, tenant_id=None):
+    def __init__(__self__, resource_name, opts=None, lb_method=None, lb_provider=None, monitor_ids=None, name=None, protocol=None, region=None, subnet_id=None, tenant_id=None, __name__=None, __opts__=None):
         """
         Manages a V1 load balancer pool resource within OpenStack.
         
+        ## Notes
         
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        The `member` block is deprecated in favor of the `openstack_lb_member_v1` resource.
+        
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] lb_method: The algorithm used to distribute load between the
                members of the pool. The current specification supports 'ROUND_ROBIN' and
                'LEAST_CONNECTIONS' as valid values for this attribute.
@@ -80,16 +84,22 @@ class PoolV1(pulumi.CustomResource):
         :param pulumi.Input[str] tenant_id: The owner of the pool. Required if admin wants to
                create a pool member for another tenant. Changing this creates a new pool.
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
-        if not lb_method:
+        if lb_method is None:
             raise TypeError('Missing required property lb_method')
         __props__['lb_method'] = lb_method
 
@@ -99,13 +109,13 @@ class PoolV1(pulumi.CustomResource):
 
         __props__['name'] = name
 
-        if not protocol:
+        if protocol is None:
             raise TypeError('Missing required property protocol')
         __props__['protocol'] = protocol
 
         __props__['region'] = region
 
-        if not subnet_id:
+        if subnet_id is None:
             raise TypeError('Missing required property subnet_id')
         __props__['subnet_id'] = subnet_id
 
@@ -113,9 +123,9 @@ class PoolV1(pulumi.CustomResource):
 
         super(PoolV1, __self__).__init__(
             'openstack:loadbalancer/poolV1:PoolV1',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

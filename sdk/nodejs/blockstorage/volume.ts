@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  * 
  * const volume1 = new openstack.blockstorage.Volume("volume_1", {
  *     description: "first test volume",
- *     name: "volume_1",
  *     region: "RegionOne",
  *     size: 3,
  * });

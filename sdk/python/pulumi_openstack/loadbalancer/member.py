@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from .. import utilities, tables
@@ -56,13 +57,12 @@ class Member(pulumi.CustomResource):
     example, a member with a weight of 10 receives five times as much traffic
     as a member with a weight of 2.
     """
-    def __init__(__self__, __name__, __opts__=None, address=None, admin_state_up=None, name=None, pool_id=None, protocol_port=None, region=None, subnet_id=None, tenant_id=None, weight=None):
+    def __init__(__self__, resource_name, opts=None, address=None, admin_state_up=None, name=None, pool_id=None, protocol_port=None, region=None, subnet_id=None, tenant_id=None, weight=None, __name__=None, __opts__=None):
         """
         Manages a V2 member resource within OpenStack.
         
-        
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address: The IP address of the member to receive traffic from
                the load balancer. Changing this creates a new member.
         :param pulumi.Input[bool] admin_state_up: The administrative state of the member.
@@ -85,16 +85,22 @@ class Member(pulumi.CustomResource):
                example, a member with a weight of 10 receives five times as much traffic
                as a member with a weight of 2.
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
-        if not address:
+        if address is None:
             raise TypeError('Missing required property address')
         __props__['address'] = address
 
@@ -102,11 +108,11 @@ class Member(pulumi.CustomResource):
 
         __props__['name'] = name
 
-        if not pool_id:
+        if pool_id is None:
             raise TypeError('Missing required property pool_id')
         __props__['pool_id'] = pool_id
 
-        if not protocol_port:
+        if protocol_port is None:
             raise TypeError('Missing required property protocol_port')
         __props__['protocol_port'] = protocol_port
 
@@ -120,9 +126,9 @@ class Member(pulumi.CustomResource):
 
         super(Member, __self__).__init__(
             'openstack:loadbalancer/member:Member',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

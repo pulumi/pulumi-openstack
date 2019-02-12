@@ -15,11 +15,9 @@ import * as utilities from "../utilities";
  * 
  * const network1 = new openstack.networking.Network("network_1", {
  *     adminStateUp: true,
- *     name: "tf_test_network",
  * });
  * const router1 = new openstack.networking.Router("router_1", {
  *     externalNetworkId: "f67f0d72-0ddf-11e4-9d95-e1f29f417e2f",
- *     name: "my_router",
  * });
  * const subnet1 = new openstack.networking.Subnet("subnet_1", {
  *     cidr: "192.168.199.0/24",

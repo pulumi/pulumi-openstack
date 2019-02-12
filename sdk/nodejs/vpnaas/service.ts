@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  * 
  * const service1 = new openstack.vpnaas.Service("service_1", {
  *     adminStateUp: true,
- *     name: "my_service",
  *     routerId: "14a75700-fc03-4602-9294-26ee44f366b3",
  * });
  * ```

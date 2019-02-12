@@ -18,7 +18,6 @@ import * as utilities from "../utilities";
  *     metadata: {
  *         test: "true",
  *     },
- *     name: "tf-test-container-1",
  *     region: "RegionOne",
  *     versioning: {
  *         location: "tf-test-container-versions",

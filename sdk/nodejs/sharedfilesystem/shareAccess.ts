@@ -17,23 +17,19 @@ import * as utilities from "../utilities";
  * 
  * const network1 = new openstack.networking.Network("network_1", {
  *     adminStateUp: true,
- *     name: "network_1",
  * });
  * const subnet1 = new openstack.networking.Subnet("subnet_1", {
  *     cidr: "192.168.199.0/24",
  *     ipVersion: 4,
- *     name: "subnet_1",
  *     networkId: network1.id,
  * });
  * const sharenetwork1 = new openstack.sharedfilesystem.ShareNetwork("sharenetwork_1", {
  *     description: "test share network with security services",
- *     name: "test_sharenetwork",
  *     neutronNetId: network1.id,
  *     neutronSubnetId: subnet1.id,
  * });
  * const share1 = new openstack.sharedfilesystem.Share("share_1", {
  *     description: "test share description",
- *     name: "nfs_share",
  *     shareNetworkId: sharenetwork1.id,
  *     shareProto: "NFS",
  *     size: 1,
@@ -45,6 +41,7 @@ import * as utilities from "../utilities";
  *     shareId: share1.id,
  * });
  * ```
+ * 
  * ### CIFS
  * 
  * ```typescript
@@ -53,13 +50,11 @@ import * as utilities from "../utilities";
  * 
  * const network1 = new openstack.networking.Network("network_1", {
  *     adminStateUp: true,
- *     name: "network_1",
  * });
  * const securityservice1 = new openstack.sharedfilesystem.SecurityService("securityservice_1", {
  *     description: "created by terraform",
  *     dnsIp: "192.168.199.10",
  *     domain: "example.com",
- *     name: "security",
  *     ou: "CN=Computers,DC=example,DC=com",
  *     password: "s8cret",
  *     server: "192.168.199.10",
@@ -69,18 +64,15 @@ import * as utilities from "../utilities";
  * const subnet1 = new openstack.networking.Subnet("subnet_1", {
  *     cidr: "192.168.199.0/24",
  *     ipVersion: 4,
- *     name: "subnet_1",
  *     networkId: network1.id,
  * });
  * const sharenetwork1 = new openstack.sharedfilesystem.ShareNetwork("sharenetwork_1", {
  *     description: "share the secure love",
- *     name: "test_sharenetwork_secure",
  *     neutronNetId: network1.id,
  *     neutronSubnetId: subnet1.id,
  *     securityServiceIds: [securityservice1.id],
  * });
  * const share1 = new openstack.sharedfilesystem.Share("share_1", {
- *     name: "cifs_share",
  *     shareNetworkId: sharenetwork1.id,
  *     shareProto: "CIFS",
  *     size: 1,

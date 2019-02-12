@@ -9,6 +9,14 @@ import (
 )
 
 // Manages a V2 port resource within OpenStack.
+// 
+// ## Notes
+// 
+// ### Ports and Instances
+// 
+// There are some notes to consider when connecting Instances to networks using
+// Ports. Please see the `openstack_compute_instance_v2` documentation for further
+// documentation.
 type Port struct {
 	s *pulumi.ResourceState
 }

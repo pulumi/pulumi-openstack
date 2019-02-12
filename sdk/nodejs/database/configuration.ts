@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  *         version: "mysql-5.7",
  *     },
  *     description: "description",
- *     name: "test",
  * });
  * ```
  */

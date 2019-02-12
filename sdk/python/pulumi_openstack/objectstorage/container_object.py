@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from .. import utilities, tables
@@ -115,13 +116,12 @@ class ContainerObject(pulumi.CustomResource):
     A unique transaction ID for this request. Your service provider might 
     need this value if you report a problem.
     """
-    def __init__(__self__, __name__, __opts__=None, container_name=None, content=None, content_disposition=None, content_encoding=None, content_type=None, copy_from=None, delete_after=None, delete_at=None, detect_content_type=None, etag=None, metadata=None, name=None, object_manifest=None, region=None, source=None):
+    def __init__(__self__, resource_name, opts=None, container_name=None, content=None, content_disposition=None, content_encoding=None, content_type=None, copy_from=None, delete_after=None, delete_at=None, detect_content_type=None, etag=None, metadata=None, name=None, object_manifest=None, region=None, source=None, __name__=None, __opts__=None):
         """
         Manages a V1 container object resource within OpenStack.
         
-        
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] container_name: A unique (within an account) name for the container. 
                The container name must be from 1 to 256 characters long and can start
                with any character and contain any pattern. Character set must be UTF-8.
@@ -163,16 +163,22 @@ class ContainerObject(pulumi.CustomResource):
         :param pulumi.Input[str] source: A string representing the local path of a file which will be used
                as the object's content. Conflicts with `source` and `copy_from`.
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
-        if not container_name:
+        if container_name is None:
             raise TypeError('Missing required property container_name')
         __props__['container_name'] = container_name
 
@@ -211,9 +217,9 @@ class ContainerObject(pulumi.CustomResource):
 
         super(ContainerObject, __self__).__init__(
             'openstack:objectstorage/containerObject:ContainerObject',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

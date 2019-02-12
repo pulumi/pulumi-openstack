@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from .. import utilities, tables
@@ -23,7 +24,7 @@ class FlavorAccess(pulumi.CustomResource):
     The UUID of tenant which is allowed to use the flavor.
     Changing this creates a new flavor access.
     """
-    def __init__(__self__, __name__, __opts__=None, flavor_id=None, region=None, tenant_id=None):
+    def __init__(__self__, resource_name, opts=None, flavor_id=None, region=None, tenant_id=None, __name__=None, __opts__=None):
         """
         Manages a project access for flavor V2 resource within OpenStack.
         
@@ -32,9 +33,8 @@ class FlavorAccess(pulumi.CustomResource):
         
         ---
         
-        
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] flavor_id: The UUID of flavor to use. Changing this creates a new flavor access.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Compute client.
                If omitted, the `region` argument of the provider is used.
@@ -42,30 +42,36 @@ class FlavorAccess(pulumi.CustomResource):
         :param pulumi.Input[str] tenant_id: The UUID of tenant which is allowed to use the flavor.
                Changing this creates a new flavor access.
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
-        if not flavor_id:
+        if flavor_id is None:
             raise TypeError('Missing required property flavor_id')
         __props__['flavor_id'] = flavor_id
 
         __props__['region'] = region
 
-        if not tenant_id:
+        if tenant_id is None:
             raise TypeError('Missing required property tenant_id')
         __props__['tenant_id'] = tenant_id
 
         super(FlavorAccess, __self__).__init__(
             'openstack:compute/flavorAccess:FlavorAccess',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

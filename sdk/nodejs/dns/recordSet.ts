@@ -18,13 +18,11 @@ import * as utilities from "../utilities";
  * const exampleZone = new openstack.dns.Zone("example_zone", {
  *     description: "a zone",
  *     email: "email2@example.com",
- *     name: "example.com.",
  *     ttl: 6000,
  *     type: "PRIMARY",
  * });
  * const rsExampleCom = new openstack.dns.RecordSet("rs_example_com", {
  *     description: "An example record set",
- *     name: "rs.example.com.",
  *     records: ["10.0.0.1"],
  *     ttl: 3000,
  *     type: "A",

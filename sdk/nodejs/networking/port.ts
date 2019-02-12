@@ -15,14 +15,20 @@ import * as utilities from "../utilities";
  * 
  * const network1 = new openstack.networking.Network("network_1", {
  *     adminStateUp: true,
- *     name: "network_1",
  * });
  * const port1 = new openstack.networking.Port("port_1", {
  *     adminStateUp: true,
- *     name: "port_1",
  *     networkId: network1.id,
  * });
  * ```
+ * 
+ * ## Notes
+ * 
+ * ### Ports and Instances
+ * 
+ * There are some notes to consider when connecting Instances to networks using
+ * Ports. Please see the `openstack_compute_instance_v2` documentation for further
+ * documentation.
  */
 export class Port extends pulumi.CustomResource {
     /**

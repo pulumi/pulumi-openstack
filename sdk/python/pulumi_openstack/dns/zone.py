@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from .. import utilities, tables
@@ -52,13 +53,12 @@ class Zone(pulumi.CustomResource):
     Map of additional options. Changing this creates a
     new zone.
     """
-    def __init__(__self__, __name__, __opts__=None, attributes=None, description=None, email=None, masters=None, name=None, region=None, ttl=None, type=None, value_specs=None):
+    def __init__(__self__, resource_name, opts=None, attributes=None, description=None, email=None, masters=None, name=None, region=None, ttl=None, type=None, value_specs=None, __name__=None, __opts__=None):
         """
         Manages a DNS zone in the OpenStack DNS Service.
         
-        
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] attributes: Attributes for the DNS Service scheduler.
                Changing this creates a new zone.
         :param pulumi.Input[str] description: A description of the zone.
@@ -77,11 +77,17 @@ class Zone(pulumi.CustomResource):
         :param pulumi.Input[dict] value_specs: Map of additional options. Changing this creates a
                new zone.
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
@@ -106,9 +112,9 @@ class Zone(pulumi.CustomResource):
 
         super(Zone, __self__).__init__(
             'openstack:dns/zone:Zone',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

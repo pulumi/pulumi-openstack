@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from .. import utilities, tables
@@ -62,16 +63,15 @@ class ShareNetwork(pulumi.CustomResource):
     """
     The share network segmentation ID.
     """
-    def __init__(__self__, __name__, __opts__=None, description=None, name=None, neutron_net_id=None, neutron_subnet_id=None, region=None, security_service_ids=None):
+    def __init__(__self__, resource_name, opts=None, description=None, name=None, neutron_net_id=None, neutron_subnet_id=None, region=None, security_service_ids=None, __name__=None, __opts__=None):
         """
         Use this resource to configure a share network.
         
         A share network stores network information that share servers can use when
         shares are created.
         
-        
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The human-readable description for the share network.
                Changing this updates the description of the existing share network.
         :param pulumi.Input[str] name: The name for the share network. Changing this updates the name
@@ -89,11 +89,17 @@ class ShareNetwork(pulumi.CustomResource):
         :param pulumi.Input[list] security_service_ids: The list of security service IDs to associate with
                the share network. The security service must be specified by ID and not name.
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
@@ -102,11 +108,11 @@ class ShareNetwork(pulumi.CustomResource):
 
         __props__['name'] = name
 
-        if not neutron_net_id:
+        if neutron_net_id is None:
             raise TypeError('Missing required property neutron_net_id')
         __props__['neutron_net_id'] = neutron_net_id
 
-        if not neutron_subnet_id:
+        if neutron_subnet_id is None:
             raise TypeError('Missing required property neutron_subnet_id')
         __props__['neutron_subnet_id'] = neutron_subnet_id
 
@@ -122,9 +128,9 @@ class ShareNetwork(pulumi.CustomResource):
 
         super(ShareNetwork, __self__).__init__(
             'openstack:sharedfilesystem/shareNetwork:ShareNetwork',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

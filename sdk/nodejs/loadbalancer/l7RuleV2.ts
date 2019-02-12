@@ -15,21 +15,17 @@ import * as utilities from "../utilities";
  * 
  * const network1 = new openstack.networking.Network("network_1", {
  *     adminStateUp: true,
- *     name: "network_1",
  * });
  * const subnet1 = new openstack.networking.Subnet("subnet_1", {
  *     cidr: "192.168.199.0/24",
  *     ipVersion: 4,
- *     name: "subnet_1",
  *     networkId: network1.id,
  * });
  * const loadbalancer1 = new openstack.loadbalancer.LoadBalancer("loadbalancer_1", {
- *     name: "loadbalancer_1",
  *     vipSubnetId: subnet1.id,
  * });
  * const listener1 = new openstack.loadbalancer.Listener("listener_1", {
  *     loadbalancerId: loadbalancer1.id,
- *     name: "listener_1",
  *     protocol: "HTTP",
  *     protocolPort: 8080,
  * });
@@ -37,7 +33,6 @@ import * as utilities from "../utilities";
  *     action: "REDIRECT_TO_URL",
  *     description: "test description",
  *     listenerId: listener1.id,
- *     name: "test",
  *     position: 1,
  *     redirectUrl: "http://www.example.com",
  * });
@@ -50,7 +45,6 @@ import * as utilities from "../utilities";
  * const pool1 = new openstack.loadbalancer.Pool("pool_1", {
  *     lbMethod: "ROUND_ROBIN",
  *     loadbalancerId: loadbalancer1.id,
- *     name: "pool_1",
  *     protocol: "HTTP",
  * });
  * ```

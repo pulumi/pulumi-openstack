@@ -18,7 +18,6 @@ import * as utilities from "../utilities";
  * const example_com = new openstack.dns.Zone("example.com", {
  *     description: "An example zone",
  *     email: "jdoe@example.com",
- *     name: "example.com.",
  *     ttl: 3000,
  *     type: "PRIMARY",
  * });

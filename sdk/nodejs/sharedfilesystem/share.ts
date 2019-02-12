@@ -15,23 +15,19 @@ import * as utilities from "../utilities";
  * 
  * const network1 = new openstack.networking.Network("network_1", {
  *     adminStateUp: true,
- *     name: "network_1",
  * });
  * const subnet1 = new openstack.networking.Subnet("subnet_1", {
  *     cidr: "192.168.199.0/24",
  *     ipVersion: 4,
- *     name: "subnet_1",
  *     networkId: network1.id,
  * });
  * const sharenetwork1 = new openstack.sharedfilesystem.ShareNetwork("sharenetwork_1", {
  *     description: "test share network with security services",
- *     name: "test_sharenetwork",
  *     neutronNetId: network1.id,
  *     neutronSubnetId: subnet1.id,
  * });
  * const share1 = new openstack.sharedfilesystem.Share("share_1", {
  *     description: "test share description",
- *     name: "nfs_share",
  *     shareNetworkId: sharenetwork1.id,
  *     shareProto: "NFS",
  *     size: 1,

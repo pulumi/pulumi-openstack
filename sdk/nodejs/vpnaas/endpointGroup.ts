@@ -18,7 +18,6 @@ import * as utilities from "../utilities";
  *         "10.2.0.0/24",
  *         "10.3.0.0/24",
  *     ],
- *     name: "Group 1",
  *     type: "cidr",
  * });
  * ```

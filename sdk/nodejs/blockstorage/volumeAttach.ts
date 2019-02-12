@@ -26,7 +26,6 @@ import * as utilities from "../utilities";
  * import * as openstack from "@pulumi/openstack";
  * 
  * const volume1 = new openstack.blockstorage.Volume("volume_1", {
- *     name: "volume_1",
  *     size: 1,
  * });
  * const va1 = new openstack.blockstorage.VolumeAttach("va_1", {

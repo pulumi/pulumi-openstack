@@ -17,12 +17,27 @@ import * as utilities from "../utilities";
  *     containerFormat: "bare",
  *     diskFormat: "qcow2",
  *     imageSourceUrl: "https://releases.rancher.com/os/latest/rancheros-openstack.img",
- *     name: "RancherOS",
  *     properties: {
  *         key: "value",
  *     },
  * });
  * ```
+ * 
+ * ## Notes
+ * 
+ * ### Properties
+ * 
+ * This resource supports the ability to add properties to a resource during
+ * creation as well as add, update, and delete properties during an update of this
+ * resource.
+ * 
+ * Newer versions of OpenStack are adding some read-only properties to each image.
+ * These properties start with the prefix `os_`. If these properties are detected,
+ * this resource will automatically reconcile these with the user-provided
+ * properties.
+ * 
+ * In addition, the `direct_url` property is also automatically reconciled if the
+ * Image Service set it.
  */
 export class Image extends pulumi.CustomResource {
     /**

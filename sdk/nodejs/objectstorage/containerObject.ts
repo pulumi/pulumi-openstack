@@ -20,7 +20,6 @@ import * as utilities from "../utilities";
  *     metadata: {
  *         test: "true",
  *     },
- *     name: "tf-test-container-1",
  *     region: "RegionOne",
  * });
  * const doc1 = new openstack.objectstorage.ContainerObject("doc_1", {
@@ -33,10 +32,10 @@ import * as utilities from "../utilities";
  *     metadata: {
  *         test: "true",
  *     },
- *     name: "test/default.json",
  *     region: "RegionOne",
  * });
  * ```
+ * 
  * ### Example with content from file
  * 
  * ```typescript
@@ -48,7 +47,6 @@ import * as utilities from "../utilities";
  *     metadata: {
  *         test: "true",
  *     },
- *     name: "tf-test-container-1",
  *     region: "RegionOne",
  * });
  * const doc1 = new openstack.objectstorage.ContainerObject("doc_1", {
@@ -57,7 +55,6 @@ import * as utilities from "../utilities";
  *     metadata: {
  *         test: "true",
  *     },
- *     name: "test/default.json",
  *     region: "RegionOne",
  *     source: "./default.json",
  * });

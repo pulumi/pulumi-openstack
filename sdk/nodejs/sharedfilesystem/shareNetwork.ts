@@ -20,21 +20,19 @@ import * as utilities from "../utilities";
  * 
  * const network1 = new openstack.networking.Network("network_1", {
  *     adminStateUp: true,
- *     name: "network_1",
  * });
  * const subnet1 = new openstack.networking.Subnet("subnet_1", {
  *     cidr: "192.168.199.0/24",
  *     ipVersion: 4,
- *     name: "subnet_1",
  *     networkId: network1.id,
  * });
  * const sharenetwork1 = new openstack.sharedfilesystem.ShareNetwork("sharenetwork_1", {
  *     description: "test share network",
- *     name: "test_sharenetwork",
  *     neutronNetId: network1.id,
  *     neutronSubnetId: subnet1.id,
  * });
  * ```
+ * 
  * ### Share network with associated security services
  * 
  * ```typescript
@@ -43,13 +41,11 @@ import * as utilities from "../utilities";
  * 
  * const network1 = new openstack.networking.Network("network_1", {
  *     adminStateUp: true,
- *     name: "network_1",
  * });
  * const securityservice1 = new openstack.sharedfilesystem.SecurityService("securityservice_1", {
  *     description: "created by terraform",
  *     dnsIp: "192.168.199.10",
  *     domain: "example.com",
- *     name: "security",
  *     ou: "CN=Computers,DC=example,DC=com",
  *     password: "s8cret",
  *     server: "192.168.199.10",
@@ -59,12 +55,10 @@ import * as utilities from "../utilities";
  * const subnet1 = new openstack.networking.Subnet("subnet_1", {
  *     cidr: "192.168.199.0/24",
  *     ipVersion: 4,
- *     name: "subnet_1",
  *     networkId: network1.id,
  * });
  * const sharenetwork1 = new openstack.sharedfilesystem.ShareNetwork("sharenetwork_1", {
  *     description: "test share network with security services",
- *     name: "test_sharenetwork",
  *     neutronNetId: network1.id,
  *     neutronSubnetId: subnet1.id,
  *     securityServiceIds: [securityservice1.id],

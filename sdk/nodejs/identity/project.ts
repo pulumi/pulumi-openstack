@@ -18,7 +18,6 @@ import * as utilities from "../utilities";
  * 
  * const project1 = new openstack.identity.Project("project_1", {
  *     description: "A project",
- *     name: "project_1",
  * });
  * ```
  */

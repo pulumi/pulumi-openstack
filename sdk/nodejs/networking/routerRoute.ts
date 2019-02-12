@@ -15,11 +15,9 @@ import * as utilities from "../utilities";
  * 
  * const network1 = new openstack.networking.Network("network_1", {
  *     adminStateUp: true,
- *     name: "network_1",
  * });
  * const router1 = new openstack.networking.Router("router_1", {
  *     adminStateUp: true,
- *     name: "router_1",
  * });
  * const subnet1 = new openstack.networking.Subnet("subnet_1", {
  *     cidr: "192.168.199.0/24",
@@ -36,6 +34,12 @@ import * as utilities from "../utilities";
  *     routerId: router1.id,
  * }, {dependsOn: [int1]});
  * ```
+ * 
+ * ## Notes
+ * 
+ * The `next_hop` IP address must be directly reachable from the router at the ``openstack_networking_router_route_v2``
+ * resource creation time.  You can ensure that by explicitly specifying a dependency on the ``openstack_networking_router_interface_v2``
+ * resource that connects the next hop to the router, as in the example above.
  */
 export class RouterRoute extends pulumi.CustomResource {
     /**

@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  * 
  * const secgroup1 = new openstack.networking.SecGroup("secgroup_1", {
  *     description: "My neutron security group",
- *     name: "secgroup_1",
  * });
  * const secgroupRule1 = new openstack.networking.SecGroupRule("secgroup_rule_1", {
  *     direction: "ingress",

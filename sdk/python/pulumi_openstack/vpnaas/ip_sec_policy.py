@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from .. import utilities, tables
@@ -67,13 +68,12 @@ class IpSecPolicy(pulumi.CustomResource):
     """
     Map of additional options.
     """
-    def __init__(__self__, __name__, __opts__=None, auth_algorithm=None, description=None, encapsulation_mode=None, encryption_algorithm=None, lifetimes=None, name=None, pfs=None, region=None, tenant_id=None, transform_protocol=None, value_specs=None):
+    def __init__(__self__, resource_name, opts=None, auth_algorithm=None, description=None, encapsulation_mode=None, encryption_algorithm=None, lifetimes=None, name=None, pfs=None, region=None, tenant_id=None, transform_protocol=None, value_specs=None, __name__=None, __opts__=None):
         """
         Manages a V2 Neutron IPSec policy resource within OpenStack.
         
-        
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] auth_algorithm: The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.
                Default is sha1. Changing this updates the algorithm of the existing policy.
         :param pulumi.Input[str] description: The human-readable description for the policy.
@@ -101,11 +101,17 @@ class IpSecPolicy(pulumi.CustomResource):
                Changing this updates the existing policy. Default is ESP.
         :param pulumi.Input[dict] value_specs: Map of additional options.
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
@@ -134,9 +140,9 @@ class IpSecPolicy(pulumi.CustomResource):
 
         super(IpSecPolicy, __self__).__init__(
             'openstack:vpnaas/ipSecPolicy:IpSecPolicy',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

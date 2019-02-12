@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from .. import utilities, tables
@@ -89,15 +90,14 @@ class SecGroupRule(pulumi.CustomResource):
     wants to create a port for another tenant. Changing this creates a new
     security group rule.
     """
-    def __init__(__self__, __name__, __opts__=None, description=None, direction=None, ethertype=None, port_range_max=None, port_range_min=None, protocol=None, region=None, remote_group_id=None, remote_ip_prefix=None, security_group_id=None, tenant_id=None):
+    def __init__(__self__, resource_name, opts=None, description=None, direction=None, ethertype=None, port_range_max=None, port_range_min=None, protocol=None, region=None, remote_group_id=None, remote_ip_prefix=None, security_group_id=None, tenant_id=None, __name__=None, __opts__=None):
         """
         Manages a V2 neutron security group rule resource within OpenStack.
         Unlike Nova security groups, neutron separates the group from the rules
         and also allows an admin to target a specific tenant_id.
         
-        
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description of the rule. Changing this creates a new security group rule.
         :param pulumi.Input[str] direction: The direction of the rule, valid values are __ingress__
                or __egress__. Changing this creates a new security group rule.
@@ -147,22 +147,28 @@ class SecGroupRule(pulumi.CustomResource):
                wants to create a port for another tenant. Changing this creates a new
                security group rule.
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
         __props__['description'] = description
 
-        if not direction:
+        if direction is None:
             raise TypeError('Missing required property direction')
         __props__['direction'] = direction
 
-        if not ethertype:
+        if ethertype is None:
             raise TypeError('Missing required property ethertype')
         __props__['ethertype'] = ethertype
 
@@ -178,7 +184,7 @@ class SecGroupRule(pulumi.CustomResource):
 
         __props__['remote_ip_prefix'] = remote_ip_prefix
 
-        if not security_group_id:
+        if security_group_id is None:
             raise TypeError('Missing required property security_group_id')
         __props__['security_group_id'] = security_group_id
 
@@ -186,9 +192,9 @@ class SecGroupRule(pulumi.CustomResource):
 
         super(SecGroupRule, __self__).__init__(
             'openstack:networking/secGroupRule:SecGroupRule',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

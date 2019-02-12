@@ -18,7 +18,6 @@ import * as utilities from "../utilities";
  *     description: "drop TELNET traffic",
  *     destinationPort: "23",
  *     enabled: true,
- *     name: "my_rule",
  *     protocol: "tcp",
  * });
  * ```

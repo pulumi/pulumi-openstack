@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  *         "hw:cpu_policy": "CPU-POLICY",
  *         "hw:cpu_thread_policy": "CPU-THREAD-POLICY",
  *     },
- *     name: "my-flavor",
  *     ram: 8096,
  *     vcpus: 2,
  * });

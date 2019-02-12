@@ -20,7 +20,6 @@ import * as utilities from "../utilities";
  *     flavorId: "3",
  *     imageId: "ad091b52-742f-469e-8f3c-fd81cadf0743",
  *     keyPair: "my_key_pair_name",
- *     name: "instance_1",
  *     securityGroups: ["default"],
  * });
  * const fip1FloatingIp = new openstack.networking.FloatingIp("fip_1", {
@@ -31,6 +30,7 @@ import * as utilities from "../utilities";
  *     instanceId: instance1.id,
  * });
  * ```
+ * 
  * ### Explicitly set the network to attach to
  * 
  * ```typescript
@@ -41,7 +41,6 @@ import * as utilities from "../utilities";
  *     flavorId: "3",
  *     imageId: "ad091b52-742f-469e-8f3c-fd81cadf0743",
  *     keyPair: "my_key_pair_name",
- *     name: "instance_1",
  *     networks: [
  *         {
  *             name: "my_network",

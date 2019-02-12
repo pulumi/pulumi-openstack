@@ -33,6 +33,7 @@ import * as utilities from "../utilities";
  *     securityGroupIds: [secgroup.apply(secgroup => secgroup.id)],
  * });
  * ```
+ * 
  * ### Enforce a security group to an existing port
  * 
  * ```typescript
@@ -51,6 +52,7 @@ import * as utilities from "../utilities";
  *     securityGroupIds: [secgroup.apply(secgroup => secgroup.id)],
  * });
  * ```
+ * 
  * ### Remove all security groups from an existing port
  * 
  * ```typescript

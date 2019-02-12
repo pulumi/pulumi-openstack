@@ -14,7 +14,6 @@ import * as utilities from "../utilities";
  * import * as openstack from "@pulumi/openstack";
  * 
  * const vip1 = new openstack.loadbalancer.Vip("vip_1", {
- *     name: "tf_test_lb_vip",
  *     poolId: "67890",
  *     port: 80,
  *     protocol: "HTTP",

@@ -3,20 +3,21 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from . import utilities, tables
 
 class Provider(pulumi.ProviderResource):
-    def __init__(__self__, __name__, __opts__=None, application_credential_id=None, application_credential_name=None, application_credential_secret=None, auth_url=None, cacert_file=None, cert=None, cloud=None, default_domain=None, domain_id=None, domain_name=None, endpoint_overrides=None, endpoint_type=None, insecure=None, key=None, max_retries=None, password=None, project_domain_id=None, project_domain_name=None, region=None, swauth=None, tenant_id=None, tenant_name=None, token=None, use_octavia=None, user_domain_id=None, user_domain_name=None, user_id=None, user_name=None):
+    def __init__(__self__, resource_name, opts=None, application_credential_id=None, application_credential_name=None, application_credential_secret=None, auth_url=None, cacert_file=None, cert=None, cloud=None, default_domain=None, domain_id=None, domain_name=None, endpoint_overrides=None, endpoint_type=None, insecure=None, key=None, max_retries=None, password=None, project_domain_id=None, project_domain_name=None, region=None, swauth=None, tenant_id=None, tenant_name=None, token=None, use_octavia=None, user_domain_id=None, user_domain_name=None, user_id=None, user_name=None, __name__=None, __opts__=None):
         """
         The provider type for the openstack package. By default, resources use package-wide configuration
         settings, however an explicit `Provider` instance may be created and passed during resource
         construction to achieve fine-grained programmatic control over provider settings. See the
         [documentation](https://pulumi.io/reference/programming-model.html#providers) for more information.
         
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] application_credential_id
         :param pulumi.Input[str] application_credential_name
         :param pulumi.Input[str] application_credential_secret
@@ -46,11 +47,17 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[str] user_id
         :param pulumi.Input[str] user_name
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
@@ -61,107 +68,107 @@ class Provider(pulumi.ProviderResource):
 
         __props__['application_credential_secret'] = application_credential_secret
 
-        if not auth_url:
+        if auth_url is None:
             auth_url = utilities.get_env('OS_AUTH_URL')
         __props__['auth_url'] = auth_url
 
-        if not cacert_file:
+        if cacert_file is None:
             cacert_file = utilities.get_env('OS_CACERT')
         __props__['cacert_file'] = cacert_file
 
-        if not cert:
+        if cert is None:
             cert = utilities.get_env('OS_CERT')
         __props__['cert'] = cert
 
-        if not cloud:
+        if cloud is None:
             cloud = utilities.get_env('OS_CLOUD')
         __props__['cloud'] = cloud
 
-        if not default_domain:
+        if default_domain is None:
             default_domain = (utilities.get_env('OS_DEFAULT_DOMAIN') or 'default')
         __props__['default_domain'] = default_domain
 
-        if not domain_id:
+        if domain_id is None:
             domain_id = utilities.get_env('OS_DOMAIN_ID')
         __props__['domain_id'] = domain_id
 
-        if not domain_name:
+        if domain_name is None:
             domain_name = utilities.get_env('OS_DOMAIN_NAME')
         __props__['domain_name'] = domain_name
 
         __props__['endpoint_overrides'] = pulumi.Output.from_input(endpoint_overrides).apply(json.dumps) if endpoint_overrides is not None else None
 
-        if not endpoint_type:
+        if endpoint_type is None:
             endpoint_type = utilities.get_env('OS_ENDPOINT_TYPE')
         __props__['endpoint_type'] = endpoint_type
 
-        if not insecure:
+        if insecure is None:
             insecure = utilities.get_env_bool('OS_INSECURE')
         __props__['insecure'] = pulumi.Output.from_input(insecure).apply(json.dumps) if insecure is not None else None
 
-        if not key:
+        if key is None:
             key = utilities.get_env('OS_KEY')
         __props__['key'] = key
 
         __props__['max_retries'] = pulumi.Output.from_input(max_retries).apply(json.dumps) if max_retries is not None else None
 
-        if not password:
+        if password is None:
             password = utilities.get_env('OS_PASSWORD')
         __props__['password'] = password
 
-        if not project_domain_id:
+        if project_domain_id is None:
             project_domain_id = utilities.get_env('OS_PROJECT_DOMAIN_ID')
         __props__['project_domain_id'] = project_domain_id
 
-        if not project_domain_name:
+        if project_domain_name is None:
             project_domain_name = utilities.get_env('OS_PROJECT_DOMAIN_NAME')
         __props__['project_domain_name'] = project_domain_name
 
-        if not region:
+        if region is None:
             region = utilities.get_env('OS_REGION_NAME')
         __props__['region'] = region
 
-        if not swauth:
+        if swauth is None:
             swauth = utilities.get_env_bool('OS_SWAUTH')
         __props__['swauth'] = pulumi.Output.from_input(swauth).apply(json.dumps) if swauth is not None else None
 
-        if not tenant_id:
+        if tenant_id is None:
             tenant_id = utilities.get_env('OS_TENANT_ID', 'OS_PROJECT_ID')
         __props__['tenant_id'] = tenant_id
 
-        if not tenant_name:
+        if tenant_name is None:
             tenant_name = utilities.get_env('OS_TENANT_NAME', 'OS_PROJECT_NAME')
         __props__['tenant_name'] = tenant_name
 
-        if not token:
+        if token is None:
             token = utilities.get_env('OS_TOKEN', 'OS_AUTH_TOKEN')
         __props__['token'] = token
 
-        if not use_octavia:
+        if use_octavia is None:
             use_octavia = utilities.get_env_bool('OS_USE_OCTAVIA')
         __props__['use_octavia'] = pulumi.Output.from_input(use_octavia).apply(json.dumps) if use_octavia is not None else None
 
-        if not user_domain_id:
+        if user_domain_id is None:
             user_domain_id = utilities.get_env('OS_USER_DOMAIN_ID')
         __props__['user_domain_id'] = user_domain_id
 
-        if not user_domain_name:
+        if user_domain_name is None:
             user_domain_name = utilities.get_env('OS_USER_DOMAIN_NAME')
         __props__['user_domain_name'] = user_domain_name
 
-        if not user_id:
+        if user_id is None:
             user_id = utilities.get_env('OS_USER_ID')
         __props__['user_id'] = user_id
 
-        if not user_name:
+        if user_name is None:
             user_name = utilities.get_env('OS_USERNAME')
         __props__['user_name'] = user_name
 
         super(Provider, __self__).__init__(
             'openstack',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

@@ -18,7 +18,6 @@ import * as utilities from "../utilities";
  *     description: "drop TELNET traffic",
  *     destinationPort: "23",
  *     enabled: true,
- *     name: "my-rule-1",
  *     protocol: "tcp",
  * });
  * const rule2 = new openstack.firewall.Rule("rule_2", {
@@ -26,11 +25,9 @@ import * as utilities from "../utilities";
  *     description: "drop NTP traffic",
  *     destinationPort: "123",
  *     enabled: false,
- *     name: "my-rule-2",
  *     protocol: "udp",
  * });
  * const policy1 = new openstack.firewall.Policy("policy_1", {
- *     name: "my-policy",
  *     rules: [
  *         rule1.id,
  *         rule2.id,

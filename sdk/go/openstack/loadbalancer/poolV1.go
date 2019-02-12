@@ -9,6 +9,10 @@ import (
 )
 
 // Manages a V1 load balancer pool resource within OpenStack.
+// 
+// ## Notes
+// 
+// The `member` block is deprecated in favor of the `openstack_lb_member_v1` resource.
 type PoolV1 struct {
 	s *pulumi.ResourceState
 }

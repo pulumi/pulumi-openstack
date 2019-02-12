@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from .. import utilities, tables
@@ -44,15 +45,14 @@ class SecGroup(pulumi.CustomResource):
     wants to create a port for another tenant. Changing this creates a new
     security group.
     """
-    def __init__(__self__, __name__, __opts__=None, delete_default_rules=None, description=None, name=None, region=None, tags=None, tenant_id=None):
+    def __init__(__self__, resource_name, opts=None, delete_default_rules=None, description=None, name=None, region=None, tags=None, tenant_id=None, __name__=None, __opts__=None):
         """
         Manages a V2 neutron security group resource within OpenStack.
         Unlike Nova security groups, neutron separates the group from the rules
         and also allows an admin to target a specific tenant_id.
         
-        
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] delete_default_rules: Whether or not to delete the default
                egress security rules. This is `false` by default. See the below note
                for more information.
@@ -67,11 +67,17 @@ class SecGroup(pulumi.CustomResource):
                wants to create a port for another tenant. Changing this creates a new
                security group.
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
@@ -92,9 +98,9 @@ class SecGroup(pulumi.CustomResource):
 
         super(SecGroup, __self__).__init__(
             'openstack:networking/secGroup:SecGroup',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

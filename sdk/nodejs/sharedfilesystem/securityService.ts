@@ -24,7 +24,6 @@ import * as utilities from "../utilities";
  *     description: "created by terraform",
  *     dnsIp: "192.168.199.10",
  *     domain: "example.com",
- *     name: "security",
  *     ou: "CN=Computers,DC=example,DC=com",
  *     password: "s8cret",
  *     server: "192.168.199.10",

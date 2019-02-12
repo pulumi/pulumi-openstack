@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from .. import utilities, tables
@@ -73,13 +74,12 @@ class Monitor(pulumi.CustomResource):
     Required for HTTP(S) types. URI path that will be
     accessed if monitor type is HTTP or HTTPS.
     """
-    def __init__(__self__, __name__, __opts__=None, admin_state_up=None, delay=None, expected_codes=None, http_method=None, max_retries=None, name=None, pool_id=None, region=None, tenant_id=None, timeout=None, type=None, url_path=None):
+    def __init__(__self__, resource_name, opts=None, admin_state_up=None, delay=None, expected_codes=None, http_method=None, max_retries=None, name=None, pool_id=None, region=None, tenant_id=None, timeout=None, type=None, url_path=None, __name__=None, __opts__=None):
         """
         Manages a V2 monitor resource within OpenStack.
         
-        
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] admin_state_up: The administrative state of the monitor.
                A valid value is true (UP) or false (DOWN).
         :param pulumi.Input[int] delay: The time, in seconds, between sending probes to members.
@@ -110,18 +110,24 @@ class Monitor(pulumi.CustomResource):
         :param pulumi.Input[str] url_path: Required for HTTP(S) types. URI path that will be
                accessed if monitor type is HTTP or HTTPS.
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
         __props__['admin_state_up'] = admin_state_up
 
-        if not delay:
+        if delay is None:
             raise TypeError('Missing required property delay')
         __props__['delay'] = delay
 
@@ -129,13 +135,13 @@ class Monitor(pulumi.CustomResource):
 
         __props__['http_method'] = http_method
 
-        if not max_retries:
+        if max_retries is None:
             raise TypeError('Missing required property max_retries')
         __props__['max_retries'] = max_retries
 
         __props__['name'] = name
 
-        if not pool_id:
+        if pool_id is None:
             raise TypeError('Missing required property pool_id')
         __props__['pool_id'] = pool_id
 
@@ -143,11 +149,11 @@ class Monitor(pulumi.CustomResource):
 
         __props__['tenant_id'] = tenant_id
 
-        if not timeout:
+        if timeout is None:
             raise TypeError('Missing required property timeout')
         __props__['timeout'] = timeout
 
-        if not type:
+        if type is None:
             raise TypeError('Missing required property type')
         __props__['type'] = type
 
@@ -155,9 +161,9 @@ class Monitor(pulumi.CustomResource):
 
         super(Monitor, __self__).__init__(
             'openstack:loadbalancer/monitor:Monitor',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

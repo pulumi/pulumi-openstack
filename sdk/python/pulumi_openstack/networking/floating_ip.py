@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from .. import utilities, tables
@@ -67,16 +68,15 @@ class FloatingIp(pulumi.CustomResource):
     """
     Map of additional options.
     """
-    def __init__(__self__, __name__, __opts__=None, address=None, description=None, fixed_ip=None, pool=None, port_id=None, region=None, subnet_id=None, tags=None, tenant_id=None, value_specs=None):
+    def __init__(__self__, resource_name, opts=None, address=None, description=None, fixed_ip=None, pool=None, port_id=None, region=None, subnet_id=None, tags=None, tenant_id=None, value_specs=None, __name__=None, __opts__=None):
         """
         Manages a V2 floating IP resource within OpenStack Neutron (networking)
         that can be used for load balancers.
         These are similar to Nova (compute) floating IP resources,
         but only compute floating IPs can be used with compute instances.
         
-        
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address: The actual/specific floating IP to obtain. By default,
                non-admin users are not able to specify a floating IP, so you must either be
                an admin user or have had a custom policy or role applied to your OpenStack
@@ -102,11 +102,17 @@ class FloatingIp(pulumi.CustomResource):
                may or may not have a different address)
         :param pulumi.Input[dict] value_specs: Map of additional options.
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
@@ -117,7 +123,7 @@ class FloatingIp(pulumi.CustomResource):
 
         __props__['fixed_ip'] = fixed_ip
 
-        if not pool:
+        if pool is None:
             raise TypeError('Missing required property pool')
         __props__['pool'] = pool
 
@@ -137,9 +143,9 @@ class FloatingIp(pulumi.CustomResource):
 
         super(FloatingIp, __self__).__init__(
             'openstack:networking/floatingIp:FloatingIp',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

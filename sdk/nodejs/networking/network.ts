@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  * 
  * const secgroup1 = new openstack.compute.SecGroup("secgroup_1", {
  *     description: "a security group",
- *     name: "secgroup_1",
  *     rules: [{
  *         cidr: "0.0.0.0/0",
  *         fromPort: 22,
@@ -25,12 +24,10 @@ import * as utilities from "../utilities";
  * });
  * const network1 = new openstack.networking.Network("network_1", {
  *     adminStateUp: true,
- *     name: "network_1",
  * });
  * const subnet1 = new openstack.networking.Subnet("subnet_1", {
  *     cidr: "192.168.199.0/24",
  *     ipVersion: 4,
- *     name: "subnet_1",
  *     networkId: network1.id,
  * });
  * const port1 = new openstack.networking.Port("port_1", {
@@ -39,12 +36,10 @@ import * as utilities from "../utilities";
  *         ipAddress: "192.168.199.10",
  *         subnetId: subnet1.id,
  *     }],
- *     name: "port_1",
  *     networkId: network1.id,
  *     securityGroupIds: [secgroup1.id],
  * });
  * const instance1 = new openstack.compute.Instance("instance_1", {
- *     name: "instance_1",
  *     networks: [{
  *         port: port1.id,
  *     }],
