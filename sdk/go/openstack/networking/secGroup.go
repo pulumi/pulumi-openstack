@@ -33,6 +33,7 @@ func NewSecGroup(ctx *pulumi.Context,
 		inputs["tags"] = args.Tags
 		inputs["tenantId"] = args.TenantId
 	}
+	inputs["allTags"] = nil
 	s, err := ctx.RegisterResource("openstack:networking/secGroup:SecGroup", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
@@ -46,6 +47,7 @@ func GetSecGroup(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *SecGroupState, opts ...pulumi.ResourceOpt) (*SecGroup, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["allTags"] = state.AllTags
 		inputs["deleteDefaultRules"] = state.DeleteDefaultRules
 		inputs["description"] = state.Description
 		inputs["name"] = state.Name
@@ -68,6 +70,12 @@ func (r *SecGroup) URN() *pulumi.URNOutput {
 // ID is this resource's unique identifier assigned by its provider.
 func (r *SecGroup) ID() *pulumi.IDOutput {
 	return r.s.ID()
+}
+
+// The collection of tags assigned on the security group, which have
+// been explicitly and implicitly added.
+func (r *SecGroup) AllTags() *pulumi.ArrayOutput {
+	return (*pulumi.ArrayOutput)(r.s.State["allTags"])
 }
 
 // Whether or not to delete the default
@@ -109,6 +117,9 @@ func (r *SecGroup) TenantId() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering SecGroup resources.
 type SecGroupState struct {
+	// The collection of tags assigned on the security group, which have
+	// been explicitly and implicitly added.
+	AllTags interface{}
 	// Whether or not to delete the default
 	// egress security rules. This is `false` by default. See the below note
 	// for more information.

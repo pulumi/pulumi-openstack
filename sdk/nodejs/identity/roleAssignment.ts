@@ -16,20 +16,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_identity_project_v3_project_1 = new openstack.identity.Project("project_1", {
- *     name: "project_1",
+ * const project1 = new openstack.identity.Project("project_1", {});
+ * const role1 = new openstack.identity.Role("role_1", {});
+ * const user1 = new openstack.identity.User("user_1", {
+ *     defaultProjectId: project1.id,
  * });
- * const openstack_identity_role_v3_role_1 = new openstack.identity.Role("role_1", {
- *     name: "role_1",
- * });
- * const openstack_identity_user_v3_user_1 = new openstack.identity.User("user_1", {
- *     defaultProjectId: openstack_identity_project_v3_project_1.id,
- *     name: "user_1",
- * });
- * const openstack_identity_role_assignment_v3_role_assignment_1 = new openstack.identity.RoleAssignment("role_assignment_1", {
- *     projectId: openstack_identity_project_v3_project_1.id,
- *     roleId: openstack_identity_role_v3_role_1.id,
- *     userId: openstack_identity_user_v3_user_1.id,
+ * const roleAssignment1 = new openstack.identity.RoleAssignment("role_assignment_1", {
+ *     projectId: project1.id,
+ *     roleId: role1.id,
+ *     userId: user1.id,
  * });
  * ```
  */
@@ -58,6 +53,7 @@ export class RoleAssignment extends pulumi.CustomResource {
      * The project to assign the role in.
      */
     public readonly projectId: pulumi.Output<string | undefined>;
+    public readonly region: pulumi.Output<string>;
     /**
      * The role to assign.
      */
@@ -82,6 +78,7 @@ export class RoleAssignment extends pulumi.CustomResource {
             inputs["domainId"] = state ? state.domainId : undefined;
             inputs["groupId"] = state ? state.groupId : undefined;
             inputs["projectId"] = state ? state.projectId : undefined;
+            inputs["region"] = state ? state.region : undefined;
             inputs["roleId"] = state ? state.roleId : undefined;
             inputs["userId"] = state ? state.userId : undefined;
         } else {
@@ -92,6 +89,7 @@ export class RoleAssignment extends pulumi.CustomResource {
             inputs["domainId"] = args ? args.domainId : undefined;
             inputs["groupId"] = args ? args.groupId : undefined;
             inputs["projectId"] = args ? args.projectId : undefined;
+            inputs["region"] = args ? args.region : undefined;
             inputs["roleId"] = args ? args.roleId : undefined;
             inputs["userId"] = args ? args.userId : undefined;
         }
@@ -115,6 +113,7 @@ export interface RoleAssignmentState {
      * The project to assign the role in.
      */
     readonly projectId?: pulumi.Input<string>;
+    readonly region?: pulumi.Input<string>;
     /**
      * The role to assign.
      */
@@ -141,6 +140,7 @@ export interface RoleAssignmentArgs {
      * The project to assign the role in.
      */
     readonly projectId?: pulumi.Input<string>;
+    readonly region?: pulumi.Input<string>;
     /**
      * The role to assign.
      */

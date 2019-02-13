@@ -8,7 +8,7 @@
 
 [[constraint]]
   name = "github.com/terraform-providers/terraform-provider-openstack"
-  version = "v1.14.0"
+  version = "v1.15.1"
 
   [constraint.metadata]
     govendor-override = true

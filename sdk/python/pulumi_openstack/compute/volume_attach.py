@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from .. import utilities, tables
@@ -36,14 +37,13 @@ class VolumeAttach(pulumi.CustomResource):
     """
     The ID of the Volume to attach to an Instance.
     """
-    def __init__(__self__, __name__, __opts__=None, device=None, instance_id=None, multiattach=None, region=None, volume_id=None):
+    def __init__(__self__, resource_name, opts=None, device=None, instance_id=None, multiattach=None, region=None, volume_id=None, __name__=None, __opts__=None):
         """
         Attaches a Block Storage Volume to an Instance using the OpenStack
         Compute (Nova) v2 API.
         
-        
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] device: The device of the volume attachment (ex: `/dev/vdc`).
                _NOTE_: Being able to specify a device is dependent upon the hypervisor in
                use. There is a chance that the device specified in Terraform will not be
@@ -58,18 +58,24 @@ class VolumeAttach(pulumi.CustomResource):
                new volume attachment.
         :param pulumi.Input[str] volume_id: The ID of the Volume to attach to an Instance.
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
         __props__['device'] = device
 
-        if not instance_id:
+        if instance_id is None:
             raise TypeError('Missing required property instance_id')
         __props__['instance_id'] = instance_id
 
@@ -77,15 +83,15 @@ class VolumeAttach(pulumi.CustomResource):
 
         __props__['region'] = region
 
-        if not volume_id:
+        if volume_id is None:
             raise TypeError('Missing required property volume_id')
         __props__['volume_id'] = volume_id
 
         super(VolumeAttach, __self__).__init__(
             'openstack:compute/volumeAttach:VolumeAttach',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

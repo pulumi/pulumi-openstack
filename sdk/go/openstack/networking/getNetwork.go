@@ -18,6 +18,7 @@ func LookupNetwork(ctx *pulumi.Context, args *GetNetworkArgs) (*GetNetworkResult
 		inputs["networkId"] = args.NetworkId
 		inputs["region"] = args.Region
 		inputs["status"] = args.Status
+		inputs["tags"] = args.Tags
 		inputs["tenantId"] = args.TenantId
 		inputs["transparentVlan"] = args.TransparentVlan
 	}
@@ -27,6 +28,7 @@ func LookupNetwork(ctx *pulumi.Context, args *GetNetworkArgs) (*GetNetworkResult
 	}
 	return &GetNetworkResult{
 		AdminStateUp: outputs["adminStateUp"],
+		AllTags: outputs["allTags"],
 		AvailabilityZoneHints: outputs["availabilityZoneHints"],
 		Region: outputs["region"],
 		Shared: outputs["shared"],
@@ -52,6 +54,8 @@ type GetNetworkArgs struct {
 	Region interface{}
 	// The status of the network.
 	Status interface{}
+	// The list of network tags to filter.
+	Tags interface{}
 	// The owner of the network.
 	TenantId interface{}
 	// The VLAN transparent attribute for the
@@ -63,6 +67,8 @@ type GetNetworkArgs struct {
 type GetNetworkResult struct {
 	// (Optional) The administrative state of the network.
 	AdminStateUp interface{}
+	// The set of string tags applied on the network.
+	AllTags interface{}
 	// (Optional) The availability zone candidates for the network.
 	AvailabilityZoneHints interface{}
 	// See Argument Reference above.

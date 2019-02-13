@@ -15,90 +15,82 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_networking_network_v2_network_1 = new openstack.networking.Network("network_1", {
- *     adminStateUp: "true",
- *     name: "network_1",
+ * const network1 = new openstack.networking.Network("network_1", {
+ *     adminStateUp: true,
  * });
- * const openstack_networking_subnet_v2_subnet_1 = new openstack.networking.Subnet("subnet_1", {
+ * const subnet1 = new openstack.networking.Subnet("subnet_1", {
  *     cidr: "192.168.199.0/24",
  *     ipVersion: 4,
- *     name: "subnet_1",
- *     networkId: openstack_networking_network_v2_network_1.id,
+ *     networkId: network1.id,
  * });
- * const openstack_sharedfilesystem_sharenetwork_v2_sharenetwork_1 = new openstack.sharedfilesystem.ShareNetwork("sharenetwork_1", {
+ * const sharenetwork1 = new openstack.sharedfilesystem.ShareNetwork("sharenetwork_1", {
  *     description: "test share network with security services",
- *     name: "test_sharenetwork",
- *     neutronNetId: openstack_networking_network_v2_network_1.id,
- *     neutronSubnetId: openstack_networking_subnet_v2_subnet_1.id,
+ *     neutronNetId: network1.id,
+ *     neutronSubnetId: subnet1.id,
  * });
- * const openstack_sharedfilesystem_share_v2_share_1 = new openstack.sharedfilesystem.Share("share_1", {
+ * const share1 = new openstack.sharedfilesystem.Share("share_1", {
  *     description: "test share description",
- *     name: "nfs_share",
- *     shareNetworkId: openstack_sharedfilesystem_sharenetwork_v2_sharenetwork_1.id,
+ *     shareNetworkId: sharenetwork1.id,
  *     shareProto: "NFS",
  *     size: 1,
  * });
- * const openstack_sharedfilesystem_share_access_v2_share_access_1 = new openstack.sharedfilesystem.ShareAccess("share_access_1", {
+ * const shareAccess1 = new openstack.sharedfilesystem.ShareAccess("share_access_1", {
  *     accessLevel: "rw",
  *     accessTo: "192.168.199.10",
  *     accessType: "ip",
- *     shareId: openstack_sharedfilesystem_share_v2_share_1.id,
+ *     shareId: share1.id,
  * });
  * ```
+ * 
  * ### CIFS
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_networking_network_v2_network_1 = new openstack.networking.Network("network_1", {
- *     adminStateUp: "true",
- *     name: "network_1",
+ * const network1 = new openstack.networking.Network("network_1", {
+ *     adminStateUp: true,
  * });
- * const openstack_sharedfilesystem_securityservice_v2_securityservice_1 = new openstack.sharedfilesystem.SecurityService("securityservice_1", {
+ * const securityservice1 = new openstack.sharedfilesystem.SecurityService("securityservice_1", {
  *     description: "created by terraform",
  *     dnsIp: "192.168.199.10",
  *     domain: "example.com",
- *     name: "security",
  *     ou: "CN=Computers,DC=example,DC=com",
  *     password: "s8cret",
  *     server: "192.168.199.10",
  *     type: "active_directory",
  *     user: "joinDomainUser",
  * });
- * const openstack_networking_subnet_v2_subnet_1 = new openstack.networking.Subnet("subnet_1", {
+ * const subnet1 = new openstack.networking.Subnet("subnet_1", {
  *     cidr: "192.168.199.0/24",
  *     ipVersion: 4,
- *     name: "subnet_1",
- *     networkId: openstack_networking_network_v2_network_1.id,
+ *     networkId: network1.id,
  * });
- * const openstack_sharedfilesystem_sharenetwork_v2_sharenetwork_1 = new openstack.sharedfilesystem.ShareNetwork("sharenetwork_1", {
+ * const sharenetwork1 = new openstack.sharedfilesystem.ShareNetwork("sharenetwork_1", {
  *     description: "share the secure love",
- *     name: "test_sharenetwork_secure",
- *     neutronNetId: openstack_networking_network_v2_network_1.id,
- *     neutronSubnetId: openstack_networking_subnet_v2_subnet_1.id,
- *     securityServiceIds: [openstack_sharedfilesystem_securityservice_v2_securityservice_1.id],
+ *     neutronNetId: network1.id,
+ *     neutronSubnetId: subnet1.id,
+ *     securityServiceIds: [securityservice1.id],
  * });
- * const openstack_sharedfilesystem_share_v2_share_1 = new openstack.sharedfilesystem.Share("share_1", {
- *     name: "cifs_share",
- *     shareNetworkId: openstack_sharedfilesystem_sharenetwork_v2_sharenetwork_1.id,
+ * const share1 = new openstack.sharedfilesystem.Share("share_1", {
+ *     shareNetworkId: sharenetwork1.id,
  *     shareProto: "CIFS",
  *     size: 1,
  * });
- * const openstack_sharedfilesystem_share_access_v2_share_access_1 = new openstack.sharedfilesystem.ShareAccess("share_access_1", {
+ * const shareAccess1 = new openstack.sharedfilesystem.ShareAccess("share_access_1", {
  *     accessLevel: "ro",
  *     accessTo: "windows",
  *     accessType: "user",
- *     shareId: openstack_sharedfilesystem_share_v2_share_1.id,
+ *     shareId: share1.id,
  * });
- * const openstack_sharedfilesystem_share_access_v2_share_access_2 = new openstack.sharedfilesystem.ShareAccess("share_access_2", {
+ * const shareAccess2 = new openstack.sharedfilesystem.ShareAccess("share_access_2", {
  *     accessLevel: "rw",
  *     accessTo: "linux",
  *     accessType: "user",
- *     shareId: openstack_sharedfilesystem_share_v2_share_1.id,
+ *     shareId: share1.id,
  * });
  * 
- * export const exportLocations = openstack_sharedfilesystem_share_v2_share_1.exportLocations;
+ * export const exportLocations = share1.exportLocations;
  * ```
  */
 export class ShareAccess extends pulumi.CustomResource {
@@ -115,7 +107,7 @@ export class ShareAccess extends pulumi.CustomResource {
     }
 
     /**
-     * The access level to the share. Can either be rw or ro.
+     * The access level to the share. Can either be `rw` or `ro`.
      */
     public readonly accessLevel: pulumi.Output<string>;
     /**
@@ -127,6 +119,12 @@ export class ShareAccess extends pulumi.CustomResource {
      * The access rule type. Can either be an ip, user or cert.
      */
     public readonly accessType: pulumi.Output<string>;
+    /**
+     * The region in which to obtain the V2 Shared File System client.
+     * A Shared File System client is needed to create a share access. Changing this
+     * creates a new share access.
+     */
+    public readonly region: pulumi.Output<string>;
     /**
      * The UUID of the share to which you are granted access.
      */
@@ -147,6 +145,7 @@ export class ShareAccess extends pulumi.CustomResource {
             inputs["accessLevel"] = state ? state.accessLevel : undefined;
             inputs["accessTo"] = state ? state.accessTo : undefined;
             inputs["accessType"] = state ? state.accessType : undefined;
+            inputs["region"] = state ? state.region : undefined;
             inputs["shareId"] = state ? state.shareId : undefined;
         } else {
             const args = argsOrState as ShareAccessArgs | undefined;
@@ -165,6 +164,7 @@ export class ShareAccess extends pulumi.CustomResource {
             inputs["accessLevel"] = args ? args.accessLevel : undefined;
             inputs["accessTo"] = args ? args.accessTo : undefined;
             inputs["accessType"] = args ? args.accessType : undefined;
+            inputs["region"] = args ? args.region : undefined;
             inputs["shareId"] = args ? args.shareId : undefined;
         }
         super("openstack:sharedfilesystem/shareAccess:ShareAccess", name, inputs, opts);
@@ -176,7 +176,7 @@ export class ShareAccess extends pulumi.CustomResource {
  */
 export interface ShareAccessState {
     /**
-     * The access level to the share. Can either be rw or ro.
+     * The access level to the share. Can either be `rw` or `ro`.
      */
     readonly accessLevel?: pulumi.Input<string>;
     /**
@@ -189,6 +189,12 @@ export interface ShareAccessState {
      */
     readonly accessType?: pulumi.Input<string>;
     /**
+     * The region in which to obtain the V2 Shared File System client.
+     * A Shared File System client is needed to create a share access. Changing this
+     * creates a new share access.
+     */
+    readonly region?: pulumi.Input<string>;
+    /**
      * The UUID of the share to which you are granted access.
      */
     readonly shareId?: pulumi.Input<string>;
@@ -199,7 +205,7 @@ export interface ShareAccessState {
  */
 export interface ShareAccessArgs {
     /**
-     * The access level to the share. Can either be rw or ro.
+     * The access level to the share. Can either be `rw` or `ro`.
      */
     readonly accessLevel: pulumi.Input<string>;
     /**
@@ -211,6 +217,12 @@ export interface ShareAccessArgs {
      * The access rule type. Can either be an ip, user or cert.
      */
     readonly accessType: pulumi.Input<string>;
+    /**
+     * The region in which to obtain the V2 Shared File System client.
+     * A Shared File System client is needed to create a share access. Changing this
+     * creates a new share access.
+     */
+    readonly region?: pulumi.Input<string>;
     /**
      * The UUID of the share to which you are granted access.
      */

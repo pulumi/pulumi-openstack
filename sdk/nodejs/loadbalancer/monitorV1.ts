@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_lb_monitor_v1_monitor_1 = new openstack.loadbalancer.MonitorV1("monitor_1", {
+ * const monitor1 = new openstack.loadbalancer.MonitorV1("monitor_1", {
  *     adminStateUp: "true",
  *     delay: 30,
  *     maxRetries: 3,

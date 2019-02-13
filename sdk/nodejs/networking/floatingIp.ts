@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_networking_floatingip_v2_floatip_1 = new openstack.networking.FloatingIp("floatip_1", {
+ * const floatip1 = new openstack.networking.FloatingIp("floatip_1", {
  *     pool: "public",
  * });
  * ```
@@ -41,6 +41,11 @@ export class FloatingIp extends pulumi.CustomResource {
      * user or project.
      */
     public readonly address: pulumi.Output<string>;
+    /**
+     * The collection of tags assigned on the floating IP, which have
+     * been explicitly and implicitly added.
+     */
+    public /*out*/ readonly allTags: pulumi.Output<string[]>;
     /**
      * Human-readable description for the floating IP.
      */
@@ -102,6 +107,7 @@ export class FloatingIp extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state: FloatingIpState = argsOrState as FloatingIpState | undefined;
             inputs["address"] = state ? state.address : undefined;
+            inputs["allTags"] = state ? state.allTags : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["fixedIp"] = state ? state.fixedIp : undefined;
             inputs["pool"] = state ? state.pool : undefined;
@@ -126,6 +132,7 @@ export class FloatingIp extends pulumi.CustomResource {
             inputs["tags"] = args ? args.tags : undefined;
             inputs["tenantId"] = args ? args.tenantId : undefined;
             inputs["valueSpecs"] = args ? args.valueSpecs : undefined;
+            inputs["allTags"] = undefined /*out*/;
         }
         super("openstack:networking/floatingIp:FloatingIp", name, inputs, opts);
     }
@@ -142,6 +149,11 @@ export interface FloatingIpState {
      * user or project.
      */
     readonly address?: pulumi.Input<string>;
+    /**
+     * The collection of tags assigned on the floating IP, which have
+     * been explicitly and implicitly added.
+     */
+    readonly allTags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Human-readable description for the floating IP.
      */

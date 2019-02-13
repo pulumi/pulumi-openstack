@@ -47,6 +47,7 @@ func NewRouter(ctx *pulumi.Context,
 		inputs["valueSpecs"] = args.ValueSpecs
 		inputs["vendorOptions"] = args.VendorOptions
 	}
+	inputs["allTags"] = nil
 	s, err := ctx.RegisterResource("openstack:networking/router:Router", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
@@ -61,6 +62,7 @@ func GetRouter(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if state != nil {
 		inputs["adminStateUp"] = state.AdminStateUp
+		inputs["allTags"] = state.AllTags
 		inputs["availabilityZoneHints"] = state.AvailabilityZoneHints
 		inputs["description"] = state.Description
 		inputs["distributed"] = state.Distributed
@@ -97,6 +99,12 @@ func (r *Router) ID() *pulumi.IDOutput {
 // `admin_state_up` of an existing router.
 func (r *Router) AdminStateUp() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["adminStateUp"])
+}
+
+// The collection of tags assigned on the router, which have been
+// explicitly and implicitly added.
+func (r *Router) AllTags() *pulumi.ArrayOutput {
+	return (*pulumi.ArrayOutput)(r.s.State["allTags"])
 }
 
 // An availability zone is used to make 
@@ -192,6 +200,9 @@ type RouterState struct {
 	// (must be "true" or "false" if provided). Changing this updates the
 	// `admin_state_up` of an existing router.
 	AdminStateUp interface{}
+	// The collection of tags assigned on the router, which have been
+	// explicitly and implicitly added.
+	AllTags interface{}
 	// An availability zone is used to make 
 	// network resources highly available. Used for resources with high availability so that they are scheduled on different availability zones. Changing
 	// this creates a new router.

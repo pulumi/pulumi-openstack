@@ -13,9 +13,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_compute_secgroup_v2_secgroup_1 = new openstack.compute.SecGroup("secgroup_1", {
+ * const secgroup1 = new openstack.compute.SecGroup("secgroup_1", {
  *     description: "a security group",
- *     name: "secgroup_1",
  *     rules: [{
  *         cidr: "0.0.0.0/0",
  *         fromPort: 22,
@@ -23,32 +22,28 @@ import * as utilities from "../utilities";
  *         toPort: 22,
  *     }],
  * });
- * const openstack_networking_network_v2_network_1 = new openstack.networking.Network("network_1", {
- *     adminStateUp: "true",
- *     name: "network_1",
+ * const network1 = new openstack.networking.Network("network_1", {
+ *     adminStateUp: true,
  * });
- * const openstack_networking_subnet_v2_subnet_1 = new openstack.networking.Subnet("subnet_1", {
+ * const subnet1 = new openstack.networking.Subnet("subnet_1", {
  *     cidr: "192.168.199.0/24",
  *     ipVersion: 4,
- *     name: "subnet_1",
- *     networkId: openstack_networking_network_v2_network_1.id,
+ *     networkId: network1.id,
  * });
- * const openstack_networking_port_v2_port_1 = new openstack.networking.Port("port_1", {
+ * const port1 = new openstack.networking.Port("port_1", {
  *     adminStateUp: true,
  *     fixedIps: [{
  *         ipAddress: "192.168.199.10",
- *         subnetId: openstack_networking_subnet_v2_subnet_1.id,
+ *         subnetId: subnet1.id,
  *     }],
- *     name: "port_1",
- *     networkId: openstack_networking_network_v2_network_1.id,
- *     securityGroupIds: [openstack_compute_secgroup_v2_secgroup_1.id],
+ *     networkId: network1.id,
+ *     securityGroupIds: [secgroup1.id],
  * });
- * const openstack_compute_instance_v2_instance_1 = new openstack.compute.Instance("instance_1", {
- *     name: "instance_1",
+ * const instance1 = new openstack.compute.Instance("instance_1", {
  *     networks: [{
- *         port: openstack_networking_port_v2_port_1.id,
+ *         port: port1.id,
  *     }],
- *     securityGroups: [openstack_compute_secgroup_v2_secgroup_1.name],
+ *     securityGroups: [secgroup1.name],
  * });
  * ```
  */
@@ -70,7 +65,12 @@ export class Network extends pulumi.CustomResource {
      * Acceptable values are "true" and "false". Changing this value updates the
      * state of the existing network.
      */
-    public readonly adminStateUp: pulumi.Output<string>;
+    public readonly adminStateUp: pulumi.Output<boolean>;
+    /**
+     * The collection of tags assigned on the network, which have been
+     * explicitly and implicitly added.
+     */
+    public /*out*/ readonly allTags: pulumi.Output<string[]>;
     /**
      * An availability zone is used to make
      * network resources highly available. Used for resources with high availability
@@ -110,7 +110,7 @@ export class Network extends pulumi.CustomResource {
      * by any tenant or not. Changing this updates the sharing capabilities of the
      * existing network.
      */
-    public readonly shared: pulumi.Output<string>;
+    public readonly shared: pulumi.Output<boolean>;
     /**
      * A set of string tags for the network. 
      */
@@ -145,6 +145,7 @@ export class Network extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state: NetworkState = argsOrState as NetworkState | undefined;
             inputs["adminStateUp"] = state ? state.adminStateUp : undefined;
+            inputs["allTags"] = state ? state.allTags : undefined;
             inputs["availabilityZoneHints"] = state ? state.availabilityZoneHints : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["external"] = state ? state.external : undefined;
@@ -170,6 +171,7 @@ export class Network extends pulumi.CustomResource {
             inputs["tenantId"] = args ? args.tenantId : undefined;
             inputs["transparentVlan"] = args ? args.transparentVlan : undefined;
             inputs["valueSpecs"] = args ? args.valueSpecs : undefined;
+            inputs["allTags"] = undefined /*out*/;
         }
         super("openstack:networking/network:Network", name, inputs, opts);
     }
@@ -184,7 +186,12 @@ export interface NetworkState {
      * Acceptable values are "true" and "false". Changing this value updates the
      * state of the existing network.
      */
-    readonly adminStateUp?: pulumi.Input<string>;
+    readonly adminStateUp?: pulumi.Input<boolean>;
+    /**
+     * The collection of tags assigned on the network, which have been
+     * explicitly and implicitly added.
+     */
+    readonly allTags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * An availability zone is used to make
      * network resources highly available. Used for resources with high availability
@@ -224,7 +231,7 @@ export interface NetworkState {
      * by any tenant or not. Changing this updates the sharing capabilities of the
      * existing network.
      */
-    readonly shared?: pulumi.Input<string>;
+    readonly shared?: pulumi.Input<boolean>;
     /**
      * A set of string tags for the network. 
      */
@@ -256,7 +263,7 @@ export interface NetworkArgs {
      * Acceptable values are "true" and "false". Changing this value updates the
      * state of the existing network.
      */
-    readonly adminStateUp?: pulumi.Input<string>;
+    readonly adminStateUp?: pulumi.Input<boolean>;
     /**
      * An availability zone is used to make
      * network resources highly available. Used for resources with high availability
@@ -296,7 +303,7 @@ export interface NetworkArgs {
      * by any tenant or not. Changing this updates the sharing capabilities of the
      * existing network.
      */
-    readonly shared?: pulumi.Input<string>;
+    readonly shared?: pulumi.Input<boolean>;
     /**
      * A set of string tags for the network. 
      */

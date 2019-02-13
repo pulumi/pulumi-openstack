@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_db_configuration_v1_test = new openstack.database.Configuration("test", {
+ * const test = new openstack.database.Configuration("test", {
  *     configurations: [{
  *         name: "max_connections",
  *         value: "200",
@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  *         version: "mysql-5.7",
  *     },
  *     description: "description",
- *     name: "test",
  * });
  * ```
  */

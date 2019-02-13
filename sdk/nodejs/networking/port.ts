@@ -13,16 +13,22 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_networking_network_v2_network_1 = new openstack.networking.Network("network_1", {
- *     adminStateUp: "true",
- *     name: "network_1",
- * });
- * const openstack_networking_port_v2_port_1 = new openstack.networking.Port("port_1", {
+ * const network1 = new openstack.networking.Network("network_1", {
  *     adminStateUp: true,
- *     name: "port_1",
- *     networkId: openstack_networking_network_v2_network_1.id,
+ * });
+ * const port1 = new openstack.networking.Port("port_1", {
+ *     adminStateUp: true,
+ *     networkId: network1.id,
  * });
  * ```
+ * 
+ * ## Notes
+ * 
+ * ### Ports and Instances
+ * 
+ * There are some notes to consider when connecting Instances to networks using
+ * Ports. Please see the `openstack_compute_instance_v2` documentation for further
+ * documentation.
  */
 export class Port extends pulumi.CustomResource {
     /**
@@ -53,6 +59,11 @@ export class Port extends pulumi.CustomResource {
      * which have been explicitly and implicitly added.
      */
     public /*out*/ readonly allSecurityGroupIds: pulumi.Output<string[]>;
+    /**
+     * The collection of tags assigned on the port, which have been
+     * explicitly and implicitly added.
+     */
+    public /*out*/ readonly allTags: pulumi.Output<string[]>;
     /**
      * An IP/MAC Address pair of additional IP
      * addresses that can be active on this port. The structure is described
@@ -157,6 +168,7 @@ export class Port extends pulumi.CustomResource {
             inputs["adminStateUp"] = state ? state.adminStateUp : undefined;
             inputs["allFixedIps"] = state ? state.allFixedIps : undefined;
             inputs["allSecurityGroupIds"] = state ? state.allSecurityGroupIds : undefined;
+            inputs["allTags"] = state ? state.allTags : undefined;
             inputs["allowedAddressPairs"] = state ? state.allowedAddressPairs : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["deviceId"] = state ? state.deviceId : undefined;
@@ -197,6 +209,7 @@ export class Port extends pulumi.CustomResource {
             inputs["valueSpecs"] = args ? args.valueSpecs : undefined;
             inputs["allFixedIps"] = undefined /*out*/;
             inputs["allSecurityGroupIds"] = undefined /*out*/;
+            inputs["allTags"] = undefined /*out*/;
         }
         super("openstack:networking/port:Port", name, inputs, opts);
     }
@@ -222,6 +235,11 @@ export interface PortState {
      * which have been explicitly and implicitly added.
      */
     readonly allSecurityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The collection of tags assigned on the port, which have been
+     * explicitly and implicitly added.
+     */
+    readonly allTags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * An IP/MAC Address pair of additional IP
      * addresses that can be active on this port. The structure is described

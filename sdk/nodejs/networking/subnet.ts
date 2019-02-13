@@ -13,13 +13,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_networking_network_v2_network_1 = new openstack.networking.Network("network_1", {
- *     adminStateUp: "true",
- *     name: "tf_test_network",
+ * const network1 = new openstack.networking.Network("network_1", {
+ *     adminStateUp: true,
  * });
- * const openstack_networking_subnet_v2_subnet_1 = new openstack.networking.Subnet("subnet_1", {
+ * const subnet1 = new openstack.networking.Subnet("subnet_1", {
  *     cidr: "192.168.199.0/24",
- *     networkId: openstack_networking_network_v2_network_1.id,
+ *     networkId: network1.id,
  * });
  * ```
  */
@@ -36,6 +35,11 @@ export class Subnet extends pulumi.CustomResource {
         return new Subnet(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * The collection of ags assigned on the subnet, which have been
+     * explicitly and implicitly added.
+     */
+    public /*out*/ readonly allTags: pulumi.Output<string[]>;
     /**
      * An array of sub-ranges of CIDR available for
      * dynamic allocation to ports. The allocation_pool object structure is
@@ -146,6 +150,7 @@ export class Subnet extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state: SubnetState = argsOrState as SubnetState | undefined;
+            inputs["allTags"] = state ? state.allTags : undefined;
             inputs["allocationPools"] = state ? state.allocationPools : undefined;
             inputs["cidr"] = state ? state.cidr : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -187,6 +192,7 @@ export class Subnet extends pulumi.CustomResource {
             inputs["tags"] = args ? args.tags : undefined;
             inputs["tenantId"] = args ? args.tenantId : undefined;
             inputs["valueSpecs"] = args ? args.valueSpecs : undefined;
+            inputs["allTags"] = undefined /*out*/;
         }
         super("openstack:networking/subnet:Subnet", name, inputs, opts);
     }
@@ -196,6 +202,11 @@ export class Subnet extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Subnet resources.
  */
 export interface SubnetState {
+    /**
+     * The collection of ags assigned on the subnet, which have been
+     * explicitly and implicitly added.
+     */
+    readonly allTags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * An array of sub-ranges of CIDR available for
      * dynamic allocation to ports. The allocation_pool object structure is

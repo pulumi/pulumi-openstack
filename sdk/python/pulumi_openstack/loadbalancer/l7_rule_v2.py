@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from .. import utilities, tables
@@ -60,13 +61,12 @@ class L7RuleV2(pulumi.CustomResource):
     The value to use for the comparison. For example, the file type to
     compare.
     """
-    def __init__(__self__, __name__, __opts__=None, admin_state_up=None, compare_type=None, invert=None, key=None, l7policy_id=None, region=None, tenant_id=None, type=None, value=None):
+    def __init__(__self__, resource_name, opts=None, admin_state_up=None, compare_type=None, invert=None, key=None, l7policy_id=None, region=None, tenant_id=None, type=None, value=None, __name__=None, __opts__=None):
         """
         Manages a V2 L7 Rule resource within OpenStack.
         
-        
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] admin_state_up: The administrative state of the L7 Rule.
                A valid value is true (UP) or false (DOWN).
         :param pulumi.Input[str] compare_type: The comparison type for the L7 rule - can either be
@@ -89,18 +89,24 @@ class L7RuleV2(pulumi.CustomResource):
         :param pulumi.Input[str] value: The value to use for the comparison. For example, the file type to
                compare.
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
         __props__['admin_state_up'] = admin_state_up
 
-        if not compare_type:
+        if compare_type is None:
             raise TypeError('Missing required property compare_type')
         __props__['compare_type'] = compare_type
 
@@ -108,7 +114,7 @@ class L7RuleV2(pulumi.CustomResource):
 
         __props__['key'] = key
 
-        if not l7policy_id:
+        if l7policy_id is None:
             raise TypeError('Missing required property l7policy_id')
         __props__['l7policy_id'] = l7policy_id
 
@@ -116,11 +122,11 @@ class L7RuleV2(pulumi.CustomResource):
 
         __props__['tenant_id'] = tenant_id
 
-        if not type:
+        if type is None:
             raise TypeError('Missing required property type')
         __props__['type'] = type
 
-        if not value:
+        if value is None:
             raise TypeError('Missing required property value')
         __props__['value'] = value
 
@@ -128,9 +134,9 @@ class L7RuleV2(pulumi.CustomResource):
 
         super(L7RuleV2, __self__).__init__(
             'openstack:loadbalancer/l7RuleV2:L7RuleV2',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

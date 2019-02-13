@@ -13,12 +13,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_objectstorage_container_v1_container_1 = new openstack.objectstorage.Container("container_1", {
+ * const container1 = new openstack.objectstorage.Container("container_1", {
  *     contentType: "application/json",
  *     metadata: {
  *         test: "true",
  *     },
- *     name: "tf-test-container-1",
  *     region: "RegionOne",
  *     versioning: {
  *         location: "tf-test-container-versions",

@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from .. import utilities, tables
@@ -11,7 +12,13 @@ class GetSecGroupResult(object):
     """
     A collection of values returned by getSecGroup.
     """
-    def __init__(__self__, region=None, tenant_id=None, id=None):
+    def __init__(__self__, all_tags=None, region=None, tenant_id=None, id=None):
+        if all_tags and not isinstance(all_tags, list):
+            raise TypeError('Expected argument all_tags to be a list')
+        __self__.all_tags = all_tags
+        """
+        The set of string tags applied on the security group.
+        """
         if region and not isinstance(region, str):
             raise TypeError('Expected argument region to be a str')
         __self__.region = region
@@ -28,7 +35,7 @@ class GetSecGroupResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_sec_group(description=None, name=None, region=None, secgroup_id=None, tenant_id=None):
+async def get_sec_group(description=None, name=None, region=None, secgroup_id=None, tags=None, tenant_id=None):
     """
     Use this data source to get the ID of an available OpenStack security group.
     """
@@ -38,10 +45,12 @@ async def get_sec_group(description=None, name=None, region=None, secgroup_id=No
     __args__['name'] = name
     __args__['region'] = region
     __args__['secgroupId'] = secgroup_id
+    __args__['tags'] = tags
     __args__['tenantId'] = tenant_id
     __ret__ = await pulumi.runtime.invoke('openstack:networking/getSecGroup:getSecGroup', __args__)
 
     return GetSecGroupResult(
+        all_tags=__ret__.get('allTags'),
         region=__ret__.get('region'),
         tenant_id=__ret__.get('tenantId'),
         id=__ret__.get('id'))

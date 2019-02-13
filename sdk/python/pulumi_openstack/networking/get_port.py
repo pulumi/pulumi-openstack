@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from .. import utilities, tables
@@ -23,13 +24,13 @@ class GetPortResult(object):
             raise TypeError('Expected argument all_security_group_ids to be a list')
         __self__.all_security_group_ids = all_security_group_ids
         """
-        A list of security group IDs applied on the port.
+        The set of security group IDs applied on the port.
         """
         if all_tags and not isinstance(all_tags, list):
             raise TypeError('Expected argument all_tags to be a list')
         __self__.all_tags = all_tags
         """
-        A set of string tags applied on the port.
+        The set of string tags applied on the port.
         """
         if allowed_address_pairs and not isinstance(allowed_address_pairs, list):
             raise TypeError('Expected argument allowed_address_pairs to be a list')
@@ -53,7 +54,7 @@ class GetPortResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_port(admin_state_up=None, description=None, device_id=None, device_owner=None, fixed_ip=None, mac_address=None, name=None, network_id=None, port_id=None, project_id=None, region=None, security_group_ids=None, tags=None, tenant_id=None):
+async def get_port(admin_state_up=None, description=None, device_id=None, device_owner=None, fixed_ip=None, mac_address=None, name=None, network_id=None, port_id=None, project_id=None, region=None, security_group_ids=None, status=None, tags=None, tenant_id=None):
     """
     Use this data source to get the ID of an available OpenStack port.
     """
@@ -71,6 +72,7 @@ async def get_port(admin_state_up=None, description=None, device_id=None, device
     __args__['projectId'] = project_id
     __args__['region'] = region
     __args__['securityGroupIds'] = security_group_ids
+    __args__['status'] = status
     __args__['tags'] = tags
     __args__['tenantId'] = tenant_id
     __ret__ = await pulumi.runtime.invoke('openstack:networking/getPort:getPort', __args__)

@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from .. import utilities, tables
@@ -55,7 +56,7 @@ class Image(pulumi.CustomResource):
     """
     The metadata associated with the image.
     Image metadata allow for meaningfully define the image properties
-    and tags. See http://docs.openstack.org/developer/glance/metadefs-concepts.html.
+    and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
     """
     min_disk_gb: pulumi.Output[int]
     """
@@ -114,6 +115,10 @@ class Image(pulumi.CustomResource):
     """
     update_at: pulumi.Output[str]
     """
+    (**Deprecated** - use `updated_at` instead)
+    """
+    updated_at: pulumi.Output[str]
+    """
     The date the image was last updated.
     """
     verify_checksum: pulumi.Output[bool]
@@ -127,13 +132,28 @@ class Image(pulumi.CustomResource):
     "public", "private", "community", or "shared". The ability to set the
     visibility depends upon the configuration of the OpenStack cloud.
     """
-    def __init__(__self__, __name__, __opts__=None, container_format=None, disk_format=None, image_cache_path=None, image_source_url=None, local_file_path=None, min_disk_gb=None, min_ram_mb=None, name=None, properties=None, protected=None, region=None, tags=None, verify_checksum=None, visibility=None):
+    def __init__(__self__, resource_name, opts=None, container_format=None, disk_format=None, image_cache_path=None, image_source_url=None, local_file_path=None, min_disk_gb=None, min_ram_mb=None, name=None, properties=None, protected=None, region=None, tags=None, verify_checksum=None, visibility=None, __name__=None, __opts__=None):
         """
         Manages a V2 Image resource within OpenStack Glance.
         
+        ## Notes
         
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        ### Properties
+        
+        This resource supports the ability to add properties to a resource during
+        creation as well as add, update, and delete properties during an update of this
+        resource.
+        
+        Newer versions of OpenStack are adding some read-only properties to each image.
+        These properties start with the prefix `os_`. If these properties are detected,
+        this resource will automatically reconcile these with the user-provided
+        properties.
+        
+        In addition, the `direct_url` property is also automatically reconciled if the
+        Image Service set it.
+        
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] container_format: The container format. Must be one of
                "ami", "ari", "aki", "bare", "ovf".
         :param pulumi.Input[str] disk_format: The disk format. Must be one of
@@ -170,20 +190,26 @@ class Image(pulumi.CustomResource):
                "public", "private", "community", or "shared". The ability to set the
                visibility depends upon the configuration of the OpenStack cloud.
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
-        if not container_format:
+        if container_format is None:
             raise TypeError('Missing required property container_format')
         __props__['container_format'] = container_format
 
-        if not disk_format:
+        if disk_format is None:
             raise TypeError('Missing required property disk_format')
         __props__['disk_format'] = disk_format
 
@@ -220,12 +246,13 @@ class Image(pulumi.CustomResource):
         __props__['size_bytes'] = None
         __props__['status'] = None
         __props__['update_at'] = None
+        __props__['updated_at'] = None
 
         super(Image, __self__).__init__(
             'openstack:images/image:Image',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

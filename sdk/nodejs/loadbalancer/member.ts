@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_lb_member_v2_member_1 = new openstack.loadbalancer.Member("member_1", {
+ * const member1 = new openstack.loadbalancer.Member("member_1", {
  *     address: "192.168.199.23",
  *     protocolPort: 8080,
  * });

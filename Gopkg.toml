@@ -8,7 +8,7 @@
 
 [[constraint]]
   name = "github.com/terraform-providers/terraform-provider-openstack"
-  version = "v1.14.0"
+  version = "v1.15.1"
 
   [constraint.metadata]
     govendor-exclude-prefixes = ["github.com/golang/protobuf"]
@@ -102,13 +102,13 @@
 
 [[override]]
   name = "github.com/gophercloud/gophercloud"
-  revision = "b8a40d168295758ab3dbb63759c8476a02750551"
+  revision = "bb1ef8ce758cba00104a697a03ab07c77940f87e"
   [override.metadata]
     govendor-overridden=true
 
 [[override]]
   name = "github.com/gophercloud/utils"
-  revision = "a45c12ccd8b0ce73306762607a60568a1bca4bbe"
+  revision = "fbb6ab446f0167dfa4d25b8eb0c0d2f873924516"
   [override.metadata]
     govendor-overridden=true
 

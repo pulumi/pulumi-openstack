@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_networking_secgroup_v2_secgroup = pulumi.output(openstack.networking.getSecGroup({
+ * const secgroup = pulumi.output(openstack.networking.getSecGroup({
  *     name: "tf_test_secgroup",
  * }));
  * ```
@@ -25,6 +25,7 @@ export function getSecGroup(args?: GetSecGroupArgs, opts?: pulumi.InvokeOptions)
         "name": args.name,
         "region": args.region,
         "secgroupId": args.secgroupId,
+        "tags": args.tags,
         "tenantId": args.tenantId,
     }, opts);
 }
@@ -52,6 +53,10 @@ export interface GetSecGroupArgs {
      */
     readonly secgroupId?: string;
     /**
+     * The list of security group tags to filter.
+     */
+    readonly tags?: string[];
+    /**
      * The owner of the security group.
      */
     readonly tenantId?: string;
@@ -61,6 +66,10 @@ export interface GetSecGroupArgs {
  * A collection of values returned by getSecGroup.
  */
 export interface GetSecGroupResult {
+    /**
+     * The set of string tags applied on the security group.
+     */
+    readonly allTags: string[];
     /**
      * See Argument Reference above.
      */

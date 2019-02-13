@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from .. import utilities, tables
@@ -30,13 +31,12 @@ class Configuration(pulumi.CustomResource):
     The region in which to create the db instance. Changing this
     creates a new instance.
     """
-    def __init__(__self__, __name__, __opts__=None, configurations=None, datastore=None, description=None, name=None, region=None):
+    def __init__(__self__, resource_name, opts=None, configurations=None, datastore=None, description=None, name=None, region=None, __name__=None, __opts__=None):
         """
         Manages a V1 DB configuration resource within OpenStack.
         
-        
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] configurations: An array of configuration parameter name and value. Can be specified multiple times. The configuration object structure is documented below.
         :param pulumi.Input[dict] datastore: An array of database engine type and version. The datastore
                object structure is documented below. Changing this creates resource.
@@ -45,36 +45,42 @@ class Configuration(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region in which to create the db instance. Changing this
                creates a new instance.
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
         __props__['configurations'] = configurations
 
-        if not datastore:
+        if datastore is None:
             raise TypeError('Missing required property datastore')
         __props__['datastore'] = datastore
 
-        if not description:
+        if description is None:
             raise TypeError('Missing required property description')
         __props__['description'] = description
 
         __props__['name'] = name
 
-        if not region:
+        if region is None:
             raise TypeError('Missing required property region')
         __props__['region'] = region
 
         super(Configuration, __self__).__init__(
             'openstack:database/configuration:Configuration',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

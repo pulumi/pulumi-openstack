@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_identity_auth_scope_v3_scope = pulumi.output(openstack.identity.getAuthScope({
+ * const scope = pulumi.output(openstack.identity.getAuthScope({
  *     name: "my_scope",
  * }));
  * ```

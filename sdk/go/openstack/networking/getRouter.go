@@ -19,6 +19,7 @@ func LookupRouter(ctx *pulumi.Context, args *GetRouterArgs) (*GetRouterResult, e
 		inputs["region"] = args.Region
 		inputs["routerId"] = args.RouterId
 		inputs["status"] = args.Status
+		inputs["tags"] = args.Tags
 		inputs["tenantId"] = args.TenantId
 	}
 	outputs, err := ctx.Invoke("openstack:networking/getRouter:getRouter", inputs)
@@ -26,6 +27,7 @@ func LookupRouter(ctx *pulumi.Context, args *GetRouterArgs) (*GetRouterResult, e
 		return nil, err
 	}
 	return &GetRouterResult{
+		AllTags: outputs["allTags"],
 		AvailabilityZoneHints: outputs["availabilityZoneHints"],
 		EnableSnat: outputs["enableSnat"],
 		ExternalFixedIps: outputs["externalFixedIps"],
@@ -53,12 +55,16 @@ type GetRouterArgs struct {
 	RouterId interface{}
 	// The status of the router (ACTIVE/DOWN).
 	Status interface{}
+	// The list of router tags to filter.
+	Tags interface{}
 	// The owner of the router.
 	TenantId interface{}
 }
 
 // A collection of values returned by getRouter.
 type GetRouterResult struct {
+	// The set of string tags applied on the router.
+	AllTags interface{}
 	// The availability zone that is used to make router resources highly available.
 	AvailabilityZoneHints interface{}
 	// The value that points out if the Source NAT is enabled on the router.

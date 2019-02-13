@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_networking_subnetpool_v2_subnetpool_1 = pulumi.output(openstack.networking.getSubnetPool({
+ * const subnetpool1 = pulumi.output(openstack.networking.getSubnetPool({
  *     name: "subnetpool_1",
  * }));
  * ```
@@ -33,6 +33,7 @@ export function getSubnetPool(args?: GetSubnetPoolArgs, opts?: pulumi.InvokeOpti
         "projectId": args.projectId,
         "region": args.region,
         "shared": args.shared,
+        "tags": args.tags,
     }, opts);
 }
 
@@ -93,6 +94,10 @@ export interface GetSubnetPoolArgs {
      * Whether this subnetpool is shared across all projects.
      */
     readonly shared?: boolean;
+    /**
+     * The list of subnetpool tags to filter.
+     */
+    readonly tags?: string[];
 }
 
 /**
@@ -104,6 +109,10 @@ export interface GetSubnetPoolResult {
      * * `ip_version` -The IP protocol version.
      */
     readonly addressScopeId: string;
+    /**
+     * The set of string tags applied on the subnetpool.
+     */
+    readonly allTags: string[];
     /**
      * The time at which subnetpool was created.
      */

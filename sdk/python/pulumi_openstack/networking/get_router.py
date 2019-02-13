@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from .. import utilities, tables
@@ -11,7 +12,13 @@ class GetRouterResult(object):
     """
     A collection of values returned by getRouter.
     """
-    def __init__(__self__, availability_zone_hints=None, enable_snat=None, external_fixed_ips=None, external_network_id=None, id=None):
+    def __init__(__self__, all_tags=None, availability_zone_hints=None, enable_snat=None, external_fixed_ips=None, external_network_id=None, id=None):
+        if all_tags and not isinstance(all_tags, list):
+            raise TypeError('Expected argument all_tags to be a list')
+        __self__.all_tags = all_tags
+        """
+        The set of string tags applied on the router.
+        """
         if availability_zone_hints and not isinstance(availability_zone_hints, list):
             raise TypeError('Expected argument availability_zone_hints to be a list')
         __self__.availability_zone_hints = availability_zone_hints
@@ -43,7 +50,7 @@ class GetRouterResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_router(admin_state_up=None, description=None, distributed=None, enable_snat=None, name=None, region=None, router_id=None, status=None, tenant_id=None):
+async def get_router(admin_state_up=None, description=None, distributed=None, enable_snat=None, name=None, region=None, router_id=None, status=None, tags=None, tenant_id=None):
     """
     Use this data source to get the ID of an available OpenStack router.
     """
@@ -57,10 +64,12 @@ async def get_router(admin_state_up=None, description=None, distributed=None, en
     __args__['region'] = region
     __args__['routerId'] = router_id
     __args__['status'] = status
+    __args__['tags'] = tags
     __args__['tenantId'] = tenant_id
     __ret__ = await pulumi.runtime.invoke('openstack:networking/getRouter:getRouter', __args__)
 
     return GetRouterResult(
+        all_tags=__ret__.get('allTags'),
         availability_zone_hints=__ret__.get('availabilityZoneHints'),
         enable_snat=__ret__.get('enableSnat'),
         external_fixed_ips=__ret__.get('externalFixedIps'),

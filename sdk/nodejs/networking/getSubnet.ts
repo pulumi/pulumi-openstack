@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_networking_subnet_v2_subnet_1 = pulumi.output(openstack.networking.getSubnet({
+ * const subnet1 = pulumi.output(openstack.networking.getSubnet({
  *     name: "subnet_1",
  * }));
  * ```
@@ -34,6 +34,7 @@ export function getSubnet(args?: GetSubnetArgs, opts?: pulumi.InvokeOptions): Pr
         "region": args.region,
         "subnetId": args.subnetId,
         "subnetpoolId": args.subnetpoolId,
+        "tags": args.tags,
         "tenantId": args.tenantId,
     }, opts);
 }
@@ -99,6 +100,10 @@ export interface GetSubnetArgs {
      */
     readonly subnetpoolId?: string;
     /**
+     * The list of subnet tags to filter.
+     */
+    readonly tags?: string[];
+    /**
      * The owner of the subnet.
      */
     readonly tenantId?: string;
@@ -108,6 +113,10 @@ export interface GetSubnetArgs {
  * A collection of values returned by getSubnet.
  */
 export interface GetSubnetResult {
+    /**
+     * A set of string tags applied on the subnet.
+     */
+    readonly allTags: string[];
     /**
      * Allocation pools of the subnet.
      */

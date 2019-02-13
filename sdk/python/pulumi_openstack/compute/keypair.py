@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from .. import utilities, tables
@@ -40,7 +41,7 @@ class Keypair(pulumi.CustomResource):
     """
     Map of additional options.
     """
-    def __init__(__self__, __name__, __opts__=None, name=None, public_key=None, region=None, value_specs=None):
+    def __init__(__self__, resource_name, opts=None, name=None, public_key=None, region=None, value_specs=None, __name__=None, __opts__=None):
         """
         Manages a V2 keypair resource within OpenStack.
         
@@ -50,9 +51,8 @@ class Keypair(pulumi.CustomResource):
         a private key file outside of Terraform and distribute it securely
         to the system where Terraform will be run.
         
-        
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: A unique name for the keypair. Changing this creates a new
                keypair.
         :param pulumi.Input[str] public_key: A pregenerated OpenSSH-formatted public key.
@@ -66,11 +66,17 @@ class Keypair(pulumi.CustomResource):
                Changing this creates a new keypair.
         :param pulumi.Input[dict] value_specs: Map of additional options.
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
@@ -88,9 +94,9 @@ class Keypair(pulumi.CustomResource):
 
         super(Keypair, __self__).__init__(
             'openstack:compute/keypair:Keypair',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

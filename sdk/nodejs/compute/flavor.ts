@@ -13,15 +13,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_compute_flavor_v2_test_flavor = new openstack.compute.Flavor("test-flavor", {
- *     disk: Number.parseFloat("20"),
+ * const test_flavor = new openstack.compute.Flavor("test-flavor", {
+ *     disk: 20,
  *     extraSpecs: {
- *         hw:cpu_policy: "CPU-POLICY",
- *         hw:cpu_thread_policy: "CPU-THREAD-POLICY",
+ *         "hw:cpu_policy": "CPU-POLICY",
+ *         "hw:cpu_thread_policy": "CPU-THREAD-POLICY",
  *     },
- *     name: "my-flavor",
- *     ram: Number.parseFloat("8096"),
- *     vcpus: Number.parseFloat("2"),
+ *     ram: 8096,
+ *     vcpus: 2,
  * });
  * ```
  */

@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_compute_floatingip_v2_floatip_1 = new openstack.compute.FloatingIp("floatip_1", {
+ * const floatip1 = new openstack.compute.FloatingIp("floatip_1", {
  *     pool: "public",
  * });
  * ```

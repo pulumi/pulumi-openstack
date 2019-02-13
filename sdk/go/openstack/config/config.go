@@ -8,6 +8,21 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi/config"
 )
 
+// Application Credential ID to login with.
+func GetApplicationCredentialId(ctx *pulumi.Context) string {
+	return config.Get(ctx, "openstack:applicationCredentialId")
+}
+
+// Application Credential name to login with.
+func GetApplicationCredentialName(ctx *pulumi.Context) string {
+	return config.Get(ctx, "openstack:applicationCredentialName")
+}
+
+// Application Credential secret to login with.
+func GetApplicationCredentialSecret(ctx *pulumi.Context) string {
+	return config.Get(ctx, "openstack:applicationCredentialSecret")
+}
+
 // The Identity authentication URL.
 func GetAuthUrl(ctx *pulumi.Context) string {
 	v, err := config.Try(ctx, "openstack:authUrl")

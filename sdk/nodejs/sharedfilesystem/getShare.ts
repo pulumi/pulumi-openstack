@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_sharedfilesystem_share_v2_share_1 = pulumi.output(openstack.sharedfilesystem.getShare({
+ * const share1 = pulumi.output(openstack.sharedfilesystem.getShare({
  *     name: "share_1",
  * }));
  * ```

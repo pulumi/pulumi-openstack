@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from .. import utilities, tables
@@ -11,7 +12,7 @@ class GetImageResult(object):
     """
     A collection of values returned by getImage.
     """
-    def __init__(__self__, checksum=None, container_format=None, disk_format=None, file=None, metadata=None, min_disk_gb=None, min_ram_mb=None, protected=None, region=None, schema=None, size_bytes=None, updated_at=None, id=None):
+    def __init__(__self__, checksum=None, container_format=None, created_at=None, disk_format=None, file=None, metadata=None, min_disk_gb=None, min_ram_mb=None, protected=None, region=None, schema=None, size_bytes=None, tags=None, updated_at=None, id=None):
         if checksum and not isinstance(checksum, str):
             raise TypeError('Expected argument checksum to be a str')
         __self__.checksum = checksum
@@ -21,6 +22,14 @@ class GetImageResult(object):
         if container_format and not isinstance(container_format, str):
             raise TypeError('Expected argument container_format to be a str')
         __self__.container_format = container_format
+        if created_at and not isinstance(created_at, str):
+            raise TypeError('Expected argument created_at to be a str')
+        __self__.created_at = created_at
+        """
+        The date the image was created.
+        * `container_format`: The format of the image's container.
+        * `disk_format`: The format of the image's disk.
+        """
         if disk_format and not isinstance(disk_format, str):
             raise TypeError('Expected argument disk_format to be a str')
         __self__.disk_format = disk_format
@@ -37,7 +46,7 @@ class GetImageResult(object):
         """
         The metadata associated with the image.
         Image metadata allow for meaningfully define the image properties
-        and tags. See http://docs.openstack.org/developer/glance/metadefs-concepts.html.
+        and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
         """
         if min_disk_gb and not isinstance(min_disk_gb, int):
             raise TypeError('Expected argument min_disk_gb to be a int')
@@ -73,9 +82,18 @@ class GetImageResult(object):
         """
         The size of the image (in bytes).
         """
+        if tags and not isinstance(tags, list):
+            raise TypeError('Expected argument tags to be a list')
+        __self__.tags = tags
+        """
+        The tags list of the image.
+        """
         if updated_at and not isinstance(updated_at, str):
             raise TypeError('Expected argument updated_at to be a str')
         __self__.updated_at = updated_at
+        """
+        The date the image was last updated.
+        """
         if id and not isinstance(id, str):
             raise TypeError('Expected argument id to be a str')
         __self__.id = id
@@ -106,6 +124,7 @@ async def get_image(member_status=None, most_recent=None, name=None, owner=None,
     return GetImageResult(
         checksum=__ret__.get('checksum'),
         container_format=__ret__.get('containerFormat'),
+        created_at=__ret__.get('createdAt'),
         disk_format=__ret__.get('diskFormat'),
         file=__ret__.get('file'),
         metadata=__ret__.get('metadata'),
@@ -115,5 +134,6 @@ async def get_image(member_status=None, most_recent=None, name=None, owner=None,
         region=__ret__.get('region'),
         schema=__ret__.get('schema'),
         size_bytes=__ret__.get('sizeBytes'),
+        tags=__ret__.get('tags'),
         updated_at=__ret__.get('updatedAt'),
         id=__ret__.get('id'))

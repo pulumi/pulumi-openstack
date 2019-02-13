@@ -18,6 +18,7 @@ func LookupFloatingIp(ctx *pulumi.Context, args *GetFloatingIpArgs) (*GetFloatin
 		inputs["portId"] = args.PortId
 		inputs["region"] = args.Region
 		inputs["status"] = args.Status
+		inputs["tags"] = args.Tags
 		inputs["tenantId"] = args.TenantId
 	}
 	outputs, err := ctx.Invoke("openstack:networking/getFloatingIp:getFloatingIp", inputs)
@@ -25,6 +26,7 @@ func LookupFloatingIp(ctx *pulumi.Context, args *GetFloatingIpArgs) (*GetFloatin
 		return nil, err
 	}
 	return &GetFloatingIpResult{
+		AllTags: outputs["allTags"],
 		Id: outputs["id"],
 	}, nil
 }
@@ -45,13 +47,18 @@ type GetFloatingIpArgs struct {
 	// A Neutron client is needed to retrieve floating IP ids. If omitted, the
 	// `region` argument of the provider is used.
 	Region interface{}
+	// status of the floating IP (ACTIVE/DOWN).
 	Status interface{}
+	// The list of floating IP tags to filter.
+	Tags interface{}
 	// The owner of the floating IP.
 	TenantId interface{}
 }
 
 // A collection of values returned by getFloatingIp.
 type GetFloatingIpResult struct {
+	// A set of string tags applied on the floating IP.
+	AllTags interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

@@ -22,6 +22,9 @@ export class Provider extends pulumi.ProviderResource {
     constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let inputs: pulumi.Inputs = {};
         {
+            inputs["applicationCredentialId"] = args ? args.applicationCredentialId : undefined;
+            inputs["applicationCredentialName"] = args ? args.applicationCredentialName : undefined;
+            inputs["applicationCredentialSecret"] = args ? args.applicationCredentialSecret : undefined;
             inputs["authUrl"] = (args ? args.authUrl : undefined) || utilities.getEnv("OS_AUTH_URL");
             inputs["cacertFile"] = (args ? args.cacertFile : undefined) || utilities.getEnv("OS_CACERT");
             inputs["cert"] = (args ? args.cert : undefined) || utilities.getEnv("OS_CERT");
@@ -56,6 +59,18 @@ export class Provider extends pulumi.ProviderResource {
  * The set of arguments for constructing a Provider resource.
  */
 export interface ProviderArgs {
+    /**
+     * Application Credential ID to login with.
+     */
+    readonly applicationCredentialId?: pulumi.Input<string>;
+    /**
+     * Application Credential name to login with.
+     */
+    readonly applicationCredentialName?: pulumi.Input<string>;
+    /**
+     * Application Credential secret to login with.
+     */
+    readonly applicationCredentialSecret?: pulumi.Input<string>;
     /**
      * The Identity authentication URL.
      */

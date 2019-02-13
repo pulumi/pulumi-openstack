@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_networking_port_v2_port_1 = pulumi.output(openstack.networking.getPort({
+ * const port1 = pulumi.output(openstack.networking.getPort({
  *     name: "port_1",
  * }));
  * ```
@@ -33,6 +33,7 @@ export function getPort(args?: GetPortArgs, opts?: pulumi.InvokeOptions): Promis
         "projectId": args.projectId,
         "region": args.region,
         "securityGroupIds": args.securityGroupIds,
+        "status": args.status,
         "tags": args.tags,
         "tenantId": args.tenantId,
     }, opts);
@@ -93,6 +94,10 @@ export interface GetPortArgs {
      */
     readonly securityGroupIds?: string[];
     /**
+     * The status of the port.
+     */
+    readonly status?: string;
+    /**
      * The list of port tags to filter.
      */
     readonly tags?: string[];
@@ -109,11 +114,11 @@ export interface GetPortResult {
      */
     readonly allFixedIps: string[];
     /**
-     * A list of security group IDs applied on the port.
+     * The set of security group IDs applied on the port.
      */
     readonly allSecurityGroupIds: string[];
     /**
-     * A set of string tags applied on the port.
+     * The set of string tags applied on the port.
      */
     readonly allTags: string[];
     /**

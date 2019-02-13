@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from .. import utilities, tables
@@ -55,13 +56,12 @@ class Flavor(pulumi.CustomResource):
     The number of virtual CPUs to use. Changing this creates
     a new flavor.
     """
-    def __init__(__self__, __name__, __opts__=None, disk=None, ephemeral=None, extra_specs=None, is_public=None, name=None, ram=None, region=None, rx_tx_factor=None, swap=None, vcpus=None):
+    def __init__(__self__, resource_name, opts=None, disk=None, ephemeral=None, extra_specs=None, is_public=None, name=None, ram=None, region=None, rx_tx_factor=None, swap=None, vcpus=None, __name__=None, __opts__=None):
         """
         Manages a V2 flavor resource within OpenStack.
         
-        
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] disk: The amount of disk space in gigabytes to use for the root
                (/) partition. Changing this creates a new flavor.
         :param pulumi.Input[int] ephemeral
@@ -83,16 +83,22 @@ class Flavor(pulumi.CustomResource):
         :param pulumi.Input[int] vcpus: The number of virtual CPUs to use. Changing this creates
                a new flavor.
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
-        if not disk:
+        if disk is None:
             raise TypeError('Missing required property disk')
         __props__['disk'] = disk
 
@@ -104,7 +110,7 @@ class Flavor(pulumi.CustomResource):
 
         __props__['name'] = name
 
-        if not ram:
+        if ram is None:
             raise TypeError('Missing required property ram')
         __props__['ram'] = ram
 
@@ -114,15 +120,15 @@ class Flavor(pulumi.CustomResource):
 
         __props__['swap'] = swap
 
-        if not vcpus:
+        if vcpus is None:
             raise TypeError('Missing required property vcpus')
         __props__['vcpus'] = vcpus
 
         super(Flavor, __self__).__init__(
             'openstack:compute/flavor:Flavor',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

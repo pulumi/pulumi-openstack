@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_sharedfilesystem_snapshot_v2_snapshot_1 = pulumi.output(openstack.sharedfilesystem.getSnapshot({
+ * const snapshot1 = pulumi.output(openstack.sharedfilesystem.getSnapshot({
  *     name: "snapshot_1",
  * }));
  * ```

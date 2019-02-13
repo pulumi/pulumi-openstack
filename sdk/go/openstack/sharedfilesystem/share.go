@@ -29,6 +29,7 @@ func NewShare(ctx *pulumi.Context,
 		inputs["isPublic"] = nil
 		inputs["metadata"] = nil
 		inputs["name"] = nil
+		inputs["region"] = nil
 		inputs["shareNetworkId"] = nil
 		inputs["shareProto"] = nil
 		inputs["shareType"] = nil
@@ -40,6 +41,7 @@ func NewShare(ctx *pulumi.Context,
 		inputs["isPublic"] = args.IsPublic
 		inputs["metadata"] = args.Metadata
 		inputs["name"] = args.Name
+		inputs["region"] = args.Region
 		inputs["shareNetworkId"] = args.ShareNetworkId
 		inputs["shareProto"] = args.ShareProto
 		inputs["shareType"] = args.ShareType
@@ -50,7 +52,6 @@ func NewShare(ctx *pulumi.Context,
 	inputs["hasReplicas"] = nil
 	inputs["host"] = nil
 	inputs["projectId"] = nil
-	inputs["region"] = nil
 	inputs["replicationType"] = nil
 	inputs["shareServerId"] = nil
 	s, err := ctx.RegisterResource("openstack:sharedfilesystem/share:Share", name, true, inputs, opts...)
@@ -154,7 +155,8 @@ func (r *Share) ProjectId() *pulumi.StringOutput {
 }
 
 // The region in which to obtain the V2 Shared File System client.
-// A Shared File System client is needed to create a share network.
+// A Shared File System client is needed to create a share. Changing this
+// creates a new share.
 func (r *Share) Region() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["region"])
 }
@@ -228,7 +230,8 @@ type ShareState struct {
 	// The owner of the Share.
 	ProjectId interface{}
 	// The region in which to obtain the V2 Shared File System client.
-	// A Shared File System client is needed to create a share network.
+	// A Shared File System client is needed to create a share. Changing this
+	// creates a new share.
 	Region interface{}
 	// The share replication type.
 	ReplicationType interface{}
@@ -270,6 +273,10 @@ type ShareArgs struct {
 	// The name of the share. Changing this updates the name
 	// of the existing share.
 	Name interface{}
+	// The region in which to obtain the V2 Shared File System client.
+	// A Shared File System client is needed to create a share. Changing this
+	// creates a new share.
+	Region interface{}
 	// The UUID of a share network where the share server exists
 	// or will be created. If `share_network_id` is not set and you provide a `snapshot_id`,
 	// the share_network_id value from the snapshot is used. Changing this creates a new share.

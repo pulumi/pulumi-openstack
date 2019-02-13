@@ -46,6 +46,7 @@ func NewFloatingIp(ctx *pulumi.Context,
 		inputs["tenantId"] = args.TenantId
 		inputs["valueSpecs"] = args.ValueSpecs
 	}
+	inputs["allTags"] = nil
 	s, err := ctx.RegisterResource("openstack:networking/floatingIp:FloatingIp", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
@@ -60,6 +61,7 @@ func GetFloatingIp(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if state != nil {
 		inputs["address"] = state.Address
+		inputs["allTags"] = state.AllTags
 		inputs["description"] = state.Description
 		inputs["fixedIp"] = state.FixedIp
 		inputs["pool"] = state.Pool
@@ -93,6 +95,12 @@ func (r *FloatingIp) ID() *pulumi.IDOutput {
 // user or project.
 func (r *FloatingIp) Address() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["address"])
+}
+
+// The collection of tags assigned on the floating IP, which have
+// been explicitly and implicitly added.
+func (r *FloatingIp) AllTags() *pulumi.ArrayOutput {
+	return (*pulumi.ArrayOutput)(r.s.State["allTags"])
 }
 
 // Human-readable description for the floating IP.
@@ -158,6 +166,9 @@ type FloatingIpState struct {
 	// an admin user or have had a custom policy or role applied to your OpenStack
 	// user or project.
 	Address interface{}
+	// The collection of tags assigned on the floating IP, which have
+	// been explicitly and implicitly added.
+	AllTags interface{}
 	// Human-readable description for the floating IP.
 	Description interface{}
 	// Fixed IP of the port to associate with this floating IP. Required if

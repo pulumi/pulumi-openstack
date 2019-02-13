@@ -18,19 +18,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_compute_flavor_v2_flavor_1 = new openstack.compute.Flavor("flavor_1", {
- *     disk: Number.parseFloat("20"),
+ * const flavor1 = new openstack.compute.Flavor("flavor_1", {
+ *     disk: 20,
  *     isPublic: false,
- *     name: "my-flavor",
- *     ram: Number.parseFloat("8096"),
- *     vcpus: Number.parseFloat("2"),
+ *     ram: 8096,
+ *     vcpus: 2,
  * });
- * const openstack_identity_project_v3_project_1 = new openstack.identity.Project("project_1", {
- *     name: "my-project",
- * });
- * const openstack_compute_flavor_access_v2_access_1 = new openstack.compute.FlavorAccess("access_1", {
- *     flavorId: openstack_compute_flavor_v2_flavor_1.id,
- *     tenantId: openstack_identity_project_v3_project_1.id,
+ * const project1 = new openstack.identity.Project("project_1", {});
+ * const access1 = new openstack.compute.FlavorAccess("access_1", {
+ *     flavorId: flavor1.id,
+ *     tenantId: project1.id,
  * });
  * ```
  */

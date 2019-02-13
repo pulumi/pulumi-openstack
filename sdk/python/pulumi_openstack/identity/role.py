@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from .. import utilities, tables
@@ -22,27 +23,32 @@ class Role(pulumi.CustomResource):
     If omitted, the `region` argument of the provider is used. Changing this
     creates a new Role.
     """
-    def __init__(__self__, __name__, __opts__=None, domain_id=None, name=None, region=None):
+    def __init__(__self__, resource_name, opts=None, domain_id=None, name=None, region=None, __name__=None, __opts__=None):
         """
         Manages a V3 Role resource within OpenStack Keystone.
         
         Note: You _must_ have admin privileges in your OpenStack cloud to use
         this resource.
         
-        
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] domain_id: The domain the role belongs to.
         :param pulumi.Input[str] name: The name of the role.
         :param pulumi.Input[str] region: The region in which to obtain the V3 Keystone client.
                If omitted, the `region` argument of the provider is used. Changing this
                creates a new Role.
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
@@ -55,9 +61,9 @@ class Role(pulumi.CustomResource):
 
         super(Role, __self__).__init__(
             'openstack:identity/role:Role',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

@@ -13,39 +13,33 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_networking_network_v2_network_1 = new openstack.networking.Network("network_1", {
- *     adminStateUp: "true",
- *     name: "network_1",
+ * const network1 = new openstack.networking.Network("network_1", {
+ *     adminStateUp: true,
  * });
- * const openstack_networking_subnet_v2_subnet_1 = new openstack.networking.Subnet("subnet_1", {
+ * const subnet1 = new openstack.networking.Subnet("subnet_1", {
  *     cidr: "192.168.199.0/24",
  *     ipVersion: 4,
- *     name: "subnet_1",
- *     networkId: openstack_networking_network_v2_network_1.id,
+ *     networkId: network1.id,
  * });
- * const openstack_lb_loadbalancer_v2_loadbalancer_1 = new openstack.loadbalancer.LoadBalancer("loadbalancer_1", {
- *     name: "loadbalancer_1",
- *     vipSubnetId: openstack_networking_subnet_v2_subnet_1.id,
+ * const loadbalancer1 = new openstack.loadbalancer.LoadBalancer("loadbalancer_1", {
+ *     vipSubnetId: subnet1.id,
  * });
- * const openstack_lb_listener_v2_listener_1 = new openstack.loadbalancer.Listener("listener_1", {
- *     loadbalancerId: openstack_lb_loadbalancer_v2_loadbalancer_1.id,
- *     name: "listener_1",
+ * const listener1 = new openstack.loadbalancer.Listener("listener_1", {
+ *     loadbalancerId: loadbalancer1.id,
  *     protocol: "HTTP",
  *     protocolPort: 8080,
  * });
- * const openstack_lb_pool_v2_pool_1 = new openstack.loadbalancer.Pool("pool_1", {
+ * const pool1 = new openstack.loadbalancer.Pool("pool_1", {
  *     lbMethod: "ROUND_ROBIN",
- *     loadbalancerId: openstack_lb_loadbalancer_v2_loadbalancer_1.id,
- *     name: "pool_1",
+ *     loadbalancerId: loadbalancer1.id,
  *     protocol: "HTTP",
  * });
- * const openstack_lb_l7policy_v2_l7policy_1 = new openstack.loadbalancer.L7PolicyV2("l7policy_1", {
+ * const l7policy1 = new openstack.loadbalancer.L7PolicyV2("l7policy_1", {
  *     action: "REDIRECT_TO_POOL",
  *     description: "test l7 policy",
- *     listenerId: openstack_lb_listener_v2_listener_1.id,
- *     name: "test",
+ *     listenerId: listener1.id,
  *     position: 1,
- *     redirectPoolId: openstack_lb_pool_v2_pool_1.id,
+ *     redirectPoolId: pool1.id,
  * });
  * ```
  */

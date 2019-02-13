@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_containerinfra_clustertemplate_v1_clustertemplate_1 = pulumi.output(openstack.containerinfra.getClusterTemplate({
+ * const clustertemplate1 = pulumi.output(openstack.containerinfra.getClusterTemplate({
  *     name: "clustertemplate_1",
  * }));
  * ```

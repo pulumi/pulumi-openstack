@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from .. import utilities, tables
@@ -30,13 +31,90 @@ class Cluster(pulumi.CustomResource):
     stack_id: pulumi.Output[str]
     updated_at: pulumi.Output[str]
     user_id: pulumi.Output[str]
-    def __init__(__self__, __name__, __opts__=None, cluster_template_id=None, create_timeout=None, discovery_url=None, docker_volume_size=None, flavor=None, keypair=None, labels=None, master_count=None, master_flavor=None, name=None, node_count=None, region=None):
+    def __init__(__self__, resource_name, opts=None, cluster_template_id=None, create_timeout=None, discovery_url=None, docker_volume_size=None, flavor=None, keypair=None, labels=None, master_count=None, master_flavor=None, name=None, node_count=None, region=None, __name__=None, __opts__=None):
         """
         Manages a V1 Magnum cluster resource within OpenStack.
         
+        ## Argument reference
         
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        The following arguments are supported:
+        
+        * `region` - (Optional) The region in which to obtain the V1 Container Infra
+            client. A Container Infra client is needed to create a cluster. If omitted,
+            the `region` argument of the provider is used. Changing this creates a new
+            cluster.
+        
+        * `name` - (Required) The name of the cluster. Changing this updates the name
+            of the existing cluster template.
+        
+        * `project_id` - (Optional) The project of the cluster. Required if admin wants
+            to create a cluster in another project. Changing this creates a new
+            cluster.
+        
+        * `user_id` - (Optional) The user of the cluster. Required if admin wants to
+            create a cluster template for another user. Changing this creates a new
+            cluster.
+        
+        * `cluster_template_id` - (Required) The UUID of the V1 Container Infra cluster
+            template. Changing this creates a new cluster.
+        
+        * `create_timeout` - (Optional) The timeout (in minutes) for creating the
+            cluster. Changing this creates a new cluster.
+        
+        * `discovery_url` - (Optional) The URL used for cluster node discovery.
+            Changing this creates a new cluster.
+        
+        * `docker_volume_size` - (Optional) The size (in GB) of the Docker volume.
+            Changing this creates a new cluster.
+        
+        * `flavor` - (Optional) The flavor for the nodes of the cluster. Can be set via
+            the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
+            cluster.
+        
+        * `master_flavor` - (Optional) The flavor for the master nodes. Can be set via
+            the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this creates a
+            new cluster.
+        
+        * `keypair` - (Optional) The name of the Compute service SSH keypair. Changing
+            this creates a new cluster.
+        
+        * `labels` - (Optional) The list of key value pairs representing additional
+            properties of the cluster. Changing this creates a new cluster.
+        
+        * `master_count` - (Optional) The number of master nodes for the cluster.
+            Changing this creates a new cluster.
+        
+        * `node_count` - (Optional) The number of nodes for the cluster. Changing this
+            creates a new cluster.
+        
+        ## Attributes reference
+        
+        The following attributes are exported:
+        
+        * `region` - See Argument Reference above.
+        * `name` - See Argument Reference above.
+        * `project_id` - See Argument Reference above.
+        * `created_at` - The time at which cluster was created.
+        * `updated_at` - The time at which cluster was created.
+        * `api_address` - COE API address.
+        * `coe_version` - COE software version.
+        * `cluster_template_id` - See Argument Reference above.
+        * `container_version` - Container software version.
+        * `create_timeout` - See Argument Reference above.
+        * `discovery_url` - See Argument Reference above.
+        * `docker_volume_size` - See Argument Reference above.
+        * `flavor` - See Argument Reference above.
+        * `master_flavor` - See Argument Reference above.
+        * `keypair` - See Argument Reference above.
+        * `labels` - See Argument Reference above.
+        * `master_count` - See Argument Reference above.
+        * `node_count` - See Argument Reference above.
+        * `master_addresses` - IP addresses of the master node of the cluster.
+        * `node_addresses` - IP addresses of the node of the cluster.
+        * `stack_id` - UUID of the Orchestration service stack.
+        
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_template_id
         :param pulumi.Input[int] create_timeout
         :param pulumi.Input[str] discovery_url
@@ -50,16 +128,22 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[int] node_count
         :param pulumi.Input[str] region
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
-        if not cluster_template_id:
+        if cluster_template_id is None:
             raise TypeError('Missing required property cluster_template_id')
         __props__['cluster_template_id'] = cluster_template_id
 
@@ -98,9 +182,9 @@ class Cluster(pulumi.CustomResource):
 
         super(Cluster, __self__).__init__(
             'openstack:containerinfra/cluster:Cluster',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from .. import utilities, tables
@@ -54,7 +55,8 @@ class Share(pulumi.CustomResource):
     region: pulumi.Output[str]
     """
     The region in which to obtain the V2 Shared File System client.
-    A Shared File System client is needed to create a share network.
+    A Shared File System client is needed to create a share. Changing this
+    creates a new share.
     """
     replication_type: pulumi.Output[str]
     """
@@ -90,13 +92,12 @@ class Share(pulumi.CustomResource):
     The UUID of the share's base snapshot. Changing this creates
     a new share.
     """
-    def __init__(__self__, __name__, __opts__=None, availability_zone=None, description=None, is_public=None, metadata=None, name=None, share_network_id=None, share_proto=None, share_type=None, size=None, snapshot_id=None):
+    def __init__(__self__, resource_name, opts=None, availability_zone=None, description=None, is_public=None, metadata=None, name=None, region=None, share_network_id=None, share_proto=None, share_type=None, size=None, snapshot_id=None, __name__=None, __opts__=None):
         """
         Use this resource to configure a share.
         
-        
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] availability_zone: The share availability zone. Changing this creates a
                new share.
         :param pulumi.Input[str] description: The human-readable description for the share.
@@ -108,6 +109,9 @@ class Share(pulumi.CustomResource):
                strings.
         :param pulumi.Input[str] name: The name of the share. Changing this updates the name
                of the existing share.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Shared File System client.
+               A Shared File System client is needed to create a share. Changing this
+               creates a new share.
         :param pulumi.Input[str] share_network_id: The UUID of a share network where the share server exists
                or will be created. If `share_network_id` is not set and you provide a `snapshot_id`,
                the share_network_id value from the snapshot is used. Changing this creates a new share.
@@ -120,11 +124,17 @@ class Share(pulumi.CustomResource):
         :param pulumi.Input[str] snapshot_id: The UUID of the share's base snapshot. Changing this creates
                a new share.
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
@@ -139,15 +149,17 @@ class Share(pulumi.CustomResource):
 
         __props__['name'] = name
 
+        __props__['region'] = region
+
         __props__['share_network_id'] = share_network_id
 
-        if not share_proto:
+        if share_proto is None:
             raise TypeError('Missing required property share_proto')
         __props__['share_proto'] = share_proto
 
         __props__['share_type'] = share_type
 
-        if not size:
+        if size is None:
             raise TypeError('Missing required property size')
         __props__['size'] = size
 
@@ -157,15 +169,14 @@ class Share(pulumi.CustomResource):
         __props__['has_replicas'] = None
         __props__['host'] = None
         __props__['project_id'] = None
-        __props__['region'] = None
         __props__['replication_type'] = None
         __props__['share_server_id'] = None
 
         super(Share, __self__).__init__(
             'openstack:sharedfilesystem/share:Share',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

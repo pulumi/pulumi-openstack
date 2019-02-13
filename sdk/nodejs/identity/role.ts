@@ -16,9 +16,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_identity_role_v3_role_1 = new openstack.identity.Role("role_1", {
- *     name: "role_1",
- * });
+ * const role1 = new openstack.identity.Role("role_1", {});
  * ```
  */
 export class Role extends pulumi.CustomResource {

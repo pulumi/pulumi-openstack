@@ -12,6 +12,7 @@ func LookupFlavor(ctx *pulumi.Context, args *GetFlavorArgs) (*GetFlavorResult, e
 	inputs := make(map[string]interface{})
 	if args != nil {
 		inputs["disk"] = args.Disk
+		inputs["flavorId"] = args.FlavorId
 		inputs["minDisk"] = args.MinDisk
 		inputs["minRam"] = args.MinRam
 		inputs["name"] = args.Name
@@ -37,11 +38,16 @@ func LookupFlavor(ctx *pulumi.Context, args *GetFlavorArgs) (*GetFlavorResult, e
 type GetFlavorArgs struct {
 	// The exact amount of disk (in gigabytes).
 	Disk interface{}
-	// The minimum amount of disk (in gigabytes).
+	// The ID of the flavor. Conflicts with the `name`,
+	// `min_ram` and `min_disk`
+	FlavorId interface{}
+	// The minimum amount of disk (in gigabytes). Conflicts
+	// with the `flavor_id`.
 	MinDisk interface{}
-	// The minimum amount of RAM (in megabytes).
+	// The minimum amount of RAM (in megabytes). Conflicts
+	// with the `flavor_id`.
 	MinRam interface{}
-	// The name of the flavor.
+	// The name of the flavor. Conflicts with the `flavor_id`.
 	Name interface{}
 	// The exact amount of RAM (in megabytes).
 	Ram interface{}

@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_networking_router_v2_router = pulumi.output(openstack.networking.getRouter({
+ * const router = pulumi.output(openstack.networking.getRouter({
  *     name: "router_1",
  * }));
  * ```
@@ -29,6 +29,7 @@ export function getRouter(args?: GetRouterArgs, opts?: pulumi.InvokeOptions): Pr
         "region": args.region,
         "routerId": args.routerId,
         "status": args.status,
+        "tags": args.tags,
         "tenantId": args.tenantId,
     }, opts);
 }
@@ -69,6 +70,10 @@ export interface GetRouterArgs {
      */
     readonly status?: string;
     /**
+     * The list of router tags to filter.
+     */
+    readonly tags?: string[];
+    /**
      * The owner of the router.
      */
     readonly tenantId?: string;
@@ -78,6 +83,10 @@ export interface GetRouterArgs {
  * A collection of values returned by getRouter.
  */
 export interface GetRouterResult {
+    /**
+     * The set of string tags applied on the router.
+     */
+    readonly allTags: string[];
     /**
      * The availability zone that is used to make router resources highly available.
      */

@@ -23,6 +23,7 @@ func LookupPort(ctx *pulumi.Context, args *GetPortArgs) (*GetPortResult, error) 
 		inputs["projectId"] = args.ProjectId
 		inputs["region"] = args.Region
 		inputs["securityGroupIds"] = args.SecurityGroupIds
+		inputs["status"] = args.Status
 		inputs["tags"] = args.Tags
 		inputs["tenantId"] = args.TenantId
 	}
@@ -68,6 +69,8 @@ type GetPortArgs struct {
 	Region interface{}
 	// The list of port security group IDs to filter.
 	SecurityGroupIds interface{}
+	// The status of the port.
+	Status interface{}
 	// The list of port tags to filter.
 	Tags interface{}
 	TenantId interface{}
@@ -78,9 +81,9 @@ type GetPortResult struct {
 	// The collection of Fixed IP addresses on the port in the
 	// order returned by the Network v2 API.
 	AllFixedIps interface{}
-	// A list of security group IDs applied on the port.
+	// The set of security group IDs applied on the port.
 	AllSecurityGroupIds interface{}
-	// A set of string tags applied on the port.
+	// The set of string tags applied on the port.
 	AllTags interface{}
 	// An IP/MAC Address pair of additional IP
 	// addresses that can be active on this port. The structure is described

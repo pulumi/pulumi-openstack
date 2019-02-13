@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const openstack_networking_network_v2_network = pulumi.output(openstack.networking.getNetwork({
+ * const network = pulumi.output(openstack.networking.getNetwork({
  *     name: "tf_test_network",
  * }));
  * ```
@@ -28,6 +28,7 @@ export function getNetwork(args?: GetNetworkArgs, opts?: pulumi.InvokeOptions): 
         "networkId": args.networkId,
         "region": args.region,
         "status": args.status,
+        "tags": args.tags,
         "tenantId": args.tenantId,
         "transparentVlan": args.transparentVlan,
     }, opts);
@@ -68,6 +69,10 @@ export interface GetNetworkArgs {
      */
     readonly status?: string;
     /**
+     * The list of network tags to filter.
+     */
+    readonly tags?: string[];
+    /**
      * The owner of the network.
      */
     readonly tenantId?: string;
@@ -86,6 +91,10 @@ export interface GetNetworkResult {
      * (Optional) The administrative state of the network.
      */
     readonly adminStateUp: string;
+    /**
+     * The set of string tags applied on the network.
+     */
+    readonly allTags: string[];
     /**
      * (Optional) The availability zone candidates for the network.
      */

@@ -33,11 +33,13 @@ func NewShareAccess(ctx *pulumi.Context,
 		inputs["accessLevel"] = nil
 		inputs["accessTo"] = nil
 		inputs["accessType"] = nil
+		inputs["region"] = nil
 		inputs["shareId"] = nil
 	} else {
 		inputs["accessLevel"] = args.AccessLevel
 		inputs["accessTo"] = args.AccessTo
 		inputs["accessType"] = args.AccessType
+		inputs["region"] = args.Region
 		inputs["shareId"] = args.ShareId
 	}
 	s, err := ctx.RegisterResource("openstack:sharedfilesystem/shareAccess:ShareAccess", name, true, inputs, opts...)
@@ -56,6 +58,7 @@ func GetShareAccess(ctx *pulumi.Context,
 		inputs["accessLevel"] = state.AccessLevel
 		inputs["accessTo"] = state.AccessTo
 		inputs["accessType"] = state.AccessType
+		inputs["region"] = state.Region
 		inputs["shareId"] = state.ShareId
 	}
 	s, err := ctx.ReadResource("openstack:sharedfilesystem/shareAccess:ShareAccess", name, id, inputs, opts...)
@@ -75,7 +78,7 @@ func (r *ShareAccess) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
-// The access level to the share. Can either be rw or ro.
+// The access level to the share. Can either be `rw` or `ro`.
 func (r *ShareAccess) AccessLevel() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["accessLevel"])
 }
@@ -91,6 +94,13 @@ func (r *ShareAccess) AccessType() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["accessType"])
 }
 
+// The region in which to obtain the V2 Shared File System client.
+// A Shared File System client is needed to create a share access. Changing this
+// creates a new share access.
+func (r *ShareAccess) Region() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["region"])
+}
+
 // The UUID of the share to which you are granted access.
 func (r *ShareAccess) ShareId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["shareId"])
@@ -98,26 +108,34 @@ func (r *ShareAccess) ShareId() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering ShareAccess resources.
 type ShareAccessState struct {
-	// The access level to the share. Can either be rw or ro.
+	// The access level to the share. Can either be `rw` or `ro`.
 	AccessLevel interface{}
 	// The value that defines the access. Can either be an IP
 	// address or a username verified by configured Security Service of the Share Network.
 	AccessTo interface{}
 	// The access rule type. Can either be an ip, user or cert.
 	AccessType interface{}
+	// The region in which to obtain the V2 Shared File System client.
+	// A Shared File System client is needed to create a share access. Changing this
+	// creates a new share access.
+	Region interface{}
 	// The UUID of the share to which you are granted access.
 	ShareId interface{}
 }
 
 // The set of arguments for constructing a ShareAccess resource.
 type ShareAccessArgs struct {
-	// The access level to the share. Can either be rw or ro.
+	// The access level to the share. Can either be `rw` or `ro`.
 	AccessLevel interface{}
 	// The value that defines the access. Can either be an IP
 	// address or a username verified by configured Security Service of the Share Network.
 	AccessTo interface{}
 	// The access rule type. Can either be an ip, user or cert.
 	AccessType interface{}
+	// The region in which to obtain the V2 Shared File System client.
+	// A Shared File System client is needed to create a share access. Changing this
+	// creates a new share access.
+	Region interface{}
 	// The UUID of the share to which you are granted access.
 	ShareId interface{}
 }

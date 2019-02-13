@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from .. import utilities, tables
@@ -78,7 +79,7 @@ class VolumeAttachV2(pulumi.CustomResource):
     An array of wwpn strings. Used for Fibre Channel
     connections.
     """
-    def __init__(__self__, __name__, __opts__=None, attach_mode=None, device=None, host_name=None, initiator=None, ip_address=None, multipath=None, os_type=None, platform=None, region=None, volume_id=None, wwnn=None, wwpns=None):
+    def __init__(__self__, resource_name, opts=None, attach_mode=None, device=None, host_name=None, initiator=None, ip_address=None, multipath=None, os_type=None, platform=None, region=None, volume_id=None, wwnn=None, wwpns=None, __name__=None, __opts__=None):
         """
         This resource is experimental and may be removed in the future! Feedback
         is requested if you find this resource useful or if you find any problems
@@ -94,9 +95,8 @@ class VolumeAttachV2(pulumi.CustomResource):
         This does not actually attach a volume to an instance. Please use
         the `openstack_compute_volume_attach_v2` resource for that.
         
-        
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] attach_mode: Specify whether to attach the volume as Read-Only
                (`ro`) or Read-Write (`rw`). Only values of `ro` and `rw` are accepted.
                If left unspecified, the Block Storage API will apply a default of `rw`.
@@ -118,11 +118,17 @@ class VolumeAttachV2(pulumi.CustomResource):
         :param pulumi.Input[list] wwpns: An array of wwpn strings. Used for Fibre Channel
                connections.
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
@@ -131,7 +137,7 @@ class VolumeAttachV2(pulumi.CustomResource):
 
         __props__['device'] = device
 
-        if not host_name:
+        if host_name is None:
             raise TypeError('Missing required property host_name')
         __props__['host_name'] = host_name
 
@@ -147,7 +153,7 @@ class VolumeAttachV2(pulumi.CustomResource):
 
         __props__['region'] = region
 
-        if not volume_id:
+        if volume_id is None:
             raise TypeError('Missing required property volume_id')
         __props__['volume_id'] = volume_id
 
@@ -161,9 +167,9 @@ class VolumeAttachV2(pulumi.CustomResource):
 
         super(VolumeAttachV2, __self__).__init__(
             'openstack:blockstorage/volumeAttachV2:VolumeAttachV2',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

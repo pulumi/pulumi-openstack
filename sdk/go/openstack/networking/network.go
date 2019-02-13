@@ -43,6 +43,7 @@ func NewNetwork(ctx *pulumi.Context,
 		inputs["transparentVlan"] = args.TransparentVlan
 		inputs["valueSpecs"] = args.ValueSpecs
 	}
+	inputs["allTags"] = nil
 	s, err := ctx.RegisterResource("openstack:networking/network:Network", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
@@ -57,6 +58,7 @@ func GetNetwork(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if state != nil {
 		inputs["adminStateUp"] = state.AdminStateUp
+		inputs["allTags"] = state.AllTags
 		inputs["availabilityZoneHints"] = state.AvailabilityZoneHints
 		inputs["description"] = state.Description
 		inputs["external"] = state.External
@@ -89,8 +91,14 @@ func (r *Network) ID() *pulumi.IDOutput {
 // The administrative state of the network.
 // Acceptable values are "true" and "false". Changing this value updates the
 // state of the existing network.
-func (r *Network) AdminStateUp() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["adminStateUp"])
+func (r *Network) AdminStateUp() *pulumi.BoolOutput {
+	return (*pulumi.BoolOutput)(r.s.State["adminStateUp"])
+}
+
+// The collection of tags assigned on the network, which have been
+// explicitly and implicitly added.
+func (r *Network) AllTags() *pulumi.ArrayOutput {
+	return (*pulumi.ArrayOutput)(r.s.State["allTags"])
 }
 
 // An availability zone is used to make
@@ -136,8 +144,8 @@ func (r *Network) Segments() *pulumi.ArrayOutput {
 // Specifies whether the network resource can be accessed
 // by any tenant or not. Changing this updates the sharing capabilities of the
 // existing network.
-func (r *Network) Shared() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["shared"])
+func (r *Network) Shared() *pulumi.BoolOutput {
+	return (*pulumi.BoolOutput)(r.s.State["shared"])
 }
 
 // A set of string tags for the network. 
@@ -170,6 +178,9 @@ type NetworkState struct {
 	// Acceptable values are "true" and "false". Changing this value updates the
 	// state of the existing network.
 	AdminStateUp interface{}
+	// The collection of tags assigned on the network, which have been
+	// explicitly and implicitly added.
+	AllTags interface{}
 	// An availability zone is used to make
 	// network resources highly available. Used for resources with high availability
 	// so that they are scheduled on different availability zones. Changing this

@@ -24,6 +24,7 @@ func LookupSubnet(ctx *pulumi.Context, args *GetSubnetArgs) (*GetSubnetResult, e
 		inputs["region"] = args.Region
 		inputs["subnetId"] = args.SubnetId
 		inputs["subnetpoolId"] = args.SubnetpoolId
+		inputs["tags"] = args.Tags
 		inputs["tenantId"] = args.TenantId
 	}
 	outputs, err := ctx.Invoke("openstack:networking/getSubnet:getSubnet", inputs)
@@ -31,6 +32,7 @@ func LookupSubnet(ctx *pulumi.Context, args *GetSubnetArgs) (*GetSubnetResult, e
 		return nil, err
 	}
 	return &GetSubnetResult{
+		AllTags: outputs["allTags"],
 		AllocationPools: outputs["allocationPools"],
 		Cidr: outputs["cidr"],
 		Description: outputs["description"],
@@ -83,12 +85,16 @@ type GetSubnetArgs struct {
 	SubnetId interface{}
 	// The ID of the subnetpool associated with the subnet.
 	SubnetpoolId interface{}
+	// The list of subnet tags to filter.
+	Tags interface{}
 	// The owner of the subnet.
 	TenantId interface{}
 }
 
 // A collection of values returned by getSubnet.
 type GetSubnetResult struct {
+	// A set of string tags applied on the subnet.
+	AllTags interface{}
 	// Allocation pools of the subnet.
 	AllocationPools interface{}
 	Cidr interface{}
