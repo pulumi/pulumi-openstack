@@ -1,4 +1,14 @@
-## 0.16.5 (unreleased)
+## 0.16.6 (unreleased)
+
+## 0.16.5 (Released February 13th, 2019)
+
+## Improvements
+
+- Updated to version 1.15.1 of the AWS OpenStack Terraform Provider.
+
+- Support for the `deleteBeforeReplace` resource option and improved
+  delete-before-replace behaviour introduced in [Pulumi
+  0.16.14](https://github.com/pulumi/pulumi/blob/master/CHANGELOG.md#01614-released-january-31st-2019).
 
 ## 0.16.4 (Released January 19th, 2019)
 
