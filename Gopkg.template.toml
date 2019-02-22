@@ -8,10 +8,10 @@
 
 [[constraint]]
   name = "github.com/terraform-providers/terraform-provider-openstack"
-  version = "v1.15.1"
+  version = "v1.16.0"
 
   [constraint.metadata]
-    govendor-override = true
-    govendor-exclude-prefixes = [
+    gomod-override = true
+    gomod-exclude-prefixes = [
       "github.com/golang/protobuf",
     ]

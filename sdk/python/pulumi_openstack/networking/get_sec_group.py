@@ -8,7 +8,7 @@ import pulumi
 import pulumi.runtime
 from .. import utilities, tables
 
-class GetSecGroupResult(object):
+class GetSecGroupResult:
     """
     A collection of values returned by getSecGroup.
     """
@@ -35,7 +35,7 @@ class GetSecGroupResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_sec_group(description=None, name=None, region=None, secgroup_id=None, tags=None, tenant_id=None):
+async def get_sec_group(description=None,name=None,region=None,secgroup_id=None,tags=None,tenant_id=None,opts=None):
     """
     Use this data source to get the ID of an available OpenStack security group.
     """
@@ -47,7 +47,7 @@ async def get_sec_group(description=None, name=None, region=None, secgroup_id=No
     __args__['secgroupId'] = secgroup_id
     __args__['tags'] = tags
     __args__['tenantId'] = tenant_id
-    __ret__ = await pulumi.runtime.invoke('openstack:networking/getSecGroup:getSecGroup', __args__)
+    __ret__ = await pulumi.runtime.invoke('openstack:networking/getSecGroup:getSecGroup', __args__, opts=opts)
 
     return GetSecGroupResult(
         all_tags=__ret__.get('allTags'),

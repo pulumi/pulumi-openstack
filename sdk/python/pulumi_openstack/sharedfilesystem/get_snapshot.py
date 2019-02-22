@@ -8,7 +8,7 @@ import pulumi
 import pulumi.runtime
 from .. import utilities, tables
 
-class GetSnapshotResult(object):
+class GetSnapshotResult:
     """
     A collection of values returned by getSnapshot.
     """
@@ -71,7 +71,7 @@ class GetSnapshotResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_snapshot(description=None, name=None, region=None, share_id=None, status=None):
+async def get_snapshot(description=None,name=None,region=None,share_id=None,status=None,opts=None):
     """
     Use this data source to get the ID of an available Shared File System snapshot.
     """
@@ -82,7 +82,7 @@ async def get_snapshot(description=None, name=None, region=None, share_id=None, 
     __args__['region'] = region
     __args__['shareId'] = share_id
     __args__['status'] = status
-    __ret__ = await pulumi.runtime.invoke('openstack:sharedfilesystem/getSnapshot:getSnapshot', __args__)
+    __ret__ = await pulumi.runtime.invoke('openstack:sharedfilesystem/getSnapshot:getSnapshot', __args__, opts=opts)
 
     return GetSnapshotResult(
         description=__ret__.get('description'),

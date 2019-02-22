@@ -34,8 +34,6 @@ class User(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] databases: A list of database user should have access to.
-        :param pulumi.Input[str] host
-        :param pulumi.Input[str] instance_id
         :param pulumi.Input[str] name: A unique name for the resource.
         :param pulumi.Input[str] password: User's password.
         :param pulumi.Input[str] region: Openstack region resource is created in.

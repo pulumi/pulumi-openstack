@@ -8,7 +8,7 @@ import pulumi
 import pulumi.runtime
 from .. import utilities, tables
 
-class GetSubnetPoolResult(object):
+class GetSubnetPoolResult:
     """
     A collection of values returned by getSubnetPool.
     """
@@ -120,7 +120,7 @@ class GetSubnetPoolResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_subnet_pool(address_scope_id=None, default_prefixlen=None, default_quota=None, description=None, ip_version=None, is_default=None, max_prefixlen=None, min_prefixlen=None, name=None, project_id=None, region=None, shared=None, tags=None):
+async def get_subnet_pool(address_scope_id=None,default_prefixlen=None,default_quota=None,description=None,ip_version=None,is_default=None,max_prefixlen=None,min_prefixlen=None,name=None,project_id=None,region=None,shared=None,tags=None,opts=None):
     """
     Use this data source to get the ID of an available OpenStack subnetpool.
     """
@@ -139,7 +139,7 @@ async def get_subnet_pool(address_scope_id=None, default_prefixlen=None, default
     __args__['region'] = region
     __args__['shared'] = shared
     __args__['tags'] = tags
-    __ret__ = await pulumi.runtime.invoke('openstack:networking/getSubnetPool:getSubnetPool', __args__)
+    __ret__ = await pulumi.runtime.invoke('openstack:networking/getSubnetPool:getSubnetPool', __args__, opts=opts)
 
     return GetSubnetPoolResult(
         address_scope_id=__ret__.get('addressScopeId'),

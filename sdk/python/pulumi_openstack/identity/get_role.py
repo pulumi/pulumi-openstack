@@ -8,7 +8,7 @@ import pulumi
 import pulumi.runtime
 from .. import utilities, tables
 
-class GetRoleResult(object):
+class GetRoleResult:
     """
     A collection of values returned by getRole.
     """
@@ -32,7 +32,7 @@ class GetRoleResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_role(domain_id=None, name=None, region=None):
+async def get_role(domain_id=None,name=None,region=None,opts=None):
     """
     Use this data source to get the ID of an OpenStack role.
     """
@@ -41,7 +41,7 @@ async def get_role(domain_id=None, name=None, region=None):
     __args__['domainId'] = domain_id
     __args__['name'] = name
     __args__['region'] = region
-    __ret__ = await pulumi.runtime.invoke('openstack:identity/getRole:getRole', __args__)
+    __ret__ = await pulumi.runtime.invoke('openstack:identity/getRole:getRole', __args__, opts=opts)
 
     return GetRoleResult(
         domain_id=__ret__.get('domainId'),

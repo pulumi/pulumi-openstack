@@ -62,7 +62,6 @@ class TempUrl(pulumi.CustomResource):
                it has expired. If set to true, this will create a new resource with a new
                ID and new URL. Defaults to false.
         :param pulumi.Input[str] region: The region the tempurl is located in.
-        :param pulumi.Input[str] split
         :param pulumi.Input[int] ttl: The TTL, in seconds, for the URL. For how long it should
                be valid.
         """

@@ -8,7 +8,7 @@ import pulumi
 import pulumi.runtime
 from .. import utilities, tables
 
-class GetPortIdsResult(object):
+class GetPortIdsResult:
     """
     A collection of values returned by getPortIds.
     """
@@ -23,7 +23,7 @@ class GetPortIdsResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_port_ids(admin_state_up=None, description=None, device_id=None, device_owner=None, fixed_ip=None, mac_address=None, name=None, network_id=None, project_id=None, region=None, security_group_ids=None, sort_direction=None, sort_key=None, status=None, tags=None, tenant_id=None):
+async def get_port_ids(admin_state_up=None,description=None,device_id=None,device_owner=None,fixed_ip=None,mac_address=None,name=None,network_id=None,project_id=None,region=None,security_group_ids=None,sort_direction=None,sort_key=None,status=None,tags=None,tenant_id=None,opts=None):
     """
     Use this data source to get a list of Openstack Port IDs matching the
     specified criteria.
@@ -46,7 +46,7 @@ async def get_port_ids(admin_state_up=None, description=None, device_id=None, de
     __args__['status'] = status
     __args__['tags'] = tags
     __args__['tenantId'] = tenant_id
-    __ret__ = await pulumi.runtime.invoke('openstack:networking/getPortIds:getPortIds', __args__)
+    __ret__ = await pulumi.runtime.invoke('openstack:networking/getPortIds:getPortIds', __args__, opts=opts)
 
     return GetPortIdsResult(
         ids=__ret__.get('ids'),

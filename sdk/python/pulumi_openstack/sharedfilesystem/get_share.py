@@ -8,7 +8,7 @@ import pulumi
 import pulumi.runtime
 from .. import utilities, tables
 
-class GetShareResult(object):
+class GetShareResult:
     """
     A collection of values returned by getShare.
     """
@@ -100,7 +100,7 @@ class GetShareResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_share(description=None, export_location_path=None, is_public=None, metadata=None, name=None, region=None, share_network_id=None, snapshot_id=None, status=None):
+async def get_share(description=None,export_location_path=None,is_public=None,metadata=None,name=None,region=None,share_network_id=None,snapshot_id=None,status=None,opts=None):
     """
     Use this data source to get the ID of an available Shared File System share.
     """
@@ -115,7 +115,7 @@ async def get_share(description=None, export_location_path=None, is_public=None,
     __args__['shareNetworkId'] = share_network_id
     __args__['snapshotId'] = snapshot_id
     __args__['status'] = status
-    __ret__ = await pulumi.runtime.invoke('openstack:sharedfilesystem/getShare:getShare', __args__)
+    __ret__ = await pulumi.runtime.invoke('openstack:sharedfilesystem/getShare:getShare', __args__, opts=opts)
 
     return GetShareResult(
         availability_zone=__ret__.get('availabilityZone'),

@@ -8,7 +8,7 @@ import pulumi
 import pulumi.runtime
 from .. import utilities, tables
 
-class GetProjectResult(object):
+class GetProjectResult:
     """
     A collection of values returned by getProject.
     """
@@ -38,7 +38,7 @@ class GetProjectResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_project(domain_id=None, enabled=None, is_domain=None, name=None, parent_id=None, region=None):
+async def get_project(domain_id=None,enabled=None,is_domain=None,name=None,parent_id=None,region=None,opts=None):
     """
     Use this data source to get the ID of an OpenStack project.
     """
@@ -50,7 +50,7 @@ async def get_project(domain_id=None, enabled=None, is_domain=None, name=None, p
     __args__['name'] = name
     __args__['parentId'] = parent_id
     __args__['region'] = region
-    __ret__ = await pulumi.runtime.invoke('openstack:identity/getProject:getProject', __args__)
+    __ret__ = await pulumi.runtime.invoke('openstack:identity/getProject:getProject', __args__, opts=opts)
 
     return GetProjectResult(
         description=__ret__.get('description'),

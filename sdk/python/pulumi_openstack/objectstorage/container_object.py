@@ -150,7 +150,6 @@ class ContainerObject(pulumi.CustomResource):
                type based on the file extension and ignores the value sent in the Content-Type
                header, if present.
         :param pulumi.Input[str] etag: Used to trigger updates. The only meaningful value is ${md5(file("path/to/file"))}.
-        :param pulumi.Input[dict] metadata
         :param pulumi.Input[str] name: A unique name for the object.
         :param pulumi.Input[str] object_manifest: A string set to specify that this is a dynamic large 
                object manifest object. The value is the container and object name prefix of the

@@ -8,7 +8,7 @@ import pulumi
 import pulumi.runtime
 from .. import utilities, tables
 
-class GetShareNetworkResult(object):
+class GetShareNetworkResult:
     """
     A collection of values returned by getShareNetwork.
     """
@@ -87,7 +87,7 @@ class GetShareNetworkResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_share_network(description=None, ip_version=None, name=None, network_type=None, neutron_net_id=None, neutron_subnet_id=None, region=None, security_service_id=None, segmentation_id=None):
+async def get_share_network(description=None,ip_version=None,name=None,network_type=None,neutron_net_id=None,neutron_subnet_id=None,region=None,security_service_id=None,segmentation_id=None,opts=None):
     """
     Use this data source to get the ID of an available Shared File System share network.
     """
@@ -102,7 +102,7 @@ async def get_share_network(description=None, ip_version=None, name=None, networ
     __args__['region'] = region
     __args__['securityServiceId'] = security_service_id
     __args__['segmentationId'] = segmentation_id
-    __ret__ = await pulumi.runtime.invoke('openstack:sharedfilesystem/getShareNetwork:getShareNetwork', __args__)
+    __ret__ = await pulumi.runtime.invoke('openstack:sharedfilesystem/getShareNetwork:getShareNetwork', __args__, opts=opts)
 
     return GetShareNetworkResult(
         cidr=__ret__.get('cidr'),
