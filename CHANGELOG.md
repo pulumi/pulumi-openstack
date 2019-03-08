@@ -1,10 +1,14 @@
 ## 0.16.6 (unreleased)
 
+## Improvements
+
+- Updated to version 1.16.0 of the OpenStack Terraform Provider.
+
 ## 0.16.5 (Released February 13th, 2019)
 
 ## Improvements
 
-- Updated to version 1.15.1 of the AWS OpenStack Terraform Provider.
+- Updated to version 1.15.1 of the OpenStack Terraform Provider.
 
 - Support for the `deleteBeforeReplace` resource option and improved
   delete-before-replace behaviour introduced in [Pulumi
@@ -14,7 +18,7 @@
 
 ### Improvements
 
-- Updated to the v1.14.0 version of the AWS OpenStack Provider.
+- Updated to the v1.14.0 version of the OpenStack Provider.
 
 - Documentation comments for the Node.js SDK now include examples
 
