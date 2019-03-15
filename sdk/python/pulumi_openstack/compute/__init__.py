@@ -13,5 +13,6 @@ from .keypair import *
 from .sec_group import *
 from .server_group import *
 from .volume_attach import *
+from .get_availability_zones import *
 from .get_flavor import *
 from .get_keypair import *

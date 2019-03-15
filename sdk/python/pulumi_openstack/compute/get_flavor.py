@@ -8,7 +8,7 @@ import pulumi
 import pulumi.runtime
 from .. import utilities, tables
 
-class GetFlavorResult(object):
+class GetFlavorResult:
     """
     A collection of values returned by getFlavor.
     """
@@ -35,7 +35,7 @@ class GetFlavorResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_flavor(disk=None, flavor_id=None, min_disk=None, min_ram=None, name=None, ram=None, region=None, rx_tx_factor=None, swap=None, vcpus=None):
+async def get_flavor(disk=None,flavor_id=None,min_disk=None,min_ram=None,name=None,ram=None,region=None,rx_tx_factor=None,swap=None,vcpus=None,opts=None):
     """
     Use this data source to get the ID of an available OpenStack flavor.
     """
@@ -51,7 +51,7 @@ async def get_flavor(disk=None, flavor_id=None, min_disk=None, min_ram=None, nam
     __args__['rxTxFactor'] = rx_tx_factor
     __args__['swap'] = swap
     __args__['vcpus'] = vcpus
-    __ret__ = await pulumi.runtime.invoke('openstack:compute/getFlavor:getFlavor', __args__)
+    __ret__ = await pulumi.runtime.invoke('openstack:compute/getFlavor:getFlavor', __args__, opts=opts)
 
     return GetFlavorResult(
         extra_specs=__ret__.get('extraSpecs'),

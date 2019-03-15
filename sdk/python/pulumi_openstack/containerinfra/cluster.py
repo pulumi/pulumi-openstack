@@ -115,18 +115,6 @@ class Cluster(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cluster_template_id
-        :param pulumi.Input[int] create_timeout
-        :param pulumi.Input[str] discovery_url
-        :param pulumi.Input[int] docker_volume_size
-        :param pulumi.Input[str] flavor
-        :param pulumi.Input[str] keypair
-        :param pulumi.Input[dict] labels
-        :param pulumi.Input[int] master_count
-        :param pulumi.Input[str] master_flavor
-        :param pulumi.Input[str] name
-        :param pulumi.Input[int] node_count
-        :param pulumi.Input[str] region
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

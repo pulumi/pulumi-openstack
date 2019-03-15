@@ -204,34 +204,6 @@ class ClusterTemplate(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] apiserver_port
-        :param pulumi.Input[str] cluster_distro
-        :param pulumi.Input[str] coe
-        :param pulumi.Input[str] dns_nameserver
-        :param pulumi.Input[str] docker_storage_driver
-        :param pulumi.Input[int] docker_volume_size
-        :param pulumi.Input[str] external_network_id
-        :param pulumi.Input[str] fixed_network
-        :param pulumi.Input[str] fixed_subnet
-        :param pulumi.Input[str] flavor
-        :param pulumi.Input[bool] floating_ip_enabled
-        :param pulumi.Input[str] http_proxy
-        :param pulumi.Input[str] https_proxy
-        :param pulumi.Input[str] image
-        :param pulumi.Input[str] insecure_registry
-        :param pulumi.Input[str] keypair_id
-        :param pulumi.Input[dict] labels
-        :param pulumi.Input[str] master_flavor
-        :param pulumi.Input[bool] master_lb_enabled
-        :param pulumi.Input[str] name
-        :param pulumi.Input[str] network_driver
-        :param pulumi.Input[str] no_proxy
-        :param pulumi.Input[bool] public
-        :param pulumi.Input[str] region
-        :param pulumi.Input[bool] registry_enabled
-        :param pulumi.Input[str] server_type
-        :param pulumi.Input[bool] tls_disabled
-        :param pulumi.Input[str] volume_driver
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

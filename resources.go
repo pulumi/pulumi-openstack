@@ -309,8 +309,9 @@ func Provider() tfbridge.ProviderInfo {
 			"openstack_blockstorage_snapshot_v3": {Tok: openstackDataSource(blockstorageMod, "getSnapshotV3")},
 
 			// Compute
-			"openstack_compute_flavor_v2":  {Tok: openstackDataSource(computeMod, "getFlavor")},
-			"openstack_compute_keypair_v2": {Tok: openstackDataSource(computeMod, "getKeypair")},
+			"openstack_compute_availability_zones_v2": {Tok: openstackDataSource(computeMod, "getAvailabilityZones")},
+			"openstack_compute_flavor_v2":             {Tok: openstackDataSource(computeMod, "getFlavor")},
+			"openstack_compute_keypair_v2":            {Tok: openstackDataSource(computeMod, "getKeypair")},
 
 			// Container Infrastructure
 			"openstack_containerinfra_cluster_v1":         {Tok: openstackDataSource(containerinfraMod, "getCluster")},

@@ -42,7 +42,6 @@ class RoleAssignment(pulumi.CustomResource):
         :param pulumi.Input[str] domain_id: The domain to assign the role in.
         :param pulumi.Input[str] group_id: The group to assign the role to.
         :param pulumi.Input[str] project_id: The project to assign the role in.
-        :param pulumi.Input[str] region
         :param pulumi.Input[str] role_id: The role to assign.
         :param pulumi.Input[str] user_id: The user to assign the role to.
         """

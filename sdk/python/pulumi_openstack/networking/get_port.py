@@ -8,7 +8,7 @@ import pulumi
 import pulumi.runtime
 from .. import utilities, tables
 
-class GetPortResult(object):
+class GetPortResult:
     """
     A collection of values returned by getPort.
     """
@@ -54,7 +54,7 @@ class GetPortResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_port(admin_state_up=None, description=None, device_id=None, device_owner=None, fixed_ip=None, mac_address=None, name=None, network_id=None, port_id=None, project_id=None, region=None, security_group_ids=None, status=None, tags=None, tenant_id=None):
+async def get_port(admin_state_up=None,description=None,device_id=None,device_owner=None,fixed_ip=None,mac_address=None,name=None,network_id=None,port_id=None,project_id=None,region=None,security_group_ids=None,status=None,tags=None,tenant_id=None,opts=None):
     """
     Use this data source to get the ID of an available OpenStack port.
     """
@@ -75,7 +75,7 @@ async def get_port(admin_state_up=None, description=None, device_id=None, device
     __args__['status'] = status
     __args__['tags'] = tags
     __args__['tenantId'] = tenant_id
-    __ret__ = await pulumi.runtime.invoke('openstack:networking/getPort:getPort', __args__)
+    __ret__ = await pulumi.runtime.invoke('openstack:networking/getPort:getPort', __args__, opts=opts)
 
     return GetPortResult(
         all_fixed_ips=__ret__.get('allFixedIps'),

@@ -20,6 +20,7 @@
         "compute/flavorAccess.ts",
         "compute/floatingIp.ts",
         "compute/floatingIpAssociate.ts",
+        "compute/getAvailabilityZones.ts",
         "compute/getFlavor.ts",
         "compute/getKeypair.ts",
         "compute/index.ts",

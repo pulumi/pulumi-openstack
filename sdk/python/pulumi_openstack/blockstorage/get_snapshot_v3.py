@@ -8,7 +8,7 @@ import pulumi
 import pulumi.runtime
 from .. import utilities, tables
 
-class GetSnapshotV3Result(object):
+class GetSnapshotV3Result:
     """
     A collection of values returned by getSnapshotV3.
     """
@@ -62,7 +62,7 @@ class GetSnapshotV3Result(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_snapshot_v3(most_recent=None, name=None, region=None, status=None, volume_id=None):
+async def get_snapshot_v3(most_recent=None,name=None,region=None,status=None,volume_id=None,opts=None):
     """
     Use this data source to get information about an existing snapshot.
     """
@@ -73,7 +73,7 @@ async def get_snapshot_v3(most_recent=None, name=None, region=None, status=None,
     __args__['region'] = region
     __args__['status'] = status
     __args__['volumeId'] = volume_id
-    __ret__ = await pulumi.runtime.invoke('openstack:blockstorage/getSnapshotV3:getSnapshotV3', __args__)
+    __ret__ = await pulumi.runtime.invoke('openstack:blockstorage/getSnapshotV3:getSnapshotV3', __args__, opts=opts)
 
     return GetSnapshotV3Result(
         description=__ret__.get('description'),

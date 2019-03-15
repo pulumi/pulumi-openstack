@@ -77,7 +77,8 @@ export class Subnet extends pulumi.CustomResource {
      */
     public readonly gatewayIp: pulumi.Output<string>;
     /**
-     * An array of routes that should be used by devices
+     * (**Deprecated** - use `openstack_networking_subnet_route_v2`
+     * instead) An array of routes that should be used by devices
      * with IPs from this subnet (not including local subnet route). The host_route
      * object structure is documented below. Changing this updates the host routes
      * for the existing subnet.
@@ -244,7 +245,8 @@ export interface SubnetState {
      */
     readonly gatewayIp?: pulumi.Input<string>;
     /**
-     * An array of routes that should be used by devices
+     * (**Deprecated** - use `openstack_networking_subnet_route_v2`
+     * instead) An array of routes that should be used by devices
      * with IPs from this subnet (not including local subnet route). The host_route
      * object structure is documented below. Changing this updates the host routes
      * for the existing subnet.
@@ -347,7 +349,8 @@ export interface SubnetArgs {
      */
     readonly gatewayIp?: pulumi.Input<string>;
     /**
-     * An array of routes that should be used by devices
+     * (**Deprecated** - use `openstack_networking_subnet_route_v2`
+     * instead) An array of routes that should be used by devices
      * with IPs from this subnet (not including local subnet route). The host_route
      * object structure is documented below. Changing this updates the host routes
      * for the existing subnet.

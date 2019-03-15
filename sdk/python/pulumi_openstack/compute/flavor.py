@@ -64,7 +64,6 @@ class Flavor(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] disk: The amount of disk space in gigabytes to use for the root
                (/) partition. Changing this creates a new flavor.
-        :param pulumi.Input[int] ephemeral
         :param pulumi.Input[dict] extra_specs: Key/Value pairs of metadata for the flavor.
         :param pulumi.Input[bool] is_public: Whether the flavor is public. Changing this creates
                a new flavor.

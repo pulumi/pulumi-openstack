@@ -18,34 +18,6 @@ class Provider(pulumi.ProviderResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] application_credential_id
-        :param pulumi.Input[str] application_credential_name
-        :param pulumi.Input[str] application_credential_secret
-        :param pulumi.Input[str] auth_url
-        :param pulumi.Input[str] cacert_file
-        :param pulumi.Input[str] cert
-        :param pulumi.Input[str] cloud
-        :param pulumi.Input[str] default_domain
-        :param pulumi.Input[str] domain_id
-        :param pulumi.Input[str] domain_name
-        :param pulumi.Input[dict] endpoint_overrides
-        :param pulumi.Input[str] endpoint_type
-        :param pulumi.Input[bool] insecure
-        :param pulumi.Input[str] key
-        :param pulumi.Input[int] max_retries
-        :param pulumi.Input[str] password
-        :param pulumi.Input[str] project_domain_id
-        :param pulumi.Input[str] project_domain_name
-        :param pulumi.Input[str] region
-        :param pulumi.Input[bool] swauth
-        :param pulumi.Input[str] tenant_id
-        :param pulumi.Input[str] tenant_name
-        :param pulumi.Input[str] token
-        :param pulumi.Input[bool] use_octavia
-        :param pulumi.Input[str] user_domain_id
-        :param pulumi.Input[str] user_domain_name
-        :param pulumi.Input[str] user_id
-        :param pulumi.Input[str] user_name
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

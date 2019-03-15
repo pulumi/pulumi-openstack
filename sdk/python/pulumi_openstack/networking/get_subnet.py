@@ -8,7 +8,7 @@ import pulumi
 import pulumi.runtime
 from .. import utilities, tables
 
-class GetSubnetResult(object):
+class GetSubnetResult:
     """
     A collection of values returned by getSubnet.
     """
@@ -89,7 +89,7 @@ class GetSubnetResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_subnet(cidr=None, description=None, dhcp_disabled=None, dhcp_enabled=None, gateway_ip=None, ip_version=None, ipv6_address_mode=None, ipv6_ra_mode=None, name=None, network_id=None, region=None, subnet_id=None, subnetpool_id=None, tags=None, tenant_id=None):
+async def get_subnet(cidr=None,description=None,dhcp_disabled=None,dhcp_enabled=None,gateway_ip=None,ip_version=None,ipv6_address_mode=None,ipv6_ra_mode=None,name=None,network_id=None,region=None,subnet_id=None,subnetpool_id=None,tags=None,tenant_id=None,opts=None):
     """
     Use this data source to get the ID of an available OpenStack subnet.
     """
@@ -110,7 +110,7 @@ async def get_subnet(cidr=None, description=None, dhcp_disabled=None, dhcp_enabl
     __args__['subnetpoolId'] = subnetpool_id
     __args__['tags'] = tags
     __args__['tenantId'] = tenant_id
-    __ret__ = await pulumi.runtime.invoke('openstack:networking/getSubnet:getSubnet', __args__)
+    __ret__ = await pulumi.runtime.invoke('openstack:networking/getSubnet:getSubnet', __args__, opts=opts)
 
     return GetSubnetResult(
         all_tags=__ret__.get('allTags'),

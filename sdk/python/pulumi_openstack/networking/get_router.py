@@ -8,7 +8,7 @@ import pulumi
 import pulumi.runtime
 from .. import utilities, tables
 
-class GetRouterResult(object):
+class GetRouterResult:
     """
     A collection of values returned by getRouter.
     """
@@ -50,7 +50,7 @@ class GetRouterResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_router(admin_state_up=None, description=None, distributed=None, enable_snat=None, name=None, region=None, router_id=None, status=None, tags=None, tenant_id=None):
+async def get_router(admin_state_up=None,description=None,distributed=None,enable_snat=None,name=None,region=None,router_id=None,status=None,tags=None,tenant_id=None,opts=None):
     """
     Use this data source to get the ID of an available OpenStack router.
     """
@@ -66,7 +66,7 @@ async def get_router(admin_state_up=None, description=None, distributed=None, en
     __args__['status'] = status
     __args__['tags'] = tags
     __args__['tenantId'] = tenant_id
-    __ret__ = await pulumi.runtime.invoke('openstack:networking/getRouter:getRouter', __args__)
+    __ret__ = await pulumi.runtime.invoke('openstack:networking/getRouter:getRouter', __args__, opts=opts)
 
     return GetRouterResult(
         all_tags=__ret__.get('allTags'),

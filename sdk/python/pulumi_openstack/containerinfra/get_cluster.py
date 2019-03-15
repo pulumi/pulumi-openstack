@@ -8,7 +8,7 @@ import pulumi
 import pulumi.runtime
 from .. import utilities, tables
 
-class GetClusterResult(object):
+class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
@@ -144,7 +144,7 @@ class GetClusterResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_cluster(name=None, region=None):
+async def get_cluster(name=None,region=None,opts=None):
     """
     Use this data source to get the ID of an available OpenStack Magnum cluster.
     """
@@ -152,7 +152,7 @@ async def get_cluster(name=None, region=None):
 
     __args__['name'] = name
     __args__['region'] = region
-    __ret__ = await pulumi.runtime.invoke('openstack:containerinfra/getCluster:getCluster', __args__)
+    __ret__ = await pulumi.runtime.invoke('openstack:containerinfra/getCluster:getCluster', __args__, opts=opts)
 
     return GetClusterResult(
         api_address=__ret__.get('apiAddress'),

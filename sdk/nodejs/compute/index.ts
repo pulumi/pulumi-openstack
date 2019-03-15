@@ -6,6 +6,7 @@ export * from "./flavor";
 export * from "./flavorAccess";
 export * from "./floatingIp";
 export * from "./floatingIpAssociate";
+export * from "./getAvailabilityZones";
 export * from "./getFlavor";
 export * from "./getKeypair";
 export * from "./instance";

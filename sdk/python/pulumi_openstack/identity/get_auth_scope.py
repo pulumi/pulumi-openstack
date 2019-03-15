@@ -8,7 +8,7 @@ import pulumi
 import pulumi.runtime
 from .. import utilities, tables
 
-class GetAuthScopeResult(object):
+class GetAuthScopeResult:
     """
     A collection of values returned by getAuthScope.
     """
@@ -77,7 +77,7 @@ class GetAuthScopeResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_auth_scope(name=None, region=None):
+async def get_auth_scope(name=None,region=None,opts=None):
     """
     Use this data source to get authentication information about the current
     auth scope in use. This can be used as self-discovery or introspection of
@@ -87,7 +87,7 @@ async def get_auth_scope(name=None, region=None):
 
     __args__['name'] = name
     __args__['region'] = region
-    __ret__ = await pulumi.runtime.invoke('openstack:identity/getAuthScope:getAuthScope', __args__)
+    __ret__ = await pulumi.runtime.invoke('openstack:identity/getAuthScope:getAuthScope', __args__, opts=opts)
 
     return GetAuthScopeResult(
         project_domain_id=__ret__.get('projectDomainId'),

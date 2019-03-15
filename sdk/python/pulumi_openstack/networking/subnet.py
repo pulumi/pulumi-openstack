@@ -52,7 +52,8 @@ class Subnet(pulumi.CustomResource):
     """
     host_routes: pulumi.Output[list]
     """
-    An array of routes that should be used by devices
+    (**Deprecated** - use `openstack_networking_subnet_route_v2`
+    instead) An array of routes that should be used by devices
     with IPs from this subnet (not including local subnet route). The host_route
     object structure is documented below. Changing this updates the host routes
     for the existing subnet.
@@ -135,7 +136,8 @@ class Subnet(pulumi.CustomResource):
                Leaving this blank and not setting `no_gateway` will cause a default
                gateway of `.1` to be used. Changing this updates the gateway IP of the
                existing subnet.
-        :param pulumi.Input[list] host_routes: An array of routes that should be used by devices
+        :param pulumi.Input[list] host_routes: (**Deprecated** - use `openstack_networking_subnet_route_v2`
+               instead) An array of routes that should be used by devices
                with IPs from this subnet (not including local subnet route). The host_route
                object structure is documented below. Changing this updates the host routes
                for the existing subnet.

@@ -80,7 +80,6 @@ class Policy(pulumi.CustomResource):
                can be used in, firewalls in other tenants. Changing this updates the
                `shared` status of an existing firewall policy. Only administrative users
                can specify if the policy should be shared.
-        :param pulumi.Input[str] tenant_id
         :param pulumi.Input[dict] value_specs: Map of additional options.
         """
         if __name__ is not None:
