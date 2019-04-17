@@ -2,6 +2,8 @@
 
 ## Improvements
 
+- Updated to version 1.17.0 of the OpenStack Terraform Provider.
+
 ## 0.17.0 (Released March 6th, 2019)
 
 ## Improvements
