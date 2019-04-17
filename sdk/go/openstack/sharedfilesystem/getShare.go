@@ -28,6 +28,7 @@ func LookupShare(ctx *pulumi.Context, args *GetShareArgs) (*GetShareResult, erro
 	return &GetShareResult{
 		AvailabilityZone: outputs["availabilityZone"],
 		Description: outputs["description"],
+		ExportLocationPath: outputs["exportLocationPath"],
 		ExportLocations: outputs["exportLocations"],
 		IsPublic: outputs["isPublic"],
 		Metadata: outputs["metadata"],
@@ -77,6 +78,8 @@ type GetShareResult struct {
 	AvailabilityZone interface{}
 	// See Argument Reference above.
 	Description interface{}
+	// See Argument Reference above.
+	ExportLocationPath interface{}
 	// A list of export locations. For example, when a share
 	// server has more than one network interface, it can have multiple export
 	// locations.

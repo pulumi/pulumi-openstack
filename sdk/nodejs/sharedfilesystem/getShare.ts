@@ -92,6 +92,10 @@ export interface GetShareResult {
      */
     readonly description: string;
     /**
+     * See Argument Reference above.
+     */
+    readonly exportLocationPath?: string;
+    /**
      * A list of export locations. For example, when a share
      * server has more than one network interface, it can have multiple export
      * locations.

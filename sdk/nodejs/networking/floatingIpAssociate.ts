@@ -37,6 +37,7 @@ export class FloatingIpAssociate extends pulumi.CustomResource {
         return new FloatingIpAssociate(name, <any>state, { ...opts, id: id });
     }
 
+    public readonly fixedIp: pulumi.Output<string>;
     /**
      * IP Address of an existing floating IP.
      */
@@ -67,6 +68,7 @@ export class FloatingIpAssociate extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state: FloatingIpAssociateState = argsOrState as FloatingIpAssociateState | undefined;
+            inputs["fixedIp"] = state ? state.fixedIp : undefined;
             inputs["floatingIp"] = state ? state.floatingIp : undefined;
             inputs["portId"] = state ? state.portId : undefined;
             inputs["region"] = state ? state.region : undefined;
@@ -78,6 +80,7 @@ export class FloatingIpAssociate extends pulumi.CustomResource {
             if (!args || args.portId === undefined) {
                 throw new Error("Missing required property 'portId'");
             }
+            inputs["fixedIp"] = args ? args.fixedIp : undefined;
             inputs["floatingIp"] = args ? args.floatingIp : undefined;
             inputs["portId"] = args ? args.portId : undefined;
             inputs["region"] = args ? args.region : undefined;
@@ -90,6 +93,7 @@ export class FloatingIpAssociate extends pulumi.CustomResource {
  * Input properties used for looking up and filtering FloatingIpAssociate resources.
  */
 export interface FloatingIpAssociateState {
+    readonly fixedIp?: pulumi.Input<string>;
     /**
      * IP Address of an existing floating IP.
      */
@@ -113,6 +117,7 @@ export interface FloatingIpAssociateState {
  * The set of arguments for constructing a FloatingIpAssociate resource.
  */
 export interface FloatingIpAssociateArgs {
+    readonly fixedIp?: pulumi.Input<string>;
     /**
      * IP Address of an existing floating IP.
      */

@@ -82,7 +82,7 @@ class Share(pulumi.CustomResource):
     The share type name. If you omit this parameter, the default
     share type is used.
     """
-    size: pulumi.Output[int]
+    size: pulumi.Output[float]
     """
     The share size, in GBs. The requested share size cannot be greater
     than the allowed GB quota. Changing this resizes the existing share.
@@ -119,7 +119,7 @@ class Share(pulumi.CustomResource):
                CEPHFS, GLUSTERFS, HDFS or MAPRFS. Changing this creates a new share.
         :param pulumi.Input[str] share_type: The share type name. If you omit this parameter, the default
                share type is used.
-        :param pulumi.Input[int] size: The share size, in GBs. The requested share size cannot be greater
+        :param pulumi.Input[float] size: The share size, in GBs. The requested share size cannot be greater
                than the allowed GB quota. Changing this resizes the existing share.
         :param pulumi.Input[str] snapshot_id: The UUID of the share's base snapshot. Changing this creates
                a new share.
@@ -154,13 +154,13 @@ class Share(pulumi.CustomResource):
         __props__['share_network_id'] = share_network_id
 
         if share_proto is None:
-            raise TypeError('Missing required property share_proto')
+            raise TypeError("Missing required property 'share_proto'")
         __props__['share_proto'] = share_proto
 
         __props__['share_type'] = share_type
 
         if size is None:
-            raise TypeError('Missing required property size')
+            raise TypeError("Missing required property 'size'")
         __props__['size'] = size
 
         __props__['snapshot_id'] = snapshot_id

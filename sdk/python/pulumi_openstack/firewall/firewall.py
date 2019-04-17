@@ -115,7 +115,7 @@ class Firewall(pulumi.CustomResource):
         __props__['no_routers'] = no_routers
 
         if policy_id is None:
-            raise TypeError('Missing required property policy_id')
+            raise TypeError("Missing required property 'policy_id'")
         __props__['policy_id'] = policy_id
 
         __props__['region'] = region

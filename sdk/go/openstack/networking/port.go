@@ -31,9 +31,11 @@ func NewPort(ctx *pulumi.Context,
 	if args == nil {
 		inputs["adminStateUp"] = nil
 		inputs["allowedAddressPairs"] = nil
+		inputs["binding"] = nil
 		inputs["description"] = nil
 		inputs["deviceId"] = nil
 		inputs["deviceOwner"] = nil
+		inputs["dnsName"] = nil
 		inputs["extraDhcpOptions"] = nil
 		inputs["fixedIps"] = nil
 		inputs["macAddress"] = nil
@@ -41,6 +43,7 @@ func NewPort(ctx *pulumi.Context,
 		inputs["networkId"] = nil
 		inputs["noFixedIp"] = nil
 		inputs["noSecurityGroups"] = nil
+		inputs["portSecurityEnabled"] = nil
 		inputs["region"] = nil
 		inputs["securityGroupIds"] = nil
 		inputs["tags"] = nil
@@ -49,9 +52,11 @@ func NewPort(ctx *pulumi.Context,
 	} else {
 		inputs["adminStateUp"] = args.AdminStateUp
 		inputs["allowedAddressPairs"] = args.AllowedAddressPairs
+		inputs["binding"] = args.Binding
 		inputs["description"] = args.Description
 		inputs["deviceId"] = args.DeviceId
 		inputs["deviceOwner"] = args.DeviceOwner
+		inputs["dnsName"] = args.DnsName
 		inputs["extraDhcpOptions"] = args.ExtraDhcpOptions
 		inputs["fixedIps"] = args.FixedIps
 		inputs["macAddress"] = args.MacAddress
@@ -59,6 +64,7 @@ func NewPort(ctx *pulumi.Context,
 		inputs["networkId"] = args.NetworkId
 		inputs["noFixedIp"] = args.NoFixedIp
 		inputs["noSecurityGroups"] = args.NoSecurityGroups
+		inputs["portSecurityEnabled"] = args.PortSecurityEnabled
 		inputs["region"] = args.Region
 		inputs["securityGroupIds"] = args.SecurityGroupIds
 		inputs["tags"] = args.Tags
@@ -68,6 +74,7 @@ func NewPort(ctx *pulumi.Context,
 	inputs["allFixedIps"] = nil
 	inputs["allSecurityGroupIds"] = nil
 	inputs["allTags"] = nil
+	inputs["dnsAssignments"] = nil
 	s, err := ctx.RegisterResource("openstack:networking/port:Port", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
@@ -86,9 +93,12 @@ func GetPort(ctx *pulumi.Context,
 		inputs["allSecurityGroupIds"] = state.AllSecurityGroupIds
 		inputs["allTags"] = state.AllTags
 		inputs["allowedAddressPairs"] = state.AllowedAddressPairs
+		inputs["binding"] = state.Binding
 		inputs["description"] = state.Description
 		inputs["deviceId"] = state.DeviceId
 		inputs["deviceOwner"] = state.DeviceOwner
+		inputs["dnsAssignments"] = state.DnsAssignments
+		inputs["dnsName"] = state.DnsName
 		inputs["extraDhcpOptions"] = state.ExtraDhcpOptions
 		inputs["fixedIps"] = state.FixedIps
 		inputs["macAddress"] = state.MacAddress
@@ -96,6 +106,7 @@ func GetPort(ctx *pulumi.Context,
 		inputs["networkId"] = state.NetworkId
 		inputs["noFixedIp"] = state.NoFixedIp
 		inputs["noSecurityGroups"] = state.NoSecurityGroups
+		inputs["portSecurityEnabled"] = state.PortSecurityEnabled
 		inputs["region"] = state.Region
 		inputs["securityGroupIds"] = state.SecurityGroupIds
 		inputs["tags"] = state.Tags
@@ -151,6 +162,12 @@ func (r *Port) AllowedAddressPairs() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["allowedAddressPairs"])
 }
 
+// The port binding allows to specify binding information
+// for the port. The structure is described below.
+func (r *Port) Binding() *pulumi.Output {
+	return r.s.State["binding"]
+}
+
 // Human-readable description of the floating IP. Changing
 // this updates the `description` of an existing port.
 func (r *Port) Description() *pulumi.StringOutput {
@@ -167,6 +184,17 @@ func (r *Port) DeviceId() *pulumi.StringOutput {
 // a new port.
 func (r *Port) DeviceOwner() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["deviceOwner"])
+}
+
+// The list of maps representing port DNS assignments.
+func (r *Port) DnsAssignments() *pulumi.ArrayOutput {
+	return (*pulumi.ArrayOutput)(r.s.State["dnsAssignments"])
+}
+
+// The port DNS name. Available, when Neutron DNS extension
+// is enabled.
+func (r *Port) DnsName() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["dnsName"])
 }
 
 // An extra DHCP option that needs to be configured
@@ -216,6 +244,16 @@ func (r *Port) NoSecurityGroups() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["noSecurityGroups"])
 }
 
+// Whether to explicitly enable or disable
+// port security on the port. Port Security is usually enabled by default, so
+// omitting argument will usually result in a value of "true". Setting this
+// explicitly to `false` will disable port security. In order to disable port
+// security, the port must not have any security groups. Valid values are `true`
+// and `false`.
+func (r *Port) PortSecurityEnabled() *pulumi.BoolOutput {
+	return (*pulumi.BoolOutput)(r.s.State["portSecurityEnabled"])
+}
+
 // The region in which to obtain the V2 networking client.
 // A networking client is needed to create a port. If omitted, the
 // `region` argument of the provider is used. Changing this creates a new
@@ -232,7 +270,7 @@ func (r *Port) SecurityGroupIds() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["securityGroupIds"])
 }
 
-// See Argument Reference above.
+// A set of string tags for the port.
 func (r *Port) Tags() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["tags"])
 }
@@ -267,6 +305,9 @@ type PortState struct {
 	// addresses that can be active on this port. The structure is described
 	// below.
 	AllowedAddressPairs interface{}
+	// The port binding allows to specify binding information
+	// for the port. The structure is described below.
+	Binding interface{}
 	// Human-readable description of the floating IP. Changing
 	// this updates the `description` of an existing port.
 	Description interface{}
@@ -276,6 +317,11 @@ type PortState struct {
 	// The device owner of the Port. Changing this creates
 	// a new port.
 	DeviceOwner interface{}
+	// The list of maps representing port DNS assignments.
+	DnsAssignments interface{}
+	// The port DNS name. Available, when Neutron DNS extension
+	// is enabled.
+	DnsName interface{}
 	// An extra DHCP option that needs to be configured
 	// on the port. The structure is described below. Can be specified multiple
 	// times.
@@ -302,6 +348,13 @@ type PortState struct {
 	// behavior of the Networking service, which is to usually apply the "default"
 	// security group.
 	NoSecurityGroups interface{}
+	// Whether to explicitly enable or disable
+	// port security on the port. Port Security is usually enabled by default, so
+	// omitting argument will usually result in a value of "true". Setting this
+	// explicitly to `false` will disable port security. In order to disable port
+	// security, the port must not have any security groups. Valid values are `true`
+	// and `false`.
+	PortSecurityEnabled interface{}
 	// The region in which to obtain the V2 networking client.
 	// A networking client is needed to create a port. If omitted, the
 	// `region` argument of the provider is used. Changing this creates a new
@@ -312,7 +365,7 @@ type PortState struct {
 	// specified by ID and not name (as opposed to how they are configured with
 	// the Compute Instance).
 	SecurityGroupIds interface{}
-	// See Argument Reference above.
+	// A set of string tags for the port.
 	Tags interface{}
 	// The owner of the Port. Required if admin wants
 	// to create a port for another tenant. Changing this creates a new port.
@@ -331,6 +384,9 @@ type PortArgs struct {
 	// addresses that can be active on this port. The structure is described
 	// below.
 	AllowedAddressPairs interface{}
+	// The port binding allows to specify binding information
+	// for the port. The structure is described below.
+	Binding interface{}
 	// Human-readable description of the floating IP. Changing
 	// this updates the `description` of an existing port.
 	Description interface{}
@@ -340,6 +396,9 @@ type PortArgs struct {
 	// The device owner of the Port. Changing this creates
 	// a new port.
 	DeviceOwner interface{}
+	// The port DNS name. Available, when Neutron DNS extension
+	// is enabled.
+	DnsName interface{}
 	// An extra DHCP option that needs to be configured
 	// on the port. The structure is described below. Can be specified multiple
 	// times.
@@ -366,6 +425,13 @@ type PortArgs struct {
 	// behavior of the Networking service, which is to usually apply the "default"
 	// security group.
 	NoSecurityGroups interface{}
+	// Whether to explicitly enable or disable
+	// port security on the port. Port Security is usually enabled by default, so
+	// omitting argument will usually result in a value of "true". Setting this
+	// explicitly to `false` will disable port security. In order to disable port
+	// security, the port must not have any security groups. Valid values are `true`
+	// and `false`.
+	PortSecurityEnabled interface{}
 	// The region in which to obtain the V2 networking client.
 	// A networking client is needed to create a port. If omitted, the
 	// `region` argument of the provider is used. Changing this creates a new
@@ -376,7 +442,7 @@ type PortArgs struct {
 	// specified by ID and not name (as opposed to how they are configured with
 	// the Compute Instance).
 	SecurityGroupIds interface{}
-	// See Argument Reference above.
+	// A set of string tags for the port.
 	Tags interface{}
 	// The owner of the Port. Required if admin wants
 	// to create a port for another tenant. Changing this creates a new port.

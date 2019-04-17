@@ -14,7 +14,7 @@ class Listener(pulumi.CustomResource):
     The administrative state of the Listener.
     A valid value is true (UP) or false (DOWN).
     """
-    connection_limit: pulumi.Output[int]
+    connection_limit: pulumi.Output[float]
     """
     The maximum number of connections allowed
     for the Listener.
@@ -51,7 +51,7 @@ class Listener(pulumi.CustomResource):
     The protocol - can either be TCP, HTTP, HTTPS or TERMINATED_HTTPS.
     Changing this creates a new Listener.
     """
-    protocol_port: pulumi.Output[int]
+    protocol_port: pulumi.Output[float]
     """
     The port on which to listen for client traffic.
     Changing this creates a new Listener.
@@ -84,7 +84,7 @@ class Listener(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] admin_state_up: The administrative state of the Listener.
                A valid value is true (UP) or false (DOWN).
-        :param pulumi.Input[int] connection_limit: The maximum number of connections allowed
+        :param pulumi.Input[float] connection_limit: The maximum number of connections allowed
                for the Listener.
         :param pulumi.Input[str] default_pool_id: The ID of the default pool with which the
                Listener is associated.
@@ -100,7 +100,7 @@ class Listener(pulumi.CustomResource):
                to be unique.
         :param pulumi.Input[str] protocol: The protocol - can either be TCP, HTTP, HTTPS or TERMINATED_HTTPS.
                Changing this creates a new Listener.
-        :param pulumi.Input[int] protocol_port: The port on which to listen for client traffic.
+        :param pulumi.Input[float] protocol_port: The port on which to listen for client traffic.
                Changing this creates a new Listener.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
                A Networking client is needed to create an . If omitted, the
@@ -140,17 +140,17 @@ class Listener(pulumi.CustomResource):
         __props__['description'] = description
 
         if loadbalancer_id is None:
-            raise TypeError('Missing required property loadbalancer_id')
+            raise TypeError("Missing required property 'loadbalancer_id'")
         __props__['loadbalancer_id'] = loadbalancer_id
 
         __props__['name'] = name
 
         if protocol is None:
-            raise TypeError('Missing required property protocol')
+            raise TypeError("Missing required property 'protocol'")
         __props__['protocol'] = protocol
 
         if protocol_port is None:
-            raise TypeError('Missing required property protocol_port')
+            raise TypeError("Missing required property 'protocol_port'")
         __props__['protocol_port'] = protocol_port
 
         __props__['region'] = region

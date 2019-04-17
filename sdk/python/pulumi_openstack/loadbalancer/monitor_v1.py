@@ -15,7 +15,7 @@ class MonitorV1(pulumi.CustomResource):
     Acceptable values are "true" and "false". Changing this value updates the
     state of the existing monitor.
     """
-    delay: pulumi.Output[int]
+    delay: pulumi.Output[float]
     """
     The time, in seconds, between sending probes to members.
     Changing this creates a new monitor.
@@ -33,7 +33,7 @@ class MonitorV1(pulumi.CustomResource):
     for requests by the monitor. If this attribute is not specified, it defaults
     to "GET". Changing this updates the http_method of the existing monitor.
     """
-    max_retries: pulumi.Output[int]
+    max_retries: pulumi.Output[float]
     """
     Number of permissible ping failures before changing
     the member's status to INACTIVE. Must be a number between 1 and 10. Changing
@@ -51,7 +51,7 @@ class MonitorV1(pulumi.CustomResource):
     The owner of the monitor. Required if admin wants to
     create a monitor for another tenant. Changing this creates a new monitor.
     """
-    timeout: pulumi.Output[int]
+    timeout: pulumi.Output[float]
     """
     Maximum number of seconds for a monitor to wait for a
     ping reply before it times out. The value must be less than the delay value.
@@ -78,7 +78,7 @@ class MonitorV1(pulumi.CustomResource):
         :param pulumi.Input[str] admin_state_up: The administrative state of the monitor.
                Acceptable values are "true" and "false". Changing this value updates the
                state of the existing monitor.
-        :param pulumi.Input[int] delay: The time, in seconds, between sending probes to members.
+        :param pulumi.Input[float] delay: The time, in seconds, between sending probes to members.
                Changing this creates a new monitor.
         :param pulumi.Input[str] expected_codes: Required for HTTP(S) types. Expected HTTP codes
                for a passing HTTP(S) monitor. You can either specify a single status like
@@ -87,7 +87,7 @@ class MonitorV1(pulumi.CustomResource):
         :param pulumi.Input[str] http_method: Required for HTTP(S) types. The HTTP method used
                for requests by the monitor. If this attribute is not specified, it defaults
                to "GET". Changing this updates the http_method of the existing monitor.
-        :param pulumi.Input[int] max_retries: Number of permissible ping failures before changing
+        :param pulumi.Input[float] max_retries: Number of permissible ping failures before changing
                the member's status to INACTIVE. Must be a number between 1 and 10. Changing
                this updates the max_retries of the existing monitor.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
@@ -96,7 +96,7 @@ class MonitorV1(pulumi.CustomResource):
                LB monitor.
         :param pulumi.Input[str] tenant_id: The owner of the monitor. Required if admin wants to
                create a monitor for another tenant. Changing this creates a new monitor.
-        :param pulumi.Input[int] timeout: Maximum number of seconds for a monitor to wait for a
+        :param pulumi.Input[float] timeout: Maximum number of seconds for a monitor to wait for a
                ping reply before it times out. The value must be less than the delay value.
                Changing this updates the timeout of the existing monitor.
         :param pulumi.Input[str] type: The type of probe, which is PING, TCP, HTTP, or HTTPS,
@@ -124,7 +124,7 @@ class MonitorV1(pulumi.CustomResource):
         __props__['admin_state_up'] = admin_state_up
 
         if delay is None:
-            raise TypeError('Missing required property delay')
+            raise TypeError("Missing required property 'delay'")
         __props__['delay'] = delay
 
         __props__['expected_codes'] = expected_codes
@@ -132,7 +132,7 @@ class MonitorV1(pulumi.CustomResource):
         __props__['http_method'] = http_method
 
         if max_retries is None:
-            raise TypeError('Missing required property max_retries')
+            raise TypeError("Missing required property 'max_retries'")
         __props__['max_retries'] = max_retries
 
         __props__['region'] = region
@@ -140,11 +140,11 @@ class MonitorV1(pulumi.CustomResource):
         __props__['tenant_id'] = tenant_id
 
         if timeout is None:
-            raise TypeError('Missing required property timeout')
+            raise TypeError("Missing required property 'timeout'")
         __props__['timeout'] = timeout
 
         if type is None:
-            raise TypeError('Missing required property type')
+            raise TypeError("Missing required property 'type'")
         __props__['type'] = type
 
         __props__['url_path'] = url_path

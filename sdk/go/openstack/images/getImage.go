@@ -34,15 +34,26 @@ func LookupImage(ctx *pulumi.Context, args *GetImageArgs) (*GetImageResult, erro
 		CreatedAt: outputs["createdAt"],
 		DiskFormat: outputs["diskFormat"],
 		File: outputs["file"],
+		MemberStatus: outputs["memberStatus"],
 		Metadata: outputs["metadata"],
 		MinDiskGb: outputs["minDiskGb"],
 		MinRamMb: outputs["minRamMb"],
+		MostRecent: outputs["mostRecent"],
+		Name: outputs["name"],
+		Owner: outputs["owner"],
+		Properties: outputs["properties"],
 		Protected: outputs["protected"],
 		Region: outputs["region"],
 		Schema: outputs["schema"],
 		SizeBytes: outputs["sizeBytes"],
+		SizeMax: outputs["sizeMax"],
+		SizeMin: outputs["sizeMin"],
+		SortDirection: outputs["sortDirection"],
+		SortKey: outputs["sortKey"],
+		Tag: outputs["tag"],
 		Tags: outputs["tags"],
 		UpdatedAt: outputs["updatedAt"],
+		Visibility: outputs["visibility"],
 		Id: outputs["id"],
 	}, nil
 }
@@ -95,6 +106,7 @@ type GetImageResult struct {
 	// the trailing path after the glance endpoint that represent the
 	// location of the image or the path to retrieve it.
 	File interface{}
+	MemberStatus interface{}
 	// The metadata associated with the image.
 	// Image metadata allow for meaningfully define the image properties
 	// and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
@@ -103,6 +115,11 @@ type GetImageResult struct {
 	MinDiskGb interface{}
 	// The minimum amount of ram required to use the image.
 	MinRamMb interface{}
+	MostRecent interface{}
+	Name interface{}
+	Owner interface{}
+	// Freeform information about the image.
+	Properties interface{}
 	// Whether or not the image is protected.
 	Protected interface{}
 	Region interface{}
@@ -111,10 +128,16 @@ type GetImageResult struct {
 	Schema interface{}
 	// The size of the image (in bytes).
 	SizeBytes interface{}
+	SizeMax interface{}
+	SizeMin interface{}
+	SortDirection interface{}
+	SortKey interface{}
+	Tag interface{}
 	// The tags list of the image.
 	Tags interface{}
 	// The date the image was last updated.
 	UpdatedAt interface{}
+	Visibility interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

@@ -23,7 +23,10 @@ func LookupEndpoint(ctx *pulumi.Context, args *GetEndpointArgs) (*GetEndpointRes
 		return nil, err
 	}
 	return &GetEndpointResult{
+		Interface: outputs["interface"],
 		Region: outputs["region"],
+		ServiceId: outputs["serviceId"],
+		ServiceName: outputs["serviceName"],
 		Url: outputs["url"],
 		Id: outputs["id"],
 	}, nil
@@ -44,8 +47,14 @@ type GetEndpointArgs struct {
 
 // A collection of values returned by getEndpoint.
 type GetEndpointResult struct {
+	// See Argument Reference above.
+	Interface interface{}
 	// The region the endpoint is located in.
 	Region interface{}
+	// See Argument Reference above.
+	ServiceId interface{}
+	// See Argument Reference above.
+	ServiceName interface{}
 	// The endpoint URL
 	Url interface{}
 	// id is the provider-assigned unique ID for this managed resource.

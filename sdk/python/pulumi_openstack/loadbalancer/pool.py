@@ -114,7 +114,7 @@ class Pool(pulumi.CustomResource):
         __props__['description'] = description
 
         if lb_method is None:
-            raise TypeError('Missing required property lb_method')
+            raise TypeError("Missing required property 'lb_method'")
         __props__['lb_method'] = lb_method
 
         __props__['listener_id'] = listener_id
@@ -126,7 +126,7 @@ class Pool(pulumi.CustomResource):
         __props__['persistences'] = persistences
 
         if protocol is None:
-            raise TypeError('Missing required property protocol')
+            raise TypeError("Missing required property 'protocol'")
         __props__['protocol'] = protocol
 
         __props__['region'] = region

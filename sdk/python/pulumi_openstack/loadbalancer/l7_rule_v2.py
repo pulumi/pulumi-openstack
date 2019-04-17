@@ -107,7 +107,7 @@ class L7RuleV2(pulumi.CustomResource):
         __props__['admin_state_up'] = admin_state_up
 
         if compare_type is None:
-            raise TypeError('Missing required property compare_type')
+            raise TypeError("Missing required property 'compare_type'")
         __props__['compare_type'] = compare_type
 
         __props__['invert'] = invert
@@ -115,7 +115,7 @@ class L7RuleV2(pulumi.CustomResource):
         __props__['key'] = key
 
         if l7policy_id is None:
-            raise TypeError('Missing required property l7policy_id')
+            raise TypeError("Missing required property 'l7policy_id'")
         __props__['l7policy_id'] = l7policy_id
 
         __props__['region'] = region
@@ -123,11 +123,11 @@ class L7RuleV2(pulumi.CustomResource):
         __props__['tenant_id'] = tenant_id
 
         if type is None:
-            raise TypeError('Missing required property type')
+            raise TypeError("Missing required property 'type'")
         __props__['type'] = type
 
         if value is None:
-            raise TypeError('Missing required property value')
+            raise TypeError("Missing required property 'value'")
         __props__['value'] = value
 
         __props__['listener_id'] = None

@@ -49,6 +49,10 @@ export interface GetKeypairResult {
      */
     readonly fingerprint: string;
     /**
+     * See Argument Reference above.
+     */
+    readonly name: string;
+    /**
      * The OpenSSH-formatted public key of the keypair.
      */
     readonly publicKey: string;

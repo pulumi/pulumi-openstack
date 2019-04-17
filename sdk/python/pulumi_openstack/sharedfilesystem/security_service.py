@@ -127,7 +127,7 @@ class SecurityService(pulumi.CustomResource):
         __props__['server'] = server
 
         if type is None:
-            raise TypeError('Missing required property type')
+            raise TypeError("Missing required property 'type'")
         __props__['type'] = type
 
         __props__['user'] = user

@@ -136,6 +136,10 @@ export interface GetClusterTemplateResult {
      */
     readonly masterLbEnabled: boolean;
     /**
+     * See Argument Reference above.
+     */
+    readonly name: string;
+    /**
      * The name of the driver for the container network.
      */
     readonly networkDriver: string;

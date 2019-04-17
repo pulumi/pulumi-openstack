@@ -35,12 +35,18 @@ func LookupDnsZone(ctx *pulumi.Context, args *GetDnsZoneArgs) (*GetDnsZoneResult
 	return &GetDnsZoneResult{
 		Attributes: outputs["attributes"],
 		CreatedAt: outputs["createdAt"],
+		Description: outputs["description"],
+		Email: outputs["email"],
 		Masters: outputs["masters"],
+		Name: outputs["name"],
 		PoolId: outputs["poolId"],
 		ProjectId: outputs["projectId"],
 		Region: outputs["region"],
 		Serial: outputs["serial"],
+		Status: outputs["status"],
 		TransferredAt: outputs["transferredAt"],
+		Ttl: outputs["ttl"],
+		Type: outputs["type"],
 		UpdatedAt: outputs["updatedAt"],
 		Version: outputs["version"],
 		Id: outputs["id"],
@@ -82,8 +88,14 @@ type GetDnsZoneResult struct {
 	Attributes interface{}
 	// The time the zone was created.
 	CreatedAt interface{}
+	// See Argument Reference above.
+	Description interface{}
+	// See Argument Reference above.
+	Email interface{}
 	// An array of master DNS servers. When `type` is  `SECONDARY`.
 	Masters interface{}
+	// See Argument Reference above.
+	Name interface{}
 	// The ID of the pool hosting the zone.
 	PoolId interface{}
 	// The project ID that owns the zone.
@@ -92,8 +104,14 @@ type GetDnsZoneResult struct {
 	Region interface{}
 	// The serial number of the zone.
 	Serial interface{}
+	// See Argument Reference above.
+	Status interface{}
 	// The time the zone was transferred.
 	TransferredAt interface{}
+	// See Argument Reference above.
+	Ttl interface{}
+	// See Argument Reference above.
+	Type interface{}
 	// The time the zone was last updated.
 	UpdatedAt interface{}
 	// The version of the zone.

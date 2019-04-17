@@ -16,6 +16,7 @@ func LookupPortIds(ctx *pulumi.Context, args *GetPortIdsArgs) (*GetPortIdsResult
 		inputs["description"] = args.Description
 		inputs["deviceId"] = args.DeviceId
 		inputs["deviceOwner"] = args.DeviceOwner
+		inputs["dnsName"] = args.DnsName
 		inputs["fixedIp"] = args.FixedIp
 		inputs["macAddress"] = args.MacAddress
 		inputs["name"] = args.Name
@@ -34,7 +35,24 @@ func LookupPortIds(ctx *pulumi.Context, args *GetPortIdsArgs) (*GetPortIdsResult
 		return nil, err
 	}
 	return &GetPortIdsResult{
+		AdminStateUp: outputs["adminStateUp"],
+		Description: outputs["description"],
+		DeviceId: outputs["deviceId"],
+		DeviceOwner: outputs["deviceOwner"],
+		DnsName: outputs["dnsName"],
+		FixedIp: outputs["fixedIp"],
 		Ids: outputs["ids"],
+		MacAddress: outputs["macAddress"],
+		Name: outputs["name"],
+		NetworkId: outputs["networkId"],
+		ProjectId: outputs["projectId"],
+		Region: outputs["region"],
+		SecurityGroupIds: outputs["securityGroupIds"],
+		SortDirection: outputs["sortDirection"],
+		SortKey: outputs["sortKey"],
+		Status: outputs["status"],
+		Tags: outputs["tags"],
+		TenantId: outputs["tenantId"],
 		Id: outputs["id"],
 	}, nil
 }
@@ -49,6 +67,7 @@ type GetPortIdsArgs struct {
 	DeviceId interface{}
 	// The device owner of the port.
 	DeviceOwner interface{}
+	DnsName interface{}
 	// The port IP address filter.
 	FixedIp interface{}
 	// The MAC address of the port.
@@ -79,7 +98,24 @@ type GetPortIdsArgs struct {
 
 // A collection of values returned by getPortIds.
 type GetPortIdsResult struct {
+	AdminStateUp interface{}
+	Description interface{}
+	DeviceId interface{}
+	DeviceOwner interface{}
+	DnsName interface{}
+	FixedIp interface{}
 	Ids interface{}
+	MacAddress interface{}
+	Name interface{}
+	NetworkId interface{}
+	ProjectId interface{}
+	Region interface{}
+	SecurityGroupIds interface{}
+	SortDirection interface{}
+	SortKey interface{}
+	Status interface{}
+	Tags interface{}
+	TenantId interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

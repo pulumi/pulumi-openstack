@@ -26,3 +26,4 @@ from .get_router import *
 from .get_sec_group import *
 from .get_subnet import *
 from .get_subnet_pool import *
+from .get_trunk import *

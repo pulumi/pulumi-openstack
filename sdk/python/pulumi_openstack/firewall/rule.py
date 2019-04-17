@@ -38,7 +38,7 @@ class Rule(pulumi.CustomResource):
     or "false" if provided - defaults to "true"). Changing this updates the
     `enabled` status of an existing firewall rule.
     """
-    ip_version: pulumi.Output[int]
+    ip_version: pulumi.Output[float]
     """
     IP version, either 4 (default) or 6. Changing this
     updates the `ip_version` of an existing firewall rule.
@@ -103,7 +103,7 @@ class Rule(pulumi.CustomResource):
         :param pulumi.Input[bool] enabled: Enabled status for the firewall rule (must be "true"
                or "false" if provided - defaults to "true"). Changing this updates the
                `enabled` status of an existing firewall rule.
-        :param pulumi.Input[int] ip_version: IP version, either 4 (default) or 6. Changing this
+        :param pulumi.Input[float] ip_version: IP version, either 4 (default) or 6. Changing this
                updates the `ip_version` of an existing firewall rule.
         :param pulumi.Input[str] name: A unique name for the firewall rule. Changing this
                updates the `name` of an existing firewall rule.
@@ -141,7 +141,7 @@ class Rule(pulumi.CustomResource):
         __props__ = dict()
 
         if action is None:
-            raise TypeError('Missing required property action')
+            raise TypeError("Missing required property 'action'")
         __props__['action'] = action
 
         __props__['description'] = description
@@ -157,7 +157,7 @@ class Rule(pulumi.CustomResource):
         __props__['name'] = name
 
         if protocol is None:
-            raise TypeError('Missing required property protocol')
+            raise TypeError("Missing required property 'protocol'")
         __props__['protocol'] = protocol
 
         __props__['region'] = region

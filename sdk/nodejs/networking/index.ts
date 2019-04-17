@@ -13,6 +13,7 @@ export * from "./getRouter";
 export * from "./getSecGroup";
 export * from "./getSubnet";
 export * from "./getSubnetPool";
+export * from "./getTrunk";
 export * from "./network";
 export * from "./port";
 export * from "./portSecGroupAssociate";

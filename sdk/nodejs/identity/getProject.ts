@@ -72,6 +72,22 @@ export interface GetProjectResult {
      */
     readonly domainId: string;
     /**
+     * See Argument Reference above.
+     */
+    readonly enabled?: boolean;
+    /**
+     * See Argument Reference above.
+     */
+    readonly isDomain?: boolean;
+    /**
+     * See Argument Reference above.
+     */
+    readonly name?: string;
+    /**
+     * See Argument Reference above.
+     */
+    readonly parentId?: string;
+    /**
      * The region the project is located in.
      */
     readonly region: string;

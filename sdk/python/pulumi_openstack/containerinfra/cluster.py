@@ -13,19 +13,19 @@ class Cluster(pulumi.CustomResource):
     cluster_template_id: pulumi.Output[str]
     coe_version: pulumi.Output[str]
     container_version: pulumi.Output[str]
-    create_timeout: pulumi.Output[int]
+    create_timeout: pulumi.Output[float]
     created_at: pulumi.Output[str]
     discovery_url: pulumi.Output[str]
-    docker_volume_size: pulumi.Output[int]
+    docker_volume_size: pulumi.Output[float]
     flavor: pulumi.Output[str]
     keypair: pulumi.Output[str]
     labels: pulumi.Output[dict]
     master_addresses: pulumi.Output[str]
-    master_count: pulumi.Output[int]
+    master_count: pulumi.Output[float]
     master_flavor: pulumi.Output[str]
     name: pulumi.Output[str]
     node_addresses: pulumi.Output[str]
-    node_count: pulumi.Output[int]
+    node_count: pulumi.Output[float]
     project_id: pulumi.Output[str]
     region: pulumi.Output[str]
     stack_id: pulumi.Output[str]
@@ -132,7 +132,7 @@ class Cluster(pulumi.CustomResource):
         __props__ = dict()
 
         if cluster_template_id is None:
-            raise TypeError('Missing required property cluster_template_id')
+            raise TypeError("Missing required property 'cluster_template_id'")
         __props__['cluster_template_id'] = cluster_template_id
 
         __props__['create_timeout'] = create_timeout

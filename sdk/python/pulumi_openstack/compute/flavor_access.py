@@ -58,13 +58,13 @@ class FlavorAccess(pulumi.CustomResource):
         __props__ = dict()
 
         if flavor_id is None:
-            raise TypeError('Missing required property flavor_id')
+            raise TypeError("Missing required property 'flavor_id'")
         __props__['flavor_id'] = flavor_id
 
         __props__['region'] = region
 
         if tenant_id is None:
-            raise TypeError('Missing required property tenant_id')
+            raise TypeError("Missing required property 'tenant_id'")
         __props__['tenant_id'] = tenant_id
 
         super(FlavorAccess, __self__).__init__(

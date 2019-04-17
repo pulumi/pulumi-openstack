@@ -23,13 +23,13 @@ class SecGroupRule(pulumi.CustomResource):
     The layer 3 protocol type, valid values are __IPv4__
     or __IPv6__. Changing this creates a new security group rule.
     """
-    port_range_max: pulumi.Output[int]
+    port_range_max: pulumi.Output[float]
     """
     The higher part of the allowed port range, valid
     integer value needs to be between 1 and 65535. Changing this creates a new
     security group rule.
     """
-    port_range_min: pulumi.Output[int]
+    port_range_min: pulumi.Output[float]
     """
     The lower part of the allowed port range, valid
     integer value needs to be between 1 and 65535. Changing this creates a new
@@ -103,10 +103,10 @@ class SecGroupRule(pulumi.CustomResource):
                or __egress__. Changing this creates a new security group rule.
         :param pulumi.Input[str] ethertype: The layer 3 protocol type, valid values are __IPv4__
                or __IPv6__. Changing this creates a new security group rule.
-        :param pulumi.Input[int] port_range_max: The higher part of the allowed port range, valid
+        :param pulumi.Input[float] port_range_max: The higher part of the allowed port range, valid
                integer value needs to be between 1 and 65535. Changing this creates a new
                security group rule.
-        :param pulumi.Input[int] port_range_min: The lower part of the allowed port range, valid
+        :param pulumi.Input[float] port_range_min: The lower part of the allowed port range, valid
                integer value needs to be between 1 and 65535. Changing this creates a new
                security group rule.
         :param pulumi.Input[str] protocol: The layer 4 protocol type, valid values are following. Changing this creates a new security group rule. This is required if you want to specify a port range.
@@ -165,11 +165,11 @@ class SecGroupRule(pulumi.CustomResource):
         __props__['description'] = description
 
         if direction is None:
-            raise TypeError('Missing required property direction')
+            raise TypeError("Missing required property 'direction'")
         __props__['direction'] = direction
 
         if ethertype is None:
-            raise TypeError('Missing required property ethertype')
+            raise TypeError("Missing required property 'ethertype'")
         __props__['ethertype'] = ethertype
 
         __props__['port_range_max'] = port_range_max
@@ -185,7 +185,7 @@ class SecGroupRule(pulumi.CustomResource):
         __props__['remote_ip_prefix'] = remote_ip_prefix
 
         if security_group_id is None:
-            raise TypeError('Missing required property security_group_id')
+            raise TypeError("Missing required property 'security_group_id'")
         __props__['security_group_id'] = security_group_id
 
         __props__['tenant_id'] = tenant_id

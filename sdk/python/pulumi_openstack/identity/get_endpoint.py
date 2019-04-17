@@ -12,21 +12,39 @@ class GetEndpointResult:
     """
     A collection of values returned by getEndpoint.
     """
-    def __init__(__self__, region=None, url=None, id=None):
+    def __init__(__self__, interface=None, region=None, service_id=None, service_name=None, url=None, id=None):
+        if interface and not isinstance(interface, str):
+            raise TypeError("Expected argument 'interface' to be a str")
+        __self__.interface = interface
+        """
+        See Argument Reference above.
+        """
         if region and not isinstance(region, str):
-            raise TypeError('Expected argument region to be a str')
+            raise TypeError("Expected argument 'region' to be a str")
         __self__.region = region
         """
         The region the endpoint is located in.
         """
+        if service_id and not isinstance(service_id, str):
+            raise TypeError("Expected argument 'service_id' to be a str")
+        __self__.service_id = service_id
+        """
+        See Argument Reference above.
+        """
+        if service_name and not isinstance(service_name, str):
+            raise TypeError("Expected argument 'service_name' to be a str")
+        __self__.service_name = service_name
+        """
+        See Argument Reference above.
+        """
         if url and not isinstance(url, str):
-            raise TypeError('Expected argument url to be a str')
+            raise TypeError("Expected argument 'url' to be a str")
         __self__.url = url
         """
         The endpoint URL
         """
         if id and not isinstance(id, str):
-            raise TypeError('Expected argument id to be a str')
+            raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
@@ -47,6 +65,9 @@ async def get_endpoint(interface=None,region=None,service_id=None,service_name=N
     __ret__ = await pulumi.runtime.invoke('openstack:identity/getEndpoint:getEndpoint', __args__, opts=opts)
 
     return GetEndpointResult(
+        interface=__ret__.get('interface'),
         region=__ret__.get('region'),
+        service_id=__ret__.get('serviceId'),
+        service_name=__ret__.get('serviceName'),
         url=__ret__.get('url'),
         id=__ret__.get('id'))

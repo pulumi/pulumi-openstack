@@ -100,6 +100,10 @@ export interface GetClusterResult {
      */
     readonly masterFlavor: string;
     /**
+     * See Argument Reference above.
+     */
+    readonly name: string;
+    /**
      * IP addresses of the node of the cluster.
      */
     readonly nodeAddresses: string;

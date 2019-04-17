@@ -89,15 +89,24 @@ export interface GetFlavorArgs {
  * A collection of values returned by getFlavor.
  */
 export interface GetFlavorResult {
+    readonly disk?: number;
     /**
      * Key/Value pairs of metadata for the flavor.
      */
     readonly extraSpecs: {[key: string]: any};
+    readonly flavorId?: string;
     /**
      * Whether the flavor is public or private.
      */
     readonly isPublic: boolean;
+    readonly minDisk?: number;
+    readonly minRam?: number;
+    readonly name?: string;
+    readonly ram?: number;
     readonly region: string;
+    readonly rxTxFactor?: number;
+    readonly swap?: number;
+    readonly vcpus?: number;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

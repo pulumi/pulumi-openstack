@@ -15,6 +15,7 @@ func LookupPort(ctx *pulumi.Context, args *GetPortArgs) (*GetPortResult, error) 
 		inputs["description"] = args.Description
 		inputs["deviceId"] = args.DeviceId
 		inputs["deviceOwner"] = args.DeviceOwner
+		inputs["dnsName"] = args.DnsName
 		inputs["fixedIp"] = args.FixedIp
 		inputs["macAddress"] = args.MacAddress
 		inputs["name"] = args.Name
@@ -32,11 +33,29 @@ func LookupPort(ctx *pulumi.Context, args *GetPortArgs) (*GetPortResult, error) 
 		return nil, err
 	}
 	return &GetPortResult{
+		AdminStateUp: outputs["adminStateUp"],
 		AllFixedIps: outputs["allFixedIps"],
 		AllSecurityGroupIds: outputs["allSecurityGroupIds"],
 		AllTags: outputs["allTags"],
 		AllowedAddressPairs: outputs["allowedAddressPairs"],
+		Bindings: outputs["bindings"],
+		Description: outputs["description"],
+		DeviceId: outputs["deviceId"],
+		DeviceOwner: outputs["deviceOwner"],
+		DnsAssignments: outputs["dnsAssignments"],
+		DnsName: outputs["dnsName"],
 		ExtraDhcpOptions: outputs["extraDhcpOptions"],
+		FixedIp: outputs["fixedIp"],
+		MacAddress: outputs["macAddress"],
+		Name: outputs["name"],
+		NetworkId: outputs["networkId"],
+		PortId: outputs["portId"],
+		ProjectId: outputs["projectId"],
+		Region: outputs["region"],
+		SecurityGroupIds: outputs["securityGroupIds"],
+		Status: outputs["status"],
+		Tags: outputs["tags"],
+		TenantId: outputs["tenantId"],
 		Id: outputs["id"],
 	}, nil
 }
@@ -51,6 +70,9 @@ type GetPortArgs struct {
 	DeviceId interface{}
 	// The device owner of the port.
 	DeviceOwner interface{}
+	// The port DNS name to filter. Available, when Neutron
+	// DNS extension is enabled.
+	DnsName interface{}
 	// The port IP address filter.
 	FixedIp interface{}
 	// The MAC address of the port.
@@ -78,6 +100,8 @@ type GetPortArgs struct {
 
 // A collection of values returned by getPort.
 type GetPortResult struct {
+	// See Argument Reference above.
+	AdminStateUp interface{}
 	// The collection of Fixed IP addresses on the port in the
 	// order returned by the Network v2 API.
 	AllFixedIps interface{}
@@ -89,9 +113,38 @@ type GetPortResult struct {
 	// addresses that can be active on this port. The structure is described
 	// below.
 	AllowedAddressPairs interface{}
+	// The port binding information. The structure is described below.
+	Bindings interface{}
+	// See Argument Reference above.
+	Description interface{}
+	// See Argument Reference above.
+	DeviceId interface{}
+	// See Argument Reference above.
+	DeviceOwner interface{}
+	// The list of maps representing port DNS assignments.
+	DnsAssignments interface{}
+	// See Argument Reference above.
+	DnsName interface{}
 	// An extra DHCP option configured on the port.
 	// The structure is described below.
 	ExtraDhcpOptions interface{}
+	FixedIp interface{}
+	// The additional MAC address.
+	MacAddress interface{}
+	// Name of the DHCP option.
+	Name interface{}
+	// See Argument Reference above.
+	NetworkId interface{}
+	// See Argument Reference above.
+	PortId interface{}
+	// See Argument Reference above.
+	ProjectId interface{}
+	// See Argument Reference above.
+	Region interface{}
+	SecurityGroupIds interface{}
+	Status interface{}
+	Tags interface{}
+	TenantId interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

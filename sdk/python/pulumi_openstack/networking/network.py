@@ -32,16 +32,37 @@ class Network(pulumi.CustomResource):
     Human-readable description of the network. Changing this
     updates the name of the existing network.
     """
+    dns_domain: pulumi.Output[str]
+    """
+    The network DNS domain. Available, when Neutron DNS
+    extension is enabled. The `dns_domain` of a network in conjunction with the
+    `dns_name` attribute of its ports will be published in an external DNS
+    service when Neutron is configured to integrate with such a service.
+    """
     external: pulumi.Output[bool]
     """
     Specifies whether the network resource has the
     external routing facility. Valid values are true and false. Defaults to
     false. Changing this updates the external attribute of the existing network.
     """
+    mtu: pulumi.Output[float]
+    """
+    The network MTU. Available for read-only, when Neutron
+    `net-mtu` extension is enabled. Available for the modification, when
+    Neutron `net-mtu-writable` extension is enabled.
+    """
     name: pulumi.Output[str]
     """
     The name of the network. Changing this updates the name of
     the existing network.
+    """
+    port_security_enabled: pulumi.Output[bool]
+    """
+    Whether to explicitly enable or disable
+    port security on the network. Port Security is usually enabled by default, so
+    omitting this argument will usually result in a value of "true". Setting this
+    explicitly to `false` will disable port security. Valid values are `true` and
+    `false`.
     """
     region: pulumi.Output[str]
     """
@@ -62,7 +83,7 @@ class Network(pulumi.CustomResource):
     """
     tags: pulumi.Output[list]
     """
-    A set of string tags for the network. 
+    A set of string tags for the network.
     """
     tenant_id: pulumi.Output[str]
     """
@@ -80,7 +101,7 @@ class Network(pulumi.CustomResource):
     """
     Map of additional options.
     """
-    def __init__(__self__, resource_name, opts=None, admin_state_up=None, availability_zone_hints=None, description=None, external=None, name=None, region=None, segments=None, shared=None, tags=None, tenant_id=None, transparent_vlan=None, value_specs=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, admin_state_up=None, availability_zone_hints=None, description=None, dns_domain=None, external=None, mtu=None, name=None, port_security_enabled=None, region=None, segments=None, shared=None, tags=None, tenant_id=None, transparent_vlan=None, value_specs=None, __name__=None, __opts__=None):
         """
         Manages a V2 Neutron network resource within OpenStack.
         
@@ -95,11 +116,23 @@ class Network(pulumi.CustomResource):
                creates a new network.
         :param pulumi.Input[str] description: Human-readable description of the network. Changing this
                updates the name of the existing network.
+        :param pulumi.Input[str] dns_domain: The network DNS domain. Available, when Neutron DNS
+               extension is enabled. The `dns_domain` of a network in conjunction with the
+               `dns_name` attribute of its ports will be published in an external DNS
+               service when Neutron is configured to integrate with such a service.
         :param pulumi.Input[bool] external: Specifies whether the network resource has the
                external routing facility. Valid values are true and false. Defaults to
                false. Changing this updates the external attribute of the existing network.
+        :param pulumi.Input[float] mtu: The network MTU. Available for read-only, when Neutron
+               `net-mtu` extension is enabled. Available for the modification, when
+               Neutron `net-mtu-writable` extension is enabled.
         :param pulumi.Input[str] name: The name of the network. Changing this updates the name of
                the existing network.
+        :param pulumi.Input[bool] port_security_enabled: Whether to explicitly enable or disable
+               port security on the network. Port Security is usually enabled by default, so
+               omitting this argument will usually result in a value of "true". Setting this
+               explicitly to `false` will disable port security. Valid values are `true` and
+               `false`.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
                A Networking client is needed to create a Neutron network. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
@@ -108,7 +141,7 @@ class Network(pulumi.CustomResource):
         :param pulumi.Input[bool] shared: Specifies whether the network resource can be accessed
                by any tenant or not. Changing this updates the sharing capabilities of the
                existing network.
-        :param pulumi.Input[list] tags: A set of string tags for the network. 
+        :param pulumi.Input[list] tags: A set of string tags for the network.
         :param pulumi.Input[str] tenant_id: The owner of the network. Required if admin wants to
                create a network for another tenant. Changing this creates a new network.
         :param pulumi.Input[bool] transparent_vlan: Specifies whether the network resource has the
@@ -138,9 +171,15 @@ class Network(pulumi.CustomResource):
 
         __props__['description'] = description
 
+        __props__['dns_domain'] = dns_domain
+
         __props__['external'] = external
 
+        __props__['mtu'] = mtu
+
         __props__['name'] = name
+
+        __props__['port_security_enabled'] = port_security_enabled
 
         __props__['region'] = region
 

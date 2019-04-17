@@ -74,7 +74,7 @@ class SecGroup(pulumi.CustomResource):
         __props__ = dict()
 
         if description is None:
-            raise TypeError('Missing required property description')
+            raise TypeError("Missing required property 'description'")
         __props__['description'] = description
 
         __props__['name'] = name

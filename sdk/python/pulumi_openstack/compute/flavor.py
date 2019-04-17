@@ -9,12 +9,12 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class Flavor(pulumi.CustomResource):
-    disk: pulumi.Output[int]
+    disk: pulumi.Output[float]
     """
     The amount of disk space in gigabytes to use for the root
     (/) partition. Changing this creates a new flavor.
     """
-    ephemeral: pulumi.Output[int]
+    ephemeral: pulumi.Output[float]
     extra_specs: pulumi.Output[dict]
     """
     Key/Value pairs of metadata for the flavor.
@@ -29,7 +29,7 @@ class Flavor(pulumi.CustomResource):
     A unique name for the flavor. Changing this creates a new
     flavor.
     """
-    ram: pulumi.Output[int]
+    ram: pulumi.Output[float]
     """
     The amount of RAM to use, in megabytes. Changing this
     creates a new flavor.
@@ -46,12 +46,12 @@ class Flavor(pulumi.CustomResource):
     RX/TX bandwith factor. The default is 1. Changing
     this creates a new flavor.
     """
-    swap: pulumi.Output[int]
+    swap: pulumi.Output[float]
     """
     The amount of disk space in megabytes to use. If
     unspecified, the default is 0. Changing this creates a new flavor.
     """
-    vcpus: pulumi.Output[int]
+    vcpus: pulumi.Output[float]
     """
     The number of virtual CPUs to use. Changing this creates
     a new flavor.
@@ -62,14 +62,14 @@ class Flavor(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] disk: The amount of disk space in gigabytes to use for the root
+        :param pulumi.Input[float] disk: The amount of disk space in gigabytes to use for the root
                (/) partition. Changing this creates a new flavor.
         :param pulumi.Input[dict] extra_specs: Key/Value pairs of metadata for the flavor.
         :param pulumi.Input[bool] is_public: Whether the flavor is public. Changing this creates
                a new flavor.
         :param pulumi.Input[str] name: A unique name for the flavor. Changing this creates a new
                flavor.
-        :param pulumi.Input[int] ram: The amount of RAM to use, in megabytes. Changing this
+        :param pulumi.Input[float] ram: The amount of RAM to use, in megabytes. Changing this
                creates a new flavor.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Compute client.
                Flavors are associated with accounts, but a Compute client is needed to
@@ -77,9 +77,9 @@ class Flavor(pulumi.CustomResource):
                Changing this creates a new flavor.
         :param pulumi.Input[float] rx_tx_factor: RX/TX bandwith factor. The default is 1. Changing
                this creates a new flavor.
-        :param pulumi.Input[int] swap: The amount of disk space in megabytes to use. If
+        :param pulumi.Input[float] swap: The amount of disk space in megabytes to use. If
                unspecified, the default is 0. Changing this creates a new flavor.
-        :param pulumi.Input[int] vcpus: The number of virtual CPUs to use. Changing this creates
+        :param pulumi.Input[float] vcpus: The number of virtual CPUs to use. Changing this creates
                a new flavor.
         """
         if __name__ is not None:
@@ -98,7 +98,7 @@ class Flavor(pulumi.CustomResource):
         __props__ = dict()
 
         if disk is None:
-            raise TypeError('Missing required property disk')
+            raise TypeError("Missing required property 'disk'")
         __props__['disk'] = disk
 
         __props__['ephemeral'] = ephemeral
@@ -110,7 +110,7 @@ class Flavor(pulumi.CustomResource):
         __props__['name'] = name
 
         if ram is None:
-            raise TypeError('Missing required property ram')
+            raise TypeError("Missing required property 'ram'")
         __props__['ram'] = ram
 
         __props__['region'] = region
@@ -120,7 +120,7 @@ class Flavor(pulumi.CustomResource):
         __props__['swap'] = swap
 
         if vcpus is None:
-            raise TypeError('Missing required property vcpus')
+            raise TypeError("Missing required property 'vcpus'")
         __props__['vcpus'] = vcpus
 
         super(Flavor, __self__).__init__(

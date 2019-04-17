@@ -7,6 +7,10 @@ import * as utilities from "../utilities";
 /**
  * Use this resource to control the share access lists.
  * 
+ * > **Important Security Notice** The access key retrieved by this resource will
+ * be stored *unencrypted* in your Terraform state file. If you use this resource
+ * in production, please make sure your state file is sufficiently protected.
+ * 
  * ## Example Usage
  * 
  * ### NFS
@@ -107,6 +111,10 @@ export class ShareAccess extends pulumi.CustomResource {
     }
 
     /**
+     * The access credential of the entity granted access.
+     */
+    public /*out*/ readonly accessKey: pulumi.Output<string>;
+    /**
      * The access level to the share. Can either be `rw` or `ro`.
      */
     public readonly accessLevel: pulumi.Output<string>;
@@ -116,7 +124,9 @@ export class ShareAccess extends pulumi.CustomResource {
      */
     public readonly accessTo: pulumi.Output<string>;
     /**
-     * The access rule type. Can either be an ip, user or cert.
+     * The access rule type. Can either be an ip, user,
+     * cert, or cephx. cephx support requires an OpenStack environment that supports
+     * Shared Filesystem microversion 2.13 (Mitaka) or later.
      */
     public readonly accessType: pulumi.Output<string>;
     /**
@@ -142,6 +152,7 @@ export class ShareAccess extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state: ShareAccessState = argsOrState as ShareAccessState | undefined;
+            inputs["accessKey"] = state ? state.accessKey : undefined;
             inputs["accessLevel"] = state ? state.accessLevel : undefined;
             inputs["accessTo"] = state ? state.accessTo : undefined;
             inputs["accessType"] = state ? state.accessType : undefined;
@@ -166,6 +177,7 @@ export class ShareAccess extends pulumi.CustomResource {
             inputs["accessType"] = args ? args.accessType : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["shareId"] = args ? args.shareId : undefined;
+            inputs["accessKey"] = undefined /*out*/;
         }
         super("openstack:sharedfilesystem/shareAccess:ShareAccess", name, inputs, opts);
     }
@@ -176,6 +188,10 @@ export class ShareAccess extends pulumi.CustomResource {
  */
 export interface ShareAccessState {
     /**
+     * The access credential of the entity granted access.
+     */
+    readonly accessKey?: pulumi.Input<string>;
+    /**
      * The access level to the share. Can either be `rw` or `ro`.
      */
     readonly accessLevel?: pulumi.Input<string>;
@@ -185,7 +201,9 @@ export interface ShareAccessState {
      */
     readonly accessTo?: pulumi.Input<string>;
     /**
-     * The access rule type. Can either be an ip, user or cert.
+     * The access rule type. Can either be an ip, user,
+     * cert, or cephx. cephx support requires an OpenStack environment that supports
+     * Shared Filesystem microversion 2.13 (Mitaka) or later.
      */
     readonly accessType?: pulumi.Input<string>;
     /**
@@ -214,7 +232,9 @@ export interface ShareAccessArgs {
      */
     readonly accessTo: pulumi.Input<string>;
     /**
-     * The access rule type. Can either be an ip, user or cert.
+     * The access rule type. Can either be an ip, user,
+     * cert, or cephx. cephx support requires an OpenStack environment that supports
+     * Shared Filesystem microversion 2.13 (Mitaka) or later.
      */
     readonly accessType: pulumi.Input<string>;
     /**

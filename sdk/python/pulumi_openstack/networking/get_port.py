@@ -12,49 +12,142 @@ class GetPortResult:
     """
     A collection of values returned by getPort.
     """
-    def __init__(__self__, all_fixed_ips=None, all_security_group_ids=None, all_tags=None, allowed_address_pairs=None, extra_dhcp_options=None, id=None):
+    def __init__(__self__, admin_state_up=None, all_fixed_ips=None, all_security_group_ids=None, all_tags=None, allowed_address_pairs=None, bindings=None, description=None, device_id=None, device_owner=None, dns_assignments=None, dns_name=None, extra_dhcp_options=None, fixed_ip=None, mac_address=None, name=None, network_id=None, port_id=None, project_id=None, region=None, security_group_ids=None, status=None, tags=None, tenant_id=None, id=None):
+        if admin_state_up and not isinstance(admin_state_up, bool):
+            raise TypeError("Expected argument 'admin_state_up' to be a bool")
+        __self__.admin_state_up = admin_state_up
+        """
+        See Argument Reference above.
+        """
         if all_fixed_ips and not isinstance(all_fixed_ips, list):
-            raise TypeError('Expected argument all_fixed_ips to be a list')
+            raise TypeError("Expected argument 'all_fixed_ips' to be a list")
         __self__.all_fixed_ips = all_fixed_ips
         """
         The collection of Fixed IP addresses on the port in the
         order returned by the Network v2 API.
         """
         if all_security_group_ids and not isinstance(all_security_group_ids, list):
-            raise TypeError('Expected argument all_security_group_ids to be a list')
+            raise TypeError("Expected argument 'all_security_group_ids' to be a list")
         __self__.all_security_group_ids = all_security_group_ids
         """
         The set of security group IDs applied on the port.
         """
         if all_tags and not isinstance(all_tags, list):
-            raise TypeError('Expected argument all_tags to be a list')
+            raise TypeError("Expected argument 'all_tags' to be a list")
         __self__.all_tags = all_tags
         """
         The set of string tags applied on the port.
         """
         if allowed_address_pairs and not isinstance(allowed_address_pairs, list):
-            raise TypeError('Expected argument allowed_address_pairs to be a list')
+            raise TypeError("Expected argument 'allowed_address_pairs' to be a list")
         __self__.allowed_address_pairs = allowed_address_pairs
         """
         An IP/MAC Address pair of additional IP
         addresses that can be active on this port. The structure is described
         below.
         """
+        if bindings and not isinstance(bindings, list):
+            raise TypeError("Expected argument 'bindings' to be a list")
+        __self__.bindings = bindings
+        """
+        The port binding information. The structure is described below.
+        """
+        if description and not isinstance(description, str):
+            raise TypeError("Expected argument 'description' to be a str")
+        __self__.description = description
+        """
+        See Argument Reference above.
+        """
+        if device_id and not isinstance(device_id, str):
+            raise TypeError("Expected argument 'device_id' to be a str")
+        __self__.device_id = device_id
+        """
+        See Argument Reference above.
+        """
+        if device_owner and not isinstance(device_owner, str):
+            raise TypeError("Expected argument 'device_owner' to be a str")
+        __self__.device_owner = device_owner
+        """
+        See Argument Reference above.
+        """
+        if dns_assignments and not isinstance(dns_assignments, list):
+            raise TypeError("Expected argument 'dns_assignments' to be a list")
+        __self__.dns_assignments = dns_assignments
+        """
+        The list of maps representing port DNS assignments.
+        """
+        if dns_name and not isinstance(dns_name, str):
+            raise TypeError("Expected argument 'dns_name' to be a str")
+        __self__.dns_name = dns_name
+        """
+        See Argument Reference above.
+        """
         if extra_dhcp_options and not isinstance(extra_dhcp_options, list):
-            raise TypeError('Expected argument extra_dhcp_options to be a list')
+            raise TypeError("Expected argument 'extra_dhcp_options' to be a list")
         __self__.extra_dhcp_options = extra_dhcp_options
         """
         An extra DHCP option configured on the port.
         The structure is described below.
         """
+        if fixed_ip and not isinstance(fixed_ip, str):
+            raise TypeError("Expected argument 'fixed_ip' to be a str")
+        __self__.fixed_ip = fixed_ip
+        if mac_address and not isinstance(mac_address, str):
+            raise TypeError("Expected argument 'mac_address' to be a str")
+        __self__.mac_address = mac_address
+        """
+        The additional MAC address.
+        """
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        __self__.name = name
+        """
+        Name of the DHCP option.
+        """
+        if network_id and not isinstance(network_id, str):
+            raise TypeError("Expected argument 'network_id' to be a str")
+        __self__.network_id = network_id
+        """
+        See Argument Reference above.
+        """
+        if port_id and not isinstance(port_id, str):
+            raise TypeError("Expected argument 'port_id' to be a str")
+        __self__.port_id = port_id
+        """
+        See Argument Reference above.
+        """
+        if project_id and not isinstance(project_id, str):
+            raise TypeError("Expected argument 'project_id' to be a str")
+        __self__.project_id = project_id
+        """
+        See Argument Reference above.
+        """
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        __self__.region = region
+        """
+        See Argument Reference above.
+        """
+        if security_group_ids and not isinstance(security_group_ids, list):
+            raise TypeError("Expected argument 'security_group_ids' to be a list")
+        __self__.security_group_ids = security_group_ids
+        if status and not isinstance(status, str):
+            raise TypeError("Expected argument 'status' to be a str")
+        __self__.status = status
+        if tags and not isinstance(tags, list):
+            raise TypeError("Expected argument 'tags' to be a list")
+        __self__.tags = tags
+        if tenant_id and not isinstance(tenant_id, str):
+            raise TypeError("Expected argument 'tenant_id' to be a str")
+        __self__.tenant_id = tenant_id
         if id and not isinstance(id, str):
-            raise TypeError('Expected argument id to be a str')
+            raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_port(admin_state_up=None,description=None,device_id=None,device_owner=None,fixed_ip=None,mac_address=None,name=None,network_id=None,port_id=None,project_id=None,region=None,security_group_ids=None,status=None,tags=None,tenant_id=None,opts=None):
+async def get_port(admin_state_up=None,description=None,device_id=None,device_owner=None,dns_name=None,fixed_ip=None,mac_address=None,name=None,network_id=None,port_id=None,project_id=None,region=None,security_group_ids=None,status=None,tags=None,tenant_id=None,opts=None):
     """
     Use this data source to get the ID of an available OpenStack port.
     """
@@ -64,6 +157,7 @@ async def get_port(admin_state_up=None,description=None,device_id=None,device_ow
     __args__['description'] = description
     __args__['deviceId'] = device_id
     __args__['deviceOwner'] = device_owner
+    __args__['dnsName'] = dns_name
     __args__['fixedIp'] = fixed_ip
     __args__['macAddress'] = mac_address
     __args__['name'] = name
@@ -78,9 +172,27 @@ async def get_port(admin_state_up=None,description=None,device_id=None,device_ow
     __ret__ = await pulumi.runtime.invoke('openstack:networking/getPort:getPort', __args__, opts=opts)
 
     return GetPortResult(
+        admin_state_up=__ret__.get('adminStateUp'),
         all_fixed_ips=__ret__.get('allFixedIps'),
         all_security_group_ids=__ret__.get('allSecurityGroupIds'),
         all_tags=__ret__.get('allTags'),
         allowed_address_pairs=__ret__.get('allowedAddressPairs'),
+        bindings=__ret__.get('bindings'),
+        description=__ret__.get('description'),
+        device_id=__ret__.get('deviceId'),
+        device_owner=__ret__.get('deviceOwner'),
+        dns_assignments=__ret__.get('dnsAssignments'),
+        dns_name=__ret__.get('dnsName'),
         extra_dhcp_options=__ret__.get('extraDhcpOptions'),
+        fixed_ip=__ret__.get('fixedIp'),
+        mac_address=__ret__.get('macAddress'),
+        name=__ret__.get('name'),
+        network_id=__ret__.get('networkId'),
+        port_id=__ret__.get('portId'),
+        project_id=__ret__.get('projectId'),
+        region=__ret__.get('region'),
+        security_group_ids=__ret__.get('securityGroupIds'),
+        status=__ret__.get('status'),
+        tags=__ret__.get('tags'),
+        tenant_id=__ret__.get('tenantId'),
         id=__ret__.get('id'))

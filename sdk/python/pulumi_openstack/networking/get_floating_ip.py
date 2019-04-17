@@ -12,15 +12,56 @@ class GetFloatingIpResult:
     """
     A collection of values returned by getFloatingIp.
     """
-    def __init__(__self__, all_tags=None, id=None):
+    def __init__(__self__, address=None, all_tags=None, description=None, dns_domain=None, dns_name=None, fixed_ip=None, pool=None, port_id=None, region=None, status=None, tags=None, tenant_id=None, id=None):
+        if address and not isinstance(address, str):
+            raise TypeError("Expected argument 'address' to be a str")
+        __self__.address = address
         if all_tags and not isinstance(all_tags, list):
-            raise TypeError('Expected argument all_tags to be a list')
+            raise TypeError("Expected argument 'all_tags' to be a list")
         __self__.all_tags = all_tags
         """
         A set of string tags applied on the floating IP.
         """
+        if description and not isinstance(description, str):
+            raise TypeError("Expected argument 'description' to be a str")
+        __self__.description = description
+        if dns_domain and not isinstance(dns_domain, str):
+            raise TypeError("Expected argument 'dns_domain' to be a str")
+        __self__.dns_domain = dns_domain
+        """
+        The floating IP DNS domain. Available, when Neutron DNS
+        extension is enabled.
+        """
+        if dns_name and not isinstance(dns_name, str):
+            raise TypeError("Expected argument 'dns_name' to be a str")
+        __self__.dns_name = dns_name
+        """
+        The floating IP DNS name. Available, when Neutron DNS extension
+        is enabled.
+        """
+        if fixed_ip and not isinstance(fixed_ip, str):
+            raise TypeError("Expected argument 'fixed_ip' to be a str")
+        __self__.fixed_ip = fixed_ip
+        if pool and not isinstance(pool, str):
+            raise TypeError("Expected argument 'pool' to be a str")
+        __self__.pool = pool
+        if port_id and not isinstance(port_id, str):
+            raise TypeError("Expected argument 'port_id' to be a str")
+        __self__.port_id = port_id
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        __self__.region = region
+        if status and not isinstance(status, str):
+            raise TypeError("Expected argument 'status' to be a str")
+        __self__.status = status
+        if tags and not isinstance(tags, list):
+            raise TypeError("Expected argument 'tags' to be a list")
+        __self__.tags = tags
+        if tenant_id and not isinstance(tenant_id, str):
+            raise TypeError("Expected argument 'tenant_id' to be a str")
+        __self__.tenant_id = tenant_id
         if id and not isinstance(id, str):
-            raise TypeError('Expected argument id to be a str')
+            raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
@@ -44,5 +85,16 @@ async def get_floating_ip(address=None,description=None,fixed_ip=None,pool=None,
     __ret__ = await pulumi.runtime.invoke('openstack:networking/getFloatingIp:getFloatingIp', __args__, opts=opts)
 
     return GetFloatingIpResult(
+        address=__ret__.get('address'),
         all_tags=__ret__.get('allTags'),
+        description=__ret__.get('description'),
+        dns_domain=__ret__.get('dnsDomain'),
+        dns_name=__ret__.get('dnsName'),
+        fixed_ip=__ret__.get('fixedIp'),
+        pool=__ret__.get('pool'),
+        port_id=__ret__.get('portId'),
+        region=__ret__.get('region'),
+        status=__ret__.get('status'),
+        tags=__ret__.get('tags'),
+        tenant_id=__ret__.get('tenantId'),
         id=__ret__.get('id'))

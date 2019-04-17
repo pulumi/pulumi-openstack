@@ -8,6 +8,7 @@
         "sourceMap": true
     },
     "files": [
+        "blockstorage/getAvailabilityZonesV3.ts",
         "blockstorage/getSnapshotV2.ts",
         "blockstorage/getSnapshotV3.ts",
         "blockstorage/index.ts",
@@ -51,6 +52,7 @@
         "firewall/index.ts",
         "firewall/policy.ts",
         "firewall/rule.ts",
+        "identity/applicationCredential.ts",
         "identity/getAuthScope.ts",
         "identity/getEndpoint.ts",
         "identity/getGroup.ts",
@@ -89,6 +91,7 @@
         "networking/getSecGroup.ts",
         "networking/getSubnet.ts",
         "networking/getSubnetPool.ts",
+        "networking/getTrunk.ts",
         "networking/index.ts",
         "networking/network.ts",
         "networking/port.ts",
@@ -107,6 +110,7 @@
         "objectstorage/index.ts",
         "objectstorage/tempUrl.ts",
         "provider.ts",
+        "sharedfilesystem/getAvailbilityZones.ts",
         "sharedfilesystem/getShare.ts",
         "sharedfilesystem/getShareNetwork.ts",
         "sharedfilesystem/getSnapshot.ts",

@@ -63,17 +63,17 @@ class Configuration(pulumi.CustomResource):
         __props__['configurations'] = configurations
 
         if datastore is None:
-            raise TypeError('Missing required property datastore')
+            raise TypeError("Missing required property 'datastore'")
         __props__['datastore'] = datastore
 
         if description is None:
-            raise TypeError('Missing required property description')
+            raise TypeError("Missing required property 'description'")
         __props__['description'] = description
 
         __props__['name'] = name
 
         if region is None:
-            raise TypeError('Missing required property region')
+            raise TypeError("Missing required property 'region'")
         __props__['region'] = region
 
         super(Configuration, __self__).__init__(

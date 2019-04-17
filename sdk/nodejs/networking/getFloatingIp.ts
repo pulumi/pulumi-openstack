@@ -81,10 +81,29 @@ export interface GetFloatingIpArgs {
  * A collection of values returned by getFloatingIp.
  */
 export interface GetFloatingIpResult {
+    readonly address?: string;
     /**
      * A set of string tags applied on the floating IP.
      */
     readonly allTags: string[];
+    readonly description?: string;
+    /**
+     * The floating IP DNS domain. Available, when Neutron DNS
+     * extension is enabled.
+     */
+    readonly dnsDomain: string;
+    /**
+     * The floating IP DNS name. Available, when Neutron DNS extension
+     * is enabled.
+     */
+    readonly dnsName: string;
+    readonly fixedIp?: string;
+    readonly pool?: string;
+    readonly portId?: string;
+    readonly region?: string;
+    readonly status?: string;
+    readonly tags?: string[];
+    readonly tenantId?: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

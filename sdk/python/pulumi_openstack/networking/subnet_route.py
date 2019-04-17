@@ -64,17 +64,17 @@ class SubnetRoute(pulumi.CustomResource):
         __props__ = dict()
 
         if destination_cidr is None:
-            raise TypeError('Missing required property destination_cidr')
+            raise TypeError("Missing required property 'destination_cidr'")
         __props__['destination_cidr'] = destination_cidr
 
         if next_hop is None:
-            raise TypeError('Missing required property next_hop')
+            raise TypeError("Missing required property 'next_hop'")
         __props__['next_hop'] = next_hop
 
         __props__['region'] = region
 
         if subnet_id is None:
-            raise TypeError('Missing required property subnet_id')
+            raise TypeError("Missing required property 'subnet_id'")
         __props__['subnet_id'] = subnet_id
 
         super(SubnetRoute, __self__).__init__(

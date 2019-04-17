@@ -11,8 +11,7 @@ from .. import utilities, tables
 class Instance(pulumi.CustomResource):
     access_ip_v4: pulumi.Output[str]
     """
-    The first detected Fixed IPv4 address _or_ the
-    Floating IP.
+    The first detected Fixed IPv4 address.
     """
     access_ip_v6: pulumi.Output[str]
     """
@@ -150,8 +149,7 @@ class Instance(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] access_ip_v4: The first detected Fixed IPv4 address _or_ the
-               Floating IP.
+        :param pulumi.Input[str] access_ip_v4: The first detected Fixed IPv4 address.
         :param pulumi.Input[str] access_ip_v6: The first detected Fixed IPv6 address.
         :param pulumi.Input[str] admin_pass: The administrative password to assign to the server.
                Changing this changes the root password on the existing server.

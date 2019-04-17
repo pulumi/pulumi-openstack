@@ -34,7 +34,7 @@ class ContainerObject(pulumi.CustomResource):
     A string representing the value of the Content-Encoding
     metadata.
     """
-    content_length: pulumi.Output[int]
+    content_length: pulumi.Output[float]
     """
     If the operation succeeds, this value is zero (0) or the 
     length of informational or error text in the response body.
@@ -57,7 +57,7 @@ class ContainerObject(pulumi.CustomResource):
     format of RFC 7231 as shown in this example Thu, 16 Jun 2016 15:10:38 GMT. The
     time is always in UTC.
     """
-    delete_after: pulumi.Output[int]
+    delete_after: pulumi.Output[float]
     """
     An integer representing the number of seconds after which the
     system removes the object. Internally, the Object Storage system stores this value in
@@ -141,7 +141,7 @@ class ContainerObject(pulumi.CustomResource):
                {container}/{object}. You must UTF-8-encode and then URL-encode the names of the
                container and object before you include them in the header. Conflicts with `source` and
                `content`.
-        :param pulumi.Input[int] delete_after: An integer representing the number of seconds after which the
+        :param pulumi.Input[float] delete_after: An integer representing the number of seconds after which the
                system removes the object. Internally, the Object Storage system stores this value in
                the X-Delete-At metadata item.
         :param pulumi.Input[str] delete_at: An string representing the date when the system removes the object. 
@@ -178,7 +178,7 @@ class ContainerObject(pulumi.CustomResource):
         __props__ = dict()
 
         if container_name is None:
-            raise TypeError('Missing required property container_name')
+            raise TypeError("Missing required property 'container_name'")
         __props__['container_name'] = container_name
 
         __props__['content'] = content

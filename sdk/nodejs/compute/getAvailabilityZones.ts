@@ -47,6 +47,7 @@ export interface GetAvailabilityZonesResult {
      */
     readonly names: string[];
     readonly region: string;
+    readonly state?: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

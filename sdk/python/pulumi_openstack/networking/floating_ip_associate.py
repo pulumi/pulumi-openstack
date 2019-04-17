@@ -9,6 +9,7 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class FloatingIpAssociate(pulumi.CustomResource):
+    fixed_ip: pulumi.Output[str]
     floating_ip: pulumi.Output[str]
     """
     IP Address of an existing floating IP.
@@ -26,7 +27,7 @@ class FloatingIpAssociate(pulumi.CustomResource):
     `region` argument of the provider is used. Changing this creates a new
     floating IP (which may or may not have a different address).
     """
-    def __init__(__self__, resource_name, opts=None, floating_ip=None, port_id=None, region=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, fixed_ip=None, floating_ip=None, port_id=None, region=None, __name__=None, __opts__=None):
         """
         Associates a floating IP to a port. This is useful for situations
         where you have a pre-allocated floating IP or are unable to use the
@@ -58,12 +59,14 @@ class FloatingIpAssociate(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__['fixed_ip'] = fixed_ip
+
         if floating_ip is None:
-            raise TypeError('Missing required property floating_ip')
+            raise TypeError("Missing required property 'floating_ip'")
         __props__['floating_ip'] = floating_ip
 
         if port_id is None:
-            raise TypeError('Missing required property port_id')
+            raise TypeError("Missing required property 'port_id'")
         __props__['port_id'] = port_id
 
         __props__['region'] = region

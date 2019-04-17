@@ -25,6 +25,7 @@ export function getPort(args?: GetPortArgs, opts?: pulumi.InvokeOptions): Promis
         "description": args.description,
         "deviceId": args.deviceId,
         "deviceOwner": args.deviceOwner,
+        "dnsName": args.dnsName,
         "fixedIp": args.fixedIp,
         "macAddress": args.macAddress,
         "name": args.name,
@@ -59,6 +60,11 @@ export interface GetPortArgs {
      * The device owner of the port.
      */
     readonly deviceOwner?: string;
+    /**
+     * The port DNS name to filter. Available, when Neutron
+     * DNS extension is enabled.
+     */
+    readonly dnsName?: string;
     /**
      * The port IP address filter.
      */
@@ -109,6 +115,10 @@ export interface GetPortArgs {
  */
 export interface GetPortResult {
     /**
+     * See Argument Reference above.
+     */
+    readonly adminStateUp?: boolean;
+    /**
      * The collection of Fixed IP addresses on the port in the
      * order returned by the Network v2 API.
      */
@@ -128,10 +138,63 @@ export interface GetPortResult {
      */
     readonly allowedAddressPairs: { ipAddress: string, macAddress: string }[];
     /**
+     * The port binding information. The structure is described below.
+     */
+    readonly bindings: { hostId: string, profile: string, vifDetails: {[key: string]: any}, vifType: string, vnicType: string }[];
+    /**
+     * See Argument Reference above.
+     */
+    readonly description?: string;
+    /**
+     * See Argument Reference above.
+     */
+    readonly deviceId?: string;
+    /**
+     * See Argument Reference above.
+     */
+    readonly deviceOwner?: string;
+    /**
+     * The list of maps representing port DNS assignments.
+     */
+    readonly dnsAssignments: {[key: string]: any}[];
+    /**
+     * See Argument Reference above.
+     */
+    readonly dnsName?: string;
+    /**
      * An extra DHCP option configured on the port.
      * The structure is described below.
      */
     readonly extraDhcpOptions: { ipVersion: number, name: string, value: string }[];
+    readonly fixedIp?: string;
+    /**
+     * The additional MAC address.
+     */
+    readonly macAddress?: string;
+    /**
+     * Name of the DHCP option.
+     */
+    readonly name?: string;
+    /**
+     * See Argument Reference above.
+     */
+    readonly networkId?: string;
+    /**
+     * See Argument Reference above.
+     */
+    readonly portId?: string;
+    /**
+     * See Argument Reference above.
+     */
+    readonly projectId?: string;
+    /**
+     * See Argument Reference above.
+     */
+    readonly region?: string;
+    readonly securityGroupIds?: string[];
+    readonly status?: string;
+    readonly tags?: string[];
+    readonly tenantId?: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

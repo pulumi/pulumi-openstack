@@ -21,6 +21,7 @@ func LookupRole(ctx *pulumi.Context, args *GetRoleArgs) (*GetRoleResult, error) 
 	}
 	return &GetRoleResult{
 		DomainId: outputs["domainId"],
+		Name: outputs["name"],
 		Region: outputs["region"],
 		Id: outputs["id"],
 	}, nil
@@ -41,6 +42,8 @@ type GetRoleArgs struct {
 type GetRoleResult struct {
 	// See Argument Reference above.
 	DomainId interface{}
+	// See Argument Reference above.
+	Name interface{}
 	// See Argument Reference above.
 	Region interface{}
 	// id is the provider-assigned unique ID for this managed resource.

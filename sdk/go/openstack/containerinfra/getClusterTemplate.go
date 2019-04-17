@@ -40,6 +40,7 @@ func LookupClusterTemplate(ctx *pulumi.Context, args *GetClusterTemplateArgs) (*
 		Labels: outputs["labels"],
 		MasterFlavor: outputs["masterFlavor"],
 		MasterLbEnabled: outputs["masterLbEnabled"],
+		Name: outputs["name"],
 		NetworkDriver: outputs["networkDriver"],
 		NoProxy: outputs["noProxy"],
 		ProjectId: outputs["projectId"],
@@ -116,6 +117,8 @@ type GetClusterTemplateResult struct {
 	// Indicates whether created cluster should has a
 	// loadbalancer for master nodes or not.
 	MasterLbEnabled interface{}
+	// See Argument Reference above.
+	Name interface{}
 	// The name of the driver for the container network.
 	NetworkDriver interface{}
 	// A comma-separated list of IP addresses that shouldn't be used in

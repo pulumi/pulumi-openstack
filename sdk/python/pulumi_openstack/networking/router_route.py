@@ -70,17 +70,17 @@ class RouterRoute(pulumi.CustomResource):
         __props__ = dict()
 
         if destination_cidr is None:
-            raise TypeError('Missing required property destination_cidr')
+            raise TypeError("Missing required property 'destination_cidr'")
         __props__['destination_cidr'] = destination_cidr
 
         if next_hop is None:
-            raise TypeError('Missing required property next_hop')
+            raise TypeError("Missing required property 'next_hop'")
         __props__['next_hop'] = next_hop
 
         __props__['region'] = region
 
         if router_id is None:
-            raise TypeError('Missing required property router_id')
+            raise TypeError("Missing required property 'router_id'")
         __props__['router_id'] = router_id
 
         super(RouterRoute, __self__).__init__(

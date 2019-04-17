@@ -39,7 +39,7 @@ class Zone(pulumi.CustomResource):
     create one. If omitted, the `region` argument of the provider is used.
     Changing this creates a new DNS zone.
     """
-    ttl: pulumi.Output[int]
+    ttl: pulumi.Output[float]
     """
     The time to live (TTL) of the zone.
     """
@@ -71,7 +71,7 @@ class Zone(pulumi.CustomResource):
                Keypairs are associated with accounts, but a Compute client is needed to
                create one. If omitted, the `region` argument of the provider is used.
                Changing this creates a new DNS zone.
-        :param pulumi.Input[int] ttl: The time to live (TTL) of the zone.
+        :param pulumi.Input[float] ttl: The time to live (TTL) of the zone.
         :param pulumi.Input[str] type: The type of zone. Can either be `PRIMARY` or `SECONDARY`.
                Changing this creates a new zone.
         :param pulumi.Input[dict] value_specs: Map of additional options. Changing this creates a

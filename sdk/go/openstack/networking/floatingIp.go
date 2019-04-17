@@ -26,6 +26,8 @@ func NewFloatingIp(ctx *pulumi.Context,
 	if args == nil {
 		inputs["address"] = nil
 		inputs["description"] = nil
+		inputs["dnsDomain"] = nil
+		inputs["dnsName"] = nil
 		inputs["fixedIp"] = nil
 		inputs["pool"] = nil
 		inputs["portId"] = nil
@@ -37,6 +39,8 @@ func NewFloatingIp(ctx *pulumi.Context,
 	} else {
 		inputs["address"] = args.Address
 		inputs["description"] = args.Description
+		inputs["dnsDomain"] = args.DnsDomain
+		inputs["dnsName"] = args.DnsName
 		inputs["fixedIp"] = args.FixedIp
 		inputs["pool"] = args.Pool
 		inputs["portId"] = args.PortId
@@ -63,6 +67,8 @@ func GetFloatingIp(ctx *pulumi.Context,
 		inputs["address"] = state.Address
 		inputs["allTags"] = state.AllTags
 		inputs["description"] = state.Description
+		inputs["dnsDomain"] = state.DnsDomain
+		inputs["dnsName"] = state.DnsName
 		inputs["fixedIp"] = state.FixedIp
 		inputs["pool"] = state.Pool
 		inputs["portId"] = state.PortId
@@ -106,6 +112,22 @@ func (r *FloatingIp) AllTags() *pulumi.ArrayOutput {
 // Human-readable description for the floating IP.
 func (r *FloatingIp) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
+}
+
+// The floating IP DNS domain. Available, when Neutron
+// DNS extension is enabled. The data in this attribute will be published in an
+// external DNS service when Neutron is configured to integrate with such a
+// service. Changing this creates a new floating IP.
+func (r *FloatingIp) DnsDomain() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["dnsDomain"])
+}
+
+// The floating IP DNS name. Available, when Neutron DNS
+// extension is enabled. The data in this attribute will be published in an
+// external DNS service when Neutron is configured to integrate with such a
+// service. Changing this creates a new floating IP.
+func (r *FloatingIp) DnsName() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["dnsName"])
 }
 
 // Fixed IP of the port to associate with this floating IP. Required if
@@ -171,6 +193,16 @@ type FloatingIpState struct {
 	AllTags interface{}
 	// Human-readable description for the floating IP.
 	Description interface{}
+	// The floating IP DNS domain. Available, when Neutron
+	// DNS extension is enabled. The data in this attribute will be published in an
+	// external DNS service when Neutron is configured to integrate with such a
+	// service. Changing this creates a new floating IP.
+	DnsDomain interface{}
+	// The floating IP DNS name. Available, when Neutron DNS
+	// extension is enabled. The data in this attribute will be published in an
+	// external DNS service when Neutron is configured to integrate with such a
+	// service. Changing this creates a new floating IP.
+	DnsName interface{}
 	// Fixed IP of the port to associate with this floating IP. Required if
 	// the port has multiple fixed IPs.
 	FixedIp interface{}
@@ -209,6 +241,16 @@ type FloatingIpArgs struct {
 	Address interface{}
 	// Human-readable description for the floating IP.
 	Description interface{}
+	// The floating IP DNS domain. Available, when Neutron
+	// DNS extension is enabled. The data in this attribute will be published in an
+	// external DNS service when Neutron is configured to integrate with such a
+	// service. Changing this creates a new floating IP.
+	DnsDomain interface{}
+	// The floating IP DNS name. Available, when Neutron DNS
+	// extension is enabled. The data in this attribute will be published in an
+	// external DNS service when Neutron is configured to integrate with such a
+	// service. Changing this creates a new floating IP.
+	DnsName interface{}
 	// Fixed IP of the port to associate with this floating IP. Required if
 	// the port has multiple fixed IPs.
 	FixedIp interface{}

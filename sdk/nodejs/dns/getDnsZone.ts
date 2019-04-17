@@ -98,9 +98,21 @@ export interface GetDnsZoneResult {
      */
     readonly createdAt: string;
     /**
+     * See Argument Reference above.
+     */
+    readonly description?: string;
+    /**
+     * See Argument Reference above.
+     */
+    readonly email?: string;
+    /**
      * An array of master DNS servers. When `type` is  `SECONDARY`.
      */
     readonly masters: string[];
+    /**
+     * See Argument Reference above.
+     */
+    readonly name?: string;
     /**
      * The ID of the pool hosting the zone.
      */
@@ -118,9 +130,21 @@ export interface GetDnsZoneResult {
      */
     readonly serial: number;
     /**
+     * See Argument Reference above.
+     */
+    readonly status?: string;
+    /**
      * The time the zone was transferred.
      */
     readonly transferredAt: string;
+    /**
+     * See Argument Reference above.
+     */
+    readonly ttl?: number;
+    /**
+     * See Argument Reference above.
+     */
+    readonly type?: string;
     /**
      * The time the zone was last updated.
      */

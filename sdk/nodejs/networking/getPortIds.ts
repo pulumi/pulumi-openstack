@@ -26,6 +26,7 @@ export function getPortIds(args?: GetPortIdsArgs, opts?: pulumi.InvokeOptions): 
         "description": args.description,
         "deviceId": args.deviceId,
         "deviceOwner": args.deviceOwner,
+        "dnsName": args.dnsName,
         "fixedIp": args.fixedIp,
         "macAddress": args.macAddress,
         "name": args.name,
@@ -61,6 +62,7 @@ export interface GetPortIdsArgs {
      * The device owner of the port.
      */
     readonly deviceOwner?: string;
+    readonly dnsName?: string;
     /**
      * The port IP address filter.
      */
@@ -115,7 +117,24 @@ export interface GetPortIdsArgs {
  * A collection of values returned by getPortIds.
  */
 export interface GetPortIdsResult {
+    readonly adminStateUp?: boolean;
+    readonly description?: string;
+    readonly deviceId?: string;
+    readonly deviceOwner?: string;
+    readonly dnsName?: string;
+    readonly fixedIp?: string;
     readonly ids: string[];
+    readonly macAddress?: string;
+    readonly name?: string;
+    readonly networkId?: string;
+    readonly projectId?: string;
+    readonly region?: string;
+    readonly securityGroupIds?: string[];
+    readonly sortDirection?: string;
+    readonly sortKey?: string;
+    readonly status?: string;
+    readonly tags?: string[];
+    readonly tenantId?: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

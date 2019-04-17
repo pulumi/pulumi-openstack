@@ -123,6 +123,8 @@ export interface GetSubnetResult {
     readonly allocationPools: { end: string, start: string }[];
     readonly cidr: string;
     readonly description: string;
+    readonly dhcpDisabled?: boolean;
+    readonly dhcpEnabled?: boolean;
     /**
      * DNS Nameservers of the subnet.
      */
@@ -147,6 +149,7 @@ export interface GetSubnetResult {
     readonly region: string;
     readonly subnetId: string;
     readonly subnetpoolId: string;
+    readonly tags?: string[];
     readonly tenantId: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.

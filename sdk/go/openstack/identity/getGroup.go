@@ -23,6 +23,7 @@ func LookupGroup(ctx *pulumi.Context, args *GetGroupArgs) (*GetGroupResult, erro
 	}
 	return &GetGroupResult{
 		DomainId: outputs["domainId"],
+		Name: outputs["name"],
 		Region: outputs["region"],
 		Id: outputs["id"],
 	}, nil
@@ -43,6 +44,8 @@ type GetGroupArgs struct {
 type GetGroupResult struct {
 	// See Argument Reference above.
 	DomainId interface{}
+	// See Argument Reference above.
+	Name interface{}
 	// See Argument Reference above.
 	Region interface{}
 	// id is the provider-assigned unique ID for this managed resource.

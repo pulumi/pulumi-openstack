@@ -25,6 +25,20 @@ class FloatingIp(pulumi.CustomResource):
     """
     Human-readable description for the floating IP.
     """
+    dns_domain: pulumi.Output[str]
+    """
+    The floating IP DNS domain. Available, when Neutron
+    DNS extension is enabled. The data in this attribute will be published in an
+    external DNS service when Neutron is configured to integrate with such a
+    service. Changing this creates a new floating IP.
+    """
+    dns_name: pulumi.Output[str]
+    """
+    The floating IP DNS name. Available, when Neutron DNS
+    extension is enabled. The data in this attribute will be published in an
+    external DNS service when Neutron is configured to integrate with such a
+    service. Changing this creates a new floating IP.
+    """
     fixed_ip: pulumi.Output[str]
     """
     Fixed IP of the port to associate with this floating IP. Required if
@@ -68,7 +82,7 @@ class FloatingIp(pulumi.CustomResource):
     """
     Map of additional options.
     """
-    def __init__(__self__, resource_name, opts=None, address=None, description=None, fixed_ip=None, pool=None, port_id=None, region=None, subnet_id=None, tags=None, tenant_id=None, value_specs=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, address=None, description=None, dns_domain=None, dns_name=None, fixed_ip=None, pool=None, port_id=None, region=None, subnet_id=None, tags=None, tenant_id=None, value_specs=None, __name__=None, __opts__=None):
         """
         Manages a V2 floating IP resource within OpenStack Neutron (networking)
         that can be used for load balancers.
@@ -82,6 +96,14 @@ class FloatingIp(pulumi.CustomResource):
                an admin user or have had a custom policy or role applied to your OpenStack
                user or project.
         :param pulumi.Input[str] description: Human-readable description for the floating IP.
+        :param pulumi.Input[str] dns_domain: The floating IP DNS domain. Available, when Neutron
+               DNS extension is enabled. The data in this attribute will be published in an
+               external DNS service when Neutron is configured to integrate with such a
+               service. Changing this creates a new floating IP.
+        :param pulumi.Input[str] dns_name: The floating IP DNS name. Available, when Neutron DNS
+               extension is enabled. The data in this attribute will be published in an
+               external DNS service when Neutron is configured to integrate with such a
+               service. Changing this creates a new floating IP.
         :param pulumi.Input[str] fixed_ip: Fixed IP of the port to associate with this floating IP. Required if
                the port has multiple fixed IPs.
         :param pulumi.Input[str] pool: The name of the pool from which to obtain the floating
@@ -121,10 +143,14 @@ class FloatingIp(pulumi.CustomResource):
 
         __props__['description'] = description
 
+        __props__['dns_domain'] = dns_domain
+
+        __props__['dns_name'] = dns_name
+
         __props__['fixed_ip'] = fixed_ip
 
         if pool is None:
-            raise TypeError('Missing required property pool')
+            raise TypeError("Missing required property 'pool'")
         __props__['pool'] = pool
 
         __props__['port_id'] = port_id

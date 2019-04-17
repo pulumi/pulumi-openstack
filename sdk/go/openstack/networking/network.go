@@ -20,8 +20,11 @@ func NewNetwork(ctx *pulumi.Context,
 		inputs["adminStateUp"] = nil
 		inputs["availabilityZoneHints"] = nil
 		inputs["description"] = nil
+		inputs["dnsDomain"] = nil
 		inputs["external"] = nil
+		inputs["mtu"] = nil
 		inputs["name"] = nil
+		inputs["portSecurityEnabled"] = nil
 		inputs["region"] = nil
 		inputs["segments"] = nil
 		inputs["shared"] = nil
@@ -33,8 +36,11 @@ func NewNetwork(ctx *pulumi.Context,
 		inputs["adminStateUp"] = args.AdminStateUp
 		inputs["availabilityZoneHints"] = args.AvailabilityZoneHints
 		inputs["description"] = args.Description
+		inputs["dnsDomain"] = args.DnsDomain
 		inputs["external"] = args.External
+		inputs["mtu"] = args.Mtu
 		inputs["name"] = args.Name
+		inputs["portSecurityEnabled"] = args.PortSecurityEnabled
 		inputs["region"] = args.Region
 		inputs["segments"] = args.Segments
 		inputs["shared"] = args.Shared
@@ -61,8 +67,11 @@ func GetNetwork(ctx *pulumi.Context,
 		inputs["allTags"] = state.AllTags
 		inputs["availabilityZoneHints"] = state.AvailabilityZoneHints
 		inputs["description"] = state.Description
+		inputs["dnsDomain"] = state.DnsDomain
 		inputs["external"] = state.External
+		inputs["mtu"] = state.Mtu
 		inputs["name"] = state.Name
+		inputs["portSecurityEnabled"] = state.PortSecurityEnabled
 		inputs["region"] = state.Region
 		inputs["segments"] = state.Segments
 		inputs["shared"] = state.Shared
@@ -115,6 +124,14 @@ func (r *Network) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
 }
 
+// The network DNS domain. Available, when Neutron DNS
+// extension is enabled. The `dns_domain` of a network in conjunction with the
+// `dns_name` attribute of its ports will be published in an external DNS
+// service when Neutron is configured to integrate with such a service.
+func (r *Network) DnsDomain() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["dnsDomain"])
+}
+
 // Specifies whether the network resource has the
 // external routing facility. Valid values are true and false. Defaults to
 // false. Changing this updates the external attribute of the existing network.
@@ -122,10 +139,26 @@ func (r *Network) External() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["external"])
 }
 
+// The network MTU. Available for read-only, when Neutron
+// `net-mtu` extension is enabled. Available for the modification, when
+// Neutron `net-mtu-writable` extension is enabled.
+func (r *Network) Mtu() *pulumi.IntOutput {
+	return (*pulumi.IntOutput)(r.s.State["mtu"])
+}
+
 // The name of the network. Changing this updates the name of
 // the existing network.
 func (r *Network) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
+}
+
+// Whether to explicitly enable or disable
+// port security on the network. Port Security is usually enabled by default, so
+// omitting this argument will usually result in a value of "true". Setting this
+// explicitly to `false` will disable port security. Valid values are `true` and
+// `false`.
+func (r *Network) PortSecurityEnabled() *pulumi.BoolOutput {
+	return (*pulumi.BoolOutput)(r.s.State["portSecurityEnabled"])
 }
 
 // The region in which to obtain the V2 Networking client.
@@ -148,7 +181,7 @@ func (r *Network) Shared() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["shared"])
 }
 
-// A set of string tags for the network. 
+// A set of string tags for the network.
 func (r *Network) Tags() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["tags"])
 }
@@ -189,13 +222,28 @@ type NetworkState struct {
 	// Human-readable description of the network. Changing this
 	// updates the name of the existing network.
 	Description interface{}
+	// The network DNS domain. Available, when Neutron DNS
+	// extension is enabled. The `dns_domain` of a network in conjunction with the
+	// `dns_name` attribute of its ports will be published in an external DNS
+	// service when Neutron is configured to integrate with such a service.
+	DnsDomain interface{}
 	// Specifies whether the network resource has the
 	// external routing facility. Valid values are true and false. Defaults to
 	// false. Changing this updates the external attribute of the existing network.
 	External interface{}
+	// The network MTU. Available for read-only, when Neutron
+	// `net-mtu` extension is enabled. Available for the modification, when
+	// Neutron `net-mtu-writable` extension is enabled.
+	Mtu interface{}
 	// The name of the network. Changing this updates the name of
 	// the existing network.
 	Name interface{}
+	// Whether to explicitly enable or disable
+	// port security on the network. Port Security is usually enabled by default, so
+	// omitting this argument will usually result in a value of "true". Setting this
+	// explicitly to `false` will disable port security. Valid values are `true` and
+	// `false`.
+	PortSecurityEnabled interface{}
 	// The region in which to obtain the V2 Networking client.
 	// A Networking client is needed to create a Neutron network. If omitted, the
 	// `region` argument of the provider is used. Changing this creates a new
@@ -207,7 +255,7 @@ type NetworkState struct {
 	// by any tenant or not. Changing this updates the sharing capabilities of the
 	// existing network.
 	Shared interface{}
-	// A set of string tags for the network. 
+	// A set of string tags for the network.
 	Tags interface{}
 	// The owner of the network. Required if admin wants to
 	// create a network for another tenant. Changing this creates a new network.
@@ -235,13 +283,28 @@ type NetworkArgs struct {
 	// Human-readable description of the network. Changing this
 	// updates the name of the existing network.
 	Description interface{}
+	// The network DNS domain. Available, when Neutron DNS
+	// extension is enabled. The `dns_domain` of a network in conjunction with the
+	// `dns_name` attribute of its ports will be published in an external DNS
+	// service when Neutron is configured to integrate with such a service.
+	DnsDomain interface{}
 	// Specifies whether the network resource has the
 	// external routing facility. Valid values are true and false. Defaults to
 	// false. Changing this updates the external attribute of the existing network.
 	External interface{}
+	// The network MTU. Available for read-only, when Neutron
+	// `net-mtu` extension is enabled. Available for the modification, when
+	// Neutron `net-mtu-writable` extension is enabled.
+	Mtu interface{}
 	// The name of the network. Changing this updates the name of
 	// the existing network.
 	Name interface{}
+	// Whether to explicitly enable or disable
+	// port security on the network. Port Security is usually enabled by default, so
+	// omitting this argument will usually result in a value of "true". Setting this
+	// explicitly to `false` will disable port security. Valid values are `true` and
+	// `false`.
+	PortSecurityEnabled interface{}
 	// The region in which to obtain the V2 Networking client.
 	// A Networking client is needed to create a Neutron network. If omitted, the
 	// `region` argument of the provider is used. Changing this creates a new
@@ -253,7 +316,7 @@ type NetworkArgs struct {
 	// by any tenant or not. Changing this updates the sharing capabilities of the
 	// existing network.
 	Shared interface{}
-	// A set of string tags for the network. 
+	// A set of string tags for the network.
 	Tags interface{}
 	// The owner of the network. Required if admin wants to
 	// create a network for another tenant. Changing this creates a new network.

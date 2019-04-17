@@ -36,6 +36,8 @@ func LookupSubnet(ctx *pulumi.Context, args *GetSubnetArgs) (*GetSubnetResult, e
 		AllocationPools: outputs["allocationPools"],
 		Cidr: outputs["cidr"],
 		Description: outputs["description"],
+		DhcpDisabled: outputs["dhcpDisabled"],
+		DhcpEnabled: outputs["dhcpEnabled"],
 		DnsNameservers: outputs["dnsNameservers"],
 		EnableDhcp: outputs["enableDhcp"],
 		GatewayIp: outputs["gatewayIp"],
@@ -48,6 +50,7 @@ func LookupSubnet(ctx *pulumi.Context, args *GetSubnetArgs) (*GetSubnetResult, e
 		Region: outputs["region"],
 		SubnetId: outputs["subnetId"],
 		SubnetpoolId: outputs["subnetpoolId"],
+		Tags: outputs["tags"],
 		TenantId: outputs["tenantId"],
 		Id: outputs["id"],
 	}, nil
@@ -99,6 +102,8 @@ type GetSubnetResult struct {
 	AllocationPools interface{}
 	Cidr interface{}
 	Description interface{}
+	DhcpDisabled interface{}
+	DhcpEnabled interface{}
 	// DNS Nameservers of the subnet.
 	DnsNameservers interface{}
 	// Whether the subnet has DHCP enabled or not.
@@ -115,6 +120,7 @@ type GetSubnetResult struct {
 	Region interface{}
 	SubnetId interface{}
 	SubnetpoolId interface{}
+	Tags interface{}
 	TenantId interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}

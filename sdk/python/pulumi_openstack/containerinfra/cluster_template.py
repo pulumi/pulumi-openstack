@@ -9,13 +9,13 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class ClusterTemplate(pulumi.CustomResource):
-    apiserver_port: pulumi.Output[int]
+    apiserver_port: pulumi.Output[float]
     cluster_distro: pulumi.Output[str]
     coe: pulumi.Output[str]
     created_at: pulumi.Output[str]
     dns_nameserver: pulumi.Output[str]
     docker_storage_driver: pulumi.Output[str]
-    docker_volume_size: pulumi.Output[int]
+    docker_volume_size: pulumi.Output[float]
     external_network_id: pulumi.Output[str]
     fixed_network: pulumi.Output[str]
     fixed_subnet: pulumi.Output[str]
@@ -225,7 +225,7 @@ class ClusterTemplate(pulumi.CustomResource):
         __props__['cluster_distro'] = cluster_distro
 
         if coe is None:
-            raise TypeError('Missing required property coe')
+            raise TypeError("Missing required property 'coe'")
         __props__['coe'] = coe
 
         __props__['dns_nameserver'] = dns_nameserver
@@ -249,7 +249,7 @@ class ClusterTemplate(pulumi.CustomResource):
         __props__['https_proxy'] = https_proxy
 
         if image is None:
-            raise TypeError('Missing required property image')
+            raise TypeError("Missing required property 'image'")
         __props__['image'] = image
 
         __props__['insecure_registry'] = insecure_registry

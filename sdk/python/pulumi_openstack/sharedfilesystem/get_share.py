@@ -12,21 +12,27 @@ class GetShareResult:
     """
     A collection of values returned by getShare.
     """
-    def __init__(__self__, availability_zone=None, description=None, export_locations=None, is_public=None, metadata=None, name=None, project_id=None, region=None, share_network_id=None, share_proto=None, size=None, snapshot_id=None, status=None, id=None):
+    def __init__(__self__, availability_zone=None, description=None, export_location_path=None, export_locations=None, is_public=None, metadata=None, name=None, project_id=None, region=None, share_network_id=None, share_proto=None, size=None, snapshot_id=None, status=None, id=None):
         if availability_zone and not isinstance(availability_zone, str):
-            raise TypeError('Expected argument availability_zone to be a str')
+            raise TypeError("Expected argument 'availability_zone' to be a str")
         __self__.availability_zone = availability_zone
         """
         The share availability zone.
         """
         if description and not isinstance(description, str):
-            raise TypeError('Expected argument description to be a str')
+            raise TypeError("Expected argument 'description' to be a str")
         __self__.description = description
         """
         See Argument Reference above.
         """
+        if export_location_path and not isinstance(export_location_path, str):
+            raise TypeError("Expected argument 'export_location_path' to be a str")
+        __self__.export_location_path = export_location_path
+        """
+        See Argument Reference above.
+        """
         if export_locations and not isinstance(export_locations, list):
-            raise TypeError('Expected argument export_locations to be a list')
+            raise TypeError("Expected argument 'export_locations' to be a list")
         __self__.export_locations = export_locations
         """
         A list of export locations. For example, when a share
@@ -34,67 +40,67 @@ class GetShareResult:
         locations.
         """
         if is_public and not isinstance(is_public, bool):
-            raise TypeError('Expected argument is_public to be a bool')
+            raise TypeError("Expected argument 'is_public' to be a bool")
         __self__.is_public = is_public
         """
         See Argument Reference above.
         """
         if metadata and not isinstance(metadata, dict):
-            raise TypeError('Expected argument metadata to be a dict')
+            raise TypeError("Expected argument 'metadata' to be a dict")
         __self__.metadata = metadata
         """
         See Argument Reference above.
         """
         if name and not isinstance(name, str):
-            raise TypeError('Expected argument name to be a str')
+            raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
         """
         See Argument Reference above.
         """
         if project_id and not isinstance(project_id, str):
-            raise TypeError('Expected argument project_id to be a str')
+            raise TypeError("Expected argument 'project_id' to be a str")
         __self__.project_id = project_id
         """
         See Argument Reference above.
         """
         if region and not isinstance(region, str):
-            raise TypeError('Expected argument region to be a str')
+            raise TypeError("Expected argument 'region' to be a str")
         __self__.region = region
         """
         The region in which to obtain the V2 Shared File System client.
         """
         if share_network_id and not isinstance(share_network_id, str):
-            raise TypeError('Expected argument share_network_id to be a str')
+            raise TypeError("Expected argument 'share_network_id' to be a str")
         __self__.share_network_id = share_network_id
         """
         See Argument Reference above.
         """
         if share_proto and not isinstance(share_proto, str):
-            raise TypeError('Expected argument share_proto to be a str')
+            raise TypeError("Expected argument 'share_proto' to be a str")
         __self__.share_proto = share_proto
         """
         The share protocol.
         """
-        if size and not isinstance(size, int):
-            raise TypeError('Expected argument size to be a int')
+        if size and not isinstance(size, float):
+            raise TypeError("Expected argument 'size' to be a float")
         __self__.size = size
         """
         The share size, in GBs.
         """
         if snapshot_id and not isinstance(snapshot_id, str):
-            raise TypeError('Expected argument snapshot_id to be a str')
+            raise TypeError("Expected argument 'snapshot_id' to be a str")
         __self__.snapshot_id = snapshot_id
         """
         See Argument Reference above.
         """
         if status and not isinstance(status, str):
-            raise TypeError('Expected argument status to be a str')
+            raise TypeError("Expected argument 'status' to be a str")
         __self__.status = status
         """
         See Argument Reference above.
         """
         if id and not isinstance(id, str):
-            raise TypeError('Expected argument id to be a str')
+            raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
@@ -120,6 +126,7 @@ async def get_share(description=None,export_location_path=None,is_public=None,me
     return GetShareResult(
         availability_zone=__ret__.get('availabilityZone'),
         description=__ret__.get('description'),
+        export_location_path=__ret__.get('exportLocationPath'),
         export_locations=__ret__.get('exportLocations'),
         is_public=__ret__.get('isPublic'),
         metadata=__ret__.get('metadata'),

@@ -12,21 +12,27 @@ class GetGroupResult:
     """
     A collection of values returned by getGroup.
     """
-    def __init__(__self__, domain_id=None, region=None, id=None):
+    def __init__(__self__, domain_id=None, name=None, region=None, id=None):
         if domain_id and not isinstance(domain_id, str):
-            raise TypeError('Expected argument domain_id to be a str')
+            raise TypeError("Expected argument 'domain_id' to be a str")
         __self__.domain_id = domain_id
         """
         See Argument Reference above.
         """
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        __self__.name = name
+        """
+        See Argument Reference above.
+        """
         if region and not isinstance(region, str):
-            raise TypeError('Expected argument region to be a str')
+            raise TypeError("Expected argument 'region' to be a str")
         __self__.region = region
         """
         See Argument Reference above.
         """
         if id and not isinstance(id, str):
-            raise TypeError('Expected argument id to be a str')
+            raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
@@ -47,5 +53,6 @@ async def get_group(domain_id=None,name=None,region=None,opts=None):
 
     return GetGroupResult(
         domain_id=__ret__.get('domainId'),
+        name=__ret__.get('name'),
         region=__ret__.get('region'),
         id=__ret__.get('id'))

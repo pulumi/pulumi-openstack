@@ -24,7 +24,11 @@ func LookupSecGroup(ctx *pulumi.Context, args *GetSecGroupArgs) (*GetSecGroupRes
 	}
 	return &GetSecGroupResult{
 		AllTags: outputs["allTags"],
+		Description: outputs["description"],
+		Name: outputs["name"],
 		Region: outputs["region"],
+		SecgroupId: outputs["secgroupId"],
+		Tags: outputs["tags"],
 		TenantId: outputs["tenantId"],
 		Id: outputs["id"],
 	}, nil
@@ -52,8 +56,14 @@ type GetSecGroupArgs struct {
 type GetSecGroupResult struct {
 	// The set of string tags applied on the security group.
 	AllTags interface{}
+	Description interface{}
+	// See Argument Reference above.
+	// * `description`- See Argument Reference above.
+	Name interface{}
 	// See Argument Reference above.
 	Region interface{}
+	SecgroupId interface{}
+	Tags interface{}
 	TenantId interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}

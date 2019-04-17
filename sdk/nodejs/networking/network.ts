@@ -84,16 +84,37 @@ export class Network extends pulumi.CustomResource {
      */
     public readonly description: pulumi.Output<string | undefined>;
     /**
+     * The network DNS domain. Available, when Neutron DNS
+     * extension is enabled. The `dns_domain` of a network in conjunction with the
+     * `dns_name` attribute of its ports will be published in an external DNS
+     * service when Neutron is configured to integrate with such a service.
+     */
+    public readonly dnsDomain: pulumi.Output<string | undefined>;
+    /**
      * Specifies whether the network resource has the
      * external routing facility. Valid values are true and false. Defaults to
      * false. Changing this updates the external attribute of the existing network.
      */
     public readonly external: pulumi.Output<boolean>;
     /**
+     * The network MTU. Available for read-only, when Neutron
+     * `net-mtu` extension is enabled. Available for the modification, when
+     * Neutron `net-mtu-writable` extension is enabled.
+     */
+    public readonly mtu: pulumi.Output<number>;
+    /**
      * The name of the network. Changing this updates the name of
      * the existing network.
      */
     public readonly name: pulumi.Output<string>;
+    /**
+     * Whether to explicitly enable or disable
+     * port security on the network. Port Security is usually enabled by default, so
+     * omitting this argument will usually result in a value of "true". Setting this
+     * explicitly to `false` will disable port security. Valid values are `true` and
+     * `false`.
+     */
+    public readonly portSecurityEnabled: pulumi.Output<boolean>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a Neutron network. If omitted, the
@@ -112,7 +133,7 @@ export class Network extends pulumi.CustomResource {
      */
     public readonly shared: pulumi.Output<boolean>;
     /**
-     * A set of string tags for the network. 
+     * A set of string tags for the network.
      */
     public readonly tags: pulumi.Output<string[] | undefined>;
     /**
@@ -148,8 +169,11 @@ export class Network extends pulumi.CustomResource {
             inputs["allTags"] = state ? state.allTags : undefined;
             inputs["availabilityZoneHints"] = state ? state.availabilityZoneHints : undefined;
             inputs["description"] = state ? state.description : undefined;
+            inputs["dnsDomain"] = state ? state.dnsDomain : undefined;
             inputs["external"] = state ? state.external : undefined;
+            inputs["mtu"] = state ? state.mtu : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["portSecurityEnabled"] = state ? state.portSecurityEnabled : undefined;
             inputs["region"] = state ? state.region : undefined;
             inputs["segments"] = state ? state.segments : undefined;
             inputs["shared"] = state ? state.shared : undefined;
@@ -162,8 +186,11 @@ export class Network extends pulumi.CustomResource {
             inputs["adminStateUp"] = args ? args.adminStateUp : undefined;
             inputs["availabilityZoneHints"] = args ? args.availabilityZoneHints : undefined;
             inputs["description"] = args ? args.description : undefined;
+            inputs["dnsDomain"] = args ? args.dnsDomain : undefined;
             inputs["external"] = args ? args.external : undefined;
+            inputs["mtu"] = args ? args.mtu : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["portSecurityEnabled"] = args ? args.portSecurityEnabled : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["segments"] = args ? args.segments : undefined;
             inputs["shared"] = args ? args.shared : undefined;
@@ -205,16 +232,37 @@ export interface NetworkState {
      */
     readonly description?: pulumi.Input<string>;
     /**
+     * The network DNS domain. Available, when Neutron DNS
+     * extension is enabled. The `dns_domain` of a network in conjunction with the
+     * `dns_name` attribute of its ports will be published in an external DNS
+     * service when Neutron is configured to integrate with such a service.
+     */
+    readonly dnsDomain?: pulumi.Input<string>;
+    /**
      * Specifies whether the network resource has the
      * external routing facility. Valid values are true and false. Defaults to
      * false. Changing this updates the external attribute of the existing network.
      */
     readonly external?: pulumi.Input<boolean>;
     /**
+     * The network MTU. Available for read-only, when Neutron
+     * `net-mtu` extension is enabled. Available for the modification, when
+     * Neutron `net-mtu-writable` extension is enabled.
+     */
+    readonly mtu?: pulumi.Input<number>;
+    /**
      * The name of the network. Changing this updates the name of
      * the existing network.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * Whether to explicitly enable or disable
+     * port security on the network. Port Security is usually enabled by default, so
+     * omitting this argument will usually result in a value of "true". Setting this
+     * explicitly to `false` will disable port security. Valid values are `true` and
+     * `false`.
+     */
+    readonly portSecurityEnabled?: pulumi.Input<boolean>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a Neutron network. If omitted, the
@@ -233,7 +281,7 @@ export interface NetworkState {
      */
     readonly shared?: pulumi.Input<boolean>;
     /**
-     * A set of string tags for the network. 
+     * A set of string tags for the network.
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -277,16 +325,37 @@ export interface NetworkArgs {
      */
     readonly description?: pulumi.Input<string>;
     /**
+     * The network DNS domain. Available, when Neutron DNS
+     * extension is enabled. The `dns_domain` of a network in conjunction with the
+     * `dns_name` attribute of its ports will be published in an external DNS
+     * service when Neutron is configured to integrate with such a service.
+     */
+    readonly dnsDomain?: pulumi.Input<string>;
+    /**
      * Specifies whether the network resource has the
      * external routing facility. Valid values are true and false. Defaults to
      * false. Changing this updates the external attribute of the existing network.
      */
     readonly external?: pulumi.Input<boolean>;
     /**
+     * The network MTU. Available for read-only, when Neutron
+     * `net-mtu` extension is enabled. Available for the modification, when
+     * Neutron `net-mtu-writable` extension is enabled.
+     */
+    readonly mtu?: pulumi.Input<number>;
+    /**
      * The name of the network. Changing this updates the name of
      * the existing network.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * Whether to explicitly enable or disable
+     * port security on the network. Port Security is usually enabled by default, so
+     * omitting this argument will usually result in a value of "true". Setting this
+     * explicitly to `false` will disable port security. Valid values are `true` and
+     * `false`.
+     */
+    readonly portSecurityEnabled?: pulumi.Input<boolean>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a Neutron network. If omitted, the
@@ -305,7 +374,7 @@ export interface NetworkArgs {
      */
     readonly shared?: pulumi.Input<boolean>;
     /**
-     * A set of string tags for the network. 
+     * A set of string tags for the network.
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**

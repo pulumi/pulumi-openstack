@@ -33,7 +33,7 @@ class L7PolicyV2(pulumi.CustomResource):
     Human-readable name for the L7 Policy. Does not have
     to be unique.
     """
-    position: pulumi.Output[int]
+    position: pulumi.Output[float]
     """
     The position of this policy on the listener. Positions start at 1.
     """
@@ -75,7 +75,7 @@ class L7PolicyV2(pulumi.CustomResource):
                Changing this creates a new L7 Policy.
         :param pulumi.Input[str] name: Human-readable name for the L7 Policy. Does not have
                to be unique.
-        :param pulumi.Input[int] position: The position of this policy on the listener. Positions start at 1.
+        :param pulumi.Input[float] position: The position of this policy on the listener. Positions start at 1.
         :param pulumi.Input[str] redirect_pool_id: Requests matching this policy will be redirected to the
                pool with this ID. Only valid if action is REDIRECT\_TO\_POOL.
         :param pulumi.Input[str] redirect_url: Requests matching this policy will be redirected to this URL.
@@ -104,7 +104,7 @@ class L7PolicyV2(pulumi.CustomResource):
         __props__ = dict()
 
         if action is None:
-            raise TypeError('Missing required property action')
+            raise TypeError("Missing required property 'action'")
         __props__['action'] = action
 
         __props__['admin_state_up'] = admin_state_up
@@ -112,7 +112,7 @@ class L7PolicyV2(pulumi.CustomResource):
         __props__['description'] = description
 
         if listener_id is None:
-            raise TypeError('Missing required property listener_id')
+            raise TypeError("Missing required property 'listener_id'")
         __props__['listener_id'] = listener_id
 
         __props__['name'] = name

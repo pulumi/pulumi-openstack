@@ -9,6 +9,10 @@ import (
 )
 
 // Use this resource to control the share access lists.
+// 
+// > **Important Security Notice** The access key retrieved by this resource will
+// be stored *unencrypted* in your Terraform state file. If you use this resource
+// in production, please make sure your state file is sufficiently protected.
 type ShareAccess struct {
 	s *pulumi.ResourceState
 }
@@ -42,6 +46,7 @@ func NewShareAccess(ctx *pulumi.Context,
 		inputs["region"] = args.Region
 		inputs["shareId"] = args.ShareId
 	}
+	inputs["accessKey"] = nil
 	s, err := ctx.RegisterResource("openstack:sharedfilesystem/shareAccess:ShareAccess", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
@@ -55,6 +60,7 @@ func GetShareAccess(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *ShareAccessState, opts ...pulumi.ResourceOpt) (*ShareAccess, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["accessKey"] = state.AccessKey
 		inputs["accessLevel"] = state.AccessLevel
 		inputs["accessTo"] = state.AccessTo
 		inputs["accessType"] = state.AccessType
@@ -78,6 +84,11 @@ func (r *ShareAccess) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// The access credential of the entity granted access.
+func (r *ShareAccess) AccessKey() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["accessKey"])
+}
+
 // The access level to the share. Can either be `rw` or `ro`.
 func (r *ShareAccess) AccessLevel() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["accessLevel"])
@@ -89,7 +100,9 @@ func (r *ShareAccess) AccessTo() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["accessTo"])
 }
 
-// The access rule type. Can either be an ip, user or cert.
+// The access rule type. Can either be an ip, user,
+// cert, or cephx. cephx support requires an OpenStack environment that supports
+// Shared Filesystem microversion 2.13 (Mitaka) or later.
 func (r *ShareAccess) AccessType() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["accessType"])
 }
@@ -108,12 +121,16 @@ func (r *ShareAccess) ShareId() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering ShareAccess resources.
 type ShareAccessState struct {
+	// The access credential of the entity granted access.
+	AccessKey interface{}
 	// The access level to the share. Can either be `rw` or `ro`.
 	AccessLevel interface{}
 	// The value that defines the access. Can either be an IP
 	// address or a username verified by configured Security Service of the Share Network.
 	AccessTo interface{}
-	// The access rule type. Can either be an ip, user or cert.
+	// The access rule type. Can either be an ip, user,
+	// cert, or cephx. cephx support requires an OpenStack environment that supports
+	// Shared Filesystem microversion 2.13 (Mitaka) or later.
 	AccessType interface{}
 	// The region in which to obtain the V2 Shared File System client.
 	// A Shared File System client is needed to create a share access. Changing this
@@ -130,7 +147,9 @@ type ShareAccessArgs struct {
 	// The value that defines the access. Can either be an IP
 	// address or a username verified by configured Security Service of the Share Network.
 	AccessTo interface{}
-	// The access rule type. Can either be an ip, user or cert.
+	// The access rule type. Can either be an ip, user,
+	// cert, or cephx. cephx support requires an OpenStack environment that supports
+	// Shared Filesystem microversion 2.13 (Mitaka) or later.
 	AccessType interface{}
 	// The region in which to obtain the V2 Shared File System client.
 	// A Shared File System client is needed to create a share access. Changing this

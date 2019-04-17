@@ -56,6 +56,10 @@ export interface GetRoleResult {
     /**
      * See Argument Reference above.
      */
+    readonly name: string;
+    /**
+     * See Argument Reference above.
+     */
     readonly region: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.

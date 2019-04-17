@@ -68,7 +68,7 @@ class RouterInterface(pulumi.CustomResource):
         __props__['region'] = region
 
         if router_id is None:
-            raise TypeError('Missing required property router_id')
+            raise TypeError("Missing required property 'router_id'")
         __props__['router_id'] = router_id
 
         __props__['subnet_id'] = subnet_id

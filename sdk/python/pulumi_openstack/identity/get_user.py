@@ -12,27 +12,63 @@ class GetUserResult:
     """
     A collection of values returned by getUser.
     """
-    def __init__(__self__, default_project_id=None, domain_id=None, region=None, id=None):
+    def __init__(__self__, default_project_id=None, domain_id=None, enabled=None, idp_id=None, name=None, password_expires_at=None, protocol_id=None, region=None, unique_id=None, id=None):
         if default_project_id and not isinstance(default_project_id, str):
-            raise TypeError('Expected argument default_project_id to be a str')
+            raise TypeError("Expected argument 'default_project_id' to be a str")
         __self__.default_project_id = default_project_id
         """
         See Argument Reference above.
         """
         if domain_id and not isinstance(domain_id, str):
-            raise TypeError('Expected argument domain_id to be a str')
+            raise TypeError("Expected argument 'domain_id' to be a str")
         __self__.domain_id = domain_id
         """
         See Argument Reference above.
         """
+        if enabled and not isinstance(enabled, bool):
+            raise TypeError("Expected argument 'enabled' to be a bool")
+        __self__.enabled = enabled
+        """
+        See Argument Reference above.
+        """
+        if idp_id and not isinstance(idp_id, str):
+            raise TypeError("Expected argument 'idp_id' to be a str")
+        __self__.idp_id = idp_id
+        """
+        See Argument Reference above.
+        """
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        __self__.name = name
+        """
+        See Argument Reference above.
+        """
+        if password_expires_at and not isinstance(password_expires_at, str):
+            raise TypeError("Expected argument 'password_expires_at' to be a str")
+        __self__.password_expires_at = password_expires_at
+        """
+        See Argument Reference above.
+        """
+        if protocol_id and not isinstance(protocol_id, str):
+            raise TypeError("Expected argument 'protocol_id' to be a str")
+        __self__.protocol_id = protocol_id
+        """
+        See Argument Reference above.
+        """
         if region and not isinstance(region, str):
-            raise TypeError('Expected argument region to be a str')
+            raise TypeError("Expected argument 'region' to be a str")
         __self__.region = region
         """
         The region the user is located in.
         """
+        if unique_id and not isinstance(unique_id, str):
+            raise TypeError("Expected argument 'unique_id' to be a str")
+        __self__.unique_id = unique_id
+        """
+        See Argument Reference above.
+        """
         if id and not isinstance(id, str):
-            raise TypeError('Expected argument id to be a str')
+            raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
@@ -57,5 +93,11 @@ async def get_user(domain_id=None,enabled=None,idp_id=None,name=None,password_ex
     return GetUserResult(
         default_project_id=__ret__.get('defaultProjectId'),
         domain_id=__ret__.get('domainId'),
+        enabled=__ret__.get('enabled'),
+        idp_id=__ret__.get('idpId'),
+        name=__ret__.get('name'),
+        password_expires_at=__ret__.get('passwordExpiresAt'),
+        protocol_id=__ret__.get('protocolId'),
         region=__ret__.get('region'),
+        unique_id=__ret__.get('uniqueId'),
         id=__ret__.get('id'))

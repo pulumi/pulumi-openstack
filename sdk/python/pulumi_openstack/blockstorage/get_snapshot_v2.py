@@ -12,51 +12,54 @@ class GetSnapshotV2Result:
     """
     A collection of values returned by getSnapshotV2.
     """
-    def __init__(__self__, description=None, metadata=None, name=None, region=None, size=None, status=None, volume_id=None, id=None):
+    def __init__(__self__, description=None, metadata=None, most_recent=None, name=None, region=None, size=None, status=None, volume_id=None, id=None):
         if description and not isinstance(description, str):
-            raise TypeError('Expected argument description to be a str')
+            raise TypeError("Expected argument 'description' to be a str")
         __self__.description = description
         """
         The snapshot's description.
         """
         if metadata and not isinstance(metadata, dict):
-            raise TypeError('Expected argument metadata to be a dict')
+            raise TypeError("Expected argument 'metadata' to be a dict")
         __self__.metadata = metadata
         """
         The snapshot's metadata.
         """
+        if most_recent and not isinstance(most_recent, bool):
+            raise TypeError("Expected argument 'most_recent' to be a bool")
+        __self__.most_recent = most_recent
         if name and not isinstance(name, str):
-            raise TypeError('Expected argument name to be a str')
+            raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
         """
         See Argument Reference above.
         """
         if region and not isinstance(region, str):
-            raise TypeError('Expected argument region to be a str')
+            raise TypeError("Expected argument 'region' to be a str")
         __self__.region = region
         """
         See Argument Reference above.
         """
-        if size and not isinstance(size, int):
-            raise TypeError('Expected argument size to be a int')
+        if size and not isinstance(size, float):
+            raise TypeError("Expected argument 'size' to be a float")
         __self__.size = size
         """
         The size of the snapshot.
         """
         if status and not isinstance(status, str):
-            raise TypeError('Expected argument status to be a str')
+            raise TypeError("Expected argument 'status' to be a str")
         __self__.status = status
         """
         See Argument Reference above.
         """
         if volume_id and not isinstance(volume_id, str):
-            raise TypeError('Expected argument volume_id to be a str')
+            raise TypeError("Expected argument 'volume_id' to be a str")
         __self__.volume_id = volume_id
         """
         See Argument Reference above.
         """
         if id and not isinstance(id, str):
-            raise TypeError('Expected argument id to be a str')
+            raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
@@ -78,6 +81,7 @@ async def get_snapshot_v2(most_recent=None,name=None,region=None,status=None,vol
     return GetSnapshotV2Result(
         description=__ret__.get('description'),
         metadata=__ret__.get('metadata'),
+        most_recent=__ret__.get('mostRecent'),
         name=__ret__.get('name'),
         region=__ret__.get('region'),
         size=__ret__.get('size'),

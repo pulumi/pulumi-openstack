@@ -25,7 +25,7 @@ class MemberV1(pulumi.CustomResource):
     The ID of the LB pool. Changing this creates a new
     member.
     """
-    port: pulumi.Output[int]
+    port: pulumi.Output[float]
     """
     An integer representing the port on which the member is
     hosted. Changing this creates a new member.
@@ -42,7 +42,7 @@ class MemberV1(pulumi.CustomResource):
     The owner of the member. Required if admin wants to
     create a member for another tenant. Changing this creates a new member.
     """
-    weight: pulumi.Output[int]
+    weight: pulumi.Output[float]
     """
     The load balancing weight of the member. This is currently unable
     to be set through Terraform.
@@ -60,7 +60,7 @@ class MemberV1(pulumi.CustomResource):
                state of the existing member.
         :param pulumi.Input[str] pool_id: The ID of the LB pool. Changing this creates a new
                member.
-        :param pulumi.Input[int] port: An integer representing the port on which the member is
+        :param pulumi.Input[float] port: An integer representing the port on which the member is
                hosted. Changing this creates a new member.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
                A Networking client is needed to create an LB member. If omitted, the
@@ -68,7 +68,7 @@ class MemberV1(pulumi.CustomResource):
                LB member.
         :param pulumi.Input[str] tenant_id: The owner of the member. Required if admin wants to
                create a member for another tenant. Changing this creates a new member.
-        :param pulumi.Input[int] weight: The load balancing weight of the member. This is currently unable
+        :param pulumi.Input[float] weight: The load balancing weight of the member. This is currently unable
                to be set through Terraform.
         """
         if __name__ is not None:
@@ -87,17 +87,17 @@ class MemberV1(pulumi.CustomResource):
         __props__ = dict()
 
         if address is None:
-            raise TypeError('Missing required property address')
+            raise TypeError("Missing required property 'address'")
         __props__['address'] = address
 
         __props__['admin_state_up'] = admin_state_up
 
         if pool_id is None:
-            raise TypeError('Missing required property pool_id')
+            raise TypeError("Missing required property 'pool_id'")
         __props__['pool_id'] = pool_id
 
         if port is None:
-            raise TypeError('Missing required property port')
+            raise TypeError("Missing required property 'port'")
         __props__['port'] = port
 
         __props__['region'] = region

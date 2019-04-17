@@ -18,7 +18,7 @@ class ShareNetwork(pulumi.CustomResource):
     The human-readable description for the share network.
     Changing this updates the description of the existing share network.
     """
-    ip_version: pulumi.Output[int]
+    ip_version: pulumi.Output[float]
     """
     The IP version of the share network. Can either be 4 or 6.
     """
@@ -59,7 +59,7 @@ class ShareNetwork(pulumi.CustomResource):
     The list of security service IDs to associate with
     the share network. The security service must be specified by ID and not name.
     """
-    segmentation_id: pulumi.Output[int]
+    segmentation_id: pulumi.Output[float]
     """
     The share network segmentation ID.
     """
@@ -109,11 +109,11 @@ class ShareNetwork(pulumi.CustomResource):
         __props__['name'] = name
 
         if neutron_net_id is None:
-            raise TypeError('Missing required property neutron_net_id')
+            raise TypeError("Missing required property 'neutron_net_id'")
         __props__['neutron_net_id'] = neutron_net_id
 
         if neutron_subnet_id is None:
-            raise TypeError('Missing required property neutron_subnet_id')
+            raise TypeError("Missing required property 'neutron_subnet_id'")
         __props__['neutron_subnet_id'] = neutron_subnet_id
 
         __props__['region'] = region

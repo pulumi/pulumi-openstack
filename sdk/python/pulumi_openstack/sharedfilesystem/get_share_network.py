@@ -12,76 +12,82 @@ class GetShareNetworkResult:
     """
     A collection of values returned by getShareNetwork.
     """
-    def __init__(__self__, cidr=None, description=None, ip_version=None, name=None, network_type=None, neutron_net_id=None, neutron_subnet_id=None, project_id=None, region=None, security_service_ids=None, segmentation_id=None, id=None):
+    def __init__(__self__, cidr=None, description=None, ip_version=None, name=None, network_type=None, neutron_net_id=None, neutron_subnet_id=None, project_id=None, region=None, security_service_id=None, security_service_ids=None, segmentation_id=None, id=None):
         if cidr and not isinstance(cidr, str):
-            raise TypeError('Expected argument cidr to be a str')
+            raise TypeError("Expected argument 'cidr' to be a str")
         __self__.cidr = cidr
         """
         See Argument Reference above.
         """
         if description and not isinstance(description, str):
-            raise TypeError('Expected argument description to be a str')
+            raise TypeError("Expected argument 'description' to be a str")
         __self__.description = description
         """
         See Argument Reference above.
         """
-        if ip_version and not isinstance(ip_version, int):
-            raise TypeError('Expected argument ip_version to be a int')
+        if ip_version and not isinstance(ip_version, float):
+            raise TypeError("Expected argument 'ip_version' to be a float")
         __self__.ip_version = ip_version
         """
         See Argument Reference above.
         """
         if name and not isinstance(name, str):
-            raise TypeError('Expected argument name to be a str')
+            raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
         """
         See Argument Reference above.
         """
         if network_type and not isinstance(network_type, str):
-            raise TypeError('Expected argument network_type to be a str')
+            raise TypeError("Expected argument 'network_type' to be a str")
         __self__.network_type = network_type
         """
         See Argument Reference above.
         """
         if neutron_net_id and not isinstance(neutron_net_id, str):
-            raise TypeError('Expected argument neutron_net_id to be a str')
+            raise TypeError("Expected argument 'neutron_net_id' to be a str")
         __self__.neutron_net_id = neutron_net_id
         """
         See Argument Reference above.
         """
         if neutron_subnet_id and not isinstance(neutron_subnet_id, str):
-            raise TypeError('Expected argument neutron_subnet_id to be a str')
+            raise TypeError("Expected argument 'neutron_subnet_id' to be a str")
         __self__.neutron_subnet_id = neutron_subnet_id
         """
         See Argument Reference above.
         """
         if project_id and not isinstance(project_id, str):
-            raise TypeError('Expected argument project_id to be a str')
+            raise TypeError("Expected argument 'project_id' to be a str")
         __self__.project_id = project_id
         """
         The owner of the Share Network.
         """
         if region and not isinstance(region, str):
-            raise TypeError('Expected argument region to be a str')
+            raise TypeError("Expected argument 'region' to be a str")
         __self__.region = region
         """
         See Argument Reference above.
         """
+        if security_service_id and not isinstance(security_service_id, str):
+            raise TypeError("Expected argument 'security_service_id' to be a str")
+        __self__.security_service_id = security_service_id
+        """
+        See Argument Reference above.
+        """
         if security_service_ids and not isinstance(security_service_ids, list):
-            raise TypeError('Expected argument security_service_ids to be a list')
+            raise TypeError("Expected argument 'security_service_ids' to be a list")
         __self__.security_service_ids = security_service_ids
         """
         The list of security service IDs associated with
         the share network.
         """
-        if segmentation_id and not isinstance(segmentation_id, int):
-            raise TypeError('Expected argument segmentation_id to be a int')
+        if segmentation_id and not isinstance(segmentation_id, float):
+            raise TypeError("Expected argument 'segmentation_id' to be a float")
         __self__.segmentation_id = segmentation_id
         """
         See Argument Reference above.
         """
         if id and not isinstance(id, str):
-            raise TypeError('Expected argument id to be a str')
+            raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
@@ -114,6 +120,7 @@ async def get_share_network(description=None,ip_version=None,name=None,network_t
         neutron_subnet_id=__ret__.get('neutronSubnetId'),
         project_id=__ret__.get('projectId'),
         region=__ret__.get('region'),
+        security_service_id=__ret__.get('securityServiceId'),
         security_service_ids=__ret__.get('securityServiceIds'),
         segmentation_id=__ret__.get('segmentationId'),
         id=__ret__.get('id'))

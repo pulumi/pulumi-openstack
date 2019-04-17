@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 // Export members:
+export * from "./getAvailabilityZonesV3";
 export * from "./getSnapshotV2";
 export * from "./getSnapshotV3";
 export * from "./volume";
