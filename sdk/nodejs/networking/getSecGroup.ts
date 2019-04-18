@@ -70,10 +70,18 @@ export interface GetSecGroupResult {
      * The set of string tags applied on the security group.
      */
     readonly allTags: string[];
+    readonly description?: string;
+    /**
+     * See Argument Reference above.
+     * * `description`- See Argument Reference above.
+     */
+    readonly name?: string;
     /**
      * See Argument Reference above.
      */
     readonly region: string;
+    readonly secgroupId?: string;
+    readonly tags?: string[];
     readonly tenantId: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.

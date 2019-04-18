@@ -33,6 +33,7 @@ func LookupCluster(ctx *pulumi.Context, args *GetClusterArgs) (*GetClusterResult
 		MasterAddresses: outputs["masterAddresses"],
 		MasterCount: outputs["masterCount"],
 		MasterFlavor: outputs["masterFlavor"],
+		Name: outputs["name"],
 		NodeAddresses: outputs["nodeAddresses"],
 		NodeCount: outputs["nodeCount"],
 		ProjectId: outputs["projectId"],
@@ -84,6 +85,8 @@ type GetClusterResult struct {
 	MasterCount interface{}
 	// The flavor for the master nodes.
 	MasterFlavor interface{}
+	// See Argument Reference above.
+	Name interface{}
 	// IP addresses of the node of the cluster.
 	NodeAddresses interface{}
 	// The number of nodes for the cluster.

@@ -12,27 +12,51 @@ class GetProjectResult:
     """
     A collection of values returned by getProject.
     """
-    def __init__(__self__, description=None, domain_id=None, region=None, id=None):
+    def __init__(__self__, description=None, domain_id=None, enabled=None, is_domain=None, name=None, parent_id=None, region=None, id=None):
         if description and not isinstance(description, str):
-            raise TypeError('Expected argument description to be a str')
+            raise TypeError("Expected argument 'description' to be a str")
         __self__.description = description
         """
         The description of the project.
         """
         if domain_id and not isinstance(domain_id, str):
-            raise TypeError('Expected argument domain_id to be a str')
+            raise TypeError("Expected argument 'domain_id' to be a str")
         __self__.domain_id = domain_id
         """
         See Argument Reference above.
         """
+        if enabled and not isinstance(enabled, bool):
+            raise TypeError("Expected argument 'enabled' to be a bool")
+        __self__.enabled = enabled
+        """
+        See Argument Reference above.
+        """
+        if is_domain and not isinstance(is_domain, bool):
+            raise TypeError("Expected argument 'is_domain' to be a bool")
+        __self__.is_domain = is_domain
+        """
+        See Argument Reference above.
+        """
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        __self__.name = name
+        """
+        See Argument Reference above.
+        """
+        if parent_id and not isinstance(parent_id, str):
+            raise TypeError("Expected argument 'parent_id' to be a str")
+        __self__.parent_id = parent_id
+        """
+        See Argument Reference above.
+        """
         if region and not isinstance(region, str):
-            raise TypeError('Expected argument region to be a str')
+            raise TypeError("Expected argument 'region' to be a str")
         __self__.region = region
         """
         The region the project is located in.
         """
         if id and not isinstance(id, str):
-            raise TypeError('Expected argument id to be a str')
+            raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
@@ -55,5 +79,9 @@ async def get_project(domain_id=None,enabled=None,is_domain=None,name=None,paren
     return GetProjectResult(
         description=__ret__.get('description'),
         domain_id=__ret__.get('domainId'),
+        enabled=__ret__.get('enabled'),
+        is_domain=__ret__.get('isDomain'),
+        name=__ret__.get('name'),
+        parent_id=__ret__.get('parentId'),
         region=__ret__.get('region'),
         id=__ret__.get('id'))

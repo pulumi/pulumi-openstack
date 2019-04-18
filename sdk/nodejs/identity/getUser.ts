@@ -81,9 +81,33 @@ export interface GetUserResult {
      */
     readonly domainId: string;
     /**
+     * See Argument Reference above.
+     */
+    readonly enabled?: boolean;
+    /**
+     * See Argument Reference above.
+     */
+    readonly idpId?: string;
+    /**
+     * See Argument Reference above.
+     */
+    readonly name?: string;
+    /**
+     * See Argument Reference above.
+     */
+    readonly passwordExpiresAt?: string;
+    /**
+     * See Argument Reference above.
+     */
+    readonly protocolId?: string;
+    /**
      * The region the user is located in.
      */
     readonly region: string;
+    /**
+     * See Argument Reference above.
+     */
+    readonly uniqueId?: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

@@ -105,7 +105,7 @@ class Trunk(pulumi.CustomResource):
         __props__['name'] = name
 
         if port_id is None:
-            raise TypeError('Missing required property port_id')
+            raise TypeError("Missing required property 'port_id'")
         __props__['port_id'] = port_id
 
         __props__['region'] = region

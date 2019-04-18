@@ -14,6 +14,7 @@ func LookupNetwork(ctx *pulumi.Context, args *GetNetworkArgs) (*GetNetworkResult
 		inputs["description"] = args.Description
 		inputs["external"] = args.External
 		inputs["matchingSubnetCidr"] = args.MatchingSubnetCidr
+		inputs["mtu"] = args.Mtu
 		inputs["name"] = args.Name
 		inputs["networkId"] = args.NetworkId
 		inputs["region"] = args.Region
@@ -30,8 +31,19 @@ func LookupNetwork(ctx *pulumi.Context, args *GetNetworkArgs) (*GetNetworkResult
 		AdminStateUp: outputs["adminStateUp"],
 		AllTags: outputs["allTags"],
 		AvailabilityZoneHints: outputs["availabilityZoneHints"],
+		Description: outputs["description"],
+		DnsDomain: outputs["dnsDomain"],
+		External: outputs["external"],
+		MatchingSubnetCidr: outputs["matchingSubnetCidr"],
+		Mtu: outputs["mtu"],
+		Name: outputs["name"],
+		NetworkId: outputs["networkId"],
 		Region: outputs["region"],
 		Shared: outputs["shared"],
+		Status: outputs["status"],
+		Tags: outputs["tags"],
+		TenantId: outputs["tenantId"],
+		TransparentVlan: outputs["transparentVlan"],
 		Id: outputs["id"],
 	}, nil
 }
@@ -44,6 +56,9 @@ type GetNetworkArgs struct {
 	External interface{}
 	// The CIDR of a subnet within the network.
 	MatchingSubnetCidr interface{}
+	// The network MTU to filter. Available, when Neutron `net-mtu`
+	// extension is enabled.
+	Mtu interface{}
 	// The name of the network.
 	Name interface{}
 	// The ID of the network.
@@ -65,17 +80,35 @@ type GetNetworkArgs struct {
 
 // A collection of values returned by getNetwork.
 type GetNetworkResult struct {
-	// (Optional) The administrative state of the network.
+	// The administrative state of the network.
 	AdminStateUp interface{}
 	// The set of string tags applied on the network.
 	AllTags interface{}
-	// (Optional) The availability zone candidates for the network.
+	// The availability zone candidates for the network.
 	AvailabilityZoneHints interface{}
 	// See Argument Reference above.
+	Description interface{}
+	// The network DNS domain. Available, when Neutron DNS extension
+	// is enabled
+	DnsDomain interface{}
+	// See Argument Reference above.
+	External interface{}
+	MatchingSubnetCidr interface{}
+	// See Argument Reference above.
+	Mtu interface{}
+	// See Argument Reference above.
+	Name interface{}
+	NetworkId interface{}
+	// See Argument Reference above.
 	Region interface{}
-	// (Optional)  Specifies whether the network resource can be accessed
-	// by any tenant or not.
+	// Specifies whether the network resource can be accessed by any
+	// tenant or not.
 	Shared interface{}
+	Status interface{}
+	Tags interface{}
+	TenantId interface{}
+	// See Argument Reference above.
+	TransparentVlan interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

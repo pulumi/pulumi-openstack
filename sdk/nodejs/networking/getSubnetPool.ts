@@ -166,6 +166,7 @@ export interface GetSubnetPoolResult {
      * See Argument Reference above.
      */
     readonly shared: boolean;
+    readonly tags?: string[];
     /**
      * The time at which subnetpool was created.
      */

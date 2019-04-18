@@ -30,7 +30,7 @@ class RecordSet(pulumi.CustomResource):
     If omitted, the `region` argument of the provider is used.
     Changing this creates a new DNS  record set.
     """
-    ttl: pulumi.Output[int]
+    ttl: pulumi.Output[float]
     """
     The time to live (TTL) of the record set.
     """
@@ -64,7 +64,7 @@ class RecordSet(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region in which to obtain the V2 DNS client.
                If omitted, the `region` argument of the provider is used.
                Changing this creates a new DNS  record set.
-        :param pulumi.Input[int] ttl: The time to live (TTL) of the record set.
+        :param pulumi.Input[float] ttl: The time to live (TTL) of the record set.
         :param pulumi.Input[str] type: The type of record set. Examples: "A", "MX".
                Changing this creates a new DNS  record set.
         :param pulumi.Input[dict] value_specs: Map of additional options. Changing this creates a
@@ -102,7 +102,7 @@ class RecordSet(pulumi.CustomResource):
         __props__['value_specs'] = value_specs
 
         if zone_id is None:
-            raise TypeError('Missing required property zone_id')
+            raise TypeError("Missing required property 'zone_id'")
         __props__['zone_id'] = zone_id
 
         super(RecordSet, __self__).__init__(

@@ -24,6 +24,7 @@ func LookupSnapshotV2(ctx *pulumi.Context, args *GetSnapshotV2Args) (*GetSnapsho
 	return &GetSnapshotV2Result{
 		Description: outputs["description"],
 		Metadata: outputs["metadata"],
+		MostRecent: outputs["mostRecent"],
 		Name: outputs["name"],
 		Region: outputs["region"],
 		Size: outputs["size"],
@@ -55,6 +56,7 @@ type GetSnapshotV2Result struct {
 	Description interface{}
 	// The snapshot's metadata.
 	Metadata interface{}
+	MostRecent interface{}
 	// See Argument Reference above.
 	Name interface{}
 	// See Argument Reference above.

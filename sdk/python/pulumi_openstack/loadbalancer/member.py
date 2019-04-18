@@ -28,7 +28,7 @@ class Member(pulumi.CustomResource):
     The id of the pool that this member will be
     assigned to.
     """
-    protocol_port: pulumi.Output[int]
+    protocol_port: pulumi.Output[float]
     """
     The port on which to listen for client traffic.
     Changing this creates a new member.
@@ -50,7 +50,7 @@ class Member(pulumi.CustomResource):
     the member.  Only administrative users can specify a tenant UUID
     other than their own. Changing this creates a new member.
     """
-    weight: pulumi.Output[int]
+    weight: pulumi.Output[float]
     """
     A positive integer value that indicates the relative
     portion of traffic that this member should receive from the pool. For
@@ -70,7 +70,7 @@ class Member(pulumi.CustomResource):
         :param pulumi.Input[str] name: Human-readable name for the member.
         :param pulumi.Input[str] pool_id: The id of the pool that this member will be
                assigned to.
-        :param pulumi.Input[int] protocol_port: The port on which to listen for client traffic.
+        :param pulumi.Input[float] protocol_port: The port on which to listen for client traffic.
                Changing this creates a new member.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
                A Networking client is needed to create an . If omitted, the
@@ -80,7 +80,7 @@ class Member(pulumi.CustomResource):
         :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
                the member.  Only administrative users can specify a tenant UUID
                other than their own. Changing this creates a new member.
-        :param pulumi.Input[int] weight: A positive integer value that indicates the relative
+        :param pulumi.Input[float] weight: A positive integer value that indicates the relative
                portion of traffic that this member should receive from the pool. For
                example, a member with a weight of 10 receives five times as much traffic
                as a member with a weight of 2.
@@ -101,7 +101,7 @@ class Member(pulumi.CustomResource):
         __props__ = dict()
 
         if address is None:
-            raise TypeError('Missing required property address')
+            raise TypeError("Missing required property 'address'")
         __props__['address'] = address
 
         __props__['admin_state_up'] = admin_state_up
@@ -109,11 +109,11 @@ class Member(pulumi.CustomResource):
         __props__['name'] = name
 
         if pool_id is None:
-            raise TypeError('Missing required property pool_id')
+            raise TypeError("Missing required property 'pool_id'")
         __props__['pool_id'] = pool_id
 
         if protocol_port is None:
-            raise TypeError('Missing required property protocol_port')
+            raise TypeError("Missing required property 'protocol_port'")
         __props__['protocol_port'] = protocol_port
 
         __props__['region'] = region

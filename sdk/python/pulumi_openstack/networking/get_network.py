@@ -12,46 +12,98 @@ class GetNetworkResult:
     """
     A collection of values returned by getNetwork.
     """
-    def __init__(__self__, admin_state_up=None, all_tags=None, availability_zone_hints=None, region=None, shared=None, id=None):
+    def __init__(__self__, admin_state_up=None, all_tags=None, availability_zone_hints=None, description=None, dns_domain=None, external=None, matching_subnet_cidr=None, mtu=None, name=None, network_id=None, region=None, shared=None, status=None, tags=None, tenant_id=None, transparent_vlan=None, id=None):
         if admin_state_up and not isinstance(admin_state_up, str):
-            raise TypeError('Expected argument admin_state_up to be a str')
+            raise TypeError("Expected argument 'admin_state_up' to be a str")
         __self__.admin_state_up = admin_state_up
         """
-        (Optional) The administrative state of the network.
+        The administrative state of the network.
         """
         if all_tags and not isinstance(all_tags, list):
-            raise TypeError('Expected argument all_tags to be a list')
+            raise TypeError("Expected argument 'all_tags' to be a list")
         __self__.all_tags = all_tags
         """
         The set of string tags applied on the network.
         """
         if availability_zone_hints and not isinstance(availability_zone_hints, list):
-            raise TypeError('Expected argument availability_zone_hints to be a list')
+            raise TypeError("Expected argument 'availability_zone_hints' to be a list")
         __self__.availability_zone_hints = availability_zone_hints
         """
-        (Optional) The availability zone candidates for the network.
+        The availability zone candidates for the network.
         """
+        if description and not isinstance(description, str):
+            raise TypeError("Expected argument 'description' to be a str")
+        __self__.description = description
+        """
+        See Argument Reference above.
+        """
+        if dns_domain and not isinstance(dns_domain, str):
+            raise TypeError("Expected argument 'dns_domain' to be a str")
+        __self__.dns_domain = dns_domain
+        """
+        The network DNS domain. Available, when Neutron DNS extension
+        is enabled
+        """
+        if external and not isinstance(external, bool):
+            raise TypeError("Expected argument 'external' to be a bool")
+        __self__.external = external
+        """
+        See Argument Reference above.
+        """
+        if matching_subnet_cidr and not isinstance(matching_subnet_cidr, str):
+            raise TypeError("Expected argument 'matching_subnet_cidr' to be a str")
+        __self__.matching_subnet_cidr = matching_subnet_cidr
+        if mtu and not isinstance(mtu, float):
+            raise TypeError("Expected argument 'mtu' to be a float")
+        __self__.mtu = mtu
+        """
+        See Argument Reference above.
+        """
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        __self__.name = name
+        """
+        See Argument Reference above.
+        """
+        if network_id and not isinstance(network_id, str):
+            raise TypeError("Expected argument 'network_id' to be a str")
+        __self__.network_id = network_id
         if region and not isinstance(region, str):
-            raise TypeError('Expected argument region to be a str')
+            raise TypeError("Expected argument 'region' to be a str")
         __self__.region = region
         """
         See Argument Reference above.
         """
         if shared and not isinstance(shared, str):
-            raise TypeError('Expected argument shared to be a str')
+            raise TypeError("Expected argument 'shared' to be a str")
         __self__.shared = shared
         """
-        (Optional)  Specifies whether the network resource can be accessed
-        by any tenant or not.
+        Specifies whether the network resource can be accessed by any
+        tenant or not.
+        """
+        if status and not isinstance(status, str):
+            raise TypeError("Expected argument 'status' to be a str")
+        __self__.status = status
+        if tags and not isinstance(tags, list):
+            raise TypeError("Expected argument 'tags' to be a list")
+        __self__.tags = tags
+        if tenant_id and not isinstance(tenant_id, str):
+            raise TypeError("Expected argument 'tenant_id' to be a str")
+        __self__.tenant_id = tenant_id
+        if transparent_vlan and not isinstance(transparent_vlan, bool):
+            raise TypeError("Expected argument 'transparent_vlan' to be a bool")
+        __self__.transparent_vlan = transparent_vlan
+        """
+        See Argument Reference above.
         """
         if id and not isinstance(id, str):
-            raise TypeError('Expected argument id to be a str')
+            raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_network(description=None,external=None,matching_subnet_cidr=None,name=None,network_id=None,region=None,status=None,tags=None,tenant_id=None,transparent_vlan=None,opts=None):
+async def get_network(description=None,external=None,matching_subnet_cidr=None,mtu=None,name=None,network_id=None,region=None,status=None,tags=None,tenant_id=None,transparent_vlan=None,opts=None):
     """
     Use this data source to get the ID of an available OpenStack network.
     """
@@ -60,6 +112,7 @@ async def get_network(description=None,external=None,matching_subnet_cidr=None,n
     __args__['description'] = description
     __args__['external'] = external
     __args__['matchingSubnetCidr'] = matching_subnet_cidr
+    __args__['mtu'] = mtu
     __args__['name'] = name
     __args__['networkId'] = network_id
     __args__['region'] = region
@@ -73,6 +126,17 @@ async def get_network(description=None,external=None,matching_subnet_cidr=None,n
         admin_state_up=__ret__.get('adminStateUp'),
         all_tags=__ret__.get('allTags'),
         availability_zone_hints=__ret__.get('availabilityZoneHints'),
+        description=__ret__.get('description'),
+        dns_domain=__ret__.get('dnsDomain'),
+        external=__ret__.get('external'),
+        matching_subnet_cidr=__ret__.get('matchingSubnetCidr'),
+        mtu=__ret__.get('mtu'),
+        name=__ret__.get('name'),
+        network_id=__ret__.get('networkId'),
         region=__ret__.get('region'),
         shared=__ret__.get('shared'),
+        status=__ret__.get('status'),
+        tags=__ret__.get('tags'),
+        tenant_id=__ret__.get('tenantId'),
+        transparent_vlan=__ret__.get('transparentVlan'),
         id=__ret__.get('id'))

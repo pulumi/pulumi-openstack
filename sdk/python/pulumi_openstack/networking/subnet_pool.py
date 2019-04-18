@@ -24,14 +24,14 @@ class SubnetPool(pulumi.CustomResource):
     """
     The time at which subnetpool was created.
     """
-    default_prefixlen: pulumi.Output[int]
+    default_prefixlen: pulumi.Output[float]
     """
     The size of the prefix to allocate when the cidr
     or prefixlen attributes are omitted when you create the subnet. Defaults to the
     MinPrefixLen. Changing this updates the default prefixlen of the existing
     subnetpool.
     """
-    default_quota: pulumi.Output[int]
+    default_quota: pulumi.Output[float]
     """
     The per-project quota on the prefix space that can be
     allocated from the subnetpool for project subnets. Changing this updates the
@@ -42,7 +42,7 @@ class SubnetPool(pulumi.CustomResource):
     The human-readable description for the subnetpool.
     Changing this updates the description of the existing subnetpool.
     """
-    ip_version: pulumi.Output[int]
+    ip_version: pulumi.Output[float]
     """
     The IP protocol version.
     """
@@ -52,14 +52,14 @@ class SubnetPool(pulumi.CustomResource):
     subnetpool or not. Changing this updates the default status of the existing
     subnetpool.
     """
-    max_prefixlen: pulumi.Output[int]
+    max_prefixlen: pulumi.Output[float]
     """
     The maximum prefix size that can be allocated from
     the subnetpool. For IPv4 subnetpools, default is 32. For IPv6 subnetpools,
     default is 128. Changing this updates the max prefixlen of the existing
     subnetpool.
     """
-    min_prefixlen: pulumi.Output[int]
+    min_prefixlen: pulumi.Output[float]
     """
     The smallest prefix that can be allocated from a
     subnetpool. For IPv4 subnetpools, default is 8. For IPv6 subnetpools, default
@@ -90,7 +90,7 @@ class SubnetPool(pulumi.CustomResource):
     `region` argument of the provider is used. Changing this creates a new
     subnetpool.
     """
-    revision_number: pulumi.Output[int]
+    revision_number: pulumi.Output[float]
     """
     The revision number of the subnetpool.
     """
@@ -121,24 +121,24 @@ class SubnetPool(pulumi.CustomResource):
         :param pulumi.Input[str] address_scope_id: The Neutron address scope to assign to the
                subnetpool. Changing this updates the address scope id of the existing
                subnetpool.
-        :param pulumi.Input[int] default_prefixlen: The size of the prefix to allocate when the cidr
+        :param pulumi.Input[float] default_prefixlen: The size of the prefix to allocate when the cidr
                or prefixlen attributes are omitted when you create the subnet. Defaults to the
                MinPrefixLen. Changing this updates the default prefixlen of the existing
                subnetpool.
-        :param pulumi.Input[int] default_quota: The per-project quota on the prefix space that can be
+        :param pulumi.Input[float] default_quota: The per-project quota on the prefix space that can be
                allocated from the subnetpool for project subnets. Changing this updates the
                default quota of the existing subnetpool.
         :param pulumi.Input[str] description: The human-readable description for the subnetpool.
                Changing this updates the description of the existing subnetpool.
-        :param pulumi.Input[int] ip_version: The IP protocol version.
+        :param pulumi.Input[float] ip_version: The IP protocol version.
         :param pulumi.Input[bool] is_default: Indicates whether the subnetpool is default
                subnetpool or not. Changing this updates the default status of the existing
                subnetpool.
-        :param pulumi.Input[int] max_prefixlen: The maximum prefix size that can be allocated from
+        :param pulumi.Input[float] max_prefixlen: The maximum prefix size that can be allocated from
                the subnetpool. For IPv4 subnetpools, default is 32. For IPv6 subnetpools,
                default is 128. Changing this updates the max prefixlen of the existing
                subnetpool.
-        :param pulumi.Input[int] min_prefixlen: The smallest prefix that can be allocated from a
+        :param pulumi.Input[float] min_prefixlen: The smallest prefix that can be allocated from a
                subnetpool. For IPv4 subnetpools, default is 8. For IPv6 subnetpools, default
                is 64. Changing this updates the min prefixlen of the existing subnetpool.
         :param pulumi.Input[str] name: The name of the subnetpool. Changing this updates the name of
@@ -194,7 +194,7 @@ class SubnetPool(pulumi.CustomResource):
         __props__['name'] = name
 
         if prefixes is None:
-            raise TypeError('Missing required property prefixes')
+            raise TypeError("Missing required property 'prefixes'")
         __props__['prefixes'] = prefixes
 
         __props__['project_id'] = project_id

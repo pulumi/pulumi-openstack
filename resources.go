@@ -242,10 +242,11 @@ func Provider() tfbridge.ProviderInfo {
 			"openstack_dns_zone_v2":      {Tok: openstackResource(dnsMod, "Zone")},
 
 			// Identity
-			"openstack_identity_project_v3":         {Tok: openstackResource(identityMod, "Project")},
-			"openstack_identity_role_v3":            {Tok: openstackResource(identityMod, "Role")},
-			"openstack_identity_role_assignment_v3": {Tok: openstackResource(identityMod, "RoleAssignment")},
-			"openstack_identity_user_v3":            {Tok: openstackResource(identityMod, "User")},
+			"openstack_identity_application_credential_v3": {Tok: openstackResource(identityMod, "ApplicationCredential")},
+			"openstack_identity_project_v3":                {Tok: openstackResource(identityMod, "Project")},
+			"openstack_identity_role_v3":                   {Tok: openstackResource(identityMod, "Role")},
+			"openstack_identity_role_assignment_v3":        {Tok: openstackResource(identityMod, "RoleAssignment")},
+			"openstack_identity_user_v3":                   {Tok: openstackResource(identityMod, "User")},
 
 			// Images
 			"openstack_images_image_v2": {Tok: openstackResource(imagesMod, "Image")},
@@ -305,6 +306,9 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			// Block Storage
+			"openstack_blockstorage_availability_zones_v3": {
+				Tok: openstackDataSource(blockstorageMod, "getAvailabilityZonesV3"),
+			},
 			"openstack_blockstorage_snapshot_v2": {Tok: openstackDataSource(blockstorageMod, "getSnapshotV2")},
 			"openstack_blockstorage_snapshot_v3": {Tok: openstackDataSource(blockstorageMod, "getSnapshotV3")},
 
@@ -339,12 +343,16 @@ func Provider() tfbridge.ProviderInfo {
 			"openstack_networking_secgroup_v2":   {Tok: openstackDataSource(networkingMod, "getSecGroup")},
 			"openstack_networking_subnet_v2":     {Tok: openstackDataSource(networkingMod, "getSubnet")},
 			"openstack_networking_subnetpool_v2": {Tok: openstackDataSource(networkingMod, "getSubnetPool")},
+			"openstack_networking_trunk_v2":      {Tok: openstackDataSource(networkingMod, "getTrunk")},
 			"openstack_networking_floatingip_v2": {Tok: openstackDataSource(networkingMod, "getFloatingIp")},
 
 			// Firewall
 			"openstack_fw_policy_v1": {Tok: openstackDataSource(firewallMod, "getPolicy")},
 
 			// Shared Filesystem
+			"openstack_sharedfilesystem_availability_zones_v2": {
+				Tok: openstackDataSource(sharedfilesystemMod, "getAvailbilityZones"),
+			},
 			"openstack_sharedfilesystem_share_v2":        {Tok: openstackDataSource(sharedfilesystemMod, "getShare")},
 			"openstack_sharedfilesystem_sharenetwork_v2": {Tok: openstackDataSource(sharedfilesystemMod, "getShareNetwork")},
 			"openstack_sharedfilesystem_snapshot_v2":     {Tok: openstackDataSource(sharedfilesystemMod, "getSnapshot")},

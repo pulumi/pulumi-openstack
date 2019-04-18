@@ -120,6 +120,10 @@ export interface GetShareNetworkResult {
      */
     readonly region: string;
     /**
+     * See Argument Reference above.
+     */
+    readonly securityServiceId?: string;
+    /**
      * The list of security service IDs associated with
      * the share network.
      */

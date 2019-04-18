@@ -121,8 +121,7 @@ func (r *Instance) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
-// The first detected Fixed IPv4 address _or_ the
-// Floating IP.
+// The first detected Fixed IPv4 address.
 func (r *Instance) AccessIpV4() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["accessIpV4"])
 }
@@ -282,8 +281,7 @@ func (r *Instance) VendorOptions() *pulumi.Output {
 
 // Input properties used for looking up and filtering Instance resources.
 type InstanceState struct {
-	// The first detected Fixed IPv4 address _or_ the
-	// Floating IP.
+	// The first detected Fixed IPv4 address.
 	AccessIpV4 interface{}
 	// The first detected Fixed IPv6 address.
 	AccessIpV6 interface{}
@@ -373,8 +371,7 @@ type InstanceState struct {
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
-	// The first detected Fixed IPv4 address _or_ the
-	// Floating IP.
+	// The first detected Fixed IPv4 address.
 	AccessIpV4 interface{}
 	// The first detected Fixed IPv6 address.
 	AccessIpV6 interface{}

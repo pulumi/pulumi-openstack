@@ -67,6 +67,14 @@ export interface GetPolicyResult {
     /**
      * See Argument Reference above.
      */
+    readonly name?: string;
+    /**
+     * See Argument Reference above.
+     */
+    readonly policyId?: string;
+    /**
+     * See Argument Reference above.
+     */
     readonly region: string;
     /**
      * The array of one or more firewall rules that comprise the policy.

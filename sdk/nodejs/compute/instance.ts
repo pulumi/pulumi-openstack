@@ -398,8 +398,7 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /**
-     * The first detected Fixed IPv4 address _or_ the
-     * Floating IP.
+     * The first detected Fixed IPv4 address.
      */
     public readonly accessIpV4: pulumi.Output<string>;
     /**
@@ -605,8 +604,7 @@ export class Instance extends pulumi.CustomResource {
  */
 export interface InstanceState {
     /**
-     * The first detected Fixed IPv4 address _or_ the
-     * Floating IP.
+     * The first detected Fixed IPv4 address.
      */
     readonly accessIpV4?: pulumi.Input<string>;
     /**
@@ -746,8 +744,7 @@ export interface InstanceState {
  */
 export interface InstanceArgs {
     /**
-     * The first detected Fixed IPv4 address _or_ the
-     * Floating IP.
+     * The first detected Fixed IPv4 address.
      */
     readonly accessIpV4?: pulumi.Input<string>;
     /**

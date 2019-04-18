@@ -36,6 +36,11 @@ class Port(pulumi.CustomResource):
     addresses that can be active on this port. The structure is described
     below.
     """
+    binding: pulumi.Output[dict]
+    """
+    The port binding allows to specify binding information
+    for the port. The structure is described below.
+    """
     description: pulumi.Output[str]
     """
     Human-readable description of the floating IP. Changing
@@ -50,6 +55,15 @@ class Port(pulumi.CustomResource):
     """
     The device owner of the Port. Changing this creates
     a new port.
+    """
+    dns_assignments: pulumi.Output[list]
+    """
+    The list of maps representing port DNS assignments.
+    """
+    dns_name: pulumi.Output[str]
+    """
+    The port DNS name. Available, when Neutron DNS extension
+    is enabled.
     """
     extra_dhcp_options: pulumi.Output[list]
     """
@@ -91,6 +105,15 @@ class Port(pulumi.CustomResource):
     behavior of the Networking service, which is to usually apply the "default"
     security group.
     """
+    port_security_enabled: pulumi.Output[bool]
+    """
+    Whether to explicitly enable or disable
+    port security on the port. Port Security is usually enabled by default, so
+    omitting argument will usually result in a value of "true". Setting this
+    explicitly to `false` will disable port security. In order to disable port
+    security, the port must not have any security groups. Valid values are `true`
+    and `false`.
+    """
     region: pulumi.Output[str]
     """
     The region in which to obtain the V2 networking client.
@@ -107,7 +130,7 @@ class Port(pulumi.CustomResource):
     """
     tags: pulumi.Output[list]
     """
-    See Argument Reference above.
+    A set of string tags for the port.
     """
     tenant_id: pulumi.Output[str]
     """
@@ -118,7 +141,7 @@ class Port(pulumi.CustomResource):
     """
     Map of additional options.
     """
-    def __init__(__self__, resource_name, opts=None, admin_state_up=None, allowed_address_pairs=None, description=None, device_id=None, device_owner=None, extra_dhcp_options=None, fixed_ips=None, mac_address=None, name=None, network_id=None, no_fixed_ip=None, no_security_groups=None, region=None, security_group_ids=None, tags=None, tenant_id=None, value_specs=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, admin_state_up=None, allowed_address_pairs=None, binding=None, description=None, device_id=None, device_owner=None, dns_name=None, extra_dhcp_options=None, fixed_ips=None, mac_address=None, name=None, network_id=None, no_fixed_ip=None, no_security_groups=None, port_security_enabled=None, region=None, security_group_ids=None, tags=None, tenant_id=None, value_specs=None, __name__=None, __opts__=None):
         """
         Manages a V2 port resource within OpenStack.
         
@@ -138,12 +161,16 @@ class Port(pulumi.CustomResource):
         :param pulumi.Input[list] allowed_address_pairs: An IP/MAC Address pair of additional IP
                addresses that can be active on this port. The structure is described
                below.
+        :param pulumi.Input[dict] binding: The port binding allows to specify binding information
+               for the port. The structure is described below.
         :param pulumi.Input[str] description: Human-readable description of the floating IP. Changing
                this updates the `description` of an existing port.
         :param pulumi.Input[str] device_id: The ID of the device attached to the port. Changing this
                creates a new port.
         :param pulumi.Input[str] device_owner: The device owner of the Port. Changing this creates
                a new port.
+        :param pulumi.Input[str] dns_name: The port DNS name. Available, when Neutron DNS extension
+               is enabled.
         :param pulumi.Input[list] extra_dhcp_options: An extra DHCP option that needs to be configured
                on the port. The structure is described below. Can be specified multiple
                times.
@@ -163,6 +190,12 @@ class Port(pulumi.CustomResource):
                no `security_group_ids` are specified, then the Port will yield to the default
                behavior of the Networking service, which is to usually apply the "default"
                security group.
+        :param pulumi.Input[bool] port_security_enabled: Whether to explicitly enable or disable
+               port security on the port. Port Security is usually enabled by default, so
+               omitting argument will usually result in a value of "true". Setting this
+               explicitly to `false` will disable port security. In order to disable port
+               security, the port must not have any security groups. Valid values are `true`
+               and `false`.
         :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
                A networking client is needed to create a port. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
@@ -171,7 +204,7 @@ class Port(pulumi.CustomResource):
                of security group IDs to apply to the port. The security groups must be
                specified by ID and not name (as opposed to how they are configured with
                the Compute Instance).
-        :param pulumi.Input[list] tags: See Argument Reference above.
+        :param pulumi.Input[list] tags: A set of string tags for the port.
         :param pulumi.Input[str] tenant_id: The owner of the Port. Required if admin wants
                to create a port for another tenant. Changing this creates a new port.
         :param pulumi.Input[dict] value_specs: Map of additional options.
@@ -195,11 +228,15 @@ class Port(pulumi.CustomResource):
 
         __props__['allowed_address_pairs'] = allowed_address_pairs
 
+        __props__['binding'] = binding
+
         __props__['description'] = description
 
         __props__['device_id'] = device_id
 
         __props__['device_owner'] = device_owner
+
+        __props__['dns_name'] = dns_name
 
         __props__['extra_dhcp_options'] = extra_dhcp_options
 
@@ -210,12 +247,14 @@ class Port(pulumi.CustomResource):
         __props__['name'] = name
 
         if network_id is None:
-            raise TypeError('Missing required property network_id')
+            raise TypeError("Missing required property 'network_id'")
         __props__['network_id'] = network_id
 
         __props__['no_fixed_ip'] = no_fixed_ip
 
         __props__['no_security_groups'] = no_security_groups
+
+        __props__['port_security_enabled'] = port_security_enabled
 
         __props__['region'] = region
 
@@ -230,6 +269,7 @@ class Port(pulumi.CustomResource):
         __props__['all_fixed_ips'] = None
         __props__['all_security_group_ids'] = None
         __props__['all_tags'] = None
+        __props__['dns_assignments'] = None
 
         super(Port, __self__).__init__(
             'openstack:networking/port:Port',

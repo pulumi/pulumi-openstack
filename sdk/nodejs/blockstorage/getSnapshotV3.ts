@@ -70,6 +70,7 @@ export interface GetSnapshotV3Result {
      * The snapshot's metadata.
      */
     readonly metadata: {[key: string]: any};
+    readonly mostRecent?: boolean;
     /**
      * See Argument Reference above.
      */

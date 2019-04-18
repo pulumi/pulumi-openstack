@@ -58,9 +58,21 @@ export interface GetEndpointArgs {
  */
 export interface GetEndpointResult {
     /**
+     * See Argument Reference above.
+     */
+    readonly interface?: string;
+    /**
      * The region the endpoint is located in.
      */
     readonly region: string;
+    /**
+     * See Argument Reference above.
+     */
+    readonly serviceId?: string;
+    /**
+     * See Argument Reference above.
+     */
+    readonly serviceName?: string;
     /**
      * The endpoint URL
      */

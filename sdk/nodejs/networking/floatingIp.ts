@@ -51,6 +51,20 @@ export class FloatingIp extends pulumi.CustomResource {
      */
     public readonly description: pulumi.Output<string | undefined>;
     /**
+     * The floating IP DNS domain. Available, when Neutron
+     * DNS extension is enabled. The data in this attribute will be published in an
+     * external DNS service when Neutron is configured to integrate with such a
+     * service. Changing this creates a new floating IP.
+     */
+    public readonly dnsDomain: pulumi.Output<string | undefined>;
+    /**
+     * The floating IP DNS name. Available, when Neutron DNS
+     * extension is enabled. The data in this attribute will be published in an
+     * external DNS service when Neutron is configured to integrate with such a
+     * service. Changing this creates a new floating IP.
+     */
+    public readonly dnsName: pulumi.Output<string | undefined>;
+    /**
      * Fixed IP of the port to associate with this floating IP. Required if
      * the port has multiple fixed IPs.
      */
@@ -109,6 +123,8 @@ export class FloatingIp extends pulumi.CustomResource {
             inputs["address"] = state ? state.address : undefined;
             inputs["allTags"] = state ? state.allTags : undefined;
             inputs["description"] = state ? state.description : undefined;
+            inputs["dnsDomain"] = state ? state.dnsDomain : undefined;
+            inputs["dnsName"] = state ? state.dnsName : undefined;
             inputs["fixedIp"] = state ? state.fixedIp : undefined;
             inputs["pool"] = state ? state.pool : undefined;
             inputs["portId"] = state ? state.portId : undefined;
@@ -124,6 +140,8 @@ export class FloatingIp extends pulumi.CustomResource {
             }
             inputs["address"] = args ? args.address : undefined;
             inputs["description"] = args ? args.description : undefined;
+            inputs["dnsDomain"] = args ? args.dnsDomain : undefined;
+            inputs["dnsName"] = args ? args.dnsName : undefined;
             inputs["fixedIp"] = args ? args.fixedIp : undefined;
             inputs["pool"] = args ? args.pool : undefined;
             inputs["portId"] = args ? args.portId : undefined;
@@ -158,6 +176,20 @@ export interface FloatingIpState {
      * Human-readable description for the floating IP.
      */
     readonly description?: pulumi.Input<string>;
+    /**
+     * The floating IP DNS domain. Available, when Neutron
+     * DNS extension is enabled. The data in this attribute will be published in an
+     * external DNS service when Neutron is configured to integrate with such a
+     * service. Changing this creates a new floating IP.
+     */
+    readonly dnsDomain?: pulumi.Input<string>;
+    /**
+     * The floating IP DNS name. Available, when Neutron DNS
+     * extension is enabled. The data in this attribute will be published in an
+     * external DNS service when Neutron is configured to integrate with such a
+     * service. Changing this creates a new floating IP.
+     */
+    readonly dnsName?: pulumi.Input<string>;
     /**
      * Fixed IP of the port to associate with this floating IP. Required if
      * the port has multiple fixed IPs.
@@ -218,6 +250,20 @@ export interface FloatingIpArgs {
      * Human-readable description for the floating IP.
      */
     readonly description?: pulumi.Input<string>;
+    /**
+     * The floating IP DNS domain. Available, when Neutron
+     * DNS extension is enabled. The data in this attribute will be published in an
+     * external DNS service when Neutron is configured to integrate with such a
+     * service. Changing this creates a new floating IP.
+     */
+    readonly dnsDomain?: pulumi.Input<string>;
+    /**
+     * The floating IP DNS name. Available, when Neutron DNS
+     * extension is enabled. The data in this attribute will be published in an
+     * external DNS service when Neutron is configured to integrate with such a
+     * service. Changing this creates a new floating IP.
+     */
+    readonly dnsName?: pulumi.Input<string>;
     /**
      * Fixed IP of the port to associate with this floating IP. Required if
      * the port has multiple fixed IPs.

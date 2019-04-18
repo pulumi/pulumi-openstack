@@ -26,7 +26,18 @@ func LookupFloatingIp(ctx *pulumi.Context, args *GetFloatingIpArgs) (*GetFloatin
 		return nil, err
 	}
 	return &GetFloatingIpResult{
+		Address: outputs["address"],
 		AllTags: outputs["allTags"],
+		Description: outputs["description"],
+		DnsDomain: outputs["dnsDomain"],
+		DnsName: outputs["dnsName"],
+		FixedIp: outputs["fixedIp"],
+		Pool: outputs["pool"],
+		PortId: outputs["portId"],
+		Region: outputs["region"],
+		Status: outputs["status"],
+		Tags: outputs["tags"],
+		TenantId: outputs["tenantId"],
 		Id: outputs["id"],
 	}, nil
 }
@@ -57,8 +68,23 @@ type GetFloatingIpArgs struct {
 
 // A collection of values returned by getFloatingIp.
 type GetFloatingIpResult struct {
+	Address interface{}
 	// A set of string tags applied on the floating IP.
 	AllTags interface{}
+	Description interface{}
+	// The floating IP DNS domain. Available, when Neutron DNS
+	// extension is enabled.
+	DnsDomain interface{}
+	// The floating IP DNS name. Available, when Neutron DNS extension
+	// is enabled.
+	DnsName interface{}
+	FixedIp interface{}
+	Pool interface{}
+	PortId interface{}
+	Region interface{}
+	Status interface{}
+	Tags interface{}
+	TenantId interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

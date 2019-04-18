@@ -26,10 +26,12 @@ func NewFloatingIpAssociate(ctx *pulumi.Context,
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["fixedIp"] = nil
 		inputs["floatingIp"] = nil
 		inputs["portId"] = nil
 		inputs["region"] = nil
 	} else {
+		inputs["fixedIp"] = args.FixedIp
 		inputs["floatingIp"] = args.FloatingIp
 		inputs["portId"] = args.PortId
 		inputs["region"] = args.Region
@@ -47,6 +49,7 @@ func GetFloatingIpAssociate(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *FloatingIpAssociateState, opts ...pulumi.ResourceOpt) (*FloatingIpAssociate, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["fixedIp"] = state.FixedIp
 		inputs["floatingIp"] = state.FloatingIp
 		inputs["portId"] = state.PortId
 		inputs["region"] = state.Region
@@ -66,6 +69,10 @@ func (r *FloatingIpAssociate) URN() *pulumi.URNOutput {
 // ID is this resource's unique identifier assigned by its provider.
 func (r *FloatingIpAssociate) ID() *pulumi.IDOutput {
 	return r.s.ID()
+}
+
+func (r *FloatingIpAssociate) FixedIp() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["fixedIp"])
 }
 
 // IP Address of an existing floating IP.
@@ -90,6 +97,7 @@ func (r *FloatingIpAssociate) Region() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering FloatingIpAssociate resources.
 type FloatingIpAssociateState struct {
+	FixedIp interface{}
 	// IP Address of an existing floating IP.
 	FloatingIp interface{}
 	// ID of an existing port with at least one IP address to
@@ -105,6 +113,7 @@ type FloatingIpAssociateState struct {
 
 // The set of arguments for constructing a FloatingIpAssociate resource.
 type FloatingIpAssociateArgs struct {
+	FixedIp interface{}
 	// IP Address of an existing floating IP.
 	FloatingIp interface{}
 	// ID of an existing port with at least one IP address to

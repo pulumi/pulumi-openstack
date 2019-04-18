@@ -9,7 +9,7 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class AddressScope(pulumi.CustomResource):
-    ip_version: pulumi.Output[int]
+    ip_version: pulumi.Output[float]
     """
     IP version, either 4 (default) or 6. Changing this
     creates a new address-scope.
@@ -44,7 +44,7 @@ class AddressScope(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] ip_version: IP version, either 4 (default) or 6. Changing this
+        :param pulumi.Input[float] ip_version: IP version, either 4 (default) or 6. Changing this
                creates a new address-scope.
         :param pulumi.Input[str] name: The name of the address-scope. Changing this updates the
                name of the existing address-scope.

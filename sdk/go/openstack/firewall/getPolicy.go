@@ -23,6 +23,8 @@ func LookupPolicy(ctx *pulumi.Context, args *GetPolicyArgs) (*GetPolicyResult, e
 	return &GetPolicyResult{
 		Audited: outputs["audited"],
 		Description: outputs["description"],
+		Name: outputs["name"],
+		PolicyId: outputs["policyId"],
 		Region: outputs["region"],
 		Rules: outputs["rules"],
 		Shared: outputs["shared"],
@@ -51,6 +53,10 @@ type GetPolicyResult struct {
 	Audited interface{}
 	// The description of the firewall policy.
 	Description interface{}
+	// See Argument Reference above.
+	Name interface{}
+	// See Argument Reference above.
+	PolicyId interface{}
 	// See Argument Reference above.
 	Region interface{}
 	// The array of one or more firewall rules that comprise the policy.

@@ -9,6 +9,10 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class ShareAccess(pulumi.CustomResource):
+    access_key: pulumi.Output[str]
+    """
+    The access credential of the entity granted access.
+    """
     access_level: pulumi.Output[str]
     """
     The access level to the share. Can either be `rw` or `ro`.
@@ -20,7 +24,9 @@ class ShareAccess(pulumi.CustomResource):
     """
     access_type: pulumi.Output[str]
     """
-    The access rule type. Can either be an ip, user or cert.
+    The access rule type. Can either be an ip, user,
+    cert, or cephx. cephx support requires an OpenStack environment that supports
+    Shared Filesystem microversion 2.13 (Mitaka) or later.
     """
     region: pulumi.Output[str]
     """
@@ -36,12 +42,18 @@ class ShareAccess(pulumi.CustomResource):
         """
         Use this resource to control the share access lists.
         
+        > **Important Security Notice** The access key retrieved by this resource will
+        be stored *unencrypted* in your Terraform state file. If you use this resource
+        in production, please make sure your state file is sufficiently protected.
+        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_level: The access level to the share. Can either be `rw` or `ro`.
         :param pulumi.Input[str] access_to: The value that defines the access. Can either be an IP
                address or a username verified by configured Security Service of the Share Network.
-        :param pulumi.Input[str] access_type: The access rule type. Can either be an ip, user or cert.
+        :param pulumi.Input[str] access_type: The access rule type. Can either be an ip, user,
+               cert, or cephx. cephx support requires an OpenStack environment that supports
+               Shared Filesystem microversion 2.13 (Mitaka) or later.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Shared File System client.
                A Shared File System client is needed to create a share access. Changing this
                creates a new share access.
@@ -63,22 +75,24 @@ class ShareAccess(pulumi.CustomResource):
         __props__ = dict()
 
         if access_level is None:
-            raise TypeError('Missing required property access_level')
+            raise TypeError("Missing required property 'access_level'")
         __props__['access_level'] = access_level
 
         if access_to is None:
-            raise TypeError('Missing required property access_to')
+            raise TypeError("Missing required property 'access_to'")
         __props__['access_to'] = access_to
 
         if access_type is None:
-            raise TypeError('Missing required property access_type')
+            raise TypeError("Missing required property 'access_type'")
         __props__['access_type'] = access_type
 
         __props__['region'] = region
 
         if share_id is None:
-            raise TypeError('Missing required property share_id')
+            raise TypeError("Missing required property 'share_id'")
         __props__['share_id'] = share_id
+
+        __props__['access_key'] = None
 
         super(ShareAccess, __self__).__init__(
             'openstack:sharedfilesystem/shareAccess:ShareAccess',

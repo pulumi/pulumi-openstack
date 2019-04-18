@@ -24,6 +24,7 @@ export function getNetwork(args?: GetNetworkArgs, opts?: pulumi.InvokeOptions): 
         "description": args.description,
         "external": args.external,
         "matchingSubnetCidr": args.matchingSubnetCidr,
+        "mtu": args.mtu,
         "name": args.name,
         "networkId": args.networkId,
         "region": args.region,
@@ -50,6 +51,11 @@ export interface GetNetworkArgs {
      * The CIDR of a subnet within the network.
      */
     readonly matchingSubnetCidr?: string;
+    /**
+     * The network MTU to filter. Available, when Neutron `net-mtu`
+     * extension is enabled.
+     */
+    readonly mtu?: number;
     /**
      * The name of the network.
      */
@@ -88,7 +94,7 @@ export interface GetNetworkArgs {
  */
 export interface GetNetworkResult {
     /**
-     * (Optional) The administrative state of the network.
+     * The administrative state of the network.
      */
     readonly adminStateUp: string;
     /**
@@ -96,18 +102,48 @@ export interface GetNetworkResult {
      */
     readonly allTags: string[];
     /**
-     * (Optional) The availability zone candidates for the network.
+     * The availability zone candidates for the network.
      */
     readonly availabilityZoneHints: string[];
     /**
      * See Argument Reference above.
      */
+    readonly description?: string;
+    /**
+     * The network DNS domain. Available, when Neutron DNS extension
+     * is enabled
+     */
+    readonly dnsDomain: string;
+    /**
+     * See Argument Reference above.
+     */
+    readonly external?: boolean;
+    readonly matchingSubnetCidr?: string;
+    /**
+     * See Argument Reference above.
+     */
+    readonly mtu?: number;
+    /**
+     * See Argument Reference above.
+     */
+    readonly name?: string;
+    readonly networkId?: string;
+    /**
+     * See Argument Reference above.
+     */
     readonly region: string;
     /**
-     * (Optional)  Specifies whether the network resource can be accessed
-     * by any tenant or not.
+     * Specifies whether the network resource can be accessed by any
+     * tenant or not.
      */
     readonly shared: string;
+    readonly status?: string;
+    readonly tags?: string[];
+    readonly tenantId?: string;
+    /**
+     * See Argument Reference above.
+     */
+    readonly transparentVlan?: boolean;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

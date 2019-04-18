@@ -122,6 +122,7 @@ export interface GetImageResult {
      * location of the image or the path to retrieve it.
      */
     readonly file: string;
+    readonly memberStatus?: string;
     /**
      * The metadata associated with the image.
      * Image metadata allow for meaningfully define the image properties
@@ -136,6 +137,13 @@ export interface GetImageResult {
      * The minimum amount of ram required to use the image.
      */
     readonly minRamMb: number;
+    readonly mostRecent?: boolean;
+    readonly name?: string;
+    readonly owner?: string;
+    /**
+     * Freeform information about the image.
+     */
+    readonly properties?: {[key: string]: any};
     /**
      * Whether or not the image is protected.
      */
@@ -150,6 +158,11 @@ export interface GetImageResult {
      * The size of the image (in bytes).
      */
     readonly sizeBytes: number;
+    readonly sizeMax?: number;
+    readonly sizeMin?: number;
+    readonly sortDirection?: string;
+    readonly sortKey?: string;
+    readonly tag?: string;
     /**
      * The tags list of the image.
      */
@@ -158,6 +171,7 @@ export interface GetImageResult {
      * The date the image was last updated.
      */
     readonly updatedAt: string;
+    readonly visibility?: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

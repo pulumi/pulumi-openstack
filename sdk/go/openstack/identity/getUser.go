@@ -27,7 +27,13 @@ func LookupUser(ctx *pulumi.Context, args *GetUserArgs) (*GetUserResult, error) 
 	return &GetUserResult{
 		DefaultProjectId: outputs["defaultProjectId"],
 		DomainId: outputs["domainId"],
+		Enabled: outputs["enabled"],
+		IdpId: outputs["idpId"],
+		Name: outputs["name"],
+		PasswordExpiresAt: outputs["passwordExpiresAt"],
+		ProtocolId: outputs["protocolId"],
 		Region: outputs["region"],
+		UniqueId: outputs["uniqueId"],
 		Id: outputs["id"],
 	}, nil
 }
@@ -58,8 +64,20 @@ type GetUserResult struct {
 	DefaultProjectId interface{}
 	// See Argument Reference above.
 	DomainId interface{}
+	// See Argument Reference above.
+	Enabled interface{}
+	// See Argument Reference above.
+	IdpId interface{}
+	// See Argument Reference above.
+	Name interface{}
+	// See Argument Reference above.
+	PasswordExpiresAt interface{}
+	// See Argument Reference above.
+	ProtocolId interface{}
 	// The region the user is located in.
 	Region interface{}
+	// See Argument Reference above.
+	UniqueId interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

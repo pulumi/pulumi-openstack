@@ -70,7 +70,7 @@ class FloatingIp(pulumi.CustomResource):
         __props__ = dict()
 
         if pool is None:
-            raise TypeError('Missing required property pool')
+            raise TypeError("Missing required property 'pool'")
         __props__['pool'] = pool
 
         __props__['region'] = region

@@ -48,6 +48,7 @@ export interface GetAuthScopeArgs {
  * A collection of values returned by getAuthScope.
  */
 export interface GetAuthScopeResult {
+    readonly name: string;
     /**
      * The domain ID of the project.
      */

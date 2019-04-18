@@ -35,6 +35,7 @@ func LookupShareNetwork(ctx *pulumi.Context, args *GetShareNetworkArgs) (*GetSha
 		NeutronSubnetId: outputs["neutronSubnetId"],
 		ProjectId: outputs["projectId"],
 		Region: outputs["region"],
+		SecurityServiceId: outputs["securityServiceId"],
 		SecurityServiceIds: outputs["securityServiceIds"],
 		SegmentationId: outputs["segmentationId"],
 		Id: outputs["id"],
@@ -87,6 +88,8 @@ type GetShareNetworkResult struct {
 	ProjectId interface{}
 	// See Argument Reference above.
 	Region interface{}
+	// See Argument Reference above.
+	SecurityServiceId interface{}
 	// The list of security service IDs associated with
 	// the share network.
 	SecurityServiceIds interface{}

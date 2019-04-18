@@ -78,13 +78,13 @@ class PortSecGroupAssociate(pulumi.CustomResource):
         __props__['enforce'] = enforce
 
         if port_id is None:
-            raise TypeError('Missing required property port_id')
+            raise TypeError("Missing required property 'port_id'")
         __props__['port_id'] = port_id
 
         __props__['region'] = region
 
         if security_group_ids is None:
-            raise TypeError('Missing required property security_group_ids')
+            raise TypeError("Missing required property 'security_group_ids'")
         __props__['security_group_ids'] = security_group_ids
 
         __props__['all_security_group_ids'] = None

@@ -61,7 +61,7 @@ class Volume(pulumi.CustomResource):
     omitted, the `region` argument of the provider is used. Changing this
     creates a new volume.
     """
-    size: pulumi.Output[int]
+    size: pulumi.Output[float]
     """
     The size of the volume to create (in gigabytes).
     """
@@ -109,7 +109,7 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region in which to create the volume. If
                omitted, the `region` argument of the provider is used. Changing this
                creates a new volume.
-        :param pulumi.Input[int] size: The size of the volume to create (in gigabytes).
+        :param pulumi.Input[float] size: The size of the volume to create (in gigabytes).
         :param pulumi.Input[str] snapshot_id: The snapshot ID from which to create the volume.
                Changing this creates a new volume.
         :param pulumi.Input[str] source_replica: The volume ID to replicate with.
@@ -152,7 +152,7 @@ class Volume(pulumi.CustomResource):
         __props__['region'] = region
 
         if size is None:
-            raise TypeError('Missing required property size')
+            raise TypeError("Missing required property 'size'")
         __props__['size'] = size
 
         __props__['snapshot_id'] = snapshot_id

@@ -12,69 +12,105 @@ class GetDnsZoneResult:
     """
     A collection of values returned by getDnsZone.
     """
-    def __init__(__self__, attributes=None, created_at=None, masters=None, pool_id=None, project_id=None, region=None, serial=None, transferred_at=None, updated_at=None, version=None, id=None):
+    def __init__(__self__, attributes=None, created_at=None, description=None, email=None, masters=None, name=None, pool_id=None, project_id=None, region=None, serial=None, status=None, transferred_at=None, ttl=None, type=None, updated_at=None, version=None, id=None):
         if attributes and not isinstance(attributes, dict):
-            raise TypeError('Expected argument attributes to be a dict')
+            raise TypeError("Expected argument 'attributes' to be a dict")
         __self__.attributes = attributes
         """
         Attributes of the DNS Service scheduler.
         """
         if created_at and not isinstance(created_at, str):
-            raise TypeError('Expected argument created_at to be a str')
+            raise TypeError("Expected argument 'created_at' to be a str")
         __self__.created_at = created_at
         """
         The time the zone was created.
         """
+        if description and not isinstance(description, str):
+            raise TypeError("Expected argument 'description' to be a str")
+        __self__.description = description
+        """
+        See Argument Reference above.
+        """
+        if email and not isinstance(email, str):
+            raise TypeError("Expected argument 'email' to be a str")
+        __self__.email = email
+        """
+        See Argument Reference above.
+        """
         if masters and not isinstance(masters, list):
-            raise TypeError('Expected argument masters to be a list')
+            raise TypeError("Expected argument 'masters' to be a list")
         __self__.masters = masters
         """
         An array of master DNS servers. When `type` is  `SECONDARY`.
         """
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        __self__.name = name
+        """
+        See Argument Reference above.
+        """
         if pool_id and not isinstance(pool_id, str):
-            raise TypeError('Expected argument pool_id to be a str')
+            raise TypeError("Expected argument 'pool_id' to be a str")
         __self__.pool_id = pool_id
         """
         The ID of the pool hosting the zone.
         """
         if project_id and not isinstance(project_id, str):
-            raise TypeError('Expected argument project_id to be a str')
+            raise TypeError("Expected argument 'project_id' to be a str")
         __self__.project_id = project_id
         """
         The project ID that owns the zone.
         """
         if region and not isinstance(region, str):
-            raise TypeError('Expected argument region to be a str')
+            raise TypeError("Expected argument 'region' to be a str")
         __self__.region = region
         """
         See Argument Reference above.
         """
-        if serial and not isinstance(serial, int):
-            raise TypeError('Expected argument serial to be a int')
+        if serial and not isinstance(serial, float):
+            raise TypeError("Expected argument 'serial' to be a float")
         __self__.serial = serial
         """
         The serial number of the zone.
         """
+        if status and not isinstance(status, str):
+            raise TypeError("Expected argument 'status' to be a str")
+        __self__.status = status
+        """
+        See Argument Reference above.
+        """
         if transferred_at and not isinstance(transferred_at, str):
-            raise TypeError('Expected argument transferred_at to be a str')
+            raise TypeError("Expected argument 'transferred_at' to be a str")
         __self__.transferred_at = transferred_at
         """
         The time the zone was transferred.
         """
+        if ttl and not isinstance(ttl, float):
+            raise TypeError("Expected argument 'ttl' to be a float")
+        __self__.ttl = ttl
+        """
+        See Argument Reference above.
+        """
+        if type and not isinstance(type, str):
+            raise TypeError("Expected argument 'type' to be a str")
+        __self__.type = type
+        """
+        See Argument Reference above.
+        """
         if updated_at and not isinstance(updated_at, str):
-            raise TypeError('Expected argument updated_at to be a str')
+            raise TypeError("Expected argument 'updated_at' to be a str")
         __self__.updated_at = updated_at
         """
         The time the zone was last updated.
         """
-        if version and not isinstance(version, int):
-            raise TypeError('Expected argument version to be a int')
+        if version and not isinstance(version, float):
+            raise TypeError("Expected argument 'version' to be a float")
         __self__.version = version
         """
         The version of the zone.
         """
         if id and not isinstance(id, str):
-            raise TypeError('Expected argument id to be a str')
+            raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
@@ -107,12 +143,18 @@ async def get_dns_zone(attributes=None,created_at=None,description=None,email=No
     return GetDnsZoneResult(
         attributes=__ret__.get('attributes'),
         created_at=__ret__.get('createdAt'),
+        description=__ret__.get('description'),
+        email=__ret__.get('email'),
         masters=__ret__.get('masters'),
+        name=__ret__.get('name'),
         pool_id=__ret__.get('poolId'),
         project_id=__ret__.get('projectId'),
         region=__ret__.get('region'),
         serial=__ret__.get('serial'),
+        status=__ret__.get('status'),
         transferred_at=__ret__.get('transferredAt'),
+        ttl=__ret__.get('ttl'),
+        type=__ret__.get('type'),
         updated_at=__ret__.get('updatedAt'),
         version=__ret__.get('version'),
         id=__ret__.get('id'))

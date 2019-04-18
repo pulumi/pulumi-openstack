@@ -9,6 +9,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * ### Simple port
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -18,6 +20,43 @@ import * as utilities from "../utilities";
  * });
  * const port1 = new openstack.networking.Port("port_1", {
  *     adminStateUp: true,
+ *     networkId: network1.id,
+ * });
+ * ```
+ * 
+ * ### Port with physical binding information
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ * 
+ * const network1 = new openstack.networking.Network("network_1", {
+ *     adminStateUp: true,
+ * });
+ * const port1 = new openstack.networking.Port("port_1", {
+ *     adminStateUp: true,
+ *     binding: {
+ *         hostId: "b080b9cf-46e0-4ce8-ad47-0fd4accc872b",
+ *         profile: `{
+ *   "local_link_information": [
+ *     {
+ *       "switch_info": "info1",
+ *       "port_id": "Ethernet3/4",
+ *       "switch_id": "12:34:56:78:9A:BC"
+ *     },
+ *     {
+ *       "switch_info": "info2",
+ *       "port_id": "Ethernet3/4",
+ *       "switch_id": "12:34:56:78:9A:BD"
+ *     }
+ *   ],
+ *   "vlan_type": "allowed"
+ * }
+ * `,
+ *         vnicType: "baremetal",
+ *     },
+ *     deviceId: "cdf70fcf-c161-4f24-9c70-96b3f5a54b71",
+ *     deviceOwner: "baremetal:none",
  *     networkId: network1.id,
  * });
  * ```
@@ -71,6 +110,11 @@ export class Port extends pulumi.CustomResource {
      */
     public readonly allowedAddressPairs: pulumi.Output<{ ipAddress: string, macAddress?: string }[] | undefined>;
     /**
+     * The port binding allows to specify binding information
+     * for the port. The structure is described below.
+     */
+    public readonly binding: pulumi.Output<{ hostId?: string, profile?: string, vifDetails: {[key: string]: any}, vifType: string, vnicType?: string }>;
+    /**
      * Human-readable description of the floating IP. Changing
      * this updates the `description` of an existing port.
      */
@@ -85,6 +129,15 @@ export class Port extends pulumi.CustomResource {
      * a new port.
      */
     public readonly deviceOwner: pulumi.Output<string>;
+    /**
+     * The list of maps representing port DNS assignments.
+     */
+    public /*out*/ readonly dnsAssignments: pulumi.Output<{[key: string]: any}[]>;
+    /**
+     * The port DNS name. Available, when Neutron DNS extension
+     * is enabled.
+     */
+    public readonly dnsName: pulumi.Output<string | undefined>;
     /**
      * An extra DHCP option that needs to be configured
      * on the port. The structure is described below. Can be specified multiple
@@ -126,6 +179,15 @@ export class Port extends pulumi.CustomResource {
      */
     public readonly noSecurityGroups: pulumi.Output<boolean | undefined>;
     /**
+     * Whether to explicitly enable or disable
+     * port security on the port. Port Security is usually enabled by default, so
+     * omitting argument will usually result in a value of "true". Setting this
+     * explicitly to `false` will disable port security. In order to disable port
+     * security, the port must not have any security groups. Valid values are `true`
+     * and `false`.
+     */
+    public readonly portSecurityEnabled: pulumi.Output<boolean>;
+    /**
      * The region in which to obtain the V2 networking client.
      * A networking client is needed to create a port. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
@@ -140,7 +202,7 @@ export class Port extends pulumi.CustomResource {
      */
     public readonly securityGroupIds: pulumi.Output<string[] | undefined>;
     /**
-     * See Argument Reference above.
+     * A set of string tags for the port.
      */
     public readonly tags: pulumi.Output<string[] | undefined>;
     /**
@@ -170,9 +232,12 @@ export class Port extends pulumi.CustomResource {
             inputs["allSecurityGroupIds"] = state ? state.allSecurityGroupIds : undefined;
             inputs["allTags"] = state ? state.allTags : undefined;
             inputs["allowedAddressPairs"] = state ? state.allowedAddressPairs : undefined;
+            inputs["binding"] = state ? state.binding : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["deviceId"] = state ? state.deviceId : undefined;
             inputs["deviceOwner"] = state ? state.deviceOwner : undefined;
+            inputs["dnsAssignments"] = state ? state.dnsAssignments : undefined;
+            inputs["dnsName"] = state ? state.dnsName : undefined;
             inputs["extraDhcpOptions"] = state ? state.extraDhcpOptions : undefined;
             inputs["fixedIps"] = state ? state.fixedIps : undefined;
             inputs["macAddress"] = state ? state.macAddress : undefined;
@@ -180,6 +245,7 @@ export class Port extends pulumi.CustomResource {
             inputs["networkId"] = state ? state.networkId : undefined;
             inputs["noFixedIp"] = state ? state.noFixedIp : undefined;
             inputs["noSecurityGroups"] = state ? state.noSecurityGroups : undefined;
+            inputs["portSecurityEnabled"] = state ? state.portSecurityEnabled : undefined;
             inputs["region"] = state ? state.region : undefined;
             inputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
             inputs["tags"] = state ? state.tags : undefined;
@@ -192,9 +258,11 @@ export class Port extends pulumi.CustomResource {
             }
             inputs["adminStateUp"] = args ? args.adminStateUp : undefined;
             inputs["allowedAddressPairs"] = args ? args.allowedAddressPairs : undefined;
+            inputs["binding"] = args ? args.binding : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["deviceId"] = args ? args.deviceId : undefined;
             inputs["deviceOwner"] = args ? args.deviceOwner : undefined;
+            inputs["dnsName"] = args ? args.dnsName : undefined;
             inputs["extraDhcpOptions"] = args ? args.extraDhcpOptions : undefined;
             inputs["fixedIps"] = args ? args.fixedIps : undefined;
             inputs["macAddress"] = args ? args.macAddress : undefined;
@@ -202,6 +270,7 @@ export class Port extends pulumi.CustomResource {
             inputs["networkId"] = args ? args.networkId : undefined;
             inputs["noFixedIp"] = args ? args.noFixedIp : undefined;
             inputs["noSecurityGroups"] = args ? args.noSecurityGroups : undefined;
+            inputs["portSecurityEnabled"] = args ? args.portSecurityEnabled : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
             inputs["tags"] = args ? args.tags : undefined;
@@ -210,6 +279,7 @@ export class Port extends pulumi.CustomResource {
             inputs["allFixedIps"] = undefined /*out*/;
             inputs["allSecurityGroupIds"] = undefined /*out*/;
             inputs["allTags"] = undefined /*out*/;
+            inputs["dnsAssignments"] = undefined /*out*/;
         }
         super("openstack:networking/port:Port", name, inputs, opts);
     }
@@ -247,6 +317,11 @@ export interface PortState {
      */
     readonly allowedAddressPairs?: pulumi.Input<pulumi.Input<{ ipAddress: pulumi.Input<string>, macAddress?: pulumi.Input<string> }>[]>;
     /**
+     * The port binding allows to specify binding information
+     * for the port. The structure is described below.
+     */
+    readonly binding?: pulumi.Input<{ hostId?: pulumi.Input<string>, profile?: pulumi.Input<string>, vifDetails?: pulumi.Input<{[key: string]: any}>, vifType?: pulumi.Input<string>, vnicType?: pulumi.Input<string> }>;
+    /**
      * Human-readable description of the floating IP. Changing
      * this updates the `description` of an existing port.
      */
@@ -261,6 +336,15 @@ export interface PortState {
      * a new port.
      */
     readonly deviceOwner?: pulumi.Input<string>;
+    /**
+     * The list of maps representing port DNS assignments.
+     */
+    readonly dnsAssignments?: pulumi.Input<pulumi.Input<{[key: string]: any}>[]>;
+    /**
+     * The port DNS name. Available, when Neutron DNS extension
+     * is enabled.
+     */
+    readonly dnsName?: pulumi.Input<string>;
     /**
      * An extra DHCP option that needs to be configured
      * on the port. The structure is described below. Can be specified multiple
@@ -302,6 +386,15 @@ export interface PortState {
      */
     readonly noSecurityGroups?: pulumi.Input<boolean>;
     /**
+     * Whether to explicitly enable or disable
+     * port security on the port. Port Security is usually enabled by default, so
+     * omitting argument will usually result in a value of "true". Setting this
+     * explicitly to `false` will disable port security. In order to disable port
+     * security, the port must not have any security groups. Valid values are `true`
+     * and `false`.
+     */
+    readonly portSecurityEnabled?: pulumi.Input<boolean>;
+    /**
      * The region in which to obtain the V2 networking client.
      * A networking client is needed to create a port. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
@@ -316,7 +409,7 @@ export interface PortState {
      */
     readonly securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * See Argument Reference above.
+     * A set of string tags for the port.
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -347,6 +440,11 @@ export interface PortArgs {
      */
     readonly allowedAddressPairs?: pulumi.Input<pulumi.Input<{ ipAddress: pulumi.Input<string>, macAddress?: pulumi.Input<string> }>[]>;
     /**
+     * The port binding allows to specify binding information
+     * for the port. The structure is described below.
+     */
+    readonly binding?: pulumi.Input<{ hostId?: pulumi.Input<string>, profile?: pulumi.Input<string>, vifDetails?: pulumi.Input<{[key: string]: any}>, vifType?: pulumi.Input<string>, vnicType?: pulumi.Input<string> }>;
+    /**
      * Human-readable description of the floating IP. Changing
      * this updates the `description` of an existing port.
      */
@@ -361,6 +459,11 @@ export interface PortArgs {
      * a new port.
      */
     readonly deviceOwner?: pulumi.Input<string>;
+    /**
+     * The port DNS name. Available, when Neutron DNS extension
+     * is enabled.
+     */
+    readonly dnsName?: pulumi.Input<string>;
     /**
      * An extra DHCP option that needs to be configured
      * on the port. The structure is described below. Can be specified multiple
@@ -402,6 +505,15 @@ export interface PortArgs {
      */
     readonly noSecurityGroups?: pulumi.Input<boolean>;
     /**
+     * Whether to explicitly enable or disable
+     * port security on the port. Port Security is usually enabled by default, so
+     * omitting argument will usually result in a value of "true". Setting this
+     * explicitly to `false` will disable port security. In order to disable port
+     * security, the port must not have any security groups. Valid values are `true`
+     * and `false`.
+     */
+    readonly portSecurityEnabled?: pulumi.Input<boolean>;
+    /**
      * The region in which to obtain the V2 networking client.
      * A networking client is needed to create a port. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
@@ -416,7 +528,7 @@ export interface PortArgs {
      */
     readonly securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * See Argument Reference above.
+     * A set of string tags for the port.
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**

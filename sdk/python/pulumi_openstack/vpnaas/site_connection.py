@@ -51,7 +51,7 @@ class SiteConnection(pulumi.CustomResource):
     Most often, local ID would be domain name, email address, etc.
     If this is not configured then the external IP address will be used as the ID.
     """
-    mtu: pulumi.Output[int]
+    mtu: pulumi.Output[float]
     """
     The maximum transmission unit (MTU) value to address fragmentation.
     Minimum value is 68 for IPv4, and 1280 for IPv6.
@@ -129,7 +129,7 @@ class SiteConnection(pulumi.CustomResource):
         :param pulumi.Input[str] local_id: An ID to be used instead of the external IP address for a virtual router used in traffic between instances on different networks in east-west traffic.
                Most often, local ID would be domain name, email address, etc.
                If this is not configured then the external IP address will be used as the ID.
-        :param pulumi.Input[int] mtu: The maximum transmission unit (MTU) value to address fragmentation.
+        :param pulumi.Input[float] mtu: The maximum transmission unit (MTU) value to address fragmentation.
                Minimum value is 68 for IPv4, and 1280 for IPv6.
         :param pulumi.Input[str] name: The name of the connection. Changing this updates the name of
                the existing connection.
@@ -173,13 +173,13 @@ class SiteConnection(pulumi.CustomResource):
         __props__['dpds'] = dpds
 
         if ikepolicy_id is None:
-            raise TypeError('Missing required property ikepolicy_id')
+            raise TypeError("Missing required property 'ikepolicy_id'")
         __props__['ikepolicy_id'] = ikepolicy_id
 
         __props__['initiator'] = initiator
 
         if ipsecpolicy_id is None:
-            raise TypeError('Missing required property ipsecpolicy_id')
+            raise TypeError("Missing required property 'ipsecpolicy_id'")
         __props__['ipsecpolicy_id'] = ipsecpolicy_id
 
         __props__['local_ep_group_id'] = local_ep_group_id
@@ -191,7 +191,7 @@ class SiteConnection(pulumi.CustomResource):
         __props__['name'] = name
 
         if peer_address is None:
-            raise TypeError('Missing required property peer_address')
+            raise TypeError("Missing required property 'peer_address'")
         __props__['peer_address'] = peer_address
 
         __props__['peer_cidrs'] = peer_cidrs
@@ -199,11 +199,11 @@ class SiteConnection(pulumi.CustomResource):
         __props__['peer_ep_group_id'] = peer_ep_group_id
 
         if peer_id is None:
-            raise TypeError('Missing required property peer_id')
+            raise TypeError("Missing required property 'peer_id'")
         __props__['peer_id'] = peer_id
 
         if psk is None:
-            raise TypeError('Missing required property psk')
+            raise TypeError("Missing required property 'psk'")
         __props__['psk'] = psk
 
         __props__['region'] = region
@@ -213,7 +213,7 @@ class SiteConnection(pulumi.CustomResource):
         __props__['value_specs'] = value_specs
 
         if vpnservice_id is None:
-            raise TypeError('Missing required property vpnservice_id')
+            raise TypeError("Missing required property 'vpnservice_id'")
         __props__['vpnservice_id'] = vpnservice_id
 
         super(SiteConnection, __self__).__init__(

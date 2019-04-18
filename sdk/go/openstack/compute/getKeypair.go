@@ -20,6 +20,7 @@ func LookupKeypair(ctx *pulumi.Context, args *GetKeypairArgs) (*GetKeypairResult
 	}
 	return &GetKeypairResult{
 		Fingerprint: outputs["fingerprint"],
+		Name: outputs["name"],
 		PublicKey: outputs["publicKey"],
 		Region: outputs["region"],
 		Id: outputs["id"],
@@ -39,6 +40,8 @@ type GetKeypairArgs struct {
 type GetKeypairResult struct {
 	// The fingerprint of the OpenSSH key.
 	Fingerprint interface{}
+	// See Argument Reference above.
+	Name interface{}
 	// The OpenSSH-formatted public key of the keypair.
 	PublicKey interface{}
 	// See Argument Reference above.

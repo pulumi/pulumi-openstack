@@ -34,6 +34,7 @@ func NewSubnet(ctx *pulumi.Context,
 		inputs["name"] = nil
 		inputs["networkId"] = nil
 		inputs["noGateway"] = nil
+		inputs["prefixLength"] = nil
 		inputs["region"] = nil
 		inputs["subnetpoolId"] = nil
 		inputs["tags"] = nil
@@ -53,6 +54,7 @@ func NewSubnet(ctx *pulumi.Context,
 		inputs["name"] = args.Name
 		inputs["networkId"] = args.NetworkId
 		inputs["noGateway"] = args.NoGateway
+		inputs["prefixLength"] = args.PrefixLength
 		inputs["region"] = args.Region
 		inputs["subnetpoolId"] = args.SubnetpoolId
 		inputs["tags"] = args.Tags
@@ -87,6 +89,7 @@ func GetSubnet(ctx *pulumi.Context,
 		inputs["name"] = state.Name
 		inputs["networkId"] = state.NetworkId
 		inputs["noGateway"] = state.NoGateway
+		inputs["prefixLength"] = state.PrefixLength
 		inputs["region"] = state.Region
 		inputs["subnetpoolId"] = state.SubnetpoolId
 		inputs["tags"] = state.Tags
@@ -203,6 +206,14 @@ func (r *Subnet) NoGateway() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["noGateway"])
 }
 
+// The prefix length to use when creating a subnet
+// from a subnet pool. The default subnet pool prefix length that was defined
+// when creating the subnet pool will be used if not provided. Changing this
+// creates a new subnet.
+func (r *Subnet) PrefixLength() *pulumi.IntOutput {
+	return (*pulumi.IntOutput)(r.s.State["prefixLength"])
+}
+
 // The region in which to obtain the V2 Networking client.
 // A Networking client is needed to create a Neutron subnet. If omitted, the
 // `region` argument of the provider is used. Changing this creates a new
@@ -285,6 +296,11 @@ type SubnetState struct {
 	// Do not set a gateway IP on this subnet. Changing
 	// this removes or adds a default gateway IP of the existing subnet.
 	NoGateway interface{}
+	// The prefix length to use when creating a subnet
+	// from a subnet pool. The default subnet pool prefix length that was defined
+	// when creating the subnet pool will be used if not provided. Changing this
+	// creates a new subnet.
+	PrefixLength interface{}
 	// The region in which to obtain the V2 Networking client.
 	// A Networking client is needed to create a Neutron subnet. If omitted, the
 	// `region` argument of the provider is used. Changing this creates a new
@@ -351,6 +367,11 @@ type SubnetArgs struct {
 	// Do not set a gateway IP on this subnet. Changing
 	// this removes or adds a default gateway IP of the existing subnet.
 	NoGateway interface{}
+	// The prefix length to use when creating a subnet
+	// from a subnet pool. The default subnet pool prefix length that was defined
+	// when creating the subnet pool will be used if not provided. Changing this
+	// creates a new subnet.
+	PrefixLength interface{}
 	// The region in which to obtain the V2 Networking client.
 	// A Networking client is needed to create a Neutron subnet. If omitted, the
 	// `region` argument of the provider is used. Changing this creates a new

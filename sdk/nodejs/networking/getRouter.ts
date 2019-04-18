@@ -83,6 +83,7 @@ export interface GetRouterArgs {
  * A collection of values returned by getRouter.
  */
 export interface GetRouterResult {
+    readonly adminStateUp?: boolean;
     /**
      * The set of string tags applied on the router.
      */
@@ -91,6 +92,8 @@ export interface GetRouterResult {
      * The availability zone that is used to make router resources highly available.
      */
     readonly availabilityZoneHints: string[];
+    readonly description?: string;
+    readonly distributed?: boolean;
     /**
      * The value that points out if the Source NAT is enabled on the router.
      */
@@ -103,6 +106,12 @@ export interface GetRouterResult {
      * The network UUID of an external gateway for the router.
      */
     readonly externalNetworkId: string;
+    readonly name?: string;
+    readonly region?: string;
+    readonly routerId?: string;
+    readonly status?: string;
+    readonly tags?: string[];
+    readonly tenantId?: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

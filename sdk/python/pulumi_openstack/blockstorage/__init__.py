@@ -8,5 +8,6 @@ from .volume_attach import *
 from .volume_v1 import *
 from .volume_v2 import *
 from .volume import *
+from .get_availability_zones_v3 import *
 from .get_snapshot_v2 import *
 from .get_snapshot_v3 import *

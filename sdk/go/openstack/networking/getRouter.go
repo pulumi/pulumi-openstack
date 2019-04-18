@@ -27,11 +27,20 @@ func LookupRouter(ctx *pulumi.Context, args *GetRouterArgs) (*GetRouterResult, e
 		return nil, err
 	}
 	return &GetRouterResult{
+		AdminStateUp: outputs["adminStateUp"],
 		AllTags: outputs["allTags"],
 		AvailabilityZoneHints: outputs["availabilityZoneHints"],
+		Description: outputs["description"],
+		Distributed: outputs["distributed"],
 		EnableSnat: outputs["enableSnat"],
 		ExternalFixedIps: outputs["externalFixedIps"],
 		ExternalNetworkId: outputs["externalNetworkId"],
+		Name: outputs["name"],
+		Region: outputs["region"],
+		RouterId: outputs["routerId"],
+		Status: outputs["status"],
+		Tags: outputs["tags"],
+		TenantId: outputs["tenantId"],
 		Id: outputs["id"],
 	}, nil
 }
@@ -63,16 +72,25 @@ type GetRouterArgs struct {
 
 // A collection of values returned by getRouter.
 type GetRouterResult struct {
+	AdminStateUp interface{}
 	// The set of string tags applied on the router.
 	AllTags interface{}
 	// The availability zone that is used to make router resources highly available.
 	AvailabilityZoneHints interface{}
+	Description interface{}
+	Distributed interface{}
 	// The value that points out if the Source NAT is enabled on the router.
 	EnableSnat interface{}
 	// The external fixed IPs of the router.
 	ExternalFixedIps interface{}
 	// The network UUID of an external gateway for the router.
 	ExternalNetworkId interface{}
+	Name interface{}
+	Region interface{}
+	RouterId interface{}
+	Status interface{}
+	Tags interface{}
+	TenantId interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

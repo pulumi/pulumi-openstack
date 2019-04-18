@@ -20,7 +20,7 @@ class Vip(pulumi.CustomResource):
     Acceptable values are "true" and "false". Changing this value updates the
     state of the existing vip.
     """
-    conn_limit: pulumi.Output[int]
+    conn_limit: pulumi.Output[float]
     """
     The maximum number of connections allowed for the
     vip. Default is -1, meaning no limit. Changing this updates the conn_limit
@@ -52,7 +52,7 @@ class Vip(pulumi.CustomResource):
     The ID of the pool with which the vip is associated.
     Changing this updates the pool_id of the existing vip.
     """
-    port: pulumi.Output[int]
+    port: pulumi.Output[float]
     """
     The port on which to listen for client traffic. Changing
     this creates a new vip.
@@ -96,7 +96,7 @@ class Vip(pulumi.CustomResource):
         :param pulumi.Input[bool] admin_state_up: The administrative state of the vip.
                Acceptable values are "true" and "false". Changing this value updates the
                state of the existing vip.
-        :param pulumi.Input[int] conn_limit: The maximum number of connections allowed for the
+        :param pulumi.Input[float] conn_limit: The maximum number of connections allowed for the
                vip. Default is -1, meaning no limit. Changing this updates the conn_limit
                of the existing vip.
         :param pulumi.Input[str] description: Human-readable description for the vip. Changing
@@ -110,7 +110,7 @@ class Vip(pulumi.CustomResource):
                the persistence of the existing vip.
         :param pulumi.Input[str] pool_id: The ID of the pool with which the vip is associated.
                Changing this updates the pool_id of the existing vip.
-        :param pulumi.Input[int] port: The port on which to listen for client traffic. Changing
+        :param pulumi.Input[float] port: The port on which to listen for client traffic. Changing
                this creates a new vip.
         :param pulumi.Input[str] protocol: The protocol - can be either 'TCP, 'HTTP', or
                HTTPS'. Changing this creates a new vip.
@@ -155,21 +155,21 @@ class Vip(pulumi.CustomResource):
         __props__['persistence'] = persistence
 
         if pool_id is None:
-            raise TypeError('Missing required property pool_id')
+            raise TypeError("Missing required property 'pool_id'")
         __props__['pool_id'] = pool_id
 
         if port is None:
-            raise TypeError('Missing required property port')
+            raise TypeError("Missing required property 'port'")
         __props__['port'] = port
 
         if protocol is None:
-            raise TypeError('Missing required property protocol')
+            raise TypeError("Missing required property 'protocol'")
         __props__['protocol'] = protocol
 
         __props__['region'] = region
 
         if subnet_id is None:
-            raise TypeError('Missing required property subnet_id')
+            raise TypeError("Missing required property 'subnet_id'")
         __props__['subnet_id'] = subnet_id
 
         __props__['tenant_id'] = tenant_id

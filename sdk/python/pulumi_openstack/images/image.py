@@ -58,12 +58,12 @@ class Image(pulumi.CustomResource):
     Image metadata allow for meaningfully define the image properties
     and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
     """
-    min_disk_gb: pulumi.Output[int]
+    min_disk_gb: pulumi.Output[float]
     """
     Amount of disk space (in GB) required to boot image.
     Defaults to 0.
     """
-    min_ram_mb: pulumi.Output[int]
+    min_ram_mb: pulumi.Output[float]
     """
     Amount of ram (in MB) required to boot image.
     Defauts to 0.
@@ -99,7 +99,7 @@ class Image(pulumi.CustomResource):
     The path to the JSON-schema that represent
     the image or image
     """
-    size_bytes: pulumi.Output[int]
+    size_bytes: pulumi.Output[float]
     """
     The size in bytes of the data associated with the image.
     """
@@ -168,9 +168,9 @@ class Image(pulumi.CustomResource):
                Conflicts with `local_file_path`.
         :param pulumi.Input[str] local_file_path: This is the filepath of the raw image file
                that will be uploaded to Glance. Conflicts with `image_source_url`.
-        :param pulumi.Input[int] min_disk_gb: Amount of disk space (in GB) required to boot image.
+        :param pulumi.Input[float] min_disk_gb: Amount of disk space (in GB) required to boot image.
                Defaults to 0.
-        :param pulumi.Input[int] min_ram_mb: Amount of ram (in MB) required to boot image.
+        :param pulumi.Input[float] min_ram_mb: Amount of ram (in MB) required to boot image.
                Defauts to 0.
         :param pulumi.Input[str] name: The name of the image.
         :param pulumi.Input[dict] properties: A map of key/value pairs to set freeform
@@ -206,11 +206,11 @@ class Image(pulumi.CustomResource):
         __props__ = dict()
 
         if container_format is None:
-            raise TypeError('Missing required property container_format')
+            raise TypeError("Missing required property 'container_format'")
         __props__['container_format'] = container_format
 
         if disk_format is None:
-            raise TypeError('Missing required property disk_format')
+            raise TypeError("Missing required property 'disk_format'")
         __props__['disk_format'] = disk_format
 
         __props__['image_cache_path'] = image_cache_path

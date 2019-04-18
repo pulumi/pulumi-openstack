@@ -12,27 +12,33 @@ class GetKeypairResult:
     """
     A collection of values returned by getKeypair.
     """
-    def __init__(__self__, fingerprint=None, public_key=None, region=None, id=None):
+    def __init__(__self__, fingerprint=None, name=None, public_key=None, region=None, id=None):
         if fingerprint and not isinstance(fingerprint, str):
-            raise TypeError('Expected argument fingerprint to be a str')
+            raise TypeError("Expected argument 'fingerprint' to be a str")
         __self__.fingerprint = fingerprint
         """
         The fingerprint of the OpenSSH key.
         """
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        __self__.name = name
+        """
+        See Argument Reference above.
+        """
         if public_key and not isinstance(public_key, str):
-            raise TypeError('Expected argument public_key to be a str')
+            raise TypeError("Expected argument 'public_key' to be a str")
         __self__.public_key = public_key
         """
         The OpenSSH-formatted public key of the keypair.
         """
         if region and not isinstance(region, str):
-            raise TypeError('Expected argument region to be a str')
+            raise TypeError("Expected argument 'region' to be a str")
         __self__.region = region
         """
         See Argument Reference above.
         """
         if id and not isinstance(id, str):
-            raise TypeError('Expected argument id to be a str')
+            raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
@@ -50,6 +56,7 @@ async def get_keypair(name=None,region=None,opts=None):
 
     return GetKeypairResult(
         fingerprint=__ret__.get('fingerprint'),
+        name=__ret__.get('name'),
         public_key=__ret__.get('publicKey'),
         region=__ret__.get('region'),
         id=__ret__.get('id'))

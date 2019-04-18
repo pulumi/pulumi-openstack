@@ -76,7 +76,7 @@ class VolumeAttach(pulumi.CustomResource):
         __props__['device'] = device
 
         if instance_id is None:
-            raise TypeError('Missing required property instance_id')
+            raise TypeError("Missing required property 'instance_id'")
         __props__['instance_id'] = instance_id
 
         __props__['multiattach'] = multiattach
@@ -84,7 +84,7 @@ class VolumeAttach(pulumi.CustomResource):
         __props__['region'] = region
 
         if volume_id is None:
-            raise TypeError('Missing required property volume_id')
+            raise TypeError("Missing required property 'volume_id'")
         __props__['volume_id'] = volume_id
 
         super(VolumeAttach, __self__).__init__(

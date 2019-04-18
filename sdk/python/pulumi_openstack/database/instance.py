@@ -44,7 +44,7 @@ class Instance(pulumi.CustomResource):
     The region in which to create the db instance. Changing this
     creates a new instance.
     """
-    size: pulumi.Output[int]
+    size: pulumi.Output[float]
     """
     Specifies the volume size in GB. Changing this creates new instance.
     """
@@ -73,7 +73,7 @@ class Instance(pulumi.CustomResource):
                creates a new instance.
         :param pulumi.Input[str] region: The region in which to create the db instance. Changing this
                creates a new instance.
-        :param pulumi.Input[int] size: Specifies the volume size in GB. Changing this creates new instance.
+        :param pulumi.Input[float] size: Specifies the volume size in GB. Changing this creates new instance.
         :param pulumi.Input[list] users: An array of username, password, host and databases. The user
                object structure is documented below.
         """
@@ -97,7 +97,7 @@ class Instance(pulumi.CustomResource):
         __props__['databases'] = databases
 
         if datastore is None:
-            raise TypeError('Missing required property datastore')
+            raise TypeError("Missing required property 'datastore'")
         __props__['datastore'] = datastore
 
         __props__['flavor_id'] = flavor_id
@@ -107,11 +107,11 @@ class Instance(pulumi.CustomResource):
         __props__['networks'] = networks
 
         if region is None:
-            raise TypeError('Missing required property region')
+            raise TypeError("Missing required property 'region'")
         __props__['region'] = region
 
         if size is None:
-            raise TypeError('Missing required property size')
+            raise TypeError("Missing required property 'size'")
         __props__['size'] = size
 
         __props__['users'] = users

@@ -115,6 +115,13 @@ export class Subnet extends pulumi.CustomResource {
      */
     public readonly noGateway: pulumi.Output<boolean | undefined>;
     /**
+     * The prefix length to use when creating a subnet
+     * from a subnet pool. The default subnet pool prefix length that was defined
+     * when creating the subnet pool will be used if not provided. Changing this
+     * creates a new subnet.
+     */
+    public readonly prefixLength: pulumi.Output<number | undefined>;
+    /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a Neutron subnet. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
@@ -165,6 +172,7 @@ export class Subnet extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
             inputs["networkId"] = state ? state.networkId : undefined;
             inputs["noGateway"] = state ? state.noGateway : undefined;
+            inputs["prefixLength"] = state ? state.prefixLength : undefined;
             inputs["region"] = state ? state.region : undefined;
             inputs["subnetpoolId"] = state ? state.subnetpoolId : undefined;
             inputs["tags"] = state ? state.tags : undefined;
@@ -188,6 +196,7 @@ export class Subnet extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["networkId"] = args ? args.networkId : undefined;
             inputs["noGateway"] = args ? args.noGateway : undefined;
+            inputs["prefixLength"] = args ? args.prefixLength : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["subnetpoolId"] = args ? args.subnetpoolId : undefined;
             inputs["tags"] = args ? args.tags : undefined;
@@ -282,6 +291,13 @@ export interface SubnetState {
      * this removes or adds a default gateway IP of the existing subnet.
      */
     readonly noGateway?: pulumi.Input<boolean>;
+    /**
+     * The prefix length to use when creating a subnet
+     * from a subnet pool. The default subnet pool prefix length that was defined
+     * when creating the subnet pool will be used if not provided. Changing this
+     * creates a new subnet.
+     */
+    readonly prefixLength?: pulumi.Input<number>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a Neutron subnet. If omitted, the
@@ -386,6 +402,13 @@ export interface SubnetArgs {
      * this removes or adds a default gateway IP of the existing subnet.
      */
     readonly noGateway?: pulumi.Input<boolean>;
+    /**
+     * The prefix length to use when creating a subnet
+     * from a subnet pool. The default subnet pool prefix length that was defined
+     * when creating the subnet pool will be used if not provided. Changing this
+     * creates a new subnet.
+     */
+    readonly prefixLength?: pulumi.Input<number>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a Neutron subnet. If omitted, the

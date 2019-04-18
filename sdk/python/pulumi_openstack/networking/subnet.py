@@ -58,7 +58,7 @@ class Subnet(pulumi.CustomResource):
     object structure is documented below. Changing this updates the host routes
     for the existing subnet.
     """
-    ip_version: pulumi.Output[int]
+    ip_version: pulumi.Output[float]
     """
     IP version, either 4 (default) or 6. Changing this creates a
     new subnet.
@@ -88,6 +88,13 @@ class Subnet(pulumi.CustomResource):
     Do not set a gateway IP on this subnet. Changing
     this removes or adds a default gateway IP of the existing subnet.
     """
+    prefix_length: pulumi.Output[float]
+    """
+    The prefix length to use when creating a subnet
+    from a subnet pool. The default subnet pool prefix length that was defined
+    when creating the subnet pool will be used if not provided. Changing this
+    creates a new subnet.
+    """
     region: pulumi.Output[str]
     """
     The region in which to obtain the V2 Networking client.
@@ -112,7 +119,7 @@ class Subnet(pulumi.CustomResource):
     """
     Map of additional options.
     """
-    def __init__(__self__, resource_name, opts=None, allocation_pools=None, cidr=None, description=None, dns_nameservers=None, enable_dhcp=None, gateway_ip=None, host_routes=None, ip_version=None, ipv6_address_mode=None, ipv6_ra_mode=None, name=None, network_id=None, no_gateway=None, region=None, subnetpool_id=None, tags=None, tenant_id=None, value_specs=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, allocation_pools=None, cidr=None, description=None, dns_nameservers=None, enable_dhcp=None, gateway_ip=None, host_routes=None, ip_version=None, ipv6_address_mode=None, ipv6_ra_mode=None, name=None, network_id=None, no_gateway=None, prefix_length=None, region=None, subnetpool_id=None, tags=None, tenant_id=None, value_specs=None, __name__=None, __opts__=None):
         """
         Manages a V2 Neutron subnet resource within OpenStack.
         
@@ -141,7 +148,7 @@ class Subnet(pulumi.CustomResource):
                with IPs from this subnet (not including local subnet route). The host_route
                object structure is documented below. Changing this updates the host routes
                for the existing subnet.
-        :param pulumi.Input[int] ip_version: IP version, either 4 (default) or 6. Changing this creates a
+        :param pulumi.Input[float] ip_version: IP version, either 4 (default) or 6. Changing this creates a
                new subnet.
         :param pulumi.Input[str] ipv6_address_mode: The IPv6 address mode. Valid values are
                `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.
@@ -153,6 +160,10 @@ class Subnet(pulumi.CustomResource):
                creates a new subnet.
         :param pulumi.Input[bool] no_gateway: Do not set a gateway IP on this subnet. Changing
                this removes or adds a default gateway IP of the existing subnet.
+        :param pulumi.Input[float] prefix_length: The prefix length to use when creating a subnet
+               from a subnet pool. The default subnet pool prefix length that was defined
+               when creating the subnet pool will be used if not provided. Changing this
+               creates a new subnet.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
                A Networking client is needed to create a Neutron subnet. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
@@ -201,10 +212,12 @@ class Subnet(pulumi.CustomResource):
         __props__['name'] = name
 
         if network_id is None:
-            raise TypeError('Missing required property network_id')
+            raise TypeError("Missing required property 'network_id'")
         __props__['network_id'] = network_id
 
         __props__['no_gateway'] = no_gateway
+
+        __props__['prefix_length'] = prefix_length
 
         __props__['region'] = region
 

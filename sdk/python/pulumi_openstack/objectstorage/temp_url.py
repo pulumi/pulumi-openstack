@@ -33,7 +33,7 @@ class TempUrl(pulumi.CustomResource):
     The region the tempurl is located in.
     """
     split: pulumi.Output[str]
-    ttl: pulumi.Output[int]
+    ttl: pulumi.Output[float]
     """
     The TTL, in seconds, for the URL. For how long it should
     be valid.
@@ -62,7 +62,7 @@ class TempUrl(pulumi.CustomResource):
                it has expired. If set to true, this will create a new resource with a new
                ID and new URL. Defaults to false.
         :param pulumi.Input[str] region: The region the tempurl is located in.
-        :param pulumi.Input[int] ttl: The TTL, in seconds, for the URL. For how long it should
+        :param pulumi.Input[float] ttl: The TTL, in seconds, for the URL. For how long it should
                be valid.
         """
         if __name__ is not None:
@@ -81,13 +81,13 @@ class TempUrl(pulumi.CustomResource):
         __props__ = dict()
 
         if container is None:
-            raise TypeError('Missing required property container')
+            raise TypeError("Missing required property 'container'")
         __props__['container'] = container
 
         __props__['method'] = method
 
         if object is None:
-            raise TypeError('Missing required property object')
+            raise TypeError("Missing required property 'object'")
         __props__['object'] = object
 
         __props__['regenerate'] = regenerate
@@ -97,7 +97,7 @@ class TempUrl(pulumi.CustomResource):
         __props__['split'] = split
 
         if ttl is None:
-            raise TypeError('Missing required property ttl')
+            raise TypeError("Missing required property 'ttl'")
         __props__['ttl'] = ttl
 
         __props__['url'] = None

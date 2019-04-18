@@ -100,7 +100,7 @@ class PoolV1(pulumi.CustomResource):
         __props__ = dict()
 
         if lb_method is None:
-            raise TypeError('Missing required property lb_method')
+            raise TypeError("Missing required property 'lb_method'")
         __props__['lb_method'] = lb_method
 
         __props__['lb_provider'] = lb_provider
@@ -110,13 +110,13 @@ class PoolV1(pulumi.CustomResource):
         __props__['name'] = name
 
         if protocol is None:
-            raise TypeError('Missing required property protocol')
+            raise TypeError("Missing required property 'protocol'")
         __props__['protocol'] = protocol
 
         __props__['region'] = region
 
         if subnet_id is None:
-            raise TypeError('Missing required property subnet_id')
+            raise TypeError("Missing required property 'subnet_id'")
         __props__['subnet_id'] = subnet_id
 
         __props__['tenant_id'] = tenant_id

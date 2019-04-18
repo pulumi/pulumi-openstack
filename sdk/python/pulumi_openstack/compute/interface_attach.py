@@ -70,7 +70,7 @@ class InterfaceAttach(pulumi.CustomResource):
         __props__['fixed_ip'] = fixed_ip
 
         if instance_id is None:
-            raise TypeError('Missing required property instance_id')
+            raise TypeError("Missing required property 'instance_id'")
         __props__['instance_id'] = instance_id
 
         __props__['network_id'] = network_id

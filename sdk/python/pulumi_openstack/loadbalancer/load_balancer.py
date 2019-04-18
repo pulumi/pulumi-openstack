@@ -134,7 +134,7 @@ class LoadBalancer(pulumi.CustomResource):
         __props__['vip_address'] = vip_address
 
         if vip_subnet_id is None:
-            raise TypeError('Missing required property vip_subnet_id')
+            raise TypeError("Missing required property 'vip_subnet_id'")
         __props__['vip_subnet_id'] = vip_subnet_id
 
         __props__['vip_port_id'] = None

@@ -58,17 +58,17 @@ class User(pulumi.CustomResource):
         __props__['host'] = host
 
         if instance_id is None:
-            raise TypeError('Missing required property instance_id')
+            raise TypeError("Missing required property 'instance_id'")
         __props__['instance_id'] = instance_id
 
         __props__['name'] = name
 
         if password is None:
-            raise TypeError('Missing required property password')
+            raise TypeError("Missing required property 'password'")
         __props__['password'] = password
 
         if region is None:
-            raise TypeError('Missing required property region')
+            raise TypeError("Missing required property 'region'")
         __props__['region'] = region
 
         super(User, __self__).__init__(
