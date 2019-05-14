@@ -29,8 +29,8 @@ import * as utilities from "../utilities";
  *     name: "secgroup",
  * }));
  * const port1 = new openstack.networking.PortSecGroupAssociate("port_1", {
- *     portId: systemPort.apply(systemPort => systemPort.id),
- *     securityGroupIds: [secgroup.apply(secgroup => secgroup.id)],
+ *     portId: systemPort.id,
+ *     securityGroupIds: [secgroup.id],
  * });
  * ```
  * 
@@ -48,8 +48,8 @@ import * as utilities from "../utilities";
  * }));
  * const port1 = new openstack.networking.PortSecGroupAssociate("port_1", {
  *     enforce: true,
- *     portId: systemPort.apply(systemPort => systemPort.id),
- *     securityGroupIds: [secgroup.apply(secgroup => secgroup.id)],
+ *     portId: systemPort.id,
+ *     securityGroupIds: [secgroup.id],
  * });
  * ```
  * 
@@ -64,7 +64,7 @@ import * as utilities from "../utilities";
  * }));
  * const port1 = new openstack.networking.PortSecGroupAssociate("port_1", {
  *     enforce: true,
- *     portId: systemPort.apply(systemPort => systemPort.id),
+ *     portId: systemPort.id,
  *     securityGroupIds: [],
  * });
  * ```
