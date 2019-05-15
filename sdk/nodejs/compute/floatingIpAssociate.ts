@@ -55,7 +55,7 @@ import * as utilities from "../utilities";
  *     pool: "my_pool",
  * });
  * const fip1FloatingIpAssociate = new openstack.compute.FloatingIpAssociate("fip_1", {
- *     fixedIp: instance1.networks.apply(networks => networks[1].fixedIpV4),
+ *     fixedIp: instance1.networks[1].fixedIpV4,
  *     floatingIp: fip1FloatingIp.address,
  *     instanceId: instance1.id,
  * });

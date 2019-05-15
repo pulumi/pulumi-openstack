@@ -191,7 +191,7 @@ import * as utilities from "../utilities";
  *     pool: "my_pool",
  * });
  * const myipFloatingIpAssociate = new openstack.compute.FloatingIpAssociate("myip", {
- *     fixedIp: multi_net.networks.apply(networks => networks[1].fixedIpV4),
+ *     fixedIp: multi_net.networks[1].fixedIpV4,
  *     floatingIp: myipFloatingIp.address,
  *     instanceId: multi_net.id,
  * });
