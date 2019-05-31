@@ -48,24 +48,24 @@ export class SubnetRoute extends pulumi.CustomResource {
      * CIDR block to match on the packet’s destination IP. Changing
      * this creates a new routing entry.
      */
-    public readonly destinationCidr: pulumi.Output<string>;
+    public readonly destinationCidr!: pulumi.Output<string>;
     /**
      * IP address of the next hop gateway.  Changing
      * this creates a new routing entry.
      */
-    public readonly nextHop: pulumi.Output<string>;
+    public readonly nextHop!: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 networking client.
      * A networking client is needed to configure a routing entry on a subnet. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * routing entry.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * ID of the subnet this routing entry belongs to. Changing
      * this creates a new routing entry.
      */
-    public readonly subnetId: pulumi.Output<string>;
+    public readonly subnetId!: pulumi.Output<string>;
 
     /**
      * Create a SubnetRoute resource with the given unique name, arguments, and options.
@@ -78,7 +78,7 @@ export class SubnetRoute extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: SubnetRouteArgs | SubnetRouteState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: SubnetRouteState = argsOrState as SubnetRouteState | undefined;
+            const state = argsOrState as SubnetRouteState | undefined;
             inputs["destinationCidr"] = state ? state.destinationCidr : undefined;
             inputs["nextHop"] = state ? state.nextHop : undefined;
             inputs["region"] = state ? state.region : undefined;

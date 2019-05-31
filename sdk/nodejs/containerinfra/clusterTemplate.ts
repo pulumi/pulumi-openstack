@@ -207,38 +207,38 @@ export class ClusterTemplate extends pulumi.CustomResource {
         return new ClusterTemplate(name, <any>state, { ...opts, id: id });
     }
 
-    public readonly apiserverPort: pulumi.Output<number | undefined>;
-    public readonly clusterDistro: pulumi.Output<string>;
-    public readonly coe: pulumi.Output<string>;
-    public /*out*/ readonly createdAt: pulumi.Output<string>;
-    public readonly dnsNameserver: pulumi.Output<string | undefined>;
-    public readonly dockerStorageDriver: pulumi.Output<string | undefined>;
-    public readonly dockerVolumeSize: pulumi.Output<number | undefined>;
-    public readonly externalNetworkId: pulumi.Output<string | undefined>;
-    public readonly fixedNetwork: pulumi.Output<string | undefined>;
-    public readonly fixedSubnet: pulumi.Output<string | undefined>;
-    public readonly flavor: pulumi.Output<string | undefined>;
-    public readonly floatingIpEnabled: pulumi.Output<boolean | undefined>;
-    public readonly httpProxy: pulumi.Output<string | undefined>;
-    public readonly httpsProxy: pulumi.Output<string | undefined>;
-    public readonly image: pulumi.Output<string>;
-    public readonly insecureRegistry: pulumi.Output<string | undefined>;
-    public readonly keypairId: pulumi.Output<string | undefined>;
-    public readonly labels: pulumi.Output<{[key: string]: any} | undefined>;
-    public readonly masterFlavor: pulumi.Output<string | undefined>;
-    public readonly masterLbEnabled: pulumi.Output<boolean | undefined>;
-    public readonly name: pulumi.Output<string>;
-    public readonly networkDriver: pulumi.Output<string>;
-    public readonly noProxy: pulumi.Output<string | undefined>;
-    public /*out*/ readonly projectId: pulumi.Output<string>;
-    public readonly public: pulumi.Output<boolean | undefined>;
-    public readonly region: pulumi.Output<string>;
-    public readonly registryEnabled: pulumi.Output<boolean | undefined>;
-    public readonly serverType: pulumi.Output<string>;
-    public readonly tlsDisabled: pulumi.Output<boolean | undefined>;
-    public /*out*/ readonly updatedAt: pulumi.Output<string>;
-    public /*out*/ readonly userId: pulumi.Output<string>;
-    public readonly volumeDriver: pulumi.Output<string | undefined>;
+    public readonly apiserverPort!: pulumi.Output<number | undefined>;
+    public readonly clusterDistro!: pulumi.Output<string>;
+    public readonly coe!: pulumi.Output<string>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    public readonly dnsNameserver!: pulumi.Output<string | undefined>;
+    public readonly dockerStorageDriver!: pulumi.Output<string | undefined>;
+    public readonly dockerVolumeSize!: pulumi.Output<number | undefined>;
+    public readonly externalNetworkId!: pulumi.Output<string | undefined>;
+    public readonly fixedNetwork!: pulumi.Output<string | undefined>;
+    public readonly fixedSubnet!: pulumi.Output<string | undefined>;
+    public readonly flavor!: pulumi.Output<string | undefined>;
+    public readonly floatingIpEnabled!: pulumi.Output<boolean | undefined>;
+    public readonly httpProxy!: pulumi.Output<string | undefined>;
+    public readonly httpsProxy!: pulumi.Output<string | undefined>;
+    public readonly image!: pulumi.Output<string>;
+    public readonly insecureRegistry!: pulumi.Output<string | undefined>;
+    public readonly keypairId!: pulumi.Output<string | undefined>;
+    public readonly labels!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly masterFlavor!: pulumi.Output<string | undefined>;
+    public readonly masterLbEnabled!: pulumi.Output<boolean | undefined>;
+    public readonly name!: pulumi.Output<string>;
+    public readonly networkDriver!: pulumi.Output<string>;
+    public readonly noProxy!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly projectId!: pulumi.Output<string>;
+    public readonly public!: pulumi.Output<boolean | undefined>;
+    public readonly region!: pulumi.Output<string>;
+    public readonly registryEnabled!: pulumi.Output<boolean | undefined>;
+    public readonly serverType!: pulumi.Output<string>;
+    public readonly tlsDisabled!: pulumi.Output<boolean | undefined>;
+    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    public /*out*/ readonly userId!: pulumi.Output<string>;
+    public readonly volumeDriver!: pulumi.Output<string | undefined>;
 
     /**
      * Create a ClusterTemplate resource with the given unique name, arguments, and options.
@@ -251,7 +251,7 @@ export class ClusterTemplate extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ClusterTemplateArgs | ClusterTemplateState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: ClusterTemplateState = argsOrState as ClusterTemplateState | undefined;
+            const state = argsOrState as ClusterTemplateState | undefined;
             inputs["apiserverPort"] = state ? state.apiserverPort : undefined;
             inputs["clusterDistro"] = state ? state.clusterDistro : undefined;
             inputs["coe"] = state ? state.coe : undefined;

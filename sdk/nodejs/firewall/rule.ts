@@ -40,75 +40,75 @@ export class Rule extends pulumi.CustomResource {
      * firewall rule matches. Changing this updates the `action` of an existing
      * firewall rule.
      */
-    public readonly action: pulumi.Output<string>;
+    public readonly action!: pulumi.Output<string>;
     /**
      * A description for the firewall rule. Changing this
      * updates the `description` of an existing firewall rule.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The destination IP address on which the
      * firewall rule operates. Changing this updates the `destination_ip_address`
      * of an existing firewall rule.
      */
-    public readonly destinationIpAddress: pulumi.Output<string | undefined>;
+    public readonly destinationIpAddress!: pulumi.Output<string | undefined>;
     /**
      * The destination port on which the firewall
      * rule operates. Changing this updates the `destination_port` of an existing
      * firewall rule.
      */
-    public readonly destinationPort: pulumi.Output<string | undefined>;
+    public readonly destinationPort!: pulumi.Output<string | undefined>;
     /**
      * Enabled status for the firewall rule (must be "true"
      * or "false" if provided - defaults to "true"). Changing this updates the
      * `enabled` status of an existing firewall rule.
      */
-    public readonly enabled: pulumi.Output<boolean | undefined>;
+    public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
      * IP version, either 4 (default) or 6. Changing this
      * updates the `ip_version` of an existing firewall rule.
      */
-    public readonly ipVersion: pulumi.Output<number | undefined>;
+    public readonly ipVersion!: pulumi.Output<number | undefined>;
     /**
      * A unique name for the firewall rule. Changing this
      * updates the `name` of an existing firewall rule.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The protocol type on which the firewall rule operates.
      * Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
      * `protocol` of an existing firewall rule.
      */
-    public readonly protocol: pulumi.Output<string>;
+    public readonly protocol!: pulumi.Output<string>;
     /**
      * The region in which to obtain the v1 Compute client.
      * A Compute client is needed to create a firewall rule. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * firewall rule.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The source IP address on which the firewall
      * rule operates. Changing this updates the `source_ip_address` of an existing
      * firewall rule.
      */
-    public readonly sourceIpAddress: pulumi.Output<string | undefined>;
+    public readonly sourceIpAddress!: pulumi.Output<string | undefined>;
     /**
      * The source port on which the firewall
      * rule operates. Changing this updates the `source_port` of an existing
      * firewall rule.
      */
-    public readonly sourcePort: pulumi.Output<string | undefined>;
+    public readonly sourcePort!: pulumi.Output<string | undefined>;
     /**
      * The owner of the firewall rule. Required if admin
      * wants to create a firewall rule for another tenant. Changing this creates a
      * new firewall rule.
      */
-    public readonly tenantId: pulumi.Output<string | undefined>;
+    public readonly tenantId!: pulumi.Output<string | undefined>;
     /**
      * Map of additional options.
      */
-    public readonly valueSpecs: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly valueSpecs!: pulumi.Output<{[key: string]: any} | undefined>;
 
     /**
      * Create a Rule resource with the given unique name, arguments, and options.
@@ -121,7 +121,7 @@ export class Rule extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: RuleArgs | RuleState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: RuleState = argsOrState as RuleState | undefined;
+            const state = argsOrState as RuleState | undefined;
             inputs["action"] = state ? state.action : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["destinationIpAddress"] = state ? state.destinationIpAddress : undefined;

@@ -56,65 +56,65 @@ export class User extends pulumi.CustomResource {
     /**
      * The default project this user belongs to.
      */
-    public readonly defaultProjectId: pulumi.Output<string>;
+    public readonly defaultProjectId!: pulumi.Output<string>;
     /**
      * A description of the user.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The domain this user belongs to.
      */
-    public readonly domainId: pulumi.Output<string>;
+    public readonly domainId!: pulumi.Output<string>;
     /**
      * Whether the user is enabled or disabled. Valid
      * values are `true` and `false`.
      */
-    public readonly enabled: pulumi.Output<boolean | undefined>;
+    public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
      * Free-form key/value pairs of extra information.
      */
-    public readonly extra: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly extra!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
      * User will not have to
      * change their password upon first use. Valid values are `true` and `false`.
      */
-    public readonly ignoreChangePasswordUponFirstUse: pulumi.Output<boolean | undefined>;
+    public readonly ignoreChangePasswordUponFirstUse!: pulumi.Output<boolean | undefined>;
     /**
      * User will not have a failure
      * lockout placed on their account. Valid values are `true` and `false`.
      */
-    public readonly ignoreLockoutFailureAttempts: pulumi.Output<boolean | undefined>;
+    public readonly ignoreLockoutFailureAttempts!: pulumi.Output<boolean | undefined>;
     /**
      * User's password will not expire.
      * Valid values are `true` and `false`.
      */
-    public readonly ignorePasswordExpiry: pulumi.Output<boolean | undefined>;
+    public readonly ignorePasswordExpiry!: pulumi.Output<boolean | undefined>;
     /**
      * Whether to enable multi-factor
      * authentication. Valid values are `true` and `false`.
      */
-    public readonly multiFactorAuthEnabled: pulumi.Output<boolean | undefined>;
+    public readonly multiFactorAuthEnabled!: pulumi.Output<boolean | undefined>;
     /**
      * A multi-factor authentication rule.
      * The structure is documented below. Please see the
      * [Ocata release notes](https://docs.openstack.org/releasenotes/keystone/ocata.html)
      * for more information on how to use mulit-factor rules.
      */
-    public readonly multiFactorAuthRules: pulumi.Output<{ rules: string[] }[] | undefined>;
+    public readonly multiFactorAuthRules!: pulumi.Output<{ rules: string[] }[] | undefined>;
     /**
      * The name of the user.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The password for the user.
      */
-    public readonly password: pulumi.Output<string | undefined>;
+    public readonly password!: pulumi.Output<string | undefined>;
     /**
      * The region in which to obtain the V3 Keystone client.
      * If omitted, the `region` argument of the provider is used. Changing this
      * creates a new User.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
 
     /**
      * Create a User resource with the given unique name, arguments, and options.
@@ -127,7 +127,7 @@ export class User extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: UserArgs | UserState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: UserState = argsOrState as UserState | undefined;
+            const state = argsOrState as UserState | undefined;
             inputs["defaultProjectId"] = state ? state.defaultProjectId : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["domainId"] = state ? state.domainId : undefined;

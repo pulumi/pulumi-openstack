@@ -51,16 +51,16 @@ export class Keypair extends pulumi.CustomResource {
     /**
      * The fingerprint of the public key.
      */
-    public /*out*/ readonly fingerprint: pulumi.Output<string>;
+    public /*out*/ readonly fingerprint!: pulumi.Output<string>;
     /**
      * A unique name for the keypair. Changing this creates a new
      * keypair.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The generated private key when no public key is specified.
      */
-    public /*out*/ readonly privateKey: pulumi.Output<string>;
+    public /*out*/ readonly privateKey!: pulumi.Output<string>;
     /**
      * A pregenerated OpenSSH-formatted public key.
      * Changing this creates a new keypair. If a public key is not specified, then
@@ -68,18 +68,18 @@ export class Keypair extends pulumi.CustomResource {
      * created, then destroying this resource means you will lose access to that
      * keypair forever.
      */
-    public readonly publicKey: pulumi.Output<string>;
+    public readonly publicKey!: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 Compute client.
      * Keypairs are associated with accounts, but a Compute client is needed to
      * create one. If omitted, the `region` argument of the provider is used.
      * Changing this creates a new keypair.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Map of additional options.
      */
-    public readonly valueSpecs: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly valueSpecs!: pulumi.Output<{[key: string]: any} | undefined>;
 
     /**
      * Create a Keypair resource with the given unique name, arguments, and options.
@@ -92,7 +92,7 @@ export class Keypair extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: KeypairArgs | KeypairState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: KeypairState = argsOrState as KeypairState | undefined;
+            const state = argsOrState as KeypairState | undefined;
             inputs["fingerprint"] = state ? state.fingerprint : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["privateKey"] = state ? state.privateKey : undefined;

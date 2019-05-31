@@ -56,51 +56,51 @@ export class Firewall extends pulumi.CustomResource {
      * (must be "true" or "false" if provided - defaults to "true").
      * Changing this updates the `admin_state_up` of an existing firewall.
      */
-    public readonly adminStateUp: pulumi.Output<boolean | undefined>;
+    public readonly adminStateUp!: pulumi.Output<boolean | undefined>;
     /**
      * Router(s) to associate this firewall instance
      * with. Must be a list of strings. Changing this updates the associated routers
      * of an existing firewall. Conflicts with `no_routers`.
      */
-    public readonly associatedRouters: pulumi.Output<string[]>;
+    public readonly associatedRouters!: pulumi.Output<string[]>;
     /**
      * A description for the firewall. Changing this
      * updates the `description` of an existing firewall.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * A name for the firewall. Changing this
      * updates the `name` of an existing firewall.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Should this firewall not be associated with any routers
      * (must be "true" or "false" if provide - defaults to "false").
      * Conflicts with `associated_routers`.
      */
-    public readonly noRouters: pulumi.Output<boolean | undefined>;
+    public readonly noRouters!: pulumi.Output<boolean | undefined>;
     /**
      * The policy resource id for the firewall. Changing
      * this updates the `policy_id` of an existing firewall.
      */
-    public readonly policyId: pulumi.Output<string>;
+    public readonly policyId!: pulumi.Output<string>;
     /**
      * The region in which to obtain the v1 networking client.
      * A networking client is needed to create a firewall. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * firewall.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The owner of the floating IP. Required if admin wants
      * to create a firewall for another tenant. Changing this creates a new
      * firewall.
      */
-    public readonly tenantId: pulumi.Output<string>;
+    public readonly tenantId!: pulumi.Output<string>;
     /**
      * Map of additional options.
      */
-    public readonly valueSpecs: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly valueSpecs!: pulumi.Output<{[key: string]: any} | undefined>;
 
     /**
      * Create a Firewall resource with the given unique name, arguments, and options.
@@ -113,7 +113,7 @@ export class Firewall extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: FirewallArgs | FirewallState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: FirewallState = argsOrState as FirewallState | undefined;
+            const state = argsOrState as FirewallState | undefined;
             inputs["adminStateUp"] = state ? state.adminStateUp : undefined;
             inputs["associatedRouters"] = state ? state.associatedRouters : undefined;
             inputs["description"] = state ? state.description : undefined;

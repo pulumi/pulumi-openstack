@@ -40,20 +40,20 @@ export class FloatingIp extends pulumi.CustomResource {
     /**
      * The actual floating IP address itself.
      */
-    public /*out*/ readonly address: pulumi.Output<string>;
+    public /*out*/ readonly address!: pulumi.Output<string>;
     /**
      * The fixed IP address corresponding to the floating IP.
      */
-    public /*out*/ readonly fixedIp: pulumi.Output<string>;
+    public /*out*/ readonly fixedIp!: pulumi.Output<string>;
     /**
      * UUID of the compute instance associated with the floating IP.
      */
-    public /*out*/ readonly instanceId: pulumi.Output<string>;
+    public /*out*/ readonly instanceId!: pulumi.Output<string>;
     /**
      * The name of the pool from which to obtain the floating
      * IP. Changing this creates a new floating IP.
      */
-    public readonly pool: pulumi.Output<string>;
+    public readonly pool!: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 Compute client.
      * A Compute client is needed to create a floating IP that can be used with
@@ -61,7 +61,7 @@ export class FloatingIp extends pulumi.CustomResource {
      * is used. Changing this creates a new floating IP (which may or may not
      * have a different address).
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
 
     /**
      * Create a FloatingIp resource with the given unique name, arguments, and options.
@@ -74,7 +74,7 @@ export class FloatingIp extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: FloatingIpArgs | FloatingIpState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: FloatingIpState = argsOrState as FloatingIpState | undefined;
+            const state = argsOrState as FloatingIpState | undefined;
             inputs["address"] = state ? state.address : undefined;
             inputs["fixedIp"] = state ? state.fixedIp : undefined;
             inputs["instanceId"] = state ? state.instanceId : undefined;

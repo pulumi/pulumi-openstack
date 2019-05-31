@@ -49,55 +49,55 @@ export class SecurityService extends pulumi.CustomResource {
      * The human-readable description for the security service.
      * Changing this updates the description of the existing security service.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The security service DNS IP address that is used inside the
      * tenant network.
      */
-    public readonly dnsIp: pulumi.Output<string | undefined>;
+    public readonly dnsIp!: pulumi.Output<string | undefined>;
     /**
      * The security service domain.
      */
-    public readonly domain: pulumi.Output<string | undefined>;
+    public readonly domain!: pulumi.Output<string | undefined>;
     /**
      * The name of the security service. Changing this updates the name
      * of the existing security service.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The security service ou. An organizational unit can be added to
      * specify where the share ends up. New in Manila microversion 2.44.
      */
-    public readonly ou: pulumi.Output<string | undefined>;
+    public readonly ou!: pulumi.Output<string | undefined>;
     /**
      * The user password, if you specify a user.
      */
-    public readonly password: pulumi.Output<string | undefined>;
+    public readonly password!: pulumi.Output<string | undefined>;
     /**
      * The owner of the Security Service.
      */
-    public /*out*/ readonly projectId: pulumi.Output<string>;
+    public /*out*/ readonly projectId!: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 Shared File System client.
      * A Shared File System client is needed to create a security service. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * security service.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The security service host name or IP address.
      */
-    public readonly server: pulumi.Output<string | undefined>;
+    public readonly server!: pulumi.Output<string | undefined>;
     /**
      * The security service type - can either be active\_directory,
      * kerberos or ldap.  Changing this updates the existing security service.
      */
-    public readonly type: pulumi.Output<string>;
+    public readonly type!: pulumi.Output<string>;
     /**
      * The security service user or group name that is used by the
      * tenant.
      */
-    public readonly user: pulumi.Output<string | undefined>;
+    public readonly user!: pulumi.Output<string | undefined>;
 
     /**
      * Create a SecurityService resource with the given unique name, arguments, and options.
@@ -110,7 +110,7 @@ export class SecurityService extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: SecurityServiceArgs | SecurityServiceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: SecurityServiceState = argsOrState as SecurityServiceState | undefined;
+            const state = argsOrState as SecurityServiceState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["dnsIp"] = state ? state.dnsIp : undefined;
             inputs["domain"] = state ? state.domain : undefined;

@@ -46,43 +46,43 @@ export class RecordSet extends pulumi.CustomResource {
     /**
      * A description of the  record set.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The name of the record set. Note the `.` at the end of the name.
      * Changing this creates a new DNS  record set.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * An array of DNS records. _Note:_ if an IPv6 address
      * contains brackets (`[ ]`), the brackets will be stripped and the modified
      * address will be recorded in the state.
      */
-    public readonly records: pulumi.Output<string[] | undefined>;
+    public readonly records!: pulumi.Output<string[] | undefined>;
     /**
      * The region in which to obtain the V2 DNS client.
      * If omitted, the `region` argument of the provider is used.
      * Changing this creates a new DNS  record set.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The time to live (TTL) of the record set.
      */
-    public readonly ttl: pulumi.Output<number>;
+    public readonly ttl!: pulumi.Output<number>;
     /**
      * The type of record set. Examples: "A", "MX".
      * Changing this creates a new DNS  record set.
      */
-    public readonly type: pulumi.Output<string>;
+    public readonly type!: pulumi.Output<string>;
     /**
      * Map of additional options. Changing this creates a
      * new record set.
      */
-    public readonly valueSpecs: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly valueSpecs!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
      * The ID of the zone in which to create the record set.
      * Changing this creates a new DNS  record set.
      */
-    public readonly zoneId: pulumi.Output<string>;
+    public readonly zoneId!: pulumi.Output<string>;
 
     /**
      * Create a RecordSet resource with the given unique name, arguments, and options.
@@ -95,7 +95,7 @@ export class RecordSet extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: RecordSetArgs | RecordSetState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: RecordSetState = argsOrState as RecordSetState | undefined;
+            const state = argsOrState as RecordSetState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["records"] = state ? state.records : undefined;

@@ -47,24 +47,24 @@ export class RouterInterface extends pulumi.CustomResource {
      * ID of the port this interface connects to. Changing
      * this creates a new router interface.
      */
-    public readonly portId: pulumi.Output<string>;
+    public readonly portId!: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 networking client.
      * A networking client is needed to create a router. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * router interface.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * ID of the router this interface belongs to. Changing
      * this creates a new router interface.
      */
-    public readonly routerId: pulumi.Output<string>;
+    public readonly routerId!: pulumi.Output<string>;
     /**
      * ID of the subnet this interface connects to. Changing
      * this creates a new router interface.
      */
-    public readonly subnetId: pulumi.Output<string>;
+    public readonly subnetId!: pulumi.Output<string>;
 
     /**
      * Create a RouterInterface resource with the given unique name, arguments, and options.
@@ -77,7 +77,7 @@ export class RouterInterface extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: RouterInterfaceArgs | RouterInterfaceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: RouterInterfaceState = argsOrState as RouterInterfaceState | undefined;
+            const state = argsOrState as RouterInterfaceState | undefined;
             inputs["portId"] = state ? state.portId : undefined;
             inputs["region"] = state ? state.region : undefined;
             inputs["routerId"] = state ? state.routerId : undefined;

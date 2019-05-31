@@ -66,49 +66,49 @@ export class Trunk extends pulumi.CustomResource {
      * (must be "true" or "false" if provided). Changing this updates the
      * `admin_state_up` of an existing trunk.
      */
-    public readonly adminStateUp: pulumi.Output<boolean | undefined>;
+    public readonly adminStateUp!: pulumi.Output<boolean | undefined>;
     /**
      * The collection of tags assigned on the trunk, which have been
      * explicitly and implicitly added.
      */
-    public /*out*/ readonly allTags: pulumi.Output<string[]>;
+    public /*out*/ readonly allTags!: pulumi.Output<string[]>;
     /**
      * Human-readable description of the trunk. Changing this
      * updates the name of the existing trunk.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * A unique name for the trunk. Changing this
      * updates the `name` of an existing trunk.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The ID of the port to be used as the parent port of the
      * trunk. This is the port that should be used as the compute instance network
      * port. Changing this creates a new trunk.
      */
-    public readonly portId: pulumi.Output<string>;
+    public readonly portId!: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 networking client.
      * A networking client is needed to create a trunk. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * trunk.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The set of ports that will be made subports of the trunk.
      * The structure of each subport is described below.
      */
-    public readonly subPorts: pulumi.Output<{ portId: string, segmentationId: number, segmentationType: string }[] | undefined>;
+    public readonly subPorts!: pulumi.Output<{ portId: string, segmentationId: number, segmentationType: string }[] | undefined>;
     /**
      * A set of string tags for the port.
      */
-    public readonly tags: pulumi.Output<string[] | undefined>;
+    public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
      * The owner of the Trunk. Required if admin wants
      * to create a trunk on behalf of another tenant. Changing this creates a new trunk.
      */
-    public readonly tenantId: pulumi.Output<string>;
+    public readonly tenantId!: pulumi.Output<string>;
 
     /**
      * Create a Trunk resource with the given unique name, arguments, and options.
@@ -121,7 +121,7 @@ export class Trunk extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: TrunkArgs | TrunkState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: TrunkState = argsOrState as TrunkState | undefined;
+            const state = argsOrState as TrunkState | undefined;
             inputs["adminStateUp"] = state ? state.adminStateUp : undefined;
             inputs["allTags"] = state ? state.allTags : undefined;
             inputs["description"] = state ? state.description : undefined;

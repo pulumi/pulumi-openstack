@@ -149,27 +149,27 @@ export class InterfaceAttach extends pulumi.CustomResource {
      * An IP address to assosciate with the port.
      * _NOTE_: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.
      */
-    public readonly fixedIp: pulumi.Output<string | undefined>;
+    public readonly fixedIp!: pulumi.Output<string | undefined>;
     /**
      * The ID of the Instance to attach the Port or Network to.
      */
-    public readonly instanceId: pulumi.Output<string>;
+    public readonly instanceId!: pulumi.Output<string>;
     /**
      * The ID of the Network to attach to an Instance. A port will be created automatically.
      * _NOTE_: This option and `port_id` are mutually exclusive.
      */
-    public readonly networkId: pulumi.Output<string>;
+    public readonly networkId!: pulumi.Output<string>;
     /**
      * The ID of the Port to attach to an Instance.
      * _NOTE_: This option and `network_id` are mutually exclusive.
      */
-    public readonly portId: pulumi.Output<string>;
+    public readonly portId!: pulumi.Output<string>;
     /**
      * The region in which to create the interface attachment.
      * If omitted, the `region` argument of the provider is used. Changing this
      * creates a new attachment.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
 
     /**
      * Create a InterfaceAttach resource with the given unique name, arguments, and options.
@@ -182,7 +182,7 @@ export class InterfaceAttach extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: InterfaceAttachArgs | InterfaceAttachState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: InterfaceAttachState = argsOrState as InterfaceAttachState | undefined;
+            const state = argsOrState as InterfaceAttachState | undefined;
             inputs["fixedIp"] = state ? state.fixedIp : undefined;
             inputs["instanceId"] = state ? state.instanceId : undefined;
             inputs["networkId"] = state ? state.networkId : undefined;

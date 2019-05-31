@@ -55,31 +55,31 @@ export class AddressScope extends pulumi.CustomResource {
      * IP version, either 4 (default) or 6. Changing this
      * creates a new address-scope.
      */
-    public readonly ipVersion: pulumi.Output<number | undefined>;
+    public readonly ipVersion!: pulumi.Output<number | undefined>;
     /**
      * The name of the address-scope. Changing this updates the
      * name of the existing address-scope.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The owner of the address-scope. Required if admin
      * wants to create a address-scope for another project. Changing this creates a
      * new address-scope.
      */
-    public readonly projectId: pulumi.Output<string>;
+    public readonly projectId!: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a Neutron address-scope. If omitted,
      * the `region` argument of the provider is used. Changing this creates a new
      * address-scope.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Indicates whether this address-scope is shared across
      * all projects. Changing this updates the shared status of the existing
      * address-scope.
      */
-    public readonly shared: pulumi.Output<boolean>;
+    public readonly shared!: pulumi.Output<boolean>;
 
     /**
      * Create a AddressScope resource with the given unique name, arguments, and options.
@@ -92,7 +92,7 @@ export class AddressScope extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: AddressScopeArgs | AddressScopeState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: AddressScopeState = argsOrState as AddressScopeState | undefined;
+            const state = argsOrState as AddressScopeState | undefined;
             inputs["ipVersion"] = state ? state.ipVersion : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["projectId"] = state ? state.projectId : undefined;

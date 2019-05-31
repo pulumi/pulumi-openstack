@@ -141,26 +141,26 @@ export class VolumeAttach extends pulumi.CustomResource {
      * to update the device upon subsequent applying which will cause the volume
      * to be detached and reattached indefinitely. Please use with caution.
      */
-    public readonly device: pulumi.Output<string>;
+    public readonly device!: pulumi.Output<string>;
     /**
      * The ID of the Instance to attach the Volume to.
      */
-    public readonly instanceId: pulumi.Output<string>;
+    public readonly instanceId!: pulumi.Output<string>;
     /**
      * Enable attachment of multiattach-capable volumes.
      */
-    public readonly multiattach: pulumi.Output<boolean | undefined>;
+    public readonly multiattach!: pulumi.Output<boolean | undefined>;
     /**
      * The region in which to obtain the V2 Compute client.
      * A Compute client is needed to create a volume attachment. If omitted, the
      * `region` argument of the provider is used. Changing this creates a
      * new volume attachment.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The ID of the Volume to attach to an Instance.
      */
-    public readonly volumeId: pulumi.Output<string>;
+    public readonly volumeId!: pulumi.Output<string>;
 
     /**
      * Create a VolumeAttach resource with the given unique name, arguments, and options.
@@ -173,7 +173,7 @@ export class VolumeAttach extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: VolumeAttachArgs | VolumeAttachState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: VolumeAttachState = argsOrState as VolumeAttachState | undefined;
+            const state = argsOrState as VolumeAttachState | undefined;
             inputs["device"] = state ? state.device : undefined;
             inputs["instanceId"] = state ? state.instanceId : undefined;
             inputs["multiattach"] = state ? state.multiattach : undefined;

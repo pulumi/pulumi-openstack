@@ -39,67 +39,67 @@ export class Monitor extends pulumi.CustomResource {
      * The administrative state of the monitor.
      * A valid value is true (UP) or false (DOWN).
      */
-    public readonly adminStateUp: pulumi.Output<boolean | undefined>;
+    public readonly adminStateUp!: pulumi.Output<boolean | undefined>;
     /**
      * The time, in seconds, between sending probes to members.
      */
-    public readonly delay: pulumi.Output<number>;
+    public readonly delay!: pulumi.Output<number>;
     /**
      * Required for HTTP(S) types. Expected HTTP codes
      * for a passing HTTP(S) monitor. You can either specify a single status like
      * "200", or a range like "200-202".
      */
-    public readonly expectedCodes: pulumi.Output<string>;
+    public readonly expectedCodes!: pulumi.Output<string>;
     /**
      * Required for HTTP(S) types. The HTTP method used
      * for requests by the monitor. If this attribute is not specified, it
      * defaults to "GET".
      */
-    public readonly httpMethod: pulumi.Output<string>;
+    public readonly httpMethod!: pulumi.Output<string>;
     /**
      * Number of permissible ping failures before
      * changing the member's status to INACTIVE. Must be a number between 1
      * and 10..
      */
-    public readonly maxRetries: pulumi.Output<number>;
+    public readonly maxRetries!: pulumi.Output<number>;
     /**
      * The Name of the Monitor.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The id of the pool that this monitor will be assigned to.
      */
-    public readonly poolId: pulumi.Output<string>;
+    public readonly poolId!: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create an . If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * monitor.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Required for admins. The UUID of the tenant who owns
      * the monitor.  Only administrative users can specify a tenant UUID
      * other than their own. Changing this creates a new monitor.
      */
-    public readonly tenantId: pulumi.Output<string>;
+    public readonly tenantId!: pulumi.Output<string>;
     /**
      * Maximum number of seconds for a monitor to wait for a
      * ping reply before it times out. The value must be less than the delay
      * value.
      */
-    public readonly timeout: pulumi.Output<number>;
+    public readonly timeout!: pulumi.Output<number>;
     /**
      * The type of probe, which is PING, TCP, HTTP, or HTTPS,
      * that is sent by the load balancer to verify the member state. Changing this
      * creates a new monitor.
      */
-    public readonly type: pulumi.Output<string>;
+    public readonly type!: pulumi.Output<string>;
     /**
      * Required for HTTP(S) types. URI path that will be
      * accessed if monitor type is HTTP or HTTPS.
      */
-    public readonly urlPath: pulumi.Output<string>;
+    public readonly urlPath!: pulumi.Output<string>;
 
     /**
      * Create a Monitor resource with the given unique name, arguments, and options.
@@ -112,7 +112,7 @@ export class Monitor extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: MonitorArgs | MonitorState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: MonitorState = argsOrState as MonitorState | undefined;
+            const state = argsOrState as MonitorState | undefined;
             inputs["adminStateUp"] = state ? state.adminStateUp : undefined;
             inputs["delay"] = state ? state.delay : undefined;
             inputs["expectedCodes"] = state ? state.expectedCodes : undefined;

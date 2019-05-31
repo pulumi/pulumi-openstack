@@ -40,45 +40,45 @@ export class FloatingIp extends pulumi.CustomResource {
      * an admin user or have had a custom policy or role applied to your OpenStack
      * user or project.
      */
-    public readonly address: pulumi.Output<string>;
+    public readonly address!: pulumi.Output<string>;
     /**
      * The collection of tags assigned on the floating IP, which have
      * been explicitly and implicitly added.
      */
-    public /*out*/ readonly allTags: pulumi.Output<string[]>;
+    public /*out*/ readonly allTags!: pulumi.Output<string[]>;
     /**
      * Human-readable description for the floating IP.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The floating IP DNS domain. Available, when Neutron
      * DNS extension is enabled. The data in this attribute will be published in an
      * external DNS service when Neutron is configured to integrate with such a
      * service. Changing this creates a new floating IP.
      */
-    public readonly dnsDomain: pulumi.Output<string | undefined>;
+    public readonly dnsDomain!: pulumi.Output<string | undefined>;
     /**
      * The floating IP DNS name. Available, when Neutron DNS
      * extension is enabled. The data in this attribute will be published in an
      * external DNS service when Neutron is configured to integrate with such a
      * service. Changing this creates a new floating IP.
      */
-    public readonly dnsName: pulumi.Output<string | undefined>;
+    public readonly dnsName!: pulumi.Output<string | undefined>;
     /**
      * Fixed IP of the port to associate with this floating IP. Required if
      * the port has multiple fixed IPs.
      */
-    public readonly fixedIp: pulumi.Output<string>;
+    public readonly fixedIp!: pulumi.Output<string>;
     /**
      * The name of the pool from which to obtain the floating
      * IP. Changing this creates a new floating IP.
      */
-    public readonly pool: pulumi.Output<string>;
+    public readonly pool!: pulumi.Output<string>;
     /**
      * ID of an existing port with at least one IP address to
      * associate with this floating IP.
      */
-    public readonly portId: pulumi.Output<string>;
+    public readonly portId!: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a floating IP that can be used with
@@ -86,27 +86,27 @@ export class FloatingIp extends pulumi.CustomResource {
      * `region` argument of the provider is used. Changing this creates a new
      * floating IP (which may or may not have a different address).
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The subnet ID of the floating IP pool. Specify this if
      * the floating IP network has multiple subnets.
      */
-    public readonly subnetId: pulumi.Output<string | undefined>;
+    public readonly subnetId!: pulumi.Output<string | undefined>;
     /**
      * A set of string tags for the floating IP.
      */
-    public readonly tags: pulumi.Output<string[] | undefined>;
+    public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
      * The target tenant ID in which to allocate the floating
      * IP, if you specify this together with a port_id, make sure the target port
      * belongs to the same tenant. Changing this creates a new floating IP (which
      * may or may not have a different address)
      */
-    public readonly tenantId: pulumi.Output<string>;
+    public readonly tenantId!: pulumi.Output<string>;
     /**
      * Map of additional options.
      */
-    public readonly valueSpecs: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly valueSpecs!: pulumi.Output<{[key: string]: any} | undefined>;
 
     /**
      * Create a FloatingIp resource with the given unique name, arguments, and options.
@@ -119,7 +119,7 @@ export class FloatingIp extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: FloatingIpArgs | FloatingIpState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: FloatingIpState = argsOrState as FloatingIpState | undefined;
+            const state = argsOrState as FloatingIpState | undefined;
             inputs["address"] = state ? state.address : undefined;
             inputs["allTags"] = state ? state.allTags : undefined;
             inputs["description"] = state ? state.description : undefined;

@@ -47,18 +47,18 @@ export class FlavorAccess extends pulumi.CustomResource {
     /**
      * The UUID of flavor to use. Changing this creates a new flavor access.
      */
-    public readonly flavorId: pulumi.Output<string>;
+    public readonly flavorId!: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 Compute client.
      * If omitted, the `region` argument of the provider is used.
      * Changing this creates a new flavor access.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The UUID of tenant which is allowed to use the flavor.
      * Changing this creates a new flavor access.
      */
-    public readonly tenantId: pulumi.Output<string>;
+    public readonly tenantId!: pulumi.Output<string>;
 
     /**
      * Create a FlavorAccess resource with the given unique name, arguments, and options.
@@ -71,7 +71,7 @@ export class FlavorAccess extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: FlavorAccessArgs | FlavorAccessState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: FlavorAccessState = argsOrState as FlavorAccessState | undefined;
+            const state = argsOrState as FlavorAccessState | undefined;
             inputs["flavorId"] = state ? state.flavorId : undefined;
             inputs["region"] = state ? state.region : undefined;
             inputs["tenantId"] = state ? state.tenantId : undefined;

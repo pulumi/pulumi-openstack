@@ -45,29 +45,29 @@ export class SecGroupRule extends pulumi.CustomResource {
     /**
      * A description of the rule. Changing this creates a new security group rule.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The direction of the rule, valid values are __ingress__
      * or __egress__. Changing this creates a new security group rule.
      */
-    public readonly direction: pulumi.Output<string>;
+    public readonly direction!: pulumi.Output<string>;
     /**
      * The layer 3 protocol type, valid values are __IPv4__
      * or __IPv6__. Changing this creates a new security group rule.
      */
-    public readonly ethertype: pulumi.Output<string>;
+    public readonly ethertype!: pulumi.Output<string>;
     /**
      * The higher part of the allowed port range, valid
      * integer value needs to be between 1 and 65535. Changing this creates a new
      * security group rule.
      */
-    public readonly portRangeMax: pulumi.Output<number>;
+    public readonly portRangeMax!: pulumi.Output<number>;
     /**
      * The lower part of the allowed port range, valid
      * integer value needs to be between 1 and 65535. Changing this creates a new
      * security group rule.
      */
-    public readonly portRangeMin: pulumi.Output<number>;
+    public readonly portRangeMin!: pulumi.Output<number>;
     /**
      * The layer 4 protocol type, valid values are following. Changing this creates a new security group rule. This is required if you want to specify a port range.
      * * __tcp__
@@ -92,37 +92,37 @@ export class SecGroupRule extends pulumi.CustomResource {
      * * __udplite__
      * * __vrrp__
      */
-    public readonly protocol: pulumi.Output<string>;
+    public readonly protocol!: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 networking client.
      * A networking client is needed to create a port. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * security group rule.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The remote group id, the value needs to be an
      * Openstack ID of a security group in the same tenant. Changing this creates
      * a new security group rule.
      */
-    public readonly remoteGroupId: pulumi.Output<string>;
+    public readonly remoteGroupId!: pulumi.Output<string>;
     /**
      * The remote CIDR, the value needs to be a valid
      * CIDR (i.e. 192.168.0.0/16). Changing this creates a new security group rule.
      */
-    public readonly remoteIpPrefix: pulumi.Output<string>;
+    public readonly remoteIpPrefix!: pulumi.Output<string>;
     /**
      * The security group id the rule should belong
      * to, the value needs to be an Openstack ID of a security group in the same
      * tenant. Changing this creates a new security group rule.
      */
-    public readonly securityGroupId: pulumi.Output<string>;
+    public readonly securityGroupId!: pulumi.Output<string>;
     /**
      * The owner of the security group. Required if admin
      * wants to create a port for another tenant. Changing this creates a new
      * security group rule.
      */
-    public readonly tenantId: pulumi.Output<string>;
+    public readonly tenantId!: pulumi.Output<string>;
 
     /**
      * Create a SecGroupRule resource with the given unique name, arguments, and options.
@@ -135,7 +135,7 @@ export class SecGroupRule extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: SecGroupRuleArgs | SecGroupRuleState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: SecGroupRuleState = argsOrState as SecGroupRuleState | undefined;
+            const state = argsOrState as SecGroupRuleState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["direction"] = state ? state.direction : undefined;
             inputs["ethertype"] = state ? state.ethertype : undefined;

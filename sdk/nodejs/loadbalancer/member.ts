@@ -36,50 +36,50 @@ export class Member extends pulumi.CustomResource {
      * The IP address of the member to receive traffic from
      * the load balancer. Changing this creates a new member.
      */
-    public readonly address: pulumi.Output<string>;
+    public readonly address!: pulumi.Output<string>;
     /**
      * The administrative state of the member.
      * A valid value is true (UP) or false (DOWN).
      */
-    public readonly adminStateUp: pulumi.Output<boolean | undefined>;
+    public readonly adminStateUp!: pulumi.Output<boolean | undefined>;
     /**
      * Human-readable name for the member.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The id of the pool that this member will be
      * assigned to.
      */
-    public readonly poolId: pulumi.Output<string>;
+    public readonly poolId!: pulumi.Output<string>;
     /**
      * The port on which to listen for client traffic.
      * Changing this creates a new member.
      */
-    public readonly protocolPort: pulumi.Output<number>;
+    public readonly protocolPort!: pulumi.Output<number>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create an . If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * member.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The subnet in which to access the member
      */
-    public readonly subnetId: pulumi.Output<string | undefined>;
+    public readonly subnetId!: pulumi.Output<string | undefined>;
     /**
      * Required for admins. The UUID of the tenant who owns
      * the member.  Only administrative users can specify a tenant UUID
      * other than their own. Changing this creates a new member.
      */
-    public readonly tenantId: pulumi.Output<string>;
+    public readonly tenantId!: pulumi.Output<string>;
     /**
      * A positive integer value that indicates the relative
      * portion of traffic that this member should receive from the pool. For
      * example, a member with a weight of 10 receives five times as much traffic
      * as a member with a weight of 2.
      */
-    public readonly weight: pulumi.Output<number>;
+    public readonly weight!: pulumi.Output<number>;
 
     /**
      * Create a Member resource with the given unique name, arguments, and options.
@@ -92,7 +92,7 @@ export class Member extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: MemberArgs | MemberState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: MemberState = argsOrState as MemberState | undefined;
+            const state = argsOrState as MemberState | undefined;
             inputs["address"] = state ? state.address : undefined;
             inputs["adminStateUp"] = state ? state.adminStateUp : undefined;
             inputs["name"] = state ? state.name : undefined;

@@ -44,24 +44,24 @@ export class RoleAssignment extends pulumi.CustomResource {
     /**
      * The domain to assign the role in.
      */
-    public readonly domainId: pulumi.Output<string | undefined>;
+    public readonly domainId!: pulumi.Output<string | undefined>;
     /**
      * The group to assign the role to.
      */
-    public readonly groupId: pulumi.Output<string | undefined>;
+    public readonly groupId!: pulumi.Output<string | undefined>;
     /**
      * The project to assign the role in.
      */
-    public readonly projectId: pulumi.Output<string | undefined>;
-    public readonly region: pulumi.Output<string>;
+    public readonly projectId!: pulumi.Output<string | undefined>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The role to assign.
      */
-    public readonly roleId: pulumi.Output<string>;
+    public readonly roleId!: pulumi.Output<string>;
     /**
      * The user to assign the role to.
      */
-    public readonly userId: pulumi.Output<string | undefined>;
+    public readonly userId!: pulumi.Output<string | undefined>;
 
     /**
      * Create a RoleAssignment resource with the given unique name, arguments, and options.
@@ -74,7 +74,7 @@ export class RoleAssignment extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: RoleAssignmentArgs | RoleAssignmentState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: RoleAssignmentState = argsOrState as RoleAssignmentState | undefined;
+            const state = argsOrState as RoleAssignmentState | undefined;
             inputs["domainId"] = state ? state.domainId : undefined;
             inputs["groupId"] = state ? state.groupId : undefined;
             inputs["projectId"] = state ? state.projectId : undefined;

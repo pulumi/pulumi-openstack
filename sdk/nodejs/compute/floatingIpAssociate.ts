@@ -77,29 +77,29 @@ export class FloatingIpAssociate extends pulumi.CustomResource {
     /**
      * The specific IP address to direct traffic to.
      */
-    public readonly fixedIp: pulumi.Output<string | undefined>;
+    public readonly fixedIp!: pulumi.Output<string | undefined>;
     /**
      * The floating IP to associate.
      */
-    public readonly floatingIp: pulumi.Output<string>;
+    public readonly floatingIp!: pulumi.Output<string>;
     /**
      * The instance to associte the floating IP with.
      */
-    public readonly instanceId: pulumi.Output<string>;
+    public readonly instanceId!: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 Compute client.
      * Keypairs are associated with accounts, but a Compute client is needed to
      * create one. If omitted, the `region` argument of the provider is used.
      * Changing this creates a new floatingip_associate.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * In cases where the OpenStack environment
      * does not automatically wait until the association has finished, set this
      * option to have Terraform poll the instance until the floating IP has been
      * associated. Defaults to false.
      */
-    public readonly waitUntilAssociated: pulumi.Output<boolean | undefined>;
+    public readonly waitUntilAssociated!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a FloatingIpAssociate resource with the given unique name, arguments, and options.
@@ -112,7 +112,7 @@ export class FloatingIpAssociate extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: FloatingIpAssociateArgs | FloatingIpAssociateState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: FloatingIpAssociateState = argsOrState as FloatingIpAssociateState | undefined;
+            const state = argsOrState as FloatingIpAssociateState | undefined;
             inputs["fixedIp"] = state ? state.fixedIp : undefined;
             inputs["floatingIp"] = state ? state.floatingIp : undefined;
             inputs["instanceId"] = state ? state.instanceId : undefined;

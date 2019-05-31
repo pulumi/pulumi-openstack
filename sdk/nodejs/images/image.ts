@@ -55,33 +55,33 @@ export class Image extends pulumi.CustomResource {
     /**
      * The checksum of the data associated with the image.
      */
-    public /*out*/ readonly checksum: pulumi.Output<string>;
+    public /*out*/ readonly checksum!: pulumi.Output<string>;
     /**
      * The container format. Must be one of
      * "ami", "ari", "aki", "bare", "ovf".
      */
-    public readonly containerFormat: pulumi.Output<string>;
+    public readonly containerFormat!: pulumi.Output<string>;
     /**
      * The date the image was created.
      */
-    public /*out*/ readonly createdAt: pulumi.Output<string>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
      * The disk format. Must be one of
      * "ami", "ari", "aki", "vhd", "vmdk", "raw", "qcow2", "vdi", "iso".
      */
-    public readonly diskFormat: pulumi.Output<string>;
+    public readonly diskFormat!: pulumi.Output<string>;
     /**
      * the trailing path after the glance
      * endpoint that represent the location of the image
      * or the path to retrieve it.
      */
-    public /*out*/ readonly file: pulumi.Output<string>;
+    public /*out*/ readonly file!: pulumi.Output<string>;
     /**
      * This is the directory where the images will
      * be downloaded. Images will be stored with a filename corresponding to
      * the url's md5 hash. Defaults to "$HOME/.terraform/image_cache"
      */
-    public readonly imageCachePath: pulumi.Output<string | undefined>;
+    public readonly imageCachePath!: pulumi.Output<string | undefined>;
     /**
      * This is the url of the raw image that will
      * be downloaded in the `image_cache_path` before being uploaded to Glance.
@@ -89,92 +89,92 @@ export class Image extends pulumi.CustomResource {
      * does not yet provide a way to do so.
      * Conflicts with `local_file_path`.
      */
-    public readonly imageSourceUrl: pulumi.Output<string | undefined>;
+    public readonly imageSourceUrl!: pulumi.Output<string | undefined>;
     /**
      * This is the filepath of the raw image file
      * that will be uploaded to Glance. Conflicts with `image_source_url`.
      */
-    public readonly localFilePath: pulumi.Output<string | undefined>;
+    public readonly localFilePath!: pulumi.Output<string | undefined>;
     /**
      * The metadata associated with the image.
      * Image metadata allow for meaningfully define the image properties
      * and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
      */
-    public /*out*/ readonly metadata: pulumi.Output<{[key: string]: any}>;
+    public /*out*/ readonly metadata!: pulumi.Output<{[key: string]: any}>;
     /**
      * Amount of disk space (in GB) required to boot image.
      * Defaults to 0.
      */
-    public readonly minDiskGb: pulumi.Output<number | undefined>;
+    public readonly minDiskGb!: pulumi.Output<number | undefined>;
     /**
      * Amount of ram (in MB) required to boot image.
      * Defauts to 0.
      */
-    public readonly minRamMb: pulumi.Output<number | undefined>;
+    public readonly minRamMb!: pulumi.Output<number | undefined>;
     /**
      * The name of the image.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The id of the openstack user who owns the image.
      */
-    public /*out*/ readonly owner: pulumi.Output<string>;
+    public /*out*/ readonly owner!: pulumi.Output<string>;
     /**
      * A map of key/value pairs to set freeform
      * information about an image. See the "Notes" section for further
      * information about properties.
      */
-    public readonly properties: pulumi.Output<{[key: string]: any}>;
+    public readonly properties!: pulumi.Output<{[key: string]: any}>;
     /**
      * If true, image will not be deletable.
      * Defaults to false.
      */
-    public readonly protected: pulumi.Output<boolean | undefined>;
+    public readonly protected!: pulumi.Output<boolean | undefined>;
     /**
      * The region in which to obtain the V2 Glance client.
      * A Glance client is needed to create an Image that can be used with
      * a compute instance. If omitted, the `region` argument of the provider
      * is used. Changing this creates a new Image.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The path to the JSON-schema that represent
      * the image or image
      */
-    public /*out*/ readonly schema: pulumi.Output<string>;
+    public /*out*/ readonly schema!: pulumi.Output<string>;
     /**
      * The size in bytes of the data associated with the image.
      */
-    public /*out*/ readonly sizeBytes: pulumi.Output<number>;
+    public /*out*/ readonly sizeBytes!: pulumi.Output<number>;
     /**
      * The status of the image. It can be "queued", "active"
      * or "saving".
      */
-    public /*out*/ readonly status: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * The tags of the image. It must be a list of strings.
      * At this time, it is not possible to delete all tags of an image.
      */
-    public readonly tags: pulumi.Output<string[] | undefined>;
+    public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
      * (**Deprecated** - use `updated_at` instead)
      */
-    public /*out*/ readonly updateAt: pulumi.Output<string>;
+    public /*out*/ readonly updateAt!: pulumi.Output<string>;
     /**
      * The date the image was last updated.
      */
-    public /*out*/ readonly updatedAt: pulumi.Output<string>;
+    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
     /**
      * If false, the checksum will not be verified
      * once the image is finished uploading. Defaults to true.
      */
-    public readonly verifyChecksum: pulumi.Output<boolean | undefined>;
+    public readonly verifyChecksum!: pulumi.Output<boolean | undefined>;
     /**
      * The visibility of the image. Must be one of
      * "public", "private", "community", or "shared". The ability to set the
      * visibility depends upon the configuration of the OpenStack cloud.
      */
-    public readonly visibility: pulumi.Output<string | undefined>;
+    public readonly visibility!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Image resource with the given unique name, arguments, and options.
@@ -187,7 +187,7 @@ export class Image extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ImageArgs | ImageState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: ImageState = argsOrState as ImageState | undefined;
+            const state = argsOrState as ImageState | undefined;
             inputs["checksum"] = state ? state.checksum : undefined;
             inputs["containerFormat"] = state ? state.containerFormat : undefined;
             inputs["createdAt"] = state ? state.createdAt : undefined;

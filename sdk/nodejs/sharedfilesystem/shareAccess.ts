@@ -113,32 +113,32 @@ export class ShareAccess extends pulumi.CustomResource {
     /**
      * The access credential of the entity granted access.
      */
-    public /*out*/ readonly accessKey: pulumi.Output<string>;
+    public /*out*/ readonly accessKey!: pulumi.Output<string>;
     /**
      * The access level to the share. Can either be `rw` or `ro`.
      */
-    public readonly accessLevel: pulumi.Output<string>;
+    public readonly accessLevel!: pulumi.Output<string>;
     /**
      * The value that defines the access. Can either be an IP
      * address or a username verified by configured Security Service of the Share Network.
      */
-    public readonly accessTo: pulumi.Output<string>;
+    public readonly accessTo!: pulumi.Output<string>;
     /**
      * The access rule type. Can either be an ip, user,
      * cert, or cephx. cephx support requires an OpenStack environment that supports
      * Shared Filesystem microversion 2.13 (Mitaka) or later.
      */
-    public readonly accessType: pulumi.Output<string>;
+    public readonly accessType!: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 Shared File System client.
      * A Shared File System client is needed to create a share access. Changing this
      * creates a new share access.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The UUID of the share to which you are granted access.
      */
-    public readonly shareId: pulumi.Output<string>;
+    public readonly shareId!: pulumi.Output<string>;
 
     /**
      * Create a ShareAccess resource with the given unique name, arguments, and options.
@@ -151,7 +151,7 @@ export class ShareAccess extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ShareAccessArgs | ShareAccessState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: ShareAccessState = argsOrState as ShareAccessState | undefined;
+            const state = argsOrState as ShareAccessState | undefined;
             inputs["accessKey"] = state ? state.accessKey : undefined;
             inputs["accessLevel"] = state ? state.accessLevel : undefined;
             inputs["accessTo"] = state ? state.accessTo : undefined;

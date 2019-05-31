@@ -38,78 +38,78 @@ export class Vip extends pulumi.CustomResource {
      * The IP address of the vip. Changing this creates a new
      * vip.
      */
-    public readonly address: pulumi.Output<string>;
+    public readonly address!: pulumi.Output<string>;
     /**
      * The administrative state of the vip.
      * Acceptable values are "true" and "false". Changing this value updates the
      * state of the existing vip.
      */
-    public readonly adminStateUp: pulumi.Output<boolean>;
+    public readonly adminStateUp!: pulumi.Output<boolean>;
     /**
      * The maximum number of connections allowed for the
      * vip. Default is -1, meaning no limit. Changing this updates the conn_limit
      * of the existing vip.
      */
-    public readonly connLimit: pulumi.Output<number>;
+    public readonly connLimit!: pulumi.Output<number>;
     /**
      * Human-readable description for the vip. Changing
      * this updates the description of the existing vip.
      */
-    public readonly description: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string>;
     /**
      * A *Networking* Floating IP that will be associated
      * with the vip. The Floating IP must be provisioned already.
      */
-    public readonly floatingIp: pulumi.Output<string | undefined>;
+    public readonly floatingIp!: pulumi.Output<string | undefined>;
     /**
      * The name of the vip. Changing this updates the name of
      * the existing vip.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Omit this field to prevent session persistence.
      * The persistence object structure is documented below. Changing this updates
      * the persistence of the existing vip.
      */
-    public readonly persistence: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly persistence!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
      * The ID of the pool with which the vip is associated.
      * Changing this updates the pool_id of the existing vip.
      */
-    public readonly poolId: pulumi.Output<string>;
+    public readonly poolId!: pulumi.Output<string>;
     /**
      * The port on which to listen for client traffic. Changing
      * this creates a new vip.
      */
-    public readonly port: pulumi.Output<number>;
+    public readonly port!: pulumi.Output<number>;
     /**
      * Port UUID for this VIP at associated floating IP (if any).
      */
-    public /*out*/ readonly portId: pulumi.Output<string>;
+    public /*out*/ readonly portId!: pulumi.Output<string>;
     /**
      * The protocol - can be either 'TCP, 'HTTP', or
      * HTTPS'. Changing this creates a new vip.
      */
-    public readonly protocol: pulumi.Output<string>;
+    public readonly protocol!: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a VIP. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * VIP.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The network on which to allocate the vip's address. A
      * tenant can only create vips on networks authorized by policy (e.g. networks
      * that belong to them or networks that are shared). Changing this creates a
      * new vip.
      */
-    public readonly subnetId: pulumi.Output<string>;
+    public readonly subnetId!: pulumi.Output<string>;
     /**
      * The owner of the vip. Required if admin wants to
      * create a vip member for another tenant. Changing this creates a new vip.
      */
-    public readonly tenantId: pulumi.Output<string>;
+    public readonly tenantId!: pulumi.Output<string>;
 
     /**
      * Create a Vip resource with the given unique name, arguments, and options.
@@ -122,7 +122,7 @@ export class Vip extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: VipArgs | VipState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: VipState = argsOrState as VipState | undefined;
+            const state = argsOrState as VipState | undefined;
             inputs["address"] = state ? state.address : undefined;
             inputs["adminStateUp"] = state ? state.adminStateUp : undefined;
             inputs["connLimit"] = state ? state.connLimit : undefined;

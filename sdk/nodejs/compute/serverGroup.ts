@@ -52,28 +52,28 @@ export class ServerGroup extends pulumi.CustomResource {
     /**
      * The instances that are part of this server group.
      */
-    public /*out*/ readonly members: pulumi.Output<string[]>;
+    public /*out*/ readonly members!: pulumi.Output<string[]>;
     /**
      * A unique name for the server group. Changing this creates
      * a new server group.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The set of policies for the server group. All policies
      * are mutually exclusive. See the Policies section for more information.
      * Changing this creates a new server group.
      */
-    public readonly policies: pulumi.Output<string[] | undefined>;
+    public readonly policies!: pulumi.Output<string[] | undefined>;
     /**
      * The region in which to obtain the V2 Compute client.
      * If omitted, the `region` argument of the provider is used. Changing
      * this creates a new server group.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Map of additional options.
      */
-    public readonly valueSpecs: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly valueSpecs!: pulumi.Output<{[key: string]: any} | undefined>;
 
     /**
      * Create a ServerGroup resource with the given unique name, arguments, and options.
@@ -86,7 +86,7 @@ export class ServerGroup extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ServerGroupArgs | ServerGroupState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: ServerGroupState = argsOrState as ServerGroupState | undefined;
+            const state = argsOrState as ServerGroupState | undefined;
             inputs["members"] = state ? state.members : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["policies"] = state ? state.policies : undefined;

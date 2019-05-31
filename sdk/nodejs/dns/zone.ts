@@ -40,46 +40,46 @@ export class Zone extends pulumi.CustomResource {
      * Attributes for the DNS Service scheduler.
      * Changing this creates a new zone.
      */
-    public readonly attributes: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly attributes!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
      * A description of the zone.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The email contact for the zone record.
      */
-    public readonly email: pulumi.Output<string | undefined>;
+    public readonly email!: pulumi.Output<string | undefined>;
     /**
      * An array of master DNS servers. For when `type` is
      * `SECONDARY`.
      */
-    public readonly masters: pulumi.Output<string[] | undefined>;
+    public readonly masters!: pulumi.Output<string[] | undefined>;
     /**
      * The name of the zone. Note the `.` at the end of the name.
      * Changing this creates a new DNS zone.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 Compute client.
      * Keypairs are associated with accounts, but a Compute client is needed to
      * create one. If omitted, the `region` argument of the provider is used.
      * Changing this creates a new DNS zone.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The time to live (TTL) of the zone.
      */
-    public readonly ttl: pulumi.Output<number>;
+    public readonly ttl!: pulumi.Output<number>;
     /**
      * The type of zone. Can either be `PRIMARY` or `SECONDARY`.
      * Changing this creates a new zone.
      */
-    public readonly type: pulumi.Output<string>;
+    public readonly type!: pulumi.Output<string>;
     /**
      * Map of additional options. Changing this creates a
      * new zone.
      */
-    public readonly valueSpecs: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly valueSpecs!: pulumi.Output<{[key: string]: any} | undefined>;
 
     /**
      * Create a Zone resource with the given unique name, arguments, and options.
@@ -92,7 +92,7 @@ export class Zone extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ZoneArgs | ZoneState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: ZoneState = argsOrState as ZoneState | undefined;
+            const state = argsOrState as ZoneState | undefined;
             inputs["attributes"] = state ? state.attributes : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["email"] = state ? state.email : undefined;
