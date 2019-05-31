@@ -22,9 +22,6 @@ func NewConfiguration(ctx *pulumi.Context,
 	if args == nil || args.Description == nil {
 		return nil, errors.New("missing required argument 'Description'")
 	}
-	if args == nil || args.Region == nil {
-		return nil, errors.New("missing required argument 'Region'")
-	}
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["configurations"] = nil

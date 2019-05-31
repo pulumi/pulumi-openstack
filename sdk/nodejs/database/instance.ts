@@ -113,9 +113,6 @@ export class Instance extends pulumi.CustomResource {
             if (!args || args.datastore === undefined) {
                 throw new Error("Missing required property 'datastore'");
             }
-            if (!args || args.region === undefined) {
-                throw new Error("Missing required property 'region'");
-            }
             if (!args || args.size === undefined) {
                 throw new Error("Missing required property 'size'");
             }
@@ -221,7 +218,7 @@ export interface InstanceArgs {
      * The region in which to create the db instance. Changing this
      * creates a new instance.
      */
-    readonly region: pulumi.Input<string>;
+    readonly region?: pulumi.Input<string>;
     /**
      * Specifies the volume size in GB. Changing this creates new instance.
      */

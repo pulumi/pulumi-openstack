@@ -43,9 +43,15 @@ export class Subnet extends pulumi.CustomResource {
     /**
      * An array of sub-ranges of CIDR available for
      * dynamic allocation to ports. The allocation_pool object structure is
-     * documented below. Changing this creates a new subnet.
+     * documented below.
      */
     public readonly allocationPools!: pulumi.Output<{ end: string, start: string }[]>;
+    /**
+     * 
+     * An array of sub-ranges of CIDR available for dynamic allocation to ports.
+     * The allocation_pools object structure is documented below.
+     */
+    public readonly allocationPoolsCollection!: pulumi.Output<{ end: string, start: string }[]>;
     /**
      * CIDR representing IP range for this subnet, based on IP
      * version. You can omit this option if you are creating a subnet from a
@@ -160,6 +166,7 @@ export class Subnet extends pulumi.CustomResource {
             const state = argsOrState as SubnetState | undefined;
             inputs["allTags"] = state ? state.allTags : undefined;
             inputs["allocationPools"] = state ? state.allocationPools : undefined;
+            inputs["allocationPoolsCollection"] = state ? state.allocationPoolsCollection : undefined;
             inputs["cidr"] = state ? state.cidr : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["dnsNameservers"] = state ? state.dnsNameservers : undefined;
@@ -184,6 +191,7 @@ export class Subnet extends pulumi.CustomResource {
                 throw new Error("Missing required property 'networkId'");
             }
             inputs["allocationPools"] = args ? args.allocationPools : undefined;
+            inputs["allocationPoolsCollection"] = args ? args.allocationPoolsCollection : undefined;
             inputs["cidr"] = args ? args.cidr : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["dnsNameservers"] = args ? args.dnsNameservers : undefined;
@@ -220,9 +228,15 @@ export interface SubnetState {
     /**
      * An array of sub-ranges of CIDR available for
      * dynamic allocation to ports. The allocation_pool object structure is
-     * documented below. Changing this creates a new subnet.
+     * documented below.
      */
     readonly allocationPools?: pulumi.Input<pulumi.Input<{ end: pulumi.Input<string>, start: pulumi.Input<string> }>[]>;
+    /**
+     * 
+     * An array of sub-ranges of CIDR available for dynamic allocation to ports.
+     * The allocation_pools object structure is documented below.
+     */
+    readonly allocationPoolsCollection?: pulumi.Input<pulumi.Input<{ end: pulumi.Input<string>, start: pulumi.Input<string> }>[]>;
     /**
      * CIDR representing IP range for this subnet, based on IP
      * version. You can omit this option if you are creating a subnet from a
@@ -331,9 +345,15 @@ export interface SubnetArgs {
     /**
      * An array of sub-ranges of CIDR available for
      * dynamic allocation to ports. The allocation_pool object structure is
-     * documented below. Changing this creates a new subnet.
+     * documented below.
      */
     readonly allocationPools?: pulumi.Input<pulumi.Input<{ end: pulumi.Input<string>, start: pulumi.Input<string> }>[]>;
+    /**
+     * 
+     * An array of sub-ranges of CIDR available for dynamic allocation to ports.
+     * The allocation_pools object structure is documented below.
+     */
+    readonly allocationPoolsCollection?: pulumi.Input<pulumi.Input<{ end: pulumi.Input<string>, start: pulumi.Input<string> }>[]>;
     /**
      * CIDR representing IP range for this subnet, based on IP
      * version. You can omit this option if you are creating a subnet from a

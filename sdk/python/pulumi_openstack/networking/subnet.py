@@ -18,7 +18,13 @@ class Subnet(pulumi.CustomResource):
     """
     An array of sub-ranges of CIDR available for
     dynamic allocation to ports. The allocation_pool object structure is
-    documented below. Changing this creates a new subnet.
+    documented below.
+    """
+    allocation_pools_collection: pulumi.Output[list]
+    """
+    
+    An array of sub-ranges of CIDR available for dynamic allocation to ports.
+    The allocation_pools object structure is documented below.
     """
     cidr: pulumi.Output[str]
     """
@@ -119,7 +125,7 @@ class Subnet(pulumi.CustomResource):
     """
     Map of additional options.
     """
-    def __init__(__self__, resource_name, opts=None, allocation_pools=None, cidr=None, description=None, dns_nameservers=None, enable_dhcp=None, gateway_ip=None, host_routes=None, ip_version=None, ipv6_address_mode=None, ipv6_ra_mode=None, name=None, network_id=None, no_gateway=None, prefix_length=None, region=None, subnetpool_id=None, tags=None, tenant_id=None, value_specs=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, allocation_pools=None, allocation_pools_collection=None, cidr=None, description=None, dns_nameservers=None, enable_dhcp=None, gateway_ip=None, host_routes=None, ip_version=None, ipv6_address_mode=None, ipv6_ra_mode=None, name=None, network_id=None, no_gateway=None, prefix_length=None, region=None, subnetpool_id=None, tags=None, tenant_id=None, value_specs=None, __name__=None, __opts__=None):
         """
         Manages a V2 Neutron subnet resource within OpenStack.
         
@@ -127,7 +133,10 @@ class Subnet(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] allocation_pools: An array of sub-ranges of CIDR available for
                dynamic allocation to ports. The allocation_pool object structure is
-               documented below. Changing this creates a new subnet.
+               documented below.
+        :param pulumi.Input[list] allocation_pools_collection: 
+               An array of sub-ranges of CIDR available for dynamic allocation to ports.
+               The allocation_pools object structure is documented below.
         :param pulumi.Input[str] cidr: CIDR representing IP range for this subnet, based on IP
                version. You can omit this option if you are creating a subnet from a
                subnet pool.
@@ -190,6 +199,8 @@ class Subnet(pulumi.CustomResource):
         __props__ = dict()
 
         __props__['allocation_pools'] = allocation_pools
+
+        __props__['allocation_pools_collection'] = allocation_pools_collection
 
         __props__['cidr'] = cidr
 

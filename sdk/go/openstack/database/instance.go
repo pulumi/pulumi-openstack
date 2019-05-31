@@ -19,9 +19,6 @@ func NewInstance(ctx *pulumi.Context,
 	if args == nil || args.Datastore == nil {
 		return nil, errors.New("missing required argument 'Datastore'")
 	}
-	if args == nil || args.Region == nil {
-		return nil, errors.New("missing required argument 'Region'")
-	}
 	if args == nil || args.Size == nil {
 		return nil, errors.New("missing required argument 'Size'")
 	}

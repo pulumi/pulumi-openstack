@@ -137,7 +137,7 @@ export class Port extends pulumi.CustomResource {
      * The port DNS name. Available, when Neutron DNS extension
      * is enabled.
      */
-    public readonly dnsName!: pulumi.Output<string | undefined>;
+    public readonly dnsName!: pulumi.Output<string>;
     /**
      * An extra DHCP option that needs to be configured
      * on the port. The structure is described below. Can be specified multiple

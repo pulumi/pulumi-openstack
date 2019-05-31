@@ -261,12 +261,22 @@ func Provider() tfbridge.ProviderInfo {
 			"openstack_networking_router_interface_v2":        {Tok: openstackResource(networkingMod, "RouterInterface")},
 			"openstack_networking_router_route_v2":            {Tok: openstackResource(networkingMod, "RouterRoute")},
 			"openstack_networking_router_v2":                  {Tok: openstackResource(networkingMod, "Router")},
-			"openstack_networking_subnet_v2":                  {Tok: openstackResource(networkingMod, "Subnet")},
-			"openstack_networking_subnet_route_v2":            {Tok: openstackResource(networkingMod, "SubnetRoute")},
-			"openstack_networking_subnetpool_v2":              {Tok: openstackResource(networkingMod, "SubnetPool")},
-			"openstack_networking_secgroup_v2":                {Tok: openstackResource(networkingMod, "SecGroup")},
-			"openstack_networking_secgroup_rule_v2":           {Tok: openstackResource(networkingMod, "SecGroupRule")},
-			"openstack_networking_trunk_v2":                   {Tok: openstackResource(networkingMod, "Trunk")},
+			"openstack_networking_subnet_v2": {
+				Tok: openstackResource(networkingMod, "Subnet"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"allocation_pool": {
+						Name: "allocationPools",
+					},
+					"allocation_pools": {
+						Name: "allocationPoolsCollection",
+					},
+				},
+			},
+			"openstack_networking_subnet_route_v2":  {Tok: openstackResource(networkingMod, "SubnetRoute")},
+			"openstack_networking_subnetpool_v2":    {Tok: openstackResource(networkingMod, "SubnetPool")},
+			"openstack_networking_secgroup_v2":      {Tok: openstackResource(networkingMod, "SecGroup")},
+			"openstack_networking_secgroup_rule_v2": {Tok: openstackResource(networkingMod, "SecGroupRule")},
+			"openstack_networking_trunk_v2":         {Tok: openstackResource(networkingMod, "Trunk")},
 
 			// Load Balancer
 			"openstack_lb_member_v1":       {Tok: openstackResource(lbMod, "MemberV1")},

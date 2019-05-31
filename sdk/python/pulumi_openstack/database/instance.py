@@ -106,8 +106,6 @@ class Instance(pulumi.CustomResource):
 
         __props__['networks'] = networks
 
-        if region is None:
-            raise TypeError("Missing required property 'region'")
         __props__['region'] = region
 
         if size is None:

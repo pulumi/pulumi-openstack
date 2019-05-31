@@ -44,7 +44,7 @@ export class Database extends pulumi.CustomResource {
     /**
      * Openstack region resource is created in.
      */
-    public readonly region!: pulumi.Output<string | undefined>;
+    public readonly region!: pulumi.Output<string>;
 
     /**
      * Create a Database resource with the given unique name, arguments, and options.

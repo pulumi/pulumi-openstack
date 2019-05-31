@@ -89,9 +89,6 @@ export class Configuration extends pulumi.CustomResource {
             if (!args || args.description === undefined) {
                 throw new Error("Missing required property 'description'");
             }
-            if (!args || args.region === undefined) {
-                throw new Error("Missing required property 'region'");
-            }
             inputs["configurations"] = args ? args.configurations : undefined;
             inputs["datastore"] = args ? args.datastore : undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -155,5 +152,5 @@ export interface ConfigurationArgs {
      * The region in which to create the db instance. Changing this
      * creates a new instance.
      */
-    readonly region: pulumi.Input<string>;
+    readonly region?: pulumi.Input<string>;
 }

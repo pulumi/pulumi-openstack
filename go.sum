@@ -174,9 +174,13 @@ github.com/gophercloud/gophercloud v0.0.0-20190208042652-bc37892e1968/go.mod h1:
 github.com/gophercloud/gophercloud v0.0.0-20190212181753-892256c46858/go.mod h1:vxM41WHh5uqHVBMZHzuwNOHh8XEoIEcSTewFxm1c5g8=
 github.com/gophercloud/gophercloud v0.0.0-20190328150603-33e54f40ffcf h1:Cadz8DdkvBq1XLIk6aDDLsYHfXFr9sjlHE0RmaZpY9Q=
 github.com/gophercloud/gophercloud v0.0.0-20190328150603-33e54f40ffcf/go.mod h1:vxM41WHh5uqHVBMZHzuwNOHh8XEoIEcSTewFxm1c5g8=
+github.com/gophercloud/gophercloud v0.0.0-20190509032623-7892efa714f1 h1:arOt83fsdoK/BYJm4zQOS9YL3KmUsaAVbQx9nFvNPmg=
+github.com/gophercloud/gophercloud v0.0.0-20190509032623-7892efa714f1/go.mod h1:vxM41WHh5uqHVBMZHzuwNOHh8XEoIEcSTewFxm1c5g8=
 github.com/gophercloud/utils v0.0.0-20190128072930-fbb6ab446f01/go.mod h1:wjDF8z83zTeg5eMLml5EBSlAhbF7G8DobyI1YsMuyzw=
 github.com/gophercloud/utils v0.0.0-20190212203534-6f24f46ce3c9 h1:frK+RgSyzotPwHzxlbGO9aeM+zoQ4LgUfQbbynAAavw=
 github.com/gophercloud/utils v0.0.0-20190212203534-6f24f46ce3c9/go.mod h1:95GkZLE4Nob0I9L4qW5dWmyiekLwK3HsVAOV13XY9CY=
+github.com/gophercloud/utils v0.0.0-20190313033024-0bcc8e728cb5 h1:8USoe8m65WcTOYy+MUu+EtLJJysSODnoNDNCEWhDMso=
+github.com/gophercloud/utils v0.0.0-20190313033024-0bcc8e728cb5/go.mod h1:SZ9FTKibIotDtCrxAU/evccoyu1yhKST6hgBvwTB5Eg=
 github.com/gopherjs/gopherjs v0.0.0-20181017120253-0766667cb4d1/go.mod h1:wJfORRmW1u3UXTncJ5qlYoELFm8eSnnEO6hX4iZ3EWY=
 github.com/gopherjs/gopherjs v0.0.0-20181103185306-d547d1d9531e/go.mod h1:wJfORRmW1u3UXTncJ5qlYoELFm8eSnnEO6hX4iZ3EWY=
 github.com/gorilla/context v1.1.1/go.mod h1:kBGZzfjB9CEq2AlWe17Uuf7NDRt0dE0s8S51q0aT7Yg=
@@ -273,6 +277,7 @@ github.com/hashicorp/serf v0.8.2-0.20171022020050-c20a0b1b1ea9/go.mod h1:h/Ru6tm
 github.com/hashicorp/terraform v0.11.12-beta1.0.20190212191339-ee1f8f9362f3/go.mod h1:8tUWsL56EhJHEy45QX9SROGT3+GSU06FVkh6GsP5uSY=
 github.com/hashicorp/terraform v0.12.0-alpha4.0.20190401213546-16778fea9219 h1:ERGxsaEjvQhbYbCNHlEJoBEZTN6hJek4ySlEXF0N6tU=
 github.com/hashicorp/terraform v0.12.0-alpha4.0.20190401213546-16778fea9219/go.mod h1:nKy9gpuzGp5Szg5XmzTKSpu6M+/LFiQYQUQmw/fNe0Q=
+github.com/hashicorp/terraform v0.12.0-rc1/go.mod h1:mLbSyFcATc332aCwDeX9cziNg/dUb6ZJzRVd1KgrDOk=
 github.com/hashicorp/terraform v0.12.0-rc1.0.20190509225429-28b2383eacae h1:kfNM9o46g5NkRChK5BlD4mtStjo8WuDxsL74Qwwq2/A=
 github.com/hashicorp/terraform v0.12.0-rc1.0.20190509225429-28b2383eacae/go.mod h1:mLbSyFcATc332aCwDeX9cziNg/dUb6ZJzRVd1KgrDOk=
 github.com/hashicorp/terraform-config-inspect v0.0.0-20190327195015-8022a2663a70 h1:oZm5nE11yhzsTRz/YrUyDMSvixePqjoZihwn8ipuOYI=
@@ -358,6 +363,8 @@ github.com/mitchellh/copystructure v1.0.0/go.mod h1:SNtv71yrdKgLRyLFxmLdkAbkKEFW
 github.com/mitchellh/go-homedir v0.0.0-20161203194507-b8bc1bf76747/go.mod h1:SfyaCUpYCn1Vlf4IUYiD9fPX4A5wJrkLzIz1N1q0pr0=
 github.com/mitchellh/go-homedir v1.0.0 h1:vKb8ShqSby24Yrqr/yDYkuFz8d0WUjys40rvnGC8aR0=
 github.com/mitchellh/go-homedir v1.0.0/go.mod h1:SfyaCUpYCn1Vlf4IUYiD9fPX4A5wJrkLzIz1N1q0pr0=
+github.com/mitchellh/go-homedir v1.1.0 h1:lukF9ziXFxDFPkA1vsr5zpc1XuPDn/wFntq5mG+4E0Y=
+github.com/mitchellh/go-homedir v1.1.0/go.mod h1:SfyaCUpYCn1Vlf4IUYiD9fPX4A5wJrkLzIz1N1q0pr0=
 github.com/mitchellh/go-linereader v0.0.0-20141013185533-07bab5fdd958/go.mod h1:OaY7UOoTkkrX3wRwjpYRKafIkkyeD0UtweSHAWWiqQM=
 github.com/mitchellh/go-linereader v0.0.0-20190213213312-1b945b3263eb/go.mod h1:OaY7UOoTkkrX3wRwjpYRKafIkkyeD0UtweSHAWWiqQM=
 github.com/mitchellh/go-ps v0.0.0-20170309133038-4fdf99ab2936 h1:kw1v0NlnN+GZcU8Ma8CLF2Zzgjfx95gs3/GN3vYAPpo=
@@ -507,6 +514,8 @@ github.com/terraform-providers/terraform-provider-aws v1.29.0/go.mod h1:uvqaeKnm
 github.com/terraform-providers/terraform-provider-openstack v1.15.0/go.mod h1:2aQ6n/BtChAl1y2S60vebhyJyZXBsuAI5G4+lHrT1Ew=
 github.com/terraform-providers/terraform-provider-openstack v1.17.0 h1:2T5KKa43ooNCp1NJ/hVclVTyeuiUmRlPGzvPmhhqTJQ=
 github.com/terraform-providers/terraform-provider-openstack v1.17.0/go.mod h1:jPRjWQghZLpOboraXv38owV/c/xa8hGKyEpQeiPK/G8=
+github.com/terraform-providers/terraform-provider-openstack v1.19.0 h1:q3B3B/OlL1Rc+CnR9wOc1QNnl6pRPF93iCxhwSuFkH4=
+github.com/terraform-providers/terraform-provider-openstack v1.19.0/go.mod h1:jE41jll4IHoT9/oHnxqEw+rv1LJmUeTCpWjZCqY9oB8=
 github.com/terraform-providers/terraform-provider-template v1.0.0/go.mod h1:/J+B8me5DCMa0rEBH5ic2aKPjhtpWNeScmxFJWxB1EU=
 github.com/terraform-providers/terraform-provider-tls v1.2.0/go.mod h1:Mxe/v5u31LDW4m32O1z6Ursdh95dpc9Puq6otkYg7tU=
 github.com/texttheater/golang-levenshtein v0.0.0-20180516184445-d188e65d659e h1:T5PdfK/M1xyrHwynxMIVMWLS7f/qHwfslZphxtGnw7s=

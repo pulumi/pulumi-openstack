@@ -80,9 +80,6 @@ export class User extends pulumi.CustomResource {
             if (!args || args.password === undefined) {
                 throw new Error("Missing required property 'password'");
             }
-            if (!args || args.region === undefined) {
-                throw new Error("Missing required property 'region'");
-            }
             inputs["databases"] = args ? args.databases : undefined;
             inputs["host"] = args ? args.host : undefined;
             inputs["instanceId"] = args ? args.instanceId : undefined;
@@ -139,5 +136,5 @@ export interface UserArgs {
     /**
      * Openstack region resource is created in.
      */
-    readonly region: pulumi.Input<string>;
+    readonly region?: pulumi.Input<string>;
 }
