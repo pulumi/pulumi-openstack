@@ -33,22 +33,22 @@ export class IkePolicy extends pulumi.CustomResource {
      * The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.
      * Default is sha1. Changing this updates the algorithm of the existing policy.
      */
-    public readonly authAlgorithm: pulumi.Output<string | undefined>;
+    public readonly authAlgorithm!: pulumi.Output<string | undefined>;
     /**
      * The human-readable description for the policy.
      * Changing this updates the description of the existing policy.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The encryption algorithm. Valid values are 3des, aes-128, aes-192 and so on.
      * The default value is aes-128. Changing this updates the existing policy.
      */
-    public readonly encryptionAlgorithm: pulumi.Output<string | undefined>;
+    public readonly encryptionAlgorithm!: pulumi.Output<string | undefined>;
     /**
      * The IKE mode. A valid value is v1 or v2. Default is v1.
      * Changing this updates the existing policy.
      */
-    public readonly ikeVersion: pulumi.Output<string | undefined>;
+    public readonly ikeVersion!: pulumi.Output<string | undefined>;
     /**
      * The lifetime of the security association. Consists of Unit and Value.
      * - `unit` - (Optional) The units for the lifetime of the security association. Can be either seconds or kilobytes.
@@ -56,38 +56,38 @@ export class IkePolicy extends pulumi.CustomResource {
      * - `value` - (Optional) The value for the lifetime of the security association. Must be a positive integer.
      * Default is 3600.
      */
-    public readonly lifetimes: pulumi.Output<{ units: string, value: number }[]>;
+    public readonly lifetimes!: pulumi.Output<{ units: string, value: number }[]>;
     /**
      * The name of the policy. Changing this updates the name of
      * the existing policy.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The perfect forward secrecy mode. Valid values are Group2, Group5 and Group14. Default is Group5.
      * Changing this updates the existing policy.
      */
-    public readonly pfs: pulumi.Output<string | undefined>;
+    public readonly pfs!: pulumi.Output<string | undefined>;
     /**
      * The IKE mode. A valid value is main, which is the default.
      * Changing this updates the existing policy.
      */
-    public readonly phase1NegotiationMode: pulumi.Output<string | undefined>;
+    public readonly phase1NegotiationMode!: pulumi.Output<string | undefined>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a VPN service. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * service.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The owner of the policy. Required if admin wants to
      * create a service for another policy. Changing this creates a new policy.
      */
-    public readonly tenantId: pulumi.Output<string>;
+    public readonly tenantId!: pulumi.Output<string>;
     /**
      * Map of additional options.
      */
-    public readonly valueSpecs: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly valueSpecs!: pulumi.Output<{[key: string]: any} | undefined>;
 
     /**
      * Create a IkePolicy resource with the given unique name, arguments, and options.
@@ -100,7 +100,7 @@ export class IkePolicy extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: IkePolicyArgs | IkePolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: IkePolicyState = argsOrState as IkePolicyState | undefined;
+            const state = argsOrState as IkePolicyState | undefined;
             inputs["authAlgorithm"] = state ? state.authAlgorithm : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["encryptionAlgorithm"] = state ? state.encryptionAlgorithm : undefined;

@@ -114,28 +114,28 @@ export class Cluster extends pulumi.CustomResource {
         return new Cluster(name, <any>state, { ...opts, id: id });
     }
 
-    public /*out*/ readonly apiAddress: pulumi.Output<string>;
-    public readonly clusterTemplateId: pulumi.Output<string>;
-    public /*out*/ readonly coeVersion: pulumi.Output<string>;
-    public /*out*/ readonly containerVersion: pulumi.Output<string>;
-    public readonly createTimeout: pulumi.Output<number>;
-    public /*out*/ readonly createdAt: pulumi.Output<string>;
-    public readonly discoveryUrl: pulumi.Output<string>;
-    public readonly dockerVolumeSize: pulumi.Output<number>;
-    public readonly flavor: pulumi.Output<string>;
-    public readonly keypair: pulumi.Output<string>;
-    public readonly labels: pulumi.Output<{[key: string]: any}>;
-    public /*out*/ readonly masterAddresses: pulumi.Output<string>;
-    public readonly masterCount: pulumi.Output<number>;
-    public readonly masterFlavor: pulumi.Output<string>;
-    public readonly name: pulumi.Output<string>;
-    public /*out*/ readonly nodeAddresses: pulumi.Output<string>;
-    public readonly nodeCount: pulumi.Output<number>;
-    public /*out*/ readonly projectId: pulumi.Output<string>;
-    public readonly region: pulumi.Output<string>;
-    public /*out*/ readonly stackId: pulumi.Output<string>;
-    public /*out*/ readonly updatedAt: pulumi.Output<string>;
-    public /*out*/ readonly userId: pulumi.Output<string>;
+    public /*out*/ readonly apiAddress!: pulumi.Output<string>;
+    public readonly clusterTemplateId!: pulumi.Output<string>;
+    public /*out*/ readonly coeVersion!: pulumi.Output<string>;
+    public /*out*/ readonly containerVersion!: pulumi.Output<string>;
+    public readonly createTimeout!: pulumi.Output<number>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    public readonly discoveryUrl!: pulumi.Output<string>;
+    public readonly dockerVolumeSize!: pulumi.Output<number>;
+    public readonly flavor!: pulumi.Output<string>;
+    public readonly keypair!: pulumi.Output<string>;
+    public readonly labels!: pulumi.Output<{[key: string]: any}>;
+    public /*out*/ readonly masterAddresses!: pulumi.Output<string>;
+    public readonly masterCount!: pulumi.Output<number>;
+    public readonly masterFlavor!: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
+    public /*out*/ readonly nodeAddresses!: pulumi.Output<string>;
+    public readonly nodeCount!: pulumi.Output<number>;
+    public /*out*/ readonly projectId!: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
+    public /*out*/ readonly stackId!: pulumi.Output<string>;
+    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    public /*out*/ readonly userId!: pulumi.Output<string>;
 
     /**
      * Create a Cluster resource with the given unique name, arguments, and options.
@@ -148,7 +148,7 @@ export class Cluster extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ClusterArgs | ClusterState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: ClusterState = argsOrState as ClusterState | undefined;
+            const state = argsOrState as ClusterState | undefined;
             inputs["apiAddress"] = state ? state.apiAddress : undefined;
             inputs["clusterTemplateId"] = state ? state.clusterTemplateId : undefined;
             inputs["coeVersion"] = state ? state.coeVersion : undefined;

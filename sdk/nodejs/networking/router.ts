@@ -37,41 +37,41 @@ export class Router extends pulumi.CustomResource {
      * (must be "true" or "false" if provided). Changing this updates the
      * `admin_state_up` of an existing router.
      */
-    public readonly adminStateUp: pulumi.Output<boolean>;
+    public readonly adminStateUp!: pulumi.Output<boolean>;
     /**
      * The collection of tags assigned on the router, which have been
      * explicitly and implicitly added.
      */
-    public /*out*/ readonly allTags: pulumi.Output<string[]>;
+    public /*out*/ readonly allTags!: pulumi.Output<string[]>;
     /**
      * An availability zone is used to make 
      * network resources highly available. Used for resources with high availability so that they are scheduled on different availability zones. Changing
      * this creates a new router.
      */
-    public readonly availabilityZoneHints: pulumi.Output<string[]>;
+    public readonly availabilityZoneHints!: pulumi.Output<string[]>;
     /**
      * Human-readable description for the router.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Indicates whether or not to create a
      * distributed router. The default policy setting in Neutron restricts
      * usage of this property to administrative users only.
      */
-    public readonly distributed: pulumi.Output<boolean>;
+    public readonly distributed!: pulumi.Output<boolean>;
     /**
      * Enable Source NAT for the router. Valid values are
      * "true" or "false". An `external_network_id` has to be set in order to
      * set this property. Changing this updates the `enable_snat` of the router.
      */
-    public readonly enableSnat: pulumi.Output<boolean>;
+    public readonly enableSnat!: pulumi.Output<boolean>;
     /**
      * An external fixed IP for the router. This
      * can be repeated. The structure is described below. An `external_network_id`
      * has to be set in order to set this property. Changing this updates the
      * external fixed IPs of the router.
      */
-    public readonly externalFixedIps: pulumi.Output<{ ipAddress?: string, subnetId?: string }[]>;
+    public readonly externalFixedIps!: pulumi.Output<{ ipAddress?: string, subnetId?: string }[]>;
     /**
      * The
      * network UUID of an external gateway for the router. A router with an
@@ -79,44 +79,44 @@ export class Router extends pulumi.CustomResource {
      * will be using floating IPs. Changing this updates the external gateway
      * of an existing router.
      */
-    public readonly externalGateway: pulumi.Output<string>;
+    public readonly externalGateway!: pulumi.Output<string>;
     /**
      * The network UUID of an external gateway
      * for the router. A router with an external gateway is required if any
      * compute instances or load balancers will be using floating IPs. Changing
      * this updates the external gateway of the router.
      */
-    public readonly externalNetworkId: pulumi.Output<string>;
+    public readonly externalNetworkId!: pulumi.Output<string>;
     /**
      * A unique name for the router. Changing this
      * updates the `name` of an existing router.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 networking client.
      * A networking client is needed to create a router. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * router.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * A set of string tags for the router.
      */
-    public readonly tags: pulumi.Output<string[] | undefined>;
+    public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
      * The owner of the floating IP. Required if admin wants
      * to create a router for another tenant. Changing this creates a new router.
      */
-    public readonly tenantId: pulumi.Output<string>;
+    public readonly tenantId!: pulumi.Output<string>;
     /**
      * Map of additional driver-specific options.
      */
-    public readonly valueSpecs: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly valueSpecs!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
      * Map of additional vendor-specific options.
      * Supported options are described below.
      */
-    public readonly vendorOptions: pulumi.Output<{ setRouterGatewayAfterCreate?: boolean } | undefined>;
+    public readonly vendorOptions!: pulumi.Output<{ setRouterGatewayAfterCreate?: boolean } | undefined>;
 
     /**
      * Create a Router resource with the given unique name, arguments, and options.
@@ -129,7 +129,7 @@ export class Router extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: RouterArgs | RouterState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: RouterState = argsOrState as RouterState | undefined;
+            const state = argsOrState as RouterState | undefined;
             inputs["adminStateUp"] = state ? state.adminStateUp : undefined;
             inputs["allTags"] = state ? state.allTags : undefined;
             inputs["availabilityZoneHints"] = state ? state.availabilityZoneHints : undefined;

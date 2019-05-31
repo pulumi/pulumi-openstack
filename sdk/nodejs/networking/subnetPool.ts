@@ -61,62 +61,62 @@ export class SubnetPool extends pulumi.CustomResource {
      * subnetpool. Changing this updates the address scope id of the existing
      * subnetpool.
      */
-    public readonly addressScopeId: pulumi.Output<string | undefined>;
+    public readonly addressScopeId!: pulumi.Output<string | undefined>;
     /**
      * The collection of tags assigned on the subnetpool, which have been
      * explicitly and implicitly added.
      */
-    public /*out*/ readonly allTags: pulumi.Output<string[]>;
+    public /*out*/ readonly allTags!: pulumi.Output<string[]>;
     /**
      * The time at which subnetpool was created.
      */
-    public /*out*/ readonly createdAt: pulumi.Output<string>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
      * The size of the prefix to allocate when the cidr
      * or prefixlen attributes are omitted when you create the subnet. Defaults to the
      * MinPrefixLen. Changing this updates the default prefixlen of the existing
      * subnetpool.
      */
-    public readonly defaultPrefixlen: pulumi.Output<number>;
+    public readonly defaultPrefixlen!: pulumi.Output<number>;
     /**
      * The per-project quota on the prefix space that can be
      * allocated from the subnetpool for project subnets. Changing this updates the
      * default quota of the existing subnetpool.
      */
-    public readonly defaultQuota: pulumi.Output<number | undefined>;
+    public readonly defaultQuota!: pulumi.Output<number | undefined>;
     /**
      * The human-readable description for the subnetpool.
      * Changing this updates the description of the existing subnetpool.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The IP protocol version.
      */
-    public readonly ipVersion: pulumi.Output<number>;
+    public readonly ipVersion!: pulumi.Output<number>;
     /**
      * Indicates whether the subnetpool is default
      * subnetpool or not. Changing this updates the default status of the existing
      * subnetpool.
      */
-    public readonly isDefault: pulumi.Output<boolean | undefined>;
+    public readonly isDefault!: pulumi.Output<boolean | undefined>;
     /**
      * The maximum prefix size that can be allocated from
      * the subnetpool. For IPv4 subnetpools, default is 32. For IPv6 subnetpools,
      * default is 128. Changing this updates the max prefixlen of the existing
      * subnetpool.
      */
-    public readonly maxPrefixlen: pulumi.Output<number>;
+    public readonly maxPrefixlen!: pulumi.Output<number>;
     /**
      * The smallest prefix that can be allocated from a
      * subnetpool. For IPv4 subnetpools, default is 8. For IPv6 subnetpools, default
      * is 64. Changing this updates the min prefixlen of the existing subnetpool.
      */
-    public readonly minPrefixlen: pulumi.Output<number>;
+    public readonly minPrefixlen!: pulumi.Output<number>;
     /**
      * The name of the subnetpool. Changing this updates the name of
      * the existing subnetpool.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * A list of subnet prefixes to assign to the subnetpool.
      * Neutron API merges adjacent prefixes and treats them as a single prefix. Each
@@ -124,41 +124,41 @@ export class SubnetPool extends pulumi.CustomResource {
      * are associated with the address scope. Changing this updates the prefixes list
      * of the existing subnetpool.
      */
-    public readonly prefixes: pulumi.Output<string[]>;
+    public readonly prefixes!: pulumi.Output<string[]>;
     /**
      * The owner of the subnetpool. Required if admin wants to
      * create a subnetpool for another project. Changing this creates a new subnetpool.
      */
-    public readonly projectId: pulumi.Output<string>;
+    public readonly projectId!: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a Neutron subnetpool. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * subnetpool.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The revision number of the subnetpool.
      */
-    public /*out*/ readonly revisionNumber: pulumi.Output<number>;
+    public /*out*/ readonly revisionNumber!: pulumi.Output<number>;
     /**
      * Indicates whether this subnetpool is shared across
      * all projects. Changing this updates the shared status of the existing
      * subnetpool.
      */
-    public readonly shared: pulumi.Output<boolean | undefined>;
+    public readonly shared!: pulumi.Output<boolean | undefined>;
     /**
      * A set of string tags for the subnetpool.
      */
-    public readonly tags: pulumi.Output<string[] | undefined>;
+    public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
      * The time at which subnetpool was created.
      */
-    public /*out*/ readonly updatedAt: pulumi.Output<string>;
+    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
     /**
      * Map of additional options.
      */
-    public readonly valueSpecs: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly valueSpecs!: pulumi.Output<{[key: string]: any} | undefined>;
 
     /**
      * Create a SubnetPool resource with the given unique name, arguments, and options.
@@ -171,7 +171,7 @@ export class SubnetPool extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: SubnetPoolArgs | SubnetPoolState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: SubnetPoolState = argsOrState as SubnetPoolState | undefined;
+            const state = argsOrState as SubnetPoolState | undefined;
             inputs["addressScopeId"] = state ? state.addressScopeId : undefined;
             inputs["allTags"] = state ? state.allTags : undefined;
             inputs["createdAt"] = state ? state.createdAt : undefined;

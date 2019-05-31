@@ -86,29 +86,29 @@ export class PortSecGroupAssociate extends pulumi.CustomResource {
      * The collection of Security Group IDs on the port
      * which have been explicitly and implicitly added.
      */
-    public /*out*/ readonly allSecurityGroupIds: pulumi.Output<string[]>;
+    public /*out*/ readonly allSecurityGroupIds!: pulumi.Output<string[]>;
     /**
      * Whether to replace or append the list of security
      * groups, specified in the `security_group_ids`. Defaults to `false`.
      */
-    public readonly enforce: pulumi.Output<boolean | undefined>;
+    public readonly enforce!: pulumi.Output<boolean | undefined>;
     /**
      * An UUID of the port to apply security groups to.
      */
-    public readonly portId: pulumi.Output<string>;
+    public readonly portId!: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 networking client.
      * A networking client is needed to manage a port. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * resource.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * A list of security group IDs to apply to
      * the port. The security groups must be specified by ID and not name (as
      * opposed to how they are configured with the Compute Instance).
      */
-    public readonly securityGroupIds: pulumi.Output<string[]>;
+    public readonly securityGroupIds!: pulumi.Output<string[]>;
 
     /**
      * Create a PortSecGroupAssociate resource with the given unique name, arguments, and options.
@@ -121,7 +121,7 @@ export class PortSecGroupAssociate extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: PortSecGroupAssociateArgs | PortSecGroupAssociateState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: PortSecGroupAssociateState = argsOrState as PortSecGroupAssociateState | undefined;
+            const state = argsOrState as PortSecGroupAssociateState | undefined;
             inputs["allSecurityGroupIds"] = state ? state.allSecurityGroupIds : undefined;
             inputs["enforce"] = state ? state.enforce : undefined;
             inputs["portId"] = state ? state.portId : undefined;

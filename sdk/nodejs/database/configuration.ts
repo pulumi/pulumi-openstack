@@ -44,25 +44,25 @@ export class Configuration extends pulumi.CustomResource {
     /**
      * An array of configuration parameter name and value. Can be specified multiple times. The configuration object structure is documented below.
      */
-    public readonly configurations: pulumi.Output<{ name: string, value: string }[] | undefined>;
+    public readonly configurations!: pulumi.Output<{ name: string, value: string }[] | undefined>;
     /**
      * An array of database engine type and version. The datastore
      * object structure is documented below. Changing this creates resource.
      */
-    public readonly datastore: pulumi.Output<{ type: string, version: string }>;
+    public readonly datastore!: pulumi.Output<{ type: string, version: string }>;
     /**
      * Description of the resource.
      */
-    public readonly description: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string>;
     /**
      * A unique name for the resource.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The region in which to create the db instance. Changing this
      * creates a new instance.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
 
     /**
      * Create a Configuration resource with the given unique name, arguments, and options.
@@ -75,7 +75,7 @@ export class Configuration extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ConfigurationArgs | ConfigurationState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: ConfigurationState = argsOrState as ConfigurationState | undefined;
+            const state = argsOrState as ConfigurationState | undefined;
             inputs["configurations"] = state ? state.configurations : undefined;
             inputs["datastore"] = state ? state.datastore : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -88,9 +88,6 @@ export class Configuration extends pulumi.CustomResource {
             }
             if (!args || args.description === undefined) {
                 throw new Error("Missing required property 'description'");
-            }
-            if (!args || args.region === undefined) {
-                throw new Error("Missing required property 'region'");
             }
             inputs["configurations"] = args ? args.configurations : undefined;
             inputs["datastore"] = args ? args.datastore : undefined;
@@ -155,5 +152,5 @@ export interface ConfigurationArgs {
      * The region in which to create the db instance. Changing this
      * creates a new instance.
      */
-    readonly region: pulumi.Input<string>;
+    readonly region?: pulumi.Input<string>;
 }

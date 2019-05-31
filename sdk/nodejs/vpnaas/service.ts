@@ -36,53 +36,53 @@ export class Service extends pulumi.CustomResource {
      * The administrative state of the resource. Can either be up(true) or down(false).
      * Changing this updates the administrative state of the existing service.
      */
-    public readonly adminStateUp: pulumi.Output<boolean | undefined>;
+    public readonly adminStateUp!: pulumi.Output<boolean | undefined>;
     /**
      * The human-readable description for the service.
      * Changing this updates the description of the existing service.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The read-only external (public) IPv4 address that is used for the VPN service.
      */
-    public /*out*/ readonly externalV4Ip: pulumi.Output<string>;
+    public /*out*/ readonly externalV4Ip!: pulumi.Output<string>;
     /**
      * The read-only external (public) IPv6 address that is used for the VPN service.
      */
-    public /*out*/ readonly externalV6Ip: pulumi.Output<string>;
+    public /*out*/ readonly externalV6Ip!: pulumi.Output<string>;
     /**
      * The name of the service. Changing this updates the name of
      * the existing service.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a VPN service. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * service.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The ID of the router. Changing this creates a new service.
      */
-    public readonly routerId: pulumi.Output<string>;
+    public readonly routerId!: pulumi.Output<string>;
     /**
      * Indicates whether IPsec VPN service is currently operational. Values are ACTIVE, DOWN, BUILD, ERROR, PENDING_CREATE, PENDING_UPDATE, or PENDING_DELETE.
      */
-    public /*out*/ readonly status: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * SubnetID is the ID of the subnet. Default is null.
      */
-    public readonly subnetId: pulumi.Output<string | undefined>;
+    public readonly subnetId!: pulumi.Output<string | undefined>;
     /**
      * The owner of the service. Required if admin wants to
      * create a service for another project. Changing this creates a new service.
      */
-    public readonly tenantId: pulumi.Output<string>;
+    public readonly tenantId!: pulumi.Output<string>;
     /**
      * Map of additional options.
      */
-    public readonly valueSpecs: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly valueSpecs!: pulumi.Output<{[key: string]: any} | undefined>;
 
     /**
      * Create a Service resource with the given unique name, arguments, and options.
@@ -95,7 +95,7 @@ export class Service extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ServiceArgs | ServiceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: ServiceState = argsOrState as ServiceState | undefined;
+            const state = argsOrState as ServiceState | undefined;
             inputs["adminStateUp"] = state ? state.adminStateUp : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["externalV4Ip"] = state ? state.externalV4Ip : undefined;

@@ -67,38 +67,38 @@ export class SecGroup extends pulumi.CustomResource {
      * The collection of tags assigned on the security group, which have
      * been explicitly and implicitly added.
      */
-    public /*out*/ readonly allTags: pulumi.Output<string[]>;
+    public /*out*/ readonly allTags!: pulumi.Output<string[]>;
     /**
      * Whether or not to delete the default
      * egress security rules. This is `false` by default. See the below note
      * for more information.
      */
-    public readonly deleteDefaultRules: pulumi.Output<boolean | undefined>;
+    public readonly deleteDefaultRules!: pulumi.Output<boolean | undefined>;
     /**
      * A unique name for the security group.
      */
-    public readonly description: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string>;
     /**
      * A unique name for the security group.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 networking client.
      * A networking client is needed to create a port. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * security group.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * A set of string tags for the security group.
      */
-    public readonly tags: pulumi.Output<string[] | undefined>;
+    public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
      * The owner of the security group. Required if admin
      * wants to create a port for another tenant. Changing this creates a new
      * security group.
      */
-    public readonly tenantId: pulumi.Output<string>;
+    public readonly tenantId!: pulumi.Output<string>;
 
     /**
      * Create a SecGroup resource with the given unique name, arguments, and options.
@@ -111,7 +111,7 @@ export class SecGroup extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: SecGroupArgs | SecGroupState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: SecGroupState = argsOrState as SecGroupState | undefined;
+            const state = argsOrState as SecGroupState | undefined;
             inputs["allTags"] = state ? state.allTags : undefined;
             inputs["deleteDefaultRules"] = state ? state.deleteDefaultRules : undefined;
             inputs["description"] = state ? state.description : undefined;

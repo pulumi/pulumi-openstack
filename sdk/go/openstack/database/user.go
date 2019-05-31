@@ -22,9 +22,6 @@ func NewUser(ctx *pulumi.Context,
 	if args == nil || args.Password == nil {
 		return nil, errors.New("missing required argument 'Password'")
 	}
-	if args == nil || args.Region == nil {
-		return nil, errors.New("missing required argument 'Region'")
-	}
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["databases"] = nil

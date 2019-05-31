@@ -46,46 +46,46 @@ export class Instance extends pulumi.CustomResource {
      * Configuration ID to be attached to the instance. Database instance
      * will be rebooted when configuration is detached.
      */
-    public readonly configurationId: pulumi.Output<string | undefined>;
+    public readonly configurationId!: pulumi.Output<string | undefined>;
     /**
      * An array of database name, charset and collate. The database
      * object structure is documented below.
      */
-    public readonly databases: pulumi.Output<{ charset?: string, collate?: string, name: string }[] | undefined>;
+    public readonly databases!: pulumi.Output<{ charset?: string, collate?: string, name: string }[] | undefined>;
     /**
      * An array of database engine type and version. The datastore
      * object structure is documented below. Changing this creates a new instance.
      */
-    public readonly datastore: pulumi.Output<{ type: string, version: string }>;
+    public readonly datastore!: pulumi.Output<{ type: string, version: string }>;
     /**
      * The flavor ID of the desired flavor for the instance.
      * Changing this creates new instance.
      */
-    public readonly flavorId: pulumi.Output<string>;
+    public readonly flavorId!: pulumi.Output<string>;
     /**
      * A unique name for the resource.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * An array of one or more networks to attach to the
      * instance. The network object structure is documented below. Changing this
      * creates a new instance.
      */
-    public readonly networks: pulumi.Output<{ fixedIpV4?: string, fixedIpV6?: string, port?: string, uuid?: string }[] | undefined>;
+    public readonly networks!: pulumi.Output<{ fixedIpV4?: string, fixedIpV6?: string, port?: string, uuid?: string }[] | undefined>;
     /**
      * The region in which to create the db instance. Changing this
      * creates a new instance.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Specifies the volume size in GB. Changing this creates new instance.
      */
-    public readonly size: pulumi.Output<number>;
+    public readonly size!: pulumi.Output<number>;
     /**
      * An array of username, password, host and databases. The user
      * object structure is documented below.
      */
-    public readonly users: pulumi.Output<{ databases?: string[], host?: string, name: string, password?: string }[] | undefined>;
+    public readonly users!: pulumi.Output<{ databases?: string[], host?: string, name: string, password?: string }[] | undefined>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -98,7 +98,7 @@ export class Instance extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: InstanceArgs | InstanceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: InstanceState = argsOrState as InstanceState | undefined;
+            const state = argsOrState as InstanceState | undefined;
             inputs["configurationId"] = state ? state.configurationId : undefined;
             inputs["databases"] = state ? state.databases : undefined;
             inputs["datastore"] = state ? state.datastore : undefined;
@@ -112,9 +112,6 @@ export class Instance extends pulumi.CustomResource {
             const args = argsOrState as InstanceArgs | undefined;
             if (!args || args.datastore === undefined) {
                 throw new Error("Missing required property 'datastore'");
-            }
-            if (!args || args.region === undefined) {
-                throw new Error("Missing required property 'region'");
             }
             if (!args || args.size === undefined) {
                 throw new Error("Missing required property 'size'");
@@ -221,7 +218,7 @@ export interface InstanceArgs {
      * The region in which to create the db instance. Changing this
      * creates a new instance.
      */
-    readonly region: pulumi.Input<string>;
+    readonly region?: pulumi.Input<string>;
     /**
      * Specifies the volume size in GB. Changing this creates new instance.
      */

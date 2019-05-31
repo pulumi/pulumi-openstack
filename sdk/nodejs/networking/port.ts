@@ -87,89 +87,89 @@ export class Port extends pulumi.CustomResource {
      * (must be "true" or "false" if provided). Changing this updates the
      * `admin_state_up` of an existing port.
      */
-    public readonly adminStateUp: pulumi.Output<boolean>;
+    public readonly adminStateUp!: pulumi.Output<boolean>;
     /**
      * The collection of Fixed IP addresses on the port in the
      * order returned by the Network v2 API.
      */
-    public /*out*/ readonly allFixedIps: pulumi.Output<string[]>;
+    public /*out*/ readonly allFixedIps!: pulumi.Output<string[]>;
     /**
      * The collection of Security Group IDs on the port
      * which have been explicitly and implicitly added.
      */
-    public /*out*/ readonly allSecurityGroupIds: pulumi.Output<string[]>;
+    public /*out*/ readonly allSecurityGroupIds!: pulumi.Output<string[]>;
     /**
      * The collection of tags assigned on the port, which have been
      * explicitly and implicitly added.
      */
-    public /*out*/ readonly allTags: pulumi.Output<string[]>;
+    public /*out*/ readonly allTags!: pulumi.Output<string[]>;
     /**
      * An IP/MAC Address pair of additional IP
      * addresses that can be active on this port. The structure is described
      * below.
      */
-    public readonly allowedAddressPairs: pulumi.Output<{ ipAddress: string, macAddress?: string }[] | undefined>;
+    public readonly allowedAddressPairs!: pulumi.Output<{ ipAddress: string, macAddress?: string }[] | undefined>;
     /**
      * The port binding allows to specify binding information
      * for the port. The structure is described below.
      */
-    public readonly binding: pulumi.Output<{ hostId?: string, profile?: string, vifDetails: {[key: string]: any}, vifType: string, vnicType?: string }>;
+    public readonly binding!: pulumi.Output<{ hostId?: string, profile?: string, vifDetails: {[key: string]: any}, vifType: string, vnicType?: string }>;
     /**
      * Human-readable description of the floating IP. Changing
      * this updates the `description` of an existing port.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The ID of the device attached to the port. Changing this
      * creates a new port.
      */
-    public readonly deviceId: pulumi.Output<string>;
+    public readonly deviceId!: pulumi.Output<string>;
     /**
      * The device owner of the Port. Changing this creates
      * a new port.
      */
-    public readonly deviceOwner: pulumi.Output<string>;
+    public readonly deviceOwner!: pulumi.Output<string>;
     /**
      * The list of maps representing port DNS assignments.
      */
-    public /*out*/ readonly dnsAssignments: pulumi.Output<{[key: string]: any}[]>;
+    public /*out*/ readonly dnsAssignments!: pulumi.Output<{[key: string]: any}[]>;
     /**
      * The port DNS name. Available, when Neutron DNS extension
      * is enabled.
      */
-    public readonly dnsName: pulumi.Output<string | undefined>;
+    public readonly dnsName!: pulumi.Output<string>;
     /**
      * An extra DHCP option that needs to be configured
      * on the port. The structure is described below. Can be specified multiple
      * times.
      */
-    public readonly extraDhcpOptions: pulumi.Output<{ ipVersion?: number, name: string, value: string }[] | undefined>;
+    public readonly extraDhcpOptions!: pulumi.Output<{ ipVersion?: number, name: string, value: string }[] | undefined>;
     /**
      * An array of desired IPs for
      * this port. The structure is described below.
      */
-    public readonly fixedIps: pulumi.Output<{ ipAddress?: string, subnetId: string }[] | undefined>;
+    public readonly fixedIps!: pulumi.Output<{ ipAddress?: string, subnetId: string }[] | undefined>;
     /**
      * Specify a specific MAC address for the port. Changing
      * this creates a new port.
      */
-    public readonly macAddress: pulumi.Output<string>;
+    public readonly macAddress!: pulumi.Output<string>;
     /**
      * A unique name for the port. Changing this
      * updates the `name` of an existing port.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The ID of the network to attach the port to. Changing
      * this creates a new port.
      */
-    public readonly networkId: pulumi.Output<string>;
+    public readonly networkId!: pulumi.Output<string>;
     /**
      * Create a port with no fixed
      * IP address. This will also remove any fixed IPs previously set on a port. `true`
      * is the only valid value for this argument.
      */
-    public readonly noFixedIp: pulumi.Output<boolean | undefined>;
+    public readonly noFixedIp!: pulumi.Output<boolean | undefined>;
     /**
      * If set to
      * `true`, then no security groups are applied to the port. If set to `false` and
@@ -177,7 +177,7 @@ export class Port extends pulumi.CustomResource {
      * behavior of the Networking service, which is to usually apply the "default"
      * security group.
      */
-    public readonly noSecurityGroups: pulumi.Output<boolean | undefined>;
+    public readonly noSecurityGroups!: pulumi.Output<boolean | undefined>;
     /**
      * Whether to explicitly enable or disable
      * port security on the port. Port Security is usually enabled by default, so
@@ -186,34 +186,34 @@ export class Port extends pulumi.CustomResource {
      * security, the port must not have any security groups. Valid values are `true`
      * and `false`.
      */
-    public readonly portSecurityEnabled: pulumi.Output<boolean>;
+    public readonly portSecurityEnabled!: pulumi.Output<boolean>;
     /**
      * The region in which to obtain the V2 networking client.
      * A networking client is needed to create a port. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * port.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * A list
      * of security group IDs to apply to the port. The security groups must be
      * specified by ID and not name (as opposed to how they are configured with
      * the Compute Instance).
      */
-    public readonly securityGroupIds: pulumi.Output<string[] | undefined>;
+    public readonly securityGroupIds!: pulumi.Output<string[] | undefined>;
     /**
      * A set of string tags for the port.
      */
-    public readonly tags: pulumi.Output<string[] | undefined>;
+    public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
      * The owner of the Port. Required if admin wants
      * to create a port for another tenant. Changing this creates a new port.
      */
-    public readonly tenantId: pulumi.Output<string>;
+    public readonly tenantId!: pulumi.Output<string>;
     /**
      * Map of additional options.
      */
-    public readonly valueSpecs: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly valueSpecs!: pulumi.Output<{[key: string]: any} | undefined>;
 
     /**
      * Create a Port resource with the given unique name, arguments, and options.
@@ -226,7 +226,7 @@ export class Port extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: PortArgs | PortState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: PortState = argsOrState as PortState | undefined;
+            const state = argsOrState as PortState | undefined;
             inputs["adminStateUp"] = state ? state.adminStateUp : undefined;
             inputs["allFixedIps"] = state ? state.allFixedIps : undefined;
             inputs["allSecurityGroupIds"] = state ? state.allSecurityGroupIds : undefined;

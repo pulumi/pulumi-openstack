@@ -45,51 +45,51 @@ export class Container extends pulumi.CustomResource {
      * can read the container (allows the GET method for all objects in the
      * container). Changing this updates the access control list read access.
      */
-    public readonly containerRead: pulumi.Output<string | undefined>;
+    public readonly containerRead!: pulumi.Output<string | undefined>;
     /**
      * The secret key for container synchronization.
      * Changing this updates container synchronization.
      */
-    public readonly containerSyncKey: pulumi.Output<string | undefined>;
+    public readonly containerSyncKey!: pulumi.Output<string | undefined>;
     /**
      * The destination for container synchronization.
      * Changing this updates container synchronization.
      */
-    public readonly containerSyncTo: pulumi.Output<string | undefined>;
+    public readonly containerSyncTo!: pulumi.Output<string | undefined>;
     /**
      * Sets an ACL that grants write access.
      * Changing this updates the access control list write access.
      */
-    public readonly containerWrite: pulumi.Output<string | undefined>;
+    public readonly containerWrite!: pulumi.Output<string | undefined>;
     /**
      * The MIME type for the container. Changing this
      * updates the MIME type.
      */
-    public readonly contentType: pulumi.Output<string | undefined>;
+    public readonly contentType!: pulumi.Output<string | undefined>;
     /**
      * A boolean that indicates all objects should be deleted from the container so that the container can be destroyed without error. These objects are not recoverable.
      */
-    public readonly forceDestroy: pulumi.Output<boolean | undefined>;
+    public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
     /**
      * Custom key/value pairs to associate with the container.
      * Changing this updates the existing container metadata.
      */
-    public readonly metadata: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly metadata!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
      * A unique name for the container. Changing this creates a
      * new container.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The region in which to create the container. If
      * omitted, the `region` argument of the provider is used. Changing this
      * creates a new container.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Enable object versioning. The structure is described below.
      */
-    public readonly versioning: pulumi.Output<{ location: string, type: string } | undefined>;
+    public readonly versioning!: pulumi.Output<{ location: string, type: string } | undefined>;
 
     /**
      * Create a Container resource with the given unique name, arguments, and options.
@@ -102,7 +102,7 @@ export class Container extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ContainerArgs | ContainerState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: ContainerState = argsOrState as ContainerState | undefined;
+            const state = argsOrState as ContainerState | undefined;
             inputs["containerRead"] = state ? state.containerRead : undefined;
             inputs["containerSyncKey"] = state ? state.containerSyncKey : undefined;
             inputs["containerSyncTo"] = state ? state.containerSyncTo : undefined;

@@ -66,54 +66,54 @@ export class L7RuleV2 extends pulumi.CustomResource {
      * The administrative state of the L7 Rule.
      * A valid value is true (UP) or false (DOWN).
      */
-    public readonly adminStateUp: pulumi.Output<boolean | undefined>;
+    public readonly adminStateUp!: pulumi.Output<boolean | undefined>;
     /**
      * The comparison type for the L7 rule - can either be
      * CONTAINS, STARTS\_WITH, ENDS_WITH, EQUAL_TO or REGEX
      */
-    public readonly compareType: pulumi.Output<string>;
+    public readonly compareType!: pulumi.Output<string>;
     /**
      * When true the logic of the rule is inverted. For example, with invert
      * true, equal to would become not equal to. Default is false.
      */
-    public readonly invert: pulumi.Output<boolean | undefined>;
+    public readonly invert!: pulumi.Output<boolean | undefined>;
     /**
      * The key to use for the comparison. For example, the name of the cookie to
      * evaluate. Valid when `type` is set to COOKIE or HEADER.
      */
-    public readonly key: pulumi.Output<string | undefined>;
+    public readonly key!: pulumi.Output<string | undefined>;
     /**
      * The ID of the L7 Policy to query. Changing this creates a new
      * L7 Rule.
      */
-    public readonly l7policyId: pulumi.Output<string>;
+    public readonly l7policyId!: pulumi.Output<string>;
     /**
      * The ID of the Listener owning this resource.
      */
-    public /*out*/ readonly listenerId: pulumi.Output<string>;
+    public /*out*/ readonly listenerId!: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create an . If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * L7 Rule.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Required for admins. The UUID of the tenant who owns
      * the L7 Rule.  Only administrative users can specify a tenant UUID
      * other than their own. Changing this creates a new L7 Rule.
      */
-    public readonly tenantId: pulumi.Output<string>;
+    public readonly tenantId!: pulumi.Output<string>;
     /**
      * The L7 Rule type - can either be COOKIE, FILE\_TYPE, HEADER,
      * HOST\_NAME or PATH.
      */
-    public readonly type: pulumi.Output<string>;
+    public readonly type!: pulumi.Output<string>;
     /**
      * The value to use for the comparison. For example, the file type to
      * compare.
      */
-    public readonly value: pulumi.Output<string>;
+    public readonly value!: pulumi.Output<string>;
 
     /**
      * Create a L7RuleV2 resource with the given unique name, arguments, and options.
@@ -126,7 +126,7 @@ export class L7RuleV2 extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: L7RuleV2Args | L7RuleV2State, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: L7RuleV2State = argsOrState as L7RuleV2State | undefined;
+            const state = argsOrState as L7RuleV2State | undefined;
             inputs["adminStateUp"] = state ? state.adminStateUp : undefined;
             inputs["compareType"] = state ? state.compareType : undefined;
             inputs["invert"] = state ? state.invert : undefined;

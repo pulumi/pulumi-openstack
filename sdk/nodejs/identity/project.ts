@@ -37,35 +37,35 @@ export class Project extends pulumi.CustomResource {
     /**
      * A description of the project.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The domain this project belongs to.
      */
-    public readonly domainId: pulumi.Output<string>;
+    public readonly domainId!: pulumi.Output<string>;
     /**
      * Whether the project is enabled or disabled. Valid
      * values are `true` and `false`.
      */
-    public readonly enabled: pulumi.Output<boolean | undefined>;
+    public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
      * Whether this project is a domain. Valid values
      * are `true` and `false`.
      */
-    public readonly isDomain: pulumi.Output<boolean | undefined>;
+    public readonly isDomain!: pulumi.Output<boolean | undefined>;
     /**
      * The name of the project.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The parent of this project.
      */
-    public readonly parentId: pulumi.Output<string>;
+    public readonly parentId!: pulumi.Output<string>;
     /**
      * The region in which to obtain the V3 Keystone client.
      * If omitted, the `region` argument of the provider is used. Changing this
      * creates a new User.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
 
     /**
      * Create a Project resource with the given unique name, arguments, and options.
@@ -78,7 +78,7 @@ export class Project extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ProjectArgs | ProjectState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: ProjectState = argsOrState as ProjectState | undefined;
+            const state = argsOrState as ProjectState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["domainId"] = state ? state.domainId : undefined;
             inputs["enabled"] = state ? state.enabled : undefined;

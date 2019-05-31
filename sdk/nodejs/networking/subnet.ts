@@ -39,43 +39,49 @@ export class Subnet extends pulumi.CustomResource {
      * The collection of ags assigned on the subnet, which have been
      * explicitly and implicitly added.
      */
-    public /*out*/ readonly allTags: pulumi.Output<string[]>;
+    public /*out*/ readonly allTags!: pulumi.Output<string[]>;
     /**
      * An array of sub-ranges of CIDR available for
      * dynamic allocation to ports. The allocation_pool object structure is
-     * documented below. Changing this creates a new subnet.
+     * documented below.
      */
-    public readonly allocationPools: pulumi.Output<{ end: string, start: string }[]>;
+    public readonly allocationPools!: pulumi.Output<{ end: string, start: string }[]>;
+    /**
+     * 
+     * An array of sub-ranges of CIDR available for dynamic allocation to ports.
+     * The allocation_pools object structure is documented below.
+     */
+    public readonly allocationPoolsCollection!: pulumi.Output<{ end: string, start: string }[]>;
     /**
      * CIDR representing IP range for this subnet, based on IP
      * version. You can omit this option if you are creating a subnet from a
      * subnet pool.
      */
-    public readonly cidr: pulumi.Output<string>;
+    public readonly cidr!: pulumi.Output<string>;
     /**
      * Human-readable description of the subnet. Changing this
      * updates the name of the existing subnet.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * An array of DNS name server names used by hosts
      * in this subnet. Changing this updates the DNS name servers for the existing
      * subnet.
      */
-    public readonly dnsNameservers: pulumi.Output<string[] | undefined>;
+    public readonly dnsNameservers!: pulumi.Output<string[] | undefined>;
     /**
      * The administrative state of the network.
      * Acceptable values are "true" and "false". Changing this value enables or
      * disables the DHCP capabilities of the existing subnet. Defaults to true.
      */
-    public readonly enableDhcp: pulumi.Output<boolean | undefined>;
+    public readonly enableDhcp!: pulumi.Output<boolean | undefined>;
     /**
      * Default gateway used by devices in this subnet.
      * Leaving this blank and not setting `no_gateway` will cause a default
      * gateway of `.1` to be used. Changing this updates the gateway IP of the
      * existing subnet.
      */
-    public readonly gatewayIp: pulumi.Output<string>;
+    public readonly gatewayIp!: pulumi.Output<string>;
     /**
      * (**Deprecated** - use `openstack_networking_subnet_route_v2`
      * instead) An array of routes that should be used by devices
@@ -83,68 +89,68 @@ export class Subnet extends pulumi.CustomResource {
      * object structure is documented below. Changing this updates the host routes
      * for the existing subnet.
      */
-    public readonly hostRoutes: pulumi.Output<{ destinationCidr: string, nextHop: string }[] | undefined>;
+    public readonly hostRoutes!: pulumi.Output<{ destinationCidr: string, nextHop: string }[] | undefined>;
     /**
      * IP version, either 4 (default) or 6. Changing this creates a
      * new subnet.
      */
-    public readonly ipVersion: pulumi.Output<number | undefined>;
+    public readonly ipVersion!: pulumi.Output<number | undefined>;
     /**
      * The IPv6 address mode. Valid values are
      * `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.
      */
-    public readonly ipv6AddressMode: pulumi.Output<string>;
+    public readonly ipv6AddressMode!: pulumi.Output<string>;
     /**
      * The IPv6 Router Advertisement mode. Valid values
      * are `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.
      */
-    public readonly ipv6RaMode: pulumi.Output<string>;
+    public readonly ipv6RaMode!: pulumi.Output<string>;
     /**
      * The name of the subnet. Changing this updates the name of
      * the existing subnet.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The UUID of the parent network. Changing this
      * creates a new subnet.
      */
-    public readonly networkId: pulumi.Output<string>;
+    public readonly networkId!: pulumi.Output<string>;
     /**
      * Do not set a gateway IP on this subnet. Changing
      * this removes or adds a default gateway IP of the existing subnet.
      */
-    public readonly noGateway: pulumi.Output<boolean | undefined>;
+    public readonly noGateway!: pulumi.Output<boolean | undefined>;
     /**
      * The prefix length to use when creating a subnet
      * from a subnet pool. The default subnet pool prefix length that was defined
      * when creating the subnet pool will be used if not provided. Changing this
      * creates a new subnet.
      */
-    public readonly prefixLength: pulumi.Output<number | undefined>;
+    public readonly prefixLength!: pulumi.Output<number | undefined>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a Neutron subnet. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * subnet.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The ID of the subnetpool associated with the subnet.
      */
-    public readonly subnetpoolId: pulumi.Output<string | undefined>;
+    public readonly subnetpoolId!: pulumi.Output<string | undefined>;
     /**
      * A set of string tags for the subnet.
      */
-    public readonly tags: pulumi.Output<string[] | undefined>;
+    public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
      * The owner of the subnet. Required if admin wants to
      * create a subnet for another tenant. Changing this creates a new subnet.
      */
-    public readonly tenantId: pulumi.Output<string>;
+    public readonly tenantId!: pulumi.Output<string>;
     /**
      * Map of additional options.
      */
-    public readonly valueSpecs: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly valueSpecs!: pulumi.Output<{[key: string]: any} | undefined>;
 
     /**
      * Create a Subnet resource with the given unique name, arguments, and options.
@@ -157,9 +163,10 @@ export class Subnet extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: SubnetArgs | SubnetState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: SubnetState = argsOrState as SubnetState | undefined;
+            const state = argsOrState as SubnetState | undefined;
             inputs["allTags"] = state ? state.allTags : undefined;
             inputs["allocationPools"] = state ? state.allocationPools : undefined;
+            inputs["allocationPoolsCollection"] = state ? state.allocationPoolsCollection : undefined;
             inputs["cidr"] = state ? state.cidr : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["dnsNameservers"] = state ? state.dnsNameservers : undefined;
@@ -184,6 +191,7 @@ export class Subnet extends pulumi.CustomResource {
                 throw new Error("Missing required property 'networkId'");
             }
             inputs["allocationPools"] = args ? args.allocationPools : undefined;
+            inputs["allocationPoolsCollection"] = args ? args.allocationPoolsCollection : undefined;
             inputs["cidr"] = args ? args.cidr : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["dnsNameservers"] = args ? args.dnsNameservers : undefined;
@@ -220,9 +228,15 @@ export interface SubnetState {
     /**
      * An array of sub-ranges of CIDR available for
      * dynamic allocation to ports. The allocation_pool object structure is
-     * documented below. Changing this creates a new subnet.
+     * documented below.
      */
     readonly allocationPools?: pulumi.Input<pulumi.Input<{ end: pulumi.Input<string>, start: pulumi.Input<string> }>[]>;
+    /**
+     * 
+     * An array of sub-ranges of CIDR available for dynamic allocation to ports.
+     * The allocation_pools object structure is documented below.
+     */
+    readonly allocationPoolsCollection?: pulumi.Input<pulumi.Input<{ end: pulumi.Input<string>, start: pulumi.Input<string> }>[]>;
     /**
      * CIDR representing IP range for this subnet, based on IP
      * version. You can omit this option if you are creating a subnet from a
@@ -331,9 +345,15 @@ export interface SubnetArgs {
     /**
      * An array of sub-ranges of CIDR available for
      * dynamic allocation to ports. The allocation_pool object structure is
-     * documented below. Changing this creates a new subnet.
+     * documented below.
      */
     readonly allocationPools?: pulumi.Input<pulumi.Input<{ end: pulumi.Input<string>, start: pulumi.Input<string> }>[]>;
+    /**
+     * 
+     * An array of sub-ranges of CIDR available for dynamic allocation to ports.
+     * The allocation_pools object structure is documented below.
+     */
+    readonly allocationPoolsCollection?: pulumi.Input<pulumi.Input<{ end: pulumi.Input<string>, start: pulumi.Input<string> }>[]>;
     /**
      * CIDR representing IP range for this subnet, based on IP
      * version. You can omit this option if you are creating a subnet from a

@@ -22,6 +22,7 @@ func NewSubnet(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["allocationPools"] = nil
+		inputs["allocationPoolsCollection"] = nil
 		inputs["cidr"] = nil
 		inputs["description"] = nil
 		inputs["dnsNameservers"] = nil
@@ -42,6 +43,7 @@ func NewSubnet(ctx *pulumi.Context,
 		inputs["valueSpecs"] = nil
 	} else {
 		inputs["allocationPools"] = args.AllocationPools
+		inputs["allocationPoolsCollection"] = args.AllocationPoolsCollection
 		inputs["cidr"] = args.Cidr
 		inputs["description"] = args.Description
 		inputs["dnsNameservers"] = args.DnsNameservers
@@ -77,6 +79,7 @@ func GetSubnet(ctx *pulumi.Context,
 	if state != nil {
 		inputs["allTags"] = state.AllTags
 		inputs["allocationPools"] = state.AllocationPools
+		inputs["allocationPoolsCollection"] = state.AllocationPoolsCollection
 		inputs["cidr"] = state.Cidr
 		inputs["description"] = state.Description
 		inputs["dnsNameservers"] = state.DnsNameservers
@@ -121,9 +124,16 @@ func (r *Subnet) AllTags() *pulumi.ArrayOutput {
 
 // An array of sub-ranges of CIDR available for
 // dynamic allocation to ports. The allocation_pool object structure is
-// documented below. Changing this creates a new subnet.
+// documented below.
 func (r *Subnet) AllocationPools() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["allocationPools"])
+}
+
+// 
+// An array of sub-ranges of CIDR available for dynamic allocation to ports.
+// The allocation_pools object structure is documented below.
+func (r *Subnet) AllocationPoolsCollection() *pulumi.ArrayOutput {
+	return (*pulumi.ArrayOutput)(r.s.State["allocationPoolsCollection"])
 }
 
 // CIDR representing IP range for this subnet, based on IP
@@ -250,8 +260,12 @@ type SubnetState struct {
 	AllTags interface{}
 	// An array of sub-ranges of CIDR available for
 	// dynamic allocation to ports. The allocation_pool object structure is
-	// documented below. Changing this creates a new subnet.
+	// documented below.
 	AllocationPools interface{}
+	// 
+	// An array of sub-ranges of CIDR available for dynamic allocation to ports.
+	// The allocation_pools object structure is documented below.
+	AllocationPoolsCollection interface{}
 	// CIDR representing IP range for this subnet, based on IP
 	// version. You can omit this option if you are creating a subnet from a
 	// subnet pool.
@@ -321,8 +335,12 @@ type SubnetState struct {
 type SubnetArgs struct {
 	// An array of sub-ranges of CIDR available for
 	// dynamic allocation to ports. The allocation_pool object structure is
-	// documented below. Changing this creates a new subnet.
+	// documented below.
 	AllocationPools interface{}
+	// 
+	// An array of sub-ranges of CIDR available for dynamic allocation to ports.
+	// The allocation_pools object structure is documented below.
+	AllocationPoolsCollection interface{}
 	// CIDR representing IP range for this subnet, based on IP
 	// version. You can omit this option if you are creating a subnet from a
 	// subnet pool.

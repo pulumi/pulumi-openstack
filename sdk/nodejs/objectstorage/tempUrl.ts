@@ -43,36 +43,36 @@ export class TempUrl extends pulumi.CustomResource {
     /**
      * The container name the object belongs to.
      */
-    public readonly container: pulumi.Output<string>;
+    public readonly container!: pulumi.Output<string>;
     /**
      * The method allowed when accessing this URL.
      * Valid values are `GET`, and `POST`. Default is `GET`.
      */
-    public readonly method: pulumi.Output<string | undefined>;
+    public readonly method!: pulumi.Output<string | undefined>;
     /**
      * The object name the tempurl is for.
      */
-    public readonly object: pulumi.Output<string>;
+    public readonly object!: pulumi.Output<string>;
     /**
      * Whether to automatically regenerate the URL when
      * it has expired. If set to true, this will create a new resource with a new
      * ID and new URL. Defaults to false.
      */
-    public readonly regenerate: pulumi.Output<boolean | undefined>;
+    public readonly regenerate!: pulumi.Output<boolean | undefined>;
     /**
      * The region the tempurl is located in.
      */
-    public readonly region: pulumi.Output<string>;
-    public readonly split: pulumi.Output<string | undefined>;
+    public readonly region!: pulumi.Output<string>;
+    public readonly split!: pulumi.Output<string | undefined>;
     /**
      * The TTL, in seconds, for the URL. For how long it should
      * be valid.
      */
-    public readonly ttl: pulumi.Output<number>;
+    public readonly ttl!: pulumi.Output<number>;
     /**
      * The URL
      */
-    public /*out*/ readonly url: pulumi.Output<string>;
+    public /*out*/ readonly url!: pulumi.Output<string>;
 
     /**
      * Create a TempUrl resource with the given unique name, arguments, and options.
@@ -85,7 +85,7 @@ export class TempUrl extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: TempUrlArgs | TempUrlState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: TempUrlState = argsOrState as TempUrlState | undefined;
+            const state = argsOrState as TempUrlState | undefined;
             inputs["container"] = state ? state.container : undefined;
             inputs["method"] = state ? state.method : undefined;
             inputs["object"] = state ? state.object : undefined;

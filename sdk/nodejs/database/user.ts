@@ -38,21 +38,21 @@ export class User extends pulumi.CustomResource {
     /**
      * A list of database user should have access to.
      */
-    public readonly databases: pulumi.Output<string[]>;
-    public readonly host: pulumi.Output<string | undefined>;
-    public readonly instanceId: pulumi.Output<string>;
+    public readonly databases!: pulumi.Output<string[]>;
+    public readonly host!: pulumi.Output<string | undefined>;
+    public readonly instanceId!: pulumi.Output<string>;
     /**
      * A unique name for the resource.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * User's password.
      */
-    public readonly password: pulumi.Output<string>;
+    public readonly password!: pulumi.Output<string>;
     /**
      * Openstack region resource is created in.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
 
     /**
      * Create a User resource with the given unique name, arguments, and options.
@@ -65,7 +65,7 @@ export class User extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: UserArgs | UserState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: UserState = argsOrState as UserState | undefined;
+            const state = argsOrState as UserState | undefined;
             inputs["databases"] = state ? state.databases : undefined;
             inputs["host"] = state ? state.host : undefined;
             inputs["instanceId"] = state ? state.instanceId : undefined;
@@ -79,9 +79,6 @@ export class User extends pulumi.CustomResource {
             }
             if (!args || args.password === undefined) {
                 throw new Error("Missing required property 'password'");
-            }
-            if (!args || args.region === undefined) {
-                throw new Error("Missing required property 'region'");
             }
             inputs["databases"] = args ? args.databases : undefined;
             inputs["host"] = args ? args.host : undefined;
@@ -139,5 +136,5 @@ export interface UserArgs {
     /**
      * Openstack region resource is created in.
      */
-    readonly region: pulumi.Input<string>;
+    readonly region?: pulumi.Input<string>;
 }

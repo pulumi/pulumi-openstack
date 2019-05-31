@@ -39,38 +39,38 @@ export class EndpointGroup extends pulumi.CustomResource {
      * The human-readable description for the group.
      * Changing this updates the description of the existing group.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * List of endpoints of the same type, for the endpoint group. The values will depend on the type.
      * Changing this creates a new group.
      */
-    public readonly endpoints: pulumi.Output<string[] | undefined>;
+    public readonly endpoints!: pulumi.Output<string[] | undefined>;
     /**
      * The name of the group. Changing this updates the name of
      * the existing group.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create an endpoint group. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * group.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The owner of the group. Required if admin wants to
      * create an endpoint group for another project. Changing this creates a new group.
      */
-    public readonly tenantId: pulumi.Output<string>;
+    public readonly tenantId!: pulumi.Output<string>;
     /**
      * The type of the endpoints in the group. A valid value is subnet, cidr, network, router, or vlan.
      * Changing this creates a new group.
      */
-    public readonly type: pulumi.Output<string>;
+    public readonly type!: pulumi.Output<string>;
     /**
      * Map of additional options.
      */
-    public readonly valueSpecs: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly valueSpecs!: pulumi.Output<{[key: string]: any} | undefined>;
 
     /**
      * Create a EndpointGroup resource with the given unique name, arguments, and options.
@@ -83,7 +83,7 @@ export class EndpointGroup extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: EndpointGroupArgs | EndpointGroupState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: EndpointGroupState = argsOrState as EndpointGroupState | undefined;
+            const state = argsOrState as EndpointGroupState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["endpoints"] = state ? state.endpoints : undefined;
             inputs["name"] = state ? state.name : undefined;

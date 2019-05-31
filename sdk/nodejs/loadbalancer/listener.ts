@@ -37,17 +37,17 @@ export class Listener extends pulumi.CustomResource {
      * The administrative state of the Listener.
      * A valid value is true (UP) or false (DOWN).
      */
-    public readonly adminStateUp: pulumi.Output<boolean | undefined>;
+    public readonly adminStateUp!: pulumi.Output<boolean | undefined>;
     /**
      * The maximum number of connections allowed
      * for the Listener.
      */
-    public readonly connectionLimit: pulumi.Output<number>;
+    public readonly connectionLimit!: pulumi.Output<number>;
     /**
      * The ID of the default pool with which the
      * Listener is associated.
      */
-    public readonly defaultPoolId: pulumi.Output<string>;
+    public readonly defaultPoolId!: pulumi.Output<string>;
     /**
      * A reference to a Barbican Secrets
      * container which stores TLS information. This is required if the protocol
@@ -55,51 +55,51 @@ export class Listener extends pulumi.CustomResource {
      * [here](https://wiki.openstack.org/wiki/Network/LBaaS/docs/how-to-create-tls-loadbalancer)
      * for more information.
      */
-    public readonly defaultTlsContainerRef: pulumi.Output<string | undefined>;
+    public readonly defaultTlsContainerRef!: pulumi.Output<string | undefined>;
     /**
      * Human-readable description for the Listener.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The load balancer on which to provision this
      * Listener. Changing this creates a new Listener.
      */
-    public readonly loadbalancerId: pulumi.Output<string>;
+    public readonly loadbalancerId!: pulumi.Output<string>;
     /**
      * Human-readable name for the Listener. Does not have
      * to be unique.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The protocol - can either be TCP, HTTP, HTTPS or TERMINATED_HTTPS.
      * Changing this creates a new Listener.
      */
-    public readonly protocol: pulumi.Output<string>;
+    public readonly protocol!: pulumi.Output<string>;
     /**
      * The port on which to listen for client traffic.
      * Changing this creates a new Listener.
      */
-    public readonly protocolPort: pulumi.Output<number>;
+    public readonly protocolPort!: pulumi.Output<number>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create an . If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * Listener.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * A list of references to Barbican Secrets
      * containers which store SNI information. See
      * [here](https://wiki.openstack.org/wiki/Network/LBaaS/docs/how-to-create-tls-loadbalancer)
      * for more information.
      */
-    public readonly sniContainerRefs: pulumi.Output<string[] | undefined>;
+    public readonly sniContainerRefs!: pulumi.Output<string[] | undefined>;
     /**
      * Required for admins. The UUID of the tenant who owns
      * the Listener.  Only administrative users can specify a tenant UUID
      * other than their own. Changing this creates a new Listener.
      */
-    public readonly tenantId: pulumi.Output<string>;
+    public readonly tenantId!: pulumi.Output<string>;
 
     /**
      * Create a Listener resource with the given unique name, arguments, and options.
@@ -112,7 +112,7 @@ export class Listener extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ListenerArgs | ListenerState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: ListenerState = argsOrState as ListenerState | undefined;
+            const state = argsOrState as ListenerState | undefined;
             inputs["adminStateUp"] = state ? state.adminStateUp : undefined;
             inputs["connectionLimit"] = state ? state.connectionLimit : undefined;
             inputs["defaultPoolId"] = state ? state.defaultPoolId : undefined;

@@ -38,58 +38,58 @@ export class VolumeV1 extends pulumi.CustomResource {
      * display the Attachment ID, Instance ID, and the Device as the Instance
      * sees it.
      */
-    public /*out*/ readonly attachments: pulumi.Output<{ device: string, id: string, instanceId: string }[]>;
+    public /*out*/ readonly attachments!: pulumi.Output<{ device: string, id: string, instanceId: string }[]>;
     /**
      * The availability zone for the volume.
      * Changing this creates a new volume.
      */
-    public readonly availabilityZone: pulumi.Output<string>;
+    public readonly availabilityZone!: pulumi.Output<string>;
     /**
      * A description of the volume. Changing this updates
      * the volume's description.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The image ID from which to create the volume.
      * Changing this creates a new volume.
      */
-    public readonly imageId: pulumi.Output<string | undefined>;
+    public readonly imageId!: pulumi.Output<string | undefined>;
     /**
      * Metadata key/value pairs to associate with the volume.
      * Changing this updates the existing volume metadata.
      */
-    public readonly metadata: pulumi.Output<{[key: string]: any}>;
+    public readonly metadata!: pulumi.Output<{[key: string]: any}>;
     /**
      * A unique name for the volume. Changing this updates the
      * volume's name.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The region in which to create the volume. If
      * omitted, the `region` argument of the provider is used. Changing this
      * creates a new volume.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The size of the volume to create (in gigabytes). Changing
      * this creates a new volume.
      */
-    public readonly size: pulumi.Output<number>;
+    public readonly size!: pulumi.Output<number>;
     /**
      * The snapshot ID from which to create the volume.
      * Changing this creates a new volume.
      */
-    public readonly snapshotId: pulumi.Output<string | undefined>;
+    public readonly snapshotId!: pulumi.Output<string | undefined>;
     /**
      * The volume ID from which to create the volume.
      * Changing this creates a new volume.
      */
-    public readonly sourceVolId: pulumi.Output<string | undefined>;
+    public readonly sourceVolId!: pulumi.Output<string | undefined>;
     /**
      * The type of volume to create.
      * Changing this creates a new volume.
      */
-    public readonly volumeType: pulumi.Output<string>;
+    public readonly volumeType!: pulumi.Output<string>;
 
     /**
      * Create a VolumeV1 resource with the given unique name, arguments, and options.
@@ -102,7 +102,7 @@ export class VolumeV1 extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: VolumeV1Args | VolumeV1State, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: VolumeV1State = argsOrState as VolumeV1State | undefined;
+            const state = argsOrState as VolumeV1State | undefined;
             inputs["attachments"] = state ? state.attachments : undefined;
             inputs["availabilityZone"] = state ? state.availabilityZone : undefined;
             inputs["description"] = state ? state.description : undefined;

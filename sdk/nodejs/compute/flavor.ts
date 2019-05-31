@@ -41,49 +41,49 @@ export class Flavor extends pulumi.CustomResource {
      * The amount of disk space in gigabytes to use for the root
      * (/) partition. Changing this creates a new flavor.
      */
-    public readonly disk: pulumi.Output<number>;
-    public readonly ephemeral: pulumi.Output<number | undefined>;
+    public readonly disk!: pulumi.Output<number>;
+    public readonly ephemeral!: pulumi.Output<number | undefined>;
     /**
      * Key/Value pairs of metadata for the flavor.
      */
-    public readonly extraSpecs: pulumi.Output<{[key: string]: any}>;
+    public readonly extraSpecs!: pulumi.Output<{[key: string]: any}>;
     /**
      * Whether the flavor is public. Changing this creates
      * a new flavor.
      */
-    public readonly isPublic: pulumi.Output<boolean | undefined>;
+    public readonly isPublic!: pulumi.Output<boolean | undefined>;
     /**
      * A unique name for the flavor. Changing this creates a new
      * flavor.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The amount of RAM to use, in megabytes. Changing this
      * creates a new flavor.
      */
-    public readonly ram: pulumi.Output<number>;
+    public readonly ram!: pulumi.Output<number>;
     /**
      * The region in which to obtain the V2 Compute client.
      * Flavors are associated with accounts, but a Compute client is needed to
      * create one. If omitted, the `region` argument of the provider is used.
      * Changing this creates a new flavor.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * RX/TX bandwith factor. The default is 1. Changing
      * this creates a new flavor.
      */
-    public readonly rxTxFactor: pulumi.Output<number | undefined>;
+    public readonly rxTxFactor!: pulumi.Output<number | undefined>;
     /**
      * The amount of disk space in megabytes to use. If
      * unspecified, the default is 0. Changing this creates a new flavor.
      */
-    public readonly swap: pulumi.Output<number | undefined>;
+    public readonly swap!: pulumi.Output<number | undefined>;
     /**
      * The number of virtual CPUs to use. Changing this creates
      * a new flavor.
      */
-    public readonly vcpus: pulumi.Output<number>;
+    public readonly vcpus!: pulumi.Output<number>;
 
     /**
      * Create a Flavor resource with the given unique name, arguments, and options.
@@ -96,7 +96,7 @@ export class Flavor extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: FlavorArgs | FlavorState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: FlavorState = argsOrState as FlavorState | undefined;
+            const state = argsOrState as FlavorState | undefined;
             inputs["disk"] = state ? state.disk : undefined;
             inputs["ephemeral"] = state ? state.ephemeral : undefined;
             inputs["extraSpecs"] = state ? state.extraSpecs : undefined;

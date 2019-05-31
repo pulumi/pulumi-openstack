@@ -81,32 +81,32 @@ export class ContainerObject extends pulumi.CustomResource {
      * character delimits the container and object name. For example, the path
      * /v1/account/www/pages specifies the www container, not the www/pages container.
      */
-    public readonly containerName: pulumi.Output<string>;
+    public readonly containerName!: pulumi.Output<string>;
     /**
      * A string representing the content of the object. Conflicts with
      * `source` and `copy_from`.
      */
-    public readonly content: pulumi.Output<string | undefined>;
+    public readonly content!: pulumi.Output<string | undefined>;
     /**
      * A string which specifies the override behavior for 
      * the browser. For example, this header might specify that the browser use a download
      * program to save this file rather than show the file, which is the default.
      */
-    public readonly contentDisposition: pulumi.Output<string>;
+    public readonly contentDisposition!: pulumi.Output<string>;
     /**
      * A string representing the value of the Content-Encoding
      * metadata.
      */
-    public readonly contentEncoding: pulumi.Output<string>;
+    public readonly contentEncoding!: pulumi.Output<string>;
     /**
      * If the operation succeeds, this value is zero (0) or the 
      * length of informational or error text in the response body.
      */
-    public /*out*/ readonly contentLength: pulumi.Output<number>;
+    public /*out*/ readonly contentLength!: pulumi.Output<number>;
     /**
      * A string which sets the MIME type for the object.
      */
-    public readonly contentType: pulumi.Output<string>;
+    public readonly contentType!: pulumi.Output<string>;
     /**
      * A string representing the name of an object 
      * used to create the new object by copying the `copy_from` object. The value is in form
@@ -114,34 +114,34 @@ export class ContainerObject extends pulumi.CustomResource {
      * container and object before you include them in the header. Conflicts with `source` and
      * `content`.
      */
-    public readonly copyFrom: pulumi.Output<string | undefined>;
+    public readonly copyFrom!: pulumi.Output<string | undefined>;
     /**
      * The date and time the system responded to the request, using the preferred 
      * format of RFC 7231 as shown in this example Thu, 16 Jun 2016 15:10:38 GMT. The
      * time is always in UTC.
      */
-    public /*out*/ readonly date: pulumi.Output<string>;
+    public /*out*/ readonly date!: pulumi.Output<string>;
     /**
      * An integer representing the number of seconds after which the
      * system removes the object. Internally, the Object Storage system stores this value in
      * the X-Delete-At metadata item.
      */
-    public readonly deleteAfter: pulumi.Output<number | undefined>;
+    public readonly deleteAfter!: pulumi.Output<number | undefined>;
     /**
      * An string representing the date when the system removes the object. 
      * For example, "2015-08-26" is equivalent to Mon, Wed, 26 Aug 2015 00:00:00 GMT.
      */
-    public readonly deleteAt: pulumi.Output<string>;
+    public readonly deleteAt!: pulumi.Output<string>;
     /**
      * If set to true, Object Storage guesses the content 
      * type based on the file extension and ignores the value sent in the Content-Type
      * header, if present.
      */
-    public readonly detectContentType: pulumi.Output<boolean | undefined>;
+    public readonly detectContentType!: pulumi.Output<boolean | undefined>;
     /**
      * Used to trigger updates. The only meaningful value is ${md5(file("path/to/file"))}.
      */
-    public readonly etag: pulumi.Output<string>;
+    public readonly etag!: pulumi.Output<string>;
     /**
      * The date and time when the object was last modified. The date and time 
      * stamp format is ISO 8601:
@@ -150,12 +150,12 @@ export class ContainerObject extends pulumi.CustomResource {
      * The ±hh:mm value, if included, is the time zone as an offset from UTC. In the previous
      * example, the offset value is -05:00.
      */
-    public /*out*/ readonly lastModified: pulumi.Output<string>;
-    public readonly metadata: pulumi.Output<{[key: string]: any} | undefined>;
+    public /*out*/ readonly lastModified!: pulumi.Output<string>;
+    public readonly metadata!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
      * A unique name for the object.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * A string set to specify that this is a dynamic large 
      * object manifest object. The value is the container and object name prefix of the
@@ -163,23 +163,23 @@ export class ContainerObject extends pulumi.CustomResource {
      * URL-encode the names of the container and prefix before you include them in this
      * header.
      */
-    public readonly objectManifest: pulumi.Output<string>;
+    public readonly objectManifest!: pulumi.Output<string>;
     /**
      * The region in which to create the container. If
      * omitted, the `region` argument of the provider is used. Changing this
      * creates a new container.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * A string representing the local path of a file which will be used
      * as the object's content. Conflicts with `source` and `copy_from`.
      */
-    public readonly source: pulumi.Output<string | undefined>;
+    public readonly source!: pulumi.Output<string | undefined>;
     /**
      * A unique transaction ID for this request. Your service provider might 
      * need this value if you report a problem.
      */
-    public /*out*/ readonly transId: pulumi.Output<string>;
+    public /*out*/ readonly transId!: pulumi.Output<string>;
 
     /**
      * Create a ContainerObject resource with the given unique name, arguments, and options.
@@ -192,7 +192,7 @@ export class ContainerObject extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ContainerObjectArgs | ContainerObjectState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: ContainerObjectState = argsOrState as ContainerObjectState | undefined;
+            const state = argsOrState as ContainerObjectState | undefined;
             inputs["containerName"] = state ? state.containerName : undefined;
             inputs["content"] = state ? state.content : undefined;
             inputs["contentDisposition"] = state ? state.contentDisposition : undefined;

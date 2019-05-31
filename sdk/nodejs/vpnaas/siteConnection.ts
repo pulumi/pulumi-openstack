@@ -41,98 +41,98 @@ export class SiteConnection extends pulumi.CustomResource {
      * The administrative state of the resource. Can either be up(true) or down(false).
      * Changing this updates the administrative state of the existing connection.
      */
-    public readonly adminStateUp: pulumi.Output<boolean | undefined>;
+    public readonly adminStateUp!: pulumi.Output<boolean | undefined>;
     /**
      * The human-readable description for the connection.
      * Changing this updates the description of the existing connection.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * A dictionary with dead peer detection (DPD) protocol controls.
      * - `action` - (Optional) The dead peer detection (DPD) action.
      * A valid value is clear, hold, restart, disabled, or restart-by-peer.
      * Default value is hold.
      */
-    public readonly dpds: pulumi.Output<{ action: string, interval: number, timeout: number }[]>;
+    public readonly dpds!: pulumi.Output<{ action: string, interval: number, timeout: number }[]>;
     /**
      * The ID of the IKE policy. Changing this creates a new connection.
      */
-    public readonly ikepolicyId: pulumi.Output<string>;
+    public readonly ikepolicyId!: pulumi.Output<string>;
     /**
      * A valid value is response-only or bi-directional. Default is bi-directional.
      */
-    public readonly initiator: pulumi.Output<string>;
+    public readonly initiator!: pulumi.Output<string>;
     /**
      * The ID of the IPsec policy. Changing this creates a new connection.
      */
-    public readonly ipsecpolicyId: pulumi.Output<string>;
+    public readonly ipsecpolicyId!: pulumi.Output<string>;
     /**
      * The ID for the endpoint group that contains private subnets for the local side of the connection.
      * You must specify this parameter with the peer_ep_group_id parameter unless
      * in backward- compatible mode where peer_cidrs is provided with a subnet_id for the VPN service.
      * Changing this updates the existing connection.
      */
-    public readonly localEpGroupId: pulumi.Output<string | undefined>;
+    public readonly localEpGroupId!: pulumi.Output<string | undefined>;
     /**
      * An ID to be used instead of the external IP address for a virtual router used in traffic between instances on different networks in east-west traffic.
      * Most often, local ID would be domain name, email address, etc.
      * If this is not configured then the external IP address will be used as the ID.
      */
-    public readonly localId: pulumi.Output<string | undefined>;
+    public readonly localId!: pulumi.Output<string | undefined>;
     /**
      * The maximum transmission unit (MTU) value to address fragmentation.
      * Minimum value is 68 for IPv4, and 1280 for IPv6.
      */
-    public readonly mtu: pulumi.Output<number>;
+    public readonly mtu!: pulumi.Output<number>;
     /**
      * The name of the connection. Changing this updates the name of
      * the existing connection.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The peer gateway public IPv4 or IPv6 address or FQDN.
      */
-    public readonly peerAddress: pulumi.Output<string>;
+    public readonly peerAddress!: pulumi.Output<string>;
     /**
      * Unique list of valid peer private CIDRs in the form < net_address > / < prefix > .
      */
-    public readonly peerCidrs: pulumi.Output<string[] | undefined>;
+    public readonly peerCidrs!: pulumi.Output<string[] | undefined>;
     /**
      * The ID for the endpoint group that contains private CIDRs in the form < net_address > / < prefix > for the peer side of the connection.
      * You must specify this parameter with the local_ep_group_id parameter unless in backward-compatible mode
      * where peer_cidrs is provided with a subnet_id for the VPN service.
      */
-    public readonly peerEpGroupId: pulumi.Output<string | undefined>;
+    public readonly peerEpGroupId!: pulumi.Output<string | undefined>;
     /**
      * The peer router identity for authentication. A valid value is an IPv4 address, IPv6 address, e-mail address, key ID, or FQDN.
      * Typically, this value matches the peer_address value.
      * Changing this updates the existing policy.
      */
-    public readonly peerId: pulumi.Output<string>;
+    public readonly peerId!: pulumi.Output<string>;
     /**
      * The pre-shared key. A valid value is any string.
      */
-    public readonly psk: pulumi.Output<string>;
+    public readonly psk!: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create an IPSec site connection. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * site connection.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The owner of the connection. Required if admin wants to
      * create a connection for another project. Changing this creates a new connection.
      */
-    public readonly tenantId: pulumi.Output<string>;
+    public readonly tenantId!: pulumi.Output<string>;
     /**
      * Map of additional options.
      */
-    public readonly valueSpecs: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly valueSpecs!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
      * The ID of the VPN service. Changing this creates a new connection.
      */
-    public readonly vpnserviceId: pulumi.Output<string>;
+    public readonly vpnserviceId!: pulumi.Output<string>;
 
     /**
      * Create a SiteConnection resource with the given unique name, arguments, and options.
@@ -145,7 +145,7 @@ export class SiteConnection extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: SiteConnectionArgs | SiteConnectionState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: SiteConnectionState = argsOrState as SiteConnectionState | undefined;
+            const state = argsOrState as SiteConnectionState | undefined;
             inputs["adminStateUp"] = state ? state.adminStateUp : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["dpds"] = state ? state.dpds : undefined;

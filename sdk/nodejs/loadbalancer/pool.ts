@@ -41,56 +41,56 @@ export class Pool extends pulumi.CustomResource {
      * The administrative state of the pool.
      * A valid value is true (UP) or false (DOWN).
      */
-    public readonly adminStateUp: pulumi.Output<boolean | undefined>;
+    public readonly adminStateUp!: pulumi.Output<boolean | undefined>;
     /**
      * Human-readable description for the pool.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The load balancing algorithm to
      * distribute traffic to the pool's members. Must be one of
      * ROUND_ROBIN, LEAST_CONNECTIONS, or SOURCE_IP.
      */
-    public readonly lbMethod: pulumi.Output<string>;
+    public readonly lbMethod!: pulumi.Output<string>;
     /**
      * The Listener on which the members of the pool
      * will be associated with. Changing this creates a new pool.
      * Note:  One of LoadbalancerID or ListenerID must be provided.
      */
-    public readonly listenerId: pulumi.Output<string | undefined>;
+    public readonly listenerId!: pulumi.Output<string | undefined>;
     /**
      * The load balancer on which to provision this
      * pool. Changing this creates a new pool.
      * Note:  One of LoadbalancerID or ListenerID must be provided.
      */
-    public readonly loadbalancerId: pulumi.Output<string | undefined>;
+    public readonly loadbalancerId!: pulumi.Output<string | undefined>;
     /**
      * Human-readable name for the pool.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Omit this field to prevent session persistence.  Indicates
      * whether connections in the same session will be processed by the same Pool
      * member or not. Changing this creates a new pool.
      */
-    public readonly persistences: pulumi.Output<{ cookieName?: string, type: string }[] | undefined>;
+    public readonly persistences!: pulumi.Output<{ cookieName?: string, type: string }[] | undefined>;
     /**
      * See Argument Reference above.
      */
-    public readonly protocol: pulumi.Output<string>;
+    public readonly protocol!: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create an . If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * pool.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Required for admins. The UUID of the tenant who owns
      * the pool.  Only administrative users can specify a tenant UUID
      * other than their own. Changing this creates a new pool.
      */
-    public readonly tenantId: pulumi.Output<string>;
+    public readonly tenantId!: pulumi.Output<string>;
 
     /**
      * Create a Pool resource with the given unique name, arguments, and options.
@@ -103,7 +103,7 @@ export class Pool extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: PoolArgs | PoolState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: PoolState = argsOrState as PoolState | undefined;
+            const state = argsOrState as PoolState | undefined;
             inputs["adminStateUp"] = state ? state.adminStateUp : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["lbMethod"] = state ? state.lbMethod : undefined;

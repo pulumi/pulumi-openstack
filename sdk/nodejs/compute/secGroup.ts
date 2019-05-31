@@ -83,26 +83,26 @@ export class SecGroup extends pulumi.CustomResource {
      * A description for the security group. Changing this
      * updates the `description` of an existing security group.
      */
-    public readonly description: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string>;
     /**
      * A unique name for the security group. Changing this
      * updates the `name` of an existing security group.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 Compute client.
      * A Compute client is needed to create a security group. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * security group.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * A rule describing how the security group operates. The
      * rule object structure is documented below. Changing this updates the
      * security group rules. As shown in the example above, multiple rule blocks
      * may be used.
      */
-    public readonly rules: pulumi.Output<{ cidr?: string, fromGroupId?: string, fromPort: number, id: string, ipProtocol: string, self?: boolean, toPort: number }[]>;
+    public readonly rules!: pulumi.Output<{ cidr?: string, fromGroupId?: string, fromPort: number, id: string, ipProtocol: string, self?: boolean, toPort: number }[]>;
 
     /**
      * Create a SecGroup resource with the given unique name, arguments, and options.
@@ -115,7 +115,7 @@ export class SecGroup extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: SecGroupArgs | SecGroupState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: SecGroupState = argsOrState as SecGroupState | undefined;
+            const state = argsOrState as SecGroupState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["region"] = state ? state.region : undefined;

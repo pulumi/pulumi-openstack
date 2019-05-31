@@ -124,45 +124,45 @@ export class PoolV1 extends pulumi.CustomResource {
      * members of the pool. The current specification supports 'ROUND_ROBIN' and
      * 'LEAST_CONNECTIONS' as valid values for this attribute.
      */
-    public readonly lbMethod: pulumi.Output<string>;
+    public readonly lbMethod!: pulumi.Output<string>;
     /**
      * The backend load balancing provider. For example:
      * `haproxy`, `F5`, etc.
      */
-    public readonly lbProvider: pulumi.Output<string>;
+    public readonly lbProvider!: pulumi.Output<string>;
     /**
      * A list of IDs of monitors to associate with the
      * pool.
      */
-    public readonly monitorIds: pulumi.Output<string[] | undefined>;
+    public readonly monitorIds!: pulumi.Output<string[] | undefined>;
     /**
      * The name of the pool. Changing this updates the name of
      * the existing pool.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The protocol used by the pool members, you can use
      * either 'TCP, 'HTTP', or 'HTTPS'. Changing this creates a new pool.
      */
-    public readonly protocol: pulumi.Output<string>;
+    public readonly protocol!: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create an LB pool. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * LB pool.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The network on which the members of the pool will be
      * located. Only members that are on this network can be added to the pool.
      * Changing this creates a new pool.
      */
-    public readonly subnetId: pulumi.Output<string>;
+    public readonly subnetId!: pulumi.Output<string>;
     /**
      * The owner of the pool. Required if admin wants to
      * create a pool member for another tenant. Changing this creates a new pool.
      */
-    public readonly tenantId: pulumi.Output<string>;
+    public readonly tenantId!: pulumi.Output<string>;
 
     /**
      * Create a PoolV1 resource with the given unique name, arguments, and options.
@@ -175,7 +175,7 @@ export class PoolV1 extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: PoolV1Args | PoolV1State, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: PoolV1State = argsOrState as PoolV1State | undefined;
+            const state = argsOrState as PoolV1State | undefined;
             inputs["lbMethod"] = state ? state.lbMethod : undefined;
             inputs["lbProvider"] = state ? state.lbProvider : undefined;
             inputs["monitorIds"] = state ? state.monitorIds : undefined;

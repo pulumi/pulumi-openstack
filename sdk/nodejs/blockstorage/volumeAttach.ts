@@ -57,71 +57,71 @@ export class VolumeAttach extends pulumi.CustomResource {
      * (`ro`) or Read-Write (`rw`). Only values of `ro` and `rw` are accepted.
      * If left unspecified, the Block Storage API will apply a default of `rw`.
      */
-    public readonly attachMode: pulumi.Output<string | undefined>;
+    public readonly attachMode!: pulumi.Output<string | undefined>;
     /**
      * This is a map of key/value pairs that contain the connection
      * information. You will want to pass this information to a provisioner
      * script to finalize the connection. See below for more information.
      */
-    public /*out*/ readonly data: pulumi.Output<{[key: string]: any}>;
+    public /*out*/ readonly data!: pulumi.Output<{[key: string]: any}>;
     /**
      * The device to tell the Block Storage service this
      * volume will be attached as. This is purely for informational purposes.
      * You can specify `auto` or a device such as `/dev/vdc`.
      */
-    public readonly device: pulumi.Output<string | undefined>;
+    public readonly device!: pulumi.Output<string | undefined>;
     /**
      * The storage driver that the volume is based on.
      */
-    public /*out*/ readonly driverVolumeType: pulumi.Output<string>;
+    public /*out*/ readonly driverVolumeType!: pulumi.Output<string>;
     /**
      * The host to attach the volume to.
      */
-    public readonly hostName: pulumi.Output<string>;
+    public readonly hostName!: pulumi.Output<string>;
     /**
      * The iSCSI initiator string to make the connection.
      */
-    public readonly initiator: pulumi.Output<string | undefined>;
+    public readonly initiator!: pulumi.Output<string | undefined>;
     /**
      * The IP address of the `host_name` above.
      */
-    public readonly ipAddress: pulumi.Output<string | undefined>;
+    public readonly ipAddress!: pulumi.Output<string | undefined>;
     /**
      * A mount point base name for shared storage.
      */
-    public /*out*/ readonly mountPointBase: pulumi.Output<string>;
+    public /*out*/ readonly mountPointBase!: pulumi.Output<string>;
     /**
      * Whether to connect to this volume via multipath.
      */
-    public readonly multipath: pulumi.Output<boolean | undefined>;
+    public readonly multipath!: pulumi.Output<boolean | undefined>;
     /**
      * The iSCSI initiator OS type.
      */
-    public readonly osType: pulumi.Output<string | undefined>;
+    public readonly osType!: pulumi.Output<string | undefined>;
     /**
      * The iSCSI initiator platform.
      */
-    public readonly platform: pulumi.Output<string | undefined>;
+    public readonly platform!: pulumi.Output<string | undefined>;
     /**
      * The region in which to obtain the V3 Block Storage
      * client. A Block Storage client is needed to create a volume attachment.
      * If omitted, the `region` argument of the provider is used. Changing this
      * creates a new volume attachment.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The ID of the Volume to attach to an Instance.
      */
-    public readonly volumeId: pulumi.Output<string>;
+    public readonly volumeId!: pulumi.Output<string>;
     /**
      * A wwnn name. Used for Fibre Channel connections.
      */
-    public readonly wwnn: pulumi.Output<string | undefined>;
+    public readonly wwnn!: pulumi.Output<string | undefined>;
     /**
      * An array of wwpn strings. Used for Fibre Channel
      * connections.
      */
-    public readonly wwpns: pulumi.Output<string[] | undefined>;
+    public readonly wwpns!: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a VolumeAttach resource with the given unique name, arguments, and options.
@@ -134,7 +134,7 @@ export class VolumeAttach extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: VolumeAttachArgs | VolumeAttachState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: VolumeAttachState = argsOrState as VolumeAttachState | undefined;
+            const state = argsOrState as VolumeAttachState | undefined;
             inputs["attachMode"] = state ? state.attachMode : undefined;
             inputs["data"] = state ? state.data : undefined;
             inputs["device"] = state ? state.device : undefined;

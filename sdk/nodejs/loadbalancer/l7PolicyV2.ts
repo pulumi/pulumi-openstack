@@ -60,53 +60,53 @@ export class L7PolicyV2 extends pulumi.CustomResource {
      * The L7 Policy action - can either be REDIRECT\_TO\_POOL,
      * REDIRECT\_TO\_URL or REJECT.
      */
-    public readonly action: pulumi.Output<string>;
+    public readonly action!: pulumi.Output<string>;
     /**
      * The administrative state of the L7 Policy.
      * A valid value is true (UP) or false (DOWN).
      */
-    public readonly adminStateUp: pulumi.Output<boolean | undefined>;
+    public readonly adminStateUp!: pulumi.Output<boolean | undefined>;
     /**
      * Human-readable description for the L7 Policy.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The Listener on which the L7 Policy will be associated with.
      * Changing this creates a new L7 Policy.
      */
-    public readonly listenerId: pulumi.Output<string>;
+    public readonly listenerId!: pulumi.Output<string>;
     /**
      * Human-readable name for the L7 Policy. Does not have
      * to be unique.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The position of this policy on the listener. Positions start at 1.
      */
-    public readonly position: pulumi.Output<number>;
+    public readonly position!: pulumi.Output<number>;
     /**
      * Requests matching this policy will be redirected to the
      * pool with this ID. Only valid if action is REDIRECT\_TO\_POOL.
      */
-    public readonly redirectPoolId: pulumi.Output<string | undefined>;
+    public readonly redirectPoolId!: pulumi.Output<string | undefined>;
     /**
      * Requests matching this policy will be redirected to this URL.
      * Only valid if action is REDIRECT\_TO\_URL.
      */
-    public readonly redirectUrl: pulumi.Output<string | undefined>;
+    public readonly redirectUrl!: pulumi.Output<string | undefined>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create an . If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * L7 Policy.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Required for admins. The UUID of the tenant who owns
      * the L7 Policy.  Only administrative users can specify a tenant UUID
      * other than their own. Changing this creates a new L7 Policy.
      */
-    public readonly tenantId: pulumi.Output<string>;
+    public readonly tenantId!: pulumi.Output<string>;
 
     /**
      * Create a L7PolicyV2 resource with the given unique name, arguments, and options.
@@ -119,7 +119,7 @@ export class L7PolicyV2 extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: L7PolicyV2Args | L7PolicyV2State, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: L7PolicyV2State = argsOrState as L7PolicyV2State | undefined;
+            const state = argsOrState as L7PolicyV2State | undefined;
             inputs["action"] = state ? state.action : undefined;
             inputs["adminStateUp"] = state ? state.adminStateUp : undefined;
             inputs["description"] = state ? state.description : undefined;

@@ -51,85 +51,85 @@ export class Share extends pulumi.CustomResource {
      * The share availability zone. Changing this creates a
      * new share.
      */
-    public readonly availabilityZone: pulumi.Output<string>;
+    public readonly availabilityZone!: pulumi.Output<string>;
     /**
      * The human-readable description for the share.
      * Changing this updates the description of the existing share.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * A list of export locations. For example, when a share server
      * has more than one network interface, it can have multiple export locations.
      */
-    public /*out*/ readonly exportLocations: pulumi.Output<{ path: string, preferred: string }[]>;
+    public /*out*/ readonly exportLocations!: pulumi.Output<{ path: string, preferred: string }[]>;
     /**
      * Indicates whether a share has replicas or not.
      */
-    public /*out*/ readonly hasReplicas: pulumi.Output<boolean>;
+    public /*out*/ readonly hasReplicas!: pulumi.Output<boolean>;
     /**
      * The share host name.
      */
-    public /*out*/ readonly host: pulumi.Output<string>;
+    public /*out*/ readonly host!: pulumi.Output<string>;
     /**
      * The level of visibility for the share. Set to true to make
      * share public. Set to false to make it private. Default value is false. Changing this
      * updates the existing share.
      */
-    public readonly isPublic: pulumi.Output<boolean | undefined>;
+    public readonly isPublic!: pulumi.Output<boolean | undefined>;
     /**
      * One or more metadata key and value pairs as a dictionary of
      * strings.
      */
-    public readonly metadata: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly metadata!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
      * The name of the share. Changing this updates the name
      * of the existing share.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The owner of the Share.
      */
-    public /*out*/ readonly projectId: pulumi.Output<string>;
+    public /*out*/ readonly projectId!: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 Shared File System client.
      * A Shared File System client is needed to create a share. Changing this
      * creates a new share.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The share replication type.
      */
-    public /*out*/ readonly replicationType: pulumi.Output<string>;
+    public /*out*/ readonly replicationType!: pulumi.Output<string>;
     /**
      * The UUID of a share network where the share server exists
      * or will be created. If `share_network_id` is not set and you provide a `snapshot_id`,
      * the share_network_id value from the snapshot is used. Changing this creates a new share.
      */
-    public readonly shareNetworkId: pulumi.Output<string>;
+    public readonly shareNetworkId!: pulumi.Output<string>;
     /**
      * The share protocol - can either be NFS, CIFS,
      * CEPHFS, GLUSTERFS, HDFS or MAPRFS. Changing this creates a new share.
      */
-    public readonly shareProto: pulumi.Output<string>;
+    public readonly shareProto!: pulumi.Output<string>;
     /**
      * The UUID of the share server.
      */
-    public /*out*/ readonly shareServerId: pulumi.Output<string>;
+    public /*out*/ readonly shareServerId!: pulumi.Output<string>;
     /**
      * The share type name. If you omit this parameter, the default
      * share type is used.
      */
-    public readonly shareType: pulumi.Output<string>;
+    public readonly shareType!: pulumi.Output<string>;
     /**
      * The share size, in GBs. The requested share size cannot be greater
      * than the allowed GB quota. Changing this resizes the existing share.
      */
-    public readonly size: pulumi.Output<number>;
+    public readonly size!: pulumi.Output<number>;
     /**
      * The UUID of the share's base snapshot. Changing this creates
      * a new share.
      */
-    public readonly snapshotId: pulumi.Output<string | undefined>;
+    public readonly snapshotId!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Share resource with the given unique name, arguments, and options.
@@ -142,7 +142,7 @@ export class Share extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ShareArgs | ShareState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: ShareState = argsOrState as ShareState | undefined;
+            const state = argsOrState as ShareState | undefined;
             inputs["availabilityZone"] = state ? state.availabilityZone : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["exportLocations"] = state ? state.exportLocations : undefined;

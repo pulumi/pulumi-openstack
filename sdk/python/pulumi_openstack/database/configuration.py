@@ -72,8 +72,6 @@ class Configuration(pulumi.CustomResource):
 
         __props__['name'] = name
 
-        if region is None:
-            raise TypeError("Missing required property 'region'")
         __props__['region'] = region
 
         super(Configuration, __self__).__init__(

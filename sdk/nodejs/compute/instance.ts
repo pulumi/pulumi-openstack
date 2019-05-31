@@ -400,26 +400,26 @@ export class Instance extends pulumi.CustomResource {
     /**
      * The first detected Fixed IPv4 address.
      */
-    public readonly accessIpV4: pulumi.Output<string>;
+    public readonly accessIpV4!: pulumi.Output<string>;
     /**
      * The first detected Fixed IPv6 address.
      */
-    public readonly accessIpV6: pulumi.Output<string>;
+    public readonly accessIpV6!: pulumi.Output<string>;
     /**
      * The administrative password to assign to the server.
      * Changing this changes the root password on the existing server.
      */
-    public readonly adminPass: pulumi.Output<string | undefined>;
+    public readonly adminPass!: pulumi.Output<string | undefined>;
     /**
      * Contains all instance metadata, even metadata not set
      * by Terraform.
      */
-    public /*out*/ readonly allMetadata: pulumi.Output<{[key: string]: any}>;
+    public /*out*/ readonly allMetadata!: pulumi.Output<{[key: string]: any}>;
     /**
      * The availability zone in which to create
      * the server. Changing this creates a new server.
      */
-    public readonly availabilityZone: pulumi.Output<string>;
+    public readonly availabilityZone!: pulumi.Output<string>;
     /**
      * Configuration of block devices. The block_device
      * structure is documented below. Changing this creates a new server.
@@ -428,85 +428,85 @@ export class Instance extends pulumi.CustomResource {
      * following [reference](https://docs.openstack.org/nova/latest/user/block-device-mapping.html)
      * for more information.
      */
-    public readonly blockDevices: pulumi.Output<{ bootIndex?: number, deleteOnTermination?: boolean, destinationType?: string, deviceType?: string, diskBus?: string, guestFormat?: string, sourceType: string, uuid?: string, volumeSize?: number }[] | undefined>;
+    public readonly blockDevices!: pulumi.Output<{ bootIndex?: number, deleteOnTermination?: boolean, destinationType?: string, deviceType?: string, diskBus?: string, guestFormat?: string, sourceType: string, uuid?: string, volumeSize?: number }[] | undefined>;
     /**
      * Whether to use the config_drive feature to
      * configure the instance. Changing this creates a new server.
      */
-    public readonly configDrive: pulumi.Output<boolean | undefined>;
+    public readonly configDrive!: pulumi.Output<boolean | undefined>;
     /**
      * The flavor ID of
      * the desired flavor for the server. Changing this resizes the existing server.
      */
-    public readonly flavorId: pulumi.Output<string>;
+    public readonly flavorId!: pulumi.Output<string>;
     /**
      * The name of the
      * desired flavor for the server. Changing this resizes the existing server.
      */
-    public readonly flavorName: pulumi.Output<string>;
+    public readonly flavorName!: pulumi.Output<string>;
     /**
      * Whether to force the OpenStack instance to be
      * forcefully deleted. This is useful for environments that have reclaim / soft
      * deletion enabled.
      */
-    public readonly forceDelete: pulumi.Output<boolean | undefined>;
+    public readonly forceDelete!: pulumi.Output<boolean | undefined>;
     /**
      * (Optional; Required if `image_name` is empty and not booting
      * from a volume. Do not specify if booting from a volume.) The image ID of
      * the desired image for the server. Changing this creates a new server.
      */
-    public readonly imageId: pulumi.Output<string>;
+    public readonly imageId!: pulumi.Output<string>;
     /**
      * (Optional; Required if `image_id` is empty and not booting
      * from a volume. Do not specify if booting from a volume.) The name of the
      * desired image for the server. Changing this creates a new server.
      */
-    public readonly imageName: pulumi.Output<string>;
+    public readonly imageName!: pulumi.Output<string>;
     /**
      * The name of a key pair to put on the server. The key
      * pair must already be created and associated with the tenant's account.
      * Changing this creates a new server.
      */
-    public readonly keyPair: pulumi.Output<string | undefined>;
+    public readonly keyPair!: pulumi.Output<string | undefined>;
     /**
      * Metadata key/value pairs to make available from
      * within the instance. Changing this updates the existing server metadata.
      */
-    public readonly metadata: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly metadata!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
      * A unique name for the resource.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * An array of one or more networks to attach to the
      * instance. The network object structure is documented below. Changing this
      * creates a new server.
      */
-    public readonly networks: pulumi.Output<{ accessNetwork?: boolean, fixedIpV4: string, fixedIpV6: string, mac: string, name: string, port: string, uuid: string }[]>;
+    public readonly networks!: pulumi.Output<{ accessNetwork?: boolean, fixedIpV4: string, fixedIpV6: string, mac: string, name: string, port: string, uuid: string }[]>;
     /**
      * Customize the personality of an instance by
      * defining one or more files and their contents. The personality structure
      * is described below.
      */
-    public readonly personalities: pulumi.Output<{ content: string, file: string }[] | undefined>;
+    public readonly personalities!: pulumi.Output<{ content: string, file: string }[] | undefined>;
     /**
      * Provide the VM state. Only 'active' and 'shutoff'
      * are supported values. *Note*: If the initial power_state is the shutoff
      * the VM will be stopped immediately after build and the provisioners like
      * remote-exec or files are not supported.
      */
-    public readonly powerState: pulumi.Output<string | undefined>;
+    public readonly powerState!: pulumi.Output<string | undefined>;
     /**
      * The region in which to create the server instance. If
      * omitted, the `region` argument of the provider is used. Changing this
      * creates a new server.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Provide the Nova scheduler with hints on how
      * the instance should be launched. The available hints are described below.
      */
-    public readonly schedulerHints: pulumi.Output<{ additionalProperties?: {[key: string]: any}, buildNearHostIp?: string, differentHosts?: string[], group?: string, queries?: string[], sameHosts?: string[], targetCell?: string }[] | undefined>;
+    public readonly schedulerHints!: pulumi.Output<{ additionalProperties?: {[key: string]: any}, buildNearHostIp?: string, differentHosts?: string[], group?: string, queries?: string[], sameHosts?: string[], targetCell?: string }[] | undefined>;
     /**
      * An array of one or more security group names
      * to associate with the server. Changing this results in adding/removing
@@ -514,23 +514,23 @@ export class Instance extends pulumi.CustomResource {
      * instance to networks using Ports, place the security groups on the Port
      * and not the instance.
      */
-    public readonly securityGroups: pulumi.Output<string[]>;
+    public readonly securityGroups!: pulumi.Output<string[]>;
     /**
      * Whether to try stop instance gracefully
      * before destroying it, thus giving chance for guest OS daemons to stop correctly.
      * If instance doesn't stop within timeout, it will be destroyed anyway.
      */
-    public readonly stopBeforeDestroy: pulumi.Output<boolean | undefined>;
+    public readonly stopBeforeDestroy!: pulumi.Output<boolean | undefined>;
     /**
      * The user data to provide when launching the instance.
      * Changing this creates a new server.
      */
-    public readonly userData: pulumi.Output<string | undefined>;
+    public readonly userData!: pulumi.Output<string | undefined>;
     /**
      * Map of additional vendor-specific options.
      * Supported options are described below.
      */
-    public readonly vendorOptions: pulumi.Output<{ ignoreResizeConfirmation?: boolean } | undefined>;
+    public readonly vendorOptions!: pulumi.Output<{ ignoreResizeConfirmation?: boolean } | undefined>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -543,7 +543,7 @@ export class Instance extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: InstanceArgs | InstanceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: InstanceState = argsOrState as InstanceState | undefined;
+            const state = argsOrState as InstanceState | undefined;
             inputs["accessIpV4"] = state ? state.accessIpV4 : undefined;
             inputs["accessIpV6"] = state ? state.accessIpV6 : undefined;
             inputs["adminPass"] = state ? state.adminPass : undefined;

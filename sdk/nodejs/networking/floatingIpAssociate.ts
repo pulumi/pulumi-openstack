@@ -37,16 +37,16 @@ export class FloatingIpAssociate extends pulumi.CustomResource {
         return new FloatingIpAssociate(name, <any>state, { ...opts, id: id });
     }
 
-    public readonly fixedIp: pulumi.Output<string>;
+    public readonly fixedIp!: pulumi.Output<string>;
     /**
      * IP Address of an existing floating IP.
      */
-    public readonly floatingIp: pulumi.Output<string>;
+    public readonly floatingIp!: pulumi.Output<string>;
     /**
      * ID of an existing port with at least one IP address to
      * associate with this floating IP.
      */
-    public readonly portId: pulumi.Output<string>;
+    public readonly portId!: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a floating IP that can be used with
@@ -54,7 +54,7 @@ export class FloatingIpAssociate extends pulumi.CustomResource {
      * `region` argument of the provider is used. Changing this creates a new
      * floating IP (which may or may not have a different address).
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
 
     /**
      * Create a FloatingIpAssociate resource with the given unique name, arguments, and options.
@@ -67,7 +67,7 @@ export class FloatingIpAssociate extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: FloatingIpAssociateArgs | FloatingIpAssociateState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: FloatingIpAssociateState = argsOrState as FloatingIpAssociateState | undefined;
+            const state = argsOrState as FloatingIpAssociateState | undefined;
             inputs["fixedIp"] = state ? state.fixedIp : undefined;
             inputs["floatingIp"] = state ? state.floatingIp : undefined;
             inputs["portId"] = state ? state.portId : undefined;

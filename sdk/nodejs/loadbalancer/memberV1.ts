@@ -37,40 +37,40 @@ export class MemberV1 extends pulumi.CustomResource {
      * The IP address of the member. Changing this creates a
      * new member.
      */
-    public readonly address: pulumi.Output<string>;
+    public readonly address!: pulumi.Output<string>;
     /**
      * The administrative state of the member.
      * Acceptable values are 'true' and 'false'. Changing this value updates the
      * state of the existing member.
      */
-    public readonly adminStateUp: pulumi.Output<boolean>;
+    public readonly adminStateUp!: pulumi.Output<boolean>;
     /**
      * The ID of the LB pool. Changing this creates a new
      * member.
      */
-    public readonly poolId: pulumi.Output<string>;
+    public readonly poolId!: pulumi.Output<string>;
     /**
      * An integer representing the port on which the member is
      * hosted. Changing this creates a new member.
      */
-    public readonly port: pulumi.Output<number>;
+    public readonly port!: pulumi.Output<number>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create an LB member. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * LB member.
      */
-    public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The owner of the member. Required if admin wants to
      * create a member for another tenant. Changing this creates a new member.
      */
-    public readonly tenantId: pulumi.Output<string | undefined>;
+    public readonly tenantId!: pulumi.Output<string | undefined>;
     /**
      * The load balancing weight of the member. This is currently unable
      * to be set through Terraform.
      */
-    public readonly weight: pulumi.Output<number>;
+    public readonly weight!: pulumi.Output<number>;
 
     /**
      * Create a MemberV1 resource with the given unique name, arguments, and options.
@@ -83,7 +83,7 @@ export class MemberV1 extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: MemberV1Args | MemberV1State, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: MemberV1State = argsOrState as MemberV1State | undefined;
+            const state = argsOrState as MemberV1State | undefined;
             inputs["address"] = state ? state.address : undefined;
             inputs["adminStateUp"] = state ? state.adminStateUp : undefined;
             inputs["poolId"] = state ? state.poolId : undefined;

@@ -67,8 +67,6 @@ class User(pulumi.CustomResource):
             raise TypeError("Missing required property 'password'")
         __props__['password'] = password
 
-        if region is None:
-            raise TypeError("Missing required property 'region'")
         __props__['region'] = region
 
         super(User, __self__).__init__(
