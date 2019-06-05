@@ -51,6 +51,20 @@ export class AddressScope extends pulumi.CustomResource {
         return new AddressScope(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'openstack:networking/addressScope:AddressScope';
+
+    /**
+     * Returns true if the given object is an instance of AddressScope.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is AddressScope {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === AddressScope.__pulumiType;
+    }
+
     /**
      * IP version, either 4 (default) or 6. Changing this
      * creates a new address-scope.
@@ -106,7 +120,7 @@ export class AddressScope extends pulumi.CustomResource {
             inputs["region"] = args ? args.region : undefined;
             inputs["shared"] = args ? args.shared : undefined;
         }
-        super("openstack:networking/addressScope:AddressScope", name, inputs, opts);
+        super(AddressScope.__pulumiType, name, inputs, opts);
     }
 }
 

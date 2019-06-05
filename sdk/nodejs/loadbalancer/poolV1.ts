@@ -119,6 +119,20 @@ export class PoolV1 extends pulumi.CustomResource {
         return new PoolV1(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'openstack:loadbalancer/poolV1:PoolV1';
+
+    /**
+     * Returns true if the given object is an instance of PoolV1.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is PoolV1 {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === PoolV1.__pulumiType;
+    }
+
     /**
      * The algorithm used to distribute load between the
      * members of the pool. The current specification supports 'ROUND_ROBIN' and
@@ -204,7 +218,7 @@ export class PoolV1 extends pulumi.CustomResource {
             inputs["subnetId"] = args ? args.subnetId : undefined;
             inputs["tenantId"] = args ? args.tenantId : undefined;
         }
-        super("openstack:loadbalancer/poolV1:PoolV1", name, inputs, opts);
+        super(PoolV1.__pulumiType, name, inputs, opts);
     }
 }
 

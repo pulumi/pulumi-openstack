@@ -56,6 +56,20 @@ export class SubnetPool extends pulumi.CustomResource {
         return new SubnetPool(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'openstack:networking/subnetPool:SubnetPool';
+
+    /**
+     * Returns true if the given object is an instance of SubnetPool.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is SubnetPool {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === SubnetPool.__pulumiType;
+    }
+
     /**
      * The Neutron address scope to assign to the
      * subnetpool. Changing this updates the address scope id of the existing
@@ -216,7 +230,7 @@ export class SubnetPool extends pulumi.CustomResource {
             inputs["revisionNumber"] = undefined /*out*/;
             inputs["updatedAt"] = undefined /*out*/;
         }
-        super("openstack:networking/subnetPool:SubnetPool", name, inputs, opts);
+        super(SubnetPool.__pulumiType, name, inputs, opts);
     }
 }
 

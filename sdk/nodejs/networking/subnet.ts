@@ -35,6 +35,20 @@ export class Subnet extends pulumi.CustomResource {
         return new Subnet(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'openstack:networking/subnet:Subnet';
+
+    /**
+     * Returns true if the given object is an instance of Subnet.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Subnet {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Subnet.__pulumiType;
+    }
+
     /**
      * The collection of ags assigned on the subnet, which have been
      * explicitly and implicitly added.
@@ -212,7 +226,7 @@ export class Subnet extends pulumi.CustomResource {
             inputs["valueSpecs"] = args ? args.valueSpecs : undefined;
             inputs["allTags"] = undefined /*out*/;
         }
-        super("openstack:networking/subnet:Subnet", name, inputs, opts);
+        super(Subnet.__pulumiType, name, inputs, opts);
     }
 }
 

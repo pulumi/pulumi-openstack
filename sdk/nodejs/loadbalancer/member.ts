@@ -32,6 +32,20 @@ export class Member extends pulumi.CustomResource {
         return new Member(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'openstack:loadbalancer/member:Member';
+
+    /**
+     * Returns true if the given object is an instance of Member.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Member {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Member.__pulumiType;
+    }
+
     /**
      * The IP address of the member to receive traffic from
      * the load balancer. Changing this creates a new member.
@@ -123,7 +137,7 @@ export class Member extends pulumi.CustomResource {
             inputs["tenantId"] = args ? args.tenantId : undefined;
             inputs["weight"] = args ? args.weight : undefined;
         }
-        super("openstack:loadbalancer/member:Member", name, inputs, opts);
+        super(Member.__pulumiType, name, inputs, opts);
     }
 }
 

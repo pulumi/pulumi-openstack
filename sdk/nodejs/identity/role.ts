@@ -32,6 +32,20 @@ export class Role extends pulumi.CustomResource {
         return new Role(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'openstack:identity/role:Role';
+
+    /**
+     * Returns true if the given object is an instance of Role.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Role {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Role.__pulumiType;
+    }
+
     /**
      * The domain the role belongs to.
      */
@@ -68,7 +82,7 @@ export class Role extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["region"] = args ? args.region : undefined;
         }
-        super("openstack:identity/role:Role", name, inputs, opts);
+        super(Role.__pulumiType, name, inputs, opts);
     }
 }
 

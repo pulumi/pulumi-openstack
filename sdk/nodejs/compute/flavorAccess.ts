@@ -44,6 +44,20 @@ export class FlavorAccess extends pulumi.CustomResource {
         return new FlavorAccess(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'openstack:compute/flavorAccess:FlavorAccess';
+
+    /**
+     * Returns true if the given object is an instance of FlavorAccess.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is FlavorAccess {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === FlavorAccess.__pulumiType;
+    }
+
     /**
      * The UUID of flavor to use. Changing this creates a new flavor access.
      */
@@ -87,7 +101,7 @@ export class FlavorAccess extends pulumi.CustomResource {
             inputs["region"] = args ? args.region : undefined;
             inputs["tenantId"] = args ? args.tenantId : undefined;
         }
-        super("openstack:compute/flavorAccess:FlavorAccess", name, inputs, opts);
+        super(FlavorAccess.__pulumiType, name, inputs, opts);
     }
 }
 

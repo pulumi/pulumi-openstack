@@ -33,6 +33,20 @@ export class Listener extends pulumi.CustomResource {
         return new Listener(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'openstack:loadbalancer/listener:Listener';
+
+    /**
+     * Returns true if the given object is an instance of Listener.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Listener {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Listener.__pulumiType;
+    }
+
     /**
      * The administrative state of the Listener.
      * A valid value is true (UP) or false (DOWN).
@@ -149,7 +163,7 @@ export class Listener extends pulumi.CustomResource {
             inputs["sniContainerRefs"] = args ? args.sniContainerRefs : undefined;
             inputs["tenantId"] = args ? args.tenantId : undefined;
         }
-        super("openstack:loadbalancer/listener:Listener", name, inputs, opts);
+        super(Listener.__pulumiType, name, inputs, opts);
     }
 }
 

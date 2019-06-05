@@ -79,6 +79,20 @@ export class SecGroup extends pulumi.CustomResource {
         return new SecGroup(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'openstack:compute/secGroup:SecGroup';
+
+    /**
+     * Returns true if the given object is an instance of SecGroup.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is SecGroup {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === SecGroup.__pulumiType;
+    }
+
     /**
      * A description for the security group. Changing this
      * updates the `description` of an existing security group.
@@ -130,7 +144,7 @@ export class SecGroup extends pulumi.CustomResource {
             inputs["region"] = args ? args.region : undefined;
             inputs["rules"] = args ? args.rules : undefined;
         }
-        super("openstack:compute/secGroup:SecGroup", name, inputs, opts);
+        super(SecGroup.__pulumiType, name, inputs, opts);
     }
 }
 

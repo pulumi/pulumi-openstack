@@ -62,6 +62,20 @@ export class L7RuleV2 extends pulumi.CustomResource {
         return new L7RuleV2(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'openstack:loadbalancer/l7RuleV2:L7RuleV2';
+
+    /**
+     * Returns true if the given object is an instance of L7RuleV2.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is L7RuleV2 {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === L7RuleV2.__pulumiType;
+    }
+
     /**
      * The administrative state of the L7 Rule.
      * A valid value is true (UP) or false (DOWN).
@@ -162,7 +176,7 @@ export class L7RuleV2 extends pulumi.CustomResource {
             inputs["value"] = args ? args.value : undefined;
             inputs["listenerId"] = undefined /*out*/;
         }
-        super("openstack:loadbalancer/l7RuleV2:L7RuleV2", name, inputs, opts);
+        super(L7RuleV2.__pulumiType, name, inputs, opts);
     }
 }
 

@@ -41,6 +41,20 @@ export class RoleAssignment extends pulumi.CustomResource {
         return new RoleAssignment(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'openstack:identity/roleAssignment:RoleAssignment';
+
+    /**
+     * Returns true if the given object is an instance of RoleAssignment.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is RoleAssignment {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === RoleAssignment.__pulumiType;
+    }
+
     /**
      * The domain to assign the role in.
      */
@@ -93,7 +107,7 @@ export class RoleAssignment extends pulumi.CustomResource {
             inputs["roleId"] = args ? args.roleId : undefined;
             inputs["userId"] = args ? args.userId : undefined;
         }
-        super("openstack:identity/roleAssignment:RoleAssignment", name, inputs, opts);
+        super(RoleAssignment.__pulumiType, name, inputs, opts);
     }
 }
 

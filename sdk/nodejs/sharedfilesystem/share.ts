@@ -47,6 +47,20 @@ export class Share extends pulumi.CustomResource {
         return new Share(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'openstack:sharedfilesystem/share:Share';
+
+    /**
+     * Returns true if the given object is an instance of Share.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Share {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Share.__pulumiType;
+    }
+
     /**
      * The share availability zone. Changing this creates a
      * new share.
@@ -186,7 +200,7 @@ export class Share extends pulumi.CustomResource {
             inputs["replicationType"] = undefined /*out*/;
             inputs["shareServerId"] = undefined /*out*/;
         }
-        super("openstack:sharedfilesystem/share:Share", name, inputs, opts);
+        super(Share.__pulumiType, name, inputs, opts);
     }
 }
 

@@ -56,6 +56,20 @@ export class L7PolicyV2 extends pulumi.CustomResource {
         return new L7PolicyV2(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'openstack:loadbalancer/l7PolicyV2:L7PolicyV2';
+
+    /**
+     * Returns true if the given object is an instance of L7PolicyV2.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is L7PolicyV2 {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === L7PolicyV2.__pulumiType;
+    }
+
     /**
      * The L7 Policy action - can either be REDIRECT\_TO\_POOL,
      * REDIRECT\_TO\_URL or REJECT.
@@ -149,7 +163,7 @@ export class L7PolicyV2 extends pulumi.CustomResource {
             inputs["region"] = args ? args.region : undefined;
             inputs["tenantId"] = args ? args.tenantId : undefined;
         }
-        super("openstack:loadbalancer/l7PolicyV2:L7PolicyV2", name, inputs, opts);
+        super(L7PolicyV2.__pulumiType, name, inputs, opts);
     }
 }
 

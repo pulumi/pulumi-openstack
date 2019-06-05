@@ -29,6 +29,20 @@ export class IpSecPolicy extends pulumi.CustomResource {
         return new IpSecPolicy(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'openstack:vpnaas/ipSecPolicy:IpSecPolicy';
+
+    /**
+     * Returns true if the given object is an instance of IpSecPolicy.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is IpSecPolicy {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === IpSecPolicy.__pulumiType;
+    }
+
     /**
      * The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.
      * Default is sha1. Changing this updates the algorithm of the existing policy.
@@ -126,7 +140,7 @@ export class IpSecPolicy extends pulumi.CustomResource {
             inputs["transformProtocol"] = args ? args.transformProtocol : undefined;
             inputs["valueSpecs"] = args ? args.valueSpecs : undefined;
         }
-        super("openstack:vpnaas/ipSecPolicy:IpSecPolicy", name, inputs, opts);
+        super(IpSecPolicy.__pulumiType, name, inputs, opts);
     }
 }
 

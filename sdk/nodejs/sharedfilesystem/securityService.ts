@@ -45,6 +45,20 @@ export class SecurityService extends pulumi.CustomResource {
         return new SecurityService(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'openstack:sharedfilesystem/securityService:SecurityService';
+
+    /**
+     * Returns true if the given object is an instance of SecurityService.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is SecurityService {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === SecurityService.__pulumiType;
+    }
+
     /**
      * The human-readable description for the security service.
      * Changing this updates the description of the existing security service.
@@ -139,7 +153,7 @@ export class SecurityService extends pulumi.CustomResource {
             inputs["user"] = args ? args.user : undefined;
             inputs["projectId"] = undefined /*out*/;
         }
-        super("openstack:sharedfilesystem/securityService:SecurityService", name, inputs, opts);
+        super(SecurityService.__pulumiType, name, inputs, opts);
     }
 }
 

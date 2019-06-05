@@ -397,6 +397,20 @@ export class Instance extends pulumi.CustomResource {
         return new Instance(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'openstack:compute/instance:Instance';
+
+    /**
+     * Returns true if the given object is an instance of Instance.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Instance {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Instance.__pulumiType;
+    }
+
     /**
      * The first detected Fixed IPv4 address.
      */
@@ -595,7 +609,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["vendorOptions"] = args ? args.vendorOptions : undefined;
             inputs["allMetadata"] = undefined /*out*/;
         }
-        super("openstack:compute/instance:Instance", name, inputs, opts);
+        super(Instance.__pulumiType, name, inputs, opts);
     }
 }
 

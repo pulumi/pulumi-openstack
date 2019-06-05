@@ -37,6 +37,20 @@ export class Flavor extends pulumi.CustomResource {
         return new Flavor(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'openstack:compute/flavor:Flavor';
+
+    /**
+     * Returns true if the given object is an instance of Flavor.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Flavor {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Flavor.__pulumiType;
+    }
+
     /**
      * The amount of disk space in gigabytes to use for the root
      * (/) partition. Changing this creates a new flavor.
@@ -129,7 +143,7 @@ export class Flavor extends pulumi.CustomResource {
             inputs["swap"] = args ? args.swap : undefined;
             inputs["vcpus"] = args ? args.vcpus : undefined;
         }
-        super("openstack:compute/flavor:Flavor", name, inputs, opts);
+        super(Flavor.__pulumiType, name, inputs, opts);
     }
 }
 

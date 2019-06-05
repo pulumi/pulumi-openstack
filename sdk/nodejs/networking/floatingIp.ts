@@ -34,6 +34,20 @@ export class FloatingIp extends pulumi.CustomResource {
         return new FloatingIp(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'openstack:networking/floatingIp:FloatingIp';
+
+    /**
+     * Returns true if the given object is an instance of FloatingIp.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is FloatingIp {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === FloatingIp.__pulumiType;
+    }
+
     /**
      * The actual/specific floating IP to obtain. By default,
      * non-admin users are not able to specify a floating IP, so you must either be
@@ -152,7 +166,7 @@ export class FloatingIp extends pulumi.CustomResource {
             inputs["valueSpecs"] = args ? args.valueSpecs : undefined;
             inputs["allTags"] = undefined /*out*/;
         }
-        super("openstack:networking/floatingIp:FloatingIp", name, inputs, opts);
+        super(FloatingIp.__pulumiType, name, inputs, opts);
     }
 }
 

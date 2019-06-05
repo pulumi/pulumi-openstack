@@ -48,6 +48,20 @@ export class Policy extends pulumi.CustomResource {
         return new Policy(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'openstack:firewall/policy:Policy';
+
+    /**
+     * Returns true if the given object is an instance of Policy.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Policy {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Policy.__pulumiType;
+    }
+
     /**
      * Audit status of the firewall policy
      * (must be "true" or "false" if provided - defaults to "false").
@@ -124,7 +138,7 @@ export class Policy extends pulumi.CustomResource {
             inputs["tenantId"] = args ? args.tenantId : undefined;
             inputs["valueSpecs"] = args ? args.valueSpecs : undefined;
         }
-        super("openstack:firewall/policy:Policy", name, inputs, opts);
+        super(Policy.__pulumiType, name, inputs, opts);
     }
 }
 

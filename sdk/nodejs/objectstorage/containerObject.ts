@@ -73,6 +73,20 @@ export class ContainerObject extends pulumi.CustomResource {
         return new ContainerObject(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'openstack:objectstorage/containerObject:ContainerObject';
+
+    /**
+     * Returns true if the given object is an instance of ContainerObject.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is ContainerObject {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === ContainerObject.__pulumiType;
+    }
+
     /**
      * A unique (within an account) name for the container. 
      * The container name must be from 1 to 256 characters long and can start
@@ -237,7 +251,7 @@ export class ContainerObject extends pulumi.CustomResource {
             inputs["lastModified"] = undefined /*out*/;
             inputs["transId"] = undefined /*out*/;
         }
-        super("openstack:objectstorage/containerObject:ContainerObject", name, inputs, opts);
+        super(ContainerObject.__pulumiType, name, inputs, opts);
     }
 }
 

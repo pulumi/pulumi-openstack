@@ -37,6 +37,20 @@ export class Pool extends pulumi.CustomResource {
         return new Pool(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'openstack:loadbalancer/pool:Pool';
+
+    /**
+     * Returns true if the given object is an instance of Pool.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Pool {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Pool.__pulumiType;
+    }
+
     /**
      * The administrative state of the pool.
      * A valid value is true (UP) or false (DOWN).
@@ -133,7 +147,7 @@ export class Pool extends pulumi.CustomResource {
             inputs["region"] = args ? args.region : undefined;
             inputs["tenantId"] = args ? args.tenantId : undefined;
         }
-        super("openstack:loadbalancer/pool:Pool", name, inputs, opts);
+        super(Pool.__pulumiType, name, inputs, opts);
     }
 }
 

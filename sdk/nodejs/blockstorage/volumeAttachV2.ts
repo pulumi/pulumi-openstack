@@ -52,6 +52,20 @@ export class VolumeAttachV2 extends pulumi.CustomResource {
         return new VolumeAttachV2(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'openstack:blockstorage/volumeAttachV2:VolumeAttachV2';
+
+    /**
+     * Returns true if the given object is an instance of VolumeAttachV2.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is VolumeAttachV2 {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === VolumeAttachV2.__pulumiType;
+    }
+
     /**
      * Specify whether to attach the volume as Read-Only
      * (`ro`) or Read-Write (`rw`). Only values of `ro` and `rw` are accepted.
@@ -174,7 +188,7 @@ export class VolumeAttachV2 extends pulumi.CustomResource {
             inputs["driverVolumeType"] = undefined /*out*/;
             inputs["mountPointBase"] = undefined /*out*/;
         }
-        super("openstack:blockstorage/volumeAttachV2:VolumeAttachV2", name, inputs, opts);
+        super(VolumeAttachV2.__pulumiType, name, inputs, opts);
     }
 }
 

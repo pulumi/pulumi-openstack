@@ -35,6 +35,20 @@ export class EndpointGroup extends pulumi.CustomResource {
         return new EndpointGroup(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'openstack:vpnaas/endpointGroup:EndpointGroup';
+
+    /**
+     * Returns true if the given object is an instance of EndpointGroup.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is EndpointGroup {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === EndpointGroup.__pulumiType;
+    }
+
     /**
      * The human-readable description for the group.
      * Changing this updates the description of the existing group.
@@ -101,7 +115,7 @@ export class EndpointGroup extends pulumi.CustomResource {
             inputs["type"] = args ? args.type : undefined;
             inputs["valueSpecs"] = args ? args.valueSpecs : undefined;
         }
-        super("openstack:vpnaas/endpointGroup:EndpointGroup", name, inputs, opts);
+        super(EndpointGroup.__pulumiType, name, inputs, opts);
     }
 }
 

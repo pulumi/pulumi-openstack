@@ -82,6 +82,20 @@ export class Port extends pulumi.CustomResource {
         return new Port(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'openstack:networking/port:Port';
+
+    /**
+     * Returns true if the given object is an instance of Port.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Port {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Port.__pulumiType;
+    }
+
     /**
      * Administrative up/down status for the port
      * (must be "true" or "false" if provided). Changing this updates the
@@ -281,7 +295,7 @@ export class Port extends pulumi.CustomResource {
             inputs["allTags"] = undefined /*out*/;
             inputs["dnsAssignments"] = undefined /*out*/;
         }
-        super("openstack:networking/port:Port", name, inputs, opts);
+        super(Port.__pulumiType, name, inputs, opts);
     }
 }
 

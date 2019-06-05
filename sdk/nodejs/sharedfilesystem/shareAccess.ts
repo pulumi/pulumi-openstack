@@ -110,6 +110,20 @@ export class ShareAccess extends pulumi.CustomResource {
         return new ShareAccess(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'openstack:sharedfilesystem/shareAccess:ShareAccess';
+
+    /**
+     * Returns true if the given object is an instance of ShareAccess.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is ShareAccess {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === ShareAccess.__pulumiType;
+    }
+
     /**
      * The access credential of the entity granted access.
      */
@@ -179,7 +193,7 @@ export class ShareAccess extends pulumi.CustomResource {
             inputs["shareId"] = args ? args.shareId : undefined;
             inputs["accessKey"] = undefined /*out*/;
         }
-        super("openstack:sharedfilesystem/shareAccess:ShareAccess", name, inputs, opts);
+        super(ShareAccess.__pulumiType, name, inputs, opts);
     }
 }
 

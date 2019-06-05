@@ -33,6 +33,20 @@ export class Volume extends pulumi.CustomResource {
         return new Volume(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'openstack:blockstorage/volume:Volume';
+
+    /**
+     * Returns true if the given object is an instance of Volume.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Volume {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Volume.__pulumiType;
+    }
+
     /**
      * If a volume is attached to an instance, this attribute will
      * display the Attachment ID, Instance ID, and the Device as the Instance
@@ -157,7 +171,7 @@ export class Volume extends pulumi.CustomResource {
             inputs["volumeType"] = args ? args.volumeType : undefined;
             inputs["attachments"] = undefined /*out*/;
         }
-        super("openstack:blockstorage/volume:Volume", name, inputs, opts);
+        super(Volume.__pulumiType, name, inputs, opts);
     }
 }
 

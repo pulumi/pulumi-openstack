@@ -60,6 +60,20 @@ export class Network extends pulumi.CustomResource {
         return new Network(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'openstack:networking/network:Network';
+
+    /**
+     * Returns true if the given object is an instance of Network.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Network {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Network.__pulumiType;
+    }
+
     /**
      * The administrative state of the network.
      * Acceptable values are "true" and "false". Changing this value updates the
@@ -200,7 +214,7 @@ export class Network extends pulumi.CustomResource {
             inputs["valueSpecs"] = args ? args.valueSpecs : undefined;
             inputs["allTags"] = undefined /*out*/;
         }
-        super("openstack:networking/network:Network", name, inputs, opts);
+        super(Network.__pulumiType, name, inputs, opts);
     }
 }
 

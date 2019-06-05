@@ -29,6 +29,20 @@ export class IkePolicy extends pulumi.CustomResource {
         return new IkePolicy(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'openstack:vpnaas/ikePolicy:IkePolicy';
+
+    /**
+     * Returns true if the given object is an instance of IkePolicy.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is IkePolicy {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === IkePolicy.__pulumiType;
+    }
+
     /**
      * The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.
      * Default is sha1. Changing this updates the algorithm of the existing policy.
@@ -126,7 +140,7 @@ export class IkePolicy extends pulumi.CustomResource {
             inputs["tenantId"] = args ? args.tenantId : undefined;
             inputs["valueSpecs"] = args ? args.valueSpecs : undefined;
         }
-        super("openstack:vpnaas/ikePolicy:IkePolicy", name, inputs, opts);
+        super(IkePolicy.__pulumiType, name, inputs, opts);
     }
 }
 

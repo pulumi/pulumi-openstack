@@ -82,6 +82,20 @@ export class PortSecGroupAssociate extends pulumi.CustomResource {
         return new PortSecGroupAssociate(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'openstack:networking/portSecGroupAssociate:PortSecGroupAssociate';
+
+    /**
+     * Returns true if the given object is an instance of PortSecGroupAssociate.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is PortSecGroupAssociate {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === PortSecGroupAssociate.__pulumiType;
+    }
+
     /**
      * The collection of Security Group IDs on the port
      * which have been explicitly and implicitly added.
@@ -141,7 +155,7 @@ export class PortSecGroupAssociate extends pulumi.CustomResource {
             inputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
             inputs["allSecurityGroupIds"] = undefined /*out*/;
         }
-        super("openstack:networking/portSecGroupAssociate:PortSecGroupAssociate", name, inputs, opts);
+        super(PortSecGroupAssociate.__pulumiType, name, inputs, opts);
     }
 }
 

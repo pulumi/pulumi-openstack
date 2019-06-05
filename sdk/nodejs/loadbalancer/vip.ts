@@ -34,6 +34,20 @@ export class Vip extends pulumi.CustomResource {
         return new Vip(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'openstack:loadbalancer/vip:Vip';
+
+    /**
+     * Returns true if the given object is an instance of Vip.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Vip {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Vip.__pulumiType;
+    }
+
     /**
      * The IP address of the vip. Changing this creates a new
      * vip.
@@ -166,7 +180,7 @@ export class Vip extends pulumi.CustomResource {
             inputs["tenantId"] = args ? args.tenantId : undefined;
             inputs["portId"] = undefined /*out*/;
         }
-        super("openstack:loadbalancer/vip:Vip", name, inputs, opts);
+        super(Vip.__pulumiType, name, inputs, opts);
     }
 }
 
