@@ -1,53 +1,41 @@
-## 0.17.3 (Unreleased)
+CHANGELOG
+=========
 
-## 0.17.2 (Released May 31, 2019)
+## HEAD (Unreleased)
+_(none)_
 
-## Improvements
+---
 
-- Update to version 1.19.0 of the OpenStack Terraform Provider.
+## 0.17.2 (2019-05-31)
+* Update to v1.19.0 of the OpenStack Terraform provider
 
-## 0.17.1 (Released April 22nd, 2019)
+## 0.17.1 (2019-04-22)
+* Update to v1.17.0 of the OpenStack Terraform provider
 
-## Improvements
+## 0.17.0 (2019-03-06)
+* Update to v1.16.0 of the OpenStack Terraform provider
+* Depend on the latest version of the `pulumi` SDK
 
-- Update to version 1.17.0 of the OpenStack Terraform Provider.
+## 0.16.5 (2019-02-13)
+* Update to v1.15.1 of the OpenStack Terraform provider
+* Add support for the `deleteBeforeReplace` resource option and improved delete-before-replace behaviour introduced in Pulumi v0.16.14
 
-## 0.17.0 (Released March 6th, 2019)
+## 0.16.4 (2019-01-19)
+* Update to v1.14.0 of the OpenStack Terraform provider
+* Add documentation comments to the Node.js SDK
 
-## Improvements
+## 0.16.3 (2018-12-05)
+* Update to v1.12.0 of the OpenStack Terraform provider
 
-- Depend on latest version of `@pulumi/pulumi`
+## 0.16.2 (2018-11-13)
+* Support Python 3.6 and higher, instead of only Python 3.7
 
-## Improvements
+## 0.16.1 (2018-10-22)
+* Depend on the latest version of the `pulumi` SDK
 
-- Updated to version 1.16.0 of the OpenStack Terraform Provider.
+## 0.16.0 (2018-10-16)
+* Updated to the latest version of the `pulumi` SDK
 
-## 0.16.5 (Released February 13th, 2019)
+## 0.15.0 (2018-08-14)
+* Initial version of the OpenStack provoider
 
-## Improvements
-
-- Updated to version 1.15.1 of the OpenStack Terraform Provider.
-
-- Support for the `deleteBeforeReplace` resource option and improved
-  delete-before-replace behaviour introduced in [Pulumi
-  0.16.14](https://github.com/pulumi/pulumi/blob/master/CHANGELOG.md#01614-released-january-31st-2019).
-
-## 0.16.4 (Released January 19th, 2019)
-
-### Improvements
-
-- Updated to the v1.14.0 version of the OpenStack Provider.
-
-- Documentation comments for the Node.js SDK now include examples
-
-## 0.16.3 (Released December 5th, 2018)
-
-### Improvements
-
-- Update provider version to v1.12.0
-
-## 0.16.2 (Released Novemeber 13th, 2018)
-
-### Major Changes
-
-- If you're using Pulumi with Python, this release removes Python 2.7 support in favor of Python 3.6 and greater.
