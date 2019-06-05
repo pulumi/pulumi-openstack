@@ -40,6 +40,20 @@ export class TempUrl extends pulumi.CustomResource {
         return new TempUrl(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'openstack:objectstorage/tempUrl:TempUrl';
+
+    /**
+     * Returns true if the given object is an instance of TempUrl.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is TempUrl {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === TempUrl.__pulumiType;
+    }
+
     /**
      * The container name the object belongs to.
      */
@@ -114,7 +128,7 @@ export class TempUrl extends pulumi.CustomResource {
             inputs["ttl"] = args ? args.ttl : undefined;
             inputs["url"] = undefined /*out*/;
         }
-        super("openstack:objectstorage/tempUrl:TempUrl", name, inputs, opts);
+        super(TempUrl.__pulumiType, name, inputs, opts);
     }
 }
 

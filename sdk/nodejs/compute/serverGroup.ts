@@ -49,6 +49,20 @@ export class ServerGroup extends pulumi.CustomResource {
         return new ServerGroup(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'openstack:compute/serverGroup:ServerGroup';
+
+    /**
+     * Returns true if the given object is an instance of ServerGroup.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is ServerGroup {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === ServerGroup.__pulumiType;
+    }
+
     /**
      * The instances that are part of this server group.
      */
@@ -100,7 +114,7 @@ export class ServerGroup extends pulumi.CustomResource {
             inputs["valueSpecs"] = args ? args.valueSpecs : undefined;
             inputs["members"] = undefined /*out*/;
         }
-        super("openstack:compute/serverGroup:ServerGroup", name, inputs, opts);
+        super(ServerGroup.__pulumiType, name, inputs, opts);
     }
 }
 

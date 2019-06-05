@@ -145,6 +145,20 @@ export class InterfaceAttach extends pulumi.CustomResource {
         return new InterfaceAttach(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'openstack:compute/interfaceAttach:InterfaceAttach';
+
+    /**
+     * Returns true if the given object is an instance of InterfaceAttach.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is InterfaceAttach {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === InterfaceAttach.__pulumiType;
+    }
+
     /**
      * An IP address to assosciate with the port.
      * _NOTE_: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.
@@ -199,7 +213,7 @@ export class InterfaceAttach extends pulumi.CustomResource {
             inputs["portId"] = args ? args.portId : undefined;
             inputs["region"] = args ? args.region : undefined;
         }
-        super("openstack:compute/interfaceAttach:InterfaceAttach", name, inputs, opts);
+        super(InterfaceAttach.__pulumiType, name, inputs, opts);
     }
 }
 

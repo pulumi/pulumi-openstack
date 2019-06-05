@@ -32,6 +32,20 @@ export class Router extends pulumi.CustomResource {
         return new Router(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'openstack:networking/router:Router';
+
+    /**
+     * Returns true if the given object is an instance of Router.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Router {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Router.__pulumiType;
+    }
+
     /**
      * Administrative up/down status for the router
      * (must be "true" or "false" if provided). Changing this updates the
@@ -163,7 +177,7 @@ export class Router extends pulumi.CustomResource {
             inputs["vendorOptions"] = args ? args.vendorOptions : undefined;
             inputs["allTags"] = undefined /*out*/;
         }
-        super("openstack:networking/router:Router", name, inputs, opts);
+        super(Router.__pulumiType, name, inputs, opts);
     }
 }
 

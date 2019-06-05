@@ -42,6 +42,20 @@ export class Instance extends pulumi.CustomResource {
         return new Instance(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'openstack:database/instance:Instance';
+
+    /**
+     * Returns true if the given object is an instance of Instance.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Instance {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Instance.__pulumiType;
+    }
+
     /**
      * Configuration ID to be attached to the instance. Database instance
      * will be rebooted when configuration is detached.
@@ -126,7 +140,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["size"] = args ? args.size : undefined;
             inputs["users"] = args ? args.users : undefined;
         }
-        super("openstack:database/instance:Instance", name, inputs, opts);
+        super(Instance.__pulumiType, name, inputs, opts);
     }
 }
 

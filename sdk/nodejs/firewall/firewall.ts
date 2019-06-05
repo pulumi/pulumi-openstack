@@ -51,6 +51,20 @@ export class Firewall extends pulumi.CustomResource {
         return new Firewall(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'openstack:firewall/firewall:Firewall';
+
+    /**
+     * Returns true if the given object is an instance of Firewall.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Firewall {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Firewall.__pulumiType;
+    }
+
     /**
      * Administrative up/down status for the firewall
      * (must be "true" or "false" if provided - defaults to "true").
@@ -138,7 +152,7 @@ export class Firewall extends pulumi.CustomResource {
             inputs["tenantId"] = args ? args.tenantId : undefined;
             inputs["valueSpecs"] = args ? args.valueSpecs : undefined;
         }
-        super("openstack:firewall/firewall:Firewall", name, inputs, opts);
+        super(Firewall.__pulumiType, name, inputs, opts);
     }
 }
 

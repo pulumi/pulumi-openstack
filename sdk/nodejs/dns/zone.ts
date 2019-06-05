@@ -36,6 +36,20 @@ export class Zone extends pulumi.CustomResource {
         return new Zone(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'openstack:dns/zone:Zone';
+
+    /**
+     * Returns true if the given object is an instance of Zone.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Zone {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Zone.__pulumiType;
+    }
+
     /**
      * Attributes for the DNS Service scheduler.
      * Changing this creates a new zone.
@@ -114,7 +128,7 @@ export class Zone extends pulumi.CustomResource {
             inputs["type"] = args ? args.type : undefined;
             inputs["valueSpecs"] = args ? args.valueSpecs : undefined;
         }
-        super("openstack:dns/zone:Zone", name, inputs, opts);
+        super(Zone.__pulumiType, name, inputs, opts);
     }
 }
 

@@ -61,6 +61,20 @@ export class Trunk extends pulumi.CustomResource {
         return new Trunk(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'openstack:networking/trunk:Trunk';
+
+    /**
+     * Returns true if the given object is an instance of Trunk.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Trunk {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Trunk.__pulumiType;
+    }
+
     /**
      * Administrative up/down status for the trunk
      * (must be "true" or "false" if provided). Changing this updates the
@@ -146,7 +160,7 @@ export class Trunk extends pulumi.CustomResource {
             inputs["tenantId"] = args ? args.tenantId : undefined;
             inputs["allTags"] = undefined /*out*/;
         }
-        super("openstack:networking/trunk:Trunk", name, inputs, opts);
+        super(Trunk.__pulumiType, name, inputs, opts);
     }
 }
 

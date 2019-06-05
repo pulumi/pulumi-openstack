@@ -35,6 +35,20 @@ export class Monitor extends pulumi.CustomResource {
         return new Monitor(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'openstack:loadbalancer/monitor:Monitor';
+
+    /**
+     * Returns true if the given object is an instance of Monitor.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Monitor {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Monitor.__pulumiType;
+    }
+
     /**
      * The administrative state of the monitor.
      * A valid value is true (UP) or false (DOWN).
@@ -155,7 +169,7 @@ export class Monitor extends pulumi.CustomResource {
             inputs["type"] = args ? args.type : undefined;
             inputs["urlPath"] = args ? args.urlPath : undefined;
         }
-        super("openstack:loadbalancer/monitor:Monitor", name, inputs, opts);
+        super(Monitor.__pulumiType, name, inputs, opts);
     }
 }
 

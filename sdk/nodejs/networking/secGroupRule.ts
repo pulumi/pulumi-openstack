@@ -42,6 +42,20 @@ export class SecGroupRule extends pulumi.CustomResource {
         return new SecGroupRule(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'openstack:networking/secGroupRule:SecGroupRule';
+
+    /**
+     * Returns true if the given object is an instance of SecGroupRule.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is SecGroupRule {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === SecGroupRule.__pulumiType;
+    }
+
     /**
      * A description of the rule. Changing this creates a new security group rule.
      */
@@ -170,7 +184,7 @@ export class SecGroupRule extends pulumi.CustomResource {
             inputs["securityGroupId"] = args ? args.securityGroupId : undefined;
             inputs["tenantId"] = args ? args.tenantId : undefined;
         }
-        super("openstack:networking/secGroupRule:SecGroupRule", name, inputs, opts);
+        super(SecGroupRule.__pulumiType, name, inputs, opts);
     }
 }
 

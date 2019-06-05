@@ -54,6 +54,20 @@ export class RouterRoute extends pulumi.CustomResource {
         return new RouterRoute(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'openstack:networking/routerRoute:RouterRoute';
+
+    /**
+     * Returns true if the given object is an instance of RouterRoute.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is RouterRoute {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === RouterRoute.__pulumiType;
+    }
+
     /**
      * CIDR block to match on the packet’s destination IP. Changing
      * this creates a new routing entry.
@@ -109,7 +123,7 @@ export class RouterRoute extends pulumi.CustomResource {
             inputs["region"] = args ? args.region : undefined;
             inputs["routerId"] = args ? args.routerId : undefined;
         }
-        super("openstack:networking/routerRoute:RouterRoute", name, inputs, opts);
+        super(RouterRoute.__pulumiType, name, inputs, opts);
     }
 }
 

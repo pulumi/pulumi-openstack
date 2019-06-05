@@ -78,6 +78,20 @@ export class ShareNetwork extends pulumi.CustomResource {
         return new ShareNetwork(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'openstack:sharedfilesystem/shareNetwork:ShareNetwork';
+
+    /**
+     * Returns true if the given object is an instance of ShareNetwork.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is ShareNetwork {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === ShareNetwork.__pulumiType;
+    }
+
     /**
      * The share network CIDR.
      */
@@ -176,7 +190,7 @@ export class ShareNetwork extends pulumi.CustomResource {
             inputs["projectId"] = undefined /*out*/;
             inputs["segmentationId"] = undefined /*out*/;
         }
-        super("openstack:sharedfilesystem/shareNetwork:ShareNetwork", name, inputs, opts);
+        super(ShareNetwork.__pulumiType, name, inputs, opts);
     }
 }
 

@@ -74,6 +74,20 @@ export class FloatingIpAssociate extends pulumi.CustomResource {
         return new FloatingIpAssociate(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'openstack:compute/floatingIpAssociate:FloatingIpAssociate';
+
+    /**
+     * Returns true if the given object is an instance of FloatingIpAssociate.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is FloatingIpAssociate {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === FloatingIpAssociate.__pulumiType;
+    }
+
     /**
      * The specific IP address to direct traffic to.
      */
@@ -132,7 +146,7 @@ export class FloatingIpAssociate extends pulumi.CustomResource {
             inputs["region"] = args ? args.region : undefined;
             inputs["waitUntilAssociated"] = args ? args.waitUntilAssociated : undefined;
         }
-        super("openstack:compute/floatingIpAssociate:FloatingIpAssociate", name, inputs, opts);
+        super(FloatingIpAssociate.__pulumiType, name, inputs, opts);
     }
 }
 

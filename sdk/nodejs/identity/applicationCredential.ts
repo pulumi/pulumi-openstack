@@ -67,6 +67,20 @@ export class ApplicationCredential extends pulumi.CustomResource {
         return new ApplicationCredential(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'openstack:identity/applicationCredential:ApplicationCredential';
+
+    /**
+     * Returns true if the given object is an instance of ApplicationCredential.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is ApplicationCredential {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === ApplicationCredential.__pulumiType;
+    }
+
     /**
      * A description of the application credential.
      * Changing this creates a new application credential.
@@ -148,7 +162,7 @@ export class ApplicationCredential extends pulumi.CustomResource {
             inputs["unrestricted"] = args ? args.unrestricted : undefined;
             inputs["projectId"] = undefined /*out*/;
         }
-        super("openstack:identity/applicationCredential:ApplicationCredential", name, inputs, opts);
+        super(ApplicationCredential.__pulumiType, name, inputs, opts);
     }
 }
 

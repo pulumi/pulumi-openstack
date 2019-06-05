@@ -48,6 +48,20 @@ export class Keypair extends pulumi.CustomResource {
         return new Keypair(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'openstack:compute/keypair:Keypair';
+
+    /**
+     * Returns true if the given object is an instance of Keypair.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Keypair {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Keypair.__pulumiType;
+    }
+
     /**
      * The fingerprint of the public key.
      */
@@ -108,7 +122,7 @@ export class Keypair extends pulumi.CustomResource {
             inputs["fingerprint"] = undefined /*out*/;
             inputs["privateKey"] = undefined /*out*/;
         }
-        super("openstack:compute/keypair:Keypair", name, inputs, opts);
+        super(Keypair.__pulumiType, name, inputs, opts);
     }
 }
 

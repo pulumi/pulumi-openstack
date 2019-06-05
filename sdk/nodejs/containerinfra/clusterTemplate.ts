@@ -207,6 +207,20 @@ export class ClusterTemplate extends pulumi.CustomResource {
         return new ClusterTemplate(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'openstack:containerinfra/clusterTemplate:ClusterTemplate';
+
+    /**
+     * Returns true if the given object is an instance of ClusterTemplate.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is ClusterTemplate {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === ClusterTemplate.__pulumiType;
+    }
+
     public readonly apiserverPort!: pulumi.Output<number | undefined>;
     public readonly clusterDistro!: pulumi.Output<string>;
     public readonly coe!: pulumi.Output<string>;
@@ -325,7 +339,7 @@ export class ClusterTemplate extends pulumi.CustomResource {
             inputs["updatedAt"] = undefined /*out*/;
             inputs["userId"] = undefined /*out*/;
         }
-        super("openstack:containerinfra/clusterTemplate:ClusterTemplate", name, inputs, opts);
+        super(ClusterTemplate.__pulumiType, name, inputs, opts);
     }
 }
 

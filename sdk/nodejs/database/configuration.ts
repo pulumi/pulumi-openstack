@@ -41,6 +41,20 @@ export class Configuration extends pulumi.CustomResource {
         return new Configuration(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'openstack:database/configuration:Configuration';
+
+    /**
+     * Returns true if the given object is an instance of Configuration.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Configuration {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Configuration.__pulumiType;
+    }
+
     /**
      * An array of configuration parameter name and value. Can be specified multiple times. The configuration object structure is documented below.
      */
@@ -95,7 +109,7 @@ export class Configuration extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["region"] = args ? args.region : undefined;
         }
-        super("openstack:database/configuration:Configuration", name, inputs, opts);
+        super(Configuration.__pulumiType, name, inputs, opts);
     }
 }
 
