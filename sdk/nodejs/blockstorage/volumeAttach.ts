@@ -38,6 +38,8 @@ import * as utilities from "../utilities";
  *     volumeId: volume1.id,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/blockstorage_volume_attach_v3.html.markdown.
  */
 export class VolumeAttach extends pulumi.CustomResource {
     /**

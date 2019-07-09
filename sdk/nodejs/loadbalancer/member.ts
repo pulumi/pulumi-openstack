@@ -18,6 +18,8 @@ import * as utilities from "../utilities";
  *     protocolPort: 8080,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_member_v2.html.markdown.
  */
 export class Member extends pulumi.CustomResource {
     /**

@@ -21,6 +21,8 @@ import * as utilities from "../utilities";
  *     networkId: network1.id,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_subnet_v2.html.markdown.
  */
 export class Subnet extends pulumi.CustomResource {
     /**

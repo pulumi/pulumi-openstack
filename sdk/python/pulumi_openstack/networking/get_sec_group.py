@@ -54,6 +54,8 @@ class GetSecGroupResult:
 async def get_sec_group(description=None,name=None,region=None,secgroup_id=None,tags=None,tenant_id=None,opts=None):
     """
     Use this data source to get the ID of an available OpenStack security group.
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_secgroup_v2.html.markdown.
     """
     __args__ = dict()
 

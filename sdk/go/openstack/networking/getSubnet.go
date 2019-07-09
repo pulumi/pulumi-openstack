@@ -8,6 +8,8 @@ import (
 )
 
 // Use this data source to get the ID of an available OpenStack subnet.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_subnet_v2.html.markdown.
 func LookupSubnet(ctx *pulumi.Context, args *GetSubnetArgs) (*GetSubnetResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {

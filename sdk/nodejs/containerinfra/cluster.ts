@@ -100,6 +100,8 @@ import * as utilities from "../utilities";
  * * `master_addresses` - IP addresses of the master node of the cluster.
  * * `node_addresses` - IP addresses of the node of the cluster.
  * * `stack_id` - UUID of the Orchestration service stack.
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/containerinfra_cluster_v1.html.markdown.
  */
 export class Cluster extends pulumi.CustomResource {
     /**

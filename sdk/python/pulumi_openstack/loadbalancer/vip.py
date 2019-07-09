@@ -124,6 +124,8 @@ class Vip(pulumi.CustomResource):
                new vip.
         :param pulumi.Input[str] tenant_id: The owner of the vip. Required if admin wants to
                create a vip member for another tenant. Changing this creates a new vip.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_vip_v1.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

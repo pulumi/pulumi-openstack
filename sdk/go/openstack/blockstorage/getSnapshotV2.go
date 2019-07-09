@@ -8,6 +8,8 @@ import (
 )
 
 // Use this data source to get information about an existing snapshot.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/blockstorage_snapshot_v2.html.markdown.
 func LookupSnapshotV2(ctx *pulumi.Context, args *GetSnapshotV2Args) (*GetSnapshotV2Result, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {

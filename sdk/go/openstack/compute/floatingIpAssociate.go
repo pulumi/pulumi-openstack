@@ -10,6 +10,8 @@ import (
 
 // Associate a floating IP to an instance. This can be used instead of the
 // `floating_ip` options in `openstack_compute_instance_v2`.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_floatingip_associate_v2.html.markdown.
 type FloatingIpAssociate struct {
 	s *pulumi.ResourceState
 }
@@ -96,10 +98,6 @@ func (r *FloatingIpAssociate) Region() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["region"])
 }
 
-// In cases where the OpenStack environment
-// does not automatically wait until the association has finished, set this
-// option to have Terraform poll the instance until the floating IP has been
-// associated. Defaults to false.
 func (r *FloatingIpAssociate) WaitUntilAssociated() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["waitUntilAssociated"])
 }
@@ -117,10 +115,6 @@ type FloatingIpAssociateState struct {
 	// create one. If omitted, the `region` argument of the provider is used.
 	// Changing this creates a new floatingip_associate.
 	Region interface{}
-	// In cases where the OpenStack environment
-	// does not automatically wait until the association has finished, set this
-	// option to have Terraform poll the instance until the floating IP has been
-	// associated. Defaults to false.
 	WaitUntilAssociated interface{}
 }
 
@@ -137,9 +131,5 @@ type FloatingIpAssociateArgs struct {
 	// create one. If omitted, the `region` argument of the provider is used.
 	// Changing this creates a new floatingip_associate.
 	Region interface{}
-	// In cases where the OpenStack environment
-	// does not automatically wait until the association has finished, set this
-	// option to have Terraform poll the instance until the floating IP has been
-	// associated. Defaults to false.
 	WaitUntilAssociated interface{}
 }

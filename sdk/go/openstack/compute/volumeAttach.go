@@ -10,6 +10,8 @@ import (
 
 // Attaches a Block Storage Volume to an Instance using the OpenStack
 // Compute (Nova) v2 API.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_volume_attach_v2.html.markdown.
 type VolumeAttach struct {
 	s *pulumi.ResourceState
 }
@@ -73,12 +75,9 @@ func (r *VolumeAttach) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
-// The device of the volume attachment (ex: `/dev/vdc`).
-// _NOTE_: Being able to specify a device is dependent upon the hypervisor in
-// use. There is a chance that the device specified in Terraform will not be
-// the same device the hypervisor chose. If this happens, Terraform will wish
-// to update the device upon subsequent applying which will cause the volume
-// to be detached and reattached indefinitely. Please use with caution.
+// See Argument Reference above. _NOTE_: The correctness of this
+// information is dependent upon the hypervisor in use. In some cases, this
+// should not be used as an authoritative piece of information.
 func (r *VolumeAttach) Device() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["device"])
 }
@@ -108,12 +107,9 @@ func (r *VolumeAttach) VolumeId() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering VolumeAttach resources.
 type VolumeAttachState struct {
-	// The device of the volume attachment (ex: `/dev/vdc`).
-	// _NOTE_: Being able to specify a device is dependent upon the hypervisor in
-	// use. There is a chance that the device specified in Terraform will not be
-	// the same device the hypervisor chose. If this happens, Terraform will wish
-	// to update the device upon subsequent applying which will cause the volume
-	// to be detached and reattached indefinitely. Please use with caution.
+	// See Argument Reference above. _NOTE_: The correctness of this
+	// information is dependent upon the hypervisor in use. In some cases, this
+	// should not be used as an authoritative piece of information.
 	Device interface{}
 	// The ID of the Instance to attach the Volume to.
 	InstanceId interface{}
@@ -130,12 +126,9 @@ type VolumeAttachState struct {
 
 // The set of arguments for constructing a VolumeAttach resource.
 type VolumeAttachArgs struct {
-	// The device of the volume attachment (ex: `/dev/vdc`).
-	// _NOTE_: Being able to specify a device is dependent upon the hypervisor in
-	// use. There is a chance that the device specified in Terraform will not be
-	// the same device the hypervisor chose. If this happens, Terraform will wish
-	// to update the device upon subsequent applying which will cause the volume
-	// to be detached and reattached indefinitely. Please use with caution.
+	// See Argument Reference above. _NOTE_: The correctness of this
+	// information is dependent upon the hypervisor in use. In some cases, this
+	// should not be used as an authoritative piece of information.
 	Device interface{}
 	// The ID of the Instance to attach the Volume to.
 	InstanceId interface{}

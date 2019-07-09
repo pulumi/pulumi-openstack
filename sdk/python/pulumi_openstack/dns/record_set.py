@@ -71,6 +71,8 @@ class RecordSet(pulumi.CustomResource):
                new record set.
         :param pulumi.Input[str] zone_id: The ID of the zone in which to create the record set.
                Changing this creates a new DNS  record set.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/dns_recordset_v2.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

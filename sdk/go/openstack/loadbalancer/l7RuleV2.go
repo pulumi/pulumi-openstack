@@ -9,6 +9,8 @@ import (
 )
 
 // Manages a V2 L7 Rule resource within OpenStack.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_l7rule_v2.html.markdown.
 type L7RuleV2 struct {
 	s *pulumi.ResourceState
 }

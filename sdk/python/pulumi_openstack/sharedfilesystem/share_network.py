@@ -88,6 +88,8 @@ class ShareNetwork(pulumi.CustomResource):
                share network.
         :param pulumi.Input[list] security_service_ids: The list of security service IDs to associate with
                the share network. The security service must be specified by ID and not name.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/sharedfilesystem_sharenetwork_v2.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

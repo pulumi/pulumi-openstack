@@ -29,12 +29,6 @@ class FloatingIpAssociate(pulumi.CustomResource):
     Changing this creates a new floatingip_associate.
     """
     wait_until_associated: pulumi.Output[bool]
-    """
-    In cases where the OpenStack environment
-    does not automatically wait until the association has finished, set this
-    option to have Terraform poll the instance until the floating IP has been
-    associated. Defaults to false.
-    """
     def __init__(__self__, resource_name, opts=None, fixed_ip=None, floating_ip=None, instance_id=None, region=None, wait_until_associated=None, __name__=None, __opts__=None):
         """
         Associate a floating IP to an instance. This can be used instead of the
@@ -49,10 +43,8 @@ class FloatingIpAssociate(pulumi.CustomResource):
                Keypairs are associated with accounts, but a Compute client is needed to
                create one. If omitted, the `region` argument of the provider is used.
                Changing this creates a new floatingip_associate.
-        :param pulumi.Input[bool] wait_until_associated: In cases where the OpenStack environment
-               does not automatically wait until the association has finished, set this
-               option to have Terraform poll the instance until the floating IP has been
-               associated. Defaults to false.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_floatingip_associate_v2.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

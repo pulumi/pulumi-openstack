@@ -21,6 +21,8 @@ import * as utilities from "../utilities";
  *     protocol: "tcp",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/fw_rule_v1.html.markdown.
  */
 export class Rule extends pulumi.CustomResource {
     /**

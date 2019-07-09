@@ -64,6 +64,8 @@ class TempUrl(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region the tempurl is located in.
         :param pulumi.Input[float] ttl: The TTL, in seconds, for the URL. For how long it should
                be valid.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/objectstorage_tempurl_v1.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

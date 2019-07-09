@@ -43,10 +43,6 @@ class MemberV1(pulumi.CustomResource):
     create a member for another tenant. Changing this creates a new member.
     """
     weight: pulumi.Output[float]
-    """
-    The load balancing weight of the member. This is currently unable
-    to be set through Terraform.
-    """
     def __init__(__self__, resource_name, opts=None, address=None, admin_state_up=None, pool_id=None, port=None, region=None, tenant_id=None, weight=None, __name__=None, __opts__=None):
         """
         Manages a V1 load balancer member resource within OpenStack.
@@ -68,8 +64,8 @@ class MemberV1(pulumi.CustomResource):
                LB member.
         :param pulumi.Input[str] tenant_id: The owner of the member. Required if admin wants to
                create a member for another tenant. Changing this creates a new member.
-        :param pulumi.Input[float] weight: The load balancing weight of the member. This is currently unable
-               to be set through Terraform.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_member_v1.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

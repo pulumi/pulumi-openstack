@@ -18,6 +18,8 @@ import * as utilities from "../utilities";
  *     name: "port",
  * }));
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_port_ids_v2.html.markdown.
  */
 export function getPortIds(args?: GetPortIdsArgs, opts?: pulumi.InvokeOptions): Promise<GetPortIdsResult> {
     args = args || {};

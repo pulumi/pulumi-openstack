@@ -20,6 +20,8 @@ import * as utilities from "../utilities";
  *     description: "A project",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/identity_project_v3.html.markdown.
  */
 export class Project extends pulumi.CustomResource {
     /**

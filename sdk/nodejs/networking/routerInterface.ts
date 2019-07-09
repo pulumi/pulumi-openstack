@@ -29,6 +29,8 @@ import * as utilities from "../utilities";
  *     subnetId: subnet1.id,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_router_interface_v2.html.markdown.
  */
 export class RouterInterface extends pulumi.CustomResource {
     /**

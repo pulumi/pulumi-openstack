@@ -8,6 +8,8 @@ import (
 )
 
 // Manages a V2 VM instance resource within OpenStack.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_instance_v2.html.markdown.
 type Instance struct {
 	s *pulumi.ResourceState
 }
@@ -137,8 +139,6 @@ func (r *Instance) AdminPass() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["adminPass"])
 }
 
-// Contains all instance metadata, even metadata not set
-// by Terraform.
 func (r *Instance) AllMetadata() *pulumi.MapOutput {
 	return (*pulumi.MapOutput)(r.s.State["allMetadata"])
 }
@@ -288,8 +288,6 @@ type InstanceState struct {
 	// The administrative password to assign to the server.
 	// Changing this changes the root password on the existing server.
 	AdminPass interface{}
-	// Contains all instance metadata, even metadata not set
-	// by Terraform.
 	AllMetadata interface{}
 	// The availability zone in which to create
 	// the server. Changing this creates a new server.

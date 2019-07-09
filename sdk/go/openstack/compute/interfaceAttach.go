@@ -10,6 +10,8 @@ import (
 
 // Attaches a Network Interface (a Port) to an Instance using the OpenStack
 // Compute (Nova) v2 API.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_interface_attach_v2.html.markdown.
 type InterfaceAttach struct {
 	s *pulumi.ResourceState
 }

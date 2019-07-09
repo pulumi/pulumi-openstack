@@ -17,6 +17,8 @@ import * as utilities from "../utilities";
  *     name: "admin",
  * }));
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_role_v3.html.markdown.
  */
 export function getRole(args: GetRoleArgs, opts?: pulumi.InvokeOptions): Promise<GetRoleResult> {
     return pulumi.runtime.invoke("openstack:identity/getRole:getRole", {

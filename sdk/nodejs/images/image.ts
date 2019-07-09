@@ -38,6 +38,8 @@ import * as utilities from "../utilities";
  * 
  * In addition, the `direct_url` property is also automatically reconciled if the
  * Image Service set it.
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/images_image_v2.html.markdown.
  */
 export class Image extends pulumi.CustomResource {
     /**
@@ -90,11 +92,6 @@ export class Image extends pulumi.CustomResource {
      * or the path to retrieve it.
      */
     public /*out*/ readonly file!: pulumi.Output<string>;
-    /**
-     * This is the directory where the images will
-     * be downloaded. Images will be stored with a filename corresponding to
-     * the url's md5 hash. Defaults to "$HOME/.terraform/image_cache"
-     */
     public readonly imageCachePath!: pulumi.Output<string | undefined>;
     /**
      * This is the url of the raw image that will
@@ -291,11 +288,6 @@ export interface ImageState {
      * or the path to retrieve it.
      */
     readonly file?: pulumi.Input<string>;
-    /**
-     * This is the directory where the images will
-     * be downloaded. Images will be stored with a filename corresponding to
-     * the url's md5 hash. Defaults to "$HOME/.terraform/image_cache"
-     */
     readonly imageCachePath?: pulumi.Input<string>;
     /**
      * This is the url of the raw image that will
@@ -406,11 +398,6 @@ export interface ImageArgs {
      * "ami", "ari", "aki", "vhd", "vmdk", "raw", "qcow2", "vdi", "iso".
      */
     readonly diskFormat: pulumi.Input<string>;
-    /**
-     * This is the directory where the images will
-     * be downloaded. Images will be stored with a filename corresponding to
-     * the url's md5 hash. Defaults to "$HOME/.terraform/image_cache"
-     */
     readonly imageCachePath?: pulumi.Input<string>;
     /**
      * This is the url of the raw image that will

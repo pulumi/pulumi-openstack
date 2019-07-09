@@ -44,6 +44,8 @@ class Configuration(pulumi.CustomResource):
         :param pulumi.Input[str] name: A unique name for the resource.
         :param pulumi.Input[str] region: The region in which to create the db instance. Changing this
                creates a new instance.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/db_configuration_v1.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

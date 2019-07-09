@@ -21,6 +21,8 @@ import * as utilities from "../utilities";
  *     type: "PING",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_monitor_v2.html.markdown.
  */
 export class Monitor extends pulumi.CustomResource {
     /**

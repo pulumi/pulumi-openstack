@@ -9,6 +9,8 @@ import (
 )
 
 // Manages a V1 load balancer monitor resource within OpenStack.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_monitor_v1.html.markdown.
 type MonitorV1 struct {
 	s *pulumi.ResourceState
 }

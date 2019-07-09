@@ -11,12 +11,9 @@ from .. import utilities, tables
 class VolumeAttach(pulumi.CustomResource):
     device: pulumi.Output[str]
     """
-    The device of the volume attachment (ex: `/dev/vdc`).
-    _NOTE_: Being able to specify a device is dependent upon the hypervisor in
-    use. There is a chance that the device specified in Terraform will not be
-    the same device the hypervisor chose. If this happens, Terraform will wish
-    to update the device upon subsequent applying which will cause the volume
-    to be detached and reattached indefinitely. Please use with caution.
+    See Argument Reference above. _NOTE_: The correctness of this
+    information is dependent upon the hypervisor in use. In some cases, this
+    should not be used as an authoritative piece of information.
     """
     instance_id: pulumi.Output[str]
     """
@@ -44,12 +41,9 @@ class VolumeAttach(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] device: The device of the volume attachment (ex: `/dev/vdc`).
-               _NOTE_: Being able to specify a device is dependent upon the hypervisor in
-               use. There is a chance that the device specified in Terraform will not be
-               the same device the hypervisor chose. If this happens, Terraform will wish
-               to update the device upon subsequent applying which will cause the volume
-               to be detached and reattached indefinitely. Please use with caution.
+        :param pulumi.Input[str] device: See Argument Reference above. _NOTE_: The correctness of this
+               information is dependent upon the hypervisor in use. In some cases, this
+               should not be used as an authoritative piece of information.
         :param pulumi.Input[str] instance_id: The ID of the Instance to attach the Volume to.
         :param pulumi.Input[bool] multiattach: Enable attachment of multiattach-capable volumes.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Compute client.
@@ -57,6 +51,8 @@ class VolumeAttach(pulumi.CustomResource):
                `region` argument of the provider is used. Changing this creates a
                new volume attachment.
         :param pulumi.Input[str] volume_id: The ID of the Volume to attach to an Instance.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_volume_attach_v2.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

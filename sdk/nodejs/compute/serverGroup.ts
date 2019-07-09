@@ -35,6 +35,8 @@ import * as utilities from "../utilities";
  *     hosted on different compute nodes if possible, but if not possible they
  *     still will be scheduled instead of failure. To use this policy your
  *     OpenStack environment should support Compute service API 2.15 or above.
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_servergroup_v2.html.markdown.
  */
 export class ServerGroup extends pulumi.CustomResource {
     /**

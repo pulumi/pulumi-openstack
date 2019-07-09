@@ -123,6 +123,8 @@ class Share(pulumi.CustomResource):
                than the allowed GB quota. Changing this resizes the existing share.
         :param pulumi.Input[str] snapshot_id: The UUID of the share's base snapshot. Changing this creates
                a new share.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/sharedfilesystem_share_v2.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

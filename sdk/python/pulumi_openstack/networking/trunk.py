@@ -82,6 +82,8 @@ class Trunk(pulumi.CustomResource):
         :param pulumi.Input[list] tags: A set of string tags for the port.
         :param pulumi.Input[str] tenant_id: The owner of the Trunk. Required if admin wants
                to create a trunk on behalf of another tenant. Changing this creates a new trunk.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_trunk_v2.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

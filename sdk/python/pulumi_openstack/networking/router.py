@@ -138,6 +138,8 @@ class Router(pulumi.CustomResource):
         :param pulumi.Input[dict] value_specs: Map of additional driver-specific options.
         :param pulumi.Input[dict] vendor_options: Map of additional vendor-specific options.
                Supported options are described below.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_router_v2.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

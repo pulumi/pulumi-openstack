@@ -93,6 +93,8 @@ class VolumeV1(pulumi.CustomResource):
                Changing this creates a new volume.
         :param pulumi.Input[str] volume_type: The type of volume to create.
                Changing this creates a new volume.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/blockstorage_volume_v1.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

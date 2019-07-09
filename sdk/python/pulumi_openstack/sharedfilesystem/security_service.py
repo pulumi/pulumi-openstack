@@ -94,6 +94,8 @@ class SecurityService(pulumi.CustomResource):
                kerberos or ldap.  Changing this updates the existing security service.
         :param pulumi.Input[str] user: The security service user or group name that is used by the
                tenant.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/sharedfilesystem_securityservice_v2.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

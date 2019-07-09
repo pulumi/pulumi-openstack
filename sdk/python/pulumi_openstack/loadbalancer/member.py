@@ -84,6 +84,8 @@ class Member(pulumi.CustomResource):
                portion of traffic that this member should receive from the pool. For
                example, a member with a weight of 10 receives five times as much traffic
                as a member with a weight of 2.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_member_v2.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

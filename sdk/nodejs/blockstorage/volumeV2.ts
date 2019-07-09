@@ -19,6 +19,8 @@ import * as utilities from "../utilities";
  *     size: 3,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/blockstorage_volume_v2.html.markdown.
  */
 export class VolumeV2 extends pulumi.CustomResource {
     /**

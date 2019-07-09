@@ -96,6 +96,8 @@ class GetShareNetworkResult:
 async def get_share_network(description=None,ip_version=None,name=None,network_type=None,neutron_net_id=None,neutron_subnet_id=None,region=None,security_service_id=None,segmentation_id=None,opts=None):
     """
     Use this data source to get the ID of an available Shared File System share network.
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/sharedfilesystem_sharenetwork_v2.html.markdown.
     """
     __args__ = dict()
 

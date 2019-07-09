@@ -42,6 +42,8 @@ import * as utilities from "../utilities";
  *     redirectPoolId: pool1.id,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_l7policy_v2.html.markdown.
  */
 export class L7PolicyV2 extends pulumi.CustomResource {
     /**

@@ -30,6 +30,8 @@ import * as utilities from "../utilities";
  *     tenantId: project1.id,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_flavor_access_v2.html.markdown.
  */
 export class FlavorAccess extends pulumi.CustomResource {
     /**

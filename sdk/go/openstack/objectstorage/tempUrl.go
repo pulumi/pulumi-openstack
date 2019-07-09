@@ -15,6 +15,8 @@ import (
 // will remain in place. If you wish to automatically regenerate a URL, set
 // the `regenerate` argument to `true`. This will create a new resource with
 // a new ID and URL.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/objectstorage_tempurl_v1.html.markdown.
 type TempUrl struct {
 	s *pulumi.ResourceState
 }

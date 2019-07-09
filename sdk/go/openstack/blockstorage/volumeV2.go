@@ -9,6 +9,8 @@ import (
 )
 
 // Manages a V2 volume resource within OpenStack.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/blockstorage_volume_v2.html.markdown.
 type VolumeV2 struct {
 	s *pulumi.ResourceState
 }

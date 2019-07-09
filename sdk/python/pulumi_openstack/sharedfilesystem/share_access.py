@@ -40,11 +40,7 @@ class ShareAccess(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, access_level=None, access_to=None, access_type=None, region=None, share_id=None, __name__=None, __opts__=None):
         """
-        Use this resource to control the share access lists.
-        
-        > **Important Security Notice** The access key retrieved by this resource will
-        be stored *unencrypted* in your Terraform state file. If you use this resource
-        in production, please make sure your state file is sufficiently protected.
+        Create a ShareAccess resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -58,6 +54,8 @@ class ShareAccess(pulumi.CustomResource):
                A Shared File System client is needed to create a share access. Changing this
                creates a new share access.
         :param pulumi.Input[str] share_id: The UUID of the share to which you are granted access.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/sharedfilesystem_share_access_v2.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

@@ -23,6 +23,8 @@ import * as utilities from "../utilities";
  *     protocol: "HTTP",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_pool_v2.html.markdown.
  */
 export class Pool extends pulumi.CustomResource {
     /**

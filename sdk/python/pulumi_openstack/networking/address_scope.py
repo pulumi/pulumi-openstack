@@ -58,6 +58,8 @@ class AddressScope(pulumi.CustomResource):
         :param pulumi.Input[bool] shared: Indicates whether this address-scope is shared across
                all projects. Changing this updates the shared status of the existing
                address-scope.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_addressscope_v2.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

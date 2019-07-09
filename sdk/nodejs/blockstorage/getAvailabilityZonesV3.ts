@@ -15,6 +15,8 @@ import * as utilities from "../utilities";
  * 
  * const zones = pulumi.output(openstack.blockstorage.getAvailabilityZonesV3({}));
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/blockstorage_availability_zones_v3.html.markdown.
  */
 export function getAvailabilityZonesV3(args?: GetAvailabilityZonesV3Args, opts?: pulumi.InvokeOptions): Promise<GetAvailabilityZonesV3Result> {
     args = args || {};

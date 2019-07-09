@@ -12,8 +12,7 @@ require (
 	github.com/miekg/dns v1.0.14 // indirect
 	github.com/pkg/errors v0.8.1
 	github.com/pulumi/pulumi v0.17.22-0.20190702185104-ebceea93a5da
-	github.com/pulumi/pulumi-terraform v0.18.4-0.20190703150544-a9a9ca8157ca
-	github.com/stretchr/testify v1.3.1-0.20190311161405-34c6fa2dc709
+	github.com/pulumi/pulumi-terraform v0.18.4-0.20190709052202-629f7c54269d
 	github.com/terraform-providers/terraform-provider-openstack v1.19.0
 )
 

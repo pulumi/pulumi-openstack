@@ -40,6 +40,8 @@ import * as utilities from "../utilities";
  * The `next_hop` IP address must be directly reachable from the router at the ``openstack_networking_router_route_v2``
  * resource creation time.  You can ensure that by explicitly specifying a dependency on the ``openstack_networking_router_interface_v2``
  * resource that connects the next hop to the router, as in the example above.
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_router_route_v2.html.markdown.
  */
 export class RouterRoute extends pulumi.CustomResource {
     /**

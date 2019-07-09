@@ -65,6 +65,8 @@ import * as utilities from "../utilities";
  *     securityGroups: [openstack_compute_secgroup_v2_secgroup_1.name],
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_secgroup_v2.html.markdown.
  */
 export class SecGroup extends pulumi.CustomResource {
     /**

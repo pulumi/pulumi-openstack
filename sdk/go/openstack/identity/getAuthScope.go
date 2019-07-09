@@ -10,6 +10,8 @@ import (
 // Use this data source to get authentication information about the current
 // auth scope in use. This can be used as self-discovery or introspection of
 // the username or project name currently in use.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_auth_scope_v3.html.markdown.
 func LookupAuthScope(ctx *pulumi.Context, args *GetAuthScopeArgs) (*GetAuthScopeResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {

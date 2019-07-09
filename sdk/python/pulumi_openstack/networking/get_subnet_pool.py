@@ -126,6 +126,8 @@ class GetSubnetPoolResult:
 async def get_subnet_pool(address_scope_id=None,default_prefixlen=None,default_quota=None,description=None,ip_version=None,is_default=None,max_prefixlen=None,min_prefixlen=None,name=None,project_id=None,region=None,shared=None,tags=None,opts=None):
     """
     Use this data source to get the ID of an available OpenStack subnetpool.
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_subnetpool_v2.html.markdown.
     """
     __args__ = dict()
 

@@ -59,6 +59,8 @@ import * as utilities from "../utilities";
  *     source: "./default.json",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/objectstorage_object_v1.html.markdown.
  */
 export class ContainerObject extends pulumi.CustomResource {
     /**

@@ -19,6 +19,8 @@ import * as utilities from "../utilities";
  *     protocolPort: 8080,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_listener_v2.html.markdown.
  */
 export class Listener extends pulumi.CustomResource {
     /**

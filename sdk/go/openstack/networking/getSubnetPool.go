@@ -8,6 +8,8 @@ import (
 )
 
 // Use this data source to get the ID of an available OpenStack subnetpool.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_subnetpool_v2.html.markdown.
 func LookupSubnetPool(ctx *pulumi.Context, args *GetSubnetPoolArgs) (*GetSubnetPoolResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {

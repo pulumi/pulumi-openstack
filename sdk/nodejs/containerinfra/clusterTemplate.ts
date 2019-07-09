@@ -193,6 +193,8 @@ import * as utilities from "../utilities";
  * * `server_type` - See Argument Reference above.
  * * `tls_disabled` - See Argument Reference above.
  * * `volume_driver` - See Argument Reference above.
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/containerinfra_clustertemplate_v1.html.markdown.
  */
 export class ClusterTemplate extends pulumi.CustomResource {
     /**

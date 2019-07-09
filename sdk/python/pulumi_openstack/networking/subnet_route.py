@@ -47,6 +47,8 @@ class SubnetRoute(pulumi.CustomResource):
                routing entry.
         :param pulumi.Input[str] subnet_id: ID of the subnet this routing entry belongs to. Changing
                this creates a new routing entry.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_subnet_route_v2.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

@@ -44,6 +44,8 @@ class RoleAssignment(pulumi.CustomResource):
         :param pulumi.Input[str] project_id: The project to assign the role in.
         :param pulumi.Input[str] role_id: The role to assign.
         :param pulumi.Input[str] user_id: The user to assign the role to.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/identity_role_assignment_v3.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

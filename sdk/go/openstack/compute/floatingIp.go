@@ -15,6 +15,8 @@ import (
 // been deprecated. Unless you are using an older OpenStack environment, it is
 // recommended to use the `openstack_networking_floatingip_v2`
 // resource instead, which uses the OpenStack Networking API.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_floatingip_v2.html.markdown.
 type FloatingIp struct {
 	s *pulumi.ResourceState
 }

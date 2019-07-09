@@ -15,6 +15,8 @@ import (
 // recommended to use the `openstack_networking_secgroup_v2`
 // and `openstack_networking_secgroup_rule_v2`
 // resources instead, which uses the OpenStack Networking API.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_secgroup_v2.html.markdown.
 type SecGroup struct {
 	s *pulumi.ResourceState
 }

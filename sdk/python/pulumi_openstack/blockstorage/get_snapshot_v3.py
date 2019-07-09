@@ -68,6 +68,8 @@ class GetSnapshotV3Result:
 async def get_snapshot_v3(most_recent=None,name=None,region=None,status=None,volume_id=None,opts=None):
     """
     Use this data source to get information about an existing snapshot.
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/blockstorage_snapshot_v3.html.markdown.
     """
     __args__ = dict()
 

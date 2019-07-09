@@ -100,6 +100,8 @@ class IkePolicy(pulumi.CustomResource):
         :param pulumi.Input[str] tenant_id: The owner of the policy. Required if admin wants to
                create a service for another policy. Changing this creates a new policy.
         :param pulumi.Input[dict] value_specs: Map of additional options.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/vpnaas_ike_policy_v2.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

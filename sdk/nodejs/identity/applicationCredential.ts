@@ -53,6 +53,8 @@ import * as utilities from "../utilities";
  * 
  * export const applicationCredentialSecret = unrestricted.secret;
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/identity_application_credential_v3.html.markdown.
  */
 export class ApplicationCredential extends pulumi.CustomResource {
     /**

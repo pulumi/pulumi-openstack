@@ -17,6 +17,8 @@ import * as utilities from "../utilities";
  *     name: "router_1",
  * }));
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_router_v2.html.markdown.
  */
 export function getRouter(args?: GetRouterArgs, opts?: pulumi.InvokeOptions): Promise<GetRouterResult> {
     args = args || {};

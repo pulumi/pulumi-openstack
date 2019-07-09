@@ -41,6 +41,8 @@ class FlavorAccess(pulumi.CustomResource):
                Changing this creates a new flavor access.
         :param pulumi.Input[str] tenant_id: The UUID of tenant which is allowed to use the flavor.
                Changing this creates a new flavor access.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_flavor_access_v2.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

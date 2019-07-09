@@ -71,6 +71,8 @@ class GetPolicyResult:
 async def get_policy(name=None,policy_id=None,region=None,tenant_id=None,opts=None):
     """
     Use this data source to get firewall policy information of an available OpenStack firewall policy.
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/fw_policy_v1.html.markdown.
     """
     __args__ = dict()
 

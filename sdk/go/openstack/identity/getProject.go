@@ -8,6 +8,8 @@ import (
 )
 
 // Use this data source to get the ID of an OpenStack project.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_project_v3.html.markdown.
 func LookupProject(ctx *pulumi.Context, args *GetProjectArgs) (*GetProjectResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {

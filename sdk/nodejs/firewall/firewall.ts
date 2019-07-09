@@ -37,6 +37,8 @@ import * as utilities from "../utilities";
  *     policyId: policy1.id,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/fw_firewall_v1.html.markdown.
  */
 export class Firewall extends pulumi.CustomResource {
     /**

@@ -99,6 +99,8 @@ class LoadBalancer(pulumi.CustomResource):
                Loadbalancer's address. A tenant can only create Loadbalancers on networks
                authorized by policy (e.g. networks that belong to them or networks that
                are shared).  Changing this creates a new loadbalancer.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_loadbalancer_v2.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

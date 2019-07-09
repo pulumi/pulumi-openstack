@@ -33,6 +33,8 @@ import * as utilities from "../utilities";
  *     size: 1,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/sharedfilesystem_share_v2.html.markdown.
  */
 export class Share extends pulumi.CustomResource {
     /**

@@ -47,6 +47,8 @@ class RouterInterface(pulumi.CustomResource):
                this creates a new router interface.
         :param pulumi.Input[str] subnet_id: ID of the subnet this interface connects to. Changing
                this creates a new router interface.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_router_interface_v2.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

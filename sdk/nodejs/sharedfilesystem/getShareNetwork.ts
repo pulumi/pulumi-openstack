@@ -17,6 +17,8 @@ import * as utilities from "../utilities";
  *     name: "sharenetwork_1",
  * }));
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/sharedfilesystem_sharenetwork_v2.html.markdown.
  */
 export function getShareNetwork(args?: GetShareNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetShareNetworkResult> {
     args = args || {};

@@ -67,6 +67,8 @@ class ServerGroup(pulumi.CustomResource):
                If omitted, the `region` argument of the provider is used. Changing
                this creates a new server group.
         :param pulumi.Input[dict] value_specs: Map of additional options.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_servergroup_v2.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

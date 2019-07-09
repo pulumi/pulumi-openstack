@@ -119,6 +119,8 @@ import * as utilities from "../utilities";
  * 
  * It is recommended to use `depends_on` for the attach resources
  * to enforce the volume attachments to happen one at a time.
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_volume_attach_v2.html.markdown.
  */
 export class VolumeAttach extends pulumi.CustomResource {
     /**
@@ -148,12 +150,9 @@ export class VolumeAttach extends pulumi.CustomResource {
     }
 
     /**
-     * The device of the volume attachment (ex: `/dev/vdc`).
-     * _NOTE_: Being able to specify a device is dependent upon the hypervisor in
-     * use. There is a chance that the device specified in Terraform will not be
-     * the same device the hypervisor chose. If this happens, Terraform will wish
-     * to update the device upon subsequent applying which will cause the volume
-     * to be detached and reattached indefinitely. Please use with caution.
+     * See Argument Reference above. _NOTE_: The correctness of this
+     * information is dependent upon the hypervisor in use. In some cases, this
+     * should not be used as an authoritative piece of information.
      */
     public readonly device!: pulumi.Output<string>;
     /**
@@ -216,12 +215,9 @@ export class VolumeAttach extends pulumi.CustomResource {
  */
 export interface VolumeAttachState {
     /**
-     * The device of the volume attachment (ex: `/dev/vdc`).
-     * _NOTE_: Being able to specify a device is dependent upon the hypervisor in
-     * use. There is a chance that the device specified in Terraform will not be
-     * the same device the hypervisor chose. If this happens, Terraform will wish
-     * to update the device upon subsequent applying which will cause the volume
-     * to be detached and reattached indefinitely. Please use with caution.
+     * See Argument Reference above. _NOTE_: The correctness of this
+     * information is dependent upon the hypervisor in use. In some cases, this
+     * should not be used as an authoritative piece of information.
      */
     readonly device?: pulumi.Input<string>;
     /**
@@ -250,12 +246,9 @@ export interface VolumeAttachState {
  */
 export interface VolumeAttachArgs {
     /**
-     * The device of the volume attachment (ex: `/dev/vdc`).
-     * _NOTE_: Being able to specify a device is dependent upon the hypervisor in
-     * use. There is a chance that the device specified in Terraform will not be
-     * the same device the hypervisor chose. If this happens, Terraform will wish
-     * to update the device upon subsequent applying which will cause the volume
-     * to be detached and reattached indefinitely. Please use with caution.
+     * See Argument Reference above. _NOTE_: The correctness of this
+     * information is dependent upon the hypervisor in use. In some cases, this
+     * should not be used as an authoritative piece of information.
      */
     readonly device?: pulumi.Input<string>;
     /**

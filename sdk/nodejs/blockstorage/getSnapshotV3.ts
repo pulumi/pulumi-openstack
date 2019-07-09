@@ -18,6 +18,8 @@ import * as utilities from "../utilities";
  *     name: "snapshot_1",
  * }));
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/blockstorage_snapshot_v3.html.markdown.
  */
 export function getSnapshotV3(args?: GetSnapshotV3Args, opts?: pulumi.InvokeOptions): Promise<GetSnapshotV3Result> {
     args = args || {};

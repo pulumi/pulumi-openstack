@@ -43,6 +43,8 @@ class FloatingIpAssociate(pulumi.CustomResource):
                another networking resource, such as a load balancer. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
                floating IP (which may or may not have a different address).
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_floatingip_associate_v2.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

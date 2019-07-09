@@ -105,6 +105,8 @@ import * as utilities from "../utilities";
  * ## Notes
  * 
  * The `member` block is deprecated in favor of the `openstack_lb_member_v1` resource.
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_pool_v1.html.markdown.
  */
 export class PoolV1 extends pulumi.CustomResource {
     /**

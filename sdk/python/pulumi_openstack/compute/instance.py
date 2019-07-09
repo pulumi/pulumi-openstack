@@ -23,10 +23,6 @@ class Instance(pulumi.CustomResource):
     Changing this changes the root password on the existing server.
     """
     all_metadata: pulumi.Output[dict]
-    """
-    Contains all instance metadata, even metadata not set
-    by Terraform.
-    """
     availability_zone: pulumi.Output[str]
     """
     The availability zone in which to create
@@ -209,6 +205,8 @@ class Instance(pulumi.CustomResource):
                Changing this creates a new server.
         :param pulumi.Input[dict] vendor_options: Map of additional vendor-specific options.
                Supported options are described below.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_instance_v2.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

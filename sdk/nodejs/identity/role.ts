@@ -18,6 +18,8 @@ import * as utilities from "../utilities";
  * 
  * const role1 = new openstack.identity.Role("role_1", {});
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/identity_role_v3.html.markdown.
  */
 export class Role extends pulumi.CustomResource {
     /**
