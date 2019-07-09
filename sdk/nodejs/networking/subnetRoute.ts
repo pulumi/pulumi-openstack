@@ -30,6 +30,8 @@ import * as utilities from "../utilities";
  *     subnetId: subnet1.id,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_subnet_route_v2.html.markdown.
  */
 export class SubnetRoute extends pulumi.CustomResource {
     /**

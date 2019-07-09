@@ -42,6 +42,8 @@ import * as utilities from "../utilities";
  *     subnetpoolId: subnetpool1.id,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_subnetpool_v2.html.markdown.
  */
 export class SubnetPool extends pulumi.CustomResource {
     /**

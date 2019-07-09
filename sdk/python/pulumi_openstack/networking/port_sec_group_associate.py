@@ -38,14 +38,7 @@ class PortSecGroupAssociate(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, enforce=None, port_id=None, region=None, security_group_ids=None, __name__=None, __opts__=None):
         """
-        Manages a V2 port's security groups within OpenStack. Useful, when the port was
-        created not by Terraform (e.g. Manila or LBaaS). It should not be used, when the
-        port was created directly within Terraform.
-        
-        When the resource is deleted, Terraform doesn't delete the port, but unsets the
-        list of user defined security group IDs.  However, if `enforce` is set to `true`
-        and the resource is deleted, Terraform will remove all assigned security group
-        IDs.
+        Create a PortSecGroupAssociate resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -59,6 +52,8 @@ class PortSecGroupAssociate(pulumi.CustomResource):
         :param pulumi.Input[list] security_group_ids: A list of security group IDs to apply to
                the port. The security groups must be specified by ID and not name (as
                opposed to how they are configured with the Compute Instance).
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_port_secgroup_associate_v2.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

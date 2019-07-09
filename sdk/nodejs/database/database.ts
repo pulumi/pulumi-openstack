@@ -19,6 +19,8 @@ import * as utilities from "../utilities";
  *     instanceId: openstack_db_instance_v1_basic.id,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/db_database_v1.html.markdown.
  */
 export class Database extends pulumi.CustomResource {
     /**

@@ -88,6 +88,8 @@ class L7RuleV2(pulumi.CustomResource):
                HOST\_NAME or PATH.
         :param pulumi.Input[str] value: The value to use for the comparison. For example, the file type to
                compare.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_l7rule_v2.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

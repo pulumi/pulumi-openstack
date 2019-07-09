@@ -57,6 +57,8 @@ class SecGroup(pulumi.CustomResource):
                rule object structure is documented below. Changing this updates the
                security group rules. As shown in the example above, multiple rule blocks
                may be used.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_secgroup_v2.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

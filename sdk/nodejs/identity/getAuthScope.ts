@@ -19,6 +19,8 @@ import * as utilities from "../utilities";
  *     name: "my_scope",
  * }));
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_auth_scope_v3.html.markdown.
  */
 export function getAuthScope(args: GetAuthScopeArgs, opts?: pulumi.InvokeOptions): Promise<GetAuthScopeResult> {
     return pulumi.runtime.invoke("openstack:identity/getAuthScope:getAuthScope", {

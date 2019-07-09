@@ -8,14 +8,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Manages a V2 port's security groups within OpenStack. Useful, when the port was
-// created not by Terraform (e.g. Manila or LBaaS). It should not be used, when the
-// port was created directly within Terraform.
-// 
-// When the resource is deleted, Terraform doesn't delete the port, but unsets the
-// list of user defined security group IDs.  However, if `enforce` is set to `true`
-// and the resource is deleted, Terraform will remove all assigned security group
-// IDs.
 type PortSecGroupAssociate struct {
 	s *pulumi.ResourceState
 }

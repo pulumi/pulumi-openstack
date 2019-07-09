@@ -8,11 +8,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Use this resource to control the share access lists.
-// 
-// > **Important Security Notice** The access key retrieved by this resource will
-// be stored *unencrypted* in your Terraform state file. If you use this resource
-// in production, please make sure your state file is sufficiently protected.
 type ShareAccess struct {
 	s *pulumi.ResourceState
 }

@@ -19,6 +19,8 @@ import * as utilities from "../utilities";
  *     port: 80,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_member_v1.html.markdown.
  */
 export class MemberV1 extends pulumi.CustomResource {
     /**
@@ -80,10 +82,6 @@ export class MemberV1 extends pulumi.CustomResource {
      * create a member for another tenant. Changing this creates a new member.
      */
     public readonly tenantId!: pulumi.Output<string | undefined>;
-    /**
-     * The load balancing weight of the member. This is currently unable
-     * to be set through Terraform.
-     */
     public readonly weight!: pulumi.Output<number>;
 
     /**
@@ -165,10 +163,6 @@ export interface MemberV1State {
      * create a member for another tenant. Changing this creates a new member.
      */
     readonly tenantId?: pulumi.Input<string>;
-    /**
-     * The load balancing weight of the member. This is currently unable
-     * to be set through Terraform.
-     */
     readonly weight?: pulumi.Input<number>;
 }
 
@@ -209,9 +203,5 @@ export interface MemberV1Args {
      * create a member for another tenant. Changing this creates a new member.
      */
     readonly tenantId?: pulumi.Input<string>;
-    /**
-     * The load balancing weight of the member. This is currently unable
-     * to be set through Terraform.
-     */
     readonly weight?: pulumi.Input<number>;
 }

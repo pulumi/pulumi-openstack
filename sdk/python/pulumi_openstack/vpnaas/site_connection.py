@@ -150,6 +150,8 @@ class SiteConnection(pulumi.CustomResource):
                create a connection for another project. Changing this creates a new connection.
         :param pulumi.Input[dict] value_specs: Map of additional options.
         :param pulumi.Input[str] vpnservice_id: The ID of the VPN service. Changing this creates a new connection.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/vpnaas_site_connection_v2.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

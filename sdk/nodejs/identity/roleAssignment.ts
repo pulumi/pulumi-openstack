@@ -27,6 +27,8 @@ import * as utilities from "../utilities";
  *     userId: user1.id,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/identity_role_assignment_v3.html.markdown.
  */
 export class RoleAssignment extends pulumi.CustomResource {
     /**

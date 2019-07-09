@@ -23,6 +23,8 @@ import * as utilities from "../utilities";
  *     portId: port1.id,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_floatingip_associate_v2.html.markdown.
  */
 export class FloatingIpAssociate extends pulumi.CustomResource {
     /**

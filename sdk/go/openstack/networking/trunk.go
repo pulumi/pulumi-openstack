@@ -9,6 +9,8 @@ import (
 )
 
 // Manages a networking V2 trunk resource within OpenStack.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_trunk_v2.html.markdown.
 type Trunk struct {
 	s *pulumi.ResourceState
 }

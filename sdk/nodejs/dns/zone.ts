@@ -22,6 +22,8 @@ import * as utilities from "../utilities";
  *     type: "PRIMARY",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/dns_zone_v2.html.markdown.
  */
 export class Zone extends pulumi.CustomResource {
     /**

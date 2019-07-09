@@ -8,6 +8,8 @@ import (
 )
 
 // Use this data source to get the ID of an available OpenStack network.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_network_v2.html.markdown.
 func LookupNetwork(ctx *pulumi.Context, args *GetNetworkArgs) (*GetNetworkResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {

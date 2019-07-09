@@ -20,6 +20,8 @@ import * as utilities from "../utilities";
  *     subnetId: "12345",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_vip_v1.html.markdown.
  */
 export class Vip extends pulumi.CustomResource {
     /**

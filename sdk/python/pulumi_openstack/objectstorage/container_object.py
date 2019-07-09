@@ -161,6 +161,8 @@ class ContainerObject(pulumi.CustomResource):
                creates a new container.
         :param pulumi.Input[str] source: A string representing the local path of a file which will be used
                as the object's content. Conflicts with `source` and `copy_from`.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/objectstorage_object_v1.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

@@ -27,6 +27,8 @@ import * as utilities from "../utilities";
  *     description: "description",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/db_configuration_v1.html.markdown.
  */
 export class Configuration extends pulumi.CustomResource {
     /**

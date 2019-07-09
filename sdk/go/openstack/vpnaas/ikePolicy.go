@@ -8,6 +8,8 @@ import (
 )
 
 // Manages a V2 Neutron IKE policy resource within OpenStack.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/vpnaas_ike_policy_v2.html.markdown.
 type IkePolicy struct {
 	s *pulumi.ResourceState
 }

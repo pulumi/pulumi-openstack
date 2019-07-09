@@ -16,6 +16,8 @@ import * as utilities from "../utilities";
  * 
  * const zones = pulumi.output(openstack.sharedfilesystem.getAvailbilityZones({}));
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/sharedfilesystem_availability_zones_v2.html.markdown.
  */
 export function getAvailbilityZones(args?: GetAvailbilityZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetAvailbilityZonesResult> {
     args = args || {};

@@ -29,6 +29,8 @@ import * as utilities from "../utilities";
  *     zoneId: exampleZone.id,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/dns_recordset_v2.html.markdown.
  */
 export class RecordSet extends pulumi.CustomResource {
     /**

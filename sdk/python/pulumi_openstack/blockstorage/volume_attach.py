@@ -117,6 +117,8 @@ class VolumeAttach(pulumi.CustomResource):
         :param pulumi.Input[str] wwnn: A wwnn name. Used for Fibre Channel connections.
         :param pulumi.Input[list] wwpns: An array of wwpn strings. Used for Fibre Channel
                connections.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/blockstorage_volume_attach_v3.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

@@ -21,6 +21,8 @@ import * as utilities from "../utilities";
  *     type: "cidr",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/vpnaas_endpoint_group_v2.html.markdown.
  */
 export class EndpointGroup extends pulumi.CustomResource {
     /**

@@ -9,6 +9,8 @@ import (
 )
 
 // Manages a v1 firewall rule resource within OpenStack.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/fw_rule_v1.html.markdown.
 type Rule struct {
 	s *pulumi.ResourceState
 }

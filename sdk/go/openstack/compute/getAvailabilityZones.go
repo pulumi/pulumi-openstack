@@ -8,6 +8,8 @@ import (
 )
 
 // Use this data source to get a list of availability zones from OpenStack
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/compute_availability_zones_v2.html.markdown.
 func LookupAvailabilityZones(ctx *pulumi.Context, args *GetAvailabilityZonesArgs) (*GetAvailabilityZonesResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {

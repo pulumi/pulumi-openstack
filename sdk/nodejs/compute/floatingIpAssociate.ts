@@ -60,6 +60,8 @@ import * as utilities from "../utilities";
  *     instanceId: instance1.id,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_floatingip_associate_v2.html.markdown.
  */
 export class FloatingIpAssociate extends pulumi.CustomResource {
     /**
@@ -107,12 +109,6 @@ export class FloatingIpAssociate extends pulumi.CustomResource {
      * Changing this creates a new floatingip_associate.
      */
     public readonly region!: pulumi.Output<string>;
-    /**
-     * In cases where the OpenStack environment
-     * does not automatically wait until the association has finished, set this
-     * option to have Terraform poll the instance until the floating IP has been
-     * associated. Defaults to false.
-     */
     public readonly waitUntilAssociated!: pulumi.Output<boolean | undefined>;
 
     /**
@@ -173,12 +169,6 @@ export interface FloatingIpAssociateState {
      * Changing this creates a new floatingip_associate.
      */
     readonly region?: pulumi.Input<string>;
-    /**
-     * In cases where the OpenStack environment
-     * does not automatically wait until the association has finished, set this
-     * option to have Terraform poll the instance until the floating IP has been
-     * associated. Defaults to false.
-     */
     readonly waitUntilAssociated?: pulumi.Input<boolean>;
 }
 
@@ -205,11 +195,5 @@ export interface FloatingIpAssociateArgs {
      * Changing this creates a new floatingip_associate.
      */
     readonly region?: pulumi.Input<string>;
-    /**
-     * In cases where the OpenStack environment
-     * does not automatically wait until the association has finished, set this
-     * option to have Terraform poll the instance until the floating IP has been
-     * associated. Defaults to false.
-     */
     readonly waitUntilAssociated?: pulumi.Input<boolean>;
 }

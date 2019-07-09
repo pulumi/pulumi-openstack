@@ -95,6 +95,8 @@ class ApplicationCredential(pulumi.CustomResource):
         :param pulumi.Input[bool] unrestricted: A flag indicating whether the application
                credential may be used for creation or destruction of other application
                credentials or trusts. Changing this creates a new application credential.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/identity_application_credential_v3.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

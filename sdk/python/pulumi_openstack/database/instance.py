@@ -76,6 +76,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[float] size: Specifies the volume size in GB. Changing this creates new instance.
         :param pulumi.Input[list] users: An array of username, password, host and databases. The user
                object structure is documented below.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/db_instance_v1.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

@@ -70,6 +70,8 @@ class GetFloatingIpResult:
 async def get_floating_ip(address=None,description=None,fixed_ip=None,pool=None,port_id=None,region=None,status=None,tags=None,tenant_id=None,opts=None):
     """
     Use this data source to get the ID of an available OpenStack floating IP.
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_floatingip_v2.html.markdown.
     """
     __args__ = dict()
 

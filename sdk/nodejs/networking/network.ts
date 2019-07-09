@@ -46,6 +46,8 @@ import * as utilities from "../utilities";
  *     securityGroups: [secgroup1.name],
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_network_v2.html.markdown.
  */
 export class Network extends pulumi.CustomResource {
     /**

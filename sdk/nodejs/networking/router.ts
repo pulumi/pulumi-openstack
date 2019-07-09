@@ -18,6 +18,8 @@ import * as utilities from "../utilities";
  *     externalNetworkId: "f67f0d72-0ddf-11e4-9d95-e1f29f417e2f",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_router_v2.html.markdown.
  */
 export class Router extends pulumi.CustomResource {
     /**

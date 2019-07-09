@@ -119,6 +119,8 @@ class GetDnsZoneResult:
 async def get_dns_zone(attributes=None,created_at=None,description=None,email=None,masters=None,name=None,pool_id=None,project_id=None,region=None,serial=None,status=None,transferred_at=None,ttl=None,type=None,updated_at=None,version=None,opts=None):
     """
     Use this data source to get the ID of an available OpenStack DNS zone.
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/dns_zone_v2.html.markdown.
     """
     __args__ = dict()
 

@@ -11,6 +11,8 @@ import (
 // 
 // Note: You _must_ have admin privileges in your OpenStack cloud to use
 // this resource.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/identity_role_v3.html.markdown.
 type Role struct {
 	s *pulumi.ResourceState
 }

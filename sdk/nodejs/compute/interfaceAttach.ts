@@ -131,6 +131,8 @@ import * as utilities from "../utilities";
  *     portId: pulumi.all(ports.map(v => v.id)).apply(id => id.map(v => v)[1]),
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_interface_attach_v2.html.markdown.
  */
 export class InterfaceAttach extends pulumi.CustomResource {
     /**

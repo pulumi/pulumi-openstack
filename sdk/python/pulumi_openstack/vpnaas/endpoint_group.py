@@ -66,6 +66,8 @@ class EndpointGroup(pulumi.CustomResource):
         :param pulumi.Input[str] type: The type of the endpoints in the group. A valid value is subnet, cidr, network, router, or vlan.
                Changing this creates a new group.
         :param pulumi.Input[dict] value_specs: Map of additional options.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/vpnaas_endpoint_group_v2.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

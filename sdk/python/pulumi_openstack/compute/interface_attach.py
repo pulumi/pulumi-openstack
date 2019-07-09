@@ -51,6 +51,8 @@ class InterfaceAttach(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region in which to create the interface attachment.
                If omitted, the `region` argument of the provider is used. Changing this
                creates a new attachment.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_interface_attach_v2.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

@@ -9,6 +9,8 @@ import (
 
 // Use this data source to get a list of Shared File System availability zones
 // from OpenStack
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/sharedfilesystem_availability_zones_v2.html.markdown.
 func LookupAvailbilityZones(ctx *pulumi.Context, args *GetAvailbilityZonesArgs) (*GetAvailbilityZonesResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {

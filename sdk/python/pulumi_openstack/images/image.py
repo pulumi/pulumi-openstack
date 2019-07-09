@@ -34,11 +34,6 @@ class Image(pulumi.CustomResource):
     or the path to retrieve it.
     """
     image_cache_path: pulumi.Output[str]
-    """
-    This is the directory where the images will
-    be downloaded. Images will be stored with a filename corresponding to
-    the url's md5 hash. Defaults to "$HOME/.terraform/image_cache"
-    """
     image_source_url: pulumi.Output[str]
     """
     This is the url of the raw image that will
@@ -158,9 +153,6 @@ class Image(pulumi.CustomResource):
                "ami", "ari", "aki", "bare", "ovf".
         :param pulumi.Input[str] disk_format: The disk format. Must be one of
                "ami", "ari", "aki", "vhd", "vmdk", "raw", "qcow2", "vdi", "iso".
-        :param pulumi.Input[str] image_cache_path: This is the directory where the images will
-               be downloaded. Images will be stored with a filename corresponding to
-               the url's md5 hash. Defaults to "$HOME/.terraform/image_cache"
         :param pulumi.Input[str] image_source_url: This is the url of the raw image that will
                be downloaded in the `image_cache_path` before being uploaded to Glance.
                Glance is able to download image from internet but the `gophercloud` library
@@ -189,6 +181,8 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[str] visibility: The visibility of the image. Must be one of
                "public", "private", "community", or "shared". The ability to set the
                visibility depends upon the configuration of the OpenStack cloud.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/images_image_v2.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

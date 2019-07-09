@@ -10,6 +10,8 @@ import (
 // Use this data source to get the ID of an OpenStack group.
 // 
 // Note: This usually requires admin privileges.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_group_v3.html.markdown.
 func LookupGroup(ctx *pulumi.Context, args *GetGroupArgs) (*GetGroupResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {

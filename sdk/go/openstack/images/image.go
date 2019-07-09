@@ -25,6 +25,8 @@ import (
 // 
 // In addition, the `direct_url` property is also automatically reconciled if the
 // Image Service set it.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/images_image_v2.html.markdown.
 type Image struct {
 	s *pulumi.ResourceState
 }
@@ -164,9 +166,6 @@ func (r *Image) File() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["file"])
 }
 
-// This is the directory where the images will
-// be downloaded. Images will be stored with a filename corresponding to
-// the url's md5 hash. Defaults to "$HOME/.terraform/image_cache"
 func (r *Image) ImageCachePath() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["imageCachePath"])
 }
@@ -298,9 +297,6 @@ type ImageState struct {
 	// endpoint that represent the location of the image
 	// or the path to retrieve it.
 	File interface{}
-	// This is the directory where the images will
-	// be downloaded. Images will be stored with a filename corresponding to
-	// the url's md5 hash. Defaults to "$HOME/.terraform/image_cache"
 	ImageCachePath interface{}
 	// This is the url of the raw image that will
 	// be downloaded in the `image_cache_path` before being uploaded to Glance.
@@ -369,9 +365,6 @@ type ImageArgs struct {
 	// The disk format. Must be one of
 	// "ami", "ari", "aki", "vhd", "vmdk", "raw", "qcow2", "vdi", "iso".
 	DiskFormat interface{}
-	// This is the directory where the images will
-	// be downloaded. Images will be stored with a filename corresponding to
-	// the url's md5 hash. Defaults to "$HOME/.terraform/image_cache"
 	ImageCachePath interface{}
 	// This is the url of the raw image that will
 	// be downloaded in the `image_cache_path` before being uploaded to Glance.

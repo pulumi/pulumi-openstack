@@ -17,6 +17,8 @@ import (
 // project scope and is not visible by an admin or other accounts.
 // The Application Credential visibility is similar to
 // `openstack_compute_keypair_v2`.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/identity_application_credential_v3.html.markdown.
 type ApplicationCredential struct {
 	s *pulumi.ResourceState
 }

@@ -8,6 +8,8 @@ import (
 )
 
 // Use this data source to get the ID of an available Shared File System snapshot.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/sharedfilesystem_snapshot_v2.html.markdown.
 func LookupSnapshot(ctx *pulumi.Context, args *GetSnapshotArgs) (*GetSnapshotResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {

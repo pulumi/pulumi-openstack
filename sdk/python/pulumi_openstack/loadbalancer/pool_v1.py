@@ -83,6 +83,8 @@ class PoolV1(pulumi.CustomResource):
                Changing this creates a new pool.
         :param pulumi.Input[str] tenant_id: The owner of the pool. Required if admin wants to
                create a pool member for another tenant. Changing this creates a new pool.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_pool_v1.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

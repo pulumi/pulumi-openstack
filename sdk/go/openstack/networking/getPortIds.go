@@ -9,6 +9,8 @@ import (
 
 // Use this data source to get a list of Openstack Port IDs matching the
 // specified criteria.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_port_ids_v2.html.markdown.
 func LookupPortIds(ctx *pulumi.Context, args *GetPortIdsArgs) (*GetPortIdsResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {

@@ -105,6 +105,8 @@ class MonitorV1(pulumi.CustomResource):
         :param pulumi.Input[str] url_path: Required for HTTP(S) types. URI path that will be
                accessed if monitor type is HTTP or HTTPS. Changing this updates the
                url_path of the existing monitor.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_monitor_v1.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

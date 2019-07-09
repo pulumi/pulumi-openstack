@@ -4,67 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Use this resource to configure a share network.
- * 
- * A share network stores network information that share servers can use when
- * shares are created.
- * 
- * ## Example Usage
- * 
- * ### Basic share network
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- * 
- * const network1 = new openstack.networking.Network("network_1", {
- *     adminStateUp: true,
- * });
- * const subnet1 = new openstack.networking.Subnet("subnet_1", {
- *     cidr: "192.168.199.0/24",
- *     ipVersion: 4,
- *     networkId: network1.id,
- * });
- * const sharenetwork1 = new openstack.sharedfilesystem.ShareNetwork("sharenetwork_1", {
- *     description: "test share network",
- *     neutronNetId: network1.id,
- *     neutronSubnetId: subnet1.id,
- * });
- * ```
- * 
- * ### Share network with associated security services
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- * 
- * const network1 = new openstack.networking.Network("network_1", {
- *     adminStateUp: true,
- * });
- * const securityservice1 = new openstack.sharedfilesystem.SecurityService("securityservice_1", {
- *     description: "created by terraform",
- *     dnsIp: "192.168.199.10",
- *     domain: "example.com",
- *     ou: "CN=Computers,DC=example,DC=com",
- *     password: "s8cret",
- *     server: "192.168.199.10",
- *     type: "active_directory",
- *     user: "joinDomainUser",
- * });
- * const subnet1 = new openstack.networking.Subnet("subnet_1", {
- *     cidr: "192.168.199.0/24",
- *     ipVersion: 4,
- *     networkId: network1.id,
- * });
- * const sharenetwork1 = new openstack.sharedfilesystem.ShareNetwork("sharenetwork_1", {
- *     description: "test share network with security services",
- *     neutronNetId: network1.id,
- *     neutronSubnetId: subnet1.id,
- *     securityServiceIds: [securityservice1.id],
- * });
- * ```
- */
 export class ShareNetwork extends pulumi.CustomResource {
     /**
      * Get an existing ShareNetwork resource's state with the given name, ID, and optional extra

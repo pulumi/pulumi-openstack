@@ -15,6 +15,8 @@ import * as utilities from "../utilities";
  * 
  * const policy1 = new openstack.vpnaas.IkePolicy("policy_1", {});
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/vpnaas_ike_policy_v2.html.markdown.
  */
 export class IkePolicy extends pulumi.CustomResource {
     /**

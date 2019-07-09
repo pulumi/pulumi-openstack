@@ -9,6 +9,8 @@ import (
 )
 
 // Manages a V2 monitor resource within OpenStack.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_monitor_v2.html.markdown.
 type Monitor struct {
 	s *pulumi.ResourceState
 }

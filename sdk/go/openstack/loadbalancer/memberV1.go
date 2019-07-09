@@ -9,6 +9,8 @@ import (
 )
 
 // Manages a V1 load balancer member resource within OpenStack.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_member_v1.html.markdown.
 type MemberV1 struct {
 	s *pulumi.ResourceState
 }
@@ -120,8 +122,6 @@ func (r *MemberV1) TenantId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["tenantId"])
 }
 
-// The load balancing weight of the member. This is currently unable
-// to be set through Terraform.
 func (r *MemberV1) Weight() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["weight"])
 }
@@ -149,8 +149,6 @@ type MemberV1State struct {
 	// The owner of the member. Required if admin wants to
 	// create a member for another tenant. Changing this creates a new member.
 	TenantId interface{}
-	// The load balancing weight of the member. This is currently unable
-	// to be set through Terraform.
 	Weight interface{}
 }
 
@@ -177,7 +175,5 @@ type MemberV1Args struct {
 	// The owner of the member. Required if admin wants to
 	// create a member for another tenant. Changing this creates a new member.
 	TenantId interface{}
-	// The load balancing weight of the member. This is currently unable
-	// to be set through Terraform.
 	Weight interface{}
 }

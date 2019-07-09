@@ -100,6 +100,8 @@ class IpSecPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] transform_protocol: The transform protocol. Valid values are ESP, AH and AH-ESP.
                Changing this updates the existing policy. Default is ESP.
         :param pulumi.Input[dict] value_specs: Map of additional options.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/vpnaas_ipsec_policy_v2.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

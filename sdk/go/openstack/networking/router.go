@@ -8,6 +8,8 @@ import (
 )
 
 // Manages a V2 router resource within OpenStack.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_router_v2.html.markdown.
 type Router struct {
 	s *pulumi.ResourceState
 }

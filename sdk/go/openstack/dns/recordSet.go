@@ -9,6 +9,8 @@ import (
 )
 
 // Manages a DNS record set in the OpenStack DNS Service.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/dns_recordset_v2.html.markdown.
 type RecordSet struct {
 	s *pulumi.ResourceState
 }

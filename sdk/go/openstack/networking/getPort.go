@@ -8,6 +8,8 @@ import (
 )
 
 // Use this data source to get the ID of an available OpenStack port.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_port_v2.html.markdown.
 func LookupPort(ctx *pulumi.Context, args *GetPortArgs) (*GetPortResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {

@@ -140,6 +140,8 @@ class GetImageResult:
 async def get_image(member_status=None,most_recent=None,name=None,owner=None,properties=None,region=None,size_max=None,size_min=None,sort_direction=None,sort_key=None,tag=None,visibility=None,opts=None):
     """
     Use this data source to get the ID of an available OpenStack image.
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/images_image_v2.html.markdown.
     """
     __args__ = dict()
 

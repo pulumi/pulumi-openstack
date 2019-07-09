@@ -18,6 +18,8 @@ import * as utilities from "../utilities";
  *     routerId: "14a75700-fc03-4602-9294-26ee44f366b3",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/vpnaas_service_v2.html.markdown.
  */
 export class Service extends pulumi.CustomResource {
     /**

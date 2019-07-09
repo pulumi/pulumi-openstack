@@ -23,6 +23,8 @@ import * as utilities from "../utilities";
  *     vpnserviceId: openstack_vpnaas_service_v2_service_1.id,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/vpnaas_site_connection_v2.html.markdown.
  */
 export class SiteConnection extends pulumi.CustomResource {
     /**

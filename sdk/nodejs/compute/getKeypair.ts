@@ -17,6 +17,8 @@ import * as utilities from "../utilities";
  *     name: "sand",
  * }));
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/compute_keypair_v2.html.markdown.
  */
 export function getKeypair(args: GetKeypairArgs, opts?: pulumi.InvokeOptions): Promise<GetKeypairResult> {
     return pulumi.runtime.invoke("openstack:compute/getKeypair:getKeypair", {

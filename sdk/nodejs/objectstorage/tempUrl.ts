@@ -26,6 +26,8 @@ import * as utilities from "../utilities";
  *     ttl: 20,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/objectstorage_tempurl_v1.html.markdown.
  */
 export class TempUrl extends pulumi.CustomResource {
     /**

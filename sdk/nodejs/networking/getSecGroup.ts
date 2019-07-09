@@ -17,6 +17,8 @@ import * as utilities from "../utilities";
  *     name: "tf_test_secgroup",
  * }));
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_secgroup_v2.html.markdown.
  */
 export function getSecGroup(args?: GetSecGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetSecGroupResult> {
     args = args || {};
