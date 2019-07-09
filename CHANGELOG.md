@@ -2,7 +2,8 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-___NULL___
+* Upgrade to v1.20.0 of the OpenStack Terraform Provider
+
 
 ---
 
