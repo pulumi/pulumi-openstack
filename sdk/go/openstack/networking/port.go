@@ -46,6 +46,7 @@ func NewPort(ctx *pulumi.Context,
 		inputs["noFixedIp"] = nil
 		inputs["noSecurityGroups"] = nil
 		inputs["portSecurityEnabled"] = nil
+		inputs["qosPolicyId"] = nil
 		inputs["region"] = nil
 		inputs["securityGroupIds"] = nil
 		inputs["tags"] = nil
@@ -67,6 +68,7 @@ func NewPort(ctx *pulumi.Context,
 		inputs["noFixedIp"] = args.NoFixedIp
 		inputs["noSecurityGroups"] = args.NoSecurityGroups
 		inputs["portSecurityEnabled"] = args.PortSecurityEnabled
+		inputs["qosPolicyId"] = args.QosPolicyId
 		inputs["region"] = args.Region
 		inputs["securityGroupIds"] = args.SecurityGroupIds
 		inputs["tags"] = args.Tags
@@ -109,6 +111,7 @@ func GetPort(ctx *pulumi.Context,
 		inputs["noFixedIp"] = state.NoFixedIp
 		inputs["noSecurityGroups"] = state.NoSecurityGroups
 		inputs["portSecurityEnabled"] = state.PortSecurityEnabled
+		inputs["qosPolicyId"] = state.QosPolicyId
 		inputs["region"] = state.Region
 		inputs["securityGroupIds"] = state.SecurityGroupIds
 		inputs["tags"] = state.Tags
@@ -256,6 +259,11 @@ func (r *Port) PortSecurityEnabled() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["portSecurityEnabled"])
 }
 
+// Reference to the associated QoS policy.
+func (r *Port) QosPolicyId() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["qosPolicyId"])
+}
+
 // The region in which to obtain the V2 networking client.
 // A networking client is needed to create a port. If omitted, the
 // `region` argument of the provider is used. Changing this creates a new
@@ -357,6 +365,8 @@ type PortState struct {
 	// security, the port must not have any security groups. Valid values are `true`
 	// and `false`.
 	PortSecurityEnabled interface{}
+	// Reference to the associated QoS policy.
+	QosPolicyId interface{}
 	// The region in which to obtain the V2 networking client.
 	// A networking client is needed to create a port. If omitted, the
 	// `region` argument of the provider is used. Changing this creates a new
@@ -434,6 +444,8 @@ type PortArgs struct {
 	// security, the port must not have any security groups. Valid values are `true`
 	// and `false`.
 	PortSecurityEnabled interface{}
+	// Reference to the associated QoS policy.
+	QosPolicyId interface{}
 	// The region in which to obtain the V2 networking client.
 	// A networking client is needed to create a port. If omitted, the
 	// `region` argument of the provider is used. Changing this creates a new

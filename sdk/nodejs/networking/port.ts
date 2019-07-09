@@ -204,6 +204,10 @@ export class Port extends pulumi.CustomResource {
      */
     public readonly portSecurityEnabled!: pulumi.Output<boolean>;
     /**
+     * Reference to the associated QoS policy.
+     */
+    public readonly qosPolicyId!: pulumi.Output<string>;
+    /**
      * The region in which to obtain the V2 networking client.
      * A networking client is needed to create a port. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
@@ -262,6 +266,7 @@ export class Port extends pulumi.CustomResource {
             inputs["noFixedIp"] = state ? state.noFixedIp : undefined;
             inputs["noSecurityGroups"] = state ? state.noSecurityGroups : undefined;
             inputs["portSecurityEnabled"] = state ? state.portSecurityEnabled : undefined;
+            inputs["qosPolicyId"] = state ? state.qosPolicyId : undefined;
             inputs["region"] = state ? state.region : undefined;
             inputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
             inputs["tags"] = state ? state.tags : undefined;
@@ -287,6 +292,7 @@ export class Port extends pulumi.CustomResource {
             inputs["noFixedIp"] = args ? args.noFixedIp : undefined;
             inputs["noSecurityGroups"] = args ? args.noSecurityGroups : undefined;
             inputs["portSecurityEnabled"] = args ? args.portSecurityEnabled : undefined;
+            inputs["qosPolicyId"] = args ? args.qosPolicyId : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
             inputs["tags"] = args ? args.tags : undefined;
@@ -411,6 +417,10 @@ export interface PortState {
      */
     readonly portSecurityEnabled?: pulumi.Input<boolean>;
     /**
+     * Reference to the associated QoS policy.
+     */
+    readonly qosPolicyId?: pulumi.Input<string>;
+    /**
      * The region in which to obtain the V2 networking client.
      * A networking client is needed to create a port. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
@@ -529,6 +539,10 @@ export interface PortArgs {
      * and `false`.
      */
     readonly portSecurityEnabled?: pulumi.Input<boolean>;
+    /**
+     * Reference to the associated QoS policy.
+     */
+    readonly qosPolicyId?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 networking client.
      * A networking client is needed to create a port. If omitted, the

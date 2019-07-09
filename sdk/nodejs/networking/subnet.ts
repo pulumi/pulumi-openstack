@@ -57,15 +57,19 @@ export class Subnet extends pulumi.CustomResource {
      */
     public /*out*/ readonly allTags!: pulumi.Output<string[]>;
     /**
-     * An array of sub-ranges of CIDR available for
-     * dynamic allocation to ports. The allocation_pool object structure is
-     * documented below.
+     * A block declaring the start and end range of
+     * the IP addresses available for use with DHCP in this subnet. Multiple
+     * `allocation_pool` blocks can be declared, providing the subnet with more
+     * than one range of IP addresses to use with DHCP. However, each IP range
+     * must be from the same CIDR that the subnet is part of.
+     * The `allocation_pool` block is documented below.
      */
     public readonly allocationPools!: pulumi.Output<{ end: string, start: string }[]>;
     /**
      * 
-     * An array of sub-ranges of CIDR available for dynamic allocation to ports.
-     * The allocation_pools object structure is documented below.
+     * A block declaring the start and end range of the IP addresses available for
+     * use with DHCP in this subnet.
+     * The `allocation_pools` block is documented below.
      */
     public readonly allocationPoolsCollection!: pulumi.Output<{ end: string, start: string }[]>;
     /**
@@ -242,15 +246,19 @@ export interface SubnetState {
      */
     readonly allTags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * An array of sub-ranges of CIDR available for
-     * dynamic allocation to ports. The allocation_pool object structure is
-     * documented below.
+     * A block declaring the start and end range of
+     * the IP addresses available for use with DHCP in this subnet. Multiple
+     * `allocation_pool` blocks can be declared, providing the subnet with more
+     * than one range of IP addresses to use with DHCP. However, each IP range
+     * must be from the same CIDR that the subnet is part of.
+     * The `allocation_pool` block is documented below.
      */
     readonly allocationPools?: pulumi.Input<pulumi.Input<{ end: pulumi.Input<string>, start: pulumi.Input<string> }>[]>;
     /**
      * 
-     * An array of sub-ranges of CIDR available for dynamic allocation to ports.
-     * The allocation_pools object structure is documented below.
+     * A block declaring the start and end range of the IP addresses available for
+     * use with DHCP in this subnet.
+     * The `allocation_pools` block is documented below.
      */
     readonly allocationPoolsCollection?: pulumi.Input<pulumi.Input<{ end: pulumi.Input<string>, start: pulumi.Input<string> }>[]>;
     /**
@@ -359,15 +367,19 @@ export interface SubnetState {
  */
 export interface SubnetArgs {
     /**
-     * An array of sub-ranges of CIDR available for
-     * dynamic allocation to ports. The allocation_pool object structure is
-     * documented below.
+     * A block declaring the start and end range of
+     * the IP addresses available for use with DHCP in this subnet. Multiple
+     * `allocation_pool` blocks can be declared, providing the subnet with more
+     * than one range of IP addresses to use with DHCP. However, each IP range
+     * must be from the same CIDR that the subnet is part of.
+     * The `allocation_pool` block is documented below.
      */
     readonly allocationPools?: pulumi.Input<pulumi.Input<{ end: pulumi.Input<string>, start: pulumi.Input<string> }>[]>;
     /**
      * 
-     * An array of sub-ranges of CIDR available for dynamic allocation to ports.
-     * The allocation_pools object structure is documented below.
+     * A block declaring the start and end range of the IP addresses available for
+     * use with DHCP in this subnet.
+     * The `allocation_pools` block is documented below.
      */
     readonly allocationPoolsCollection?: pulumi.Input<pulumi.Input<{ end: pulumi.Input<string>, start: pulumi.Input<string> }>[]>;
     /**

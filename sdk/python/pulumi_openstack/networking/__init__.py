@@ -9,6 +9,10 @@ from .floating_ip import *
 from .network import *
 from .port_sec_group_associate import *
 from .port import *
+from .qos_bandwidth_limit_rule import *
+from .qos_dscp_marking_rule import *
+from .qos_minimum_bandwidth_rule import *
+from .qos_policy import *
 from .router_interface import *
 from .router_route import *
 from .router import *
@@ -18,10 +22,15 @@ from .subnet_route import *
 from .subnet import *
 from .subnet_pool import *
 from .trunk import *
+from .get_address_scope import *
 from .get_floating_ip import *
 from .get_network import *
 from .get_port_ids import *
 from .get_port import *
+from .get_qos_bandwidth_limit_rule import *
+from .get_qos_dscp_marking_rule import *
+from .get_qos_minimum_bandwidth_rule import *
+from .get_qos_policy import *
 from .get_router import *
 from .get_sec_group import *
 from .get_subnet import *

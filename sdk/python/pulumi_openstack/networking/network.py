@@ -64,6 +64,10 @@ class Network(pulumi.CustomResource):
     explicitly to `false` will disable port security. Valid values are `true` and
     `false`.
     """
+    qos_policy_id: pulumi.Output[str]
+    """
+    Reference to the associated QoS policy.
+    """
     region: pulumi.Output[str]
     """
     The region in which to obtain the V2 Networking client.
@@ -101,7 +105,7 @@ class Network(pulumi.CustomResource):
     """
     Map of additional options.
     """
-    def __init__(__self__, resource_name, opts=None, admin_state_up=None, availability_zone_hints=None, description=None, dns_domain=None, external=None, mtu=None, name=None, port_security_enabled=None, region=None, segments=None, shared=None, tags=None, tenant_id=None, transparent_vlan=None, value_specs=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, admin_state_up=None, availability_zone_hints=None, description=None, dns_domain=None, external=None, mtu=None, name=None, port_security_enabled=None, qos_policy_id=None, region=None, segments=None, shared=None, tags=None, tenant_id=None, transparent_vlan=None, value_specs=None, __name__=None, __opts__=None):
         """
         Manages a V2 Neutron network resource within OpenStack.
         
@@ -133,6 +137,7 @@ class Network(pulumi.CustomResource):
                omitting this argument will usually result in a value of "true". Setting this
                explicitly to `false` will disable port security. Valid values are `true` and
                `false`.
+        :param pulumi.Input[str] qos_policy_id: Reference to the associated QoS policy.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
                A Networking client is needed to create a Neutron network. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
@@ -182,6 +187,8 @@ class Network(pulumi.CustomResource):
         __props__['name'] = name
 
         __props__['port_security_enabled'] = port_security_enabled
+
+        __props__['qos_policy_id'] = qos_policy_id
 
         __props__['region'] = region
 
