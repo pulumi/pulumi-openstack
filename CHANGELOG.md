@@ -2,10 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v1.20.0 of the OpenStack Terraform Provider
-
+___NULL___
 
 ---
+
+## 0.17.6 (2019-07-12)
+* Upgrade to v1.20.0 of the OpenStack Terraform Provider
 
 ## 0.17.5 (2019-07-09)
 * Fix detailed diffs with nested computed values.
