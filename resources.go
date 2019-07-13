@@ -277,6 +277,16 @@ func Provider() tfbridge.ProviderInfo {
 			"openstack_networking_secgroup_v2":      {Tok: openstackResource(networkingMod, "SecGroup")},
 			"openstack_networking_secgroup_rule_v2": {Tok: openstackResource(networkingMod, "SecGroupRule")},
 			"openstack_networking_trunk_v2":         {Tok: openstackResource(networkingMod, "Trunk")},
+			"openstack_networking_qos_bandwidth_limit_rule_v2": {
+				Tok: openstackResource(networkingMod, "QosBandwidthLimitRule"),
+			},
+			"openstack_networking_qos_dscp_marking_rule_v2": {
+				Tok: openstackResource(networkingMod, "QosDscpMarkingRule"),
+			},
+			"openstack_networking_qos_minimum_bandwidth_rule_v2": {
+				Tok: openstackResource(networkingMod, "QosMinimumBandwidthRule"),
+			},
+			"openstack_networking_qos_policy_v2": {Tok: openstackResource(networkingMod, "QosPolicy")},
 
 			// Load Balancer
 			"openstack_lb_member_v1":       {Tok: openstackResource(lbMod, "MemberV1")},
@@ -346,15 +356,26 @@ func Provider() tfbridge.ProviderInfo {
 			"openstack_images_image_v2": {Tok: openstackDataSource(imagesMod, "getImage")},
 
 			// Networking
-			"openstack_networking_network_v2":    {Tok: openstackDataSource(networkingMod, "getNetwork")},
-			"openstack_networking_port_v2":       {Tok: openstackDataSource(networkingMod, "getPort")},
-			"openstack_networking_port_ids_v2":   {Tok: openstackDataSource(networkingMod, "getPortIds")},
-			"openstack_networking_router_v2":     {Tok: openstackDataSource(networkingMod, "getRouter")},
-			"openstack_networking_secgroup_v2":   {Tok: openstackDataSource(networkingMod, "getSecGroup")},
-			"openstack_networking_subnet_v2":     {Tok: openstackDataSource(networkingMod, "getSubnet")},
-			"openstack_networking_subnetpool_v2": {Tok: openstackDataSource(networkingMod, "getSubnetPool")},
-			"openstack_networking_trunk_v2":      {Tok: openstackDataSource(networkingMod, "getTrunk")},
-			"openstack_networking_floatingip_v2": {Tok: openstackDataSource(networkingMod, "getFloatingIp")},
+			"openstack_networking_network_v2":      {Tok: openstackDataSource(networkingMod, "getNetwork")},
+			"openstack_networking_port_v2":         {Tok: openstackDataSource(networkingMod, "getPort")},
+			"openstack_networking_port_ids_v2":     {Tok: openstackDataSource(networkingMod, "getPortIds")},
+			"openstack_networking_router_v2":       {Tok: openstackDataSource(networkingMod, "getRouter")},
+			"openstack_networking_secgroup_v2":     {Tok: openstackDataSource(networkingMod, "getSecGroup")},
+			"openstack_networking_subnet_v2":       {Tok: openstackDataSource(networkingMod, "getSubnet")},
+			"openstack_networking_subnetpool_v2":   {Tok: openstackDataSource(networkingMod, "getSubnetPool")},
+			"openstack_networking_trunk_v2":        {Tok: openstackDataSource(networkingMod, "getTrunk")},
+			"openstack_networking_floatingip_v2":   {Tok: openstackDataSource(networkingMod, "getFloatingIp")},
+			"openstack_networking_addressscope_v2": {Tok: openstackDataSource(networkingMod, "getAddressScope")},
+			"openstack_networking_qos_bandwidth_limit_rule_v2": {
+				Tok: openstackDataSource(networkingMod, "getQosBandwidthLimitRule"),
+			},
+			"openstack_networking_qos_dscp_marking_rule_v2": {
+				Tok: openstackDataSource(networkingMod, "getQosDscpMarkingRule"),
+			},
+			"openstack_networking_qos_minimum_bandwidth_rule_v2": {
+				Tok: openstackDataSource(networkingMod, "getQosMinimumBandwidthRule"),
+			},
+			"openstack_networking_qos_policy_v2": {Tok: openstackDataSource(networkingMod, "getQosPolicy")},
 
 			// Firewall
 			"openstack_fw_policy_v1": {Tok: openstackDataSource(firewallMod, "getPolicy")},

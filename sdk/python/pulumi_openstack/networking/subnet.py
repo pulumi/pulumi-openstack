@@ -16,15 +16,19 @@ class Subnet(pulumi.CustomResource):
     """
     allocation_pools: pulumi.Output[list]
     """
-    An array of sub-ranges of CIDR available for
-    dynamic allocation to ports. The allocation_pool object structure is
-    documented below.
+    A block declaring the start and end range of
+    the IP addresses available for use with DHCP in this subnet. Multiple
+    `allocation_pool` blocks can be declared, providing the subnet with more
+    than one range of IP addresses to use with DHCP. However, each IP range
+    must be from the same CIDR that the subnet is part of.
+    The `allocation_pool` block is documented below.
     """
     allocation_pools_collection: pulumi.Output[list]
     """
     
-    An array of sub-ranges of CIDR available for dynamic allocation to ports.
-    The allocation_pools object structure is documented below.
+    A block declaring the start and end range of the IP addresses available for
+    use with DHCP in this subnet.
+    The `allocation_pools` block is documented below.
     """
     cidr: pulumi.Output[str]
     """
@@ -131,12 +135,16 @@ class Subnet(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] allocation_pools: An array of sub-ranges of CIDR available for
-               dynamic allocation to ports. The allocation_pool object structure is
-               documented below.
+        :param pulumi.Input[list] allocation_pools: A block declaring the start and end range of
+               the IP addresses available for use with DHCP in this subnet. Multiple
+               `allocation_pool` blocks can be declared, providing the subnet with more
+               than one range of IP addresses to use with DHCP. However, each IP range
+               must be from the same CIDR that the subnet is part of.
+               The `allocation_pool` block is documented below.
         :param pulumi.Input[list] allocation_pools_collection: 
-               An array of sub-ranges of CIDR available for dynamic allocation to ports.
-               The allocation_pools object structure is documented below.
+               A block declaring the start and end range of the IP addresses available for
+               use with DHCP in this subnet.
+               The `allocation_pools` block is documented below.
         :param pulumi.Input[str] cidr: CIDR representing IP range for this subnet, based on IP
                version. You can omit this option if you are creating a subnet from a
                subnet pool.

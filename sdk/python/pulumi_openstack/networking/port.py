@@ -114,6 +114,10 @@ class Port(pulumi.CustomResource):
     security, the port must not have any security groups. Valid values are `true`
     and `false`.
     """
+    qos_policy_id: pulumi.Output[str]
+    """
+    Reference to the associated QoS policy.
+    """
     region: pulumi.Output[str]
     """
     The region in which to obtain the V2 networking client.
@@ -141,7 +145,7 @@ class Port(pulumi.CustomResource):
     """
     Map of additional options.
     """
-    def __init__(__self__, resource_name, opts=None, admin_state_up=None, allowed_address_pairs=None, binding=None, description=None, device_id=None, device_owner=None, dns_name=None, extra_dhcp_options=None, fixed_ips=None, mac_address=None, name=None, network_id=None, no_fixed_ip=None, no_security_groups=None, port_security_enabled=None, region=None, security_group_ids=None, tags=None, tenant_id=None, value_specs=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, admin_state_up=None, allowed_address_pairs=None, binding=None, description=None, device_id=None, device_owner=None, dns_name=None, extra_dhcp_options=None, fixed_ips=None, mac_address=None, name=None, network_id=None, no_fixed_ip=None, no_security_groups=None, port_security_enabled=None, qos_policy_id=None, region=None, security_group_ids=None, tags=None, tenant_id=None, value_specs=None, __name__=None, __opts__=None):
         """
         Manages a V2 port resource within OpenStack.
         
@@ -196,6 +200,7 @@ class Port(pulumi.CustomResource):
                explicitly to `false` will disable port security. In order to disable port
                security, the port must not have any security groups. Valid values are `true`
                and `false`.
+        :param pulumi.Input[str] qos_policy_id: Reference to the associated QoS policy.
         :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
                A networking client is needed to create a port. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
@@ -257,6 +262,8 @@ class Port(pulumi.CustomResource):
         __props__['no_security_groups'] = no_security_groups
 
         __props__['port_security_enabled'] = port_security_enabled
+
+        __props__['qos_policy_id'] = qos_policy_id
 
         __props__['region'] = region
 

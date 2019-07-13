@@ -10,11 +10,6 @@ from .. import utilities, tables
 
 class VolumeAttach(pulumi.CustomResource):
     device: pulumi.Output[str]
-    """
-    See Argument Reference above. _NOTE_: The correctness of this
-    information is dependent upon the hypervisor in use. In some cases, this
-    should not be used as an authoritative piece of information.
-    """
     instance_id: pulumi.Output[str]
     """
     The ID of the Instance to attach the Volume to.
@@ -41,9 +36,6 @@ class VolumeAttach(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] device: See Argument Reference above. _NOTE_: The correctness of this
-               information is dependent upon the hypervisor in use. In some cases, this
-               should not be used as an authoritative piece of information.
         :param pulumi.Input[str] instance_id: The ID of the Instance to attach the Volume to.
         :param pulumi.Input[bool] multiattach: Enable attachment of multiattach-capable volumes.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Compute client.

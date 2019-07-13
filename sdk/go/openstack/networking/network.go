@@ -27,6 +27,7 @@ func NewNetwork(ctx *pulumi.Context,
 		inputs["mtu"] = nil
 		inputs["name"] = nil
 		inputs["portSecurityEnabled"] = nil
+		inputs["qosPolicyId"] = nil
 		inputs["region"] = nil
 		inputs["segments"] = nil
 		inputs["shared"] = nil
@@ -43,6 +44,7 @@ func NewNetwork(ctx *pulumi.Context,
 		inputs["mtu"] = args.Mtu
 		inputs["name"] = args.Name
 		inputs["portSecurityEnabled"] = args.PortSecurityEnabled
+		inputs["qosPolicyId"] = args.QosPolicyId
 		inputs["region"] = args.Region
 		inputs["segments"] = args.Segments
 		inputs["shared"] = args.Shared
@@ -74,6 +76,7 @@ func GetNetwork(ctx *pulumi.Context,
 		inputs["mtu"] = state.Mtu
 		inputs["name"] = state.Name
 		inputs["portSecurityEnabled"] = state.PortSecurityEnabled
+		inputs["qosPolicyId"] = state.QosPolicyId
 		inputs["region"] = state.Region
 		inputs["segments"] = state.Segments
 		inputs["shared"] = state.Shared
@@ -163,6 +166,11 @@ func (r *Network) PortSecurityEnabled() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["portSecurityEnabled"])
 }
 
+// Reference to the associated QoS policy.
+func (r *Network) QosPolicyId() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["qosPolicyId"])
+}
+
 // The region in which to obtain the V2 Networking client.
 // A Networking client is needed to create a Neutron network. If omitted, the
 // `region` argument of the provider is used. Changing this creates a new
@@ -246,6 +254,8 @@ type NetworkState struct {
 	// explicitly to `false` will disable port security. Valid values are `true` and
 	// `false`.
 	PortSecurityEnabled interface{}
+	// Reference to the associated QoS policy.
+	QosPolicyId interface{}
 	// The region in which to obtain the V2 Networking client.
 	// A Networking client is needed to create a Neutron network. If omitted, the
 	// `region` argument of the provider is used. Changing this creates a new
@@ -307,6 +317,8 @@ type NetworkArgs struct {
 	// explicitly to `false` will disable port security. Valid values are `true` and
 	// `false`.
 	PortSecurityEnabled interface{}
+	// Reference to the associated QoS policy.
+	QosPolicyId interface{}
 	// The region in which to obtain the V2 Networking client.
 	// A Networking client is needed to create a Neutron network. If omitted, the
 	// `region` argument of the provider is used. Changing this creates a new

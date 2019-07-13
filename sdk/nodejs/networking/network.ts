@@ -132,6 +132,10 @@ export class Network extends pulumi.CustomResource {
      */
     public readonly portSecurityEnabled!: pulumi.Output<boolean>;
     /**
+     * Reference to the associated QoS policy.
+     */
+    public readonly qosPolicyId!: pulumi.Output<string>;
+    /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a Neutron network. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
@@ -190,6 +194,7 @@ export class Network extends pulumi.CustomResource {
             inputs["mtu"] = state ? state.mtu : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["portSecurityEnabled"] = state ? state.portSecurityEnabled : undefined;
+            inputs["qosPolicyId"] = state ? state.qosPolicyId : undefined;
             inputs["region"] = state ? state.region : undefined;
             inputs["segments"] = state ? state.segments : undefined;
             inputs["shared"] = state ? state.shared : undefined;
@@ -207,6 +212,7 @@ export class Network extends pulumi.CustomResource {
             inputs["mtu"] = args ? args.mtu : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["portSecurityEnabled"] = args ? args.portSecurityEnabled : undefined;
+            inputs["qosPolicyId"] = args ? args.qosPolicyId : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["segments"] = args ? args.segments : undefined;
             inputs["shared"] = args ? args.shared : undefined;
@@ -279,6 +285,10 @@ export interface NetworkState {
      * `false`.
      */
     readonly portSecurityEnabled?: pulumi.Input<boolean>;
+    /**
+     * Reference to the associated QoS policy.
+     */
+    readonly qosPolicyId?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a Neutron network. If omitted, the
@@ -372,6 +382,10 @@ export interface NetworkArgs {
      * `false`.
      */
     readonly portSecurityEnabled?: pulumi.Input<boolean>;
+    /**
+     * Reference to the associated QoS policy.
+     */
+    readonly qosPolicyId?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a Neutron network. If omitted, the

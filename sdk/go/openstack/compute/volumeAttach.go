@@ -75,9 +75,6 @@ func (r *VolumeAttach) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
-// See Argument Reference above. _NOTE_: The correctness of this
-// information is dependent upon the hypervisor in use. In some cases, this
-// should not be used as an authoritative piece of information.
 func (r *VolumeAttach) Device() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["device"])
 }
@@ -107,9 +104,6 @@ func (r *VolumeAttach) VolumeId() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering VolumeAttach resources.
 type VolumeAttachState struct {
-	// See Argument Reference above. _NOTE_: The correctness of this
-	// information is dependent upon the hypervisor in use. In some cases, this
-	// should not be used as an authoritative piece of information.
 	Device interface{}
 	// The ID of the Instance to attach the Volume to.
 	InstanceId interface{}
@@ -126,9 +120,6 @@ type VolumeAttachState struct {
 
 // The set of arguments for constructing a VolumeAttach resource.
 type VolumeAttachArgs struct {
-	// See Argument Reference above. _NOTE_: The correctness of this
-	// information is dependent upon the hypervisor in use. In some cases, this
-	// should not be used as an authoritative piece of information.
 	Device interface{}
 	// The ID of the Instance to attach the Volume to.
 	InstanceId interface{}

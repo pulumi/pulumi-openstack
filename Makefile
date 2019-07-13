@@ -22,9 +22,6 @@ build::
 	for LANGUAGE in "nodejs" "python" "go" ; do \
 		$(TFGEN) $$LANGUAGE --overlays overlays/$$LANGUAGE/ --out ${PACKDIR}/$$LANGUAGE/ || exit 3 ; \
 	done
-	# TODO(ellismg): We need to come up with a better strategy for this, tfgen generates both a loadbalancer.go and a loadBalancer.go
-	# which are different and upsets the go toolchain.
-	rm ${PACKDIR}/go/openstack/loadbalancer/loadbalancer.go
 	cd ${PACKDIR}/nodejs/ && \
 		yarn install && \
 		yarn run tsc && \
