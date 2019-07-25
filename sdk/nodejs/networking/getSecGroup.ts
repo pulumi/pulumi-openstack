@@ -20,9 +20,9 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_secgroup_v2.html.markdown.
  */
-export function getSecGroup(args?: GetSecGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetSecGroupResult> {
+export function getSecGroup(args?: GetSecGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetSecGroupResult> & GetSecGroupResult {
     args = args || {};
-    return pulumi.runtime.invoke("openstack:networking/getSecGroup:getSecGroup", {
+    const promise: Promise<GetSecGroupResult> = pulumi.runtime.invoke("openstack:networking/getSecGroup:getSecGroup", {
         "description": args.description,
         "name": args.name,
         "region": args.region,
@@ -30,6 +30,8 @@ export function getSecGroup(args?: GetSecGroupArgs, opts?: pulumi.InvokeOptions)
         "tags": args.tags,
         "tenantId": args.tenantId,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

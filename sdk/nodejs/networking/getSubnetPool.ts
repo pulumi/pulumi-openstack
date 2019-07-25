@@ -20,9 +20,9 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_subnetpool_v2.html.markdown.
  */
-export function getSubnetPool(args?: GetSubnetPoolArgs, opts?: pulumi.InvokeOptions): Promise<GetSubnetPoolResult> {
+export function getSubnetPool(args?: GetSubnetPoolArgs, opts?: pulumi.InvokeOptions): Promise<GetSubnetPoolResult> & GetSubnetPoolResult {
     args = args || {};
-    return pulumi.runtime.invoke("openstack:networking/getSubnetPool:getSubnetPool", {
+    const promise: Promise<GetSubnetPoolResult> = pulumi.runtime.invoke("openstack:networking/getSubnetPool:getSubnetPool", {
         "addressScopeId": args.addressScopeId,
         "defaultPrefixlen": args.defaultPrefixlen,
         "defaultQuota": args.defaultQuota,
@@ -37,6 +37,8 @@ export function getSubnetPool(args?: GetSubnetPoolArgs, opts?: pulumi.InvokeOpti
         "shared": args.shared,
         "tags": args.tags,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

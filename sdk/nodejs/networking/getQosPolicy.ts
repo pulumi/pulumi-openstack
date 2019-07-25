@@ -20,9 +20,9 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_qos_policy_v2.html.markdown.
  */
-export function getQosPolicy(args?: GetQosPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetQosPolicyResult> {
+export function getQosPolicy(args?: GetQosPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetQosPolicyResult> & GetQosPolicyResult {
     args = args || {};
-    return pulumi.runtime.invoke("openstack:networking/getQosPolicy:getQosPolicy", {
+    const promise: Promise<GetQosPolicyResult> = pulumi.runtime.invoke("openstack:networking/getQosPolicy:getQosPolicy", {
         "description": args.description,
         "isDefault": args.isDefault,
         "name": args.name,
@@ -31,6 +31,8 @@ export function getQosPolicy(args?: GetQosPolicyArgs, opts?: pulumi.InvokeOption
         "shared": args.shared,
         "tags": args.tags,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

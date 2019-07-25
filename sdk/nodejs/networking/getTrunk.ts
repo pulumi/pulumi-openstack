@@ -20,9 +20,9 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_trunk_v2.html.markdown.
  */
-export function getTrunk(args?: GetTrunkArgs, opts?: pulumi.InvokeOptions): Promise<GetTrunkResult> {
+export function getTrunk(args?: GetTrunkArgs, opts?: pulumi.InvokeOptions): Promise<GetTrunkResult> & GetTrunkResult {
     args = args || {};
-    return pulumi.runtime.invoke("openstack:networking/getTrunk:getTrunk", {
+    const promise: Promise<GetTrunkResult> = pulumi.runtime.invoke("openstack:networking/getTrunk:getTrunk", {
         "adminStateUp": args.adminStateUp,
         "description": args.description,
         "name": args.name,
@@ -33,6 +33,8 @@ export function getTrunk(args?: GetTrunkArgs, opts?: pulumi.InvokeOptions): Prom
         "tags": args.tags,
         "trunkId": args.trunkId,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

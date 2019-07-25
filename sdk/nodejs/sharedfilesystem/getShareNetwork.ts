@@ -20,9 +20,9 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/sharedfilesystem_sharenetwork_v2.html.markdown.
  */
-export function getShareNetwork(args?: GetShareNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetShareNetworkResult> {
+export function getShareNetwork(args?: GetShareNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetShareNetworkResult> & GetShareNetworkResult {
     args = args || {};
-    return pulumi.runtime.invoke("openstack:sharedfilesystem/getShareNetwork:getShareNetwork", {
+    const promise: Promise<GetShareNetworkResult> = pulumi.runtime.invoke("openstack:sharedfilesystem/getShareNetwork:getShareNetwork", {
         "description": args.description,
         "ipVersion": args.ipVersion,
         "name": args.name,
@@ -33,6 +33,8 @@ export function getShareNetwork(args?: GetShareNetworkArgs, opts?: pulumi.Invoke
         "securityServiceId": args.securityServiceId,
         "segmentationId": args.segmentationId,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

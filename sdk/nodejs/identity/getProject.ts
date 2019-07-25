@@ -20,9 +20,9 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_project_v3.html.markdown.
  */
-export function getProject(args?: GetProjectArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectResult> {
+export function getProject(args?: GetProjectArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectResult> & GetProjectResult {
     args = args || {};
-    return pulumi.runtime.invoke("openstack:identity/getProject:getProject", {
+    const promise: Promise<GetProjectResult> = pulumi.runtime.invoke("openstack:identity/getProject:getProject", {
         "domainId": args.domainId,
         "enabled": args.enabled,
         "isDomain": args.isDomain,
@@ -30,6 +30,8 @@ export function getProject(args?: GetProjectArgs, opts?: pulumi.InvokeOptions): 
         "parentId": args.parentId,
         "region": args.region,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

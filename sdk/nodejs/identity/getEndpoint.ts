@@ -22,14 +22,16 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_endpoint_v3.html.markdown.
  */
-export function getEndpoint(args?: GetEndpointArgs, opts?: pulumi.InvokeOptions): Promise<GetEndpointResult> {
+export function getEndpoint(args?: GetEndpointArgs, opts?: pulumi.InvokeOptions): Promise<GetEndpointResult> & GetEndpointResult {
     args = args || {};
-    return pulumi.runtime.invoke("openstack:identity/getEndpoint:getEndpoint", {
+    const promise: Promise<GetEndpointResult> = pulumi.runtime.invoke("openstack:identity/getEndpoint:getEndpoint", {
         "interface": args.interface,
         "region": args.region,
         "serviceId": args.serviceId,
         "serviceName": args.serviceName,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

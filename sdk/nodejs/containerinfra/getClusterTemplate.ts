@@ -21,11 +21,13 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/containerinfra_clustertemplate_v1.html.markdown.
  */
-export function getClusterTemplate(args: GetClusterTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterTemplateResult> {
-    return pulumi.runtime.invoke("openstack:containerinfra/getClusterTemplate:getClusterTemplate", {
+export function getClusterTemplate(args: GetClusterTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterTemplateResult> & GetClusterTemplateResult {
+    const promise: Promise<GetClusterTemplateResult> = pulumi.runtime.invoke("openstack:containerinfra/getClusterTemplate:getClusterTemplate", {
         "name": args.name,
         "region": args.region,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
