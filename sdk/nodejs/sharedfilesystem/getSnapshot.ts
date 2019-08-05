@@ -20,15 +20,24 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/sharedfilesystem_snapshot_v2.html.markdown.
  */
-export function getSnapshot(args?: GetSnapshotArgs, opts?: pulumi.InvokeOptions): Promise<GetSnapshotResult> {
+export function getSnapshot(args?: GetSnapshotArgs, opts?: pulumi.InvokeOptions): Promise<GetSnapshotResult> & GetSnapshotResult {
     args = args || {};
-    return pulumi.runtime.invoke("openstack:sharedfilesystem/getSnapshot:getSnapshot", {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetSnapshotResult> = pulumi.runtime.invoke("openstack:sharedfilesystem/getSnapshot:getSnapshot", {
         "description": args.description,
         "name": args.name,
         "region": args.region,
         "shareId": args.shareId,
         "status": args.status,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

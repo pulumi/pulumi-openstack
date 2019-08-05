@@ -117,6 +117,13 @@ export class EndpointGroup extends pulumi.CustomResource {
             inputs["type"] = args ? args.type : undefined;
             inputs["valueSpecs"] = args ? args.valueSpecs : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(EndpointGroup.__pulumiType, name, inputs, opts);
     }
 }

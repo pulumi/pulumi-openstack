@@ -287,6 +287,10 @@ class ClusterTemplate(pulumi.CustomResource):
         __props__['updated_at'] = None
         __props__['user_id'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(ClusterTemplate, __self__).__init__(
             'openstack:containerinfra/clusterTemplate:ClusterTemplate',
             resource_name,

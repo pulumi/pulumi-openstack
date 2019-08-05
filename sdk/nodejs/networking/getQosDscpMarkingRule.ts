@@ -20,12 +20,21 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_qos_dscp_marking_rule_v2.html.markdown.
  */
-export function getQosDscpMarkingRule(args: GetQosDscpMarkingRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetQosDscpMarkingRuleResult> {
-    return pulumi.runtime.invoke("openstack:networking/getQosDscpMarkingRule:getQosDscpMarkingRule", {
+export function getQosDscpMarkingRule(args: GetQosDscpMarkingRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetQosDscpMarkingRuleResult> & GetQosDscpMarkingRuleResult {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetQosDscpMarkingRuleResult> = pulumi.runtime.invoke("openstack:networking/getQosDscpMarkingRule:getQosDscpMarkingRule", {
         "dscpMark": args.dscpMark,
         "qosPolicyId": args.qosPolicyId,
         "region": args.region,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

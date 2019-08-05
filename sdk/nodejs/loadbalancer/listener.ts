@@ -165,6 +165,13 @@ export class Listener extends pulumi.CustomResource {
             inputs["sniContainerRefs"] = args ? args.sniContainerRefs : undefined;
             inputs["tenantId"] = args ? args.tenantId : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(Listener.__pulumiType, name, inputs, opts);
     }
 }

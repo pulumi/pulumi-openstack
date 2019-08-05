@@ -280,6 +280,10 @@ class Port(pulumi.CustomResource):
         __props__['all_tags'] = None
         __props__['dns_assignments'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(Port, __self__).__init__(
             'openstack:networking/port:Port',
             resource_name,

@@ -140,6 +140,13 @@ export class Service extends pulumi.CustomResource {
             inputs["externalV6Ip"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(Service.__pulumiType, name, inputs, opts);
     }
 }

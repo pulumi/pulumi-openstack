@@ -242,6 +242,10 @@ class Image(pulumi.CustomResource):
         __props__['update_at'] = None
         __props__['updated_at'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(Image, __self__).__init__(
             'openstack:images/image:Image',
             resource_name,

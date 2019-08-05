@@ -131,6 +131,10 @@ class QosPolicy(pulumi.CustomResource):
         __props__['revision_number'] = None
         __props__['updated_at'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(QosPolicy, __self__).__init__(
             'openstack:networking/qosPolicy:QosPolicy',
             resource_name,

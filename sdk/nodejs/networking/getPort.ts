@@ -20,9 +20,16 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_port_v2.html.markdown.
  */
-export function getPort(args?: GetPortArgs, opts?: pulumi.InvokeOptions): Promise<GetPortResult> {
+export function getPort(args?: GetPortArgs, opts?: pulumi.InvokeOptions): Promise<GetPortResult> & GetPortResult {
     args = args || {};
-    return pulumi.runtime.invoke("openstack:networking/getPort:getPort", {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetPortResult> = pulumi.runtime.invoke("openstack:networking/getPort:getPort", {
         "adminStateUp": args.adminStateUp,
         "description": args.description,
         "deviceId": args.deviceId,
@@ -40,6 +47,8 @@ export function getPort(args?: GetPortArgs, opts?: pulumi.InvokeOptions): Promis
         "tags": args.tags,
         "tenantId": args.tenantId,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

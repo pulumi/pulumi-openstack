@@ -129,6 +129,10 @@ class L7PolicyV2(pulumi.CustomResource):
 
         __props__['tenant_id'] = tenant_id
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(L7PolicyV2, __self__).__init__(
             'openstack:loadbalancer/l7PolicyV2:L7PolicyV2',
             resource_name,

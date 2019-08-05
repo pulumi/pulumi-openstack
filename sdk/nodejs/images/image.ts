@@ -256,6 +256,13 @@ export class Image extends pulumi.CustomResource {
             inputs["updateAt"] = undefined /*out*/;
             inputs["updatedAt"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(Image.__pulumiType, name, inputs, opts);
     }
 }

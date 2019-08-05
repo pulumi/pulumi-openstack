@@ -139,6 +139,13 @@ export class Member extends pulumi.CustomResource {
             inputs["tenantId"] = args ? args.tenantId : undefined;
             inputs["weight"] = args ? args.weight : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(Member.__pulumiType, name, inputs, opts);
     }
 }

@@ -81,6 +81,10 @@ class FloatingIp(pulumi.CustomResource):
         __props__['fixed_ip'] = None
         __props__['instance_id'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(FloatingIp, __self__).__init__(
             'openstack:compute/floatingIp:FloatingIp',
             resource_name,

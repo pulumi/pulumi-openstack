@@ -142,6 +142,13 @@ export class Container extends pulumi.CustomResource {
             inputs["region"] = args ? args.region : undefined;
             inputs["versioning"] = args ? args.versioning : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(Container.__pulumiType, name, inputs, opts);
     }
 }

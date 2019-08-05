@@ -103,6 +103,13 @@ export class ShareAccess extends pulumi.CustomResource {
             inputs["shareId"] = args ? args.shareId : undefined;
             inputs["accessKey"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(ShareAccess.__pulumiType, name, inputs, opts);
     }
 }

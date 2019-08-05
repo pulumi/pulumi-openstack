@@ -93,7 +93,15 @@ class GetShareNetworkResult:
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_share_network(description=None,ip_version=None,name=None,network_type=None,neutron_net_id=None,neutron_subnet_id=None,region=None,security_service_id=None,segmentation_id=None,opts=None):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return self
+
+    __iter__ = __await__
+
+def get_share_network(description=None,ip_version=None,name=None,network_type=None,neutron_net_id=None,neutron_subnet_id=None,region=None,security_service_id=None,segmentation_id=None,opts=None):
     """
     Use this data source to get the ID of an available Shared File System share network.
 
@@ -110,7 +118,11 @@ async def get_share_network(description=None,ip_version=None,name=None,network_t
     __args__['region'] = region
     __args__['securityServiceId'] = security_service_id
     __args__['segmentationId'] = segmentation_id
-    __ret__ = await pulumi.runtime.invoke('openstack:sharedfilesystem/getShareNetwork:getShareNetwork', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('openstack:sharedfilesystem/getShareNetwork:getShareNetwork', __args__, opts=opts).value
 
     return GetShareNetworkResult(
         cidr=__ret__.get('cidr'),

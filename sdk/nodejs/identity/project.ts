@@ -112,6 +112,13 @@ export class Project extends pulumi.CustomResource {
             inputs["parentId"] = args ? args.parentId : undefined;
             inputs["region"] = args ? args.region : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(Project.__pulumiType, name, inputs, opts);
     }
 }

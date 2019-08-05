@@ -161,6 +161,10 @@ class Listener(pulumi.CustomResource):
 
         __props__['tenant_id'] = tenant_id
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(Listener, __self__).__init__(
             'openstack:loadbalancer/listener:Listener',
             resource_name,

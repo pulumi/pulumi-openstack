@@ -103,6 +103,13 @@ export class QosMinimumBandwidthRule extends pulumi.CustomResource {
             inputs["qosPolicyId"] = args ? args.qosPolicyId : undefined;
             inputs["region"] = args ? args.region : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(QosMinimumBandwidthRule.__pulumiType, name, inputs, opts);
     }
 }

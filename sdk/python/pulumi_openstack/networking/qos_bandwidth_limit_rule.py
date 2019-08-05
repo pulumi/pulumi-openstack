@@ -82,6 +82,10 @@ class QosBandwidthLimitRule(pulumi.CustomResource):
 
         __props__['region'] = region
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(QosBandwidthLimitRule, __self__).__init__(
             'openstack:networking/qosBandwidthLimitRule:QosBandwidthLimitRule',
             resource_name,

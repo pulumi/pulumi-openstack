@@ -102,6 +102,10 @@ class MemberV1(pulumi.CustomResource):
 
         __props__['weight'] = weight
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(MemberV1, __self__).__init__(
             'openstack:loadbalancer/memberV1:MemberV1',
             resource_name,

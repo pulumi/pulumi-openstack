@@ -341,6 +341,13 @@ export class ClusterTemplate extends pulumi.CustomResource {
             inputs["updatedAt"] = undefined /*out*/;
             inputs["userId"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(ClusterTemplate.__pulumiType, name, inputs, opts);
     }
 }

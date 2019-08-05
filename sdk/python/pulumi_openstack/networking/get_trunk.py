@@ -63,7 +63,15 @@ class GetTrunkResult:
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_trunk(admin_state_up=None,description=None,name=None,port_id=None,project_id=None,region=None,status=None,tags=None,trunk_id=None,opts=None):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return self
+
+    __iter__ = __await__
+
+def get_trunk(admin_state_up=None,description=None,name=None,port_id=None,project_id=None,region=None,status=None,tags=None,trunk_id=None,opts=None):
     """
     Use this data source to get the ID of an available OpenStack trunk.
 
@@ -80,7 +88,11 @@ async def get_trunk(admin_state_up=None,description=None,name=None,port_id=None,
     __args__['status'] = status
     __args__['tags'] = tags
     __args__['trunkId'] = trunk_id
-    __ret__ = await pulumi.runtime.invoke('openstack:networking/getTrunk:getTrunk', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('openstack:networking/getTrunk:getTrunk', __args__, opts=opts).value
 
     return GetTrunkResult(
         admin_state_up=__ret__.get('adminStateUp'),

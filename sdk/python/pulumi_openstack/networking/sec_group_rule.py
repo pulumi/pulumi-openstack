@@ -192,6 +192,10 @@ class SecGroupRule(pulumi.CustomResource):
 
         __props__['tenant_id'] = tenant_id
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(SecGroupRule, __self__).__init__(
             'openstack:networking/secGroupRule:SecGroupRule',
             resource_name,

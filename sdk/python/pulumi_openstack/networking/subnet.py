@@ -252,6 +252,10 @@ class Subnet(pulumi.CustomResource):
 
         __props__['all_tags'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(Subnet, __self__).__init__(
             'openstack:networking/subnet:Subnet',
             resource_name,

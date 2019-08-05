@@ -178,6 +178,13 @@ export class L7RuleV2 extends pulumi.CustomResource {
             inputs["value"] = args ? args.value : undefined;
             inputs["listenerId"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(L7RuleV2.__pulumiType, name, inputs, opts);
     }
 }

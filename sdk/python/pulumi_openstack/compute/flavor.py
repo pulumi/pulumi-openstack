@@ -125,6 +125,10 @@ class Flavor(pulumi.CustomResource):
             raise TypeError("Missing required property 'vcpus'")
         __props__['vcpus'] = vcpus
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(Flavor, __self__).__init__(
             'openstack:compute/flavor:Flavor',
             resource_name,

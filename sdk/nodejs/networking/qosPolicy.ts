@@ -148,6 +148,13 @@ export class QosPolicy extends pulumi.CustomResource {
             inputs["revisionNumber"] = undefined /*out*/;
             inputs["updatedAt"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(QosPolicy.__pulumiType, name, inputs, opts);
     }
 }

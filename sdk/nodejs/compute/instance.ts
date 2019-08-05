@@ -228,6 +228,13 @@ export class Instance extends pulumi.CustomResource {
             inputs["vendorOptions"] = args ? args.vendorOptions : undefined;
             inputs["allMetadata"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(Instance.__pulumiType, name, inputs, opts);
     }
 }

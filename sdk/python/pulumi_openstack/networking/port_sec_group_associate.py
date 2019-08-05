@@ -84,6 +84,10 @@ class PortSecGroupAssociate(pulumi.CustomResource):
 
         __props__['all_security_group_ids'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(PortSecGroupAssociate, __self__).__init__(
             'openstack:networking/portSecGroupAssociate:PortSecGroupAssociate',
             resource_name,

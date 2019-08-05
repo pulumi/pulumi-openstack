@@ -190,6 +190,13 @@ export class VolumeAttach extends pulumi.CustomResource {
             inputs["driverVolumeType"] = undefined /*out*/;
             inputs["mountPointBase"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(VolumeAttach.__pulumiType, name, inputs, opts);
     }
 }

@@ -75,6 +75,10 @@ class FloatingIpAssociate(pulumi.CustomResource):
 
         __props__['wait_until_associated'] = wait_until_associated
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(FloatingIpAssociate, __self__).__init__(
             'openstack:compute/floatingIpAssociate:FloatingIpAssociate',
             resource_name,

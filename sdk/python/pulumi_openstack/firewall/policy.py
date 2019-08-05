@@ -115,6 +115,10 @@ class Policy(pulumi.CustomResource):
 
         __props__['value_specs'] = value_specs
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(Policy, __self__).__init__(
             'openstack:firewall/policy:Policy',
             resource_name,

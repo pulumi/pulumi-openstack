@@ -128,6 +128,13 @@ export class SecurityService extends pulumi.CustomResource {
             inputs["user"] = args ? args.user : undefined;
             inputs["projectId"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(SecurityService.__pulumiType, name, inputs, opts);
     }
 }

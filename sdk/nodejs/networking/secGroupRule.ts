@@ -186,6 +186,13 @@ export class SecGroupRule extends pulumi.CustomResource {
             inputs["securityGroupId"] = args ? args.securityGroupId : undefined;
             inputs["tenantId"] = args ? args.tenantId : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(SecGroupRule.__pulumiType, name, inputs, opts);
     }
 }

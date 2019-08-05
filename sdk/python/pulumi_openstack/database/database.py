@@ -56,6 +56,10 @@ class Database(pulumi.CustomResource):
 
         __props__['region'] = region
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(Database, __self__).__init__(
             'openstack:database/database:Database',
             resource_name,

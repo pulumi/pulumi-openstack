@@ -88,6 +88,10 @@ class Keypair(pulumi.CustomResource):
         __props__['fingerprint'] = None
         __props__['private_key'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(Keypair, __self__).__init__(
             'openstack:compute/keypair:Keypair',
             resource_name,

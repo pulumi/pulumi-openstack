@@ -85,6 +85,10 @@ class RouterRoute(pulumi.CustomResource):
             raise TypeError("Missing required property 'router_id'")
         __props__['router_id'] = router_id
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(RouterRoute, __self__).__init__(
             'openstack:networking/routerRoute:RouterRoute',
             resource_name,

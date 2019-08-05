@@ -128,6 +128,10 @@ class ShareNetwork(pulumi.CustomResource):
         __props__['project_id'] = None
         __props__['segmentation_id'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(ShareNetwork, __self__).__init__(
             'openstack:sharedfilesystem/shareNetwork:ShareNetwork',
             resource_name,

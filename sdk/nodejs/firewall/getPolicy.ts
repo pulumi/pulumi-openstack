@@ -20,14 +20,23 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/fw_policy_v1.html.markdown.
  */
-export function getPolicy(args?: GetPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicyResult> {
+export function getPolicy(args?: GetPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicyResult> & GetPolicyResult {
     args = args || {};
-    return pulumi.runtime.invoke("openstack:firewall/getPolicy:getPolicy", {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetPolicyResult> = pulumi.runtime.invoke("openstack:firewall/getPolicy:getPolicy", {
         "name": args.name,
         "policyId": args.policyId,
         "region": args.region,
         "tenantId": args.tenantId,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

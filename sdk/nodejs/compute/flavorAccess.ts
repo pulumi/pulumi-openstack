@@ -103,6 +103,13 @@ export class FlavorAccess extends pulumi.CustomResource {
             inputs["region"] = args ? args.region : undefined;
             inputs["tenantId"] = args ? args.tenantId : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(FlavorAccess.__pulumiType, name, inputs, opts);
     }
 }

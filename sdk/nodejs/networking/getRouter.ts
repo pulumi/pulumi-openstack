@@ -20,9 +20,16 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_router_v2.html.markdown.
  */
-export function getRouter(args?: GetRouterArgs, opts?: pulumi.InvokeOptions): Promise<GetRouterResult> {
+export function getRouter(args?: GetRouterArgs, opts?: pulumi.InvokeOptions): Promise<GetRouterResult> & GetRouterResult {
     args = args || {};
-    return pulumi.runtime.invoke("openstack:networking/getRouter:getRouter", {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetRouterResult> = pulumi.runtime.invoke("openstack:networking/getRouter:getRouter", {
         "adminStateUp": args.adminStateUp,
         "description": args.description,
         "distributed": args.distributed,
@@ -34,6 +41,8 @@ export function getRouter(args?: GetRouterArgs, opts?: pulumi.InvokeOptions): Pr
         "tags": args.tags,
         "tenantId": args.tenantId,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

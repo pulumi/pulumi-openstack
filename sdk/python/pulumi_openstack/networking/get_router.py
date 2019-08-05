@@ -77,7 +77,15 @@ class GetRouterResult:
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_router(admin_state_up=None,description=None,distributed=None,enable_snat=None,name=None,region=None,router_id=None,status=None,tags=None,tenant_id=None,opts=None):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return self
+
+    __iter__ = __await__
+
+def get_router(admin_state_up=None,description=None,distributed=None,enable_snat=None,name=None,region=None,router_id=None,status=None,tags=None,tenant_id=None,opts=None):
     """
     Use this data source to get the ID of an available OpenStack router.
 
@@ -95,7 +103,11 @@ async def get_router(admin_state_up=None,description=None,distributed=None,enabl
     __args__['status'] = status
     __args__['tags'] = tags
     __args__['tenantId'] = tenant_id
-    __ret__ = await pulumi.runtime.invoke('openstack:networking/getRouter:getRouter', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('openstack:networking/getRouter:getRouter', __args__, opts=opts).value
 
     return GetRouterResult(
         admin_state_up=__ret__.get('adminStateUp'),

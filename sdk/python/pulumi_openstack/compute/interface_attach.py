@@ -81,6 +81,10 @@ class InterfaceAttach(pulumi.CustomResource):
 
         __props__['region'] = region
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(InterfaceAttach, __self__).__init__(
             'openstack:compute/interfaceAttach:InterfaceAttach',
             resource_name,

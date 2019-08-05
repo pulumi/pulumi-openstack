@@ -303,6 +303,13 @@ export class Port extends pulumi.CustomResource {
             inputs["allTags"] = undefined /*out*/;
             inputs["dnsAssignments"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(Port.__pulumiType, name, inputs, opts);
     }
 }
