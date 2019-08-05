@@ -271,6 +271,10 @@ class Instance(pulumi.CustomResource):
 
         __props__['all_metadata'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(Instance, __self__).__init__(
             'openstack:compute/instance:Instance',
             resource_name,

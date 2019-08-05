@@ -137,7 +137,15 @@ class GetImageResult:
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_image(member_status=None,most_recent=None,name=None,owner=None,properties=None,region=None,size_max=None,size_min=None,sort_direction=None,sort_key=None,tag=None,visibility=None,opts=None):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return self
+
+    __iter__ = __await__
+
+def get_image(member_status=None,most_recent=None,name=None,owner=None,properties=None,region=None,size_max=None,size_min=None,sort_direction=None,sort_key=None,tag=None,visibility=None,opts=None):
     """
     Use this data source to get the ID of an available OpenStack image.
 
@@ -157,7 +165,11 @@ async def get_image(member_status=None,most_recent=None,name=None,owner=None,pro
     __args__['sortKey'] = sort_key
     __args__['tag'] = tag
     __args__['visibility'] = visibility
-    __ret__ = await pulumi.runtime.invoke('openstack:images/getImage:getImage', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('openstack:images/getImage:getImage', __args__, opts=opts).value
 
     return GetImageResult(
         checksum=__ret__.get('checksum'),

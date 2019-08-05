@@ -50,7 +50,15 @@ class GetEndpointResult:
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_endpoint(interface=None,region=None,service_id=None,service_name=None,opts=None):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return self
+
+    __iter__ = __await__
+
+def get_endpoint(interface=None,region=None,service_id=None,service_name=None,opts=None):
     """
     Use this data source to get the ID of an OpenStack endpoint.
     
@@ -64,7 +72,11 @@ async def get_endpoint(interface=None,region=None,service_id=None,service_name=N
     __args__['region'] = region
     __args__['serviceId'] = service_id
     __args__['serviceName'] = service_name
-    __ret__ = await pulumi.runtime.invoke('openstack:identity/getEndpoint:getEndpoint', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('openstack:identity/getEndpoint:getEndpoint', __args__, opts=opts).value
 
     return GetEndpointResult(
         interface=__ret__.get('interface'),

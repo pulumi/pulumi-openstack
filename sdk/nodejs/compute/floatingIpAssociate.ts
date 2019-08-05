@@ -142,6 +142,13 @@ export class FloatingIpAssociate extends pulumi.CustomResource {
             inputs["region"] = args ? args.region : undefined;
             inputs["waitUntilAssociated"] = args ? args.waitUntilAssociated : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(FloatingIpAssociate.__pulumiType, name, inputs, opts);
     }
 }

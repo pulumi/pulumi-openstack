@@ -151,6 +151,10 @@ class MonitorV1(pulumi.CustomResource):
 
         __props__['url_path'] = url_path
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(MonitorV1, __self__).__init__(
             'openstack:loadbalancer/monitorV1:MonitorV1',
             resource_name,

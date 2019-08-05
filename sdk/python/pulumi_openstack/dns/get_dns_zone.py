@@ -116,7 +116,15 @@ class GetDnsZoneResult:
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_dns_zone(attributes=None,created_at=None,description=None,email=None,masters=None,name=None,pool_id=None,project_id=None,region=None,serial=None,status=None,transferred_at=None,ttl=None,type=None,updated_at=None,version=None,opts=None):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return self
+
+    __iter__ = __await__
+
+def get_dns_zone(attributes=None,created_at=None,description=None,email=None,masters=None,name=None,pool_id=None,project_id=None,region=None,serial=None,status=None,transferred_at=None,ttl=None,type=None,updated_at=None,version=None,opts=None):
     """
     Use this data source to get the ID of an available OpenStack DNS zone.
 
@@ -140,7 +148,11 @@ async def get_dns_zone(attributes=None,created_at=None,description=None,email=No
     __args__['type'] = type
     __args__['updatedAt'] = updated_at
     __args__['version'] = version
-    __ret__ = await pulumi.runtime.invoke('openstack:dns/getDnsZone:getDnsZone', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('openstack:dns/getDnsZone:getDnsZone', __args__, opts=opts).value
 
     return GetDnsZoneResult(
         attributes=__ret__.get('attributes'),

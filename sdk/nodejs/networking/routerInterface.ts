@@ -108,6 +108,13 @@ export class RouterInterface extends pulumi.CustomResource {
             inputs["routerId"] = args ? args.routerId : undefined;
             inputs["subnetId"] = args ? args.subnetId : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(RouterInterface.__pulumiType, name, inputs, opts);
     }
 }

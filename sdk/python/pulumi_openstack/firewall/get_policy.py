@@ -68,7 +68,15 @@ class GetPolicyResult:
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_policy(name=None,policy_id=None,region=None,tenant_id=None,opts=None):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return self
+
+    __iter__ = __await__
+
+def get_policy(name=None,policy_id=None,region=None,tenant_id=None,opts=None):
     """
     Use this data source to get firewall policy information of an available OpenStack firewall policy.
 
@@ -80,7 +88,11 @@ async def get_policy(name=None,policy_id=None,region=None,tenant_id=None,opts=No
     __args__['policyId'] = policy_id
     __args__['region'] = region
     __args__['tenantId'] = tenant_id
-    __ret__ = await pulumi.runtime.invoke('openstack:firewall/getPolicy:getPolicy', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('openstack:firewall/getPolicy:getPolicy', __args__, opts=opts).value
 
     return GetPolicyResult(
         audited=__ret__.get('audited'),

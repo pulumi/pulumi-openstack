@@ -145,6 +145,13 @@ export class Flavor extends pulumi.CustomResource {
             inputs["swap"] = args ? args.swap : undefined;
             inputs["vcpus"] = args ? args.vcpus : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(Flavor.__pulumiType, name, inputs, opts);
     }
 }

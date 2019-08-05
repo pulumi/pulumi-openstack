@@ -134,6 +134,13 @@ export class RecordSet extends pulumi.CustomResource {
             inputs["valueSpecs"] = args ? args.valueSpecs : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(RecordSet.__pulumiType, name, inputs, opts);
     }
 }

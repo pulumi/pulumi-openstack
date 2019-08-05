@@ -71,7 +71,15 @@ class GetSnapshotResult:
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_snapshot(description=None,name=None,region=None,share_id=None,status=None,opts=None):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return self
+
+    __iter__ = __await__
+
+def get_snapshot(description=None,name=None,region=None,share_id=None,status=None,opts=None):
     """
     Use this data source to get the ID of an available Shared File System snapshot.
 
@@ -84,7 +92,11 @@ async def get_snapshot(description=None,name=None,region=None,share_id=None,stat
     __args__['region'] = region
     __args__['shareId'] = share_id
     __args__['status'] = status
-    __ret__ = await pulumi.runtime.invoke('openstack:sharedfilesystem/getSnapshot:getSnapshot', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('openstack:sharedfilesystem/getSnapshot:getSnapshot', __args__, opts=opts).value
 
     return GetSnapshotResult(
         description=__ret__.get('description'),

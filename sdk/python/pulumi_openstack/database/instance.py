@@ -116,6 +116,10 @@ class Instance(pulumi.CustomResource):
 
         __props__['users'] = users
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(Instance, __self__).__init__(
             'openstack:database/instance:Instance',
             resource_name,

@@ -80,7 +80,15 @@ class GetAuthScopeResult:
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_auth_scope(name=None,region=None,opts=None):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return self
+
+    __iter__ = __await__
+
+def get_auth_scope(name=None,region=None,opts=None):
     """
     Use this data source to get authentication information about the current
     auth scope in use. This can be used as self-discovery or introspection of
@@ -92,7 +100,11 @@ async def get_auth_scope(name=None,region=None,opts=None):
 
     __args__['name'] = name
     __args__['region'] = region
-    __ret__ = await pulumi.runtime.invoke('openstack:identity/getAuthScope:getAuthScope', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('openstack:identity/getAuthScope:getAuthScope', __args__, opts=opts).value
 
     return GetAuthScopeResult(
         name=__ret__.get('name'),

@@ -130,6 +130,13 @@ export class TempUrl extends pulumi.CustomResource {
             inputs["ttl"] = args ? args.ttl : undefined;
             inputs["url"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(TempUrl.__pulumiType, name, inputs, opts);
     }
 }

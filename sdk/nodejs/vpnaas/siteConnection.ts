@@ -221,6 +221,13 @@ export class SiteConnection extends pulumi.CustomResource {
             inputs["valueSpecs"] = args ? args.valueSpecs : undefined;
             inputs["vpnserviceId"] = args ? args.vpnserviceId : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(SiteConnection.__pulumiType, name, inputs, opts);
     }
 }

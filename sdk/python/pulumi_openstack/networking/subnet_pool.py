@@ -214,6 +214,10 @@ class SubnetPool(pulumi.CustomResource):
         __props__['revision_number'] = None
         __props__['updated_at'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(SubnetPool, __self__).__init__(
             'openstack:networking/subnetPool:SubnetPool',
             resource_name,

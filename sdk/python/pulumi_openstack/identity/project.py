@@ -93,6 +93,10 @@ class Project(pulumi.CustomResource):
 
         __props__['region'] = region
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(Project, __self__).__init__(
             'openstack:identity/project:Project',
             resource_name,

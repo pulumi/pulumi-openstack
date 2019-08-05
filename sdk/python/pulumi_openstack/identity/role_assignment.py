@@ -76,6 +76,10 @@ class RoleAssignment(pulumi.CustomResource):
 
         __props__['user_id'] = user_id
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(RoleAssignment, __self__).__init__(
             'openstack:identity/roleAssignment:RoleAssignment',
             resource_name,

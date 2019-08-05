@@ -134,6 +134,10 @@ class L7RuleV2(pulumi.CustomResource):
 
         __props__['listener_id'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(L7RuleV2, __self__).__init__(
             'openstack:loadbalancer/l7RuleV2:L7RuleV2',
             resource_name,

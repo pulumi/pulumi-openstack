@@ -86,6 +86,10 @@ class AddressScope(pulumi.CustomResource):
 
         __props__['shared'] = shared
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(AddressScope, __self__).__init__(
             'openstack:networking/addressScope:AddressScope',
             resource_name,

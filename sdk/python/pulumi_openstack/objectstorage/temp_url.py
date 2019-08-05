@@ -104,6 +104,10 @@ class TempUrl(pulumi.CustomResource):
 
         __props__['url'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(TempUrl, __self__).__init__(
             'openstack:objectstorage/tempUrl:TempUrl',
             resource_name,

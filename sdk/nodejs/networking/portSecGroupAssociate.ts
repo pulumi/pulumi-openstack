@@ -93,6 +93,13 @@ export class PortSecGroupAssociate extends pulumi.CustomResource {
             inputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
             inputs["allSecurityGroupIds"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(PortSecGroupAssociate.__pulumiType, name, inputs, opts);
     }
 }

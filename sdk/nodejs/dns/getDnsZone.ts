@@ -20,9 +20,16 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/dns_zone_v2.html.markdown.
  */
-export function getDnsZone(args?: GetDnsZoneArgs, opts?: pulumi.InvokeOptions): Promise<GetDnsZoneResult> {
+export function getDnsZone(args?: GetDnsZoneArgs, opts?: pulumi.InvokeOptions): Promise<GetDnsZoneResult> & GetDnsZoneResult {
     args = args || {};
-    return pulumi.runtime.invoke("openstack:dns/getDnsZone:getDnsZone", {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetDnsZoneResult> = pulumi.runtime.invoke("openstack:dns/getDnsZone:getDnsZone", {
         "attributes": args.attributes,
         "createdAt": args.createdAt,
         "description": args.description,
@@ -40,6 +47,8 @@ export function getDnsZone(args?: GetDnsZoneArgs, opts?: pulumi.InvokeOptions): 
         "updatedAt": args.updatedAt,
         "version": args.version,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

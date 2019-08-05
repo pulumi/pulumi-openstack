@@ -121,6 +121,10 @@ class Service(pulumi.CustomResource):
         __props__['external_v6_ip'] = None
         __props__['status'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(Service, __self__).__init__(
             'openstack:vpnaas/service:Service',
             resource_name,

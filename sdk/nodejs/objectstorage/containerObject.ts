@@ -253,6 +253,13 @@ export class ContainerObject extends pulumi.CustomResource {
             inputs["lastModified"] = undefined /*out*/;
             inputs["transId"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(ContainerObject.__pulumiType, name, inputs, opts);
     }
 }

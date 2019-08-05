@@ -135,6 +135,10 @@ class VolumeV1(pulumi.CustomResource):
 
         __props__['attachments'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(VolumeV1, __self__).__init__(
             'openstack:blockstorage/volumeV1:VolumeV1',
             resource_name,

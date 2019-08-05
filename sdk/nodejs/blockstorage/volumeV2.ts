@@ -160,6 +160,13 @@ export class VolumeV2 extends pulumi.CustomResource {
             inputs["volumeType"] = args ? args.volumeType : undefined;
             inputs["attachments"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(VolumeV2.__pulumiType, name, inputs, opts);
     }
 }

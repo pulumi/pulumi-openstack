@@ -79,6 +79,10 @@ class SubnetRoute(pulumi.CustomResource):
             raise TypeError("Missing required property 'subnet_id'")
         __props__['subnet_id'] = subnet_id
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(SubnetRoute, __self__).__init__(
             'openstack:networking/subnetRoute:SubnetRoute',
             resource_name,

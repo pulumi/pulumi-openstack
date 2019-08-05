@@ -171,6 +171,13 @@ export class Monitor extends pulumi.CustomResource {
             inputs["type"] = args ? args.type : undefined;
             inputs["urlPath"] = args ? args.urlPath : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(Monitor.__pulumiType, name, inputs, opts);
     }
 }

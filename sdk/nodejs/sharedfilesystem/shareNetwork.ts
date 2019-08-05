@@ -132,6 +132,13 @@ export class ShareNetwork extends pulumi.CustomResource {
             inputs["projectId"] = undefined /*out*/;
             inputs["segmentationId"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(ShareNetwork.__pulumiType, name, inputs, opts);
     }
 }

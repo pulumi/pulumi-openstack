@@ -21,9 +21,16 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_port_ids_v2.html.markdown.
  */
-export function getPortIds(args?: GetPortIdsArgs, opts?: pulumi.InvokeOptions): Promise<GetPortIdsResult> {
+export function getPortIds(args?: GetPortIdsArgs, opts?: pulumi.InvokeOptions): Promise<GetPortIdsResult> & GetPortIdsResult {
     args = args || {};
-    return pulumi.runtime.invoke("openstack:networking/getPortIds:getPortIds", {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetPortIdsResult> = pulumi.runtime.invoke("openstack:networking/getPortIds:getPortIds", {
         "adminStateUp": args.adminStateUp,
         "description": args.description,
         "deviceId": args.deviceId,
@@ -42,6 +49,8 @@ export function getPortIds(args?: GetPortIdsArgs, opts?: pulumi.InvokeOptions): 
         "tags": args.tags,
         "tenantId": args.tenantId,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

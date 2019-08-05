@@ -20,11 +20,20 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/compute_keypair_v2.html.markdown.
  */
-export function getKeypair(args: GetKeypairArgs, opts?: pulumi.InvokeOptions): Promise<GetKeypairResult> {
-    return pulumi.runtime.invoke("openstack:compute/getKeypair:getKeypair", {
+export function getKeypair(args: GetKeypairArgs, opts?: pulumi.InvokeOptions): Promise<GetKeypairResult> & GetKeypairResult {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetKeypairResult> = pulumi.runtime.invoke("openstack:compute/getKeypair:getKeypair", {
         "name": args.name,
         "region": args.region,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

@@ -125,6 +125,13 @@ export class RouterRoute extends pulumi.CustomResource {
             inputs["region"] = args ? args.region : undefined;
             inputs["routerId"] = args ? args.routerId : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(RouterRoute.__pulumiType, name, inputs, opts);
     }
 }

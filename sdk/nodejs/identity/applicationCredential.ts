@@ -164,6 +164,13 @@ export class ApplicationCredential extends pulumi.CustomResource {
             inputs["unrestricted"] = args ? args.unrestricted : undefined;
             inputs["projectId"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(ApplicationCredential.__pulumiType, name, inputs, opts);
     }
 }

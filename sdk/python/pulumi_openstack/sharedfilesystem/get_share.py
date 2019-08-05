@@ -106,7 +106,15 @@ class GetShareResult:
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_share(description=None,export_location_path=None,is_public=None,metadata=None,name=None,region=None,share_network_id=None,snapshot_id=None,status=None,opts=None):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return self
+
+    __iter__ = __await__
+
+def get_share(description=None,export_location_path=None,is_public=None,metadata=None,name=None,region=None,share_network_id=None,snapshot_id=None,status=None,opts=None):
     """
     Use this data source to get the ID of an available Shared File System share.
 
@@ -123,7 +131,11 @@ async def get_share(description=None,export_location_path=None,is_public=None,me
     __args__['shareNetworkId'] = share_network_id
     __args__['snapshotId'] = snapshot_id
     __args__['status'] = status
-    __ret__ = await pulumi.runtime.invoke('openstack:sharedfilesystem/getShare:getShare', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('openstack:sharedfilesystem/getShare:getShare', __args__, opts=opts).value
 
     return GetShareResult(
         availability_zone=__ret__.get('availabilityZone'),

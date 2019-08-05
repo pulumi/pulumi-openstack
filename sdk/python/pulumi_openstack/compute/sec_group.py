@@ -85,6 +85,10 @@ class SecGroup(pulumi.CustomResource):
 
         __props__['rules'] = rules
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(SecGroup, __self__).__init__(
             'openstack:compute/secGroup:SecGroup',
             resource_name,

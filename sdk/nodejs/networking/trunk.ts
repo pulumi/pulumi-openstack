@@ -162,6 +162,13 @@ export class Trunk extends pulumi.CustomResource {
             inputs["tenantId"] = args ? args.tenantId : undefined;
             inputs["allTags"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(Trunk.__pulumiType, name, inputs, opts);
     }
 }

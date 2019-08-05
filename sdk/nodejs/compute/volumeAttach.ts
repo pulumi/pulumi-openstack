@@ -201,6 +201,13 @@ export class VolumeAttach extends pulumi.CustomResource {
             inputs["region"] = args ? args.region : undefined;
             inputs["volumeId"] = args ? args.volumeId : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(VolumeAttach.__pulumiType, name, inputs, opts);
     }
 }

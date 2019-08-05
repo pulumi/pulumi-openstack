@@ -142,6 +142,13 @@ export class IpSecPolicy extends pulumi.CustomResource {
             inputs["transformProtocol"] = args ? args.transformProtocol : undefined;
             inputs["valueSpecs"] = args ? args.valueSpecs : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(IpSecPolicy.__pulumiType, name, inputs, opts);
     }
 }

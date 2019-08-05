@@ -112,6 +112,10 @@ class Zone(pulumi.CustomResource):
 
         __props__['value_specs'] = value_specs
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(Zone, __self__).__init__(
             'openstack:dns/zone:Zone',
             resource_name,

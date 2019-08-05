@@ -215,6 +215,13 @@ export class InterfaceAttach extends pulumi.CustomResource {
             inputs["portId"] = args ? args.portId : undefined;
             inputs["region"] = args ? args.region : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(InterfaceAttach.__pulumiType, name, inputs, opts);
     }
 }

@@ -65,7 +65,15 @@ class GetSnapshotV2Result:
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_snapshot_v2(most_recent=None,name=None,region=None,status=None,volume_id=None,opts=None):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return self
+
+    __iter__ = __await__
+
+def get_snapshot_v2(most_recent=None,name=None,region=None,status=None,volume_id=None,opts=None):
     """
     Use this data source to get information about an existing snapshot.
 
@@ -78,7 +86,11 @@ async def get_snapshot_v2(most_recent=None,name=None,region=None,status=None,vol
     __args__['region'] = region
     __args__['status'] = status
     __args__['volumeId'] = volume_id
-    __ret__ = await pulumi.runtime.invoke('openstack:blockstorage/getSnapshotV2:getSnapshotV2', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('openstack:blockstorage/getSnapshotV2:getSnapshotV2', __args__, opts=opts).value
 
     return GetSnapshotV2Result(
         description=__ret__.get('description'),

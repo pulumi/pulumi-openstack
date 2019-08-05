@@ -216,6 +216,10 @@ class ContainerObject(pulumi.CustomResource):
         __props__['last_modified'] = None
         __props__['trans_id'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(ContainerObject, __self__).__init__(
             'openstack:objectstorage/containerObject:ContainerObject',
             resource_name,

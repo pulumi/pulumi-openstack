@@ -202,6 +202,13 @@ export class Share extends pulumi.CustomResource {
             inputs["replicationType"] = undefined /*out*/;
             inputs["shareServerId"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(Share.__pulumiType, name, inputs, opts);
     }
 }

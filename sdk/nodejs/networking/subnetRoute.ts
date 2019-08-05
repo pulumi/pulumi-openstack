@@ -115,6 +115,13 @@ export class SubnetRoute extends pulumi.CustomResource {
             inputs["region"] = args ? args.region : undefined;
             inputs["subnetId"] = args ? args.subnetId : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(SubnetRoute.__pulumiType, name, inputs, opts);
     }
 }

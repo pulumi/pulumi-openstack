@@ -44,7 +44,15 @@ class GetKeypairResult:
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_keypair(name=None,region=None,opts=None):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return self
+
+    __iter__ = __await__
+
+def get_keypair(name=None,region=None,opts=None):
     """
     Use this data source to get the ID and public key of an OpenStack keypair.
 
@@ -54,7 +62,11 @@ async def get_keypair(name=None,region=None,opts=None):
 
     __args__['name'] = name
     __args__['region'] = region
-    __ret__ = await pulumi.runtime.invoke('openstack:compute/getKeypair:getKeypair', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('openstack:compute/getKeypair:getKeypair', __args__, opts=opts).value
 
     return GetKeypairResult(
         fingerprint=__ret__.get('fingerprint'),

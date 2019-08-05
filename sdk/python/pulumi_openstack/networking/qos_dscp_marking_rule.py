@@ -64,6 +64,10 @@ class QosDscpMarkingRule(pulumi.CustomResource):
 
         __props__['region'] = region
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(QosDscpMarkingRule, __self__).__init__(
             'openstack:networking/qosDscpMarkingRule:QosDscpMarkingRule',
             resource_name,
