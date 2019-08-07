@@ -228,6 +228,8 @@ github.com/gophercloud/gophercloud v0.0.0-20190509032623-7892efa714f1 h1:arOt83f
 github.com/gophercloud/gophercloud v0.0.0-20190509032623-7892efa714f1/go.mod h1:vxM41WHh5uqHVBMZHzuwNOHh8XEoIEcSTewFxm1c5g8=
 github.com/gophercloud/gophercloud v0.2.0 h1:lD2Bce2xBAMNNcFZ0dObTpXkGLlVIb33RPVUNVpw6ic=
 github.com/gophercloud/gophercloud v0.2.0/go.mod h1:vxM41WHh5uqHVBMZHzuwNOHh8XEoIEcSTewFxm1c5g8=
+github.com/gophercloud/gophercloud v0.3.1-0.20190805134041-ef348b655090 h1:GLNIzkMWJOObKVK8WrVYOeaIwPwCwtdSBruhueOsZXQ=
+github.com/gophercloud/gophercloud v0.3.1-0.20190805134041-ef348b655090/go.mod h1:vxM41WHh5uqHVBMZHzuwNOHh8XEoIEcSTewFxm1c5g8=
 github.com/gophercloud/utils v0.0.0-20190128072930-fbb6ab446f01/go.mod h1:wjDF8z83zTeg5eMLml5EBSlAhbF7G8DobyI1YsMuyzw=
 github.com/gophercloud/utils v0.0.0-20190212203534-6f24f46ce3c9 h1:frK+RgSyzotPwHzxlbGO9aeM+zoQ4LgUfQbbynAAavw=
 github.com/gophercloud/utils v0.0.0-20190212203534-6f24f46ce3c9/go.mod h1:95GkZLE4Nob0I9L4qW5dWmyiekLwK3HsVAOV13XY9CY=
@@ -632,6 +634,8 @@ github.com/terraform-providers/terraform-provider-openstack v1.19.0 h1:q3B3B/OlL
 github.com/terraform-providers/terraform-provider-openstack v1.19.0/go.mod h1:jE41jll4IHoT9/oHnxqEw+rv1LJmUeTCpWjZCqY9oB8=
 github.com/terraform-providers/terraform-provider-openstack v1.20.0 h1:O3iWQfL5+WiX+25PjfESI/ikM5ufTOONuwIw8U+Hs1g=
 github.com/terraform-providers/terraform-provider-openstack v1.20.0/go.mod h1:i4VK9EXs8BUNeQwPAu4NOjKRD/ocMOXm7G61zwkUDe4=
+github.com/terraform-providers/terraform-provider-openstack v1.21.0 h1:c9yWrqnvIevfajnTYJa1Z6zaMZ6ptszmqjOnCrc4OmA=
+github.com/terraform-providers/terraform-provider-openstack v1.21.0/go.mod h1:E8Cy3YhSH4IuBXxvCrwjXVi84SW126GJVCtVm4Mco2Y=
 github.com/terraform-providers/terraform-provider-template v1.0.0/go.mod h1:/J+B8me5DCMa0rEBH5ic2aKPjhtpWNeScmxFJWxB1EU=
 github.com/terraform-providers/terraform-provider-tls v1.2.0/go.mod h1:Mxe/v5u31LDW4m32O1z6Ursdh95dpc9Puq6otkYg7tU=
 github.com/texttheater/golang-levenshtein v0.0.0-20180516184445-d188e65d659e h1:T5PdfK/M1xyrHwynxMIVMWLS7f/qHwfslZphxtGnw7s=
