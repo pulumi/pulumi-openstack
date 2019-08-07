@@ -20,7 +20,7 @@ import (
 // different cloud provider.
 // 
 // This does not actually attach a volume to an instance. Please use
-// the `openstack_compute_volume_attach_v3` resource for that.
+// the `openstack_compute_volume_attach_v2` resource for that.
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/blockstorage_volume_attach_v3.html.markdown.
 type VolumeAttach struct {

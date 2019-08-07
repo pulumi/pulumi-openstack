@@ -50,6 +50,7 @@ func NewShare(ctx *pulumi.Context,
 		inputs["size"] = args.Size
 		inputs["snapshotId"] = args.SnapshotId
 	}
+	inputs["allMetadata"] = nil
 	inputs["exportLocations"] = nil
 	inputs["hasReplicas"] = nil
 	inputs["host"] = nil
@@ -69,6 +70,7 @@ func GetShare(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *ShareState, opts ...pulumi.ResourceOpt) (*Share, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["allMetadata"] = state.AllMetadata
 		inputs["availabilityZone"] = state.AvailabilityZone
 		inputs["description"] = state.Description
 		inputs["exportLocations"] = state.ExportLocations
@@ -102,6 +104,12 @@ func (r *Share) URN() *pulumi.URNOutput {
 // ID is this resource's unique identifier assigned by its provider.
 func (r *Share) ID() *pulumi.IDOutput {
 	return r.s.ID()
+}
+
+// The map of metadata, assigned on the share, which has been
+// explicitly and implicitly added.
+func (r *Share) AllMetadata() *pulumi.MapOutput {
+	return (*pulumi.MapOutput)(r.s.State["allMetadata"])
 }
 
 // The share availability zone. Changing this creates a
@@ -206,6 +214,9 @@ func (r *Share) SnapshotId() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering Share resources.
 type ShareState struct {
+	// The map of metadata, assigned on the share, which has been
+	// explicitly and implicitly added.
+	AllMetadata interface{}
 	// The share availability zone. Changing this creates a
 	// new share.
 	AvailabilityZone interface{}

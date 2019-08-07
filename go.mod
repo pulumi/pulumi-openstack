@@ -17,7 +17,7 @@ require (
 	github.com/pkg/errors v0.8.1
 	github.com/pulumi/pulumi v0.17.28-0.20190731182900-6804d640fc7c
 	github.com/pulumi/pulumi-terraform v0.18.4-0.20190805204638-013b95b1c891
-	github.com/terraform-providers/terraform-provider-openstack v1.20.0
+	github.com/terraform-providers/terraform-provider-openstack v1.21.0
 	golang.org/x/build v0.0.0-20190314133821-5284462c4bec // indirect
 	gopkg.in/vmihailenco/msgpack.v2 v2.9.1 // indirect
 )

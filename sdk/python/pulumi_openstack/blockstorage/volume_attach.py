@@ -93,7 +93,7 @@ class VolumeAttach(pulumi.CustomResource):
         different cloud provider.
         
         This does not actually attach a volume to an instance. Please use
-        the `openstack_compute_volume_attach_v3` resource for that.
+        the `openstack_compute_volume_attach_v2` resource for that.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
