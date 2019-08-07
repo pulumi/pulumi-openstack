@@ -9,6 +9,11 @@ import pulumi.runtime
 from .. import utilities, tables
 
 class Share(pulumi.CustomResource):
+    all_metadata: pulumi.Output[dict]
+    """
+    The map of metadata, assigned on the share, which has been
+    explicitly and implicitly added.
+    """
     availability_zone: pulumi.Output[str]
     """
     The share availability zone. Changing this creates a
@@ -167,6 +172,7 @@ class Share(pulumi.CustomResource):
 
         __props__['snapshot_id'] = snapshot_id
 
+        __props__['all_metadata'] = None
         __props__['export_locations'] = None
         __props__['has_replicas'] = None
         __props__['host'] = None

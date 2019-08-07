@@ -64,6 +64,11 @@ export class Share extends pulumi.CustomResource {
     }
 
     /**
+     * The map of metadata, assigned on the share, which has been
+     * explicitly and implicitly added.
+     */
+    public /*out*/ readonly allMetadata!: pulumi.Output<{[key: string]: any}>;
+    /**
      * The share availability zone. Changing this creates a
      * new share.
      */
@@ -159,6 +164,7 @@ export class Share extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as ShareState | undefined;
+            inputs["allMetadata"] = state ? state.allMetadata : undefined;
             inputs["availabilityZone"] = state ? state.availabilityZone : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["exportLocations"] = state ? state.exportLocations : undefined;
@@ -195,6 +201,7 @@ export class Share extends pulumi.CustomResource {
             inputs["shareType"] = args ? args.shareType : undefined;
             inputs["size"] = args ? args.size : undefined;
             inputs["snapshotId"] = args ? args.snapshotId : undefined;
+            inputs["allMetadata"] = undefined /*out*/;
             inputs["exportLocations"] = undefined /*out*/;
             inputs["hasReplicas"] = undefined /*out*/;
             inputs["host"] = undefined /*out*/;
@@ -217,6 +224,11 @@ export class Share extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Share resources.
  */
 export interface ShareState {
+    /**
+     * The map of metadata, assigned on the share, which has been
+     * explicitly and implicitly added.
+     */
+    readonly allMetadata?: pulumi.Input<{[key: string]: any}>;
     /**
      * The share availability zone. Changing this creates a
      * new share.

@@ -32,7 +32,7 @@ func NewPool(ctx *pulumi.Context,
 		inputs["listenerId"] = nil
 		inputs["loadbalancerId"] = nil
 		inputs["name"] = nil
-		inputs["persistences"] = nil
+		inputs["persistence"] = nil
 		inputs["protocol"] = nil
 		inputs["region"] = nil
 		inputs["tenantId"] = nil
@@ -43,7 +43,7 @@ func NewPool(ctx *pulumi.Context,
 		inputs["listenerId"] = args.ListenerId
 		inputs["loadbalancerId"] = args.LoadbalancerId
 		inputs["name"] = args.Name
-		inputs["persistences"] = args.Persistences
+		inputs["persistence"] = args.Persistence
 		inputs["protocol"] = args.Protocol
 		inputs["region"] = args.Region
 		inputs["tenantId"] = args.TenantId
@@ -67,7 +67,7 @@ func GetPool(ctx *pulumi.Context,
 		inputs["listenerId"] = state.ListenerId
 		inputs["loadbalancerId"] = state.LoadbalancerId
 		inputs["name"] = state.Name
-		inputs["persistences"] = state.Persistences
+		inputs["persistence"] = state.Persistence
 		inputs["protocol"] = state.Protocol
 		inputs["region"] = state.Region
 		inputs["tenantId"] = state.TenantId
@@ -129,8 +129,8 @@ func (r *Pool) Name() *pulumi.StringOutput {
 // Omit this field to prevent session persistence.  Indicates
 // whether connections in the same session will be processed by the same Pool
 // member or not. Changing this creates a new pool.
-func (r *Pool) Persistences() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["persistences"])
+func (r *Pool) Persistence() *pulumi.Output {
+	return r.s.State["persistence"]
 }
 
 // See Argument Reference above.
@@ -177,7 +177,7 @@ type PoolState struct {
 	// Omit this field to prevent session persistence.  Indicates
 	// whether connections in the same session will be processed by the same Pool
 	// member or not. Changing this creates a new pool.
-	Persistences interface{}
+	Persistence interface{}
 	// See Argument Reference above.
 	Protocol interface{}
 	// The region in which to obtain the V2 Networking client.
@@ -215,7 +215,7 @@ type PoolArgs struct {
 	// Omit this field to prevent session persistence.  Indicates
 	// whether connections in the same session will be processed by the same Pool
 	// member or not. Changing this creates a new pool.
-	Persistences interface{}
+	Persistence interface{}
 	// See Argument Reference above.
 	Protocol interface{}
 	// The region in which to obtain the V2 Networking client.

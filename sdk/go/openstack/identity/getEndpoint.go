@@ -9,26 +9,32 @@ import (
 
 // Use this data source to get the ID of an OpenStack endpoint.
 // 
-// Note: This usually requires admin privileges.
+// > **Note:** This usually requires admin privileges.
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_endpoint_v3.html.markdown.
 func LookupEndpoint(ctx *pulumi.Context, args *GetEndpointArgs) (*GetEndpointResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
+		inputs["endpointRegion"] = args.EndpointRegion
 		inputs["interface"] = args.Interface
+		inputs["name"] = args.Name
 		inputs["region"] = args.Region
 		inputs["serviceId"] = args.ServiceId
 		inputs["serviceName"] = args.ServiceName
+		inputs["serviceType"] = args.ServiceType
 	}
 	outputs, err := ctx.Invoke("openstack:identity/getEndpoint:getEndpoint", inputs)
 	if err != nil {
 		return nil, err
 	}
 	return &GetEndpointResult{
+		EndpointRegion: outputs["endpointRegion"],
 		Interface: outputs["interface"],
+		Name: outputs["name"],
 		Region: outputs["region"],
 		ServiceId: outputs["serviceId"],
 		ServiceName: outputs["serviceName"],
+		ServiceType: outputs["serviceType"],
 		Url: outputs["url"],
 		Id: outputs["id"],
 	}, nil
@@ -36,28 +42,42 @@ func LookupEndpoint(ctx *pulumi.Context, args *GetEndpointArgs) (*GetEndpointRes
 
 // A collection of arguments for invoking getEndpoint.
 type GetEndpointArgs struct {
+	// The region the endpoint is assigned to. The
+	// `region` and `endpoint_region` can be different.
+	EndpointRegion interface{}
 	// The endpoint interface. Valid values are `public`,
 	// `internal`, and `admin`. Default value is `public`
 	Interface interface{}
-	// The region the endpoint is located in.
+	// The name of the endpoint.
+	Name interface{}
+	// The region in which to obtain the V3 Keystone client.
+	// If omitted, the `region` argument of the provider is used.
 	Region interface{}
 	// The service id this endpoint belongs to.
 	ServiceId interface{}
 	// The service name of the endpoint.
 	ServiceName interface{}
+	// The service type of the endpoint.
+	ServiceType interface{}
 }
 
 // A collection of values returned by getEndpoint.
 type GetEndpointResult struct {
 	// See Argument Reference above.
+	EndpointRegion interface{}
+	// See Argument Reference above.
 	Interface interface{}
-	// The region the endpoint is located in.
+	// See Argument Reference above.
+	Name interface{}
+	// See Argument Reference above.
 	Region interface{}
 	// See Argument Reference above.
 	ServiceId interface{}
 	// See Argument Reference above.
 	ServiceName interface{}
-	// The endpoint URL
+	// See Argument Reference above.
+	ServiceType interface{}
+	// The endpoint URL.
 	Url interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}

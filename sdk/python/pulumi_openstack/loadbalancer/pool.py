@@ -40,7 +40,7 @@ class Pool(pulumi.CustomResource):
     """
     Human-readable name for the pool.
     """
-    persistences: pulumi.Output[list]
+    persistence: pulumi.Output[dict]
     """
     Omit this field to prevent session persistence.  Indicates
     whether connections in the same session will be processed by the same Pool
@@ -63,7 +63,7 @@ class Pool(pulumi.CustomResource):
     the pool.  Only administrative users can specify a tenant UUID
     other than their own. Changing this creates a new pool.
     """
-    def __init__(__self__, resource_name, opts=None, admin_state_up=None, description=None, lb_method=None, listener_id=None, loadbalancer_id=None, name=None, persistences=None, protocol=None, region=None, tenant_id=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, admin_state_up=None, description=None, lb_method=None, listener_id=None, loadbalancer_id=None, name=None, persistence=None, protocol=None, region=None, tenant_id=None, __name__=None, __opts__=None):
         """
         Manages a V2 pool resource within OpenStack.
         
@@ -82,7 +82,7 @@ class Pool(pulumi.CustomResource):
                pool. Changing this creates a new pool.
                Note:  One of LoadbalancerID or ListenerID must be provided.
         :param pulumi.Input[str] name: Human-readable name for the pool.
-        :param pulumi.Input[list] persistences: Omit this field to prevent session persistence.  Indicates
+        :param pulumi.Input[dict] persistence: Omit this field to prevent session persistence.  Indicates
                whether connections in the same session will be processed by the same Pool
                member or not. Changing this creates a new pool.
         :param pulumi.Input[str] protocol: See Argument Reference above.
@@ -125,7 +125,7 @@ class Pool(pulumi.CustomResource):
 
         __props__['name'] = name
 
-        __props__['persistences'] = persistences
+        __props__['persistence'] = persistence
 
         if protocol is None:
             raise TypeError("Missing required property 'protocol'")

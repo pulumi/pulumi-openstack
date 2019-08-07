@@ -12,10 +12,22 @@ class GetEndpointResult:
     """
     A collection of values returned by getEndpoint.
     """
-    def __init__(__self__, interface=None, region=None, service_id=None, service_name=None, url=None, id=None):
+    def __init__(__self__, endpoint_region=None, interface=None, name=None, region=None, service_id=None, service_name=None, service_type=None, url=None, id=None):
+        if endpoint_region and not isinstance(endpoint_region, str):
+            raise TypeError("Expected argument 'endpoint_region' to be a str")
+        __self__.endpoint_region = endpoint_region
+        """
+        See Argument Reference above.
+        """
         if interface and not isinstance(interface, str):
             raise TypeError("Expected argument 'interface' to be a str")
         __self__.interface = interface
+        """
+        See Argument Reference above.
+        """
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        __self__.name = name
         """
         See Argument Reference above.
         """
@@ -23,7 +35,7 @@ class GetEndpointResult:
             raise TypeError("Expected argument 'region' to be a str")
         __self__.region = region
         """
-        The region the endpoint is located in.
+        See Argument Reference above.
         """
         if service_id and not isinstance(service_id, str):
             raise TypeError("Expected argument 'service_id' to be a str")
@@ -37,11 +49,17 @@ class GetEndpointResult:
         """
         See Argument Reference above.
         """
+        if service_type and not isinstance(service_type, str):
+            raise TypeError("Expected argument 'service_type' to be a str")
+        __self__.service_type = service_type
+        """
+        See Argument Reference above.
+        """
         if url and not isinstance(url, str):
             raise TypeError("Expected argument 'url' to be a str")
         __self__.url = url
         """
-        The endpoint URL
+        The endpoint URL.
         """
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
@@ -58,20 +76,23 @@ class GetEndpointResult:
 
     __iter__ = __await__
 
-def get_endpoint(interface=None,region=None,service_id=None,service_name=None,opts=None):
+def get_endpoint(endpoint_region=None,interface=None,name=None,region=None,service_id=None,service_name=None,service_type=None,opts=None):
     """
     Use this data source to get the ID of an OpenStack endpoint.
     
-    Note: This usually requires admin privileges.
+    > **Note:** This usually requires admin privileges.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_endpoint_v3.html.markdown.
     """
     __args__ = dict()
 
+    __args__['endpointRegion'] = endpoint_region
     __args__['interface'] = interface
+    __args__['name'] = name
     __args__['region'] = region
     __args__['serviceId'] = service_id
     __args__['serviceName'] = service_name
+    __args__['serviceType'] = service_type
     if opts is None:
         opts = pulumi.ResourceOptions()
     if opts.version is None:
@@ -79,9 +100,12 @@ def get_endpoint(interface=None,region=None,service_id=None,service_name=None,op
     __ret__ = pulumi.runtime.invoke('openstack:identity/getEndpoint:getEndpoint', __args__, opts=opts).value
 
     return GetEndpointResult(
+        endpoint_region=__ret__.get('endpointRegion'),
         interface=__ret__.get('interface'),
+        name=__ret__.get('name'),
         region=__ret__.get('region'),
         service_id=__ret__.get('serviceId'),
         service_name=__ret__.get('serviceName'),
+        service_type=__ret__.get('serviceType'),
         url=__ret__.get('url'),
         id=__ret__.get('id'))

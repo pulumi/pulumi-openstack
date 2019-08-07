@@ -16,10 +16,10 @@ import * as utilities from "../utilities";
  * const pool1 = new openstack.loadbalancer.Pool("pool_1", {
  *     lbMethod: "ROUND_ROBIN",
  *     listenerId: "d9415786-5f1a-428b-b35f-2f1523e146d2",
- *     persistences: [{
+ *     persistence: {
  *         cookieName: "testCookie",
  *         type: "HTTP_COOKIE",
- *     }],
+ *     },
  *     protocol: "HTTP",
  * });
  * ```
@@ -89,7 +89,7 @@ export class Pool extends pulumi.CustomResource {
      * whether connections in the same session will be processed by the same Pool
      * member or not. Changing this creates a new pool.
      */
-    public readonly persistences!: pulumi.Output<{ cookieName?: string, type: string }[] | undefined>;
+    public readonly persistence!: pulumi.Output<{ cookieName?: string, type: string }>;
     /**
      * See Argument Reference above.
      */
@@ -126,7 +126,7 @@ export class Pool extends pulumi.CustomResource {
             inputs["listenerId"] = state ? state.listenerId : undefined;
             inputs["loadbalancerId"] = state ? state.loadbalancerId : undefined;
             inputs["name"] = state ? state.name : undefined;
-            inputs["persistences"] = state ? state.persistences : undefined;
+            inputs["persistence"] = state ? state.persistence : undefined;
             inputs["protocol"] = state ? state.protocol : undefined;
             inputs["region"] = state ? state.region : undefined;
             inputs["tenantId"] = state ? state.tenantId : undefined;
@@ -144,7 +144,7 @@ export class Pool extends pulumi.CustomResource {
             inputs["listenerId"] = args ? args.listenerId : undefined;
             inputs["loadbalancerId"] = args ? args.loadbalancerId : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["persistences"] = args ? args.persistences : undefined;
+            inputs["persistence"] = args ? args.persistence : undefined;
             inputs["protocol"] = args ? args.protocol : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["tenantId"] = args ? args.tenantId : undefined;
@@ -200,7 +200,7 @@ export interface PoolState {
      * whether connections in the same session will be processed by the same Pool
      * member or not. Changing this creates a new pool.
      */
-    readonly persistences?: pulumi.Input<pulumi.Input<{ cookieName?: pulumi.Input<string>, type: pulumi.Input<string> }>[]>;
+    readonly persistence?: pulumi.Input<{ cookieName?: pulumi.Input<string>, type: pulumi.Input<string> }>;
     /**
      * See Argument Reference above.
      */
@@ -260,7 +260,7 @@ export interface PoolArgs {
      * whether connections in the same session will be processed by the same Pool
      * member or not. Changing this creates a new pool.
      */
-    readonly persistences?: pulumi.Input<pulumi.Input<{ cookieName?: pulumi.Input<string>, type: pulumi.Input<string> }>[]>;
+    readonly persistence?: pulumi.Input<{ cookieName?: pulumi.Input<string>, type: pulumi.Input<string> }>;
     /**
      * See Argument Reference above.
      */

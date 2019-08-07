@@ -142,7 +142,7 @@ export class Instance extends pulumi.CustomResource {
     public readonly schedulerHints!: pulumi.Output<{ additionalProperties?: {[key: string]: any}, buildNearHostIp?: string, differentHosts?: string[], group?: string, queries?: string[], sameHosts?: string[], targetCell?: string }[] | undefined>;
     /**
      * An array of one or more security group names
-     * to associate with the server. Changing this results in adding/removing
+     * or ids to associate with the server. Changing this results in adding/removing
      * security groups from the existing server. *Note*: When attaching the
      * instance to networks using Ports, place the security groups on the Port
      * and not the instance.
@@ -351,7 +351,7 @@ export interface InstanceState {
     readonly schedulerHints?: pulumi.Input<pulumi.Input<{ additionalProperties?: pulumi.Input<{[key: string]: any}>, buildNearHostIp?: pulumi.Input<string>, differentHosts?: pulumi.Input<pulumi.Input<string>[]>, group?: pulumi.Input<string>, queries?: pulumi.Input<pulumi.Input<string>[]>, sameHosts?: pulumi.Input<pulumi.Input<string>[]>, targetCell?: pulumi.Input<string> }>[]>;
     /**
      * An array of one or more security group names
-     * to associate with the server. Changing this results in adding/removing
+     * or ids to associate with the server. Changing this results in adding/removing
      * security groups from the existing server. *Note*: When attaching the
      * instance to networks using Ports, place the security groups on the Port
      * and not the instance.
@@ -486,7 +486,7 @@ export interface InstanceArgs {
     readonly schedulerHints?: pulumi.Input<pulumi.Input<{ additionalProperties?: pulumi.Input<{[key: string]: any}>, buildNearHostIp?: pulumi.Input<string>, differentHosts?: pulumi.Input<pulumi.Input<string>[]>, group?: pulumi.Input<string>, queries?: pulumi.Input<pulumi.Input<string>[]>, sameHosts?: pulumi.Input<pulumi.Input<string>[]>, targetCell?: pulumi.Input<string> }>[]>;
     /**
      * An array of one or more security group names
-     * to associate with the server. Changing this results in adding/removing
+     * or ids to associate with the server. Changing this results in adding/removing
      * security groups from the existing server. *Note*: When attaching the
      * instance to networks using Ports, place the security groups on the Port
      * and not the instance.
