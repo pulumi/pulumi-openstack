@@ -36,7 +36,7 @@ import * as utilities from "../utilities";
  * this resource will automatically reconcile these with the user-provided
  * properties.
  * 
- * In addition, the `direct_url` property is also automatically reconciled if the
+ * In addition, the `directUrl` property is also automatically reconciled if the
  * Image Service set it.
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/images_image_v2.html.markdown.
@@ -95,15 +95,15 @@ export class Image extends pulumi.CustomResource {
     public readonly imageCachePath!: pulumi.Output<string | undefined>;
     /**
      * This is the url of the raw image that will
-     * be downloaded in the `image_cache_path` before being uploaded to Glance.
+     * be downloaded in the `imageCachePath` before being uploaded to Glance.
      * Glance is able to download image from internet but the `gophercloud` library
      * does not yet provide a way to do so.
-     * Conflicts with `local_file_path`.
+     * Conflicts with `localFilePath`.
      */
     public readonly imageSourceUrl!: pulumi.Output<string | undefined>;
     /**
      * This is the filepath of the raw image file
-     * that will be uploaded to Glance. Conflicts with `image_source_url`.
+     * that will be uploaded to Glance. Conflicts with `imageSourceUrl`.
      */
     public readonly localFilePath!: pulumi.Output<string | undefined>;
     /**
@@ -168,7 +168,7 @@ export class Image extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
-     * (**Deprecated** - use `updated_at` instead)
+     * (**Deprecated** - use `updatedAt` instead)
      */
     public /*out*/ readonly updateAt!: pulumi.Output<string>;
     /**
@@ -298,15 +298,15 @@ export interface ImageState {
     readonly imageCachePath?: pulumi.Input<string>;
     /**
      * This is the url of the raw image that will
-     * be downloaded in the `image_cache_path` before being uploaded to Glance.
+     * be downloaded in the `imageCachePath` before being uploaded to Glance.
      * Glance is able to download image from internet but the `gophercloud` library
      * does not yet provide a way to do so.
-     * Conflicts with `local_file_path`.
+     * Conflicts with `localFilePath`.
      */
     readonly imageSourceUrl?: pulumi.Input<string>;
     /**
      * This is the filepath of the raw image file
-     * that will be uploaded to Glance. Conflicts with `image_source_url`.
+     * that will be uploaded to Glance. Conflicts with `imageSourceUrl`.
      */
     readonly localFilePath?: pulumi.Input<string>;
     /**
@@ -371,7 +371,7 @@ export interface ImageState {
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * (**Deprecated** - use `updated_at` instead)
+     * (**Deprecated** - use `updatedAt` instead)
      */
     readonly updateAt?: pulumi.Input<string>;
     /**
@@ -408,15 +408,15 @@ export interface ImageArgs {
     readonly imageCachePath?: pulumi.Input<string>;
     /**
      * This is the url of the raw image that will
-     * be downloaded in the `image_cache_path` before being uploaded to Glance.
+     * be downloaded in the `imageCachePath` before being uploaded to Glance.
      * Glance is able to download image from internet but the `gophercloud` library
      * does not yet provide a way to do so.
-     * Conflicts with `local_file_path`.
+     * Conflicts with `localFilePath`.
      */
     readonly imageSourceUrl?: pulumi.Input<string>;
     /**
      * This is the filepath of the raw image file
-     * that will be uploaded to Glance. Conflicts with `image_source_url`.
+     * that will be uploaded to Glance. Conflicts with `imageSourceUrl`.
      */
     readonly localFilePath?: pulumi.Input<string>;
     /**

@@ -73,14 +73,22 @@ class GetUserResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetUserResult(GetUserResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetUserResult(
+            default_project_id=self.default_project_id,
+            domain_id=self.domain_id,
+            enabled=self.enabled,
+            idp_id=self.idp_id,
+            name=self.name,
+            password_expires_at=self.password_expires_at,
+            protocol_id=self.protocol_id,
+            region=self.region,
+            unique_id=self.unique_id,
+            id=self.id)
 
 def get_user(domain_id=None,enabled=None,idp_id=None,name=None,password_expires_at=None,protocol_id=None,region=None,unique_id=None,opts=None):
     """
@@ -104,7 +112,7 @@ def get_user(domain_id=None,enabled=None,idp_id=None,name=None,password_expires_
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:identity/getUser:getUser', __args__, opts=opts).value
 
-    return GetUserResult(
+    return AwaitableGetUserResult(
         default_project_id=__ret__.get('defaultProjectId'),
         domain_id=__ret__.get('domainId'),
         enabled=__ret__.get('enabled'),

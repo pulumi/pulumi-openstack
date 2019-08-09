@@ -37,14 +37,16 @@ class GetRoleResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetRoleResult(GetRoleResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetRoleResult(
+            domain_id=self.domain_id,
+            name=self.name,
+            region=self.region,
+            id=self.id)
 
 def get_role(domain_id=None,name=None,region=None,opts=None):
     """
@@ -63,7 +65,7 @@ def get_role(domain_id=None,name=None,region=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:identity/getRole:getRole', __args__, opts=opts).value
 
-    return GetRoleResult(
+    return AwaitableGetRoleResult(
         domain_id=__ret__.get('domainId'),
         name=__ret__.get('name'),
         region=__ret__.get('region'),

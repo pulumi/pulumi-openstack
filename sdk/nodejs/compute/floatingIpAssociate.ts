@@ -6,7 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Associate a floating IP to an instance. This can be used instead of the
- * `floating_ip` options in `openstack_compute_instance_v2`.
+ * `floatingIp` options in `openstack.compute.Instance`.
  * 
  * ## Example Usage
  * 
@@ -16,16 +16,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const instance1 = new openstack.compute.Instance("instance_1", {
+ * const instance1 = new openstack.compute.Instance("instance1", {
  *     flavorId: "3",
  *     imageId: "ad091b52-742f-469e-8f3c-fd81cadf0743",
- *     keyPair: "my_key_pair_name",
+ *     keyPair: "myKeyPairName",
  *     securityGroups: ["default"],
  * });
- * const fip1FloatingIp = new openstack.networking.FloatingIp("fip_1", {
- *     pool: "my_pool",
+ * const fip1FloatingIp = new openstack.networking.FloatingIp("fip1", {
+ *     pool: "myPool",
  * });
- * const fip1FloatingIpAssociate = new openstack.compute.FloatingIpAssociate("fip_1", {
+ * const fip1FloatingIpAssociate = new openstack.compute.FloatingIpAssociate("fip1", {
  *     floatingIp: fip1FloatingIp.address,
  *     instanceId: instance1.id,
  * });
@@ -37,13 +37,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const instance1 = new openstack.compute.Instance("instance_1", {
+ * const instance1 = new openstack.compute.Instance("instance1", {
  *     flavorId: "3",
  *     imageId: "ad091b52-742f-469e-8f3c-fd81cadf0743",
- *     keyPair: "my_key_pair_name",
+ *     keyPair: "myKeyPairName",
  *     networks: [
  *         {
- *             name: "my_network",
+ *             name: "myNetwork",
  *         },
  *         {
  *             name: "default",
@@ -51,10 +51,10 @@ import * as utilities from "../utilities";
  *     ],
  *     securityGroups: ["default"],
  * });
- * const fip1FloatingIp = new openstack.networking.FloatingIp("fip_1", {
- *     pool: "my_pool",
+ * const fip1FloatingIp = new openstack.networking.FloatingIp("fip1", {
+ *     pool: "myPool",
  * });
- * const fip1FloatingIpAssociate = new openstack.compute.FloatingIpAssociate("fip_1", {
+ * const fip1FloatingIpAssociate = new openstack.compute.FloatingIpAssociate("fip1", {
  *     fixedIp: instance1.networks[1].fixedIpV4,
  *     floatingIp: fip1FloatingIp.address,
  *     instanceId: instance1.id,

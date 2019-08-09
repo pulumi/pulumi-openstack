@@ -79,14 +79,24 @@ class GetQosPolicyResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetQosPolicyResult(GetQosPolicyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetQosPolicyResult(
+            all_tags=self.all_tags,
+            created_at=self.created_at,
+            description=self.description,
+            is_default=self.is_default,
+            name=self.name,
+            project_id=self.project_id,
+            region=self.region,
+            revision_number=self.revision_number,
+            shared=self.shared,
+            tags=self.tags,
+            updated_at=self.updated_at,
+            id=self.id)
 
 def get_qos_policy(description=None,is_default=None,name=None,project_id=None,region=None,shared=None,tags=None,opts=None):
     """
@@ -109,7 +119,7 @@ def get_qos_policy(description=None,is_default=None,name=None,project_id=None,re
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:networking/getQosPolicy:getQosPolicy', __args__, opts=opts).value
 
-    return GetQosPolicyResult(
+    return AwaitableGetQosPolicyResult(
         all_tags=__ret__.get('allTags'),
         created_at=__ret__.get('createdAt'),
         description=__ret__.get('description'),

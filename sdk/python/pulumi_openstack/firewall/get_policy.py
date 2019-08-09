@@ -67,14 +67,21 @@ class GetPolicyResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetPolicyResult(GetPolicyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetPolicyResult(
+            audited=self.audited,
+            description=self.description,
+            name=self.name,
+            policy_id=self.policy_id,
+            region=self.region,
+            rules=self.rules,
+            shared=self.shared,
+            tenant_id=self.tenant_id,
+            id=self.id)
 
 def get_policy(name=None,policy_id=None,region=None,tenant_id=None,opts=None):
     """
@@ -94,7 +101,7 @@ def get_policy(name=None,policy_id=None,region=None,tenant_id=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:firewall/getPolicy:getPolicy', __args__, opts=opts).value
 
-    return GetPolicyResult(
+    return AwaitableGetPolicyResult(
         audited=__ret__.get('audited'),
         description=__ret__.get('description'),
         name=__ret__.get('name'),

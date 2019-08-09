@@ -57,7 +57,7 @@ class Member(pulumi.CustomResource):
     example, a member with a weight of 10 receives five times as much traffic
     as a member with a weight of 2.
     """
-    def __init__(__self__, resource_name, opts=None, address=None, admin_state_up=None, name=None, pool_id=None, protocol_port=None, region=None, subnet_id=None, tenant_id=None, weight=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, address=None, admin_state_up=None, name=None, pool_id=None, protocol_port=None, region=None, subnet_id=None, tenant_id=None, weight=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a V2 member resource within OpenStack.
         
@@ -93,50 +93,83 @@ class Member(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        if address is None:
-            raise TypeError("Missing required property 'address'")
-        __props__['address'] = address
-
-        __props__['admin_state_up'] = admin_state_up
-
-        __props__['name'] = name
-
-        if pool_id is None:
-            raise TypeError("Missing required property 'pool_id'")
-        __props__['pool_id'] = pool_id
-
-        if protocol_port is None:
-            raise TypeError("Missing required property 'protocol_port'")
-        __props__['protocol_port'] = protocol_port
-
-        __props__['region'] = region
-
-        __props__['subnet_id'] = subnet_id
-
-        __props__['tenant_id'] = tenant_id
-
-        __props__['weight'] = weight
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            if address is None:
+                raise TypeError("Missing required property 'address'")
+            __props__['address'] = address
+            __props__['admin_state_up'] = admin_state_up
+            __props__['name'] = name
+            if pool_id is None:
+                raise TypeError("Missing required property 'pool_id'")
+            __props__['pool_id'] = pool_id
+            if protocol_port is None:
+                raise TypeError("Missing required property 'protocol_port'")
+            __props__['protocol_port'] = protocol_port
+            __props__['region'] = region
+            __props__['subnet_id'] = subnet_id
+            __props__['tenant_id'] = tenant_id
+            __props__['weight'] = weight
         super(Member, __self__).__init__(
             'openstack:loadbalancer/member:Member',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, address=None, admin_state_up=None, name=None, pool_id=None, protocol_port=None, region=None, subnet_id=None, tenant_id=None, weight=None):
+        """
+        Get an existing Member resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] address: The IP address of the member to receive traffic from
+               the load balancer. Changing this creates a new member.
+        :param pulumi.Input[bool] admin_state_up: The administrative state of the member.
+               A valid value is true (UP) or false (DOWN).
+        :param pulumi.Input[str] name: Human-readable name for the member.
+        :param pulumi.Input[str] pool_id: The id of the pool that this member will be
+               assigned to.
+        :param pulumi.Input[float] protocol_port: The port on which to listen for client traffic.
+               Changing this creates a new member.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
+               A Networking client is needed to create an . If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               member.
+        :param pulumi.Input[str] subnet_id: The subnet in which to access the member
+        :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
+               the member.  Only administrative users can specify a tenant UUID
+               other than their own. Changing this creates a new member.
+        :param pulumi.Input[float] weight: A positive integer value that indicates the relative
+               portion of traffic that this member should receive from the pool. For
+               example, a member with a weight of 10 receives five times as much traffic
+               as a member with a weight of 2.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_member_v2.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["address"] = address
+        __props__["admin_state_up"] = admin_state_up
+        __props__["name"] = name
+        __props__["pool_id"] = pool_id
+        __props__["protocol_port"] = protocol_port
+        __props__["region"] = region
+        __props__["subnet_id"] = subnet_id
+        __props__["tenant_id"] = tenant_id
+        __props__["weight"] = weight
+        return Member(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

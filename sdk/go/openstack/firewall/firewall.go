@@ -85,14 +85,14 @@ func (r *Firewall) ID() *pulumi.IDOutput {
 
 // Administrative up/down status for the firewall
 // (must be "true" or "false" if provided - defaults to "true").
-// Changing this updates the `admin_state_up` of an existing firewall.
+// Changing this updates the `adminStateUp` of an existing firewall.
 func (r *Firewall) AdminStateUp() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["adminStateUp"])
 }
 
 // Router(s) to associate this firewall instance
 // with. Must be a list of strings. Changing this updates the associated routers
-// of an existing firewall. Conflicts with `no_routers`.
+// of an existing firewall. Conflicts with `noRouters`.
 func (r *Firewall) AssociatedRouters() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["associatedRouters"])
 }
@@ -111,13 +111,13 @@ func (r *Firewall) Name() *pulumi.StringOutput {
 
 // Should this firewall not be associated with any routers
 // (must be "true" or "false" if provide - defaults to "false").
-// Conflicts with `associated_routers`.
+// Conflicts with `associatedRouters`.
 func (r *Firewall) NoRouters() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["noRouters"])
 }
 
 // The policy resource id for the firewall. Changing
-// this updates the `policy_id` of an existing firewall.
+// this updates the `policyId` of an existing firewall.
 func (r *Firewall) PolicyId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["policyId"])
 }
@@ -146,11 +146,11 @@ func (r *Firewall) ValueSpecs() *pulumi.MapOutput {
 type FirewallState struct {
 	// Administrative up/down status for the firewall
 	// (must be "true" or "false" if provided - defaults to "true").
-	// Changing this updates the `admin_state_up` of an existing firewall.
+	// Changing this updates the `adminStateUp` of an existing firewall.
 	AdminStateUp interface{}
 	// Router(s) to associate this firewall instance
 	// with. Must be a list of strings. Changing this updates the associated routers
-	// of an existing firewall. Conflicts with `no_routers`.
+	// of an existing firewall. Conflicts with `noRouters`.
 	AssociatedRouters interface{}
 	// A description for the firewall. Changing this
 	// updates the `description` of an existing firewall.
@@ -160,10 +160,10 @@ type FirewallState struct {
 	Name interface{}
 	// Should this firewall not be associated with any routers
 	// (must be "true" or "false" if provide - defaults to "false").
-	// Conflicts with `associated_routers`.
+	// Conflicts with `associatedRouters`.
 	NoRouters interface{}
 	// The policy resource id for the firewall. Changing
-	// this updates the `policy_id` of an existing firewall.
+	// this updates the `policyId` of an existing firewall.
 	PolicyId interface{}
 	// The region in which to obtain the v1 networking client.
 	// A networking client is needed to create a firewall. If omitted, the
@@ -182,11 +182,11 @@ type FirewallState struct {
 type FirewallArgs struct {
 	// Administrative up/down status for the firewall
 	// (must be "true" or "false" if provided - defaults to "true").
-	// Changing this updates the `admin_state_up` of an existing firewall.
+	// Changing this updates the `adminStateUp` of an existing firewall.
 	AdminStateUp interface{}
 	// Router(s) to associate this firewall instance
 	// with. Must be a list of strings. Changing this updates the associated routers
-	// of an existing firewall. Conflicts with `no_routers`.
+	// of an existing firewall. Conflicts with `noRouters`.
 	AssociatedRouters interface{}
 	// A description for the firewall. Changing this
 	// updates the `description` of an existing firewall.
@@ -196,10 +196,10 @@ type FirewallArgs struct {
 	Name interface{}
 	// Should this firewall not be associated with any routers
 	// (must be "true" or "false" if provide - defaults to "false").
-	// Conflicts with `associated_routers`.
+	// Conflicts with `associatedRouters`.
 	NoRouters interface{}
 	// The policy resource id for the firewall. Changing
-	// this updates the `policy_id` of an existing firewall.
+	// this updates the `policyId` of an existing firewall.
 	PolicyId interface{}
 	// The region in which to obtain the v1 networking client.
 	// A networking client is needed to create a firewall. If omitted, the

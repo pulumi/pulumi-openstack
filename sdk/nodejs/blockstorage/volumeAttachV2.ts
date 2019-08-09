@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * different cloud provider.
  * 
  * This does not actually attach a volume to an instance. Please use
- * the `openstack_compute_volume_attach_v2` resource for that.
+ * the `openstack.compute.VolumeAttach` resource for that.
  * 
  * ## Example Usage
  * 
@@ -25,16 +25,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const volume1 = new openstack.blockstorage.VolumeV2("volume_1", {
+ * const volume1 = new openstack.blockstorage.VolumeV2("volume1", {
  *     size: 1,
  * });
- * const va1 = new openstack.blockstorage.VolumeAttachV2("va_1", {
+ * const va1 = new openstack.blockstorage.VolumeAttachV2("va1", {
  *     device: "auto",
  *     hostName: "devstack",
  *     initiator: "iqn.1993-08.org.debian:01:e9861fb1859",
  *     ipAddress: "192.168.255.10",
  *     osType: "linux2",
- *     platform: "x86_64",
+ *     platform: "x8664",
  *     volumeId: volume1.id,
  * });
  * ```
@@ -99,7 +99,7 @@ export class VolumeAttachV2 extends pulumi.CustomResource {
      */
     public readonly initiator!: pulumi.Output<string | undefined>;
     /**
-     * The IP address of the `host_name` above.
+     * The IP address of the `hostName` above.
      */
     public readonly ipAddress!: pulumi.Output<string | undefined>;
     /**
@@ -236,7 +236,7 @@ export interface VolumeAttachV2State {
      */
     readonly initiator?: pulumi.Input<string>;
     /**
-     * The IP address of the `host_name` above.
+     * The IP address of the `hostName` above.
      */
     readonly ipAddress?: pulumi.Input<string>;
     /**
@@ -302,7 +302,7 @@ export interface VolumeAttachV2Args {
      */
     readonly initiator?: pulumi.Input<string>;
     /**
-     * The IP address of the `host_name` above.
+     * The IP address of the `hostName` above.
      */
     readonly ipAddress?: pulumi.Input<string>;
     /**

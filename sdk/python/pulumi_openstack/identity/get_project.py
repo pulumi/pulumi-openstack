@@ -61,14 +61,20 @@ class GetProjectResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetProjectResult(GetProjectResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetProjectResult(
+            description=self.description,
+            domain_id=self.domain_id,
+            enabled=self.enabled,
+            is_domain=self.is_domain,
+            name=self.name,
+            parent_id=self.parent_id,
+            region=self.region,
+            id=self.id)
 
 def get_project(domain_id=None,enabled=None,is_domain=None,name=None,parent_id=None,region=None,opts=None):
     """
@@ -90,7 +96,7 @@ def get_project(domain_id=None,enabled=None,is_domain=None,name=None,parent_id=N
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:identity/getProject:getProject', __args__, opts=opts).value
 
-    return GetProjectResult(
+    return AwaitableGetProjectResult(
         description=__ret__.get('description'),
         domain_id=__ret__.get('domainId'),
         enabled=__ret__.get('enabled'),

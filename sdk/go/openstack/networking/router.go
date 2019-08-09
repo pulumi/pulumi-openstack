@@ -98,7 +98,7 @@ func (r *Router) ID() *pulumi.IDOutput {
 
 // Administrative up/down status for the router
 // (must be "true" or "false" if provided). Changing this updates the
-// `admin_state_up` of an existing router.
+// `adminStateUp` of an existing router.
 func (r *Router) AdminStateUp() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["adminStateUp"])
 }
@@ -129,14 +129,14 @@ func (r *Router) Distributed() *pulumi.BoolOutput {
 }
 
 // Enable Source NAT for the router. Valid values are
-// "true" or "false". An `external_network_id` has to be set in order to
-// set this property. Changing this updates the `enable_snat` of the router.
+// "true" or "false". An `externalNetworkId` has to be set in order to
+// set this property. Changing this updates the `enableSnat` of the router.
 func (r *Router) EnableSnat() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["enableSnat"])
 }
 
 // An external fixed IP for the router. This
-// can be repeated. The structure is described below. An `external_network_id`
+// can be repeated. The structure is described below. An `externalNetworkId`
 // has to be set in order to set this property. Changing this updates the
 // external fixed IPs of the router.
 func (r *Router) ExternalFixedIps() *pulumi.ArrayOutput {
@@ -200,7 +200,7 @@ func (r *Router) VendorOptions() *pulumi.Output {
 type RouterState struct {
 	// Administrative up/down status for the router
 	// (must be "true" or "false" if provided). Changing this updates the
-	// `admin_state_up` of an existing router.
+	// `adminStateUp` of an existing router.
 	AdminStateUp interface{}
 	// The collection of tags assigned on the router, which have been
 	// explicitly and implicitly added.
@@ -216,11 +216,11 @@ type RouterState struct {
 	// usage of this property to administrative users only.
 	Distributed interface{}
 	// Enable Source NAT for the router. Valid values are
-	// "true" or "false". An `external_network_id` has to be set in order to
-	// set this property. Changing this updates the `enable_snat` of the router.
+	// "true" or "false". An `externalNetworkId` has to be set in order to
+	// set this property. Changing this updates the `enableSnat` of the router.
 	EnableSnat interface{}
 	// An external fixed IP for the router. This
-	// can be repeated. The structure is described below. An `external_network_id`
+	// can be repeated. The structure is described below. An `externalNetworkId`
 	// has to be set in order to set this property. Changing this updates the
 	// external fixed IPs of the router.
 	ExternalFixedIps interface{}
@@ -259,7 +259,7 @@ type RouterState struct {
 type RouterArgs struct {
 	// Administrative up/down status for the router
 	// (must be "true" or "false" if provided). Changing this updates the
-	// `admin_state_up` of an existing router.
+	// `adminStateUp` of an existing router.
 	AdminStateUp interface{}
 	// An availability zone is used to make 
 	// network resources highly available. Used for resources with high availability so that they are scheduled on different availability zones. Changing
@@ -272,11 +272,11 @@ type RouterArgs struct {
 	// usage of this property to administrative users only.
 	Distributed interface{}
 	// Enable Source NAT for the router. Valid values are
-	// "true" or "false". An `external_network_id` has to be set in order to
-	// set this property. Changing this updates the `enable_snat` of the router.
+	// "true" or "false". An `externalNetworkId` has to be set in order to
+	// set this property. Changing this updates the `enableSnat` of the router.
 	EnableSnat interface{}
 	// An external fixed IP for the router. This
-	// can be repeated. The structure is described below. An `external_network_id`
+	// can be repeated. The structure is described below. An `externalNetworkId`
 	// has to be set in order to set this property. Changing this updates the
 	// external fixed IPs of the router.
 	ExternalFixedIps interface{}

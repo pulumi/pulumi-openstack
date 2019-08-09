@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const router1 = new openstack.networking.Router("router_1", {
+ * const router1 = new openstack.networking.Router("router1", {
  *     adminStateUp: true,
  *     externalNetworkId: "f67f0d72-0ddf-11e4-9d95-e1f29f417e2f",
  * });
@@ -51,7 +51,7 @@ export class Router extends pulumi.CustomResource {
     /**
      * Administrative up/down status for the router
      * (must be "true" or "false" if provided). Changing this updates the
-     * `admin_state_up` of an existing router.
+     * `adminStateUp` of an existing router.
      */
     public readonly adminStateUp!: pulumi.Output<boolean>;
     /**
@@ -77,13 +77,13 @@ export class Router extends pulumi.CustomResource {
     public readonly distributed!: pulumi.Output<boolean>;
     /**
      * Enable Source NAT for the router. Valid values are
-     * "true" or "false". An `external_network_id` has to be set in order to
-     * set this property. Changing this updates the `enable_snat` of the router.
+     * "true" or "false". An `externalNetworkId` has to be set in order to
+     * set this property. Changing this updates the `enableSnat` of the router.
      */
     public readonly enableSnat!: pulumi.Output<boolean>;
     /**
      * An external fixed IP for the router. This
-     * can be repeated. The structure is described below. An `external_network_id`
+     * can be repeated. The structure is described below. An `externalNetworkId`
      * has to be set in order to set this property. Changing this updates the
      * external fixed IPs of the router.
      */
@@ -197,7 +197,7 @@ export interface RouterState {
     /**
      * Administrative up/down status for the router
      * (must be "true" or "false" if provided). Changing this updates the
-     * `admin_state_up` of an existing router.
+     * `adminStateUp` of an existing router.
      */
     readonly adminStateUp?: pulumi.Input<boolean>;
     /**
@@ -223,13 +223,13 @@ export interface RouterState {
     readonly distributed?: pulumi.Input<boolean>;
     /**
      * Enable Source NAT for the router. Valid values are
-     * "true" or "false". An `external_network_id` has to be set in order to
-     * set this property. Changing this updates the `enable_snat` of the router.
+     * "true" or "false". An `externalNetworkId` has to be set in order to
+     * set this property. Changing this updates the `enableSnat` of the router.
      */
     readonly enableSnat?: pulumi.Input<boolean>;
     /**
      * An external fixed IP for the router. This
-     * can be repeated. The structure is described below. An `external_network_id`
+     * can be repeated. The structure is described below. An `externalNetworkId`
      * has to be set in order to set this property. Changing this updates the
      * external fixed IPs of the router.
      */
@@ -288,7 +288,7 @@ export interface RouterArgs {
     /**
      * Administrative up/down status for the router
      * (must be "true" or "false" if provided). Changing this updates the
-     * `admin_state_up` of an existing router.
+     * `adminStateUp` of an existing router.
      */
     readonly adminStateUp?: pulumi.Input<boolean>;
     /**
@@ -309,13 +309,13 @@ export interface RouterArgs {
     readonly distributed?: pulumi.Input<boolean>;
     /**
      * Enable Source NAT for the router. Valid values are
-     * "true" or "false". An `external_network_id` has to be set in order to
-     * set this property. Changing this updates the `enable_snat` of the router.
+     * "true" or "false". An `externalNetworkId` has to be set in order to
+     * set this property. Changing this updates the `enableSnat` of the router.
      */
     readonly enableSnat?: pulumi.Input<boolean>;
     /**
      * An external fixed IP for the router. This
-     * can be repeated. The structure is described below. An `external_network_id`
+     * can be repeated. The structure is described below. An `externalNetworkId`
      * has to be set in order to set this property. Changing this updates the
      * external fixed IPs of the router.
      */

@@ -102,14 +102,29 @@ class GetNetworkResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetNetworkResult(GetNetworkResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetNetworkResult(
+            admin_state_up=self.admin_state_up,
+            all_tags=self.all_tags,
+            availability_zone_hints=self.availability_zone_hints,
+            description=self.description,
+            dns_domain=self.dns_domain,
+            external=self.external,
+            matching_subnet_cidr=self.matching_subnet_cidr,
+            mtu=self.mtu,
+            name=self.name,
+            network_id=self.network_id,
+            region=self.region,
+            shared=self.shared,
+            status=self.status,
+            tags=self.tags,
+            tenant_id=self.tenant_id,
+            transparent_vlan=self.transparent_vlan,
+            id=self.id)
 
 def get_network(description=None,external=None,matching_subnet_cidr=None,mtu=None,name=None,network_id=None,region=None,status=None,tags=None,tenant_id=None,transparent_vlan=None,opts=None):
     """
@@ -136,7 +151,7 @@ def get_network(description=None,external=None,matching_subnet_cidr=None,mtu=Non
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:networking/getNetwork:getNetwork', __args__, opts=opts).value
 
-    return GetNetworkResult(
+    return AwaitableGetNetworkResult(
         admin_state_up=__ret__.get('adminStateUp'),
         all_tags=__ret__.get('allTags'),
         availability_zone_hints=__ret__.get('availabilityZoneHints'),

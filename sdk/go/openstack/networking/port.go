@@ -15,7 +15,7 @@ import (
 // ### Ports and Instances
 // 
 // There are some notes to consider when connecting Instances to networks using
-// Ports. Please see the `openstack_compute_instance_v2` documentation for further
+// Ports. Please see the `compute.Instance` documentation for further
 // documentation.
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_port_v2.html.markdown.
@@ -137,7 +137,7 @@ func (r *Port) ID() *pulumi.IDOutput {
 
 // Administrative up/down status for the port
 // (must be "true" or "false" if provided). Changing this updates the
-// `admin_state_up` of an existing port.
+// `adminStateUp` of an existing port.
 func (r *Port) AdminStateUp() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["adminStateUp"])
 }
@@ -242,7 +242,7 @@ func (r *Port) NoFixedIp() *pulumi.BoolOutput {
 
 // If set to
 // `true`, then no security groups are applied to the port. If set to `false` and
-// no `security_group_ids` are specified, then the Port will yield to the default
+// no `securityGroupIds` are specified, then the Port will yield to the default
 // behavior of the Networking service, which is to usually apply the "default"
 // security group.
 func (r *Port) NoSecurityGroups() *pulumi.BoolOutput {
@@ -300,7 +300,7 @@ func (r *Port) ValueSpecs() *pulumi.MapOutput {
 type PortState struct {
 	// Administrative up/down status for the port
 	// (must be "true" or "false" if provided). Changing this updates the
-	// `admin_state_up` of an existing port.
+	// `adminStateUp` of an existing port.
 	AdminStateUp interface{}
 	// The collection of Fixed IP addresses on the port in the
 	// order returned by the Network v2 API.
@@ -354,7 +354,7 @@ type PortState struct {
 	NoFixedIp interface{}
 	// If set to
 	// `true`, then no security groups are applied to the port. If set to `false` and
-	// no `security_group_ids` are specified, then the Port will yield to the default
+	// no `securityGroupIds` are specified, then the Port will yield to the default
 	// behavior of the Networking service, which is to usually apply the "default"
 	// security group.
 	NoSecurityGroups interface{}
@@ -390,7 +390,7 @@ type PortState struct {
 type PortArgs struct {
 	// Administrative up/down status for the port
 	// (must be "true" or "false" if provided). Changing this updates the
-	// `admin_state_up` of an existing port.
+	// `adminStateUp` of an existing port.
 	AdminStateUp interface{}
 	// An IP/MAC Address pair of additional IP
 	// addresses that can be active on this port. The structure is described
@@ -433,7 +433,7 @@ type PortArgs struct {
 	NoFixedIp interface{}
 	// If set to
 	// `true`, then no security groups are applied to the port. If set to `false` and
-	// no `security_group_ids` are specified, then the Port will yield to the default
+	// no `securityGroupIds` are specified, then the Port will yield to the default
 	// behavior of the Networking service, which is to usually apply the "default"
 	// security group.
 	NoSecurityGroups interface{}

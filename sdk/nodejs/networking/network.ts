@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const secgroup1 = new openstack.compute.SecGroup("secgroup_1", {
+ * const secgroup1 = new openstack.compute.SecGroup("secgroup1", {
  *     description: "a security group",
  *     rules: [{
  *         cidr: "0.0.0.0/0",
@@ -22,15 +22,15 @@ import * as utilities from "../utilities";
  *         toPort: 22,
  *     }],
  * });
- * const network1 = new openstack.networking.Network("network_1", {
+ * const network1 = new openstack.networking.Network("network1", {
  *     adminStateUp: true,
  * });
- * const subnet1 = new openstack.networking.Subnet("subnet_1", {
+ * const subnet1 = new openstack.networking.Subnet("subnet1", {
  *     cidr: "192.168.199.0/24",
  *     ipVersion: 4,
  *     networkId: network1.id,
  * });
- * const port1 = new openstack.networking.Port("port_1", {
+ * const port1 = new openstack.networking.Port("port1", {
  *     adminStateUp: true,
  *     fixedIps: [{
  *         ipAddress: "192.168.199.10",
@@ -39,7 +39,7 @@ import * as utilities from "../utilities";
  *     networkId: network1.id,
  *     securityGroupIds: [secgroup1.id],
  * });
- * const instance1 = new openstack.compute.Instance("instance_1", {
+ * const instance1 = new openstack.compute.Instance("instance1", {
  *     networks: [{
  *         port: port1.id,
  *     }],
@@ -101,8 +101,8 @@ export class Network extends pulumi.CustomResource {
     public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The network DNS domain. Available, when Neutron DNS
-     * extension is enabled. The `dns_domain` of a network in conjunction with the
-     * `dns_name` attribute of its ports will be published in an external DNS
+     * extension is enabled. The `dnsDomain` of a network in conjunction with the
+     * `dnsName` attribute of its ports will be published in an external DNS
      * service when Neutron is configured to integrate with such a service.
      */
     public readonly dnsDomain!: pulumi.Output<string | undefined>;
@@ -164,7 +164,7 @@ export class Network extends pulumi.CustomResource {
     /**
      * Specifies whether the network resource has the
      * VLAN transparent attribute set. Valid values are true and false. Defaults to
-     * false. Changing this updates the `transparent_vlan` attribute of the existing
+     * false. Changing this updates the `transparentVlan` attribute of the existing
      * network.
      */
     public readonly transparentVlan!: pulumi.Output<boolean>;
@@ -262,8 +262,8 @@ export interface NetworkState {
     readonly description?: pulumi.Input<string>;
     /**
      * The network DNS domain. Available, when Neutron DNS
-     * extension is enabled. The `dns_domain` of a network in conjunction with the
-     * `dns_name` attribute of its ports will be published in an external DNS
+     * extension is enabled. The `dnsDomain` of a network in conjunction with the
+     * `dnsName` attribute of its ports will be published in an external DNS
      * service when Neutron is configured to integrate with such a service.
      */
     readonly dnsDomain?: pulumi.Input<string>;
@@ -325,7 +325,7 @@ export interface NetworkState {
     /**
      * Specifies whether the network resource has the
      * VLAN transparent attribute set. Valid values are true and false. Defaults to
-     * false. Changing this updates the `transparent_vlan` attribute of the existing
+     * false. Changing this updates the `transparentVlan` attribute of the existing
      * network.
      */
     readonly transparentVlan?: pulumi.Input<boolean>;
@@ -359,8 +359,8 @@ export interface NetworkArgs {
     readonly description?: pulumi.Input<string>;
     /**
      * The network DNS domain. Available, when Neutron DNS
-     * extension is enabled. The `dns_domain` of a network in conjunction with the
-     * `dns_name` attribute of its ports will be published in an external DNS
+     * extension is enabled. The `dnsDomain` of a network in conjunction with the
+     * `dnsName` attribute of its ports will be published in an external DNS
      * service when Neutron is configured to integrate with such a service.
      */
     readonly dnsDomain?: pulumi.Input<string>;
@@ -422,7 +422,7 @@ export interface NetworkArgs {
     /**
      * Specifies whether the network resource has the
      * VLAN transparent attribute set. Valid values are true and false. Defaults to
-     * false. Changing this updates the `transparent_vlan` attribute of the existing
+     * false. Changing this updates the `transparentVlan` attribute of the existing
      * network.
      */
     readonly transparentVlan?: pulumi.Input<boolean>;

@@ -92,7 +92,7 @@ type GetSubnetPoolArgs struct {
 // A collection of values returned by getSubnetPool.
 type GetSubnetPoolResult struct {
 	// See Argument Reference above.
-	// * `ip_version` -The IP protocol version.
+	// * `ipVersion` -The IP protocol version.
 	AddressScopeId interface{}
 	// The set of string tags applied on the subnetpool.
 	AllTags interface{}

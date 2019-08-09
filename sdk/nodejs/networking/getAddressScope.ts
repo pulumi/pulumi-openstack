@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * 
  * const publicAddressscope = pulumi.output(openstack.networking.getAddressScope({
  *     ipVersion: 4,
- *     name: "public_addressscope",
+ *     name: "publicAddressscope",
  *     shared: true,
  * }));
  * ```

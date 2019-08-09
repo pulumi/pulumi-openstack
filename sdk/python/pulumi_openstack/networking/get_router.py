@@ -76,14 +76,27 @@ class GetRouterResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetRouterResult(GetRouterResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetRouterResult(
+            admin_state_up=self.admin_state_up,
+            all_tags=self.all_tags,
+            availability_zone_hints=self.availability_zone_hints,
+            description=self.description,
+            distributed=self.distributed,
+            enable_snat=self.enable_snat,
+            external_fixed_ips=self.external_fixed_ips,
+            external_network_id=self.external_network_id,
+            name=self.name,
+            region=self.region,
+            router_id=self.router_id,
+            status=self.status,
+            tags=self.tags,
+            tenant_id=self.tenant_id,
+            id=self.id)
 
 def get_router(admin_state_up=None,description=None,distributed=None,enable_snat=None,name=None,region=None,router_id=None,status=None,tags=None,tenant_id=None,opts=None):
     """
@@ -109,7 +122,7 @@ def get_router(admin_state_up=None,description=None,distributed=None,enable_snat
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:networking/getRouter:getRouter', __args__, opts=opts).value
 
-    return GetRouterResult(
+    return AwaitableGetRouterResult(
         admin_state_up=__ret__.get('adminStateUp'),
         all_tags=__ret__.get('allTags'),
         availability_zone_hints=__ret__.get('availabilityZoneHints'),

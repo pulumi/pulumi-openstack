@@ -58,7 +58,7 @@ class ApplicationCredential(pulumi.CustomResource):
     credential may be used for creation or destruction of other application
     credentials or trusts. Changing this creates a new application credential.
     """
-    def __init__(__self__, resource_name, opts=None, description=None, expires_at=None, name=None, region=None, roles=None, secret=None, unrestricted=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, description=None, expires_at=None, name=None, region=None, roles=None, secret=None, unrestricted=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a V3 Application Credential resource within OpenStack Keystone.
         
@@ -69,7 +69,7 @@ class ApplicationCredential(pulumi.CustomResource):
         > **Note:** An Application Credential is created within the authenticated user
         project scope and is not visible by an admin or other accounts.
         The Application Credential visibility is similar to
-        `openstack_compute_keypair_v2`.
+        `compute.Keypair`.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -104,42 +104,79 @@ class ApplicationCredential(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        __props__['description'] = description
-
-        __props__['expires_at'] = expires_at
-
-        __props__['name'] = name
-
-        __props__['region'] = region
-
-        __props__['roles'] = roles
-
-        __props__['secret'] = secret
-
-        __props__['unrestricted'] = unrestricted
-
-        __props__['project_id'] = None
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            __props__['description'] = description
+            __props__['expires_at'] = expires_at
+            __props__['name'] = name
+            __props__['region'] = region
+            __props__['roles'] = roles
+            __props__['secret'] = secret
+            __props__['unrestricted'] = unrestricted
+            __props__['project_id'] = None
         super(ApplicationCredential, __self__).__init__(
             'openstack:identity/applicationCredential:ApplicationCredential',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, description=None, expires_at=None, name=None, project_id=None, region=None, roles=None, secret=None, unrestricted=None):
+        """
+        Get an existing ApplicationCredential resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] description: A description of the application credential.
+               Changing this creates a new application credential.
+        :param pulumi.Input[str] expires_at: The expiration time of the application credential
+               in the RFC3339 timestamp format (e.g. `2019-03-09T12:58:49Z`). If omitted,
+               an application credential will never expire. Changing this creates a new
+               application credential.
+        :param pulumi.Input[str] name: A name of the application credential. Changing this
+               creates a new application credential.
+        :param pulumi.Input[str] project_id: The ID of the project the application credential was created
+               for and that authentication requests using this application credential will
+               be scoped to.
+        :param pulumi.Input[str] region: The region in which to obtain the V3 Keystone client.
+               If omitted, the `region` argument of the provider is used. Changing this
+               creates a new application credential.
+        :param pulumi.Input[list] roles: A collection of one or more role names, which this
+               application credential has to be associated with its project. If omitted,
+               all the current user's roles within the scoped project will be inherited by
+               a new application credential. Changing this creates a new application
+               credential.
+        :param pulumi.Input[str] secret: The secret for the application credential. If omitted,
+               it will be generated by the server. Changing this creates a new application
+               credential.
+        :param pulumi.Input[bool] unrestricted: A flag indicating whether the application
+               credential may be used for creation or destruction of other application
+               credentials or trusts. Changing this creates a new application credential.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/identity_application_credential_v3.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["description"] = description
+        __props__["expires_at"] = expires_at
+        __props__["name"] = name
+        __props__["project_id"] = project_id
+        __props__["region"] = region
+        __props__["roles"] = roles
+        __props__["secret"] = secret
+        __props__["unrestricted"] = unrestricted
+        return ApplicationCredential(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

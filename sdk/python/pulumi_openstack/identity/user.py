@@ -71,7 +71,7 @@ class User(pulumi.CustomResource):
     If omitted, the `region` argument of the provider is used. Changing this
     creates a new User.
     """
-    def __init__(__self__, resource_name, opts=None, default_project_id=None, description=None, domain_id=None, enabled=None, extra=None, ignore_change_password_upon_first_use=None, ignore_lockout_failure_attempts=None, ignore_password_expiry=None, multi_factor_auth_enabled=None, multi_factor_auth_rules=None, name=None, password=None, region=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, default_project_id=None, description=None, domain_id=None, enabled=None, extra=None, ignore_change_password_upon_first_use=None, ignore_lockout_failure_attempts=None, ignore_password_expiry=None, multi_factor_auth_enabled=None, multi_factor_auth_rules=None, name=None, password=None, region=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a V3 User resource within OpenStack Keystone.
         
@@ -112,52 +112,87 @@ class User(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        __props__['default_project_id'] = default_project_id
-
-        __props__['description'] = description
-
-        __props__['domain_id'] = domain_id
-
-        __props__['enabled'] = enabled
-
-        __props__['extra'] = extra
-
-        __props__['ignore_change_password_upon_first_use'] = ignore_change_password_upon_first_use
-
-        __props__['ignore_lockout_failure_attempts'] = ignore_lockout_failure_attempts
-
-        __props__['ignore_password_expiry'] = ignore_password_expiry
-
-        __props__['multi_factor_auth_enabled'] = multi_factor_auth_enabled
-
-        __props__['multi_factor_auth_rules'] = multi_factor_auth_rules
-
-        __props__['name'] = name
-
-        __props__['password'] = password
-
-        __props__['region'] = region
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            __props__['default_project_id'] = default_project_id
+            __props__['description'] = description
+            __props__['domain_id'] = domain_id
+            __props__['enabled'] = enabled
+            __props__['extra'] = extra
+            __props__['ignore_change_password_upon_first_use'] = ignore_change_password_upon_first_use
+            __props__['ignore_lockout_failure_attempts'] = ignore_lockout_failure_attempts
+            __props__['ignore_password_expiry'] = ignore_password_expiry
+            __props__['multi_factor_auth_enabled'] = multi_factor_auth_enabled
+            __props__['multi_factor_auth_rules'] = multi_factor_auth_rules
+            __props__['name'] = name
+            __props__['password'] = password
+            __props__['region'] = region
         super(User, __self__).__init__(
             'openstack:identity/user:User',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, default_project_id=None, description=None, domain_id=None, enabled=None, extra=None, ignore_change_password_upon_first_use=None, ignore_lockout_failure_attempts=None, ignore_password_expiry=None, multi_factor_auth_enabled=None, multi_factor_auth_rules=None, name=None, password=None, region=None):
+        """
+        Get an existing User resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] default_project_id: The default project this user belongs to.
+        :param pulumi.Input[str] description: A description of the user.
+        :param pulumi.Input[str] domain_id: The domain this user belongs to.
+        :param pulumi.Input[bool] enabled: Whether the user is enabled or disabled. Valid
+               values are `true` and `false`.
+        :param pulumi.Input[dict] extra: Free-form key/value pairs of extra information.
+        :param pulumi.Input[bool] ignore_change_password_upon_first_use: User will not have to
+               change their password upon first use. Valid values are `true` and `false`.
+        :param pulumi.Input[bool] ignore_lockout_failure_attempts: User will not have a failure
+               lockout placed on their account. Valid values are `true` and `false`.
+        :param pulumi.Input[bool] ignore_password_expiry: User's password will not expire.
+               Valid values are `true` and `false`.
+        :param pulumi.Input[bool] multi_factor_auth_enabled: Whether to enable multi-factor
+               authentication. Valid values are `true` and `false`.
+        :param pulumi.Input[list] multi_factor_auth_rules: A multi-factor authentication rule.
+               The structure is documented below. Please see the
+               [Ocata release notes](https://docs.openstack.org/releasenotes/keystone/ocata.html)
+               for more information on how to use mulit-factor rules.
+        :param pulumi.Input[str] name: The name of the user.
+        :param pulumi.Input[str] password: The password for the user.
+        :param pulumi.Input[str] region: The region in which to obtain the V3 Keystone client.
+               If omitted, the `region` argument of the provider is used. Changing this
+               creates a new User.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/identity_user_v3.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["default_project_id"] = default_project_id
+        __props__["description"] = description
+        __props__["domain_id"] = domain_id
+        __props__["enabled"] = enabled
+        __props__["extra"] = extra
+        __props__["ignore_change_password_upon_first_use"] = ignore_change_password_upon_first_use
+        __props__["ignore_lockout_failure_attempts"] = ignore_lockout_failure_attempts
+        __props__["ignore_password_expiry"] = ignore_password_expiry
+        __props__["multi_factor_auth_enabled"] = multi_factor_auth_enabled
+        __props__["multi_factor_auth_rules"] = multi_factor_auth_rules
+        __props__["name"] = name
+        __props__["password"] = password
+        __props__["region"] = region
+        return User(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

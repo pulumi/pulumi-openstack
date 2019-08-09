@@ -115,14 +115,29 @@ class GetDnsZoneResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetDnsZoneResult(GetDnsZoneResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetDnsZoneResult(
+            attributes=self.attributes,
+            created_at=self.created_at,
+            description=self.description,
+            email=self.email,
+            masters=self.masters,
+            name=self.name,
+            pool_id=self.pool_id,
+            project_id=self.project_id,
+            region=self.region,
+            serial=self.serial,
+            status=self.status,
+            transferred_at=self.transferred_at,
+            ttl=self.ttl,
+            type=self.type,
+            updated_at=self.updated_at,
+            version=self.version,
+            id=self.id)
 
 def get_dns_zone(attributes=None,created_at=None,description=None,email=None,masters=None,name=None,pool_id=None,project_id=None,region=None,serial=None,status=None,transferred_at=None,ttl=None,type=None,updated_at=None,version=None,opts=None):
     """
@@ -154,7 +169,7 @@ def get_dns_zone(attributes=None,created_at=None,description=None,email=None,mas
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:dns/getDnsZone:getDnsZone', __args__, opts=opts).value
 
-    return GetDnsZoneResult(
+    return AwaitableGetDnsZoneResult(
         attributes=__ret__.get('attributes'),
         created_at=__ret__.get('createdAt'),
         description=__ret__.get('description'),

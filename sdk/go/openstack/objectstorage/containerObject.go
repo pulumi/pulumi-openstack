@@ -120,7 +120,7 @@ func (r *ContainerObject) ContainerName() *pulumi.StringOutput {
 }
 
 // A string representing the content of the object. Conflicts with
-// `source` and `copy_from`.
+// `source` and `copyFrom`.
 func (r *ContainerObject) Content() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["content"])
 }
@@ -150,7 +150,7 @@ func (r *ContainerObject) ContentType() *pulumi.StringOutput {
 }
 
 // A string representing the name of an object 
-// used to create the new object by copying the `copy_from` object. The value is in form
+// used to create the new object by copying the `copyFrom` object. The value is in form
 // {container}/{object}. You must UTF-8-encode and then URL-encode the names of the
 // container and object before you include them in the header. Conflicts with `source` and
 // `content`.
@@ -226,7 +226,7 @@ func (r *ContainerObject) Region() *pulumi.StringOutput {
 }
 
 // A string representing the local path of a file which will be used
-// as the object's content. Conflicts with `source` and `copy_from`.
+// as the object's content. Conflicts with `source` and `copyFrom`.
 func (r *ContainerObject) Source() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["source"])
 }
@@ -247,7 +247,7 @@ type ContainerObjectState struct {
 	// /v1/account/www/pages specifies the www container, not the www/pages container.
 	ContainerName interface{}
 	// A string representing the content of the object. Conflicts with
-	// `source` and `copy_from`.
+	// `source` and `copyFrom`.
 	Content interface{}
 	// A string which specifies the override behavior for 
 	// the browser. For example, this header might specify that the browser use a download
@@ -262,7 +262,7 @@ type ContainerObjectState struct {
 	// A string which sets the MIME type for the object.
 	ContentType interface{}
 	// A string representing the name of an object 
-	// used to create the new object by copying the `copy_from` object. The value is in form
+	// used to create the new object by copying the `copyFrom` object. The value is in form
 	// {container}/{object}. You must UTF-8-encode and then URL-encode the names of the
 	// container and object before you include them in the header. Conflicts with `source` and
 	// `content`.
@@ -305,7 +305,7 @@ type ContainerObjectState struct {
 	// creates a new container.
 	Region interface{}
 	// A string representing the local path of a file which will be used
-	// as the object's content. Conflicts with `source` and `copy_from`.
+	// as the object's content. Conflicts with `source` and `copyFrom`.
 	Source interface{}
 	// A unique transaction ID for this request. Your service provider might 
 	// need this value if you report a problem.
@@ -322,7 +322,7 @@ type ContainerObjectArgs struct {
 	// /v1/account/www/pages specifies the www container, not the www/pages container.
 	ContainerName interface{}
 	// A string representing the content of the object. Conflicts with
-	// `source` and `copy_from`.
+	// `source` and `copyFrom`.
 	Content interface{}
 	// A string which specifies the override behavior for 
 	// the browser. For example, this header might specify that the browser use a download
@@ -334,7 +334,7 @@ type ContainerObjectArgs struct {
 	// A string which sets the MIME type for the object.
 	ContentType interface{}
 	// A string representing the name of an object 
-	// used to create the new object by copying the `copy_from` object. The value is in form
+	// used to create the new object by copying the `copyFrom` object. The value is in form
 	// {container}/{object}. You must UTF-8-encode and then URL-encode the names of the
 	// container and object before you include them in the header. Conflicts with `source` and
 	// `content`.
@@ -366,6 +366,6 @@ type ContainerObjectArgs struct {
 	// creates a new container.
 	Region interface{}
 	// A string representing the local path of a file which will be used
-	// as the object's content. Conflicts with `source` and `copy_from`.
+	// as the object's content. Conflicts with `source` and `copyFrom`.
 	Source interface{}
 }

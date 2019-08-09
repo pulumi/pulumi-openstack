@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const vip1 = new openstack.loadbalancer.Vip("vip_1", {
+ * const vip1 = new openstack.loadbalancer.Vip("vip1", {
  *     poolId: "67890",
  *     port: 80,
  *     protocol: "HTTP",
@@ -63,7 +63,7 @@ export class Vip extends pulumi.CustomResource {
     public readonly adminStateUp!: pulumi.Output<boolean>;
     /**
      * The maximum number of connections allowed for the
-     * vip. Default is -1, meaning no limit. Changing this updates the conn_limit
+     * vip. Default is -1, meaning no limit. Changing this updates the connLimit
      * of the existing vip.
      */
     public readonly connLimit!: pulumi.Output<number>;
@@ -90,7 +90,7 @@ export class Vip extends pulumi.CustomResource {
     public readonly persistence!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
      * The ID of the pool with which the vip is associated.
-     * Changing this updates the pool_id of the existing vip.
+     * Changing this updates the poolId of the existing vip.
      */
     public readonly poolId!: pulumi.Output<string>;
     /**
@@ -210,7 +210,7 @@ export interface VipState {
     readonly adminStateUp?: pulumi.Input<boolean>;
     /**
      * The maximum number of connections allowed for the
-     * vip. Default is -1, meaning no limit. Changing this updates the conn_limit
+     * vip. Default is -1, meaning no limit. Changing this updates the connLimit
      * of the existing vip.
      */
     readonly connLimit?: pulumi.Input<number>;
@@ -237,7 +237,7 @@ export interface VipState {
     readonly persistence?: pulumi.Input<{[key: string]: any}>;
     /**
      * The ID of the pool with which the vip is associated.
-     * Changing this updates the pool_id of the existing vip.
+     * Changing this updates the poolId of the existing vip.
      */
     readonly poolId?: pulumi.Input<string>;
     /**
@@ -292,7 +292,7 @@ export interface VipArgs {
     readonly adminStateUp?: pulumi.Input<boolean>;
     /**
      * The maximum number of connections allowed for the
-     * vip. Default is -1, meaning no limit. Changing this updates the conn_limit
+     * vip. Default is -1, meaning no limit. Changing this updates the connLimit
      * of the existing vip.
      */
     readonly connLimit?: pulumi.Input<number>;
@@ -319,7 +319,7 @@ export interface VipArgs {
     readonly persistence?: pulumi.Input<{[key: string]: any}>;
     /**
      * The ID of the pool with which the vip is associated.
-     * Changing this updates the pool_id of the existing vip.
+     * Changing this updates the poolId of the existing vip.
      */
     readonly poolId: pulumi.Input<string>;
     /**

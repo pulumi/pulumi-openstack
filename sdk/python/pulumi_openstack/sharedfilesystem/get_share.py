@@ -105,14 +105,27 @@ class GetShareResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetShareResult(GetShareResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetShareResult(
+            availability_zone=self.availability_zone,
+            description=self.description,
+            export_location_path=self.export_location_path,
+            export_locations=self.export_locations,
+            is_public=self.is_public,
+            metadata=self.metadata,
+            name=self.name,
+            project_id=self.project_id,
+            region=self.region,
+            share_network_id=self.share_network_id,
+            share_proto=self.share_proto,
+            size=self.size,
+            snapshot_id=self.snapshot_id,
+            status=self.status,
+            id=self.id)
 
 def get_share(description=None,export_location_path=None,is_public=None,metadata=None,name=None,region=None,share_network_id=None,snapshot_id=None,status=None,opts=None):
     """
@@ -137,7 +150,7 @@ def get_share(description=None,export_location_path=None,is_public=None,metadata
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:sharedfilesystem/getShare:getShare', __args__, opts=opts).value
 
-    return GetShareResult(
+    return AwaitableGetShareResult(
         availability_zone=__ret__.get('availabilityZone'),
         description=__ret__.get('description'),
         export_location_path=__ret__.get('exportLocationPath'),

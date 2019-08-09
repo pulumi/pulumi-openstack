@@ -60,7 +60,7 @@ class Service(pulumi.CustomResource):
     """
     Map of additional options.
     """
-    def __init__(__self__, resource_name, opts=None, admin_state_up=None, description=None, name=None, region=None, router_id=None, subnet_id=None, tenant_id=None, value_specs=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, admin_state_up=None, description=None, name=None, region=None, router_id=None, subnet_id=None, tenant_id=None, value_specs=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a V2 Neutron VPN service resource within OpenStack.
         
@@ -90,48 +90,80 @@ class Service(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        __props__['admin_state_up'] = admin_state_up
-
-        __props__['description'] = description
-
-        __props__['name'] = name
-
-        __props__['region'] = region
-
-        if router_id is None:
-            raise TypeError("Missing required property 'router_id'")
-        __props__['router_id'] = router_id
-
-        __props__['subnet_id'] = subnet_id
-
-        __props__['tenant_id'] = tenant_id
-
-        __props__['value_specs'] = value_specs
-
-        __props__['external_v4_ip'] = None
-        __props__['external_v6_ip'] = None
-        __props__['status'] = None
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            __props__['admin_state_up'] = admin_state_up
+            __props__['description'] = description
+            __props__['name'] = name
+            __props__['region'] = region
+            if router_id is None:
+                raise TypeError("Missing required property 'router_id'")
+            __props__['router_id'] = router_id
+            __props__['subnet_id'] = subnet_id
+            __props__['tenant_id'] = tenant_id
+            __props__['value_specs'] = value_specs
+            __props__['external_v4_ip'] = None
+            __props__['external_v6_ip'] = None
+            __props__['status'] = None
         super(Service, __self__).__init__(
             'openstack:vpnaas/service:Service',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, admin_state_up=None, description=None, external_v4_ip=None, external_v6_ip=None, name=None, region=None, router_id=None, status=None, subnet_id=None, tenant_id=None, value_specs=None):
+        """
+        Get an existing Service resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] admin_state_up: The administrative state of the resource. Can either be up(true) or down(false).
+               Changing this updates the administrative state of the existing service.
+        :param pulumi.Input[str] description: The human-readable description for the service.
+               Changing this updates the description of the existing service.
+        :param pulumi.Input[str] external_v4_ip: The read-only external (public) IPv4 address that is used for the VPN service.
+        :param pulumi.Input[str] external_v6_ip: The read-only external (public) IPv6 address that is used for the VPN service.
+        :param pulumi.Input[str] name: The name of the service. Changing this updates the name of
+               the existing service.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
+               A Networking client is needed to create a VPN service. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               service.
+        :param pulumi.Input[str] router_id: The ID of the router. Changing this creates a new service.
+        :param pulumi.Input[str] status: Indicates whether IPsec VPN service is currently operational. Values are ACTIVE, DOWN, BUILD, ERROR, PENDING_CREATE, PENDING_UPDATE, or PENDING_DELETE.
+        :param pulumi.Input[str] subnet_id: SubnetID is the ID of the subnet. Default is null.
+        :param pulumi.Input[str] tenant_id: The owner of the service. Required if admin wants to
+               create a service for another project. Changing this creates a new service.
+        :param pulumi.Input[dict] value_specs: Map of additional options.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/vpnaas_service_v2.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["admin_state_up"] = admin_state_up
+        __props__["description"] = description
+        __props__["external_v4_ip"] = external_v4_ip
+        __props__["external_v6_ip"] = external_v6_ip
+        __props__["name"] = name
+        __props__["region"] = region
+        __props__["router_id"] = router_id
+        __props__["status"] = status
+        __props__["subnet_id"] = subnet_id
+        __props__["tenant_id"] = tenant_id
+        __props__["value_specs"] = value_specs
+        return Service(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

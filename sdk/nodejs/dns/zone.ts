@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const example_com = new openstack.dns.Zone("example.com", {
+ * const exampleCom = new openstack.dns.Zone("example.com", {
  *     description: "An example zone",
  *     email: "jdoe@example.com",
  *     ttl: 3000,

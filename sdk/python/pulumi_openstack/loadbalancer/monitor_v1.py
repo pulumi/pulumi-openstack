@@ -69,7 +69,7 @@ class MonitorV1(pulumi.CustomResource):
     accessed if monitor type is HTTP or HTTPS. Changing this updates the
     url_path of the existing monitor.
     """
-    def __init__(__self__, resource_name, opts=None, admin_state_up=None, delay=None, expected_codes=None, http_method=None, max_retries=None, region=None, tenant_id=None, timeout=None, type=None, url_path=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, admin_state_up=None, delay=None, expected_codes=None, http_method=None, max_retries=None, region=None, tenant_id=None, timeout=None, type=None, url_path=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a V1 load balancer monitor resource within OpenStack.
         
@@ -114,54 +114,96 @@ class MonitorV1(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        __props__['admin_state_up'] = admin_state_up
-
-        if delay is None:
-            raise TypeError("Missing required property 'delay'")
-        __props__['delay'] = delay
-
-        __props__['expected_codes'] = expected_codes
-
-        __props__['http_method'] = http_method
-
-        if max_retries is None:
-            raise TypeError("Missing required property 'max_retries'")
-        __props__['max_retries'] = max_retries
-
-        __props__['region'] = region
-
-        __props__['tenant_id'] = tenant_id
-
-        if timeout is None:
-            raise TypeError("Missing required property 'timeout'")
-        __props__['timeout'] = timeout
-
-        if type is None:
-            raise TypeError("Missing required property 'type'")
-        __props__['type'] = type
-
-        __props__['url_path'] = url_path
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            __props__['admin_state_up'] = admin_state_up
+            if delay is None:
+                raise TypeError("Missing required property 'delay'")
+            __props__['delay'] = delay
+            __props__['expected_codes'] = expected_codes
+            __props__['http_method'] = http_method
+            if max_retries is None:
+                raise TypeError("Missing required property 'max_retries'")
+            __props__['max_retries'] = max_retries
+            __props__['region'] = region
+            __props__['tenant_id'] = tenant_id
+            if timeout is None:
+                raise TypeError("Missing required property 'timeout'")
+            __props__['timeout'] = timeout
+            if type is None:
+                raise TypeError("Missing required property 'type'")
+            __props__['type'] = type
+            __props__['url_path'] = url_path
         super(MonitorV1, __self__).__init__(
             'openstack:loadbalancer/monitorV1:MonitorV1',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, admin_state_up=None, delay=None, expected_codes=None, http_method=None, max_retries=None, region=None, tenant_id=None, timeout=None, type=None, url_path=None):
+        """
+        Get an existing MonitorV1 resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] admin_state_up: The administrative state of the monitor.
+               Acceptable values are "true" and "false". Changing this value updates the
+               state of the existing monitor.
+        :param pulumi.Input[float] delay: The time, in seconds, between sending probes to members.
+               Changing this creates a new monitor.
+        :param pulumi.Input[str] expected_codes: Required for HTTP(S) types. Expected HTTP codes
+               for a passing HTTP(S) monitor. You can either specify a single status like
+               "200", or a range like "200-202". Changing this updates the expected_codes
+               of the existing monitor.
+        :param pulumi.Input[str] http_method: Required for HTTP(S) types. The HTTP method used
+               for requests by the monitor. If this attribute is not specified, it defaults
+               to "GET". Changing this updates the http_method of the existing monitor.
+        :param pulumi.Input[float] max_retries: Number of permissible ping failures before changing
+               the member's status to INACTIVE. Must be a number between 1 and 10. Changing
+               this updates the max_retries of the existing monitor.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
+               A Networking client is needed to create an LB monitor. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               LB monitor.
+        :param pulumi.Input[str] tenant_id: The owner of the monitor. Required if admin wants to
+               create a monitor for another tenant. Changing this creates a new monitor.
+        :param pulumi.Input[float] timeout: Maximum number of seconds for a monitor to wait for a
+               ping reply before it times out. The value must be less than the delay value.
+               Changing this updates the timeout of the existing monitor.
+        :param pulumi.Input[str] type: The type of probe, which is PING, TCP, HTTP, or HTTPS,
+               that is sent by the monitor to verify the member state. Changing this
+               creates a new monitor.
+        :param pulumi.Input[str] url_path: Required for HTTP(S) types. URI path that will be
+               accessed if monitor type is HTTP or HTTPS. Changing this updates the
+               url_path of the existing monitor.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_monitor_v1.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["admin_state_up"] = admin_state_up
+        __props__["delay"] = delay
+        __props__["expected_codes"] = expected_codes
+        __props__["http_method"] = http_method
+        __props__["max_retries"] = max_retries
+        __props__["region"] = region
+        __props__["tenant_id"] = tenant_id
+        __props__["timeout"] = timeout
+        __props__["type"] = type
+        __props__["url_path"] = url_path
+        return MonitorV1(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

@@ -61,7 +61,7 @@ class L7RuleV2(pulumi.CustomResource):
     The value to use for the comparison. For example, the file type to
     compare.
     """
-    def __init__(__self__, resource_name, opts=None, admin_state_up=None, compare_type=None, invert=None, key=None, l7policy_id=None, region=None, tenant_id=None, type=None, value=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, admin_state_up=None, compare_type=None, invert=None, key=None, l7policy_id=None, region=None, tenant_id=None, type=None, value=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a V2 L7 Rule resource within OpenStack.
         
@@ -97,54 +97,88 @@ class L7RuleV2(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        __props__['admin_state_up'] = admin_state_up
-
-        if compare_type is None:
-            raise TypeError("Missing required property 'compare_type'")
-        __props__['compare_type'] = compare_type
-
-        __props__['invert'] = invert
-
-        __props__['key'] = key
-
-        if l7policy_id is None:
-            raise TypeError("Missing required property 'l7policy_id'")
-        __props__['l7policy_id'] = l7policy_id
-
-        __props__['region'] = region
-
-        __props__['tenant_id'] = tenant_id
-
-        if type is None:
-            raise TypeError("Missing required property 'type'")
-        __props__['type'] = type
-
-        if value is None:
-            raise TypeError("Missing required property 'value'")
-        __props__['value'] = value
-
-        __props__['listener_id'] = None
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            __props__['admin_state_up'] = admin_state_up
+            if compare_type is None:
+                raise TypeError("Missing required property 'compare_type'")
+            __props__['compare_type'] = compare_type
+            __props__['invert'] = invert
+            __props__['key'] = key
+            if l7policy_id is None:
+                raise TypeError("Missing required property 'l7policy_id'")
+            __props__['l7policy_id'] = l7policy_id
+            __props__['region'] = region
+            __props__['tenant_id'] = tenant_id
+            if type is None:
+                raise TypeError("Missing required property 'type'")
+            __props__['type'] = type
+            if value is None:
+                raise TypeError("Missing required property 'value'")
+            __props__['value'] = value
+            __props__['listener_id'] = None
         super(L7RuleV2, __self__).__init__(
             'openstack:loadbalancer/l7RuleV2:L7RuleV2',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, admin_state_up=None, compare_type=None, invert=None, key=None, l7policy_id=None, listener_id=None, region=None, tenant_id=None, type=None, value=None):
+        """
+        Get an existing L7RuleV2 resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] admin_state_up: The administrative state of the L7 Rule.
+               A valid value is true (UP) or false (DOWN).
+        :param pulumi.Input[str] compare_type: The comparison type for the L7 rule - can either be
+               CONTAINS, STARTS\_WITH, ENDS_WITH, EQUAL_TO or REGEX
+        :param pulumi.Input[bool] invert: When true the logic of the rule is inverted. For example, with invert
+               true, equal to would become not equal to. Default is false.
+        :param pulumi.Input[str] key: The key to use for the comparison. For example, the name of the cookie to
+               evaluate. Valid when `type` is set to COOKIE or HEADER.
+        :param pulumi.Input[str] l7policy_id: The ID of the L7 Policy to query. Changing this creates a new
+               L7 Rule.
+        :param pulumi.Input[str] listener_id: The ID of the Listener owning this resource.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
+               A Networking client is needed to create an . If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               L7 Rule.
+        :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
+               the L7 Rule.  Only administrative users can specify a tenant UUID
+               other than their own. Changing this creates a new L7 Rule.
+        :param pulumi.Input[str] type: The L7 Rule type - can either be COOKIE, FILE\_TYPE, HEADER,
+               HOST\_NAME or PATH.
+        :param pulumi.Input[str] value: The value to use for the comparison. For example, the file type to
+               compare.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_l7rule_v2.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["admin_state_up"] = admin_state_up
+        __props__["compare_type"] = compare_type
+        __props__["invert"] = invert
+        __props__["key"] = key
+        __props__["l7policy_id"] = l7policy_id
+        __props__["listener_id"] = listener_id
+        __props__["region"] = region
+        __props__["tenant_id"] = tenant_id
+        __props__["type"] = type
+        __props__["value"] = value
+        return L7RuleV2(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

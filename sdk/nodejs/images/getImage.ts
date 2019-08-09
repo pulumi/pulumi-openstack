@@ -123,8 +123,8 @@ export interface GetImageResult {
     readonly containerFormat: string;
     /**
      * The date the image was created.
-     * * `container_format`: The format of the image's container.
-     * * `disk_format`: The format of the image's disk.
+     * * `containerFormat`: The format of the image's container.
+     * * `diskFormat`: The format of the image's disk.
      */
     readonly createdAt: string;
     readonly diskFormat: string;

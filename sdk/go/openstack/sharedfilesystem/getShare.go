@@ -67,10 +67,10 @@ type GetShareArgs struct {
 	// The UUID of the share's base snapshot.
 	SnapshotId interface{}
 	// A share status filter. A valid value is `creating`,
-	// `error`, `available`, `deleting`, `error_deleting`, `manage_starting`,
-	// `manage_error`, `unmanage_starting`, `unmanage_error`, `unmanaged`,
-	// `extending`, `extending_error`, `shrinking`, `shrinking_error`, or
-	// `shrinking_possible_data_loss_error`.
+	// `error`, `available`, `deleting`, `errorDeleting`, `manageStarting`,
+	// `manageError`, `unmanageStarting`, `unmanageError`, `unmanaged`,
+	// `extending`, `extendingError`, `shrinking`, `shrinkingError`, or
+	// `shrinkingPossibleDataLossError`.
 	Status interface{}
 }
 

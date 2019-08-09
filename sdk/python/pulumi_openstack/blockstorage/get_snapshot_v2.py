@@ -64,14 +64,21 @@ class GetSnapshotV2Result:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetSnapshotV2Result(GetSnapshotV2Result):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetSnapshotV2Result(
+            description=self.description,
+            metadata=self.metadata,
+            most_recent=self.most_recent,
+            name=self.name,
+            region=self.region,
+            size=self.size,
+            status=self.status,
+            volume_id=self.volume_id,
+            id=self.id)
 
 def get_snapshot_v2(most_recent=None,name=None,region=None,status=None,volume_id=None,opts=None):
     """
@@ -92,7 +99,7 @@ def get_snapshot_v2(most_recent=None,name=None,region=None,status=None,volume_id
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:blockstorage/getSnapshotV2:getSnapshotV2', __args__, opts=opts).value
 
-    return GetSnapshotV2Result(
+    return AwaitableGetSnapshotV2Result(
         description=__ret__.get('description'),
         metadata=__ret__.get('metadata'),
         most_recent=__ret__.get('mostRecent'),

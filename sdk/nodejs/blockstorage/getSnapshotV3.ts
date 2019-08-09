@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * 
  * const snapshot1 = pulumi.output(openstack.blockstorage.getSnapshotV3({
  *     mostRecent: true,
- *     name: "snapshot_1",
+ *     name: "snapshot1",
  * }));
  * ```
  *

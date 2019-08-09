@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as openstack from "@pulumi/openstack";
  * 
  * const cluster1 = pulumi.output(openstack.containerinfra.getCluster({
- *     name: "cluster_1",
+ *     name: "cluster1",
  * }));
  * ```
  *

@@ -13,20 +13,20 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const network1 = new openstack.networking.Network("network_1", {
+ * const network1 = new openstack.networking.Network("network1", {
  *     adminStateUp: true,
  * });
- * const subnet1 = new openstack.networking.Subnet("subnet_1", {
+ * const subnet1 = new openstack.networking.Subnet("subnet1", {
  *     cidr: "192.168.199.0/24",
  *     ipVersion: 4,
  *     networkId: network1.id,
  * });
- * const sharenetwork1 = new openstack.sharedfilesystem.ShareNetwork("sharenetwork_1", {
+ * const sharenetwork1 = new openstack.sharedfilesystem.ShareNetwork("sharenetwork1", {
  *     description: "test share network with security services",
  *     neutronNetId: network1.id,
  *     neutronSubnetId: subnet1.id,
  * });
- * const share1 = new openstack.sharedfilesystem.Share("share_1", {
+ * const share1 = new openstack.sharedfilesystem.Share("share1", {
  *     description: "test share description",
  *     shareNetworkId: sharenetwork1.id,
  *     shareProto: "NFS",
@@ -123,8 +123,8 @@ export class Share extends pulumi.CustomResource {
     public /*out*/ readonly replicationType!: pulumi.Output<string>;
     /**
      * The UUID of a share network where the share server exists
-     * or will be created. If `share_network_id` is not set and you provide a `snapshot_id`,
-     * the share_network_id value from the snapshot is used. Changing this creates a new share.
+     * or will be created. If `shareNetworkId` is not set and you provide a `snapshotId`,
+     * the shareNetworkId value from the snapshot is used. Changing this creates a new share.
      */
     public readonly shareNetworkId!: pulumi.Output<string>;
     /**
@@ -284,8 +284,8 @@ export interface ShareState {
     readonly replicationType?: pulumi.Input<string>;
     /**
      * The UUID of a share network where the share server exists
-     * or will be created. If `share_network_id` is not set and you provide a `snapshot_id`,
-     * the share_network_id value from the snapshot is used. Changing this creates a new share.
+     * or will be created. If `shareNetworkId` is not set and you provide a `snapshotId`,
+     * the shareNetworkId value from the snapshot is used. Changing this creates a new share.
      */
     readonly shareNetworkId?: pulumi.Input<string>;
     /**
@@ -352,8 +352,8 @@ export interface ShareArgs {
     readonly region?: pulumi.Input<string>;
     /**
      * The UUID of a share network where the share server exists
-     * or will be created. If `share_network_id` is not set and you provide a `snapshot_id`,
-     * the share_network_id value from the snapshot is used. Changing this creates a new share.
+     * or will be created. If `shareNetworkId` is not set and you provide a `snapshotId`,
+     * the shareNetworkId value from the snapshot is used. Changing this creates a new share.
      */
     readonly shareNetworkId?: pulumi.Input<string>;
     /**

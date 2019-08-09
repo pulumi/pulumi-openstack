@@ -27,11 +27,11 @@ class FloatingIpAssociate(pulumi.CustomResource):
     `region` argument of the provider is used. Changing this creates a new
     floating IP (which may or may not have a different address).
     """
-    def __init__(__self__, resource_name, opts=None, fixed_ip=None, floating_ip=None, port_id=None, region=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, fixed_ip=None, floating_ip=None, port_id=None, region=None, __props__=None, __name__=None, __opts__=None):
         """
         Associates a floating IP to a port. This is useful for situations
         where you have a pre-allocated floating IP or are unable to use the
-        `openstack_networking_floatingip_v2` resource to create a floating IP.
+        `networking.FloatingIp` resource to create a floating IP.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -52,38 +52,58 @@ class FloatingIpAssociate(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        __props__['fixed_ip'] = fixed_ip
-
-        if floating_ip is None:
-            raise TypeError("Missing required property 'floating_ip'")
-        __props__['floating_ip'] = floating_ip
-
-        if port_id is None:
-            raise TypeError("Missing required property 'port_id'")
-        __props__['port_id'] = port_id
-
-        __props__['region'] = region
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            __props__['fixed_ip'] = fixed_ip
+            if floating_ip is None:
+                raise TypeError("Missing required property 'floating_ip'")
+            __props__['floating_ip'] = floating_ip
+            if port_id is None:
+                raise TypeError("Missing required property 'port_id'")
+            __props__['port_id'] = port_id
+            __props__['region'] = region
         super(FloatingIpAssociate, __self__).__init__(
             'openstack:networking/floatingIpAssociate:FloatingIpAssociate',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, fixed_ip=None, floating_ip=None, port_id=None, region=None):
+        """
+        Get an existing FloatingIpAssociate resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] floating_ip: IP Address of an existing floating IP.
+        :param pulumi.Input[str] port_id: ID of an existing port with at least one IP address to
+               associate with this floating IP.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
+               A Networking client is needed to create a floating IP that can be used with
+               another networking resource, such as a load balancer. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               floating IP (which may or may not have a different address).
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_floatingip_associate_v2.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["fixed_ip"] = fixed_ip
+        __props__["floating_ip"] = floating_ip
+        __props__["port_id"] = port_id
+        __props__["region"] = region
+        return FloatingIpAssociate(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

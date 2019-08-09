@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const rule1 = new openstack.firewall.Rule("rule_1", {
+ * const rule1 = new openstack.firewall.Rule("rule1", {
  *     action: "deny",
  *     description: "drop TELNET traffic",
  *     destinationPort: "23",
@@ -64,13 +64,13 @@ export class Rule extends pulumi.CustomResource {
     public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The destination IP address on which the
-     * firewall rule operates. Changing this updates the `destination_ip_address`
+     * firewall rule operates. Changing this updates the `destinationIpAddress`
      * of an existing firewall rule.
      */
     public readonly destinationIpAddress!: pulumi.Output<string | undefined>;
     /**
      * The destination port on which the firewall
-     * rule operates. Changing this updates the `destination_port` of an existing
+     * rule operates. Changing this updates the `destinationPort` of an existing
      * firewall rule.
      */
     public readonly destinationPort!: pulumi.Output<string | undefined>;
@@ -82,7 +82,7 @@ export class Rule extends pulumi.CustomResource {
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
      * IP version, either 4 (default) or 6. Changing this
-     * updates the `ip_version` of an existing firewall rule.
+     * updates the `ipVersion` of an existing firewall rule.
      */
     public readonly ipVersion!: pulumi.Output<number | undefined>;
     /**
@@ -105,13 +105,13 @@ export class Rule extends pulumi.CustomResource {
     public readonly region!: pulumi.Output<string>;
     /**
      * The source IP address on which the firewall
-     * rule operates. Changing this updates the `source_ip_address` of an existing
+     * rule operates. Changing this updates the `sourceIpAddress` of an existing
      * firewall rule.
      */
     public readonly sourceIpAddress!: pulumi.Output<string | undefined>;
     /**
      * The source port on which the firewall
-     * rule operates. Changing this updates the `source_port` of an existing
+     * rule operates. Changing this updates the `sourcePort` of an existing
      * firewall rule.
      */
     public readonly sourcePort!: pulumi.Output<string | undefined>;
@@ -201,13 +201,13 @@ export interface RuleState {
     readonly description?: pulumi.Input<string>;
     /**
      * The destination IP address on which the
-     * firewall rule operates. Changing this updates the `destination_ip_address`
+     * firewall rule operates. Changing this updates the `destinationIpAddress`
      * of an existing firewall rule.
      */
     readonly destinationIpAddress?: pulumi.Input<string>;
     /**
      * The destination port on which the firewall
-     * rule operates. Changing this updates the `destination_port` of an existing
+     * rule operates. Changing this updates the `destinationPort` of an existing
      * firewall rule.
      */
     readonly destinationPort?: pulumi.Input<string>;
@@ -219,7 +219,7 @@ export interface RuleState {
     readonly enabled?: pulumi.Input<boolean>;
     /**
      * IP version, either 4 (default) or 6. Changing this
-     * updates the `ip_version` of an existing firewall rule.
+     * updates the `ipVersion` of an existing firewall rule.
      */
     readonly ipVersion?: pulumi.Input<number>;
     /**
@@ -242,13 +242,13 @@ export interface RuleState {
     readonly region?: pulumi.Input<string>;
     /**
      * The source IP address on which the firewall
-     * rule operates. Changing this updates the `source_ip_address` of an existing
+     * rule operates. Changing this updates the `sourceIpAddress` of an existing
      * firewall rule.
      */
     readonly sourceIpAddress?: pulumi.Input<string>;
     /**
      * The source port on which the firewall
-     * rule operates. Changing this updates the `source_port` of an existing
+     * rule operates. Changing this updates the `sourcePort` of an existing
      * firewall rule.
      */
     readonly sourcePort?: pulumi.Input<string>;
@@ -281,13 +281,13 @@ export interface RuleArgs {
     readonly description?: pulumi.Input<string>;
     /**
      * The destination IP address on which the
-     * firewall rule operates. Changing this updates the `destination_ip_address`
+     * firewall rule operates. Changing this updates the `destinationIpAddress`
      * of an existing firewall rule.
      */
     readonly destinationIpAddress?: pulumi.Input<string>;
     /**
      * The destination port on which the firewall
-     * rule operates. Changing this updates the `destination_port` of an existing
+     * rule operates. Changing this updates the `destinationPort` of an existing
      * firewall rule.
      */
     readonly destinationPort?: pulumi.Input<string>;
@@ -299,7 +299,7 @@ export interface RuleArgs {
     readonly enabled?: pulumi.Input<boolean>;
     /**
      * IP version, either 4 (default) or 6. Changing this
-     * updates the `ip_version` of an existing firewall rule.
+     * updates the `ipVersion` of an existing firewall rule.
      */
     readonly ipVersion?: pulumi.Input<number>;
     /**
@@ -322,13 +322,13 @@ export interface RuleArgs {
     readonly region?: pulumi.Input<string>;
     /**
      * The source IP address on which the firewall
-     * rule operates. Changing this updates the `source_ip_address` of an existing
+     * rule operates. Changing this updates the `sourceIpAddress` of an existing
      * firewall rule.
      */
     readonly sourceIpAddress?: pulumi.Input<string>;
     /**
      * The source port on which the firewall
-     * rule operates. Changing this updates the `source_port` of an existing
+     * rule operates. Changing this updates the `sourcePort` of an existing
      * firewall rule.
      */
     readonly sourcePort?: pulumi.Input<string>;

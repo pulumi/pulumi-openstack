@@ -53,13 +53,13 @@ class PoolV1(pulumi.CustomResource):
     The owner of the pool. Required if admin wants to
     create a pool member for another tenant. Changing this creates a new pool.
     """
-    def __init__(__self__, resource_name, opts=None, lb_method=None, lb_provider=None, monitor_ids=None, name=None, protocol=None, region=None, subnet_id=None, tenant_id=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, lb_method=None, lb_provider=None, monitor_ids=None, name=None, protocol=None, region=None, subnet_id=None, tenant_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a V1 load balancer pool resource within OpenStack.
         
         ## Notes
         
-        The `member` block is deprecated in favor of the `openstack_lb_member_v1` resource.
+        The `member` block is deprecated in favor of the `loadbalancer.MemberV1` resource.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -92,48 +92,80 @@ class PoolV1(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        if lb_method is None:
-            raise TypeError("Missing required property 'lb_method'")
-        __props__['lb_method'] = lb_method
-
-        __props__['lb_provider'] = lb_provider
-
-        __props__['monitor_ids'] = monitor_ids
-
-        __props__['name'] = name
-
-        if protocol is None:
-            raise TypeError("Missing required property 'protocol'")
-        __props__['protocol'] = protocol
-
-        __props__['region'] = region
-
-        if subnet_id is None:
-            raise TypeError("Missing required property 'subnet_id'")
-        __props__['subnet_id'] = subnet_id
-
-        __props__['tenant_id'] = tenant_id
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            if lb_method is None:
+                raise TypeError("Missing required property 'lb_method'")
+            __props__['lb_method'] = lb_method
+            __props__['lb_provider'] = lb_provider
+            __props__['monitor_ids'] = monitor_ids
+            __props__['name'] = name
+            if protocol is None:
+                raise TypeError("Missing required property 'protocol'")
+            __props__['protocol'] = protocol
+            __props__['region'] = region
+            if subnet_id is None:
+                raise TypeError("Missing required property 'subnet_id'")
+            __props__['subnet_id'] = subnet_id
+            __props__['tenant_id'] = tenant_id
         super(PoolV1, __self__).__init__(
             'openstack:loadbalancer/poolV1:PoolV1',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, lb_method=None, lb_provider=None, monitor_ids=None, name=None, protocol=None, region=None, subnet_id=None, tenant_id=None):
+        """
+        Get an existing PoolV1 resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] lb_method: The algorithm used to distribute load between the
+               members of the pool. The current specification supports 'ROUND_ROBIN' and
+               'LEAST_CONNECTIONS' as valid values for this attribute.
+        :param pulumi.Input[str] lb_provider: The backend load balancing provider. For example:
+               `haproxy`, `F5`, etc.
+        :param pulumi.Input[list] monitor_ids: A list of IDs of monitors to associate with the
+               pool.
+        :param pulumi.Input[str] name: The name of the pool. Changing this updates the name of
+               the existing pool.
+        :param pulumi.Input[str] protocol: The protocol used by the pool members, you can use
+               either 'TCP, 'HTTP', or 'HTTPS'. Changing this creates a new pool.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
+               A Networking client is needed to create an LB pool. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               LB pool.
+        :param pulumi.Input[str] subnet_id: The network on which the members of the pool will be
+               located. Only members that are on this network can be added to the pool.
+               Changing this creates a new pool.
+        :param pulumi.Input[str] tenant_id: The owner of the pool. Required if admin wants to
+               create a pool member for another tenant. Changing this creates a new pool.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_pool_v1.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["lb_method"] = lb_method
+        __props__["lb_provider"] = lb_provider
+        __props__["monitor_ids"] = monitor_ids
+        __props__["name"] = name
+        __props__["protocol"] = protocol
+        __props__["region"] = region
+        __props__["subnet_id"] = subnet_id
+        __props__["tenant_id"] = tenant_id
+        return PoolV1(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

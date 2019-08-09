@@ -62,14 +62,24 @@ class GetTrunkResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetTrunkResult(GetTrunkResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetTrunkResult(
+            admin_state_up=self.admin_state_up,
+            all_tags=self.all_tags,
+            description=self.description,
+            name=self.name,
+            port_id=self.port_id,
+            project_id=self.project_id,
+            region=self.region,
+            status=self.status,
+            sub_ports=self.sub_ports,
+            tags=self.tags,
+            trunk_id=self.trunk_id,
+            id=self.id)
 
 def get_trunk(admin_state_up=None,description=None,name=None,port_id=None,project_id=None,region=None,status=None,tags=None,trunk_id=None,opts=None):
     """
@@ -94,7 +104,7 @@ def get_trunk(admin_state_up=None,description=None,name=None,port_id=None,projec
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:networking/getTrunk:getTrunk', __args__, opts=opts).value
 
-    return GetTrunkResult(
+    return AwaitableGetTrunkResult(
         admin_state_up=__ret__.get('adminStateUp'),
         all_tags=__ret__.get('allTags'),
         description=__ret__.get('description'),

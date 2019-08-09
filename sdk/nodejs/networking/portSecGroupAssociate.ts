@@ -41,7 +41,7 @@ export class PortSecGroupAssociate extends pulumi.CustomResource {
     public /*out*/ readonly allSecurityGroupIds!: pulumi.Output<string[]>;
     /**
      * Whether to replace or append the list of security
-     * groups, specified in the `security_group_ids`. Defaults to `false`.
+     * groups, specified in the `securityGroupIds`. Defaults to `false`.
      */
     public readonly enforce!: pulumi.Output<boolean | undefined>;
     /**
@@ -115,7 +115,7 @@ export interface PortSecGroupAssociateState {
     readonly allSecurityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Whether to replace or append the list of security
-     * groups, specified in the `security_group_ids`. Defaults to `false`.
+     * groups, specified in the `securityGroupIds`. Defaults to `false`.
      */
     readonly enforce?: pulumi.Input<boolean>;
     /**
@@ -143,7 +143,7 @@ export interface PortSecGroupAssociateState {
 export interface PortSecGroupAssociateArgs {
     /**
      * Whether to replace or append the list of security
-     * groups, specified in the `security_group_ids`. Defaults to `false`.
+     * groups, specified in the `securityGroupIds`. Defaults to `false`.
      */
     readonly enforce?: pulumi.Input<boolean>;
     /**

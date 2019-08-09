@@ -90,7 +90,7 @@ class SecGroupRule(pulumi.CustomResource):
     wants to create a port for another tenant. Changing this creates a new
     security group rule.
     """
-    def __init__(__self__, resource_name, opts=None, description=None, direction=None, ethertype=None, port_range_max=None, port_range_min=None, protocol=None, region=None, remote_group_id=None, remote_ip_prefix=None, security_group_id=None, tenant_id=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, description=None, direction=None, ethertype=None, port_range_max=None, port_range_min=None, protocol=None, region=None, remote_group_id=None, remote_ip_prefix=None, security_group_id=None, tenant_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a V2 neutron security group rule resource within OpenStack.
         Unlike Nova security groups, neutron separates the group from the rules
@@ -155,54 +155,114 @@ class SecGroupRule(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        __props__['description'] = description
-
-        if direction is None:
-            raise TypeError("Missing required property 'direction'")
-        __props__['direction'] = direction
-
-        if ethertype is None:
-            raise TypeError("Missing required property 'ethertype'")
-        __props__['ethertype'] = ethertype
-
-        __props__['port_range_max'] = port_range_max
-
-        __props__['port_range_min'] = port_range_min
-
-        __props__['protocol'] = protocol
-
-        __props__['region'] = region
-
-        __props__['remote_group_id'] = remote_group_id
-
-        __props__['remote_ip_prefix'] = remote_ip_prefix
-
-        if security_group_id is None:
-            raise TypeError("Missing required property 'security_group_id'")
-        __props__['security_group_id'] = security_group_id
-
-        __props__['tenant_id'] = tenant_id
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            __props__['description'] = description
+            if direction is None:
+                raise TypeError("Missing required property 'direction'")
+            __props__['direction'] = direction
+            if ethertype is None:
+                raise TypeError("Missing required property 'ethertype'")
+            __props__['ethertype'] = ethertype
+            __props__['port_range_max'] = port_range_max
+            __props__['port_range_min'] = port_range_min
+            __props__['protocol'] = protocol
+            __props__['region'] = region
+            __props__['remote_group_id'] = remote_group_id
+            __props__['remote_ip_prefix'] = remote_ip_prefix
+            if security_group_id is None:
+                raise TypeError("Missing required property 'security_group_id'")
+            __props__['security_group_id'] = security_group_id
+            __props__['tenant_id'] = tenant_id
         super(SecGroupRule, __self__).__init__(
             'openstack:networking/secGroupRule:SecGroupRule',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, description=None, direction=None, ethertype=None, port_range_max=None, port_range_min=None, protocol=None, region=None, remote_group_id=None, remote_ip_prefix=None, security_group_id=None, tenant_id=None):
+        """
+        Get an existing SecGroupRule resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] description: A description of the rule. Changing this creates a new security group rule.
+        :param pulumi.Input[str] direction: The direction of the rule, valid values are __ingress__
+               or __egress__. Changing this creates a new security group rule.
+        :param pulumi.Input[str] ethertype: The layer 3 protocol type, valid values are __IPv4__
+               or __IPv6__. Changing this creates a new security group rule.
+        :param pulumi.Input[float] port_range_max: The higher part of the allowed port range, valid
+               integer value needs to be between 1 and 65535. Changing this creates a new
+               security group rule.
+        :param pulumi.Input[float] port_range_min: The lower part of the allowed port range, valid
+               integer value needs to be between 1 and 65535. Changing this creates a new
+               security group rule.
+        :param pulumi.Input[str] protocol: The layer 4 protocol type, valid values are following. Changing this creates a new security group rule. This is required if you want to specify a port range.
+               * __tcp__
+               * __udp__
+               * __icmp__
+               * __ah__
+               * __dccp__
+               * __egp__
+               * __esp__
+               * __gre__
+               * __igmp__
+               * __ipv6-encap__
+               * __ipv6-frag__
+               * __ipv6-icmp__
+               * __ipv6-nonxt__
+               * __ipv6-opts__
+               * __ipv6-route__
+               * __ospf__
+               * __pgm__
+               * __rsvp__
+               * __sctp__
+               * __udplite__
+               * __vrrp__
+        :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
+               A networking client is needed to create a port. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               security group rule.
+        :param pulumi.Input[str] remote_group_id: The remote group id, the value needs to be an
+               Openstack ID of a security group in the same tenant. Changing this creates
+               a new security group rule.
+        :param pulumi.Input[str] remote_ip_prefix: The remote CIDR, the value needs to be a valid
+               CIDR (i.e. 192.168.0.0/16). Changing this creates a new security group rule.
+        :param pulumi.Input[str] security_group_id: The security group id the rule should belong
+               to, the value needs to be an Openstack ID of a security group in the same
+               tenant. Changing this creates a new security group rule.
+        :param pulumi.Input[str] tenant_id: The owner of the security group. Required if admin
+               wants to create a port for another tenant. Changing this creates a new
+               security group rule.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_secgroup_rule_v2.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["description"] = description
+        __props__["direction"] = direction
+        __props__["ethertype"] = ethertype
+        __props__["port_range_max"] = port_range_max
+        __props__["port_range_min"] = port_range_min
+        __props__["protocol"] = protocol
+        __props__["region"] = region
+        __props__["remote_group_id"] = remote_group_id
+        __props__["remote_ip_prefix"] = remote_ip_prefix
+        __props__["security_group_id"] = security_group_id
+        __props__["tenant_id"] = tenant_id
+        return SecGroupRule(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

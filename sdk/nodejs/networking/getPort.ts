@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as openstack from "@pulumi/openstack";
  * 
  * const port1 = pulumi.output(openstack.networking.getPort({
- *     name: "port_1",
+ *     name: "port1",
  * }));
  * ```
  *

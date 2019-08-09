@@ -66,14 +66,25 @@ class GetFloatingIpResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetFloatingIpResult(GetFloatingIpResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetFloatingIpResult(
+            address=self.address,
+            all_tags=self.all_tags,
+            description=self.description,
+            dns_domain=self.dns_domain,
+            dns_name=self.dns_name,
+            fixed_ip=self.fixed_ip,
+            pool=self.pool,
+            port_id=self.port_id,
+            region=self.region,
+            status=self.status,
+            tags=self.tags,
+            tenant_id=self.tenant_id,
+            id=self.id)
 
 def get_floating_ip(address=None,description=None,fixed_ip=None,pool=None,port_id=None,region=None,status=None,tags=None,tenant_id=None,opts=None):
     """
@@ -98,7 +109,7 @@ def get_floating_ip(address=None,description=None,fixed_ip=None,pool=None,port_i
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:networking/getFloatingIp:getFloatingIp', __args__, opts=opts).value
 
-    return GetFloatingIpResult(
+    return AwaitableGetFloatingIpResult(
         address=__ret__.get('address'),
         all_tags=__ret__.get('allTags'),
         description=__ret__.get('description'),

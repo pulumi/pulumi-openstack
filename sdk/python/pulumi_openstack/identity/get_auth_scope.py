@@ -79,14 +79,24 @@ class GetAuthScopeResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetAuthScopeResult(GetAuthScopeResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetAuthScopeResult(
+            name=self.name,
+            project_domain_id=self.project_domain_id,
+            project_domain_name=self.project_domain_name,
+            project_id=self.project_id,
+            project_name=self.project_name,
+            region=self.region,
+            roles=self.roles,
+            user_domain_id=self.user_domain_id,
+            user_domain_name=self.user_domain_name,
+            user_id=self.user_id,
+            user_name=self.user_name,
+            id=self.id)
 
 def get_auth_scope(name=None,region=None,opts=None):
     """
@@ -106,7 +116,7 @@ def get_auth_scope(name=None,region=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:identity/getAuthScope:getAuthScope', __args__, opts=opts).value
 
-    return GetAuthScopeResult(
+    return AwaitableGetAuthScopeResult(
         name=__ret__.get('name'),
         project_domain_id=__ret__.get('projectDomainId'),
         project_domain_name=__ret__.get('projectDomainName'),

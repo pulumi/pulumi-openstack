@@ -20,7 +20,7 @@ import (
 // different cloud provider.
 // 
 // This does not actually attach a volume to an instance. Please use
-// the `openstack_compute_volume_attach_v2` resource for that.
+// the `compute.VolumeAttach` resource for that.
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/blockstorage_volume_attach_v3.html.markdown.
 type VolumeAttach struct {
@@ -149,7 +149,7 @@ func (r *VolumeAttach) Initiator() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["initiator"])
 }
 
-// The IP address of the `host_name` above.
+// The IP address of the `hostName` above.
 func (r *VolumeAttach) IpAddress() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["ipAddress"])
 }
@@ -218,7 +218,7 @@ type VolumeAttachState struct {
 	HostName interface{}
 	// The iSCSI initiator string to make the connection.
 	Initiator interface{}
-	// The IP address of the `host_name` above.
+	// The IP address of the `hostName` above.
 	IpAddress interface{}
 	// A mount point base name for shared storage.
 	MountPointBase interface{}
@@ -256,7 +256,7 @@ type VolumeAttachArgs struct {
 	HostName interface{}
 	// The iSCSI initiator string to make the connection.
 	Initiator interface{}
-	// The IP address of the `host_name` above.
+	// The IP address of the `hostName` above.
 	IpAddress interface{}
 	// Whether to connect to this volume via multipath.
 	Multipath interface{}

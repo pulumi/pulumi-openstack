@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as openstack from "@pulumi/openstack";
  * 
  * const qosPolicy1 = pulumi.output(openstack.networking.getQosPolicy({
- *     name: "qos_policy_1",
+ *     name: "qosPolicy1",
  * }));
  * ```
  *

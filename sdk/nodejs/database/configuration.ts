@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * 
  * const test = new openstack.database.Configuration("test", {
  *     configurations: [{
- *         name: "max_connections",
+ *         name: "maxConnections",
  *         value: "200",
  *     }],
  *     datastore: {

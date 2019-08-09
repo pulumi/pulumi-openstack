@@ -15,10 +15,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const network1 = new openstack.networking.Network("network_1", {
+ * const network1 = new openstack.networking.Network("network1", {
  *     adminStateUp: true,
  * });
- * const port1 = new openstack.networking.Port("port_1", {
+ * const port1 = new openstack.networking.Port("port1", {
  *     adminStateUp: true,
  *     networkId: network1.id,
  * });
@@ -30,27 +30,27 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const network1 = new openstack.networking.Network("network_1", {
+ * const network1 = new openstack.networking.Network("network1", {
  *     adminStateUp: true,
  * });
- * const port1 = new openstack.networking.Port("port_1", {
+ * const port1 = new openstack.networking.Port("port1", {
  *     adminStateUp: true,
  *     binding: {
  *         hostId: "b080b9cf-46e0-4ce8-ad47-0fd4accc872b",
  *         profile: `{
- *   "local_link_information": [
+ *   "localLinkInformation": [
  *     {
- *       "switch_info": "info1",
- *       "port_id": "Ethernet3/4",
- *       "switch_id": "12:34:56:78:9A:BC"
+ *       "switchInfo": "info1",
+ *       "portId": "Ethernet3/4",
+ *       "switchId": "12:34:56:78:9A:BC"
  *     },
  *     {
- *       "switch_info": "info2",
- *       "port_id": "Ethernet3/4",
- *       "switch_id": "12:34:56:78:9A:BD"
+ *       "switchInfo": "info2",
+ *       "portId": "Ethernet3/4",
+ *       "switchId": "12:34:56:78:9A:BD"
  *     }
  *   ],
- *   "vlan_type": "allowed"
+ *   "vlanType": "allowed"
  * }
  * `,
  *         vnicType: "baremetal",
@@ -66,7 +66,7 @@ import * as utilities from "../utilities";
  * ### Ports and Instances
  * 
  * There are some notes to consider when connecting Instances to networks using
- * Ports. Please see the `openstack_compute_instance_v2` documentation for further
+ * Ports. Please see the `openstack.compute.Instance` documentation for further
  * documentation.
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_port_v2.html.markdown.
@@ -101,7 +101,7 @@ export class Port extends pulumi.CustomResource {
     /**
      * Administrative up/down status for the port
      * (must be "true" or "false" if provided). Changing this updates the
-     * `admin_state_up` of an existing port.
+     * `adminStateUp` of an existing port.
      */
     public readonly adminStateUp!: pulumi.Output<boolean>;
     /**
@@ -189,7 +189,7 @@ export class Port extends pulumi.CustomResource {
     /**
      * If set to
      * `true`, then no security groups are applied to the port. If set to `false` and
-     * no `security_group_ids` are specified, then the Port will yield to the default
+     * no `securityGroupIds` are specified, then the Port will yield to the default
      * behavior of the Networking service, which is to usually apply the "default"
      * security group.
      */
@@ -321,7 +321,7 @@ export interface PortState {
     /**
      * Administrative up/down status for the port
      * (must be "true" or "false" if provided). Changing this updates the
-     * `admin_state_up` of an existing port.
+     * `adminStateUp` of an existing port.
      */
     readonly adminStateUp?: pulumi.Input<boolean>;
     /**
@@ -409,7 +409,7 @@ export interface PortState {
     /**
      * If set to
      * `true`, then no security groups are applied to the port. If set to `false` and
-     * no `security_group_ids` are specified, then the Port will yield to the default
+     * no `securityGroupIds` are specified, then the Port will yield to the default
      * behavior of the Networking service, which is to usually apply the "default"
      * security group.
      */
@@ -463,7 +463,7 @@ export interface PortArgs {
     /**
      * Administrative up/down status for the port
      * (must be "true" or "false" if provided). Changing this updates the
-     * `admin_state_up` of an existing port.
+     * `adminStateUp` of an existing port.
      */
     readonly adminStateUp?: pulumi.Input<boolean>;
     /**
@@ -532,7 +532,7 @@ export interface PortArgs {
     /**
      * If set to
      * `true`, then no security groups are applied to the port. If set to `false` and
-     * no `security_group_ids` are specified, then the Port will yield to the default
+     * no `securityGroupIds` are specified, then the Port will yield to the default
      * behavior of the Networking service, which is to usually apply the "default"
      * security group.
      */

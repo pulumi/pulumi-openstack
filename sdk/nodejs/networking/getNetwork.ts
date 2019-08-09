@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as openstack from "@pulumi/openstack";
  * 
  * const network = pulumi.output(openstack.networking.getNetwork({
- *     name: "tf_test_network",
+ *     name: "tfTestNetwork",
  * }));
  * ```
  *

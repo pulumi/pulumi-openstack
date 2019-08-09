@@ -66,7 +66,7 @@ class VolumeV1(pulumi.CustomResource):
     The type of volume to create.
     Changing this creates a new volume.
     """
-    def __init__(__self__, resource_name, opts=None, availability_zone=None, description=None, image_id=None, metadata=None, name=None, region=None, size=None, snapshot_id=None, source_vol_id=None, volume_type=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, availability_zone=None, description=None, image_id=None, metadata=None, name=None, region=None, size=None, snapshot_id=None, source_vol_id=None, volume_type=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a V1 volume resource within OpenStack.
         
@@ -102,50 +102,86 @@ class VolumeV1(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        __props__['availability_zone'] = availability_zone
-
-        __props__['description'] = description
-
-        __props__['image_id'] = image_id
-
-        __props__['metadata'] = metadata
-
-        __props__['name'] = name
-
-        __props__['region'] = region
-
-        if size is None:
-            raise TypeError("Missing required property 'size'")
-        __props__['size'] = size
-
-        __props__['snapshot_id'] = snapshot_id
-
-        __props__['source_vol_id'] = source_vol_id
-
-        __props__['volume_type'] = volume_type
-
-        __props__['attachments'] = None
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            __props__['availability_zone'] = availability_zone
+            __props__['description'] = description
+            __props__['image_id'] = image_id
+            __props__['metadata'] = metadata
+            __props__['name'] = name
+            __props__['region'] = region
+            if size is None:
+                raise TypeError("Missing required property 'size'")
+            __props__['size'] = size
+            __props__['snapshot_id'] = snapshot_id
+            __props__['source_vol_id'] = source_vol_id
+            __props__['volume_type'] = volume_type
+            __props__['attachments'] = None
         super(VolumeV1, __self__).__init__(
             'openstack:blockstorage/volumeV1:VolumeV1',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, attachments=None, availability_zone=None, description=None, image_id=None, metadata=None, name=None, region=None, size=None, snapshot_id=None, source_vol_id=None, volume_type=None):
+        """
+        Get an existing VolumeV1 resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[list] attachments: If a volume is attached to an instance, this attribute will
+               display the Attachment ID, Instance ID, and the Device as the Instance
+               sees it.
+        :param pulumi.Input[str] availability_zone: The availability zone for the volume.
+               Changing this creates a new volume.
+        :param pulumi.Input[str] description: A description of the volume. Changing this updates
+               the volume's description.
+        :param pulumi.Input[str] image_id: The image ID from which to create the volume.
+               Changing this creates a new volume.
+        :param pulumi.Input[dict] metadata: Metadata key/value pairs to associate with the volume.
+               Changing this updates the existing volume metadata.
+        :param pulumi.Input[str] name: A unique name for the volume. Changing this updates the
+               volume's name.
+        :param pulumi.Input[str] region: The region in which to create the volume. If
+               omitted, the `region` argument of the provider is used. Changing this
+               creates a new volume.
+        :param pulumi.Input[float] size: The size of the volume to create (in gigabytes). Changing
+               this creates a new volume.
+        :param pulumi.Input[str] snapshot_id: The snapshot ID from which to create the volume.
+               Changing this creates a new volume.
+        :param pulumi.Input[str] source_vol_id: The volume ID from which to create the volume.
+               Changing this creates a new volume.
+        :param pulumi.Input[str] volume_type: The type of volume to create.
+               Changing this creates a new volume.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/blockstorage_volume_v1.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["attachments"] = attachments
+        __props__["availability_zone"] = availability_zone
+        __props__["description"] = description
+        __props__["image_id"] = image_id
+        __props__["metadata"] = metadata
+        __props__["name"] = name
+        __props__["region"] = region
+        __props__["size"] = size
+        __props__["snapshot_id"] = snapshot_id
+        __props__["source_vol_id"] = source_vol_id
+        __props__["volume_type"] = volume_type
+        return VolumeV1(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

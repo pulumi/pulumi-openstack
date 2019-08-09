@@ -38,14 +38,16 @@ class GetAvailabilityZonesV3Result:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetAvailabilityZonesV3Result(GetAvailabilityZonesV3Result):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetAvailabilityZonesV3Result(
+            names=self.names,
+            region=self.region,
+            state=self.state,
+            id=self.id)
 
 def get_availability_zones_v3(region=None,state=None,opts=None):
     """
@@ -63,7 +65,7 @@ def get_availability_zones_v3(region=None,state=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:blockstorage/getAvailabilityZonesV3:getAvailabilityZonesV3', __args__, opts=opts).value
 
-    return GetAvailabilityZonesV3Result(
+    return AwaitableGetAvailabilityZonesV3Result(
         names=__ret__.get('names'),
         region=__ret__.get('region'),
         state=__ret__.get('state'),

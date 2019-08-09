@@ -149,14 +149,35 @@ class GetClusterResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetClusterResult(GetClusterResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetClusterResult(
+            api_address=self.api_address,
+            cluster_template_id=self.cluster_template_id,
+            coe_version=self.coe_version,
+            container_version=self.container_version,
+            create_timeout=self.create_timeout,
+            created_at=self.created_at,
+            discovery_url=self.discovery_url,
+            docker_volume_size=self.docker_volume_size,
+            flavor=self.flavor,
+            keypair=self.keypair,
+            labels=self.labels,
+            master_addresses=self.master_addresses,
+            master_count=self.master_count,
+            master_flavor=self.master_flavor,
+            name=self.name,
+            node_addresses=self.node_addresses,
+            node_count=self.node_count,
+            project_id=self.project_id,
+            region=self.region,
+            stack_id=self.stack_id,
+            updated_at=self.updated_at,
+            user_id=self.user_id,
+            id=self.id)
 
 def get_cluster(name=None,region=None,opts=None):
     """
@@ -174,7 +195,7 @@ def get_cluster(name=None,region=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:containerinfra/getCluster:getCluster', __args__, opts=opts).value
 
-    return GetClusterResult(
+    return AwaitableGetClusterResult(
         api_address=__ret__.get('apiAddress'),
         cluster_template_id=__ret__.get('clusterTemplateId'),
         coe_version=__ret__.get('coeVersion'),

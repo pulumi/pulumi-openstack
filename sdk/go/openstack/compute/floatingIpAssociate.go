@@ -9,7 +9,7 @@ import (
 )
 
 // Associate a floating IP to an instance. This can be used instead of the
-// `floating_ip` options in `openstack_compute_instance_v2`.
+// `floatingIp` options in `compute.Instance`.
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_floatingip_associate_v2.html.markdown.
 type FloatingIpAssociate struct {

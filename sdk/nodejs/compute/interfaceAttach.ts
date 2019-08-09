@@ -16,13 +16,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const instance1 = new openstack.compute.Instance("instance_1", {
+ * const instance1 = new openstack.compute.Instance("instance1", {
  *     securityGroups: ["default"],
  * });
- * const network1 = new openstack.networking.Network("network_1", {
+ * const network1 = new openstack.networking.Network("network1", {
  *     adminStateUp: true,
  * });
- * const ai1 = new openstack.compute.InterfaceAttach("ai_1", {
+ * const ai1 = new openstack.compute.InterfaceAttach("ai1", {
  *     instanceId: instance1.id,
  *     networkId: openstack_networking_port_v2_network_1.id,
  * });
@@ -34,13 +34,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const instance1 = new openstack.compute.Instance("instance_1", {
+ * const instance1 = new openstack.compute.Instance("instance1", {
  *     securityGroups: ["default"],
  * });
- * const network1 = new openstack.networking.Network("network_1", {
+ * const network1 = new openstack.networking.Network("network1", {
  *     adminStateUp: true,
  * });
- * const ai1 = new openstack.compute.InterfaceAttach("ai_1", {
+ * const ai1 = new openstack.compute.InterfaceAttach("ai1", {
  *     fixedIp: "10.0.10.10",
  *     instanceId: instance1.id,
  *     networkId: openstack_networking_port_v2_network_1.id,
@@ -54,17 +54,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const instance1 = new openstack.compute.Instance("instance_1", {
+ * const instance1 = new openstack.compute.Instance("instance1", {
  *     securityGroups: ["default"],
  * });
- * const network1 = new openstack.networking.Network("network_1", {
+ * const network1 = new openstack.networking.Network("network1", {
  *     adminStateUp: true,
  * });
- * const port1 = new openstack.networking.Port("port_1", {
+ * const port1 = new openstack.networking.Port("port1", {
  *     adminStateUp: true,
  *     networkId: network1.id,
  * });
- * const ai1 = new openstack.compute.InterfaceAttach("ai_1", {
+ * const ai1 = new openstack.compute.InterfaceAttach("ai1", {
  *     instanceId: instance1.id,
  *     portId: port1.id,
  * });
@@ -76,10 +76,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const instance1 = new openstack.compute.Instance("instance_1", {
+ * const instance1 = new openstack.compute.Instance("instance1", {
  *     securityGroups: ["default"],
  * });
- * const network1 = new openstack.networking.Network("network_1", {
+ * const network1 = new openstack.networking.Network("network1", {
  *     adminStateUp: true,
  * });
  * const ports: openstack.networking.Port[] = [];
@@ -109,10 +109,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const instance1 = new openstack.compute.Instance("instance_1", {
+ * const instance1 = new openstack.compute.Instance("instance1", {
  *     securityGroups: ["default"],
  * });
- * const network1 = new openstack.networking.Network("network_1", {
+ * const network1 = new openstack.networking.Network("network1", {
  *     adminStateUp: true,
  * });
  * const ports: openstack.networking.Port[] = [];
@@ -122,11 +122,11 @@ import * as utilities from "../utilities";
  *         networkId: network1.id,
  *     }));
  * }
- * const ai1 = new openstack.compute.InterfaceAttach("ai_1", {
+ * const ai1 = new openstack.compute.InterfaceAttach("ai1", {
  *     instanceId: instance1.id,
  *     portId: pulumi.all(ports.map(v => v.id)).apply(id => id.map(v => v)[0]),
  * });
- * const ai2 = new openstack.compute.InterfaceAttach("ai_2", {
+ * const ai2 = new openstack.compute.InterfaceAttach("ai2", {
  *     instanceId: instance1.id,
  *     portId: pulumi.all(ports.map(v => v.id)).apply(id => id.map(v => v)[1]),
  * });
@@ -172,12 +172,12 @@ export class InterfaceAttach extends pulumi.CustomResource {
     public readonly instanceId!: pulumi.Output<string>;
     /**
      * The ID of the Network to attach to an Instance. A port will be created automatically.
-     * _NOTE_: This option and `port_id` are mutually exclusive.
+     * _NOTE_: This option and `portId` are mutually exclusive.
      */
     public readonly networkId!: pulumi.Output<string>;
     /**
      * The ID of the Port to attach to an Instance.
-     * _NOTE_: This option and `network_id` are mutually exclusive.
+     * _NOTE_: This option and `networkId` are mutually exclusive.
      */
     public readonly portId!: pulumi.Output<string>;
     /**
@@ -241,12 +241,12 @@ export interface InterfaceAttachState {
     readonly instanceId?: pulumi.Input<string>;
     /**
      * The ID of the Network to attach to an Instance. A port will be created automatically.
-     * _NOTE_: This option and `port_id` are mutually exclusive.
+     * _NOTE_: This option and `portId` are mutually exclusive.
      */
     readonly networkId?: pulumi.Input<string>;
     /**
      * The ID of the Port to attach to an Instance.
-     * _NOTE_: This option and `network_id` are mutually exclusive.
+     * _NOTE_: This option and `networkId` are mutually exclusive.
      */
     readonly portId?: pulumi.Input<string>;
     /**
@@ -272,12 +272,12 @@ export interface InterfaceAttachArgs {
     readonly instanceId: pulumi.Input<string>;
     /**
      * The ID of the Network to attach to an Instance. A port will be created automatically.
-     * _NOTE_: This option and `port_id` are mutually exclusive.
+     * _NOTE_: This option and `portId` are mutually exclusive.
      */
     readonly networkId?: pulumi.Input<string>;
     /**
      * The ID of the Port to attach to an Instance.
-     * _NOTE_: This option and `network_id` are mutually exclusive.
+     * _NOTE_: This option and `networkId` are mutually exclusive.
      */
     readonly portId?: pulumi.Input<string>;
     /**

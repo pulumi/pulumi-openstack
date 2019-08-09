@@ -40,14 +40,17 @@ class GetQosMinimumBandwidthRuleResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetQosMinimumBandwidthRuleResult(GetQosMinimumBandwidthRuleResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetQosMinimumBandwidthRuleResult(
+            direction=self.direction,
+            min_kbps=self.min_kbps,
+            qos_policy_id=self.qos_policy_id,
+            region=self.region,
+            id=self.id)
 
 def get_qos_minimum_bandwidth_rule(direction=None,min_kbps=None,qos_policy_id=None,region=None,opts=None):
     """
@@ -67,7 +70,7 @@ def get_qos_minimum_bandwidth_rule(direction=None,min_kbps=None,qos_policy_id=No
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:networking/getQosMinimumBandwidthRule:getQosMinimumBandwidthRule', __args__, opts=opts).value
 
-    return GetQosMinimumBandwidthRuleResult(
+    return AwaitableGetQosMinimumBandwidthRuleResult(
         direction=__ret__.get('direction'),
         min_kbps=__ret__.get('minKbps'),
         qos_policy_id=__ret__.get('qosPolicyId'),

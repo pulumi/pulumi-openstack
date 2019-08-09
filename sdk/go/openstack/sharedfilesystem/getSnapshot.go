@@ -47,8 +47,8 @@ type GetSnapshotArgs struct {
 	Region interface{}
 	ShareId interface{}
 	// A snapshot status filter. A valid value is `available`, `error`,
-	// `creating`, `deleting`, `manage_starting`, `manage_error`, `unmanage_starting`,
-	// `unmanage_error` or `error_deleting`.
+	// `creating`, `deleting`, `manageStarting`, `manageError`, `unmanageStarting`,
+	// `unmanageError` or `errorDeleting`.
 	Status interface{}
 }
 

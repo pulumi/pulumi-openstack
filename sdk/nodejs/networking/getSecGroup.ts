@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as openstack from "@pulumi/openstack";
  * 
  * const secgroup = pulumi.output(openstack.networking.getSecGroup({
- *     name: "tf_test_secgroup",
+ *     name: "tfTestSecgroup",
  * }));
  * ```
  *

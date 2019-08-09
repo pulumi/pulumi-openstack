@@ -46,14 +46,18 @@ class GetAddressScopeResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetAddressScopeResult(GetAddressScopeResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetAddressScopeResult(
+            ip_version=self.ip_version,
+            name=self.name,
+            project_id=self.project_id,
+            region=self.region,
+            shared=self.shared,
+            id=self.id)
 
 def get_address_scope(ip_version=None,name=None,project_id=None,region=None,shared=None,opts=None):
     """
@@ -74,7 +78,7 @@ def get_address_scope(ip_version=None,name=None,project_id=None,region=None,shar
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:networking/getAddressScope:getAddressScope', __args__, opts=opts).value
 
-    return GetAddressScopeResult(
+    return AwaitableGetAddressScopeResult(
         ip_version=__ret__.get('ipVersion'),
         name=__ret__.get('name'),
         project_id=__ret__.get('projectId'),
