@@ -43,7 +43,7 @@ func LookupEndpoint(ctx *pulumi.Context, args *GetEndpointArgs) (*GetEndpointRes
 // A collection of arguments for invoking getEndpoint.
 type GetEndpointArgs struct {
 	// The region the endpoint is assigned to. The
-	// `region` and `endpoint_region` can be different.
+	// `region` and `endpointRegion` can be different.
 	EndpointRegion interface{}
 	// The endpoint interface. Valid values are `public`,
 	// `internal`, and `admin`. Default value is `public`

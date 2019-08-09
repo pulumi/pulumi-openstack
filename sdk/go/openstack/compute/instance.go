@@ -19,7 +19,7 @@ import (
 // ### Importing an instance with multiple emphemeral disks
 // 
 // The importer cannot read the emphemeral disk configuration
-// of an instance, so just specify image_id as in the configuration 
+// of an instance, so just specify imageId as in the configuration 
 // of the basic instance example.
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_instance_v2.html.markdown.
@@ -162,7 +162,7 @@ func (r *Instance) AvailabilityZone() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["availabilityZone"])
 }
 
-// Configuration of block devices. The block_device
+// Configuration of block devices. The blockDevice
 // structure is documented below. Changing this creates a new server.
 // You can specify multiple block devices which will create an instance with
 // multiple disks. This configuration is very flexible, so please see the
@@ -172,7 +172,7 @@ func (r *Instance) BlockDevices() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["blockDevices"])
 }
 
-// Whether to use the config_drive feature to
+// Whether to use the configDrive feature to
 // configure the instance. Changing this creates a new server.
 func (r *Instance) ConfigDrive() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["configDrive"])
@@ -197,14 +197,14 @@ func (r *Instance) ForceDelete() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["forceDelete"])
 }
 
-// (Optional; Required if `image_name` is empty and not booting
+// (Optional; Required if `imageName` is empty and not booting
 // from a volume. Do not specify if booting from a volume.) The image ID of
 // the desired image for the server. Changing this creates a new server.
 func (r *Instance) ImageId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["imageId"])
 }
 
-// (Optional; Required if `image_id` is empty and not booting
+// (Optional; Required if `imageId` is empty and not booting
 // from a volume. Do not specify if booting from a volume.) The name of the
 // desired image for the server. Changing this creates a new server.
 func (r *Instance) ImageName() *pulumi.StringOutput {
@@ -244,7 +244,7 @@ func (r *Instance) Personalities() *pulumi.ArrayOutput {
 }
 
 // Provide the VM state. Only 'active' and 'shutoff'
-// are supported values. *Note*: If the initial power_state is the shutoff
+// are supported values. *Note*: If the initial powerState is the shutoff
 // the VM will be stopped immediately after build and the provisioners like
 // remote-exec or files are not supported.
 func (r *Instance) PowerState() *pulumi.StringOutput {
@@ -305,14 +305,14 @@ type InstanceState struct {
 	// The availability zone in which to create
 	// the server. Changing this creates a new server.
 	AvailabilityZone interface{}
-	// Configuration of block devices. The block_device
+	// Configuration of block devices. The blockDevice
 	// structure is documented below. Changing this creates a new server.
 	// You can specify multiple block devices which will create an instance with
 	// multiple disks. This configuration is very flexible, so please see the
 	// following [reference](https://docs.openstack.org/nova/latest/user/block-device-mapping.html)
 	// for more information.
 	BlockDevices interface{}
-	// Whether to use the config_drive feature to
+	// Whether to use the configDrive feature to
 	// configure the instance. Changing this creates a new server.
 	ConfigDrive interface{}
 	// The flavor ID of
@@ -325,11 +325,11 @@ type InstanceState struct {
 	// forcefully deleted. This is useful for environments that have reclaim / soft
 	// deletion enabled.
 	ForceDelete interface{}
-	// (Optional; Required if `image_name` is empty and not booting
+	// (Optional; Required if `imageName` is empty and not booting
 	// from a volume. Do not specify if booting from a volume.) The image ID of
 	// the desired image for the server. Changing this creates a new server.
 	ImageId interface{}
-	// (Optional; Required if `image_id` is empty and not booting
+	// (Optional; Required if `imageId` is empty and not booting
 	// from a volume. Do not specify if booting from a volume.) The name of the
 	// desired image for the server. Changing this creates a new server.
 	ImageName interface{}
@@ -351,7 +351,7 @@ type InstanceState struct {
 	// is described below.
 	Personalities interface{}
 	// Provide the VM state. Only 'active' and 'shutoff'
-	// are supported values. *Note*: If the initial power_state is the shutoff
+	// are supported values. *Note*: If the initial powerState is the shutoff
 	// the VM will be stopped immediately after build and the provisioners like
 	// remote-exec or files are not supported.
 	PowerState interface{}
@@ -392,14 +392,14 @@ type InstanceArgs struct {
 	// The availability zone in which to create
 	// the server. Changing this creates a new server.
 	AvailabilityZone interface{}
-	// Configuration of block devices. The block_device
+	// Configuration of block devices. The blockDevice
 	// structure is documented below. Changing this creates a new server.
 	// You can specify multiple block devices which will create an instance with
 	// multiple disks. This configuration is very flexible, so please see the
 	// following [reference](https://docs.openstack.org/nova/latest/user/block-device-mapping.html)
 	// for more information.
 	BlockDevices interface{}
-	// Whether to use the config_drive feature to
+	// Whether to use the configDrive feature to
 	// configure the instance. Changing this creates a new server.
 	ConfigDrive interface{}
 	// The flavor ID of
@@ -412,11 +412,11 @@ type InstanceArgs struct {
 	// forcefully deleted. This is useful for environments that have reclaim / soft
 	// deletion enabled.
 	ForceDelete interface{}
-	// (Optional; Required if `image_name` is empty and not booting
+	// (Optional; Required if `imageName` is empty and not booting
 	// from a volume. Do not specify if booting from a volume.) The image ID of
 	// the desired image for the server. Changing this creates a new server.
 	ImageId interface{}
-	// (Optional; Required if `image_id` is empty and not booting
+	// (Optional; Required if `imageId` is empty and not booting
 	// from a volume. Do not specify if booting from a volume.) The name of the
 	// desired image for the server. Changing this creates a new server.
 	ImageName interface{}
@@ -438,7 +438,7 @@ type InstanceArgs struct {
 	// is described below.
 	Personalities interface{}
 	// Provide the VM state. Only 'active' and 'shutoff'
-	// are supported values. *Note*: If the initial power_state is the shutoff
+	// are supported values. *Note*: If the initial powerState is the shutoff
 	// the VM will be stopped immediately after build and the provisioners like
 	// remote-exec or files are not supported.
 	PowerState interface{}

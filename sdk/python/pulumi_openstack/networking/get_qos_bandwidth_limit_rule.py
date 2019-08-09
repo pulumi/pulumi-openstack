@@ -49,14 +49,18 @@ class GetQosBandwidthLimitRuleResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetQosBandwidthLimitRuleResult(GetQosBandwidthLimitRuleResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetQosBandwidthLimitRuleResult(
+            direction=self.direction,
+            max_burst_kbps=self.max_burst_kbps,
+            max_kbps=self.max_kbps,
+            qos_policy_id=self.qos_policy_id,
+            region=self.region,
+            id=self.id)
 
 def get_qos_bandwidth_limit_rule(max_burst_kbps=None,max_kbps=None,qos_policy_id=None,region=None,opts=None):
     """
@@ -76,7 +80,7 @@ def get_qos_bandwidth_limit_rule(max_burst_kbps=None,max_kbps=None,qos_policy_id
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:networking/getQosBandwidthLimitRule:getQosBandwidthLimitRule', __args__, opts=opts).value
 
-    return GetQosBandwidthLimitRuleResult(
+    return AwaitableGetQosBandwidthLimitRuleResult(
         direction=__ret__.get('direction'),
         max_burst_kbps=__ret__.get('maxBurstKbps'),
         max_kbps=__ret__.get('maxKbps'),

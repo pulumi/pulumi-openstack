@@ -67,14 +67,21 @@ class GetEndpointResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetEndpointResult(GetEndpointResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetEndpointResult(
+            endpoint_region=self.endpoint_region,
+            interface=self.interface,
+            name=self.name,
+            region=self.region,
+            service_id=self.service_id,
+            service_name=self.service_name,
+            service_type=self.service_type,
+            url=self.url,
+            id=self.id)
 
 def get_endpoint(endpoint_region=None,interface=None,name=None,region=None,service_id=None,service_name=None,service_type=None,opts=None):
     """
@@ -99,7 +106,7 @@ def get_endpoint(endpoint_region=None,interface=None,name=None,region=None,servi
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:identity/getEndpoint:getEndpoint', __args__, opts=opts).value
 
-    return GetEndpointResult(
+    return AwaitableGetEndpointResult(
         endpoint_region=__ret__.get('endpointRegion'),
         interface=__ret__.get('interface'),
         name=__ret__.get('name'),

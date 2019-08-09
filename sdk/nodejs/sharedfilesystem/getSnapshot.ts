@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as openstack from "@pulumi/openstack";
  * 
  * const snapshot1 = pulumi.output(openstack.sharedfilesystem.getSnapshot({
- *     name: "snapshot_1",
+ *     name: "snapshot1",
  * }));
  * ```
  *
@@ -59,8 +59,8 @@ export interface GetSnapshotArgs {
     readonly shareId?: string;
     /**
      * A snapshot status filter. A valid value is `available`, `error`,
-     * `creating`, `deleting`, `manage_starting`, `manage_error`, `unmanage_starting`,
-     * `unmanage_error` or `error_deleting`.
+     * `creating`, `deleting`, `manageStarting`, `manageError`, `unmanageStarting`,
+     * `unmanageError` or `errorDeleting`.
      */
     readonly status?: string;
 }

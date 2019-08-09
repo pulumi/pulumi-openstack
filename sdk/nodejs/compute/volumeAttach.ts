@@ -16,13 +16,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const volume1 = new openstack.blockstorage.VolumeV2("volume_1", {
+ * const volume1 = new openstack.blockstorage.VolumeV2("volume1", {
  *     size: 1,
  * });
- * const instance1 = new openstack.compute.Instance("instance_1", {
+ * const instance1 = new openstack.compute.Instance("instance1", {
  *     securityGroups: ["default"],
  * });
- * const va1 = new openstack.compute.VolumeAttach("va_1", {
+ * const va1 = new openstack.compute.VolumeAttach("va1", {
  *     instanceId: instance1.id,
  *     volumeId: volume1.id,
  * });
@@ -40,7 +40,7 @@ import * as utilities from "../utilities";
  *         size: 1,
  *     }));
  * }
- * const instance1 = new openstack.compute.Instance("instance_1", {
+ * const instance1 = new openstack.compute.Instance("instance1", {
  *     securityGroups: ["default"],
  * });
  * const attachments: openstack.compute.VolumeAttach[] = [];
@@ -51,7 +51,7 @@ import * as utilities from "../utilities";
  *     }));
  * }
  * 
- * export const volume_devices = attachments.map(v => v.device);
+ * export const volumeDevices = attachments.map(v => v.device);
  * ```
  * 
  * Note that the above example will not guarantee that the volumes are attached in
@@ -71,19 +71,19 @@ import * as utilities from "../utilities";
  *         size: 1,
  *     }));
  * }
- * const instance1 = new openstack.compute.Instance("instance_1", {
+ * const instance1 = new openstack.compute.Instance("instance1", {
  *     securityGroups: ["default"],
  * });
- * const attach1 = new openstack.compute.VolumeAttach("attach_1", {
+ * const attach1 = new openstack.compute.VolumeAttach("attach1", {
  *     instanceId: instance1.id,
  *     volumeId: volumes[0].id,
  * });
- * const attach2 = new openstack.compute.VolumeAttach("attach_2", {
+ * const attach2 = new openstack.compute.VolumeAttach("attach2", {
  *     instanceId: instance1.id,
  *     volumeId: volumes[1].id,
  * }, {dependsOn: [attach1]});
  * 
- * export const volume_devices = openstack_compute_volume_attach_v2_attachments.map(v => v.device);
+ * export const volumeDevices = openstack_compute_volume_attach_v2_attachments.map(v => v.device);
  * ```
  * 
  * ### Using Multiattach-enabled volumes
@@ -95,29 +95,29 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const volume1 = new openstack.blockstorage.Volume("volume_1", {
+ * const volume1 = new openstack.blockstorage.Volume("volume1", {
  *     multiattach: true,
  *     size: 1,
  * });
- * const instance1 = new openstack.compute.Instance("instance_1", {
+ * const instance1 = new openstack.compute.Instance("instance1", {
  *     securityGroups: ["default"],
  * });
- * const instance2 = new openstack.compute.Instance("instance_2", {
+ * const instance2 = new openstack.compute.Instance("instance2", {
  *     securityGroups: ["default"],
  * });
- * const va1 = new openstack.compute.VolumeAttach("va_1", {
+ * const va1 = new openstack.compute.VolumeAttach("va1", {
  *     instanceId: instance1.id,
  *     multiattach: true,
  *     volumeId: openstack_blockstorage_volume_v2_volume_1.id,
  * });
- * const va2 = new openstack.compute.VolumeAttach("va_2", {
+ * const va2 = new openstack.compute.VolumeAttach("va2", {
  *     instanceId: instance2.id,
  *     multiattach: true,
  *     volumeId: openstack_blockstorage_volume_v2_volume_1.id,
  * }, {dependsOn: [va1]});
  * ```
  * 
- * It is recommended to use `depends_on` for the attach resources
+ * It is recommended to use `dependsOn` for the attach resources
  * to enforce the volume attachments to happen one at a time.
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_volume_attach_v2.html.markdown.

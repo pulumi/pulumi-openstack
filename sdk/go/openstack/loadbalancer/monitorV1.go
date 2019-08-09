@@ -110,7 +110,7 @@ func (r *MonitorV1) Delay() *pulumi.IntOutput {
 
 // Required for HTTP(S) types. Expected HTTP codes
 // for a passing HTTP(S) monitor. You can either specify a single status like
-// "200", or a range like "200-202". Changing this updates the expected_codes
+// "200", or a range like "200-202". Changing this updates the expectedCodes
 // of the existing monitor.
 func (r *MonitorV1) ExpectedCodes() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["expectedCodes"])
@@ -118,14 +118,14 @@ func (r *MonitorV1) ExpectedCodes() *pulumi.StringOutput {
 
 // Required for HTTP(S) types. The HTTP method used
 // for requests by the monitor. If this attribute is not specified, it defaults
-// to "GET". Changing this updates the http_method of the existing monitor.
+// to "GET". Changing this updates the httpMethod of the existing monitor.
 func (r *MonitorV1) HttpMethod() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["httpMethod"])
 }
 
 // Number of permissible ping failures before changing
 // the member's status to INACTIVE. Must be a number between 1 and 10. Changing
-// this updates the max_retries of the existing monitor.
+// this updates the maxRetries of the existing monitor.
 func (r *MonitorV1) MaxRetries() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["maxRetries"])
 }
@@ -160,7 +160,7 @@ func (r *MonitorV1) Type() *pulumi.StringOutput {
 
 // Required for HTTP(S) types. URI path that will be
 // accessed if monitor type is HTTP or HTTPS. Changing this updates the
-// url_path of the existing monitor.
+// urlPath of the existing monitor.
 func (r *MonitorV1) UrlPath() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["urlPath"])
 }
@@ -176,16 +176,16 @@ type MonitorV1State struct {
 	Delay interface{}
 	// Required for HTTP(S) types. Expected HTTP codes
 	// for a passing HTTP(S) monitor. You can either specify a single status like
-	// "200", or a range like "200-202". Changing this updates the expected_codes
+	// "200", or a range like "200-202". Changing this updates the expectedCodes
 	// of the existing monitor.
 	ExpectedCodes interface{}
 	// Required for HTTP(S) types. The HTTP method used
 	// for requests by the monitor. If this attribute is not specified, it defaults
-	// to "GET". Changing this updates the http_method of the existing monitor.
+	// to "GET". Changing this updates the httpMethod of the existing monitor.
 	HttpMethod interface{}
 	// Number of permissible ping failures before changing
 	// the member's status to INACTIVE. Must be a number between 1 and 10. Changing
-	// this updates the max_retries of the existing monitor.
+	// this updates the maxRetries of the existing monitor.
 	MaxRetries interface{}
 	// The region in which to obtain the V2 Networking client.
 	// A Networking client is needed to create an LB monitor. If omitted, the
@@ -205,7 +205,7 @@ type MonitorV1State struct {
 	Type interface{}
 	// Required for HTTP(S) types. URI path that will be
 	// accessed if monitor type is HTTP or HTTPS. Changing this updates the
-	// url_path of the existing monitor.
+	// urlPath of the existing monitor.
 	UrlPath interface{}
 }
 
@@ -220,16 +220,16 @@ type MonitorV1Args struct {
 	Delay interface{}
 	// Required for HTTP(S) types. Expected HTTP codes
 	// for a passing HTTP(S) monitor. You can either specify a single status like
-	// "200", or a range like "200-202". Changing this updates the expected_codes
+	// "200", or a range like "200-202". Changing this updates the expectedCodes
 	// of the existing monitor.
 	ExpectedCodes interface{}
 	// Required for HTTP(S) types. The HTTP method used
 	// for requests by the monitor. If this attribute is not specified, it defaults
-	// to "GET". Changing this updates the http_method of the existing monitor.
+	// to "GET". Changing this updates the httpMethod of the existing monitor.
 	HttpMethod interface{}
 	// Number of permissible ping failures before changing
 	// the member's status to INACTIVE. Must be a number between 1 and 10. Changing
-	// this updates the max_retries of the existing monitor.
+	// this updates the maxRetries of the existing monitor.
 	MaxRetries interface{}
 	// The region in which to obtain the V2 Networking client.
 	// A Networking client is needed to create an LB monitor. If omitted, the
@@ -249,6 +249,6 @@ type MonitorV1Args struct {
 	Type interface{}
 	// Required for HTTP(S) types. URI path that will be
 	// accessed if monitor type is HTTP or HTTPS. Changing this updates the
-	// url_path of the existing monitor.
+	// urlPath of the existing monitor.
 	UrlPath interface{}
 }

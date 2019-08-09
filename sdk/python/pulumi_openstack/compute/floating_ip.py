@@ -34,14 +34,14 @@ class FloatingIp(pulumi.CustomResource):
     is used. Changing this creates a new floating IP (which may or may not
     have a different address).
     """
-    def __init__(__self__, resource_name, opts=None, pool=None, region=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, pool=None, region=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a V2 floating IP resource within OpenStack Nova (compute)
         that can be used for compute instances.
         
         Please note that managing floating IPs through the OpenStack Compute API has
         been deprecated. Unless you are using an older OpenStack environment, it is
-        recommended to use the `openstack_networking_floatingip_v2`
+        recommended to use the `networking.FloatingIp`
         resource instead, which uses the OpenStack Networking API.
         
         :param str resource_name: The name of the resource.
@@ -62,36 +62,60 @@ class FloatingIp(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        if pool is None:
-            raise TypeError("Missing required property 'pool'")
-        __props__['pool'] = pool
-
-        __props__['region'] = region
-
-        __props__['address'] = None
-        __props__['fixed_ip'] = None
-        __props__['instance_id'] = None
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            if pool is None:
+                raise TypeError("Missing required property 'pool'")
+            __props__['pool'] = pool
+            __props__['region'] = region
+            __props__['address'] = None
+            __props__['fixed_ip'] = None
+            __props__['instance_id'] = None
         super(FloatingIp, __self__).__init__(
             'openstack:compute/floatingIp:FloatingIp',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, address=None, fixed_ip=None, instance_id=None, pool=None, region=None):
+        """
+        Get an existing FloatingIp resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] address: The actual floating IP address itself.
+        :param pulumi.Input[str] fixed_ip: The fixed IP address corresponding to the floating IP.
+        :param pulumi.Input[str] instance_id: UUID of the compute instance associated with the floating IP.
+        :param pulumi.Input[str] pool: The name of the pool from which to obtain the floating
+               IP. Changing this creates a new floating IP.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Compute client.
+               A Compute client is needed to create a floating IP that can be used with
+               a compute instance. If omitted, the `region` argument of the provider
+               is used. Changing this creates a new floating IP (which may or may not
+               have a different address).
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_floatingip_v2.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["address"] = address
+        __props__["fixed_ip"] = fixed_ip
+        __props__["instance_id"] = instance_id
+        __props__["pool"] = pool
+        __props__["region"] = region
+        return FloatingIp(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

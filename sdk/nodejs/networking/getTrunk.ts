@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as openstack from "@pulumi/openstack";
  * 
  * const trunk1 = pulumi.output(openstack.networking.getTrunk({
- *     name: "trunk_1",
+ *     name: "trunk1",
  * }));
  * ```
  *

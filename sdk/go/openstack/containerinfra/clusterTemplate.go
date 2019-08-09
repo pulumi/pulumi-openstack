@@ -22,15 +22,15 @@ import (
 // * `name` - (Required) The name of the cluster template. Changing this updates
 //     the name of the existing cluster template.
 // 
-// * `project_id` - (Optional) The project of the cluster template. Required if
+// * `projectId` - (Optional) The project of the cluster template. Required if
 //     admin wants to create a cluster template in another project. Changing this
 //     creates a new cluster template.
 // 
-// * `user_id` - (Optional) The user of the cluster template. Required if admin
+// * `userId` - (Optional) The user of the cluster template. Required if admin
 //     wants to create a cluster template for another user. Changing this creates
 //     a new cluster template.
 // 
-// * `apiserver_port` - (Optional) The API server port for the Container
+// * `apiserverPort` - (Optional) The API server port for the Container
 //     Orchestration Engine for this cluster template. Changing this updates the
 //     API server port of the existing cluster template.
 // 
@@ -38,30 +38,30 @@ import (
 //     template. Changing this updates the engine of the existing cluster
 //     template.
 // 
-// * `cluster_distro` - (Optional) The distro for the cluster (fedora-atomic,
+// * `clusterDistro` - (Optional) The distro for the cluster (fedora-atomic,
 //     coreos, etc.). Changing this updates the cluster distro of the existing
 //     cluster template.
 // 
-// * `dns_nameserver` - (Optional) Address of the DNS nameserver that is used in
+// * `dnsNameserver` - (Optional) Address of the DNS nameserver that is used in
 //     nodes of the cluster. Changing this updates the DNS nameserver of the
 //     existing cluster template.
 // 
-// * `docker_storage_driver` - (Optional) Docker storage driver. Changing this
+// * `dockerStorageDriver` - (Optional) Docker storage driver. Changing this
 //     updates the Docker storage driver of the existing cluster template.
 // 
-// * `docker_volume_size` - (Optional) The size (in GB) of the Docker volume.
+// * `dockerVolumeSize` - (Optional) The size (in GB) of the Docker volume.
 //     Changing this updates the Docker volume size of the existing cluster
 //     template.
 // 
-// * `external_network_id` - (Optional) The ID of the external network that will
+// * `externalNetworkId` - (Optional) The ID of the external network that will
 //     be used for the cluster. Changing this updates the external network ID of
 //     the existing cluster template.
 // 
-// * `fixed_network` - (Optional) The fixed network that will be attached to the
+// * `fixedNetwork` - (Optional) The fixed network that will be attached to the
 //     cluster. Changing this updates the fixed network of the existing cluster
 //     template.
 // 
-// * `fixed_subnet` - (Optional) The fixed subnet that will be attached to the
+// * `fixedSubnet` - (Optional) The fixed subnet that will be attached to the
 //     cluster. Changing this updates the fixed subnet of the existing cluster
 //     template.
 // 
@@ -69,19 +69,19 @@ import (
 //     the `OS_MAGNUM_FLAVOR` environment variable. Changing this updates the
 //     flavor of the existing cluster template.
 // 
-// * `master_flavor` - (Optional) The flavor for the master nodes. Can be set via
+// * `masterFlavor` - (Optional) The flavor for the master nodes. Can be set via
 //     the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this updates
 //     the master flavor of the existing cluster template.
 // 
-// * `floating_ip_enabled` - (Optional) Indicates whether created cluster should
+// * `floatingIpEnabled` - (Optional) Indicates whether created cluster should
 //     create floating IP for every node or not. Changing this updates the
 //     floating IP enabled attribute of the existing cluster template.
 // 
-// * `http_proxy` - (Optional) The address of a proxy for receiving all HTTP
+// * `httpProxy` - (Optional) The address of a proxy for receiving all HTTP
 //     requests and relay them. Changing this updates the HTTP proxy address of
 //     the existing cluster template.
 // 
-// * `https_proxy` - (Optional) The address of a proxy for receiving all HTTPS
+// * `httpsProxy` - (Optional) The address of a proxy for receiving all HTTPS
 //     requests and relay them. Changing this updates the HTTPS proxy address of
 //     the existing cluster template.
 // 
@@ -89,26 +89,26 @@ import (
 //     cluster. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
 //     Changing this updates the image attribute of the existing cluster template.
 // 
-// * `insecure_registry` - (Optional) The insecure registry URL for the cluster
+// * `insecureRegistry` - (Optional) The insecure registry URL for the cluster
 //     template. Changing this updates the insecure registry attribute of the
 //     existing cluster template.
 // 
-// * `keypair_id` - (Optional) The name of the Compute service SSH keypair.
+// * `keypairId` - (Optional) The name of the Compute service SSH keypair.
 //     Changing this updates the keypair of the existing cluster template.
 // 
 // * `labels` - (Optional) The list of key value pairs representing additional
 //     properties of the cluster template. Changing this updates the labels of the
 //     existing cluster template.
 // 
-// * `master_lb_enabled` - (Optional) Indicates whether created cluster should
+// * `masterLbEnabled` - (Optional) Indicates whether created cluster should
 //     has a loadbalancer for master nodes or not. Changing this updates the
 //     attribute of the existing cluster template.
 // 
-// * `network_driver` - (Optional) The name of the driver for the container
+// * `networkDriver` - (Optional) The name of the driver for the container
 //     network. Changing this updates the network driver of the existing cluster
 //     template.
 // 
-// * `no_proxy` - (Optional) A comma-separated list of IP addresses that shouldn't
+// * `noProxy` - (Optional) A comma-separated list of IP addresses that shouldn't
 //     be used in the cluster. Changing this updates the no proxy list of the
 //     existing cluster template.
 // 
@@ -116,17 +116,17 @@ import (
 //     Changing this updates the public attribute of the existing cluster
 //     template.
 // 
-// * `registry_enabled` - (Optional) Indicates whether Docker registry is enabled
+// * `registryEnabled` - (Optional) Indicates whether Docker registry is enabled
 //     in the cluster. Changing this updates the registry enabled attribute of the
 //     existing cluster template.
 // 
-// * `server_type` - (Optional) The server type for the cluster template. Changing
+// * `serverType` - (Optional) The server type for the cluster template. Changing
 //     this updates the server type of the existing cluster template.
 // 
-// * `tls_disabled` - (Optional) Indicates whether the TLS should be disabled in
+// * `tlsDisabled` - (Optional) Indicates whether the TLS should be disabled in
 //     the cluster. Changing this updates the attribute of the existing cluster.
 // 
-// * `volume_driver` - (Optional) The name of the driver that is used for the
+// * `volumeDriver` - (Optional) The name of the driver that is used for the
 //     volumes of the cluster nodes. Changing this updates the volume driver of
 //     the existing cluster template.
 // 
@@ -136,36 +136,36 @@ import (
 // 
 // * `region` - See Argument Reference above.
 // * `name` - See Argument Reference above.
-// * `project_id` - See Argument Reference above.
-// * `created_at` - The time at which cluster template was created.
-// * `updated_at` - The time at which cluster template was created.
-// * `apiserver_port` - See Argument Reference above.
+// * `projectId` - See Argument Reference above.
+// * `createdAt` - The time at which cluster template was created.
+// * `updatedAt` - The time at which cluster template was created.
+// * `apiserverPort` - See Argument Reference above.
 // * `coe` - See Argument Reference above.
-// * `cluster_distro` - See Argument Reference above.
-// * `dns_nameserver` - See Argument Reference above.
-// * `docker_storage_driver` - See Argument Reference above.
-// * `docker_volume_size` - See Argument Reference above.
-// * `external_network_id` - See Argument Reference above.
-// * `fixed_network` - See Argument Reference above.
-// * `fixed_subnet` - See Argument Reference above.
+// * `clusterDistro` - See Argument Reference above.
+// * `dnsNameserver` - See Argument Reference above.
+// * `dockerStorageDriver` - See Argument Reference above.
+// * `dockerVolumeSize` - See Argument Reference above.
+// * `externalNetworkId` - See Argument Reference above.
+// * `fixedNetwork` - See Argument Reference above.
+// * `fixedSubnet` - See Argument Reference above.
 // * `flavor` - See Argument Reference above.
-// * `master_flavor` - See Argument Reference above.
-// * `floating_ip_enabled` - See Argument Reference above.
-// * `http_proxy` - See Argument Reference above.
-// * `https_proxy` - See Argument Reference above.
+// * `masterFlavor` - See Argument Reference above.
+// * `floatingIpEnabled` - See Argument Reference above.
+// * `httpProxy` - See Argument Reference above.
+// * `httpsProxy` - See Argument Reference above.
 // * `image` - See Argument Reference above.
-// * `insecure_registry` - See Argument Reference above.
-// * `keypair_id` - See Argument Reference above.
+// * `insecureRegistry` - See Argument Reference above.
+// * `keypairId` - See Argument Reference above.
 // * `labels` - See Argument Reference above.
 // * `links` - A list containing associated cluster template links.
-// * `master_lb_enabled` - See Argument Reference above.
-// * `network_driver` - See Argument Reference above.
-// * `no_proxy` - See Argument Reference above.
+// * `masterLbEnabled` - See Argument Reference above.
+// * `networkDriver` - See Argument Reference above.
+// * `noProxy` - See Argument Reference above.
 // * `public` - See Argument Reference above.
-// * `registry_enabled` - See Argument Reference above.
-// * `server_type` - See Argument Reference above.
-// * `tls_disabled` - See Argument Reference above.
-// * `volume_driver` - See Argument Reference above.
+// * `registryEnabled` - See Argument Reference above.
+// * `serverType` - See Argument Reference above.
+// * `tlsDisabled` - See Argument Reference above.
+// * `volumeDriver` - See Argument Reference above.
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/containerinfra_clustertemplate_v1.html.markdown.
 type ClusterTemplate struct {

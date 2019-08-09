@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as openstack from "@pulumi/openstack";
  * 
  * const subnet1 = pulumi.output(openstack.networking.getSubnet({
- *     name: "subnet_1",
+ *     name: "subnet1",
  * }));
  * ```
  *

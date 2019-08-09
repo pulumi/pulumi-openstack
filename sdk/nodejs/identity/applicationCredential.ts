@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * > **Note:** An Application Credential is created within the authenticated user
  * project scope and is not visible by an admin or other accounts.
  * The Application Credential visibility is similar to
- * `openstack_compute_keypair_v2`.
+ * `openstack.compute.Keypair`.
  * 
  * ## Example Usage
  * 

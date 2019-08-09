@@ -23,7 +23,7 @@ import (
 // this resource will automatically reconcile these with the user-provided
 // properties.
 // 
-// In addition, the `direct_url` property is also automatically reconciled if the
+// In addition, the `directUrl` property is also automatically reconciled if the
 // Image Service set it.
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/images_image_v2.html.markdown.
@@ -171,16 +171,16 @@ func (r *Image) ImageCachePath() *pulumi.StringOutput {
 }
 
 // This is the url of the raw image that will
-// be downloaded in the `image_cache_path` before being uploaded to Glance.
+// be downloaded in the `imageCachePath` before being uploaded to Glance.
 // Glance is able to download image from internet but the `gophercloud` library
 // does not yet provide a way to do so.
-// Conflicts with `local_file_path`.
+// Conflicts with `localFilePath`.
 func (r *Image) ImageSourceUrl() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["imageSourceUrl"])
 }
 
 // This is the filepath of the raw image file
-// that will be uploaded to Glance. Conflicts with `image_source_url`.
+// that will be uploaded to Glance. Conflicts with `imageSourceUrl`.
 func (r *Image) LocalFilePath() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["localFilePath"])
 }
@@ -258,7 +258,7 @@ func (r *Image) Tags() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["tags"])
 }
 
-// (**Deprecated** - use `updated_at` instead)
+// (**Deprecated** - use `updatedAt` instead)
 func (r *Image) UpdateAt() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["updateAt"])
 }
@@ -299,13 +299,13 @@ type ImageState struct {
 	File interface{}
 	ImageCachePath interface{}
 	// This is the url of the raw image that will
-	// be downloaded in the `image_cache_path` before being uploaded to Glance.
+	// be downloaded in the `imageCachePath` before being uploaded to Glance.
 	// Glance is able to download image from internet but the `gophercloud` library
 	// does not yet provide a way to do so.
-	// Conflicts with `local_file_path`.
+	// Conflicts with `localFilePath`.
 	ImageSourceUrl interface{}
 	// This is the filepath of the raw image file
-	// that will be uploaded to Glance. Conflicts with `image_source_url`.
+	// that will be uploaded to Glance. Conflicts with `imageSourceUrl`.
 	LocalFilePath interface{}
 	// The metadata associated with the image.
 	// Image metadata allow for meaningfully define the image properties
@@ -344,7 +344,7 @@ type ImageState struct {
 	// The tags of the image. It must be a list of strings.
 	// At this time, it is not possible to delete all tags of an image.
 	Tags interface{}
-	// (**Deprecated** - use `updated_at` instead)
+	// (**Deprecated** - use `updatedAt` instead)
 	UpdateAt interface{}
 	// The date the image was last updated.
 	UpdatedAt interface{}
@@ -367,13 +367,13 @@ type ImageArgs struct {
 	DiskFormat interface{}
 	ImageCachePath interface{}
 	// This is the url of the raw image that will
-	// be downloaded in the `image_cache_path` before being uploaded to Glance.
+	// be downloaded in the `imageCachePath` before being uploaded to Glance.
 	// Glance is able to download image from internet but the `gophercloud` library
 	// does not yet provide a way to do so.
-	// Conflicts with `local_file_path`.
+	// Conflicts with `localFilePath`.
 	ImageSourceUrl interface{}
 	// This is the filepath of the raw image file
-	// that will be uploaded to Glance. Conflicts with `image_source_url`.
+	// that will be uploaded to Glance. Conflicts with `imageSourceUrl`.
 	LocalFilePath interface{}
 	// Amount of disk space (in GB) required to boot image.
 	// Defaults to 0.

@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const test_flavor = new openstack.compute.Flavor("test-flavor", {
+ * const testFlavor = new openstack.compute.Flavor("test-flavor", {
  *     disk: 20,
  *     extraSpecs: {
  *         "hw:cpu_policy": "CPU-POLICY",

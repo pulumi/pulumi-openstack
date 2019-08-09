@@ -126,10 +126,10 @@ func (r *Subnet) AllTags() *pulumi.ArrayOutput {
 
 // A block declaring the start and end range of
 // the IP addresses available for use with DHCP in this subnet. Multiple
-// `allocation_pool` blocks can be declared, providing the subnet with more
+// `allocationPool` blocks can be declared, providing the subnet with more
 // than one range of IP addresses to use with DHCP. However, each IP range
 // must be from the same CIDR that the subnet is part of.
-// The `allocation_pool` block is documented below.
+// The `allocationPool` block is documented below.
 func (r *Subnet) AllocationPools() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["allocationPools"])
 }
@@ -137,7 +137,7 @@ func (r *Subnet) AllocationPools() *pulumi.ArrayOutput {
 // 
 // A block declaring the start and end range of the IP addresses available for
 // use with DHCP in this subnet.
-// The `allocation_pools` block is documented below.
+// The `allocationPools` block is documented below.
 func (r *Subnet) AllocationPoolsCollection() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["allocationPoolsCollection"])
 }
@@ -170,16 +170,16 @@ func (r *Subnet) EnableDhcp() *pulumi.BoolOutput {
 }
 
 // Default gateway used by devices in this subnet.
-// Leaving this blank and not setting `no_gateway` will cause a default
+// Leaving this blank and not setting `noGateway` will cause a default
 // gateway of `.1` to be used. Changing this updates the gateway IP of the
 // existing subnet.
 func (r *Subnet) GatewayIp() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["gatewayIp"])
 }
 
-// (**Deprecated** - use `openstack_networking_subnet_route_v2`
+// (**Deprecated** - use `networking.SubnetRoute`
 // instead) An array of routes that should be used by devices
-// with IPs from this subnet (not including local subnet route). The host_route
+// with IPs from this subnet (not including local subnet route). The hostRoute
 // object structure is documented below. Changing this updates the host routes
 // for the existing subnet.
 func (r *Subnet) HostRoutes() *pulumi.ArrayOutput {
@@ -266,15 +266,15 @@ type SubnetState struct {
 	AllTags interface{}
 	// A block declaring the start and end range of
 	// the IP addresses available for use with DHCP in this subnet. Multiple
-	// `allocation_pool` blocks can be declared, providing the subnet with more
+	// `allocationPool` blocks can be declared, providing the subnet with more
 	// than one range of IP addresses to use with DHCP. However, each IP range
 	// must be from the same CIDR that the subnet is part of.
-	// The `allocation_pool` block is documented below.
+	// The `allocationPool` block is documented below.
 	AllocationPools interface{}
 	// 
 	// A block declaring the start and end range of the IP addresses available for
 	// use with DHCP in this subnet.
-	// The `allocation_pools` block is documented below.
+	// The `allocationPools` block is documented below.
 	AllocationPoolsCollection interface{}
 	// CIDR representing IP range for this subnet, based on IP
 	// version. You can omit this option if you are creating a subnet from a
@@ -292,13 +292,13 @@ type SubnetState struct {
 	// disables the DHCP capabilities of the existing subnet. Defaults to true.
 	EnableDhcp interface{}
 	// Default gateway used by devices in this subnet.
-	// Leaving this blank and not setting `no_gateway` will cause a default
+	// Leaving this blank and not setting `noGateway` will cause a default
 	// gateway of `.1` to be used. Changing this updates the gateway IP of the
 	// existing subnet.
 	GatewayIp interface{}
-	// (**Deprecated** - use `openstack_networking_subnet_route_v2`
+	// (**Deprecated** - use `networking.SubnetRoute`
 	// instead) An array of routes that should be used by devices
-	// with IPs from this subnet (not including local subnet route). The host_route
+	// with IPs from this subnet (not including local subnet route). The hostRoute
 	// object structure is documented below. Changing this updates the host routes
 	// for the existing subnet.
 	HostRoutes interface{}
@@ -345,15 +345,15 @@ type SubnetState struct {
 type SubnetArgs struct {
 	// A block declaring the start and end range of
 	// the IP addresses available for use with DHCP in this subnet. Multiple
-	// `allocation_pool` blocks can be declared, providing the subnet with more
+	// `allocationPool` blocks can be declared, providing the subnet with more
 	// than one range of IP addresses to use with DHCP. However, each IP range
 	// must be from the same CIDR that the subnet is part of.
-	// The `allocation_pool` block is documented below.
+	// The `allocationPool` block is documented below.
 	AllocationPools interface{}
 	// 
 	// A block declaring the start and end range of the IP addresses available for
 	// use with DHCP in this subnet.
-	// The `allocation_pools` block is documented below.
+	// The `allocationPools` block is documented below.
 	AllocationPoolsCollection interface{}
 	// CIDR representing IP range for this subnet, based on IP
 	// version. You can omit this option if you are creating a subnet from a
@@ -371,13 +371,13 @@ type SubnetArgs struct {
 	// disables the DHCP capabilities of the existing subnet. Defaults to true.
 	EnableDhcp interface{}
 	// Default gateway used by devices in this subnet.
-	// Leaving this blank and not setting `no_gateway` will cause a default
+	// Leaving this blank and not setting `noGateway` will cause a default
 	// gateway of `.1` to be used. Changing this updates the gateway IP of the
 	// existing subnet.
 	GatewayIp interface{}
-	// (**Deprecated** - use `openstack_networking_subnet_route_v2`
+	// (**Deprecated** - use `networking.SubnetRoute`
 	// instead) An array of routes that should be used by devices
-	// with IPs from this subnet (not including local subnet route). The host_route
+	// with IPs from this subnet (not including local subnet route). The hostRoute
 	// object structure is documented below. Changing this updates the host routes
 	// for the existing subnet.
 	HostRoutes interface{}

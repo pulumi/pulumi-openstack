@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as openstack from "@pulumi/openstack";
  * 
  * const router = pulumi.output(openstack.networking.getRouter({
- *     name: "router_1",
+ *     name: "router1",
  * }));
  * ```
  *

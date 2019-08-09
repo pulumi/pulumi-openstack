@@ -73,14 +73,31 @@ class GetPortIdsResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetPortIdsResult(GetPortIdsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetPortIdsResult(
+            admin_state_up=self.admin_state_up,
+            description=self.description,
+            device_id=self.device_id,
+            device_owner=self.device_owner,
+            dns_name=self.dns_name,
+            fixed_ip=self.fixed_ip,
+            ids=self.ids,
+            mac_address=self.mac_address,
+            name=self.name,
+            network_id=self.network_id,
+            project_id=self.project_id,
+            region=self.region,
+            security_group_ids=self.security_group_ids,
+            sort_direction=self.sort_direction,
+            sort_key=self.sort_key,
+            status=self.status,
+            tags=self.tags,
+            tenant_id=self.tenant_id,
+            id=self.id)
 
 def get_port_ids(admin_state_up=None,description=None,device_id=None,device_owner=None,dns_name=None,fixed_ip=None,mac_address=None,name=None,network_id=None,project_id=None,region=None,security_group_ids=None,sort_direction=None,sort_key=None,status=None,tags=None,tenant_id=None,opts=None):
     """
@@ -114,7 +131,7 @@ def get_port_ids(admin_state_up=None,description=None,device_id=None,device_owne
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:networking/getPortIds:getPortIds', __args__, opts=opts).value
 
-    return GetPortIdsResult(
+    return AwaitableGetPortIdsResult(
         admin_state_up=__ret__.get('adminStateUp'),
         description=__ret__.get('description'),
         device_id=__ret__.get('deviceId'),

@@ -37,14 +37,16 @@ class GetQosDscpMarkingRuleResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetQosDscpMarkingRuleResult(GetQosDscpMarkingRuleResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetQosDscpMarkingRuleResult(
+            dscp_mark=self.dscp_mark,
+            qos_policy_id=self.qos_policy_id,
+            region=self.region,
+            id=self.id)
 
 def get_qos_dscp_marking_rule(dscp_mark=None,qos_policy_id=None,region=None,opts=None):
     """
@@ -63,7 +65,7 @@ def get_qos_dscp_marking_rule(dscp_mark=None,qos_policy_id=None,region=None,opts
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:networking/getQosDscpMarkingRule:getQosDscpMarkingRule', __args__, opts=opts).value
 
-    return GetQosDscpMarkingRuleResult(
+    return AwaitableGetQosDscpMarkingRuleResult(
         dscp_mark=__ret__.get('dscpMark'),
         qos_policy_id=__ret__.get('qosPolicyId'),
         region=__ret__.get('region'),

@@ -130,8 +130,8 @@ func (r *Network) Description() *pulumi.StringOutput {
 }
 
 // The network DNS domain. Available, when Neutron DNS
-// extension is enabled. The `dns_domain` of a network in conjunction with the
-// `dns_name` attribute of its ports will be published in an external DNS
+// extension is enabled. The `dnsDomain` of a network in conjunction with the
+// `dnsName` attribute of its ports will be published in an external DNS
 // service when Neutron is configured to integrate with such a service.
 func (r *Network) DnsDomain() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["dnsDomain"])
@@ -204,7 +204,7 @@ func (r *Network) TenantId() *pulumi.StringOutput {
 
 // Specifies whether the network resource has the
 // VLAN transparent attribute set. Valid values are true and false. Defaults to
-// false. Changing this updates the `transparent_vlan` attribute of the existing
+// false. Changing this updates the `transparentVlan` attribute of the existing
 // network.
 func (r *Network) TransparentVlan() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["transparentVlan"])
@@ -233,8 +233,8 @@ type NetworkState struct {
 	// updates the name of the existing network.
 	Description interface{}
 	// The network DNS domain. Available, when Neutron DNS
-	// extension is enabled. The `dns_domain` of a network in conjunction with the
-	// `dns_name` attribute of its ports will be published in an external DNS
+	// extension is enabled. The `dnsDomain` of a network in conjunction with the
+	// `dnsName` attribute of its ports will be published in an external DNS
 	// service when Neutron is configured to integrate with such a service.
 	DnsDomain interface{}
 	// Specifies whether the network resource has the
@@ -274,7 +274,7 @@ type NetworkState struct {
 	TenantId interface{}
 	// Specifies whether the network resource has the
 	// VLAN transparent attribute set. Valid values are true and false. Defaults to
-	// false. Changing this updates the `transparent_vlan` attribute of the existing
+	// false. Changing this updates the `transparentVlan` attribute of the existing
 	// network.
 	TransparentVlan interface{}
 	// Map of additional options.
@@ -296,8 +296,8 @@ type NetworkArgs struct {
 	// updates the name of the existing network.
 	Description interface{}
 	// The network DNS domain. Available, when Neutron DNS
-	// extension is enabled. The `dns_domain` of a network in conjunction with the
-	// `dns_name` attribute of its ports will be published in an external DNS
+	// extension is enabled. The `dnsDomain` of a network in conjunction with the
+	// `dnsName` attribute of its ports will be published in an external DNS
 	// service when Neutron is configured to integrate with such a service.
 	DnsDomain interface{}
 	// Specifies whether the network resource has the
@@ -337,7 +337,7 @@ type NetworkArgs struct {
 	TenantId interface{}
 	// Specifies whether the network resource has the
 	// VLAN transparent attribute set. Valid values are true and false. Defaults to
-	// false. Changing this updates the `transparent_vlan` attribute of the existing
+	// false. Changing this updates the `transparentVlan` attribute of the existing
 	// network.
 	TransparentVlan interface{}
 	// Map of additional options.

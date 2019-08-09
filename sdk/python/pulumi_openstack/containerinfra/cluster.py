@@ -31,7 +31,7 @@ class Cluster(pulumi.CustomResource):
     stack_id: pulumi.Output[str]
     updated_at: pulumi.Output[str]
     user_id: pulumi.Output[str]
-    def __init__(__self__, resource_name, opts=None, cluster_template_id=None, create_timeout=None, discovery_url=None, docker_volume_size=None, flavor=None, keypair=None, labels=None, master_count=None, master_flavor=None, name=None, node_count=None, region=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, cluster_template_id=None, create_timeout=None, discovery_url=None, docker_volume_size=None, flavor=None, keypair=None, labels=None, master_count=None, master_flavor=None, name=None, node_count=None, region=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a V1 Magnum cluster resource within OpenStack.
         
@@ -124,63 +124,84 @@ class Cluster(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        if cluster_template_id is None:
-            raise TypeError("Missing required property 'cluster_template_id'")
-        __props__['cluster_template_id'] = cluster_template_id
-
-        __props__['create_timeout'] = create_timeout
-
-        __props__['discovery_url'] = discovery_url
-
-        __props__['docker_volume_size'] = docker_volume_size
-
-        __props__['flavor'] = flavor
-
-        __props__['keypair'] = keypair
-
-        __props__['labels'] = labels
-
-        __props__['master_count'] = master_count
-
-        __props__['master_flavor'] = master_flavor
-
-        __props__['name'] = name
-
-        __props__['node_count'] = node_count
-
-        __props__['region'] = region
-
-        __props__['api_address'] = None
-        __props__['coe_version'] = None
-        __props__['container_version'] = None
-        __props__['created_at'] = None
-        __props__['master_addresses'] = None
-        __props__['node_addresses'] = None
-        __props__['project_id'] = None
-        __props__['stack_id'] = None
-        __props__['updated_at'] = None
-        __props__['user_id'] = None
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            if cluster_template_id is None:
+                raise TypeError("Missing required property 'cluster_template_id'")
+            __props__['cluster_template_id'] = cluster_template_id
+            __props__['create_timeout'] = create_timeout
+            __props__['discovery_url'] = discovery_url
+            __props__['docker_volume_size'] = docker_volume_size
+            __props__['flavor'] = flavor
+            __props__['keypair'] = keypair
+            __props__['labels'] = labels
+            __props__['master_count'] = master_count
+            __props__['master_flavor'] = master_flavor
+            __props__['name'] = name
+            __props__['node_count'] = node_count
+            __props__['region'] = region
+            __props__['api_address'] = None
+            __props__['coe_version'] = None
+            __props__['container_version'] = None
+            __props__['created_at'] = None
+            __props__['master_addresses'] = None
+            __props__['node_addresses'] = None
+            __props__['project_id'] = None
+            __props__['stack_id'] = None
+            __props__['updated_at'] = None
+            __props__['user_id'] = None
         super(Cluster, __self__).__init__(
             'openstack:containerinfra/cluster:Cluster',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, api_address=None, cluster_template_id=None, coe_version=None, container_version=None, create_timeout=None, created_at=None, discovery_url=None, docker_volume_size=None, flavor=None, keypair=None, labels=None, master_addresses=None, master_count=None, master_flavor=None, name=None, node_addresses=None, node_count=None, project_id=None, region=None, stack_id=None, updated_at=None, user_id=None):
+        """
+        Get an existing Cluster resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/containerinfra_cluster_v1.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["api_address"] = api_address
+        __props__["cluster_template_id"] = cluster_template_id
+        __props__["coe_version"] = coe_version
+        __props__["container_version"] = container_version
+        __props__["create_timeout"] = create_timeout
+        __props__["created_at"] = created_at
+        __props__["discovery_url"] = discovery_url
+        __props__["docker_volume_size"] = docker_volume_size
+        __props__["flavor"] = flavor
+        __props__["keypair"] = keypair
+        __props__["labels"] = labels
+        __props__["master_addresses"] = master_addresses
+        __props__["master_count"] = master_count
+        __props__["master_flavor"] = master_flavor
+        __props__["name"] = name
+        __props__["node_addresses"] = node_addresses
+        __props__["node_count"] = node_count
+        __props__["project_id"] = project_id
+        __props__["region"] = region
+        __props__["stack_id"] = stack_id
+        __props__["updated_at"] = updated_at
+        __props__["user_id"] = user_id
+        return Cluster(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

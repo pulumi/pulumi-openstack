@@ -136,14 +136,38 @@ class GetImageResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetImageResult(GetImageResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetImageResult(
+            checksum=self.checksum,
+            container_format=self.container_format,
+            created_at=self.created_at,
+            disk_format=self.disk_format,
+            file=self.file,
+            member_status=self.member_status,
+            metadata=self.metadata,
+            min_disk_gb=self.min_disk_gb,
+            min_ram_mb=self.min_ram_mb,
+            most_recent=self.most_recent,
+            name=self.name,
+            owner=self.owner,
+            properties=self.properties,
+            protected=self.protected,
+            region=self.region,
+            schema=self.schema,
+            size_bytes=self.size_bytes,
+            size_max=self.size_max,
+            size_min=self.size_min,
+            sort_direction=self.sort_direction,
+            sort_key=self.sort_key,
+            tag=self.tag,
+            tags=self.tags,
+            updated_at=self.updated_at,
+            visibility=self.visibility,
+            id=self.id)
 
 def get_image(member_status=None,most_recent=None,name=None,owner=None,properties=None,region=None,size_max=None,size_min=None,sort_direction=None,sort_key=None,tag=None,visibility=None,opts=None):
     """
@@ -171,7 +195,7 @@ def get_image(member_status=None,most_recent=None,name=None,owner=None,propertie
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:images/getImage:getImage', __args__, opts=opts).value
 
-    return GetImageResult(
+    return AwaitableGetImageResult(
         checksum=__ret__.get('checksum'),
         container_format=__ret__.get('containerFormat'),
         created_at=__ret__.get('createdAt'),

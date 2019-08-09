@@ -78,7 +78,7 @@ func (r *PortSecGroupAssociate) AllSecurityGroupIds() *pulumi.ArrayOutput {
 }
 
 // Whether to replace or append the list of security
-// groups, specified in the `security_group_ids`. Defaults to `false`.
+// groups, specified in the `securityGroupIds`. Defaults to `false`.
 func (r *PortSecGroupAssociate) Enforce() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["enforce"])
 }
@@ -109,7 +109,7 @@ type PortSecGroupAssociateState struct {
 	// which have been explicitly and implicitly added.
 	AllSecurityGroupIds interface{}
 	// Whether to replace or append the list of security
-	// groups, specified in the `security_group_ids`. Defaults to `false`.
+	// groups, specified in the `securityGroupIds`. Defaults to `false`.
 	Enforce interface{}
 	// An UUID of the port to apply security groups to.
 	PortId interface{}
@@ -127,7 +127,7 @@ type PortSecGroupAssociateState struct {
 // The set of arguments for constructing a PortSecGroupAssociate resource.
 type PortSecGroupAssociateArgs struct {
 	// Whether to replace or append the list of security
-	// groups, specified in the `security_group_ids`. Defaults to `false`.
+	// groups, specified in the `securityGroupIds`. Defaults to `false`.
 	Enforce interface{}
 	// An UUID of the port to apply security groups to.
 	PortId interface{}

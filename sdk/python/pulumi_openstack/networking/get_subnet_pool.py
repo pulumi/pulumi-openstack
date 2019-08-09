@@ -122,14 +122,31 @@ class GetSubnetPoolResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetSubnetPoolResult(GetSubnetPoolResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetSubnetPoolResult(
+            address_scope_id=self.address_scope_id,
+            all_tags=self.all_tags,
+            created_at=self.created_at,
+            default_prefixlen=self.default_prefixlen,
+            default_quota=self.default_quota,
+            description=self.description,
+            ip_version=self.ip_version,
+            is_default=self.is_default,
+            max_prefixlen=self.max_prefixlen,
+            min_prefixlen=self.min_prefixlen,
+            name=self.name,
+            prefixes=self.prefixes,
+            project_id=self.project_id,
+            region=self.region,
+            revision_number=self.revision_number,
+            shared=self.shared,
+            tags=self.tags,
+            updated_at=self.updated_at,
+            id=self.id)
 
 def get_subnet_pool(address_scope_id=None,default_prefixlen=None,default_quota=None,description=None,ip_version=None,is_default=None,max_prefixlen=None,min_prefixlen=None,name=None,project_id=None,region=None,shared=None,tags=None,opts=None):
     """
@@ -158,7 +175,7 @@ def get_subnet_pool(address_scope_id=None,default_prefixlen=None,default_quota=N
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:networking/getSubnetPool:getSubnetPool', __args__, opts=opts).value
 
-    return GetSubnetPoolResult(
+    return AwaitableGetSubnetPoolResult(
         address_scope_id=__ret__.get('addressScopeId'),
         all_tags=__ret__.get('allTags'),
         created_at=__ret__.get('createdAt'),

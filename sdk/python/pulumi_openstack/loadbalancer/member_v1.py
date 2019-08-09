@@ -43,7 +43,7 @@ class MemberV1(pulumi.CustomResource):
     create a member for another tenant. Changing this creates a new member.
     """
     weight: pulumi.Output[float]
-    def __init__(__self__, resource_name, opts=None, address=None, admin_state_up=None, pool_id=None, port=None, region=None, tenant_id=None, weight=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, address=None, admin_state_up=None, pool_id=None, port=None, region=None, tenant_id=None, weight=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a V1 load balancer member resource within OpenStack.
         
@@ -73,46 +73,73 @@ class MemberV1(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        if address is None:
-            raise TypeError("Missing required property 'address'")
-        __props__['address'] = address
-
-        __props__['admin_state_up'] = admin_state_up
-
-        if pool_id is None:
-            raise TypeError("Missing required property 'pool_id'")
-        __props__['pool_id'] = pool_id
-
-        if port is None:
-            raise TypeError("Missing required property 'port'")
-        __props__['port'] = port
-
-        __props__['region'] = region
-
-        __props__['tenant_id'] = tenant_id
-
-        __props__['weight'] = weight
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            if address is None:
+                raise TypeError("Missing required property 'address'")
+            __props__['address'] = address
+            __props__['admin_state_up'] = admin_state_up
+            if pool_id is None:
+                raise TypeError("Missing required property 'pool_id'")
+            __props__['pool_id'] = pool_id
+            if port is None:
+                raise TypeError("Missing required property 'port'")
+            __props__['port'] = port
+            __props__['region'] = region
+            __props__['tenant_id'] = tenant_id
+            __props__['weight'] = weight
         super(MemberV1, __self__).__init__(
             'openstack:loadbalancer/memberV1:MemberV1',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, address=None, admin_state_up=None, pool_id=None, port=None, region=None, tenant_id=None, weight=None):
+        """
+        Get an existing MemberV1 resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] address: The IP address of the member. Changing this creates a
+               new member.
+        :param pulumi.Input[bool] admin_state_up: The administrative state of the member.
+               Acceptable values are 'true' and 'false'. Changing this value updates the
+               state of the existing member.
+        :param pulumi.Input[str] pool_id: The ID of the LB pool. Changing this creates a new
+               member.
+        :param pulumi.Input[float] port: An integer representing the port on which the member is
+               hosted. Changing this creates a new member.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
+               A Networking client is needed to create an LB member. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               LB member.
+        :param pulumi.Input[str] tenant_id: The owner of the member. Required if admin wants to
+               create a member for another tenant. Changing this creates a new member.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_member_v1.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["address"] = address
+        __props__["admin_state_up"] = admin_state_up
+        __props__["pool_id"] = pool_id
+        __props__["port"] = port
+        __props__["region"] = region
+        __props__["tenant_id"] = tenant_id
+        __props__["weight"] = weight
+        return MemberV1(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

@@ -13,27 +13,27 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const rule1 = new openstack.firewall.Rule("rule_1", {
+ * const rule1 = new openstack.firewall.Rule("rule1", {
  *     action: "deny",
  *     description: "drop TELNET traffic",
  *     destinationPort: "23",
  *     enabled: true,
  *     protocol: "tcp",
  * });
- * const rule2 = new openstack.firewall.Rule("rule_2", {
+ * const rule2 = new openstack.firewall.Rule("rule2", {
  *     action: "deny",
  *     description: "drop NTP traffic",
  *     destinationPort: "123",
  *     enabled: false,
  *     protocol: "udp",
  * });
- * const policy1 = new openstack.firewall.Policy("policy_1", {
+ * const policy1 = new openstack.firewall.Policy("policy1", {
  *     rules: [
  *         rule1.id,
  *         rule2.id,
  *     ],
  * });
- * const firewall1 = new openstack.firewall.Firewall("firewall_1", {
+ * const firewall1 = new openstack.firewall.Firewall("firewall1", {
  *     policyId: policy1.id,
  * });
  * ```
@@ -70,13 +70,13 @@ export class Firewall extends pulumi.CustomResource {
     /**
      * Administrative up/down status for the firewall
      * (must be "true" or "false" if provided - defaults to "true").
-     * Changing this updates the `admin_state_up` of an existing firewall.
+     * Changing this updates the `adminStateUp` of an existing firewall.
      */
     public readonly adminStateUp!: pulumi.Output<boolean | undefined>;
     /**
      * Router(s) to associate this firewall instance
      * with. Must be a list of strings. Changing this updates the associated routers
-     * of an existing firewall. Conflicts with `no_routers`.
+     * of an existing firewall. Conflicts with `noRouters`.
      */
     public readonly associatedRouters!: pulumi.Output<string[]>;
     /**
@@ -92,12 +92,12 @@ export class Firewall extends pulumi.CustomResource {
     /**
      * Should this firewall not be associated with any routers
      * (must be "true" or "false" if provide - defaults to "false").
-     * Conflicts with `associated_routers`.
+     * Conflicts with `associatedRouters`.
      */
     public readonly noRouters!: pulumi.Output<boolean | undefined>;
     /**
      * The policy resource id for the firewall. Changing
-     * this updates the `policy_id` of an existing firewall.
+     * this updates the `policyId` of an existing firewall.
      */
     public readonly policyId!: pulumi.Output<string>;
     /**
@@ -172,13 +172,13 @@ export interface FirewallState {
     /**
      * Administrative up/down status for the firewall
      * (must be "true" or "false" if provided - defaults to "true").
-     * Changing this updates the `admin_state_up` of an existing firewall.
+     * Changing this updates the `adminStateUp` of an existing firewall.
      */
     readonly adminStateUp?: pulumi.Input<boolean>;
     /**
      * Router(s) to associate this firewall instance
      * with. Must be a list of strings. Changing this updates the associated routers
-     * of an existing firewall. Conflicts with `no_routers`.
+     * of an existing firewall. Conflicts with `noRouters`.
      */
     readonly associatedRouters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -194,12 +194,12 @@ export interface FirewallState {
     /**
      * Should this firewall not be associated with any routers
      * (must be "true" or "false" if provide - defaults to "false").
-     * Conflicts with `associated_routers`.
+     * Conflicts with `associatedRouters`.
      */
     readonly noRouters?: pulumi.Input<boolean>;
     /**
      * The policy resource id for the firewall. Changing
-     * this updates the `policy_id` of an existing firewall.
+     * this updates the `policyId` of an existing firewall.
      */
     readonly policyId?: pulumi.Input<string>;
     /**
@@ -228,13 +228,13 @@ export interface FirewallArgs {
     /**
      * Administrative up/down status for the firewall
      * (must be "true" or "false" if provided - defaults to "true").
-     * Changing this updates the `admin_state_up` of an existing firewall.
+     * Changing this updates the `adminStateUp` of an existing firewall.
      */
     readonly adminStateUp?: pulumi.Input<boolean>;
     /**
      * Router(s) to associate this firewall instance
      * with. Must be a list of strings. Changing this updates the associated routers
-     * of an existing firewall. Conflicts with `no_routers`.
+     * of an existing firewall. Conflicts with `noRouters`.
      */
     readonly associatedRouters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -250,12 +250,12 @@ export interface FirewallArgs {
     /**
      * Should this firewall not be associated with any routers
      * (must be "true" or "false" if provide - defaults to "false").
-     * Conflicts with `associated_routers`.
+     * Conflicts with `associatedRouters`.
      */
     readonly noRouters?: pulumi.Input<boolean>;
     /**
      * The policy resource id for the firewall. Changing
-     * this updates the `policy_id` of an existing firewall.
+     * this updates the `policyId` of an existing firewall.
      */
     readonly policyId: pulumi.Input<string>;
     /**

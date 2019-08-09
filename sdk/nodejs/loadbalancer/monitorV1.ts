@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const monitor1 = new openstack.loadbalancer.MonitorV1("monitor_1", {
+ * const monitor1 = new openstack.loadbalancer.MonitorV1("monitor1", {
  *     adminStateUp: "true",
  *     delay: 30,
  *     maxRetries: 3,
@@ -65,20 +65,20 @@ export class MonitorV1 extends pulumi.CustomResource {
     /**
      * Required for HTTP(S) types. Expected HTTP codes
      * for a passing HTTP(S) monitor. You can either specify a single status like
-     * "200", or a range like "200-202". Changing this updates the expected_codes
+     * "200", or a range like "200-202". Changing this updates the expectedCodes
      * of the existing monitor.
      */
     public readonly expectedCodes!: pulumi.Output<string | undefined>;
     /**
      * Required for HTTP(S) types. The HTTP method used
      * for requests by the monitor. If this attribute is not specified, it defaults
-     * to "GET". Changing this updates the http_method of the existing monitor.
+     * to "GET". Changing this updates the httpMethod of the existing monitor.
      */
     public readonly httpMethod!: pulumi.Output<string | undefined>;
     /**
      * Number of permissible ping failures before changing
      * the member's status to INACTIVE. Must be a number between 1 and 10. Changing
-     * this updates the max_retries of the existing monitor.
+     * this updates the maxRetries of the existing monitor.
      */
     public readonly maxRetries!: pulumi.Output<number>;
     /**
@@ -108,7 +108,7 @@ export class MonitorV1 extends pulumi.CustomResource {
     /**
      * Required for HTTP(S) types. URI path that will be
      * accessed if monitor type is HTTP or HTTPS. Changing this updates the
-     * url_path of the existing monitor.
+     * urlPath of the existing monitor.
      */
     public readonly urlPath!: pulumi.Output<string | undefined>;
 
@@ -188,20 +188,20 @@ export interface MonitorV1State {
     /**
      * Required for HTTP(S) types. Expected HTTP codes
      * for a passing HTTP(S) monitor. You can either specify a single status like
-     * "200", or a range like "200-202". Changing this updates the expected_codes
+     * "200", or a range like "200-202". Changing this updates the expectedCodes
      * of the existing monitor.
      */
     readonly expectedCodes?: pulumi.Input<string>;
     /**
      * Required for HTTP(S) types. The HTTP method used
      * for requests by the monitor. If this attribute is not specified, it defaults
-     * to "GET". Changing this updates the http_method of the existing monitor.
+     * to "GET". Changing this updates the httpMethod of the existing monitor.
      */
     readonly httpMethod?: pulumi.Input<string>;
     /**
      * Number of permissible ping failures before changing
      * the member's status to INACTIVE. Must be a number between 1 and 10. Changing
-     * this updates the max_retries of the existing monitor.
+     * this updates the maxRetries of the existing monitor.
      */
     readonly maxRetries?: pulumi.Input<number>;
     /**
@@ -231,7 +231,7 @@ export interface MonitorV1State {
     /**
      * Required for HTTP(S) types. URI path that will be
      * accessed if monitor type is HTTP or HTTPS. Changing this updates the
-     * url_path of the existing monitor.
+     * urlPath of the existing monitor.
      */
     readonly urlPath?: pulumi.Input<string>;
 }
@@ -254,20 +254,20 @@ export interface MonitorV1Args {
     /**
      * Required for HTTP(S) types. Expected HTTP codes
      * for a passing HTTP(S) monitor. You can either specify a single status like
-     * "200", or a range like "200-202". Changing this updates the expected_codes
+     * "200", or a range like "200-202". Changing this updates the expectedCodes
      * of the existing monitor.
      */
     readonly expectedCodes?: pulumi.Input<string>;
     /**
      * Required for HTTP(S) types. The HTTP method used
      * for requests by the monitor. If this attribute is not specified, it defaults
-     * to "GET". Changing this updates the http_method of the existing monitor.
+     * to "GET". Changing this updates the httpMethod of the existing monitor.
      */
     readonly httpMethod?: pulumi.Input<string>;
     /**
      * Number of permissible ping failures before changing
      * the member's status to INACTIVE. Must be a number between 1 and 10. Changing
-     * this updates the max_retries of the existing monitor.
+     * this updates the maxRetries of the existing monitor.
      */
     readonly maxRetries: pulumi.Input<number>;
     /**
@@ -297,7 +297,7 @@ export interface MonitorV1Args {
     /**
      * Required for HTTP(S) types. URI path that will be
      * accessed if monitor type is HTTP or HTTPS. Changing this updates the
-     * url_path of the existing monitor.
+     * urlPath of the existing monitor.
      */
     readonly urlPath?: pulumi.Input<string>;
 }

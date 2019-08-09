@@ -36,7 +36,7 @@ class PortSecGroupAssociate(pulumi.CustomResource):
     the port. The security groups must be specified by ID and not name (as
     opposed to how they are configured with the Compute Instance).
     """
-    def __init__(__self__, resource_name, opts=None, enforce=None, port_id=None, region=None, security_group_ids=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, enforce=None, port_id=None, region=None, security_group_ids=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a PortSecGroupAssociate resource with the given unique name, props, and options.
         
@@ -61,40 +61,64 @@ class PortSecGroupAssociate(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        __props__['enforce'] = enforce
-
-        if port_id is None:
-            raise TypeError("Missing required property 'port_id'")
-        __props__['port_id'] = port_id
-
-        __props__['region'] = region
-
-        if security_group_ids is None:
-            raise TypeError("Missing required property 'security_group_ids'")
-        __props__['security_group_ids'] = security_group_ids
-
-        __props__['all_security_group_ids'] = None
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            __props__['enforce'] = enforce
+            if port_id is None:
+                raise TypeError("Missing required property 'port_id'")
+            __props__['port_id'] = port_id
+            __props__['region'] = region
+            if security_group_ids is None:
+                raise TypeError("Missing required property 'security_group_ids'")
+            __props__['security_group_ids'] = security_group_ids
+            __props__['all_security_group_ids'] = None
         super(PortSecGroupAssociate, __self__).__init__(
             'openstack:networking/portSecGroupAssociate:PortSecGroupAssociate',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, all_security_group_ids=None, enforce=None, port_id=None, region=None, security_group_ids=None):
+        """
+        Get an existing PortSecGroupAssociate resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[list] all_security_group_ids: The collection of Security Group IDs on the port
+               which have been explicitly and implicitly added.
+        :param pulumi.Input[bool] enforce: Whether to replace or append the list of security
+               groups, specified in the `security_group_ids`. Defaults to `false`.
+        :param pulumi.Input[str] port_id: An UUID of the port to apply security groups to.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
+               A networking client is needed to manage a port. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               resource.
+        :param pulumi.Input[list] security_group_ids: A list of security group IDs to apply to
+               the port. The security groups must be specified by ID and not name (as
+               opposed to how they are configured with the Compute Instance).
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_port_secgroup_associate_v2.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["all_security_group_ids"] = all_security_group_ids
+        __props__["enforce"] = enforce
+        __props__["port_id"] = port_id
+        __props__["region"] = region
+        __props__["security_group_ids"] = security_group_ids
+        return PortSecGroupAssociate(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

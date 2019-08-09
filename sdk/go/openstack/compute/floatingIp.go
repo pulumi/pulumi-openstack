@@ -13,7 +13,7 @@ import (
 // 
 // Please note that managing floating IPs through the OpenStack Compute API has
 // been deprecated. Unless you are using an older OpenStack environment, it is
-// recommended to use the `openstack_networking_floatingip_v2`
+// recommended to use the `networking.FloatingIp`
 // resource instead, which uses the OpenStack Networking API.
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_floatingip_v2.html.markdown.

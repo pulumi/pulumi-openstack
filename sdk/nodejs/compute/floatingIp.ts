@@ -10,7 +10,7 @@ import * as utilities from "../utilities";
  * 
  * Please note that managing floating IPs through the OpenStack Compute API has
  * been deprecated. Unless you are using an older OpenStack environment, it is
- * recommended to use the `openstack_networking_floatingip_v2`
+ * recommended to use the `openstack.networking.FloatingIp`
  * resource instead, which uses the OpenStack Networking API.
  * 
  * ## Example Usage
@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const floatip1 = new openstack.compute.FloatingIp("floatip_1", {
+ * const floatip1 = new openstack.compute.FloatingIp("floatip1", {
  *     pool: "public",
  * });
  * ```

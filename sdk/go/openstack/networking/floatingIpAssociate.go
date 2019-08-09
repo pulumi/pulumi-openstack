@@ -10,7 +10,7 @@ import (
 
 // Associates a floating IP to a port. This is useful for situations
 // where you have a pre-allocated floating IP or are unable to use the
-// `openstack_networking_floatingip_v2` resource to create a floating IP.
+// `networking.FloatingIp` resource to create a floating IP.
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_floatingip_associate_v2.html.markdown.
 type FloatingIpAssociate struct {

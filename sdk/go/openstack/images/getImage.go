@@ -101,8 +101,8 @@ type GetImageResult struct {
 	Checksum interface{}
 	ContainerFormat interface{}
 	// The date the image was created.
-	// * `container_format`: The format of the image's container.
-	// * `disk_format`: The format of the image's disk.
+	// * `containerFormat`: The format of the image's container.
+	// * `diskFormat`: The format of the image's disk.
 	CreatedAt interface{}
 	DiskFormat interface{}
 	// the trailing path after the glance endpoint that represent the

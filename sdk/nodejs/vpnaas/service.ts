@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const service1 = new openstack.vpnaas.Service("service_1", {
+ * const service1 = new openstack.vpnaas.Service("service1", {
  *     adminStateUp: true,
  *     routerId: "14a75700-fc03-4602-9294-26ee44f366b3",
  * });

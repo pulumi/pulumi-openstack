@@ -13,25 +13,25 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const network1 = new openstack.networking.Network("network_1", {
+ * const network1 = new openstack.networking.Network("network1", {
  *     adminStateUp: true,
  * });
- * const subnet1 = new openstack.networking.Subnet("subnet_1", {
+ * const subnet1 = new openstack.networking.Subnet("subnet1", {
  *     cidr: "192.168.1.0/24",
  *     enableDhcp: true,
  *     ipVersion: 4,
  *     networkId: network1.id,
  *     noGateway: true,
  * });
- * const parentPort1 = new openstack.networking.Port("parent_port_1", {
+ * const parentPort1 = new openstack.networking.Port("parentPort1", {
  *     adminStateUp: true,
  *     networkId: network1.id,
  * }, {dependsOn: [subnet1]});
- * const subport1 = new openstack.networking.Port("subport_1", {
+ * const subport1 = new openstack.networking.Port("subport1", {
  *     adminStateUp: true,
  *     networkId: network1.id,
  * }, {dependsOn: [subnet1]});
- * const trunk1 = new openstack.networking.Trunk("trunk_1", {
+ * const trunk1 = new openstack.networking.Trunk("trunk1", {
  *     adminStateUp: true,
  *     portId: parentPort1.id,
  *     subPorts: [{
@@ -40,7 +40,7 @@ import * as utilities from "../utilities";
  *         segmentationType: "vlan",
  *     }],
  * });
- * const instance1 = new openstack.compute.Instance("instance_1", {
+ * const instance1 = new openstack.compute.Instance("instance1", {
  *     networks: [{
  *         port: trunk1.portId,
  *     }],
@@ -80,7 +80,7 @@ export class Trunk extends pulumi.CustomResource {
     /**
      * Administrative up/down status for the trunk
      * (must be "true" or "false" if provided). Changing this updates the
-     * `admin_state_up` of an existing trunk.
+     * `adminStateUp` of an existing trunk.
      */
     public readonly adminStateUp!: pulumi.Output<boolean | undefined>;
     /**
@@ -180,7 +180,7 @@ export interface TrunkState {
     /**
      * Administrative up/down status for the trunk
      * (must be "true" or "false" if provided). Changing this updates the
-     * `admin_state_up` of an existing trunk.
+     * `adminStateUp` of an existing trunk.
      */
     readonly adminStateUp?: pulumi.Input<boolean>;
     /**
@@ -234,7 +234,7 @@ export interface TrunkArgs {
     /**
      * Administrative up/down status for the trunk
      * (must be "true" or "false" if provided). Changing this updates the
-     * `admin_state_up` of an existing trunk.
+     * `adminStateUp` of an existing trunk.
      */
     readonly adminStateUp?: pulumi.Input<boolean>;
     /**

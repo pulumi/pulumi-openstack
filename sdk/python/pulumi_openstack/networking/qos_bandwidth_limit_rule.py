@@ -34,7 +34,7 @@ class QosBandwidthLimitRule(pulumi.CustomResource):
     A Networking client is needed to create a Neutron QoS bandwidth limit rule. If omitted, the
     `region` argument of the provider is used. Changing this creates a new QoS bandwidth limit rule.
     """
-    def __init__(__self__, resource_name, opts=None, direction=None, max_burst_kbps=None, max_kbps=None, qos_policy_id=None, region=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, direction=None, max_burst_kbps=None, max_kbps=None, qos_policy_id=None, region=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a V2 Neutron QoS bandwidth limit rule resource within OpenStack.
         
@@ -59,40 +59,62 @@ class QosBandwidthLimitRule(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        __props__['direction'] = direction
-
-        __props__['max_burst_kbps'] = max_burst_kbps
-
-        if max_kbps is None:
-            raise TypeError("Missing required property 'max_kbps'")
-        __props__['max_kbps'] = max_kbps
-
-        if qos_policy_id is None:
-            raise TypeError("Missing required property 'qos_policy_id'")
-        __props__['qos_policy_id'] = qos_policy_id
-
-        __props__['region'] = region
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            __props__['direction'] = direction
+            __props__['max_burst_kbps'] = max_burst_kbps
+            if max_kbps is None:
+                raise TypeError("Missing required property 'max_kbps'")
+            __props__['max_kbps'] = max_kbps
+            if qos_policy_id is None:
+                raise TypeError("Missing required property 'qos_policy_id'")
+            __props__['qos_policy_id'] = qos_policy_id
+            __props__['region'] = region
         super(QosBandwidthLimitRule, __self__).__init__(
             'openstack:networking/qosBandwidthLimitRule:QosBandwidthLimitRule',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, direction=None, max_burst_kbps=None, max_kbps=None, qos_policy_id=None, region=None):
+        """
+        Get an existing QosBandwidthLimitRule resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] direction: The direction of traffic. Defaults to "egress". Changing this updates the direction of the
+               existing QoS bandwidth limit rule.
+        :param pulumi.Input[float] max_burst_kbps: The maximum burst size in kilobits of a QoS bandwidth limit rule. Changing this updates the
+               maximum burst size in kilobits of the existing QoS bandwidth limit rule.
+        :param pulumi.Input[float] max_kbps: The maximum kilobits per second of a QoS bandwidth limit rule. Changing this updates the
+               maximum kilobits per second of the existing QoS bandwidth limit rule.
+        :param pulumi.Input[str] qos_policy_id: The QoS policy reference. Changing this creates a new QoS bandwidth limit rule.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
+               A Networking client is needed to create a Neutron QoS bandwidth limit rule. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new QoS bandwidth limit rule.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_qos_bandwidth_limit_rule_v2.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["direction"] = direction
+        __props__["max_burst_kbps"] = max_burst_kbps
+        __props__["max_kbps"] = max_kbps
+        __props__["qos_policy_id"] = qos_policy_id
+        __props__["region"] = region
+        return QosBandwidthLimitRule(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

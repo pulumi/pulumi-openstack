@@ -9,8 +9,8 @@ import * as utilities from "../utilities";
  * 
  * Please note that managing security groups through the OpenStack Compute API
  * has been deprecated. Unless you are using an older OpenStack environment, it is
- * recommended to use the `openstack_networking_secgroup_v2`
- * and `openstack_networking_secgroup_rule_v2`
+ * recommended to use the `openstack.networking.SecGroup`
+ * and `openstack.networking.SecGroupRule`
  * resources instead, which uses the OpenStack Networking API.
  * 
  * ## Example Usage
@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const secgroup1 = new openstack.compute.SecGroup("secgroup_1", {
+ * const secgroup1 = new openstack.compute.SecGroup("secgroup1", {
  *     description: "my security group",
  *     rules: [
  *         {
@@ -42,7 +42,7 @@ import * as utilities from "../utilities";
  * 
  * ### ICMP Rules
  * 
- * When using ICMP as the `ip_protocol`, the `from_port` sets the ICMP _type_ and the `to_port` sets the ICMP _code_. To allow all ICMP types, set each value to `-1`, like so:
+ * When using ICMP as the `ipProtocol`, the `fromPort` sets the ICMP _type_ and the `toPort` sets the ICMP _code_. To allow all ICMP types, set each value to `-1`, like so:
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -58,10 +58,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const test_server = new openstack.compute.Instance("test-server", {
+ * const testServer = new openstack.compute.Instance("test-server", {
  *     flavorId: "3",
  *     imageId: "ad091b52-742f-469e-8f3c-fd81cadf0743",
- *     keyPair: "my_key_pair_name",
+ *     keyPair: "myKeyPairName",
  *     securityGroups: [openstack_compute_secgroup_v2_secgroup_1.name],
  * });
  * ```

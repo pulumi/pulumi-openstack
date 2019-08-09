@@ -84,13 +84,13 @@ func (r *InterfaceAttach) InstanceId() *pulumi.StringOutput {
 }
 
 // The ID of the Network to attach to an Instance. A port will be created automatically.
-// _NOTE_: This option and `port_id` are mutually exclusive.
+// _NOTE_: This option and `portId` are mutually exclusive.
 func (r *InterfaceAttach) NetworkId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["networkId"])
 }
 
 // The ID of the Port to attach to an Instance.
-// _NOTE_: This option and `network_id` are mutually exclusive.
+// _NOTE_: This option and `networkId` are mutually exclusive.
 func (r *InterfaceAttach) PortId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["portId"])
 }
@@ -110,10 +110,10 @@ type InterfaceAttachState struct {
 	// The ID of the Instance to attach the Port or Network to.
 	InstanceId interface{}
 	// The ID of the Network to attach to an Instance. A port will be created automatically.
-	// _NOTE_: This option and `port_id` are mutually exclusive.
+	// _NOTE_: This option and `portId` are mutually exclusive.
 	NetworkId interface{}
 	// The ID of the Port to attach to an Instance.
-	// _NOTE_: This option and `network_id` are mutually exclusive.
+	// _NOTE_: This option and `networkId` are mutually exclusive.
 	PortId interface{}
 	// The region in which to create the interface attachment.
 	// If omitted, the `region` argument of the provider is used. Changing this
@@ -129,10 +129,10 @@ type InterfaceAttachArgs struct {
 	// The ID of the Instance to attach the Port or Network to.
 	InstanceId interface{}
 	// The ID of the Network to attach to an Instance. A port will be created automatically.
-	// _NOTE_: This option and `port_id` are mutually exclusive.
+	// _NOTE_: This option and `portId` are mutually exclusive.
 	NetworkId interface{}
 	// The ID of the Port to attach to an Instance.
-	// _NOTE_: This option and `network_id` are mutually exclusive.
+	// _NOTE_: This option and `networkId` are mutually exclusive.
 	PortId interface{}
 	// The region in which to create the interface attachment.
 	// If omitted, the `region` argument of the provider is used. Changing this

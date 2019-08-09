@@ -13,10 +13,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const network1 = new openstack.networking.Network("network_1", {
+ * const network1 = new openstack.networking.Network("network1", {
  *     adminStateUp: true,
  * });
- * const subnet1 = new openstack.networking.Subnet("subnet_1", {
+ * const subnet1 = new openstack.networking.Subnet("subnet1", {
  *     cidr: "192.168.199.0/24",
  *     networkId: network1.id,
  * });
@@ -59,17 +59,17 @@ export class Subnet extends pulumi.CustomResource {
     /**
      * A block declaring the start and end range of
      * the IP addresses available for use with DHCP in this subnet. Multiple
-     * `allocation_pool` blocks can be declared, providing the subnet with more
+     * `allocationPool` blocks can be declared, providing the subnet with more
      * than one range of IP addresses to use with DHCP. However, each IP range
      * must be from the same CIDR that the subnet is part of.
-     * The `allocation_pool` block is documented below.
+     * The `allocationPool` block is documented below.
      */
     public readonly allocationPools!: pulumi.Output<{ end: string, start: string }[]>;
     /**
      * 
      * A block declaring the start and end range of the IP addresses available for
      * use with DHCP in this subnet.
-     * The `allocation_pools` block is documented below.
+     * The `allocationPools` block is documented below.
      */
     public readonly allocationPoolsCollection!: pulumi.Output<{ end: string, start: string }[]>;
     /**
@@ -97,15 +97,15 @@ export class Subnet extends pulumi.CustomResource {
     public readonly enableDhcp!: pulumi.Output<boolean | undefined>;
     /**
      * Default gateway used by devices in this subnet.
-     * Leaving this blank and not setting `no_gateway` will cause a default
+     * Leaving this blank and not setting `noGateway` will cause a default
      * gateway of `.1` to be used. Changing this updates the gateway IP of the
      * existing subnet.
      */
     public readonly gatewayIp!: pulumi.Output<string>;
     /**
-     * (**Deprecated** - use `openstack_networking_subnet_route_v2`
+     * (**Deprecated** - use `openstack.networking.SubnetRoute`
      * instead) An array of routes that should be used by devices
-     * with IPs from this subnet (not including local subnet route). The host_route
+     * with IPs from this subnet (not including local subnet route). The hostRoute
      * object structure is documented below. Changing this updates the host routes
      * for the existing subnet.
      */
@@ -255,17 +255,17 @@ export interface SubnetState {
     /**
      * A block declaring the start and end range of
      * the IP addresses available for use with DHCP in this subnet. Multiple
-     * `allocation_pool` blocks can be declared, providing the subnet with more
+     * `allocationPool` blocks can be declared, providing the subnet with more
      * than one range of IP addresses to use with DHCP. However, each IP range
      * must be from the same CIDR that the subnet is part of.
-     * The `allocation_pool` block is documented below.
+     * The `allocationPool` block is documented below.
      */
     readonly allocationPools?: pulumi.Input<pulumi.Input<{ end: pulumi.Input<string>, start: pulumi.Input<string> }>[]>;
     /**
      * 
      * A block declaring the start and end range of the IP addresses available for
      * use with DHCP in this subnet.
-     * The `allocation_pools` block is documented below.
+     * The `allocationPools` block is documented below.
      */
     readonly allocationPoolsCollection?: pulumi.Input<pulumi.Input<{ end: pulumi.Input<string>, start: pulumi.Input<string> }>[]>;
     /**
@@ -293,15 +293,15 @@ export interface SubnetState {
     readonly enableDhcp?: pulumi.Input<boolean>;
     /**
      * Default gateway used by devices in this subnet.
-     * Leaving this blank and not setting `no_gateway` will cause a default
+     * Leaving this blank and not setting `noGateway` will cause a default
      * gateway of `.1` to be used. Changing this updates the gateway IP of the
      * existing subnet.
      */
     readonly gatewayIp?: pulumi.Input<string>;
     /**
-     * (**Deprecated** - use `openstack_networking_subnet_route_v2`
+     * (**Deprecated** - use `openstack.networking.SubnetRoute`
      * instead) An array of routes that should be used by devices
-     * with IPs from this subnet (not including local subnet route). The host_route
+     * with IPs from this subnet (not including local subnet route). The hostRoute
      * object structure is documented below. Changing this updates the host routes
      * for the existing subnet.
      */
@@ -376,17 +376,17 @@ export interface SubnetArgs {
     /**
      * A block declaring the start and end range of
      * the IP addresses available for use with DHCP in this subnet. Multiple
-     * `allocation_pool` blocks can be declared, providing the subnet with more
+     * `allocationPool` blocks can be declared, providing the subnet with more
      * than one range of IP addresses to use with DHCP. However, each IP range
      * must be from the same CIDR that the subnet is part of.
-     * The `allocation_pool` block is documented below.
+     * The `allocationPool` block is documented below.
      */
     readonly allocationPools?: pulumi.Input<pulumi.Input<{ end: pulumi.Input<string>, start: pulumi.Input<string> }>[]>;
     /**
      * 
      * A block declaring the start and end range of the IP addresses available for
      * use with DHCP in this subnet.
-     * The `allocation_pools` block is documented below.
+     * The `allocationPools` block is documented below.
      */
     readonly allocationPoolsCollection?: pulumi.Input<pulumi.Input<{ end: pulumi.Input<string>, start: pulumi.Input<string> }>[]>;
     /**
@@ -414,15 +414,15 @@ export interface SubnetArgs {
     readonly enableDhcp?: pulumi.Input<boolean>;
     /**
      * Default gateway used by devices in this subnet.
-     * Leaving this blank and not setting `no_gateway` will cause a default
+     * Leaving this blank and not setting `noGateway` will cause a default
      * gateway of `.1` to be used. Changing this updates the gateway IP of the
      * existing subnet.
      */
     readonly gatewayIp?: pulumi.Input<string>;
     /**
-     * (**Deprecated** - use `openstack_networking_subnet_route_v2`
+     * (**Deprecated** - use `openstack.networking.SubnetRoute`
      * instead) An array of routes that should be used by devices
-     * with IPs from this subnet (not including local subnet route). The host_route
+     * with IPs from this subnet (not including local subnet route). The hostRoute
      * object structure is documented below. Changing this updates the host routes
      * for the existing subnet.
      */

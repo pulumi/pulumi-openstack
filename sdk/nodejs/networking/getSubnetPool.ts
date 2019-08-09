@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as openstack from "@pulumi/openstack";
  * 
  * const subnetpool1 = pulumi.output(openstack.networking.getSubnetPool({
- *     name: "subnetpool_1",
+ *     name: "subnetpool1",
  * }));
  * ```
  *
@@ -117,7 +117,7 @@ export interface GetSubnetPoolArgs {
 export interface GetSubnetPoolResult {
     /**
      * See Argument Reference above.
-     * * `ip_version` -The IP protocol version.
+     * * `ipVersion` -The IP protocol version.
      */
     readonly addressScopeId: string;
     /**

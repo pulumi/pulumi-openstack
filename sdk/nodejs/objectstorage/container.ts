@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const container1 = new openstack.objectstorage.Container("container_1", {
+ * const container1 = new openstack.objectstorage.Container("container1", {
  *     contentType: "application/json",
  *     metadata: {
  *         test: "true",

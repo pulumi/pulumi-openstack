@@ -60,7 +60,7 @@ class Container(pulumi.CustomResource):
     """
     Enable object versioning. The structure is described below.
     """
-    def __init__(__self__, resource_name, opts=None, container_read=None, container_sync_key=None, container_sync_to=None, container_write=None, content_type=None, force_destroy=None, metadata=None, name=None, region=None, versioning=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, container_read=None, container_sync_key=None, container_sync_to=None, container_write=None, content_type=None, force_destroy=None, metadata=None, name=None, region=None, versioning=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a V1 container resource within OpenStack.
         
@@ -96,46 +96,79 @@ class Container(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        __props__['container_read'] = container_read
-
-        __props__['container_sync_key'] = container_sync_key
-
-        __props__['container_sync_to'] = container_sync_to
-
-        __props__['container_write'] = container_write
-
-        __props__['content_type'] = content_type
-
-        __props__['force_destroy'] = force_destroy
-
-        __props__['metadata'] = metadata
-
-        __props__['name'] = name
-
-        __props__['region'] = region
-
-        __props__['versioning'] = versioning
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            __props__['container_read'] = container_read
+            __props__['container_sync_key'] = container_sync_key
+            __props__['container_sync_to'] = container_sync_to
+            __props__['container_write'] = container_write
+            __props__['content_type'] = content_type
+            __props__['force_destroy'] = force_destroy
+            __props__['metadata'] = metadata
+            __props__['name'] = name
+            __props__['region'] = region
+            __props__['versioning'] = versioning
         super(Container, __self__).__init__(
             'openstack:objectstorage/container:Container',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, container_read=None, container_sync_key=None, container_sync_to=None, container_write=None, content_type=None, force_destroy=None, metadata=None, name=None, region=None, versioning=None):
+        """
+        Get an existing Container resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] container_read: Sets an access control list (ACL) that grants
+               read access. This header can contain a comma-delimited list of users that
+               can read the container (allows the GET method for all objects in the
+               container). Changing this updates the access control list read access.
+        :param pulumi.Input[str] container_sync_key: The secret key for container synchronization.
+               Changing this updates container synchronization.
+        :param pulumi.Input[str] container_sync_to: The destination for container synchronization.
+               Changing this updates container synchronization.
+        :param pulumi.Input[str] container_write: Sets an ACL that grants write access.
+               Changing this updates the access control list write access.
+        :param pulumi.Input[str] content_type: The MIME type for the container. Changing this
+               updates the MIME type.
+        :param pulumi.Input[bool] force_destroy: A boolean that indicates all objects should be deleted from the container so that the container can be destroyed without error. These objects are not recoverable.
+        :param pulumi.Input[dict] metadata: Custom key/value pairs to associate with the container.
+               Changing this updates the existing container metadata.
+        :param pulumi.Input[str] name: A unique name for the container. Changing this creates a
+               new container.
+        :param pulumi.Input[str] region: The region in which to create the container. If
+               omitted, the `region` argument of the provider is used. Changing this
+               creates a new container.
+        :param pulumi.Input[dict] versioning: Enable object versioning. The structure is described below.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/objectstorage_container_v1.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["container_read"] = container_read
+        __props__["container_sync_key"] = container_sync_key
+        __props__["container_sync_to"] = container_sync_to
+        __props__["container_write"] = container_write
+        __props__["content_type"] = content_type
+        __props__["force_destroy"] = force_destroy
+        __props__["metadata"] = metadata
+        __props__["name"] = name
+        __props__["region"] = region
+        __props__["versioning"] = versioning
+        return Container(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

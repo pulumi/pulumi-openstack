@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as openstack from "@pulumi/openstack";
  * 
  * const share1 = pulumi.output(openstack.sharedfilesystem.getShare({
- *     name: "share_1",
+ *     name: "share1",
  * }));
  * ```
  *
@@ -82,10 +82,10 @@ export interface GetShareArgs {
     readonly snapshotId?: string;
     /**
      * A share status filter. A valid value is `creating`,
-     * `error`, `available`, `deleting`, `error_deleting`, `manage_starting`,
-     * `manage_error`, `unmanage_starting`, `unmanage_error`, `unmanaged`,
-     * `extending`, `extending_error`, `shrinking`, `shrinking_error`, or
-     * `shrinking_possible_data_loss_error`.
+     * `error`, `available`, `deleting`, `errorDeleting`, `manageStarting`,
+     * `manageError`, `unmanageStarting`, `unmanageError`, `unmanaged`,
+     * `extending`, `extendingError`, `shrinking`, `shrinkingError`, or
+     * `shrinkingPossibleDataLossError`.
      */
     readonly status?: string;
 }

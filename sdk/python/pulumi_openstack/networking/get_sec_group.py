@@ -50,14 +50,20 @@ class GetSecGroupResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetSecGroupResult(GetSecGroupResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetSecGroupResult(
+            all_tags=self.all_tags,
+            description=self.description,
+            name=self.name,
+            region=self.region,
+            secgroup_id=self.secgroup_id,
+            tags=self.tags,
+            tenant_id=self.tenant_id,
+            id=self.id)
 
 def get_sec_group(description=None,name=None,region=None,secgroup_id=None,tags=None,tenant_id=None,opts=None):
     """
@@ -79,7 +85,7 @@ def get_sec_group(description=None,name=None,region=None,secgroup_id=None,tags=N
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:networking/getSecGroup:getSecGroup', __args__, opts=opts).value
 
-    return GetSecGroupResult(
+    return AwaitableGetSecGroupResult(
         all_tags=__ret__.get('allTags'),
         description=__ret__.get('description'),
         name=__ret__.get('name'),

@@ -61,14 +61,25 @@ class GetFlavorResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetFlavorResult(GetFlavorResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetFlavorResult(
+            disk=self.disk,
+            extra_specs=self.extra_specs,
+            flavor_id=self.flavor_id,
+            is_public=self.is_public,
+            min_disk=self.min_disk,
+            min_ram=self.min_ram,
+            name=self.name,
+            ram=self.ram,
+            region=self.region,
+            rx_tx_factor=self.rx_tx_factor,
+            swap=self.swap,
+            vcpus=self.vcpus,
+            id=self.id)
 
 def get_flavor(disk=None,flavor_id=None,min_disk=None,min_ram=None,name=None,ram=None,region=None,rx_tx_factor=None,swap=None,vcpus=None,opts=None):
     """
@@ -94,7 +105,7 @@ def get_flavor(disk=None,flavor_id=None,min_disk=None,min_ram=None,name=None,ram
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:compute/getFlavor:getFlavor', __args__, opts=opts).value
 
-    return GetFlavorResult(
+    return AwaitableGetFlavorResult(
         disk=__ret__.get('disk'),
         extra_specs=__ret__.get('extraSpecs'),
         flavor_id=__ret__.get('flavorId'),

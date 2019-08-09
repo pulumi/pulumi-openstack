@@ -164,8 +164,8 @@ func (r *SiteConnection) IpsecpolicyId() *pulumi.StringOutput {
 }
 
 // The ID for the endpoint group that contains private subnets for the local side of the connection.
-// You must specify this parameter with the peer_ep_group_id parameter unless
-// in backward- compatible mode where peer_cidrs is provided with a subnet_id for the VPN service.
+// You must specify this parameter with the peerEpGroupId parameter unless
+// in backward- compatible mode where peerCidrs is provided with a subnetId for the VPN service.
 // Changing this updates the existing connection.
 func (r *SiteConnection) LocalEpGroupId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["localEpGroupId"])
@@ -195,20 +195,20 @@ func (r *SiteConnection) PeerAddress() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["peerAddress"])
 }
 
-// Unique list of valid peer private CIDRs in the form < net_address > / < prefix > .
+// Unique list of valid peer private CIDRs in the form < netAddress > / < prefix > .
 func (r *SiteConnection) PeerCidrs() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["peerCidrs"])
 }
 
-// The ID for the endpoint group that contains private CIDRs in the form < net_address > / < prefix > for the peer side of the connection.
-// You must specify this parameter with the local_ep_group_id parameter unless in backward-compatible mode
-// where peer_cidrs is provided with a subnet_id for the VPN service.
+// The ID for the endpoint group that contains private CIDRs in the form < netAddress > / < prefix > for the peer side of the connection.
+// You must specify this parameter with the localEpGroupId parameter unless in backward-compatible mode
+// where peerCidrs is provided with a subnetId for the VPN service.
 func (r *SiteConnection) PeerEpGroupId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["peerEpGroupId"])
 }
 
 // The peer router identity for authentication. A valid value is an IPv4 address, IPv6 address, e-mail address, key ID, or FQDN.
-// Typically, this value matches the peer_address value.
+// Typically, this value matches the peerAddress value.
 // Changing this updates the existing policy.
 func (r *SiteConnection) PeerId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["peerId"])
@@ -263,8 +263,8 @@ type SiteConnectionState struct {
 	// The ID of the IPsec policy. Changing this creates a new connection.
 	IpsecpolicyId interface{}
 	// The ID for the endpoint group that contains private subnets for the local side of the connection.
-	// You must specify this parameter with the peer_ep_group_id parameter unless
-	// in backward- compatible mode where peer_cidrs is provided with a subnet_id for the VPN service.
+	// You must specify this parameter with the peerEpGroupId parameter unless
+	// in backward- compatible mode where peerCidrs is provided with a subnetId for the VPN service.
 	// Changing this updates the existing connection.
 	LocalEpGroupId interface{}
 	// An ID to be used instead of the external IP address for a virtual router used in traffic between instances on different networks in east-west traffic.
@@ -279,14 +279,14 @@ type SiteConnectionState struct {
 	Name interface{}
 	// The peer gateway public IPv4 or IPv6 address or FQDN.
 	PeerAddress interface{}
-	// Unique list of valid peer private CIDRs in the form < net_address > / < prefix > .
+	// Unique list of valid peer private CIDRs in the form < netAddress > / < prefix > .
 	PeerCidrs interface{}
-	// The ID for the endpoint group that contains private CIDRs in the form < net_address > / < prefix > for the peer side of the connection.
-	// You must specify this parameter with the local_ep_group_id parameter unless in backward-compatible mode
-	// where peer_cidrs is provided with a subnet_id for the VPN service.
+	// The ID for the endpoint group that contains private CIDRs in the form < netAddress > / < prefix > for the peer side of the connection.
+	// You must specify this parameter with the localEpGroupId parameter unless in backward-compatible mode
+	// where peerCidrs is provided with a subnetId for the VPN service.
 	PeerEpGroupId interface{}
 	// The peer router identity for authentication. A valid value is an IPv4 address, IPv6 address, e-mail address, key ID, or FQDN.
-	// Typically, this value matches the peer_address value.
+	// Typically, this value matches the peerAddress value.
 	// Changing this updates the existing policy.
 	PeerId interface{}
 	// The pre-shared key. A valid value is any string.
@@ -325,8 +325,8 @@ type SiteConnectionArgs struct {
 	// The ID of the IPsec policy. Changing this creates a new connection.
 	IpsecpolicyId interface{}
 	// The ID for the endpoint group that contains private subnets for the local side of the connection.
-	// You must specify this parameter with the peer_ep_group_id parameter unless
-	// in backward- compatible mode where peer_cidrs is provided with a subnet_id for the VPN service.
+	// You must specify this parameter with the peerEpGroupId parameter unless
+	// in backward- compatible mode where peerCidrs is provided with a subnetId for the VPN service.
 	// Changing this updates the existing connection.
 	LocalEpGroupId interface{}
 	// An ID to be used instead of the external IP address for a virtual router used in traffic between instances on different networks in east-west traffic.
@@ -341,14 +341,14 @@ type SiteConnectionArgs struct {
 	Name interface{}
 	// The peer gateway public IPv4 or IPv6 address or FQDN.
 	PeerAddress interface{}
-	// Unique list of valid peer private CIDRs in the form < net_address > / < prefix > .
+	// Unique list of valid peer private CIDRs in the form < netAddress > / < prefix > .
 	PeerCidrs interface{}
-	// The ID for the endpoint group that contains private CIDRs in the form < net_address > / < prefix > for the peer side of the connection.
-	// You must specify this parameter with the local_ep_group_id parameter unless in backward-compatible mode
-	// where peer_cidrs is provided with a subnet_id for the VPN service.
+	// The ID for the endpoint group that contains private CIDRs in the form < netAddress > / < prefix > for the peer side of the connection.
+	// You must specify this parameter with the localEpGroupId parameter unless in backward-compatible mode
+	// where peerCidrs is provided with a subnetId for the VPN service.
 	PeerEpGroupId interface{}
 	// The peer router identity for authentication. A valid value is an IPv4 address, IPv6 address, e-mail address, key ID, or FQDN.
-	// Typically, this value matches the peer_address value.
+	// Typically, this value matches the peerAddress value.
 	// Changing this updates the existing policy.
 	PeerId interface{}
 	// The pre-shared key. A valid value is any string.

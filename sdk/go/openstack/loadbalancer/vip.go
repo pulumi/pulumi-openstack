@@ -120,7 +120,7 @@ func (r *Vip) AdminStateUp() *pulumi.BoolOutput {
 }
 
 // The maximum number of connections allowed for the
-// vip. Default is -1, meaning no limit. Changing this updates the conn_limit
+// vip. Default is -1, meaning no limit. Changing this updates the connLimit
 // of the existing vip.
 func (r *Vip) ConnLimit() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["connLimit"])
@@ -152,7 +152,7 @@ func (r *Vip) Persistence() *pulumi.MapOutput {
 }
 
 // The ID of the pool with which the vip is associated.
-// Changing this updates the pool_id of the existing vip.
+// Changing this updates the poolId of the existing vip.
 func (r *Vip) PoolId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["poolId"])
 }
@@ -206,7 +206,7 @@ type VipState struct {
 	// state of the existing vip.
 	AdminStateUp interface{}
 	// The maximum number of connections allowed for the
-	// vip. Default is -1, meaning no limit. Changing this updates the conn_limit
+	// vip. Default is -1, meaning no limit. Changing this updates the connLimit
 	// of the existing vip.
 	ConnLimit interface{}
 	// Human-readable description for the vip. Changing
@@ -223,7 +223,7 @@ type VipState struct {
 	// the persistence of the existing vip.
 	Persistence interface{}
 	// The ID of the pool with which the vip is associated.
-	// Changing this updates the pool_id of the existing vip.
+	// Changing this updates the poolId of the existing vip.
 	PoolId interface{}
 	// The port on which to listen for client traffic. Changing
 	// this creates a new vip.
@@ -258,7 +258,7 @@ type VipArgs struct {
 	// state of the existing vip.
 	AdminStateUp interface{}
 	// The maximum number of connections allowed for the
-	// vip. Default is -1, meaning no limit. Changing this updates the conn_limit
+	// vip. Default is -1, meaning no limit. Changing this updates the connLimit
 	// of the existing vip.
 	ConnLimit interface{}
 	// Human-readable description for the vip. Changing
@@ -275,7 +275,7 @@ type VipArgs struct {
 	// the persistence of the existing vip.
 	Persistence interface{}
 	// The ID of the pool with which the vip is associated.
-	// Changing this updates the pool_id of the existing vip.
+	// Changing this updates the poolId of the existing vip.
 	PoolId interface{}
 	// The port on which to listen for client traffic. Changing
 	// this creates a new vip.

@@ -43,14 +43,17 @@ class GetKeypairResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetKeypairResult(GetKeypairResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetKeypairResult(
+            fingerprint=self.fingerprint,
+            name=self.name,
+            public_key=self.public_key,
+            region=self.region,
+            id=self.id)
 
 def get_keypair(name=None,region=None,opts=None):
     """
@@ -68,7 +71,7 @@ def get_keypair(name=None,region=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:compute/getKeypair:getKeypair', __args__, opts=opts).value
 
-    return GetKeypairResult(
+    return AwaitableGetKeypairResult(
         fingerprint=__ret__.get('fingerprint'),
         name=__ret__.get('name'),
         public_key=__ret__.get('publicKey'),

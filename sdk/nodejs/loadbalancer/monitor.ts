@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const monitor1 = new openstack.loadbalancer.Monitor("monitor_1", {
+ * const monitor1 = new openstack.loadbalancer.Monitor("monitor1", {
  *     delay: 20,
  *     maxRetries: 5,
  *     poolId: openstack_lb_pool_v2_pool_1.id,

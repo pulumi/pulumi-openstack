@@ -2,7 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Update to pulumi-terraform@013b95b1c8
+* Update to pulumi-terraform@9db2fc93cd
 * Upgrade to v1.21.1 of the OpenStack Terraform Provider
 
 ---

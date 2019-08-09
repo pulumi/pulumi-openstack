@@ -50,7 +50,7 @@ export function getEndpoint(args?: GetEndpointArgs, opts?: pulumi.InvokeOptions)
 export interface GetEndpointArgs {
     /**
      * The region the endpoint is assigned to. The
-     * `region` and `endpoint_region` can be different.
+     * `region` and `endpointRegion` can be different.
      */
     readonly endpointRegion?: string;
     /**

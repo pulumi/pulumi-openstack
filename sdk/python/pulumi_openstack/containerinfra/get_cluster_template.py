@@ -223,14 +223,45 @@ class GetClusterTemplateResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetClusterTemplateResult(GetClusterTemplateResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetClusterTemplateResult(
+            apiserver_port=self.apiserver_port,
+            cluster_distro=self.cluster_distro,
+            coe=self.coe,
+            created_at=self.created_at,
+            dns_nameserver=self.dns_nameserver,
+            docker_storage_driver=self.docker_storage_driver,
+            docker_volume_size=self.docker_volume_size,
+            external_network_id=self.external_network_id,
+            fixed_network=self.fixed_network,
+            fixed_subnet=self.fixed_subnet,
+            flavor=self.flavor,
+            floating_ip_enabled=self.floating_ip_enabled,
+            http_proxy=self.http_proxy,
+            https_proxy=self.https_proxy,
+            image=self.image,
+            insecure_registry=self.insecure_registry,
+            keypair_id=self.keypair_id,
+            labels=self.labels,
+            master_flavor=self.master_flavor,
+            master_lb_enabled=self.master_lb_enabled,
+            name=self.name,
+            network_driver=self.network_driver,
+            no_proxy=self.no_proxy,
+            project_id=self.project_id,
+            public=self.public,
+            region=self.region,
+            registry_enabled=self.registry_enabled,
+            server_type=self.server_type,
+            tls_disabled=self.tls_disabled,
+            updated_at=self.updated_at,
+            user_id=self.user_id,
+            volume_driver=self.volume_driver,
+            id=self.id)
 
 def get_cluster_template(name=None,region=None,opts=None):
     """
@@ -249,7 +280,7 @@ def get_cluster_template(name=None,region=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:containerinfra/getClusterTemplate:getClusterTemplate', __args__, opts=opts).value
 
-    return GetClusterTemplateResult(
+    return AwaitableGetClusterTemplateResult(
         apiserver_port=__ret__.get('apiserverPort'),
         cluster_distro=__ret__.get('clusterDistro'),
         coe=__ret__.get('coe'),

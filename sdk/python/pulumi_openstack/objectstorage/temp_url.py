@@ -42,7 +42,7 @@ class TempUrl(pulumi.CustomResource):
     """
     The URL
     """
-    def __init__(__self__, resource_name, opts=None, container=None, method=None, object=None, regenerate=None, region=None, split=None, ttl=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, container=None, method=None, object=None, regenerate=None, region=None, split=None, ttl=None, __props__=None, __name__=None, __opts__=None):
         """
         Use this resource to generate an OpenStack Object Storage temporary URL.
         
@@ -73,48 +73,71 @@ class TempUrl(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        if container is None:
-            raise TypeError("Missing required property 'container'")
-        __props__['container'] = container
-
-        __props__['method'] = method
-
-        if object is None:
-            raise TypeError("Missing required property 'object'")
-        __props__['object'] = object
-
-        __props__['regenerate'] = regenerate
-
-        __props__['region'] = region
-
-        __props__['split'] = split
-
-        if ttl is None:
-            raise TypeError("Missing required property 'ttl'")
-        __props__['ttl'] = ttl
-
-        __props__['url'] = None
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            if container is None:
+                raise TypeError("Missing required property 'container'")
+            __props__['container'] = container
+            __props__['method'] = method
+            if object is None:
+                raise TypeError("Missing required property 'object'")
+            __props__['object'] = object
+            __props__['regenerate'] = regenerate
+            __props__['region'] = region
+            __props__['split'] = split
+            if ttl is None:
+                raise TypeError("Missing required property 'ttl'")
+            __props__['ttl'] = ttl
+            __props__['url'] = None
         super(TempUrl, __self__).__init__(
             'openstack:objectstorage/tempUrl:TempUrl',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, container=None, method=None, object=None, regenerate=None, region=None, split=None, ttl=None, url=None):
+        """
+        Get an existing TempUrl resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] container: The container name the object belongs to.
+        :param pulumi.Input[str] method: The method allowed when accessing this URL.
+               Valid values are `GET`, and `POST`. Default is `GET`.
+        :param pulumi.Input[str] object: The object name the tempurl is for.
+        :param pulumi.Input[bool] regenerate: Whether to automatically regenerate the URL when
+               it has expired. If set to true, this will create a new resource with a new
+               ID and new URL. Defaults to false.
+        :param pulumi.Input[str] region: The region the tempurl is located in.
+        :param pulumi.Input[float] ttl: The TTL, in seconds, for the URL. For how long it should
+               be valid.
+        :param pulumi.Input[str] url: The URL
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/objectstorage_tempurl_v1.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["container"] = container
+        __props__["method"] = method
+        __props__["object"] = object
+        __props__["regenerate"] = regenerate
+        __props__["region"] = region
+        __props__["split"] = split
+        __props__["ttl"] = ttl
+        __props__["url"] = url
+        return TempUrl(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

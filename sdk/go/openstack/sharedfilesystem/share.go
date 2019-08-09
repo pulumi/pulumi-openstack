@@ -177,8 +177,8 @@ func (r *Share) ReplicationType() *pulumi.StringOutput {
 }
 
 // The UUID of a share network where the share server exists
-// or will be created. If `share_network_id` is not set and you provide a `snapshot_id`,
-// the share_network_id value from the snapshot is used. Changing this creates a new share.
+// or will be created. If `shareNetworkId` is not set and you provide a `snapshotId`,
+// the shareNetworkId value from the snapshot is used. Changing this creates a new share.
 func (r *Share) ShareNetworkId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["shareNetworkId"])
 }
@@ -249,8 +249,8 @@ type ShareState struct {
 	// The share replication type.
 	ReplicationType interface{}
 	// The UUID of a share network where the share server exists
-	// or will be created. If `share_network_id` is not set and you provide a `snapshot_id`,
-	// the share_network_id value from the snapshot is used. Changing this creates a new share.
+	// or will be created. If `shareNetworkId` is not set and you provide a `snapshotId`,
+	// the shareNetworkId value from the snapshot is used. Changing this creates a new share.
 	ShareNetworkId interface{}
 	// The share protocol - can either be NFS, CIFS,
 	// CEPHFS, GLUSTERFS, HDFS or MAPRFS. Changing this creates a new share.
@@ -291,8 +291,8 @@ type ShareArgs struct {
 	// creates a new share.
 	Region interface{}
 	// The UUID of a share network where the share server exists
-	// or will be created. If `share_network_id` is not set and you provide a `snapshot_id`,
-	// the share_network_id value from the snapshot is used. Changing this creates a new share.
+	// or will be created. If `shareNetworkId` is not set and you provide a `snapshotId`,
+	// the shareNetworkId value from the snapshot is used. Changing this creates a new share.
 	ShareNetworkId interface{}
 	// The share protocol - can either be NFS, CIFS,
 	// CEPHFS, GLUSTERFS, HDFS or MAPRFS. Changing this creates a new share.

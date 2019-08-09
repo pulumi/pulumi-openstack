@@ -97,14 +97,33 @@ class GetSubnetResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetSubnetResult(GetSubnetResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetSubnetResult(
+            all_tags=self.all_tags,
+            allocation_pools=self.allocation_pools,
+            cidr=self.cidr,
+            description=self.description,
+            dhcp_disabled=self.dhcp_disabled,
+            dhcp_enabled=self.dhcp_enabled,
+            dns_nameservers=self.dns_nameservers,
+            enable_dhcp=self.enable_dhcp,
+            gateway_ip=self.gateway_ip,
+            host_routes=self.host_routes,
+            ip_version=self.ip_version,
+            ipv6_address_mode=self.ipv6_address_mode,
+            ipv6_ra_mode=self.ipv6_ra_mode,
+            name=self.name,
+            network_id=self.network_id,
+            region=self.region,
+            subnet_id=self.subnet_id,
+            subnetpool_id=self.subnetpool_id,
+            tags=self.tags,
+            tenant_id=self.tenant_id,
+            id=self.id)
 
 def get_subnet(cidr=None,description=None,dhcp_disabled=None,dhcp_enabled=None,gateway_ip=None,ip_version=None,ipv6_address_mode=None,ipv6_ra_mode=None,name=None,network_id=None,region=None,subnet_id=None,subnetpool_id=None,tags=None,tenant_id=None,opts=None):
     """
@@ -135,7 +154,7 @@ def get_subnet(cidr=None,description=None,dhcp_disabled=None,dhcp_enabled=None,g
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:networking/getSubnet:getSubnet', __args__, opts=opts).value
 
-    return GetSubnetResult(
+    return AwaitableGetSubnetResult(
         all_tags=__ret__.get('allTags'),
         allocation_pools=__ret__.get('allocationPools'),
         cidr=__ret__.get('cidr'),

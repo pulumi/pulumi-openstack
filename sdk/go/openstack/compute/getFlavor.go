@@ -50,22 +50,22 @@ type GetFlavorArgs struct {
 	// The exact amount of disk (in gigabytes).
 	Disk interface{}
 	// The ID of the flavor. Conflicts with the `name`,
-	// `min_ram` and `min_disk`
+	// `minRam` and `minDisk`
 	FlavorId interface{}
 	// The minimum amount of disk (in gigabytes). Conflicts
-	// with the `flavor_id`.
+	// with the `flavorId`.
 	MinDisk interface{}
 	// The minimum amount of RAM (in megabytes). Conflicts
-	// with the `flavor_id`.
+	// with the `flavorId`.
 	MinRam interface{}
-	// The name of the flavor. Conflicts with the `flavor_id`.
+	// The name of the flavor. Conflicts with the `flavorId`.
 	Name interface{}
 	// The exact amount of RAM (in megabytes).
 	Ram interface{}
 	// The region in which to obtain the V2 Compute client.
 	// If omitted, the `region` argument of the provider is used.
 	Region interface{}
-	// The `rx_tx_factor` of the flavor.
+	// The `rxTxFactor` of the flavor.
 	RxTxFactor interface{}
 	// The amount of swap (in gigabytes).
 	Swap interface{}

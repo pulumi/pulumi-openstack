@@ -146,14 +146,36 @@ class GetPortResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetPortResult(GetPortResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetPortResult(
+            admin_state_up=self.admin_state_up,
+            all_fixed_ips=self.all_fixed_ips,
+            all_security_group_ids=self.all_security_group_ids,
+            all_tags=self.all_tags,
+            allowed_address_pairs=self.allowed_address_pairs,
+            bindings=self.bindings,
+            description=self.description,
+            device_id=self.device_id,
+            device_owner=self.device_owner,
+            dns_assignments=self.dns_assignments,
+            dns_name=self.dns_name,
+            extra_dhcp_options=self.extra_dhcp_options,
+            fixed_ip=self.fixed_ip,
+            mac_address=self.mac_address,
+            name=self.name,
+            network_id=self.network_id,
+            port_id=self.port_id,
+            project_id=self.project_id,
+            region=self.region,
+            security_group_ids=self.security_group_ids,
+            status=self.status,
+            tags=self.tags,
+            tenant_id=self.tenant_id,
+            id=self.id)
 
 def get_port(admin_state_up=None,description=None,device_id=None,device_owner=None,dns_name=None,fixed_ip=None,mac_address=None,name=None,network_id=None,port_id=None,project_id=None,region=None,security_group_ids=None,status=None,tags=None,tenant_id=None,opts=None):
     """
@@ -185,7 +207,7 @@ def get_port(admin_state_up=None,description=None,device_id=None,device_owner=No
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:networking/getPort:getPort', __args__, opts=opts).value
 
-    return GetPortResult(
+    return AwaitableGetPortResult(
         admin_state_up=__ret__.get('adminStateUp'),
         all_fixed_ips=__ret__.get('allFixedIps'),
         all_security_group_ids=__ret__.get('allSecurityGroupIds'),

@@ -92,14 +92,25 @@ class GetShareNetworkResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetShareNetworkResult(GetShareNetworkResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetShareNetworkResult(
+            cidr=self.cidr,
+            description=self.description,
+            ip_version=self.ip_version,
+            name=self.name,
+            network_type=self.network_type,
+            neutron_net_id=self.neutron_net_id,
+            neutron_subnet_id=self.neutron_subnet_id,
+            project_id=self.project_id,
+            region=self.region,
+            security_service_id=self.security_service_id,
+            security_service_ids=self.security_service_ids,
+            segmentation_id=self.segmentation_id,
+            id=self.id)
 
 def get_share_network(description=None,ip_version=None,name=None,network_type=None,neutron_net_id=None,neutron_subnet_id=None,region=None,security_service_id=None,segmentation_id=None,opts=None):
     """
@@ -124,7 +135,7 @@ def get_share_network(description=None,ip_version=None,name=None,network_type=No
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:sharedfilesystem/getShareNetwork:getShareNetwork', __args__, opts=opts).value
 
-    return GetShareNetworkResult(
+    return AwaitableGetShareNetworkResult(
         cidr=__ret__.get('cidr'),
         description=__ret__.get('description'),
         ip_version=__ret__.get('ipVersion'),

@@ -54,7 +54,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly availabilityZone!: pulumi.Output<string>;
     /**
-     * Configuration of block devices. The block_device
+     * Configuration of block devices. The blockDevice
      * structure is documented below. Changing this creates a new server.
      * You can specify multiple block devices which will create an instance with
      * multiple disks. This configuration is very flexible, so please see the
@@ -63,7 +63,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly blockDevices!: pulumi.Output<{ bootIndex?: number, deleteOnTermination?: boolean, destinationType?: string, deviceType?: string, diskBus?: string, guestFormat?: string, sourceType: string, uuid?: string, volumeSize?: number }[] | undefined>;
     /**
-     * Whether to use the config_drive feature to
+     * Whether to use the configDrive feature to
      * configure the instance. Changing this creates a new server.
      */
     public readonly configDrive!: pulumi.Output<boolean | undefined>;
@@ -84,13 +84,13 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly forceDelete!: pulumi.Output<boolean | undefined>;
     /**
-     * (Optional; Required if `image_name` is empty and not booting
+     * (Optional; Required if `imageName` is empty and not booting
      * from a volume. Do not specify if booting from a volume.) The image ID of
      * the desired image for the server. Changing this creates a new server.
      */
     public readonly imageId!: pulumi.Output<string>;
     /**
-     * (Optional; Required if `image_id` is empty and not booting
+     * (Optional; Required if `imageId` is empty and not booting
      * from a volume. Do not specify if booting from a volume.) The name of the
      * desired image for the server. Changing this creates a new server.
      */
@@ -124,7 +124,7 @@ export class Instance extends pulumi.CustomResource {
     public readonly personalities!: pulumi.Output<{ content: string, file: string }[] | undefined>;
     /**
      * Provide the VM state. Only 'active' and 'shutoff'
-     * are supported values. *Note*: If the initial power_state is the shutoff
+     * are supported values. *Note*: If the initial powerState is the shutoff
      * the VM will be stopped immediately after build and the provisioners like
      * remote-exec or files are not supported.
      */
@@ -263,7 +263,7 @@ export interface InstanceState {
      */
     readonly availabilityZone?: pulumi.Input<string>;
     /**
-     * Configuration of block devices. The block_device
+     * Configuration of block devices. The blockDevice
      * structure is documented below. Changing this creates a new server.
      * You can specify multiple block devices which will create an instance with
      * multiple disks. This configuration is very flexible, so please see the
@@ -272,7 +272,7 @@ export interface InstanceState {
      */
     readonly blockDevices?: pulumi.Input<pulumi.Input<{ bootIndex?: pulumi.Input<number>, deleteOnTermination?: pulumi.Input<boolean>, destinationType?: pulumi.Input<string>, deviceType?: pulumi.Input<string>, diskBus?: pulumi.Input<string>, guestFormat?: pulumi.Input<string>, sourceType: pulumi.Input<string>, uuid?: pulumi.Input<string>, volumeSize?: pulumi.Input<number> }>[]>;
     /**
-     * Whether to use the config_drive feature to
+     * Whether to use the configDrive feature to
      * configure the instance. Changing this creates a new server.
      */
     readonly configDrive?: pulumi.Input<boolean>;
@@ -293,13 +293,13 @@ export interface InstanceState {
      */
     readonly forceDelete?: pulumi.Input<boolean>;
     /**
-     * (Optional; Required if `image_name` is empty and not booting
+     * (Optional; Required if `imageName` is empty and not booting
      * from a volume. Do not specify if booting from a volume.) The image ID of
      * the desired image for the server. Changing this creates a new server.
      */
     readonly imageId?: pulumi.Input<string>;
     /**
-     * (Optional; Required if `image_id` is empty and not booting
+     * (Optional; Required if `imageId` is empty and not booting
      * from a volume. Do not specify if booting from a volume.) The name of the
      * desired image for the server. Changing this creates a new server.
      */
@@ -333,7 +333,7 @@ export interface InstanceState {
     readonly personalities?: pulumi.Input<pulumi.Input<{ content: pulumi.Input<string>, file: pulumi.Input<string> }>[]>;
     /**
      * Provide the VM state. Only 'active' and 'shutoff'
-     * are supported values. *Note*: If the initial power_state is the shutoff
+     * are supported values. *Note*: If the initial powerState is the shutoff
      * the VM will be stopped immediately after build and the provisioners like
      * remote-exec or files are not supported.
      */
@@ -398,7 +398,7 @@ export interface InstanceArgs {
      */
     readonly availabilityZone?: pulumi.Input<string>;
     /**
-     * Configuration of block devices. The block_device
+     * Configuration of block devices. The blockDevice
      * structure is documented below. Changing this creates a new server.
      * You can specify multiple block devices which will create an instance with
      * multiple disks. This configuration is very flexible, so please see the
@@ -407,7 +407,7 @@ export interface InstanceArgs {
      */
     readonly blockDevices?: pulumi.Input<pulumi.Input<{ bootIndex?: pulumi.Input<number>, deleteOnTermination?: pulumi.Input<boolean>, destinationType?: pulumi.Input<string>, deviceType?: pulumi.Input<string>, diskBus?: pulumi.Input<string>, guestFormat?: pulumi.Input<string>, sourceType: pulumi.Input<string>, uuid?: pulumi.Input<string>, volumeSize?: pulumi.Input<number> }>[]>;
     /**
-     * Whether to use the config_drive feature to
+     * Whether to use the configDrive feature to
      * configure the instance. Changing this creates a new server.
      */
     readonly configDrive?: pulumi.Input<boolean>;
@@ -428,13 +428,13 @@ export interface InstanceArgs {
      */
     readonly forceDelete?: pulumi.Input<boolean>;
     /**
-     * (Optional; Required if `image_name` is empty and not booting
+     * (Optional; Required if `imageName` is empty and not booting
      * from a volume. Do not specify if booting from a volume.) The image ID of
      * the desired image for the server. Changing this creates a new server.
      */
     readonly imageId?: pulumi.Input<string>;
     /**
-     * (Optional; Required if `image_id` is empty and not booting
+     * (Optional; Required if `imageId` is empty and not booting
      * from a volume. Do not specify if booting from a volume.) The name of the
      * desired image for the server. Changing this creates a new server.
      */
@@ -468,7 +468,7 @@ export interface InstanceArgs {
     readonly personalities?: pulumi.Input<pulumi.Input<{ content: pulumi.Input<string>, file: pulumi.Input<string> }>[]>;
     /**
      * Provide the VM state. Only 'active' and 'shutoff'
-     * are supported values. *Note*: If the initial power_state is the shutoff
+     * are supported values. *Note*: If the initial powerState is the shutoff
      * the VM will be stopped immediately after build and the provisioners like
      * remote-exec or files are not supported.
      */

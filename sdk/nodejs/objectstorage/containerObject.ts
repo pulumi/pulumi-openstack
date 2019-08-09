@@ -15,14 +15,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const container1 = new openstack.objectstorage.Container("container_1", {
+ * const container1 = new openstack.objectstorage.Container("container1", {
  *     contentType: "application/json",
  *     metadata: {
  *         test: "true",
  *     },
  *     region: "RegionOne",
  * });
- * const doc1 = new openstack.objectstorage.ContainerObject("doc_1", {
+ * const doc1 = new openstack.objectstorage.ContainerObject("doc1", {
  *     containerName: container1.name,
  *     content: `               {
  *                  "foo" : "bar"
@@ -42,14 +42,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const container1 = new openstack.objectstorage.Container("container_1", {
+ * const container1 = new openstack.objectstorage.Container("container1", {
  *     contentType: "application/json",
  *     metadata: {
  *         test: "true",
  *     },
  *     region: "RegionOne",
  * });
- * const doc1 = new openstack.objectstorage.ContainerObject("doc_1", {
+ * const doc1 = new openstack.objectstorage.ContainerObject("doc1", {
  *     containerName: container1.name,
  *     contentType: "application/json",
  *     metadata: {
@@ -100,7 +100,7 @@ export class ContainerObject extends pulumi.CustomResource {
     public readonly containerName!: pulumi.Output<string>;
     /**
      * A string representing the content of the object. Conflicts with
-     * `source` and `copy_from`.
+     * `source` and `copyFrom`.
      */
     public readonly content!: pulumi.Output<string | undefined>;
     /**
@@ -125,7 +125,7 @@ export class ContainerObject extends pulumi.CustomResource {
     public readonly contentType!: pulumi.Output<string>;
     /**
      * A string representing the name of an object 
-     * used to create the new object by copying the `copy_from` object. The value is in form
+     * used to create the new object by copying the `copyFrom` object. The value is in form
      * {container}/{object}. You must UTF-8-encode and then URL-encode the names of the
      * container and object before you include them in the header. Conflicts with `source` and
      * `content`.
@@ -188,7 +188,7 @@ export class ContainerObject extends pulumi.CustomResource {
     public readonly region!: pulumi.Output<string>;
     /**
      * A string representing the local path of a file which will be used
-     * as the object's content. Conflicts with `source` and `copy_from`.
+     * as the object's content. Conflicts with `source` and `copyFrom`.
      */
     public readonly source!: pulumi.Output<string | undefined>;
     /**
@@ -279,7 +279,7 @@ export interface ContainerObjectState {
     readonly containerName?: pulumi.Input<string>;
     /**
      * A string representing the content of the object. Conflicts with
-     * `source` and `copy_from`.
+     * `source` and `copyFrom`.
      */
     readonly content?: pulumi.Input<string>;
     /**
@@ -304,7 +304,7 @@ export interface ContainerObjectState {
     readonly contentType?: pulumi.Input<string>;
     /**
      * A string representing the name of an object 
-     * used to create the new object by copying the `copy_from` object. The value is in form
+     * used to create the new object by copying the `copyFrom` object. The value is in form
      * {container}/{object}. You must UTF-8-encode and then URL-encode the names of the
      * container and object before you include them in the header. Conflicts with `source` and
      * `content`.
@@ -367,7 +367,7 @@ export interface ContainerObjectState {
     readonly region?: pulumi.Input<string>;
     /**
      * A string representing the local path of a file which will be used
-     * as the object's content. Conflicts with `source` and `copy_from`.
+     * as the object's content. Conflicts with `source` and `copyFrom`.
      */
     readonly source?: pulumi.Input<string>;
     /**
@@ -392,7 +392,7 @@ export interface ContainerObjectArgs {
     readonly containerName: pulumi.Input<string>;
     /**
      * A string representing the content of the object. Conflicts with
-     * `source` and `copy_from`.
+     * `source` and `copyFrom`.
      */
     readonly content?: pulumi.Input<string>;
     /**
@@ -412,7 +412,7 @@ export interface ContainerObjectArgs {
     readonly contentType?: pulumi.Input<string>;
     /**
      * A string representing the name of an object 
-     * used to create the new object by copying the `copy_from` object. The value is in form
+     * used to create the new object by copying the `copyFrom` object. The value is in form
      * {container}/{object}. You must UTF-8-encode and then URL-encode the names of the
      * container and object before you include them in the header. Conflicts with `source` and
      * `content`.
@@ -460,7 +460,7 @@ export interface ContainerObjectArgs {
     readonly region?: pulumi.Input<string>;
     /**
      * A string representing the local path of a file which will be used
-     * as the object's content. Conflicts with `source` and `copy_from`.
+     * as the object's content. Conflicts with `source` and `copyFrom`.
      */
     readonly source?: pulumi.Input<string>;
 }

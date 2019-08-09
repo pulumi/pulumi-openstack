@@ -15,10 +15,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const qosPolicy1 = new openstack.networking.QosPolicy("qos_policy_1", {
- *     description: "bw_limit",
+ * const qosPolicy1 = new openstack.networking.QosPolicy("qosPolicy1", {
+ *     description: "bwLimit",
  * });
- * const bwLimitRule1 = new openstack.networking.QosBandwidthLimitRule("bw_limit_rule_1", {
+ * const bwLimitRule1 = new openstack.networking.QosBandwidthLimitRule("bwLimitRule1", {
  *     direction: "egress",
  *     maxBurstKbps: 300,
  *     maxKbps: 3000,

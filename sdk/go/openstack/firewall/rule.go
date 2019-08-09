@@ -112,14 +112,14 @@ func (r *Rule) Description() *pulumi.StringOutput {
 }
 
 // The destination IP address on which the
-// firewall rule operates. Changing this updates the `destination_ip_address`
+// firewall rule operates. Changing this updates the `destinationIpAddress`
 // of an existing firewall rule.
 func (r *Rule) DestinationIpAddress() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["destinationIpAddress"])
 }
 
 // The destination port on which the firewall
-// rule operates. Changing this updates the `destination_port` of an existing
+// rule operates. Changing this updates the `destinationPort` of an existing
 // firewall rule.
 func (r *Rule) DestinationPort() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["destinationPort"])
@@ -133,7 +133,7 @@ func (r *Rule) Enabled() *pulumi.BoolOutput {
 }
 
 // IP version, either 4 (default) or 6. Changing this
-// updates the `ip_version` of an existing firewall rule.
+// updates the `ipVersion` of an existing firewall rule.
 func (r *Rule) IpVersion() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["ipVersion"])
 }
@@ -160,14 +160,14 @@ func (r *Rule) Region() *pulumi.StringOutput {
 }
 
 // The source IP address on which the firewall
-// rule operates. Changing this updates the `source_ip_address` of an existing
+// rule operates. Changing this updates the `sourceIpAddress` of an existing
 // firewall rule.
 func (r *Rule) SourceIpAddress() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["sourceIpAddress"])
 }
 
 // The source port on which the firewall
-// rule operates. Changing this updates the `source_port` of an existing
+// rule operates. Changing this updates the `sourcePort` of an existing
 // firewall rule.
 func (r *Rule) SourcePort() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["sourcePort"])
@@ -195,11 +195,11 @@ type RuleState struct {
 	// updates the `description` of an existing firewall rule.
 	Description interface{}
 	// The destination IP address on which the
-	// firewall rule operates. Changing this updates the `destination_ip_address`
+	// firewall rule operates. Changing this updates the `destinationIpAddress`
 	// of an existing firewall rule.
 	DestinationIpAddress interface{}
 	// The destination port on which the firewall
-	// rule operates. Changing this updates the `destination_port` of an existing
+	// rule operates. Changing this updates the `destinationPort` of an existing
 	// firewall rule.
 	DestinationPort interface{}
 	// Enabled status for the firewall rule (must be "true"
@@ -207,7 +207,7 @@ type RuleState struct {
 	// `enabled` status of an existing firewall rule.
 	Enabled interface{}
 	// IP version, either 4 (default) or 6. Changing this
-	// updates the `ip_version` of an existing firewall rule.
+	// updates the `ipVersion` of an existing firewall rule.
 	IpVersion interface{}
 	// A unique name for the firewall rule. Changing this
 	// updates the `name` of an existing firewall rule.
@@ -222,11 +222,11 @@ type RuleState struct {
 	// firewall rule.
 	Region interface{}
 	// The source IP address on which the firewall
-	// rule operates. Changing this updates the `source_ip_address` of an existing
+	// rule operates. Changing this updates the `sourceIpAddress` of an existing
 	// firewall rule.
 	SourceIpAddress interface{}
 	// The source port on which the firewall
-	// rule operates. Changing this updates the `source_port` of an existing
+	// rule operates. Changing this updates the `sourcePort` of an existing
 	// firewall rule.
 	SourcePort interface{}
 	// The owner of the firewall rule. Required if admin
@@ -247,11 +247,11 @@ type RuleArgs struct {
 	// updates the `description` of an existing firewall rule.
 	Description interface{}
 	// The destination IP address on which the
-	// firewall rule operates. Changing this updates the `destination_ip_address`
+	// firewall rule operates. Changing this updates the `destinationIpAddress`
 	// of an existing firewall rule.
 	DestinationIpAddress interface{}
 	// The destination port on which the firewall
-	// rule operates. Changing this updates the `destination_port` of an existing
+	// rule operates. Changing this updates the `destinationPort` of an existing
 	// firewall rule.
 	DestinationPort interface{}
 	// Enabled status for the firewall rule (must be "true"
@@ -259,7 +259,7 @@ type RuleArgs struct {
 	// `enabled` status of an existing firewall rule.
 	Enabled interface{}
 	// IP version, either 4 (default) or 6. Changing this
-	// updates the `ip_version` of an existing firewall rule.
+	// updates the `ipVersion` of an existing firewall rule.
 	IpVersion interface{}
 	// A unique name for the firewall rule. Changing this
 	// updates the `name` of an existing firewall rule.
@@ -274,11 +274,11 @@ type RuleArgs struct {
 	// firewall rule.
 	Region interface{}
 	// The source IP address on which the firewall
-	// rule operates. Changing this updates the `source_ip_address` of an existing
+	// rule operates. Changing this updates the `sourceIpAddress` of an existing
 	// firewall rule.
 	SourceIpAddress interface{}
 	// The source port on which the firewall
-	// rule operates. Changing this updates the `source_port` of an existing
+	// rule operates. Changing this updates the `sourcePort` of an existing
 	// firewall rule.
 	SourcePort interface{}
 	// The owner of the firewall rule. Required if admin

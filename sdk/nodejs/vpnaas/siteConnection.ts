@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const conn1 = new openstack.vpnaas.SiteConnection("conn_1", {
+ * const conn1 = new openstack.vpnaas.SiteConnection("conn1", {
  *     ikepolicyId: openstack_vpnaas_ike_policy_v2_policy_2.id,
  *     ipsecpolicyId: openstack_vpnaas_ipsec_policy_v2_policy_1.id,
  *     localEpGroupId: openstack_vpnaas_endpoint_group_v2_group_2.id,
@@ -84,8 +84,8 @@ export class SiteConnection extends pulumi.CustomResource {
     public readonly ipsecpolicyId!: pulumi.Output<string>;
     /**
      * The ID for the endpoint group that contains private subnets for the local side of the connection.
-     * You must specify this parameter with the peer_ep_group_id parameter unless
-     * in backward- compatible mode where peer_cidrs is provided with a subnet_id for the VPN service.
+     * You must specify this parameter with the peerEpGroupId parameter unless
+     * in backward- compatible mode where peerCidrs is provided with a subnetId for the VPN service.
      * Changing this updates the existing connection.
      */
     public readonly localEpGroupId!: pulumi.Output<string | undefined>;
@@ -110,18 +110,18 @@ export class SiteConnection extends pulumi.CustomResource {
      */
     public readonly peerAddress!: pulumi.Output<string>;
     /**
-     * Unique list of valid peer private CIDRs in the form < net_address > / < prefix > .
+     * Unique list of valid peer private CIDRs in the form < netAddress > / < prefix > .
      */
     public readonly peerCidrs!: pulumi.Output<string[] | undefined>;
     /**
-     * The ID for the endpoint group that contains private CIDRs in the form < net_address > / < prefix > for the peer side of the connection.
-     * You must specify this parameter with the local_ep_group_id parameter unless in backward-compatible mode
-     * where peer_cidrs is provided with a subnet_id for the VPN service.
+     * The ID for the endpoint group that contains private CIDRs in the form < netAddress > / < prefix > for the peer side of the connection.
+     * You must specify this parameter with the localEpGroupId parameter unless in backward-compatible mode
+     * where peerCidrs is provided with a subnetId for the VPN service.
      */
     public readonly peerEpGroupId!: pulumi.Output<string | undefined>;
     /**
      * The peer router identity for authentication. A valid value is an IPv4 address, IPv6 address, e-mail address, key ID, or FQDN.
-     * Typically, this value matches the peer_address value.
+     * Typically, this value matches the peerAddress value.
      * Changing this updates the existing policy.
      */
     public readonly peerId!: pulumi.Output<string>;
@@ -267,8 +267,8 @@ export interface SiteConnectionState {
     readonly ipsecpolicyId?: pulumi.Input<string>;
     /**
      * The ID for the endpoint group that contains private subnets for the local side of the connection.
-     * You must specify this parameter with the peer_ep_group_id parameter unless
-     * in backward- compatible mode where peer_cidrs is provided with a subnet_id for the VPN service.
+     * You must specify this parameter with the peerEpGroupId parameter unless
+     * in backward- compatible mode where peerCidrs is provided with a subnetId for the VPN service.
      * Changing this updates the existing connection.
      */
     readonly localEpGroupId?: pulumi.Input<string>;
@@ -293,18 +293,18 @@ export interface SiteConnectionState {
      */
     readonly peerAddress?: pulumi.Input<string>;
     /**
-     * Unique list of valid peer private CIDRs in the form < net_address > / < prefix > .
+     * Unique list of valid peer private CIDRs in the form < netAddress > / < prefix > .
      */
     readonly peerCidrs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The ID for the endpoint group that contains private CIDRs in the form < net_address > / < prefix > for the peer side of the connection.
-     * You must specify this parameter with the local_ep_group_id parameter unless in backward-compatible mode
-     * where peer_cidrs is provided with a subnet_id for the VPN service.
+     * The ID for the endpoint group that contains private CIDRs in the form < netAddress > / < prefix > for the peer side of the connection.
+     * You must specify this parameter with the localEpGroupId parameter unless in backward-compatible mode
+     * where peerCidrs is provided with a subnetId for the VPN service.
      */
     readonly peerEpGroupId?: pulumi.Input<string>;
     /**
      * The peer router identity for authentication. A valid value is an IPv4 address, IPv6 address, e-mail address, key ID, or FQDN.
-     * Typically, this value matches the peer_address value.
+     * Typically, this value matches the peerAddress value.
      * Changing this updates the existing policy.
      */
     readonly peerId?: pulumi.Input<string>;
@@ -369,8 +369,8 @@ export interface SiteConnectionArgs {
     readonly ipsecpolicyId: pulumi.Input<string>;
     /**
      * The ID for the endpoint group that contains private subnets for the local side of the connection.
-     * You must specify this parameter with the peer_ep_group_id parameter unless
-     * in backward- compatible mode where peer_cidrs is provided with a subnet_id for the VPN service.
+     * You must specify this parameter with the peerEpGroupId parameter unless
+     * in backward- compatible mode where peerCidrs is provided with a subnetId for the VPN service.
      * Changing this updates the existing connection.
      */
     readonly localEpGroupId?: pulumi.Input<string>;
@@ -395,18 +395,18 @@ export interface SiteConnectionArgs {
      */
     readonly peerAddress: pulumi.Input<string>;
     /**
-     * Unique list of valid peer private CIDRs in the form < net_address > / < prefix > .
+     * Unique list of valid peer private CIDRs in the form < netAddress > / < prefix > .
      */
     readonly peerCidrs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The ID for the endpoint group that contains private CIDRs in the form < net_address > / < prefix > for the peer side of the connection.
-     * You must specify this parameter with the local_ep_group_id parameter unless in backward-compatible mode
-     * where peer_cidrs is provided with a subnet_id for the VPN service.
+     * The ID for the endpoint group that contains private CIDRs in the form < netAddress > / < prefix > for the peer side of the connection.
+     * You must specify this parameter with the localEpGroupId parameter unless in backward-compatible mode
+     * where peerCidrs is provided with a subnetId for the VPN service.
      */
     readonly peerEpGroupId?: pulumi.Input<string>;
     /**
      * The peer router identity for authentication. A valid value is an IPv4 address, IPv6 address, e-mail address, key ID, or FQDN.
-     * Typically, this value matches the peer_address value.
+     * Typically, this value matches the peerAddress value.
      * Changing this updates the existing policy.
      */
     readonly peerId: pulumi.Input<string>;

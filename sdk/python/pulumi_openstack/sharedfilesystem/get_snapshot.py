@@ -70,14 +70,22 @@ class GetSnapshotResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetSnapshotResult(GetSnapshotResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetSnapshotResult(
+            description=self.description,
+            name=self.name,
+            project_id=self.project_id,
+            region=self.region,
+            share_id=self.share_id,
+            share_proto=self.share_proto,
+            share_size=self.share_size,
+            size=self.size,
+            status=self.status,
+            id=self.id)
 
 def get_snapshot(description=None,name=None,region=None,share_id=None,status=None,opts=None):
     """
@@ -98,7 +106,7 @@ def get_snapshot(description=None,name=None,region=None,share_id=None,status=Non
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:sharedfilesystem/getSnapshot:getSnapshot', __args__, opts=opts).value
 
-    return GetSnapshotResult(
+    return AwaitableGetSnapshotResult(
         description=__ret__.get('description'),
         name=__ret__.get('name'),
         project_id=__ret__.get('projectId'),

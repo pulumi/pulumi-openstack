@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as openstack from "@pulumi/openstack";
  * 
  * const user1 = pulumi.output(openstack.identity.getUser({
- *     name: "user_1",
+ *     name: "user1",
  * }));
  * ```
  *

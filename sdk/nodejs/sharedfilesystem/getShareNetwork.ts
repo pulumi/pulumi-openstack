@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as openstack from "@pulumi/openstack";
  * 
  * const sharenetwork1 = pulumi.output(openstack.sharedfilesystem.getShareNetwork({
- *     name: "sharenetwork_1",
+ *     name: "sharenetwork1",
  * }));
  * ```
  *

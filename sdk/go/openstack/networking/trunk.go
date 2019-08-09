@@ -84,7 +84,7 @@ func (r *Trunk) ID() *pulumi.IDOutput {
 
 // Administrative up/down status for the trunk
 // (must be "true" or "false" if provided). Changing this updates the
-// `admin_state_up` of an existing trunk.
+// `adminStateUp` of an existing trunk.
 func (r *Trunk) AdminStateUp() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["adminStateUp"])
 }
@@ -143,7 +143,7 @@ func (r *Trunk) TenantId() *pulumi.StringOutput {
 type TrunkState struct {
 	// Administrative up/down status for the trunk
 	// (must be "true" or "false" if provided). Changing this updates the
-	// `admin_state_up` of an existing trunk.
+	// `adminStateUp` of an existing trunk.
 	AdminStateUp interface{}
 	// The collection of tags assigned on the trunk, which have been
 	// explicitly and implicitly added.
@@ -177,7 +177,7 @@ type TrunkState struct {
 type TrunkArgs struct {
 	// Administrative up/down status for the trunk
 	// (must be "true" or "false" if provided). Changing this updates the
-	// `admin_state_up` of an existing trunk.
+	// `adminStateUp` of an existing trunk.
 	AdminStateUp interface{}
 	// Human-readable description of the trunk. Changing this
 	// updates the name of the existing trunk.

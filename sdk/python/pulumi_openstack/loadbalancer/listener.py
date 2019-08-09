@@ -76,7 +76,7 @@ class Listener(pulumi.CustomResource):
     the Listener.  Only administrative users can specify a tenant UUID
     other than their own. Changing this creates a new Listener.
     """
-    def __init__(__self__, resource_name, opts=None, admin_state_up=None, connection_limit=None, default_pool_id=None, default_tls_container_ref=None, description=None, loadbalancer_id=None, name=None, protocol=None, protocol_port=None, region=None, sni_container_refs=None, tenant_id=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, admin_state_up=None, connection_limit=None, default_pool_id=None, default_tls_container_ref=None, description=None, loadbalancer_id=None, name=None, protocol=None, protocol_port=None, region=None, sni_container_refs=None, tenant_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a V2 listener resource within OpenStack.
         
@@ -122,56 +122,99 @@ class Listener(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        __props__['admin_state_up'] = admin_state_up
-
-        __props__['connection_limit'] = connection_limit
-
-        __props__['default_pool_id'] = default_pool_id
-
-        __props__['default_tls_container_ref'] = default_tls_container_ref
-
-        __props__['description'] = description
-
-        if loadbalancer_id is None:
-            raise TypeError("Missing required property 'loadbalancer_id'")
-        __props__['loadbalancer_id'] = loadbalancer_id
-
-        __props__['name'] = name
-
-        if protocol is None:
-            raise TypeError("Missing required property 'protocol'")
-        __props__['protocol'] = protocol
-
-        if protocol_port is None:
-            raise TypeError("Missing required property 'protocol_port'")
-        __props__['protocol_port'] = protocol_port
-
-        __props__['region'] = region
-
-        __props__['sni_container_refs'] = sni_container_refs
-
-        __props__['tenant_id'] = tenant_id
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            __props__['admin_state_up'] = admin_state_up
+            __props__['connection_limit'] = connection_limit
+            __props__['default_pool_id'] = default_pool_id
+            __props__['default_tls_container_ref'] = default_tls_container_ref
+            __props__['description'] = description
+            if loadbalancer_id is None:
+                raise TypeError("Missing required property 'loadbalancer_id'")
+            __props__['loadbalancer_id'] = loadbalancer_id
+            __props__['name'] = name
+            if protocol is None:
+                raise TypeError("Missing required property 'protocol'")
+            __props__['protocol'] = protocol
+            if protocol_port is None:
+                raise TypeError("Missing required property 'protocol_port'")
+            __props__['protocol_port'] = protocol_port
+            __props__['region'] = region
+            __props__['sni_container_refs'] = sni_container_refs
+            __props__['tenant_id'] = tenant_id
         super(Listener, __self__).__init__(
             'openstack:loadbalancer/listener:Listener',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, admin_state_up=None, connection_limit=None, default_pool_id=None, default_tls_container_ref=None, description=None, loadbalancer_id=None, name=None, protocol=None, protocol_port=None, region=None, sni_container_refs=None, tenant_id=None):
+        """
+        Get an existing Listener resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] admin_state_up: The administrative state of the Listener.
+               A valid value is true (UP) or false (DOWN).
+        :param pulumi.Input[float] connection_limit: The maximum number of connections allowed
+               for the Listener.
+        :param pulumi.Input[str] default_pool_id: The ID of the default pool with which the
+               Listener is associated.
+        :param pulumi.Input[str] default_tls_container_ref: A reference to a Barbican Secrets
+               container which stores TLS information. This is required if the protocol
+               is `TERMINATED_HTTPS`. See
+               [here](https://wiki.openstack.org/wiki/Network/LBaaS/docs/how-to-create-tls-loadbalancer)
+               for more information.
+        :param pulumi.Input[str] description: Human-readable description for the Listener.
+        :param pulumi.Input[str] loadbalancer_id: The load balancer on which to provision this
+               Listener. Changing this creates a new Listener.
+        :param pulumi.Input[str] name: Human-readable name for the Listener. Does not have
+               to be unique.
+        :param pulumi.Input[str] protocol: The protocol - can either be TCP, HTTP, HTTPS or TERMINATED_HTTPS.
+               Changing this creates a new Listener.
+        :param pulumi.Input[float] protocol_port: The port on which to listen for client traffic.
+               Changing this creates a new Listener.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
+               A Networking client is needed to create an . If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               Listener.
+        :param pulumi.Input[list] sni_container_refs: A list of references to Barbican Secrets
+               containers which store SNI information. See
+               [here](https://wiki.openstack.org/wiki/Network/LBaaS/docs/how-to-create-tls-loadbalancer)
+               for more information.
+        :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
+               the Listener.  Only administrative users can specify a tenant UUID
+               other than their own. Changing this creates a new Listener.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_listener_v2.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["admin_state_up"] = admin_state_up
+        __props__["connection_limit"] = connection_limit
+        __props__["default_pool_id"] = default_pool_id
+        __props__["default_tls_container_ref"] = default_tls_container_ref
+        __props__["description"] = description
+        __props__["loadbalancer_id"] = loadbalancer_id
+        __props__["name"] = name
+        __props__["protocol"] = protocol
+        __props__["protocol_port"] = protocol_port
+        __props__["region"] = region
+        __props__["sni_container_refs"] = sni_container_refs
+        __props__["tenant_id"] = tenant_id
+        return Listener(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

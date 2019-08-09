@@ -56,21 +56,21 @@ export interface GetFlavorArgs {
     readonly disk?: number;
     /**
      * The ID of the flavor. Conflicts with the `name`,
-     * `min_ram` and `min_disk`
+     * `minRam` and `minDisk`
      */
     readonly flavorId?: string;
     /**
      * The minimum amount of disk (in gigabytes). Conflicts
-     * with the `flavor_id`.
+     * with the `flavorId`.
      */
     readonly minDisk?: number;
     /**
      * The minimum amount of RAM (in megabytes). Conflicts
-     * with the `flavor_id`.
+     * with the `flavorId`.
      */
     readonly minRam?: number;
     /**
-     * The name of the flavor. Conflicts with the `flavor_id`.
+     * The name of the flavor. Conflicts with the `flavorId`.
      */
     readonly name?: string;
     /**
@@ -83,7 +83,7 @@ export interface GetFlavorArgs {
      */
     readonly region?: string;
     /**
-     * The `rx_tx_factor` of the flavor.
+     * The `rxTxFactor` of the flavor.
      */
     readonly rxTxFactor?: number;
     /**
