@@ -14,9 +14,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const clustertemplate1 = pulumi.output(openstack.containerinfra.getClusterTemplate({
+ * const clustertemplate1 = openstack.containerinfra.getClusterTemplate({
  *     name: "clustertemplate1",
- * }));
+ * });
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/containerinfra_clustertemplate_v1.html.markdown.
