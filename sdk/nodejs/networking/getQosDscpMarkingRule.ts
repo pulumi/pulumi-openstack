@@ -13,9 +13,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const qosDscpMarkingRule1 = pulumi.output(openstack.networking.getQosDscpMarkingRule({
+ * const qosDscpMarkingRule1 = openstack.networking.getQosDscpMarkingRule({
  *     dscpMark: 26,
- * }));
+ * });
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_qos_dscp_marking_rule_v2.html.markdown.

@@ -13,9 +13,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const snapshot1 = pulumi.output(openstack.sharedfilesystem.getSnapshot({
+ * const snapshot1 = openstack.sharedfilesystem.getSnapshot({
  *     name: "snapshot1",
- * }));
+ * });
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/sharedfilesystem_snapshot_v2.html.markdown.
