@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -124,12 +126,12 @@ export class Port extends pulumi.CustomResource {
      * addresses that can be active on this port. The structure is described
      * below.
      */
-    public readonly allowedAddressPairs!: pulumi.Output<{ ipAddress: string, macAddress?: string }[] | undefined>;
+    public readonly allowedAddressPairs!: pulumi.Output<outputs.networking.PortAllowedAddressPair[] | undefined>;
     /**
      * The port binding allows to specify binding information
      * for the port. The structure is described below.
      */
-    public readonly binding!: pulumi.Output<{ hostId?: string, profile?: string, vifDetails: {[key: string]: any}, vifType: string, vnicType?: string }>;
+    public readonly binding!: pulumi.Output<outputs.networking.PortBinding>;
     /**
      * Human-readable description of the floating IP. Changing
      * this updates the `description` of an existing port.
@@ -159,12 +161,12 @@ export class Port extends pulumi.CustomResource {
      * on the port. The structure is described below. Can be specified multiple
      * times.
      */
-    public readonly extraDhcpOptions!: pulumi.Output<{ ipVersion?: number, name: string, value: string }[] | undefined>;
+    public readonly extraDhcpOptions!: pulumi.Output<outputs.networking.PortExtraDhcpOption[] | undefined>;
     /**
      * An array of desired IPs for
      * this port. The structure is described below.
      */
-    public readonly fixedIps!: pulumi.Output<{ ipAddress?: string, subnetId: string }[] | undefined>;
+    public readonly fixedIps!: pulumi.Output<outputs.networking.PortFixedIp[] | undefined>;
     /**
      * Specify a specific MAC address for the port. Changing
      * this creates a new port.
@@ -344,12 +346,12 @@ export interface PortState {
      * addresses that can be active on this port. The structure is described
      * below.
      */
-    readonly allowedAddressPairs?: pulumi.Input<pulumi.Input<{ ipAddress: pulumi.Input<string>, macAddress?: pulumi.Input<string> }>[]>;
+    readonly allowedAddressPairs?: pulumi.Input<pulumi.Input<inputs.networking.PortAllowedAddressPair>[]>;
     /**
      * The port binding allows to specify binding information
      * for the port. The structure is described below.
      */
-    readonly binding?: pulumi.Input<{ hostId?: pulumi.Input<string>, profile?: pulumi.Input<string>, vifDetails?: pulumi.Input<{[key: string]: any}>, vifType?: pulumi.Input<string>, vnicType?: pulumi.Input<string> }>;
+    readonly binding?: pulumi.Input<inputs.networking.PortBinding>;
     /**
      * Human-readable description of the floating IP. Changing
      * this updates the `description` of an existing port.
@@ -379,12 +381,12 @@ export interface PortState {
      * on the port. The structure is described below. Can be specified multiple
      * times.
      */
-    readonly extraDhcpOptions?: pulumi.Input<pulumi.Input<{ ipVersion?: pulumi.Input<number>, name: pulumi.Input<string>, value: pulumi.Input<string> }>[]>;
+    readonly extraDhcpOptions?: pulumi.Input<pulumi.Input<inputs.networking.PortExtraDhcpOption>[]>;
     /**
      * An array of desired IPs for
      * this port. The structure is described below.
      */
-    readonly fixedIps?: pulumi.Input<pulumi.Input<{ ipAddress?: pulumi.Input<string>, subnetId: pulumi.Input<string> }>[]>;
+    readonly fixedIps?: pulumi.Input<pulumi.Input<inputs.networking.PortFixedIp>[]>;
     /**
      * Specify a specific MAC address for the port. Changing
      * this creates a new port.
@@ -471,12 +473,12 @@ export interface PortArgs {
      * addresses that can be active on this port. The structure is described
      * below.
      */
-    readonly allowedAddressPairs?: pulumi.Input<pulumi.Input<{ ipAddress: pulumi.Input<string>, macAddress?: pulumi.Input<string> }>[]>;
+    readonly allowedAddressPairs?: pulumi.Input<pulumi.Input<inputs.networking.PortAllowedAddressPair>[]>;
     /**
      * The port binding allows to specify binding information
      * for the port. The structure is described below.
      */
-    readonly binding?: pulumi.Input<{ hostId?: pulumi.Input<string>, profile?: pulumi.Input<string>, vifDetails?: pulumi.Input<{[key: string]: any}>, vifType?: pulumi.Input<string>, vnicType?: pulumi.Input<string> }>;
+    readonly binding?: pulumi.Input<inputs.networking.PortBinding>;
     /**
      * Human-readable description of the floating IP. Changing
      * this updates the `description` of an existing port.
@@ -502,12 +504,12 @@ export interface PortArgs {
      * on the port. The structure is described below. Can be specified multiple
      * times.
      */
-    readonly extraDhcpOptions?: pulumi.Input<pulumi.Input<{ ipVersion?: pulumi.Input<number>, name: pulumi.Input<string>, value: pulumi.Input<string> }>[]>;
+    readonly extraDhcpOptions?: pulumi.Input<pulumi.Input<inputs.networking.PortExtraDhcpOption>[]>;
     /**
      * An array of desired IPs for
      * this port. The structure is described below.
      */
-    readonly fixedIps?: pulumi.Input<pulumi.Input<{ ipAddress?: pulumi.Input<string>, subnetId: pulumi.Input<string> }>[]>;
+    readonly fixedIps?: pulumi.Input<pulumi.Input<inputs.networking.PortFixedIp>[]>;
     /**
      * Specify a specific MAC address for the port. Changing
      * this creates a new port.

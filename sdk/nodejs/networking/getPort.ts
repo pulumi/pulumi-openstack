@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -147,11 +149,11 @@ export interface GetPortResult {
      * addresses that can be active on this port. The structure is described
      * below.
      */
-    readonly allowedAddressPairs: { ipAddress: string, macAddress: string }[];
+    readonly allowedAddressPairs: outputs.networking.GetPortAllowedAddressPair[];
     /**
      * The port binding information. The structure is described below.
      */
-    readonly bindings: { hostId: string, profile: string, vifDetails: {[key: string]: any}, vifType: string, vnicType: string }[];
+    readonly bindings: outputs.networking.GetPortBinding[];
     /**
      * See Argument Reference above.
      */
@@ -176,7 +178,7 @@ export interface GetPortResult {
      * An extra DHCP option configured on the port.
      * The structure is described below.
      */
-    readonly extraDhcpOptions: { ipVersion: number, name: string, value: string }[];
+    readonly extraDhcpOptions: outputs.networking.GetPortExtraDhcpOption[];
     readonly fixedIp?: string;
     /**
      * The additional MAC address.

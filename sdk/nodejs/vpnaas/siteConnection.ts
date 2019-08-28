@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -69,7 +71,7 @@ export class SiteConnection extends pulumi.CustomResource {
      * A valid value is clear, hold, restart, disabled, or restart-by-peer.
      * Default value is hold.
      */
-    public readonly dpds!: pulumi.Output<{ action: string, interval: number, timeout: number }[]>;
+    public readonly dpds!: pulumi.Output<outputs.vpnaas.SiteConnectionDpd[]>;
     /**
      * The ID of the IKE policy. Changing this creates a new connection.
      */
@@ -252,7 +254,7 @@ export interface SiteConnectionState {
      * A valid value is clear, hold, restart, disabled, or restart-by-peer.
      * Default value is hold.
      */
-    readonly dpds?: pulumi.Input<pulumi.Input<{ action?: pulumi.Input<string>, interval?: pulumi.Input<number>, timeout?: pulumi.Input<number> }>[]>;
+    readonly dpds?: pulumi.Input<pulumi.Input<inputs.vpnaas.SiteConnectionDpd>[]>;
     /**
      * The ID of the IKE policy. Changing this creates a new connection.
      */
@@ -354,7 +356,7 @@ export interface SiteConnectionArgs {
      * A valid value is clear, hold, restart, disabled, or restart-by-peer.
      * Default value is hold.
      */
-    readonly dpds?: pulumi.Input<pulumi.Input<{ action?: pulumi.Input<string>, interval?: pulumi.Input<number>, timeout?: pulumi.Input<number> }>[]>;
+    readonly dpds?: pulumi.Input<pulumi.Input<inputs.vpnaas.SiteConnectionDpd>[]>;
     /**
      * The ID of the IKE policy. Changing this creates a new connection.
      */

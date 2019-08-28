@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class Instance(pulumi.CustomResource):
@@ -18,11 +19,18 @@ class Instance(pulumi.CustomResource):
     """
     An array of database name, charset and collate. The database
     object structure is documented below.
+    
+      * `charset` (`str`)
+      * `collate` (`str`)
+      * `name` (`str`) - A unique name for the resource.
     """
     datastore: pulumi.Output[dict]
     """
     An array of database engine type and version. The datastore
     object structure is documented below. Changing this creates a new instance.
+    
+      * `type` (`str`)
+      * `version` (`str`)
     """
     flavor_id: pulumi.Output[str]
     """
@@ -38,6 +46,11 @@ class Instance(pulumi.CustomResource):
     An array of one or more networks to attach to the
     instance. The network object structure is documented below. Changing this
     creates a new instance.
+    
+      * `fixedIpV4` (`str`)
+      * `fixedIpV6` (`str`)
+      * `port` (`str`)
+      * `uuid` (`str`)
     """
     region: pulumi.Output[str]
     """
@@ -52,6 +65,11 @@ class Instance(pulumi.CustomResource):
     """
     An array of username, password, host and databases. The user
     object structure is documented below.
+    
+      * `databases` (`list`)
+      * `host` (`str`)
+      * `name` (`str`) - A unique name for the resource.
+      * `password` (`str`)
     """
     def __init__(__self__, resource_name, opts=None, configuration_id=None, databases=None, datastore=None, flavor_id=None, name=None, networks=None, region=None, size=None, users=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -76,6 +94,31 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[float] size: Specifies the volume size in GB. Changing this creates new instance.
         :param pulumi.Input[list] users: An array of username, password, host and databases. The user
                object structure is documented below.
+        
+        The **databases** object supports the following:
+        
+          * `charset` (`pulumi.Input[str]`)
+          * `collate` (`pulumi.Input[str]`)
+          * `name` (`pulumi.Input[str]`) - A unique name for the resource.
+        
+        The **datastore** object supports the following:
+        
+          * `type` (`pulumi.Input[str]`)
+          * `version` (`pulumi.Input[str]`)
+        
+        The **networks** object supports the following:
+        
+          * `fixedIpV4` (`pulumi.Input[str]`)
+          * `fixedIpV6` (`pulumi.Input[str]`)
+          * `port` (`pulumi.Input[str]`)
+          * `uuid` (`pulumi.Input[str]`)
+        
+        The **users** object supports the following:
+        
+          * `databases` (`pulumi.Input[list]`)
+          * `host` (`pulumi.Input[str]`)
+          * `name` (`pulumi.Input[str]`) - A unique name for the resource.
+          * `password` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/db_instance_v1.html.markdown.
         """
@@ -120,6 +163,7 @@ class Instance(pulumi.CustomResource):
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -140,10 +184,35 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[float] size: Specifies the volume size in GB. Changing this creates new instance.
         :param pulumi.Input[list] users: An array of username, password, host and databases. The user
                object structure is documented below.
+        
+        The **databases** object supports the following:
+        
+          * `charset` (`pulumi.Input[str]`)
+          * `collate` (`pulumi.Input[str]`)
+          * `name` (`pulumi.Input[str]`) - A unique name for the resource.
+        
+        The **datastore** object supports the following:
+        
+          * `type` (`pulumi.Input[str]`)
+          * `version` (`pulumi.Input[str]`)
+        
+        The **networks** object supports the following:
+        
+          * `fixedIpV4` (`pulumi.Input[str]`)
+          * `fixedIpV6` (`pulumi.Input[str]`)
+          * `port` (`pulumi.Input[str]`)
+          * `uuid` (`pulumi.Input[str]`)
+        
+        The **users** object supports the following:
+        
+          * `databases` (`pulumi.Input[list]`)
+          * `host` (`pulumi.Input[str]`)
+          * `name` (`pulumi.Input[str]`) - A unique name for the resource.
+          * `password` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/db_instance_v1.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["configuration_id"] = configuration_id

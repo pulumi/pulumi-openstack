@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class GetAvailbilityZonesResult:
@@ -45,6 +46,9 @@ def get_availbility_zones(region=None,opts=None):
     """
     Use this data source to get a list of Shared File System availability zones
     from OpenStack
+    
+    :param str region: The region in which to obtain the V2 Shared File System
+           client. If omitted, the `region` argument of the provider is used.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/sharedfilesystem_availability_zones_v2.html.markdown.
     """
@@ -52,7 +56,7 @@ def get_availbility_zones(region=None,opts=None):
 
     __args__['region'] = region
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:sharedfilesystem/getAvailbilityZones:getAvailbilityZones', __args__, opts=opts).value

@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class GetDnsZoneResult:
@@ -142,6 +143,16 @@ class AwaitableGetDnsZoneResult(GetDnsZoneResult):
 def get_dns_zone(attributes=None,created_at=None,description=None,email=None,masters=None,name=None,pool_id=None,project_id=None,region=None,serial=None,status=None,transferred_at=None,ttl=None,type=None,updated_at=None,version=None,opts=None):
     """
     Use this data source to get the ID of an available OpenStack DNS zone.
+    
+    :param str description: A description of the zone.
+    :param str email: The email contact for the zone record.
+    :param str name: The name of the zone.
+    :param str region: The region in which to obtain the V2 DNS client.
+           A DNS client is needed to retrieve zone ids. If omitted, the
+           `region` argument of the provider is used.
+    :param str status: The zone's status.
+    :param float ttl: The time to live (TTL) of the zone.
+    :param str type: The type of the zone. Can either be `PRIMARY` or `SECONDARY`.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/dns_zone_v2.html.markdown.
     """
@@ -164,7 +175,7 @@ def get_dns_zone(attributes=None,created_at=None,description=None,email=None,mas
     __args__['updatedAt'] = updated_at
     __args__['version'] = version
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:dns/getDnsZone:getDnsZone', __args__, opts=opts).value

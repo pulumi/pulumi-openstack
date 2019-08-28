@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -145,7 +147,7 @@ export class Network extends pulumi.CustomResource {
     /**
      * An array of one or more provider segment objects.
      */
-    public readonly segments!: pulumi.Output<{ networkType?: string, physicalNetwork?: string, segmentationId?: number }[] | undefined>;
+    public readonly segments!: pulumi.Output<outputs.networking.NetworkSegment[] | undefined>;
     /**
      * Specifies whether the network resource can be accessed
      * by any tenant or not. Changing this updates the sharing capabilities of the
@@ -306,7 +308,7 @@ export interface NetworkState {
     /**
      * An array of one or more provider segment objects.
      */
-    readonly segments?: pulumi.Input<pulumi.Input<{ networkType?: pulumi.Input<string>, physicalNetwork?: pulumi.Input<string>, segmentationId?: pulumi.Input<number> }>[]>;
+    readonly segments?: pulumi.Input<pulumi.Input<inputs.networking.NetworkSegment>[]>;
     /**
      * Specifies whether the network resource can be accessed
      * by any tenant or not. Changing this updates the sharing capabilities of the
@@ -403,7 +405,7 @@ export interface NetworkArgs {
     /**
      * An array of one or more provider segment objects.
      */
-    readonly segments?: pulumi.Input<pulumi.Input<{ networkType?: pulumi.Input<string>, physicalNetwork?: pulumi.Input<string>, segmentationId?: pulumi.Input<number> }>[]>;
+    readonly segments?: pulumi.Input<pulumi.Input<inputs.networking.NetworkSegment>[]>;
     /**
      * Specifies whether the network resource can be accessed
      * by any tenant or not. Changing this updates the sharing capabilities of the

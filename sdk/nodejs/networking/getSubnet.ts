@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -131,7 +133,7 @@ export interface GetSubnetResult {
     /**
      * Allocation pools of the subnet.
      */
-    readonly allocationPools: { end: string, start: string }[];
+    readonly allocationPools: outputs.networking.GetSubnetAllocationPool[];
     readonly cidr: string;
     readonly description: string;
     readonly dhcpDisabled?: boolean;
@@ -148,7 +150,7 @@ export interface GetSubnetResult {
     /**
      * Host Routes of the subnet.
      */
-    readonly hostRoutes: { destinationCidr: string, nextHop: string }[];
+    readonly hostRoutes: outputs.networking.GetSubnetHostRoute[];
     readonly ipVersion: number;
     readonly ipv6AddressMode: string;
     readonly ipv6RaMode: string;

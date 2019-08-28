@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class VolumeV2(pulumi.CustomResource):
@@ -14,6 +15,10 @@ class VolumeV2(pulumi.CustomResource):
     If a volume is attached to an instance, this attribute will
     display the Attachment ID, Instance ID, and the Device as the Instance
     sees it.
+    
+      * `device` (`str`)
+      * `id` (`str`)
+      * `instanceId` (`str`)
     """
     availability_zone: pulumi.Output[str]
     """
@@ -151,6 +156,7 @@ class VolumeV2(pulumi.CustomResource):
         """
         Get an existing VolumeV2 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -181,10 +187,16 @@ class VolumeV2(pulumi.CustomResource):
                Changing this creates a new volume.
         :param pulumi.Input[str] volume_type: The type of volume to create.
                Changing this creates a new volume.
+        
+        The **attachments** object supports the following:
+        
+          * `device` (`pulumi.Input[str]`)
+          * `id` (`pulumi.Input[str]`)
+          * `instanceId` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/blockstorage_volume_v2.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["attachments"] = attachments

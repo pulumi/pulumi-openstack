@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class Subnet(pulumi.CustomResource):
@@ -22,6 +23,9 @@ class Subnet(pulumi.CustomResource):
     than one range of IP addresses to use with DHCP. However, each IP range
     must be from the same CIDR that the subnet is part of.
     The `allocation_pool` block is documented below.
+    
+      * `end` (`str`)
+      * `start` (`str`)
     """
     allocation_pools_collection: pulumi.Output[list]
     """
@@ -29,6 +33,9 @@ class Subnet(pulumi.CustomResource):
     A block declaring the start and end range of the IP addresses available for
     use with DHCP in this subnet.
     The `allocation_pools` block is documented below.
+    
+      * `end` (`str`)
+      * `start` (`str`)
     """
     cidr: pulumi.Output[str]
     """
@@ -67,6 +74,9 @@ class Subnet(pulumi.CustomResource):
     with IPs from this subnet (not including local subnet route). The host_route
     object structure is documented below. Changing this updates the host routes
     for the existing subnet.
+    
+      * `destination_cidr` (`str`)
+      * `next_hop` (`str`)
     """
     ip_version: pulumi.Output[float]
     """
@@ -190,6 +200,21 @@ class Subnet(pulumi.CustomResource):
         :param pulumi.Input[str] tenant_id: The owner of the subnet. Required if admin wants to
                create a subnet for another tenant. Changing this creates a new subnet.
         :param pulumi.Input[dict] value_specs: Map of additional options.
+        
+        The **allocation_pools** object supports the following:
+        
+          * `end` (`pulumi.Input[str]`)
+          * `start` (`pulumi.Input[str]`)
+        
+        The **allocation_pools_collection** object supports the following:
+        
+          * `end` (`pulumi.Input[str]`)
+          * `start` (`pulumi.Input[str]`)
+        
+        The **host_routes** object supports the following:
+        
+          * `destination_cidr` (`pulumi.Input[str]`)
+          * `next_hop` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_subnet_v2.html.markdown.
         """
@@ -244,6 +269,7 @@ class Subnet(pulumi.CustomResource):
         """
         Get an existing Subnet resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -304,10 +330,25 @@ class Subnet(pulumi.CustomResource):
         :param pulumi.Input[str] tenant_id: The owner of the subnet. Required if admin wants to
                create a subnet for another tenant. Changing this creates a new subnet.
         :param pulumi.Input[dict] value_specs: Map of additional options.
+        
+        The **allocation_pools** object supports the following:
+        
+          * `end` (`pulumi.Input[str]`)
+          * `start` (`pulumi.Input[str]`)
+        
+        The **allocation_pools_collection** object supports the following:
+        
+          * `end` (`pulumi.Input[str]`)
+          * `start` (`pulumi.Input[str]`)
+        
+        The **host_routes** object supports the following:
+        
+          * `destination_cidr` (`pulumi.Input[str]`)
+          * `next_hop` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_subnet_v2.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["all_tags"] = all_tags

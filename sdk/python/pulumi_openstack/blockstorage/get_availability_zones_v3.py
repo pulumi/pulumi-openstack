@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class GetAvailabilityZonesV3Result:
@@ -52,6 +53,11 @@ class AwaitableGetAvailabilityZonesV3Result(GetAvailabilityZonesV3Result):
 def get_availability_zones_v3(region=None,state=None,opts=None):
     """
     Use this data source to get a list of Block Storage availability zones from OpenStack
+    
+    :param str region: The region in which to obtain the Block Storage client.
+           If omitted, the `region` argument of the provider is used.
+    :param str state: The `state` of the availability zones to match. Can
+           either be `available` or `unavailable`. Default is `available`.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/blockstorage_availability_zones_v3.html.markdown.
     """
@@ -60,7 +66,7 @@ def get_availability_zones_v3(region=None,state=None,opts=None):
     __args__['region'] = region
     __args__['state'] = state
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:blockstorage/getAvailabilityZonesV3:getAvailabilityZonesV3', __args__, opts=opts).value

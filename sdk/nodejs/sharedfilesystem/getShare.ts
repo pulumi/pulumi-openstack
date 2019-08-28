@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -111,7 +113,7 @@ export interface GetShareResult {
      * server has more than one network interface, it can have multiple export
      * locations.
      */
-    readonly exportLocations: { path: string, preferred: string }[];
+    readonly exportLocations: outputs.sharedfilesystem.GetShareExportLocation[];
     /**
      * See Argument Reference above.
      */

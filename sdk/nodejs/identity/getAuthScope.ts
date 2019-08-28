@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -80,7 +82,7 @@ export interface GetAuthScopeResult {
     /**
      * A list of roles in the current scope. See reference below.
      */
-    readonly roles: { roleId: string, roleName: string }[];
+    readonly roles: outputs.identity.GetAuthScopeRole[];
     /**
      * The domain ID of the user.
      */

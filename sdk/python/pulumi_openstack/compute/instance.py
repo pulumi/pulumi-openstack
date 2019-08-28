@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class Instance(pulumi.CustomResource):
@@ -36,6 +37,16 @@ class Instance(pulumi.CustomResource):
     multiple disks. This configuration is very flexible, so please see the
     following [reference](https://docs.openstack.org/nova/latest/user/block-device-mapping.html)
     for more information.
+    
+      * `bootIndex` (`float`)
+      * `deleteOnTermination` (`bool`)
+      * `destinationType` (`str`)
+      * `deviceType` (`str`)
+      * `diskBus` (`str`)
+      * `guestFormat` (`str`)
+      * `sourceType` (`str`)
+      * `uuid` (`str`)
+      * `volumeSize` (`float`)
     """
     config_drive: pulumi.Output[bool]
     """
@@ -90,12 +101,23 @@ class Instance(pulumi.CustomResource):
     An array of one or more networks to attach to the
     instance. The network object structure is documented below. Changing this
     creates a new server.
+    
+      * `accessNetwork` (`bool`)
+      * `fixedIpV4` (`str`)
+      * `fixedIpV6` (`str`)
+      * `mac` (`str`)
+      * `name` (`str`) - A unique name for the resource.
+      * `port` (`str`)
+      * `uuid` (`str`)
     """
     personalities: pulumi.Output[list]
     """
     Customize the personality of an instance by
     defining one or more files and their contents. The personality structure
     is described below.
+    
+      * `content` (`str`)
+      * `file` (`str`)
     """
     power_state: pulumi.Output[str]
     """
@@ -114,6 +136,14 @@ class Instance(pulumi.CustomResource):
     """
     Provide the Nova scheduler with hints on how
     the instance should be launched. The available hints are described below.
+    
+      * `additionalProperties` (`dict`)
+      * `buildNearHostIp` (`str`)
+      * `differentHosts` (`list`)
+      * `group` (`str`)
+      * `queries` (`list`)
+      * `sameHosts` (`list`)
+      * `targetCell` (`str`)
     """
     security_groups: pulumi.Output[list]
     """
@@ -138,6 +168,8 @@ class Instance(pulumi.CustomResource):
     """
     Map of additional vendor-specific options.
     Supported options are described below.
+    
+      * `ignoreResizeConfirmation` (`bool`)
     """
     def __init__(__self__, resource_name, opts=None, access_ip_v4=None, access_ip_v6=None, admin_pass=None, availability_zone=None, block_devices=None, config_drive=None, flavor_id=None, flavor_name=None, force_delete=None, image_id=None, image_name=None, key_pair=None, metadata=None, name=None, networks=None, personalities=None, power_state=None, region=None, scheduler_hints=None, security_groups=None, stop_before_destroy=None, user_data=None, vendor_options=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -218,6 +250,47 @@ class Instance(pulumi.CustomResource):
                Changing this creates a new server.
         :param pulumi.Input[dict] vendor_options: Map of additional vendor-specific options.
                Supported options are described below.
+        
+        The **block_devices** object supports the following:
+        
+          * `bootIndex` (`pulumi.Input[float]`)
+          * `deleteOnTermination` (`pulumi.Input[bool]`)
+          * `destinationType` (`pulumi.Input[str]`)
+          * `deviceType` (`pulumi.Input[str]`)
+          * `diskBus` (`pulumi.Input[str]`)
+          * `guestFormat` (`pulumi.Input[str]`)
+          * `sourceType` (`pulumi.Input[str]`)
+          * `uuid` (`pulumi.Input[str]`)
+          * `volumeSize` (`pulumi.Input[float]`)
+        
+        The **networks** object supports the following:
+        
+          * `accessNetwork` (`pulumi.Input[bool]`)
+          * `fixedIpV4` (`pulumi.Input[str]`)
+          * `fixedIpV6` (`pulumi.Input[str]`)
+          * `mac` (`pulumi.Input[str]`)
+          * `name` (`pulumi.Input[str]`) - A unique name for the resource.
+          * `port` (`pulumi.Input[str]`)
+          * `uuid` (`pulumi.Input[str]`)
+        
+        The **personalities** object supports the following:
+        
+          * `content` (`pulumi.Input[str]`)
+          * `file` (`pulumi.Input[str]`)
+        
+        The **scheduler_hints** object supports the following:
+        
+          * `additionalProperties` (`pulumi.Input[dict]`)
+          * `buildNearHostIp` (`pulumi.Input[str]`)
+          * `differentHosts` (`pulumi.Input[list]`)
+          * `group` (`pulumi.Input[str]`)
+          * `queries` (`pulumi.Input[list]`)
+          * `sameHosts` (`pulumi.Input[list]`)
+          * `targetCell` (`pulumi.Input[str]`)
+        
+        The **vendor_options** object supports the following:
+        
+          * `ignoreResizeConfirmation` (`pulumi.Input[bool]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_instance_v2.html.markdown.
         """
@@ -273,6 +346,7 @@ class Instance(pulumi.CustomResource):
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -336,10 +410,51 @@ class Instance(pulumi.CustomResource):
                Changing this creates a new server.
         :param pulumi.Input[dict] vendor_options: Map of additional vendor-specific options.
                Supported options are described below.
+        
+        The **block_devices** object supports the following:
+        
+          * `bootIndex` (`pulumi.Input[float]`)
+          * `deleteOnTermination` (`pulumi.Input[bool]`)
+          * `destinationType` (`pulumi.Input[str]`)
+          * `deviceType` (`pulumi.Input[str]`)
+          * `diskBus` (`pulumi.Input[str]`)
+          * `guestFormat` (`pulumi.Input[str]`)
+          * `sourceType` (`pulumi.Input[str]`)
+          * `uuid` (`pulumi.Input[str]`)
+          * `volumeSize` (`pulumi.Input[float]`)
+        
+        The **networks** object supports the following:
+        
+          * `accessNetwork` (`pulumi.Input[bool]`)
+          * `fixedIpV4` (`pulumi.Input[str]`)
+          * `fixedIpV6` (`pulumi.Input[str]`)
+          * `mac` (`pulumi.Input[str]`)
+          * `name` (`pulumi.Input[str]`) - A unique name for the resource.
+          * `port` (`pulumi.Input[str]`)
+          * `uuid` (`pulumi.Input[str]`)
+        
+        The **personalities** object supports the following:
+        
+          * `content` (`pulumi.Input[str]`)
+          * `file` (`pulumi.Input[str]`)
+        
+        The **scheduler_hints** object supports the following:
+        
+          * `additionalProperties` (`pulumi.Input[dict]`)
+          * `buildNearHostIp` (`pulumi.Input[str]`)
+          * `differentHosts` (`pulumi.Input[list]`)
+          * `group` (`pulumi.Input[str]`)
+          * `queries` (`pulumi.Input[list]`)
+          * `sameHosts` (`pulumi.Input[list]`)
+          * `targetCell` (`pulumi.Input[str]`)
+        
+        The **vendor_options** object supports the following:
+        
+          * `ignoreResizeConfirmation` (`pulumi.Input[bool]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_instance_v2.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["access_ip_v4"] = access_ip_v4

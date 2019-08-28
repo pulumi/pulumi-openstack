@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class GetAuthScopeResult:
@@ -103,6 +104,12 @@ def get_auth_scope(name=None,region=None,opts=None):
     Use this data source to get authentication information about the current
     auth scope in use. This can be used as self-discovery or introspection of
     the username or project name currently in use.
+    
+    :param str name: The name of the scope. This is an arbitrary name which is
+           only used as a unique identifier so an actual token isn't used as the ID.
+    :param str region: The region in which to obtain the V3 Identity client.
+           A Identity client is needed to retrieve tokens IDs. If omitted, the
+           `region` argument of the provider is used.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_auth_scope_v3.html.markdown.
     """
@@ -111,7 +118,7 @@ def get_auth_scope(name=None,region=None,opts=None):
     __args__['name'] = name
     __args__['region'] = region
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:identity/getAuthScope:getAuthScope', __args__, opts=opts).value

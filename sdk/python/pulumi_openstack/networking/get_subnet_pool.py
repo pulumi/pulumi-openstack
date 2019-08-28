@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class GetSubnetPoolResult:
@@ -151,6 +152,25 @@ class AwaitableGetSubnetPoolResult(GetSubnetPoolResult):
 def get_subnet_pool(address_scope_id=None,default_prefixlen=None,default_quota=None,description=None,ip_version=None,is_default=None,max_prefixlen=None,min_prefixlen=None,name=None,project_id=None,region=None,shared=None,tags=None,opts=None):
     """
     Use this data source to get the ID of an available OpenStack subnetpool.
+    
+    :param str address_scope_id: The Neutron address scope that subnetpools
+           is assigned to.
+    :param float default_prefixlen: The size of the subnetpool default prefix
+           length.
+    :param float default_quota: The per-project quota on the prefix space that
+           can be allocated from the subnetpool for project subnets.
+    :param str description: The human-readable description for the subnetpool.
+    :param float ip_version: The IP protocol version.
+    :param bool is_default: Whether the subnetpool is default subnetpool or not.
+    :param float max_prefixlen: The size of the subnetpool max prefix length.
+    :param float min_prefixlen: The size of the subnetpool min prefix length.
+    :param str name: The name of the subnetpool.
+    :param str project_id: The owner of the subnetpool.
+    :param str region: The region in which to obtain the V2 Networking client.
+           A Networking client is needed to retrieve a subnetpool id. If omitted, the
+           `region` argument of the provider is used.
+    :param bool shared: Whether this subnetpool is shared across all projects.
+    :param list tags: The list of subnetpool tags to filter.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_subnetpool_v2.html.markdown.
     """
@@ -170,7 +190,7 @@ def get_subnet_pool(address_scope_id=None,default_prefixlen=None,default_quota=N
     __args__['shared'] = shared
     __args__['tags'] = tags
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:networking/getSubnetPool:getSubnetPool', __args__, opts=opts).value

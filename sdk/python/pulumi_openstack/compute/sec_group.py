@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class SecGroup(pulumi.CustomResource):
@@ -32,6 +33,14 @@ class SecGroup(pulumi.CustomResource):
     rule object structure is documented below. Changing this updates the
     security group rules. As shown in the example above, multiple rule blocks
     may be used.
+    
+      * `cidr` (`str`)
+      * `fromGroupId` (`str`)
+      * `fromPort` (`float`)
+      * `id` (`str`)
+      * `ipProtocol` (`str`)
+      * `self` (`bool`)
+      * `toPort` (`float`)
     """
     def __init__(__self__, resource_name, opts=None, description=None, name=None, region=None, rules=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -57,6 +66,16 @@ class SecGroup(pulumi.CustomResource):
                rule object structure is documented below. Changing this updates the
                security group rules. As shown in the example above, multiple rule blocks
                may be used.
+        
+        The **rules** object supports the following:
+        
+          * `cidr` (`pulumi.Input[str]`)
+          * `fromGroupId` (`pulumi.Input[str]`)
+          * `fromPort` (`pulumi.Input[float]`)
+          * `id` (`pulumi.Input[str]`)
+          * `ipProtocol` (`pulumi.Input[str]`)
+          * `self` (`pulumi.Input[bool]`)
+          * `toPort` (`pulumi.Input[float]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_secgroup_v2.html.markdown.
         """
@@ -94,6 +113,7 @@ class SecGroup(pulumi.CustomResource):
         """
         Get an existing SecGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -109,10 +129,20 @@ class SecGroup(pulumi.CustomResource):
                rule object structure is documented below. Changing this updates the
                security group rules. As shown in the example above, multiple rule blocks
                may be used.
+        
+        The **rules** object supports the following:
+        
+          * `cidr` (`pulumi.Input[str]`)
+          * `fromGroupId` (`pulumi.Input[str]`)
+          * `fromPort` (`pulumi.Input[float]`)
+          * `id` (`pulumi.Input[str]`)
+          * `ipProtocol` (`pulumi.Input[str]`)
+          * `self` (`pulumi.Input[bool]`)
+          * `toPort` (`pulumi.Input[float]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_secgroup_v2.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["description"] = description

@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class GetQosPolicyResult:
@@ -101,6 +102,16 @@ class AwaitableGetQosPolicyResult(GetQosPolicyResult):
 def get_qos_policy(description=None,is_default=None,name=None,project_id=None,region=None,shared=None,tags=None,opts=None):
     """
     Use this data source to get the ID of an available OpenStack QoS policy.
+    
+    :param str description: The human-readable description for the QoS policy.
+    :param bool is_default: Whether the QoS policy is default policy or not.
+    :param str name: The name of the QoS policy.
+    :param str project_id: The owner of the QoS policy.
+    :param str region: The region in which to obtain the V2 Networking client.
+           A Networking client is needed to retrieve a QoS policy ID. If omitted, the
+           `region` argument of the provider is used.
+    :param bool shared: Whether this QoS policy is shared across all projects.
+    :param list tags: The list of QoS policy tags to filter.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_qos_policy_v2.html.markdown.
     """
@@ -114,7 +125,7 @@ def get_qos_policy(description=None,is_default=None,name=None,project_id=None,re
     __args__['shared'] = shared
     __args__['tags'] = tags
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:networking/getQosPolicy:getQosPolicy', __args__, opts=opts).value

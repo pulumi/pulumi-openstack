@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class GetPolicyResult:
@@ -86,6 +87,13 @@ class AwaitableGetPolicyResult(GetPolicyResult):
 def get_policy(name=None,policy_id=None,region=None,tenant_id=None,opts=None):
     """
     Use this data source to get firewall policy information of an available OpenStack firewall policy.
+    
+    :param str name: The name of the firewall policy.
+    :param str policy_id: The ID of the firewall policy.
+    :param str region: The region in which to obtain the V2 Neutron client.
+           A Neutron client is needed to retrieve firewall policy ids. If omitted, the
+           `region` argument of the provider is used.
+    :param str tenant_id: The owner of the firewall policy.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/fw_policy_v1.html.markdown.
     """
@@ -96,7 +104,7 @@ def get_policy(name=None,policy_id=None,region=None,tenant_id=None,opts=None):
     __args__['region'] = region
     __args__['tenantId'] = tenant_id
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:firewall/getPolicy:getPolicy', __args__, opts=opts).value

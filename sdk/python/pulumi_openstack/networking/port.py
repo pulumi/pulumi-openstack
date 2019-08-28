@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class Port(pulumi.CustomResource):
@@ -35,11 +36,21 @@ class Port(pulumi.CustomResource):
     An IP/MAC Address pair of additional IP
     addresses that can be active on this port. The structure is described
     below.
+    
+      * `ip_address` (`str`)
+      * `mac_address` (`str`) - Specify a specific MAC address for the port. Changing
+        this creates a new port.
     """
     binding: pulumi.Output[dict]
     """
     The port binding allows to specify binding information
     for the port. The structure is described below.
+    
+      * `hostId` (`str`)
+      * `profile` (`str`)
+      * `vifDetails` (`dict`)
+      * `vifType` (`str`)
+      * `vnicType` (`str`)
     """
     description: pulumi.Output[str]
     """
@@ -70,11 +81,19 @@ class Port(pulumi.CustomResource):
     An extra DHCP option that needs to be configured
     on the port. The structure is described below. Can be specified multiple
     times.
+    
+      * `ip_version` (`float`)
+      * `name` (`str`) - A unique name for the port. Changing this
+        updates the `name` of an existing port.
+      * `value` (`str`)
     """
     fixed_ips: pulumi.Output[list]
     """
     An array of desired IPs for
     this port. The structure is described below.
+    
+      * `ip_address` (`str`)
+      * `subnet_id` (`str`)
     """
     mac_address: pulumi.Output[str]
     """
@@ -213,6 +232,32 @@ class Port(pulumi.CustomResource):
         :param pulumi.Input[str] tenant_id: The owner of the Port. Required if admin wants
                to create a port for another tenant. Changing this creates a new port.
         :param pulumi.Input[dict] value_specs: Map of additional options.
+        
+        The **allowed_address_pairs** object supports the following:
+        
+          * `ip_address` (`pulumi.Input[str]`)
+          * `mac_address` (`pulumi.Input[str]`) - Specify a specific MAC address for the port. Changing
+            this creates a new port.
+        
+        The **binding** object supports the following:
+        
+          * `hostId` (`pulumi.Input[str]`)
+          * `profile` (`pulumi.Input[str]`)
+          * `vifDetails` (`pulumi.Input[dict]`)
+          * `vifType` (`pulumi.Input[str]`)
+          * `vnicType` (`pulumi.Input[str]`)
+        
+        The **extra_dhcp_options** object supports the following:
+        
+          * `ip_version` (`pulumi.Input[float]`)
+          * `name` (`pulumi.Input[str]`) - A unique name for the port. Changing this
+            updates the `name` of an existing port.
+          * `value` (`pulumi.Input[str]`)
+        
+        The **fixed_ips** object supports the following:
+        
+          * `ip_address` (`pulumi.Input[str]`)
+          * `subnet_id` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_port_v2.html.markdown.
         """
@@ -271,6 +316,7 @@ class Port(pulumi.CustomResource):
         """
         Get an existing Port resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -335,10 +381,36 @@ class Port(pulumi.CustomResource):
         :param pulumi.Input[str] tenant_id: The owner of the Port. Required if admin wants
                to create a port for another tenant. Changing this creates a new port.
         :param pulumi.Input[dict] value_specs: Map of additional options.
+        
+        The **allowed_address_pairs** object supports the following:
+        
+          * `ip_address` (`pulumi.Input[str]`)
+          * `mac_address` (`pulumi.Input[str]`) - Specify a specific MAC address for the port. Changing
+            this creates a new port.
+        
+        The **binding** object supports the following:
+        
+          * `hostId` (`pulumi.Input[str]`)
+          * `profile` (`pulumi.Input[str]`)
+          * `vifDetails` (`pulumi.Input[dict]`)
+          * `vifType` (`pulumi.Input[str]`)
+          * `vnicType` (`pulumi.Input[str]`)
+        
+        The **extra_dhcp_options** object supports the following:
+        
+          * `ip_version` (`pulumi.Input[float]`)
+          * `name` (`pulumi.Input[str]`) - A unique name for the port. Changing this
+            updates the `name` of an existing port.
+          * `value` (`pulumi.Input[str]`)
+        
+        The **fixed_ips** object supports the following:
+        
+          * `ip_address` (`pulumi.Input[str]`)
+          * `subnet_id` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_port_v2.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["admin_state_up"] = admin_state_up

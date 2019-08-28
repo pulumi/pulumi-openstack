@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -89,7 +91,7 @@ export class Pool extends pulumi.CustomResource {
      * whether connections in the same session will be processed by the same Pool
      * member or not. Changing this creates a new pool.
      */
-    public readonly persistence!: pulumi.Output<{ cookieName?: string, type: string }>;
+    public readonly persistence!: pulumi.Output<outputs.loadbalancer.PoolPersistence>;
     /**
      * See Argument Reference above.
      */
@@ -200,7 +202,7 @@ export interface PoolState {
      * whether connections in the same session will be processed by the same Pool
      * member or not. Changing this creates a new pool.
      */
-    readonly persistence?: pulumi.Input<{ cookieName?: pulumi.Input<string>, type: pulumi.Input<string> }>;
+    readonly persistence?: pulumi.Input<inputs.loadbalancer.PoolPersistence>;
     /**
      * See Argument Reference above.
      */
@@ -260,7 +262,7 @@ export interface PoolArgs {
      * whether connections in the same session will be processed by the same Pool
      * member or not. Changing this creates a new pool.
      */
-    readonly persistence?: pulumi.Input<{ cookieName?: pulumi.Input<string>, type: pulumi.Input<string> }>;
+    readonly persistence?: pulumi.Input<inputs.loadbalancer.PoolPersistence>;
     /**
      * See Argument Reference above.
      */

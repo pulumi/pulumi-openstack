@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class IkePolicy(pulumi.CustomResource):
@@ -36,6 +37,9 @@ class IkePolicy(pulumi.CustomResource):
     Default is seconds.
     - `value` - (Optional) The value for the lifetime of the security association. Must be a positive integer.
     Default is 3600.
+    
+      * `units` (`str`)
+      * `value` (`float`)
     """
     name: pulumi.Output[str]
     """
@@ -100,6 +104,11 @@ class IkePolicy(pulumi.CustomResource):
         :param pulumi.Input[str] tenant_id: The owner of the policy. Required if admin wants to
                create a service for another policy. Changing this creates a new policy.
         :param pulumi.Input[dict] value_specs: Map of additional options.
+        
+        The **lifetimes** object supports the following:
+        
+          * `units` (`pulumi.Input[str]`)
+          * `value` (`pulumi.Input[float]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/vpnaas_ike_policy_v2.html.markdown.
         """
@@ -142,6 +151,7 @@ class IkePolicy(pulumi.CustomResource):
         """
         Get an existing IkePolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -171,10 +181,15 @@ class IkePolicy(pulumi.CustomResource):
         :param pulumi.Input[str] tenant_id: The owner of the policy. Required if admin wants to
                create a service for another policy. Changing this creates a new policy.
         :param pulumi.Input[dict] value_specs: Map of additional options.
+        
+        The **lifetimes** object supports the following:
+        
+          * `units` (`pulumi.Input[str]`)
+          * `value` (`pulumi.Input[float]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/vpnaas_ike_policy_v2.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["auth_algorithm"] = auth_algorithm

@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class GetSecGroupResult:
@@ -68,6 +69,15 @@ class AwaitableGetSecGroupResult(GetSecGroupResult):
 def get_sec_group(description=None,name=None,region=None,secgroup_id=None,tags=None,tenant_id=None,opts=None):
     """
     Use this data source to get the ID of an available OpenStack security group.
+    
+    :param str description: Human-readable description the the subnet.
+    :param str name: The name of the security group.
+    :param str region: The region in which to obtain the V2 Neutron client.
+           A Neutron client is needed to retrieve security groups ids. If omitted, the
+           `region` argument of the provider is used.
+    :param str secgroup_id: The ID of the security group.
+    :param list tags: The list of security group tags to filter.
+    :param str tenant_id: The owner of the security group.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_secgroup_v2.html.markdown.
     """
@@ -80,7 +90,7 @@ def get_sec_group(description=None,name=None,region=None,secgroup_id=None,tags=N
     __args__['tags'] = tags
     __args__['tenantId'] = tenant_id
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:networking/getSecGroup:getSecGroup', __args__, opts=opts).value

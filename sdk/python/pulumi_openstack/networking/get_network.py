@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class GetNetworkResult:
@@ -129,6 +130,22 @@ class AwaitableGetNetworkResult(GetNetworkResult):
 def get_network(description=None,external=None,matching_subnet_cidr=None,mtu=None,name=None,network_id=None,region=None,status=None,tags=None,tenant_id=None,transparent_vlan=None,opts=None):
     """
     Use this data source to get the ID of an available OpenStack network.
+    
+    :param str description: Human-readable description of the network.
+    :param bool external: The external routing facility of the network.
+    :param str matching_subnet_cidr: The CIDR of a subnet within the network.
+    :param float mtu: The network MTU to filter. Available, when Neutron `net-mtu`
+           extension is enabled.
+    :param str name: The name of the network.
+    :param str network_id: The ID of the network.
+    :param str region: The region in which to obtain the V2 Neutron client.
+           A Neutron client is needed to retrieve networks ids. If omitted, the
+           `region` argument of the provider is used.
+    :param str status: The status of the network.
+    :param list tags: The list of network tags to filter.
+    :param str tenant_id: The owner of the network.
+    :param bool transparent_vlan: The VLAN transparent attribute for the
+           network.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_network_v2.html.markdown.
     """
@@ -146,7 +163,7 @@ def get_network(description=None,external=None,matching_subnet_cidr=None,mtu=Non
     __args__['tenantId'] = tenant_id
     __args__['transparentVlan'] = transparent_vlan
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:networking/getNetwork:getNetwork', __args__, opts=opts).value

@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -72,7 +74,7 @@ export class IkePolicy extends pulumi.CustomResource {
      * - `value` - (Optional) The value for the lifetime of the security association. Must be a positive integer.
      * Default is 3600.
      */
-    public readonly lifetimes!: pulumi.Output<{ units: string, value: number }[]>;
+    public readonly lifetimes!: pulumi.Output<outputs.vpnaas.IkePolicyLifetime[]>;
     /**
      * The name of the policy. Changing this updates the name of
      * the existing policy.
@@ -184,7 +186,7 @@ export interface IkePolicyState {
      * - `value` - (Optional) The value for the lifetime of the security association. Must be a positive integer.
      * Default is 3600.
      */
-    readonly lifetimes?: pulumi.Input<pulumi.Input<{ units?: pulumi.Input<string>, value?: pulumi.Input<number> }>[]>;
+    readonly lifetimes?: pulumi.Input<pulumi.Input<inputs.vpnaas.IkePolicyLifetime>[]>;
     /**
      * The name of the policy. Changing this updates the name of
      * the existing policy.
@@ -249,7 +251,7 @@ export interface IkePolicyArgs {
      * - `value` - (Optional) The value for the lifetime of the security association. Must be a positive integer.
      * Default is 3600.
      */
-    readonly lifetimes?: pulumi.Input<pulumi.Input<{ units?: pulumi.Input<string>, value?: pulumi.Input<number> }>[]>;
+    readonly lifetimes?: pulumi.Input<pulumi.Input<inputs.vpnaas.IkePolicyLifetime>[]>;
     /**
      * The name of the policy. Changing this updates the name of
      * the existing policy.

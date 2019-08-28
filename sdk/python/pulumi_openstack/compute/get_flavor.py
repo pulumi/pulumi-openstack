@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class GetFlavorResult:
@@ -84,6 +85,21 @@ class AwaitableGetFlavorResult(GetFlavorResult):
 def get_flavor(disk=None,flavor_id=None,min_disk=None,min_ram=None,name=None,ram=None,region=None,rx_tx_factor=None,swap=None,vcpus=None,opts=None):
     """
     Use this data source to get the ID of an available OpenStack flavor.
+    
+    :param float disk: The exact amount of disk (in gigabytes).
+    :param str flavor_id: The ID of the flavor. Conflicts with the `name`,
+           `min_ram` and `min_disk`
+    :param float min_disk: The minimum amount of disk (in gigabytes). Conflicts
+           with the `flavor_id`.
+    :param float min_ram: The minimum amount of RAM (in megabytes). Conflicts
+           with the `flavor_id`.
+    :param str name: The name of the flavor. Conflicts with the `flavor_id`.
+    :param float ram: The exact amount of RAM (in megabytes).
+    :param str region: The region in which to obtain the V2 Compute client.
+           If omitted, the `region` argument of the provider is used.
+    :param float rx_tx_factor: The `rx_tx_factor` of the flavor.
+    :param float swap: The amount of swap (in gigabytes).
+    :param float vcpus: The amount of VCPUs.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/compute_flavor_v2.html.markdown.
     """
@@ -100,7 +116,7 @@ def get_flavor(disk=None,flavor_id=None,min_disk=None,min_ram=None,name=None,ram
     __args__['swap'] = swap
     __args__['vcpus'] = vcpus
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:compute/getFlavor:getFlavor', __args__, opts=opts).value

@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class GetSnapshotResult:
@@ -90,6 +91,13 @@ class AwaitableGetSnapshotResult(GetSnapshotResult):
 def get_snapshot(description=None,name=None,region=None,share_id=None,status=None,opts=None):
     """
     Use this data source to get the ID of an available Shared File System snapshot.
+    
+    :param str description: The human-readable description of the snapshot.
+    :param str name: The name of the snapshot.
+    :param str region: The region in which to obtain the V2 Shared File System client.
+    :param str status: A snapshot status filter. A valid value is `available`, `error`,
+           `creating`, `deleting`, `manage_starting`, `manage_error`, `unmanage_starting`,
+           `unmanage_error` or `error_deleting`.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/sharedfilesystem_snapshot_v2.html.markdown.
     """
@@ -101,7 +109,7 @@ def get_snapshot(description=None,name=None,region=None,share_id=None,status=Non
     __args__['shareId'] = share_id
     __args__['status'] = status
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:sharedfilesystem/getSnapshot:getSnapshot', __args__, opts=opts).value
