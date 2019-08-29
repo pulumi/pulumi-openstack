@@ -4,13 +4,16 @@
 
 # Export this package's modules as members:
 from .application_credential import *
+from .endpoint_v3 import *
 from .project import *
 from .role_assignment import *
 from .role import *
+from .service_v3 import *
 from .user import *
 from .get_auth_scope import *
 from .get_endpoint import *
 from .get_group import *
 from .get_project import *
 from .get_role import *
+from .get_service import *
 from .get_user import *

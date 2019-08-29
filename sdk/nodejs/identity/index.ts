@@ -3,13 +3,16 @@
 
 // Export members:
 export * from "./applicationCredential";
+export * from "./endpointV3";
 export * from "./getAuthScope";
 export * from "./getEndpoint";
 export * from "./getGroup";
 export * from "./getProject";
 export * from "./getRole";
+export * from "./getService";
 export * from "./getUser";
 export * from "./project";
 export * from "./role";
 export * from "./roleAssignment";
+export * from "./serviceV3";
 export * from "./user";

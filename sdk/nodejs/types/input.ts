@@ -132,6 +132,29 @@ export namespace identity {
     }
 }
 
+export namespace keymanager {
+    export interface ContainerV1Consumer {
+        /**
+         * Human-readable name for the Container. Does not have
+         * to be unique.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * The consumer URL.
+         */
+        url?: pulumi.Input<string>;
+    }
+
+    export interface ContainerV1SecretRef {
+        /**
+         * Human-readable name for the Container. Does not have
+         * to be unique.
+         */
+        name?: pulumi.Input<string>;
+        secretRef: pulumi.Input<string>;
+    }
+}
+
 export namespace loadbalancer {
     export interface PoolPersistence {
         /**

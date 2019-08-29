@@ -2,7 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Regenerate SDKs based on v1.21.1 of the OpenStack Terraform Provider
 
 ---
 

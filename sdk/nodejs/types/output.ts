@@ -143,6 +143,29 @@ export namespace identity {
     }
 }
 
+export namespace keymanager {
+    export interface ContainerV1Consumer {
+        /**
+         * Human-readable name for the Container. Does not have
+         * to be unique.
+         */
+        name: string;
+        /**
+         * The consumer URL.
+         */
+        url: string;
+    }
+
+    export interface ContainerV1SecretRef {
+        /**
+         * Human-readable name for the Container. Does not have
+         * to be unique.
+         */
+        name?: string;
+        secretRef: string;
+    }
+}
+
 export namespace loadbalancer {
     export interface PoolPersistence {
         /**

@@ -13,6 +13,7 @@ from .qos_bandwidth_limit_rule import *
 from .qos_dscp_marking_rule import *
 from .qos_minimum_bandwidth_rule import *
 from .qos_policy import *
+from .rbac_policy_v2 import *
 from .router_interface import *
 from .router_route import *
 from .router import *
