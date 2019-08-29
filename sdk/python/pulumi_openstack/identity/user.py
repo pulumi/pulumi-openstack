@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class User(pulumi.CustomResource):
@@ -56,6 +57,8 @@ class User(pulumi.CustomResource):
     The structure is documented below. Please see the
     [Ocata release notes](https://docs.openstack.org/releasenotes/keystone/ocata.html)
     for more information on how to use mulit-factor rules.
+    
+      * `rules` (`list`)
     """
     name: pulumi.Output[str]
     """
@@ -103,6 +106,10 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region in which to obtain the V3 Keystone client.
                If omitted, the `region` argument of the provider is used. Changing this
                creates a new User.
+        
+        The **multi_factor_auth_rules** object supports the following:
+        
+          * `rules` (`pulumi.Input[list]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/identity_user_v3.html.markdown.
         """
@@ -147,6 +154,7 @@ class User(pulumi.CustomResource):
         """
         Get an existing User resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -173,10 +181,14 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region in which to obtain the V3 Keystone client.
                If omitted, the `region` argument of the provider is used. Changing this
                creates a new User.
+        
+        The **multi_factor_auth_rules** object supports the following:
+        
+          * `rules` (`pulumi.Input[list]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/identity_user_v3.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["default_project_id"] = default_project_id

@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class GetEndpointResult:
@@ -88,6 +89,17 @@ def get_endpoint(endpoint_region=None,interface=None,name=None,region=None,servi
     Use this data source to get the ID of an OpenStack endpoint.
     
     > **Note:** This usually requires admin privileges.
+    
+    :param str endpoint_region: The region the endpoint is assigned to. The
+           `region` and `endpoint_region` can be different.
+    :param str interface: The endpoint interface. Valid values are `public`,
+           `internal`, and `admin`. Default value is `public`
+    :param str name: The name of the endpoint.
+    :param str region: The region in which to obtain the V3 Keystone client.
+           If omitted, the `region` argument of the provider is used.
+    :param str service_id: The service id this endpoint belongs to.
+    :param str service_name: The service name of the endpoint.
+    :param str service_type: The service type of the endpoint.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_endpoint_v3.html.markdown.
     """
@@ -101,7 +113,7 @@ def get_endpoint(endpoint_region=None,interface=None,name=None,region=None,servi
     __args__['serviceName'] = service_name
     __args__['serviceType'] = service_type
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:identity/getEndpoint:getEndpoint', __args__, opts=opts).value

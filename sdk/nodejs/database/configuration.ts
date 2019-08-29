@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -60,12 +62,12 @@ export class Configuration extends pulumi.CustomResource {
     /**
      * An array of configuration parameter name and value. Can be specified multiple times. The configuration object structure is documented below.
      */
-    public readonly configurations!: pulumi.Output<{ name: string, value: string }[] | undefined>;
+    public readonly configurations!: pulumi.Output<outputs.database.ConfigurationConfiguration[] | undefined>;
     /**
      * An array of database engine type and version. The datastore
      * object structure is documented below. Changing this creates resource.
      */
-    public readonly datastore!: pulumi.Output<{ type: string, version: string }>;
+    public readonly datastore!: pulumi.Output<outputs.database.ConfigurationDatastore>;
     /**
      * Description of the resource.
      */
@@ -129,12 +131,12 @@ export interface ConfigurationState {
     /**
      * An array of configuration parameter name and value. Can be specified multiple times. The configuration object structure is documented below.
      */
-    readonly configurations?: pulumi.Input<pulumi.Input<{ name: pulumi.Input<string>, value: pulumi.Input<string> }>[]>;
+    readonly configurations?: pulumi.Input<pulumi.Input<inputs.database.ConfigurationConfiguration>[]>;
     /**
      * An array of database engine type and version. The datastore
      * object structure is documented below. Changing this creates resource.
      */
-    readonly datastore?: pulumi.Input<{ type: pulumi.Input<string>, version: pulumi.Input<string> }>;
+    readonly datastore?: pulumi.Input<inputs.database.ConfigurationDatastore>;
     /**
      * Description of the resource.
      */
@@ -157,12 +159,12 @@ export interface ConfigurationArgs {
     /**
      * An array of configuration parameter name and value. Can be specified multiple times. The configuration object structure is documented below.
      */
-    readonly configurations?: pulumi.Input<pulumi.Input<{ name: pulumi.Input<string>, value: pulumi.Input<string> }>[]>;
+    readonly configurations?: pulumi.Input<pulumi.Input<inputs.database.ConfigurationConfiguration>[]>;
     /**
      * An array of database engine type and version. The datastore
      * object structure is documented below. Changing this creates resource.
      */
-    readonly datastore: pulumi.Input<{ type: pulumi.Input<string>, version: pulumi.Input<string> }>;
+    readonly datastore: pulumi.Input<inputs.database.ConfigurationDatastore>;
     /**
      * Description of the resource.
      */

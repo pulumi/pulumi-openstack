@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class GetImageResult:
@@ -172,6 +173,26 @@ class AwaitableGetImageResult(GetImageResult):
 def get_image(member_status=None,most_recent=None,name=None,owner=None,properties=None,region=None,size_max=None,size_min=None,sort_direction=None,sort_key=None,tag=None,visibility=None,opts=None):
     """
     Use this data source to get the ID of an available OpenStack image.
+    
+    :param str member_status: The status of the image. Must be one of
+           "accepted", "pending", "rejected", or "all".
+    :param bool most_recent: If more than one result is returned, use the most
+           recent image.
+    :param str name: The name of the image.
+    :param str owner: The owner (UUID) of the image.
+    :param dict properties: a map of key/value pairs to match an image with.
+           All specified properties must be matched.
+    :param str region: The region in which to obtain the V2 Glance client.
+           A Glance client is needed to create an Image that can be used with
+           a compute instance. If omitted, the `region` argument of the provider
+           is used.
+    :param float size_max: The maximum size (in bytes) of the image to return.
+    :param float size_min: The minimum size (in bytes) of the image to return.
+    :param str sort_direction: Order the results in either `asc` or `desc`.
+    :param str sort_key: Sort images based on a certain key. Defaults to `name`.
+    :param str tag: Search for images with a specific tag.
+    :param str visibility: The visibility of the image. Must be one of
+           "public", "private", "community", or "shared". Defaults to "private".
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/images_image_v2.html.markdown.
     """
@@ -190,7 +211,7 @@ def get_image(member_status=None,most_recent=None,name=None,owner=None,propertie
     __args__['tag'] = tag
     __args__['visibility'] = visibility
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:images/getImage:getImage', __args__, opts=opts).value

@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class GetSubnetResult:
@@ -128,6 +129,26 @@ class AwaitableGetSubnetResult(GetSubnetResult):
 def get_subnet(cidr=None,description=None,dhcp_disabled=None,dhcp_enabled=None,gateway_ip=None,ip_version=None,ipv6_address_mode=None,ipv6_ra_mode=None,name=None,network_id=None,region=None,subnet_id=None,subnetpool_id=None,tags=None,tenant_id=None,opts=None):
     """
     Use this data source to get the ID of an available OpenStack subnet.
+    
+    :param str cidr: The CIDR of the subnet.
+    :param str description: Human-readable description for the subnet.
+    :param bool dhcp_disabled: If the subnet has DHCP disabled.
+    :param bool dhcp_enabled: If the subnet has DHCP enabled.
+    :param str gateway_ip: The IP of the subnet's gateway.
+    :param float ip_version: The IP version of the subnet (either 4 or 6).
+    :param str ipv6_address_mode: The IPv6 address mode. Valid values are
+           `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.
+    :param str ipv6_ra_mode: The IPv6 Router Advertisement mode. Valid values
+           are `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.
+    :param str name: The name of the subnet.
+    :param str network_id: The ID of the network the subnet belongs to.
+    :param str region: The region in which to obtain the V2 Neutron client.
+           A Neutron client is needed to retrieve subnet ids. If omitted, the
+           `region` argument of the provider is used.
+    :param str subnet_id: The ID of the subnet.
+    :param str subnetpool_id: The ID of the subnetpool associated with the subnet.
+    :param list tags: The list of subnet tags to filter.
+    :param str tenant_id: The owner of the subnet.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_subnet_v2.html.markdown.
     """
@@ -149,7 +170,7 @@ def get_subnet(cidr=None,description=None,dhcp_disabled=None,dhcp_enabled=None,g
     __args__['tags'] = tags
     __args__['tenantId'] = tenant_id
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:networking/getSubnet:getSubnet', __args__, opts=opts).value

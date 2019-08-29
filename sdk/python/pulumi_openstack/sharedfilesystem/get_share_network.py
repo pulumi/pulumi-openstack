@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class GetShareNetworkResult:
@@ -115,6 +116,20 @@ class AwaitableGetShareNetworkResult(GetShareNetworkResult):
 def get_share_network(description=None,ip_version=None,name=None,network_type=None,neutron_net_id=None,neutron_subnet_id=None,region=None,security_service_id=None,segmentation_id=None,opts=None):
     """
     Use this data source to get the ID of an available Shared File System share network.
+    
+    :param str description: The human-readable description of the share network.
+    :param float ip_version: The IP version of the share network. Can either be 4 or 6.
+    :param str name: The name of the share network.
+    :param str network_type: The share network type. Can either be VLAN, VXLAN,
+           GRE, or flat.
+    :param str neutron_net_id: The neutron network UUID of the share network.
+    :param str neutron_subnet_id: The neutron subnet UUID of the share network.
+    :param str region: The region in which to obtain the V2 Shared File System client.
+           A Shared File System client is needed to read a share network. If omitted, the
+           `region` argument of the provider is used.
+    :param str security_service_id: The security service IDs associated with
+           the share network.
+    :param float segmentation_id: The share network segmentation ID.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/sharedfilesystem_sharenetwork_v2.html.markdown.
     """
@@ -130,7 +145,7 @@ def get_share_network(description=None,ip_version=None,name=None,network_type=No
     __args__['securityServiceId'] = security_service_id
     __args__['segmentationId'] = segmentation_id
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:sharedfilesystem/getShareNetwork:getShareNetwork', __args__, opts=opts).value

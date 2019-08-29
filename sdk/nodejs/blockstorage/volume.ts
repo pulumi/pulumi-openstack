@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -54,7 +56,7 @@ export class Volume extends pulumi.CustomResource {
      * display the Attachment ID, Instance ID, and the Device as the Instance
      * sees it.
      */
-    public /*out*/ readonly attachments!: pulumi.Output<{ device: string, id: string, instanceId: string }[]>;
+    public /*out*/ readonly attachments!: pulumi.Output<outputs.blockstorage.VolumeAttachment[]>;
     /**
      * The availability zone for the volume.
      * Changing this creates a new volume.
@@ -193,7 +195,7 @@ export interface VolumeState {
      * display the Attachment ID, Instance ID, and the Device as the Instance
      * sees it.
      */
-    readonly attachments?: pulumi.Input<pulumi.Input<{ device?: pulumi.Input<string>, id?: pulumi.Input<string>, instanceId?: pulumi.Input<string> }>[]>;
+    readonly attachments?: pulumi.Input<pulumi.Input<inputs.blockstorage.VolumeAttachment>[]>;
     /**
      * The availability zone for the volume.
      * Changing this creates a new volume.

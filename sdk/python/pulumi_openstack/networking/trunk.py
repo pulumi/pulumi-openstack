@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class Trunk(pulumi.CustomResource):
@@ -47,6 +48,12 @@ class Trunk(pulumi.CustomResource):
     """
     The set of ports that will be made subports of the trunk.
     The structure of each subport is described below.
+    
+      * `port_id` (`str`) - The ID of the port to be used as the parent port of the
+        trunk. This is the port that should be used as the compute instance network
+        port. Changing this creates a new trunk.
+      * `segmentationId` (`float`)
+      * `segmentationType` (`str`)
     """
     tags: pulumi.Output[list]
     """
@@ -82,6 +89,14 @@ class Trunk(pulumi.CustomResource):
         :param pulumi.Input[list] tags: A set of string tags for the port.
         :param pulumi.Input[str] tenant_id: The owner of the Trunk. Required if admin wants
                to create a trunk on behalf of another tenant. Changing this creates a new trunk.
+        
+        The **sub_ports** object supports the following:
+        
+          * `port_id` (`pulumi.Input[str]`) - The ID of the port to be used as the parent port of the
+            trunk. This is the port that should be used as the compute instance network
+            port. Changing this creates a new trunk.
+          * `segmentationId` (`pulumi.Input[float]`)
+          * `segmentationType` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_trunk_v2.html.markdown.
         """
@@ -124,6 +139,7 @@ class Trunk(pulumi.CustomResource):
         """
         Get an existing Trunk resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -148,10 +164,18 @@ class Trunk(pulumi.CustomResource):
         :param pulumi.Input[list] tags: A set of string tags for the port.
         :param pulumi.Input[str] tenant_id: The owner of the Trunk. Required if admin wants
                to create a trunk on behalf of another tenant. Changing this creates a new trunk.
+        
+        The **sub_ports** object supports the following:
+        
+          * `port_id` (`pulumi.Input[str]`) - The ID of the port to be used as the parent port of the
+            trunk. This is the port that should be used as the compute instance network
+            port. Changing this creates a new trunk.
+          * `segmentationId` (`pulumi.Input[float]`)
+          * `segmentationType` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_trunk_v2.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["admin_state_up"] = admin_state_up

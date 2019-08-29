@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class GetFloatingIpResult:
@@ -89,6 +90,18 @@ class AwaitableGetFloatingIpResult(GetFloatingIpResult):
 def get_floating_ip(address=None,description=None,fixed_ip=None,pool=None,port_id=None,region=None,status=None,tags=None,tenant_id=None,opts=None):
     """
     Use this data source to get the ID of an available OpenStack floating IP.
+    
+    :param str address: The IP address of the floating IP.
+    :param str description: Human-readable description of the floating IP.
+    :param str fixed_ip: The specific IP address of the internal port which should be associated with the floating IP.
+    :param str pool: The name of the pool from which the floating IP belongs to.
+    :param str port_id: The ID of the port the floating IP is attached.
+    :param str region: The region in which to obtain the V2 Neutron client.
+           A Neutron client is needed to retrieve floating IP ids. If omitted, the
+           `region` argument of the provider is used.
+    :param str status: status of the floating IP (ACTIVE/DOWN).
+    :param list tags: The list of floating IP tags to filter.
+    :param str tenant_id: The owner of the floating IP.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_floatingip_v2.html.markdown.
     """
@@ -104,7 +117,7 @@ def get_floating_ip(address=None,description=None,fixed_ip=None,pool=None,port_i
     __args__['tags'] = tags
     __args__['tenantId'] = tenant_id
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:networking/getFloatingIp:getFloatingIp', __args__, opts=opts).value

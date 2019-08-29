@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -116,7 +118,7 @@ export class User extends pulumi.CustomResource {
      * [Ocata release notes](https://docs.openstack.org/releasenotes/keystone/ocata.html)
      * for more information on how to use mulit-factor rules.
      */
-    public readonly multiFactorAuthRules!: pulumi.Output<{ rules: string[] }[] | undefined>;
+    public readonly multiFactorAuthRules!: pulumi.Output<outputs.identity.UserMultiFactorAuthRule[] | undefined>;
     /**
      * The name of the user.
      */
@@ -235,7 +237,7 @@ export interface UserState {
      * [Ocata release notes](https://docs.openstack.org/releasenotes/keystone/ocata.html)
      * for more information on how to use mulit-factor rules.
      */
-    readonly multiFactorAuthRules?: pulumi.Input<pulumi.Input<{ rules: pulumi.Input<pulumi.Input<string>[]> }>[]>;
+    readonly multiFactorAuthRules?: pulumi.Input<pulumi.Input<inputs.identity.UserMultiFactorAuthRule>[]>;
     /**
      * The name of the user.
      */
@@ -303,7 +305,7 @@ export interface UserArgs {
      * [Ocata release notes](https://docs.openstack.org/releasenotes/keystone/ocata.html)
      * for more information on how to use mulit-factor rules.
      */
-    readonly multiFactorAuthRules?: pulumi.Input<pulumi.Input<{ rules: pulumi.Input<pulumi.Input<string>[]> }>[]>;
+    readonly multiFactorAuthRules?: pulumi.Input<pulumi.Input<inputs.identity.UserMultiFactorAuthRule>[]>;
     /**
      * The name of the user.
      */

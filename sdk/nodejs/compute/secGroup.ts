@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -118,7 +120,7 @@ export class SecGroup extends pulumi.CustomResource {
      * security group rules. As shown in the example above, multiple rule blocks
      * may be used.
      */
-    public readonly rules!: pulumi.Output<{ cidr?: string, fromGroupId?: string, fromPort: number, id: string, ipProtocol: string, self?: boolean, toPort: number }[]>;
+    public readonly rules!: pulumi.Output<outputs.compute.SecGroupRule[]>;
 
     /**
      * Create a SecGroup resource with the given unique name, arguments, and options.
@@ -184,7 +186,7 @@ export interface SecGroupState {
      * security group rules. As shown in the example above, multiple rule blocks
      * may be used.
      */
-    readonly rules?: pulumi.Input<pulumi.Input<{ cidr?: pulumi.Input<string>, fromGroupId?: pulumi.Input<string>, fromPort: pulumi.Input<number>, id?: pulumi.Input<string>, ipProtocol: pulumi.Input<string>, self?: pulumi.Input<boolean>, toPort: pulumi.Input<number> }>[]>;
+    readonly rules?: pulumi.Input<pulumi.Input<inputs.compute.SecGroupRule>[]>;
 }
 
 /**
@@ -214,5 +216,5 @@ export interface SecGroupArgs {
      * security group rules. As shown in the example above, multiple rule blocks
      * may be used.
      */
-    readonly rules?: pulumi.Input<pulumi.Input<{ cidr?: pulumi.Input<string>, fromGroupId?: pulumi.Input<string>, fromPort: pulumi.Input<number>, id?: pulumi.Input<string>, ipProtocol: pulumi.Input<string>, self?: pulumi.Input<boolean>, toPort: pulumi.Input<number> }>[]>;
+    readonly rules?: pulumi.Input<pulumi.Input<inputs.compute.SecGroupRule>[]>;
 }

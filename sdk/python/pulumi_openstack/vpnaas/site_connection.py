@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class SiteConnection(pulumi.CustomResource):
@@ -25,6 +26,10 @@ class SiteConnection(pulumi.CustomResource):
     - `action` - (Optional) The dead peer detection (DPD) action.
     A valid value is clear, hold, restart, disabled, or restart-by-peer.
     Default value is hold.
+    
+      * `action` (`str`)
+      * `interval` (`float`)
+      * `timeout` (`float`)
     """
     ikepolicy_id: pulumi.Output[str]
     """
@@ -150,6 +155,12 @@ class SiteConnection(pulumi.CustomResource):
                create a connection for another project. Changing this creates a new connection.
         :param pulumi.Input[dict] value_specs: Map of additional options.
         :param pulumi.Input[str] vpnservice_id: The ID of the VPN service. Changing this creates a new connection.
+        
+        The **dpds** object supports the following:
+        
+          * `action` (`pulumi.Input[str]`)
+          * `interval` (`pulumi.Input[float]`)
+          * `timeout` (`pulumi.Input[float]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/vpnaas_site_connection_v2.html.markdown.
         """
@@ -212,6 +223,7 @@ class SiteConnection(pulumi.CustomResource):
         """
         Get an existing SiteConnection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -254,10 +266,16 @@ class SiteConnection(pulumi.CustomResource):
                create a connection for another project. Changing this creates a new connection.
         :param pulumi.Input[dict] value_specs: Map of additional options.
         :param pulumi.Input[str] vpnservice_id: The ID of the VPN service. Changing this creates a new connection.
+        
+        The **dpds** object supports the following:
+        
+          * `action` (`pulumi.Input[str]`)
+          * `interval` (`pulumi.Input[float]`)
+          * `timeout` (`pulumi.Input[float]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/vpnaas_site_connection_v2.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["admin_state_up"] = admin_state_up

@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -110,7 +112,7 @@ export interface GetTrunkResult {
      * The set of the trunk subports. The structure of each subport is
      * described below.
      */
-    readonly subPorts: { portId: string, segmentationId: number, segmentationType: string }[];
+    readonly subPorts: outputs.networking.GetTrunkSubPort[];
     readonly tags?: string[];
     readonly trunkId?: string;
     /**

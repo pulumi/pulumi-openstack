@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class GetRouterResult:
@@ -101,6 +102,18 @@ class AwaitableGetRouterResult(GetRouterResult):
 def get_router(admin_state_up=None,description=None,distributed=None,enable_snat=None,name=None,region=None,router_id=None,status=None,tags=None,tenant_id=None,opts=None):
     """
     Use this data source to get the ID of an available OpenStack router.
+    
+    :param bool admin_state_up: Administrative up/down status for the router (must be "true" or "false" if provided).
+    :param str description: Human-readable description of the router.
+    :param bool distributed: Indicates whether or not to get a distributed router.
+    :param str name: The name of the router.
+    :param str region: The region in which to obtain the V2 Neutron client.
+           A Neutron client is needed to retrieve router ids. If omitted, the
+           `region` argument of the provider is used.
+    :param str router_id: The UUID of the router resource.
+    :param str status: The status of the router (ACTIVE/DOWN).
+    :param list tags: The list of router tags to filter.
+    :param str tenant_id: The owner of the router.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_router_v2.html.markdown.
     """
@@ -117,7 +130,7 @@ def get_router(admin_state_up=None,description=None,distributed=None,enable_snat
     __args__['tags'] = tags
     __args__['tenantId'] = tenant_id
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:networking/getRouter:getRouter', __args__, opts=opts).value

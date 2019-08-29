@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class GetQosDscpMarkingRuleResult:
@@ -51,6 +52,12 @@ class AwaitableGetQosDscpMarkingRuleResult(GetQosDscpMarkingRuleResult):
 def get_qos_dscp_marking_rule(dscp_mark=None,qos_policy_id=None,region=None,opts=None):
     """
     Use this data source to get the ID of an available OpenStack QoS DSCP marking rule.
+    
+    :param float dscp_mark: The value of a DSCP mark.
+    :param str qos_policy_id: The QoS policy reference.
+    :param str region: The region in which to obtain the V2 Networking client.
+           A Networking client is needed to create a Neutron QoS DSCP marking rule. If omitted, the
+           `region` argument of the provider is used.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_qos_dscp_marking_rule_v2.html.markdown.
     """
@@ -60,7 +67,7 @@ def get_qos_dscp_marking_rule(dscp_mark=None,qos_policy_id=None,region=None,opts
     __args__['qosPolicyId'] = qos_policy_id
     __args__['region'] = region
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:networking/getQosDscpMarkingRule:getQosDscpMarkingRule', __args__, opts=opts).value

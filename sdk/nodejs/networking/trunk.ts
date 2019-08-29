@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -115,7 +117,7 @@ export class Trunk extends pulumi.CustomResource {
      * The set of ports that will be made subports of the trunk.
      * The structure of each subport is described below.
      */
-    public readonly subPorts!: pulumi.Output<{ portId: string, segmentationId: number, segmentationType: string }[] | undefined>;
+    public readonly subPorts!: pulumi.Output<outputs.networking.TrunkSubPort[] | undefined>;
     /**
      * A set of string tags for the port.
      */
@@ -215,7 +217,7 @@ export interface TrunkState {
      * The set of ports that will be made subports of the trunk.
      * The structure of each subport is described below.
      */
-    readonly subPorts?: pulumi.Input<pulumi.Input<{ portId: pulumi.Input<string>, segmentationId: pulumi.Input<number>, segmentationType: pulumi.Input<string> }>[]>;
+    readonly subPorts?: pulumi.Input<pulumi.Input<inputs.networking.TrunkSubPort>[]>;
     /**
      * A set of string tags for the port.
      */
@@ -264,7 +266,7 @@ export interface TrunkArgs {
      * The set of ports that will be made subports of the trunk.
      * The structure of each subport is described below.
      */
-    readonly subPorts?: pulumi.Input<pulumi.Input<{ portId: pulumi.Input<string>, segmentationId: pulumi.Input<number>, segmentationType: pulumi.Input<string> }>[]>;
+    readonly subPorts?: pulumi.Input<pulumi.Input<inputs.networking.TrunkSubPort>[]>;
     /**
      * A set of string tags for the port.
      */

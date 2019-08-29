@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class Share(pulumi.CustomResource):
@@ -28,6 +29,9 @@ class Share(pulumi.CustomResource):
     """
     A list of export locations. For example, when a share server
     has more than one network interface, it can have multiple export locations.
+    
+      * `path` (`str`)
+      * `preferred` (`str`)
     """
     has_replicas: pulumi.Output[bool]
     """
@@ -181,6 +185,7 @@ class Share(pulumi.CustomResource):
         """
         Get an existing Share resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -218,10 +223,15 @@ class Share(pulumi.CustomResource):
                than the allowed GB quota. Changing this resizes the existing share.
         :param pulumi.Input[str] snapshot_id: The UUID of the share's base snapshot. Changing this creates
                a new share.
+        
+        The **export_locations** object supports the following:
+        
+          * `path` (`pulumi.Input[str]`)
+          * `preferred` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/sharedfilesystem_share_v2.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["all_metadata"] = all_metadata

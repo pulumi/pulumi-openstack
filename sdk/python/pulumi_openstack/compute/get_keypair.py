@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class GetKeypairResult:
@@ -58,6 +59,10 @@ class AwaitableGetKeypairResult(GetKeypairResult):
 def get_keypair(name=None,region=None,opts=None):
     """
     Use this data source to get the ID and public key of an OpenStack keypair.
+    
+    :param str name: The unique name of the keypair.
+    :param str region: The region in which to obtain the V2 Compute client.
+           If omitted, the `region` argument of the provider is used.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/compute_keypair_v2.html.markdown.
     """
@@ -66,7 +71,7 @@ def get_keypair(name=None,region=None,opts=None):
     __args__['name'] = name
     __args__['region'] = region
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:compute/getKeypair:getKeypair', __args__, opts=opts).value

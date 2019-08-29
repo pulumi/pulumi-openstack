@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class GetAddressScopeResult:
@@ -62,6 +63,15 @@ class AwaitableGetAddressScopeResult(GetAddressScopeResult):
 def get_address_scope(ip_version=None,name=None,project_id=None,region=None,shared=None,opts=None):
     """
     Use this data source to get the ID of an available OpenStack address-scope.
+    
+    :param float ip_version: IP version.
+    :param str name: Name of the address-scope.
+    :param str project_id: The owner of the address-scope.
+    :param str region: The region in which to obtain the V2 Neutron client.
+           A Neutron client is needed to retrieve address-scopes. If omitted, the
+           `region` argument of the provider is used.
+    :param bool shared: Indicates whether this address-scope is shared across
+           all projects.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_addressscope_v2.html.markdown.
     """
@@ -73,7 +83,7 @@ def get_address_scope(ip_version=None,name=None,project_id=None,region=None,shar
     __args__['region'] = region
     __args__['shared'] = shared
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:networking/getAddressScope:getAddressScope', __args__, opts=opts).value

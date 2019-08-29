@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class GetPortResult:
@@ -180,6 +181,25 @@ class AwaitableGetPortResult(GetPortResult):
 def get_port(admin_state_up=None,description=None,device_id=None,device_owner=None,dns_name=None,fixed_ip=None,mac_address=None,name=None,network_id=None,port_id=None,project_id=None,region=None,security_group_ids=None,status=None,tags=None,tenant_id=None,opts=None):
     """
     Use this data source to get the ID of an available OpenStack port.
+    
+    :param bool admin_state_up: The administrative state of the port.
+    :param str description: Human-readable description of the port.
+    :param str device_id: The ID of the device the port belongs to.
+    :param str device_owner: The device owner of the port.
+    :param str dns_name: The port DNS name to filter. Available, when Neutron
+           DNS extension is enabled.
+    :param str fixed_ip: The port IP address filter.
+    :param str mac_address: The MAC address of the port.
+    :param str name: The name of the port.
+    :param str network_id: The ID of the network the port belongs to.
+    :param str port_id: The ID of the port.
+    :param str project_id: The owner of the port.
+    :param str region: The region in which to obtain the V2 Neutron client.
+           A Neutron client is needed to retrieve port ids. If omitted, the
+           `region` argument of the provider is used.
+    :param list security_group_ids: The list of port security group IDs to filter.
+    :param str status: The status of the port.
+    :param list tags: The list of port tags to filter.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_port_v2.html.markdown.
     """
@@ -202,7 +222,7 @@ def get_port(admin_state_up=None,description=None,device_id=None,device_owner=No
     __args__['tags'] = tags
     __args__['tenantId'] = tenant_id
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:networking/getPort:getPort', __args__, opts=opts).value

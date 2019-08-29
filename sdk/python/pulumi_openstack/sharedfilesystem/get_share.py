@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class GetShareResult:
@@ -130,6 +131,22 @@ class AwaitableGetShareResult(GetShareResult):
 def get_share(description=None,export_location_path=None,is_public=None,metadata=None,name=None,region=None,share_network_id=None,snapshot_id=None,status=None,opts=None):
     """
     Use this data source to get the ID of an available Shared File System share.
+    
+    :param str description: The human-readable description for the share.
+    :param str export_location_path: The export location path of the share. Available
+           since Manila API version 2.35.
+    :param bool is_public: The level of visibility for the share.
+           length.
+    :param dict metadata: One or more metadata key and value pairs as a dictionary of
+           strings.
+    :param str name: The name of the share.
+    :param str share_network_id: The UUID of the share's share network.
+    :param str snapshot_id: The UUID of the share's base snapshot.
+    :param str status: A share status filter. A valid value is `creating`,
+           `error`, `available`, `deleting`, `error_deleting`, `manage_starting`,
+           `manage_error`, `unmanage_starting`, `unmanage_error`, `unmanaged`,
+           `extending`, `extending_error`, `shrinking`, `shrinking_error`, or
+           `shrinking_possible_data_loss_error`.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/sharedfilesystem_share_v2.html.markdown.
     """
@@ -145,7 +162,7 @@ def get_share(description=None,export_location_path=None,is_public=None,metadata
     __args__['snapshotId'] = snapshot_id
     __args__['status'] = status
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:sharedfilesystem/getShare:getShare', __args__, opts=opts).value

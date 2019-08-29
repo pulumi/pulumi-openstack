@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class GetAvailabilityZonesResult:
@@ -45,6 +46,9 @@ class AwaitableGetAvailabilityZonesResult(GetAvailabilityZonesResult):
 def get_availability_zones(region=None,state=None,opts=None):
     """
     Use this data source to get a list of availability zones from OpenStack
+    
+    :param str region: The `region` to fetch availability zones from, defaults to the provider's `region`
+    :param str state: The `state` of the availability zones to match, default ("available").
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/compute_availability_zones_v2.html.markdown.
     """
@@ -53,7 +57,7 @@ def get_availability_zones(region=None,state=None,opts=None):
     __args__['region'] = region
     __args__['state'] = state
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:compute/getAvailabilityZones:getAvailabilityZones', __args__, opts=opts).value

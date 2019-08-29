@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class GetUserResult:
@@ -93,6 +94,15 @@ class AwaitableGetUserResult(GetUserResult):
 def get_user(domain_id=None,enabled=None,idp_id=None,name=None,password_expires_at=None,protocol_id=None,region=None,unique_id=None,opts=None):
     """
     Use this data source to get the ID of an OpenStack user.
+    
+    :param str domain_id: The domain this user belongs to.
+    :param bool enabled: Whether the user is enabled or disabled. Valid
+           values are `true` and `false`.
+    :param str idp_id: The identity provider ID of the user.
+    :param str name: The name of the user.
+    :param str password_expires_at: Query for expired passwords. See the [OpenStack API docs](https://developer.openstack.org/api-ref/identity/v3/#list-users) for more information on the query format.
+    :param str protocol_id: The protocol ID of the user.
+    :param str unique_id: The unique ID of the user.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_user_v3.html.markdown.
     """
@@ -107,7 +117,7 @@ def get_user(domain_id=None,enabled=None,idp_id=None,name=None,password_expires_
     __args__['region'] = region
     __args__['uniqueId'] = unique_id
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:identity/getUser:getUser', __args__, opts=opts).value

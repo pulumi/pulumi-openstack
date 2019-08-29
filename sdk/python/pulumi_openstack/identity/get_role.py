@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class GetRoleResult:
@@ -51,6 +52,11 @@ class AwaitableGetRoleResult(GetRoleResult):
 def get_role(domain_id=None,name=None,region=None,opts=None):
     """
     Use this data source to get the ID of an OpenStack role.
+    
+    :param str domain_id: The domain the role belongs to.
+    :param str name: The name of the role.
+    :param str region: The region in which to obtain the V3 Keystone client.
+           If omitted, the `region` argument of the provider is used.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_role_v3.html.markdown.
     """
@@ -60,7 +66,7 @@ def get_role(domain_id=None,name=None,region=None,opts=None):
     __args__['name'] = name
     __args__['region'] = region
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:identity/getRole:getRole', __args__, opts=opts).value

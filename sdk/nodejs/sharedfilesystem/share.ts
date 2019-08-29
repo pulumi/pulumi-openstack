@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -82,7 +84,7 @@ export class Share extends pulumi.CustomResource {
      * A list of export locations. For example, when a share server
      * has more than one network interface, it can have multiple export locations.
      */
-    public /*out*/ readonly exportLocations!: pulumi.Output<{ path: string, preferred: string }[]>;
+    public /*out*/ readonly exportLocations!: pulumi.Output<outputs.sharedfilesystem.ShareExportLocation[]>;
     /**
      * Indicates whether a share has replicas or not.
      */
@@ -243,7 +245,7 @@ export interface ShareState {
      * A list of export locations. For example, when a share server
      * has more than one network interface, it can have multiple export locations.
      */
-    readonly exportLocations?: pulumi.Input<pulumi.Input<{ path?: pulumi.Input<string>, preferred?: pulumi.Input<string> }>[]>;
+    readonly exportLocations?: pulumi.Input<pulumi.Input<inputs.sharedfilesystem.ShareExportLocation>[]>;
     /**
      * Indicates whether a share has replicas or not.
      */

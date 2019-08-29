@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -64,14 +66,14 @@ export class Subnet extends pulumi.CustomResource {
      * must be from the same CIDR that the subnet is part of.
      * The `allocationPool` block is documented below.
      */
-    public readonly allocationPools!: pulumi.Output<{ end: string, start: string }[]>;
+    public readonly allocationPools!: pulumi.Output<outputs.networking.SubnetAllocationPool[]>;
     /**
      * 
      * A block declaring the start and end range of the IP addresses available for
      * use with DHCP in this subnet.
      * The `allocationPools` block is documented below.
      */
-    public readonly allocationPoolsCollection!: pulumi.Output<{ end: string, start: string }[]>;
+    public readonly allocationPoolsCollection!: pulumi.Output<outputs.networking.SubnetAllocationPoolsCollection[]>;
     /**
      * CIDR representing IP range for this subnet, based on IP
      * version. You can omit this option if you are creating a subnet from a
@@ -109,7 +111,7 @@ export class Subnet extends pulumi.CustomResource {
      * object structure is documented below. Changing this updates the host routes
      * for the existing subnet.
      */
-    public readonly hostRoutes!: pulumi.Output<{ destinationCidr: string, nextHop: string }[] | undefined>;
+    public readonly hostRoutes!: pulumi.Output<outputs.networking.SubnetHostRoute[] | undefined>;
     /**
      * IP version, either 4 (default) or 6. Changing this creates a
      * new subnet.
@@ -260,14 +262,14 @@ export interface SubnetState {
      * must be from the same CIDR that the subnet is part of.
      * The `allocationPool` block is documented below.
      */
-    readonly allocationPools?: pulumi.Input<pulumi.Input<{ end: pulumi.Input<string>, start: pulumi.Input<string> }>[]>;
+    readonly allocationPools?: pulumi.Input<pulumi.Input<inputs.networking.SubnetAllocationPool>[]>;
     /**
      * 
      * A block declaring the start and end range of the IP addresses available for
      * use with DHCP in this subnet.
      * The `allocationPools` block is documented below.
      */
-    readonly allocationPoolsCollection?: pulumi.Input<pulumi.Input<{ end: pulumi.Input<string>, start: pulumi.Input<string> }>[]>;
+    readonly allocationPoolsCollection?: pulumi.Input<pulumi.Input<inputs.networking.SubnetAllocationPoolsCollection>[]>;
     /**
      * CIDR representing IP range for this subnet, based on IP
      * version. You can omit this option if you are creating a subnet from a
@@ -305,7 +307,7 @@ export interface SubnetState {
      * object structure is documented below. Changing this updates the host routes
      * for the existing subnet.
      */
-    readonly hostRoutes?: pulumi.Input<pulumi.Input<{ destinationCidr: pulumi.Input<string>, nextHop: pulumi.Input<string> }>[]>;
+    readonly hostRoutes?: pulumi.Input<pulumi.Input<inputs.networking.SubnetHostRoute>[]>;
     /**
      * IP version, either 4 (default) or 6. Changing this creates a
      * new subnet.
@@ -381,14 +383,14 @@ export interface SubnetArgs {
      * must be from the same CIDR that the subnet is part of.
      * The `allocationPool` block is documented below.
      */
-    readonly allocationPools?: pulumi.Input<pulumi.Input<{ end: pulumi.Input<string>, start: pulumi.Input<string> }>[]>;
+    readonly allocationPools?: pulumi.Input<pulumi.Input<inputs.networking.SubnetAllocationPool>[]>;
     /**
      * 
      * A block declaring the start and end range of the IP addresses available for
      * use with DHCP in this subnet.
      * The `allocationPools` block is documented below.
      */
-    readonly allocationPoolsCollection?: pulumi.Input<pulumi.Input<{ end: pulumi.Input<string>, start: pulumi.Input<string> }>[]>;
+    readonly allocationPoolsCollection?: pulumi.Input<pulumi.Input<inputs.networking.SubnetAllocationPoolsCollection>[]>;
     /**
      * CIDR representing IP range for this subnet, based on IP
      * version. You can omit this option if you are creating a subnet from a
@@ -426,7 +428,7 @@ export interface SubnetArgs {
      * object structure is documented below. Changing this updates the host routes
      * for the existing subnet.
      */
-    readonly hostRoutes?: pulumi.Input<pulumi.Input<{ destinationCidr: pulumi.Input<string>, nextHop: pulumi.Input<string> }>[]>;
+    readonly hostRoutes?: pulumi.Input<pulumi.Input<inputs.networking.SubnetHostRoute>[]>;
     /**
      * IP version, either 4 (default) or 6. Changing this creates a
      * new subnet.

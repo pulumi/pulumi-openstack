@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -87,7 +89,7 @@ export class Router extends pulumi.CustomResource {
      * has to be set in order to set this property. Changing this updates the
      * external fixed IPs of the router.
      */
-    public readonly externalFixedIps!: pulumi.Output<{ ipAddress?: string, subnetId?: string }[]>;
+    public readonly externalFixedIps!: pulumi.Output<outputs.networking.RouterExternalFixedIp[]>;
     /**
      * The
      * network UUID of an external gateway for the router. A router with an
@@ -132,7 +134,7 @@ export class Router extends pulumi.CustomResource {
      * Map of additional vendor-specific options.
      * Supported options are described below.
      */
-    public readonly vendorOptions!: pulumi.Output<{ setRouterGatewayAfterCreate?: boolean } | undefined>;
+    public readonly vendorOptions!: pulumi.Output<outputs.networking.RouterVendorOptions | undefined>;
 
     /**
      * Create a Router resource with the given unique name, arguments, and options.
@@ -233,7 +235,7 @@ export interface RouterState {
      * has to be set in order to set this property. Changing this updates the
      * external fixed IPs of the router.
      */
-    readonly externalFixedIps?: pulumi.Input<pulumi.Input<{ ipAddress?: pulumi.Input<string>, subnetId?: pulumi.Input<string> }>[]>;
+    readonly externalFixedIps?: pulumi.Input<pulumi.Input<inputs.networking.RouterExternalFixedIp>[]>;
     /**
      * The
      * network UUID of an external gateway for the router. A router with an
@@ -278,7 +280,7 @@ export interface RouterState {
      * Map of additional vendor-specific options.
      * Supported options are described below.
      */
-    readonly vendorOptions?: pulumi.Input<{ setRouterGatewayAfterCreate?: pulumi.Input<boolean> }>;
+    readonly vendorOptions?: pulumi.Input<inputs.networking.RouterVendorOptions>;
 }
 
 /**
@@ -319,7 +321,7 @@ export interface RouterArgs {
      * has to be set in order to set this property. Changing this updates the
      * external fixed IPs of the router.
      */
-    readonly externalFixedIps?: pulumi.Input<pulumi.Input<{ ipAddress?: pulumi.Input<string>, subnetId?: pulumi.Input<string> }>[]>;
+    readonly externalFixedIps?: pulumi.Input<pulumi.Input<inputs.networking.RouterExternalFixedIp>[]>;
     /**
      * The
      * network UUID of an external gateway for the router. A router with an
@@ -364,5 +366,5 @@ export interface RouterArgs {
      * Map of additional vendor-specific options.
      * Supported options are described below.
      */
-    readonly vendorOptions?: pulumi.Input<{ setRouterGatewayAfterCreate?: pulumi.Input<boolean> }>;
+    readonly vendorOptions?: pulumi.Input<inputs.networking.RouterVendorOptions>;
 }

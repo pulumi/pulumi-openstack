@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class GetSnapshotV3Result:
@@ -83,6 +84,14 @@ class AwaitableGetSnapshotV3Result(GetSnapshotV3Result):
 def get_snapshot_v3(most_recent=None,name=None,region=None,status=None,volume_id=None,opts=None):
     """
     Use this data source to get information about an existing snapshot.
+    
+    :param bool most_recent: Pick the most recently created snapshot if there
+           are multiple results.
+    :param str name: The name of the snapshot.
+    :param str region: The region in which to obtain the V3 Block Storage
+           client. If omitted, the `region` argument of the provider is used.
+    :param str status: The status of the snapshot.
+    :param str volume_id: The ID of the snapshot's volume.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/blockstorage_snapshot_v3.html.markdown.
     """
@@ -94,7 +103,7 @@ def get_snapshot_v3(most_recent=None,name=None,region=None,status=None,volume_id
     __args__['status'] = status
     __args__['volumeId'] = volume_id
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:blockstorage/getSnapshotV3:getSnapshotV3', __args__, opts=opts).value
