@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade pulumi-terraform to 3f206601e7
+_(none)_
 
 ---
+
+## 0.17.9 (2019-08-29)
+* Upgrade pulumi-terraform to 3f206601e7
 
 ## 0.17.8 (2019-08-20)
 * Depend on latest pulumi package
@@ -58,4 +61,3 @@ CHANGELOG
 
 ## 0.15.0 (2018-08-14)
 * Initial version of the OpenStack provoider
-
