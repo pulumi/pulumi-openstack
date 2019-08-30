@@ -26,6 +26,7 @@ export * from "./qosBandwidthLimitRule";
 export * from "./qosDscpMarkingRule";
 export * from "./qosMinimumBandwidthRule";
 export * from "./qosPolicy";
+export * from "./rbacPolicyV2";
 export * from "./router";
 export * from "./routerInterface";
 export * from "./routerRoute";

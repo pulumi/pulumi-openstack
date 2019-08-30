@@ -36,6 +36,7 @@ const (
 	dnsMod              = "dns"              // DNS
 	identityMod         = "identity"         // Identity
 	imagesMod           = "images"           // Images
+	keymanagerMod       = "keymanager"       //Keymanager
 	networkingMod       = "networking"       // Networking
 	lbMod               = "loadbalancer"     // Load Balancer
 	firewallMod         = "firewall"         // Firewall
@@ -214,6 +215,8 @@ func Provider() tfbridge.ProviderInfo {
 			"openstack_blockstorage_volume_attach_v2": {Tok: openstackResource(blockstorageMod, "VolumeAttachV2")},
 			"openstack_blockstorage_volume_v3":        {Tok: openstackResource(blockstorageMod, "Volume")},
 			"openstack_blockstorage_volume_attach_v3": {Tok: openstackResource(blockstorageMod, "VolumeAttach")},
+			"openstack_blockstorage_quotaset_v2":      {Tok: openstackResource(blockstorageMod, "QuoteSetV2")},
+			"openstack_blockstorage_quotaset_v3":      {Tok: openstackResource(blockstorageMod, "QuoteSetV3")},
 
 			// Compute
 			"openstack_compute_flavor_v2":               {Tok: openstackResource(computeMod, "Flavor")},
@@ -247,6 +250,8 @@ func Provider() tfbridge.ProviderInfo {
 			"openstack_identity_role_v3":                   {Tok: openstackResource(identityMod, "Role")},
 			"openstack_identity_role_assignment_v3":        {Tok: openstackResource(identityMod, "RoleAssignment")},
 			"openstack_identity_user_v3":                   {Tok: openstackResource(identityMod, "User")},
+			"openstack_identity_endpoint_v3":               {Tok: openstackResource(identityMod, "EndpointV3")},
+			"openstack_identity_service_v3":                {Tok: openstackResource(identityMod, "ServiceV3")},
 
 			// Images
 			"openstack_images_image_v2": {Tok: openstackResource(imagesMod, "Image")},
@@ -286,7 +291,8 @@ func Provider() tfbridge.ProviderInfo {
 			"openstack_networking_qos_minimum_bandwidth_rule_v2": {
 				Tok: openstackResource(networkingMod, "QosMinimumBandwidthRule"),
 			},
-			"openstack_networking_qos_policy_v2": {Tok: openstackResource(networkingMod, "QosPolicy")},
+			"openstack_networking_qos_policy_v2":  {Tok: openstackResource(networkingMod, "QosPolicy")},
+			"openstack_networking_rbac_policy_v2": {Tok: openstackResource(networkingMod, "RbacPolicyV2")},
 
 			// Load Balancer
 			"openstack_lb_member_v1":       {Tok: openstackResource(lbMod, "MemberV1")},
@@ -323,6 +329,10 @@ func Provider() tfbridge.ProviderInfo {
 			"openstack_vpnaas_service_v2":         {Tok: openstackResource(vpnaasMod, "Service")},
 			"openstack_vpnaas_endpoint_group_v2":  {Tok: openstackResource(vpnaasMod, "EndpointGroup")},
 			"openstack_vpnaas_site_connection_v2": {Tok: openstackResource(vpnaasMod, "SiteConnection")},
+
+			// KeyManager
+			"openstack_keymanager_container_v1": {Tok: openstackResource(keymanagerMod, "ContainerV1")},
+			"openstack_keymanager_secret_v1":    {Tok: openstackResource(keymanagerMod, "SecretV1")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			// Block Storage
@@ -351,6 +361,7 @@ func Provider() tfbridge.ProviderInfo {
 			"openstack_identity_auth_scope_v3": {Tok: openstackDataSource(identityMod, "getAuthScope")},
 			"openstack_identity_endpoint_v3":   {Tok: openstackDataSource(identityMod, "getEndpoint")},
 			"openstack_identity_group_v3":      {Tok: openstackDataSource(identityMod, "getGroup")},
+			"openstack_identity_service_v3":    {Tok: openstackDataSource(identityMod, "getService")},
 
 			// Images
 			"openstack_images_image_v2": {Tok: openstackDataSource(imagesMod, "getImage")},
@@ -387,6 +398,9 @@ func Provider() tfbridge.ProviderInfo {
 			"openstack_sharedfilesystem_share_v2":        {Tok: openstackDataSource(sharedfilesystemMod, "getShare")},
 			"openstack_sharedfilesystem_sharenetwork_v2": {Tok: openstackDataSource(sharedfilesystemMod, "getShareNetwork")},
 			"openstack_sharedfilesystem_snapshot_v2":     {Tok: openstackDataSource(sharedfilesystemMod, "getSnapshot")},
+
+			// Keymanager
+			"openstack_keymanager_secret_v1": {Tok: openstackDataSource(keymanagerMod, "getSecret")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			DevDependencies: map[string]string{
