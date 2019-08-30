@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Regenerate SDKs based on v1.21.1 of the OpenStack Terraform Provider
+_(none)_
 
 ---
+
+## 0.17.10 (2019-08-30)
+* Regenerate SDKs based on v1.21.1 of the OpenStack Terraform Provider
 
 ## 0.17.9 (2019-08-29)
 * Upgrade pulumi-terraform to 3f206601e7
