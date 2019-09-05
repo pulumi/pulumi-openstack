@@ -400,7 +400,8 @@ func Provider() tfbridge.ProviderInfo {
 			"openstack_sharedfilesystem_snapshot_v2":     {Tok: openstackDataSource(sharedfilesystemMod, "getSnapshot")},
 
 			// Keymanager
-			"openstack_keymanager_secret_v1": {Tok: openstackDataSource(keymanagerMod, "getSecret")},
+			"openstack_keymanager_secret_v1":    {Tok: openstackDataSource(keymanagerMod, "getSecret")},
+			"openstack_keymanager_container_v1": {Tok: openstackDataSource(keymanagerMod, "getContainer")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			DevDependencies: map[string]string{

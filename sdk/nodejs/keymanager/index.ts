@@ -3,5 +3,6 @@
 
 // Export members:
 export * from "./containerV1";
+export * from "./getContainer";
 export * from "./getSecret";
 export * from "./secretV1";
