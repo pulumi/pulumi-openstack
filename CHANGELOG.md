@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v1.22.0 of the OpenStack Terraform Provider
+_(none)_
 
 ---
+
+## 0.17.12 (2019-09-05)
+* Upgrade to v1.22.0 of the OpenStack Terraform Provider
 
 ## 0.17.11 (2019-09-05)
 * Upgrade to Pulumi v1.0.0
