@@ -79,6 +79,7 @@
         "images/index.ts",
         "index.ts",
         "keymanager/containerV1.ts",
+        "keymanager/getContainer.ts",
         "keymanager/getSecret.ts",
         "keymanager/index.ts",
         "keymanager/secretV1.ts",

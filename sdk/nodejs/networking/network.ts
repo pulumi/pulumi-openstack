@@ -107,7 +107,7 @@ export class Network extends pulumi.CustomResource {
      * `dnsName` attribute of its ports will be published in an external DNS
      * service when Neutron is configured to integrate with such a service.
      */
-    public readonly dnsDomain!: pulumi.Output<string | undefined>;
+    public readonly dnsDomain!: pulumi.Output<string>;
     /**
      * Specifies whether the network resource has the
      * external routing facility. Valid values are true and false. Defaults to

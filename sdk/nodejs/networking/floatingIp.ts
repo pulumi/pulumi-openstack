@@ -72,14 +72,14 @@ export class FloatingIp extends pulumi.CustomResource {
      * external DNS service when Neutron is configured to integrate with such a
      * service. Changing this creates a new floating IP.
      */
-    public readonly dnsDomain!: pulumi.Output<string | undefined>;
+    public readonly dnsDomain!: pulumi.Output<string>;
     /**
      * The floating IP DNS name. Available, when Neutron DNS
      * extension is enabled. The data in this attribute will be published in an
      * external DNS service when Neutron is configured to integrate with such a
      * service. Changing this creates a new floating IP.
      */
-    public readonly dnsName!: pulumi.Output<string | undefined>;
+    public readonly dnsName!: pulumi.Output<string>;
     /**
      * Fixed IP of the port to associate with this floating IP. Required if
      * the port has multiple fixed IPs.

@@ -149,11 +149,11 @@ export namespace keymanager {
          * Human-readable name for the Container. Does not have
          * to be unique.
          */
-        name: string;
+        name?: string;
         /**
          * The consumer URL.
          */
-        url: string;
+        url?: string;
     }
 
     export interface ContainerV1SecretRef {
@@ -163,6 +163,28 @@ export namespace keymanager {
          */
         name?: string;
         secretRef: string;
+    }
+
+    export interface GetContainerConsumer {
+        /**
+         * The Container name.
+         */
+        name?: string;
+        /**
+         * The consumer URL.
+         */
+        url?: string;
+    }
+
+    export interface GetContainerSecretRef {
+        /**
+         * The Container name.
+         */
+        name?: string;
+        /**
+         * The secret reference / where to find the secret, URL.
+         */
+        secretRef?: string;
     }
 }
 
