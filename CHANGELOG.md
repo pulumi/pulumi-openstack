@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to Pulumi v1.0.0
+_(none)_
 
 ---
+
+## 0.17.11 (2019-09-05)
+* Upgrade to Pulumi v1.0.0
 
 ## 0.17.10 (2019-08-30)
 * Regenerate SDKs based on v1.21.1 of the OpenStack Terraform Provider
