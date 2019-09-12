@@ -715,8 +715,6 @@ github.com/stretchr/testify v1.3.1-0.20190311161405-34c6fa2dc709/go.mod h1:M5WIy
 github.com/svanharmelen/jsonapi v0.0.0-20180618144545-0c0828c3f16d/go.mod h1:BSTlc8jOjh0niykqEGVXOLXdi9o0r0kR8tCYiMvjFgw=
 github.com/tarm/serial v0.0.0-20180830185346-98f6abe2eb07/go.mod h1:kDXzergiv9cbyO7IOYJZWg1U88JhDg3PB6klq9Hg2pA=
 github.com/terraform-providers/terraform-provider-openstack v1.15.0/go.mod h1:2aQ6n/BtChAl1y2S60vebhyJyZXBsuAI5G4+lHrT1Ew=
-github.com/terraform-providers/terraform-provider-openstack v1.21.1 h1:Uw11vR1QuvyfvI2ObsFw5EXjL4so88wKPJHPk2jJ/aU=
-github.com/terraform-providers/terraform-provider-openstack v1.21.1/go.mod h1:GUqjSfHDQHt4dgO9F3UFGyfHQaNJxK7NSl1fnFGZc2E=
 github.com/terraform-providers/terraform-provider-openstack v1.22.0 h1:2yblBUQc72+rvTpRefUSjJU2AuudAKD9ozblw2o/lPo=
 github.com/terraform-providers/terraform-provider-openstack v1.22.0/go.mod h1:GUqjSfHDQHt4dgO9F3UFGyfHQaNJxK7NSl1fnFGZc2E=
 github.com/texttheater/golang-levenshtein v0.0.0-20180516184445-d188e65d659e h1:T5PdfK/M1xyrHwynxMIVMWLS7f/qHwfslZphxtGnw7s=
