@@ -83,6 +83,16 @@ func GetDefaultDomain(ctx *pulumi.Context) string {
 	return v
 }
 
+// If set to `true`, OpenStack authorization will be perfomed, when the service provider client is called.
+func GetDelayedAuth(ctx *pulumi.Context) bool {
+	return config.GetBool(ctx, "openstack:delayedAuth")
+}
+
+// If set to `true`, the HTTP `Cache-Control: no-cache` header will not be added by default to all API requests.
+func GetDisableNoCacheHeader(ctx *pulumi.Context) bool {
+	return config.GetBool(ctx, "openstack:disableNoCacheHeader")
+}
+
 // The ID of the Domain to scope to (Identity v3).
 func GetDomainId(ctx *pulumi.Context) string {
 	v, err := config.Try(ctx, "openstack:domainId")

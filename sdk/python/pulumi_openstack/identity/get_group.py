@@ -13,7 +13,13 @@ class GetGroupResult:
     """
     A collection of values returned by getGroup.
     """
-    def __init__(__self__, domain_id=None, name=None, region=None, id=None):
+    def __init__(__self__, description=None, domain_id=None, name=None, region=None, id=None):
+        if description and not isinstance(description, str):
+            raise TypeError("Expected argument 'description' to be a str")
+        __self__.description = description
+        """
+        A description of the group.
+        """
         if domain_id and not isinstance(domain_id, str):
             raise TypeError("Expected argument 'domain_id' to be a str")
         __self__.domain_id = domain_id
@@ -44,6 +50,7 @@ class AwaitableGetGroupResult(GetGroupResult):
         if False:
             yield self
         return GetGroupResult(
+            description=self.description,
             domain_id=self.domain_id,
             name=self.name,
             region=self.region,
@@ -74,6 +81,7 @@ def get_group(domain_id=None,name=None,region=None,opts=None):
     __ret__ = pulumi.runtime.invoke('openstack:identity/getGroup:getGroup', __args__, opts=opts).value
 
     return AwaitableGetGroupResult(
+        description=__ret__.get('description'),
         domain_id=__ret__.get('domainId'),
         name=__ret__.get('name'),
         region=__ret__.get('region'),

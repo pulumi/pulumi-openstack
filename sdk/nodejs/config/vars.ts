@@ -39,6 +39,14 @@ export let cloud: string | undefined = __config.get("cloud") || utilities.getEnv
  */
 export let defaultDomain: string | undefined = __config.get("defaultDomain") || (utilities.getEnv("OS_DEFAULT_DOMAIN") || "default");
 /**
+ * If set to `true`, OpenStack authorization will be perfomed, when the service provider client is called.
+ */
+export let delayedAuth: boolean | undefined = __config.getObject<boolean>("delayedAuth");
+/**
+ * If set to `true`, the HTTP `Cache-Control: no-cache` header will not be added by default to all API requests.
+ */
+export let disableNoCacheHeader: boolean | undefined = __config.getObject<boolean>("disableNoCacheHeader");
+/**
  * The ID of the Domain to scope to (Identity v3).
  */
 export let domainId: string | undefined = __config.get("domainId") || utilities.getEnv("OS_DOMAIN_ID");

@@ -65,6 +65,10 @@ export interface GetGroupArgs {
  */
 export interface GetGroupResult {
     /**
+     * A description of the group.
+     */
+    readonly description: string;
+    /**
      * See Argument Reference above.
      */
     readonly domainId: string;

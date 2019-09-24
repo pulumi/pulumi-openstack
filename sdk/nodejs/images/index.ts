@@ -4,3 +4,5 @@
 // Export members:
 export * from "./getImage";
 export * from "./image";
+export * from "./imageAccess";
+export * from "./imageAccessAccept";

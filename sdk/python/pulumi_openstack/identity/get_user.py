@@ -13,12 +13,18 @@ class GetUserResult:
     """
     A collection of values returned by getUser.
     """
-    def __init__(__self__, default_project_id=None, domain_id=None, enabled=None, idp_id=None, name=None, password_expires_at=None, protocol_id=None, region=None, unique_id=None, id=None):
+    def __init__(__self__, default_project_id=None, description=None, domain_id=None, enabled=None, idp_id=None, name=None, password_expires_at=None, protocol_id=None, region=None, unique_id=None, id=None):
         if default_project_id and not isinstance(default_project_id, str):
             raise TypeError("Expected argument 'default_project_id' to be a str")
         __self__.default_project_id = default_project_id
         """
         See Argument Reference above.
+        """
+        if description and not isinstance(description, str):
+            raise TypeError("Expected argument 'description' to be a str")
+        __self__.description = description
+        """
+        A description of the user.
         """
         if domain_id and not isinstance(domain_id, str):
             raise TypeError("Expected argument 'domain_id' to be a str")
@@ -81,6 +87,7 @@ class AwaitableGetUserResult(GetUserResult):
             yield self
         return GetUserResult(
             default_project_id=self.default_project_id,
+            description=self.description,
             domain_id=self.domain_id,
             enabled=self.enabled,
             idp_id=self.idp_id,
@@ -124,6 +131,7 @@ def get_user(domain_id=None,enabled=None,idp_id=None,name=None,password_expires_
 
     return AwaitableGetUserResult(
         default_project_id=__ret__.get('defaultProjectId'),
+        description=__ret__.get('description'),
         domain_id=__ret__.get('domainId'),
         enabled=__ret__.get('enabled'),
         idp_id=__ret__.get('idpId'),

@@ -41,6 +41,10 @@ func NewListener(ctx *pulumi.Context,
 		inputs["region"] = nil
 		inputs["sniContainerRefs"] = nil
 		inputs["tenantId"] = nil
+		inputs["timeoutClientData"] = nil
+		inputs["timeoutMemberConnect"] = nil
+		inputs["timeoutMemberData"] = nil
+		inputs["timeoutTcpInspect"] = nil
 	} else {
 		inputs["adminStateUp"] = args.AdminStateUp
 		inputs["connectionLimit"] = args.ConnectionLimit
@@ -54,6 +58,10 @@ func NewListener(ctx *pulumi.Context,
 		inputs["region"] = args.Region
 		inputs["sniContainerRefs"] = args.SniContainerRefs
 		inputs["tenantId"] = args.TenantId
+		inputs["timeoutClientData"] = args.TimeoutClientData
+		inputs["timeoutMemberConnect"] = args.TimeoutMemberConnect
+		inputs["timeoutMemberData"] = args.TimeoutMemberData
+		inputs["timeoutTcpInspect"] = args.TimeoutTcpInspect
 	}
 	s, err := ctx.RegisterResource("openstack:loadbalancer/listener:Listener", name, true, inputs, opts...)
 	if err != nil {
@@ -80,6 +88,10 @@ func GetListener(ctx *pulumi.Context,
 		inputs["region"] = state.Region
 		inputs["sniContainerRefs"] = state.SniContainerRefs
 		inputs["tenantId"] = state.TenantId
+		inputs["timeoutClientData"] = state.TimeoutClientData
+		inputs["timeoutMemberConnect"] = state.TimeoutMemberConnect
+		inputs["timeoutMemberData"] = state.TimeoutMemberData
+		inputs["timeoutTcpInspect"] = state.TimeoutTcpInspect
 	}
 	s, err := ctx.ReadResource("openstack:loadbalancer/listener:Listener", name, id, inputs, opts...)
 	if err != nil {
@@ -177,6 +189,27 @@ func (r *Listener) TenantId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["tenantId"])
 }
 
+// The client inactivity timeout in milliseconds.
+func (r *Listener) TimeoutClientData() *pulumi.IntOutput {
+	return (*pulumi.IntOutput)(r.s.State["timeoutClientData"])
+}
+
+// The member connection timeout in milliseconds.
+func (r *Listener) TimeoutMemberConnect() *pulumi.IntOutput {
+	return (*pulumi.IntOutput)(r.s.State["timeoutMemberConnect"])
+}
+
+// The member inactivity timeout in milliseconds.
+func (r *Listener) TimeoutMemberData() *pulumi.IntOutput {
+	return (*pulumi.IntOutput)(r.s.State["timeoutMemberData"])
+}
+
+// The time in milliseconds, to wait for additional
+// TCP packets for content inspection.
+func (r *Listener) TimeoutTcpInspect() *pulumi.IntOutput {
+	return (*pulumi.IntOutput)(r.s.State["timeoutTcpInspect"])
+}
+
 // Input properties used for looking up and filtering Listener resources.
 type ListenerState struct {
 	// The administrative state of the Listener.
@@ -222,6 +255,15 @@ type ListenerState struct {
 	// the Listener.  Only administrative users can specify a tenant UUID
 	// other than their own. Changing this creates a new Listener.
 	TenantId interface{}
+	// The client inactivity timeout in milliseconds.
+	TimeoutClientData interface{}
+	// The member connection timeout in milliseconds.
+	TimeoutMemberConnect interface{}
+	// The member inactivity timeout in milliseconds.
+	TimeoutMemberData interface{}
+	// The time in milliseconds, to wait for additional
+	// TCP packets for content inspection.
+	TimeoutTcpInspect interface{}
 }
 
 // The set of arguments for constructing a Listener resource.
@@ -269,4 +311,13 @@ type ListenerArgs struct {
 	// the Listener.  Only administrative users can specify a tenant UUID
 	// other than their own. Changing this creates a new Listener.
 	TenantId interface{}
+	// The client inactivity timeout in milliseconds.
+	TimeoutClientData interface{}
+	// The member connection timeout in milliseconds.
+	TimeoutMemberConnect interface{}
+	// The member inactivity timeout in milliseconds.
+	TimeoutMemberData interface{}
+	// The time in milliseconds, to wait for additional
+	// TCP packets for content inspection.
+	TimeoutTcpInspect interface{}
 }

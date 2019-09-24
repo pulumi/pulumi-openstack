@@ -23,6 +23,8 @@ func LookupAuthScope(ctx *pulumi.Context, args *GetAuthScopeArgs) (*GetAuthScope
 		return nil, err
 	}
 	return &GetAuthScopeResult{
+		DomainId: outputs["domainId"],
+		DomainName: outputs["domainName"],
 		Name: outputs["name"],
 		ProjectDomainId: outputs["projectDomainId"],
 		ProjectDomainName: outputs["projectDomainName"],
@@ -51,6 +53,10 @@ type GetAuthScopeArgs struct {
 
 // A collection of values returned by getAuthScope.
 type GetAuthScopeResult struct {
+	// The domain ID of the scope.
+	DomainId interface{}
+	// The domain name of the scope.
+	DomainName interface{}
 	Name interface{}
 	// The domain ID of the project.
 	ProjectDomainId interface{}

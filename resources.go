@@ -254,7 +254,9 @@ func Provider() tfbridge.ProviderInfo {
 			"openstack_identity_service_v3":                {Tok: openstackResource(identityMod, "ServiceV3")},
 
 			// Images
-			"openstack_images_image_v2": {Tok: openstackResource(imagesMod, "Image")},
+			"openstack_images_image_v2":               {Tok: openstackResource(imagesMod, "Image")},
+			"openstack_images_image_access_v2":        {Tok: openstackResource(imagesMod, "ImageAccess")},
+			"openstack_images_image_access_accept_v2": {Tok: openstackResource(imagesMod, "ImageAccessAccept")},
 
 			// Networking
 			"openstack_networking_addressscope_v2":            {Tok: openstackResource(networkingMod, "AddressScope")},

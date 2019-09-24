@@ -24,6 +24,7 @@ func LookupGroup(ctx *pulumi.Context, args *GetGroupArgs) (*GetGroupResult, erro
 		return nil, err
 	}
 	return &GetGroupResult{
+		Description: outputs["description"],
 		DomainId: outputs["domainId"],
 		Name: outputs["name"],
 		Region: outputs["region"],
@@ -44,6 +45,8 @@ type GetGroupArgs struct {
 
 // A collection of values returned by getGroup.
 type GetGroupResult struct {
+	// A description of the group.
+	Description interface{}
 	// See Argument Reference above.
 	DomainId interface{}
 	// See Argument Reference above.

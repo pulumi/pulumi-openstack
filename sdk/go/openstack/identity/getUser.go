@@ -28,6 +28,7 @@ func LookupUser(ctx *pulumi.Context, args *GetUserArgs) (*GetUserResult, error) 
 	}
 	return &GetUserResult{
 		DefaultProjectId: outputs["defaultProjectId"],
+		Description: outputs["description"],
 		DomainId: outputs["domainId"],
 		Enabled: outputs["enabled"],
 		IdpId: outputs["idpId"],
@@ -64,6 +65,8 @@ type GetUserArgs struct {
 type GetUserResult struct {
 	// See Argument Reference above.
 	DefaultProjectId interface{}
+	// A description of the user.
+	Description interface{}
 	// See Argument Reference above.
 	DomainId interface{}
 	// See Argument Reference above.
