@@ -299,6 +299,8 @@ github.com/gophercloud/gophercloud v0.0.0-20190208042652-bc37892e1968/go.mod h1:
 github.com/gophercloud/gophercloud v0.0.0-20190212181753-892256c46858/go.mod h1:vxM41WHh5uqHVBMZHzuwNOHh8XEoIEcSTewFxm1c5g8=
 github.com/gophercloud/gophercloud v0.3.1-0.20190807175045-25a84d593c97 h1:aK7cPPR1f79MwKk6jqkcmRx94sgdGId9sDIzRvd4CZ4=
 github.com/gophercloud/gophercloud v0.3.1-0.20190807175045-25a84d593c97/go.mod h1:vxM41WHh5uqHVBMZHzuwNOHh8XEoIEcSTewFxm1c5g8=
+github.com/gophercloud/gophercloud v0.4.1-0.20190920074709-6e93a6ba3b09 h1:6LeYVuUyp73zndCXz0Pr8poOnnZM255YF3V1J9kRfy8=
+github.com/gophercloud/gophercloud v0.4.1-0.20190920074709-6e93a6ba3b09/go.mod h1:vxM41WHh5uqHVBMZHzuwNOHh8XEoIEcSTewFxm1c5g8=
 github.com/gophercloud/utils v0.0.0-20190128072930-fbb6ab446f01/go.mod h1:wjDF8z83zTeg5eMLml5EBSlAhbF7G8DobyI1YsMuyzw=
 github.com/gophercloud/utils v0.0.0-20190313033024-0bcc8e728cb5 h1:8USoe8m65WcTOYy+MUu+EtLJJysSODnoNDNCEWhDMso=
 github.com/gophercloud/utils v0.0.0-20190313033024-0bcc8e728cb5/go.mod h1:SZ9FTKibIotDtCrxAU/evccoyu1yhKST6hgBvwTB5Eg=
@@ -751,6 +753,8 @@ github.com/tarm/serial v0.0.0-20180830185346-98f6abe2eb07/go.mod h1:kDXzergiv9cb
 github.com/terraform-providers/terraform-provider-openstack v1.15.0/go.mod h1:2aQ6n/BtChAl1y2S60vebhyJyZXBsuAI5G4+lHrT1Ew=
 github.com/terraform-providers/terraform-provider-openstack v1.22.0 h1:2yblBUQc72+rvTpRefUSjJU2AuudAKD9ozblw2o/lPo=
 github.com/terraform-providers/terraform-provider-openstack v1.22.0/go.mod h1:GUqjSfHDQHt4dgO9F3UFGyfHQaNJxK7NSl1fnFGZc2E=
+github.com/terraform-providers/terraform-provider-openstack v1.23.0 h1:jnDGGR/pXFFpXTzeerHoJvO6RycAKEJUObUma2pf1yU=
+github.com/terraform-providers/terraform-provider-openstack v1.23.0/go.mod h1:/sqiKpwT2HSRsIHmQ1MBZ6kPZoCRjc58IuHuC0YLsp4=
 github.com/texttheater/golang-levenshtein v0.0.0-20180516184445-d188e65d659e h1:T5PdfK/M1xyrHwynxMIVMWLS7f/qHwfslZphxtGnw7s=
 github.com/texttheater/golang-levenshtein v0.0.0-20180516184445-d188e65d659e/go.mod h1:XDKHRm5ThF8YJjx001LtgelzsoaEcvnA7lVWz9EeX3g=
 github.com/tidwall/pretty v0.0.0-20190325153808-1166b9ac2b65/go.mod h1:XNkn88O1ChpSDQmQeStsy+sBenx6DDtFZJxhVysOjyk=
