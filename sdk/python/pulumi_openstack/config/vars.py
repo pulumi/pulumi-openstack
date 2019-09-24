@@ -51,6 +51,16 @@ default_domain = __config__.get('defaultDomain') or (utilities.get_env('OS_DEFAU
 The name of the Domain ID to scope to if no other domain is specified. Defaults to `default` (Identity v3).
 """
 
+delayed_auth = __config__.get('delayedAuth')
+"""
+If set to `true`, OpenStack authorization will be perfomed, when the service provider client is called.
+"""
+
+disable_no_cache_header = __config__.get('disableNoCacheHeader')
+"""
+If set to `true`, the HTTP `Cache-Control: no-cache` header will not be added by default to all API requests.
+"""
+
 domain_id = __config__.get('domainId') or utilities.get_env('OS_DOMAIN_ID')
 """
 The ID of the Domain to scope to (Identity v3).

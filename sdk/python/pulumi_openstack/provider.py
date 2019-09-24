@@ -10,7 +10,7 @@ from typing import Union
 from . import utilities, tables
 
 class Provider(pulumi.ProviderResource):
-    def __init__(__self__, resource_name, opts=None, application_credential_id=None, application_credential_name=None, application_credential_secret=None, auth_url=None, cacert_file=None, cert=None, cloud=None, default_domain=None, domain_id=None, domain_name=None, endpoint_overrides=None, endpoint_type=None, insecure=None, key=None, max_retries=None, password=None, project_domain_id=None, project_domain_name=None, region=None, swauth=None, tenant_id=None, tenant_name=None, token=None, use_octavia=None, user_domain_id=None, user_domain_name=None, user_id=None, user_name=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, application_credential_id=None, application_credential_name=None, application_credential_secret=None, auth_url=None, cacert_file=None, cert=None, cloud=None, default_domain=None, delayed_auth=None, disable_no_cache_header=None, domain_id=None, domain_name=None, endpoint_overrides=None, endpoint_type=None, insecure=None, key=None, max_retries=None, password=None, project_domain_id=None, project_domain_name=None, region=None, swauth=None, tenant_id=None, tenant_name=None, token=None, use_octavia=None, user_domain_id=None, user_domain_name=None, user_id=None, user_name=None, __props__=None, __name__=None, __opts__=None):
         """
         The provider type for the openstack package. By default, resources use package-wide configuration
         settings, however an explicit `Provider` instance may be created and passed during resource
@@ -57,6 +57,8 @@ class Provider(pulumi.ProviderResource):
             if default_domain is None:
                 default_domain = (utilities.get_env('OS_DEFAULT_DOMAIN') or 'default')
             __props__['default_domain'] = default_domain
+            __props__['delayed_auth'] = pulumi.Output.from_input(delayed_auth).apply(json.dumps) if delayed_auth is not None else None
+            __props__['disable_no_cache_header'] = pulumi.Output.from_input(disable_no_cache_header).apply(json.dumps) if disable_no_cache_header is not None else None
             if domain_id is None:
                 domain_id = utilities.get_env('OS_DOMAIN_ID')
             __props__['domain_id'] = domain_id

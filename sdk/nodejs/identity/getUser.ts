@@ -90,6 +90,10 @@ export interface GetUserResult {
      */
     readonly defaultProjectId: string;
     /**
+     * A description of the user.
+     */
+    readonly description: string;
+    /**
      * See Argument Reference above.
      */
     readonly domainId: string;

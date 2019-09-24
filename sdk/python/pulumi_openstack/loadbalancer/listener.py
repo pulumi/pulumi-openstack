@@ -77,7 +77,24 @@ class Listener(pulumi.CustomResource):
     the Listener.  Only administrative users can specify a tenant UUID
     other than their own. Changing this creates a new Listener.
     """
-    def __init__(__self__, resource_name, opts=None, admin_state_up=None, connection_limit=None, default_pool_id=None, default_tls_container_ref=None, description=None, loadbalancer_id=None, name=None, protocol=None, protocol_port=None, region=None, sni_container_refs=None, tenant_id=None, __props__=None, __name__=None, __opts__=None):
+    timeout_client_data: pulumi.Output[float]
+    """
+    The client inactivity timeout in milliseconds.
+    """
+    timeout_member_connect: pulumi.Output[float]
+    """
+    The member connection timeout in milliseconds.
+    """
+    timeout_member_data: pulumi.Output[float]
+    """
+    The member inactivity timeout in milliseconds.
+    """
+    timeout_tcp_inspect: pulumi.Output[float]
+    """
+    The time in milliseconds, to wait for additional
+    TCP packets for content inspection.
+    """
+    def __init__(__self__, resource_name, opts=None, admin_state_up=None, connection_limit=None, default_pool_id=None, default_tls_container_ref=None, description=None, loadbalancer_id=None, name=None, protocol=None, protocol_port=None, region=None, sni_container_refs=None, tenant_id=None, timeout_client_data=None, timeout_member_connect=None, timeout_member_data=None, timeout_tcp_inspect=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a V2 listener resource within OpenStack.
         
@@ -114,6 +131,11 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
                the Listener.  Only administrative users can specify a tenant UUID
                other than their own. Changing this creates a new Listener.
+        :param pulumi.Input[float] timeout_client_data: The client inactivity timeout in milliseconds.
+        :param pulumi.Input[float] timeout_member_connect: The member connection timeout in milliseconds.
+        :param pulumi.Input[float] timeout_member_data: The member inactivity timeout in milliseconds.
+        :param pulumi.Input[float] timeout_tcp_inspect: The time in milliseconds, to wait for additional
+               TCP packets for content inspection.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_listener_v2.html.markdown.
         """
@@ -152,6 +174,10 @@ class Listener(pulumi.CustomResource):
             __props__['region'] = region
             __props__['sni_container_refs'] = sni_container_refs
             __props__['tenant_id'] = tenant_id
+            __props__['timeout_client_data'] = timeout_client_data
+            __props__['timeout_member_connect'] = timeout_member_connect
+            __props__['timeout_member_data'] = timeout_member_data
+            __props__['timeout_tcp_inspect'] = timeout_tcp_inspect
         super(Listener, __self__).__init__(
             'openstack:loadbalancer/listener:Listener',
             resource_name,
@@ -159,7 +185,7 @@ class Listener(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, admin_state_up=None, connection_limit=None, default_pool_id=None, default_tls_container_ref=None, description=None, loadbalancer_id=None, name=None, protocol=None, protocol_port=None, region=None, sni_container_refs=None, tenant_id=None):
+    def get(resource_name, id, opts=None, admin_state_up=None, connection_limit=None, default_pool_id=None, default_tls_container_ref=None, description=None, loadbalancer_id=None, name=None, protocol=None, protocol_port=None, region=None, sni_container_refs=None, tenant_id=None, timeout_client_data=None, timeout_member_connect=None, timeout_member_data=None, timeout_tcp_inspect=None):
         """
         Get an existing Listener resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -198,6 +224,11 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
                the Listener.  Only administrative users can specify a tenant UUID
                other than their own. Changing this creates a new Listener.
+        :param pulumi.Input[float] timeout_client_data: The client inactivity timeout in milliseconds.
+        :param pulumi.Input[float] timeout_member_connect: The member connection timeout in milliseconds.
+        :param pulumi.Input[float] timeout_member_data: The member inactivity timeout in milliseconds.
+        :param pulumi.Input[float] timeout_tcp_inspect: The time in milliseconds, to wait for additional
+               TCP packets for content inspection.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_listener_v2.html.markdown.
         """
@@ -216,6 +247,10 @@ class Listener(pulumi.CustomResource):
         __props__["region"] = region
         __props__["sni_container_refs"] = sni_container_refs
         __props__["tenant_id"] = tenant_id
+        __props__["timeout_client_data"] = timeout_client_data
+        __props__["timeout_member_connect"] = timeout_member_connect
+        __props__["timeout_member_data"] = timeout_member_data
+        __props__["timeout_tcp_inspect"] = timeout_tcp_inspect
         return Listener(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

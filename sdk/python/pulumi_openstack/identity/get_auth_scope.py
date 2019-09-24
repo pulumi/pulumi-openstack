@@ -13,7 +13,19 @@ class GetAuthScopeResult:
     """
     A collection of values returned by getAuthScope.
     """
-    def __init__(__self__, name=None, project_domain_id=None, project_domain_name=None, project_id=None, project_name=None, region=None, roles=None, user_domain_id=None, user_domain_name=None, user_id=None, user_name=None, id=None):
+    def __init__(__self__, domain_id=None, domain_name=None, name=None, project_domain_id=None, project_domain_name=None, project_id=None, project_name=None, region=None, roles=None, user_domain_id=None, user_domain_name=None, user_id=None, user_name=None, id=None):
+        if domain_id and not isinstance(domain_id, str):
+            raise TypeError("Expected argument 'domain_id' to be a str")
+        __self__.domain_id = domain_id
+        """
+        The domain ID of the scope.
+        """
+        if domain_name and not isinstance(domain_name, str):
+            raise TypeError("Expected argument 'domain_name' to be a str")
+        __self__.domain_name = domain_name
+        """
+        The domain name of the scope.
+        """
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
@@ -86,6 +98,8 @@ class AwaitableGetAuthScopeResult(GetAuthScopeResult):
         if False:
             yield self
         return GetAuthScopeResult(
+            domain_id=self.domain_id,
+            domain_name=self.domain_name,
             name=self.name,
             project_domain_id=self.project_domain_id,
             project_domain_name=self.project_domain_name,
@@ -124,6 +138,8 @@ def get_auth_scope(name=None,region=None,opts=None):
     __ret__ = pulumi.runtime.invoke('openstack:identity/getAuthScope:getAuthScope', __args__, opts=opts).value
 
     return AwaitableGetAuthScopeResult(
+        domain_id=__ret__.get('domainId'),
+        domain_name=__ret__.get('domainName'),
         name=__ret__.get('name'),
         project_domain_id=__ret__.get('projectDomainId'),
         project_domain_name=__ret__.get('projectDomainName'),

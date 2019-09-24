@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
         "outDir": "bin",
-        "target": "es6",
+        "target": "es2016",
         "module": "commonjs",
         "moduleResolution": "node",
         "declaration": true,
@@ -76,6 +76,8 @@
         "identity/user.ts",
         "images/getImage.ts",
         "images/image.ts",
+        "images/imageAccess.ts",
+        "images/imageAccessAccept.ts",
         "images/index.ts",
         "index.ts",
         "keymanager/containerV1.ts",

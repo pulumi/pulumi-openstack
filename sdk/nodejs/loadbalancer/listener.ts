@@ -116,6 +116,23 @@ export class Listener extends pulumi.CustomResource {
      * other than their own. Changing this creates a new Listener.
      */
     public readonly tenantId!: pulumi.Output<string>;
+    /**
+     * The client inactivity timeout in milliseconds.
+     */
+    public readonly timeoutClientData!: pulumi.Output<number>;
+    /**
+     * The member connection timeout in milliseconds.
+     */
+    public readonly timeoutMemberConnect!: pulumi.Output<number>;
+    /**
+     * The member inactivity timeout in milliseconds.
+     */
+    public readonly timeoutMemberData!: pulumi.Output<number>;
+    /**
+     * The time in milliseconds, to wait for additional
+     * TCP packets for content inspection.
+     */
+    public readonly timeoutTcpInspect!: pulumi.Output<number>;
 
     /**
      * Create a Listener resource with the given unique name, arguments, and options.
@@ -141,6 +158,10 @@ export class Listener extends pulumi.CustomResource {
             inputs["region"] = state ? state.region : undefined;
             inputs["sniContainerRefs"] = state ? state.sniContainerRefs : undefined;
             inputs["tenantId"] = state ? state.tenantId : undefined;
+            inputs["timeoutClientData"] = state ? state.timeoutClientData : undefined;
+            inputs["timeoutMemberConnect"] = state ? state.timeoutMemberConnect : undefined;
+            inputs["timeoutMemberData"] = state ? state.timeoutMemberData : undefined;
+            inputs["timeoutTcpInspect"] = state ? state.timeoutTcpInspect : undefined;
         } else {
             const args = argsOrState as ListenerArgs | undefined;
             if (!args || args.loadbalancerId === undefined) {
@@ -164,6 +185,10 @@ export class Listener extends pulumi.CustomResource {
             inputs["region"] = args ? args.region : undefined;
             inputs["sniContainerRefs"] = args ? args.sniContainerRefs : undefined;
             inputs["tenantId"] = args ? args.tenantId : undefined;
+            inputs["timeoutClientData"] = args ? args.timeoutClientData : undefined;
+            inputs["timeoutMemberConnect"] = args ? args.timeoutMemberConnect : undefined;
+            inputs["timeoutMemberData"] = args ? args.timeoutMemberData : undefined;
+            inputs["timeoutTcpInspect"] = args ? args.timeoutTcpInspect : undefined;
         }
         if (!opts) {
             opts = {}
@@ -247,6 +272,23 @@ export interface ListenerState {
      * other than their own. Changing this creates a new Listener.
      */
     readonly tenantId?: pulumi.Input<string>;
+    /**
+     * The client inactivity timeout in milliseconds.
+     */
+    readonly timeoutClientData?: pulumi.Input<number>;
+    /**
+     * The member connection timeout in milliseconds.
+     */
+    readonly timeoutMemberConnect?: pulumi.Input<number>;
+    /**
+     * The member inactivity timeout in milliseconds.
+     */
+    readonly timeoutMemberData?: pulumi.Input<number>;
+    /**
+     * The time in milliseconds, to wait for additional
+     * TCP packets for content inspection.
+     */
+    readonly timeoutTcpInspect?: pulumi.Input<number>;
 }
 
 /**
@@ -320,4 +362,21 @@ export interface ListenerArgs {
      * other than their own. Changing this creates a new Listener.
      */
     readonly tenantId?: pulumi.Input<string>;
+    /**
+     * The client inactivity timeout in milliseconds.
+     */
+    readonly timeoutClientData?: pulumi.Input<number>;
+    /**
+     * The member connection timeout in milliseconds.
+     */
+    readonly timeoutMemberConnect?: pulumi.Input<number>;
+    /**
+     * The member inactivity timeout in milliseconds.
+     */
+    readonly timeoutMemberData?: pulumi.Input<number>;
+    /**
+     * The time in milliseconds, to wait for additional
+     * TCP packets for content inspection.
+     */
+    readonly timeoutTcpInspect?: pulumi.Input<number>;
 }

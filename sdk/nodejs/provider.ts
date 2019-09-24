@@ -46,6 +46,8 @@ export class Provider extends pulumi.ProviderResource {
             inputs["cert"] = (args ? args.cert : undefined) || utilities.getEnv("OS_CERT");
             inputs["cloud"] = (args ? args.cloud : undefined) || utilities.getEnv("OS_CLOUD");
             inputs["defaultDomain"] = (args ? args.defaultDomain : undefined) || (utilities.getEnv("OS_DEFAULT_DOMAIN") || "default");
+            inputs["delayedAuth"] = pulumi.output(args ? args.delayedAuth : undefined).apply(JSON.stringify);
+            inputs["disableNoCacheHeader"] = pulumi.output(args ? args.disableNoCacheHeader : undefined).apply(JSON.stringify);
             inputs["domainId"] = (args ? args.domainId : undefined) || utilities.getEnv("OS_DOMAIN_ID");
             inputs["domainName"] = (args ? args.domainName : undefined) || utilities.getEnv("OS_DOMAIN_NAME");
             inputs["endpointOverrides"] = pulumi.output(args ? args.endpointOverrides : undefined).apply(JSON.stringify);
@@ -114,6 +116,14 @@ export interface ProviderArgs {
      * The name of the Domain ID to scope to if no other domain is specified. Defaults to `default` (Identity v3).
      */
     readonly defaultDomain?: pulumi.Input<string>;
+    /**
+     * If set to `true`, OpenStack authorization will be perfomed, when the service provider client is called.
+     */
+    readonly delayedAuth?: pulumi.Input<boolean>;
+    /**
+     * If set to `true`, the HTTP `Cache-Control: no-cache` header will not be added by default to all API requests.
+     */
+    readonly disableNoCacheHeader?: pulumi.Input<boolean>;
     /**
      * The ID of the Domain to scope to (Identity v3).
      */
