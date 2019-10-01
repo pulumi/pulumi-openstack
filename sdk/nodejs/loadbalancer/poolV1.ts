@@ -28,6 +28,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
+ * const network1 = new openstack.networking.Network("network1", {
+ *     adminStateUp: true,
+ * });
+ * const subnet1 = new openstack.networking.Subnet("subnet1", {
+ *     cidr: "192.168.199.0/24",
+ *     ipVersion: 4,
+ *     networkId: network1.id,
+ * });
  * const secgroup1 = new openstack.compute.SecGroup("secgroup1", {
  *     description: "Rules for secgroup1",
  *     rules: [
@@ -44,16 +52,6 @@ import * as utilities from "../utilities";
  *             toPort: 80,
  *         },
  *     ],
- * });
- * const monitor1 = new openstack.loadbalancer.MonitorV1("monitor1", {
- *     adminStateUp: "true",
- *     delay: 30,
- *     maxRetries: 3,
- *     timeout: 5,
- *     type: "TCP",
- * });
- * const network1 = new openstack.networking.Network("network1", {
- *     adminStateUp: true,
  * });
  * const instance1 = new openstack.compute.Instance("instance1", {
  *     networks: [{
@@ -73,10 +71,12 @@ import * as utilities from "../utilities";
  *         secgroup1.name,
  *     ],
  * });
- * const subnet1 = new openstack.networking.Subnet("subnet1", {
- *     cidr: "192.168.199.0/24",
- *     ipVersion: 4,
- *     networkId: network1.id,
+ * const monitor1 = new openstack.loadbalancer.MonitorV1("monitor1", {
+ *     adminStateUp: "true",
+ *     delay: 30,
+ *     maxRetries: 3,
+ *     timeout: 5,
+ *     type: "TCP",
  * });
  * const pool1 = new openstack.loadbalancer.PoolV1("pool1", {
  *     lbMethod: "ROUND_ROBIN",

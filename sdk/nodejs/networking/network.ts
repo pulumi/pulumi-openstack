@@ -15,6 +15,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
+ * const network1 = new openstack.networking.Network("network1", {
+ *     adminStateUp: true,
+ * });
+ * const subnet1 = new openstack.networking.Subnet("subnet1", {
+ *     cidr: "192.168.199.0/24",
+ *     ipVersion: 4,
+ *     networkId: network1.id,
+ * });
  * const secgroup1 = new openstack.compute.SecGroup("secgroup1", {
  *     description: "a security group",
  *     rules: [{
@@ -23,14 +31,6 @@ import * as utilities from "../utilities";
  *         ipProtocol: "tcp",
  *         toPort: 22,
  *     }],
- * });
- * const network1 = new openstack.networking.Network("network1", {
- *     adminStateUp: true,
- * });
- * const subnet1 = new openstack.networking.Subnet("subnet1", {
- *     cidr: "192.168.199.0/24",
- *     ipVersion: 4,
- *     networkId: network1.id,
  * });
  * const port1 = new openstack.networking.Port("port1", {
  *     adminStateUp: true,

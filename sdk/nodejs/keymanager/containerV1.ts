@@ -18,16 +18,8 @@ import * as utilities from "../utilities";
  * import * as fs from "fs";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const subnet1 = openstack.networking.getSubnet({
- *     name: "my-subnet",
- * });
  * const certificate1 = new openstack.keymanager.SecretV1("certificate1", {
  *     payload: fs.readFileSync("cert.pem", "utf-8"),
- *     payloadContentType: "text/plain",
- *     secretType: "certificate",
- * });
- * const intermediate1 = new openstack.keymanager.SecretV1("intermediate1", {
- *     payload: fs.readFileSync("intermediate-ca.pem", "utf-8"),
  *     payloadContentType: "text/plain",
  *     secretType: "certificate",
  * });
@@ -35,6 +27,11 @@ import * as utilities from "../utilities";
  *     payload: fs.readFileSync("cert-key.pem", "utf-8"),
  *     payloadContentType: "text/plain",
  *     secretType: "private",
+ * });
+ * const intermediate1 = new openstack.keymanager.SecretV1("intermediate1", {
+ *     payload: fs.readFileSync("intermediate-ca.pem", "utf-8"),
+ *     payloadContentType: "text/plain",
+ *     secretType: "certificate",
  * });
  * const tls1 = new openstack.keymanager.ContainerV1("tls1", {
  *     secretRefs: [
@@ -52,6 +49,9 @@ import * as utilities from "../utilities";
  *         },
  *     ],
  *     type: "certificate",
+ * });
+ * const subnet1 = openstack.networking.getSubnet({
+ *     name: "my-subnet",
  * });
  * const lb1 = new openstack.loadbalancer.LoadBalancer("lb1", {
  *     vipSubnetId: subnet1.id,

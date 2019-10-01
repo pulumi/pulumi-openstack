@@ -17,10 +17,10 @@ import * as utilities from "../utilities";
  * import * as openstack from "@pulumi/openstack";
  * 
  * const project1 = new openstack.identity.Project("project1", {});
- * const role1 = new openstack.identity.Role("role1", {});
  * const user1 = new openstack.identity.User("user1", {
  *     defaultProjectId: project1.id,
  * });
+ * const role1 = new openstack.identity.Role("role1", {});
  * const roleAssignment1 = new openstack.identity.RoleAssignment("roleAssignment1", {
  *     projectId: project1.id,
  *     roleId: role1.id,
