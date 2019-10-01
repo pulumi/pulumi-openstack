@@ -18,13 +18,13 @@ import * as utilities from "../utilities";
  * const network1 = new openstack.networking.Network("network1", {
  *     adminStateUp: true,
  * });
- * const router1 = new openstack.networking.Router("router1", {
- *     externalNetworkId: "f67f0d72-0ddf-11e4-9d95-e1f29f417e2f",
- * });
  * const subnet1 = new openstack.networking.Subnet("subnet1", {
  *     cidr: "192.168.199.0/24",
  *     ipVersion: 4,
  *     networkId: network1.id,
+ * });
+ * const router1 = new openstack.networking.Router("router1", {
+ *     externalNetworkId: "f67f0d72-0ddf-11e4-9d95-e1f29f417e2f",
  * });
  * const routerInterface1 = new openstack.networking.RouterInterface("routerInterface1", {
  *     routerId: router1.id,

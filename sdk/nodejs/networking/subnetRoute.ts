@@ -15,10 +15,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const network1 = new openstack.networking.Network("network1", {
+ * const router1 = new openstack.networking.Router("router1", {
  *     adminStateUp: true,
  * });
- * const router1 = new openstack.networking.Router("router1", {
+ * const network1 = new openstack.networking.Network("network1", {
  *     adminStateUp: true,
  * });
  * const subnet1 = new openstack.networking.Subnet("subnet1", {

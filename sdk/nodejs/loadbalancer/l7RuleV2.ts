@@ -29,6 +29,11 @@ import * as utilities from "../utilities";
  *     protocol: "HTTP",
  *     protocolPort: 8080,
  * });
+ * const pool1 = new openstack.loadbalancer.Pool("pool1", {
+ *     lbMethod: "ROUND_ROBIN",
+ *     loadbalancerId: loadbalancer1.id,
+ *     protocol: "HTTP",
+ * });
  * const l7policy1 = new openstack.loadbalancer.L7PolicyV2("l7policy1", {
  *     action: "REDIRECT_TO_URL",
  *     description: "test description",
@@ -41,11 +46,6 @@ import * as utilities from "../utilities";
  *     l7policyId: l7policy1.id,
  *     type: "PATH",
  *     value: "/api",
- * });
- * const pool1 = new openstack.loadbalancer.Pool("pool1", {
- *     lbMethod: "ROUND_ROBIN",
- *     loadbalancerId: loadbalancer1.id,
- *     protocol: "HTTP",
  * });
  * ```
  *
