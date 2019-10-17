@@ -3,7 +3,6 @@
 package examples
 
 import (
-	"github.com/stretchr/testify/assert"
 	"os"
 	"path"
 	"testing"
@@ -11,36 +10,48 @@ import (
 	"github.com/pulumi/pulumi/pkg/testing/integration"
 )
 
-func TestExamples(t *testing.T) {
-	region := os.Getenv("OS_AUTH_URL")
-	if region == "" {
+func TestAccWebserver(t *testing.T) {
+	test := getJSBaseOptions(t).
+		With(integration.ProgramTestOptions{
+			Dir: path.Join(getCwd(t), "webserver"),
+		})
+
+	integration.ProgramTest(t, &test)
+}
+
+func checkAuthUrl(t *testing.T) {
+	authUrl := os.Getenv("OS_AUTH_URL")
+	if authUrl == "" {
 		t.Skipf("Skipping test due to missing OS_AUTH_URL environment variable")
 	}
+}
+
+func getCwd(t *testing.T) string {
 	cwd, err := os.Getwd()
-	if !assert.NoError(t, err, "expected a valid working directory: %v", err) {
-		return
+	if err != nil {
+		t.FailNow()
 	}
 
-	base := integration.ProgramTestOptions{
+	return cwd
+}
+
+func getBaseOptions() integration.ProgramTestOptions {
+	return integration.ProgramTestOptions{
 		Tracing: "https://tracing.pulumi-engineering.com/collector/api/v1/spans",
+		// One change is known to occur during refresh of the resources in this example:
+		// `~  openstack:compute:Instance test updated changes: + blockDevices,personalities,schedulerHints``
+		ExpectRefreshChanges: true,
 	}
+}
 
-	examples := []integration.ProgramTestOptions{
-		base.With(integration.ProgramTestOptions{
-			Dir: path.Join(cwd, "webserver"),
-			Dependencies: []string{
-				"@pulumi/openstack",
-			},
-			// One change is known to occur during refresh of the resources in this example:
-			// `~  openstack:compute:Instance test updated changes: + blockDevices,personalities,schedulerHints``
-			ExpectRefreshChanges: true,
-		}),
-	}
+func getJSBaseOptions(t *testing.T) integration.ProgramTestOptions {
+	checkAuthUrl(t)
+	base := getBaseOptions()
+	baseJS := base.With(integration.ProgramTestOptions{
+		Dependencies: []string{
+			"@pulumi/openstack",
+		},
+	})
 
-	for _, ex := range examples {
-		example := ex
-		t.Run(example.Dir, func(t *testing.T) {
-			integration.ProgramTest(t, &example)
-		})
-	}
+	return baseJS
 }
