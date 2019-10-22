@@ -10,6 +10,7 @@ from .floating_ip import *
 from .instance import *
 from .interface_attach import *
 from .keypair import *
+from .quota_set_v2 import *
 from .sec_group import *
 from .server_group import *
 from .volume_attach import *

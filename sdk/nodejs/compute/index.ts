@@ -12,6 +12,7 @@ export * from "./getKeypair";
 export * from "./instance";
 export * from "./interfaceAttach";
 export * from "./keypair";
+export * from "./quotaSetV2";
 export * from "./secGroup";
 export * from "./serverGroup";
 export * from "./volumeAttach";

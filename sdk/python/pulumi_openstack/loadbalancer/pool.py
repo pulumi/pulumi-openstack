@@ -54,7 +54,8 @@ class Pool(pulumi.CustomResource):
     """
     protocol: pulumi.Output[str]
     """
-    See Argument Reference above.
+    The protocol - can either be TCP, HTTP, HTTPS, PROXY
+    or UDP (supported only in Octavia). Changing this creates a new pool.
     """
     region: pulumi.Output[str]
     """
@@ -91,7 +92,8 @@ class Pool(pulumi.CustomResource):
         :param pulumi.Input[dict] persistence: Omit this field to prevent session persistence.  Indicates
                whether connections in the same session will be processed by the same Pool
                member or not. Changing this creates a new pool.
-        :param pulumi.Input[str] protocol: See Argument Reference above.
+        :param pulumi.Input[str] protocol: The protocol - can either be TCP, HTTP, HTTPS, PROXY
+               or UDP (supported only in Octavia). Changing this creates a new pool.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
                A Networking client is needed to create an . If omitted, the
                `region` argument of the provider is used. Changing this creates a new
@@ -171,7 +173,8 @@ class Pool(pulumi.CustomResource):
         :param pulumi.Input[dict] persistence: Omit this field to prevent session persistence.  Indicates
                whether connections in the same session will be processed by the same Pool
                member or not. Changing this creates a new pool.
-        :param pulumi.Input[str] protocol: See Argument Reference above.
+        :param pulumi.Input[str] protocol: The protocol - can either be TCP, HTTP, HTTPS, PROXY
+               or UDP (supported only in Octavia). Changing this creates a new pool.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
                A Networking client is needed to create an . If omitted, the
                `region` argument of the provider is used. Changing this creates a new

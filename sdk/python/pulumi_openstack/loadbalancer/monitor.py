@@ -66,9 +66,9 @@ class Monitor(pulumi.CustomResource):
     """
     type: pulumi.Output[str]
     """
-    The type of probe, which is PING, TCP, HTTP, or HTTPS,
-    that is sent by the load balancer to verify the member state. Changing this
-    creates a new monitor.
+    The type of probe, which is PING, TCP, HTTP, HTTPS,
+    TLS-HELLO or UDP-CONNECT (supported only in Octavia), that is sent by the load
+    balancer to verify the member state. Changing this creates a new monitor.
     """
     url_path: pulumi.Output[str]
     """
@@ -105,9 +105,9 @@ class Monitor(pulumi.CustomResource):
         :param pulumi.Input[float] timeout: Maximum number of seconds for a monitor to wait for a
                ping reply before it times out. The value must be less than the delay
                value.
-        :param pulumi.Input[str] type: The type of probe, which is PING, TCP, HTTP, or HTTPS,
-               that is sent by the load balancer to verify the member state. Changing this
-               creates a new monitor.
+        :param pulumi.Input[str] type: The type of probe, which is PING, TCP, HTTP, HTTPS,
+               TLS-HELLO or UDP-CONNECT (supported only in Octavia), that is sent by the load
+               balancer to verify the member state. Changing this creates a new monitor.
         :param pulumi.Input[str] url_path: Required for HTTP(S) types. URI path that will be
                accessed if monitor type is HTTP or HTTPS.
 
@@ -191,9 +191,9 @@ class Monitor(pulumi.CustomResource):
         :param pulumi.Input[float] timeout: Maximum number of seconds for a monitor to wait for a
                ping reply before it times out. The value must be less than the delay
                value.
-        :param pulumi.Input[str] type: The type of probe, which is PING, TCP, HTTP, or HTTPS,
-               that is sent by the load balancer to verify the member state. Changing this
-               creates a new monitor.
+        :param pulumi.Input[str] type: The type of probe, which is PING, TCP, HTTP, HTTPS,
+               TLS-HELLO or UDP-CONNECT (supported only in Octavia), that is sent by the load
+               balancer to verify the member state. Changing this creates a new monitor.
         :param pulumi.Input[str] url_path: Required for HTTP(S) types. URI path that will be
                accessed if monitor type is HTTP or HTTPS.
 

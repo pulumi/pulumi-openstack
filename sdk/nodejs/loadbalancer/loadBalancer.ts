@@ -60,7 +60,7 @@ export class LoadBalancer extends pulumi.CustomResource {
      * The UUID of a flavor. Changing this creates a new
      * loadbalancer.
      */
-    public readonly flavor!: pulumi.Output<string | undefined>;
+    public readonly flavorId!: pulumi.Output<string | undefined>;
     /**
      * The name of the provider. Changing this
      * creates a new loadbalancer.
@@ -121,7 +121,7 @@ export class LoadBalancer extends pulumi.CustomResource {
             const state = argsOrState as LoadBalancerState | undefined;
             inputs["adminStateUp"] = state ? state.adminStateUp : undefined;
             inputs["description"] = state ? state.description : undefined;
-            inputs["flavor"] = state ? state.flavor : undefined;
+            inputs["flavorId"] = state ? state.flavorId : undefined;
             inputs["loadbalancerProvider"] = state ? state.loadbalancerProvider : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["region"] = state ? state.region : undefined;
@@ -137,7 +137,7 @@ export class LoadBalancer extends pulumi.CustomResource {
             }
             inputs["adminStateUp"] = args ? args.adminStateUp : undefined;
             inputs["description"] = args ? args.description : undefined;
-            inputs["flavor"] = args ? args.flavor : undefined;
+            inputs["flavorId"] = args ? args.flavorId : undefined;
             inputs["loadbalancerProvider"] = args ? args.loadbalancerProvider : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["region"] = args ? args.region : undefined;
@@ -175,7 +175,7 @@ export interface LoadBalancerState {
      * The UUID of a flavor. Changing this creates a new
      * loadbalancer.
      */
-    readonly flavor?: pulumi.Input<string>;
+    readonly flavorId?: pulumi.Input<string>;
     /**
      * The name of the provider. Changing this
      * creates a new loadbalancer.
@@ -240,7 +240,7 @@ export interface LoadBalancerArgs {
      * The UUID of a flavor. Changing this creates a new
      * loadbalancer.
      */
-    readonly flavor?: pulumi.Input<string>;
+    readonly flavorId?: pulumi.Input<string>;
     /**
      * The name of the provider. Changing this
      * creates a new loadbalancer.

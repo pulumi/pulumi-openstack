@@ -49,8 +49,9 @@ class Listener(pulumi.CustomResource):
     """
     protocol: pulumi.Output[str]
     """
-    The protocol - can either be TCP, HTTP, HTTPS or TERMINATED_HTTPS.
-    Changing this creates a new Listener.
+    The protocol - can either be TCP, HTTP, HTTPS,
+    TERMINATED_HTTPS or UDP (supported only in Octavia). Changing this creates a
+    new Listener.
     """
     protocol_port: pulumi.Output[float]
     """
@@ -116,8 +117,9 @@ class Listener(pulumi.CustomResource):
                Listener. Changing this creates a new Listener.
         :param pulumi.Input[str] name: Human-readable name for the Listener. Does not have
                to be unique.
-        :param pulumi.Input[str] protocol: The protocol - can either be TCP, HTTP, HTTPS or TERMINATED_HTTPS.
-               Changing this creates a new Listener.
+        :param pulumi.Input[str] protocol: The protocol - can either be TCP, HTTP, HTTPS,
+               TERMINATED_HTTPS or UDP (supported only in Octavia). Changing this creates a
+               new Listener.
         :param pulumi.Input[float] protocol_port: The port on which to listen for client traffic.
                Changing this creates a new Listener.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
@@ -209,8 +211,9 @@ class Listener(pulumi.CustomResource):
                Listener. Changing this creates a new Listener.
         :param pulumi.Input[str] name: Human-readable name for the Listener. Does not have
                to be unique.
-        :param pulumi.Input[str] protocol: The protocol - can either be TCP, HTTP, HTTPS or TERMINATED_HTTPS.
-               Changing this creates a new Listener.
+        :param pulumi.Input[str] protocol: The protocol - can either be TCP, HTTP, HTTPS,
+               TERMINATED_HTTPS or UDP (supported only in Octavia). Changing this creates a
+               new Listener.
         :param pulumi.Input[float] protocol_port: The port on which to listen for client traffic.
                Changing this creates a new Listener.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
