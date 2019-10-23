@@ -168,9 +168,9 @@ func (r *Monitor) Timeout() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["timeout"])
 }
 
-// The type of probe, which is PING, TCP, HTTP, or HTTPS,
-// that is sent by the load balancer to verify the member state. Changing this
-// creates a new monitor.
+// The type of probe, which is PING, TCP, HTTP, HTTPS,
+// TLS-HELLO or UDP-CONNECT (supported only in Octavia), that is sent by the load
+// balancer to verify the member state. Changing this creates a new monitor.
 func (r *Monitor) Type() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["type"])
 }
@@ -217,9 +217,9 @@ type MonitorState struct {
 	// ping reply before it times out. The value must be less than the delay
 	// value.
 	Timeout interface{}
-	// The type of probe, which is PING, TCP, HTTP, or HTTPS,
-	// that is sent by the load balancer to verify the member state. Changing this
-	// creates a new monitor.
+	// The type of probe, which is PING, TCP, HTTP, HTTPS,
+	// TLS-HELLO or UDP-CONNECT (supported only in Octavia), that is sent by the load
+	// balancer to verify the member state. Changing this creates a new monitor.
 	Type interface{}
 	// Required for HTTP(S) types. URI path that will be
 	// accessed if monitor type is HTTP or HTTPS.
@@ -262,9 +262,9 @@ type MonitorArgs struct {
 	// ping reply before it times out. The value must be less than the delay
 	// value.
 	Timeout interface{}
-	// The type of probe, which is PING, TCP, HTTP, or HTTPS,
-	// that is sent by the load balancer to verify the member state. Changing this
-	// creates a new monitor.
+	// The type of probe, which is PING, TCP, HTTP, HTTPS,
+	// TLS-HELLO or UDP-CONNECT (supported only in Octavia), that is sent by the load
+	// balancer to verify the member state. Changing this creates a new monitor.
 	Type interface{}
 	// Required for HTTP(S) types. URI path that will be
 	// accessed if monitor type is HTTP or HTTPS.

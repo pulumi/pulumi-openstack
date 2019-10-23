@@ -24,6 +24,11 @@ class Instance(pulumi.CustomResource):
     Changing this changes the root password on the existing server.
     """
     all_metadata: pulumi.Output[dict]
+    all_tags: pulumi.Output[list]
+    """
+    The collection of tags assigned on the instance, which have
+    been explicitly and implicitly added.
+    """
     availability_zone: pulumi.Output[str]
     """
     The availability zone in which to create
@@ -159,6 +164,11 @@ class Instance(pulumi.CustomResource):
     before destroying it, thus giving chance for guest OS daemons to stop correctly.
     If instance doesn't stop within timeout, it will be destroyed anyway.
     """
+    tags: pulumi.Output[list]
+    """
+    A set of string tags for the instance. Changing this
+    updates the existing instance tags.
+    """
     user_data: pulumi.Output[str]
     """
     The user data to provide when launching the instance.
@@ -171,7 +181,7 @@ class Instance(pulumi.CustomResource):
     
       * `ignoreResizeConfirmation` (`bool`)
     """
-    def __init__(__self__, resource_name, opts=None, access_ip_v4=None, access_ip_v6=None, admin_pass=None, availability_zone=None, block_devices=None, config_drive=None, flavor_id=None, flavor_name=None, force_delete=None, image_id=None, image_name=None, key_pair=None, metadata=None, name=None, networks=None, personalities=None, power_state=None, region=None, scheduler_hints=None, security_groups=None, stop_before_destroy=None, user_data=None, vendor_options=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, access_ip_v4=None, access_ip_v6=None, admin_pass=None, availability_zone=None, block_devices=None, config_drive=None, flavor_id=None, flavor_name=None, force_delete=None, image_id=None, image_name=None, key_pair=None, metadata=None, name=None, networks=None, personalities=None, power_state=None, region=None, scheduler_hints=None, security_groups=None, stop_before_destroy=None, tags=None, user_data=None, vendor_options=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a V2 VM instance resource within OpenStack.
         
@@ -246,6 +256,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] stop_before_destroy: Whether to try stop instance gracefully
                before destroying it, thus giving chance for guest OS daemons to stop correctly.
                If instance doesn't stop within timeout, it will be destroyed anyway.
+        :param pulumi.Input[list] tags: A set of string tags for the instance. Changing this
+               updates the existing instance tags.
         :param pulumi.Input[str] user_data: The user data to provide when launching the instance.
                Changing this creates a new server.
         :param pulumi.Input[dict] vendor_options: Map of additional vendor-specific options.
@@ -332,9 +344,11 @@ class Instance(pulumi.CustomResource):
             __props__['scheduler_hints'] = scheduler_hints
             __props__['security_groups'] = security_groups
             __props__['stop_before_destroy'] = stop_before_destroy
+            __props__['tags'] = tags
             __props__['user_data'] = user_data
             __props__['vendor_options'] = vendor_options
             __props__['all_metadata'] = None
+            __props__['all_tags'] = None
         super(Instance, __self__).__init__(
             'openstack:compute/instance:Instance',
             resource_name,
@@ -342,7 +356,7 @@ class Instance(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, access_ip_v4=None, access_ip_v6=None, admin_pass=None, all_metadata=None, availability_zone=None, block_devices=None, config_drive=None, flavor_id=None, flavor_name=None, force_delete=None, image_id=None, image_name=None, key_pair=None, metadata=None, name=None, networks=None, personalities=None, power_state=None, region=None, scheduler_hints=None, security_groups=None, stop_before_destroy=None, user_data=None, vendor_options=None):
+    def get(resource_name, id, opts=None, access_ip_v4=None, access_ip_v6=None, admin_pass=None, all_metadata=None, all_tags=None, availability_zone=None, block_devices=None, config_drive=None, flavor_id=None, flavor_name=None, force_delete=None, image_id=None, image_name=None, key_pair=None, metadata=None, name=None, networks=None, personalities=None, power_state=None, region=None, scheduler_hints=None, security_groups=None, stop_before_destroy=None, tags=None, user_data=None, vendor_options=None):
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -354,6 +368,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] access_ip_v6: The first detected Fixed IPv6 address.
         :param pulumi.Input[str] admin_pass: The administrative password to assign to the server.
                Changing this changes the root password on the existing server.
+        :param pulumi.Input[list] all_tags: The collection of tags assigned on the instance, which have
+               been explicitly and implicitly added.
         :param pulumi.Input[str] availability_zone: The availability zone in which to create
                the server. Changing this creates a new server.
         :param pulumi.Input[list] block_devices: Configuration of block devices. The block_device
@@ -406,6 +422,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] stop_before_destroy: Whether to try stop instance gracefully
                before destroying it, thus giving chance for guest OS daemons to stop correctly.
                If instance doesn't stop within timeout, it will be destroyed anyway.
+        :param pulumi.Input[list] tags: A set of string tags for the instance. Changing this
+               updates the existing instance tags.
         :param pulumi.Input[str] user_data: The user data to provide when launching the instance.
                Changing this creates a new server.
         :param pulumi.Input[dict] vendor_options: Map of additional vendor-specific options.
@@ -461,6 +479,7 @@ class Instance(pulumi.CustomResource):
         __props__["access_ip_v6"] = access_ip_v6
         __props__["admin_pass"] = admin_pass
         __props__["all_metadata"] = all_metadata
+        __props__["all_tags"] = all_tags
         __props__["availability_zone"] = availability_zone
         __props__["block_devices"] = block_devices
         __props__["config_drive"] = config_drive
@@ -479,6 +498,7 @@ class Instance(pulumi.CustomResource):
         __props__["scheduler_hints"] = scheduler_hints
         __props__["security_groups"] = security_groups
         __props__["stop_before_destroy"] = stop_before_destroy
+        __props__["tags"] = tags
         __props__["user_data"] = user_data
         __props__["vendor_options"] = vendor_options
         return Instance(resource_name, opts=opts, __props__=__props__)

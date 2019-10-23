@@ -133,7 +133,8 @@ func (r *Pool) Persistence() *pulumi.Output {
 	return r.s.State["persistence"]
 }
 
-// See Argument Reference above.
+// The protocol - can either be TCP, HTTP, HTTPS, PROXY
+// or UDP (supported only in Octavia). Changing this creates a new pool.
 func (r *Pool) Protocol() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["protocol"])
 }
@@ -178,7 +179,8 @@ type PoolState struct {
 	// whether connections in the same session will be processed by the same Pool
 	// member or not. Changing this creates a new pool.
 	Persistence interface{}
-	// See Argument Reference above.
+	// The protocol - can either be TCP, HTTP, HTTPS, PROXY
+	// or UDP (supported only in Octavia). Changing this creates a new pool.
 	Protocol interface{}
 	// The region in which to obtain the V2 Networking client.
 	// A Networking client is needed to create an . If omitted, the
@@ -216,7 +218,8 @@ type PoolArgs struct {
 	// whether connections in the same session will be processed by the same Pool
 	// member or not. Changing this creates a new pool.
 	Persistence interface{}
-	// See Argument Reference above.
+	// The protocol - can either be TCP, HTTP, HTTPS, PROXY
+	// or UDP (supported only in Octavia). Changing this creates a new pool.
 	Protocol interface{}
 	// The region in which to obtain the V2 Networking client.
 	// A Networking client is needed to create an . If omitted, the

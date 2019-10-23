@@ -17,10 +17,10 @@ package openstack
 import (
 	"unicode"
 
-	"github.com/hashicorp/terraform/helper/schema"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/terraform-providers/terraform-provider-openstack/openstack"
 
-	"github.com/pulumi/pulumi-terraform/pkg/tfbridge"
+	"github.com/pulumi/pulumi-terraform-bridge/pkg/tfbridge"
 	"github.com/pulumi/pulumi/pkg/tokens"
 )
 
@@ -229,6 +229,7 @@ func Provider() tfbridge.ProviderInfo {
 			"openstack_compute_secgroup_v2":             {Tok: openstackResource(computeMod, "SecGroup")},
 			"openstack_compute_servergroup_v2":          {Tok: openstackResource(computeMod, "ServerGroup")},
 			"openstack_compute_volume_attach_v2":        {Tok: openstackResource(computeMod, "VolumeAttach")},
+			"openstack_compute_quotaset_v2":             {Tok: openstackResource(computeMod, "QuotaSetV2")},
 
 			// Container Infrastructure
 			"openstack_containerinfra_cluster_v1":         {Tok: openstackResource(containerinfraMod, "Cluster")},
@@ -295,6 +296,7 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"openstack_networking_qos_policy_v2":  {Tok: openstackResource(networkingMod, "QosPolicy")},
 			"openstack_networking_rbac_policy_v2": {Tok: openstackResource(networkingMod, "RbacPolicyV2")},
+			"openstack_networking_quota_v2":       {Tok: openstackResource(networkingMod, "QuotaV2")},
 
 			// Load Balancer
 			"openstack_lb_member_v1":       {Tok: openstackResource(lbMod, "MemberV1")},

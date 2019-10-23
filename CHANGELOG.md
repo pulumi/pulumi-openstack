@@ -3,6 +3,7 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 * Regenerate SDK against tf2pulumi 0.6.0
+* Upgrade to v1.24.0 of the OpenStack Terraform Provider
 
 ---
 

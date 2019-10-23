@@ -53,6 +53,7 @@ func NewInstance(ctx *pulumi.Context,
 		inputs["schedulerHints"] = nil
 		inputs["securityGroups"] = nil
 		inputs["stopBeforeDestroy"] = nil
+		inputs["tags"] = nil
 		inputs["userData"] = nil
 		inputs["vendorOptions"] = nil
 	} else {
@@ -77,10 +78,12 @@ func NewInstance(ctx *pulumi.Context,
 		inputs["schedulerHints"] = args.SchedulerHints
 		inputs["securityGroups"] = args.SecurityGroups
 		inputs["stopBeforeDestroy"] = args.StopBeforeDestroy
+		inputs["tags"] = args.Tags
 		inputs["userData"] = args.UserData
 		inputs["vendorOptions"] = args.VendorOptions
 	}
 	inputs["allMetadata"] = nil
+	inputs["allTags"] = nil
 	s, err := ctx.RegisterResource("openstack:compute/instance:Instance", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
@@ -98,6 +101,7 @@ func GetInstance(ctx *pulumi.Context,
 		inputs["accessIpV6"] = state.AccessIpV6
 		inputs["adminPass"] = state.AdminPass
 		inputs["allMetadata"] = state.AllMetadata
+		inputs["allTags"] = state.AllTags
 		inputs["availabilityZone"] = state.AvailabilityZone
 		inputs["blockDevices"] = state.BlockDevices
 		inputs["configDrive"] = state.ConfigDrive
@@ -116,6 +120,7 @@ func GetInstance(ctx *pulumi.Context,
 		inputs["schedulerHints"] = state.SchedulerHints
 		inputs["securityGroups"] = state.SecurityGroups
 		inputs["stopBeforeDestroy"] = state.StopBeforeDestroy
+		inputs["tags"] = state.Tags
 		inputs["userData"] = state.UserData
 		inputs["vendorOptions"] = state.VendorOptions
 	}
@@ -154,6 +159,12 @@ func (r *Instance) AdminPass() *pulumi.StringOutput {
 
 func (r *Instance) AllMetadata() *pulumi.MapOutput {
 	return (*pulumi.MapOutput)(r.s.State["allMetadata"])
+}
+
+// The collection of tags assigned on the instance, which have
+// been explicitly and implicitly added.
+func (r *Instance) AllTags() *pulumi.ArrayOutput {
+	return (*pulumi.ArrayOutput)(r.s.State["allTags"])
 }
 
 // The availability zone in which to create
@@ -280,6 +291,12 @@ func (r *Instance) StopBeforeDestroy() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["stopBeforeDestroy"])
 }
 
+// A set of string tags for the instance. Changing this
+// updates the existing instance tags.
+func (r *Instance) Tags() *pulumi.ArrayOutput {
+	return (*pulumi.ArrayOutput)(r.s.State["tags"])
+}
+
 // The user data to provide when launching the instance.
 // Changing this creates a new server.
 func (r *Instance) UserData() *pulumi.StringOutput {
@@ -302,6 +319,9 @@ type InstanceState struct {
 	// Changing this changes the root password on the existing server.
 	AdminPass interface{}
 	AllMetadata interface{}
+	// The collection of tags assigned on the instance, which have
+	// been explicitly and implicitly added.
+	AllTags interface{}
 	// The availability zone in which to create
 	// the server. Changing this creates a new server.
 	AvailabilityZone interface{}
@@ -372,6 +392,9 @@ type InstanceState struct {
 	// before destroying it, thus giving chance for guest OS daemons to stop correctly.
 	// If instance doesn't stop within timeout, it will be destroyed anyway.
 	StopBeforeDestroy interface{}
+	// A set of string tags for the instance. Changing this
+	// updates the existing instance tags.
+	Tags interface{}
 	// The user data to provide when launching the instance.
 	// Changing this creates a new server.
 	UserData interface{}
@@ -459,6 +482,9 @@ type InstanceArgs struct {
 	// before destroying it, thus giving chance for guest OS daemons to stop correctly.
 	// If instance doesn't stop within timeout, it will be destroyed anyway.
 	StopBeforeDestroy interface{}
+	// A set of string tags for the instance. Changing this
+	// updates the existing instance tags.
+	Tags interface{}
 	// The user data to provide when launching the instance.
 	// Changing this creates a new server.
 	UserData interface{}

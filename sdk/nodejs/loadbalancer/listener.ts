@@ -87,8 +87,9 @@ export class Listener extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The protocol - can either be TCP, HTTP, HTTPS or TERMINATED_HTTPS.
-     * Changing this creates a new Listener.
+     * The protocol - can either be TCP, HTTP, HTTPS,
+     * TERMINATED_HTTPS or UDP (supported only in Octavia). Changing this creates a
+     * new Listener.
      */
     public readonly protocol!: pulumi.Output<string>;
     /**
@@ -243,8 +244,9 @@ export interface ListenerState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The protocol - can either be TCP, HTTP, HTTPS or TERMINATED_HTTPS.
-     * Changing this creates a new Listener.
+     * The protocol - can either be TCP, HTTP, HTTPS,
+     * TERMINATED_HTTPS or UDP (supported only in Octavia). Changing this creates a
+     * new Listener.
      */
     readonly protocol?: pulumi.Input<string>;
     /**
@@ -333,8 +335,9 @@ export interface ListenerArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The protocol - can either be TCP, HTTP, HTTPS or TERMINATED_HTTPS.
-     * Changing this creates a new Listener.
+     * The protocol - can either be TCP, HTTP, HTTPS,
+     * TERMINATED_HTTPS or UDP (supported only in Octavia). Changing this creates a
+     * new Listener.
      */
     readonly protocol: pulumi.Input<string>;
     /**

@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  *     listenerId: "d9415786-5f1a-428b-b35f-2f1523e146d2",
  *     persistence: {
  *         cookieName: "testCookie",
- *         type: "HTTP_COOKIE",
+ *         type: "APP_COOKIE",
  *     },
  *     protocol: "HTTP",
  * });
@@ -93,7 +93,8 @@ export class Pool extends pulumi.CustomResource {
      */
     public readonly persistence!: pulumi.Output<outputs.loadbalancer.PoolPersistence>;
     /**
-     * See Argument Reference above.
+     * The protocol - can either be TCP, HTTP, HTTPS, PROXY
+     * or UDP (supported only in Octavia). Changing this creates a new pool.
      */
     public readonly protocol!: pulumi.Output<string>;
     /**
@@ -204,7 +205,8 @@ export interface PoolState {
      */
     readonly persistence?: pulumi.Input<inputs.loadbalancer.PoolPersistence>;
     /**
-     * See Argument Reference above.
+     * The protocol - can either be TCP, HTTP, HTTPS, PROXY
+     * or UDP (supported only in Octavia). Changing this creates a new pool.
      */
     readonly protocol?: pulumi.Input<string>;
     /**
@@ -264,7 +266,8 @@ export interface PoolArgs {
      */
     readonly persistence?: pulumi.Input<inputs.loadbalancer.PoolPersistence>;
     /**
-     * See Argument Reference above.
+     * The protocol - can either be TCP, HTTP, HTTPS, PROXY
+     * or UDP (supported only in Octavia). Changing this creates a new pool.
      */
     readonly protocol: pulumi.Input<string>;
     /**

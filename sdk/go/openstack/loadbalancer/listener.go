@@ -154,8 +154,9 @@ func (r *Listener) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
-// The protocol - can either be TCP, HTTP, HTTPS or TERMINATED_HTTPS.
-// Changing this creates a new Listener.
+// The protocol - can either be TCP, HTTP, HTTPS,
+// TERMINATED_HTTPS or UDP (supported only in Octavia). Changing this creates a
+// new Listener.
 func (r *Listener) Protocol() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["protocol"])
 }
@@ -235,8 +236,9 @@ type ListenerState struct {
 	// Human-readable name for the Listener. Does not have
 	// to be unique.
 	Name interface{}
-	// The protocol - can either be TCP, HTTP, HTTPS or TERMINATED_HTTPS.
-	// Changing this creates a new Listener.
+	// The protocol - can either be TCP, HTTP, HTTPS,
+	// TERMINATED_HTTPS or UDP (supported only in Octavia). Changing this creates a
+	// new Listener.
 	Protocol interface{}
 	// The port on which to listen for client traffic.
 	// Changing this creates a new Listener.
@@ -291,8 +293,9 @@ type ListenerArgs struct {
 	// Human-readable name for the Listener. Does not have
 	// to be unique.
 	Name interface{}
-	// The protocol - can either be TCP, HTTP, HTTPS or TERMINATED_HTTPS.
-	// Changing this creates a new Listener.
+	// The protocol - can either be TCP, HTTP, HTTPS,
+	// TERMINATED_HTTPS or UDP (supported only in Octavia). Changing this creates a
+	// new Listener.
 	Protocol interface{}
 	// The port on which to listen for client traffic.
 	// Changing this creates a new Listener.

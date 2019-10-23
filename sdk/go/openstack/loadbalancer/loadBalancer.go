@@ -25,7 +25,7 @@ func NewLoadBalancer(ctx *pulumi.Context,
 	if args == nil {
 		inputs["adminStateUp"] = nil
 		inputs["description"] = nil
-		inputs["flavor"] = nil
+		inputs["flavorId"] = nil
 		inputs["loadbalancerProvider"] = nil
 		inputs["name"] = nil
 		inputs["region"] = nil
@@ -36,7 +36,7 @@ func NewLoadBalancer(ctx *pulumi.Context,
 	} else {
 		inputs["adminStateUp"] = args.AdminStateUp
 		inputs["description"] = args.Description
-		inputs["flavor"] = args.Flavor
+		inputs["flavorId"] = args.FlavorId
 		inputs["loadbalancerProvider"] = args.LoadbalancerProvider
 		inputs["name"] = args.Name
 		inputs["region"] = args.Region
@@ -61,7 +61,7 @@ func GetLoadBalancer(ctx *pulumi.Context,
 	if state != nil {
 		inputs["adminStateUp"] = state.AdminStateUp
 		inputs["description"] = state.Description
-		inputs["flavor"] = state.Flavor
+		inputs["flavorId"] = state.FlavorId
 		inputs["loadbalancerProvider"] = state.LoadbalancerProvider
 		inputs["name"] = state.Name
 		inputs["region"] = state.Region
@@ -101,8 +101,8 @@ func (r *LoadBalancer) Description() *pulumi.StringOutput {
 
 // The UUID of a flavor. Changing this creates a new
 // loadbalancer.
-func (r *LoadBalancer) Flavor() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["flavor"])
+func (r *LoadBalancer) FlavorId() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["flavorId"])
 }
 
 // The name of the provider. Changing this
@@ -167,7 +167,7 @@ type LoadBalancerState struct {
 	Description interface{}
 	// The UUID of a flavor. Changing this creates a new
 	// loadbalancer.
-	Flavor interface{}
+	FlavorId interface{}
 	// The name of the provider. Changing this
 	// creates a new loadbalancer.
 	LoadbalancerProvider interface{}
@@ -208,7 +208,7 @@ type LoadBalancerArgs struct {
 	Description interface{}
 	// The UUID of a flavor. Changing this creates a new
 	// loadbalancer.
-	Flavor interface{}
+	FlavorId interface{}
 	// The name of the provider. Changing this
 	// creates a new loadbalancer.
 	LoadbalancerProvider interface{}

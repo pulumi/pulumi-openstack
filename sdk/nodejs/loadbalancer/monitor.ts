@@ -106,9 +106,9 @@ export class Monitor extends pulumi.CustomResource {
      */
     public readonly timeout!: pulumi.Output<number>;
     /**
-     * The type of probe, which is PING, TCP, HTTP, or HTTPS,
-     * that is sent by the load balancer to verify the member state. Changing this
-     * creates a new monitor.
+     * The type of probe, which is PING, TCP, HTTP, HTTPS,
+     * TLS-HELLO or UDP-CONNECT (supported only in Octavia), that is sent by the load
+     * balancer to verify the member state. Changing this creates a new monitor.
      */
     public readonly type!: pulumi.Output<string>;
     /**
@@ -241,9 +241,9 @@ export interface MonitorState {
      */
     readonly timeout?: pulumi.Input<number>;
     /**
-     * The type of probe, which is PING, TCP, HTTP, or HTTPS,
-     * that is sent by the load balancer to verify the member state. Changing this
-     * creates a new monitor.
+     * The type of probe, which is PING, TCP, HTTP, HTTPS,
+     * TLS-HELLO or UDP-CONNECT (supported only in Octavia), that is sent by the load
+     * balancer to verify the member state. Changing this creates a new monitor.
      */
     readonly type?: pulumi.Input<string>;
     /**
@@ -312,9 +312,9 @@ export interface MonitorArgs {
      */
     readonly timeout: pulumi.Input<number>;
     /**
-     * The type of probe, which is PING, TCP, HTTP, or HTTPS,
-     * that is sent by the load balancer to verify the member state. Changing this
-     * creates a new monitor.
+     * The type of probe, which is PING, TCP, HTTP, HTTPS,
+     * TLS-HELLO or UDP-CONNECT (supported only in Octavia), that is sent by the load
+     * balancer to verify the member state. Changing this creates a new monitor.
      */
     readonly type: pulumi.Input<string>;
     /**

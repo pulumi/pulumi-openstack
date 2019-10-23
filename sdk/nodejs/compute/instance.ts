@@ -51,6 +51,11 @@ export class Instance extends pulumi.CustomResource {
     public readonly adminPass!: pulumi.Output<string | undefined>;
     public /*out*/ readonly allMetadata!: pulumi.Output<{[key: string]: any}>;
     /**
+     * The collection of tags assigned on the instance, which have
+     * been explicitly and implicitly added.
+     */
+    public /*out*/ readonly allTags!: pulumi.Output<string[]>;
+    /**
      * The availability zone in which to create
      * the server. Changing this creates a new server.
      */
@@ -157,6 +162,11 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly stopBeforeDestroy!: pulumi.Output<boolean | undefined>;
     /**
+     * A set of string tags for the instance. Changing this
+     * updates the existing instance tags.
+     */
+    public readonly tags!: pulumi.Output<string[] | undefined>;
+    /**
      * The user data to provide when launching the instance.
      * Changing this creates a new server.
      */
@@ -183,6 +193,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["accessIpV6"] = state ? state.accessIpV6 : undefined;
             inputs["adminPass"] = state ? state.adminPass : undefined;
             inputs["allMetadata"] = state ? state.allMetadata : undefined;
+            inputs["allTags"] = state ? state.allTags : undefined;
             inputs["availabilityZone"] = state ? state.availabilityZone : undefined;
             inputs["blockDevices"] = state ? state.blockDevices : undefined;
             inputs["configDrive"] = state ? state.configDrive : undefined;
@@ -201,6 +212,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["schedulerHints"] = state ? state.schedulerHints : undefined;
             inputs["securityGroups"] = state ? state.securityGroups : undefined;
             inputs["stopBeforeDestroy"] = state ? state.stopBeforeDestroy : undefined;
+            inputs["tags"] = state ? state.tags : undefined;
             inputs["userData"] = state ? state.userData : undefined;
             inputs["vendorOptions"] = state ? state.vendorOptions : undefined;
         } else {
@@ -226,9 +238,11 @@ export class Instance extends pulumi.CustomResource {
             inputs["schedulerHints"] = args ? args.schedulerHints : undefined;
             inputs["securityGroups"] = args ? args.securityGroups : undefined;
             inputs["stopBeforeDestroy"] = args ? args.stopBeforeDestroy : undefined;
+            inputs["tags"] = args ? args.tags : undefined;
             inputs["userData"] = args ? args.userData : undefined;
             inputs["vendorOptions"] = args ? args.vendorOptions : undefined;
             inputs["allMetadata"] = undefined /*out*/;
+            inputs["allTags"] = undefined /*out*/;
         }
         if (!opts) {
             opts = {}
@@ -259,6 +273,11 @@ export interface InstanceState {
      */
     readonly adminPass?: pulumi.Input<string>;
     readonly allMetadata?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The collection of tags assigned on the instance, which have
+     * been explicitly and implicitly added.
+     */
+    readonly allTags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The availability zone in which to create
      * the server. Changing this creates a new server.
@@ -365,6 +384,11 @@ export interface InstanceState {
      * If instance doesn't stop within timeout, it will be destroyed anyway.
      */
     readonly stopBeforeDestroy?: pulumi.Input<boolean>;
+    /**
+     * A set of string tags for the instance. Changing this
+     * updates the existing instance tags.
+     */
+    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The user data to provide when launching the instance.
      * Changing this creates a new server.
@@ -500,6 +524,11 @@ export interface InstanceArgs {
      * If instance doesn't stop within timeout, it will be destroyed anyway.
      */
     readonly stopBeforeDestroy?: pulumi.Input<boolean>;
+    /**
+     * A set of string tags for the instance. Changing this
+     * updates the existing instance tags.
+     */
+    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The user data to provide when launching the instance.
      * Changing this creates a new server.
