@@ -2,10 +2,13 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Regenerate SDK against tf2pulumi 0.6.0
-* Upgrade to v1.24.0 of the OpenStack Terraform Provider
+_(none)_
 
 ---
+
+## 1.0.0 (2019-10-23)
+* Regenerate SDK against tf2pulumi 0.6.0
+* Upgrade to v1.24.0 of the OpenStack Terraform Provider
 
 ## 0.17.13 (2019-09-24)
 * Upgrade to v1.23.0 of the OpenStack Terraform Provider
