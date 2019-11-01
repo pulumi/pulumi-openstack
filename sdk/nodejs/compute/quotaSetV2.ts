@@ -13,26 +13,6 @@ import * as utilities from "../utilities";
  * 
  * > **Note:** This resource has a no-op deletion so no actual actions will be done against the OpenStack API 
  *     in case of delete call.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- * 
- * const project1 = new openstack.identity.Project("project1", {
- *     project1: [{}],
- * });
- * const quotaset1 = new openstack.compute.QuotaSetV2("quotaset1", {
- *     cores: 32,
- *     instances: 20,
- *     keyPairs: 10,
- *     projectId: project1.id,
- *     ram: 40960,
- *     serverGroupMembers: 8,
- *     serverGroups: 4,
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_quotaset_v2.html.markdown.
  */

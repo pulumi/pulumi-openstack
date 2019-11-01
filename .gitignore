@@ -1,6 +1,7 @@
 /vendor/
 .pulumi
 Pulumi.*.yaml
+**/obj/
 
 **/command-output/
 yarn.lock
