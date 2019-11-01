@@ -13,30 +13,6 @@ import * as utilities from "../utilities";
  * 
  * > **Note:** This resource has a no-op deletion so no actual actions will be done against the OpenStack API 
  *     in case of delete call.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- * 
- * const project1 = new openstack.IdentityProjectV2("project1", {
- *     name: "",
- *     project1: [{}],
- * });
- * const quota1 = new openstack.networking.QuotaV2("quota1", {
- *     floatingip: 10,
- *     network: 4,
- *     port: 100,
- *     projectId: project1.id,
- *     rbacPolicy: 10,
- *     router: 4,
- *     securityGroup: 10,
- *     securityGroupRule: 100,
- *     subnet: 8,
- *     subnetpool: 2,
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_quota_v2.html.markdown.
  */
