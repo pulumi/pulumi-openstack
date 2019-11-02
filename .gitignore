@@ -2,6 +2,7 @@
 .pulumi
 Pulumi.*.yaml
 **/obj/
+**/bin/
 
 **/command-output/
 yarn.lock
