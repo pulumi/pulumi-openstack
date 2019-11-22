@@ -58,7 +58,7 @@ namespace Pulumi.Openstack.Networking
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public PortSecGroupAssociate(string name, PortSecGroupAssociateArgs args, CustomResourceOptions? options = null)
-            : base("openstack:networking/portSecGroupAssociate:PortSecGroupAssociate", name, args, MakeResourceOptions(options, ""))
+            : base("openstack:networking/portSecGroupAssociate:PortSecGroupAssociate", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

@@ -65,34 +65,34 @@ func GetFloatingIp(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *FloatingIp) URN() *pulumi.URNOutput {
+func (r *FloatingIp) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *FloatingIp) ID() *pulumi.IDOutput {
+func (r *FloatingIp) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The actual floating IP address itself.
-func (r *FloatingIp) Address() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["address"])
+func (r *FloatingIp) Address() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["address"])
 }
 
 // The fixed IP address corresponding to the floating IP.
-func (r *FloatingIp) FixedIp() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["fixedIp"])
+func (r *FloatingIp) FixedIp() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["fixedIp"])
 }
 
 // UUID of the compute instance associated with the floating IP.
-func (r *FloatingIp) InstanceId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["instanceId"])
+func (r *FloatingIp) InstanceId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["instanceId"])
 }
 
 // The name of the pool from which to obtain the floating
 // IP. Changing this creates a new floating IP.
-func (r *FloatingIp) Pool() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["pool"])
+func (r *FloatingIp) Pool() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["pool"])
 }
 
 // The region in which to obtain the V2 Compute client.
@@ -100,8 +100,8 @@ func (r *FloatingIp) Pool() *pulumi.StringOutput {
 // a compute instance. If omitted, the `region` argument of the provider
 // is used. Changing this creates a new floating IP (which may or may not
 // have a different address).
-func (r *FloatingIp) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *FloatingIp) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // Input properties used for looking up and filtering FloatingIp resources.

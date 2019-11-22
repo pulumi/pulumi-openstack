@@ -217,7 +217,7 @@ namespace Pulumi.Openstack.Networking
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Port(string name, PortArgs args, CustomResourceOptions? options = null)
-            : base("openstack:networking/port:Port", name, args, MakeResourceOptions(options, ""))
+            : base("openstack:networking/port:Port", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

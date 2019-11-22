@@ -94,7 +94,7 @@ namespace Pulumi.Openstack.Loadbalancer
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public L7PolicyV2(string name, L7PolicyV2Args args, CustomResourceOptions? options = null)
-            : base("openstack:loadbalancer/l7PolicyV2:L7PolicyV2", name, args, MakeResourceOptions(options, ""))
+            : base("openstack:loadbalancer/l7PolicyV2:L7PolicyV2", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

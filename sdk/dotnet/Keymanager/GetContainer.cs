@@ -15,7 +15,7 @@ namespace Pulumi.Openstack.Keymanager
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/keymanager_container_v1.html.markdown.
         /// </summary>
         public static Task<GetContainerResult> GetContainer(GetContainerArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetContainerResult>("openstack:keymanager/getContainer:getContainer", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetContainerResult>("openstack:keymanager/getContainer:getContainer", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetContainerArgs : Pulumi.ResourceArgs

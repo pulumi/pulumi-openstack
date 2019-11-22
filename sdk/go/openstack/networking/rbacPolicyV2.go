@@ -85,50 +85,50 @@ func GetRbacPolicyV2(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *RbacPolicyV2) URN() *pulumi.URNOutput {
+func (r *RbacPolicyV2) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *RbacPolicyV2) ID() *pulumi.IDOutput {
+func (r *RbacPolicyV2) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Action for the RBAC policy. Can either be
 // `accessAsExternal` or `accessAsShared`.
-func (r *RbacPolicyV2) Action() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["action"])
+func (r *RbacPolicyV2) Action() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["action"])
 }
 
 // The ID of the `objectType` resource. An
 // `objectType` of `network` returns a network ID and an `objectType` of
 // `qosPolicy` returns a QoS ID.
-func (r *RbacPolicyV2) ObjectId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["objectId"])
+func (r *RbacPolicyV2) ObjectId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["objectId"])
 }
 
 // The type of the object that the RBAC policy
 // affects. Can either be `qos-policy` or `network`.
-func (r *RbacPolicyV2) ObjectType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["objectType"])
+func (r *RbacPolicyV2) ObjectType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["objectType"])
 }
 
-func (r *RbacPolicyV2) ProjectId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["projectId"])
+func (r *RbacPolicyV2) ProjectId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["projectId"])
 }
 
 // The region in which to obtain the V2 networking client.
 // A networking client is needed to configure a routing entry on a subnet. If omitted, the
 // `region` argument of the provider is used. Changing this creates a new
 // routing entry.
-func (r *RbacPolicyV2) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *RbacPolicyV2) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // The ID of the tenant to which the RBAC policy
 // will be enforced.
-func (r *RbacPolicyV2) TargetTenant() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["targetTenant"])
+func (r *RbacPolicyV2) TargetTenant() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["targetTenant"])
 }
 
 // Input properties used for looking up and filtering RbacPolicyV2 resources.

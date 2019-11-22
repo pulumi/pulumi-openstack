@@ -95,90 +95,90 @@ func GetMonitor(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Monitor) URN() *pulumi.URNOutput {
+func (r *Monitor) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Monitor) ID() *pulumi.IDOutput {
+func (r *Monitor) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The administrative state of the monitor.
 // A valid value is true (UP) or false (DOWN).
-func (r *Monitor) AdminStateUp() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["adminStateUp"])
+func (r *Monitor) AdminStateUp() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["adminStateUp"])
 }
 
 // The time, in seconds, between sending probes to members.
-func (r *Monitor) Delay() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["delay"])
+func (r *Monitor) Delay() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["delay"])
 }
 
 // Required for HTTP(S) types. Expected HTTP codes
 // for a passing HTTP(S) monitor. You can either specify a single status like
 // "200", or a range like "200-202".
-func (r *Monitor) ExpectedCodes() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["expectedCodes"])
+func (r *Monitor) ExpectedCodes() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["expectedCodes"])
 }
 
 // Required for HTTP(S) types. The HTTP method used
 // for requests by the monitor. If this attribute is not specified, it
 // defaults to "GET".
-func (r *Monitor) HttpMethod() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["httpMethod"])
+func (r *Monitor) HttpMethod() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["httpMethod"])
 }
 
 // Number of permissible ping failures before
 // changing the member's status to INACTIVE. Must be a number between 1
 // and 10..
-func (r *Monitor) MaxRetries() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["maxRetries"])
+func (r *Monitor) MaxRetries() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["maxRetries"])
 }
 
 // The Name of the Monitor.
-func (r *Monitor) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Monitor) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The id of the pool that this monitor will be assigned to.
-func (r *Monitor) PoolId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["poolId"])
+func (r *Monitor) PoolId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["poolId"])
 }
 
 // The region in which to obtain the V2 Networking client.
 // A Networking client is needed to create an . If omitted, the
 // `region` argument of the provider is used. Changing this creates a new
 // monitor.
-func (r *Monitor) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *Monitor) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // Required for admins. The UUID of the tenant who owns
 // the monitor.  Only administrative users can specify a tenant UUID
 // other than their own. Changing this creates a new monitor.
-func (r *Monitor) TenantId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["tenantId"])
+func (r *Monitor) TenantId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["tenantId"])
 }
 
 // Maximum number of seconds for a monitor to wait for a
 // ping reply before it times out. The value must be less than the delay
 // value.
-func (r *Monitor) Timeout() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["timeout"])
+func (r *Monitor) Timeout() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["timeout"])
 }
 
 // The type of probe, which is PING, TCP, HTTP, HTTPS,
 // TLS-HELLO or UDP-CONNECT (supported only in Octavia), that is sent by the load
 // balancer to verify the member state. Changing this creates a new monitor.
-func (r *Monitor) Type() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["type"])
+func (r *Monitor) Type() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["type"])
 }
 
 // Required for HTTP(S) types. URI path that will be
 // accessed if monitor type is HTTP or HTTPS.
-func (r *Monitor) UrlPath() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["urlPath"])
+func (r *Monitor) UrlPath() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["urlPath"])
 }
 
 // Input properties used for looking up and filtering Monitor resources.

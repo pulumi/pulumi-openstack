@@ -68,42 +68,42 @@ func GetRoleAssignment(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *RoleAssignment) URN() *pulumi.URNOutput {
+func (r *RoleAssignment) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *RoleAssignment) ID() *pulumi.IDOutput {
+func (r *RoleAssignment) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The domain to assign the role in.
-func (r *RoleAssignment) DomainId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["domainId"])
+func (r *RoleAssignment) DomainId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["domainId"])
 }
 
 // The group to assign the role to.
-func (r *RoleAssignment) GroupId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["groupId"])
+func (r *RoleAssignment) GroupId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["groupId"])
 }
 
 // The project to assign the role in.
-func (r *RoleAssignment) ProjectId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["projectId"])
+func (r *RoleAssignment) ProjectId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["projectId"])
 }
 
-func (r *RoleAssignment) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *RoleAssignment) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // The role to assign.
-func (r *RoleAssignment) RoleId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["roleId"])
+func (r *RoleAssignment) RoleId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["roleId"])
 }
 
 // The user to assign the role to.
-func (r *RoleAssignment) UserId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["userId"])
+func (r *RoleAssignment) UserId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["userId"])
 }
 
 // Input properties used for looking up and filtering RoleAssignment resources.

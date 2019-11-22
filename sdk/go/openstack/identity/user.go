@@ -85,88 +85,88 @@ func GetUser(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *User) URN() *pulumi.URNOutput {
+func (r *User) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *User) ID() *pulumi.IDOutput {
+func (r *User) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The default project this user belongs to.
-func (r *User) DefaultProjectId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["defaultProjectId"])
+func (r *User) DefaultProjectId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["defaultProjectId"])
 }
 
 // A description of the user.
-func (r *User) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *User) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // The domain this user belongs to.
-func (r *User) DomainId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["domainId"])
+func (r *User) DomainId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["domainId"])
 }
 
 // Whether the user is enabled or disabled. Valid
 // values are `true` and `false`.
-func (r *User) Enabled() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["enabled"])
+func (r *User) Enabled() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["enabled"])
 }
 
 // Free-form key/value pairs of extra information.
-func (r *User) Extra() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["extra"])
+func (r *User) Extra() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["extra"])
 }
 
 // User will not have to
 // change their password upon first use. Valid values are `true` and `false`.
-func (r *User) IgnoreChangePasswordUponFirstUse() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["ignoreChangePasswordUponFirstUse"])
+func (r *User) IgnoreChangePasswordUponFirstUse() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["ignoreChangePasswordUponFirstUse"])
 }
 
 // User will not have a failure
 // lockout placed on their account. Valid values are `true` and `false`.
-func (r *User) IgnoreLockoutFailureAttempts() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["ignoreLockoutFailureAttempts"])
+func (r *User) IgnoreLockoutFailureAttempts() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["ignoreLockoutFailureAttempts"])
 }
 
 // User's password will not expire.
 // Valid values are `true` and `false`.
-func (r *User) IgnorePasswordExpiry() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["ignorePasswordExpiry"])
+func (r *User) IgnorePasswordExpiry() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["ignorePasswordExpiry"])
 }
 
 // Whether to enable multi-factor
 // authentication. Valid values are `true` and `false`.
-func (r *User) MultiFactorAuthEnabled() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["multiFactorAuthEnabled"])
+func (r *User) MultiFactorAuthEnabled() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["multiFactorAuthEnabled"])
 }
 
 // A multi-factor authentication rule.
 // The structure is documented below. Please see the
 // [Ocata release notes](https://docs.openstack.org/releasenotes/keystone/ocata.html)
 // for more information on how to use mulit-factor rules.
-func (r *User) MultiFactorAuthRules() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["multiFactorAuthRules"])
+func (r *User) MultiFactorAuthRules() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["multiFactorAuthRules"])
 }
 
 // The name of the user.
-func (r *User) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *User) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The password for the user.
-func (r *User) Password() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["password"])
+func (r *User) Password() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["password"])
 }
 
 // The region in which to obtain the V3 Keystone client.
 // If omitted, the `region` argument of the provider is used. Changing this
 // creates a new User.
-func (r *User) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *User) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // Input properties used for looking up and filtering User resources.

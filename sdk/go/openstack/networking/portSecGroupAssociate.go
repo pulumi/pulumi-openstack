@@ -62,45 +62,45 @@ func GetPortSecGroupAssociate(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *PortSecGroupAssociate) URN() *pulumi.URNOutput {
+func (r *PortSecGroupAssociate) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *PortSecGroupAssociate) ID() *pulumi.IDOutput {
+func (r *PortSecGroupAssociate) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The collection of Security Group IDs on the port
 // which have been explicitly and implicitly added.
-func (r *PortSecGroupAssociate) AllSecurityGroupIds() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["allSecurityGroupIds"])
+func (r *PortSecGroupAssociate) AllSecurityGroupIds() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["allSecurityGroupIds"])
 }
 
 // Whether to replace or append the list of security
 // groups, specified in the `securityGroupIds`. Defaults to `false`.
-func (r *PortSecGroupAssociate) Enforce() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["enforce"])
+func (r *PortSecGroupAssociate) Enforce() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["enforce"])
 }
 
 // An UUID of the port to apply security groups to.
-func (r *PortSecGroupAssociate) PortId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["portId"])
+func (r *PortSecGroupAssociate) PortId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["portId"])
 }
 
 // The region in which to obtain the V2 networking client.
 // A networking client is needed to manage a port. If omitted, the
 // `region` argument of the provider is used. Changing this creates a new
 // resource.
-func (r *PortSecGroupAssociate) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *PortSecGroupAssociate) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // A list of security group IDs to apply to
 // the port. The security groups must be specified by ID and not name (as
 // opposed to how they are configured with the Compute Instance).
-func (r *PortSecGroupAssociate) SecurityGroupIds() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["securityGroupIds"])
+func (r *PortSecGroupAssociate) SecurityGroupIds() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["securityGroupIds"])
 }
 
 // Input properties used for looking up and filtering PortSecGroupAssociate resources.

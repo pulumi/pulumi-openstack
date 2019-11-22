@@ -82,56 +82,56 @@ func GetTempUrl(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *TempUrl) URN() *pulumi.URNOutput {
+func (r *TempUrl) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *TempUrl) ID() *pulumi.IDOutput {
+func (r *TempUrl) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The container name the object belongs to.
-func (r *TempUrl) Container() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["container"])
+func (r *TempUrl) Container() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["container"])
 }
 
 // The method allowed when accessing this URL.
 // Valid values are `GET`, and `POST`. Default is `GET`.
-func (r *TempUrl) Method() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["method"])
+func (r *TempUrl) Method() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["method"])
 }
 
 // The object name the tempurl is for.
-func (r *TempUrl) Object() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["object"])
+func (r *TempUrl) Object() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["object"])
 }
 
 // Whether to automatically regenerate the URL when
 // it has expired. If set to true, this will create a new resource with a new
 // ID and new URL. Defaults to false.
-func (r *TempUrl) Regenerate() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["regenerate"])
+func (r *TempUrl) Regenerate() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["regenerate"])
 }
 
 // The region the tempurl is located in.
-func (r *TempUrl) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *TempUrl) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
-func (r *TempUrl) Split() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["split"])
+func (r *TempUrl) Split() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["split"])
 }
 
 // The TTL, in seconds, for the URL. For how long it should
 // be valid.
-func (r *TempUrl) Ttl() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["ttl"])
+func (r *TempUrl) Ttl() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["ttl"])
 }
 
 // The URL
-func (r *TempUrl) Url() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["url"])
+func (r *TempUrl) Url() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["url"])
 }
 
 // Input properties used for looking up and filtering TempUrl resources.

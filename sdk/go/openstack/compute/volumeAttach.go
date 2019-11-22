@@ -66,40 +66,40 @@ func GetVolumeAttach(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *VolumeAttach) URN() *pulumi.URNOutput {
+func (r *VolumeAttach) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *VolumeAttach) ID() *pulumi.IDOutput {
+func (r *VolumeAttach) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
-func (r *VolumeAttach) Device() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["device"])
+func (r *VolumeAttach) Device() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["device"])
 }
 
 // The ID of the Instance to attach the Volume to.
-func (r *VolumeAttach) InstanceId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["instanceId"])
+func (r *VolumeAttach) InstanceId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["instanceId"])
 }
 
 // Enable attachment of multiattach-capable volumes.
-func (r *VolumeAttach) Multiattach() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["multiattach"])
+func (r *VolumeAttach) Multiattach() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["multiattach"])
 }
 
 // The region in which to obtain the V2 Compute client.
 // A Compute client is needed to create a volume attachment. If omitted, the
 // `region` argument of the provider is used. Changing this creates a
 // new volume attachment.
-func (r *VolumeAttach) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *VolumeAttach) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // The ID of the Volume to attach to an Instance.
-func (r *VolumeAttach) VolumeId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["volumeId"])
+func (r *VolumeAttach) VolumeId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["volumeId"])
 }
 
 // Input properties used for looking up and filtering VolumeAttach resources.

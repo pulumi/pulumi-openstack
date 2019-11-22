@@ -100,110 +100,110 @@ func GetQuotaSetV2(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *QuotaSetV2) URN() *pulumi.URNOutput {
+func (r *QuotaSetV2) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *QuotaSetV2) ID() *pulumi.IDOutput {
+func (r *QuotaSetV2) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Quota value for cores.
 // Changing this updates the existing quotaset.
-func (r *QuotaSetV2) Cores() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["cores"])
+func (r *QuotaSetV2) Cores() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["cores"])
 }
 
 // Quota value for fixed IPs.
 // Changing this updates the existing quotaset.
-func (r *QuotaSetV2) FixedIps() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["fixedIps"])
+func (r *QuotaSetV2) FixedIps() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["fixedIps"])
 }
 
 // Quota value for floating IPs.
 // Changing this updates the existing quotaset.
-func (r *QuotaSetV2) FloatingIps() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["floatingIps"])
+func (r *QuotaSetV2) FloatingIps() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["floatingIps"])
 }
 
 // Quota value for content bytes
 // of injected files. Changing this updates the existing quotaset.
-func (r *QuotaSetV2) InjectedFileContentBytes() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["injectedFileContentBytes"])
+func (r *QuotaSetV2) InjectedFileContentBytes() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["injectedFileContentBytes"])
 }
 
 // Quota value for path bytes of
 // injected files. Changing this updates the existing quotaset.
-func (r *QuotaSetV2) InjectedFilePathBytes() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["injectedFilePathBytes"])
+func (r *QuotaSetV2) InjectedFilePathBytes() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["injectedFilePathBytes"])
 }
 
 // Quota value for injected files.
 // Changing this updates the existing quotaset.
-func (r *QuotaSetV2) InjectedFiles() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["injectedFiles"])
+func (r *QuotaSetV2) InjectedFiles() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["injectedFiles"])
 }
 
 // Quota value for instances.
 // Changing this updates the existing quotaset.
-func (r *QuotaSetV2) Instances() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["instances"])
+func (r *QuotaSetV2) Instances() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["instances"])
 }
 
 // Quota value for key pairs.
 // Changing this updates the existing quotaset.
-func (r *QuotaSetV2) KeyPairs() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["keyPairs"])
+func (r *QuotaSetV2) KeyPairs() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["keyPairs"])
 }
 
 // Quota value for metadata items.
 // Changing this updates the existing quotaset.
-func (r *QuotaSetV2) MetadataItems() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["metadataItems"])
+func (r *QuotaSetV2) MetadataItems() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["metadataItems"])
 }
 
 // ID of the project to manage quotas.
 // Changing this creates a new quotaset.
-func (r *QuotaSetV2) ProjectId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["projectId"])
+func (r *QuotaSetV2) ProjectId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["projectId"])
 }
 
 // Quota value for RAM.
 // Changing this updates the existing quotaset.
-func (r *QuotaSetV2) Ram() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["ram"])
+func (r *QuotaSetV2) Ram() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["ram"])
 }
 
 // The region in which to create the volume. If
 // omitted, the `region` argument of the provider is used. Changing this
 // creates a new quotaset.
-func (r *QuotaSetV2) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *QuotaSetV2) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // Quota value for security group rules.
 // Changing this updates the existing quotaset.
-func (r *QuotaSetV2) SecurityGroupRules() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["securityGroupRules"])
+func (r *QuotaSetV2) SecurityGroupRules() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["securityGroupRules"])
 }
 
 // Quota value for security groups.
 // Changing this updates the existing quotaset.
-func (r *QuotaSetV2) SecurityGroups() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["securityGroups"])
+func (r *QuotaSetV2) SecurityGroups() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["securityGroups"])
 }
 
 // Quota value for server groups members.
 // Changing this updates the existing quotaset.
-func (r *QuotaSetV2) ServerGroupMembers() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["serverGroupMembers"])
+func (r *QuotaSetV2) ServerGroupMembers() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["serverGroupMembers"])
 }
 
 // Quota value for server groups.
 // Changing this updates the existing quotaset.
-func (r *QuotaSetV2) ServerGroups() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["serverGroups"])
+func (r *QuotaSetV2) ServerGroups() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["serverGroups"])
 }
 
 // Input properties used for looking up and filtering QuotaSetV2 resources.

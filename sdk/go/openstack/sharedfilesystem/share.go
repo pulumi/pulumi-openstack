@@ -97,119 +97,119 @@ func GetShare(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Share) URN() *pulumi.URNOutput {
+func (r *Share) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Share) ID() *pulumi.IDOutput {
+func (r *Share) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The map of metadata, assigned on the share, which has been
 // explicitly and implicitly added.
-func (r *Share) AllMetadata() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["allMetadata"])
+func (r *Share) AllMetadata() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["allMetadata"])
 }
 
 // The share availability zone. Changing this creates a
 // new share.
-func (r *Share) AvailabilityZone() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["availabilityZone"])
+func (r *Share) AvailabilityZone() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["availabilityZone"])
 }
 
 // The human-readable description for the share.
 // Changing this updates the description of the existing share.
-func (r *Share) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *Share) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // A list of export locations. For example, when a share server
 // has more than one network interface, it can have multiple export locations.
-func (r *Share) ExportLocations() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["exportLocations"])
+func (r *Share) ExportLocations() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["exportLocations"])
 }
 
 // Indicates whether a share has replicas or not.
-func (r *Share) HasReplicas() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["hasReplicas"])
+func (r *Share) HasReplicas() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["hasReplicas"])
 }
 
 // The share host name.
-func (r *Share) Host() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["host"])
+func (r *Share) Host() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["host"])
 }
 
 // The level of visibility for the share. Set to true to make
 // share public. Set to false to make it private. Default value is false. Changing this
 // updates the existing share.
-func (r *Share) IsPublic() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["isPublic"])
+func (r *Share) IsPublic() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["isPublic"])
 }
 
 // One or more metadata key and value pairs as a dictionary of
 // strings.
-func (r *Share) Metadata() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["metadata"])
+func (r *Share) Metadata() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["metadata"])
 }
 
 // The name of the share. Changing this updates the name
 // of the existing share.
-func (r *Share) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Share) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The owner of the Share.
-func (r *Share) ProjectId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["projectId"])
+func (r *Share) ProjectId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["projectId"])
 }
 
 // The region in which to obtain the V2 Shared File System client.
 // A Shared File System client is needed to create a share. Changing this
 // creates a new share.
-func (r *Share) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *Share) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // The share replication type.
-func (r *Share) ReplicationType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["replicationType"])
+func (r *Share) ReplicationType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["replicationType"])
 }
 
 // The UUID of a share network where the share server exists
 // or will be created. If `shareNetworkId` is not set and you provide a `snapshotId`,
 // the shareNetworkId value from the snapshot is used. Changing this creates a new share.
-func (r *Share) ShareNetworkId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["shareNetworkId"])
+func (r *Share) ShareNetworkId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["shareNetworkId"])
 }
 
 // The share protocol - can either be NFS, CIFS,
 // CEPHFS, GLUSTERFS, HDFS or MAPRFS. Changing this creates a new share.
-func (r *Share) ShareProto() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["shareProto"])
+func (r *Share) ShareProto() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["shareProto"])
 }
 
 // The UUID of the share server.
-func (r *Share) ShareServerId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["shareServerId"])
+func (r *Share) ShareServerId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["shareServerId"])
 }
 
 // The share type name. If you omit this parameter, the default
 // share type is used.
-func (r *Share) ShareType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["shareType"])
+func (r *Share) ShareType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["shareType"])
 }
 
 // The share size, in GBs. The requested share size cannot be greater
 // than the allowed GB quota. Changing this resizes the existing share.
-func (r *Share) Size() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["size"])
+func (r *Share) Size() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["size"])
 }
 
 // The UUID of the share's base snapshot. Changing this creates
 // a new share.
-func (r *Share) SnapshotId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["snapshotId"])
+func (r *Share) SnapshotId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["snapshotId"])
 }
 
 // Input properties used for looking up and filtering Share resources.

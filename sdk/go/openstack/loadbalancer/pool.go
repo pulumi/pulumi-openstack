@@ -80,78 +80,78 @@ func GetPool(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Pool) URN() *pulumi.URNOutput {
+func (r *Pool) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Pool) ID() *pulumi.IDOutput {
+func (r *Pool) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The administrative state of the pool.
 // A valid value is true (UP) or false (DOWN).
-func (r *Pool) AdminStateUp() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["adminStateUp"])
+func (r *Pool) AdminStateUp() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["adminStateUp"])
 }
 
 // Human-readable description for the pool.
-func (r *Pool) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *Pool) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // The load balancing algorithm to
 // distribute traffic to the pool's members. Must be one of
 // ROUND_ROBIN, LEAST_CONNECTIONS, or SOURCE_IP.
-func (r *Pool) LbMethod() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["lbMethod"])
+func (r *Pool) LbMethod() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["lbMethod"])
 }
 
 // The Listener on which the members of the pool
 // will be associated with. Changing this creates a new pool.
 // Note:  One of LoadbalancerID or ListenerID must be provided.
-func (r *Pool) ListenerId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["listenerId"])
+func (r *Pool) ListenerId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["listenerId"])
 }
 
 // The load balancer on which to provision this
 // pool. Changing this creates a new pool.
 // Note:  One of LoadbalancerID or ListenerID must be provided.
-func (r *Pool) LoadbalancerId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["loadbalancerId"])
+func (r *Pool) LoadbalancerId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["loadbalancerId"])
 }
 
 // Human-readable name for the pool.
-func (r *Pool) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Pool) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Omit this field to prevent session persistence.  Indicates
 // whether connections in the same session will be processed by the same Pool
 // member or not. Changing this creates a new pool.
-func (r *Pool) Persistence() *pulumi.Output {
+func (r *Pool) Persistence() pulumi.Output {
 	return r.s.State["persistence"]
 }
 
 // The protocol - can either be TCP, HTTP, HTTPS, PROXY
 // or UDP (supported only in Octavia). Changing this creates a new pool.
-func (r *Pool) Protocol() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["protocol"])
+func (r *Pool) Protocol() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["protocol"])
 }
 
 // The region in which to obtain the V2 Networking client.
 // A Networking client is needed to create an . If omitted, the
 // `region` argument of the provider is used. Changing this creates a new
 // pool.
-func (r *Pool) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *Pool) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // Required for admins. The UUID of the tenant who owns
 // the pool.  Only administrative users can specify a tenant UUID
 // other than their own. Changing this creates a new pool.
-func (r *Pool) TenantId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["tenantId"])
+func (r *Pool) TenantId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["tenantId"])
 }
 
 // Input properties used for looking up and filtering Pool resources.

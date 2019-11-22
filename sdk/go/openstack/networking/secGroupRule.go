@@ -88,44 +88,44 @@ func GetSecGroupRule(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *SecGroupRule) URN() *pulumi.URNOutput {
+func (r *SecGroupRule) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *SecGroupRule) ID() *pulumi.IDOutput {
+func (r *SecGroupRule) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // A description of the rule. Changing this creates a new security group rule.
-func (r *SecGroupRule) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *SecGroupRule) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // The direction of the rule, valid values are __ingress__
 // or __egress__. Changing this creates a new security group rule.
-func (r *SecGroupRule) Direction() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["direction"])
+func (r *SecGroupRule) Direction() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["direction"])
 }
 
 // The layer 3 protocol type, valid values are __IPv4__
 // or __IPv6__. Changing this creates a new security group rule.
-func (r *SecGroupRule) Ethertype() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["ethertype"])
+func (r *SecGroupRule) Ethertype() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["ethertype"])
 }
 
 // The higher part of the allowed port range, valid
 // integer value needs to be between 1 and 65535. Changing this creates a new
 // security group rule.
-func (r *SecGroupRule) PortRangeMax() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["portRangeMax"])
+func (r *SecGroupRule) PortRangeMax() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["portRangeMax"])
 }
 
 // The lower part of the allowed port range, valid
 // integer value needs to be between 1 and 65535. Changing this creates a new
 // security group rule.
-func (r *SecGroupRule) PortRangeMin() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["portRangeMin"])
+func (r *SecGroupRule) PortRangeMin() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["portRangeMin"])
 }
 
 // The layer 4 protocol type, valid values are following. Changing this creates a new security group rule. This is required if you want to specify a port range.
@@ -150,43 +150,43 @@ func (r *SecGroupRule) PortRangeMin() *pulumi.IntOutput {
 // * __sctp__
 // * __udplite__
 // * __vrrp__
-func (r *SecGroupRule) Protocol() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["protocol"])
+func (r *SecGroupRule) Protocol() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["protocol"])
 }
 
 // The region in which to obtain the V2 networking client.
 // A networking client is needed to create a port. If omitted, the
 // `region` argument of the provider is used. Changing this creates a new
 // security group rule.
-func (r *SecGroupRule) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *SecGroupRule) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // The remote group id, the value needs to be an
 // Openstack ID of a security group in the same tenant. Changing this creates
 // a new security group rule.
-func (r *SecGroupRule) RemoteGroupId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["remoteGroupId"])
+func (r *SecGroupRule) RemoteGroupId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["remoteGroupId"])
 }
 
 // The remote CIDR, the value needs to be a valid
 // CIDR (i.e. 192.168.0.0/16). Changing this creates a new security group rule.
-func (r *SecGroupRule) RemoteIpPrefix() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["remoteIpPrefix"])
+func (r *SecGroupRule) RemoteIpPrefix() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["remoteIpPrefix"])
 }
 
 // The security group id the rule should belong
 // to, the value needs to be an Openstack ID of a security group in the same
 // tenant. Changing this creates a new security group rule.
-func (r *SecGroupRule) SecurityGroupId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["securityGroupId"])
+func (r *SecGroupRule) SecurityGroupId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["securityGroupId"])
 }
 
 // The owner of the security group. Required if admin
 // wants to create a port for another tenant. Changing this creates a new
 // security group rule.
-func (r *SecGroupRule) TenantId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["tenantId"])
+func (r *SecGroupRule) TenantId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["tenantId"])
 }
 
 // Input properties used for looking up and filtering SecGroupRule resources.

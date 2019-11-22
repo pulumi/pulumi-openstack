@@ -15,7 +15,7 @@ namespace Pulumi.Openstack.Networking
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_qos_minimum_bandwidth_rule_v2.html.markdown.
         /// </summary>
         public static Task<GetQosMinimumBandwidthRuleResult> GetQosMinimumBandwidthRule(GetQosMinimumBandwidthRuleArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetQosMinimumBandwidthRuleResult>("openstack:networking/getQosMinimumBandwidthRule:getQosMinimumBandwidthRule", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetQosMinimumBandwidthRuleResult>("openstack:networking/getQosMinimumBandwidthRule:getQosMinimumBandwidthRule", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetQosMinimumBandwidthRuleArgs : Pulumi.ResourceArgs

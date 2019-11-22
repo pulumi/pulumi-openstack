@@ -79,81 +79,81 @@ func GetVolumeV1(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *VolumeV1) URN() *pulumi.URNOutput {
+func (r *VolumeV1) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *VolumeV1) ID() *pulumi.IDOutput {
+func (r *VolumeV1) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // If a volume is attached to an instance, this attribute will
 // display the Attachment ID, Instance ID, and the Device as the Instance
 // sees it.
-func (r *VolumeV1) Attachments() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["attachments"])
+func (r *VolumeV1) Attachments() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["attachments"])
 }
 
 // The availability zone for the volume.
 // Changing this creates a new volume.
-func (r *VolumeV1) AvailabilityZone() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["availabilityZone"])
+func (r *VolumeV1) AvailabilityZone() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["availabilityZone"])
 }
 
 // A description of the volume. Changing this updates
 // the volume's description.
-func (r *VolumeV1) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *VolumeV1) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // The image ID from which to create the volume.
 // Changing this creates a new volume.
-func (r *VolumeV1) ImageId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["imageId"])
+func (r *VolumeV1) ImageId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["imageId"])
 }
 
 // Metadata key/value pairs to associate with the volume.
 // Changing this updates the existing volume metadata.
-func (r *VolumeV1) Metadata() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["metadata"])
+func (r *VolumeV1) Metadata() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["metadata"])
 }
 
 // A unique name for the volume. Changing this updates the
 // volume's name.
-func (r *VolumeV1) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *VolumeV1) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The region in which to create the volume. If
 // omitted, the `region` argument of the provider is used. Changing this
 // creates a new volume.
-func (r *VolumeV1) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *VolumeV1) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // The size of the volume to create (in gigabytes). Changing
 // this creates a new volume.
-func (r *VolumeV1) Size() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["size"])
+func (r *VolumeV1) Size() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["size"])
 }
 
 // The snapshot ID from which to create the volume.
 // Changing this creates a new volume.
-func (r *VolumeV1) SnapshotId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["snapshotId"])
+func (r *VolumeV1) SnapshotId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["snapshotId"])
 }
 
 // The volume ID from which to create the volume.
 // Changing this creates a new volume.
-func (r *VolumeV1) SourceVolId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["sourceVolId"])
+func (r *VolumeV1) SourceVolId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["sourceVolId"])
 }
 
 // The type of volume to create.
 // Changing this creates a new volume.
-func (r *VolumeV1) VolumeType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["volumeType"])
+func (r *VolumeV1) VolumeType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["volumeType"])
 }
 
 // Input properties used for looking up and filtering VolumeV1 resources.

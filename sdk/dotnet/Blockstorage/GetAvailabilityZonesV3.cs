@@ -15,7 +15,7 @@ namespace Pulumi.Openstack.Blockstorage
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/blockstorage_availability_zones_v3.html.markdown.
         /// </summary>
         public static Task<GetAvailabilityZonesV3Result> GetAvailabilityZonesV3(GetAvailabilityZonesV3Args? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAvailabilityZonesV3Result>("openstack:blockstorage/getAvailabilityZonesV3:getAvailabilityZonesV3", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAvailabilityZonesV3Result>("openstack:blockstorage/getAvailabilityZonesV3:getAvailabilityZonesV3", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetAvailabilityZonesV3Args : Pulumi.ResourceArgs

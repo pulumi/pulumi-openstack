@@ -71,48 +71,48 @@ func GetShareAccess(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *ShareAccess) URN() *pulumi.URNOutput {
+func (r *ShareAccess) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *ShareAccess) ID() *pulumi.IDOutput {
+func (r *ShareAccess) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The access credential of the entity granted access.
-func (r *ShareAccess) AccessKey() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["accessKey"])
+func (r *ShareAccess) AccessKey() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["accessKey"])
 }
 
 // The access level to the share. Can either be `rw` or `ro`.
-func (r *ShareAccess) AccessLevel() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["accessLevel"])
+func (r *ShareAccess) AccessLevel() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["accessLevel"])
 }
 
 // The value that defines the access. Can either be an IP
 // address or a username verified by configured Security Service of the Share Network.
-func (r *ShareAccess) AccessTo() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["accessTo"])
+func (r *ShareAccess) AccessTo() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["accessTo"])
 }
 
 // The access rule type. Can either be an ip, user,
 // cert, or cephx. cephx support requires an OpenStack environment that supports
 // Shared Filesystem microversion 2.13 (Mitaka) or later.
-func (r *ShareAccess) AccessType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["accessType"])
+func (r *ShareAccess) AccessType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["accessType"])
 }
 
 // The region in which to obtain the V2 Shared File System client.
 // A Shared File System client is needed to create a share access. Changing this
 // creates a new share access.
-func (r *ShareAccess) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *ShareAccess) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // The UUID of the share to which you are granted access.
-func (r *ShareAccess) ShareId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["shareId"])
+func (r *ShareAccess) ShareId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["shareId"])
 }
 
 // Input properties used for looking up and filtering ShareAccess resources.

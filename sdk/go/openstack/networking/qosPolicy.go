@@ -75,84 +75,84 @@ func GetQosPolicy(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *QosPolicy) URN() *pulumi.URNOutput {
+func (r *QosPolicy) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *QosPolicy) ID() *pulumi.IDOutput {
+func (r *QosPolicy) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The collection of tags assigned on the QoS policy, which have been
 // explicitly and implicitly added.
-func (r *QosPolicy) AllTags() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["allTags"])
+func (r *QosPolicy) AllTags() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["allTags"])
 }
 
 // The time at which QoS policy was created.
-func (r *QosPolicy) CreatedAt() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["createdAt"])
+func (r *QosPolicy) CreatedAt() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["createdAt"])
 }
 
 // The human-readable description for the QoS policy.
 // Changing this updates the description of the existing QoS policy.
-func (r *QosPolicy) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *QosPolicy) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // Indicates whether the QoS policy is default
 // QoS policy or not. Changing this updates the default status of the existing
 // QoS policy.
-func (r *QosPolicy) IsDefault() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["isDefault"])
+func (r *QosPolicy) IsDefault() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["isDefault"])
 }
 
 // The name of the QoS policy. Changing this updates the name of
 // the existing QoS policy.
-func (r *QosPolicy) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *QosPolicy) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The owner of the QoS policy. Required if admin wants to
 // create a QoS policy for another project. Changing this creates a new QoS policy.
-func (r *QosPolicy) ProjectId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["projectId"])
+func (r *QosPolicy) ProjectId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["projectId"])
 }
 
 // The region in which to obtain the V2 Networking client.
 // A Networking client is needed to create a Neutron Qos policy. If omitted, the
 // `region` argument of the provider is used. Changing this creates a new
 // QoS policy.
-func (r *QosPolicy) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *QosPolicy) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // The revision number of the QoS policy.
-func (r *QosPolicy) RevisionNumber() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["revisionNumber"])
+func (r *QosPolicy) RevisionNumber() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["revisionNumber"])
 }
 
 // Indicates whether this QoS policy is shared across
 // all projects. Changing this updates the shared status of the existing
 // QoS policy.
-func (r *QosPolicy) Shared() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["shared"])
+func (r *QosPolicy) Shared() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["shared"])
 }
 
 // A set of string tags for the QoS policy.
-func (r *QosPolicy) Tags() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["tags"])
+func (r *QosPolicy) Tags() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["tags"])
 }
 
 // The time at which QoS policy was created.
-func (r *QosPolicy) UpdatedAt() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["updatedAt"])
+func (r *QosPolicy) UpdatedAt() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["updatedAt"])
 }
 
 // Map of additional options.
-func (r *QosPolicy) ValueSpecs() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["valueSpecs"])
+func (r *QosPolicy) ValueSpecs() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["valueSpecs"])
 }
 
 // Input properties used for looking up and filtering QosPolicy resources.

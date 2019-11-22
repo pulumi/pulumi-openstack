@@ -86,77 +86,77 @@ func GetSecurityService(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *SecurityService) URN() *pulumi.URNOutput {
+func (r *SecurityService) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *SecurityService) ID() *pulumi.IDOutput {
+func (r *SecurityService) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The human-readable description for the security service.
 // Changing this updates the description of the existing security service.
-func (r *SecurityService) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *SecurityService) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // The security service DNS IP address that is used inside the
 // tenant network.
-func (r *SecurityService) DnsIp() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["dnsIp"])
+func (r *SecurityService) DnsIp() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["dnsIp"])
 }
 
 // The security service domain.
-func (r *SecurityService) Domain() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["domain"])
+func (r *SecurityService) Domain() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["domain"])
 }
 
 // The name of the security service. Changing this updates the name
 // of the existing security service.
-func (r *SecurityService) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *SecurityService) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The security service ou. An organizational unit can be added to
 // specify where the share ends up. New in Manila microversion 2.44.
-func (r *SecurityService) Ou() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["ou"])
+func (r *SecurityService) Ou() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["ou"])
 }
 
 // The user password, if you specify a user.
-func (r *SecurityService) Password() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["password"])
+func (r *SecurityService) Password() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["password"])
 }
 
 // The owner of the Security Service.
-func (r *SecurityService) ProjectId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["projectId"])
+func (r *SecurityService) ProjectId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["projectId"])
 }
 
 // The region in which to obtain the V2 Shared File System client.
 // A Shared File System client is needed to create a security service. If omitted, the
 // `region` argument of the provider is used. Changing this creates a new
 // security service.
-func (r *SecurityService) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *SecurityService) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // The security service host name or IP address.
-func (r *SecurityService) Server() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["server"])
+func (r *SecurityService) Server() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["server"])
 }
 
 // The security service type - can either be active\_directory,
 // kerberos or ldap.  Changing this updates the existing security service.
-func (r *SecurityService) Type() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["type"])
+func (r *SecurityService) Type() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["type"])
 }
 
 // The security service user or group name that is used by the
 // tenant.
-func (r *SecurityService) User() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["user"])
+func (r *SecurityService) User() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["user"])
 }
 
 // Input properties used for looking up and filtering SecurityService resources.

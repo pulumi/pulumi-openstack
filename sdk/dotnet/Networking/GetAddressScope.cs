@@ -15,7 +15,7 @@ namespace Pulumi.Openstack.Networking
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_addressscope_v2.html.markdown.
         /// </summary>
         public static Task<GetAddressScopeResult> GetAddressScope(GetAddressScopeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAddressScopeResult>("openstack:networking/getAddressScope:getAddressScope", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAddressScopeResult>("openstack:networking/getAddressScope:getAddressScope", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetAddressScopeArgs : Pulumi.ResourceArgs

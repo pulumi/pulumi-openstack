@@ -15,7 +15,7 @@ namespace Pulumi.Openstack.Networking
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_subnet_v2.html.markdown.
         /// </summary>
         public static Task<GetSubnetResult> GetSubnet(GetSubnetArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSubnetResult>("openstack:networking/getSubnet:getSubnet", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSubnetResult>("openstack:networking/getSubnet:getSubnet", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetSubnetArgs : Pulumi.ResourceArgs

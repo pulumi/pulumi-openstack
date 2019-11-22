@@ -65,40 +65,40 @@ func GetConfiguration(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Configuration) URN() *pulumi.URNOutput {
+func (r *Configuration) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Configuration) ID() *pulumi.IDOutput {
+func (r *Configuration) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // An array of configuration parameter name and value. Can be specified multiple times. The configuration object structure is documented below.
-func (r *Configuration) Configurations() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["configurations"])
+func (r *Configuration) Configurations() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["configurations"])
 }
 
 // An array of database engine type and version. The datastore
 // object structure is documented below. Changing this creates resource.
-func (r *Configuration) Datastore() *pulumi.Output {
+func (r *Configuration) Datastore() pulumi.Output {
 	return r.s.State["datastore"]
 }
 
 // Description of the resource.
-func (r *Configuration) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *Configuration) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // A unique name for the resource.
-func (r *Configuration) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Configuration) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The region in which to create the db instance. Changing this
 // creates a new instance.
-func (r *Configuration) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *Configuration) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // Input properties used for looking up and filtering Configuration resources.

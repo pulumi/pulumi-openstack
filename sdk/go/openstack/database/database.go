@@ -56,28 +56,28 @@ func GetDatabase(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Database) URN() *pulumi.URNOutput {
+func (r *Database) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Database) ID() *pulumi.IDOutput {
+func (r *Database) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The ID for the database instance.
-func (r *Database) InstanceId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["instanceId"])
+func (r *Database) InstanceId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["instanceId"])
 }
 
 // A unique name for the resource.
-func (r *Database) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Database) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Openstack region resource is created in.
-func (r *Database) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *Database) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // Input properties used for looking up and filtering Database resources.

@@ -74,56 +74,56 @@ func GetMemberV1(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *MemberV1) URN() *pulumi.URNOutput {
+func (r *MemberV1) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *MemberV1) ID() *pulumi.IDOutput {
+func (r *MemberV1) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The IP address of the member. Changing this creates a
 // new member.
-func (r *MemberV1) Address() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["address"])
+func (r *MemberV1) Address() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["address"])
 }
 
 // The administrative state of the member.
 // Acceptable values are 'true' and 'false'. Changing this value updates the
 // state of the existing member.
-func (r *MemberV1) AdminStateUp() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["adminStateUp"])
+func (r *MemberV1) AdminStateUp() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["adminStateUp"])
 }
 
 // The ID of the LB pool. Changing this creates a new
 // member.
-func (r *MemberV1) PoolId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["poolId"])
+func (r *MemberV1) PoolId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["poolId"])
 }
 
 // An integer representing the port on which the member is
 // hosted. Changing this creates a new member.
-func (r *MemberV1) Port() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["port"])
+func (r *MemberV1) Port() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["port"])
 }
 
 // The region in which to obtain the V2 Networking client.
 // A Networking client is needed to create an LB member. If omitted, the
 // `region` argument of the provider is used. Changing this creates a new
 // LB member.
-func (r *MemberV1) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *MemberV1) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // The owner of the member. Required if admin wants to
 // create a member for another tenant. Changing this creates a new member.
-func (r *MemberV1) TenantId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["tenantId"])
+func (r *MemberV1) TenantId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["tenantId"])
 }
 
-func (r *MemberV1) Weight() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["weight"])
+func (r *MemberV1) Weight() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["weight"])
 }
 
 // Input properties used for looking up and filtering MemberV1 resources.

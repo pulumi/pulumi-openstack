@@ -15,7 +15,7 @@ namespace Pulumi.Openstack.Sharedfilesystem
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/sharedfilesystem_share_v2.html.markdown.
         /// </summary>
         public static Task<GetShareResult> GetShare(GetShareArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetShareResult>("openstack:sharedfilesystem/getShare:getShare", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetShareResult>("openstack:sharedfilesystem/getShare:getShare", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetShareArgs : Pulumi.ResourceArgs

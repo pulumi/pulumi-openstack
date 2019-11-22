@@ -71,61 +71,61 @@ func GetRecordSet(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *RecordSet) URN() *pulumi.URNOutput {
+func (r *RecordSet) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *RecordSet) ID() *pulumi.IDOutput {
+func (r *RecordSet) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // A description of the  record set.
-func (r *RecordSet) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *RecordSet) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // The name of the record set. Note the `.` at the end of the name.
 // Changing this creates a new DNS  record set.
-func (r *RecordSet) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *RecordSet) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // An array of DNS records. _Note:_ if an IPv6 address
 // contains brackets (`[ ]`), the brackets will be stripped and the modified
 // address will be recorded in the state.
-func (r *RecordSet) Records() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["records"])
+func (r *RecordSet) Records() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["records"])
 }
 
 // The region in which to obtain the V2 DNS client.
 // If omitted, the `region` argument of the provider is used.
 // Changing this creates a new DNS  record set.
-func (r *RecordSet) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *RecordSet) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // The time to live (TTL) of the record set.
-func (r *RecordSet) Ttl() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["ttl"])
+func (r *RecordSet) Ttl() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["ttl"])
 }
 
 // The type of record set. Examples: "A", "MX".
 // Changing this creates a new DNS  record set.
-func (r *RecordSet) Type() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["type"])
+func (r *RecordSet) Type() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["type"])
 }
 
 // Map of additional options. Changing this creates a
 // new record set.
-func (r *RecordSet) ValueSpecs() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["valueSpecs"])
+func (r *RecordSet) ValueSpecs() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["valueSpecs"])
 }
 
 // The ID of the zone in which to create the record set.
 // Changing this creates a new DNS  record set.
-func (r *RecordSet) ZoneId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["zoneId"])
+func (r *RecordSet) ZoneId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["zoneId"])
 }
 
 // Input properties used for looking up and filtering RecordSet resources.

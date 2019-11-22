@@ -104,7 +104,7 @@ namespace Pulumi.Openstack.Vpnaas
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public IpSecPolicy(string name, IpSecPolicyArgs? args = null, CustomResourceOptions? options = null)
-            : base("openstack:vpnaas/ipSecPolicy:IpSecPolicy", name, args, MakeResourceOptions(options, ""))
+            : base("openstack:vpnaas/ipSecPolicy:IpSecPolicy", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

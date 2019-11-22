@@ -104,98 +104,98 @@ func GetVolumeAttach(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *VolumeAttach) URN() *pulumi.URNOutput {
+func (r *VolumeAttach) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *VolumeAttach) ID() *pulumi.IDOutput {
+func (r *VolumeAttach) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Specify whether to attach the volume as Read-Only
 // (`ro`) or Read-Write (`rw`). Only values of `ro` and `rw` are accepted.
 // If left unspecified, the Block Storage API will apply a default of `rw`.
-func (r *VolumeAttach) AttachMode() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["attachMode"])
+func (r *VolumeAttach) AttachMode() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["attachMode"])
 }
 
 // This is a map of key/value pairs that contain the connection
 // information. You will want to pass this information to a provisioner
 // script to finalize the connection. See below for more information.
-func (r *VolumeAttach) Data() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["data"])
+func (r *VolumeAttach) Data() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["data"])
 }
 
 // The device to tell the Block Storage service this
 // volume will be attached as. This is purely for informational purposes.
 // You can specify `auto` or a device such as `/dev/vdc`.
-func (r *VolumeAttach) Device() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["device"])
+func (r *VolumeAttach) Device() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["device"])
 }
 
 // The storage driver that the volume is based on.
-func (r *VolumeAttach) DriverVolumeType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["driverVolumeType"])
+func (r *VolumeAttach) DriverVolumeType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["driverVolumeType"])
 }
 
 // The host to attach the volume to.
-func (r *VolumeAttach) HostName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["hostName"])
+func (r *VolumeAttach) HostName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["hostName"])
 }
 
 // The iSCSI initiator string to make the connection.
-func (r *VolumeAttach) Initiator() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["initiator"])
+func (r *VolumeAttach) Initiator() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["initiator"])
 }
 
 // The IP address of the `hostName` above.
-func (r *VolumeAttach) IpAddress() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["ipAddress"])
+func (r *VolumeAttach) IpAddress() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["ipAddress"])
 }
 
 // A mount point base name for shared storage.
-func (r *VolumeAttach) MountPointBase() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["mountPointBase"])
+func (r *VolumeAttach) MountPointBase() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["mountPointBase"])
 }
 
 // Whether to connect to this volume via multipath.
-func (r *VolumeAttach) Multipath() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["multipath"])
+func (r *VolumeAttach) Multipath() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["multipath"])
 }
 
 // The iSCSI initiator OS type.
-func (r *VolumeAttach) OsType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["osType"])
+func (r *VolumeAttach) OsType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["osType"])
 }
 
 // The iSCSI initiator platform.
-func (r *VolumeAttach) Platform() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["platform"])
+func (r *VolumeAttach) Platform() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["platform"])
 }
 
 // The region in which to obtain the V3 Block Storage
 // client. A Block Storage client is needed to create a volume attachment.
 // If omitted, the `region` argument of the provider is used. Changing this
 // creates a new volume attachment.
-func (r *VolumeAttach) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *VolumeAttach) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // The ID of the Volume to attach to an Instance.
-func (r *VolumeAttach) VolumeId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["volumeId"])
+func (r *VolumeAttach) VolumeId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["volumeId"])
 }
 
 // A wwnn name. Used for Fibre Channel connections.
-func (r *VolumeAttach) Wwnn() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["wwnn"])
+func (r *VolumeAttach) Wwnn() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["wwnn"])
 }
 
 // An array of wwpn strings. Used for Fibre Channel
 // connections.
-func (r *VolumeAttach) Wwpns() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["wwpns"])
+func (r *VolumeAttach) Wwpns() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["wwpns"])
 }
 
 // Input properties used for looking up and filtering VolumeAttach resources.

@@ -15,7 +15,7 @@ namespace Pulumi.Openstack.Blockstorage
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/blockstorage_snapshot_v2.html.markdown.
         /// </summary>
         public static Task<GetSnapshotV2Result> GetSnapshotV2(GetSnapshotV2Args? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSnapshotV2Result>("openstack:blockstorage/getSnapshotV2:getSnapshotV2", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSnapshotV2Result>("openstack:blockstorage/getSnapshotV2:getSnapshotV2", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetSnapshotV2Args : Pulumi.ResourceArgs

@@ -59,39 +59,39 @@ func GetRouterInterface(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *RouterInterface) URN() *pulumi.URNOutput {
+func (r *RouterInterface) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *RouterInterface) ID() *pulumi.IDOutput {
+func (r *RouterInterface) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // ID of the port this interface connects to. Changing
 // this creates a new router interface.
-func (r *RouterInterface) PortId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["portId"])
+func (r *RouterInterface) PortId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["portId"])
 }
 
 // The region in which to obtain the V2 networking client.
 // A networking client is needed to create a router. If omitted, the
 // `region` argument of the provider is used. Changing this creates a new
 // router interface.
-func (r *RouterInterface) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *RouterInterface) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // ID of the router this interface belongs to. Changing
 // this creates a new router interface.
-func (r *RouterInterface) RouterId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["routerId"])
+func (r *RouterInterface) RouterId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["routerId"])
 }
 
 // ID of the subnet this interface connects to. Changing
 // this creates a new router interface.
-func (r *RouterInterface) SubnetId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["subnetId"])
+func (r *RouterInterface) SubnetId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["subnetId"])
 }
 
 // Input properties used for looking up and filtering RouterInterface resources.

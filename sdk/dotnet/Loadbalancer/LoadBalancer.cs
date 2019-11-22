@@ -104,7 +104,7 @@ namespace Pulumi.Openstack.Loadbalancer
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public LoadBalancer(string name, LoadBalancerArgs args, CustomResourceOptions? options = null)
-            : base("openstack:loadbalancer/loadBalancer:LoadBalancer", name, args, MakeResourceOptions(options, ""))
+            : base("openstack:loadbalancer/loadBalancer:LoadBalancer", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

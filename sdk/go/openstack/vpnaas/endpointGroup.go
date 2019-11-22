@@ -64,56 +64,56 @@ func GetEndpointGroup(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *EndpointGroup) URN() *pulumi.URNOutput {
+func (r *EndpointGroup) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *EndpointGroup) ID() *pulumi.IDOutput {
+func (r *EndpointGroup) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The human-readable description for the group.
 // Changing this updates the description of the existing group.
-func (r *EndpointGroup) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *EndpointGroup) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // List of endpoints of the same type, for the endpoint group. The values will depend on the type.
 // Changing this creates a new group.
-func (r *EndpointGroup) Endpoints() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["endpoints"])
+func (r *EndpointGroup) Endpoints() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["endpoints"])
 }
 
 // The name of the group. Changing this updates the name of
 // the existing group.
-func (r *EndpointGroup) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *EndpointGroup) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The region in which to obtain the V2 Networking client.
 // A Networking client is needed to create an endpoint group. If omitted, the
 // `region` argument of the provider is used. Changing this creates a new
 // group.
-func (r *EndpointGroup) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *EndpointGroup) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // The owner of the group. Required if admin wants to
 // create an endpoint group for another project. Changing this creates a new group.
-func (r *EndpointGroup) TenantId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["tenantId"])
+func (r *EndpointGroup) TenantId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["tenantId"])
 }
 
 // The type of the endpoints in the group. A valid value is subnet, cidr, network, router, or vlan.
 // Changing this creates a new group.
-func (r *EndpointGroup) Type() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["type"])
+func (r *EndpointGroup) Type() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["type"])
 }
 
 // Map of additional options.
-func (r *EndpointGroup) ValueSpecs() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["valueSpecs"])
+func (r *EndpointGroup) ValueSpecs() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["valueSpecs"])
 }
 
 // Input properties used for looking up and filtering EndpointGroup resources.

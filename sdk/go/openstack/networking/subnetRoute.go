@@ -65,39 +65,39 @@ func GetSubnetRoute(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *SubnetRoute) URN() *pulumi.URNOutput {
+func (r *SubnetRoute) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *SubnetRoute) ID() *pulumi.IDOutput {
+func (r *SubnetRoute) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // CIDR block to match on the packet’s destination IP. Changing
 // this creates a new routing entry.
-func (r *SubnetRoute) DestinationCidr() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["destinationCidr"])
+func (r *SubnetRoute) DestinationCidr() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["destinationCidr"])
 }
 
 // IP address of the next hop gateway.  Changing
 // this creates a new routing entry.
-func (r *SubnetRoute) NextHop() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["nextHop"])
+func (r *SubnetRoute) NextHop() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["nextHop"])
 }
 
 // The region in which to obtain the V2 networking client.
 // A networking client is needed to configure a routing entry on a subnet. If omitted, the
 // `region` argument of the provider is used. Changing this creates a new
 // routing entry.
-func (r *SubnetRoute) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *SubnetRoute) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // ID of the subnet this routing entry belongs to. Changing
 // this creates a new routing entry.
-func (r *SubnetRoute) SubnetId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["subnetId"])
+func (r *SubnetRoute) SubnetId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["subnetId"])
 }
 
 // Input properties used for looking up and filtering SubnetRoute resources.

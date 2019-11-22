@@ -53,7 +53,7 @@ namespace Pulumi.Openstack.Networking
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public SubnetRoute(string name, SubnetRouteArgs args, CustomResourceOptions? options = null)
-            : base("openstack:networking/subnetRoute:SubnetRoute", name, args, MakeResourceOptions(options, ""))
+            : base("openstack:networking/subnetRoute:SubnetRoute", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

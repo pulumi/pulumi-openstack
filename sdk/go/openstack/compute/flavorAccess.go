@@ -64,31 +64,31 @@ func GetFlavorAccess(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *FlavorAccess) URN() *pulumi.URNOutput {
+func (r *FlavorAccess) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *FlavorAccess) ID() *pulumi.IDOutput {
+func (r *FlavorAccess) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The UUID of flavor to use. Changing this creates a new flavor access.
-func (r *FlavorAccess) FlavorId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["flavorId"])
+func (r *FlavorAccess) FlavorId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["flavorId"])
 }
 
 // The region in which to obtain the V2 Compute client.
 // If omitted, the `region` argument of the provider is used.
 // Changing this creates a new flavor access.
-func (r *FlavorAccess) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *FlavorAccess) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // The UUID of tenant which is allowed to use the flavor.
 // Changing this creates a new flavor access.
-func (r *FlavorAccess) TenantId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["tenantId"])
+func (r *FlavorAccess) TenantId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["tenantId"])
 }
 
 // Input properties used for looking up and filtering FlavorAccess resources.

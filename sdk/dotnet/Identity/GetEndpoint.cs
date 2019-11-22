@@ -17,7 +17,7 @@ namespace Pulumi.Openstack.Identity
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_endpoint_v3.html.markdown.
         /// </summary>
         public static Task<GetEndpointResult> GetEndpoint(GetEndpointArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEndpointResult>("openstack:identity/getEndpoint:getEndpoint", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetEndpointResult>("openstack:identity/getEndpoint:getEndpoint", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetEndpointArgs : Pulumi.ResourceArgs

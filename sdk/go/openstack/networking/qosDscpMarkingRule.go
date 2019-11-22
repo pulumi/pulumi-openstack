@@ -59,31 +59,31 @@ func GetQosDscpMarkingRule(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *QosDscpMarkingRule) URN() *pulumi.URNOutput {
+func (r *QosDscpMarkingRule) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *QosDscpMarkingRule) ID() *pulumi.IDOutput {
+func (r *QosDscpMarkingRule) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The value of DSCP mark. Changing this updates the DSCP mark value existing
 // QoS DSCP marking rule.
-func (r *QosDscpMarkingRule) DscpMark() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["dscpMark"])
+func (r *QosDscpMarkingRule) DscpMark() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["dscpMark"])
 }
 
 // The QoS policy reference. Changing this creates a new QoS DSCP marking rule.
-func (r *QosDscpMarkingRule) QosPolicyId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["qosPolicyId"])
+func (r *QosDscpMarkingRule) QosPolicyId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["qosPolicyId"])
 }
 
 // The region in which to obtain the V2 Networking client.
 // A Networking client is needed to create a Neutron QoS DSCP marking rule. If omitted, the
 // `region` argument of the provider is used. Changing this creates a new QoS DSCP marking rule.
-func (r *QosDscpMarkingRule) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *QosDscpMarkingRule) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // Input properties used for looking up and filtering QosDscpMarkingRule resources.

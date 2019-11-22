@@ -97,7 +97,7 @@ namespace Pulumi.Openstack.Identity
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ApplicationCredential(string name, ApplicationCredentialArgs? args = null, CustomResourceOptions? options = null)
-            : base("openstack:identity/applicationCredential:ApplicationCredential", name, args, MakeResourceOptions(options, ""))
+            : base("openstack:identity/applicationCredential:ApplicationCredential", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

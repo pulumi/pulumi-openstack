@@ -88,108 +88,108 @@ func GetSecretV1(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *SecretV1) URN() *pulumi.URNOutput {
+func (r *SecretV1) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *SecretV1) ID() *pulumi.IDOutput {
+func (r *SecretV1) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Metadata provided by a user or system for informational purposes.
-func (r *SecretV1) Algorithm() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["algorithm"])
+func (r *SecretV1) Algorithm() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["algorithm"])
 }
 
 // The map of metadata, assigned on the secret, which has been
 // explicitly and implicitly added.
-func (r *SecretV1) AllMetadata() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["allMetadata"])
+func (r *SecretV1) AllMetadata() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["allMetadata"])
 }
 
 // Metadata provided by a user or system for informational purposes.
-func (r *SecretV1) BitLength() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["bitLength"])
+func (r *SecretV1) BitLength() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["bitLength"])
 }
 
 // The map of the content types, assigned on the secret.
-func (r *SecretV1) ContentTypes() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["contentTypes"])
+func (r *SecretV1) ContentTypes() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["contentTypes"])
 }
 
 // The date the secret was created.
-func (r *SecretV1) CreatedAt() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["createdAt"])
+func (r *SecretV1) CreatedAt() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["createdAt"])
 }
 
 // The creator of the secret.
-func (r *SecretV1) CreatorId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["creatorId"])
+func (r *SecretV1) CreatorId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["creatorId"])
 }
 
 // The expiration time of the secret in the RFC3339 timestamp format (e.g. `2019-03-09T12:58:49Z`). If omitted, a secret will never expire. Changing this creates a new secret.
-func (r *SecretV1) Expiration() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["expiration"])
+func (r *SecretV1) Expiration() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["expiration"])
 }
 
 // Additional Metadata for the secret.
-func (r *SecretV1) Metadata() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["metadata"])
+func (r *SecretV1) Metadata() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["metadata"])
 }
 
 // Metadata provided by a user or system for informational purposes.
-func (r *SecretV1) Mode() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["mode"])
+func (r *SecretV1) Mode() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["mode"])
 }
 
 // Human-readable name for the Secret. Does not have
 // to be unique.
-func (r *SecretV1) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *SecretV1) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The secret's data to be stored. **payload\_content\_type** must also be supplied if **payload** is included.
-func (r *SecretV1) Payload() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["payload"])
+func (r *SecretV1) Payload() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["payload"])
 }
 
 // (required if **payload** is encoded) The encoding used for the payload to be able to include it in the JSON request. Must be either `base64` or `binary`.
-func (r *SecretV1) PayloadContentEncoding() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["payloadContentEncoding"])
+func (r *SecretV1) PayloadContentEncoding() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["payloadContentEncoding"])
 }
 
 // (required if **payload** is included) The media type for the content of the payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.
-func (r *SecretV1) PayloadContentType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["payloadContentType"])
+func (r *SecretV1) PayloadContentType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["payloadContentType"])
 }
 
 // The region in which to obtain the V1 KeyManager client.
 // A KeyManager client is needed to create a secret. If omitted, the
 // `region` argument of the provider is used. Changing this creates a new
 // V1 secret.
-func (r *SecretV1) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *SecretV1) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // The secret reference / where to find the secret.
-func (r *SecretV1) SecretRef() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["secretRef"])
+func (r *SecretV1) SecretRef() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["secretRef"])
 }
 
 // Used to indicate the type of secret being stored. For more information see [Secret types](https://docs.openstack.org/barbican/latest/api/reference/secret_types.html).
-func (r *SecretV1) SecretType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["secretType"])
+func (r *SecretV1) SecretType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["secretType"])
 }
 
 // The status of the secret.
-func (r *SecretV1) Status() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["status"])
+func (r *SecretV1) Status() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["status"])
 }
 
 // The date the secret was last updated.
-func (r *SecretV1) UpdatedAt() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["updatedAt"])
+func (r *SecretV1) UpdatedAt() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["updatedAt"])
 }
 
 // Input properties used for looking up and filtering SecretV1 resources.

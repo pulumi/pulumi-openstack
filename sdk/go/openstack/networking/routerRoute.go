@@ -71,39 +71,39 @@ func GetRouterRoute(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *RouterRoute) URN() *pulumi.URNOutput {
+func (r *RouterRoute) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *RouterRoute) ID() *pulumi.IDOutput {
+func (r *RouterRoute) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // CIDR block to match on the packet’s destination IP. Changing
 // this creates a new routing entry.
-func (r *RouterRoute) DestinationCidr() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["destinationCidr"])
+func (r *RouterRoute) DestinationCidr() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["destinationCidr"])
 }
 
 // IP address of the next hop gateway.  Changing
 // this creates a new routing entry.
-func (r *RouterRoute) NextHop() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["nextHop"])
+func (r *RouterRoute) NextHop() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["nextHop"])
 }
 
 // The region in which to obtain the V2 networking client.
 // A networking client is needed to configure a routing entry on a router. If omitted, the
 // `region` argument of the provider is used. Changing this creates a new
 // routing entry.
-func (r *RouterRoute) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *RouterRoute) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // ID of the router this routing entry belongs to. Changing
 // this creates a new routing entry.
-func (r *RouterRoute) RouterId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["routerId"])
+func (r *RouterRoute) RouterId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["routerId"])
 }
 
 // Input properties used for looking up and filtering RouterRoute resources.

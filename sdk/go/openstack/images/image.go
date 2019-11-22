@@ -128,46 +128,46 @@ func GetImage(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Image) URN() *pulumi.URNOutput {
+func (r *Image) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Image) ID() *pulumi.IDOutput {
+func (r *Image) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The checksum of the data associated with the image.
-func (r *Image) Checksum() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["checksum"])
+func (r *Image) Checksum() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["checksum"])
 }
 
 // The container format. Must be one of
 // "ami", "ari", "aki", "bare", "ovf".
-func (r *Image) ContainerFormat() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["containerFormat"])
+func (r *Image) ContainerFormat() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["containerFormat"])
 }
 
 // The date the image was created.
-func (r *Image) CreatedAt() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["createdAt"])
+func (r *Image) CreatedAt() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["createdAt"])
 }
 
 // The disk format. Must be one of
 // "ami", "ari", "aki", "vhd", "vmdk", "raw", "qcow2", "vdi", "iso".
-func (r *Image) DiskFormat() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["diskFormat"])
+func (r *Image) DiskFormat() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["diskFormat"])
 }
 
 // the trailing path after the glance
 // endpoint that represent the location of the image
 // or the path to retrieve it.
-func (r *Image) File() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["file"])
+func (r *Image) File() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["file"])
 }
 
-func (r *Image) ImageCachePath() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["imageCachePath"])
+func (r *Image) ImageCachePath() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["imageCachePath"])
 }
 
 // This is the url of the raw image that will
@@ -175,110 +175,110 @@ func (r *Image) ImageCachePath() *pulumi.StringOutput {
 // Glance is able to download image from internet but the `gophercloud` library
 // does not yet provide a way to do so.
 // Conflicts with `localFilePath`.
-func (r *Image) ImageSourceUrl() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["imageSourceUrl"])
+func (r *Image) ImageSourceUrl() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["imageSourceUrl"])
 }
 
 // This is the filepath of the raw image file
 // that will be uploaded to Glance. Conflicts with `imageSourceUrl`.
-func (r *Image) LocalFilePath() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["localFilePath"])
+func (r *Image) LocalFilePath() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["localFilePath"])
 }
 
 // The metadata associated with the image.
 // Image metadata allow for meaningfully define the image properties
 // and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
-func (r *Image) Metadata() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["metadata"])
+func (r *Image) Metadata() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["metadata"])
 }
 
 // Amount of disk space (in GB) required to boot image.
 // Defaults to 0.
-func (r *Image) MinDiskGb() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["minDiskGb"])
+func (r *Image) MinDiskGb() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["minDiskGb"])
 }
 
 // Amount of ram (in MB) required to boot image.
 // Defauts to 0.
-func (r *Image) MinRamMb() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["minRamMb"])
+func (r *Image) MinRamMb() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["minRamMb"])
 }
 
 // The name of the image.
-func (r *Image) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Image) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The id of the openstack user who owns the image.
-func (r *Image) Owner() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["owner"])
+func (r *Image) Owner() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["owner"])
 }
 
 // A map of key/value pairs to set freeform
 // information about an image. See the "Notes" section for further
 // information about properties.
-func (r *Image) Properties() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["properties"])
+func (r *Image) Properties() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["properties"])
 }
 
 // If true, image will not be deletable.
 // Defaults to false.
-func (r *Image) Protected() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["protected"])
+func (r *Image) Protected() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["protected"])
 }
 
 // The region in which to obtain the V2 Glance client.
 // A Glance client is needed to create an Image that can be used with
 // a compute instance. If omitted, the `region` argument of the provider
 // is used. Changing this creates a new Image.
-func (r *Image) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *Image) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // The path to the JSON-schema that represent
 // the image or image
-func (r *Image) Schema() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["schema"])
+func (r *Image) Schema() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["schema"])
 }
 
 // The size in bytes of the data associated with the image.
-func (r *Image) SizeBytes() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["sizeBytes"])
+func (r *Image) SizeBytes() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["sizeBytes"])
 }
 
 // The status of the image. It can be "queued", "active"
 // or "saving".
-func (r *Image) Status() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["status"])
+func (r *Image) Status() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["status"])
 }
 
 // The tags of the image. It must be a list of strings.
 // At this time, it is not possible to delete all tags of an image.
-func (r *Image) Tags() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["tags"])
+func (r *Image) Tags() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["tags"])
 }
 
 // (**Deprecated** - use `updatedAt` instead)
-func (r *Image) UpdateAt() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["updateAt"])
+func (r *Image) UpdateAt() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["updateAt"])
 }
 
 // The date the image was last updated.
-func (r *Image) UpdatedAt() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["updatedAt"])
+func (r *Image) UpdatedAt() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["updatedAt"])
 }
 
 // If false, the checksum will not be verified
 // once the image is finished uploading. Defaults to true.
-func (r *Image) VerifyChecksum() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["verifyChecksum"])
+func (r *Image) VerifyChecksum() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["verifyChecksum"])
 }
 
 // The visibility of the image. Must be one of
 // "public", "private", "community", or "shared". The ability to set the
 // visibility depends upon the configuration of the OpenStack cloud.
-func (r *Image) Visibility() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["visibility"])
+func (r *Image) Visibility() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["visibility"])
 }
 
 // Input properties used for looking up and filtering Image resources.

@@ -85,75 +85,75 @@ func GetL7RuleV2(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *L7RuleV2) URN() *pulumi.URNOutput {
+func (r *L7RuleV2) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *L7RuleV2) ID() *pulumi.IDOutput {
+func (r *L7RuleV2) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The administrative state of the L7 Rule.
 // A valid value is true (UP) or false (DOWN).
-func (r *L7RuleV2) AdminStateUp() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["adminStateUp"])
+func (r *L7RuleV2) AdminStateUp() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["adminStateUp"])
 }
 
 // The comparison type for the L7 rule - can either be
 // CONTAINS, STARTS\_WITH, ENDS_WITH, EQUAL_TO or REGEX
-func (r *L7RuleV2) CompareType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["compareType"])
+func (r *L7RuleV2) CompareType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["compareType"])
 }
 
 // When true the logic of the rule is inverted. For example, with invert
 // true, equal to would become not equal to. Default is false.
-func (r *L7RuleV2) Invert() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["invert"])
+func (r *L7RuleV2) Invert() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["invert"])
 }
 
 // The key to use for the comparison. For example, the name of the cookie to
 // evaluate. Valid when `type` is set to COOKIE or HEADER.
-func (r *L7RuleV2) Key() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["key"])
+func (r *L7RuleV2) Key() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["key"])
 }
 
 // The ID of the L7 Policy to query. Changing this creates a new
 // L7 Rule.
-func (r *L7RuleV2) L7policyId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["l7policyId"])
+func (r *L7RuleV2) L7policyId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["l7policyId"])
 }
 
 // The ID of the Listener owning this resource.
-func (r *L7RuleV2) ListenerId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["listenerId"])
+func (r *L7RuleV2) ListenerId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["listenerId"])
 }
 
 // The region in which to obtain the V2 Networking client.
 // A Networking client is needed to create an . If omitted, the
 // `region` argument of the provider is used. Changing this creates a new
 // L7 Rule.
-func (r *L7RuleV2) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *L7RuleV2) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // Required for admins. The UUID of the tenant who owns
 // the L7 Rule.  Only administrative users can specify a tenant UUID
 // other than their own. Changing this creates a new L7 Rule.
-func (r *L7RuleV2) TenantId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["tenantId"])
+func (r *L7RuleV2) TenantId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["tenantId"])
 }
 
 // The L7 Rule type - can either be COOKIE, FILE\_TYPE, HEADER,
 // HOST\_NAME or PATH.
-func (r *L7RuleV2) Type() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["type"])
+func (r *L7RuleV2) Type() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["type"])
 }
 
 // The value to use for the comparison. For example, the file type to
 // compare.
-func (r *L7RuleV2) Value() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["value"])
+func (r *L7RuleV2) Value() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["value"])
 }
 
 // Input properties used for looking up and filtering L7RuleV2 resources.

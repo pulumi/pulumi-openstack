@@ -76,7 +76,7 @@ namespace Pulumi.Openstack.Identity
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public EndpointV3(string name, EndpointV3Args args, CustomResourceOptions? options = null)
-            : base("openstack:identity/endpointV3:EndpointV3", name, args, MakeResourceOptions(options, ""))
+            : base("openstack:identity/endpointV3:EndpointV3", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

@@ -65,43 +65,43 @@ func GetQosBandwidthLimitRule(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *QosBandwidthLimitRule) URN() *pulumi.URNOutput {
+func (r *QosBandwidthLimitRule) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *QosBandwidthLimitRule) ID() *pulumi.IDOutput {
+func (r *QosBandwidthLimitRule) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The direction of traffic. Defaults to "egress". Changing this updates the direction of the
 // existing QoS bandwidth limit rule.
-func (r *QosBandwidthLimitRule) Direction() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["direction"])
+func (r *QosBandwidthLimitRule) Direction() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["direction"])
 }
 
 // The maximum burst size in kilobits of a QoS bandwidth limit rule. Changing this updates the
 // maximum burst size in kilobits of the existing QoS bandwidth limit rule.
-func (r *QosBandwidthLimitRule) MaxBurstKbps() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["maxBurstKbps"])
+func (r *QosBandwidthLimitRule) MaxBurstKbps() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["maxBurstKbps"])
 }
 
 // The maximum kilobits per second of a QoS bandwidth limit rule. Changing this updates the
 // maximum kilobits per second of the existing QoS bandwidth limit rule.
-func (r *QosBandwidthLimitRule) MaxKbps() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["maxKbps"])
+func (r *QosBandwidthLimitRule) MaxKbps() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["maxKbps"])
 }
 
 // The QoS policy reference. Changing this creates a new QoS bandwidth limit rule.
-func (r *QosBandwidthLimitRule) QosPolicyId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["qosPolicyId"])
+func (r *QosBandwidthLimitRule) QosPolicyId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["qosPolicyId"])
 }
 
 // The region in which to obtain the V2 Networking client.
 // A Networking client is needed to create a Neutron QoS bandwidth limit rule. If omitted, the
 // `region` argument of the provider is used. Changing this creates a new QoS bandwidth limit rule.
-func (r *QosBandwidthLimitRule) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *QosBandwidthLimitRule) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // Input properties used for looking up and filtering QosBandwidthLimitRule resources.

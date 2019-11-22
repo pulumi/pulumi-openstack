@@ -69,52 +69,52 @@ func GetImageAccess(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *ImageAccess) URN() *pulumi.URNOutput {
+func (r *ImageAccess) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *ImageAccess) ID() *pulumi.IDOutput {
+func (r *ImageAccess) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The date the image access was created.
-func (r *ImageAccess) CreatedAt() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["createdAt"])
+func (r *ImageAccess) CreatedAt() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["createdAt"])
 }
 
 // The image ID.
-func (r *ImageAccess) ImageId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["imageId"])
+func (r *ImageAccess) ImageId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["imageId"])
 }
 
 // The member ID, e.g. the target project ID.
-func (r *ImageAccess) MemberId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["memberId"])
+func (r *ImageAccess) MemberId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["memberId"])
 }
 
 // The region in which to obtain the V2 Glance client.
 // A Glance client is needed to manage Image members. If omitted, the `region`
 // argument of the provider is used. Changing this creates a new resource.
-func (r *ImageAccess) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *ImageAccess) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // The member schema.
-func (r *ImageAccess) Schema() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["schema"])
+func (r *ImageAccess) Schema() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["schema"])
 }
 
 // The member proposal status. Optional if admin wants to
 // force the member proposal acceptance. Can either be `accepted`, `rejected` or
 // `pending`. Defaults to `pending`. Foridden for non-admin users.
-func (r *ImageAccess) Status() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["status"])
+func (r *ImageAccess) Status() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["status"])
 }
 
 // The date the image access was last updated.
-func (r *ImageAccess) UpdatedAt() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["updatedAt"])
+func (r *ImageAccess) UpdatedAt() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["updatedAt"])
 }
 
 // Input properties used for looking up and filtering ImageAccess resources.

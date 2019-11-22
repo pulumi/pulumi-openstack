@@ -83,7 +83,7 @@ namespace Pulumi.Openstack.Firewall
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Policy(string name, PolicyArgs? args = null, CustomResourceOptions? options = null)
-            : base("openstack:firewall/policy:Policy", name, args, MakeResourceOptions(options, ""))
+            : base("openstack:firewall/policy:Policy", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

@@ -97,103 +97,103 @@ func GetVip(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Vip) URN() *pulumi.URNOutput {
+func (r *Vip) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Vip) ID() *pulumi.IDOutput {
+func (r *Vip) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The IP address of the vip. Changing this creates a new
 // vip.
-func (r *Vip) Address() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["address"])
+func (r *Vip) Address() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["address"])
 }
 
 // The administrative state of the vip.
 // Acceptable values are "true" and "false". Changing this value updates the
 // state of the existing vip.
-func (r *Vip) AdminStateUp() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["adminStateUp"])
+func (r *Vip) AdminStateUp() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["adminStateUp"])
 }
 
 // The maximum number of connections allowed for the
 // vip. Default is -1, meaning no limit. Changing this updates the connLimit
 // of the existing vip.
-func (r *Vip) ConnLimit() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["connLimit"])
+func (r *Vip) ConnLimit() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["connLimit"])
 }
 
 // Human-readable description for the vip. Changing
 // this updates the description of the existing vip.
-func (r *Vip) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *Vip) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // A *Networking* Floating IP that will be associated
 // with the vip. The Floating IP must be provisioned already.
-func (r *Vip) FloatingIp() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["floatingIp"])
+func (r *Vip) FloatingIp() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["floatingIp"])
 }
 
 // The name of the vip. Changing this updates the name of
 // the existing vip.
-func (r *Vip) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Vip) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Omit this field to prevent session persistence.
 // The persistence object structure is documented below. Changing this updates
 // the persistence of the existing vip.
-func (r *Vip) Persistence() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["persistence"])
+func (r *Vip) Persistence() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["persistence"])
 }
 
 // The ID of the pool with which the vip is associated.
 // Changing this updates the poolId of the existing vip.
-func (r *Vip) PoolId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["poolId"])
+func (r *Vip) PoolId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["poolId"])
 }
 
 // The port on which to listen for client traffic. Changing
 // this creates a new vip.
-func (r *Vip) Port() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["port"])
+func (r *Vip) Port() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["port"])
 }
 
 // Port UUID for this VIP at associated floating IP (if any).
-func (r *Vip) PortId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["portId"])
+func (r *Vip) PortId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["portId"])
 }
 
 // The protocol - can be either 'TCP, 'HTTP', or
 // HTTPS'. Changing this creates a new vip.
-func (r *Vip) Protocol() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["protocol"])
+func (r *Vip) Protocol() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["protocol"])
 }
 
 // The region in which to obtain the V2 Networking client.
 // A Networking client is needed to create a VIP. If omitted, the
 // `region` argument of the provider is used. Changing this creates a new
 // VIP.
-func (r *Vip) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *Vip) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // The network on which to allocate the vip's address. A
 // tenant can only create vips on networks authorized by policy (e.g. networks
 // that belong to them or networks that are shared). Changing this creates a
 // new vip.
-func (r *Vip) SubnetId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["subnetId"])
+func (r *Vip) SubnetId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["subnetId"])
 }
 
 // The owner of the vip. Required if admin wants to
 // create a vip member for another tenant. Changing this creates a new vip.
-func (r *Vip) TenantId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["tenantId"])
+func (r *Vip) TenantId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["tenantId"])
 }
 
 // Input properties used for looking up and filtering Vip resources.

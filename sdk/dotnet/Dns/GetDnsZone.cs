@@ -15,7 +15,7 @@ namespace Pulumi.Openstack.Dns
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/dns_zone_v2.html.markdown.
         /// </summary>
         public static Task<GetDnsZoneResult> GetDnsZone(GetDnsZoneArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDnsZoneResult>("openstack:dns/getDnsZone:getDnsZone", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDnsZoneResult>("openstack:dns/getDnsZone:getDnsZone", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetDnsZoneArgs : Pulumi.ResourceArgs

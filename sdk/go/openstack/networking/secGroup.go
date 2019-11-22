@@ -65,56 +65,56 @@ func GetSecGroup(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *SecGroup) URN() *pulumi.URNOutput {
+func (r *SecGroup) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *SecGroup) ID() *pulumi.IDOutput {
+func (r *SecGroup) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The collection of tags assigned on the security group, which have
 // been explicitly and implicitly added.
-func (r *SecGroup) AllTags() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["allTags"])
+func (r *SecGroup) AllTags() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["allTags"])
 }
 
 // Whether or not to delete the default
 // egress security rules. This is `false` by default. See the below note
 // for more information.
-func (r *SecGroup) DeleteDefaultRules() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["deleteDefaultRules"])
+func (r *SecGroup) DeleteDefaultRules() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["deleteDefaultRules"])
 }
 
 // A unique name for the security group.
-func (r *SecGroup) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *SecGroup) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // A unique name for the security group.
-func (r *SecGroup) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *SecGroup) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The region in which to obtain the V2 networking client.
 // A networking client is needed to create a port. If omitted, the
 // `region` argument of the provider is used. Changing this creates a new
 // security group.
-func (r *SecGroup) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *SecGroup) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // A set of string tags for the security group.
-func (r *SecGroup) Tags() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["tags"])
+func (r *SecGroup) Tags() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["tags"])
 }
 
 // The owner of the security group. Required if admin
 // wants to create a port for another tenant. Changing this creates a new
 // security group.
-func (r *SecGroup) TenantId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["tenantId"])
+func (r *SecGroup) TenantId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["tenantId"])
 }
 
 // Input properties used for looking up and filtering SecGroup resources.

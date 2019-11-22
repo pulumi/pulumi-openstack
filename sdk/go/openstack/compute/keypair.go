@@ -57,29 +57,29 @@ func GetKeypair(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Keypair) URN() *pulumi.URNOutput {
+func (r *Keypair) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Keypair) ID() *pulumi.IDOutput {
+func (r *Keypair) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The fingerprint of the public key.
-func (r *Keypair) Fingerprint() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["fingerprint"])
+func (r *Keypair) Fingerprint() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["fingerprint"])
 }
 
 // A unique name for the keypair. Changing this creates a new
 // keypair.
-func (r *Keypair) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Keypair) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The generated private key when no public key is specified.
-func (r *Keypair) PrivateKey() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["privateKey"])
+func (r *Keypair) PrivateKey() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["privateKey"])
 }
 
 // A pregenerated OpenSSH-formatted public key.
@@ -87,21 +87,21 @@ func (r *Keypair) PrivateKey() *pulumi.StringOutput {
 // a public/private key pair will be automatically generated. If a pair is
 // created, then destroying this resource means you will lose access to that
 // keypair forever.
-func (r *Keypair) PublicKey() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["publicKey"])
+func (r *Keypair) PublicKey() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["publicKey"])
 }
 
 // The region in which to obtain the V2 Compute client.
 // Keypairs are associated with accounts, but a Compute client is needed to
 // create one. If omitted, the `region` argument of the provider is used.
 // Changing this creates a new keypair.
-func (r *Keypair) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *Keypair) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // Map of additional options.
-func (r *Keypair) ValueSpecs() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["valueSpecs"])
+func (r *Keypair) ValueSpecs() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["valueSpecs"])
 }
 
 // Input properties used for looking up and filtering Keypair resources.

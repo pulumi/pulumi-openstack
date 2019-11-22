@@ -73,7 +73,7 @@ namespace Pulumi.Openstack.Vpnaas
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public EndpointGroup(string name, EndpointGroupArgs? args = null, CustomResourceOptions? options = null)
-            : base("openstack:vpnaas/endpointGroup:EndpointGroup", name, args, MakeResourceOptions(options, ""))
+            : base("openstack:vpnaas/endpointGroup:EndpointGroup", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

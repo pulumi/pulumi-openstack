@@ -44,7 +44,7 @@ namespace Pulumi.Openstack.Networking
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public QosDscpMarkingRule(string name, QosDscpMarkingRuleArgs args, CustomResourceOptions? options = null)
-            : base("openstack:networking/qosDscpMarkingRule:QosDscpMarkingRule", name, args, MakeResourceOptions(options, ""))
+            : base("openstack:networking/qosDscpMarkingRule:QosDscpMarkingRule", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

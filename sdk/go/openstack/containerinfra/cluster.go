@@ -181,101 +181,101 @@ func GetCluster(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Cluster) URN() *pulumi.URNOutput {
+func (r *Cluster) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Cluster) ID() *pulumi.IDOutput {
+func (r *Cluster) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
-func (r *Cluster) ApiAddress() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["apiAddress"])
+func (r *Cluster) ApiAddress() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["apiAddress"])
 }
 
-func (r *Cluster) ClusterTemplateId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["clusterTemplateId"])
+func (r *Cluster) ClusterTemplateId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["clusterTemplateId"])
 }
 
-func (r *Cluster) CoeVersion() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["coeVersion"])
+func (r *Cluster) CoeVersion() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["coeVersion"])
 }
 
-func (r *Cluster) ContainerVersion() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["containerVersion"])
+func (r *Cluster) ContainerVersion() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["containerVersion"])
 }
 
-func (r *Cluster) CreateTimeout() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["createTimeout"])
+func (r *Cluster) CreateTimeout() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["createTimeout"])
 }
 
-func (r *Cluster) CreatedAt() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["createdAt"])
+func (r *Cluster) CreatedAt() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["createdAt"])
 }
 
-func (r *Cluster) DiscoveryUrl() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["discoveryUrl"])
+func (r *Cluster) DiscoveryUrl() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["discoveryUrl"])
 }
 
-func (r *Cluster) DockerVolumeSize() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["dockerVolumeSize"])
+func (r *Cluster) DockerVolumeSize() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["dockerVolumeSize"])
 }
 
-func (r *Cluster) Flavor() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["flavor"])
+func (r *Cluster) Flavor() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["flavor"])
 }
 
-func (r *Cluster) Keypair() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["keypair"])
+func (r *Cluster) Keypair() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["keypair"])
 }
 
-func (r *Cluster) Labels() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["labels"])
+func (r *Cluster) Labels() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["labels"])
 }
 
-func (r *Cluster) MasterAddresses() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["masterAddresses"])
+func (r *Cluster) MasterAddresses() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["masterAddresses"])
 }
 
-func (r *Cluster) MasterCount() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["masterCount"])
+func (r *Cluster) MasterCount() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["masterCount"])
 }
 
-func (r *Cluster) MasterFlavor() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["masterFlavor"])
+func (r *Cluster) MasterFlavor() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["masterFlavor"])
 }
 
-func (r *Cluster) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Cluster) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
-func (r *Cluster) NodeAddresses() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["nodeAddresses"])
+func (r *Cluster) NodeAddresses() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["nodeAddresses"])
 }
 
-func (r *Cluster) NodeCount() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["nodeCount"])
+func (r *Cluster) NodeCount() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["nodeCount"])
 }
 
-func (r *Cluster) ProjectId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["projectId"])
+func (r *Cluster) ProjectId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["projectId"])
 }
 
-func (r *Cluster) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *Cluster) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
-func (r *Cluster) StackId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["stackId"])
+func (r *Cluster) StackId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["stackId"])
 }
 
-func (r *Cluster) UpdatedAt() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["updatedAt"])
+func (r *Cluster) UpdatedAt() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["updatedAt"])
 }
 
-func (r *Cluster) UserId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["userId"])
+func (r *Cluster) UserId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["userId"])
 }
 
 // Input properties used for looking up and filtering Cluster resources.
