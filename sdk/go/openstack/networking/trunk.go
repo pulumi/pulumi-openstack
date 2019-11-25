@@ -73,70 +73,70 @@ func GetTrunk(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Trunk) URN() *pulumi.URNOutput {
+func (r *Trunk) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Trunk) ID() *pulumi.IDOutput {
+func (r *Trunk) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Administrative up/down status for the trunk
 // (must be "true" or "false" if provided). Changing this updates the
 // `adminStateUp` of an existing trunk.
-func (r *Trunk) AdminStateUp() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["adminStateUp"])
+func (r *Trunk) AdminStateUp() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["adminStateUp"])
 }
 
 // The collection of tags assigned on the trunk, which have been
 // explicitly and implicitly added.
-func (r *Trunk) AllTags() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["allTags"])
+func (r *Trunk) AllTags() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["allTags"])
 }
 
 // Human-readable description of the trunk. Changing this
 // updates the name of the existing trunk.
-func (r *Trunk) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *Trunk) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // A unique name for the trunk. Changing this
 // updates the `name` of an existing trunk.
-func (r *Trunk) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Trunk) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The ID of the port to be used as the parent port of the
 // trunk. This is the port that should be used as the compute instance network
 // port. Changing this creates a new trunk.
-func (r *Trunk) PortId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["portId"])
+func (r *Trunk) PortId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["portId"])
 }
 
 // The region in which to obtain the V2 networking client.
 // A networking client is needed to create a trunk. If omitted, the
 // `region` argument of the provider is used. Changing this creates a new
 // trunk.
-func (r *Trunk) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *Trunk) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // The set of ports that will be made subports of the trunk.
 // The structure of each subport is described below.
-func (r *Trunk) SubPorts() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["subPorts"])
+func (r *Trunk) SubPorts() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["subPorts"])
 }
 
 // A set of string tags for the port.
-func (r *Trunk) Tags() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["tags"])
+func (r *Trunk) Tags() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["tags"])
 }
 
 // The owner of the Trunk. Required if admin wants
 // to create a trunk on behalf of another tenant. Changing this creates a new trunk.
-func (r *Trunk) TenantId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["tenantId"])
+func (r *Trunk) TenantId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["tenantId"])
 }
 
 // Input properties used for looking up and filtering Trunk resources.

@@ -15,7 +15,7 @@ namespace Pulumi.Openstack.Networking
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_qos_dscp_marking_rule_v2.html.markdown.
         /// </summary>
         public static Task<GetQosDscpMarkingRuleResult> GetQosDscpMarkingRule(GetQosDscpMarkingRuleArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetQosDscpMarkingRuleResult>("openstack:networking/getQosDscpMarkingRule:getQosDscpMarkingRule", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetQosDscpMarkingRuleResult>("openstack:networking/getQosDscpMarkingRule:getQosDscpMarkingRule", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetQosDscpMarkingRuleArgs : Pulumi.ResourceArgs

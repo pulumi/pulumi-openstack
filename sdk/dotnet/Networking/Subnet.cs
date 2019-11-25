@@ -185,7 +185,7 @@ namespace Pulumi.Openstack.Networking
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Subnet(string name, SubnetArgs args, CustomResourceOptions? options = null)
-            : base("openstack:networking/subnet:Subnet", name, args, MakeResourceOptions(options, ""))
+            : base("openstack:networking/subnet:Subnet", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

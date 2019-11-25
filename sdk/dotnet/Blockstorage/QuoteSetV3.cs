@@ -92,7 +92,7 @@ namespace Pulumi.Openstack.Blockstorage
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public QuoteSetV3(string name, QuoteSetV3Args args, CustomResourceOptions? options = null)
-            : base("openstack:blockstorage/quoteSetV3:QuoteSetV3", name, args, MakeResourceOptions(options, ""))
+            : base("openstack:blockstorage/quoteSetV3:QuoteSetV3", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

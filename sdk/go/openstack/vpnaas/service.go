@@ -77,75 +77,75 @@ func GetService(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Service) URN() *pulumi.URNOutput {
+func (r *Service) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Service) ID() *pulumi.IDOutput {
+func (r *Service) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The administrative state of the resource. Can either be up(true) or down(false).
 // Changing this updates the administrative state of the existing service.
-func (r *Service) AdminStateUp() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["adminStateUp"])
+func (r *Service) AdminStateUp() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["adminStateUp"])
 }
 
 // The human-readable description for the service.
 // Changing this updates the description of the existing service.
-func (r *Service) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *Service) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // The read-only external (public) IPv4 address that is used for the VPN service.
-func (r *Service) ExternalV4Ip() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["externalV4Ip"])
+func (r *Service) ExternalV4Ip() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["externalV4Ip"])
 }
 
 // The read-only external (public) IPv6 address that is used for the VPN service.
-func (r *Service) ExternalV6Ip() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["externalV6Ip"])
+func (r *Service) ExternalV6Ip() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["externalV6Ip"])
 }
 
 // The name of the service. Changing this updates the name of
 // the existing service.
-func (r *Service) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Service) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The region in which to obtain the V2 Networking client.
 // A Networking client is needed to create a VPN service. If omitted, the
 // `region` argument of the provider is used. Changing this creates a new
 // service.
-func (r *Service) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *Service) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // The ID of the router. Changing this creates a new service.
-func (r *Service) RouterId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["routerId"])
+func (r *Service) RouterId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["routerId"])
 }
 
 // Indicates whether IPsec VPN service is currently operational. Values are ACTIVE, DOWN, BUILD, ERROR, PENDING_CREATE, PENDING_UPDATE, or PENDING_DELETE.
-func (r *Service) Status() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["status"])
+func (r *Service) Status() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["status"])
 }
 
 // SubnetID is the ID of the subnet. Default is null.
-func (r *Service) SubnetId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["subnetId"])
+func (r *Service) SubnetId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["subnetId"])
 }
 
 // The owner of the service. Required if admin wants to
 // create a service for another project. Changing this creates a new service.
-func (r *Service) TenantId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["tenantId"])
+func (r *Service) TenantId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["tenantId"])
 }
 
 // Map of additional options.
-func (r *Service) ValueSpecs() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["valueSpecs"])
+func (r *Service) ValueSpecs() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["valueSpecs"])
 }
 
 // Input properties used for looking up and filtering Service resources.

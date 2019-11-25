@@ -69,53 +69,53 @@ func GetImageAccessAccept(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *ImageAccessAccept) URN() *pulumi.URNOutput {
+func (r *ImageAccessAccept) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *ImageAccessAccept) ID() *pulumi.IDOutput {
+func (r *ImageAccessAccept) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The date the image membership was created.
-func (r *ImageAccessAccept) CreatedAt() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["createdAt"])
+func (r *ImageAccessAccept) CreatedAt() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["createdAt"])
 }
 
 // The proposed image ID.
-func (r *ImageAccessAccept) ImageId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["imageId"])
+func (r *ImageAccessAccept) ImageId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["imageId"])
 }
 
 // The member ID, e.g. the target project ID. Optional
 // for admin accounts. Defaults to the current scope project ID.
-func (r *ImageAccessAccept) MemberId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["memberId"])
+func (r *ImageAccessAccept) MemberId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["memberId"])
 }
 
 // The region in which to obtain the V2 Glance client.
 // A Glance client is needed to manage Image memberships. If omitted, the
 // `region` argument of the provider is used. Changing this creates a new
 // membership.
-func (r *ImageAccessAccept) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *ImageAccessAccept) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // The membership schema.
-func (r *ImageAccessAccept) Schema() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["schema"])
+func (r *ImageAccessAccept) Schema() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["schema"])
 }
 
 // The membership proposal status. Can either be
 // `accepted`, `rejected` or `pending`.
-func (r *ImageAccessAccept) Status() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["status"])
+func (r *ImageAccessAccept) Status() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["status"])
 }
 
 // The date the image membership was last updated.
-func (r *ImageAccessAccept) UpdatedAt() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["updatedAt"])
+func (r *ImageAccessAccept) UpdatedAt() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["updatedAt"])
 }
 
 // Input properties used for looking up and filtering ImageAccessAccept resources.

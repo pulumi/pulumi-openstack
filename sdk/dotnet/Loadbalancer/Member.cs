@@ -89,7 +89,7 @@ namespace Pulumi.Openstack.Loadbalancer
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Member(string name, MemberArgs args, CustomResourceOptions? options = null)
-            : base("openstack:loadbalancer/member:Member", name, args, MakeResourceOptions(options, ""))
+            : base("openstack:loadbalancer/member:Member", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

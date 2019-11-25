@@ -101,31 +101,31 @@ func GetListener(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Listener) URN() *pulumi.URNOutput {
+func (r *Listener) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Listener) ID() *pulumi.IDOutput {
+func (r *Listener) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The administrative state of the Listener.
 // A valid value is true (UP) or false (DOWN).
-func (r *Listener) AdminStateUp() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["adminStateUp"])
+func (r *Listener) AdminStateUp() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["adminStateUp"])
 }
 
 // The maximum number of connections allowed
 // for the Listener.
-func (r *Listener) ConnectionLimit() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["connectionLimit"])
+func (r *Listener) ConnectionLimit() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["connectionLimit"])
 }
 
 // The ID of the default pool with which the
 // Listener is associated.
-func (r *Listener) DefaultPoolId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["defaultPoolId"])
+func (r *Listener) DefaultPoolId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["defaultPoolId"])
 }
 
 // A reference to a Barbican Secrets
@@ -133,82 +133,82 @@ func (r *Listener) DefaultPoolId() *pulumi.StringOutput {
 // is `TERMINATED_HTTPS`. See
 // [here](https://wiki.openstack.org/wiki/Network/LBaaS/docs/how-to-create-tls-loadbalancer)
 // for more information.
-func (r *Listener) DefaultTlsContainerRef() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["defaultTlsContainerRef"])
+func (r *Listener) DefaultTlsContainerRef() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["defaultTlsContainerRef"])
 }
 
 // Human-readable description for the Listener.
-func (r *Listener) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *Listener) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // The load balancer on which to provision this
 // Listener. Changing this creates a new Listener.
-func (r *Listener) LoadbalancerId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["loadbalancerId"])
+func (r *Listener) LoadbalancerId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["loadbalancerId"])
 }
 
 // Human-readable name for the Listener. Does not have
 // to be unique.
-func (r *Listener) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Listener) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The protocol - can either be TCP, HTTP, HTTPS,
 // TERMINATED_HTTPS or UDP (supported only in Octavia). Changing this creates a
 // new Listener.
-func (r *Listener) Protocol() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["protocol"])
+func (r *Listener) Protocol() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["protocol"])
 }
 
 // The port on which to listen for client traffic.
 // Changing this creates a new Listener.
-func (r *Listener) ProtocolPort() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["protocolPort"])
+func (r *Listener) ProtocolPort() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["protocolPort"])
 }
 
 // The region in which to obtain the V2 Networking client.
 // A Networking client is needed to create an . If omitted, the
 // `region` argument of the provider is used. Changing this creates a new
 // Listener.
-func (r *Listener) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *Listener) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // A list of references to Barbican Secrets
 // containers which store SNI information. See
 // [here](https://wiki.openstack.org/wiki/Network/LBaaS/docs/how-to-create-tls-loadbalancer)
 // for more information.
-func (r *Listener) SniContainerRefs() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["sniContainerRefs"])
+func (r *Listener) SniContainerRefs() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["sniContainerRefs"])
 }
 
 // Required for admins. The UUID of the tenant who owns
 // the Listener.  Only administrative users can specify a tenant UUID
 // other than their own. Changing this creates a new Listener.
-func (r *Listener) TenantId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["tenantId"])
+func (r *Listener) TenantId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["tenantId"])
 }
 
 // The client inactivity timeout in milliseconds.
-func (r *Listener) TimeoutClientData() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["timeoutClientData"])
+func (r *Listener) TimeoutClientData() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["timeoutClientData"])
 }
 
 // The member connection timeout in milliseconds.
-func (r *Listener) TimeoutMemberConnect() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["timeoutMemberConnect"])
+func (r *Listener) TimeoutMemberConnect() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["timeoutMemberConnect"])
 }
 
 // The member inactivity timeout in milliseconds.
-func (r *Listener) TimeoutMemberData() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["timeoutMemberData"])
+func (r *Listener) TimeoutMemberData() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["timeoutMemberData"])
 }
 
 // The time in milliseconds, to wait for additional
 // TCP packets for content inspection.
-func (r *Listener) TimeoutTcpInspect() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["timeoutTcpInspect"])
+func (r *Listener) TimeoutTcpInspect() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["timeoutTcpInspect"])
 }
 
 // Input properties used for looking up and filtering Listener resources.

@@ -67,12 +67,12 @@ func GetPolicy(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Policy) URN() *pulumi.URNOutput {
+func (r *Policy) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Policy) ID() *pulumi.IDOutput {
+func (r *Policy) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
@@ -81,35 +81,35 @@ func (r *Policy) ID() *pulumi.IDOutput {
 // This status is set to "false" whenever the firewall policy or any of its
 // rules are changed. Changing this updates the `audited` status of an existing
 // firewall policy.
-func (r *Policy) Audited() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["audited"])
+func (r *Policy) Audited() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["audited"])
 }
 
 // A description for the firewall policy. Changing
 // this updates the `description` of an existing firewall policy.
-func (r *Policy) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *Policy) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // A name for the firewall policy. Changing this
 // updates the `name` of an existing firewall policy.
-func (r *Policy) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Policy) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The region in which to obtain the v1 networking client.
 // A networking client is needed to create a firewall policy. If omitted, the
 // `region` argument of the provider is used. Changing this creates a new
 // firewall policy.
-func (r *Policy) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *Policy) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // An array of one or more firewall rules that comprise
 // the policy. Changing this results in adding/removing rules from the
 // existing firewall policy.
-func (r *Policy) Rules() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["rules"])
+func (r *Policy) Rules() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["rules"])
 }
 
 // Sharing status of the firewall policy (must be "true"
@@ -117,17 +117,17 @@ func (r *Policy) Rules() *pulumi.ArrayOutput {
 // can be used in, firewalls in other tenants. Changing this updates the
 // `shared` status of an existing firewall policy. Only administrative users
 // can specify if the policy should be shared.
-func (r *Policy) Shared() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["shared"])
+func (r *Policy) Shared() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["shared"])
 }
 
-func (r *Policy) TenantId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["tenantId"])
+func (r *Policy) TenantId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["tenantId"])
 }
 
 // Map of additional options.
-func (r *Policy) ValueSpecs() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["valueSpecs"])
+func (r *Policy) ValueSpecs() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["valueSpecs"])
 }
 
 // Input properties used for looking up and filtering Policy resources.

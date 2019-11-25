@@ -80,70 +80,70 @@ func GetMember(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Member) URN() *pulumi.URNOutput {
+func (r *Member) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Member) ID() *pulumi.IDOutput {
+func (r *Member) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The IP address of the member to receive traffic from
 // the load balancer. Changing this creates a new member.
-func (r *Member) Address() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["address"])
+func (r *Member) Address() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["address"])
 }
 
 // The administrative state of the member.
 // A valid value is true (UP) or false (DOWN).
-func (r *Member) AdminStateUp() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["adminStateUp"])
+func (r *Member) AdminStateUp() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["adminStateUp"])
 }
 
 // Human-readable name for the member.
-func (r *Member) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Member) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The id of the pool that this member will be
 // assigned to.
-func (r *Member) PoolId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["poolId"])
+func (r *Member) PoolId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["poolId"])
 }
 
 // The port on which to listen for client traffic.
 // Changing this creates a new member.
-func (r *Member) ProtocolPort() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["protocolPort"])
+func (r *Member) ProtocolPort() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["protocolPort"])
 }
 
 // The region in which to obtain the V2 Networking client.
 // A Networking client is needed to create an . If omitted, the
 // `region` argument of the provider is used. Changing this creates a new
 // member.
-func (r *Member) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *Member) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // The subnet in which to access the member
-func (r *Member) SubnetId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["subnetId"])
+func (r *Member) SubnetId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["subnetId"])
 }
 
 // Required for admins. The UUID of the tenant who owns
 // the member.  Only administrative users can specify a tenant UUID
 // other than their own. Changing this creates a new member.
-func (r *Member) TenantId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["tenantId"])
+func (r *Member) TenantId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["tenantId"])
 }
 
 // A positive integer value that indicates the relative
 // portion of traffic that this member should receive from the pool. For
 // example, a member with a weight of 10 receives five times as much traffic
 // as a member with a weight of 2.
-func (r *Member) Weight() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["weight"])
+func (r *Member) Weight() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["weight"])
 }
 
 // Input properties used for looking up and filtering Member resources.

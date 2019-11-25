@@ -16,7 +16,7 @@ namespace Pulumi.Openstack.Sharedfilesystem
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/sharedfilesystem_availability_zones_v2.html.markdown.
         /// </summary>
         public static Task<GetAvailbilityZonesResult> GetAvailbilityZones(GetAvailbilityZonesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAvailbilityZonesResult>("openstack:sharedfilesystem/getAvailbilityZones:getAvailbilityZones", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAvailbilityZonesResult>("openstack:sharedfilesystem/getAvailbilityZones:getAvailbilityZones", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetAvailbilityZonesArgs : Pulumi.ResourceArgs

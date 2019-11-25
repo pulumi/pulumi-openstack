@@ -88,7 +88,7 @@ namespace Pulumi.Openstack.Keymanager
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ContainerV1(string name, ContainerV1Args args, CustomResourceOptions? options = null)
-            : base("openstack:keymanager/containerV1:ContainerV1", name, args, MakeResourceOptions(options, ""))
+            : base("openstack:keymanager/containerV1:ContainerV1", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

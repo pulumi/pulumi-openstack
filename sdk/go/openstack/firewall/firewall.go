@@ -74,72 +74,72 @@ func GetFirewall(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Firewall) URN() *pulumi.URNOutput {
+func (r *Firewall) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Firewall) ID() *pulumi.IDOutput {
+func (r *Firewall) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Administrative up/down status for the firewall
 // (must be "true" or "false" if provided - defaults to "true").
 // Changing this updates the `adminStateUp` of an existing firewall.
-func (r *Firewall) AdminStateUp() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["adminStateUp"])
+func (r *Firewall) AdminStateUp() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["adminStateUp"])
 }
 
 // Router(s) to associate this firewall instance
 // with. Must be a list of strings. Changing this updates the associated routers
 // of an existing firewall. Conflicts with `noRouters`.
-func (r *Firewall) AssociatedRouters() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["associatedRouters"])
+func (r *Firewall) AssociatedRouters() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["associatedRouters"])
 }
 
 // A description for the firewall. Changing this
 // updates the `description` of an existing firewall.
-func (r *Firewall) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *Firewall) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // A name for the firewall. Changing this
 // updates the `name` of an existing firewall.
-func (r *Firewall) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Firewall) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Should this firewall not be associated with any routers
 // (must be "true" or "false" if provide - defaults to "false").
 // Conflicts with `associatedRouters`.
-func (r *Firewall) NoRouters() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["noRouters"])
+func (r *Firewall) NoRouters() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["noRouters"])
 }
 
 // The policy resource id for the firewall. Changing
 // this updates the `policyId` of an existing firewall.
-func (r *Firewall) PolicyId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["policyId"])
+func (r *Firewall) PolicyId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["policyId"])
 }
 
 // The region in which to obtain the v1 networking client.
 // A networking client is needed to create a firewall. If omitted, the
 // `region` argument of the provider is used. Changing this creates a new
 // firewall.
-func (r *Firewall) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *Firewall) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // The owner of the floating IP. Required if admin wants
 // to create a firewall for another tenant. Changing this creates a new
 // firewall.
-func (r *Firewall) TenantId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["tenantId"])
+func (r *Firewall) TenantId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["tenantId"])
 }
 
 // Map of additional options.
-func (r *Firewall) ValueSpecs() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["valueSpecs"])
+func (r *Firewall) ValueSpecs() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["valueSpecs"])
 }
 
 // Input properties used for looking up and filtering Firewall resources.

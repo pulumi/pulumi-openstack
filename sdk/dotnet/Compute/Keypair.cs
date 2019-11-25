@@ -65,7 +65,7 @@ namespace Pulumi.Openstack.Compute
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Keypair(string name, KeypairArgs? args = null, CustomResourceOptions? options = null)
-            : base("openstack:compute/keypair:Keypair", name, args, MakeResourceOptions(options, ""))
+            : base("openstack:compute/keypair:Keypair", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

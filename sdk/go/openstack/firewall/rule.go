@@ -89,100 +89,100 @@ func GetRule(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Rule) URN() *pulumi.URNOutput {
+func (r *Rule) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Rule) ID() *pulumi.IDOutput {
+func (r *Rule) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Action to be taken ( must be "allow" or "deny") when the
 // firewall rule matches. Changing this updates the `action` of an existing
 // firewall rule.
-func (r *Rule) Action() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["action"])
+func (r *Rule) Action() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["action"])
 }
 
 // A description for the firewall rule. Changing this
 // updates the `description` of an existing firewall rule.
-func (r *Rule) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *Rule) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // The destination IP address on which the
 // firewall rule operates. Changing this updates the `destinationIpAddress`
 // of an existing firewall rule.
-func (r *Rule) DestinationIpAddress() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["destinationIpAddress"])
+func (r *Rule) DestinationIpAddress() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["destinationIpAddress"])
 }
 
 // The destination port on which the firewall
 // rule operates. Changing this updates the `destinationPort` of an existing
 // firewall rule.
-func (r *Rule) DestinationPort() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["destinationPort"])
+func (r *Rule) DestinationPort() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["destinationPort"])
 }
 
 // Enabled status for the firewall rule (must be "true"
 // or "false" if provided - defaults to "true"). Changing this updates the
 // `enabled` status of an existing firewall rule.
-func (r *Rule) Enabled() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["enabled"])
+func (r *Rule) Enabled() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["enabled"])
 }
 
 // IP version, either 4 (default) or 6. Changing this
 // updates the `ipVersion` of an existing firewall rule.
-func (r *Rule) IpVersion() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["ipVersion"])
+func (r *Rule) IpVersion() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["ipVersion"])
 }
 
 // A unique name for the firewall rule. Changing this
 // updates the `name` of an existing firewall rule.
-func (r *Rule) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Rule) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The protocol type on which the firewall rule operates.
 // Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
 // `protocol` of an existing firewall rule.
-func (r *Rule) Protocol() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["protocol"])
+func (r *Rule) Protocol() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["protocol"])
 }
 
 // The region in which to obtain the v1 Compute client.
 // A Compute client is needed to create a firewall rule. If omitted, the
 // `region` argument of the provider is used. Changing this creates a new
 // firewall rule.
-func (r *Rule) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *Rule) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // The source IP address on which the firewall
 // rule operates. Changing this updates the `sourceIpAddress` of an existing
 // firewall rule.
-func (r *Rule) SourceIpAddress() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["sourceIpAddress"])
+func (r *Rule) SourceIpAddress() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["sourceIpAddress"])
 }
 
 // The source port on which the firewall
 // rule operates. Changing this updates the `sourcePort` of an existing
 // firewall rule.
-func (r *Rule) SourcePort() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["sourcePort"])
+func (r *Rule) SourcePort() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["sourcePort"])
 }
 
 // The owner of the firewall rule. Required if admin
 // wants to create a firewall rule for another tenant. Changing this creates a
 // new firewall rule.
-func (r *Rule) TenantId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["tenantId"])
+func (r *Rule) TenantId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["tenantId"])
 }
 
 // Map of additional options.
-func (r *Rule) ValueSpecs() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["valueSpecs"])
+func (r *Rule) ValueSpecs() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["valueSpecs"])
 }
 
 // Input properties used for looking up and filtering Rule resources.

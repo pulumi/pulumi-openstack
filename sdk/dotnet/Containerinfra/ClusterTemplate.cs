@@ -276,7 +276,7 @@ namespace Pulumi.Openstack.Containerinfra
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ClusterTemplate(string name, ClusterTemplateArgs args, CustomResourceOptions? options = null)
-            : base("openstack:containerinfra/clusterTemplate:ClusterTemplate", name, args, MakeResourceOptions(options, ""))
+            : base("openstack:containerinfra/clusterTemplate:ClusterTemplate", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

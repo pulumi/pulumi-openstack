@@ -81,65 +81,65 @@ func GetPoolV1(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *PoolV1) URN() *pulumi.URNOutput {
+func (r *PoolV1) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *PoolV1) ID() *pulumi.IDOutput {
+func (r *PoolV1) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The algorithm used to distribute load between the
 // members of the pool. The current specification supports 'ROUND_ROBIN' and
 // 'LEAST_CONNECTIONS' as valid values for this attribute.
-func (r *PoolV1) LbMethod() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["lbMethod"])
+func (r *PoolV1) LbMethod() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["lbMethod"])
 }
 
 // The backend load balancing provider. For example:
 // `haproxy`, `F5`, etc.
-func (r *PoolV1) LbProvider() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["lbProvider"])
+func (r *PoolV1) LbProvider() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["lbProvider"])
 }
 
 // A list of IDs of monitors to associate with the
 // pool.
-func (r *PoolV1) MonitorIds() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["monitorIds"])
+func (r *PoolV1) MonitorIds() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["monitorIds"])
 }
 
 // The name of the pool. Changing this updates the name of
 // the existing pool.
-func (r *PoolV1) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *PoolV1) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The protocol used by the pool members, you can use
 // either 'TCP, 'HTTP', or 'HTTPS'. Changing this creates a new pool.
-func (r *PoolV1) Protocol() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["protocol"])
+func (r *PoolV1) Protocol() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["protocol"])
 }
 
 // The region in which to obtain the V2 Networking client.
 // A Networking client is needed to create an LB pool. If omitted, the
 // `region` argument of the provider is used. Changing this creates a new
 // LB pool.
-func (r *PoolV1) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *PoolV1) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // The network on which the members of the pool will be
 // located. Only members that are on this network can be added to the pool.
 // Changing this creates a new pool.
-func (r *PoolV1) SubnetId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["subnetId"])
+func (r *PoolV1) SubnetId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["subnetId"])
 }
 
 // The owner of the pool. Required if admin wants to
 // create a pool member for another tenant. Changing this creates a new pool.
-func (r *PoolV1) TenantId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["tenantId"])
+func (r *PoolV1) TenantId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["tenantId"])
 }
 
 // Input properties used for looking up and filtering PoolV1 resources.

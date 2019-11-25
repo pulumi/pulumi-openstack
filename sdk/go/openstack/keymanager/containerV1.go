@@ -71,68 +71,68 @@ func GetContainerV1(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *ContainerV1) URN() *pulumi.URNOutput {
+func (r *ContainerV1) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *ContainerV1) ID() *pulumi.IDOutput {
+func (r *ContainerV1) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The list of the container consumers. The structure is described below.
-func (r *ContainerV1) Consumers() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["consumers"])
+func (r *ContainerV1) Consumers() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["consumers"])
 }
 
 // The container reference / where to find the container.
-func (r *ContainerV1) ContainerRef() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["containerRef"])
+func (r *ContainerV1) ContainerRef() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["containerRef"])
 }
 
 // The date the container was created.
-func (r *ContainerV1) CreatedAt() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["createdAt"])
+func (r *ContainerV1) CreatedAt() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["createdAt"])
 }
 
 // The creator of the container.
-func (r *ContainerV1) CreatorId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["creatorId"])
+func (r *ContainerV1) CreatorId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["creatorId"])
 }
 
 // Human-readable name for the Container. Does not have
 // to be unique.
-func (r *ContainerV1) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *ContainerV1) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The region in which to obtain the V1 KeyManager client.
 // A KeyManager client is needed to create a container. If omitted, the
 // `region` argument of the provider is used. Changing this creates a new
 // V1 container.
-func (r *ContainerV1) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *ContainerV1) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // A set of dictionaries containing references to secrets. The structure is described
 // below.
-func (r *ContainerV1) SecretRefs() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["secretRefs"])
+func (r *ContainerV1) SecretRefs() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["secretRefs"])
 }
 
 // The status of the container.
-func (r *ContainerV1) Status() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["status"])
+func (r *ContainerV1) Status() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["status"])
 }
 
 // Used to indicate the type of container. Must be one of `generic`, `rsa` or `certificate`.
-func (r *ContainerV1) Type() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["type"])
+func (r *ContainerV1) Type() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["type"])
 }
 
 // The date the container was last updated.
-func (r *ContainerV1) UpdatedAt() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["updatedAt"])
+func (r *ContainerV1) UpdatedAt() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["updatedAt"])
 }
 
 // Input properties used for looking up and filtering ContainerV1 resources.

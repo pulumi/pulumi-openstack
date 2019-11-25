@@ -76,7 +76,7 @@ namespace Pulumi.Openstack.Networking
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public RbacPolicyV2(string name, RbacPolicyV2Args args, CustomResourceOptions? options = null)
-            : base("openstack:networking/rbacPolicyV2:RbacPolicyV2", name, args, MakeResourceOptions(options, ""))
+            : base("openstack:networking/rbacPolicyV2:RbacPolicyV2", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

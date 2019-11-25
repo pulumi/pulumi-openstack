@@ -67,52 +67,52 @@ func GetProject(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Project) URN() *pulumi.URNOutput {
+func (r *Project) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Project) ID() *pulumi.IDOutput {
+func (r *Project) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // A description of the project.
-func (r *Project) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *Project) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // The domain this project belongs to.
-func (r *Project) DomainId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["domainId"])
+func (r *Project) DomainId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["domainId"])
 }
 
 // Whether the project is enabled or disabled. Valid
 // values are `true` and `false`.
-func (r *Project) Enabled() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["enabled"])
+func (r *Project) Enabled() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["enabled"])
 }
 
 // Whether this project is a domain. Valid values
 // are `true` and `false`.
-func (r *Project) IsDomain() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["isDomain"])
+func (r *Project) IsDomain() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["isDomain"])
 }
 
 // The name of the project.
-func (r *Project) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Project) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The parent of this project.
-func (r *Project) ParentId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["parentId"])
+func (r *Project) ParentId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["parentId"])
 }
 
 // The region in which to obtain the V3 Keystone client.
 // If omitted, the `region` argument of the provider is used. Changing this
 // creates a new User.
-func (r *Project) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *Project) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // Input properties used for looking up and filtering Project resources.

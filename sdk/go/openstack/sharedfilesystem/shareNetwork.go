@@ -81,78 +81,78 @@ func GetShareNetwork(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *ShareNetwork) URN() *pulumi.URNOutput {
+func (r *ShareNetwork) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *ShareNetwork) ID() *pulumi.IDOutput {
+func (r *ShareNetwork) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The share network CIDR.
-func (r *ShareNetwork) Cidr() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["cidr"])
+func (r *ShareNetwork) Cidr() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["cidr"])
 }
 
 // The human-readable description for the share network.
 // Changing this updates the description of the existing share network.
-func (r *ShareNetwork) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *ShareNetwork) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // The IP version of the share network. Can either be 4 or 6.
-func (r *ShareNetwork) IpVersion() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["ipVersion"])
+func (r *ShareNetwork) IpVersion() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["ipVersion"])
 }
 
 // The name for the share network. Changing this updates the name
 // of the existing share network.
-func (r *ShareNetwork) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *ShareNetwork) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The share network type. Can either be VLAN, VXLAN, GRE, or flat.
-func (r *ShareNetwork) NetworkType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["networkType"])
+func (r *ShareNetwork) NetworkType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["networkType"])
 }
 
 // The UUID of a neutron network when setting up or updating
 // a share network. Changing this updates the existing share network if it's not used by
 // shares.
-func (r *ShareNetwork) NeutronNetId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["neutronNetId"])
+func (r *ShareNetwork) NeutronNetId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["neutronNetId"])
 }
 
 // The UUID of the neutron subnet when setting up or
 // updating a share network. Changing this updates the existing share network if it's
 // not used by shares.
-func (r *ShareNetwork) NeutronSubnetId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["neutronSubnetId"])
+func (r *ShareNetwork) NeutronSubnetId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["neutronSubnetId"])
 }
 
 // The owner of the Share Network.
-func (r *ShareNetwork) ProjectId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["projectId"])
+func (r *ShareNetwork) ProjectId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["projectId"])
 }
 
 // The region in which to obtain the V2 Shared File System client.
 // A Shared File System client is needed to create a share network. If omitted, the
 // `region` argument of the provider is used. Changing this creates a new
 // share network.
-func (r *ShareNetwork) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *ShareNetwork) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // The list of security service IDs to associate with
 // the share network. The security service must be specified by ID and not name.
-func (r *ShareNetwork) SecurityServiceIds() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["securityServiceIds"])
+func (r *ShareNetwork) SecurityServiceIds() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["securityServiceIds"])
 }
 
 // The share network segmentation ID.
-func (r *ShareNetwork) SegmentationId() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["segmentationId"])
+func (r *ShareNetwork) SegmentationId() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["segmentationId"])
 }
 
 // Input properties used for looking up and filtering ShareNetwork resources.

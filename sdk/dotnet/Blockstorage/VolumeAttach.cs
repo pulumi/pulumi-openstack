@@ -135,7 +135,7 @@ namespace Pulumi.Openstack.Blockstorage
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public VolumeAttach(string name, VolumeAttachArgs args, CustomResourceOptions? options = null)
-            : base("openstack:blockstorage/volumeAttach:VolumeAttach", name, args, MakeResourceOptions(options, ""))
+            : base("openstack:blockstorage/volumeAttach:VolumeAttach", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

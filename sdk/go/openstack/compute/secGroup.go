@@ -65,41 +65,41 @@ func GetSecGroup(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *SecGroup) URN() *pulumi.URNOutput {
+func (r *SecGroup) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *SecGroup) ID() *pulumi.IDOutput {
+func (r *SecGroup) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // A description for the security group. Changing this
 // updates the `description` of an existing security group.
-func (r *SecGroup) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *SecGroup) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // A unique name for the security group. Changing this
 // updates the `name` of an existing security group.
-func (r *SecGroup) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *SecGroup) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The region in which to obtain the V2 Compute client.
 // A Compute client is needed to create a security group. If omitted, the
 // `region` argument of the provider is used. Changing this creates a new
 // security group.
-func (r *SecGroup) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *SecGroup) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // A rule describing how the security group operates. The
 // rule object structure is documented below. Changing this updates the
 // security group rules. As shown in the example above, multiple rule blocks
 // may be used.
-func (r *SecGroup) Rules() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["rules"])
+func (r *SecGroup) Rules() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["rules"])
 }
 
 // Input properties used for looking up and filtering SecGroup resources.

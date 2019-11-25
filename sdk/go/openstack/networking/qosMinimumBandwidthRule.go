@@ -62,37 +62,37 @@ func GetQosMinimumBandwidthRule(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *QosMinimumBandwidthRule) URN() *pulumi.URNOutput {
+func (r *QosMinimumBandwidthRule) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *QosMinimumBandwidthRule) ID() *pulumi.IDOutput {
+func (r *QosMinimumBandwidthRule) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The direction of traffic. Defaults to "egress". Changing this updates the direction of the
 // existing QoS minimum bandwidth rule.
-func (r *QosMinimumBandwidthRule) Direction() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["direction"])
+func (r *QosMinimumBandwidthRule) Direction() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["direction"])
 }
 
 // The minimum kilobits per second. Changing this updates the min kbps value of the existing
 // QoS minimum bandwidth rule.
-func (r *QosMinimumBandwidthRule) MinKbps() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["minKbps"])
+func (r *QosMinimumBandwidthRule) MinKbps() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["minKbps"])
 }
 
 // The QoS policy reference. Changing this creates a new QoS minimum bandwidth rule.
-func (r *QosMinimumBandwidthRule) QosPolicyId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["qosPolicyId"])
+func (r *QosMinimumBandwidthRule) QosPolicyId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["qosPolicyId"])
 }
 
 // The region in which to obtain the V2 Networking client.
 // A Networking client is needed to create a Neutron QoS minimum bandwidth rule. If omitted, the
 // `region` argument of the provider is used. Changing this creates a new QoS minimum bandwidth rule.
-func (r *QosMinimumBandwidthRule) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *QosMinimumBandwidthRule) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // Input properties used for looking up and filtering QosMinimumBandwidthRule resources.

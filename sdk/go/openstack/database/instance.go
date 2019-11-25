@@ -77,66 +77,66 @@ func GetInstance(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Instance) URN() *pulumi.URNOutput {
+func (r *Instance) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Instance) ID() *pulumi.IDOutput {
+func (r *Instance) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Configuration ID to be attached to the instance. Database instance
 // will be rebooted when configuration is detached.
-func (r *Instance) ConfigurationId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["configurationId"])
+func (r *Instance) ConfigurationId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["configurationId"])
 }
 
 // An array of database name, charset and collate. The database
 // object structure is documented below.
-func (r *Instance) Databases() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["databases"])
+func (r *Instance) Databases() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["databases"])
 }
 
 // An array of database engine type and version. The datastore
 // object structure is documented below. Changing this creates a new instance.
-func (r *Instance) Datastore() *pulumi.Output {
+func (r *Instance) Datastore() pulumi.Output {
 	return r.s.State["datastore"]
 }
 
 // The flavor ID of the desired flavor for the instance.
 // Changing this creates new instance.
-func (r *Instance) FlavorId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["flavorId"])
+func (r *Instance) FlavorId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["flavorId"])
 }
 
 // A unique name for the resource.
-func (r *Instance) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Instance) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // An array of one or more networks to attach to the
 // instance. The network object structure is documented below. Changing this
 // creates a new instance.
-func (r *Instance) Networks() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["networks"])
+func (r *Instance) Networks() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["networks"])
 }
 
 // The region in which to create the db instance. Changing this
 // creates a new instance.
-func (r *Instance) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *Instance) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // Specifies the volume size in GB. Changing this creates new instance.
-func (r *Instance) Size() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["size"])
+func (r *Instance) Size() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["size"])
 }
 
 // An array of username, password, host and databases. The user
 // object structure is documented below.
-func (r *Instance) Users() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["users"])
+func (r *Instance) Users() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["users"])
 }
 
 // Input properties used for looking up and filtering Instance resources.

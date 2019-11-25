@@ -77,56 +77,56 @@ func GetEndpointV3(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *EndpointV3) URN() *pulumi.URNOutput {
+func (r *EndpointV3) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *EndpointV3) ID() *pulumi.IDOutput {
+func (r *EndpointV3) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The endpoint region. The `region` and
 // `endpointRegion` can be different.
-func (r *EndpointV3) EndpointRegion() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["endpointRegion"])
+func (r *EndpointV3) EndpointRegion() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["endpointRegion"])
 }
 
 // The endpoint interface. Valid values are `public`,
 // `internal` and `admin`. Default value is `public`
-func (r *EndpointV3) Interface() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["interface"])
+func (r *EndpointV3) Interface() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["interface"])
 }
 
 // The endpoint name.
-func (r *EndpointV3) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *EndpointV3) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The region in which to obtain the V3 Keystone client.
 // If omitted, the `region` argument of the provider is used.
-func (r *EndpointV3) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *EndpointV3) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // The endpoint service ID.
-func (r *EndpointV3) ServiceId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["serviceId"])
+func (r *EndpointV3) ServiceId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["serviceId"])
 }
 
 // The service name of the endpoint.
-func (r *EndpointV3) ServiceName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["serviceName"])
+func (r *EndpointV3) ServiceName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["serviceName"])
 }
 
 // The service type of the endpoint.
-func (r *EndpointV3) ServiceType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["serviceType"])
+func (r *EndpointV3) ServiceType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["serviceType"])
 }
 
 // The endpoint url.
-func (r *EndpointV3) Url() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["url"])
+func (r *EndpointV3) Url() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["url"])
 }
 
 // Input properties used for looking up and filtering EndpointV3 resources.

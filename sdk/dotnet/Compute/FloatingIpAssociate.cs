@@ -54,7 +54,7 @@ namespace Pulumi.Openstack.Compute
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public FloatingIpAssociate(string name, FloatingIpAssociateArgs args, CustomResourceOptions? options = null)
-            : base("openstack:compute/floatingIpAssociate:FloatingIpAssociate", name, args, MakeResourceOptions(options, ""))
+            : base("openstack:compute/floatingIpAssociate:FloatingIpAssociate", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

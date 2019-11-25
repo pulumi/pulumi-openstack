@@ -58,47 +58,47 @@ func GetAddressScope(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *AddressScope) URN() *pulumi.URNOutput {
+func (r *AddressScope) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *AddressScope) ID() *pulumi.IDOutput {
+func (r *AddressScope) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // IP version, either 4 (default) or 6. Changing this
 // creates a new address-scope.
-func (r *AddressScope) IpVersion() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["ipVersion"])
+func (r *AddressScope) IpVersion() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["ipVersion"])
 }
 
 // The name of the address-scope. Changing this updates the
 // name of the existing address-scope.
-func (r *AddressScope) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *AddressScope) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The owner of the address-scope. Required if admin
 // wants to create a address-scope for another project. Changing this creates a
 // new address-scope.
-func (r *AddressScope) ProjectId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["projectId"])
+func (r *AddressScope) ProjectId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["projectId"])
 }
 
 // The region in which to obtain the V2 Networking client.
 // A Networking client is needed to create a Neutron address-scope. If omitted,
 // the `region` argument of the provider is used. Changing this creates a new
 // address-scope.
-func (r *AddressScope) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *AddressScope) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // Indicates whether this address-scope is shared across
 // all projects. Changing this updates the shared status of the existing
 // address-scope.
-func (r *AddressScope) Shared() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["shared"])
+func (r *AddressScope) Shared() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["shared"])
 }
 
 // Input properties used for looking up and filtering AddressScope resources.

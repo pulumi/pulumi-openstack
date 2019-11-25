@@ -157,7 +157,7 @@ namespace Pulumi.Openstack.Vpnaas
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public SiteConnection(string name, SiteConnectionArgs args, CustomResourceOptions? options = null)
-            : base("openstack:vpnaas/siteConnection:SiteConnection", name, args, MakeResourceOptions(options, ""))
+            : base("openstack:vpnaas/siteConnection:SiteConnection", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

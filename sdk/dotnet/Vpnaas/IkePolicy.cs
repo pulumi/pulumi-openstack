@@ -104,7 +104,7 @@ namespace Pulumi.Openstack.Vpnaas
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public IkePolicy(string name, IkePolicyArgs? args = null, CustomResourceOptions? options = null)
-            : base("openstack:vpnaas/ikePolicy:IkePolicy", name, args, MakeResourceOptions(options, ""))
+            : base("openstack:vpnaas/ikePolicy:IkePolicy", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

@@ -79,83 +79,83 @@ func GetLoadBalancer(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *LoadBalancer) URN() *pulumi.URNOutput {
+func (r *LoadBalancer) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *LoadBalancer) ID() *pulumi.IDOutput {
+func (r *LoadBalancer) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The administrative state of the Loadbalancer.
 // A valid value is true (UP) or false (DOWN).
-func (r *LoadBalancer) AdminStateUp() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["adminStateUp"])
+func (r *LoadBalancer) AdminStateUp() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["adminStateUp"])
 }
 
 // Human-readable description for the Loadbalancer.
-func (r *LoadBalancer) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *LoadBalancer) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // The UUID of a flavor. Changing this creates a new
 // loadbalancer.
-func (r *LoadBalancer) FlavorId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["flavorId"])
+func (r *LoadBalancer) FlavorId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["flavorId"])
 }
 
 // The name of the provider. Changing this
 // creates a new loadbalancer.
-func (r *LoadBalancer) LoadbalancerProvider() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["loadbalancerProvider"])
+func (r *LoadBalancer) LoadbalancerProvider() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["loadbalancerProvider"])
 }
 
 // Human-readable name for the Loadbalancer. Does not have
 // to be unique.
-func (r *LoadBalancer) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *LoadBalancer) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The region in which to obtain the V2 Networking client.
 // A Networking client is needed to create an LB member. If omitted, the
 // `region` argument of the provider is used. Changing this creates a new
 // LB member.
-func (r *LoadBalancer) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *LoadBalancer) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // A list of security group IDs to apply to the
 // loadbalancer. The security groups must be specified by ID and not name (as
 // opposed to how they are configured with the Compute Instance).
-func (r *LoadBalancer) SecurityGroupIds() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["securityGroupIds"])
+func (r *LoadBalancer) SecurityGroupIds() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["securityGroupIds"])
 }
 
 // Required for admins. The UUID of the tenant who owns
 // the Loadbalancer.  Only administrative users can specify a tenant UUID
 // other than their own.  Changing this creates a new loadbalancer.
-func (r *LoadBalancer) TenantId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["tenantId"])
+func (r *LoadBalancer) TenantId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["tenantId"])
 }
 
 // The ip address of the load balancer.
 // Changing this creates a new loadbalancer.
-func (r *LoadBalancer) VipAddress() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["vipAddress"])
+func (r *LoadBalancer) VipAddress() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["vipAddress"])
 }
 
 // The Port ID of the Load Balancer IP.
-func (r *LoadBalancer) VipPortId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["vipPortId"])
+func (r *LoadBalancer) VipPortId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["vipPortId"])
 }
 
 // The network on which to allocate the
 // Loadbalancer's address. A tenant can only create Loadbalancers on networks
 // authorized by policy (e.g. networks that belong to them or networks that
 // are shared).  Changing this creates a new loadbalancer.
-func (r *LoadBalancer) VipSubnetId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["vipSubnetId"])
+func (r *LoadBalancer) VipSubnetId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["vipSubnetId"])
 }
 
 // Input properties used for looking up and filtering LoadBalancer resources.

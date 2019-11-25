@@ -63,43 +63,43 @@ func GetInterfaceAttach(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *InterfaceAttach) URN() *pulumi.URNOutput {
+func (r *InterfaceAttach) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *InterfaceAttach) ID() *pulumi.IDOutput {
+func (r *InterfaceAttach) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // An IP address to assosciate with the port.
 // _NOTE_: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.
-func (r *InterfaceAttach) FixedIp() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["fixedIp"])
+func (r *InterfaceAttach) FixedIp() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["fixedIp"])
 }
 
 // The ID of the Instance to attach the Port or Network to.
-func (r *InterfaceAttach) InstanceId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["instanceId"])
+func (r *InterfaceAttach) InstanceId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["instanceId"])
 }
 
 // The ID of the Network to attach to an Instance. A port will be created automatically.
 // _NOTE_: This option and `portId` are mutually exclusive.
-func (r *InterfaceAttach) NetworkId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["networkId"])
+func (r *InterfaceAttach) NetworkId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["networkId"])
 }
 
 // The ID of the Port to attach to an Instance.
 // _NOTE_: This option and `networkId` are mutually exclusive.
-func (r *InterfaceAttach) PortId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["portId"])
+func (r *InterfaceAttach) PortId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["portId"])
 }
 
 // The region in which to create the interface attachment.
 // If omitted, the `region` argument of the provider is used. Changing this
 // creates a new attachment.
-func (r *InterfaceAttach) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *InterfaceAttach) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // Input properties used for looking up and filtering InterfaceAttach resources.

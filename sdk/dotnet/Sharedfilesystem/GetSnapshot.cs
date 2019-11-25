@@ -15,7 +15,7 @@ namespace Pulumi.Openstack.Sharedfilesystem
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/sharedfilesystem_snapshot_v2.html.markdown.
         /// </summary>
         public static Task<GetSnapshotResult> GetSnapshot(GetSnapshotArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSnapshotResult>("openstack:sharedfilesystem/getSnapshot:getSnapshot", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSnapshotResult>("openstack:sharedfilesystem/getSnapshot:getSnapshot", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetSnapshotArgs : Pulumi.ResourceArgs

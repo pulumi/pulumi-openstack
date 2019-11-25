@@ -66,40 +66,40 @@ func GetFloatingIpAssociate(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *FloatingIpAssociate) URN() *pulumi.URNOutput {
+func (r *FloatingIpAssociate) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *FloatingIpAssociate) ID() *pulumi.IDOutput {
+func (r *FloatingIpAssociate) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The specific IP address to direct traffic to.
-func (r *FloatingIpAssociate) FixedIp() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["fixedIp"])
+func (r *FloatingIpAssociate) FixedIp() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["fixedIp"])
 }
 
 // The floating IP to associate.
-func (r *FloatingIpAssociate) FloatingIp() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["floatingIp"])
+func (r *FloatingIpAssociate) FloatingIp() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["floatingIp"])
 }
 
 // The instance to associte the floating IP with.
-func (r *FloatingIpAssociate) InstanceId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["instanceId"])
+func (r *FloatingIpAssociate) InstanceId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["instanceId"])
 }
 
 // The region in which to obtain the V2 Compute client.
 // Keypairs are associated with accounts, but a Compute client is needed to
 // create one. If omitted, the `region` argument of the provider is used.
 // Changing this creates a new floatingip_associate.
-func (r *FloatingIpAssociate) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *FloatingIpAssociate) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
-func (r *FloatingIpAssociate) WaitUntilAssociated() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["waitUntilAssociated"])
+func (r *FloatingIpAssociate) WaitUntilAssociated() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["waitUntilAssociated"])
 }
 
 // Input properties used for looking up and filtering FloatingIpAssociate resources.

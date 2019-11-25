@@ -134,7 +134,7 @@ namespace Pulumi.Openstack.Keymanager
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public SecretV1(string name, SecretV1Args? args = null, CustomResourceOptions? options = null)
-            : base("openstack:keymanager/secretV1:SecretV1", name, args, MakeResourceOptions(options, ""))
+            : base("openstack:keymanager/secretV1:SecretV1", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

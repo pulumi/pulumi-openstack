@@ -17,7 +17,7 @@ namespace Pulumi.Openstack.Identity
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_auth_scope_v3.html.markdown.
         /// </summary>
         public static Task<GetAuthScopeResult> GetAuthScope(GetAuthScopeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAuthScopeResult>("openstack:identity/getAuthScope:getAuthScope", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAuthScopeResult>("openstack:identity/getAuthScope:getAuthScope", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetAuthScopeArgs : Pulumi.ResourceArgs

@@ -16,7 +16,7 @@ namespace Pulumi.Openstack.Containerinfra
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/containerinfra_clustertemplate_v1.html.markdown.
         /// </summary>
         public static Task<GetClusterTemplateResult> GetClusterTemplate(GetClusterTemplateArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetClusterTemplateResult>("openstack:containerinfra/getClusterTemplate:getClusterTemplate", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetClusterTemplateResult>("openstack:containerinfra/getClusterTemplate:getClusterTemplate", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetClusterTemplateArgs : Pulumi.ResourceArgs

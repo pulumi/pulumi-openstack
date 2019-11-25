@@ -70,66 +70,66 @@ func GetZone(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Zone) URN() *pulumi.URNOutput {
+func (r *Zone) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Zone) ID() *pulumi.IDOutput {
+func (r *Zone) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Attributes for the DNS Service scheduler.
 // Changing this creates a new zone.
-func (r *Zone) Attributes() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["attributes"])
+func (r *Zone) Attributes() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["attributes"])
 }
 
 // A description of the zone.
-func (r *Zone) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *Zone) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // The email contact for the zone record.
-func (r *Zone) Email() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["email"])
+func (r *Zone) Email() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["email"])
 }
 
 // An array of master DNS servers. For when `type` is
 // `SECONDARY`.
-func (r *Zone) Masters() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["masters"])
+func (r *Zone) Masters() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["masters"])
 }
 
 // The name of the zone. Note the `.` at the end of the name.
 // Changing this creates a new DNS zone.
-func (r *Zone) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Zone) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The region in which to obtain the V2 Compute client.
 // Keypairs are associated with accounts, but a Compute client is needed to
 // create one. If omitted, the `region` argument of the provider is used.
 // Changing this creates a new DNS zone.
-func (r *Zone) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *Zone) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // The time to live (TTL) of the zone.
-func (r *Zone) Ttl() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["ttl"])
+func (r *Zone) Ttl() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["ttl"])
 }
 
 // The type of zone. Can either be `PRIMARY` or `SECONDARY`.
 // Changing this creates a new zone.
-func (r *Zone) Type() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["type"])
+func (r *Zone) Type() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["type"])
 }
 
 // Map of additional options. Changing this creates a
 // new zone.
-func (r *Zone) ValueSpecs() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["valueSpecs"])
+func (r *Zone) ValueSpecs() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["valueSpecs"])
 }
 
 // Input properties used for looking up and filtering Zone resources.

@@ -299,141 +299,141 @@ func GetClusterTemplate(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *ClusterTemplate) URN() *pulumi.URNOutput {
+func (r *ClusterTemplate) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *ClusterTemplate) ID() *pulumi.IDOutput {
+func (r *ClusterTemplate) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
-func (r *ClusterTemplate) ApiserverPort() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["apiserverPort"])
+func (r *ClusterTemplate) ApiserverPort() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["apiserverPort"])
 }
 
-func (r *ClusterTemplate) ClusterDistro() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["clusterDistro"])
+func (r *ClusterTemplate) ClusterDistro() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["clusterDistro"])
 }
 
-func (r *ClusterTemplate) Coe() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["coe"])
+func (r *ClusterTemplate) Coe() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["coe"])
 }
 
-func (r *ClusterTemplate) CreatedAt() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["createdAt"])
+func (r *ClusterTemplate) CreatedAt() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["createdAt"])
 }
 
-func (r *ClusterTemplate) DnsNameserver() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["dnsNameserver"])
+func (r *ClusterTemplate) DnsNameserver() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["dnsNameserver"])
 }
 
-func (r *ClusterTemplate) DockerStorageDriver() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["dockerStorageDriver"])
+func (r *ClusterTemplate) DockerStorageDriver() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["dockerStorageDriver"])
 }
 
-func (r *ClusterTemplate) DockerVolumeSize() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["dockerVolumeSize"])
+func (r *ClusterTemplate) DockerVolumeSize() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["dockerVolumeSize"])
 }
 
-func (r *ClusterTemplate) ExternalNetworkId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["externalNetworkId"])
+func (r *ClusterTemplate) ExternalNetworkId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["externalNetworkId"])
 }
 
-func (r *ClusterTemplate) FixedNetwork() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["fixedNetwork"])
+func (r *ClusterTemplate) FixedNetwork() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["fixedNetwork"])
 }
 
-func (r *ClusterTemplate) FixedSubnet() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["fixedSubnet"])
+func (r *ClusterTemplate) FixedSubnet() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["fixedSubnet"])
 }
 
-func (r *ClusterTemplate) Flavor() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["flavor"])
+func (r *ClusterTemplate) Flavor() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["flavor"])
 }
 
-func (r *ClusterTemplate) FloatingIpEnabled() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["floatingIpEnabled"])
+func (r *ClusterTemplate) FloatingIpEnabled() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["floatingIpEnabled"])
 }
 
-func (r *ClusterTemplate) HttpProxy() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["httpProxy"])
+func (r *ClusterTemplate) HttpProxy() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["httpProxy"])
 }
 
-func (r *ClusterTemplate) HttpsProxy() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["httpsProxy"])
+func (r *ClusterTemplate) HttpsProxy() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["httpsProxy"])
 }
 
-func (r *ClusterTemplate) Image() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["image"])
+func (r *ClusterTemplate) Image() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["image"])
 }
 
-func (r *ClusterTemplate) InsecureRegistry() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["insecureRegistry"])
+func (r *ClusterTemplate) InsecureRegistry() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["insecureRegistry"])
 }
 
-func (r *ClusterTemplate) KeypairId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["keypairId"])
+func (r *ClusterTemplate) KeypairId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["keypairId"])
 }
 
-func (r *ClusterTemplate) Labels() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["labels"])
+func (r *ClusterTemplate) Labels() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["labels"])
 }
 
-func (r *ClusterTemplate) MasterFlavor() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["masterFlavor"])
+func (r *ClusterTemplate) MasterFlavor() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["masterFlavor"])
 }
 
-func (r *ClusterTemplate) MasterLbEnabled() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["masterLbEnabled"])
+func (r *ClusterTemplate) MasterLbEnabled() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["masterLbEnabled"])
 }
 
-func (r *ClusterTemplate) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *ClusterTemplate) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
-func (r *ClusterTemplate) NetworkDriver() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["networkDriver"])
+func (r *ClusterTemplate) NetworkDriver() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["networkDriver"])
 }
 
-func (r *ClusterTemplate) NoProxy() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["noProxy"])
+func (r *ClusterTemplate) NoProxy() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["noProxy"])
 }
 
-func (r *ClusterTemplate) ProjectId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["projectId"])
+func (r *ClusterTemplate) ProjectId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["projectId"])
 }
 
-func (r *ClusterTemplate) Public() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["public"])
+func (r *ClusterTemplate) Public() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["public"])
 }
 
-func (r *ClusterTemplate) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *ClusterTemplate) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
-func (r *ClusterTemplate) RegistryEnabled() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["registryEnabled"])
+func (r *ClusterTemplate) RegistryEnabled() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["registryEnabled"])
 }
 
-func (r *ClusterTemplate) ServerType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["serverType"])
+func (r *ClusterTemplate) ServerType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["serverType"])
 }
 
-func (r *ClusterTemplate) TlsDisabled() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["tlsDisabled"])
+func (r *ClusterTemplate) TlsDisabled() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["tlsDisabled"])
 }
 
-func (r *ClusterTemplate) UpdatedAt() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["updatedAt"])
+func (r *ClusterTemplate) UpdatedAt() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["updatedAt"])
 }
 
-func (r *ClusterTemplate) UserId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["userId"])
+func (r *ClusterTemplate) UserId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["userId"])
 }
 
-func (r *ClusterTemplate) VolumeDriver() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["volumeDriver"])
+func (r *ClusterTemplate) VolumeDriver() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["volumeDriver"])
 }
 
 // Input properties used for looking up and filtering ClusterTemplate resources.

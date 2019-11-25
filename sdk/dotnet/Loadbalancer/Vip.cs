@@ -127,7 +127,7 @@ namespace Pulumi.Openstack.Loadbalancer
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Vip(string name, VipArgs args, CustomResourceOptions? options = null)
-            : base("openstack:loadbalancer/vip:Vip", name, args, MakeResourceOptions(options, ""))
+            : base("openstack:loadbalancer/vip:Vip", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

@@ -79,68 +79,68 @@ func GetQuoteSetV2(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *QuoteSetV2) URN() *pulumi.URNOutput {
+func (r *QuoteSetV2) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *QuoteSetV2) ID() *pulumi.IDOutput {
+func (r *QuoteSetV2) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Quota value for backup gigabytes. Changing
 // this updates the existing quotaset.
-func (r *QuoteSetV2) BackupGigabytes() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["backupGigabytes"])
+func (r *QuoteSetV2) BackupGigabytes() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["backupGigabytes"])
 }
 
 // Quota value for backups. Changing this updates the
 // existing quotaset.
-func (r *QuoteSetV2) Backups() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["backups"])
+func (r *QuoteSetV2) Backups() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["backups"])
 }
 
 // Quota value for gigabytes. Changing this updates the
 // existing quotaset.
-func (r *QuoteSetV2) Gigabytes() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["gigabytes"])
+func (r *QuoteSetV2) Gigabytes() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["gigabytes"])
 }
 
 // Quota value for groups. Changing this updates the
 // existing quotaset.
-func (r *QuoteSetV2) Groups() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["groups"])
+func (r *QuoteSetV2) Groups() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["groups"])
 }
 
 // Quota value for gigabytes per volume .
 // Changing this updates the existing quotaset.
-func (r *QuoteSetV2) PerVolumeGigabytes() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["perVolumeGigabytes"])
+func (r *QuoteSetV2) PerVolumeGigabytes() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["perVolumeGigabytes"])
 }
 
 // ID of the project to manage quotas. Changing this
 // creates a new quotaset.
-func (r *QuoteSetV2) ProjectId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["projectId"])
+func (r *QuoteSetV2) ProjectId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["projectId"])
 }
 
 // The region in which to create the volume. If
 // omitted, the `region` argument of the provider is used. Changing this
 // creates a new quotaset.
-func (r *QuoteSetV2) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *QuoteSetV2) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // Quota value for snapshots. Changing this updates the
 // existing quotaset.
-func (r *QuoteSetV2) Snapshots() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["snapshots"])
+func (r *QuoteSetV2) Snapshots() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["snapshots"])
 }
 
 // Quota value for volumes. Changing this updates the
 // existing quotaset.
-func (r *QuoteSetV2) Volumes() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["volumes"])
+func (r *QuoteSetV2) Volumes() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["volumes"])
 }
 
 // Input properties used for looking up and filtering QuoteSetV2 resources.

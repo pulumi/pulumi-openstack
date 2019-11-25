@@ -76,37 +76,37 @@ func GetIkePolicy(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *IkePolicy) URN() *pulumi.URNOutput {
+func (r *IkePolicy) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *IkePolicy) ID() *pulumi.IDOutput {
+func (r *IkePolicy) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.
 // Default is sha1. Changing this updates the algorithm of the existing policy.
-func (r *IkePolicy) AuthAlgorithm() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["authAlgorithm"])
+func (r *IkePolicy) AuthAlgorithm() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["authAlgorithm"])
 }
 
 // The human-readable description for the policy.
 // Changing this updates the description of the existing policy.
-func (r *IkePolicy) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *IkePolicy) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // The encryption algorithm. Valid values are 3des, aes-128, aes-192 and so on.
 // The default value is aes-128. Changing this updates the existing policy.
-func (r *IkePolicy) EncryptionAlgorithm() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["encryptionAlgorithm"])
+func (r *IkePolicy) EncryptionAlgorithm() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["encryptionAlgorithm"])
 }
 
 // The IKE mode. A valid value is v1 or v2. Default is v1.
 // Changing this updates the existing policy.
-func (r *IkePolicy) IkeVersion() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["ikeVersion"])
+func (r *IkePolicy) IkeVersion() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["ikeVersion"])
 }
 
 // The lifetime of the security association. Consists of Unit and Value.
@@ -114,45 +114,45 @@ func (r *IkePolicy) IkeVersion() *pulumi.StringOutput {
 // Default is seconds.
 // - `value` - (Optional) The value for the lifetime of the security association. Must be a positive integer.
 // Default is 3600.
-func (r *IkePolicy) Lifetimes() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["lifetimes"])
+func (r *IkePolicy) Lifetimes() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["lifetimes"])
 }
 
 // The name of the policy. Changing this updates the name of
 // the existing policy.
-func (r *IkePolicy) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *IkePolicy) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The perfect forward secrecy mode. Valid values are Group2, Group5 and Group14. Default is Group5.
 // Changing this updates the existing policy.
-func (r *IkePolicy) Pfs() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["pfs"])
+func (r *IkePolicy) Pfs() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["pfs"])
 }
 
 // The IKE mode. A valid value is main, which is the default.
 // Changing this updates the existing policy.
-func (r *IkePolicy) Phase1NegotiationMode() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["phase1NegotiationMode"])
+func (r *IkePolicy) Phase1NegotiationMode() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["phase1NegotiationMode"])
 }
 
 // The region in which to obtain the V2 Networking client.
 // A Networking client is needed to create a VPN service. If omitted, the
 // `region` argument of the provider is used. Changing this creates a new
 // service.
-func (r *IkePolicy) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *IkePolicy) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // The owner of the policy. Required if admin wants to
 // create a service for another policy. Changing this creates a new policy.
-func (r *IkePolicy) TenantId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["tenantId"])
+func (r *IkePolicy) TenantId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["tenantId"])
 }
 
 // Map of additional options.
-func (r *IkePolicy) ValueSpecs() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["valueSpecs"])
+func (r *IkePolicy) ValueSpecs() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["valueSpecs"])
 }
 
 // Input properties used for looking up and filtering IkePolicy resources.

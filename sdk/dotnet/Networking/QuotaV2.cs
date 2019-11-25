@@ -106,7 +106,7 @@ namespace Pulumi.Openstack.Networking
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public QuotaV2(string name, QuotaV2Args args, CustomResourceOptions? options = null)
-            : base("openstack:networking/quotaV2:QuotaV2", name, args, MakeResourceOptions(options, ""))
+            : base("openstack:networking/quotaV2:QuotaV2", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

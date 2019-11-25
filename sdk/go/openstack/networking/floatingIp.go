@@ -88,12 +88,12 @@ func GetFloatingIp(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *FloatingIp) URN() *pulumi.URNOutput {
+func (r *FloatingIp) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *FloatingIp) ID() *pulumi.IDOutput {
+func (r *FloatingIp) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
@@ -101,53 +101,53 @@ func (r *FloatingIp) ID() *pulumi.IDOutput {
 // non-admin users are not able to specify a floating IP, so you must either be
 // an admin user or have had a custom policy or role applied to your OpenStack
 // user or project.
-func (r *FloatingIp) Address() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["address"])
+func (r *FloatingIp) Address() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["address"])
 }
 
 // The collection of tags assigned on the floating IP, which have
 // been explicitly and implicitly added.
-func (r *FloatingIp) AllTags() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["allTags"])
+func (r *FloatingIp) AllTags() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["allTags"])
 }
 
 // Human-readable description for the floating IP.
-func (r *FloatingIp) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *FloatingIp) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // The floating IP DNS domain. Available, when Neutron
 // DNS extension is enabled. The data in this attribute will be published in an
 // external DNS service when Neutron is configured to integrate with such a
 // service. Changing this creates a new floating IP.
-func (r *FloatingIp) DnsDomain() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["dnsDomain"])
+func (r *FloatingIp) DnsDomain() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["dnsDomain"])
 }
 
 // The floating IP DNS name. Available, when Neutron DNS
 // extension is enabled. The data in this attribute will be published in an
 // external DNS service when Neutron is configured to integrate with such a
 // service. Changing this creates a new floating IP.
-func (r *FloatingIp) DnsName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["dnsName"])
+func (r *FloatingIp) DnsName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["dnsName"])
 }
 
 // Fixed IP of the port to associate with this floating IP. Required if
 // the port has multiple fixed IPs.
-func (r *FloatingIp) FixedIp() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["fixedIp"])
+func (r *FloatingIp) FixedIp() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["fixedIp"])
 }
 
 // The name of the pool from which to obtain the floating
 // IP. Changing this creates a new floating IP.
-func (r *FloatingIp) Pool() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["pool"])
+func (r *FloatingIp) Pool() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["pool"])
 }
 
 // ID of an existing port with at least one IP address to
 // associate with this floating IP.
-func (r *FloatingIp) PortId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["portId"])
+func (r *FloatingIp) PortId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["portId"])
 }
 
 // The region in which to obtain the V2 Networking client.
@@ -155,32 +155,32 @@ func (r *FloatingIp) PortId() *pulumi.StringOutput {
 // another networking resource, such as a load balancer. If omitted, the
 // `region` argument of the provider is used. Changing this creates a new
 // floating IP (which may or may not have a different address).
-func (r *FloatingIp) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *FloatingIp) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // The subnet ID of the floating IP pool. Specify this if
 // the floating IP network has multiple subnets.
-func (r *FloatingIp) SubnetId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["subnetId"])
+func (r *FloatingIp) SubnetId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["subnetId"])
 }
 
 // A set of string tags for the floating IP.
-func (r *FloatingIp) Tags() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["tags"])
+func (r *FloatingIp) Tags() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["tags"])
 }
 
 // The target tenant ID in which to allocate the floating
 // IP, if you specify this together with a port_id, make sure the target port
 // belongs to the same tenant. Changing this creates a new floating IP (which
 // may or may not have a different address)
-func (r *FloatingIp) TenantId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["tenantId"])
+func (r *FloatingIp) TenantId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["tenantId"])
 }
 
 // Map of additional options.
-func (r *FloatingIp) ValueSpecs() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["valueSpecs"])
+func (r *FloatingIp) ValueSpecs() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["valueSpecs"])
 }
 
 // Input properties used for looking up and filtering FloatingIp resources.

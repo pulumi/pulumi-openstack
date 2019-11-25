@@ -15,7 +15,7 @@ namespace Pulumi.Openstack.Images
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/images_image_v2.html.markdown.
         /// </summary>
         public static Task<GetImageResult> GetImage(GetImageArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetImageResult>("openstack:images/getImage:getImage", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetImageResult>("openstack:images/getImage:getImage", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetImageArgs : Pulumi.ResourceArgs

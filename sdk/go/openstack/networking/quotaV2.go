@@ -85,80 +85,80 @@ func GetQuotaV2(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *QuotaV2) URN() *pulumi.URNOutput {
+func (r *QuotaV2) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *QuotaV2) ID() *pulumi.IDOutput {
+func (r *QuotaV2) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Quota value for floating IPs. Changing this updates the
 // existing quota.
-func (r *QuotaV2) Floatingip() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["floatingip"])
+func (r *QuotaV2) Floatingip() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["floatingip"])
 }
 
 // Quota value for networks. Changing this updates the
 // existing quota.
-func (r *QuotaV2) Network() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["network"])
+func (r *QuotaV2) Network() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["network"])
 }
 
 // Quota value for ports. Changing this updates the
 // existing quota.
-func (r *QuotaV2) Port() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["port"])
+func (r *QuotaV2) Port() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["port"])
 }
 
 // ID of the project to manage quota. Changing this
 // creates new quota.
-func (r *QuotaV2) ProjectId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["projectId"])
+func (r *QuotaV2) ProjectId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["projectId"])
 }
 
 // Quota value for RBAC policies.
 // Changing this updates the existing quota.
-func (r *QuotaV2) RbacPolicy() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["rbacPolicy"])
+func (r *QuotaV2) RbacPolicy() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["rbacPolicy"])
 }
 
 // The region in which to create the quota. If
 // omitted, the `region` argument of the provider is used. Changing this
 // creates new quota.
-func (r *QuotaV2) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *QuotaV2) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // Quota value for routers. Changing this updates the
 // existing quota.
-func (r *QuotaV2) Router() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["router"])
+func (r *QuotaV2) Router() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["router"])
 }
 
 // Quota value for security groups. Changing
 // this updates the existing quota.
-func (r *QuotaV2) SecurityGroup() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["securityGroup"])
+func (r *QuotaV2) SecurityGroup() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["securityGroup"])
 }
 
 // Quota value for security group rules.
 // Changing this updates the existing quota.
-func (r *QuotaV2) SecurityGroupRule() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["securityGroupRule"])
+func (r *QuotaV2) SecurityGroupRule() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["securityGroupRule"])
 }
 
 // Quota value for subnets. Changing
 // this updates the existing quota.
-func (r *QuotaV2) Subnet() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["subnet"])
+func (r *QuotaV2) Subnet() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["subnet"])
 }
 
 // Quota value for subnetpools.
 // Changing this updates the existing quota.
-func (r *QuotaV2) Subnetpool() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["subnetpool"])
+func (r *QuotaV2) Subnetpool() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["subnetpool"])
 }
 
 // Input properties used for looking up and filtering QuotaV2 resources.

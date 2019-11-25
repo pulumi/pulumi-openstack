@@ -132,45 +132,45 @@ func GetInstance(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Instance) URN() *pulumi.URNOutput {
+func (r *Instance) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Instance) ID() *pulumi.IDOutput {
+func (r *Instance) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The first detected Fixed IPv4 address.
-func (r *Instance) AccessIpV4() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["accessIpV4"])
+func (r *Instance) AccessIpV4() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["accessIpV4"])
 }
 
 // The first detected Fixed IPv6 address.
-func (r *Instance) AccessIpV6() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["accessIpV6"])
+func (r *Instance) AccessIpV6() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["accessIpV6"])
 }
 
 // The administrative password to assign to the server.
 // Changing this changes the root password on the existing server.
-func (r *Instance) AdminPass() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["adminPass"])
+func (r *Instance) AdminPass() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["adminPass"])
 }
 
-func (r *Instance) AllMetadata() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["allMetadata"])
+func (r *Instance) AllMetadata() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["allMetadata"])
 }
 
 // The collection of tags assigned on the instance, which have
 // been explicitly and implicitly added.
-func (r *Instance) AllTags() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["allTags"])
+func (r *Instance) AllTags() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["allTags"])
 }
 
 // The availability zone in which to create
 // the server. Changing this creates a new server.
-func (r *Instance) AvailabilityZone() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["availabilityZone"])
+func (r *Instance) AvailabilityZone() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["availabilityZone"])
 }
 
 // Configuration of block devices. The blockDevice
@@ -179,100 +179,100 @@ func (r *Instance) AvailabilityZone() *pulumi.StringOutput {
 // multiple disks. This configuration is very flexible, so please see the
 // following [reference](https://docs.openstack.org/nova/latest/user/block-device-mapping.html)
 // for more information.
-func (r *Instance) BlockDevices() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["blockDevices"])
+func (r *Instance) BlockDevices() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["blockDevices"])
 }
 
 // Whether to use the configDrive feature to
 // configure the instance. Changing this creates a new server.
-func (r *Instance) ConfigDrive() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["configDrive"])
+func (r *Instance) ConfigDrive() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["configDrive"])
 }
 
 // The flavor ID of
 // the desired flavor for the server. Changing this resizes the existing server.
-func (r *Instance) FlavorId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["flavorId"])
+func (r *Instance) FlavorId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["flavorId"])
 }
 
 // The name of the
 // desired flavor for the server. Changing this resizes the existing server.
-func (r *Instance) FlavorName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["flavorName"])
+func (r *Instance) FlavorName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["flavorName"])
 }
 
 // Whether to force the OpenStack instance to be
 // forcefully deleted. This is useful for environments that have reclaim / soft
 // deletion enabled.
-func (r *Instance) ForceDelete() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["forceDelete"])
+func (r *Instance) ForceDelete() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["forceDelete"])
 }
 
 // (Optional; Required if `imageName` is empty and not booting
 // from a volume. Do not specify if booting from a volume.) The image ID of
 // the desired image for the server. Changing this creates a new server.
-func (r *Instance) ImageId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["imageId"])
+func (r *Instance) ImageId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["imageId"])
 }
 
 // (Optional; Required if `imageId` is empty and not booting
 // from a volume. Do not specify if booting from a volume.) The name of the
 // desired image for the server. Changing this creates a new server.
-func (r *Instance) ImageName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["imageName"])
+func (r *Instance) ImageName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["imageName"])
 }
 
 // The name of a key pair to put on the server. The key
 // pair must already be created and associated with the tenant's account.
 // Changing this creates a new server.
-func (r *Instance) KeyPair() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["keyPair"])
+func (r *Instance) KeyPair() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["keyPair"])
 }
 
 // Metadata key/value pairs to make available from
 // within the instance. Changing this updates the existing server metadata.
-func (r *Instance) Metadata() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["metadata"])
+func (r *Instance) Metadata() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["metadata"])
 }
 
 // A unique name for the resource.
-func (r *Instance) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Instance) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // An array of one or more networks to attach to the
 // instance. The network object structure is documented below. Changing this
 // creates a new server.
-func (r *Instance) Networks() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["networks"])
+func (r *Instance) Networks() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["networks"])
 }
 
 // Customize the personality of an instance by
 // defining one or more files and their contents. The personality structure
 // is described below.
-func (r *Instance) Personalities() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["personalities"])
+func (r *Instance) Personalities() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["personalities"])
 }
 
 // Provide the VM state. Only 'active' and 'shutoff'
 // are supported values. *Note*: If the initial powerState is the shutoff
 // the VM will be stopped immediately after build and the provisioners like
 // remote-exec or files are not supported.
-func (r *Instance) PowerState() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["powerState"])
+func (r *Instance) PowerState() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["powerState"])
 }
 
 // The region in which to create the server instance. If
 // omitted, the `region` argument of the provider is used. Changing this
 // creates a new server.
-func (r *Instance) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *Instance) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // Provide the Nova scheduler with hints on how
 // the instance should be launched. The available hints are described below.
-func (r *Instance) SchedulerHints() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["schedulerHints"])
+func (r *Instance) SchedulerHints() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["schedulerHints"])
 }
 
 // An array of one or more security group names
@@ -280,32 +280,32 @@ func (r *Instance) SchedulerHints() *pulumi.ArrayOutput {
 // security groups from the existing server. *Note*: When attaching the
 // instance to networks using Ports, place the security groups on the Port
 // and not the instance.
-func (r *Instance) SecurityGroups() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["securityGroups"])
+func (r *Instance) SecurityGroups() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["securityGroups"])
 }
 
 // Whether to try stop instance gracefully
 // before destroying it, thus giving chance for guest OS daemons to stop correctly.
 // If instance doesn't stop within timeout, it will be destroyed anyway.
-func (r *Instance) StopBeforeDestroy() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["stopBeforeDestroy"])
+func (r *Instance) StopBeforeDestroy() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["stopBeforeDestroy"])
 }
 
 // A set of string tags for the instance. Changing this
 // updates the existing instance tags.
-func (r *Instance) Tags() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["tags"])
+func (r *Instance) Tags() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["tags"])
 }
 
 // The user data to provide when launching the instance.
 // Changing this creates a new server.
-func (r *Instance) UserData() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["userData"])
+func (r *Instance) UserData() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["userData"])
 }
 
 // Map of additional vendor-specific options.
 // Supported options are described below.
-func (r *Instance) VendorOptions() *pulumi.Output {
+func (r *Instance) VendorOptions() pulumi.Output {
 	return r.s.State["vendorOptions"]
 }
 

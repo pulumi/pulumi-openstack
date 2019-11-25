@@ -75,43 +75,43 @@ func GetServerGroup(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *ServerGroup) URN() *pulumi.URNOutput {
+func (r *ServerGroup) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *ServerGroup) ID() *pulumi.IDOutput {
+func (r *ServerGroup) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The instances that are part of this server group.
-func (r *ServerGroup) Members() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["members"])
+func (r *ServerGroup) Members() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["members"])
 }
 
 // A unique name for the server group. Changing this creates
 // a new server group.
-func (r *ServerGroup) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *ServerGroup) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The set of policies for the server group. All policies
 // are mutually exclusive. See the Policies section for more information.
 // Changing this creates a new server group.
-func (r *ServerGroup) Policies() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["policies"])
+func (r *ServerGroup) Policies() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["policies"])
 }
 
 // The region in which to obtain the V2 Compute client.
 // If omitted, the `region` argument of the provider is used. Changing
 // this creates a new server group.
-func (r *ServerGroup) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *ServerGroup) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // Map of additional options.
-func (r *ServerGroup) ValueSpecs() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["valueSpecs"])
+func (r *ServerGroup) ValueSpecs() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["valueSpecs"])
 }
 
 // Input properties used for looking up and filtering ServerGroup resources.

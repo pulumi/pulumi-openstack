@@ -86,83 +86,83 @@ func GetMonitorV1(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *MonitorV1) URN() *pulumi.URNOutput {
+func (r *MonitorV1) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *MonitorV1) ID() *pulumi.IDOutput {
+func (r *MonitorV1) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The administrative state of the monitor.
 // Acceptable values are "true" and "false". Changing this value updates the
 // state of the existing monitor.
-func (r *MonitorV1) AdminStateUp() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["adminStateUp"])
+func (r *MonitorV1) AdminStateUp() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["adminStateUp"])
 }
 
 // The time, in seconds, between sending probes to members.
 // Changing this creates a new monitor.
-func (r *MonitorV1) Delay() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["delay"])
+func (r *MonitorV1) Delay() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["delay"])
 }
 
 // Required for HTTP(S) types. Expected HTTP codes
 // for a passing HTTP(S) monitor. You can either specify a single status like
 // "200", or a range like "200-202". Changing this updates the expectedCodes
 // of the existing monitor.
-func (r *MonitorV1) ExpectedCodes() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["expectedCodes"])
+func (r *MonitorV1) ExpectedCodes() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["expectedCodes"])
 }
 
 // Required for HTTP(S) types. The HTTP method used
 // for requests by the monitor. If this attribute is not specified, it defaults
 // to "GET". Changing this updates the httpMethod of the existing monitor.
-func (r *MonitorV1) HttpMethod() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["httpMethod"])
+func (r *MonitorV1) HttpMethod() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["httpMethod"])
 }
 
 // Number of permissible ping failures before changing
 // the member's status to INACTIVE. Must be a number between 1 and 10. Changing
 // this updates the maxRetries of the existing monitor.
-func (r *MonitorV1) MaxRetries() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["maxRetries"])
+func (r *MonitorV1) MaxRetries() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["maxRetries"])
 }
 
 // The region in which to obtain the V2 Networking client.
 // A Networking client is needed to create an LB monitor. If omitted, the
 // `region` argument of the provider is used. Changing this creates a new
 // LB monitor.
-func (r *MonitorV1) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *MonitorV1) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // The owner of the monitor. Required if admin wants to
 // create a monitor for another tenant. Changing this creates a new monitor.
-func (r *MonitorV1) TenantId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["tenantId"])
+func (r *MonitorV1) TenantId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["tenantId"])
 }
 
 // Maximum number of seconds for a monitor to wait for a
 // ping reply before it times out. The value must be less than the delay value.
 // Changing this updates the timeout of the existing monitor.
-func (r *MonitorV1) Timeout() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["timeout"])
+func (r *MonitorV1) Timeout() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["timeout"])
 }
 
 // The type of probe, which is PING, TCP, HTTP, or HTTPS,
 // that is sent by the monitor to verify the member state. Changing this
 // creates a new monitor.
-func (r *MonitorV1) Type() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["type"])
+func (r *MonitorV1) Type() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["type"])
 }
 
 // Required for HTTP(S) types. URI path that will be
 // accessed if monitor type is HTTP or HTTPS. Changing this updates the
 // urlPath of the existing monitor.
-func (r *MonitorV1) UrlPath() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["urlPath"])
+func (r *MonitorV1) UrlPath() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["urlPath"])
 }
 
 // Input properties used for looking up and filtering MonitorV1 resources.

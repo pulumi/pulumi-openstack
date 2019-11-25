@@ -55,30 +55,30 @@ func GetRole(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Role) URN() *pulumi.URNOutput {
+func (r *Role) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Role) ID() *pulumi.IDOutput {
+func (r *Role) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The domain the role belongs to.
-func (r *Role) DomainId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["domainId"])
+func (r *Role) DomainId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["domainId"])
 }
 
 // The name of the role.
-func (r *Role) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Role) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The region in which to obtain the V3 Keystone client.
 // If omitted, the `region` argument of the provider is used. Changing this
 // creates a new Role.
-func (r *Role) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *Role) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // Input properties used for looking up and filtering Role resources.

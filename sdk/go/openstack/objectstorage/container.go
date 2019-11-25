@@ -73,12 +73,12 @@ func GetContainer(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Container) URN() *pulumi.URNOutput {
+func (r *Container) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Container) ID() *pulumi.IDOutput {
+func (r *Container) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
@@ -86,60 +86,60 @@ func (r *Container) ID() *pulumi.IDOutput {
 // read access. This header can contain a comma-delimited list of users that
 // can read the container (allows the GET method for all objects in the
 // container). Changing this updates the access control list read access.
-func (r *Container) ContainerRead() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["containerRead"])
+func (r *Container) ContainerRead() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["containerRead"])
 }
 
 // The secret key for container synchronization.
 // Changing this updates container synchronization.
-func (r *Container) ContainerSyncKey() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["containerSyncKey"])
+func (r *Container) ContainerSyncKey() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["containerSyncKey"])
 }
 
 // The destination for container synchronization.
 // Changing this updates container synchronization.
-func (r *Container) ContainerSyncTo() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["containerSyncTo"])
+func (r *Container) ContainerSyncTo() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["containerSyncTo"])
 }
 
 // Sets an ACL that grants write access.
 // Changing this updates the access control list write access.
-func (r *Container) ContainerWrite() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["containerWrite"])
+func (r *Container) ContainerWrite() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["containerWrite"])
 }
 
 // The MIME type for the container. Changing this
 // updates the MIME type.
-func (r *Container) ContentType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["contentType"])
+func (r *Container) ContentType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["contentType"])
 }
 
 // A boolean that indicates all objects should be deleted from the container so that the container can be destroyed without error. These objects are not recoverable.
-func (r *Container) ForceDestroy() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["forceDestroy"])
+func (r *Container) ForceDestroy() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["forceDestroy"])
 }
 
 // Custom key/value pairs to associate with the container.
 // Changing this updates the existing container metadata.
-func (r *Container) Metadata() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["metadata"])
+func (r *Container) Metadata() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["metadata"])
 }
 
 // A unique name for the container. Changing this creates a
 // new container.
-func (r *Container) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Container) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The region in which to create the container. If
 // omitted, the `region` argument of the provider is used. Changing this
 // creates a new container.
-func (r *Container) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *Container) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // Enable object versioning. The structure is described below.
-func (r *Container) Versioning() *pulumi.Output {
+func (r *Container) Versioning() pulumi.Output {
 	return r.s.State["versioning"]
 }
 

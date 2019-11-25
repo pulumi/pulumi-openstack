@@ -64,28 +64,28 @@ func GetFloatingIpAssociate(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *FloatingIpAssociate) URN() *pulumi.URNOutput {
+func (r *FloatingIpAssociate) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *FloatingIpAssociate) ID() *pulumi.IDOutput {
+func (r *FloatingIpAssociate) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
-func (r *FloatingIpAssociate) FixedIp() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["fixedIp"])
+func (r *FloatingIpAssociate) FixedIp() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["fixedIp"])
 }
 
 // IP Address of an existing floating IP.
-func (r *FloatingIpAssociate) FloatingIp() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["floatingIp"])
+func (r *FloatingIpAssociate) FloatingIp() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["floatingIp"])
 }
 
 // ID of an existing port with at least one IP address to
 // associate with this floating IP.
-func (r *FloatingIpAssociate) PortId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["portId"])
+func (r *FloatingIpAssociate) PortId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["portId"])
 }
 
 // The region in which to obtain the V2 Networking client.
@@ -93,8 +93,8 @@ func (r *FloatingIpAssociate) PortId() *pulumi.StringOutput {
 // another networking resource, such as a load balancer. If omitted, the
 // `region` argument of the provider is used. Changing this creates a new
 // floating IP (which may or may not have a different address).
-func (r *FloatingIpAssociate) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *FloatingIpAssociate) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // Input properties used for looking up and filtering FloatingIpAssociate resources.

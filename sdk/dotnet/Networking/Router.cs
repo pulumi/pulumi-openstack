@@ -138,7 +138,7 @@ namespace Pulumi.Openstack.Networking
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Router(string name, RouterArgs? args = null, CustomResourceOptions? options = null)
-            : base("openstack:networking/router:Router", name, args, MakeResourceOptions(options, ""))
+            : base("openstack:networking/router:Router", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

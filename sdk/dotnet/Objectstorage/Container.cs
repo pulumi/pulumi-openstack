@@ -94,7 +94,7 @@ namespace Pulumi.Openstack.Objectstorage
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Container(string name, ContainerArgs? args = null, CustomResourceOptions? options = null)
-            : base("openstack:objectstorage/container:Container", name, args, MakeResourceOptions(options, ""))
+            : base("openstack:objectstorage/container:Container", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

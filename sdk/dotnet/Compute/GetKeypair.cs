@@ -15,7 +15,7 @@ namespace Pulumi.Openstack.Compute
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/compute_keypair_v2.html.markdown.
         /// </summary>
         public static Task<GetKeypairResult> GetKeypair(GetKeypairArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKeypairResult>("openstack:compute/getKeypair:getKeypair", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetKeypairResult>("openstack:compute/getKeypair:getKeypair", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetKeypairArgs : Pulumi.ResourceArgs

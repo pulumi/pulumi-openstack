@@ -15,7 +15,7 @@ namespace Pulumi.Openstack.Networking
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_qos_policy_v2.html.markdown.
         /// </summary>
         public static Task<GetQosPolicyResult> GetQosPolicy(GetQosPolicyArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetQosPolicyResult>("openstack:networking/getQosPolicy:getQosPolicy", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetQosPolicyResult>("openstack:networking/getQosPolicy:getQosPolicy", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetQosPolicyArgs : Pulumi.ResourceArgs
