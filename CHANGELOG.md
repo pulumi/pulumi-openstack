@@ -2,10 +2,11 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to support go 1.13.x
-* Upgrade to v1.4.3 of the pulumi-terraform-bridge
+_(none)_
 
 ---
+
+## 1.2.0 (2019-12-04)
 
 ## 1.1.0 (2019-11-13)
 * Add support for DotNet SDK Generation
