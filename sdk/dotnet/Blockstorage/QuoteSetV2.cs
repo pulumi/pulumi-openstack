@@ -5,7 +5,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Openstack.Blockstorage
+namespace Pulumi.OpenStack.BlockStorage
 {
     /// <summary>
     /// Manages a V2 block storage quotaset resource within OpenStack.

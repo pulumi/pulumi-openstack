@@ -5,7 +5,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Openstack.Identity
+namespace Pulumi.OpenStack.Identity
 {
     /// <summary>
     /// Manages a V3 User resource within OpenStack Keystone.

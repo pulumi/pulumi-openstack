@@ -5,7 +5,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Openstack.Objectstorage
+namespace Pulumi.OpenStack.ObjectStorage
 {
     /// <summary>
     /// Use this resource to generate an OpenStack Object Storage temporary URL.

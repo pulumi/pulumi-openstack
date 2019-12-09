@@ -3,7 +3,7 @@
 
 using System.Collections.Immutable;
 
-namespace Pulumi.Openstack
+namespace Pulumi.OpenStack
 {
     public static class Config
     {

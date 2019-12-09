@@ -5,7 +5,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Openstack.Objectstorage
+namespace Pulumi.OpenStack.ObjectStorage
 {
     /// <summary>
     /// Manages a V1 container object resource within OpenStack.

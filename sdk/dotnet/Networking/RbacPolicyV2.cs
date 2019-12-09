@@ -5,7 +5,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Openstack.Networking
+namespace Pulumi.OpenStack.Networking
 {
     /// <summary>
     /// The RBAC policy resource contains functionality for working with Neutron RBAC

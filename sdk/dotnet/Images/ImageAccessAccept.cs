@@ -5,7 +5,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Openstack.Images
+namespace Pulumi.OpenStack.Images
 {
     /// <summary>
     /// Manages memberships status for the shared OpenStack Glance V2 Image within the

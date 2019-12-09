@@ -5,7 +5,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Openstack.Keymanager
+namespace Pulumi.OpenStack.KeyManager
 {
     /// <summary>
     /// Manages a V1 Barbican container resource within OpenStack.
