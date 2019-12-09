@@ -2,8 +2,8 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
-
+* Namespace names in .NET SDK are adjusted to PascalCase
+([#259](https://github.com/pulumi/pulumi-openstack/pull/70)).
 ---
 
 ## 1.2.0 (2019-12-04)
