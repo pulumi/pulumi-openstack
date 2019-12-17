@@ -5,7 +5,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Openstack.Dns
+namespace Pulumi.OpenStack.Dns
 {
     /// <summary>
     /// Manages a DNS zone in the OpenStack DNS Service.

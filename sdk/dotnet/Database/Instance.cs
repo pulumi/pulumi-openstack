@@ -5,7 +5,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Openstack.Database
+namespace Pulumi.OpenStack.Database
 {
     /// <summary>
     /// Manages a V1 DB instance resource within OpenStack.

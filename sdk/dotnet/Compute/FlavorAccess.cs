@@ -5,7 +5,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Openstack.Compute
+namespace Pulumi.OpenStack.Compute
 {
     /// <summary>
     /// Manages a project access for flavor V2 resource within OpenStack.

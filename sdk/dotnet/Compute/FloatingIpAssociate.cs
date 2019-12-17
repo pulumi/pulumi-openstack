@@ -5,7 +5,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Openstack.Compute
+namespace Pulumi.OpenStack.Compute
 {
     /// <summary>
     /// Associate a floating IP to an instance. This can be used instead of the

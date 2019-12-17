@@ -5,7 +5,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Openstack.Blockstorage
+namespace Pulumi.OpenStack.BlockStorage
 {
     /// <summary>
     /// This resource is experimental and may be removed in the future! Feedback

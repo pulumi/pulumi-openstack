@@ -5,7 +5,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Openstack.Dns
+namespace Pulumi.OpenStack.Dns
 {
     public static partial class Invokes
     {

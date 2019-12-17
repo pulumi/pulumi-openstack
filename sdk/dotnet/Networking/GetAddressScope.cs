@@ -5,7 +5,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Openstack.Networking
+namespace Pulumi.OpenStack.Networking
 {
     public static partial class Invokes
     {

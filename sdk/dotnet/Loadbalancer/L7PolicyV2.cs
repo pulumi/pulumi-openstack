@@ -5,7 +5,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Openstack.Loadbalancer
+namespace Pulumi.OpenStack.LoadBalancer
 {
     /// <summary>
     /// Manages a Load Balancer L7 Policy resource within OpenStack.

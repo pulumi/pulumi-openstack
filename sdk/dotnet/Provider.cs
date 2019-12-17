@@ -5,7 +5,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Openstack
+namespace Pulumi.OpenStack
 {
     /// <summary>
     /// The provider type for the openstack package. By default, resources use package-wide configuration

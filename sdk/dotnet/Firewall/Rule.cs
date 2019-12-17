@@ -5,7 +5,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Openstack.Firewall
+namespace Pulumi.OpenStack.Firewall
 {
     /// <summary>
     /// Manages a v1 firewall rule resource within OpenStack.

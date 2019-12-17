@@ -5,7 +5,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Openstack.Sharedfilesystem
+namespace Pulumi.OpenStack.SharedFileSystem
 {
     /// <summary>
     /// Use this resource to configure a share network.
