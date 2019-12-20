@@ -15,7 +15,6 @@
 package openstack
 
 import (
-	"strings"
 	"unicode"
 
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
@@ -30,34 +29,25 @@ const (
 	// packages:
 	openstackPkg = "openstack"
 	// modules:
-	blockstorageMod     = "BlockStorage"     // Block Storage
-	computeMod          = "Compute"          // Compute
-	containerinfraMod   = "ContainerInfra"   // Container Infrastructure
-	databaseMod         = "Database"         // Database
-	dnsMod              = "Dns"              // DNS
-	identityMod         = "Identity"         // Identity
-	imagesMod           = "Images"           // Images
-	keymanagerMod       = "KeyManager"       // Key Manager
-	networkingMod       = "Networking"       // Networking
-	lbMod               = "LoadBalancer"     // Load Balancer
-	firewallMod         = "Firewall"         // Firewall
-	osMod               = "ObjectStorage"    // Object Storage
-	sharedfilesystemMod = "SharedFileSystem" // Shared FileSystem
-	vpnaasMod           = "VPNaaS"           // VPNaaS
+	blockstorageMod     = "blockstorage"     // Block Storage
+	computeMod          = "compute"          // Compute
+	containerinfraMod   = "containerinfra"   // Container Infrastructure
+	databaseMod         = "database"         // Database
+	dnsMod              = "dns"              // DNS
+	identityMod         = "identity"         // Identity
+	imagesMod           = "images"           // Images
+	keymanagerMod       = "keymanager"       //Keymanager
+	networkingMod       = "networking"       // Networking
+	lbMod               = "loadbalancer"     // Load Balancer
+	firewallMod         = "firewall"         // Firewall
+	osMod               = "objectstorage"    // Object Storage
+	sharedfilesystemMod = "sharedfilesystem" // Shared FileSystem
+	vpnaasMod           = "vpnaas"           // VPNaaS
 )
 
-var namespaceMap = map[string]string{
-	"openstack": "OpenStack",
-}
-
-// openstackMember manufactures a type token for the OpenStack package and the given module and type.  It automatically
-// uses the OpenStack package and names the file by simply lower casing the resource's first character.
-func openstackMember(moduleTitle string, mem string) tokens.ModuleMember {
-	moduleName := strings.ToLower(moduleTitle)
-	namespaceMap[moduleName] = moduleTitle
-	fn := string(unicode.ToLower(rune(mem[0]))) + mem[1:]
-	token := moduleName + "/" + fn
-	return tokens.ModuleMember(openstackPkg + ":" + token + ":" + mem)
+// openstackMember manufactures a type token for the OpenStack package and the given module and type.
+func openstackMember(mod string, mem string) tokens.ModuleMember {
+	return tokens.ModuleMember(openstackPkg + ":" + mod + ":" + mem)
 }
 
 // openstackType manufactures a type token for the OpenStack package and the given module and type.
@@ -65,14 +55,18 @@ func openstackType(mod string, typ string) tokens.Type {
 	return tokens.Type(openstackMember(mod, typ))
 }
 
-// openstackDataSource manufactures a standard resource token given a module and resource name.
+// openstackDataSource manufactures a standard resource token given a module and resource name.  It automatically uses
+// the OpenStack package and names the file by simply lower casing the data source's first character.
 func openstackDataSource(mod string, res string) tokens.ModuleMember {
-	return openstackMember(mod, res)
+	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
+	return openstackMember(mod+"/"+fn, res)
 }
 
-// openstackResource manufactures a standard resource token given a module and resource name.
+// openstackResource manufactures a standard resource token given a module and resource name.  It automatically uses
+// the OpenStack package and names the file by simply lower casing the resource's first character.
 func openstackResource(mod string, res string) tokens.Type {
-	return openstackType(mod, res)
+	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
+	return openstackType(mod+"/"+fn, res)
 }
 
 // Provider returns additional overlaid schema and metadata associated with the openstack package.
@@ -211,6 +205,26 @@ func Provider() tfbridge.ProviderInfo {
 			"cloud": {
 				Default: &tfbridge.DefaultInfo{
 					EnvVars: []string{"OS_CLOUD"},
+				},
+			},
+			"application_credential_id": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"OS_APPLICATION_CREDENTIAL_ID"},
+				},
+			},
+			"application_credential_name": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"OS_APPLICATION_CREDENTIAL_NAME"},
+				},
+			},
+			"application_credential_secret": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"OS_APPLICATION_CREDENTIAL_SECRET"},
+				},
+			},
+			"delayed_auth": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"OS_DELAYED_AUTH"},
 				},
 			},
 		},
@@ -432,10 +446,9 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		CSharp: &tfbridge.CSharpInfo{
 			PackageReferences: map[string]string{
-				"Pulumi":                       "1.5.0-*",
+				"Pulumi":                       "1.7.0-preview",
 				"System.Collections.Immutable": "1.6.0",
 			},
-			Namespaces: namespaceMap,
 		},
 	}
 

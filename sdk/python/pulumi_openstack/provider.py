@@ -39,8 +39,14 @@ class Provider(pulumi.ProviderResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            if application_credential_id is None:
+                application_credential_id = utilities.get_env('OS_APPLICATION_CREDENTIAL_ID')
             __props__['application_credential_id'] = application_credential_id
+            if application_credential_name is None:
+                application_credential_name = utilities.get_env('OS_APPLICATION_CREDENTIAL_NAME')
             __props__['application_credential_name'] = application_credential_name
+            if application_credential_secret is None:
+                application_credential_secret = utilities.get_env('OS_APPLICATION_CREDENTIAL_SECRET')
             __props__['application_credential_secret'] = application_credential_secret
             if auth_url is None:
                 auth_url = utilities.get_env('OS_AUTH_URL')
@@ -57,6 +63,8 @@ class Provider(pulumi.ProviderResource):
             if default_domain is None:
                 default_domain = (utilities.get_env('OS_DEFAULT_DOMAIN') or 'default')
             __props__['default_domain'] = default_domain
+            if delayed_auth is None:
+                delayed_auth = utilities.get_env_bool('OS_DELAYED_AUTH')
             __props__['delayed_auth'] = pulumi.Output.from_input(delayed_auth).apply(json.dumps) if delayed_auth is not None else None
             __props__['disable_no_cache_header'] = pulumi.Output.from_input(disable_no_cache_header).apply(json.dumps) if disable_no_cache_header is not None else None
             if domain_id is None:

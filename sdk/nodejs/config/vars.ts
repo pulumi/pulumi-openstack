@@ -9,15 +9,15 @@ let __config = new pulumi.Config("openstack");
 /**
  * Application Credential ID to login with.
  */
-export let applicationCredentialId: string | undefined = __config.get("applicationCredentialId");
+export let applicationCredentialId: string | undefined = __config.get("applicationCredentialId") || utilities.getEnv("OS_APPLICATION_CREDENTIAL_ID");
 /**
  * Application Credential name to login with.
  */
-export let applicationCredentialName: string | undefined = __config.get("applicationCredentialName");
+export let applicationCredentialName: string | undefined = __config.get("applicationCredentialName") || utilities.getEnv("OS_APPLICATION_CREDENTIAL_NAME");
 /**
  * Application Credential secret to login with.
  */
-export let applicationCredentialSecret: string | undefined = __config.get("applicationCredentialSecret");
+export let applicationCredentialSecret: string | undefined = __config.get("applicationCredentialSecret") || utilities.getEnv("OS_APPLICATION_CREDENTIAL_SECRET");
 /**
  * The Identity authentication URL.
  */
@@ -41,7 +41,7 @@ export let defaultDomain: string | undefined = __config.get("defaultDomain") || 
 /**
  * If set to `true`, OpenStack authorization will be perfomed, when the service provider client is called.
  */
-export let delayedAuth: boolean | undefined = __config.getObject<boolean>("delayedAuth");
+export let delayedAuth: boolean | undefined = __config.getObject<boolean>("delayedAuth") || utilities.getEnvBoolean("OS_DELAYED_AUTH");
 /**
  * If set to `true`, the HTTP `Cache-Control: no-cache` header will not be added by default to all API requests.
  */

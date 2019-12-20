@@ -11,17 +11,17 @@ from .. import utilities, tables
 
 __config__ = pulumi.Config('openstack')
 
-application_credential_id = __config__.get('applicationCredentialId')
+application_credential_id = __config__.get('applicationCredentialId') or utilities.get_env('OS_APPLICATION_CREDENTIAL_ID')
 """
 Application Credential ID to login with.
 """
 
-application_credential_name = __config__.get('applicationCredentialName')
+application_credential_name = __config__.get('applicationCredentialName') or utilities.get_env('OS_APPLICATION_CREDENTIAL_NAME')
 """
 Application Credential name to login with.
 """
 
-application_credential_secret = __config__.get('applicationCredentialSecret')
+application_credential_secret = __config__.get('applicationCredentialSecret') or utilities.get_env('OS_APPLICATION_CREDENTIAL_SECRET')
 """
 Application Credential secret to login with.
 """
@@ -51,7 +51,7 @@ default_domain = __config__.get('defaultDomain') or (utilities.get_env('OS_DEFAU
 The name of the Domain ID to scope to if no other domain is specified. Defaults to `default` (Identity v3).
 """
 
-delayed_auth = __config__.get('delayedAuth')
+delayed_auth = __config__.get('delayedAuth') or utilities.get_env_bool('OS_DELAYED_AUTH')
 """
 If set to `true`, OpenStack authorization will be perfomed, when the service provider client is called.
 """
