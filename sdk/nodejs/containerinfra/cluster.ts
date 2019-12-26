@@ -74,6 +74,12 @@ import * as utilities from "../utilities";
  * 
  * * `nodeCount` - (Optional) The number of nodes for the cluster. Changing this
  *     creates a new cluster.
+ *     
+ * * `fixedNetwork` - (Optional) The fixed network that will be attached to the
+ *     cluster. Changing this creates a new cluster.
+ * 
+ * * `fixedSubnet` - (Optional) The fixed subnet that will be attached to the
+ *     cluster. Changing this creates a new cluster.
  * 
  * ## Attributes reference
  * 
@@ -97,6 +103,8 @@ import * as utilities from "../utilities";
  * * `labels` - See Argument Reference above.
  * * `masterCount` - See Argument Reference above.
  * * `nodeCount` - See Argument Reference above.
+ * * `fixedNetwork` - See Argument Reference above.
+ * * `fixedSubnet` - See Argument Reference above.
  * * `masterAddresses` - IP addresses of the master node of the cluster.
  * * `nodeAddresses` - IP addresses of the node of the cluster.
  * * `stackId` - UUID of the Orchestration service stack.
@@ -138,6 +146,8 @@ export class Cluster extends pulumi.CustomResource {
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     public readonly discoveryUrl!: pulumi.Output<string>;
     public readonly dockerVolumeSize!: pulumi.Output<number>;
+    public readonly fixedNetwork!: pulumi.Output<string>;
+    public readonly fixedSubnet!: pulumi.Output<string>;
     public readonly flavor!: pulumi.Output<string>;
     public readonly keypair!: pulumi.Output<string>;
     public readonly labels!: pulumi.Output<{[key: string]: any}>;
@@ -173,6 +183,8 @@ export class Cluster extends pulumi.CustomResource {
             inputs["createdAt"] = state ? state.createdAt : undefined;
             inputs["discoveryUrl"] = state ? state.discoveryUrl : undefined;
             inputs["dockerVolumeSize"] = state ? state.dockerVolumeSize : undefined;
+            inputs["fixedNetwork"] = state ? state.fixedNetwork : undefined;
+            inputs["fixedSubnet"] = state ? state.fixedSubnet : undefined;
             inputs["flavor"] = state ? state.flavor : undefined;
             inputs["keypair"] = state ? state.keypair : undefined;
             inputs["labels"] = state ? state.labels : undefined;
@@ -196,6 +208,8 @@ export class Cluster extends pulumi.CustomResource {
             inputs["createTimeout"] = args ? args.createTimeout : undefined;
             inputs["discoveryUrl"] = args ? args.discoveryUrl : undefined;
             inputs["dockerVolumeSize"] = args ? args.dockerVolumeSize : undefined;
+            inputs["fixedNetwork"] = args ? args.fixedNetwork : undefined;
+            inputs["fixedSubnet"] = args ? args.fixedSubnet : undefined;
             inputs["flavor"] = args ? args.flavor : undefined;
             inputs["keypair"] = args ? args.keypair : undefined;
             inputs["labels"] = args ? args.labels : undefined;
@@ -238,6 +252,8 @@ export interface ClusterState {
     readonly createdAt?: pulumi.Input<string>;
     readonly discoveryUrl?: pulumi.Input<string>;
     readonly dockerVolumeSize?: pulumi.Input<number>;
+    readonly fixedNetwork?: pulumi.Input<string>;
+    readonly fixedSubnet?: pulumi.Input<string>;
     readonly flavor?: pulumi.Input<string>;
     readonly keypair?: pulumi.Input<string>;
     readonly labels?: pulumi.Input<{[key: string]: any}>;
@@ -262,6 +278,8 @@ export interface ClusterArgs {
     readonly createTimeout?: pulumi.Input<number>;
     readonly discoveryUrl?: pulumi.Input<string>;
     readonly dockerVolumeSize?: pulumi.Input<number>;
+    readonly fixedNetwork?: pulumi.Input<string>;
+    readonly fixedSubnet?: pulumi.Input<string>;
     readonly flavor?: pulumi.Input<string>;
     readonly keypair?: pulumi.Input<string>;
     readonly labels?: pulumi.Input<{[key: string]: any}>;

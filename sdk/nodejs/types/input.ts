@@ -127,6 +127,13 @@ export namespace database {
 }
 
 export namespace identity {
+    export interface ApplicationCredentialAccessRule {
+        id?: pulumi.Input<string>;
+        method: pulumi.Input<string>;
+        path: pulumi.Input<string>;
+        service: pulumi.Input<string>;
+    }
+
     export interface UserMultiFactorAuthRule {
         rules: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -249,6 +256,17 @@ export namespace objectstorage {
     export interface ContainerVersioning {
         location: pulumi.Input<string>;
         type: pulumi.Input<string>;
+    }
+}
+
+export namespace orchestration {
+    export interface StackV1Output {
+        /**
+         * The description of the stack resource.
+         */
+        description?: pulumi.Input<string>;
+        outputKey: pulumi.Input<string>;
+        outputValue: pulumi.Input<string>;
     }
 }
 

@@ -42,6 +42,7 @@ const (
 	lbMod               = "LoadBalancer"     // Load Balancer
 	firewallMod         = "Firewall"         // Firewall
 	osMod               = "ObjectStorage"    // Object Storage
+	orchestrationMod    = "Orchestration"    // Orchestration
 	sharedfilesystemMod = "SharedFileSystem" // Shared FileSystem
 	vpnaasMod           = "VPNaaS"           // VPNaaS
 )
@@ -213,6 +214,31 @@ func Provider() tfbridge.ProviderInfo {
 					EnvVars: []string{"OS_CLOUD"},
 				},
 			},
+			"application_credential_id": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"OS_APPLICATION_CREDENTIAL_ID"},
+				},
+			},
+			"application_credential_name": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"OS_APPLICATION_CREDENTIAL_NAME"},
+				},
+			},
+			"application_credential_secret": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"OS_APPLICATION_CREDENTIAL_SECRET"},
+				},
+			},
+			"delayed_auth": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"OS_DELAYED_AUTH"},
+				},
+			},
+			"allow_reauth": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"OS_ALLOW_REAUTH"},
+				},
+			},
 		},
 		Resources: map[string]*tfbridge.ResourceInfo{
 			// Block Storage
@@ -343,6 +369,9 @@ func Provider() tfbridge.ProviderInfo {
 			// KeyManager
 			"openstack_keymanager_container_v1": {Tok: openstackResource(keymanagerMod, "ContainerV1")},
 			"openstack_keymanager_secret_v1":    {Tok: openstackResource(keymanagerMod, "SecretV1")},
+
+			// Orchestration
+			"openstack_orchestration_stack_v1": {Tok: openstackResource(orchestrationMod, "StackV1")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			// Block Storage
@@ -351,6 +380,8 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"openstack_blockstorage_snapshot_v2": {Tok: openstackDataSource(blockstorageMod, "getSnapshotV2")},
 			"openstack_blockstorage_snapshot_v3": {Tok: openstackDataSource(blockstorageMod, "getSnapshotV3")},
+			"openstack_blockstorage_volume_v2":   {Tok: openstackDataSource(blockstorageMod, "getVolumeV2")},
+			"openstack_blockstorage_volume_v3":   {Tok: openstackDataSource(blockstorageMod, "getVolumeV3")},
 
 			// Compute
 			"openstack_compute_availability_zones_v2": {Tok: openstackDataSource(computeMod, "getAvailabilityZones")},
@@ -432,7 +463,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		CSharp: &tfbridge.CSharpInfo{
 			PackageReferences: map[string]string{
-				"Pulumi":                       "1.5.0-*",
+				"Pulumi":                       "1.7.0-preview",
 				"System.Collections.Immutable": "1.6.0",
 			},
 			Namespaces: namespaceMap,

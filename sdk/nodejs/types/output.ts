@@ -127,6 +127,13 @@ export namespace database {
 }
 
 export namespace identity {
+    export interface ApplicationCredentialAccessRule {
+        id: string;
+        method: string;
+        path: string;
+        service: string;
+    }
+
     export interface GetAuthScopeRole {
         /**
          * The ID of the role.
@@ -326,7 +333,7 @@ export namespace networking {
     }
 
     export interface RouterExternalFixedIp {
-        ipAddress?: string;
+        ipAddress: string;
         subnetId?: string;
     }
 
@@ -365,6 +372,17 @@ export namespace objectstorage {
     export interface ContainerVersioning {
         location: string;
         type: string;
+    }
+}
+
+export namespace orchestration {
+    export interface StackV1Output {
+        /**
+         * The description of the stack resource.
+         */
+        description: string;
+        outputKey: string;
+        outputValue: string;
     }
 }
 

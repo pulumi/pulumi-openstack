@@ -40,6 +40,7 @@ func NewMonitor(ctx *pulumi.Context,
 		inputs["expectedCodes"] = nil
 		inputs["httpMethod"] = nil
 		inputs["maxRetries"] = nil
+		inputs["maxRetriesDown"] = nil
 		inputs["name"] = nil
 		inputs["poolId"] = nil
 		inputs["region"] = nil
@@ -53,6 +54,7 @@ func NewMonitor(ctx *pulumi.Context,
 		inputs["expectedCodes"] = args.ExpectedCodes
 		inputs["httpMethod"] = args.HttpMethod
 		inputs["maxRetries"] = args.MaxRetries
+		inputs["maxRetriesDown"] = args.MaxRetriesDown
 		inputs["name"] = args.Name
 		inputs["poolId"] = args.PoolId
 		inputs["region"] = args.Region
@@ -79,6 +81,7 @@ func GetMonitor(ctx *pulumi.Context,
 		inputs["expectedCodes"] = state.ExpectedCodes
 		inputs["httpMethod"] = state.HttpMethod
 		inputs["maxRetries"] = state.MaxRetries
+		inputs["maxRetriesDown"] = state.MaxRetriesDown
 		inputs["name"] = state.Name
 		inputs["poolId"] = state.PoolId
 		inputs["region"] = state.Region
@@ -131,9 +134,16 @@ func (r *Monitor) HttpMethod() pulumi.StringOutput {
 
 // Number of permissible ping failures before
 // changing the member's status to INACTIVE. Must be a number between 1
-// and 10..
+// and 10.
 func (r *Monitor) MaxRetries() pulumi.IntOutput {
 	return (pulumi.IntOutput)(r.s.State["maxRetries"])
+}
+
+// Number of permissible ping failures befor changing the member's
+// status to ERROR. Must be a number between 1 and 10 (supported only in Octavia).
+// Changing this updates the maxRetriesDown of the existing monitor.
+func (r *Monitor) MaxRetriesDown() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["maxRetriesDown"])
 }
 
 // The Name of the Monitor.
@@ -198,8 +208,12 @@ type MonitorState struct {
 	HttpMethod interface{}
 	// Number of permissible ping failures before
 	// changing the member's status to INACTIVE. Must be a number between 1
-	// and 10..
+	// and 10.
 	MaxRetries interface{}
+	// Number of permissible ping failures befor changing the member's
+	// status to ERROR. Must be a number between 1 and 10 (supported only in Octavia).
+	// Changing this updates the maxRetriesDown of the existing monitor.
+	MaxRetriesDown interface{}
 	// The Name of the Monitor.
 	Name interface{}
 	// The id of the pool that this monitor will be assigned to.
@@ -243,8 +257,12 @@ type MonitorArgs struct {
 	HttpMethod interface{}
 	// Number of permissible ping failures before
 	// changing the member's status to INACTIVE. Must be a number between 1
-	// and 10..
+	// and 10.
 	MaxRetries interface{}
+	// Number of permissible ping failures befor changing the member's
+	// status to ERROR. Must be a number between 1 and 10 (supported only in Octavia).
+	// Changing this updates the maxRetriesDown of the existing monitor.
+	MaxRetriesDown interface{}
 	// The Name of the Monitor.
 	Name interface{}
 	// The id of the pool that this monitor will be assigned to.

@@ -10,19 +10,26 @@ namespace Pulumi.OpenStack
         private static readonly Pulumi.Config __config = new Pulumi.Config("openstack");
 
         /// <summary>
+        /// If set to `true`, OpenStack authorization will be perfomed automatically, if the initial auth token get
+        /// expired. This is useful, when the token TTL is low or the overall Terraform provider execution time expected
+        /// to be greater than the initial token TTL.
+        /// </summary>
+        public static bool? AllowReauth { get; set; } = __config.GetBoolean("allowReauth") ?? Utilities.GetEnvBoolean("OS_ALLOW_REAUTH");
+
+        /// <summary>
         /// Application Credential ID to login with.
         /// </summary>
-        public static string? ApplicationCredentialId { get; set; } = __config.Get("applicationCredentialId");
+        public static string? ApplicationCredentialId { get; set; } = __config.Get("applicationCredentialId") ?? Utilities.GetEnv("OS_APPLICATION_CREDENTIAL_ID");
 
         /// <summary>
         /// Application Credential name to login with.
         /// </summary>
-        public static string? ApplicationCredentialName { get; set; } = __config.Get("applicationCredentialName");
+        public static string? ApplicationCredentialName { get; set; } = __config.Get("applicationCredentialName") ?? Utilities.GetEnv("OS_APPLICATION_CREDENTIAL_NAME");
 
         /// <summary>
         /// Application Credential secret to login with.
         /// </summary>
-        public static string? ApplicationCredentialSecret { get; set; } = __config.Get("applicationCredentialSecret");
+        public static string? ApplicationCredentialSecret { get; set; } = __config.Get("applicationCredentialSecret") ?? Utilities.GetEnv("OS_APPLICATION_CREDENTIAL_SECRET");
 
         /// <summary>
         /// The Identity authentication URL.
@@ -52,7 +59,7 @@ namespace Pulumi.OpenStack
         /// <summary>
         /// If set to `true`, OpenStack authorization will be perfomed, when the service provider client is called.
         /// </summary>
-        public static bool? DelayedAuth { get; set; } = __config.GetBoolean("delayedAuth");
+        public static bool? DelayedAuth { get; set; } = __config.GetBoolean("delayedAuth") ?? Utilities.GetEnvBoolean("OS_DELAYED_AUTH");
 
         /// <summary>
         /// If set to `true`, the HTTP `Cache-Control: no-cache` header will not be added by default to all API

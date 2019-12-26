@@ -8,19 +8,54 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi/config"
 )
 
+// If set to `true`, OpenStack authorization will be perfomed automatically, if the initial auth token get expired. This is
+// useful, when the token TTL is low or the overall Terraform provider execution time expected to be greater than the
+// initial token TTL.
+func GetAllowReauth(ctx *pulumi.Context) bool {
+	v, err := config.TryBool(ctx, "openstack:allowReauth")
+	if err == nil {
+		return v
+	}
+	if dv, ok := getEnvOrDefault(false, parseEnvBool, "OS_ALLOW_REAUTH").(bool); ok {
+		return dv
+	}
+	return v
+}
+
 // Application Credential ID to login with.
 func GetApplicationCredentialId(ctx *pulumi.Context) string {
-	return config.Get(ctx, "openstack:applicationCredentialId")
+	v, err := config.Try(ctx, "openstack:applicationCredentialId")
+	if err == nil {
+		return v
+	}
+	if dv, ok := getEnvOrDefault("", nil, "OS_APPLICATION_CREDENTIAL_ID").(string); ok {
+		return dv
+	}
+	return v
 }
 
 // Application Credential name to login with.
 func GetApplicationCredentialName(ctx *pulumi.Context) string {
-	return config.Get(ctx, "openstack:applicationCredentialName")
+	v, err := config.Try(ctx, "openstack:applicationCredentialName")
+	if err == nil {
+		return v
+	}
+	if dv, ok := getEnvOrDefault("", nil, "OS_APPLICATION_CREDENTIAL_NAME").(string); ok {
+		return dv
+	}
+	return v
 }
 
 // Application Credential secret to login with.
 func GetApplicationCredentialSecret(ctx *pulumi.Context) string {
-	return config.Get(ctx, "openstack:applicationCredentialSecret")
+	v, err := config.Try(ctx, "openstack:applicationCredentialSecret")
+	if err == nil {
+		return v
+	}
+	if dv, ok := getEnvOrDefault("", nil, "OS_APPLICATION_CREDENTIAL_SECRET").(string); ok {
+		return dv
+	}
+	return v
 }
 
 // The Identity authentication URL.
@@ -85,7 +120,14 @@ func GetDefaultDomain(ctx *pulumi.Context) string {
 
 // If set to `true`, OpenStack authorization will be perfomed, when the service provider client is called.
 func GetDelayedAuth(ctx *pulumi.Context) bool {
-	return config.GetBool(ctx, "openstack:delayedAuth")
+	v, err := config.TryBool(ctx, "openstack:delayedAuth")
+	if err == nil {
+		return v
+	}
+	if dv, ok := getEnvOrDefault(false, parseEnvBool, "OS_DELAYED_AUTH").(bool); ok {
+		return dv
+	}
+	return v
 }
 
 // If set to `true`, the HTTP `Cache-Control: no-cache` header will not be added by default to all API requests.

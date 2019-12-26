@@ -42,6 +42,8 @@ class Router(pulumi.CustomResource):
     Enable Source NAT for the router. Valid values are
     "true" or "false". An `external_network_id` has to be set in order to
     set this property. Changing this updates the `enable_snat` of the router.
+    Setting this value **requires** an **ext-gw-mode** extension to be enabled
+    in OpenStack Neutron.
     """
     external_fixed_ips: pulumi.Output[list]
     """
@@ -119,6 +121,8 @@ class Router(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_snat: Enable Source NAT for the router. Valid values are
                "true" or "false". An `external_network_id` has to be set in order to
                set this property. Changing this updates the `enable_snat` of the router.
+               Setting this value **requires** an **ext-gw-mode** extension to be enabled
+               in OpenStack Neutron.
         :param pulumi.Input[list] external_fixed_ips: An external fixed IP for the router. This
                can be repeated. The structure is described below. An `external_network_id`
                has to be set in order to set this property. Changing this updates the
@@ -218,6 +222,8 @@ class Router(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_snat: Enable Source NAT for the router. Valid values are
                "true" or "false". An `external_network_id` has to be set in order to
                set this property. Changing this updates the `enable_snat` of the router.
+               Setting this value **requires** an **ext-gw-mode** extension to be enabled
+               in OpenStack Neutron.
         :param pulumi.Input[list] external_fixed_ips: An external fixed IP for the router. This
                can be repeated. The structure is described below. An `external_network_id`
                has to be set in order to set this property. Changing this updates the

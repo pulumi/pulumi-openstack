@@ -28,6 +28,7 @@ func NewApplicationCredential(ctx *pulumi.Context,
 	name string, args *ApplicationCredentialArgs, opts ...pulumi.ResourceOpt) (*ApplicationCredential, error) {
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["accessRules"] = nil
 		inputs["description"] = nil
 		inputs["expiresAt"] = nil
 		inputs["name"] = nil
@@ -36,6 +37,7 @@ func NewApplicationCredential(ctx *pulumi.Context,
 		inputs["secret"] = nil
 		inputs["unrestricted"] = nil
 	} else {
+		inputs["accessRules"] = args.AccessRules
 		inputs["description"] = args.Description
 		inputs["expiresAt"] = args.ExpiresAt
 		inputs["name"] = args.Name
@@ -58,6 +60,7 @@ func GetApplicationCredential(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *ApplicationCredentialState, opts ...pulumi.ResourceOpt) (*ApplicationCredential, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["accessRules"] = state.AccessRules
 		inputs["description"] = state.Description
 		inputs["expiresAt"] = state.ExpiresAt
 		inputs["name"] = state.Name
@@ -82,6 +85,13 @@ func (r *ApplicationCredential) URN() pulumi.URNOutput {
 // ID is this resource's unique identifier assigned by its provider.
 func (r *ApplicationCredential) ID() pulumi.IDOutput {
 	return r.s.ID()
+}
+
+// A collection of one or more access rules, which
+// this application credential allows to follow. The structure is described
+// below. Changing this creates a new application credential.
+func (r *ApplicationCredential) AccessRules() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["accessRules"])
 }
 
 // A description of the application credential.
@@ -143,6 +153,10 @@ func (r *ApplicationCredential) Unrestricted() pulumi.BoolOutput {
 
 // Input properties used for looking up and filtering ApplicationCredential resources.
 type ApplicationCredentialState struct {
+	// A collection of one or more access rules, which
+	// this application credential allows to follow. The structure is described
+	// below. Changing this creates a new application credential.
+	AccessRules interface{}
 	// A description of the application credential.
 	// Changing this creates a new application credential.
 	Description interface{}
@@ -180,6 +194,10 @@ type ApplicationCredentialState struct {
 
 // The set of arguments for constructing a ApplicationCredential resource.
 type ApplicationCredentialArgs struct {
+	// A collection of one or more access rules, which
+	// this application credential allows to follow. The structure is described
+	// below. Changing this creates a new application credential.
+	AccessRules interface{}
 	// A description of the application credential.
 	// Changing this creates a new application credential.
 	Description interface{}

@@ -13,3 +13,5 @@ from .volume import *
 from .get_availability_zones_v3 import *
 from .get_snapshot_v2 import *
 from .get_snapshot_v3 import *
+from .get_volume_v2 import *
+from .get_volume_v3 import *

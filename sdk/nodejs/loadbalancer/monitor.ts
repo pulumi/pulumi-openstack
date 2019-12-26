@@ -75,9 +75,15 @@ export class Monitor extends pulumi.CustomResource {
     /**
      * Number of permissible ping failures before
      * changing the member's status to INACTIVE. Must be a number between 1
-     * and 10..
+     * and 10.
      */
     public readonly maxRetries!: pulumi.Output<number>;
+    /**
+     * Number of permissible ping failures befor changing the member's
+     * status to ERROR. Must be a number between 1 and 10 (supported only in Octavia).
+     * Changing this updates the maxRetriesDown of the existing monitor.
+     */
+    public readonly maxRetriesDown!: pulumi.Output<number>;
     /**
      * The Name of the Monitor.
      */
@@ -134,6 +140,7 @@ export class Monitor extends pulumi.CustomResource {
             inputs["expectedCodes"] = state ? state.expectedCodes : undefined;
             inputs["httpMethod"] = state ? state.httpMethod : undefined;
             inputs["maxRetries"] = state ? state.maxRetries : undefined;
+            inputs["maxRetriesDown"] = state ? state.maxRetriesDown : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["poolId"] = state ? state.poolId : undefined;
             inputs["region"] = state ? state.region : undefined;
@@ -163,6 +170,7 @@ export class Monitor extends pulumi.CustomResource {
             inputs["expectedCodes"] = args ? args.expectedCodes : undefined;
             inputs["httpMethod"] = args ? args.httpMethod : undefined;
             inputs["maxRetries"] = args ? args.maxRetries : undefined;
+            inputs["maxRetriesDown"] = args ? args.maxRetriesDown : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["poolId"] = args ? args.poolId : undefined;
             inputs["region"] = args ? args.region : undefined;
@@ -210,9 +218,15 @@ export interface MonitorState {
     /**
      * Number of permissible ping failures before
      * changing the member's status to INACTIVE. Must be a number between 1
-     * and 10..
+     * and 10.
      */
     readonly maxRetries?: pulumi.Input<number>;
+    /**
+     * Number of permissible ping failures befor changing the member's
+     * status to ERROR. Must be a number between 1 and 10 (supported only in Octavia).
+     * Changing this updates the maxRetriesDown of the existing monitor.
+     */
+    readonly maxRetriesDown?: pulumi.Input<number>;
     /**
      * The Name of the Monitor.
      */
@@ -281,9 +295,15 @@ export interface MonitorArgs {
     /**
      * Number of permissible ping failures before
      * changing the member's status to INACTIVE. Must be a number between 1
-     * and 10..
+     * and 10.
      */
     readonly maxRetries: pulumi.Input<number>;
+    /**
+     * Number of permissible ping failures befor changing the member's
+     * status to ERROR. Must be a number between 1 and 10 (supported only in Octavia).
+     * Changing this updates the maxRetriesDown of the existing monitor.
+     */
+    readonly maxRetriesDown?: pulumi.Input<number>;
     /**
      * The Name of the Monitor.
      */

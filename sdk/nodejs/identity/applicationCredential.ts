@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -53,6 +55,32 @@ import * as utilities from "../utilities";
  * 
  * export const applicationCredentialSecret = unrestricted.secret;
  * ```
+ * 
+ * ### Application credential with access rules
+ * 
+ * > **Note:** Application Credential access rules are supported only in Keystone
+ * starting from [Train](https://releases.openstack.org/train/highlights.html#keystone-identity-service) release.
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ * 
+ * const monitoring = new openstack.identity.ApplicationCredential("monitoring", {
+ *     accessRules: [
+ *         {
+ *             method: "GET",
+ *             path: "/v2.0/metrics",
+ *             service: "monitoring",
+ *         },
+ *         {
+ *             method: "PUT",
+ *             path: "/v2.0/metrics",
+ *             service: "monitoring",
+ *         },
+ *     ],
+ *     expiresAt: "2019-02-13T12:12:12Z",
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/identity_application_credential_v3.html.markdown.
  */
@@ -83,6 +111,12 @@ export class ApplicationCredential extends pulumi.CustomResource {
         return obj['__pulumiType'] === ApplicationCredential.__pulumiType;
     }
 
+    /**
+     * A collection of one or more access rules, which
+     * this application credential allows to follow. The structure is described
+     * below. Changing this creates a new application credential.
+     */
+    public readonly accessRules!: pulumi.Output<outputs.identity.ApplicationCredentialAccessRule[] | undefined>;
     /**
      * A description of the application credential.
      * Changing this creates a new application credential.
@@ -145,6 +179,7 @@ export class ApplicationCredential extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as ApplicationCredentialState | undefined;
+            inputs["accessRules"] = state ? state.accessRules : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["expiresAt"] = state ? state.expiresAt : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -155,6 +190,7 @@ export class ApplicationCredential extends pulumi.CustomResource {
             inputs["unrestricted"] = state ? state.unrestricted : undefined;
         } else {
             const args = argsOrState as ApplicationCredentialArgs | undefined;
+            inputs["accessRules"] = args ? args.accessRules : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["expiresAt"] = args ? args.expiresAt : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -179,6 +215,12 @@ export class ApplicationCredential extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ApplicationCredential resources.
  */
 export interface ApplicationCredentialState {
+    /**
+     * A collection of one or more access rules, which
+     * this application credential allows to follow. The structure is described
+     * below. Changing this creates a new application credential.
+     */
+    readonly accessRules?: pulumi.Input<pulumi.Input<inputs.identity.ApplicationCredentialAccessRule>[]>;
     /**
      * A description of the application credential.
      * Changing this creates a new application credential.
@@ -234,6 +276,12 @@ export interface ApplicationCredentialState {
  * The set of arguments for constructing a ApplicationCredential resource.
  */
 export interface ApplicationCredentialArgs {
+    /**
+     * A collection of one or more access rules, which
+     * this application credential allows to follow. The structure is described
+     * below. Changing this creates a new application credential.
+     */
+    readonly accessRules?: pulumi.Input<pulumi.Input<inputs.identity.ApplicationCredentialAccessRule>[]>;
     /**
      * A description of the application credential.
      * Changing this creates a new application credential.
