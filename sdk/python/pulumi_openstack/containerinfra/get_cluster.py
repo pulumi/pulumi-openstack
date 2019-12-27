@@ -13,7 +13,7 @@ class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, api_address=None, cluster_template_id=None, coe_version=None, container_version=None, create_timeout=None, created_at=None, discovery_url=None, docker_volume_size=None, flavor=None, keypair=None, labels=None, master_addresses=None, master_count=None, master_flavor=None, name=None, node_addresses=None, node_count=None, project_id=None, region=None, stack_id=None, updated_at=None, user_id=None, id=None):
+    def __init__(__self__, api_address=None, cluster_template_id=None, coe_version=None, container_version=None, create_timeout=None, created_at=None, discovery_url=None, docker_volume_size=None, fixed_network=None, fixed_subnet=None, flavor=None, keypair=None, labels=None, master_addresses=None, master_count=None, master_flavor=None, name=None, node_addresses=None, node_count=None, project_id=None, region=None, stack_id=None, updated_at=None, user_id=None, id=None):
         if api_address and not isinstance(api_address, str):
             raise TypeError("Expected argument 'api_address' to be a str")
         __self__.api_address = api_address
@@ -58,6 +58,18 @@ class GetClusterResult:
         __self__.docker_volume_size = docker_volume_size
         """
         The size (in GB) of the Docker volume.
+        """
+        if fixed_network and not isinstance(fixed_network, str):
+            raise TypeError("Expected argument 'fixed_network' to be a str")
+        __self__.fixed_network = fixed_network
+        """
+        The fixed network that is attached to the cluster.
+        """
+        if fixed_subnet and not isinstance(fixed_subnet, str):
+            raise TypeError("Expected argument 'fixed_subnet' to be a str")
+        __self__.fixed_subnet = fixed_subnet
+        """
+        The fixed subnet that is attached to the cluster.
         """
         if flavor and not isinstance(flavor, str):
             raise TypeError("Expected argument 'flavor' to be a str")
@@ -164,6 +176,8 @@ class AwaitableGetClusterResult(GetClusterResult):
             created_at=self.created_at,
             discovery_url=self.discovery_url,
             docker_volume_size=self.docker_volume_size,
+            fixed_network=self.fixed_network,
+            fixed_subnet=self.fixed_subnet,
             flavor=self.flavor,
             keypair=self.keypair,
             labels=self.labels,
@@ -210,6 +224,8 @@ def get_cluster(name=None,region=None,opts=None):
         created_at=__ret__.get('createdAt'),
         discovery_url=__ret__.get('discoveryUrl'),
         docker_volume_size=__ret__.get('dockerVolumeSize'),
+        fixed_network=__ret__.get('fixedNetwork'),
+        fixed_subnet=__ret__.get('fixedSubnet'),
         flavor=__ret__.get('flavor'),
         keypair=__ret__.get('keypair'),
         labels=__ret__.get('labels'),

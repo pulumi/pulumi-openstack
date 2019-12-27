@@ -86,6 +86,14 @@ export interface GetClusterResult {
      */
     readonly dockerVolumeSize: number;
     /**
+     * The fixed network that is attached to the cluster.
+     */
+    readonly fixedNetwork: string;
+    /**
+     * The fixed subnet that is attached to the cluster.
+     */
+    readonly fixedSubnet: string;
+    /**
      * The flavor for the nodes of the cluster.
      */
     readonly flavor: string;

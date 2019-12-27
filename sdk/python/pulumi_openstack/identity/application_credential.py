@@ -10,6 +10,17 @@ from typing import Union
 from .. import utilities, tables
 
 class ApplicationCredential(pulumi.CustomResource):
+    access_rules: pulumi.Output[list]
+    """
+    A collection of one or more access rules, which
+    this application credential allows to follow. The structure is described
+    below. Changing this creates a new application credential.
+    
+      * `id` (`str`)
+      * `method` (`str`)
+      * `path` (`str`)
+      * `service` (`str`)
+    """
     description: pulumi.Output[str]
     """
     A description of the application credential.
@@ -59,7 +70,7 @@ class ApplicationCredential(pulumi.CustomResource):
     credential may be used for creation or destruction of other application
     credentials or trusts. Changing this creates a new application credential.
     """
-    def __init__(__self__, resource_name, opts=None, description=None, expires_at=None, name=None, region=None, roles=None, secret=None, unrestricted=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, access_rules=None, description=None, expires_at=None, name=None, region=None, roles=None, secret=None, unrestricted=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a V3 Application Credential resource within OpenStack Keystone.
         
@@ -74,6 +85,9 @@ class ApplicationCredential(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[list] access_rules: A collection of one or more access rules, which
+               this application credential allows to follow. The structure is described
+               below. Changing this creates a new application credential.
         :param pulumi.Input[str] description: A description of the application credential.
                Changing this creates a new application credential.
         :param pulumi.Input[str] expires_at: The expiration time of the application credential
@@ -96,6 +110,13 @@ class ApplicationCredential(pulumi.CustomResource):
         :param pulumi.Input[bool] unrestricted: A flag indicating whether the application
                credential may be used for creation or destruction of other application
                credentials or trusts. Changing this creates a new application credential.
+        
+        The **access_rules** object supports the following:
+        
+          * `id` (`pulumi.Input[str]`)
+          * `method` (`pulumi.Input[str]`)
+          * `path` (`pulumi.Input[str]`)
+          * `service` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/identity_application_credential_v3.html.markdown.
         """
@@ -116,6 +137,7 @@ class ApplicationCredential(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['access_rules'] = access_rules
             __props__['description'] = description
             __props__['expires_at'] = expires_at
             __props__['name'] = name
@@ -131,7 +153,7 @@ class ApplicationCredential(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, description=None, expires_at=None, name=None, project_id=None, region=None, roles=None, secret=None, unrestricted=None):
+    def get(resource_name, id, opts=None, access_rules=None, description=None, expires_at=None, name=None, project_id=None, region=None, roles=None, secret=None, unrestricted=None):
         """
         Get an existing ApplicationCredential resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -139,6 +161,9 @@ class ApplicationCredential(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[list] access_rules: A collection of one or more access rules, which
+               this application credential allows to follow. The structure is described
+               below. Changing this creates a new application credential.
         :param pulumi.Input[str] description: A description of the application credential.
                Changing this creates a new application credential.
         :param pulumi.Input[str] expires_at: The expiration time of the application credential
@@ -164,12 +189,20 @@ class ApplicationCredential(pulumi.CustomResource):
         :param pulumi.Input[bool] unrestricted: A flag indicating whether the application
                credential may be used for creation or destruction of other application
                credentials or trusts. Changing this creates a new application credential.
+        
+        The **access_rules** object supports the following:
+        
+          * `id` (`pulumi.Input[str]`)
+          * `method` (`pulumi.Input[str]`)
+          * `path` (`pulumi.Input[str]`)
+          * `service` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/identity_application_credential_v3.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+        __props__["access_rules"] = access_rules
         __props__["description"] = description
         __props__["expires_at"] = expires_at
         __props__["name"] = name

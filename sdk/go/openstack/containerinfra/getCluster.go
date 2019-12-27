@@ -29,6 +29,8 @@ func LookupCluster(ctx *pulumi.Context, args *GetClusterArgs) (*GetClusterResult
 		CreatedAt: outputs["createdAt"],
 		DiscoveryUrl: outputs["discoveryUrl"],
 		DockerVolumeSize: outputs["dockerVolumeSize"],
+		FixedNetwork: outputs["fixedNetwork"],
+		FixedSubnet: outputs["fixedSubnet"],
 		Flavor: outputs["flavor"],
 		Keypair: outputs["keypair"],
 		Labels: outputs["labels"],
@@ -74,6 +76,10 @@ type GetClusterResult struct {
 	DiscoveryUrl interface{}
 	// The size (in GB) of the Docker volume.
 	DockerVolumeSize interface{}
+	// The fixed network that is attached to the cluster.
+	FixedNetwork interface{}
+	// The fixed subnet that is attached to the cluster.
+	FixedSubnet interface{}
 	// The flavor for the nodes of the cluster.
 	Flavor interface{}
 	// The name of the Compute service SSH keypair.

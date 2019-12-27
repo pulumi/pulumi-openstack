@@ -35,7 +35,13 @@ class Monitor(pulumi.CustomResource):
     """
     Number of permissible ping failures before
     changing the member's status to INACTIVE. Must be a number between 1
-    and 10..
+    and 10.
+    """
+    max_retries_down: pulumi.Output[float]
+    """
+    Number of permissible ping failures befor changing the member's
+    status to ERROR. Must be a number between 1 and 10 (supported only in Octavia).
+    Changing this updates the max_retries_down of the existing monitor.
     """
     name: pulumi.Output[str]
     """
@@ -75,7 +81,7 @@ class Monitor(pulumi.CustomResource):
     Required for HTTP(S) types. URI path that will be
     accessed if monitor type is HTTP or HTTPS.
     """
-    def __init__(__self__, resource_name, opts=None, admin_state_up=None, delay=None, expected_codes=None, http_method=None, max_retries=None, name=None, pool_id=None, region=None, tenant_id=None, timeout=None, type=None, url_path=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, admin_state_up=None, delay=None, expected_codes=None, http_method=None, max_retries=None, max_retries_down=None, name=None, pool_id=None, region=None, tenant_id=None, timeout=None, type=None, url_path=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a V2 monitor resource within OpenStack.
         
@@ -92,7 +98,10 @@ class Monitor(pulumi.CustomResource):
                defaults to "GET".
         :param pulumi.Input[float] max_retries: Number of permissible ping failures before
                changing the member's status to INACTIVE. Must be a number between 1
-               and 10..
+               and 10.
+        :param pulumi.Input[float] max_retries_down: Number of permissible ping failures befor changing the member's
+               status to ERROR. Must be a number between 1 and 10 (supported only in Octavia).
+               Changing this updates the max_retries_down of the existing monitor.
         :param pulumi.Input[str] name: The Name of the Monitor.
         :param pulumi.Input[str] pool_id: The id of the pool that this monitor will be assigned to.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
@@ -139,6 +148,7 @@ class Monitor(pulumi.CustomResource):
             if max_retries is None:
                 raise TypeError("Missing required property 'max_retries'")
             __props__['max_retries'] = max_retries
+            __props__['max_retries_down'] = max_retries_down
             __props__['name'] = name
             if pool_id is None:
                 raise TypeError("Missing required property 'pool_id'")
@@ -159,7 +169,7 @@ class Monitor(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, admin_state_up=None, delay=None, expected_codes=None, http_method=None, max_retries=None, name=None, pool_id=None, region=None, tenant_id=None, timeout=None, type=None, url_path=None):
+    def get(resource_name, id, opts=None, admin_state_up=None, delay=None, expected_codes=None, http_method=None, max_retries=None, max_retries_down=None, name=None, pool_id=None, region=None, tenant_id=None, timeout=None, type=None, url_path=None):
         """
         Get an existing Monitor resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -178,7 +188,10 @@ class Monitor(pulumi.CustomResource):
                defaults to "GET".
         :param pulumi.Input[float] max_retries: Number of permissible ping failures before
                changing the member's status to INACTIVE. Must be a number between 1
-               and 10..
+               and 10.
+        :param pulumi.Input[float] max_retries_down: Number of permissible ping failures befor changing the member's
+               status to ERROR. Must be a number between 1 and 10 (supported only in Octavia).
+               Changing this updates the max_retries_down of the existing monitor.
         :param pulumi.Input[str] name: The Name of the Monitor.
         :param pulumi.Input[str] pool_id: The id of the pool that this monitor will be assigned to.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
@@ -207,6 +220,7 @@ class Monitor(pulumi.CustomResource):
         __props__["expected_codes"] = expected_codes
         __props__["http_method"] = http_method
         __props__["max_retries"] = max_retries
+        __props__["max_retries_down"] = max_retries_down
         __props__["name"] = name
         __props__["pool_id"] = pool_id
         __props__["region"] = region

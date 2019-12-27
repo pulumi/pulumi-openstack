@@ -18,6 +18,8 @@ class Cluster(pulumi.CustomResource):
     created_at: pulumi.Output[str]
     discovery_url: pulumi.Output[str]
     docker_volume_size: pulumi.Output[float]
+    fixed_network: pulumi.Output[str]
+    fixed_subnet: pulumi.Output[str]
     flavor: pulumi.Output[str]
     keypair: pulumi.Output[str]
     labels: pulumi.Output[dict]
@@ -32,7 +34,7 @@ class Cluster(pulumi.CustomResource):
     stack_id: pulumi.Output[str]
     updated_at: pulumi.Output[str]
     user_id: pulumi.Output[str]
-    def __init__(__self__, resource_name, opts=None, cluster_template_id=None, create_timeout=None, discovery_url=None, docker_volume_size=None, flavor=None, keypair=None, labels=None, master_count=None, master_flavor=None, name=None, node_count=None, region=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, cluster_template_id=None, create_timeout=None, discovery_url=None, docker_volume_size=None, fixed_network=None, fixed_subnet=None, flavor=None, keypair=None, labels=None, master_count=None, master_flavor=None, name=None, node_count=None, region=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a V1 Magnum cluster resource within OpenStack.
         
@@ -87,6 +89,12 @@ class Cluster(pulumi.CustomResource):
         
         * `node_count` - (Optional) The number of nodes for the cluster. Changing this
             creates a new cluster.
+            
+        * `fixed_network` - (Optional) The fixed network that will be attached to the
+            cluster. Changing this creates a new cluster.
+        
+        * `fixed_subnet` - (Optional) The fixed subnet that will be attached to the
+            cluster. Changing this creates a new cluster.
         
         ## Attributes reference
         
@@ -110,6 +118,8 @@ class Cluster(pulumi.CustomResource):
         * `labels` - See Argument Reference above.
         * `master_count` - See Argument Reference above.
         * `node_count` - See Argument Reference above.
+        * `fixed_network` - See Argument Reference above.
+        * `fixed_subnet` - See Argument Reference above.
         * `master_addresses` - IP addresses of the master node of the cluster.
         * `node_addresses` - IP addresses of the node of the cluster.
         * `stack_id` - UUID of the Orchestration service stack.
@@ -142,6 +152,8 @@ class Cluster(pulumi.CustomResource):
             __props__['create_timeout'] = create_timeout
             __props__['discovery_url'] = discovery_url
             __props__['docker_volume_size'] = docker_volume_size
+            __props__['fixed_network'] = fixed_network
+            __props__['fixed_subnet'] = fixed_subnet
             __props__['flavor'] = flavor
             __props__['keypair'] = keypair
             __props__['labels'] = labels
@@ -167,7 +179,7 @@ class Cluster(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, api_address=None, cluster_template_id=None, coe_version=None, container_version=None, create_timeout=None, created_at=None, discovery_url=None, docker_volume_size=None, flavor=None, keypair=None, labels=None, master_addresses=None, master_count=None, master_flavor=None, name=None, node_addresses=None, node_count=None, project_id=None, region=None, stack_id=None, updated_at=None, user_id=None):
+    def get(resource_name, id, opts=None, api_address=None, cluster_template_id=None, coe_version=None, container_version=None, create_timeout=None, created_at=None, discovery_url=None, docker_volume_size=None, fixed_network=None, fixed_subnet=None, flavor=None, keypair=None, labels=None, master_addresses=None, master_count=None, master_flavor=None, name=None, node_addresses=None, node_count=None, project_id=None, region=None, stack_id=None, updated_at=None, user_id=None):
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -189,6 +201,8 @@ class Cluster(pulumi.CustomResource):
         __props__["created_at"] = created_at
         __props__["discovery_url"] = discovery_url
         __props__["docker_volume_size"] = docker_volume_size
+        __props__["fixed_network"] = fixed_network
+        __props__["fixed_subnet"] = fixed_subnet
         __props__["flavor"] = flavor
         __props__["keypair"] = keypair
         __props__["labels"] = labels

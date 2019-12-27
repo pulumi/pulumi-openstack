@@ -38,15 +38,16 @@ export class Provider extends pulumi.ProviderResource {
     constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let inputs: pulumi.Inputs = {};
         {
-            inputs["applicationCredentialId"] = args ? args.applicationCredentialId : undefined;
-            inputs["applicationCredentialName"] = args ? args.applicationCredentialName : undefined;
-            inputs["applicationCredentialSecret"] = args ? args.applicationCredentialSecret : undefined;
+            inputs["allowReauth"] = pulumi.output((args ? args.allowReauth : undefined) || utilities.getEnvBoolean("OS_ALLOW_REAUTH")).apply(JSON.stringify);
+            inputs["applicationCredentialId"] = (args ? args.applicationCredentialId : undefined) || utilities.getEnv("OS_APPLICATION_CREDENTIAL_ID");
+            inputs["applicationCredentialName"] = (args ? args.applicationCredentialName : undefined) || utilities.getEnv("OS_APPLICATION_CREDENTIAL_NAME");
+            inputs["applicationCredentialSecret"] = (args ? args.applicationCredentialSecret : undefined) || utilities.getEnv("OS_APPLICATION_CREDENTIAL_SECRET");
             inputs["authUrl"] = (args ? args.authUrl : undefined) || utilities.getEnv("OS_AUTH_URL");
             inputs["cacertFile"] = (args ? args.cacertFile : undefined) || utilities.getEnv("OS_CACERT");
             inputs["cert"] = (args ? args.cert : undefined) || utilities.getEnv("OS_CERT");
             inputs["cloud"] = (args ? args.cloud : undefined) || utilities.getEnv("OS_CLOUD");
             inputs["defaultDomain"] = (args ? args.defaultDomain : undefined) || (utilities.getEnv("OS_DEFAULT_DOMAIN") || "default");
-            inputs["delayedAuth"] = pulumi.output(args ? args.delayedAuth : undefined).apply(JSON.stringify);
+            inputs["delayedAuth"] = pulumi.output((args ? args.delayedAuth : undefined) || utilities.getEnvBoolean("OS_DELAYED_AUTH")).apply(JSON.stringify);
             inputs["disableNoCacheHeader"] = pulumi.output(args ? args.disableNoCacheHeader : undefined).apply(JSON.stringify);
             inputs["domainId"] = (args ? args.domainId : undefined) || utilities.getEnv("OS_DOMAIN_ID");
             inputs["domainName"] = (args ? args.domainName : undefined) || utilities.getEnv("OS_DOMAIN_NAME");
@@ -84,6 +85,12 @@ export class Provider extends pulumi.ProviderResource {
  * The set of arguments for constructing a Provider resource.
  */
 export interface ProviderArgs {
+    /**
+     * If set to `true`, OpenStack authorization will be perfomed automatically, if the initial auth token get expired.
+     * This is useful, when the token TTL is low or the overall Terraform provider execution time expected to be greater
+     * than the initial token TTL.
+     */
+    readonly allowReauth?: pulumi.Input<boolean>;
     /**
      * Application Credential ID to login with.
      */

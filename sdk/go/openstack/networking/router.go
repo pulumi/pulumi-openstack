@@ -131,6 +131,8 @@ func (r *Router) Distributed() pulumi.BoolOutput {
 // Enable Source NAT for the router. Valid values are
 // "true" or "false". An `externalNetworkId` has to be set in order to
 // set this property. Changing this updates the `enableSnat` of the router.
+// Setting this value **requires** an **ext-gw-mode** extension to be enabled
+// in OpenStack Neutron.
 func (r *Router) EnableSnat() pulumi.BoolOutput {
 	return (pulumi.BoolOutput)(r.s.State["enableSnat"])
 }
@@ -218,6 +220,8 @@ type RouterState struct {
 	// Enable Source NAT for the router. Valid values are
 	// "true" or "false". An `externalNetworkId` has to be set in order to
 	// set this property. Changing this updates the `enableSnat` of the router.
+	// Setting this value **requires** an **ext-gw-mode** extension to be enabled
+	// in OpenStack Neutron.
 	EnableSnat interface{}
 	// An external fixed IP for the router. This
 	// can be repeated. The structure is described below. An `externalNetworkId`
@@ -274,6 +278,8 @@ type RouterArgs struct {
 	// Enable Source NAT for the router. Valid values are
 	// "true" or "false". An `externalNetworkId` has to be set in order to
 	// set this property. Changing this updates the `enableSnat` of the router.
+	// Setting this value **requires** an **ext-gw-mode** extension to be enabled
+	// in OpenStack Neutron.
 	EnableSnat interface{}
 	// An external fixed IP for the router. This
 	// can be repeated. The structure is described below. An `externalNetworkId`

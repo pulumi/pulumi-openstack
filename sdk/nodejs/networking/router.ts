@@ -81,6 +81,8 @@ export class Router extends pulumi.CustomResource {
      * Enable Source NAT for the router. Valid values are
      * "true" or "false". An `externalNetworkId` has to be set in order to
      * set this property. Changing this updates the `enableSnat` of the router.
+     * Setting this value **requires** an **ext-gw-mode** extension to be enabled
+     * in OpenStack Neutron.
      */
     public readonly enableSnat!: pulumi.Output<boolean>;
     /**
@@ -227,6 +229,8 @@ export interface RouterState {
      * Enable Source NAT for the router. Valid values are
      * "true" or "false". An `externalNetworkId` has to be set in order to
      * set this property. Changing this updates the `enableSnat` of the router.
+     * Setting this value **requires** an **ext-gw-mode** extension to be enabled
+     * in OpenStack Neutron.
      */
     readonly enableSnat?: pulumi.Input<boolean>;
     /**
@@ -313,6 +317,8 @@ export interface RouterArgs {
      * Enable Source NAT for the router. Valid values are
      * "true" or "false". An `externalNetworkId` has to be set in order to
      * set this property. Changing this updates the `enableSnat` of the router.
+     * Setting this value **requires** an **ext-gw-mode** extension to be enabled
+     * in OpenStack Neutron.
      */
     readonly enableSnat?: pulumi.Input<boolean>;
     /**

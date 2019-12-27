@@ -61,6 +61,12 @@ import (
 // 
 // * `nodeCount` - (Optional) The number of nodes for the cluster. Changing this
 //     creates a new cluster.
+//     
+// * `fixedNetwork` - (Optional) The fixed network that will be attached to the
+//     cluster. Changing this creates a new cluster.
+// 
+// * `fixedSubnet` - (Optional) The fixed subnet that will be attached to the
+//     cluster. Changing this creates a new cluster.
 // 
 // ## Attributes reference
 // 
@@ -84,6 +90,8 @@ import (
 // * `labels` - See Argument Reference above.
 // * `masterCount` - See Argument Reference above.
 // * `nodeCount` - See Argument Reference above.
+// * `fixedNetwork` - See Argument Reference above.
+// * `fixedSubnet` - See Argument Reference above.
 // * `masterAddresses` - IP addresses of the master node of the cluster.
 // * `nodeAddresses` - IP addresses of the node of the cluster.
 // * `stackId` - UUID of the Orchestration service stack.
@@ -105,6 +113,8 @@ func NewCluster(ctx *pulumi.Context,
 		inputs["createTimeout"] = nil
 		inputs["discoveryUrl"] = nil
 		inputs["dockerVolumeSize"] = nil
+		inputs["fixedNetwork"] = nil
+		inputs["fixedSubnet"] = nil
 		inputs["flavor"] = nil
 		inputs["keypair"] = nil
 		inputs["labels"] = nil
@@ -118,6 +128,8 @@ func NewCluster(ctx *pulumi.Context,
 		inputs["createTimeout"] = args.CreateTimeout
 		inputs["discoveryUrl"] = args.DiscoveryUrl
 		inputs["dockerVolumeSize"] = args.DockerVolumeSize
+		inputs["fixedNetwork"] = args.FixedNetwork
+		inputs["fixedSubnet"] = args.FixedSubnet
 		inputs["flavor"] = args.Flavor
 		inputs["keypair"] = args.Keypair
 		inputs["labels"] = args.Labels
@@ -158,6 +170,8 @@ func GetCluster(ctx *pulumi.Context,
 		inputs["createdAt"] = state.CreatedAt
 		inputs["discoveryUrl"] = state.DiscoveryUrl
 		inputs["dockerVolumeSize"] = state.DockerVolumeSize
+		inputs["fixedNetwork"] = state.FixedNetwork
+		inputs["fixedSubnet"] = state.FixedSubnet
 		inputs["flavor"] = state.Flavor
 		inputs["keypair"] = state.Keypair
 		inputs["labels"] = state.Labels
@@ -220,6 +234,14 @@ func (r *Cluster) DiscoveryUrl() pulumi.StringOutput {
 
 func (r *Cluster) DockerVolumeSize() pulumi.IntOutput {
 	return (pulumi.IntOutput)(r.s.State["dockerVolumeSize"])
+}
+
+func (r *Cluster) FixedNetwork() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["fixedNetwork"])
+}
+
+func (r *Cluster) FixedSubnet() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["fixedSubnet"])
 }
 
 func (r *Cluster) Flavor() pulumi.StringOutput {
@@ -288,6 +310,8 @@ type ClusterState struct {
 	CreatedAt interface{}
 	DiscoveryUrl interface{}
 	DockerVolumeSize interface{}
+	FixedNetwork interface{}
+	FixedSubnet interface{}
 	Flavor interface{}
 	Keypair interface{}
 	Labels interface{}
@@ -310,6 +334,8 @@ type ClusterArgs struct {
 	CreateTimeout interface{}
 	DiscoveryUrl interface{}
 	DockerVolumeSize interface{}
+	FixedNetwork interface{}
+	FixedSubnet interface{}
 	Flavor interface{}
 	Keypair interface{}
 	Labels interface{}
