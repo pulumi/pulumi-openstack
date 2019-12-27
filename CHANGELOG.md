@@ -2,14 +2,19 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+
+
+---
+
+## 1.3.0 (2019-12-17)
 * Namespace names in .NET SDK are adjusted to PascalCase
 ([#70](https://github.com/pulumi/pulumi-openstack/pull/70)).
 * Upgrade to v1.25.0 of the OpenStack Terraform Provider
 * Upgrade to pulumi-terraform-bridge v1.5.2
 
----
-
 ## 1.2.0 (2019-12-04)
+* Upgrade to support go 1.13.x
+* Upgrade to v1.4.3 of the pulumi-terraform-bridge
 
 ## 1.1.0 (2019-11-13)
 * Add support for DotNet SDK Generation
