@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/blockstorage_volume_v3.html.markdown.
  */
-export function getVolumeV3(args?: GetVolumeV3Args, opts?: pulumi.InvokeOptions): Promise<GetVolumeV3Result> & GetVolumeV3Result {
+export function getVolumeV3(args?: GetVolumeV3Args, opts?: pulumi.InvokeOptions): Promise<GetVolumeV3Result> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -31,7 +31,7 @@ export function getVolumeV3(args?: GetVolumeV3Args, opts?: pulumi.InvokeOptions)
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetVolumeV3Result> = pulumi.runtime.invoke("openstack:blockstorage/getVolumeV3:getVolumeV3", {
+    return pulumi.runtime.invoke("openstack:blockstorage/getVolumeV3:getVolumeV3", {
         "bootable": args.bootable,
         "metadata": args.metadata,
         "name": args.name,
@@ -39,8 +39,6 @@ export function getVolumeV3(args?: GetVolumeV3Args, opts?: pulumi.InvokeOptions)
         "status": args.status,
         "volumeType": args.volumeType,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

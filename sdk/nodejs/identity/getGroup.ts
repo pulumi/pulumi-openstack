@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_group_v3.html.markdown.
  */
-export function getGroup(args: GetGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupResult> & GetGroupResult {
+export function getGroup(args: GetGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupResult> {
     if (!opts) {
         opts = {}
     }
@@ -32,13 +32,11 @@ export function getGroup(args: GetGroupArgs, opts?: pulumi.InvokeOptions): Promi
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetGroupResult> = pulumi.runtime.invoke("openstack:identity/getGroup:getGroup", {
+    return pulumi.runtime.invoke("openstack:identity/getGroup:getGroup", {
         "domainId": args.domainId,
         "name": args.name,
         "region": args.region,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

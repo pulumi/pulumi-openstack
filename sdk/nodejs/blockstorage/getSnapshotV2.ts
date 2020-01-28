@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/blockstorage_snapshot_v2.html.markdown.
  */
-export function getSnapshotV2(args?: GetSnapshotV2Args, opts?: pulumi.InvokeOptions): Promise<GetSnapshotV2Result> & GetSnapshotV2Result {
+export function getSnapshotV2(args?: GetSnapshotV2Args, opts?: pulumi.InvokeOptions): Promise<GetSnapshotV2Result> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -32,15 +32,13 @@ export function getSnapshotV2(args?: GetSnapshotV2Args, opts?: pulumi.InvokeOpti
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetSnapshotV2Result> = pulumi.runtime.invoke("openstack:blockstorage/getSnapshotV2:getSnapshotV2", {
+    return pulumi.runtime.invoke("openstack:blockstorage/getSnapshotV2:getSnapshotV2", {
         "mostRecent": args.mostRecent,
         "name": args.name,
         "region": args.region,
         "status": args.status,
         "volumeId": args.volumeId,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

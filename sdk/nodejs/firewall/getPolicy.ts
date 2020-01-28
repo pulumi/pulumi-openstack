@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/fw_policy_v1.html.markdown.
  */
-export function getPolicy(args?: GetPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicyResult> & GetPolicyResult {
+export function getPolicy(args?: GetPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicyResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -29,14 +29,12 @@ export function getPolicy(args?: GetPolicyArgs, opts?: pulumi.InvokeOptions): Pr
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetPolicyResult> = pulumi.runtime.invoke("openstack:firewall/getPolicy:getPolicy", {
+    return pulumi.runtime.invoke("openstack:firewall/getPolicy:getPolicy", {
         "name": args.name,
         "policyId": args.policyId,
         "region": args.region,
         "tenantId": args.tenantId,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

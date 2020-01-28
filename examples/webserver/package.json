@@ -10,7 +10,7 @@
         "typescript": "^2.7.2"
     },
     "dependencies": {
-        "@pulumi/pulumi": "dev"
+        "@pulumi/pulumi": "feature-2.0"
     },
     "peerDependencies": {
         "@pulumi/openstack": "latest"

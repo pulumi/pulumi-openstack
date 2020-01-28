@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_network_v2.html.markdown.
  */
-export function getNetwork(args?: GetNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkResult> & GetNetworkResult {
+export function getNetwork(args?: GetNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -31,7 +31,7 @@ export function getNetwork(args?: GetNetworkArgs, opts?: pulumi.InvokeOptions): 
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetNetworkResult> = pulumi.runtime.invoke("openstack:networking/getNetwork:getNetwork", {
+    return pulumi.runtime.invoke("openstack:networking/getNetwork:getNetwork", {
         "description": args.description,
         "external": args.external,
         "matchingSubnetCidr": args.matchingSubnetCidr,
@@ -44,8 +44,6 @@ export function getNetwork(args?: GetNetworkArgs, opts?: pulumi.InvokeOptions): 
         "tenantId": args.tenantId,
         "transparentVlan": args.transparentVlan,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

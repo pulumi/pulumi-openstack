@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/sharedfilesystem_share_v2.html.markdown.
  */
-export function getShare(args?: GetShareArgs, opts?: pulumi.InvokeOptions): Promise<GetShareResult> & GetShareResult {
+export function getShare(args?: GetShareArgs, opts?: pulumi.InvokeOptions): Promise<GetShareResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -31,7 +31,7 @@ export function getShare(args?: GetShareArgs, opts?: pulumi.InvokeOptions): Prom
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetShareResult> = pulumi.runtime.invoke("openstack:sharedfilesystem/getShare:getShare", {
+    return pulumi.runtime.invoke("openstack:sharedfilesystem/getShare:getShare", {
         "description": args.description,
         "exportLocationPath": args.exportLocationPath,
         "isPublic": args.isPublic,
@@ -42,8 +42,6 @@ export function getShare(args?: GetShareArgs, opts?: pulumi.InvokeOptions): Prom
         "snapshotId": args.snapshotId,
         "status": args.status,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_addressscope_v2.html.markdown.
  */
-export function getAddressScope(args?: GetAddressScopeArgs, opts?: pulumi.InvokeOptions): Promise<GetAddressScopeResult> & GetAddressScopeResult {
+export function getAddressScope(args?: GetAddressScopeArgs, opts?: pulumi.InvokeOptions): Promise<GetAddressScopeResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -33,15 +33,13 @@ export function getAddressScope(args?: GetAddressScopeArgs, opts?: pulumi.Invoke
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetAddressScopeResult> = pulumi.runtime.invoke("openstack:networking/getAddressScope:getAddressScope", {
+    return pulumi.runtime.invoke("openstack:networking/getAddressScope:getAddressScope", {
         "ipVersion": args.ipVersion,
         "name": args.name,
         "projectId": args.projectId,
         "region": args.region,
         "shared": args.shared,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

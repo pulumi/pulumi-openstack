@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/keymanager_secret_v1.html.markdown.
  */
-export function getSecret(args?: GetSecretArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretResult> & GetSecretResult {
+export function getSecret(args?: GetSecretArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -18,7 +18,7 @@ export function getSecret(args?: GetSecretArgs, opts?: pulumi.InvokeOptions): Pr
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetSecretResult> = pulumi.runtime.invoke("openstack:keymanager/getSecret:getSecret", {
+    return pulumi.runtime.invoke("openstack:keymanager/getSecret:getSecret", {
         "aclOnly": args.aclOnly,
         "algorithm": args.algorithm,
         "bitLength": args.bitLength,
@@ -30,8 +30,6 @@ export function getSecret(args?: GetSecretArgs, opts?: pulumi.InvokeOptions): Pr
         "secretType": args.secretType,
         "updatedAtFilter": args.updatedAtFilter,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

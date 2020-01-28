@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_service_v3.html.markdown.
  */
-export function getService(args?: GetServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceResult> & GetServiceResult {
+export function getService(args?: GetServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -33,14 +33,12 @@ export function getService(args?: GetServiceArgs, opts?: pulumi.InvokeOptions): 
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetServiceResult> = pulumi.runtime.invoke("openstack:identity/getService:getService", {
+    return pulumi.runtime.invoke("openstack:identity/getService:getService", {
         "enabled": args.enabled,
         "name": args.name,
         "region": args.region,
         "type": args.type,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

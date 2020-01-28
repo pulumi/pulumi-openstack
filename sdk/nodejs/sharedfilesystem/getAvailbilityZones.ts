@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/sharedfilesystem_availability_zones_v2.html.markdown.
  */
-export function getAvailbilityZones(args?: GetAvailbilityZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetAvailbilityZonesResult> & GetAvailbilityZonesResult {
+export function getAvailbilityZones(args?: GetAvailbilityZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetAvailbilityZonesResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -30,11 +30,9 @@ export function getAvailbilityZones(args?: GetAvailbilityZonesArgs, opts?: pulum
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetAvailbilityZonesResult> = pulumi.runtime.invoke("openstack:sharedfilesystem/getAvailbilityZones:getAvailbilityZones", {
+    return pulumi.runtime.invoke("openstack:sharedfilesystem/getAvailbilityZones:getAvailbilityZones", {
         "region": args.region,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
