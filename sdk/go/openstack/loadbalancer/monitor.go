@@ -12,7 +12,7 @@ import (
 )
 
 // Manages a V2 monitor resource within OpenStack.
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_monitor_v2.html.markdown.
 type Monitor struct {
 	pulumi.CustomResourceState
@@ -306,3 +306,4 @@ type MonitorArgs struct {
 func (MonitorArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*monitorArgs)(nil)).Elem()
 }
+

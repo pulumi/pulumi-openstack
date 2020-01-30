@@ -9,7 +9,7 @@ import (
 )
 
 // Use this data source to get the ID of an available Shared File System share.
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/sharedfilesystem_share_v2.html.markdown.
 func LookupShare(ctx *pulumi.Context, args *LookupShareArgs, opts ...pulumi.InvokeOption) (*LookupShareResult, error) {
 	var rv LookupShareResult
@@ -34,7 +34,7 @@ type LookupShareArgs struct {
 	// strings.
 	Metadata map[string]interface{} `pulumi:"metadata"`
 	// The name of the share.
-	Name   *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
 	Region *string `pulumi:"region"`
 	// The UUID of the share's share network.
 	ShareNetworkId *string `pulumi:"shareNetworkId"`
@@ -47,6 +47,7 @@ type LookupShareArgs struct {
 	// `shrinkingPossibleDataLossError`.
 	Status *string `pulumi:"status"`
 }
+
 
 // A collection of values returned by getShare.
 type LookupShareResult struct {
@@ -83,3 +84,4 @@ type LookupShareResult struct {
 	// See Argument Reference above.
 	Status string `pulumi:"status"`
 }
+

@@ -9,7 +9,7 @@ import (
 )
 
 // Use this data source to get the ID of an available Shared File System share network.
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/sharedfilesystem_sharenetwork_v2.html.markdown.
 func LookupShareNetwork(ctx *pulumi.Context, args *LookupShareNetworkArgs, opts ...pulumi.InvokeOption) (*LookupShareNetworkResult, error) {
 	var rv LookupShareNetworkResult
@@ -46,6 +46,7 @@ type LookupShareNetworkArgs struct {
 	SegmentationId *int `pulumi:"segmentationId"`
 }
 
+
 // A collection of values returned by getShareNetwork.
 type LookupShareNetworkResult struct {
 	// See Argument Reference above.
@@ -76,3 +77,4 @@ type LookupShareNetworkResult struct {
 	// See Argument Reference above.
 	SegmentationId int `pulumi:"segmentationId"`
 }
+

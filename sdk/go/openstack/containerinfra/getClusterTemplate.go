@@ -10,7 +10,7 @@ import (
 
 // Use this data source to get the ID of an available OpenStack Magnum cluster
 // template.
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/containerinfra_clustertemplate_v1.html.markdown.
 func LookupClusterTemplate(ctx *pulumi.Context, args *LookupClusterTemplateArgs, opts ...pulumi.InvokeOption) (*LookupClusterTemplateResult, error) {
 	var rv LookupClusterTemplateResult
@@ -30,6 +30,7 @@ type LookupClusterTemplateArgs struct {
 	// If omitted, the `region` argument of the provider is used.
 	Region *string `pulumi:"region"`
 }
+
 
 // A collection of values returned by getClusterTemplate.
 type LookupClusterTemplateResult struct {
@@ -112,3 +113,4 @@ type LookupClusterTemplateResult struct {
 	// cluster nodes.
 	VolumeDriver string `pulumi:"volumeDriver"`
 }
+

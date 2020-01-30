@@ -52,6 +52,7 @@ type GetSecretArgs struct {
 	UpdatedAtFilter *string `pulumi:"updatedAtFilter"`
 }
 
+
 // A collection of values returned by getSecret.
 type GetSecretResult struct {
 	// See Argument Reference above.
@@ -100,3 +101,4 @@ type GetSecretResult struct {
 	// See Argument Reference above.
 	UpdatedAtFilter *string `pulumi:"updatedAtFilter"`
 }
+

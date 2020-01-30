@@ -12,15 +12,15 @@ import (
 )
 
 // Manages a V2 port resource within OpenStack.
-//
+// 
 // ## Notes
-//
+// 
 // ### Ports and Instances
-//
+// 
 // There are some notes to consider when connecting Instances to networks using
 // Ports. Please see the `compute.Instance` documentation for further
 // documentation.
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_port_v2.html.markdown.
 type Port struct {
 	pulumi.CustomResourceState
@@ -485,3 +485,4 @@ type PortArgs struct {
 func (PortArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*portArgs)(nil)).Elem()
 }
+

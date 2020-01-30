@@ -9,7 +9,7 @@ import (
 )
 
 // Use this data source to get the ID of an available OpenStack QoS policy.
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_qos_policy_v2.html.markdown.
 func LookupQosPolicy(ctx *pulumi.Context, args *LookupQosPolicyArgs, opts ...pulumi.InvokeOption) (*LookupQosPolicyResult, error) {
 	var rv LookupQosPolicyResult
@@ -40,6 +40,7 @@ type LookupQosPolicyArgs struct {
 	Tags []string `pulumi:"tags"`
 }
 
+
 // A collection of values returned by getQosPolicy.
 type LookupQosPolicyResult struct {
 	// The set of string tags applied on the QoS policy.
@@ -53,15 +54,16 @@ type LookupQosPolicyResult struct {
 	// See Argument Reference above.
 	IsDefault bool `pulumi:"isDefault"`
 	// See Argument Reference above.
-	Name      string `pulumi:"name"`
+	Name string `pulumi:"name"`
 	ProjectId string `pulumi:"projectId"`
 	// See Argument Reference above.
 	Region string `pulumi:"region"`
 	// The revision number of the QoS policy.
 	RevisionNumber int `pulumi:"revisionNumber"`
 	// See Argument Reference above.
-	Shared bool     `pulumi:"shared"`
-	Tags   []string `pulumi:"tags"`
+	Shared bool `pulumi:"shared"`
+	Tags []string `pulumi:"tags"`
 	// The time at which QoS policy was created.
 	UpdatedAt string `pulumi:"updatedAt"`
 }
+

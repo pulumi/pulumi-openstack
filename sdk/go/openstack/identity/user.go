@@ -11,10 +11,10 @@ import (
 )
 
 // Manages a V3 User resource within OpenStack Keystone.
-//
+// 
 // Note: You _must_ have admin privileges in your OpenStack cloud to use
 // this resource.
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/identity_user_v3.html.markdown.
 type User struct {
 	pulumi.CustomResourceState
@@ -248,3 +248,4 @@ type UserArgs struct {
 func (UserArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*userArgs)(nil)).Elem()
 }
+

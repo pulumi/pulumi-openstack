@@ -10,7 +10,7 @@ import (
 
 // Use this data source to get a list of Shared File System availability zones
 // from OpenStack
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/sharedfilesystem_availability_zones_v2.html.markdown.
 func GetAvailbilityZones(ctx *pulumi.Context, args *GetAvailbilityZonesArgs, opts ...pulumi.InvokeOption) (*GetAvailbilityZonesResult, error) {
 	var rv GetAvailbilityZonesResult
@@ -28,6 +28,7 @@ type GetAvailbilityZonesArgs struct {
 	Region *string `pulumi:"region"`
 }
 
+
 // A collection of values returned by getAvailbilityZones.
 type GetAvailbilityZonesResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
@@ -37,3 +38,4 @@ type GetAvailbilityZonesResult struct {
 	// See Argument Reference above.
 	Region string `pulumi:"region"`
 }
+

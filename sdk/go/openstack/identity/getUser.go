@@ -9,7 +9,7 @@ import (
 )
 
 // Use this data source to get the ID of an OpenStack user.
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_user_v3.html.markdown.
 func LookupUser(ctx *pulumi.Context, args *LookupUserArgs, opts ...pulumi.InvokeOption) (*LookupUserResult, error) {
 	var rv LookupUserResult
@@ -35,10 +35,11 @@ type LookupUserArgs struct {
 	PasswordExpiresAt *string `pulumi:"passwordExpiresAt"`
 	// The protocol ID of the user.
 	ProtocolId *string `pulumi:"protocolId"`
-	Region     *string `pulumi:"region"`
+	Region *string `pulumi:"region"`
 	// The unique ID of the user.
 	UniqueId *string `pulumi:"uniqueId"`
 }
+
 
 // A collection of values returned by getUser.
 type LookupUserResult struct {
@@ -65,3 +66,4 @@ type LookupUserResult struct {
 	// See Argument Reference above.
 	UniqueId *string `pulumi:"uniqueId"`
 }
+

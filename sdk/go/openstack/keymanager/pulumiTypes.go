@@ -67,7 +67,7 @@ func (i ContainerV1ConsumerArray) ToContainerV1ConsumerArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerV1ConsumerArrayOutput)
 }
 
-type ContainerV1ConsumerOutput struct{ *pulumi.OutputState }
+type ContainerV1ConsumerOutput struct { *pulumi.OutputState }
 
 func (ContainerV1ConsumerOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ContainerV1Consumer)(nil)).Elem()
@@ -84,15 +84,15 @@ func (o ContainerV1ConsumerOutput) ToContainerV1ConsumerOutputWithContext(ctx co
 // Human-readable name for the Container. Does not have
 // to be unique.
 func (o ContainerV1ConsumerOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ContainerV1Consumer) *string { return v.Name }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func (v ContainerV1Consumer) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // The consumer URL.
 func (o ContainerV1ConsumerOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ContainerV1Consumer) *string { return v.Url }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func (v ContainerV1Consumer) *string { return v.Url }).(pulumi.StringPtrOutput)
 }
 
-type ContainerV1ConsumerArrayOutput struct{ *pulumi.OutputState }
+type ContainerV1ConsumerArrayOutput struct { *pulumi.OutputState}
 
 func (ContainerV1ConsumerArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ContainerV1Consumer)(nil)).Elem()
@@ -107,7 +107,7 @@ func (o ContainerV1ConsumerArrayOutput) ToContainerV1ConsumerArrayOutputWithCont
 }
 
 func (o ContainerV1ConsumerArrayOutput) Index(i pulumi.IntInput) ContainerV1ConsumerOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContainerV1Consumer {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ContainerV1Consumer {
 		return vs[0].([]ContainerV1Consumer)[vs[1].(int)]
 	}).(ContainerV1ConsumerOutput)
 }
@@ -115,8 +115,8 @@ func (o ContainerV1ConsumerArrayOutput) Index(i pulumi.IntInput) ContainerV1Cons
 type ContainerV1SecretRef struct {
 	// Human-readable name for the Container. Does not have
 	// to be unique.
-	Name      *string `pulumi:"name"`
-	SecretRef string  `pulumi:"secretRef"`
+	Name *string `pulumi:"name"`
+	SecretRef string `pulumi:"secretRef"`
 }
 
 type ContainerV1SecretRefInput interface {
@@ -129,8 +129,8 @@ type ContainerV1SecretRefInput interface {
 type ContainerV1SecretRefArgs struct {
 	// Human-readable name for the Container. Does not have
 	// to be unique.
-	Name      pulumi.StringPtrInput `pulumi:"name"`
-	SecretRef pulumi.StringInput    `pulumi:"secretRef"`
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	SecretRef pulumi.StringInput `pulumi:"secretRef"`
 }
 
 func (ContainerV1SecretRefArgs) ElementType() reflect.Type {
@@ -166,7 +166,7 @@ func (i ContainerV1SecretRefArray) ToContainerV1SecretRefArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerV1SecretRefArrayOutput)
 }
 
-type ContainerV1SecretRefOutput struct{ *pulumi.OutputState }
+type ContainerV1SecretRefOutput struct { *pulumi.OutputState }
 
 func (ContainerV1SecretRefOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ContainerV1SecretRef)(nil)).Elem()
@@ -183,14 +183,14 @@ func (o ContainerV1SecretRefOutput) ToContainerV1SecretRefOutputWithContext(ctx 
 // Human-readable name for the Container. Does not have
 // to be unique.
 func (o ContainerV1SecretRefOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ContainerV1SecretRef) *string { return v.Name }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func (v ContainerV1SecretRef) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 func (o ContainerV1SecretRefOutput) SecretRef() pulumi.StringOutput {
-	return o.ApplyT(func(v ContainerV1SecretRef) string { return v.SecretRef }).(pulumi.StringOutput)
+	return o.ApplyT(func (v ContainerV1SecretRef) string { return v.SecretRef }).(pulumi.StringOutput)
 }
 
-type ContainerV1SecretRefArrayOutput struct{ *pulumi.OutputState }
+type ContainerV1SecretRefArrayOutput struct { *pulumi.OutputState}
 
 func (ContainerV1SecretRefArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ContainerV1SecretRef)(nil)).Elem()
@@ -205,7 +205,7 @@ func (o ContainerV1SecretRefArrayOutput) ToContainerV1SecretRefArrayOutputWithCo
 }
 
 func (o ContainerV1SecretRefArrayOutput) Index(i pulumi.IntInput) ContainerV1SecretRefOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContainerV1SecretRef {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ContainerV1SecretRef {
 		return vs[0].([]ContainerV1SecretRef)[vs[1].(int)]
 	}).(ContainerV1SecretRefOutput)
 }
@@ -264,7 +264,7 @@ func (i GetContainerConsumerArray) ToGetContainerConsumerArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetContainerConsumerArrayOutput)
 }
 
-type GetContainerConsumerOutput struct{ *pulumi.OutputState }
+type GetContainerConsumerOutput struct { *pulumi.OutputState }
 
 func (GetContainerConsumerOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetContainerConsumer)(nil)).Elem()
@@ -280,15 +280,15 @@ func (o GetContainerConsumerOutput) ToGetContainerConsumerOutputWithContext(ctx 
 
 // The Container name.
 func (o GetContainerConsumerOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetContainerConsumer) *string { return v.Name }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func (v GetContainerConsumer) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // The consumer URL.
 func (o GetContainerConsumerOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetContainerConsumer) *string { return v.Url }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func (v GetContainerConsumer) *string { return v.Url }).(pulumi.StringPtrOutput)
 }
 
-type GetContainerConsumerArrayOutput struct{ *pulumi.OutputState }
+type GetContainerConsumerArrayOutput struct { *pulumi.OutputState}
 
 func (GetContainerConsumerArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetContainerConsumer)(nil)).Elem()
@@ -303,7 +303,7 @@ func (o GetContainerConsumerArrayOutput) ToGetContainerConsumerArrayOutputWithCo
 }
 
 func (o GetContainerConsumerArrayOutput) Index(i pulumi.IntInput) GetContainerConsumerOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetContainerConsumer {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetContainerConsumer {
 		return vs[0].([]GetContainerConsumer)[vs[1].(int)]
 	}).(GetContainerConsumerOutput)
 }
@@ -362,7 +362,7 @@ func (i GetContainerSecretRefArray) ToGetContainerSecretRefArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetContainerSecretRefArrayOutput)
 }
 
-type GetContainerSecretRefOutput struct{ *pulumi.OutputState }
+type GetContainerSecretRefOutput struct { *pulumi.OutputState }
 
 func (GetContainerSecretRefOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetContainerSecretRef)(nil)).Elem()
@@ -378,15 +378,15 @@ func (o GetContainerSecretRefOutput) ToGetContainerSecretRefOutputWithContext(ct
 
 // The Container name.
 func (o GetContainerSecretRefOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetContainerSecretRef) *string { return v.Name }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func (v GetContainerSecretRef) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // The secret reference / where to find the secret, URL.
 func (o GetContainerSecretRefOutput) SecretRef() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetContainerSecretRef) *string { return v.SecretRef }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func (v GetContainerSecretRef) *string { return v.SecretRef }).(pulumi.StringPtrOutput)
 }
 
-type GetContainerSecretRefArrayOutput struct{ *pulumi.OutputState }
+type GetContainerSecretRefArrayOutput struct { *pulumi.OutputState}
 
 func (GetContainerSecretRefArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetContainerSecretRef)(nil)).Elem()
@@ -401,7 +401,7 @@ func (o GetContainerSecretRefArrayOutput) ToGetContainerSecretRefArrayOutputWith
 }
 
 func (o GetContainerSecretRefArrayOutput) Index(i pulumi.IntInput) GetContainerSecretRefOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetContainerSecretRef {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetContainerSecretRef {
 		return vs[0].([]GetContainerSecretRef)[vs[1].(int)]
 	}).(GetContainerSecretRefOutput)
 }

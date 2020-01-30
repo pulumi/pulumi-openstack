@@ -9,9 +9,9 @@ import (
 )
 
 // Use this data source to get the ID of an OpenStack endpoint.
-//
+// 
 // > **Note:** This usually requires admin privileges.
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_endpoint_v3.html.markdown.
 func GetEndpoint(ctx *pulumi.Context, args *GetEndpointArgs, opts ...pulumi.InvokeOption) (*GetEndpointResult, error) {
 	var rv GetEndpointResult
@@ -43,6 +43,7 @@ type GetEndpointArgs struct {
 	ServiceType *string `pulumi:"serviceType"`
 }
 
+
 // A collection of values returned by getEndpoint.
 type GetEndpointResult struct {
 	// See Argument Reference above.
@@ -64,3 +65,4 @@ type GetEndpointResult struct {
 	// The endpoint URL.
 	Url string `pulumi:"url"`
 }
+

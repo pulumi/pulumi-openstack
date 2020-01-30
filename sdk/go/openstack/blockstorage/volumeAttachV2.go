@@ -14,17 +14,17 @@ import (
 // This resource is experimental and may be removed in the future! Feedback
 // is requested if you find this resource useful or if you find any problems
 // with it.
-//
+// 
 // Creates a general purpose attachment connection to a Block
 // Storage volume using the OpenStack Block Storage (Cinder) v2 API.
 // Depending on your Block Storage service configuration, this
 // resource can assist in attaching a volume to a non-OpenStack resource
 // such as a bare-metal server or a remote virtual machine in a
 // different cloud provider.
-//
+// 
 // This does not actually attach a volume to an instance. Please use
 // the `compute.VolumeAttach` resource for that.
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/blockstorage_volume_attach_v2.html.markdown.
 type VolumeAttachV2 struct {
 	pulumi.CustomResourceState
@@ -268,3 +268,4 @@ type VolumeAttachV2Args struct {
 func (VolumeAttachV2Args) ElementType() reflect.Type {
 	return reflect.TypeOf((*volumeAttachV2Args)(nil)).Elem()
 }
+

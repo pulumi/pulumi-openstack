@@ -11,7 +11,7 @@ import (
 )
 
 // Manages a V2 router resource within OpenStack.
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_router_v2.html.markdown.
 type Router struct {
 	pulumi.CustomResourceState
@@ -23,7 +23,7 @@ type Router struct {
 	// The collection of tags assigned on the router, which have been
 	// explicitly and implicitly added.
 	AllTags pulumi.StringArrayOutput `pulumi:"allTags"`
-	// An availability zone is used to make
+	// An availability zone is used to make 
 	// network resources highly available. Used for resources with high availability so that they are scheduled on different availability zones. Changing
 	// this creates a new router.
 	AvailabilityZoneHints pulumi.StringArrayOutput `pulumi:"availabilityZoneHints"`
@@ -110,7 +110,7 @@ type routerState struct {
 	// The collection of tags assigned on the router, which have been
 	// explicitly and implicitly added.
 	AllTags []string `pulumi:"allTags"`
-	// An availability zone is used to make
+	// An availability zone is used to make 
 	// network resources highly available. Used for resources with high availability so that they are scheduled on different availability zones. Changing
 	// this creates a new router.
 	AvailabilityZoneHints []string `pulumi:"availabilityZoneHints"`
@@ -170,7 +170,7 @@ type RouterState struct {
 	// The collection of tags assigned on the router, which have been
 	// explicitly and implicitly added.
 	AllTags pulumi.StringArrayInput
-	// An availability zone is used to make
+	// An availability zone is used to make 
 	// network resources highly available. Used for resources with high availability so that they are scheduled on different availability zones. Changing
 	// this creates a new router.
 	AvailabilityZoneHints pulumi.StringArrayInput
@@ -231,7 +231,7 @@ type routerArgs struct {
 	// (must be "true" or "false" if provided). Changing this updates the
 	// `adminStateUp` of an existing router.
 	AdminStateUp *bool `pulumi:"adminStateUp"`
-	// An availability zone is used to make
+	// An availability zone is used to make 
 	// network resources highly available. Used for resources with high availability so that they are scheduled on different availability zones. Changing
 	// this creates a new router.
 	AvailabilityZoneHints []string `pulumi:"availabilityZoneHints"`
@@ -289,7 +289,7 @@ type RouterArgs struct {
 	// (must be "true" or "false" if provided). Changing this updates the
 	// `adminStateUp` of an existing router.
 	AdminStateUp pulumi.BoolPtrInput
-	// An availability zone is used to make
+	// An availability zone is used to make 
 	// network resources highly available. Used for resources with high availability so that they are scheduled on different availability zones. Changing
 	// this creates a new router.
 	AvailabilityZoneHints pulumi.StringArrayInput
@@ -344,3 +344,4 @@ type RouterArgs struct {
 func (RouterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*routerArgs)(nil)).Elem()
 }
+

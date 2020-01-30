@@ -9,7 +9,7 @@ import (
 )
 
 // Use this data source to get the ID of an available OpenStack floating IP.
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_floatingip_v2.html.markdown.
 func LookupFloatingIp(ctx *pulumi.Context, args *LookupFloatingIpArgs, opts ...pulumi.InvokeOption) (*LookupFloatingIpResult, error) {
 	var rv LookupFloatingIpResult
@@ -44,25 +44,27 @@ type LookupFloatingIpArgs struct {
 	TenantId *string `pulumi:"tenantId"`
 }
 
+
 // A collection of values returned by getFloatingIp.
 type LookupFloatingIpResult struct {
 	Address *string `pulumi:"address"`
 	// A set of string tags applied on the floating IP.
-	AllTags     []string `pulumi:"allTags"`
-	Description *string  `pulumi:"description"`
+	AllTags []string `pulumi:"allTags"`
+	Description *string `pulumi:"description"`
 	// The floating IP DNS domain. Available, when Neutron DNS
 	// extension is enabled.
 	DnsDomain string `pulumi:"dnsDomain"`
 	// The floating IP DNS name. Available, when Neutron DNS extension
 	// is enabled.
-	DnsName string  `pulumi:"dnsName"`
+	DnsName string `pulumi:"dnsName"`
 	FixedIp *string `pulumi:"fixedIp"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id       string   `pulumi:"id"`
-	Pool     *string  `pulumi:"pool"`
-	PortId   *string  `pulumi:"portId"`
-	Region   *string  `pulumi:"region"`
-	Status   *string  `pulumi:"status"`
-	Tags     []string `pulumi:"tags"`
-	TenantId *string  `pulumi:"tenantId"`
+	Id string `pulumi:"id"`
+	Pool *string `pulumi:"pool"`
+	PortId *string `pulumi:"portId"`
+	Region *string `pulumi:"region"`
+	Status *string `pulumi:"status"`
+	Tags []string `pulumi:"tags"`
+	TenantId *string `pulumi:"tenantId"`
 }
+

@@ -11,7 +11,7 @@ import (
 )
 
 // Manages a V2 Neutron QoS policy resource within OpenStack.
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_qos_policy_v2.html.markdown.
 type QosPolicy struct {
 	pulumi.CustomResourceState
@@ -222,3 +222,4 @@ type QosPolicyArgs struct {
 func (QosPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*qosPolicyArgs)(nil)).Elem()
 }
+

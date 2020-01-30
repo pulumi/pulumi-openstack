@@ -9,9 +9,9 @@ import (
 )
 
 // Use this data source to get the ID of an OpenStack service.
-//
+// 
 // > **Note:** This usually requires admin privileges.
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_service_v3.html.markdown.
 func GetService(ctx *pulumi.Context, args *GetServiceArgs, opts ...pulumi.InvokeOption) (*GetServiceResult, error) {
 	var rv GetServiceResult
@@ -35,6 +35,7 @@ type GetServiceArgs struct {
 	Type *string `pulumi:"type"`
 }
 
+
 // A collection of values returned by getService.
 type GetServiceResult struct {
 	// The service description.
@@ -50,3 +51,4 @@ type GetServiceResult struct {
 	// See Argument Reference above.
 	Type *string `pulumi:"type"`
 }
+

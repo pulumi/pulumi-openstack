@@ -9,7 +9,7 @@ import (
 )
 
 // Use this data source to get the ID of an OpenStack project.
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_project_v3.html.markdown.
 func LookupProject(ctx *pulumi.Context, args *LookupProjectArgs, opts ...pulumi.InvokeOption) (*LookupProjectResult, error) {
 	var rv LookupProjectResult
@@ -34,8 +34,9 @@ type LookupProjectArgs struct {
 	Name *string `pulumi:"name"`
 	// The parent of this project.
 	ParentId *string `pulumi:"parentId"`
-	Region   *string `pulumi:"region"`
+	Region *string `pulumi:"region"`
 }
+
 
 // A collection of values returned by getProject.
 type LookupProjectResult struct {
@@ -56,3 +57,4 @@ type LookupProjectResult struct {
 	// The region the project is located in.
 	Region string `pulumi:"region"`
 }
+

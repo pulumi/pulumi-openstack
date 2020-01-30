@@ -11,7 +11,7 @@ import (
 )
 
 // Manages a v1 firewall policy resource within OpenStack.
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/fw_policy_v1.html.markdown.
 type Policy struct {
 	pulumi.CustomResourceState
@@ -42,8 +42,8 @@ type Policy struct {
 	// can be used in, firewalls in other tenants. Changing this updates the
 	// `shared` status of an existing firewall policy. Only administrative users
 	// can specify if the policy should be shared.
-	Shared   pulumi.BoolPtrOutput `pulumi:"shared"`
-	TenantId pulumi.StringOutput  `pulumi:"tenantId"`
+	Shared pulumi.BoolPtrOutput `pulumi:"shared"`
+	TenantId pulumi.StringOutput `pulumi:"tenantId"`
 	// Map of additional options.
 	ValueSpecs pulumi.MapOutput `pulumi:"valueSpecs"`
 }
@@ -102,7 +102,7 @@ type policyState struct {
 	// can be used in, firewalls in other tenants. Changing this updates the
 	// `shared` status of an existing firewall policy. Only administrative users
 	// can specify if the policy should be shared.
-	Shared   *bool   `pulumi:"shared"`
+	Shared *bool `pulumi:"shared"`
 	TenantId *string `pulumi:"tenantId"`
 	// Map of additional options.
 	ValueSpecs map[string]interface{} `pulumi:"valueSpecs"`
@@ -135,7 +135,7 @@ type PolicyState struct {
 	// can be used in, firewalls in other tenants. Changing this updates the
 	// `shared` status of an existing firewall policy. Only administrative users
 	// can specify if the policy should be shared.
-	Shared   pulumi.BoolPtrInput
+	Shared pulumi.BoolPtrInput
 	TenantId pulumi.StringPtrInput
 	// Map of additional options.
 	ValueSpecs pulumi.MapInput
@@ -172,7 +172,7 @@ type policyArgs struct {
 	// can be used in, firewalls in other tenants. Changing this updates the
 	// `shared` status of an existing firewall policy. Only administrative users
 	// can specify if the policy should be shared.
-	Shared   *bool   `pulumi:"shared"`
+	Shared *bool `pulumi:"shared"`
 	TenantId *string `pulumi:"tenantId"`
 	// Map of additional options.
 	ValueSpecs map[string]interface{} `pulumi:"valueSpecs"`
@@ -206,7 +206,7 @@ type PolicyArgs struct {
 	// can be used in, firewalls in other tenants. Changing this updates the
 	// `shared` status of an existing firewall policy. Only administrative users
 	// can specify if the policy should be shared.
-	Shared   pulumi.BoolPtrInput
+	Shared pulumi.BoolPtrInput
 	TenantId pulumi.StringPtrInput
 	// Map of additional options.
 	ValueSpecs pulumi.MapInput
@@ -215,3 +215,4 @@ type PolicyArgs struct {
 func (PolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*policyArgs)(nil)).Elem()
 }
+

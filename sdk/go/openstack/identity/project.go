@@ -11,10 +11,10 @@ import (
 )
 
 // Manages a V3 Project resource within OpenStack Keystone.
-//
+// 
 // Note: You _must_ have admin privileges in your OpenStack cloud to use
 // this resource.
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/identity_project_v3.html.markdown.
 type Project struct {
 	pulumi.CustomResourceState
@@ -158,3 +158,4 @@ type ProjectArgs struct {
 func (ProjectArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectArgs)(nil)).Elem()
 }
+

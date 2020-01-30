@@ -9,7 +9,7 @@ import (
 )
 
 // Use this data source to get firewall policy information of an available OpenStack firewall policy.
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/fw_policy_v1.html.markdown.
 func LookupPolicy(ctx *pulumi.Context, args *LookupPolicyArgs, opts ...pulumi.InvokeOption) (*LookupPolicyResult, error) {
 	var rv LookupPolicyResult
@@ -34,6 +34,7 @@ type LookupPolicyArgs struct {
 	TenantId *string `pulumi:"tenantId"`
 }
 
+
 // A collection of values returned by getPolicy.
 type LookupPolicyResult struct {
 	// The audit status of the firewall policy.
@@ -55,3 +56,4 @@ type LookupPolicyResult struct {
 	// See Argument Reference above.
 	TenantId string `pulumi:"tenantId"`
 }
+

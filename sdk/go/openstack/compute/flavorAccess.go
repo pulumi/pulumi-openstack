@@ -12,12 +12,12 @@ import (
 )
 
 // Manages a project access for flavor V2 resource within OpenStack.
-//
+// 
 // Note: You _must_ have admin privileges in your OpenStack cloud to use
 // this resource.
-//
+// 
 // ---
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_flavor_access_v2.html.markdown.
 type FlavorAccess struct {
 	pulumi.CustomResourceState
@@ -122,3 +122,4 @@ type FlavorAccessArgs struct {
 func (FlavorAccessArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*flavorAccessArgs)(nil)).Elem()
 }
+

@@ -12,13 +12,13 @@ import (
 )
 
 // Use this resource to generate an OpenStack Object Storage temporary URL.
-//
+// 
 // The temporary URL will be valid for as long as TTL is set to (in seconds).
 // Once the URL has expired, it will no longer be valid, but the resource
 // will remain in place. If you wish to automatically regenerate a URL, set
 // the `regenerate` argument to `true`. This will create a new resource with
 // a new ID and URL.
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/objectstorage_tempurl_v1.html.markdown.
 type TempUrl struct {
 	pulumi.CustomResourceState
@@ -35,8 +35,8 @@ type TempUrl struct {
 	// ID and new URL. Defaults to false.
 	Regenerate pulumi.BoolPtrOutput `pulumi:"regenerate"`
 	// The region the tempurl is located in.
-	Region pulumi.StringOutput    `pulumi:"region"`
-	Split  pulumi.StringPtrOutput `pulumi:"split"`
+	Region pulumi.StringOutput `pulumi:"region"`
+	Split pulumi.StringPtrOutput `pulumi:"split"`
 	// The TTL, in seconds, for the URL. For how long it should
 	// be valid.
 	Ttl pulumi.IntOutput `pulumi:"ttl"`
@@ -94,7 +94,7 @@ type tempUrlState struct {
 	Regenerate *bool `pulumi:"regenerate"`
 	// The region the tempurl is located in.
 	Region *string `pulumi:"region"`
-	Split  *string `pulumi:"split"`
+	Split *string `pulumi:"split"`
 	// The TTL, in seconds, for the URL. For how long it should
 	// be valid.
 	Ttl *int `pulumi:"ttl"`
@@ -116,7 +116,7 @@ type TempUrlState struct {
 	Regenerate pulumi.BoolPtrInput
 	// The region the tempurl is located in.
 	Region pulumi.StringPtrInput
-	Split  pulumi.StringPtrInput
+	Split pulumi.StringPtrInput
 	// The TTL, in seconds, for the URL. For how long it should
 	// be valid.
 	Ttl pulumi.IntPtrInput
@@ -142,7 +142,7 @@ type tempUrlArgs struct {
 	Regenerate *bool `pulumi:"regenerate"`
 	// The region the tempurl is located in.
 	Region *string `pulumi:"region"`
-	Split  *string `pulumi:"split"`
+	Split *string `pulumi:"split"`
 	// The TTL, in seconds, for the URL. For how long it should
 	// be valid.
 	Ttl int `pulumi:"ttl"`
@@ -163,7 +163,7 @@ type TempUrlArgs struct {
 	Regenerate pulumi.BoolPtrInput
 	// The region the tempurl is located in.
 	Region pulumi.StringPtrInput
-	Split  pulumi.StringPtrInput
+	Split pulumi.StringPtrInput
 	// The TTL, in seconds, for the URL. For how long it should
 	// be valid.
 	Ttl pulumi.IntInput
@@ -172,3 +172,4 @@ type TempUrlArgs struct {
 func (TempUrlArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*tempUrlArgs)(nil)).Elem()
 }
+

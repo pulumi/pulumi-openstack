@@ -12,13 +12,13 @@ import (
 )
 
 // Creates a routing entry on a OpenStack V2 router.
-//
+// 
 // ## Notes
-//
+// 
 // The `nextHop` IP address must be directly reachable from the router at the ``networking.RouterRoute``
 // resource creation time.  You can ensure that by explicitly specifying a dependency on the ``networking.RouterInterface``
 // resource that connects the next hop to the router, as in the example above.
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_router_route_v2.html.markdown.
 type RouterRoute struct {
 	pulumi.CustomResourceState
@@ -151,3 +151,4 @@ type RouterRouteArgs struct {
 func (RouterRouteArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*routerRouteArgs)(nil)).Elem()
 }
+

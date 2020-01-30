@@ -12,7 +12,7 @@ import (
 )
 
 // Manages a V2 volume resource within OpenStack.
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/blockstorage_volume_v2.html.markdown.
 type VolumeV2 struct {
 	pulumi.CustomResourceState
@@ -261,3 +261,4 @@ type VolumeV2Args struct {
 func (VolumeV2Args) ElementType() reflect.Type {
 	return reflect.TypeOf((*volumeV2Args)(nil)).Elem()
 }
+

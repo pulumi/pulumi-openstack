@@ -9,7 +9,7 @@ import (
 )
 
 // Use this data source to get the ID of an available OpenStack network.
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_network_v2.html.markdown.
 func LookupNetwork(ctx *pulumi.Context, args *LookupNetworkArgs, opts ...pulumi.InvokeOption) (*LookupNetworkResult, error) {
 	var rv LookupNetworkResult
@@ -50,6 +50,7 @@ type LookupNetworkArgs struct {
 	TransparentVlan *bool `pulumi:"transparentVlan"`
 }
 
+
 // A collection of values returned by getNetwork.
 type LookupNetworkResult struct {
 	// The administrative state of the network.
@@ -66,21 +67,22 @@ type LookupNetworkResult struct {
 	// See Argument Reference above.
 	External *bool `pulumi:"external"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id                 string  `pulumi:"id"`
+	Id string `pulumi:"id"`
 	MatchingSubnetCidr *string `pulumi:"matchingSubnetCidr"`
 	// See Argument Reference above.
 	Mtu *int `pulumi:"mtu"`
 	// See Argument Reference above.
-	Name      *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
 	NetworkId *string `pulumi:"networkId"`
 	// See Argument Reference above.
 	Region string `pulumi:"region"`
 	// Specifies whether the network resource can be accessed by any
 	// tenant or not.
-	Shared   string   `pulumi:"shared"`
-	Status   *string  `pulumi:"status"`
-	Tags     []string `pulumi:"tags"`
-	TenantId *string  `pulumi:"tenantId"`
+	Shared string `pulumi:"shared"`
+	Status *string `pulumi:"status"`
+	Tags []string `pulumi:"tags"`
+	TenantId *string `pulumi:"tenantId"`
 	// See Argument Reference above.
 	TransparentVlan *bool `pulumi:"transparentVlan"`
 }
+

@@ -12,7 +12,7 @@ import (
 )
 
 // Manages a V1 load balancer vip resource within OpenStack.
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_vip_v1.html.markdown.
 type Vip struct {
 	pulumi.CustomResourceState
@@ -314,3 +314,4 @@ type VipArgs struct {
 func (VipArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*vipArgs)(nil)).Elem()
 }
+

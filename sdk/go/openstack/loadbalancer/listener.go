@@ -12,7 +12,7 @@ import (
 )
 
 // Manages a V2 listener resource within OpenStack.
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_listener_v2.html.markdown.
 type Listener struct {
 	pulumi.CustomResourceState
@@ -340,3 +340,4 @@ type ListenerArgs struct {
 func (ListenerArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*listenerArgs)(nil)).Elem()
 }
+

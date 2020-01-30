@@ -9,7 +9,7 @@ import (
 )
 
 // Use this data source to get the ID of an available Barbican container.
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/keymanager_container_v1.html.markdown.
 func GetContainer(ctx *pulumi.Context, args *GetContainerArgs, opts ...pulumi.InvokeOption) (*GetContainerResult, error) {
 	var rv GetContainerResult
@@ -29,6 +29,7 @@ type GetContainerArgs struct {
 	// argument of the provider is used.
 	Region *string `pulumi:"region"`
 }
+
 
 // A collection of values returned by getContainer.
 type GetContainerResult struct {
@@ -57,3 +58,4 @@ type GetContainerResult struct {
 	// The date the container was last updated.
 	UpdatedAt string `pulumi:"updatedAt"`
 }
+

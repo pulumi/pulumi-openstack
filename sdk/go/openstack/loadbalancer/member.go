@@ -12,7 +12,7 @@ import (
 )
 
 // Manages a V2 member resource within OpenStack.
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_member_v2.html.markdown.
 type Member struct {
 	pulumi.CustomResourceState
@@ -225,3 +225,4 @@ type MemberArgs struct {
 func (MemberArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*memberArgs)(nil)).Elem()
 }
+

@@ -12,10 +12,10 @@ import (
 )
 
 // Manages a V3 Role assignment within OpenStack Keystone.
-//
+// 
 // Note: You _must_ have admin privileges in your OpenStack cloud to use
 // this resource.
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/identity_role_assignment_v3.html.markdown.
 type RoleAssignment struct {
 	pulumi.CustomResourceState
@@ -26,7 +26,7 @@ type RoleAssignment struct {
 	GroupId pulumi.StringPtrOutput `pulumi:"groupId"`
 	// The project to assign the role in.
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
-	Region    pulumi.StringOutput    `pulumi:"region"`
+	Region pulumi.StringOutput `pulumi:"region"`
 	// The role to assign.
 	RoleId pulumi.StringOutput `pulumi:"roleId"`
 	// The user to assign the role to.
@@ -70,7 +70,7 @@ type roleAssignmentState struct {
 	GroupId *string `pulumi:"groupId"`
 	// The project to assign the role in.
 	ProjectId *string `pulumi:"projectId"`
-	Region    *string `pulumi:"region"`
+	Region *string `pulumi:"region"`
 	// The role to assign.
 	RoleId *string `pulumi:"roleId"`
 	// The user to assign the role to.
@@ -84,7 +84,7 @@ type RoleAssignmentState struct {
 	GroupId pulumi.StringPtrInput
 	// The project to assign the role in.
 	ProjectId pulumi.StringPtrInput
-	Region    pulumi.StringPtrInput
+	Region pulumi.StringPtrInput
 	// The role to assign.
 	RoleId pulumi.StringPtrInput
 	// The user to assign the role to.
@@ -102,7 +102,7 @@ type roleAssignmentArgs struct {
 	GroupId *string `pulumi:"groupId"`
 	// The project to assign the role in.
 	ProjectId *string `pulumi:"projectId"`
-	Region    *string `pulumi:"region"`
+	Region *string `pulumi:"region"`
 	// The role to assign.
 	RoleId string `pulumi:"roleId"`
 	// The user to assign the role to.
@@ -117,7 +117,7 @@ type RoleAssignmentArgs struct {
 	GroupId pulumi.StringPtrInput
 	// The project to assign the role in.
 	ProjectId pulumi.StringPtrInput
-	Region    pulumi.StringPtrInput
+	Region pulumi.StringPtrInput
 	// The role to assign.
 	RoleId pulumi.StringInput
 	// The user to assign the role to.
@@ -127,3 +127,4 @@ type RoleAssignmentArgs struct {
 func (RoleAssignmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*roleAssignmentArgs)(nil)).Elem()
 }
+

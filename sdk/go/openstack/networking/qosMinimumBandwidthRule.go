@@ -12,7 +12,7 @@ import (
 )
 
 // Manages a V2 Neutron QoS minimum bandwidth rule resource within OpenStack.
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_qos_minimum_bandwidth_rule_v2.html.markdown.
 type QosMinimumBandwidthRule struct {
 	pulumi.CustomResourceState
@@ -132,3 +132,4 @@ type QosMinimumBandwidthRuleArgs struct {
 func (QosMinimumBandwidthRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*qosMinimumBandwidthRuleArgs)(nil)).Elem()
 }
+

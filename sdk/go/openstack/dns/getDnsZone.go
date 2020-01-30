@@ -9,7 +9,7 @@ import (
 )
 
 // Use this data source to get the ID of an available OpenStack DNS zone.
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/dns_zone_v2.html.markdown.
 func GetDnsZone(ctx *pulumi.Context, args *GetDnsZoneArgs, opts ...pulumi.InvokeOption) (*GetDnsZoneResult, error) {
 	var rv GetDnsZoneResult
@@ -23,31 +23,32 @@ func GetDnsZone(ctx *pulumi.Context, args *GetDnsZoneArgs, opts ...pulumi.Invoke
 // A collection of arguments for invoking getDnsZone.
 type GetDnsZoneArgs struct {
 	Attributes map[string]interface{} `pulumi:"attributes"`
-	CreatedAt  *string                `pulumi:"createdAt"`
+	CreatedAt *string `pulumi:"createdAt"`
 	// A description of the zone.
 	Description *string `pulumi:"description"`
 	// The email contact for the zone record.
-	Email   *string  `pulumi:"email"`
+	Email *string `pulumi:"email"`
 	Masters []string `pulumi:"masters"`
 	// The name of the zone.
-	Name      *string `pulumi:"name"`
-	PoolId    *string `pulumi:"poolId"`
+	Name *string `pulumi:"name"`
+	PoolId *string `pulumi:"poolId"`
 	ProjectId *string `pulumi:"projectId"`
 	// The region in which to obtain the V2 DNS client.
 	// A DNS client is needed to retrieve zone ids. If omitted, the
 	// `region` argument of the provider is used.
 	Region *string `pulumi:"region"`
-	Serial *int    `pulumi:"serial"`
+	Serial *int `pulumi:"serial"`
 	// The zone's status.
-	Status        *string `pulumi:"status"`
+	Status *string `pulumi:"status"`
 	TransferredAt *string `pulumi:"transferredAt"`
 	// The time to live (TTL) of the zone.
 	Ttl *int `pulumi:"ttl"`
 	// The type of the zone. Can either be `PRIMARY` or `SECONDARY`.
-	Type      *string `pulumi:"type"`
+	Type *string `pulumi:"type"`
 	UpdatedAt *string `pulumi:"updatedAt"`
-	Version   *int    `pulumi:"version"`
+	Version *int `pulumi:"version"`
 }
+
 
 // A collection of values returned by getDnsZone.
 type GetDnsZoneResult struct {
@@ -86,3 +87,4 @@ type GetDnsZoneResult struct {
 	// The version of the zone.
 	Version int `pulumi:"version"`
 }
+

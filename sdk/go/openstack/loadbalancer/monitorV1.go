@@ -12,7 +12,7 @@ import (
 )
 
 // Manages a V1 load balancer monitor resource within OpenStack.
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_monitor_v1.html.markdown.
 type MonitorV1 struct {
 	pulumi.CustomResourceState
@@ -278,3 +278,4 @@ type MonitorV1Args struct {
 func (MonitorV1Args) ElementType() reflect.Type {
 	return reflect.TypeOf((*monitorV1Args)(nil)).Elem()
 }
+

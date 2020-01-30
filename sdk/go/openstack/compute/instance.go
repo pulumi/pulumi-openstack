@@ -11,20 +11,20 @@ import (
 )
 
 // Manages a V2 VM instance resource within OpenStack.
-//
+// 
 // ## Importing instances
-//
+// 
 // Importing instances can be tricky, since the nova api does not offer all
 // information provided at creation time for later retrieval.
 // Network interface attachment order, and number and sizes of ephemeral
 // disks are examples of this.
-//
+// 
 // ### Importing an instance with multiple emphemeral disks
-//
+// 
 // The importer cannot read the emphemeral disk configuration
-// of an instance, so just specify imageId as in the configuration
+// of an instance, so just specify imageId as in the configuration 
 // of the basic instance example.
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_instance_v2.html.markdown.
 type Instance struct {
 	pulumi.CustomResourceState
@@ -35,8 +35,8 @@ type Instance struct {
 	AccessIpV6 pulumi.StringOutput `pulumi:"accessIpV6"`
 	// The administrative password to assign to the server.
 	// Changing this changes the root password on the existing server.
-	AdminPass   pulumi.StringPtrOutput `pulumi:"adminPass"`
-	AllMetadata pulumi.MapOutput       `pulumi:"allMetadata"`
+	AdminPass pulumi.StringPtrOutput `pulumi:"adminPass"`
+	AllMetadata pulumi.MapOutput `pulumi:"allMetadata"`
 	// The collection of tags assigned on the instance, which have
 	// been explicitly and implicitly added.
 	AllTags pulumi.StringArrayOutput `pulumi:"allTags"`
@@ -155,7 +155,7 @@ type instanceState struct {
 	AccessIpV6 *string `pulumi:"accessIpV6"`
 	// The administrative password to assign to the server.
 	// Changing this changes the root password on the existing server.
-	AdminPass   *string                `pulumi:"adminPass"`
+	AdminPass *string `pulumi:"adminPass"`
 	AllMetadata map[string]interface{} `pulumi:"allMetadata"`
 	// The collection of tags assigned on the instance, which have
 	// been explicitly and implicitly added.
@@ -248,7 +248,7 @@ type InstanceState struct {
 	AccessIpV6 pulumi.StringPtrInput
 	// The administrative password to assign to the server.
 	// Changing this changes the root password on the existing server.
-	AdminPass   pulumi.StringPtrInput
+	AdminPass pulumi.StringPtrInput
 	AllMetadata pulumi.MapInput
 	// The collection of tags assigned on the instance, which have
 	// been explicitly and implicitly added.
@@ -520,3 +520,4 @@ type InstanceArgs struct {
 func (InstanceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceArgs)(nil)).Elem()
 }
+

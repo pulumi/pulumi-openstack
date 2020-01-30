@@ -12,15 +12,15 @@ import (
 )
 
 // Manages a V1 DB user resource within OpenStack.
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/db_user_v1.html.markdown.
 type User struct {
 	pulumi.CustomResourceState
 
 	// A list of database user should have access to.
-	Databases  pulumi.StringArrayOutput `pulumi:"databases"`
-	Host       pulumi.StringPtrOutput   `pulumi:"host"`
-	InstanceId pulumi.StringOutput      `pulumi:"instanceId"`
+	Databases pulumi.StringArrayOutput `pulumi:"databases"`
+	Host pulumi.StringPtrOutput `pulumi:"host"`
+	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// A unique name for the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// User's password.
@@ -64,9 +64,9 @@ func GetUser(ctx *pulumi.Context,
 // Input properties used for looking up and filtering User resources.
 type userState struct {
 	// A list of database user should have access to.
-	Databases  []string `pulumi:"databases"`
-	Host       *string  `pulumi:"host"`
-	InstanceId *string  `pulumi:"instanceId"`
+	Databases []string `pulumi:"databases"`
+	Host *string `pulumi:"host"`
+	InstanceId *string `pulumi:"instanceId"`
 	// A unique name for the resource.
 	Name *string `pulumi:"name"`
 	// User's password.
@@ -77,8 +77,8 @@ type userState struct {
 
 type UserState struct {
 	// A list of database user should have access to.
-	Databases  pulumi.StringArrayInput
-	Host       pulumi.StringPtrInput
+	Databases pulumi.StringArrayInput
+	Host pulumi.StringPtrInput
 	InstanceId pulumi.StringPtrInput
 	// A unique name for the resource.
 	Name pulumi.StringPtrInput
@@ -94,9 +94,9 @@ func (UserState) ElementType() reflect.Type {
 
 type userArgs struct {
 	// A list of database user should have access to.
-	Databases  []string `pulumi:"databases"`
-	Host       *string  `pulumi:"host"`
-	InstanceId string   `pulumi:"instanceId"`
+	Databases []string `pulumi:"databases"`
+	Host *string `pulumi:"host"`
+	InstanceId string `pulumi:"instanceId"`
 	// A unique name for the resource.
 	Name *string `pulumi:"name"`
 	// User's password.
@@ -108,8 +108,8 @@ type userArgs struct {
 // The set of arguments for constructing a User resource.
 type UserArgs struct {
 	// A list of database user should have access to.
-	Databases  pulumi.StringArrayInput
-	Host       pulumi.StringPtrInput
+	Databases pulumi.StringArrayInput
+	Host pulumi.StringPtrInput
 	InstanceId pulumi.StringInput
 	// A unique name for the resource.
 	Name pulumi.StringPtrInput
@@ -122,3 +122,4 @@ type UserArgs struct {
 func (UserArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*userArgs)(nil)).Elem()
 }
+

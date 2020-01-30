@@ -9,7 +9,7 @@ import (
 )
 
 // Use this data source to get the ID of an available OpenStack address-scope.
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_addressscope_v2.html.markdown.
 func LookupAddressScope(ctx *pulumi.Context, args *LookupAddressScopeArgs, opts ...pulumi.InvokeOption) (*LookupAddressScopeResult, error) {
 	var rv LookupAddressScopeResult
@@ -37,6 +37,7 @@ type LookupAddressScopeArgs struct {
 	Shared *bool `pulumi:"shared"`
 }
 
+
 // A collection of values returned by getAddressScope.
 type LookupAddressScopeResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
@@ -47,7 +48,8 @@ type LookupAddressScopeResult struct {
 	Name *string `pulumi:"name"`
 	// See Argument Reference above.
 	ProjectId *string `pulumi:"projectId"`
-	Region    *string `pulumi:"region"`
+	Region *string `pulumi:"region"`
 	// See Argument Reference above.
 	Shared *bool `pulumi:"shared"`
 }
+

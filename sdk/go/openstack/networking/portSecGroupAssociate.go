@@ -149,3 +149,4 @@ type PortSecGroupAssociateArgs struct {
 func (PortSecGroupAssociateArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*portSecGroupAssociateArgs)(nil)).Elem()
 }
+

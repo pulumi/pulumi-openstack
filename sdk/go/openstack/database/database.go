@@ -12,7 +12,7 @@ import (
 )
 
 // Manages a V1 DB database resource within OpenStack.
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/db_database_v1.html.markdown.
 type Database struct {
 	pulumi.CustomResourceState
@@ -99,3 +99,4 @@ type DatabaseArgs struct {
 func (DatabaseArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*databaseArgs)(nil)).Elem()
 }
+

@@ -14,17 +14,17 @@ import (
 // The RBAC policy resource contains functionality for working with Neutron RBAC
 // Policies. Role-Based Access Control (RBAC) policy framework enables both
 // operators and users to grant access to resources for specific projects.
-//
+// 
 // Sharing an object with a specific project is accomplished by creating a
 // policy entry that permits the target project the `accessAsShared` action
 // on that object.
-//
+// 
 // To make a network available as an external network for specific projects
 // rather than all projects, use the `accessAsExternal` action.
 // If a network is marked as external during creation, it now implicitly creates
 // a wildcard RBAC policy granting everyone access to preserve previous behavior
 // before this feature was added.
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_rbac_policy_v2.html.markdown.
 type RbacPolicyV2 struct {
 	pulumi.CustomResourceState
@@ -39,7 +39,7 @@ type RbacPolicyV2 struct {
 	// The type of the object that the RBAC policy
 	// affects. Can either be `qos-policy` or `network`.
 	ObjectType pulumi.StringOutput `pulumi:"objectType"`
-	ProjectId  pulumi.StringOutput `pulumi:"projectId"`
+	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// The region in which to obtain the V2 networking client.
 	// A networking client is needed to configure a routing entry on a subnet. If omitted, the
 	// `region` argument of the provider is used. Changing this creates a new
@@ -100,7 +100,7 @@ type rbacPolicyV2State struct {
 	// The type of the object that the RBAC policy
 	// affects. Can either be `qos-policy` or `network`.
 	ObjectType *string `pulumi:"objectType"`
-	ProjectId  *string `pulumi:"projectId"`
+	ProjectId *string `pulumi:"projectId"`
 	// The region in which to obtain the V2 networking client.
 	// A networking client is needed to configure a routing entry on a subnet. If omitted, the
 	// `region` argument of the provider is used. Changing this creates a new
@@ -122,7 +122,7 @@ type RbacPolicyV2State struct {
 	// The type of the object that the RBAC policy
 	// affects. Can either be `qos-policy` or `network`.
 	ObjectType pulumi.StringPtrInput
-	ProjectId  pulumi.StringPtrInput
+	ProjectId pulumi.StringPtrInput
 	// The region in which to obtain the V2 networking client.
 	// A networking client is needed to configure a routing entry on a subnet. If omitted, the
 	// `region` argument of the provider is used. Changing this creates a new
@@ -183,3 +183,4 @@ type RbacPolicyV2Args struct {
 func (RbacPolicyV2Args) ElementType() reflect.Type {
 	return reflect.TypeOf((*rbacPolicyV2Args)(nil)).Elem()
 }
+

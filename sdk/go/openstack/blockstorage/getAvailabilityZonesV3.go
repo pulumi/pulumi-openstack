@@ -9,7 +9,7 @@ import (
 )
 
 // Use this data source to get a list of Block Storage availability zones from OpenStack
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/blockstorage_availability_zones_v3.html.markdown.
 func GetAvailabilityZonesV3(ctx *pulumi.Context, args *GetAvailabilityZonesV3Args, opts ...pulumi.InvokeOption) (*GetAvailabilityZonesV3Result, error) {
 	var rv GetAvailabilityZonesV3Result
@@ -30,6 +30,7 @@ type GetAvailabilityZonesV3Args struct {
 	State *string `pulumi:"state"`
 }
 
+
 // A collection of values returned by getAvailabilityZonesV3.
 type GetAvailabilityZonesV3Result struct {
 	// id is the provider-assigned unique ID for this managed resource.
@@ -42,3 +43,4 @@ type GetAvailabilityZonesV3Result struct {
 	// See Argument Reference above.
 	State *string `pulumi:"state"`
 }
+

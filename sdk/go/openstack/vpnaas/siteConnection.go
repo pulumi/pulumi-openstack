@@ -12,7 +12,7 @@ import (
 )
 
 // Manages a V2 Neutron IPSec site connection resource within OpenStack.
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/vpnaas_site_connection_v2.html.markdown.
 type SiteConnection struct {
 	pulumi.CustomResourceState
@@ -374,3 +374,4 @@ type SiteConnectionArgs struct {
 func (SiteConnectionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*siteConnectionArgs)(nil)).Elem()
 }
+

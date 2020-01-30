@@ -9,7 +9,7 @@ import (
 )
 
 // Use this data source to get the ID and public key of an OpenStack keypair.
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/compute_keypair_v2.html.markdown.
 func LookupKeypair(ctx *pulumi.Context, args *LookupKeypairArgs, opts ...pulumi.InvokeOption) (*LookupKeypairResult, error) {
 	var rv LookupKeypairResult
@@ -29,6 +29,7 @@ type LookupKeypairArgs struct {
 	Region *string `pulumi:"region"`
 }
 
+
 // A collection of values returned by getKeypair.
 type LookupKeypairResult struct {
 	// The fingerprint of the OpenSSH key.
@@ -42,3 +43,4 @@ type LookupKeypairResult struct {
 	// See Argument Reference above.
 	Region string `pulumi:"region"`
 }
+

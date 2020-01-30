@@ -13,7 +13,7 @@ import (
 // Manages a V2 neutron security group resource within OpenStack.
 // Unlike Nova security groups, neutron separates the group from the rules
 // and also allows an admin to target a specific tenant_id.
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_secgroup_v2.html.markdown.
 type SecGroup struct {
 	pulumi.CustomResourceState
@@ -171,3 +171,4 @@ type SecGroupArgs struct {
 func (SecGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*secGroupArgs)(nil)).Elem()
 }
+

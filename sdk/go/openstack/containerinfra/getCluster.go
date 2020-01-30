@@ -9,7 +9,7 @@ import (
 )
 
 // Use this data source to get the ID of an available OpenStack Magnum cluster.
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/containerinfra_cluster_v1.html.markdown.
 func LookupCluster(ctx *pulumi.Context, args *LookupClusterArgs, opts ...pulumi.InvokeOption) (*LookupClusterResult, error) {
 	var rv LookupClusterResult
@@ -30,6 +30,7 @@ type LookupClusterArgs struct {
 	Region *string `pulumi:"region"`
 }
 
+
 // A collection of values returned by getCluster.
 type LookupClusterResult struct {
 	// COE API address.
@@ -37,7 +38,7 @@ type LookupClusterResult struct {
 	// The UUID of the V1 Container Infra cluster template.
 	ClusterTemplateId string `pulumi:"clusterTemplateId"`
 	// COE software version.
-	CoeVersion       string `pulumi:"coeVersion"`
+	CoeVersion string `pulumi:"coeVersion"`
 	ContainerVersion string `pulumi:"containerVersion"`
 	// The timeout (in minutes) for creating the cluster.
 	CreateTimeout int `pulumi:"createTimeout"`
@@ -83,3 +84,4 @@ type LookupClusterResult struct {
 	// The user of the cluster.
 	UserId string `pulumi:"userId"`
 }
+

@@ -11,10 +11,10 @@ import (
 )
 
 // Manages a V3 Role resource within OpenStack Keystone.
-//
+// 
 // Note: You _must_ have admin privileges in your OpenStack cloud to use
 // this resource.
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/identity_role_v3.html.markdown.
 type Role struct {
 	pulumi.CustomResourceState
@@ -108,3 +108,4 @@ type RoleArgs struct {
 func (RoleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*roleArgs)(nil)).Elem()
 }
+

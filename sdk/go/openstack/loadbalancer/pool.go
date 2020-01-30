@@ -12,7 +12,7 @@ import (
 )
 
 // Manages a V2 pool resource within OpenStack.
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_pool_v2.html.markdown.
 type Pool struct {
 	pulumi.CustomResourceState
@@ -247,3 +247,4 @@ type PoolArgs struct {
 func (PoolArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*poolArgs)(nil)).Elem()
 }
+

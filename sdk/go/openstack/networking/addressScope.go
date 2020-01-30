@@ -11,7 +11,7 @@ import (
 )
 
 // Manages a V2 Neutron addressscope resource within OpenStack.
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_addressscope_v2.html.markdown.
 type AddressScope struct {
 	pulumi.CustomResourceState
@@ -160,3 +160,4 @@ type AddressScopeArgs struct {
 func (AddressScopeArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*addressScopeArgs)(nil)).Elem()
 }
+

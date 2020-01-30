@@ -13,7 +13,7 @@ import (
 
 type IkePolicyLifetime struct {
 	Units *string `pulumi:"units"`
-	Value *int    `pulumi:"value"`
+	Value *int `pulumi:"value"`
 }
 
 type IkePolicyLifetimeInput interface {
@@ -25,7 +25,7 @@ type IkePolicyLifetimeInput interface {
 
 type IkePolicyLifetimeArgs struct {
 	Units pulumi.StringPtrInput `pulumi:"units"`
-	Value pulumi.IntPtrInput    `pulumi:"value"`
+	Value pulumi.IntPtrInput `pulumi:"value"`
 }
 
 func (IkePolicyLifetimeArgs) ElementType() reflect.Type {
@@ -61,7 +61,7 @@ func (i IkePolicyLifetimeArray) ToIkePolicyLifetimeArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(IkePolicyLifetimeArrayOutput)
 }
 
-type IkePolicyLifetimeOutput struct{ *pulumi.OutputState }
+type IkePolicyLifetimeOutput struct { *pulumi.OutputState }
 
 func (IkePolicyLifetimeOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*IkePolicyLifetime)(nil)).Elem()
@@ -76,14 +76,14 @@ func (o IkePolicyLifetimeOutput) ToIkePolicyLifetimeOutputWithContext(ctx contex
 }
 
 func (o IkePolicyLifetimeOutput) Units() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IkePolicyLifetime) *string { return v.Units }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func (v IkePolicyLifetime) *string { return v.Units }).(pulumi.StringPtrOutput)
 }
 
 func (o IkePolicyLifetimeOutput) Value() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v IkePolicyLifetime) *int { return v.Value }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func (v IkePolicyLifetime) *int { return v.Value }).(pulumi.IntPtrOutput)
 }
 
-type IkePolicyLifetimeArrayOutput struct{ *pulumi.OutputState }
+type IkePolicyLifetimeArrayOutput struct { *pulumi.OutputState}
 
 func (IkePolicyLifetimeArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]IkePolicyLifetime)(nil)).Elem()
@@ -98,14 +98,14 @@ func (o IkePolicyLifetimeArrayOutput) ToIkePolicyLifetimeArrayOutputWithContext(
 }
 
 func (o IkePolicyLifetimeArrayOutput) Index(i pulumi.IntInput) IkePolicyLifetimeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IkePolicyLifetime {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) IkePolicyLifetime {
 		return vs[0].([]IkePolicyLifetime)[vs[1].(int)]
 	}).(IkePolicyLifetimeOutput)
 }
 
 type IpSecPolicyLifetime struct {
 	Units *string `pulumi:"units"`
-	Value *int    `pulumi:"value"`
+	Value *int `pulumi:"value"`
 }
 
 type IpSecPolicyLifetimeInput interface {
@@ -117,7 +117,7 @@ type IpSecPolicyLifetimeInput interface {
 
 type IpSecPolicyLifetimeArgs struct {
 	Units pulumi.StringPtrInput `pulumi:"units"`
-	Value pulumi.IntPtrInput    `pulumi:"value"`
+	Value pulumi.IntPtrInput `pulumi:"value"`
 }
 
 func (IpSecPolicyLifetimeArgs) ElementType() reflect.Type {
@@ -153,7 +153,7 @@ func (i IpSecPolicyLifetimeArray) ToIpSecPolicyLifetimeArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(IpSecPolicyLifetimeArrayOutput)
 }
 
-type IpSecPolicyLifetimeOutput struct{ *pulumi.OutputState }
+type IpSecPolicyLifetimeOutput struct { *pulumi.OutputState }
 
 func (IpSecPolicyLifetimeOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*IpSecPolicyLifetime)(nil)).Elem()
@@ -168,14 +168,14 @@ func (o IpSecPolicyLifetimeOutput) ToIpSecPolicyLifetimeOutputWithContext(ctx co
 }
 
 func (o IpSecPolicyLifetimeOutput) Units() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IpSecPolicyLifetime) *string { return v.Units }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func (v IpSecPolicyLifetime) *string { return v.Units }).(pulumi.StringPtrOutput)
 }
 
 func (o IpSecPolicyLifetimeOutput) Value() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v IpSecPolicyLifetime) *int { return v.Value }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func (v IpSecPolicyLifetime) *int { return v.Value }).(pulumi.IntPtrOutput)
 }
 
-type IpSecPolicyLifetimeArrayOutput struct{ *pulumi.OutputState }
+type IpSecPolicyLifetimeArrayOutput struct { *pulumi.OutputState}
 
 func (IpSecPolicyLifetimeArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]IpSecPolicyLifetime)(nil)).Elem()
@@ -190,15 +190,15 @@ func (o IpSecPolicyLifetimeArrayOutput) ToIpSecPolicyLifetimeArrayOutputWithCont
 }
 
 func (o IpSecPolicyLifetimeArrayOutput) Index(i pulumi.IntInput) IpSecPolicyLifetimeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IpSecPolicyLifetime {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) IpSecPolicyLifetime {
 		return vs[0].([]IpSecPolicyLifetime)[vs[1].(int)]
 	}).(IpSecPolicyLifetimeOutput)
 }
 
 type SiteConnectionDpd struct {
-	Action   *string `pulumi:"action"`
-	Interval *int    `pulumi:"interval"`
-	Timeout  *int    `pulumi:"timeout"`
+	Action *string `pulumi:"action"`
+	Interval *int `pulumi:"interval"`
+	Timeout *int `pulumi:"timeout"`
 }
 
 type SiteConnectionDpdInput interface {
@@ -209,9 +209,9 @@ type SiteConnectionDpdInput interface {
 }
 
 type SiteConnectionDpdArgs struct {
-	Action   pulumi.StringPtrInput `pulumi:"action"`
-	Interval pulumi.IntPtrInput    `pulumi:"interval"`
-	Timeout  pulumi.IntPtrInput    `pulumi:"timeout"`
+	Action pulumi.StringPtrInput `pulumi:"action"`
+	Interval pulumi.IntPtrInput `pulumi:"interval"`
+	Timeout pulumi.IntPtrInput `pulumi:"timeout"`
 }
 
 func (SiteConnectionDpdArgs) ElementType() reflect.Type {
@@ -247,7 +247,7 @@ func (i SiteConnectionDpdArray) ToSiteConnectionDpdArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(SiteConnectionDpdArrayOutput)
 }
 
-type SiteConnectionDpdOutput struct{ *pulumi.OutputState }
+type SiteConnectionDpdOutput struct { *pulumi.OutputState }
 
 func (SiteConnectionDpdOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*SiteConnectionDpd)(nil)).Elem()
@@ -262,18 +262,18 @@ func (o SiteConnectionDpdOutput) ToSiteConnectionDpdOutputWithContext(ctx contex
 }
 
 func (o SiteConnectionDpdOutput) Action() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SiteConnectionDpd) *string { return v.Action }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func (v SiteConnectionDpd) *string { return v.Action }).(pulumi.StringPtrOutput)
 }
 
 func (o SiteConnectionDpdOutput) Interval() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SiteConnectionDpd) *int { return v.Interval }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func (v SiteConnectionDpd) *int { return v.Interval }).(pulumi.IntPtrOutput)
 }
 
 func (o SiteConnectionDpdOutput) Timeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SiteConnectionDpd) *int { return v.Timeout }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func (v SiteConnectionDpd) *int { return v.Timeout }).(pulumi.IntPtrOutput)
 }
 
-type SiteConnectionDpdArrayOutput struct{ *pulumi.OutputState }
+type SiteConnectionDpdArrayOutput struct { *pulumi.OutputState}
 
 func (SiteConnectionDpdArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]SiteConnectionDpd)(nil)).Elem()
@@ -288,7 +288,7 @@ func (o SiteConnectionDpdArrayOutput) ToSiteConnectionDpdArrayOutputWithContext(
 }
 
 func (o SiteConnectionDpdArrayOutput) Index(i pulumi.IntInput) SiteConnectionDpdOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SiteConnectionDpd {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) SiteConnectionDpd {
 		return vs[0].([]SiteConnectionDpd)[vs[1].(int)]
 	}).(SiteConnectionDpdOutput)
 }

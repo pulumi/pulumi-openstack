@@ -9,7 +9,7 @@ import (
 )
 
 // Use this data source to get the ID of an available OpenStack flavor.
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/compute_flavor_v2.html.markdown.
 func LookupFlavor(ctx *pulumi.Context, args *LookupFlavorArgs, opts ...pulumi.InvokeOption) (*LookupFlavorResult, error) {
 	var rv LookupFlavorResult
@@ -48,22 +48,24 @@ type LookupFlavorArgs struct {
 	Vcpus *int `pulumi:"vcpus"`
 }
 
+
 // A collection of values returned by getFlavor.
 type LookupFlavorResult struct {
 	Disk *int `pulumi:"disk"`
 	// Key/Value pairs of metadata for the flavor.
 	ExtraSpecs map[string]interface{} `pulumi:"extraSpecs"`
-	FlavorId   *string                `pulumi:"flavorId"`
+	FlavorId *string `pulumi:"flavorId"`
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Whether the flavor is public or private.
-	IsPublic   bool     `pulumi:"isPublic"`
-	MinDisk    *int     `pulumi:"minDisk"`
-	MinRam     *int     `pulumi:"minRam"`
-	Name       *string  `pulumi:"name"`
-	Ram        *int     `pulumi:"ram"`
-	Region     string   `pulumi:"region"`
+	IsPublic bool `pulumi:"isPublic"`
+	MinDisk *int `pulumi:"minDisk"`
+	MinRam *int `pulumi:"minRam"`
+	Name *string `pulumi:"name"`
+	Ram *int `pulumi:"ram"`
+	Region string `pulumi:"region"`
 	RxTxFactor *float64 `pulumi:"rxTxFactor"`
-	Swap       *int     `pulumi:"swap"`
-	Vcpus      *int     `pulumi:"vcpus"`
+	Swap *int `pulumi:"swap"`
+	Vcpus *int `pulumi:"vcpus"`
 }
+

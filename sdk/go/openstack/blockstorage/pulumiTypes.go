@@ -12,8 +12,8 @@ import (
 )
 
 type VolumeAttachment struct {
-	Device     *string `pulumi:"device"`
-	Id         *string `pulumi:"id"`
+	Device *string `pulumi:"device"`
+	Id *string `pulumi:"id"`
 	InstanceId *string `pulumi:"instanceId"`
 }
 
@@ -25,8 +25,8 @@ type VolumeAttachmentInput interface {
 }
 
 type VolumeAttachmentArgs struct {
-	Device     pulumi.StringPtrInput `pulumi:"device"`
-	Id         pulumi.StringPtrInput `pulumi:"id"`
+	Device pulumi.StringPtrInput `pulumi:"device"`
+	Id pulumi.StringPtrInput `pulumi:"id"`
 	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
 }
 
@@ -63,7 +63,7 @@ func (i VolumeAttachmentArray) ToVolumeAttachmentArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeAttachmentArrayOutput)
 }
 
-type VolumeAttachmentOutput struct{ *pulumi.OutputState }
+type VolumeAttachmentOutput struct { *pulumi.OutputState }
 
 func (VolumeAttachmentOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*VolumeAttachment)(nil)).Elem()
@@ -78,18 +78,18 @@ func (o VolumeAttachmentOutput) ToVolumeAttachmentOutputWithContext(ctx context.
 }
 
 func (o VolumeAttachmentOutput) Device() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VolumeAttachment) *string { return v.Device }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func (v VolumeAttachment) *string { return v.Device }).(pulumi.StringPtrOutput)
 }
 
 func (o VolumeAttachmentOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VolumeAttachment) *string { return v.Id }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func (v VolumeAttachment) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 func (o VolumeAttachmentOutput) InstanceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VolumeAttachment) *string { return v.InstanceId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func (v VolumeAttachment) *string { return v.InstanceId }).(pulumi.StringPtrOutput)
 }
 
-type VolumeAttachmentArrayOutput struct{ *pulumi.OutputState }
+type VolumeAttachmentArrayOutput struct { *pulumi.OutputState}
 
 func (VolumeAttachmentArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]VolumeAttachment)(nil)).Elem()
@@ -104,14 +104,14 @@ func (o VolumeAttachmentArrayOutput) ToVolumeAttachmentArrayOutputWithContext(ct
 }
 
 func (o VolumeAttachmentArrayOutput) Index(i pulumi.IntInput) VolumeAttachmentOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VolumeAttachment {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) VolumeAttachment {
 		return vs[0].([]VolumeAttachment)[vs[1].(int)]
 	}).(VolumeAttachmentOutput)
 }
 
 type VolumeV1Attachment struct {
-	Device     *string `pulumi:"device"`
-	Id         *string `pulumi:"id"`
+	Device *string `pulumi:"device"`
+	Id *string `pulumi:"id"`
 	InstanceId *string `pulumi:"instanceId"`
 }
 
@@ -123,8 +123,8 @@ type VolumeV1AttachmentInput interface {
 }
 
 type VolumeV1AttachmentArgs struct {
-	Device     pulumi.StringPtrInput `pulumi:"device"`
-	Id         pulumi.StringPtrInput `pulumi:"id"`
+	Device pulumi.StringPtrInput `pulumi:"device"`
+	Id pulumi.StringPtrInput `pulumi:"id"`
 	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
 }
 
@@ -161,7 +161,7 @@ func (i VolumeV1AttachmentArray) ToVolumeV1AttachmentArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeV1AttachmentArrayOutput)
 }
 
-type VolumeV1AttachmentOutput struct{ *pulumi.OutputState }
+type VolumeV1AttachmentOutput struct { *pulumi.OutputState }
 
 func (VolumeV1AttachmentOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*VolumeV1Attachment)(nil)).Elem()
@@ -176,18 +176,18 @@ func (o VolumeV1AttachmentOutput) ToVolumeV1AttachmentOutputWithContext(ctx cont
 }
 
 func (o VolumeV1AttachmentOutput) Device() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VolumeV1Attachment) *string { return v.Device }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func (v VolumeV1Attachment) *string { return v.Device }).(pulumi.StringPtrOutput)
 }
 
 func (o VolumeV1AttachmentOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VolumeV1Attachment) *string { return v.Id }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func (v VolumeV1Attachment) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 func (o VolumeV1AttachmentOutput) InstanceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VolumeV1Attachment) *string { return v.InstanceId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func (v VolumeV1Attachment) *string { return v.InstanceId }).(pulumi.StringPtrOutput)
 }
 
-type VolumeV1AttachmentArrayOutput struct{ *pulumi.OutputState }
+type VolumeV1AttachmentArrayOutput struct { *pulumi.OutputState}
 
 func (VolumeV1AttachmentArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]VolumeV1Attachment)(nil)).Elem()
@@ -202,14 +202,14 @@ func (o VolumeV1AttachmentArrayOutput) ToVolumeV1AttachmentArrayOutputWithContex
 }
 
 func (o VolumeV1AttachmentArrayOutput) Index(i pulumi.IntInput) VolumeV1AttachmentOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VolumeV1Attachment {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) VolumeV1Attachment {
 		return vs[0].([]VolumeV1Attachment)[vs[1].(int)]
 	}).(VolumeV1AttachmentOutput)
 }
 
 type VolumeV2Attachment struct {
-	Device     *string `pulumi:"device"`
-	Id         *string `pulumi:"id"`
+	Device *string `pulumi:"device"`
+	Id *string `pulumi:"id"`
 	InstanceId *string `pulumi:"instanceId"`
 }
 
@@ -221,8 +221,8 @@ type VolumeV2AttachmentInput interface {
 }
 
 type VolumeV2AttachmentArgs struct {
-	Device     pulumi.StringPtrInput `pulumi:"device"`
-	Id         pulumi.StringPtrInput `pulumi:"id"`
+	Device pulumi.StringPtrInput `pulumi:"device"`
+	Id pulumi.StringPtrInput `pulumi:"id"`
 	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
 }
 
@@ -259,7 +259,7 @@ func (i VolumeV2AttachmentArray) ToVolumeV2AttachmentArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeV2AttachmentArrayOutput)
 }
 
-type VolumeV2AttachmentOutput struct{ *pulumi.OutputState }
+type VolumeV2AttachmentOutput struct { *pulumi.OutputState }
 
 func (VolumeV2AttachmentOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*VolumeV2Attachment)(nil)).Elem()
@@ -274,18 +274,18 @@ func (o VolumeV2AttachmentOutput) ToVolumeV2AttachmentOutputWithContext(ctx cont
 }
 
 func (o VolumeV2AttachmentOutput) Device() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VolumeV2Attachment) *string { return v.Device }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func (v VolumeV2Attachment) *string { return v.Device }).(pulumi.StringPtrOutput)
 }
 
 func (o VolumeV2AttachmentOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VolumeV2Attachment) *string { return v.Id }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func (v VolumeV2Attachment) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 func (o VolumeV2AttachmentOutput) InstanceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VolumeV2Attachment) *string { return v.InstanceId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func (v VolumeV2Attachment) *string { return v.InstanceId }).(pulumi.StringPtrOutput)
 }
 
-type VolumeV2AttachmentArrayOutput struct{ *pulumi.OutputState }
+type VolumeV2AttachmentArrayOutput struct { *pulumi.OutputState}
 
 func (VolumeV2AttachmentArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]VolumeV2Attachment)(nil)).Elem()
@@ -300,7 +300,7 @@ func (o VolumeV2AttachmentArrayOutput) ToVolumeV2AttachmentArrayOutputWithContex
 }
 
 func (o VolumeV2AttachmentArrayOutput) Index(i pulumi.IntInput) VolumeV2AttachmentOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VolumeV2Attachment {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) VolumeV2Attachment {
 		return vs[0].([]VolumeV2Attachment)[vs[1].(int)]
 	}).(VolumeV2AttachmentOutput)
 }

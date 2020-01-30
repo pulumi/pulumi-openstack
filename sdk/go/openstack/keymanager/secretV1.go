@@ -238,3 +238,4 @@ type SecretV1Args struct {
 func (SecretV1Args) ElementType() reflect.Type {
 	return reflect.TypeOf((*secretV1Args)(nil)).Elem()
 }
+

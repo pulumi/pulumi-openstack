@@ -9,7 +9,7 @@ import (
 )
 
 // Use this data source to get the ID of an available OpenStack QoS minimum bandwidth rule.
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_qos_minimum_bandwidth_rule_v2.html.markdown.
 func LookupQosMinimumBandwidthRule(ctx *pulumi.Context, args *LookupQosMinimumBandwidthRuleArgs, opts ...pulumi.InvokeOption) (*LookupQosMinimumBandwidthRuleResult, error) {
 	var rv LookupQosMinimumBandwidthRuleResult
@@ -33,6 +33,7 @@ type LookupQosMinimumBandwidthRuleArgs struct {
 	Region *string `pulumi:"region"`
 }
 
+
 // A collection of values returned by getQosMinimumBandwidthRule.
 type LookupQosMinimumBandwidthRuleResult struct {
 	Direction string `pulumi:"direction"`
@@ -45,3 +46,4 @@ type LookupQosMinimumBandwidthRuleResult struct {
 	// See Argument Reference above.
 	Region string `pulumi:"region"`
 }
+

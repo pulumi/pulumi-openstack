@@ -12,7 +12,7 @@ import (
 )
 
 // Manages a V1 Barbican container resource within OpenStack.
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/keymanager_container_v1.html.markdown.
 type ContainerV1 struct {
 	pulumi.CustomResourceState
@@ -170,3 +170,4 @@ type ContainerV1Args struct {
 func (ContainerV1Args) ElementType() reflect.Type {
 	return reflect.TypeOf((*containerV1Args)(nil)).Elem()
 }
+

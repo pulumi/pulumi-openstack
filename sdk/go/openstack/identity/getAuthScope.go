@@ -11,7 +11,7 @@ import (
 // Use this data source to get authentication information about the current
 // auth scope in use. This can be used as self-discovery or introspection of
 // the username or project name currently in use.
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_auth_scope_v3.html.markdown.
 func GetAuthScope(ctx *pulumi.Context, args *GetAuthScopeArgs, opts ...pulumi.InvokeOption) (*GetAuthScopeResult, error) {
 	var rv GetAuthScopeResult
@@ -33,6 +33,7 @@ type GetAuthScopeArgs struct {
 	Region *string `pulumi:"region"`
 }
 
+
 // A collection of values returned by getAuthScope.
 type GetAuthScopeResult struct {
 	// The domain ID of the scope.
@@ -40,7 +41,7 @@ type GetAuthScopeResult struct {
 	// The domain name of the scope.
 	DomainName string `pulumi:"domainName"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id   string `pulumi:"id"`
+	Id string `pulumi:"id"`
 	Name string `pulumi:"name"`
 	// The domain ID of the project.
 	ProjectDomainId string `pulumi:"projectDomainId"`
@@ -50,7 +51,7 @@ type GetAuthScopeResult struct {
 	ProjectId string `pulumi:"projectId"`
 	// The project name of the scope.
 	ProjectName string `pulumi:"projectName"`
-	Region      string `pulumi:"region"`
+	Region string `pulumi:"region"`
 	// A list of roles in the current scope. See reference below.
 	Roles []GetAuthScopeRole `pulumi:"roles"`
 	// The domain ID of the user.
@@ -62,3 +63,4 @@ type GetAuthScopeResult struct {
 	// The username of the scope.
 	UserName string `pulumi:"userName"`
 }
+
