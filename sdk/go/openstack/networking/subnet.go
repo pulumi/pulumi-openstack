@@ -12,7 +12,7 @@ import (
 )
 
 // Manages a V2 Neutron subnet resource within OpenStack.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_subnet_v2.html.markdown.
 type Subnet struct {
 	pulumi.CustomResourceState
@@ -27,7 +27,7 @@ type Subnet struct {
 	// must be from the same CIDR that the subnet is part of.
 	// The `allocationPool` block is documented below.
 	AllocationPools SubnetAllocationPoolArrayOutput `pulumi:"allocationPools"`
-	// 
+	//
 	// A block declaring the start and end range of the IP addresses available for
 	// use with DHCP in this subnet.
 	// The `allocationPools` block is documented below.
@@ -138,7 +138,7 @@ type subnetState struct {
 	// must be from the same CIDR that the subnet is part of.
 	// The `allocationPool` block is documented below.
 	AllocationPools []SubnetAllocationPool `pulumi:"allocationPools"`
-	// 
+	//
 	// A block declaring the start and end range of the IP addresses available for
 	// use with DHCP in this subnet.
 	// The `allocationPools` block is documented below.
@@ -219,7 +219,7 @@ type SubnetState struct {
 	// must be from the same CIDR that the subnet is part of.
 	// The `allocationPool` block is documented below.
 	AllocationPools SubnetAllocationPoolArrayInput
-	// 
+	//
 	// A block declaring the start and end range of the IP addresses available for
 	// use with DHCP in this subnet.
 	// The `allocationPools` block is documented below.
@@ -301,7 +301,7 @@ type subnetArgs struct {
 	// must be from the same CIDR that the subnet is part of.
 	// The `allocationPool` block is documented below.
 	AllocationPools []SubnetAllocationPool `pulumi:"allocationPools"`
-	// 
+	//
 	// A block declaring the start and end range of the IP addresses available for
 	// use with DHCP in this subnet.
 	// The `allocationPools` block is documented below.
@@ -380,7 +380,7 @@ type SubnetArgs struct {
 	// must be from the same CIDR that the subnet is part of.
 	// The `allocationPool` block is documented below.
 	AllocationPools SubnetAllocationPoolArrayInput
-	// 
+	//
 	// A block declaring the start and end range of the IP addresses available for
 	// use with DHCP in this subnet.
 	// The `allocationPools` block is documented below.
@@ -453,4 +453,3 @@ type SubnetArgs struct {
 func (SubnetArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*subnetArgs)(nil)).Elem()
 }
-

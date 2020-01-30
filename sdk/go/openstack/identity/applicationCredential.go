@@ -11,16 +11,16 @@ import (
 )
 
 // Manages a V3 Application Credential resource within OpenStack Keystone.
-// 
+//
 // > **Note:** All arguments including the application credential name and secret
 // will be stored in the raw state as plain-text. [Read more about sensitive data
 // in state](https://www.terraform.io/docs/state/sensitive-data.html).
-// 
+//
 // > **Note:** An Application Credential is created within the authenticated user
 // project scope and is not visible by an admin or other accounts.
 // The Application Credential visibility is similar to
 // `compute.Keypair`.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/identity_application_credential_v3.html.markdown.
 type ApplicationCredential struct {
 	pulumi.CustomResourceState
@@ -251,4 +251,3 @@ type ApplicationCredentialArgs struct {
 func (ApplicationCredentialArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*applicationCredentialArgs)(nil)).Elem()
 }
-

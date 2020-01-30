@@ -9,7 +9,7 @@ import (
 )
 
 // Use this data source to get the ID of an available OpenStack port.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_port_v2.html.markdown.
 func LookupPort(ctx *pulumi.Context, args *LookupPortArgs, opts ...pulumi.InvokeOption) (*LookupPortResult, error) {
 	var rv LookupPortResult
@@ -54,10 +54,9 @@ type LookupPortArgs struct {
 	// The status of the port.
 	Status *string `pulumi:"status"`
 	// The list of port tags to filter.
-	Tags []string `pulumi:"tags"`
-	TenantId *string `pulumi:"tenantId"`
+	Tags     []string `pulumi:"tags"`
+	TenantId *string  `pulumi:"tenantId"`
 }
-
 
 // A collection of values returned by getPort.
 type LookupPortResult struct {
@@ -89,7 +88,7 @@ type LookupPortResult struct {
 	// An extra DHCP option configured on the port.
 	// The structure is described below.
 	ExtraDhcpOptions []GetPortExtraDhcpOption `pulumi:"extraDhcpOptions"`
-	FixedIp *string `pulumi:"fixedIp"`
+	FixedIp          *string                  `pulumi:"fixedIp"`
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The additional MAC address.
@@ -103,10 +102,9 @@ type LookupPortResult struct {
 	// See Argument Reference above.
 	ProjectId *string `pulumi:"projectId"`
 	// See Argument Reference above.
-	Region *string `pulumi:"region"`
+	Region           *string  `pulumi:"region"`
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
-	Status *string `pulumi:"status"`
-	Tags []string `pulumi:"tags"`
-	TenantId *string `pulumi:"tenantId"`
+	Status           *string  `pulumi:"status"`
+	Tags             []string `pulumi:"tags"`
+	TenantId         *string  `pulumi:"tenantId"`
 }
-

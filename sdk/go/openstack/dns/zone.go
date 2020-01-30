@@ -11,7 +11,7 @@ import (
 )
 
 // Manages a DNS zone in the OpenStack DNS Service.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/dns_zone_v2.html.markdown.
 type Zone struct {
 	pulumi.CustomResourceState
@@ -195,4 +195,3 @@ type ZoneArgs struct {
 func (ZoneArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*zoneArgs)(nil)).Elem()
 }
-

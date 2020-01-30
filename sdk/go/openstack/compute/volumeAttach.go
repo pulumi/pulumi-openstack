@@ -13,7 +13,7 @@ import (
 
 // Attaches a Block Storage Volume to an Instance using the OpenStack
 // Compute (Nova) v2 API.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_volume_attach_v2.html.markdown.
 type VolumeAttach struct {
 	pulumi.CustomResourceState
@@ -133,4 +133,3 @@ type VolumeAttachArgs struct {
 func (VolumeAttachArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*volumeAttachArgs)(nil)).Elem()
 }
-

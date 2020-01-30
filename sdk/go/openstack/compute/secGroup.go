@@ -12,13 +12,13 @@ import (
 )
 
 // Manages a V2 security group resource within OpenStack.
-// 
+//
 // Please note that managing security groups through the OpenStack Compute API
 // has been deprecated. Unless you are using an older OpenStack environment, it is
 // recommended to use the `networking.SecGroup`
 // and `networking.SecGroupRule`
 // resources instead, which uses the OpenStack Networking API.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_secgroup_v2.html.markdown.
 type SecGroup struct {
 	pulumi.CustomResourceState
@@ -155,4 +155,3 @@ type SecGroupArgs struct {
 func (SecGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*secGroupArgs)(nil)).Elem()
 }
-

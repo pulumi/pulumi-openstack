@@ -9,7 +9,7 @@ import (
 )
 
 // Use this data source to get information about an existing volume.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/blockstorage_volume_v3.html.markdown.
 func GetVolumeV3(ctx *pulumi.Context, args *GetVolumeV3Args, opts ...pulumi.InvokeOption) (*GetVolumeV3Result, error) {
 	var rv GetVolumeV3Result
@@ -31,10 +31,9 @@ type GetVolumeV3Args struct {
 	// client. If omitted, the `region` argument of the provider is used.
 	Region *string `pulumi:"region"`
 	// The status of the volume.
-	Status *string `pulumi:"status"`
+	Status     *string `pulumi:"status"`
 	VolumeType *string `pulumi:"volumeType"`
 }
-
 
 // A collection of values returned by getVolumeV3.
 type GetVolumeV3Result struct {
@@ -59,4 +58,3 @@ type GetVolumeV3Result struct {
 	// The type of the volume.
 	VolumeType string `pulumi:"volumeType"`
 }
-

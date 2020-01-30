@@ -9,7 +9,7 @@ import (
 )
 
 // Use this data source to get the ID of an available OpenStack subnet.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_subnet_v2.html.markdown.
 func LookupSubnet(ctx *pulumi.Context, args *LookupSubnetArgs, opts ...pulumi.InvokeOption) (*LookupSubnetResult, error) {
 	var rv LookupSubnetResult
@@ -58,36 +58,34 @@ type LookupSubnetArgs struct {
 	TenantId *string `pulumi:"tenantId"`
 }
 
-
 // A collection of values returned by getSubnet.
 type LookupSubnetResult struct {
 	// A set of string tags applied on the subnet.
 	AllTags []string `pulumi:"allTags"`
 	// Allocation pools of the subnet.
 	AllocationPools []GetSubnetAllocationPool `pulumi:"allocationPools"`
-	Cidr string `pulumi:"cidr"`
-	Description string `pulumi:"description"`
-	DhcpDisabled *bool `pulumi:"dhcpDisabled"`
-	DhcpEnabled *bool `pulumi:"dhcpEnabled"`
+	Cidr            string                    `pulumi:"cidr"`
+	Description     string                    `pulumi:"description"`
+	DhcpDisabled    *bool                     `pulumi:"dhcpDisabled"`
+	DhcpEnabled     *bool                     `pulumi:"dhcpEnabled"`
 	// DNS Nameservers of the subnet.
 	DnsNameservers []string `pulumi:"dnsNameservers"`
 	// Whether the subnet has DHCP enabled or not.
-	EnableDhcp bool `pulumi:"enableDhcp"`
-	GatewayIp string `pulumi:"gatewayIp"`
+	EnableDhcp bool   `pulumi:"enableDhcp"`
+	GatewayIp  string `pulumi:"gatewayIp"`
 	// Host Routes of the subnet.
 	HostRoutes []GetSubnetHostRoute `pulumi:"hostRoutes"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	IpVersion int `pulumi:"ipVersion"`
+	Id              string `pulumi:"id"`
+	IpVersion       int    `pulumi:"ipVersion"`
 	Ipv6AddressMode string `pulumi:"ipv6AddressMode"`
-	Ipv6RaMode string `pulumi:"ipv6RaMode"`
-	Name string `pulumi:"name"`
-	NetworkId string `pulumi:"networkId"`
+	Ipv6RaMode      string `pulumi:"ipv6RaMode"`
+	Name            string `pulumi:"name"`
+	NetworkId       string `pulumi:"networkId"`
 	// See Argument Reference above.
-	Region string `pulumi:"region"`
-	SubnetId string `pulumi:"subnetId"`
-	SubnetpoolId string `pulumi:"subnetpoolId"`
-	Tags []string `pulumi:"tags"`
-	TenantId string `pulumi:"tenantId"`
+	Region       string   `pulumi:"region"`
+	SubnetId     string   `pulumi:"subnetId"`
+	SubnetpoolId string   `pulumi:"subnetpoolId"`
+	Tags         []string `pulumi:"tags"`
+	TenantId     string   `pulumi:"tenantId"`
 }
-

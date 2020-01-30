@@ -12,7 +12,7 @@ import (
 )
 
 // Manages a V1 DB configuration resource within OpenStack.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/db_configuration_v1.html.markdown.
 type Configuration struct {
 	pulumi.CustomResourceState
@@ -132,4 +132,3 @@ type ConfigurationArgs struct {
 func (ConfigurationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*configurationArgs)(nil)).Elem()
 }
-

@@ -12,7 +12,7 @@ import (
 )
 
 // Manages a V1 stack resource within OpenStack.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/orchestration_stack_v1.html.markdown.
 type StackV1 struct {
 	pulumi.CustomResourceState
@@ -329,4 +329,3 @@ type StackV1Args struct {
 func (StackV1Args) ElementType() reflect.Type {
 	return reflect.TypeOf((*stackV1Args)(nil)).Elem()
 }
-

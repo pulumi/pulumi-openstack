@@ -157,4 +157,3 @@ type ShareAccessArgs struct {
 func (ShareAccessArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*shareAccessArgs)(nil)).Elem()
 }
-

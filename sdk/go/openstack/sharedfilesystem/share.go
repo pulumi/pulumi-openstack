@@ -12,7 +12,7 @@ import (
 )
 
 // Use this resource to configure a share.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/sharedfilesystem_share_v2.html.markdown.
 type Share struct {
 	pulumi.CustomResourceState
@@ -300,4 +300,3 @@ type ShareArgs struct {
 func (ShareArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*shareArgs)(nil)).Elem()
 }
-

@@ -12,7 +12,7 @@ import (
 )
 
 // Manages a v1 firewall resource within OpenStack.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/fw_firewall_v1.html.markdown.
 type Firewall struct {
 	pulumi.CustomResourceState
@@ -229,4 +229,3 @@ type FirewallArgs struct {
 func (FirewallArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*firewallArgs)(nil)).Elem()
 }
-

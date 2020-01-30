@@ -12,7 +12,7 @@ import (
 )
 
 // Manages a V1 load balancer member resource within OpenStack.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_member_v1.html.markdown.
 type MemberV1 struct {
 	pulumi.CustomResourceState
@@ -38,7 +38,7 @@ type MemberV1 struct {
 	// The owner of the member. Required if admin wants to
 	// create a member for another tenant. Changing this creates a new member.
 	TenantId pulumi.StringPtrOutput `pulumi:"tenantId"`
-	Weight pulumi.IntOutput `pulumi:"weight"`
+	Weight   pulumi.IntOutput       `pulumi:"weight"`
 }
 
 // NewMemberV1 registers a new resource with the given unique name, arguments, and options.
@@ -99,7 +99,7 @@ type memberV1State struct {
 	// The owner of the member. Required if admin wants to
 	// create a member for another tenant. Changing this creates a new member.
 	TenantId *string `pulumi:"tenantId"`
-	Weight *int `pulumi:"weight"`
+	Weight   *int    `pulumi:"weight"`
 }
 
 type MemberV1State struct {
@@ -124,7 +124,7 @@ type MemberV1State struct {
 	// The owner of the member. Required if admin wants to
 	// create a member for another tenant. Changing this creates a new member.
 	TenantId pulumi.StringPtrInput
-	Weight pulumi.IntPtrInput
+	Weight   pulumi.IntPtrInput
 }
 
 func (MemberV1State) ElementType() reflect.Type {
@@ -153,7 +153,7 @@ type memberV1Args struct {
 	// The owner of the member. Required if admin wants to
 	// create a member for another tenant. Changing this creates a new member.
 	TenantId *string `pulumi:"tenantId"`
-	Weight *int `pulumi:"weight"`
+	Weight   *int    `pulumi:"weight"`
 }
 
 // The set of arguments for constructing a MemberV1 resource.
@@ -179,10 +179,9 @@ type MemberV1Args struct {
 	// The owner of the member. Required if admin wants to
 	// create a member for another tenant. Changing this creates a new member.
 	TenantId pulumi.StringPtrInput
-	Weight pulumi.IntPtrInput
+	Weight   pulumi.IntPtrInput
 }
 
 func (MemberV1Args) ElementType() reflect.Type {
 	return reflect.TypeOf((*memberV1Args)(nil)).Elem()
 }
-

@@ -13,12 +13,12 @@ import (
 
 // Manages a V2 floating IP resource within OpenStack Nova (compute)
 // that can be used for compute instances.
-// 
+//
 // Please note that managing floating IPs through the OpenStack Compute API has
 // been deprecated. Unless you are using an older OpenStack environment, it is
 // recommended to use the `networking.FloatingIp`
 // resource instead, which uses the OpenStack Networking API.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_floatingip_v2.html.markdown.
 type FloatingIp struct {
 	pulumi.CustomResourceState
@@ -138,4 +138,3 @@ type FloatingIpArgs struct {
 func (FloatingIpArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*floatingIpArgs)(nil)).Elem()
 }
-

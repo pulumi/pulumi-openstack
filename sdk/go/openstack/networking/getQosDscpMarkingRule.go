@@ -9,7 +9,7 @@ import (
 )
 
 // Use this data source to get the ID of an available OpenStack QoS DSCP marking rule.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_qos_dscp_marking_rule_v2.html.markdown.
 func LookupQosDscpMarkingRule(ctx *pulumi.Context, args *LookupQosDscpMarkingRuleArgs, opts ...pulumi.InvokeOption) (*LookupQosDscpMarkingRuleResult, error) {
 	var rv LookupQosDscpMarkingRuleResult
@@ -32,7 +32,6 @@ type LookupQosDscpMarkingRuleArgs struct {
 	Region *string `pulumi:"region"`
 }
 
-
 // A collection of values returned by getQosDscpMarkingRule.
 type LookupQosDscpMarkingRuleResult struct {
 	// See Argument Reference above.
@@ -44,4 +43,3 @@ type LookupQosDscpMarkingRuleResult struct {
 	// See Argument Reference above.
 	Region string `pulumi:"region"`
 }
-

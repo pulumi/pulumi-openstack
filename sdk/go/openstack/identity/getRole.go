@@ -9,7 +9,7 @@ import (
 )
 
 // Use this data source to get the ID of an OpenStack role.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_role_v3.html.markdown.
 func LookupRole(ctx *pulumi.Context, args *LookupRoleArgs, opts ...pulumi.InvokeOption) (*LookupRoleResult, error) {
 	var rv LookupRoleResult
@@ -31,7 +31,6 @@ type LookupRoleArgs struct {
 	Region *string `pulumi:"region"`
 }
 
-
 // A collection of values returned by getRole.
 type LookupRoleResult struct {
 	// See Argument Reference above.
@@ -43,4 +42,3 @@ type LookupRoleResult struct {
 	// See Argument Reference above.
 	Region string `pulumi:"region"`
 }
-

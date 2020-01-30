@@ -12,14 +12,14 @@ import (
 )
 
 // Use this resource to configure a security service.
-// 
+//
 // A security service stores configuration information for clients for
 // authentication and authorization (AuthN/AuthZ). For example, a share server
 // will be the client for an existing service such as LDAP, Kerberos, or
 // Microsoft Active Directory.
-// 
+//
 // Minimum supported Manila microversion is 2.7.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/sharedfilesystem_securityservice_v2.html.markdown.
 type SecurityService struct {
 	pulumi.CustomResourceState
@@ -227,4 +227,3 @@ type SecurityServiceArgs struct {
 func (SecurityServiceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*securityServiceArgs)(nil)).Elem()
 }
-

@@ -12,7 +12,7 @@ import (
 )
 
 // Manages a V2 Neutron subnetpool resource within OpenStack.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_subnetpool_v2.html.markdown.
 type SubnetPool struct {
 	pulumi.CustomResourceState
@@ -376,4 +376,3 @@ type SubnetPoolArgs struct {
 func (SubnetPoolArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*subnetPoolArgs)(nil)).Elem()
 }
-

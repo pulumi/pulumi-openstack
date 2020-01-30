@@ -13,7 +13,7 @@ import (
 
 type ContainerVersioning struct {
 	Location string `pulumi:"location"`
-	Type string `pulumi:"type"`
+	Type     string `pulumi:"type"`
 }
 
 type ContainerVersioningInput interface {
@@ -25,7 +25,7 @@ type ContainerVersioningInput interface {
 
 type ContainerVersioningArgs struct {
 	Location pulumi.StringInput `pulumi:"location"`
-	Type pulumi.StringInput `pulumi:"type"`
+	Type     pulumi.StringInput `pulumi:"type"`
 }
 
 func (ContainerVersioningArgs) ElementType() reflect.Type {
@@ -57,7 +57,8 @@ type ContainerVersioningPtrInput interface {
 
 type containerVersioningPtrType ContainerVersioningArgs
 
-func ContainerVersioningPtr(v *ContainerVersioningArgs) ContainerVersioningPtrInput {	return (*containerVersioningPtrType)(v)
+func ContainerVersioningPtr(v *ContainerVersioningArgs) ContainerVersioningPtrInput {
+	return (*containerVersioningPtrType)(v)
 }
 
 func (*containerVersioningPtrType) ElementType() reflect.Type {
@@ -72,7 +73,7 @@ func (i *containerVersioningPtrType) ToContainerVersioningPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerVersioningPtrOutput)
 }
 
-type ContainerVersioningOutput struct { *pulumi.OutputState }
+type ContainerVersioningOutput struct{ *pulumi.OutputState }
 
 func (ContainerVersioningOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ContainerVersioning)(nil)).Elem()
@@ -96,14 +97,14 @@ func (o ContainerVersioningOutput) ToContainerVersioningPtrOutputWithContext(ctx
 	}).(ContainerVersioningPtrOutput)
 }
 func (o ContainerVersioningOutput) Location() pulumi.StringOutput {
-	return o.ApplyT(func (v ContainerVersioning) string { return v.Location }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ContainerVersioning) string { return v.Location }).(pulumi.StringOutput)
 }
 
 func (o ContainerVersioningOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func (v ContainerVersioning) string { return v.Type }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ContainerVersioning) string { return v.Type }).(pulumi.StringOutput)
 }
 
-type ContainerVersioningPtrOutput struct { *pulumi.OutputState}
+type ContainerVersioningPtrOutput struct{ *pulumi.OutputState }
 
 func (ContainerVersioningPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ContainerVersioning)(nil)).Elem()
@@ -118,15 +119,15 @@ func (o ContainerVersioningPtrOutput) ToContainerVersioningPtrOutputWithContext(
 }
 
 func (o ContainerVersioningPtrOutput) Elem() ContainerVersioningOutput {
-	return o.ApplyT(func (v *ContainerVersioning) ContainerVersioning { return *v }).(ContainerVersioningOutput)
+	return o.ApplyT(func(v *ContainerVersioning) ContainerVersioning { return *v }).(ContainerVersioningOutput)
 }
 
 func (o ContainerVersioningPtrOutput) Location() pulumi.StringOutput {
-	return o.ApplyT(func (v ContainerVersioning) string { return v.Location }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ContainerVersioning) string { return v.Location }).(pulumi.StringOutput)
 }
 
 func (o ContainerVersioningPtrOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func (v ContainerVersioning) string { return v.Type }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ContainerVersioning) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {

@@ -9,9 +9,9 @@ import (
 )
 
 // Use this data source to get the ID of an OpenStack group.
-// 
+//
 // Note: This usually requires admin privileges.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_group_v3.html.markdown.
 func GetGroup(ctx *pulumi.Context, args *GetGroupArgs, opts ...pulumi.InvokeOption) (*GetGroupResult, error) {
 	var rv GetGroupResult
@@ -33,7 +33,6 @@ type GetGroupArgs struct {
 	Region *string `pulumi:"region"`
 }
 
-
 // A collection of values returned by getGroup.
 type GetGroupResult struct {
 	// A description of the group.
@@ -47,4 +46,3 @@ type GetGroupResult struct {
 	// See Argument Reference above.
 	Region string `pulumi:"region"`
 }
-

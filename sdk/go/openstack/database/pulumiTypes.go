@@ -13,7 +13,7 @@ import (
 
 type ConfigurationConfiguration struct {
 	// A unique name for the resource.
-	Name string `pulumi:"name"`
+	Name  string `pulumi:"name"`
 	Value string `pulumi:"value"`
 }
 
@@ -26,7 +26,7 @@ type ConfigurationConfigurationInput interface {
 
 type ConfigurationConfigurationArgs struct {
 	// A unique name for the resource.
-	Name pulumi.StringInput `pulumi:"name"`
+	Name  pulumi.StringInput `pulumi:"name"`
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -63,7 +63,7 @@ func (i ConfigurationConfigurationArray) ToConfigurationConfigurationArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationConfigurationArrayOutput)
 }
 
-type ConfigurationConfigurationOutput struct { *pulumi.OutputState }
+type ConfigurationConfigurationOutput struct{ *pulumi.OutputState }
 
 func (ConfigurationConfigurationOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ConfigurationConfiguration)(nil)).Elem()
@@ -79,14 +79,14 @@ func (o ConfigurationConfigurationOutput) ToConfigurationConfigurationOutputWith
 
 // A unique name for the resource.
 func (o ConfigurationConfigurationOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v ConfigurationConfiguration) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ConfigurationConfiguration) string { return v.Name }).(pulumi.StringOutput)
 }
 
 func (o ConfigurationConfigurationOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func (v ConfigurationConfiguration) string { return v.Value }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ConfigurationConfiguration) string { return v.Value }).(pulumi.StringOutput)
 }
 
-type ConfigurationConfigurationArrayOutput struct { *pulumi.OutputState}
+type ConfigurationConfigurationArrayOutput struct{ *pulumi.OutputState }
 
 func (ConfigurationConfigurationArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ConfigurationConfiguration)(nil)).Elem()
@@ -101,13 +101,13 @@ func (o ConfigurationConfigurationArrayOutput) ToConfigurationConfigurationArray
 }
 
 func (o ConfigurationConfigurationArrayOutput) Index(i pulumi.IntInput) ConfigurationConfigurationOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ConfigurationConfiguration {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConfigurationConfiguration {
 		return vs[0].([]ConfigurationConfiguration)[vs[1].(int)]
 	}).(ConfigurationConfigurationOutput)
 }
 
 type ConfigurationDatastore struct {
-	Type string `pulumi:"type"`
+	Type    string `pulumi:"type"`
 	Version string `pulumi:"version"`
 }
 
@@ -119,7 +119,7 @@ type ConfigurationDatastoreInput interface {
 }
 
 type ConfigurationDatastoreArgs struct {
-	Type pulumi.StringInput `pulumi:"type"`
+	Type    pulumi.StringInput `pulumi:"type"`
 	Version pulumi.StringInput `pulumi:"version"`
 }
 
@@ -152,7 +152,8 @@ type ConfigurationDatastorePtrInput interface {
 
 type configurationDatastorePtrType ConfigurationDatastoreArgs
 
-func ConfigurationDatastorePtr(v *ConfigurationDatastoreArgs) ConfigurationDatastorePtrInput {	return (*configurationDatastorePtrType)(v)
+func ConfigurationDatastorePtr(v *ConfigurationDatastoreArgs) ConfigurationDatastorePtrInput {
+	return (*configurationDatastorePtrType)(v)
 }
 
 func (*configurationDatastorePtrType) ElementType() reflect.Type {
@@ -167,7 +168,7 @@ func (i *configurationDatastorePtrType) ToConfigurationDatastorePtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationDatastorePtrOutput)
 }
 
-type ConfigurationDatastoreOutput struct { *pulumi.OutputState }
+type ConfigurationDatastoreOutput struct{ *pulumi.OutputState }
 
 func (ConfigurationDatastoreOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ConfigurationDatastore)(nil)).Elem()
@@ -191,14 +192,14 @@ func (o ConfigurationDatastoreOutput) ToConfigurationDatastorePtrOutputWithConte
 	}).(ConfigurationDatastorePtrOutput)
 }
 func (o ConfigurationDatastoreOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func (v ConfigurationDatastore) string { return v.Type }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ConfigurationDatastore) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func (o ConfigurationDatastoreOutput) Version() pulumi.StringOutput {
-	return o.ApplyT(func (v ConfigurationDatastore) string { return v.Version }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ConfigurationDatastore) string { return v.Version }).(pulumi.StringOutput)
 }
 
-type ConfigurationDatastorePtrOutput struct { *pulumi.OutputState}
+type ConfigurationDatastorePtrOutput struct{ *pulumi.OutputState }
 
 func (ConfigurationDatastorePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ConfigurationDatastore)(nil)).Elem()
@@ -213,15 +214,15 @@ func (o ConfigurationDatastorePtrOutput) ToConfigurationDatastorePtrOutputWithCo
 }
 
 func (o ConfigurationDatastorePtrOutput) Elem() ConfigurationDatastoreOutput {
-	return o.ApplyT(func (v *ConfigurationDatastore) ConfigurationDatastore { return *v }).(ConfigurationDatastoreOutput)
+	return o.ApplyT(func(v *ConfigurationDatastore) ConfigurationDatastore { return *v }).(ConfigurationDatastoreOutput)
 }
 
 func (o ConfigurationDatastorePtrOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func (v ConfigurationDatastore) string { return v.Type }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ConfigurationDatastore) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func (o ConfigurationDatastorePtrOutput) Version() pulumi.StringOutput {
-	return o.ApplyT(func (v ConfigurationDatastore) string { return v.Version }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ConfigurationDatastore) string { return v.Version }).(pulumi.StringOutput)
 }
 
 type InstanceDatabase struct {
@@ -278,7 +279,7 @@ func (i InstanceDatabaseArray) ToInstanceDatabaseArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceDatabaseArrayOutput)
 }
 
-type InstanceDatabaseOutput struct { *pulumi.OutputState }
+type InstanceDatabaseOutput struct{ *pulumi.OutputState }
 
 func (InstanceDatabaseOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*InstanceDatabase)(nil)).Elem()
@@ -293,19 +294,19 @@ func (o InstanceDatabaseOutput) ToInstanceDatabaseOutputWithContext(ctx context.
 }
 
 func (o InstanceDatabaseOutput) Charset() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceDatabase) *string { return v.Charset }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceDatabase) *string { return v.Charset }).(pulumi.StringPtrOutput)
 }
 
 func (o InstanceDatabaseOutput) Collate() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceDatabase) *string { return v.Collate }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceDatabase) *string { return v.Collate }).(pulumi.StringPtrOutput)
 }
 
 // A unique name for the resource.
 func (o InstanceDatabaseOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v InstanceDatabase) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v InstanceDatabase) string { return v.Name }).(pulumi.StringOutput)
 }
 
-type InstanceDatabaseArrayOutput struct { *pulumi.OutputState}
+type InstanceDatabaseArrayOutput struct{ *pulumi.OutputState }
 
 func (InstanceDatabaseArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]InstanceDatabase)(nil)).Elem()
@@ -320,13 +321,13 @@ func (o InstanceDatabaseArrayOutput) ToInstanceDatabaseArrayOutputWithContext(ct
 }
 
 func (o InstanceDatabaseArrayOutput) Index(i pulumi.IntInput) InstanceDatabaseOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) InstanceDatabase {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceDatabase {
 		return vs[0].([]InstanceDatabase)[vs[1].(int)]
 	}).(InstanceDatabaseOutput)
 }
 
 type InstanceDatastore struct {
-	Type string `pulumi:"type"`
+	Type    string `pulumi:"type"`
 	Version string `pulumi:"version"`
 }
 
@@ -338,7 +339,7 @@ type InstanceDatastoreInput interface {
 }
 
 type InstanceDatastoreArgs struct {
-	Type pulumi.StringInput `pulumi:"type"`
+	Type    pulumi.StringInput `pulumi:"type"`
 	Version pulumi.StringInput `pulumi:"version"`
 }
 
@@ -371,7 +372,8 @@ type InstanceDatastorePtrInput interface {
 
 type instanceDatastorePtrType InstanceDatastoreArgs
 
-func InstanceDatastorePtr(v *InstanceDatastoreArgs) InstanceDatastorePtrInput {	return (*instanceDatastorePtrType)(v)
+func InstanceDatastorePtr(v *InstanceDatastoreArgs) InstanceDatastorePtrInput {
+	return (*instanceDatastorePtrType)(v)
 }
 
 func (*instanceDatastorePtrType) ElementType() reflect.Type {
@@ -386,7 +388,7 @@ func (i *instanceDatastorePtrType) ToInstanceDatastorePtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceDatastorePtrOutput)
 }
 
-type InstanceDatastoreOutput struct { *pulumi.OutputState }
+type InstanceDatastoreOutput struct{ *pulumi.OutputState }
 
 func (InstanceDatastoreOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*InstanceDatastore)(nil)).Elem()
@@ -410,14 +412,14 @@ func (o InstanceDatastoreOutput) ToInstanceDatastorePtrOutputWithContext(ctx con
 	}).(InstanceDatastorePtrOutput)
 }
 func (o InstanceDatastoreOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func (v InstanceDatastore) string { return v.Type }).(pulumi.StringOutput)
+	return o.ApplyT(func(v InstanceDatastore) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func (o InstanceDatastoreOutput) Version() pulumi.StringOutput {
-	return o.ApplyT(func (v InstanceDatastore) string { return v.Version }).(pulumi.StringOutput)
+	return o.ApplyT(func(v InstanceDatastore) string { return v.Version }).(pulumi.StringOutput)
 }
 
-type InstanceDatastorePtrOutput struct { *pulumi.OutputState}
+type InstanceDatastorePtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceDatastorePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**InstanceDatastore)(nil)).Elem()
@@ -432,22 +434,22 @@ func (o InstanceDatastorePtrOutput) ToInstanceDatastorePtrOutputWithContext(ctx 
 }
 
 func (o InstanceDatastorePtrOutput) Elem() InstanceDatastoreOutput {
-	return o.ApplyT(func (v *InstanceDatastore) InstanceDatastore { return *v }).(InstanceDatastoreOutput)
+	return o.ApplyT(func(v *InstanceDatastore) InstanceDatastore { return *v }).(InstanceDatastoreOutput)
 }
 
 func (o InstanceDatastorePtrOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func (v InstanceDatastore) string { return v.Type }).(pulumi.StringOutput)
+	return o.ApplyT(func(v InstanceDatastore) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func (o InstanceDatastorePtrOutput) Version() pulumi.StringOutput {
-	return o.ApplyT(func (v InstanceDatastore) string { return v.Version }).(pulumi.StringOutput)
+	return o.ApplyT(func(v InstanceDatastore) string { return v.Version }).(pulumi.StringOutput)
 }
 
 type InstanceNetwork struct {
 	FixedIpV4 *string `pulumi:"fixedIpV4"`
 	FixedIpV6 *string `pulumi:"fixedIpV6"`
-	Port *string `pulumi:"port"`
-	Uuid *string `pulumi:"uuid"`
+	Port      *string `pulumi:"port"`
+	Uuid      *string `pulumi:"uuid"`
 }
 
 type InstanceNetworkInput interface {
@@ -460,8 +462,8 @@ type InstanceNetworkInput interface {
 type InstanceNetworkArgs struct {
 	FixedIpV4 pulumi.StringPtrInput `pulumi:"fixedIpV4"`
 	FixedIpV6 pulumi.StringPtrInput `pulumi:"fixedIpV6"`
-	Port pulumi.StringPtrInput `pulumi:"port"`
-	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+	Port      pulumi.StringPtrInput `pulumi:"port"`
+	Uuid      pulumi.StringPtrInput `pulumi:"uuid"`
 }
 
 func (InstanceNetworkArgs) ElementType() reflect.Type {
@@ -497,7 +499,7 @@ func (i InstanceNetworkArray) ToInstanceNetworkArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkArrayOutput)
 }
 
-type InstanceNetworkOutput struct { *pulumi.OutputState }
+type InstanceNetworkOutput struct{ *pulumi.OutputState }
 
 func (InstanceNetworkOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*InstanceNetwork)(nil)).Elem()
@@ -512,22 +514,22 @@ func (o InstanceNetworkOutput) ToInstanceNetworkOutputWithContext(ctx context.Co
 }
 
 func (o InstanceNetworkOutput) FixedIpV4() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceNetwork) *string { return v.FixedIpV4 }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceNetwork) *string { return v.FixedIpV4 }).(pulumi.StringPtrOutput)
 }
 
 func (o InstanceNetworkOutput) FixedIpV6() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceNetwork) *string { return v.FixedIpV6 }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceNetwork) *string { return v.FixedIpV6 }).(pulumi.StringPtrOutput)
 }
 
 func (o InstanceNetworkOutput) Port() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceNetwork) *string { return v.Port }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceNetwork) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
 
 func (o InstanceNetworkOutput) Uuid() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceNetwork) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceNetwork) *string { return v.Uuid }).(pulumi.StringPtrOutput)
 }
 
-type InstanceNetworkArrayOutput struct { *pulumi.OutputState}
+type InstanceNetworkArrayOutput struct{ *pulumi.OutputState }
 
 func (InstanceNetworkArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]InstanceNetwork)(nil)).Elem()
@@ -542,16 +544,16 @@ func (o InstanceNetworkArrayOutput) ToInstanceNetworkArrayOutputWithContext(ctx 
 }
 
 func (o InstanceNetworkArrayOutput) Index(i pulumi.IntInput) InstanceNetworkOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) InstanceNetwork {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceNetwork {
 		return vs[0].([]InstanceNetwork)[vs[1].(int)]
 	}).(InstanceNetworkOutput)
 }
 
 type InstanceUser struct {
 	Databases []string `pulumi:"databases"`
-	Host *string `pulumi:"host"`
+	Host      *string  `pulumi:"host"`
 	// A unique name for the resource.
-	Name string `pulumi:"name"`
+	Name     string  `pulumi:"name"`
 	Password *string `pulumi:"password"`
 }
 
@@ -564,9 +566,9 @@ type InstanceUserInput interface {
 
 type InstanceUserArgs struct {
 	Databases pulumi.StringArrayInput `pulumi:"databases"`
-	Host pulumi.StringPtrInput `pulumi:"host"`
+	Host      pulumi.StringPtrInput   `pulumi:"host"`
 	// A unique name for the resource.
-	Name pulumi.StringInput `pulumi:"name"`
+	Name     pulumi.StringInput    `pulumi:"name"`
 	Password pulumi.StringPtrInput `pulumi:"password"`
 }
 
@@ -603,7 +605,7 @@ func (i InstanceUserArray) ToInstanceUserArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceUserArrayOutput)
 }
 
-type InstanceUserOutput struct { *pulumi.OutputState }
+type InstanceUserOutput struct{ *pulumi.OutputState }
 
 func (InstanceUserOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*InstanceUser)(nil)).Elem()
@@ -618,23 +620,23 @@ func (o InstanceUserOutput) ToInstanceUserOutputWithContext(ctx context.Context)
 }
 
 func (o InstanceUserOutput) Databases() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v InstanceUser) []string { return v.Databases }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v InstanceUser) []string { return v.Databases }).(pulumi.StringArrayOutput)
 }
 
 func (o InstanceUserOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceUser) *string { return v.Host }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceUser) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
 
 // A unique name for the resource.
 func (o InstanceUserOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v InstanceUser) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v InstanceUser) string { return v.Name }).(pulumi.StringOutput)
 }
 
 func (o InstanceUserOutput) Password() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceUser) *string { return v.Password }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceUser) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
-type InstanceUserArrayOutput struct { *pulumi.OutputState}
+type InstanceUserArrayOutput struct{ *pulumi.OutputState }
 
 func (InstanceUserArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]InstanceUser)(nil)).Elem()
@@ -649,7 +651,7 @@ func (o InstanceUserArrayOutput) ToInstanceUserArrayOutputWithContext(ctx contex
 }
 
 func (o InstanceUserArrayOutput) Index(i pulumi.IntInput) InstanceUserOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) InstanceUser {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceUser {
 		return vs[0].([]InstanceUser)[vs[1].(int)]
 	}).(InstanceUserOutput)
 }

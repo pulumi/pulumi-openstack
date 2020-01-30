@@ -11,7 +11,7 @@ import (
 )
 
 // Manages a V2 Neutron IPSec policy resource within OpenStack.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/vpnaas_ipsec_policy_v2.html.markdown.
 type IpSecPolicy struct {
 	pulumi.CustomResourceState
@@ -250,4 +250,3 @@ type IpSecPolicyArgs struct {
 func (IpSecPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*ipSecPolicyArgs)(nil)).Elem()
 }
-

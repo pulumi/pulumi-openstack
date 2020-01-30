@@ -12,12 +12,12 @@ import (
 )
 
 // Manages a V2 compute quotaset resource within OpenStack.
-// 
+//
 // > **Note:** This usually requires admin privileges.
-// 
-// > **Note:** This resource has a no-op deletion so no actual actions will be done against the OpenStack API 
+//
+// > **Note:** This resource has a no-op deletion so no actual actions will be done against the OpenStack API
 //     in case of delete call.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_quotaset_v2.html.markdown.
 type QuotaSetV2 struct {
 	pulumi.CustomResourceState
@@ -319,4 +319,3 @@ type QuotaSetV2Args struct {
 func (QuotaSetV2Args) ElementType() reflect.Type {
 	return reflect.TypeOf((*quotaSetV2Args)(nil)).Elem()
 }
-

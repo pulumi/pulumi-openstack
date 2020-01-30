@@ -12,14 +12,14 @@ import (
 )
 
 // Manages a V2 flavor resource within OpenStack.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_flavor_v2.html.markdown.
 type Flavor struct {
 	pulumi.CustomResourceState
 
 	// The amount of disk space in gigabytes to use for the root
 	// (/) partition. Changing this creates a new flavor.
-	Disk pulumi.IntOutput `pulumi:"disk"`
+	Disk      pulumi.IntOutput    `pulumi:"disk"`
 	Ephemeral pulumi.IntPtrOutput `pulumi:"ephemeral"`
 	// Key/Value pairs of metadata for the flavor.
 	ExtraSpecs pulumi.MapOutput `pulumi:"extraSpecs"`
@@ -87,7 +87,7 @@ func GetFlavor(ctx *pulumi.Context,
 type flavorState struct {
 	// The amount of disk space in gigabytes to use for the root
 	// (/) partition. Changing this creates a new flavor.
-	Disk *int `pulumi:"disk"`
+	Disk      *int `pulumi:"disk"`
 	Ephemeral *int `pulumi:"ephemeral"`
 	// Key/Value pairs of metadata for the flavor.
 	ExtraSpecs map[string]interface{} `pulumi:"extraSpecs"`
@@ -119,7 +119,7 @@ type flavorState struct {
 type FlavorState struct {
 	// The amount of disk space in gigabytes to use for the root
 	// (/) partition. Changing this creates a new flavor.
-	Disk pulumi.IntPtrInput
+	Disk      pulumi.IntPtrInput
 	Ephemeral pulumi.IntPtrInput
 	// Key/Value pairs of metadata for the flavor.
 	ExtraSpecs pulumi.MapInput
@@ -155,7 +155,7 @@ func (FlavorState) ElementType() reflect.Type {
 type flavorArgs struct {
 	// The amount of disk space in gigabytes to use for the root
 	// (/) partition. Changing this creates a new flavor.
-	Disk int `pulumi:"disk"`
+	Disk      int  `pulumi:"disk"`
 	Ephemeral *int `pulumi:"ephemeral"`
 	// Key/Value pairs of metadata for the flavor.
 	ExtraSpecs map[string]interface{} `pulumi:"extraSpecs"`
@@ -188,7 +188,7 @@ type flavorArgs struct {
 type FlavorArgs struct {
 	// The amount of disk space in gigabytes to use for the root
 	// (/) partition. Changing this creates a new flavor.
-	Disk pulumi.IntInput
+	Disk      pulumi.IntInput
 	Ephemeral pulumi.IntPtrInput
 	// Key/Value pairs of metadata for the flavor.
 	ExtraSpecs pulumi.MapInput
@@ -220,4 +220,3 @@ type FlavorArgs struct {
 func (FlavorArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*flavorArgs)(nil)).Elem()
 }
-

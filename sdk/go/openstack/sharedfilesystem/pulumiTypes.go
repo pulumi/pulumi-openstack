@@ -12,7 +12,7 @@ import (
 )
 
 type ShareExportLocation struct {
-	Path *string `pulumi:"path"`
+	Path      *string `pulumi:"path"`
 	Preferred *string `pulumi:"preferred"`
 }
 
@@ -24,7 +24,7 @@ type ShareExportLocationInput interface {
 }
 
 type ShareExportLocationArgs struct {
-	Path pulumi.StringPtrInput `pulumi:"path"`
+	Path      pulumi.StringPtrInput `pulumi:"path"`
 	Preferred pulumi.StringPtrInput `pulumi:"preferred"`
 }
 
@@ -61,7 +61,7 @@ func (i ShareExportLocationArray) ToShareExportLocationArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ShareExportLocationArrayOutput)
 }
 
-type ShareExportLocationOutput struct { *pulumi.OutputState }
+type ShareExportLocationOutput struct{ *pulumi.OutputState }
 
 func (ShareExportLocationOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ShareExportLocation)(nil)).Elem()
@@ -76,14 +76,14 @@ func (o ShareExportLocationOutput) ToShareExportLocationOutputWithContext(ctx co
 }
 
 func (o ShareExportLocationOutput) Path() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ShareExportLocation) *string { return v.Path }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ShareExportLocation) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
 func (o ShareExportLocationOutput) Preferred() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ShareExportLocation) *string { return v.Preferred }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ShareExportLocation) *string { return v.Preferred }).(pulumi.StringPtrOutput)
 }
 
-type ShareExportLocationArrayOutput struct { *pulumi.OutputState}
+type ShareExportLocationArrayOutput struct{ *pulumi.OutputState }
 
 func (ShareExportLocationArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ShareExportLocation)(nil)).Elem()
@@ -98,13 +98,13 @@ func (o ShareExportLocationArrayOutput) ToShareExportLocationArrayOutputWithCont
 }
 
 func (o ShareExportLocationArrayOutput) Index(i pulumi.IntInput) ShareExportLocationOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ShareExportLocation {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ShareExportLocation {
 		return vs[0].([]ShareExportLocation)[vs[1].(int)]
 	}).(ShareExportLocationOutput)
 }
 
 type GetShareExportLocation struct {
-	Path string `pulumi:"path"`
+	Path      string `pulumi:"path"`
 	Preferred string `pulumi:"preferred"`
 }
 
@@ -116,7 +116,7 @@ type GetShareExportLocationInput interface {
 }
 
 type GetShareExportLocationArgs struct {
-	Path pulumi.StringInput `pulumi:"path"`
+	Path      pulumi.StringInput `pulumi:"path"`
 	Preferred pulumi.StringInput `pulumi:"preferred"`
 }
 
@@ -153,7 +153,7 @@ func (i GetShareExportLocationArray) ToGetShareExportLocationArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetShareExportLocationArrayOutput)
 }
 
-type GetShareExportLocationOutput struct { *pulumi.OutputState }
+type GetShareExportLocationOutput struct{ *pulumi.OutputState }
 
 func (GetShareExportLocationOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetShareExportLocation)(nil)).Elem()
@@ -168,14 +168,14 @@ func (o GetShareExportLocationOutput) ToGetShareExportLocationOutputWithContext(
 }
 
 func (o GetShareExportLocationOutput) Path() pulumi.StringOutput {
-	return o.ApplyT(func (v GetShareExportLocation) string { return v.Path }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetShareExportLocation) string { return v.Path }).(pulumi.StringOutput)
 }
 
 func (o GetShareExportLocationOutput) Preferred() pulumi.StringOutput {
-	return o.ApplyT(func (v GetShareExportLocation) string { return v.Preferred }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetShareExportLocation) string { return v.Preferred }).(pulumi.StringOutput)
 }
 
-type GetShareExportLocationArrayOutput struct { *pulumi.OutputState}
+type GetShareExportLocationArrayOutput struct{ *pulumi.OutputState }
 
 func (GetShareExportLocationArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetShareExportLocation)(nil)).Elem()
@@ -190,7 +190,7 @@ func (o GetShareExportLocationArrayOutput) ToGetShareExportLocationArrayOutputWi
 }
 
 func (o GetShareExportLocationArrayOutput) Index(i pulumi.IntInput) GetShareExportLocationOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetShareExportLocation {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetShareExportLocation {
 		return vs[0].([]GetShareExportLocation)[vs[1].(int)]
 	}).(GetShareExportLocationOutput)
 }

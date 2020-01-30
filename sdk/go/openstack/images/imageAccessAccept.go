@@ -13,7 +13,7 @@ import (
 
 // Manages memberships status for the shared OpenStack Glance V2 Image within the
 // destination project, which has a member proposal.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/images_image_access_accept_v2.html.markdown.
 type ImageAccessAccept struct {
 	pulumi.CustomResourceState
@@ -156,4 +156,3 @@ type ImageAccessAcceptArgs struct {
 func (ImageAccessAcceptArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*imageAccessAcceptArgs)(nil)).Elem()
 }
-

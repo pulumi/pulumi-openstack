@@ -12,7 +12,7 @@ import (
 )
 
 // Manages a V2 Neutron VPN service resource within OpenStack.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/vpnaas_service_v2.html.markdown.
 type Service struct {
 	pulumi.CustomResourceState
@@ -202,4 +202,3 @@ type ServiceArgs struct {
 func (ServiceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*serviceArgs)(nil)).Elem()
 }
-

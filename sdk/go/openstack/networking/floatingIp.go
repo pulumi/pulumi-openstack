@@ -15,7 +15,7 @@ import (
 // that can be used for load balancers.
 // These are similar to Nova (compute) floating IP resources,
 // but only compute floating IPs can be used with compute instances.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_floatingip_v2.html.markdown.
 type FloatingIp struct {
 	pulumi.CustomResourceState
@@ -301,4 +301,3 @@ type FloatingIpArgs struct {
 func (FloatingIpArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*floatingIpArgs)(nil)).Elem()
 }
-

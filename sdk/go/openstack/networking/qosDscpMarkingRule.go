@@ -12,7 +12,7 @@ import (
 )
 
 // Manages a V2 Neutron QoS DSCP marking rule resource within OpenStack.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_qos_dscp_marking_rule_v2.html.markdown.
 type QosDscpMarkingRule struct {
 	pulumi.CustomResourceState
@@ -117,4 +117,3 @@ type QosDscpMarkingRuleArgs struct {
 func (QosDscpMarkingRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*qosDscpMarkingRuleArgs)(nil)).Elem()
 }
-

@@ -12,7 +12,7 @@ import (
 )
 
 // Manages a V2 Neutron QoS bandwidth limit rule resource within OpenStack.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_qos_bandwidth_limit_rule_v2.html.markdown.
 type QosBandwidthLimitRule struct {
 	pulumi.CustomResourceState
@@ -147,4 +147,3 @@ type QosBandwidthLimitRuleArgs struct {
 func (QosBandwidthLimitRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*qosBandwidthLimitRuleArgs)(nil)).Elem()
 }
-

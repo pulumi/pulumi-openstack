@@ -9,7 +9,7 @@ import (
 )
 
 // Use this data source to get a list of availability zones from OpenStack
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/compute_availability_zones_v2.html.markdown.
 func GetAvailabilityZones(ctx *pulumi.Context, args *GetAvailabilityZonesArgs, opts ...pulumi.InvokeOption) (*GetAvailabilityZonesResult, error) {
 	var rv GetAvailabilityZonesResult
@@ -28,14 +28,12 @@ type GetAvailabilityZonesArgs struct {
 	State *string `pulumi:"state"`
 }
 
-
 // A collection of values returned by getAvailabilityZones.
 type GetAvailabilityZonesResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The names of the availability zones, ordered alphanumerically, that match the queried `state`
-	Names []string `pulumi:"names"`
-	Region string `pulumi:"region"`
-	State *string `pulumi:"state"`
+	Names  []string `pulumi:"names"`
+	Region string   `pulumi:"region"`
+	State  *string  `pulumi:"state"`
 }
-

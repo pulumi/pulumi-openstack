@@ -12,7 +12,7 @@ import (
 )
 
 // Manages a V2 L7 Rule resource within OpenStack.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_l7rule_v2.html.markdown.
 type L7RuleV2 struct {
 	pulumi.CustomResourceState
@@ -234,4 +234,3 @@ type L7RuleV2Args struct {
 func (L7RuleV2Args) ElementType() reflect.Type {
 	return reflect.TypeOf((*l7ruleV2Args)(nil)).Elem()
 }
-

@@ -12,7 +12,7 @@ import (
 )
 
 // Manages a V2 router interface resource within OpenStack.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_router_interface_v2.html.markdown.
 type RouterInterface struct {
 	pulumi.CustomResourceState
@@ -139,4 +139,3 @@ type RouterInterfaceArgs struct {
 func (RouterInterfaceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*routerInterfaceArgs)(nil)).Elem()
 }
-
