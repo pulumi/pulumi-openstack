@@ -2,11 +2,14 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+_(none)_
+
+---
+
+## 1.4.0 (2020-03-23)
 * Upgrade to v1.26.0 of the OpenStack Terraform Provider
 * Upgrade to Pulumi v1.12.1
 * Upgrade to pulumi-terraform-bridge v1.8.2
-
----
 
 ## 1.3.0 (2019-12-17)
 * Namespace names in .NET SDK are adjusted to PascalCase
