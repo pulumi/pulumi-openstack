@@ -53,6 +53,14 @@ namespace Pulumi.OpenStack.LoadBalancer
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// The list of key value pairs representing headers to insert
+        /// into the request before it is sent to the backend members. Changing this updates the headers of the
+        /// existing listener.
+        /// </summary>
+        [Output("insertHeaders")]
+        public Output<ImmutableDictionary<string, object>?> InsertHeaders { get; private set; } = null!;
+
+        /// <summary>
         /// The load balancer on which to provision this
         /// Listener. Changing this creates a new Listener.
         /// </summary>
@@ -215,6 +223,20 @@ namespace Pulumi.OpenStack.LoadBalancer
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("insertHeaders")]
+        private InputMap<object>? _insertHeaders;
+
+        /// <summary>
+        /// The list of key value pairs representing headers to insert
+        /// into the request before it is sent to the backend members. Changing this updates the headers of the
+        /// existing listener.
+        /// </summary>
+        public InputMap<object> InsertHeaders
+        {
+            get => _insertHeaders ?? (_insertHeaders = new InputMap<object>());
+            set => _insertHeaders = value;
+        }
+
         /// <summary>
         /// The load balancer on which to provision this
         /// Listener. Changing this creates a new Listener.
@@ -344,6 +366,20 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        [Input("insertHeaders")]
+        private InputMap<object>? _insertHeaders;
+
+        /// <summary>
+        /// The list of key value pairs representing headers to insert
+        /// into the request before it is sent to the backend members. Changing this updates the headers of the
+        /// existing listener.
+        /// </summary>
+        public InputMap<object> InsertHeaders
+        {
+            get => _insertHeaders ?? (_insertHeaders = new InputMap<object>());
+            set => _insertHeaders = value;
+        }
 
         /// <summary>
         /// The load balancer on which to provision this

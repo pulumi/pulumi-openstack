@@ -11,6 +11,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * ### Simple secret
+ * 
  * The container with the TLS certificates, which can be used by the loadbalancer HTTPS listener.
  * 
  * ```typescript
@@ -63,6 +65,42 @@ import * as utilities from "../utilities";
  *     protocolPort: 443,
  * });
  * ```
+ * 
+ * ### Container with the ACL
+ * 
+ * > **Note** Only read ACLs are supported
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ * 
+ * const tls1 = new openstack.keymanager.ContainerV1("tls1", {
+ *     acl: {
+ *         read: {
+ *             projectAccess: false,
+ *             users: [
+ *                 "userid1",
+ *                 "userid2",
+ *             ],
+ *         },
+ *     },
+ *     secretRefs: [
+ *         {
+ *             name: "certificate",
+ *             secretRef: openstack_keymanager_secret_v1_certificate_1.secretRef,
+ *         },
+ *         {
+ *             name: "privateKey",
+ *             secretRef: openstack_keymanager_secret_v1_private_key_1.secretRef,
+ *         },
+ *         {
+ *             name: "intermediates",
+ *             secretRef: openstack_keymanager_secret_v1_intermediate_1.secretRef,
+ *         },
+ *     ],
+ *     type: "certificate",
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/keymanager_container_v1.html.markdown.
  */
@@ -93,6 +131,12 @@ export class ContainerV1 extends pulumi.CustomResource {
         return obj['__pulumiType'] === ContainerV1.__pulumiType;
     }
 
+    /**
+     * Allows to control an access to a container. Currently only
+     * the `read` operation is supported. If not specified, the container is
+     * accessible project wide. The `read` structure is described below.
+     */
+    public readonly acl!: pulumi.Output<outputs.keymanager.ContainerV1Acl>;
     /**
      * The list of the container consumers. The structure is described below.
      */
@@ -151,6 +195,7 @@ export class ContainerV1 extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as ContainerV1State | undefined;
+            inputs["acl"] = state ? state.acl : undefined;
             inputs["consumers"] = state ? state.consumers : undefined;
             inputs["containerRef"] = state ? state.containerRef : undefined;
             inputs["createdAt"] = state ? state.createdAt : undefined;
@@ -166,6 +211,7 @@ export class ContainerV1 extends pulumi.CustomResource {
             if (!args || args.type === undefined) {
                 throw new Error("Missing required property 'type'");
             }
+            inputs["acl"] = args ? args.acl : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["secretRefs"] = args ? args.secretRefs : undefined;
@@ -192,6 +238,12 @@ export class ContainerV1 extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ContainerV1 resources.
  */
 export interface ContainerV1State {
+    /**
+     * Allows to control an access to a container. Currently only
+     * the `read` operation is supported. If not specified, the container is
+     * accessible project wide. The `read` structure is described below.
+     */
+    readonly acl?: pulumi.Input<inputs.keymanager.ContainerV1Acl>;
     /**
      * The list of the container consumers. The structure is described below.
      */
@@ -243,6 +295,12 @@ export interface ContainerV1State {
  * The set of arguments for constructing a ContainerV1 resource.
  */
 export interface ContainerV1Args {
+    /**
+     * Allows to control an access to a container. Currently only
+     * the `read` operation is supported. If not specified, the container is
+     * accessible project wide. The `read` structure is described below.
+     */
+    readonly acl?: pulumi.Input<inputs.keymanager.ContainerV1Acl>;
     /**
      * Human-readable name for the Container. Does not have
      * to be unique.

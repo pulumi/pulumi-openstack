@@ -23,11 +23,13 @@ func NewContainerV1(ctx *pulumi.Context,
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["acl"] = nil
 		inputs["name"] = nil
 		inputs["region"] = nil
 		inputs["secretRefs"] = nil
 		inputs["type"] = nil
 	} else {
+		inputs["acl"] = args.Acl
 		inputs["name"] = args.Name
 		inputs["region"] = args.Region
 		inputs["secretRefs"] = args.SecretRefs
@@ -52,6 +54,7 @@ func GetContainerV1(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *ContainerV1State, opts ...pulumi.ResourceOpt) (*ContainerV1, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["acl"] = state.Acl
 		inputs["consumers"] = state.Consumers
 		inputs["containerRef"] = state.ContainerRef
 		inputs["createdAt"] = state.CreatedAt
@@ -78,6 +81,13 @@ func (r *ContainerV1) URN() pulumi.URNOutput {
 // ID is this resource's unique identifier assigned by its provider.
 func (r *ContainerV1) ID() pulumi.IDOutput {
 	return r.s.ID()
+}
+
+// Allows to control an access to a container. Currently only
+// the `read` operation is supported. If not specified, the container is
+// accessible project wide. The `read` structure is described below.
+func (r *ContainerV1) Acl() pulumi.Output {
+	return r.s.State["acl"]
 }
 
 // The list of the container consumers. The structure is described below.
@@ -137,6 +147,10 @@ func (r *ContainerV1) UpdatedAt() pulumi.StringOutput {
 
 // Input properties used for looking up and filtering ContainerV1 resources.
 type ContainerV1State struct {
+	// Allows to control an access to a container. Currently only
+	// the `read` operation is supported. If not specified, the container is
+	// accessible project wide. The `read` structure is described below.
+	Acl interface{}
 	// The list of the container consumers. The structure is described below.
 	Consumers interface{}
 	// The container reference / where to find the container.
@@ -166,6 +180,10 @@ type ContainerV1State struct {
 
 // The set of arguments for constructing a ContainerV1 resource.
 type ContainerV1Args struct {
+	// Allows to control an access to a container. Currently only
+	// the `read` operation is supported. If not specified, the container is
+	// accessible project wide. The `read` structure is described below.
+	Acl interface{}
 	// Human-readable name for the Container. Does not have
 	// to be unique.
 	Name interface{}

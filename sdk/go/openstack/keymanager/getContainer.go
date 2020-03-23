@@ -21,6 +21,7 @@ func LookupContainer(ctx *pulumi.Context, args *GetContainerArgs) (*GetContainer
 		return nil, err
 	}
 	return &GetContainerResult{
+		Acls: outputs["acls"],
 		Consumers: outputs["consumers"],
 		ContainerRef: outputs["containerRef"],
 		CreatedAt: outputs["createdAt"],
@@ -47,12 +48,15 @@ type GetContainerArgs struct {
 
 // A collection of values returned by getContainer.
 type GetContainerResult struct {
+	// The list of ACLs assigned to a container. The `read` structure is
+	// described below.
+	Acls interface{}
 	// The list of the container consumers. The structure is described
 	// below.
 	Consumers interface{}
 	// The container reference / where to find the container.
 	ContainerRef interface{}
-	// The date the container was created.
+	// The date the container ACL was created.
 	CreatedAt interface{}
 	// The creator of the container.
 	CreatorId interface{}
@@ -67,7 +71,7 @@ type GetContainerResult struct {
 	Status interface{}
 	// The container type.
 	Type interface{}
-	// The date the container was last updated.
+	// The date the container ACL was last updated.
 	UpdatedAt interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}

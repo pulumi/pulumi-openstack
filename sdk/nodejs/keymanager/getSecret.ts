@@ -95,6 +95,10 @@ export interface GetSecretArgs {
  */
 export interface GetSecretResult {
     /**
+     * The list of ACLs assigned to a secret. The `read` structure is described below.
+     */
+    readonly acls: outputs.keymanager.GetSecretAcl[];
+    /**
      * See Argument Reference above.
      */
     readonly aclOnly?: boolean;
@@ -111,7 +115,7 @@ export interface GetSecretResult {
      */
     readonly contentTypes: {[key: string]: any};
     /**
-     * The date the secret was created.
+     * The date the secret ACL was created.
      */
     readonly createdAt: string;
     /**
@@ -172,7 +176,7 @@ export interface GetSecretResult {
      */
     readonly status: string;
     /**
-     * The date the secret was last updated.
+     * The date the secret ACL was last updated.
      */
     readonly updatedAt: string;
     /**

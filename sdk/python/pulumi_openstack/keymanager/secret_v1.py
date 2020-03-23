@@ -10,6 +10,19 @@ from typing import Union
 from .. import utilities, tables
 
 class SecretV1(pulumi.CustomResource):
+    acl: pulumi.Output[dict]
+    """
+    Allows to control an access to a secret. Currently only the
+    `read` operation is supported. If not specified, the secret is accessible
+    project wide.
+    
+      * `read` (`dict`)
+    
+        * `created_at` (`str`) - The date the secret was created.
+        * `projectAccess` (`bool`)
+        * `updated_at` (`str`) - The date the secret was last updated.
+        * `users` (`list`)
+    """
     algorithm: pulumi.Output[str]
     """
     Metadata provided by a user or system for informational purposes.
@@ -87,12 +100,15 @@ class SecretV1(pulumi.CustomResource):
     """
     The date the secret was last updated.
     """
-    def __init__(__self__, resource_name, opts=None, algorithm=None, bit_length=None, expiration=None, metadata=None, mode=None, name=None, payload=None, payload_content_encoding=None, payload_content_type=None, region=None, secret_type=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, acl=None, algorithm=None, bit_length=None, expiration=None, metadata=None, mode=None, name=None, payload=None, payload_content_encoding=None, payload_content_type=None, region=None, secret_type=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a SecretV1 resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[dict] acl: Allows to control an access to a secret. Currently only the
+               `read` operation is supported. If not specified, the secret is accessible
+               project wide.
         :param pulumi.Input[str] algorithm: Metadata provided by a user or system for informational purposes.
         :param pulumi.Input[float] bit_length: Metadata provided by a user or system for informational purposes.
         :param pulumi.Input[str] expiration: The expiration time of the secret in the RFC3339 timestamp format (e.g. `2019-03-09T12:58:49Z`). If omitted, a secret will never expire. Changing this creates a new secret.
@@ -108,6 +124,15 @@ class SecretV1(pulumi.CustomResource):
                `region` argument of the provider is used. Changing this creates a new
                V1 secret.
         :param pulumi.Input[str] secret_type: Used to indicate the type of secret being stored. For more information see [Secret types](https://docs.openstack.org/barbican/latest/api/reference/secret_types.html).
+        
+        The **acl** object supports the following:
+        
+          * `read` (`pulumi.Input[dict]`)
+        
+            * `created_at` (`pulumi.Input[str]`) - The date the secret was created.
+            * `projectAccess` (`pulumi.Input[bool]`)
+            * `updated_at` (`pulumi.Input[str]`) - The date the secret was last updated.
+            * `users` (`pulumi.Input[list]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/keymanager_secret_v1.html.markdown.
         """
@@ -128,6 +153,7 @@ class SecretV1(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['acl'] = acl
             __props__['algorithm'] = algorithm
             __props__['bit_length'] = bit_length
             __props__['expiration'] = expiration
@@ -153,7 +179,7 @@ class SecretV1(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, algorithm=None, all_metadata=None, bit_length=None, content_types=None, created_at=None, creator_id=None, expiration=None, metadata=None, mode=None, name=None, payload=None, payload_content_encoding=None, payload_content_type=None, region=None, secret_ref=None, secret_type=None, status=None, updated_at=None):
+    def get(resource_name, id, opts=None, acl=None, algorithm=None, all_metadata=None, bit_length=None, content_types=None, created_at=None, creator_id=None, expiration=None, metadata=None, mode=None, name=None, payload=None, payload_content_encoding=None, payload_content_type=None, region=None, secret_ref=None, secret_type=None, status=None, updated_at=None):
         """
         Get an existing SecretV1 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -161,6 +187,9 @@ class SecretV1(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[dict] acl: Allows to control an access to a secret. Currently only the
+               `read` operation is supported. If not specified, the secret is accessible
+               project wide.
         :param pulumi.Input[str] algorithm: Metadata provided by a user or system for informational purposes.
         :param pulumi.Input[dict] all_metadata: The map of metadata, assigned on the secret, which has been
                explicitly and implicitly added.
@@ -184,12 +213,22 @@ class SecretV1(pulumi.CustomResource):
         :param pulumi.Input[str] secret_type: Used to indicate the type of secret being stored. For more information see [Secret types](https://docs.openstack.org/barbican/latest/api/reference/secret_types.html).
         :param pulumi.Input[str] status: The status of the secret.
         :param pulumi.Input[str] updated_at: The date the secret was last updated.
+        
+        The **acl** object supports the following:
+        
+          * `read` (`pulumi.Input[dict]`)
+        
+            * `created_at` (`pulumi.Input[str]`) - The date the secret was created.
+            * `projectAccess` (`pulumi.Input[bool]`)
+            * `updated_at` (`pulumi.Input[str]`) - The date the secret was last updated.
+            * `users` (`pulumi.Input[list]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/keymanager_secret_v1.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+        __props__["acl"] = acl
         __props__["algorithm"] = algorithm
         __props__["all_metadata"] = all_metadata
         __props__["bit_length"] = bit_length

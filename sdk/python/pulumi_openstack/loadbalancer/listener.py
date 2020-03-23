@@ -37,6 +37,12 @@ class Listener(pulumi.CustomResource):
     """
     Human-readable description for the Listener.
     """
+    insert_headers: pulumi.Output[dict]
+    """
+    The list of key value pairs representing headers to insert
+    into the request before it is sent to the backend members. Changing this updates the headers of the
+    existing listener.
+    """
     loadbalancer_id: pulumi.Output[str]
     """
     The load balancer on which to provision this
@@ -95,7 +101,7 @@ class Listener(pulumi.CustomResource):
     The time in milliseconds, to wait for additional
     TCP packets for content inspection.
     """
-    def __init__(__self__, resource_name, opts=None, admin_state_up=None, connection_limit=None, default_pool_id=None, default_tls_container_ref=None, description=None, loadbalancer_id=None, name=None, protocol=None, protocol_port=None, region=None, sni_container_refs=None, tenant_id=None, timeout_client_data=None, timeout_member_connect=None, timeout_member_data=None, timeout_tcp_inspect=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, admin_state_up=None, connection_limit=None, default_pool_id=None, default_tls_container_ref=None, description=None, insert_headers=None, loadbalancer_id=None, name=None, protocol=None, protocol_port=None, region=None, sni_container_refs=None, tenant_id=None, timeout_client_data=None, timeout_member_connect=None, timeout_member_data=None, timeout_tcp_inspect=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a V2 listener resource within OpenStack.
         
@@ -113,6 +119,9 @@ class Listener(pulumi.CustomResource):
                [here](https://wiki.openstack.org/wiki/Network/LBaaS/docs/how-to-create-tls-loadbalancer)
                for more information.
         :param pulumi.Input[str] description: Human-readable description for the Listener.
+        :param pulumi.Input[dict] insert_headers: The list of key value pairs representing headers to insert
+               into the request before it is sent to the backend members. Changing this updates the headers of the
+               existing listener.
         :param pulumi.Input[str] loadbalancer_id: The load balancer on which to provision this
                Listener. Changing this creates a new Listener.
         :param pulumi.Input[str] name: Human-readable name for the Listener. Does not have
@@ -163,6 +172,7 @@ class Listener(pulumi.CustomResource):
             __props__['default_pool_id'] = default_pool_id
             __props__['default_tls_container_ref'] = default_tls_container_ref
             __props__['description'] = description
+            __props__['insert_headers'] = insert_headers
             if loadbalancer_id is None:
                 raise TypeError("Missing required property 'loadbalancer_id'")
             __props__['loadbalancer_id'] = loadbalancer_id
@@ -187,7 +197,7 @@ class Listener(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, admin_state_up=None, connection_limit=None, default_pool_id=None, default_tls_container_ref=None, description=None, loadbalancer_id=None, name=None, protocol=None, protocol_port=None, region=None, sni_container_refs=None, tenant_id=None, timeout_client_data=None, timeout_member_connect=None, timeout_member_data=None, timeout_tcp_inspect=None):
+    def get(resource_name, id, opts=None, admin_state_up=None, connection_limit=None, default_pool_id=None, default_tls_container_ref=None, description=None, insert_headers=None, loadbalancer_id=None, name=None, protocol=None, protocol_port=None, region=None, sni_container_refs=None, tenant_id=None, timeout_client_data=None, timeout_member_connect=None, timeout_member_data=None, timeout_tcp_inspect=None):
         """
         Get an existing Listener resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -207,6 +217,9 @@ class Listener(pulumi.CustomResource):
                [here](https://wiki.openstack.org/wiki/Network/LBaaS/docs/how-to-create-tls-loadbalancer)
                for more information.
         :param pulumi.Input[str] description: Human-readable description for the Listener.
+        :param pulumi.Input[dict] insert_headers: The list of key value pairs representing headers to insert
+               into the request before it is sent to the backend members. Changing this updates the headers of the
+               existing listener.
         :param pulumi.Input[str] loadbalancer_id: The load balancer on which to provision this
                Listener. Changing this creates a new Listener.
         :param pulumi.Input[str] name: Human-readable name for the Listener. Does not have
@@ -243,6 +256,7 @@ class Listener(pulumi.CustomResource):
         __props__["default_pool_id"] = default_pool_id
         __props__["default_tls_container_ref"] = default_tls_container_ref
         __props__["description"] = description
+        __props__["insert_headers"] = insert_headers
         __props__["loadbalancer_id"] = loadbalancer_id
         __props__["name"] = name
         __props__["protocol"] = protocol

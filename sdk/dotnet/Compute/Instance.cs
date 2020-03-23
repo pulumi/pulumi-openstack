@@ -779,6 +779,9 @@ namespace Pulumi.OpenStack.Compute
         [Input("volumeSize")]
         public Input<int>? VolumeSize { get; set; }
 
+        [Input("volumeType")]
+        public Input<string>? VolumeType { get; set; }
+
         public InstanceBlockDevicesArgs()
         {
         }
@@ -812,6 +815,9 @@ namespace Pulumi.OpenStack.Compute
 
         [Input("volumeSize")]
         public Input<int>? VolumeSize { get; set; }
+
+        [Input("volumeType")]
+        public Input<string>? VolumeType { get; set; }
 
         public InstanceBlockDevicesGetArgs()
         {
@@ -1038,6 +1044,7 @@ namespace Pulumi.OpenStack.Compute
         public readonly string SourceType;
         public readonly string? Uuid;
         public readonly int? VolumeSize;
+        public readonly string? VolumeType;
 
         [OutputConstructor]
         private InstanceBlockDevices(
@@ -1049,7 +1056,8 @@ namespace Pulumi.OpenStack.Compute
             string? guestFormat,
             string sourceType,
             string? uuid,
-            int? volumeSize)
+            int? volumeSize,
+            string? volumeType)
         {
             BootIndex = bootIndex;
             DeleteOnTermination = deleteOnTermination;
@@ -1060,6 +1068,7 @@ namespace Pulumi.OpenStack.Compute
             SourceType = sourceType;
             Uuid = uuid;
             VolumeSize = volumeSize;
+            VolumeType = volumeType;
         }
     }
 

@@ -27,6 +27,7 @@ func LookupSecret(ctx *pulumi.Context, args *GetSecretArgs) (*GetSecretResult, e
 		return nil, err
 	}
 	return &GetSecretResult{
+		Acls: outputs["acls"],
 		AclOnly: outputs["aclOnly"],
 		Algorithm: outputs["algorithm"],
 		BitLength: outputs["bitLength"],
@@ -88,6 +89,8 @@ type GetSecretArgs struct {
 
 // A collection of values returned by getSecret.
 type GetSecretResult struct {
+	// The list of ACLs assigned to a secret. The `read` structure is described below.
+	Acls interface{}
 	// See Argument Reference above.
 	AclOnly interface{}
 	// See Argument Reference above.
@@ -96,7 +99,7 @@ type GetSecretResult struct {
 	BitLength interface{}
 	// The map of the content types, assigned on the secret.
 	ContentTypes interface{}
-	// The date the secret was created.
+	// The date the secret ACL was created.
 	CreatedAt interface{}
 	// See Argument Reference above.
 	CreatedAtFilter interface{}
@@ -127,7 +130,7 @@ type GetSecretResult struct {
 	SecretType interface{}
 	// The status of the secret.
 	Status interface{}
-	// The date the secret was last updated.
+	// The date the secret ACL was last updated.
 	UpdatedAt interface{}
 	// See Argument Reference above.
 	UpdatedAtFilter interface{}

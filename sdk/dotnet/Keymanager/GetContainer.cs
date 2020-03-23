@@ -44,6 +44,11 @@ namespace Pulumi.OpenStack.KeyManager
     public sealed class GetContainerResult
     {
         /// <summary>
+        /// The list of ACLs assigned to a container. The `read` structure is
+        /// described below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetContainerAclsResult> Acls;
+        /// <summary>
         /// The list of the container consumers. The structure is described
         /// below.
         /// </summary>
@@ -53,7 +58,7 @@ namespace Pulumi.OpenStack.KeyManager
         /// </summary>
         public readonly string ContainerRef;
         /// <summary>
-        /// The date the container was created.
+        /// The date the container ACL was created.
         /// </summary>
         public readonly string CreatedAt;
         /// <summary>
@@ -82,7 +87,7 @@ namespace Pulumi.OpenStack.KeyManager
         /// </summary>
         public readonly string Type;
         /// <summary>
-        /// The date the container was last updated.
+        /// The date the container ACL was last updated.
         /// </summary>
         public readonly string UpdatedAt;
         /// <summary>
@@ -92,6 +97,7 @@ namespace Pulumi.OpenStack.KeyManager
 
         [OutputConstructor]
         private GetContainerResult(
+            ImmutableArray<Outputs.GetContainerAclsResult> acls,
             ImmutableArray<Outputs.GetContainerConsumersResult> consumers,
             string containerRef,
             string createdAt,
@@ -104,6 +110,7 @@ namespace Pulumi.OpenStack.KeyManager
             string updatedAt,
             string id)
         {
+            Acls = acls;
             Consumers = consumers;
             ContainerRef = containerRef;
             CreatedAt = createdAt;
@@ -120,6 +127,53 @@ namespace Pulumi.OpenStack.KeyManager
 
     namespace Outputs
     {
+
+    [OutputType]
+    public sealed class GetContainerAclsReadResult
+    {
+        /// <summary>
+        /// The date the container ACL was created.
+        /// </summary>
+        public readonly string CreatedAt;
+        /// <summary>
+        /// Whether the container is accessible project wide.
+        /// </summary>
+        public readonly bool? ProjectAccess;
+        /// <summary>
+        /// The date the container ACL was last updated.
+        /// </summary>
+        public readonly string UpdatedAt;
+        /// <summary>
+        /// The list of user IDs, which are allowed to access the container,
+        /// when `project_access` is set to `false`.
+        /// </summary>
+        public readonly ImmutableArray<string> Users;
+
+        [OutputConstructor]
+        private GetContainerAclsReadResult(
+            string createdAt,
+            bool? projectAccess,
+            string updatedAt,
+            ImmutableArray<string> users)
+        {
+            CreatedAt = createdAt;
+            ProjectAccess = projectAccess;
+            UpdatedAt = updatedAt;
+            Users = users;
+        }
+    }
+
+    [OutputType]
+    public sealed class GetContainerAclsResult
+    {
+        public readonly GetContainerAclsReadResult Read;
+
+        [OutputConstructor]
+        private GetContainerAclsResult(GetContainerAclsReadResult read)
+        {
+            Read = read;
+        }
+    }
 
     [OutputType]
     public sealed class GetContainerConsumersResult

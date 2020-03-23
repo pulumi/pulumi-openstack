@@ -37,6 +37,12 @@ export class SecretV1 extends pulumi.CustomResource {
     }
 
     /**
+     * Allows to control an access to a secret. Currently only the
+     * `read` operation is supported. If not specified, the secret is accessible
+     * project wide.
+     */
+    public readonly acl!: pulumi.Output<outputs.keymanager.SecretV1Acl>;
+    /**
      * Metadata provided by a user or system for informational purposes.
      */
     public readonly algorithm!: pulumi.Output<string>;
@@ -126,6 +132,7 @@ export class SecretV1 extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as SecretV1State | undefined;
+            inputs["acl"] = state ? state.acl : undefined;
             inputs["algorithm"] = state ? state.algorithm : undefined;
             inputs["allMetadata"] = state ? state.allMetadata : undefined;
             inputs["bitLength"] = state ? state.bitLength : undefined;
@@ -146,6 +153,7 @@ export class SecretV1 extends pulumi.CustomResource {
             inputs["updatedAt"] = state ? state.updatedAt : undefined;
         } else {
             const args = argsOrState as SecretV1Args | undefined;
+            inputs["acl"] = args ? args.acl : undefined;
             inputs["algorithm"] = args ? args.algorithm : undefined;
             inputs["bitLength"] = args ? args.bitLength : undefined;
             inputs["expiration"] = args ? args.expiration : undefined;
@@ -180,6 +188,12 @@ export class SecretV1 extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SecretV1 resources.
  */
 export interface SecretV1State {
+    /**
+     * Allows to control an access to a secret. Currently only the
+     * `read` operation is supported. If not specified, the secret is accessible
+     * project wide.
+     */
+    readonly acl?: pulumi.Input<inputs.keymanager.SecretV1Acl>;
     /**
      * Metadata provided by a user or system for informational purposes.
      */
@@ -263,6 +277,12 @@ export interface SecretV1State {
  * The set of arguments for constructing a SecretV1 resource.
  */
 export interface SecretV1Args {
+    /**
+     * Allows to control an access to a secret. Currently only the
+     * `read` operation is supported. If not specified, the secret is accessible
+     * project wide.
+     */
+    readonly acl?: pulumi.Input<inputs.keymanager.SecretV1Acl>;
     /**
      * Metadata provided by a user or system for informational purposes.
      */

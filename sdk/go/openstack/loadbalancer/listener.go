@@ -34,6 +34,7 @@ func NewListener(ctx *pulumi.Context,
 		inputs["defaultPoolId"] = nil
 		inputs["defaultTlsContainerRef"] = nil
 		inputs["description"] = nil
+		inputs["insertHeaders"] = nil
 		inputs["loadbalancerId"] = nil
 		inputs["name"] = nil
 		inputs["protocol"] = nil
@@ -51,6 +52,7 @@ func NewListener(ctx *pulumi.Context,
 		inputs["defaultPoolId"] = args.DefaultPoolId
 		inputs["defaultTlsContainerRef"] = args.DefaultTlsContainerRef
 		inputs["description"] = args.Description
+		inputs["insertHeaders"] = args.InsertHeaders
 		inputs["loadbalancerId"] = args.LoadbalancerId
 		inputs["name"] = args.Name
 		inputs["protocol"] = args.Protocol
@@ -81,6 +83,7 @@ func GetListener(ctx *pulumi.Context,
 		inputs["defaultPoolId"] = state.DefaultPoolId
 		inputs["defaultTlsContainerRef"] = state.DefaultTlsContainerRef
 		inputs["description"] = state.Description
+		inputs["insertHeaders"] = state.InsertHeaders
 		inputs["loadbalancerId"] = state.LoadbalancerId
 		inputs["name"] = state.Name
 		inputs["protocol"] = state.Protocol
@@ -140,6 +143,13 @@ func (r *Listener) DefaultTlsContainerRef() pulumi.StringOutput {
 // Human-readable description for the Listener.
 func (r *Listener) Description() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["description"])
+}
+
+// The list of key value pairs representing headers to insert
+// into the request before it is sent to the backend members. Changing this updates the headers of the
+// existing listener.
+func (r *Listener) InsertHeaders() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["insertHeaders"])
 }
 
 // The load balancer on which to provision this
@@ -230,6 +240,10 @@ type ListenerState struct {
 	DefaultTlsContainerRef interface{}
 	// Human-readable description for the Listener.
 	Description interface{}
+	// The list of key value pairs representing headers to insert
+	// into the request before it is sent to the backend members. Changing this updates the headers of the
+	// existing listener.
+	InsertHeaders interface{}
 	// The load balancer on which to provision this
 	// Listener. Changing this creates a new Listener.
 	LoadbalancerId interface{}
@@ -287,6 +301,10 @@ type ListenerArgs struct {
 	DefaultTlsContainerRef interface{}
 	// Human-readable description for the Listener.
 	Description interface{}
+	// The list of key value pairs representing headers to insert
+	// into the request before it is sent to the backend members. Changing this updates the headers of the
+	// existing listener.
+	InsertHeaders interface{}
 	// The load balancer on which to provision this
 	// Listener. Changing this creates a new Listener.
 	LoadbalancerId interface{}

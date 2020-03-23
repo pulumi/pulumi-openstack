@@ -17,6 +17,7 @@ func NewSecretV1(ctx *pulumi.Context,
 	name string, args *SecretV1Args, opts ...pulumi.ResourceOpt) (*SecretV1, error) {
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["acl"] = nil
 		inputs["algorithm"] = nil
 		inputs["bitLength"] = nil
 		inputs["expiration"] = nil
@@ -29,6 +30,7 @@ func NewSecretV1(ctx *pulumi.Context,
 		inputs["region"] = nil
 		inputs["secretType"] = nil
 	} else {
+		inputs["acl"] = args.Acl
 		inputs["algorithm"] = args.Algorithm
 		inputs["bitLength"] = args.BitLength
 		inputs["expiration"] = args.Expiration
@@ -61,6 +63,7 @@ func GetSecretV1(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *SecretV1State, opts ...pulumi.ResourceOpt) (*SecretV1, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["acl"] = state.Acl
 		inputs["algorithm"] = state.Algorithm
 		inputs["allMetadata"] = state.AllMetadata
 		inputs["bitLength"] = state.BitLength
@@ -95,6 +98,13 @@ func (r *SecretV1) URN() pulumi.URNOutput {
 // ID is this resource's unique identifier assigned by its provider.
 func (r *SecretV1) ID() pulumi.IDOutput {
 	return r.s.ID()
+}
+
+// Allows to control an access to a secret. Currently only the
+// `read` operation is supported. If not specified, the secret is accessible
+// project wide.
+func (r *SecretV1) Acl() pulumi.Output {
+	return r.s.State["acl"]
 }
 
 // Metadata provided by a user or system for informational purposes.
@@ -194,6 +204,10 @@ func (r *SecretV1) UpdatedAt() pulumi.StringOutput {
 
 // Input properties used for looking up and filtering SecretV1 resources.
 type SecretV1State struct {
+	// Allows to control an access to a secret. Currently only the
+	// `read` operation is supported. If not specified, the secret is accessible
+	// project wide.
+	Acl interface{}
 	// Metadata provided by a user or system for informational purposes.
 	Algorithm interface{}
 	// The map of metadata, assigned on the secret, which has been
@@ -239,6 +253,10 @@ type SecretV1State struct {
 
 // The set of arguments for constructing a SecretV1 resource.
 type SecretV1Args struct {
+	// Allows to control an access to a secret. Currently only the
+	// `read` operation is supported. If not specified, the secret is accessible
+	// project wide.
+	Acl interface{}
 	// Metadata provided by a user or system for informational purposes.
 	Algorithm interface{}
 	// Metadata provided by a user or system for informational purposes.

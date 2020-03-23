@@ -35,6 +35,7 @@ export namespace compute {
         sourceType: string;
         uuid?: string;
         volumeSize?: number;
+        volumeType?: string;
     }
 
     export interface InstanceNetwork {
@@ -151,6 +152,23 @@ export namespace identity {
 }
 
 export namespace keymanager {
+    export interface ContainerV1Acl {
+        read: outputs.keymanager.ContainerV1AclRead;
+    }
+
+    export interface ContainerV1AclRead {
+        /**
+         * The date the container was created.
+         */
+        createdAt: string;
+        projectAccess?: boolean;
+        /**
+         * The date the container was last updated.
+         */
+        updatedAt: string;
+        users?: string[];
+    }
+
     export interface ContainerV1Consumer {
         /**
          * Human-readable name for the Container. Does not have
@@ -170,6 +188,30 @@ export namespace keymanager {
          */
         name?: string;
         secretRef: string;
+    }
+
+    export interface GetContainerAcl {
+        read: outputs.keymanager.GetContainerAclRead;
+    }
+
+    export interface GetContainerAclRead {
+        /**
+         * The date the container ACL was created.
+         */
+        createdAt: string;
+        /**
+         * Whether the container is accessible project wide.
+         */
+        projectAccess?: boolean;
+        /**
+         * The date the container ACL was last updated.
+         */
+        updatedAt: string;
+        /**
+         * The list of user IDs, which are allowed to access the container,
+         * when `projectAccess` is set to `false`.
+         */
+        users?: string[];
     }
 
     export interface GetContainerConsumer {
@@ -192,6 +234,47 @@ export namespace keymanager {
          * The secret reference / where to find the secret, URL.
          */
         secretRef?: string;
+    }
+
+    export interface GetSecretAcl {
+        read: outputs.keymanager.GetSecretAclRead;
+    }
+
+    export interface GetSecretAclRead {
+        /**
+         * The date the secret ACL was created.
+         */
+        createdAt: string;
+        /**
+         * Whether the secret is accessible project wide.
+         */
+        projectAccess?: boolean;
+        /**
+         * The date the secret ACL was last updated.
+         */
+        updatedAt: string;
+        /**
+         * The list of user IDs, which are allowed to access the secret, when
+         * `projectAccess` is set to `false`.
+         */
+        users?: string[];
+    }
+
+    export interface SecretV1Acl {
+        read: outputs.keymanager.SecretV1AclRead;
+    }
+
+    export interface SecretV1AclRead {
+        /**
+         * The date the secret was created.
+         */
+        createdAt: string;
+        projectAccess?: boolean;
+        /**
+         * The date the secret was last updated.
+         */
+        updatedAt: string;
+        users?: string[];
     }
 }
 

@@ -52,6 +52,7 @@ class Instance(pulumi.CustomResource):
       * `sourceType` (`str`)
       * `uuid` (`str`)
       * `volumeSize` (`float`)
+      * `volume_type` (`str`)
     """
     config_drive: pulumi.Output[bool]
     """
@@ -274,6 +275,7 @@ class Instance(pulumi.CustomResource):
           * `sourceType` (`pulumi.Input[str]`)
           * `uuid` (`pulumi.Input[str]`)
           * `volumeSize` (`pulumi.Input[float]`)
+          * `volume_type` (`pulumi.Input[str]`)
         
         The **networks** object supports the following:
         
@@ -440,6 +442,7 @@ class Instance(pulumi.CustomResource):
           * `sourceType` (`pulumi.Input[str]`)
           * `uuid` (`pulumi.Input[str]`)
           * `volumeSize` (`pulumi.Input[float]`)
+          * `volume_type` (`pulumi.Input[str]`)
         
         The **networks** object supports the following:
         

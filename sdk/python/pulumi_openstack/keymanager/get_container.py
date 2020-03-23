@@ -13,7 +13,14 @@ class GetContainerResult:
     """
     A collection of values returned by getContainer.
     """
-    def __init__(__self__, consumers=None, container_ref=None, created_at=None, creator_id=None, name=None, region=None, secret_refs=None, status=None, type=None, updated_at=None, id=None):
+    def __init__(__self__, acls=None, consumers=None, container_ref=None, created_at=None, creator_id=None, name=None, region=None, secret_refs=None, status=None, type=None, updated_at=None, id=None):
+        if acls and not isinstance(acls, list):
+            raise TypeError("Expected argument 'acls' to be a list")
+        __self__.acls = acls
+        """
+        The list of ACLs assigned to a container. The `read` structure is
+        described below.
+        """
         if consumers and not isinstance(consumers, list):
             raise TypeError("Expected argument 'consumers' to be a list")
         __self__.consumers = consumers
@@ -31,7 +38,7 @@ class GetContainerResult:
             raise TypeError("Expected argument 'created_at' to be a str")
         __self__.created_at = created_at
         """
-        The date the container was created.
+        The date the container ACL was created.
         """
         if creator_id and not isinstance(creator_id, str):
             raise TypeError("Expected argument 'creator_id' to be a str")
@@ -74,7 +81,7 @@ class GetContainerResult:
             raise TypeError("Expected argument 'updated_at' to be a str")
         __self__.updated_at = updated_at
         """
-        The date the container was last updated.
+        The date the container ACL was last updated.
         """
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
@@ -88,6 +95,7 @@ class AwaitableGetContainerResult(GetContainerResult):
         if False:
             yield self
         return GetContainerResult(
+            acls=self.acls,
             consumers=self.consumers,
             container_ref=self.container_ref,
             created_at=self.created_at,
@@ -122,6 +130,7 @@ def get_container(name=None,region=None,opts=None):
     __ret__ = pulumi.runtime.invoke('openstack:keymanager/getContainer:getContainer', __args__, opts=opts).value
 
     return AwaitableGetContainerResult(
+        acls=__ret__.get('acls'),
         consumers=__ret__.get('consumers'),
         container_ref=__ret__.get('containerRef'),
         created_at=__ret__.get('createdAt'),

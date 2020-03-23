@@ -98,6 +98,10 @@ namespace Pulumi.OpenStack.KeyManager
     public sealed class GetSecretResult
     {
         /// <summary>
+        /// The list of ACLs assigned to a secret. The `read` structure is described below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetSecretAclsResult> Acls;
+        /// <summary>
         /// See Argument Reference above.
         /// </summary>
         public readonly bool? AclOnly;
@@ -114,7 +118,7 @@ namespace Pulumi.OpenStack.KeyManager
         /// </summary>
         public readonly ImmutableDictionary<string, object> ContentTypes;
         /// <summary>
-        /// The date the secret was created.
+        /// The date the secret ACL was created.
         /// </summary>
         public readonly string CreatedAt;
         /// <summary>
@@ -175,7 +179,7 @@ namespace Pulumi.OpenStack.KeyManager
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// The date the secret was last updated.
+        /// The date the secret ACL was last updated.
         /// </summary>
         public readonly string UpdatedAt;
         /// <summary>
@@ -189,6 +193,7 @@ namespace Pulumi.OpenStack.KeyManager
 
         [OutputConstructor]
         private GetSecretResult(
+            ImmutableArray<Outputs.GetSecretAclsResult> acls,
             bool? aclOnly,
             string? algorithm,
             int? bitLength,
@@ -212,6 +217,7 @@ namespace Pulumi.OpenStack.KeyManager
             string? updatedAtFilter,
             string id)
         {
+            Acls = acls;
             AclOnly = aclOnly;
             Algorithm = algorithm;
             BitLength = bitLength;
@@ -235,5 +241,56 @@ namespace Pulumi.OpenStack.KeyManager
             UpdatedAtFilter = updatedAtFilter;
             Id = id;
         }
+    }
+
+    namespace Outputs
+    {
+
+    [OutputType]
+    public sealed class GetSecretAclsReadResult
+    {
+        /// <summary>
+        /// The date the secret ACL was created.
+        /// </summary>
+        public readonly string CreatedAt;
+        /// <summary>
+        /// Whether the secret is accessible project wide.
+        /// </summary>
+        public readonly bool? ProjectAccess;
+        /// <summary>
+        /// The date the secret ACL was last updated.
+        /// </summary>
+        public readonly string UpdatedAt;
+        /// <summary>
+        /// The list of user IDs, which are allowed to access the secret, when
+        /// `project_access` is set to `false`.
+        /// </summary>
+        public readonly ImmutableArray<string> Users;
+
+        [OutputConstructor]
+        private GetSecretAclsReadResult(
+            string createdAt,
+            bool? projectAccess,
+            string updatedAt,
+            ImmutableArray<string> users)
+        {
+            CreatedAt = createdAt;
+            ProjectAccess = projectAccess;
+            UpdatedAt = updatedAt;
+            Users = users;
+        }
+    }
+
+    [OutputType]
+    public sealed class GetSecretAclsResult
+    {
+        public readonly GetSecretAclsReadResult Read;
+
+        [OutputConstructor]
+        private GetSecretAclsResult(GetSecretAclsReadResult read)
+        {
+            Read = read;
+        }
+    }
     }
 }
