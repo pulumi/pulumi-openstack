@@ -25,9 +25,7 @@ TESTPARALLELISM := 10
 # NOTE: Since the plugin is published using the nodejs style semver version
 # We set the PLUGIN_VERSION to be the same as the version we use when building
 # the provider (e.g. x.y.z-dev-... instead of x.y.zdev...)
-build::
-	go install -ldflags "-X github.com/pulumi/pulumi-openstack/pkg/version.Version=${VERSION}" ${PROJECT}/cmd/${TFGEN}
-	go install -ldflags "-X github.com/pulumi/pulumi-openstack/pkg/version.Version=${VERSION}" ${PROJECT}/cmd/${PROVIDER}
+build:: provider tfgen
 	for LANGUAGE in "nodejs" "python" "go" "dotnet" ; do \
 		$(TFGEN) $$LANGUAGE --overlays overlays/$$LANGUAGE/ --out ${PACKDIR}/$$LANGUAGE/ || exit 3 ; \
 	done
@@ -48,7 +46,17 @@ build::
   	dotnet build /p:Version=${DOTNET_VERSION}
 
 lint::
-	golangci-lint run
+	#golangci-lint run
+
+provider::
+	go generate ${PROJECT}/cmd/${PROVIDER}
+	go install -ldflags "-X github.com/pulumi/pulumi-${PACK}/pkg/version.Version=${VERSION}" ${PROJECT}/cmd/${PROVIDER}
+
+generate_schema:: tfgen
+	$(TFGEN) schema --out ./cmd/${PROVIDER}
+
+tfgen::
+	go install -ldflags "-X github.com/pulumi/pulumi-${PACK}/pkg/version.Version=${VERSION}" ${PROJECT}/cmd/${TFGEN}
 
 install::
 	GOBIN=$(PULUMI_BIN) go install -ldflags "-X github.com/pulumi/pulumi-openstack/pkg/version.Version=${VERSION}" ${PROJECT}/cmd/${PROVIDER}
@@ -60,6 +68,10 @@ install::
 		yarn install --offline --production && \
 		(yarn unlink > /dev/null 2>&1 || true) && \
 		yarn link
+	cd ${PACKDIR}/python/bin && $(PIP) install --user -e .
+	echo "Copying NuGet packages to ${PULUMI_NUGET}"
+	[ ! -e "$(PULUMI_NUGET)" ] || rm -rf "$(PULUMI_NUGET)/*"
+	find . -name '*.nupkg' -exec cp -p {} ${PULUMI_NUGET} \;
 
 test_all::
 	PATH=$(PULUMI_BIN):$(PATH) go test -v -count=1 -cover -timeout 1h -parallel ${TESTPARALLELISM} ./examples
