@@ -3,6 +3,8 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 * Upgrade to v1.26.0 of the OpenStack Terraform Provider
+* Upgrade to Pulumi v1.12.1
+* Upgrade to pulumi-terraform-bridge v1.8.2
 
 ---
 
