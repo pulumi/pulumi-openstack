@@ -13,7 +13,7 @@ class GetQosPolicyResult:
     """
     A collection of values returned by getQosPolicy.
     """
-    def __init__(__self__, all_tags=None, created_at=None, description=None, is_default=None, name=None, project_id=None, region=None, revision_number=None, shared=None, tags=None, updated_at=None, id=None):
+    def __init__(__self__, all_tags=None, created_at=None, description=None, id=None, is_default=None, name=None, project_id=None, region=None, revision_number=None, shared=None, tags=None, updated_at=None):
         if all_tags and not isinstance(all_tags, list):
             raise TypeError("Expected argument 'all_tags' to be a list")
         __self__.all_tags = all_tags
@@ -31,6 +31,12 @@ class GetQosPolicyResult:
         __self__.description = description
         """
         See Argument Reference above.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if is_default and not isinstance(is_default, bool):
             raise TypeError("Expected argument 'is_default' to be a bool")
@@ -74,12 +80,6 @@ class GetQosPolicyResult:
         """
         The time at which QoS policy was created.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetQosPolicyResult(GetQosPolicyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -89,6 +89,7 @@ class AwaitableGetQosPolicyResult(GetQosPolicyResult):
             all_tags=self.all_tags,
             created_at=self.created_at,
             description=self.description,
+            id=self.id,
             is_default=self.is_default,
             name=self.name,
             project_id=self.project_id,
@@ -96,13 +97,15 @@ class AwaitableGetQosPolicyResult(GetQosPolicyResult):
             revision_number=self.revision_number,
             shared=self.shared,
             tags=self.tags,
-            updated_at=self.updated_at,
-            id=self.id)
+            updated_at=self.updated_at)
 
 def get_qos_policy(description=None,is_default=None,name=None,project_id=None,region=None,shared=None,tags=None,opts=None):
     """
     Use this data source to get the ID of an available OpenStack QoS policy.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_qos_policy_v2.html.markdown.
+
+
     :param str description: The human-readable description for the QoS policy.
     :param bool is_default: Whether the QoS policy is default policy or not.
     :param str name: The name of the QoS policy.
@@ -112,10 +115,9 @@ def get_qos_policy(description=None,is_default=None,name=None,project_id=None,re
            `region` argument of the provider is used.
     :param bool shared: Whether this QoS policy is shared across all projects.
     :param list tags: The list of QoS policy tags to filter.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_qos_policy_v2.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['description'] = description
     __args__['isDefault'] = is_default
@@ -134,6 +136,7 @@ def get_qos_policy(description=None,is_default=None,name=None,project_id=None,re
         all_tags=__ret__.get('allTags'),
         created_at=__ret__.get('createdAt'),
         description=__ret__.get('description'),
+        id=__ret__.get('id'),
         is_default=__ret__.get('isDefault'),
         name=__ret__.get('name'),
         project_id=__ret__.get('projectId'),
@@ -141,5 +144,4 @@ def get_qos_policy(description=None,is_default=None,name=None,project_id=None,re
         revision_number=__ret__.get('revisionNumber'),
         shared=__ret__.get('shared'),
         tags=__ret__.get('tags'),
-        updated_at=__ret__.get('updatedAt'),
-        id=__ret__.get('id'))
+        updated_at=__ret__.get('updatedAt'))

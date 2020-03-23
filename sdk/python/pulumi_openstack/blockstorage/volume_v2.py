@@ -15,10 +15,10 @@ class VolumeV2(pulumi.CustomResource):
     If a volume is attached to an instance, this attribute will
     display the Attachment ID, Instance ID, and the Device as the Instance
     sees it.
-    
+
       * `device` (`str`)
       * `id` (`str`)
-      * `instanceId` (`str`)
+      * `instance_id` (`str`)
     """
     availability_zone: pulumi.Output[str]
     """
@@ -83,7 +83,9 @@ class VolumeV2(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, availability_zone=None, consistency_group_id=None, description=None, image_id=None, metadata=None, name=None, region=None, size=None, snapshot_id=None, source_replica=None, source_vol_id=None, volume_type=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a V2 volume resource within OpenStack.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/blockstorage_volume_v2.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] availability_zone: The availability zone for the volume.
@@ -110,8 +112,6 @@ class VolumeV2(pulumi.CustomResource):
                Changing this creates a new volume.
         :param pulumi.Input[str] volume_type: The type of volume to create.
                Changing this creates a new volume.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/blockstorage_volume_v2.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -156,7 +156,7 @@ class VolumeV2(pulumi.CustomResource):
         """
         Get an existing VolumeV2 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -187,18 +187,17 @@ class VolumeV2(pulumi.CustomResource):
                Changing this creates a new volume.
         :param pulumi.Input[str] volume_type: The type of volume to create.
                Changing this creates a new volume.
-        
+
         The **attachments** object supports the following:
-        
+
           * `device` (`pulumi.Input[str]`)
           * `id` (`pulumi.Input[str]`)
-          * `instanceId` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/blockstorage_volume_v2.html.markdown.
+          * `instance_id` (`pulumi.Input[str]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["attachments"] = attachments
         __props__["availability_zone"] = availability_zone
         __props__["consistency_group_id"] = consistency_group_id

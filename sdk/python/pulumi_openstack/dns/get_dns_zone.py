@@ -13,7 +13,7 @@ class GetDnsZoneResult:
     """
     A collection of values returned by getDnsZone.
     """
-    def __init__(__self__, attributes=None, created_at=None, description=None, email=None, masters=None, name=None, pool_id=None, project_id=None, region=None, serial=None, status=None, transferred_at=None, ttl=None, type=None, updated_at=None, version=None, id=None):
+    def __init__(__self__, attributes=None, created_at=None, description=None, email=None, id=None, masters=None, name=None, pool_id=None, project_id=None, region=None, serial=None, status=None, transferred_at=None, ttl=None, type=None, updated_at=None, version=None):
         if attributes and not isinstance(attributes, dict):
             raise TypeError("Expected argument 'attributes' to be a dict")
         __self__.attributes = attributes
@@ -37,6 +37,12 @@ class GetDnsZoneResult:
         __self__.email = email
         """
         See Argument Reference above.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if masters and not isinstance(masters, list):
             raise TypeError("Expected argument 'masters' to be a list")
@@ -110,12 +116,6 @@ class GetDnsZoneResult:
         """
         The version of the zone.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetDnsZoneResult(GetDnsZoneResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -126,6 +126,7 @@ class AwaitableGetDnsZoneResult(GetDnsZoneResult):
             created_at=self.created_at,
             description=self.description,
             email=self.email,
+            id=self.id,
             masters=self.masters,
             name=self.name,
             pool_id=self.pool_id,
@@ -137,13 +138,15 @@ class AwaitableGetDnsZoneResult(GetDnsZoneResult):
             ttl=self.ttl,
             type=self.type,
             updated_at=self.updated_at,
-            version=self.version,
-            id=self.id)
+            version=self.version)
 
 def get_dns_zone(attributes=None,created_at=None,description=None,email=None,masters=None,name=None,pool_id=None,project_id=None,region=None,serial=None,status=None,transferred_at=None,ttl=None,type=None,updated_at=None,version=None,opts=None):
     """
     Use this data source to get the ID of an available OpenStack DNS zone.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/dns_zone_v2.html.markdown.
+
+
     :param str description: A description of the zone.
     :param str email: The email contact for the zone record.
     :param str name: The name of the zone.
@@ -153,10 +156,9 @@ def get_dns_zone(attributes=None,created_at=None,description=None,email=None,mas
     :param str status: The zone's status.
     :param float ttl: The time to live (TTL) of the zone.
     :param str type: The type of the zone. Can either be `PRIMARY` or `SECONDARY`.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/dns_zone_v2.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['attributes'] = attributes
     __args__['createdAt'] = created_at
@@ -185,6 +187,7 @@ def get_dns_zone(attributes=None,created_at=None,description=None,email=None,mas
         created_at=__ret__.get('createdAt'),
         description=__ret__.get('description'),
         email=__ret__.get('email'),
+        id=__ret__.get('id'),
         masters=__ret__.get('masters'),
         name=__ret__.get('name'),
         pool_id=__ret__.get('poolId'),
@@ -196,5 +199,4 @@ def get_dns_zone(attributes=None,created_at=None,description=None,email=None,mas
         ttl=__ret__.get('ttl'),
         type=__ret__.get('type'),
         updated_at=__ret__.get('updatedAt'),
-        version=__ret__.get('version'),
-        id=__ret__.get('id'))
+        version=__ret__.get('version'))

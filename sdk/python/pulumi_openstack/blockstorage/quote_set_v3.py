@@ -59,12 +59,14 @@ class QuoteSetV3(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, backup_gigabytes=None, backups=None, gigabytes=None, groups=None, per_volume_gigabytes=None, project_id=None, region=None, snapshots=None, volumes=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a V3 block storage quotaset resource within OpenStack.
-        
+
         > **Note:** This usually requires admin privileges.
-        
+
         > **Note:** This resource has a no-op deletion so no actual actions will be done against the OpenStack API 
             in case of delete call.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/blockstorage_quotaset_v3.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] backup_gigabytes: Quota value for backup gigabytes. Changing
@@ -86,8 +88,6 @@ class QuoteSetV3(pulumi.CustomResource):
                existing quotaset.
         :param pulumi.Input[float] volumes: Quota value for volumes. Changing this updates the
                existing quotaset.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/blockstorage_quotaset_v3.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -128,7 +128,7 @@ class QuoteSetV3(pulumi.CustomResource):
         """
         Get an existing QuoteSetV3 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -151,12 +151,11 @@ class QuoteSetV3(pulumi.CustomResource):
                existing quotaset.
         :param pulumi.Input[float] volumes: Quota value for volumes. Changing this updates the
                existing quotaset.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/blockstorage_quotaset_v3.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["backup_gigabytes"] = backup_gigabytes
         __props__["backups"] = backups
         __props__["gigabytes"] = gigabytes

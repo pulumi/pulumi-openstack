@@ -13,7 +13,7 @@ class GetGroupResult:
     """
     A collection of values returned by getGroup.
     """
-    def __init__(__self__, description=None, domain_id=None, name=None, region=None, id=None):
+    def __init__(__self__, description=None, domain_id=None, id=None, name=None, region=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         __self__.description = description
@@ -25,6 +25,12 @@ class GetGroupResult:
         __self__.domain_id = domain_id
         """
         See Argument Reference above.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
@@ -38,12 +44,6 @@ class GetGroupResult:
         """
         See Argument Reference above.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetGroupResult(GetGroupResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -52,24 +52,26 @@ class AwaitableGetGroupResult(GetGroupResult):
         return GetGroupResult(
             description=self.description,
             domain_id=self.domain_id,
+            id=self.id,
             name=self.name,
-            region=self.region,
-            id=self.id)
+            region=self.region)
 
 def get_group(domain_id=None,name=None,region=None,opts=None):
     """
     Use this data source to get the ID of an OpenStack group.
-    
+
     Note: This usually requires admin privileges.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_group_v3.html.markdown.
+
+
     :param str domain_id: The domain the group belongs to.
     :param str name: The name of the group.
     :param str region: The region in which to obtain the V3 Keystone client.
            If omitted, the `region` argument of the provider is used.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_group_v3.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['domainId'] = domain_id
     __args__['name'] = name
@@ -83,6 +85,6 @@ def get_group(domain_id=None,name=None,region=None,opts=None):
     return AwaitableGetGroupResult(
         description=__ret__.get('description'),
         domain_id=__ret__.get('domainId'),
+        id=__ret__.get('id'),
         name=__ret__.get('name'),
-        region=__ret__.get('region'),
-        id=__ret__.get('id'))
+        region=__ret__.get('region'))

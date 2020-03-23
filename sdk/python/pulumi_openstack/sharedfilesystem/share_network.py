@@ -67,10 +67,12 @@ class ShareNetwork(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, description=None, name=None, neutron_net_id=None, neutron_subnet_id=None, region=None, security_service_ids=None, __props__=None, __name__=None, __opts__=None):
         """
         Use this resource to configure a share network.
-        
+
         A share network stores network information that share servers can use when
         shares are created.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/sharedfilesystem_sharenetwork_v2.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The human-readable description for the share network.
@@ -89,8 +91,6 @@ class ShareNetwork(pulumi.CustomResource):
                share network.
         :param pulumi.Input[list] security_service_ids: The list of security service IDs to associate with
                the share network. The security service must be specified by ID and not name.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/sharedfilesystem_sharenetwork_v2.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -135,7 +135,7 @@ class ShareNetwork(pulumi.CustomResource):
         """
         Get an existing ShareNetwork resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -160,12 +160,11 @@ class ShareNetwork(pulumi.CustomResource):
         :param pulumi.Input[list] security_service_ids: The list of security service IDs to associate with
                the share network. The security service must be specified by ID and not name.
         :param pulumi.Input[float] segmentation_id: The share network segmentation ID.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/sharedfilesystem_sharenetwork_v2.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["cidr"] = cidr
         __props__["description"] = description
         __props__["ip_version"] = ip_version

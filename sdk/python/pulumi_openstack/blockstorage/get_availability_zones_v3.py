@@ -13,7 +13,13 @@ class GetAvailabilityZonesV3Result:
     """
     A collection of values returned by getAvailabilityZonesV3.
     """
-    def __init__(__self__, names=None, region=None, state=None, id=None):
+    def __init__(__self__, id=None, names=None, region=None, state=None):
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if names and not isinstance(names, list):
             raise TypeError("Expected argument 'names' to be a list")
         __self__.names = names
@@ -33,35 +39,31 @@ class GetAvailabilityZonesV3Result:
         """
         See Argument Reference above.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetAvailabilityZonesV3Result(GetAvailabilityZonesV3Result):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
         return GetAvailabilityZonesV3Result(
+            id=self.id,
             names=self.names,
             region=self.region,
-            state=self.state,
-            id=self.id)
+            state=self.state)
 
 def get_availability_zones_v3(region=None,state=None,opts=None):
     """
     Use this data source to get a list of Block Storage availability zones from OpenStack
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/blockstorage_availability_zones_v3.html.markdown.
+
+
     :param str region: The region in which to obtain the Block Storage client.
            If omitted, the `region` argument of the provider is used.
     :param str state: The `state` of the availability zones to match. Can
            either be `available` or `unavailable`. Default is `available`.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/blockstorage_availability_zones_v3.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['region'] = region
     __args__['state'] = state
@@ -72,7 +74,7 @@ def get_availability_zones_v3(region=None,state=None,opts=None):
     __ret__ = pulumi.runtime.invoke('openstack:blockstorage/getAvailabilityZonesV3:getAvailabilityZonesV3', __args__, opts=opts).value
 
     return AwaitableGetAvailabilityZonesV3Result(
+        id=__ret__.get('id'),
         names=__ret__.get('names'),
         region=__ret__.get('region'),
-        state=__ret__.get('state'),
-        id=__ret__.get('id'))
+        state=__ret__.get('state'))

@@ -31,15 +31,15 @@ class User(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, databases=None, host=None, instance_id=None, name=None, password=None, region=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a V1 DB user resource within OpenStack.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/db_user_v1.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] databases: A list of database user should have access to.
         :param pulumi.Input[str] name: A unique name for the resource.
         :param pulumi.Input[str] password: User's password.
         :param pulumi.Input[str] region: Openstack region resource is created in.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/db_user_v1.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -79,7 +79,7 @@ class User(pulumi.CustomResource):
         """
         Get an existing User resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -87,12 +87,11 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] name: A unique name for the resource.
         :param pulumi.Input[str] password: User's password.
         :param pulumi.Input[str] region: Openstack region resource is created in.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/db_user_v1.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["databases"] = databases
         __props__["host"] = host
         __props__["instance_id"] = instance_id

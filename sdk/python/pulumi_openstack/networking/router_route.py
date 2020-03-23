@@ -35,13 +35,15 @@ class RouterRoute(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, destination_cidr=None, next_hop=None, region=None, router_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Creates a routing entry on a OpenStack V2 router.
-        
+
         ## Notes
-        
+
         The `next_hop` IP address must be directly reachable from the router at the ``networking.RouterRoute``
         resource creation time.  You can ensure that by explicitly specifying a dependency on the ``networking.RouterInterface``
         resource that connects the next hop to the router, as in the example above.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_router_route_v2.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] destination_cidr: CIDR block to match on the packet’s destination IP. Changing
@@ -54,8 +56,6 @@ class RouterRoute(pulumi.CustomResource):
                routing entry.
         :param pulumi.Input[str] router_id: ID of the router this routing entry belongs to. Changing
                this creates a new routing entry.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_router_route_v2.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -95,7 +95,7 @@ class RouterRoute(pulumi.CustomResource):
         """
         Get an existing RouterRoute resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -109,12 +109,11 @@ class RouterRoute(pulumi.CustomResource):
                routing entry.
         :param pulumi.Input[str] router_id: ID of the router this routing entry belongs to. Changing
                this creates a new routing entry.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_router_route_v2.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["destination_cidr"] = destination_cidr
         __props__["next_hop"] = next_hop
         __props__["region"] = region

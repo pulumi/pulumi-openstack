@@ -13,7 +13,7 @@ class GetServiceResult:
     """
     A collection of values returned by getService.
     """
-    def __init__(__self__, description=None, enabled=None, name=None, region=None, type=None, id=None):
+    def __init__(__self__, description=None, enabled=None, id=None, name=None, region=None, type=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         __self__.description = description
@@ -25,6 +25,12 @@ class GetServiceResult:
         __self__.enabled = enabled
         """
         See Argument Reference above.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
@@ -44,12 +50,6 @@ class GetServiceResult:
         """
         See Argument Reference above.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetServiceResult(GetServiceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -58,26 +58,28 @@ class AwaitableGetServiceResult(GetServiceResult):
         return GetServiceResult(
             description=self.description,
             enabled=self.enabled,
+            id=self.id,
             name=self.name,
             region=self.region,
-            type=self.type,
-            id=self.id)
+            type=self.type)
 
 def get_service(enabled=None,name=None,region=None,type=None,opts=None):
     """
     Use this data source to get the ID of an OpenStack service.
-    
+
     > **Note:** This usually requires admin privileges.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_service_v3.html.markdown.
+
+
     :param bool enabled: The service status.
     :param str name: The service name.
     :param str region: The region in which to obtain the V3 Keystone client.
            If omitted, the `region` argument of the provider is used.
     :param str type: The service type.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_service_v3.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['enabled'] = enabled
     __args__['name'] = name
@@ -92,7 +94,7 @@ def get_service(enabled=None,name=None,region=None,type=None,opts=None):
     return AwaitableGetServiceResult(
         description=__ret__.get('description'),
         enabled=__ret__.get('enabled'),
+        id=__ret__.get('id'),
         name=__ret__.get('name'),
         region=__ret__.get('region'),
-        type=__ret__.get('type'),
-        id=__ret__.get('id'))
+        type=__ret__.get('type'))

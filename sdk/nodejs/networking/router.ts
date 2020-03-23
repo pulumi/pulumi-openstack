@@ -246,6 +246,8 @@ export interface RouterState {
      * external gateway is required if any compute instances or load balancers
      * will be using floating IPs. Changing this updates the external gateway
      * of an existing router.
+     * 
+     * @deprecated use external_network_id instead
      */
     readonly externalGateway?: pulumi.Input<string>;
     /**
@@ -334,6 +336,8 @@ export interface RouterArgs {
      * external gateway is required if any compute instances or load balancers
      * will be using floating IPs. Changing this updates the external gateway
      * of an existing router.
+     * 
+     * @deprecated use external_network_id instead
      */
     readonly externalGateway?: pulumi.Input<string>;
     /**

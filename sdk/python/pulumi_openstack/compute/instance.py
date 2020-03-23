@@ -42,7 +42,7 @@ class Instance(pulumi.CustomResource):
     multiple disks. This configuration is very flexible, so please see the
     following [reference](https://docs.openstack.org/nova/latest/user/block-device-mapping.html)
     for more information.
-    
+
       * `bootIndex` (`float`)
       * `deleteOnTermination` (`bool`)
       * `destinationType` (`str`)
@@ -107,7 +107,7 @@ class Instance(pulumi.CustomResource):
     An array of one or more networks to attach to the
     instance. The network object structure is documented below. Changing this
     creates a new server.
-    
+
       * `accessNetwork` (`bool`)
       * `fixedIpV4` (`str`)
       * `fixedIpV6` (`str`)
@@ -121,7 +121,7 @@ class Instance(pulumi.CustomResource):
     Customize the personality of an instance by
     defining one or more files and their contents. The personality structure
     is described below.
-    
+
       * `content` (`str`)
       * `file` (`str`)
     """
@@ -142,7 +142,7 @@ class Instance(pulumi.CustomResource):
     """
     Provide the Nova scheduler with hints on how
     the instance should be launched. The available hints are described below.
-    
+
       * `additionalProperties` (`dict`)
       * `buildNearHostIp` (`str`)
       * `differentHosts` (`list`)
@@ -179,26 +179,28 @@ class Instance(pulumi.CustomResource):
     """
     Map of additional vendor-specific options.
     Supported options are described below.
-    
+
       * `ignoreResizeConfirmation` (`bool`)
     """
     def __init__(__self__, resource_name, opts=None, access_ip_v4=None, access_ip_v6=None, admin_pass=None, availability_zone=None, block_devices=None, config_drive=None, flavor_id=None, flavor_name=None, force_delete=None, image_id=None, image_name=None, key_pair=None, metadata=None, name=None, networks=None, personalities=None, power_state=None, region=None, scheduler_hints=None, security_groups=None, stop_before_destroy=None, tags=None, user_data=None, vendor_options=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a V2 VM instance resource within OpenStack.
-        
+
         ## Importing instances
-        
+
         Importing instances can be tricky, since the nova api does not offer all
         information provided at creation time for later retrieval.
         Network interface attachment order, and number and sizes of ephemeral
         disks are examples of this.
-        
+
         ### Importing an instance with multiple emphemeral disks
-        
+
         The importer cannot read the emphemeral disk configuration
         of an instance, so just specify image_id as in the configuration 
         of the basic instance example.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_instance_v2.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_ip_v4: The first detected Fixed IPv4 address.
@@ -263,9 +265,9 @@ class Instance(pulumi.CustomResource):
                Changing this creates a new server.
         :param pulumi.Input[dict] vendor_options: Map of additional vendor-specific options.
                Supported options are described below.
-        
+
         The **block_devices** object supports the following:
-        
+
           * `bootIndex` (`pulumi.Input[float]`)
           * `deleteOnTermination` (`pulumi.Input[bool]`)
           * `destinationType` (`pulumi.Input[str]`)
@@ -276,9 +278,9 @@ class Instance(pulumi.CustomResource):
           * `uuid` (`pulumi.Input[str]`)
           * `volumeSize` (`pulumi.Input[float]`)
           * `volume_type` (`pulumi.Input[str]`)
-        
+
         The **networks** object supports the following:
-        
+
           * `accessNetwork` (`pulumi.Input[bool]`)
           * `fixedIpV4` (`pulumi.Input[str]`)
           * `fixedIpV6` (`pulumi.Input[str]`)
@@ -286,14 +288,14 @@ class Instance(pulumi.CustomResource):
           * `name` (`pulumi.Input[str]`) - A unique name for the resource.
           * `port` (`pulumi.Input[str]`)
           * `uuid` (`pulumi.Input[str]`)
-        
+
         The **personalities** object supports the following:
-        
+
           * `content` (`pulumi.Input[str]`)
           * `file` (`pulumi.Input[str]`)
-        
+
         The **scheduler_hints** object supports the following:
-        
+
           * `additionalProperties` (`pulumi.Input[dict]`)
           * `buildNearHostIp` (`pulumi.Input[str]`)
           * `differentHosts` (`pulumi.Input[list]`)
@@ -301,12 +303,10 @@ class Instance(pulumi.CustomResource):
           * `queries` (`pulumi.Input[list]`)
           * `sameHosts` (`pulumi.Input[list]`)
           * `targetCell` (`pulumi.Input[str]`)
-        
-        The **vendor_options** object supports the following:
-        
-          * `ignoreResizeConfirmation` (`pulumi.Input[bool]`)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_instance_v2.html.markdown.
+        The **vendor_options** object supports the following:
+
+          * `ignoreResizeConfirmation` (`pulumi.Input[bool]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -362,7 +362,7 @@ class Instance(pulumi.CustomResource):
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -430,9 +430,9 @@ class Instance(pulumi.CustomResource):
                Changing this creates a new server.
         :param pulumi.Input[dict] vendor_options: Map of additional vendor-specific options.
                Supported options are described below.
-        
+
         The **block_devices** object supports the following:
-        
+
           * `bootIndex` (`pulumi.Input[float]`)
           * `deleteOnTermination` (`pulumi.Input[bool]`)
           * `destinationType` (`pulumi.Input[str]`)
@@ -443,9 +443,9 @@ class Instance(pulumi.CustomResource):
           * `uuid` (`pulumi.Input[str]`)
           * `volumeSize` (`pulumi.Input[float]`)
           * `volume_type` (`pulumi.Input[str]`)
-        
+
         The **networks** object supports the following:
-        
+
           * `accessNetwork` (`pulumi.Input[bool]`)
           * `fixedIpV4` (`pulumi.Input[str]`)
           * `fixedIpV6` (`pulumi.Input[str]`)
@@ -453,14 +453,14 @@ class Instance(pulumi.CustomResource):
           * `name` (`pulumi.Input[str]`) - A unique name for the resource.
           * `port` (`pulumi.Input[str]`)
           * `uuid` (`pulumi.Input[str]`)
-        
+
         The **personalities** object supports the following:
-        
+
           * `content` (`pulumi.Input[str]`)
           * `file` (`pulumi.Input[str]`)
-        
+
         The **scheduler_hints** object supports the following:
-        
+
           * `additionalProperties` (`pulumi.Input[dict]`)
           * `buildNearHostIp` (`pulumi.Input[str]`)
           * `differentHosts` (`pulumi.Input[list]`)
@@ -468,16 +468,15 @@ class Instance(pulumi.CustomResource):
           * `queries` (`pulumi.Input[list]`)
           * `sameHosts` (`pulumi.Input[list]`)
           * `targetCell` (`pulumi.Input[str]`)
-        
-        The **vendor_options** object supports the following:
-        
-          * `ignoreResizeConfirmation` (`pulumi.Input[bool]`)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_instance_v2.html.markdown.
+        The **vendor_options** object supports the following:
+
+          * `ignoreResizeConfirmation` (`pulumi.Input[bool]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["access_ip_v4"] = access_ip_v4
         __props__["access_ip_v6"] = access_ip_v6
         __props__["admin_pass"] = admin_pass

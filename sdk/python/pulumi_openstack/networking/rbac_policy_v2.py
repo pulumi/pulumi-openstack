@@ -44,17 +44,19 @@ class RbacPolicyV2(pulumi.CustomResource):
         The RBAC policy resource contains functionality for working with Neutron RBAC
         Policies. Role-Based Access Control (RBAC) policy framework enables both
         operators and users to grant access to resources for specific projects.
-        
+
         Sharing an object with a specific project is accomplished by creating a
         policy entry that permits the target project the `access_as_shared` action
         on that object.
-        
+
         To make a network available as an external network for specific projects
         rather than all projects, use the `access_as_external` action.
         If a network is marked as external during creation, it now implicitly creates
         a wildcard RBAC policy granting everyone access to preserve previous behavior
         before this feature was added.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_rbac_policy_v2.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action: Action for the RBAC policy. Can either be
@@ -70,8 +72,6 @@ class RbacPolicyV2(pulumi.CustomResource):
                routing entry.
         :param pulumi.Input[str] target_tenant: The ID of the tenant to which the RBAC policy
                will be enforced.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_rbac_policy_v2.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -115,7 +115,7 @@ class RbacPolicyV2(pulumi.CustomResource):
         """
         Get an existing RbacPolicyV2 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -132,12 +132,11 @@ class RbacPolicyV2(pulumi.CustomResource):
                routing entry.
         :param pulumi.Input[str] target_tenant: The ID of the tenant to which the RBAC policy
                will be enforced.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_rbac_policy_v2.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["action"] = action
         __props__["object_id"] = object_id
         __props__["object_type"] = object_type

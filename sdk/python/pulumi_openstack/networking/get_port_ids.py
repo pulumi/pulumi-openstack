@@ -13,7 +13,7 @@ class GetPortIdsResult:
     """
     A collection of values returned by getPortIds.
     """
-    def __init__(__self__, admin_state_up=None, description=None, device_id=None, device_owner=None, dns_name=None, fixed_ip=None, ids=None, mac_address=None, name=None, network_id=None, project_id=None, region=None, security_group_ids=None, sort_direction=None, sort_key=None, status=None, tags=None, tenant_id=None, id=None):
+    def __init__(__self__, admin_state_up=None, description=None, device_id=None, device_owner=None, dns_name=None, fixed_ip=None, id=None, ids=None, mac_address=None, name=None, network_id=None, project_id=None, region=None, security_group_ids=None, sort_direction=None, sort_key=None, status=None, tags=None, tenant_id=None):
         if admin_state_up and not isinstance(admin_state_up, bool):
             raise TypeError("Expected argument 'admin_state_up' to be a bool")
         __self__.admin_state_up = admin_state_up
@@ -32,6 +32,12 @@ class GetPortIdsResult:
         if fixed_ip and not isinstance(fixed_ip, str):
             raise TypeError("Expected argument 'fixed_ip' to be a str")
         __self__.fixed_ip = fixed_ip
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         __self__.ids = ids
@@ -68,12 +74,6 @@ class GetPortIdsResult:
         if tenant_id and not isinstance(tenant_id, str):
             raise TypeError("Expected argument 'tenant_id' to be a str")
         __self__.tenant_id = tenant_id
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetPortIdsResult(GetPortIdsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -86,6 +86,7 @@ class AwaitableGetPortIdsResult(GetPortIdsResult):
             device_owner=self.device_owner,
             dns_name=self.dns_name,
             fixed_ip=self.fixed_ip,
+            id=self.id,
             ids=self.ids,
             mac_address=self.mac_address,
             name=self.name,
@@ -97,14 +98,16 @@ class AwaitableGetPortIdsResult(GetPortIdsResult):
             sort_key=self.sort_key,
             status=self.status,
             tags=self.tags,
-            tenant_id=self.tenant_id,
-            id=self.id)
+            tenant_id=self.tenant_id)
 
 def get_port_ids(admin_state_up=None,description=None,device_id=None,device_owner=None,dns_name=None,fixed_ip=None,mac_address=None,name=None,network_id=None,project_id=None,region=None,security_group_ids=None,sort_direction=None,sort_key=None,status=None,tags=None,tenant_id=None,opts=None):
     """
     Use this data source to get a list of Openstack Port IDs matching the
     specified criteria.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_port_ids_v2.html.markdown.
+
+
     :param bool admin_state_up: The administrative state of the port.
     :param str description: Human-readable description of the port.
     :param str device_id: The ID of the device the port belongs to.
@@ -123,10 +126,9 @@ def get_port_ids(admin_state_up=None,description=None,device_id=None,device_owne
     :param str sort_key: Sort ports based on a certain key. Defaults to none.
     :param str status: The status of the port.
     :param list tags: The list of port tags to filter.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_port_ids_v2.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['adminStateUp'] = admin_state_up
     __args__['description'] = description
@@ -158,6 +160,7 @@ def get_port_ids(admin_state_up=None,description=None,device_id=None,device_owne
         device_owner=__ret__.get('deviceOwner'),
         dns_name=__ret__.get('dnsName'),
         fixed_ip=__ret__.get('fixedIp'),
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         mac_address=__ret__.get('macAddress'),
         name=__ret__.get('name'),
@@ -169,5 +172,4 @@ def get_port_ids(admin_state_up=None,description=None,device_id=None,device_owne
         sort_key=__ret__.get('sortKey'),
         status=__ret__.get('status'),
         tags=__ret__.get('tags'),
-        tenant_id=__ret__.get('tenantId'),
-        id=__ret__.get('id'))
+        tenant_id=__ret__.get('tenantId'))

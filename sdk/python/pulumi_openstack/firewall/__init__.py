@@ -4,6 +4,6 @@
 
 # Export this package's modules as members:
 from .firewall import *
+from .get_policy import *
 from .policy import *
 from .rule import *
-from .get_policy import *

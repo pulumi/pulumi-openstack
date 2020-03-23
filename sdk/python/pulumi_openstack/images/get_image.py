@@ -13,7 +13,7 @@ class GetImageResult:
     """
     A collection of values returned by getImage.
     """
-    def __init__(__self__, checksum=None, container_format=None, created_at=None, disk_format=None, file=None, member_status=None, metadata=None, min_disk_gb=None, min_ram_mb=None, most_recent=None, name=None, owner=None, properties=None, protected=None, region=None, schema=None, size_bytes=None, size_max=None, size_min=None, sort_direction=None, sort_key=None, tag=None, tags=None, updated_at=None, visibility=None, id=None):
+    def __init__(__self__, checksum=None, container_format=None, created_at=None, disk_format=None, file=None, id=None, member_status=None, metadata=None, min_disk_gb=None, min_ram_mb=None, most_recent=None, name=None, owner=None, properties=None, protected=None, region=None, schema=None, size_bytes=None, size_max=None, size_min=None, sort_direction=None, sort_key=None, tag=None, tags=None, updated_at=None, visibility=None):
         if checksum and not isinstance(checksum, str):
             raise TypeError("Expected argument 'checksum' to be a str")
         __self__.checksum = checksum
@@ -40,6 +40,12 @@ class GetImageResult:
         """
         the trailing path after the glance endpoint that represent the
         location of the image or the path to retrieve it.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if member_status and not isinstance(member_status, str):
             raise TypeError("Expected argument 'member_status' to be a str")
@@ -131,12 +137,6 @@ class GetImageResult:
         if visibility and not isinstance(visibility, str):
             raise TypeError("Expected argument 'visibility' to be a str")
         __self__.visibility = visibility
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetImageResult(GetImageResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -148,6 +148,7 @@ class AwaitableGetImageResult(GetImageResult):
             created_at=self.created_at,
             disk_format=self.disk_format,
             file=self.file,
+            id=self.id,
             member_status=self.member_status,
             metadata=self.metadata,
             min_disk_gb=self.min_disk_gb,
@@ -167,13 +168,15 @@ class AwaitableGetImageResult(GetImageResult):
             tag=self.tag,
             tags=self.tags,
             updated_at=self.updated_at,
-            visibility=self.visibility,
-            id=self.id)
+            visibility=self.visibility)
 
 def get_image(member_status=None,most_recent=None,name=None,owner=None,properties=None,region=None,size_max=None,size_min=None,sort_direction=None,sort_key=None,tag=None,visibility=None,opts=None):
     """
     Use this data source to get the ID of an available OpenStack image.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/images_image_v2.html.markdown.
+
+
     :param str member_status: The status of the image. Must be one of
            "accepted", "pending", "rejected", or "all".
     :param bool most_recent: If more than one result is returned, use the most
@@ -193,10 +196,9 @@ def get_image(member_status=None,most_recent=None,name=None,owner=None,propertie
     :param str tag: Search for images with a specific tag.
     :param str visibility: The visibility of the image. Must be one of
            "public", "private", "community", or "shared". Defaults to "private".
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/images_image_v2.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['memberStatus'] = member_status
     __args__['mostRecent'] = most_recent
@@ -222,6 +224,7 @@ def get_image(member_status=None,most_recent=None,name=None,owner=None,propertie
         created_at=__ret__.get('createdAt'),
         disk_format=__ret__.get('diskFormat'),
         file=__ret__.get('file'),
+        id=__ret__.get('id'),
         member_status=__ret__.get('memberStatus'),
         metadata=__ret__.get('metadata'),
         min_disk_gb=__ret__.get('minDiskGb'),
@@ -241,5 +244,4 @@ def get_image(member_status=None,most_recent=None,name=None,owner=None,propertie
         tag=__ret__.get('tag'),
         tags=__ret__.get('tags'),
         updated_at=__ret__.get('updatedAt'),
-        visibility=__ret__.get('visibility'),
-        id=__ret__.get('id'))
+        visibility=__ret__.get('visibility'))

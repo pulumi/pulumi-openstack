@@ -16,11 +16,43 @@ class Provider(pulumi.ProviderResource):
         settings, however an explicit `Provider` instance may be created and passed during resource
         construction to achieve fine-grained programmatic control over provider settings. See the
         [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
-        
-        :param str resource_name: The name of the resource.
-        :param pulumi.ResourceOptions opts: Options for the resource.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/index.html.markdown.
+
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] allow_reauth: If set to `true`, OpenStack authorization will be perfomed automatically, if the initial auth token get expired. This is
+               useful, when the token TTL is low or the overall Terraform provider execution time expected to be greater than the
+               initial token TTL.
+        :param pulumi.Input[str] application_credential_id: Application Credential ID to login with.
+        :param pulumi.Input[str] application_credential_name: Application Credential name to login with.
+        :param pulumi.Input[str] application_credential_secret: Application Credential secret to login with.
+        :param pulumi.Input[str] auth_url: The Identity authentication URL.
+        :param pulumi.Input[str] cacert_file: A Custom CA certificate.
+        :param pulumi.Input[str] cert: A client certificate to authenticate with.
+        :param pulumi.Input[str] cloud: An entry in a `clouds.yaml` file to use.
+        :param pulumi.Input[str] default_domain: The name of the Domain ID to scope to if no other domain is specified. Defaults to `default` (Identity v3).
+        :param pulumi.Input[bool] delayed_auth: If set to `true`, OpenStack authorization will be perfomed, when the service provider client is called.
+        :param pulumi.Input[bool] disable_no_cache_header: If set to `true`, the HTTP `Cache-Control: no-cache` header will not be added by default to all API requests.
+        :param pulumi.Input[str] domain_id: The ID of the Domain to scope to (Identity v3).
+        :param pulumi.Input[str] domain_name: The name of the Domain to scope to (Identity v3).
+        :param pulumi.Input[dict] endpoint_overrides: A map of services with an endpoint to override what was from the Keystone catalog
+        :param pulumi.Input[bool] insecure: Trust self-signed certificates.
+        :param pulumi.Input[str] key: A client private key to authenticate with.
+        :param pulumi.Input[float] max_retries: How many times HTTP connection should be retried until giving up.
+        :param pulumi.Input[str] password: Password to login with.
+        :param pulumi.Input[str] project_domain_id: The ID of the domain where the proejct resides (Identity v3).
+        :param pulumi.Input[str] project_domain_name: The name of the domain where the project resides (Identity v3).
+        :param pulumi.Input[str] region: The OpenStack region to connect to.
+        :param pulumi.Input[bool] swauth: Use Swift's authentication system instead of Keystone. Only used for interaction with Swift.
+        :param pulumi.Input[str] tenant_id: The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.
+        :param pulumi.Input[str] tenant_name: The name of the Tenant (Identity v2) or Project (Identity v3) to login with.
+        :param pulumi.Input[str] token: Authentication token to use as an alternative to username/password.
+        :param pulumi.Input[bool] use_octavia: If set to `true`, API requests will go the Load Balancer service (Octavia) instead of the Networking service (Neutron).
+        :param pulumi.Input[str] user_domain_id: The ID of the domain where the user resides (Identity v3).
+        :param pulumi.Input[str] user_domain_name: The name of the domain where the user resides (Identity v3).
+        :param pulumi.Input[str] user_id: Username to login with.
+        :param pulumi.Input[str] user_name: Username to login with.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -132,22 +164,6 @@ class Provider(pulumi.ProviderResource):
             __props__,
             opts)
 
-    @staticmethod
-    def get(resource_name, id, opts=None):
-        """
-        Get an existing Provider resource's state with the given name, id, and optional extra
-        properties used to qualify the lookup.
-        
-        :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
-        :param pulumi.ResourceOptions opts: Options for the resource.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/index.html.markdown.
-        """
-        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
-
-        __props__ = dict()
-        return Provider(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

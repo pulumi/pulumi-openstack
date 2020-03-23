@@ -13,7 +13,7 @@ class GetSubnetResult:
     """
     A collection of values returned by getSubnet.
     """
-    def __init__(__self__, all_tags=None, allocation_pools=None, cidr=None, description=None, dhcp_disabled=None, dhcp_enabled=None, dns_nameservers=None, enable_dhcp=None, gateway_ip=None, host_routes=None, ip_version=None, ipv6_address_mode=None, ipv6_ra_mode=None, name=None, network_id=None, region=None, subnet_id=None, subnetpool_id=None, tags=None, tenant_id=None, id=None):
+    def __init__(__self__, all_tags=None, allocation_pools=None, cidr=None, description=None, dhcp_disabled=None, dhcp_enabled=None, dns_nameservers=None, enable_dhcp=None, gateway_ip=None, host_routes=None, id=None, ip_version=None, ipv6_address_mode=None, ipv6_ra_mode=None, name=None, network_id=None, region=None, subnet_id=None, subnetpool_id=None, tags=None, tenant_id=None):
         if all_tags and not isinstance(all_tags, list):
             raise TypeError("Expected argument 'all_tags' to be a list")
         __self__.all_tags = all_tags
@@ -59,6 +59,12 @@ class GetSubnetResult:
         """
         Host Routes of the subnet.
         """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if ip_version and not isinstance(ip_version, float):
             raise TypeError("Expected argument 'ip_version' to be a float")
         __self__.ip_version = ip_version
@@ -92,12 +98,6 @@ class GetSubnetResult:
         if tenant_id and not isinstance(tenant_id, str):
             raise TypeError("Expected argument 'tenant_id' to be a str")
         __self__.tenant_id = tenant_id
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetSubnetResult(GetSubnetResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -114,6 +114,7 @@ class AwaitableGetSubnetResult(GetSubnetResult):
             enable_dhcp=self.enable_dhcp,
             gateway_ip=self.gateway_ip,
             host_routes=self.host_routes,
+            id=self.id,
             ip_version=self.ip_version,
             ipv6_address_mode=self.ipv6_address_mode,
             ipv6_ra_mode=self.ipv6_ra_mode,
@@ -123,13 +124,15 @@ class AwaitableGetSubnetResult(GetSubnetResult):
             subnet_id=self.subnet_id,
             subnetpool_id=self.subnetpool_id,
             tags=self.tags,
-            tenant_id=self.tenant_id,
-            id=self.id)
+            tenant_id=self.tenant_id)
 
 def get_subnet(cidr=None,description=None,dhcp_disabled=None,dhcp_enabled=None,gateway_ip=None,ip_version=None,ipv6_address_mode=None,ipv6_ra_mode=None,name=None,network_id=None,region=None,subnet_id=None,subnetpool_id=None,tags=None,tenant_id=None,opts=None):
     """
     Use this data source to get the ID of an available OpenStack subnet.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_subnet_v2.html.markdown.
+
+
     :param str cidr: The CIDR of the subnet.
     :param str description: Human-readable description for the subnet.
     :param bool dhcp_disabled: If the subnet has DHCP disabled.
@@ -149,10 +152,9 @@ def get_subnet(cidr=None,description=None,dhcp_disabled=None,dhcp_enabled=None,g
     :param str subnetpool_id: The ID of the subnetpool associated with the subnet.
     :param list tags: The list of subnet tags to filter.
     :param str tenant_id: The owner of the subnet.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_subnet_v2.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['cidr'] = cidr
     __args__['description'] = description
@@ -186,6 +188,7 @@ def get_subnet(cidr=None,description=None,dhcp_disabled=None,dhcp_enabled=None,g
         enable_dhcp=__ret__.get('enableDhcp'),
         gateway_ip=__ret__.get('gatewayIp'),
         host_routes=__ret__.get('hostRoutes'),
+        id=__ret__.get('id'),
         ip_version=__ret__.get('ipVersion'),
         ipv6_address_mode=__ret__.get('ipv6AddressMode'),
         ipv6_ra_mode=__ret__.get('ipv6RaMode'),
@@ -195,5 +198,4 @@ def get_subnet(cidr=None,description=None,dhcp_disabled=None,dhcp_enabled=None,g
         subnet_id=__ret__.get('subnetId'),
         subnetpool_id=__ret__.get('subnetpoolId'),
         tags=__ret__.get('tags'),
-        tenant_id=__ret__.get('tenantId'),
-        id=__ret__.get('id'))
+        tenant_id=__ret__.get('tenantId'))

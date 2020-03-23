@@ -13,18 +13,18 @@ class GetSecretResult:
     """
     A collection of values returned by getSecret.
     """
-    def __init__(__self__, acls=None, acl_only=None, algorithm=None, bit_length=None, content_types=None, created_at=None, created_at_filter=None, creator_id=None, expiration=None, expiration_filter=None, metadata=None, mode=None, name=None, payload=None, payload_content_encoding=None, payload_content_type=None, region=None, secret_ref=None, secret_type=None, status=None, updated_at=None, updated_at_filter=None, id=None):
-        if acls and not isinstance(acls, list):
-            raise TypeError("Expected argument 'acls' to be a list")
-        __self__.acls = acls
-        """
-        The list of ACLs assigned to a secret. The `read` structure is described below.
-        """
+    def __init__(__self__, acl_only=None, acls=None, algorithm=None, bit_length=None, content_types=None, created_at=None, created_at_filter=None, creator_id=None, expiration=None, expiration_filter=None, id=None, metadata=None, mode=None, name=None, payload=None, payload_content_encoding=None, payload_content_type=None, region=None, secret_ref=None, secret_type=None, status=None, updated_at=None, updated_at_filter=None):
         if acl_only and not isinstance(acl_only, bool):
             raise TypeError("Expected argument 'acl_only' to be a bool")
         __self__.acl_only = acl_only
         """
         See Argument Reference above.
+        """
+        if acls and not isinstance(acls, list):
+            raise TypeError("Expected argument 'acls' to be a list")
+        __self__.acls = acls
+        """
+        The list of ACLs assigned to a secret. The `read` structure is described below.
         """
         if algorithm and not isinstance(algorithm, str):
             raise TypeError("Expected argument 'algorithm' to be a str")
@@ -73,6 +73,12 @@ class GetSecretResult:
         __self__.expiration_filter = expiration_filter
         """
         See Argument Reference above.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if metadata and not isinstance(metadata, dict):
             raise TypeError("Expected argument 'metadata' to be a dict")
@@ -147,20 +153,14 @@ class GetSecretResult:
         """
         See Argument Reference above.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetSecretResult(GetSecretResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
         return GetSecretResult(
-            acls=self.acls,
             acl_only=self.acl_only,
+            acls=self.acls,
             algorithm=self.algorithm,
             bit_length=self.bit_length,
             content_types=self.content_types,
@@ -169,6 +169,7 @@ class AwaitableGetSecretResult(GetSecretResult):
             creator_id=self.creator_id,
             expiration=self.expiration,
             expiration_filter=self.expiration_filter,
+            id=self.id,
             metadata=self.metadata,
             mode=self.mode,
             name=self.name,
@@ -180,13 +181,12 @@ class AwaitableGetSecretResult(GetSecretResult):
             secret_type=self.secret_type,
             status=self.status,
             updated_at=self.updated_at,
-            updated_at_filter=self.updated_at_filter,
-            id=self.id)
+            updated_at_filter=self.updated_at_filter)
 
 def get_secret(acl_only=None,algorithm=None,bit_length=None,created_at_filter=None,expiration_filter=None,mode=None,name=None,region=None,secret_type=None,updated_at_filter=None,opts=None):
     """
     Use this data source to access information about an existing resource.
-    
+
     :param bool acl_only: Select the Secret with an ACL that contains the user.
            Project scope is ignored. Defaults to `false`.
     :param str algorithm: The Secret algorithm.
@@ -207,10 +207,9 @@ def get_secret(acl_only=None,algorithm=None,bit_length=None,created_at_filter=No
     :param str updated_at_filter: Date filter to select the Secret with
            updated matching the specified criteria. See Date Filters below for more
            detail.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/keymanager_secret_v1.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['aclOnly'] = acl_only
     __args__['algorithm'] = algorithm
@@ -229,8 +228,8 @@ def get_secret(acl_only=None,algorithm=None,bit_length=None,created_at_filter=No
     __ret__ = pulumi.runtime.invoke('openstack:keymanager/getSecret:getSecret', __args__, opts=opts).value
 
     return AwaitableGetSecretResult(
-        acls=__ret__.get('acls'),
         acl_only=__ret__.get('aclOnly'),
+        acls=__ret__.get('acls'),
         algorithm=__ret__.get('algorithm'),
         bit_length=__ret__.get('bitLength'),
         content_types=__ret__.get('contentTypes'),
@@ -239,6 +238,7 @@ def get_secret(acl_only=None,algorithm=None,bit_length=None,created_at_filter=No
         creator_id=__ret__.get('creatorId'),
         expiration=__ret__.get('expiration'),
         expiration_filter=__ret__.get('expirationFilter'),
+        id=__ret__.get('id'),
         metadata=__ret__.get('metadata'),
         mode=__ret__.get('mode'),
         name=__ret__.get('name'),
@@ -250,5 +250,4 @@ def get_secret(acl_only=None,algorithm=None,bit_length=None,created_at_filter=No
         secret_type=__ret__.get('secretType'),
         status=__ret__.get('status'),
         updated_at=__ret__.get('updatedAt'),
-        updated_at_filter=__ret__.get('updatedAtFilter'),
-        id=__ret__.get('id'))
+        updated_at_filter=__ret__.get('updatedAtFilter'))

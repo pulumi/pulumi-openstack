@@ -13,10 +13,16 @@ class GetQosMinimumBandwidthRuleResult:
     """
     A collection of values returned by getQosMinimumBandwidthRule.
     """
-    def __init__(__self__, direction=None, min_kbps=None, qos_policy_id=None, region=None, id=None):
+    def __init__(__self__, direction=None, id=None, min_kbps=None, qos_policy_id=None, region=None):
         if direction and not isinstance(direction, str):
             raise TypeError("Expected argument 'direction' to be a str")
         __self__.direction = direction
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if min_kbps and not isinstance(min_kbps, float):
             raise TypeError("Expected argument 'min_kbps' to be a float")
         __self__.min_kbps = min_kbps
@@ -35,12 +41,6 @@ class GetQosMinimumBandwidthRuleResult:
         """
         See Argument Reference above.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetQosMinimumBandwidthRuleResult(GetQosMinimumBandwidthRuleResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -48,24 +48,26 @@ class AwaitableGetQosMinimumBandwidthRuleResult(GetQosMinimumBandwidthRuleResult
             yield self
         return GetQosMinimumBandwidthRuleResult(
             direction=self.direction,
+            id=self.id,
             min_kbps=self.min_kbps,
             qos_policy_id=self.qos_policy_id,
-            region=self.region,
-            id=self.id)
+            region=self.region)
 
 def get_qos_minimum_bandwidth_rule(direction=None,min_kbps=None,qos_policy_id=None,region=None,opts=None):
     """
     Use this data source to get the ID of an available OpenStack QoS minimum bandwidth rule.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_qos_minimum_bandwidth_rule_v2.html.markdown.
+
+
     :param float min_kbps: The value of a minimum kbps bandwidth.
     :param str qos_policy_id: The QoS policy reference.
     :param str region: The region in which to obtain the V2 Networking client.
            A Networking client is needed to create a Neutron QoS minimum bandwidth rule. If omitted, the
            `region` argument of the provider is used.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_qos_minimum_bandwidth_rule_v2.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['direction'] = direction
     __args__['minKbps'] = min_kbps
@@ -79,7 +81,7 @@ def get_qos_minimum_bandwidth_rule(direction=None,min_kbps=None,qos_policy_id=No
 
     return AwaitableGetQosMinimumBandwidthRuleResult(
         direction=__ret__.get('direction'),
+        id=__ret__.get('id'),
         min_kbps=__ret__.get('minKbps'),
         qos_policy_id=__ret__.get('qosPolicyId'),
-        region=__ret__.get('region'),
-        id=__ret__.get('id'))
+        region=__ret__.get('region'))

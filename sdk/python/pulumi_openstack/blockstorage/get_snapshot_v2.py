@@ -13,12 +13,18 @@ class GetSnapshotV2Result:
     """
     A collection of values returned by getSnapshotV2.
     """
-    def __init__(__self__, description=None, metadata=None, most_recent=None, name=None, region=None, size=None, status=None, volume_id=None, id=None):
+    def __init__(__self__, description=None, id=None, metadata=None, most_recent=None, name=None, region=None, size=None, status=None, volume_id=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         __self__.description = description
         """
         The snapshot's description.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if metadata and not isinstance(metadata, dict):
             raise TypeError("Expected argument 'metadata' to be a dict")
@@ -59,12 +65,6 @@ class GetSnapshotV2Result:
         """
         See Argument Reference above.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetSnapshotV2Result(GetSnapshotV2Result):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -72,19 +72,22 @@ class AwaitableGetSnapshotV2Result(GetSnapshotV2Result):
             yield self
         return GetSnapshotV2Result(
             description=self.description,
+            id=self.id,
             metadata=self.metadata,
             most_recent=self.most_recent,
             name=self.name,
             region=self.region,
             size=self.size,
             status=self.status,
-            volume_id=self.volume_id,
-            id=self.id)
+            volume_id=self.volume_id)
 
 def get_snapshot_v2(most_recent=None,name=None,region=None,status=None,volume_id=None,opts=None):
     """
     Use this data source to get information about an existing snapshot.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/blockstorage_snapshot_v2.html.markdown.
+
+
     :param bool most_recent: Pick the most recently created snapshot if there
            are multiple results.
     :param str name: The name of the snapshot.
@@ -92,10 +95,9 @@ def get_snapshot_v2(most_recent=None,name=None,region=None,status=None,volume_id
            client. If omitted, the `region` argument of the provider is used.
     :param str status: The status of the snapshot.
     :param str volume_id: The ID of the snapshot's volume.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/blockstorage_snapshot_v2.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['mostRecent'] = most_recent
     __args__['name'] = name
@@ -110,11 +112,11 @@ def get_snapshot_v2(most_recent=None,name=None,region=None,status=None,volume_id
 
     return AwaitableGetSnapshotV2Result(
         description=__ret__.get('description'),
+        id=__ret__.get('id'),
         metadata=__ret__.get('metadata'),
         most_recent=__ret__.get('mostRecent'),
         name=__ret__.get('name'),
         region=__ret__.get('region'),
         size=__ret__.get('size'),
         status=__ret__.get('status'),
-        volume_id=__ret__.get('volumeId'),
-        id=__ret__.get('id'))
+        volume_id=__ret__.get('volumeId'))

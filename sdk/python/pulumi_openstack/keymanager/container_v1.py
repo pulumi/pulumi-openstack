@@ -15,9 +15,8 @@ class ContainerV1(pulumi.CustomResource):
     Allows to control an access to a container. Currently only
     the `read` operation is supported. If not specified, the container is
     accessible project wide. The `read` structure is described below.
-    
+
       * `read` (`dict`)
-    
         * `created_at` (`str`) - The date the container was created.
         * `projectAccess` (`bool`)
         * `updated_at` (`str`) - The date the container was last updated.
@@ -26,7 +25,7 @@ class ContainerV1(pulumi.CustomResource):
     consumers: pulumi.Output[list]
     """
     The list of the container consumers. The structure is described below.
-    
+
       * `name` (`str`) - Human-readable name for the Container. Does not have
         to be unique.
       * `url` (`str`) - The consumer URL.
@@ -59,7 +58,7 @@ class ContainerV1(pulumi.CustomResource):
     """
     A set of dictionaries containing references to secrets. The structure is described
     below.
-    
+
       * `name` (`str`) - Human-readable name for the Container. Does not have
         to be unique.
       * `secret_ref` (`str`)
@@ -79,7 +78,9 @@ class ContainerV1(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, acl=None, name=None, region=None, secret_refs=None, type=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a V1 Barbican container resource within OpenStack.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/keymanager_container_v1.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] acl: Allows to control an access to a container. Currently only
@@ -94,23 +95,20 @@ class ContainerV1(pulumi.CustomResource):
         :param pulumi.Input[list] secret_refs: A set of dictionaries containing references to secrets. The structure is described
                below.
         :param pulumi.Input[str] type: Used to indicate the type of container. Must be one of `generic`, `rsa` or `certificate`.
-        
+
         The **acl** object supports the following:
-        
+
           * `read` (`pulumi.Input[dict]`)
-        
             * `created_at` (`pulumi.Input[str]`) - The date the container was created.
             * `projectAccess` (`pulumi.Input[bool]`)
             * `updated_at` (`pulumi.Input[str]`) - The date the container was last updated.
             * `users` (`pulumi.Input[list]`)
-        
+
         The **secret_refs** object supports the following:
-        
+
           * `name` (`pulumi.Input[str]`) - Human-readable name for the Container. Does not have
             to be unique.
           * `secret_ref` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/keymanager_container_v1.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -153,7 +151,7 @@ class ContainerV1(pulumi.CustomResource):
         """
         Get an existing ContainerV1 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -175,33 +173,31 @@ class ContainerV1(pulumi.CustomResource):
         :param pulumi.Input[str] status: The status of the container.
         :param pulumi.Input[str] type: Used to indicate the type of container. Must be one of `generic`, `rsa` or `certificate`.
         :param pulumi.Input[str] updated_at: The date the container was last updated.
-        
+
         The **acl** object supports the following:
-        
+
           * `read` (`pulumi.Input[dict]`)
-        
             * `created_at` (`pulumi.Input[str]`) - The date the container was created.
             * `projectAccess` (`pulumi.Input[bool]`)
             * `updated_at` (`pulumi.Input[str]`) - The date the container was last updated.
             * `users` (`pulumi.Input[list]`)
-        
+
         The **consumers** object supports the following:
-        
+
           * `name` (`pulumi.Input[str]`) - Human-readable name for the Container. Does not have
             to be unique.
           * `url` (`pulumi.Input[str]`) - The consumer URL.
-        
+
         The **secret_refs** object supports the following:
-        
+
           * `name` (`pulumi.Input[str]`) - Human-readable name for the Container. Does not have
             to be unique.
           * `secret_ref` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/keymanager_container_v1.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["acl"] = acl
         __props__["consumers"] = consumers
         __props__["container_ref"] = container_ref

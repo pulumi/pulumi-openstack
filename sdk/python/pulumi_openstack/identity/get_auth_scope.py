@@ -13,7 +13,7 @@ class GetAuthScopeResult:
     """
     A collection of values returned by getAuthScope.
     """
-    def __init__(__self__, domain_id=None, domain_name=None, name=None, project_domain_id=None, project_domain_name=None, project_id=None, project_name=None, region=None, roles=None, user_domain_id=None, user_domain_name=None, user_id=None, user_name=None, id=None):
+    def __init__(__self__, domain_id=None, domain_name=None, id=None, name=None, project_domain_id=None, project_domain_name=None, project_id=None, project_name=None, region=None, roles=None, user_domain_id=None, user_domain_name=None, user_id=None, user_name=None):
         if domain_id and not isinstance(domain_id, str):
             raise TypeError("Expected argument 'domain_id' to be a str")
         __self__.domain_id = domain_id
@@ -25,6 +25,12 @@ class GetAuthScopeResult:
         __self__.domain_name = domain_name
         """
         The domain name of the scope.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
@@ -86,12 +92,6 @@ class GetAuthScopeResult:
         """
         The username of the scope.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetAuthScopeResult(GetAuthScopeResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -100,6 +100,7 @@ class AwaitableGetAuthScopeResult(GetAuthScopeResult):
         return GetAuthScopeResult(
             domain_id=self.domain_id,
             domain_name=self.domain_name,
+            id=self.id,
             name=self.name,
             project_domain_id=self.project_domain_id,
             project_domain_name=self.project_domain_name,
@@ -110,24 +111,25 @@ class AwaitableGetAuthScopeResult(GetAuthScopeResult):
             user_domain_id=self.user_domain_id,
             user_domain_name=self.user_domain_name,
             user_id=self.user_id,
-            user_name=self.user_name,
-            id=self.id)
+            user_name=self.user_name)
 
 def get_auth_scope(name=None,region=None,opts=None):
     """
     Use this data source to get authentication information about the current
     auth scope in use. This can be used as self-discovery or introspection of
     the username or project name currently in use.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_auth_scope_v3.html.markdown.
+
+
     :param str name: The name of the scope. This is an arbitrary name which is
            only used as a unique identifier so an actual token isn't used as the ID.
     :param str region: The region in which to obtain the V3 Identity client.
            A Identity client is needed to retrieve tokens IDs. If omitted, the
            `region` argument of the provider is used.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_auth_scope_v3.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['name'] = name
     __args__['region'] = region
@@ -140,6 +142,7 @@ def get_auth_scope(name=None,region=None,opts=None):
     return AwaitableGetAuthScopeResult(
         domain_id=__ret__.get('domainId'),
         domain_name=__ret__.get('domainName'),
+        id=__ret__.get('id'),
         name=__ret__.get('name'),
         project_domain_id=__ret__.get('projectDomainId'),
         project_domain_name=__ret__.get('projectDomainName'),
@@ -150,5 +153,4 @@ def get_auth_scope(name=None,region=None,opts=None):
         user_domain_id=__ret__.get('userDomainId'),
         user_domain_name=__ret__.get('userDomainName'),
         user_id=__ret__.get('userId'),
-        user_name=__ret__.get('userName'),
-        id=__ret__.get('id'))
+        user_name=__ret__.get('userName'))

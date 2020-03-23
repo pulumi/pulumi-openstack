@@ -13,7 +13,7 @@ class Configuration(pulumi.CustomResource):
     configurations: pulumi.Output[list]
     """
     An array of configuration parameter name and value. Can be specified multiple times. The configuration object structure is documented below.
-    
+
       * `name` (`str`) - A unique name for the resource.
       * `value` (`str`)
     """
@@ -21,7 +21,7 @@ class Configuration(pulumi.CustomResource):
     """
     An array of database engine type and version. The datastore
     object structure is documented below. Changing this creates resource.
-    
+
       * `type` (`str`)
       * `version` (`str`)
     """
@@ -41,7 +41,9 @@ class Configuration(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, configurations=None, datastore=None, description=None, name=None, region=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a V1 DB configuration resource within OpenStack.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/db_configuration_v1.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] configurations: An array of configuration parameter name and value. Can be specified multiple times. The configuration object structure is documented below.
@@ -51,18 +53,16 @@ class Configuration(pulumi.CustomResource):
         :param pulumi.Input[str] name: A unique name for the resource.
         :param pulumi.Input[str] region: The region in which to create the db instance. Changing this
                creates a new instance.
-        
+
         The **configurations** object supports the following:
-        
+
           * `name` (`pulumi.Input[str]`) - A unique name for the resource.
           * `value` (`pulumi.Input[str]`)
-        
+
         The **datastore** object supports the following:
-        
+
           * `type` (`pulumi.Input[str]`)
           * `version` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/db_configuration_v1.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -101,7 +101,7 @@ class Configuration(pulumi.CustomResource):
         """
         Get an existing Configuration resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -112,22 +112,21 @@ class Configuration(pulumi.CustomResource):
         :param pulumi.Input[str] name: A unique name for the resource.
         :param pulumi.Input[str] region: The region in which to create the db instance. Changing this
                creates a new instance.
-        
+
         The **configurations** object supports the following:
-        
+
           * `name` (`pulumi.Input[str]`) - A unique name for the resource.
           * `value` (`pulumi.Input[str]`)
-        
+
         The **datastore** object supports the following:
-        
+
           * `type` (`pulumi.Input[str]`)
           * `version` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/db_configuration_v1.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["configurations"] = configurations
         __props__["datastore"] = datastore
         __props__["description"] = description

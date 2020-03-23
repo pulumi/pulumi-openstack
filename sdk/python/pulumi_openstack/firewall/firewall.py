@@ -63,7 +63,9 @@ class Firewall(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, admin_state_up=None, associated_routers=None, description=None, name=None, no_routers=None, policy_id=None, region=None, tenant_id=None, value_specs=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a v1 firewall resource within OpenStack.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/fw_firewall_v1.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] admin_state_up: Administrative up/down status for the firewall
@@ -89,8 +91,6 @@ class Firewall(pulumi.CustomResource):
                to create a firewall for another tenant. Changing this creates a new
                firewall.
         :param pulumi.Input[dict] value_specs: Map of additional options.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/fw_firewall_v1.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -131,7 +131,7 @@ class Firewall(pulumi.CustomResource):
         """
         Get an existing Firewall resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -158,12 +158,11 @@ class Firewall(pulumi.CustomResource):
                to create a firewall for another tenant. Changing this creates a new
                firewall.
         :param pulumi.Input[dict] value_specs: Map of additional options.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/fw_firewall_v1.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["admin_state_up"] = admin_state_up
         __props__["associated_routers"] = associated_routers
         __props__["description"] = description

@@ -372,6 +372,8 @@ export interface ImageState {
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * (**Deprecated** - use `updatedAt` instead)
+     * 
+     * @deprecated Use updated_at instead
      */
     readonly updateAt?: pulumi.Input<string>;
     /**

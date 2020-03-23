@@ -48,9 +48,11 @@ class EndpointV3(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, endpoint_region=None, interface=None, name=None, region=None, service_id=None, url=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a V3 Endpoint resource within OpenStack Keystone.
-        
+
         > **Note:** This usually requires admin privileges.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/identity_endpoint_v3.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] endpoint_region: The endpoint region. The `region` and
@@ -62,8 +64,6 @@ class EndpointV3(pulumi.CustomResource):
                If omitted, the `region` argument of the provider is used.
         :param pulumi.Input[str] service_id: The endpoint service ID.
         :param pulumi.Input[str] url: The endpoint url.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/identity_endpoint_v3.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -107,7 +107,7 @@ class EndpointV3(pulumi.CustomResource):
         """
         Get an existing EndpointV3 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -122,12 +122,11 @@ class EndpointV3(pulumi.CustomResource):
         :param pulumi.Input[str] service_name: The service name of the endpoint.
         :param pulumi.Input[str] service_type: The service type of the endpoint.
         :param pulumi.Input[str] url: The endpoint url.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/identity_endpoint_v3.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["endpoint_region"] = endpoint_region
         __props__["interface"] = interface
         __props__["name"] = name

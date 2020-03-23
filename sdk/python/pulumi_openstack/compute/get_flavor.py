@@ -13,7 +13,7 @@ class GetFlavorResult:
     """
     A collection of values returned by getFlavor.
     """
-    def __init__(__self__, disk=None, extra_specs=None, flavor_id=None, is_public=None, min_disk=None, min_ram=None, name=None, ram=None, region=None, rx_tx_factor=None, swap=None, vcpus=None, id=None):
+    def __init__(__self__, disk=None, extra_specs=None, flavor_id=None, id=None, is_public=None, min_disk=None, min_ram=None, name=None, ram=None, region=None, rx_tx_factor=None, swap=None, vcpus=None):
         if disk and not isinstance(disk, float):
             raise TypeError("Expected argument 'disk' to be a float")
         __self__.disk = disk
@@ -26,6 +26,12 @@ class GetFlavorResult:
         if flavor_id and not isinstance(flavor_id, str):
             raise TypeError("Expected argument 'flavor_id' to be a str")
         __self__.flavor_id = flavor_id
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if is_public and not isinstance(is_public, bool):
             raise TypeError("Expected argument 'is_public' to be a bool")
         __self__.is_public = is_public
@@ -56,12 +62,6 @@ class GetFlavorResult:
         if vcpus and not isinstance(vcpus, float):
             raise TypeError("Expected argument 'vcpus' to be a float")
         __self__.vcpus = vcpus
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetFlavorResult(GetFlavorResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -71,6 +71,7 @@ class AwaitableGetFlavorResult(GetFlavorResult):
             disk=self.disk,
             extra_specs=self.extra_specs,
             flavor_id=self.flavor_id,
+            id=self.id,
             is_public=self.is_public,
             min_disk=self.min_disk,
             min_ram=self.min_ram,
@@ -79,13 +80,15 @@ class AwaitableGetFlavorResult(GetFlavorResult):
             region=self.region,
             rx_tx_factor=self.rx_tx_factor,
             swap=self.swap,
-            vcpus=self.vcpus,
-            id=self.id)
+            vcpus=self.vcpus)
 
 def get_flavor(disk=None,flavor_id=None,min_disk=None,min_ram=None,name=None,ram=None,region=None,rx_tx_factor=None,swap=None,vcpus=None,opts=None):
     """
     Use this data source to get the ID of an available OpenStack flavor.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/compute_flavor_v2.html.markdown.
+
+
     :param float disk: The exact amount of disk (in gigabytes).
     :param str flavor_id: The ID of the flavor. Conflicts with the `name`,
            `min_ram` and `min_disk`
@@ -100,10 +103,9 @@ def get_flavor(disk=None,flavor_id=None,min_disk=None,min_ram=None,name=None,ram
     :param float rx_tx_factor: The `rx_tx_factor` of the flavor.
     :param float swap: The amount of swap (in gigabytes).
     :param float vcpus: The amount of VCPUs.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/compute_flavor_v2.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['disk'] = disk
     __args__['flavorId'] = flavor_id
@@ -125,6 +127,7 @@ def get_flavor(disk=None,flavor_id=None,min_disk=None,min_ram=None,name=None,ram
         disk=__ret__.get('disk'),
         extra_specs=__ret__.get('extraSpecs'),
         flavor_id=__ret__.get('flavorId'),
+        id=__ret__.get('id'),
         is_public=__ret__.get('isPublic'),
         min_disk=__ret__.get('minDisk'),
         min_ram=__ret__.get('minRam'),
@@ -133,5 +136,4 @@ def get_flavor(disk=None,flavor_id=None,min_disk=None,min_ram=None,name=None,ram
         region=__ret__.get('region'),
         rx_tx_factor=__ret__.get('rxTxFactor'),
         swap=__ret__.get('swap'),
-        vcpus=__ret__.get('vcpus'),
-        id=__ret__.get('id'))
+        vcpus=__ret__.get('vcpus'))

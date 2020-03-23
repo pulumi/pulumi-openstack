@@ -37,7 +37,7 @@ class IpSecPolicy(pulumi.CustomResource):
     Default is seconds.
     - `value` - (Optional) The value for the lifetime of the security association. Must be a positive integer.
     Default is 3600.
-    
+
       * `units` (`str`)
       * `value` (`float`)
     """
@@ -75,7 +75,9 @@ class IpSecPolicy(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, auth_algorithm=None, description=None, encapsulation_mode=None, encryption_algorithm=None, lifetimes=None, name=None, pfs=None, region=None, tenant_id=None, transform_protocol=None, value_specs=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a V2 Neutron IPSec policy resource within OpenStack.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/vpnaas_ipsec_policy_v2.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] auth_algorithm: The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.
@@ -104,13 +106,11 @@ class IpSecPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] transform_protocol: The transform protocol. Valid values are ESP, AH and AH-ESP.
                Changing this updates the existing policy. Default is ESP.
         :param pulumi.Input[dict] value_specs: Map of additional options.
-        
+
         The **lifetimes** object supports the following:
-        
+
           * `units` (`pulumi.Input[str]`)
           * `value` (`pulumi.Input[float]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/vpnaas_ipsec_policy_v2.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -151,7 +151,7 @@ class IpSecPolicy(pulumi.CustomResource):
         """
         Get an existing IpSecPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -181,17 +181,16 @@ class IpSecPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] transform_protocol: The transform protocol. Valid values are ESP, AH and AH-ESP.
                Changing this updates the existing policy. Default is ESP.
         :param pulumi.Input[dict] value_specs: Map of additional options.
-        
+
         The **lifetimes** object supports the following:
-        
+
           * `units` (`pulumi.Input[str]`)
           * `value` (`pulumi.Input[float]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/vpnaas_ipsec_policy_v2.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["auth_algorithm"] = auth_algorithm
         __props__["description"] = description
         __props__["encapsulation_mode"] = encapsulation_mode

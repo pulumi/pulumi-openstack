@@ -13,7 +13,7 @@ class GetSecGroupResult:
     """
     A collection of values returned by getSecGroup.
     """
-    def __init__(__self__, all_tags=None, description=None, name=None, region=None, secgroup_id=None, tags=None, tenant_id=None, id=None):
+    def __init__(__self__, all_tags=None, description=None, id=None, name=None, region=None, secgroup_id=None, tags=None, tenant_id=None):
         if all_tags and not isinstance(all_tags, list):
             raise TypeError("Expected argument 'all_tags' to be a list")
         __self__.all_tags = all_tags
@@ -23,6 +23,12 @@ class GetSecGroupResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         __self__.description = description
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
@@ -45,12 +51,6 @@ class GetSecGroupResult:
         if tenant_id and not isinstance(tenant_id, str):
             raise TypeError("Expected argument 'tenant_id' to be a str")
         __self__.tenant_id = tenant_id
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetSecGroupResult(GetSecGroupResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -59,17 +59,20 @@ class AwaitableGetSecGroupResult(GetSecGroupResult):
         return GetSecGroupResult(
             all_tags=self.all_tags,
             description=self.description,
+            id=self.id,
             name=self.name,
             region=self.region,
             secgroup_id=self.secgroup_id,
             tags=self.tags,
-            tenant_id=self.tenant_id,
-            id=self.id)
+            tenant_id=self.tenant_id)
 
 def get_sec_group(description=None,name=None,region=None,secgroup_id=None,tags=None,tenant_id=None,opts=None):
     """
     Use this data source to get the ID of an available OpenStack security group.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_secgroup_v2.html.markdown.
+
+
     :param str description: Human-readable description the the subnet.
     :param str name: The name of the security group.
     :param str region: The region in which to obtain the V2 Neutron client.
@@ -78,10 +81,9 @@ def get_sec_group(description=None,name=None,region=None,secgroup_id=None,tags=N
     :param str secgroup_id: The ID of the security group.
     :param list tags: The list of security group tags to filter.
     :param str tenant_id: The owner of the security group.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_secgroup_v2.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['description'] = description
     __args__['name'] = name
@@ -98,9 +100,9 @@ def get_sec_group(description=None,name=None,region=None,secgroup_id=None,tags=N
     return AwaitableGetSecGroupResult(
         all_tags=__ret__.get('allTags'),
         description=__ret__.get('description'),
+        id=__ret__.get('id'),
         name=__ret__.get('name'),
         region=__ret__.get('region'),
         secgroup_id=__ret__.get('secgroupId'),
         tags=__ret__.get('tags'),
-        tenant_id=__ret__.get('tenantId'),
-        id=__ret__.get('id'))
+        tenant_id=__ret__.get('tenantId'))

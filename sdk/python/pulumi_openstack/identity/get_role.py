@@ -13,12 +13,18 @@ class GetRoleResult:
     """
     A collection of values returned by getRole.
     """
-    def __init__(__self__, domain_id=None, name=None, region=None, id=None):
+    def __init__(__self__, domain_id=None, id=None, name=None, region=None):
         if domain_id and not isinstance(domain_id, str):
             raise TypeError("Expected argument 'domain_id' to be a str")
         __self__.domain_id = domain_id
         """
         See Argument Reference above.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
@@ -32,12 +38,6 @@ class GetRoleResult:
         """
         See Argument Reference above.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetRoleResult(GetRoleResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -45,22 +45,24 @@ class AwaitableGetRoleResult(GetRoleResult):
             yield self
         return GetRoleResult(
             domain_id=self.domain_id,
+            id=self.id,
             name=self.name,
-            region=self.region,
-            id=self.id)
+            region=self.region)
 
 def get_role(domain_id=None,name=None,region=None,opts=None):
     """
     Use this data source to get the ID of an OpenStack role.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_role_v3.html.markdown.
+
+
     :param str domain_id: The domain the role belongs to.
     :param str name: The name of the role.
     :param str region: The region in which to obtain the V3 Keystone client.
            If omitted, the `region` argument of the provider is used.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_role_v3.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['domainId'] = domain_id
     __args__['name'] = name
@@ -73,6 +75,6 @@ def get_role(domain_id=None,name=None,region=None,opts=None):
 
     return AwaitableGetRoleResult(
         domain_id=__ret__.get('domainId'),
+        id=__ret__.get('id'),
         name=__ret__.get('name'),
-        region=__ret__.get('region'),
-        id=__ret__.get('id'))
+        region=__ret__.get('region'))

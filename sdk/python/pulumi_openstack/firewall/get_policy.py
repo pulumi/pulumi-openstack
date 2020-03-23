@@ -13,7 +13,7 @@ class GetPolicyResult:
     """
     A collection of values returned by getPolicy.
     """
-    def __init__(__self__, audited=None, description=None, name=None, policy_id=None, region=None, rules=None, shared=None, tenant_id=None, id=None):
+    def __init__(__self__, audited=None, description=None, id=None, name=None, policy_id=None, region=None, rules=None, shared=None, tenant_id=None):
         if audited and not isinstance(audited, bool):
             raise TypeError("Expected argument 'audited' to be a bool")
         __self__.audited = audited
@@ -25,6 +25,12 @@ class GetPolicyResult:
         __self__.description = description
         """
         The description of the firewall policy.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
@@ -62,12 +68,6 @@ class GetPolicyResult:
         """
         See Argument Reference above.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetPolicyResult(GetPolicyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -76,28 +76,30 @@ class AwaitableGetPolicyResult(GetPolicyResult):
         return GetPolicyResult(
             audited=self.audited,
             description=self.description,
+            id=self.id,
             name=self.name,
             policy_id=self.policy_id,
             region=self.region,
             rules=self.rules,
             shared=self.shared,
-            tenant_id=self.tenant_id,
-            id=self.id)
+            tenant_id=self.tenant_id)
 
 def get_policy(name=None,policy_id=None,region=None,tenant_id=None,opts=None):
     """
     Use this data source to get firewall policy information of an available OpenStack firewall policy.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/fw_policy_v1.html.markdown.
+
+
     :param str name: The name of the firewall policy.
     :param str policy_id: The ID of the firewall policy.
     :param str region: The region in which to obtain the V2 Neutron client.
            A Neutron client is needed to retrieve firewall policy ids. If omitted, the
            `region` argument of the provider is used.
     :param str tenant_id: The owner of the firewall policy.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/fw_policy_v1.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['name'] = name
     __args__['policyId'] = policy_id
@@ -112,10 +114,10 @@ def get_policy(name=None,policy_id=None,region=None,tenant_id=None,opts=None):
     return AwaitableGetPolicyResult(
         audited=__ret__.get('audited'),
         description=__ret__.get('description'),
+        id=__ret__.get('id'),
         name=__ret__.get('name'),
         policy_id=__ret__.get('policyId'),
         region=__ret__.get('region'),
         rules=__ret__.get('rules'),
         shared=__ret__.get('shared'),
-        tenant_id=__ret__.get('tenantId'),
-        id=__ret__.get('id'))
+        tenant_id=__ret__.get('tenantId'))

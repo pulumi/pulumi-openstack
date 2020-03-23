@@ -57,7 +57,7 @@ class User(pulumi.CustomResource):
     The structure is documented below. Please see the
     [Ocata release notes](https://docs.openstack.org/releasenotes/keystone/ocata.html)
     for more information on how to use mulit-factor rules.
-    
+
       * `rules` (`list`)
     """
     name: pulumi.Output[str]
@@ -77,10 +77,12 @@ class User(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, default_project_id=None, description=None, domain_id=None, enabled=None, extra=None, ignore_change_password_upon_first_use=None, ignore_lockout_failure_attempts=None, ignore_password_expiry=None, multi_factor_auth_enabled=None, multi_factor_auth_rules=None, name=None, password=None, region=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a V3 User resource within OpenStack Keystone.
-        
+
         Note: You _must_ have admin privileges in your OpenStack cloud to use
         this resource.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/identity_user_v3.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] default_project_id: The default project this user belongs to.
@@ -106,12 +108,10 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region in which to obtain the V3 Keystone client.
                If omitted, the `region` argument of the provider is used. Changing this
                creates a new User.
-        
-        The **multi_factor_auth_rules** object supports the following:
-        
-          * `rules` (`pulumi.Input[list]`)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/identity_user_v3.html.markdown.
+        The **multi_factor_auth_rules** object supports the following:
+
+          * `rules` (`pulumi.Input[list]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -154,7 +154,7 @@ class User(pulumi.CustomResource):
         """
         Get an existing User resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -181,16 +181,15 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region in which to obtain the V3 Keystone client.
                If omitted, the `region` argument of the provider is used. Changing this
                creates a new User.
-        
-        The **multi_factor_auth_rules** object supports the following:
-        
-          * `rules` (`pulumi.Input[list]`)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/identity_user_v3.html.markdown.
+        The **multi_factor_auth_rules** object supports the following:
+
+          * `rules` (`pulumi.Input[list]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["default_project_id"] = default_project_id
         __props__["description"] = description
         __props__["domain_id"] = domain_id

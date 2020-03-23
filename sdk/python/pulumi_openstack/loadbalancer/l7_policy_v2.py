@@ -64,7 +64,9 @@ class L7PolicyV2(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, action=None, admin_state_up=None, description=None, listener_id=None, name=None, position=None, redirect_pool_id=None, redirect_url=None, region=None, tenant_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Load Balancer L7 Policy resource within OpenStack.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_l7policy_v2.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action: The L7 Policy action - can either be REDIRECT\_TO\_POOL,
@@ -88,8 +90,6 @@ class L7PolicyV2(pulumi.CustomResource):
         :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
                the L7 Policy.  Only administrative users can specify a tenant UUID
                other than their own. Changing this creates a new L7 Policy.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_l7policy_v2.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -133,7 +133,7 @@ class L7PolicyV2(pulumi.CustomResource):
         """
         Get an existing L7PolicyV2 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -158,12 +158,11 @@ class L7PolicyV2(pulumi.CustomResource):
         :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
                the L7 Policy.  Only administrative users can specify a tenant UUID
                other than their own. Changing this creates a new L7 Policy.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_l7policy_v2.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["action"] = action
         __props__["admin_state_up"] = admin_state_up
         __props__["description"] = description

@@ -13,12 +13,18 @@ class GetSnapshotResult:
     """
     A collection of values returned by getSnapshot.
     """
-    def __init__(__self__, description=None, name=None, project_id=None, region=None, share_id=None, share_proto=None, share_size=None, size=None, status=None, id=None):
+    def __init__(__self__, description=None, id=None, name=None, project_id=None, region=None, share_id=None, share_proto=None, share_size=None, size=None, status=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         __self__.description = description
         """
         See Argument Reference above.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
@@ -65,12 +71,6 @@ class GetSnapshotResult:
         """
         See Argument Reference above.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetSnapshotResult(GetSnapshotResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -78,6 +78,7 @@ class AwaitableGetSnapshotResult(GetSnapshotResult):
             yield self
         return GetSnapshotResult(
             description=self.description,
+            id=self.id,
             name=self.name,
             project_id=self.project_id,
             region=self.region,
@@ -85,23 +86,24 @@ class AwaitableGetSnapshotResult(GetSnapshotResult):
             share_proto=self.share_proto,
             share_size=self.share_size,
             size=self.size,
-            status=self.status,
-            id=self.id)
+            status=self.status)
 
 def get_snapshot(description=None,name=None,region=None,share_id=None,status=None,opts=None):
     """
     Use this data source to get the ID of an available Shared File System snapshot.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/sharedfilesystem_snapshot_v2.html.markdown.
+
+
     :param str description: The human-readable description of the snapshot.
     :param str name: The name of the snapshot.
     :param str region: The region in which to obtain the V2 Shared File System client.
     :param str status: A snapshot status filter. A valid value is `available`, `error`,
            `creating`, `deleting`, `manage_starting`, `manage_error`, `unmanage_starting`,
            `unmanage_error` or `error_deleting`.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/sharedfilesystem_snapshot_v2.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['description'] = description
     __args__['name'] = name
@@ -116,6 +118,7 @@ def get_snapshot(description=None,name=None,region=None,share_id=None,status=Non
 
     return AwaitableGetSnapshotResult(
         description=__ret__.get('description'),
+        id=__ret__.get('id'),
         name=__ret__.get('name'),
         project_id=__ret__.get('projectId'),
         region=__ret__.get('region'),
@@ -123,5 +126,4 @@ def get_snapshot(description=None,name=None,region=None,share_id=None,status=Non
         share_proto=__ret__.get('shareProto'),
         share_size=__ret__.get('shareSize'),
         size=__ret__.get('size'),
-        status=__ret__.get('status'),
-        id=__ret__.get('id'))
+        status=__ret__.get('status'))

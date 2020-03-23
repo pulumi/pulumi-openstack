@@ -15,9 +15,8 @@ class SecretV1(pulumi.CustomResource):
     Allows to control an access to a secret. Currently only the
     `read` operation is supported. If not specified, the secret is accessible
     project wide.
-    
+
       * `read` (`dict`)
-    
         * `created_at` (`str`) - The date the secret was created.
         * `projectAccess` (`bool`)
         * `updated_at` (`str`) - The date the secret was last updated.
@@ -103,7 +102,6 @@ class SecretV1(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, acl=None, algorithm=None, bit_length=None, expiration=None, metadata=None, mode=None, name=None, payload=None, payload_content_encoding=None, payload_content_type=None, region=None, secret_type=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a SecretV1 resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] acl: Allows to control an access to a secret. Currently only the
@@ -124,17 +122,14 @@ class SecretV1(pulumi.CustomResource):
                `region` argument of the provider is used. Changing this creates a new
                V1 secret.
         :param pulumi.Input[str] secret_type: Used to indicate the type of secret being stored. For more information see [Secret types](https://docs.openstack.org/barbican/latest/api/reference/secret_types.html).
-        
+
         The **acl** object supports the following:
-        
+
           * `read` (`pulumi.Input[dict]`)
-        
             * `created_at` (`pulumi.Input[str]`) - The date the secret was created.
             * `projectAccess` (`pulumi.Input[bool]`)
             * `updated_at` (`pulumi.Input[str]`) - The date the secret was last updated.
             * `users` (`pulumi.Input[list]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/keymanager_secret_v1.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -183,7 +178,7 @@ class SecretV1(pulumi.CustomResource):
         """
         Get an existing SecretV1 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -213,21 +208,19 @@ class SecretV1(pulumi.CustomResource):
         :param pulumi.Input[str] secret_type: Used to indicate the type of secret being stored. For more information see [Secret types](https://docs.openstack.org/barbican/latest/api/reference/secret_types.html).
         :param pulumi.Input[str] status: The status of the secret.
         :param pulumi.Input[str] updated_at: The date the secret was last updated.
-        
+
         The **acl** object supports the following:
-        
+
           * `read` (`pulumi.Input[dict]`)
-        
             * `created_at` (`pulumi.Input[str]`) - The date the secret was created.
             * `projectAccess` (`pulumi.Input[bool]`)
             * `updated_at` (`pulumi.Input[str]`) - The date the secret was last updated.
             * `users` (`pulumi.Input[list]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/keymanager_secret_v1.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["acl"] = acl
         __props__["algorithm"] = algorithm
         __props__["all_metadata"] = all_metadata

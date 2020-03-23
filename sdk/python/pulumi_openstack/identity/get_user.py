@@ -13,7 +13,7 @@ class GetUserResult:
     """
     A collection of values returned by getUser.
     """
-    def __init__(__self__, default_project_id=None, description=None, domain_id=None, enabled=None, idp_id=None, name=None, password_expires_at=None, protocol_id=None, region=None, unique_id=None, id=None):
+    def __init__(__self__, default_project_id=None, description=None, domain_id=None, enabled=None, id=None, idp_id=None, name=None, password_expires_at=None, protocol_id=None, region=None, unique_id=None):
         if default_project_id and not isinstance(default_project_id, str):
             raise TypeError("Expected argument 'default_project_id' to be a str")
         __self__.default_project_id = default_project_id
@@ -37,6 +37,12 @@ class GetUserResult:
         __self__.enabled = enabled
         """
         See Argument Reference above.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if idp_id and not isinstance(idp_id, str):
             raise TypeError("Expected argument 'idp_id' to be a str")
@@ -74,12 +80,6 @@ class GetUserResult:
         """
         See Argument Reference above.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetUserResult(GetUserResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -90,18 +90,21 @@ class AwaitableGetUserResult(GetUserResult):
             description=self.description,
             domain_id=self.domain_id,
             enabled=self.enabled,
+            id=self.id,
             idp_id=self.idp_id,
             name=self.name,
             password_expires_at=self.password_expires_at,
             protocol_id=self.protocol_id,
             region=self.region,
-            unique_id=self.unique_id,
-            id=self.id)
+            unique_id=self.unique_id)
 
 def get_user(domain_id=None,enabled=None,idp_id=None,name=None,password_expires_at=None,protocol_id=None,region=None,unique_id=None,opts=None):
     """
     Use this data source to get the ID of an OpenStack user.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_user_v3.html.markdown.
+
+
     :param str domain_id: The domain this user belongs to.
     :param bool enabled: Whether the user is enabled or disabled. Valid
            values are `true` and `false`.
@@ -110,10 +113,9 @@ def get_user(domain_id=None,enabled=None,idp_id=None,name=None,password_expires_
     :param str password_expires_at: Query for expired passwords. See the [OpenStack API docs](https://developer.openstack.org/api-ref/identity/v3/#list-users) for more information on the query format.
     :param str protocol_id: The protocol ID of the user.
     :param str unique_id: The unique ID of the user.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_user_v3.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['domainId'] = domain_id
     __args__['enabled'] = enabled
@@ -134,10 +136,10 @@ def get_user(domain_id=None,enabled=None,idp_id=None,name=None,password_expires_
         description=__ret__.get('description'),
         domain_id=__ret__.get('domainId'),
         enabled=__ret__.get('enabled'),
+        id=__ret__.get('id'),
         idp_id=__ret__.get('idpId'),
         name=__ret__.get('name'),
         password_expires_at=__ret__.get('passwordExpiresAt'),
         protocol_id=__ret__.get('protocolId'),
         region=__ret__.get('region'),
-        unique_id=__ret__.get('uniqueId'),
-        id=__ret__.get('id'))
+        unique_id=__ret__.get('uniqueId'))

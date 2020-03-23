@@ -104,7 +104,9 @@ class Listener(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, admin_state_up=None, connection_limit=None, default_pool_id=None, default_tls_container_ref=None, description=None, insert_headers=None, loadbalancer_id=None, name=None, protocol=None, protocol_port=None, region=None, sni_container_refs=None, tenant_id=None, timeout_client_data=None, timeout_member_connect=None, timeout_member_data=None, timeout_tcp_inspect=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a V2 listener resource within OpenStack.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_listener_v2.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] admin_state_up: The administrative state of the Listener.
@@ -147,8 +149,6 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[float] timeout_member_data: The member inactivity timeout in milliseconds.
         :param pulumi.Input[float] timeout_tcp_inspect: The time in milliseconds, to wait for additional
                TCP packets for content inspection.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_listener_v2.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -201,7 +201,7 @@ class Listener(pulumi.CustomResource):
         """
         Get an existing Listener resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -245,12 +245,11 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[float] timeout_member_data: The member inactivity timeout in milliseconds.
         :param pulumi.Input[float] timeout_tcp_inspect: The time in milliseconds, to wait for additional
                TCP packets for content inspection.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_listener_v2.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["admin_state_up"] = admin_state_up
         __props__["connection_limit"] = connection_limit
         __props__["default_pool_id"] = default_pool_id

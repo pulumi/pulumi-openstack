@@ -96,7 +96,9 @@ class SecGroupRule(pulumi.CustomResource):
         Manages a V2 neutron security group rule resource within OpenStack.
         Unlike Nova security groups, neutron separates the group from the rules
         and also allows an admin to target a specific tenant_id.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_secgroup_rule_v2.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description of the rule. Changing this creates a new security group rule.
@@ -147,8 +149,6 @@ class SecGroupRule(pulumi.CustomResource):
         :param pulumi.Input[str] tenant_id: The owner of the security group. Required if admin
                wants to create a port for another tenant. Changing this creates a new
                security group rule.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_secgroup_rule_v2.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -195,7 +195,7 @@ class SecGroupRule(pulumi.CustomResource):
         """
         Get an existing SecGroupRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -247,12 +247,11 @@ class SecGroupRule(pulumi.CustomResource):
         :param pulumi.Input[str] tenant_id: The owner of the security group. Required if admin
                wants to create a port for another tenant. Changing this creates a new
                security group rule.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_secgroup_rule_v2.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["description"] = description
         __props__["direction"] = direction
         __props__["ethertype"] = ethertype

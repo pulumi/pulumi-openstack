@@ -13,7 +13,7 @@ class GetNetworkResult:
     """
     A collection of values returned by getNetwork.
     """
-    def __init__(__self__, admin_state_up=None, all_tags=None, availability_zone_hints=None, description=None, dns_domain=None, external=None, matching_subnet_cidr=None, mtu=None, name=None, network_id=None, region=None, shared=None, status=None, tags=None, tenant_id=None, transparent_vlan=None, id=None):
+    def __init__(__self__, admin_state_up=None, all_tags=None, availability_zone_hints=None, description=None, dns_domain=None, external=None, id=None, matching_subnet_cidr=None, mtu=None, name=None, network_id=None, region=None, shared=None, status=None, tags=None, tenant_id=None, transparent_vlan=None):
         if admin_state_up and not isinstance(admin_state_up, str):
             raise TypeError("Expected argument 'admin_state_up' to be a str")
         __self__.admin_state_up = admin_state_up
@@ -50,6 +50,12 @@ class GetNetworkResult:
         __self__.external = external
         """
         See Argument Reference above.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if matching_subnet_cidr and not isinstance(matching_subnet_cidr, str):
             raise TypeError("Expected argument 'matching_subnet_cidr' to be a str")
@@ -97,12 +103,6 @@ class GetNetworkResult:
         """
         See Argument Reference above.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetNetworkResult(GetNetworkResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -115,6 +115,7 @@ class AwaitableGetNetworkResult(GetNetworkResult):
             description=self.description,
             dns_domain=self.dns_domain,
             external=self.external,
+            id=self.id,
             matching_subnet_cidr=self.matching_subnet_cidr,
             mtu=self.mtu,
             name=self.name,
@@ -124,13 +125,15 @@ class AwaitableGetNetworkResult(GetNetworkResult):
             status=self.status,
             tags=self.tags,
             tenant_id=self.tenant_id,
-            transparent_vlan=self.transparent_vlan,
-            id=self.id)
+            transparent_vlan=self.transparent_vlan)
 
 def get_network(description=None,external=None,matching_subnet_cidr=None,mtu=None,name=None,network_id=None,region=None,status=None,tags=None,tenant_id=None,transparent_vlan=None,opts=None):
     """
     Use this data source to get the ID of an available OpenStack network.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_network_v2.html.markdown.
+
+
     :param str description: Human-readable description of the network.
     :param bool external: The external routing facility of the network.
     :param str matching_subnet_cidr: The CIDR of a subnet within the network.
@@ -146,10 +149,9 @@ def get_network(description=None,external=None,matching_subnet_cidr=None,mtu=Non
     :param str tenant_id: The owner of the network.
     :param bool transparent_vlan: The VLAN transparent attribute for the
            network.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_network_v2.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['description'] = description
     __args__['external'] = external
@@ -175,6 +177,7 @@ def get_network(description=None,external=None,matching_subnet_cidr=None,mtu=Non
         description=__ret__.get('description'),
         dns_domain=__ret__.get('dnsDomain'),
         external=__ret__.get('external'),
+        id=__ret__.get('id'),
         matching_subnet_cidr=__ret__.get('matchingSubnetCidr'),
         mtu=__ret__.get('mtu'),
         name=__ret__.get('name'),
@@ -184,5 +187,4 @@ def get_network(description=None,external=None,matching_subnet_cidr=None,mtu=Non
         status=__ret__.get('status'),
         tags=__ret__.get('tags'),
         tenant_id=__ret__.get('tenantId'),
-        transparent_vlan=__ret__.get('transparentVlan'),
-        id=__ret__.get('id'))
+        transparent_vlan=__ret__.get('transparentVlan'))

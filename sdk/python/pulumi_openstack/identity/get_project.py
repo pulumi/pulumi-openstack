@@ -13,7 +13,7 @@ class GetProjectResult:
     """
     A collection of values returned by getProject.
     """
-    def __init__(__self__, description=None, domain_id=None, enabled=None, is_domain=None, name=None, parent_id=None, region=None, id=None):
+    def __init__(__self__, description=None, domain_id=None, enabled=None, id=None, is_domain=None, name=None, parent_id=None, region=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         __self__.description = description
@@ -31,6 +31,12 @@ class GetProjectResult:
         __self__.enabled = enabled
         """
         See Argument Reference above.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if is_domain and not isinstance(is_domain, bool):
             raise TypeError("Expected argument 'is_domain' to be a bool")
@@ -56,12 +62,6 @@ class GetProjectResult:
         """
         The region the project is located in.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetProjectResult(GetProjectResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -71,16 +71,19 @@ class AwaitableGetProjectResult(GetProjectResult):
             description=self.description,
             domain_id=self.domain_id,
             enabled=self.enabled,
+            id=self.id,
             is_domain=self.is_domain,
             name=self.name,
             parent_id=self.parent_id,
-            region=self.region,
-            id=self.id)
+            region=self.region)
 
 def get_project(domain_id=None,enabled=None,is_domain=None,name=None,parent_id=None,region=None,opts=None):
     """
     Use this data source to get the ID of an OpenStack project.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_project_v3.html.markdown.
+
+
     :param str domain_id: The domain this project belongs to.
     :param bool enabled: Whether the project is enabled or disabled. Valid
            values are `true` and `false`.
@@ -88,10 +91,9 @@ def get_project(domain_id=None,enabled=None,is_domain=None,name=None,parent_id=N
            are `true` and `false`.
     :param str name: The name of the project.
     :param str parent_id: The parent of this project.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_project_v3.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['domainId'] = domain_id
     __args__['enabled'] = enabled
@@ -109,8 +111,8 @@ def get_project(domain_id=None,enabled=None,is_domain=None,name=None,parent_id=N
         description=__ret__.get('description'),
         domain_id=__ret__.get('domainId'),
         enabled=__ret__.get('enabled'),
+        id=__ret__.get('id'),
         is_domain=__ret__.get('isDomain'),
         name=__ret__.get('name'),
         parent_id=__ret__.get('parentId'),
-        region=__ret__.get('region'),
-        id=__ret__.get('id'))
+        region=__ret__.get('region'))

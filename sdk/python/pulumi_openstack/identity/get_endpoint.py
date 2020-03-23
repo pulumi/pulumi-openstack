@@ -13,12 +13,18 @@ class GetEndpointResult:
     """
     A collection of values returned by getEndpoint.
     """
-    def __init__(__self__, endpoint_region=None, interface=None, name=None, region=None, service_id=None, service_name=None, service_type=None, url=None, id=None):
+    def __init__(__self__, endpoint_region=None, id=None, interface=None, name=None, region=None, service_id=None, service_name=None, service_type=None, url=None):
         if endpoint_region and not isinstance(endpoint_region, str):
             raise TypeError("Expected argument 'endpoint_region' to be a str")
         __self__.endpoint_region = endpoint_region
         """
         See Argument Reference above.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if interface and not isinstance(interface, str):
             raise TypeError("Expected argument 'interface' to be a str")
@@ -62,12 +68,6 @@ class GetEndpointResult:
         """
         The endpoint URL.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetEndpointResult(GetEndpointResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -75,21 +75,24 @@ class AwaitableGetEndpointResult(GetEndpointResult):
             yield self
         return GetEndpointResult(
             endpoint_region=self.endpoint_region,
+            id=self.id,
             interface=self.interface,
             name=self.name,
             region=self.region,
             service_id=self.service_id,
             service_name=self.service_name,
             service_type=self.service_type,
-            url=self.url,
-            id=self.id)
+            url=self.url)
 
 def get_endpoint(endpoint_region=None,interface=None,name=None,region=None,service_id=None,service_name=None,service_type=None,opts=None):
     """
     Use this data source to get the ID of an OpenStack endpoint.
-    
+
     > **Note:** This usually requires admin privileges.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_endpoint_v3.html.markdown.
+
+
     :param str endpoint_region: The region the endpoint is assigned to. The
            `region` and `endpoint_region` can be different.
     :param str interface: The endpoint interface. Valid values are `public`,
@@ -100,10 +103,9 @@ def get_endpoint(endpoint_region=None,interface=None,name=None,region=None,servi
     :param str service_id: The service id this endpoint belongs to.
     :param str service_name: The service name of the endpoint.
     :param str service_type: The service type of the endpoint.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_endpoint_v3.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['endpointRegion'] = endpoint_region
     __args__['interface'] = interface
@@ -120,11 +122,11 @@ def get_endpoint(endpoint_region=None,interface=None,name=None,region=None,servi
 
     return AwaitableGetEndpointResult(
         endpoint_region=__ret__.get('endpointRegion'),
+        id=__ret__.get('id'),
         interface=__ret__.get('interface'),
         name=__ret__.get('name'),
         region=__ret__.get('region'),
         service_id=__ret__.get('serviceId'),
         service_name=__ret__.get('serviceName'),
         service_type=__ret__.get('serviceType'),
-        url=__ret__.get('url'),
-        id=__ret__.get('id'))
+        url=__ret__.get('url'))

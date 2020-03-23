@@ -13,7 +13,7 @@ class GetRouterResult:
     """
     A collection of values returned by getRouter.
     """
-    def __init__(__self__, admin_state_up=None, all_tags=None, availability_zone_hints=None, description=None, distributed=None, enable_snat=None, external_fixed_ips=None, external_network_id=None, name=None, region=None, router_id=None, status=None, tags=None, tenant_id=None, id=None):
+    def __init__(__self__, admin_state_up=None, all_tags=None, availability_zone_hints=None, description=None, distributed=None, enable_snat=None, external_fixed_ips=None, external_network_id=None, id=None, name=None, region=None, router_id=None, status=None, tags=None, tenant_id=None):
         if admin_state_up and not isinstance(admin_state_up, bool):
             raise TypeError("Expected argument 'admin_state_up' to be a bool")
         __self__.admin_state_up = admin_state_up
@@ -53,6 +53,12 @@ class GetRouterResult:
         """
         The network UUID of an external gateway for the router.
         """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
@@ -71,12 +77,6 @@ class GetRouterResult:
         if tenant_id and not isinstance(tenant_id, str):
             raise TypeError("Expected argument 'tenant_id' to be a str")
         __self__.tenant_id = tenant_id
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetRouterResult(GetRouterResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -91,18 +91,21 @@ class AwaitableGetRouterResult(GetRouterResult):
             enable_snat=self.enable_snat,
             external_fixed_ips=self.external_fixed_ips,
             external_network_id=self.external_network_id,
+            id=self.id,
             name=self.name,
             region=self.region,
             router_id=self.router_id,
             status=self.status,
             tags=self.tags,
-            tenant_id=self.tenant_id,
-            id=self.id)
+            tenant_id=self.tenant_id)
 
 def get_router(admin_state_up=None,description=None,distributed=None,enable_snat=None,name=None,region=None,router_id=None,status=None,tags=None,tenant_id=None,opts=None):
     """
     Use this data source to get the ID of an available OpenStack router.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_router_v2.html.markdown.
+
+
     :param bool admin_state_up: Administrative up/down status for the router (must be "true" or "false" if provided).
     :param str description: Human-readable description of the router.
     :param bool distributed: Indicates whether or not to get a distributed router.
@@ -114,10 +117,9 @@ def get_router(admin_state_up=None,description=None,distributed=None,enable_snat
     :param str status: The status of the router (ACTIVE/DOWN).
     :param list tags: The list of router tags to filter.
     :param str tenant_id: The owner of the router.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_router_v2.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['adminStateUp'] = admin_state_up
     __args__['description'] = description
@@ -144,10 +146,10 @@ def get_router(admin_state_up=None,description=None,distributed=None,enable_snat
         enable_snat=__ret__.get('enableSnat'),
         external_fixed_ips=__ret__.get('externalFixedIps'),
         external_network_id=__ret__.get('externalNetworkId'),
+        id=__ret__.get('id'),
         name=__ret__.get('name'),
         region=__ret__.get('region'),
         router_id=__ret__.get('routerId'),
         status=__ret__.get('status'),
         tags=__ret__.get('tags'),
-        tenant_id=__ret__.get('tenantId'),
-        id=__ret__.get('id'))
+        tenant_id=__ret__.get('tenantId'))

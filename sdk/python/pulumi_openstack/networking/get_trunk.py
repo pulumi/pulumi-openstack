@@ -13,7 +13,7 @@ class GetTrunkResult:
     """
     A collection of values returned by getTrunk.
     """
-    def __init__(__self__, admin_state_up=None, all_tags=None, description=None, name=None, port_id=None, project_id=None, region=None, status=None, sub_ports=None, tags=None, trunk_id=None, id=None):
+    def __init__(__self__, admin_state_up=None, all_tags=None, description=None, id=None, name=None, port_id=None, project_id=None, region=None, status=None, sub_ports=None, tags=None, trunk_id=None):
         if admin_state_up and not isinstance(admin_state_up, bool):
             raise TypeError("Expected argument 'admin_state_up' to be a bool")
         __self__.admin_state_up = admin_state_up
@@ -26,6 +26,12 @@ class GetTrunkResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         __self__.description = description
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
@@ -57,12 +63,6 @@ class GetTrunkResult:
         if trunk_id and not isinstance(trunk_id, str):
             raise TypeError("Expected argument 'trunk_id' to be a str")
         __self__.trunk_id = trunk_id
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetTrunkResult(GetTrunkResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -72,6 +72,7 @@ class AwaitableGetTrunkResult(GetTrunkResult):
             admin_state_up=self.admin_state_up,
             all_tags=self.all_tags,
             description=self.description,
+            id=self.id,
             name=self.name,
             port_id=self.port_id,
             project_id=self.project_id,
@@ -79,13 +80,15 @@ class AwaitableGetTrunkResult(GetTrunkResult):
             status=self.status,
             sub_ports=self.sub_ports,
             tags=self.tags,
-            trunk_id=self.trunk_id,
-            id=self.id)
+            trunk_id=self.trunk_id)
 
 def get_trunk(admin_state_up=None,description=None,name=None,port_id=None,project_id=None,region=None,status=None,tags=None,trunk_id=None,opts=None):
     """
     Use this data source to get the ID of an available OpenStack trunk.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_trunk_v2.html.markdown.
+
+
     :param bool admin_state_up: The administrative state of the trunk.
     :param str description: Human-readable description of the trunk.
     :param str name: The name of the trunk.
@@ -97,10 +100,9 @@ def get_trunk(admin_state_up=None,description=None,name=None,port_id=None,projec
     :param str status: The status of the trunk.
     :param list tags: The list of trunk tags to filter.
     :param str trunk_id: The ID of the trunk.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_trunk_v2.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['adminStateUp'] = admin_state_up
     __args__['description'] = description
@@ -121,6 +123,7 @@ def get_trunk(admin_state_up=None,description=None,name=None,port_id=None,projec
         admin_state_up=__ret__.get('adminStateUp'),
         all_tags=__ret__.get('allTags'),
         description=__ret__.get('description'),
+        id=__ret__.get('id'),
         name=__ret__.get('name'),
         port_id=__ret__.get('portId'),
         project_id=__ret__.get('projectId'),
@@ -128,5 +131,4 @@ def get_trunk(admin_state_up=None,description=None,name=None,port_id=None,projec
         status=__ret__.get('status'),
         sub_ports=__ret__.get('subPorts'),
         tags=__ret__.get('tags'),
-        trunk_id=__ret__.get('trunkId'),
-        id=__ret__.get('id'))
+        trunk_id=__ret__.get('trunkId'))

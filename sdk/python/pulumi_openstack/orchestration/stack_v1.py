@@ -50,7 +50,7 @@ class StackV1(pulumi.CustomResource):
     outputs: pulumi.Output[list]
     """
     A list of stack outputs.
-    
+
       * `description` (`str`) - The description of the stack resource.
       * `outputKey` (`str`)
       * `outputValue` (`str`)
@@ -103,7 +103,9 @@ class StackV1(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, capabilities=None, creation_time=None, description=None, disable_rollback=None, environment_opts=None, name=None, notification_topics=None, outputs=None, parameters=None, region=None, status=None, status_reason=None, tags=None, template_description=None, template_opts=None, timeout=None, updated_time=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a V1 stack resource within OpenStack.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/orchestration_stack_v1.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] capabilities: List of stack capabilities for stack.
@@ -141,14 +143,12 @@ class StackV1(pulumi.CustomResource):
                and time stamp format is ISO 8601: CCYY-MM-DDThh:mm:ss±hh:mm
                For example, 2015-08-27T09:49:58-05:00. The ±hh:mm value, if included,
                is the time zone as an offset from UTC.
-        
+
         The **outputs** object supports the following:
-        
+
           * `description` (`pulumi.Input[str]`) - The description of the stack resource.
           * `outputKey` (`pulumi.Input[str]`)
           * `outputValue` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/orchestration_stack_v1.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -197,7 +197,7 @@ class StackV1(pulumi.CustomResource):
         """
         Get an existing StackV1 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -236,18 +236,17 @@ class StackV1(pulumi.CustomResource):
                and time stamp format is ISO 8601: CCYY-MM-DDThh:mm:ss±hh:mm
                For example, 2015-08-27T09:49:58-05:00. The ±hh:mm value, if included,
                is the time zone as an offset from UTC.
-        
+
         The **outputs** object supports the following:
-        
+
           * `description` (`pulumi.Input[str]`) - The description of the stack resource.
           * `outputKey` (`pulumi.Input[str]`)
           * `outputValue` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/orchestration_stack_v1.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["capabilities"] = capabilities
         __props__["creation_time"] = creation_time
         __props__["description"] = description

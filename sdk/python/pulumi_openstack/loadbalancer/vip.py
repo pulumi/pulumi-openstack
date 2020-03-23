@@ -89,7 +89,9 @@ class Vip(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, address=None, admin_state_up=None, conn_limit=None, description=None, floating_ip=None, name=None, persistence=None, pool_id=None, port=None, protocol=None, region=None, subnet_id=None, tenant_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a V1 load balancer vip resource within OpenStack.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_vip_v1.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address: The IP address of the vip. Changing this creates a new
@@ -125,8 +127,6 @@ class Vip(pulumi.CustomResource):
                new vip.
         :param pulumi.Input[str] tenant_id: The owner of the vip. Required if admin wants to
                create a vip member for another tenant. Changing this creates a new vip.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_vip_v1.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -178,7 +178,7 @@ class Vip(pulumi.CustomResource):
         """
         Get an existing Vip resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -216,12 +216,11 @@ class Vip(pulumi.CustomResource):
                new vip.
         :param pulumi.Input[str] tenant_id: The owner of the vip. Required if admin wants to
                create a vip member for another tenant. Changing this creates a new vip.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_vip_v1.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["address"] = address
         __props__["admin_state_up"] = admin_state_up
         __props__["conn_limit"] = conn_limit

@@ -13,7 +13,13 @@ class GetAvailbilityZonesResult:
     """
     A collection of values returned by getAvailbilityZones.
     """
-    def __init__(__self__, names=None, region=None, id=None):
+    def __init__(__self__, id=None, names=None, region=None):
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if names and not isinstance(names, list):
             raise TypeError("Expected argument 'names' to be a list")
         __self__.names = names
@@ -26,33 +32,29 @@ class GetAvailbilityZonesResult:
         """
         See Argument Reference above.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetAvailbilityZonesResult(GetAvailbilityZonesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
         return GetAvailbilityZonesResult(
+            id=self.id,
             names=self.names,
-            region=self.region,
-            id=self.id)
+            region=self.region)
 
 def get_availbility_zones(region=None,opts=None):
     """
     Use this data source to get a list of Shared File System availability zones
     from OpenStack
-    
-    :param str region: The region in which to obtain the V2 Shared File System
-           client. If omitted, the `region` argument of the provider is used.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/sharedfilesystem_availability_zones_v2.html.markdown.
+
+
+    :param str region: The region in which to obtain the V2 Shared File System
+           client. If omitted, the `region` argument of the provider is used.
     """
     __args__ = dict()
+
 
     __args__['region'] = region
     if opts is None:
@@ -62,6 +64,6 @@ def get_availbility_zones(region=None,opts=None):
     __ret__ = pulumi.runtime.invoke('openstack:sharedfilesystem/getAvailbilityZones:getAvailbilityZones', __args__, opts=opts).value
 
     return AwaitableGetAvailbilityZonesResult(
+        id=__ret__.get('id'),
         names=__ret__.get('names'),
-        region=__ret__.get('region'),
-        id=__ret__.get('id'))
+        region=__ret__.get('region'))

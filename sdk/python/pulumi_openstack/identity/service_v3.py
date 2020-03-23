@@ -34,9 +34,11 @@ class ServiceV3(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, description=None, enabled=None, name=None, region=None, type=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a V3 Service resource within OpenStack Keystone.
-        
+
         > **Note:** This usually requires admin privileges.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/identity_service_v3.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The service description.
@@ -45,8 +47,6 @@ class ServiceV3(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region in which to obtain the V3 Keystone client.
                If omitted, the `region` argument of the provider is used.
         :param pulumi.Input[str] type: The service type.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/identity_service_v3.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -83,7 +83,7 @@ class ServiceV3(pulumi.CustomResource):
         """
         Get an existing ServiceV3 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -93,12 +93,11 @@ class ServiceV3(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region in which to obtain the V3 Keystone client.
                If omitted, the `region` argument of the provider is used.
         :param pulumi.Input[str] type: The service type.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/identity_service_v3.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["description"] = description
         __props__["enabled"] = enabled
         __props__["name"] = name

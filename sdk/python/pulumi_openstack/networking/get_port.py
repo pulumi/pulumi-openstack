@@ -13,7 +13,7 @@ class GetPortResult:
     """
     A collection of values returned by getPort.
     """
-    def __init__(__self__, admin_state_up=None, all_fixed_ips=None, all_security_group_ids=None, all_tags=None, allowed_address_pairs=None, bindings=None, description=None, device_id=None, device_owner=None, dns_assignments=None, dns_name=None, extra_dhcp_options=None, fixed_ip=None, mac_address=None, name=None, network_id=None, port_id=None, project_id=None, region=None, security_group_ids=None, status=None, tags=None, tenant_id=None, id=None):
+    def __init__(__self__, admin_state_up=None, all_fixed_ips=None, all_security_group_ids=None, all_tags=None, allowed_address_pairs=None, bindings=None, description=None, device_id=None, device_owner=None, dns_assignments=None, dns_name=None, extra_dhcp_options=None, fixed_ip=None, id=None, mac_address=None, name=None, network_id=None, port_id=None, project_id=None, region=None, security_group_ids=None, status=None, tags=None, tenant_id=None):
         if admin_state_up and not isinstance(admin_state_up, bool):
             raise TypeError("Expected argument 'admin_state_up' to be a bool")
         __self__.admin_state_up = admin_state_up
@@ -93,6 +93,12 @@ class GetPortResult:
         if fixed_ip and not isinstance(fixed_ip, str):
             raise TypeError("Expected argument 'fixed_ip' to be a str")
         __self__.fixed_ip = fixed_ip
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if mac_address and not isinstance(mac_address, str):
             raise TypeError("Expected argument 'mac_address' to be a str")
         __self__.mac_address = mac_address
@@ -141,12 +147,6 @@ class GetPortResult:
         if tenant_id and not isinstance(tenant_id, str):
             raise TypeError("Expected argument 'tenant_id' to be a str")
         __self__.tenant_id = tenant_id
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetPortResult(GetPortResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -166,6 +166,7 @@ class AwaitableGetPortResult(GetPortResult):
             dns_name=self.dns_name,
             extra_dhcp_options=self.extra_dhcp_options,
             fixed_ip=self.fixed_ip,
+            id=self.id,
             mac_address=self.mac_address,
             name=self.name,
             network_id=self.network_id,
@@ -175,13 +176,15 @@ class AwaitableGetPortResult(GetPortResult):
             security_group_ids=self.security_group_ids,
             status=self.status,
             tags=self.tags,
-            tenant_id=self.tenant_id,
-            id=self.id)
+            tenant_id=self.tenant_id)
 
 def get_port(admin_state_up=None,description=None,device_id=None,device_owner=None,dns_name=None,fixed_ip=None,mac_address=None,name=None,network_id=None,port_id=None,project_id=None,region=None,security_group_ids=None,status=None,tags=None,tenant_id=None,opts=None):
     """
     Use this data source to get the ID of an available OpenStack port.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_port_v2.html.markdown.
+
+
     :param bool admin_state_up: The administrative state of the port.
     :param str description: Human-readable description of the port.
     :param str device_id: The ID of the device the port belongs to.
@@ -200,10 +203,9 @@ def get_port(admin_state_up=None,description=None,device_id=None,device_owner=No
     :param list security_group_ids: The list of port security group IDs to filter.
     :param str status: The status of the port.
     :param list tags: The list of port tags to filter.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_port_v2.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['adminStateUp'] = admin_state_up
     __args__['description'] = description
@@ -241,6 +243,7 @@ def get_port(admin_state_up=None,description=None,device_id=None,device_owner=No
         dns_name=__ret__.get('dnsName'),
         extra_dhcp_options=__ret__.get('extraDhcpOptions'),
         fixed_ip=__ret__.get('fixedIp'),
+        id=__ret__.get('id'),
         mac_address=__ret__.get('macAddress'),
         name=__ret__.get('name'),
         network_id=__ret__.get('networkId'),
@@ -250,5 +253,4 @@ def get_port(admin_state_up=None,description=None,device_id=None,device_owner=No
         security_group_ids=__ret__.get('securityGroupIds'),
         status=__ret__.get('status'),
         tags=__ret__.get('tags'),
-        tenant_id=__ret__.get('tenantId'),
-        id=__ret__.get('id'))
+        tenant_id=__ret__.get('tenantId'))

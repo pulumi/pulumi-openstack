@@ -37,69 +37,69 @@ class Cluster(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, cluster_template_id=None, create_timeout=None, discovery_url=None, docker_volume_size=None, fixed_network=None, fixed_subnet=None, flavor=None, keypair=None, labels=None, master_count=None, master_flavor=None, name=None, node_count=None, region=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a V1 Magnum cluster resource within OpenStack.
-        
+
         ## Argument reference
-        
+
         The following arguments are supported:
-        
+
         * `region` - (Optional) The region in which to obtain the V1 Container Infra
             client. A Container Infra client is needed to create a cluster. If omitted,
             the `region` argument of the provider is used. Changing this creates a new
             cluster.
-        
+
         * `name` - (Required) The name of the cluster. Changing this updates the name
             of the existing cluster template.
-        
+
         * `project_id` - (Optional) The project of the cluster. Required if admin wants
             to create a cluster in another project. Changing this creates a new
             cluster.
-        
+
         * `user_id` - (Optional) The user of the cluster. Required if admin wants to
             create a cluster template for another user. Changing this creates a new
             cluster.
-        
+
         * `cluster_template_id` - (Required) The UUID of the V1 Container Infra cluster
             template. Changing this creates a new cluster.
-        
+
         * `create_timeout` - (Optional) The timeout (in minutes) for creating the
             cluster. Changing this creates a new cluster.
-        
+
         * `discovery_url` - (Optional) The URL used for cluster node discovery.
             Changing this creates a new cluster.
-        
+
         * `docker_volume_size` - (Optional) The size (in GB) of the Docker volume.
             Changing this creates a new cluster.
-        
+
         * `flavor` - (Optional) The flavor for the nodes of the cluster. Can be set via
             the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
             cluster.
-        
+
         * `master_flavor` - (Optional) The flavor for the master nodes. Can be set via
             the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this creates a
             new cluster.
-        
+
         * `keypair` - (Optional) The name of the Compute service SSH keypair. Changing
             this creates a new cluster.
-        
+
         * `labels` - (Optional) The list of key value pairs representing additional
             properties of the cluster. Changing this creates a new cluster.
-        
+
         * `master_count` - (Optional) The number of master nodes for the cluster.
             Changing this creates a new cluster.
-        
+
         * `node_count` - (Optional) The number of nodes for the cluster. Changing this
             creates a new cluster.
             
         * `fixed_network` - (Optional) The fixed network that will be attached to the
             cluster. Changing this creates a new cluster.
-        
+
         * `fixed_subnet` - (Optional) The fixed subnet that will be attached to the
             cluster. Changing this creates a new cluster.
-        
+
         ## Attributes reference
-        
+
         The following attributes are exported:
-        
+
         * `region` - See Argument Reference above.
         * `name` - See Argument Reference above.
         * `project_id` - See Argument Reference above.
@@ -123,11 +123,11 @@ class Cluster(pulumi.CustomResource):
         * `master_addresses` - IP addresses of the master node of the cluster.
         * `node_addresses` - IP addresses of the node of the cluster.
         * `stack_id` - UUID of the Orchestration service stack.
-        
-        :param str resource_name: The name of the resource.
-        :param pulumi.ResourceOptions opts: Options for the resource.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/containerinfra_cluster_v1.html.markdown.
+
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -183,16 +183,15 @@ class Cluster(pulumi.CustomResource):
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/containerinfra_cluster_v1.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["api_address"] = api_address
         __props__["cluster_template_id"] = cluster_template_id
         __props__["coe_version"] = coe_version

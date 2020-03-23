@@ -13,12 +13,18 @@ class GetKeypairResult:
     """
     A collection of values returned by getKeypair.
     """
-    def __init__(__self__, fingerprint=None, name=None, public_key=None, region=None, id=None):
+    def __init__(__self__, fingerprint=None, id=None, name=None, public_key=None, region=None):
         if fingerprint and not isinstance(fingerprint, str):
             raise TypeError("Expected argument 'fingerprint' to be a str")
         __self__.fingerprint = fingerprint
         """
         The fingerprint of the OpenSSH key.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
@@ -38,12 +44,6 @@ class GetKeypairResult:
         """
         See Argument Reference above.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetKeypairResult(GetKeypairResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -51,22 +51,24 @@ class AwaitableGetKeypairResult(GetKeypairResult):
             yield self
         return GetKeypairResult(
             fingerprint=self.fingerprint,
+            id=self.id,
             name=self.name,
             public_key=self.public_key,
-            region=self.region,
-            id=self.id)
+            region=self.region)
 
 def get_keypair(name=None,region=None,opts=None):
     """
     Use this data source to get the ID and public key of an OpenStack keypair.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/compute_keypair_v2.html.markdown.
+
+
     :param str name: The unique name of the keypair.
     :param str region: The region in which to obtain the V2 Compute client.
            If omitted, the `region` argument of the provider is used.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/compute_keypair_v2.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['name'] = name
     __args__['region'] = region
@@ -78,7 +80,7 @@ def get_keypair(name=None,region=None,opts=None):
 
     return AwaitableGetKeypairResult(
         fingerprint=__ret__.get('fingerprint'),
+        id=__ret__.get('id'),
         name=__ret__.get('name'),
         public_key=__ret__.get('publicKey'),
-        region=__ret__.get('region'),
-        id=__ret__.get('id'))
+        region=__ret__.get('region'))

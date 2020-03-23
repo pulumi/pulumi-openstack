@@ -15,7 +15,7 @@ class ApplicationCredential(pulumi.CustomResource):
     A collection of one or more access rules, which
     this application credential allows to follow. The structure is described
     below. Changing this creates a new application credential.
-    
+
       * `id` (`str`)
       * `method` (`str`)
       * `path` (`str`)
@@ -73,16 +73,18 @@ class ApplicationCredential(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, access_rules=None, description=None, expires_at=None, name=None, region=None, roles=None, secret=None, unrestricted=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a V3 Application Credential resource within OpenStack Keystone.
-        
+
         > **Note:** All arguments including the application credential name and secret
         will be stored in the raw state as plain-text. [Read more about sensitive data
         in state](https://www.terraform.io/docs/state/sensitive-data.html).
-        
+
         > **Note:** An Application Credential is created within the authenticated user
         project scope and is not visible by an admin or other accounts.
         The Application Credential visibility is similar to
         `compute.Keypair`.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/identity_application_credential_v3.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] access_rules: A collection of one or more access rules, which
@@ -110,15 +112,13 @@ class ApplicationCredential(pulumi.CustomResource):
         :param pulumi.Input[bool] unrestricted: A flag indicating whether the application
                credential may be used for creation or destruction of other application
                credentials or trusts. Changing this creates a new application credential.
-        
+
         The **access_rules** object supports the following:
-        
+
           * `id` (`pulumi.Input[str]`)
           * `method` (`pulumi.Input[str]`)
           * `path` (`pulumi.Input[str]`)
           * `service` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/identity_application_credential_v3.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -157,7 +157,7 @@ class ApplicationCredential(pulumi.CustomResource):
         """
         Get an existing ApplicationCredential resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -189,19 +189,18 @@ class ApplicationCredential(pulumi.CustomResource):
         :param pulumi.Input[bool] unrestricted: A flag indicating whether the application
                credential may be used for creation or destruction of other application
                credentials or trusts. Changing this creates a new application credential.
-        
+
         The **access_rules** object supports the following:
-        
+
           * `id` (`pulumi.Input[str]`)
           * `method` (`pulumi.Input[str]`)
           * `path` (`pulumi.Input[str]`)
           * `service` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/identity_application_credential_v3.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["access_rules"] = access_rules
         __props__["description"] = description
         __props__["expires_at"] = expires_at
