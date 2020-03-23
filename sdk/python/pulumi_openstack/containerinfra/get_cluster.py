@@ -13,7 +13,7 @@ class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, api_address=None, cluster_template_id=None, coe_version=None, container_version=None, create_timeout=None, created_at=None, discovery_url=None, docker_volume_size=None, fixed_network=None, fixed_subnet=None, flavor=None, keypair=None, labels=None, master_addresses=None, master_count=None, master_flavor=None, name=None, node_addresses=None, node_count=None, project_id=None, region=None, stack_id=None, updated_at=None, user_id=None, id=None):
+    def __init__(__self__, api_address=None, cluster_template_id=None, coe_version=None, container_version=None, create_timeout=None, created_at=None, discovery_url=None, docker_volume_size=None, fixed_network=None, fixed_subnet=None, flavor=None, id=None, keypair=None, labels=None, master_addresses=None, master_count=None, master_flavor=None, name=None, node_addresses=None, node_count=None, project_id=None, region=None, stack_id=None, updated_at=None, user_id=None):
         if api_address and not isinstance(api_address, str):
             raise TypeError("Expected argument 'api_address' to be a str")
         __self__.api_address = api_address
@@ -76,6 +76,12 @@ class GetClusterResult:
         __self__.flavor = flavor
         """
         The flavor for the nodes of the cluster.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if keypair and not isinstance(keypair, str):
             raise TypeError("Expected argument 'keypair' to be a str")
@@ -156,12 +162,6 @@ class GetClusterResult:
         """
         The user of the cluster.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetClusterResult(GetClusterResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -179,6 +179,7 @@ class AwaitableGetClusterResult(GetClusterResult):
             fixed_network=self.fixed_network,
             fixed_subnet=self.fixed_subnet,
             flavor=self.flavor,
+            id=self.id,
             keypair=self.keypair,
             labels=self.labels,
             master_addresses=self.master_addresses,
@@ -191,21 +192,22 @@ class AwaitableGetClusterResult(GetClusterResult):
             region=self.region,
             stack_id=self.stack_id,
             updated_at=self.updated_at,
-            user_id=self.user_id,
-            id=self.id)
+            user_id=self.user_id)
 
 def get_cluster(name=None,region=None,opts=None):
     """
     Use this data source to get the ID of an available OpenStack Magnum cluster.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/containerinfra_cluster_v1.html.markdown.
+
+
     :param str name: The name of the cluster.
     :param str region: The region in which to obtain the V1 Container Infra
            client.
            If omitted, the `region` argument of the provider is used.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/containerinfra_cluster_v1.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['name'] = name
     __args__['region'] = region
@@ -227,6 +229,7 @@ def get_cluster(name=None,region=None,opts=None):
         fixed_network=__ret__.get('fixedNetwork'),
         fixed_subnet=__ret__.get('fixedSubnet'),
         flavor=__ret__.get('flavor'),
+        id=__ret__.get('id'),
         keypair=__ret__.get('keypair'),
         labels=__ret__.get('labels'),
         master_addresses=__ret__.get('masterAddresses'),
@@ -239,5 +242,4 @@ def get_cluster(name=None,region=None,opts=None):
         region=__ret__.get('region'),
         stack_id=__ret__.get('stackId'),
         updated_at=__ret__.get('updatedAt'),
-        user_id=__ret__.get('userId'),
-        id=__ret__.get('id'))
+        user_id=__ret__.get('userId'))

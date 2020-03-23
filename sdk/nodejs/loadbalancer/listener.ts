@@ -14,6 +14,9 @@ import * as utilities from "../utilities";
  * import * as openstack from "@pulumi/openstack";
  * 
  * const listener1 = new openstack.loadbalancer.Listener("listener1", {
+ *     insertHeaders: {
+ *         "X-Forwarded-For": "true",
+ *     },
  *     loadbalancerId: "d9415786-5f1a-428b-b35f-2f1523e146d2",
  *     protocol: "HTTP",
  *     protocolPort: 8080,
@@ -76,6 +79,12 @@ export class Listener extends pulumi.CustomResource {
      * Human-readable description for the Listener.
      */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * The list of key value pairs representing headers to insert
+     * into the request before it is sent to the backend members. Changing this updates the headers of the
+     * existing listener.
+     */
+    public readonly insertHeaders!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
      * The load balancer on which to provision this
      * Listener. Changing this creates a new Listener.
@@ -152,6 +161,7 @@ export class Listener extends pulumi.CustomResource {
             inputs["defaultPoolId"] = state ? state.defaultPoolId : undefined;
             inputs["defaultTlsContainerRef"] = state ? state.defaultTlsContainerRef : undefined;
             inputs["description"] = state ? state.description : undefined;
+            inputs["insertHeaders"] = state ? state.insertHeaders : undefined;
             inputs["loadbalancerId"] = state ? state.loadbalancerId : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["protocol"] = state ? state.protocol : undefined;
@@ -179,6 +189,7 @@ export class Listener extends pulumi.CustomResource {
             inputs["defaultPoolId"] = args ? args.defaultPoolId : undefined;
             inputs["defaultTlsContainerRef"] = args ? args.defaultTlsContainerRef : undefined;
             inputs["description"] = args ? args.description : undefined;
+            inputs["insertHeaders"] = args ? args.insertHeaders : undefined;
             inputs["loadbalancerId"] = args ? args.loadbalancerId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["protocol"] = args ? args.protocol : undefined;
@@ -233,6 +244,12 @@ export interface ListenerState {
      * Human-readable description for the Listener.
      */
     readonly description?: pulumi.Input<string>;
+    /**
+     * The list of key value pairs representing headers to insert
+     * into the request before it is sent to the backend members. Changing this updates the headers of the
+     * existing listener.
+     */
+    readonly insertHeaders?: pulumi.Input<{[key: string]: any}>;
     /**
      * The load balancer on which to provision this
      * Listener. Changing this creates a new Listener.
@@ -324,6 +341,12 @@ export interface ListenerArgs {
      * Human-readable description for the Listener.
      */
     readonly description?: pulumi.Input<string>;
+    /**
+     * The list of key value pairs representing headers to insert
+     * into the request before it is sent to the backend members. Changing this updates the headers of the
+     * existing listener.
+     */
+    readonly insertHeaders?: pulumi.Input<{[key: string]: any}>;
     /**
      * The load balancer on which to provision this
      * Listener. Changing this creates a new Listener.

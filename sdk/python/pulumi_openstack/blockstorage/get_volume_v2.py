@@ -13,12 +13,18 @@ class GetVolumeV2Result:
     """
     A collection of values returned by getVolumeV2.
     """
-    def __init__(__self__, bootable=None, metadata=None, name=None, region=None, size=None, source_volume_id=None, status=None, volume_type=None, id=None):
+    def __init__(__self__, bootable=None, id=None, metadata=None, name=None, region=None, size=None, source_volume_id=None, status=None, volume_type=None):
         if bootable and not isinstance(bootable, str):
             raise TypeError("Expected argument 'bootable' to be a str")
         __self__.bootable = bootable
         """
         Indicates if the volume is bootable.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if metadata and not isinstance(metadata, dict):
             raise TypeError("Expected argument 'metadata' to be a dict")
@@ -62,12 +68,6 @@ class GetVolumeV2Result:
         """
         The type of the volume.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetVolumeV2Result(GetVolumeV2Result):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -75,28 +75,30 @@ class AwaitableGetVolumeV2Result(GetVolumeV2Result):
             yield self
         return GetVolumeV2Result(
             bootable=self.bootable,
+            id=self.id,
             metadata=self.metadata,
             name=self.name,
             region=self.region,
             size=self.size,
             source_volume_id=self.source_volume_id,
             status=self.status,
-            volume_type=self.volume_type,
-            id=self.id)
+            volume_type=self.volume_type)
 
 def get_volume_v2(bootable=None,metadata=None,name=None,region=None,status=None,volume_type=None,opts=None):
     """
     Use this data source to get information about an existing volume.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/blockstorage_volume_v2.html.markdown.
+
+
     :param dict metadata: Metadata key/value pairs associated with the volume.
     :param str name: The name of the volume.
     :param str region: The region in which to obtain the V2 Block Storage
            client. If omitted, the `region` argument of the provider is used.
     :param str status: The status of the volume.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/blockstorage_volume_v2.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['bootable'] = bootable
     __args__['metadata'] = metadata
@@ -112,11 +114,11 @@ def get_volume_v2(bootable=None,metadata=None,name=None,region=None,status=None,
 
     return AwaitableGetVolumeV2Result(
         bootable=__ret__.get('bootable'),
+        id=__ret__.get('id'),
         metadata=__ret__.get('metadata'),
         name=__ret__.get('name'),
         region=__ret__.get('region'),
         size=__ret__.get('size'),
         source_volume_id=__ret__.get('sourceVolumeId'),
         status=__ret__.get('status'),
-        volume_type=__ret__.get('volumeType'),
-        id=__ret__.get('id'))
+        volume_type=__ret__.get('volumeType'))

@@ -13,7 +13,7 @@ class GetShareResult:
     """
     A collection of values returned by getShare.
     """
-    def __init__(__self__, availability_zone=None, description=None, export_location_path=None, export_locations=None, is_public=None, metadata=None, name=None, project_id=None, region=None, share_network_id=None, share_proto=None, size=None, snapshot_id=None, status=None, id=None):
+    def __init__(__self__, availability_zone=None, description=None, export_location_path=None, export_locations=None, id=None, is_public=None, metadata=None, name=None, project_id=None, region=None, share_network_id=None, share_proto=None, size=None, snapshot_id=None, status=None):
         if availability_zone and not isinstance(availability_zone, str):
             raise TypeError("Expected argument 'availability_zone' to be a str")
         __self__.availability_zone = availability_zone
@@ -39,6 +39,12 @@ class GetShareResult:
         A list of export locations. For example, when a share
         server has more than one network interface, it can have multiple export
         locations.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if is_public and not isinstance(is_public, bool):
             raise TypeError("Expected argument 'is_public' to be a bool")
@@ -100,12 +106,6 @@ class GetShareResult:
         """
         See Argument Reference above.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetShareResult(GetShareResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -116,6 +116,7 @@ class AwaitableGetShareResult(GetShareResult):
             description=self.description,
             export_location_path=self.export_location_path,
             export_locations=self.export_locations,
+            id=self.id,
             is_public=self.is_public,
             metadata=self.metadata,
             name=self.name,
@@ -125,13 +126,15 @@ class AwaitableGetShareResult(GetShareResult):
             share_proto=self.share_proto,
             size=self.size,
             snapshot_id=self.snapshot_id,
-            status=self.status,
-            id=self.id)
+            status=self.status)
 
 def get_share(description=None,export_location_path=None,is_public=None,metadata=None,name=None,region=None,share_network_id=None,snapshot_id=None,status=None,opts=None):
     """
     Use this data source to get the ID of an available Shared File System share.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/sharedfilesystem_share_v2.html.markdown.
+
+
     :param str description: The human-readable description for the share.
     :param str export_location_path: The export location path of the share. Available
            since Manila API version 2.35.
@@ -147,10 +150,9 @@ def get_share(description=None,export_location_path=None,is_public=None,metadata
            `manage_error`, `unmanage_starting`, `unmanage_error`, `unmanaged`,
            `extending`, `extending_error`, `shrinking`, `shrinking_error`, or
            `shrinking_possible_data_loss_error`.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/sharedfilesystem_share_v2.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['description'] = description
     __args__['exportLocationPath'] = export_location_path
@@ -172,6 +174,7 @@ def get_share(description=None,export_location_path=None,is_public=None,metadata
         description=__ret__.get('description'),
         export_location_path=__ret__.get('exportLocationPath'),
         export_locations=__ret__.get('exportLocations'),
+        id=__ret__.get('id'),
         is_public=__ret__.get('isPublic'),
         metadata=__ret__.get('metadata'),
         name=__ret__.get('name'),
@@ -181,5 +184,4 @@ def get_share(description=None,export_location_path=None,is_public=None,metadata
         share_proto=__ret__.get('shareProto'),
         size=__ret__.get('size'),
         snapshot_id=__ret__.get('snapshotId'),
-        status=__ret__.get('status'),
-        id=__ret__.get('id'))
+        status=__ret__.get('status'))

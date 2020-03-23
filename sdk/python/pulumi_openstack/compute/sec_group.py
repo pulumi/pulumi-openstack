@@ -33,7 +33,7 @@ class SecGroup(pulumi.CustomResource):
     rule object structure is documented below. Changing this updates the
     security group rules. As shown in the example above, multiple rule blocks
     may be used.
-    
+
       * `cidr` (`str`)
       * `fromGroupId` (`str`)
       * `fromPort` (`float`)
@@ -45,13 +45,15 @@ class SecGroup(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, description=None, name=None, region=None, rules=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a V2 security group resource within OpenStack.
-        
+
         Please note that managing security groups through the OpenStack Compute API
         has been deprecated. Unless you are using an older OpenStack environment, it is
         recommended to use the `networking.SecGroup`
         and `networking.SecGroupRule`
         resources instead, which uses the OpenStack Networking API.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_secgroup_v2.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description for the security group. Changing this
@@ -66,9 +68,9 @@ class SecGroup(pulumi.CustomResource):
                rule object structure is documented below. Changing this updates the
                security group rules. As shown in the example above, multiple rule blocks
                may be used.
-        
+
         The **rules** object supports the following:
-        
+
           * `cidr` (`pulumi.Input[str]`)
           * `fromGroupId` (`pulumi.Input[str]`)
           * `fromPort` (`pulumi.Input[float]`)
@@ -76,8 +78,6 @@ class SecGroup(pulumi.CustomResource):
           * `ipProtocol` (`pulumi.Input[str]`)
           * `self` (`pulumi.Input[bool]`)
           * `toPort` (`pulumi.Input[float]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_secgroup_v2.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -113,7 +113,7 @@ class SecGroup(pulumi.CustomResource):
         """
         Get an existing SecGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -129,9 +129,9 @@ class SecGroup(pulumi.CustomResource):
                rule object structure is documented below. Changing this updates the
                security group rules. As shown in the example above, multiple rule blocks
                may be used.
-        
+
         The **rules** object supports the following:
-        
+
           * `cidr` (`pulumi.Input[str]`)
           * `fromGroupId` (`pulumi.Input[str]`)
           * `fromPort` (`pulumi.Input[float]`)
@@ -139,12 +139,11 @@ class SecGroup(pulumi.CustomResource):
           * `ipProtocol` (`pulumi.Input[str]`)
           * `self` (`pulumi.Input[bool]`)
           * `toPort` (`pulumi.Input[float]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_secgroup_v2.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["description"] = description
         __props__["name"] = name
         __props__["region"] = region

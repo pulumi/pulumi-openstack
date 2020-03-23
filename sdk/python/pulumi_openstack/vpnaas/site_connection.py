@@ -26,7 +26,7 @@ class SiteConnection(pulumi.CustomResource):
     - `action` - (Optional) The dead peer detection (DPD) action.
     A valid value is clear, hold, restart, disabled, or restart-by-peer.
     Default value is hold.
-    
+
       * `action` (`str`)
       * `interval` (`float`)
       * `timeout` (`float`)
@@ -113,7 +113,9 @@ class SiteConnection(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, admin_state_up=None, description=None, dpds=None, ikepolicy_id=None, initiator=None, ipsecpolicy_id=None, local_ep_group_id=None, local_id=None, mtu=None, name=None, peer_address=None, peer_cidrs=None, peer_ep_group_id=None, peer_id=None, psk=None, region=None, tenant_id=None, value_specs=None, vpnservice_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a V2 Neutron IPSec site connection resource within OpenStack.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/vpnaas_site_connection_v2.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] admin_state_up: The administrative state of the resource. Can either be up(true) or down(false).
@@ -155,14 +157,12 @@ class SiteConnection(pulumi.CustomResource):
                create a connection for another project. Changing this creates a new connection.
         :param pulumi.Input[dict] value_specs: Map of additional options.
         :param pulumi.Input[str] vpnservice_id: The ID of the VPN service. Changing this creates a new connection.
-        
+
         The **dpds** object supports the following:
-        
+
           * `action` (`pulumi.Input[str]`)
           * `interval` (`pulumi.Input[float]`)
           * `timeout` (`pulumi.Input[float]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/vpnaas_site_connection_v2.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -223,7 +223,7 @@ class SiteConnection(pulumi.CustomResource):
         """
         Get an existing SiteConnection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -266,18 +266,17 @@ class SiteConnection(pulumi.CustomResource):
                create a connection for another project. Changing this creates a new connection.
         :param pulumi.Input[dict] value_specs: Map of additional options.
         :param pulumi.Input[str] vpnservice_id: The ID of the VPN service. Changing this creates a new connection.
-        
+
         The **dpds** object supports the following:
-        
+
           * `action` (`pulumi.Input[str]`)
           * `interval` (`pulumi.Input[float]`)
           * `timeout` (`pulumi.Input[float]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/vpnaas_site_connection_v2.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["admin_state_up"] = admin_state_up
         __props__["description"] = description
         __props__["dpds"] = dpds

@@ -13,7 +13,7 @@ class GetSubnetPoolResult:
     """
     A collection of values returned by getSubnetPool.
     """
-    def __init__(__self__, address_scope_id=None, all_tags=None, created_at=None, default_prefixlen=None, default_quota=None, description=None, ip_version=None, is_default=None, max_prefixlen=None, min_prefixlen=None, name=None, prefixes=None, project_id=None, region=None, revision_number=None, shared=None, tags=None, updated_at=None, id=None):
+    def __init__(__self__, address_scope_id=None, all_tags=None, created_at=None, default_prefixlen=None, default_quota=None, description=None, id=None, ip_version=None, is_default=None, max_prefixlen=None, min_prefixlen=None, name=None, prefixes=None, project_id=None, region=None, revision_number=None, shared=None, tags=None, updated_at=None):
         if address_scope_id and not isinstance(address_scope_id, str):
             raise TypeError("Expected argument 'address_scope_id' to be a str")
         __self__.address_scope_id = address_scope_id
@@ -50,6 +50,12 @@ class GetSubnetPoolResult:
         __self__.description = description
         """
         See Argument Reference above.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if ip_version and not isinstance(ip_version, float):
             raise TypeError("Expected argument 'ip_version' to be a float")
@@ -117,12 +123,6 @@ class GetSubnetPoolResult:
         """
         The time at which subnetpool was created.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetSubnetPoolResult(GetSubnetPoolResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -135,6 +135,7 @@ class AwaitableGetSubnetPoolResult(GetSubnetPoolResult):
             default_prefixlen=self.default_prefixlen,
             default_quota=self.default_quota,
             description=self.description,
+            id=self.id,
             ip_version=self.ip_version,
             is_default=self.is_default,
             max_prefixlen=self.max_prefixlen,
@@ -146,13 +147,15 @@ class AwaitableGetSubnetPoolResult(GetSubnetPoolResult):
             revision_number=self.revision_number,
             shared=self.shared,
             tags=self.tags,
-            updated_at=self.updated_at,
-            id=self.id)
+            updated_at=self.updated_at)
 
 def get_subnet_pool(address_scope_id=None,default_prefixlen=None,default_quota=None,description=None,ip_version=None,is_default=None,max_prefixlen=None,min_prefixlen=None,name=None,project_id=None,region=None,shared=None,tags=None,opts=None):
     """
     Use this data source to get the ID of an available OpenStack subnetpool.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_subnetpool_v2.html.markdown.
+
+
     :param str address_scope_id: The Neutron address scope that subnetpools
            is assigned to.
     :param float default_prefixlen: The size of the subnetpool default prefix
@@ -171,10 +174,9 @@ def get_subnet_pool(address_scope_id=None,default_prefixlen=None,default_quota=N
            `region` argument of the provider is used.
     :param bool shared: Whether this subnetpool is shared across all projects.
     :param list tags: The list of subnetpool tags to filter.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_subnetpool_v2.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['addressScopeId'] = address_scope_id
     __args__['defaultPrefixlen'] = default_prefixlen
@@ -202,6 +204,7 @@ def get_subnet_pool(address_scope_id=None,default_prefixlen=None,default_quota=N
         default_prefixlen=__ret__.get('defaultPrefixlen'),
         default_quota=__ret__.get('defaultQuota'),
         description=__ret__.get('description'),
+        id=__ret__.get('id'),
         ip_version=__ret__.get('ipVersion'),
         is_default=__ret__.get('isDefault'),
         max_prefixlen=__ret__.get('maxPrefixlen'),
@@ -213,5 +216,4 @@ def get_subnet_pool(address_scope_id=None,default_prefixlen=None,default_quota=N
         revision_number=__ret__.get('revisionNumber'),
         shared=__ret__.get('shared'),
         tags=__ret__.get('tags'),
-        updated_at=__ret__.get('updatedAt'),
-        id=__ret__.get('id'))
+        updated_at=__ret__.get('updatedAt'))

@@ -89,7 +89,9 @@ class FloatingIp(pulumi.CustomResource):
         that can be used for load balancers.
         These are similar to Nova (compute) floating IP resources,
         but only compute floating IPs can be used with compute instances.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_floatingip_v2.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address: The actual/specific floating IP to obtain. By default,
@@ -124,8 +126,6 @@ class FloatingIp(pulumi.CustomResource):
                belongs to the same tenant. Changing this creates a new floating IP (which
                may or may not have a different address)
         :param pulumi.Input[dict] value_specs: Map of additional options.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_floatingip_v2.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -170,7 +170,7 @@ class FloatingIp(pulumi.CustomResource):
         """
         Get an existing FloatingIp resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -208,12 +208,11 @@ class FloatingIp(pulumi.CustomResource):
                belongs to the same tenant. Changing this creates a new floating IP (which
                may or may not have a different address)
         :param pulumi.Input[dict] value_specs: Map of additional options.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_floatingip_v2.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["address"] = address
         __props__["all_tags"] = all_tags
         __props__["description"] = description

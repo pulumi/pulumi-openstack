@@ -13,12 +13,18 @@ class GetQosDscpMarkingRuleResult:
     """
     A collection of values returned by getQosDscpMarkingRule.
     """
-    def __init__(__self__, dscp_mark=None, qos_policy_id=None, region=None, id=None):
+    def __init__(__self__, dscp_mark=None, id=None, qos_policy_id=None, region=None):
         if dscp_mark and not isinstance(dscp_mark, float):
             raise TypeError("Expected argument 'dscp_mark' to be a float")
         __self__.dscp_mark = dscp_mark
         """
         See Argument Reference above.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if qos_policy_id and not isinstance(qos_policy_id, str):
             raise TypeError("Expected argument 'qos_policy_id' to be a str")
@@ -32,12 +38,6 @@ class GetQosDscpMarkingRuleResult:
         """
         See Argument Reference above.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetQosDscpMarkingRuleResult(GetQosDscpMarkingRuleResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -45,23 +45,25 @@ class AwaitableGetQosDscpMarkingRuleResult(GetQosDscpMarkingRuleResult):
             yield self
         return GetQosDscpMarkingRuleResult(
             dscp_mark=self.dscp_mark,
+            id=self.id,
             qos_policy_id=self.qos_policy_id,
-            region=self.region,
-            id=self.id)
+            region=self.region)
 
 def get_qos_dscp_marking_rule(dscp_mark=None,qos_policy_id=None,region=None,opts=None):
     """
     Use this data source to get the ID of an available OpenStack QoS DSCP marking rule.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_qos_dscp_marking_rule_v2.html.markdown.
+
+
     :param float dscp_mark: The value of a DSCP mark.
     :param str qos_policy_id: The QoS policy reference.
     :param str region: The region in which to obtain the V2 Networking client.
            A Networking client is needed to create a Neutron QoS DSCP marking rule. If omitted, the
            `region` argument of the provider is used.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_qos_dscp_marking_rule_v2.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['dscpMark'] = dscp_mark
     __args__['qosPolicyId'] = qos_policy_id
@@ -74,6 +76,6 @@ def get_qos_dscp_marking_rule(dscp_mark=None,qos_policy_id=None,region=None,opts
 
     return AwaitableGetQosDscpMarkingRuleResult(
         dscp_mark=__ret__.get('dscpMark'),
+        id=__ret__.get('id'),
         qos_policy_id=__ret__.get('qosPolicyId'),
-        region=__ret__.get('region'),
-        id=__ret__.get('id'))
+        region=__ret__.get('region'))

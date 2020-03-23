@@ -28,12 +28,14 @@ class FlavorAccess(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, flavor_id=None, region=None, tenant_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a project access for flavor V2 resource within OpenStack.
-        
+
         Note: You _must_ have admin privileges in your OpenStack cloud to use
         this resource.
-        
+
         ---
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_flavor_access_v2.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] flavor_id: The UUID of flavor to use. Changing this creates a new flavor access.
@@ -42,8 +44,6 @@ class FlavorAccess(pulumi.CustomResource):
                Changing this creates a new flavor access.
         :param pulumi.Input[str] tenant_id: The UUID of tenant which is allowed to use the flavor.
                Changing this creates a new flavor access.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_flavor_access_v2.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -80,7 +80,7 @@ class FlavorAccess(pulumi.CustomResource):
         """
         Get an existing FlavorAccess resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -90,12 +90,11 @@ class FlavorAccess(pulumi.CustomResource):
                Changing this creates a new flavor access.
         :param pulumi.Input[str] tenant_id: The UUID of tenant which is allowed to use the flavor.
                Changing this creates a new flavor access.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_flavor_access_v2.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["flavor_id"] = flavor_id
         __props__["region"] = region
         __props__["tenant_id"] = tenant_id

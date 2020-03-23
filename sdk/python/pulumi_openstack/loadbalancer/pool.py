@@ -46,7 +46,7 @@ class Pool(pulumi.CustomResource):
     Omit this field to prevent session persistence.  Indicates
     whether connections in the same session will be processed by the same Pool
     member or not. Changing this creates a new pool.
-    
+
       * `cookieName` (`str`) - The name of the cookie if persistence mode is set
         appropriately. Required if `type = APP_COOKIE`.
       * `type` (`str`) - The type of persistence mode. The current specification
@@ -73,7 +73,9 @@ class Pool(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, admin_state_up=None, description=None, lb_method=None, listener_id=None, loadbalancer_id=None, name=None, persistence=None, protocol=None, region=None, tenant_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a V2 pool resource within OpenStack.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_pool_v2.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] admin_state_up: The administrative state of the pool.
@@ -101,15 +103,13 @@ class Pool(pulumi.CustomResource):
         :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
                the pool.  Only administrative users can specify a tenant UUID
                other than their own. Changing this creates a new pool.
-        
+
         The **persistence** object supports the following:
-        
+
           * `cookieName` (`pulumi.Input[str]`) - The name of the cookie if persistence mode is set
             appropriately. Required if `type = APP_COOKIE`.
           * `type` (`pulumi.Input[str]`) - The type of persistence mode. The current specification
             supports SOURCE_IP, HTTP_COOKIE, and APP_COOKIE.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_pool_v2.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -153,7 +153,7 @@ class Pool(pulumi.CustomResource):
         """
         Get an existing Pool resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -182,19 +182,18 @@ class Pool(pulumi.CustomResource):
         :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
                the pool.  Only administrative users can specify a tenant UUID
                other than their own. Changing this creates a new pool.
-        
+
         The **persistence** object supports the following:
-        
+
           * `cookieName` (`pulumi.Input[str]`) - The name of the cookie if persistence mode is set
             appropriately. Required if `type = APP_COOKIE`.
           * `type` (`pulumi.Input[str]`) - The type of persistence mode. The current specification
             supports SOURCE_IP, HTTP_COOKIE, and APP_COOKIE.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_pool_v2.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["admin_state_up"] = admin_state_up
         __props__["description"] = description
         __props__["lb_method"] = lb_method

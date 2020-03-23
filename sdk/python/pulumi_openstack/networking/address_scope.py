@@ -42,7 +42,9 @@ class AddressScope(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, ip_version=None, name=None, project_id=None, region=None, shared=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a V2 Neutron addressscope resource within OpenStack.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_addressscope_v2.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] ip_version: IP version, either 4 (default) or 6. Changing this
@@ -59,8 +61,6 @@ class AddressScope(pulumi.CustomResource):
         :param pulumi.Input[bool] shared: Indicates whether this address-scope is shared across
                all projects. Changing this updates the shared status of the existing
                address-scope.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_addressscope_v2.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -95,7 +95,7 @@ class AddressScope(pulumi.CustomResource):
         """
         Get an existing AddressScope resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -113,12 +113,11 @@ class AddressScope(pulumi.CustomResource):
         :param pulumi.Input[bool] shared: Indicates whether this address-scope is shared across
                all projects. Changing this updates the shared status of the existing
                address-scope.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_addressscope_v2.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["ip_version"] = ip_version
         __props__["name"] = name
         __props__["project_id"] = project_id

@@ -57,11 +57,13 @@ class PoolV1(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, lb_method=None, lb_provider=None, monitor_ids=None, name=None, protocol=None, region=None, subnet_id=None, tenant_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a V1 load balancer pool resource within OpenStack.
-        
+
         ## Notes
-        
+
         The `member` block is deprecated in favor of the `loadbalancer.MemberV1` resource.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_pool_v1.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] lb_method: The algorithm used to distribute load between the
@@ -84,8 +86,6 @@ class PoolV1(pulumi.CustomResource):
                Changing this creates a new pool.
         :param pulumi.Input[str] tenant_id: The owner of the pool. Required if admin wants to
                create a pool member for another tenant. Changing this creates a new pool.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_pool_v1.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -129,7 +129,7 @@ class PoolV1(pulumi.CustomResource):
         """
         Get an existing PoolV1 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -153,12 +153,11 @@ class PoolV1(pulumi.CustomResource):
                Changing this creates a new pool.
         :param pulumi.Input[str] tenant_id: The owner of the pool. Required if admin wants to
                create a pool member for another tenant. Changing this creates a new pool.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_pool_v1.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["lb_method"] = lb_method
         __props__["lb_provider"] = lb_provider
         __props__["monitor_ids"] = monitor_ids

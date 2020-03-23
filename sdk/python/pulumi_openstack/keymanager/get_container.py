@@ -13,7 +13,14 @@ class GetContainerResult:
     """
     A collection of values returned by getContainer.
     """
-    def __init__(__self__, consumers=None, container_ref=None, created_at=None, creator_id=None, name=None, region=None, secret_refs=None, status=None, type=None, updated_at=None, id=None):
+    def __init__(__self__, acls=None, consumers=None, container_ref=None, created_at=None, creator_id=None, id=None, name=None, region=None, secret_refs=None, status=None, type=None, updated_at=None):
+        if acls and not isinstance(acls, list):
+            raise TypeError("Expected argument 'acls' to be a list")
+        __self__.acls = acls
+        """
+        The list of ACLs assigned to a container. The `read` structure is
+        described below.
+        """
         if consumers and not isinstance(consumers, list):
             raise TypeError("Expected argument 'consumers' to be a list")
         __self__.consumers = consumers
@@ -31,13 +38,19 @@ class GetContainerResult:
             raise TypeError("Expected argument 'created_at' to be a str")
         __self__.created_at = created_at
         """
-        The date the container was created.
+        The date the container ACL was created.
         """
         if creator_id and not isinstance(creator_id, str):
             raise TypeError("Expected argument 'creator_id' to be a str")
         __self__.creator_id = creator_id
         """
         The creator of the container.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
@@ -74,13 +87,7 @@ class GetContainerResult:
             raise TypeError("Expected argument 'updated_at' to be a str")
         __self__.updated_at = updated_at
         """
-        The date the container was last updated.
-        """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
+        The date the container ACL was last updated.
         """
 class AwaitableGetContainerResult(GetContainerResult):
     # pylint: disable=using-constant-test
@@ -88,30 +95,33 @@ class AwaitableGetContainerResult(GetContainerResult):
         if False:
             yield self
         return GetContainerResult(
+            acls=self.acls,
             consumers=self.consumers,
             container_ref=self.container_ref,
             created_at=self.created_at,
             creator_id=self.creator_id,
+            id=self.id,
             name=self.name,
             region=self.region,
             secret_refs=self.secret_refs,
             status=self.status,
             type=self.type,
-            updated_at=self.updated_at,
-            id=self.id)
+            updated_at=self.updated_at)
 
 def get_container(name=None,region=None,opts=None):
     """
     Use this data source to get the ID of an available Barbican container.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/keymanager_container_v1.html.markdown.
+
+
     :param str name: The Container name.
     :param str region: The region in which to obtain the V1 KeyManager client.
            A KeyManager client is needed to fetch a container. If omitted, the `region`
            argument of the provider is used.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/keymanager_container_v1.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['name'] = name
     __args__['region'] = region
@@ -122,14 +132,15 @@ def get_container(name=None,region=None,opts=None):
     __ret__ = pulumi.runtime.invoke('openstack:keymanager/getContainer:getContainer', __args__, opts=opts).value
 
     return AwaitableGetContainerResult(
+        acls=__ret__.get('acls'),
         consumers=__ret__.get('consumers'),
         container_ref=__ret__.get('containerRef'),
         created_at=__ret__.get('createdAt'),
         creator_id=__ret__.get('creatorId'),
+        id=__ret__.get('id'),
         name=__ret__.get('name'),
         region=__ret__.get('region'),
         secret_refs=__ret__.get('secretRefs'),
         status=__ret__.get('status'),
         type=__ret__.get('type'),
-        updated_at=__ret__.get('updatedAt'),
-        id=__ret__.get('id'))
+        updated_at=__ret__.get('updatedAt'))

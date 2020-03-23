@@ -29,7 +29,7 @@ class Share(pulumi.CustomResource):
     """
     A list of export locations. For example, when a share server
     has more than one network interface, it can have multiple export locations.
-    
+
       * `path` (`str`)
       * `preferred` (`str`)
     """
@@ -104,7 +104,9 @@ class Share(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, availability_zone=None, description=None, is_public=None, metadata=None, name=None, region=None, share_network_id=None, share_proto=None, share_type=None, size=None, snapshot_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Use this resource to configure a share.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/sharedfilesystem_share_v2.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] availability_zone: The share availability zone. Changing this creates a
@@ -132,8 +134,6 @@ class Share(pulumi.CustomResource):
                than the allowed GB quota. Changing this resizes the existing share.
         :param pulumi.Input[str] snapshot_id: The UUID of the share's base snapshot. Changing this creates
                a new share.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/sharedfilesystem_share_v2.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -185,7 +185,7 @@ class Share(pulumi.CustomResource):
         """
         Get an existing Share resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -223,17 +223,16 @@ class Share(pulumi.CustomResource):
                than the allowed GB quota. Changing this resizes the existing share.
         :param pulumi.Input[str] snapshot_id: The UUID of the share's base snapshot. Changing this creates
                a new share.
-        
+
         The **export_locations** object supports the following:
-        
+
           * `path` (`pulumi.Input[str]`)
           * `preferred` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/sharedfilesystem_share_v2.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["all_metadata"] = all_metadata
         __props__["availability_zone"] = availability_zone
         __props__["description"] = description

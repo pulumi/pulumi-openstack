@@ -13,12 +13,18 @@ class GetQosBandwidthLimitRuleResult:
     """
     A collection of values returned by getQosBandwidthLimitRule.
     """
-    def __init__(__self__, direction=None, max_burst_kbps=None, max_kbps=None, qos_policy_id=None, region=None, id=None):
+    def __init__(__self__, direction=None, id=None, max_burst_kbps=None, max_kbps=None, qos_policy_id=None, region=None):
         if direction and not isinstance(direction, str):
             raise TypeError("Expected argument 'direction' to be a str")
         __self__.direction = direction
         """
         See Argument Reference above.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if max_burst_kbps and not isinstance(max_burst_kbps, float):
             raise TypeError("Expected argument 'max_burst_kbps' to be a float")
@@ -44,12 +50,6 @@ class GetQosBandwidthLimitRuleResult:
         """
         See Argument Reference above.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetQosBandwidthLimitRuleResult(GetQosBandwidthLimitRuleResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -57,26 +57,28 @@ class AwaitableGetQosBandwidthLimitRuleResult(GetQosBandwidthLimitRuleResult):
             yield self
         return GetQosBandwidthLimitRuleResult(
             direction=self.direction,
+            id=self.id,
             max_burst_kbps=self.max_burst_kbps,
             max_kbps=self.max_kbps,
             qos_policy_id=self.qos_policy_id,
-            region=self.region,
-            id=self.id)
+            region=self.region)
 
 def get_qos_bandwidth_limit_rule(max_burst_kbps=None,max_kbps=None,qos_policy_id=None,region=None,opts=None):
     """
     Use this data source to get the ID of an available OpenStack QoS bandwidth limit rule.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_qos_bandwidth_limit_rule_v2.html.markdown.
+
+
     :param float max_burst_kbps: The maximum burst size in kilobits of a QoS bandwidth limit rule.
     :param float max_kbps: The maximum kilobits per second of a QoS bandwidth limit rule.
     :param str qos_policy_id: The QoS policy reference.
     :param str region: The region in which to obtain the V2 Networking client.
            A Networking client is needed to create a Neutron QoS bandwidth limit rule. If omitted, the
            `region` argument of the provider is used.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_qos_bandwidth_limit_rule_v2.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['maxBurstKbps'] = max_burst_kbps
     __args__['maxKbps'] = max_kbps
@@ -90,8 +92,8 @@ def get_qos_bandwidth_limit_rule(max_burst_kbps=None,max_kbps=None,qos_policy_id
 
     return AwaitableGetQosBandwidthLimitRuleResult(
         direction=__ret__.get('direction'),
+        id=__ret__.get('id'),
         max_burst_kbps=__ret__.get('maxBurstKbps'),
         max_kbps=__ret__.get('maxKbps'),
         qos_policy_id=__ret__.get('qosPolicyId'),
-        region=__ret__.get('region'),
-        id=__ret__.get('id'))
+        region=__ret__.get('region'))

@@ -85,17 +85,19 @@ class VolumeAttach(pulumi.CustomResource):
         This resource is experimental and may be removed in the future! Feedback
         is requested if you find this resource useful or if you find any problems
         with it.
-        
+
         Creates a general purpose attachment connection to a Block
         Storage volume using the OpenStack Block Storage (Cinder) v3 API.
         Depending on your Block Storage service configuration, this
         resource can assist in attaching a volume to a non-OpenStack resource
         such as a bare-metal server or a remote virtual machine in a
         different cloud provider.
-        
+
         This does not actually attach a volume to an instance. Please use
         the `compute.VolumeAttach` resource for that.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/blockstorage_volume_attach_v3.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] attach_mode: Specify whether to attach the volume as Read-Only
@@ -118,8 +120,6 @@ class VolumeAttach(pulumi.CustomResource):
         :param pulumi.Input[str] wwnn: A wwnn name. Used for Fibre Channel connections.
         :param pulumi.Input[list] wwpns: An array of wwpn strings. Used for Fibre Channel
                connections.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/blockstorage_volume_attach_v3.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -168,7 +168,7 @@ class VolumeAttach(pulumi.CustomResource):
         """
         Get an existing VolumeAttach resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -197,12 +197,11 @@ class VolumeAttach(pulumi.CustomResource):
         :param pulumi.Input[str] wwnn: A wwnn name. Used for Fibre Channel connections.
         :param pulumi.Input[list] wwpns: An array of wwpn strings. Used for Fibre Channel
                connections.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/blockstorage_volume_attach_v3.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["attach_mode"] = attach_mode
         __props__["data"] = data
         __props__["device"] = device

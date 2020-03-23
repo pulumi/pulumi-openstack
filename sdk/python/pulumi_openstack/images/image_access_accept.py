@@ -47,7 +47,9 @@ class ImageAccessAccept(pulumi.CustomResource):
         """
         Manages memberships status for the shared OpenStack Glance V2 Image within the
         destination project, which has a member proposal.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/images_image_access_accept_v2.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] image_id: The proposed image ID.
@@ -59,8 +61,6 @@ class ImageAccessAccept(pulumi.CustomResource):
                membership.
         :param pulumi.Input[str] status: The membership proposal status. Can either be
                `accepted`, `rejected` or `pending`.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/images_image_access_accept_v2.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -101,7 +101,7 @@ class ImageAccessAccept(pulumi.CustomResource):
         """
         Get an existing ImageAccessAccept resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -117,12 +117,11 @@ class ImageAccessAccept(pulumi.CustomResource):
         :param pulumi.Input[str] status: The membership proposal status. Can either be
                `accepted`, `rejected` or `pending`.
         :param pulumi.Input[str] updated_at: The date the image membership was last updated.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/images_image_access_accept_v2.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["created_at"] = created_at
         __props__["image_id"] = image_id
         __props__["member_id"] = member_id

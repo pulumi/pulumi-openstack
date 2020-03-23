@@ -34,7 +34,9 @@ class FloatingIpAssociate(pulumi.CustomResource):
         """
         Associate a floating IP to an instance. This can be used instead of the
         `floating_ip` options in `compute.Instance`.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_floatingip_associate_v2.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] fixed_ip: The specific IP address to direct traffic to.
@@ -44,8 +46,6 @@ class FloatingIpAssociate(pulumi.CustomResource):
                Keypairs are associated with accounts, but a Compute client is needed to
                create one. If omitted, the `region` argument of the provider is used.
                Changing this creates a new floatingip_associate.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_floatingip_associate_v2.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -84,7 +84,7 @@ class FloatingIpAssociate(pulumi.CustomResource):
         """
         Get an existing FloatingIpAssociate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -95,12 +95,11 @@ class FloatingIpAssociate(pulumi.CustomResource):
                Keypairs are associated with accounts, but a Compute client is needed to
                create one. If omitted, the `region` argument of the provider is used.
                Changing this creates a new floatingip_associate.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_floatingip_associate_v2.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["fixed_ip"] = fixed_ip
         __props__["floating_ip"] = floating_ip
         __props__["instance_id"] = instance_id

@@ -13,7 +13,13 @@ class GetAvailabilityZonesResult:
     """
     A collection of values returned by getAvailabilityZones.
     """
-    def __init__(__self__, names=None, region=None, state=None, id=None):
+    def __init__(__self__, id=None, names=None, region=None, state=None):
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if names and not isinstance(names, list):
             raise TypeError("Expected argument 'names' to be a list")
         __self__.names = names
@@ -26,33 +32,29 @@ class GetAvailabilityZonesResult:
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         __self__.state = state
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetAvailabilityZonesResult(GetAvailabilityZonesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
         return GetAvailabilityZonesResult(
+            id=self.id,
             names=self.names,
             region=self.region,
-            state=self.state,
-            id=self.id)
+            state=self.state)
 
 def get_availability_zones(region=None,state=None,opts=None):
     """
     Use this data source to get a list of availability zones from OpenStack
-    
-    :param str region: The `region` to fetch availability zones from, defaults to the provider's `region`
-    :param str state: The `state` of the availability zones to match, default ("available").
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/compute_availability_zones_v2.html.markdown.
+
+
+    :param str region: The `region` to fetch availability zones from, defaults to the provider's `region`
+    :param str state: The `state` of the availability zones to match, default ("available").
     """
     __args__ = dict()
+
 
     __args__['region'] = region
     __args__['state'] = state
@@ -63,7 +65,7 @@ def get_availability_zones(region=None,state=None,opts=None):
     __ret__ = pulumi.runtime.invoke('openstack:compute/getAvailabilityZones:getAvailabilityZones', __args__, opts=opts).value
 
     return AwaitableGetAvailabilityZonesResult(
+        id=__ret__.get('id'),
         names=__ret__.get('names'),
         region=__ret__.get('region'),
-        state=__ret__.get('state'),
-        id=__ret__.get('id'))
+        state=__ret__.get('state'))

@@ -23,17 +23,17 @@ class Subnet(pulumi.CustomResource):
     than one range of IP addresses to use with DHCP. However, each IP range
     must be from the same CIDR that the subnet is part of.
     The `allocation_pool` block is documented below.
-    
+
       * `end` (`str`)
       * `start` (`str`)
     """
     allocation_pools_collection: pulumi.Output[list]
     """
-    
+
     A block declaring the start and end range of the IP addresses available for
     use with DHCP in this subnet.
     The `allocation_pools` block is documented below.
-    
+
       * `end` (`str`)
       * `start` (`str`)
     """
@@ -74,7 +74,7 @@ class Subnet(pulumi.CustomResource):
     with IPs from this subnet (not including local subnet route). The host_route
     object structure is documented below. Changing this updates the host routes
     for the existing subnet.
-    
+
       * `destination_cidr` (`str`)
       * `next_hop` (`str`)
     """
@@ -142,7 +142,9 @@ class Subnet(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, allocation_pools=None, allocation_pools_collection=None, cidr=None, description=None, dns_nameservers=None, enable_dhcp=None, gateway_ip=None, host_routes=None, ip_version=None, ipv6_address_mode=None, ipv6_ra_mode=None, name=None, network_id=None, no_gateway=None, prefix_length=None, region=None, subnetpool_id=None, tags=None, tenant_id=None, value_specs=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a V2 Neutron subnet resource within OpenStack.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_subnet_v2.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] allocation_pools: A block declaring the start and end range of
@@ -200,23 +202,21 @@ class Subnet(pulumi.CustomResource):
         :param pulumi.Input[str] tenant_id: The owner of the subnet. Required if admin wants to
                create a subnet for another tenant. Changing this creates a new subnet.
         :param pulumi.Input[dict] value_specs: Map of additional options.
-        
+
         The **allocation_pools** object supports the following:
-        
+
           * `end` (`pulumi.Input[str]`)
           * `start` (`pulumi.Input[str]`)
-        
+
         The **allocation_pools_collection** object supports the following:
-        
+
           * `end` (`pulumi.Input[str]`)
           * `start` (`pulumi.Input[str]`)
-        
+
         The **host_routes** object supports the following:
-        
+
           * `destination_cidr` (`pulumi.Input[str]`)
           * `next_hop` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_subnet_v2.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -269,7 +269,7 @@ class Subnet(pulumi.CustomResource):
         """
         Get an existing Subnet resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -330,27 +330,26 @@ class Subnet(pulumi.CustomResource):
         :param pulumi.Input[str] tenant_id: The owner of the subnet. Required if admin wants to
                create a subnet for another tenant. Changing this creates a new subnet.
         :param pulumi.Input[dict] value_specs: Map of additional options.
-        
+
         The **allocation_pools** object supports the following:
-        
+
           * `end` (`pulumi.Input[str]`)
           * `start` (`pulumi.Input[str]`)
-        
+
         The **allocation_pools_collection** object supports the following:
-        
+
           * `end` (`pulumi.Input[str]`)
           * `start` (`pulumi.Input[str]`)
-        
+
         The **host_routes** object supports the following:
-        
+
           * `destination_cidr` (`pulumi.Input[str]`)
           * `next_hop` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_subnet_v2.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["all_tags"] = all_tags
         __props__["allocation_pools"] = allocation_pools
         __props__["allocation_pools_collection"] = allocation_pools_collection

@@ -35,6 +35,7 @@ export namespace compute {
         sourceType: pulumi.Input<string>;
         uuid?: pulumi.Input<string>;
         volumeSize?: pulumi.Input<number>;
+        volumeType?: pulumi.Input<string>;
     }
 
     export interface InstanceNetwork {
@@ -140,6 +141,23 @@ export namespace identity {
 }
 
 export namespace keymanager {
+    export interface ContainerV1Acl {
+        read?: pulumi.Input<inputs.keymanager.ContainerV1AclRead>;
+    }
+
+    export interface ContainerV1AclRead {
+        /**
+         * The date the container was created.
+         */
+        createdAt?: pulumi.Input<string>;
+        projectAccess?: pulumi.Input<boolean>;
+        /**
+         * The date the container was last updated.
+         */
+        updatedAt?: pulumi.Input<string>;
+        users?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
     export interface ContainerV1Consumer {
         /**
          * Human-readable name for the Container. Does not have
@@ -159,6 +177,23 @@ export namespace keymanager {
          */
         name?: pulumi.Input<string>;
         secretRef: pulumi.Input<string>;
+    }
+
+    export interface SecretV1Acl {
+        read?: pulumi.Input<inputs.keymanager.SecretV1AclRead>;
+    }
+
+    export interface SecretV1AclRead {
+        /**
+         * The date the secret was created.
+         */
+        createdAt?: pulumi.Input<string>;
+        projectAccess?: pulumi.Input<boolean>;
+        /**
+         * The date the secret was last updated.
+         */
+        updatedAt?: pulumi.Input<string>;
+        users?: pulumi.Input<pulumi.Input<string>[]>;
     }
 }
 

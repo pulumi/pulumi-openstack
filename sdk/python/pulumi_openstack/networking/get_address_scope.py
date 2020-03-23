@@ -13,7 +13,13 @@ class GetAddressScopeResult:
     """
     A collection of values returned by getAddressScope.
     """
-    def __init__(__self__, ip_version=None, name=None, project_id=None, region=None, shared=None, id=None):
+    def __init__(__self__, id=None, ip_version=None, name=None, project_id=None, region=None, shared=None):
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if ip_version and not isinstance(ip_version, float):
             raise TypeError("Expected argument 'ip_version' to be a float")
         __self__.ip_version = ip_version
@@ -41,29 +47,26 @@ class GetAddressScopeResult:
         """
         See Argument Reference above.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetAddressScopeResult(GetAddressScopeResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
         return GetAddressScopeResult(
+            id=self.id,
             ip_version=self.ip_version,
             name=self.name,
             project_id=self.project_id,
             region=self.region,
-            shared=self.shared,
-            id=self.id)
+            shared=self.shared)
 
 def get_address_scope(ip_version=None,name=None,project_id=None,region=None,shared=None,opts=None):
     """
     Use this data source to get the ID of an available OpenStack address-scope.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_addressscope_v2.html.markdown.
+
+
     :param float ip_version: IP version.
     :param str name: Name of the address-scope.
     :param str project_id: The owner of the address-scope.
@@ -72,10 +75,9 @@ def get_address_scope(ip_version=None,name=None,project_id=None,region=None,shar
            `region` argument of the provider is used.
     :param bool shared: Indicates whether this address-scope is shared across
            all projects.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_addressscope_v2.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['ipVersion'] = ip_version
     __args__['name'] = name
@@ -89,9 +91,9 @@ def get_address_scope(ip_version=None,name=None,project_id=None,region=None,shar
     __ret__ = pulumi.runtime.invoke('openstack:networking/getAddressScope:getAddressScope', __args__, opts=opts).value
 
     return AwaitableGetAddressScopeResult(
+        id=__ret__.get('id'),
         ip_version=__ret__.get('ipVersion'),
         name=__ret__.get('name'),
         project_id=__ret__.get('projectId'),
         region=__ret__.get('region'),
-        shared=__ret__.get('shared'),
-        id=__ret__.get('id'))
+        shared=__ret__.get('shared'))

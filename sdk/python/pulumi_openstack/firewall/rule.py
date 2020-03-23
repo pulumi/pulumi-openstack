@@ -87,7 +87,9 @@ class Rule(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, action=None, description=None, destination_ip_address=None, destination_port=None, enabled=None, ip_version=None, name=None, protocol=None, region=None, source_ip_address=None, source_port=None, tenant_id=None, value_specs=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a v1 firewall rule resource within OpenStack.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/fw_rule_v1.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action: Action to be taken ( must be "allow" or "deny") when the
@@ -125,8 +127,6 @@ class Rule(pulumi.CustomResource):
                wants to create a firewall rule for another tenant. Changing this creates a
                new firewall rule.
         :param pulumi.Input[dict] value_specs: Map of additional options.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/fw_rule_v1.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -173,7 +173,7 @@ class Rule(pulumi.CustomResource):
         """
         Get an existing Rule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -212,12 +212,11 @@ class Rule(pulumi.CustomResource):
                wants to create a firewall rule for another tenant. Changing this creates a
                new firewall rule.
         :param pulumi.Input[dict] value_specs: Map of additional options.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/fw_rule_v1.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["action"] = action
         __props__["description"] = description
         __props__["destination_ip_address"] = destination_ip_address

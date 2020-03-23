@@ -33,7 +33,9 @@ class QosMinimumBandwidthRule(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, direction=None, min_kbps=None, qos_policy_id=None, region=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a V2 Neutron QoS minimum bandwidth rule resource within OpenStack.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_qos_minimum_bandwidth_rule_v2.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] direction: The direction of traffic. Defaults to "egress". Changing this updates the direction of the
@@ -44,8 +46,6 @@ class QosMinimumBandwidthRule(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
                A Networking client is needed to create a Neutron QoS minimum bandwidth rule. If omitted, the
                `region` argument of the provider is used. Changing this creates a new QoS minimum bandwidth rule.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_qos_minimum_bandwidth_rule_v2.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -83,7 +83,7 @@ class QosMinimumBandwidthRule(pulumi.CustomResource):
         """
         Get an existing QosMinimumBandwidthRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -95,12 +95,11 @@ class QosMinimumBandwidthRule(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
                A Networking client is needed to create a Neutron QoS minimum bandwidth rule. If omitted, the
                `region` argument of the provider is used. Changing this creates a new QoS minimum bandwidth rule.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_qos_minimum_bandwidth_rule_v2.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["direction"] = direction
         __props__["min_kbps"] = min_kbps
         __props__["qos_policy_id"] = qos_policy_id

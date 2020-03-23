@@ -53,7 +53,9 @@ class RecordSet(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, description=None, name=None, records=None, region=None, ttl=None, type=None, value_specs=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a DNS record set in the OpenStack DNS Service.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/dns_recordset_v2.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description of the  record set.
@@ -72,8 +74,6 @@ class RecordSet(pulumi.CustomResource):
                new record set.
         :param pulumi.Input[str] zone_id: The ID of the zone in which to create the record set.
                Changing this creates a new DNS  record set.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/dns_recordset_v2.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -113,7 +113,7 @@ class RecordSet(pulumi.CustomResource):
         """
         Get an existing RecordSet resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -133,12 +133,11 @@ class RecordSet(pulumi.CustomResource):
                new record set.
         :param pulumi.Input[str] zone_id: The ID of the zone in which to create the record set.
                Changing this creates a new DNS  record set.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/dns_recordset_v2.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["description"] = description
         __props__["name"] = name
         __props__["records"] = records

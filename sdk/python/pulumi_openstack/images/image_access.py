@@ -46,7 +46,9 @@ class ImageAccess(pulumi.CustomResource):
         """
         Manages members for the shared OpenStack Glance V2 Image within the source
         project, which owns the Image.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/images_image_access_v2.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] image_id: The image ID.
@@ -57,8 +59,6 @@ class ImageAccess(pulumi.CustomResource):
         :param pulumi.Input[str] status: The member proposal status. Optional if admin wants to
                force the member proposal acceptance. Can either be `accepted`, `rejected` or
                `pending`. Defaults to `pending`. Foridden for non-admin users.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/images_image_access_v2.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -99,7 +99,7 @@ class ImageAccess(pulumi.CustomResource):
         """
         Get an existing ImageAccess resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -114,12 +114,11 @@ class ImageAccess(pulumi.CustomResource):
                force the member proposal acceptance. Can either be `accepted`, `rejected` or
                `pending`. Defaults to `pending`. Foridden for non-admin users.
         :param pulumi.Input[str] updated_at: The date the image access was last updated.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/images_image_access_v2.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["created_at"] = created_at
         __props__["image_id"] = image_id
         __props__["member_id"] = member_id

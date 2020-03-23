@@ -60,6 +60,11 @@ export interface GetContainerArgs {
  */
 export interface GetContainerResult {
     /**
+     * The list of ACLs assigned to a container. The `read` structure is
+     * described below.
+     */
+    readonly acls: outputs.keymanager.GetContainerAcl[];
+    /**
      * The list of the container consumers. The structure is described
      * below.
      */
@@ -69,7 +74,7 @@ export interface GetContainerResult {
      */
     readonly containerRef: string;
     /**
-     * The date the container was created.
+     * The date the container ACL was created.
      */
     readonly createdAt: string;
     /**
@@ -98,7 +103,7 @@ export interface GetContainerResult {
      */
     readonly type: string;
     /**
-     * The date the container was last updated.
+     * The date the container ACL was last updated.
      */
     readonly updatedAt: string;
     /**

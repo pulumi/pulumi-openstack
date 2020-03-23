@@ -84,7 +84,9 @@ class Monitor(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, admin_state_up=None, delay=None, expected_codes=None, http_method=None, max_retries=None, max_retries_down=None, name=None, pool_id=None, region=None, tenant_id=None, timeout=None, type=None, url_path=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a V2 monitor resource within OpenStack.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_monitor_v2.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] admin_state_up: The administrative state of the monitor.
@@ -119,8 +121,6 @@ class Monitor(pulumi.CustomResource):
                balancer to verify the member state. Changing this creates a new monitor.
         :param pulumi.Input[str] url_path: Required for HTTP(S) types. URI path that will be
                accessed if monitor type is HTTP or HTTPS.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_monitor_v2.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -173,7 +173,7 @@ class Monitor(pulumi.CustomResource):
         """
         Get an existing Monitor resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -209,12 +209,11 @@ class Monitor(pulumi.CustomResource):
                balancer to verify the member state. Changing this creates a new monitor.
         :param pulumi.Input[str] url_path: Required for HTTP(S) types. URI path that will be
                accessed if monitor type is HTTP or HTTPS.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_monitor_v2.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["admin_state_up"] = admin_state_up
         __props__["delay"] = delay
         __props__["expected_codes"] = expected_codes

@@ -116,7 +116,9 @@ class SubnetPool(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, address_scope_id=None, default_prefixlen=None, default_quota=None, description=None, ip_version=None, is_default=None, max_prefixlen=None, min_prefixlen=None, name=None, prefixes=None, project_id=None, region=None, shared=None, tags=None, value_specs=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a V2 Neutron subnetpool resource within OpenStack.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_subnetpool_v2.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address_scope_id: The Neutron address scope to assign to the
@@ -160,8 +162,6 @@ class SubnetPool(pulumi.CustomResource):
                subnetpool.
         :param pulumi.Input[list] tags: A set of string tags for the subnetpool.
         :param pulumi.Input[dict] value_specs: Map of additional options.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_subnetpool_v2.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -212,7 +212,7 @@ class SubnetPool(pulumi.CustomResource):
         """
         Get an existing SubnetPool resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -262,12 +262,11 @@ class SubnetPool(pulumi.CustomResource):
         :param pulumi.Input[list] tags: A set of string tags for the subnetpool.
         :param pulumi.Input[str] updated_at: The time at which subnetpool was created.
         :param pulumi.Input[dict] value_specs: Map of additional options.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_subnetpool_v2.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["address_scope_id"] = address_scope_id
         __props__["all_tags"] = all_tags
         __props__["created_at"] = created_at

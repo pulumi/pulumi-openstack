@@ -13,7 +13,7 @@ class GetShareNetworkResult:
     """
     A collection of values returned by getShareNetwork.
     """
-    def __init__(__self__, cidr=None, description=None, ip_version=None, name=None, network_type=None, neutron_net_id=None, neutron_subnet_id=None, project_id=None, region=None, security_service_id=None, security_service_ids=None, segmentation_id=None, id=None):
+    def __init__(__self__, cidr=None, description=None, id=None, ip_version=None, name=None, network_type=None, neutron_net_id=None, neutron_subnet_id=None, project_id=None, region=None, security_service_id=None, security_service_ids=None, segmentation_id=None):
         if cidr and not isinstance(cidr, str):
             raise TypeError("Expected argument 'cidr' to be a str")
         __self__.cidr = cidr
@@ -25,6 +25,12 @@ class GetShareNetworkResult:
         __self__.description = description
         """
         See Argument Reference above.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if ip_version and not isinstance(ip_version, float):
             raise TypeError("Expected argument 'ip_version' to be a float")
@@ -87,12 +93,6 @@ class GetShareNetworkResult:
         """
         See Argument Reference above.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetShareNetworkResult(GetShareNetworkResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -101,6 +101,7 @@ class AwaitableGetShareNetworkResult(GetShareNetworkResult):
         return GetShareNetworkResult(
             cidr=self.cidr,
             description=self.description,
+            id=self.id,
             ip_version=self.ip_version,
             name=self.name,
             network_type=self.network_type,
@@ -110,13 +111,15 @@ class AwaitableGetShareNetworkResult(GetShareNetworkResult):
             region=self.region,
             security_service_id=self.security_service_id,
             security_service_ids=self.security_service_ids,
-            segmentation_id=self.segmentation_id,
-            id=self.id)
+            segmentation_id=self.segmentation_id)
 
 def get_share_network(description=None,ip_version=None,name=None,network_type=None,neutron_net_id=None,neutron_subnet_id=None,region=None,security_service_id=None,segmentation_id=None,opts=None):
     """
     Use this data source to get the ID of an available Shared File System share network.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/sharedfilesystem_sharenetwork_v2.html.markdown.
+
+
     :param str description: The human-readable description of the share network.
     :param float ip_version: The IP version of the share network. Can either be 4 or 6.
     :param str name: The name of the share network.
@@ -130,10 +133,9 @@ def get_share_network(description=None,ip_version=None,name=None,network_type=No
     :param str security_service_id: The security service IDs associated with
            the share network.
     :param float segmentation_id: The share network segmentation ID.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/sharedfilesystem_sharenetwork_v2.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['description'] = description
     __args__['ipVersion'] = ip_version
@@ -153,6 +155,7 @@ def get_share_network(description=None,ip_version=None,name=None,network_type=No
     return AwaitableGetShareNetworkResult(
         cidr=__ret__.get('cidr'),
         description=__ret__.get('description'),
+        id=__ret__.get('id'),
         ip_version=__ret__.get('ipVersion'),
         name=__ret__.get('name'),
         network_type=__ret__.get('networkType'),
@@ -162,5 +165,4 @@ def get_share_network(description=None,ip_version=None,name=None,network_type=No
         region=__ret__.get('region'),
         security_service_id=__ret__.get('securityServiceId'),
         security_service_ids=__ret__.get('securityServiceIds'),
-        segmentation_id=__ret__.get('segmentationId'),
-        id=__ret__.get('id'))
+        segmentation_id=__ret__.get('segmentationId'))

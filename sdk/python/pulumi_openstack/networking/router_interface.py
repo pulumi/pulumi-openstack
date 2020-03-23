@@ -35,7 +35,9 @@ class RouterInterface(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, port_id=None, region=None, router_id=None, subnet_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a V2 router interface resource within OpenStack.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_router_interface_v2.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] port_id: ID of the port this interface connects to. Changing
@@ -48,8 +50,6 @@ class RouterInterface(pulumi.CustomResource):
                this creates a new router interface.
         :param pulumi.Input[str] subnet_id: ID of the subnet this interface connects to. Changing
                this creates a new router interface.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_router_interface_v2.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -85,7 +85,7 @@ class RouterInterface(pulumi.CustomResource):
         """
         Get an existing RouterInterface resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -99,12 +99,11 @@ class RouterInterface(pulumi.CustomResource):
                this creates a new router interface.
         :param pulumi.Input[str] subnet_id: ID of the subnet this interface connects to. Changing
                this creates a new router interface.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_router_interface_v2.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["port_id"] = port_id
         __props__["region"] = region
         __props__["router_id"] = router_id

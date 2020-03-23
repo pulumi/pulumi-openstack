@@ -6,9 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/keymanager_secret_v1.html.markdown.
- */
 export function getSecret(args?: GetSecretArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretResult> & GetSecretResult {
     args = args || {};
     if (!opts) {
@@ -95,6 +92,10 @@ export interface GetSecretArgs {
  */
 export interface GetSecretResult {
     /**
+     * The list of ACLs assigned to a secret. The `read` structure is described below.
+     */
+    readonly acls: outputs.keymanager.GetSecretAcl[];
+    /**
      * See Argument Reference above.
      */
     readonly aclOnly?: boolean;
@@ -111,7 +112,7 @@ export interface GetSecretResult {
      */
     readonly contentTypes: {[key: string]: any};
     /**
-     * The date the secret was created.
+     * The date the secret ACL was created.
      */
     readonly createdAt: string;
     /**
@@ -172,7 +173,7 @@ export interface GetSecretResult {
      */
     readonly status: string;
     /**
-     * The date the secret was last updated.
+     * The date the secret ACL was last updated.
      */
     readonly updatedAt: string;
     /**

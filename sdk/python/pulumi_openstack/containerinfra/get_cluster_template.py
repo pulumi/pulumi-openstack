@@ -13,7 +13,7 @@ class GetClusterTemplateResult:
     """
     A collection of values returned by getClusterTemplate.
     """
-    def __init__(__self__, apiserver_port=None, cluster_distro=None, coe=None, created_at=None, dns_nameserver=None, docker_storage_driver=None, docker_volume_size=None, external_network_id=None, fixed_network=None, fixed_subnet=None, flavor=None, floating_ip_enabled=None, http_proxy=None, https_proxy=None, image=None, insecure_registry=None, keypair_id=None, labels=None, master_flavor=None, master_lb_enabled=None, name=None, network_driver=None, no_proxy=None, project_id=None, public=None, region=None, registry_enabled=None, server_type=None, tls_disabled=None, updated_at=None, user_id=None, volume_driver=None, id=None):
+    def __init__(__self__, apiserver_port=None, cluster_distro=None, coe=None, created_at=None, dns_nameserver=None, docker_storage_driver=None, docker_volume_size=None, external_network_id=None, fixed_network=None, fixed_subnet=None, flavor=None, floating_ip_enabled=None, http_proxy=None, https_proxy=None, id=None, image=None, insecure_registry=None, keypair_id=None, labels=None, master_flavor=None, master_lb_enabled=None, name=None, network_driver=None, no_proxy=None, project_id=None, public=None, region=None, registry_enabled=None, server_type=None, tls_disabled=None, updated_at=None, user_id=None, volume_driver=None):
         if apiserver_port and not isinstance(apiserver_port, float):
             raise TypeError("Expected argument 'apiserver_port' to be a float")
         __self__.apiserver_port = apiserver_port
@@ -104,6 +104,12 @@ class GetClusterTemplateResult:
         """
         The address of a proxy for receiving all HTTPS requests and
         relay them.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if image and not isinstance(image, str):
             raise TypeError("Expected argument 'image' to be a str")
@@ -218,12 +224,6 @@ class GetClusterTemplateResult:
         The name of the driver that is used for the volumes of the
         cluster nodes.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetClusterTemplateResult(GetClusterTemplateResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -244,6 +244,7 @@ class AwaitableGetClusterTemplateResult(GetClusterTemplateResult):
             floating_ip_enabled=self.floating_ip_enabled,
             http_proxy=self.http_proxy,
             https_proxy=self.https_proxy,
+            id=self.id,
             image=self.image,
             insecure_registry=self.insecure_registry,
             keypair_id=self.keypair_id,
@@ -261,22 +262,23 @@ class AwaitableGetClusterTemplateResult(GetClusterTemplateResult):
             tls_disabled=self.tls_disabled,
             updated_at=self.updated_at,
             user_id=self.user_id,
-            volume_driver=self.volume_driver,
-            id=self.id)
+            volume_driver=self.volume_driver)
 
 def get_cluster_template(name=None,region=None,opts=None):
     """
     Use this data source to get the ID of an available OpenStack Magnum cluster
     template.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/containerinfra_clustertemplate_v1.html.markdown.
+
+
     :param str name: The name of the cluster template.
     :param str region: The region in which to obtain the V1 Container Infra
            client.
            If omitted, the `region` argument of the provider is used.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/containerinfra_clustertemplate_v1.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['name'] = name
     __args__['region'] = region
@@ -301,6 +303,7 @@ def get_cluster_template(name=None,region=None,opts=None):
         floating_ip_enabled=__ret__.get('floatingIpEnabled'),
         http_proxy=__ret__.get('httpProxy'),
         https_proxy=__ret__.get('httpsProxy'),
+        id=__ret__.get('id'),
         image=__ret__.get('image'),
         insecure_registry=__ret__.get('insecureRegistry'),
         keypair_id=__ret__.get('keypairId'),
@@ -318,5 +321,4 @@ def get_cluster_template(name=None,region=None,opts=None):
         tls_disabled=__ret__.get('tlsDisabled'),
         updated_at=__ret__.get('updatedAt'),
         user_id=__ret__.get('userId'),
-        volume_driver=__ret__.get('volumeDriver'),
-        id=__ret__.get('id'))
+        volume_driver=__ret__.get('volumeDriver'))

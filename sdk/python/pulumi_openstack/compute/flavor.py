@@ -60,7 +60,9 @@ class Flavor(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, disk=None, ephemeral=None, extra_specs=None, is_public=None, name=None, ram=None, region=None, rx_tx_factor=None, swap=None, vcpus=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a V2 flavor resource within OpenStack.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_flavor_v2.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] disk: The amount of disk space in gigabytes to use for the root
@@ -82,8 +84,6 @@ class Flavor(pulumi.CustomResource):
                unspecified, the default is 0. Changing this creates a new flavor.
         :param pulumi.Input[float] vcpus: The number of virtual CPUs to use. Changing this creates
                a new flavor.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_flavor_v2.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -129,7 +129,7 @@ class Flavor(pulumi.CustomResource):
         """
         Get an existing Flavor resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -152,12 +152,11 @@ class Flavor(pulumi.CustomResource):
                unspecified, the default is 0. Changing this creates a new flavor.
         :param pulumi.Input[float] vcpus: The number of virtual CPUs to use. Changing this creates
                a new flavor.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_flavor_v2.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["disk"] = disk
         __props__["ephemeral"] = ephemeral
         __props__["extra_specs"] = extra_specs

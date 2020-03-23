@@ -7,10 +7,10 @@ from .l7_policy_v2 import *
 from .l7_rule_v2 import *
 from .listener import *
 from .load_balancer import *
-from .member_v1 import *
 from .member import *
-from .monitor_v1 import *
+from .member_v1 import *
 from .monitor import *
-from .pool_v1 import *
+from .monitor_v1 import *
 from .pool import *
+from .pool_v1 import *
 from .vip import *

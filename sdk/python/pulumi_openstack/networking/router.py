@@ -51,7 +51,7 @@ class Router(pulumi.CustomResource):
     can be repeated. The structure is described below. An `external_network_id`
     has to be set in order to set this property. Changing this updates the
     external fixed IPs of the router.
-    
+
       * `ip_address` (`str`)
       * `subnet_id` (`str`)
     """
@@ -99,13 +99,15 @@ class Router(pulumi.CustomResource):
     """
     Map of additional vendor-specific options.
     Supported options are described below.
-    
+
       * `setRouterGatewayAfterCreate` (`bool`)
     """
     def __init__(__self__, resource_name, opts=None, admin_state_up=None, availability_zone_hints=None, description=None, distributed=None, enable_snat=None, external_fixed_ips=None, external_gateway=None, external_network_id=None, name=None, region=None, tags=None, tenant_id=None, value_specs=None, vendor_options=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a V2 router resource within OpenStack.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_router_v2.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] admin_state_up: Administrative up/down status for the router
@@ -148,17 +150,15 @@ class Router(pulumi.CustomResource):
         :param pulumi.Input[dict] value_specs: Map of additional driver-specific options.
         :param pulumi.Input[dict] vendor_options: Map of additional vendor-specific options.
                Supported options are described below.
-        
+
         The **external_fixed_ips** object supports the following:
-        
+
           * `ip_address` (`pulumi.Input[str]`)
           * `subnet_id` (`pulumi.Input[str]`)
-        
-        The **vendor_options** object supports the following:
-        
-          * `setRouterGatewayAfterCreate` (`pulumi.Input[bool]`)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_router_v2.html.markdown.
+        The **vendor_options** object supports the following:
+
+          * `setRouterGatewayAfterCreate` (`pulumi.Input[bool]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -203,7 +203,7 @@ class Router(pulumi.CustomResource):
         """
         Get an existing Router resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -249,21 +249,20 @@ class Router(pulumi.CustomResource):
         :param pulumi.Input[dict] value_specs: Map of additional driver-specific options.
         :param pulumi.Input[dict] vendor_options: Map of additional vendor-specific options.
                Supported options are described below.
-        
+
         The **external_fixed_ips** object supports the following:
-        
+
           * `ip_address` (`pulumi.Input[str]`)
           * `subnet_id` (`pulumi.Input[str]`)
-        
-        The **vendor_options** object supports the following:
-        
-          * `setRouterGatewayAfterCreate` (`pulumi.Input[bool]`)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_router_v2.html.markdown.
+        The **vendor_options** object supports the following:
+
+          * `setRouterGatewayAfterCreate` (`pulumi.Input[bool]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["admin_state_up"] = admin_state_up
         __props__["all_tags"] = all_tags
         __props__["availability_zone_hints"] = availability_zone_hints

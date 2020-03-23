@@ -6,9 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/sharedfilesystem_sharenetwork_v2.html.markdown.
- */
 export class ShareNetwork extends pulumi.CustomResource {
     /**
      * Get an existing ShareNetwork resource's state with the given name, ID, and optional extra

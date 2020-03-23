@@ -61,7 +61,9 @@ class Member(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, address=None, admin_state_up=None, name=None, pool_id=None, protocol_port=None, region=None, subnet_id=None, tenant_id=None, weight=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a V2 member resource within OpenStack.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_member_v2.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address: The IP address of the member to receive traffic from
@@ -85,8 +87,6 @@ class Member(pulumi.CustomResource):
                portion of traffic that this member should receive from the pool. For
                example, a member with a weight of 10 receives five times as much traffic
                as a member with a weight of 2.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_member_v2.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -131,7 +131,7 @@ class Member(pulumi.CustomResource):
         """
         Get an existing Member resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -156,12 +156,11 @@ class Member(pulumi.CustomResource):
                portion of traffic that this member should receive from the pool. For
                example, a member with a weight of 10 receives five times as much traffic
                as a member with a weight of 2.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_member_v2.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["address"] = address
         __props__["admin_state_up"] = admin_state_up
         __props__["name"] = name
