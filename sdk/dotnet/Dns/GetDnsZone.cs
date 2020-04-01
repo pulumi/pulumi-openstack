@@ -16,7 +16,18 @@ namespace Pulumi.OpenStack.Dns
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/dns_zone_v2.html.markdown.
         /// </summary>
+        [Obsolete("Use GetDnsZone.InvokeAsync() instead")]
         public static Task<GetDnsZoneResult> GetDnsZone(GetDnsZoneArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDnsZoneResult>("openstack:dns/getDnsZone:getDnsZone", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetDnsZone
+    {
+        /// <summary>
+        /// Use this data source to get the ID of an available OpenStack DNS zone.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/dns_zone_v2.html.markdown.
+        /// </summary>
+        public static Task<GetDnsZoneResult> InvokeAsync(GetDnsZoneArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDnsZoneResult>("openstack:dns/getDnsZone:getDnsZone", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 
@@ -24,12 +35,19 @@ namespace Pulumi.OpenStack.Dns
     {
         [Input("attributes")]
         private Dictionary<string, object>? _attributes;
+
+        /// <summary>
+        /// Attributes of the DNS Service scheduler.
+        /// </summary>
         public Dictionary<string, object> Attributes
         {
             get => _attributes ?? (_attributes = new Dictionary<string, object>());
             set => _attributes = value;
         }
 
+        /// <summary>
+        /// The time the zone was created.
+        /// </summary>
         [Input("createdAt")]
         public string? CreatedAt { get; set; }
 
@@ -47,6 +65,10 @@ namespace Pulumi.OpenStack.Dns
 
         [Input("masters")]
         private List<string>? _masters;
+
+        /// <summary>
+        /// An array of master DNS servers. When `type` is  `SECONDARY`.
+        /// </summary>
         public List<string> Masters
         {
             get => _masters ?? (_masters = new List<string>());
@@ -59,9 +81,15 @@ namespace Pulumi.OpenStack.Dns
         [Input("name")]
         public string? Name { get; set; }
 
+        /// <summary>
+        /// The ID of the pool hosting the zone.
+        /// </summary>
         [Input("poolId")]
         public string? PoolId { get; set; }
 
+        /// <summary>
+        /// The project ID that owns the zone.
+        /// </summary>
         [Input("projectId")]
         public string? ProjectId { get; set; }
 
@@ -73,6 +101,9 @@ namespace Pulumi.OpenStack.Dns
         [Input("region")]
         public string? Region { get; set; }
 
+        /// <summary>
+        /// The serial number of the zone.
+        /// </summary>
         [Input("serial")]
         public int? Serial { get; set; }
 
@@ -82,6 +113,9 @@ namespace Pulumi.OpenStack.Dns
         [Input("status")]
         public string? Status { get; set; }
 
+        /// <summary>
+        /// The time the zone was transferred.
+        /// </summary>
         [Input("transferredAt")]
         public string? TransferredAt { get; set; }
 
@@ -97,9 +131,15 @@ namespace Pulumi.OpenStack.Dns
         [Input("type")]
         public string? Type { get; set; }
 
+        /// <summary>
+        /// The time the zone was last updated.
+        /// </summary>
         [Input("updatedAt")]
         public string? UpdatedAt { get; set; }
 
+        /// <summary>
+        /// The version of the zone.
+        /// </summary>
         [Input("version")]
         public int? Version { get; set; }
 

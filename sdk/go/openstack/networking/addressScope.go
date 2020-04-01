@@ -160,4 +160,3 @@ type AddressScopeArgs struct {
 func (AddressScopeArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*addressScopeArgs)(nil)).Elem()
 }
-

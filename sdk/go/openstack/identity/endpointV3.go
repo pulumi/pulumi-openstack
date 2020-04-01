@@ -164,4 +164,3 @@ type EndpointV3Args struct {
 func (EndpointV3Args) ElementType() reflect.Type {
 	return reflect.TypeOf((*endpointV3Args)(nil)).Elem()
 }
-

@@ -43,7 +43,6 @@ type GetEndpointArgs struct {
 	ServiceType *string `pulumi:"serviceType"`
 }
 
-
 // A collection of values returned by getEndpoint.
 type GetEndpointResult struct {
 	// See Argument Reference above.
@@ -65,4 +64,3 @@ type GetEndpointResult struct {
 	// The endpoint URL.
 	Url string `pulumi:"url"`
 }
-

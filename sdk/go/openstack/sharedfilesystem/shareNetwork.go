@@ -215,4 +215,3 @@ type ShareNetworkArgs struct {
 func (ShareNetworkArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*shareNetworkArgs)(nil)).Elem()
 }
-

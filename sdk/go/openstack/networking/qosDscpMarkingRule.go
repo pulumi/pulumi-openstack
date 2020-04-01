@@ -117,4 +117,3 @@ type QosDscpMarkingRuleArgs struct {
 func (QosDscpMarkingRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*qosDscpMarkingRuleArgs)(nil)).Elem()
 }
-

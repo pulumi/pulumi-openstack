@@ -35,7 +35,6 @@ type GetServiceArgs struct {
 	Type *string `pulumi:"type"`
 }
 
-
 // A collection of values returned by getService.
 type GetServiceResult struct {
 	// The service description.
@@ -51,4 +50,3 @@ type GetServiceResult struct {
 	// See Argument Reference above.
 	Type *string `pulumi:"type"`
 }
-

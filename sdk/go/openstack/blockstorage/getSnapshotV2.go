@@ -36,7 +36,6 @@ type GetSnapshotV2Args struct {
 	VolumeId *string `pulumi:"volumeId"`
 }
 
-
 // A collection of values returned by getSnapshotV2.
 type GetSnapshotV2Result struct {
 	// The snapshot's description.
@@ -44,8 +43,8 @@ type GetSnapshotV2Result struct {
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The snapshot's metadata.
-	Metadata map[string]interface{} `pulumi:"metadata"`
-	MostRecent *bool `pulumi:"mostRecent"`
+	Metadata   map[string]interface{} `pulumi:"metadata"`
+	MostRecent *bool                  `pulumi:"mostRecent"`
 	// See Argument Reference above.
 	Name string `pulumi:"name"`
 	// See Argument Reference above.
@@ -57,4 +56,3 @@ type GetSnapshotV2Result struct {
 	// See Argument Reference above.
 	VolumeId string `pulumi:"volumeId"`
 }
-

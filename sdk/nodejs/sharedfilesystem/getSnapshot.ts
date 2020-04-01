@@ -58,6 +58,9 @@ export interface GetSnapshotArgs {
      * The region in which to obtain the V2 Shared File System client.
      */
     readonly region?: string;
+    /**
+     * The UUID of the source share that was used to create the snapshot.
+     */
     readonly shareId?: string;
     /**
      * A snapshot status filter. A valid value is `available`, `error`,

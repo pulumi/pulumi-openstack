@@ -225,4 +225,3 @@ type MemberArgs struct {
 func (MemberArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*memberArgs)(nil)).Elem()
 }
-

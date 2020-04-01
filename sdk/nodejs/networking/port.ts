@@ -168,13 +168,11 @@ export class Port extends pulumi.CustomResource {
      */
     public readonly fixedIps!: pulumi.Output<outputs.networking.PortFixedIp[] | undefined>;
     /**
-     * Specify a specific MAC address for the port. Changing
-     * this creates a new port.
+     * The additional MAC address.
      */
     public readonly macAddress!: pulumi.Output<string>;
     /**
-     * A unique name for the port. Changing this
-     * updates the `name` of an existing port.
+     * Name of the DHCP option.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -388,13 +386,11 @@ export interface PortState {
      */
     readonly fixedIps?: pulumi.Input<pulumi.Input<inputs.networking.PortFixedIp>[]>;
     /**
-     * Specify a specific MAC address for the port. Changing
-     * this creates a new port.
+     * The additional MAC address.
      */
     readonly macAddress?: pulumi.Input<string>;
     /**
-     * A unique name for the port. Changing this
-     * updates the `name` of an existing port.
+     * Name of the DHCP option.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -511,13 +507,11 @@ export interface PortArgs {
      */
     readonly fixedIps?: pulumi.Input<pulumi.Input<inputs.networking.PortFixedIp>[]>;
     /**
-     * Specify a specific MAC address for the port. Changing
-     * this creates a new port.
+     * The additional MAC address.
      */
     readonly macAddress?: pulumi.Input<string>;
     /**
-     * A unique name for the port. Changing this
-     * updates the `name` of an existing port.
+     * Name of the DHCP option.
      */
     readonly name?: pulumi.Input<string>;
     /**

@@ -314,4 +314,3 @@ type VipArgs struct {
 func (VipArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*vipArgs)(nil)).Elem()
 }
-

@@ -73,6 +73,9 @@ export interface GetShareArgs {
      * The name of the share.
      */
     readonly name?: string;
+    /**
+     * The region in which to obtain the V2 Shared File System client.
+     */
     readonly region?: string;
     /**
      * The UUID of the share's share network.

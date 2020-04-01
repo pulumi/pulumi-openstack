@@ -74,6 +74,9 @@ export interface GetUserArgs {
      * The protocol ID of the user.
      */
     readonly protocolId?: string;
+    /**
+     * The region the user is located in.
+     */
     readonly region?: string;
     /**
      * The unique ID of the user.

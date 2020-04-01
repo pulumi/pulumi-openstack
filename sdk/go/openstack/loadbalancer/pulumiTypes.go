@@ -65,7 +65,8 @@ type PoolPersistencePtrInput interface {
 
 type poolPersistencePtrType PoolPersistenceArgs
 
-func PoolPersistencePtr(v *PoolPersistenceArgs) PoolPersistencePtrInput {	return (*poolPersistencePtrType)(v)
+func PoolPersistencePtr(v *PoolPersistenceArgs) PoolPersistencePtrInput {
+	return (*poolPersistencePtrType)(v)
 }
 
 func (*poolPersistencePtrType) ElementType() reflect.Type {
@@ -80,7 +81,7 @@ func (i *poolPersistencePtrType) ToPoolPersistencePtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(PoolPersistencePtrOutput)
 }
 
-type PoolPersistenceOutput struct { *pulumi.OutputState }
+type PoolPersistenceOutput struct{ *pulumi.OutputState }
 
 func (PoolPersistenceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*PoolPersistence)(nil)).Elem()
@@ -103,19 +104,20 @@ func (o PoolPersistenceOutput) ToPoolPersistencePtrOutputWithContext(ctx context
 		return &v
 	}).(PoolPersistencePtrOutput)
 }
+
 // The name of the cookie if persistence mode is set
 // appropriately. Required if `type = APP_COOKIE`.
 func (o PoolPersistenceOutput) CookieName() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v PoolPersistence) *string { return v.CookieName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v PoolPersistence) *string { return v.CookieName }).(pulumi.StringPtrOutput)
 }
 
 // The type of persistence mode. The current specification
 // supports SOURCE_IP, HTTP_COOKIE, and APP_COOKIE.
 func (o PoolPersistenceOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func (v PoolPersistence) string { return v.Type }).(pulumi.StringOutput)
+	return o.ApplyT(func(v PoolPersistence) string { return v.Type }).(pulumi.StringOutput)
 }
 
-type PoolPersistencePtrOutput struct { *pulumi.OutputState}
+type PoolPersistencePtrOutput struct{ *pulumi.OutputState }
 
 func (PoolPersistencePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**PoolPersistence)(nil)).Elem()
@@ -130,19 +132,19 @@ func (o PoolPersistencePtrOutput) ToPoolPersistencePtrOutputWithContext(ctx cont
 }
 
 func (o PoolPersistencePtrOutput) Elem() PoolPersistenceOutput {
-	return o.ApplyT(func (v *PoolPersistence) PoolPersistence { return *v }).(PoolPersistenceOutput)
+	return o.ApplyT(func(v *PoolPersistence) PoolPersistence { return *v }).(PoolPersistenceOutput)
 }
 
 // The name of the cookie if persistence mode is set
 // appropriately. Required if `type = APP_COOKIE`.
 func (o PoolPersistencePtrOutput) CookieName() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v PoolPersistence) *string { return v.CookieName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v PoolPersistence) *string { return v.CookieName }).(pulumi.StringPtrOutput)
 }
 
 // The type of persistence mode. The current specification
 // supports SOURCE_IP, HTTP_COOKIE, and APP_COOKIE.
 func (o PoolPersistencePtrOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func (v PoolPersistence) string { return v.Type }).(pulumi.StringOutput)
+	return o.ApplyT(func(v PoolPersistence) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {

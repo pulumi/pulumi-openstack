@@ -132,4 +132,3 @@ type QosMinimumBandwidthRuleArgs struct {
 func (QosMinimumBandwidthRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*qosMinimumBandwidthRuleArgs)(nil)).Elem()
 }
-

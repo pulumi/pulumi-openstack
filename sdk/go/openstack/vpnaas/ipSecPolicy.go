@@ -250,4 +250,3 @@ type IpSecPolicyArgs struct {
 func (IpSecPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*ipSecPolicyArgs)(nil)).Elem()
 }
-

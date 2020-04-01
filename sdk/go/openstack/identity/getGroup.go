@@ -33,7 +33,6 @@ type GetGroupArgs struct {
 	Region *string `pulumi:"region"`
 }
 
-
 // A collection of values returned by getGroup.
 type GetGroupResult struct {
 	// A description of the group.
@@ -47,4 +46,3 @@ type GetGroupResult struct {
 	// See Argument Reference above.
 	Region string `pulumi:"region"`
 }
-

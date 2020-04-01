@@ -16,7 +16,18 @@ namespace Pulumi.OpenStack.Networking
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_trunk_v2.html.markdown.
         /// </summary>
+        [Obsolete("Use GetTrunk.InvokeAsync() instead")]
         public static Task<GetTrunkResult> GetTrunk(GetTrunkArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetTrunkResult>("openstack:networking/getTrunk:getTrunk", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetTrunk
+    {
+        /// <summary>
+        /// Use this data source to get the ID of an available OpenStack trunk.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_trunk_v2.html.markdown.
+        /// </summary>
+        public static Task<GetTrunkResult> InvokeAsync(GetTrunkArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTrunkResult>("openstack:networking/getTrunk:getTrunk", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

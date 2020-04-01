@@ -30,7 +30,6 @@ type GetContainerArgs struct {
 	Region *string `pulumi:"region"`
 }
 
-
 // A collection of values returned by getContainer.
 type GetContainerResult struct {
 	// The list of ACLs assigned to a container. The `read` structure is
@@ -61,4 +60,3 @@ type GetContainerResult struct {
 	// The date the container ACL was last updated.
 	UpdatedAt string `pulumi:"updatedAt"`
 }
-

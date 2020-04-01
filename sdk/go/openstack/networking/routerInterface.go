@@ -139,4 +139,3 @@ type RouterInterfaceArgs struct {
 func (RouterInterfaceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*routerInterfaceArgs)(nil)).Elem()
 }
-

@@ -145,4 +145,3 @@ type SubnetRouteArgs struct {
 func (SubnetRouteArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*subnetRouteArgs)(nil)).Elem()
 }
-

@@ -26,57 +26,187 @@ export namespace blockstorage {
 
 export namespace compute {
     export interface InstanceBlockDevice {
+        /**
+         * The boot index of the volume. It defaults to 0.
+         * Changing this creates a new server.
+         */
         bootIndex?: number;
+        /**
+         * Delete the volume / block device upon
+         * termination of the instance. Defaults to false. Changing this creates a
+         * new server.
+         */
         deleteOnTermination?: boolean;
+        /**
+         * The type that gets created. Possible values
+         * are "volume" and "local". Changing this creates a new server.
+         */
         destinationType?: string;
+        /**
+         * The low-level device type that will be used. Most
+         * common thing is to leave this empty. Changing this creates a new server.
+         */
         deviceType?: string;
+        /**
+         * The low-level disk bus that will be used. Most common
+         * thing is to leave this empty. Changing this creates a new server.
+         */
         diskBus?: string;
         guestFormat?: string;
+        /**
+         * The source type of the device. Must be one of
+         * "blank", "image", "volume", or "snapshot". Changing this creates a new
+         * server.
+         */
         sourceType: string;
+        /**
+         * The UUID of
+         * the image, volume, or snapshot. Changing this creates a new server.
+         */
         uuid?: string;
+        /**
+         * The size of the volume to create (in gigabytes). Required
+         * in the following combinations: source=image and destination=volume,
+         * source=blank and destination=local, and source=blank and destination=volume.
+         * Changing this creates a new server.
+         */
         volumeSize?: number;
+        /**
+         * The volume type that will be used, for example SSD
+         * or HDD storage. The available options depend on how your specific OpenStack
+         * cloud is configured and what classes of storage are provided. Changing this
+         * creates a new server.
+         */
         volumeType?: string;
     }
 
     export interface InstanceNetwork {
+        /**
+         * Specifies if this network should be used for
+         * provisioning access. Accepts true or false. Defaults to false.
+         */
         accessNetwork?: boolean;
+        /**
+         * Specifies a fixed IPv4 address to be used on this
+         * network. Changing this creates a new server.
+         */
         fixedIpV4: string;
         fixedIpV6: string;
         mac: string;
         /**
-         * A unique name for the resource.
+         * The human-readable
+         * name of the network. Changing this creates a new server.
          */
         name: string;
+        /**
+         * The port UUID of a
+         * network to attach to the server. Changing this creates a new server.
+         */
         port: string;
+        /**
+         * The UUID of
+         * the image, volume, or snapshot. Changing this creates a new server.
+         */
         uuid: string;
     }
 
     export interface InstancePersonality {
+        /**
+         * The contents of the file. Limited to 255 bytes.
+         */
         content: string;
+        /**
+         * The absolute path of the destination file.
+         */
         file: string;
     }
 
     export interface InstanceSchedulerHint {
+        /**
+         * Arbitrary key/value pairs of additional
+         * properties to pass to the scheduler.
+         */
         additionalProperties?: {[key: string]: any};
+        /**
+         * An IP Address in CIDR form. The instance
+         * will be placed on a compute node that is in the same subnet.
+         */
         buildNearHostIp?: string;
+        /**
+         * A list of instance UUIDs. The instance will
+         * be scheduled on a different host than all other instances.
+         */
         differentHosts?: string[];
+        /**
+         * A UUID of a Server Group. The instance will be placed
+         * into that group.
+         */
         group?: string;
+        /**
+         * A conditional query that a compute node must pass in
+         * order to host an instance. The query must use the `JsonFilter` syntax
+         * which is described
+         * [here](https://docs.openstack.org/nova/latest/admin/configuration/schedulers.html#jsonfilter).
+         * At this time, only simple queries are supported. Compound queries using
+         * `and`, `or`, or `not` are not supported. An example of a simple query is:
+         */
         queries?: string[];
+        /**
+         * A list of instance UUIDs. The instance will be
+         * scheduled on the same host of those specified.
+         */
         sameHosts?: string[];
+        /**
+         * The name of a cell to host the instance.
+         */
         targetCell?: string;
     }
 
     export interface InstanceVendorOptions {
+        /**
+         * Boolean to control whether
+         * to ignore manual confirmation of the instance resizing. This can be helpful
+         * to work with some OpenStack clouds which automatically confirm resizing of
+         * instances after some timeout.
+         */
         ignoreResizeConfirmation?: boolean;
     }
 
     export interface SecGroupRule {
+        /**
+         * Required if `fromGroupId` or `self` is empty. The IP range
+         * that will be the source of network traffic to the security group. Use 0.0.0.0/0
+         * to allow all IP addresses. Changing this creates a new security group rule. Cannot
+         * be combined with `fromGroupId` or `self`.
+         */
         cidr?: string;
+        /**
+         * Required if `cidr` or `self` is empty. The ID of a
+         * group from which to forward traffic to the parent group. Changing this creates a
+         * new security group rule. Cannot be combined with `cidr` or `self`.
+         */
         fromGroupId?: string;
+        /**
+         * An integer representing the lower bound of the port
+         * range to open. Changing this creates a new security group rule.
+         */
         fromPort: number;
         id: string;
+        /**
+         * The protocol type that will be allowed. Changing
+         * this creates a new security group rule.
+         */
         ipProtocol: string;
+        /**
+         * Required if `cidr` and `fromGroupId` is empty. If true,
+         * the security group itself will be added as a source to this ingress rule. Cannot
+         * be combined with `cidr` or `fromGroupId`.
+         */
         self?: boolean;
+        /**
+         * An integer representing the upper bound of the port
+         * range to open. Changing this creates a new security group rule.
+         */
         toPort: number;
     }
 }
@@ -84,54 +214,130 @@ export namespace compute {
 export namespace database {
     export interface ConfigurationConfiguration {
         /**
-         * A unique name for the resource.
+         * Configuration parameter name. Changing this creates a new resource.
          */
         name: string;
+        /**
+         * Configuration parameter value. Changing this creates a new resource.
+         */
         value: string;
     }
 
     export interface ConfigurationDatastore {
+        /**
+         * Database engine type to be used with this configuration. Changing this creates a new resource.
+         */
         type: string;
+        /**
+         * Version of database engine type to be used with this configuration. Changing this creates a new resource.
+         */
         version: string;
     }
 
     export interface InstanceDatabase {
+        /**
+         * Database character set. Changing this creates a
+         * new instance.
+         */
         charset?: string;
+        /**
+         * Database collation. Changing this creates a new instance.
+         */
         collate?: string;
         /**
-         * A unique name for the resource.
+         * Database to be created on new instance. Changing this creates a
+         * new instance.
          */
         name: string;
     }
 
     export interface InstanceDatastore {
+        /**
+         * Database engine type to be used in new instance. Changing this
+         * creates a new instance.
+         */
         type: string;
+        /**
+         * Version of database engine type to be used in new instance.
+         * Changing this creates a new instance.
+         */
         version: string;
     }
 
     export interface InstanceNetwork {
+        /**
+         * Specifies a fixed IPv4 address to be used on this
+         * network. Changing this creates a new instance.
+         */
         fixedIpV4?: string;
+        /**
+         * Specifies a fixed IPv6 address to be used on this
+         * network. Changing this creates a new instance.
+         */
         fixedIpV6?: string;
+        /**
+         * The port UUID of a
+         * network to attach to the instance. Changing this creates a new instance.
+         */
         port?: string;
+        /**
+         * The network UUID to
+         * attach to the instance. Changing this creates a new instance.
+         */
         uuid?: string;
     }
 
     export interface InstanceUser {
+        /**
+         * A list of databases that user will have access to. If not specified, 
+         * user has access to all databases on th einstance. Changing this creates a new instance.
+         */
         databases?: string[];
+        /**
+         * An ip address or % sign indicating what ip addresses can connect with
+         * this user credentials. Changing this creates a new instance.
+         */
         host?: string;
         /**
-         * A unique name for the resource.
+         * Database to be created on new instance. Changing this creates a
+         * new instance.
          */
         name: string;
+        /**
+         * User's password. Changing this creates a
+         * new instance.
+         */
         password?: string;
     }
 }
 
 export namespace identity {
     export interface ApplicationCredentialAccessRule {
+        /**
+         * The ID of the existing access rule. The access rule ID of
+         * another application credential can be provided.
+         */
         id: string;
+        /**
+         * The request method that the application credential is
+         * permitted to use for a given API endpoint. Allowed values: `POST`, `GET`,
+         * `HEAD`, `PATCH`, `PUT` and `DELETE`.
+         */
         method: string;
+        /**
+         * The API path that the application credential is permitted
+         * to access. May use named wildcards such as **{tag}** or the unnamed wildcard
+         * **\*** to match against any string in the path up to a **&#47;**, or the recursive
+         * wildcard **\*\*** to include **&#47;** in the matched path.
+         */
         path: string;
+        /**
+         * The service type identifier for the service that the
+         * application credential is granted to access. Must be a service type that is
+         * listed in the service catalog and not a code name for a service. E.g.
+         * **identity**, **compute**, **volumev3**, **image**, **network**,
+         * **object-store**, **sharev2**, **dns**, **key-manager**, **monitoring**, etc.
+         */
         service: string;
     }
 
@@ -147,6 +353,10 @@ export namespace identity {
     }
 
     export interface UserMultiFactorAuthRule {
+        /**
+         * A list of authentication plugins that the user must
+         * authenticate with.
+         */
         rules: string[];
     }
 }
@@ -158,21 +368,28 @@ export namespace keymanager {
 
     export interface ContainerV1AclRead {
         /**
-         * The date the container was created.
+         * The date the container ACL was created.
          */
         createdAt: string;
+        /**
+         * Whether the container is accessible project wide.
+         * Defaults to `true`.
+         */
         projectAccess?: boolean;
         /**
-         * The date the container was last updated.
+         * The date the container ACL was last updated.
          */
         updatedAt: string;
+        /**
+         * The list of user IDs, which are allowed to access the
+         * container, when `projectAccess` is set to `false`.
+         */
         users?: string[];
     }
 
     export interface ContainerV1Consumer {
         /**
-         * Human-readable name for the Container. Does not have
-         * to be unique.
+         * The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
          */
         name?: string;
         /**
@@ -183,10 +400,12 @@ export namespace keymanager {
 
     export interface ContainerV1SecretRef {
         /**
-         * Human-readable name for the Container. Does not have
-         * to be unique.
+         * The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
          */
         name?: string;
+        /**
+         * The secret reference / where to find the secret, URL.
+         */
         secretRef: string;
     }
 
@@ -266,14 +485,22 @@ export namespace keymanager {
 
     export interface SecretV1AclRead {
         /**
-         * The date the secret was created.
+         * The date the secret ACL was created.
          */
         createdAt: string;
+        /**
+         * Whether the secret is accessible project wide.
+         * Defaults to `true`.
+         */
         projectAccess?: boolean;
         /**
-         * The date the secret was last updated.
+         * The date the secret ACL was last updated.
          */
         updatedAt: string;
+        /**
+         * The list of user IDs, which are allowed to access the
+         * secret, when `projectAccess` is set to `false`.
+         */
         users?: string[];
     }
 }
@@ -378,82 +605,162 @@ export namespace networking {
     }
 
     export interface NetworkSegment {
+        /**
+         * The type of physical network.
+         */
         networkType?: string;
+        /**
+         * The physical network where this network is implemented.
+         */
         physicalNetwork?: string;
+        /**
+         * An isolated segment on the physical network.
+         */
         segmentationId?: number;
     }
 
     export interface PortAllowedAddressPair {
+        /**
+         * The additional IP address.
+         */
         ipAddress: string;
         /**
-         * Specify a specific MAC address for the port. Changing
-         * this creates a new port.
+         * The additional MAC address.
          */
         macAddress?: string;
     }
 
     export interface PortBinding {
+        /**
+         * The ID of the host to allocate port on.
+         */
         hostId?: string;
+        /**
+         * Custom data to be passed as `binding:profile`. Data
+         * must be passed as JSON.
+         */
         profile?: string;
+        /**
+         * A map of JSON strings containing additional
+         * details for this specific binding.
+         */
         vifDetails: {[key: string]: any};
+        /**
+         * The VNIC type of the port binding.
+         */
         vifType: string;
+        /**
+         * VNIC type for the port. Can either be `direct`,
+         * `direct-physical`, `macvtap`, `normal`, `baremetal` or `virtio-forwarder`.
+         * Default value is `normal`.
+         */
         vnicType?: string;
     }
 
     export interface PortExtraDhcpOption {
+        /**
+         * IP protocol version. Defaults to 4.
+         */
         ipVersion?: number;
         /**
-         * A unique name for the port. Changing this
-         * updates the `name` of an existing port.
+         * Name of the DHCP option.
          */
         name: string;
+        /**
+         * Value of the DHCP option.
+         */
         value: string;
     }
 
     export interface PortFixedIp {
+        /**
+         * The additional IP address.
+         */
         ipAddress?: string;
+        /**
+         * Subnet in which to allocate IP address for
+         * this port.
+         */
         subnetId: string;
     }
 
     export interface RouterExternalFixedIp {
+        /**
+         * The IP address to set on the router.
+         */
         ipAddress: string;
+        /**
+         * Subnet in which the fixed IP belongs to.
+         */
         subnetId?: string;
     }
 
     export interface RouterVendorOptions {
+        /**
+         * Boolean to control whether
+         * the Router gateway is assigned during creation or updated after creation.
+         */
         setRouterGatewayAfterCreate?: boolean;
     }
 
     export interface SubnetAllocationPool {
+        /**
+         * The ending address.
+         */
         end: string;
+        /**
+         * The starting address.
+         */
         start: string;
     }
 
     export interface SubnetAllocationPoolsCollection {
+        /**
+         * The ending address.
+         */
         end: string;
+        /**
+         * The starting address.
+         */
         start: string;
     }
 
     export interface SubnetHostRoute {
+        /**
+         * The destination CIDR.
+         */
         destinationCidr: string;
+        /**
+         * The next hop in the route.
+         */
         nextHop: string;
     }
 
     export interface TrunkSubPort {
         /**
-         * The ID of the port to be used as the parent port of the
-         * trunk. This is the port that should be used as the compute instance network
-         * port. Changing this creates a new trunk.
+         * The ID of the port to be made a subport of the trunk.
          */
         portId: string;
+        /**
+         * The numeric id of the subport segment.
+         */
         segmentationId: number;
+        /**
+         * The segmentation technology to use, e.g., "vlan".
+         */
         segmentationType: string;
     }
 }
 
 export namespace objectstorage {
     export interface ContainerVersioning {
+        /**
+         * Container in which versions will be stored.
+         */
         location: string;
+        /**
+         * Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/overview_object_versioning.html).
+         */
         type: string;
     }
 }

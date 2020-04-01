@@ -250,4 +250,3 @@ type LoadBalancerArgs struct {
 func (LoadBalancerArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*loadBalancerArgs)(nil)).Elem()
 }
-

@@ -46,9 +46,7 @@ namespace Pulumi.OpenStack.Networking
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the port to be used as the parent port of the
-        /// trunk. This is the port that should be used as the compute instance network
-        /// port. Changing this creates a new trunk.
+        /// The ID of the port to be made a subport of the trunk.
         /// </summary>
         [Output("portId")]
         public Output<string> PortId { get; private set; } = null!;
@@ -151,9 +149,7 @@ namespace Pulumi.OpenStack.Networking
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The ID of the port to be used as the parent port of the
-        /// trunk. This is the port that should be used as the compute instance network
-        /// port. Changing this creates a new trunk.
+        /// The ID of the port to be made a subport of the trunk.
         /// </summary>
         [Input("portId", required: true)]
         public Input<string> PortId { get; set; } = null!;
@@ -242,9 +238,7 @@ namespace Pulumi.OpenStack.Networking
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The ID of the port to be used as the parent port of the
-        /// trunk. This is the port that should be used as the compute instance network
-        /// port. Changing this creates a new trunk.
+        /// The ID of the port to be made a subport of the trunk.
         /// </summary>
         [Input("portId")]
         public Input<string>? PortId { get; set; }
@@ -301,16 +295,20 @@ namespace Pulumi.OpenStack.Networking
     public sealed class TrunkSubPortsArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the port to be used as the parent port of the
-        /// trunk. This is the port that should be used as the compute instance network
-        /// port. Changing this creates a new trunk.
+        /// The ID of the port to be made a subport of the trunk.
         /// </summary>
         [Input("portId", required: true)]
         public Input<string> PortId { get; set; } = null!;
 
+        /// <summary>
+        /// The numeric id of the subport segment.
+        /// </summary>
         [Input("segmentationId", required: true)]
         public Input<int> SegmentationId { get; set; } = null!;
 
+        /// <summary>
+        /// The segmentation technology to use, e.g., "vlan".
+        /// </summary>
         [Input("segmentationType", required: true)]
         public Input<string> SegmentationType { get; set; } = null!;
 
@@ -322,16 +320,20 @@ namespace Pulumi.OpenStack.Networking
     public sealed class TrunkSubPortsGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the port to be used as the parent port of the
-        /// trunk. This is the port that should be used as the compute instance network
-        /// port. Changing this creates a new trunk.
+        /// The ID of the port to be made a subport of the trunk.
         /// </summary>
         [Input("portId", required: true)]
         public Input<string> PortId { get; set; } = null!;
 
+        /// <summary>
+        /// The numeric id of the subport segment.
+        /// </summary>
         [Input("segmentationId", required: true)]
         public Input<int> SegmentationId { get; set; } = null!;
 
+        /// <summary>
+        /// The segmentation technology to use, e.g., "vlan".
+        /// </summary>
         [Input("segmentationType", required: true)]
         public Input<string> SegmentationType { get; set; } = null!;
 
@@ -348,12 +350,16 @@ namespace Pulumi.OpenStack.Networking
     public sealed class TrunkSubPorts
     {
         /// <summary>
-        /// The ID of the port to be used as the parent port of the
-        /// trunk. This is the port that should be used as the compute instance network
-        /// port. Changing this creates a new trunk.
+        /// The ID of the port to be made a subport of the trunk.
         /// </summary>
         public readonly string PortId;
+        /// <summary>
+        /// The numeric id of the subport segment.
+        /// </summary>
         public readonly int SegmentationId;
+        /// <summary>
+        /// The segmentation technology to use, e.g., "vlan".
+        /// </summary>
         public readonly string SegmentationType;
 
         [OutputConstructor]

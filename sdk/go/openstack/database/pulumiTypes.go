@@ -12,8 +12,9 @@ import (
 )
 
 type ConfigurationConfiguration struct {
-	// A unique name for the resource.
+	// Configuration parameter name. Changing this creates a new resource.
 	Name string `pulumi:"name"`
+	// Configuration parameter value. Changing this creates a new resource.
 	Value string `pulumi:"value"`
 }
 
@@ -25,8 +26,9 @@ type ConfigurationConfigurationInput interface {
 }
 
 type ConfigurationConfigurationArgs struct {
-	// A unique name for the resource.
+	// Configuration parameter name. Changing this creates a new resource.
 	Name pulumi.StringInput `pulumi:"name"`
+	// Configuration parameter value. Changing this creates a new resource.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -63,7 +65,7 @@ func (i ConfigurationConfigurationArray) ToConfigurationConfigurationArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationConfigurationArrayOutput)
 }
 
-type ConfigurationConfigurationOutput struct { *pulumi.OutputState }
+type ConfigurationConfigurationOutput struct{ *pulumi.OutputState }
 
 func (ConfigurationConfigurationOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ConfigurationConfiguration)(nil)).Elem()
@@ -77,16 +79,17 @@ func (o ConfigurationConfigurationOutput) ToConfigurationConfigurationOutputWith
 	return o
 }
 
-// A unique name for the resource.
+// Configuration parameter name. Changing this creates a new resource.
 func (o ConfigurationConfigurationOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v ConfigurationConfiguration) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ConfigurationConfiguration) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Configuration parameter value. Changing this creates a new resource.
 func (o ConfigurationConfigurationOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func (v ConfigurationConfiguration) string { return v.Value }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ConfigurationConfiguration) string { return v.Value }).(pulumi.StringOutput)
 }
 
-type ConfigurationConfigurationArrayOutput struct { *pulumi.OutputState}
+type ConfigurationConfigurationArrayOutput struct{ *pulumi.OutputState }
 
 func (ConfigurationConfigurationArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ConfigurationConfiguration)(nil)).Elem()
@@ -101,13 +104,15 @@ func (o ConfigurationConfigurationArrayOutput) ToConfigurationConfigurationArray
 }
 
 func (o ConfigurationConfigurationArrayOutput) Index(i pulumi.IntInput) ConfigurationConfigurationOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ConfigurationConfiguration {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConfigurationConfiguration {
 		return vs[0].([]ConfigurationConfiguration)[vs[1].(int)]
 	}).(ConfigurationConfigurationOutput)
 }
 
 type ConfigurationDatastore struct {
+	// Database engine type to be used with this configuration. Changing this creates a new resource.
 	Type string `pulumi:"type"`
+	// Version of database engine type to be used with this configuration. Changing this creates a new resource.
 	Version string `pulumi:"version"`
 }
 
@@ -119,7 +124,9 @@ type ConfigurationDatastoreInput interface {
 }
 
 type ConfigurationDatastoreArgs struct {
+	// Database engine type to be used with this configuration. Changing this creates a new resource.
 	Type pulumi.StringInput `pulumi:"type"`
+	// Version of database engine type to be used with this configuration. Changing this creates a new resource.
 	Version pulumi.StringInput `pulumi:"version"`
 }
 
@@ -152,7 +159,8 @@ type ConfigurationDatastorePtrInput interface {
 
 type configurationDatastorePtrType ConfigurationDatastoreArgs
 
-func ConfigurationDatastorePtr(v *ConfigurationDatastoreArgs) ConfigurationDatastorePtrInput {	return (*configurationDatastorePtrType)(v)
+func ConfigurationDatastorePtr(v *ConfigurationDatastoreArgs) ConfigurationDatastorePtrInput {
+	return (*configurationDatastorePtrType)(v)
 }
 
 func (*configurationDatastorePtrType) ElementType() reflect.Type {
@@ -167,7 +175,7 @@ func (i *configurationDatastorePtrType) ToConfigurationDatastorePtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationDatastorePtrOutput)
 }
 
-type ConfigurationDatastoreOutput struct { *pulumi.OutputState }
+type ConfigurationDatastoreOutput struct{ *pulumi.OutputState }
 
 func (ConfigurationDatastoreOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ConfigurationDatastore)(nil)).Elem()
@@ -190,15 +198,18 @@ func (o ConfigurationDatastoreOutput) ToConfigurationDatastorePtrOutputWithConte
 		return &v
 	}).(ConfigurationDatastorePtrOutput)
 }
+
+// Database engine type to be used with this configuration. Changing this creates a new resource.
 func (o ConfigurationDatastoreOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func (v ConfigurationDatastore) string { return v.Type }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ConfigurationDatastore) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Version of database engine type to be used with this configuration. Changing this creates a new resource.
 func (o ConfigurationDatastoreOutput) Version() pulumi.StringOutput {
-	return o.ApplyT(func (v ConfigurationDatastore) string { return v.Version }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ConfigurationDatastore) string { return v.Version }).(pulumi.StringOutput)
 }
 
-type ConfigurationDatastorePtrOutput struct { *pulumi.OutputState}
+type ConfigurationDatastorePtrOutput struct{ *pulumi.OutputState }
 
 func (ConfigurationDatastorePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ConfigurationDatastore)(nil)).Elem()
@@ -213,21 +224,27 @@ func (o ConfigurationDatastorePtrOutput) ToConfigurationDatastorePtrOutputWithCo
 }
 
 func (o ConfigurationDatastorePtrOutput) Elem() ConfigurationDatastoreOutput {
-	return o.ApplyT(func (v *ConfigurationDatastore) ConfigurationDatastore { return *v }).(ConfigurationDatastoreOutput)
+	return o.ApplyT(func(v *ConfigurationDatastore) ConfigurationDatastore { return *v }).(ConfigurationDatastoreOutput)
 }
 
+// Database engine type to be used with this configuration. Changing this creates a new resource.
 func (o ConfigurationDatastorePtrOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func (v ConfigurationDatastore) string { return v.Type }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ConfigurationDatastore) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Version of database engine type to be used with this configuration. Changing this creates a new resource.
 func (o ConfigurationDatastorePtrOutput) Version() pulumi.StringOutput {
-	return o.ApplyT(func (v ConfigurationDatastore) string { return v.Version }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ConfigurationDatastore) string { return v.Version }).(pulumi.StringOutput)
 }
 
 type InstanceDatabase struct {
+	// Database character set. Changing this creates a
+	// new instance.
 	Charset *string `pulumi:"charset"`
+	// Database collation. Changing this creates a new instance.
 	Collate *string `pulumi:"collate"`
-	// A unique name for the resource.
+	// Database to be created on new instance. Changing this creates a
+	// new instance.
 	Name string `pulumi:"name"`
 }
 
@@ -239,9 +256,13 @@ type InstanceDatabaseInput interface {
 }
 
 type InstanceDatabaseArgs struct {
+	// Database character set. Changing this creates a
+	// new instance.
 	Charset pulumi.StringPtrInput `pulumi:"charset"`
+	// Database collation. Changing this creates a new instance.
 	Collate pulumi.StringPtrInput `pulumi:"collate"`
-	// A unique name for the resource.
+	// Database to be created on new instance. Changing this creates a
+	// new instance.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -278,7 +299,7 @@ func (i InstanceDatabaseArray) ToInstanceDatabaseArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceDatabaseArrayOutput)
 }
 
-type InstanceDatabaseOutput struct { *pulumi.OutputState }
+type InstanceDatabaseOutput struct{ *pulumi.OutputState }
 
 func (InstanceDatabaseOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*InstanceDatabase)(nil)).Elem()
@@ -292,20 +313,24 @@ func (o InstanceDatabaseOutput) ToInstanceDatabaseOutputWithContext(ctx context.
 	return o
 }
 
+// Database character set. Changing this creates a
+// new instance.
 func (o InstanceDatabaseOutput) Charset() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceDatabase) *string { return v.Charset }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceDatabase) *string { return v.Charset }).(pulumi.StringPtrOutput)
 }
 
+// Database collation. Changing this creates a new instance.
 func (o InstanceDatabaseOutput) Collate() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceDatabase) *string { return v.Collate }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceDatabase) *string { return v.Collate }).(pulumi.StringPtrOutput)
 }
 
-// A unique name for the resource.
+// Database to be created on new instance. Changing this creates a
+// new instance.
 func (o InstanceDatabaseOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v InstanceDatabase) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v InstanceDatabase) string { return v.Name }).(pulumi.StringOutput)
 }
 
-type InstanceDatabaseArrayOutput struct { *pulumi.OutputState}
+type InstanceDatabaseArrayOutput struct{ *pulumi.OutputState }
 
 func (InstanceDatabaseArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]InstanceDatabase)(nil)).Elem()
@@ -320,13 +345,17 @@ func (o InstanceDatabaseArrayOutput) ToInstanceDatabaseArrayOutputWithContext(ct
 }
 
 func (o InstanceDatabaseArrayOutput) Index(i pulumi.IntInput) InstanceDatabaseOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) InstanceDatabase {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceDatabase {
 		return vs[0].([]InstanceDatabase)[vs[1].(int)]
 	}).(InstanceDatabaseOutput)
 }
 
 type InstanceDatastore struct {
+	// Database engine type to be used in new instance. Changing this
+	// creates a new instance.
 	Type string `pulumi:"type"`
+	// Version of database engine type to be used in new instance.
+	// Changing this creates a new instance.
 	Version string `pulumi:"version"`
 }
 
@@ -338,7 +367,11 @@ type InstanceDatastoreInput interface {
 }
 
 type InstanceDatastoreArgs struct {
+	// Database engine type to be used in new instance. Changing this
+	// creates a new instance.
 	Type pulumi.StringInput `pulumi:"type"`
+	// Version of database engine type to be used in new instance.
+	// Changing this creates a new instance.
 	Version pulumi.StringInput `pulumi:"version"`
 }
 
@@ -371,7 +404,8 @@ type InstanceDatastorePtrInput interface {
 
 type instanceDatastorePtrType InstanceDatastoreArgs
 
-func InstanceDatastorePtr(v *InstanceDatastoreArgs) InstanceDatastorePtrInput {	return (*instanceDatastorePtrType)(v)
+func InstanceDatastorePtr(v *InstanceDatastoreArgs) InstanceDatastorePtrInput {
+	return (*instanceDatastorePtrType)(v)
 }
 
 func (*instanceDatastorePtrType) ElementType() reflect.Type {
@@ -386,7 +420,7 @@ func (i *instanceDatastorePtrType) ToInstanceDatastorePtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceDatastorePtrOutput)
 }
 
-type InstanceDatastoreOutput struct { *pulumi.OutputState }
+type InstanceDatastoreOutput struct{ *pulumi.OutputState }
 
 func (InstanceDatastoreOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*InstanceDatastore)(nil)).Elem()
@@ -409,15 +443,20 @@ func (o InstanceDatastoreOutput) ToInstanceDatastorePtrOutputWithContext(ctx con
 		return &v
 	}).(InstanceDatastorePtrOutput)
 }
+
+// Database engine type to be used in new instance. Changing this
+// creates a new instance.
 func (o InstanceDatastoreOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func (v InstanceDatastore) string { return v.Type }).(pulumi.StringOutput)
+	return o.ApplyT(func(v InstanceDatastore) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Version of database engine type to be used in new instance.
+// Changing this creates a new instance.
 func (o InstanceDatastoreOutput) Version() pulumi.StringOutput {
-	return o.ApplyT(func (v InstanceDatastore) string { return v.Version }).(pulumi.StringOutput)
+	return o.ApplyT(func(v InstanceDatastore) string { return v.Version }).(pulumi.StringOutput)
 }
 
-type InstanceDatastorePtrOutput struct { *pulumi.OutputState}
+type InstanceDatastorePtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceDatastorePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**InstanceDatastore)(nil)).Elem()
@@ -432,21 +471,33 @@ func (o InstanceDatastorePtrOutput) ToInstanceDatastorePtrOutputWithContext(ctx 
 }
 
 func (o InstanceDatastorePtrOutput) Elem() InstanceDatastoreOutput {
-	return o.ApplyT(func (v *InstanceDatastore) InstanceDatastore { return *v }).(InstanceDatastoreOutput)
+	return o.ApplyT(func(v *InstanceDatastore) InstanceDatastore { return *v }).(InstanceDatastoreOutput)
 }
 
+// Database engine type to be used in new instance. Changing this
+// creates a new instance.
 func (o InstanceDatastorePtrOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func (v InstanceDatastore) string { return v.Type }).(pulumi.StringOutput)
+	return o.ApplyT(func(v InstanceDatastore) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Version of database engine type to be used in new instance.
+// Changing this creates a new instance.
 func (o InstanceDatastorePtrOutput) Version() pulumi.StringOutput {
-	return o.ApplyT(func (v InstanceDatastore) string { return v.Version }).(pulumi.StringOutput)
+	return o.ApplyT(func(v InstanceDatastore) string { return v.Version }).(pulumi.StringOutput)
 }
 
 type InstanceNetwork struct {
+	// Specifies a fixed IPv4 address to be used on this
+	// network. Changing this creates a new instance.
 	FixedIpV4 *string `pulumi:"fixedIpV4"`
+	// Specifies a fixed IPv6 address to be used on this
+	// network. Changing this creates a new instance.
 	FixedIpV6 *string `pulumi:"fixedIpV6"`
+	// The port UUID of a
+	// network to attach to the instance. Changing this creates a new instance.
 	Port *string `pulumi:"port"`
+	// The network UUID to
+	// attach to the instance. Changing this creates a new instance.
 	Uuid *string `pulumi:"uuid"`
 }
 
@@ -458,9 +509,17 @@ type InstanceNetworkInput interface {
 }
 
 type InstanceNetworkArgs struct {
+	// Specifies a fixed IPv4 address to be used on this
+	// network. Changing this creates a new instance.
 	FixedIpV4 pulumi.StringPtrInput `pulumi:"fixedIpV4"`
+	// Specifies a fixed IPv6 address to be used on this
+	// network. Changing this creates a new instance.
 	FixedIpV6 pulumi.StringPtrInput `pulumi:"fixedIpV6"`
+	// The port UUID of a
+	// network to attach to the instance. Changing this creates a new instance.
 	Port pulumi.StringPtrInput `pulumi:"port"`
+	// The network UUID to
+	// attach to the instance. Changing this creates a new instance.
 	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
 }
 
@@ -497,7 +556,7 @@ func (i InstanceNetworkArray) ToInstanceNetworkArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkArrayOutput)
 }
 
-type InstanceNetworkOutput struct { *pulumi.OutputState }
+type InstanceNetworkOutput struct{ *pulumi.OutputState }
 
 func (InstanceNetworkOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*InstanceNetwork)(nil)).Elem()
@@ -511,23 +570,31 @@ func (o InstanceNetworkOutput) ToInstanceNetworkOutputWithContext(ctx context.Co
 	return o
 }
 
+// Specifies a fixed IPv4 address to be used on this
+// network. Changing this creates a new instance.
 func (o InstanceNetworkOutput) FixedIpV4() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceNetwork) *string { return v.FixedIpV4 }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceNetwork) *string { return v.FixedIpV4 }).(pulumi.StringPtrOutput)
 }
 
+// Specifies a fixed IPv6 address to be used on this
+// network. Changing this creates a new instance.
 func (o InstanceNetworkOutput) FixedIpV6() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceNetwork) *string { return v.FixedIpV6 }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceNetwork) *string { return v.FixedIpV6 }).(pulumi.StringPtrOutput)
 }
 
+// The port UUID of a
+// network to attach to the instance. Changing this creates a new instance.
 func (o InstanceNetworkOutput) Port() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceNetwork) *string { return v.Port }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceNetwork) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
 
+// The network UUID to
+// attach to the instance. Changing this creates a new instance.
 func (o InstanceNetworkOutput) Uuid() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceNetwork) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceNetwork) *string { return v.Uuid }).(pulumi.StringPtrOutput)
 }
 
-type InstanceNetworkArrayOutput struct { *pulumi.OutputState}
+type InstanceNetworkArrayOutput struct{ *pulumi.OutputState }
 
 func (InstanceNetworkArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]InstanceNetwork)(nil)).Elem()
@@ -542,16 +609,23 @@ func (o InstanceNetworkArrayOutput) ToInstanceNetworkArrayOutputWithContext(ctx 
 }
 
 func (o InstanceNetworkArrayOutput) Index(i pulumi.IntInput) InstanceNetworkOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) InstanceNetwork {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceNetwork {
 		return vs[0].([]InstanceNetwork)[vs[1].(int)]
 	}).(InstanceNetworkOutput)
 }
 
 type InstanceUser struct {
+	// A list of databases that user will have access to. If not specified,
+	// user has access to all databases on th einstance. Changing this creates a new instance.
 	Databases []string `pulumi:"databases"`
+	// An ip address or % sign indicating what ip addresses can connect with
+	// this user credentials. Changing this creates a new instance.
 	Host *string `pulumi:"host"`
-	// A unique name for the resource.
+	// Database to be created on new instance. Changing this creates a
+	// new instance.
 	Name string `pulumi:"name"`
+	// User's password. Changing this creates a
+	// new instance.
 	Password *string `pulumi:"password"`
 }
 
@@ -563,10 +637,17 @@ type InstanceUserInput interface {
 }
 
 type InstanceUserArgs struct {
+	// A list of databases that user will have access to. If not specified,
+	// user has access to all databases on th einstance. Changing this creates a new instance.
 	Databases pulumi.StringArrayInput `pulumi:"databases"`
+	// An ip address or % sign indicating what ip addresses can connect with
+	// this user credentials. Changing this creates a new instance.
 	Host pulumi.StringPtrInput `pulumi:"host"`
-	// A unique name for the resource.
+	// Database to be created on new instance. Changing this creates a
+	// new instance.
 	Name pulumi.StringInput `pulumi:"name"`
+	// User's password. Changing this creates a
+	// new instance.
 	Password pulumi.StringPtrInput `pulumi:"password"`
 }
 
@@ -603,7 +684,7 @@ func (i InstanceUserArray) ToInstanceUserArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceUserArrayOutput)
 }
 
-type InstanceUserOutput struct { *pulumi.OutputState }
+type InstanceUserOutput struct{ *pulumi.OutputState }
 
 func (InstanceUserOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*InstanceUser)(nil)).Elem()
@@ -617,24 +698,31 @@ func (o InstanceUserOutput) ToInstanceUserOutputWithContext(ctx context.Context)
 	return o
 }
 
+// A list of databases that user will have access to. If not specified,
+// user has access to all databases on th einstance. Changing this creates a new instance.
 func (o InstanceUserOutput) Databases() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v InstanceUser) []string { return v.Databases }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v InstanceUser) []string { return v.Databases }).(pulumi.StringArrayOutput)
 }
 
+// An ip address or % sign indicating what ip addresses can connect with
+// this user credentials. Changing this creates a new instance.
 func (o InstanceUserOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceUser) *string { return v.Host }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceUser) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
 
-// A unique name for the resource.
+// Database to be created on new instance. Changing this creates a
+// new instance.
 func (o InstanceUserOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v InstanceUser) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v InstanceUser) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// User's password. Changing this creates a
+// new instance.
 func (o InstanceUserOutput) Password() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceUser) *string { return v.Password }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceUser) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
-type InstanceUserArrayOutput struct { *pulumi.OutputState}
+type InstanceUserArrayOutput struct{ *pulumi.OutputState }
 
 func (InstanceUserArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]InstanceUser)(nil)).Elem()
@@ -649,7 +737,7 @@ func (o InstanceUserArrayOutput) ToInstanceUserArrayOutputWithContext(ctx contex
 }
 
 func (o InstanceUserArrayOutput) Index(i pulumi.IntInput) InstanceUserOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) InstanceUser {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceUser {
 		return vs[0].([]InstanceUser)[vs[1].(int)]
 	}).(InstanceUserOutput)
 }

@@ -329,4 +329,3 @@ type StackV1Args struct {
 func (StackV1Args) ElementType() reflect.Type {
 	return reflect.TypeOf((*stackV1Args)(nil)).Elem()
 }
-

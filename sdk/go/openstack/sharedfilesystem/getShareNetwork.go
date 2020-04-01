@@ -46,7 +46,6 @@ type LookupShareNetworkArgs struct {
 	SegmentationId *int `pulumi:"segmentationId"`
 }
 
-
 // A collection of values returned by getShareNetwork.
 type LookupShareNetworkResult struct {
 	// See Argument Reference above.
@@ -77,4 +76,3 @@ type LookupShareNetworkResult struct {
 	// See Argument Reference above.
 	SegmentationId int `pulumi:"segmentationId"`
 }
-

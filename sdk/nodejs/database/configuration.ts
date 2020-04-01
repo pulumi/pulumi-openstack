@@ -73,7 +73,7 @@ export class Configuration extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * A unique name for the resource.
+     * Configuration parameter name. Changing this creates a new resource.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -142,7 +142,7 @@ export interface ConfigurationState {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * A unique name for the resource.
+     * Configuration parameter name. Changing this creates a new resource.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -170,7 +170,7 @@ export interface ConfigurationArgs {
      */
     readonly description: pulumi.Input<string>;
     /**
-     * A unique name for the resource.
+     * Configuration parameter name. Changing this creates a new resource.
      */
     readonly name?: pulumi.Input<string>;
     /**

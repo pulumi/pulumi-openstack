@@ -18,7 +18,20 @@ namespace Pulumi.OpenStack.Identity
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_service_v3.html.markdown.
         /// </summary>
+        [Obsolete("Use GetService.InvokeAsync() instead")]
         public static Task<GetServiceResult> GetService(GetServiceArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetServiceResult>("openstack:identity/getService:getService", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetService
+    {
+        /// <summary>
+        /// Use this data source to get the ID of an OpenStack service.
+        /// 
+        /// &gt; **Note:** This usually requires admin privileges.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_service_v3.html.markdown.
+        /// </summary>
+        public static Task<GetServiceResult> InvokeAsync(GetServiceArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetServiceResult>("openstack:identity/getService:getService", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

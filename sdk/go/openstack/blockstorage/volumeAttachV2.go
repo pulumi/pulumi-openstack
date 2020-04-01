@@ -268,4 +268,3 @@ type VolumeAttachV2Args struct {
 func (VolumeAttachV2Args) ElementType() reflect.Type {
 	return reflect.TypeOf((*volumeAttachV2Args)(nil)).Elem()
 }
-

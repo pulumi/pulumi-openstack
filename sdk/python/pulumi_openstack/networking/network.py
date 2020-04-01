@@ -80,9 +80,9 @@ class Network(pulumi.CustomResource):
     """
     An array of one or more provider segment objects.
 
-      * `network_type` (`str`)
-      * `physicalNetwork` (`str`)
-      * `segmentation_id` (`float`)
+      * `network_type` (`str`) - The type of physical network.
+      * `physicalNetwork` (`str`) - The physical network where this network is implemented.
+      * `segmentation_id` (`float`) - An isolated segment on the physical network.
     """
     shared: pulumi.Output[bool]
     """
@@ -164,9 +164,9 @@ class Network(pulumi.CustomResource):
 
         The **segments** object supports the following:
 
-          * `network_type` (`pulumi.Input[str]`)
-          * `physicalNetwork` (`pulumi.Input[str]`)
-          * `segmentation_id` (`pulumi.Input[float]`)
+          * `network_type` (`pulumi.Input[str]`) - The type of physical network.
+          * `physicalNetwork` (`pulumi.Input[str]`) - The physical network where this network is implemented.
+          * `segmentation_id` (`pulumi.Input[float]`) - An isolated segment on the physical network.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -265,9 +265,9 @@ class Network(pulumi.CustomResource):
 
         The **segments** object supports the following:
 
-          * `network_type` (`pulumi.Input[str]`)
-          * `physicalNetwork` (`pulumi.Input[str]`)
-          * `segmentation_id` (`pulumi.Input[float]`)
+          * `network_type` (`pulumi.Input[str]`) - The type of physical network.
+          * `physicalNetwork` (`pulumi.Input[str]`) - The physical network where this network is implemented.
+          * `segmentation_id` (`pulumi.Input[float]`) - An isolated segment on the physical network.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

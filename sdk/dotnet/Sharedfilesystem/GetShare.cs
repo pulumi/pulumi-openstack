@@ -16,7 +16,18 @@ namespace Pulumi.OpenStack.SharedFileSystem
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/sharedfilesystem_share_v2.html.markdown.
         /// </summary>
+        [Obsolete("Use GetShare.InvokeAsync() instead")]
         public static Task<GetShareResult> GetShare(GetShareArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetShareResult>("openstack:sharedfilesystem/getShare:getShare", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetShare
+    {
+        /// <summary>
+        /// Use this data source to get the ID of an available Shared File System share.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/sharedfilesystem_share_v2.html.markdown.
+        /// </summary>
+        public static Task<GetShareResult> InvokeAsync(GetShareArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetShareResult>("openstack:sharedfilesystem/getShare:getShare", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 
@@ -61,6 +72,9 @@ namespace Pulumi.OpenStack.SharedFileSystem
         [Input("name")]
         public string? Name { get; set; }
 
+        /// <summary>
+        /// The region in which to obtain the V2 Shared File System client.
+        /// </summary>
         [Input("region")]
         public string? Region { get; set; }
 

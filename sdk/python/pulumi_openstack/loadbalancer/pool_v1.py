@@ -51,8 +51,8 @@ class PoolV1(pulumi.CustomResource):
     """
     tenant_id: pulumi.Output[str]
     """
-    The owner of the pool. Required if admin wants to
-    create a pool member for another tenant. Changing this creates a new pool.
+    The owner of the member. Required if admin wants to
+    create a pool member for another tenant. Changing this creates a new member.
     """
     def __init__(__self__, resource_name, opts=None, lb_method=None, lb_provider=None, monitor_ids=None, name=None, protocol=None, region=None, subnet_id=None, tenant_id=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -84,8 +84,8 @@ class PoolV1(pulumi.CustomResource):
         :param pulumi.Input[str] subnet_id: The network on which the members of the pool will be
                located. Only members that are on this network can be added to the pool.
                Changing this creates a new pool.
-        :param pulumi.Input[str] tenant_id: The owner of the pool. Required if admin wants to
-               create a pool member for another tenant. Changing this creates a new pool.
+        :param pulumi.Input[str] tenant_id: The owner of the member. Required if admin wants to
+               create a pool member for another tenant. Changing this creates a new member.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -151,8 +151,8 @@ class PoolV1(pulumi.CustomResource):
         :param pulumi.Input[str] subnet_id: The network on which the members of the pool will be
                located. Only members that are on this network can be added to the pool.
                Changing this creates a new pool.
-        :param pulumi.Input[str] tenant_id: The owner of the pool. Required if admin wants to
-               create a pool member for another tenant. Changing this creates a new pool.
+        :param pulumi.Input[str] tenant_id: The owner of the member. Required if admin wants to
+               create a pool member for another tenant. Changing this creates a new member.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

@@ -50,13 +50,13 @@ lint::
 
 provider:: generate_schema
 	go generate ${PROJECT}/provider/cmd/${PROVIDER}
-	cd provider && go install -ldflags "-X github.com/pulumi/pulumi-${PACK}/provider/pkg/version.Version=${VERSION}" ${PROJECT}/cmd/${PROVIDER}
+	cd provider && go install -ldflags "-X github.com/pulumi/pulumi-${PACK}/provider/pkg/version.Version=${VERSION}" ${PROJECT}/provider/cmd/${PROVIDER}
 
 generate_schema:: tfgen
 	$(TFGEN) schema --out ./provider/cmd/${PROVIDER}
 
 tfgen::
-	cd provider && go install -ldflags "-X github.com/pulumi/pulumi-${PACK}/provider/pkg/version.Version=${VERSION}" ${PROJECT}/cmd/${TFGEN}
+	cd provider && go install -ldflags "-X github.com/pulumi/pulumi-${PACK}/provider/pkg/version.Version=${VERSION}" ${PROJECT}/provider/cmd/${TFGEN}
 
 install:: tfgen provider
 	[ ! -e "$(PULUMI_NODE_MODULES)/$(NODE_MODULE_NAME)" ] || rm -rf "$(PULUMI_NODE_MODULES)/$(NODE_MODULE_NAME)"

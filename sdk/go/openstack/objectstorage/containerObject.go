@@ -17,7 +17,7 @@ import (
 type ContainerObject struct {
 	pulumi.CustomResourceState
 
-	// A unique (within an account) name for the container. 
+	// A unique (within an account) name for the container.
 	// The container name must be from 1 to 256 characters long and can start
 	// with any character and contain any pattern. Character set must be UTF-8.
 	// The container name cannot contain a slash (/) character because this
@@ -27,25 +27,25 @@ type ContainerObject struct {
 	// A string representing the content of the object. Conflicts with
 	// `source` and `copyFrom`.
 	Content pulumi.StringPtrOutput `pulumi:"content"`
-	// A string which specifies the override behavior for 
+	// A string which specifies the override behavior for
 	// the browser. For example, this header might specify that the browser use a download
 	// program to save this file rather than show the file, which is the default.
 	ContentDisposition pulumi.StringOutput `pulumi:"contentDisposition"`
 	// A string representing the value of the Content-Encoding
 	// metadata.
 	ContentEncoding pulumi.StringOutput `pulumi:"contentEncoding"`
-	// If the operation succeeds, this value is zero (0) or the 
+	// If the operation succeeds, this value is zero (0) or the
 	// length of informational or error text in the response body.
 	ContentLength pulumi.IntOutput `pulumi:"contentLength"`
 	// A string which sets the MIME type for the object.
 	ContentType pulumi.StringOutput `pulumi:"contentType"`
-	// A string representing the name of an object 
+	// A string representing the name of an object
 	// used to create the new object by copying the `copyFrom` object. The value is in form
 	// {container}/{object}. You must UTF-8-encode and then URL-encode the names of the
 	// container and object before you include them in the header. Conflicts with `source` and
 	// `content`.
 	CopyFrom pulumi.StringPtrOutput `pulumi:"copyFrom"`
-	// The date and time the system responded to the request, using the preferred 
+	// The date and time the system responded to the request, using the preferred
 	// format of RFC 7231 as shown in this example Thu, 16 Jun 2016 15:10:38 GMT. The
 	// time is always in UTC.
 	Date pulumi.StringOutput `pulumi:"date"`
@@ -53,26 +53,26 @@ type ContainerObject struct {
 	// system removes the object. Internally, the Object Storage system stores this value in
 	// the X-Delete-At metadata item.
 	DeleteAfter pulumi.IntPtrOutput `pulumi:"deleteAfter"`
-	// An string representing the date when the system removes the object. 
+	// An string representing the date when the system removes the object.
 	// For example, "2015-08-26" is equivalent to Mon, Wed, 26 Aug 2015 00:00:00 GMT.
 	DeleteAt pulumi.StringOutput `pulumi:"deleteAt"`
-	// If set to true, Object Storage guesses the content 
+	// If set to true, Object Storage guesses the content
 	// type based on the file extension and ignores the value sent in the Content-Type
 	// header, if present.
 	DetectContentType pulumi.BoolPtrOutput `pulumi:"detectContentType"`
 	// Used to trigger updates. The only meaningful value is ${md5(file("path/to/file"))}.
 	Etag pulumi.StringOutput `pulumi:"etag"`
-	// The date and time when the object was last modified. The date and time 
+	// The date and time when the object was last modified. The date and time
 	// stamp format is ISO 8601:
 	// CCYY-MM-DDThh:mm:ss±hh:mm
 	// For example, 2015-08-27T09:49:58-05:00.
 	// The ±hh:mm value, if included, is the time zone as an offset from UTC. In the previous
 	// example, the offset value is -05:00.
 	LastModified pulumi.StringOutput `pulumi:"lastModified"`
-	Metadata pulumi.MapOutput `pulumi:"metadata"`
+	Metadata     pulumi.MapOutput    `pulumi:"metadata"`
 	// A unique name for the object.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// A string set to specify that this is a dynamic large 
+	// A string set to specify that this is a dynamic large
 	// object manifest object. The value is the container and object name prefix of the
 	// segment objects in the form container/prefix. You must UTF-8-encode and then
 	// URL-encode the names of the container and prefix before you include them in this
@@ -85,7 +85,7 @@ type ContainerObject struct {
 	// A string representing the local path of a file which will be used
 	// as the object's content. Conflicts with `source` and `copyFrom`.
 	Source pulumi.StringPtrOutput `pulumi:"source"`
-	// A unique transaction ID for this request. Your service provider might 
+	// A unique transaction ID for this request. Your service provider might
 	// need this value if you report a problem.
 	TransId pulumi.StringOutput `pulumi:"transId"`
 }
@@ -121,7 +121,7 @@ func GetContainerObject(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ContainerObject resources.
 type containerObjectState struct {
-	// A unique (within an account) name for the container. 
+	// A unique (within an account) name for the container.
 	// The container name must be from 1 to 256 characters long and can start
 	// with any character and contain any pattern. Character set must be UTF-8.
 	// The container name cannot contain a slash (/) character because this
@@ -131,25 +131,25 @@ type containerObjectState struct {
 	// A string representing the content of the object. Conflicts with
 	// `source` and `copyFrom`.
 	Content *string `pulumi:"content"`
-	// A string which specifies the override behavior for 
+	// A string which specifies the override behavior for
 	// the browser. For example, this header might specify that the browser use a download
 	// program to save this file rather than show the file, which is the default.
 	ContentDisposition *string `pulumi:"contentDisposition"`
 	// A string representing the value of the Content-Encoding
 	// metadata.
 	ContentEncoding *string `pulumi:"contentEncoding"`
-	// If the operation succeeds, this value is zero (0) or the 
+	// If the operation succeeds, this value is zero (0) or the
 	// length of informational or error text in the response body.
 	ContentLength *int `pulumi:"contentLength"`
 	// A string which sets the MIME type for the object.
 	ContentType *string `pulumi:"contentType"`
-	// A string representing the name of an object 
+	// A string representing the name of an object
 	// used to create the new object by copying the `copyFrom` object. The value is in form
 	// {container}/{object}. You must UTF-8-encode and then URL-encode the names of the
 	// container and object before you include them in the header. Conflicts with `source` and
 	// `content`.
 	CopyFrom *string `pulumi:"copyFrom"`
-	// The date and time the system responded to the request, using the preferred 
+	// The date and time the system responded to the request, using the preferred
 	// format of RFC 7231 as shown in this example Thu, 16 Jun 2016 15:10:38 GMT. The
 	// time is always in UTC.
 	Date *string `pulumi:"date"`
@@ -157,26 +157,26 @@ type containerObjectState struct {
 	// system removes the object. Internally, the Object Storage system stores this value in
 	// the X-Delete-At metadata item.
 	DeleteAfter *int `pulumi:"deleteAfter"`
-	// An string representing the date when the system removes the object. 
+	// An string representing the date when the system removes the object.
 	// For example, "2015-08-26" is equivalent to Mon, Wed, 26 Aug 2015 00:00:00 GMT.
 	DeleteAt *string `pulumi:"deleteAt"`
-	// If set to true, Object Storage guesses the content 
+	// If set to true, Object Storage guesses the content
 	// type based on the file extension and ignores the value sent in the Content-Type
 	// header, if present.
 	DetectContentType *bool `pulumi:"detectContentType"`
 	// Used to trigger updates. The only meaningful value is ${md5(file("path/to/file"))}.
 	Etag *string `pulumi:"etag"`
-	// The date and time when the object was last modified. The date and time 
+	// The date and time when the object was last modified. The date and time
 	// stamp format is ISO 8601:
 	// CCYY-MM-DDThh:mm:ss±hh:mm
 	// For example, 2015-08-27T09:49:58-05:00.
 	// The ±hh:mm value, if included, is the time zone as an offset from UTC. In the previous
 	// example, the offset value is -05:00.
-	LastModified *string `pulumi:"lastModified"`
-	Metadata map[string]interface{} `pulumi:"metadata"`
+	LastModified *string                `pulumi:"lastModified"`
+	Metadata     map[string]interface{} `pulumi:"metadata"`
 	// A unique name for the object.
 	Name *string `pulumi:"name"`
-	// A string set to specify that this is a dynamic large 
+	// A string set to specify that this is a dynamic large
 	// object manifest object. The value is the container and object name prefix of the
 	// segment objects in the form container/prefix. You must UTF-8-encode and then
 	// URL-encode the names of the container and prefix before you include them in this
@@ -189,13 +189,13 @@ type containerObjectState struct {
 	// A string representing the local path of a file which will be used
 	// as the object's content. Conflicts with `source` and `copyFrom`.
 	Source *string `pulumi:"source"`
-	// A unique transaction ID for this request. Your service provider might 
+	// A unique transaction ID for this request. Your service provider might
 	// need this value if you report a problem.
 	TransId *string `pulumi:"transId"`
 }
 
 type ContainerObjectState struct {
-	// A unique (within an account) name for the container. 
+	// A unique (within an account) name for the container.
 	// The container name must be from 1 to 256 characters long and can start
 	// with any character and contain any pattern. Character set must be UTF-8.
 	// The container name cannot contain a slash (/) character because this
@@ -205,25 +205,25 @@ type ContainerObjectState struct {
 	// A string representing the content of the object. Conflicts with
 	// `source` and `copyFrom`.
 	Content pulumi.StringPtrInput
-	// A string which specifies the override behavior for 
+	// A string which specifies the override behavior for
 	// the browser. For example, this header might specify that the browser use a download
 	// program to save this file rather than show the file, which is the default.
 	ContentDisposition pulumi.StringPtrInput
 	// A string representing the value of the Content-Encoding
 	// metadata.
 	ContentEncoding pulumi.StringPtrInput
-	// If the operation succeeds, this value is zero (0) or the 
+	// If the operation succeeds, this value is zero (0) or the
 	// length of informational or error text in the response body.
 	ContentLength pulumi.IntPtrInput
 	// A string which sets the MIME type for the object.
 	ContentType pulumi.StringPtrInput
-	// A string representing the name of an object 
+	// A string representing the name of an object
 	// used to create the new object by copying the `copyFrom` object. The value is in form
 	// {container}/{object}. You must UTF-8-encode and then URL-encode the names of the
 	// container and object before you include them in the header. Conflicts with `source` and
 	// `content`.
 	CopyFrom pulumi.StringPtrInput
-	// The date and time the system responded to the request, using the preferred 
+	// The date and time the system responded to the request, using the preferred
 	// format of RFC 7231 as shown in this example Thu, 16 Jun 2016 15:10:38 GMT. The
 	// time is always in UTC.
 	Date pulumi.StringPtrInput
@@ -231,26 +231,26 @@ type ContainerObjectState struct {
 	// system removes the object. Internally, the Object Storage system stores this value in
 	// the X-Delete-At metadata item.
 	DeleteAfter pulumi.IntPtrInput
-	// An string representing the date when the system removes the object. 
+	// An string representing the date when the system removes the object.
 	// For example, "2015-08-26" is equivalent to Mon, Wed, 26 Aug 2015 00:00:00 GMT.
 	DeleteAt pulumi.StringPtrInput
-	// If set to true, Object Storage guesses the content 
+	// If set to true, Object Storage guesses the content
 	// type based on the file extension and ignores the value sent in the Content-Type
 	// header, if present.
 	DetectContentType pulumi.BoolPtrInput
 	// Used to trigger updates. The only meaningful value is ${md5(file("path/to/file"))}.
 	Etag pulumi.StringPtrInput
-	// The date and time when the object was last modified. The date and time 
+	// The date and time when the object was last modified. The date and time
 	// stamp format is ISO 8601:
 	// CCYY-MM-DDThh:mm:ss±hh:mm
 	// For example, 2015-08-27T09:49:58-05:00.
 	// The ±hh:mm value, if included, is the time zone as an offset from UTC. In the previous
 	// example, the offset value is -05:00.
 	LastModified pulumi.StringPtrInput
-	Metadata pulumi.MapInput
+	Metadata     pulumi.MapInput
 	// A unique name for the object.
 	Name pulumi.StringPtrInput
-	// A string set to specify that this is a dynamic large 
+	// A string set to specify that this is a dynamic large
 	// object manifest object. The value is the container and object name prefix of the
 	// segment objects in the form container/prefix. You must UTF-8-encode and then
 	// URL-encode the names of the container and prefix before you include them in this
@@ -263,7 +263,7 @@ type ContainerObjectState struct {
 	// A string representing the local path of a file which will be used
 	// as the object's content. Conflicts with `source` and `copyFrom`.
 	Source pulumi.StringPtrInput
-	// A unique transaction ID for this request. Your service provider might 
+	// A unique transaction ID for this request. Your service provider might
 	// need this value if you report a problem.
 	TransId pulumi.StringPtrInput
 }
@@ -273,7 +273,7 @@ func (ContainerObjectState) ElementType() reflect.Type {
 }
 
 type containerObjectArgs struct {
-	// A unique (within an account) name for the container. 
+	// A unique (within an account) name for the container.
 	// The container name must be from 1 to 256 characters long and can start
 	// with any character and contain any pattern. Character set must be UTF-8.
 	// The container name cannot contain a slash (/) character because this
@@ -283,7 +283,7 @@ type containerObjectArgs struct {
 	// A string representing the content of the object. Conflicts with
 	// `source` and `copyFrom`.
 	Content *string `pulumi:"content"`
-	// A string which specifies the override behavior for 
+	// A string which specifies the override behavior for
 	// the browser. For example, this header might specify that the browser use a download
 	// program to save this file rather than show the file, which is the default.
 	ContentDisposition *string `pulumi:"contentDisposition"`
@@ -292,7 +292,7 @@ type containerObjectArgs struct {
 	ContentEncoding *string `pulumi:"contentEncoding"`
 	// A string which sets the MIME type for the object.
 	ContentType *string `pulumi:"contentType"`
-	// A string representing the name of an object 
+	// A string representing the name of an object
 	// used to create the new object by copying the `copyFrom` object. The value is in form
 	// {container}/{object}. You must UTF-8-encode and then URL-encode the names of the
 	// container and object before you include them in the header. Conflicts with `source` and
@@ -302,19 +302,19 @@ type containerObjectArgs struct {
 	// system removes the object. Internally, the Object Storage system stores this value in
 	// the X-Delete-At metadata item.
 	DeleteAfter *int `pulumi:"deleteAfter"`
-	// An string representing the date when the system removes the object. 
+	// An string representing the date when the system removes the object.
 	// For example, "2015-08-26" is equivalent to Mon, Wed, 26 Aug 2015 00:00:00 GMT.
 	DeleteAt *string `pulumi:"deleteAt"`
-	// If set to true, Object Storage guesses the content 
+	// If set to true, Object Storage guesses the content
 	// type based on the file extension and ignores the value sent in the Content-Type
 	// header, if present.
 	DetectContentType *bool `pulumi:"detectContentType"`
 	// Used to trigger updates. The only meaningful value is ${md5(file("path/to/file"))}.
-	Etag *string `pulumi:"etag"`
+	Etag     *string                `pulumi:"etag"`
 	Metadata map[string]interface{} `pulumi:"metadata"`
 	// A unique name for the object.
 	Name *string `pulumi:"name"`
-	// A string set to specify that this is a dynamic large 
+	// A string set to specify that this is a dynamic large
 	// object manifest object. The value is the container and object name prefix of the
 	// segment objects in the form container/prefix. You must UTF-8-encode and then
 	// URL-encode the names of the container and prefix before you include them in this
@@ -331,7 +331,7 @@ type containerObjectArgs struct {
 
 // The set of arguments for constructing a ContainerObject resource.
 type ContainerObjectArgs struct {
-	// A unique (within an account) name for the container. 
+	// A unique (within an account) name for the container.
 	// The container name must be from 1 to 256 characters long and can start
 	// with any character and contain any pattern. Character set must be UTF-8.
 	// The container name cannot contain a slash (/) character because this
@@ -341,7 +341,7 @@ type ContainerObjectArgs struct {
 	// A string representing the content of the object. Conflicts with
 	// `source` and `copyFrom`.
 	Content pulumi.StringPtrInput
-	// A string which specifies the override behavior for 
+	// A string which specifies the override behavior for
 	// the browser. For example, this header might specify that the browser use a download
 	// program to save this file rather than show the file, which is the default.
 	ContentDisposition pulumi.StringPtrInput
@@ -350,7 +350,7 @@ type ContainerObjectArgs struct {
 	ContentEncoding pulumi.StringPtrInput
 	// A string which sets the MIME type for the object.
 	ContentType pulumi.StringPtrInput
-	// A string representing the name of an object 
+	// A string representing the name of an object
 	// used to create the new object by copying the `copyFrom` object. The value is in form
 	// {container}/{object}. You must UTF-8-encode and then URL-encode the names of the
 	// container and object before you include them in the header. Conflicts with `source` and
@@ -360,19 +360,19 @@ type ContainerObjectArgs struct {
 	// system removes the object. Internally, the Object Storage system stores this value in
 	// the X-Delete-At metadata item.
 	DeleteAfter pulumi.IntPtrInput
-	// An string representing the date when the system removes the object. 
+	// An string representing the date when the system removes the object.
 	// For example, "2015-08-26" is equivalent to Mon, Wed, 26 Aug 2015 00:00:00 GMT.
 	DeleteAt pulumi.StringPtrInput
-	// If set to true, Object Storage guesses the content 
+	// If set to true, Object Storage guesses the content
 	// type based on the file extension and ignores the value sent in the Content-Type
 	// header, if present.
 	DetectContentType pulumi.BoolPtrInput
 	// Used to trigger updates. The only meaningful value is ${md5(file("path/to/file"))}.
-	Etag pulumi.StringPtrInput
+	Etag     pulumi.StringPtrInput
 	Metadata pulumi.MapInput
 	// A unique name for the object.
 	Name pulumi.StringPtrInput
-	// A string set to specify that this is a dynamic large 
+	// A string set to specify that this is a dynamic large
 	// object manifest object. The value is the container and object name prefix of the
 	// segment objects in the form container/prefix. You must UTF-8-encode and then
 	// URL-encode the names of the container and prefix before you include them in this
@@ -390,4 +390,3 @@ type ContainerObjectArgs struct {
 func (ContainerObjectArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*containerObjectArgs)(nil)).Elem()
 }
-

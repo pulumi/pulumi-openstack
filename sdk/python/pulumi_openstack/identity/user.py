@@ -58,7 +58,8 @@ class User(pulumi.CustomResource):
     [Ocata release notes](https://docs.openstack.org/releasenotes/keystone/ocata.html)
     for more information on how to use mulit-factor rules.
 
-      * `rules` (`list`)
+      * `rules` (`list`) - A list of authentication plugins that the user must
+        authenticate with.
     """
     name: pulumi.Output[str]
     """
@@ -111,7 +112,8 @@ class User(pulumi.CustomResource):
 
         The **multi_factor_auth_rules** object supports the following:
 
-          * `rules` (`pulumi.Input[list]`)
+          * `rules` (`pulumi.Input[list]`) - A list of authentication plugins that the user must
+            authenticate with.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -184,7 +186,8 @@ class User(pulumi.CustomResource):
 
         The **multi_factor_auth_rules** object supports the following:
 
-          * `rules` (`pulumi.Input[list]`)
+          * `rules` (`pulumi.Input[list]`) - A list of authentication plugins that the user must
+            authenticate with.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

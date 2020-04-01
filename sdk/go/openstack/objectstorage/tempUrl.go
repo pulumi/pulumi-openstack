@@ -35,8 +35,8 @@ type TempUrl struct {
 	// ID and new URL. Defaults to false.
 	Regenerate pulumi.BoolPtrOutput `pulumi:"regenerate"`
 	// The region the tempurl is located in.
-	Region pulumi.StringOutput `pulumi:"region"`
-	Split pulumi.StringPtrOutput `pulumi:"split"`
+	Region pulumi.StringOutput    `pulumi:"region"`
+	Split  pulumi.StringPtrOutput `pulumi:"split"`
 	// The TTL, in seconds, for the URL. For how long it should
 	// be valid.
 	Ttl pulumi.IntOutput `pulumi:"ttl"`
@@ -94,7 +94,7 @@ type tempUrlState struct {
 	Regenerate *bool `pulumi:"regenerate"`
 	// The region the tempurl is located in.
 	Region *string `pulumi:"region"`
-	Split *string `pulumi:"split"`
+	Split  *string `pulumi:"split"`
 	// The TTL, in seconds, for the URL. For how long it should
 	// be valid.
 	Ttl *int `pulumi:"ttl"`
@@ -116,7 +116,7 @@ type TempUrlState struct {
 	Regenerate pulumi.BoolPtrInput
 	// The region the tempurl is located in.
 	Region pulumi.StringPtrInput
-	Split pulumi.StringPtrInput
+	Split  pulumi.StringPtrInput
 	// The TTL, in seconds, for the URL. For how long it should
 	// be valid.
 	Ttl pulumi.IntPtrInput
@@ -142,7 +142,7 @@ type tempUrlArgs struct {
 	Regenerate *bool `pulumi:"regenerate"`
 	// The region the tempurl is located in.
 	Region *string `pulumi:"region"`
-	Split *string `pulumi:"split"`
+	Split  *string `pulumi:"split"`
 	// The TTL, in seconds, for the URL. For how long it should
 	// be valid.
 	Ttl int `pulumi:"ttl"`
@@ -163,7 +163,7 @@ type TempUrlArgs struct {
 	Regenerate pulumi.BoolPtrInput
 	// The region the tempurl is located in.
 	Region pulumi.StringPtrInput
-	Split pulumi.StringPtrInput
+	Split  pulumi.StringPtrInput
 	// The TTL, in seconds, for the URL. For how long it should
 	// be valid.
 	Ttl pulumi.IntInput
@@ -172,4 +172,3 @@ type TempUrlArgs struct {
 func (TempUrlArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*tempUrlArgs)(nil)).Elem()
 }
-

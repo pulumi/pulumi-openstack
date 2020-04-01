@@ -24,8 +24,8 @@ class Subnet(pulumi.CustomResource):
     must be from the same CIDR that the subnet is part of.
     The `allocation_pool` block is documented below.
 
-      * `end` (`str`)
-      * `start` (`str`)
+      * `end` (`str`) - The ending address.
+      * `start` (`str`) - The starting address.
     """
     allocation_pools_collection: pulumi.Output[list]
     """
@@ -34,8 +34,8 @@ class Subnet(pulumi.CustomResource):
     use with DHCP in this subnet.
     The `allocation_pools` block is documented below.
 
-      * `end` (`str`)
-      * `start` (`str`)
+      * `end` (`str`) - The ending address.
+      * `start` (`str`) - The starting address.
     """
     cidr: pulumi.Output[str]
     """
@@ -75,8 +75,8 @@ class Subnet(pulumi.CustomResource):
     object structure is documented below. Changing this updates the host routes
     for the existing subnet.
 
-      * `destination_cidr` (`str`)
-      * `next_hop` (`str`)
+      * `destination_cidr` (`str`) - The destination CIDR.
+      * `next_hop` (`str`) - The next hop in the route.
     """
     ip_version: pulumi.Output[float]
     """
@@ -205,18 +205,18 @@ class Subnet(pulumi.CustomResource):
 
         The **allocation_pools** object supports the following:
 
-          * `end` (`pulumi.Input[str]`)
-          * `start` (`pulumi.Input[str]`)
+          * `end` (`pulumi.Input[str]`) - The ending address.
+          * `start` (`pulumi.Input[str]`) - The starting address.
 
         The **allocation_pools_collection** object supports the following:
 
-          * `end` (`pulumi.Input[str]`)
-          * `start` (`pulumi.Input[str]`)
+          * `end` (`pulumi.Input[str]`) - The ending address.
+          * `start` (`pulumi.Input[str]`) - The starting address.
 
         The **host_routes** object supports the following:
 
-          * `destination_cidr` (`pulumi.Input[str]`)
-          * `next_hop` (`pulumi.Input[str]`)
+          * `destination_cidr` (`pulumi.Input[str]`) - The destination CIDR.
+          * `next_hop` (`pulumi.Input[str]`) - The next hop in the route.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -333,18 +333,18 @@ class Subnet(pulumi.CustomResource):
 
         The **allocation_pools** object supports the following:
 
-          * `end` (`pulumi.Input[str]`)
-          * `start` (`pulumi.Input[str]`)
+          * `end` (`pulumi.Input[str]`) - The ending address.
+          * `start` (`pulumi.Input[str]`) - The starting address.
 
         The **allocation_pools_collection** object supports the following:
 
-          * `end` (`pulumi.Input[str]`)
-          * `start` (`pulumi.Input[str]`)
+          * `end` (`pulumi.Input[str]`) - The ending address.
+          * `start` (`pulumi.Input[str]`) - The starting address.
 
         The **host_routes** object supports the following:
 
-          * `destination_cidr` (`pulumi.Input[str]`)
-          * `next_hop` (`pulumi.Input[str]`)
+          * `destination_cidr` (`pulumi.Input[str]`) - The destination CIDR.
+          * `next_hop` (`pulumi.Input[str]`) - The next hop in the route.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

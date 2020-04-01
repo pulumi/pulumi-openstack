@@ -118,15 +118,13 @@ namespace Pulumi.OpenStack.Networking
         public Output<ImmutableArray<Outputs.PortFixedIps>> FixedIps { get; private set; } = null!;
 
         /// <summary>
-        /// Specify a specific MAC address for the port. Changing
-        /// this creates a new port.
+        /// The additional MAC address.
         /// </summary>
         [Output("macAddress")]
         public Output<string> MacAddress { get; private set; } = null!;
 
         /// <summary>
-        /// A unique name for the port. Changing this
-        /// updates the `name` of an existing port.
+        /// Name of the DHCP option.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -341,15 +339,13 @@ namespace Pulumi.OpenStack.Networking
         }
 
         /// <summary>
-        /// Specify a specific MAC address for the port. Changing
-        /// this creates a new port.
+        /// The additional MAC address.
         /// </summary>
         [Input("macAddress")]
         public Input<string>? MacAddress { get; set; }
 
         /// <summary>
-        /// A unique name for the port. Changing this
-        /// updates the `name` of an existing port.
+        /// Name of the DHCP option.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -594,15 +590,13 @@ namespace Pulumi.OpenStack.Networking
         }
 
         /// <summary>
-        /// Specify a specific MAC address for the port. Changing
-        /// this creates a new port.
+        /// The additional MAC address.
         /// </summary>
         [Input("macAddress")]
         public Input<string>? MacAddress { get; set; }
 
         /// <summary>
-        /// A unique name for the port. Changing this
-        /// updates the `name` of an existing port.
+        /// Name of the DHCP option.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -714,12 +708,14 @@ namespace Pulumi.OpenStack.Networking
 
     public sealed class PortAllowedAddressPairsArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The additional IP address.
+        /// </summary>
         [Input("ipAddress", required: true)]
         public Input<string> IpAddress { get; set; } = null!;
 
         /// <summary>
-        /// Specify a specific MAC address for the port. Changing
-        /// this creates a new port.
+        /// The additional MAC address.
         /// </summary>
         [Input("macAddress")]
         public Input<string>? MacAddress { get; set; }
@@ -731,12 +727,14 @@ namespace Pulumi.OpenStack.Networking
 
     public sealed class PortAllowedAddressPairsGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The additional IP address.
+        /// </summary>
         [Input("ipAddress", required: true)]
         public Input<string> IpAddress { get; set; } = null!;
 
         /// <summary>
-        /// Specify a specific MAC address for the port. Changing
-        /// this creates a new port.
+        /// The additional MAC address.
         /// </summary>
         [Input("macAddress")]
         public Input<string>? MacAddress { get; set; }
@@ -748,23 +746,43 @@ namespace Pulumi.OpenStack.Networking
 
     public sealed class PortBindingArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The ID of the host to allocate port on.
+        /// </summary>
         [Input("hostId")]
         public Input<string>? HostId { get; set; }
 
+        /// <summary>
+        /// Custom data to be passed as `binding:profile`. Data
+        /// must be passed as JSON.
+        /// </summary>
         [Input("profile")]
         public Input<string>? Profile { get; set; }
 
         [Input("vifDetails")]
         private InputMap<object>? _vifDetails;
+
+        /// <summary>
+        /// A map of JSON strings containing additional
+        /// details for this specific binding.
+        /// </summary>
         public InputMap<object> VifDetails
         {
             get => _vifDetails ?? (_vifDetails = new InputMap<object>());
             set => _vifDetails = value;
         }
 
+        /// <summary>
+        /// The VNIC type of the port binding.
+        /// </summary>
         [Input("vifType")]
         public Input<string>? VifType { get; set; }
 
+        /// <summary>
+        /// VNIC type for the port. Can either be `direct`,
+        /// `direct-physical`, `macvtap`, `normal`, `baremetal` or `virtio-forwarder`.
+        /// Default value is `normal`.
+        /// </summary>
         [Input("vnicType")]
         public Input<string>? VnicType { get; set; }
 
@@ -775,23 +793,43 @@ namespace Pulumi.OpenStack.Networking
 
     public sealed class PortBindingGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The ID of the host to allocate port on.
+        /// </summary>
         [Input("hostId")]
         public Input<string>? HostId { get; set; }
 
+        /// <summary>
+        /// Custom data to be passed as `binding:profile`. Data
+        /// must be passed as JSON.
+        /// </summary>
         [Input("profile")]
         public Input<string>? Profile { get; set; }
 
         [Input("vifDetails")]
         private InputMap<object>? _vifDetails;
+
+        /// <summary>
+        /// A map of JSON strings containing additional
+        /// details for this specific binding.
+        /// </summary>
         public InputMap<object> VifDetails
         {
             get => _vifDetails ?? (_vifDetails = new InputMap<object>());
             set => _vifDetails = value;
         }
 
+        /// <summary>
+        /// The VNIC type of the port binding.
+        /// </summary>
         [Input("vifType")]
         public Input<string>? VifType { get; set; }
 
+        /// <summary>
+        /// VNIC type for the port. Can either be `direct`,
+        /// `direct-physical`, `macvtap`, `normal`, `baremetal` or `virtio-forwarder`.
+        /// Default value is `normal`.
+        /// </summary>
         [Input("vnicType")]
         public Input<string>? VnicType { get; set; }
 
@@ -802,16 +840,21 @@ namespace Pulumi.OpenStack.Networking
 
     public sealed class PortExtraDhcpOptionsArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// IP protocol version. Defaults to 4.
+        /// </summary>
         [Input("ipVersion")]
         public Input<int>? IpVersion { get; set; }
 
         /// <summary>
-        /// A unique name for the port. Changing this
-        /// updates the `name` of an existing port.
+        /// Name of the DHCP option.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// Value of the DHCP option.
+        /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;
 
@@ -822,16 +865,21 @@ namespace Pulumi.OpenStack.Networking
 
     public sealed class PortExtraDhcpOptionsGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// IP protocol version. Defaults to 4.
+        /// </summary>
         [Input("ipVersion")]
         public Input<int>? IpVersion { get; set; }
 
         /// <summary>
-        /// A unique name for the port. Changing this
-        /// updates the `name` of an existing port.
+        /// Name of the DHCP option.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// Value of the DHCP option.
+        /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;
 
@@ -842,9 +890,16 @@ namespace Pulumi.OpenStack.Networking
 
     public sealed class PortFixedIpsArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The additional IP address.
+        /// </summary>
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }
 
+        /// <summary>
+        /// Subnet in which to allocate IP address for
+        /// this port.
+        /// </summary>
         [Input("subnetId", required: true)]
         public Input<string> SubnetId { get; set; } = null!;
 
@@ -855,9 +910,16 @@ namespace Pulumi.OpenStack.Networking
 
     public sealed class PortFixedIpsGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The additional IP address.
+        /// </summary>
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }
 
+        /// <summary>
+        /// Subnet in which to allocate IP address for
+        /// this port.
+        /// </summary>
         [Input("subnetId", required: true)]
         public Input<string> SubnetId { get; set; } = null!;
 
@@ -873,10 +935,12 @@ namespace Pulumi.OpenStack.Networking
     [OutputType]
     public sealed class PortAllowedAddressPairs
     {
+        /// <summary>
+        /// The additional IP address.
+        /// </summary>
         public readonly string IpAddress;
         /// <summary>
-        /// Specify a specific MAC address for the port. Changing
-        /// this creates a new port.
+        /// The additional MAC address.
         /// </summary>
         public readonly string? MacAddress;
 
@@ -893,10 +957,29 @@ namespace Pulumi.OpenStack.Networking
     [OutputType]
     public sealed class PortBinding
     {
+        /// <summary>
+        /// The ID of the host to allocate port on.
+        /// </summary>
         public readonly string? HostId;
+        /// <summary>
+        /// Custom data to be passed as `binding:profile`. Data
+        /// must be passed as JSON.
+        /// </summary>
         public readonly string? Profile;
+        /// <summary>
+        /// A map of JSON strings containing additional
+        /// details for this specific binding.
+        /// </summary>
         public readonly ImmutableDictionary<string, object> VifDetails;
+        /// <summary>
+        /// The VNIC type of the port binding.
+        /// </summary>
         public readonly string VifType;
+        /// <summary>
+        /// VNIC type for the port. Can either be `direct`,
+        /// `direct-physical`, `macvtap`, `normal`, `baremetal` or `virtio-forwarder`.
+        /// Default value is `normal`.
+        /// </summary>
         public readonly string? VnicType;
 
         [OutputConstructor]
@@ -918,12 +1001,17 @@ namespace Pulumi.OpenStack.Networking
     [OutputType]
     public sealed class PortExtraDhcpOptions
     {
+        /// <summary>
+        /// IP protocol version. Defaults to 4.
+        /// </summary>
         public readonly int? IpVersion;
         /// <summary>
-        /// A unique name for the port. Changing this
-        /// updates the `name` of an existing port.
+        /// Name of the DHCP option.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Value of the DHCP option.
+        /// </summary>
         public readonly string Value;
 
         [OutputConstructor]
@@ -941,7 +1029,14 @@ namespace Pulumi.OpenStack.Networking
     [OutputType]
     public sealed class PortFixedIps
     {
+        /// <summary>
+        /// The additional IP address.
+        /// </summary>
         public readonly string? IpAddress;
+        /// <summary>
+        /// Subnet in which to allocate IP address for
+        /// this port.
+        /// </summary>
         public readonly string SubnetId;
 
         [OutputConstructor]

@@ -37,7 +37,6 @@ type LookupAddressScopeArgs struct {
 	Shared *bool `pulumi:"shared"`
 }
 
-
 // A collection of values returned by getAddressScope.
 type LookupAddressScopeResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
@@ -48,8 +47,7 @@ type LookupAddressScopeResult struct {
 	Name *string `pulumi:"name"`
 	// See Argument Reference above.
 	ProjectId *string `pulumi:"projectId"`
-	Region *string `pulumi:"region"`
+	Region    *string `pulumi:"region"`
 	// See Argument Reference above.
 	Shared *bool `pulumi:"shared"`
 }
-

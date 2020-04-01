@@ -32,7 +32,6 @@ type LookupQosDscpMarkingRuleArgs struct {
 	Region *string `pulumi:"region"`
 }
 
-
 // A collection of values returned by getQosDscpMarkingRule.
 type LookupQosDscpMarkingRuleResult struct {
 	// See Argument Reference above.
@@ -44,4 +43,3 @@ type LookupQosDscpMarkingRuleResult struct {
 	// See Argument Reference above.
 	Region string `pulumi:"region"`
 }
-

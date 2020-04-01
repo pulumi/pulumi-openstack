@@ -16,7 +16,18 @@ namespace Pulumi.OpenStack.SharedFileSystem
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/sharedfilesystem_snapshot_v2.html.markdown.
         /// </summary>
+        [Obsolete("Use GetSnapshot.InvokeAsync() instead")]
         public static Task<GetSnapshotResult> GetSnapshot(GetSnapshotArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSnapshotResult>("openstack:sharedfilesystem/getSnapshot:getSnapshot", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetSnapshot
+    {
+        /// <summary>
+        /// Use this data source to get the ID of an available Shared File System snapshot.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/sharedfilesystem_snapshot_v2.html.markdown.
+        /// </summary>
+        public static Task<GetSnapshotResult> InvokeAsync(GetSnapshotArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSnapshotResult>("openstack:sharedfilesystem/getSnapshot:getSnapshot", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 
@@ -40,6 +51,9 @@ namespace Pulumi.OpenStack.SharedFileSystem
         [Input("region")]
         public string? Region { get; set; }
 
+        /// <summary>
+        /// The UUID of the source share that was used to create the snapshot.
+        /// </summary>
         [Input("shareId")]
         public string? ShareId { get; set; }
 

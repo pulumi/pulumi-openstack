@@ -12,7 +12,9 @@ import (
 )
 
 type ContainerVersioning struct {
+	// Container in which versions will be stored.
 	Location string `pulumi:"location"`
+	// Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/overview_object_versioning.html).
 	Type string `pulumi:"type"`
 }
 
@@ -24,7 +26,9 @@ type ContainerVersioningInput interface {
 }
 
 type ContainerVersioningArgs struct {
+	// Container in which versions will be stored.
 	Location pulumi.StringInput `pulumi:"location"`
+	// Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/overview_object_versioning.html).
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -57,7 +61,8 @@ type ContainerVersioningPtrInput interface {
 
 type containerVersioningPtrType ContainerVersioningArgs
 
-func ContainerVersioningPtr(v *ContainerVersioningArgs) ContainerVersioningPtrInput {	return (*containerVersioningPtrType)(v)
+func ContainerVersioningPtr(v *ContainerVersioningArgs) ContainerVersioningPtrInput {
+	return (*containerVersioningPtrType)(v)
 }
 
 func (*containerVersioningPtrType) ElementType() reflect.Type {
@@ -72,7 +77,7 @@ func (i *containerVersioningPtrType) ToContainerVersioningPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerVersioningPtrOutput)
 }
 
-type ContainerVersioningOutput struct { *pulumi.OutputState }
+type ContainerVersioningOutput struct{ *pulumi.OutputState }
 
 func (ContainerVersioningOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ContainerVersioning)(nil)).Elem()
@@ -95,15 +100,18 @@ func (o ContainerVersioningOutput) ToContainerVersioningPtrOutputWithContext(ctx
 		return &v
 	}).(ContainerVersioningPtrOutput)
 }
+
+// Container in which versions will be stored.
 func (o ContainerVersioningOutput) Location() pulumi.StringOutput {
-	return o.ApplyT(func (v ContainerVersioning) string { return v.Location }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ContainerVersioning) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/overview_object_versioning.html).
 func (o ContainerVersioningOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func (v ContainerVersioning) string { return v.Type }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ContainerVersioning) string { return v.Type }).(pulumi.StringOutput)
 }
 
-type ContainerVersioningPtrOutput struct { *pulumi.OutputState}
+type ContainerVersioningPtrOutput struct{ *pulumi.OutputState }
 
 func (ContainerVersioningPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ContainerVersioning)(nil)).Elem()
@@ -118,15 +126,17 @@ func (o ContainerVersioningPtrOutput) ToContainerVersioningPtrOutputWithContext(
 }
 
 func (o ContainerVersioningPtrOutput) Elem() ContainerVersioningOutput {
-	return o.ApplyT(func (v *ContainerVersioning) ContainerVersioning { return *v }).(ContainerVersioningOutput)
+	return o.ApplyT(func(v *ContainerVersioning) ContainerVersioning { return *v }).(ContainerVersioningOutput)
 }
 
+// Container in which versions will be stored.
 func (o ContainerVersioningPtrOutput) Location() pulumi.StringOutput {
-	return o.ApplyT(func (v ContainerVersioning) string { return v.Location }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ContainerVersioning) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/overview_object_versioning.html).
 func (o ContainerVersioningPtrOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func (v ContainerVersioning) string { return v.Type }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ContainerVersioning) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {

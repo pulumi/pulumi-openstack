@@ -16,10 +16,20 @@ class ApplicationCredential(pulumi.CustomResource):
     this application credential allows to follow. The structure is described
     below. Changing this creates a new application credential.
 
-      * `id` (`str`)
-      * `method` (`str`)
-      * `path` (`str`)
-      * `service` (`str`)
+      * `id` (`str`) - The ID of the existing access rule. The access rule ID of
+        another application credential can be provided.
+      * `method` (`str`) - The request method that the application credential is
+        permitted to use for a given API endpoint. Allowed values: `POST`, `GET`,
+        `HEAD`, `PATCH`, `PUT` and `DELETE`.
+      * `path` (`str`) - The API path that the application credential is permitted
+        to access. May use named wildcards such as **{tag}** or the unnamed wildcard
+        **\*** to match against any string in the path up to a **/**, or the recursive
+        wildcard **\*\*** to include **/** in the matched path.
+      * `service` (`str`) - The service type identifier for the service that the
+        application credential is granted to access. Must be a service type that is
+        listed in the service catalog and not a code name for a service. E.g.
+        **identity**, **compute**, **volumev3**, **image**, **network**,
+        **object-store**, **sharev2**, **dns**, **key-manager**, **monitoring**, etc.
     """
     description: pulumi.Output[str]
     """
@@ -115,10 +125,20 @@ class ApplicationCredential(pulumi.CustomResource):
 
         The **access_rules** object supports the following:
 
-          * `id` (`pulumi.Input[str]`)
-          * `method` (`pulumi.Input[str]`)
-          * `path` (`pulumi.Input[str]`)
-          * `service` (`pulumi.Input[str]`)
+          * `id` (`pulumi.Input[str]`) - The ID of the existing access rule. The access rule ID of
+            another application credential can be provided.
+          * `method` (`pulumi.Input[str]`) - The request method that the application credential is
+            permitted to use for a given API endpoint. Allowed values: `POST`, `GET`,
+            `HEAD`, `PATCH`, `PUT` and `DELETE`.
+          * `path` (`pulumi.Input[str]`) - The API path that the application credential is permitted
+            to access. May use named wildcards such as **{tag}** or the unnamed wildcard
+            **\*** to match against any string in the path up to a **/**, or the recursive
+            wildcard **\*\*** to include **/** in the matched path.
+          * `service` (`pulumi.Input[str]`) - The service type identifier for the service that the
+            application credential is granted to access. Must be a service type that is
+            listed in the service catalog and not a code name for a service. E.g.
+            **identity**, **compute**, **volumev3**, **image**, **network**,
+            **object-store**, **sharev2**, **dns**, **key-manager**, **monitoring**, etc.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -192,10 +212,20 @@ class ApplicationCredential(pulumi.CustomResource):
 
         The **access_rules** object supports the following:
 
-          * `id` (`pulumi.Input[str]`)
-          * `method` (`pulumi.Input[str]`)
-          * `path` (`pulumi.Input[str]`)
-          * `service` (`pulumi.Input[str]`)
+          * `id` (`pulumi.Input[str]`) - The ID of the existing access rule. The access rule ID of
+            another application credential can be provided.
+          * `method` (`pulumi.Input[str]`) - The request method that the application credential is
+            permitted to use for a given API endpoint. Allowed values: `POST`, `GET`,
+            `HEAD`, `PATCH`, `PUT` and `DELETE`.
+          * `path` (`pulumi.Input[str]`) - The API path that the application credential is permitted
+            to access. May use named wildcards such as **{tag}** or the unnamed wildcard
+            **\*** to match against any string in the path up to a **/**, or the recursive
+            wildcard **\*\*** to include **/** in the matched path.
+          * `service` (`pulumi.Input[str]`) - The service type identifier for the service that the
+            application credential is granted to access. Must be a service type that is
+            listed in the service catalog and not a code name for a service. E.g.
+            **identity**, **compute**, **volumev3**, **image**, **network**,
+            **object-store**, **sharev2**, **dns**, **key-manager**, **monitoring**, etc.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

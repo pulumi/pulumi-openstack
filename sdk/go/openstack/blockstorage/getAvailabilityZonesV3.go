@@ -30,7 +30,6 @@ type GetAvailabilityZonesV3Args struct {
 	State *string `pulumi:"state"`
 }
 
-
 // A collection of values returned by getAvailabilityZonesV3.
 type GetAvailabilityZonesV3Result struct {
 	// id is the provider-assigned unique ID for this managed resource.
@@ -43,4 +42,3 @@ type GetAvailabilityZonesV3Result struct {
 	// See Argument Reference above.
 	State *string `pulumi:"state"`
 }
-

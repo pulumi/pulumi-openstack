@@ -16,12 +16,26 @@ namespace Pulumi.OpenStack.BlockStorage
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/blockstorage_volume_v2.html.markdown.
         /// </summary>
+        [Obsolete("Use GetVolumeV2.InvokeAsync() instead")]
         public static Task<GetVolumeV2Result> GetVolumeV2(GetVolumeV2Args? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetVolumeV2Result>("openstack:blockstorage/getVolumeV2:getVolumeV2", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetVolumeV2
+    {
+        /// <summary>
+        /// Use this data source to get information about an existing volume.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/blockstorage_volume_v2.html.markdown.
+        /// </summary>
+        public static Task<GetVolumeV2Result> InvokeAsync(GetVolumeV2Args? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVolumeV2Result>("openstack:blockstorage/getVolumeV2:getVolumeV2", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetVolumeV2Args : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Indicates if the volume is bootable.
+        /// </summary>
         [Input("bootable")]
         public string? Bootable { get; set; }
 
@@ -56,6 +70,9 @@ namespace Pulumi.OpenStack.BlockStorage
         [Input("status")]
         public string? Status { get; set; }
 
+        /// <summary>
+        /// The type of the volume.
+        /// </summary>
         [Input("volumeType")]
         public string? VolumeType { get; set; }
 

@@ -39,7 +39,7 @@ type RbacPolicyV2 struct {
 	// The type of the object that the RBAC policy
 	// affects. Can either be `qos-policy` or `network`.
 	ObjectType pulumi.StringOutput `pulumi:"objectType"`
-	ProjectId pulumi.StringOutput `pulumi:"projectId"`
+	ProjectId  pulumi.StringOutput `pulumi:"projectId"`
 	// The region in which to obtain the V2 networking client.
 	// A networking client is needed to configure a routing entry on a subnet. If omitted, the
 	// `region` argument of the provider is used. Changing this creates a new
@@ -100,7 +100,7 @@ type rbacPolicyV2State struct {
 	// The type of the object that the RBAC policy
 	// affects. Can either be `qos-policy` or `network`.
 	ObjectType *string `pulumi:"objectType"`
-	ProjectId *string `pulumi:"projectId"`
+	ProjectId  *string `pulumi:"projectId"`
 	// The region in which to obtain the V2 networking client.
 	// A networking client is needed to configure a routing entry on a subnet. If omitted, the
 	// `region` argument of the provider is used. Changing this creates a new
@@ -122,7 +122,7 @@ type RbacPolicyV2State struct {
 	// The type of the object that the RBAC policy
 	// affects. Can either be `qos-policy` or `network`.
 	ObjectType pulumi.StringPtrInput
-	ProjectId pulumi.StringPtrInput
+	ProjectId  pulumi.StringPtrInput
 	// The region in which to obtain the V2 networking client.
 	// A networking client is needed to configure a routing entry on a subnet. If omitted, the
 	// `region` argument of the provider is used. Changing this creates a new
@@ -183,4 +183,3 @@ type RbacPolicyV2Args struct {
 func (RbacPolicyV2Args) ElementType() reflect.Type {
 	return reflect.TypeOf((*rbacPolicyV2Args)(nil)).Elem()
 }
-

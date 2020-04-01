@@ -25,12 +25,11 @@ type ContainerV1 struct {
 	Consumers ContainerV1ConsumerArrayOutput `pulumi:"consumers"`
 	// The container reference / where to find the container.
 	ContainerRef pulumi.StringOutput `pulumi:"containerRef"`
-	// The date the container was created.
+	// The date the container ACL was created.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// The creator of the container.
 	CreatorId pulumi.StringOutput `pulumi:"creatorId"`
-	// Human-readable name for the Container. Does not have
-	// to be unique.
+	// The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The region in which to obtain the V1 KeyManager client.
 	// A KeyManager client is needed to create a container. If omitted, the
@@ -44,7 +43,7 @@ type ContainerV1 struct {
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Used to indicate the type of container. Must be one of `generic`, `rsa` or `certificate`.
 	Type pulumi.StringOutput `pulumi:"type"`
-	// The date the container was last updated.
+	// The date the container ACL was last updated.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 }
 
@@ -87,12 +86,11 @@ type containerV1State struct {
 	Consumers []ContainerV1Consumer `pulumi:"consumers"`
 	// The container reference / where to find the container.
 	ContainerRef *string `pulumi:"containerRef"`
-	// The date the container was created.
+	// The date the container ACL was created.
 	CreatedAt *string `pulumi:"createdAt"`
 	// The creator of the container.
 	CreatorId *string `pulumi:"creatorId"`
-	// Human-readable name for the Container. Does not have
-	// to be unique.
+	// The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
 	Name *string `pulumi:"name"`
 	// The region in which to obtain the V1 KeyManager client.
 	// A KeyManager client is needed to create a container. If omitted, the
@@ -106,7 +104,7 @@ type containerV1State struct {
 	Status *string `pulumi:"status"`
 	// Used to indicate the type of container. Must be one of `generic`, `rsa` or `certificate`.
 	Type *string `pulumi:"type"`
-	// The date the container was last updated.
+	// The date the container ACL was last updated.
 	UpdatedAt *string `pulumi:"updatedAt"`
 }
 
@@ -119,12 +117,11 @@ type ContainerV1State struct {
 	Consumers ContainerV1ConsumerArrayInput
 	// The container reference / where to find the container.
 	ContainerRef pulumi.StringPtrInput
-	// The date the container was created.
+	// The date the container ACL was created.
 	CreatedAt pulumi.StringPtrInput
 	// The creator of the container.
 	CreatorId pulumi.StringPtrInput
-	// Human-readable name for the Container. Does not have
-	// to be unique.
+	// The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
 	Name pulumi.StringPtrInput
 	// The region in which to obtain the V1 KeyManager client.
 	// A KeyManager client is needed to create a container. If omitted, the
@@ -138,7 +135,7 @@ type ContainerV1State struct {
 	Status pulumi.StringPtrInput
 	// Used to indicate the type of container. Must be one of `generic`, `rsa` or `certificate`.
 	Type pulumi.StringPtrInput
-	// The date the container was last updated.
+	// The date the container ACL was last updated.
 	UpdatedAt pulumi.StringPtrInput
 }
 
@@ -151,8 +148,7 @@ type containerV1Args struct {
 	// the `read` operation is supported. If not specified, the container is
 	// accessible project wide. The `read` structure is described below.
 	Acl *ContainerV1Acl `pulumi:"acl"`
-	// Human-readable name for the Container. Does not have
-	// to be unique.
+	// The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
 	Name *string `pulumi:"name"`
 	// The region in which to obtain the V1 KeyManager client.
 	// A KeyManager client is needed to create a container. If omitted, the
@@ -172,8 +168,7 @@ type ContainerV1Args struct {
 	// the `read` operation is supported. If not specified, the container is
 	// accessible project wide. The `read` structure is described below.
 	Acl ContainerV1AclPtrInput
-	// Human-readable name for the Container. Does not have
-	// to be unique.
+	// The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
 	Name pulumi.StringPtrInput
 	// The region in which to obtain the V1 KeyManager client.
 	// A KeyManager client is needed to create a container. If omitted, the
@@ -190,4 +185,3 @@ type ContainerV1Args struct {
 func (ContainerV1Args) ElementType() reflect.Type {
 	return reflect.TypeOf((*containerV1Args)(nil)).Elem()
 }
-

@@ -16,7 +16,18 @@ namespace Pulumi.OpenStack.Networking
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_addressscope_v2.html.markdown.
         /// </summary>
+        [Obsolete("Use GetAddressScope.InvokeAsync() instead")]
         public static Task<GetAddressScopeResult> GetAddressScope(GetAddressScopeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAddressScopeResult>("openstack:networking/getAddressScope:getAddressScope", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetAddressScope
+    {
+        /// <summary>
+        /// Use this data source to get the ID of an available OpenStack address-scope.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_addressscope_v2.html.markdown.
+        /// </summary>
+        public static Task<GetAddressScopeResult> InvokeAsync(GetAddressScopeArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAddressScopeResult>("openstack:networking/getAddressScope:getAddressScope", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

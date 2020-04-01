@@ -91,11 +91,13 @@ def get_volume_v2(bootable=None,metadata=None,name=None,region=None,status=None,
     > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/blockstorage_volume_v2.html.markdown.
 
 
+    :param str bootable: Indicates if the volume is bootable.
     :param dict metadata: Metadata key/value pairs associated with the volume.
     :param str name: The name of the volume.
     :param str region: The region in which to obtain the V2 Block Storage
            client. If omitted, the `region` argument of the provider is used.
     :param str status: The status of the volume.
+    :param str volume_type: The type of the volume.
     """
     __args__ = dict()
 

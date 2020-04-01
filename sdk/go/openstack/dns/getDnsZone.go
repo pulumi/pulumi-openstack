@@ -22,33 +22,41 @@ func GetDnsZone(ctx *pulumi.Context, args *GetDnsZoneArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getDnsZone.
 type GetDnsZoneArgs struct {
+	// Attributes of the DNS Service scheduler.
 	Attributes map[string]interface{} `pulumi:"attributes"`
+	// The time the zone was created.
 	CreatedAt *string `pulumi:"createdAt"`
 	// A description of the zone.
 	Description *string `pulumi:"description"`
 	// The email contact for the zone record.
 	Email *string `pulumi:"email"`
+	// An array of master DNS servers. When `type` is  `SECONDARY`.
 	Masters []string `pulumi:"masters"`
 	// The name of the zone.
 	Name *string `pulumi:"name"`
+	// The ID of the pool hosting the zone.
 	PoolId *string `pulumi:"poolId"`
+	// The project ID that owns the zone.
 	ProjectId *string `pulumi:"projectId"`
 	// The region in which to obtain the V2 DNS client.
 	// A DNS client is needed to retrieve zone ids. If omitted, the
 	// `region` argument of the provider is used.
 	Region *string `pulumi:"region"`
+	// The serial number of the zone.
 	Serial *int `pulumi:"serial"`
 	// The zone's status.
 	Status *string `pulumi:"status"`
+	// The time the zone was transferred.
 	TransferredAt *string `pulumi:"transferredAt"`
 	// The time to live (TTL) of the zone.
 	Ttl *int `pulumi:"ttl"`
 	// The type of the zone. Can either be `PRIMARY` or `SECONDARY`.
 	Type *string `pulumi:"type"`
+	// The time the zone was last updated.
 	UpdatedAt *string `pulumi:"updatedAt"`
+	// The version of the zone.
 	Version *int `pulumi:"version"`
 }
-
 
 // A collection of values returned by getDnsZone.
 type GetDnsZoneResult struct {
@@ -87,4 +95,3 @@ type GetDnsZoneResult struct {
 	// The version of the zone.
 	Version int `pulumi:"version"`
 }
-

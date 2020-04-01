@@ -14,16 +14,16 @@ class Configuration(pulumi.CustomResource):
     """
     An array of configuration parameter name and value. Can be specified multiple times. The configuration object structure is documented below.
 
-      * `name` (`str`) - A unique name for the resource.
-      * `value` (`str`)
+      * `name` (`str`) - Configuration parameter name. Changing this creates a new resource.
+      * `value` (`str`) - Configuration parameter value. Changing this creates a new resource.
     """
     datastore: pulumi.Output[dict]
     """
     An array of database engine type and version. The datastore
     object structure is documented below. Changing this creates resource.
 
-      * `type` (`str`)
-      * `version` (`str`)
+      * `type` (`str`) - Database engine type to be used with this configuration. Changing this creates a new resource.
+      * `version` (`str`) - Version of database engine type to be used with this configuration. Changing this creates a new resource.
     """
     description: pulumi.Output[str]
     """
@@ -31,7 +31,7 @@ class Configuration(pulumi.CustomResource):
     """
     name: pulumi.Output[str]
     """
-    A unique name for the resource.
+    Configuration parameter name. Changing this creates a new resource.
     """
     region: pulumi.Output[str]
     """
@@ -50,19 +50,19 @@ class Configuration(pulumi.CustomResource):
         :param pulumi.Input[dict] datastore: An array of database engine type and version. The datastore
                object structure is documented below. Changing this creates resource.
         :param pulumi.Input[str] description: Description of the resource.
-        :param pulumi.Input[str] name: A unique name for the resource.
+        :param pulumi.Input[str] name: Configuration parameter name. Changing this creates a new resource.
         :param pulumi.Input[str] region: The region in which to create the db instance. Changing this
                creates a new instance.
 
         The **configurations** object supports the following:
 
-          * `name` (`pulumi.Input[str]`) - A unique name for the resource.
-          * `value` (`pulumi.Input[str]`)
+          * `name` (`pulumi.Input[str]`) - Configuration parameter name. Changing this creates a new resource.
+          * `value` (`pulumi.Input[str]`) - Configuration parameter value. Changing this creates a new resource.
 
         The **datastore** object supports the following:
 
-          * `type` (`pulumi.Input[str]`)
-          * `version` (`pulumi.Input[str]`)
+          * `type` (`pulumi.Input[str]`) - Database engine type to be used with this configuration. Changing this creates a new resource.
+          * `version` (`pulumi.Input[str]`) - Version of database engine type to be used with this configuration. Changing this creates a new resource.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -109,19 +109,19 @@ class Configuration(pulumi.CustomResource):
         :param pulumi.Input[dict] datastore: An array of database engine type and version. The datastore
                object structure is documented below. Changing this creates resource.
         :param pulumi.Input[str] description: Description of the resource.
-        :param pulumi.Input[str] name: A unique name for the resource.
+        :param pulumi.Input[str] name: Configuration parameter name. Changing this creates a new resource.
         :param pulumi.Input[str] region: The region in which to create the db instance. Changing this
                creates a new instance.
 
         The **configurations** object supports the following:
 
-          * `name` (`pulumi.Input[str]`) - A unique name for the resource.
-          * `value` (`pulumi.Input[str]`)
+          * `name` (`pulumi.Input[str]`) - Configuration parameter name. Changing this creates a new resource.
+          * `value` (`pulumi.Input[str]`) - Configuration parameter value. Changing this creates a new resource.
 
         The **datastore** object supports the following:
 
-          * `type` (`pulumi.Input[str]`)
-          * `version` (`pulumi.Input[str]`)
+          * `type` (`pulumi.Input[str]`) - Database engine type to be used with this configuration. Changing this creates a new resource.
+          * `version` (`pulumi.Input[str]`) - Version of database engine type to be used with this configuration. Changing this creates a new resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

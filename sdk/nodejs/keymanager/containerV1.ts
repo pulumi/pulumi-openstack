@@ -146,7 +146,7 @@ export class ContainerV1 extends pulumi.CustomResource {
      */
     public /*out*/ readonly containerRef!: pulumi.Output<string>;
     /**
-     * The date the container was created.
+     * The date the container ACL was created.
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
@@ -154,8 +154,7 @@ export class ContainerV1 extends pulumi.CustomResource {
      */
     public /*out*/ readonly creatorId!: pulumi.Output<string>;
     /**
-     * Human-readable name for the Container. Does not have
-     * to be unique.
+     * The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -179,7 +178,7 @@ export class ContainerV1 extends pulumi.CustomResource {
      */
     public readonly type!: pulumi.Output<string>;
     /**
-     * The date the container was last updated.
+     * The date the container ACL was last updated.
      */
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
 
@@ -253,7 +252,7 @@ export interface ContainerV1State {
      */
     readonly containerRef?: pulumi.Input<string>;
     /**
-     * The date the container was created.
+     * The date the container ACL was created.
      */
     readonly createdAt?: pulumi.Input<string>;
     /**
@@ -261,8 +260,7 @@ export interface ContainerV1State {
      */
     readonly creatorId?: pulumi.Input<string>;
     /**
-     * Human-readable name for the Container. Does not have
-     * to be unique.
+     * The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -286,7 +284,7 @@ export interface ContainerV1State {
      */
     readonly type?: pulumi.Input<string>;
     /**
-     * The date the container was last updated.
+     * The date the container ACL was last updated.
      */
     readonly updatedAt?: pulumi.Input<string>;
 }
@@ -302,8 +300,7 @@ export interface ContainerV1Args {
      */
     readonly acl?: pulumi.Input<inputs.keymanager.ContainerV1Acl>;
     /**
-     * Human-readable name for the Container. Does not have
-     * to be unique.
+     * The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
      */
     readonly name?: pulumi.Input<string>;
     /**

@@ -122,4 +122,3 @@ type FlavorAccessArgs struct {
 func (FlavorAccessArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*flavorAccessArgs)(nil)).Elem()
 }
-

@@ -35,6 +35,7 @@ type LookupShareArgs struct {
 	Metadata map[string]interface{} `pulumi:"metadata"`
 	// The name of the share.
 	Name *string `pulumi:"name"`
+	// The region in which to obtain the V2 Shared File System client.
 	Region *string `pulumi:"region"`
 	// The UUID of the share's share network.
 	ShareNetworkId *string `pulumi:"shareNetworkId"`
@@ -47,7 +48,6 @@ type LookupShareArgs struct {
 	// `shrinkingPossibleDataLossError`.
 	Status *string `pulumi:"status"`
 }
-
 
 // A collection of values returned by getShare.
 type LookupShareResult struct {
@@ -84,4 +84,3 @@ type LookupShareResult struct {
 	// See Argument Reference above.
 	Status string `pulumi:"status"`
 }
-

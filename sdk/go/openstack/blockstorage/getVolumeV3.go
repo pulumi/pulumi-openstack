@@ -22,6 +22,7 @@ func GetVolumeV3(ctx *pulumi.Context, args *GetVolumeV3Args, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getVolumeV3.
 type GetVolumeV3Args struct {
+	// Indicates if the volume is bootable.
 	Bootable *string `pulumi:"bootable"`
 	// Metadata key/value pairs associated with the volume.
 	Metadata map[string]interface{} `pulumi:"metadata"`
@@ -32,9 +33,9 @@ type GetVolumeV3Args struct {
 	Region *string `pulumi:"region"`
 	// The status of the volume.
 	Status *string `pulumi:"status"`
+	// The type of the volume.
 	VolumeType *string `pulumi:"volumeType"`
 }
-
 
 // A collection of values returned by getVolumeV3.
 type GetVolumeV3Result struct {
@@ -59,4 +60,3 @@ type GetVolumeV3Result struct {
 	// The type of the volume.
 	VolumeType string `pulumi:"volumeType"`
 }
-

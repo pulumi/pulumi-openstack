@@ -147,15 +147,24 @@ def get_dns_zone(attributes=None,created_at=None,description=None,email=None,mas
     > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/dns_zone_v2.html.markdown.
 
 
+    :param dict attributes: Attributes of the DNS Service scheduler.
+    :param str created_at: The time the zone was created.
     :param str description: A description of the zone.
     :param str email: The email contact for the zone record.
+    :param list masters: An array of master DNS servers. When `type` is  `SECONDARY`.
     :param str name: The name of the zone.
+    :param str pool_id: The ID of the pool hosting the zone.
+    :param str project_id: The project ID that owns the zone.
     :param str region: The region in which to obtain the V2 DNS client.
            A DNS client is needed to retrieve zone ids. If omitted, the
            `region` argument of the provider is used.
+    :param float serial: The serial number of the zone.
     :param str status: The zone's status.
+    :param str transferred_at: The time the zone was transferred.
     :param float ttl: The time to live (TTL) of the zone.
     :param str type: The type of the zone. Can either be `PRIMARY` or `SECONDARY`.
+    :param str updated_at: The time the zone was last updated.
+    :param float version: The version of the zone.
     """
     __args__ = dict()
 

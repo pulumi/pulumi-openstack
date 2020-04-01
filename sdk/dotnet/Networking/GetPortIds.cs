@@ -17,7 +17,19 @@ namespace Pulumi.OpenStack.Networking
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_port_ids_v2.html.markdown.
         /// </summary>
+        [Obsolete("Use GetPortIds.InvokeAsync() instead")]
         public static Task<GetPortIdsResult> GetPortIds(GetPortIdsArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetPortIdsResult>("openstack:networking/getPortIds:getPortIds", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetPortIds
+    {
+        /// <summary>
+        /// Use this data source to get a list of Openstack Port IDs matching the
+        /// specified criteria.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_port_ids_v2.html.markdown.
+        /// </summary>
+        public static Task<GetPortIdsResult> InvokeAsync(GetPortIdsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPortIdsResult>("openstack:networking/getPortIds:getPortIds", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

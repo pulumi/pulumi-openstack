@@ -12,15 +12,39 @@ import (
 )
 
 type InstanceBlockDevice struct {
+	// The boot index of the volume. It defaults to 0.
+	// Changing this creates a new server.
 	BootIndex *int `pulumi:"bootIndex"`
+	// Delete the volume / block device upon
+	// termination of the instance. Defaults to false. Changing this creates a
+	// new server.
 	DeleteOnTermination *bool `pulumi:"deleteOnTermination"`
+	// The type that gets created. Possible values
+	// are "volume" and "local". Changing this creates a new server.
 	DestinationType *string `pulumi:"destinationType"`
+	// The low-level device type that will be used. Most
+	// common thing is to leave this empty. Changing this creates a new server.
 	DeviceType *string `pulumi:"deviceType"`
-	DiskBus *string `pulumi:"diskBus"`
+	// The low-level disk bus that will be used. Most common
+	// thing is to leave this empty. Changing this creates a new server.
+	DiskBus     *string `pulumi:"diskBus"`
 	GuestFormat *string `pulumi:"guestFormat"`
+	// The source type of the device. Must be one of
+	// "blank", "image", "volume", or "snapshot". Changing this creates a new
+	// server.
 	SourceType string `pulumi:"sourceType"`
+	// The UUID of
+	// the image, volume, or snapshot. Changing this creates a new server.
 	Uuid *string `pulumi:"uuid"`
+	// The size of the volume to create (in gigabytes). Required
+	// in the following combinations: source=image and destination=volume,
+	// source=blank and destination=local, and source=blank and destination=volume.
+	// Changing this creates a new server.
 	VolumeSize *int `pulumi:"volumeSize"`
+	// The volume type that will be used, for example SSD
+	// or HDD storage. The available options depend on how your specific OpenStack
+	// cloud is configured and what classes of storage are provided. Changing this
+	// creates a new server.
 	VolumeType *string `pulumi:"volumeType"`
 }
 
@@ -32,15 +56,39 @@ type InstanceBlockDeviceInput interface {
 }
 
 type InstanceBlockDeviceArgs struct {
+	// The boot index of the volume. It defaults to 0.
+	// Changing this creates a new server.
 	BootIndex pulumi.IntPtrInput `pulumi:"bootIndex"`
+	// Delete the volume / block device upon
+	// termination of the instance. Defaults to false. Changing this creates a
+	// new server.
 	DeleteOnTermination pulumi.BoolPtrInput `pulumi:"deleteOnTermination"`
+	// The type that gets created. Possible values
+	// are "volume" and "local". Changing this creates a new server.
 	DestinationType pulumi.StringPtrInput `pulumi:"destinationType"`
+	// The low-level device type that will be used. Most
+	// common thing is to leave this empty. Changing this creates a new server.
 	DeviceType pulumi.StringPtrInput `pulumi:"deviceType"`
-	DiskBus pulumi.StringPtrInput `pulumi:"diskBus"`
+	// The low-level disk bus that will be used. Most common
+	// thing is to leave this empty. Changing this creates a new server.
+	DiskBus     pulumi.StringPtrInput `pulumi:"diskBus"`
 	GuestFormat pulumi.StringPtrInput `pulumi:"guestFormat"`
+	// The source type of the device. Must be one of
+	// "blank", "image", "volume", or "snapshot". Changing this creates a new
+	// server.
 	SourceType pulumi.StringInput `pulumi:"sourceType"`
+	// The UUID of
+	// the image, volume, or snapshot. Changing this creates a new server.
 	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+	// The size of the volume to create (in gigabytes). Required
+	// in the following combinations: source=image and destination=volume,
+	// source=blank and destination=local, and source=blank and destination=volume.
+	// Changing this creates a new server.
 	VolumeSize pulumi.IntPtrInput `pulumi:"volumeSize"`
+	// The volume type that will be used, for example SSD
+	// or HDD storage. The available options depend on how your specific OpenStack
+	// cloud is configured and what classes of storage are provided. Changing this
+	// creates a new server.
 	VolumeType pulumi.StringPtrInput `pulumi:"volumeType"`
 }
 
@@ -77,7 +125,7 @@ func (i InstanceBlockDeviceArray) ToInstanceBlockDeviceArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceBlockDeviceArrayOutput)
 }
 
-type InstanceBlockDeviceOutput struct { *pulumi.OutputState }
+type InstanceBlockDeviceOutput struct{ *pulumi.OutputState }
 
 func (InstanceBlockDeviceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*InstanceBlockDevice)(nil)).Elem()
@@ -91,47 +139,71 @@ func (o InstanceBlockDeviceOutput) ToInstanceBlockDeviceOutputWithContext(ctx co
 	return o
 }
 
+// The boot index of the volume. It defaults to 0.
+// Changing this creates a new server.
 func (o InstanceBlockDeviceOutput) BootIndex() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v InstanceBlockDevice) *int { return v.BootIndex }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v InstanceBlockDevice) *int { return v.BootIndex }).(pulumi.IntPtrOutput)
 }
 
+// Delete the volume / block device upon
+// termination of the instance. Defaults to false. Changing this creates a
+// new server.
 func (o InstanceBlockDeviceOutput) DeleteOnTermination() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v InstanceBlockDevice) *bool { return v.DeleteOnTermination }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v InstanceBlockDevice) *bool { return v.DeleteOnTermination }).(pulumi.BoolPtrOutput)
 }
 
+// The type that gets created. Possible values
+// are "volume" and "local". Changing this creates a new server.
 func (o InstanceBlockDeviceOutput) DestinationType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceBlockDevice) *string { return v.DestinationType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceBlockDevice) *string { return v.DestinationType }).(pulumi.StringPtrOutput)
 }
 
+// The low-level device type that will be used. Most
+// common thing is to leave this empty. Changing this creates a new server.
 func (o InstanceBlockDeviceOutput) DeviceType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceBlockDevice) *string { return v.DeviceType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceBlockDevice) *string { return v.DeviceType }).(pulumi.StringPtrOutput)
 }
 
+// The low-level disk bus that will be used. Most common
+// thing is to leave this empty. Changing this creates a new server.
 func (o InstanceBlockDeviceOutput) DiskBus() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceBlockDevice) *string { return v.DiskBus }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceBlockDevice) *string { return v.DiskBus }).(pulumi.StringPtrOutput)
 }
 
 func (o InstanceBlockDeviceOutput) GuestFormat() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceBlockDevice) *string { return v.GuestFormat }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceBlockDevice) *string { return v.GuestFormat }).(pulumi.StringPtrOutput)
 }
 
+// The source type of the device. Must be one of
+// "blank", "image", "volume", or "snapshot". Changing this creates a new
+// server.
 func (o InstanceBlockDeviceOutput) SourceType() pulumi.StringOutput {
-	return o.ApplyT(func (v InstanceBlockDevice) string { return v.SourceType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v InstanceBlockDevice) string { return v.SourceType }).(pulumi.StringOutput)
 }
 
+// The UUID of
+// the image, volume, or snapshot. Changing this creates a new server.
 func (o InstanceBlockDeviceOutput) Uuid() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceBlockDevice) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceBlockDevice) *string { return v.Uuid }).(pulumi.StringPtrOutput)
 }
 
+// The size of the volume to create (in gigabytes). Required
+// in the following combinations: source=image and destination=volume,
+// source=blank and destination=local, and source=blank and destination=volume.
+// Changing this creates a new server.
 func (o InstanceBlockDeviceOutput) VolumeSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v InstanceBlockDevice) *int { return v.VolumeSize }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v InstanceBlockDevice) *int { return v.VolumeSize }).(pulumi.IntPtrOutput)
 }
 
+// The volume type that will be used, for example SSD
+// or HDD storage. The available options depend on how your specific OpenStack
+// cloud is configured and what classes of storage are provided. Changing this
+// creates a new server.
 func (o InstanceBlockDeviceOutput) VolumeType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceBlockDevice) *string { return v.VolumeType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceBlockDevice) *string { return v.VolumeType }).(pulumi.StringPtrOutput)
 }
 
-type InstanceBlockDeviceArrayOutput struct { *pulumi.OutputState}
+type InstanceBlockDeviceArrayOutput struct{ *pulumi.OutputState }
 
 func (InstanceBlockDeviceArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]InstanceBlockDevice)(nil)).Elem()
@@ -146,19 +218,28 @@ func (o InstanceBlockDeviceArrayOutput) ToInstanceBlockDeviceArrayOutputWithCont
 }
 
 func (o InstanceBlockDeviceArrayOutput) Index(i pulumi.IntInput) InstanceBlockDeviceOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) InstanceBlockDevice {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceBlockDevice {
 		return vs[0].([]InstanceBlockDevice)[vs[1].(int)]
 	}).(InstanceBlockDeviceOutput)
 }
 
 type InstanceNetwork struct {
+	// Specifies if this network should be used for
+	// provisioning access. Accepts true or false. Defaults to false.
 	AccessNetwork *bool `pulumi:"accessNetwork"`
+	// Specifies a fixed IPv4 address to be used on this
+	// network. Changing this creates a new server.
 	FixedIpV4 *string `pulumi:"fixedIpV4"`
 	FixedIpV6 *string `pulumi:"fixedIpV6"`
-	Mac *string `pulumi:"mac"`
-	// A unique name for the resource.
+	Mac       *string `pulumi:"mac"`
+	// The human-readable
+	// name of the network. Changing this creates a new server.
 	Name *string `pulumi:"name"`
+	// The port UUID of a
+	// network to attach to the server. Changing this creates a new server.
 	Port *string `pulumi:"port"`
+	// The UUID of
+	// the image, volume, or snapshot. Changing this creates a new server.
 	Uuid *string `pulumi:"uuid"`
 }
 
@@ -170,13 +251,22 @@ type InstanceNetworkInput interface {
 }
 
 type InstanceNetworkArgs struct {
+	// Specifies if this network should be used for
+	// provisioning access. Accepts true or false. Defaults to false.
 	AccessNetwork pulumi.BoolPtrInput `pulumi:"accessNetwork"`
+	// Specifies a fixed IPv4 address to be used on this
+	// network. Changing this creates a new server.
 	FixedIpV4 pulumi.StringPtrInput `pulumi:"fixedIpV4"`
 	FixedIpV6 pulumi.StringPtrInput `pulumi:"fixedIpV6"`
-	Mac pulumi.StringPtrInput `pulumi:"mac"`
-	// A unique name for the resource.
+	Mac       pulumi.StringPtrInput `pulumi:"mac"`
+	// The human-readable
+	// name of the network. Changing this creates a new server.
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The port UUID of a
+	// network to attach to the server. Changing this creates a new server.
 	Port pulumi.StringPtrInput `pulumi:"port"`
+	// The UUID of
+	// the image, volume, or snapshot. Changing this creates a new server.
 	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
 }
 
@@ -213,7 +303,7 @@ func (i InstanceNetworkArray) ToInstanceNetworkArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkArrayOutput)
 }
 
-type InstanceNetworkOutput struct { *pulumi.OutputState }
+type InstanceNetworkOutput struct{ *pulumi.OutputState }
 
 func (InstanceNetworkOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*InstanceNetwork)(nil)).Elem()
@@ -227,36 +317,45 @@ func (o InstanceNetworkOutput) ToInstanceNetworkOutputWithContext(ctx context.Co
 	return o
 }
 
+// Specifies if this network should be used for
+// provisioning access. Accepts true or false. Defaults to false.
 func (o InstanceNetworkOutput) AccessNetwork() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v InstanceNetwork) *bool { return v.AccessNetwork }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v InstanceNetwork) *bool { return v.AccessNetwork }).(pulumi.BoolPtrOutput)
 }
 
+// Specifies a fixed IPv4 address to be used on this
+// network. Changing this creates a new server.
 func (o InstanceNetworkOutput) FixedIpV4() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceNetwork) *string { return v.FixedIpV4 }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceNetwork) *string { return v.FixedIpV4 }).(pulumi.StringPtrOutput)
 }
 
 func (o InstanceNetworkOutput) FixedIpV6() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceNetwork) *string { return v.FixedIpV6 }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceNetwork) *string { return v.FixedIpV6 }).(pulumi.StringPtrOutput)
 }
 
 func (o InstanceNetworkOutput) Mac() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceNetwork) *string { return v.Mac }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceNetwork) *string { return v.Mac }).(pulumi.StringPtrOutput)
 }
 
-// A unique name for the resource.
+// The human-readable
+// name of the network. Changing this creates a new server.
 func (o InstanceNetworkOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceNetwork) *string { return v.Name }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceNetwork) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// The port UUID of a
+// network to attach to the server. Changing this creates a new server.
 func (o InstanceNetworkOutput) Port() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceNetwork) *string { return v.Port }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceNetwork) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
 
+// The UUID of
+// the image, volume, or snapshot. Changing this creates a new server.
 func (o InstanceNetworkOutput) Uuid() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceNetwork) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceNetwork) *string { return v.Uuid }).(pulumi.StringPtrOutput)
 }
 
-type InstanceNetworkArrayOutput struct { *pulumi.OutputState}
+type InstanceNetworkArrayOutput struct{ *pulumi.OutputState }
 
 func (InstanceNetworkArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]InstanceNetwork)(nil)).Elem()
@@ -271,13 +370,15 @@ func (o InstanceNetworkArrayOutput) ToInstanceNetworkArrayOutputWithContext(ctx 
 }
 
 func (o InstanceNetworkArrayOutput) Index(i pulumi.IntInput) InstanceNetworkOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) InstanceNetwork {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceNetwork {
 		return vs[0].([]InstanceNetwork)[vs[1].(int)]
 	}).(InstanceNetworkOutput)
 }
 
 type InstancePersonality struct {
+	// The contents of the file. Limited to 255 bytes.
 	Content string `pulumi:"content"`
+	// The absolute path of the destination file.
 	File string `pulumi:"file"`
 }
 
@@ -289,7 +390,9 @@ type InstancePersonalityInput interface {
 }
 
 type InstancePersonalityArgs struct {
+	// The contents of the file. Limited to 255 bytes.
 	Content pulumi.StringInput `pulumi:"content"`
+	// The absolute path of the destination file.
 	File pulumi.StringInput `pulumi:"file"`
 }
 
@@ -326,7 +429,7 @@ func (i InstancePersonalityArray) ToInstancePersonalityArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(InstancePersonalityArrayOutput)
 }
 
-type InstancePersonalityOutput struct { *pulumi.OutputState }
+type InstancePersonalityOutput struct{ *pulumi.OutputState }
 
 func (InstancePersonalityOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*InstancePersonality)(nil)).Elem()
@@ -340,15 +443,17 @@ func (o InstancePersonalityOutput) ToInstancePersonalityOutputWithContext(ctx co
 	return o
 }
 
+// The contents of the file. Limited to 255 bytes.
 func (o InstancePersonalityOutput) Content() pulumi.StringOutput {
-	return o.ApplyT(func (v InstancePersonality) string { return v.Content }).(pulumi.StringOutput)
+	return o.ApplyT(func(v InstancePersonality) string { return v.Content }).(pulumi.StringOutput)
 }
 
+// The absolute path of the destination file.
 func (o InstancePersonalityOutput) File() pulumi.StringOutput {
-	return o.ApplyT(func (v InstancePersonality) string { return v.File }).(pulumi.StringOutput)
+	return o.ApplyT(func(v InstancePersonality) string { return v.File }).(pulumi.StringOutput)
 }
 
-type InstancePersonalityArrayOutput struct { *pulumi.OutputState}
+type InstancePersonalityArrayOutput struct{ *pulumi.OutputState }
 
 func (InstancePersonalityArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]InstancePersonality)(nil)).Elem()
@@ -363,18 +468,35 @@ func (o InstancePersonalityArrayOutput) ToInstancePersonalityArrayOutputWithCont
 }
 
 func (o InstancePersonalityArrayOutput) Index(i pulumi.IntInput) InstancePersonalityOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) InstancePersonality {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstancePersonality {
 		return vs[0].([]InstancePersonality)[vs[1].(int)]
 	}).(InstancePersonalityOutput)
 }
 
 type InstanceSchedulerHint struct {
+	// Arbitrary key/value pairs of additional
+	// properties to pass to the scheduler.
 	AdditionalProperties map[string]interface{} `pulumi:"additionalProperties"`
+	// An IP Address in CIDR form. The instance
+	// will be placed on a compute node that is in the same subnet.
 	BuildNearHostIp *string `pulumi:"buildNearHostIp"`
+	// A list of instance UUIDs. The instance will
+	// be scheduled on a different host than all other instances.
 	DifferentHosts []string `pulumi:"differentHosts"`
+	// A UUID of a Server Group. The instance will be placed
+	// into that group.
 	Group *string `pulumi:"group"`
+	// A conditional query that a compute node must pass in
+	// order to host an instance. The query must use the `JsonFilter` syntax
+	// which is described
+	// [here](https://docs.openstack.org/nova/latest/admin/configuration/schedulers.html#jsonfilter).
+	// At this time, only simple queries are supported. Compound queries using
+	// `and`, `or`, or `not` are not supported. An example of a simple query is:
 	Queries []string `pulumi:"queries"`
+	// A list of instance UUIDs. The instance will be
+	// scheduled on the same host of those specified.
 	SameHosts []string `pulumi:"sameHosts"`
+	// The name of a cell to host the instance.
 	TargetCell *string `pulumi:"targetCell"`
 }
 
@@ -386,12 +508,29 @@ type InstanceSchedulerHintInput interface {
 }
 
 type InstanceSchedulerHintArgs struct {
+	// Arbitrary key/value pairs of additional
+	// properties to pass to the scheduler.
 	AdditionalProperties pulumi.MapInput `pulumi:"additionalProperties"`
+	// An IP Address in CIDR form. The instance
+	// will be placed on a compute node that is in the same subnet.
 	BuildNearHostIp pulumi.StringPtrInput `pulumi:"buildNearHostIp"`
+	// A list of instance UUIDs. The instance will
+	// be scheduled on a different host than all other instances.
 	DifferentHosts pulumi.StringArrayInput `pulumi:"differentHosts"`
+	// A UUID of a Server Group. The instance will be placed
+	// into that group.
 	Group pulumi.StringPtrInput `pulumi:"group"`
+	// A conditional query that a compute node must pass in
+	// order to host an instance. The query must use the `JsonFilter` syntax
+	// which is described
+	// [here](https://docs.openstack.org/nova/latest/admin/configuration/schedulers.html#jsonfilter).
+	// At this time, only simple queries are supported. Compound queries using
+	// `and`, `or`, or `not` are not supported. An example of a simple query is:
 	Queries pulumi.StringArrayInput `pulumi:"queries"`
+	// A list of instance UUIDs. The instance will be
+	// scheduled on the same host of those specified.
 	SameHosts pulumi.StringArrayInput `pulumi:"sameHosts"`
+	// The name of a cell to host the instance.
 	TargetCell pulumi.StringPtrInput `pulumi:"targetCell"`
 }
 
@@ -428,7 +567,7 @@ func (i InstanceSchedulerHintArray) ToInstanceSchedulerHintArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceSchedulerHintArrayOutput)
 }
 
-type InstanceSchedulerHintOutput struct { *pulumi.OutputState }
+type InstanceSchedulerHintOutput struct{ *pulumi.OutputState }
 
 func (InstanceSchedulerHintOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*InstanceSchedulerHint)(nil)).Elem()
@@ -442,35 +581,52 @@ func (o InstanceSchedulerHintOutput) ToInstanceSchedulerHintOutputWithContext(ct
 	return o
 }
 
+// Arbitrary key/value pairs of additional
+// properties to pass to the scheduler.
 func (o InstanceSchedulerHintOutput) AdditionalProperties() pulumi.MapOutput {
-	return o.ApplyT(func (v InstanceSchedulerHint) map[string]interface{} { return v.AdditionalProperties }).(pulumi.MapOutput)
+	return o.ApplyT(func(v InstanceSchedulerHint) map[string]interface{} { return v.AdditionalProperties }).(pulumi.MapOutput)
 }
 
+// An IP Address in CIDR form. The instance
+// will be placed on a compute node that is in the same subnet.
 func (o InstanceSchedulerHintOutput) BuildNearHostIp() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceSchedulerHint) *string { return v.BuildNearHostIp }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceSchedulerHint) *string { return v.BuildNearHostIp }).(pulumi.StringPtrOutput)
 }
 
+// A list of instance UUIDs. The instance will
+// be scheduled on a different host than all other instances.
 func (o InstanceSchedulerHintOutput) DifferentHosts() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v InstanceSchedulerHint) []string { return v.DifferentHosts }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v InstanceSchedulerHint) []string { return v.DifferentHosts }).(pulumi.StringArrayOutput)
 }
 
+// A UUID of a Server Group. The instance will be placed
+// into that group.
 func (o InstanceSchedulerHintOutput) Group() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceSchedulerHint) *string { return v.Group }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceSchedulerHint) *string { return v.Group }).(pulumi.StringPtrOutput)
 }
 
+// A conditional query that a compute node must pass in
+// order to host an instance. The query must use the `JsonFilter` syntax
+// which is described
+// [here](https://docs.openstack.org/nova/latest/admin/configuration/schedulers.html#jsonfilter).
+// At this time, only simple queries are supported. Compound queries using
+// `and`, `or`, or `not` are not supported. An example of a simple query is:
 func (o InstanceSchedulerHintOutput) Queries() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v InstanceSchedulerHint) []string { return v.Queries }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v InstanceSchedulerHint) []string { return v.Queries }).(pulumi.StringArrayOutput)
 }
 
+// A list of instance UUIDs. The instance will be
+// scheduled on the same host of those specified.
 func (o InstanceSchedulerHintOutput) SameHosts() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v InstanceSchedulerHint) []string { return v.SameHosts }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v InstanceSchedulerHint) []string { return v.SameHosts }).(pulumi.StringArrayOutput)
 }
 
+// The name of a cell to host the instance.
 func (o InstanceSchedulerHintOutput) TargetCell() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceSchedulerHint) *string { return v.TargetCell }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceSchedulerHint) *string { return v.TargetCell }).(pulumi.StringPtrOutput)
 }
 
-type InstanceSchedulerHintArrayOutput struct { *pulumi.OutputState}
+type InstanceSchedulerHintArrayOutput struct{ *pulumi.OutputState }
 
 func (InstanceSchedulerHintArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]InstanceSchedulerHint)(nil)).Elem()
@@ -485,12 +641,16 @@ func (o InstanceSchedulerHintArrayOutput) ToInstanceSchedulerHintArrayOutputWith
 }
 
 func (o InstanceSchedulerHintArrayOutput) Index(i pulumi.IntInput) InstanceSchedulerHintOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) InstanceSchedulerHint {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceSchedulerHint {
 		return vs[0].([]InstanceSchedulerHint)[vs[1].(int)]
 	}).(InstanceSchedulerHintOutput)
 }
 
 type InstanceVendorOptions struct {
+	// Boolean to control whether
+	// to ignore manual confirmation of the instance resizing. This can be helpful
+	// to work with some OpenStack clouds which automatically confirm resizing of
+	// instances after some timeout.
 	IgnoreResizeConfirmation *bool `pulumi:"ignoreResizeConfirmation"`
 }
 
@@ -502,6 +662,10 @@ type InstanceVendorOptionsInput interface {
 }
 
 type InstanceVendorOptionsArgs struct {
+	// Boolean to control whether
+	// to ignore manual confirmation of the instance resizing. This can be helpful
+	// to work with some OpenStack clouds which automatically confirm resizing of
+	// instances after some timeout.
 	IgnoreResizeConfirmation pulumi.BoolPtrInput `pulumi:"ignoreResizeConfirmation"`
 }
 
@@ -534,7 +698,8 @@ type InstanceVendorOptionsPtrInput interface {
 
 type instanceVendorOptionsPtrType InstanceVendorOptionsArgs
 
-func InstanceVendorOptionsPtr(v *InstanceVendorOptionsArgs) InstanceVendorOptionsPtrInput {	return (*instanceVendorOptionsPtrType)(v)
+func InstanceVendorOptionsPtr(v *InstanceVendorOptionsArgs) InstanceVendorOptionsPtrInput {
+	return (*instanceVendorOptionsPtrType)(v)
 }
 
 func (*instanceVendorOptionsPtrType) ElementType() reflect.Type {
@@ -549,7 +714,7 @@ func (i *instanceVendorOptionsPtrType) ToInstanceVendorOptionsPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceVendorOptionsPtrOutput)
 }
 
-type InstanceVendorOptionsOutput struct { *pulumi.OutputState }
+type InstanceVendorOptionsOutput struct{ *pulumi.OutputState }
 
 func (InstanceVendorOptionsOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*InstanceVendorOptions)(nil)).Elem()
@@ -572,11 +737,16 @@ func (o InstanceVendorOptionsOutput) ToInstanceVendorOptionsPtrOutputWithContext
 		return &v
 	}).(InstanceVendorOptionsPtrOutput)
 }
+
+// Boolean to control whether
+// to ignore manual confirmation of the instance resizing. This can be helpful
+// to work with some OpenStack clouds which automatically confirm resizing of
+// instances after some timeout.
 func (o InstanceVendorOptionsOutput) IgnoreResizeConfirmation() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v InstanceVendorOptions) *bool { return v.IgnoreResizeConfirmation }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v InstanceVendorOptions) *bool { return v.IgnoreResizeConfirmation }).(pulumi.BoolPtrOutput)
 }
 
-type InstanceVendorOptionsPtrOutput struct { *pulumi.OutputState}
+type InstanceVendorOptionsPtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceVendorOptionsPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**InstanceVendorOptions)(nil)).Elem()
@@ -591,20 +761,40 @@ func (o InstanceVendorOptionsPtrOutput) ToInstanceVendorOptionsPtrOutputWithCont
 }
 
 func (o InstanceVendorOptionsPtrOutput) Elem() InstanceVendorOptionsOutput {
-	return o.ApplyT(func (v *InstanceVendorOptions) InstanceVendorOptions { return *v }).(InstanceVendorOptionsOutput)
+	return o.ApplyT(func(v *InstanceVendorOptions) InstanceVendorOptions { return *v }).(InstanceVendorOptionsOutput)
 }
 
+// Boolean to control whether
+// to ignore manual confirmation of the instance resizing. This can be helpful
+// to work with some OpenStack clouds which automatically confirm resizing of
+// instances after some timeout.
 func (o InstanceVendorOptionsPtrOutput) IgnoreResizeConfirmation() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v InstanceVendorOptions) *bool { return v.IgnoreResizeConfirmation }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v InstanceVendorOptions) *bool { return v.IgnoreResizeConfirmation }).(pulumi.BoolPtrOutput)
 }
 
 type SecGroupRule struct {
+	// Required if `fromGroupId` or `self` is empty. The IP range
+	// that will be the source of network traffic to the security group. Use 0.0.0.0/0
+	// to allow all IP addresses. Changing this creates a new security group rule. Cannot
+	// be combined with `fromGroupId` or `self`.
 	Cidr *string `pulumi:"cidr"`
+	// Required if `cidr` or `self` is empty. The ID of a
+	// group from which to forward traffic to the parent group. Changing this creates a
+	// new security group rule. Cannot be combined with `cidr` or `self`.
 	FromGroupId *string `pulumi:"fromGroupId"`
-	FromPort int `pulumi:"fromPort"`
-	Id *string `pulumi:"id"`
+	// An integer representing the lower bound of the port
+	// range to open. Changing this creates a new security group rule.
+	FromPort int     `pulumi:"fromPort"`
+	Id       *string `pulumi:"id"`
+	// The protocol type that will be allowed. Changing
+	// this creates a new security group rule.
 	IpProtocol string `pulumi:"ipProtocol"`
+	// Required if `cidr` and `fromGroupId` is empty. If true,
+	// the security group itself will be added as a source to this ingress rule. Cannot
+	// be combined with `cidr` or `fromGroupId`.
 	Self *bool `pulumi:"self"`
+	// An integer representing the upper bound of the port
+	// range to open. Changing this creates a new security group rule.
 	ToPort int `pulumi:"toPort"`
 }
 
@@ -616,12 +806,28 @@ type SecGroupRuleInput interface {
 }
 
 type SecGroupRuleArgs struct {
+	// Required if `fromGroupId` or `self` is empty. The IP range
+	// that will be the source of network traffic to the security group. Use 0.0.0.0/0
+	// to allow all IP addresses. Changing this creates a new security group rule. Cannot
+	// be combined with `fromGroupId` or `self`.
 	Cidr pulumi.StringPtrInput `pulumi:"cidr"`
+	// Required if `cidr` or `self` is empty. The ID of a
+	// group from which to forward traffic to the parent group. Changing this creates a
+	// new security group rule. Cannot be combined with `cidr` or `self`.
 	FromGroupId pulumi.StringPtrInput `pulumi:"fromGroupId"`
-	FromPort pulumi.IntInput `pulumi:"fromPort"`
-	Id pulumi.StringPtrInput `pulumi:"id"`
+	// An integer representing the lower bound of the port
+	// range to open. Changing this creates a new security group rule.
+	FromPort pulumi.IntInput       `pulumi:"fromPort"`
+	Id       pulumi.StringPtrInput `pulumi:"id"`
+	// The protocol type that will be allowed. Changing
+	// this creates a new security group rule.
 	IpProtocol pulumi.StringInput `pulumi:"ipProtocol"`
+	// Required if `cidr` and `fromGroupId` is empty. If true,
+	// the security group itself will be added as a source to this ingress rule. Cannot
+	// be combined with `cidr` or `fromGroupId`.
 	Self pulumi.BoolPtrInput `pulumi:"self"`
+	// An integer representing the upper bound of the port
+	// range to open. Changing this creates a new security group rule.
 	ToPort pulumi.IntInput `pulumi:"toPort"`
 }
 
@@ -658,7 +864,7 @@ func (i SecGroupRuleArray) ToSecGroupRuleArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(SecGroupRuleArrayOutput)
 }
 
-type SecGroupRuleOutput struct { *pulumi.OutputState }
+type SecGroupRuleOutput struct{ *pulumi.OutputState }
 
 func (SecGroupRuleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*SecGroupRule)(nil)).Elem()
@@ -672,35 +878,51 @@ func (o SecGroupRuleOutput) ToSecGroupRuleOutputWithContext(ctx context.Context)
 	return o
 }
 
+// Required if `fromGroupId` or `self` is empty. The IP range
+// that will be the source of network traffic to the security group. Use 0.0.0.0/0
+// to allow all IP addresses. Changing this creates a new security group rule. Cannot
+// be combined with `fromGroupId` or `self`.
 func (o SecGroupRuleOutput) Cidr() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v SecGroupRule) *string { return v.Cidr }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v SecGroupRule) *string { return v.Cidr }).(pulumi.StringPtrOutput)
 }
 
+// Required if `cidr` or `self` is empty. The ID of a
+// group from which to forward traffic to the parent group. Changing this creates a
+// new security group rule. Cannot be combined with `cidr` or `self`.
 func (o SecGroupRuleOutput) FromGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v SecGroupRule) *string { return v.FromGroupId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v SecGroupRule) *string { return v.FromGroupId }).(pulumi.StringPtrOutput)
 }
 
+// An integer representing the lower bound of the port
+// range to open. Changing this creates a new security group rule.
 func (o SecGroupRuleOutput) FromPort() pulumi.IntOutput {
-	return o.ApplyT(func (v SecGroupRule) int { return v.FromPort }).(pulumi.IntOutput)
+	return o.ApplyT(func(v SecGroupRule) int { return v.FromPort }).(pulumi.IntOutput)
 }
 
 func (o SecGroupRuleOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v SecGroupRule) *string { return v.Id }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v SecGroupRule) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// The protocol type that will be allowed. Changing
+// this creates a new security group rule.
 func (o SecGroupRuleOutput) IpProtocol() pulumi.StringOutput {
-	return o.ApplyT(func (v SecGroupRule) string { return v.IpProtocol }).(pulumi.StringOutput)
+	return o.ApplyT(func(v SecGroupRule) string { return v.IpProtocol }).(pulumi.StringOutput)
 }
 
+// Required if `cidr` and `fromGroupId` is empty. If true,
+// the security group itself will be added as a source to this ingress rule. Cannot
+// be combined with `cidr` or `fromGroupId`.
 func (o SecGroupRuleOutput) Self() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v SecGroupRule) *bool { return v.Self }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v SecGroupRule) *bool { return v.Self }).(pulumi.BoolPtrOutput)
 }
 
+// An integer representing the upper bound of the port
+// range to open. Changing this creates a new security group rule.
 func (o SecGroupRuleOutput) ToPort() pulumi.IntOutput {
-	return o.ApplyT(func (v SecGroupRule) int { return v.ToPort }).(pulumi.IntOutput)
+	return o.ApplyT(func(v SecGroupRule) int { return v.ToPort }).(pulumi.IntOutput)
 }
 
-type SecGroupRuleArrayOutput struct { *pulumi.OutputState}
+type SecGroupRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (SecGroupRuleArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]SecGroupRule)(nil)).Elem()
@@ -715,7 +937,7 @@ func (o SecGroupRuleArrayOutput) ToSecGroupRuleArrayOutputWithContext(ctx contex
 }
 
 func (o SecGroupRuleArrayOutput) Index(i pulumi.IntInput) SecGroupRuleOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) SecGroupRule {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecGroupRule {
 		return vs[0].([]SecGroupRule)[vs[1].(int)]
 	}).(SecGroupRuleOutput)
 }

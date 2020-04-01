@@ -222,4 +222,3 @@ type QosPolicyArgs struct {
 func (QosPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*qosPolicyArgs)(nil)).Elem()
 }
-

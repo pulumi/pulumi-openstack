@@ -151,4 +151,3 @@ type ImageAccessArgs struct {
 func (ImageAccessArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*imageAccessArgs)(nil)).Elem()
 }
-

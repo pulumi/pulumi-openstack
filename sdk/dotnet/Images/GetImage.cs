@@ -16,7 +16,18 @@ namespace Pulumi.OpenStack.Images
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/images_image_v2.html.markdown.
         /// </summary>
+        [Obsolete("Use GetImage.InvokeAsync() instead")]
         public static Task<GetImageResult> GetImage(GetImageArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetImageResult>("openstack:images/getImage:getImage", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetImage
+    {
+        /// <summary>
+        /// Use this data source to get the ID of an available OpenStack image.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/images_image_v2.html.markdown.
+        /// </summary>
+        public static Task<GetImageResult> InvokeAsync(GetImageArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetImageResult>("openstack:images/getImage:getImage", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

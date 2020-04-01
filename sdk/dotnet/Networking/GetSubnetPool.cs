@@ -16,7 +16,18 @@ namespace Pulumi.OpenStack.Networking
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_subnetpool_v2.html.markdown.
         /// </summary>
+        [Obsolete("Use GetSubnetPool.InvokeAsync() instead")]
         public static Task<GetSubnetPoolResult> GetSubnetPool(GetSubnetPoolArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSubnetPoolResult>("openstack:networking/getSubnetPool:getSubnetPool", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetSubnetPool
+    {
+        /// <summary>
+        /// Use this data source to get the ID of an available OpenStack subnetpool.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_subnetpool_v2.html.markdown.
+        /// </summary>
+        public static Task<GetSubnetPoolResult> InvokeAsync(GetSubnetPoolArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSubnetPoolResult>("openstack:networking/getSubnetPool:getSubnetPool", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

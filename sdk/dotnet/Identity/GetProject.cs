@@ -16,7 +16,18 @@ namespace Pulumi.OpenStack.Identity
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_project_v3.html.markdown.
         /// </summary>
+        [Obsolete("Use GetProject.InvokeAsync() instead")]
         public static Task<GetProjectResult> GetProject(GetProjectArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("openstack:identity/getProject:getProject", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetProject
+    {
+        /// <summary>
+        /// Use this data source to get the ID of an OpenStack project.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_project_v3.html.markdown.
+        /// </summary>
+        public static Task<GetProjectResult> InvokeAsync(GetProjectArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("openstack:identity/getProject:getProject", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 
@@ -54,6 +65,9 @@ namespace Pulumi.OpenStack.Identity
         [Input("parentId")]
         public string? ParentId { get; set; }
 
+        /// <summary>
+        /// The region the project is located in.
+        /// </summary>
         [Input("region")]
         public string? Region { get; set; }
 

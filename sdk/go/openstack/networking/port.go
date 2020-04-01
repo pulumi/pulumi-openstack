@@ -66,11 +66,9 @@ type Port struct {
 	// An array of desired IPs for
 	// this port. The structure is described below.
 	FixedIps PortFixedIpArrayOutput `pulumi:"fixedIps"`
-	// Specify a specific MAC address for the port. Changing
-	// this creates a new port.
+	// The additional MAC address.
 	MacAddress pulumi.StringOutput `pulumi:"macAddress"`
-	// A unique name for the port. Changing this
-	// updates the `name` of an existing port.
+	// Name of the DHCP option.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the network to attach the port to. Changing
 	// this creates a new port.
@@ -185,11 +183,9 @@ type portState struct {
 	// An array of desired IPs for
 	// this port. The structure is described below.
 	FixedIps []PortFixedIp `pulumi:"fixedIps"`
-	// Specify a specific MAC address for the port. Changing
-	// this creates a new port.
+	// The additional MAC address.
 	MacAddress *string `pulumi:"macAddress"`
-	// A unique name for the port. Changing this
-	// updates the `name` of an existing port.
+	// Name of the DHCP option.
 	Name *string `pulumi:"name"`
 	// The ID of the network to attach the port to. Changing
 	// this creates a new port.
@@ -274,11 +270,9 @@ type PortState struct {
 	// An array of desired IPs for
 	// this port. The structure is described below.
 	FixedIps PortFixedIpArrayInput
-	// Specify a specific MAC address for the port. Changing
-	// this creates a new port.
+	// The additional MAC address.
 	MacAddress pulumi.StringPtrInput
-	// A unique name for the port. Changing this
-	// updates the `name` of an existing port.
+	// Name of the DHCP option.
 	Name pulumi.StringPtrInput
 	// The ID of the network to attach the port to. Changing
 	// this creates a new port.
@@ -356,11 +350,9 @@ type portArgs struct {
 	// An array of desired IPs for
 	// this port. The structure is described below.
 	FixedIps []PortFixedIp `pulumi:"fixedIps"`
-	// Specify a specific MAC address for the port. Changing
-	// this creates a new port.
+	// The additional MAC address.
 	MacAddress *string `pulumi:"macAddress"`
-	// A unique name for the port. Changing this
-	// updates the `name` of an existing port.
+	// Name of the DHCP option.
 	Name *string `pulumi:"name"`
 	// The ID of the network to attach the port to. Changing
 	// this creates a new port.
@@ -435,11 +427,9 @@ type PortArgs struct {
 	// An array of desired IPs for
 	// this port. The structure is described below.
 	FixedIps PortFixedIpArrayInput
-	// Specify a specific MAC address for the port. Changing
-	// this creates a new port.
+	// The additional MAC address.
 	MacAddress pulumi.StringPtrInput
-	// A unique name for the port. Changing this
-	// updates the `name` of an existing port.
+	// Name of the DHCP option.
 	Name pulumi.StringPtrInput
 	// The ID of the network to attach the port to. Changing
 	// this creates a new port.
@@ -485,4 +475,3 @@ type PortArgs struct {
 func (PortArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*portArgs)(nil)).Elem()
 }
-

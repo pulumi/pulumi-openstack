@@ -17,10 +17,12 @@ class SecretV1(pulumi.CustomResource):
     project wide.
 
       * `read` (`dict`)
-        * `created_at` (`str`) - The date the secret was created.
-        * `projectAccess` (`bool`)
-        * `updated_at` (`str`) - The date the secret was last updated.
-        * `users` (`list`)
+        * `created_at` (`str`) - The date the secret ACL was created.
+        * `projectAccess` (`bool`) - Whether the secret is accessible project wide.
+          Defaults to `true`.
+        * `updated_at` (`str`) - The date the secret ACL was last updated.
+        * `users` (`list`) - The list of user IDs, which are allowed to access the
+          secret, when `project_access` is set to `false`.
     """
     algorithm: pulumi.Output[str]
     """
@@ -41,7 +43,7 @@ class SecretV1(pulumi.CustomResource):
     """
     created_at: pulumi.Output[str]
     """
-    The date the secret was created.
+    The date the secret ACL was created.
     """
     creator_id: pulumi.Output[str]
     """
@@ -97,7 +99,7 @@ class SecretV1(pulumi.CustomResource):
     """
     updated_at: pulumi.Output[str]
     """
-    The date the secret was last updated.
+    The date the secret ACL was last updated.
     """
     def __init__(__self__, resource_name, opts=None, acl=None, algorithm=None, bit_length=None, expiration=None, metadata=None, mode=None, name=None, payload=None, payload_content_encoding=None, payload_content_type=None, region=None, secret_type=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -126,10 +128,12 @@ class SecretV1(pulumi.CustomResource):
         The **acl** object supports the following:
 
           * `read` (`pulumi.Input[dict]`)
-            * `created_at` (`pulumi.Input[str]`) - The date the secret was created.
-            * `projectAccess` (`pulumi.Input[bool]`)
-            * `updated_at` (`pulumi.Input[str]`) - The date the secret was last updated.
-            * `users` (`pulumi.Input[list]`)
+            * `created_at` (`pulumi.Input[str]`) - The date the secret ACL was created.
+            * `projectAccess` (`pulumi.Input[bool]`) - Whether the secret is accessible project wide.
+              Defaults to `true`.
+            * `updated_at` (`pulumi.Input[str]`) - The date the secret ACL was last updated.
+            * `users` (`pulumi.Input[list]`) - The list of user IDs, which are allowed to access the
+              secret, when `project_access` is set to `false`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -190,7 +194,7 @@ class SecretV1(pulumi.CustomResource):
                explicitly and implicitly added.
         :param pulumi.Input[float] bit_length: Metadata provided by a user or system for informational purposes.
         :param pulumi.Input[dict] content_types: The map of the content types, assigned on the secret.
-        :param pulumi.Input[str] created_at: The date the secret was created.
+        :param pulumi.Input[str] created_at: The date the secret ACL was created.
         :param pulumi.Input[str] creator_id: The creator of the secret.
         :param pulumi.Input[str] expiration: The expiration time of the secret in the RFC3339 timestamp format (e.g. `2019-03-09T12:58:49Z`). If omitted, a secret will never expire. Changing this creates a new secret.
         :param pulumi.Input[dict] metadata: Additional Metadata for the secret.
@@ -207,15 +211,17 @@ class SecretV1(pulumi.CustomResource):
         :param pulumi.Input[str] secret_ref: The secret reference / where to find the secret.
         :param pulumi.Input[str] secret_type: Used to indicate the type of secret being stored. For more information see [Secret types](https://docs.openstack.org/barbican/latest/api/reference/secret_types.html).
         :param pulumi.Input[str] status: The status of the secret.
-        :param pulumi.Input[str] updated_at: The date the secret was last updated.
+        :param pulumi.Input[str] updated_at: The date the secret ACL was last updated.
 
         The **acl** object supports the following:
 
           * `read` (`pulumi.Input[dict]`)
-            * `created_at` (`pulumi.Input[str]`) - The date the secret was created.
-            * `projectAccess` (`pulumi.Input[bool]`)
-            * `updated_at` (`pulumi.Input[str]`) - The date the secret was last updated.
-            * `users` (`pulumi.Input[list]`)
+            * `created_at` (`pulumi.Input[str]`) - The date the secret ACL was created.
+            * `projectAccess` (`pulumi.Input[bool]`) - Whether the secret is accessible project wide.
+              Defaults to `true`.
+            * `updated_at` (`pulumi.Input[str]`) - The date the secret ACL was last updated.
+            * `users` (`pulumi.Input[list]`) - The list of user IDs, which are allowed to access the
+              secret, when `project_access` is set to `false`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

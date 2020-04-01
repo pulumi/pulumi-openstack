@@ -55,22 +55,21 @@ type LookupImageArgs struct {
 	Visibility *string `pulumi:"visibility"`
 }
 
-
 // A collection of values returned by getImage.
 type LookupImageResult struct {
 	// The checksum of the data associated with the image.
-	Checksum string `pulumi:"checksum"`
+	Checksum        string `pulumi:"checksum"`
 	ContainerFormat string `pulumi:"containerFormat"`
 	// The date the image was created.
 	// * `containerFormat`: The format of the image's container.
 	// * `diskFormat`: The format of the image's disk.
-	CreatedAt string `pulumi:"createdAt"`
+	CreatedAt  string `pulumi:"createdAt"`
 	DiskFormat string `pulumi:"diskFormat"`
 	// the trailing path after the glance endpoint that represent the
 	// location of the image or the path to retrieve it.
 	File string `pulumi:"file"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id           string  `pulumi:"id"`
 	MemberStatus *string `pulumi:"memberStatus"`
 	// The metadata associated with the image.
 	// Image metadata allow for meaningfully define the image properties
@@ -79,29 +78,28 @@ type LookupImageResult struct {
 	// The minimum amount of disk space required to use the image.
 	MinDiskGb int `pulumi:"minDiskGb"`
 	// The minimum amount of ram required to use the image.
-	MinRamMb int `pulumi:"minRamMb"`
-	MostRecent *bool `pulumi:"mostRecent"`
-	Name *string `pulumi:"name"`
-	Owner *string `pulumi:"owner"`
+	MinRamMb   int     `pulumi:"minRamMb"`
+	MostRecent *bool   `pulumi:"mostRecent"`
+	Name       *string `pulumi:"name"`
+	Owner      *string `pulumi:"owner"`
 	// Freeform information about the image.
 	Properties map[string]interface{} `pulumi:"properties"`
 	// Whether or not the image is protected.
-	Protected bool `pulumi:"protected"`
-	Region string `pulumi:"region"`
+	Protected bool   `pulumi:"protected"`
+	Region    string `pulumi:"region"`
 	// The path to the JSON-schema that represent
 	// the image or image
 	Schema string `pulumi:"schema"`
 	// The size of the image (in bytes).
-	SizeBytes int `pulumi:"sizeBytes"`
-	SizeMax *int `pulumi:"sizeMax"`
-	SizeMin *int `pulumi:"sizeMin"`
+	SizeBytes     int     `pulumi:"sizeBytes"`
+	SizeMax       *int    `pulumi:"sizeMax"`
+	SizeMin       *int    `pulumi:"sizeMin"`
 	SortDirection *string `pulumi:"sortDirection"`
-	SortKey *string `pulumi:"sortKey"`
-	Tag *string `pulumi:"tag"`
+	SortKey       *string `pulumi:"sortKey"`
+	Tag           *string `pulumi:"tag"`
 	// The tags list of the image.
 	Tags []string `pulumi:"tags"`
 	// The date the image was last updated.
-	UpdatedAt string `pulumi:"updatedAt"`
+	UpdatedAt  string  `pulumi:"updatedAt"`
 	Visibility *string `pulumi:"visibility"`
 }
-

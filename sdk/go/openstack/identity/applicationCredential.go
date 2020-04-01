@@ -251,4 +251,3 @@ type ApplicationCredentialArgs struct {
 func (ApplicationCredentialArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*applicationCredentialArgs)(nil)).Elem()
 }
-

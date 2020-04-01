@@ -18,7 +18,20 @@ namespace Pulumi.OpenStack.Identity
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_endpoint_v3.html.markdown.
         /// </summary>
+        [Obsolete("Use GetEndpoint.InvokeAsync() instead")]
         public static Task<GetEndpointResult> GetEndpoint(GetEndpointArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetEndpointResult>("openstack:identity/getEndpoint:getEndpoint", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetEndpoint
+    {
+        /// <summary>
+        /// Use this data source to get the ID of an OpenStack endpoint.
+        /// 
+        /// &gt; **Note:** This usually requires admin privileges.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_endpoint_v3.html.markdown.
+        /// </summary>
+        public static Task<GetEndpointResult> InvokeAsync(GetEndpointArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetEndpointResult>("openstack:identity/getEndpoint:getEndpoint", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

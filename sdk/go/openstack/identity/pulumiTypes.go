@@ -12,9 +12,23 @@ import (
 )
 
 type ApplicationCredentialAccessRule struct {
+	// The ID of the existing access rule. The access rule ID of
+	// another application credential can be provided.
 	Id *string `pulumi:"id"`
+	// The request method that the application credential is
+	// permitted to use for a given API endpoint. Allowed values: `POST`, `GET`,
+	// `HEAD`, `PATCH`, `PUT` and `DELETE`.
 	Method string `pulumi:"method"`
+	// The API path that the application credential is permitted
+	// to access. May use named wildcards such as **{tag}** or the unnamed wildcard
+	// **\*** to match against any string in the path up to a **/**, or the recursive
+	// wildcard **\*\*** to include **/** in the matched path.
 	Path string `pulumi:"path"`
+	// The service type identifier for the service that the
+	// application credential is granted to access. Must be a service type that is
+	// listed in the service catalog and not a code name for a service. E.g.
+	// **identity**, **compute**, **volumev3**, **image**, **network**,
+	// **object-store**, **sharev2**, **dns**, **key-manager**, **monitoring**, etc.
 	Service string `pulumi:"service"`
 }
 
@@ -26,9 +40,23 @@ type ApplicationCredentialAccessRuleInput interface {
 }
 
 type ApplicationCredentialAccessRuleArgs struct {
+	// The ID of the existing access rule. The access rule ID of
+	// another application credential can be provided.
 	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The request method that the application credential is
+	// permitted to use for a given API endpoint. Allowed values: `POST`, `GET`,
+	// `HEAD`, `PATCH`, `PUT` and `DELETE`.
 	Method pulumi.StringInput `pulumi:"method"`
+	// The API path that the application credential is permitted
+	// to access. May use named wildcards such as **{tag}** or the unnamed wildcard
+	// **\*** to match against any string in the path up to a **/**, or the recursive
+	// wildcard **\*\*** to include **/** in the matched path.
 	Path pulumi.StringInput `pulumi:"path"`
+	// The service type identifier for the service that the
+	// application credential is granted to access. Must be a service type that is
+	// listed in the service catalog and not a code name for a service. E.g.
+	// **identity**, **compute**, **volumev3**, **image**, **network**,
+	// **object-store**, **sharev2**, **dns**, **key-manager**, **monitoring**, etc.
 	Service pulumi.StringInput `pulumi:"service"`
 }
 
@@ -65,7 +93,7 @@ func (i ApplicationCredentialAccessRuleArray) ToApplicationCredentialAccessRuleA
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationCredentialAccessRuleArrayOutput)
 }
 
-type ApplicationCredentialAccessRuleOutput struct { *pulumi.OutputState }
+type ApplicationCredentialAccessRuleOutput struct{ *pulumi.OutputState }
 
 func (ApplicationCredentialAccessRuleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ApplicationCredentialAccessRule)(nil)).Elem()
@@ -79,23 +107,37 @@ func (o ApplicationCredentialAccessRuleOutput) ToApplicationCredentialAccessRule
 	return o
 }
 
+// The ID of the existing access rule. The access rule ID of
+// another application credential can be provided.
 func (o ApplicationCredentialAccessRuleOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ApplicationCredentialAccessRule) *string { return v.Id }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ApplicationCredentialAccessRule) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// The request method that the application credential is
+// permitted to use for a given API endpoint. Allowed values: `POST`, `GET`,
+// `HEAD`, `PATCH`, `PUT` and `DELETE`.
 func (o ApplicationCredentialAccessRuleOutput) Method() pulumi.StringOutput {
-	return o.ApplyT(func (v ApplicationCredentialAccessRule) string { return v.Method }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ApplicationCredentialAccessRule) string { return v.Method }).(pulumi.StringOutput)
 }
 
+// The API path that the application credential is permitted
+// to access. May use named wildcards such as **{tag}** or the unnamed wildcard
+// **\*** to match against any string in the path up to a **/**, or the recursive
+// wildcard **\*\*** to include **/** in the matched path.
 func (o ApplicationCredentialAccessRuleOutput) Path() pulumi.StringOutput {
-	return o.ApplyT(func (v ApplicationCredentialAccessRule) string { return v.Path }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ApplicationCredentialAccessRule) string { return v.Path }).(pulumi.StringOutput)
 }
 
+// The service type identifier for the service that the
+// application credential is granted to access. Must be a service type that is
+// listed in the service catalog and not a code name for a service. E.g.
+// **identity**, **compute**, **volumev3**, **image**, **network**,
+// **object-store**, **sharev2**, **dns**, **key-manager**, **monitoring**, etc.
 func (o ApplicationCredentialAccessRuleOutput) Service() pulumi.StringOutput {
-	return o.ApplyT(func (v ApplicationCredentialAccessRule) string { return v.Service }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ApplicationCredentialAccessRule) string { return v.Service }).(pulumi.StringOutput)
 }
 
-type ApplicationCredentialAccessRuleArrayOutput struct { *pulumi.OutputState}
+type ApplicationCredentialAccessRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (ApplicationCredentialAccessRuleArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ApplicationCredentialAccessRule)(nil)).Elem()
@@ -110,12 +152,14 @@ func (o ApplicationCredentialAccessRuleArrayOutput) ToApplicationCredentialAcces
 }
 
 func (o ApplicationCredentialAccessRuleArrayOutput) Index(i pulumi.IntInput) ApplicationCredentialAccessRuleOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ApplicationCredentialAccessRule {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationCredentialAccessRule {
 		return vs[0].([]ApplicationCredentialAccessRule)[vs[1].(int)]
 	}).(ApplicationCredentialAccessRuleOutput)
 }
 
 type UserMultiFactorAuthRule struct {
+	// A list of authentication plugins that the user must
+	// authenticate with.
 	Rules []string `pulumi:"rules"`
 }
 
@@ -127,6 +171,8 @@ type UserMultiFactorAuthRuleInput interface {
 }
 
 type UserMultiFactorAuthRuleArgs struct {
+	// A list of authentication plugins that the user must
+	// authenticate with.
 	Rules pulumi.StringArrayInput `pulumi:"rules"`
 }
 
@@ -163,7 +209,7 @@ func (i UserMultiFactorAuthRuleArray) ToUserMultiFactorAuthRuleArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(UserMultiFactorAuthRuleArrayOutput)
 }
 
-type UserMultiFactorAuthRuleOutput struct { *pulumi.OutputState }
+type UserMultiFactorAuthRuleOutput struct{ *pulumi.OutputState }
 
 func (UserMultiFactorAuthRuleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*UserMultiFactorAuthRule)(nil)).Elem()
@@ -177,11 +223,13 @@ func (o UserMultiFactorAuthRuleOutput) ToUserMultiFactorAuthRuleOutputWithContex
 	return o
 }
 
+// A list of authentication plugins that the user must
+// authenticate with.
 func (o UserMultiFactorAuthRuleOutput) Rules() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v UserMultiFactorAuthRule) []string { return v.Rules }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v UserMultiFactorAuthRule) []string { return v.Rules }).(pulumi.StringArrayOutput)
 }
 
-type UserMultiFactorAuthRuleArrayOutput struct { *pulumi.OutputState}
+type UserMultiFactorAuthRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (UserMultiFactorAuthRuleArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]UserMultiFactorAuthRule)(nil)).Elem()
@@ -196,7 +244,7 @@ func (o UserMultiFactorAuthRuleArrayOutput) ToUserMultiFactorAuthRuleArrayOutput
 }
 
 func (o UserMultiFactorAuthRuleArrayOutput) Index(i pulumi.IntInput) UserMultiFactorAuthRuleOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) UserMultiFactorAuthRule {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UserMultiFactorAuthRule {
 		return vs[0].([]UserMultiFactorAuthRule)[vs[1].(int)]
 	}).(UserMultiFactorAuthRuleOutput)
 }
@@ -255,7 +303,7 @@ func (i GetAuthScopeRoleArray) ToGetAuthScopeRoleArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetAuthScopeRoleArrayOutput)
 }
 
-type GetAuthScopeRoleOutput struct { *pulumi.OutputState }
+type GetAuthScopeRoleOutput struct{ *pulumi.OutputState }
 
 func (GetAuthScopeRoleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetAuthScopeRole)(nil)).Elem()
@@ -271,15 +319,15 @@ func (o GetAuthScopeRoleOutput) ToGetAuthScopeRoleOutputWithContext(ctx context.
 
 // The ID of the role.
 func (o GetAuthScopeRoleOutput) RoleId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAuthScopeRole) string { return v.RoleId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetAuthScopeRole) string { return v.RoleId }).(pulumi.StringOutput)
 }
 
 // The name of the role.
 func (o GetAuthScopeRoleOutput) RoleName() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAuthScopeRole) string { return v.RoleName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetAuthScopeRole) string { return v.RoleName }).(pulumi.StringOutput)
 }
 
-type GetAuthScopeRoleArrayOutput struct { *pulumi.OutputState}
+type GetAuthScopeRoleArrayOutput struct{ *pulumi.OutputState }
 
 func (GetAuthScopeRoleArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetAuthScopeRole)(nil)).Elem()
@@ -294,7 +342,7 @@ func (o GetAuthScopeRoleArrayOutput) ToGetAuthScopeRoleArrayOutputWithContext(ct
 }
 
 func (o GetAuthScopeRoleArrayOutput) Index(i pulumi.IntInput) GetAuthScopeRoleOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetAuthScopeRole {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAuthScopeRole {
 		return vs[0].([]GetAuthScopeRole)[vs[1].(int)]
 	}).(GetAuthScopeRoleOutput)
 }

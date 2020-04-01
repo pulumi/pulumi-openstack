@@ -55,7 +55,13 @@ export function getDnsZone(args?: GetDnsZoneArgs, opts?: pulumi.InvokeOptions): 
  * A collection of arguments for invoking getDnsZone.
  */
 export interface GetDnsZoneArgs {
+    /**
+     * Attributes of the DNS Service scheduler.
+     */
     readonly attributes?: {[key: string]: any};
+    /**
+     * The time the zone was created.
+     */
     readonly createdAt?: string;
     /**
      * A description of the zone.
@@ -65,12 +71,21 @@ export interface GetDnsZoneArgs {
      * The email contact for the zone record.
      */
     readonly email?: string;
+    /**
+     * An array of master DNS servers. When `type` is  `SECONDARY`.
+     */
     readonly masters?: string[];
     /**
      * The name of the zone.
      */
     readonly name?: string;
+    /**
+     * The ID of the pool hosting the zone.
+     */
     readonly poolId?: string;
+    /**
+     * The project ID that owns the zone.
+     */
     readonly projectId?: string;
     /**
      * The region in which to obtain the V2 DNS client.
@@ -78,11 +93,17 @@ export interface GetDnsZoneArgs {
      * `region` argument of the provider is used.
      */
     readonly region?: string;
+    /**
+     * The serial number of the zone.
+     */
     readonly serial?: number;
     /**
      * The zone's status.
      */
     readonly status?: string;
+    /**
+     * The time the zone was transferred.
+     */
     readonly transferredAt?: string;
     /**
      * The time to live (TTL) of the zone.
@@ -92,7 +113,13 @@ export interface GetDnsZoneArgs {
      * The type of the zone. Can either be `PRIMARY` or `SECONDARY`.
      */
     readonly type?: string;
+    /**
+     * The time the zone was last updated.
+     */
     readonly updatedAt?: string;
+    /**
+     * The version of the zone.
+     */
     readonly version?: number;
 }
 

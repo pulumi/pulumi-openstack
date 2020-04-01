@@ -28,6 +28,7 @@ type LookupRouterArgs struct {
 	Description *string `pulumi:"description"`
 	// Indicates whether or not to get a distributed router.
 	Distributed *bool `pulumi:"distributed"`
+	// The value that points out if the Source NAT is enabled on the router.
 	EnableSnat *bool `pulumi:"enableSnat"`
 	// The name of the router.
 	Name *string `pulumi:"name"`
@@ -45,7 +46,6 @@ type LookupRouterArgs struct {
 	TenantId *string `pulumi:"tenantId"`
 }
 
-
 // A collection of values returned by getRouter.
 type LookupRouterResult struct {
 	AdminStateUp *bool `pulumi:"adminStateUp"`
@@ -53,8 +53,8 @@ type LookupRouterResult struct {
 	AllTags []string `pulumi:"allTags"`
 	// The availability zone that is used to make router resources highly available.
 	AvailabilityZoneHints []string `pulumi:"availabilityZoneHints"`
-	Description *string `pulumi:"description"`
-	Distributed *bool `pulumi:"distributed"`
+	Description           *string  `pulumi:"description"`
+	Distributed           *bool    `pulumi:"distributed"`
 	// The value that points out if the Source NAT is enabled on the router.
 	EnableSnat bool `pulumi:"enableSnat"`
 	// The external fixed IPs of the router.
@@ -62,12 +62,11 @@ type LookupRouterResult struct {
 	// The network UUID of an external gateway for the router.
 	ExternalNetworkId string `pulumi:"externalNetworkId"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	Name *string `pulumi:"name"`
-	Region *string `pulumi:"region"`
-	RouterId *string `pulumi:"routerId"`
-	Status *string `pulumi:"status"`
-	Tags []string `pulumi:"tags"`
-	TenantId *string `pulumi:"tenantId"`
+	Id       string   `pulumi:"id"`
+	Name     *string  `pulumi:"name"`
+	Region   *string  `pulumi:"region"`
+	RouterId *string  `pulumi:"routerId"`
+	Status   *string  `pulumi:"status"`
+	Tags     []string `pulumi:"tags"`
+	TenantId *string  `pulumi:"tenantId"`
 }
-

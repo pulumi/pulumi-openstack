@@ -372,6 +372,11 @@ namespace Pulumi.OpenStack.Identity
     {
         [Input("rules", required: true)]
         private InputList<string>? _rules;
+
+        /// <summary>
+        /// A list of authentication plugins that the user must
+        /// authenticate with.
+        /// </summary>
         public InputList<string> Rules
         {
             get => _rules ?? (_rules = new InputList<string>());
@@ -387,6 +392,11 @@ namespace Pulumi.OpenStack.Identity
     {
         [Input("rules", required: true)]
         private InputList<string>? _rules;
+
+        /// <summary>
+        /// A list of authentication plugins that the user must
+        /// authenticate with.
+        /// </summary>
         public InputList<string> Rules
         {
             get => _rules ?? (_rules = new InputList<string>());
@@ -405,6 +415,10 @@ namespace Pulumi.OpenStack.Identity
     [OutputType]
     public sealed class UserMultiFactorAuthRules
     {
+        /// <summary>
+        /// A list of authentication plugins that the user must
+        /// authenticate with.
+        /// </summary>
         public readonly ImmutableArray<string> Rules;
 
         [OutputConstructor]

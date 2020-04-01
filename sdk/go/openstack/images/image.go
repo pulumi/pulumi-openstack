@@ -46,7 +46,7 @@ type Image struct {
 	// the trailing path after the glance
 	// endpoint that represent the location of the image
 	// or the path to retrieve it.
-	File pulumi.StringOutput `pulumi:"file"`
+	File           pulumi.StringOutput    `pulumi:"file"`
 	ImageCachePath pulumi.StringPtrOutput `pulumi:"imageCachePath"`
 	// This is the url of the raw image that will
 	// be downloaded in the `imageCachePath` before being uploaded to Glance.
@@ -154,7 +154,7 @@ type imageState struct {
 	// the trailing path after the glance
 	// endpoint that represent the location of the image
 	// or the path to retrieve it.
-	File *string `pulumi:"file"`
+	File           *string `pulumi:"file"`
 	ImageCachePath *string `pulumi:"imageCachePath"`
 	// This is the url of the raw image that will
 	// be downloaded in the `imageCachePath` before being uploaded to Glance.
@@ -229,7 +229,7 @@ type ImageState struct {
 	// the trailing path after the glance
 	// endpoint that represent the location of the image
 	// or the path to retrieve it.
-	File pulumi.StringPtrInput
+	File           pulumi.StringPtrInput
 	ImageCachePath pulumi.StringPtrInput
 	// This is the url of the raw image that will
 	// be downloaded in the `imageCachePath` before being uploaded to Glance.
@@ -300,7 +300,7 @@ type imageArgs struct {
 	ContainerFormat string `pulumi:"containerFormat"`
 	// The disk format. Must be one of
 	// "ami", "ari", "aki", "vhd", "vmdk", "raw", "qcow2", "vdi", "iso".
-	DiskFormat string `pulumi:"diskFormat"`
+	DiskFormat     string  `pulumi:"diskFormat"`
 	ImageCachePath *string `pulumi:"imageCachePath"`
 	// This is the url of the raw image that will
 	// be downloaded in the `imageCachePath` before being uploaded to Glance.
@@ -350,7 +350,7 @@ type ImageArgs struct {
 	ContainerFormat pulumi.StringInput
 	// The disk format. Must be one of
 	// "ami", "ari", "aki", "vhd", "vmdk", "raw", "qcow2", "vdi", "iso".
-	DiskFormat pulumi.StringInput
+	DiskFormat     pulumi.StringInput
 	ImageCachePath pulumi.StringPtrInput
 	// This is the url of the raw image that will
 	// be downloaded in the `imageCachePath` before being uploaded to Glance.
@@ -396,4 +396,3 @@ type ImageArgs struct {
 func (ImageArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*imageArgs)(nil)).Elem()
 }
-

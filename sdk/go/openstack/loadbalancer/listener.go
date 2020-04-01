@@ -360,4 +360,3 @@ type ListenerArgs struct {
 func (ListenerArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*listenerArgs)(nil)).Elem()
 }
-

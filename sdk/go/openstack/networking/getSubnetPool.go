@@ -55,7 +55,6 @@ type LookupSubnetPoolArgs struct {
 	Tags []string `pulumi:"tags"`
 }
 
-
 // A collection of values returned by getSubnetPool.
 type LookupSubnetPoolResult struct {
 	// See Argument Reference above.
@@ -72,8 +71,8 @@ type LookupSubnetPoolResult struct {
 	// See Argument Reference above.
 	Description string `pulumi:"description"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	IpVersion int `pulumi:"ipVersion"`
+	Id        string `pulumi:"id"`
+	IpVersion int    `pulumi:"ipVersion"`
 	// See Argument Reference above.
 	IsDefault bool `pulumi:"isDefault"`
 	// See Argument Reference above.
@@ -91,9 +90,8 @@ type LookupSubnetPoolResult struct {
 	// The revision number of the subnetpool.
 	RevisionNumber int `pulumi:"revisionNumber"`
 	// See Argument Reference above.
-	Shared bool `pulumi:"shared"`
-	Tags []string `pulumi:"tags"`
+	Shared bool     `pulumi:"shared"`
+	Tags   []string `pulumi:"tags"`
 	// The time at which subnetpool was created.
 	UpdatedAt string `pulumi:"updatedAt"`
 }
-

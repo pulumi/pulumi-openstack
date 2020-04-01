@@ -98,6 +98,7 @@ def get_snapshot(description=None,name=None,region=None,share_id=None,status=Non
     :param str description: The human-readable description of the snapshot.
     :param str name: The name of the snapshot.
     :param str region: The region in which to obtain the V2 Shared File System client.
+    :param str share_id: The UUID of the source share that was used to create the snapshot.
     :param str status: A snapshot status filter. A valid value is `available`, `error`,
            `creating`, `deleting`, `manage_starting`, `manage_error`, `unmanage_starting`,
            `unmanage_error` or `error_deleting`.

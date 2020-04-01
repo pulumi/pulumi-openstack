@@ -16,7 +16,18 @@ namespace Pulumi.OpenStack.BlockStorage
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/blockstorage_availability_zones_v3.html.markdown.
         /// </summary>
+        [Obsolete("Use GetAvailabilityZonesV3.InvokeAsync() instead")]
         public static Task<GetAvailabilityZonesV3Result> GetAvailabilityZonesV3(GetAvailabilityZonesV3Args? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAvailabilityZonesV3Result>("openstack:blockstorage/getAvailabilityZonesV3:getAvailabilityZonesV3", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetAvailabilityZonesV3
+    {
+        /// <summary>
+        /// Use this data source to get a list of Block Storage availability zones from OpenStack
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/blockstorage_availability_zones_v3.html.markdown.
+        /// </summary>
+        public static Task<GetAvailabilityZonesV3Result> InvokeAsync(GetAvailabilityZonesV3Args? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAvailabilityZonesV3Result>("openstack:blockstorage/getAvailabilityZonesV3:getAvailabilityZonesV3", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

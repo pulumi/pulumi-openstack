@@ -227,4 +227,3 @@ type SecurityServiceArgs struct {
 func (SecurityServiceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*securityServiceArgs)(nil)).Elem()
 }
-

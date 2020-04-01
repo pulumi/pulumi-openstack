@@ -16,7 +16,18 @@ namespace Pulumi.OpenStack.BlockStorage
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/blockstorage_snapshot_v2.html.markdown.
         /// </summary>
+        [Obsolete("Use GetSnapshotV2.InvokeAsync() instead")]
         public static Task<GetSnapshotV2Result> GetSnapshotV2(GetSnapshotV2Args? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSnapshotV2Result>("openstack:blockstorage/getSnapshotV2:getSnapshotV2", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetSnapshotV2
+    {
+        /// <summary>
+        /// Use this data source to get information about an existing snapshot.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/blockstorage_snapshot_v2.html.markdown.
+        /// </summary>
+        public static Task<GetSnapshotV2Result> InvokeAsync(GetSnapshotV2Args? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSnapshotV2Result>("openstack:blockstorage/getSnapshotV2:getSnapshotV2", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

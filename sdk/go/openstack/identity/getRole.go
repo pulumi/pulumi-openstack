@@ -31,7 +31,6 @@ type LookupRoleArgs struct {
 	Region *string `pulumi:"region"`
 }
 
-
 // A collection of values returned by getRole.
 type LookupRoleResult struct {
 	// See Argument Reference above.
@@ -43,4 +42,3 @@ type LookupRoleResult struct {
 	// See Argument Reference above.
 	Region string `pulumi:"region"`
 }
-

@@ -36,7 +36,7 @@ namespace Pulumi.OpenStack.Database
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// A unique name for the resource.
+        /// Configuration parameter name. Changing this creates a new resource.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -120,7 +120,7 @@ namespace Pulumi.OpenStack.Database
         public Input<string> Description { get; set; } = null!;
 
         /// <summary>
-        /// A unique name for the resource.
+        /// Configuration parameter name. Changing this creates a new resource.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -165,7 +165,7 @@ namespace Pulumi.OpenStack.Database
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// A unique name for the resource.
+        /// Configuration parameter name. Changing this creates a new resource.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -188,11 +188,14 @@ namespace Pulumi.OpenStack.Database
     public sealed class ConfigurationConfigurationsArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A unique name for the resource.
+        /// Configuration parameter name. Changing this creates a new resource.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// Configuration parameter value. Changing this creates a new resource.
+        /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;
 
@@ -204,11 +207,14 @@ namespace Pulumi.OpenStack.Database
     public sealed class ConfigurationConfigurationsGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A unique name for the resource.
+        /// Configuration parameter name. Changing this creates a new resource.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// Configuration parameter value. Changing this creates a new resource.
+        /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;
 
@@ -219,9 +225,15 @@ namespace Pulumi.OpenStack.Database
 
     public sealed class ConfigurationDatastoreArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Database engine type to be used with this configuration. Changing this creates a new resource.
+        /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 
+        /// <summary>
+        /// Version of database engine type to be used with this configuration. Changing this creates a new resource.
+        /// </summary>
         [Input("version", required: true)]
         public Input<string> Version { get; set; } = null!;
 
@@ -232,9 +244,15 @@ namespace Pulumi.OpenStack.Database
 
     public sealed class ConfigurationDatastoreGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Database engine type to be used with this configuration. Changing this creates a new resource.
+        /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 
+        /// <summary>
+        /// Version of database engine type to be used with this configuration. Changing this creates a new resource.
+        /// </summary>
         [Input("version", required: true)]
         public Input<string> Version { get; set; } = null!;
 
@@ -251,9 +269,12 @@ namespace Pulumi.OpenStack.Database
     public sealed class ConfigurationConfigurations
     {
         /// <summary>
-        /// A unique name for the resource.
+        /// Configuration parameter name. Changing this creates a new resource.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Configuration parameter value. Changing this creates a new resource.
+        /// </summary>
         public readonly string Value;
 
         [OutputConstructor]
@@ -269,7 +290,13 @@ namespace Pulumi.OpenStack.Database
     [OutputType]
     public sealed class ConfigurationDatastore
     {
+        /// <summary>
+        /// Database engine type to be used with this configuration. Changing this creates a new resource.
+        /// </summary>
         public readonly string Type;
+        /// <summary>
+        /// Version of database engine type to be used with this configuration. Changing this creates a new resource.
+        /// </summary>
         public readonly string Version;
 
         [OutputConstructor]

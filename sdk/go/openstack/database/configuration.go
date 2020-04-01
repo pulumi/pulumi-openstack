@@ -24,7 +24,7 @@ type Configuration struct {
 	Datastore ConfigurationDatastoreOutput `pulumi:"datastore"`
 	// Description of the resource.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// A unique name for the resource.
+	// Configuration parameter name. Changing this creates a new resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The region in which to create the db instance. Changing this
 	// creates a new instance.
@@ -72,7 +72,7 @@ type configurationState struct {
 	Datastore *ConfigurationDatastore `pulumi:"datastore"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
-	// A unique name for the resource.
+	// Configuration parameter name. Changing this creates a new resource.
 	Name *string `pulumi:"name"`
 	// The region in which to create the db instance. Changing this
 	// creates a new instance.
@@ -87,7 +87,7 @@ type ConfigurationState struct {
 	Datastore ConfigurationDatastorePtrInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
-	// A unique name for the resource.
+	// Configuration parameter name. Changing this creates a new resource.
 	Name pulumi.StringPtrInput
 	// The region in which to create the db instance. Changing this
 	// creates a new instance.
@@ -106,7 +106,7 @@ type configurationArgs struct {
 	Datastore ConfigurationDatastore `pulumi:"datastore"`
 	// Description of the resource.
 	Description string `pulumi:"description"`
-	// A unique name for the resource.
+	// Configuration parameter name. Changing this creates a new resource.
 	Name *string `pulumi:"name"`
 	// The region in which to create the db instance. Changing this
 	// creates a new instance.
@@ -122,7 +122,7 @@ type ConfigurationArgs struct {
 	Datastore ConfigurationDatastoreInput
 	// Description of the resource.
 	Description pulumi.StringInput
-	// A unique name for the resource.
+	// Configuration parameter name. Changing this creates a new resource.
 	Name pulumi.StringPtrInput
 	// The region in which to create the db instance. Changing this
 	// creates a new instance.
@@ -132,4 +132,3 @@ type ConfigurationArgs struct {
 func (ConfigurationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*configurationArgs)(nil)).Elem()
 }
-
