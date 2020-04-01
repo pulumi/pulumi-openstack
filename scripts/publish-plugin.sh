@@ -16,10 +16,10 @@ if [ "$(go env GOOS)" = "windows" ]; then
     BIN_SUFFIX=".exe"
 fi
 
-go build \
-   -ldflags "-X github.com/pulumi/pulumi-openstack/pkg/version.Version=${VERSION}" \
+(cd "${ROOT}/provider" && go build \
+   -ldflags "-X github.com/pulumi/pulumi-openstack/provider/pkg/version.Version=${VERSION}" \
    -o "${WORK_PATH}/pulumi-resource-openstack${BIN_SUFFIX}" \
-   "${ROOT}/cmd/pulumi-resource-openstack"
+   "${ROOT}/cmd/pulumi-resource-openstack")
 
 # Tar up the plugin
 tar -czf ${PLUGIN_PACKAGE_PATH} -C ${WORK_PATH} .

@@ -1,4 +1,4 @@
-/vendor/
+**/vendor/
 .pulumi
 Pulumi.*.yaml
 **/obj/
@@ -9,3 +9,4 @@ yarn.lock
 
 .idea/
 *.iml
+**/pulumiManifest.go

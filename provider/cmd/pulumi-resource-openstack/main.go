@@ -17,8 +17,8 @@
 package main
 
 import (
-	openstack "github.com/pulumi/pulumi-openstack"
-	"github.com/pulumi/pulumi-openstack/pkg/version"
+	openstack "github.com/pulumi/pulumi-openstack/provider"
+	"github.com/pulumi/pulumi-openstack/provider/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/pkg/tfbridge"
 )
 
