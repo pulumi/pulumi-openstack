@@ -306,4 +306,3 @@ type MonitorArgs struct {
 func (MonitorArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*monitorArgs)(nil)).Elem()
 }
-

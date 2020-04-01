@@ -516,12 +516,21 @@ namespace Pulumi.OpenStack.Networking
 
     public sealed class NetworkSegmentsArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The type of physical network.
+        /// </summary>
         [Input("networkType")]
         public Input<string>? NetworkType { get; set; }
 
+        /// <summary>
+        /// The physical network where this network is implemented.
+        /// </summary>
         [Input("physicalNetwork")]
         public Input<string>? PhysicalNetwork { get; set; }
 
+        /// <summary>
+        /// An isolated segment on the physical network.
+        /// </summary>
         [Input("segmentationId")]
         public Input<int>? SegmentationId { get; set; }
 
@@ -532,12 +541,21 @@ namespace Pulumi.OpenStack.Networking
 
     public sealed class NetworkSegmentsGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The type of physical network.
+        /// </summary>
         [Input("networkType")]
         public Input<string>? NetworkType { get; set; }
 
+        /// <summary>
+        /// The physical network where this network is implemented.
+        /// </summary>
         [Input("physicalNetwork")]
         public Input<string>? PhysicalNetwork { get; set; }
 
+        /// <summary>
+        /// An isolated segment on the physical network.
+        /// </summary>
         [Input("segmentationId")]
         public Input<int>? SegmentationId { get; set; }
 
@@ -553,8 +571,17 @@ namespace Pulumi.OpenStack.Networking
     [OutputType]
     public sealed class NetworkSegments
     {
+        /// <summary>
+        /// The type of physical network.
+        /// </summary>
         public readonly string? NetworkType;
+        /// <summary>
+        /// The physical network where this network is implemented.
+        /// </summary>
         public readonly string? PhysicalNetwork;
+        /// <summary>
+        /// An isolated segment on the physical network.
+        /// </summary>
         public readonly int? SegmentationId;
 
         [OutputConstructor]

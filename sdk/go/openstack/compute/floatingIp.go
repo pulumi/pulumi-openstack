@@ -138,4 +138,3 @@ type FloatingIpArgs struct {
 func (FloatingIpArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*floatingIpArgs)(nil)).Elem()
 }
-

@@ -16,7 +16,18 @@ namespace Pulumi.OpenStack.Identity
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_user_v3.html.markdown.
         /// </summary>
+        [Obsolete("Use GetUser.InvokeAsync() instead")]
         public static Task<GetUserResult> GetUser(GetUserArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetUserResult>("openstack:identity/getUser:getUser", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetUser
+    {
+        /// <summary>
+        /// Use this data source to get the ID of an OpenStack user.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_user_v3.html.markdown.
+        /// </summary>
+        public static Task<GetUserResult> InvokeAsync(GetUserArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetUserResult>("openstack:identity/getUser:getUser", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 
@@ -59,6 +70,9 @@ namespace Pulumi.OpenStack.Identity
         [Input("protocolId")]
         public string? ProtocolId { get; set; }
 
+        /// <summary>
+        /// The region the user is located in.
+        /// </summary>
         [Input("region")]
         public string? Region { get; set; }
 

@@ -28,7 +28,7 @@ type FloatingIpAssociate struct {
 	// Keypairs are associated with accounts, but a Compute client is needed to
 	// create one. If omitted, the `region` argument of the provider is used.
 	// Changing this creates a new floatingip_associate.
-	Region pulumi.StringOutput `pulumi:"region"`
+	Region              pulumi.StringOutput  `pulumi:"region"`
 	WaitUntilAssociated pulumi.BoolPtrOutput `pulumi:"waitUntilAssociated"`
 }
 
@@ -76,8 +76,8 @@ type floatingIpAssociateState struct {
 	// Keypairs are associated with accounts, but a Compute client is needed to
 	// create one. If omitted, the `region` argument of the provider is used.
 	// Changing this creates a new floatingip_associate.
-	Region *string `pulumi:"region"`
-	WaitUntilAssociated *bool `pulumi:"waitUntilAssociated"`
+	Region              *string `pulumi:"region"`
+	WaitUntilAssociated *bool   `pulumi:"waitUntilAssociated"`
 }
 
 type FloatingIpAssociateState struct {
@@ -91,7 +91,7 @@ type FloatingIpAssociateState struct {
 	// Keypairs are associated with accounts, but a Compute client is needed to
 	// create one. If omitted, the `region` argument of the provider is used.
 	// Changing this creates a new floatingip_associate.
-	Region pulumi.StringPtrInput
+	Region              pulumi.StringPtrInput
 	WaitUntilAssociated pulumi.BoolPtrInput
 }
 
@@ -110,8 +110,8 @@ type floatingIpAssociateArgs struct {
 	// Keypairs are associated with accounts, but a Compute client is needed to
 	// create one. If omitted, the `region` argument of the provider is used.
 	// Changing this creates a new floatingip_associate.
-	Region *string `pulumi:"region"`
-	WaitUntilAssociated *bool `pulumi:"waitUntilAssociated"`
+	Region              *string `pulumi:"region"`
+	WaitUntilAssociated *bool   `pulumi:"waitUntilAssociated"`
 }
 
 // The set of arguments for constructing a FloatingIpAssociate resource.
@@ -126,11 +126,10 @@ type FloatingIpAssociateArgs struct {
 	// Keypairs are associated with accounts, but a Compute client is needed to
 	// create one. If omitted, the `region` argument of the provider is used.
 	// Changing this creates a new floatingip_associate.
-	Region pulumi.StringPtrInput
+	Region              pulumi.StringPtrInput
 	WaitUntilAssociated pulumi.BoolPtrInput
 }
 
 func (FloatingIpAssociateArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*floatingIpAssociateArgs)(nil)).Elem()
 }
-

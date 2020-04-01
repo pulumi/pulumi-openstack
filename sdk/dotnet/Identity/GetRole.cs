@@ -16,7 +16,18 @@ namespace Pulumi.OpenStack.Identity
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_role_v3.html.markdown.
         /// </summary>
+        [Obsolete("Use GetRole.InvokeAsync() instead")]
         public static Task<GetRoleResult> GetRole(GetRoleArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRoleResult>("openstack:identity/getRole:getRole", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetRole
+    {
+        /// <summary>
+        /// Use this data source to get the ID of an OpenStack role.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_role_v3.html.markdown.
+        /// </summary>
+        public static Task<GetRoleResult> InvokeAsync(GetRoleArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRoleResult>("openstack:identity/getRole:getRole", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

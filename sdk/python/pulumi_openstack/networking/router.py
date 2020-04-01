@@ -52,8 +52,8 @@ class Router(pulumi.CustomResource):
     has to be set in order to set this property. Changing this updates the
     external fixed IPs of the router.
 
-      * `ip_address` (`str`)
-      * `subnet_id` (`str`)
+      * `ip_address` (`str`) - The IP address to set on the router.
+      * `subnet_id` (`str`) - Subnet in which the fixed IP belongs to.
     """
     external_gateway: pulumi.Output[str]
     """
@@ -100,7 +100,8 @@ class Router(pulumi.CustomResource):
     Map of additional vendor-specific options.
     Supported options are described below.
 
-      * `setRouterGatewayAfterCreate` (`bool`)
+      * `setRouterGatewayAfterCreate` (`bool`) - Boolean to control whether
+        the Router gateway is assigned during creation or updated after creation.
     """
     def __init__(__self__, resource_name, opts=None, admin_state_up=None, availability_zone_hints=None, description=None, distributed=None, enable_snat=None, external_fixed_ips=None, external_gateway=None, external_network_id=None, name=None, region=None, tags=None, tenant_id=None, value_specs=None, vendor_options=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -153,12 +154,13 @@ class Router(pulumi.CustomResource):
 
         The **external_fixed_ips** object supports the following:
 
-          * `ip_address` (`pulumi.Input[str]`)
-          * `subnet_id` (`pulumi.Input[str]`)
+          * `ip_address` (`pulumi.Input[str]`) - The IP address to set on the router.
+          * `subnet_id` (`pulumi.Input[str]`) - Subnet in which the fixed IP belongs to.
 
         The **vendor_options** object supports the following:
 
-          * `setRouterGatewayAfterCreate` (`pulumi.Input[bool]`)
+          * `setRouterGatewayAfterCreate` (`pulumi.Input[bool]`) - Boolean to control whether
+            the Router gateway is assigned during creation or updated after creation.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -252,12 +254,13 @@ class Router(pulumi.CustomResource):
 
         The **external_fixed_ips** object supports the following:
 
-          * `ip_address` (`pulumi.Input[str]`)
-          * `subnet_id` (`pulumi.Input[str]`)
+          * `ip_address` (`pulumi.Input[str]`) - The IP address to set on the router.
+          * `subnet_id` (`pulumi.Input[str]`) - Subnet in which the fixed IP belongs to.
 
         The **vendor_options** object supports the following:
 
-          * `setRouterGatewayAfterCreate` (`pulumi.Input[bool]`)
+          * `setRouterGatewayAfterCreate` (`pulumi.Input[bool]`) - Boolean to control whether
+            the Router gateway is assigned during creation or updated after creation.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

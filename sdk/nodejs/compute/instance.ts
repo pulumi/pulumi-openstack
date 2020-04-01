@@ -111,7 +111,8 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly metadata!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * A unique name for the resource.
+     * The human-readable
+     * name of the network. Changing this creates a new server.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -334,7 +335,8 @@ export interface InstanceState {
      */
     readonly metadata?: pulumi.Input<{[key: string]: any}>;
     /**
-     * A unique name for the resource.
+     * The human-readable
+     * name of the network. Changing this creates a new server.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -474,7 +476,8 @@ export interface InstanceArgs {
      */
     readonly metadata?: pulumi.Input<{[key: string]: any}>;
     /**
-     * A unique name for the resource.
+     * The human-readable
+     * name of the network. Changing this creates a new server.
      */
     readonly name?: pulumi.Input<string>;
     /**

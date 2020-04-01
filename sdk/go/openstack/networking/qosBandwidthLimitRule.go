@@ -147,4 +147,3 @@ type QosBandwidthLimitRuleArgs struct {
 func (QosBandwidthLimitRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*qosBandwidthLimitRuleArgs)(nil)).Elem()
 }
-

@@ -16,7 +16,18 @@ namespace Pulumi.OpenStack.Networking
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_router_v2.html.markdown.
         /// </summary>
+        [Obsolete("Use GetRouter.InvokeAsync() instead")]
         public static Task<GetRouterResult> GetRouter(GetRouterArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRouterResult>("openstack:networking/getRouter:getRouter", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetRouter
+    {
+        /// <summary>
+        /// Use this data source to get the ID of an available OpenStack router.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_router_v2.html.markdown.
+        /// </summary>
+        public static Task<GetRouterResult> InvokeAsync(GetRouterArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRouterResult>("openstack:networking/getRouter:getRouter", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 
@@ -40,6 +51,9 @@ namespace Pulumi.OpenStack.Networking
         [Input("distributed")]
         public bool? Distributed { get; set; }
 
+        /// <summary>
+        /// The value that points out if the Source NAT is enabled on the router.
+        /// </summary>
         [Input("enableSnat")]
         public bool? EnableSnat { get; set; }
 

@@ -16,7 +16,18 @@ namespace Pulumi.OpenStack.Compute
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/compute_availability_zones_v2.html.markdown.
         /// </summary>
+        [Obsolete("Use GetAvailabilityZones.InvokeAsync() instead")]
         public static Task<GetAvailabilityZonesResult> GetAvailabilityZones(GetAvailabilityZonesArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAvailabilityZonesResult>("openstack:compute/getAvailabilityZones:getAvailabilityZones", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetAvailabilityZones
+    {
+        /// <summary>
+        /// Use this data source to get a list of availability zones from OpenStack
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/compute_availability_zones_v2.html.markdown.
+        /// </summary>
+        public static Task<GetAvailabilityZonesResult> InvokeAsync(GetAvailabilityZonesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAvailabilityZonesResult>("openstack:compute/getAvailabilityZones:getAvailabilityZones", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

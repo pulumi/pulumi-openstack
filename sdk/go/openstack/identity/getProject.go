@@ -34,9 +34,9 @@ type LookupProjectArgs struct {
 	Name *string `pulumi:"name"`
 	// The parent of this project.
 	ParentId *string `pulumi:"parentId"`
+	// The region the project is located in.
 	Region *string `pulumi:"region"`
 }
-
 
 // A collection of values returned by getProject.
 type LookupProjectResult struct {
@@ -57,4 +57,3 @@ type LookupProjectResult struct {
 	// The region the project is located in.
 	Region string `pulumi:"region"`
 }
-

@@ -477,9 +477,15 @@ namespace Pulumi.OpenStack.Networking
 
     public sealed class RouterExternalFixedIpsArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The IP address to set on the router.
+        /// </summary>
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }
 
+        /// <summary>
+        /// Subnet in which the fixed IP belongs to.
+        /// </summary>
         [Input("subnetId")]
         public Input<string>? SubnetId { get; set; }
 
@@ -490,9 +496,15 @@ namespace Pulumi.OpenStack.Networking
 
     public sealed class RouterExternalFixedIpsGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The IP address to set on the router.
+        /// </summary>
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }
 
+        /// <summary>
+        /// Subnet in which the fixed IP belongs to.
+        /// </summary>
         [Input("subnetId")]
         public Input<string>? SubnetId { get; set; }
 
@@ -503,6 +515,10 @@ namespace Pulumi.OpenStack.Networking
 
     public sealed class RouterVendorOptionsArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Boolean to control whether
+        /// the Router gateway is assigned during creation or updated after creation.
+        /// </summary>
         [Input("setRouterGatewayAfterCreate")]
         public Input<bool>? SetRouterGatewayAfterCreate { get; set; }
 
@@ -513,6 +529,10 @@ namespace Pulumi.OpenStack.Networking
 
     public sealed class RouterVendorOptionsGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Boolean to control whether
+        /// the Router gateway is assigned during creation or updated after creation.
+        /// </summary>
         [Input("setRouterGatewayAfterCreate")]
         public Input<bool>? SetRouterGatewayAfterCreate { get; set; }
 
@@ -528,7 +548,13 @@ namespace Pulumi.OpenStack.Networking
     [OutputType]
     public sealed class RouterExternalFixedIps
     {
+        /// <summary>
+        /// The IP address to set on the router.
+        /// </summary>
         public readonly string IpAddress;
+        /// <summary>
+        /// Subnet in which the fixed IP belongs to.
+        /// </summary>
         public readonly string? SubnetId;
 
         [OutputConstructor]
@@ -544,6 +570,10 @@ namespace Pulumi.OpenStack.Networking
     [OutputType]
     public sealed class RouterVendorOptions
     {
+        /// <summary>
+        /// Boolean to control whether
+        /// the Router gateway is assigned during creation or updated after creation.
+        /// </summary>
         public readonly bool? SetRouterGatewayAfterCreate;
 
         [OutputConstructor]

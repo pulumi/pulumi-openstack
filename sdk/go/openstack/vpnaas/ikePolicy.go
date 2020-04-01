@@ -250,4 +250,3 @@ type IkePolicyArgs struct {
 func (IkePolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*ikePolicyArgs)(nil)).Elem()
 }
-

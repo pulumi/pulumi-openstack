@@ -22,7 +22,7 @@ import (
 	"github.com/terraform-providers/terraform-provider-openstack/openstack"
 
 	"github.com/pulumi/pulumi-terraform-bridge/pkg/tfbridge"
-	"github.com/pulumi/pulumi/pkg/tokens"
+	"github.com/pulumi/pulumi/sdk/go/common/tokens"
 )
 
 // all of the OpenStack token components used below.

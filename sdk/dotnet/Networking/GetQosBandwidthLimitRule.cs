@@ -16,7 +16,18 @@ namespace Pulumi.OpenStack.Networking
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_qos_bandwidth_limit_rule_v2.html.markdown.
         /// </summary>
+        [Obsolete("Use GetQosBandwidthLimitRule.InvokeAsync() instead")]
         public static Task<GetQosBandwidthLimitRuleResult> GetQosBandwidthLimitRule(GetQosBandwidthLimitRuleArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetQosBandwidthLimitRuleResult>("openstack:networking/getQosBandwidthLimitRule:getQosBandwidthLimitRule", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetQosBandwidthLimitRule
+    {
+        /// <summary>
+        /// Use this data source to get the ID of an available OpenStack QoS bandwidth limit rule.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_qos_bandwidth_limit_rule_v2.html.markdown.
+        /// </summary>
+        public static Task<GetQosBandwidthLimitRuleResult> InvokeAsync(GetQosBandwidthLimitRuleArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetQosBandwidthLimitRuleResult>("openstack:networking/getQosBandwidthLimitRule:getQosBandwidthLimitRule", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

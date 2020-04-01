@@ -374,4 +374,3 @@ type SiteConnectionArgs struct {
 func (SiteConnectionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*siteConnectionArgs)(nil)).Elem()
 }
-

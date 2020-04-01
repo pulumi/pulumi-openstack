@@ -14,8 +14,8 @@ import (
 type StackV1Output struct {
 	// The description of the stack resource.
 	Description *string `pulumi:"description"`
-	OutputKey string `pulumi:"outputKey"`
-	OutputValue string `pulumi:"outputValue"`
+	OutputKey   string  `pulumi:"outputKey"`
+	OutputValue string  `pulumi:"outputValue"`
 }
 
 type StackV1OutputInput interface {
@@ -28,8 +28,8 @@ type StackV1OutputInput interface {
 type StackV1OutputArgs struct {
 	// The description of the stack resource.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	OutputKey pulumi.StringInput `pulumi:"outputKey"`
-	OutputValue pulumi.StringInput `pulumi:"outputValue"`
+	OutputKey   pulumi.StringInput    `pulumi:"outputKey"`
+	OutputValue pulumi.StringInput    `pulumi:"outputValue"`
 }
 
 func (StackV1OutputArgs) ElementType() reflect.Type {
@@ -65,7 +65,7 @@ func (i StackV1OutputArray) ToStackV1OutputArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(StackV1OutputArrayOutput)
 }
 
-type StackV1OutputOutput struct { *pulumi.OutputState }
+type StackV1OutputOutput struct{ *pulumi.OutputState }
 
 func (StackV1OutputOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*StackV1Output)(nil)).Elem()
@@ -81,18 +81,18 @@ func (o StackV1OutputOutput) ToStackV1OutputOutputWithContext(ctx context.Contex
 
 // The description of the stack resource.
 func (o StackV1OutputOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v StackV1Output) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v StackV1Output) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o StackV1OutputOutput) OutputKey() pulumi.StringOutput {
-	return o.ApplyT(func (v StackV1Output) string { return v.OutputKey }).(pulumi.StringOutput)
+	return o.ApplyT(func(v StackV1Output) string { return v.OutputKey }).(pulumi.StringOutput)
 }
 
 func (o StackV1OutputOutput) OutputValue() pulumi.StringOutput {
-	return o.ApplyT(func (v StackV1Output) string { return v.OutputValue }).(pulumi.StringOutput)
+	return o.ApplyT(func(v StackV1Output) string { return v.OutputValue }).(pulumi.StringOutput)
 }
 
-type StackV1OutputArrayOutput struct { *pulumi.OutputState}
+type StackV1OutputArrayOutput struct{ *pulumi.OutputState }
 
 func (StackV1OutputArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]StackV1Output)(nil)).Elem()
@@ -107,7 +107,7 @@ func (o StackV1OutputArrayOutput) ToStackV1OutputArrayOutputWithContext(ctx cont
 }
 
 func (o StackV1OutputArrayOutput) Index(i pulumi.IntInput) StackV1OutputOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) StackV1Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StackV1Output {
 		return vs[0].([]StackV1Output)[vs[1].(int)]
 	}).(StackV1OutputOutput)
 }

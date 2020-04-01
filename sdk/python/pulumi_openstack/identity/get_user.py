@@ -112,6 +112,7 @@ def get_user(domain_id=None,enabled=None,idp_id=None,name=None,password_expires_
     :param str name: The name of the user.
     :param str password_expires_at: Query for expired passwords. See the [OpenStack API docs](https://developer.openstack.org/api-ref/identity/v3/#list-users) for more information on the query format.
     :param str protocol_id: The protocol ID of the user.
+    :param str region: The region the user is located in.
     :param str unique_id: The unique ID of the user.
     """
     __args__ = dict()

@@ -35,11 +35,11 @@ type LookupUserArgs struct {
 	PasswordExpiresAt *string `pulumi:"passwordExpiresAt"`
 	// The protocol ID of the user.
 	ProtocolId *string `pulumi:"protocolId"`
+	// The region the user is located in.
 	Region *string `pulumi:"region"`
 	// The unique ID of the user.
 	UniqueId *string `pulumi:"uniqueId"`
 }
-
 
 // A collection of values returned by getUser.
 type LookupUserResult struct {
@@ -66,4 +66,3 @@ type LookupUserResult struct {
 	// See Argument Reference above.
 	UniqueId *string `pulumi:"uniqueId"`
 }
-

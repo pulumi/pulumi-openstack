@@ -247,4 +247,3 @@ type PoolArgs struct {
 func (PoolArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*poolArgs)(nil)).Elem()
 }
-

@@ -33,9 +33,7 @@ class Trunk(pulumi.CustomResource):
     """
     port_id: pulumi.Output[str]
     """
-    The ID of the port to be used as the parent port of the
-    trunk. This is the port that should be used as the compute instance network
-    port. Changing this creates a new trunk.
+    The ID of the port to be made a subport of the trunk.
     """
     region: pulumi.Output[str]
     """
@@ -49,11 +47,9 @@ class Trunk(pulumi.CustomResource):
     The set of ports that will be made subports of the trunk.
     The structure of each subport is described below.
 
-      * `port_id` (`str`) - The ID of the port to be used as the parent port of the
-        trunk. This is the port that should be used as the compute instance network
-        port. Changing this creates a new trunk.
-      * `segmentation_id` (`float`)
-      * `segmentationType` (`str`)
+      * `port_id` (`str`) - The ID of the port to be made a subport of the trunk.
+      * `segmentation_id` (`float`) - The numeric id of the subport segment.
+      * `segmentationType` (`str`) - The segmentation technology to use, e.g., "vlan".
     """
     tags: pulumi.Output[list]
     """
@@ -79,9 +75,7 @@ class Trunk(pulumi.CustomResource):
                updates the name of the existing trunk.
         :param pulumi.Input[str] name: A unique name for the trunk. Changing this
                updates the `name` of an existing trunk.
-        :param pulumi.Input[str] port_id: The ID of the port to be used as the parent port of the
-               trunk. This is the port that should be used as the compute instance network
-               port. Changing this creates a new trunk.
+        :param pulumi.Input[str] port_id: The ID of the port to be made a subport of the trunk.
         :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
                A networking client is needed to create a trunk. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
@@ -94,11 +88,9 @@ class Trunk(pulumi.CustomResource):
 
         The **sub_ports** object supports the following:
 
-          * `port_id` (`pulumi.Input[str]`) - The ID of the port to be used as the parent port of the
-            trunk. This is the port that should be used as the compute instance network
-            port. Changing this creates a new trunk.
-          * `segmentation_id` (`pulumi.Input[float]`)
-          * `segmentationType` (`pulumi.Input[str]`)
+          * `port_id` (`pulumi.Input[str]`) - The ID of the port to be made a subport of the trunk.
+          * `segmentation_id` (`pulumi.Input[float]`) - The numeric id of the subport segment.
+          * `segmentationType` (`pulumi.Input[str]`) - The segmentation technology to use, e.g., "vlan".
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -152,9 +144,7 @@ class Trunk(pulumi.CustomResource):
                updates the name of the existing trunk.
         :param pulumi.Input[str] name: A unique name for the trunk. Changing this
                updates the `name` of an existing trunk.
-        :param pulumi.Input[str] port_id: The ID of the port to be used as the parent port of the
-               trunk. This is the port that should be used as the compute instance network
-               port. Changing this creates a new trunk.
+        :param pulumi.Input[str] port_id: The ID of the port to be made a subport of the trunk.
         :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
                A networking client is needed to create a trunk. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
@@ -167,11 +157,9 @@ class Trunk(pulumi.CustomResource):
 
         The **sub_ports** object supports the following:
 
-          * `port_id` (`pulumi.Input[str]`) - The ID of the port to be used as the parent port of the
-            trunk. This is the port that should be used as the compute instance network
-            port. Changing this creates a new trunk.
-          * `segmentation_id` (`pulumi.Input[float]`)
-          * `segmentationType` (`pulumi.Input[str]`)
+          * `port_id` (`pulumi.Input[str]`) - The ID of the port to be made a subport of the trunk.
+          * `segmentation_id` (`pulumi.Input[float]`) - The numeric id of the subport segment.
+          * `segmentationType` (`pulumi.Input[str]`) - The segmentation technology to use, e.g., "vlan".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

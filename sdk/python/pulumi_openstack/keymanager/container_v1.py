@@ -17,17 +17,18 @@ class ContainerV1(pulumi.CustomResource):
     accessible project wide. The `read` structure is described below.
 
       * `read` (`dict`)
-        * `created_at` (`str`) - The date the container was created.
-        * `projectAccess` (`bool`)
-        * `updated_at` (`str`) - The date the container was last updated.
-        * `users` (`list`)
+        * `created_at` (`str`) - The date the container ACL was created.
+        * `projectAccess` (`bool`) - Whether the container is accessible project wide.
+          Defaults to `true`.
+        * `updated_at` (`str`) - The date the container ACL was last updated.
+        * `users` (`list`) - The list of user IDs, which are allowed to access the
+          container, when `project_access` is set to `false`.
     """
     consumers: pulumi.Output[list]
     """
     The list of the container consumers. The structure is described below.
 
-      * `name` (`str`) - Human-readable name for the Container. Does not have
-        to be unique.
+      * `name` (`str`) - The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
       * `url` (`str`) - The consumer URL.
     """
     container_ref: pulumi.Output[str]
@@ -36,7 +37,7 @@ class ContainerV1(pulumi.CustomResource):
     """
     created_at: pulumi.Output[str]
     """
-    The date the container was created.
+    The date the container ACL was created.
     """
     creator_id: pulumi.Output[str]
     """
@@ -44,8 +45,7 @@ class ContainerV1(pulumi.CustomResource):
     """
     name: pulumi.Output[str]
     """
-    Human-readable name for the Container. Does not have
-    to be unique.
+    The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
     """
     region: pulumi.Output[str]
     """
@@ -59,9 +59,8 @@ class ContainerV1(pulumi.CustomResource):
     A set of dictionaries containing references to secrets. The structure is described
     below.
 
-      * `name` (`str`) - Human-readable name for the Container. Does not have
-        to be unique.
-      * `secret_ref` (`str`)
+      * `name` (`str`) - The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
+      * `secret_ref` (`str`) - The secret reference / where to find the secret, URL.
     """
     status: pulumi.Output[str]
     """
@@ -73,7 +72,7 @@ class ContainerV1(pulumi.CustomResource):
     """
     updated_at: pulumi.Output[str]
     """
-    The date the container was last updated.
+    The date the container ACL was last updated.
     """
     def __init__(__self__, resource_name, opts=None, acl=None, name=None, region=None, secret_refs=None, type=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -86,8 +85,7 @@ class ContainerV1(pulumi.CustomResource):
         :param pulumi.Input[dict] acl: Allows to control an access to a container. Currently only
                the `read` operation is supported. If not specified, the container is
                accessible project wide. The `read` structure is described below.
-        :param pulumi.Input[str] name: Human-readable name for the Container. Does not have
-               to be unique.
+        :param pulumi.Input[str] name: The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
         :param pulumi.Input[str] region: The region in which to obtain the V1 KeyManager client.
                A KeyManager client is needed to create a container. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
@@ -99,16 +97,17 @@ class ContainerV1(pulumi.CustomResource):
         The **acl** object supports the following:
 
           * `read` (`pulumi.Input[dict]`)
-            * `created_at` (`pulumi.Input[str]`) - The date the container was created.
-            * `projectAccess` (`pulumi.Input[bool]`)
-            * `updated_at` (`pulumi.Input[str]`) - The date the container was last updated.
-            * `users` (`pulumi.Input[list]`)
+            * `created_at` (`pulumi.Input[str]`) - The date the container ACL was created.
+            * `projectAccess` (`pulumi.Input[bool]`) - Whether the container is accessible project wide.
+              Defaults to `true`.
+            * `updated_at` (`pulumi.Input[str]`) - The date the container ACL was last updated.
+            * `users` (`pulumi.Input[list]`) - The list of user IDs, which are allowed to access the
+              container, when `project_access` is set to `false`.
 
         The **secret_refs** object supports the following:
 
-          * `name` (`pulumi.Input[str]`) - Human-readable name for the Container. Does not have
-            to be unique.
-          * `secret_ref` (`pulumi.Input[str]`)
+          * `name` (`pulumi.Input[str]`) - The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
+          * `secret_ref` (`pulumi.Input[str]`) - The secret reference / where to find the secret, URL.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -160,10 +159,9 @@ class ContainerV1(pulumi.CustomResource):
                accessible project wide. The `read` structure is described below.
         :param pulumi.Input[list] consumers: The list of the container consumers. The structure is described below.
         :param pulumi.Input[str] container_ref: The container reference / where to find the container.
-        :param pulumi.Input[str] created_at: The date the container was created.
+        :param pulumi.Input[str] created_at: The date the container ACL was created.
         :param pulumi.Input[str] creator_id: The creator of the container.
-        :param pulumi.Input[str] name: Human-readable name for the Container. Does not have
-               to be unique.
+        :param pulumi.Input[str] name: The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
         :param pulumi.Input[str] region: The region in which to obtain the V1 KeyManager client.
                A KeyManager client is needed to create a container. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
@@ -172,27 +170,27 @@ class ContainerV1(pulumi.CustomResource):
                below.
         :param pulumi.Input[str] status: The status of the container.
         :param pulumi.Input[str] type: Used to indicate the type of container. Must be one of `generic`, `rsa` or `certificate`.
-        :param pulumi.Input[str] updated_at: The date the container was last updated.
+        :param pulumi.Input[str] updated_at: The date the container ACL was last updated.
 
         The **acl** object supports the following:
 
           * `read` (`pulumi.Input[dict]`)
-            * `created_at` (`pulumi.Input[str]`) - The date the container was created.
-            * `projectAccess` (`pulumi.Input[bool]`)
-            * `updated_at` (`pulumi.Input[str]`) - The date the container was last updated.
-            * `users` (`pulumi.Input[list]`)
+            * `created_at` (`pulumi.Input[str]`) - The date the container ACL was created.
+            * `projectAccess` (`pulumi.Input[bool]`) - Whether the container is accessible project wide.
+              Defaults to `true`.
+            * `updated_at` (`pulumi.Input[str]`) - The date the container ACL was last updated.
+            * `users` (`pulumi.Input[list]`) - The list of user IDs, which are allowed to access the
+              container, when `project_access` is set to `false`.
 
         The **consumers** object supports the following:
 
-          * `name` (`pulumi.Input[str]`) - Human-readable name for the Container. Does not have
-            to be unique.
+          * `name` (`pulumi.Input[str]`) - The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
           * `url` (`pulumi.Input[str]`) - The consumer URL.
 
         The **secret_refs** object supports the following:
 
-          * `name` (`pulumi.Input[str]`) - Human-readable name for the Container. Does not have
-            to be unique.
-          * `secret_ref` (`pulumi.Input[str]`)
+          * `name` (`pulumi.Input[str]`) - The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
+          * `secret_ref` (`pulumi.Input[str]`) - The secret reference / where to find the secret, URL.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

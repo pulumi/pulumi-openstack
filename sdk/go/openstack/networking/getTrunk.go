@@ -44,25 +44,23 @@ type LookupTrunkArgs struct {
 	TrunkId *string `pulumi:"trunkId"`
 }
 
-
 // A collection of values returned by getTrunk.
 type LookupTrunkResult struct {
 	AdminStateUp *bool `pulumi:"adminStateUp"`
 	// The set of string tags applied on the trunk.
-	AllTags []string `pulumi:"allTags"`
-	Description *string `pulumi:"description"`
+	AllTags     []string `pulumi:"allTags"`
+	Description *string  `pulumi:"description"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id   string  `pulumi:"id"`
 	Name *string `pulumi:"name"`
 	// The ID of the trunk subport.
-	PortId *string `pulumi:"portId"`
-	ProjectId string `pulumi:"projectId"`
-	Region string `pulumi:"region"`
-	Status *string `pulumi:"status"`
+	PortId    *string `pulumi:"portId"`
+	ProjectId string  `pulumi:"projectId"`
+	Region    string  `pulumi:"region"`
+	Status    *string `pulumi:"status"`
 	// The set of the trunk subports. The structure of each subport is
 	// described below.
 	SubPorts []GetTrunkSubPort `pulumi:"subPorts"`
-	Tags []string `pulumi:"tags"`
-	TrunkId *string `pulumi:"trunkId"`
+	Tags     []string          `pulumi:"tags"`
+	TrunkId  *string           `pulumi:"trunkId"`
 }
-

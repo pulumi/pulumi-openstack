@@ -16,7 +16,18 @@ namespace Pulumi.OpenStack.Networking
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_floatingip_v2.html.markdown.
         /// </summary>
+        [Obsolete("Use GetFloatingIp.InvokeAsync() instead")]
         public static Task<GetFloatingIpResult> GetFloatingIp(GetFloatingIpArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetFloatingIpResult>("openstack:networking/getFloatingIp:getFloatingIp", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetFloatingIp
+    {
+        /// <summary>
+        /// Use this data source to get the ID of an available OpenStack floating IP.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_floatingip_v2.html.markdown.
+        /// </summary>
+        public static Task<GetFloatingIpResult> InvokeAsync(GetFloatingIpArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetFloatingIpResult>("openstack:networking/getFloatingIp:getFloatingIp", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

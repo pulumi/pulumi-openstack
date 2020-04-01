@@ -109,6 +109,7 @@ def get_router(admin_state_up=None,description=None,distributed=None,enable_snat
     :param bool admin_state_up: Administrative up/down status for the router (must be "true" or "false" if provided).
     :param str description: Human-readable description of the router.
     :param bool distributed: Indicates whether or not to get a distributed router.
+    :param bool enable_snat: The value that points out if the Source NAT is enabled on the router.
     :param str name: The name of the router.
     :param str region: The region in which to obtain the V2 Neutron client.
            A Neutron client is needed to retrieve router ids. If omitted, the

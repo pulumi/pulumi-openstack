@@ -37,7 +37,7 @@ namespace Pulumi.OpenStack.KeyManager
         public Output<string> ContainerRef { get; private set; } = null!;
 
         /// <summary>
-        /// The date the container was created.
+        /// The date the container ACL was created.
         /// </summary>
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
@@ -49,8 +49,7 @@ namespace Pulumi.OpenStack.KeyManager
         public Output<string> CreatorId { get; private set; } = null!;
 
         /// <summary>
-        /// Human-readable name for the Container. Does not have
-        /// to be unique.
+        /// The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -84,7 +83,7 @@ namespace Pulumi.OpenStack.KeyManager
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// The date the container was last updated.
+        /// The date the container ACL was last updated.
         /// </summary>
         [Output("updatedAt")]
         public Output<string> UpdatedAt { get; private set; } = null!;
@@ -144,8 +143,7 @@ namespace Pulumi.OpenStack.KeyManager
         public Input<Inputs.ContainerV1AclArgs>? Acl { get; set; }
 
         /// <summary>
-        /// Human-readable name for the Container. Does not have
-        /// to be unique.
+        /// The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -212,7 +210,7 @@ namespace Pulumi.OpenStack.KeyManager
         public Input<string>? ContainerRef { get; set; }
 
         /// <summary>
-        /// The date the container was created.
+        /// The date the container ACL was created.
         /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
@@ -224,8 +222,7 @@ namespace Pulumi.OpenStack.KeyManager
         public Input<string>? CreatorId { get; set; }
 
         /// <summary>
-        /// Human-readable name for the Container. Does not have
-        /// to be unique.
+        /// The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -265,7 +262,7 @@ namespace Pulumi.OpenStack.KeyManager
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// The date the container was last updated.
+        /// The date the container ACL was last updated.
         /// </summary>
         [Input("updatedAt")]
         public Input<string>? UpdatedAt { get; set; }
@@ -301,22 +298,31 @@ namespace Pulumi.OpenStack.KeyManager
     public sealed class ContainerV1AclReadArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The date the container was created.
+        /// The date the container ACL was created.
         /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
+        /// <summary>
+        /// Whether the container is accessible project wide.
+        /// Defaults to `true`.
+        /// </summary>
         [Input("projectAccess")]
         public Input<bool>? ProjectAccess { get; set; }
 
         /// <summary>
-        /// The date the container was last updated.
+        /// The date the container ACL was last updated.
         /// </summary>
         [Input("updatedAt")]
         public Input<string>? UpdatedAt { get; set; }
 
         [Input("users")]
         private InputList<string>? _users;
+
+        /// <summary>
+        /// The list of user IDs, which are allowed to access the
+        /// container, when `project_access` is set to `false`.
+        /// </summary>
         public InputList<string> Users
         {
             get => _users ?? (_users = new InputList<string>());
@@ -331,22 +337,31 @@ namespace Pulumi.OpenStack.KeyManager
     public sealed class ContainerV1AclReadGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The date the container was created.
+        /// The date the container ACL was created.
         /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
+        /// <summary>
+        /// Whether the container is accessible project wide.
+        /// Defaults to `true`.
+        /// </summary>
         [Input("projectAccess")]
         public Input<bool>? ProjectAccess { get; set; }
 
         /// <summary>
-        /// The date the container was last updated.
+        /// The date the container ACL was last updated.
         /// </summary>
         [Input("updatedAt")]
         public Input<string>? UpdatedAt { get; set; }
 
         [Input("users")]
         private InputList<string>? _users;
+
+        /// <summary>
+        /// The list of user IDs, which are allowed to access the
+        /// container, when `project_access` is set to `false`.
+        /// </summary>
         public InputList<string> Users
         {
             get => _users ?? (_users = new InputList<string>());
@@ -361,8 +376,7 @@ namespace Pulumi.OpenStack.KeyManager
     public sealed class ContainerV1ConsumersGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Human-readable name for the Container. Does not have
-        /// to be unique.
+        /// The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -381,12 +395,14 @@ namespace Pulumi.OpenStack.KeyManager
     public sealed class ContainerV1SecretRefsArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Human-readable name for the Container. Does not have
-        /// to be unique.
+        /// The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The secret reference / where to find the secret, URL.
+        /// </summary>
         [Input("secretRef", required: true)]
         public Input<string> SecretRef { get; set; } = null!;
 
@@ -398,12 +414,14 @@ namespace Pulumi.OpenStack.KeyManager
     public sealed class ContainerV1SecretRefsGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Human-readable name for the Container. Does not have
-        /// to be unique.
+        /// The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The secret reference / where to find the secret, URL.
+        /// </summary>
         [Input("secretRef", required: true)]
         public Input<string> SecretRef { get; set; } = null!;
 
@@ -432,14 +450,22 @@ namespace Pulumi.OpenStack.KeyManager
     public sealed class ContainerV1AclRead
     {
         /// <summary>
-        /// The date the container was created.
+        /// The date the container ACL was created.
         /// </summary>
         public readonly string CreatedAt;
+        /// <summary>
+        /// Whether the container is accessible project wide.
+        /// Defaults to `true`.
+        /// </summary>
         public readonly bool? ProjectAccess;
         /// <summary>
-        /// The date the container was last updated.
+        /// The date the container ACL was last updated.
         /// </summary>
         public readonly string UpdatedAt;
+        /// <summary>
+        /// The list of user IDs, which are allowed to access the
+        /// container, when `project_access` is set to `false`.
+        /// </summary>
         public readonly ImmutableArray<string> Users;
 
         [OutputConstructor]
@@ -460,8 +486,7 @@ namespace Pulumi.OpenStack.KeyManager
     public sealed class ContainerV1Consumers
     {
         /// <summary>
-        /// Human-readable name for the Container. Does not have
-        /// to be unique.
+        /// The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
         /// </summary>
         public readonly string? Name;
         /// <summary>
@@ -483,10 +508,12 @@ namespace Pulumi.OpenStack.KeyManager
     public sealed class ContainerV1SecretRefs
     {
         /// <summary>
-        /// Human-readable name for the Container. Does not have
-        /// to be unique.
+        /// The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
         /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// The secret reference / where to find the secret, URL.
+        /// </summary>
         public readonly string SecretRef;
 
         [OutputConstructor]

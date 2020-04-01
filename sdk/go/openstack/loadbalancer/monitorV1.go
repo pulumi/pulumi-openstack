@@ -278,4 +278,3 @@ type MonitorV1Args struct {
 func (MonitorV1Args) ElementType() reflect.Type {
 	return reflect.TypeOf((*monitorV1Args)(nil)).Elem()
 }
-

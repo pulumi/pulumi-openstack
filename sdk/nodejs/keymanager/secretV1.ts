@@ -57,7 +57,7 @@ export class SecretV1 extends pulumi.CustomResource {
      */
     public /*out*/ readonly contentTypes!: pulumi.Output<{[key: string]: any}>;
     /**
-     * The date the secret was created.
+     * The date the secret ACL was created.
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
@@ -113,7 +113,7 @@ export class SecretV1 extends pulumi.CustomResource {
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * The date the secret was last updated.
+     * The date the secret ACL was last updated.
      */
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
 
@@ -209,7 +209,7 @@ export interface SecretV1State {
      */
     readonly contentTypes?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The date the secret was created.
+     * The date the secret ACL was created.
      */
     readonly createdAt?: pulumi.Input<string>;
     /**
@@ -265,7 +265,7 @@ export interface SecretV1State {
      */
     readonly status?: pulumi.Input<string>;
     /**
-     * The date the secret was last updated.
+     * The date the secret ACL was last updated.
      */
     readonly updatedAt?: pulumi.Input<string>;
 }

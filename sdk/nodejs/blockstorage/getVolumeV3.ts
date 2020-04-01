@@ -47,6 +47,9 @@ export function getVolumeV3(args?: GetVolumeV3Args, opts?: pulumi.InvokeOptions)
  * A collection of arguments for invoking getVolumeV3.
  */
 export interface GetVolumeV3Args {
+    /**
+     * Indicates if the volume is bootable.
+     */
     readonly bootable?: string;
     /**
      * Metadata key/value pairs associated with the volume.
@@ -65,6 +68,9 @@ export interface GetVolumeV3Args {
      * The status of the volume.
      */
     readonly status?: string;
+    /**
+     * The type of the volume.
+     */
     readonly volumeType?: string;
 }
 

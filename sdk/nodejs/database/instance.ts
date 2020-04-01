@@ -81,7 +81,8 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly flavorId!: pulumi.Output<string>;
     /**
-     * A unique name for the resource.
+     * Database to be created on new instance. Changing this creates a
+     * new instance.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -180,7 +181,8 @@ export interface InstanceState {
      */
     readonly flavorId?: pulumi.Input<string>;
     /**
-     * A unique name for the resource.
+     * Database to be created on new instance. Changing this creates a
+     * new instance.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -230,7 +232,8 @@ export interface InstanceArgs {
      */
     readonly flavorId?: pulumi.Input<string>;
     /**
-     * A unique name for the resource.
+     * Database to be created on new instance. Changing this creates a
+     * new instance.
      */
     readonly name?: pulumi.Input<string>;
     /**

@@ -16,7 +16,18 @@ namespace Pulumi.OpenStack.Firewall
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/fw_policy_v1.html.markdown.
         /// </summary>
+        [Obsolete("Use GetPolicy.InvokeAsync() instead")]
         public static Task<GetPolicyResult> GetPolicy(GetPolicyArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetPolicyResult>("openstack:firewall/getPolicy:getPolicy", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetPolicy
+    {
+        /// <summary>
+        /// Use this data source to get firewall policy information of an available OpenStack firewall policy.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/fw_policy_v1.html.markdown.
+        /// </summary>
+        public static Task<GetPolicyResult> InvokeAsync(GetPolicyArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPolicyResult>("openstack:firewall/getPolicy:getPolicy", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

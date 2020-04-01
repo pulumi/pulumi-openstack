@@ -101,9 +101,7 @@ export class Trunk extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The ID of the port to be used as the parent port of the
-     * trunk. This is the port that should be used as the compute instance network
-     * port. Changing this creates a new trunk.
+     * The ID of the port to be made a subport of the trunk.
      */
     public readonly portId!: pulumi.Output<string>;
     /**
@@ -201,9 +199,7 @@ export interface TrunkState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The ID of the port to be used as the parent port of the
-     * trunk. This is the port that should be used as the compute instance network
-     * port. Changing this creates a new trunk.
+     * The ID of the port to be made a subport of the trunk.
      */
     readonly portId?: pulumi.Input<string>;
     /**
@@ -250,9 +246,7 @@ export interface TrunkArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The ID of the port to be used as the parent port of the
-     * trunk. This is the port that should be used as the compute instance network
-     * port. Changing this creates a new trunk.
+     * The ID of the port to be made a subport of the trunk.
      */
     readonly portId: pulumi.Input<string>;
     /**

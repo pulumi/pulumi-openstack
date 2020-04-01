@@ -640,9 +640,15 @@ namespace Pulumi.OpenStack.Networking
 
     public sealed class SubnetAllocationPoolsArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The ending address.
+        /// </summary>
         [Input("end", required: true)]
         public Input<string> End { get; set; } = null!;
 
+        /// <summary>
+        /// The starting address.
+        /// </summary>
         [Input("start", required: true)]
         public Input<string> Start { get; set; } = null!;
 
@@ -653,9 +659,15 @@ namespace Pulumi.OpenStack.Networking
 
     public sealed class SubnetAllocationPoolsCollectionArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The ending address.
+        /// </summary>
         [Input("end", required: true)]
         public Input<string> End { get; set; } = null!;
 
+        /// <summary>
+        /// The starting address.
+        /// </summary>
         [Input("start", required: true)]
         public Input<string> Start { get; set; } = null!;
 
@@ -666,9 +678,15 @@ namespace Pulumi.OpenStack.Networking
 
     public sealed class SubnetAllocationPoolsCollectionGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The ending address.
+        /// </summary>
         [Input("end", required: true)]
         public Input<string> End { get; set; } = null!;
 
+        /// <summary>
+        /// The starting address.
+        /// </summary>
         [Input("start", required: true)]
         public Input<string> Start { get; set; } = null!;
 
@@ -679,9 +697,15 @@ namespace Pulumi.OpenStack.Networking
 
     public sealed class SubnetAllocationPoolsGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The ending address.
+        /// </summary>
         [Input("end", required: true)]
         public Input<string> End { get; set; } = null!;
 
+        /// <summary>
+        /// The starting address.
+        /// </summary>
         [Input("start", required: true)]
         public Input<string> Start { get; set; } = null!;
 
@@ -692,9 +716,15 @@ namespace Pulumi.OpenStack.Networking
 
     public sealed class SubnetHostRoutesArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The destination CIDR.
+        /// </summary>
         [Input("destinationCidr", required: true)]
         public Input<string> DestinationCidr { get; set; } = null!;
 
+        /// <summary>
+        /// The next hop in the route.
+        /// </summary>
         [Input("nextHop", required: true)]
         public Input<string> NextHop { get; set; } = null!;
 
@@ -705,9 +735,15 @@ namespace Pulumi.OpenStack.Networking
 
     public sealed class SubnetHostRoutesGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The destination CIDR.
+        /// </summary>
         [Input("destinationCidr", required: true)]
         public Input<string> DestinationCidr { get; set; } = null!;
 
+        /// <summary>
+        /// The next hop in the route.
+        /// </summary>
         [Input("nextHop", required: true)]
         public Input<string> NextHop { get; set; } = null!;
 
@@ -723,7 +759,13 @@ namespace Pulumi.OpenStack.Networking
     [OutputType]
     public sealed class SubnetAllocationPools
     {
+        /// <summary>
+        /// The ending address.
+        /// </summary>
         public readonly string End;
+        /// <summary>
+        /// The starting address.
+        /// </summary>
         public readonly string Start;
 
         [OutputConstructor]
@@ -739,7 +781,13 @@ namespace Pulumi.OpenStack.Networking
     [OutputType]
     public sealed class SubnetAllocationPoolsCollection
     {
+        /// <summary>
+        /// The ending address.
+        /// </summary>
         public readonly string End;
+        /// <summary>
+        /// The starting address.
+        /// </summary>
         public readonly string Start;
 
         [OutputConstructor]
@@ -755,7 +803,13 @@ namespace Pulumi.OpenStack.Networking
     [OutputType]
     public sealed class SubnetHostRoutes
     {
+        /// <summary>
+        /// The destination CIDR.
+        /// </summary>
         public readonly string DestinationCidr;
+        /// <summary>
+        /// The next hop in the route.
+        /// </summary>
         public readonly string NextHop;
 
         [OutputConstructor]

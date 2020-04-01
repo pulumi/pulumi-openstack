@@ -31,7 +31,6 @@ type LookupClusterTemplateArgs struct {
 	Region *string `pulumi:"region"`
 }
 
-
 // A collection of values returned by getClusterTemplate.
 type LookupClusterTemplateResult struct {
 	// The API server port for the Container Orchestration
@@ -113,4 +112,3 @@ type LookupClusterTemplateResult struct {
 	// cluster nodes.
 	VolumeDriver string `pulumi:"volumeDriver"`
 }
-

@@ -143,6 +143,7 @@ def get_share(description=None,export_location_path=None,is_public=None,metadata
     :param dict metadata: One or more metadata key and value pairs as a dictionary of
            strings.
     :param str name: The name of the share.
+    :param str region: The region in which to obtain the V2 Shared File System client.
     :param str share_network_id: The UUID of the share's share network.
     :param str snapshot_id: The UUID of the share's base snapshot.
     :param str status: A share status filter. A valid value is `creating`,

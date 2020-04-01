@@ -43,16 +43,31 @@ class Instance(pulumi.CustomResource):
     following [reference](https://docs.openstack.org/nova/latest/user/block-device-mapping.html)
     for more information.
 
-      * `bootIndex` (`float`)
-      * `deleteOnTermination` (`bool`)
-      * `destinationType` (`str`)
-      * `deviceType` (`str`)
-      * `diskBus` (`str`)
+      * `bootIndex` (`float`) - The boot index of the volume. It defaults to 0.
+        Changing this creates a new server.
+      * `deleteOnTermination` (`bool`) - Delete the volume / block device upon
+        termination of the instance. Defaults to false. Changing this creates a
+        new server.
+      * `destinationType` (`str`) - The type that gets created. Possible values
+        are "volume" and "local". Changing this creates a new server.
+      * `deviceType` (`str`) - The low-level device type that will be used. Most
+        common thing is to leave this empty. Changing this creates a new server.
+      * `diskBus` (`str`) - The low-level disk bus that will be used. Most common
+        thing is to leave this empty. Changing this creates a new server.
       * `guestFormat` (`str`)
-      * `sourceType` (`str`)
-      * `uuid` (`str`)
-      * `volumeSize` (`float`)
-      * `volume_type` (`str`)
+      * `sourceType` (`str`) - The source type of the device. Must be one of
+        "blank", "image", "volume", or "snapshot". Changing this creates a new
+        server.
+      * `uuid` (`str`) - The UUID of
+        the image, volume, or snapshot. Changing this creates a new server.
+      * `volumeSize` (`float`) - The size of the volume to create (in gigabytes). Required
+        in the following combinations: source=image and destination=volume,
+        source=blank and destination=local, and source=blank and destination=volume.
+        Changing this creates a new server.
+      * `volume_type` (`str`) - The volume type that will be used, for example SSD
+        or HDD storage. The available options depend on how your specific OpenStack
+        cloud is configured and what classes of storage are provided. Changing this
+        creates a new server.
     """
     config_drive: pulumi.Output[bool]
     """
@@ -100,7 +115,8 @@ class Instance(pulumi.CustomResource):
     """
     name: pulumi.Output[str]
     """
-    A unique name for the resource.
+    The human-readable
+    name of the network. Changing this creates a new server.
     """
     networks: pulumi.Output[list]
     """
@@ -108,13 +124,18 @@ class Instance(pulumi.CustomResource):
     instance. The network object structure is documented below. Changing this
     creates a new server.
 
-      * `accessNetwork` (`bool`)
-      * `fixedIpV4` (`str`)
+      * `accessNetwork` (`bool`) - Specifies if this network should be used for
+        provisioning access. Accepts true or false. Defaults to false.
+      * `fixedIpV4` (`str`) - Specifies a fixed IPv4 address to be used on this
+        network. Changing this creates a new server.
       * `fixedIpV6` (`str`)
       * `mac` (`str`)
-      * `name` (`str`) - A unique name for the resource.
-      * `port` (`str`)
-      * `uuid` (`str`)
+      * `name` (`str`) - The human-readable
+        name of the network. Changing this creates a new server.
+      * `port` (`str`) - The port UUID of a
+        network to attach to the server. Changing this creates a new server.
+      * `uuid` (`str`) - The UUID of
+        the image, volume, or snapshot. Changing this creates a new server.
     """
     personalities: pulumi.Output[list]
     """
@@ -122,8 +143,8 @@ class Instance(pulumi.CustomResource):
     defining one or more files and their contents. The personality structure
     is described below.
 
-      * `content` (`str`)
-      * `file` (`str`)
+      * `content` (`str`) - The contents of the file. Limited to 255 bytes.
+      * `file` (`str`) - The absolute path of the destination file.
     """
     power_state: pulumi.Output[str]
     """
@@ -143,13 +164,23 @@ class Instance(pulumi.CustomResource):
     Provide the Nova scheduler with hints on how
     the instance should be launched. The available hints are described below.
 
-      * `additionalProperties` (`dict`)
-      * `buildNearHostIp` (`str`)
-      * `differentHosts` (`list`)
-      * `group` (`str`)
-      * `queries` (`list`)
-      * `sameHosts` (`list`)
-      * `targetCell` (`str`)
+      * `additionalProperties` (`dict`) - Arbitrary key/value pairs of additional
+        properties to pass to the scheduler.
+      * `buildNearHostIp` (`str`) - An IP Address in CIDR form. The instance
+        will be placed on a compute node that is in the same subnet.
+      * `differentHosts` (`list`) - A list of instance UUIDs. The instance will
+        be scheduled on a different host than all other instances.
+      * `group` (`str`) - A UUID of a Server Group. The instance will be placed
+        into that group.
+      * `queries` (`list`) - A conditional query that a compute node must pass in
+        order to host an instance. The query must use the `JsonFilter` syntax
+        which is described
+        [here](https://docs.openstack.org/nova/latest/admin/configuration/schedulers.html#jsonfilter).
+        At this time, only simple queries are supported. Compound queries using
+        `and`, `or`, or `not` are not supported. An example of a simple query is:
+      * `sameHosts` (`list`) - A list of instance UUIDs. The instance will be
+        scheduled on the same host of those specified.
+      * `targetCell` (`str`) - The name of a cell to host the instance.
     """
     security_groups: pulumi.Output[list]
     """
@@ -180,7 +211,10 @@ class Instance(pulumi.CustomResource):
     Map of additional vendor-specific options.
     Supported options are described below.
 
-      * `ignoreResizeConfirmation` (`bool`)
+      * `ignoreResizeConfirmation` (`bool`) - Boolean to control whether
+        to ignore manual confirmation of the instance resizing. This can be helpful
+        to work with some OpenStack clouds which automatically confirm resizing of
+        instances after some timeout.
     """
     def __init__(__self__, resource_name, opts=None, access_ip_v4=None, access_ip_v6=None, admin_pass=None, availability_zone=None, block_devices=None, config_drive=None, flavor_id=None, flavor_name=None, force_delete=None, image_id=None, image_name=None, key_pair=None, metadata=None, name=None, networks=None, personalities=None, power_state=None, region=None, scheduler_hints=None, security_groups=None, stop_before_destroy=None, tags=None, user_data=None, vendor_options=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -235,7 +269,8 @@ class Instance(pulumi.CustomResource):
                Changing this creates a new server.
         :param pulumi.Input[dict] metadata: Metadata key/value pairs to make available from
                within the instance. Changing this updates the existing server metadata.
-        :param pulumi.Input[str] name: A unique name for the resource.
+        :param pulumi.Input[str] name: The human-readable
+               name of the network. Changing this creates a new server.
         :param pulumi.Input[list] networks: An array of one or more networks to attach to the
                instance. The network object structure is documented below. Changing this
                creates a new server.
@@ -268,45 +303,78 @@ class Instance(pulumi.CustomResource):
 
         The **block_devices** object supports the following:
 
-          * `bootIndex` (`pulumi.Input[float]`)
-          * `deleteOnTermination` (`pulumi.Input[bool]`)
-          * `destinationType` (`pulumi.Input[str]`)
-          * `deviceType` (`pulumi.Input[str]`)
-          * `diskBus` (`pulumi.Input[str]`)
+          * `bootIndex` (`pulumi.Input[float]`) - The boot index of the volume. It defaults to 0.
+            Changing this creates a new server.
+          * `deleteOnTermination` (`pulumi.Input[bool]`) - Delete the volume / block device upon
+            termination of the instance. Defaults to false. Changing this creates a
+            new server.
+          * `destinationType` (`pulumi.Input[str]`) - The type that gets created. Possible values
+            are "volume" and "local". Changing this creates a new server.
+          * `deviceType` (`pulumi.Input[str]`) - The low-level device type that will be used. Most
+            common thing is to leave this empty. Changing this creates a new server.
+          * `diskBus` (`pulumi.Input[str]`) - The low-level disk bus that will be used. Most common
+            thing is to leave this empty. Changing this creates a new server.
           * `guestFormat` (`pulumi.Input[str]`)
-          * `sourceType` (`pulumi.Input[str]`)
-          * `uuid` (`pulumi.Input[str]`)
-          * `volumeSize` (`pulumi.Input[float]`)
-          * `volume_type` (`pulumi.Input[str]`)
+          * `sourceType` (`pulumi.Input[str]`) - The source type of the device. Must be one of
+            "blank", "image", "volume", or "snapshot". Changing this creates a new
+            server.
+          * `uuid` (`pulumi.Input[str]`) - The UUID of
+            the image, volume, or snapshot. Changing this creates a new server.
+          * `volumeSize` (`pulumi.Input[float]`) - The size of the volume to create (in gigabytes). Required
+            in the following combinations: source=image and destination=volume,
+            source=blank and destination=local, and source=blank and destination=volume.
+            Changing this creates a new server.
+          * `volume_type` (`pulumi.Input[str]`) - The volume type that will be used, for example SSD
+            or HDD storage. The available options depend on how your specific OpenStack
+            cloud is configured and what classes of storage are provided. Changing this
+            creates a new server.
 
         The **networks** object supports the following:
 
-          * `accessNetwork` (`pulumi.Input[bool]`)
-          * `fixedIpV4` (`pulumi.Input[str]`)
+          * `accessNetwork` (`pulumi.Input[bool]`) - Specifies if this network should be used for
+            provisioning access. Accepts true or false. Defaults to false.
+          * `fixedIpV4` (`pulumi.Input[str]`) - Specifies a fixed IPv4 address to be used on this
+            network. Changing this creates a new server.
           * `fixedIpV6` (`pulumi.Input[str]`)
           * `mac` (`pulumi.Input[str]`)
-          * `name` (`pulumi.Input[str]`) - A unique name for the resource.
-          * `port` (`pulumi.Input[str]`)
-          * `uuid` (`pulumi.Input[str]`)
+          * `name` (`pulumi.Input[str]`) - The human-readable
+            name of the network. Changing this creates a new server.
+          * `port` (`pulumi.Input[str]`) - The port UUID of a
+            network to attach to the server. Changing this creates a new server.
+          * `uuid` (`pulumi.Input[str]`) - The UUID of
+            the image, volume, or snapshot. Changing this creates a new server.
 
         The **personalities** object supports the following:
 
-          * `content` (`pulumi.Input[str]`)
-          * `file` (`pulumi.Input[str]`)
+          * `content` (`pulumi.Input[str]`) - The contents of the file. Limited to 255 bytes.
+          * `file` (`pulumi.Input[str]`) - The absolute path of the destination file.
 
         The **scheduler_hints** object supports the following:
 
-          * `additionalProperties` (`pulumi.Input[dict]`)
-          * `buildNearHostIp` (`pulumi.Input[str]`)
-          * `differentHosts` (`pulumi.Input[list]`)
-          * `group` (`pulumi.Input[str]`)
-          * `queries` (`pulumi.Input[list]`)
-          * `sameHosts` (`pulumi.Input[list]`)
-          * `targetCell` (`pulumi.Input[str]`)
+          * `additionalProperties` (`pulumi.Input[dict]`) - Arbitrary key/value pairs of additional
+            properties to pass to the scheduler.
+          * `buildNearHostIp` (`pulumi.Input[str]`) - An IP Address in CIDR form. The instance
+            will be placed on a compute node that is in the same subnet.
+          * `differentHosts` (`pulumi.Input[list]`) - A list of instance UUIDs. The instance will
+            be scheduled on a different host than all other instances.
+          * `group` (`pulumi.Input[str]`) - A UUID of a Server Group. The instance will be placed
+            into that group.
+          * `queries` (`pulumi.Input[list]`) - A conditional query that a compute node must pass in
+            order to host an instance. The query must use the `JsonFilter` syntax
+            which is described
+            [here](https://docs.openstack.org/nova/latest/admin/configuration/schedulers.html#jsonfilter).
+            At this time, only simple queries are supported. Compound queries using
+            `and`, `or`, or `not` are not supported. An example of a simple query is:
+          * `sameHosts` (`pulumi.Input[list]`) - A list of instance UUIDs. The instance will be
+            scheduled on the same host of those specified.
+          * `targetCell` (`pulumi.Input[str]`) - The name of a cell to host the instance.
 
         The **vendor_options** object supports the following:
 
-          * `ignoreResizeConfirmation` (`pulumi.Input[bool]`)
+          * `ignoreResizeConfirmation` (`pulumi.Input[bool]`) - Boolean to control whether
+            to ignore manual confirmation of the instance resizing. This can be helpful
+            to work with some OpenStack clouds which automatically confirm resizing of
+            instances after some timeout.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -400,7 +468,8 @@ class Instance(pulumi.CustomResource):
                Changing this creates a new server.
         :param pulumi.Input[dict] metadata: Metadata key/value pairs to make available from
                within the instance. Changing this updates the existing server metadata.
-        :param pulumi.Input[str] name: A unique name for the resource.
+        :param pulumi.Input[str] name: The human-readable
+               name of the network. Changing this creates a new server.
         :param pulumi.Input[list] networks: An array of one or more networks to attach to the
                instance. The network object structure is documented below. Changing this
                creates a new server.
@@ -433,45 +502,78 @@ class Instance(pulumi.CustomResource):
 
         The **block_devices** object supports the following:
 
-          * `bootIndex` (`pulumi.Input[float]`)
-          * `deleteOnTermination` (`pulumi.Input[bool]`)
-          * `destinationType` (`pulumi.Input[str]`)
-          * `deviceType` (`pulumi.Input[str]`)
-          * `diskBus` (`pulumi.Input[str]`)
+          * `bootIndex` (`pulumi.Input[float]`) - The boot index of the volume. It defaults to 0.
+            Changing this creates a new server.
+          * `deleteOnTermination` (`pulumi.Input[bool]`) - Delete the volume / block device upon
+            termination of the instance. Defaults to false. Changing this creates a
+            new server.
+          * `destinationType` (`pulumi.Input[str]`) - The type that gets created. Possible values
+            are "volume" and "local". Changing this creates a new server.
+          * `deviceType` (`pulumi.Input[str]`) - The low-level device type that will be used. Most
+            common thing is to leave this empty. Changing this creates a new server.
+          * `diskBus` (`pulumi.Input[str]`) - The low-level disk bus that will be used. Most common
+            thing is to leave this empty. Changing this creates a new server.
           * `guestFormat` (`pulumi.Input[str]`)
-          * `sourceType` (`pulumi.Input[str]`)
-          * `uuid` (`pulumi.Input[str]`)
-          * `volumeSize` (`pulumi.Input[float]`)
-          * `volume_type` (`pulumi.Input[str]`)
+          * `sourceType` (`pulumi.Input[str]`) - The source type of the device. Must be one of
+            "blank", "image", "volume", or "snapshot". Changing this creates a new
+            server.
+          * `uuid` (`pulumi.Input[str]`) - The UUID of
+            the image, volume, or snapshot. Changing this creates a new server.
+          * `volumeSize` (`pulumi.Input[float]`) - The size of the volume to create (in gigabytes). Required
+            in the following combinations: source=image and destination=volume,
+            source=blank and destination=local, and source=blank and destination=volume.
+            Changing this creates a new server.
+          * `volume_type` (`pulumi.Input[str]`) - The volume type that will be used, for example SSD
+            or HDD storage. The available options depend on how your specific OpenStack
+            cloud is configured and what classes of storage are provided. Changing this
+            creates a new server.
 
         The **networks** object supports the following:
 
-          * `accessNetwork` (`pulumi.Input[bool]`)
-          * `fixedIpV4` (`pulumi.Input[str]`)
+          * `accessNetwork` (`pulumi.Input[bool]`) - Specifies if this network should be used for
+            provisioning access. Accepts true or false. Defaults to false.
+          * `fixedIpV4` (`pulumi.Input[str]`) - Specifies a fixed IPv4 address to be used on this
+            network. Changing this creates a new server.
           * `fixedIpV6` (`pulumi.Input[str]`)
           * `mac` (`pulumi.Input[str]`)
-          * `name` (`pulumi.Input[str]`) - A unique name for the resource.
-          * `port` (`pulumi.Input[str]`)
-          * `uuid` (`pulumi.Input[str]`)
+          * `name` (`pulumi.Input[str]`) - The human-readable
+            name of the network. Changing this creates a new server.
+          * `port` (`pulumi.Input[str]`) - The port UUID of a
+            network to attach to the server. Changing this creates a new server.
+          * `uuid` (`pulumi.Input[str]`) - The UUID of
+            the image, volume, or snapshot. Changing this creates a new server.
 
         The **personalities** object supports the following:
 
-          * `content` (`pulumi.Input[str]`)
-          * `file` (`pulumi.Input[str]`)
+          * `content` (`pulumi.Input[str]`) - The contents of the file. Limited to 255 bytes.
+          * `file` (`pulumi.Input[str]`) - The absolute path of the destination file.
 
         The **scheduler_hints** object supports the following:
 
-          * `additionalProperties` (`pulumi.Input[dict]`)
-          * `buildNearHostIp` (`pulumi.Input[str]`)
-          * `differentHosts` (`pulumi.Input[list]`)
-          * `group` (`pulumi.Input[str]`)
-          * `queries` (`pulumi.Input[list]`)
-          * `sameHosts` (`pulumi.Input[list]`)
-          * `targetCell` (`pulumi.Input[str]`)
+          * `additionalProperties` (`pulumi.Input[dict]`) - Arbitrary key/value pairs of additional
+            properties to pass to the scheduler.
+          * `buildNearHostIp` (`pulumi.Input[str]`) - An IP Address in CIDR form. The instance
+            will be placed on a compute node that is in the same subnet.
+          * `differentHosts` (`pulumi.Input[list]`) - A list of instance UUIDs. The instance will
+            be scheduled on a different host than all other instances.
+          * `group` (`pulumi.Input[str]`) - A UUID of a Server Group. The instance will be placed
+            into that group.
+          * `queries` (`pulumi.Input[list]`) - A conditional query that a compute node must pass in
+            order to host an instance. The query must use the `JsonFilter` syntax
+            which is described
+            [here](https://docs.openstack.org/nova/latest/admin/configuration/schedulers.html#jsonfilter).
+            At this time, only simple queries are supported. Compound queries using
+            `and`, `or`, or `not` are not supported. An example of a simple query is:
+          * `sameHosts` (`pulumi.Input[list]`) - A list of instance UUIDs. The instance will be
+            scheduled on the same host of those specified.
+          * `targetCell` (`pulumi.Input[str]`) - The name of a cell to host the instance.
 
         The **vendor_options** object supports the following:
 
-          * `ignoreResizeConfirmation` (`pulumi.Input[bool]`)
+          * `ignoreResizeConfirmation` (`pulumi.Input[bool]`) - Boolean to control whether
+            to ignore manual confirmation of the instance resizing. This can be helpful
+            to work with some OpenStack clouds which automatically confirm resizing of
+            instances after some timeout.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

@@ -174,38 +174,38 @@ import (
 type ClusterTemplate struct {
 	pulumi.CustomResourceState
 
-	ApiserverPort pulumi.IntPtrOutput `pulumi:"apiserverPort"`
-	ClusterDistro pulumi.StringOutput `pulumi:"clusterDistro"`
-	Coe pulumi.StringOutput `pulumi:"coe"`
-	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	DnsNameserver pulumi.StringPtrOutput `pulumi:"dnsNameserver"`
+	ApiserverPort       pulumi.IntPtrOutput    `pulumi:"apiserverPort"`
+	ClusterDistro       pulumi.StringOutput    `pulumi:"clusterDistro"`
+	Coe                 pulumi.StringOutput    `pulumi:"coe"`
+	CreatedAt           pulumi.StringOutput    `pulumi:"createdAt"`
+	DnsNameserver       pulumi.StringPtrOutput `pulumi:"dnsNameserver"`
 	DockerStorageDriver pulumi.StringPtrOutput `pulumi:"dockerStorageDriver"`
-	DockerVolumeSize pulumi.IntPtrOutput `pulumi:"dockerVolumeSize"`
-	ExternalNetworkId pulumi.StringPtrOutput `pulumi:"externalNetworkId"`
-	FixedNetwork pulumi.StringPtrOutput `pulumi:"fixedNetwork"`
-	FixedSubnet pulumi.StringPtrOutput `pulumi:"fixedSubnet"`
-	Flavor pulumi.StringPtrOutput `pulumi:"flavor"`
-	FloatingIpEnabled pulumi.BoolPtrOutput `pulumi:"floatingIpEnabled"`
-	HttpProxy pulumi.StringPtrOutput `pulumi:"httpProxy"`
-	HttpsProxy pulumi.StringPtrOutput `pulumi:"httpsProxy"`
-	Image pulumi.StringOutput `pulumi:"image"`
-	InsecureRegistry pulumi.StringPtrOutput `pulumi:"insecureRegistry"`
-	KeypairId pulumi.StringPtrOutput `pulumi:"keypairId"`
-	Labels pulumi.MapOutput `pulumi:"labels"`
-	MasterFlavor pulumi.StringPtrOutput `pulumi:"masterFlavor"`
-	MasterLbEnabled pulumi.BoolPtrOutput `pulumi:"masterLbEnabled"`
-	Name pulumi.StringOutput `pulumi:"name"`
-	NetworkDriver pulumi.StringOutput `pulumi:"networkDriver"`
-	NoProxy pulumi.StringPtrOutput `pulumi:"noProxy"`
-	ProjectId pulumi.StringOutput `pulumi:"projectId"`
-	Public pulumi.BoolPtrOutput `pulumi:"public"`
-	Region pulumi.StringOutput `pulumi:"region"`
-	RegistryEnabled pulumi.BoolPtrOutput `pulumi:"registryEnabled"`
-	ServerType pulumi.StringOutput `pulumi:"serverType"`
-	TlsDisabled pulumi.BoolPtrOutput `pulumi:"tlsDisabled"`
-	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
-	UserId pulumi.StringOutput `pulumi:"userId"`
-	VolumeDriver pulumi.StringPtrOutput `pulumi:"volumeDriver"`
+	DockerVolumeSize    pulumi.IntPtrOutput    `pulumi:"dockerVolumeSize"`
+	ExternalNetworkId   pulumi.StringPtrOutput `pulumi:"externalNetworkId"`
+	FixedNetwork        pulumi.StringPtrOutput `pulumi:"fixedNetwork"`
+	FixedSubnet         pulumi.StringPtrOutput `pulumi:"fixedSubnet"`
+	Flavor              pulumi.StringPtrOutput `pulumi:"flavor"`
+	FloatingIpEnabled   pulumi.BoolPtrOutput   `pulumi:"floatingIpEnabled"`
+	HttpProxy           pulumi.StringPtrOutput `pulumi:"httpProxy"`
+	HttpsProxy          pulumi.StringPtrOutput `pulumi:"httpsProxy"`
+	Image               pulumi.StringOutput    `pulumi:"image"`
+	InsecureRegistry    pulumi.StringPtrOutput `pulumi:"insecureRegistry"`
+	KeypairId           pulumi.StringPtrOutput `pulumi:"keypairId"`
+	Labels              pulumi.MapOutput       `pulumi:"labels"`
+	MasterFlavor        pulumi.StringPtrOutput `pulumi:"masterFlavor"`
+	MasterLbEnabled     pulumi.BoolPtrOutput   `pulumi:"masterLbEnabled"`
+	Name                pulumi.StringOutput    `pulumi:"name"`
+	NetworkDriver       pulumi.StringOutput    `pulumi:"networkDriver"`
+	NoProxy             pulumi.StringPtrOutput `pulumi:"noProxy"`
+	ProjectId           pulumi.StringOutput    `pulumi:"projectId"`
+	Public              pulumi.BoolPtrOutput   `pulumi:"public"`
+	Region              pulumi.StringOutput    `pulumi:"region"`
+	RegistryEnabled     pulumi.BoolPtrOutput   `pulumi:"registryEnabled"`
+	ServerType          pulumi.StringOutput    `pulumi:"serverType"`
+	TlsDisabled         pulumi.BoolPtrOutput   `pulumi:"tlsDisabled"`
+	UpdatedAt           pulumi.StringOutput    `pulumi:"updatedAt"`
+	UserId              pulumi.StringOutput    `pulumi:"userId"`
+	VolumeDriver        pulumi.StringPtrOutput `pulumi:"volumeDriver"`
 }
 
 // NewClusterTemplate registers a new resource with the given unique name, arguments, and options.
@@ -242,73 +242,73 @@ func GetClusterTemplate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ClusterTemplate resources.
 type clusterTemplateState struct {
-	ApiserverPort *int `pulumi:"apiserverPort"`
-	ClusterDistro *string `pulumi:"clusterDistro"`
-	Coe *string `pulumi:"coe"`
-	CreatedAt *string `pulumi:"createdAt"`
-	DnsNameserver *string `pulumi:"dnsNameserver"`
-	DockerStorageDriver *string `pulumi:"dockerStorageDriver"`
-	DockerVolumeSize *int `pulumi:"dockerVolumeSize"`
-	ExternalNetworkId *string `pulumi:"externalNetworkId"`
-	FixedNetwork *string `pulumi:"fixedNetwork"`
-	FixedSubnet *string `pulumi:"fixedSubnet"`
-	Flavor *string `pulumi:"flavor"`
-	FloatingIpEnabled *bool `pulumi:"floatingIpEnabled"`
-	HttpProxy *string `pulumi:"httpProxy"`
-	HttpsProxy *string `pulumi:"httpsProxy"`
-	Image *string `pulumi:"image"`
-	InsecureRegistry *string `pulumi:"insecureRegistry"`
-	KeypairId *string `pulumi:"keypairId"`
-	Labels map[string]interface{} `pulumi:"labels"`
-	MasterFlavor *string `pulumi:"masterFlavor"`
-	MasterLbEnabled *bool `pulumi:"masterLbEnabled"`
-	Name *string `pulumi:"name"`
-	NetworkDriver *string `pulumi:"networkDriver"`
-	NoProxy *string `pulumi:"noProxy"`
-	ProjectId *string `pulumi:"projectId"`
-	Public *bool `pulumi:"public"`
-	Region *string `pulumi:"region"`
-	RegistryEnabled *bool `pulumi:"registryEnabled"`
-	ServerType *string `pulumi:"serverType"`
-	TlsDisabled *bool `pulumi:"tlsDisabled"`
-	UpdatedAt *string `pulumi:"updatedAt"`
-	UserId *string `pulumi:"userId"`
-	VolumeDriver *string `pulumi:"volumeDriver"`
+	ApiserverPort       *int                   `pulumi:"apiserverPort"`
+	ClusterDistro       *string                `pulumi:"clusterDistro"`
+	Coe                 *string                `pulumi:"coe"`
+	CreatedAt           *string                `pulumi:"createdAt"`
+	DnsNameserver       *string                `pulumi:"dnsNameserver"`
+	DockerStorageDriver *string                `pulumi:"dockerStorageDriver"`
+	DockerVolumeSize    *int                   `pulumi:"dockerVolumeSize"`
+	ExternalNetworkId   *string                `pulumi:"externalNetworkId"`
+	FixedNetwork        *string                `pulumi:"fixedNetwork"`
+	FixedSubnet         *string                `pulumi:"fixedSubnet"`
+	Flavor              *string                `pulumi:"flavor"`
+	FloatingIpEnabled   *bool                  `pulumi:"floatingIpEnabled"`
+	HttpProxy           *string                `pulumi:"httpProxy"`
+	HttpsProxy          *string                `pulumi:"httpsProxy"`
+	Image               *string                `pulumi:"image"`
+	InsecureRegistry    *string                `pulumi:"insecureRegistry"`
+	KeypairId           *string                `pulumi:"keypairId"`
+	Labels              map[string]interface{} `pulumi:"labels"`
+	MasterFlavor        *string                `pulumi:"masterFlavor"`
+	MasterLbEnabled     *bool                  `pulumi:"masterLbEnabled"`
+	Name                *string                `pulumi:"name"`
+	NetworkDriver       *string                `pulumi:"networkDriver"`
+	NoProxy             *string                `pulumi:"noProxy"`
+	ProjectId           *string                `pulumi:"projectId"`
+	Public              *bool                  `pulumi:"public"`
+	Region              *string                `pulumi:"region"`
+	RegistryEnabled     *bool                  `pulumi:"registryEnabled"`
+	ServerType          *string                `pulumi:"serverType"`
+	TlsDisabled         *bool                  `pulumi:"tlsDisabled"`
+	UpdatedAt           *string                `pulumi:"updatedAt"`
+	UserId              *string                `pulumi:"userId"`
+	VolumeDriver        *string                `pulumi:"volumeDriver"`
 }
 
 type ClusterTemplateState struct {
-	ApiserverPort pulumi.IntPtrInput
-	ClusterDistro pulumi.StringPtrInput
-	Coe pulumi.StringPtrInput
-	CreatedAt pulumi.StringPtrInput
-	DnsNameserver pulumi.StringPtrInput
+	ApiserverPort       pulumi.IntPtrInput
+	ClusterDistro       pulumi.StringPtrInput
+	Coe                 pulumi.StringPtrInput
+	CreatedAt           pulumi.StringPtrInput
+	DnsNameserver       pulumi.StringPtrInput
 	DockerStorageDriver pulumi.StringPtrInput
-	DockerVolumeSize pulumi.IntPtrInput
-	ExternalNetworkId pulumi.StringPtrInput
-	FixedNetwork pulumi.StringPtrInput
-	FixedSubnet pulumi.StringPtrInput
-	Flavor pulumi.StringPtrInput
-	FloatingIpEnabled pulumi.BoolPtrInput
-	HttpProxy pulumi.StringPtrInput
-	HttpsProxy pulumi.StringPtrInput
-	Image pulumi.StringPtrInput
-	InsecureRegistry pulumi.StringPtrInput
-	KeypairId pulumi.StringPtrInput
-	Labels pulumi.MapInput
-	MasterFlavor pulumi.StringPtrInput
-	MasterLbEnabled pulumi.BoolPtrInput
-	Name pulumi.StringPtrInput
-	NetworkDriver pulumi.StringPtrInput
-	NoProxy pulumi.StringPtrInput
-	ProjectId pulumi.StringPtrInput
-	Public pulumi.BoolPtrInput
-	Region pulumi.StringPtrInput
-	RegistryEnabled pulumi.BoolPtrInput
-	ServerType pulumi.StringPtrInput
-	TlsDisabled pulumi.BoolPtrInput
-	UpdatedAt pulumi.StringPtrInput
-	UserId pulumi.StringPtrInput
-	VolumeDriver pulumi.StringPtrInput
+	DockerVolumeSize    pulumi.IntPtrInput
+	ExternalNetworkId   pulumi.StringPtrInput
+	FixedNetwork        pulumi.StringPtrInput
+	FixedSubnet         pulumi.StringPtrInput
+	Flavor              pulumi.StringPtrInput
+	FloatingIpEnabled   pulumi.BoolPtrInput
+	HttpProxy           pulumi.StringPtrInput
+	HttpsProxy          pulumi.StringPtrInput
+	Image               pulumi.StringPtrInput
+	InsecureRegistry    pulumi.StringPtrInput
+	KeypairId           pulumi.StringPtrInput
+	Labels              pulumi.MapInput
+	MasterFlavor        pulumi.StringPtrInput
+	MasterLbEnabled     pulumi.BoolPtrInput
+	Name                pulumi.StringPtrInput
+	NetworkDriver       pulumi.StringPtrInput
+	NoProxy             pulumi.StringPtrInput
+	ProjectId           pulumi.StringPtrInput
+	Public              pulumi.BoolPtrInput
+	Region              pulumi.StringPtrInput
+	RegistryEnabled     pulumi.BoolPtrInput
+	ServerType          pulumi.StringPtrInput
+	TlsDisabled         pulumi.BoolPtrInput
+	UpdatedAt           pulumi.StringPtrInput
+	UserId              pulumi.StringPtrInput
+	VolumeDriver        pulumi.StringPtrInput
 }
 
 func (ClusterTemplateState) ElementType() reflect.Type {
@@ -316,69 +316,68 @@ func (ClusterTemplateState) ElementType() reflect.Type {
 }
 
 type clusterTemplateArgs struct {
-	ApiserverPort *int `pulumi:"apiserverPort"`
-	ClusterDistro *string `pulumi:"clusterDistro"`
-	Coe string `pulumi:"coe"`
-	DnsNameserver *string `pulumi:"dnsNameserver"`
-	DockerStorageDriver *string `pulumi:"dockerStorageDriver"`
-	DockerVolumeSize *int `pulumi:"dockerVolumeSize"`
-	ExternalNetworkId *string `pulumi:"externalNetworkId"`
-	FixedNetwork *string `pulumi:"fixedNetwork"`
-	FixedSubnet *string `pulumi:"fixedSubnet"`
-	Flavor *string `pulumi:"flavor"`
-	FloatingIpEnabled *bool `pulumi:"floatingIpEnabled"`
-	HttpProxy *string `pulumi:"httpProxy"`
-	HttpsProxy *string `pulumi:"httpsProxy"`
-	Image string `pulumi:"image"`
-	InsecureRegistry *string `pulumi:"insecureRegistry"`
-	KeypairId *string `pulumi:"keypairId"`
-	Labels map[string]interface{} `pulumi:"labels"`
-	MasterFlavor *string `pulumi:"masterFlavor"`
-	MasterLbEnabled *bool `pulumi:"masterLbEnabled"`
-	Name *string `pulumi:"name"`
-	NetworkDriver *string `pulumi:"networkDriver"`
-	NoProxy *string `pulumi:"noProxy"`
-	Public *bool `pulumi:"public"`
-	Region *string `pulumi:"region"`
-	RegistryEnabled *bool `pulumi:"registryEnabled"`
-	ServerType *string `pulumi:"serverType"`
-	TlsDisabled *bool `pulumi:"tlsDisabled"`
-	VolumeDriver *string `pulumi:"volumeDriver"`
+	ApiserverPort       *int                   `pulumi:"apiserverPort"`
+	ClusterDistro       *string                `pulumi:"clusterDistro"`
+	Coe                 string                 `pulumi:"coe"`
+	DnsNameserver       *string                `pulumi:"dnsNameserver"`
+	DockerStorageDriver *string                `pulumi:"dockerStorageDriver"`
+	DockerVolumeSize    *int                   `pulumi:"dockerVolumeSize"`
+	ExternalNetworkId   *string                `pulumi:"externalNetworkId"`
+	FixedNetwork        *string                `pulumi:"fixedNetwork"`
+	FixedSubnet         *string                `pulumi:"fixedSubnet"`
+	Flavor              *string                `pulumi:"flavor"`
+	FloatingIpEnabled   *bool                  `pulumi:"floatingIpEnabled"`
+	HttpProxy           *string                `pulumi:"httpProxy"`
+	HttpsProxy          *string                `pulumi:"httpsProxy"`
+	Image               string                 `pulumi:"image"`
+	InsecureRegistry    *string                `pulumi:"insecureRegistry"`
+	KeypairId           *string                `pulumi:"keypairId"`
+	Labels              map[string]interface{} `pulumi:"labels"`
+	MasterFlavor        *string                `pulumi:"masterFlavor"`
+	MasterLbEnabled     *bool                  `pulumi:"masterLbEnabled"`
+	Name                *string                `pulumi:"name"`
+	NetworkDriver       *string                `pulumi:"networkDriver"`
+	NoProxy             *string                `pulumi:"noProxy"`
+	Public              *bool                  `pulumi:"public"`
+	Region              *string                `pulumi:"region"`
+	RegistryEnabled     *bool                  `pulumi:"registryEnabled"`
+	ServerType          *string                `pulumi:"serverType"`
+	TlsDisabled         *bool                  `pulumi:"tlsDisabled"`
+	VolumeDriver        *string                `pulumi:"volumeDriver"`
 }
 
 // The set of arguments for constructing a ClusterTemplate resource.
 type ClusterTemplateArgs struct {
-	ApiserverPort pulumi.IntPtrInput
-	ClusterDistro pulumi.StringPtrInput
-	Coe pulumi.StringInput
-	DnsNameserver pulumi.StringPtrInput
+	ApiserverPort       pulumi.IntPtrInput
+	ClusterDistro       pulumi.StringPtrInput
+	Coe                 pulumi.StringInput
+	DnsNameserver       pulumi.StringPtrInput
 	DockerStorageDriver pulumi.StringPtrInput
-	DockerVolumeSize pulumi.IntPtrInput
-	ExternalNetworkId pulumi.StringPtrInput
-	FixedNetwork pulumi.StringPtrInput
-	FixedSubnet pulumi.StringPtrInput
-	Flavor pulumi.StringPtrInput
-	FloatingIpEnabled pulumi.BoolPtrInput
-	HttpProxy pulumi.StringPtrInput
-	HttpsProxy pulumi.StringPtrInput
-	Image pulumi.StringInput
-	InsecureRegistry pulumi.StringPtrInput
-	KeypairId pulumi.StringPtrInput
-	Labels pulumi.MapInput
-	MasterFlavor pulumi.StringPtrInput
-	MasterLbEnabled pulumi.BoolPtrInput
-	Name pulumi.StringPtrInput
-	NetworkDriver pulumi.StringPtrInput
-	NoProxy pulumi.StringPtrInput
-	Public pulumi.BoolPtrInput
-	Region pulumi.StringPtrInput
-	RegistryEnabled pulumi.BoolPtrInput
-	ServerType pulumi.StringPtrInput
-	TlsDisabled pulumi.BoolPtrInput
-	VolumeDriver pulumi.StringPtrInput
+	DockerVolumeSize    pulumi.IntPtrInput
+	ExternalNetworkId   pulumi.StringPtrInput
+	FixedNetwork        pulumi.StringPtrInput
+	FixedSubnet         pulumi.StringPtrInput
+	Flavor              pulumi.StringPtrInput
+	FloatingIpEnabled   pulumi.BoolPtrInput
+	HttpProxy           pulumi.StringPtrInput
+	HttpsProxy          pulumi.StringPtrInput
+	Image               pulumi.StringInput
+	InsecureRegistry    pulumi.StringPtrInput
+	KeypairId           pulumi.StringPtrInput
+	Labels              pulumi.MapInput
+	MasterFlavor        pulumi.StringPtrInput
+	MasterLbEnabled     pulumi.BoolPtrInput
+	Name                pulumi.StringPtrInput
+	NetworkDriver       pulumi.StringPtrInput
+	NoProxy             pulumi.StringPtrInput
+	Public              pulumi.BoolPtrInput
+	Region              pulumi.StringPtrInput
+	RegistryEnabled     pulumi.BoolPtrInput
+	ServerType          pulumi.StringPtrInput
+	TlsDisabled         pulumi.BoolPtrInput
+	VolumeDriver        pulumi.StringPtrInput
 }
 
 func (ClusterTemplateArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*clusterTemplateArgs)(nil)).Elem()
 }
-

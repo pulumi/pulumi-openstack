@@ -69,6 +69,9 @@ export interface GetProjectArgs {
      * The parent of this project.
      */
     readonly parentId?: string;
+    /**
+     * The region the project is located in.
+     */
     readonly region?: string;
 }
 

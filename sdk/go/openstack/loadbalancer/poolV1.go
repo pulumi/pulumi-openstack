@@ -46,8 +46,8 @@ type PoolV1 struct {
 	// located. Only members that are on this network can be added to the pool.
 	// Changing this creates a new pool.
 	SubnetId pulumi.StringOutput `pulumi:"subnetId"`
-	// The owner of the pool. Required if admin wants to
-	// create a pool member for another tenant. Changing this creates a new pool.
+	// The owner of the member. Required if admin wants to
+	// create a pool member for another tenant. Changing this creates a new member.
 	TenantId pulumi.StringOutput `pulumi:"tenantId"`
 }
 
@@ -113,8 +113,8 @@ type poolV1State struct {
 	// located. Only members that are on this network can be added to the pool.
 	// Changing this creates a new pool.
 	SubnetId *string `pulumi:"subnetId"`
-	// The owner of the pool. Required if admin wants to
-	// create a pool member for another tenant. Changing this creates a new pool.
+	// The owner of the member. Required if admin wants to
+	// create a pool member for another tenant. Changing this creates a new member.
 	TenantId *string `pulumi:"tenantId"`
 }
 
@@ -144,8 +144,8 @@ type PoolV1State struct {
 	// located. Only members that are on this network can be added to the pool.
 	// Changing this creates a new pool.
 	SubnetId pulumi.StringPtrInput
-	// The owner of the pool. Required if admin wants to
-	// create a pool member for another tenant. Changing this creates a new pool.
+	// The owner of the member. Required if admin wants to
+	// create a pool member for another tenant. Changing this creates a new member.
 	TenantId pulumi.StringPtrInput
 }
 
@@ -179,8 +179,8 @@ type poolV1Args struct {
 	// located. Only members that are on this network can be added to the pool.
 	// Changing this creates a new pool.
 	SubnetId string `pulumi:"subnetId"`
-	// The owner of the pool. Required if admin wants to
-	// create a pool member for another tenant. Changing this creates a new pool.
+	// The owner of the member. Required if admin wants to
+	// create a pool member for another tenant. Changing this creates a new member.
 	TenantId *string `pulumi:"tenantId"`
 }
 
@@ -211,12 +211,11 @@ type PoolV1Args struct {
 	// located. Only members that are on this network can be added to the pool.
 	// Changing this creates a new pool.
 	SubnetId pulumi.StringInput
-	// The owner of the pool. Required if admin wants to
-	// create a pool member for another tenant. Changing this creates a new pool.
+	// The owner of the member. Required if admin wants to
+	// create a pool member for another tenant. Changing this creates a new member.
 	TenantId pulumi.StringPtrInput
 }
 
 func (PoolV1Args) ElementType() reflect.Type {
 	return reflect.TypeOf((*poolV1Args)(nil)).Elem()
 }
-

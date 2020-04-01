@@ -34,7 +34,6 @@ type LookupQosBandwidthLimitRuleArgs struct {
 	Region *string `pulumi:"region"`
 }
 
-
 // A collection of values returned by getQosBandwidthLimitRule.
 type LookupQosBandwidthLimitRuleResult struct {
 	// See Argument Reference above.
@@ -50,4 +49,3 @@ type LookupQosBandwidthLimitRuleResult struct {
 	// See Argument Reference above.
 	Region string `pulumi:"region"`
 }
-

@@ -28,7 +28,6 @@ type GetAvailbilityZonesArgs struct {
 	Region *string `pulumi:"region"`
 }
 
-
 // A collection of values returned by getAvailbilityZones.
 type GetAvailbilityZonesResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
@@ -38,4 +37,3 @@ type GetAvailbilityZonesResult struct {
 	// See Argument Reference above.
 	Region string `pulumi:"region"`
 }
-

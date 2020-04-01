@@ -20,17 +20,21 @@ class Instance(pulumi.CustomResource):
     An array of database name, charset and collate. The database
     object structure is documented below.
 
-      * `charset` (`str`)
-      * `collate` (`str`)
-      * `name` (`str`) - A unique name for the resource.
+      * `charset` (`str`) - Database character set. Changing this creates a
+        new instance.
+      * `collate` (`str`) - Database collation. Changing this creates a new instance.
+      * `name` (`str`) - Database to be created on new instance. Changing this creates a
+        new instance.
     """
     datastore: pulumi.Output[dict]
     """
     An array of database engine type and version. The datastore
     object structure is documented below. Changing this creates a new instance.
 
-      * `type` (`str`)
-      * `version` (`str`)
+      * `type` (`str`) - Database engine type to be used in new instance. Changing this
+        creates a new instance.
+      * `version` (`str`) - Version of database engine type to be used in new instance.
+        Changing this creates a new instance.
     """
     flavor_id: pulumi.Output[str]
     """
@@ -39,7 +43,8 @@ class Instance(pulumi.CustomResource):
     """
     name: pulumi.Output[str]
     """
-    A unique name for the resource.
+    Database to be created on new instance. Changing this creates a
+    new instance.
     """
     networks: pulumi.Output[list]
     """
@@ -47,10 +52,14 @@ class Instance(pulumi.CustomResource):
     instance. The network object structure is documented below. Changing this
     creates a new instance.
 
-      * `fixedIpV4` (`str`)
-      * `fixedIpV6` (`str`)
-      * `port` (`str`)
-      * `uuid` (`str`)
+      * `fixedIpV4` (`str`) - Specifies a fixed IPv4 address to be used on this
+        network. Changing this creates a new instance.
+      * `fixedIpV6` (`str`) - Specifies a fixed IPv6 address to be used on this
+        network. Changing this creates a new instance.
+      * `port` (`str`) - The port UUID of a
+        network to attach to the instance. Changing this creates a new instance.
+      * `uuid` (`str`) - The network UUID to
+        attach to the instance. Changing this creates a new instance.
     """
     region: pulumi.Output[str]
     """
@@ -66,10 +75,14 @@ class Instance(pulumi.CustomResource):
     An array of username, password, host and databases. The user
     object structure is documented below.
 
-      * `databases` (`list`)
-      * `host` (`str`)
-      * `name` (`str`) - A unique name for the resource.
-      * `password` (`str`)
+      * `databases` (`list`) - A list of databases that user will have access to. If not specified, 
+        user has access to all databases on th einstance. Changing this creates a new instance.
+      * `host` (`str`) - An ip address or % sign indicating what ip addresses can connect with
+        this user credentials. Changing this creates a new instance.
+      * `name` (`str`) - Database to be created on new instance. Changing this creates a
+        new instance.
+      * `password` (`str`) - User's password. Changing this creates a
+        new instance.
     """
     def __init__(__self__, resource_name, opts=None, configuration_id=None, databases=None, datastore=None, flavor_id=None, name=None, networks=None, region=None, size=None, users=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -87,7 +100,8 @@ class Instance(pulumi.CustomResource):
                object structure is documented below. Changing this creates a new instance.
         :param pulumi.Input[str] flavor_id: The flavor ID of the desired flavor for the instance.
                Changing this creates new instance.
-        :param pulumi.Input[str] name: A unique name for the resource.
+        :param pulumi.Input[str] name: Database to be created on new instance. Changing this creates a
+               new instance.
         :param pulumi.Input[list] networks: An array of one or more networks to attach to the
                instance. The network object structure is documented below. Changing this
                creates a new instance.
@@ -99,28 +113,40 @@ class Instance(pulumi.CustomResource):
 
         The **databases** object supports the following:
 
-          * `charset` (`pulumi.Input[str]`)
-          * `collate` (`pulumi.Input[str]`)
-          * `name` (`pulumi.Input[str]`) - A unique name for the resource.
+          * `charset` (`pulumi.Input[str]`) - Database character set. Changing this creates a
+            new instance.
+          * `collate` (`pulumi.Input[str]`) - Database collation. Changing this creates a new instance.
+          * `name` (`pulumi.Input[str]`) - Database to be created on new instance. Changing this creates a
+            new instance.
 
         The **datastore** object supports the following:
 
-          * `type` (`pulumi.Input[str]`)
-          * `version` (`pulumi.Input[str]`)
+          * `type` (`pulumi.Input[str]`) - Database engine type to be used in new instance. Changing this
+            creates a new instance.
+          * `version` (`pulumi.Input[str]`) - Version of database engine type to be used in new instance.
+            Changing this creates a new instance.
 
         The **networks** object supports the following:
 
-          * `fixedIpV4` (`pulumi.Input[str]`)
-          * `fixedIpV6` (`pulumi.Input[str]`)
-          * `port` (`pulumi.Input[str]`)
-          * `uuid` (`pulumi.Input[str]`)
+          * `fixedIpV4` (`pulumi.Input[str]`) - Specifies a fixed IPv4 address to be used on this
+            network. Changing this creates a new instance.
+          * `fixedIpV6` (`pulumi.Input[str]`) - Specifies a fixed IPv6 address to be used on this
+            network. Changing this creates a new instance.
+          * `port` (`pulumi.Input[str]`) - The port UUID of a
+            network to attach to the instance. Changing this creates a new instance.
+          * `uuid` (`pulumi.Input[str]`) - The network UUID to
+            attach to the instance. Changing this creates a new instance.
 
         The **users** object supports the following:
 
-          * `databases` (`pulumi.Input[list]`)
-          * `host` (`pulumi.Input[str]`)
-          * `name` (`pulumi.Input[str]`) - A unique name for the resource.
-          * `password` (`pulumi.Input[str]`)
+          * `databases` (`pulumi.Input[list]`) - A list of databases that user will have access to. If not specified, 
+            user has access to all databases on th einstance. Changing this creates a new instance.
+          * `host` (`pulumi.Input[str]`) - An ip address or % sign indicating what ip addresses can connect with
+            this user credentials. Changing this creates a new instance.
+          * `name` (`pulumi.Input[str]`) - Database to be created on new instance. Changing this creates a
+            new instance.
+          * `password` (`pulumi.Input[str]`) - User's password. Changing this creates a
+            new instance.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -175,7 +201,8 @@ class Instance(pulumi.CustomResource):
                object structure is documented below. Changing this creates a new instance.
         :param pulumi.Input[str] flavor_id: The flavor ID of the desired flavor for the instance.
                Changing this creates new instance.
-        :param pulumi.Input[str] name: A unique name for the resource.
+        :param pulumi.Input[str] name: Database to be created on new instance. Changing this creates a
+               new instance.
         :param pulumi.Input[list] networks: An array of one or more networks to attach to the
                instance. The network object structure is documented below. Changing this
                creates a new instance.
@@ -187,28 +214,40 @@ class Instance(pulumi.CustomResource):
 
         The **databases** object supports the following:
 
-          * `charset` (`pulumi.Input[str]`)
-          * `collate` (`pulumi.Input[str]`)
-          * `name` (`pulumi.Input[str]`) - A unique name for the resource.
+          * `charset` (`pulumi.Input[str]`) - Database character set. Changing this creates a
+            new instance.
+          * `collate` (`pulumi.Input[str]`) - Database collation. Changing this creates a new instance.
+          * `name` (`pulumi.Input[str]`) - Database to be created on new instance. Changing this creates a
+            new instance.
 
         The **datastore** object supports the following:
 
-          * `type` (`pulumi.Input[str]`)
-          * `version` (`pulumi.Input[str]`)
+          * `type` (`pulumi.Input[str]`) - Database engine type to be used in new instance. Changing this
+            creates a new instance.
+          * `version` (`pulumi.Input[str]`) - Version of database engine type to be used in new instance.
+            Changing this creates a new instance.
 
         The **networks** object supports the following:
 
-          * `fixedIpV4` (`pulumi.Input[str]`)
-          * `fixedIpV6` (`pulumi.Input[str]`)
-          * `port` (`pulumi.Input[str]`)
-          * `uuid` (`pulumi.Input[str]`)
+          * `fixedIpV4` (`pulumi.Input[str]`) - Specifies a fixed IPv4 address to be used on this
+            network. Changing this creates a new instance.
+          * `fixedIpV6` (`pulumi.Input[str]`) - Specifies a fixed IPv6 address to be used on this
+            network. Changing this creates a new instance.
+          * `port` (`pulumi.Input[str]`) - The port UUID of a
+            network to attach to the instance. Changing this creates a new instance.
+          * `uuid` (`pulumi.Input[str]`) - The network UUID to
+            attach to the instance. Changing this creates a new instance.
 
         The **users** object supports the following:
 
-          * `databases` (`pulumi.Input[list]`)
-          * `host` (`pulumi.Input[str]`)
-          * `name` (`pulumi.Input[str]`) - A unique name for the resource.
-          * `password` (`pulumi.Input[str]`)
+          * `databases` (`pulumi.Input[list]`) - A list of databases that user will have access to. If not specified, 
+            user has access to all databases on th einstance. Changing this creates a new instance.
+          * `host` (`pulumi.Input[str]`) - An ip address or % sign indicating what ip addresses can connect with
+            this user credentials. Changing this creates a new instance.
+          * `name` (`pulumi.Input[str]`) - Database to be created on new instance. Changing this creates a
+            new instance.
+          * `password` (`pulumi.Input[str]`) - User's password. Changing this creates a
+            new instance.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

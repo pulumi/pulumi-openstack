@@ -16,7 +16,18 @@ namespace Pulumi.OpenStack.Compute
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/compute_flavor_v2.html.markdown.
         /// </summary>
+        [Obsolete("Use GetFlavor.InvokeAsync() instead")]
         public static Task<GetFlavorResult> GetFlavor(GetFlavorArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetFlavorResult>("openstack:compute/getFlavor:getFlavor", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetFlavor
+    {
+        /// <summary>
+        /// Use this data source to get the ID of an available OpenStack flavor.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/compute_flavor_v2.html.markdown.
+        /// </summary>
+        public static Task<GetFlavorResult> InvokeAsync(GetFlavorArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetFlavorResult>("openstack:compute/getFlavor:getFlavor", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

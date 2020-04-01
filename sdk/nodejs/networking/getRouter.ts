@@ -63,6 +63,9 @@ export interface GetRouterArgs {
      * Indicates whether or not to get a distributed router.
      */
     readonly distributed?: boolean;
+    /**
+     * The value that points out if the Source NAT is enabled on the router.
+     */
     readonly enableSnat?: boolean;
     /**
      * The name of the router.

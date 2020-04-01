@@ -236,4 +236,3 @@ type VolumeV1Args struct {
 func (VolumeV1Args) ElementType() reflect.Type {
 	return reflect.TypeOf((*volumeV1Args)(nil)).Elem()
 }
-

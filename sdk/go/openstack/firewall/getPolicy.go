@@ -34,7 +34,6 @@ type LookupPolicyArgs struct {
 	TenantId *string `pulumi:"tenantId"`
 }
 
-
 // A collection of values returned by getPolicy.
 type LookupPolicyResult struct {
 	// The audit status of the firewall policy.
@@ -56,4 +55,3 @@ type LookupPolicyResult struct {
 	// See Argument Reference above.
 	TenantId string `pulumi:"tenantId"`
 }
-

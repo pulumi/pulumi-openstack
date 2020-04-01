@@ -12,8 +12,11 @@ import (
 )
 
 type NetworkSegment struct {
+	// The type of physical network.
 	NetworkType *string `pulumi:"networkType"`
+	// The physical network where this network is implemented.
 	PhysicalNetwork *string `pulumi:"physicalNetwork"`
+	// An isolated segment on the physical network.
 	SegmentationId *int `pulumi:"segmentationId"`
 }
 
@@ -25,8 +28,11 @@ type NetworkSegmentInput interface {
 }
 
 type NetworkSegmentArgs struct {
+	// The type of physical network.
 	NetworkType pulumi.StringPtrInput `pulumi:"networkType"`
+	// The physical network where this network is implemented.
 	PhysicalNetwork pulumi.StringPtrInput `pulumi:"physicalNetwork"`
+	// An isolated segment on the physical network.
 	SegmentationId pulumi.IntPtrInput `pulumi:"segmentationId"`
 }
 
@@ -63,7 +69,7 @@ func (i NetworkSegmentArray) ToNetworkSegmentArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkSegmentArrayOutput)
 }
 
-type NetworkSegmentOutput struct { *pulumi.OutputState }
+type NetworkSegmentOutput struct{ *pulumi.OutputState }
 
 func (NetworkSegmentOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*NetworkSegment)(nil)).Elem()
@@ -77,19 +83,22 @@ func (o NetworkSegmentOutput) ToNetworkSegmentOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The type of physical network.
 func (o NetworkSegmentOutput) NetworkType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v NetworkSegment) *string { return v.NetworkType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v NetworkSegment) *string { return v.NetworkType }).(pulumi.StringPtrOutput)
 }
 
+// The physical network where this network is implemented.
 func (o NetworkSegmentOutput) PhysicalNetwork() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v NetworkSegment) *string { return v.PhysicalNetwork }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v NetworkSegment) *string { return v.PhysicalNetwork }).(pulumi.StringPtrOutput)
 }
 
+// An isolated segment on the physical network.
 func (o NetworkSegmentOutput) SegmentationId() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v NetworkSegment) *int { return v.SegmentationId }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v NetworkSegment) *int { return v.SegmentationId }).(pulumi.IntPtrOutput)
 }
 
-type NetworkSegmentArrayOutput struct { *pulumi.OutputState}
+type NetworkSegmentArrayOutput struct{ *pulumi.OutputState }
 
 func (NetworkSegmentArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]NetworkSegment)(nil)).Elem()
@@ -104,15 +113,15 @@ func (o NetworkSegmentArrayOutput) ToNetworkSegmentArrayOutputWithContext(ctx co
 }
 
 func (o NetworkSegmentArrayOutput) Index(i pulumi.IntInput) NetworkSegmentOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) NetworkSegment {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkSegment {
 		return vs[0].([]NetworkSegment)[vs[1].(int)]
 	}).(NetworkSegmentOutput)
 }
 
 type PortAllowedAddressPair struct {
+	// The additional IP address.
 	IpAddress string `pulumi:"ipAddress"`
-	// Specify a specific MAC address for the port. Changing
-	// this creates a new port.
+	// The additional MAC address.
 	MacAddress *string `pulumi:"macAddress"`
 }
 
@@ -124,9 +133,9 @@ type PortAllowedAddressPairInput interface {
 }
 
 type PortAllowedAddressPairArgs struct {
+	// The additional IP address.
 	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
-	// Specify a specific MAC address for the port. Changing
-	// this creates a new port.
+	// The additional MAC address.
 	MacAddress pulumi.StringPtrInput `pulumi:"macAddress"`
 }
 
@@ -163,7 +172,7 @@ func (i PortAllowedAddressPairArray) ToPortAllowedAddressPairArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(PortAllowedAddressPairArrayOutput)
 }
 
-type PortAllowedAddressPairOutput struct { *pulumi.OutputState }
+type PortAllowedAddressPairOutput struct{ *pulumi.OutputState }
 
 func (PortAllowedAddressPairOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*PortAllowedAddressPair)(nil)).Elem()
@@ -177,17 +186,17 @@ func (o PortAllowedAddressPairOutput) ToPortAllowedAddressPairOutputWithContext(
 	return o
 }
 
+// The additional IP address.
 func (o PortAllowedAddressPairOutput) IpAddress() pulumi.StringOutput {
-	return o.ApplyT(func (v PortAllowedAddressPair) string { return v.IpAddress }).(pulumi.StringOutput)
+	return o.ApplyT(func(v PortAllowedAddressPair) string { return v.IpAddress }).(pulumi.StringOutput)
 }
 
-// Specify a specific MAC address for the port. Changing
-// this creates a new port.
+// The additional MAC address.
 func (o PortAllowedAddressPairOutput) MacAddress() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v PortAllowedAddressPair) *string { return v.MacAddress }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v PortAllowedAddressPair) *string { return v.MacAddress }).(pulumi.StringPtrOutput)
 }
 
-type PortAllowedAddressPairArrayOutput struct { *pulumi.OutputState}
+type PortAllowedAddressPairArrayOutput struct{ *pulumi.OutputState }
 
 func (PortAllowedAddressPairArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]PortAllowedAddressPair)(nil)).Elem()
@@ -202,16 +211,25 @@ func (o PortAllowedAddressPairArrayOutput) ToPortAllowedAddressPairArrayOutputWi
 }
 
 func (o PortAllowedAddressPairArrayOutput) Index(i pulumi.IntInput) PortAllowedAddressPairOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) PortAllowedAddressPair {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PortAllowedAddressPair {
 		return vs[0].([]PortAllowedAddressPair)[vs[1].(int)]
 	}).(PortAllowedAddressPairOutput)
 }
 
 type PortBinding struct {
+	// The ID of the host to allocate port on.
 	HostId *string `pulumi:"hostId"`
+	// Custom data to be passed as `binding:profile`. Data
+	// must be passed as JSON.
 	Profile *string `pulumi:"profile"`
+	// A map of JSON strings containing additional
+	// details for this specific binding.
 	VifDetails map[string]interface{} `pulumi:"vifDetails"`
+	// The VNIC type of the port binding.
 	VifType *string `pulumi:"vifType"`
+	// VNIC type for the port. Can either be `direct`,
+	// `direct-physical`, `macvtap`, `normal`, `baremetal` or `virtio-forwarder`.
+	// Default value is `normal`.
 	VnicType *string `pulumi:"vnicType"`
 }
 
@@ -223,10 +241,19 @@ type PortBindingInput interface {
 }
 
 type PortBindingArgs struct {
+	// The ID of the host to allocate port on.
 	HostId pulumi.StringPtrInput `pulumi:"hostId"`
+	// Custom data to be passed as `binding:profile`. Data
+	// must be passed as JSON.
 	Profile pulumi.StringPtrInput `pulumi:"profile"`
+	// A map of JSON strings containing additional
+	// details for this specific binding.
 	VifDetails pulumi.MapInput `pulumi:"vifDetails"`
+	// The VNIC type of the port binding.
 	VifType pulumi.StringPtrInput `pulumi:"vifType"`
+	// VNIC type for the port. Can either be `direct`,
+	// `direct-physical`, `macvtap`, `normal`, `baremetal` or `virtio-forwarder`.
+	// Default value is `normal`.
 	VnicType pulumi.StringPtrInput `pulumi:"vnicType"`
 }
 
@@ -259,7 +286,8 @@ type PortBindingPtrInput interface {
 
 type portBindingPtrType PortBindingArgs
 
-func PortBindingPtr(v *PortBindingArgs) PortBindingPtrInput {	return (*portBindingPtrType)(v)
+func PortBindingPtr(v *PortBindingArgs) PortBindingPtrInput {
+	return (*portBindingPtrType)(v)
 }
 
 func (*portBindingPtrType) ElementType() reflect.Type {
@@ -274,7 +302,7 @@ func (i *portBindingPtrType) ToPortBindingPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(PortBindingPtrOutput)
 }
 
-type PortBindingOutput struct { *pulumi.OutputState }
+type PortBindingOutput struct{ *pulumi.OutputState }
 
 func (PortBindingOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*PortBinding)(nil)).Elem()
@@ -297,27 +325,37 @@ func (o PortBindingOutput) ToPortBindingPtrOutputWithContext(ctx context.Context
 		return &v
 	}).(PortBindingPtrOutput)
 }
+
+// The ID of the host to allocate port on.
 func (o PortBindingOutput) HostId() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v PortBinding) *string { return v.HostId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v PortBinding) *string { return v.HostId }).(pulumi.StringPtrOutput)
 }
 
+// Custom data to be passed as `binding:profile`. Data
+// must be passed as JSON.
 func (o PortBindingOutput) Profile() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v PortBinding) *string { return v.Profile }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v PortBinding) *string { return v.Profile }).(pulumi.StringPtrOutput)
 }
 
+// A map of JSON strings containing additional
+// details for this specific binding.
 func (o PortBindingOutput) VifDetails() pulumi.MapOutput {
-	return o.ApplyT(func (v PortBinding) map[string]interface{} { return v.VifDetails }).(pulumi.MapOutput)
+	return o.ApplyT(func(v PortBinding) map[string]interface{} { return v.VifDetails }).(pulumi.MapOutput)
 }
 
+// The VNIC type of the port binding.
 func (o PortBindingOutput) VifType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v PortBinding) *string { return v.VifType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v PortBinding) *string { return v.VifType }).(pulumi.StringPtrOutput)
 }
 
+// VNIC type for the port. Can either be `direct`,
+// `direct-physical`, `macvtap`, `normal`, `baremetal` or `virtio-forwarder`.
+// Default value is `normal`.
 func (o PortBindingOutput) VnicType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v PortBinding) *string { return v.VnicType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v PortBinding) *string { return v.VnicType }).(pulumi.StringPtrOutput)
 }
 
-type PortBindingPtrOutput struct { *pulumi.OutputState}
+type PortBindingPtrOutput struct{ *pulumi.OutputState }
 
 func (PortBindingPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**PortBinding)(nil)).Elem()
@@ -332,34 +370,44 @@ func (o PortBindingPtrOutput) ToPortBindingPtrOutputWithContext(ctx context.Cont
 }
 
 func (o PortBindingPtrOutput) Elem() PortBindingOutput {
-	return o.ApplyT(func (v *PortBinding) PortBinding { return *v }).(PortBindingOutput)
+	return o.ApplyT(func(v *PortBinding) PortBinding { return *v }).(PortBindingOutput)
 }
 
+// The ID of the host to allocate port on.
 func (o PortBindingPtrOutput) HostId() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v PortBinding) *string { return v.HostId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v PortBinding) *string { return v.HostId }).(pulumi.StringPtrOutput)
 }
 
+// Custom data to be passed as `binding:profile`. Data
+// must be passed as JSON.
 func (o PortBindingPtrOutput) Profile() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v PortBinding) *string { return v.Profile }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v PortBinding) *string { return v.Profile }).(pulumi.StringPtrOutput)
 }
 
+// A map of JSON strings containing additional
+// details for this specific binding.
 func (o PortBindingPtrOutput) VifDetails() pulumi.MapOutput {
-	return o.ApplyT(func (v PortBinding) map[string]interface{} { return v.VifDetails }).(pulumi.MapOutput)
+	return o.ApplyT(func(v PortBinding) map[string]interface{} { return v.VifDetails }).(pulumi.MapOutput)
 }
 
+// The VNIC type of the port binding.
 func (o PortBindingPtrOutput) VifType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v PortBinding) *string { return v.VifType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v PortBinding) *string { return v.VifType }).(pulumi.StringPtrOutput)
 }
 
+// VNIC type for the port. Can either be `direct`,
+// `direct-physical`, `macvtap`, `normal`, `baremetal` or `virtio-forwarder`.
+// Default value is `normal`.
 func (o PortBindingPtrOutput) VnicType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v PortBinding) *string { return v.VnicType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v PortBinding) *string { return v.VnicType }).(pulumi.StringPtrOutput)
 }
 
 type PortExtraDhcpOption struct {
+	// IP protocol version. Defaults to 4.
 	IpVersion *int `pulumi:"ipVersion"`
-	// A unique name for the port. Changing this
-	// updates the `name` of an existing port.
+	// Name of the DHCP option.
 	Name string `pulumi:"name"`
+	// Value of the DHCP option.
 	Value string `pulumi:"value"`
 }
 
@@ -371,10 +419,11 @@ type PortExtraDhcpOptionInput interface {
 }
 
 type PortExtraDhcpOptionArgs struct {
+	// IP protocol version. Defaults to 4.
 	IpVersion pulumi.IntPtrInput `pulumi:"ipVersion"`
-	// A unique name for the port. Changing this
-	// updates the `name` of an existing port.
+	// Name of the DHCP option.
 	Name pulumi.StringInput `pulumi:"name"`
+	// Value of the DHCP option.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -411,7 +460,7 @@ func (i PortExtraDhcpOptionArray) ToPortExtraDhcpOptionArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(PortExtraDhcpOptionArrayOutput)
 }
 
-type PortExtraDhcpOptionOutput struct { *pulumi.OutputState }
+type PortExtraDhcpOptionOutput struct{ *pulumi.OutputState }
 
 func (PortExtraDhcpOptionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*PortExtraDhcpOption)(nil)).Elem()
@@ -425,21 +474,22 @@ func (o PortExtraDhcpOptionOutput) ToPortExtraDhcpOptionOutputWithContext(ctx co
 	return o
 }
 
+// IP protocol version. Defaults to 4.
 func (o PortExtraDhcpOptionOutput) IpVersion() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v PortExtraDhcpOption) *int { return v.IpVersion }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v PortExtraDhcpOption) *int { return v.IpVersion }).(pulumi.IntPtrOutput)
 }
 
-// A unique name for the port. Changing this
-// updates the `name` of an existing port.
+// Name of the DHCP option.
 func (o PortExtraDhcpOptionOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v PortExtraDhcpOption) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v PortExtraDhcpOption) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Value of the DHCP option.
 func (o PortExtraDhcpOptionOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func (v PortExtraDhcpOption) string { return v.Value }).(pulumi.StringOutput)
+	return o.ApplyT(func(v PortExtraDhcpOption) string { return v.Value }).(pulumi.StringOutput)
 }
 
-type PortExtraDhcpOptionArrayOutput struct { *pulumi.OutputState}
+type PortExtraDhcpOptionArrayOutput struct{ *pulumi.OutputState }
 
 func (PortExtraDhcpOptionArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]PortExtraDhcpOption)(nil)).Elem()
@@ -454,13 +504,16 @@ func (o PortExtraDhcpOptionArrayOutput) ToPortExtraDhcpOptionArrayOutputWithCont
 }
 
 func (o PortExtraDhcpOptionArrayOutput) Index(i pulumi.IntInput) PortExtraDhcpOptionOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) PortExtraDhcpOption {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PortExtraDhcpOption {
 		return vs[0].([]PortExtraDhcpOption)[vs[1].(int)]
 	}).(PortExtraDhcpOptionOutput)
 }
 
 type PortFixedIp struct {
+	// The additional IP address.
 	IpAddress *string `pulumi:"ipAddress"`
+	// Subnet in which to allocate IP address for
+	// this port.
 	SubnetId string `pulumi:"subnetId"`
 }
 
@@ -472,7 +525,10 @@ type PortFixedIpInput interface {
 }
 
 type PortFixedIpArgs struct {
+	// The additional IP address.
 	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
+	// Subnet in which to allocate IP address for
+	// this port.
 	SubnetId pulumi.StringInput `pulumi:"subnetId"`
 }
 
@@ -509,7 +565,7 @@ func (i PortFixedIpArray) ToPortFixedIpArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(PortFixedIpArrayOutput)
 }
 
-type PortFixedIpOutput struct { *pulumi.OutputState }
+type PortFixedIpOutput struct{ *pulumi.OutputState }
 
 func (PortFixedIpOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*PortFixedIp)(nil)).Elem()
@@ -523,15 +579,18 @@ func (o PortFixedIpOutput) ToPortFixedIpOutputWithContext(ctx context.Context) P
 	return o
 }
 
+// The additional IP address.
 func (o PortFixedIpOutput) IpAddress() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v PortFixedIp) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v PortFixedIp) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
 }
 
+// Subnet in which to allocate IP address for
+// this port.
 func (o PortFixedIpOutput) SubnetId() pulumi.StringOutput {
-	return o.ApplyT(func (v PortFixedIp) string { return v.SubnetId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v PortFixedIp) string { return v.SubnetId }).(pulumi.StringOutput)
 }
 
-type PortFixedIpArrayOutput struct { *pulumi.OutputState}
+type PortFixedIpArrayOutput struct{ *pulumi.OutputState }
 
 func (PortFixedIpArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]PortFixedIp)(nil)).Elem()
@@ -546,13 +605,15 @@ func (o PortFixedIpArrayOutput) ToPortFixedIpArrayOutputWithContext(ctx context.
 }
 
 func (o PortFixedIpArrayOutput) Index(i pulumi.IntInput) PortFixedIpOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) PortFixedIp {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PortFixedIp {
 		return vs[0].([]PortFixedIp)[vs[1].(int)]
 	}).(PortFixedIpOutput)
 }
 
 type RouterExternalFixedIp struct {
+	// The IP address to set on the router.
 	IpAddress *string `pulumi:"ipAddress"`
+	// Subnet in which the fixed IP belongs to.
 	SubnetId *string `pulumi:"subnetId"`
 }
 
@@ -564,7 +625,9 @@ type RouterExternalFixedIpInput interface {
 }
 
 type RouterExternalFixedIpArgs struct {
+	// The IP address to set on the router.
 	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
+	// Subnet in which the fixed IP belongs to.
 	SubnetId pulumi.StringPtrInput `pulumi:"subnetId"`
 }
 
@@ -601,7 +664,7 @@ func (i RouterExternalFixedIpArray) ToRouterExternalFixedIpArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(RouterExternalFixedIpArrayOutput)
 }
 
-type RouterExternalFixedIpOutput struct { *pulumi.OutputState }
+type RouterExternalFixedIpOutput struct{ *pulumi.OutputState }
 
 func (RouterExternalFixedIpOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*RouterExternalFixedIp)(nil)).Elem()
@@ -615,15 +678,17 @@ func (o RouterExternalFixedIpOutput) ToRouterExternalFixedIpOutputWithContext(ct
 	return o
 }
 
+// The IP address to set on the router.
 func (o RouterExternalFixedIpOutput) IpAddress() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v RouterExternalFixedIp) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v RouterExternalFixedIp) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
 }
 
+// Subnet in which the fixed IP belongs to.
 func (o RouterExternalFixedIpOutput) SubnetId() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v RouterExternalFixedIp) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v RouterExternalFixedIp) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
 }
 
-type RouterExternalFixedIpArrayOutput struct { *pulumi.OutputState}
+type RouterExternalFixedIpArrayOutput struct{ *pulumi.OutputState }
 
 func (RouterExternalFixedIpArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]RouterExternalFixedIp)(nil)).Elem()
@@ -638,12 +703,14 @@ func (o RouterExternalFixedIpArrayOutput) ToRouterExternalFixedIpArrayOutputWith
 }
 
 func (o RouterExternalFixedIpArrayOutput) Index(i pulumi.IntInput) RouterExternalFixedIpOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) RouterExternalFixedIp {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouterExternalFixedIp {
 		return vs[0].([]RouterExternalFixedIp)[vs[1].(int)]
 	}).(RouterExternalFixedIpOutput)
 }
 
 type RouterVendorOptions struct {
+	// Boolean to control whether
+	// the Router gateway is assigned during creation or updated after creation.
 	SetRouterGatewayAfterCreate *bool `pulumi:"setRouterGatewayAfterCreate"`
 }
 
@@ -655,6 +722,8 @@ type RouterVendorOptionsInput interface {
 }
 
 type RouterVendorOptionsArgs struct {
+	// Boolean to control whether
+	// the Router gateway is assigned during creation or updated after creation.
 	SetRouterGatewayAfterCreate pulumi.BoolPtrInput `pulumi:"setRouterGatewayAfterCreate"`
 }
 
@@ -687,7 +756,8 @@ type RouterVendorOptionsPtrInput interface {
 
 type routerVendorOptionsPtrType RouterVendorOptionsArgs
 
-func RouterVendorOptionsPtr(v *RouterVendorOptionsArgs) RouterVendorOptionsPtrInput {	return (*routerVendorOptionsPtrType)(v)
+func RouterVendorOptionsPtr(v *RouterVendorOptionsArgs) RouterVendorOptionsPtrInput {
+	return (*routerVendorOptionsPtrType)(v)
 }
 
 func (*routerVendorOptionsPtrType) ElementType() reflect.Type {
@@ -702,7 +772,7 @@ func (i *routerVendorOptionsPtrType) ToRouterVendorOptionsPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(RouterVendorOptionsPtrOutput)
 }
 
-type RouterVendorOptionsOutput struct { *pulumi.OutputState }
+type RouterVendorOptionsOutput struct{ *pulumi.OutputState }
 
 func (RouterVendorOptionsOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*RouterVendorOptions)(nil)).Elem()
@@ -725,11 +795,14 @@ func (o RouterVendorOptionsOutput) ToRouterVendorOptionsPtrOutputWithContext(ctx
 		return &v
 	}).(RouterVendorOptionsPtrOutput)
 }
+
+// Boolean to control whether
+// the Router gateway is assigned during creation or updated after creation.
 func (o RouterVendorOptionsOutput) SetRouterGatewayAfterCreate() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v RouterVendorOptions) *bool { return v.SetRouterGatewayAfterCreate }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v RouterVendorOptions) *bool { return v.SetRouterGatewayAfterCreate }).(pulumi.BoolPtrOutput)
 }
 
-type RouterVendorOptionsPtrOutput struct { *pulumi.OutputState}
+type RouterVendorOptionsPtrOutput struct{ *pulumi.OutputState }
 
 func (RouterVendorOptionsPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**RouterVendorOptions)(nil)).Elem()
@@ -744,15 +817,19 @@ func (o RouterVendorOptionsPtrOutput) ToRouterVendorOptionsPtrOutputWithContext(
 }
 
 func (o RouterVendorOptionsPtrOutput) Elem() RouterVendorOptionsOutput {
-	return o.ApplyT(func (v *RouterVendorOptions) RouterVendorOptions { return *v }).(RouterVendorOptionsOutput)
+	return o.ApplyT(func(v *RouterVendorOptions) RouterVendorOptions { return *v }).(RouterVendorOptionsOutput)
 }
 
+// Boolean to control whether
+// the Router gateway is assigned during creation or updated after creation.
 func (o RouterVendorOptionsPtrOutput) SetRouterGatewayAfterCreate() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v RouterVendorOptions) *bool { return v.SetRouterGatewayAfterCreate }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v RouterVendorOptions) *bool { return v.SetRouterGatewayAfterCreate }).(pulumi.BoolPtrOutput)
 }
 
 type SubnetAllocationPool struct {
+	// The ending address.
 	End string `pulumi:"end"`
+	// The starting address.
 	Start string `pulumi:"start"`
 }
 
@@ -764,7 +841,9 @@ type SubnetAllocationPoolInput interface {
 }
 
 type SubnetAllocationPoolArgs struct {
+	// The ending address.
 	End pulumi.StringInput `pulumi:"end"`
+	// The starting address.
 	Start pulumi.StringInput `pulumi:"start"`
 }
 
@@ -801,7 +880,7 @@ func (i SubnetAllocationPoolArray) ToSubnetAllocationPoolArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(SubnetAllocationPoolArrayOutput)
 }
 
-type SubnetAllocationPoolOutput struct { *pulumi.OutputState }
+type SubnetAllocationPoolOutput struct{ *pulumi.OutputState }
 
 func (SubnetAllocationPoolOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*SubnetAllocationPool)(nil)).Elem()
@@ -815,15 +894,17 @@ func (o SubnetAllocationPoolOutput) ToSubnetAllocationPoolOutputWithContext(ctx 
 	return o
 }
 
+// The ending address.
 func (o SubnetAllocationPoolOutput) End() pulumi.StringOutput {
-	return o.ApplyT(func (v SubnetAllocationPool) string { return v.End }).(pulumi.StringOutput)
+	return o.ApplyT(func(v SubnetAllocationPool) string { return v.End }).(pulumi.StringOutput)
 }
 
+// The starting address.
 func (o SubnetAllocationPoolOutput) Start() pulumi.StringOutput {
-	return o.ApplyT(func (v SubnetAllocationPool) string { return v.Start }).(pulumi.StringOutput)
+	return o.ApplyT(func(v SubnetAllocationPool) string { return v.Start }).(pulumi.StringOutput)
 }
 
-type SubnetAllocationPoolArrayOutput struct { *pulumi.OutputState}
+type SubnetAllocationPoolArrayOutput struct{ *pulumi.OutputState }
 
 func (SubnetAllocationPoolArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]SubnetAllocationPool)(nil)).Elem()
@@ -838,13 +919,15 @@ func (o SubnetAllocationPoolArrayOutput) ToSubnetAllocationPoolArrayOutputWithCo
 }
 
 func (o SubnetAllocationPoolArrayOutput) Index(i pulumi.IntInput) SubnetAllocationPoolOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) SubnetAllocationPool {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SubnetAllocationPool {
 		return vs[0].([]SubnetAllocationPool)[vs[1].(int)]
 	}).(SubnetAllocationPoolOutput)
 }
 
 type SubnetAllocationPoolsCollection struct {
+	// The ending address.
 	End string `pulumi:"end"`
+	// The starting address.
 	Start string `pulumi:"start"`
 }
 
@@ -856,7 +939,9 @@ type SubnetAllocationPoolsCollectionInput interface {
 }
 
 type SubnetAllocationPoolsCollectionArgs struct {
+	// The ending address.
 	End pulumi.StringInput `pulumi:"end"`
+	// The starting address.
 	Start pulumi.StringInput `pulumi:"start"`
 }
 
@@ -893,7 +978,7 @@ func (i SubnetAllocationPoolsCollectionArray) ToSubnetAllocationPoolsCollectionA
 	return pulumi.ToOutputWithContext(ctx, i).(SubnetAllocationPoolsCollectionArrayOutput)
 }
 
-type SubnetAllocationPoolsCollectionOutput struct { *pulumi.OutputState }
+type SubnetAllocationPoolsCollectionOutput struct{ *pulumi.OutputState }
 
 func (SubnetAllocationPoolsCollectionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*SubnetAllocationPoolsCollection)(nil)).Elem()
@@ -907,15 +992,17 @@ func (o SubnetAllocationPoolsCollectionOutput) ToSubnetAllocationPoolsCollection
 	return o
 }
 
+// The ending address.
 func (o SubnetAllocationPoolsCollectionOutput) End() pulumi.StringOutput {
-	return o.ApplyT(func (v SubnetAllocationPoolsCollection) string { return v.End }).(pulumi.StringOutput)
+	return o.ApplyT(func(v SubnetAllocationPoolsCollection) string { return v.End }).(pulumi.StringOutput)
 }
 
+// The starting address.
 func (o SubnetAllocationPoolsCollectionOutput) Start() pulumi.StringOutput {
-	return o.ApplyT(func (v SubnetAllocationPoolsCollection) string { return v.Start }).(pulumi.StringOutput)
+	return o.ApplyT(func(v SubnetAllocationPoolsCollection) string { return v.Start }).(pulumi.StringOutput)
 }
 
-type SubnetAllocationPoolsCollectionArrayOutput struct { *pulumi.OutputState}
+type SubnetAllocationPoolsCollectionArrayOutput struct{ *pulumi.OutputState }
 
 func (SubnetAllocationPoolsCollectionArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]SubnetAllocationPoolsCollection)(nil)).Elem()
@@ -930,13 +1017,15 @@ func (o SubnetAllocationPoolsCollectionArrayOutput) ToSubnetAllocationPoolsColle
 }
 
 func (o SubnetAllocationPoolsCollectionArrayOutput) Index(i pulumi.IntInput) SubnetAllocationPoolsCollectionOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) SubnetAllocationPoolsCollection {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SubnetAllocationPoolsCollection {
 		return vs[0].([]SubnetAllocationPoolsCollection)[vs[1].(int)]
 	}).(SubnetAllocationPoolsCollectionOutput)
 }
 
 type SubnetHostRoute struct {
+	// The destination CIDR.
 	DestinationCidr string `pulumi:"destinationCidr"`
+	// The next hop in the route.
 	NextHop string `pulumi:"nextHop"`
 }
 
@@ -948,7 +1037,9 @@ type SubnetHostRouteInput interface {
 }
 
 type SubnetHostRouteArgs struct {
+	// The destination CIDR.
 	DestinationCidr pulumi.StringInput `pulumi:"destinationCidr"`
+	// The next hop in the route.
 	NextHop pulumi.StringInput `pulumi:"nextHop"`
 }
 
@@ -985,7 +1076,7 @@ func (i SubnetHostRouteArray) ToSubnetHostRouteArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(SubnetHostRouteArrayOutput)
 }
 
-type SubnetHostRouteOutput struct { *pulumi.OutputState }
+type SubnetHostRouteOutput struct{ *pulumi.OutputState }
 
 func (SubnetHostRouteOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*SubnetHostRoute)(nil)).Elem()
@@ -999,15 +1090,17 @@ func (o SubnetHostRouteOutput) ToSubnetHostRouteOutputWithContext(ctx context.Co
 	return o
 }
 
+// The destination CIDR.
 func (o SubnetHostRouteOutput) DestinationCidr() pulumi.StringOutput {
-	return o.ApplyT(func (v SubnetHostRoute) string { return v.DestinationCidr }).(pulumi.StringOutput)
+	return o.ApplyT(func(v SubnetHostRoute) string { return v.DestinationCidr }).(pulumi.StringOutput)
 }
 
+// The next hop in the route.
 func (o SubnetHostRouteOutput) NextHop() pulumi.StringOutput {
-	return o.ApplyT(func (v SubnetHostRoute) string { return v.NextHop }).(pulumi.StringOutput)
+	return o.ApplyT(func(v SubnetHostRoute) string { return v.NextHop }).(pulumi.StringOutput)
 }
 
-type SubnetHostRouteArrayOutput struct { *pulumi.OutputState}
+type SubnetHostRouteArrayOutput struct{ *pulumi.OutputState }
 
 func (SubnetHostRouteArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]SubnetHostRoute)(nil)).Elem()
@@ -1022,17 +1115,17 @@ func (o SubnetHostRouteArrayOutput) ToSubnetHostRouteArrayOutputWithContext(ctx 
 }
 
 func (o SubnetHostRouteArrayOutput) Index(i pulumi.IntInput) SubnetHostRouteOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) SubnetHostRoute {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SubnetHostRoute {
 		return vs[0].([]SubnetHostRoute)[vs[1].(int)]
 	}).(SubnetHostRouteOutput)
 }
 
 type TrunkSubPort struct {
-	// The ID of the port to be used as the parent port of the
-	// trunk. This is the port that should be used as the compute instance network
-	// port. Changing this creates a new trunk.
+	// The ID of the port to be made a subport of the trunk.
 	PortId string `pulumi:"portId"`
+	// The numeric id of the subport segment.
 	SegmentationId int `pulumi:"segmentationId"`
+	// The segmentation technology to use, e.g., "vlan".
 	SegmentationType string `pulumi:"segmentationType"`
 }
 
@@ -1044,11 +1137,11 @@ type TrunkSubPortInput interface {
 }
 
 type TrunkSubPortArgs struct {
-	// The ID of the port to be used as the parent port of the
-	// trunk. This is the port that should be used as the compute instance network
-	// port. Changing this creates a new trunk.
+	// The ID of the port to be made a subport of the trunk.
 	PortId pulumi.StringInput `pulumi:"portId"`
+	// The numeric id of the subport segment.
 	SegmentationId pulumi.IntInput `pulumi:"segmentationId"`
+	// The segmentation technology to use, e.g., "vlan".
 	SegmentationType pulumi.StringInput `pulumi:"segmentationType"`
 }
 
@@ -1085,7 +1178,7 @@ func (i TrunkSubPortArray) ToTrunkSubPortArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(TrunkSubPortArrayOutput)
 }
 
-type TrunkSubPortOutput struct { *pulumi.OutputState }
+type TrunkSubPortOutput struct{ *pulumi.OutputState }
 
 func (TrunkSubPortOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TrunkSubPort)(nil)).Elem()
@@ -1099,22 +1192,22 @@ func (o TrunkSubPortOutput) ToTrunkSubPortOutputWithContext(ctx context.Context)
 	return o
 }
 
-// The ID of the port to be used as the parent port of the
-// trunk. This is the port that should be used as the compute instance network
-// port. Changing this creates a new trunk.
+// The ID of the port to be made a subport of the trunk.
 func (o TrunkSubPortOutput) PortId() pulumi.StringOutput {
-	return o.ApplyT(func (v TrunkSubPort) string { return v.PortId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TrunkSubPort) string { return v.PortId }).(pulumi.StringOutput)
 }
 
+// The numeric id of the subport segment.
 func (o TrunkSubPortOutput) SegmentationId() pulumi.IntOutput {
-	return o.ApplyT(func (v TrunkSubPort) int { return v.SegmentationId }).(pulumi.IntOutput)
+	return o.ApplyT(func(v TrunkSubPort) int { return v.SegmentationId }).(pulumi.IntOutput)
 }
 
+// The segmentation technology to use, e.g., "vlan".
 func (o TrunkSubPortOutput) SegmentationType() pulumi.StringOutput {
-	return o.ApplyT(func (v TrunkSubPort) string { return v.SegmentationType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TrunkSubPort) string { return v.SegmentationType }).(pulumi.StringOutput)
 }
 
-type TrunkSubPortArrayOutput struct { *pulumi.OutputState}
+type TrunkSubPortArrayOutput struct{ *pulumi.OutputState }
 
 func (TrunkSubPortArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]TrunkSubPort)(nil)).Elem()
@@ -1129,7 +1222,7 @@ func (o TrunkSubPortArrayOutput) ToTrunkSubPortArrayOutputWithContext(ctx contex
 }
 
 func (o TrunkSubPortArrayOutput) Index(i pulumi.IntInput) TrunkSubPortOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) TrunkSubPort {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TrunkSubPort {
 		return vs[0].([]TrunkSubPort)[vs[1].(int)]
 	}).(TrunkSubPortOutput)
 }
@@ -1188,7 +1281,7 @@ func (i GetPortAllowedAddressPairArray) ToGetPortAllowedAddressPairArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetPortAllowedAddressPairArrayOutput)
 }
 
-type GetPortAllowedAddressPairOutput struct { *pulumi.OutputState }
+type GetPortAllowedAddressPairOutput struct{ *pulumi.OutputState }
 
 func (GetPortAllowedAddressPairOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetPortAllowedAddressPair)(nil)).Elem()
@@ -1204,15 +1297,15 @@ func (o GetPortAllowedAddressPairOutput) ToGetPortAllowedAddressPairOutputWithCo
 
 // The additional IP address.
 func (o GetPortAllowedAddressPairOutput) IpAddress() pulumi.StringOutput {
-	return o.ApplyT(func (v GetPortAllowedAddressPair) string { return v.IpAddress }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetPortAllowedAddressPair) string { return v.IpAddress }).(pulumi.StringOutput)
 }
 
 // The MAC address of the port.
 func (o GetPortAllowedAddressPairOutput) MacAddress() pulumi.StringOutput {
-	return o.ApplyT(func (v GetPortAllowedAddressPair) string { return v.MacAddress }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetPortAllowedAddressPair) string { return v.MacAddress }).(pulumi.StringOutput)
 }
 
-type GetPortAllowedAddressPairArrayOutput struct { *pulumi.OutputState}
+type GetPortAllowedAddressPairArrayOutput struct{ *pulumi.OutputState }
 
 func (GetPortAllowedAddressPairArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetPortAllowedAddressPair)(nil)).Elem()
@@ -1227,7 +1320,7 @@ func (o GetPortAllowedAddressPairArrayOutput) ToGetPortAllowedAddressPairArrayOu
 }
 
 func (o GetPortAllowedAddressPairArrayOutput) Index(i pulumi.IntInput) GetPortAllowedAddressPairOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetPortAllowedAddressPair {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortAllowedAddressPair {
 		return vs[0].([]GetPortAllowedAddressPair)[vs[1].(int)]
 	}).(GetPortAllowedAddressPairOutput)
 }
@@ -1300,7 +1393,7 @@ func (i GetPortBindingArray) ToGetPortBindingArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GetPortBindingArrayOutput)
 }
 
-type GetPortBindingOutput struct { *pulumi.OutputState }
+type GetPortBindingOutput struct{ *pulumi.OutputState }
 
 func (GetPortBindingOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetPortBinding)(nil)).Elem()
@@ -1316,31 +1409,31 @@ func (o GetPortBindingOutput) ToGetPortBindingOutputWithContext(ctx context.Cont
 
 // The ID of the host, which has the allocatee port.
 func (o GetPortBindingOutput) HostId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetPortBinding) string { return v.HostId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetPortBinding) string { return v.HostId }).(pulumi.StringOutput)
 }
 
 // A JSON string containing the binding profile information.
 func (o GetPortBindingOutput) Profile() pulumi.StringOutput {
-	return o.ApplyT(func (v GetPortBinding) string { return v.Profile }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetPortBinding) string { return v.Profile }).(pulumi.StringOutput)
 }
 
 // A map of JSON strings containing additional details for this
 // specific binding.
 func (o GetPortBindingOutput) VifDetails() pulumi.MapOutput {
-	return o.ApplyT(func (v GetPortBinding) map[string]interface{} { return v.VifDetails }).(pulumi.MapOutput)
+	return o.ApplyT(func(v GetPortBinding) map[string]interface{} { return v.VifDetails }).(pulumi.MapOutput)
 }
 
 // The VNIC type of the port binding.
 func (o GetPortBindingOutput) VifType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetPortBinding) string { return v.VifType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetPortBinding) string { return v.VifType }).(pulumi.StringOutput)
 }
 
 // VNIC type for the port.
 func (o GetPortBindingOutput) VnicType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetPortBinding) string { return v.VnicType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetPortBinding) string { return v.VnicType }).(pulumi.StringOutput)
 }
 
-type GetPortBindingArrayOutput struct { *pulumi.OutputState}
+type GetPortBindingArrayOutput struct{ *pulumi.OutputState }
 
 func (GetPortBindingArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetPortBinding)(nil)).Elem()
@@ -1355,7 +1448,7 @@ func (o GetPortBindingArrayOutput) ToGetPortBindingArrayOutputWithContext(ctx co
 }
 
 func (o GetPortBindingArrayOutput) Index(i pulumi.IntInput) GetPortBindingOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetPortBinding {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortBinding {
 		return vs[0].([]GetPortBinding)[vs[1].(int)]
 	}).(GetPortBindingOutput)
 }
@@ -1418,7 +1511,7 @@ func (i GetPortExtraDhcpOptionArray) ToGetPortExtraDhcpOptionArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetPortExtraDhcpOptionArrayOutput)
 }
 
-type GetPortExtraDhcpOptionOutput struct { *pulumi.OutputState }
+type GetPortExtraDhcpOptionOutput struct{ *pulumi.OutputState }
 
 func (GetPortExtraDhcpOptionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetPortExtraDhcpOption)(nil)).Elem()
@@ -1434,20 +1527,20 @@ func (o GetPortExtraDhcpOptionOutput) ToGetPortExtraDhcpOptionOutputWithContext(
 
 // IP protocol version
 func (o GetPortExtraDhcpOptionOutput) IpVersion() pulumi.IntOutput {
-	return o.ApplyT(func (v GetPortExtraDhcpOption) int { return v.IpVersion }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetPortExtraDhcpOption) int { return v.IpVersion }).(pulumi.IntOutput)
 }
 
 // The name of the port.
 func (o GetPortExtraDhcpOptionOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetPortExtraDhcpOption) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetPortExtraDhcpOption) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Value of the DHCP option.
 func (o GetPortExtraDhcpOptionOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func (v GetPortExtraDhcpOption) string { return v.Value }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetPortExtraDhcpOption) string { return v.Value }).(pulumi.StringOutput)
 }
 
-type GetPortExtraDhcpOptionArrayOutput struct { *pulumi.OutputState}
+type GetPortExtraDhcpOptionArrayOutput struct{ *pulumi.OutputState }
 
 func (GetPortExtraDhcpOptionArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetPortExtraDhcpOption)(nil)).Elem()
@@ -1462,7 +1555,7 @@ func (o GetPortExtraDhcpOptionArrayOutput) ToGetPortExtraDhcpOptionArrayOutputWi
 }
 
 func (o GetPortExtraDhcpOptionArrayOutput) Index(i pulumi.IntInput) GetPortExtraDhcpOptionOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetPortExtraDhcpOption {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortExtraDhcpOption {
 		return vs[0].([]GetPortExtraDhcpOption)[vs[1].(int)]
 	}).(GetPortExtraDhcpOptionOutput)
 }
@@ -1470,7 +1563,7 @@ func (o GetPortExtraDhcpOptionArrayOutput) Index(i pulumi.IntInput) GetPortExtra
 type GetRouterExternalFixedIp struct {
 	// The IP address to set on the router.
 	IpAddress *string `pulumi:"ipAddress"`
-	SubnetId *string `pulumi:"subnetId"`
+	SubnetId  *string `pulumi:"subnetId"`
 }
 
 type GetRouterExternalFixedIpInput interface {
@@ -1483,7 +1576,7 @@ type GetRouterExternalFixedIpInput interface {
 type GetRouterExternalFixedIpArgs struct {
 	// The IP address to set on the router.
 	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
-	SubnetId pulumi.StringPtrInput `pulumi:"subnetId"`
+	SubnetId  pulumi.StringPtrInput `pulumi:"subnetId"`
 }
 
 func (GetRouterExternalFixedIpArgs) ElementType() reflect.Type {
@@ -1519,7 +1612,7 @@ func (i GetRouterExternalFixedIpArray) ToGetRouterExternalFixedIpArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetRouterExternalFixedIpArrayOutput)
 }
 
-type GetRouterExternalFixedIpOutput struct { *pulumi.OutputState }
+type GetRouterExternalFixedIpOutput struct{ *pulumi.OutputState }
 
 func (GetRouterExternalFixedIpOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetRouterExternalFixedIp)(nil)).Elem()
@@ -1535,14 +1628,14 @@ func (o GetRouterExternalFixedIpOutput) ToGetRouterExternalFixedIpOutputWithCont
 
 // The IP address to set on the router.
 func (o GetRouterExternalFixedIpOutput) IpAddress() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetRouterExternalFixedIp) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GetRouterExternalFixedIp) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
 }
 
 func (o GetRouterExternalFixedIpOutput) SubnetId() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetRouterExternalFixedIp) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GetRouterExternalFixedIp) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
 }
 
-type GetRouterExternalFixedIpArrayOutput struct { *pulumi.OutputState}
+type GetRouterExternalFixedIpArrayOutput struct{ *pulumi.OutputState }
 
 func (GetRouterExternalFixedIpArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetRouterExternalFixedIp)(nil)).Elem()
@@ -1557,13 +1650,13 @@ func (o GetRouterExternalFixedIpArrayOutput) ToGetRouterExternalFixedIpArrayOutp
 }
 
 func (o GetRouterExternalFixedIpArrayOutput) Index(i pulumi.IntInput) GetRouterExternalFixedIpOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetRouterExternalFixedIp {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouterExternalFixedIp {
 		return vs[0].([]GetRouterExternalFixedIp)[vs[1].(int)]
 	}).(GetRouterExternalFixedIpOutput)
 }
 
 type GetSubnetAllocationPool struct {
-	End string `pulumi:"end"`
+	End   string `pulumi:"end"`
 	Start string `pulumi:"start"`
 }
 
@@ -1575,7 +1668,7 @@ type GetSubnetAllocationPoolInput interface {
 }
 
 type GetSubnetAllocationPoolArgs struct {
-	End pulumi.StringInput `pulumi:"end"`
+	End   pulumi.StringInput `pulumi:"end"`
 	Start pulumi.StringInput `pulumi:"start"`
 }
 
@@ -1612,7 +1705,7 @@ func (i GetSubnetAllocationPoolArray) ToGetSubnetAllocationPoolArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetSubnetAllocationPoolArrayOutput)
 }
 
-type GetSubnetAllocationPoolOutput struct { *pulumi.OutputState }
+type GetSubnetAllocationPoolOutput struct{ *pulumi.OutputState }
 
 func (GetSubnetAllocationPoolOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetSubnetAllocationPool)(nil)).Elem()
@@ -1627,14 +1720,14 @@ func (o GetSubnetAllocationPoolOutput) ToGetSubnetAllocationPoolOutputWithContex
 }
 
 func (o GetSubnetAllocationPoolOutput) End() pulumi.StringOutput {
-	return o.ApplyT(func (v GetSubnetAllocationPool) string { return v.End }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetSubnetAllocationPool) string { return v.End }).(pulumi.StringOutput)
 }
 
 func (o GetSubnetAllocationPoolOutput) Start() pulumi.StringOutput {
-	return o.ApplyT(func (v GetSubnetAllocationPool) string { return v.Start }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetSubnetAllocationPool) string { return v.Start }).(pulumi.StringOutput)
 }
 
-type GetSubnetAllocationPoolArrayOutput struct { *pulumi.OutputState}
+type GetSubnetAllocationPoolArrayOutput struct{ *pulumi.OutputState }
 
 func (GetSubnetAllocationPoolArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetSubnetAllocationPool)(nil)).Elem()
@@ -1649,14 +1742,14 @@ func (o GetSubnetAllocationPoolArrayOutput) ToGetSubnetAllocationPoolArrayOutput
 }
 
 func (o GetSubnetAllocationPoolArrayOutput) Index(i pulumi.IntInput) GetSubnetAllocationPoolOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetSubnetAllocationPool {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSubnetAllocationPool {
 		return vs[0].([]GetSubnetAllocationPool)[vs[1].(int)]
 	}).(GetSubnetAllocationPoolOutput)
 }
 
 type GetSubnetHostRoute struct {
 	DestinationCidr string `pulumi:"destinationCidr"`
-	NextHop string `pulumi:"nextHop"`
+	NextHop         string `pulumi:"nextHop"`
 }
 
 type GetSubnetHostRouteInput interface {
@@ -1668,7 +1761,7 @@ type GetSubnetHostRouteInput interface {
 
 type GetSubnetHostRouteArgs struct {
 	DestinationCidr pulumi.StringInput `pulumi:"destinationCidr"`
-	NextHop pulumi.StringInput `pulumi:"nextHop"`
+	NextHop         pulumi.StringInput `pulumi:"nextHop"`
 }
 
 func (GetSubnetHostRouteArgs) ElementType() reflect.Type {
@@ -1704,7 +1797,7 @@ func (i GetSubnetHostRouteArray) ToGetSubnetHostRouteArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetSubnetHostRouteArrayOutput)
 }
 
-type GetSubnetHostRouteOutput struct { *pulumi.OutputState }
+type GetSubnetHostRouteOutput struct{ *pulumi.OutputState }
 
 func (GetSubnetHostRouteOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetSubnetHostRoute)(nil)).Elem()
@@ -1719,14 +1812,14 @@ func (o GetSubnetHostRouteOutput) ToGetSubnetHostRouteOutputWithContext(ctx cont
 }
 
 func (o GetSubnetHostRouteOutput) DestinationCidr() pulumi.StringOutput {
-	return o.ApplyT(func (v GetSubnetHostRoute) string { return v.DestinationCidr }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetSubnetHostRoute) string { return v.DestinationCidr }).(pulumi.StringOutput)
 }
 
 func (o GetSubnetHostRouteOutput) NextHop() pulumi.StringOutput {
-	return o.ApplyT(func (v GetSubnetHostRoute) string { return v.NextHop }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetSubnetHostRoute) string { return v.NextHop }).(pulumi.StringOutput)
 }
 
-type GetSubnetHostRouteArrayOutput struct { *pulumi.OutputState}
+type GetSubnetHostRouteArrayOutput struct{ *pulumi.OutputState }
 
 func (GetSubnetHostRouteArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetSubnetHostRoute)(nil)).Elem()
@@ -1741,7 +1834,7 @@ func (o GetSubnetHostRouteArrayOutput) ToGetSubnetHostRouteArrayOutputWithContex
 }
 
 func (o GetSubnetHostRouteArrayOutput) Index(i pulumi.IntInput) GetSubnetHostRouteOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetSubnetHostRoute {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSubnetHostRoute {
 		return vs[0].([]GetSubnetHostRoute)[vs[1].(int)]
 	}).(GetSubnetHostRouteOutput)
 }
@@ -1804,7 +1897,7 @@ func (i GetTrunkSubPortArray) ToGetTrunkSubPortArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetTrunkSubPortArrayOutput)
 }
 
-type GetTrunkSubPortOutput struct { *pulumi.OutputState }
+type GetTrunkSubPortOutput struct{ *pulumi.OutputState }
 
 func (GetTrunkSubPortOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetTrunkSubPort)(nil)).Elem()
@@ -1820,20 +1913,20 @@ func (o GetTrunkSubPortOutput) ToGetTrunkSubPortOutputWithContext(ctx context.Co
 
 // The ID of the trunk parent port.
 func (o GetTrunkSubPortOutput) PortId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetTrunkSubPort) string { return v.PortId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetTrunkSubPort) string { return v.PortId }).(pulumi.StringOutput)
 }
 
 // The numeric id of the subport segment.
 func (o GetTrunkSubPortOutput) SegmentationId() pulumi.IntOutput {
-	return o.ApplyT(func (v GetTrunkSubPort) int { return v.SegmentationId }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetTrunkSubPort) int { return v.SegmentationId }).(pulumi.IntOutput)
 }
 
 // The segmenation tecnology used, e.g., "vlan".
 func (o GetTrunkSubPortOutput) SegmentationType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetTrunkSubPort) string { return v.SegmentationType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetTrunkSubPort) string { return v.SegmentationType }).(pulumi.StringOutput)
 }
 
-type GetTrunkSubPortArrayOutput struct { *pulumi.OutputState}
+type GetTrunkSubPortArrayOutput struct{ *pulumi.OutputState }
 
 func (GetTrunkSubPortArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetTrunkSubPort)(nil)).Elem()
@@ -1848,7 +1941,7 @@ func (o GetTrunkSubPortArrayOutput) ToGetTrunkSubPortArrayOutputWithContext(ctx 
 }
 
 func (o GetTrunkSubPortArrayOutput) Index(i pulumi.IntInput) GetTrunkSubPortOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetTrunkSubPort {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTrunkSubPort {
 		return vs[0].([]GetTrunkSubPort)[vs[1].(int)]
 	}).(GetTrunkSubPortOutput)
 }

@@ -16,7 +16,18 @@ namespace Pulumi.OpenStack.Networking
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_secgroup_v2.html.markdown.
         /// </summary>
+        [Obsolete("Use GetSecGroup.InvokeAsync() instead")]
         public static Task<GetSecGroupResult> GetSecGroup(GetSecGroupArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSecGroupResult>("openstack:networking/getSecGroup:getSecGroup", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetSecGroup
+    {
+        /// <summary>
+        /// Use this data source to get the ID of an available OpenStack security group.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_secgroup_v2.html.markdown.
+        /// </summary>
+        public static Task<GetSecGroupResult> InvokeAsync(GetSecGroupArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSecGroupResult>("openstack:networking/getSecGroup:getSecGroup", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

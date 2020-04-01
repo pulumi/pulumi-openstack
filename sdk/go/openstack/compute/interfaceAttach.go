@@ -145,4 +145,3 @@ type InterfaceAttachArgs struct {
 func (InterfaceAttachArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*interfaceAttachArgs)(nil)).Elem()
 }
-

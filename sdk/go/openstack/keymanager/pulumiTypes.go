@@ -55,7 +55,8 @@ type ContainerV1AclPtrInput interface {
 
 type containerV1AclPtrType ContainerV1AclArgs
 
-func ContainerV1AclPtr(v *ContainerV1AclArgs) ContainerV1AclPtrInput {	return (*containerV1AclPtrType)(v)
+func ContainerV1AclPtr(v *ContainerV1AclArgs) ContainerV1AclPtrInput {
+	return (*containerV1AclPtrType)(v)
 }
 
 func (*containerV1AclPtrType) ElementType() reflect.Type {
@@ -70,7 +71,7 @@ func (i *containerV1AclPtrType) ToContainerV1AclPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerV1AclPtrOutput)
 }
 
-type ContainerV1AclOutput struct { *pulumi.OutputState }
+type ContainerV1AclOutput struct{ *pulumi.OutputState }
 
 func (ContainerV1AclOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ContainerV1Acl)(nil)).Elem()
@@ -94,10 +95,10 @@ func (o ContainerV1AclOutput) ToContainerV1AclPtrOutputWithContext(ctx context.C
 	}).(ContainerV1AclPtrOutput)
 }
 func (o ContainerV1AclOutput) Read() ContainerV1AclReadPtrOutput {
-	return o.ApplyT(func (v ContainerV1Acl) *ContainerV1AclRead { return v.Read }).(ContainerV1AclReadPtrOutput)
+	return o.ApplyT(func(v ContainerV1Acl) *ContainerV1AclRead { return v.Read }).(ContainerV1AclReadPtrOutput)
 }
 
-type ContainerV1AclPtrOutput struct { *pulumi.OutputState}
+type ContainerV1AclPtrOutput struct{ *pulumi.OutputState }
 
 func (ContainerV1AclPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ContainerV1Acl)(nil)).Elem()
@@ -112,19 +113,23 @@ func (o ContainerV1AclPtrOutput) ToContainerV1AclPtrOutputWithContext(ctx contex
 }
 
 func (o ContainerV1AclPtrOutput) Elem() ContainerV1AclOutput {
-	return o.ApplyT(func (v *ContainerV1Acl) ContainerV1Acl { return *v }).(ContainerV1AclOutput)
+	return o.ApplyT(func(v *ContainerV1Acl) ContainerV1Acl { return *v }).(ContainerV1AclOutput)
 }
 
 func (o ContainerV1AclPtrOutput) Read() ContainerV1AclReadPtrOutput {
-	return o.ApplyT(func (v ContainerV1Acl) *ContainerV1AclRead { return v.Read }).(ContainerV1AclReadPtrOutput)
+	return o.ApplyT(func(v ContainerV1Acl) *ContainerV1AclRead { return v.Read }).(ContainerV1AclReadPtrOutput)
 }
 
 type ContainerV1AclRead struct {
-	// The date the container was created.
+	// The date the container ACL was created.
 	CreatedAt *string `pulumi:"createdAt"`
+	// Whether the container is accessible project wide.
+	// Defaults to `true`.
 	ProjectAccess *bool `pulumi:"projectAccess"`
-	// The date the container was last updated.
+	// The date the container ACL was last updated.
 	UpdatedAt *string `pulumi:"updatedAt"`
+	// The list of user IDs, which are allowed to access the
+	// container, when `projectAccess` is set to `false`.
 	Users []string `pulumi:"users"`
 }
 
@@ -136,11 +141,15 @@ type ContainerV1AclReadInput interface {
 }
 
 type ContainerV1AclReadArgs struct {
-	// The date the container was created.
+	// The date the container ACL was created.
 	CreatedAt pulumi.StringPtrInput `pulumi:"createdAt"`
+	// Whether the container is accessible project wide.
+	// Defaults to `true`.
 	ProjectAccess pulumi.BoolPtrInput `pulumi:"projectAccess"`
-	// The date the container was last updated.
+	// The date the container ACL was last updated.
 	UpdatedAt pulumi.StringPtrInput `pulumi:"updatedAt"`
+	// The list of user IDs, which are allowed to access the
+	// container, when `projectAccess` is set to `false`.
 	Users pulumi.StringArrayInput `pulumi:"users"`
 }
 
@@ -173,7 +182,8 @@ type ContainerV1AclReadPtrInput interface {
 
 type containerV1AclReadPtrType ContainerV1AclReadArgs
 
-func ContainerV1AclReadPtr(v *ContainerV1AclReadArgs) ContainerV1AclReadPtrInput {	return (*containerV1AclReadPtrType)(v)
+func ContainerV1AclReadPtr(v *ContainerV1AclReadArgs) ContainerV1AclReadPtrInput {
+	return (*containerV1AclReadPtrType)(v)
 }
 
 func (*containerV1AclReadPtrType) ElementType() reflect.Type {
@@ -188,7 +198,7 @@ func (i *containerV1AclReadPtrType) ToContainerV1AclReadPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerV1AclReadPtrOutput)
 }
 
-type ContainerV1AclReadOutput struct { *pulumi.OutputState }
+type ContainerV1AclReadOutput struct{ *pulumi.OutputState }
 
 func (ContainerV1AclReadOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ContainerV1AclRead)(nil)).Elem()
@@ -211,25 +221,30 @@ func (o ContainerV1AclReadOutput) ToContainerV1AclReadPtrOutputWithContext(ctx c
 		return &v
 	}).(ContainerV1AclReadPtrOutput)
 }
-// The date the container was created.
+
+// The date the container ACL was created.
 func (o ContainerV1AclReadOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ContainerV1AclRead) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ContainerV1AclRead) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
 }
 
+// Whether the container is accessible project wide.
+// Defaults to `true`.
 func (o ContainerV1AclReadOutput) ProjectAccess() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ContainerV1AclRead) *bool { return v.ProjectAccess }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ContainerV1AclRead) *bool { return v.ProjectAccess }).(pulumi.BoolPtrOutput)
 }
 
-// The date the container was last updated.
+// The date the container ACL was last updated.
 func (o ContainerV1AclReadOutput) UpdatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ContainerV1AclRead) *string { return v.UpdatedAt }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ContainerV1AclRead) *string { return v.UpdatedAt }).(pulumi.StringPtrOutput)
 }
 
+// The list of user IDs, which are allowed to access the
+// container, when `projectAccess` is set to `false`.
 func (o ContainerV1AclReadOutput) Users() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v ContainerV1AclRead) []string { return v.Users }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v ContainerV1AclRead) []string { return v.Users }).(pulumi.StringArrayOutput)
 }
 
-type ContainerV1AclReadPtrOutput struct { *pulumi.OutputState}
+type ContainerV1AclReadPtrOutput struct{ *pulumi.OutputState }
 
 func (ContainerV1AclReadPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ContainerV1AclRead)(nil)).Elem()
@@ -244,30 +259,33 @@ func (o ContainerV1AclReadPtrOutput) ToContainerV1AclReadPtrOutputWithContext(ct
 }
 
 func (o ContainerV1AclReadPtrOutput) Elem() ContainerV1AclReadOutput {
-	return o.ApplyT(func (v *ContainerV1AclRead) ContainerV1AclRead { return *v }).(ContainerV1AclReadOutput)
+	return o.ApplyT(func(v *ContainerV1AclRead) ContainerV1AclRead { return *v }).(ContainerV1AclReadOutput)
 }
 
-// The date the container was created.
+// The date the container ACL was created.
 func (o ContainerV1AclReadPtrOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ContainerV1AclRead) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ContainerV1AclRead) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
 }
 
+// Whether the container is accessible project wide.
+// Defaults to `true`.
 func (o ContainerV1AclReadPtrOutput) ProjectAccess() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ContainerV1AclRead) *bool { return v.ProjectAccess }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ContainerV1AclRead) *bool { return v.ProjectAccess }).(pulumi.BoolPtrOutput)
 }
 
-// The date the container was last updated.
+// The date the container ACL was last updated.
 func (o ContainerV1AclReadPtrOutput) UpdatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ContainerV1AclRead) *string { return v.UpdatedAt }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ContainerV1AclRead) *string { return v.UpdatedAt }).(pulumi.StringPtrOutput)
 }
 
+// The list of user IDs, which are allowed to access the
+// container, when `projectAccess` is set to `false`.
 func (o ContainerV1AclReadPtrOutput) Users() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v ContainerV1AclRead) []string { return v.Users }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v ContainerV1AclRead) []string { return v.Users }).(pulumi.StringArrayOutput)
 }
 
 type ContainerV1Consumer struct {
-	// Human-readable name for the Container. Does not have
-	// to be unique.
+	// The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
 	Name *string `pulumi:"name"`
 	// The consumer URL.
 	Url *string `pulumi:"url"`
@@ -281,8 +299,7 @@ type ContainerV1ConsumerInput interface {
 }
 
 type ContainerV1ConsumerArgs struct {
-	// Human-readable name for the Container. Does not have
-	// to be unique.
+	// The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The consumer URL.
 	Url pulumi.StringPtrInput `pulumi:"url"`
@@ -321,7 +338,7 @@ func (i ContainerV1ConsumerArray) ToContainerV1ConsumerArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerV1ConsumerArrayOutput)
 }
 
-type ContainerV1ConsumerOutput struct { *pulumi.OutputState }
+type ContainerV1ConsumerOutput struct{ *pulumi.OutputState }
 
 func (ContainerV1ConsumerOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ContainerV1Consumer)(nil)).Elem()
@@ -335,18 +352,17 @@ func (o ContainerV1ConsumerOutput) ToContainerV1ConsumerOutputWithContext(ctx co
 	return o
 }
 
-// Human-readable name for the Container. Does not have
-// to be unique.
+// The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
 func (o ContainerV1ConsumerOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ContainerV1Consumer) *string { return v.Name }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ContainerV1Consumer) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // The consumer URL.
 func (o ContainerV1ConsumerOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ContainerV1Consumer) *string { return v.Url }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ContainerV1Consumer) *string { return v.Url }).(pulumi.StringPtrOutput)
 }
 
-type ContainerV1ConsumerArrayOutput struct { *pulumi.OutputState}
+type ContainerV1ConsumerArrayOutput struct{ *pulumi.OutputState }
 
 func (ContainerV1ConsumerArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ContainerV1Consumer)(nil)).Elem()
@@ -361,15 +377,15 @@ func (o ContainerV1ConsumerArrayOutput) ToContainerV1ConsumerArrayOutputWithCont
 }
 
 func (o ContainerV1ConsumerArrayOutput) Index(i pulumi.IntInput) ContainerV1ConsumerOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ContainerV1Consumer {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContainerV1Consumer {
 		return vs[0].([]ContainerV1Consumer)[vs[1].(int)]
 	}).(ContainerV1ConsumerOutput)
 }
 
 type ContainerV1SecretRef struct {
-	// Human-readable name for the Container. Does not have
-	// to be unique.
+	// The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
 	Name *string `pulumi:"name"`
+	// The secret reference / where to find the secret, URL.
 	SecretRef string `pulumi:"secretRef"`
 }
 
@@ -381,9 +397,9 @@ type ContainerV1SecretRefInput interface {
 }
 
 type ContainerV1SecretRefArgs struct {
-	// Human-readable name for the Container. Does not have
-	// to be unique.
+	// The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The secret reference / where to find the secret, URL.
 	SecretRef pulumi.StringInput `pulumi:"secretRef"`
 }
 
@@ -420,7 +436,7 @@ func (i ContainerV1SecretRefArray) ToContainerV1SecretRefArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerV1SecretRefArrayOutput)
 }
 
-type ContainerV1SecretRefOutput struct { *pulumi.OutputState }
+type ContainerV1SecretRefOutput struct{ *pulumi.OutputState }
 
 func (ContainerV1SecretRefOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ContainerV1SecretRef)(nil)).Elem()
@@ -434,17 +450,17 @@ func (o ContainerV1SecretRefOutput) ToContainerV1SecretRefOutputWithContext(ctx 
 	return o
 }
 
-// Human-readable name for the Container. Does not have
-// to be unique.
+// The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
 func (o ContainerV1SecretRefOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ContainerV1SecretRef) *string { return v.Name }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ContainerV1SecretRef) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// The secret reference / where to find the secret, URL.
 func (o ContainerV1SecretRefOutput) SecretRef() pulumi.StringOutput {
-	return o.ApplyT(func (v ContainerV1SecretRef) string { return v.SecretRef }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ContainerV1SecretRef) string { return v.SecretRef }).(pulumi.StringOutput)
 }
 
-type ContainerV1SecretRefArrayOutput struct { *pulumi.OutputState}
+type ContainerV1SecretRefArrayOutput struct{ *pulumi.OutputState }
 
 func (ContainerV1SecretRefArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ContainerV1SecretRef)(nil)).Elem()
@@ -459,7 +475,7 @@ func (o ContainerV1SecretRefArrayOutput) ToContainerV1SecretRefArrayOutputWithCo
 }
 
 func (o ContainerV1SecretRefArrayOutput) Index(i pulumi.IntInput) ContainerV1SecretRefOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ContainerV1SecretRef {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContainerV1SecretRef {
 		return vs[0].([]ContainerV1SecretRef)[vs[1].(int)]
 	}).(ContainerV1SecretRefOutput)
 }
@@ -508,7 +524,8 @@ type SecretV1AclPtrInput interface {
 
 type secretV1AclPtrType SecretV1AclArgs
 
-func SecretV1AclPtr(v *SecretV1AclArgs) SecretV1AclPtrInput {	return (*secretV1AclPtrType)(v)
+func SecretV1AclPtr(v *SecretV1AclArgs) SecretV1AclPtrInput {
+	return (*secretV1AclPtrType)(v)
 }
 
 func (*secretV1AclPtrType) ElementType() reflect.Type {
@@ -523,7 +540,7 @@ func (i *secretV1AclPtrType) ToSecretV1AclPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(SecretV1AclPtrOutput)
 }
 
-type SecretV1AclOutput struct { *pulumi.OutputState }
+type SecretV1AclOutput struct{ *pulumi.OutputState }
 
 func (SecretV1AclOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*SecretV1Acl)(nil)).Elem()
@@ -547,10 +564,10 @@ func (o SecretV1AclOutput) ToSecretV1AclPtrOutputWithContext(ctx context.Context
 	}).(SecretV1AclPtrOutput)
 }
 func (o SecretV1AclOutput) Read() SecretV1AclReadPtrOutput {
-	return o.ApplyT(func (v SecretV1Acl) *SecretV1AclRead { return v.Read }).(SecretV1AclReadPtrOutput)
+	return o.ApplyT(func(v SecretV1Acl) *SecretV1AclRead { return v.Read }).(SecretV1AclReadPtrOutput)
 }
 
-type SecretV1AclPtrOutput struct { *pulumi.OutputState}
+type SecretV1AclPtrOutput struct{ *pulumi.OutputState }
 
 func (SecretV1AclPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**SecretV1Acl)(nil)).Elem()
@@ -565,19 +582,23 @@ func (o SecretV1AclPtrOutput) ToSecretV1AclPtrOutputWithContext(ctx context.Cont
 }
 
 func (o SecretV1AclPtrOutput) Elem() SecretV1AclOutput {
-	return o.ApplyT(func (v *SecretV1Acl) SecretV1Acl { return *v }).(SecretV1AclOutput)
+	return o.ApplyT(func(v *SecretV1Acl) SecretV1Acl { return *v }).(SecretV1AclOutput)
 }
 
 func (o SecretV1AclPtrOutput) Read() SecretV1AclReadPtrOutput {
-	return o.ApplyT(func (v SecretV1Acl) *SecretV1AclRead { return v.Read }).(SecretV1AclReadPtrOutput)
+	return o.ApplyT(func(v SecretV1Acl) *SecretV1AclRead { return v.Read }).(SecretV1AclReadPtrOutput)
 }
 
 type SecretV1AclRead struct {
-	// The date the secret was created.
+	// The date the secret ACL was created.
 	CreatedAt *string `pulumi:"createdAt"`
+	// Whether the secret is accessible project wide.
+	// Defaults to `true`.
 	ProjectAccess *bool `pulumi:"projectAccess"`
-	// The date the secret was last updated.
+	// The date the secret ACL was last updated.
 	UpdatedAt *string `pulumi:"updatedAt"`
+	// The list of user IDs, which are allowed to access the
+	// secret, when `projectAccess` is set to `false`.
 	Users []string `pulumi:"users"`
 }
 
@@ -589,11 +610,15 @@ type SecretV1AclReadInput interface {
 }
 
 type SecretV1AclReadArgs struct {
-	// The date the secret was created.
+	// The date the secret ACL was created.
 	CreatedAt pulumi.StringPtrInput `pulumi:"createdAt"`
+	// Whether the secret is accessible project wide.
+	// Defaults to `true`.
 	ProjectAccess pulumi.BoolPtrInput `pulumi:"projectAccess"`
-	// The date the secret was last updated.
+	// The date the secret ACL was last updated.
 	UpdatedAt pulumi.StringPtrInput `pulumi:"updatedAt"`
+	// The list of user IDs, which are allowed to access the
+	// secret, when `projectAccess` is set to `false`.
 	Users pulumi.StringArrayInput `pulumi:"users"`
 }
 
@@ -626,7 +651,8 @@ type SecretV1AclReadPtrInput interface {
 
 type secretV1AclReadPtrType SecretV1AclReadArgs
 
-func SecretV1AclReadPtr(v *SecretV1AclReadArgs) SecretV1AclReadPtrInput {	return (*secretV1AclReadPtrType)(v)
+func SecretV1AclReadPtr(v *SecretV1AclReadArgs) SecretV1AclReadPtrInput {
+	return (*secretV1AclReadPtrType)(v)
 }
 
 func (*secretV1AclReadPtrType) ElementType() reflect.Type {
@@ -641,7 +667,7 @@ func (i *secretV1AclReadPtrType) ToSecretV1AclReadPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(SecretV1AclReadPtrOutput)
 }
 
-type SecretV1AclReadOutput struct { *pulumi.OutputState }
+type SecretV1AclReadOutput struct{ *pulumi.OutputState }
 
 func (SecretV1AclReadOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*SecretV1AclRead)(nil)).Elem()
@@ -664,25 +690,30 @@ func (o SecretV1AclReadOutput) ToSecretV1AclReadPtrOutputWithContext(ctx context
 		return &v
 	}).(SecretV1AclReadPtrOutput)
 }
-// The date the secret was created.
+
+// The date the secret ACL was created.
 func (o SecretV1AclReadOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v SecretV1AclRead) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v SecretV1AclRead) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
 }
 
+// Whether the secret is accessible project wide.
+// Defaults to `true`.
 func (o SecretV1AclReadOutput) ProjectAccess() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v SecretV1AclRead) *bool { return v.ProjectAccess }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v SecretV1AclRead) *bool { return v.ProjectAccess }).(pulumi.BoolPtrOutput)
 }
 
-// The date the secret was last updated.
+// The date the secret ACL was last updated.
 func (o SecretV1AclReadOutput) UpdatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v SecretV1AclRead) *string { return v.UpdatedAt }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v SecretV1AclRead) *string { return v.UpdatedAt }).(pulumi.StringPtrOutput)
 }
 
+// The list of user IDs, which are allowed to access the
+// secret, when `projectAccess` is set to `false`.
 func (o SecretV1AclReadOutput) Users() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v SecretV1AclRead) []string { return v.Users }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v SecretV1AclRead) []string { return v.Users }).(pulumi.StringArrayOutput)
 }
 
-type SecretV1AclReadPtrOutput struct { *pulumi.OutputState}
+type SecretV1AclReadPtrOutput struct{ *pulumi.OutputState }
 
 func (SecretV1AclReadPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**SecretV1AclRead)(nil)).Elem()
@@ -697,25 +728,29 @@ func (o SecretV1AclReadPtrOutput) ToSecretV1AclReadPtrOutputWithContext(ctx cont
 }
 
 func (o SecretV1AclReadPtrOutput) Elem() SecretV1AclReadOutput {
-	return o.ApplyT(func (v *SecretV1AclRead) SecretV1AclRead { return *v }).(SecretV1AclReadOutput)
+	return o.ApplyT(func(v *SecretV1AclRead) SecretV1AclRead { return *v }).(SecretV1AclReadOutput)
 }
 
-// The date the secret was created.
+// The date the secret ACL was created.
 func (o SecretV1AclReadPtrOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v SecretV1AclRead) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v SecretV1AclRead) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
 }
 
+// Whether the secret is accessible project wide.
+// Defaults to `true`.
 func (o SecretV1AclReadPtrOutput) ProjectAccess() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v SecretV1AclRead) *bool { return v.ProjectAccess }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v SecretV1AclRead) *bool { return v.ProjectAccess }).(pulumi.BoolPtrOutput)
 }
 
-// The date the secret was last updated.
+// The date the secret ACL was last updated.
 func (o SecretV1AclReadPtrOutput) UpdatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v SecretV1AclRead) *string { return v.UpdatedAt }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v SecretV1AclRead) *string { return v.UpdatedAt }).(pulumi.StringPtrOutput)
 }
 
+// The list of user IDs, which are allowed to access the
+// secret, when `projectAccess` is set to `false`.
 func (o SecretV1AclReadPtrOutput) Users() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v SecretV1AclRead) []string { return v.Users }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v SecretV1AclRead) []string { return v.Users }).(pulumi.StringArrayOutput)
 }
 
 type GetContainerAcl struct {
@@ -766,7 +801,7 @@ func (i GetContainerAclArray) ToGetContainerAclArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetContainerAclArrayOutput)
 }
 
-type GetContainerAclOutput struct { *pulumi.OutputState }
+type GetContainerAclOutput struct{ *pulumi.OutputState }
 
 func (GetContainerAclOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetContainerAcl)(nil)).Elem()
@@ -781,10 +816,10 @@ func (o GetContainerAclOutput) ToGetContainerAclOutputWithContext(ctx context.Co
 }
 
 func (o GetContainerAclOutput) Read() GetContainerAclReadOutput {
-	return o.ApplyT(func (v GetContainerAcl) GetContainerAclRead { return v.Read }).(GetContainerAclReadOutput)
+	return o.ApplyT(func(v GetContainerAcl) GetContainerAclRead { return v.Read }).(GetContainerAclReadOutput)
 }
 
-type GetContainerAclArrayOutput struct { *pulumi.OutputState}
+type GetContainerAclArrayOutput struct{ *pulumi.OutputState }
 
 func (GetContainerAclArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetContainerAcl)(nil)).Elem()
@@ -799,7 +834,7 @@ func (o GetContainerAclArrayOutput) ToGetContainerAclArrayOutputWithContext(ctx 
 }
 
 func (o GetContainerAclArrayOutput) Index(i pulumi.IntInput) GetContainerAclOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetContainerAcl {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetContainerAcl {
 		return vs[0].([]GetContainerAcl)[vs[1].(int)]
 	}).(GetContainerAclOutput)
 }
@@ -847,7 +882,7 @@ func (i GetContainerAclReadArgs) ToGetContainerAclReadOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetContainerAclReadOutput)
 }
 
-type GetContainerAclReadOutput struct { *pulumi.OutputState }
+type GetContainerAclReadOutput struct{ *pulumi.OutputState }
 
 func (GetContainerAclReadOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetContainerAclRead)(nil)).Elem()
@@ -863,23 +898,23 @@ func (o GetContainerAclReadOutput) ToGetContainerAclReadOutputWithContext(ctx co
 
 // The date the container ACL was created.
 func (o GetContainerAclReadOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func (v GetContainerAclRead) string { return v.CreatedAt }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetContainerAclRead) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
 // Whether the container is accessible project wide.
 func (o GetContainerAclReadOutput) ProjectAccess() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v GetContainerAclRead) *bool { return v.ProjectAccess }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v GetContainerAclRead) *bool { return v.ProjectAccess }).(pulumi.BoolPtrOutput)
 }
 
 // The date the container ACL was last updated.
 func (o GetContainerAclReadOutput) UpdatedAt() pulumi.StringOutput {
-	return o.ApplyT(func (v GetContainerAclRead) string { return v.UpdatedAt }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetContainerAclRead) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
 // The list of user IDs, which are allowed to access the container,
 // when `projectAccess` is set to `false`.
 func (o GetContainerAclReadOutput) Users() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetContainerAclRead) []string { return v.Users }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetContainerAclRead) []string { return v.Users }).(pulumi.StringArrayOutput)
 }
 
 type GetContainerConsumer struct {
@@ -936,7 +971,7 @@ func (i GetContainerConsumerArray) ToGetContainerConsumerArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetContainerConsumerArrayOutput)
 }
 
-type GetContainerConsumerOutput struct { *pulumi.OutputState }
+type GetContainerConsumerOutput struct{ *pulumi.OutputState }
 
 func (GetContainerConsumerOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetContainerConsumer)(nil)).Elem()
@@ -952,15 +987,15 @@ func (o GetContainerConsumerOutput) ToGetContainerConsumerOutputWithContext(ctx 
 
 // The Container name.
 func (o GetContainerConsumerOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetContainerConsumer) *string { return v.Name }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GetContainerConsumer) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // The consumer URL.
 func (o GetContainerConsumerOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetContainerConsumer) *string { return v.Url }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GetContainerConsumer) *string { return v.Url }).(pulumi.StringPtrOutput)
 }
 
-type GetContainerConsumerArrayOutput struct { *pulumi.OutputState}
+type GetContainerConsumerArrayOutput struct{ *pulumi.OutputState }
 
 func (GetContainerConsumerArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetContainerConsumer)(nil)).Elem()
@@ -975,7 +1010,7 @@ func (o GetContainerConsumerArrayOutput) ToGetContainerConsumerArrayOutputWithCo
 }
 
 func (o GetContainerConsumerArrayOutput) Index(i pulumi.IntInput) GetContainerConsumerOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetContainerConsumer {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetContainerConsumer {
 		return vs[0].([]GetContainerConsumer)[vs[1].(int)]
 	}).(GetContainerConsumerOutput)
 }
@@ -1034,7 +1069,7 @@ func (i GetContainerSecretRefArray) ToGetContainerSecretRefArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetContainerSecretRefArrayOutput)
 }
 
-type GetContainerSecretRefOutput struct { *pulumi.OutputState }
+type GetContainerSecretRefOutput struct{ *pulumi.OutputState }
 
 func (GetContainerSecretRefOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetContainerSecretRef)(nil)).Elem()
@@ -1050,15 +1085,15 @@ func (o GetContainerSecretRefOutput) ToGetContainerSecretRefOutputWithContext(ct
 
 // The Container name.
 func (o GetContainerSecretRefOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetContainerSecretRef) *string { return v.Name }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GetContainerSecretRef) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // The secret reference / where to find the secret, URL.
 func (o GetContainerSecretRefOutput) SecretRef() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetContainerSecretRef) *string { return v.SecretRef }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GetContainerSecretRef) *string { return v.SecretRef }).(pulumi.StringPtrOutput)
 }
 
-type GetContainerSecretRefArrayOutput struct { *pulumi.OutputState}
+type GetContainerSecretRefArrayOutput struct{ *pulumi.OutputState }
 
 func (GetContainerSecretRefArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetContainerSecretRef)(nil)).Elem()
@@ -1073,7 +1108,7 @@ func (o GetContainerSecretRefArrayOutput) ToGetContainerSecretRefArrayOutputWith
 }
 
 func (o GetContainerSecretRefArrayOutput) Index(i pulumi.IntInput) GetContainerSecretRefOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetContainerSecretRef {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetContainerSecretRef {
 		return vs[0].([]GetContainerSecretRef)[vs[1].(int)]
 	}).(GetContainerSecretRefOutput)
 }
@@ -1126,7 +1161,7 @@ func (i GetSecretAclArray) ToGetSecretAclArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetSecretAclArrayOutput)
 }
 
-type GetSecretAclOutput struct { *pulumi.OutputState }
+type GetSecretAclOutput struct{ *pulumi.OutputState }
 
 func (GetSecretAclOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetSecretAcl)(nil)).Elem()
@@ -1141,10 +1176,10 @@ func (o GetSecretAclOutput) ToGetSecretAclOutputWithContext(ctx context.Context)
 }
 
 func (o GetSecretAclOutput) Read() GetSecretAclReadOutput {
-	return o.ApplyT(func (v GetSecretAcl) GetSecretAclRead { return v.Read }).(GetSecretAclReadOutput)
+	return o.ApplyT(func(v GetSecretAcl) GetSecretAclRead { return v.Read }).(GetSecretAclReadOutput)
 }
 
-type GetSecretAclArrayOutput struct { *pulumi.OutputState}
+type GetSecretAclArrayOutput struct{ *pulumi.OutputState }
 
 func (GetSecretAclArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetSecretAcl)(nil)).Elem()
@@ -1159,7 +1194,7 @@ func (o GetSecretAclArrayOutput) ToGetSecretAclArrayOutputWithContext(ctx contex
 }
 
 func (o GetSecretAclArrayOutput) Index(i pulumi.IntInput) GetSecretAclOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetSecretAcl {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecretAcl {
 		return vs[0].([]GetSecretAcl)[vs[1].(int)]
 	}).(GetSecretAclOutput)
 }
@@ -1207,7 +1242,7 @@ func (i GetSecretAclReadArgs) ToGetSecretAclReadOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(GetSecretAclReadOutput)
 }
 
-type GetSecretAclReadOutput struct { *pulumi.OutputState }
+type GetSecretAclReadOutput struct{ *pulumi.OutputState }
 
 func (GetSecretAclReadOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetSecretAclRead)(nil)).Elem()
@@ -1223,23 +1258,23 @@ func (o GetSecretAclReadOutput) ToGetSecretAclReadOutputWithContext(ctx context.
 
 // The date the secret ACL was created.
 func (o GetSecretAclReadOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func (v GetSecretAclRead) string { return v.CreatedAt }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetSecretAclRead) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
 // Whether the secret is accessible project wide.
 func (o GetSecretAclReadOutput) ProjectAccess() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v GetSecretAclRead) *bool { return v.ProjectAccess }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v GetSecretAclRead) *bool { return v.ProjectAccess }).(pulumi.BoolPtrOutput)
 }
 
 // The date the secret ACL was last updated.
 func (o GetSecretAclReadOutput) UpdatedAt() pulumi.StringOutput {
-	return o.ApplyT(func (v GetSecretAclRead) string { return v.UpdatedAt }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetSecretAclRead) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
 // The list of user IDs, which are allowed to access the secret, when
 // `projectAccess` is set to `false`.
 func (o GetSecretAclReadOutput) Users() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetSecretAclRead) []string { return v.Users }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetSecretAclRead) []string { return v.Users }).(pulumi.StringArrayOutput)
 }
 
 func init() {

@@ -376,4 +376,3 @@ type SubnetPoolArgs struct {
 func (SubnetPoolArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*subnetPoolArgs)(nil)).Elem()
 }
-

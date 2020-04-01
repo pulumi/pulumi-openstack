@@ -16,7 +16,18 @@ namespace Pulumi.OpenStack.SharedFileSystem
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/sharedfilesystem_sharenetwork_v2.html.markdown.
         /// </summary>
+        [Obsolete("Use GetShareNetwork.InvokeAsync() instead")]
         public static Task<GetShareNetworkResult> GetShareNetwork(GetShareNetworkArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetShareNetworkResult>("openstack:sharedfilesystem/getShareNetwork:getShareNetwork", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetShareNetwork
+    {
+        /// <summary>
+        /// Use this data source to get the ID of an available Shared File System share network.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/sharedfilesystem_sharenetwork_v2.html.markdown.
+        /// </summary>
+        public static Task<GetShareNetworkResult> InvokeAsync(GetShareNetworkArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetShareNetworkResult>("openstack:sharedfilesystem/getShareNetwork:getShareNetwork", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

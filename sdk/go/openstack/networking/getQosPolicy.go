@@ -40,7 +40,6 @@ type LookupQosPolicyArgs struct {
 	Tags []string `pulumi:"tags"`
 }
 
-
 // A collection of values returned by getQosPolicy.
 type LookupQosPolicyResult struct {
 	// The set of string tags applied on the QoS policy.
@@ -54,16 +53,15 @@ type LookupQosPolicyResult struct {
 	// See Argument Reference above.
 	IsDefault bool `pulumi:"isDefault"`
 	// See Argument Reference above.
-	Name string `pulumi:"name"`
+	Name      string `pulumi:"name"`
 	ProjectId string `pulumi:"projectId"`
 	// See Argument Reference above.
 	Region string `pulumi:"region"`
 	// The revision number of the QoS policy.
 	RevisionNumber int `pulumi:"revisionNumber"`
 	// See Argument Reference above.
-	Shared bool `pulumi:"shared"`
-	Tags []string `pulumi:"tags"`
+	Shared bool     `pulumi:"shared"`
+	Tags   []string `pulumi:"tags"`
 	// The time at which QoS policy was created.
 	UpdatedAt string `pulumi:"updatedAt"`
 }
-

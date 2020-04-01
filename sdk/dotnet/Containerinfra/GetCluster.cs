@@ -16,7 +16,18 @@ namespace Pulumi.OpenStack.ContainerInfra
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/containerinfra_cluster_v1.html.markdown.
         /// </summary>
+        [Obsolete("Use GetCluster.InvokeAsync() instead")]
         public static Task<GetClusterResult> GetCluster(GetClusterArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetClusterResult>("openstack:containerinfra/getCluster:getCluster", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetCluster
+    {
+        /// <summary>
+        /// Use this data source to get the ID of an available OpenStack Magnum cluster.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/containerinfra_cluster_v1.html.markdown.
+        /// </summary>
+        public static Task<GetClusterResult> InvokeAsync(GetClusterArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetClusterResult>("openstack:containerinfra/getCluster:getCluster", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

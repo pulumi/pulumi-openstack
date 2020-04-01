@@ -34,13 +34,23 @@ class SecGroup(pulumi.CustomResource):
     security group rules. As shown in the example above, multiple rule blocks
     may be used.
 
-      * `cidr` (`str`)
-      * `fromGroupId` (`str`)
-      * `fromPort` (`float`)
+      * `cidr` (`str`) - Required if `from_group_id` or `self` is empty. The IP range
+        that will be the source of network traffic to the security group. Use 0.0.0.0/0
+        to allow all IP addresses. Changing this creates a new security group rule. Cannot
+        be combined with `from_group_id` or `self`.
+      * `fromGroupId` (`str`) - Required if `cidr` or `self` is empty. The ID of a
+        group from which to forward traffic to the parent group. Changing this creates a
+        new security group rule. Cannot be combined with `cidr` or `self`.
+      * `fromPort` (`float`) - An integer representing the lower bound of the port
+        range to open. Changing this creates a new security group rule.
       * `id` (`str`)
-      * `ipProtocol` (`str`)
-      * `self` (`bool`)
-      * `toPort` (`float`)
+      * `ipProtocol` (`str`) - The protocol type that will be allowed. Changing
+        this creates a new security group rule.
+      * `self` (`bool`) - Required if `cidr` and `from_group_id` is empty. If true,
+        the security group itself will be added as a source to this ingress rule. Cannot
+        be combined with `cidr` or `from_group_id`.
+      * `toPort` (`float`) - An integer representing the upper bound of the port
+        range to open. Changing this creates a new security group rule.
     """
     def __init__(__self__, resource_name, opts=None, description=None, name=None, region=None, rules=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -71,13 +81,23 @@ class SecGroup(pulumi.CustomResource):
 
         The **rules** object supports the following:
 
-          * `cidr` (`pulumi.Input[str]`)
-          * `fromGroupId` (`pulumi.Input[str]`)
-          * `fromPort` (`pulumi.Input[float]`)
+          * `cidr` (`pulumi.Input[str]`) - Required if `from_group_id` or `self` is empty. The IP range
+            that will be the source of network traffic to the security group. Use 0.0.0.0/0
+            to allow all IP addresses. Changing this creates a new security group rule. Cannot
+            be combined with `from_group_id` or `self`.
+          * `fromGroupId` (`pulumi.Input[str]`) - Required if `cidr` or `self` is empty. The ID of a
+            group from which to forward traffic to the parent group. Changing this creates a
+            new security group rule. Cannot be combined with `cidr` or `self`.
+          * `fromPort` (`pulumi.Input[float]`) - An integer representing the lower bound of the port
+            range to open. Changing this creates a new security group rule.
           * `id` (`pulumi.Input[str]`)
-          * `ipProtocol` (`pulumi.Input[str]`)
-          * `self` (`pulumi.Input[bool]`)
-          * `toPort` (`pulumi.Input[float]`)
+          * `ipProtocol` (`pulumi.Input[str]`) - The protocol type that will be allowed. Changing
+            this creates a new security group rule.
+          * `self` (`pulumi.Input[bool]`) - Required if `cidr` and `from_group_id` is empty. If true,
+            the security group itself will be added as a source to this ingress rule. Cannot
+            be combined with `cidr` or `from_group_id`.
+          * `toPort` (`pulumi.Input[float]`) - An integer representing the upper bound of the port
+            range to open. Changing this creates a new security group rule.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -132,13 +152,23 @@ class SecGroup(pulumi.CustomResource):
 
         The **rules** object supports the following:
 
-          * `cidr` (`pulumi.Input[str]`)
-          * `fromGroupId` (`pulumi.Input[str]`)
-          * `fromPort` (`pulumi.Input[float]`)
+          * `cidr` (`pulumi.Input[str]`) - Required if `from_group_id` or `self` is empty. The IP range
+            that will be the source of network traffic to the security group. Use 0.0.0.0/0
+            to allow all IP addresses. Changing this creates a new security group rule. Cannot
+            be combined with `from_group_id` or `self`.
+          * `fromGroupId` (`pulumi.Input[str]`) - Required if `cidr` or `self` is empty. The ID of a
+            group from which to forward traffic to the parent group. Changing this creates a
+            new security group rule. Cannot be combined with `cidr` or `self`.
+          * `fromPort` (`pulumi.Input[float]`) - An integer representing the lower bound of the port
+            range to open. Changing this creates a new security group rule.
           * `id` (`pulumi.Input[str]`)
-          * `ipProtocol` (`pulumi.Input[str]`)
-          * `self` (`pulumi.Input[bool]`)
-          * `toPort` (`pulumi.Input[float]`)
+          * `ipProtocol` (`pulumi.Input[str]`) - The protocol type that will be allowed. Changing
+            this creates a new security group rule.
+          * `self` (`pulumi.Input[bool]`) - Required if `cidr` and `from_group_id` is empty. If true,
+            the security group itself will be added as a source to this ingress rule. Cannot
+            be combined with `cidr` or `from_group_id`.
+          * `toPort` (`pulumi.Input[float]`) - An integer representing the upper bound of the port
+            range to open. Changing this creates a new security group rule.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

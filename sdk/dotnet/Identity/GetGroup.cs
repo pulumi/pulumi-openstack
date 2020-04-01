@@ -18,7 +18,20 @@ namespace Pulumi.OpenStack.Identity
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_group_v3.html.markdown.
         /// </summary>
+        [Obsolete("Use GetGroup.InvokeAsync() instead")]
         public static Task<GetGroupResult> GetGroup(GetGroupArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetGroupResult>("openstack:identity/getGroup:getGroup", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetGroup
+    {
+        /// <summary>
+        /// Use this data source to get the ID of an OpenStack group.
+        /// 
+        /// Note: This usually requires admin privileges.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_group_v3.html.markdown.
+        /// </summary>
+        public static Task<GetGroupResult> InvokeAsync(GetGroupArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetGroupResult>("openstack:identity/getGroup:getGroup", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

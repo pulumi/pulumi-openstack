@@ -304,9 +304,15 @@ namespace Pulumi.OpenStack.ObjectStorage
 
     public sealed class ContainerVersioningArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Container in which versions will be stored.
+        /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 
+        /// <summary>
+        /// Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/overview_object_versioning.html).
+        /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 
@@ -317,9 +323,15 @@ namespace Pulumi.OpenStack.ObjectStorage
 
     public sealed class ContainerVersioningGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Container in which versions will be stored.
+        /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 
+        /// <summary>
+        /// Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/overview_object_versioning.html).
+        /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 
@@ -335,7 +347,13 @@ namespace Pulumi.OpenStack.ObjectStorage
     [OutputType]
     public sealed class ContainerVersioning
     {
+        /// <summary>
+        /// Container in which versions will be stored.
+        /// </summary>
         public readonly string Location;
+        /// <summary>
+        /// Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/overview_object_versioning.html).
+        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

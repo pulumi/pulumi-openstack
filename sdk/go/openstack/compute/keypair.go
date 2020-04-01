@@ -154,4 +154,3 @@ type KeypairArgs struct {
 func (KeypairArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*keypairArgs)(nil)).Elem()
 }
-

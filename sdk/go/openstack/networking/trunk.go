@@ -30,9 +30,7 @@ type Trunk struct {
 	// A unique name for the trunk. Changing this
 	// updates the `name` of an existing trunk.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The ID of the port to be used as the parent port of the
-	// trunk. This is the port that should be used as the compute instance network
-	// port. Changing this creates a new trunk.
+	// The ID of the port to be made a subport of the trunk.
 	PortId pulumi.StringOutput `pulumi:"portId"`
 	// The region in which to obtain the V2 networking client.
 	// A networking client is needed to create a trunk. If omitted, the
@@ -93,9 +91,7 @@ type trunkState struct {
 	// A unique name for the trunk. Changing this
 	// updates the `name` of an existing trunk.
 	Name *string `pulumi:"name"`
-	// The ID of the port to be used as the parent port of the
-	// trunk. This is the port that should be used as the compute instance network
-	// port. Changing this creates a new trunk.
+	// The ID of the port to be made a subport of the trunk.
 	PortId *string `pulumi:"portId"`
 	// The region in which to obtain the V2 networking client.
 	// A networking client is needed to create a trunk. If omitted, the
@@ -126,9 +122,7 @@ type TrunkState struct {
 	// A unique name for the trunk. Changing this
 	// updates the `name` of an existing trunk.
 	Name pulumi.StringPtrInput
-	// The ID of the port to be used as the parent port of the
-	// trunk. This is the port that should be used as the compute instance network
-	// port. Changing this creates a new trunk.
+	// The ID of the port to be made a subport of the trunk.
 	PortId pulumi.StringPtrInput
 	// The region in which to obtain the V2 networking client.
 	// A networking client is needed to create a trunk. If omitted, the
@@ -160,9 +154,7 @@ type trunkArgs struct {
 	// A unique name for the trunk. Changing this
 	// updates the `name` of an existing trunk.
 	Name *string `pulumi:"name"`
-	// The ID of the port to be used as the parent port of the
-	// trunk. This is the port that should be used as the compute instance network
-	// port. Changing this creates a new trunk.
+	// The ID of the port to be made a subport of the trunk.
 	PortId string `pulumi:"portId"`
 	// The region in which to obtain the V2 networking client.
 	// A networking client is needed to create a trunk. If omitted, the
@@ -191,9 +183,7 @@ type TrunkArgs struct {
 	// A unique name for the trunk. Changing this
 	// updates the `name` of an existing trunk.
 	Name pulumi.StringPtrInput
-	// The ID of the port to be used as the parent port of the
-	// trunk. This is the port that should be used as the compute instance network
-	// port. Changing this creates a new trunk.
+	// The ID of the port to be made a subport of the trunk.
 	PortId pulumi.StringInput
 	// The region in which to obtain the V2 networking client.
 	// A networking client is needed to create a trunk. If omitted, the
@@ -213,4 +203,3 @@ type TrunkArgs struct {
 func (TrunkArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*trunkArgs)(nil)).Elem()
 }
-

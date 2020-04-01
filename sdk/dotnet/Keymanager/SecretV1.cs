@@ -45,7 +45,7 @@ namespace Pulumi.OpenStack.KeyManager
         public Output<ImmutableDictionary<string, object>> ContentTypes { get; private set; } = null!;
 
         /// <summary>
-        /// The date the secret was created.
+        /// The date the secret ACL was created.
         /// </summary>
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
@@ -127,7 +127,7 @@ namespace Pulumi.OpenStack.KeyManager
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The date the secret was last updated.
+        /// The date the secret ACL was last updated.
         /// </summary>
         [Output("updatedAt")]
         public Output<string> UpdatedAt { get; private set; } = null!;
@@ -315,7 +315,7 @@ namespace Pulumi.OpenStack.KeyManager
         }
 
         /// <summary>
-        /// The date the secret was created.
+        /// The date the secret ACL was created.
         /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
@@ -403,7 +403,7 @@ namespace Pulumi.OpenStack.KeyManager
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The date the secret was last updated.
+        /// The date the secret ACL was last updated.
         /// </summary>
         [Input("updatedAt")]
         public Input<string>? UpdatedAt { get; set; }
@@ -439,22 +439,31 @@ namespace Pulumi.OpenStack.KeyManager
     public sealed class SecretV1AclReadArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The date the secret was created.
+        /// The date the secret ACL was created.
         /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
+        /// <summary>
+        /// Whether the secret is accessible project wide.
+        /// Defaults to `true`.
+        /// </summary>
         [Input("projectAccess")]
         public Input<bool>? ProjectAccess { get; set; }
 
         /// <summary>
-        /// The date the secret was last updated.
+        /// The date the secret ACL was last updated.
         /// </summary>
         [Input("updatedAt")]
         public Input<string>? UpdatedAt { get; set; }
 
         [Input("users")]
         private InputList<string>? _users;
+
+        /// <summary>
+        /// The list of user IDs, which are allowed to access the
+        /// secret, when `project_access` is set to `false`.
+        /// </summary>
         public InputList<string> Users
         {
             get => _users ?? (_users = new InputList<string>());
@@ -469,22 +478,31 @@ namespace Pulumi.OpenStack.KeyManager
     public sealed class SecretV1AclReadGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The date the secret was created.
+        /// The date the secret ACL was created.
         /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
+        /// <summary>
+        /// Whether the secret is accessible project wide.
+        /// Defaults to `true`.
+        /// </summary>
         [Input("projectAccess")]
         public Input<bool>? ProjectAccess { get; set; }
 
         /// <summary>
-        /// The date the secret was last updated.
+        /// The date the secret ACL was last updated.
         /// </summary>
         [Input("updatedAt")]
         public Input<string>? UpdatedAt { get; set; }
 
         [Input("users")]
         private InputList<string>? _users;
+
+        /// <summary>
+        /// The list of user IDs, which are allowed to access the
+        /// secret, when `project_access` is set to `false`.
+        /// </summary>
         public InputList<string> Users
         {
             get => _users ?? (_users = new InputList<string>());
@@ -516,14 +534,22 @@ namespace Pulumi.OpenStack.KeyManager
     public sealed class SecretV1AclRead
     {
         /// <summary>
-        /// The date the secret was created.
+        /// The date the secret ACL was created.
         /// </summary>
         public readonly string CreatedAt;
+        /// <summary>
+        /// Whether the secret is accessible project wide.
+        /// Defaults to `true`.
+        /// </summary>
         public readonly bool? ProjectAccess;
         /// <summary>
-        /// The date the secret was last updated.
+        /// The date the secret ACL was last updated.
         /// </summary>
         public readonly string UpdatedAt;
+        /// <summary>
+        /// The list of user IDs, which are allowed to access the
+        /// secret, when `project_access` is set to `false`.
+        /// </summary>
         public readonly ImmutableArray<string> Users;
 
         [OutputConstructor]

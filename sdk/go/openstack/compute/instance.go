@@ -22,7 +22,7 @@ import (
 // ### Importing an instance with multiple emphemeral disks
 //
 // The importer cannot read the emphemeral disk configuration
-// of an instance, so just specify imageId as in the configuration 
+// of an instance, so just specify imageId as in the configuration
 // of the basic instance example.
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_instance_v2.html.markdown.
@@ -35,8 +35,8 @@ type Instance struct {
 	AccessIpV6 pulumi.StringOutput `pulumi:"accessIpV6"`
 	// The administrative password to assign to the server.
 	// Changing this changes the root password on the existing server.
-	AdminPass pulumi.StringPtrOutput `pulumi:"adminPass"`
-	AllMetadata pulumi.MapOutput `pulumi:"allMetadata"`
+	AdminPass   pulumi.StringPtrOutput `pulumi:"adminPass"`
+	AllMetadata pulumi.MapOutput       `pulumi:"allMetadata"`
 	// The collection of tags assigned on the instance, which have
 	// been explicitly and implicitly added.
 	AllTags pulumi.StringArrayOutput `pulumi:"allTags"`
@@ -78,7 +78,8 @@ type Instance struct {
 	// Metadata key/value pairs to make available from
 	// within the instance. Changing this updates the existing server metadata.
 	Metadata pulumi.MapOutput `pulumi:"metadata"`
-	// A unique name for the resource.
+	// The human-readable
+	// name of the network. Changing this creates a new server.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// An array of one or more networks to attach to the
 	// instance. The network object structure is documented below. Changing this
@@ -155,7 +156,7 @@ type instanceState struct {
 	AccessIpV6 *string `pulumi:"accessIpV6"`
 	// The administrative password to assign to the server.
 	// Changing this changes the root password on the existing server.
-	AdminPass *string `pulumi:"adminPass"`
+	AdminPass   *string                `pulumi:"adminPass"`
 	AllMetadata map[string]interface{} `pulumi:"allMetadata"`
 	// The collection of tags assigned on the instance, which have
 	// been explicitly and implicitly added.
@@ -198,7 +199,8 @@ type instanceState struct {
 	// Metadata key/value pairs to make available from
 	// within the instance. Changing this updates the existing server metadata.
 	Metadata map[string]interface{} `pulumi:"metadata"`
-	// A unique name for the resource.
+	// The human-readable
+	// name of the network. Changing this creates a new server.
 	Name *string `pulumi:"name"`
 	// An array of one or more networks to attach to the
 	// instance. The network object structure is documented below. Changing this
@@ -248,7 +250,7 @@ type InstanceState struct {
 	AccessIpV6 pulumi.StringPtrInput
 	// The administrative password to assign to the server.
 	// Changing this changes the root password on the existing server.
-	AdminPass pulumi.StringPtrInput
+	AdminPass   pulumi.StringPtrInput
 	AllMetadata pulumi.MapInput
 	// The collection of tags assigned on the instance, which have
 	// been explicitly and implicitly added.
@@ -291,7 +293,8 @@ type InstanceState struct {
 	// Metadata key/value pairs to make available from
 	// within the instance. Changing this updates the existing server metadata.
 	Metadata pulumi.MapInput
-	// A unique name for the resource.
+	// The human-readable
+	// name of the network. Changing this creates a new server.
 	Name pulumi.StringPtrInput
 	// An array of one or more networks to attach to the
 	// instance. The network object structure is documented below. Changing this
@@ -384,7 +387,8 @@ type instanceArgs struct {
 	// Metadata key/value pairs to make available from
 	// within the instance. Changing this updates the existing server metadata.
 	Metadata map[string]interface{} `pulumi:"metadata"`
-	// A unique name for the resource.
+	// The human-readable
+	// name of the network. Changing this creates a new server.
 	Name *string `pulumi:"name"`
 	// An array of one or more networks to attach to the
 	// instance. The network object structure is documented below. Changing this
@@ -474,7 +478,8 @@ type InstanceArgs struct {
 	// Metadata key/value pairs to make available from
 	// within the instance. Changing this updates the existing server metadata.
 	Metadata pulumi.MapInput
-	// A unique name for the resource.
+	// The human-readable
+	// name of the network. Changing this creates a new server.
 	Name pulumi.StringPtrInput
 	// An array of one or more networks to attach to the
 	// instance. The network object structure is documented below. Changing this
@@ -520,4 +525,3 @@ type InstanceArgs struct {
 func (InstanceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceArgs)(nil)).Elem()
 }
-

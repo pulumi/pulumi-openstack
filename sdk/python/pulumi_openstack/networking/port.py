@@ -37,20 +37,23 @@ class Port(pulumi.CustomResource):
     addresses that can be active on this port. The structure is described
     below.
 
-      * `ip_address` (`str`)
-      * `mac_address` (`str`) - Specify a specific MAC address for the port. Changing
-        this creates a new port.
+      * `ip_address` (`str`) - The additional IP address.
+      * `mac_address` (`str`) - The additional MAC address.
     """
     binding: pulumi.Output[dict]
     """
     The port binding allows to specify binding information
     for the port. The structure is described below.
 
-      * `hostId` (`str`)
-      * `profile` (`str`)
-      * `vifDetails` (`dict`)
-      * `vifType` (`str`)
-      * `vnicType` (`str`)
+      * `hostId` (`str`) - The ID of the host to allocate port on.
+      * `profile` (`str`) - Custom data to be passed as `binding:profile`. Data
+        must be passed as JSON.
+      * `vifDetails` (`dict`) - A map of JSON strings containing additional
+        details for this specific binding.
+      * `vifType` (`str`) - The VNIC type of the port binding.
+      * `vnicType` (`str`) - VNIC type for the port. Can either be `direct`,
+        `direct-physical`, `macvtap`, `normal`, `baremetal` or `virtio-forwarder`.
+        Default value is `normal`.
     """
     description: pulumi.Output[str]
     """
@@ -82,28 +85,26 @@ class Port(pulumi.CustomResource):
     on the port. The structure is described below. Can be specified multiple
     times.
 
-      * `ip_version` (`float`)
-      * `name` (`str`) - A unique name for the port. Changing this
-        updates the `name` of an existing port.
-      * `value` (`str`)
+      * `ip_version` (`float`) - IP protocol version. Defaults to 4.
+      * `name` (`str`) - Name of the DHCP option.
+      * `value` (`str`) - Value of the DHCP option.
     """
     fixed_ips: pulumi.Output[list]
     """
     An array of desired IPs for
     this port. The structure is described below.
 
-      * `ip_address` (`str`)
-      * `subnet_id` (`str`)
+      * `ip_address` (`str`) - The additional IP address.
+      * `subnet_id` (`str`) - Subnet in which to allocate IP address for
+        this port.
     """
     mac_address: pulumi.Output[str]
     """
-    Specify a specific MAC address for the port. Changing
-    this creates a new port.
+    The additional MAC address.
     """
     name: pulumi.Output[str]
     """
-    A unique name for the port. Changing this
-    updates the `name` of an existing port.
+    Name of the DHCP option.
     """
     network_id: pulumi.Output[str]
     """
@@ -201,10 +202,8 @@ class Port(pulumi.CustomResource):
                times.
         :param pulumi.Input[list] fixed_ips: An array of desired IPs for
                this port. The structure is described below.
-        :param pulumi.Input[str] mac_address: Specify a specific MAC address for the port. Changing
-               this creates a new port.
-        :param pulumi.Input[str] name: A unique name for the port. Changing this
-               updates the `name` of an existing port.
+        :param pulumi.Input[str] mac_address: The additional MAC address.
+        :param pulumi.Input[str] name: Name of the DHCP option.
         :param pulumi.Input[str] network_id: The ID of the network to attach the port to. Changing
                this creates a new port.
         :param pulumi.Input[bool] no_fixed_ip: Create a port with no fixed
@@ -237,29 +236,32 @@ class Port(pulumi.CustomResource):
 
         The **allowed_address_pairs** object supports the following:
 
-          * `ip_address` (`pulumi.Input[str]`)
-          * `mac_address` (`pulumi.Input[str]`) - Specify a specific MAC address for the port. Changing
-            this creates a new port.
+          * `ip_address` (`pulumi.Input[str]`) - The additional IP address.
+          * `mac_address` (`pulumi.Input[str]`) - The additional MAC address.
 
         The **binding** object supports the following:
 
-          * `hostId` (`pulumi.Input[str]`)
-          * `profile` (`pulumi.Input[str]`)
-          * `vifDetails` (`pulumi.Input[dict]`)
-          * `vifType` (`pulumi.Input[str]`)
-          * `vnicType` (`pulumi.Input[str]`)
+          * `hostId` (`pulumi.Input[str]`) - The ID of the host to allocate port on.
+          * `profile` (`pulumi.Input[str]`) - Custom data to be passed as `binding:profile`. Data
+            must be passed as JSON.
+          * `vifDetails` (`pulumi.Input[dict]`) - A map of JSON strings containing additional
+            details for this specific binding.
+          * `vifType` (`pulumi.Input[str]`) - The VNIC type of the port binding.
+          * `vnicType` (`pulumi.Input[str]`) - VNIC type for the port. Can either be `direct`,
+            `direct-physical`, `macvtap`, `normal`, `baremetal` or `virtio-forwarder`.
+            Default value is `normal`.
 
         The **extra_dhcp_options** object supports the following:
 
-          * `ip_version` (`pulumi.Input[float]`)
-          * `name` (`pulumi.Input[str]`) - A unique name for the port. Changing this
-            updates the `name` of an existing port.
-          * `value` (`pulumi.Input[str]`)
+          * `ip_version` (`pulumi.Input[float]`) - IP protocol version. Defaults to 4.
+          * `name` (`pulumi.Input[str]`) - Name of the DHCP option.
+          * `value` (`pulumi.Input[str]`) - Value of the DHCP option.
 
         The **fixed_ips** object supports the following:
 
-          * `ip_address` (`pulumi.Input[str]`)
-          * `subnet_id` (`pulumi.Input[str]`)
+          * `ip_address` (`pulumi.Input[str]`) - The additional IP address.
+          * `subnet_id` (`pulumi.Input[str]`) - Subnet in which to allocate IP address for
+            this port.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -348,10 +350,8 @@ class Port(pulumi.CustomResource):
                times.
         :param pulumi.Input[list] fixed_ips: An array of desired IPs for
                this port. The structure is described below.
-        :param pulumi.Input[str] mac_address: Specify a specific MAC address for the port. Changing
-               this creates a new port.
-        :param pulumi.Input[str] name: A unique name for the port. Changing this
-               updates the `name` of an existing port.
+        :param pulumi.Input[str] mac_address: The additional MAC address.
+        :param pulumi.Input[str] name: Name of the DHCP option.
         :param pulumi.Input[str] network_id: The ID of the network to attach the port to. Changing
                this creates a new port.
         :param pulumi.Input[bool] no_fixed_ip: Create a port with no fixed
@@ -384,29 +384,32 @@ class Port(pulumi.CustomResource):
 
         The **allowed_address_pairs** object supports the following:
 
-          * `ip_address` (`pulumi.Input[str]`)
-          * `mac_address` (`pulumi.Input[str]`) - Specify a specific MAC address for the port. Changing
-            this creates a new port.
+          * `ip_address` (`pulumi.Input[str]`) - The additional IP address.
+          * `mac_address` (`pulumi.Input[str]`) - The additional MAC address.
 
         The **binding** object supports the following:
 
-          * `hostId` (`pulumi.Input[str]`)
-          * `profile` (`pulumi.Input[str]`)
-          * `vifDetails` (`pulumi.Input[dict]`)
-          * `vifType` (`pulumi.Input[str]`)
-          * `vnicType` (`pulumi.Input[str]`)
+          * `hostId` (`pulumi.Input[str]`) - The ID of the host to allocate port on.
+          * `profile` (`pulumi.Input[str]`) - Custom data to be passed as `binding:profile`. Data
+            must be passed as JSON.
+          * `vifDetails` (`pulumi.Input[dict]`) - A map of JSON strings containing additional
+            details for this specific binding.
+          * `vifType` (`pulumi.Input[str]`) - The VNIC type of the port binding.
+          * `vnicType` (`pulumi.Input[str]`) - VNIC type for the port. Can either be `direct`,
+            `direct-physical`, `macvtap`, `normal`, `baremetal` or `virtio-forwarder`.
+            Default value is `normal`.
 
         The **extra_dhcp_options** object supports the following:
 
-          * `ip_version` (`pulumi.Input[float]`)
-          * `name` (`pulumi.Input[str]`) - A unique name for the port. Changing this
-            updates the `name` of an existing port.
-          * `value` (`pulumi.Input[str]`)
+          * `ip_version` (`pulumi.Input[float]`) - IP protocol version. Defaults to 4.
+          * `name` (`pulumi.Input[str]`) - Name of the DHCP option.
+          * `value` (`pulumi.Input[str]`) - Value of the DHCP option.
 
         The **fixed_ips** object supports the following:
 
-          * `ip_address` (`pulumi.Input[str]`)
-          * `subnet_id` (`pulumi.Input[str]`)
+          * `ip_address` (`pulumi.Input[str]`) - The additional IP address.
+          * `subnet_id` (`pulumi.Input[str]`) - Subnet in which to allocate IP address for
+            this port.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

@@ -11,7 +11,13 @@ namespace Pulumi.OpenStack.KeyManager
 {
     public static partial class Invokes
     {
+        [Obsolete("Use GetSecret.InvokeAsync() instead")]
         public static Task<GetSecretResult> GetSecret(GetSecretArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSecretResult>("openstack:keymanager/getSecret:getSecret", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetSecret
+    {
+        public static Task<GetSecretResult> InvokeAsync(GetSecretArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSecretResult>("openstack:keymanager/getSecret:getSecret", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

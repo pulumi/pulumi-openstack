@@ -91,6 +91,7 @@ def get_project(domain_id=None,enabled=None,is_domain=None,name=None,parent_id=N
            are `true` and `false`.
     :param str name: The name of the project.
     :param str parent_id: The parent of this project.
+    :param str region: The region the project is located in.
     """
     __args__ = dict()
 

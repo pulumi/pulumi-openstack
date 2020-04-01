@@ -16,7 +16,18 @@ namespace Pulumi.OpenStack.KeyManager
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/keymanager_container_v1.html.markdown.
         /// </summary>
+        [Obsolete("Use GetContainer.InvokeAsync() instead")]
         public static Task<GetContainerResult> GetContainer(GetContainerArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetContainerResult>("openstack:keymanager/getContainer:getContainer", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetContainer
+    {
+        /// <summary>
+        /// Use this data source to get the ID of an available Barbican container.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/keymanager_container_v1.html.markdown.
+        /// </summary>
+        public static Task<GetContainerResult> InvokeAsync(GetContainerArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetContainerResult>("openstack:keymanager/getContainer:getContainer", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

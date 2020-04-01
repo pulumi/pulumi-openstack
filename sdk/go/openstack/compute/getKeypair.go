@@ -29,7 +29,6 @@ type LookupKeypairArgs struct {
 	Region *string `pulumi:"region"`
 }
 
-
 // A collection of values returned by getKeypair.
 type LookupKeypairResult struct {
 	// The fingerprint of the OpenSSH key.
@@ -43,4 +42,3 @@ type LookupKeypairResult struct {
 	// See Argument Reference above.
 	Region string `pulumi:"region"`
 }
-

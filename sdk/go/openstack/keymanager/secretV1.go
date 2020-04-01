@@ -26,7 +26,7 @@ type SecretV1 struct {
 	BitLength pulumi.IntOutput `pulumi:"bitLength"`
 	// The map of the content types, assigned on the secret.
 	ContentTypes pulumi.MapOutput `pulumi:"contentTypes"`
-	// The date the secret was created.
+	// The date the secret ACL was created.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// The creator of the secret.
 	CreatorId pulumi.StringOutput `pulumi:"creatorId"`
@@ -56,7 +56,7 @@ type SecretV1 struct {
 	SecretType pulumi.StringOutput `pulumi:"secretType"`
 	// The status of the secret.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The date the secret was last updated.
+	// The date the secret ACL was last updated.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 }
 
@@ -101,7 +101,7 @@ type secretV1State struct {
 	BitLength *int `pulumi:"bitLength"`
 	// The map of the content types, assigned on the secret.
 	ContentTypes map[string]interface{} `pulumi:"contentTypes"`
-	// The date the secret was created.
+	// The date the secret ACL was created.
 	CreatedAt *string `pulumi:"createdAt"`
 	// The creator of the secret.
 	CreatorId *string `pulumi:"creatorId"`
@@ -131,7 +131,7 @@ type secretV1State struct {
 	SecretType *string `pulumi:"secretType"`
 	// The status of the secret.
 	Status *string `pulumi:"status"`
-	// The date the secret was last updated.
+	// The date the secret ACL was last updated.
 	UpdatedAt *string `pulumi:"updatedAt"`
 }
 
@@ -149,7 +149,7 @@ type SecretV1State struct {
 	BitLength pulumi.IntPtrInput
 	// The map of the content types, assigned on the secret.
 	ContentTypes pulumi.MapInput
-	// The date the secret was created.
+	// The date the secret ACL was created.
 	CreatedAt pulumi.StringPtrInput
 	// The creator of the secret.
 	CreatorId pulumi.StringPtrInput
@@ -179,7 +179,7 @@ type SecretV1State struct {
 	SecretType pulumi.StringPtrInput
 	// The status of the secret.
 	Status pulumi.StringPtrInput
-	// The date the secret was last updated.
+	// The date the secret ACL was last updated.
 	UpdatedAt pulumi.StringPtrInput
 }
 
@@ -257,4 +257,3 @@ type SecretV1Args struct {
 func (SecretV1Args) ElementType() reflect.Type {
 	return reflect.TypeOf((*secretV1Args)(nil)).Elem()
 }
-

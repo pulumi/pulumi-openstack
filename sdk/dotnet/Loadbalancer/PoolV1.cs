@@ -74,8 +74,8 @@ namespace Pulumi.OpenStack.LoadBalancer
         public Output<string> SubnetId { get; private set; } = null!;
 
         /// <summary>
-        /// The owner of the pool. Required if admin wants to
-        /// create a pool member for another tenant. Changing this creates a new pool.
+        /// The owner of the member. Required if admin wants to
+        /// create a pool member for another tenant. Changing this creates a new member.
         /// </summary>
         [Output("tenantId")]
         public Output<string> TenantId { get; private set; } = null!;
@@ -186,8 +186,8 @@ namespace Pulumi.OpenStack.LoadBalancer
         public Input<string> SubnetId { get; set; } = null!;
 
         /// <summary>
-        /// The owner of the pool. Required if admin wants to
-        /// create a pool member for another tenant. Changing this creates a new pool.
+        /// The owner of the member. Required if admin wants to
+        /// create a pool member for another tenant. Changing this creates a new member.
         /// </summary>
         [Input("tenantId")]
         public Input<string>? TenantId { get; set; }
@@ -259,8 +259,8 @@ namespace Pulumi.OpenStack.LoadBalancer
         public Input<string>? SubnetId { get; set; }
 
         /// <summary>
-        /// The owner of the pool. Required if admin wants to
-        /// create a pool member for another tenant. Changing this creates a new pool.
+        /// The owner of the member. Required if admin wants to
+        /// create a pool member for another tenant. Changing this creates a new member.
         /// </summary>
         [Input("tenantId")]
         public Input<string>? TenantId { get; set; }

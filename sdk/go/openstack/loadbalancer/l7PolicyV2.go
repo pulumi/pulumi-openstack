@@ -227,4 +227,3 @@ type L7PolicyV2Args struct {
 func (L7PolicyV2Args) ElementType() reflect.Type {
 	return reflect.TypeOf((*l7policyV2Args)(nil)).Elem()
 }
-

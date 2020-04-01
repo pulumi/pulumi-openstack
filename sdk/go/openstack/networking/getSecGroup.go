@@ -38,21 +38,19 @@ type LookupSecGroupArgs struct {
 	TenantId *string `pulumi:"tenantId"`
 }
 
-
 // A collection of values returned by getSecGroup.
 type LookupSecGroupResult struct {
 	// The set of string tags applied on the security group.
-	AllTags []string `pulumi:"allTags"`
-	Description *string `pulumi:"description"`
+	AllTags     []string `pulumi:"allTags"`
+	Description *string  `pulumi:"description"`
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// See Argument Reference above.
 	// * `description`- See Argument Reference above.
 	Name *string `pulumi:"name"`
 	// See Argument Reference above.
-	Region string `pulumi:"region"`
-	SecgroupId *string `pulumi:"secgroupId"`
-	Tags []string `pulumi:"tags"`
-	TenantId string `pulumi:"tenantId"`
+	Region     string   `pulumi:"region"`
+	SecgroupId *string  `pulumi:"secgroupId"`
+	Tags       []string `pulumi:"tags"`
+	TenantId   string   `pulumi:"tenantId"`
 }
-

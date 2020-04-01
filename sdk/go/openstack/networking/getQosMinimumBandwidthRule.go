@@ -33,7 +33,6 @@ type LookupQosMinimumBandwidthRuleArgs struct {
 	Region *string `pulumi:"region"`
 }
 
-
 // A collection of values returned by getQosMinimumBandwidthRule.
 type LookupQosMinimumBandwidthRuleResult struct {
 	Direction string `pulumi:"direction"`
@@ -46,4 +45,3 @@ type LookupQosMinimumBandwidthRuleResult struct {
 	// See Argument Reference above.
 	Region string `pulumi:"region"`
 }
-

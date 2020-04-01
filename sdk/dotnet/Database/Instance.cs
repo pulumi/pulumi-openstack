@@ -45,7 +45,8 @@ namespace Pulumi.OpenStack.Database
         public Output<string> FlavorId { get; private set; } = null!;
 
         /// <summary>
-        /// A unique name for the resource.
+        /// Database to be created on new instance. Changing this creates a
+        /// new instance.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -159,7 +160,8 @@ namespace Pulumi.OpenStack.Database
         public Input<string>? FlavorId { get; set; }
 
         /// <summary>
-        /// A unique name for the resource.
+        /// Database to be created on new instance. Changing this creates a
+        /// new instance.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -246,7 +248,8 @@ namespace Pulumi.OpenStack.Database
         public Input<string>? FlavorId { get; set; }
 
         /// <summary>
-        /// A unique name for the resource.
+        /// Database to be created on new instance. Changing this creates a
+        /// new instance.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -301,14 +304,22 @@ namespace Pulumi.OpenStack.Database
 
     public sealed class InstanceDatabasesArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Database character set. Changing this creates a
+        /// new instance.
+        /// </summary>
         [Input("charset")]
         public Input<string>? Charset { get; set; }
 
+        /// <summary>
+        /// Database collation. Changing this creates a new instance.
+        /// </summary>
         [Input("collate")]
         public Input<string>? Collate { get; set; }
 
         /// <summary>
-        /// A unique name for the resource.
+        /// Database to be created on new instance. Changing this creates a
+        /// new instance.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -320,14 +331,22 @@ namespace Pulumi.OpenStack.Database
 
     public sealed class InstanceDatabasesGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Database character set. Changing this creates a
+        /// new instance.
+        /// </summary>
         [Input("charset")]
         public Input<string>? Charset { get; set; }
 
+        /// <summary>
+        /// Database collation. Changing this creates a new instance.
+        /// </summary>
         [Input("collate")]
         public Input<string>? Collate { get; set; }
 
         /// <summary>
-        /// A unique name for the resource.
+        /// Database to be created on new instance. Changing this creates a
+        /// new instance.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -339,9 +358,17 @@ namespace Pulumi.OpenStack.Database
 
     public sealed class InstanceDatastoreArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Database engine type to be used in new instance. Changing this
+        /// creates a new instance.
+        /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 
+        /// <summary>
+        /// Version of database engine type to be used in new instance.
+        /// Changing this creates a new instance.
+        /// </summary>
         [Input("version", required: true)]
         public Input<string> Version { get; set; } = null!;
 
@@ -352,9 +379,17 @@ namespace Pulumi.OpenStack.Database
 
     public sealed class InstanceDatastoreGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Database engine type to be used in new instance. Changing this
+        /// creates a new instance.
+        /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 
+        /// <summary>
+        /// Version of database engine type to be used in new instance.
+        /// Changing this creates a new instance.
+        /// </summary>
         [Input("version", required: true)]
         public Input<string> Version { get; set; } = null!;
 
@@ -365,15 +400,31 @@ namespace Pulumi.OpenStack.Database
 
     public sealed class InstanceNetworksArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Specifies a fixed IPv4 address to be used on this
+        /// network. Changing this creates a new instance.
+        /// </summary>
         [Input("fixedIpV4")]
         public Input<string>? FixedIpV4 { get; set; }
 
+        /// <summary>
+        /// Specifies a fixed IPv6 address to be used on this
+        /// network. Changing this creates a new instance.
+        /// </summary>
         [Input("fixedIpV6")]
         public Input<string>? FixedIpV6 { get; set; }
 
+        /// <summary>
+        /// The port UUID of a
+        /// network to attach to the instance. Changing this creates a new instance.
+        /// </summary>
         [Input("port")]
         public Input<string>? Port { get; set; }
 
+        /// <summary>
+        /// The network UUID to
+        /// attach to the instance. Changing this creates a new instance.
+        /// </summary>
         [Input("uuid")]
         public Input<string>? Uuid { get; set; }
 
@@ -384,15 +435,31 @@ namespace Pulumi.OpenStack.Database
 
     public sealed class InstanceNetworksGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Specifies a fixed IPv4 address to be used on this
+        /// network. Changing this creates a new instance.
+        /// </summary>
         [Input("fixedIpV4")]
         public Input<string>? FixedIpV4 { get; set; }
 
+        /// <summary>
+        /// Specifies a fixed IPv6 address to be used on this
+        /// network. Changing this creates a new instance.
+        /// </summary>
         [Input("fixedIpV6")]
         public Input<string>? FixedIpV6 { get; set; }
 
+        /// <summary>
+        /// The port UUID of a
+        /// network to attach to the instance. Changing this creates a new instance.
+        /// </summary>
         [Input("port")]
         public Input<string>? Port { get; set; }
 
+        /// <summary>
+        /// The network UUID to
+        /// attach to the instance. Changing this creates a new instance.
+        /// </summary>
         [Input("uuid")]
         public Input<string>? Uuid { get; set; }
 
@@ -405,21 +472,35 @@ namespace Pulumi.OpenStack.Database
     {
         [Input("databases")]
         private InputList<string>? _databases;
+
+        /// <summary>
+        /// A list of databases that user will have access to. If not specified, 
+        /// user has access to all databases on th einstance. Changing this creates a new instance.
+        /// </summary>
         public InputList<string> Databases
         {
             get => _databases ?? (_databases = new InputList<string>());
             set => _databases = value;
         }
 
+        /// <summary>
+        /// An ip address or % sign indicating what ip addresses can connect with
+        /// this user credentials. Changing this creates a new instance.
+        /// </summary>
         [Input("host")]
         public Input<string>? Host { get; set; }
 
         /// <summary>
-        /// A unique name for the resource.
+        /// Database to be created on new instance. Changing this creates a
+        /// new instance.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// User's password. Changing this creates a
+        /// new instance.
+        /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
 
@@ -432,21 +513,35 @@ namespace Pulumi.OpenStack.Database
     {
         [Input("databases")]
         private InputList<string>? _databases;
+
+        /// <summary>
+        /// A list of databases that user will have access to. If not specified, 
+        /// user has access to all databases on th einstance. Changing this creates a new instance.
+        /// </summary>
         public InputList<string> Databases
         {
             get => _databases ?? (_databases = new InputList<string>());
             set => _databases = value;
         }
 
+        /// <summary>
+        /// An ip address or % sign indicating what ip addresses can connect with
+        /// this user credentials. Changing this creates a new instance.
+        /// </summary>
         [Input("host")]
         public Input<string>? Host { get; set; }
 
         /// <summary>
-        /// A unique name for the resource.
+        /// Database to be created on new instance. Changing this creates a
+        /// new instance.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// User's password. Changing this creates a
+        /// new instance.
+        /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
 
@@ -462,10 +557,18 @@ namespace Pulumi.OpenStack.Database
     [OutputType]
     public sealed class InstanceDatabases
     {
+        /// <summary>
+        /// Database character set. Changing this creates a
+        /// new instance.
+        /// </summary>
         public readonly string? Charset;
+        /// <summary>
+        /// Database collation. Changing this creates a new instance.
+        /// </summary>
         public readonly string? Collate;
         /// <summary>
-        /// A unique name for the resource.
+        /// Database to be created on new instance. Changing this creates a
+        /// new instance.
         /// </summary>
         public readonly string Name;
 
@@ -484,7 +587,15 @@ namespace Pulumi.OpenStack.Database
     [OutputType]
     public sealed class InstanceDatastore
     {
+        /// <summary>
+        /// Database engine type to be used in new instance. Changing this
+        /// creates a new instance.
+        /// </summary>
         public readonly string Type;
+        /// <summary>
+        /// Version of database engine type to be used in new instance.
+        /// Changing this creates a new instance.
+        /// </summary>
         public readonly string Version;
 
         [OutputConstructor]
@@ -500,9 +611,25 @@ namespace Pulumi.OpenStack.Database
     [OutputType]
     public sealed class InstanceNetworks
     {
+        /// <summary>
+        /// Specifies a fixed IPv4 address to be used on this
+        /// network. Changing this creates a new instance.
+        /// </summary>
         public readonly string? FixedIpV4;
+        /// <summary>
+        /// Specifies a fixed IPv6 address to be used on this
+        /// network. Changing this creates a new instance.
+        /// </summary>
         public readonly string? FixedIpV6;
+        /// <summary>
+        /// The port UUID of a
+        /// network to attach to the instance. Changing this creates a new instance.
+        /// </summary>
         public readonly string? Port;
+        /// <summary>
+        /// The network UUID to
+        /// attach to the instance. Changing this creates a new instance.
+        /// </summary>
         public readonly string? Uuid;
 
         [OutputConstructor]
@@ -522,12 +649,25 @@ namespace Pulumi.OpenStack.Database
     [OutputType]
     public sealed class InstanceUsers
     {
+        /// <summary>
+        /// A list of databases that user will have access to. If not specified, 
+        /// user has access to all databases on th einstance. Changing this creates a new instance.
+        /// </summary>
         public readonly ImmutableArray<string> Databases;
+        /// <summary>
+        /// An ip address or % sign indicating what ip addresses can connect with
+        /// this user credentials. Changing this creates a new instance.
+        /// </summary>
         public readonly string? Host;
         /// <summary>
-        /// A unique name for the resource.
+        /// Database to be created on new instance. Changing this creates a
+        /// new instance.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// User's password. Changing this creates a
+        /// new instance.
+        /// </summary>
         public readonly string? Password;
 
         [OutputConstructor]

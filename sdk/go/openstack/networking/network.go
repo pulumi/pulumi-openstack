@@ -369,4 +369,3 @@ type NetworkArgs struct {
 func (NetworkArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkArgs)(nil)).Elem()
 }
-

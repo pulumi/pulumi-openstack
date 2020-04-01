@@ -137,7 +137,8 @@ namespace Pulumi.OpenStack.Compute
         public Output<ImmutableDictionary<string, object>?> Metadata { get; private set; } = null!;
 
         /// <summary>
-        /// A unique name for the resource.
+        /// The human-readable
+        /// name of the network. Changing this creates a new server.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -377,7 +378,8 @@ namespace Pulumi.OpenStack.Compute
         }
 
         /// <summary>
-        /// A unique name for the resource.
+        /// The human-readable
+        /// name of the network. Changing this creates a new server.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -629,7 +631,8 @@ namespace Pulumi.OpenStack.Compute
         }
 
         /// <summary>
-        /// A unique name for the resource.
+        /// The human-readable
+        /// name of the network. Changing this creates a new server.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -753,33 +756,75 @@ namespace Pulumi.OpenStack.Compute
 
     public sealed class InstanceBlockDevicesArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The boot index of the volume. It defaults to 0.
+        /// Changing this creates a new server.
+        /// </summary>
         [Input("bootIndex")]
         public Input<int>? BootIndex { get; set; }
 
+        /// <summary>
+        /// Delete the volume / block device upon
+        /// termination of the instance. Defaults to false. Changing this creates a
+        /// new server.
+        /// </summary>
         [Input("deleteOnTermination")]
         public Input<bool>? DeleteOnTermination { get; set; }
 
+        /// <summary>
+        /// The type that gets created. Possible values
+        /// are "volume" and "local". Changing this creates a new server.
+        /// </summary>
         [Input("destinationType")]
         public Input<string>? DestinationType { get; set; }
 
+        /// <summary>
+        /// The low-level device type that will be used. Most
+        /// common thing is to leave this empty. Changing this creates a new server.
+        /// </summary>
         [Input("deviceType")]
         public Input<string>? DeviceType { get; set; }
 
+        /// <summary>
+        /// The low-level disk bus that will be used. Most common
+        /// thing is to leave this empty. Changing this creates a new server.
+        /// </summary>
         [Input("diskBus")]
         public Input<string>? DiskBus { get; set; }
 
         [Input("guestFormat")]
         public Input<string>? GuestFormat { get; set; }
 
+        /// <summary>
+        /// The source type of the device. Must be one of
+        /// "blank", "image", "volume", or "snapshot". Changing this creates a new
+        /// server.
+        /// </summary>
         [Input("sourceType", required: true)]
         public Input<string> SourceType { get; set; } = null!;
 
+        /// <summary>
+        /// The UUID of
+        /// the image, volume, or snapshot. Changing this creates a new server.
+        /// </summary>
         [Input("uuid")]
         public Input<string>? Uuid { get; set; }
 
+        /// <summary>
+        /// The size of the volume to create (in gigabytes). Required
+        /// in the following combinations: source=image and destination=volume,
+        /// source=blank and destination=local, and source=blank and destination=volume.
+        /// Changing this creates a new server.
+        /// </summary>
         [Input("volumeSize")]
         public Input<int>? VolumeSize { get; set; }
 
+        /// <summary>
+        /// The volume type that will be used, for example SSD
+        /// or HDD storage. The available options depend on how your specific OpenStack
+        /// cloud is configured and what classes of storage are provided. Changing this
+        /// creates a new server.
+        /// </summary>
         [Input("volumeType")]
         public Input<string>? VolumeType { get; set; }
 
@@ -790,33 +835,75 @@ namespace Pulumi.OpenStack.Compute
 
     public sealed class InstanceBlockDevicesGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The boot index of the volume. It defaults to 0.
+        /// Changing this creates a new server.
+        /// </summary>
         [Input("bootIndex")]
         public Input<int>? BootIndex { get; set; }
 
+        /// <summary>
+        /// Delete the volume / block device upon
+        /// termination of the instance. Defaults to false. Changing this creates a
+        /// new server.
+        /// </summary>
         [Input("deleteOnTermination")]
         public Input<bool>? DeleteOnTermination { get; set; }
 
+        /// <summary>
+        /// The type that gets created. Possible values
+        /// are "volume" and "local". Changing this creates a new server.
+        /// </summary>
         [Input("destinationType")]
         public Input<string>? DestinationType { get; set; }
 
+        /// <summary>
+        /// The low-level device type that will be used. Most
+        /// common thing is to leave this empty. Changing this creates a new server.
+        /// </summary>
         [Input("deviceType")]
         public Input<string>? DeviceType { get; set; }
 
+        /// <summary>
+        /// The low-level disk bus that will be used. Most common
+        /// thing is to leave this empty. Changing this creates a new server.
+        /// </summary>
         [Input("diskBus")]
         public Input<string>? DiskBus { get; set; }
 
         [Input("guestFormat")]
         public Input<string>? GuestFormat { get; set; }
 
+        /// <summary>
+        /// The source type of the device. Must be one of
+        /// "blank", "image", "volume", or "snapshot". Changing this creates a new
+        /// server.
+        /// </summary>
         [Input("sourceType", required: true)]
         public Input<string> SourceType { get; set; } = null!;
 
+        /// <summary>
+        /// The UUID of
+        /// the image, volume, or snapshot. Changing this creates a new server.
+        /// </summary>
         [Input("uuid")]
         public Input<string>? Uuid { get; set; }
 
+        /// <summary>
+        /// The size of the volume to create (in gigabytes). Required
+        /// in the following combinations: source=image and destination=volume,
+        /// source=blank and destination=local, and source=blank and destination=volume.
+        /// Changing this creates a new server.
+        /// </summary>
         [Input("volumeSize")]
         public Input<int>? VolumeSize { get; set; }
 
+        /// <summary>
+        /// The volume type that will be used, for example SSD
+        /// or HDD storage. The available options depend on how your specific OpenStack
+        /// cloud is configured and what classes of storage are provided. Changing this
+        /// creates a new server.
+        /// </summary>
         [Input("volumeType")]
         public Input<string>? VolumeType { get; set; }
 
@@ -827,9 +914,17 @@ namespace Pulumi.OpenStack.Compute
 
     public sealed class InstanceNetworksArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Specifies if this network should be used for
+        /// provisioning access. Accepts true or false. Defaults to false.
+        /// </summary>
         [Input("accessNetwork")]
         public Input<bool>? AccessNetwork { get; set; }
 
+        /// <summary>
+        /// Specifies a fixed IPv4 address to be used on this
+        /// network. Changing this creates a new server.
+        /// </summary>
         [Input("fixedIpV4")]
         public Input<string>? FixedIpV4 { get; set; }
 
@@ -840,14 +935,23 @@ namespace Pulumi.OpenStack.Compute
         public Input<string>? Mac { get; set; }
 
         /// <summary>
-        /// A unique name for the resource.
+        /// The human-readable
+        /// name of the network. Changing this creates a new server.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The port UUID of a
+        /// network to attach to the server. Changing this creates a new server.
+        /// </summary>
         [Input("port")]
         public Input<string>? Port { get; set; }
 
+        /// <summary>
+        /// The UUID of
+        /// the image, volume, or snapshot. Changing this creates a new server.
+        /// </summary>
         [Input("uuid")]
         public Input<string>? Uuid { get; set; }
 
@@ -858,9 +962,17 @@ namespace Pulumi.OpenStack.Compute
 
     public sealed class InstanceNetworksGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Specifies if this network should be used for
+        /// provisioning access. Accepts true or false. Defaults to false.
+        /// </summary>
         [Input("accessNetwork")]
         public Input<bool>? AccessNetwork { get; set; }
 
+        /// <summary>
+        /// Specifies a fixed IPv4 address to be used on this
+        /// network. Changing this creates a new server.
+        /// </summary>
         [Input("fixedIpV4")]
         public Input<string>? FixedIpV4 { get; set; }
 
@@ -871,14 +983,23 @@ namespace Pulumi.OpenStack.Compute
         public Input<string>? Mac { get; set; }
 
         /// <summary>
-        /// A unique name for the resource.
+        /// The human-readable
+        /// name of the network. Changing this creates a new server.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The port UUID of a
+        /// network to attach to the server. Changing this creates a new server.
+        /// </summary>
         [Input("port")]
         public Input<string>? Port { get; set; }
 
+        /// <summary>
+        /// The UUID of
+        /// the image, volume, or snapshot. Changing this creates a new server.
+        /// </summary>
         [Input("uuid")]
         public Input<string>? Uuid { get; set; }
 
@@ -889,9 +1010,15 @@ namespace Pulumi.OpenStack.Compute
 
     public sealed class InstancePersonalitiesArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The contents of the file. Limited to 255 bytes.
+        /// </summary>
         [Input("content", required: true)]
         public Input<string> Content { get; set; } = null!;
 
+        /// <summary>
+        /// The absolute path of the destination file.
+        /// </summary>
         [Input("file", required: true)]
         public Input<string> File { get; set; } = null!;
 
@@ -902,9 +1029,15 @@ namespace Pulumi.OpenStack.Compute
 
     public sealed class InstancePersonalitiesGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The contents of the file. Limited to 255 bytes.
+        /// </summary>
         [Input("content", required: true)]
         public Input<string> Content { get; set; } = null!;
 
+        /// <summary>
+        /// The absolute path of the destination file.
+        /// </summary>
         [Input("file", required: true)]
         public Input<string> File { get; set; } = null!;
 
@@ -917,28 +1050,55 @@ namespace Pulumi.OpenStack.Compute
     {
         [Input("additionalProperties")]
         private InputMap<object>? _additionalProperties;
+
+        /// <summary>
+        /// Arbitrary key/value pairs of additional
+        /// properties to pass to the scheduler.
+        /// </summary>
         public InputMap<object> AdditionalProperties
         {
             get => _additionalProperties ?? (_additionalProperties = new InputMap<object>());
             set => _additionalProperties = value;
         }
 
+        /// <summary>
+        /// An IP Address in CIDR form. The instance
+        /// will be placed on a compute node that is in the same subnet.
+        /// </summary>
         [Input("buildNearHostIp")]
         public Input<string>? BuildNearHostIp { get; set; }
 
         [Input("differentHosts")]
         private InputList<string>? _differentHosts;
+
+        /// <summary>
+        /// A list of instance UUIDs. The instance will
+        /// be scheduled on a different host than all other instances.
+        /// </summary>
         public InputList<string> DifferentHosts
         {
             get => _differentHosts ?? (_differentHosts = new InputList<string>());
             set => _differentHosts = value;
         }
 
+        /// <summary>
+        /// A UUID of a Server Group. The instance will be placed
+        /// into that group.
+        /// </summary>
         [Input("group")]
         public Input<string>? Group { get; set; }
 
         [Input("queries")]
         private InputList<string>? _queries;
+
+        /// <summary>
+        /// A conditional query that a compute node must pass in
+        /// order to host an instance. The query must use the `JsonFilter` syntax
+        /// which is described
+        /// [here](https://docs.openstack.org/nova/latest/admin/configuration/schedulers.html#jsonfilter).
+        /// At this time, only simple queries are supported. Compound queries using
+        /// `and`, `or`, or `not` are not supported. An example of a simple query is:
+        /// </summary>
         public InputList<string> Queries
         {
             get => _queries ?? (_queries = new InputList<string>());
@@ -947,12 +1107,20 @@ namespace Pulumi.OpenStack.Compute
 
         [Input("sameHosts")]
         private InputList<string>? _sameHosts;
+
+        /// <summary>
+        /// A list of instance UUIDs. The instance will be
+        /// scheduled on the same host of those specified.
+        /// </summary>
         public InputList<string> SameHosts
         {
             get => _sameHosts ?? (_sameHosts = new InputList<string>());
             set => _sameHosts = value;
         }
 
+        /// <summary>
+        /// The name of a cell to host the instance.
+        /// </summary>
         [Input("targetCell")]
         public Input<string>? TargetCell { get; set; }
 
@@ -965,28 +1133,55 @@ namespace Pulumi.OpenStack.Compute
     {
         [Input("additionalProperties")]
         private InputMap<object>? _additionalProperties;
+
+        /// <summary>
+        /// Arbitrary key/value pairs of additional
+        /// properties to pass to the scheduler.
+        /// </summary>
         public InputMap<object> AdditionalProperties
         {
             get => _additionalProperties ?? (_additionalProperties = new InputMap<object>());
             set => _additionalProperties = value;
         }
 
+        /// <summary>
+        /// An IP Address in CIDR form. The instance
+        /// will be placed on a compute node that is in the same subnet.
+        /// </summary>
         [Input("buildNearHostIp")]
         public Input<string>? BuildNearHostIp { get; set; }
 
         [Input("differentHosts")]
         private InputList<string>? _differentHosts;
+
+        /// <summary>
+        /// A list of instance UUIDs. The instance will
+        /// be scheduled on a different host than all other instances.
+        /// </summary>
         public InputList<string> DifferentHosts
         {
             get => _differentHosts ?? (_differentHosts = new InputList<string>());
             set => _differentHosts = value;
         }
 
+        /// <summary>
+        /// A UUID of a Server Group. The instance will be placed
+        /// into that group.
+        /// </summary>
         [Input("group")]
         public Input<string>? Group { get; set; }
 
         [Input("queries")]
         private InputList<string>? _queries;
+
+        /// <summary>
+        /// A conditional query that a compute node must pass in
+        /// order to host an instance. The query must use the `JsonFilter` syntax
+        /// which is described
+        /// [here](https://docs.openstack.org/nova/latest/admin/configuration/schedulers.html#jsonfilter).
+        /// At this time, only simple queries are supported. Compound queries using
+        /// `and`, `or`, or `not` are not supported. An example of a simple query is:
+        /// </summary>
         public InputList<string> Queries
         {
             get => _queries ?? (_queries = new InputList<string>());
@@ -995,12 +1190,20 @@ namespace Pulumi.OpenStack.Compute
 
         [Input("sameHosts")]
         private InputList<string>? _sameHosts;
+
+        /// <summary>
+        /// A list of instance UUIDs. The instance will be
+        /// scheduled on the same host of those specified.
+        /// </summary>
         public InputList<string> SameHosts
         {
             get => _sameHosts ?? (_sameHosts = new InputList<string>());
             set => _sameHosts = value;
         }
 
+        /// <summary>
+        /// The name of a cell to host the instance.
+        /// </summary>
         [Input("targetCell")]
         public Input<string>? TargetCell { get; set; }
 
@@ -1011,6 +1214,12 @@ namespace Pulumi.OpenStack.Compute
 
     public sealed class InstanceVendorOptionsArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Boolean to control whether
+        /// to ignore manual confirmation of the instance resizing. This can be helpful
+        /// to work with some OpenStack clouds which automatically confirm resizing of
+        /// instances after some timeout.
+        /// </summary>
         [Input("ignoreResizeConfirmation")]
         public Input<bool>? IgnoreResizeConfirmation { get; set; }
 
@@ -1021,6 +1230,12 @@ namespace Pulumi.OpenStack.Compute
 
     public sealed class InstanceVendorOptionsGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Boolean to control whether
+        /// to ignore manual confirmation of the instance resizing. This can be helpful
+        /// to work with some OpenStack clouds which automatically confirm resizing of
+        /// instances after some timeout.
+        /// </summary>
         [Input("ignoreResizeConfirmation")]
         public Input<bool>? IgnoreResizeConfirmation { get; set; }
 
@@ -1036,15 +1251,57 @@ namespace Pulumi.OpenStack.Compute
     [OutputType]
     public sealed class InstanceBlockDevices
     {
+        /// <summary>
+        /// The boot index of the volume. It defaults to 0.
+        /// Changing this creates a new server.
+        /// </summary>
         public readonly int? BootIndex;
+        /// <summary>
+        /// Delete the volume / block device upon
+        /// termination of the instance. Defaults to false. Changing this creates a
+        /// new server.
+        /// </summary>
         public readonly bool? DeleteOnTermination;
+        /// <summary>
+        /// The type that gets created. Possible values
+        /// are "volume" and "local". Changing this creates a new server.
+        /// </summary>
         public readonly string? DestinationType;
+        /// <summary>
+        /// The low-level device type that will be used. Most
+        /// common thing is to leave this empty. Changing this creates a new server.
+        /// </summary>
         public readonly string? DeviceType;
+        /// <summary>
+        /// The low-level disk bus that will be used. Most common
+        /// thing is to leave this empty. Changing this creates a new server.
+        /// </summary>
         public readonly string? DiskBus;
         public readonly string? GuestFormat;
+        /// <summary>
+        /// The source type of the device. Must be one of
+        /// "blank", "image", "volume", or "snapshot". Changing this creates a new
+        /// server.
+        /// </summary>
         public readonly string SourceType;
+        /// <summary>
+        /// The UUID of
+        /// the image, volume, or snapshot. Changing this creates a new server.
+        /// </summary>
         public readonly string? Uuid;
+        /// <summary>
+        /// The size of the volume to create (in gigabytes). Required
+        /// in the following combinations: source=image and destination=volume,
+        /// source=blank and destination=local, and source=blank and destination=volume.
+        /// Changing this creates a new server.
+        /// </summary>
         public readonly int? VolumeSize;
+        /// <summary>
+        /// The volume type that will be used, for example SSD
+        /// or HDD storage. The available options depend on how your specific OpenStack
+        /// cloud is configured and what classes of storage are provided. Changing this
+        /// creates a new server.
+        /// </summary>
         public readonly string? VolumeType;
 
         [OutputConstructor]
@@ -1076,15 +1333,32 @@ namespace Pulumi.OpenStack.Compute
     [OutputType]
     public sealed class InstanceNetworks
     {
+        /// <summary>
+        /// Specifies if this network should be used for
+        /// provisioning access. Accepts true or false. Defaults to false.
+        /// </summary>
         public readonly bool? AccessNetwork;
+        /// <summary>
+        /// Specifies a fixed IPv4 address to be used on this
+        /// network. Changing this creates a new server.
+        /// </summary>
         public readonly string FixedIpV4;
         public readonly string FixedIpV6;
         public readonly string Mac;
         /// <summary>
-        /// A unique name for the resource.
+        /// The human-readable
+        /// name of the network. Changing this creates a new server.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The port UUID of a
+        /// network to attach to the server. Changing this creates a new server.
+        /// </summary>
         public readonly string Port;
+        /// <summary>
+        /// The UUID of
+        /// the image, volume, or snapshot. Changing this creates a new server.
+        /// </summary>
         public readonly string Uuid;
 
         [OutputConstructor]
@@ -1110,7 +1384,13 @@ namespace Pulumi.OpenStack.Compute
     [OutputType]
     public sealed class InstancePersonalities
     {
+        /// <summary>
+        /// The contents of the file. Limited to 255 bytes.
+        /// </summary>
         public readonly string Content;
+        /// <summary>
+        /// The absolute path of the destination file.
+        /// </summary>
         public readonly string File;
 
         [OutputConstructor]
@@ -1126,12 +1406,43 @@ namespace Pulumi.OpenStack.Compute
     [OutputType]
     public sealed class InstanceSchedulerHints
     {
+        /// <summary>
+        /// Arbitrary key/value pairs of additional
+        /// properties to pass to the scheduler.
+        /// </summary>
         public readonly ImmutableDictionary<string, object>? AdditionalProperties;
+        /// <summary>
+        /// An IP Address in CIDR form. The instance
+        /// will be placed on a compute node that is in the same subnet.
+        /// </summary>
         public readonly string? BuildNearHostIp;
+        /// <summary>
+        /// A list of instance UUIDs. The instance will
+        /// be scheduled on a different host than all other instances.
+        /// </summary>
         public readonly ImmutableArray<string> DifferentHosts;
+        /// <summary>
+        /// A UUID of a Server Group. The instance will be placed
+        /// into that group.
+        /// </summary>
         public readonly string? Group;
+        /// <summary>
+        /// A conditional query that a compute node must pass in
+        /// order to host an instance. The query must use the `JsonFilter` syntax
+        /// which is described
+        /// [here](https://docs.openstack.org/nova/latest/admin/configuration/schedulers.html#jsonfilter).
+        /// At this time, only simple queries are supported. Compound queries using
+        /// `and`, `or`, or `not` are not supported. An example of a simple query is:
+        /// </summary>
         public readonly ImmutableArray<string> Queries;
+        /// <summary>
+        /// A list of instance UUIDs. The instance will be
+        /// scheduled on the same host of those specified.
+        /// </summary>
         public readonly ImmutableArray<string> SameHosts;
+        /// <summary>
+        /// The name of a cell to host the instance.
+        /// </summary>
         public readonly string? TargetCell;
 
         [OutputConstructor]
@@ -1157,6 +1468,12 @@ namespace Pulumi.OpenStack.Compute
     [OutputType]
     public sealed class InstanceVendorOptions
     {
+        /// <summary>
+        /// Boolean to control whether
+        /// to ignore manual confirmation of the instance resizing. This can be helpful
+        /// to work with some OpenStack clouds which automatically confirm resizing of
+        /// instances after some timeout.
+        /// </summary>
         public readonly bool? IgnoreResizeConfirmation;
 
         [OutputConstructor]
