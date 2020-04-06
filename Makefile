@@ -46,7 +46,9 @@ build:: provider tfgen
   	dotnet build /p:Version=${DOTNET_VERSION}
 
 lint::
-	#golangci-lint run
+	for DIR in "provider" "sdk" ; do \
+		pushd $$DIR && GOGC=25 golangci-lint run -c ../.golangci.yml --timeout 5m && popd ; \
+	done
 
 provider:: generate_schema
 	go generate ${PROJECT}/provider/cmd/${PROVIDER}
