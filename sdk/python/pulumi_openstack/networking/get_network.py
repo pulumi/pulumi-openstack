@@ -131,6 +131,8 @@ def get_network(description=None,external=None,matching_subnet_cidr=None,mtu=Non
     """
     Use this data source to get the ID of an available OpenStack network.
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_network_v2.html.markdown.
 
 

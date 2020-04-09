@@ -12,6 +12,8 @@ namespace Pulumi.OpenStack.KeyManager
     /// <summary>
     /// Manages a V1 Barbican container resource within OpenStack.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/keymanager_container_v1.html.markdown.
     /// </summary>
     public partial class ContainerV1 : Pulumi.CustomResource

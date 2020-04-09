@@ -74,6 +74,8 @@ class SecurityService(pulumi.CustomResource):
 
         Minimum supported Manila microversion is 2.7.
 
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/sharedfilesystem_securityservice_v2.html.markdown.
 
         :param str resource_name: The name of the resource.

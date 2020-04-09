@@ -90,6 +90,8 @@ def get_endpoint(endpoint_region=None,interface=None,name=None,region=None,servi
 
     > **Note:** This usually requires admin privileges.
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_endpoint_v3.html.markdown.
 
 

@@ -17,6 +17,8 @@ namespace Pulumi.OpenStack.Networking
     /// &gt; **Note:** This resource has a no-op deletion so no actual actions will be done against the OpenStack API 
     ///     in case of delete call.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_quota_v2.html.markdown.
     /// </summary>
     public partial class QuotaV2 : Pulumi.CustomResource

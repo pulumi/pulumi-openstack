@@ -7,10 +7,12 @@ package vpnaas
 import (
 	"reflect"
 
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Manages a V2 Neutron Endpoint Group resource within OpenStack.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/vpnaas_endpoint_group_v2.html.markdown.
 type EndpointGroup struct {

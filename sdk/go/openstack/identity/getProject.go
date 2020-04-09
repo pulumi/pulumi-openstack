@@ -5,10 +5,12 @@
 package identity
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Use this data source to get the ID of an OpenStack project.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_project_v3.html.markdown.
 func LookupProject(ctx *pulumi.Context, args *LookupProjectArgs, opts ...pulumi.InvokeOption) (*LookupProjectResult, error) {

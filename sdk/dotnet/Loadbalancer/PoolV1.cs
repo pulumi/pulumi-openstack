@@ -12,6 +12,7 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// <summary>
     /// Manages a V1 load balancer pool resource within OpenStack.
     /// 
+    /// 
     /// ## Notes
     /// 
     /// The `member` block is deprecated in favor of the `openstack.loadbalancer.MemberV1` resource.

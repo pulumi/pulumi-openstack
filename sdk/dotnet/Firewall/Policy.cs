@@ -12,6 +12,8 @@ namespace Pulumi.OpenStack.Firewall
     /// <summary>
     /// Manages a v1 firewall policy resource within OpenStack.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/fw_policy_v1.html.markdown.
     /// </summary>
     public partial class Policy : Pulumi.CustomResource

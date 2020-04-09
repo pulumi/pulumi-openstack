@@ -5,10 +5,12 @@
 package dns
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Use this data source to get the ID of an available OpenStack DNS zone.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/dns_zone_v2.html.markdown.
 func GetDnsZone(ctx *pulumi.Context, args *GetDnsZoneArgs, opts ...pulumi.InvokeOption) (*GetDnsZoneResult, error) {

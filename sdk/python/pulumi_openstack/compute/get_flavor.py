@@ -86,6 +86,8 @@ def get_flavor(disk=None,flavor_id=None,min_disk=None,min_ram=None,name=None,ram
     """
     Use this data source to get the ID of an available OpenStack flavor.
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/compute_flavor_v2.html.markdown.
 
 

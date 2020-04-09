@@ -12,6 +12,8 @@ namespace Pulumi.OpenStack.VPNaaS
     /// <summary>
     /// Manages a V2 Neutron Endpoint Group resource within OpenStack.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/vpnaas_endpoint_group_v2.html.markdown.
     /// </summary>
     public partial class EndpointGroup : Pulumi.CustomResource

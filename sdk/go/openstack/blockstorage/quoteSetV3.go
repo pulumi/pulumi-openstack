@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Manages a V3 block storage quotaset resource within OpenStack.
@@ -17,6 +17,8 @@ import (
 //
 // > **Note:** This resource has a no-op deletion so no actual actions will be done against the OpenStack API
 //     in case of delete call.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/blockstorage_quotaset_v3.html.markdown.
 type QuoteSetV3 struct {

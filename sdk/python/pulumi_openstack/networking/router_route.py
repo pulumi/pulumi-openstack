@@ -36,6 +36,7 @@ class RouterRoute(pulumi.CustomResource):
         """
         Creates a routing entry on a OpenStack V2 router.
 
+
         ## Notes
 
         The `next_hop` IP address must be directly reachable from the router at the ``networking.RouterRoute``

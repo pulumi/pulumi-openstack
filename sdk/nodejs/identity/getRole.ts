@@ -11,6 +11,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -22,7 +24,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_role_v3.html.markdown.
  */
-export function getRole(args: GetRoleArgs, opts?: pulumi.InvokeOptions): Promise<GetRoleResult> & GetRoleResult {
+export function getRole(args: GetRoleArgs, opts?: pulumi.InvokeOptions): Promise<GetRoleResult> {
     if (!opts) {
         opts = {}
     }
@@ -30,13 +32,11 @@ export function getRole(args: GetRoleArgs, opts?: pulumi.InvokeOptions): Promise
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetRoleResult> = pulumi.runtime.invoke("openstack:identity/getRole:getRole", {
+    return pulumi.runtime.invoke("openstack:identity/getRole:getRole", {
         "domainId": args.domainId,
         "name": args.name,
         "region": args.region,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

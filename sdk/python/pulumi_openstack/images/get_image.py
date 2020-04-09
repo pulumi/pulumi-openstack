@@ -174,6 +174,8 @@ def get_image(member_status=None,most_recent=None,name=None,owner=None,propertie
     """
     Use this data source to get the ID of an available OpenStack image.
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/images_image_v2.html.markdown.
 
 

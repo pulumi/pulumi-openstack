@@ -14,6 +14,8 @@ namespace Pulumi.OpenStack.Dns
         /// <summary>
         /// Use this data source to get the ID of an available OpenStack DNS zone.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/dns_zone_v2.html.markdown.
         /// </summary>
         [Obsolete("Use GetDnsZone.InvokeAsync() instead")]
@@ -24,6 +26,8 @@ namespace Pulumi.OpenStack.Dns
     {
         /// <summary>
         /// Use this data source to get the ID of an available OpenStack DNS zone.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/dns_zone_v2.html.markdown.
         /// </summary>

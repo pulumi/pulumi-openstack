@@ -198,6 +198,8 @@ def get_cluster(name=None,region=None,opts=None):
     """
     Use this data source to get the ID of an available OpenStack Magnum cluster.
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/containerinfra_cluster_v1.html.markdown.
 
 

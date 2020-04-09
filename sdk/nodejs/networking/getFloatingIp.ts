@@ -11,6 +11,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -22,7 +24,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_floatingip_v2.html.markdown.
  */
-export function getFloatingIp(args?: GetFloatingIpArgs, opts?: pulumi.InvokeOptions): Promise<GetFloatingIpResult> & GetFloatingIpResult {
+export function getFloatingIp(args?: GetFloatingIpArgs, opts?: pulumi.InvokeOptions): Promise<GetFloatingIpResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -31,7 +33,7 @@ export function getFloatingIp(args?: GetFloatingIpArgs, opts?: pulumi.InvokeOpti
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetFloatingIpResult> = pulumi.runtime.invoke("openstack:networking/getFloatingIp:getFloatingIp", {
+    return pulumi.runtime.invoke("openstack:networking/getFloatingIp:getFloatingIp", {
         "address": args.address,
         "description": args.description,
         "fixedIp": args.fixedIp,
@@ -42,8 +44,6 @@ export function getFloatingIp(args?: GetFloatingIpArgs, opts?: pulumi.InvokeOpti
         "tags": args.tags,
         "tenantId": args.tenantId,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

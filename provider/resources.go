@@ -445,11 +445,12 @@ func Provider() tfbridge.ProviderInfo {
 			"openstack_keymanager_container_v1": {Tok: openstackDataSource(keymanagerMod, "getContainer")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
+			AsyncDataSources: true,
 			DevDependencies: map[string]string{
 				"@types/node": "^8.0.25", // so we can access strongly typed node definitions.
 			},
 			Dependencies: map[string]string{
-				"@pulumi/pulumi": "^1.0.0",
+				"@pulumi/pulumi": "2.0.0-beta.2",
 			},
 			Overlay: &tfbridge.OverlayInfo{
 				Files:   []string{},
@@ -458,12 +459,12 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		Python: &tfbridge.PythonInfo{
 			Requires: map[string]string{
-				"pulumi": ">=1.0.0,<2.0.0",
+				"pulumi": ">=2.0.0b2,<3.0.0",
 			},
 		},
 		CSharp: &tfbridge.CSharpInfo{
 			PackageReferences: map[string]string{
-				"Pulumi":                       "1.12.1-preview",
+				"Pulumi":                       "2.0.0-beta.2",
 				"System.Collections.Immutable": "1.6.0",
 			},
 			Namespaces: namespaceMap,

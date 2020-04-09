@@ -29,6 +29,8 @@ class QosDscpMarkingRule(pulumi.CustomResource):
         """
         Manages a V2 Neutron QoS DSCP marking rule resource within OpenStack.
 
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_qos_dscp_marking_rule_v2.html.markdown.
 
         :param str resource_name: The name of the resource.

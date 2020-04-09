@@ -8,10 +8,11 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Manages a V1 Magnum cluster template resource within OpenStack.
+//
 //
 // ## Argument reference
 //

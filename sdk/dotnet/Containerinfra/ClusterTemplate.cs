@@ -12,6 +12,7 @@ namespace Pulumi.OpenStack.ContainerInfra
     /// <summary>
     /// Manages a V1 Magnum cluster template resource within OpenStack.
     /// 
+    /// 
     /// ## Argument reference
     /// 
     /// The following arguments are supported:

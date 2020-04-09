@@ -14,6 +14,8 @@ namespace Pulumi.OpenStack.Networking
     /// Unlike Nova security groups, neutron separates the group from the rules
     /// and also allows an admin to target a specific tenant_id.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_secgroup_v2.html.markdown.
     /// </summary>
     public partial class SecGroup : Pulumi.CustomResource

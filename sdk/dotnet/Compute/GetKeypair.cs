@@ -14,6 +14,8 @@ namespace Pulumi.OpenStack.Compute
         /// <summary>
         /// Use this data source to get the ID and public key of an OpenStack keypair.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/compute_keypair_v2.html.markdown.
         /// </summary>
         [Obsolete("Use GetKeypair.InvokeAsync() instead")]
@@ -24,6 +26,8 @@ namespace Pulumi.OpenStack.Compute
     {
         /// <summary>
         /// Use this data source to get the ID and public key of an OpenStack keypair.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/compute_keypair_v2.html.markdown.
         /// </summary>

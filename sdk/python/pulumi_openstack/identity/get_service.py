@@ -69,6 +69,8 @@ def get_service(enabled=None,name=None,region=None,type=None,opts=None):
 
     > **Note:** This usually requires admin privileges.
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_service_v3.html.markdown.
 
 

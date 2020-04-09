@@ -14,6 +14,8 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// Use this data source to get the ID of an available OpenStack QoS minimum bandwidth rule.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_qos_minimum_bandwidth_rule_v2.html.markdown.
         /// </summary>
         [Obsolete("Use GetQosMinimumBandwidthRule.InvokeAsync() instead")]
@@ -24,6 +26,8 @@ namespace Pulumi.OpenStack.Networking
     {
         /// <summary>
         /// Use this data source to get the ID of an available OpenStack QoS minimum bandwidth rule.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_qos_minimum_bandwidth_rule_v2.html.markdown.
         /// </summary>

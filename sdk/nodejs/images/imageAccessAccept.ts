@@ -10,7 +10,7 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
- * Accept a shared image membershipship proposal within the current project.
+ * 
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -8,12 +8,14 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Manages a V3 Service resource within OpenStack Keystone.
 //
 // > **Note:** This usually requires admin privileges.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/identity_service_v3.html.markdown.
 type ServiceV3 struct {

@@ -132,6 +132,7 @@ class Image(pulumi.CustomResource):
         """
         Manages a V2 Image resource within OpenStack Glance.
 
+
         ## Notes
 
         ### Properties

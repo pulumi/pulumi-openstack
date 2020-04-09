@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Manages a project access for flavor V2 resource within OpenStack.
@@ -17,6 +17,8 @@ import (
 // this resource.
 //
 // ---
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_flavor_access_v2.html.markdown.
 type FlavorAccess struct {

@@ -18,6 +18,8 @@ namespace Pulumi.OpenStack.ObjectStorage
     /// the `regenerate` argument to `true`. This will create a new resource with
     /// a new ID and URL.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/objectstorage_tempurl_v1.html.markdown.
     /// </summary>
     public partial class TempUrl : Pulumi.CustomResource

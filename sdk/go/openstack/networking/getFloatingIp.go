@@ -5,10 +5,12 @@
 package networking
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Use this data source to get the ID of an available OpenStack floating IP.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_floatingip_v2.html.markdown.
 func LookupFloatingIp(ctx *pulumi.Context, args *LookupFloatingIpArgs, opts ...pulumi.InvokeOption) (*LookupFloatingIpResult, error) {

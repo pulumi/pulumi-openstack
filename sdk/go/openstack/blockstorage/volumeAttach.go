@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // This resource is experimental and may be removed in the future! Feedback
@@ -24,6 +24,8 @@ import (
 //
 // This does not actually attach a volume to an instance. Please use
 // the `compute.VolumeAttach` resource for that.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/blockstorage_volume_attach_v3.html.markdown.
 type VolumeAttach struct {

@@ -16,6 +16,8 @@ namespace Pulumi.OpenStack.Identity
         /// auth scope in use. This can be used as self-discovery or introspection of
         /// the username or project name currently in use.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_auth_scope_v3.html.markdown.
         /// </summary>
         [Obsolete("Use GetAuthScope.InvokeAsync() instead")]
@@ -28,6 +30,8 @@ namespace Pulumi.OpenStack.Identity
         /// Use this data source to get authentication information about the current
         /// auth scope in use. This can be used as self-discovery or introspection of
         /// the username or project name currently in use.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_auth_scope_v3.html.markdown.
         /// </summary>

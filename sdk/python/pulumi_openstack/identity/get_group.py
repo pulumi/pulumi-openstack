@@ -62,6 +62,8 @@ def get_group(domain_id=None,name=None,region=None,opts=None):
 
     Note: This usually requires admin privileges.
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_group_v3.html.markdown.
 
 

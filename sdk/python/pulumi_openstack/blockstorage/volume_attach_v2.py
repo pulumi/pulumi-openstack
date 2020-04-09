@@ -96,6 +96,8 @@ class VolumeAttachV2(pulumi.CustomResource):
         This does not actually attach a volume to an instance. Please use
         the `compute.VolumeAttach` resource for that.
 
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/blockstorage_volume_attach_v2.html.markdown.
 
         :param str resource_name: The name of the resource.

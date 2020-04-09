@@ -39,6 +39,7 @@ class ServerGroup(pulumi.CustomResource):
         """
         Manages a V2 Server Group resource within OpenStack.
 
+
         ## Policies
 
         * `affinity` - All instances/servers launched in this group will be hosted on

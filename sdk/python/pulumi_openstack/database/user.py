@@ -32,6 +32,8 @@ class User(pulumi.CustomResource):
         """
         Manages a V1 DB user resource within OpenStack.
 
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/db_user_v1.html.markdown.
 
         :param str resource_name: The name of the resource.

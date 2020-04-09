@@ -5,10 +5,12 @@
 package blockstorage
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Use this data source to get information about an existing snapshot.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/blockstorage_snapshot_v3.html.markdown.
 func GetSnapshotV3(ctx *pulumi.Context, args *GetSnapshotV3Args, opts ...pulumi.InvokeOption) (*GetSnapshotV3Result, error) {

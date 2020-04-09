@@ -64,6 +64,8 @@ class Firewall(pulumi.CustomResource):
         """
         Manages a v1 firewall resource within OpenStack.
 
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/fw_firewall_v1.html.markdown.
 
         :param str resource_name: The name of the resource.

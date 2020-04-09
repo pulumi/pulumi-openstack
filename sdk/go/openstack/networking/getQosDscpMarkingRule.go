@@ -5,10 +5,12 @@
 package networking
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Use this data source to get the ID of an available OpenStack QoS DSCP marking rule.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_qos_dscp_marking_rule_v2.html.markdown.
 func LookupQosDscpMarkingRule(ctx *pulumi.Context, args *LookupQosDscpMarkingRuleArgs, opts ...pulumi.InvokeOption) (*LookupQosDscpMarkingRuleResult, error) {

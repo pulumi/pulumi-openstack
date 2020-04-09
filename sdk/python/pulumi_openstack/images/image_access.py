@@ -47,6 +47,8 @@ class ImageAccess(pulumi.CustomResource):
         Manages members for the shared OpenStack Glance V2 Image within the source
         project, which owns the Image.
 
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/images_image_access_v2.html.markdown.
 
         :param str resource_name: The name of the resource.

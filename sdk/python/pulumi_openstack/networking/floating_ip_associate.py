@@ -34,6 +34,8 @@ class FloatingIpAssociate(pulumi.CustomResource):
         where you have a pre-allocated floating IP or are unable to use the
         `networking.FloatingIp` resource to create a floating IP.
 
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_floatingip_associate_v2.html.markdown.
 
         :param str resource_name: The name of the resource.

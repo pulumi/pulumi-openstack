@@ -19,6 +19,8 @@ namespace Pulumi.OpenStack.SharedFileSystem
     /// 
     /// Minimum supported Manila microversion is 2.7.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/sharedfilesystem_securityservice_v2.html.markdown.
     /// </summary>
     public partial class SecurityService : Pulumi.CustomResource

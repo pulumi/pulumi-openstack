@@ -12,6 +12,8 @@ namespace Pulumi.OpenStack.SharedFileSystem
     /// <summary>
     /// Use this resource to configure a share.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/sharedfilesystem_share_v2.html.markdown.
     /// </summary>
     public partial class Share : Pulumi.CustomResource

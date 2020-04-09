@@ -8,13 +8,15 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Manages a V3 Role assignment within OpenStack Keystone.
 //
 // Note: You _must_ have admin privileges in your OpenStack cloud to use
 // this resource.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/identity_role_assignment_v3.html.markdown.
 type RoleAssignment struct {

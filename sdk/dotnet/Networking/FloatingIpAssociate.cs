@@ -14,6 +14,8 @@ namespace Pulumi.OpenStack.Networking
     /// where you have a pre-allocated floating IP or are unable to use the
     /// `openstack.networking.FloatingIp` resource to create a floating IP.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_floatingip_associate_v2.html.markdown.
     /// </summary>
     public partial class FloatingIpAssociate : Pulumi.CustomResource

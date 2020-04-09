@@ -15,6 +15,8 @@ namespace Pulumi.OpenStack.Networking
     /// These are similar to Nova (compute) floating IP resources,
     /// but only compute floating IPs can be used with compute instances.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_floatingip_v2.html.markdown.
     /// </summary>
     public partial class FloatingIp : Pulumi.CustomResource

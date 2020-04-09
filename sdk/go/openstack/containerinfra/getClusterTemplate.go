@@ -5,11 +5,13 @@
 package containerinfra
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Use this data source to get the ID of an available OpenStack Magnum cluster
 // template.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/containerinfra_clustertemplate_v1.html.markdown.
 func LookupClusterTemplate(ctx *pulumi.Context, args *LookupClusterTemplateArgs, opts ...pulumi.InvokeOption) (*LookupClusterTemplateResult, error) {

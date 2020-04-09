@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Manages a V2 security group resource within OpenStack.
@@ -18,6 +18,8 @@ import (
 // recommended to use the `networking.SecGroup`
 // and `networking.SecGroupRule`
 // resources instead, which uses the OpenStack Networking API.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_secgroup_v2.html.markdown.
 type SecGroup struct {

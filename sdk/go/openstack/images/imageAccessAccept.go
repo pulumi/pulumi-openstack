@@ -8,11 +8,13 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Manages memberships status for the shared OpenStack Glance V2 Image within the
 // destination project, which has a member proposal.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/images_image_access_accept_v2.html.markdown.
 type ImageAccessAccept struct {

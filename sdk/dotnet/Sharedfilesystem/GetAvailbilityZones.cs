@@ -15,6 +15,8 @@ namespace Pulumi.OpenStack.SharedFileSystem
         /// Use this data source to get a list of Shared File System availability zones
         /// from OpenStack
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/sharedfilesystem_availability_zones_v2.html.markdown.
         /// </summary>
         [Obsolete("Use GetAvailbilityZones.InvokeAsync() instead")]
@@ -26,6 +28,8 @@ namespace Pulumi.OpenStack.SharedFileSystem
         /// <summary>
         /// Use this data source to get a list of Shared File System availability zones
         /// from OpenStack
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/sharedfilesystem_availability_zones_v2.html.markdown.
         /// </summary>

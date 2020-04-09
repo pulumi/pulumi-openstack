@@ -5,10 +5,12 @@
 package networking
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Use this data source to get the ID of an available OpenStack QoS bandwidth limit rule.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_qos_bandwidth_limit_rule_v2.html.markdown.
 func LookupQosBandwidthLimitRule(ctx *pulumi.Context, args *LookupQosBandwidthLimitRuleArgs, opts ...pulumi.InvokeOption) (*LookupQosBandwidthLimitRuleResult, error) {

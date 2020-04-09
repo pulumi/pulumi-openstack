@@ -12,6 +12,8 @@ namespace Pulumi.OpenStack.BlockStorage
     /// <summary>
     /// Manages a V1 volume resource within OpenStack.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/blockstorage_volume_v1.html.markdown.
     /// </summary>
     public partial class VolumeV1 : Pulumi.CustomResource

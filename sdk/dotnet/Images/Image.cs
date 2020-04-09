@@ -12,6 +12,7 @@ namespace Pulumi.OpenStack.Images
     /// <summary>
     /// Manages a V2 Image resource within OpenStack Glance.
     /// 
+    /// 
     /// ## Notes
     /// 
     /// ### Properties

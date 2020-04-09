@@ -64,6 +64,8 @@ def get_address_scope(ip_version=None,name=None,project_id=None,region=None,shar
     """
     Use this data source to get the ID of an available OpenStack address-scope.
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_addressscope_v2.html.markdown.
 
 

@@ -12,6 +12,8 @@ namespace Pulumi.OpenStack.Compute
     /// <summary>
     /// Manages a V2 flavor resource within OpenStack.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_flavor_v2.html.markdown.
     /// </summary>
     public partial class Flavor : Pulumi.CustomResource

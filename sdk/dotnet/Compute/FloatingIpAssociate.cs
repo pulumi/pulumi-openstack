@@ -13,6 +13,8 @@ namespace Pulumi.OpenStack.Compute
     /// Associate a floating IP to an instance. This can be used instead of the
     /// `floating_ip` options in `openstack.compute.Instance`.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_floatingip_associate_v2.html.markdown.
     /// </summary>
     public partial class FloatingIpAssociate : Pulumi.CustomResource

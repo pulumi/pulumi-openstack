@@ -12,6 +12,8 @@ namespace Pulumi.OpenStack.Networking
     /// <summary>
     /// Creates a routing entry on a OpenStack V2 subnet.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_subnet_route_v2.html.markdown.
     /// </summary>
     public partial class SubnetRoute : Pulumi.CustomResource

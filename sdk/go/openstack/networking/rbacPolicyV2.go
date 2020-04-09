@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // The RBAC policy resource contains functionality for working with Neutron RBAC
@@ -24,6 +24,8 @@ import (
 // If a network is marked as external during creation, it now implicitly creates
 // a wildcard RBAC policy granting everyone access to preserve previous behavior
 // before this feature was added.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_rbac_policy_v2.html.markdown.
 type RbacPolicyV2 struct {

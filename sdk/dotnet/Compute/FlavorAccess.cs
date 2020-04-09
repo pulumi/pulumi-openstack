@@ -17,6 +17,8 @@ namespace Pulumi.OpenStack.Compute
     /// 
     /// ---
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_flavor_access_v2.html.markdown.
     /// </summary>
     public partial class FlavorAccess : Pulumi.CustomResource

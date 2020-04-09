@@ -14,6 +14,8 @@ namespace Pulumi.OpenStack.Identity
         /// <summary>
         /// Use this data source to get the ID of an OpenStack user.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_user_v3.html.markdown.
         /// </summary>
         [Obsolete("Use GetUser.InvokeAsync() instead")]
@@ -24,6 +26,8 @@ namespace Pulumi.OpenStack.Identity
     {
         /// <summary>
         /// Use this data source to get the ID of an OpenStack user.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_user_v3.html.markdown.
         /// </summary>

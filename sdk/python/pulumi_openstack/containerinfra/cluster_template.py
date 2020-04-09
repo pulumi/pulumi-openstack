@@ -46,6 +46,7 @@ class ClusterTemplate(pulumi.CustomResource):
         """
         Manages a V1 Magnum cluster template resource within OpenStack.
 
+
         ## Argument reference
 
         The following arguments are supported:

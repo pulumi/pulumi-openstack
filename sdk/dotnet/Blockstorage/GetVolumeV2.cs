@@ -14,6 +14,8 @@ namespace Pulumi.OpenStack.BlockStorage
         /// <summary>
         /// Use this data source to get information about an existing volume.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/blockstorage_volume_v2.html.markdown.
         /// </summary>
         [Obsolete("Use GetVolumeV2.InvokeAsync() instead")]
@@ -24,6 +26,8 @@ namespace Pulumi.OpenStack.BlockStorage
     {
         /// <summary>
         /// Use this data source to get information about an existing volume.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/blockstorage_volume_v2.html.markdown.
         /// </summary>

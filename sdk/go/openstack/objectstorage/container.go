@@ -7,10 +7,12 @@ package objectstorage
 import (
 	"reflect"
 
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Manages a V1 container resource within OpenStack.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/objectstorage_container_v1.html.markdown.
 type Container struct {

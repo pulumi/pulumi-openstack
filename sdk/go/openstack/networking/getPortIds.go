@@ -5,11 +5,13 @@
 package networking
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Use this data source to get a list of Openstack Port IDs matching the
 // specified criteria.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_port_ids_v2.html.markdown.
 func GetPortIds(ctx *pulumi.Context, args *GetPortIdsArgs, opts ...pulumi.InvokeOption) (*GetPortIdsResult, error) {

@@ -5,10 +5,12 @@
 package blockstorage
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Use this data source to get a list of Block Storage availability zones from OpenStack
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/blockstorage_availability_zones_v3.html.markdown.
 func GetAvailabilityZonesV3(ctx *pulumi.Context, args *GetAvailabilityZonesV3Args, opts ...pulumi.InvokeOption) (*GetAvailabilityZonesV3Result, error) {

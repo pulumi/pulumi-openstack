@@ -14,6 +14,8 @@ namespace Pulumi.OpenStack.Compute
         /// <summary>
         /// Use this data source to get a list of availability zones from OpenStack
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/compute_availability_zones_v2.html.markdown.
         /// </summary>
         [Obsolete("Use GetAvailabilityZones.InvokeAsync() instead")]
@@ -24,6 +26,8 @@ namespace Pulumi.OpenStack.Compute
     {
         /// <summary>
         /// Use this data source to get a list of availability zones from OpenStack
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/compute_availability_zones_v2.html.markdown.
         /// </summary>

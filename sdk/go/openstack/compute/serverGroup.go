@@ -7,10 +7,11 @@ package compute
 import (
 	"reflect"
 
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Manages a V2 Server Group resource within OpenStack.
+//
 //
 // ## Policies
 //

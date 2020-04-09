@@ -11,6 +11,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -20,7 +22,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/blockstorage_availability_zones_v3.html.markdown.
  */
-export function getAvailabilityZonesV3(args?: GetAvailabilityZonesV3Args, opts?: pulumi.InvokeOptions): Promise<GetAvailabilityZonesV3Result> & GetAvailabilityZonesV3Result {
+export function getAvailabilityZonesV3(args?: GetAvailabilityZonesV3Args, opts?: pulumi.InvokeOptions): Promise<GetAvailabilityZonesV3Result> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -29,12 +31,10 @@ export function getAvailabilityZonesV3(args?: GetAvailabilityZonesV3Args, opts?:
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetAvailabilityZonesV3Result> = pulumi.runtime.invoke("openstack:blockstorage/getAvailabilityZonesV3:getAvailabilityZonesV3", {
+    return pulumi.runtime.invoke("openstack:blockstorage/getAvailabilityZonesV3:getAvailabilityZonesV3", {
         "region": args.region,
         "state": args.state,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

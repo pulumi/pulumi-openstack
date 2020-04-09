@@ -11,6 +11,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -22,7 +24,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/keymanager_container_v1.html.markdown.
  */
-export function getContainer(args?: GetContainerArgs, opts?: pulumi.InvokeOptions): Promise<GetContainerResult> & GetContainerResult {
+export function getContainer(args?: GetContainerArgs, opts?: pulumi.InvokeOptions): Promise<GetContainerResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -31,12 +33,10 @@ export function getContainer(args?: GetContainerArgs, opts?: pulumi.InvokeOption
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetContainerResult> = pulumi.runtime.invoke("openstack:keymanager/getContainer:getContainer", {
+    return pulumi.runtime.invoke("openstack:keymanager/getContainer:getContainer", {
         "name": args.name,
         "region": args.region,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

@@ -12,6 +12,7 @@ namespace Pulumi.OpenStack.Compute
     /// <summary>
     /// Manages a V2 VM instance resource within OpenStack.
     /// 
+    /// 
     /// ## Importing instances
     /// 
     /// Importing instances can be tricky, since the nova api does not offer all

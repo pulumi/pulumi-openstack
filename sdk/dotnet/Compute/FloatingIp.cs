@@ -18,6 +18,8 @@ namespace Pulumi.OpenStack.Compute
     /// recommended to use the `openstack.networking.FloatingIp`
     /// resource instead, which uses the OpenStack Networking API.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_floatingip_v2.html.markdown.
     /// </summary>
     public partial class FloatingIp : Pulumi.CustomResource

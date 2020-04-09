@@ -169,6 +169,7 @@ class Port(pulumi.CustomResource):
         """
         Manages a V2 port resource within OpenStack.
 
+
         ## Notes
 
         ### Ports and Instances

@@ -71,6 +71,8 @@ class ShareNetwork(pulumi.CustomResource):
         A share network stores network information that share servers can use when
         shares are created.
 
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/sharedfilesystem_sharenetwork_v2.html.markdown.
 
         :param str resource_name: The name of the resource.

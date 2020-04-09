@@ -12,6 +12,8 @@ namespace Pulumi.OpenStack.Networking
     /// <summary>
     /// Manages a V2 router interface resource within OpenStack.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_router_interface_v2.html.markdown.
     /// </summary>
     public partial class RouterInterface : Pulumi.CustomResource

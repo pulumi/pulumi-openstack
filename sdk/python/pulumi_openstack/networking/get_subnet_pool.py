@@ -153,6 +153,8 @@ def get_subnet_pool(address_scope_id=None,default_prefixlen=None,default_quota=N
     """
     Use this data source to get the ID of an available OpenStack subnetpool.
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_subnetpool_v2.html.markdown.
 
 

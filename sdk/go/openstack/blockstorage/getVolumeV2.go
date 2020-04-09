@@ -5,10 +5,12 @@
 package blockstorage
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Use this data source to get information about an existing volume.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/blockstorage_volume_v2.html.markdown.
 func LookupVolumeV2(ctx *pulumi.Context, args *LookupVolumeV2Args, opts ...pulumi.InvokeOption) (*LookupVolumeV2Result, error) {

@@ -5,7 +5,7 @@
 package keymanager
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 func GetSecret(ctx *pulumi.Context, args *GetSecretArgs, opts ...pulumi.InvokeOption) (*GetSecretResult, error) {

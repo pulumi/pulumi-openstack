@@ -24,6 +24,8 @@ namespace Pulumi.OpenStack.Networking
     /// a wildcard RBAC policy granting everyone access to preserve previous behavior
     /// before this feature was added.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_rbac_policy_v2.html.markdown.
     /// </summary>
     public partial class RbacPolicyV2 : Pulumi.CustomResource

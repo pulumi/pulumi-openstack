@@ -121,6 +121,8 @@ class ContainerObject(pulumi.CustomResource):
         """
         Manages a V1 container object resource within OpenStack.
 
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/objectstorage_object_v1.html.markdown.
 
         :param str resource_name: The name of the resource.

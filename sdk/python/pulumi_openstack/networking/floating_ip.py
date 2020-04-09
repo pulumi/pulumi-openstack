@@ -90,6 +90,8 @@ class FloatingIp(pulumi.CustomResource):
         These are similar to Nova (compute) floating IP resources,
         but only compute floating IPs can be used with compute instances.
 
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_floatingip_v2.html.markdown.
 
         :param str resource_name: The name of the resource.

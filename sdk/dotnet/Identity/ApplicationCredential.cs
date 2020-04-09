@@ -21,6 +21,8 @@ namespace Pulumi.OpenStack.Identity
     /// The Application Credential visibility is similar to
     /// `openstack.compute.Keypair`.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/identity_application_credential_v3.html.markdown.
     /// </summary>
     public partial class ApplicationCredential : Pulumi.CustomResource

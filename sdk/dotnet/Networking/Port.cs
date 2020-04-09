@@ -12,6 +12,7 @@ namespace Pulumi.OpenStack.Networking
     /// <summary>
     /// Manages a V2 port resource within OpenStack.
     /// 
+    /// 
     /// ## Notes
     /// 
     /// ### Ports and Instances

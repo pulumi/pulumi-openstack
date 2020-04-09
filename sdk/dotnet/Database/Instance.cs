@@ -12,6 +12,8 @@ namespace Pulumi.OpenStack.Database
     /// <summary>
     /// Manages a V1 DB instance resource within OpenStack.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/db_instance_v1.html.markdown.
     /// </summary>
     public partial class Instance : Pulumi.CustomResource

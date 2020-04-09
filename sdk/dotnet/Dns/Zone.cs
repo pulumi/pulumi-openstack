@@ -12,6 +12,8 @@ namespace Pulumi.OpenStack.Dns
     /// <summary>
     /// Manages a DNS zone in the OpenStack DNS Service.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/dns_zone_v2.html.markdown.
     /// </summary>
     public partial class Zone : Pulumi.CustomResource

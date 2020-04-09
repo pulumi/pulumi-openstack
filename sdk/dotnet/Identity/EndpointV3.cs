@@ -14,6 +14,8 @@ namespace Pulumi.OpenStack.Identity
     /// 
     /// &gt; **Note:** This usually requires admin privileges.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/identity_endpoint_v3.html.markdown.
     /// </summary>
     public partial class EndpointV3 : Pulumi.CustomResource

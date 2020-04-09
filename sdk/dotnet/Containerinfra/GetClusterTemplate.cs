@@ -15,6 +15,8 @@ namespace Pulumi.OpenStack.ContainerInfra
         /// Use this data source to get the ID of an available OpenStack Magnum cluster
         /// template.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/containerinfra_clustertemplate_v1.html.markdown.
         /// </summary>
         [Obsolete("Use GetClusterTemplate.InvokeAsync() instead")]
@@ -26,6 +28,8 @@ namespace Pulumi.OpenStack.ContainerInfra
         /// <summary>
         /// Use this data source to get the ID of an available OpenStack Magnum cluster
         /// template.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/containerinfra_clustertemplate_v1.html.markdown.
         /// </summary>

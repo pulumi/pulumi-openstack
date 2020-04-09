@@ -14,6 +14,8 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// Use this data source to get the ID of an available OpenStack QoS DSCP marking rule.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_qos_dscp_marking_rule_v2.html.markdown.
         /// </summary>
         [Obsolete("Use GetQosDscpMarkingRule.InvokeAsync() instead")]
@@ -24,6 +26,8 @@ namespace Pulumi.OpenStack.Networking
     {
         /// <summary>
         /// Use this data source to get the ID of an available OpenStack QoS DSCP marking rule.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_qos_dscp_marking_rule_v2.html.markdown.
         /// </summary>

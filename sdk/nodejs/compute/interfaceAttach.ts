@@ -49,7 +49,6 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
- * 
  * ### Attachment Using an Existing Port
  * 
  * ```typescript
@@ -98,40 +97,6 @@ import * as utilities from "../utilities";
  *         portId: pulumi.all(ports.map(v => v.id)).apply(id => id.map(v => v)[i]),
  *     }));
  * }
- * ```
- * 
- * Note that the above example will not guarantee that the ports are attached in
- * a deterministic manner. The ports will be attached in a seemingly random
- * order.
- * 
- * If you want to ensure that the ports are attached in a given order, create
- * explicit dependencies between the ports, such as:
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- * 
- * const network1 = new openstack.networking.Network("network1", {
- *     adminStateUp: true,
- * });
- * const ports: openstack.networking.Port[] = [];
- * for (let i = 0; i < 2; i++) {
- *     ports.push(new openstack.networking.Port(`ports-${i}`, {
- *         adminStateUp: true,
- *         networkId: network1.id,
- *     }));
- * }
- * const instance1 = new openstack.compute.Instance("instance1", {
- *     securityGroups: ["default"],
- * });
- * const ai1 = new openstack.compute.InterfaceAttach("ai1", {
- *     instanceId: instance1.id,
- *     portId: pulumi.all(ports.map(v => v.id)).apply(id => id.map(v => v)[0]),
- * });
- * const ai2 = new openstack.compute.InterfaceAttach("ai2", {
- *     instanceId: instance1.id,
- *     portId: pulumi.all(ports.map(v => v.id)).apply(id => id.map(v => v)[1]),
- * });
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_interface_attach_v2.html.markdown.

@@ -12,6 +12,8 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// <summary>
     /// Manages a Load Balancer L7 Policy resource within OpenStack.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_l7policy_v2.html.markdown.
     /// </summary>
     public partial class L7PolicyV2 : Pulumi.CustomResource

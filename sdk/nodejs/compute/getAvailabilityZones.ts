@@ -11,6 +11,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -20,7 +22,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/compute_availability_zones_v2.html.markdown.
  */
-export function getAvailabilityZones(args?: GetAvailabilityZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetAvailabilityZonesResult> & GetAvailabilityZonesResult {
+export function getAvailabilityZones(args?: GetAvailabilityZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetAvailabilityZonesResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -29,12 +31,10 @@ export function getAvailabilityZones(args?: GetAvailabilityZonesArgs, opts?: pul
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetAvailabilityZonesResult> = pulumi.runtime.invoke("openstack:compute/getAvailabilityZones:getAvailabilityZones", {
+    return pulumi.runtime.invoke("openstack:compute/getAvailabilityZones:getAvailabilityZones", {
         "region": args.region,
         "state": args.state,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

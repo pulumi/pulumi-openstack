@@ -67,6 +67,8 @@ def get_qos_bandwidth_limit_rule(max_burst_kbps=None,max_kbps=None,qos_policy_id
     """
     Use this data source to get the ID of an available OpenStack QoS bandwidth limit rule.
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_qos_bandwidth_limit_rule_v2.html.markdown.
 
 

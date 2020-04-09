@@ -15,6 +15,8 @@ namespace Pulumi.OpenStack.SharedFileSystem
     /// A share network stores network information that share servers can use when
     /// shares are created.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/sharedfilesystem_sharenetwork_v2.html.markdown.
     /// </summary>
     public partial class ShareNetwork : Pulumi.CustomResource

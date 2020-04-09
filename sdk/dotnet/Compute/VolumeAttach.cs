@@ -13,6 +13,8 @@ namespace Pulumi.OpenStack.Compute
     /// Attaches a Block Storage Volume to an Instance using the OpenStack
     /// Compute (Nova) v2 API.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_volume_attach_v2.html.markdown.
     /// </summary>
     public partial class VolumeAttach : Pulumi.CustomResource

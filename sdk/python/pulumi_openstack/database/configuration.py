@@ -42,6 +42,8 @@ class Configuration(pulumi.CustomResource):
         """
         Manages a V1 DB configuration resource within OpenStack.
 
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/db_configuration_v1.html.markdown.
 
         :param str resource_name: The name of the resource.

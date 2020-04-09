@@ -92,6 +92,8 @@ def get_snapshot(description=None,name=None,region=None,share_id=None,status=Non
     """
     Use this data source to get the ID of an available Shared File System snapshot.
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/sharedfilesystem_snapshot_v2.html.markdown.
 
 

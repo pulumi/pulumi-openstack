@@ -12,6 +12,8 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// <summary>
     /// Manages a V2 member resource within OpenStack.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_member_v2.html.markdown.
     /// </summary>
     public partial class Member : Pulumi.CustomResource
