@@ -59,8 +59,6 @@ def get_qos_minimum_bandwidth_rule(direction=None,min_kbps=None,qos_policy_id=No
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_qos_minimum_bandwidth_rule_v2.html.markdown.
-
 
     :param float min_kbps: The value of a minimum kbps bandwidth.
     :param str qos_policy_id: The QoS policy reference.

@@ -49,8 +49,6 @@ def get_availability_zones(region=None,state=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/compute_availability_zones_v2.html.markdown.
-
 
     :param str region: The `region` to fetch availability zones from, defaults to the provider's `region`
     :param str state: The `state` of the availability zones to match, default ("available").

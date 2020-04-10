@@ -200,8 +200,6 @@ def get_cluster(name=None,region=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/containerinfra_cluster_v1.html.markdown.
-
 
     :param str name: The name of the cluster.
     :param str region: The region in which to obtain the V1 Container Infra

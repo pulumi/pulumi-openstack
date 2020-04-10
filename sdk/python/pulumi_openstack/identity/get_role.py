@@ -55,8 +55,6 @@ def get_role(domain_id=None,name=None,region=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_role_v3.html.markdown.
-
 
     :param str domain_id: The domain the role belongs to.
     :param str name: The name of the role.

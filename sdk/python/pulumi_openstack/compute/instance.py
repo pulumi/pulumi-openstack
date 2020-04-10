@@ -234,8 +234,6 @@ class Instance(pulumi.CustomResource):
         of an instance, so just specify image_id as in the configuration 
         of the basic instance example.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_instance_v2.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_ip_v4: The first detected Fixed IPv4 address.

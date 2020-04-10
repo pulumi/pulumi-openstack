@@ -93,8 +93,6 @@ def get_floating_ip(address=None,description=None,fixed_ip=None,pool=None,port_i
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_floatingip_v2.html.markdown.
-
 
     :param str address: The IP address of the floating IP.
     :param str description: Human-readable description of the floating IP.

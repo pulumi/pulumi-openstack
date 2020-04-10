@@ -56,8 +56,6 @@ def get_availability_zones_v3(region=None,state=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/blockstorage_availability_zones_v3.html.markdown.
-
 
     :param str region: The region in which to obtain the Block Storage client.
            If omitted, the `region` argument of the provider is used.

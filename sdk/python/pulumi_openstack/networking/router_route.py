@@ -43,8 +43,6 @@ class RouterRoute(pulumi.CustomResource):
         resource creation time.  You can ensure that by explicitly specifying a dependency on the ``networking.RouterInterface``
         resource that connects the next hop to the router, as in the example above.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_router_route_v2.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] destination_cidr: CIDR block to match on the packet’s destination IP. Changing

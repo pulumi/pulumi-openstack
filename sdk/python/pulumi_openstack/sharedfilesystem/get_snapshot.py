@@ -94,8 +94,6 @@ def get_snapshot(description=None,name=None,region=None,share_id=None,status=Non
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/sharedfilesystem_snapshot_v2.html.markdown.
-
 
     :param str description: The human-readable description of the snapshot.
     :param str name: The name of the snapshot.

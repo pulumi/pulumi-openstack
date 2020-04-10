@@ -121,8 +121,6 @@ def get_auth_scope(name=None,region=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_auth_scope_v3.html.markdown.
-
 
     :param str name: The name of the scope. This is an arbitrary name which is
            only used as a unique identifier so an actual token isn't used as the ID.

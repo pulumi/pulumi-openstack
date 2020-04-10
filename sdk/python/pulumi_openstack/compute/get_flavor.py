@@ -88,8 +88,6 @@ def get_flavor(disk=None,flavor_id=None,min_disk=None,min_ram=None,name=None,ram
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/compute_flavor_v2.html.markdown.
-
 
     :param float disk: The exact amount of disk (in gigabytes).
     :param str flavor_id: The ID of the flavor. Conflicts with the `name`,

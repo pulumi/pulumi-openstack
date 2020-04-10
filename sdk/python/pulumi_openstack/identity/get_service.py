@@ -71,8 +71,6 @@ def get_service(enabled=None,name=None,region=None,type=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_service_v3.html.markdown.
-
 
     :param bool enabled: The service status.
     :param str name: The service name.

@@ -72,8 +72,6 @@ def get_sec_group(description=None,name=None,region=None,secgroup_id=None,tags=N
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_secgroup_v2.html.markdown.
-
 
     :param str description: Human-readable description the the subnet.
     :param str name: The name of the security group.

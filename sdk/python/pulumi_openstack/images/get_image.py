@@ -176,8 +176,6 @@ def get_image(member_status=None,most_recent=None,name=None,owner=None,propertie
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/images_image_v2.html.markdown.
-
 
     :param str member_status: The status of the image. Must be one of
            "accepted", "pending", "rejected", or "all".

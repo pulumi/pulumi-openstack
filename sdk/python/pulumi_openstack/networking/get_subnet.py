@@ -132,8 +132,6 @@ def get_subnet(cidr=None,description=None,dhcp_disabled=None,dhcp_enabled=None,g
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_subnet_v2.html.markdown.
-
 
     :param str cidr: The CIDR of the subnet.
     :param str description: Human-readable description for the subnet.

@@ -204,8 +204,6 @@ class ClusterTemplate(pulumi.CustomResource):
         * `tls_disabled` - See Argument Reference above.
         * `volume_driver` - See Argument Reference above.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/containerinfra_clustertemplate_v1.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """

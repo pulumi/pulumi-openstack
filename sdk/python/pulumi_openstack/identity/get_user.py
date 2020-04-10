@@ -104,8 +104,6 @@ def get_user(domain_id=None,enabled=None,idp_id=None,name=None,password_expires_
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_user_v3.html.markdown.
-
 
     :param str domain_id: The domain this user belongs to.
     :param bool enabled: Whether the user is enabled or disabled. Valid

@@ -55,8 +55,6 @@ def get_qos_dscp_marking_rule(dscp_mark=None,qos_policy_id=None,region=None,opts
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_qos_dscp_marking_rule_v2.html.markdown.
-
 
     :param float dscp_mark: The value of a DSCP mark.
     :param str qos_policy_id: The QoS policy reference.

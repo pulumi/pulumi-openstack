@@ -62,8 +62,6 @@ def get_keypair(name=None,region=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/compute_keypair_v2.html.markdown.
-
 
     :param str name: The unique name of the keypair.
     :param str region: The region in which to obtain the V2 Compute client.

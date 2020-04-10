@@ -58,8 +58,6 @@ class ServerGroup(pulumi.CustomResource):
             still will be scheduled instead of failure. To use this policy your
             OpenStack environment should support Compute service API 2.15 or above.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_servergroup_v2.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: A unique name for the server group. Changing this creates

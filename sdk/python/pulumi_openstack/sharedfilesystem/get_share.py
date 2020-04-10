@@ -134,8 +134,6 @@ def get_share(description=None,export_location_path=None,is_public=None,metadata
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/sharedfilesystem_share_v2.html.markdown.
-
 
     :param str description: The human-readable description for the share.
     :param str export_location_path: The export location path of the share. Available

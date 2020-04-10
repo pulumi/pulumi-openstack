@@ -119,8 +119,6 @@ def get_share_network(description=None,ip_version=None,name=None,network_type=No
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/sharedfilesystem_sharenetwork_v2.html.markdown.
-
 
     :param str description: The human-readable description of the share network.
     :param float ip_version: The IP version of the share network. Can either be 4 or 6.

@@ -88,8 +88,6 @@ def get_trunk(admin_state_up=None,description=None,name=None,port_id=None,projec
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_trunk_v2.html.markdown.
-
 
     :param bool admin_state_up: The administrative state of the trunk.
     :param str description: Human-readable description of the trunk.

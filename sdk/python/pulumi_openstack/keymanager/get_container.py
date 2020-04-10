@@ -114,8 +114,6 @@ def get_container(name=None,region=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/keymanager_container_v1.html.markdown.
-
 
     :param str name: The Container name.
     :param str region: The region in which to obtain the V1 KeyManager client.

@@ -90,8 +90,6 @@ def get_policy(name=None,policy_id=None,region=None,tenant_id=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/fw_policy_v1.html.markdown.
-
 
     :param str name: The name of the firewall policy.
     :param str policy_id: The ID of the firewall policy.
