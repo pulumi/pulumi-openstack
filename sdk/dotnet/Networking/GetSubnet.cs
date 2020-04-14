@@ -9,27 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.OpenStack.Networking
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Use this data source to get the ID of an available OpenStack subnet.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_subnet_v2.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetSubnet.InvokeAsync() instead")]
-        public static Task<GetSubnetResult> GetSubnet(GetSubnetArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSubnetResult>("openstack:networking/getSubnet:getSubnet", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetSubnet
     {
         /// <summary>
         /// Use this data source to get the ID of an available OpenStack subnet.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_subnet_v2.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetSubnetResult> InvokeAsync(GetSubnetArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSubnetResult>("openstack:networking/getSubnet:getSubnet", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSubnetResult>("openstack:networking/getSubnet:getSubnet", args ?? new GetSubnetArgs(), options.WithVersion());
     }
+
 
     public sealed class GetSubnetArgs : Pulumi.InvokeArgs
     {
@@ -138,6 +129,7 @@ namespace Pulumi.OpenStack.Networking
         }
     }
 
+
     [OutputType]
     public sealed class GetSubnetResult
     {
@@ -148,7 +140,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// Allocation pools of the subnet.
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetSubnetAllocationPoolsResult> AllocationPools;
+        public readonly ImmutableArray<Outputs.GetSubnetAllocationPoolResult> AllocationPools;
         public readonly string Cidr;
         public readonly string Description;
         public readonly bool? DhcpDisabled;
@@ -165,7 +157,11 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// Host Routes of the subnet.
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetSubnetHostRoutesResult> HostRoutes;
+        public readonly ImmutableArray<Outputs.GetSubnetHostRouteResult> HostRoutes;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         public readonly int IpVersion;
         public readonly string Ipv6AddressMode;
         public readonly string Ipv6RaMode;
@@ -179,34 +175,50 @@ namespace Pulumi.OpenStack.Networking
         public readonly string SubnetpoolId;
         public readonly ImmutableArray<string> Tags;
         public readonly string TenantId;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetSubnetResult(
             ImmutableArray<string> allTags,
-            ImmutableArray<Outputs.GetSubnetAllocationPoolsResult> allocationPools,
+
+            ImmutableArray<Outputs.GetSubnetAllocationPoolResult> allocationPools,
+
             string cidr,
+
             string description,
+
             bool? dhcpDisabled,
+
             bool? dhcpEnabled,
+
             ImmutableArray<string> dnsNameservers,
+
             bool enableDhcp,
+
             string gatewayIp,
-            ImmutableArray<Outputs.GetSubnetHostRoutesResult> hostRoutes,
+
+            ImmutableArray<Outputs.GetSubnetHostRouteResult> hostRoutes,
+
+            string id,
+
             int ipVersion,
+
             string ipv6AddressMode,
+
             string ipv6RaMode,
+
             string name,
+
             string networkId,
+
             string region,
+
             string subnetId,
+
             string subnetpoolId,
+
             ImmutableArray<string> tags,
-            string tenantId,
-            string id)
+
+            string tenantId)
         {
             AllTags = allTags;
             AllocationPools = allocationPools;
@@ -218,6 +230,7 @@ namespace Pulumi.OpenStack.Networking
             EnableDhcp = enableDhcp;
             GatewayIp = gatewayIp;
             HostRoutes = hostRoutes;
+            Id = id;
             IpVersion = ipVersion;
             Ipv6AddressMode = ipv6AddressMode;
             Ipv6RaMode = ipv6RaMode;
@@ -228,43 +241,6 @@ namespace Pulumi.OpenStack.Networking
             SubnetpoolId = subnetpoolId;
             Tags = tags;
             TenantId = tenantId;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetSubnetAllocationPoolsResult
-    {
-        public readonly string End;
-        public readonly string Start;
-
-        [OutputConstructor]
-        private GetSubnetAllocationPoolsResult(
-            string end,
-            string start)
-        {
-            End = end;
-            Start = start;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetSubnetHostRoutesResult
-    {
-        public readonly string DestinationCidr;
-        public readonly string NextHop;
-
-        [OutputConstructor]
-        private GetSubnetHostRoutesResult(
-            string destinationCidr,
-            string nextHop)
-        {
-            DestinationCidr = destinationCidr;
-            NextHop = nextHop;
-        }
-    }
     }
 }

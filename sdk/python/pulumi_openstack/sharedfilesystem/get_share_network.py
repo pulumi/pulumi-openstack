@@ -117,7 +117,7 @@ def get_share_network(description=None,ip_version=None,name=None,network_type=No
     """
     Use this data source to get the ID of an available Shared File System share network.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/sharedfilesystem_sharenetwork_v2.html.markdown.
+
 
 
     :param str description: The human-readable description of the share network.

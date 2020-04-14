@@ -105,7 +105,7 @@ def get_port_ids(admin_state_up=None,description=None,device_id=None,device_owne
     Use this data source to get a list of Openstack Port IDs matching the
     specified criteria.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_port_ids_v2.html.markdown.
+
 
 
     :param bool admin_state_up: The administrative state of the port.

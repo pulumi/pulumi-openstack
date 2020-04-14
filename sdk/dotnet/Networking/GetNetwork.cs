@@ -9,27 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.OpenStack.Networking
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Use this data source to get the ID of an available OpenStack network.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_network_v2.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetNetwork.InvokeAsync() instead")]
-        public static Task<GetNetworkResult> GetNetwork(GetNetworkArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNetworkResult>("openstack:networking/getNetwork:getNetwork", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetNetwork
     {
         /// <summary>
         /// Use this data source to get the ID of an available OpenStack network.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_network_v2.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetNetworkResult> InvokeAsync(GetNetworkArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNetworkResult>("openstack:networking/getNetwork:getNetwork", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNetworkResult>("openstack:networking/getNetwork:getNetwork", args ?? new GetNetworkArgs(), options.WithVersion());
     }
+
 
     public sealed class GetNetworkArgs : Pulumi.InvokeArgs
     {
@@ -114,6 +105,7 @@ namespace Pulumi.OpenStack.Networking
         }
     }
 
+
     [OutputType]
     public sealed class GetNetworkResult
     {
@@ -142,6 +134,10 @@ namespace Pulumi.OpenStack.Networking
         /// See Argument Reference above.
         /// </summary>
         public readonly bool? External;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         public readonly string? MatchingSubnetCidr;
         /// <summary>
         /// See Argument Reference above.
@@ -168,30 +164,42 @@ namespace Pulumi.OpenStack.Networking
         /// See Argument Reference above.
         /// </summary>
         public readonly bool? TransparentVlan;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetNetworkResult(
             string adminStateUp,
+
             ImmutableArray<string> allTags,
+
             ImmutableArray<string> availabilityZoneHints,
+
             string? description,
+
             string dnsDomain,
+
             bool? external,
+
+            string id,
+
             string? matchingSubnetCidr,
+
             int? mtu,
+
             string? name,
+
             string? networkId,
+
             string region,
+
             string shared,
+
             string? status,
+
             ImmutableArray<string> tags,
+
             string? tenantId,
-            bool? transparentVlan,
-            string id)
+
+            bool? transparentVlan)
         {
             AdminStateUp = adminStateUp;
             AllTags = allTags;
@@ -199,6 +207,7 @@ namespace Pulumi.OpenStack.Networking
             Description = description;
             DnsDomain = dnsDomain;
             External = external;
+            Id = id;
             MatchingSubnetCidr = matchingSubnetCidr;
             Mtu = mtu;
             Name = name;
@@ -209,7 +218,6 @@ namespace Pulumi.OpenStack.Networking
             Tags = tags;
             TenantId = tenantId;
             TransparentVlan = transparentVlan;
-            Id = id;
         }
     }
 }

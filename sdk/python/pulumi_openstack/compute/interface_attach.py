@@ -40,7 +40,7 @@ class InterfaceAttach(pulumi.CustomResource):
         Attaches a Network Interface (a Port) to an Instance using the OpenStack
         Compute (Nova) v2 API.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_interface_attach_v2.html.markdown.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -86,7 +86,7 @@ def get_trunk(admin_state_up=None,description=None,name=None,port_id=None,projec
     """
     Use this data source to get the ID of an available OpenStack trunk.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_trunk_v2.html.markdown.
+
 
 
     :param bool admin_state_up: The administrative state of the trunk.

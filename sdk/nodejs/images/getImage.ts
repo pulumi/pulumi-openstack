@@ -9,6 +9,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -24,7 +26,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/images_image_v2.html.markdown.
  */
-export function getImage(args?: GetImageArgs, opts?: pulumi.InvokeOptions): Promise<GetImageResult> & GetImageResult {
+export function getImage(args?: GetImageArgs, opts?: pulumi.InvokeOptions): Promise<GetImageResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -33,7 +35,7 @@ export function getImage(args?: GetImageArgs, opts?: pulumi.InvokeOptions): Prom
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetImageResult> = pulumi.runtime.invoke("openstack:images/getImage:getImage", {
+    return pulumi.runtime.invoke("openstack:images/getImage:getImage", {
         "memberStatus": args.memberStatus,
         "mostRecent": args.mostRecent,
         "name": args.name,
@@ -47,8 +49,6 @@ export function getImage(args?: GetImageArgs, opts?: pulumi.InvokeOptions): Prom
         "tag": args.tag,
         "visibility": args.visibility,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

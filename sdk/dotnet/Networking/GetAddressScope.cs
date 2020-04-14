@@ -9,27 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.OpenStack.Networking
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Use this data source to get the ID of an available OpenStack address-scope.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_addressscope_v2.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetAddressScope.InvokeAsync() instead")]
-        public static Task<GetAddressScopeResult> GetAddressScope(GetAddressScopeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAddressScopeResult>("openstack:networking/getAddressScope:getAddressScope", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetAddressScope
     {
         /// <summary>
         /// Use this data source to get the ID of an available OpenStack address-scope.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_addressscope_v2.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAddressScopeResult> InvokeAsync(GetAddressScopeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAddressScopeResult>("openstack:networking/getAddressScope:getAddressScope", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAddressScopeResult>("openstack:networking/getAddressScope:getAddressScope", args ?? new GetAddressScopeArgs(), options.WithVersion());
     }
+
 
     public sealed class GetAddressScopeArgs : Pulumi.InvokeArgs
     {
@@ -71,9 +62,14 @@ namespace Pulumi.OpenStack.Networking
         }
     }
 
+
     [OutputType]
     public sealed class GetAddressScopeResult
     {
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// See Argument Reference above.
         /// </summary>
@@ -91,26 +87,27 @@ namespace Pulumi.OpenStack.Networking
         /// See Argument Reference above.
         /// </summary>
         public readonly bool? Shared;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetAddressScopeResult(
+            string id,
+
             int? ipVersion,
+
             string? name,
+
             string? projectId,
+
             string? region,
-            bool? shared,
-            string id)
+
+            bool? shared)
         {
+            Id = id;
             IpVersion = ipVersion;
             Name = name;
             ProjectId = projectId;
             Region = region;
             Shared = shared;
-            Id = id;
         }
     }
 }

@@ -12,6 +12,7 @@ namespace Pulumi.OpenStack.Images
     /// <summary>
     /// Manages a V2 Image resource within OpenStack Glance.
     /// 
+    /// 
     /// ## Notes
     /// 
     /// ### Properties
@@ -27,8 +28,6 @@ namespace Pulumi.OpenStack.Images
     /// 
     /// In addition, the `direct_url` property is also automatically reconciled if the
     /// Image Service set it.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/images_image_v2.html.markdown.
     /// </summary>
     public partial class Image : Pulumi.CustomResource
     {
@@ -207,7 +206,7 @@ namespace Pulumi.OpenStack.Images
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Image(string name, ImageArgs args, CustomResourceOptions? options = null)
-            : base("openstack:images/image:Image", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("openstack:images/image:Image", name, args ?? new ImageArgs(), MakeResourceOptions(options, ""))
         {
         }
 

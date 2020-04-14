@@ -107,7 +107,7 @@ class Router(pulumi.CustomResource):
         """
         Manages a V2 router resource within OpenStack.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_router_v2.html.markdown.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

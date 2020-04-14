@@ -95,7 +95,7 @@ def get_volume_v3(bootable=None,metadata=None,name=None,region=None,status=None,
     """
     Use this data source to get information about an existing volume.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/blockstorage_volume_v3.html.markdown.
+
 
 
     :param str bootable: Indicates if the volume is bootable.

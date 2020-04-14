@@ -9,19 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.OpenStack.Identity
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Use this data source to get the ID of an OpenStack group.
-        /// 
-        /// Note: This usually requires admin privileges.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_group_v3.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetGroup.InvokeAsync() instead")]
-        public static Task<GetGroupResult> GetGroup(GetGroupArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGroupResult>("openstack:identity/getGroup:getGroup", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetGroup
     {
         /// <summary>
@@ -29,11 +16,13 @@ namespace Pulumi.OpenStack.Identity
         /// 
         /// Note: This usually requires admin privileges.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_group_v3.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetGroupResult> InvokeAsync(GetGroupArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGroupResult>("openstack:identity/getGroup:getGroup", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetGroupResult>("openstack:identity/getGroup:getGroup", args ?? new GetGroupArgs(), options.WithVersion());
     }
+
 
     public sealed class GetGroupArgs : Pulumi.InvokeArgs
     {
@@ -61,6 +50,7 @@ namespace Pulumi.OpenStack.Identity
         }
     }
 
+
     [OutputType]
     public sealed class GetGroupResult
     {
@@ -73,6 +63,10 @@ namespace Pulumi.OpenStack.Identity
         /// </summary>
         public readonly string DomainId;
         /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// See Argument Reference above.
         /// </summary>
         public readonly string Name;
@@ -80,24 +74,24 @@ namespace Pulumi.OpenStack.Identity
         /// See Argument Reference above.
         /// </summary>
         public readonly string Region;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetGroupResult(
             string description,
+
             string domainId,
+
+            string id,
+
             string name,
-            string region,
-            string id)
+
+            string region)
         {
             Description = description;
             DomainId = domainId;
+            Id = id;
             Name = name;
             Region = region;
-            Id = id;
         }
     }
 }

@@ -9,27 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.OpenStack.Networking
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Use this data source to get the ID of an available OpenStack security group.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_secgroup_v2.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetSecGroup.InvokeAsync() instead")]
-        public static Task<GetSecGroupResult> GetSecGroup(GetSecGroupArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSecGroupResult>("openstack:networking/getSecGroup:getSecGroup", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetSecGroup
     {
         /// <summary>
         /// Use this data source to get the ID of an available OpenStack security group.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_secgroup_v2.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetSecGroupResult> InvokeAsync(GetSecGroupArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSecGroupResult>("openstack:networking/getSecGroup:getSecGroup", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSecGroupResult>("openstack:networking/getSecGroup:getSecGroup", args ?? new GetSecGroupArgs(), options.WithVersion());
     }
+
 
     public sealed class GetSecGroupArgs : Pulumi.InvokeArgs
     {
@@ -82,6 +73,7 @@ namespace Pulumi.OpenStack.Networking
         }
     }
 
+
     [OutputType]
     public sealed class GetSecGroupResult
     {
@@ -90,6 +82,10 @@ namespace Pulumi.OpenStack.Networking
         /// </summary>
         public readonly ImmutableArray<string> AllTags;
         public readonly string? Description;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// See Argument Reference above.
         /// * `description`- See Argument Reference above.
@@ -102,30 +98,33 @@ namespace Pulumi.OpenStack.Networking
         public readonly string? SecgroupId;
         public readonly ImmutableArray<string> Tags;
         public readonly string TenantId;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetSecGroupResult(
             ImmutableArray<string> allTags,
+
             string? description,
+
+            string id,
+
             string? name,
+
             string region,
+
             string? secgroupId,
+
             ImmutableArray<string> tags,
-            string tenantId,
-            string id)
+
+            string tenantId)
         {
             AllTags = allTags;
             Description = description;
+            Id = id;
             Name = name;
             Region = region;
             SecgroupId = secgroupId;
             Tags = tags;
             TenantId = tenantId;
-            Id = id;
         }
     }
 }

@@ -20,8 +20,6 @@ namespace Pulumi.OpenStack.Identity
     /// project scope and is not visible by an admin or other accounts.
     /// The Application Credential visibility is similar to
     /// `openstack.compute.Keypair`.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/identity_application_credential_v3.html.markdown.
     /// </summary>
     public partial class ApplicationCredential : Pulumi.CustomResource
     {
@@ -31,7 +29,7 @@ namespace Pulumi.OpenStack.Identity
         /// below. Changing this creates a new application credential.
         /// </summary>
         [Output("accessRules")]
-        public Output<ImmutableArray<Outputs.ApplicationCredentialAccessRules>> AccessRules { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.ApplicationCredentialAccessRule>> AccessRules { get; private set; } = null!;
 
         /// <summary>
         /// A description of the application credential.
@@ -107,7 +105,7 @@ namespace Pulumi.OpenStack.Identity
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ApplicationCredential(string name, ApplicationCredentialArgs? args = null, CustomResourceOptions? options = null)
-            : base("openstack:identity/applicationCredential:ApplicationCredential", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("openstack:identity/applicationCredential:ApplicationCredential", name, args ?? new ApplicationCredentialArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -145,16 +143,16 @@ namespace Pulumi.OpenStack.Identity
     public sealed class ApplicationCredentialArgs : Pulumi.ResourceArgs
     {
         [Input("accessRules")]
-        private InputList<Inputs.ApplicationCredentialAccessRulesArgs>? _accessRules;
+        private InputList<Inputs.ApplicationCredentialAccessRuleArgs>? _accessRules;
 
         /// <summary>
         /// A collection of one or more access rules, which
         /// this application credential allows to follow. The structure is described
         /// below. Changing this creates a new application credential.
         /// </summary>
-        public InputList<Inputs.ApplicationCredentialAccessRulesArgs> AccessRules
+        public InputList<Inputs.ApplicationCredentialAccessRuleArgs> AccessRules
         {
-            get => _accessRules ?? (_accessRules = new InputList<Inputs.ApplicationCredentialAccessRulesArgs>());
+            get => _accessRules ?? (_accessRules = new InputList<Inputs.ApplicationCredentialAccessRuleArgs>());
             set => _accessRules = value;
         }
 
@@ -229,16 +227,16 @@ namespace Pulumi.OpenStack.Identity
     public sealed class ApplicationCredentialState : Pulumi.ResourceArgs
     {
         [Input("accessRules")]
-        private InputList<Inputs.ApplicationCredentialAccessRulesGetArgs>? _accessRules;
+        private InputList<Inputs.ApplicationCredentialAccessRuleGetArgs>? _accessRules;
 
         /// <summary>
         /// A collection of one or more access rules, which
         /// this application credential allows to follow. The structure is described
         /// below. Changing this creates a new application credential.
         /// </summary>
-        public InputList<Inputs.ApplicationCredentialAccessRulesGetArgs> AccessRules
+        public InputList<Inputs.ApplicationCredentialAccessRuleGetArgs> AccessRules
         {
-            get => _accessRules ?? (_accessRules = new InputList<Inputs.ApplicationCredentialAccessRulesGetArgs>());
+            get => _accessRules ?? (_accessRules = new InputList<Inputs.ApplicationCredentialAccessRuleGetArgs>());
             set => _accessRules = value;
         }
 
@@ -316,139 +314,5 @@ namespace Pulumi.OpenStack.Identity
         public ApplicationCredentialState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class ApplicationCredentialAccessRulesArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The ID of the existing access rule. The access rule ID of
-        /// another application credential can be provided.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        /// <summary>
-        /// The request method that the application credential is
-        /// permitted to use for a given API endpoint. Allowed values: `POST`, `GET`,
-        /// `HEAD`, `PATCH`, `PUT` and `DELETE`.
-        /// </summary>
-        [Input("method", required: true)]
-        public Input<string> Method { get; set; } = null!;
-
-        /// <summary>
-        /// The API path that the application credential is permitted
-        /// to access. May use named wildcards such as **{tag}** or the unnamed wildcard
-        /// **\*** to match against any string in the path up to a **/**, or the recursive
-        /// wildcard **\*\*** to include **/** in the matched path.
-        /// </summary>
-        [Input("path", required: true)]
-        public Input<string> Path { get; set; } = null!;
-
-        /// <summary>
-        /// The service type identifier for the service that the
-        /// application credential is granted to access. Must be a service type that is
-        /// listed in the service catalog and not a code name for a service. E.g.
-        /// **identity**, **compute**, **volumev3**, **image**, **network**,
-        /// **object-store**, **sharev2**, **dns**, **key-manager**, **monitoring**, etc.
-        /// </summary>
-        [Input("service", required: true)]
-        public Input<string> Service { get; set; } = null!;
-
-        public ApplicationCredentialAccessRulesArgs()
-        {
-        }
-    }
-
-    public sealed class ApplicationCredentialAccessRulesGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The ID of the existing access rule. The access rule ID of
-        /// another application credential can be provided.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        /// <summary>
-        /// The request method that the application credential is
-        /// permitted to use for a given API endpoint. Allowed values: `POST`, `GET`,
-        /// `HEAD`, `PATCH`, `PUT` and `DELETE`.
-        /// </summary>
-        [Input("method", required: true)]
-        public Input<string> Method { get; set; } = null!;
-
-        /// <summary>
-        /// The API path that the application credential is permitted
-        /// to access. May use named wildcards such as **{tag}** or the unnamed wildcard
-        /// **\*** to match against any string in the path up to a **/**, or the recursive
-        /// wildcard **\*\*** to include **/** in the matched path.
-        /// </summary>
-        [Input("path", required: true)]
-        public Input<string> Path { get; set; } = null!;
-
-        /// <summary>
-        /// The service type identifier for the service that the
-        /// application credential is granted to access. Must be a service type that is
-        /// listed in the service catalog and not a code name for a service. E.g.
-        /// **identity**, **compute**, **volumev3**, **image**, **network**,
-        /// **object-store**, **sharev2**, **dns**, **key-manager**, **monitoring**, etc.
-        /// </summary>
-        [Input("service", required: true)]
-        public Input<string> Service { get; set; } = null!;
-
-        public ApplicationCredentialAccessRulesGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class ApplicationCredentialAccessRules
-    {
-        /// <summary>
-        /// The ID of the existing access rule. The access rule ID of
-        /// another application credential can be provided.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// The request method that the application credential is
-        /// permitted to use for a given API endpoint. Allowed values: `POST`, `GET`,
-        /// `HEAD`, `PATCH`, `PUT` and `DELETE`.
-        /// </summary>
-        public readonly string Method;
-        /// <summary>
-        /// The API path that the application credential is permitted
-        /// to access. May use named wildcards such as **{tag}** or the unnamed wildcard
-        /// **\*** to match against any string in the path up to a **/**, or the recursive
-        /// wildcard **\*\*** to include **/** in the matched path.
-        /// </summary>
-        public readonly string Path;
-        /// <summary>
-        /// The service type identifier for the service that the
-        /// application credential is granted to access. Must be a service type that is
-        /// listed in the service catalog and not a code name for a service. E.g.
-        /// **identity**, **compute**, **volumev3**, **image**, **network**,
-        /// **object-store**, **sharev2**, **dns**, **key-manager**, **monitoring**, etc.
-        /// </summary>
-        public readonly string Service;
-
-        [OutputConstructor]
-        private ApplicationCredentialAccessRules(
-            string id,
-            string method,
-            string path,
-            string service)
-        {
-            Id = id;
-            Method = method;
-            Path = path;
-            Service = service;
-        }
-    }
     }
 }

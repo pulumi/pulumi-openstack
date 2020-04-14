@@ -10,6 +10,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -21,7 +23,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/containerinfra_clustertemplate_v1.html.markdown.
  */
-export function getClusterTemplate(args: GetClusterTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterTemplateResult> & GetClusterTemplateResult {
+export function getClusterTemplate(args: GetClusterTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterTemplateResult> {
     if (!opts) {
         opts = {}
     }
@@ -29,12 +31,10 @@ export function getClusterTemplate(args: GetClusterTemplateArgs, opts?: pulumi.I
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetClusterTemplateResult> = pulumi.runtime.invoke("openstack:containerinfra/getClusterTemplate:getClusterTemplate", {
+    return pulumi.runtime.invoke("openstack:containerinfra/getClusterTemplate:getClusterTemplate", {
         "name": args.name,
         "region": args.region,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

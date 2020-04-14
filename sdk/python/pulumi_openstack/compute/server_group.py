@@ -39,6 +39,7 @@ class ServerGroup(pulumi.CustomResource):
         """
         Manages a V2 Server Group resource within OpenStack.
 
+
         ## Policies
 
         * `affinity` - All instances/servers launched in this group will be hosted on
@@ -56,8 +57,6 @@ class ServerGroup(pulumi.CustomResource):
             hosted on different compute nodes if possible, but if not possible they
             still will be scheduled instead of failure. To use this policy your
             OpenStack environment should support Compute service API 2.15 or above.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_servergroup_v2.html.markdown.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -9,27 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.OpenStack.Compute
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Use this data source to get the ID and public key of an OpenStack keypair.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/compute_keypair_v2.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetKeypair.InvokeAsync() instead")]
-        public static Task<GetKeypairResult> GetKeypair(GetKeypairArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKeypairResult>("openstack:compute/getKeypair:getKeypair", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetKeypair
     {
         /// <summary>
         /// Use this data source to get the ID and public key of an OpenStack keypair.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/compute_keypair_v2.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetKeypairResult> InvokeAsync(GetKeypairArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKeypairResult>("openstack:compute/getKeypair:getKeypair", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetKeypairResult>("openstack:compute/getKeypair:getKeypair", args ?? new GetKeypairArgs(), options.WithVersion());
     }
+
 
     public sealed class GetKeypairArgs : Pulumi.InvokeArgs
     {
@@ -51,6 +42,7 @@ namespace Pulumi.OpenStack.Compute
         }
     }
 
+
     [OutputType]
     public sealed class GetKeypairResult
     {
@@ -58,6 +50,10 @@ namespace Pulumi.OpenStack.Compute
         /// The fingerprint of the OpenSSH key.
         /// </summary>
         public readonly string Fingerprint;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// See Argument Reference above.
         /// </summary>
@@ -70,24 +66,24 @@ namespace Pulumi.OpenStack.Compute
         /// See Argument Reference above.
         /// </summary>
         public readonly string Region;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetKeypairResult(
             string fingerprint,
+
+            string id,
+
             string name,
+
             string publicKey,
-            string region,
-            string id)
+
+            string region)
         {
             Fingerprint = fingerprint;
+            Id = id;
             Name = name;
             PublicKey = publicKey;
             Region = region;
-            Id = id;
         }
     }
 }

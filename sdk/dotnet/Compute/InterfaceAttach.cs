@@ -12,8 +12,6 @@ namespace Pulumi.OpenStack.Compute
     /// <summary>
     /// Attaches a Network Interface (a Port) to an Instance using the OpenStack
     /// Compute (Nova) v2 API.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_interface_attach_v2.html.markdown.
     /// </summary>
     public partial class InterfaceAttach : Pulumi.CustomResource
     {
@@ -61,7 +59,7 @@ namespace Pulumi.OpenStack.Compute
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public InterfaceAttach(string name, InterfaceAttachArgs args, CustomResourceOptions? options = null)
-            : base("openstack:compute/interfaceAttach:InterfaceAttach", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("openstack:compute/interfaceAttach:InterfaceAttach", name, args ?? new InterfaceAttachArgs(), MakeResourceOptions(options, ""))
         {
         }
 

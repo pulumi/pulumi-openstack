@@ -91,7 +91,7 @@ def get_floating_ip(address=None,description=None,fixed_ip=None,pool=None,port_i
     """
     Use this data source to get the ID of an available OpenStack floating IP.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_floatingip_v2.html.markdown.
+
 
 
     :param str address: The IP address of the floating IP.

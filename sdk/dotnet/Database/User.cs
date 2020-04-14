@@ -11,8 +11,6 @@ namespace Pulumi.OpenStack.Database
 {
     /// <summary>
     /// Manages a V1 DB user resource within OpenStack.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/db_user_v1.html.markdown.
     /// </summary>
     public partial class User : Pulumi.CustomResource
     {
@@ -55,7 +53,7 @@ namespace Pulumi.OpenStack.Database
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public User(string name, UserArgs args, CustomResourceOptions? options = null)
-            : base("openstack:database/user:User", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("openstack:database/user:User", name, args ?? new UserArgs(), MakeResourceOptions(options, ""))
         {
         }
 

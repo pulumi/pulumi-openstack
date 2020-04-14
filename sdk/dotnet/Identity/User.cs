@@ -14,8 +14,6 @@ namespace Pulumi.OpenStack.Identity
     /// 
     /// Note: You _must_ have admin privileges in your OpenStack cloud to use
     /// this resource.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/identity_user_v3.html.markdown.
     /// </summary>
     public partial class User : Pulumi.CustomResource
     {
@@ -85,7 +83,7 @@ namespace Pulumi.OpenStack.Identity
         /// for more information on how to use mulit-factor rules.
         /// </summary>
         [Output("multiFactorAuthRules")]
-        public Output<ImmutableArray<Outputs.UserMultiFactorAuthRules>> MultiFactorAuthRules { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.UserMultiFactorAuthRule>> MultiFactorAuthRules { get; private set; } = null!;
 
         /// <summary>
         /// The name of the user.
@@ -116,7 +114,7 @@ namespace Pulumi.OpenStack.Identity
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public User(string name, UserArgs? args = null, CustomResourceOptions? options = null)
-            : base("openstack:identity/user:User", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("openstack:identity/user:User", name, args ?? new UserArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -219,7 +217,7 @@ namespace Pulumi.OpenStack.Identity
         public Input<bool>? MultiFactorAuthEnabled { get; set; }
 
         [Input("multiFactorAuthRules")]
-        private InputList<Inputs.UserMultiFactorAuthRulesArgs>? _multiFactorAuthRules;
+        private InputList<Inputs.UserMultiFactorAuthRuleArgs>? _multiFactorAuthRules;
 
         /// <summary>
         /// A multi-factor authentication rule.
@@ -227,9 +225,9 @@ namespace Pulumi.OpenStack.Identity
         /// [Ocata release notes](https://docs.openstack.org/releasenotes/keystone/ocata.html)
         /// for more information on how to use mulit-factor rules.
         /// </summary>
-        public InputList<Inputs.UserMultiFactorAuthRulesArgs> MultiFactorAuthRules
+        public InputList<Inputs.UserMultiFactorAuthRuleArgs> MultiFactorAuthRules
         {
-            get => _multiFactorAuthRules ?? (_multiFactorAuthRules = new InputList<Inputs.UserMultiFactorAuthRulesArgs>());
+            get => _multiFactorAuthRules ?? (_multiFactorAuthRules = new InputList<Inputs.UserMultiFactorAuthRuleArgs>());
             set => _multiFactorAuthRules = value;
         }
 
@@ -326,7 +324,7 @@ namespace Pulumi.OpenStack.Identity
         public Input<bool>? MultiFactorAuthEnabled { get; set; }
 
         [Input("multiFactorAuthRules")]
-        private InputList<Inputs.UserMultiFactorAuthRulesGetArgs>? _multiFactorAuthRules;
+        private InputList<Inputs.UserMultiFactorAuthRuleGetArgs>? _multiFactorAuthRules;
 
         /// <summary>
         /// A multi-factor authentication rule.
@@ -334,9 +332,9 @@ namespace Pulumi.OpenStack.Identity
         /// [Ocata release notes](https://docs.openstack.org/releasenotes/keystone/ocata.html)
         /// for more information on how to use mulit-factor rules.
         /// </summary>
-        public InputList<Inputs.UserMultiFactorAuthRulesGetArgs> MultiFactorAuthRules
+        public InputList<Inputs.UserMultiFactorAuthRuleGetArgs> MultiFactorAuthRules
         {
-            get => _multiFactorAuthRules ?? (_multiFactorAuthRules = new InputList<Inputs.UserMultiFactorAuthRulesGetArgs>());
+            get => _multiFactorAuthRules ?? (_multiFactorAuthRules = new InputList<Inputs.UserMultiFactorAuthRuleGetArgs>());
             set => _multiFactorAuthRules = value;
         }
 
@@ -363,69 +361,5 @@ namespace Pulumi.OpenStack.Identity
         public UserState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class UserMultiFactorAuthRulesArgs : Pulumi.ResourceArgs
-    {
-        [Input("rules", required: true)]
-        private InputList<string>? _rules;
-
-        /// <summary>
-        /// A list of authentication plugins that the user must
-        /// authenticate with.
-        /// </summary>
-        public InputList<string> Rules
-        {
-            get => _rules ?? (_rules = new InputList<string>());
-            set => _rules = value;
-        }
-
-        public UserMultiFactorAuthRulesArgs()
-        {
-        }
-    }
-
-    public sealed class UserMultiFactorAuthRulesGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("rules", required: true)]
-        private InputList<string>? _rules;
-
-        /// <summary>
-        /// A list of authentication plugins that the user must
-        /// authenticate with.
-        /// </summary>
-        public InputList<string> Rules
-        {
-            get => _rules ?? (_rules = new InputList<string>());
-            set => _rules = value;
-        }
-
-        public UserMultiFactorAuthRulesGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class UserMultiFactorAuthRules
-    {
-        /// <summary>
-        /// A list of authentication plugins that the user must
-        /// authenticate with.
-        /// </summary>
-        public readonly ImmutableArray<string> Rules;
-
-        [OutputConstructor]
-        private UserMultiFactorAuthRules(ImmutableArray<string> rules)
-        {
-            Rules = rules;
-        }
-    }
     }
 }

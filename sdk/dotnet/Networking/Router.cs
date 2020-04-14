@@ -11,8 +11,6 @@ namespace Pulumi.OpenStack.Networking
 {
     /// <summary>
     /// Manages a V2 router resource within OpenStack.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_router_v2.html.markdown.
     /// </summary>
     public partial class Router : Pulumi.CustomResource
     {
@@ -70,7 +68,7 @@ namespace Pulumi.OpenStack.Networking
         /// external fixed IPs of the router.
         /// </summary>
         [Output("externalFixedIps")]
-        public Output<ImmutableArray<Outputs.RouterExternalFixedIps>> ExternalFixedIps { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.RouterExternalFixedIp>> ExternalFixedIps { get; private set; } = null!;
 
         /// <summary>
         /// The
@@ -142,7 +140,7 @@ namespace Pulumi.OpenStack.Networking
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Router(string name, RouterArgs? args = null, CustomResourceOptions? options = null)
-            : base("openstack:networking/router:Router", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("openstack:networking/router:Router", name, args ?? new RouterArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -226,7 +224,7 @@ namespace Pulumi.OpenStack.Networking
         public Input<bool>? EnableSnat { get; set; }
 
         [Input("externalFixedIps")]
-        private InputList<Inputs.RouterExternalFixedIpsArgs>? _externalFixedIps;
+        private InputList<Inputs.RouterExternalFixedIpArgs>? _externalFixedIps;
 
         /// <summary>
         /// An external fixed IP for the router. This
@@ -234,9 +232,9 @@ namespace Pulumi.OpenStack.Networking
         /// has to be set in order to set this property. Changing this updates the
         /// external fixed IPs of the router.
         /// </summary>
-        public InputList<Inputs.RouterExternalFixedIpsArgs> ExternalFixedIps
+        public InputList<Inputs.RouterExternalFixedIpArgs> ExternalFixedIps
         {
-            get => _externalFixedIps ?? (_externalFixedIps = new InputList<Inputs.RouterExternalFixedIpsArgs>());
+            get => _externalFixedIps ?? (_externalFixedIps = new InputList<Inputs.RouterExternalFixedIpArgs>());
             set => _externalFixedIps = value;
         }
 
@@ -380,7 +378,7 @@ namespace Pulumi.OpenStack.Networking
         public Input<bool>? EnableSnat { get; set; }
 
         [Input("externalFixedIps")]
-        private InputList<Inputs.RouterExternalFixedIpsGetArgs>? _externalFixedIps;
+        private InputList<Inputs.RouterExternalFixedIpGetArgs>? _externalFixedIps;
 
         /// <summary>
         /// An external fixed IP for the router. This
@@ -388,9 +386,9 @@ namespace Pulumi.OpenStack.Networking
         /// has to be set in order to set this property. Changing this updates the
         /// external fixed IPs of the router.
         /// </summary>
-        public InputList<Inputs.RouterExternalFixedIpsGetArgs> ExternalFixedIps
+        public InputList<Inputs.RouterExternalFixedIpGetArgs> ExternalFixedIps
         {
-            get => _externalFixedIps ?? (_externalFixedIps = new InputList<Inputs.RouterExternalFixedIpsGetArgs>());
+            get => _externalFixedIps ?? (_externalFixedIps = new InputList<Inputs.RouterExternalFixedIpGetArgs>());
             set => _externalFixedIps = value;
         }
 
@@ -470,117 +468,5 @@ namespace Pulumi.OpenStack.Networking
         public RouterState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class RouterExternalFixedIpsArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The IP address to set on the router.
-        /// </summary>
-        [Input("ipAddress")]
-        public Input<string>? IpAddress { get; set; }
-
-        /// <summary>
-        /// Subnet in which the fixed IP belongs to.
-        /// </summary>
-        [Input("subnetId")]
-        public Input<string>? SubnetId { get; set; }
-
-        public RouterExternalFixedIpsArgs()
-        {
-        }
-    }
-
-    public sealed class RouterExternalFixedIpsGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The IP address to set on the router.
-        /// </summary>
-        [Input("ipAddress")]
-        public Input<string>? IpAddress { get; set; }
-
-        /// <summary>
-        /// Subnet in which the fixed IP belongs to.
-        /// </summary>
-        [Input("subnetId")]
-        public Input<string>? SubnetId { get; set; }
-
-        public RouterExternalFixedIpsGetArgs()
-        {
-        }
-    }
-
-    public sealed class RouterVendorOptionsArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Boolean to control whether
-        /// the Router gateway is assigned during creation or updated after creation.
-        /// </summary>
-        [Input("setRouterGatewayAfterCreate")]
-        public Input<bool>? SetRouterGatewayAfterCreate { get; set; }
-
-        public RouterVendorOptionsArgs()
-        {
-        }
-    }
-
-    public sealed class RouterVendorOptionsGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Boolean to control whether
-        /// the Router gateway is assigned during creation or updated after creation.
-        /// </summary>
-        [Input("setRouterGatewayAfterCreate")]
-        public Input<bool>? SetRouterGatewayAfterCreate { get; set; }
-
-        public RouterVendorOptionsGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class RouterExternalFixedIps
-    {
-        /// <summary>
-        /// The IP address to set on the router.
-        /// </summary>
-        public readonly string IpAddress;
-        /// <summary>
-        /// Subnet in which the fixed IP belongs to.
-        /// </summary>
-        public readonly string? SubnetId;
-
-        [OutputConstructor]
-        private RouterExternalFixedIps(
-            string ipAddress,
-            string? subnetId)
-        {
-            IpAddress = ipAddress;
-            SubnetId = subnetId;
-        }
-    }
-
-    [OutputType]
-    public sealed class RouterVendorOptions
-    {
-        /// <summary>
-        /// Boolean to control whether
-        /// the Router gateway is assigned during creation or updated after creation.
-        /// </summary>
-        public readonly bool? SetRouterGatewayAfterCreate;
-
-        [OutputConstructor]
-        private RouterVendorOptions(bool? setRouterGatewayAfterCreate)
-        {
-            SetRouterGatewayAfterCreate = setRouterGatewayAfterCreate;
-        }
-    }
     }
 }

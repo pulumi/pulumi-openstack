@@ -11,8 +11,6 @@ namespace Pulumi.OpenStack.Networking
 {
     /// <summary>
     /// Manages a V2 Neutron network resource within OpenStack.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_network_v2.html.markdown.
     /// </summary>
     public partial class Network : Pulumi.CustomResource
     {
@@ -108,7 +106,7 @@ namespace Pulumi.OpenStack.Networking
         /// An array of one or more provider segment objects.
         /// </summary>
         [Output("segments")]
-        public Output<ImmutableArray<Outputs.NetworkSegments>> Segments { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.NetworkSegment>> Segments { get; private set; } = null!;
 
         /// <summary>
         /// Specifies whether the network resource can be accessed
@@ -155,7 +153,7 @@ namespace Pulumi.OpenStack.Networking
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Network(string name, NetworkArgs? args = null, CustomResourceOptions? options = null)
-            : base("openstack:networking/network:Network", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("openstack:networking/network:Network", name, args ?? new NetworkArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -280,14 +278,14 @@ namespace Pulumi.OpenStack.Networking
         public Input<string>? Region { get; set; }
 
         [Input("segments")]
-        private InputList<Inputs.NetworkSegmentsArgs>? _segments;
+        private InputList<Inputs.NetworkSegmentArgs>? _segments;
 
         /// <summary>
         /// An array of one or more provider segment objects.
         /// </summary>
-        public InputList<Inputs.NetworkSegmentsArgs> Segments
+        public InputList<Inputs.NetworkSegmentArgs> Segments
         {
-            get => _segments ?? (_segments = new InputList<Inputs.NetworkSegmentsArgs>());
+            get => _segments ?? (_segments = new InputList<Inputs.NetworkSegmentArgs>());
             set => _segments = value;
         }
 
@@ -447,14 +445,14 @@ namespace Pulumi.OpenStack.Networking
         public Input<string>? Region { get; set; }
 
         [Input("segments")]
-        private InputList<Inputs.NetworkSegmentsGetArgs>? _segments;
+        private InputList<Inputs.NetworkSegmentGetArgs>? _segments;
 
         /// <summary>
         /// An array of one or more provider segment objects.
         /// </summary>
-        public InputList<Inputs.NetworkSegmentsGetArgs> Segments
+        public InputList<Inputs.NetworkSegmentGetArgs> Segments
         {
-            get => _segments ?? (_segments = new InputList<Inputs.NetworkSegmentsGetArgs>());
+            get => _segments ?? (_segments = new InputList<Inputs.NetworkSegmentGetArgs>());
             set => _segments = value;
         }
 
@@ -509,91 +507,5 @@ namespace Pulumi.OpenStack.Networking
         public NetworkState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class NetworkSegmentsArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The type of physical network.
-        /// </summary>
-        [Input("networkType")]
-        public Input<string>? NetworkType { get; set; }
-
-        /// <summary>
-        /// The physical network where this network is implemented.
-        /// </summary>
-        [Input("physicalNetwork")]
-        public Input<string>? PhysicalNetwork { get; set; }
-
-        /// <summary>
-        /// An isolated segment on the physical network.
-        /// </summary>
-        [Input("segmentationId")]
-        public Input<int>? SegmentationId { get; set; }
-
-        public NetworkSegmentsArgs()
-        {
-        }
-    }
-
-    public sealed class NetworkSegmentsGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The type of physical network.
-        /// </summary>
-        [Input("networkType")]
-        public Input<string>? NetworkType { get; set; }
-
-        /// <summary>
-        /// The physical network where this network is implemented.
-        /// </summary>
-        [Input("physicalNetwork")]
-        public Input<string>? PhysicalNetwork { get; set; }
-
-        /// <summary>
-        /// An isolated segment on the physical network.
-        /// </summary>
-        [Input("segmentationId")]
-        public Input<int>? SegmentationId { get; set; }
-
-        public NetworkSegmentsGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class NetworkSegments
-    {
-        /// <summary>
-        /// The type of physical network.
-        /// </summary>
-        public readonly string? NetworkType;
-        /// <summary>
-        /// The physical network where this network is implemented.
-        /// </summary>
-        public readonly string? PhysicalNetwork;
-        /// <summary>
-        /// An isolated segment on the physical network.
-        /// </summary>
-        public readonly int? SegmentationId;
-
-        [OutputConstructor]
-        private NetworkSegments(
-            string? networkType,
-            string? physicalNetwork,
-            int? segmentationId)
-        {
-            NetworkType = networkType;
-            PhysicalNetwork = physicalNetwork;
-            SegmentationId = segmentationId;
-        }
-    }
     }
 }

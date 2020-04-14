@@ -11,6 +11,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -22,7 +24,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_qos_minimum_bandwidth_rule_v2.html.markdown.
  */
-export function getQosMinimumBandwidthRule(args: GetQosMinimumBandwidthRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetQosMinimumBandwidthRuleResult> & GetQosMinimumBandwidthRuleResult {
+export function getQosMinimumBandwidthRule(args: GetQosMinimumBandwidthRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetQosMinimumBandwidthRuleResult> {
     if (!opts) {
         opts = {}
     }
@@ -30,14 +32,12 @@ export function getQosMinimumBandwidthRule(args: GetQosMinimumBandwidthRuleArgs,
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetQosMinimumBandwidthRuleResult> = pulumi.runtime.invoke("openstack:networking/getQosMinimumBandwidthRule:getQosMinimumBandwidthRule", {
+    return pulumi.runtime.invoke("openstack:networking/getQosMinimumBandwidthRule:getQosMinimumBandwidthRule", {
         "direction": args.direction,
         "minKbps": args.minKbps,
         "qosPolicyId": args.qosPolicyId,
         "region": args.region,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

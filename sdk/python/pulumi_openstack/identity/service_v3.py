@@ -37,7 +37,7 @@ class ServiceV3(pulumi.CustomResource):
 
         > **Note:** This usually requires admin privileges.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/identity_service_v3.html.markdown.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

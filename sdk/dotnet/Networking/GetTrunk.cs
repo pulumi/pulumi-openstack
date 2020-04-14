@@ -9,27 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.OpenStack.Networking
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Use this data source to get the ID of an available OpenStack trunk.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_trunk_v2.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetTrunk.InvokeAsync() instead")]
-        public static Task<GetTrunkResult> GetTrunk(GetTrunkArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTrunkResult>("openstack:networking/getTrunk:getTrunk", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetTrunk
     {
         /// <summary>
         /// Use this data source to get the ID of an available OpenStack trunk.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_trunk_v2.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetTrunkResult> InvokeAsync(GetTrunkArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTrunkResult>("openstack:networking/getTrunk:getTrunk", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetTrunkResult>("openstack:networking/getTrunk:getTrunk", args ?? new GetTrunkArgs(), options.WithVersion());
     }
+
 
     public sealed class GetTrunkArgs : Pulumi.InvokeArgs
     {
@@ -100,6 +91,7 @@ namespace Pulumi.OpenStack.Networking
         }
     }
 
+
     [OutputType]
     public sealed class GetTrunkResult
     {
@@ -109,6 +101,10 @@ namespace Pulumi.OpenStack.Networking
         /// </summary>
         public readonly ImmutableArray<string> AllTags;
         public readonly string? Description;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         public readonly string? Name;
         /// <summary>
         /// The ID of the trunk subport.
@@ -121,32 +117,40 @@ namespace Pulumi.OpenStack.Networking
         /// The set of the trunk subports. The structure of each subport is
         /// described below.
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetTrunkSubPortsResult> SubPorts;
+        public readonly ImmutableArray<Outputs.GetTrunkSubPortResult> SubPorts;
         public readonly ImmutableArray<string> Tags;
         public readonly string? TrunkId;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetTrunkResult(
             bool? adminStateUp,
+
             ImmutableArray<string> allTags,
+
             string? description,
+
+            string id,
+
             string? name,
+
             string? portId,
+
             string projectId,
+
             string region,
+
             string? status,
-            ImmutableArray<Outputs.GetTrunkSubPortsResult> subPorts,
+
+            ImmutableArray<Outputs.GetTrunkSubPortResult> subPorts,
+
             ImmutableArray<string> tags,
-            string? trunkId,
-            string id)
+
+            string? trunkId)
         {
             AdminStateUp = adminStateUp;
             AllTags = allTags;
             Description = description;
+            Id = id;
             Name = name;
             PortId = portId;
             ProjectId = projectId;
@@ -155,39 +159,6 @@ namespace Pulumi.OpenStack.Networking
             SubPorts = subPorts;
             Tags = tags;
             TrunkId = trunkId;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetTrunkSubPortsResult
-    {
-        /// <summary>
-        /// The ID of the trunk parent port.
-        /// </summary>
-        public readonly string PortId;
-        /// <summary>
-        /// The numeric id of the subport segment.
-        /// </summary>
-        public readonly int SegmentationId;
-        /// <summary>
-        /// The segmenation tecnology used, e.g., "vlan".
-        /// </summary>
-        public readonly string SegmentationType;
-
-        [OutputConstructor]
-        private GetTrunkSubPortsResult(
-            string portId,
-            int segmentationId,
-            string segmentationType)
-        {
-            PortId = portId;
-            SegmentationId = segmentationId;
-            SegmentationType = segmentationType;
-        }
-    }
     }
 }

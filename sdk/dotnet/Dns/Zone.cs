@@ -11,8 +11,6 @@ namespace Pulumi.OpenStack.Dns
 {
     /// <summary>
     /// Manages a DNS zone in the OpenStack DNS Service.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/dns_zone_v2.html.markdown.
     /// </summary>
     public partial class Zone : Pulumi.CustomResource
     {
@@ -87,7 +85,7 @@ namespace Pulumi.OpenStack.Dns
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Zone(string name, ZoneArgs? args = null, CustomResourceOptions? options = null)
-            : base("openstack:dns/zone:Zone", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("openstack:dns/zone:Zone", name, args ?? new ZoneArgs(), MakeResourceOptions(options, ""))
         {
         }
 

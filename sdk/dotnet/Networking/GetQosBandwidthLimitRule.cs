@@ -9,27 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.OpenStack.Networking
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Use this data source to get the ID of an available OpenStack QoS bandwidth limit rule.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_qos_bandwidth_limit_rule_v2.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetQosBandwidthLimitRule.InvokeAsync() instead")]
-        public static Task<GetQosBandwidthLimitRuleResult> GetQosBandwidthLimitRule(GetQosBandwidthLimitRuleArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetQosBandwidthLimitRuleResult>("openstack:networking/getQosBandwidthLimitRule:getQosBandwidthLimitRule", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetQosBandwidthLimitRule
     {
         /// <summary>
         /// Use this data source to get the ID of an available OpenStack QoS bandwidth limit rule.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_qos_bandwidth_limit_rule_v2.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetQosBandwidthLimitRuleResult> InvokeAsync(GetQosBandwidthLimitRuleArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetQosBandwidthLimitRuleResult>("openstack:networking/getQosBandwidthLimitRule:getQosBandwidthLimitRule", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetQosBandwidthLimitRuleResult>("openstack:networking/getQosBandwidthLimitRule:getQosBandwidthLimitRule", args ?? new GetQosBandwidthLimitRuleArgs(), options.WithVersion());
     }
+
 
     public sealed class GetQosBandwidthLimitRuleArgs : Pulumi.InvokeArgs
     {
@@ -64,6 +55,7 @@ namespace Pulumi.OpenStack.Networking
         }
     }
 
+
     [OutputType]
     public sealed class GetQosBandwidthLimitRuleResult
     {
@@ -71,6 +63,10 @@ namespace Pulumi.OpenStack.Networking
         /// See Argument Reference above.
         /// </summary>
         public readonly string Direction;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// See Argument Reference above.
         /// </summary>
@@ -87,26 +83,27 @@ namespace Pulumi.OpenStack.Networking
         /// See Argument Reference above.
         /// </summary>
         public readonly string Region;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetQosBandwidthLimitRuleResult(
             string direction,
+
+            string id,
+
             int maxBurstKbps,
+
             int maxKbps,
+
             string qosPolicyId,
-            string region,
-            string id)
+
+            string region)
         {
             Direction = direction;
+            Id = id;
             MaxBurstKbps = maxBurstKbps;
             MaxKbps = maxKbps;
             QosPolicyId = qosPolicyId;
             Region = region;
-            Id = id;
         }
     }
 }

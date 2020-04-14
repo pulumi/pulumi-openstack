@@ -9,27 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.OpenStack.Images
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Use this data source to get the ID of an available OpenStack image.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/images_image_v2.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetImage.InvokeAsync() instead")]
-        public static Task<GetImageResult> GetImage(GetImageArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetImageResult>("openstack:images/getImage:getImage", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetImage
     {
         /// <summary>
         /// Use this data source to get the ID of an available OpenStack image.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/images_image_v2.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetImageResult> InvokeAsync(GetImageArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetImageResult>("openstack:images/getImage:getImage", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetImageResult>("openstack:images/getImage:getImage", args ?? new GetImageArgs(), options.WithVersion());
     }
+
 
     public sealed class GetImageArgs : Pulumi.InvokeArgs
     {
@@ -123,6 +114,7 @@ namespace Pulumi.OpenStack.Images
         }
     }
 
+
     [OutputType]
     public sealed class GetImageResult
     {
@@ -143,6 +135,10 @@ namespace Pulumi.OpenStack.Images
         /// location of the image or the path to retrieve it.
         /// </summary>
         public readonly string File;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         public readonly string? MemberStatus;
         /// <summary>
         /// The metadata associated with the image.
@@ -193,45 +189,67 @@ namespace Pulumi.OpenStack.Images
         /// </summary>
         public readonly string UpdatedAt;
         public readonly string? Visibility;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetImageResult(
             string checksum,
+
             string containerFormat,
+
             string createdAt,
+
             string diskFormat,
+
             string file,
+
+            string id,
+
             string? memberStatus,
+
             ImmutableDictionary<string, object> metadata,
+
             int minDiskGb,
+
             int minRamMb,
+
             bool? mostRecent,
+
             string? name,
+
             string? owner,
+
             ImmutableDictionary<string, object>? properties,
+
             bool @protected,
+
             string region,
+
             string schema,
+
             int sizeBytes,
+
             int? sizeMax,
+
             int? sizeMin,
+
             string? sortDirection,
+
             string? sortKey,
+
             string? tag,
+
             ImmutableArray<string> tags,
+
             string updatedAt,
-            string? visibility,
-            string id)
+
+            string? visibility)
         {
             Checksum = checksum;
             ContainerFormat = containerFormat;
             CreatedAt = createdAt;
             DiskFormat = diskFormat;
             File = file;
+            Id = id;
             MemberStatus = memberStatus;
             Metadata = metadata;
             MinDiskGb = minDiskGb;
@@ -252,7 +270,6 @@ namespace Pulumi.OpenStack.Images
             Tags = tags;
             UpdatedAt = updatedAt;
             Visibility = visibility;
-            Id = id;
         }
     }
 }

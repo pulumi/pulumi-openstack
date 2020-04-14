@@ -103,7 +103,7 @@ def get_qos_policy(description=None,is_default=None,name=None,project_id=None,re
     """
     Use this data source to get the ID of an available OpenStack QoS policy.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_qos_policy_v2.html.markdown.
+
 
 
     :param str description: The human-readable description for the QoS policy.

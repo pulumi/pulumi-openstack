@@ -57,7 +57,7 @@ def get_qos_minimum_bandwidth_rule(direction=None,min_kbps=None,qos_policy_id=No
     """
     Use this data source to get the ID of an available OpenStack QoS minimum bandwidth rule.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_qos_minimum_bandwidth_rule_v2.html.markdown.
+
 
 
     :param float min_kbps: The value of a minimum kbps bandwidth.

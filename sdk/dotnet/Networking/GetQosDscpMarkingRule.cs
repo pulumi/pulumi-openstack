@@ -9,27 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.OpenStack.Networking
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Use this data source to get the ID of an available OpenStack QoS DSCP marking rule.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_qos_dscp_marking_rule_v2.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetQosDscpMarkingRule.InvokeAsync() instead")]
-        public static Task<GetQosDscpMarkingRuleResult> GetQosDscpMarkingRule(GetQosDscpMarkingRuleArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetQosDscpMarkingRuleResult>("openstack:networking/getQosDscpMarkingRule:getQosDscpMarkingRule", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetQosDscpMarkingRule
     {
         /// <summary>
         /// Use this data source to get the ID of an available OpenStack QoS DSCP marking rule.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_qos_dscp_marking_rule_v2.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetQosDscpMarkingRuleResult> InvokeAsync(GetQosDscpMarkingRuleArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetQosDscpMarkingRuleResult>("openstack:networking/getQosDscpMarkingRule:getQosDscpMarkingRule", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetQosDscpMarkingRuleResult>("openstack:networking/getQosDscpMarkingRule:getQosDscpMarkingRule", args ?? new GetQosDscpMarkingRuleArgs(), options.WithVersion());
     }
+
 
     public sealed class GetQosDscpMarkingRuleArgs : Pulumi.InvokeArgs
     {
@@ -58,6 +49,7 @@ namespace Pulumi.OpenStack.Networking
         }
     }
 
+
     [OutputType]
     public sealed class GetQosDscpMarkingRuleResult
     {
@@ -66,6 +58,10 @@ namespace Pulumi.OpenStack.Networking
         /// </summary>
         public readonly int DscpMark;
         /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// See Argument Reference above.
         /// </summary>
         public readonly string QosPolicyId;
@@ -73,22 +69,21 @@ namespace Pulumi.OpenStack.Networking
         /// See Argument Reference above.
         /// </summary>
         public readonly string Region;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetQosDscpMarkingRuleResult(
             int dscpMark,
+
+            string id,
+
             string qosPolicyId,
-            string region,
-            string id)
+
+            string region)
         {
             DscpMark = dscpMark;
+            Id = id;
             QosPolicyId = qosPolicyId;
             Region = region;
-            Id = id;
         }
     }
 }

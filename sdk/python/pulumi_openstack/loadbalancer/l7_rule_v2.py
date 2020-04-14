@@ -66,7 +66,7 @@ class L7RuleV2(pulumi.CustomResource):
         """
         Manages a V2 L7 Rule resource within OpenStack.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_l7rule_v2.html.markdown.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

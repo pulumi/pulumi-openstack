@@ -60,7 +60,7 @@ def get_keypair(name=None,region=None,opts=None):
     """
     Use this data source to get the ID and public key of an OpenStack keypair.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/compute_keypair_v2.html.markdown.
+
 
 
     :param str name: The unique name of the keypair.

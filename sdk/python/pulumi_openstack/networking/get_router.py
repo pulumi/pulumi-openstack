@@ -103,7 +103,7 @@ def get_router(admin_state_up=None,description=None,distributed=None,enable_snat
     """
     Use this data source to get the ID of an available OpenStack router.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_router_v2.html.markdown.
+
 
 
     :param bool admin_state_up: Administrative up/down status for the router (must be "true" or "false" if provided).

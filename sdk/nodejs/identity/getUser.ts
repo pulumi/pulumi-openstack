@@ -11,6 +11,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -22,7 +24,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_user_v3.html.markdown.
  */
-export function getUser(args?: GetUserArgs, opts?: pulumi.InvokeOptions): Promise<GetUserResult> & GetUserResult {
+export function getUser(args?: GetUserArgs, opts?: pulumi.InvokeOptions): Promise<GetUserResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -31,7 +33,7 @@ export function getUser(args?: GetUserArgs, opts?: pulumi.InvokeOptions): Promis
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetUserResult> = pulumi.runtime.invoke("openstack:identity/getUser:getUser", {
+    return pulumi.runtime.invoke("openstack:identity/getUser:getUser", {
         "domainId": args.domainId,
         "enabled": args.enabled,
         "idpId": args.idpId,
@@ -41,8 +43,6 @@ export function getUser(args?: GetUserArgs, opts?: pulumi.InvokeOptions): Promis
         "region": args.region,
         "uniqueId": args.uniqueId,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

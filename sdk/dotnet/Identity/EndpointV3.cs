@@ -13,8 +13,6 @@ namespace Pulumi.OpenStack.Identity
     /// Manages a V3 Endpoint resource within OpenStack Keystone.
     /// 
     /// &gt; **Note:** This usually requires admin privileges.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/identity_endpoint_v3.html.markdown.
     /// </summary>
     public partial class EndpointV3 : Pulumi.CustomResource
     {
@@ -78,7 +76,7 @@ namespace Pulumi.OpenStack.Identity
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public EndpointV3(string name, EndpointV3Args args, CustomResourceOptions? options = null)
-            : base("openstack:identity/endpointV3:EndpointV3", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("openstack:identity/endpointV3:EndpointV3", name, args ?? new EndpointV3Args(), MakeResourceOptions(options, ""))
         {
         }
 

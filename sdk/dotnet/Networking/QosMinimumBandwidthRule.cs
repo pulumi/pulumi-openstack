@@ -11,8 +11,6 @@ namespace Pulumi.OpenStack.Networking
 {
     /// <summary>
     /// Manages a V2 Neutron QoS minimum bandwidth rule resource within OpenStack.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_qos_minimum_bandwidth_rule_v2.html.markdown.
     /// </summary>
     public partial class QosMinimumBandwidthRule : Pulumi.CustomResource
     {
@@ -53,7 +51,7 @@ namespace Pulumi.OpenStack.Networking
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public QosMinimumBandwidthRule(string name, QosMinimumBandwidthRuleArgs args, CustomResourceOptions? options = null)
-            : base("openstack:networking/qosMinimumBandwidthRule:QosMinimumBandwidthRule", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("openstack:networking/qosMinimumBandwidthRule:QosMinimumBandwidthRule", name, args ?? new QosMinimumBandwidthRuleArgs(), MakeResourceOptions(options, ""))
         {
         }
 

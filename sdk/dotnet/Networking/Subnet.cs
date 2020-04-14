@@ -11,8 +11,6 @@ namespace Pulumi.OpenStack.Networking
 {
     /// <summary>
     /// Manages a V2 Neutron subnet resource within OpenStack.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_subnet_v2.html.markdown.
     /// </summary>
     public partial class Subnet : Pulumi.CustomResource
     {
@@ -32,7 +30,7 @@ namespace Pulumi.OpenStack.Networking
         /// The `allocation_pool` block is documented below.
         /// </summary>
         [Output("allocationPools")]
-        public Output<ImmutableArray<Outputs.SubnetAllocationPools>> AllocationPools { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.SubnetAllocationPool>> AllocationPools { get; private set; } = null!;
 
         /// <summary>
         /// 
@@ -91,7 +89,7 @@ namespace Pulumi.OpenStack.Networking
         /// for the existing subnet.
         /// </summary>
         [Output("hostRoutes")]
-        public Output<ImmutableArray<Outputs.SubnetHostRoutes>> HostRoutes { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.SubnetHostRoute>> HostRoutes { get; private set; } = null!;
 
         /// <summary>
         /// IP version, either 4 (default) or 6. Changing this creates a
@@ -187,7 +185,7 @@ namespace Pulumi.OpenStack.Networking
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Subnet(string name, SubnetArgs args, CustomResourceOptions? options = null)
-            : base("openstack:networking/subnet:Subnet", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("openstack:networking/subnet:Subnet", name, args ?? new SubnetArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -225,7 +223,7 @@ namespace Pulumi.OpenStack.Networking
     public sealed class SubnetArgs : Pulumi.ResourceArgs
     {
         [Input("allocationPools")]
-        private InputList<Inputs.SubnetAllocationPoolsArgs>? _allocationPools;
+        private InputList<Inputs.SubnetAllocationPoolArgs>? _allocationPools;
 
         /// <summary>
         /// A block declaring the start and end range of
@@ -235,9 +233,9 @@ namespace Pulumi.OpenStack.Networking
         /// must be from the same CIDR that the subnet is part of.
         /// The `allocation_pool` block is documented below.
         /// </summary>
-        public InputList<Inputs.SubnetAllocationPoolsArgs> AllocationPools
+        public InputList<Inputs.SubnetAllocationPoolArgs> AllocationPools
         {
-            get => _allocationPools ?? (_allocationPools = new InputList<Inputs.SubnetAllocationPoolsArgs>());
+            get => _allocationPools ?? (_allocationPools = new InputList<Inputs.SubnetAllocationPoolArgs>());
             set => _allocationPools = value;
         }
 
@@ -304,7 +302,7 @@ namespace Pulumi.OpenStack.Networking
         public Input<string>? GatewayIp { get; set; }
 
         [Input("hostRoutes")]
-        private InputList<Inputs.SubnetHostRoutesArgs>? _hostRoutes;
+        private InputList<Inputs.SubnetHostRouteArgs>? _hostRoutes;
 
         /// <summary>
         /// (**Deprecated** - use `openstack.networking.SubnetRoute`
@@ -314,9 +312,9 @@ namespace Pulumi.OpenStack.Networking
         /// for the existing subnet.
         /// </summary>
         [Obsolete(@"Use openstack_networking_subnet_route_v2 instead")]
-        public InputList<Inputs.SubnetHostRoutesArgs> HostRoutes
+        public InputList<Inputs.SubnetHostRouteArgs> HostRoutes
         {
-            get => _hostRoutes ?? (_hostRoutes = new InputList<Inputs.SubnetHostRoutesArgs>());
+            get => _hostRoutes ?? (_hostRoutes = new InputList<Inputs.SubnetHostRouteArgs>());
             set => _hostRoutes = value;
         }
 
@@ -438,7 +436,7 @@ namespace Pulumi.OpenStack.Networking
         }
 
         [Input("allocationPools")]
-        private InputList<Inputs.SubnetAllocationPoolsGetArgs>? _allocationPools;
+        private InputList<Inputs.SubnetAllocationPoolGetArgs>? _allocationPools;
 
         /// <summary>
         /// A block declaring the start and end range of
@@ -448,9 +446,9 @@ namespace Pulumi.OpenStack.Networking
         /// must be from the same CIDR that the subnet is part of.
         /// The `allocation_pool` block is documented below.
         /// </summary>
-        public InputList<Inputs.SubnetAllocationPoolsGetArgs> AllocationPools
+        public InputList<Inputs.SubnetAllocationPoolGetArgs> AllocationPools
         {
-            get => _allocationPools ?? (_allocationPools = new InputList<Inputs.SubnetAllocationPoolsGetArgs>());
+            get => _allocationPools ?? (_allocationPools = new InputList<Inputs.SubnetAllocationPoolGetArgs>());
             set => _allocationPools = value;
         }
 
@@ -517,7 +515,7 @@ namespace Pulumi.OpenStack.Networking
         public Input<string>? GatewayIp { get; set; }
 
         [Input("hostRoutes")]
-        private InputList<Inputs.SubnetHostRoutesGetArgs>? _hostRoutes;
+        private InputList<Inputs.SubnetHostRouteGetArgs>? _hostRoutes;
 
         /// <summary>
         /// (**Deprecated** - use `openstack.networking.SubnetRoute`
@@ -527,9 +525,9 @@ namespace Pulumi.OpenStack.Networking
         /// for the existing subnet.
         /// </summary>
         [Obsolete(@"Use openstack_networking_subnet_route_v2 instead")]
-        public InputList<Inputs.SubnetHostRoutesGetArgs> HostRoutes
+        public InputList<Inputs.SubnetHostRouteGetArgs> HostRoutes
         {
-            get => _hostRoutes ?? (_hostRoutes = new InputList<Inputs.SubnetHostRoutesGetArgs>());
+            get => _hostRoutes ?? (_hostRoutes = new InputList<Inputs.SubnetHostRouteGetArgs>());
             set => _hostRoutes = value;
         }
 
@@ -633,193 +631,5 @@ namespace Pulumi.OpenStack.Networking
         public SubnetState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class SubnetAllocationPoolsArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The ending address.
-        /// </summary>
-        [Input("end", required: true)]
-        public Input<string> End { get; set; } = null!;
-
-        /// <summary>
-        /// The starting address.
-        /// </summary>
-        [Input("start", required: true)]
-        public Input<string> Start { get; set; } = null!;
-
-        public SubnetAllocationPoolsArgs()
-        {
-        }
-    }
-
-    public sealed class SubnetAllocationPoolsCollectionArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The ending address.
-        /// </summary>
-        [Input("end", required: true)]
-        public Input<string> End { get; set; } = null!;
-
-        /// <summary>
-        /// The starting address.
-        /// </summary>
-        [Input("start", required: true)]
-        public Input<string> Start { get; set; } = null!;
-
-        public SubnetAllocationPoolsCollectionArgs()
-        {
-        }
-    }
-
-    public sealed class SubnetAllocationPoolsCollectionGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The ending address.
-        /// </summary>
-        [Input("end", required: true)]
-        public Input<string> End { get; set; } = null!;
-
-        /// <summary>
-        /// The starting address.
-        /// </summary>
-        [Input("start", required: true)]
-        public Input<string> Start { get; set; } = null!;
-
-        public SubnetAllocationPoolsCollectionGetArgs()
-        {
-        }
-    }
-
-    public sealed class SubnetAllocationPoolsGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The ending address.
-        /// </summary>
-        [Input("end", required: true)]
-        public Input<string> End { get; set; } = null!;
-
-        /// <summary>
-        /// The starting address.
-        /// </summary>
-        [Input("start", required: true)]
-        public Input<string> Start { get; set; } = null!;
-
-        public SubnetAllocationPoolsGetArgs()
-        {
-        }
-    }
-
-    public sealed class SubnetHostRoutesArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The destination CIDR.
-        /// </summary>
-        [Input("destinationCidr", required: true)]
-        public Input<string> DestinationCidr { get; set; } = null!;
-
-        /// <summary>
-        /// The next hop in the route.
-        /// </summary>
-        [Input("nextHop", required: true)]
-        public Input<string> NextHop { get; set; } = null!;
-
-        public SubnetHostRoutesArgs()
-        {
-        }
-    }
-
-    public sealed class SubnetHostRoutesGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The destination CIDR.
-        /// </summary>
-        [Input("destinationCidr", required: true)]
-        public Input<string> DestinationCidr { get; set; } = null!;
-
-        /// <summary>
-        /// The next hop in the route.
-        /// </summary>
-        [Input("nextHop", required: true)]
-        public Input<string> NextHop { get; set; } = null!;
-
-        public SubnetHostRoutesGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class SubnetAllocationPools
-    {
-        /// <summary>
-        /// The ending address.
-        /// </summary>
-        public readonly string End;
-        /// <summary>
-        /// The starting address.
-        /// </summary>
-        public readonly string Start;
-
-        [OutputConstructor]
-        private SubnetAllocationPools(
-            string end,
-            string start)
-        {
-            End = end;
-            Start = start;
-        }
-    }
-
-    [OutputType]
-    public sealed class SubnetAllocationPoolsCollection
-    {
-        /// <summary>
-        /// The ending address.
-        /// </summary>
-        public readonly string End;
-        /// <summary>
-        /// The starting address.
-        /// </summary>
-        public readonly string Start;
-
-        [OutputConstructor]
-        private SubnetAllocationPoolsCollection(
-            string end,
-            string start)
-        {
-            End = end;
-            Start = start;
-        }
-    }
-
-    [OutputType]
-    public sealed class SubnetHostRoutes
-    {
-        /// <summary>
-        /// The destination CIDR.
-        /// </summary>
-        public readonly string DestinationCidr;
-        /// <summary>
-        /// The next hop in the route.
-        /// </summary>
-        public readonly string NextHop;
-
-        [OutputConstructor]
-        private SubnetHostRoutes(
-            string destinationCidr,
-            string nextHop)
-        {
-            DestinationCidr = destinationCidr;
-            NextHop = nextHop;
-        }
-    }
     }
 }

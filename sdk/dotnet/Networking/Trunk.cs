@@ -11,8 +11,6 @@ namespace Pulumi.OpenStack.Networking
 {
     /// <summary>
     /// Manages a networking V2 trunk resource within OpenStack.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_trunk_v2.html.markdown.
     /// </summary>
     public partial class Trunk : Pulumi.CustomResource
     {
@@ -65,7 +63,7 @@ namespace Pulumi.OpenStack.Networking
         /// The structure of each subport is described below.
         /// </summary>
         [Output("subPorts")]
-        public Output<ImmutableArray<Outputs.TrunkSubPorts>> SubPorts { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.TrunkSubPort>> SubPorts { get; private set; } = null!;
 
         /// <summary>
         /// A set of string tags for the port.
@@ -89,7 +87,7 @@ namespace Pulumi.OpenStack.Networking
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Trunk(string name, TrunkArgs args, CustomResourceOptions? options = null)
-            : base("openstack:networking/trunk:Trunk", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("openstack:networking/trunk:Trunk", name, args ?? new TrunkArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -164,15 +162,15 @@ namespace Pulumi.OpenStack.Networking
         public Input<string>? Region { get; set; }
 
         [Input("subPorts")]
-        private InputList<Inputs.TrunkSubPortsArgs>? _subPorts;
+        private InputList<Inputs.TrunkSubPortArgs>? _subPorts;
 
         /// <summary>
         /// The set of ports that will be made subports of the trunk.
         /// The structure of each subport is described below.
         /// </summary>
-        public InputList<Inputs.TrunkSubPortsArgs> SubPorts
+        public InputList<Inputs.TrunkSubPortArgs> SubPorts
         {
-            get => _subPorts ?? (_subPorts = new InputList<Inputs.TrunkSubPortsArgs>());
+            get => _subPorts ?? (_subPorts = new InputList<Inputs.TrunkSubPortArgs>());
             set => _subPorts = value;
         }
 
@@ -253,15 +251,15 @@ namespace Pulumi.OpenStack.Networking
         public Input<string>? Region { get; set; }
 
         [Input("subPorts")]
-        private InputList<Inputs.TrunkSubPortsGetArgs>? _subPorts;
+        private InputList<Inputs.TrunkSubPortGetArgs>? _subPorts;
 
         /// <summary>
         /// The set of ports that will be made subports of the trunk.
         /// The structure of each subport is described below.
         /// </summary>
-        public InputList<Inputs.TrunkSubPortsGetArgs> SubPorts
+        public InputList<Inputs.TrunkSubPortGetArgs> SubPorts
         {
-            get => _subPorts ?? (_subPorts = new InputList<Inputs.TrunkSubPortsGetArgs>());
+            get => _subPorts ?? (_subPorts = new InputList<Inputs.TrunkSubPortGetArgs>());
             set => _subPorts = value;
         }
 
@@ -287,91 +285,5 @@ namespace Pulumi.OpenStack.Networking
         public TrunkState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class TrunkSubPortsArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The ID of the port to be made a subport of the trunk.
-        /// </summary>
-        [Input("portId", required: true)]
-        public Input<string> PortId { get; set; } = null!;
-
-        /// <summary>
-        /// The numeric id of the subport segment.
-        /// </summary>
-        [Input("segmentationId", required: true)]
-        public Input<int> SegmentationId { get; set; } = null!;
-
-        /// <summary>
-        /// The segmentation technology to use, e.g., "vlan".
-        /// </summary>
-        [Input("segmentationType", required: true)]
-        public Input<string> SegmentationType { get; set; } = null!;
-
-        public TrunkSubPortsArgs()
-        {
-        }
-    }
-
-    public sealed class TrunkSubPortsGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The ID of the port to be made a subport of the trunk.
-        /// </summary>
-        [Input("portId", required: true)]
-        public Input<string> PortId { get; set; } = null!;
-
-        /// <summary>
-        /// The numeric id of the subport segment.
-        /// </summary>
-        [Input("segmentationId", required: true)]
-        public Input<int> SegmentationId { get; set; } = null!;
-
-        /// <summary>
-        /// The segmentation technology to use, e.g., "vlan".
-        /// </summary>
-        [Input("segmentationType", required: true)]
-        public Input<string> SegmentationType { get; set; } = null!;
-
-        public TrunkSubPortsGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class TrunkSubPorts
-    {
-        /// <summary>
-        /// The ID of the port to be made a subport of the trunk.
-        /// </summary>
-        public readonly string PortId;
-        /// <summary>
-        /// The numeric id of the subport segment.
-        /// </summary>
-        public readonly int SegmentationId;
-        /// <summary>
-        /// The segmentation technology to use, e.g., "vlan".
-        /// </summary>
-        public readonly string SegmentationType;
-
-        [OutputConstructor]
-        private TrunkSubPorts(
-            string portId,
-            int segmentationId,
-            string segmentationType)
-        {
-            PortId = portId;
-            SegmentationId = segmentationId;
-            SegmentationType = segmentationType;
-        }
-    }
     }
 }

@@ -14,8 +14,6 @@ namespace Pulumi.OpenStack
     /// settings, however an explicit `Provider` instance may be created and passed during resource
     /// construction to achieve fine-grained programmatic control over provider settings. See the
     /// [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/index.html.markdown.
     /// </summary>
     public partial class Provider : Pulumi.ProviderResource
     {
@@ -27,7 +25,7 @@ namespace Pulumi.OpenStack
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Provider(string name, ProviderArgs? args = null, CustomResourceOptions? options = null)
-            : base("openstack", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("openstack", name, args ?? new ProviderArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -47,9 +45,9 @@ namespace Pulumi.OpenStack
     public sealed class ProviderArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If set to `true`, OpenStack authorization will be perfomed automatically, if the initial auth token get
-        /// expired. This is useful, when the token TTL is low or the overall Terraform provider execution time expected
-        /// to be greater than the initial token TTL.
+        /// If set to `true`, OpenStack authorization will be perfomed automatically, if the initial auth token get expired. This is
+        /// useful, when the token TTL is low or the overall Terraform provider execution time expected to be greater than the
+        /// initial token TTL.
         /// </summary>
         [Input("allowReauth", json: true)]
         public Input<bool>? AllowReauth { get; set; }
@@ -109,8 +107,7 @@ namespace Pulumi.OpenStack
         public Input<bool>? DelayedAuth { get; set; }
 
         /// <summary>
-        /// If set to `true`, the HTTP `Cache-Control: no-cache` header will not be added by default to all API
-        /// requests.
+        /// If set to `true`, the HTTP `Cache-Control: no-cache` header will not be added by default to all API requests.
         /// </summary>
         [Input("disableNoCacheHeader", json: true)]
         public Input<bool>? DisableNoCacheHeader { get; set; }
@@ -209,8 +206,7 @@ namespace Pulumi.OpenStack
         public Input<string>? Token { get; set; }
 
         /// <summary>
-        /// If set to `true`, API requests will go the Load Balancer service (Octavia) instead of the Networking service
-        /// (Neutron).
+        /// If set to `true`, API requests will go the Load Balancer service (Octavia) instead of the Networking service (Neutron).
         /// </summary>
         [Input("useOctavia", json: true)]
         public Input<bool>? UseOctavia { get; set; }

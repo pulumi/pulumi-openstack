@@ -58,11 +58,10 @@ class PoolV1(pulumi.CustomResource):
         """
         Manages a V1 load balancer pool resource within OpenStack.
 
+
         ## Notes
 
         The `member` block is deprecated in favor of the `loadbalancer.MemberV1` resource.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_pool_v1.html.markdown.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

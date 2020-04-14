@@ -12,6 +12,7 @@ namespace Pulumi.OpenStack.Networking
     /// <summary>
     /// Manages a V2 port resource within OpenStack.
     /// 
+    /// 
     /// ## Notes
     /// 
     /// ### Ports and Instances
@@ -19,8 +20,6 @@ namespace Pulumi.OpenStack.Networking
     /// There are some notes to consider when connecting Instances to networks using
     /// Ports. Please see the `openstack.compute.Instance` documentation for further
     /// documentation.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_port_v2.html.markdown.
     /// </summary>
     public partial class Port : Pulumi.CustomResource
     {
@@ -59,7 +58,7 @@ namespace Pulumi.OpenStack.Networking
         /// below.
         /// </summary>
         [Output("allowedAddressPairs")]
-        public Output<ImmutableArray<Outputs.PortAllowedAddressPairs>> AllowedAddressPairs { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.PortAllowedAddressPair>> AllowedAddressPairs { get; private set; } = null!;
 
         /// <summary>
         /// The port binding allows to specify binding information
@@ -108,14 +107,14 @@ namespace Pulumi.OpenStack.Networking
         /// times.
         /// </summary>
         [Output("extraDhcpOptions")]
-        public Output<ImmutableArray<Outputs.PortExtraDhcpOptions>> ExtraDhcpOptions { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.PortExtraDhcpOption>> ExtraDhcpOptions { get; private set; } = null!;
 
         /// <summary>
         /// An array of desired IPs for
         /// this port. The structure is described below.
         /// </summary>
         [Output("fixedIps")]
-        public Output<ImmutableArray<Outputs.PortFixedIps>> FixedIps { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.PortFixedIp>> FixedIps { get; private set; } = null!;
 
         /// <summary>
         /// The additional MAC address.
@@ -217,7 +216,7 @@ namespace Pulumi.OpenStack.Networking
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Port(string name, PortArgs args, CustomResourceOptions? options = null)
-            : base("openstack:networking/port:Port", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("openstack:networking/port:Port", name, args ?? new PortArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -263,16 +262,16 @@ namespace Pulumi.OpenStack.Networking
         public Input<bool>? AdminStateUp { get; set; }
 
         [Input("allowedAddressPairs")]
-        private InputList<Inputs.PortAllowedAddressPairsArgs>? _allowedAddressPairs;
+        private InputList<Inputs.PortAllowedAddressPairArgs>? _allowedAddressPairs;
 
         /// <summary>
         /// An IP/MAC Address pair of additional IP
         /// addresses that can be active on this port. The structure is described
         /// below.
         /// </summary>
-        public InputList<Inputs.PortAllowedAddressPairsArgs> AllowedAddressPairs
+        public InputList<Inputs.PortAllowedAddressPairArgs> AllowedAddressPairs
         {
-            get => _allowedAddressPairs ?? (_allowedAddressPairs = new InputList<Inputs.PortAllowedAddressPairsArgs>());
+            get => _allowedAddressPairs ?? (_allowedAddressPairs = new InputList<Inputs.PortAllowedAddressPairArgs>());
             set => _allowedAddressPairs = value;
         }
 
@@ -312,29 +311,29 @@ namespace Pulumi.OpenStack.Networking
         public Input<string>? DnsName { get; set; }
 
         [Input("extraDhcpOptions")]
-        private InputList<Inputs.PortExtraDhcpOptionsArgs>? _extraDhcpOptions;
+        private InputList<Inputs.PortExtraDhcpOptionArgs>? _extraDhcpOptions;
 
         /// <summary>
         /// An extra DHCP option that needs to be configured
         /// on the port. The structure is described below. Can be specified multiple
         /// times.
         /// </summary>
-        public InputList<Inputs.PortExtraDhcpOptionsArgs> ExtraDhcpOptions
+        public InputList<Inputs.PortExtraDhcpOptionArgs> ExtraDhcpOptions
         {
-            get => _extraDhcpOptions ?? (_extraDhcpOptions = new InputList<Inputs.PortExtraDhcpOptionsArgs>());
+            get => _extraDhcpOptions ?? (_extraDhcpOptions = new InputList<Inputs.PortExtraDhcpOptionArgs>());
             set => _extraDhcpOptions = value;
         }
 
         [Input("fixedIps")]
-        private InputList<Inputs.PortFixedIpsArgs>? _fixedIps;
+        private InputList<Inputs.PortFixedIpArgs>? _fixedIps;
 
         /// <summary>
         /// An array of desired IPs for
         /// this port. The structure is described below.
         /// </summary>
-        public InputList<Inputs.PortFixedIpsArgs> FixedIps
+        public InputList<Inputs.PortFixedIpArgs> FixedIps
         {
-            get => _fixedIps ?? (_fixedIps = new InputList<Inputs.PortFixedIpsArgs>());
+            get => _fixedIps ?? (_fixedIps = new InputList<Inputs.PortFixedIpArgs>());
             set => _fixedIps = value;
         }
 
@@ -502,16 +501,16 @@ namespace Pulumi.OpenStack.Networking
         }
 
         [Input("allowedAddressPairs")]
-        private InputList<Inputs.PortAllowedAddressPairsGetArgs>? _allowedAddressPairs;
+        private InputList<Inputs.PortAllowedAddressPairGetArgs>? _allowedAddressPairs;
 
         /// <summary>
         /// An IP/MAC Address pair of additional IP
         /// addresses that can be active on this port. The structure is described
         /// below.
         /// </summary>
-        public InputList<Inputs.PortAllowedAddressPairsGetArgs> AllowedAddressPairs
+        public InputList<Inputs.PortAllowedAddressPairGetArgs> AllowedAddressPairs
         {
-            get => _allowedAddressPairs ?? (_allowedAddressPairs = new InputList<Inputs.PortAllowedAddressPairsGetArgs>());
+            get => _allowedAddressPairs ?? (_allowedAddressPairs = new InputList<Inputs.PortAllowedAddressPairGetArgs>());
             set => _allowedAddressPairs = value;
         }
 
@@ -563,29 +562,29 @@ namespace Pulumi.OpenStack.Networking
         public Input<string>? DnsName { get; set; }
 
         [Input("extraDhcpOptions")]
-        private InputList<Inputs.PortExtraDhcpOptionsGetArgs>? _extraDhcpOptions;
+        private InputList<Inputs.PortExtraDhcpOptionGetArgs>? _extraDhcpOptions;
 
         /// <summary>
         /// An extra DHCP option that needs to be configured
         /// on the port. The structure is described below. Can be specified multiple
         /// times.
         /// </summary>
-        public InputList<Inputs.PortExtraDhcpOptionsGetArgs> ExtraDhcpOptions
+        public InputList<Inputs.PortExtraDhcpOptionGetArgs> ExtraDhcpOptions
         {
-            get => _extraDhcpOptions ?? (_extraDhcpOptions = new InputList<Inputs.PortExtraDhcpOptionsGetArgs>());
+            get => _extraDhcpOptions ?? (_extraDhcpOptions = new InputList<Inputs.PortExtraDhcpOptionGetArgs>());
             set => _extraDhcpOptions = value;
         }
 
         [Input("fixedIps")]
-        private InputList<Inputs.PortFixedIpsGetArgs>? _fixedIps;
+        private InputList<Inputs.PortFixedIpGetArgs>? _fixedIps;
 
         /// <summary>
         /// An array of desired IPs for
         /// this port. The structure is described below.
         /// </summary>
-        public InputList<Inputs.PortFixedIpsGetArgs> FixedIps
+        public InputList<Inputs.PortFixedIpGetArgs> FixedIps
         {
-            get => _fixedIps ?? (_fixedIps = new InputList<Inputs.PortFixedIpsGetArgs>());
+            get => _fixedIps ?? (_fixedIps = new InputList<Inputs.PortFixedIpGetArgs>());
             set => _fixedIps = value;
         }
 
@@ -701,352 +700,5 @@ namespace Pulumi.OpenStack.Networking
         public PortState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class PortAllowedAddressPairsArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The additional IP address.
-        /// </summary>
-        [Input("ipAddress", required: true)]
-        public Input<string> IpAddress { get; set; } = null!;
-
-        /// <summary>
-        /// The additional MAC address.
-        /// </summary>
-        [Input("macAddress")]
-        public Input<string>? MacAddress { get; set; }
-
-        public PortAllowedAddressPairsArgs()
-        {
-        }
-    }
-
-    public sealed class PortAllowedAddressPairsGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The additional IP address.
-        /// </summary>
-        [Input("ipAddress", required: true)]
-        public Input<string> IpAddress { get; set; } = null!;
-
-        /// <summary>
-        /// The additional MAC address.
-        /// </summary>
-        [Input("macAddress")]
-        public Input<string>? MacAddress { get; set; }
-
-        public PortAllowedAddressPairsGetArgs()
-        {
-        }
-    }
-
-    public sealed class PortBindingArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The ID of the host to allocate port on.
-        /// </summary>
-        [Input("hostId")]
-        public Input<string>? HostId { get; set; }
-
-        /// <summary>
-        /// Custom data to be passed as `binding:profile`. Data
-        /// must be passed as JSON.
-        /// </summary>
-        [Input("profile")]
-        public Input<string>? Profile { get; set; }
-
-        [Input("vifDetails")]
-        private InputMap<object>? _vifDetails;
-
-        /// <summary>
-        /// A map of JSON strings containing additional
-        /// details for this specific binding.
-        /// </summary>
-        public InputMap<object> VifDetails
-        {
-            get => _vifDetails ?? (_vifDetails = new InputMap<object>());
-            set => _vifDetails = value;
-        }
-
-        /// <summary>
-        /// The VNIC type of the port binding.
-        /// </summary>
-        [Input("vifType")]
-        public Input<string>? VifType { get; set; }
-
-        /// <summary>
-        /// VNIC type for the port. Can either be `direct`,
-        /// `direct-physical`, `macvtap`, `normal`, `baremetal` or `virtio-forwarder`.
-        /// Default value is `normal`.
-        /// </summary>
-        [Input("vnicType")]
-        public Input<string>? VnicType { get; set; }
-
-        public PortBindingArgs()
-        {
-        }
-    }
-
-    public sealed class PortBindingGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The ID of the host to allocate port on.
-        /// </summary>
-        [Input("hostId")]
-        public Input<string>? HostId { get; set; }
-
-        /// <summary>
-        /// Custom data to be passed as `binding:profile`. Data
-        /// must be passed as JSON.
-        /// </summary>
-        [Input("profile")]
-        public Input<string>? Profile { get; set; }
-
-        [Input("vifDetails")]
-        private InputMap<object>? _vifDetails;
-
-        /// <summary>
-        /// A map of JSON strings containing additional
-        /// details for this specific binding.
-        /// </summary>
-        public InputMap<object> VifDetails
-        {
-            get => _vifDetails ?? (_vifDetails = new InputMap<object>());
-            set => _vifDetails = value;
-        }
-
-        /// <summary>
-        /// The VNIC type of the port binding.
-        /// </summary>
-        [Input("vifType")]
-        public Input<string>? VifType { get; set; }
-
-        /// <summary>
-        /// VNIC type for the port. Can either be `direct`,
-        /// `direct-physical`, `macvtap`, `normal`, `baremetal` or `virtio-forwarder`.
-        /// Default value is `normal`.
-        /// </summary>
-        [Input("vnicType")]
-        public Input<string>? VnicType { get; set; }
-
-        public PortBindingGetArgs()
-        {
-        }
-    }
-
-    public sealed class PortExtraDhcpOptionsArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// IP protocol version. Defaults to 4.
-        /// </summary>
-        [Input("ipVersion")]
-        public Input<int>? IpVersion { get; set; }
-
-        /// <summary>
-        /// Name of the DHCP option.
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        /// <summary>
-        /// Value of the DHCP option.
-        /// </summary>
-        [Input("value", required: true)]
-        public Input<string> Value { get; set; } = null!;
-
-        public PortExtraDhcpOptionsArgs()
-        {
-        }
-    }
-
-    public sealed class PortExtraDhcpOptionsGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// IP protocol version. Defaults to 4.
-        /// </summary>
-        [Input("ipVersion")]
-        public Input<int>? IpVersion { get; set; }
-
-        /// <summary>
-        /// Name of the DHCP option.
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        /// <summary>
-        /// Value of the DHCP option.
-        /// </summary>
-        [Input("value", required: true)]
-        public Input<string> Value { get; set; } = null!;
-
-        public PortExtraDhcpOptionsGetArgs()
-        {
-        }
-    }
-
-    public sealed class PortFixedIpsArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The additional IP address.
-        /// </summary>
-        [Input("ipAddress")]
-        public Input<string>? IpAddress { get; set; }
-
-        /// <summary>
-        /// Subnet in which to allocate IP address for
-        /// this port.
-        /// </summary>
-        [Input("subnetId", required: true)]
-        public Input<string> SubnetId { get; set; } = null!;
-
-        public PortFixedIpsArgs()
-        {
-        }
-    }
-
-    public sealed class PortFixedIpsGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The additional IP address.
-        /// </summary>
-        [Input("ipAddress")]
-        public Input<string>? IpAddress { get; set; }
-
-        /// <summary>
-        /// Subnet in which to allocate IP address for
-        /// this port.
-        /// </summary>
-        [Input("subnetId", required: true)]
-        public Input<string> SubnetId { get; set; } = null!;
-
-        public PortFixedIpsGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class PortAllowedAddressPairs
-    {
-        /// <summary>
-        /// The additional IP address.
-        /// </summary>
-        public readonly string IpAddress;
-        /// <summary>
-        /// The additional MAC address.
-        /// </summary>
-        public readonly string? MacAddress;
-
-        [OutputConstructor]
-        private PortAllowedAddressPairs(
-            string ipAddress,
-            string? macAddress)
-        {
-            IpAddress = ipAddress;
-            MacAddress = macAddress;
-        }
-    }
-
-    [OutputType]
-    public sealed class PortBinding
-    {
-        /// <summary>
-        /// The ID of the host to allocate port on.
-        /// </summary>
-        public readonly string? HostId;
-        /// <summary>
-        /// Custom data to be passed as `binding:profile`. Data
-        /// must be passed as JSON.
-        /// </summary>
-        public readonly string? Profile;
-        /// <summary>
-        /// A map of JSON strings containing additional
-        /// details for this specific binding.
-        /// </summary>
-        public readonly ImmutableDictionary<string, object> VifDetails;
-        /// <summary>
-        /// The VNIC type of the port binding.
-        /// </summary>
-        public readonly string VifType;
-        /// <summary>
-        /// VNIC type for the port. Can either be `direct`,
-        /// `direct-physical`, `macvtap`, `normal`, `baremetal` or `virtio-forwarder`.
-        /// Default value is `normal`.
-        /// </summary>
-        public readonly string? VnicType;
-
-        [OutputConstructor]
-        private PortBinding(
-            string? hostId,
-            string? profile,
-            ImmutableDictionary<string, object> vifDetails,
-            string vifType,
-            string? vnicType)
-        {
-            HostId = hostId;
-            Profile = profile;
-            VifDetails = vifDetails;
-            VifType = vifType;
-            VnicType = vnicType;
-        }
-    }
-
-    [OutputType]
-    public sealed class PortExtraDhcpOptions
-    {
-        /// <summary>
-        /// IP protocol version. Defaults to 4.
-        /// </summary>
-        public readonly int? IpVersion;
-        /// <summary>
-        /// Name of the DHCP option.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// Value of the DHCP option.
-        /// </summary>
-        public readonly string Value;
-
-        [OutputConstructor]
-        private PortExtraDhcpOptions(
-            int? ipVersion,
-            string name,
-            string value)
-        {
-            IpVersion = ipVersion;
-            Name = name;
-            Value = value;
-        }
-    }
-
-    [OutputType]
-    public sealed class PortFixedIps
-    {
-        /// <summary>
-        /// The additional IP address.
-        /// </summary>
-        public readonly string? IpAddress;
-        /// <summary>
-        /// Subnet in which to allocate IP address for
-        /// this port.
-        /// </summary>
-        public readonly string SubnetId;
-
-        [OutputConstructor]
-        private PortFixedIps(
-            string? ipAddress,
-            string subnetId)
-        {
-            IpAddress = ipAddress;
-            SubnetId = subnetId;
-        }
-    }
     }
 }

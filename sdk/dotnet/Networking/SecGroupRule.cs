@@ -13,8 +13,6 @@ namespace Pulumi.OpenStack.Networking
     /// Manages a V2 neutron security group rule resource within OpenStack.
     /// Unlike Nova security groups, neutron separates the group from the rules
     /// and also allows an admin to target a specific tenant_id.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_secgroup_rule_v2.html.markdown.
     /// </summary>
     public partial class SecGroupRule : Pulumi.CustomResource
     {
@@ -130,7 +128,7 @@ namespace Pulumi.OpenStack.Networking
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public SecGroupRule(string name, SecGroupRuleArgs args, CustomResourceOptions? options = null)
-            : base("openstack:networking/secGroupRule:SecGroupRule", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("openstack:networking/secGroupRule:SecGroupRule", name, args ?? new SecGroupRuleArgs(), MakeResourceOptions(options, ""))
         {
         }
 

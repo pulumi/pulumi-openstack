@@ -4,8 +4,8 @@
 package config
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/go/pulumi/config"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi/config"
 )
 
 // If set to `true`, OpenStack authorization will be perfomed automatically, if the initial auth token get expired. This is
@@ -16,10 +16,7 @@ func GetAllowReauth(ctx *pulumi.Context) bool {
 	if err == nil {
 		return v
 	}
-	if dv, ok := getEnvOrDefault(false, parseEnvBool, "OS_ALLOW_REAUTH").(bool); ok {
-		return dv
-	}
-	return v
+	return getEnvOrDefault(false, parseEnvBool, "OS_ALLOW_REAUTH").(bool)
 }
 
 // Application Credential ID to login with.
@@ -28,10 +25,7 @@ func GetApplicationCredentialId(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	if dv, ok := getEnvOrDefault("", nil, "OS_APPLICATION_CREDENTIAL_ID").(string); ok {
-		return dv
-	}
-	return v
+	return getEnvOrDefault("", nil, "OS_APPLICATION_CREDENTIAL_ID").(string)
 }
 
 // Application Credential name to login with.
@@ -40,10 +34,7 @@ func GetApplicationCredentialName(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	if dv, ok := getEnvOrDefault("", nil, "OS_APPLICATION_CREDENTIAL_NAME").(string); ok {
-		return dv
-	}
-	return v
+	return getEnvOrDefault("", nil, "OS_APPLICATION_CREDENTIAL_NAME").(string)
 }
 
 // Application Credential secret to login with.
@@ -52,10 +43,7 @@ func GetApplicationCredentialSecret(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	if dv, ok := getEnvOrDefault("", nil, "OS_APPLICATION_CREDENTIAL_SECRET").(string); ok {
-		return dv
-	}
-	return v
+	return getEnvOrDefault("", nil, "OS_APPLICATION_CREDENTIAL_SECRET").(string)
 }
 
 // The Identity authentication URL.
@@ -64,10 +52,7 @@ func GetAuthUrl(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	if dv, ok := getEnvOrDefault("", nil, "OS_AUTH_URL").(string); ok {
-		return dv
-	}
-	return v
+	return getEnvOrDefault("", nil, "OS_AUTH_URL").(string)
 }
 
 // A Custom CA certificate.
@@ -76,10 +61,7 @@ func GetCacertFile(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	if dv, ok := getEnvOrDefault("", nil, "OS_CACERT").(string); ok {
-		return dv
-	}
-	return v
+	return getEnvOrDefault("", nil, "OS_CACERT").(string)
 }
 
 // A client certificate to authenticate with.
@@ -88,10 +70,7 @@ func GetCert(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	if dv, ok := getEnvOrDefault("", nil, "OS_CERT").(string); ok {
-		return dv
-	}
-	return v
+	return getEnvOrDefault("", nil, "OS_CERT").(string)
 }
 
 // An entry in a `clouds.yaml` file to use.
@@ -100,10 +79,7 @@ func GetCloud(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	if dv, ok := getEnvOrDefault("", nil, "OS_CLOUD").(string); ok {
-		return dv
-	}
-	return v
+	return getEnvOrDefault("", nil, "OS_CLOUD").(string)
 }
 
 // The name of the Domain ID to scope to if no other domain is specified. Defaults to `default` (Identity v3).
@@ -112,10 +88,7 @@ func GetDefaultDomain(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	if dv, ok := getEnvOrDefault("default", nil, "OS_DEFAULT_DOMAIN").(string); ok {
-		return dv
-	}
-	return v
+	return getEnvOrDefault("default", nil, "OS_DEFAULT_DOMAIN").(string)
 }
 
 // If set to `true`, OpenStack authorization will be perfomed, when the service provider client is called.
@@ -124,10 +97,7 @@ func GetDelayedAuth(ctx *pulumi.Context) bool {
 	if err == nil {
 		return v
 	}
-	if dv, ok := getEnvOrDefault(false, parseEnvBool, "OS_DELAYED_AUTH").(bool); ok {
-		return dv
-	}
-	return v
+	return getEnvOrDefault(false, parseEnvBool, "OS_DELAYED_AUTH").(bool)
 }
 
 // If set to `true`, the HTTP `Cache-Control: no-cache` header will not be added by default to all API requests.
@@ -141,10 +111,7 @@ func GetDomainId(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	if dv, ok := getEnvOrDefault("", nil, "OS_DOMAIN_ID").(string); ok {
-		return dv
-	}
-	return v
+	return getEnvOrDefault("", nil, "OS_DOMAIN_ID").(string)
 }
 
 // The name of the Domain to scope to (Identity v3).
@@ -153,26 +120,19 @@ func GetDomainName(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	if dv, ok := getEnvOrDefault("", nil, "OS_DOMAIN_NAME").(string); ok {
-		return dv
-	}
-	return v
+	return getEnvOrDefault("", nil, "OS_DOMAIN_NAME").(string)
 }
 
 // A map of services with an endpoint to override what was from the Keystone catalog
 func GetEndpointOverrides(ctx *pulumi.Context) string {
 	return config.Get(ctx, "openstack:endpointOverrides")
 }
-
 func GetEndpointType(ctx *pulumi.Context) string {
 	v, err := config.Try(ctx, "openstack:endpointType")
 	if err == nil {
 		return v
 	}
-	if dv, ok := getEnvOrDefault("", nil, "OS_ENDPOINT_TYPE").(string); ok {
-		return dv
-	}
-	return v
+	return getEnvOrDefault("", nil, "OS_ENDPOINT_TYPE").(string)
 }
 
 // Trust self-signed certificates.
@@ -181,10 +141,7 @@ func GetInsecure(ctx *pulumi.Context) bool {
 	if err == nil {
 		return v
 	}
-	if dv, ok := getEnvOrDefault(false, parseEnvBool, "OS_INSECURE").(bool); ok {
-		return dv
-	}
-	return v
+	return getEnvOrDefault(false, parseEnvBool, "OS_INSECURE").(bool)
 }
 
 // A client private key to authenticate with.
@@ -193,10 +150,7 @@ func GetKey(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	if dv, ok := getEnvOrDefault("", nil, "OS_KEY").(string); ok {
-		return dv
-	}
-	return v
+	return getEnvOrDefault("", nil, "OS_KEY").(string)
 }
 
 // How many times HTTP connection should be retried until giving up.
@@ -210,10 +164,7 @@ func GetPassword(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	if dv, ok := getEnvOrDefault("", nil, "OS_PASSWORD").(string); ok {
-		return dv
-	}
-	return v
+	return getEnvOrDefault("", nil, "OS_PASSWORD").(string)
 }
 
 // The ID of the domain where the proejct resides (Identity v3).
@@ -222,10 +173,7 @@ func GetProjectDomainId(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	if dv, ok := getEnvOrDefault("", nil, "OS_PROJECT_DOMAIN_ID").(string); ok {
-		return dv
-	}
-	return v
+	return getEnvOrDefault("", nil, "OS_PROJECT_DOMAIN_ID").(string)
 }
 
 // The name of the domain where the project resides (Identity v3).
@@ -234,10 +182,7 @@ func GetProjectDomainName(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	if dv, ok := getEnvOrDefault("", nil, "OS_PROJECT_DOMAIN_NAME").(string); ok {
-		return dv
-	}
-	return v
+	return getEnvOrDefault("", nil, "OS_PROJECT_DOMAIN_NAME").(string)
 }
 
 // The OpenStack region to connect to.
@@ -246,10 +191,7 @@ func GetRegion(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	if dv, ok := getEnvOrDefault("", nil, "OS_REGION_NAME").(string); ok {
-		return dv
-	}
-	return v
+	return getEnvOrDefault("", nil, "OS_REGION_NAME").(string)
 }
 
 // Use Swift's authentication system instead of Keystone. Only used for interaction with Swift.
@@ -258,10 +200,7 @@ func GetSwauth(ctx *pulumi.Context) bool {
 	if err == nil {
 		return v
 	}
-	if dv, ok := getEnvOrDefault(false, parseEnvBool, "OS_SWAUTH").(bool); ok {
-		return dv
-	}
-	return v
+	return getEnvOrDefault(false, parseEnvBool, "OS_SWAUTH").(bool)
 }
 
 // The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.
@@ -270,10 +209,7 @@ func GetTenantId(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	if dv, ok := getEnvOrDefault("", nil, "OS_TENANT_ID", "OS_PROJECT_ID").(string); ok {
-		return dv
-	}
-	return v
+	return getEnvOrDefault("", nil, "OS_TENANT_ID", "OS_PROJECT_ID").(string)
 }
 
 // The name of the Tenant (Identity v2) or Project (Identity v3) to login with.
@@ -282,10 +218,7 @@ func GetTenantName(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	if dv, ok := getEnvOrDefault("", nil, "OS_TENANT_NAME", "OS_PROJECT_NAME").(string); ok {
-		return dv
-	}
-	return v
+	return getEnvOrDefault("", nil, "OS_TENANT_NAME", "OS_PROJECT_NAME").(string)
 }
 
 // Authentication token to use as an alternative to username/password.
@@ -294,10 +227,7 @@ func GetToken(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	if dv, ok := getEnvOrDefault("", nil, "OS_TOKEN", "OS_AUTH_TOKEN").(string); ok {
-		return dv
-	}
-	return v
+	return getEnvOrDefault("", nil, "OS_TOKEN", "OS_AUTH_TOKEN").(string)
 }
 
 // If set to `true`, API requests will go the Load Balancer service (Octavia) instead of the Networking service (Neutron).
@@ -306,10 +236,7 @@ func GetUseOctavia(ctx *pulumi.Context) bool {
 	if err == nil {
 		return v
 	}
-	if dv, ok := getEnvOrDefault(false, parseEnvBool, "OS_USE_OCTAVIA").(bool); ok {
-		return dv
-	}
-	return v
+	return getEnvOrDefault(false, parseEnvBool, "OS_USE_OCTAVIA").(bool)
 }
 
 // The ID of the domain where the user resides (Identity v3).
@@ -318,10 +245,7 @@ func GetUserDomainId(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	if dv, ok := getEnvOrDefault("", nil, "OS_USER_DOMAIN_ID").(string); ok {
-		return dv
-	}
-	return v
+	return getEnvOrDefault("", nil, "OS_USER_DOMAIN_ID").(string)
 }
 
 // The name of the domain where the user resides (Identity v3).
@@ -330,10 +254,7 @@ func GetUserDomainName(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	if dv, ok := getEnvOrDefault("", nil, "OS_USER_DOMAIN_NAME").(string); ok {
-		return dv
-	}
-	return v
+	return getEnvOrDefault("", nil, "OS_USER_DOMAIN_NAME").(string)
 }
 
 // Username to login with.
@@ -342,10 +263,7 @@ func GetUserId(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	if dv, ok := getEnvOrDefault("", nil, "OS_USER_ID").(string); ok {
-		return dv
-	}
-	return v
+	return getEnvOrDefault("", nil, "OS_USER_ID").(string)
 }
 
 // Username to login with.
@@ -354,8 +272,5 @@ func GetUserName(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	if dv, ok := getEnvOrDefault("", nil, "OS_USERNAME").(string); ok {
-		return dv
-	}
-	return v
+	return getEnvOrDefault("", nil, "OS_USERNAME").(string)
 }

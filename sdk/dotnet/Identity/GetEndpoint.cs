@@ -9,19 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.OpenStack.Identity
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Use this data source to get the ID of an OpenStack endpoint.
-        /// 
-        /// &gt; **Note:** This usually requires admin privileges.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_endpoint_v3.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetEndpoint.InvokeAsync() instead")]
-        public static Task<GetEndpointResult> GetEndpoint(GetEndpointArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEndpointResult>("openstack:identity/getEndpoint:getEndpoint", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetEndpoint
     {
         /// <summary>
@@ -29,11 +16,13 @@ namespace Pulumi.OpenStack.Identity
         /// 
         /// &gt; **Note:** This usually requires admin privileges.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_endpoint_v3.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetEndpointResult> InvokeAsync(GetEndpointArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEndpointResult>("openstack:identity/getEndpoint:getEndpoint", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetEndpointResult>("openstack:identity/getEndpoint:getEndpoint", args ?? new GetEndpointArgs(), options.WithVersion());
     }
+
 
     public sealed class GetEndpointArgs : Pulumi.InvokeArgs
     {
@@ -87,6 +76,7 @@ namespace Pulumi.OpenStack.Identity
         }
     }
 
+
     [OutputType]
     public sealed class GetEndpointResult
     {
@@ -94,6 +84,10 @@ namespace Pulumi.OpenStack.Identity
         /// See Argument Reference above.
         /// </summary>
         public readonly string? EndpointRegion;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// See Argument Reference above.
         /// </summary>
@@ -122,24 +116,29 @@ namespace Pulumi.OpenStack.Identity
         /// The endpoint URL.
         /// </summary>
         public readonly string Url;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetEndpointResult(
             string? endpointRegion,
+
+            string id,
+
             string? @interface,
+
             string? name,
+
             string region,
+
             string? serviceId,
+
             string? serviceName,
+
             string? serviceType,
-            string url,
-            string id)
+
+            string url)
         {
             EndpointRegion = endpointRegion;
+            Id = id;
             Interface = @interface;
             Name = name;
             Region = region;
@@ -147,7 +146,6 @@ namespace Pulumi.OpenStack.Identity
             ServiceName = serviceName;
             ServiceType = serviceType;
             Url = url;
-            Id = id;
         }
     }
 }

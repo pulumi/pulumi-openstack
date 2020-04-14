@@ -9,27 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.OpenStack.Identity
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Use this data source to get the ID of an OpenStack project.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_project_v3.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetProject.InvokeAsync() instead")]
-        public static Task<GetProjectResult> GetProject(GetProjectArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("openstack:identity/getProject:getProject", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetProject
     {
         /// <summary>
         /// Use this data source to get the ID of an OpenStack project.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_project_v3.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetProjectResult> InvokeAsync(GetProjectArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("openstack:identity/getProject:getProject", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("openstack:identity/getProject:getProject", args ?? new GetProjectArgs(), options.WithVersion());
     }
+
 
     public sealed class GetProjectArgs : Pulumi.InvokeArgs
     {
@@ -76,6 +67,7 @@ namespace Pulumi.OpenStack.Identity
         }
     }
 
+
     [OutputType]
     public sealed class GetProjectResult
     {
@@ -92,6 +84,10 @@ namespace Pulumi.OpenStack.Identity
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// See Argument Reference above.
         /// </summary>
         public readonly bool? IsDomain;
@@ -107,30 +103,33 @@ namespace Pulumi.OpenStack.Identity
         /// The region the project is located in.
         /// </summary>
         public readonly string Region;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetProjectResult(
             string description,
+
             string domainId,
+
             bool? enabled,
+
+            string id,
+
             bool? isDomain,
+
             string? name,
+
             string? parentId,
-            string region,
-            string id)
+
+            string region)
         {
             Description = description;
             DomainId = domainId;
             Enabled = enabled;
+            Id = id;
             IsDomain = isDomain;
             Name = name;
             ParentId = parentId;
             Region = region;
-            Id = id;
         }
     }
 }

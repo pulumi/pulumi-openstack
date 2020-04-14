@@ -14,8 +14,6 @@ namespace Pulumi.OpenStack.Identity
     /// 
     /// Note: You _must_ have admin privileges in your OpenStack cloud to use
     /// this resource.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/identity_role_v3.html.markdown.
     /// </summary>
     public partial class Role : Pulumi.CustomResource
     {
@@ -48,7 +46,7 @@ namespace Pulumi.OpenStack.Identity
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Role(string name, RoleArgs? args = null, CustomResourceOptions? options = null)
-            : base("openstack:identity/role:Role", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("openstack:identity/role:Role", name, args ?? new RoleArgs(), MakeResourceOptions(options, ""))
         {
         }
 

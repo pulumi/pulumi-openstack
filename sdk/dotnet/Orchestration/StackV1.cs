@@ -11,8 +11,6 @@ namespace Pulumi.OpenStack.Orchestration
 {
     /// <summary>
     /// Manages a V1 stack resource within OpenStack.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/orchestration_stack_v1.html.markdown.
     /// </summary>
     public partial class StackV1 : Pulumi.CustomResource
     {
@@ -71,7 +69,7 @@ namespace Pulumi.OpenStack.Orchestration
         /// A list of stack outputs.
         /// </summary>
         [Output("outputs")]
-        public Output<ImmutableArray<Outputs.StackV1Outputs>> Outputs { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.StackV1Output>> Outputs { get; private set; } = null!;
 
         /// <summary>
         /// User-defined key/value pairs as parameters to pass
@@ -145,7 +143,7 @@ namespace Pulumi.OpenStack.Orchestration
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public StackV1(string name, StackV1Args args, CustomResourceOptions? options = null)
-            : base("openstack:orchestration/stackV1:StackV1", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("openstack:orchestration/stackV1:StackV1", name, args ?? new StackV1Args(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -252,14 +250,14 @@ namespace Pulumi.OpenStack.Orchestration
         }
 
         [Input("outputs")]
-        private InputList<Inputs.StackV1OutputsArgs>? _outputs;
+        private InputList<Inputs.StackV1OutputArgs>? _outputs;
 
         /// <summary>
         /// A list of stack outputs.
         /// </summary>
-        public InputList<Inputs.StackV1OutputsArgs> Outputs
+        public InputList<Inputs.StackV1OutputArgs> Outputs
         {
-            get => _outputs ?? (_outputs = new InputList<Inputs.StackV1OutputsArgs>());
+            get => _outputs ?? (_outputs = new InputList<Inputs.StackV1OutputArgs>());
             set => _outputs = value;
         }
 
@@ -421,14 +419,14 @@ namespace Pulumi.OpenStack.Orchestration
         }
 
         [Input("outputs")]
-        private InputList<Inputs.StackV1OutputsGetArgs>? _outputs;
+        private InputList<Inputs.StackV1OutputGetArgs>? _outputs;
 
         /// <summary>
         /// A list of stack outputs.
         /// </summary>
-        public InputList<Inputs.StackV1OutputsGetArgs> Outputs
+        public InputList<Inputs.StackV1OutputGetArgs> Outputs
         {
-            get => _outputs ?? (_outputs = new InputList<Inputs.StackV1OutputsGetArgs>());
+            get => _outputs ?? (_outputs = new InputList<Inputs.StackV1OutputGetArgs>());
             set => _outputs = value;
         }
 
@@ -516,73 +514,5 @@ namespace Pulumi.OpenStack.Orchestration
         public StackV1State()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class StackV1OutputsArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The description of the stack resource.
-        /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        [Input("outputKey", required: true)]
-        public Input<string> OutputKey { get; set; } = null!;
-
-        [Input("outputValue", required: true)]
-        public Input<string> OutputValue { get; set; } = null!;
-
-        public StackV1OutputsArgs()
-        {
-        }
-    }
-
-    public sealed class StackV1OutputsGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The description of the stack resource.
-        /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        [Input("outputKey", required: true)]
-        public Input<string> OutputKey { get; set; } = null!;
-
-        [Input("outputValue", required: true)]
-        public Input<string> OutputValue { get; set; } = null!;
-
-        public StackV1OutputsGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class StackV1Outputs
-    {
-        /// <summary>
-        /// The description of the stack resource.
-        /// </summary>
-        public readonly string Description;
-        public readonly string OutputKey;
-        public readonly string OutputValue;
-
-        [OutputConstructor]
-        private StackV1Outputs(
-            string description,
-            string outputKey,
-            string outputValue)
-        {
-            Description = description;
-            OutputKey = outputKey;
-            OutputValue = outputValue;
-        }
-    }
     }
 }

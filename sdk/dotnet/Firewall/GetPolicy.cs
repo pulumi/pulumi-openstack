@@ -9,27 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.OpenStack.Firewall
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Use this data source to get firewall policy information of an available OpenStack firewall policy.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/fw_policy_v1.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetPolicy.InvokeAsync() instead")]
-        public static Task<GetPolicyResult> GetPolicy(GetPolicyArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPolicyResult>("openstack:firewall/getPolicy:getPolicy", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetPolicy
     {
         /// <summary>
         /// Use this data source to get firewall policy information of an available OpenStack firewall policy.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/fw_policy_v1.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetPolicyResult> InvokeAsync(GetPolicyArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPolicyResult>("openstack:firewall/getPolicy:getPolicy", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetPolicyResult>("openstack:firewall/getPolicy:getPolicy", args ?? new GetPolicyArgs(), options.WithVersion());
     }
+
 
     public sealed class GetPolicyArgs : Pulumi.InvokeArgs
     {
@@ -64,6 +55,7 @@ namespace Pulumi.OpenStack.Firewall
         }
     }
 
+
     [OutputType]
     public sealed class GetPolicyResult
     {
@@ -75,6 +67,10 @@ namespace Pulumi.OpenStack.Firewall
         /// The description of the firewall policy.
         /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// See Argument Reference above.
         /// </summary>
@@ -99,32 +95,36 @@ namespace Pulumi.OpenStack.Firewall
         /// See Argument Reference above.
         /// </summary>
         public readonly string TenantId;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetPolicyResult(
             bool audited,
+
             string description,
+
+            string id,
+
             string? name,
+
             string? policyId,
+
             string region,
+
             ImmutableArray<string> rules,
+
             bool shared,
-            string tenantId,
-            string id)
+
+            string tenantId)
         {
             Audited = audited;
             Description = description;
+            Id = id;
             Name = name;
             PolicyId = policyId;
             Region = region;
             Rules = rules;
             Shared = shared;
             TenantId = tenantId;
-            Id = id;
         }
     }
 }

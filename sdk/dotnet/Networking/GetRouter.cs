@@ -9,27 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.OpenStack.Networking
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Use this data source to get the ID of an available OpenStack router.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_router_v2.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetRouter.InvokeAsync() instead")]
-        public static Task<GetRouterResult> GetRouter(GetRouterArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRouterResult>("openstack:networking/getRouter:getRouter", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetRouter
     {
         /// <summary>
         /// Use this data source to get the ID of an available OpenStack router.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_router_v2.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetRouterResult> InvokeAsync(GetRouterArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRouterResult>("openstack:networking/getRouter:getRouter", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRouterResult>("openstack:networking/getRouter:getRouter", args ?? new GetRouterArgs(), options.WithVersion());
     }
+
 
     public sealed class GetRouterArgs : Pulumi.InvokeArgs
     {
@@ -106,6 +97,7 @@ namespace Pulumi.OpenStack.Networking
         }
     }
 
+
     [OutputType]
     public sealed class GetRouterResult
     {
@@ -127,39 +119,53 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// The external fixed IPs of the router.
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetRouterExternalFixedIpsResult> ExternalFixedIps;
+        public readonly ImmutableArray<Outputs.GetRouterExternalFixedIpResult> ExternalFixedIps;
         /// <summary>
         /// The network UUID of an external gateway for the router.
         /// </summary>
         public readonly string ExternalNetworkId;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         public readonly string? Name;
         public readonly string? Region;
         public readonly string? RouterId;
         public readonly string? Status;
         public readonly ImmutableArray<string> Tags;
         public readonly string? TenantId;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetRouterResult(
             bool? adminStateUp,
+
             ImmutableArray<string> allTags,
+
             ImmutableArray<string> availabilityZoneHints,
+
             string? description,
+
             bool? distributed,
+
             bool enableSnat,
-            ImmutableArray<Outputs.GetRouterExternalFixedIpsResult> externalFixedIps,
+
+            ImmutableArray<Outputs.GetRouterExternalFixedIpResult> externalFixedIps,
+
             string externalNetworkId,
+
+            string id,
+
             string? name,
+
             string? region,
+
             string? routerId,
+
             string? status,
+
             ImmutableArray<string> tags,
-            string? tenantId,
-            string id)
+
+            string? tenantId)
         {
             AdminStateUp = adminStateUp;
             AllTags = allTags;
@@ -169,36 +175,13 @@ namespace Pulumi.OpenStack.Networking
             EnableSnat = enableSnat;
             ExternalFixedIps = externalFixedIps;
             ExternalNetworkId = externalNetworkId;
+            Id = id;
             Name = name;
             Region = region;
             RouterId = routerId;
             Status = status;
             Tags = tags;
             TenantId = tenantId;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetRouterExternalFixedIpsResult
-    {
-        /// <summary>
-        /// The IP address to set on the router.
-        /// </summary>
-        public readonly string? IpAddress;
-        public readonly string? SubnetId;
-
-        [OutputConstructor]
-        private GetRouterExternalFixedIpsResult(
-            string? ipAddress,
-            string? subnetId)
-        {
-            IpAddress = ipAddress;
-            SubnetId = subnetId;
-        }
-    }
     }
 }

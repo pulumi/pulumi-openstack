@@ -11,8 +11,6 @@ namespace Pulumi.OpenStack.Networking
 {
     /// <summary>
     /// Creates a routing entry on a OpenStack V2 subnet.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_subnet_route_v2.html.markdown.
     /// </summary>
     public partial class SubnetRoute : Pulumi.CustomResource
     {
@@ -55,7 +53,7 @@ namespace Pulumi.OpenStack.Networking
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public SubnetRoute(string name, SubnetRouteArgs args, CustomResourceOptions? options = null)
-            : base("openstack:networking/subnetRoute:SubnetRoute", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("openstack:networking/subnetRoute:SubnetRoute", name, args ?? new SubnetRouteArgs(), MakeResourceOptions(options, ""))
         {
         }
 

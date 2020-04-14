@@ -12,8 +12,6 @@ namespace Pulumi.OpenStack.Images
     /// <summary>
     /// Manages members for the shared OpenStack Glance V2 Image within the source
     /// project, which owns the Image.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/images_image_access_v2.html.markdown.
     /// </summary>
     public partial class ImageAccess : Pulumi.CustomResource
     {
@@ -72,7 +70,7 @@ namespace Pulumi.OpenStack.Images
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ImageAccess(string name, ImageAccessArgs args, CustomResourceOptions? options = null)
-            : base("openstack:images/imageAccess:ImageAccess", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("openstack:images/imageAccess:ImageAccess", name, args ?? new ImageAccessArgs(), MakeResourceOptions(options, ""))
         {
         }
 

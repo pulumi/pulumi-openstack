@@ -9,19 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.OpenStack.Identity
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Use this data source to get the ID of an OpenStack service.
-        /// 
-        /// &gt; **Note:** This usually requires admin privileges.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_service_v3.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetService.InvokeAsync() instead")]
-        public static Task<GetServiceResult> GetService(GetServiceArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServiceResult>("openstack:identity/getService:getService", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetService
     {
         /// <summary>
@@ -29,11 +16,13 @@ namespace Pulumi.OpenStack.Identity
         /// 
         /// &gt; **Note:** This usually requires admin privileges.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_service_v3.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetServiceResult> InvokeAsync(GetServiceArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServiceResult>("openstack:identity/getService:getService", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetServiceResult>("openstack:identity/getService:getService", args ?? new GetServiceArgs(), options.WithVersion());
     }
+
 
     public sealed class GetServiceArgs : Pulumi.InvokeArgs
     {
@@ -67,6 +56,7 @@ namespace Pulumi.OpenStack.Identity
         }
     }
 
+
     [OutputType]
     public sealed class GetServiceResult
     {
@@ -79,6 +69,10 @@ namespace Pulumi.OpenStack.Identity
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// See Argument Reference above.
         /// </summary>
         public readonly string? Name;
@@ -90,26 +84,27 @@ namespace Pulumi.OpenStack.Identity
         /// See Argument Reference above.
         /// </summary>
         public readonly string? Type;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetServiceResult(
             string description,
+
             bool? enabled,
+
+            string id,
+
             string? name,
+
             string region,
-            string? type,
-            string id)
+
+            string? type)
         {
             Description = description;
             Enabled = enabled;
+            Id = id;
             Name = name;
             Region = region;
             Type = type;
-            Id = id;
         }
     }
 }

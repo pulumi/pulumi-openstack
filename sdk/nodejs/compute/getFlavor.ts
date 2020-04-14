@@ -11,6 +11,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -23,7 +25,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/compute_flavor_v2.html.markdown.
  */
-export function getFlavor(args?: GetFlavorArgs, opts?: pulumi.InvokeOptions): Promise<GetFlavorResult> & GetFlavorResult {
+export function getFlavor(args?: GetFlavorArgs, opts?: pulumi.InvokeOptions): Promise<GetFlavorResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -32,7 +34,7 @@ export function getFlavor(args?: GetFlavorArgs, opts?: pulumi.InvokeOptions): Pr
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetFlavorResult> = pulumi.runtime.invoke("openstack:compute/getFlavor:getFlavor", {
+    return pulumi.runtime.invoke("openstack:compute/getFlavor:getFlavor", {
         "disk": args.disk,
         "flavorId": args.flavorId,
         "minDisk": args.minDisk,
@@ -44,8 +46,6 @@ export function getFlavor(args?: GetFlavorArgs, opts?: pulumi.InvokeOptions): Pr
         "swap": args.swap,
         "vcpus": args.vcpus,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

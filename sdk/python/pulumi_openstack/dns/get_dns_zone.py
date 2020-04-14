@@ -144,7 +144,7 @@ def get_dns_zone(attributes=None,created_at=None,description=None,email=None,mas
     """
     Use this data source to get the ID of an available OpenStack DNS zone.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/dns_zone_v2.html.markdown.
+
 
 
     :param dict attributes: Attributes of the DNS Service scheduler.

@@ -9,27 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.OpenStack.Compute
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Use this data source to get the ID of an available OpenStack flavor.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/compute_flavor_v2.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetFlavor.InvokeAsync() instead")]
-        public static Task<GetFlavorResult> GetFlavor(GetFlavorArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFlavorResult>("openstack:compute/getFlavor:getFlavor", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetFlavor
     {
         /// <summary>
         /// Use this data source to get the ID of an available OpenStack flavor.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/compute_flavor_v2.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetFlavorResult> InvokeAsync(GetFlavorArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFlavorResult>("openstack:compute/getFlavor:getFlavor", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetFlavorResult>("openstack:compute/getFlavor:getFlavor", args ?? new GetFlavorArgs(), options.WithVersion());
     }
+
 
     public sealed class GetFlavorArgs : Pulumi.InvokeArgs
     {
@@ -102,6 +93,7 @@ namespace Pulumi.OpenStack.Compute
         }
     }
 
+
     [OutputType]
     public sealed class GetFlavorResult
     {
@@ -111,6 +103,10 @@ namespace Pulumi.OpenStack.Compute
         /// </summary>
         public readonly ImmutableDictionary<string, object> ExtraSpecs;
         public readonly string? FlavorId;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// Whether the flavor is public or private.
         /// </summary>
@@ -123,30 +119,39 @@ namespace Pulumi.OpenStack.Compute
         public readonly double? RxTxFactor;
         public readonly int? Swap;
         public readonly int? Vcpus;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetFlavorResult(
             int? disk,
+
             ImmutableDictionary<string, object> extraSpecs,
+
             string? flavorId,
+
+            string id,
+
             bool isPublic,
+
             int? minDisk,
+
             int? minRam,
+
             string? name,
+
             int? ram,
+
             string region,
+
             double? rxTxFactor,
+
             int? swap,
-            int? vcpus,
-            string id)
+
+            int? vcpus)
         {
             Disk = disk;
             ExtraSpecs = extraSpecs;
             FlavorId = flavorId;
+            Id = id;
             IsPublic = isPublic;
             MinDisk = minDisk;
             MinRam = minRam;
@@ -156,7 +161,6 @@ namespace Pulumi.OpenStack.Compute
             RxTxFactor = rxTxFactor;
             Swap = swap;
             Vcpus = vcpus;
-            Id = id;
         }
     }
 }

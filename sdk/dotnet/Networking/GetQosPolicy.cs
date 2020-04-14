@@ -9,27 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.OpenStack.Networking
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Use this data source to get the ID of an available OpenStack QoS policy.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_qos_policy_v2.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetQosPolicy.InvokeAsync() instead")]
-        public static Task<GetQosPolicyResult> GetQosPolicy(GetQosPolicyArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetQosPolicyResult>("openstack:networking/getQosPolicy:getQosPolicy", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetQosPolicy
     {
         /// <summary>
         /// Use this data source to get the ID of an available OpenStack QoS policy.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_qos_policy_v2.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetQosPolicyResult> InvokeAsync(GetQosPolicyArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetQosPolicyResult>("openstack:networking/getQosPolicy:getQosPolicy", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetQosPolicyResult>("openstack:networking/getQosPolicy:getQosPolicy", args ?? new GetQosPolicyArgs(), options.WithVersion());
     }
+
 
     public sealed class GetQosPolicyArgs : Pulumi.InvokeArgs
     {
@@ -88,6 +79,7 @@ namespace Pulumi.OpenStack.Networking
         }
     }
 
+
     [OutputType]
     public sealed class GetQosPolicyResult
     {
@@ -103,6 +95,10 @@ namespace Pulumi.OpenStack.Networking
         /// See Argument Reference above.
         /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// See Argument Reference above.
         /// </summary>
@@ -129,29 +125,37 @@ namespace Pulumi.OpenStack.Networking
         /// The time at which QoS policy was created.
         /// </summary>
         public readonly string UpdatedAt;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetQosPolicyResult(
             ImmutableArray<string> allTags,
+
             string createdAt,
+
             string description,
+
+            string id,
+
             bool isDefault,
+
             string name,
+
             string projectId,
+
             string region,
+
             int revisionNumber,
+
             bool shared,
+
             ImmutableArray<string> tags,
-            string updatedAt,
-            string id)
+
+            string updatedAt)
         {
             AllTags = allTags;
             CreatedAt = createdAt;
             Description = description;
+            Id = id;
             IsDefault = isDefault;
             Name = name;
             ProjectId = projectId;
@@ -160,7 +164,6 @@ namespace Pulumi.OpenStack.Networking
             Shared = shared;
             Tags = tags;
             UpdatedAt = updatedAt;
-            Id = id;
         }
     }
 }

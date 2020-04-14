@@ -16,8 +16,6 @@ namespace Pulumi.OpenStack.Compute
     /// this resource.
     /// 
     /// ---
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_flavor_access_v2.html.markdown.
     /// </summary>
     public partial class FlavorAccess : Pulumi.CustomResource
     {
@@ -51,7 +49,7 @@ namespace Pulumi.OpenStack.Compute
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public FlavorAccess(string name, FlavorAccessArgs args, CustomResourceOptions? options = null)
-            : base("openstack:compute/flavorAccess:FlavorAccess", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("openstack:compute/flavorAccess:FlavorAccess", name, args ?? new FlavorAccessArgs(), MakeResourceOptions(options, ""))
         {
         }
 

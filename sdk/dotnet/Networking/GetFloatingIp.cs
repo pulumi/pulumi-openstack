@@ -9,27 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.OpenStack.Networking
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Use this data source to get the ID of an available OpenStack floating IP.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_floatingip_v2.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetFloatingIp.InvokeAsync() instead")]
-        public static Task<GetFloatingIpResult> GetFloatingIp(GetFloatingIpArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFloatingIpResult>("openstack:networking/getFloatingIp:getFloatingIp", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetFloatingIp
     {
         /// <summary>
         /// Use this data source to get the ID of an available OpenStack floating IP.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_floatingip_v2.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetFloatingIpResult> InvokeAsync(GetFloatingIpArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFloatingIpResult>("openstack:networking/getFloatingIp:getFloatingIp", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetFloatingIpResult>("openstack:networking/getFloatingIp:getFloatingIp", args ?? new GetFloatingIpArgs(), options.WithVersion());
     }
+
 
     public sealed class GetFloatingIpArgs : Pulumi.InvokeArgs
     {
@@ -100,6 +91,7 @@ namespace Pulumi.OpenStack.Networking
         }
     }
 
+
     [OutputType]
     public sealed class GetFloatingIpResult
     {
@@ -120,32 +112,44 @@ namespace Pulumi.OpenStack.Networking
         /// </summary>
         public readonly string DnsName;
         public readonly string? FixedIp;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         public readonly string? Pool;
         public readonly string? PortId;
         public readonly string? Region;
         public readonly string? Status;
         public readonly ImmutableArray<string> Tags;
         public readonly string? TenantId;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetFloatingIpResult(
             string? address,
+
             ImmutableArray<string> allTags,
+
             string? description,
+
             string dnsDomain,
+
             string dnsName,
+
             string? fixedIp,
+
+            string id,
+
             string? pool,
+
             string? portId,
+
             string? region,
+
             string? status,
+
             ImmutableArray<string> tags,
-            string? tenantId,
-            string id)
+
+            string? tenantId)
         {
             Address = address;
             AllTags = allTags;
@@ -153,13 +157,13 @@ namespace Pulumi.OpenStack.Networking
             DnsDomain = dnsDomain;
             DnsName = dnsName;
             FixedIp = fixedIp;
+            Id = id;
             Pool = pool;
             PortId = portId;
             Region = region;
             Status = status;
             Tags = tags;
             TenantId = tenantId;
-            Id = id;
         }
     }
 }

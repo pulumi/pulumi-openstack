@@ -13,6 +13,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -24,7 +26,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_endpoint_v3.html.markdown.
  */
-export function getEndpoint(args?: GetEndpointArgs, opts?: pulumi.InvokeOptions): Promise<GetEndpointResult> & GetEndpointResult {
+export function getEndpoint(args?: GetEndpointArgs, opts?: pulumi.InvokeOptions): Promise<GetEndpointResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -33,7 +35,7 @@ export function getEndpoint(args?: GetEndpointArgs, opts?: pulumi.InvokeOptions)
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetEndpointResult> = pulumi.runtime.invoke("openstack:identity/getEndpoint:getEndpoint", {
+    return pulumi.runtime.invoke("openstack:identity/getEndpoint:getEndpoint", {
         "endpointRegion": args.endpointRegion,
         "interface": args.interface,
         "name": args.name,
@@ -42,8 +44,6 @@ export function getEndpoint(args?: GetEndpointArgs, opts?: pulumi.InvokeOptions)
         "serviceName": args.serviceName,
         "serviceType": args.serviceType,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

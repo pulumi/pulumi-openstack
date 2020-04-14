@@ -11,8 +11,6 @@ namespace Pulumi.OpenStack.Database
 {
     /// <summary>
     /// Manages a V1 DB configuration resource within OpenStack.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/db_configuration_v1.html.markdown.
     /// </summary>
     public partial class Configuration : Pulumi.CustomResource
     {
@@ -20,7 +18,7 @@ namespace Pulumi.OpenStack.Database
         /// An array of configuration parameter name and value. Can be specified multiple times. The configuration object structure is documented below.
         /// </summary>
         [Output("configurations")]
-        public Output<ImmutableArray<Outputs.ConfigurationConfigurations>> Configurations { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.ConfigurationConfiguration>> Configurations { get; private set; } = null!;
 
         /// <summary>
         /// An array of database engine type and version. The datastore
@@ -57,7 +55,7 @@ namespace Pulumi.OpenStack.Database
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Configuration(string name, ConfigurationArgs args, CustomResourceOptions? options = null)
-            : base("openstack:database/configuration:Configuration", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("openstack:database/configuration:Configuration", name, args ?? new ConfigurationArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -95,14 +93,14 @@ namespace Pulumi.OpenStack.Database
     public sealed class ConfigurationArgs : Pulumi.ResourceArgs
     {
         [Input("configurations")]
-        private InputList<Inputs.ConfigurationConfigurationsArgs>? _configurations;
+        private InputList<Inputs.ConfigurationConfigurationArgs>? _configurations;
 
         /// <summary>
         /// An array of configuration parameter name and value. Can be specified multiple times. The configuration object structure is documented below.
         /// </summary>
-        public InputList<Inputs.ConfigurationConfigurationsArgs> Configurations
+        public InputList<Inputs.ConfigurationConfigurationArgs> Configurations
         {
-            get => _configurations ?? (_configurations = new InputList<Inputs.ConfigurationConfigurationsArgs>());
+            get => _configurations ?? (_configurations = new InputList<Inputs.ConfigurationConfigurationArgs>());
             set => _configurations = value;
         }
 
@@ -140,14 +138,14 @@ namespace Pulumi.OpenStack.Database
     public sealed class ConfigurationState : Pulumi.ResourceArgs
     {
         [Input("configurations")]
-        private InputList<Inputs.ConfigurationConfigurationsGetArgs>? _configurations;
+        private InputList<Inputs.ConfigurationConfigurationGetArgs>? _configurations;
 
         /// <summary>
         /// An array of configuration parameter name and value. Can be specified multiple times. The configuration object structure is documented below.
         /// </summary>
-        public InputList<Inputs.ConfigurationConfigurationsGetArgs> Configurations
+        public InputList<Inputs.ConfigurationConfigurationGetArgs> Configurations
         {
-            get => _configurations ?? (_configurations = new InputList<Inputs.ConfigurationConfigurationsGetArgs>());
+            get => _configurations ?? (_configurations = new InputList<Inputs.ConfigurationConfigurationGetArgs>());
             set => _configurations = value;
         }
 
@@ -180,133 +178,5 @@ namespace Pulumi.OpenStack.Database
         public ConfigurationState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class ConfigurationConfigurationsArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Configuration parameter name. Changing this creates a new resource.
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        /// <summary>
-        /// Configuration parameter value. Changing this creates a new resource.
-        /// </summary>
-        [Input("value", required: true)]
-        public Input<string> Value { get; set; } = null!;
-
-        public ConfigurationConfigurationsArgs()
-        {
-        }
-    }
-
-    public sealed class ConfigurationConfigurationsGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Configuration parameter name. Changing this creates a new resource.
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        /// <summary>
-        /// Configuration parameter value. Changing this creates a new resource.
-        /// </summary>
-        [Input("value", required: true)]
-        public Input<string> Value { get; set; } = null!;
-
-        public ConfigurationConfigurationsGetArgs()
-        {
-        }
-    }
-
-    public sealed class ConfigurationDatastoreArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Database engine type to be used with this configuration. Changing this creates a new resource.
-        /// </summary>
-        [Input("type", required: true)]
-        public Input<string> Type { get; set; } = null!;
-
-        /// <summary>
-        /// Version of database engine type to be used with this configuration. Changing this creates a new resource.
-        /// </summary>
-        [Input("version", required: true)]
-        public Input<string> Version { get; set; } = null!;
-
-        public ConfigurationDatastoreArgs()
-        {
-        }
-    }
-
-    public sealed class ConfigurationDatastoreGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Database engine type to be used with this configuration. Changing this creates a new resource.
-        /// </summary>
-        [Input("type", required: true)]
-        public Input<string> Type { get; set; } = null!;
-
-        /// <summary>
-        /// Version of database engine type to be used with this configuration. Changing this creates a new resource.
-        /// </summary>
-        [Input("version", required: true)]
-        public Input<string> Version { get; set; } = null!;
-
-        public ConfigurationDatastoreGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class ConfigurationConfigurations
-    {
-        /// <summary>
-        /// Configuration parameter name. Changing this creates a new resource.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// Configuration parameter value. Changing this creates a new resource.
-        /// </summary>
-        public readonly string Value;
-
-        [OutputConstructor]
-        private ConfigurationConfigurations(
-            string name,
-            string value)
-        {
-            Name = name;
-            Value = value;
-        }
-    }
-
-    [OutputType]
-    public sealed class ConfigurationDatastore
-    {
-        /// <summary>
-        /// Database engine type to be used with this configuration. Changing this creates a new resource.
-        /// </summary>
-        public readonly string Type;
-        /// <summary>
-        /// Version of database engine type to be used with this configuration. Changing this creates a new resource.
-        /// </summary>
-        public readonly string Version;
-
-        [OutputConstructor]
-        private ConfigurationDatastore(
-            string type,
-            string version)
-        {
-            Type = type;
-            Version = version;
-        }
-    }
     }
 }

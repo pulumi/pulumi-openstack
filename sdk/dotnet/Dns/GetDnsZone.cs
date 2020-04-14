@@ -9,27 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.OpenStack.Dns
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Use this data source to get the ID of an available OpenStack DNS zone.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/dns_zone_v2.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetDnsZone.InvokeAsync() instead")]
-        public static Task<GetDnsZoneResult> GetDnsZone(GetDnsZoneArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDnsZoneResult>("openstack:dns/getDnsZone:getDnsZone", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetDnsZone
     {
         /// <summary>
         /// Use this data source to get the ID of an available OpenStack DNS zone.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/dns_zone_v2.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetDnsZoneResult> InvokeAsync(GetDnsZoneArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDnsZoneResult>("openstack:dns/getDnsZone:getDnsZone", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDnsZoneResult>("openstack:dns/getDnsZone:getDnsZone", args ?? new GetDnsZoneArgs(), options.WithVersion());
     }
+
 
     public sealed class GetDnsZoneArgs : Pulumi.InvokeArgs
     {
@@ -148,6 +139,7 @@ namespace Pulumi.OpenStack.Dns
         }
     }
 
+
     [OutputType]
     public sealed class GetDnsZoneResult
     {
@@ -167,6 +159,10 @@ namespace Pulumi.OpenStack.Dns
         /// See Argument Reference above.
         /// </summary>
         public readonly string? Email;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// An array of master DNS servers. When `type` is  `SECONDARY`.
         /// </summary>
@@ -215,35 +211,48 @@ namespace Pulumi.OpenStack.Dns
         /// The version of the zone.
         /// </summary>
         public readonly int Version;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetDnsZoneResult(
             ImmutableDictionary<string, object> attributes,
+
             string createdAt,
+
             string? description,
+
             string? email,
+
+            string id,
+
             ImmutableArray<string> masters,
+
             string? name,
+
             string poolId,
+
             string projectId,
+
             string region,
+
             int serial,
+
             string? status,
+
             string transferredAt,
+
             int? ttl,
+
             string? type,
+
             string updatedAt,
-            int version,
-            string id)
+
+            int version)
         {
             Attributes = attributes;
             CreatedAt = createdAt;
             Description = description;
             Email = email;
+            Id = id;
             Masters = masters;
             Name = name;
             PoolId = poolId;
@@ -256,7 +265,6 @@ namespace Pulumi.OpenStack.Dns
             Type = type;
             UpdatedAt = updatedAt;
             Version = version;
-            Id = id;
         }
     }
 }

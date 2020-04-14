@@ -53,7 +53,7 @@ def get_role(domain_id=None,name=None,region=None,opts=None):
     """
     Use this data source to get the ID of an OpenStack role.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_role_v3.html.markdown.
+
 
 
     :param str domain_id: The domain the role belongs to.

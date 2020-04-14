@@ -38,6 +38,7 @@ class Cluster(pulumi.CustomResource):
         """
         Manages a V1 Magnum cluster resource within OpenStack.
 
+
         ## Argument reference
 
         The following arguments are supported:
@@ -123,8 +124,6 @@ class Cluster(pulumi.CustomResource):
         * `master_addresses` - IP addresses of the master node of the cluster.
         * `node_addresses` - IP addresses of the node of the cluster.
         * `stack_id` - UUID of the Orchestration service stack.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/containerinfra_cluster_v1.html.markdown.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

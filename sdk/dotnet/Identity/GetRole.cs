@@ -9,27 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.OpenStack.Identity
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Use this data source to get the ID of an OpenStack role.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_role_v3.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetRole.InvokeAsync() instead")]
-        public static Task<GetRoleResult> GetRole(GetRoleArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRoleResult>("openstack:identity/getRole:getRole", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetRole
     {
         /// <summary>
         /// Use this data source to get the ID of an OpenStack role.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_role_v3.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetRoleResult> InvokeAsync(GetRoleArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRoleResult>("openstack:identity/getRole:getRole", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRoleResult>("openstack:identity/getRole:getRole", args ?? new GetRoleArgs(), options.WithVersion());
     }
+
 
     public sealed class GetRoleArgs : Pulumi.InvokeArgs
     {
@@ -57,6 +48,7 @@ namespace Pulumi.OpenStack.Identity
         }
     }
 
+
     [OutputType]
     public sealed class GetRoleResult
     {
@@ -65,6 +57,10 @@ namespace Pulumi.OpenStack.Identity
         /// </summary>
         public readonly string DomainId;
         /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// See Argument Reference above.
         /// </summary>
         public readonly string Name;
@@ -72,22 +68,21 @@ namespace Pulumi.OpenStack.Identity
         /// See Argument Reference above.
         /// </summary>
         public readonly string Region;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetRoleResult(
             string domainId,
+
+            string id,
+
             string name,
-            string region,
-            string id)
+
+            string region)
         {
             DomainId = domainId;
+            Id = id;
             Name = name;
             Region = region;
-            Id = id;
         }
     }
 }

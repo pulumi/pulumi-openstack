@@ -17,8 +17,6 @@ namespace Pulumi.OpenStack.Compute
     /// recommended to use the `openstack.networking.SecGroup`
     /// and `openstack.networking.SecGroupRule`
     /// resources instead, which uses the OpenStack Networking API.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_secgroup_v2.html.markdown.
     /// </summary>
     public partial class SecGroup : Pulumi.CustomResource
     {
@@ -52,7 +50,7 @@ namespace Pulumi.OpenStack.Compute
         /// may be used.
         /// </summary>
         [Output("rules")]
-        public Output<ImmutableArray<Outputs.SecGroupRules>> Rules { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.SecGroupRule>> Rules { get; private set; } = null!;
 
 
         /// <summary>
@@ -63,7 +61,7 @@ namespace Pulumi.OpenStack.Compute
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public SecGroup(string name, SecGroupArgs args, CustomResourceOptions? options = null)
-            : base("openstack:compute/secGroup:SecGroup", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("openstack:compute/secGroup:SecGroup", name, args ?? new SecGroupArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -124,7 +122,7 @@ namespace Pulumi.OpenStack.Compute
         public Input<string>? Region { get; set; }
 
         [Input("rules")]
-        private InputList<Inputs.SecGroupRulesArgs>? _rules;
+        private InputList<Inputs.SecGroupRuleArgs>? _rules;
 
         /// <summary>
         /// A rule describing how the security group operates. The
@@ -132,9 +130,9 @@ namespace Pulumi.OpenStack.Compute
         /// security group rules. As shown in the example above, multiple rule blocks
         /// may be used.
         /// </summary>
-        public InputList<Inputs.SecGroupRulesArgs> Rules
+        public InputList<Inputs.SecGroupRuleArgs> Rules
         {
-            get => _rules ?? (_rules = new InputList<Inputs.SecGroupRulesArgs>());
+            get => _rules ?? (_rules = new InputList<Inputs.SecGroupRuleArgs>());
             set => _rules = value;
         }
 
@@ -169,7 +167,7 @@ namespace Pulumi.OpenStack.Compute
         public Input<string>? Region { get; set; }
 
         [Input("rules")]
-        private InputList<Inputs.SecGroupRulesGetArgs>? _rules;
+        private InputList<Inputs.SecGroupRuleGetArgs>? _rules;
 
         /// <summary>
         /// A rule describing how the security group operates. The
@@ -177,193 +175,14 @@ namespace Pulumi.OpenStack.Compute
         /// security group rules. As shown in the example above, multiple rule blocks
         /// may be used.
         /// </summary>
-        public InputList<Inputs.SecGroupRulesGetArgs> Rules
+        public InputList<Inputs.SecGroupRuleGetArgs> Rules
         {
-            get => _rules ?? (_rules = new InputList<Inputs.SecGroupRulesGetArgs>());
+            get => _rules ?? (_rules = new InputList<Inputs.SecGroupRuleGetArgs>());
             set => _rules = value;
         }
 
         public SecGroupState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class SecGroupRulesArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Required if `from_group_id` or `self` is empty. The IP range
-        /// that will be the source of network traffic to the security group. Use 0.0.0.0/0
-        /// to allow all IP addresses. Changing this creates a new security group rule. Cannot
-        /// be combined with `from_group_id` or `self`.
-        /// </summary>
-        [Input("cidr")]
-        public Input<string>? Cidr { get; set; }
-
-        /// <summary>
-        /// Required if `cidr` or `self` is empty. The ID of a
-        /// group from which to forward traffic to the parent group. Changing this creates a
-        /// new security group rule. Cannot be combined with `cidr` or `self`.
-        /// </summary>
-        [Input("fromGroupId")]
-        public Input<string>? FromGroupId { get; set; }
-
-        /// <summary>
-        /// An integer representing the lower bound of the port
-        /// range to open. Changing this creates a new security group rule.
-        /// </summary>
-        [Input("fromPort", required: true)]
-        public Input<int> FromPort { get; set; } = null!;
-
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        /// <summary>
-        /// The protocol type that will be allowed. Changing
-        /// this creates a new security group rule.
-        /// </summary>
-        [Input("ipProtocol", required: true)]
-        public Input<string> IpProtocol { get; set; } = null!;
-
-        /// <summary>
-        /// Required if `cidr` and `from_group_id` is empty. If true,
-        /// the security group itself will be added as a source to this ingress rule. Cannot
-        /// be combined with `cidr` or `from_group_id`.
-        /// </summary>
-        [Input("self")]
-        public Input<bool>? Self { get; set; }
-
-        /// <summary>
-        /// An integer representing the upper bound of the port
-        /// range to open. Changing this creates a new security group rule.
-        /// </summary>
-        [Input("toPort", required: true)]
-        public Input<int> ToPort { get; set; } = null!;
-
-        public SecGroupRulesArgs()
-        {
-        }
-    }
-
-    public sealed class SecGroupRulesGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Required if `from_group_id` or `self` is empty. The IP range
-        /// that will be the source of network traffic to the security group. Use 0.0.0.0/0
-        /// to allow all IP addresses. Changing this creates a new security group rule. Cannot
-        /// be combined with `from_group_id` or `self`.
-        /// </summary>
-        [Input("cidr")]
-        public Input<string>? Cidr { get; set; }
-
-        /// <summary>
-        /// Required if `cidr` or `self` is empty. The ID of a
-        /// group from which to forward traffic to the parent group. Changing this creates a
-        /// new security group rule. Cannot be combined with `cidr` or `self`.
-        /// </summary>
-        [Input("fromGroupId")]
-        public Input<string>? FromGroupId { get; set; }
-
-        /// <summary>
-        /// An integer representing the lower bound of the port
-        /// range to open. Changing this creates a new security group rule.
-        /// </summary>
-        [Input("fromPort", required: true)]
-        public Input<int> FromPort { get; set; } = null!;
-
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        /// <summary>
-        /// The protocol type that will be allowed. Changing
-        /// this creates a new security group rule.
-        /// </summary>
-        [Input("ipProtocol", required: true)]
-        public Input<string> IpProtocol { get; set; } = null!;
-
-        /// <summary>
-        /// Required if `cidr` and `from_group_id` is empty. If true,
-        /// the security group itself will be added as a source to this ingress rule. Cannot
-        /// be combined with `cidr` or `from_group_id`.
-        /// </summary>
-        [Input("self")]
-        public Input<bool>? Self { get; set; }
-
-        /// <summary>
-        /// An integer representing the upper bound of the port
-        /// range to open. Changing this creates a new security group rule.
-        /// </summary>
-        [Input("toPort", required: true)]
-        public Input<int> ToPort { get; set; } = null!;
-
-        public SecGroupRulesGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class SecGroupRules
-    {
-        /// <summary>
-        /// Required if `from_group_id` or `self` is empty. The IP range
-        /// that will be the source of network traffic to the security group. Use 0.0.0.0/0
-        /// to allow all IP addresses. Changing this creates a new security group rule. Cannot
-        /// be combined with `from_group_id` or `self`.
-        /// </summary>
-        public readonly string? Cidr;
-        /// <summary>
-        /// Required if `cidr` or `self` is empty. The ID of a
-        /// group from which to forward traffic to the parent group. Changing this creates a
-        /// new security group rule. Cannot be combined with `cidr` or `self`.
-        /// </summary>
-        public readonly string? FromGroupId;
-        /// <summary>
-        /// An integer representing the lower bound of the port
-        /// range to open. Changing this creates a new security group rule.
-        /// </summary>
-        public readonly int FromPort;
-        public readonly string Id;
-        /// <summary>
-        /// The protocol type that will be allowed. Changing
-        /// this creates a new security group rule.
-        /// </summary>
-        public readonly string IpProtocol;
-        /// <summary>
-        /// Required if `cidr` and `from_group_id` is empty. If true,
-        /// the security group itself will be added as a source to this ingress rule. Cannot
-        /// be combined with `cidr` or `from_group_id`.
-        /// </summary>
-        public readonly bool? Self;
-        /// <summary>
-        /// An integer representing the upper bound of the port
-        /// range to open. Changing this creates a new security group rule.
-        /// </summary>
-        public readonly int ToPort;
-
-        [OutputConstructor]
-        private SecGroupRules(
-            string? cidr,
-            string? fromGroupId,
-            int fromPort,
-            string id,
-            string ipProtocol,
-            bool? self,
-            int toPort)
-        {
-            Cidr = cidr;
-            FromGroupId = fromGroupId;
-            FromPort = fromPort;
-            Id = id;
-            IpProtocol = ipProtocol;
-            Self = self;
-            ToPort = toPort;
-        }
-    }
     }
 }

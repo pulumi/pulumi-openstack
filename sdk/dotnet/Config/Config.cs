@@ -8,11 +8,10 @@ namespace Pulumi.OpenStack
     public static class Config
     {
         private static readonly Pulumi.Config __config = new Pulumi.Config("openstack");
-
         /// <summary>
-        /// If set to `true`, OpenStack authorization will be perfomed automatically, if the initial auth token get
-        /// expired. This is useful, when the token TTL is low or the overall Terraform provider execution time expected
-        /// to be greater than the initial token TTL.
+        /// If set to `true`, OpenStack authorization will be perfomed automatically, if the initial auth token get expired. This is
+        /// useful, when the token TTL is low or the overall Terraform provider execution time expected to be greater than the
+        /// initial token TTL.
         /// </summary>
         public static bool? AllowReauth { get; set; } = __config.GetBoolean("allowReauth") ?? Utilities.GetEnvBoolean("OS_ALLOW_REAUTH");
 
@@ -62,8 +61,7 @@ namespace Pulumi.OpenStack
         public static bool? DelayedAuth { get; set; } = __config.GetBoolean("delayedAuth") ?? Utilities.GetEnvBoolean("OS_DELAYED_AUTH");
 
         /// <summary>
-        /// If set to `true`, the HTTP `Cache-Control: no-cache` header will not be added by default to all API
-        /// requests.
+        /// If set to `true`, the HTTP `Cache-Control: no-cache` header will not be added by default to all API requests.
         /// </summary>
         public static bool? DisableNoCacheHeader { get; set; } = __config.GetBoolean("disableNoCacheHeader");
 
@@ -140,8 +138,7 @@ namespace Pulumi.OpenStack
         public static string? Token { get; set; } = __config.Get("token") ?? Utilities.GetEnv("OS_TOKEN", "OS_AUTH_TOKEN");
 
         /// <summary>
-        /// If set to `true`, API requests will go the Load Balancer service (Octavia) instead of the Networking service
-        /// (Neutron).
+        /// If set to `true`, API requests will go the Load Balancer service (Octavia) instead of the Networking service (Neutron).
         /// </summary>
         public static bool? UseOctavia { get; set; } = __config.GetBoolean("useOctavia") ?? Utilities.GetEnvBoolean("OS_USE_OCTAVIA");
 
@@ -165,8 +162,5 @@ namespace Pulumi.OpenStack
         /// </summary>
         public static string? UserName { get; set; } = __config.Get("userName") ?? Utilities.GetEnv("OS_USERNAME");
 
-    }
-    namespace ConfigTypes
-    {
     }
 }

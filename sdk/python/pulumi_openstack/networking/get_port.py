@@ -182,7 +182,7 @@ def get_port(admin_state_up=None,description=None,device_id=None,device_owner=No
     """
     Use this data source to get the ID of an available OpenStack port.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_port_v2.html.markdown.
+
 
 
     :param bool admin_state_up: The administrative state of the port.

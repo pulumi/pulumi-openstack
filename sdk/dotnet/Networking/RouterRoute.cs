@@ -12,13 +12,12 @@ namespace Pulumi.OpenStack.Networking
     /// <summary>
     /// Creates a routing entry on a OpenStack V2 router.
     /// 
+    /// 
     /// ## Notes
     /// 
     /// The `next_hop` IP address must be directly reachable from the router at the ``openstack.networking.RouterRoute``
     /// resource creation time.  You can ensure that by explicitly specifying a dependency on the ``openstack.networking.RouterInterface``
     /// resource that connects the next hop to the router, as in the example above.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_router_route_v2.html.markdown.
     /// </summary>
     public partial class RouterRoute : Pulumi.CustomResource
     {
@@ -61,7 +60,7 @@ namespace Pulumi.OpenStack.Networking
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public RouterRoute(string name, RouterRouteArgs args, CustomResourceOptions? options = null)
-            : base("openstack:networking/routerRoute:RouterRoute", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("openstack:networking/routerRoute:RouterRoute", name, args ?? new RouterRouteArgs(), MakeResourceOptions(options, ""))
         {
         }
 

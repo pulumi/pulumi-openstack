@@ -13,8 +13,6 @@ namespace Pulumi.OpenStack.Networking
     /// Associates a floating IP to a port. This is useful for situations
     /// where you have a pre-allocated floating IP or are unable to use the
     /// `openstack.networking.FloatingIp` resource to create a floating IP.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_floatingip_associate_v2.html.markdown.
     /// </summary>
     public partial class FloatingIpAssociate : Pulumi.CustomResource
     {
@@ -53,7 +51,7 @@ namespace Pulumi.OpenStack.Networking
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public FloatingIpAssociate(string name, FloatingIpAssociateArgs args, CustomResourceOptions? options = null)
-            : base("openstack:networking/floatingIpAssociate:FloatingIpAssociate", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("openstack:networking/floatingIpAssociate:FloatingIpAssociate", name, args ?? new FloatingIpAssociateArgs(), MakeResourceOptions(options, ""))
         {
         }
 

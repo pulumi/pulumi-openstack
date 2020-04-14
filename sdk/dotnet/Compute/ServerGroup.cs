@@ -12,6 +12,7 @@ namespace Pulumi.OpenStack.Compute
     /// <summary>
     /// Manages a V2 Server Group resource within OpenStack.
     /// 
+    /// 
     /// ## Policies
     /// 
     /// * `affinity` - All instances/servers launched in this group will be hosted on
@@ -29,8 +30,6 @@ namespace Pulumi.OpenStack.Compute
     ///     hosted on different compute nodes if possible, but if not possible they
     ///     still will be scheduled instead of failure. To use this policy your
     ///     OpenStack environment should support Compute service API 2.15 or above.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_servergroup_v2.html.markdown.
     /// </summary>
     public partial class ServerGroup : Pulumi.CustomResource
     {
@@ -78,7 +77,7 @@ namespace Pulumi.OpenStack.Compute
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ServerGroup(string name, ServerGroupArgs? args = null, CustomResourceOptions? options = null)
-            : base("openstack:compute/serverGroup:ServerGroup", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("openstack:compute/serverGroup:ServerGroup", name, args ?? new ServerGroupArgs(), MakeResourceOptions(options, ""))
         {
         }
 

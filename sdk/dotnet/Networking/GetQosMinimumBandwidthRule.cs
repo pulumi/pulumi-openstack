@@ -9,27 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.OpenStack.Networking
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Use this data source to get the ID of an available OpenStack QoS minimum bandwidth rule.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_qos_minimum_bandwidth_rule_v2.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetQosMinimumBandwidthRule.InvokeAsync() instead")]
-        public static Task<GetQosMinimumBandwidthRuleResult> GetQosMinimumBandwidthRule(GetQosMinimumBandwidthRuleArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetQosMinimumBandwidthRuleResult>("openstack:networking/getQosMinimumBandwidthRule:getQosMinimumBandwidthRule", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetQosMinimumBandwidthRule
     {
         /// <summary>
         /// Use this data source to get the ID of an available OpenStack QoS minimum bandwidth rule.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_qos_minimum_bandwidth_rule_v2.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetQosMinimumBandwidthRuleResult> InvokeAsync(GetQosMinimumBandwidthRuleArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetQosMinimumBandwidthRuleResult>("openstack:networking/getQosMinimumBandwidthRule:getQosMinimumBandwidthRule", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetQosMinimumBandwidthRuleResult>("openstack:networking/getQosMinimumBandwidthRule:getQosMinimumBandwidthRule", args ?? new GetQosMinimumBandwidthRuleArgs(), options.WithVersion());
     }
+
 
     public sealed class GetQosMinimumBandwidthRuleArgs : Pulumi.InvokeArgs
     {
@@ -61,10 +52,15 @@ namespace Pulumi.OpenStack.Networking
         }
     }
 
+
     [OutputType]
     public sealed class GetQosMinimumBandwidthRuleResult
     {
         public readonly string Direction;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// See Argument Reference above.
         /// </summary>
@@ -77,24 +73,24 @@ namespace Pulumi.OpenStack.Networking
         /// See Argument Reference above.
         /// </summary>
         public readonly string Region;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetQosMinimumBandwidthRuleResult(
             string direction,
+
+            string id,
+
             int minKbps,
+
             string qosPolicyId,
-            string region,
-            string id)
+
+            string region)
         {
             Direction = direction;
+            Id = id;
             MinKbps = minKbps;
             QosPolicyId = qosPolicyId;
             Region = region;
-            Id = id;
         }
     }
 }

@@ -11,8 +11,6 @@ namespace Pulumi.OpenStack.Compute
 {
     /// <summary>
     /// Manages a V2 flavor resource within OpenStack.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_flavor_v2.html.markdown.
     /// </summary>
     public partial class Flavor : Pulumi.CustomResource
     {
@@ -92,7 +90,7 @@ namespace Pulumi.OpenStack.Compute
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Flavor(string name, FlavorArgs args, CustomResourceOptions? options = null)
-            : base("openstack:compute/flavor:Flavor", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("openstack:compute/flavor:Flavor", name, args ?? new FlavorArgs(), MakeResourceOptions(options, ""))
         {
         }
 

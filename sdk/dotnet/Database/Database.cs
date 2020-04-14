@@ -11,8 +11,6 @@ namespace Pulumi.OpenStack.Database
 {
     /// <summary>
     /// Manages a V1 DB database resource within OpenStack.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/db_database_v1.html.markdown.
     /// </summary>
     public partial class Database : Pulumi.CustomResource
     {
@@ -43,7 +41,7 @@ namespace Pulumi.OpenStack.Database
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Database(string name, DatabaseArgs args, CustomResourceOptions? options = null)
-            : base("openstack:database/database:Database", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("openstack:database/database:Database", name, args ?? new DatabaseArgs(), MakeResourceOptions(options, ""))
         {
         }
 

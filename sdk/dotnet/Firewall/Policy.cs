@@ -11,8 +11,6 @@ namespace Pulumi.OpenStack.Firewall
 {
     /// <summary>
     /// Manages a v1 firewall policy resource within OpenStack.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/fw_policy_v1.html.markdown.
     /// </summary>
     public partial class Policy : Pulumi.CustomResource
     {
@@ -85,7 +83,7 @@ namespace Pulumi.OpenStack.Firewall
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Policy(string name, PolicyArgs? args = null, CustomResourceOptions? options = null)
-            : base("openstack:firewall/policy:Policy", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("openstack:firewall/policy:Policy", name, args ?? new PolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 

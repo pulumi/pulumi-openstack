@@ -9,19 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.OpenStack.Identity
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Use this data source to get authentication information about the current
-        /// auth scope in use. This can be used as self-discovery or introspection of
-        /// the username or project name currently in use.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_auth_scope_v3.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetAuthScope.InvokeAsync() instead")]
-        public static Task<GetAuthScopeResult> GetAuthScope(GetAuthScopeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAuthScopeResult>("openstack:identity/getAuthScope:getAuthScope", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetAuthScope
     {
         /// <summary>
@@ -29,11 +16,13 @@ namespace Pulumi.OpenStack.Identity
         /// auth scope in use. This can be used as self-discovery or introspection of
         /// the username or project name currently in use.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_auth_scope_v3.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAuthScopeResult> InvokeAsync(GetAuthScopeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAuthScopeResult>("openstack:identity/getAuthScope:getAuthScope", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAuthScopeResult>("openstack:identity/getAuthScope:getAuthScope", args ?? new GetAuthScopeArgs(), options.WithVersion());
     }
+
 
     public sealed class GetAuthScopeArgs : Pulumi.InvokeArgs
     {
@@ -57,6 +46,7 @@ namespace Pulumi.OpenStack.Identity
         }
     }
 
+
     [OutputType]
     public sealed class GetAuthScopeResult
     {
@@ -68,6 +58,10 @@ namespace Pulumi.OpenStack.Identity
         /// The domain name of the scope.
         /// </summary>
         public readonly string DomainName;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         public readonly string Name;
         /// <summary>
         /// The domain ID of the project.
@@ -89,7 +83,7 @@ namespace Pulumi.OpenStack.Identity
         /// <summary>
         /// A list of roles in the current scope. See reference below.
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetAuthScopeRolesResult> Roles;
+        public readonly ImmutableArray<Outputs.GetAuthScopeRoleResult> Roles;
         /// <summary>
         /// The domain ID of the user.
         /// </summary>
@@ -106,30 +100,40 @@ namespace Pulumi.OpenStack.Identity
         /// The username of the scope.
         /// </summary>
         public readonly string UserName;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetAuthScopeResult(
             string domainId,
+
             string domainName,
+
+            string id,
+
             string name,
+
             string projectDomainId,
+
             string projectDomainName,
+
             string projectId,
+
             string projectName,
+
             string region,
-            ImmutableArray<Outputs.GetAuthScopeRolesResult> roles,
+
+            ImmutableArray<Outputs.GetAuthScopeRoleResult> roles,
+
             string userDomainId,
+
             string userDomainName,
+
             string userId,
-            string userName,
-            string id)
+
+            string userName)
         {
             DomainId = domainId;
             DomainName = domainName;
+            Id = id;
             Name = name;
             ProjectDomainId = projectDomainId;
             ProjectDomainName = projectDomainName;
@@ -141,33 +145,6 @@ namespace Pulumi.OpenStack.Identity
             UserDomainName = userDomainName;
             UserId = userId;
             UserName = userName;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetAuthScopeRolesResult
-    {
-        /// <summary>
-        /// The ID of the role.
-        /// </summary>
-        public readonly string RoleId;
-        /// <summary>
-        /// The name of the role.
-        /// </summary>
-        public readonly string RoleName;
-
-        [OutputConstructor]
-        private GetAuthScopeRolesResult(
-            string roleId,
-            string roleName)
-        {
-            RoleId = roleId;
-            RoleName = roleName;
-        }
-    }
     }
 }

@@ -23,8 +23,6 @@ namespace Pulumi.OpenStack.Networking
     /// If a network is marked as external during creation, it now implicitly creates
     /// a wildcard RBAC policy granting everyone access to preserve previous behavior
     /// before this feature was added.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_rbac_policy_v2.html.markdown.
     /// </summary>
     public partial class RbacPolicyV2 : Pulumi.CustomResource
     {
@@ -78,7 +76,7 @@ namespace Pulumi.OpenStack.Networking
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public RbacPolicyV2(string name, RbacPolicyV2Args args, CustomResourceOptions? options = null)
-            : base("openstack:networking/rbacPolicyV2:RbacPolicyV2", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("openstack:networking/rbacPolicyV2:RbacPolicyV2", name, args ?? new RbacPolicyV2Args(), MakeResourceOptions(options, ""))
         {
         }
 

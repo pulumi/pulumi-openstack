@@ -13,8 +13,6 @@ import * as utilities from "../utilities";
  * 
  * ### Simple secret
  * 
- * The container with the TLS certificates, which can be used by the loadbalancer HTTPS listener.
- * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fs from "fs";
@@ -67,8 +65,6 @@ import * as utilities from "../utilities";
  * ```
  * 
  * ### Container with the ACL
- * 
- * > **Note** Only read ACLs are supported
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -9,29 +9,19 @@ using Pulumi.Serialization;
 
 namespace Pulumi.OpenStack.Networking
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Use this data source to get a list of Openstack Port IDs matching the
-        /// specified criteria.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_port_ids_v2.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetPortIds.InvokeAsync() instead")]
-        public static Task<GetPortIdsResult> GetPortIds(GetPortIdsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPortIdsResult>("openstack:networking/getPortIds:getPortIds", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetPortIds
     {
         /// <summary>
         /// Use this data source to get a list of Openstack Port IDs matching the
         /// specified criteria.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_port_ids_v2.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetPortIdsResult> InvokeAsync(GetPortIdsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPortIdsResult>("openstack:networking/getPortIds:getPortIds", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetPortIdsResult>("openstack:networking/getPortIds:getPortIds", args ?? new GetPortIdsArgs(), options.WithVersion());
     }
+
 
     public sealed class GetPortIdsArgs : Pulumi.InvokeArgs
     {
@@ -151,6 +141,7 @@ namespace Pulumi.OpenStack.Networking
         }
     }
 
+
     [OutputType]
     public sealed class GetPortIdsResult
     {
@@ -160,6 +151,10 @@ namespace Pulumi.OpenStack.Networking
         public readonly string? DeviceOwner;
         public readonly string? DnsName;
         public readonly string? FixedIp;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? MacAddress;
         public readonly string? Name;
@@ -172,32 +167,46 @@ namespace Pulumi.OpenStack.Networking
         public readonly string? Status;
         public readonly ImmutableArray<string> Tags;
         public readonly string? TenantId;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetPortIdsResult(
             bool? adminStateUp,
+
             string? description,
+
             string? deviceId,
+
             string? deviceOwner,
+
             string? dnsName,
+
             string? fixedIp,
+
+            string id,
+
             ImmutableArray<string> ids,
+
             string? macAddress,
+
             string? name,
+
             string? networkId,
+
             string? projectId,
+
             string? region,
+
             ImmutableArray<string> securityGroupIds,
+
             string? sortDirection,
+
             string? sortKey,
+
             string? status,
+
             ImmutableArray<string> tags,
-            string? tenantId,
-            string id)
+
+            string? tenantId)
         {
             AdminStateUp = adminStateUp;
             Description = description;
@@ -205,6 +214,7 @@ namespace Pulumi.OpenStack.Networking
             DeviceOwner = deviceOwner;
             DnsName = dnsName;
             FixedIp = fixedIp;
+            Id = id;
             Ids = ids;
             MacAddress = macAddress;
             Name = name;
@@ -217,7 +227,6 @@ namespace Pulumi.OpenStack.Networking
             Status = status;
             Tags = tags;
             TenantId = tenantId;
-            Id = id;
         }
     }
 }

@@ -11,8 +11,6 @@ namespace Pulumi.OpenStack.Networking
 {
     /// <summary>
     /// Manages a V2 Neutron QoS bandwidth limit rule resource within OpenStack.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_qos_bandwidth_limit_rule_v2.html.markdown.
     /// </summary>
     public partial class QosBandwidthLimitRule : Pulumi.CustomResource
     {
@@ -60,7 +58,7 @@ namespace Pulumi.OpenStack.Networking
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public QosBandwidthLimitRule(string name, QosBandwidthLimitRuleArgs args, CustomResourceOptions? options = null)
-            : base("openstack:networking/qosBandwidthLimitRule:QosBandwidthLimitRule", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("openstack:networking/qosBandwidthLimitRule:QosBandwidthLimitRule", name, args ?? new QosBandwidthLimitRuleArgs(), MakeResourceOptions(options, ""))
         {
         }
 

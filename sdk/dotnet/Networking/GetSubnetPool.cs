@@ -9,27 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.OpenStack.Networking
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Use this data source to get the ID of an available OpenStack subnetpool.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_subnetpool_v2.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetSubnetPool.InvokeAsync() instead")]
-        public static Task<GetSubnetPoolResult> GetSubnetPool(GetSubnetPoolArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSubnetPoolResult>("openstack:networking/getSubnetPool:getSubnetPool", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetSubnetPool
     {
         /// <summary>
         /// Use this data source to get the ID of an available OpenStack subnetpool.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_subnetpool_v2.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetSubnetPoolResult> InvokeAsync(GetSubnetPoolArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSubnetPoolResult>("openstack:networking/getSubnetPool:getSubnetPool", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSubnetPoolResult>("openstack:networking/getSubnetPool:getSubnetPool", args ?? new GetSubnetPoolArgs(), options.WithVersion());
     }
+
 
     public sealed class GetSubnetPoolArgs : Pulumi.InvokeArgs
     {
@@ -127,6 +118,7 @@ namespace Pulumi.OpenStack.Networking
         }
     }
 
+
     [OutputType]
     public sealed class GetSubnetPoolResult
     {
@@ -155,6 +147,10 @@ namespace Pulumi.OpenStack.Networking
         /// See Argument Reference above.
         /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         public readonly int IpVersion;
         /// <summary>
         /// See Argument Reference above.
@@ -197,32 +193,46 @@ namespace Pulumi.OpenStack.Networking
         /// The time at which subnetpool was created.
         /// </summary>
         public readonly string UpdatedAt;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetSubnetPoolResult(
             string addressScopeId,
+
             ImmutableArray<string> allTags,
+
             string createdAt,
+
             int defaultPrefixlen,
+
             int defaultQuota,
+
             string description,
+
+            string id,
+
             int ipVersion,
+
             bool isDefault,
+
             int maxPrefixlen,
+
             int minPrefixlen,
+
             string name,
+
             ImmutableArray<string> prefixes,
+
             string projectId,
+
             string region,
+
             int revisionNumber,
+
             bool shared,
+
             ImmutableArray<string> tags,
-            string updatedAt,
-            string id)
+
+            string updatedAt)
         {
             AddressScopeId = addressScopeId;
             AllTags = allTags;
@@ -230,6 +240,7 @@ namespace Pulumi.OpenStack.Networking
             DefaultPrefixlen = defaultPrefixlen;
             DefaultQuota = defaultQuota;
             Description = description;
+            Id = id;
             IpVersion = ipVersion;
             IsDefault = isDefault;
             MaxPrefixlen = maxPrefixlen;
@@ -242,7 +253,6 @@ namespace Pulumi.OpenStack.Networking
             Shared = shared;
             Tags = tags;
             UpdatedAt = updatedAt;
-            Id = id;
         }
     }
 }

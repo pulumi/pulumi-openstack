@@ -13,8 +13,6 @@ namespace Pulumi.OpenStack.Identity
     /// Manages a V3 Service resource within OpenStack Keystone.
     /// 
     /// &gt; **Note:** This usually requires admin privileges.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/identity_service_v3.html.markdown.
     /// </summary>
     public partial class ServiceV3 : Pulumi.CustomResource
     {
@@ -58,7 +56,7 @@ namespace Pulumi.OpenStack.Identity
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ServiceV3(string name, ServiceV3Args args, CustomResourceOptions? options = null)
-            : base("openstack:identity/serviceV3:ServiceV3", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("openstack:identity/serviceV3:ServiceV3", name, args ?? new ServiceV3Args(), MakeResourceOptions(options, ""))
         {
         }
 
