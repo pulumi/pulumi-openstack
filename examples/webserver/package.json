@@ -11,6 +11,6 @@
     },
     "dependencies": {
         "@pulumi/pulumi": "^2.0.0",
-        "@pulumi/openstack": "^2.0.0"
+        "@pulumi/openstack": "latest"
     }
 }
