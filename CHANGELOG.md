@@ -5,6 +5,11 @@ CHANGELOG
 _(none)_
 
 ---
+
+## 2.0.0 (2020-04-17)
+* Upgrade to Pulumi v2.0.0
+* Upgrade to pulumi-terraform-bridge v2.0.0
+
 ## 1.5.0 (2020-04-01)
 - Upgrade to pulumi-terraform-bridge v1.8.4
 - Upgrade to Pulumi v1.13.1
