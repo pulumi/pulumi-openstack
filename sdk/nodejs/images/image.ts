@@ -96,16 +96,16 @@ export class Image extends pulumi.CustomResource {
     public /*out*/ readonly file!: pulumi.Output<string>;
     public readonly imageCachePath!: pulumi.Output<string | undefined>;
     /**
-     * This is the url of the raw image that will
-     * be downloaded in the `imageCachePath` before being uploaded to Glance.
-     * Glance is able to download image from internet but the `gophercloud` library
-     * does not yet provide a way to do so.
+     * This is the url of the raw image. If `webDownload`
+     * is not used, then the image will be downloaded in the `imageCachePath` before
+     * being uploaded to Glance.
      * Conflicts with `localFilePath`.
      */
     public readonly imageSourceUrl!: pulumi.Output<string | undefined>;
     /**
      * This is the filepath of the raw image file
-     * that will be uploaded to Glance. Conflicts with `imageSourceUrl`.
+     * that will be uploaded to Glance. Conflicts with `imageSourceUrl` and
+     * `webDownload`.
      */
     public readonly localFilePath!: pulumi.Output<string | undefined>;
     /**
@@ -179,7 +179,8 @@ export class Image extends pulumi.CustomResource {
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
     /**
      * If false, the checksum will not be verified
-     * once the image is finished uploading. Defaults to true.
+     * once the image is finished uploading. Conflicts with `webDownload`.
+     * Defaults to true when not using `webDownload`.
      */
     public readonly verifyChecksum!: pulumi.Output<boolean | undefined>;
     /**
@@ -188,6 +189,12 @@ export class Image extends pulumi.CustomResource {
      * visibility depends upon the configuration of the OpenStack cloud.
      */
     public readonly visibility!: pulumi.Output<string | undefined>;
+    /**
+     * If true, the "web-download" import method will
+     * be used to let Openstack download the image directly from the remote source.
+     * Conflicts with `localFilePath`. Defaults to false.
+     */
+    public readonly webDownload!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Image resource with the given unique name, arguments, and options.
@@ -225,6 +232,7 @@ export class Image extends pulumi.CustomResource {
             inputs["updatedAt"] = state ? state.updatedAt : undefined;
             inputs["verifyChecksum"] = state ? state.verifyChecksum : undefined;
             inputs["visibility"] = state ? state.visibility : undefined;
+            inputs["webDownload"] = state ? state.webDownload : undefined;
         } else {
             const args = argsOrState as ImageArgs | undefined;
             if (!args || args.containerFormat === undefined) {
@@ -247,6 +255,7 @@ export class Image extends pulumi.CustomResource {
             inputs["tags"] = args ? args.tags : undefined;
             inputs["verifyChecksum"] = args ? args.verifyChecksum : undefined;
             inputs["visibility"] = args ? args.visibility : undefined;
+            inputs["webDownload"] = args ? args.webDownload : undefined;
             inputs["checksum"] = undefined /*out*/;
             inputs["createdAt"] = undefined /*out*/;
             inputs["file"] = undefined /*out*/;
@@ -299,16 +308,16 @@ export interface ImageState {
     readonly file?: pulumi.Input<string>;
     readonly imageCachePath?: pulumi.Input<string>;
     /**
-     * This is the url of the raw image that will
-     * be downloaded in the `imageCachePath` before being uploaded to Glance.
-     * Glance is able to download image from internet but the `gophercloud` library
-     * does not yet provide a way to do so.
+     * This is the url of the raw image. If `webDownload`
+     * is not used, then the image will be downloaded in the `imageCachePath` before
+     * being uploaded to Glance.
      * Conflicts with `localFilePath`.
      */
     readonly imageSourceUrl?: pulumi.Input<string>;
     /**
      * This is the filepath of the raw image file
-     * that will be uploaded to Glance. Conflicts with `imageSourceUrl`.
+     * that will be uploaded to Glance. Conflicts with `imageSourceUrl` and
+     * `webDownload`.
      */
     readonly localFilePath?: pulumi.Input<string>;
     /**
@@ -384,7 +393,8 @@ export interface ImageState {
     readonly updatedAt?: pulumi.Input<string>;
     /**
      * If false, the checksum will not be verified
-     * once the image is finished uploading. Defaults to true.
+     * once the image is finished uploading. Conflicts with `webDownload`.
+     * Defaults to true when not using `webDownload`.
      */
     readonly verifyChecksum?: pulumi.Input<boolean>;
     /**
@@ -393,6 +403,12 @@ export interface ImageState {
      * visibility depends upon the configuration of the OpenStack cloud.
      */
     readonly visibility?: pulumi.Input<string>;
+    /**
+     * If true, the "web-download" import method will
+     * be used to let Openstack download the image directly from the remote source.
+     * Conflicts with `localFilePath`. Defaults to false.
+     */
+    readonly webDownload?: pulumi.Input<boolean>;
 }
 
 /**
@@ -411,16 +427,16 @@ export interface ImageArgs {
     readonly diskFormat: pulumi.Input<string>;
     readonly imageCachePath?: pulumi.Input<string>;
     /**
-     * This is the url of the raw image that will
-     * be downloaded in the `imageCachePath` before being uploaded to Glance.
-     * Glance is able to download image from internet but the `gophercloud` library
-     * does not yet provide a way to do so.
+     * This is the url of the raw image. If `webDownload`
+     * is not used, then the image will be downloaded in the `imageCachePath` before
+     * being uploaded to Glance.
      * Conflicts with `localFilePath`.
      */
     readonly imageSourceUrl?: pulumi.Input<string>;
     /**
      * This is the filepath of the raw image file
-     * that will be uploaded to Glance. Conflicts with `imageSourceUrl`.
+     * that will be uploaded to Glance. Conflicts with `imageSourceUrl` and
+     * `webDownload`.
      */
     readonly localFilePath?: pulumi.Input<string>;
     /**
@@ -462,7 +478,8 @@ export interface ImageArgs {
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * If false, the checksum will not be verified
-     * once the image is finished uploading. Defaults to true.
+     * once the image is finished uploading. Conflicts with `webDownload`.
+     * Defaults to true when not using `webDownload`.
      */
     readonly verifyChecksum?: pulumi.Input<boolean>;
     /**
@@ -471,4 +488,10 @@ export interface ImageArgs {
      * visibility depends upon the configuration of the OpenStack cloud.
      */
     readonly visibility?: pulumi.Input<string>;
+    /**
+     * If true, the "web-download" import method will
+     * be used to let Openstack download the image directly from the remote source.
+     * Conflicts with `localFilePath`. Defaults to false.
+     */
+    readonly webDownload?: pulumi.Input<boolean>;
 }

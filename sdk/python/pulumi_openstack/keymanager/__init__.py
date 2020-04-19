@@ -6,4 +6,5 @@
 from .container_v1 import *
 from .get_container import *
 from .get_secret import *
+from .order_v1 import *
 from .secret_v1 import *

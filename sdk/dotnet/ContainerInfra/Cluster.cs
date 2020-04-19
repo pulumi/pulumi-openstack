@@ -141,7 +141,7 @@ namespace Pulumi.OpenStack.ContainerInfra
         public Output<ImmutableDictionary<string, object>> Labels { get; private set; } = null!;
 
         [Output("masterAddresses")]
-        public Output<string> MasterAddresses { get; private set; } = null!;
+        public Output<ImmutableArray<string>> MasterAddresses { get; private set; } = null!;
 
         [Output("masterCount")]
         public Output<int> MasterCount { get; private set; } = null!;
@@ -153,7 +153,7 @@ namespace Pulumi.OpenStack.ContainerInfra
         public Output<string> Name { get; private set; } = null!;
 
         [Output("nodeAddresses")]
-        public Output<string> NodeAddresses { get; private set; } = null!;
+        public Output<ImmutableArray<string>> NodeAddresses { get; private set; } = null!;
 
         [Output("nodeCount")]
         public Output<int> NodeCount { get; private set; } = null!;
@@ -318,7 +318,12 @@ namespace Pulumi.OpenStack.ContainerInfra
         }
 
         [Input("masterAddresses")]
-        public Input<string>? MasterAddresses { get; set; }
+        private InputList<string>? _masterAddresses;
+        public InputList<string> MasterAddresses
+        {
+            get => _masterAddresses ?? (_masterAddresses = new InputList<string>());
+            set => _masterAddresses = value;
+        }
 
         [Input("masterCount")]
         public Input<int>? MasterCount { get; set; }
@@ -330,7 +335,12 @@ namespace Pulumi.OpenStack.ContainerInfra
         public Input<string>? Name { get; set; }
 
         [Input("nodeAddresses")]
-        public Input<string>? NodeAddresses { get; set; }
+        private InputList<string>? _nodeAddresses;
+        public InputList<string> NodeAddresses
+        {
+            get => _nodeAddresses ?? (_nodeAddresses = new InputList<string>());
+            set => _nodeAddresses = value;
+        }
 
         [Input("nodeCount")]
         public Input<int>? NodeCount { get; set; }

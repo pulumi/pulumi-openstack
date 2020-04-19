@@ -17,6 +17,7 @@ import * as utilities from "../utilities";
  * 
  * const member1 = new openstack.loadbalancer.Member("member1", {
  *     address: "192.168.199.23",
+ *     poolId: "935685fb-a896-40f9-9ff4-ae531a3a00fe",
  *     protocolPort: 8080,
  * });
  * ```
@@ -57,7 +58,7 @@ export class Member extends pulumi.CustomResource {
     public readonly address!: pulumi.Output<string>;
     /**
      * The administrative state of the member.
-     * A valid value is true (UP) or false (DOWN).
+     * A valid value is true (UP) or false (DOWN). Defaults to true.
      */
     public readonly adminStateUp!: pulumi.Output<boolean | undefined>;
     /**
@@ -65,8 +66,8 @@ export class Member extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The id of the pool that this member will be
-     * assigned to.
+     * The id of the pool that this member will be assigned
+     * to. Changing this creates a new member.
      */
     public readonly poolId!: pulumi.Output<string>;
     /**
@@ -76,13 +77,13 @@ export class Member extends pulumi.CustomResource {
     public readonly protocolPort!: pulumi.Output<number>;
     /**
      * The region in which to obtain the V2 Networking client.
-     * A Networking client is needed to create an . If omitted, the
-     * `region` argument of the provider is used. Changing this creates a new
-     * member.
+     * A Networking client is needed to create a member. If omitted, the `region`
+     * argument of the provider is used. Changing this creates a new member.
      */
     public readonly region!: pulumi.Output<string>;
     /**
-     * The subnet in which to access the member
+     * The subnet in which to access the member. Changing
+     * this creates a new member.
      */
     public readonly subnetId!: pulumi.Output<string | undefined>;
     /**
@@ -95,7 +96,7 @@ export class Member extends pulumi.CustomResource {
      * A positive integer value that indicates the relative
      * portion of traffic that this member should receive from the pool. For
      * example, a member with a weight of 10 receives five times as much traffic
-     * as a member with a weight of 2.
+     * as a member with a weight of 2. Defaults to 1.
      */
     public readonly weight!: pulumi.Output<number>;
 
@@ -163,7 +164,7 @@ export interface MemberState {
     readonly address?: pulumi.Input<string>;
     /**
      * The administrative state of the member.
-     * A valid value is true (UP) or false (DOWN).
+     * A valid value is true (UP) or false (DOWN). Defaults to true.
      */
     readonly adminStateUp?: pulumi.Input<boolean>;
     /**
@@ -171,8 +172,8 @@ export interface MemberState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The id of the pool that this member will be
-     * assigned to.
+     * The id of the pool that this member will be assigned
+     * to. Changing this creates a new member.
      */
     readonly poolId?: pulumi.Input<string>;
     /**
@@ -182,13 +183,13 @@ export interface MemberState {
     readonly protocolPort?: pulumi.Input<number>;
     /**
      * The region in which to obtain the V2 Networking client.
-     * A Networking client is needed to create an . If omitted, the
-     * `region` argument of the provider is used. Changing this creates a new
-     * member.
+     * A Networking client is needed to create a member. If omitted, the `region`
+     * argument of the provider is used. Changing this creates a new member.
      */
     readonly region?: pulumi.Input<string>;
     /**
-     * The subnet in which to access the member
+     * The subnet in which to access the member. Changing
+     * this creates a new member.
      */
     readonly subnetId?: pulumi.Input<string>;
     /**
@@ -201,7 +202,7 @@ export interface MemberState {
      * A positive integer value that indicates the relative
      * portion of traffic that this member should receive from the pool. For
      * example, a member with a weight of 10 receives five times as much traffic
-     * as a member with a weight of 2.
+     * as a member with a weight of 2. Defaults to 1.
      */
     readonly weight?: pulumi.Input<number>;
 }
@@ -217,7 +218,7 @@ export interface MemberArgs {
     readonly address: pulumi.Input<string>;
     /**
      * The administrative state of the member.
-     * A valid value is true (UP) or false (DOWN).
+     * A valid value is true (UP) or false (DOWN). Defaults to true.
      */
     readonly adminStateUp?: pulumi.Input<boolean>;
     /**
@@ -225,8 +226,8 @@ export interface MemberArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The id of the pool that this member will be
-     * assigned to.
+     * The id of the pool that this member will be assigned
+     * to. Changing this creates a new member.
      */
     readonly poolId: pulumi.Input<string>;
     /**
@@ -236,13 +237,13 @@ export interface MemberArgs {
     readonly protocolPort: pulumi.Input<number>;
     /**
      * The region in which to obtain the V2 Networking client.
-     * A Networking client is needed to create an . If omitted, the
-     * `region` argument of the provider is used. Changing this creates a new
-     * member.
+     * A Networking client is needed to create a member. If omitted, the `region`
+     * argument of the provider is used. Changing this creates a new member.
      */
     readonly region?: pulumi.Input<string>;
     /**
-     * The subnet in which to access the member
+     * The subnet in which to access the member. Changing
+     * this creates a new member.
      */
     readonly subnetId?: pulumi.Input<string>;
     /**
@@ -255,7 +256,7 @@ export interface MemberArgs {
      * A positive integer value that indicates the relative
      * portion of traffic that this member should receive from the pool. For
      * example, a member with a weight of 10 receives five times as much traffic
-     * as a member with a weight of 2.
+     * as a member with a weight of 2. Defaults to 1.
      */
     readonly weight?: pulumi.Input<number>;
 }

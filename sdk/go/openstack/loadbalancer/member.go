@@ -18,22 +18,22 @@ type Member struct {
 	// the load balancer. Changing this creates a new member.
 	Address pulumi.StringOutput `pulumi:"address"`
 	// The administrative state of the member.
-	// A valid value is true (UP) or false (DOWN).
+	// A valid value is true (UP) or false (DOWN). Defaults to true.
 	AdminStateUp pulumi.BoolPtrOutput `pulumi:"adminStateUp"`
 	// Human-readable name for the member.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The id of the pool that this member will be
-	// assigned to.
+	// The id of the pool that this member will be assigned
+	// to. Changing this creates a new member.
 	PoolId pulumi.StringOutput `pulumi:"poolId"`
 	// The port on which to listen for client traffic.
 	// Changing this creates a new member.
 	ProtocolPort pulumi.IntOutput `pulumi:"protocolPort"`
 	// The region in which to obtain the V2 Networking client.
-	// A Networking client is needed to create an . If omitted, the
-	// `region` argument of the provider is used. Changing this creates a new
-	// member.
+	// A Networking client is needed to create a member. If omitted, the `region`
+	// argument of the provider is used. Changing this creates a new member.
 	Region pulumi.StringOutput `pulumi:"region"`
-	// The subnet in which to access the member
+	// The subnet in which to access the member. Changing
+	// this creates a new member.
 	SubnetId pulumi.StringPtrOutput `pulumi:"subnetId"`
 	// Required for admins. The UUID of the tenant who owns
 	// the member.  Only administrative users can specify a tenant UUID
@@ -42,7 +42,7 @@ type Member struct {
 	// A positive integer value that indicates the relative
 	// portion of traffic that this member should receive from the pool. For
 	// example, a member with a weight of 10 receives five times as much traffic
-	// as a member with a weight of 2.
+	// as a member with a weight of 2. Defaults to 1.
 	Weight pulumi.IntOutput `pulumi:"weight"`
 }
 
@@ -87,22 +87,22 @@ type memberState struct {
 	// the load balancer. Changing this creates a new member.
 	Address *string `pulumi:"address"`
 	// The administrative state of the member.
-	// A valid value is true (UP) or false (DOWN).
+	// A valid value is true (UP) or false (DOWN). Defaults to true.
 	AdminStateUp *bool `pulumi:"adminStateUp"`
 	// Human-readable name for the member.
 	Name *string `pulumi:"name"`
-	// The id of the pool that this member will be
-	// assigned to.
+	// The id of the pool that this member will be assigned
+	// to. Changing this creates a new member.
 	PoolId *string `pulumi:"poolId"`
 	// The port on which to listen for client traffic.
 	// Changing this creates a new member.
 	ProtocolPort *int `pulumi:"protocolPort"`
 	// The region in which to obtain the V2 Networking client.
-	// A Networking client is needed to create an . If omitted, the
-	// `region` argument of the provider is used. Changing this creates a new
-	// member.
+	// A Networking client is needed to create a member. If omitted, the `region`
+	// argument of the provider is used. Changing this creates a new member.
 	Region *string `pulumi:"region"`
-	// The subnet in which to access the member
+	// The subnet in which to access the member. Changing
+	// this creates a new member.
 	SubnetId *string `pulumi:"subnetId"`
 	// Required for admins. The UUID of the tenant who owns
 	// the member.  Only administrative users can specify a tenant UUID
@@ -111,7 +111,7 @@ type memberState struct {
 	// A positive integer value that indicates the relative
 	// portion of traffic that this member should receive from the pool. For
 	// example, a member with a weight of 10 receives five times as much traffic
-	// as a member with a weight of 2.
+	// as a member with a weight of 2. Defaults to 1.
 	Weight *int `pulumi:"weight"`
 }
 
@@ -120,22 +120,22 @@ type MemberState struct {
 	// the load balancer. Changing this creates a new member.
 	Address pulumi.StringPtrInput
 	// The administrative state of the member.
-	// A valid value is true (UP) or false (DOWN).
+	// A valid value is true (UP) or false (DOWN). Defaults to true.
 	AdminStateUp pulumi.BoolPtrInput
 	// Human-readable name for the member.
 	Name pulumi.StringPtrInput
-	// The id of the pool that this member will be
-	// assigned to.
+	// The id of the pool that this member will be assigned
+	// to. Changing this creates a new member.
 	PoolId pulumi.StringPtrInput
 	// The port on which to listen for client traffic.
 	// Changing this creates a new member.
 	ProtocolPort pulumi.IntPtrInput
 	// The region in which to obtain the V2 Networking client.
-	// A Networking client is needed to create an . If omitted, the
-	// `region` argument of the provider is used. Changing this creates a new
-	// member.
+	// A Networking client is needed to create a member. If omitted, the `region`
+	// argument of the provider is used. Changing this creates a new member.
 	Region pulumi.StringPtrInput
-	// The subnet in which to access the member
+	// The subnet in which to access the member. Changing
+	// this creates a new member.
 	SubnetId pulumi.StringPtrInput
 	// Required for admins. The UUID of the tenant who owns
 	// the member.  Only administrative users can specify a tenant UUID
@@ -144,7 +144,7 @@ type MemberState struct {
 	// A positive integer value that indicates the relative
 	// portion of traffic that this member should receive from the pool. For
 	// example, a member with a weight of 10 receives five times as much traffic
-	// as a member with a weight of 2.
+	// as a member with a weight of 2. Defaults to 1.
 	Weight pulumi.IntPtrInput
 }
 
@@ -157,22 +157,22 @@ type memberArgs struct {
 	// the load balancer. Changing this creates a new member.
 	Address string `pulumi:"address"`
 	// The administrative state of the member.
-	// A valid value is true (UP) or false (DOWN).
+	// A valid value is true (UP) or false (DOWN). Defaults to true.
 	AdminStateUp *bool `pulumi:"adminStateUp"`
 	// Human-readable name for the member.
 	Name *string `pulumi:"name"`
-	// The id of the pool that this member will be
-	// assigned to.
+	// The id of the pool that this member will be assigned
+	// to. Changing this creates a new member.
 	PoolId string `pulumi:"poolId"`
 	// The port on which to listen for client traffic.
 	// Changing this creates a new member.
 	ProtocolPort int `pulumi:"protocolPort"`
 	// The region in which to obtain the V2 Networking client.
-	// A Networking client is needed to create an . If omitted, the
-	// `region` argument of the provider is used. Changing this creates a new
-	// member.
+	// A Networking client is needed to create a member. If omitted, the `region`
+	// argument of the provider is used. Changing this creates a new member.
 	Region *string `pulumi:"region"`
-	// The subnet in which to access the member
+	// The subnet in which to access the member. Changing
+	// this creates a new member.
 	SubnetId *string `pulumi:"subnetId"`
 	// Required for admins. The UUID of the tenant who owns
 	// the member.  Only administrative users can specify a tenant UUID
@@ -181,7 +181,7 @@ type memberArgs struct {
 	// A positive integer value that indicates the relative
 	// portion of traffic that this member should receive from the pool. For
 	// example, a member with a weight of 10 receives five times as much traffic
-	// as a member with a weight of 2.
+	// as a member with a weight of 2. Defaults to 1.
 	Weight *int `pulumi:"weight"`
 }
 
@@ -191,22 +191,22 @@ type MemberArgs struct {
 	// the load balancer. Changing this creates a new member.
 	Address pulumi.StringInput
 	// The administrative state of the member.
-	// A valid value is true (UP) or false (DOWN).
+	// A valid value is true (UP) or false (DOWN). Defaults to true.
 	AdminStateUp pulumi.BoolPtrInput
 	// Human-readable name for the member.
 	Name pulumi.StringPtrInput
-	// The id of the pool that this member will be
-	// assigned to.
+	// The id of the pool that this member will be assigned
+	// to. Changing this creates a new member.
 	PoolId pulumi.StringInput
 	// The port on which to listen for client traffic.
 	// Changing this creates a new member.
 	ProtocolPort pulumi.IntInput
 	// The region in which to obtain the V2 Networking client.
-	// A Networking client is needed to create an . If omitted, the
-	// `region` argument of the provider is used. Changing this creates a new
-	// member.
+	// A Networking client is needed to create a member. If omitted, the `region`
+	// argument of the provider is used. Changing this creates a new member.
 	Region pulumi.StringPtrInput
-	// The subnet in which to access the member
+	// The subnet in which to access the member. Changing
+	// this creates a new member.
 	SubnetId pulumi.StringPtrInput
 	// Required for admins. The UUID of the tenant who owns
 	// the member.  Only administrative users can specify a tenant UUID
@@ -215,7 +215,7 @@ type MemberArgs struct {
 	// A positive integer value that indicates the relative
 	// portion of traffic that this member should receive from the pool. For
 	// example, a member with a weight of 10 receives five times as much traffic
-	// as a member with a weight of 2.
+	// as a member with a weight of 2. Defaults to 1.
 	Weight pulumi.IntPtrInput
 }
 

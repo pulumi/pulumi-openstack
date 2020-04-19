@@ -151,11 +151,11 @@ export class Cluster extends pulumi.CustomResource {
     public readonly flavor!: pulumi.Output<string>;
     public readonly keypair!: pulumi.Output<string>;
     public readonly labels!: pulumi.Output<{[key: string]: any}>;
-    public /*out*/ readonly masterAddresses!: pulumi.Output<string>;
+    public /*out*/ readonly masterAddresses!: pulumi.Output<string[]>;
     public readonly masterCount!: pulumi.Output<number>;
     public readonly masterFlavor!: pulumi.Output<string>;
     public readonly name!: pulumi.Output<string>;
-    public /*out*/ readonly nodeAddresses!: pulumi.Output<string>;
+    public /*out*/ readonly nodeAddresses!: pulumi.Output<string[]>;
     public readonly nodeCount!: pulumi.Output<number>;
     public /*out*/ readonly projectId!: pulumi.Output<string>;
     public readonly region!: pulumi.Output<string>;
@@ -257,11 +257,11 @@ export interface ClusterState {
     readonly flavor?: pulumi.Input<string>;
     readonly keypair?: pulumi.Input<string>;
     readonly labels?: pulumi.Input<{[key: string]: any}>;
-    readonly masterAddresses?: pulumi.Input<string>;
+    readonly masterAddresses?: pulumi.Input<pulumi.Input<string>[]>;
     readonly masterCount?: pulumi.Input<number>;
     readonly masterFlavor?: pulumi.Input<string>;
     readonly name?: pulumi.Input<string>;
-    readonly nodeAddresses?: pulumi.Input<string>;
+    readonly nodeAddresses?: pulumi.Input<pulumi.Input<string>[]>;
     readonly nodeCount?: pulumi.Input<number>;
     readonly projectId?: pulumi.Input<string>;
     readonly region?: pulumi.Input<string>;

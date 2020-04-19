@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
- * 
+ * ### Basic Container
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -27,6 +27,46 @@ import * as utilities from "../utilities";
  *         location: "tf-test-container-versions",
  *         type: "versions",
  *     },
+ * });
+ * ```
+ * 
+ * ### Global Read Access
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ * 
+ * const container1 = new openstack.objectstorage.Container("container1", {
+ *     containerRead: ".r:*",
+ *     region: "RegionOne",
+ * });
+ * ```
+ * 
+ * ### Global Read and List Access
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ * 
+ * const container1 = new openstack.objectstorage.Container("container1", {
+ *     containerRead: ".r:*,.rlistings",
+ *     region: "RegionOne",
+ * });
+ * ```
+ * 
+ * ### Write-Only Access for a User
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ * 
+ * const current = openstack.identity.getAuthScope({
+ *     name: "current",
+ * });
+ * const container1 = new openstack.objectstorage.Container("container1", {
+ *     containerRead: `.r:-${var_username}`,
+ *     containerWrite: `${current.projectId}:${var_username}`,
+ *     region: "RegionOne",
  * });
  * ```
  *

@@ -206,6 +206,7 @@ _SNAKE_TO_CAMEL_CASE_TABLE = {
     "object_id": "objectId",
     "object_manifest": "objectManifest",
     "object_type": "objectType",
+    "order_ref": "orderRef",
     "os_type": "osType",
     "parent_id": "parentId",
     "payload_content_encoding": "payloadContentEncoding",
@@ -276,6 +277,8 @@ _SNAKE_TO_CAMEL_CASE_TABLE = {
     "status_reason": "statusReason",
     "stop_before_destroy": "stopBeforeDestroy",
     "sub_ports": "subPorts",
+    "sub_status": "subStatus",
+    "sub_status_message": "subStatusMessage",
     "subnet_id": "subnetId",
     "subnetpool_id": "subnetpoolId",
     "target_tenant": "targetTenant",
@@ -312,6 +315,7 @@ _SNAKE_TO_CAMEL_CASE_TABLE = {
     "volume_type": "volumeType",
     "vpnservice_id": "vpnserviceId",
     "wait_until_associated": "waitUntilAssociated",
+    "web_download": "webDownload",
     "zone_id": "zoneId",
 }
 
@@ -519,6 +523,7 @@ _CAMEL_TO_SNAKE_CASE_TABLE = {
     "objectId": "object_id",
     "objectManifest": "object_manifest",
     "objectType": "object_type",
+    "orderRef": "order_ref",
     "osType": "os_type",
     "parentId": "parent_id",
     "payloadContentEncoding": "payload_content_encoding",
@@ -589,6 +594,8 @@ _CAMEL_TO_SNAKE_CASE_TABLE = {
     "statusReason": "status_reason",
     "stopBeforeDestroy": "stop_before_destroy",
     "subPorts": "sub_ports",
+    "subStatus": "sub_status",
+    "subStatusMessage": "sub_status_message",
     "subnetId": "subnet_id",
     "subnetpoolId": "subnetpool_id",
     "targetTenant": "target_tenant",
@@ -625,5 +632,6 @@ _CAMEL_TO_SNAKE_CASE_TABLE = {
     "volumeType": "volume_type",
     "vpnserviceId": "vpnservice_id",
     "waitUntilAssociated": "wait_until_associated",
+    "webDownload": "web_download",
     "zoneId": "zone_id",
 }

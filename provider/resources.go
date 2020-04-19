@@ -342,6 +342,14 @@ func Provider() tfbridge.ProviderInfo {
 			"openstack_lb_pool_v2":         {Tok: openstackResource(lbMod, "Pool")},
 			"openstack_lb_member_v2":       {Tok: openstackResource(lbMod, "Member")},
 			"openstack_lb_monitor_v2":      {Tok: openstackResource(lbMod, "Monitor")},
+			"openstack_lb_members_v2": {
+				Tok: openstackResource(lbMod, "Members"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"member": {
+						CSharpName: "MemberList",
+					},
+				},
+			},
 
 			// Firewall
 			"openstack_fw_firewall_v1": {Tok: openstackResource(firewallMod, "Firewall")},
@@ -369,6 +377,7 @@ func Provider() tfbridge.ProviderInfo {
 			// KeyManager
 			"openstack_keymanager_container_v1": {Tok: openstackResource(keymanagerMod, "ContainerV1")},
 			"openstack_keymanager_secret_v1":    {Tok: openstackResource(keymanagerMod, "SecretV1")},
+			"openstack_keymanager_order_v1":     {Tok: openstackResource(keymanagerMod, "OrderV1")},
 
 			// Orchestration
 			"openstack_orchestration_stack_v1": {Tok: openstackResource(orchestrationMod, "StackV1")},

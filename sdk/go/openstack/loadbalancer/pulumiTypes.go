@@ -10,6 +10,174 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+type MembersMember struct {
+	// The IP address of the members to receive traffic from
+	// the load balancer.
+	Address string `pulumi:"address"`
+	// The administrative state of the member.
+	// A valid value is true (UP) or false (DOWN). Defaults to true.
+	AdminStateUp *bool `pulumi:"adminStateUp"`
+	// The unique ID for the members.
+	Id *string `pulumi:"id"`
+	// Human-readable name for the member.
+	Name *string `pulumi:"name"`
+	// The port on which to listen for client traffic.
+	ProtocolPort int `pulumi:"protocolPort"`
+	// The subnet in which to access the member.
+	SubnetId *string `pulumi:"subnetId"`
+	// A positive integer value that indicates the relative
+	// portion of traffic that this members should receive from the pool. For
+	// example, a member with a weight of 10 receives five times as much traffic
+	// as a member with a weight of 2. Defaults to 1.
+	Weight *int `pulumi:"weight"`
+}
+
+// MembersMemberInput is an input type that accepts MembersMemberArgs and MembersMemberOutput values.
+// You can construct a concrete instance of `MembersMemberInput` via:
+//
+// 		 MembersMemberArgs{...}
+//
+type MembersMemberInput interface {
+	pulumi.Input
+
+	ToMembersMemberOutput() MembersMemberOutput
+	ToMembersMemberOutputWithContext(context.Context) MembersMemberOutput
+}
+
+type MembersMemberArgs struct {
+	// The IP address of the members to receive traffic from
+	// the load balancer.
+	Address pulumi.StringInput `pulumi:"address"`
+	// The administrative state of the member.
+	// A valid value is true (UP) or false (DOWN). Defaults to true.
+	AdminStateUp pulumi.BoolPtrInput `pulumi:"adminStateUp"`
+	// The unique ID for the members.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Human-readable name for the member.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The port on which to listen for client traffic.
+	ProtocolPort pulumi.IntInput `pulumi:"protocolPort"`
+	// The subnet in which to access the member.
+	SubnetId pulumi.StringPtrInput `pulumi:"subnetId"`
+	// A positive integer value that indicates the relative
+	// portion of traffic that this members should receive from the pool. For
+	// example, a member with a weight of 10 receives five times as much traffic
+	// as a member with a weight of 2. Defaults to 1.
+	Weight pulumi.IntPtrInput `pulumi:"weight"`
+}
+
+func (MembersMemberArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MembersMember)(nil)).Elem()
+}
+
+func (i MembersMemberArgs) ToMembersMemberOutput() MembersMemberOutput {
+	return i.ToMembersMemberOutputWithContext(context.Background())
+}
+
+func (i MembersMemberArgs) ToMembersMemberOutputWithContext(ctx context.Context) MembersMemberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MembersMemberOutput)
+}
+
+// MembersMemberArrayInput is an input type that accepts MembersMemberArray and MembersMemberArrayOutput values.
+// You can construct a concrete instance of `MembersMemberArrayInput` via:
+//
+// 		 MembersMemberArray{ MembersMemberArgs{...} }
+//
+type MembersMemberArrayInput interface {
+	pulumi.Input
+
+	ToMembersMemberArrayOutput() MembersMemberArrayOutput
+	ToMembersMemberArrayOutputWithContext(context.Context) MembersMemberArrayOutput
+}
+
+type MembersMemberArray []MembersMemberInput
+
+func (MembersMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MembersMember)(nil)).Elem()
+}
+
+func (i MembersMemberArray) ToMembersMemberArrayOutput() MembersMemberArrayOutput {
+	return i.ToMembersMemberArrayOutputWithContext(context.Background())
+}
+
+func (i MembersMemberArray) ToMembersMemberArrayOutputWithContext(ctx context.Context) MembersMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MembersMemberArrayOutput)
+}
+
+type MembersMemberOutput struct{ *pulumi.OutputState }
+
+func (MembersMemberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MembersMember)(nil)).Elem()
+}
+
+func (o MembersMemberOutput) ToMembersMemberOutput() MembersMemberOutput {
+	return o
+}
+
+func (o MembersMemberOutput) ToMembersMemberOutputWithContext(ctx context.Context) MembersMemberOutput {
+	return o
+}
+
+// The IP address of the members to receive traffic from
+// the load balancer.
+func (o MembersMemberOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v MembersMember) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// The administrative state of the member.
+// A valid value is true (UP) or false (DOWN). Defaults to true.
+func (o MembersMemberOutput) AdminStateUp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MembersMember) *bool { return v.AdminStateUp }).(pulumi.BoolPtrOutput)
+}
+
+// The unique ID for the members.
+func (o MembersMemberOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MembersMember) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Human-readable name for the member.
+func (o MembersMemberOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MembersMember) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The port on which to listen for client traffic.
+func (o MembersMemberOutput) ProtocolPort() pulumi.IntOutput {
+	return o.ApplyT(func(v MembersMember) int { return v.ProtocolPort }).(pulumi.IntOutput)
+}
+
+// The subnet in which to access the member.
+func (o MembersMemberOutput) SubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MembersMember) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
+}
+
+// A positive integer value that indicates the relative
+// portion of traffic that this members should receive from the pool. For
+// example, a member with a weight of 10 receives five times as much traffic
+// as a member with a weight of 2. Defaults to 1.
+func (o MembersMemberOutput) Weight() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MembersMember) *int { return v.Weight }).(pulumi.IntPtrOutput)
+}
+
+type MembersMemberArrayOutput struct{ *pulumi.OutputState }
+
+func (MembersMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MembersMember)(nil)).Elem()
+}
+
+func (o MembersMemberArrayOutput) ToMembersMemberArrayOutput() MembersMemberArrayOutput {
+	return o
+}
+
+func (o MembersMemberArrayOutput) ToMembersMemberArrayOutputWithContext(ctx context.Context) MembersMemberArrayOutput {
+	return o
+}
+
+func (o MembersMemberArrayOutput) Index(i pulumi.IntInput) MembersMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MembersMember {
+		return vs[0].([]MembersMember)[vs[1].(int)]
+	}).(MembersMemberOutput)
+}
+
 type PoolPersistence struct {
 	// The name of the cookie if persistence mode is set
 	// appropriately. Required if `type = APP_COOKIE`.
@@ -161,6 +329,8 @@ func (o PoolPersistencePtrOutput) Type() pulumi.StringOutput {
 }
 
 func init() {
+	pulumi.RegisterOutputType(MembersMemberOutput{})
+	pulumi.RegisterOutputType(MembersMemberArrayOutput{})
 	pulumi.RegisterOutputType(PoolPersistenceOutput{})
 	pulumi.RegisterOutputType(PoolPersistencePtrOutput{})
 }

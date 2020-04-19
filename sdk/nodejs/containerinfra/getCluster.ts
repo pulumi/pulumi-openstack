@@ -109,7 +109,7 @@ export interface GetClusterResult {
     /**
      * IP addresses of the master node of the cluster.
      */
-    readonly masterAddresses: string;
+    readonly masterAddresses: string[];
     /**
      * The number of master nodes for the cluster.
      */
@@ -125,7 +125,7 @@ export interface GetClusterResult {
     /**
      * IP addresses of the node of the cluster.
      */
-    readonly nodeAddresses: string;
+    readonly nodeAddresses: string[];
     /**
      * The number of nodes for the cluster.
      */

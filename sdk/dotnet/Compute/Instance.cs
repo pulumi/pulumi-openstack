@@ -23,7 +23,7 @@ namespace Pulumi.OpenStack.Compute
     /// ### Importing an instance with multiple emphemeral disks
     /// 
     /// The importer cannot read the emphemeral disk configuration
-    /// of an instance, so just specify image_id as in the configuration 
+    /// of an instance, so just specify image_id as in the configuration
     /// of the basic instance example.
     /// </summary>
     public partial class Instance : Pulumi.CustomResource

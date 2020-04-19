@@ -58,7 +58,7 @@ type LookupClusterResult struct {
 	// the cluster.
 	Labels map[string]interface{} `pulumi:"labels"`
 	// IP addresses of the master node of the cluster.
-	MasterAddresses string `pulumi:"masterAddresses"`
+	MasterAddresses []string `pulumi:"masterAddresses"`
 	// The number of master nodes for the cluster.
 	MasterCount int `pulumi:"masterCount"`
 	// The flavor for the master nodes.
@@ -66,7 +66,7 @@ type LookupClusterResult struct {
 	// See Argument Reference above.
 	Name string `pulumi:"name"`
 	// IP addresses of the node of the cluster.
-	NodeAddresses string `pulumi:"nodeAddresses"`
+	NodeAddresses []string `pulumi:"nodeAddresses"`
 	// The number of nodes for the cluster.
 	NodeCount int `pulumi:"nodeCount"`
 	// The project of the cluster.

@@ -13,7 +13,7 @@ import (
 type ContainerVersioning struct {
 	// Container in which versions will be stored.
 	Location string `pulumi:"location"`
-	// Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/overview_object_versioning.html).
+	// Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/api/object_versioning.html).
 	Type string `pulumi:"type"`
 }
 
@@ -32,7 +32,7 @@ type ContainerVersioningInput interface {
 type ContainerVersioningArgs struct {
 	// Container in which versions will be stored.
 	Location pulumi.StringInput `pulumi:"location"`
-	// Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/overview_object_versioning.html).
+	// Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/api/object_versioning.html).
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -119,7 +119,7 @@ func (o ContainerVersioningOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v ContainerVersioning) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/overview_object_versioning.html).
+// Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/api/object_versioning.html).
 func (o ContainerVersioningOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ContainerVersioning) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -147,7 +147,7 @@ func (o ContainerVersioningPtrOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v ContainerVersioning) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/overview_object_versioning.html).
+// Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/api/object_versioning.html).
 func (o ContainerVersioningPtrOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ContainerVersioning) string { return v.Type }).(pulumi.StringOutput)
 }

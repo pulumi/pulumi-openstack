@@ -164,6 +164,12 @@ export namespace compute {
 
     export interface InstanceVendorOptions {
         /**
+         * Whether to try to detach all attached
+         * ports to the vm before destroying it to make sure the port state is correct
+         * after the vm destruction. This is helpful when the port is not deleted.
+         */
+        detachPortsBeforeDestroy?: boolean;
+        /**
          * Boolean to control whether
          * to ignore manual confirmation of the instance resizing. This can be helpful
          * to work with some OpenStack clouds which automatically confirm resizing of
@@ -479,6 +485,33 @@ export namespace keymanager {
         users?: string[];
     }
 
+    export interface OrderV1Meta {
+        /**
+         * Algorithm to use for key generation.
+         */
+        algorithm: string;
+        /**
+         * - Bit lenght of key to be generated.
+         */
+        bitLength: number;
+        /**
+         * This is a UTC timestamp in ISO 8601 format YYYY-MM-DDTHH:MM:SSZ. If set, the secret will not be available after this time.
+         */
+        expiration?: string;
+        /**
+         * The mode to use for key generation.
+         */
+        mode?: string;
+        /**
+         * The name of the secret set by the user.
+         */
+        name?: string;
+        /**
+         * The media type for the content of the secrets payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.
+         */
+        payloadContentType?: string;
+    }
+
     export interface SecretV1Acl {
         read: outputs.keymanager.SecretV1AclRead;
     }
@@ -506,6 +539,42 @@ export namespace keymanager {
 }
 
 export namespace loadbalancer {
+    export interface MembersMember {
+        /**
+         * The IP address of the members to receive traffic from
+         * the load balancer.
+         */
+        address: string;
+        /**
+         * The administrative state of the member.
+         * A valid value is true (UP) or false (DOWN). Defaults to true.
+         */
+        adminStateUp?: boolean;
+        /**
+         * The unique ID for the members.
+         */
+        id: string;
+        /**
+         * Human-readable name for the member.
+         */
+        name?: string;
+        /**
+         * The port on which to listen for client traffic.
+         */
+        protocolPort: number;
+        /**
+         * The subnet in which to access the member.
+         */
+        subnetId?: string;
+        /**
+         * A positive integer value that indicates the relative
+         * portion of traffic that this members should receive from the pool. For
+         * example, a member with a weight of 10 receives five times as much traffic
+         * as a member with a weight of 2. Defaults to 1.
+         */
+        weight?: number;
+    }
+
     export interface PoolPersistence {
         /**
          * The name of the cookie if persistence mode is set
@@ -759,7 +828,7 @@ export namespace objectstorage {
          */
         location: string;
         /**
-         * Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/overview_object_versioning.html).
+         * Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/api/object_versioning.html).
          */
         type: string;
     }

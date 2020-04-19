@@ -211,6 +211,9 @@ class Instance(pulumi.CustomResource):
     Map of additional vendor-specific options.
     Supported options are described below.
 
+      * `detachPortsBeforeDestroy` (`bool`) - Whether to try to detach all attached
+        ports to the vm before destroying it to make sure the port state is correct
+        after the vm destruction. This is helpful when the port is not deleted.
       * `ignoreResizeConfirmation` (`bool`) - Boolean to control whether
         to ignore manual confirmation of the instance resizing. This can be helpful
         to work with some OpenStack clouds which automatically confirm resizing of
@@ -231,7 +234,7 @@ class Instance(pulumi.CustomResource):
         ### Importing an instance with multiple emphemeral disks
 
         The importer cannot read the emphemeral disk configuration
-        of an instance, so just specify image_id as in the configuration 
+        of an instance, so just specify image_id as in the configuration
         of the basic instance example.
 
         :param str resource_name: The name of the resource.
@@ -370,6 +373,9 @@ class Instance(pulumi.CustomResource):
 
         The **vendor_options** object supports the following:
 
+          * `detachPortsBeforeDestroy` (`pulumi.Input[bool]`) - Whether to try to detach all attached
+            ports to the vm before destroying it to make sure the port state is correct
+            after the vm destruction. This is helpful when the port is not deleted.
           * `ignoreResizeConfirmation` (`pulumi.Input[bool]`) - Boolean to control whether
             to ignore manual confirmation of the instance resizing. This can be helpful
             to work with some OpenStack clouds which automatically confirm resizing of
@@ -569,6 +575,9 @@ class Instance(pulumi.CustomResource):
 
         The **vendor_options** object supports the following:
 
+          * `detachPortsBeforeDestroy` (`pulumi.Input[bool]`) - Whether to try to detach all attached
+            ports to the vm before destroying it to make sure the port state is correct
+            after the vm destruction. This is helpful when the port is not deleted.
           * `ignoreResizeConfirmation` (`pulumi.Input[bool]`) - Boolean to control whether
             to ignore manual confirmation of the instance resizing. This can be helpful
             to work with some OpenStack clouds which automatically confirm resizing of

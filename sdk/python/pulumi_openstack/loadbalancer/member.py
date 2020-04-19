@@ -18,7 +18,7 @@ class Member(pulumi.CustomResource):
     admin_state_up: pulumi.Output[bool]
     """
     The administrative state of the member.
-    A valid value is true (UP) or false (DOWN).
+    A valid value is true (UP) or false (DOWN). Defaults to true.
     """
     name: pulumi.Output[str]
     """
@@ -26,8 +26,8 @@ class Member(pulumi.CustomResource):
     """
     pool_id: pulumi.Output[str]
     """
-    The id of the pool that this member will be
-    assigned to.
+    The id of the pool that this member will be assigned
+    to. Changing this creates a new member.
     """
     protocol_port: pulumi.Output[float]
     """
@@ -37,13 +37,13 @@ class Member(pulumi.CustomResource):
     region: pulumi.Output[str]
     """
     The region in which to obtain the V2 Networking client.
-    A Networking client is needed to create an . If omitted, the
-    `region` argument of the provider is used. Changing this creates a new
-    member.
+    A Networking client is needed to create a member. If omitted, the `region`
+    argument of the provider is used. Changing this creates a new member.
     """
     subnet_id: pulumi.Output[str]
     """
-    The subnet in which to access the member
+    The subnet in which to access the member. Changing
+    this creates a new member.
     """
     tenant_id: pulumi.Output[str]
     """
@@ -56,7 +56,7 @@ class Member(pulumi.CustomResource):
     A positive integer value that indicates the relative
     portion of traffic that this member should receive from the pool. For
     example, a member with a weight of 10 receives five times as much traffic
-    as a member with a weight of 2.
+    as a member with a weight of 2. Defaults to 1.
     """
     def __init__(__self__, resource_name, opts=None, address=None, admin_state_up=None, name=None, pool_id=None, protocol_port=None, region=None, subnet_id=None, tenant_id=None, weight=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -69,24 +69,24 @@ class Member(pulumi.CustomResource):
         :param pulumi.Input[str] address: The IP address of the member to receive traffic from
                the load balancer. Changing this creates a new member.
         :param pulumi.Input[bool] admin_state_up: The administrative state of the member.
-               A valid value is true (UP) or false (DOWN).
+               A valid value is true (UP) or false (DOWN). Defaults to true.
         :param pulumi.Input[str] name: Human-readable name for the member.
-        :param pulumi.Input[str] pool_id: The id of the pool that this member will be
-               assigned to.
+        :param pulumi.Input[str] pool_id: The id of the pool that this member will be assigned
+               to. Changing this creates a new member.
         :param pulumi.Input[float] protocol_port: The port on which to listen for client traffic.
                Changing this creates a new member.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create an . If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               member.
-        :param pulumi.Input[str] subnet_id: The subnet in which to access the member
+               A Networking client is needed to create a member. If omitted, the `region`
+               argument of the provider is used. Changing this creates a new member.
+        :param pulumi.Input[str] subnet_id: The subnet in which to access the member. Changing
+               this creates a new member.
         :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
                the member.  Only administrative users can specify a tenant UUID
                other than their own. Changing this creates a new member.
         :param pulumi.Input[float] weight: A positive integer value that indicates the relative
                portion of traffic that this member should receive from the pool. For
                example, a member with a weight of 10 receives five times as much traffic
-               as a member with a weight of 2.
+               as a member with a weight of 2. Defaults to 1.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -138,24 +138,24 @@ class Member(pulumi.CustomResource):
         :param pulumi.Input[str] address: The IP address of the member to receive traffic from
                the load balancer. Changing this creates a new member.
         :param pulumi.Input[bool] admin_state_up: The administrative state of the member.
-               A valid value is true (UP) or false (DOWN).
+               A valid value is true (UP) or false (DOWN). Defaults to true.
         :param pulumi.Input[str] name: Human-readable name for the member.
-        :param pulumi.Input[str] pool_id: The id of the pool that this member will be
-               assigned to.
+        :param pulumi.Input[str] pool_id: The id of the pool that this member will be assigned
+               to. Changing this creates a new member.
         :param pulumi.Input[float] protocol_port: The port on which to listen for client traffic.
                Changing this creates a new member.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create an . If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               member.
-        :param pulumi.Input[str] subnet_id: The subnet in which to access the member
+               A Networking client is needed to create a member. If omitted, the `region`
+               argument of the provider is used. Changing this creates a new member.
+        :param pulumi.Input[str] subnet_id: The subnet in which to access the member. Changing
+               this creates a new member.
         :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
                the member.  Only administrative users can specify a tenant UUID
                other than their own. Changing this creates a new member.
         :param pulumi.Input[float] weight: A positive integer value that indicates the relative
                portion of traffic that this member should receive from the pool. For
                example, a member with a weight of 10 receives five times as much traffic
-               as a member with a weight of 2.
+               as a member with a weight of 2. Defaults to 1.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

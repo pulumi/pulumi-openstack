@@ -101,30 +101,30 @@ import (
 type Cluster struct {
 	pulumi.CustomResourceState
 
-	ApiAddress        pulumi.StringOutput `pulumi:"apiAddress"`
-	ClusterTemplateId pulumi.StringOutput `pulumi:"clusterTemplateId"`
-	CoeVersion        pulumi.StringOutput `pulumi:"coeVersion"`
-	ContainerVersion  pulumi.StringOutput `pulumi:"containerVersion"`
-	CreateTimeout     pulumi.IntOutput    `pulumi:"createTimeout"`
-	CreatedAt         pulumi.StringOutput `pulumi:"createdAt"`
-	DiscoveryUrl      pulumi.StringOutput `pulumi:"discoveryUrl"`
-	DockerVolumeSize  pulumi.IntOutput    `pulumi:"dockerVolumeSize"`
-	FixedNetwork      pulumi.StringOutput `pulumi:"fixedNetwork"`
-	FixedSubnet       pulumi.StringOutput `pulumi:"fixedSubnet"`
-	Flavor            pulumi.StringOutput `pulumi:"flavor"`
-	Keypair           pulumi.StringOutput `pulumi:"keypair"`
-	Labels            pulumi.MapOutput    `pulumi:"labels"`
-	MasterAddresses   pulumi.StringOutput `pulumi:"masterAddresses"`
-	MasterCount       pulumi.IntOutput    `pulumi:"masterCount"`
-	MasterFlavor      pulumi.StringOutput `pulumi:"masterFlavor"`
-	Name              pulumi.StringOutput `pulumi:"name"`
-	NodeAddresses     pulumi.StringOutput `pulumi:"nodeAddresses"`
-	NodeCount         pulumi.IntOutput    `pulumi:"nodeCount"`
-	ProjectId         pulumi.StringOutput `pulumi:"projectId"`
-	Region            pulumi.StringOutput `pulumi:"region"`
-	StackId           pulumi.StringOutput `pulumi:"stackId"`
-	UpdatedAt         pulumi.StringOutput `pulumi:"updatedAt"`
-	UserId            pulumi.StringOutput `pulumi:"userId"`
+	ApiAddress        pulumi.StringOutput      `pulumi:"apiAddress"`
+	ClusterTemplateId pulumi.StringOutput      `pulumi:"clusterTemplateId"`
+	CoeVersion        pulumi.StringOutput      `pulumi:"coeVersion"`
+	ContainerVersion  pulumi.StringOutput      `pulumi:"containerVersion"`
+	CreateTimeout     pulumi.IntOutput         `pulumi:"createTimeout"`
+	CreatedAt         pulumi.StringOutput      `pulumi:"createdAt"`
+	DiscoveryUrl      pulumi.StringOutput      `pulumi:"discoveryUrl"`
+	DockerVolumeSize  pulumi.IntOutput         `pulumi:"dockerVolumeSize"`
+	FixedNetwork      pulumi.StringOutput      `pulumi:"fixedNetwork"`
+	FixedSubnet       pulumi.StringOutput      `pulumi:"fixedSubnet"`
+	Flavor            pulumi.StringOutput      `pulumi:"flavor"`
+	Keypair           pulumi.StringOutput      `pulumi:"keypair"`
+	Labels            pulumi.MapOutput         `pulumi:"labels"`
+	MasterAddresses   pulumi.StringArrayOutput `pulumi:"masterAddresses"`
+	MasterCount       pulumi.IntOutput         `pulumi:"masterCount"`
+	MasterFlavor      pulumi.StringOutput      `pulumi:"masterFlavor"`
+	Name              pulumi.StringOutput      `pulumi:"name"`
+	NodeAddresses     pulumi.StringArrayOutput `pulumi:"nodeAddresses"`
+	NodeCount         pulumi.IntOutput         `pulumi:"nodeCount"`
+	ProjectId         pulumi.StringOutput      `pulumi:"projectId"`
+	Region            pulumi.StringOutput      `pulumi:"region"`
+	StackId           pulumi.StringOutput      `pulumi:"stackId"`
+	UpdatedAt         pulumi.StringOutput      `pulumi:"updatedAt"`
+	UserId            pulumi.StringOutput      `pulumi:"userId"`
 }
 
 // NewCluster registers a new resource with the given unique name, arguments, and options.
@@ -171,11 +171,11 @@ type clusterState struct {
 	Flavor            *string                `pulumi:"flavor"`
 	Keypair           *string                `pulumi:"keypair"`
 	Labels            map[string]interface{} `pulumi:"labels"`
-	MasterAddresses   *string                `pulumi:"masterAddresses"`
+	MasterAddresses   []string               `pulumi:"masterAddresses"`
 	MasterCount       *int                   `pulumi:"masterCount"`
 	MasterFlavor      *string                `pulumi:"masterFlavor"`
 	Name              *string                `pulumi:"name"`
-	NodeAddresses     *string                `pulumi:"nodeAddresses"`
+	NodeAddresses     []string               `pulumi:"nodeAddresses"`
 	NodeCount         *int                   `pulumi:"nodeCount"`
 	ProjectId         *string                `pulumi:"projectId"`
 	Region            *string                `pulumi:"region"`
@@ -198,11 +198,11 @@ type ClusterState struct {
 	Flavor            pulumi.StringPtrInput
 	Keypair           pulumi.StringPtrInput
 	Labels            pulumi.MapInput
-	MasterAddresses   pulumi.StringPtrInput
+	MasterAddresses   pulumi.StringArrayInput
 	MasterCount       pulumi.IntPtrInput
 	MasterFlavor      pulumi.StringPtrInput
 	Name              pulumi.StringPtrInput
-	NodeAddresses     pulumi.StringPtrInput
+	NodeAddresses     pulumi.StringArrayInput
 	NodeCount         pulumi.IntPtrInput
 	ProjectId         pulumi.StringPtrInput
 	Region            pulumi.StringPtrInput

@@ -23,7 +23,7 @@ namespace Pulumi.OpenStack.LoadBalancer
 
         /// <summary>
         /// The administrative state of the member.
-        /// A valid value is true (UP) or false (DOWN).
+        /// A valid value is true (UP) or false (DOWN). Defaults to true.
         /// </summary>
         [Output("adminStateUp")]
         public Output<bool?> AdminStateUp { get; private set; } = null!;
@@ -35,8 +35,8 @@ namespace Pulumi.OpenStack.LoadBalancer
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The id of the pool that this member will be
-        /// assigned to.
+        /// The id of the pool that this member will be assigned
+        /// to. Changing this creates a new member.
         /// </summary>
         [Output("poolId")]
         public Output<string> PoolId { get; private set; } = null!;
@@ -50,15 +50,15 @@ namespace Pulumi.OpenStack.LoadBalancer
 
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
-        /// A Networking client is needed to create an . If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
-        /// member.
+        /// A Networking client is needed to create a member. If omitted, the `region`
+        /// argument of the provider is used. Changing this creates a new member.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// The subnet in which to access the member
+        /// The subnet in which to access the member. Changing
+        /// this creates a new member.
         /// </summary>
         [Output("subnetId")]
         public Output<string?> SubnetId { get; private set; } = null!;
@@ -75,7 +75,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// A positive integer value that indicates the relative
         /// portion of traffic that this member should receive from the pool. For
         /// example, a member with a weight of 10 receives five times as much traffic
-        /// as a member with a weight of 2.
+        /// as a member with a weight of 2. Defaults to 1.
         /// </summary>
         [Output("weight")]
         public Output<int> Weight { get; private set; } = null!;
@@ -135,7 +135,7 @@ namespace Pulumi.OpenStack.LoadBalancer
 
         /// <summary>
         /// The administrative state of the member.
-        /// A valid value is true (UP) or false (DOWN).
+        /// A valid value is true (UP) or false (DOWN). Defaults to true.
         /// </summary>
         [Input("adminStateUp")]
         public Input<bool>? AdminStateUp { get; set; }
@@ -147,8 +147,8 @@ namespace Pulumi.OpenStack.LoadBalancer
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The id of the pool that this member will be
-        /// assigned to.
+        /// The id of the pool that this member will be assigned
+        /// to. Changing this creates a new member.
         /// </summary>
         [Input("poolId", required: true)]
         public Input<string> PoolId { get; set; } = null!;
@@ -162,15 +162,15 @@ namespace Pulumi.OpenStack.LoadBalancer
 
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
-        /// A Networking client is needed to create an . If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
-        /// member.
+        /// A Networking client is needed to create a member. If omitted, the `region`
+        /// argument of the provider is used. Changing this creates a new member.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// The subnet in which to access the member
+        /// The subnet in which to access the member. Changing
+        /// this creates a new member.
         /// </summary>
         [Input("subnetId")]
         public Input<string>? SubnetId { get; set; }
@@ -187,7 +187,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// A positive integer value that indicates the relative
         /// portion of traffic that this member should receive from the pool. For
         /// example, a member with a weight of 10 receives five times as much traffic
-        /// as a member with a weight of 2.
+        /// as a member with a weight of 2. Defaults to 1.
         /// </summary>
         [Input("weight")]
         public Input<int>? Weight { get; set; }
@@ -208,7 +208,7 @@ namespace Pulumi.OpenStack.LoadBalancer
 
         /// <summary>
         /// The administrative state of the member.
-        /// A valid value is true (UP) or false (DOWN).
+        /// A valid value is true (UP) or false (DOWN). Defaults to true.
         /// </summary>
         [Input("adminStateUp")]
         public Input<bool>? AdminStateUp { get; set; }
@@ -220,8 +220,8 @@ namespace Pulumi.OpenStack.LoadBalancer
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The id of the pool that this member will be
-        /// assigned to.
+        /// The id of the pool that this member will be assigned
+        /// to. Changing this creates a new member.
         /// </summary>
         [Input("poolId")]
         public Input<string>? PoolId { get; set; }
@@ -235,15 +235,15 @@ namespace Pulumi.OpenStack.LoadBalancer
 
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
-        /// A Networking client is needed to create an . If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
-        /// member.
+        /// A Networking client is needed to create a member. If omitted, the `region`
+        /// argument of the provider is used. Changing this creates a new member.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// The subnet in which to access the member
+        /// The subnet in which to access the member. Changing
+        /// this creates a new member.
         /// </summary>
         [Input("subnetId")]
         public Input<string>? SubnetId { get; set; }
@@ -260,7 +260,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// A positive integer value that indicates the relative
         /// portion of traffic that this member should receive from the pool. For
         /// example, a member with a weight of 10 receives five times as much traffic
-        /// as a member with a weight of 2.
+        /// as a member with a weight of 2. Defaults to 1.
         /// </summary>
         [Input("weight")]
         public Input<int>? Weight { get; set; }

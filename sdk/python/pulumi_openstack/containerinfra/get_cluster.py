@@ -96,8 +96,8 @@ class GetClusterResult:
         The list of key value pairs representing additional properties of
         the cluster.
         """
-        if master_addresses and not isinstance(master_addresses, str):
-            raise TypeError("Expected argument 'master_addresses' to be a str")
+        if master_addresses and not isinstance(master_addresses, list):
+            raise TypeError("Expected argument 'master_addresses' to be a list")
         __self__.master_addresses = master_addresses
         """
         IP addresses of the master node of the cluster.
@@ -120,8 +120,8 @@ class GetClusterResult:
         """
         See Argument Reference above.
         """
-        if node_addresses and not isinstance(node_addresses, str):
-            raise TypeError("Expected argument 'node_addresses' to be a str")
+        if node_addresses and not isinstance(node_addresses, list):
+            raise TypeError("Expected argument 'node_addresses' to be a list")
         __self__.node_addresses = node_addresses
         """
         IP addresses of the node of the cluster.

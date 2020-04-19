@@ -18,7 +18,7 @@ namespace Pulumi.OpenStack.ObjectStorage.Outputs
         /// </summary>
         public readonly string Location;
         /// <summary>
-        /// Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/overview_object_versioning.html).
+        /// Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/api/object_versioning.html).
         /// </summary>
         public readonly string Type;
 
