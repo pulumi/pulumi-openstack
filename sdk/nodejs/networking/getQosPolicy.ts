@@ -17,9 +17,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const qosPolicy1 = openstack.networking.getQosPolicy({
+ * const qosPolicy1 = pulumi.output(openstack.networking.getQosPolicy({
  *     name: "qosPolicy1",
- * });
+ * }, { async: true }));
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_qos_policy_v2.html.markdown.

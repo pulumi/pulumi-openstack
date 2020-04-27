@@ -16,11 +16,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const rancheros = openstack.images.getImage({
+ * const rancheros = pulumi.output(openstack.images.getImage({
  *     memberStatus: "all",
  *     name: "RancherOS",
  *     visibility: "shared",
- * });
+ * }, { async: true }));
  * const rancherosMember = new openstack.images.ImageAccessAccept("rancherosMember", {
  *     imageId: rancheros.id,
  *     status: "accepted",

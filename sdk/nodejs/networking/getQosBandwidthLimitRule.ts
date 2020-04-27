@@ -17,9 +17,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const qosBandwidthLimitRule1 = openstack.networking.getQosBandwidthLimitRule({
+ * const qosBandwidthLimitRule1 = pulumi.output(openstack.networking.getQosBandwidthLimitRule({
  *     maxKbps: 300,
- * });
+ * }, { async: true }));
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_qos_bandwidth_limit_rule_v2.html.markdown.
