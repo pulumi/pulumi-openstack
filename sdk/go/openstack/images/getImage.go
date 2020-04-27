@@ -65,7 +65,7 @@ type LookupImageResult struct {
 	// the trailing path after the glance endpoint that represent the
 	// location of the image or the path to retrieve it.
 	File string `pulumi:"file"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id           string  `pulumi:"id"`
 	MemberStatus *string `pulumi:"memberStatus"`
 	// The metadata associated with the image.

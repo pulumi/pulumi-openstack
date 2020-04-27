@@ -44,7 +44,7 @@ type GetEndpointArgs struct {
 type GetEndpointResult struct {
 	// See Argument Reference above.
 	EndpointRegion *string `pulumi:"endpointRegion"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// See Argument Reference above.
 	Interface *string `pulumi:"interface"`

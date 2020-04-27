@@ -822,7 +822,12 @@ func (o InstanceVendorOptionsPtrOutput) Elem() InstanceVendorOptionsOutput {
 // to work with some OpenStack clouds which automatically confirm resizing of
 // instances after some timeout.
 func (o InstanceVendorOptionsPtrOutput) IgnoreResizeConfirmation() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v InstanceVendorOptions) *bool { return v.IgnoreResizeConfirmation }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *InstanceVendorOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IgnoreResizeConfirmation
+	}).(pulumi.BoolPtrOutput)
 }
 
 type SecGroupRule struct {

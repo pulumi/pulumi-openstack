@@ -41,7 +41,7 @@ type GetContainerResult struct {
 	CreatedAt string `pulumi:"createdAt"`
 	// The creator of the container.
 	CreatorId string `pulumi:"creatorId"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The name of the consumer.
 	Name *string `pulumi:"name"`

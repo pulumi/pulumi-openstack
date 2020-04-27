@@ -29,7 +29,7 @@ type GetAvailabilityZonesV3Args struct {
 
 // A collection of values returned by getAvailabilityZonesV3.
 type GetAvailabilityZonesV3Result struct {
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The names of the availability zones, ordered alphanumerically, that
 	// match the queried `state`.

@@ -143,13 +143,23 @@ func (o ContainerVersioningPtrOutput) Elem() ContainerVersioningOutput {
 }
 
 // Container in which versions will be stored.
-func (o ContainerVersioningPtrOutput) Location() pulumi.StringOutput {
-	return o.ApplyT(func(v ContainerVersioning) string { return v.Location }).(pulumi.StringOutput)
+func (o ContainerVersioningPtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContainerVersioning) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Location
+	}).(pulumi.StringPtrOutput)
 }
 
 // Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/overview_object_versioning.html).
-func (o ContainerVersioningPtrOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v ContainerVersioning) string { return v.Type }).(pulumi.StringOutput)
+func (o ContainerVersioningPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContainerVersioning) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 func init() {

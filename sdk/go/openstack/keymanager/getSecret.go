@@ -72,7 +72,7 @@ type GetSecretResult struct {
 	Expiration string `pulumi:"expiration"`
 	// See Argument Reference above.
 	ExpirationFilter *string `pulumi:"expirationFilter"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The map of metadata, assigned on the secret, which has been
 	// explicitly and implicitly added.

@@ -58,7 +58,7 @@ type LookupRouterResult struct {
 	ExternalFixedIps []GetRouterExternalFixedIp `pulumi:"externalFixedIps"`
 	// The network UUID of an external gateway for the router.
 	ExternalNetworkId string `pulumi:"externalNetworkId"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id       string   `pulumi:"id"`
 	Name     *string  `pulumi:"name"`
 	Region   *string  `pulumi:"region"`

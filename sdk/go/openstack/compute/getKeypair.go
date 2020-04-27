@@ -30,7 +30,7 @@ type LookupKeypairArgs struct {
 type LookupKeypairResult struct {
 	// The fingerprint of the OpenSSH key.
 	Fingerprint string `pulumi:"fingerprint"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// See Argument Reference above.
 	Name string `pulumi:"name"`

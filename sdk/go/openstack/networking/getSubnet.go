@@ -72,7 +72,7 @@ type LookupSubnetResult struct {
 	GatewayIp  string `pulumi:"gatewayIp"`
 	// Host Routes of the subnet.
 	HostRoutes []GetSubnetHostRoute `pulumi:"hostRoutes"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id              string `pulumi:"id"`
 	IpVersion       int    `pulumi:"ipVersion"`
 	Ipv6AddressMode string `pulumi:"ipv6AddressMode"`

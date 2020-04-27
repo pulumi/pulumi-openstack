@@ -37,7 +37,7 @@ type LookupPolicyResult struct {
 	Audited bool `pulumi:"audited"`
 	// The description of the firewall policy.
 	Description string `pulumi:"description"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// See Argument Reference above.
 	Name *string `pulumi:"name"`

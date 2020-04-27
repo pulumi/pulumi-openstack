@@ -119,7 +119,7 @@ namespace Pulumi.OpenStack.SharedFileSystem
         /// </summary>
         public readonly ImmutableArray<Outputs.GetShareExportLocationResult> ExportLocations;
         /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
+        /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         /// <summary>

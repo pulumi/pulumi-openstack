@@ -55,7 +55,7 @@ class GetSubnetPoolResult:
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
-        id is the provider-assigned unique ID for this managed resource.
+        The provider-assigned unique ID for this managed resource.
         """
         if ip_version and not isinstance(ip_version, float):
             raise TypeError("Expected argument 'ip_version' to be a float")

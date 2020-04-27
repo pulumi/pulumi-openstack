@@ -104,7 +104,7 @@ namespace Pulumi.OpenStack.Compute
         public readonly ImmutableDictionary<string, object> ExtraSpecs;
         public readonly string? FlavorId;
         /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
+        /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         /// <summary>

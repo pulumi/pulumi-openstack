@@ -130,7 +130,12 @@ func (o ContainerV1AclPtrOutput) Elem() ContainerV1AclOutput {
 }
 
 func (o ContainerV1AclPtrOutput) Read() ContainerV1AclReadPtrOutput {
-	return o.ApplyT(func(v ContainerV1Acl) *ContainerV1AclRead { return v.Read }).(ContainerV1AclReadPtrOutput)
+	return o.ApplyT(func(v *ContainerV1Acl) *ContainerV1AclRead {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(ContainerV1AclReadPtrOutput)
 }
 
 type ContainerV1AclRead struct {
@@ -291,24 +296,44 @@ func (o ContainerV1AclReadPtrOutput) Elem() ContainerV1AclReadOutput {
 
 // The date the container ACL was created.
 func (o ContainerV1AclReadPtrOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ContainerV1AclRead) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ContainerV1AclRead) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedAt
+	}).(pulumi.StringPtrOutput)
 }
 
 // Whether the container is accessible project wide.
 // Defaults to `true`.
 func (o ContainerV1AclReadPtrOutput) ProjectAccess() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ContainerV1AclRead) *bool { return v.ProjectAccess }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ContainerV1AclRead) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectAccess
+	}).(pulumi.BoolPtrOutput)
 }
 
 // The date the container ACL was last updated.
 func (o ContainerV1AclReadPtrOutput) UpdatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ContainerV1AclRead) *string { return v.UpdatedAt }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ContainerV1AclRead) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdatedAt
+	}).(pulumi.StringPtrOutput)
 }
 
 // The list of user IDs, which are allowed to access the
 // container, when `projectAccess` is set to `false`.
 func (o ContainerV1AclReadPtrOutput) Users() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ContainerV1AclRead) []string { return v.Users }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *ContainerV1AclRead) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Users
+	}).(pulumi.StringArrayOutput)
 }
 
 type ContainerV1Consumer struct {
@@ -647,7 +672,12 @@ func (o SecretV1AclPtrOutput) Elem() SecretV1AclOutput {
 }
 
 func (o SecretV1AclPtrOutput) Read() SecretV1AclReadPtrOutput {
-	return o.ApplyT(func(v SecretV1Acl) *SecretV1AclRead { return v.Read }).(SecretV1AclReadPtrOutput)
+	return o.ApplyT(func(v *SecretV1Acl) *SecretV1AclRead {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(SecretV1AclReadPtrOutput)
 }
 
 type SecretV1AclRead struct {
@@ -808,24 +838,44 @@ func (o SecretV1AclReadPtrOutput) Elem() SecretV1AclReadOutput {
 
 // The date the secret ACL was created.
 func (o SecretV1AclReadPtrOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecretV1AclRead) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *SecretV1AclRead) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedAt
+	}).(pulumi.StringPtrOutput)
 }
 
 // Whether the secret is accessible project wide.
 // Defaults to `true`.
 func (o SecretV1AclReadPtrOutput) ProjectAccess() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SecretV1AclRead) *bool { return v.ProjectAccess }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *SecretV1AclRead) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectAccess
+	}).(pulumi.BoolPtrOutput)
 }
 
 // The date the secret ACL was last updated.
 func (o SecretV1AclReadPtrOutput) UpdatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecretV1AclRead) *string { return v.UpdatedAt }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *SecretV1AclRead) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdatedAt
+	}).(pulumi.StringPtrOutput)
 }
 
 // The list of user IDs, which are allowed to access the
 // secret, when `projectAccess` is set to `false`.
 func (o SecretV1AclReadPtrOutput) Users() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SecretV1AclRead) []string { return v.Users }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *SecretV1AclRead) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Users
+	}).(pulumi.StringArrayOutput)
 }
 
 type GetContainerAcl struct {

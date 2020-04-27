@@ -33,7 +33,7 @@ type LookupQosMinimumBandwidthRuleArgs struct {
 // A collection of values returned by getQosMinimumBandwidthRule.
 type LookupQosMinimumBandwidthRuleResult struct {
 	Direction string `pulumi:"direction"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// See Argument Reference above.
 	MinKbps int `pulumi:"minKbps"`

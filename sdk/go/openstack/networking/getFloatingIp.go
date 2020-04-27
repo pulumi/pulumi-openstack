@@ -54,7 +54,7 @@ type LookupFloatingIpResult struct {
 	// is enabled.
 	DnsName string  `pulumi:"dnsName"`
 	FixedIp *string `pulumi:"fixedIp"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id       string   `pulumi:"id"`
 	Pool     *string  `pulumi:"pool"`
 	PortId   *string  `pulumi:"portId"`

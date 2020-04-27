@@ -165,7 +165,7 @@ export interface GetSubnetResult {
     readonly tags?: string[];
     readonly tenantId: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

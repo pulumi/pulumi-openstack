@@ -38,7 +38,7 @@ type GetVolumeV3Args struct {
 type GetVolumeV3Result struct {
 	// Indicates if the volume is bootable.
 	Bootable string `pulumi:"bootable"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// See Argument Reference above.
 	Metadata map[string]interface{} `pulumi:"metadata"`

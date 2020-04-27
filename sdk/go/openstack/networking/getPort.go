@@ -86,7 +86,7 @@ type LookupPortResult struct {
 	// The structure is described below.
 	ExtraDhcpOptions []GetPortExtraDhcpOption `pulumi:"extraDhcpOptions"`
 	FixedIp          *string                  `pulumi:"fixedIp"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The additional MAC address.
 	MacAddress *string `pulumi:"macAddress"`

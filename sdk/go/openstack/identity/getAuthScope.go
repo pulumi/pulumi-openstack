@@ -36,7 +36,7 @@ type GetAuthScopeResult struct {
 	DomainId string `pulumi:"domainId"`
 	// The domain name of the scope.
 	DomainName string `pulumi:"domainName"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id   string `pulumi:"id"`
 	Name string `pulumi:"name"`
 	// The domain ID of the project.

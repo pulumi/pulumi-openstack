@@ -24,7 +24,7 @@ class GetQosBandwidthLimitRuleResult:
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
-        id is the provider-assigned unique ID for this managed resource.
+        The provider-assigned unique ID for this managed resource.
         """
         if max_burst_kbps and not isinstance(max_burst_kbps, float):
             raise TypeError("Expected argument 'max_burst_kbps' to be a float")

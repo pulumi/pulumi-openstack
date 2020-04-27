@@ -36,7 +36,7 @@ type GetGroupResult struct {
 	Description string `pulumi:"description"`
 	// See Argument Reference above.
 	DomainId string `pulumi:"domainId"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// See Argument Reference above.
 	Name string `pulumi:"name"`
