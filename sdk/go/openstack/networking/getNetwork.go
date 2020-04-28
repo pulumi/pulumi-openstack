@@ -62,7 +62,7 @@ type LookupNetworkResult struct {
 	DnsDomain string `pulumi:"dnsDomain"`
 	// See Argument Reference above.
 	External *bool `pulumi:"external"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id                 string  `pulumi:"id"`
 	MatchingSubnetCidr *string `pulumi:"matchingSubnetCidr"`
 	// See Argument Reference above.

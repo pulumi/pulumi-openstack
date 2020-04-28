@@ -17,9 +17,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const trunk1 = openstack.networking.getTrunk({
+ * const trunk1 = pulumi.output(openstack.networking.getTrunk({
  *     name: "trunk1",
- * });
+ * }, { async: true }));
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_trunk_v2.html.markdown.
@@ -116,7 +116,7 @@ export interface GetTrunkResult {
     readonly tags?: string[];
     readonly trunkId?: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

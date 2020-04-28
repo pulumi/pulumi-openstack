@@ -65,7 +65,7 @@ type LookupClusterTemplateResult struct {
 	// The address of a proxy for receiving all HTTPS requests and
 	// relay them.
 	HttpsProxy string `pulumi:"httpsProxy"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The reference to an image that is used for nodes of the cluster.
 	Image string `pulumi:"image"`

@@ -55,7 +55,7 @@ class GetNetworkResult:
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
-        id is the provider-assigned unique ID for this managed resource.
+        The provider-assigned unique ID for this managed resource.
         """
         if matching_subnet_cidr and not isinstance(matching_subnet_cidr, str):
             raise TypeError("Expected argument 'matching_subnet_cidr' to be a str")

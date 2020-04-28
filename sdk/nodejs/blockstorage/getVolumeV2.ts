@@ -17,9 +17,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const volume1 = openstack.blockstorage.getVolumeV2({
+ * const volume1 = pulumi.output(openstack.blockstorage.getVolumeV2({
  *     name: "volume1",
- * });
+ * }, { async: true }));
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/blockstorage_volume_v2.html.markdown.
@@ -111,7 +111,7 @@ export interface GetVolumeV2Result {
      */
     readonly volumeType: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

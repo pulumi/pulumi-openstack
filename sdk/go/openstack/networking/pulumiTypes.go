@@ -408,31 +408,56 @@ func (o PortBindingPtrOutput) Elem() PortBindingOutput {
 
 // The ID of the host to allocate port on.
 func (o PortBindingPtrOutput) HostId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PortBinding) *string { return v.HostId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *PortBinding) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HostId
+	}).(pulumi.StringPtrOutput)
 }
 
 // Custom data to be passed as `binding:profile`. Data
 // must be passed as JSON.
 func (o PortBindingPtrOutput) Profile() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PortBinding) *string { return v.Profile }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *PortBinding) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Profile
+	}).(pulumi.StringPtrOutput)
 }
 
 // A map of JSON strings containing additional
 // details for this specific binding.
 func (o PortBindingPtrOutput) VifDetails() pulumi.MapOutput {
-	return o.ApplyT(func(v PortBinding) map[string]interface{} { return v.VifDetails }).(pulumi.MapOutput)
+	return o.ApplyT(func(v *PortBinding) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.VifDetails
+	}).(pulumi.MapOutput)
 }
 
 // The VNIC type of the port binding.
 func (o PortBindingPtrOutput) VifType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PortBinding) *string { return v.VifType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *PortBinding) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VifType
+	}).(pulumi.StringPtrOutput)
 }
 
 // VNIC type for the port. Can either be `direct`,
 // `direct-physical`, `macvtap`, `normal`, `baremetal` or `virtio-forwarder`.
 // Default value is `normal`.
 func (o PortBindingPtrOutput) VnicType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PortBinding) *string { return v.VnicType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *PortBinding) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VnicType
+	}).(pulumi.StringPtrOutput)
 }
 
 type PortExtraDhcpOption struct {
@@ -900,7 +925,12 @@ func (o RouterVendorOptionsPtrOutput) Elem() RouterVendorOptionsOutput {
 // Boolean to control whether
 // the Router gateway is assigned during creation or updated after creation.
 func (o RouterVendorOptionsPtrOutput) SetRouterGatewayAfterCreate() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RouterVendorOptions) *bool { return v.SetRouterGatewayAfterCreate }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *RouterVendorOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SetRouterGatewayAfterCreate
+	}).(pulumi.BoolPtrOutput)
 }
 
 type SubnetAllocationPool struct {

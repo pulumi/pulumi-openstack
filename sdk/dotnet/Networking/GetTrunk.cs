@@ -102,7 +102,7 @@ namespace Pulumi.OpenStack.Networking
         public readonly ImmutableArray<string> AllTags;
         public readonly string? Description;
         /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
+        /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly string? Name;

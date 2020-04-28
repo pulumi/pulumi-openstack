@@ -50,9 +50,9 @@ import * as utilities from "../utilities";
  *     ],
  *     type: "certificate",
  * });
- * const subnet1 = openstack.networking.getSubnet({
+ * const subnet1 = pulumi.output(openstack.networking.getSubnet({
  *     name: "my-subnet",
- * });
+ * }, { async: true }));
  * const lb1 = new openstack.loadbalancer.LoadBalancer("lb1", {
  *     vipSubnetId: subnet1.id,
  * });

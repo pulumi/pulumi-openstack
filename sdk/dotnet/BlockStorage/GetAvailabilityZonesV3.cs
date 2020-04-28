@@ -48,7 +48,7 @@ namespace Pulumi.OpenStack.BlockStorage
     public sealed class GetAvailabilityZonesV3Result
     {
         /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
+        /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         /// <summary>

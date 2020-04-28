@@ -37,7 +37,7 @@ type GetSnapshotV2Args struct {
 type GetSnapshotV2Result struct {
 	// The snapshot's description.
 	Description string `pulumi:"description"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The snapshot's metadata.
 	Metadata   map[string]interface{} `pulumi:"metadata"`

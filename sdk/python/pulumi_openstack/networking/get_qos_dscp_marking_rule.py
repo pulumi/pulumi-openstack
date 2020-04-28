@@ -24,7 +24,7 @@ class GetQosDscpMarkingRuleResult:
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
-        id is the provider-assigned unique ID for this managed resource.
+        The provider-assigned unique ID for this managed resource.
         """
         if qos_policy_id and not isinstance(qos_policy_id, str):
             raise TypeError("Expected argument 'qos_policy_id' to be a str")

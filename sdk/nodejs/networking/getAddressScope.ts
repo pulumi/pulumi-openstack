@@ -17,11 +17,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const publicAddressscope = openstack.networking.getAddressScope({
+ * const publicAddressscope = pulumi.output(openstack.networking.getAddressScope({
  *     ipVersion: 4,
  *     name: "publicAddressscope",
  *     shared: true,
- * });
+ * }, { async: true }));
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_addressscope_v2.html.markdown.
@@ -95,7 +95,7 @@ export interface GetAddressScopeResult {
      */
     readonly shared?: boolean;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

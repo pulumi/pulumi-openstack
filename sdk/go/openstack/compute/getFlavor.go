@@ -51,7 +51,7 @@ type LookupFlavorResult struct {
 	// Key/Value pairs of metadata for the flavor.
 	ExtraSpecs map[string]interface{} `pulumi:"extraSpecs"`
 	FlavorId   *string                `pulumi:"flavorId"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Whether the flavor is public or private.
 	IsPublic   bool     `pulumi:"isPublic"`

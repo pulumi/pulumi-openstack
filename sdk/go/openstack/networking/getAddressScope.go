@@ -36,7 +36,7 @@ type LookupAddressScopeArgs struct {
 
 // A collection of values returned by getAddressScope.
 type LookupAddressScopeResult struct {
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// See Argument Reference above.
 	IpVersion *int `pulumi:"ipVersion"`

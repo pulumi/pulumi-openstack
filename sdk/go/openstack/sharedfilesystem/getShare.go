@@ -58,7 +58,7 @@ type LookupShareResult struct {
 	// server has more than one network interface, it can have multiple export
 	// locations.
 	ExportLocations []GetShareExportLocation `pulumi:"exportLocations"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// See Argument Reference above.
 	IsPublic bool `pulumi:"isPublic"`

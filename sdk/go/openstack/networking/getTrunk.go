@@ -47,7 +47,7 @@ type LookupTrunkResult struct {
 	// The set of string tags applied on the trunk.
 	AllTags     []string `pulumi:"allTags"`
 	Description *string  `pulumi:"description"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id   string  `pulumi:"id"`
 	Name *string `pulumi:"name"`
 	// The ID of the trunk subport.

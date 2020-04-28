@@ -17,9 +17,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const floatingip1 = openstack.networking.getFloatingIp({
+ * const floatingip1 = pulumi.output(openstack.networking.getFloatingIp({
  *     address: "192.168.0.4",
- * });
+ * }, { async: true }));
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_floatingip_v2.html.markdown.
@@ -118,7 +118,7 @@ export interface GetFloatingIpResult {
     readonly tags?: string[];
     readonly tenantId?: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

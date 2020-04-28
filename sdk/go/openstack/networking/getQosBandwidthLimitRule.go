@@ -35,7 +35,7 @@ type LookupQosBandwidthLimitRuleArgs struct {
 type LookupQosBandwidthLimitRuleResult struct {
 	// See Argument Reference above.
 	Direction string `pulumi:"direction"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// See Argument Reference above.
 	MaxBurstKbps int `pulumi:"maxBurstKbps"`

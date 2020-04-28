@@ -48,7 +48,7 @@ type LookupUserResult struct {
 	DomainId string `pulumi:"domainId"`
 	// See Argument Reference above.
 	Enabled *bool `pulumi:"enabled"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// See Argument Reference above.
 	IdpId *string `pulumi:"idpId"`

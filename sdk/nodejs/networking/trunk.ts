@@ -30,11 +30,11 @@ import * as utilities from "../utilities";
  * const parentPort1 = new openstack.networking.Port("parentPort1", {
  *     adminStateUp: true,
  *     networkId: network1.id,
- * }, {dependsOn: [subnet1]});
+ * }, { dependsOn: [subnet1] });
  * const subport1 = new openstack.networking.Port("subport1", {
  *     adminStateUp: true,
  *     networkId: network1.id,
- * }, {dependsOn: [subnet1]});
+ * }, { dependsOn: [subnet1] });
  * const trunk1 = new openstack.networking.Trunk("trunk1", {
  *     adminStateUp: true,
  *     portId: parentPort1.id,

@@ -89,7 +89,7 @@ namespace Pulumi.OpenStack.ContainerInfra
         /// </summary>
         public readonly string Flavor;
         /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
+        /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         /// <summary>

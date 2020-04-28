@@ -49,7 +49,7 @@ type LookupShareNetworkResult struct {
 	Cidr string `pulumi:"cidr"`
 	// See Argument Reference above.
 	Description string `pulumi:"description"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// See Argument Reference above.
 	IpVersion int `pulumi:"ipVersion"`

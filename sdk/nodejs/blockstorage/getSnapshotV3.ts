@@ -17,10 +17,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const snapshot1 = openstack.blockstorage.getSnapshotV3({
+ * const snapshot1 = pulumi.output(openstack.blockstorage.getSnapshotV3({
  *     mostRecent: true,
  *     name: "snapshot1",
- * });
+ * }, { async: true }));
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/blockstorage_snapshot_v3.html.markdown.
@@ -105,7 +105,7 @@ export interface GetSnapshotV3Result {
      */
     readonly volumeId: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

@@ -251,13 +251,23 @@ func (o ConfigurationDatastorePtrOutput) Elem() ConfigurationDatastoreOutput {
 }
 
 // Database engine type to be used with this configuration. Changing this creates a new resource.
-func (o ConfigurationDatastorePtrOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v ConfigurationDatastore) string { return v.Type }).(pulumi.StringOutput)
+func (o ConfigurationDatastorePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfigurationDatastore) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 // Version of database engine type to be used with this configuration. Changing this creates a new resource.
-func (o ConfigurationDatastorePtrOutput) Version() pulumi.StringOutput {
-	return o.ApplyT(func(v ConfigurationDatastore) string { return v.Version }).(pulumi.StringOutput)
+func (o ConfigurationDatastorePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfigurationDatastore) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Version
+	}).(pulumi.StringPtrOutput)
 }
 
 type InstanceDatabase struct {
@@ -523,14 +533,24 @@ func (o InstanceDatastorePtrOutput) Elem() InstanceDatastoreOutput {
 
 // Database engine type to be used in new instance. Changing this
 // creates a new instance.
-func (o InstanceDatastorePtrOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v InstanceDatastore) string { return v.Type }).(pulumi.StringOutput)
+func (o InstanceDatastorePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceDatastore) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 // Version of database engine type to be used in new instance.
 // Changing this creates a new instance.
-func (o InstanceDatastorePtrOutput) Version() pulumi.StringOutput {
-	return o.ApplyT(func(v InstanceDatastore) string { return v.Version }).(pulumi.StringOutput)
+func (o InstanceDatastorePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceDatastore) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Version
+	}).(pulumi.StringPtrOutput)
 }
 
 type InstanceNetwork struct {

@@ -138,7 +138,7 @@ namespace Pulumi.OpenStack.KeyManager
         /// </summary>
         public readonly string? ExpirationFilter;
         /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
+        /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         /// <summary>

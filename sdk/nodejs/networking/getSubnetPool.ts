@@ -17,9 +17,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  * 
- * const subnetpool1 = openstack.networking.getSubnetPool({
+ * const subnetpool1 = pulumi.output(openstack.networking.getSubnetPool({
  *     name: "subnetpool1",
- * });
+ * }, { async: true }));
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_subnetpool_v2.html.markdown.
@@ -185,7 +185,7 @@ export interface GetSubnetPoolResult {
      */
     readonly updatedAt: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

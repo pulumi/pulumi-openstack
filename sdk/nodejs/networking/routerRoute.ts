@@ -36,7 +36,7 @@ import * as utilities from "../utilities";
  *     destinationCidr: "10.0.1.0/24",
  *     nextHop: "192.168.199.254",
  *     routerId: router1.id,
- * }, {dependsOn: [int1]});
+ * }, { dependsOn: [int1] });
  * ```
  * 
  * ## Notes

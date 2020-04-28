@@ -45,7 +45,7 @@ class GetImageResult:
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
-        id is the provider-assigned unique ID for this managed resource.
+        The provider-assigned unique ID for this managed resource.
         """
         if member_status and not isinstance(member_status, str):
             raise TypeError("Expected argument 'member_status' to be a str")

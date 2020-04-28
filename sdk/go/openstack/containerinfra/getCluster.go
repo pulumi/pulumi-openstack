@@ -50,7 +50,7 @@ type LookupClusterResult struct {
 	FixedSubnet string `pulumi:"fixedSubnet"`
 	// The flavor for the nodes of the cluster.
 	Flavor string `pulumi:"flavor"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The name of the Compute service SSH keypair.
 	Keypair string `pulumi:"keypair"`

@@ -65,7 +65,7 @@ type GetDnsZoneResult struct {
 	Description *string `pulumi:"description"`
 	// See Argument Reference above.
 	Email *string `pulumi:"email"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// An array of master DNS servers. When `type` is  `SECONDARY`.
 	Masters []string `pulumi:"masters"`
