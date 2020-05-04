@@ -45,9 +45,8 @@ namespace Pulumi.OpenStack
     public sealed class ProviderArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If set to `true`, OpenStack authorization will be perfomed automatically, if the initial auth token get expired. This is
-        /// useful, when the token TTL is low or the overall Terraform provider execution time expected to be greater than the
-        /// initial token TTL.
+        /// If set to `false`, OpenStack authorization won't be perfomed automatically, if the initial auth token get expired.
+        /// Defaults to `true`
         /// </summary>
         [Input("allowReauth", json: true)]
         public Input<bool>? AllowReauth { get; set; }
@@ -101,7 +100,8 @@ namespace Pulumi.OpenStack
         public Input<string>? DefaultDomain { get; set; }
 
         /// <summary>
-        /// If set to `true`, OpenStack authorization will be perfomed, when the service provider client is called.
+        /// If set to `false`, OpenStack authorization will be perfomed, every time the service provider client is called. Defaults
+        /// to `true`.
         /// </summary>
         [Input("delayedAuth", json: true)]
         public Input<bool>? DelayedAuth { get; set; }

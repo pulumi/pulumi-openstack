@@ -9,6 +9,7 @@ from .listener import *
 from .load_balancer import *
 from .member import *
 from .member_v1 import *
+from .members import *
 from .monitor import *
 from .monitor_v1 import *
 from .pool import *

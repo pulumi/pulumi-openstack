@@ -32,7 +32,17 @@ class Instance(pulumi.CustomResource):
     availability_zone: pulumi.Output[str]
     """
     The availability zone in which to create
-    the server. Changing this creates a new server.
+    the server. Conflicts with `availability_zone_hints`. Changing this creates
+    a new server.
+    """
+    availability_zone_hints: pulumi.Output[str]
+    """
+    The availability zone in which to
+    create the server. This argument is preferred to `availability_zone`, when
+    scheduling the server on a
+    [particular](https://docs.openstack.org/nova/latest/admin/availability-zones.html)
+    host or node. Conflicts with `availability_zone`. Changing this creates a
+    new server.
     """
     block_devices: pulumi.Output[list]
     """
@@ -211,12 +221,15 @@ class Instance(pulumi.CustomResource):
     Map of additional vendor-specific options.
     Supported options are described below.
 
+      * `detachPortsBeforeDestroy` (`bool`) - Whether to try to detach all attached
+        ports to the vm before destroying it to make sure the port state is correct
+        after the vm destruction. This is helpful when the port is not deleted.
       * `ignoreResizeConfirmation` (`bool`) - Boolean to control whether
         to ignore manual confirmation of the instance resizing. This can be helpful
         to work with some OpenStack clouds which automatically confirm resizing of
         instances after some timeout.
     """
-    def __init__(__self__, resource_name, opts=None, access_ip_v4=None, access_ip_v6=None, admin_pass=None, availability_zone=None, block_devices=None, config_drive=None, flavor_id=None, flavor_name=None, force_delete=None, image_id=None, image_name=None, key_pair=None, metadata=None, name=None, networks=None, personalities=None, power_state=None, region=None, scheduler_hints=None, security_groups=None, stop_before_destroy=None, tags=None, user_data=None, vendor_options=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, access_ip_v4=None, access_ip_v6=None, admin_pass=None, availability_zone=None, availability_zone_hints=None, block_devices=None, config_drive=None, flavor_id=None, flavor_name=None, force_delete=None, image_id=None, image_name=None, key_pair=None, metadata=None, name=None, networks=None, personalities=None, power_state=None, region=None, scheduler_hints=None, security_groups=None, stop_before_destroy=None, tags=None, user_data=None, vendor_options=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a V2 VM instance resource within OpenStack.
 
@@ -231,7 +244,7 @@ class Instance(pulumi.CustomResource):
         ### Importing an instance with multiple emphemeral disks
 
         The importer cannot read the emphemeral disk configuration
-        of an instance, so just specify image_id as in the configuration 
+        of an instance, so just specify image_id as in the configuration
         of the basic instance example.
 
         :param str resource_name: The name of the resource.
@@ -241,7 +254,14 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] admin_pass: The administrative password to assign to the server.
                Changing this changes the root password on the existing server.
         :param pulumi.Input[str] availability_zone: The availability zone in which to create
-               the server. Changing this creates a new server.
+               the server. Conflicts with `availability_zone_hints`. Changing this creates
+               a new server.
+        :param pulumi.Input[str] availability_zone_hints: The availability zone in which to
+               create the server. This argument is preferred to `availability_zone`, when
+               scheduling the server on a
+               [particular](https://docs.openstack.org/nova/latest/admin/availability-zones.html)
+               host or node. Conflicts with `availability_zone`. Changing this creates a
+               new server.
         :param pulumi.Input[list] block_devices: Configuration of block devices. The block_device
                structure is documented below. Changing this creates a new server.
                You can specify multiple block devices which will create an instance with
@@ -370,6 +390,9 @@ class Instance(pulumi.CustomResource):
 
         The **vendor_options** object supports the following:
 
+          * `detachPortsBeforeDestroy` (`pulumi.Input[bool]`) - Whether to try to detach all attached
+            ports to the vm before destroying it to make sure the port state is correct
+            after the vm destruction. This is helpful when the port is not deleted.
           * `ignoreResizeConfirmation` (`pulumi.Input[bool]`) - Boolean to control whether
             to ignore manual confirmation of the instance resizing. This can be helpful
             to work with some OpenStack clouds which automatically confirm resizing of
@@ -396,6 +419,7 @@ class Instance(pulumi.CustomResource):
             __props__['access_ip_v6'] = access_ip_v6
             __props__['admin_pass'] = admin_pass
             __props__['availability_zone'] = availability_zone
+            __props__['availability_zone_hints'] = availability_zone_hints
             __props__['block_devices'] = block_devices
             __props__['config_drive'] = config_drive
             __props__['flavor_id'] = flavor_id
@@ -425,7 +449,7 @@ class Instance(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, access_ip_v4=None, access_ip_v6=None, admin_pass=None, all_metadata=None, all_tags=None, availability_zone=None, block_devices=None, config_drive=None, flavor_id=None, flavor_name=None, force_delete=None, image_id=None, image_name=None, key_pair=None, metadata=None, name=None, networks=None, personalities=None, power_state=None, region=None, scheduler_hints=None, security_groups=None, stop_before_destroy=None, tags=None, user_data=None, vendor_options=None):
+    def get(resource_name, id, opts=None, access_ip_v4=None, access_ip_v6=None, admin_pass=None, all_metadata=None, all_tags=None, availability_zone=None, availability_zone_hints=None, block_devices=None, config_drive=None, flavor_id=None, flavor_name=None, force_delete=None, image_id=None, image_name=None, key_pair=None, metadata=None, name=None, networks=None, personalities=None, power_state=None, region=None, scheduler_hints=None, security_groups=None, stop_before_destroy=None, tags=None, user_data=None, vendor_options=None):
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -440,7 +464,14 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[list] all_tags: The collection of tags assigned on the instance, which have
                been explicitly and implicitly added.
         :param pulumi.Input[str] availability_zone: The availability zone in which to create
-               the server. Changing this creates a new server.
+               the server. Conflicts with `availability_zone_hints`. Changing this creates
+               a new server.
+        :param pulumi.Input[str] availability_zone_hints: The availability zone in which to
+               create the server. This argument is preferred to `availability_zone`, when
+               scheduling the server on a
+               [particular](https://docs.openstack.org/nova/latest/admin/availability-zones.html)
+               host or node. Conflicts with `availability_zone`. Changing this creates a
+               new server.
         :param pulumi.Input[list] block_devices: Configuration of block devices. The block_device
                structure is documented below. Changing this creates a new server.
                You can specify multiple block devices which will create an instance with
@@ -569,6 +600,9 @@ class Instance(pulumi.CustomResource):
 
         The **vendor_options** object supports the following:
 
+          * `detachPortsBeforeDestroy` (`pulumi.Input[bool]`) - Whether to try to detach all attached
+            ports to the vm before destroying it to make sure the port state is correct
+            after the vm destruction. This is helpful when the port is not deleted.
           * `ignoreResizeConfirmation` (`pulumi.Input[bool]`) - Boolean to control whether
             to ignore manual confirmation of the instance resizing. This can be helpful
             to work with some OpenStack clouds which automatically confirm resizing of
@@ -584,6 +618,7 @@ class Instance(pulumi.CustomResource):
         __props__["all_metadata"] = all_metadata
         __props__["all_tags"] = all_tags
         __props__["availability_zone"] = availability_zone
+        __props__["availability_zone_hints"] = availability_zone_hints
         __props__["block_devices"] = block_devices
         __props__["config_drive"] = config_drive
         __props__["flavor_id"] = flavor_id

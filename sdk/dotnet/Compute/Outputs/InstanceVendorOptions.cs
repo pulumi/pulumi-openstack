@@ -14,6 +14,12 @@ namespace Pulumi.OpenStack.Compute.Outputs
     public sealed class InstanceVendorOptions
     {
         /// <summary>
+        /// Whether to try to detach all attached
+        /// ports to the vm before destroying it to make sure the port state is correct
+        /// after the vm destruction. This is helpful when the port is not deleted.
+        /// </summary>
+        public readonly bool? DetachPortsBeforeDestroy;
+        /// <summary>
         /// Boolean to control whether
         /// to ignore manual confirmation of the instance resizing. This can be helpful
         /// to work with some OpenStack clouds which automatically confirm resizing of
@@ -22,8 +28,12 @@ namespace Pulumi.OpenStack.Compute.Outputs
         public readonly bool? IgnoreResizeConfirmation;
 
         [OutputConstructor]
-        private InstanceVendorOptions(bool? ignoreResizeConfirmation)
+        private InstanceVendorOptions(
+            bool? detachPortsBeforeDestroy,
+
+            bool? ignoreResizeConfirmation)
         {
+            DetachPortsBeforeDestroy = detachPortsBeforeDestroy;
             IgnoreResizeConfirmation = ignoreResizeConfirmation;
         }
     }

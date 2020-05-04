@@ -13,9 +13,8 @@ __config__ = pulumi.Config('openstack')
 
 allow_reauth = __config__.get('allowReauth') or utilities.get_env_bool('OS_ALLOW_REAUTH')
 """
-If set to `true`, OpenStack authorization will be perfomed automatically, if the initial auth token get expired. This is
-useful, when the token TTL is low or the overall Terraform provider execution time expected to be greater than the
-initial token TTL.
+If set to `false`, OpenStack authorization won't be perfomed automatically, if the initial auth token get expired.
+Defaults to `true`
 """
 
 application_credential_id = __config__.get('applicationCredentialId') or utilities.get_env('OS_APPLICATION_CREDENTIAL_ID')
@@ -60,7 +59,8 @@ The name of the Domain ID to scope to if no other domain is specified. Defaults 
 
 delayed_auth = __config__.get('delayedAuth') or utilities.get_env_bool('OS_DELAYED_AUTH')
 """
-If set to `true`, OpenStack authorization will be perfomed, when the service provider client is called.
+If set to `false`, OpenStack authorization will be perfomed, every time the service provider client is called. Defaults
+to `true`.
 """
 
 disable_no_cache_header = __config__.get('disableNoCacheHeader')

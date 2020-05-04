@@ -69,10 +69,9 @@ namespace Pulumi.OpenStack.Images
         public Output<string?> ImageCachePath { get; private set; } = null!;
 
         /// <summary>
-        /// This is the url of the raw image that will
-        /// be downloaded in the `image_cache_path` before being uploaded to Glance.
-        /// Glance is able to download image from internet but the `gophercloud` library
-        /// does not yet provide a way to do so.
+        /// This is the url of the raw image. If `web_download`
+        /// is not used, then the image will be downloaded in the `image_cache_path` before
+        /// being uploaded to Glance.
         /// Conflicts with `local_file_path`.
         /// </summary>
         [Output("imageSourceUrl")]
@@ -80,7 +79,8 @@ namespace Pulumi.OpenStack.Images
 
         /// <summary>
         /// This is the filepath of the raw image file
-        /// that will be uploaded to Glance. Conflicts with `image_source_url`.
+        /// that will be uploaded to Glance. Conflicts with `image_source_url` and
+        /// `web_download`.
         /// </summary>
         [Output("localFilePath")]
         public Output<string?> LocalFilePath { get; private set; } = null!;
@@ -184,7 +184,8 @@ namespace Pulumi.OpenStack.Images
 
         /// <summary>
         /// If false, the checksum will not be verified
-        /// once the image is finished uploading. Defaults to true.
+        /// once the image is finished uploading. Conflicts with `web_download`.
+        /// Defaults to true when not using `web_download`.
         /// </summary>
         [Output("verifyChecksum")]
         public Output<bool?> VerifyChecksum { get; private set; } = null!;
@@ -196,6 +197,14 @@ namespace Pulumi.OpenStack.Images
         /// </summary>
         [Output("visibility")]
         public Output<string?> Visibility { get; private set; } = null!;
+
+        /// <summary>
+        /// If true, the "web-download" import method will
+        /// be used to let Openstack download the image directly from the remote source.
+        /// Conflicts with `local_file_path`. Defaults to false.
+        /// </summary>
+        [Output("webDownload")]
+        public Output<bool?> WebDownload { get; private set; } = null!;
 
 
         /// <summary>
@@ -261,10 +270,9 @@ namespace Pulumi.OpenStack.Images
         public Input<string>? ImageCachePath { get; set; }
 
         /// <summary>
-        /// This is the url of the raw image that will
-        /// be downloaded in the `image_cache_path` before being uploaded to Glance.
-        /// Glance is able to download image from internet but the `gophercloud` library
-        /// does not yet provide a way to do so.
+        /// This is the url of the raw image. If `web_download`
+        /// is not used, then the image will be downloaded in the `image_cache_path` before
+        /// being uploaded to Glance.
         /// Conflicts with `local_file_path`.
         /// </summary>
         [Input("imageSourceUrl")]
@@ -272,7 +280,8 @@ namespace Pulumi.OpenStack.Images
 
         /// <summary>
         /// This is the filepath of the raw image file
-        /// that will be uploaded to Glance. Conflicts with `image_source_url`.
+        /// that will be uploaded to Glance. Conflicts with `image_source_url` and
+        /// `web_download`.
         /// </summary>
         [Input("localFilePath")]
         public Input<string>? LocalFilePath { get; set; }
@@ -342,7 +351,8 @@ namespace Pulumi.OpenStack.Images
 
         /// <summary>
         /// If false, the checksum will not be verified
-        /// once the image is finished uploading. Defaults to true.
+        /// once the image is finished uploading. Conflicts with `web_download`.
+        /// Defaults to true when not using `web_download`.
         /// </summary>
         [Input("verifyChecksum")]
         public Input<bool>? VerifyChecksum { get; set; }
@@ -354,6 +364,14 @@ namespace Pulumi.OpenStack.Images
         /// </summary>
         [Input("visibility")]
         public Input<string>? Visibility { get; set; }
+
+        /// <summary>
+        /// If true, the "web-download" import method will
+        /// be used to let Openstack download the image directly from the remote source.
+        /// Conflicts with `local_file_path`. Defaults to false.
+        /// </summary>
+        [Input("webDownload")]
+        public Input<bool>? WebDownload { get; set; }
 
         public ImageArgs()
         {
@@ -400,10 +418,9 @@ namespace Pulumi.OpenStack.Images
         public Input<string>? ImageCachePath { get; set; }
 
         /// <summary>
-        /// This is the url of the raw image that will
-        /// be downloaded in the `image_cache_path` before being uploaded to Glance.
-        /// Glance is able to download image from internet but the `gophercloud` library
-        /// does not yet provide a way to do so.
+        /// This is the url of the raw image. If `web_download`
+        /// is not used, then the image will be downloaded in the `image_cache_path` before
+        /// being uploaded to Glance.
         /// Conflicts with `local_file_path`.
         /// </summary>
         [Input("imageSourceUrl")]
@@ -411,7 +428,8 @@ namespace Pulumi.OpenStack.Images
 
         /// <summary>
         /// This is the filepath of the raw image file
-        /// that will be uploaded to Glance. Conflicts with `image_source_url`.
+        /// that will be uploaded to Glance. Conflicts with `image_source_url` and
+        /// `web_download`.
         /// </summary>
         [Input("localFilePath")]
         public Input<string>? LocalFilePath { get; set; }
@@ -533,7 +551,8 @@ namespace Pulumi.OpenStack.Images
 
         /// <summary>
         /// If false, the checksum will not be verified
-        /// once the image is finished uploading. Defaults to true.
+        /// once the image is finished uploading. Conflicts with `web_download`.
+        /// Defaults to true when not using `web_download`.
         /// </summary>
         [Input("verifyChecksum")]
         public Input<bool>? VerifyChecksum { get; set; }
@@ -545,6 +564,14 @@ namespace Pulumi.OpenStack.Images
         /// </summary>
         [Input("visibility")]
         public Input<string>? Visibility { get; set; }
+
+        /// <summary>
+        /// If true, the "web-download" import method will
+        /// be used to let Openstack download the image directly from the remote source.
+        /// Conflicts with `local_file_path`. Defaults to false.
+        /// </summary>
+        [Input("webDownload")]
+        public Input<bool>? WebDownload { get; set; }
 
         public ImageState()
         {

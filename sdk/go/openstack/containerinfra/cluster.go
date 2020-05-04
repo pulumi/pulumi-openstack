@@ -98,33 +98,40 @@ import (
 // * `masterAddresses` - IP addresses of the master node of the cluster.
 // * `nodeAddresses` - IP addresses of the node of the cluster.
 // * `stackId` - UUID of the Orchestration service stack.
+// * `kubeconfig` - The Kubernetes cluster's credentials
+//   * `rawConfig` - The raw kubeconfig file
+//   * `host` - The cluster's API server URL
+//   * `clusterCaCertificate` - The cluster's CA certificate
+//   * `clientKey` - The client's RSA key
+//   * `clientCertificate` - The client's certificate
 type Cluster struct {
 	pulumi.CustomResourceState
 
-	ApiAddress        pulumi.StringOutput `pulumi:"apiAddress"`
-	ClusterTemplateId pulumi.StringOutput `pulumi:"clusterTemplateId"`
-	CoeVersion        pulumi.StringOutput `pulumi:"coeVersion"`
-	ContainerVersion  pulumi.StringOutput `pulumi:"containerVersion"`
-	CreateTimeout     pulumi.IntOutput    `pulumi:"createTimeout"`
-	CreatedAt         pulumi.StringOutput `pulumi:"createdAt"`
-	DiscoveryUrl      pulumi.StringOutput `pulumi:"discoveryUrl"`
-	DockerVolumeSize  pulumi.IntOutput    `pulumi:"dockerVolumeSize"`
-	FixedNetwork      pulumi.StringOutput `pulumi:"fixedNetwork"`
-	FixedSubnet       pulumi.StringOutput `pulumi:"fixedSubnet"`
-	Flavor            pulumi.StringOutput `pulumi:"flavor"`
-	Keypair           pulumi.StringOutput `pulumi:"keypair"`
-	Labels            pulumi.MapOutput    `pulumi:"labels"`
-	MasterAddresses   pulumi.StringOutput `pulumi:"masterAddresses"`
-	MasterCount       pulumi.IntOutput    `pulumi:"masterCount"`
-	MasterFlavor      pulumi.StringOutput `pulumi:"masterFlavor"`
-	Name              pulumi.StringOutput `pulumi:"name"`
-	NodeAddresses     pulumi.StringOutput `pulumi:"nodeAddresses"`
-	NodeCount         pulumi.IntOutput    `pulumi:"nodeCount"`
-	ProjectId         pulumi.StringOutput `pulumi:"projectId"`
-	Region            pulumi.StringOutput `pulumi:"region"`
-	StackId           pulumi.StringOutput `pulumi:"stackId"`
-	UpdatedAt         pulumi.StringOutput `pulumi:"updatedAt"`
-	UserId            pulumi.StringOutput `pulumi:"userId"`
+	ApiAddress        pulumi.StringOutput      `pulumi:"apiAddress"`
+	ClusterTemplateId pulumi.StringOutput      `pulumi:"clusterTemplateId"`
+	CoeVersion        pulumi.StringOutput      `pulumi:"coeVersion"`
+	ContainerVersion  pulumi.StringOutput      `pulumi:"containerVersion"`
+	CreateTimeout     pulumi.IntOutput         `pulumi:"createTimeout"`
+	CreatedAt         pulumi.StringOutput      `pulumi:"createdAt"`
+	DiscoveryUrl      pulumi.StringOutput      `pulumi:"discoveryUrl"`
+	DockerVolumeSize  pulumi.IntOutput         `pulumi:"dockerVolumeSize"`
+	FixedNetwork      pulumi.StringOutput      `pulumi:"fixedNetwork"`
+	FixedSubnet       pulumi.StringOutput      `pulumi:"fixedSubnet"`
+	Flavor            pulumi.StringOutput      `pulumi:"flavor"`
+	Keypair           pulumi.StringOutput      `pulumi:"keypair"`
+	Kubeconfig        ClusterKubeconfigOutput  `pulumi:"kubeconfig"`
+	Labels            pulumi.MapOutput         `pulumi:"labels"`
+	MasterAddresses   pulumi.StringArrayOutput `pulumi:"masterAddresses"`
+	MasterCount       pulumi.IntOutput         `pulumi:"masterCount"`
+	MasterFlavor      pulumi.StringOutput      `pulumi:"masterFlavor"`
+	Name              pulumi.StringOutput      `pulumi:"name"`
+	NodeAddresses     pulumi.StringArrayOutput `pulumi:"nodeAddresses"`
+	NodeCount         pulumi.IntOutput         `pulumi:"nodeCount"`
+	ProjectId         pulumi.StringOutput      `pulumi:"projectId"`
+	Region            pulumi.StringOutput      `pulumi:"region"`
+	StackId           pulumi.StringOutput      `pulumi:"stackId"`
+	UpdatedAt         pulumi.StringOutput      `pulumi:"updatedAt"`
+	UserId            pulumi.StringOutput      `pulumi:"userId"`
 }
 
 // NewCluster registers a new resource with the given unique name, arguments, and options.
@@ -170,12 +177,13 @@ type clusterState struct {
 	FixedSubnet       *string                `pulumi:"fixedSubnet"`
 	Flavor            *string                `pulumi:"flavor"`
 	Keypair           *string                `pulumi:"keypair"`
+	Kubeconfig        *ClusterKubeconfig     `pulumi:"kubeconfig"`
 	Labels            map[string]interface{} `pulumi:"labels"`
-	MasterAddresses   *string                `pulumi:"masterAddresses"`
+	MasterAddresses   []string               `pulumi:"masterAddresses"`
 	MasterCount       *int                   `pulumi:"masterCount"`
 	MasterFlavor      *string                `pulumi:"masterFlavor"`
 	Name              *string                `pulumi:"name"`
-	NodeAddresses     *string                `pulumi:"nodeAddresses"`
+	NodeAddresses     []string               `pulumi:"nodeAddresses"`
 	NodeCount         *int                   `pulumi:"nodeCount"`
 	ProjectId         *string                `pulumi:"projectId"`
 	Region            *string                `pulumi:"region"`
@@ -197,12 +205,13 @@ type ClusterState struct {
 	FixedSubnet       pulumi.StringPtrInput
 	Flavor            pulumi.StringPtrInput
 	Keypair           pulumi.StringPtrInput
+	Kubeconfig        ClusterKubeconfigPtrInput
 	Labels            pulumi.MapInput
-	MasterAddresses   pulumi.StringPtrInput
+	MasterAddresses   pulumi.StringArrayInput
 	MasterCount       pulumi.IntPtrInput
 	MasterFlavor      pulumi.StringPtrInput
 	Name              pulumi.StringPtrInput
-	NodeAddresses     pulumi.StringPtrInput
+	NodeAddresses     pulumi.StringArrayInput
 	NodeCount         pulumi.IntPtrInput
 	ProjectId         pulumi.StringPtrInput
 	Region            pulumi.StringPtrInput

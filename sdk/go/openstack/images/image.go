@@ -46,14 +46,14 @@ type Image struct {
 	// or the path to retrieve it.
 	File           pulumi.StringOutput    `pulumi:"file"`
 	ImageCachePath pulumi.StringPtrOutput `pulumi:"imageCachePath"`
-	// This is the url of the raw image that will
-	// be downloaded in the `imageCachePath` before being uploaded to Glance.
-	// Glance is able to download image from internet but the `gophercloud` library
-	// does not yet provide a way to do so.
+	// This is the url of the raw image. If `webDownload`
+	// is not used, then the image will be downloaded in the `imageCachePath` before
+	// being uploaded to Glance.
 	// Conflicts with `localFilePath`.
 	ImageSourceUrl pulumi.StringPtrOutput `pulumi:"imageSourceUrl"`
 	// This is the filepath of the raw image file
-	// that will be uploaded to Glance. Conflicts with `imageSourceUrl`.
+	// that will be uploaded to Glance. Conflicts with `imageSourceUrl` and
+	// `webDownload`.
 	LocalFilePath pulumi.StringPtrOutput `pulumi:"localFilePath"`
 	// The metadata associated with the image.
 	// Image metadata allow for meaningfully define the image properties
@@ -97,12 +97,17 @@ type Image struct {
 	// The date the image was last updated.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 	// If false, the checksum will not be verified
-	// once the image is finished uploading. Defaults to true.
+	// once the image is finished uploading. Conflicts with `webDownload`.
+	// Defaults to true when not using `webDownload`.
 	VerifyChecksum pulumi.BoolPtrOutput `pulumi:"verifyChecksum"`
 	// The visibility of the image. Must be one of
 	// "public", "private", "community", or "shared". The ability to set the
 	// visibility depends upon the configuration of the OpenStack cloud.
 	Visibility pulumi.StringPtrOutput `pulumi:"visibility"`
+	// If true, the "web-download" import method will
+	// be used to let Openstack download the image directly from the remote source.
+	// Conflicts with `localFilePath`. Defaults to false.
+	WebDownload pulumi.BoolPtrOutput `pulumi:"webDownload"`
 }
 
 // NewImage registers a new resource with the given unique name, arguments, and options.
@@ -154,14 +159,14 @@ type imageState struct {
 	// or the path to retrieve it.
 	File           *string `pulumi:"file"`
 	ImageCachePath *string `pulumi:"imageCachePath"`
-	// This is the url of the raw image that will
-	// be downloaded in the `imageCachePath` before being uploaded to Glance.
-	// Glance is able to download image from internet but the `gophercloud` library
-	// does not yet provide a way to do so.
+	// This is the url of the raw image. If `webDownload`
+	// is not used, then the image will be downloaded in the `imageCachePath` before
+	// being uploaded to Glance.
 	// Conflicts with `localFilePath`.
 	ImageSourceUrl *string `pulumi:"imageSourceUrl"`
 	// This is the filepath of the raw image file
-	// that will be uploaded to Glance. Conflicts with `imageSourceUrl`.
+	// that will be uploaded to Glance. Conflicts with `imageSourceUrl` and
+	// `webDownload`.
 	LocalFilePath *string `pulumi:"localFilePath"`
 	// The metadata associated with the image.
 	// Image metadata allow for meaningfully define the image properties
@@ -205,12 +210,17 @@ type imageState struct {
 	// The date the image was last updated.
 	UpdatedAt *string `pulumi:"updatedAt"`
 	// If false, the checksum will not be verified
-	// once the image is finished uploading. Defaults to true.
+	// once the image is finished uploading. Conflicts with `webDownload`.
+	// Defaults to true when not using `webDownload`.
 	VerifyChecksum *bool `pulumi:"verifyChecksum"`
 	// The visibility of the image. Must be one of
 	// "public", "private", "community", or "shared". The ability to set the
 	// visibility depends upon the configuration of the OpenStack cloud.
 	Visibility *string `pulumi:"visibility"`
+	// If true, the "web-download" import method will
+	// be used to let Openstack download the image directly from the remote source.
+	// Conflicts with `localFilePath`. Defaults to false.
+	WebDownload *bool `pulumi:"webDownload"`
 }
 
 type ImageState struct {
@@ -229,14 +239,14 @@ type ImageState struct {
 	// or the path to retrieve it.
 	File           pulumi.StringPtrInput
 	ImageCachePath pulumi.StringPtrInput
-	// This is the url of the raw image that will
-	// be downloaded in the `imageCachePath` before being uploaded to Glance.
-	// Glance is able to download image from internet but the `gophercloud` library
-	// does not yet provide a way to do so.
+	// This is the url of the raw image. If `webDownload`
+	// is not used, then the image will be downloaded in the `imageCachePath` before
+	// being uploaded to Glance.
 	// Conflicts with `localFilePath`.
 	ImageSourceUrl pulumi.StringPtrInput
 	// This is the filepath of the raw image file
-	// that will be uploaded to Glance. Conflicts with `imageSourceUrl`.
+	// that will be uploaded to Glance. Conflicts with `imageSourceUrl` and
+	// `webDownload`.
 	LocalFilePath pulumi.StringPtrInput
 	// The metadata associated with the image.
 	// Image metadata allow for meaningfully define the image properties
@@ -280,12 +290,17 @@ type ImageState struct {
 	// The date the image was last updated.
 	UpdatedAt pulumi.StringPtrInput
 	// If false, the checksum will not be verified
-	// once the image is finished uploading. Defaults to true.
+	// once the image is finished uploading. Conflicts with `webDownload`.
+	// Defaults to true when not using `webDownload`.
 	VerifyChecksum pulumi.BoolPtrInput
 	// The visibility of the image. Must be one of
 	// "public", "private", "community", or "shared". The ability to set the
 	// visibility depends upon the configuration of the OpenStack cloud.
 	Visibility pulumi.StringPtrInput
+	// If true, the "web-download" import method will
+	// be used to let Openstack download the image directly from the remote source.
+	// Conflicts with `localFilePath`. Defaults to false.
+	WebDownload pulumi.BoolPtrInput
 }
 
 func (ImageState) ElementType() reflect.Type {
@@ -300,14 +315,14 @@ type imageArgs struct {
 	// "ami", "ari", "aki", "vhd", "vmdk", "raw", "qcow2", "vdi", "iso".
 	DiskFormat     string  `pulumi:"diskFormat"`
 	ImageCachePath *string `pulumi:"imageCachePath"`
-	// This is the url of the raw image that will
-	// be downloaded in the `imageCachePath` before being uploaded to Glance.
-	// Glance is able to download image from internet but the `gophercloud` library
-	// does not yet provide a way to do so.
+	// This is the url of the raw image. If `webDownload`
+	// is not used, then the image will be downloaded in the `imageCachePath` before
+	// being uploaded to Glance.
 	// Conflicts with `localFilePath`.
 	ImageSourceUrl *string `pulumi:"imageSourceUrl"`
 	// This is the filepath of the raw image file
-	// that will be uploaded to Glance. Conflicts with `imageSourceUrl`.
+	// that will be uploaded to Glance. Conflicts with `imageSourceUrl` and
+	// `webDownload`.
 	LocalFilePath *string `pulumi:"localFilePath"`
 	// Amount of disk space (in GB) required to boot image.
 	// Defaults to 0.
@@ -333,12 +348,17 @@ type imageArgs struct {
 	// At this time, it is not possible to delete all tags of an image.
 	Tags []string `pulumi:"tags"`
 	// If false, the checksum will not be verified
-	// once the image is finished uploading. Defaults to true.
+	// once the image is finished uploading. Conflicts with `webDownload`.
+	// Defaults to true when not using `webDownload`.
 	VerifyChecksum *bool `pulumi:"verifyChecksum"`
 	// The visibility of the image. Must be one of
 	// "public", "private", "community", or "shared". The ability to set the
 	// visibility depends upon the configuration of the OpenStack cloud.
 	Visibility *string `pulumi:"visibility"`
+	// If true, the "web-download" import method will
+	// be used to let Openstack download the image directly from the remote source.
+	// Conflicts with `localFilePath`. Defaults to false.
+	WebDownload *bool `pulumi:"webDownload"`
 }
 
 // The set of arguments for constructing a Image resource.
@@ -350,14 +370,14 @@ type ImageArgs struct {
 	// "ami", "ari", "aki", "vhd", "vmdk", "raw", "qcow2", "vdi", "iso".
 	DiskFormat     pulumi.StringInput
 	ImageCachePath pulumi.StringPtrInput
-	// This is the url of the raw image that will
-	// be downloaded in the `imageCachePath` before being uploaded to Glance.
-	// Glance is able to download image from internet but the `gophercloud` library
-	// does not yet provide a way to do so.
+	// This is the url of the raw image. If `webDownload`
+	// is not used, then the image will be downloaded in the `imageCachePath` before
+	// being uploaded to Glance.
 	// Conflicts with `localFilePath`.
 	ImageSourceUrl pulumi.StringPtrInput
 	// This is the filepath of the raw image file
-	// that will be uploaded to Glance. Conflicts with `imageSourceUrl`.
+	// that will be uploaded to Glance. Conflicts with `imageSourceUrl` and
+	// `webDownload`.
 	LocalFilePath pulumi.StringPtrInput
 	// Amount of disk space (in GB) required to boot image.
 	// Defaults to 0.
@@ -383,12 +403,17 @@ type ImageArgs struct {
 	// At this time, it is not possible to delete all tags of an image.
 	Tags pulumi.StringArrayInput
 	// If false, the checksum will not be verified
-	// once the image is finished uploading. Defaults to true.
+	// once the image is finished uploading. Conflicts with `webDownload`.
+	// Defaults to true when not using `webDownload`.
 	VerifyChecksum pulumi.BoolPtrInput
 	// The visibility of the image. Must be one of
 	// "public", "private", "community", or "shared". The ability to set the
 	// visibility depends upon the configuration of the OpenStack cloud.
 	Visibility pulumi.StringPtrInput
+	// If true, the "web-download" import method will
+	// be used to let Openstack download the image directly from the remote source.
+	// Conflicts with `localFilePath`. Defaults to false.
+	WebDownload pulumi.BoolPtrInput
 }
 
 func (ImageArgs) ElementType() reflect.Type {

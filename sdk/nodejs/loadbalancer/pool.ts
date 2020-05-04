@@ -69,7 +69,8 @@ export class Pool extends pulumi.CustomResource {
     /**
      * The load balancing algorithm to
      * distribute traffic to the pool's members. Must be one of
-     * ROUND_ROBIN, LEAST_CONNECTIONS, or SOURCE_IP.
+     * ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT (supported only
+     * in Octavia).
      */
     public readonly lbMethod!: pulumi.Output<string>;
     /**
@@ -181,7 +182,8 @@ export interface PoolState {
     /**
      * The load balancing algorithm to
      * distribute traffic to the pool's members. Must be one of
-     * ROUND_ROBIN, LEAST_CONNECTIONS, or SOURCE_IP.
+     * ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT (supported only
+     * in Octavia).
      */
     readonly lbMethod?: pulumi.Input<string>;
     /**
@@ -242,7 +244,8 @@ export interface PoolArgs {
     /**
      * The load balancing algorithm to
      * distribute traffic to the pool's members. Must be one of
-     * ROUND_ROBIN, LEAST_CONNECTIONS, or SOURCE_IP.
+     * ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT (supported only
+     * in Octavia).
      */
     readonly lbMethod: pulumi.Input<string>;
     /**

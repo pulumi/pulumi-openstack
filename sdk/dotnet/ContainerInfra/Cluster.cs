@@ -98,6 +98,12 @@ namespace Pulumi.OpenStack.ContainerInfra
     /// * `master_addresses` - IP addresses of the master node of the cluster.
     /// * `node_addresses` - IP addresses of the node of the cluster.
     /// * `stack_id` - UUID of the Orchestration service stack.
+    /// * `kubeconfig` - The Kubernetes cluster's credentials
+    ///   * `raw_config` - The raw kubeconfig file
+    ///   * `host` - The cluster's API server URL
+    ///   * `cluster_ca_certificate` - The cluster's CA certificate
+    ///   * `client_key` - The client's RSA key
+    ///   * `client_certificate` - The client's certificate
     /// </summary>
     public partial class Cluster : Pulumi.CustomResource
     {
@@ -137,11 +143,14 @@ namespace Pulumi.OpenStack.ContainerInfra
         [Output("keypair")]
         public Output<string> Keypair { get; private set; } = null!;
 
+        [Output("kubeconfig")]
+        public Output<Outputs.ClusterKubeconfig> Kubeconfig { get; private set; } = null!;
+
         [Output("labels")]
         public Output<ImmutableDictionary<string, object>> Labels { get; private set; } = null!;
 
         [Output("masterAddresses")]
-        public Output<string> MasterAddresses { get; private set; } = null!;
+        public Output<ImmutableArray<string>> MasterAddresses { get; private set; } = null!;
 
         [Output("masterCount")]
         public Output<int> MasterCount { get; private set; } = null!;
@@ -153,7 +162,7 @@ namespace Pulumi.OpenStack.ContainerInfra
         public Output<string> Name { get; private set; } = null!;
 
         [Output("nodeAddresses")]
-        public Output<string> NodeAddresses { get; private set; } = null!;
+        public Output<ImmutableArray<string>> NodeAddresses { get; private set; } = null!;
 
         [Output("nodeCount")]
         public Output<int> NodeCount { get; private set; } = null!;
@@ -309,6 +318,9 @@ namespace Pulumi.OpenStack.ContainerInfra
         [Input("keypair")]
         public Input<string>? Keypair { get; set; }
 
+        [Input("kubeconfig")]
+        public Input<Inputs.ClusterKubeconfigGetArgs>? Kubeconfig { get; set; }
+
         [Input("labels")]
         private InputMap<object>? _labels;
         public InputMap<object> Labels
@@ -318,7 +330,12 @@ namespace Pulumi.OpenStack.ContainerInfra
         }
 
         [Input("masterAddresses")]
-        public Input<string>? MasterAddresses { get; set; }
+        private InputList<string>? _masterAddresses;
+        public InputList<string> MasterAddresses
+        {
+            get => _masterAddresses ?? (_masterAddresses = new InputList<string>());
+            set => _masterAddresses = value;
+        }
 
         [Input("masterCount")]
         public Input<int>? MasterCount { get; set; }
@@ -330,7 +347,12 @@ namespace Pulumi.OpenStack.ContainerInfra
         public Input<string>? Name { get; set; }
 
         [Input("nodeAddresses")]
-        public Input<string>? NodeAddresses { get; set; }
+        private InputList<string>? _nodeAddresses;
+        public InputList<string> NodeAddresses
+        {
+            get => _nodeAddresses ?? (_nodeAddresses = new InputList<string>());
+            set => _nodeAddresses = value;
+        }
 
         [Input("nodeCount")]
         public Input<int>? NodeCount { get; set; }

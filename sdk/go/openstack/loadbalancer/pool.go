@@ -21,7 +21,8 @@ type Pool struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The load balancing algorithm to
 	// distribute traffic to the pool's members. Must be one of
-	// ROUND_ROBIN, LEAST_CONNECTIONS, or SOURCE_IP.
+	// ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT (supported only
+	// in Octavia).
 	LbMethod pulumi.StringOutput `pulumi:"lbMethod"`
 	// The Listener on which the members of the pool
 	// will be associated with. Changing this creates a new pool.
@@ -92,7 +93,8 @@ type poolState struct {
 	Description *string `pulumi:"description"`
 	// The load balancing algorithm to
 	// distribute traffic to the pool's members. Must be one of
-	// ROUND_ROBIN, LEAST_CONNECTIONS, or SOURCE_IP.
+	// ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT (supported only
+	// in Octavia).
 	LbMethod *string `pulumi:"lbMethod"`
 	// The Listener on which the members of the pool
 	// will be associated with. Changing this creates a new pool.
@@ -130,7 +132,8 @@ type PoolState struct {
 	Description pulumi.StringPtrInput
 	// The load balancing algorithm to
 	// distribute traffic to the pool's members. Must be one of
-	// ROUND_ROBIN, LEAST_CONNECTIONS, or SOURCE_IP.
+	// ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT (supported only
+	// in Octavia).
 	LbMethod pulumi.StringPtrInput
 	// The Listener on which the members of the pool
 	// will be associated with. Changing this creates a new pool.
@@ -172,7 +175,8 @@ type poolArgs struct {
 	Description *string `pulumi:"description"`
 	// The load balancing algorithm to
 	// distribute traffic to the pool's members. Must be one of
-	// ROUND_ROBIN, LEAST_CONNECTIONS, or SOURCE_IP.
+	// ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT (supported only
+	// in Octavia).
 	LbMethod string `pulumi:"lbMethod"`
 	// The Listener on which the members of the pool
 	// will be associated with. Changing this creates a new pool.
@@ -211,7 +215,8 @@ type PoolArgs struct {
 	Description pulumi.StringPtrInput
 	// The load balancing algorithm to
 	// distribute traffic to the pool's members. Must be one of
-	// ROUND_ROBIN, LEAST_CONNECTIONS, or SOURCE_IP.
+	// ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT (supported only
+	// in Octavia).
 	LbMethod pulumi.StringInput
 	// The Listener on which the members of the pool
 	// will be associated with. Changing this creates a new pool.

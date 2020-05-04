@@ -116,9 +116,8 @@ func NewProvider(ctx *pulumi.Context,
 }
 
 type providerArgs struct {
-	// If set to `true`, OpenStack authorization will be perfomed automatically, if the initial auth token get expired. This is
-	// useful, when the token TTL is low or the overall Terraform provider execution time expected to be greater than the
-	// initial token TTL.
+	// If set to `false`, OpenStack authorization won't be perfomed automatically, if the initial auth token get expired.
+	// Defaults to `true`
 	AllowReauth *bool `pulumi:"allowReauth"`
 	// Application Credential ID to login with.
 	ApplicationCredentialId *string `pulumi:"applicationCredentialId"`
@@ -136,7 +135,8 @@ type providerArgs struct {
 	Cloud *string `pulumi:"cloud"`
 	// The name of the Domain ID to scope to if no other domain is specified. Defaults to `default` (Identity v3).
 	DefaultDomain *string `pulumi:"defaultDomain"`
-	// If set to `true`, OpenStack authorization will be perfomed, when the service provider client is called.
+	// If set to `false`, OpenStack authorization will be perfomed, every time the service provider client is called. Defaults
+	// to `true`.
 	DelayedAuth *bool `pulumi:"delayedAuth"`
 	// If set to `true`, the HTTP `Cache-Control: no-cache` header will not be added by default to all API requests.
 	DisableNoCacheHeader *bool `pulumi:"disableNoCacheHeader"`
@@ -183,9 +183,8 @@ type providerArgs struct {
 
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
-	// If set to `true`, OpenStack authorization will be perfomed automatically, if the initial auth token get expired. This is
-	// useful, when the token TTL is low or the overall Terraform provider execution time expected to be greater than the
-	// initial token TTL.
+	// If set to `false`, OpenStack authorization won't be perfomed automatically, if the initial auth token get expired.
+	// Defaults to `true`
 	AllowReauth pulumi.BoolPtrInput
 	// Application Credential ID to login with.
 	ApplicationCredentialId pulumi.StringPtrInput
@@ -203,7 +202,8 @@ type ProviderArgs struct {
 	Cloud pulumi.StringPtrInput
 	// The name of the Domain ID to scope to if no other domain is specified. Defaults to `default` (Identity v3).
 	DefaultDomain pulumi.StringPtrInput
-	// If set to `true`, OpenStack authorization will be perfomed, when the service provider client is called.
+	// If set to `false`, OpenStack authorization will be perfomed, every time the service provider client is called. Defaults
+	// to `true`.
 	DelayedAuth pulumi.BoolPtrInput
 	// If set to `true`, the HTTP `Cache-Control: no-cache` header will not be added by default to all API requests.
 	DisableNoCacheHeader pulumi.BoolPtrInput

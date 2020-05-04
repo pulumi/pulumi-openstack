@@ -552,6 +552,234 @@ func (o ContainerV1SecretRefArrayOutput) Index(i pulumi.IntInput) ContainerV1Sec
 	}).(ContainerV1SecretRefOutput)
 }
 
+type OrderV1Meta struct {
+	// Algorithm to use for key generation.
+	Algorithm string `pulumi:"algorithm"`
+	// - Bit lenght of key to be generated.
+	BitLength int `pulumi:"bitLength"`
+	// This is a UTC timestamp in ISO 8601 format YYYY-MM-DDTHH:MM:SSZ. If set, the secret will not be available after this time.
+	Expiration *string `pulumi:"expiration"`
+	// The mode to use for key generation.
+	Mode *string `pulumi:"mode"`
+	// The name of the secret set by the user.
+	Name *string `pulumi:"name"`
+	// The media type for the content of the secrets payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.
+	PayloadContentType *string `pulumi:"payloadContentType"`
+}
+
+// OrderV1MetaInput is an input type that accepts OrderV1MetaArgs and OrderV1MetaOutput values.
+// You can construct a concrete instance of `OrderV1MetaInput` via:
+//
+// 		 OrderV1MetaArgs{...}
+//
+type OrderV1MetaInput interface {
+	pulumi.Input
+
+	ToOrderV1MetaOutput() OrderV1MetaOutput
+	ToOrderV1MetaOutputWithContext(context.Context) OrderV1MetaOutput
+}
+
+type OrderV1MetaArgs struct {
+	// Algorithm to use for key generation.
+	Algorithm pulumi.StringInput `pulumi:"algorithm"`
+	// - Bit lenght of key to be generated.
+	BitLength pulumi.IntInput `pulumi:"bitLength"`
+	// This is a UTC timestamp in ISO 8601 format YYYY-MM-DDTHH:MM:SSZ. If set, the secret will not be available after this time.
+	Expiration pulumi.StringPtrInput `pulumi:"expiration"`
+	// The mode to use for key generation.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// The name of the secret set by the user.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The media type for the content of the secrets payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.
+	PayloadContentType pulumi.StringPtrInput `pulumi:"payloadContentType"`
+}
+
+func (OrderV1MetaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrderV1Meta)(nil)).Elem()
+}
+
+func (i OrderV1MetaArgs) ToOrderV1MetaOutput() OrderV1MetaOutput {
+	return i.ToOrderV1MetaOutputWithContext(context.Background())
+}
+
+func (i OrderV1MetaArgs) ToOrderV1MetaOutputWithContext(ctx context.Context) OrderV1MetaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrderV1MetaOutput)
+}
+
+func (i OrderV1MetaArgs) ToOrderV1MetaPtrOutput() OrderV1MetaPtrOutput {
+	return i.ToOrderV1MetaPtrOutputWithContext(context.Background())
+}
+
+func (i OrderV1MetaArgs) ToOrderV1MetaPtrOutputWithContext(ctx context.Context) OrderV1MetaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrderV1MetaOutput).ToOrderV1MetaPtrOutputWithContext(ctx)
+}
+
+// OrderV1MetaPtrInput is an input type that accepts OrderV1MetaArgs, OrderV1MetaPtr and OrderV1MetaPtrOutput values.
+// You can construct a concrete instance of `OrderV1MetaPtrInput` via:
+//
+// 		 OrderV1MetaArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type OrderV1MetaPtrInput interface {
+	pulumi.Input
+
+	ToOrderV1MetaPtrOutput() OrderV1MetaPtrOutput
+	ToOrderV1MetaPtrOutputWithContext(context.Context) OrderV1MetaPtrOutput
+}
+
+type orderV1MetaPtrType OrderV1MetaArgs
+
+func OrderV1MetaPtr(v *OrderV1MetaArgs) OrderV1MetaPtrInput {
+	return (*orderV1MetaPtrType)(v)
+}
+
+func (*orderV1MetaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrderV1Meta)(nil)).Elem()
+}
+
+func (i *orderV1MetaPtrType) ToOrderV1MetaPtrOutput() OrderV1MetaPtrOutput {
+	return i.ToOrderV1MetaPtrOutputWithContext(context.Background())
+}
+
+func (i *orderV1MetaPtrType) ToOrderV1MetaPtrOutputWithContext(ctx context.Context) OrderV1MetaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrderV1MetaPtrOutput)
+}
+
+type OrderV1MetaOutput struct{ *pulumi.OutputState }
+
+func (OrderV1MetaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrderV1Meta)(nil)).Elem()
+}
+
+func (o OrderV1MetaOutput) ToOrderV1MetaOutput() OrderV1MetaOutput {
+	return o
+}
+
+func (o OrderV1MetaOutput) ToOrderV1MetaOutputWithContext(ctx context.Context) OrderV1MetaOutput {
+	return o
+}
+
+func (o OrderV1MetaOutput) ToOrderV1MetaPtrOutput() OrderV1MetaPtrOutput {
+	return o.ToOrderV1MetaPtrOutputWithContext(context.Background())
+}
+
+func (o OrderV1MetaOutput) ToOrderV1MetaPtrOutputWithContext(ctx context.Context) OrderV1MetaPtrOutput {
+	return o.ApplyT(func(v OrderV1Meta) *OrderV1Meta {
+		return &v
+	}).(OrderV1MetaPtrOutput)
+}
+
+// Algorithm to use for key generation.
+func (o OrderV1MetaOutput) Algorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v OrderV1Meta) string { return v.Algorithm }).(pulumi.StringOutput)
+}
+
+// - Bit lenght of key to be generated.
+func (o OrderV1MetaOutput) BitLength() pulumi.IntOutput {
+	return o.ApplyT(func(v OrderV1Meta) int { return v.BitLength }).(pulumi.IntOutput)
+}
+
+// This is a UTC timestamp in ISO 8601 format YYYY-MM-DDTHH:MM:SSZ. If set, the secret will not be available after this time.
+func (o OrderV1MetaOutput) Expiration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OrderV1Meta) *string { return v.Expiration }).(pulumi.StringPtrOutput)
+}
+
+// The mode to use for key generation.
+func (o OrderV1MetaOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OrderV1Meta) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// The name of the secret set by the user.
+func (o OrderV1MetaOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OrderV1Meta) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The media type for the content of the secrets payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.
+func (o OrderV1MetaOutput) PayloadContentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OrderV1Meta) *string { return v.PayloadContentType }).(pulumi.StringPtrOutput)
+}
+
+type OrderV1MetaPtrOutput struct{ *pulumi.OutputState }
+
+func (OrderV1MetaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrderV1Meta)(nil)).Elem()
+}
+
+func (o OrderV1MetaPtrOutput) ToOrderV1MetaPtrOutput() OrderV1MetaPtrOutput {
+	return o
+}
+
+func (o OrderV1MetaPtrOutput) ToOrderV1MetaPtrOutputWithContext(ctx context.Context) OrderV1MetaPtrOutput {
+	return o
+}
+
+func (o OrderV1MetaPtrOutput) Elem() OrderV1MetaOutput {
+	return o.ApplyT(func(v *OrderV1Meta) OrderV1Meta { return *v }).(OrderV1MetaOutput)
+}
+
+// Algorithm to use for key generation.
+func (o OrderV1MetaPtrOutput) Algorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OrderV1Meta) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Algorithm
+	}).(pulumi.StringPtrOutput)
+}
+
+// - Bit lenght of key to be generated.
+func (o OrderV1MetaPtrOutput) BitLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OrderV1Meta) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.BitLength
+	}).(pulumi.IntPtrOutput)
+}
+
+// This is a UTC timestamp in ISO 8601 format YYYY-MM-DDTHH:MM:SSZ. If set, the secret will not be available after this time.
+func (o OrderV1MetaPtrOutput) Expiration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OrderV1Meta) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Expiration
+	}).(pulumi.StringPtrOutput)
+}
+
+// The mode to use for key generation.
+func (o OrderV1MetaPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OrderV1Meta) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the secret set by the user.
+func (o OrderV1MetaPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OrderV1Meta) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The media type for the content of the secrets payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.
+func (o OrderV1MetaPtrOutput) PayloadContentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OrderV1Meta) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PayloadContentType
+	}).(pulumi.StringPtrOutput)
+}
+
 type SecretV1Acl struct {
 	Read *SecretV1AclRead `pulumi:"read"`
 }
@@ -1461,6 +1689,8 @@ func init() {
 	pulumi.RegisterOutputType(ContainerV1ConsumerArrayOutput{})
 	pulumi.RegisterOutputType(ContainerV1SecretRefOutput{})
 	pulumi.RegisterOutputType(ContainerV1SecretRefArrayOutput{})
+	pulumi.RegisterOutputType(OrderV1MetaOutput{})
+	pulumi.RegisterOutputType(OrderV1MetaPtrOutput{})
 	pulumi.RegisterOutputType(SecretV1AclOutput{})
 	pulumi.RegisterOutputType(SecretV1AclPtrOutput{})
 	pulumi.RegisterOutputType(SecretV1AclReadOutput{})

@@ -8,6 +8,7 @@ export * from "./listener";
 export * from "./loadBalancer";
 export * from "./member";
 export * from "./memberV1";
+export * from "./members";
 export * from "./monitor";
 export * from "./monitorV1";
 export * from "./pool";

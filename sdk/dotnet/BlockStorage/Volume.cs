@@ -87,6 +87,13 @@ namespace Pulumi.OpenStack.BlockStorage
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
+        /// Provide the Cinder scheduler with hints on where
+        /// to instantiate a volume in the OpenStack cloud. The available hints are described below.
+        /// </summary>
+        [Output("schedulerHints")]
+        public Output<ImmutableArray<Outputs.VolumeSchedulerHint>> SchedulerHints { get; private set; } = null!;
+
+        /// <summary>
         /// The size of the volume to create (in gigabytes).
         /// </summary>
         [Output("size")]
@@ -235,6 +242,19 @@ namespace Pulumi.OpenStack.BlockStorage
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        [Input("schedulerHints")]
+        private InputList<Inputs.VolumeSchedulerHintArgs>? _schedulerHints;
+
+        /// <summary>
+        /// Provide the Cinder scheduler with hints on where
+        /// to instantiate a volume in the OpenStack cloud. The available hints are described below.
+        /// </summary>
+        public InputList<Inputs.VolumeSchedulerHintArgs> SchedulerHints
+        {
+            get => _schedulerHints ?? (_schedulerHints = new InputList<Inputs.VolumeSchedulerHintArgs>());
+            set => _schedulerHints = value;
+        }
+
         /// <summary>
         /// The size of the volume to create (in gigabytes).
         /// </summary>
@@ -358,6 +378,19 @@ namespace Pulumi.OpenStack.BlockStorage
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
+
+        [Input("schedulerHints")]
+        private InputList<Inputs.VolumeSchedulerHintGetArgs>? _schedulerHints;
+
+        /// <summary>
+        /// Provide the Cinder scheduler with hints on where
+        /// to instantiate a volume in the OpenStack cloud. The available hints are described below.
+        /// </summary>
+        public InputList<Inputs.VolumeSchedulerHintGetArgs> SchedulerHints
+        {
+            get => _schedulerHints ?? (_schedulerHints = new InputList<Inputs.VolumeSchedulerHintGetArgs>());
+            set => _schedulerHints = value;
+        }
 
         /// <summary>
         /// The size of the volume to create (in gigabytes).

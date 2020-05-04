@@ -37,16 +37,16 @@ class Image(pulumi.CustomResource):
     image_cache_path: pulumi.Output[str]
     image_source_url: pulumi.Output[str]
     """
-    This is the url of the raw image that will
-    be downloaded in the `image_cache_path` before being uploaded to Glance.
-    Glance is able to download image from internet but the `gophercloud` library
-    does not yet provide a way to do so.
+    This is the url of the raw image. If `web_download`
+    is not used, then the image will be downloaded in the `image_cache_path` before
+    being uploaded to Glance.
     Conflicts with `local_file_path`.
     """
     local_file_path: pulumi.Output[str]
     """
     This is the filepath of the raw image file
-    that will be uploaded to Glance. Conflicts with `image_source_url`.
+    that will be uploaded to Glance. Conflicts with `image_source_url` and
+    `web_download`.
     """
     metadata: pulumi.Output[dict]
     """
@@ -120,7 +120,8 @@ class Image(pulumi.CustomResource):
     verify_checksum: pulumi.Output[bool]
     """
     If false, the checksum will not be verified
-    once the image is finished uploading. Defaults to true.
+    once the image is finished uploading. Conflicts with `web_download`.
+    Defaults to true when not using `web_download`.
     """
     visibility: pulumi.Output[str]
     """
@@ -128,7 +129,13 @@ class Image(pulumi.CustomResource):
     "public", "private", "community", or "shared". The ability to set the
     visibility depends upon the configuration of the OpenStack cloud.
     """
-    def __init__(__self__, resource_name, opts=None, container_format=None, disk_format=None, image_cache_path=None, image_source_url=None, local_file_path=None, min_disk_gb=None, min_ram_mb=None, name=None, properties=None, protected=None, region=None, tags=None, verify_checksum=None, visibility=None, __props__=None, __name__=None, __opts__=None):
+    web_download: pulumi.Output[bool]
+    """
+    If true, the "web-download" import method will
+    be used to let Openstack download the image directly from the remote source.
+    Conflicts with `local_file_path`. Defaults to false.
+    """
+    def __init__(__self__, resource_name, opts=None, container_format=None, disk_format=None, image_cache_path=None, image_source_url=None, local_file_path=None, min_disk_gb=None, min_ram_mb=None, name=None, properties=None, protected=None, region=None, tags=None, verify_checksum=None, visibility=None, web_download=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a V2 Image resource within OpenStack Glance.
 
@@ -155,13 +162,13 @@ class Image(pulumi.CustomResource):
                "ami", "ari", "aki", "bare", "ovf".
         :param pulumi.Input[str] disk_format: The disk format. Must be one of
                "ami", "ari", "aki", "vhd", "vmdk", "raw", "qcow2", "vdi", "iso".
-        :param pulumi.Input[str] image_source_url: This is the url of the raw image that will
-               be downloaded in the `image_cache_path` before being uploaded to Glance.
-               Glance is able to download image from internet but the `gophercloud` library
-               does not yet provide a way to do so.
+        :param pulumi.Input[str] image_source_url: This is the url of the raw image. If `web_download`
+               is not used, then the image will be downloaded in the `image_cache_path` before
+               being uploaded to Glance.
                Conflicts with `local_file_path`.
         :param pulumi.Input[str] local_file_path: This is the filepath of the raw image file
-               that will be uploaded to Glance. Conflicts with `image_source_url`.
+               that will be uploaded to Glance. Conflicts with `image_source_url` and
+               `web_download`.
         :param pulumi.Input[float] min_disk_gb: Amount of disk space (in GB) required to boot image.
                Defaults to 0.
         :param pulumi.Input[float] min_ram_mb: Amount of ram (in MB) required to boot image.
@@ -179,10 +186,14 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[list] tags: The tags of the image. It must be a list of strings.
                At this time, it is not possible to delete all tags of an image.
         :param pulumi.Input[bool] verify_checksum: If false, the checksum will not be verified
-               once the image is finished uploading. Defaults to true.
+               once the image is finished uploading. Conflicts with `web_download`.
+               Defaults to true when not using `web_download`.
         :param pulumi.Input[str] visibility: The visibility of the image. Must be one of
                "public", "private", "community", or "shared". The ability to set the
                visibility depends upon the configuration of the OpenStack cloud.
+        :param pulumi.Input[bool] web_download: If true, the "web-download" import method will
+               be used to let Openstack download the image directly from the remote source.
+               Conflicts with `local_file_path`. Defaults to false.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -219,6 +230,7 @@ class Image(pulumi.CustomResource):
             __props__['tags'] = tags
             __props__['verify_checksum'] = verify_checksum
             __props__['visibility'] = visibility
+            __props__['web_download'] = web_download
             __props__['checksum'] = None
             __props__['created_at'] = None
             __props__['file'] = None
@@ -236,7 +248,7 @@ class Image(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, checksum=None, container_format=None, created_at=None, disk_format=None, file=None, image_cache_path=None, image_source_url=None, local_file_path=None, metadata=None, min_disk_gb=None, min_ram_mb=None, name=None, owner=None, properties=None, protected=None, region=None, schema=None, size_bytes=None, status=None, tags=None, update_at=None, updated_at=None, verify_checksum=None, visibility=None):
+    def get(resource_name, id, opts=None, checksum=None, container_format=None, created_at=None, disk_format=None, file=None, image_cache_path=None, image_source_url=None, local_file_path=None, metadata=None, min_disk_gb=None, min_ram_mb=None, name=None, owner=None, properties=None, protected=None, region=None, schema=None, size_bytes=None, status=None, tags=None, update_at=None, updated_at=None, verify_checksum=None, visibility=None, web_download=None):
         """
         Get an existing Image resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -253,13 +265,13 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[str] file: the trailing path after the glance
                endpoint that represent the location of the image
                or the path to retrieve it.
-        :param pulumi.Input[str] image_source_url: This is the url of the raw image that will
-               be downloaded in the `image_cache_path` before being uploaded to Glance.
-               Glance is able to download image from internet but the `gophercloud` library
-               does not yet provide a way to do so.
+        :param pulumi.Input[str] image_source_url: This is the url of the raw image. If `web_download`
+               is not used, then the image will be downloaded in the `image_cache_path` before
+               being uploaded to Glance.
                Conflicts with `local_file_path`.
         :param pulumi.Input[str] local_file_path: This is the filepath of the raw image file
-               that will be uploaded to Glance. Conflicts with `image_source_url`.
+               that will be uploaded to Glance. Conflicts with `image_source_url` and
+               `web_download`.
         :param pulumi.Input[dict] metadata: The metadata associated with the image.
                Image metadata allow for meaningfully define the image properties
                and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
@@ -288,10 +300,14 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[str] update_at: (**Deprecated** - use `updated_at` instead)
         :param pulumi.Input[str] updated_at: The date the image was last updated.
         :param pulumi.Input[bool] verify_checksum: If false, the checksum will not be verified
-               once the image is finished uploading. Defaults to true.
+               once the image is finished uploading. Conflicts with `web_download`.
+               Defaults to true when not using `web_download`.
         :param pulumi.Input[str] visibility: The visibility of the image. Must be one of
                "public", "private", "community", or "shared". The ability to set the
                visibility depends upon the configuration of the OpenStack cloud.
+        :param pulumi.Input[bool] web_download: If true, the "web-download" import method will
+               be used to let Openstack download the image directly from the remote source.
+               Conflicts with `local_file_path`. Defaults to false.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -321,6 +337,7 @@ class Image(pulumi.CustomResource):
         __props__["updated_at"] = updated_at
         __props__["verify_checksum"] = verify_checksum
         __props__["visibility"] = visibility
+        __props__["web_download"] = web_download
         return Image(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

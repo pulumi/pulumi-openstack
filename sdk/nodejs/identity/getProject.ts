@@ -108,6 +108,10 @@ export interface GetProjectResult {
      */
     readonly region: string;
     /**
+     * See Argument Reference above.
+     */
+    readonly tags: string[];
+    /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;

@@ -23,7 +23,7 @@ namespace Pulumi.OpenStack.Compute
     /// ### Importing an instance with multiple emphemeral disks
     /// 
     /// The importer cannot read the emphemeral disk configuration
-    /// of an instance, so just specify image_id as in the configuration 
+    /// of an instance, so just specify image_id as in the configuration
     /// of the basic instance example.
     /// </summary>
     public partial class Instance : Pulumi.CustomResource
@@ -59,10 +59,22 @@ namespace Pulumi.OpenStack.Compute
 
         /// <summary>
         /// The availability zone in which to create
-        /// the server. Changing this creates a new server.
+        /// the server. Conflicts with `availability_zone_hints`. Changing this creates
+        /// a new server.
         /// </summary>
         [Output("availabilityZone")]
         public Output<string> AvailabilityZone { get; private set; } = null!;
+
+        /// <summary>
+        /// The availability zone in which to
+        /// create the server. This argument is preferred to `availability_zone`, when
+        /// scheduling the server on a
+        /// [particular](https://docs.openstack.org/nova/latest/admin/availability-zones.html)
+        /// host or node. Conflicts with `availability_zone`. Changing this creates a
+        /// new server.
+        /// </summary>
+        [Output("availabilityZoneHints")]
+        public Output<string?> AvailabilityZoneHints { get; private set; } = null!;
 
         /// <summary>
         /// Configuration of block devices. The block_device
@@ -288,10 +300,22 @@ namespace Pulumi.OpenStack.Compute
 
         /// <summary>
         /// The availability zone in which to create
-        /// the server. Changing this creates a new server.
+        /// the server. Conflicts with `availability_zone_hints`. Changing this creates
+        /// a new server.
         /// </summary>
         [Input("availabilityZone")]
         public Input<string>? AvailabilityZone { get; set; }
+
+        /// <summary>
+        /// The availability zone in which to
+        /// create the server. This argument is preferred to `availability_zone`, when
+        /// scheduling the server on a
+        /// [particular](https://docs.openstack.org/nova/latest/admin/availability-zones.html)
+        /// host or node. Conflicts with `availability_zone`. Changing this creates a
+        /// new server.
+        /// </summary>
+        [Input("availabilityZoneHints")]
+        public Input<string>? AvailabilityZoneHints { get; set; }
 
         [Input("blockDevices")]
         private InputList<Inputs.InstanceBlockDeviceArgs>? _blockDevices;
@@ -541,10 +565,22 @@ namespace Pulumi.OpenStack.Compute
 
         /// <summary>
         /// The availability zone in which to create
-        /// the server. Changing this creates a new server.
+        /// the server. Conflicts with `availability_zone_hints`. Changing this creates
+        /// a new server.
         /// </summary>
         [Input("availabilityZone")]
         public Input<string>? AvailabilityZone { get; set; }
+
+        /// <summary>
+        /// The availability zone in which to
+        /// create the server. This argument is preferred to `availability_zone`, when
+        /// scheduling the server on a
+        /// [particular](https://docs.openstack.org/nova/latest/admin/availability-zones.html)
+        /// host or node. Conflicts with `availability_zone`. Changing this creates a
+        /// new server.
+        /// </summary>
+        [Input("availabilityZoneHints")]
+        public Input<string>? AvailabilityZoneHints { get; set; }
 
         [Input("blockDevices")]
         private InputList<Inputs.InstanceBlockDeviceGetArgs>? _blockDevices;
