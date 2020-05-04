@@ -2,11 +2,14 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+_(none)_
+
+---
+
+## 2.2.0 (2020-05-04)
 * Upgrade to v1.28.0 of the OpenStack Terraform Provider
   ** Please Note ** in `openstack.containerinfra.Cluster` `NodeAddresses` is now a List not a string
 * Upgrade to pulumi-terraform-bridge v2.2.0
-
----
 
 ## 2.1.0 (2020-04-28)
 * Regenerate datasource examples to be async
