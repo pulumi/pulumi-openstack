@@ -104,7 +104,7 @@ namespace Pulumi.OpenStack.ContainerInfra
         /// <summary>
         /// IP addresses of the master node of the cluster.
         /// </summary>
-        public readonly string MasterAddresses;
+        public readonly ImmutableArray<string> MasterAddresses;
         /// <summary>
         /// The number of master nodes for the cluster.
         /// </summary>
@@ -120,7 +120,7 @@ namespace Pulumi.OpenStack.ContainerInfra
         /// <summary>
         /// IP addresses of the node of the cluster.
         /// </summary>
-        public readonly string NodeAddresses;
+        public readonly ImmutableArray<string> NodeAddresses;
         /// <summary>
         /// The number of nodes for the cluster.
         /// </summary>
@@ -176,7 +176,7 @@ namespace Pulumi.OpenStack.ContainerInfra
 
             ImmutableDictionary<string, object> labels,
 
-            string masterAddresses,
+            ImmutableArray<string> masterAddresses,
 
             int masterCount,
 
@@ -184,7 +184,7 @@ namespace Pulumi.OpenStack.ContainerInfra
 
             string name,
 
-            string nodeAddresses,
+            ImmutableArray<string> nodeAddresses,
 
             int nodeCount,
 

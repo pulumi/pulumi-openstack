@@ -7,9 +7,8 @@ import * as utilities from "../utilities";
 let __config = new pulumi.Config("openstack");
 
 /**
- * If set to `true`, OpenStack authorization will be perfomed automatically, if the initial auth token get expired. This is
- * useful, when the token TTL is low or the overall Terraform provider execution time expected to be greater than the
- * initial token TTL.
+ * If set to `false`, OpenStack authorization won't be perfomed automatically, if the initial auth token get expired.
+ * Defaults to `true`
  */
 export let allowReauth: boolean | undefined = __config.getObject<boolean>("allowReauth") || utilities.getEnvBoolean("OS_ALLOW_REAUTH");
 /**
@@ -45,7 +44,8 @@ export let cloud: string | undefined = __config.get("cloud") || utilities.getEnv
  */
 export let defaultDomain: string | undefined = __config.get("defaultDomain") || (utilities.getEnv("OS_DEFAULT_DOMAIN") || "default");
 /**
- * If set to `true`, OpenStack authorization will be perfomed, when the service provider client is called.
+ * If set to `false`, OpenStack authorization will be perfomed, every time the service provider client is called. Defaults
+ * to `true`.
  */
 export let delayedAuth: boolean | undefined = __config.getObject<boolean>("delayedAuth") || utilities.getEnvBoolean("OS_DELAYED_AUTH");
 /**

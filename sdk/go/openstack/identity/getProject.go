@@ -53,4 +53,6 @@ type LookupProjectResult struct {
 	ParentId *string `pulumi:"parentId"`
 	// The region the project is located in.
 	Region string `pulumi:"region"`
+	// See Argument Reference above.
+	Tags []string `pulumi:"tags"`
 }

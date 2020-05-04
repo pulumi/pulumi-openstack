@@ -9,9 +9,8 @@ namespace Pulumi.OpenStack
     {
         private static readonly Pulumi.Config __config = new Pulumi.Config("openstack");
         /// <summary>
-        /// If set to `true`, OpenStack authorization will be perfomed automatically, if the initial auth token get expired. This is
-        /// useful, when the token TTL is low or the overall Terraform provider execution time expected to be greater than the
-        /// initial token TTL.
+        /// If set to `false`, OpenStack authorization won't be perfomed automatically, if the initial auth token get expired.
+        /// Defaults to `true`
         /// </summary>
         public static bool? AllowReauth { get; set; } = __config.GetBoolean("allowReauth") ?? Utilities.GetEnvBoolean("OS_ALLOW_REAUTH");
 
@@ -56,7 +55,8 @@ namespace Pulumi.OpenStack
         public static string? DefaultDomain { get; set; } = __config.Get("defaultDomain") ?? Utilities.GetEnv("OS_DEFAULT_DOMAIN") ?? "default";
 
         /// <summary>
-        /// If set to `true`, OpenStack authorization will be perfomed, when the service provider client is called.
+        /// If set to `false`, OpenStack authorization will be perfomed, every time the service provider client is called. Defaults
+        /// to `true`.
         /// </summary>
         public static bool? DelayedAuth { get; set; } = __config.GetBoolean("delayedAuth") ?? Utilities.GetEnvBoolean("OS_DELAYED_AUTH");
 

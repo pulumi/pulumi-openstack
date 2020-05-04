@@ -11,6 +11,38 @@ export namespace blockstorage {
         instanceId?: pulumi.Input<string>;
     }
 
+    export interface VolumeSchedulerHint {
+        /**
+         * Arbitrary key/value pairs of additional
+         * properties to pass to the scheduler.
+         */
+        additionalProperties?: pulumi.Input<{[key: string]: any}>;
+        /**
+         * The volume should be scheduled on a 
+         * different host from the set of volumes specified in the list provided.
+         */
+        differentHosts?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * An instance UUID. The volume should be 
+         * scheduled on the same host as the instance.
+         */
+        localToInstance?: pulumi.Input<string>;
+        /**
+         * A conditional query that a back-end must pass in
+         * order to host a volume. The query must use the `JsonFilter` syntax
+         * which is described
+         * [here](https://docs.openstack.org/cinder/latest/configuration/block-storage/scheduler-filters.html#jsonfilter).
+         * At this time, only simple queries are supported. Compound queries using
+         * `and`, `or`, or `not` are not supported. An example of a simple query is:
+         */
+        query?: pulumi.Input<string>;
+        /**
+         * A list of volume UUIDs. The volume should be
+         * scheduled on the same host as another volume specified in the list provided.
+         */
+        sameHosts?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
     export interface VolumeV1Attachment {
         device?: pulumi.Input<string>;
         id?: pulumi.Input<string>;
@@ -21,6 +53,38 @@ export namespace blockstorage {
         device?: pulumi.Input<string>;
         id?: pulumi.Input<string>;
         instanceId?: pulumi.Input<string>;
+    }
+
+    export interface VolumeV2SchedulerHint {
+        /**
+         * Arbitrary key/value pairs of additional
+         * properties to pass to the scheduler.
+         */
+        additionalProperties?: pulumi.Input<{[key: string]: any}>;
+        /**
+         * The volume should be scheduled on a 
+         * different host from the set of volumes specified in the list provided.
+         */
+        differentHosts?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * An instance UUID. The volume should be 
+         * scheduled on the same host as the instance.
+         */
+        localToInstance?: pulumi.Input<string>;
+        /**
+         * A conditional query that a back-end must pass in
+         * order to host a volume. The query must use the `JsonFilter` syntax
+         * which is described
+         * [here](https://docs.openstack.org/cinder/latest/configuration/block-storage/scheduler-filters.html#jsonfilter).
+         * At this time, only simple queries are supported. Compound queries using
+         * `and`, `or`, or `not` are not supported. An example of a simple query is:
+         */
+        query?: pulumi.Input<string>;
+        /**
+         * A list of volume UUIDs. The volume should be
+         * scheduled on the same host as another volume specified in the list provided.
+         */
+        sameHosts?: pulumi.Input<pulumi.Input<string>[]>;
     }
 }
 
@@ -164,6 +228,12 @@ export namespace compute {
 
     export interface InstanceVendorOptions {
         /**
+         * Whether to try to detach all attached
+         * ports to the vm before destroying it to make sure the port state is correct
+         * after the vm destruction. This is helpful when the port is not deleted.
+         */
+        detachPortsBeforeDestroy?: pulumi.Input<boolean>;
+        /**
          * Boolean to control whether
          * to ignore manual confirmation of the instance resizing. This can be helpful
          * to work with some OpenStack clouds which automatically confirm resizing of
@@ -208,6 +278,16 @@ export namespace compute {
          * range to open. Changing this creates a new security group rule.
          */
         toPort: pulumi.Input<number>;
+    }
+}
+
+export namespace containerinfra {
+    export interface ClusterKubeconfig {
+        clientCertificate?: pulumi.Input<string>;
+        clientKey?: pulumi.Input<string>;
+        clusterCaCertificate?: pulumi.Input<string>;
+        host?: pulumi.Input<string>;
+        rawConfig?: pulumi.Input<string>;
     }
 }
 
@@ -398,6 +478,33 @@ export namespace keymanager {
         secretRef: pulumi.Input<string>;
     }
 
+    export interface OrderV1Meta {
+        /**
+         * Algorithm to use for key generation.
+         */
+        algorithm: pulumi.Input<string>;
+        /**
+         * - Bit lenght of key to be generated.
+         */
+        bitLength: pulumi.Input<number>;
+        /**
+         * This is a UTC timestamp in ISO 8601 format YYYY-MM-DDTHH:MM:SSZ. If set, the secret will not be available after this time.
+         */
+        expiration?: pulumi.Input<string>;
+        /**
+         * The mode to use for key generation.
+         */
+        mode?: pulumi.Input<string>;
+        /**
+         * The name of the secret set by the user.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * The media type for the content of the secrets payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.
+         */
+        payloadContentType?: pulumi.Input<string>;
+    }
+
     export interface SecretV1Acl {
         read?: pulumi.Input<inputs.keymanager.SecretV1AclRead>;
     }
@@ -425,6 +532,42 @@ export namespace keymanager {
 }
 
 export namespace loadbalancer {
+    export interface MembersMember {
+        /**
+         * The IP address of the members to receive traffic from
+         * the load balancer.
+         */
+        address: pulumi.Input<string>;
+        /**
+         * The administrative state of the member.
+         * A valid value is true (UP) or false (DOWN). Defaults to true.
+         */
+        adminStateUp?: pulumi.Input<boolean>;
+        /**
+         * The unique ID for the members.
+         */
+        id?: pulumi.Input<string>;
+        /**
+         * Human-readable name for the member.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * The port on which to listen for client traffic.
+         */
+        protocolPort: pulumi.Input<number>;
+        /**
+         * The subnet in which to access the member.
+         */
+        subnetId?: pulumi.Input<string>;
+        /**
+         * A positive integer value that indicates the relative
+         * portion of traffic that this members should receive from the pool. For
+         * example, a member with a weight of 10 receives five times as much traffic
+         * as a member with a weight of 2. Defaults to 1.
+         */
+        weight?: pulumi.Input<number>;
+    }
+
     export interface PoolPersistence {
         /**
          * The name of the cookie if persistence mode is set
@@ -595,7 +738,7 @@ export namespace objectstorage {
          */
         location: pulumi.Input<string>;
         /**
-         * Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/overview_object_versioning.html).
+         * Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/api/object_versioning.html).
          */
         type: pulumi.Input<string>;
     }

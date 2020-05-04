@@ -58,10 +58,17 @@ namespace Pulumi.OpenStack.Identity
         /// <summary>
         /// The region in which to obtain the V3 Keystone client.
         /// If omitted, the `region` argument of the provider is used. Changing this
-        /// creates a new User.
+        /// creates a new project.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
+
+        /// <summary>
+        /// Tags for the project. Changing this updates the existing
+        /// project.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
 
         /// <summary>
@@ -150,10 +157,23 @@ namespace Pulumi.OpenStack.Identity
         /// <summary>
         /// The region in which to obtain the V3 Keystone client.
         /// If omitted, the `region` argument of the provider is used. Changing this
-        /// creates a new User.
+        /// creates a new project.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
+
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// Tags for the project. Changing this updates the existing
+        /// project.
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
 
         public ProjectArgs()
         {
@@ -203,10 +223,23 @@ namespace Pulumi.OpenStack.Identity
         /// <summary>
         /// The region in which to obtain the V3 Keystone client.
         /// If omitted, the `region` argument of the provider is used. Changing this
-        /// creates a new User.
+        /// creates a new project.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
+
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// Tags for the project. Changing this updates the existing
+        /// project.
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
 
         public ProjectState()
         {

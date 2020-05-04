@@ -22,12 +22,13 @@ class Cluster(pulumi.CustomResource):
     fixed_subnet: pulumi.Output[str]
     flavor: pulumi.Output[str]
     keypair: pulumi.Output[str]
+    kubeconfig: pulumi.Output[dict]
     labels: pulumi.Output[dict]
-    master_addresses: pulumi.Output[str]
+    master_addresses: pulumi.Output[list]
     master_count: pulumi.Output[float]
     master_flavor: pulumi.Output[str]
     name: pulumi.Output[str]
-    node_addresses: pulumi.Output[str]
+    node_addresses: pulumi.Output[list]
     node_count: pulumi.Output[float]
     project_id: pulumi.Output[str]
     region: pulumi.Output[str]
@@ -124,6 +125,12 @@ class Cluster(pulumi.CustomResource):
         * `master_addresses` - IP addresses of the master node of the cluster.
         * `node_addresses` - IP addresses of the node of the cluster.
         * `stack_id` - UUID of the Orchestration service stack.
+        * `kubeconfig` - The Kubernetes cluster's credentials
+          * `raw_config` - The raw kubeconfig file
+          * `host` - The cluster's API server URL
+          * `cluster_ca_certificate` - The cluster's CA certificate
+          * `client_key` - The client's RSA key
+          * `client_certificate` - The client's certificate
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -165,6 +172,7 @@ class Cluster(pulumi.CustomResource):
             __props__['coe_version'] = None
             __props__['container_version'] = None
             __props__['created_at'] = None
+            __props__['kubeconfig'] = None
             __props__['master_addresses'] = None
             __props__['node_addresses'] = None
             __props__['project_id'] = None
@@ -178,7 +186,7 @@ class Cluster(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, api_address=None, cluster_template_id=None, coe_version=None, container_version=None, create_timeout=None, created_at=None, discovery_url=None, docker_volume_size=None, fixed_network=None, fixed_subnet=None, flavor=None, keypair=None, labels=None, master_addresses=None, master_count=None, master_flavor=None, name=None, node_addresses=None, node_count=None, project_id=None, region=None, stack_id=None, updated_at=None, user_id=None):
+    def get(resource_name, id, opts=None, api_address=None, cluster_template_id=None, coe_version=None, container_version=None, create_timeout=None, created_at=None, discovery_url=None, docker_volume_size=None, fixed_network=None, fixed_subnet=None, flavor=None, keypair=None, kubeconfig=None, labels=None, master_addresses=None, master_count=None, master_flavor=None, name=None, node_addresses=None, node_count=None, project_id=None, region=None, stack_id=None, updated_at=None, user_id=None):
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -186,6 +194,14 @@ class Cluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+
+        The **kubeconfig** object supports the following:
+
+          * `client_certificate` (`pulumi.Input[str]`)
+          * `client_key` (`pulumi.Input[str]`)
+          * `cluster_ca_certificate` (`pulumi.Input[str]`)
+          * `host` (`pulumi.Input[str]`)
+          * `raw_config` (`pulumi.Input[str]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -203,6 +219,7 @@ class Cluster(pulumi.CustomResource):
         __props__["fixed_subnet"] = fixed_subnet
         __props__["flavor"] = flavor
         __props__["keypair"] = keypair
+        __props__["kubeconfig"] = kubeconfig
         __props__["labels"] = labels
         __props__["master_addresses"] = master_addresses
         __props__["master_count"] = master_count

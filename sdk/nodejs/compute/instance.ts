@@ -54,9 +54,19 @@ export class Instance extends pulumi.CustomResource {
     public /*out*/ readonly allTags!: pulumi.Output<string[]>;
     /**
      * The availability zone in which to create
-     * the server. Changing this creates a new server.
+     * the server. Conflicts with `availabilityZoneHints`. Changing this creates
+     * a new server.
      */
     public readonly availabilityZone!: pulumi.Output<string>;
+    /**
+     * The availability zone in which to
+     * create the server. This argument is preferred to `availabilityZone`, when
+     * scheduling the server on a
+     * [particular](https://docs.openstack.org/nova/latest/admin/availability-zones.html)
+     * host or node. Conflicts with `availabilityZone`. Changing this creates a
+     * new server.
+     */
+    public readonly availabilityZoneHints!: pulumi.Output<string | undefined>;
     /**
      * Configuration of block devices. The blockDevice
      * structure is documented below. Changing this creates a new server.
@@ -193,6 +203,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["allMetadata"] = state ? state.allMetadata : undefined;
             inputs["allTags"] = state ? state.allTags : undefined;
             inputs["availabilityZone"] = state ? state.availabilityZone : undefined;
+            inputs["availabilityZoneHints"] = state ? state.availabilityZoneHints : undefined;
             inputs["blockDevices"] = state ? state.blockDevices : undefined;
             inputs["configDrive"] = state ? state.configDrive : undefined;
             inputs["flavorId"] = state ? state.flavorId : undefined;
@@ -219,6 +230,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["accessIpV6"] = args ? args.accessIpV6 : undefined;
             inputs["adminPass"] = args ? args.adminPass : undefined;
             inputs["availabilityZone"] = args ? args.availabilityZone : undefined;
+            inputs["availabilityZoneHints"] = args ? args.availabilityZoneHints : undefined;
             inputs["blockDevices"] = args ? args.blockDevices : undefined;
             inputs["configDrive"] = args ? args.configDrive : undefined;
             inputs["flavorId"] = args ? args.flavorId : undefined;
@@ -278,9 +290,19 @@ export interface InstanceState {
     readonly allTags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The availability zone in which to create
-     * the server. Changing this creates a new server.
+     * the server. Conflicts with `availabilityZoneHints`. Changing this creates
+     * a new server.
      */
     readonly availabilityZone?: pulumi.Input<string>;
+    /**
+     * The availability zone in which to
+     * create the server. This argument is preferred to `availabilityZone`, when
+     * scheduling the server on a
+     * [particular](https://docs.openstack.org/nova/latest/admin/availability-zones.html)
+     * host or node. Conflicts with `availabilityZone`. Changing this creates a
+     * new server.
+     */
+    readonly availabilityZoneHints?: pulumi.Input<string>;
     /**
      * Configuration of block devices. The blockDevice
      * structure is documented below. Changing this creates a new server.
@@ -419,9 +441,19 @@ export interface InstanceArgs {
     readonly adminPass?: pulumi.Input<string>;
     /**
      * The availability zone in which to create
-     * the server. Changing this creates a new server.
+     * the server. Conflicts with `availabilityZoneHints`. Changing this creates
+     * a new server.
      */
     readonly availabilityZone?: pulumi.Input<string>;
+    /**
+     * The availability zone in which to
+     * create the server. This argument is preferred to `availabilityZone`, when
+     * scheduling the server on a
+     * [particular](https://docs.openstack.org/nova/latest/admin/availability-zones.html)
+     * host or node. Conflicts with `availabilityZone`. Changing this creates a
+     * new server.
+     */
+    readonly availabilityZoneHints?: pulumi.Input<string>;
     /**
      * Configuration of block devices. The blockDevice
      * structure is documented below. Changing this creates a new server.

@@ -103,6 +103,10 @@ namespace Pulumi.OpenStack.Identity
         /// The region the project is located in.
         /// </summary>
         public readonly string Region;
+        /// <summary>
+        /// See Argument Reference above.
+        /// </summary>
+        public readonly ImmutableArray<string> Tags;
 
         [OutputConstructor]
         private GetProjectResult(
@@ -120,7 +124,9 @@ namespace Pulumi.OpenStack.Identity
 
             string? parentId,
 
-            string region)
+            string region,
+
+            ImmutableArray<string> tags)
         {
             Description = description;
             DomainId = domainId;
@@ -130,6 +136,7 @@ namespace Pulumi.OpenStack.Identity
             Name = name;
             ParentId = parentId;
             Region = region;
+            Tags = tags;
         }
     }
 }

@@ -106,6 +106,11 @@ export class Volume extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
+     * Provide the Cinder scheduler with hints on where
+     * to instantiate a volume in the OpenStack cloud. The available hints are described below.
+     */
+    public readonly schedulerHints!: pulumi.Output<outputs.blockstorage.VolumeSchedulerHint[] | undefined>;
+    /**
      * The size of the volume to create (in gigabytes).
      */
     public readonly size!: pulumi.Output<number>;
@@ -151,6 +156,7 @@ export class Volume extends pulumi.CustomResource {
             inputs["multiattach"] = state ? state.multiattach : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["region"] = state ? state.region : undefined;
+            inputs["schedulerHints"] = state ? state.schedulerHints : undefined;
             inputs["size"] = state ? state.size : undefined;
             inputs["snapshotId"] = state ? state.snapshotId : undefined;
             inputs["sourceReplica"] = state ? state.sourceReplica : undefined;
@@ -170,6 +176,7 @@ export class Volume extends pulumi.CustomResource {
             inputs["multiattach"] = args ? args.multiattach : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["region"] = args ? args.region : undefined;
+            inputs["schedulerHints"] = args ? args.schedulerHints : undefined;
             inputs["size"] = args ? args.size : undefined;
             inputs["snapshotId"] = args ? args.snapshotId : undefined;
             inputs["sourceReplica"] = args ? args.sourceReplica : undefined;
@@ -245,6 +252,11 @@ export interface VolumeState {
      */
     readonly region?: pulumi.Input<string>;
     /**
+     * Provide the Cinder scheduler with hints on where
+     * to instantiate a volume in the OpenStack cloud. The available hints are described below.
+     */
+    readonly schedulerHints?: pulumi.Input<pulumi.Input<inputs.blockstorage.VolumeSchedulerHint>[]>;
+    /**
      * The size of the volume to create (in gigabytes).
      */
     readonly size?: pulumi.Input<number>;
@@ -319,6 +331,11 @@ export interface VolumeArgs {
      * creates a new volume.
      */
     readonly region?: pulumi.Input<string>;
+    /**
+     * Provide the Cinder scheduler with hints on where
+     * to instantiate a volume in the OpenStack cloud. The available hints are described below.
+     */
+    readonly schedulerHints?: pulumi.Input<pulumi.Input<inputs.blockstorage.VolumeSchedulerHint>[]>;
     /**
      * The size of the volume to create (in gigabytes).
      */

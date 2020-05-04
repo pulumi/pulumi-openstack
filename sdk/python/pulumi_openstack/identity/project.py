@@ -40,9 +40,14 @@ class Project(pulumi.CustomResource):
     """
     The region in which to obtain the V3 Keystone client.
     If omitted, the `region` argument of the provider is used. Changing this
-    creates a new User.
+    creates a new project.
     """
-    def __init__(__self__, resource_name, opts=None, description=None, domain_id=None, enabled=None, is_domain=None, name=None, parent_id=None, region=None, __props__=None, __name__=None, __opts__=None):
+    tags: pulumi.Output[list]
+    """
+    Tags for the project. Changing this updates the existing
+    project.
+    """
+    def __init__(__self__, resource_name, opts=None, description=None, domain_id=None, enabled=None, is_domain=None, name=None, parent_id=None, region=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a V3 Project resource within OpenStack Keystone.
 
@@ -63,7 +68,9 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] parent_id: The parent of this project.
         :param pulumi.Input[str] region: The region in which to obtain the V3 Keystone client.
                If omitted, the `region` argument of the provider is used. Changing this
-               creates a new User.
+               creates a new project.
+        :param pulumi.Input[list] tags: Tags for the project. Changing this updates the existing
+               project.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -89,6 +96,7 @@ class Project(pulumi.CustomResource):
             __props__['name'] = name
             __props__['parent_id'] = parent_id
             __props__['region'] = region
+            __props__['tags'] = tags
         super(Project, __self__).__init__(
             'openstack:identity/project:Project',
             resource_name,
@@ -96,7 +104,7 @@ class Project(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, description=None, domain_id=None, enabled=None, is_domain=None, name=None, parent_id=None, region=None):
+    def get(resource_name, id, opts=None, description=None, domain_id=None, enabled=None, is_domain=None, name=None, parent_id=None, region=None, tags=None):
         """
         Get an existing Project resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -114,7 +122,9 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] parent_id: The parent of this project.
         :param pulumi.Input[str] region: The region in which to obtain the V3 Keystone client.
                If omitted, the `region` argument of the provider is used. Changing this
-               creates a new User.
+               creates a new project.
+        :param pulumi.Input[list] tags: Tags for the project. Changing this updates the existing
+               project.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -127,6 +137,7 @@ class Project(pulumi.CustomResource):
         __props__["name"] = name
         __props__["parent_id"] = parent_id
         __props__["region"] = region
+        __props__["tags"] = tags
         return Project(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

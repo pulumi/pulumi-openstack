@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -108,6 +110,12 @@ import * as utilities from "../utilities";
  * * `masterAddresses` - IP addresses of the master node of the cluster.
  * * `nodeAddresses` - IP addresses of the node of the cluster.
  * * `stackId` - UUID of the Orchestration service stack.
+ * * `kubeconfig` - The Kubernetes cluster's credentials
+ *   * `rawConfig` - The raw kubeconfig file
+ *   * `host` - The cluster's API server URL
+ *   * `clusterCaCertificate` - The cluster's CA certificate
+ *   * `clientKey` - The client's RSA key
+ *   * `clientCertificate` - The client's certificate
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/containerinfra_cluster_v1.html.markdown.
  */
@@ -150,12 +158,13 @@ export class Cluster extends pulumi.CustomResource {
     public readonly fixedSubnet!: pulumi.Output<string>;
     public readonly flavor!: pulumi.Output<string>;
     public readonly keypair!: pulumi.Output<string>;
+    public /*out*/ readonly kubeconfig!: pulumi.Output<outputs.containerinfra.ClusterKubeconfig>;
     public readonly labels!: pulumi.Output<{[key: string]: any}>;
-    public /*out*/ readonly masterAddresses!: pulumi.Output<string>;
+    public /*out*/ readonly masterAddresses!: pulumi.Output<string[]>;
     public readonly masterCount!: pulumi.Output<number>;
     public readonly masterFlavor!: pulumi.Output<string>;
     public readonly name!: pulumi.Output<string>;
-    public /*out*/ readonly nodeAddresses!: pulumi.Output<string>;
+    public /*out*/ readonly nodeAddresses!: pulumi.Output<string[]>;
     public readonly nodeCount!: pulumi.Output<number>;
     public /*out*/ readonly projectId!: pulumi.Output<string>;
     public readonly region!: pulumi.Output<string>;
@@ -187,6 +196,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["fixedSubnet"] = state ? state.fixedSubnet : undefined;
             inputs["flavor"] = state ? state.flavor : undefined;
             inputs["keypair"] = state ? state.keypair : undefined;
+            inputs["kubeconfig"] = state ? state.kubeconfig : undefined;
             inputs["labels"] = state ? state.labels : undefined;
             inputs["masterAddresses"] = state ? state.masterAddresses : undefined;
             inputs["masterCount"] = state ? state.masterCount : undefined;
@@ -222,6 +232,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["coeVersion"] = undefined /*out*/;
             inputs["containerVersion"] = undefined /*out*/;
             inputs["createdAt"] = undefined /*out*/;
+            inputs["kubeconfig"] = undefined /*out*/;
             inputs["masterAddresses"] = undefined /*out*/;
             inputs["nodeAddresses"] = undefined /*out*/;
             inputs["projectId"] = undefined /*out*/;
@@ -256,12 +267,13 @@ export interface ClusterState {
     readonly fixedSubnet?: pulumi.Input<string>;
     readonly flavor?: pulumi.Input<string>;
     readonly keypair?: pulumi.Input<string>;
+    readonly kubeconfig?: pulumi.Input<inputs.containerinfra.ClusterKubeconfig>;
     readonly labels?: pulumi.Input<{[key: string]: any}>;
-    readonly masterAddresses?: pulumi.Input<string>;
+    readonly masterAddresses?: pulumi.Input<pulumi.Input<string>[]>;
     readonly masterCount?: pulumi.Input<number>;
     readonly masterFlavor?: pulumi.Input<string>;
     readonly name?: pulumi.Input<string>;
-    readonly nodeAddresses?: pulumi.Input<string>;
+    readonly nodeAddresses?: pulumi.Input<pulumi.Input<string>[]>;
     readonly nodeCount?: pulumi.Input<number>;
     readonly projectId?: pulumi.Input<string>;
     readonly region?: pulumi.Input<string>;

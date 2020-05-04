@@ -23,7 +23,8 @@ class Pool(pulumi.CustomResource):
     """
     The load balancing algorithm to
     distribute traffic to the pool's members. Must be one of
-    ROUND_ROBIN, LEAST_CONNECTIONS, or SOURCE_IP.
+    ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT (supported only
+    in Octavia).
     """
     listener_id: pulumi.Output[str]
     """
@@ -83,7 +84,8 @@ class Pool(pulumi.CustomResource):
         :param pulumi.Input[str] description: Human-readable description for the pool.
         :param pulumi.Input[str] lb_method: The load balancing algorithm to
                distribute traffic to the pool's members. Must be one of
-               ROUND_ROBIN, LEAST_CONNECTIONS, or SOURCE_IP.
+               ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT (supported only
+               in Octavia).
         :param pulumi.Input[str] listener_id: The Listener on which the members of the pool
                will be associated with. Changing this creates a new pool.
                Note:  One of LoadbalancerID or ListenerID must be provided.
@@ -162,7 +164,8 @@ class Pool(pulumi.CustomResource):
         :param pulumi.Input[str] description: Human-readable description for the pool.
         :param pulumi.Input[str] lb_method: The load balancing algorithm to
                distribute traffic to the pool's members. Must be one of
-               ROUND_ROBIN, LEAST_CONNECTIONS, or SOURCE_IP.
+               ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT (supported only
+               in Octavia).
         :param pulumi.Input[str] listener_id: The Listener on which the members of the pool
                will be associated with. Changing this creates a new pool.
                Note:  One of LoadbalancerID or ListenerID must be provided.

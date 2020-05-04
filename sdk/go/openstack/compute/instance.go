@@ -39,8 +39,16 @@ type Instance struct {
 	// been explicitly and implicitly added.
 	AllTags pulumi.StringArrayOutput `pulumi:"allTags"`
 	// The availability zone in which to create
-	// the server. Changing this creates a new server.
+	// the server. Conflicts with `availabilityZoneHints`. Changing this creates
+	// a new server.
 	AvailabilityZone pulumi.StringOutput `pulumi:"availabilityZone"`
+	// The availability zone in which to
+	// create the server. This argument is preferred to `availabilityZone`, when
+	// scheduling the server on a
+	// [particular](https://docs.openstack.org/nova/latest/admin/availability-zones.html)
+	// host or node. Conflicts with `availabilityZone`. Changing this creates a
+	// new server.
+	AvailabilityZoneHints pulumi.StringPtrOutput `pulumi:"availabilityZoneHints"`
 	// Configuration of block devices. The blockDevice
 	// structure is documented below. Changing this creates a new server.
 	// You can specify multiple block devices which will create an instance with
@@ -160,8 +168,16 @@ type instanceState struct {
 	// been explicitly and implicitly added.
 	AllTags []string `pulumi:"allTags"`
 	// The availability zone in which to create
-	// the server. Changing this creates a new server.
+	// the server. Conflicts with `availabilityZoneHints`. Changing this creates
+	// a new server.
 	AvailabilityZone *string `pulumi:"availabilityZone"`
+	// The availability zone in which to
+	// create the server. This argument is preferred to `availabilityZone`, when
+	// scheduling the server on a
+	// [particular](https://docs.openstack.org/nova/latest/admin/availability-zones.html)
+	// host or node. Conflicts with `availabilityZone`. Changing this creates a
+	// new server.
+	AvailabilityZoneHints *string `pulumi:"availabilityZoneHints"`
 	// Configuration of block devices. The blockDevice
 	// structure is documented below. Changing this creates a new server.
 	// You can specify multiple block devices which will create an instance with
@@ -254,8 +270,16 @@ type InstanceState struct {
 	// been explicitly and implicitly added.
 	AllTags pulumi.StringArrayInput
 	// The availability zone in which to create
-	// the server. Changing this creates a new server.
+	// the server. Conflicts with `availabilityZoneHints`. Changing this creates
+	// a new server.
 	AvailabilityZone pulumi.StringPtrInput
+	// The availability zone in which to
+	// create the server. This argument is preferred to `availabilityZone`, when
+	// scheduling the server on a
+	// [particular](https://docs.openstack.org/nova/latest/admin/availability-zones.html)
+	// host or node. Conflicts with `availabilityZone`. Changing this creates a
+	// new server.
+	AvailabilityZoneHints pulumi.StringPtrInput
 	// Configuration of block devices. The blockDevice
 	// structure is documented below. Changing this creates a new server.
 	// You can specify multiple block devices which will create an instance with
@@ -348,8 +372,16 @@ type instanceArgs struct {
 	// Changing this changes the root password on the existing server.
 	AdminPass *string `pulumi:"adminPass"`
 	// The availability zone in which to create
-	// the server. Changing this creates a new server.
+	// the server. Conflicts with `availabilityZoneHints`. Changing this creates
+	// a new server.
 	AvailabilityZone *string `pulumi:"availabilityZone"`
+	// The availability zone in which to
+	// create the server. This argument is preferred to `availabilityZone`, when
+	// scheduling the server on a
+	// [particular](https://docs.openstack.org/nova/latest/admin/availability-zones.html)
+	// host or node. Conflicts with `availabilityZone`. Changing this creates a
+	// new server.
+	AvailabilityZoneHints *string `pulumi:"availabilityZoneHints"`
 	// Configuration of block devices. The blockDevice
 	// structure is documented below. Changing this creates a new server.
 	// You can specify multiple block devices which will create an instance with
@@ -439,8 +471,16 @@ type InstanceArgs struct {
 	// Changing this changes the root password on the existing server.
 	AdminPass pulumi.StringPtrInput
 	// The availability zone in which to create
-	// the server. Changing this creates a new server.
+	// the server. Conflicts with `availabilityZoneHints`. Changing this creates
+	// a new server.
 	AvailabilityZone pulumi.StringPtrInput
+	// The availability zone in which to
+	// create the server. This argument is preferred to `availabilityZone`, when
+	// scheduling the server on a
+	// [particular](https://docs.openstack.org/nova/latest/admin/availability-zones.html)
+	// host or node. Conflicts with `availabilityZone`. Changing this creates a
+	// new server.
+	AvailabilityZoneHints pulumi.StringPtrInput
 	// Configuration of block devices. The blockDevice
 	// structure is documented below. Changing this creates a new server.
 	// You can specify multiple block devices which will create an instance with

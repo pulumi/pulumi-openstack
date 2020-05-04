@@ -19,9 +19,8 @@ class Provider(pulumi.ProviderResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] allow_reauth: If set to `true`, OpenStack authorization will be perfomed automatically, if the initial auth token get expired. This is
-               useful, when the token TTL is low or the overall Terraform provider execution time expected to be greater than the
-               initial token TTL.
+        :param pulumi.Input[bool] allow_reauth: If set to `false`, OpenStack authorization won't be perfomed automatically, if the initial auth token get expired.
+               Defaults to `true`
         :param pulumi.Input[str] application_credential_id: Application Credential ID to login with.
         :param pulumi.Input[str] application_credential_name: Application Credential name to login with.
         :param pulumi.Input[str] application_credential_secret: Application Credential secret to login with.
@@ -30,7 +29,8 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[str] cert: A client certificate to authenticate with.
         :param pulumi.Input[str] cloud: An entry in a `clouds.yaml` file to use.
         :param pulumi.Input[str] default_domain: The name of the Domain ID to scope to if no other domain is specified. Defaults to `default` (Identity v3).
-        :param pulumi.Input[bool] delayed_auth: If set to `true`, OpenStack authorization will be perfomed, when the service provider client is called.
+        :param pulumi.Input[bool] delayed_auth: If set to `false`, OpenStack authorization will be perfomed, every time the service provider client is called. Defaults
+               to `true`.
         :param pulumi.Input[bool] disable_no_cache_header: If set to `true`, the HTTP `Cache-Control: no-cache` header will not be added by default to all API requests.
         :param pulumi.Input[str] domain_id: The ID of the Domain to scope to (Identity v3).
         :param pulumi.Input[str] domain_name: The name of the Domain to scope to (Identity v3).

@@ -13,7 +13,7 @@ class GetProjectResult:
     """
     A collection of values returned by getProject.
     """
-    def __init__(__self__, description=None, domain_id=None, enabled=None, id=None, is_domain=None, name=None, parent_id=None, region=None):
+    def __init__(__self__, description=None, domain_id=None, enabled=None, id=None, is_domain=None, name=None, parent_id=None, region=None, tags=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         __self__.description = description
@@ -62,6 +62,12 @@ class GetProjectResult:
         """
         The region the project is located in.
         """
+        if tags and not isinstance(tags, list):
+            raise TypeError("Expected argument 'tags' to be a list")
+        __self__.tags = tags
+        """
+        See Argument Reference above.
+        """
 class AwaitableGetProjectResult(GetProjectResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -75,7 +81,8 @@ class AwaitableGetProjectResult(GetProjectResult):
             is_domain=self.is_domain,
             name=self.name,
             parent_id=self.parent_id,
-            region=self.region)
+            region=self.region,
+            tags=self.tags)
 
 def get_project(domain_id=None,enabled=None,is_domain=None,name=None,parent_id=None,region=None,opts=None):
     """
@@ -116,4 +123,5 @@ def get_project(domain_id=None,enabled=None,is_domain=None,name=None,parent_id=N
         is_domain=__ret__.get('isDomain'),
         name=__ret__.get('name'),
         parent_id=__ret__.get('parentId'),
-        region=__ret__.get('region'))
+        region=__ret__.get('region'),
+        tags=__ret__.get('tags'))

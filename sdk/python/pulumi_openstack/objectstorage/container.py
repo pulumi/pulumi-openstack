@@ -62,7 +62,7 @@ class Container(pulumi.CustomResource):
     Enable object versioning. The structure is described below.
 
       * `location` (`str`) - Container in which versions will be stored.
-      * `type` (`str`) - Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/overview_object_versioning.html).
+      * `type` (`str`) - Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/api/object_versioning.html).
     """
     def __init__(__self__, resource_name, opts=None, container_read=None, container_sync_key=None, container_sync_to=None, container_write=None, content_type=None, force_destroy=None, metadata=None, name=None, region=None, versioning=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -97,7 +97,7 @@ class Container(pulumi.CustomResource):
         The **versioning** object supports the following:
 
           * `location` (`pulumi.Input[str]`) - Container in which versions will be stored.
-          * `type` (`pulumi.Input[str]`) - Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/overview_object_versioning.html).
+          * `type` (`pulumi.Input[str]`) - Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/api/object_versioning.html).
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -166,7 +166,7 @@ class Container(pulumi.CustomResource):
         The **versioning** object supports the following:
 
           * `location` (`pulumi.Input[str]`) - Container in which versions will be stored.
-          * `type` (`pulumi.Input[str]`) - Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/overview_object_versioning.html).
+          * `type` (`pulumi.Input[str]`) - Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/api/object_versioning.html).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

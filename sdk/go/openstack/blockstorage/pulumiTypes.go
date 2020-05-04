@@ -118,6 +118,168 @@ func (o VolumeAttachmentArrayOutput) Index(i pulumi.IntInput) VolumeAttachmentOu
 	}).(VolumeAttachmentOutput)
 }
 
+type VolumeSchedulerHint struct {
+	// Arbitrary key/value pairs of additional
+	// properties to pass to the scheduler.
+	AdditionalProperties map[string]interface{} `pulumi:"additionalProperties"`
+	// The volume should be scheduled on a
+	// different host from the set of volumes specified in the list provided.
+	DifferentHosts []string `pulumi:"differentHosts"`
+	// An instance UUID. The volume should be
+	// scheduled on the same host as the instance.
+	LocalToInstance *string `pulumi:"localToInstance"`
+	// A conditional query that a back-end must pass in
+	// order to host a volume. The query must use the `JsonFilter` syntax
+	// which is described
+	// [here](https://docs.openstack.org/cinder/latest/configuration/block-storage/scheduler-filters.html#jsonfilter).
+	// At this time, only simple queries are supported. Compound queries using
+	// `and`, `or`, or `not` are not supported. An example of a simple query is:
+	Query *string `pulumi:"query"`
+	// A list of volume UUIDs. The volume should be
+	// scheduled on the same host as another volume specified in the list provided.
+	SameHosts []string `pulumi:"sameHosts"`
+}
+
+// VolumeSchedulerHintInput is an input type that accepts VolumeSchedulerHintArgs and VolumeSchedulerHintOutput values.
+// You can construct a concrete instance of `VolumeSchedulerHintInput` via:
+//
+// 		 VolumeSchedulerHintArgs{...}
+//
+type VolumeSchedulerHintInput interface {
+	pulumi.Input
+
+	ToVolumeSchedulerHintOutput() VolumeSchedulerHintOutput
+	ToVolumeSchedulerHintOutputWithContext(context.Context) VolumeSchedulerHintOutput
+}
+
+type VolumeSchedulerHintArgs struct {
+	// Arbitrary key/value pairs of additional
+	// properties to pass to the scheduler.
+	AdditionalProperties pulumi.MapInput `pulumi:"additionalProperties"`
+	// The volume should be scheduled on a
+	// different host from the set of volumes specified in the list provided.
+	DifferentHosts pulumi.StringArrayInput `pulumi:"differentHosts"`
+	// An instance UUID. The volume should be
+	// scheduled on the same host as the instance.
+	LocalToInstance pulumi.StringPtrInput `pulumi:"localToInstance"`
+	// A conditional query that a back-end must pass in
+	// order to host a volume. The query must use the `JsonFilter` syntax
+	// which is described
+	// [here](https://docs.openstack.org/cinder/latest/configuration/block-storage/scheduler-filters.html#jsonfilter).
+	// At this time, only simple queries are supported. Compound queries using
+	// `and`, `or`, or `not` are not supported. An example of a simple query is:
+	Query pulumi.StringPtrInput `pulumi:"query"`
+	// A list of volume UUIDs. The volume should be
+	// scheduled on the same host as another volume specified in the list provided.
+	SameHosts pulumi.StringArrayInput `pulumi:"sameHosts"`
+}
+
+func (VolumeSchedulerHintArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeSchedulerHint)(nil)).Elem()
+}
+
+func (i VolumeSchedulerHintArgs) ToVolumeSchedulerHintOutput() VolumeSchedulerHintOutput {
+	return i.ToVolumeSchedulerHintOutputWithContext(context.Background())
+}
+
+func (i VolumeSchedulerHintArgs) ToVolumeSchedulerHintOutputWithContext(ctx context.Context) VolumeSchedulerHintOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeSchedulerHintOutput)
+}
+
+// VolumeSchedulerHintArrayInput is an input type that accepts VolumeSchedulerHintArray and VolumeSchedulerHintArrayOutput values.
+// You can construct a concrete instance of `VolumeSchedulerHintArrayInput` via:
+//
+// 		 VolumeSchedulerHintArray{ VolumeSchedulerHintArgs{...} }
+//
+type VolumeSchedulerHintArrayInput interface {
+	pulumi.Input
+
+	ToVolumeSchedulerHintArrayOutput() VolumeSchedulerHintArrayOutput
+	ToVolumeSchedulerHintArrayOutputWithContext(context.Context) VolumeSchedulerHintArrayOutput
+}
+
+type VolumeSchedulerHintArray []VolumeSchedulerHintInput
+
+func (VolumeSchedulerHintArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VolumeSchedulerHint)(nil)).Elem()
+}
+
+func (i VolumeSchedulerHintArray) ToVolumeSchedulerHintArrayOutput() VolumeSchedulerHintArrayOutput {
+	return i.ToVolumeSchedulerHintArrayOutputWithContext(context.Background())
+}
+
+func (i VolumeSchedulerHintArray) ToVolumeSchedulerHintArrayOutputWithContext(ctx context.Context) VolumeSchedulerHintArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeSchedulerHintArrayOutput)
+}
+
+type VolumeSchedulerHintOutput struct{ *pulumi.OutputState }
+
+func (VolumeSchedulerHintOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeSchedulerHint)(nil)).Elem()
+}
+
+func (o VolumeSchedulerHintOutput) ToVolumeSchedulerHintOutput() VolumeSchedulerHintOutput {
+	return o
+}
+
+func (o VolumeSchedulerHintOutput) ToVolumeSchedulerHintOutputWithContext(ctx context.Context) VolumeSchedulerHintOutput {
+	return o
+}
+
+// Arbitrary key/value pairs of additional
+// properties to pass to the scheduler.
+func (o VolumeSchedulerHintOutput) AdditionalProperties() pulumi.MapOutput {
+	return o.ApplyT(func(v VolumeSchedulerHint) map[string]interface{} { return v.AdditionalProperties }).(pulumi.MapOutput)
+}
+
+// The volume should be scheduled on a
+// different host from the set of volumes specified in the list provided.
+func (o VolumeSchedulerHintOutput) DifferentHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VolumeSchedulerHint) []string { return v.DifferentHosts }).(pulumi.StringArrayOutput)
+}
+
+// An instance UUID. The volume should be
+// scheduled on the same host as the instance.
+func (o VolumeSchedulerHintOutput) LocalToInstance() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VolumeSchedulerHint) *string { return v.LocalToInstance }).(pulumi.StringPtrOutput)
+}
+
+// A conditional query that a back-end must pass in
+// order to host a volume. The query must use the `JsonFilter` syntax
+// which is described
+// [here](https://docs.openstack.org/cinder/latest/configuration/block-storage/scheduler-filters.html#jsonfilter).
+// At this time, only simple queries are supported. Compound queries using
+// `and`, `or`, or `not` are not supported. An example of a simple query is:
+func (o VolumeSchedulerHintOutput) Query() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VolumeSchedulerHint) *string { return v.Query }).(pulumi.StringPtrOutput)
+}
+
+// A list of volume UUIDs. The volume should be
+// scheduled on the same host as another volume specified in the list provided.
+func (o VolumeSchedulerHintOutput) SameHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VolumeSchedulerHint) []string { return v.SameHosts }).(pulumi.StringArrayOutput)
+}
+
+type VolumeSchedulerHintArrayOutput struct{ *pulumi.OutputState }
+
+func (VolumeSchedulerHintArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VolumeSchedulerHint)(nil)).Elem()
+}
+
+func (o VolumeSchedulerHintArrayOutput) ToVolumeSchedulerHintArrayOutput() VolumeSchedulerHintArrayOutput {
+	return o
+}
+
+func (o VolumeSchedulerHintArrayOutput) ToVolumeSchedulerHintArrayOutputWithContext(ctx context.Context) VolumeSchedulerHintArrayOutput {
+	return o
+}
+
+func (o VolumeSchedulerHintArrayOutput) Index(i pulumi.IntInput) VolumeSchedulerHintOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VolumeSchedulerHint {
+		return vs[0].([]VolumeSchedulerHint)[vs[1].(int)]
+	}).(VolumeSchedulerHintOutput)
+}
+
 type VolumeV1Attachment struct {
 	Device     *string `pulumi:"device"`
 	Id         *string `pulumi:"id"`
@@ -334,11 +496,177 @@ func (o VolumeV2AttachmentArrayOutput) Index(i pulumi.IntInput) VolumeV2Attachme
 	}).(VolumeV2AttachmentOutput)
 }
 
+type VolumeV2SchedulerHint struct {
+	// Arbitrary key/value pairs of additional
+	// properties to pass to the scheduler.
+	AdditionalProperties map[string]interface{} `pulumi:"additionalProperties"`
+	// The volume should be scheduled on a
+	// different host from the set of volumes specified in the list provided.
+	DifferentHosts []string `pulumi:"differentHosts"`
+	// An instance UUID. The volume should be
+	// scheduled on the same host as the instance.
+	LocalToInstance *string `pulumi:"localToInstance"`
+	// A conditional query that a back-end must pass in
+	// order to host a volume. The query must use the `JsonFilter` syntax
+	// which is described
+	// [here](https://docs.openstack.org/cinder/latest/configuration/block-storage/scheduler-filters.html#jsonfilter).
+	// At this time, only simple queries are supported. Compound queries using
+	// `and`, `or`, or `not` are not supported. An example of a simple query is:
+	Query *string `pulumi:"query"`
+	// A list of volume UUIDs. The volume should be
+	// scheduled on the same host as another volume specified in the list provided.
+	SameHosts []string `pulumi:"sameHosts"`
+}
+
+// VolumeV2SchedulerHintInput is an input type that accepts VolumeV2SchedulerHintArgs and VolumeV2SchedulerHintOutput values.
+// You can construct a concrete instance of `VolumeV2SchedulerHintInput` via:
+//
+// 		 VolumeV2SchedulerHintArgs{...}
+//
+type VolumeV2SchedulerHintInput interface {
+	pulumi.Input
+
+	ToVolumeV2SchedulerHintOutput() VolumeV2SchedulerHintOutput
+	ToVolumeV2SchedulerHintOutputWithContext(context.Context) VolumeV2SchedulerHintOutput
+}
+
+type VolumeV2SchedulerHintArgs struct {
+	// Arbitrary key/value pairs of additional
+	// properties to pass to the scheduler.
+	AdditionalProperties pulumi.MapInput `pulumi:"additionalProperties"`
+	// The volume should be scheduled on a
+	// different host from the set of volumes specified in the list provided.
+	DifferentHosts pulumi.StringArrayInput `pulumi:"differentHosts"`
+	// An instance UUID. The volume should be
+	// scheduled on the same host as the instance.
+	LocalToInstance pulumi.StringPtrInput `pulumi:"localToInstance"`
+	// A conditional query that a back-end must pass in
+	// order to host a volume. The query must use the `JsonFilter` syntax
+	// which is described
+	// [here](https://docs.openstack.org/cinder/latest/configuration/block-storage/scheduler-filters.html#jsonfilter).
+	// At this time, only simple queries are supported. Compound queries using
+	// `and`, `or`, or `not` are not supported. An example of a simple query is:
+	Query pulumi.StringPtrInput `pulumi:"query"`
+	// A list of volume UUIDs. The volume should be
+	// scheduled on the same host as another volume specified in the list provided.
+	SameHosts pulumi.StringArrayInput `pulumi:"sameHosts"`
+}
+
+func (VolumeV2SchedulerHintArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeV2SchedulerHint)(nil)).Elem()
+}
+
+func (i VolumeV2SchedulerHintArgs) ToVolumeV2SchedulerHintOutput() VolumeV2SchedulerHintOutput {
+	return i.ToVolumeV2SchedulerHintOutputWithContext(context.Background())
+}
+
+func (i VolumeV2SchedulerHintArgs) ToVolumeV2SchedulerHintOutputWithContext(ctx context.Context) VolumeV2SchedulerHintOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeV2SchedulerHintOutput)
+}
+
+// VolumeV2SchedulerHintArrayInput is an input type that accepts VolumeV2SchedulerHintArray and VolumeV2SchedulerHintArrayOutput values.
+// You can construct a concrete instance of `VolumeV2SchedulerHintArrayInput` via:
+//
+// 		 VolumeV2SchedulerHintArray{ VolumeV2SchedulerHintArgs{...} }
+//
+type VolumeV2SchedulerHintArrayInput interface {
+	pulumi.Input
+
+	ToVolumeV2SchedulerHintArrayOutput() VolumeV2SchedulerHintArrayOutput
+	ToVolumeV2SchedulerHintArrayOutputWithContext(context.Context) VolumeV2SchedulerHintArrayOutput
+}
+
+type VolumeV2SchedulerHintArray []VolumeV2SchedulerHintInput
+
+func (VolumeV2SchedulerHintArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VolumeV2SchedulerHint)(nil)).Elem()
+}
+
+func (i VolumeV2SchedulerHintArray) ToVolumeV2SchedulerHintArrayOutput() VolumeV2SchedulerHintArrayOutput {
+	return i.ToVolumeV2SchedulerHintArrayOutputWithContext(context.Background())
+}
+
+func (i VolumeV2SchedulerHintArray) ToVolumeV2SchedulerHintArrayOutputWithContext(ctx context.Context) VolumeV2SchedulerHintArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeV2SchedulerHintArrayOutput)
+}
+
+type VolumeV2SchedulerHintOutput struct{ *pulumi.OutputState }
+
+func (VolumeV2SchedulerHintOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeV2SchedulerHint)(nil)).Elem()
+}
+
+func (o VolumeV2SchedulerHintOutput) ToVolumeV2SchedulerHintOutput() VolumeV2SchedulerHintOutput {
+	return o
+}
+
+func (o VolumeV2SchedulerHintOutput) ToVolumeV2SchedulerHintOutputWithContext(ctx context.Context) VolumeV2SchedulerHintOutput {
+	return o
+}
+
+// Arbitrary key/value pairs of additional
+// properties to pass to the scheduler.
+func (o VolumeV2SchedulerHintOutput) AdditionalProperties() pulumi.MapOutput {
+	return o.ApplyT(func(v VolumeV2SchedulerHint) map[string]interface{} { return v.AdditionalProperties }).(pulumi.MapOutput)
+}
+
+// The volume should be scheduled on a
+// different host from the set of volumes specified in the list provided.
+func (o VolumeV2SchedulerHintOutput) DifferentHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VolumeV2SchedulerHint) []string { return v.DifferentHosts }).(pulumi.StringArrayOutput)
+}
+
+// An instance UUID. The volume should be
+// scheduled on the same host as the instance.
+func (o VolumeV2SchedulerHintOutput) LocalToInstance() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VolumeV2SchedulerHint) *string { return v.LocalToInstance }).(pulumi.StringPtrOutput)
+}
+
+// A conditional query that a back-end must pass in
+// order to host a volume. The query must use the `JsonFilter` syntax
+// which is described
+// [here](https://docs.openstack.org/cinder/latest/configuration/block-storage/scheduler-filters.html#jsonfilter).
+// At this time, only simple queries are supported. Compound queries using
+// `and`, `or`, or `not` are not supported. An example of a simple query is:
+func (o VolumeV2SchedulerHintOutput) Query() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VolumeV2SchedulerHint) *string { return v.Query }).(pulumi.StringPtrOutput)
+}
+
+// A list of volume UUIDs. The volume should be
+// scheduled on the same host as another volume specified in the list provided.
+func (o VolumeV2SchedulerHintOutput) SameHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VolumeV2SchedulerHint) []string { return v.SameHosts }).(pulumi.StringArrayOutput)
+}
+
+type VolumeV2SchedulerHintArrayOutput struct{ *pulumi.OutputState }
+
+func (VolumeV2SchedulerHintArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VolumeV2SchedulerHint)(nil)).Elem()
+}
+
+func (o VolumeV2SchedulerHintArrayOutput) ToVolumeV2SchedulerHintArrayOutput() VolumeV2SchedulerHintArrayOutput {
+	return o
+}
+
+func (o VolumeV2SchedulerHintArrayOutput) ToVolumeV2SchedulerHintArrayOutputWithContext(ctx context.Context) VolumeV2SchedulerHintArrayOutput {
+	return o
+}
+
+func (o VolumeV2SchedulerHintArrayOutput) Index(i pulumi.IntInput) VolumeV2SchedulerHintOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VolumeV2SchedulerHint {
+		return vs[0].([]VolumeV2SchedulerHint)[vs[1].(int)]
+	}).(VolumeV2SchedulerHintOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(VolumeAttachmentOutput{})
 	pulumi.RegisterOutputType(VolumeAttachmentArrayOutput{})
+	pulumi.RegisterOutputType(VolumeSchedulerHintOutput{})
+	pulumi.RegisterOutputType(VolumeSchedulerHintArrayOutput{})
 	pulumi.RegisterOutputType(VolumeV1AttachmentOutput{})
 	pulumi.RegisterOutputType(VolumeV1AttachmentArrayOutput{})
 	pulumi.RegisterOutputType(VolumeV2AttachmentOutput{})
 	pulumi.RegisterOutputType(VolumeV2AttachmentArrayOutput{})
+	pulumi.RegisterOutputType(VolumeV2SchedulerHintOutput{})
+	pulumi.RegisterOutputType(VolumeV2SchedulerHintArrayOutput{})
 }

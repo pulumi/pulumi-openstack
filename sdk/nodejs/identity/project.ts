@@ -83,9 +83,14 @@ export class Project extends pulumi.CustomResource {
     /**
      * The region in which to obtain the V3 Keystone client.
      * If omitted, the `region` argument of the provider is used. Changing this
-     * creates a new User.
+     * creates a new project.
      */
     public readonly region!: pulumi.Output<string>;
+    /**
+     * Tags for the project. Changing this updates the existing
+     * project.
+     */
+    public readonly tags!: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a Project resource with the given unique name, arguments, and options.
@@ -106,6 +111,7 @@ export class Project extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
             inputs["parentId"] = state ? state.parentId : undefined;
             inputs["region"] = state ? state.region : undefined;
+            inputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as ProjectArgs | undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -115,6 +121,7 @@ export class Project extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["parentId"] = args ? args.parentId : undefined;
             inputs["region"] = args ? args.region : undefined;
+            inputs["tags"] = args ? args.tags : undefined;
         }
         if (!opts) {
             opts = {}
@@ -160,9 +167,14 @@ export interface ProjectState {
     /**
      * The region in which to obtain the V3 Keystone client.
      * If omitted, the `region` argument of the provider is used. Changing this
-     * creates a new User.
+     * creates a new project.
      */
     readonly region?: pulumi.Input<string>;
+    /**
+     * Tags for the project. Changing this updates the existing
+     * project.
+     */
+    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -198,7 +210,12 @@ export interface ProjectArgs {
     /**
      * The region in which to obtain the V3 Keystone client.
      * If omitted, the `region` argument of the provider is used. Changing this
-     * creates a new User.
+     * creates a new project.
      */
     readonly region?: pulumi.Input<string>;
+    /**
+     * Tags for the project. Changing this updates the existing
+     * project.
+     */
+    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

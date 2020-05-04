@@ -32,8 +32,11 @@ type Project struct {
 	ParentId pulumi.StringOutput `pulumi:"parentId"`
 	// The region in which to obtain the V3 Keystone client.
 	// If omitted, the `region` argument of the provider is used. Changing this
-	// creates a new User.
+	// creates a new project.
 	Region pulumi.StringOutput `pulumi:"region"`
+	// Tags for the project. Changing this updates the existing
+	// project.
+	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 }
 
 // NewProject registers a new resource with the given unique name, arguments, and options.
@@ -80,8 +83,11 @@ type projectState struct {
 	ParentId *string `pulumi:"parentId"`
 	// The region in which to obtain the V3 Keystone client.
 	// If omitted, the `region` argument of the provider is used. Changing this
-	// creates a new User.
+	// creates a new project.
 	Region *string `pulumi:"region"`
+	// Tags for the project. Changing this updates the existing
+	// project.
+	Tags []string `pulumi:"tags"`
 }
 
 type ProjectState struct {
@@ -101,8 +107,11 @@ type ProjectState struct {
 	ParentId pulumi.StringPtrInput
 	// The region in which to obtain the V3 Keystone client.
 	// If omitted, the `region` argument of the provider is used. Changing this
-	// creates a new User.
+	// creates a new project.
 	Region pulumi.StringPtrInput
+	// Tags for the project. Changing this updates the existing
+	// project.
+	Tags pulumi.StringArrayInput
 }
 
 func (ProjectState) ElementType() reflect.Type {
@@ -126,8 +135,11 @@ type projectArgs struct {
 	ParentId *string `pulumi:"parentId"`
 	// The region in which to obtain the V3 Keystone client.
 	// If omitted, the `region` argument of the provider is used. Changing this
-	// creates a new User.
+	// creates a new project.
 	Region *string `pulumi:"region"`
+	// Tags for the project. Changing this updates the existing
+	// project.
+	Tags []string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Project resource.
@@ -148,8 +160,11 @@ type ProjectArgs struct {
 	ParentId pulumi.StringPtrInput
 	// The region in which to obtain the V3 Keystone client.
 	// If omitted, the `region` argument of the provider is used. Changing this
-	// creates a new User.
+	// creates a new project.
 	Region pulumi.StringPtrInput
+	// Tags for the project. Changing this updates the existing
+	// project.
+	Tags pulumi.StringArrayInput
 }
 
 func (ProjectArgs) ElementType() reflect.Type {

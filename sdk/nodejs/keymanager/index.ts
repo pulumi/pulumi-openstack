@@ -5,4 +5,5 @@
 export * from "./containerV1";
 export * from "./getContainer";
 export * from "./getSecret";
+export * from "./orderV1";
 export * from "./secretV1";

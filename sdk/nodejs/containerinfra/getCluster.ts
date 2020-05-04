@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -109,7 +111,7 @@ export interface GetClusterResult {
     /**
      * IP addresses of the master node of the cluster.
      */
-    readonly masterAddresses: string;
+    readonly masterAddresses: string[];
     /**
      * The number of master nodes for the cluster.
      */
@@ -125,7 +127,7 @@ export interface GetClusterResult {
     /**
      * IP addresses of the node of the cluster.
      */
-    readonly nodeAddresses: string;
+    readonly nodeAddresses: string[];
     /**
      * The number of nodes for the cluster.
      */

@@ -686,6 +686,10 @@ func (o InstanceSchedulerHintArrayOutput) Index(i pulumi.IntInput) InstanceSched
 }
 
 type InstanceVendorOptions struct {
+	// Whether to try to detach all attached
+	// ports to the vm before destroying it to make sure the port state is correct
+	// after the vm destruction. This is helpful when the port is not deleted.
+	DetachPortsBeforeDestroy *bool `pulumi:"detachPortsBeforeDestroy"`
 	// Boolean to control whether
 	// to ignore manual confirmation of the instance resizing. This can be helpful
 	// to work with some OpenStack clouds which automatically confirm resizing of
@@ -706,6 +710,10 @@ type InstanceVendorOptionsInput interface {
 }
 
 type InstanceVendorOptionsArgs struct {
+	// Whether to try to detach all attached
+	// ports to the vm before destroying it to make sure the port state is correct
+	// after the vm destruction. This is helpful when the port is not deleted.
+	DetachPortsBeforeDestroy pulumi.BoolPtrInput `pulumi:"detachPortsBeforeDestroy"`
 	// Boolean to control whether
 	// to ignore manual confirmation of the instance resizing. This can be helpful
 	// to work with some OpenStack clouds which automatically confirm resizing of
@@ -791,6 +799,13 @@ func (o InstanceVendorOptionsOutput) ToInstanceVendorOptionsPtrOutputWithContext
 	}).(InstanceVendorOptionsPtrOutput)
 }
 
+// Whether to try to detach all attached
+// ports to the vm before destroying it to make sure the port state is correct
+// after the vm destruction. This is helpful when the port is not deleted.
+func (o InstanceVendorOptionsOutput) DetachPortsBeforeDestroy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceVendorOptions) *bool { return v.DetachPortsBeforeDestroy }).(pulumi.BoolPtrOutput)
+}
+
 // Boolean to control whether
 // to ignore manual confirmation of the instance resizing. This can be helpful
 // to work with some OpenStack clouds which automatically confirm resizing of
@@ -815,6 +830,18 @@ func (o InstanceVendorOptionsPtrOutput) ToInstanceVendorOptionsPtrOutputWithCont
 
 func (o InstanceVendorOptionsPtrOutput) Elem() InstanceVendorOptionsOutput {
 	return o.ApplyT(func(v *InstanceVendorOptions) InstanceVendorOptions { return *v }).(InstanceVendorOptionsOutput)
+}
+
+// Whether to try to detach all attached
+// ports to the vm before destroying it to make sure the port state is correct
+// after the vm destruction. This is helpful when the port is not deleted.
+func (o InstanceVendorOptionsPtrOutput) DetachPortsBeforeDestroy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstanceVendorOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DetachPortsBeforeDestroy
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Boolean to control whether

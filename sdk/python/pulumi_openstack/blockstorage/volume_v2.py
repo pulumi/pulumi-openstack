@@ -56,6 +56,26 @@ class VolumeV2(pulumi.CustomResource):
     omitted, the `region` argument of the provider is used. Changing this
     creates a new volume.
     """
+    scheduler_hints: pulumi.Output[list]
+    """
+    Provide the Cinder scheduler with hints on where
+    to instantiate a volume in the OpenStack cloud. The available hints are described below.
+
+      * `additionalProperties` (`dict`) - Arbitrary key/value pairs of additional
+        properties to pass to the scheduler.
+      * `differentHosts` (`list`) - The volume should be scheduled on a 
+        different host from the set of volumes specified in the list provided.
+      * `localToInstance` (`str`) - An instance UUID. The volume should be 
+        scheduled on the same host as the instance.
+      * `query` (`str`) - A conditional query that a back-end must pass in
+        order to host a volume. The query must use the `JsonFilter` syntax
+        which is described
+        [here](https://docs.openstack.org/cinder/latest/configuration/block-storage/scheduler-filters.html#jsonfilter).
+        At this time, only simple queries are supported. Compound queries using
+        `and`, `or`, or `not` are not supported. An example of a simple query is:
+      * `sameHosts` (`list`) - A list of volume UUIDs. The volume should be
+        scheduled on the same host as another volume specified in the list provided.
+    """
     size: pulumi.Output[float]
     """
     The size of the volume to create (in gigabytes). Changing
@@ -80,7 +100,7 @@ class VolumeV2(pulumi.CustomResource):
     The type of volume to create.
     Changing this creates a new volume.
     """
-    def __init__(__self__, resource_name, opts=None, availability_zone=None, consistency_group_id=None, description=None, image_id=None, metadata=None, name=None, region=None, size=None, snapshot_id=None, source_replica=None, source_vol_id=None, volume_type=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, availability_zone=None, consistency_group_id=None, description=None, image_id=None, metadata=None, name=None, region=None, scheduler_hints=None, size=None, snapshot_id=None, source_replica=None, source_vol_id=None, volume_type=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a V2 volume resource within OpenStack.
 
@@ -103,6 +123,8 @@ class VolumeV2(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region in which to create the volume. If
                omitted, the `region` argument of the provider is used. Changing this
                creates a new volume.
+        :param pulumi.Input[list] scheduler_hints: Provide the Cinder scheduler with hints on where
+               to instantiate a volume in the OpenStack cloud. The available hints are described below.
         :param pulumi.Input[float] size: The size of the volume to create (in gigabytes). Changing
                this creates a new volume.
         :param pulumi.Input[str] snapshot_id: The snapshot ID from which to create the volume.
@@ -112,6 +134,23 @@ class VolumeV2(pulumi.CustomResource):
                Changing this creates a new volume.
         :param pulumi.Input[str] volume_type: The type of volume to create.
                Changing this creates a new volume.
+
+        The **scheduler_hints** object supports the following:
+
+          * `additionalProperties` (`pulumi.Input[dict]`) - Arbitrary key/value pairs of additional
+            properties to pass to the scheduler.
+          * `differentHosts` (`pulumi.Input[list]`) - The volume should be scheduled on a 
+            different host from the set of volumes specified in the list provided.
+          * `localToInstance` (`pulumi.Input[str]`) - An instance UUID. The volume should be 
+            scheduled on the same host as the instance.
+          * `query` (`pulumi.Input[str]`) - A conditional query that a back-end must pass in
+            order to host a volume. The query must use the `JsonFilter` syntax
+            which is described
+            [here](https://docs.openstack.org/cinder/latest/configuration/block-storage/scheduler-filters.html#jsonfilter).
+            At this time, only simple queries are supported. Compound queries using
+            `and`, `or`, or `not` are not supported. An example of a simple query is:
+          * `sameHosts` (`pulumi.Input[list]`) - A list of volume UUIDs. The volume should be
+            scheduled on the same host as another volume specified in the list provided.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -137,6 +176,7 @@ class VolumeV2(pulumi.CustomResource):
             __props__['metadata'] = metadata
             __props__['name'] = name
             __props__['region'] = region
+            __props__['scheduler_hints'] = scheduler_hints
             if size is None:
                 raise TypeError("Missing required property 'size'")
             __props__['size'] = size
@@ -152,7 +192,7 @@ class VolumeV2(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, attachments=None, availability_zone=None, consistency_group_id=None, description=None, image_id=None, metadata=None, name=None, region=None, size=None, snapshot_id=None, source_replica=None, source_vol_id=None, volume_type=None):
+    def get(resource_name, id, opts=None, attachments=None, availability_zone=None, consistency_group_id=None, description=None, image_id=None, metadata=None, name=None, region=None, scheduler_hints=None, size=None, snapshot_id=None, source_replica=None, source_vol_id=None, volume_type=None):
         """
         Get an existing VolumeV2 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -178,6 +218,8 @@ class VolumeV2(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region in which to create the volume. If
                omitted, the `region` argument of the provider is used. Changing this
                creates a new volume.
+        :param pulumi.Input[list] scheduler_hints: Provide the Cinder scheduler with hints on where
+               to instantiate a volume in the OpenStack cloud. The available hints are described below.
         :param pulumi.Input[float] size: The size of the volume to create (in gigabytes). Changing
                this creates a new volume.
         :param pulumi.Input[str] snapshot_id: The snapshot ID from which to create the volume.
@@ -193,6 +235,23 @@ class VolumeV2(pulumi.CustomResource):
           * `device` (`pulumi.Input[str]`)
           * `id` (`pulumi.Input[str]`)
           * `instance_id` (`pulumi.Input[str]`)
+
+        The **scheduler_hints** object supports the following:
+
+          * `additionalProperties` (`pulumi.Input[dict]`) - Arbitrary key/value pairs of additional
+            properties to pass to the scheduler.
+          * `differentHosts` (`pulumi.Input[list]`) - The volume should be scheduled on a 
+            different host from the set of volumes specified in the list provided.
+          * `localToInstance` (`pulumi.Input[str]`) - An instance UUID. The volume should be 
+            scheduled on the same host as the instance.
+          * `query` (`pulumi.Input[str]`) - A conditional query that a back-end must pass in
+            order to host a volume. The query must use the `JsonFilter` syntax
+            which is described
+            [here](https://docs.openstack.org/cinder/latest/configuration/block-storage/scheduler-filters.html#jsonfilter).
+            At this time, only simple queries are supported. Compound queries using
+            `and`, `or`, or `not` are not supported. An example of a simple query is:
+          * `sameHosts` (`pulumi.Input[list]`) - A list of volume UUIDs. The volume should be
+            scheduled on the same host as another volume specified in the list provided.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -206,6 +265,7 @@ class VolumeV2(pulumi.CustomResource):
         __props__["metadata"] = metadata
         __props__["name"] = name
         __props__["region"] = region
+        __props__["scheduler_hints"] = scheduler_hints
         __props__["size"] = size
         __props__["snapshot_id"] = snapshot_id
         __props__["source_replica"] = source_replica

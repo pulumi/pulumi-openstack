@@ -40,6 +40,9 @@ type VolumeV2 struct {
 	// omitted, the `region` argument of the provider is used. Changing this
 	// creates a new volume.
 	Region pulumi.StringOutput `pulumi:"region"`
+	// Provide the Cinder scheduler with hints on where
+	// to instantiate a volume in the OpenStack cloud. The available hints are described below.
+	SchedulerHints VolumeV2SchedulerHintArrayOutput `pulumi:"schedulerHints"`
 	// The size of the volume to create (in gigabytes). Changing
 	// this creates a new volume.
 	Size pulumi.IntOutput `pulumi:"size"`
@@ -113,6 +116,9 @@ type volumeV2State struct {
 	// omitted, the `region` argument of the provider is used. Changing this
 	// creates a new volume.
 	Region *string `pulumi:"region"`
+	// Provide the Cinder scheduler with hints on where
+	// to instantiate a volume in the OpenStack cloud. The available hints are described below.
+	SchedulerHints []VolumeV2SchedulerHint `pulumi:"schedulerHints"`
 	// The size of the volume to create (in gigabytes). Changing
 	// this creates a new volume.
 	Size *int `pulumi:"size"`
@@ -156,6 +162,9 @@ type VolumeV2State struct {
 	// omitted, the `region` argument of the provider is used. Changing this
 	// creates a new volume.
 	Region pulumi.StringPtrInput
+	// Provide the Cinder scheduler with hints on where
+	// to instantiate a volume in the OpenStack cloud. The available hints are described below.
+	SchedulerHints VolumeV2SchedulerHintArrayInput
 	// The size of the volume to create (in gigabytes). Changing
 	// this creates a new volume.
 	Size pulumi.IntPtrInput
@@ -199,6 +208,9 @@ type volumeV2Args struct {
 	// omitted, the `region` argument of the provider is used. Changing this
 	// creates a new volume.
 	Region *string `pulumi:"region"`
+	// Provide the Cinder scheduler with hints on where
+	// to instantiate a volume in the OpenStack cloud. The available hints are described below.
+	SchedulerHints []VolumeV2SchedulerHint `pulumi:"schedulerHints"`
 	// The size of the volume to create (in gigabytes). Changing
 	// this creates a new volume.
 	Size int `pulumi:"size"`
@@ -239,6 +251,9 @@ type VolumeV2Args struct {
 	// omitted, the `region` argument of the provider is used. Changing this
 	// creates a new volume.
 	Region pulumi.StringPtrInput
+	// Provide the Cinder scheduler with hints on where
+	// to instantiate a volume in the OpenStack cloud. The available hints are described below.
+	SchedulerHints VolumeV2SchedulerHintArrayInput
 	// The size of the volume to create (in gigabytes). Changing
 	// this creates a new volume.
 	Size pulumi.IntInput
