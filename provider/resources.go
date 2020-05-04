@@ -454,7 +454,6 @@ func Provider() tfbridge.ProviderInfo {
 			"openstack_keymanager_container_v1": {Tok: openstackDataSource(keymanagerMod, "getContainer")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
-			AsyncDataSources: true,
 			DevDependencies: map[string]string{
 				"@types/node": "^8.0.25", // so we can access strongly typed node definitions.
 			},
