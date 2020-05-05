@@ -65,17 +65,7 @@ class SecurityService(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, description=None, dns_ip=None, domain=None, name=None, ou=None, password=None, region=None, server=None, type=None, user=None, __props__=None, __name__=None, __opts__=None):
         """
-        Use this resource to configure a security service.
-
-        A security service stores configuration information for clients for
-        authentication and authorization (AuthN/AuthZ). For example, a share server
-        will be the client for an existing service such as LDAP, Kerberos, or
-        Microsoft Active Directory.
-
-        Minimum supported Manila microversion is 2.7.
-
-
-
+        Create a SecurityService resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The human-readable description for the security service.

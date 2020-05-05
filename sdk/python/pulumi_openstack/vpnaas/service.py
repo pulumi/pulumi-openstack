@@ -65,6 +65,18 @@ class Service(pulumi.CustomResource):
         """
         Manages a V2 Neutron VPN service resource within OpenStack.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        service1 = openstack.vpnaas.Service("service1",
+            admin_state_up="true",
+            router_id="14a75700-fc03-4602-9294-26ee44f366b3")
+        ```
 
 
         :param str resource_name: The name of the resource.

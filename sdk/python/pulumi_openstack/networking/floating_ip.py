@@ -90,6 +90,16 @@ class FloatingIp(pulumi.CustomResource):
         These are similar to Nova (compute) floating IP resources,
         but only compute floating IPs can be used with compute instances.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        floatip1 = openstack.networking.FloatingIp("floatip1", pool="public")
+        ```
 
 
         :param str resource_name: The name of the resource.

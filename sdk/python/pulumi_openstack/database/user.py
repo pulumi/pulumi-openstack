@@ -32,6 +32,19 @@ class User(pulumi.CustomResource):
         """
         Manages a V1 DB user resource within OpenStack.
 
+        ## Example Usage
+
+        ### User
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        basic = openstack.database.User("basic",
+            databases=["testdb"],
+            instance=openstack_db_instance_v1["basic"]["id"],
+            password="password")
+        ```
 
 
         :param str resource_name: The name of the resource.

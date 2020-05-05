@@ -182,6 +182,16 @@ def get_port(admin_state_up=None,description=None,device_id=None,device_owner=No
     """
     Use this data source to get the ID of an available OpenStack port.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    port1 = openstack.networking.get_port(name="port_1")
+    ```
 
 
 

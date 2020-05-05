@@ -64,6 +64,32 @@ class Firewall(pulumi.CustomResource):
         """
         Manages a v1 firewall resource within OpenStack.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        rule1 = openstack.firewall.Rule("rule1",
+            action="deny",
+            description="drop TELNET traffic",
+            destination_port="23",
+            enabled="true",
+            protocol="tcp")
+        rule2 = openstack.firewall.Rule("rule2",
+            action="deny",
+            description="drop NTP traffic",
+            destination_port="123",
+            enabled="false",
+            protocol="udp")
+        policy1 = openstack.firewall.Policy("policy1", rules=[
+            rule1.id,
+            rule2.id,
+        ])
+        firewall1 = openstack.firewall.Firewall("firewall1", policy_id=policy1.id)
+        ```
 
 
         :param str resource_name: The name of the resource.

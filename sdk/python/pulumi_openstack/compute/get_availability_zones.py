@@ -47,6 +47,16 @@ def get_availability_zones(region=None,state=None,opts=None):
     """
     Use this data source to get a list of availability zones from OpenStack
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    zones = openstack.compute.get_availability_zones()
+    ```
 
 
 

@@ -62,7 +62,58 @@ class SecGroup(pulumi.CustomResource):
         and `networking.SecGroupRule`
         resources instead, which uses the OpenStack Networking API.
 
+        ## Example Usage
 
+
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        secgroup1 = openstack.compute.SecGroup("secgroup1",
+            description="my security group",
+            rules=[
+                {
+                    "cidr": "0.0.0.0/0",
+                    "fromPort": 22,
+                    "ipProtocol": "tcp",
+                    "toPort": 22,
+                },
+                {
+                    "cidr": "0.0.0.0/0",
+                    "fromPort": 80,
+                    "ipProtocol": "tcp",
+                    "toPort": 80,
+                },
+            ])
+        ```
+
+        ## Notes
+
+        ### ICMP Rules
+
+        When using ICMP as the `ip_protocol`, the `from_port` sets the ICMP _type_ and the `to_port` sets the ICMP _code_. To allow all ICMP types, set each value to `-1`, like so:
+
+        ```python
+        import pulumi
+        ```
+
+        A list of ICMP types and codes can be found [here](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages).
+
+        ### Referencing Security Groups
+
+        When referencing a security group in a configuration (for example, a configuration creates a new security group and then needs to apply it to an instance being created in the same configuration), it is currently recommended to reference the security group by name and not by ID, like this:
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        test_server = openstack.compute.Instance("test-server",
+            flavor_id="3",
+            image_id="ad091b52-742f-469e-8f3c-fd81cadf0743",
+            key_pair="my_key_pair_name",
+            security_groups=[openstack_compute_secgroup_v2["secgroup_1"]["name"]])
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

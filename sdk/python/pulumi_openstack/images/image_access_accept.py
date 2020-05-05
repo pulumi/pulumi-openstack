@@ -48,6 +48,21 @@ class ImageAccessAccept(pulumi.CustomResource):
         Manages memberships status for the shared OpenStack Glance V2 Image within the
         destination project, which has a member proposal.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        rancheros = openstack.images.get_image(member_status="all",
+            name="RancherOS",
+            visibility="shared")
+        rancheros_member = openstack.images.ImageAccessAccept("rancherosMember",
+            image_id=rancheros.id,
+            status="accepted")
+        ```
 
 
         :param str resource_name: The name of the resource.

@@ -37,6 +37,16 @@ class ServiceV3(pulumi.CustomResource):
 
         > **Note:** This usually requires admin privileges.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        service1 = openstack.identity.ServiceV3("service1", type="custom")
+        ```
 
 
         :param str resource_name: The name of the resource.

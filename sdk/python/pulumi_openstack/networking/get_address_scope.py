@@ -64,6 +64,18 @@ def get_address_scope(ip_version=None,name=None,project_id=None,region=None,shar
     """
     Use this data source to get the ID of an available OpenStack address-scope.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    public_addressscope = openstack.networking.get_address_scope(ip_version=4,
+        name="public_addressscope",
+        shared=True)
+    ```
 
 
 

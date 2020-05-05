@@ -29,6 +29,19 @@ class QosDscpMarkingRule(pulumi.CustomResource):
         """
         Manages a V2 Neutron QoS DSCP marking rule resource within OpenStack.
 
+        ## Example Usage
+
+        ### Create a QoS Policy with some DSCP marking rule
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        qos_policy1 = openstack.networking.QosPolicy("qosPolicy1", description="dscp_mark")
+        dscp_marking_rule1 = openstack.networking.QosDscpMarkingRule("dscpMarkingRule1",
+            dscp_mark=26,
+            qos_policy_id=qos_policy1.id)
+        ```
 
 
         :param str resource_name: The name of the resource.

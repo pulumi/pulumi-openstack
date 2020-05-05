@@ -88,6 +88,16 @@ def get_volume_v2(bootable=None,metadata=None,name=None,region=None,status=None,
     """
     Use this data source to get information about an existing volume.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    volume1 = openstack.blockstorage.get_volume_v2(name="volume_1")
+    ```
 
 
 

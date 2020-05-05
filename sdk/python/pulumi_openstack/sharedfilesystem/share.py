@@ -105,6 +105,29 @@ class Share(pulumi.CustomResource):
         """
         Use this resource to configure a share.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        network1 = openstack.networking.Network("network1", admin_state_up="true")
+        subnet1 = openstack.networking.Subnet("subnet1",
+            cidr="192.168.199.0/24",
+            ip_version=4,
+            network_id=network1.id)
+        sharenetwork1 = openstack.sharedfilesystem.ShareNetwork("sharenetwork1",
+            description="test share network with security services",
+            neutron_net_id=network1.id,
+            neutron_subnet_id=subnet1.id)
+        share1 = openstack.sharedfilesystem.Share("share1",
+            description="test share description",
+            share_network_id=sharenetwork1.id,
+            share_proto="NFS",
+            size=1)
+        ```
 
 
         :param str resource_name: The name of the resource.

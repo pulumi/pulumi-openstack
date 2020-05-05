@@ -169,6 +169,54 @@ class Port(pulumi.CustomResource):
         """
         Manages a V2 port resource within OpenStack.
 
+        ## Example Usage
+
+        ### Simple port
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        network1 = openstack.networking.Network("network1", admin_state_up="true")
+        port1 = openstack.networking.Port("port1",
+            admin_state_up="true",
+            network_id=network1.id)
+        ```
+
+        ### Port with physical binding information
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        network1 = openstack.networking.Network("network1", admin_state_up="true")
+        port1 = openstack.networking.Port("port1",
+            admin_state_up="true",
+            binding={
+                "hostId": "b080b9cf-46e0-4ce8-ad47-0fd4accc872b",
+                "profile": """{
+          "local_link_information": [
+            {
+              "switch_info": "info1",
+              "port_id": "Ethernet3/4",
+              "switch_id": "12:34:56:78:9A:BC"
+            },
+            {
+              "switch_info": "info2",
+              "port_id": "Ethernet3/4",
+              "switch_id": "12:34:56:78:9A:BD"
+            }
+          ],
+          "vlan_type": "allowed"
+        }
+
+        """,
+                "vnicType": "baremetal",
+            },
+            device_id="cdf70fcf-c161-4f24-9c70-96b3f5a54b71",
+            device_owner="baremetal:none",
+            network_id=network1.id)
+        ```
 
         ## Notes
 

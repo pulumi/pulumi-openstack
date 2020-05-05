@@ -174,6 +174,20 @@ def get_image(member_status=None,most_recent=None,name=None,owner=None,propertie
     """
     Use this data source to get the ID of an available OpenStack image.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    ubuntu = openstack.images.get_image(most_recent=True,
+        name="Ubuntu 16.04",
+        properties={
+            "key": "value",
+        })
+    ```
 
 
 

@@ -96,6 +96,24 @@ class VolumeAttachV2(pulumi.CustomResource):
         This does not actually attach a volume to an instance. Please use
         the `compute.VolumeAttach` resource for that.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        volume1 = openstack.blockstorage.VolumeV2("volume1", size=1)
+        va1 = openstack.blockstorage.VolumeAttachV2("va1",
+            device="auto",
+            host_name="devstack",
+            initiator="iqn.1993-08.org.debian:01:e9861fb1859",
+            ip_address="192.168.255.10",
+            os_type="linux2",
+            platform="x86_64",
+            volume_id=volume1.id)
+        ```
 
 
         :param str resource_name: The name of the resource.

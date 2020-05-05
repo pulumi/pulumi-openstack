@@ -107,6 +107,18 @@ class Router(pulumi.CustomResource):
         """
         Manages a V2 router resource within OpenStack.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        router1 = openstack.networking.Router("router1",
+            admin_state_up=True,
+            external_network_id="f67f0d72-0ddf-11e4-9d95-e1f29f417e2f")
+        ```
 
 
         :param str resource_name: The name of the resource.
