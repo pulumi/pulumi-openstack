@@ -48,6 +48,19 @@ class MemberV1(pulumi.CustomResource):
         """
         Manages a V1 load balancer member resource within OpenStack.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        member1 = openstack.loadbalancer.MemberV1("member1",
+            address="192.168.0.10",
+            pool_id="d9415786-5f1a-428b-b35f-2f1523e146d2",
+            port=80)
+        ```
 
 
         :param str resource_name: The name of the resource.

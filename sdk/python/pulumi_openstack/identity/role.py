@@ -31,6 +31,16 @@ class Role(pulumi.CustomResource):
         Note: You _must_ have admin privileges in your OpenStack cloud to use
         this resource.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        role1 = openstack.identity.Role("role1")
+        ```
 
 
         :param str resource_name: The name of the resource.

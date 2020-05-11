@@ -47,6 +47,46 @@ class ImageAccess(pulumi.CustomResource):
         Manages members for the shared OpenStack Glance V2 Image within the source
         project, which owns the Image.
 
+        ## Example Usage
+
+        ### Unprivileged user
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        rancheros = openstack.images.Image("rancheros",
+            container_format="bare",
+            disk_format="qcow2",
+            image_source_url="https://releases.rancher.com/os/latest/rancheros-openstack.img",
+            properties={
+                "key": "value",
+            },
+            visibility="shared")
+        rancheros_member = openstack.images.ImageAccess("rancherosMember",
+            image_id=rancheros.id,
+            member_id="bed6b6cbb86a4e2d8dc2735c2f1000e4")
+        ```
+
+        ### Privileged user
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        rancheros = openstack.images.Image("rancheros",
+            container_format="bare",
+            disk_format="qcow2",
+            image_source_url="https://releases.rancher.com/os/latest/rancheros-openstack.img",
+            properties={
+                "key": "value",
+            },
+            visibility="shared")
+        rancheros_member = openstack.images.ImageAccess("rancherosMember",
+            image_id=rancheros.id,
+            member_id="bed6b6cbb86a4e2d8dc2735c2f1000e4",
+            status="accepted")
+        ```
 
 
         :param str resource_name: The name of the resource.

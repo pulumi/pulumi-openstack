@@ -54,6 +54,16 @@ def get_availability_zones_v3(region=None,state=None,opts=None):
     """
     Use this data source to get a list of Block Storage availability zones from OpenStack
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    zones = openstack.blockstorage.get_availability_zones_v3()
+    ```
 
 
 

@@ -117,6 +117,16 @@ def get_share_network(description=None,ip_version=None,name=None,network_type=No
     """
     Use this data source to get the ID of an available Shared File System share network.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    sharenetwork1 = openstack.sharedfilesystem.get_share_network(name="sharenetwork_1")
+    ```
 
 
 

@@ -92,6 +92,16 @@ def get_snapshot(description=None,name=None,region=None,share_id=None,status=Non
     """
     Use this data source to get the ID of an available Shared File System snapshot.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    snapshot1 = openstack.sharedfilesystem.get_snapshot(name="snapshot_1")
+    ```
 
 
 

@@ -38,6 +38,22 @@ class RoleAssignment(pulumi.CustomResource):
         Note: You _must_ have admin privileges in your OpenStack cloud to use
         this resource.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        project1 = openstack.identity.Project("project1")
+        user1 = openstack.identity.User("user1", default_project_id=project1.id)
+        role1 = openstack.identity.Role("role1")
+        role_assignment1 = openstack.identity.RoleAssignment("roleAssignment1",
+            project_id=project1.id,
+            role_id=role1.id,
+            user_id=user1.id)
+        ```
 
 
         :param str resource_name: The name of the resource.

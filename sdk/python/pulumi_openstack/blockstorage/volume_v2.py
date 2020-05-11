@@ -104,6 +104,19 @@ class VolumeV2(pulumi.CustomResource):
         """
         Manages a V2 volume resource within OpenStack.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        volume1 = openstack.blockstorage.VolumeV2("volume1",
+            description="first test volume",
+            region="RegionOne",
+            size=3)
+        ```
 
 
         :param str resource_name: The name of the resource.

@@ -65,6 +65,35 @@ class L7PolicyV2(pulumi.CustomResource):
         """
         Manages a Load Balancer L7 Policy resource within OpenStack.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        network1 = openstack.networking.Network("network1", admin_state_up="true")
+        subnet1 = openstack.networking.Subnet("subnet1",
+            cidr="192.168.199.0/24",
+            ip_version=4,
+            network_id=network1.id)
+        loadbalancer1 = openstack.loadbalancer.LoadBalancer("loadbalancer1", vip_subnet_id=subnet1.id)
+        listener1 = openstack.loadbalancer.Listener("listener1",
+            loadbalancer_id=loadbalancer1.id,
+            protocol="HTTP",
+            protocol_port=8080)
+        pool1 = openstack.loadbalancer.Pool("pool1",
+            lb_method="ROUND_ROBIN",
+            loadbalancer_id=loadbalancer1.id,
+            protocol="HTTP")
+        l7policy1 = openstack.loadbalancer.L7PolicyV2("l7policy1",
+            action="REDIRECT_TO_POOL",
+            description="test l7 policy",
+            listener_id=listener1.id,
+            position=1,
+            redirect_pool_id=pool1.id)
+        ```
 
 
         :param str resource_name: The name of the resource.

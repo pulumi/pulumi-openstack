@@ -86,6 +86,17 @@ def get_flavor(disk=None,flavor_id=None,min_disk=None,min_ram=None,name=None,ram
     """
     Use this data source to get the ID of an available OpenStack flavor.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    small = openstack.compute.get_flavor(ram=512,
+        vcpus=1)
+    ```
 
 
 

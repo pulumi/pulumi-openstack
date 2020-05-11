@@ -100,6 +100,24 @@ class QuotaSetV2(pulumi.CustomResource):
         > **Note:** This resource has a no-op deletion so no actual actions will be done against the OpenStack API 
             in case of delete call.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        project1 = openstack.identity.Project("project1")
+        quotaset1 = openstack.compute.QuotaSetV2("quotaset1",
+            project_id=project1.id,
+            key_pairs=10,
+            ram=40960,
+            cores=32,
+            instances=20,
+            server_groups=4,
+            server_group_members=8)
+        ```
 
 
         :param str resource_name: The name of the resource.

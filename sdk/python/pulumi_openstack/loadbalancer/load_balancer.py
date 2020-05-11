@@ -73,6 +73,16 @@ class LoadBalancer(pulumi.CustomResource):
         """
         Manages a V2 loadbalancer resource within OpenStack.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        lb1 = openstack.loadbalancer.LoadBalancer("lb1", vip_subnet_id="d9415786-5f1a-428b-b35f-2f1523e146d2")
+        ```
 
 
         :param str resource_name: The name of the resource.

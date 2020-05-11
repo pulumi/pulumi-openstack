@@ -103,6 +103,16 @@ def get_qos_policy(description=None,is_default=None,name=None,project_id=None,re
     """
     Use this data source to get the ID of an available OpenStack QoS policy.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    qos_policy1 = openstack.networking.get_qos_policy(name="qos_policy_1")
+    ```
 
 
 

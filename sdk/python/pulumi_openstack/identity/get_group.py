@@ -62,6 +62,16 @@ def get_group(domain_id=None,name=None,region=None,opts=None):
 
     Note: This usually requires admin privileges.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    admins = openstack.identity.get_group(name="admins")
+    ```
 
 
 

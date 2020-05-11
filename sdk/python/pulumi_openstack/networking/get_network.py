@@ -131,6 +131,16 @@ def get_network(description=None,external=None,matching_subnet_cidr=None,mtu=Non
     """
     Use this data source to get the ID of an available OpenStack network.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    network = openstack.networking.get_network(name="tf_test_network")
+    ```
 
 
 

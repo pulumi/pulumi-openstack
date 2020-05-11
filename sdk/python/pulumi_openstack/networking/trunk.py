@@ -64,6 +64,41 @@ class Trunk(pulumi.CustomResource):
         """
         Manages a networking V2 trunk resource within OpenStack.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        network1 = openstack.networking.Network("network1", admin_state_up="true")
+        subnet1 = openstack.networking.Subnet("subnet1",
+            cidr="192.168.1.0/24",
+            enable_dhcp=True,
+            ip_version=4,
+            network_id=network1.id,
+            no_gateway=True)
+        parent_port1 = openstack.networking.Port("parentPort1",
+            admin_state_up="true",
+            network_id=network1.id)
+        subport1 = openstack.networking.Port("subport1",
+            admin_state_up="true",
+            network_id=network1.id)
+        trunk1 = openstack.networking.Trunk("trunk1",
+            admin_state_up="true",
+            port_id=parent_port1.id,
+            sub_ports=[{
+                "portId": subport1.id,
+                "segmentationId": 1,
+                "segmentationType": "vlan",
+            }])
+        instance1 = openstack.compute.Instance("instance1",
+            networks=[{
+                "port": trunk1.port_id,
+            }],
+            security_groups=["default"])
+        ```
 
 
         :param str resource_name: The name of the resource.

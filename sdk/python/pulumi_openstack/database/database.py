@@ -26,6 +26,16 @@ class Database(pulumi.CustomResource):
         """
         Manages a V1 DB database resource within OpenStack.
 
+        ## Example Usage
+
+        ### Database
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        mydb = openstack.database.Database("mydb", instance_id=openstack_db_instance_v1["basic"]["id"])
+        ```
 
 
         :param str resource_name: The name of the resource.

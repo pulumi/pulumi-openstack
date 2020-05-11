@@ -85,6 +85,17 @@ def get_snapshot_v2(most_recent=None,name=None,region=None,status=None,volume_id
     """
     Use this data source to get information about an existing snapshot.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    snapshot1 = openstack.blockstorage.get_snapshot_v2(most_recent=True,
+        name="snapshot_1")
+    ```
 
 
 

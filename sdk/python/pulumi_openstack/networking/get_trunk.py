@@ -86,6 +86,16 @@ def get_trunk(admin_state_up=None,description=None,name=None,port_id=None,projec
     """
     Use this data source to get the ID of an available OpenStack trunk.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    trunk1 = openstack.networking.get_trunk(name="trunk_1")
+    ```
 
 
 

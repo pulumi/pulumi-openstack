@@ -45,6 +45,16 @@ class FloatingIp(pulumi.CustomResource):
         recommended to use the `networking.FloatingIp`
         resource instead, which uses the OpenStack Networking API.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        floatip1 = openstack.compute.FloatingIp("floatip1", pool="public")
+        ```
 
 
         :param str resource_name: The name of the resource.

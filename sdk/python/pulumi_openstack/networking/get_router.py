@@ -103,6 +103,16 @@ def get_router(admin_state_up=None,description=None,distributed=None,enable_snat
     """
     Use this data source to get the ID of an available OpenStack router.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    router = openstack.networking.get_router(name="router_1")
+    ```
 
 
 
