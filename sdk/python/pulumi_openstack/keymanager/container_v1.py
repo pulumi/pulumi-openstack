@@ -78,6 +78,83 @@ class ContainerV1(pulumi.CustomResource):
         """
         Manages a V1 Barbican container resource within OpenStack.
 
+        ## Example Usage
+
+        ### Simple secret
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        certificate1 = openstack.keymanager.SecretV1("certificate1",
+            payload=(lambda path: open(path).read())("cert.pem"),
+            payload_content_type="text/plain",
+            secret_type="certificate")
+        private_key1 = openstack.keymanager.SecretV1("privateKey1",
+            payload=(lambda path: open(path).read())("cert-key.pem"),
+            payload_content_type="text/plain",
+            secret_type="private")
+        intermediate1 = openstack.keymanager.SecretV1("intermediate1",
+            payload=(lambda path: open(path).read())("intermediate-ca.pem"),
+            payload_content_type="text/plain",
+            secret_type="certificate")
+        tls1 = openstack.keymanager.ContainerV1("tls1",
+            secret_refs=[
+                {
+                    "name": "certificate",
+                    "secretRef": certificate1.secret_ref,
+                },
+                {
+                    "name": "private_key",
+                    "secretRef": private_key1.secret_ref,
+                },
+                {
+                    "name": "intermediates",
+                    "secretRef": intermediate1.secret_ref,
+                },
+            ],
+            type="certificate")
+        subnet1 = openstack.networking.get_subnet(name="my-subnet")
+        lb1 = openstack.loadbalancer.LoadBalancer("lb1", vip_subnet_id=subnet1.id)
+        listener1 = openstack.loadbalancer.Listener("listener1",
+            default_tls_container_ref=tls1.container_ref,
+            loadbalancer_id=lb1.id,
+            protocol="TERMINATED_HTTPS",
+            protocol_port=443)
+        ```
+
+        ### Container with the ACL
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        tls1 = openstack.keymanager.ContainerV1("tls1",
+            acl={
+                "read": {
+                    "projectAccess": False,
+                    "users": [
+                        "userid1",
+                        "userid2",
+                    ],
+                },
+            },
+            secret_refs=[
+                {
+                    "name": "certificate",
+                    "secretRef": openstack_keymanager_secret_v1["certificate_1"]["secret_ref"],
+                },
+                {
+                    "name": "private_key",
+                    "secretRef": openstack_keymanager_secret_v1["private_key_1"]["secret_ref"],
+                },
+                {
+                    "name": "intermediates",
+                    "secretRef": openstack_keymanager_secret_v1["intermediate_1"]["secret_ref"],
+                },
+            ],
+            type="certificate")
+        ```
 
 
         :param str resource_name: The name of the resource.

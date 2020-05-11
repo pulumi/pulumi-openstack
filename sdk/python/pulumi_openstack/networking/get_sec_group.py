@@ -70,6 +70,16 @@ def get_sec_group(description=None,name=None,region=None,secgroup_id=None,tags=N
     """
     Use this data source to get the ID of an available OpenStack security group.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    secgroup = openstack.networking.get_sec_group(name="tf_test_secgroup")
+    ```
 
 
 

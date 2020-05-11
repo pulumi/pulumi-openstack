@@ -88,6 +88,16 @@ def get_project(domain_id=None,enabled=None,is_domain=None,name=None,parent_id=N
     """
     Use this data source to get the ID of an OpenStack project.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    project1 = openstack.identity.get_project(name="demo")
+    ```
 
 
 

@@ -102,6 +102,16 @@ def get_user(domain_id=None,enabled=None,idp_id=None,name=None,password_expires_
     """
     Use this data source to get the ID of an OpenStack user.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    user1 = openstack.identity.get_user(name="user_1")
+    ```
 
 
 

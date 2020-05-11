@@ -66,13 +66,7 @@ class ShareNetwork(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, description=None, name=None, neutron_net_id=None, neutron_subnet_id=None, region=None, security_service_ids=None, __props__=None, __name__=None, __opts__=None):
         """
-        Use this resource to configure a share network.
-
-        A share network stores network information that share servers can use when
-        shares are created.
-
-
-
+        Create a ShareNetwork resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The human-readable description for the share network.

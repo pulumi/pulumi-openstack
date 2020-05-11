@@ -119,6 +119,16 @@ def get_auth_scope(name=None,region=None,opts=None):
     auth scope in use. This can be used as self-discovery or introspection of
     the username or project name currently in use.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    scope = openstack.identity.get_auth_scope(name="my_scope")
+    ```
 
 
 

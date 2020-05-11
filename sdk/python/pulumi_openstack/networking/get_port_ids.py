@@ -105,6 +105,16 @@ def get_port_ids(admin_state_up=None,description=None,device_id=None,device_owne
     Use this data source to get a list of Openstack Port IDs matching the
     specified criteria.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    ports = openstack.networking.get_port_ids(name="port")
+    ```
 
 
 

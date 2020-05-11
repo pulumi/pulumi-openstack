@@ -48,6 +48,27 @@ class Members(pulumi.CustomResource):
         legacy Neutron LBaaS v2 extension please use
         loadbalancer.Member resource.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        members1 = openstack.loadbalancer.Members("members1",
+            members=[
+                {
+                    "address": "192.168.199.23",
+                    "protocolPort": 8080,
+                },
+                {
+                    "address": "192.168.199.24",
+                    "protocolPort": 8080,
+                },
+            ],
+            pool_id="935685fb-a896-40f9-9ff4-ae531a3a00fe")
+        ```
 
 
         :param str resource_name: The name of the resource.

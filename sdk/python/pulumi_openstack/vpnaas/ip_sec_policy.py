@@ -76,6 +76,16 @@ class IpSecPolicy(pulumi.CustomResource):
         """
         Manages a V2 Neutron IPSec policy resource within OpenStack.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        policy1 = openstack.vpnaas.IpSecPolicy("policy1")
+        ```
 
 
         :param str resource_name: The name of the resource.

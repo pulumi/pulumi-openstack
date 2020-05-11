@@ -269,6 +269,16 @@ def get_cluster_template(name=None,region=None,opts=None):
     Use this data source to get the ID of an available OpenStack Magnum cluster
     template.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    clustertemplate1 = openstack.containerinfra.get_cluster_template(name="clustertemplate_1")
+    ```
 
 
 

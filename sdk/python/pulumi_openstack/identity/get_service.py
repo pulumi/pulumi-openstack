@@ -69,6 +69,16 @@ def get_service(enabled=None,name=None,region=None,type=None,opts=None):
 
     > **Note:** This usually requires admin privileges.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    service1 = openstack.identity.get_service(name="keystone")
+    ```
 
 
 

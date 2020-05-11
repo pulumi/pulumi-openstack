@@ -53,6 +53,16 @@ def get_role(domain_id=None,name=None,region=None,opts=None):
     """
     Use this data source to get the ID of an OpenStack role.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    admin = openstack.identity.get_role(name="admin")
+    ```
 
 
 

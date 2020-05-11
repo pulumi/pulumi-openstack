@@ -104,6 +104,39 @@ class StackV1(pulumi.CustomResource):
         """
         Manages a V1 stack resource within OpenStack.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        stack1 = openstack.orchestration.StackV1("stack1",
+            disable_rollback=True,
+            environment_opts={
+                "Bin": "\n\n",
+            },
+            parameters={
+                "length": 4,
+            },
+            template_opts={
+                "Bin": \"\"\"heat_template_version: 2013-05-23
+        parameters:
+          length:
+            type: number
+        resources:
+          test_res:
+            type: OS::Heat::TestResource
+          random:
+            type: OS::Heat::RandomString
+            properties:
+              length: {get_param: length}
+
+        \"\"\",
+            },
+            timeout=30)
+        ```
 
 
         :param str resource_name: The name of the resource.

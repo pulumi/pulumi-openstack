@@ -153,6 +153,16 @@ def get_subnet_pool(address_scope_id=None,default_prefixlen=None,default_quota=N
     """
     Use this data source to get the ID of an available OpenStack subnetpool.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    subnetpool1 = openstack.networking.get_subnet_pool(name="subnetpool_1")
+    ```
 
 
 

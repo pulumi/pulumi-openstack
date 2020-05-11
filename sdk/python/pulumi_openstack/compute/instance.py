@@ -231,22 +231,7 @@ class Instance(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, access_ip_v4=None, access_ip_v6=None, admin_pass=None, availability_zone=None, availability_zone_hints=None, block_devices=None, config_drive=None, flavor_id=None, flavor_name=None, force_delete=None, image_id=None, image_name=None, key_pair=None, metadata=None, name=None, networks=None, personalities=None, power_state=None, region=None, scheduler_hints=None, security_groups=None, stop_before_destroy=None, tags=None, user_data=None, vendor_options=None, __props__=None, __name__=None, __opts__=None):
         """
-        Manages a V2 VM instance resource within OpenStack.
-
-
-        ## Importing instances
-
-        Importing instances can be tricky, since the nova api does not offer all
-        information provided at creation time for later retrieval.
-        Network interface attachment order, and number and sizes of ephemeral
-        disks are examples of this.
-
-        ### Importing an instance with multiple emphemeral disks
-
-        The importer cannot read the emphemeral disk configuration
-        of an instance, so just specify image_id as in the configuration
-        of the basic instance example.
-
+        Create a Instance resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_ip_v4: The first detected Fixed IPv4 address.

@@ -88,6 +88,16 @@ def get_policy(name=None,policy_id=None,region=None,tenant_id=None,opts=None):
     """
     Use this data source to get firewall policy information of an available OpenStack firewall policy.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    policy = openstack.firewall.get_policy(name="tf_test_policy")
+    ```
 
 
 

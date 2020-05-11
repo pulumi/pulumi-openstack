@@ -42,6 +42,25 @@ class Configuration(pulumi.CustomResource):
         """
         Manages a V1 DB configuration resource within OpenStack.
 
+        ## Example Usage
+
+        ### Configuration
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        test = openstack.database.Configuration("test",
+            configurations=[{
+                "name": "max_connections",
+                "value": 200,
+            }],
+            datastore={
+                "type": "mysql",
+                "version": "mysql-5.7",
+            },
+            description="description")
+        ```
 
 
         :param str resource_name: The name of the resource.

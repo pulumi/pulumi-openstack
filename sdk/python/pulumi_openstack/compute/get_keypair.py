@@ -60,6 +60,16 @@ def get_keypair(name=None,region=None,opts=None):
     """
     Use this data source to get the ID and public key of an OpenStack keypair.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    kp = openstack.compute.get_keypair(name="sand")
+    ```
 
 
 

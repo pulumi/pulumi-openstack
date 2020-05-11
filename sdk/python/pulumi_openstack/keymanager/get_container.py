@@ -112,6 +112,16 @@ def get_container(name=None,region=None,opts=None):
     """
     Use this data source to get the ID of an available Barbican container.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    example = openstack.keymanager.get_container(name="my_container")
+    ```
 
 
 

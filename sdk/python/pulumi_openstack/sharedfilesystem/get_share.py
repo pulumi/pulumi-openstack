@@ -132,6 +132,16 @@ def get_share(description=None,export_location_path=None,is_public=None,metadata
     """
     Use this data source to get the ID of an available Shared File System share.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    share1 = openstack.sharedfilesystem.get_share(name="share_1")
+    ```
 
 
 

@@ -82,6 +82,36 @@ class User(pulumi.CustomResource):
         Note: You _must_ have admin privileges in your OpenStack cloud to use
         this resource.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        project1 = openstack.identity.Project("project1")
+        user1 = openstack.identity.User("user1",
+            default_project_id=project1.id,
+            description="A user",
+            extra={
+                "email": "user_1@foobar.com",
+            },
+            ignore_change_password_upon_first_use=True,
+            multi_factor_auth_enabled=True,
+            multi_factor_auth_rules=[
+                {
+                    "rule": [
+                        "password",
+                        "totp",
+                    ],
+                },
+                {
+                    "rule": ["password"],
+                },
+            ],
+            password="password123")
+        ```
 
 
         :param str resource_name: The name of the resource.

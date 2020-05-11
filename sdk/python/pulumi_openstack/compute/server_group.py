@@ -39,6 +39,16 @@ class ServerGroup(pulumi.CustomResource):
         """
         Manages a V2 Server Group resource within OpenStack.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        test_sg = openstack.compute.ServerGroup("test-sg", policies=["anti-affinity"])
+        ```
 
         ## Policies
 

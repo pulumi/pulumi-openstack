@@ -47,6 +47,16 @@ def get_availbility_zones(region=None,opts=None):
     Use this data source to get a list of Shared File System availability zones
     from OpenStack
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    zones = openstack.sharedfilesystem.get_availbility_zones()
+    ```
 
 
 

@@ -130,6 +130,16 @@ def get_subnet(cidr=None,description=None,dhcp_disabled=None,dhcp_enabled=None,g
     """
     Use this data source to get the ID of an available OpenStack subnet.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    subnet1 = openstack.networking.get_subnet(name="subnet_1")
+    ```
 
 
 

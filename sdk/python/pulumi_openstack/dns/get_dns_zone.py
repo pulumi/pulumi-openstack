@@ -144,6 +144,16 @@ def get_dns_zone(attributes=None,created_at=None,description=None,email=None,mas
     """
     Use this data source to get the ID of an available OpenStack DNS zone.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    zone1 = openstack.dns.get_dns_zone(name="example.com")
+    ```
 
 
 

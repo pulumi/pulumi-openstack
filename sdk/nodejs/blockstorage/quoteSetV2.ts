@@ -12,6 +12,26 @@ import * as utilities from "../utilities";
  * > **Note:** This resource has a no-op deletion so no actual actions will be done against the OpenStack API 
  *     in case of delete call.
  * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ * 
+ * const project1 = new openstack.identity.Project("project1", {});
+ * const quotaset1 = new openstack.blockstorage.QuoteSetV2("quotaset1", {
+ *     projectId: project1.id,
+ *     volumes: 10,
+ *     snapshots: 4,
+ *     gigabytes: 100,
+ *     perVolumeGigabytes: 10,
+ *     backups: 4,
+ *     backupGigabytes: 10,
+ *     groups: 100,
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/blockstorage_quotaset_v2.html.markdown.
  */

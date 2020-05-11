@@ -48,12 +48,7 @@ class SecGroup(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, delete_default_rules=None, description=None, name=None, region=None, tags=None, tenant_id=None, __props__=None, __name__=None, __opts__=None):
         """
-        Manages a V2 neutron security group resource within OpenStack.
-        Unlike Nova security groups, neutron separates the group from the rules
-        and also allows an admin to target a specific tenant_id.
-
-
-
+        Create a SecGroup resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] delete_default_rules: Whether or not to delete the default

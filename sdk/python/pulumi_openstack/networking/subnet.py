@@ -143,6 +143,19 @@ class Subnet(pulumi.CustomResource):
         """
         Manages a V2 Neutron subnet resource within OpenStack.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        network1 = openstack.networking.Network("network1", admin_state_up="true")
+        subnet1 = openstack.networking.Subnet("subnet1",
+            cidr="192.168.199.0/24",
+            network_id=network1.id)
+        ```
 
 
         :param str resource_name: The name of the resource.

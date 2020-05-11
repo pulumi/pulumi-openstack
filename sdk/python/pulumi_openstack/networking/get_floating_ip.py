@@ -91,6 +91,16 @@ def get_floating_ip(address=None,description=None,fixed_ip=None,pool=None,port_i
     """
     Use this data source to get the ID of an available OpenStack floating IP.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    floatingip1 = openstack.networking.get_floating_ip(address="192.168.0.4")
+    ```
 
 
 

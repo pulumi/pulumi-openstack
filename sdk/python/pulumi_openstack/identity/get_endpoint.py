@@ -90,6 +90,16 @@ def get_endpoint(endpoint_region=None,interface=None,name=None,region=None,servi
 
     > **Note:** This usually requires admin privileges.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    endpoint1 = openstack.identity.get_endpoint(service_name="demo")
+    ```
 
 
 
