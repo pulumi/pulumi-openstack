@@ -6,20 +6,20 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a V3 block storage quotaset resource within OpenStack.
- * 
+ *
  * > **Note:** This usually requires admin privileges.
- * 
+ *
  * > **Note:** This resource has a no-op deletion so no actual actions will be done against the OpenStack API 
  *     in case of delete call.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
- * 
+ *
  * const project1 = new openstack.identity.Project("project1", {});
  * const quotaset1 = new openstack.blockstorage.QuoteSetV3("quotaset1", {
  *     projectId: project1.id,
@@ -32,8 +32,6 @@ import * as utilities from "../utilities";
  *     groups: 100,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/blockstorage_quotaset_v3.html.markdown.
  */
 export class QuoteSetV3 extends pulumi.CustomResource {
     /**

@@ -28,6 +28,8 @@ type Subnet struct {
 	// A block declaring the start and end range of the IP addresses available for
 	// use with DHCP in this subnet.
 	// The `allocationPools` block is documented below.
+	//
+	// Deprecated: use allocation_pool instead
 	AllocationPoolsCollection SubnetAllocationPoolsCollectionArrayOutput `pulumi:"allocationPoolsCollection"`
 	// CIDR representing IP range for this subnet, based on IP
 	// version. You can omit this option if you are creating a subnet from a
@@ -54,6 +56,8 @@ type Subnet struct {
 	// with IPs from this subnet (not including local subnet route). The hostRoute
 	// object structure is documented below. Changing this updates the host routes
 	// for the existing subnet.
+	//
+	// Deprecated: Use openstack_networking_subnet_route_v2 instead
 	HostRoutes SubnetHostRouteArrayOutput `pulumi:"hostRoutes"`
 	// IP version, either 4 (default) or 6. Changing this creates a
 	// new subnet.
@@ -139,6 +143,8 @@ type subnetState struct {
 	// A block declaring the start and end range of the IP addresses available for
 	// use with DHCP in this subnet.
 	// The `allocationPools` block is documented below.
+	//
+	// Deprecated: use allocation_pool instead
 	AllocationPoolsCollection []SubnetAllocationPoolsCollection `pulumi:"allocationPoolsCollection"`
 	// CIDR representing IP range for this subnet, based on IP
 	// version. You can omit this option if you are creating a subnet from a
@@ -165,6 +171,8 @@ type subnetState struct {
 	// with IPs from this subnet (not including local subnet route). The hostRoute
 	// object structure is documented below. Changing this updates the host routes
 	// for the existing subnet.
+	//
+	// Deprecated: Use openstack_networking_subnet_route_v2 instead
 	HostRoutes []SubnetHostRoute `pulumi:"hostRoutes"`
 	// IP version, either 4 (default) or 6. Changing this creates a
 	// new subnet.
@@ -220,6 +228,8 @@ type SubnetState struct {
 	// A block declaring the start and end range of the IP addresses available for
 	// use with DHCP in this subnet.
 	// The `allocationPools` block is documented below.
+	//
+	// Deprecated: use allocation_pool instead
 	AllocationPoolsCollection SubnetAllocationPoolsCollectionArrayInput
 	// CIDR representing IP range for this subnet, based on IP
 	// version. You can omit this option if you are creating a subnet from a
@@ -246,6 +256,8 @@ type SubnetState struct {
 	// with IPs from this subnet (not including local subnet route). The hostRoute
 	// object structure is documented below. Changing this updates the host routes
 	// for the existing subnet.
+	//
+	// Deprecated: Use openstack_networking_subnet_route_v2 instead
 	HostRoutes SubnetHostRouteArrayInput
 	// IP version, either 4 (default) or 6. Changing this creates a
 	// new subnet.
@@ -302,6 +314,8 @@ type subnetArgs struct {
 	// A block declaring the start and end range of the IP addresses available for
 	// use with DHCP in this subnet.
 	// The `allocationPools` block is documented below.
+	//
+	// Deprecated: use allocation_pool instead
 	AllocationPoolsCollection []SubnetAllocationPoolsCollection `pulumi:"allocationPoolsCollection"`
 	// CIDR representing IP range for this subnet, based on IP
 	// version. You can omit this option if you are creating a subnet from a
@@ -328,6 +342,8 @@ type subnetArgs struct {
 	// with IPs from this subnet (not including local subnet route). The hostRoute
 	// object structure is documented below. Changing this updates the host routes
 	// for the existing subnet.
+	//
+	// Deprecated: Use openstack_networking_subnet_route_v2 instead
 	HostRoutes []SubnetHostRoute `pulumi:"hostRoutes"`
 	// IP version, either 4 (default) or 6. Changing this creates a
 	// new subnet.
@@ -381,6 +397,8 @@ type SubnetArgs struct {
 	// A block declaring the start and end range of the IP addresses available for
 	// use with DHCP in this subnet.
 	// The `allocationPools` block is documented below.
+	//
+	// Deprecated: use allocation_pool instead
 	AllocationPoolsCollection SubnetAllocationPoolsCollectionArrayInput
 	// CIDR representing IP range for this subnet, based on IP
 	// version. You can omit this option if you are creating a subnet from a
@@ -407,6 +425,8 @@ type SubnetArgs struct {
 	// with IPs from this subnet (not including local subnet route). The hostRoute
 	// object structure is documented below. Changing this updates the host routes
 	// for the existing subnet.
+	//
+	// Deprecated: Use openstack_networking_subnet_route_v2 instead
 	HostRoutes SubnetHostRouteArrayInput
 	// IP version, either 4 (default) or 6. Changing this creates a
 	// new subnet.

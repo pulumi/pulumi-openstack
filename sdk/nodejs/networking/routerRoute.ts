@@ -8,15 +8,15 @@ import * as utilities from "../utilities";
 
 /**
  * Creates a routing entry on a OpenStack V2 router.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
- * 
+ *
  * const router1 = new openstack.networking.Router("router1", {
  *     adminStateUp: true,
  * });
@@ -38,14 +38,12 @@ import * as utilities from "../utilities";
  *     routerId: router1.id,
  * }, { dependsOn: [int1] });
  * ```
- * 
+ *
  * ## Notes
- * 
+ *
  * The `nextHop` IP address must be directly reachable from the router at the ``openstack.networking.RouterRoute``
  * resource creation time.  You can ensure that by explicitly specifying a dependency on the ``openstack.networking.RouterInterface``
  * resource that connects the next hop to the router, as in the example above.
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_router_route_v2.html.markdown.
  */
 export class RouterRoute extends pulumi.CustomResource {
     /**

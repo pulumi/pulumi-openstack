@@ -8,15 +8,15 @@ import * as utilities from "../utilities";
 
 /**
  * Use this resource to configure a share.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
- * 
+ *
  * const network1 = new openstack.networking.Network("network1", {
  *     adminStateUp: true,
  * });
@@ -37,8 +37,6 @@ import * as utilities from "../utilities";
  *     size: 1,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/sharedfilesystem_share_v2.html.markdown.
  */
 export class Share extends pulumi.CustomResource {
     /**

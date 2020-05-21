@@ -6,15 +6,15 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a DNS record set in the OpenStack DNS Service.
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ### Automatically detect the correct network
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
- * 
+ *
  * const exampleZone = new openstack.dns.Zone("exampleZone", {
  *     description: "a zone",
  *     email: "email2@example.com",
@@ -29,8 +29,6 @@ import * as utilities from "../utilities";
  *     zoneId: exampleZone.id,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/dns_recordset_v2.html.markdown.
  */
 export class RecordSet extends pulumi.CustomResource {
     /**

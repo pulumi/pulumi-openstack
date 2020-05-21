@@ -9,15 +9,15 @@ import * as utilities from "../utilities";
 /**
  * Attaches a Block Storage Volume to an Instance using the OpenStack
  * Compute (Nova) v2 API.
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ### Basic attachment of a single volume to a single instance
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
- * 
+ *
  * const volume1 = new openstack.blockstorage.VolumeV2("volume1", {
  *     size: 1,
  * });
@@ -29,13 +29,13 @@ import * as utilities from "../utilities";
  *     volumeId: volume1.id,
  * });
  * ```
- * 
+ *
  * ### Attaching multiple volumes to a single instance
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
- * 
+ *
  * const volumes: openstack.blockstorage.VolumeV2[] = [];
  * for (let i = 0; i < 2; i++) {
  *     volumes.push(new openstack.blockstorage.VolumeV2(`volumes-${i}`, {
@@ -52,16 +52,16 @@ import * as utilities from "../utilities";
  *         volumeId: pulumi.all(volumes.map(v => v.id)).apply(id => id.map(v => v)[i]),
  *     }));
  * }
- * 
+ *
  * export const volumeDevices = attachments.map(v => v.device);
  * ```
- * 
+ *
  * ### Using Multiattach-enabled volumes
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
- * 
+ *
  * const volume1 = new openstack.blockstorage.Volume("volume1", {
  *     multiattach: true,
  *     size: 1,
@@ -83,8 +83,6 @@ import * as utilities from "../utilities";
  *     volumeId: openstack_blockstorage_volume_v2_volume_1.id,
  * }, { dependsOn: [va1] });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_volume_attach_v2.html.markdown.
  */
 export class VolumeAttach extends pulumi.CustomResource {
     /**

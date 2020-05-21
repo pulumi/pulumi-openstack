@@ -6,15 +6,15 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a V2 flavor resource within OpenStack.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
- * 
+ *
  * const testFlavor = new openstack.compute.Flavor("test-flavor", {
  *     disk: 20,
  *     extraSpecs: {
@@ -25,8 +25,6 @@ import * as utilities from "../utilities";
  *     vcpus: 2,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_flavor_v2.html.markdown.
  */
 export class Flavor extends pulumi.CustomResource {
     /**

@@ -8,15 +8,15 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a V1 load balancer pool resource within OpenStack.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
- * 
+ *
  * const pool1 = new openstack.loadbalancer.PoolV1("pool1", {
  *     lbMethod: "ROUND_ROBIN",
  *     lbProvider: "haproxy",
@@ -25,13 +25,13 @@ import * as utilities from "../utilities";
  *     subnetId: "12345",
  * });
  * ```
- * 
+ *
  * ## Complete Load Balancing Stack Example
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
- * 
+ *
  * const network1 = new openstack.networking.Network("network1", {
  *     adminStateUp: true,
  * });
@@ -105,12 +105,10 @@ import * as utilities from "../utilities";
  *     subnetId: subnet1.id,
  * });
  * ```
- * 
- * ## Notes
- * 
- * The `member` block is deprecated in favor of the `openstack.loadbalancer.MemberV1` resource.
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_pool_v1.html.markdown.
+ * ## Notes
+ *
+ * The `member` block is deprecated in favor of the `openstack.loadbalancer.MemberV1` resource.
  */
 export class PoolV1 extends pulumi.CustomResource {
     /**

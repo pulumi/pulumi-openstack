@@ -10,21 +10,19 @@ import * as utilities from "../utilities";
  * Use this data source to get authentication information about the current
  * auth scope in use. This can be used as self-discovery or introspection of
  * the username or project name currently in use.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
- * 
+ *
  * const scope = pulumi.output(openstack.identity.getAuthScope({
  *     name: "myScope",
  * }, { async: true }));
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/identity_auth_scope_v3.html.markdown.
  */
 export function getAuthScope(args: GetAuthScopeArgs, opts?: pulumi.InvokeOptions): Promise<GetAuthScopeResult> {
     if (!opts) {

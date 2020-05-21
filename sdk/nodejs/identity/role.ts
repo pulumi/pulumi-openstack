@@ -8,22 +8,20 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a V3 Role resource within OpenStack Keystone.
- * 
+ *
  * Note: You _must_ have admin privileges in your OpenStack cloud to use
  * this resource.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
- * 
+ *
  * const role1 = new openstack.identity.Role("role1", {});
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/identity_role_v3.html.markdown.
  */
 export class Role extends pulumi.CustomResource {
     /**

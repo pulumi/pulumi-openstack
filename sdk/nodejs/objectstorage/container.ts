@@ -8,15 +8,15 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a V1 container resource within OpenStack.
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ### Basic Container
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
- * 
+ *
  * const container1 = new openstack.objectstorage.Container("container1", {
  *     contentType: "application/json",
  *     metadata: {
@@ -29,37 +29,37 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * 
+ *
  * ### Global Read Access
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
- * 
+ *
  * const container1 = new openstack.objectstorage.Container("container1", {
  *     containerRead: ".r:*",
  *     region: "RegionOne",
  * });
  * ```
- * 
+ *
  * ### Global Read and List Access
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
- * 
+ *
  * const container1 = new openstack.objectstorage.Container("container1", {
  *     containerRead: ".r:*,.rlistings",
  *     region: "RegionOne",
  * });
  * ```
- * 
+ *
  * ### Write-Only Access for a User
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
- * 
+ *
  * const current = pulumi.output(openstack.identity.getAuthScope({
  *     name: "current",
  * }, { async: true }));
@@ -69,8 +69,6 @@ import * as utilities from "../utilities";
  *     region: "RegionOne",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/objectstorage_container_v1.html.markdown.
  */
 export class Container extends pulumi.CustomResource {
     /**

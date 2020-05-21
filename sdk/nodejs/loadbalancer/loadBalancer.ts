@@ -6,21 +6,19 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a V2 loadbalancer resource within OpenStack.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
- * 
+ *
  * const lb1 = new openstack.loadbalancer.LoadBalancer("lb1", {
  *     vipSubnetId: "d9415786-5f1a-428b-b35f-2f1523e146d2",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_loadbalancer_v2.html.markdown.
  */
 export class LoadBalancer extends pulumi.CustomResource {
     /**

@@ -8,15 +8,15 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a V2 pool resource within OpenStack.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
- * 
+ *
  * const pool1 = new openstack.loadbalancer.Pool("pool1", {
  *     lbMethod: "ROUND_ROBIN",
  *     listenerId: "d9415786-5f1a-428b-b35f-2f1523e146d2",
@@ -27,8 +27,6 @@ import * as utilities from "../utilities";
  *     protocol: "HTTP",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_pool_v2.html.markdown.
  */
 export class Pool extends pulumi.CustomResource {
     /**

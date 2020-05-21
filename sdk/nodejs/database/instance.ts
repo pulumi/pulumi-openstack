@@ -8,15 +8,15 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a V1 DB instance resource within OpenStack.
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ### Instance
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
- * 
+ *
  * const test = new openstack.database.Instance("test", {
  *     datastore: {
  *         type: "mysql",
@@ -30,8 +30,6 @@ import * as utilities from "../utilities";
  *     size: 8,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/db_instance_v1.html.markdown.
  */
 export class Instance extends pulumi.CustomResource {
     /**

@@ -8,15 +8,15 @@ import * as utilities from "../utilities";
  * Associates a floating IP to a port. This is useful for situations
  * where you have a pre-allocated floating IP or are unable to use the
  * `openstack.networking.FloatingIp` resource to create a floating IP.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
- * 
+ *
  * const port1 = new openstack.networking.Port("port1", {
  *     networkId: "a5bbd213-e1d3-49b6-aed1-9df60ea94b9a",
  * });
@@ -25,8 +25,6 @@ import * as utilities from "../utilities";
  *     portId: port1.id,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_floatingip_associate_v2.html.markdown.
  */
 export class FloatingIpAssociate extends pulumi.CustomResource {
     /**

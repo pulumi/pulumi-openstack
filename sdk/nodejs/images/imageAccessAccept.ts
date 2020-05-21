@@ -7,15 +7,15 @@ import * as utilities from "../utilities";
 /**
  * Manages memberships status for the shared OpenStack Glance V2 Image within the
  * destination project, which has a member proposal.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
- * 
+ *
  * const rancheros = pulumi.output(openstack.images.getImage({
  *     memberStatus: "all",
  *     name: "RancherOS",
@@ -26,8 +26,6 @@ import * as utilities from "../utilities";
  *     status: "accepted",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/images_image_access_accept_v2.html.markdown.
  */
 export class ImageAccessAccept extends pulumi.CustomResource {
     /**
