@@ -8,15 +8,15 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a V2 Neutron subnetpool resource within OpenStack.
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ### Create a Subnet Pool
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
- * 
+ *
  * const subnetpool1 = new openstack.networking.SubnetPool("subnetpool1", {
  *     ipVersion: 6,
  *     prefixes: [
@@ -25,13 +25,13 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- * 
+ *
  * ### Create a Subnet from a Subnet Pool
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
- * 
+ *
  * const network1 = new openstack.networking.Network("network1", {
  *     adminStateUp: true,
  * });
@@ -44,8 +44,6 @@ import * as utilities from "../utilities";
  *     subnetpoolId: subnetpool1.id,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_subnetpool_v2.html.markdown.
  */
 export class SubnetPool extends pulumi.CustomResource {
     /**

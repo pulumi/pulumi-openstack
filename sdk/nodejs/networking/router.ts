@@ -8,22 +8,20 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a V2 router resource within OpenStack.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
- * 
+ *
  * const router1 = new openstack.networking.Router("router1", {
  *     adminStateUp: true,
  *     externalNetworkId: "f67f0d72-0ddf-11e4-9d95-e1f29f417e2f",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_router_v2.html.markdown.
  */
 export class Router extends pulumi.CustomResource {
     /**
@@ -248,7 +246,6 @@ export interface RouterState {
      * external gateway is required if any compute instances or load balancers
      * will be using floating IPs. Changing this updates the external gateway
      * of an existing router.
-     * 
      * @deprecated use external_network_id instead
      */
     readonly externalGateway?: pulumi.Input<string>;
@@ -338,7 +335,6 @@ export interface RouterArgs {
      * external gateway is required if any compute instances or load balancers
      * will be using floating IPs. Changing this updates the external gateway
      * of an existing router.
-     * 
      * @deprecated use external_network_id instead
      */
     readonly externalGateway?: pulumi.Input<string>;

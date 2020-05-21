@@ -8,39 +8,37 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a V2 Server Group resource within OpenStack.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
- * 
+ *
  * const testSg = new openstack.compute.ServerGroup("test-sg", {
  *     policies: ["anti-affinity"],
  * });
  * ```
- * 
+ *
  * ## Policies
- * 
+ *
  * * `affinity` - All instances/servers launched in this group will be hosted on
  *     the same compute node.
- * 
+ *
  * * `anti-affinity` - All instances/servers launched in this group will be
  *     hosted on different compute nodes.
- * 
+ *
  * * `soft-affinity` - All instances/servers launched in this group will be hosted
  *     on the same compute node if possible, but if not possible they
  *     still will be scheduled instead of failure. To use this policy your
  *     OpenStack environment should support Compute service API 2.15 or above.
- * 
+ *
  * * `soft-anti-affinity` - All instances/servers launched in this group will be
  *     hosted on different compute nodes if possible, but if not possible they
  *     still will be scheduled instead of failure. To use this policy your
  *     OpenStack environment should support Compute service API 2.15 or above.
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_servergroup_v2.html.markdown.
  */
 export class ServerGroup extends pulumi.CustomResource {
     /**

@@ -7,15 +7,15 @@ import * as utilities from "../utilities";
 /**
  * Associate a floating IP to an instance. This can be used instead of the
  * `floatingIp` options in `openstack.compute.Instance`.
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ### Automatically detect the correct network
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
- * 
+ *
  * const instance1 = new openstack.compute.Instance("instance1", {
  *     flavorId: "3",
  *     imageId: "ad091b52-742f-469e-8f3c-fd81cadf0743",
@@ -30,13 +30,13 @@ import * as utilities from "../utilities";
  *     instanceId: instance1.id,
  * });
  * ```
- * 
+ *
  * ### Explicitly set the network to attach to
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
- * 
+ *
  * const instance1 = new openstack.compute.Instance("instance1", {
  *     flavorId: "3",
  *     imageId: "ad091b52-742f-469e-8f3c-fd81cadf0743",
@@ -60,8 +60,6 @@ import * as utilities from "../utilities";
  *     instanceId: instance1.id,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_floatingip_associate_v2.html.markdown.
  */
 export class FloatingIpAssociate extends pulumi.CustomResource {
     /**

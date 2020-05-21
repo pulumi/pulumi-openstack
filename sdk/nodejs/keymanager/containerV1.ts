@@ -8,16 +8,16 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a V1 Barbican container resource within OpenStack.
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ### Simple secret
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fs from "fs";
  * import * as openstack from "@pulumi/openstack";
- * 
+ *
  * const certificate1 = new openstack.keymanager.SecretV1("certificate1", {
  *     payload: fs.readFileSync("cert.pem", "utf-8"),
  *     payloadContentType: "text/plain",
@@ -63,13 +63,13 @@ import * as utilities from "../utilities";
  *     protocolPort: 443,
  * });
  * ```
- * 
+ *
  * ### Container with the ACL
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
- * 
+ *
  * const tls1 = new openstack.keymanager.ContainerV1("tls1", {
  *     acl: {
  *         read: {
@@ -97,8 +97,6 @@ import * as utilities from "../utilities";
  *     type: "certificate",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/keymanager_container_v1.html.markdown.
  */
 export class ContainerV1 extends pulumi.CustomResource {
     /**

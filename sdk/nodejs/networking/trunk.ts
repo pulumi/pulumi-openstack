@@ -8,15 +8,15 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a networking V2 trunk resource within OpenStack.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
- * 
+ *
  * const network1 = new openstack.networking.Network("network1", {
  *     adminStateUp: true,
  * });
@@ -51,8 +51,6 @@ import * as utilities from "../utilities";
  *     securityGroups: ["default"],
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_trunk_v2.html.markdown.
  */
 export class Trunk extends pulumi.CustomResource {
     /**

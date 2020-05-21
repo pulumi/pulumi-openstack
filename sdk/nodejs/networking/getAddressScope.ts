@@ -8,23 +8,21 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to get the ID of an available OpenStack address-scope.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
- * 
+ *
  * const publicAddressscope = pulumi.output(openstack.networking.getAddressScope({
  *     ipVersion: 4,
  *     name: "publicAddressscope",
  *     shared: true,
  * }, { async: true }));
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/d/networking_addressscope_v2.html.markdown.
  */
 export function getAddressScope(args?: GetAddressScopeArgs, opts?: pulumi.InvokeOptions): Promise<GetAddressScopeResult> {
     args = args || {};

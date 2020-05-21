@@ -6,15 +6,15 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a V2 listener resource within OpenStack.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
- * 
+ *
  * const listener1 = new openstack.loadbalancer.Listener("listener1", {
  *     insertHeaders: {
  *         "X-Forwarded-For": "true",
@@ -24,8 +24,6 @@ import * as utilities from "../utilities";
  *     protocolPort: 8080,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_listener_v2.html.markdown.
  */
 export class Listener extends pulumi.CustomResource {
     /**

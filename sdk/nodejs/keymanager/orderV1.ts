@@ -8,15 +8,15 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a V1 Barbican order resource within OpenStack.
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ### Symmetric key order
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
- * 
+ *
  * const order1 = new openstack.keymanager.OrderV1("order1", {
  *     meta: {
  *         algorithm: "aes",
@@ -27,13 +27,13 @@ import * as utilities from "../utilities";
  *     type: "key",
  * });
  * ```
- * 
+ *
  * ### Asymmetric key pair order
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
- * 
+ *
  * const order1 = new openstack.keymanager.OrderV1("order1", {
  *     meta: {
  *         algorithm: "rsa",
@@ -43,8 +43,6 @@ import * as utilities from "../utilities";
  *     type: "asymmetric",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/keymanager_order_v1.html.markdown.
  */
 export class OrderV1 extends pulumi.CustomResource {
     /**

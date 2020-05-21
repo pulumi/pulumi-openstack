@@ -8,21 +8,21 @@ import * as utilities from "../utilities";
 
 /**
  * Use this resource to generate an OpenStack Object Storage temporary URL.
- * 
+ *
  * The temporary URL will be valid for as long as TTL is set to (in seconds).
  * Once the URL has expired, it will no longer be valid, but the resource
  * will remain in place. If you wish to automatically regenerate a URL, set
  * the `regenerate` argument to `true`. This will create a new resource with
  * a new ID and URL.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
- * 
+ *
  * const container1 = new openstack.objectstorage.Container("container1", {
  *     metadata: {
  *         "Temp-URL-Key": "testkey",
@@ -39,8 +39,6 @@ import * as utilities from "../utilities";
  *     ttl: 20,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/objectstorage_tempurl_v1.html.markdown.
  */
 export class TempUrl extends pulumi.CustomResource {
     /**

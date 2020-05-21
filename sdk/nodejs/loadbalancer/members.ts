@@ -8,19 +8,19 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a V2 members resource within OpenStack (batch members update).
- * 
+ *
  * > **Note:** This resource works only within Octavia API. For
  * legacy Neutron LBaaS v2 extension please use
  * openstack.loadbalancer.Member resource.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
- * 
+ *
  * const members1 = new openstack.loadbalancer.Members("members1", {
  *     members: [
  *         {
@@ -35,8 +35,6 @@ import * as utilities from "../utilities";
  *     poolId: "935685fb-a896-40f9-9ff4-ae531a3a00fe",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_members_v2.html.markdown.
  */
 export class Members extends pulumi.CustomResource {
     /**

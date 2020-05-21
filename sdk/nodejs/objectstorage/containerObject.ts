@@ -8,15 +8,15 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a V1 container object resource within OpenStack.
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ### Example with simple content
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
- * 
+ *
  * const container1 = new openstack.objectstorage.Container("container1", {
  *     contentType: "application/json",
  *     metadata: {
@@ -37,13 +37,13 @@ import * as utilities from "../utilities";
  *     region: "RegionOne",
  * });
  * ```
- * 
+ *
  * ### Example with content from file
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
- * 
+ *
  * const container1 = new openstack.objectstorage.Container("container1", {
  *     contentType: "application/json",
  *     metadata: {
@@ -61,8 +61,6 @@ import * as utilities from "../utilities";
  *     source: "./default.json",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/objectstorage_object_v1.html.markdown.
  */
 export class ContainerObject extends pulumi.CustomResource {
     /**

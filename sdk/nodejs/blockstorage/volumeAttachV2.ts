@@ -8,25 +8,25 @@ import * as utilities from "../utilities";
  * This resource is experimental and may be removed in the future! Feedback
  * is requested if you find this resource useful or if you find any problems
  * with it.
- * 
+ *
  * Creates a general purpose attachment connection to a Block
  * Storage volume using the OpenStack Block Storage (Cinder) v2 API.
  * Depending on your Block Storage service configuration, this
  * resource can assist in attaching a volume to a non-OpenStack resource
  * such as a bare-metal server or a remote virtual machine in a
  * different cloud provider.
- * 
+ *
  * This does not actually attach a volume to an instance. Please use
  * the `openstack.compute.VolumeAttach` resource for that.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
- * 
+ *
  * const volume1 = new openstack.blockstorage.VolumeV2("volume1", {
  *     size: 1,
  * });
@@ -40,8 +40,6 @@ import * as utilities from "../utilities";
  *     volumeId: volume1.id,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/blockstorage_volume_attach_v2.html.markdown.
  */
 export class VolumeAttachV2 extends pulumi.CustomResource {
     /**

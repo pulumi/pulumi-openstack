@@ -93,6 +93,8 @@ type Image struct {
 	// At this time, it is not possible to delete all tags of an image.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// (**Deprecated** - use `updatedAt` instead)
+	//
+	// Deprecated: Use updated_at instead
 	UpdateAt pulumi.StringOutput `pulumi:"updateAt"`
 	// The date the image was last updated.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
@@ -206,6 +208,8 @@ type imageState struct {
 	// At this time, it is not possible to delete all tags of an image.
 	Tags []string `pulumi:"tags"`
 	// (**Deprecated** - use `updatedAt` instead)
+	//
+	// Deprecated: Use updated_at instead
 	UpdateAt *string `pulumi:"updateAt"`
 	// The date the image was last updated.
 	UpdatedAt *string `pulumi:"updatedAt"`
@@ -286,6 +290,8 @@ type ImageState struct {
 	// At this time, it is not possible to delete all tags of an image.
 	Tags pulumi.StringArrayInput
 	// (**Deprecated** - use `updatedAt` instead)
+	//
+	// Deprecated: Use updated_at instead
 	UpdateAt pulumi.StringPtrInput
 	// The date the image was last updated.
 	UpdatedAt pulumi.StringPtrInput

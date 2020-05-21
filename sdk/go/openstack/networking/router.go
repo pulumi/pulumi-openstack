@@ -46,6 +46,8 @@ type Router struct {
 	// external gateway is required if any compute instances or load balancers
 	// will be using floating IPs. Changing this updates the external gateway
 	// of an existing router.
+	//
+	// Deprecated: use external_network_id instead
 	ExternalGateway pulumi.StringOutput `pulumi:"externalGateway"`
 	// The network UUID of an external gateway
 	// for the router. A router with an external gateway is required if any
@@ -133,6 +135,8 @@ type routerState struct {
 	// external gateway is required if any compute instances or load balancers
 	// will be using floating IPs. Changing this updates the external gateway
 	// of an existing router.
+	//
+	// Deprecated: use external_network_id instead
 	ExternalGateway *string `pulumi:"externalGateway"`
 	// The network UUID of an external gateway
 	// for the router. A router with an external gateway is required if any
@@ -193,6 +197,8 @@ type RouterState struct {
 	// external gateway is required if any compute instances or load balancers
 	// will be using floating IPs. Changing this updates the external gateway
 	// of an existing router.
+	//
+	// Deprecated: use external_network_id instead
 	ExternalGateway pulumi.StringPtrInput
 	// The network UUID of an external gateway
 	// for the router. A router with an external gateway is required if any
@@ -254,6 +260,8 @@ type routerArgs struct {
 	// external gateway is required if any compute instances or load balancers
 	// will be using floating IPs. Changing this updates the external gateway
 	// of an existing router.
+	//
+	// Deprecated: use external_network_id instead
 	ExternalGateway *string `pulumi:"externalGateway"`
 	// The network UUID of an external gateway
 	// for the router. A router with an external gateway is required if any
@@ -312,6 +320,8 @@ type RouterArgs struct {
 	// external gateway is required if any compute instances or load balancers
 	// will be using floating IPs. Changing this updates the external gateway
 	// of an existing router.
+	//
+	// Deprecated: use external_network_id instead
 	ExternalGateway pulumi.StringPtrInput
 	// The network UUID of an external gateway
 	// for the router. A router with an external gateway is required if any

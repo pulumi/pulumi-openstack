@@ -7,15 +7,15 @@ import * as utilities from "../utilities";
 /**
  * Manages members for the shared OpenStack Glance V2 Image within the source
  * project, which owns the Image.
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ### Unprivileged user
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
- * 
+ *
  * const rancheros = new openstack.images.Image("rancheros", {
  *     containerFormat: "bare",
  *     diskFormat: "qcow2",
@@ -30,13 +30,13 @@ import * as utilities from "../utilities";
  *     memberId: "bed6b6cbb86a4e2d8dc2735c2f1000e4",
  * });
  * ```
- * 
+ *
  * ### Privileged user
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
- * 
+ *
  * const rancheros = new openstack.images.Image("rancheros", {
  *     containerFormat: "bare",
  *     diskFormat: "qcow2",
@@ -52,8 +52,6 @@ import * as utilities from "../utilities";
  *     status: "accepted",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/images_image_access_v2.html.markdown.
  */
 export class ImageAccess extends pulumi.CustomResource {
     /**

@@ -8,15 +8,15 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a V1 DB configuration resource within OpenStack.
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ### Configuration
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
- * 
+ *
  * const test = new openstack.database.Configuration("test", {
  *     configurations: [{
  *         name: "maxConnections",
@@ -29,8 +29,6 @@ import * as utilities from "../utilities";
  *     description: "description",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/db_configuration_v1.html.markdown.
  */
 export class Configuration extends pulumi.CustomResource {
     /**

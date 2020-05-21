@@ -6,23 +6,21 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a V2 member resource within OpenStack.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
- * 
+ *
  * const member1 = new openstack.loadbalancer.Member("member1", {
  *     address: "192.168.199.23",
  *     poolId: "935685fb-a896-40f9-9ff4-ae531a3a00fe",
  *     protocolPort: 8080,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/lb_member_v2.html.markdown.
  */
 export class Member extends pulumi.CustomResource {
     /**

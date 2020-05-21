@@ -9,15 +9,15 @@ import * as utilities from "../utilities";
 /**
  * Attaches a Network Interface (a Port) to an Instance using the OpenStack
  * Compute (Nova) v2 API.
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ### Basic Attachment
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
- * 
+ *
  * const network1 = new openstack.networking.Network("network1", {
  *     adminStateUp: true,
  * });
@@ -29,13 +29,13 @@ import * as utilities from "../utilities";
  *     networkId: openstack_networking_port_v2_network_1.id,
  * });
  * ```
- * 
+ *
  * ### Attachment Specifying a Fixed IP
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
- * 
+ *
  * const network1 = new openstack.networking.Network("network1", {
  *     adminStateUp: true,
  * });
@@ -48,13 +48,13 @@ import * as utilities from "../utilities";
  *     networkId: openstack_networking_port_v2_network_1.id,
  * });
  * ```
- * 
+ *
  * ### Attachment Using an Existing Port
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
- * 
+ *
  * const network1 = new openstack.networking.Network("network1", {
  *     adminStateUp: true,
  * });
@@ -70,13 +70,13 @@ import * as utilities from "../utilities";
  *     portId: port1.id,
  * });
  * ```
- * 
+ *
  * ### Attaching Multiple Interfaces
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
- * 
+ *
  * const network1 = new openstack.networking.Network("network1", {
  *     adminStateUp: true,
  * });
@@ -98,8 +98,6 @@ import * as utilities from "../utilities";
  *     }));
  * }
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_interface_attach_v2.html.markdown.
  */
 export class InterfaceAttach extends pulumi.CustomResource {
     /**

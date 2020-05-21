@@ -8,15 +8,15 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a V1 Magnum cluster resource within OpenStack.
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ### Create a Cluster
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
- * 
+ *
  * const cluster1 = new openstack.containerinfra.Cluster("cluster1", {
  *     clusterTemplateId: "b9a45c5c-cd03-4958-82aa-b80bf93cb922",
  *     keypair: "sshKeypair",
@@ -24,69 +24,69 @@ import * as utilities from "../utilities";
  *     nodeCount: 5,
  * });
  * ```
- * 
+ *
  * ## Argument reference
- * 
+ *
  * The following arguments are supported:
- * 
+ *
  * * `region` - (Optional) The region in which to obtain the V1 Container Infra
  *     client. A Container Infra client is needed to create a cluster. If omitted,
  *     the `region` argument of the provider is used. Changing this creates a new
  *     cluster.
- * 
+ *
  * * `name` - (Required) The name of the cluster. Changing this updates the name
  *     of the existing cluster template.
- * 
+ *
  * * `projectId` - (Optional) The project of the cluster. Required if admin wants
  *     to create a cluster in another project. Changing this creates a new
  *     cluster.
- * 
+ *
  * * `userId` - (Optional) The user of the cluster. Required if admin wants to
  *     create a cluster template for another user. Changing this creates a new
  *     cluster.
- * 
+ *
  * * `clusterTemplateId` - (Required) The UUID of the V1 Container Infra cluster
  *     template. Changing this creates a new cluster.
- * 
+ *
  * * `createTimeout` - (Optional) The timeout (in minutes) for creating the
  *     cluster. Changing this creates a new cluster.
- * 
+ *
  * * `discoveryUrl` - (Optional) The URL used for cluster node discovery.
  *     Changing this creates a new cluster.
- * 
+ *
  * * `dockerVolumeSize` - (Optional) The size (in GB) of the Docker volume.
  *     Changing this creates a new cluster.
- * 
+ *
  * * `flavor` - (Optional) The flavor for the nodes of the cluster. Can be set via
  *     the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
  *     cluster.
- * 
+ *
  * * `masterFlavor` - (Optional) The flavor for the master nodes. Can be set via
  *     the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this creates a
  *     new cluster.
- * 
+ *
  * * `keypair` - (Optional) The name of the Compute service SSH keypair. Changing
  *     this creates a new cluster.
- * 
+ *
  * * `labels` - (Optional) The list of key value pairs representing additional
  *     properties of the cluster. Changing this creates a new cluster.
- * 
+ *
  * * `masterCount` - (Optional) The number of master nodes for the cluster.
  *     Changing this creates a new cluster.
- * 
+ *
  * * `nodeCount` - (Optional) The number of nodes for the cluster. Changing this
  *     creates a new cluster.
  *     
  * * `fixedNetwork` - (Optional) The fixed network that will be attached to the
  *     cluster. Changing this creates a new cluster.
- * 
+ *
  * * `fixedSubnet` - (Optional) The fixed subnet that will be attached to the
  *     cluster. Changing this creates a new cluster.
- * 
+ *
  * ## Attributes reference
- * 
+ *
  * The following attributes are exported:
- * 
+ *
  * * `region` - See Argument Reference above.
  * * `name` - See Argument Reference above.
  * * `projectId` - See Argument Reference above.
@@ -116,8 +116,6 @@ import * as utilities from "../utilities";
  *   * `clusterCaCertificate` - The cluster's CA certificate
  *   * `clientKey` - The client's RSA key
  *   * `clientCertificate` - The client's certificate
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/containerinfra_cluster_v1.html.markdown.
  */
 export class Cluster extends pulumi.CustomResource {
     /**

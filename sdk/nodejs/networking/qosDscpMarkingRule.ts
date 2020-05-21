@@ -8,15 +8,15 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a V2 Neutron QoS DSCP marking rule resource within OpenStack.
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ### Create a QoS Policy with some DSCP marking rule
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
- * 
+ *
  * const qosPolicy1 = new openstack.networking.QosPolicy("qosPolicy1", {
  *     description: "dscpMark",
  * });
@@ -25,8 +25,6 @@ import * as utilities from "../utilities";
  *     qosPolicyId: qosPolicy1.id,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_qos_dscp_marking_rule_v2.html.markdown.
  */
 export class QosDscpMarkingRule extends pulumi.CustomResource {
     /**

@@ -10,25 +10,25 @@ import * as utilities from "../utilities";
  * The RBAC policy resource contains functionality for working with Neutron RBAC
  * Policies. Role-Based Access Control (RBAC) policy framework enables both
  * operators and users to grant access to resources for specific projects.
- * 
+ *
  * Sharing an object with a specific project is accomplished by creating a
  * policy entry that permits the target project the `accessAsShared` action
  * on that object.
- * 
+ *
  * To make a network available as an external network for specific projects
  * rather than all projects, use the `accessAsExternal` action.
  * If a network is marked as external during creation, it now implicitly creates
  * a wildcard RBAC policy granting everyone access to preserve previous behavior
  * before this feature was added.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
- * 
+ *
  * const network1 = new openstack.networking.Network("network1", {
  *     adminStateUp: true,
  * });
@@ -39,8 +39,6 @@ import * as utilities from "../utilities";
  *     targetTenant: "20415a973c9e45d3917f078950644697",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_rbac_policy_v2.html.markdown.
  */
 export class RbacPolicyV2 extends pulumi.CustomResource {
     /**

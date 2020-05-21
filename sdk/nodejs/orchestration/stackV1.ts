@@ -8,15 +8,15 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a V1 stack resource within OpenStack.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
- * 
+ *
  * const stack1 = new openstack.orchestration.StackV1("stack1", {
  *     disableRollback: true,
  *     environmentOpts: {
@@ -42,8 +42,6 @@ import * as utilities from "../utilities";
  *     timeout: 30,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/orchestration_stack_v1.html.markdown.
  */
 export class StackV1 extends pulumi.CustomResource {
     /**

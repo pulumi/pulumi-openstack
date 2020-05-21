@@ -6,20 +6,20 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a project access for flavor V2 resource within OpenStack.
- * 
+ *
  * Note: You _must_ have admin privileges in your OpenStack cloud to use
  * this resource.
- * 
+ *
  * ---
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
- * 
+ *
  * const project1 = new openstack.identity.Project("project1", {});
  * const flavor1 = new openstack.compute.Flavor("flavor1", {
  *     disk: 20,
@@ -32,8 +32,6 @@ import * as utilities from "../utilities";
  *     tenantId: project1.id,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/compute_flavor_access_v2.html.markdown.
  */
 export class FlavorAccess extends pulumi.CustomResource {
     /**

@@ -6,26 +6,26 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a V2 Neutron addressscope resource within OpenStack.
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ### Create an Address-scope
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
- * 
+ *
  * const addressscope1 = new openstack.networking.AddressScope("addressscope1", {
  *     ipVersion: 6,
  * });
  * ```
- * 
+ *
  * ### Create a Subnet Pool from an Address-scope
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
- * 
+ *
  * const addressscope1 = new openstack.networking.AddressScope("addressscope1", {
  *     ipVersion: 6,
  * });
@@ -37,8 +37,6 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-openstack/blob/master/website/docs/r/networking_addressscope_v2.html.markdown.
  */
 export class AddressScope extends pulumi.CustomResource {
     /**
