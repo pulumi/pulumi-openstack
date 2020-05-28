@@ -12,6 +12,44 @@ namespace Pulumi.OpenStack.ContainerInfra
     /// <summary>
     /// Manages a V1 Magnum cluster template resource within OpenStack.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ### Create a Cluster template
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var clustertemplate1 = new OpenStack.ContainerInfra.ClusterTemplate("clustertemplate1", new OpenStack.ContainerInfra.ClusterTemplateArgs
+    ///         {
+    ///             Coe = "kubernetes",
+    ///             DnsNameserver = "1.1.1.1",
+    ///             DockerStorageDriver = "devicemapper",
+    ///             DockerVolumeSize = 10,
+    ///             Flavor = "m1.small",
+    ///             FloatingIpEnabled = false,
+    ///             Image = "Fedora-Atomic-27",
+    ///             Labels = 
+    ///             {
+    ///                 { "influx_grafana_dashboard_enabled", "true" },
+    ///                 { "kube_dashboard_enabled", "true" },
+    ///                 { "kube_tag", "1.11.1" },
+    ///                 { "prometheus_monitoring", "true" },
+    ///             },
+    ///             MasterFlavor = "m1.medium",
+    ///             MasterLbEnabled = true,
+    ///             NetworkDriver = "flannel",
+    ///             ServerType = "vm",
+    ///             VolumeDriver = "cinder",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Argument reference
     /// 

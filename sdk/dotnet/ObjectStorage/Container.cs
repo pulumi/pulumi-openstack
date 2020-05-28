@@ -11,6 +11,102 @@ namespace Pulumi.OpenStack.ObjectStorage
 {
     /// <summary>
     /// Manages a V1 container resource within OpenStack.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ### Basic Container
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var container1 = new OpenStack.ObjectStorage.Container("container1", new OpenStack.ObjectStorage.ContainerArgs
+    ///         {
+    ///             ContentType = "application/json",
+    ///             Metadata = 
+    ///             {
+    ///                 { "test", "true" },
+    ///             },
+    ///             Region = "RegionOne",
+    ///             Versioning = new OpenStack.ObjectStorage.Inputs.ContainerVersioningArgs
+    ///             {
+    ///                 Location = "tf-test-container-versions",
+    ///                 Type = "versions",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ### Global Read Access
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var container1 = new OpenStack.ObjectStorage.Container("container1", new OpenStack.ObjectStorage.ContainerArgs
+    ///         {
+    ///             ContainerRead = ".r:*",
+    ///             Region = "RegionOne",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ### Global Read and List Access
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var container1 = new OpenStack.ObjectStorage.Container("container1", new OpenStack.ObjectStorage.ContainerArgs
+    ///         {
+    ///             ContainerRead = ".r:*,.rlistings",
+    ///             Region = "RegionOne",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ### Write-Only Access for a User
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var current = Output.Create(OpenStack.Identity.GetAuthScope.InvokeAsync(new OpenStack.Identity.GetAuthScopeArgs
+    ///         {
+    ///             Name = "current",
+    ///         }));
+    ///         var container1 = new OpenStack.ObjectStorage.Container("container1", new OpenStack.ObjectStorage.ContainerArgs
+    ///         {
+    ///             ContainerRead = $".r:-{@var.Username}",
+    ///             ContainerWrite = current.Apply(current =&gt; $"{current.ProjectId}:{@var.Username}"),
+    ///             Region = "RegionOne",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Container : Pulumi.CustomResource
     {

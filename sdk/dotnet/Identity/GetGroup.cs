@@ -17,6 +17,27 @@ namespace Pulumi.OpenStack.Identity
         /// Note: This usually requires admin privileges.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var admins = Output.Create(OpenStack.Identity.GetGroup.InvokeAsync(new OpenStack.Identity.GetGroupArgs
+        ///         {
+        ///             Name = "admins",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetGroupResult> InvokeAsync(GetGroupArgs args, InvokeOptions? options = null)

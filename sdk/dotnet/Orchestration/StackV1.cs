@@ -11,6 +11,54 @@ namespace Pulumi.OpenStack.Orchestration
 {
     /// <summary>
     /// Manages a V1 stack resource within OpenStack.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var stack1 = new OpenStack.Orchestration.StackV1("stack1", new OpenStack.Orchestration.StackV1Args
+    ///         {
+    ///             DisableRollback = true,
+    ///             EnvironmentOpts = 
+    ///             {
+    ///                 { "Bin", @"
+    /// 
+    /// " },
+    ///             },
+    ///             Parameters = 
+    ///             {
+    ///                 { "length", 4 },
+    ///             },
+    ///             TemplateOpts = 
+    ///             {
+    ///                 { "Bin", @"heat_template_version: 2013-05-23
+    /// parameters:
+    ///   length:
+    ///     type: number
+    /// resources:
+    ///   test_res:
+    ///     type: OS::Heat::TestResource
+    ///   random:
+    ///     type: OS::Heat::RandomString
+    ///     properties:
+    ///       length: {get_param: length}
+    /// 
+    /// " },
+    ///             },
+    ///             Timeout = 30,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class StackV1 : Pulumi.CustomResource
     {

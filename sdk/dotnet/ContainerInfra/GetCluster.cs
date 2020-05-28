@@ -15,6 +15,27 @@ namespace Pulumi.OpenStack.ContainerInfra
         /// Use this data source to get the ID of an available OpenStack Magnum cluster.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var cluster1 = Output.Create(OpenStack.ContainerInfra.GetCluster.InvokeAsync(new OpenStack.ContainerInfra.GetClusterArgs
+        ///         {
+        ///             Name = "cluster_1",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetClusterResult> InvokeAsync(GetClusterArgs args, InvokeOptions? options = null)

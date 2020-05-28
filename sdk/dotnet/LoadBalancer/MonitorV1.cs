@@ -11,6 +11,31 @@ namespace Pulumi.OpenStack.LoadBalancer
 {
     /// <summary>
     /// Manages a V1 load balancer monitor resource within OpenStack.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var monitor1 = new OpenStack.LoadBalancer.MonitorV1("monitor1", new OpenStack.LoadBalancer.MonitorV1Args
+    ///         {
+    ///             AdminStateUp = "true",
+    ///             Delay = 30,
+    ///             MaxRetries = 3,
+    ///             Timeout = 5,
+    ///             Type = "PING",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class MonitorV1 : Pulumi.CustomResource
     {

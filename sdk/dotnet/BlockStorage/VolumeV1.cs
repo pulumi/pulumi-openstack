@@ -11,6 +11,29 @@ namespace Pulumi.OpenStack.BlockStorage
 {
     /// <summary>
     /// Manages a V1 volume resource within OpenStack.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var volume1 = new OpenStack.BlockStorage.VolumeV1("volume1", new OpenStack.BlockStorage.VolumeV1Args
+    ///         {
+    ///             Description = "first test volume",
+    ///             Region = "RegionOne",
+    ///             Size = 3,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class VolumeV1 : Pulumi.CustomResource
     {

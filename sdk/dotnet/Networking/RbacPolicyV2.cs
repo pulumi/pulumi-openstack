@@ -23,6 +23,34 @@ namespace Pulumi.OpenStack.Networking
     /// If a network is marked as external during creation, it now implicitly creates
     /// a wildcard RBAC policy granting everyone access to preserve previous behavior
     /// before this feature was added.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var network1 = new OpenStack.Networking.Network("network1", new OpenStack.Networking.NetworkArgs
+    ///         {
+    ///             AdminStateUp = "true",
+    ///         });
+    ///         var rbacPolicy1 = new OpenStack.Networking.RbacPolicyV2("rbacPolicy1", new OpenStack.Networking.RbacPolicyV2Args
+    ///         {
+    ///             Action = "access_as_shared",
+    ///             ObjectId = network1.Id,
+    ///             ObjectType = "network",
+    ///             TargetTenant = "20415a973c9e45d3917f078950644697",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class RbacPolicyV2 : Pulumi.CustomResource
     {

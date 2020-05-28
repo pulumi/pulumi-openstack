@@ -13,6 +13,33 @@ namespace Pulumi.OpenStack.Identity
     /// Manages a V3 Endpoint resource within OpenStack Keystone.
     /// 
     /// &gt; **Note:** This usually requires admin privileges.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var service1 = new OpenStack.Identity.ServiceV3("service1", new OpenStack.Identity.ServiceV3Args
+    ///         {
+    ///             Type = "my-service-type",
+    ///         });
+    ///         var endpoint1 = new OpenStack.Identity.EndpointV3("endpoint1", new OpenStack.Identity.EndpointV3Args
+    ///         {
+    ///             EndpointRegion = service1.Region,
+    ///             ServiceId = service1.Id,
+    ///             Url = "http://my-endpoint",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class EndpointV3 : Pulumi.CustomResource
     {

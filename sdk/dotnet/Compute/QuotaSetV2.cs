@@ -16,6 +16,36 @@ namespace Pulumi.OpenStack.Compute
     /// 
     /// &gt; **Note:** This resource has a no-op deletion so no actual actions will be done against the OpenStack API 
     ///     in case of delete call.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var project1 = new OpenStack.Identity.Project("project1", new OpenStack.Identity.ProjectArgs
+    ///         {
+    ///         });
+    ///         var quotaset1 = new OpenStack.Compute.QuotaSetV2("quotaset1", new OpenStack.Compute.QuotaSetV2Args
+    ///         {
+    ///             ProjectId = project1.Id,
+    ///             KeyPairs = 10,
+    ///             Ram = 40960,
+    ///             Cores = 32,
+    ///             Instances = 20,
+    ///             ServerGroups = 4,
+    ///             ServerGroupMembers = 8,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class QuotaSetV2 : Pulumi.CustomResource
     {

@@ -11,6 +11,31 @@ namespace Pulumi.OpenStack.Firewall
 {
     /// <summary>
     /// Manages a v1 firewall rule resource within OpenStack.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var rule1 = new OpenStack.Firewall.Rule("rule1", new OpenStack.Firewall.RuleArgs
+    ///         {
+    ///             Action = "deny",
+    ///             Description = "drop TELNET traffic",
+    ///             DestinationPort = "23",
+    ///             Enabled = "true",
+    ///             Protocol = "tcp",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Rule : Pulumi.CustomResource
     {

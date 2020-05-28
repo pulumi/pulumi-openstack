@@ -11,6 +11,41 @@ namespace Pulumi.OpenStack.Dns
 {
     /// <summary>
     /// Manages a DNS record set in the OpenStack DNS Service.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ### Automatically detect the correct network
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var exampleZone = new OpenStack.Dns.Zone("exampleZone", new OpenStack.Dns.ZoneArgs
+    ///         {
+    ///             Description = "a zone",
+    ///             Email = "email2@example.com",
+    ///             Ttl = 6000,
+    ///             Type = "PRIMARY",
+    ///         });
+    ///         var rsExampleCom = new OpenStack.Dns.RecordSet("rsExampleCom", new OpenStack.Dns.RecordSetArgs
+    ///         {
+    ///             Description = "An example record set",
+    ///             Records = 
+    ///             {
+    ///                 "10.0.0.1",
+    ///             },
+    ///             Ttl = 3000,
+    ///             Type = "A",
+    ///             ZoneId = exampleZone.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class RecordSet : Pulumi.CustomResource
     {

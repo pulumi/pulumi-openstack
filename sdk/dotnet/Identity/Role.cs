@@ -14,6 +14,26 @@ namespace Pulumi.OpenStack.Identity
     /// 
     /// Note: You _must_ have admin privileges in your OpenStack cloud to use
     /// this resource.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var role1 = new OpenStack.Identity.Role("role1", new OpenStack.Identity.RoleArgs
+    ///         {
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Role : Pulumi.CustomResource
     {

@@ -17,6 +17,27 @@ namespace Pulumi.OpenStack.Compute
     /// been deprecated. Unless you are using an older OpenStack environment, it is
     /// recommended to use the `openstack.networking.FloatingIp`
     /// resource instead, which uses the OpenStack Networking API.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var floatip1 = new OpenStack.Compute.FloatingIp("floatip1", new OpenStack.Compute.FloatingIpArgs
+    ///         {
+    ///             Pool = "public",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class FloatingIp : Pulumi.CustomResource
     {

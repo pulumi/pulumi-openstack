@@ -15,6 +15,27 @@ namespace Pulumi.OpenStack.Networking
         /// Use this data source to get the ID of an available OpenStack security group.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var secgroup = Output.Create(OpenStack.Networking.GetSecGroup.InvokeAsync(new OpenStack.Networking.GetSecGroupArgs
+        ///         {
+        ///             Name = "tf_test_secgroup",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSecGroupResult> InvokeAsync(GetSecGroupArgs? args = null, InvokeOptions? options = null)

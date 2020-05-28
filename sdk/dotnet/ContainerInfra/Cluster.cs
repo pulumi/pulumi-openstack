@@ -12,6 +12,29 @@ namespace Pulumi.OpenStack.ContainerInfra
     /// <summary>
     /// Manages a V1 Magnum cluster resource within OpenStack.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ### Create a Cluster
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var cluster1 = new OpenStack.ContainerInfra.Cluster("cluster1", new OpenStack.ContainerInfra.ClusterArgs
+    ///         {
+    ///             ClusterTemplateId = "b9a45c5c-cd03-4958-82aa-b80bf93cb922",
+    ///             Keypair = "ssh_keypair",
+    ///             MasterCount = 3,
+    ///             NodeCount = 5,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Argument reference
     /// 

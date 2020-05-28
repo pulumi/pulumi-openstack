@@ -11,6 +11,34 @@ namespace Pulumi.OpenStack.LoadBalancer
 {
     /// <summary>
     /// Manages a V2 pool resource within OpenStack.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var pool1 = new OpenStack.LoadBalancer.Pool("pool1", new OpenStack.LoadBalancer.PoolArgs
+    ///         {
+    ///             LbMethod = "ROUND_ROBIN",
+    ///             ListenerId = "d9415786-5f1a-428b-b35f-2f1523e146d2",
+    ///             Persistence = new OpenStack.LoadBalancer.Inputs.PoolPersistenceArgs
+    ///             {
+    ///                 CookieName = "testCookie",
+    ///                 Type = "APP_COOKIE",
+    ///             },
+    ///             Protocol = "HTTP",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Pool : Pulumi.CustomResource
     {

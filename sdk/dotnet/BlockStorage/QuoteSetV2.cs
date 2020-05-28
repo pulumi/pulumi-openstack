@@ -16,6 +16,37 @@ namespace Pulumi.OpenStack.BlockStorage
     /// 
     /// &gt; **Note:** This resource has a no-op deletion so no actual actions will be done against the OpenStack API 
     ///     in case of delete call.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var project1 = new OpenStack.Identity.Project("project1", new OpenStack.Identity.ProjectArgs
+    ///         {
+    ///         });
+    ///         var quotaset1 = new OpenStack.BlockStorage.QuoteSetV2("quotaset1", new OpenStack.BlockStorage.QuoteSetV2Args
+    ///         {
+    ///             ProjectId = project1.Id,
+    ///             Volumes = 10,
+    ///             Snapshots = 4,
+    ///             Gigabytes = 100,
+    ///             PerVolumeGigabytes = 10,
+    ///             Backups = 4,
+    ///             BackupGigabytes = 10,
+    ///             Groups = 100,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class QuoteSetV2 : Pulumi.CustomResource
     {

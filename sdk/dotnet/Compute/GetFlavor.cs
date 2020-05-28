@@ -15,6 +15,28 @@ namespace Pulumi.OpenStack.Compute
         /// Use this data source to get the ID of an available OpenStack flavor.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var small = Output.Create(OpenStack.Compute.GetFlavor.InvokeAsync(new OpenStack.Compute.GetFlavorArgs
+        ///         {
+        ///             Ram = 512,
+        ///             Vcpus = 1,
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetFlavorResult> InvokeAsync(GetFlavorArgs? args = null, InvokeOptions? options = null)

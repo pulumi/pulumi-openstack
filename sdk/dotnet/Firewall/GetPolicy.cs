@@ -15,6 +15,27 @@ namespace Pulumi.OpenStack.Firewall
         /// Use this data source to get firewall policy information of an available OpenStack firewall policy.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var policy = Output.Create(OpenStack.Firewall.GetPolicy.InvokeAsync(new OpenStack.Firewall.GetPolicyArgs
+        ///         {
+        ///             Name = "tf_test_policy",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetPolicyResult> InvokeAsync(GetPolicyArgs? args = null, InvokeOptions? options = null)

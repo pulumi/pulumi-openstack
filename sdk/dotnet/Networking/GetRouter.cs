@@ -15,6 +15,27 @@ namespace Pulumi.OpenStack.Networking
         /// Use this data source to get the ID of an available OpenStack router.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var router = Output.Create(OpenStack.Networking.GetRouter.InvokeAsync(new OpenStack.Networking.GetRouterArgs
+        ///         {
+        ///             Name = "router_1",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetRouterResult> InvokeAsync(GetRouterArgs? args = null, InvokeOptions? options = null)

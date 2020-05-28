@@ -15,6 +15,27 @@ namespace Pulumi.OpenStack.Networking
         /// Use this data source to get the ID of an available OpenStack floating IP.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var floatingip1 = Output.Create(OpenStack.Networking.GetFloatingIp.InvokeAsync(new OpenStack.Networking.GetFloatingIpArgs
+        ///         {
+        ///             Address = "192.168.0.4",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetFloatingIpResult> InvokeAsync(GetFloatingIpArgs? args = null, InvokeOptions? options = null)

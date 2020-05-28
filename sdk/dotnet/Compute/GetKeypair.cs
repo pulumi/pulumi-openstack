@@ -15,6 +15,27 @@ namespace Pulumi.OpenStack.Compute
         /// Use this data source to get the ID and public key of an OpenStack keypair.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var kp = Output.Create(OpenStack.Compute.GetKeypair.InvokeAsync(new OpenStack.Compute.GetKeypairArgs
+        ///         {
+        ///             Name = "sand",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetKeypairResult> InvokeAsync(GetKeypairArgs args, InvokeOptions? options = null)

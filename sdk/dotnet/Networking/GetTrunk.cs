@@ -15,6 +15,27 @@ namespace Pulumi.OpenStack.Networking
         /// Use this data source to get the ID of an available OpenStack trunk.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var trunk1 = Output.Create(OpenStack.Networking.GetTrunk.InvokeAsync(new OpenStack.Networking.GetTrunkArgs
+        ///         {
+        ///             Name = "trunk_1",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetTrunkResult> InvokeAsync(GetTrunkArgs? args = null, InvokeOptions? options = null)

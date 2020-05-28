@@ -15,6 +15,27 @@ namespace Pulumi.OpenStack.BlockStorage
         /// Use this data source to get information about an existing volume.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var volume1 = Output.Create(OpenStack.BlockStorage.GetVolumeV3.InvokeAsync(new OpenStack.BlockStorage.GetVolumeV3Args
+        ///         {
+        ///             Name = "volume_1",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetVolumeV3Result> InvokeAsync(GetVolumeV3Args? args = null, InvokeOptions? options = null)

@@ -15,6 +15,29 @@ namespace Pulumi.OpenStack.Networking
         /// Use this data source to get the ID of an available OpenStack address-scope.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var publicAddressscope = Output.Create(OpenStack.Networking.GetAddressScope.InvokeAsync(new OpenStack.Networking.GetAddressScopeArgs
+        ///         {
+        ///             IpVersion = 4,
+        ///             Name = "public_addressscope",
+        ///             Shared = true,
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAddressScopeResult> InvokeAsync(GetAddressScopeArgs? args = null, InvokeOptions? options = null)

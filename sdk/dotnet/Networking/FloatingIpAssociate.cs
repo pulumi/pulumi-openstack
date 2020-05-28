@@ -13,6 +13,32 @@ namespace Pulumi.OpenStack.Networking
     /// Associates a floating IP to a port. This is useful for situations
     /// where you have a pre-allocated floating IP or are unable to use the
     /// `openstack.networking.FloatingIp` resource to create a floating IP.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var port1 = new OpenStack.Networking.Port("port1", new OpenStack.Networking.PortArgs
+    ///         {
+    ///             NetworkId = "a5bbd213-e1d3-49b6-aed1-9df60ea94b9a",
+    ///         });
+    ///         var fip1 = new OpenStack.Networking.FloatingIpAssociate("fip1", new OpenStack.Networking.FloatingIpAssociateArgs
+    ///         {
+    ///             FloatingIp = "1.2.3.4",
+    ///             PortId = port1.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class FloatingIpAssociate : Pulumi.CustomResource
     {

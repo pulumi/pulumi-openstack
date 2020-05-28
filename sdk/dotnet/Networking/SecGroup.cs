@@ -9,11 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.OpenStack.Networking
 {
-    /// <summary>
-    /// Manages a V2 neutron security group resource within OpenStack.
-    /// Unlike Nova security groups, neutron separates the group from the rules
-    /// and also allows an admin to target a specific tenant_id.
-    /// </summary>
     public partial class SecGroup : Pulumi.CustomResource
     {
         /// <summary>

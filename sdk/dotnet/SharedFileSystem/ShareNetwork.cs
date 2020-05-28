@@ -9,12 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.OpenStack.SharedFileSystem
 {
-    /// <summary>
-    /// Use this resource to configure a share network.
-    /// 
-    /// A share network stores network information that share servers can use when
-    /// shares are created.
-    /// </summary>
     public partial class ShareNetwork : Pulumi.CustomResource
     {
         /// <summary>

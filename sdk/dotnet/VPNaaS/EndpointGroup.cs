@@ -11,6 +11,32 @@ namespace Pulumi.OpenStack.VPNaaS
 {
     /// <summary>
     /// Manages a V2 Neutron Endpoint Group resource within OpenStack.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var group1 = new OpenStack.VPNaaS.EndpointGroup("group1", new OpenStack.VPNaaS.EndpointGroupArgs
+    ///         {
+    ///             Endpoints = 
+    ///             {
+    ///                 "10.2.0.0/24",
+    ///                 "10.3.0.0/24",
+    ///             },
+    ///             Type = "cidr",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class EndpointGroup : Pulumi.CustomResource
     {

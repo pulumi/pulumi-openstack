@@ -83,7 +83,7 @@ class OrderV1(pulumi.CustomResource):
         order1 = openstack.keymanager.OrderV1("order1",
             meta={
                 "algorithm": "aes",
-                "bitLength": 256,
+                "bit_length": 256,
                 "mode": "cbc",
                 "name": "mysecret",
             },
@@ -99,7 +99,7 @@ class OrderV1(pulumi.CustomResource):
         order1 = openstack.keymanager.OrderV1("order1",
             meta={
                 "algorithm": "rsa",
-                "bitLength": 4096,
+                "bit_length": 4096,
                 "name": "mysecret",
             },
             type="asymmetric")
