@@ -11,6 +11,42 @@ namespace Pulumi.OpenStack.Networking
 {
     /// <summary>
     /// Manages a V2 router interface resource within OpenStack.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var network1 = new OpenStack.Networking.Network("network1", new OpenStack.Networking.NetworkArgs
+    ///         {
+    ///             AdminStateUp = "true",
+    ///         });
+    ///         var subnet1 = new OpenStack.Networking.Subnet("subnet1", new OpenStack.Networking.SubnetArgs
+    ///         {
+    ///             Cidr = "192.168.199.0/24",
+    ///             IpVersion = 4,
+    ///             NetworkId = network1.Id,
+    ///         });
+    ///         var router1 = new OpenStack.Networking.Router("router1", new OpenStack.Networking.RouterArgs
+    ///         {
+    ///             ExternalNetworkId = "f67f0d72-0ddf-11e4-9d95-e1f29f417e2f",
+    ///         });
+    ///         var routerInterface1 = new OpenStack.Networking.RouterInterface("routerInterface1", new OpenStack.Networking.RouterInterfaceArgs
+    ///         {
+    ///             RouterId = router1.Id,
+    ///             SubnetId = subnet1.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class RouterInterface : Pulumi.CustomResource
     {

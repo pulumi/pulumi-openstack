@@ -12,6 +12,85 @@ namespace Pulumi.OpenStack.Compute
     /// <summary>
     /// Attaches a Block Storage Volume to an Instance using the OpenStack
     /// Compute (Nova) v2 API.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ### Basic attachment of a single volume to a single instance
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var volume1 = new OpenStack.BlockStorage.VolumeV2("volume1", new OpenStack.BlockStorage.VolumeV2Args
+    ///         {
+    ///             Size = 1,
+    ///         });
+    ///         var instance1 = new OpenStack.Compute.Instance("instance1", new OpenStack.Compute.InstanceArgs
+    ///         {
+    ///             SecurityGroups = 
+    ///             {
+    ///                 "default",
+    ///             },
+    ///         });
+    ///         var va1 = new OpenStack.Compute.VolumeAttach("va1", new OpenStack.Compute.VolumeAttachArgs
+    ///         {
+    ///             InstanceId = instance1.Id,
+    ///             VolumeId = volume1.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ### Using Multiattach-enabled volumes
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var volume1 = new OpenStack.BlockStorage.Volume("volume1", new OpenStack.BlockStorage.VolumeArgs
+    ///         {
+    ///             Multiattach = true,
+    ///             Size = 1,
+    ///         });
+    ///         var instance1 = new OpenStack.Compute.Instance("instance1", new OpenStack.Compute.InstanceArgs
+    ///         {
+    ///             SecurityGroups = 
+    ///             {
+    ///                 "default",
+    ///             },
+    ///         });
+    ///         var instance2 = new OpenStack.Compute.Instance("instance2", new OpenStack.Compute.InstanceArgs
+    ///         {
+    ///             SecurityGroups = 
+    ///             {
+    ///                 "default",
+    ///             },
+    ///         });
+    ///         var va1 = new OpenStack.Compute.VolumeAttach("va1", new OpenStack.Compute.VolumeAttachArgs
+    ///         {
+    ///             InstanceId = instance1.Id,
+    ///             Multiattach = true,
+    ///             VolumeId = openstack_blockstorage_volume_v2.Volume_1.Id,
+    ///         });
+    ///         var va2 = new OpenStack.Compute.VolumeAttach("va2", new OpenStack.Compute.VolumeAttachArgs
+    ///         {
+    ///             InstanceId = instance2.Id,
+    ///             Multiattach = true,
+    ///             VolumeId = openstack_blockstorage_volume_v2.Volume_1.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class VolumeAttach : Pulumi.CustomResource
     {

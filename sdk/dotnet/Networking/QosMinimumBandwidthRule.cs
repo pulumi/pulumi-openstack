@@ -11,6 +11,32 @@ namespace Pulumi.OpenStack.Networking
 {
     /// <summary>
     /// Manages a V2 Neutron QoS minimum bandwidth rule resource within OpenStack.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ### Create a QoS Policy with some minimum bandwidth rule
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var qosPolicy1 = new OpenStack.Networking.QosPolicy("qosPolicy1", new OpenStack.Networking.QosPolicyArgs
+    ///         {
+    ///             Description = "min_kbps",
+    ///         });
+    ///         var minimumBandwidthRule1 = new OpenStack.Networking.QosMinimumBandwidthRule("minimumBandwidthRule1", new OpenStack.Networking.QosMinimumBandwidthRuleArgs
+    ///         {
+    ///             MinKbps = 200,
+    ///             QosPolicyId = qosPolicy1.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class QosMinimumBandwidthRule : Pulumi.CustomResource
     {

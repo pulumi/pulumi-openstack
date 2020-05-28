@@ -17,6 +17,42 @@ namespace Pulumi.OpenStack.ObjectStorage
     /// will remain in place. If you wish to automatically regenerate a URL, set
     /// the `regenerate` argument to `true`. This will create a new resource with
     /// a new ID and URL.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var container1 = new OpenStack.ObjectStorage.Container("container1", new OpenStack.ObjectStorage.ContainerArgs
+    ///         {
+    ///             Metadata = 
+    ///             {
+    ///                 { "Temp-URL-Key", "testkey" },
+    ///             },
+    ///         });
+    ///         var object1 = new OpenStack.ObjectStorage.ContainerObject("object1", new OpenStack.ObjectStorage.ContainerObjectArgs
+    ///         {
+    ///             ContainerName = container1.Name,
+    ///             Content = "Hello, world!",
+    ///         });
+    ///         var objTempurl = new OpenStack.ObjectStorage.TempUrl("objTempurl", new OpenStack.ObjectStorage.TempUrlArgs
+    ///         {
+    ///             Container = container1.Name,
+    ///             Method = "post",
+    ///             Object = object1.Name,
+    ///             Ttl = 20,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class TempUrl : Pulumi.CustomResource
     {

@@ -11,6 +11,57 @@ namespace Pulumi.OpenStack.LoadBalancer
 {
     /// <summary>
     /// Manages a Load Balancer L7 Policy resource within OpenStack.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var network1 = new OpenStack.Networking.Network("network1", new OpenStack.Networking.NetworkArgs
+    ///         {
+    ///             AdminStateUp = "true",
+    ///         });
+    ///         var subnet1 = new OpenStack.Networking.Subnet("subnet1", new OpenStack.Networking.SubnetArgs
+    ///         {
+    ///             Cidr = "192.168.199.0/24",
+    ///             IpVersion = 4,
+    ///             NetworkId = network1.Id,
+    ///         });
+    ///         var loadbalancer1 = new OpenStack.LoadBalancer.LoadBalancer("loadbalancer1", new OpenStack.LoadBalancer.LoadBalancerArgs
+    ///         {
+    ///             VipSubnetId = subnet1.Id,
+    ///         });
+    ///         var listener1 = new OpenStack.LoadBalancer.Listener("listener1", new OpenStack.LoadBalancer.ListenerArgs
+    ///         {
+    ///             LoadbalancerId = loadbalancer1.Id,
+    ///             Protocol = "HTTP",
+    ///             ProtocolPort = 8080,
+    ///         });
+    ///         var pool1 = new OpenStack.LoadBalancer.Pool("pool1", new OpenStack.LoadBalancer.PoolArgs
+    ///         {
+    ///             LbMethod = "ROUND_ROBIN",
+    ///             LoadbalancerId = loadbalancer1.Id,
+    ///             Protocol = "HTTP",
+    ///         });
+    ///         var l7policy1 = new OpenStack.LoadBalancer.L7PolicyV2("l7policy1", new OpenStack.LoadBalancer.L7PolicyV2Args
+    ///         {
+    ///             Action = "REDIRECT_TO_POOL",
+    ///             Description = "test l7 policy",
+    ///             ListenerId = listener1.Id,
+    ///             Position = 1,
+    ///             RedirectPoolId = pool1.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class L7PolicyV2 : Pulumi.CustomResource
     {

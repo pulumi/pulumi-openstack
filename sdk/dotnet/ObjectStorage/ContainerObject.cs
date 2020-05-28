@@ -11,6 +11,82 @@ namespace Pulumi.OpenStack.ObjectStorage
 {
     /// <summary>
     /// Manages a V1 container object resource within OpenStack.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ### Example with simple content
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var container1 = new OpenStack.ObjectStorage.Container("container1", new OpenStack.ObjectStorage.ContainerArgs
+    ///         {
+    ///             ContentType = "application/json",
+    ///             Metadata = 
+    ///             {
+    ///                 { "test", "true" },
+    ///             },
+    ///             Region = "RegionOne",
+    ///         });
+    ///         var doc1 = new OpenStack.ObjectStorage.ContainerObject("doc1", new OpenStack.ObjectStorage.ContainerObjectArgs
+    ///         {
+    ///             ContainerName = container1.Name,
+    ///             Content = @"               {
+    ///                  ""foo"" : ""bar""
+    ///                }
+    /// 
+    /// ",
+    ///             ContentType = "application/json",
+    ///             Metadata = 
+    ///             {
+    ///                 { "test", "true" },
+    ///             },
+    ///             Region = "RegionOne",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ### Example with content from file
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var container1 = new OpenStack.ObjectStorage.Container("container1", new OpenStack.ObjectStorage.ContainerArgs
+    ///         {
+    ///             ContentType = "application/json",
+    ///             Metadata = 
+    ///             {
+    ///                 { "test", "true" },
+    ///             },
+    ///             Region = "RegionOne",
+    ///         });
+    ///         var doc1 = new OpenStack.ObjectStorage.ContainerObject("doc1", new OpenStack.ObjectStorage.ContainerObjectArgs
+    ///         {
+    ///             ContainerName = container1.Name,
+    ///             ContentType = "application/json",
+    ///             Metadata = 
+    ///             {
+    ///                 { "test", "true" },
+    ///             },
+    ///             Region = "RegionOne",
+    ///             Source = "./default.json",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class ContainerObject : Pulumi.CustomResource
     {

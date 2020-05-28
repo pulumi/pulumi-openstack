@@ -11,6 +11,128 @@ namespace Pulumi.OpenStack.KeyManager
 {
     /// <summary>
     /// Manages a V1 Barbican container resource within OpenStack.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ### Simple secret
+    /// 
+    /// ```csharp
+    /// using System.IO;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var certificate1 = new OpenStack.KeyManager.SecretV1("certificate1", new OpenStack.KeyManager.SecretV1Args
+    ///         {
+    ///             Payload = File.ReadAllText("cert.pem"),
+    ///             PayloadContentType = "text/plain",
+    ///             SecretType = "certificate",
+    ///         });
+    ///         var privateKey1 = new OpenStack.KeyManager.SecretV1("privateKey1", new OpenStack.KeyManager.SecretV1Args
+    ///         {
+    ///             Payload = File.ReadAllText("cert-key.pem"),
+    ///             PayloadContentType = "text/plain",
+    ///             SecretType = "private",
+    ///         });
+    ///         var intermediate1 = new OpenStack.KeyManager.SecretV1("intermediate1", new OpenStack.KeyManager.SecretV1Args
+    ///         {
+    ///             Payload = File.ReadAllText("intermediate-ca.pem"),
+    ///             PayloadContentType = "text/plain",
+    ///             SecretType = "certificate",
+    ///         });
+    ///         var tls1 = new OpenStack.KeyManager.ContainerV1("tls1", new OpenStack.KeyManager.ContainerV1Args
+    ///         {
+    ///             SecretRefs = 
+    ///             {
+    ///                 new OpenStack.KeyManager.Inputs.ContainerV1SecretRefArgs
+    ///                 {
+    ///                     Name = "certificate",
+    ///                     SecretRef = certificate1.SecretRef,
+    ///                 },
+    ///                 new OpenStack.KeyManager.Inputs.ContainerV1SecretRefArgs
+    ///                 {
+    ///                     Name = "private_key",
+    ///                     SecretRef = privateKey1.SecretRef,
+    ///                 },
+    ///                 new OpenStack.KeyManager.Inputs.ContainerV1SecretRefArgs
+    ///                 {
+    ///                     Name = "intermediates",
+    ///                     SecretRef = intermediate1.SecretRef,
+    ///                 },
+    ///             },
+    ///             Type = "certificate",
+    ///         });
+    ///         var subnet1 = Output.Create(OpenStack.Networking.GetSubnet.InvokeAsync(new OpenStack.Networking.GetSubnetArgs
+    ///         {
+    ///             Name = "my-subnet",
+    ///         }));
+    ///         var lb1 = new OpenStack.LoadBalancer.LoadBalancer("lb1", new OpenStack.LoadBalancer.LoadBalancerArgs
+    ///         {
+    ///             VipSubnetId = subnet1.Apply(subnet1 =&gt; subnet1.Id),
+    ///         });
+    ///         var listener1 = new OpenStack.LoadBalancer.Listener("listener1", new OpenStack.LoadBalancer.ListenerArgs
+    ///         {
+    ///             DefaultTlsContainerRef = tls1.ContainerRef,
+    ///             LoadbalancerId = lb1.Id,
+    ///             Protocol = "TERMINATED_HTTPS",
+    ///             ProtocolPort = 443,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ### Container with the ACL
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var tls1 = new OpenStack.KeyManager.ContainerV1("tls1", new OpenStack.KeyManager.ContainerV1Args
+    ///         {
+    ///             Acl = new OpenStack.KeyManager.Inputs.ContainerV1AclArgs
+    ///             {
+    ///                 Read = new OpenStack.KeyManager.Inputs.ContainerV1AclReadArgs
+    ///                 {
+    ///                     ProjectAccess = false,
+    ///                     Users = 
+    ///                     {
+    ///                         "userid1",
+    ///                         "userid2",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             SecretRefs = 
+    ///             {
+    ///                 new OpenStack.KeyManager.Inputs.ContainerV1SecretRefArgs
+    ///                 {
+    ///                     Name = "certificate",
+    ///                     SecretRef = openstack_keymanager_secret_v1.Certificate_1.Secret_ref,
+    ///                 },
+    ///                 new OpenStack.KeyManager.Inputs.ContainerV1SecretRefArgs
+    ///                 {
+    ///                     Name = "private_key",
+    ///                     SecretRef = openstack_keymanager_secret_v1.Private_key_1.Secret_ref,
+    ///                 },
+    ///                 new OpenStack.KeyManager.Inputs.ContainerV1SecretRefArgs
+    ///                 {
+    ///                     Name = "intermediates",
+    ///                     SecretRef = openstack_keymanager_secret_v1.Intermediate_1.Secret_ref,
+    ///                 },
+    ///             },
+    ///             Type = "certificate",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class ContainerV1 : Pulumi.CustomResource
     {

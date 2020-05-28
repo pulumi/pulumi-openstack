@@ -15,6 +15,27 @@ namespace Pulumi.OpenStack.KeyManager
         /// Use this data source to get the ID of an available Barbican container.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(OpenStack.KeyManager.GetContainer.InvokeAsync(new OpenStack.KeyManager.GetContainerArgs
+        ///         {
+        ///             Name = "my_container",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetContainerResult> InvokeAsync(GetContainerArgs? args = null, InvokeOptions? options = null)

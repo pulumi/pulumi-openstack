@@ -12,6 +12,29 @@ namespace Pulumi.OpenStack.Compute
     /// <summary>
     /// Manages a V2 Server Group resource within OpenStack.
     /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var test_sg = new OpenStack.Compute.ServerGroup("test-sg", new OpenStack.Compute.ServerGroupArgs
+    ///         {
+    ///             Policies = 
+    ///             {
+    ///                 "anti-affinity",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Policies
     /// 

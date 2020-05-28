@@ -11,6 +11,64 @@ namespace Pulumi.OpenStack.LoadBalancer
 {
     /// <summary>
     /// Manages a V2 L7 Rule resource within OpenStack.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var network1 = new OpenStack.Networking.Network("network1", new OpenStack.Networking.NetworkArgs
+    ///         {
+    ///             AdminStateUp = "true",
+    ///         });
+    ///         var subnet1 = new OpenStack.Networking.Subnet("subnet1", new OpenStack.Networking.SubnetArgs
+    ///         {
+    ///             Cidr = "192.168.199.0/24",
+    ///             IpVersion = 4,
+    ///             NetworkId = network1.Id,
+    ///         });
+    ///         var loadbalancer1 = new OpenStack.LoadBalancer.LoadBalancer("loadbalancer1", new OpenStack.LoadBalancer.LoadBalancerArgs
+    ///         {
+    ///             VipSubnetId = subnet1.Id,
+    ///         });
+    ///         var listener1 = new OpenStack.LoadBalancer.Listener("listener1", new OpenStack.LoadBalancer.ListenerArgs
+    ///         {
+    ///             LoadbalancerId = loadbalancer1.Id,
+    ///             Protocol = "HTTP",
+    ///             ProtocolPort = 8080,
+    ///         });
+    ///         var pool1 = new OpenStack.LoadBalancer.Pool("pool1", new OpenStack.LoadBalancer.PoolArgs
+    ///         {
+    ///             LbMethod = "ROUND_ROBIN",
+    ///             LoadbalancerId = loadbalancer1.Id,
+    ///             Protocol = "HTTP",
+    ///         });
+    ///         var l7policy1 = new OpenStack.LoadBalancer.L7PolicyV2("l7policy1", new OpenStack.LoadBalancer.L7PolicyV2Args
+    ///         {
+    ///             Action = "REDIRECT_TO_URL",
+    ///             Description = "test description",
+    ///             ListenerId = listener1.Id,
+    ///             Position = 1,
+    ///             RedirectUrl = "http://www.example.com",
+    ///         });
+    ///         var l7rule1 = new OpenStack.LoadBalancer.L7RuleV2("l7rule1", new OpenStack.LoadBalancer.L7RuleV2Args
+    ///         {
+    ///             CompareType = "EQUAL_TO",
+    ///             L7policyId = l7policy1.Id,
+    ///             Type = "PATH",
+    ///             Value = "/api",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class L7RuleV2 : Pulumi.CustomResource
     {

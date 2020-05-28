@@ -12,6 +12,71 @@ namespace Pulumi.OpenStack.Images
     /// <summary>
     /// Manages members for the shared OpenStack Glance V2 Image within the source
     /// project, which owns the Image.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ### Unprivileged user
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var rancheros = new OpenStack.Images.Image("rancheros", new OpenStack.Images.ImageArgs
+    ///         {
+    ///             ContainerFormat = "bare",
+    ///             DiskFormat = "qcow2",
+    ///             ImageSourceUrl = "https://releases.rancher.com/os/latest/rancheros-openstack.img",
+    ///             Properties = 
+    ///             {
+    ///                 { "key", "value" },
+    ///             },
+    ///             Visibility = "shared",
+    ///         });
+    ///         var rancherosMember = new OpenStack.Images.ImageAccess("rancherosMember", new OpenStack.Images.ImageAccessArgs
+    ///         {
+    ///             ImageId = rancheros.Id,
+    ///             MemberId = "bed6b6cbb86a4e2d8dc2735c2f1000e4",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ### Privileged user
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var rancheros = new OpenStack.Images.Image("rancheros", new OpenStack.Images.ImageArgs
+    ///         {
+    ///             ContainerFormat = "bare",
+    ///             DiskFormat = "qcow2",
+    ///             ImageSourceUrl = "https://releases.rancher.com/os/latest/rancheros-openstack.img",
+    ///             Properties = 
+    ///             {
+    ///                 { "key", "value" },
+    ///             },
+    ///             Visibility = "shared",
+    ///         });
+    ///         var rancherosMember = new OpenStack.Images.ImageAccess("rancherosMember", new OpenStack.Images.ImageAccessArgs
+    ///         {
+    ///             ImageId = rancheros.Id,
+    ///             MemberId = "bed6b6cbb86a4e2d8dc2735c2f1000e4",
+    ///             Status = "accepted",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class ImageAccess : Pulumi.CustomResource
     {

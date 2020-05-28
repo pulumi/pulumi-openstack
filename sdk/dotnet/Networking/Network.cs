@@ -11,6 +11,78 @@ namespace Pulumi.OpenStack.Networking
 {
     /// <summary>
     /// Manages a V2 Neutron network resource within OpenStack.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var network1 = new OpenStack.Networking.Network("network1", new OpenStack.Networking.NetworkArgs
+    ///         {
+    ///             AdminStateUp = "true",
+    ///         });
+    ///         var subnet1 = new OpenStack.Networking.Subnet("subnet1", new OpenStack.Networking.SubnetArgs
+    ///         {
+    ///             Cidr = "192.168.199.0/24",
+    ///             IpVersion = 4,
+    ///             NetworkId = network1.Id,
+    ///         });
+    ///         var secgroup1 = new OpenStack.Compute.SecGroup("secgroup1", new OpenStack.Compute.SecGroupArgs
+    ///         {
+    ///             Description = "a security group",
+    ///             Rules = 
+    ///             {
+    ///                 new OpenStack.Compute.Inputs.SecGroupRuleArgs
+    ///                 {
+    ///                     Cidr = "0.0.0.0/0",
+    ///                     FromPort = 22,
+    ///                     IpProtocol = "tcp",
+    ///                     ToPort = 22,
+    ///                 },
+    ///             },
+    ///         });
+    ///         var port1 = new OpenStack.Networking.Port("port1", new OpenStack.Networking.PortArgs
+    ///         {
+    ///             AdminStateUp = "true",
+    ///             FixedIps = 
+    ///             {
+    ///                 new OpenStack.Networking.Inputs.PortFixedIpArgs
+    ///                 {
+    ///                     IpAddress = "192.168.199.10",
+    ///                     SubnetId = subnet1.Id,
+    ///                 },
+    ///             },
+    ///             NetworkId = network1.Id,
+    ///             SecurityGroupIds = 
+    ///             {
+    ///                 secgroup1.Id,
+    ///             },
+    ///         });
+    ///         var instance1 = new OpenStack.Compute.Instance("instance1", new OpenStack.Compute.InstanceArgs
+    ///         {
+    ///             Networks = 
+    ///             {
+    ///                 new OpenStack.Compute.Inputs.InstanceNetworkArgs
+    ///                 {
+    ///                     Port = port1.Id,
+    ///                 },
+    ///             },
+    ///             SecurityGroups = 
+    ///             {
+    ///                 secgroup1.Name,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Network : Pulumi.CustomResource
     {

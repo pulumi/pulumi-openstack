@@ -11,6 +11,73 @@ namespace Pulumi.OpenStack.Networking
 {
     /// <summary>
     /// Manages a networking V2 trunk resource within OpenStack.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var network1 = new OpenStack.Networking.Network("network1", new OpenStack.Networking.NetworkArgs
+    ///         {
+    ///             AdminStateUp = "true",
+    ///         });
+    ///         var subnet1 = new OpenStack.Networking.Subnet("subnet1", new OpenStack.Networking.SubnetArgs
+    ///         {
+    ///             Cidr = "192.168.1.0/24",
+    ///             EnableDhcp = true,
+    ///             IpVersion = 4,
+    ///             NetworkId = network1.Id,
+    ///             NoGateway = true,
+    ///         });
+    ///         var parentPort1 = new OpenStack.Networking.Port("parentPort1", new OpenStack.Networking.PortArgs
+    ///         {
+    ///             AdminStateUp = "true",
+    ///             NetworkId = network1.Id,
+    ///         });
+    ///         var subport1 = new OpenStack.Networking.Port("subport1", new OpenStack.Networking.PortArgs
+    ///         {
+    ///             AdminStateUp = "true",
+    ///             NetworkId = network1.Id,
+    ///         });
+    ///         var trunk1 = new OpenStack.Networking.Trunk("trunk1", new OpenStack.Networking.TrunkArgs
+    ///         {
+    ///             AdminStateUp = "true",
+    ///             PortId = parentPort1.Id,
+    ///             SubPorts = 
+    ///             {
+    ///                 new OpenStack.Networking.Inputs.TrunkSubPortArgs
+    ///                 {
+    ///                     PortId = subport1.Id,
+    ///                     SegmentationId = 1,
+    ///                     SegmentationType = "vlan",
+    ///                 },
+    ///             },
+    ///         });
+    ///         var instance1 = new OpenStack.Compute.Instance("instance1", new OpenStack.Compute.InstanceArgs
+    ///         {
+    ///             Networks = 
+    ///             {
+    ///                 new OpenStack.Compute.Inputs.InstanceNetworkArgs
+    ///                 {
+    ///                     Port = trunk1.PortId,
+    ///                 },
+    ///             },
+    ///             SecurityGroups = 
+    ///             {
+    ///                 "default",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Trunk : Pulumi.CustomResource
     {

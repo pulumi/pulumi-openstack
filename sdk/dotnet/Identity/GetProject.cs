@@ -15,6 +15,27 @@ namespace Pulumi.OpenStack.Identity
         /// Use this data source to get the ID of an OpenStack project.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var project1 = Output.Create(OpenStack.Identity.GetProject.InvokeAsync(new OpenStack.Identity.GetProjectArgs
+        ///         {
+        ///             Name = "demo",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetProjectResult> InvokeAsync(GetProjectArgs? args = null, InvokeOptions? options = null)

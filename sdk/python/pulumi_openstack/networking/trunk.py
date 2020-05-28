@@ -89,8 +89,8 @@ class Trunk(pulumi.CustomResource):
             admin_state_up="true",
             port_id=parent_port1.id,
             sub_ports=[{
-                "portId": subport1.id,
-                "segmentationId": 1,
+                "port_id": subport1.id,
+                "segmentation_id": 1,
                 "segmentationType": "vlan",
             }])
         instance1 = openstack.compute.Instance("instance1",

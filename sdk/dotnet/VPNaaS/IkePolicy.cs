@@ -11,6 +11,26 @@ namespace Pulumi.OpenStack.VPNaaS
 {
     /// <summary>
     /// Manages a V2 Neutron IKE policy resource within OpenStack.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var policy1 = new OpenStack.VPNaaS.IkePolicy("policy1", new OpenStack.VPNaaS.IkePolicyArgs
+    ///         {
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class IkePolicy : Pulumi.CustomResource
     {

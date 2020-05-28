@@ -138,8 +138,8 @@ class Network(pulumi.CustomResource):
         port1 = openstack.networking.Port("port1",
             admin_state_up="true",
             fixed_ips=[{
-                "ipAddress": "192.168.199.10",
-                "subnetId": subnet1.id,
+                "ip_address": "192.168.199.10",
+                "subnet_id": subnet1.id,
             }],
             network_id=network1.id,
             security_group_ids=[secgroup1.id])

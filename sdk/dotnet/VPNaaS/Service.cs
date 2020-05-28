@@ -11,6 +11,28 @@ namespace Pulumi.OpenStack.VPNaaS
 {
     /// <summary>
     /// Manages a V2 Neutron VPN service resource within OpenStack.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var service1 = new OpenStack.VPNaaS.Service("service1", new OpenStack.VPNaaS.ServiceArgs
+    ///         {
+    ///             AdminStateUp = "true",
+    ///             RouterId = "14a75700-fc03-4602-9294-26ee44f366b3",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Service : Pulumi.CustomResource
     {

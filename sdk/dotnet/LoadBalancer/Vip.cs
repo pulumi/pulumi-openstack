@@ -11,6 +11,30 @@ namespace Pulumi.OpenStack.LoadBalancer
 {
     /// <summary>
     /// Manages a V1 load balancer vip resource within OpenStack.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var vip1 = new OpenStack.LoadBalancer.Vip("vip1", new OpenStack.LoadBalancer.VipArgs
+    ///         {
+    ///             PoolId = "67890",
+    ///             Port = 80,
+    ///             Protocol = "HTTP",
+    ///             SubnetId = "12345",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Vip : Pulumi.CustomResource
     {

@@ -11,6 +11,29 @@ namespace Pulumi.OpenStack.LoadBalancer
 {
     /// <summary>
     /// Manages a V2 member resource within OpenStack.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var member1 = new OpenStack.LoadBalancer.Member("member1", new OpenStack.LoadBalancer.MemberArgs
+    ///         {
+    ///             Address = "192.168.199.23",
+    ///             PoolId = "935685fb-a896-40f9-9ff4-ae531a3a00fe",
+    ///             ProtocolPort = 8080,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Member : Pulumi.CustomResource
     {

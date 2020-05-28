@@ -17,6 +17,27 @@ namespace Pulumi.OpenStack.Identity
         /// &gt; **Note:** This usually requires admin privileges.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var service1 = Output.Create(OpenStack.Identity.GetService.InvokeAsync(new OpenStack.Identity.GetServiceArgs
+        ///         {
+        ///             Name = "keystone",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetServiceResult> InvokeAsync(GetServiceArgs? args = null, InvokeOptions? options = null)

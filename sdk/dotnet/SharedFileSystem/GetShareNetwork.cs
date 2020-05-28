@@ -15,6 +15,27 @@ namespace Pulumi.OpenStack.SharedFileSystem
         /// Use this data source to get the ID of an available Shared File System share network.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var sharenetwork1 = Output.Create(OpenStack.SharedFileSystem.GetShareNetwork.InvokeAsync(new OpenStack.SharedFileSystem.GetShareNetworkArgs
+        ///         {
+        ///             Name = "sharenetwork_1",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetShareNetworkResult> InvokeAsync(GetShareNetworkArgs? args = null, InvokeOptions? options = null)

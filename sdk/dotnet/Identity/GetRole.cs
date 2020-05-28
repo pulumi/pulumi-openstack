@@ -15,6 +15,27 @@ namespace Pulumi.OpenStack.Identity
         /// Use this data source to get the ID of an OpenStack role.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var admin = Output.Create(OpenStack.Identity.GetRole.InvokeAsync(new OpenStack.Identity.GetRoleArgs
+        ///         {
+        ///             Name = "admin",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetRoleResult> InvokeAsync(GetRoleArgs args, InvokeOptions? options = null)

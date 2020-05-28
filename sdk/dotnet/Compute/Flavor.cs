@@ -11,6 +11,34 @@ namespace Pulumi.OpenStack.Compute
 {
     /// <summary>
     /// Manages a V2 flavor resource within OpenStack.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var test_flavor = new OpenStack.Compute.Flavor("test-flavor", new OpenStack.Compute.FlavorArgs
+    ///         {
+    ///             Disk = "20",
+    ///             ExtraSpecs = 
+    ///             {
+    ///                 { "hw:cpu_policy", "CPU-POLICY" },
+    ///                 { "hw:cpu_thread_policy", "CPU-THREAD-POLICY" },
+    ///             },
+    ///             Ram = "8096",
+    ///             Vcpus = "2",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Flavor : Pulumi.CustomResource
     {

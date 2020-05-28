@@ -102,15 +102,15 @@ class ContainerV1(pulumi.CustomResource):
             secret_refs=[
                 {
                     "name": "certificate",
-                    "secretRef": certificate1.secret_ref,
+                    "secret_ref": certificate1.secret_ref,
                 },
                 {
                     "name": "private_key",
-                    "secretRef": private_key1.secret_ref,
+                    "secret_ref": private_key1.secret_ref,
                 },
                 {
                     "name": "intermediates",
-                    "secretRef": intermediate1.secret_ref,
+                    "secret_ref": intermediate1.secret_ref,
                 },
             ],
             type="certificate")
@@ -142,15 +142,15 @@ class ContainerV1(pulumi.CustomResource):
             secret_refs=[
                 {
                     "name": "certificate",
-                    "secretRef": openstack_keymanager_secret_v1["certificate_1"]["secret_ref"],
+                    "secret_ref": openstack_keymanager_secret_v1["certificate_1"]["secret_ref"],
                 },
                 {
                     "name": "private_key",
-                    "secretRef": openstack_keymanager_secret_v1["private_key_1"]["secret_ref"],
+                    "secret_ref": openstack_keymanager_secret_v1["private_key_1"]["secret_ref"],
                 },
                 {
                     "name": "intermediates",
-                    "secretRef": openstack_keymanager_secret_v1["intermediate_1"]["secret_ref"],
+                    "secret_ref": openstack_keymanager_secret_v1["intermediate_1"]["secret_ref"],
                 },
             ],
             type="certificate")

@@ -15,6 +15,28 @@ namespace Pulumi.OpenStack.BlockStorage
         /// Use this data source to get information about an existing snapshot.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var snapshot1 = Output.Create(OpenStack.BlockStorage.GetSnapshotV3.InvokeAsync(new OpenStack.BlockStorage.GetSnapshotV3Args
+        ///         {
+        ///             MostRecent = true,
+        ///             Name = "snapshot_1",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSnapshotV3Result> InvokeAsync(GetSnapshotV3Args? args = null, InvokeOptions? options = null)

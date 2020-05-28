@@ -11,6 +11,26 @@ namespace Pulumi.OpenStack.VPNaaS
 {
     /// <summary>
     /// Manages a V2 Neutron IPSec policy resource within OpenStack.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var policy1 = new OpenStack.VPNaaS.IpSecPolicy("policy1", new OpenStack.VPNaaS.IpSecPolicyArgs
+    ///         {
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class IpSecPolicy : Pulumi.CustomResource
     {

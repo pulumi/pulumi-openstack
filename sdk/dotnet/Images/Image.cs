@@ -12,6 +12,32 @@ namespace Pulumi.OpenStack.Images
     /// <summary>
     /// Manages a V2 Image resource within OpenStack Glance.
     /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var rancheros = new OpenStack.Images.Image("rancheros", new OpenStack.Images.ImageArgs
+    ///         {
+    ///             ContainerFormat = "bare",
+    ///             DiskFormat = "qcow2",
+    ///             ImageSourceUrl = "https://releases.rancher.com/os/latest/rancheros-openstack.img",
+    ///             Properties = 
+    ///             {
+    ///                 { "key", "value" },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Notes
     /// 

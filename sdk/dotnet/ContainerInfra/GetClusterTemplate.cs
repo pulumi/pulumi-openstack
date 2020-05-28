@@ -16,6 +16,27 @@ namespace Pulumi.OpenStack.ContainerInfra
         /// template.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var clustertemplate1 = Output.Create(OpenStack.ContainerInfra.GetClusterTemplate.InvokeAsync(new OpenStack.ContainerInfra.GetClusterTemplateArgs
+        ///         {
+        ///             Name = "clustertemplate_1",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetClusterTemplateResult> InvokeAsync(GetClusterTemplateArgs args, InvokeOptions? options = null)

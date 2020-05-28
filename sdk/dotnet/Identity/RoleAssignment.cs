@@ -14,6 +14,39 @@ namespace Pulumi.OpenStack.Identity
     /// 
     /// Note: You _must_ have admin privileges in your OpenStack cloud to use
     /// this resource.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var project1 = new OpenStack.Identity.Project("project1", new OpenStack.Identity.ProjectArgs
+    ///         {
+    ///         });
+    ///         var user1 = new OpenStack.Identity.User("user1", new OpenStack.Identity.UserArgs
+    ///         {
+    ///             DefaultProjectId = project1.Id,
+    ///         });
+    ///         var role1 = new OpenStack.Identity.Role("role1", new OpenStack.Identity.RoleArgs
+    ///         {
+    ///         });
+    ///         var roleAssignment1 = new OpenStack.Identity.RoleAssignment("roleAssignment1", new OpenStack.Identity.RoleAssignmentArgs
+    ///         {
+    ///             ProjectId = project1.Id,
+    ///             RoleId = role1.Id,
+    ///             UserId = user1.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class RoleAssignment : Pulumi.CustomResource
     {

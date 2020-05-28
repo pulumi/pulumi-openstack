@@ -11,6 +11,33 @@ namespace Pulumi.OpenStack.VPNaaS
 {
     /// <summary>
     /// Manages a V2 Neutron IPSec site connection resource within OpenStack.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var conn1 = new OpenStack.VPNaaS.SiteConnection("conn1", new OpenStack.VPNaaS.SiteConnectionArgs
+    ///         {
+    ///             IkepolicyId = openstack_vpnaas_ike_policy_v2.Policy_2.Id,
+    ///             IpsecpolicyId = openstack_vpnaas_ipsec_policy_v2.Policy_1.Id,
+    ///             LocalEpGroupId = openstack_vpnaas_endpoint_group_v2.Group_2.Id,
+    ///             PeerAddress = "192.168.10.1",
+    ///             PeerEpGroupId = openstack_vpnaas_endpoint_group_v2.Group_1.Id,
+    ///             Psk = "secret",
+    ///             VpnserviceId = openstack_vpnaas_service_v2.Service_1.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class SiteConnection : Pulumi.CustomResource
     {

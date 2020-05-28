@@ -15,6 +15,40 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// &gt; **Note:** This resource works only within Octavia API. For
     /// legacy Neutron LBaaS v2 extension please use
     /// openstack.loadbalancer.Member resource.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var members1 = new OpenStack.LoadBalancer.Members("members1", new OpenStack.LoadBalancer.MembersArgs
+    ///         {
+    ///             Members = 
+    ///             {
+    ///                 new OpenStack.LoadBalancer.Inputs.MembersMemberArgs
+    ///                 {
+    ///                     Address = "192.168.199.23",
+    ///                     ProtocolPort = 8080,
+    ///                 },
+    ///                 new OpenStack.LoadBalancer.Inputs.MembersMemberArgs
+    ///                 {
+    ///                     Address = "192.168.199.24",
+    ///                     ProtocolPort = 8080,
+    ///                 },
+    ///             },
+    ///             PoolId = "935685fb-a896-40f9-9ff4-ae531a3a00fe",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Members : Pulumi.CustomResource
     {

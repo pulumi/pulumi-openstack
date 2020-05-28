@@ -12,6 +12,34 @@ namespace Pulumi.OpenStack.Images
     /// <summary>
     /// Manages memberships status for the shared OpenStack Glance V2 Image within the
     /// destination project, which has a member proposal.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var rancheros = Output.Create(OpenStack.Images.GetImage.InvokeAsync(new OpenStack.Images.GetImageArgs
+    ///         {
+    ///             MemberStatus = "all",
+    ///             Name = "RancherOS",
+    ///             Visibility = "shared",
+    ///         }));
+    ///         var rancherosMember = new OpenStack.Images.ImageAccessAccept("rancherosMember", new OpenStack.Images.ImageAccessAcceptArgs
+    ///         {
+    ///             ImageId = rancheros.Apply(rancheros =&gt; rancheros.Id),
+    ///             Status = "accepted",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class ImageAccessAccept : Pulumi.CustomResource
     {

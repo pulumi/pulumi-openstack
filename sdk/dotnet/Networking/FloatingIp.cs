@@ -14,6 +14,27 @@ namespace Pulumi.OpenStack.Networking
     /// that can be used for load balancers.
     /// These are similar to Nova (compute) floating IP resources,
     /// but only compute floating IPs can be used with compute instances.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var floatip1 = new OpenStack.Networking.FloatingIp("floatip1", new OpenStack.Networking.FloatingIpArgs
+    ///         {
+    ///             Pool = "public",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class FloatingIp : Pulumi.CustomResource
     {

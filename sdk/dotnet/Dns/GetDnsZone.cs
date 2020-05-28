@@ -15,6 +15,27 @@ namespace Pulumi.OpenStack.Dns
         /// Use this data source to get the ID of an available OpenStack DNS zone.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var zone1 = Output.Create(OpenStack.Dns.GetDnsZone.InvokeAsync(new OpenStack.Dns.GetDnsZoneArgs
+        ///         {
+        ///             Name = "example.com",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDnsZoneResult> InvokeAsync(GetDnsZoneArgs? args = null, InvokeOptions? options = null)

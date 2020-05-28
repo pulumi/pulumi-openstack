@@ -12,6 +12,107 @@ namespace Pulumi.OpenStack.Compute
     /// <summary>
     /// Attaches a Network Interface (a Port) to an Instance using the OpenStack
     /// Compute (Nova) v2 API.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ### Basic Attachment
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var network1 = new OpenStack.Networking.Network("network1", new OpenStack.Networking.NetworkArgs
+    ///         {
+    ///             AdminStateUp = "true",
+    ///         });
+    ///         var instance1 = new OpenStack.Compute.Instance("instance1", new OpenStack.Compute.InstanceArgs
+    ///         {
+    ///             SecurityGroups = 
+    ///             {
+    ///                 "default",
+    ///             },
+    ///         });
+    ///         var ai1 = new OpenStack.Compute.InterfaceAttach("ai1", new OpenStack.Compute.InterfaceAttachArgs
+    ///         {
+    ///             InstanceId = instance1.Id,
+    ///             NetworkId = openstack_networking_port_v2.Network_1.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ### Attachment Specifying a Fixed IP
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var network1 = new OpenStack.Networking.Network("network1", new OpenStack.Networking.NetworkArgs
+    ///         {
+    ///             AdminStateUp = "true",
+    ///         });
+    ///         var instance1 = new OpenStack.Compute.Instance("instance1", new OpenStack.Compute.InstanceArgs
+    ///         {
+    ///             SecurityGroups = 
+    ///             {
+    ///                 "default",
+    ///             },
+    ///         });
+    ///         var ai1 = new OpenStack.Compute.InterfaceAttach("ai1", new OpenStack.Compute.InterfaceAttachArgs
+    ///         {
+    ///             FixedIp = "10.0.10.10",
+    ///             InstanceId = instance1.Id,
+    ///             NetworkId = openstack_networking_port_v2.Network_1.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ### Attachment Using an Existing Port
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var network1 = new OpenStack.Networking.Network("network1", new OpenStack.Networking.NetworkArgs
+    ///         {
+    ///             AdminStateUp = "true",
+    ///         });
+    ///         var port1 = new OpenStack.Networking.Port("port1", new OpenStack.Networking.PortArgs
+    ///         {
+    ///             AdminStateUp = "true",
+    ///             NetworkId = network1.Id,
+    ///         });
+    ///         var instance1 = new OpenStack.Compute.Instance("instance1", new OpenStack.Compute.InstanceArgs
+    ///         {
+    ///             SecurityGroups = 
+    ///             {
+    ///                 "default",
+    ///             },
+    ///         });
+    ///         var ai1 = new OpenStack.Compute.InterfaceAttach("ai1", new OpenStack.Compute.InterfaceAttachArgs
+    ///         {
+    ///             InstanceId = instance1.Id,
+    ///             PortId = port1.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class InterfaceAttach : Pulumi.CustomResource
     {

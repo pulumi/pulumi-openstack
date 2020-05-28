@@ -11,6 +11,33 @@ namespace Pulumi.OpenStack.LoadBalancer
 {
     /// <summary>
     /// Manages a V2 listener resource within OpenStack.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var listener1 = new OpenStack.LoadBalancer.Listener("listener1", new OpenStack.LoadBalancer.ListenerArgs
+    ///         {
+    ///             InsertHeaders = 
+    ///             {
+    ///                 { "X-Forwarded-For", "true" },
+    ///             },
+    ///             LoadbalancerId = "d9415786-5f1a-428b-b35f-2f1523e146d2",
+    ///             Protocol = "HTTP",
+    ///             ProtocolPort = 8080,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Listener : Pulumi.CustomResource
     {
