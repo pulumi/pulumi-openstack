@@ -90,6 +90,10 @@ export interface GetProjectResult {
      */
     readonly enabled?: boolean;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * See Argument Reference above.
      */
     readonly isDomain?: boolean;
@@ -109,8 +113,4 @@ export interface GetProjectResult {
      * See Argument Reference above.
      */
     readonly tags: string[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

@@ -90,6 +90,10 @@ export interface GetEndpointResult {
      */
     readonly endpointRegion?: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * See Argument Reference above.
      */
     readonly interface?: string;
@@ -117,8 +121,4 @@ export interface GetEndpointResult {
      * The endpoint URL.
      */
     readonly url: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

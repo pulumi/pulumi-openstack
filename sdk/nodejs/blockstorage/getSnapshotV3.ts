@@ -78,6 +78,10 @@ export interface GetSnapshotV3Result {
      */
     readonly description: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * The snapshot's metadata.
      */
     readonly metadata: {[key: string]: any};
@@ -102,8 +106,4 @@ export interface GetSnapshotV3Result {
      * See Argument Reference above.
      */
     readonly volumeId: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

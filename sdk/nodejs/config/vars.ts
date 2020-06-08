@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 let __config = new pulumi.Config("openstack");
@@ -10,7 +12,7 @@ let __config = new pulumi.Config("openstack");
  * If set to `false`, OpenStack authorization won't be perfomed automatically, if the initial auth token get expired.
  * Defaults to `true`
  */
-export let allowReauth: boolean | undefined = __config.getObject<boolean>("allowReauth") || utilities.getEnvBoolean("OS_ALLOW_REAUTH");
+export let allowReauth: boolean | undefined = __config.getObject<boolean>("allowReauth") || <any>utilities.getEnvBoolean("OS_ALLOW_REAUTH");
 /**
  * Application Credential ID to login with.
  */
@@ -47,7 +49,7 @@ export let defaultDomain: string | undefined = __config.get("defaultDomain") || 
  * If set to `false`, OpenStack authorization will be perfomed, every time the service provider client is called. Defaults
  * to `true`.
  */
-export let delayedAuth: boolean | undefined = __config.getObject<boolean>("delayedAuth") || utilities.getEnvBoolean("OS_DELAYED_AUTH");
+export let delayedAuth: boolean | undefined = __config.getObject<boolean>("delayedAuth") || <any>utilities.getEnvBoolean("OS_DELAYED_AUTH");
 /**
  * If set to `true`, the HTTP `Cache-Control: no-cache` header will not be added by default to all API requests.
  */
@@ -68,7 +70,7 @@ export let endpointType: string | undefined = __config.get("endpointType") || ut
 /**
  * Trust self-signed certificates.
  */
-export let insecure: boolean | undefined = __config.getObject<boolean>("insecure") || utilities.getEnvBoolean("OS_INSECURE");
+export let insecure: boolean | undefined = __config.getObject<boolean>("insecure") || <any>utilities.getEnvBoolean("OS_INSECURE");
 /**
  * A client private key to authenticate with.
  */
@@ -96,7 +98,7 @@ export let region: string | undefined = __config.get("region") || utilities.getE
 /**
  * Use Swift's authentication system instead of Keystone. Only used for interaction with Swift.
  */
-export let swauth: boolean | undefined = __config.getObject<boolean>("swauth") || utilities.getEnvBoolean("OS_SWAUTH");
+export let swauth: boolean | undefined = __config.getObject<boolean>("swauth") || <any>utilities.getEnvBoolean("OS_SWAUTH");
 /**
  * The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.
  */
@@ -112,7 +114,7 @@ export let token: string | undefined = __config.get("token") || utilities.getEnv
 /**
  * If set to `true`, API requests will go the Load Balancer service (Octavia) instead of the Networking service (Neutron).
  */
-export let useOctavia: boolean | undefined = __config.getObject<boolean>("useOctavia") || utilities.getEnvBoolean("OS_USE_OCTAVIA");
+export let useOctavia: boolean | undefined = __config.getObject<boolean>("useOctavia") || <any>utilities.getEnvBoolean("OS_USE_OCTAVIA");
 /**
  * The ID of the domain where the user resides (Identity v3).
  */

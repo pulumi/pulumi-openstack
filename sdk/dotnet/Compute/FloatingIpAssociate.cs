@@ -27,7 +27,7 @@ namespace Pulumi.OpenStack.Compute
     ///     {
     ///         var instance1 = new OpenStack.Compute.Instance("instance1", new OpenStack.Compute.InstanceArgs
     ///         {
-    ///             FlavorId = 3,
+    ///             FlavorId = "3",
     ///             ImageId = "ad091b52-742f-469e-8f3c-fd81cadf0743",
     ///             KeyPair = "my_key_pair_name",
     ///             SecurityGroups = 
@@ -61,7 +61,7 @@ namespace Pulumi.OpenStack.Compute
     ///     {
     ///         var instance1 = new OpenStack.Compute.Instance("instance1", new OpenStack.Compute.InstanceArgs
     ///         {
-    ///             FlavorId = 3,
+    ///             FlavorId = "3",
     ///             ImageId = "ad091b52-742f-469e-8f3c-fd81cadf0743",
     ///             KeyPair = "my_key_pair_name",
     ///             Networks = 

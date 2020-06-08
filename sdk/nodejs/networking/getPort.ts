@@ -179,6 +179,10 @@ export interface GetPortResult {
     readonly extraDhcpOptions: outputs.networking.GetPortExtraDhcpOption[];
     readonly fixedIp?: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * The additional MAC address.
      */
     readonly macAddress?: string;
@@ -206,8 +210,4 @@ export interface GetPortResult {
     readonly status?: string;
     readonly tags?: string[];
     readonly tenantId?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

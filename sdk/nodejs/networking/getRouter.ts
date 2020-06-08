@@ -120,14 +120,14 @@ export interface GetRouterResult {
      * The network UUID of an external gateway for the router.
      */
     readonly externalNetworkId: string;
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly name?: string;
     readonly region?: string;
     readonly routerId?: string;
     readonly status?: string;
     readonly tags?: string[];
     readonly tenantId?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

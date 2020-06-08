@@ -90,8 +90,8 @@
         "keymanager/orderV1.ts",
         "keymanager/secretV1.ts",
         "loadbalancer/index.ts",
-        "loadbalancer/l7PolicyV2.ts",
-        "loadbalancer/l7RuleV2.ts",
+        "loadbalancer/l7policyV2.ts",
+        "loadbalancer/l7ruleV2.ts",
         "loadbalancer/listener.ts",
         "loadbalancer/loadBalancer.ts",
         "loadbalancer/member.ts",
@@ -166,4 +166,3 @@
         "vpnaas/siteConnection.ts"
     ]
 }
-

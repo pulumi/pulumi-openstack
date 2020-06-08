@@ -140,6 +140,10 @@ export interface GetSubnetPoolResult {
      * See Argument Reference above.
      */
     readonly description: string;
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly ipVersion: number;
     /**
      * See Argument Reference above.
@@ -182,8 +186,4 @@ export interface GetSubnetPoolResult {
      * The time at which subnetpool was created.
      */
     readonly updatedAt: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

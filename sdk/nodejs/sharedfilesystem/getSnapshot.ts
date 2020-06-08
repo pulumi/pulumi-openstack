@@ -77,6 +77,10 @@ export interface GetSnapshotResult {
      */
     readonly description: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * See Argument Reference above.
      */
     readonly name: string;
@@ -105,8 +109,4 @@ export interface GetSnapshotResult {
      * See Argument Reference above.
      */
     readonly status: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

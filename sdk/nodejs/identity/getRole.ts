@@ -65,6 +65,10 @@ export interface GetRoleResult {
      */
     readonly domainId: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * See Argument Reference above.
      */
     readonly name: string;
@@ -72,8 +76,4 @@ export interface GetRoleResult {
      * See Argument Reference above.
      */
     readonly region: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

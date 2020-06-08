@@ -103,6 +103,10 @@ export interface GetUserResult {
      */
     readonly enabled?: boolean;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * See Argument Reference above.
      */
     readonly idpId?: string;
@@ -126,8 +130,4 @@ export interface GetUserResult {
      * See Argument Reference above.
      */
     readonly uniqueId?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

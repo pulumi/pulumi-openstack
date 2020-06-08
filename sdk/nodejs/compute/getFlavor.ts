@@ -107,6 +107,10 @@ export interface GetFlavorResult {
     readonly extraSpecs: {[key: string]: any};
     readonly flavorId?: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * Whether the flavor is public or private.
      */
     readonly isPublic: boolean;
@@ -118,8 +122,4 @@ export interface GetFlavorResult {
     readonly rxTxFactor?: number;
     readonly swap?: number;
     readonly vcpus?: number;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

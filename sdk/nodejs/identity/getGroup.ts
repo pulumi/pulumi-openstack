@@ -71,6 +71,10 @@ export interface GetGroupResult {
      */
     readonly domainId: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * See Argument Reference above.
      */
     readonly name: string;
@@ -78,8 +82,4 @@ export interface GetGroupResult {
      * See Argument Reference above.
      */
     readonly region: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }
