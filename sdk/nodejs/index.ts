@@ -5,21 +5,21 @@
 export * from "./provider";
 
 // Export sub-modules:
-import * as blockstorage from "./blockstorage/index";
-import * as compute from "./compute/index";
-import * as config from "./config/index";
-import * as containerinfra from "./containerinfra/index";
-import * as database from "./database/index";
-import * as dns from "./dns/index";
-import * as firewall from "./firewall/index";
-import * as identity from "./identity/index";
-import * as images from "./images/index";
-import * as keymanager from "./keymanager/index";
-import * as loadbalancer from "./loadbalancer/index";
-import * as networking from "./networking/index";
-import * as objectstorage from "./objectstorage/index";
-import * as orchestration from "./orchestration/index";
-import * as sharedfilesystem from "./sharedfilesystem/index";
-import * as types from "./types/index";
-import * as vpnaas from "./vpnaas/index";
+import * as blockstorage from "./blockstorage";
+import * as compute from "./compute";
+import * as config from "./config";
+import * as containerinfra from "./containerinfra";
+import * as database from "./database";
+import * as dns from "./dns";
+import * as firewall from "./firewall";
+import * as identity from "./identity";
+import * as images from "./images";
+import * as keymanager from "./keymanager";
+import * as loadbalancer from "./loadbalancer";
+import * as networking from "./networking";
+import * as objectstorage from "./objectstorage";
+import * as orchestration from "./orchestration";
+import * as sharedfilesystem from "./sharedfilesystem";
+import * as types from "./types";
+import * as vpnaas from "./vpnaas";
 export {blockstorage, compute, config, containerinfra, database, dns, firewall, identity, images, keymanager, loadbalancer, networking, objectstorage, orchestration, sharedfilesystem, types, vpnaas};

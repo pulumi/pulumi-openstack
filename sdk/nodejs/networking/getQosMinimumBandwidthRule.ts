@@ -65,6 +65,10 @@ export interface GetQosMinimumBandwidthRuleArgs {
 export interface GetQosMinimumBandwidthRuleResult {
     readonly direction: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * See Argument Reference above.
      */
     readonly minKbps: number;
@@ -76,8 +80,4 @@ export interface GetQosMinimumBandwidthRuleResult {
      * See Argument Reference above.
      */
     readonly region: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

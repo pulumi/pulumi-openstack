@@ -81,6 +81,10 @@ export interface GetVolumeV2Result {
      */
     readonly bootable: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * See Argument Reference above.
      */
     readonly metadata: {[key: string]: any};
@@ -108,8 +112,4 @@ export interface GetVolumeV2Result {
      * The type of the volume.
      */
     readonly volumeType: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

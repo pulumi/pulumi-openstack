@@ -197,6 +197,9 @@ class Router(pulumi.CustomResource):
             __props__['distributed'] = distributed
             __props__['enable_snat'] = enable_snat
             __props__['external_fixed_ips'] = external_fixed_ips
+            if external_gateway is not None:
+                warnings.warn("use external_network_id instead", DeprecationWarning)
+                pulumi.log.warn("external_gateway is deprecated: use external_network_id instead")
             __props__['external_gateway'] = external_gateway
             __props__['external_network_id'] = external_network_id
             __props__['name'] = name

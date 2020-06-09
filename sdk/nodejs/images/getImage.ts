@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -131,6 +133,10 @@ export interface GetImageResult {
      * location of the image or the path to retrieve it.
      */
     readonly file: string;
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly memberStatus?: string;
     /**
      * The metadata associated with the image.
@@ -181,8 +187,4 @@ export interface GetImageResult {
      */
     readonly updatedAt: string;
     readonly visibility?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

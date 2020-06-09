@@ -66,6 +66,10 @@ export interface GetQosDscpMarkingRuleResult {
      */
     readonly dscpMark: number;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * See Argument Reference above.
      */
     readonly qosPolicyId: string;
@@ -73,8 +77,4 @@ export interface GetQosDscpMarkingRuleResult {
      * See Argument Reference above.
      */
     readonly region: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

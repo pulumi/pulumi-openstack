@@ -38,7 +38,7 @@ namespace Pulumi.OpenStack.Networking
     ///     {
     ///         var network1 = new OpenStack.Networking.Network("network1", new OpenStack.Networking.NetworkArgs
     ///         {
-    ///             AdminStateUp = "true",
+    ///             AdminStateUp = true,
     ///         });
     ///         var rbacPolicy1 = new OpenStack.Networking.RbacPolicyV2("rbacPolicy1", new OpenStack.Networking.RbacPolicyV2Args
     ///         {

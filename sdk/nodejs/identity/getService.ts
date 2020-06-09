@@ -77,6 +77,10 @@ export interface GetServiceResult {
      */
     readonly enabled?: boolean;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * See Argument Reference above.
      */
     readonly name?: string;
@@ -88,8 +92,4 @@ export interface GetServiceResult {
      * See Argument Reference above.
      */
     readonly type?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

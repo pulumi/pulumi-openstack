@@ -34,10 +34,10 @@ namespace Pulumi.OpenStack.Compute
     ///         });
     ///         var flavor1 = new OpenStack.Compute.Flavor("flavor1", new OpenStack.Compute.FlavorArgs
     ///         {
-    ///             Disk = "20",
+    ///             Disk = 20,
     ///             IsPublic = false,
-    ///             Ram = "8096",
-    ///             Vcpus = "2",
+    ///             Ram = 8096,
+    ///             Vcpus = 2,
     ///         });
     ///         var access1 = new OpenStack.Compute.FlavorAccess("access1", new OpenStack.Compute.FlavorAccessArgs
     ///         {

@@ -98,6 +98,10 @@ export interface GetClusterResult {
      */
     readonly flavor: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * The name of the Compute service SSH keypair.
      */
     readonly keypair: string;
@@ -150,8 +154,4 @@ export interface GetClusterResult {
      * The user of the cluster.
      */
     readonly userId: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

@@ -109,14 +109,14 @@ export interface GetFloatingIpResult {
      */
     readonly dnsName: string;
     readonly fixedIp?: string;
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly pool?: string;
     readonly portId?: string;
     readonly region?: string;
     readonly status?: string;
     readonly tags?: string[];
     readonly tenantId?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

@@ -149,6 +149,10 @@ export interface GetSubnetResult {
      * Host Routes of the subnet.
      */
     readonly hostRoutes: outputs.networking.GetSubnetHostRoute[];
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly ipVersion: number;
     readonly ipv6AddressMode: string;
     readonly ipv6RaMode: string;
@@ -162,8 +166,4 @@ export interface GetSubnetResult {
     readonly subnetpoolId: string;
     readonly tags?: string[];
     readonly tenantId: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

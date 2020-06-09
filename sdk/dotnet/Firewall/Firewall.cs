@@ -29,7 +29,7 @@ namespace Pulumi.OpenStack.Firewall
     ///             Action = "deny",
     ///             Description = "drop TELNET traffic",
     ///             DestinationPort = "23",
-    ///             Enabled = "true",
+    ///             Enabled = true,
     ///             Protocol = "tcp",
     ///         });
     ///         var rule2 = new OpenStack.Firewall.Rule("rule2", new OpenStack.Firewall.RuleArgs
@@ -37,7 +37,7 @@ namespace Pulumi.OpenStack.Firewall
     ///             Action = "deny",
     ///             Description = "drop NTP traffic",
     ///             DestinationPort = "123",
-    ///             Enabled = "false",
+    ///             Enabled = false,
     ///             Protocol = "udp",
     ///         });
     ///         var policy1 = new OpenStack.Firewall.Policy("policy1", new OpenStack.Firewall.PolicyArgs

@@ -26,7 +26,7 @@ namespace Pulumi.OpenStack.Networking
     ///     {
     ///         var network1 = new OpenStack.Networking.Network("network1", new OpenStack.Networking.NetworkArgs
     ///         {
-    ///             AdminStateUp = "true",
+    ///             AdminStateUp = true,
     ///         });
     ///         var subnet1 = new OpenStack.Networking.Subnet("subnet1", new OpenStack.Networking.SubnetArgs
     ///         {
@@ -50,7 +50,7 @@ namespace Pulumi.OpenStack.Networking
     ///         });
     ///         var port1 = new OpenStack.Networking.Port("port1", new OpenStack.Networking.PortArgs
     ///         {
-    ///             AdminStateUp = "true",
+    ///             AdminStateUp = true,
     ///             FixedIps = 
     ///             {
     ///                 new OpenStack.Networking.Inputs.PortFixedIpArgs
