@@ -103,6 +103,10 @@ export interface GetShareNetworkResult {
      */
     readonly description: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * See Argument Reference above.
      */
     readonly ipVersion: number;
@@ -143,8 +147,4 @@ export interface GetShareNetworkResult {
      * See Argument Reference above.
      */
     readonly segmentationId: number;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

@@ -83,6 +83,10 @@ export interface GetSecGroupResult {
     readonly allTags: string[];
     readonly description?: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * See Argument Reference above.
      * * `description`- See Argument Reference above.
      */
@@ -94,8 +98,4 @@ export interface GetSecGroupResult {
     readonly secgroupId?: string;
     readonly tags?: string[];
     readonly tenantId: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

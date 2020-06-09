@@ -80,6 +80,10 @@ export interface GetContainerResult {
      */
     readonly creatorId: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * The name of the consumer.
      */
     readonly name?: string;
@@ -104,8 +108,4 @@ export interface GetContainerResult {
      * The date the container ACL was last updated.
      */
     readonly updatedAt: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

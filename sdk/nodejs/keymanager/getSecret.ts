@@ -90,13 +90,13 @@ export interface GetSecretArgs {
  */
 export interface GetSecretResult {
     /**
-     * The list of ACLs assigned to a secret. The `read` structure is described below.
-     */
-    readonly acls: outputs.keymanager.GetSecretAcl[];
-    /**
      * See Argument Reference above.
      */
     readonly aclOnly?: boolean;
+    /**
+     * The list of ACLs assigned to a secret. The `read` structure is described below.
+     */
+    readonly acls: outputs.keymanager.GetSecretAcl[];
     /**
      * See Argument Reference above.
      */
@@ -129,6 +129,10 @@ export interface GetSecretResult {
      * See Argument Reference above.
      */
     readonly expirationFilter?: string;
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     /**
      * The map of metadata, assigned on the secret, which has been
      * explicitly and implicitly added.
@@ -178,8 +182,4 @@ export interface GetSecretResult {
      * See Argument Reference above.
      */
     readonly updatedAtFilter?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

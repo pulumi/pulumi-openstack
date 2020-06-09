@@ -116,6 +116,10 @@ export interface GetShareResult {
      */
     readonly exportLocations: outputs.sharedfilesystem.GetShareExportLocation[];
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * See Argument Reference above.
      */
     readonly isPublic: boolean;
@@ -155,8 +159,4 @@ export interface GetShareResult {
      * See Argument Reference above.
      */
     readonly status: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

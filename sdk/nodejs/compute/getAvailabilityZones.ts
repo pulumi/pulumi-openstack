@@ -54,13 +54,13 @@ export interface GetAvailabilityZonesArgs {
  */
 export interface GetAvailabilityZonesResult {
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * The names of the availability zones, ordered alphanumerically, that match the queried `state`
      */
     readonly names: string[];
     readonly region: string;
     readonly state?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

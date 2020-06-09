@@ -134,6 +134,10 @@ export interface GetPortIdsResult {
     readonly deviceOwner?: string;
     readonly dnsName?: string;
     readonly fixedIp?: string;
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly ids: string[];
     readonly macAddress?: string;
     readonly name?: string;
@@ -146,8 +150,4 @@ export interface GetPortIdsResult {
     readonly status?: string;
     readonly tags?: string[];
     readonly tenantId?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

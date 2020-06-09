@@ -95,6 +95,10 @@ export interface GetQosPolicyResult {
      */
     readonly description: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * See Argument Reference above.
      */
     readonly isDefault: boolean;
@@ -120,8 +124,4 @@ export interface GetQosPolicyResult {
      * The time at which QoS policy was created.
      */
     readonly updatedAt: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

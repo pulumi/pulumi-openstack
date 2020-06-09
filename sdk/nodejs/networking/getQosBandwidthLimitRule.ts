@@ -71,6 +71,10 @@ export interface GetQosBandwidthLimitRuleResult {
      */
     readonly direction: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * See Argument Reference above.
      */
     readonly maxBurstKbps: number;
@@ -86,8 +90,4 @@ export interface GetQosBandwidthLimitRuleResult {
      * See Argument Reference above.
      */
     readonly region: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

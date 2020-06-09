@@ -31,7 +31,7 @@ namespace Pulumi.OpenStack.Database
     ///                 new OpenStack.Database.Inputs.ConfigurationConfigurationArgs
     ///                 {
     ///                     Name = "max_connections",
-    ///                     Value = 200,
+    ///                     Value = "200",
     ///                 },
     ///             },
     ///             Datastore = new OpenStack.Database.Inputs.ConfigurationDatastoreArgs

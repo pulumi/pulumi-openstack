@@ -249,12 +249,18 @@ class Subnet(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['allocation_pools'] = allocation_pools
+            if allocation_pools_collection is not None:
+                warnings.warn("use allocation_pool instead", DeprecationWarning)
+                pulumi.log.warn("allocation_pools_collection is deprecated: use allocation_pool instead")
             __props__['allocation_pools_collection'] = allocation_pools_collection
             __props__['cidr'] = cidr
             __props__['description'] = description
             __props__['dns_nameservers'] = dns_nameservers
             __props__['enable_dhcp'] = enable_dhcp
             __props__['gateway_ip'] = gateway_ip
+            if host_routes is not None:
+                warnings.warn("Use openstack_networking_subnet_route_v2 instead", DeprecationWarning)
+                pulumi.log.warn("host_routes is deprecated: Use openstack_networking_subnet_route_v2 instead")
             __props__['host_routes'] = host_routes
             __props__['ip_version'] = ip_version
             __props__['ipv6_address_mode'] = ipv6_address_mode

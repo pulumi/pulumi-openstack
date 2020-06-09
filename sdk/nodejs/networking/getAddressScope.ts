@@ -76,6 +76,10 @@ export interface GetAddressScopeArgs {
  */
 export interface GetAddressScopeResult {
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * See Argument Reference above.
      */
     readonly ipVersion?: number;
@@ -92,8 +96,4 @@ export interface GetAddressScopeResult {
      * See Argument Reference above.
      */
     readonly shared?: boolean;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

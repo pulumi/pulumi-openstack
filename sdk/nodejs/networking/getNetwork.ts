@@ -129,6 +129,10 @@ export interface GetNetworkResult {
      * See Argument Reference above.
      */
     readonly external?: boolean;
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly matchingSubnetCidr?: string;
     /**
      * See Argument Reference above.
@@ -155,8 +159,4 @@ export interface GetNetworkResult {
      * See Argument Reference above.
      */
     readonly transparentVlan?: boolean;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

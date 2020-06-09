@@ -98,6 +98,10 @@ export interface GetTrunkResult {
      */
     readonly allTags: string[];
     readonly description?: string;
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly name?: string;
     /**
      * The ID of the trunk subport.
@@ -113,8 +117,4 @@ export interface GetTrunkResult {
     readonly subPorts: outputs.networking.GetTrunkSubPort[];
     readonly tags?: string[];
     readonly trunkId?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

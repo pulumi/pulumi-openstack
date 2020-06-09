@@ -56,6 +56,10 @@ export interface GetAvailabilityZonesV3Args {
  */
 export interface GetAvailabilityZonesV3Result {
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * The names of the availability zones, ordered alphanumerically, that
      * match the queried `state`.
      */
@@ -68,8 +72,4 @@ export interface GetAvailabilityZonesV3Result {
      * See Argument Reference above.
      */
     readonly state?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

@@ -49,6 +49,7 @@ export class Image extends pulumi.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ImageState, opts?: pulumi.CustomResourceOptions): Image {
         return new Image(name, <any>state, { ...opts, id: id });
@@ -169,6 +170,8 @@ export class Image extends pulumi.CustomResource {
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
      * (**Deprecated** - use `updatedAt` instead)
+     *
+     * @deprecated Use updated_at instead
      */
     public /*out*/ readonly updateAt!: pulumi.Output<string>;
     /**
@@ -381,6 +384,7 @@ export interface ImageState {
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * (**Deprecated** - use `updatedAt` instead)
+     *
      * @deprecated Use updated_at instead
      */
     readonly updateAt?: pulumi.Input<string>;

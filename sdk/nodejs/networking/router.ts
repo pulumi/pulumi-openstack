@@ -31,6 +31,7 @@ export class Router extends pulumi.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: RouterState, opts?: pulumi.CustomResourceOptions): Router {
         return new Router(name, <any>state, { ...opts, id: id });
@@ -98,6 +99,8 @@ export class Router extends pulumi.CustomResource {
      * external gateway is required if any compute instances or load balancers
      * will be using floating IPs. Changing this updates the external gateway
      * of an existing router.
+     *
+     * @deprecated use external_network_id instead
      */
     public readonly externalGateway!: pulumi.Output<string>;
     /**
@@ -246,6 +249,7 @@ export interface RouterState {
      * external gateway is required if any compute instances or load balancers
      * will be using floating IPs. Changing this updates the external gateway
      * of an existing router.
+     *
      * @deprecated use external_network_id instead
      */
     readonly externalGateway?: pulumi.Input<string>;
@@ -335,6 +339,7 @@ export interface RouterArgs {
      * external gateway is required if any compute instances or load balancers
      * will be using floating IPs. Changing this updates the external gateway
      * of an existing router.
+     *
      * @deprecated use external_network_id instead
      */
     readonly externalGateway?: pulumi.Input<string>;

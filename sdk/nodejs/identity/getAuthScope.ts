@@ -67,6 +67,10 @@ export interface GetAuthScopeResult {
      * The domain name of the scope.
      */
     readonly domainName: string;
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly name: string;
     /**
      * The domain ID of the project.
@@ -105,8 +109,4 @@ export interface GetAuthScopeResult {
      * The username of the scope.
      */
     readonly userName: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

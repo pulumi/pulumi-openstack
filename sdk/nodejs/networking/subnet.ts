@@ -34,6 +34,7 @@ export class Subnet extends pulumi.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SubnetState, opts?: pulumi.CustomResourceOptions): Subnet {
         return new Subnet(name, <any>state, { ...opts, id: id });
@@ -72,6 +73,8 @@ export class Subnet extends pulumi.CustomResource {
      * A block declaring the start and end range of the IP addresses available for
      * use with DHCP in this subnet.
      * The `allocationPools` block is documented below.
+     *
+     * @deprecated use allocation_pool instead
      */
     public readonly allocationPoolsCollection!: pulumi.Output<outputs.networking.SubnetAllocationPoolsCollection[]>;
     /**
@@ -110,6 +113,8 @@ export class Subnet extends pulumi.CustomResource {
      * with IPs from this subnet (not including local subnet route). The hostRoute
      * object structure is documented below. Changing this updates the host routes
      * for the existing subnet.
+     *
+     * @deprecated Use openstack_networking_subnet_route_v2 instead
      */
     public readonly hostRoutes!: pulumi.Output<outputs.networking.SubnetHostRoute[] | undefined>;
     /**
@@ -268,6 +273,7 @@ export interface SubnetState {
      * A block declaring the start and end range of the IP addresses available for
      * use with DHCP in this subnet.
      * The `allocationPools` block is documented below.
+     *
      * @deprecated use allocation_pool instead
      */
     readonly allocationPoolsCollection?: pulumi.Input<pulumi.Input<inputs.networking.SubnetAllocationPoolsCollection>[]>;
@@ -307,6 +313,7 @@ export interface SubnetState {
      * with IPs from this subnet (not including local subnet route). The hostRoute
      * object structure is documented below. Changing this updates the host routes
      * for the existing subnet.
+     *
      * @deprecated Use openstack_networking_subnet_route_v2 instead
      */
     readonly hostRoutes?: pulumi.Input<pulumi.Input<inputs.networking.SubnetHostRoute>[]>;
@@ -391,6 +398,7 @@ export interface SubnetArgs {
      * A block declaring the start and end range of the IP addresses available for
      * use with DHCP in this subnet.
      * The `allocationPools` block is documented below.
+     *
      * @deprecated use allocation_pool instead
      */
     readonly allocationPoolsCollection?: pulumi.Input<pulumi.Input<inputs.networking.SubnetAllocationPoolsCollection>[]>;
@@ -430,6 +438,7 @@ export interface SubnetArgs {
      * with IPs from this subnet (not including local subnet route). The hostRoute
      * object structure is documented below. Changing this updates the host routes
      * for the existing subnet.
+     *
      * @deprecated Use openstack_networking_subnet_route_v2 instead
      */
     readonly hostRoutes?: pulumi.Input<pulumi.Input<inputs.networking.SubnetHostRoute>[]>;

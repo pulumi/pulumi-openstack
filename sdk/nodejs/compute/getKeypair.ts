@@ -60,6 +60,10 @@ export interface GetKeypairResult {
      */
     readonly fingerprint: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * See Argument Reference above.
      */
     readonly name: string;
@@ -71,8 +75,4 @@ export interface GetKeypairResult {
      * See Argument Reference above.
      */
     readonly region: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

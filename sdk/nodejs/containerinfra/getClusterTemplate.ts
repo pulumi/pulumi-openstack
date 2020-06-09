@@ -121,6 +121,10 @@ export interface GetClusterTemplateResult {
      */
     readonly httpsProxy: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * The reference to an image that is used for nodes of the cluster.
      */
     readonly image: string;
@@ -197,8 +201,4 @@ export interface GetClusterTemplateResult {
      * cluster nodes.
      */
     readonly volumeDriver: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }
