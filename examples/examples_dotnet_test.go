@@ -13,7 +13,7 @@ func getCsharpBaseOptions(t *testing.T) integration.ProgramTestOptions {
 	base := getBaseOptions()
 	baseCsharp := base.With(integration.ProgramTestOptions{
 		Dependencies: []string{
-			"Pulumi.Tls",
+			"Pulumi.OpenStack",
 		},
 	})
 

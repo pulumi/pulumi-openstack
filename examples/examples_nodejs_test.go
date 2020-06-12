@@ -1,5 +1,5 @@
 // Copyright 2016-2017, Pulumi Corporation.  All rights reserved.
-// +build dotnet all
+// +build nodejs all
 
 package examples
 
