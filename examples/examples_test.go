@@ -4,20 +4,10 @@ package examples
 
 import (
 	"os"
-	"path"
 	"testing"
 
 	"github.com/pulumi/pulumi/pkg/v2/testing/integration"
 )
-
-func TestAccWebserver(t *testing.T) {
-	test := getJSBaseOptions(t).
-		With(integration.ProgramTestOptions{
-			Dir: path.Join(getCwd(t), "webserver"),
-		})
-
-	integration.ProgramTest(t, &test)
-}
 
 func checkAuthUrl(t *testing.T) {
 	authUrl := os.Getenv("OS_AUTH_URL")
@@ -42,16 +32,4 @@ func getBaseOptions() integration.ProgramTestOptions {
 		// `~  openstack:compute:Instance test updated changes: + blockDevices,personalities,schedulerHints``
 		ExpectRefreshChanges: true,
 	}
-}
-
-func getJSBaseOptions(t *testing.T) integration.ProgramTestOptions {
-	checkAuthUrl(t)
-	base := getBaseOptions()
-	baseJS := base.With(integration.ProgramTestOptions{
-		Dependencies: []string{
-			"@pulumi/openstack",
-		},
-	})
-
-	return baseJS
 }
