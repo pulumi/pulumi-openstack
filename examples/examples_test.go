@@ -27,7 +27,6 @@ func getCwd(t *testing.T) string {
 
 func getBaseOptions() integration.ProgramTestOptions {
 	return integration.ProgramTestOptions{
-		Tracing: "https://tracing.pulumi-engineering.com/collector/api/v1/spans",
 		// One change is known to occur during refresh of the resources in this example:
 		// `~  openstack:compute:Instance test updated changes: + blockDevices,personalities,schedulerHints``
 		ExpectRefreshChanges: true,
