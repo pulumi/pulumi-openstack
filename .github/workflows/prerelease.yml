@@ -4,12 +4,14 @@ env:
   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
   NUGET_PUBLISH_KEY: ${{ secrets.NUGET_PUBLISH_KEY }}
-  OS_AUTH_URL: https://auth.cloud.ovh.net/v2.0/
-  OS_IDENTITY_API_VERSION: 2
+  OS_AUTH_URL: https://auth.cloud.ovh.net/v3/
+  OS_IDENTITY_API_VERSION: 3
   OS_PASSWORD: ${{ secrets.OS_PASSWORD }}
+  OS_PROJECT_DOMAIN_NAME: Default
   OS_REGION_NAME: UK1
   OS_TENANT_ID: 9d596a0506974e0f8c79673edf0bbdd3
   OS_TENANT_NAME: "9616699805113213"
+  OS_USER_DOMAIN_NAME: Default
   OS_USERNAME: jrGMbHHjkUQ7
   PROVIDER: openstack
   PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
@@ -343,8 +345,10 @@ jobs:
         path: ${{ github.workspace}}/sdk/${{ matrix.language }}
     - name: Update path
       run: echo ::add-path::${{ github.workspace }}/bin
-    - name: Install pipenv
-      uses: dschep/install-pipenv-action@v1
+    - name: Install Python deps
+      run: |-
+        pip3 install virtualenv==20.0.23
+        pip3 install pipenv
     - name: Install dependencies
       run: make -f Makefile.github install_${{ matrix.language}}_sdk
     - name: Run tests
