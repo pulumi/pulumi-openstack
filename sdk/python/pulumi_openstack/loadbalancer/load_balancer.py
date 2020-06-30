@@ -58,18 +58,27 @@ class LoadBalancer(pulumi.CustomResource):
     The ip address of the load balancer.
     Changing this creates a new loadbalancer.
     """
+    vip_network_id: pulumi.Output[str]
+    """
+    The network on which to allocate the
+    Loadbalancer's address. A tenant can only create Loadbalancers on networks
+    authorized by policy (e.g. networks that belong to them or networks that
+    are shared).  Changing this creates a new loadbalancer.
+    It is available only for Octavia.
+    """
     vip_port_id: pulumi.Output[str]
     """
     The Port ID of the Load Balancer IP.
     """
     vip_subnet_id: pulumi.Output[str]
     """
-    The network on which to allocate the
+    The subnet on which to allocate the
     Loadbalancer's address. A tenant can only create Loadbalancers on networks
     authorized by policy (e.g. networks that belong to them or networks that
     are shared).  Changing this creates a new loadbalancer.
+    It is required to Neutron LBaaS but optional for Octavia.
     """
-    def __init__(__self__, resource_name, opts=None, admin_state_up=None, description=None, flavor_id=None, loadbalancer_provider=None, name=None, region=None, security_group_ids=None, tenant_id=None, vip_address=None, vip_subnet_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, admin_state_up=None, description=None, flavor_id=None, loadbalancer_provider=None, name=None, region=None, security_group_ids=None, tenant_id=None, vip_address=None, vip_network_id=None, vip_subnet_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a V2 loadbalancer resource within OpenStack.
 
@@ -108,10 +117,16 @@ class LoadBalancer(pulumi.CustomResource):
                other than their own.  Changing this creates a new loadbalancer.
         :param pulumi.Input[str] vip_address: The ip address of the load balancer.
                Changing this creates a new loadbalancer.
-        :param pulumi.Input[str] vip_subnet_id: The network on which to allocate the
+        :param pulumi.Input[str] vip_network_id: The network on which to allocate the
                Loadbalancer's address. A tenant can only create Loadbalancers on networks
                authorized by policy (e.g. networks that belong to them or networks that
                are shared).  Changing this creates a new loadbalancer.
+               It is available only for Octavia.
+        :param pulumi.Input[str] vip_subnet_id: The subnet on which to allocate the
+               Loadbalancer's address. A tenant can only create Loadbalancers on networks
+               authorized by policy (e.g. networks that belong to them or networks that
+               are shared).  Changing this creates a new loadbalancer.
+               It is required to Neutron LBaaS but optional for Octavia.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -139,8 +154,7 @@ class LoadBalancer(pulumi.CustomResource):
             __props__['security_group_ids'] = security_group_ids
             __props__['tenant_id'] = tenant_id
             __props__['vip_address'] = vip_address
-            if vip_subnet_id is None:
-                raise TypeError("Missing required property 'vip_subnet_id'")
+            __props__['vip_network_id'] = vip_network_id
             __props__['vip_subnet_id'] = vip_subnet_id
             __props__['vip_port_id'] = None
         super(LoadBalancer, __self__).__init__(
@@ -150,7 +164,7 @@ class LoadBalancer(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, admin_state_up=None, description=None, flavor_id=None, loadbalancer_provider=None, name=None, region=None, security_group_ids=None, tenant_id=None, vip_address=None, vip_port_id=None, vip_subnet_id=None):
+    def get(resource_name, id, opts=None, admin_state_up=None, description=None, flavor_id=None, loadbalancer_provider=None, name=None, region=None, security_group_ids=None, tenant_id=None, vip_address=None, vip_network_id=None, vip_port_id=None, vip_subnet_id=None):
         """
         Get an existing LoadBalancer resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -179,11 +193,17 @@ class LoadBalancer(pulumi.CustomResource):
                other than their own.  Changing this creates a new loadbalancer.
         :param pulumi.Input[str] vip_address: The ip address of the load balancer.
                Changing this creates a new loadbalancer.
-        :param pulumi.Input[str] vip_port_id: The Port ID of the Load Balancer IP.
-        :param pulumi.Input[str] vip_subnet_id: The network on which to allocate the
+        :param pulumi.Input[str] vip_network_id: The network on which to allocate the
                Loadbalancer's address. A tenant can only create Loadbalancers on networks
                authorized by policy (e.g. networks that belong to them or networks that
                are shared).  Changing this creates a new loadbalancer.
+               It is available only for Octavia.
+        :param pulumi.Input[str] vip_port_id: The Port ID of the Load Balancer IP.
+        :param pulumi.Input[str] vip_subnet_id: The subnet on which to allocate the
+               Loadbalancer's address. A tenant can only create Loadbalancers on networks
+               authorized by policy (e.g. networks that belong to them or networks that
+               are shared).  Changing this creates a new loadbalancer.
+               It is required to Neutron LBaaS but optional for Octavia.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -198,6 +218,7 @@ class LoadBalancer(pulumi.CustomResource):
         __props__["security_group_ids"] = security_group_ids
         __props__["tenant_id"] = tenant_id
         __props__["vip_address"] = vip_address
+        __props__["vip_network_id"] = vip_network_id
         __props__["vip_port_id"] = vip_port_id
         __props__["vip_subnet_id"] = vip_subnet_id
         return LoadBalancer(resource_name, opts=opts, __props__=__props__)

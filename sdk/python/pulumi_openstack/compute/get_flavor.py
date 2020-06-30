@@ -35,9 +35,6 @@ class GetFlavorResult:
         if is_public and not isinstance(is_public, bool):
             raise TypeError("Expected argument 'is_public' to be a bool")
         __self__.is_public = is_public
-        """
-        Whether the flavor is public or private.
-        """
         if min_disk and not isinstance(min_disk, float):
             raise TypeError("Expected argument 'min_disk' to be a float")
         __self__.min_disk = min_disk
@@ -82,7 +79,7 @@ class AwaitableGetFlavorResult(GetFlavorResult):
             swap=self.swap,
             vcpus=self.vcpus)
 
-def get_flavor(disk=None,flavor_id=None,min_disk=None,min_ram=None,name=None,ram=None,region=None,rx_tx_factor=None,swap=None,vcpus=None,opts=None):
+def get_flavor(disk=None,flavor_id=None,is_public=None,min_disk=None,min_ram=None,name=None,ram=None,region=None,rx_tx_factor=None,swap=None,vcpus=None,opts=None):
     """
     Use this data source to get the ID of an available OpenStack flavor.
 
@@ -103,6 +100,7 @@ def get_flavor(disk=None,flavor_id=None,min_disk=None,min_ram=None,name=None,ram
     :param float disk: The exact amount of disk (in gigabytes).
     :param str flavor_id: The ID of the flavor. Conflicts with the `name`,
            `min_ram` and `min_disk`
+    :param bool is_public: The flavor visibility.
     :param float min_disk: The minimum amount of disk (in gigabytes). Conflicts
            with the `flavor_id`.
     :param float min_ram: The minimum amount of RAM (in megabytes). Conflicts
@@ -120,6 +118,7 @@ def get_flavor(disk=None,flavor_id=None,min_disk=None,min_ram=None,name=None,ram
 
     __args__['disk'] = disk
     __args__['flavorId'] = flavor_id
+    __args__['isPublic'] = is_public
     __args__['minDisk'] = min_disk
     __args__['minRam'] = min_ram
     __args__['name'] = name

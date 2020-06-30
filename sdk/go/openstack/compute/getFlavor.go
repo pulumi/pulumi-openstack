@@ -24,6 +24,8 @@ type LookupFlavorArgs struct {
 	// The ID of the flavor. Conflicts with the `name`,
 	// `minRam` and `minDisk`
 	FlavorId *string `pulumi:"flavorId"`
+	// The flavor visibility.
+	IsPublic *bool `pulumi:"isPublic"`
 	// The minimum amount of disk (in gigabytes). Conflicts
 	// with the `flavorId`.
 	MinDisk *int `pulumi:"minDisk"`
@@ -52,9 +54,8 @@ type LookupFlavorResult struct {
 	ExtraSpecs map[string]interface{} `pulumi:"extraSpecs"`
 	FlavorId   *string                `pulumi:"flavorId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// Whether the flavor is public or private.
-	IsPublic   bool     `pulumi:"isPublic"`
+	Id         string   `pulumi:"id"`
+	IsPublic   *bool    `pulumi:"isPublic"`
 	MinDisk    *int     `pulumi:"minDisk"`
 	MinRam     *int     `pulumi:"minRam"`
 	Name       *string  `pulumi:"name"`

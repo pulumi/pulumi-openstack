@@ -13,7 +13,7 @@ class Port(pulumi.CustomResource):
     admin_state_up: pulumi.Output[bool]
     """
     Administrative up/down status for the port
-    (must be "true" or "false" if provided). Changing this updates the
+    (must be `true` or `false` if provided). Changing this updates the
     `admin_state_up` of an existing port.
     """
     all_fixed_ips: pulumi.Output[list]
@@ -57,7 +57,7 @@ class Port(pulumi.CustomResource):
     """
     description: pulumi.Output[str]
     """
-    Human-readable description of the floating IP. Changing
+    Human-readable description of the port. Changing
     this updates the `description` of an existing port.
     """
     device_id: pulumi.Output[str]
@@ -67,7 +67,7 @@ class Port(pulumi.CustomResource):
     """
     device_owner: pulumi.Output[str]
     """
-    The device owner of the Port. Changing this creates
+    The device owner of the port. Changing this creates
     a new port.
     """
     dns_assignments: pulumi.Output[list]
@@ -121,7 +121,7 @@ class Port(pulumi.CustomResource):
     """
     If set to
     `true`, then no security groups are applied to the port. If set to `false` and
-    no `security_group_ids` are specified, then the Port will yield to the default
+    no `security_group_ids` are specified, then the port will yield to the default
     behavior of the Networking service, which is to usually apply the "default"
     security group.
     """
@@ -129,7 +129,7 @@ class Port(pulumi.CustomResource):
     """
     Whether to explicitly enable or disable
     port security on the port. Port Security is usually enabled by default, so
-    omitting argument will usually result in a value of "true". Setting this
+    omitting argument will usually result in a value of `true`. Setting this
     explicitly to `false` will disable port security. In order to disable port
     security, the port must not have any security groups. Valid values are `true`
     and `false`.
@@ -140,8 +140,8 @@ class Port(pulumi.CustomResource):
     """
     region: pulumi.Output[str]
     """
-    The region in which to obtain the V2 networking client.
-    A networking client is needed to create a port. If omitted, the
+    The region in which to obtain the V2 Networking client.
+    A Networking client is needed to create a port. If omitted, the
     `region` argument of the provider is used. Changing this creates a new
     port.
     """
@@ -158,7 +158,7 @@ class Port(pulumi.CustomResource):
     """
     tenant_id: pulumi.Output[str]
     """
-    The owner of the Port. Required if admin wants
+    The owner of the port. Required if admin wants
     to create a port for another tenant. Changing this creates a new port.
     """
     value_specs: pulumi.Output[dict]
@@ -229,18 +229,18 @@ class Port(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] admin_state_up: Administrative up/down status for the port
-               (must be "true" or "false" if provided). Changing this updates the
+               (must be `true` or `false` if provided). Changing this updates the
                `admin_state_up` of an existing port.
         :param pulumi.Input[list] allowed_address_pairs: An IP/MAC Address pair of additional IP
                addresses that can be active on this port. The structure is described
                below.
         :param pulumi.Input[dict] binding: The port binding allows to specify binding information
                for the port. The structure is described below.
-        :param pulumi.Input[str] description: Human-readable description of the floating IP. Changing
+        :param pulumi.Input[str] description: Human-readable description of the port. Changing
                this updates the `description` of an existing port.
         :param pulumi.Input[str] device_id: The ID of the device attached to the port. Changing this
                creates a new port.
-        :param pulumi.Input[str] device_owner: The device owner of the Port. Changing this creates
+        :param pulumi.Input[str] device_owner: The device owner of the port. Changing this creates
                a new port.
         :param pulumi.Input[str] dns_name: The port DNS name. Available, when Neutron DNS extension
                is enabled.
@@ -258,18 +258,18 @@ class Port(pulumi.CustomResource):
                is the only valid value for this argument.
         :param pulumi.Input[bool] no_security_groups: If set to
                `true`, then no security groups are applied to the port. If set to `false` and
-               no `security_group_ids` are specified, then the Port will yield to the default
+               no `security_group_ids` are specified, then the port will yield to the default
                behavior of the Networking service, which is to usually apply the "default"
                security group.
         :param pulumi.Input[bool] port_security_enabled: Whether to explicitly enable or disable
                port security on the port. Port Security is usually enabled by default, so
-               omitting argument will usually result in a value of "true". Setting this
+               omitting argument will usually result in a value of `true`. Setting this
                explicitly to `false` will disable port security. In order to disable port
                security, the port must not have any security groups. Valid values are `true`
                and `false`.
         :param pulumi.Input[str] qos_policy_id: Reference to the associated QoS policy.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
-               A networking client is needed to create a port. If omitted, the
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
+               A Networking client is needed to create a port. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
                port.
         :param pulumi.Input[list] security_group_ids: A list
@@ -277,7 +277,7 @@ class Port(pulumi.CustomResource):
                specified by ID and not name (as opposed to how they are configured with
                the Compute Instance).
         :param pulumi.Input[list] tags: A set of string tags for the port.
-        :param pulumi.Input[str] tenant_id: The owner of the Port. Required if admin wants
+        :param pulumi.Input[str] tenant_id: The owner of the port. Required if admin wants
                to create a port for another tenant. Changing this creates a new port.
         :param pulumi.Input[dict] value_specs: Map of additional options.
 
@@ -370,7 +370,7 @@ class Port(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] admin_state_up: Administrative up/down status for the port
-               (must be "true" or "false" if provided). Changing this updates the
+               (must be `true` or `false` if provided). Changing this updates the
                `admin_state_up` of an existing port.
         :param pulumi.Input[list] all_fixed_ips: The collection of Fixed IP addresses on the port in the
                order returned by the Network v2 API.
@@ -383,11 +383,11 @@ class Port(pulumi.CustomResource):
                below.
         :param pulumi.Input[dict] binding: The port binding allows to specify binding information
                for the port. The structure is described below.
-        :param pulumi.Input[str] description: Human-readable description of the floating IP. Changing
+        :param pulumi.Input[str] description: Human-readable description of the port. Changing
                this updates the `description` of an existing port.
         :param pulumi.Input[str] device_id: The ID of the device attached to the port. Changing this
                creates a new port.
-        :param pulumi.Input[str] device_owner: The device owner of the Port. Changing this creates
+        :param pulumi.Input[str] device_owner: The device owner of the port. Changing this creates
                a new port.
         :param pulumi.Input[list] dns_assignments: The list of maps representing port DNS assignments.
         :param pulumi.Input[str] dns_name: The port DNS name. Available, when Neutron DNS extension
@@ -406,18 +406,18 @@ class Port(pulumi.CustomResource):
                is the only valid value for this argument.
         :param pulumi.Input[bool] no_security_groups: If set to
                `true`, then no security groups are applied to the port. If set to `false` and
-               no `security_group_ids` are specified, then the Port will yield to the default
+               no `security_group_ids` are specified, then the port will yield to the default
                behavior of the Networking service, which is to usually apply the "default"
                security group.
         :param pulumi.Input[bool] port_security_enabled: Whether to explicitly enable or disable
                port security on the port. Port Security is usually enabled by default, so
-               omitting argument will usually result in a value of "true". Setting this
+               omitting argument will usually result in a value of `true`. Setting this
                explicitly to `false` will disable port security. In order to disable port
                security, the port must not have any security groups. Valid values are `true`
                and `false`.
         :param pulumi.Input[str] qos_policy_id: Reference to the associated QoS policy.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
-               A networking client is needed to create a port. If omitted, the
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
+               A Networking client is needed to create a port. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
                port.
         :param pulumi.Input[list] security_group_ids: A list
@@ -425,7 +425,7 @@ class Port(pulumi.CustomResource):
                specified by ID and not name (as opposed to how they are configured with
                the Compute Instance).
         :param pulumi.Input[list] tags: A set of string tags for the port.
-        :param pulumi.Input[str] tenant_id: The owner of the Port. Required if admin wants
+        :param pulumi.Input[str] tenant_id: The owner of the port. Required if admin wants
                to create a port for another tenant. Changing this creates a new port.
         :param pulumi.Input[dict] value_specs: Map of additional options.
 

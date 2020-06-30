@@ -98,7 +98,7 @@ namespace Pulumi.OpenStack.Networking
     {
         /// <summary>
         /// Administrative up/down status for the port
-        /// (must be "true" or "false" if provided). Changing this updates the
+        /// (must be `true` or `false` if provided). Changing this updates the
         /// `admin_state_up` of an existing port.
         /// </summary>
         [Output("adminStateUp")]
@@ -141,7 +141,7 @@ namespace Pulumi.OpenStack.Networking
         public Output<Outputs.PortBinding> Binding { get; private set; } = null!;
 
         /// <summary>
-        /// Human-readable description of the floating IP. Changing
+        /// Human-readable description of the port. Changing
         /// this updates the `description` of an existing port.
         /// </summary>
         [Output("description")]
@@ -155,7 +155,7 @@ namespace Pulumi.OpenStack.Networking
         public Output<string> DeviceId { get; private set; } = null!;
 
         /// <summary>
-        /// The device owner of the Port. Changing this creates
+        /// The device owner of the port. Changing this creates
         /// a new port.
         /// </summary>
         [Output("deviceOwner")]
@@ -219,7 +219,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// If set to
         /// `true`, then no security groups are applied to the port. If set to `false` and
-        /// no `security_group_ids` are specified, then the Port will yield to the default
+        /// no `security_group_ids` are specified, then the port will yield to the default
         /// behavior of the Networking service, which is to usually apply the "default"
         /// security group.
         /// </summary>
@@ -229,7 +229,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// Whether to explicitly enable or disable
         /// port security on the port. Port Security is usually enabled by default, so
-        /// omitting argument will usually result in a value of "true". Setting this
+        /// omitting argument will usually result in a value of `true`. Setting this
         /// explicitly to `false` will disable port security. In order to disable port
         /// security, the port must not have any security groups. Valid values are `true`
         /// and `false`.
@@ -244,8 +244,8 @@ namespace Pulumi.OpenStack.Networking
         public Output<string> QosPolicyId { get; private set; } = null!;
 
         /// <summary>
-        /// The region in which to obtain the V2 networking client.
-        /// A networking client is needed to create a port. If omitted, the
+        /// The region in which to obtain the V2 Networking client.
+        /// A Networking client is needed to create a port. If omitted, the
         /// `region` argument of the provider is used. Changing this creates a new
         /// port.
         /// </summary>
@@ -268,7 +268,7 @@ namespace Pulumi.OpenStack.Networking
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The owner of the Port. Required if admin wants
+        /// The owner of the port. Required if admin wants
         /// to create a port for another tenant. Changing this creates a new port.
         /// </summary>
         [Output("tenantId")]
@@ -328,7 +328,7 @@ namespace Pulumi.OpenStack.Networking
     {
         /// <summary>
         /// Administrative up/down status for the port
-        /// (must be "true" or "false" if provided). Changing this updates the
+        /// (must be `true` or `false` if provided). Changing this updates the
         /// `admin_state_up` of an existing port.
         /// </summary>
         [Input("adminStateUp")]
@@ -356,7 +356,7 @@ namespace Pulumi.OpenStack.Networking
         public Input<Inputs.PortBindingArgs>? Binding { get; set; }
 
         /// <summary>
-        /// Human-readable description of the floating IP. Changing
+        /// Human-readable description of the port. Changing
         /// this updates the `description` of an existing port.
         /// </summary>
         [Input("description")]
@@ -370,7 +370,7 @@ namespace Pulumi.OpenStack.Networking
         public Input<string>? DeviceId { get; set; }
 
         /// <summary>
-        /// The device owner of the Port. Changing this creates
+        /// The device owner of the port. Changing this creates
         /// a new port.
         /// </summary>
         [Input("deviceOwner")]
@@ -440,7 +440,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// If set to
         /// `true`, then no security groups are applied to the port. If set to `false` and
-        /// no `security_group_ids` are specified, then the Port will yield to the default
+        /// no `security_group_ids` are specified, then the port will yield to the default
         /// behavior of the Networking service, which is to usually apply the "default"
         /// security group.
         /// </summary>
@@ -450,7 +450,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// Whether to explicitly enable or disable
         /// port security on the port. Port Security is usually enabled by default, so
-        /// omitting argument will usually result in a value of "true". Setting this
+        /// omitting argument will usually result in a value of `true`. Setting this
         /// explicitly to `false` will disable port security. In order to disable port
         /// security, the port must not have any security groups. Valid values are `true`
         /// and `false`.
@@ -465,8 +465,8 @@ namespace Pulumi.OpenStack.Networking
         public Input<string>? QosPolicyId { get; set; }
 
         /// <summary>
-        /// The region in which to obtain the V2 networking client.
-        /// A networking client is needed to create a port. If omitted, the
+        /// The region in which to obtain the V2 Networking client.
+        /// A Networking client is needed to create a port. If omitted, the
         /// `region` argument of the provider is used. Changing this creates a new
         /// port.
         /// </summary>
@@ -501,7 +501,7 @@ namespace Pulumi.OpenStack.Networking
         }
 
         /// <summary>
-        /// The owner of the Port. Required if admin wants
+        /// The owner of the port. Required if admin wants
         /// to create a port for another tenant. Changing this creates a new port.
         /// </summary>
         [Input("tenantId")]
@@ -528,7 +528,7 @@ namespace Pulumi.OpenStack.Networking
     {
         /// <summary>
         /// Administrative up/down status for the port
-        /// (must be "true" or "false" if provided). Changing this updates the
+        /// (must be `true` or `false` if provided). Changing this updates the
         /// `admin_state_up` of an existing port.
         /// </summary>
         [Input("adminStateUp")]
@@ -595,7 +595,7 @@ namespace Pulumi.OpenStack.Networking
         public Input<Inputs.PortBindingGetArgs>? Binding { get; set; }
 
         /// <summary>
-        /// Human-readable description of the floating IP. Changing
+        /// Human-readable description of the port. Changing
         /// this updates the `description` of an existing port.
         /// </summary>
         [Input("description")]
@@ -609,7 +609,7 @@ namespace Pulumi.OpenStack.Networking
         public Input<string>? DeviceId { get; set; }
 
         /// <summary>
-        /// The device owner of the Port. Changing this creates
+        /// The device owner of the port. Changing this creates
         /// a new port.
         /// </summary>
         [Input("deviceOwner")]
@@ -691,7 +691,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// If set to
         /// `true`, then no security groups are applied to the port. If set to `false` and
-        /// no `security_group_ids` are specified, then the Port will yield to the default
+        /// no `security_group_ids` are specified, then the port will yield to the default
         /// behavior of the Networking service, which is to usually apply the "default"
         /// security group.
         /// </summary>
@@ -701,7 +701,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// Whether to explicitly enable or disable
         /// port security on the port. Port Security is usually enabled by default, so
-        /// omitting argument will usually result in a value of "true". Setting this
+        /// omitting argument will usually result in a value of `true`. Setting this
         /// explicitly to `false` will disable port security. In order to disable port
         /// security, the port must not have any security groups. Valid values are `true`
         /// and `false`.
@@ -716,8 +716,8 @@ namespace Pulumi.OpenStack.Networking
         public Input<string>? QosPolicyId { get; set; }
 
         /// <summary>
-        /// The region in which to obtain the V2 networking client.
-        /// A networking client is needed to create a port. If omitted, the
+        /// The region in which to obtain the V2 Networking client.
+        /// A Networking client is needed to create a port. If omitted, the
         /// `region` argument of the provider is used. Changing this creates a new
         /// port.
         /// </summary>
@@ -752,7 +752,7 @@ namespace Pulumi.OpenStack.Networking
         }
 
         /// <summary>
-        /// The owner of the Port. Required if admin wants
+        /// The owner of the port. Required if admin wants
         /// to create a port for another tenant. Changing this creates a new port.
         /// </summary>
         [Input("tenantId")]

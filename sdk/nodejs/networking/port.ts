@@ -101,7 +101,7 @@ export class Port extends pulumi.CustomResource {
 
     /**
      * Administrative up/down status for the port
-     * (must be "true" or "false" if provided). Changing this updates the
+     * (must be `true` or `false` if provided). Changing this updates the
      * `adminStateUp` of an existing port.
      */
     public readonly adminStateUp!: pulumi.Output<boolean>;
@@ -132,7 +132,7 @@ export class Port extends pulumi.CustomResource {
      */
     public readonly binding!: pulumi.Output<outputs.networking.PortBinding>;
     /**
-     * Human-readable description of the floating IP. Changing
+     * Human-readable description of the port. Changing
      * this updates the `description` of an existing port.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -142,7 +142,7 @@ export class Port extends pulumi.CustomResource {
      */
     public readonly deviceId!: pulumi.Output<string>;
     /**
-     * The device owner of the Port. Changing this creates
+     * The device owner of the port. Changing this creates
      * a new port.
      */
     public readonly deviceOwner!: pulumi.Output<string>;
@@ -188,7 +188,7 @@ export class Port extends pulumi.CustomResource {
     /**
      * If set to
      * `true`, then no security groups are applied to the port. If set to `false` and
-     * no `securityGroupIds` are specified, then the Port will yield to the default
+     * no `securityGroupIds` are specified, then the port will yield to the default
      * behavior of the Networking service, which is to usually apply the "default"
      * security group.
      */
@@ -196,7 +196,7 @@ export class Port extends pulumi.CustomResource {
     /**
      * Whether to explicitly enable or disable
      * port security on the port. Port Security is usually enabled by default, so
-     * omitting argument will usually result in a value of "true". Setting this
+     * omitting argument will usually result in a value of `true`. Setting this
      * explicitly to `false` will disable port security. In order to disable port
      * security, the port must not have any security groups. Valid values are `true`
      * and `false`.
@@ -207,8 +207,8 @@ export class Port extends pulumi.CustomResource {
      */
     public readonly qosPolicyId!: pulumi.Output<string>;
     /**
-     * The region in which to obtain the V2 networking client.
-     * A networking client is needed to create a port. If omitted, the
+     * The region in which to obtain the V2 Networking client.
+     * A Networking client is needed to create a port. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * port.
      */
@@ -225,7 +225,7 @@ export class Port extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
-     * The owner of the Port. Required if admin wants
+     * The owner of the port. Required if admin wants
      * to create a port for another tenant. Changing this creates a new port.
      */
     public readonly tenantId!: pulumi.Output<string>;
@@ -319,7 +319,7 @@ export class Port extends pulumi.CustomResource {
 export interface PortState {
     /**
      * Administrative up/down status for the port
-     * (must be "true" or "false" if provided). Changing this updates the
+     * (must be `true` or `false` if provided). Changing this updates the
      * `adminStateUp` of an existing port.
      */
     readonly adminStateUp?: pulumi.Input<boolean>;
@@ -350,7 +350,7 @@ export interface PortState {
      */
     readonly binding?: pulumi.Input<inputs.networking.PortBinding>;
     /**
-     * Human-readable description of the floating IP. Changing
+     * Human-readable description of the port. Changing
      * this updates the `description` of an existing port.
      */
     readonly description?: pulumi.Input<string>;
@@ -360,7 +360,7 @@ export interface PortState {
      */
     readonly deviceId?: pulumi.Input<string>;
     /**
-     * The device owner of the Port. Changing this creates
+     * The device owner of the port. Changing this creates
      * a new port.
      */
     readonly deviceOwner?: pulumi.Input<string>;
@@ -406,7 +406,7 @@ export interface PortState {
     /**
      * If set to
      * `true`, then no security groups are applied to the port. If set to `false` and
-     * no `securityGroupIds` are specified, then the Port will yield to the default
+     * no `securityGroupIds` are specified, then the port will yield to the default
      * behavior of the Networking service, which is to usually apply the "default"
      * security group.
      */
@@ -414,7 +414,7 @@ export interface PortState {
     /**
      * Whether to explicitly enable or disable
      * port security on the port. Port Security is usually enabled by default, so
-     * omitting argument will usually result in a value of "true". Setting this
+     * omitting argument will usually result in a value of `true`. Setting this
      * explicitly to `false` will disable port security. In order to disable port
      * security, the port must not have any security groups. Valid values are `true`
      * and `false`.
@@ -425,8 +425,8 @@ export interface PortState {
      */
     readonly qosPolicyId?: pulumi.Input<string>;
     /**
-     * The region in which to obtain the V2 networking client.
-     * A networking client is needed to create a port. If omitted, the
+     * The region in which to obtain the V2 Networking client.
+     * A Networking client is needed to create a port. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * port.
      */
@@ -443,7 +443,7 @@ export interface PortState {
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The owner of the Port. Required if admin wants
+     * The owner of the port. Required if admin wants
      * to create a port for another tenant. Changing this creates a new port.
      */
     readonly tenantId?: pulumi.Input<string>;
@@ -459,7 +459,7 @@ export interface PortState {
 export interface PortArgs {
     /**
      * Administrative up/down status for the port
-     * (must be "true" or "false" if provided). Changing this updates the
+     * (must be `true` or `false` if provided). Changing this updates the
      * `adminStateUp` of an existing port.
      */
     readonly adminStateUp?: pulumi.Input<boolean>;
@@ -475,7 +475,7 @@ export interface PortArgs {
      */
     readonly binding?: pulumi.Input<inputs.networking.PortBinding>;
     /**
-     * Human-readable description of the floating IP. Changing
+     * Human-readable description of the port. Changing
      * this updates the `description` of an existing port.
      */
     readonly description?: pulumi.Input<string>;
@@ -485,7 +485,7 @@ export interface PortArgs {
      */
     readonly deviceId?: pulumi.Input<string>;
     /**
-     * The device owner of the Port. Changing this creates
+     * The device owner of the port. Changing this creates
      * a new port.
      */
     readonly deviceOwner?: pulumi.Input<string>;
@@ -527,7 +527,7 @@ export interface PortArgs {
     /**
      * If set to
      * `true`, then no security groups are applied to the port. If set to `false` and
-     * no `securityGroupIds` are specified, then the Port will yield to the default
+     * no `securityGroupIds` are specified, then the port will yield to the default
      * behavior of the Networking service, which is to usually apply the "default"
      * security group.
      */
@@ -535,7 +535,7 @@ export interface PortArgs {
     /**
      * Whether to explicitly enable or disable
      * port security on the port. Port Security is usually enabled by default, so
-     * omitting argument will usually result in a value of "true". Setting this
+     * omitting argument will usually result in a value of `true`. Setting this
      * explicitly to `false` will disable port security. In order to disable port
      * security, the port must not have any security groups. Valid values are `true`
      * and `false`.
@@ -546,8 +546,8 @@ export interface PortArgs {
      */
     readonly qosPolicyId?: pulumi.Input<string>;
     /**
-     * The region in which to obtain the V2 networking client.
-     * A networking client is needed to create a port. If omitted, the
+     * The region in which to obtain the V2 Networking client.
+     * A Networking client is needed to create a port. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * port.
      */
@@ -564,7 +564,7 @@ export interface PortArgs {
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The owner of the Port. Required if admin wants
+     * The owner of the port. Required if admin wants
      * to create a port for another tenant. Changing this creates a new port.
      */
     readonly tenantId?: pulumi.Input<string>;

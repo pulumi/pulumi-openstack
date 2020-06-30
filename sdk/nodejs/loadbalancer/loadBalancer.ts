@@ -97,14 +97,23 @@ export class LoadBalancer extends pulumi.CustomResource {
      */
     public readonly vipAddress!: pulumi.Output<string>;
     /**
-     * The Port ID of the Load Balancer IP.
-     */
-    public /*out*/ readonly vipPortId!: pulumi.Output<string>;
-    /**
      * The network on which to allocate the
      * Loadbalancer's address. A tenant can only create Loadbalancers on networks
      * authorized by policy (e.g. networks that belong to them or networks that
      * are shared).  Changing this creates a new loadbalancer.
+     * It is available only for Octavia.
+     */
+    public readonly vipNetworkId!: pulumi.Output<string>;
+    /**
+     * The Port ID of the Load Balancer IP.
+     */
+    public /*out*/ readonly vipPortId!: pulumi.Output<string>;
+    /**
+     * The subnet on which to allocate the
+     * Loadbalancer's address. A tenant can only create Loadbalancers on networks
+     * authorized by policy (e.g. networks that belong to them or networks that
+     * are shared).  Changing this creates a new loadbalancer.
+     * It is required to Neutron LBaaS but optional for Octavia.
      */
     public readonly vipSubnetId!: pulumi.Output<string>;
 
@@ -115,7 +124,7 @@ export class LoadBalancer extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: LoadBalancerArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: LoadBalancerArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: LoadBalancerArgs | LoadBalancerState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
@@ -129,13 +138,11 @@ export class LoadBalancer extends pulumi.CustomResource {
             inputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
             inputs["tenantId"] = state ? state.tenantId : undefined;
             inputs["vipAddress"] = state ? state.vipAddress : undefined;
+            inputs["vipNetworkId"] = state ? state.vipNetworkId : undefined;
             inputs["vipPortId"] = state ? state.vipPortId : undefined;
             inputs["vipSubnetId"] = state ? state.vipSubnetId : undefined;
         } else {
             const args = argsOrState as LoadBalancerArgs | undefined;
-            if (!args || args.vipSubnetId === undefined) {
-                throw new Error("Missing required property 'vipSubnetId'");
-            }
             inputs["adminStateUp"] = args ? args.adminStateUp : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["flavorId"] = args ? args.flavorId : undefined;
@@ -145,6 +152,7 @@ export class LoadBalancer extends pulumi.CustomResource {
             inputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
             inputs["tenantId"] = args ? args.tenantId : undefined;
             inputs["vipAddress"] = args ? args.vipAddress : undefined;
+            inputs["vipNetworkId"] = args ? args.vipNetworkId : undefined;
             inputs["vipSubnetId"] = args ? args.vipSubnetId : undefined;
             inputs["vipPortId"] = undefined /*out*/;
         }
@@ -212,14 +220,23 @@ export interface LoadBalancerState {
      */
     readonly vipAddress?: pulumi.Input<string>;
     /**
-     * The Port ID of the Load Balancer IP.
-     */
-    readonly vipPortId?: pulumi.Input<string>;
-    /**
      * The network on which to allocate the
      * Loadbalancer's address. A tenant can only create Loadbalancers on networks
      * authorized by policy (e.g. networks that belong to them or networks that
      * are shared).  Changing this creates a new loadbalancer.
+     * It is available only for Octavia.
+     */
+    readonly vipNetworkId?: pulumi.Input<string>;
+    /**
+     * The Port ID of the Load Balancer IP.
+     */
+    readonly vipPortId?: pulumi.Input<string>;
+    /**
+     * The subnet on which to allocate the
+     * Loadbalancer's address. A tenant can only create Loadbalancers on networks
+     * authorized by policy (e.g. networks that belong to them or networks that
+     * are shared).  Changing this creates a new loadbalancer.
+     * It is required to Neutron LBaaS but optional for Octavia.
      */
     readonly vipSubnetId?: pulumi.Input<string>;
 }
@@ -281,6 +298,15 @@ export interface LoadBalancerArgs {
      * Loadbalancer's address. A tenant can only create Loadbalancers on networks
      * authorized by policy (e.g. networks that belong to them or networks that
      * are shared).  Changing this creates a new loadbalancer.
+     * It is available only for Octavia.
      */
-    readonly vipSubnetId: pulumi.Input<string>;
+    readonly vipNetworkId?: pulumi.Input<string>;
+    /**
+     * The subnet on which to allocate the
+     * Loadbalancer's address. A tenant can only create Loadbalancers on networks
+     * authorized by policy (e.g. networks that belong to them or networks that
+     * are shared).  Changing this creates a new loadbalancer.
+     * It is required to Neutron LBaaS but optional for Octavia.
+     */
+    readonly vipSubnetId?: pulumi.Input<string>;
 }
