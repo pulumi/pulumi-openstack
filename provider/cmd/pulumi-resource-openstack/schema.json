@@ -9825,13 +9825,17 @@
                     "type": "string",
                     "description": "The ip address of the load balancer.\nChanging this creates a new loadbalancer.\n"
                 },
+                "vipNetworkId": {
+                    "type": "string",
+                    "description": "The network on which to allocate the\nLoadbalancer's address. A tenant can only create Loadbalancers on networks\nauthorized by policy (e.g. networks that belong to them or networks that\nare shared).  Changing this creates a new loadbalancer.\nIt is available only for Octavia.\n"
+                },
                 "vipPortId": {
                     "type": "string",
                     "description": "The Port ID of the Load Balancer IP.\n"
                 },
                 "vipSubnetId": {
                     "type": "string",
-                    "description": "The network on which to allocate the\nLoadbalancer's address. A tenant can only create Loadbalancers on networks\nauthorized by policy (e.g. networks that belong to them or networks that\nare shared).  Changing this creates a new loadbalancer.\n"
+                    "description": "The subnet on which to allocate the\nLoadbalancer's address. A tenant can only create Loadbalancers on networks\nauthorized by policy (e.g. networks that belong to them or networks that\nare shared).  Changing this creates a new loadbalancer.\nIt is required to Neutron LBaaS but optional for Octavia.\n"
                 }
             },
             "required": [
@@ -9841,6 +9845,7 @@
                 "securityGroupIds",
                 "tenantId",
                 "vipAddress",
+                "vipNetworkId",
                 "vipPortId",
                 "vipSubnetId"
             ],
@@ -9884,14 +9889,15 @@
                     "type": "string",
                     "description": "The ip address of the load balancer.\nChanging this creates a new loadbalancer.\n"
                 },
+                "vipNetworkId": {
+                    "type": "string",
+                    "description": "The network on which to allocate the\nLoadbalancer's address. A tenant can only create Loadbalancers on networks\nauthorized by policy (e.g. networks that belong to them or networks that\nare shared).  Changing this creates a new loadbalancer.\nIt is available only for Octavia.\n"
+                },
                 "vipSubnetId": {
                     "type": "string",
-                    "description": "The network on which to allocate the\nLoadbalancer's address. A tenant can only create Loadbalancers on networks\nauthorized by policy (e.g. networks that belong to them or networks that\nare shared).  Changing this creates a new loadbalancer.\n"
+                    "description": "The subnet on which to allocate the\nLoadbalancer's address. A tenant can only create Loadbalancers on networks\nauthorized by policy (e.g. networks that belong to them or networks that\nare shared).  Changing this creates a new loadbalancer.\nIt is required to Neutron LBaaS but optional for Octavia.\n"
                 }
             },
-            "requiredInputs": [
-                "vipSubnetId"
-            ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering LoadBalancer resources.\n",
                 "properties": {
@@ -9934,13 +9940,17 @@
                         "type": "string",
                         "description": "The ip address of the load balancer.\nChanging this creates a new loadbalancer.\n"
                     },
+                    "vipNetworkId": {
+                        "type": "string",
+                        "description": "The network on which to allocate the\nLoadbalancer's address. A tenant can only create Loadbalancers on networks\nauthorized by policy (e.g. networks that belong to them or networks that\nare shared).  Changing this creates a new loadbalancer.\nIt is available only for Octavia.\n"
+                    },
                     "vipPortId": {
                         "type": "string",
                         "description": "The Port ID of the Load Balancer IP.\n"
                     },
                     "vipSubnetId": {
                         "type": "string",
-                        "description": "The network on which to allocate the\nLoadbalancer's address. A tenant can only create Loadbalancers on networks\nauthorized by policy (e.g. networks that belong to them or networks that\nare shared).  Changing this creates a new loadbalancer.\n"
+                        "description": "The subnet on which to allocate the\nLoadbalancer's address. A tenant can only create Loadbalancers on networks\nauthorized by policy (e.g. networks that belong to them or networks that\nare shared).  Changing this creates a new loadbalancer.\nIt is required to Neutron LBaaS but optional for Octavia.\n"
                     }
                 },
                 "type": "object"
@@ -11714,7 +11724,7 @@
             "properties": {
                 "adminStateUp": {
                     "type": "boolean",
-                    "description": "Administrative up/down status for the port\n(must be \"true\" or \"false\" if provided). Changing this updates the\n`admin_state_up` of an existing port.\n"
+                    "description": "Administrative up/down status for the port\n(must be `true` or `false` if provided). Changing this updates the\n`admin_state_up` of an existing port.\n"
                 },
                 "allFixedIps": {
                     "type": "array",
@@ -11750,7 +11760,7 @@
                 },
                 "description": {
                     "type": "string",
-                    "description": "Human-readable description of the floating IP. Changing\nthis updates the `description` of an existing port.\n"
+                    "description": "Human-readable description of the port. Changing\nthis updates the `description` of an existing port.\n"
                 },
                 "deviceId": {
                     "type": "string",
@@ -11758,7 +11768,7 @@
                 },
                 "deviceOwner": {
                     "type": "string",
-                    "description": "The device owner of the Port. Changing this creates\na new port.\n"
+                    "description": "The device owner of the port. Changing this creates\na new port.\n"
                 },
                 "dnsAssignments": {
                     "type": "array",
@@ -11806,11 +11816,11 @@
                 },
                 "noSecurityGroups": {
                     "type": "boolean",
-                    "description": "If set to\n`true`, then no security groups are applied to the port. If set to `false` and\nno `security_group_ids` are specified, then the Port will yield to the default\nbehavior of the Networking service, which is to usually apply the \"default\"\nsecurity group.\n"
+                    "description": "If set to\n`true`, then no security groups are applied to the port. If set to `false` and\nno `security_group_ids` are specified, then the port will yield to the default\nbehavior of the Networking service, which is to usually apply the \"default\"\nsecurity group.\n"
                 },
                 "portSecurityEnabled": {
                     "type": "boolean",
-                    "description": "Whether to explicitly enable or disable\nport security on the port. Port Security is usually enabled by default, so\nomitting argument will usually result in a value of \"true\". Setting this\nexplicitly to `false` will disable port security. In order to disable port\nsecurity, the port must not have any security groups. Valid values are `true`\nand `false`.\n"
+                    "description": "Whether to explicitly enable or disable\nport security on the port. Port Security is usually enabled by default, so\nomitting argument will usually result in a value of `true`. Setting this\nexplicitly to `false` will disable port security. In order to disable port\nsecurity, the port must not have any security groups. Valid values are `true`\nand `false`.\n"
                 },
                 "qosPolicyId": {
                     "type": "string",
@@ -11818,7 +11828,7 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "The region in which to obtain the V2 networking client.\nA networking client is needed to create a port. If omitted, the\n`region` argument of the provider is used. Changing this creates a new\nport.\n"
+                    "description": "The region in which to obtain the V2 Networking client.\nA Networking client is needed to create a port. If omitted, the\n`region` argument of the provider is used. Changing this creates a new\nport.\n"
                 },
                 "securityGroupIds": {
                     "type": "array",
@@ -11836,7 +11846,7 @@
                 },
                 "tenantId": {
                     "type": "string",
-                    "description": "The owner of the Port. Required if admin wants\nto create a port for another tenant. Changing this creates a new port.\n"
+                    "description": "The owner of the port. Required if admin wants\nto create a port for another tenant. Changing this creates a new port.\n"
                 },
                 "valueSpecs": {
                     "type": "object",
@@ -11867,7 +11877,7 @@
             "inputProperties": {
                 "adminStateUp": {
                     "type": "boolean",
-                    "description": "Administrative up/down status for the port\n(must be \"true\" or \"false\" if provided). Changing this updates the\n`admin_state_up` of an existing port.\n"
+                    "description": "Administrative up/down status for the port\n(must be `true` or `false` if provided). Changing this updates the\n`admin_state_up` of an existing port.\n"
                 },
                 "allowedAddressPairs": {
                     "type": "array",
@@ -11882,7 +11892,7 @@
                 },
                 "description": {
                     "type": "string",
-                    "description": "Human-readable description of the floating IP. Changing\nthis updates the `description` of an existing port.\n"
+                    "description": "Human-readable description of the port. Changing\nthis updates the `description` of an existing port.\n"
                 },
                 "deviceId": {
                     "type": "string",
@@ -11890,7 +11900,7 @@
                 },
                 "deviceOwner": {
                     "type": "string",
-                    "description": "The device owner of the Port. Changing this creates\na new port.\n"
+                    "description": "The device owner of the port. Changing this creates\na new port.\n"
                 },
                 "dnsName": {
                     "type": "string",
@@ -11928,11 +11938,11 @@
                 },
                 "noSecurityGroups": {
                     "type": "boolean",
-                    "description": "If set to\n`true`, then no security groups are applied to the port. If set to `false` and\nno `security_group_ids` are specified, then the Port will yield to the default\nbehavior of the Networking service, which is to usually apply the \"default\"\nsecurity group.\n"
+                    "description": "If set to\n`true`, then no security groups are applied to the port. If set to `false` and\nno `security_group_ids` are specified, then the port will yield to the default\nbehavior of the Networking service, which is to usually apply the \"default\"\nsecurity group.\n"
                 },
                 "portSecurityEnabled": {
                     "type": "boolean",
-                    "description": "Whether to explicitly enable or disable\nport security on the port. Port Security is usually enabled by default, so\nomitting argument will usually result in a value of \"true\". Setting this\nexplicitly to `false` will disable port security. In order to disable port\nsecurity, the port must not have any security groups. Valid values are `true`\nand `false`.\n"
+                    "description": "Whether to explicitly enable or disable\nport security on the port. Port Security is usually enabled by default, so\nomitting argument will usually result in a value of `true`. Setting this\nexplicitly to `false` will disable port security. In order to disable port\nsecurity, the port must not have any security groups. Valid values are `true`\nand `false`.\n"
                 },
                 "qosPolicyId": {
                     "type": "string",
@@ -11940,7 +11950,7 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "The region in which to obtain the V2 networking client.\nA networking client is needed to create a port. If omitted, the\n`region` argument of the provider is used. Changing this creates a new\nport.\n"
+                    "description": "The region in which to obtain the V2 Networking client.\nA Networking client is needed to create a port. If omitted, the\n`region` argument of the provider is used. Changing this creates a new\nport.\n"
                 },
                 "securityGroupIds": {
                     "type": "array",
@@ -11958,7 +11968,7 @@
                 },
                 "tenantId": {
                     "type": "string",
-                    "description": "The owner of the Port. Required if admin wants\nto create a port for another tenant. Changing this creates a new port.\n"
+                    "description": "The owner of the port. Required if admin wants\nto create a port for another tenant. Changing this creates a new port.\n"
                 },
                 "valueSpecs": {
                     "type": "object",
@@ -11976,7 +11986,7 @@
                 "properties": {
                     "adminStateUp": {
                         "type": "boolean",
-                        "description": "Administrative up/down status for the port\n(must be \"true\" or \"false\" if provided). Changing this updates the\n`admin_state_up` of an existing port.\n"
+                        "description": "Administrative up/down status for the port\n(must be `true` or `false` if provided). Changing this updates the\n`admin_state_up` of an existing port.\n"
                     },
                     "allFixedIps": {
                         "type": "array",
@@ -12012,7 +12022,7 @@
                     },
                     "description": {
                         "type": "string",
-                        "description": "Human-readable description of the floating IP. Changing\nthis updates the `description` of an existing port.\n"
+                        "description": "Human-readable description of the port. Changing\nthis updates the `description` of an existing port.\n"
                     },
                     "deviceId": {
                         "type": "string",
@@ -12020,7 +12030,7 @@
                     },
                     "deviceOwner": {
                         "type": "string",
-                        "description": "The device owner of the Port. Changing this creates\na new port.\n"
+                        "description": "The device owner of the port. Changing this creates\na new port.\n"
                     },
                     "dnsAssignments": {
                         "type": "array",
@@ -12068,11 +12078,11 @@
                     },
                     "noSecurityGroups": {
                         "type": "boolean",
-                        "description": "If set to\n`true`, then no security groups are applied to the port. If set to `false` and\nno `security_group_ids` are specified, then the Port will yield to the default\nbehavior of the Networking service, which is to usually apply the \"default\"\nsecurity group.\n"
+                        "description": "If set to\n`true`, then no security groups are applied to the port. If set to `false` and\nno `security_group_ids` are specified, then the port will yield to the default\nbehavior of the Networking service, which is to usually apply the \"default\"\nsecurity group.\n"
                     },
                     "portSecurityEnabled": {
                         "type": "boolean",
-                        "description": "Whether to explicitly enable or disable\nport security on the port. Port Security is usually enabled by default, so\nomitting argument will usually result in a value of \"true\". Setting this\nexplicitly to `false` will disable port security. In order to disable port\nsecurity, the port must not have any security groups. Valid values are `true`\nand `false`.\n"
+                        "description": "Whether to explicitly enable or disable\nport security on the port. Port Security is usually enabled by default, so\nomitting argument will usually result in a value of `true`. Setting this\nexplicitly to `false` will disable port security. In order to disable port\nsecurity, the port must not have any security groups. Valid values are `true`\nand `false`.\n"
                     },
                     "qosPolicyId": {
                         "type": "string",
@@ -12080,7 +12090,7 @@
                     },
                     "region": {
                         "type": "string",
-                        "description": "The region in which to obtain the V2 networking client.\nA networking client is needed to create a port. If omitted, the\n`region` argument of the provider is used. Changing this creates a new\nport.\n"
+                        "description": "The region in which to obtain the V2 Networking client.\nA Networking client is needed to create a port. If omitted, the\n`region` argument of the provider is used. Changing this creates a new\nport.\n"
                     },
                     "securityGroupIds": {
                         "type": "array",
@@ -12098,7 +12108,7 @@
                     },
                     "tenantId": {
                         "type": "string",
-                        "description": "The owner of the Port. Required if admin wants\nto create a port for another tenant. Changing this creates a new port.\n"
+                        "description": "The owner of the port. Required if admin wants\nto create a port for another tenant. Changing this creates a new port.\n"
                     },
                     "valueSpecs": {
                         "type": "object",
@@ -17160,6 +17170,10 @@
                         "type": "string",
                         "description": "The ID of the flavor. Conflicts with the `name`,\n`min_ram` and `min_disk`\n"
                     },
+                    "isPublic": {
+                        "type": "boolean",
+                        "description": "The flavor visibility.\n"
+                    },
                     "minDisk": {
                         "type": "integer",
                         "description": "The minimum amount of disk (in gigabytes). Conflicts\nwith the `flavor_id`.\n"
@@ -17216,8 +17230,7 @@
                         "description": "The provider-assigned unique ID for this managed resource.\n"
                     },
                     "isPublic": {
-                        "type": "boolean",
-                        "description": "Whether the flavor is public or private.\n"
+                        "type": "boolean"
                     },
                     "minDisk": {
                         "type": "integer"
@@ -17247,7 +17260,6 @@
                 "type": "object",
                 "required": [
                     "extraSpecs",
-                    "isPublic",
                     "region",
                     "id"
                 ]

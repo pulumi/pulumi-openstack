@@ -6,7 +6,6 @@ package loadbalancer
 import (
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
@@ -44,21 +43,25 @@ type LoadBalancer struct {
 	// The ip address of the load balancer.
 	// Changing this creates a new loadbalancer.
 	VipAddress pulumi.StringOutput `pulumi:"vipAddress"`
-	// The Port ID of the Load Balancer IP.
-	VipPortId pulumi.StringOutput `pulumi:"vipPortId"`
 	// The network on which to allocate the
 	// Loadbalancer's address. A tenant can only create Loadbalancers on networks
 	// authorized by policy (e.g. networks that belong to them or networks that
 	// are shared).  Changing this creates a new loadbalancer.
+	// It is available only for Octavia.
+	VipNetworkId pulumi.StringOutput `pulumi:"vipNetworkId"`
+	// The Port ID of the Load Balancer IP.
+	VipPortId pulumi.StringOutput `pulumi:"vipPortId"`
+	// The subnet on which to allocate the
+	// Loadbalancer's address. A tenant can only create Loadbalancers on networks
+	// authorized by policy (e.g. networks that belong to them or networks that
+	// are shared).  Changing this creates a new loadbalancer.
+	// It is required to Neutron LBaaS but optional for Octavia.
 	VipSubnetId pulumi.StringOutput `pulumi:"vipSubnetId"`
 }
 
 // NewLoadBalancer registers a new resource with the given unique name, arguments, and options.
 func NewLoadBalancer(ctx *pulumi.Context,
 	name string, args *LoadBalancerArgs, opts ...pulumi.ResourceOption) (*LoadBalancer, error) {
-	if args == nil || args.VipSubnetId == nil {
-		return nil, errors.New("missing required argument 'VipSubnetId'")
-	}
 	if args == nil {
 		args = &LoadBalancerArgs{}
 	}
@@ -114,12 +117,19 @@ type loadBalancerState struct {
 	// The ip address of the load balancer.
 	// Changing this creates a new loadbalancer.
 	VipAddress *string `pulumi:"vipAddress"`
-	// The Port ID of the Load Balancer IP.
-	VipPortId *string `pulumi:"vipPortId"`
 	// The network on which to allocate the
 	// Loadbalancer's address. A tenant can only create Loadbalancers on networks
 	// authorized by policy (e.g. networks that belong to them or networks that
 	// are shared).  Changing this creates a new loadbalancer.
+	// It is available only for Octavia.
+	VipNetworkId *string `pulumi:"vipNetworkId"`
+	// The Port ID of the Load Balancer IP.
+	VipPortId *string `pulumi:"vipPortId"`
+	// The subnet on which to allocate the
+	// Loadbalancer's address. A tenant can only create Loadbalancers on networks
+	// authorized by policy (e.g. networks that belong to them or networks that
+	// are shared).  Changing this creates a new loadbalancer.
+	// It is required to Neutron LBaaS but optional for Octavia.
 	VipSubnetId *string `pulumi:"vipSubnetId"`
 }
 
@@ -154,12 +164,19 @@ type LoadBalancerState struct {
 	// The ip address of the load balancer.
 	// Changing this creates a new loadbalancer.
 	VipAddress pulumi.StringPtrInput
-	// The Port ID of the Load Balancer IP.
-	VipPortId pulumi.StringPtrInput
 	// The network on which to allocate the
 	// Loadbalancer's address. A tenant can only create Loadbalancers on networks
 	// authorized by policy (e.g. networks that belong to them or networks that
 	// are shared).  Changing this creates a new loadbalancer.
+	// It is available only for Octavia.
+	VipNetworkId pulumi.StringPtrInput
+	// The Port ID of the Load Balancer IP.
+	VipPortId pulumi.StringPtrInput
+	// The subnet on which to allocate the
+	// Loadbalancer's address. A tenant can only create Loadbalancers on networks
+	// authorized by policy (e.g. networks that belong to them or networks that
+	// are shared).  Changing this creates a new loadbalancer.
+	// It is required to Neutron LBaaS but optional for Octavia.
 	VipSubnetId pulumi.StringPtrInput
 }
 
@@ -202,7 +219,14 @@ type loadBalancerArgs struct {
 	// Loadbalancer's address. A tenant can only create Loadbalancers on networks
 	// authorized by policy (e.g. networks that belong to them or networks that
 	// are shared).  Changing this creates a new loadbalancer.
-	VipSubnetId string `pulumi:"vipSubnetId"`
+	// It is available only for Octavia.
+	VipNetworkId *string `pulumi:"vipNetworkId"`
+	// The subnet on which to allocate the
+	// Loadbalancer's address. A tenant can only create Loadbalancers on networks
+	// authorized by policy (e.g. networks that belong to them or networks that
+	// are shared).  Changing this creates a new loadbalancer.
+	// It is required to Neutron LBaaS but optional for Octavia.
+	VipSubnetId *string `pulumi:"vipSubnetId"`
 }
 
 // The set of arguments for constructing a LoadBalancer resource.
@@ -241,7 +265,14 @@ type LoadBalancerArgs struct {
 	// Loadbalancer's address. A tenant can only create Loadbalancers on networks
 	// authorized by policy (e.g. networks that belong to them or networks that
 	// are shared).  Changing this creates a new loadbalancer.
-	VipSubnetId pulumi.StringInput
+	// It is available only for Octavia.
+	VipNetworkId pulumi.StringPtrInput
+	// The subnet on which to allocate the
+	// Loadbalancer's address. A tenant can only create Loadbalancers on networks
+	// authorized by policy (e.g. networks that belong to them or networks that
+	// are shared).  Changing this creates a new loadbalancer.
+	// It is required to Neutron LBaaS but optional for Octavia.
+	VipSubnetId pulumi.StringPtrInput
 }
 
 func (LoadBalancerArgs) ElementType() reflect.Type {

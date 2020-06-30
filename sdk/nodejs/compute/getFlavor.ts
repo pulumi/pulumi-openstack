@@ -35,6 +35,7 @@ export function getFlavor(args?: GetFlavorArgs, opts?: pulumi.InvokeOptions): Pr
     return pulumi.runtime.invoke("openstack:compute/getFlavor:getFlavor", {
         "disk": args.disk,
         "flavorId": args.flavorId,
+        "isPublic": args.isPublic,
         "minDisk": args.minDisk,
         "minRam": args.minRam,
         "name": args.name,
@@ -59,6 +60,10 @@ export interface GetFlavorArgs {
      * `minRam` and `minDisk`
      */
     readonly flavorId?: string;
+    /**
+     * The flavor visibility.
+     */
+    readonly isPublic?: boolean;
     /**
      * The minimum amount of disk (in gigabytes). Conflicts
      * with the `flavorId`.
@@ -110,10 +115,7 @@ export interface GetFlavorResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * Whether the flavor is public or private.
-     */
-    readonly isPublic: boolean;
+    readonly isPublic?: boolean;
     readonly minDisk?: number;
     readonly minRam?: number;
     readonly name?: string;

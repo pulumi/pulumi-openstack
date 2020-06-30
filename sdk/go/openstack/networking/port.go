@@ -24,7 +24,7 @@ type Port struct {
 	pulumi.CustomResourceState
 
 	// Administrative up/down status for the port
-	// (must be "true" or "false" if provided). Changing this updates the
+	// (must be `true` or `false` if provided). Changing this updates the
 	// `adminStateUp` of an existing port.
 	AdminStateUp pulumi.BoolOutput `pulumi:"adminStateUp"`
 	// The collection of Fixed IP addresses on the port in the
@@ -43,13 +43,13 @@ type Port struct {
 	// The port binding allows to specify binding information
 	// for the port. The structure is described below.
 	Binding PortBindingOutput `pulumi:"binding"`
-	// Human-readable description of the floating IP. Changing
+	// Human-readable description of the port. Changing
 	// this updates the `description` of an existing port.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The ID of the device attached to the port. Changing this
 	// creates a new port.
 	DeviceId pulumi.StringOutput `pulumi:"deviceId"`
-	// The device owner of the Port. Changing this creates
+	// The device owner of the port. Changing this creates
 	// a new port.
 	DeviceOwner pulumi.StringOutput `pulumi:"deviceOwner"`
 	// The list of maps representing port DNS assignments.
@@ -77,21 +77,21 @@ type Port struct {
 	NoFixedIp pulumi.BoolPtrOutput `pulumi:"noFixedIp"`
 	// If set to
 	// `true`, then no security groups are applied to the port. If set to `false` and
-	// no `securityGroupIds` are specified, then the Port will yield to the default
+	// no `securityGroupIds` are specified, then the port will yield to the default
 	// behavior of the Networking service, which is to usually apply the "default"
 	// security group.
 	NoSecurityGroups pulumi.BoolPtrOutput `pulumi:"noSecurityGroups"`
 	// Whether to explicitly enable or disable
 	// port security on the port. Port Security is usually enabled by default, so
-	// omitting argument will usually result in a value of "true". Setting this
+	// omitting argument will usually result in a value of `true`. Setting this
 	// explicitly to `false` will disable port security. In order to disable port
 	// security, the port must not have any security groups. Valid values are `true`
 	// and `false`.
 	PortSecurityEnabled pulumi.BoolOutput `pulumi:"portSecurityEnabled"`
 	// Reference to the associated QoS policy.
 	QosPolicyId pulumi.StringOutput `pulumi:"qosPolicyId"`
-	// The region in which to obtain the V2 networking client.
-	// A networking client is needed to create a port. If omitted, the
+	// The region in which to obtain the V2 Networking client.
+	// A Networking client is needed to create a port. If omitted, the
 	// `region` argument of the provider is used. Changing this creates a new
 	// port.
 	Region pulumi.StringOutput `pulumi:"region"`
@@ -102,7 +102,7 @@ type Port struct {
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
 	// A set of string tags for the port.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
-	// The owner of the Port. Required if admin wants
+	// The owner of the port. Required if admin wants
 	// to create a port for another tenant. Changing this creates a new port.
 	TenantId pulumi.StringOutput `pulumi:"tenantId"`
 	// Map of additional options.
@@ -141,7 +141,7 @@ func GetPort(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Port resources.
 type portState struct {
 	// Administrative up/down status for the port
-	// (must be "true" or "false" if provided). Changing this updates the
+	// (must be `true` or `false` if provided). Changing this updates the
 	// `adminStateUp` of an existing port.
 	AdminStateUp *bool `pulumi:"adminStateUp"`
 	// The collection of Fixed IP addresses on the port in the
@@ -160,13 +160,13 @@ type portState struct {
 	// The port binding allows to specify binding information
 	// for the port. The structure is described below.
 	Binding *PortBinding `pulumi:"binding"`
-	// Human-readable description of the floating IP. Changing
+	// Human-readable description of the port. Changing
 	// this updates the `description` of an existing port.
 	Description *string `pulumi:"description"`
 	// The ID of the device attached to the port. Changing this
 	// creates a new port.
 	DeviceId *string `pulumi:"deviceId"`
-	// The device owner of the Port. Changing this creates
+	// The device owner of the port. Changing this creates
 	// a new port.
 	DeviceOwner *string `pulumi:"deviceOwner"`
 	// The list of maps representing port DNS assignments.
@@ -194,21 +194,21 @@ type portState struct {
 	NoFixedIp *bool `pulumi:"noFixedIp"`
 	// If set to
 	// `true`, then no security groups are applied to the port. If set to `false` and
-	// no `securityGroupIds` are specified, then the Port will yield to the default
+	// no `securityGroupIds` are specified, then the port will yield to the default
 	// behavior of the Networking service, which is to usually apply the "default"
 	// security group.
 	NoSecurityGroups *bool `pulumi:"noSecurityGroups"`
 	// Whether to explicitly enable or disable
 	// port security on the port. Port Security is usually enabled by default, so
-	// omitting argument will usually result in a value of "true". Setting this
+	// omitting argument will usually result in a value of `true`. Setting this
 	// explicitly to `false` will disable port security. In order to disable port
 	// security, the port must not have any security groups. Valid values are `true`
 	// and `false`.
 	PortSecurityEnabled *bool `pulumi:"portSecurityEnabled"`
 	// Reference to the associated QoS policy.
 	QosPolicyId *string `pulumi:"qosPolicyId"`
-	// The region in which to obtain the V2 networking client.
-	// A networking client is needed to create a port. If omitted, the
+	// The region in which to obtain the V2 Networking client.
+	// A Networking client is needed to create a port. If omitted, the
 	// `region` argument of the provider is used. Changing this creates a new
 	// port.
 	Region *string `pulumi:"region"`
@@ -219,7 +219,7 @@ type portState struct {
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// A set of string tags for the port.
 	Tags []string `pulumi:"tags"`
-	// The owner of the Port. Required if admin wants
+	// The owner of the port. Required if admin wants
 	// to create a port for another tenant. Changing this creates a new port.
 	TenantId *string `pulumi:"tenantId"`
 	// Map of additional options.
@@ -228,7 +228,7 @@ type portState struct {
 
 type PortState struct {
 	// Administrative up/down status for the port
-	// (must be "true" or "false" if provided). Changing this updates the
+	// (must be `true` or `false` if provided). Changing this updates the
 	// `adminStateUp` of an existing port.
 	AdminStateUp pulumi.BoolPtrInput
 	// The collection of Fixed IP addresses on the port in the
@@ -247,13 +247,13 @@ type PortState struct {
 	// The port binding allows to specify binding information
 	// for the port. The structure is described below.
 	Binding PortBindingPtrInput
-	// Human-readable description of the floating IP. Changing
+	// Human-readable description of the port. Changing
 	// this updates the `description` of an existing port.
 	Description pulumi.StringPtrInput
 	// The ID of the device attached to the port. Changing this
 	// creates a new port.
 	DeviceId pulumi.StringPtrInput
-	// The device owner of the Port. Changing this creates
+	// The device owner of the port. Changing this creates
 	// a new port.
 	DeviceOwner pulumi.StringPtrInput
 	// The list of maps representing port DNS assignments.
@@ -281,21 +281,21 @@ type PortState struct {
 	NoFixedIp pulumi.BoolPtrInput
 	// If set to
 	// `true`, then no security groups are applied to the port. If set to `false` and
-	// no `securityGroupIds` are specified, then the Port will yield to the default
+	// no `securityGroupIds` are specified, then the port will yield to the default
 	// behavior of the Networking service, which is to usually apply the "default"
 	// security group.
 	NoSecurityGroups pulumi.BoolPtrInput
 	// Whether to explicitly enable or disable
 	// port security on the port. Port Security is usually enabled by default, so
-	// omitting argument will usually result in a value of "true". Setting this
+	// omitting argument will usually result in a value of `true`. Setting this
 	// explicitly to `false` will disable port security. In order to disable port
 	// security, the port must not have any security groups. Valid values are `true`
 	// and `false`.
 	PortSecurityEnabled pulumi.BoolPtrInput
 	// Reference to the associated QoS policy.
 	QosPolicyId pulumi.StringPtrInput
-	// The region in which to obtain the V2 networking client.
-	// A networking client is needed to create a port. If omitted, the
+	// The region in which to obtain the V2 Networking client.
+	// A Networking client is needed to create a port. If omitted, the
 	// `region` argument of the provider is used. Changing this creates a new
 	// port.
 	Region pulumi.StringPtrInput
@@ -306,7 +306,7 @@ type PortState struct {
 	SecurityGroupIds pulumi.StringArrayInput
 	// A set of string tags for the port.
 	Tags pulumi.StringArrayInput
-	// The owner of the Port. Required if admin wants
+	// The owner of the port. Required if admin wants
 	// to create a port for another tenant. Changing this creates a new port.
 	TenantId pulumi.StringPtrInput
 	// Map of additional options.
@@ -319,7 +319,7 @@ func (PortState) ElementType() reflect.Type {
 
 type portArgs struct {
 	// Administrative up/down status for the port
-	// (must be "true" or "false" if provided). Changing this updates the
+	// (must be `true` or `false` if provided). Changing this updates the
 	// `adminStateUp` of an existing port.
 	AdminStateUp *bool `pulumi:"adminStateUp"`
 	// An IP/MAC Address pair of additional IP
@@ -329,13 +329,13 @@ type portArgs struct {
 	// The port binding allows to specify binding information
 	// for the port. The structure is described below.
 	Binding *PortBinding `pulumi:"binding"`
-	// Human-readable description of the floating IP. Changing
+	// Human-readable description of the port. Changing
 	// this updates the `description` of an existing port.
 	Description *string `pulumi:"description"`
 	// The ID of the device attached to the port. Changing this
 	// creates a new port.
 	DeviceId *string `pulumi:"deviceId"`
-	// The device owner of the Port. Changing this creates
+	// The device owner of the port. Changing this creates
 	// a new port.
 	DeviceOwner *string `pulumi:"deviceOwner"`
 	// The port DNS name. Available, when Neutron DNS extension
@@ -361,21 +361,21 @@ type portArgs struct {
 	NoFixedIp *bool `pulumi:"noFixedIp"`
 	// If set to
 	// `true`, then no security groups are applied to the port. If set to `false` and
-	// no `securityGroupIds` are specified, then the Port will yield to the default
+	// no `securityGroupIds` are specified, then the port will yield to the default
 	// behavior of the Networking service, which is to usually apply the "default"
 	// security group.
 	NoSecurityGroups *bool `pulumi:"noSecurityGroups"`
 	// Whether to explicitly enable or disable
 	// port security on the port. Port Security is usually enabled by default, so
-	// omitting argument will usually result in a value of "true". Setting this
+	// omitting argument will usually result in a value of `true`. Setting this
 	// explicitly to `false` will disable port security. In order to disable port
 	// security, the port must not have any security groups. Valid values are `true`
 	// and `false`.
 	PortSecurityEnabled *bool `pulumi:"portSecurityEnabled"`
 	// Reference to the associated QoS policy.
 	QosPolicyId *string `pulumi:"qosPolicyId"`
-	// The region in which to obtain the V2 networking client.
-	// A networking client is needed to create a port. If omitted, the
+	// The region in which to obtain the V2 Networking client.
+	// A Networking client is needed to create a port. If omitted, the
 	// `region` argument of the provider is used. Changing this creates a new
 	// port.
 	Region *string `pulumi:"region"`
@@ -386,7 +386,7 @@ type portArgs struct {
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// A set of string tags for the port.
 	Tags []string `pulumi:"tags"`
-	// The owner of the Port. Required if admin wants
+	// The owner of the port. Required if admin wants
 	// to create a port for another tenant. Changing this creates a new port.
 	TenantId *string `pulumi:"tenantId"`
 	// Map of additional options.
@@ -396,7 +396,7 @@ type portArgs struct {
 // The set of arguments for constructing a Port resource.
 type PortArgs struct {
 	// Administrative up/down status for the port
-	// (must be "true" or "false" if provided). Changing this updates the
+	// (must be `true` or `false` if provided). Changing this updates the
 	// `adminStateUp` of an existing port.
 	AdminStateUp pulumi.BoolPtrInput
 	// An IP/MAC Address pair of additional IP
@@ -406,13 +406,13 @@ type PortArgs struct {
 	// The port binding allows to specify binding information
 	// for the port. The structure is described below.
 	Binding PortBindingPtrInput
-	// Human-readable description of the floating IP. Changing
+	// Human-readable description of the port. Changing
 	// this updates the `description` of an existing port.
 	Description pulumi.StringPtrInput
 	// The ID of the device attached to the port. Changing this
 	// creates a new port.
 	DeviceId pulumi.StringPtrInput
-	// The device owner of the Port. Changing this creates
+	// The device owner of the port. Changing this creates
 	// a new port.
 	DeviceOwner pulumi.StringPtrInput
 	// The port DNS name. Available, when Neutron DNS extension
@@ -438,21 +438,21 @@ type PortArgs struct {
 	NoFixedIp pulumi.BoolPtrInput
 	// If set to
 	// `true`, then no security groups are applied to the port. If set to `false` and
-	// no `securityGroupIds` are specified, then the Port will yield to the default
+	// no `securityGroupIds` are specified, then the port will yield to the default
 	// behavior of the Networking service, which is to usually apply the "default"
 	// security group.
 	NoSecurityGroups pulumi.BoolPtrInput
 	// Whether to explicitly enable or disable
 	// port security on the port. Port Security is usually enabled by default, so
-	// omitting argument will usually result in a value of "true". Setting this
+	// omitting argument will usually result in a value of `true`. Setting this
 	// explicitly to `false` will disable port security. In order to disable port
 	// security, the port must not have any security groups. Valid values are `true`
 	// and `false`.
 	PortSecurityEnabled pulumi.BoolPtrInput
 	// Reference to the associated QoS policy.
 	QosPolicyId pulumi.StringPtrInput
-	// The region in which to obtain the V2 networking client.
-	// A networking client is needed to create a port. If omitted, the
+	// The region in which to obtain the V2 Networking client.
+	// A Networking client is needed to create a port. If omitted, the
 	// `region` argument of the provider is used. Changing this creates a new
 	// port.
 	Region pulumi.StringPtrInput
@@ -463,7 +463,7 @@ type PortArgs struct {
 	SecurityGroupIds pulumi.StringArrayInput
 	// A set of string tags for the port.
 	Tags pulumi.StringArrayInput
-	// The owner of the Port. Required if admin wants
+	// The owner of the port. Required if admin wants
 	// to create a port for another tenant. Changing this creates a new port.
 	TenantId pulumi.StringPtrInput
 	// Map of additional options.

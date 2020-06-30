@@ -60,6 +60,12 @@ namespace Pulumi.OpenStack.Compute
         public string? FlavorId { get; set; }
 
         /// <summary>
+        /// The flavor visibility.
+        /// </summary>
+        [Input("isPublic")]
+        public bool? IsPublic { get; set; }
+
+        /// <summary>
         /// The minimum amount of disk (in gigabytes). Conflicts
         /// with the `flavor_id`.
         /// </summary>
@@ -129,10 +135,7 @@ namespace Pulumi.OpenStack.Compute
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// Whether the flavor is public or private.
-        /// </summary>
-        public readonly bool IsPublic;
+        public readonly bool? IsPublic;
         public readonly int? MinDisk;
         public readonly int? MinRam;
         public readonly string? Name;
@@ -152,7 +155,7 @@ namespace Pulumi.OpenStack.Compute
 
             string id,
 
-            bool isPublic,
+            bool? isPublic,
 
             int? minDisk,
 
