@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v1.29.0 of the OpenStack Terraform Provider
+_(none)_
 
 ---
+
+## 2.3.0 (2020-06-30)
+* Upgrade to v1.29.0 of the OpenStack Terraform Provider
 
 ## 2.2.3 (2020-06-11)
 * Switch to GitHub actions for build
