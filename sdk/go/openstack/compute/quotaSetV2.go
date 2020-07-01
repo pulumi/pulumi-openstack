@@ -16,6 +16,40 @@ import (
 //
 // > **Note:** This resource has a no-op deletion so no actual actions will be done against the OpenStack API
 //     in case of delete call.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/compute"
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/identity"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		project1, err := identity.NewProject(ctx, "project1", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewQuotaSetV2(ctx, "quotaset1", &compute.QuotaSetV2Args{
+// 			ProjectId:          project1.ID(),
+// 			KeyPairs:           pulumi.Int(10),
+// 			Ram:                pulumi.Int(40960),
+// 			Cores:              pulumi.Int(32),
+// 			Instances:          pulumi.Int(20),
+// 			ServerGroups:       pulumi.Int(4),
+// 			ServerGroupMembers: pulumi.Int(8),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type QuotaSetV2 struct {
 	pulumi.CustomResourceState
 

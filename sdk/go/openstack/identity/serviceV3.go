@@ -13,6 +13,29 @@ import (
 // Manages a V3 Service resource within OpenStack Keystone.
 //
 // > **Note:** This usually requires admin privileges.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/identity"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := identity.NewServiceV3(ctx, "service1", &identity.ServiceV3Args{
+// 			Type: pulumi.String("custom"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type ServiceV3 struct {
 	pulumi.CustomResourceState
 

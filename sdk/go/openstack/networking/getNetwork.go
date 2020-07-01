@@ -8,6 +8,30 @@ import (
 )
 
 // Use this data source to get the ID of an available OpenStack network.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/networking"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "tf_test_network"
+// 		_, err := networking.LookupNetwork(ctx, &networking.LookupNetworkArgs{
+// 			Name: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupNetwork(ctx *pulumi.Context, args *LookupNetworkArgs, opts ...pulumi.InvokeOption) (*LookupNetworkResult, error) {
 	var rv LookupNetworkResult
 	err := ctx.Invoke("openstack:networking/getNetwork:getNetwork", args, &rv, opts...)

@@ -11,13 +11,11 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const volume1 = new openstack.blockstorage.Volume("volume1", {
+ * const volume1 = new openstack.blockstorage.Volume("volume_1", {
  *     description: "first test volume",
  *     region: "RegionOne",
  *     size: 3,

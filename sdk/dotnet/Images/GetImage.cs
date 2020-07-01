@@ -39,7 +39,6 @@ namespace Pulumi.OpenStack.Images
         /// 
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

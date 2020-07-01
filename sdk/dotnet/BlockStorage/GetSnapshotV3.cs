@@ -35,7 +35,6 @@ namespace Pulumi.OpenStack.BlockStorage
         /// 
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

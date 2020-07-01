@@ -14,8 +14,6 @@ namespace Pulumi.OpenStack.Orchestration
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;

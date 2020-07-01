@@ -9,6 +9,89 @@ using Pulumi.Serialization;
 
 namespace Pulumi.OpenStack.SharedFileSystem
 {
+    /// <summary>
+    /// Use this resource to configure a share network.
+    /// 
+    /// A share network stores network information that share servers can use when
+    /// shares are created.
+    /// 
+    /// ## Example Usage
+    /// ### Basic share network
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var network1 = new OpenStack.Networking.Network("network1", new OpenStack.Networking.NetworkArgs
+    ///         {
+    ///             AdminStateUp = true,
+    ///         });
+    ///         var subnet1 = new OpenStack.Networking.Subnet("subnet1", new OpenStack.Networking.SubnetArgs
+    ///         {
+    ///             Cidr = "192.168.199.0/24",
+    ///             IpVersion = 4,
+    ///             NetworkId = network1.Id,
+    ///         });
+    ///         var sharenetwork1 = new OpenStack.SharedFileSystem.ShareNetwork("sharenetwork1", new OpenStack.SharedFileSystem.ShareNetworkArgs
+    ///         {
+    ///             Description = "test share network",
+    ///             NeutronNetId = network1.Id,
+    ///             NeutronSubnetId = subnet1.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Share network with associated security services
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var network1 = new OpenStack.Networking.Network("network1", new OpenStack.Networking.NetworkArgs
+    ///         {
+    ///             AdminStateUp = true,
+    ///         });
+    ///         var subnet1 = new OpenStack.Networking.Subnet("subnet1", new OpenStack.Networking.SubnetArgs
+    ///         {
+    ///             Cidr = "192.168.199.0/24",
+    ///             IpVersion = 4,
+    ///             NetworkId = network1.Id,
+    ///         });
+    ///         var securityservice1 = new OpenStack.SharedFileSystem.SecurityService("securityservice1", new OpenStack.SharedFileSystem.SecurityServiceArgs
+    ///         {
+    ///             Description = "created by terraform",
+    ///             DnsIp = "192.168.199.10",
+    ///             Domain = "example.com",
+    ///             Ou = "CN=Computers,DC=example,DC=com",
+    ///             Password = "s8cret",
+    ///             Server = "192.168.199.10",
+    ///             Type = "active_directory",
+    ///             User = "joinDomainUser",
+    ///         });
+    ///         var sharenetwork1 = new OpenStack.SharedFileSystem.ShareNetwork("sharenetwork1", new OpenStack.SharedFileSystem.ShareNetworkArgs
+    ///         {
+    ///             Description = "test share network with security services",
+    ///             NeutronNetId = network1.Id,
+    ///             NeutronSubnetId = subnet1.Id,
+    ///             SecurityServiceIds = 
+    ///             {
+    ///                 securityservice1.Id,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     public partial class ShareNetwork : Pulumi.CustomResource
     {
         /// <summary>

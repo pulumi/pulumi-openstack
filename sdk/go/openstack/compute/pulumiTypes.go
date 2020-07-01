@@ -50,8 +50,7 @@ type InstanceBlockDevice struct {
 // InstanceBlockDeviceInput is an input type that accepts InstanceBlockDeviceArgs and InstanceBlockDeviceOutput values.
 // You can construct a concrete instance of `InstanceBlockDeviceInput` via:
 //
-// 		 InstanceBlockDeviceArgs{...}
-//
+//          InstanceBlockDeviceArgs{...}
 type InstanceBlockDeviceInput interface {
 	pulumi.Input
 
@@ -111,8 +110,7 @@ func (i InstanceBlockDeviceArgs) ToInstanceBlockDeviceOutputWithContext(ctx cont
 // InstanceBlockDeviceArrayInput is an input type that accepts InstanceBlockDeviceArray and InstanceBlockDeviceArrayOutput values.
 // You can construct a concrete instance of `InstanceBlockDeviceArrayInput` via:
 //
-// 		 InstanceBlockDeviceArray{ InstanceBlockDeviceArgs{...} }
-//
+//          InstanceBlockDeviceArray{ InstanceBlockDeviceArgs{...} }
 type InstanceBlockDeviceArrayInput interface {
 	pulumi.Input
 
@@ -255,8 +253,7 @@ type InstanceNetwork struct {
 // InstanceNetworkInput is an input type that accepts InstanceNetworkArgs and InstanceNetworkOutput values.
 // You can construct a concrete instance of `InstanceNetworkInput` via:
 //
-// 		 InstanceNetworkArgs{...}
-//
+//          InstanceNetworkArgs{...}
 type InstanceNetworkInput interface {
 	pulumi.Input
 
@@ -299,8 +296,7 @@ func (i InstanceNetworkArgs) ToInstanceNetworkOutputWithContext(ctx context.Cont
 // InstanceNetworkArrayInput is an input type that accepts InstanceNetworkArray and InstanceNetworkArrayOutput values.
 // You can construct a concrete instance of `InstanceNetworkArrayInput` via:
 //
-// 		 InstanceNetworkArray{ InstanceNetworkArgs{...} }
-//
+//          InstanceNetworkArray{ InstanceNetworkArgs{...} }
 type InstanceNetworkArrayInput interface {
 	pulumi.Input
 
@@ -404,8 +400,7 @@ type InstancePersonality struct {
 // InstancePersonalityInput is an input type that accepts InstancePersonalityArgs and InstancePersonalityOutput values.
 // You can construct a concrete instance of `InstancePersonalityInput` via:
 //
-// 		 InstancePersonalityArgs{...}
-//
+//          InstancePersonalityArgs{...}
 type InstancePersonalityInput interface {
 	pulumi.Input
 
@@ -435,8 +430,7 @@ func (i InstancePersonalityArgs) ToInstancePersonalityOutputWithContext(ctx cont
 // InstancePersonalityArrayInput is an input type that accepts InstancePersonalityArray and InstancePersonalityArrayOutput values.
 // You can construct a concrete instance of `InstancePersonalityArrayInput` via:
 //
-// 		 InstancePersonalityArray{ InstancePersonalityArgs{...} }
-//
+//          InstancePersonalityArray{ InstancePersonalityArgs{...} }
 type InstancePersonalityArrayInput interface {
 	pulumi.Input
 
@@ -532,8 +526,7 @@ type InstanceSchedulerHint struct {
 // InstanceSchedulerHintInput is an input type that accepts InstanceSchedulerHintArgs and InstanceSchedulerHintOutput values.
 // You can construct a concrete instance of `InstanceSchedulerHintInput` via:
 //
-// 		 InstanceSchedulerHintArgs{...}
-//
+//          InstanceSchedulerHintArgs{...}
 type InstanceSchedulerHintInput interface {
 	pulumi.Input
 
@@ -583,8 +576,7 @@ func (i InstanceSchedulerHintArgs) ToInstanceSchedulerHintOutputWithContext(ctx 
 // InstanceSchedulerHintArrayInput is an input type that accepts InstanceSchedulerHintArray and InstanceSchedulerHintArrayOutput values.
 // You can construct a concrete instance of `InstanceSchedulerHintArrayInput` via:
 //
-// 		 InstanceSchedulerHintArray{ InstanceSchedulerHintArgs{...} }
-//
+//          InstanceSchedulerHintArray{ InstanceSchedulerHintArgs{...} }
 type InstanceSchedulerHintArrayInput interface {
 	pulumi.Input
 
@@ -700,8 +692,7 @@ type InstanceVendorOptions struct {
 // InstanceVendorOptionsInput is an input type that accepts InstanceVendorOptionsArgs and InstanceVendorOptionsOutput values.
 // You can construct a concrete instance of `InstanceVendorOptionsInput` via:
 //
-// 		 InstanceVendorOptionsArgs{...}
-//
+//          InstanceVendorOptionsArgs{...}
 type InstanceVendorOptionsInput interface {
 	pulumi.Input
 
@@ -744,12 +735,11 @@ func (i InstanceVendorOptionsArgs) ToInstanceVendorOptionsPtrOutputWithContext(c
 // InstanceVendorOptionsPtrInput is an input type that accepts InstanceVendorOptionsArgs, InstanceVendorOptionsPtr and InstanceVendorOptionsPtrOutput values.
 // You can construct a concrete instance of `InstanceVendorOptionsPtrInput` via:
 //
-// 		 InstanceVendorOptionsArgs{...}
+//          InstanceVendorOptionsArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type InstanceVendorOptionsPtrInput interface {
 	pulumi.Input
 
@@ -886,8 +876,7 @@ type SecGroupRule struct {
 // SecGroupRuleInput is an input type that accepts SecGroupRuleArgs and SecGroupRuleOutput values.
 // You can construct a concrete instance of `SecGroupRuleInput` via:
 //
-// 		 SecGroupRuleArgs{...}
-//
+//          SecGroupRuleArgs{...}
 type SecGroupRuleInput interface {
 	pulumi.Input
 
@@ -936,8 +925,7 @@ func (i SecGroupRuleArgs) ToSecGroupRuleOutputWithContext(ctx context.Context) S
 // SecGroupRuleArrayInput is an input type that accepts SecGroupRuleArray and SecGroupRuleArrayOutput values.
 // You can construct a concrete instance of `SecGroupRuleArrayInput` via:
 //
-// 		 SecGroupRuleArray{ SecGroupRuleArgs{...} }
-//
+//          SecGroupRuleArray{ SecGroupRuleArgs{...} }
 type SecGroupRuleArrayInput interface {
 	pulumi.Input
 

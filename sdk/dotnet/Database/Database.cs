@@ -13,7 +13,6 @@ namespace Pulumi.OpenStack.Database
     /// Manages a V1 DB database resource within OpenStack.
     /// 
     /// ## Example Usage
-    /// 
     /// ### Database
     /// 
     /// ```csharp

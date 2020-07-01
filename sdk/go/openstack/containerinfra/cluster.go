@@ -12,64 +12,89 @@ import (
 
 // Manages a V1 Magnum cluster resource within OpenStack.
 //
+// ## Example Usage
+// ### Create a Cluster
 //
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/containerinfra"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := containerinfra.NewCluster(ctx, "cluster1", &containerinfra.ClusterArgs{
+// 			ClusterTemplateId: pulumi.String("b9a45c5c-cd03-4958-82aa-b80bf93cb922"),
+// 			Keypair:           pulumi.String("ssh_keypair"),
+// 			MasterCount:       pulumi.Int(3),
+// 			NodeCount:         pulumi.Int(5),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 // ## Argument reference
 //
 // The following arguments are supported:
 //
 // * `region` - (Optional) The region in which to obtain the V1 Container Infra
-//     client. A Container Infra client is needed to create a cluster. If omitted,
-//     the `region` argument of the provider is used. Changing this creates a new
-//     cluster.
+//   client. A Container Infra client is needed to create a cluster. If omitted,
+//   the `region` argument of the provider is used. Changing this creates a new
+//   cluster.
 //
 // * `name` - (Required) The name of the cluster. Changing this updates the name
-//     of the existing cluster template.
+//   of the existing cluster template.
 //
 // * `projectId` - (Optional) The project of the cluster. Required if admin wants
-//     to create a cluster in another project. Changing this creates a new
-//     cluster.
+//   to create a cluster in another project. Changing this creates a new
+//   cluster.
 //
 // * `userId` - (Optional) The user of the cluster. Required if admin wants to
-//     create a cluster template for another user. Changing this creates a new
-//     cluster.
+//   create a cluster template for another user. Changing this creates a new
+//   cluster.
 //
 // * `clusterTemplateId` - (Required) The UUID of the V1 Container Infra cluster
-//     template. Changing this creates a new cluster.
+//   template. Changing this creates a new cluster.
 //
 // * `createTimeout` - (Optional) The timeout (in minutes) for creating the
-//     cluster. Changing this creates a new cluster.
+//   cluster. Changing this creates a new cluster.
 //
 // * `discoveryUrl` - (Optional) The URL used for cluster node discovery.
-//     Changing this creates a new cluster.
+//   Changing this creates a new cluster.
 //
 // * `dockerVolumeSize` - (Optional) The size (in GB) of the Docker volume.
-//     Changing this creates a new cluster.
+//   Changing this creates a new cluster.
 //
 // * `flavor` - (Optional) The flavor for the nodes of the cluster. Can be set via
-//     the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
-//     cluster.
+//   the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
+//   cluster.
 //
 // * `masterFlavor` - (Optional) The flavor for the master nodes. Can be set via
-//     the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this creates a
-//     new cluster.
+//   the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this creates a
+//   new cluster.
 //
 // * `keypair` - (Optional) The name of the Compute service SSH keypair. Changing
-//     this creates a new cluster.
+//   this creates a new cluster.
 //
 // * `labels` - (Optional) The list of key value pairs representing additional
-//     properties of the cluster. Changing this creates a new cluster.
+//   properties of the cluster. Changing this creates a new cluster.
 //
 // * `masterCount` - (Optional) The number of master nodes for the cluster.
-//     Changing this creates a new cluster.
+//   Changing this creates a new cluster.
 //
 // * `nodeCount` - (Optional) The number of nodes for the cluster. Changing this
-//     creates a new cluster.
+//   creates a new cluster.
 //
 // * `fixedNetwork` - (Optional) The fixed network that will be attached to the
-//     cluster. Changing this creates a new cluster.
+//   cluster. Changing this creates a new cluster.
 //
 // * `fixedSubnet` - (Optional) The fixed subnet that will be attached to the
-//     cluster. Changing this creates a new cluster.
+//   cluster. Changing this creates a new cluster.
 //
 // ## Attributes reference
 //

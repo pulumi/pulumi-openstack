@@ -17,6 +17,64 @@ import (
 // recommended to use the `networking.SecGroup`
 // and `networking.SecGroupRule`
 // resources instead, which uses the OpenStack Networking API.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := compute.NewSecGroup(ctx, "secgroup1", &compute.SecGroupArgs{
+// 			Description: pulumi.String("my security group"),
+// 			Rules: compute.SecGroupRuleArray{
+// 				&compute.SecGroupRuleArgs{
+// 					Cidr:       pulumi.String("0.0.0.0/0"),
+// 					FromPort:   pulumi.Int(22),
+// 					IpProtocol: pulumi.String("tcp"),
+// 					ToPort:     pulumi.Int(22),
+// 				},
+// 				&compute.SecGroupRuleArgs{
+// 					Cidr:       pulumi.String("0.0.0.0/0"),
+// 					FromPort:   pulumi.Int(80),
+// 					IpProtocol: pulumi.String("tcp"),
+// 					ToPort:     pulumi.Int(80),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ## Notes
+//
+// ### ICMP Rules
+//
+// When using ICMP as the `ipProtocol`, the `fromPort` sets the ICMP _type_ and the `toPort` sets the ICMP _code_. To allow all ICMP types, set each value to `-1`, like so:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		return nil
+// 	})
+// }
+// ```
+//
+// A list of ICMP types and codes can be found [here](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages).
 type SecGroup struct {
 	pulumi.CustomResourceState
 

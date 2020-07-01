@@ -11,14 +11,12 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
  * const trunk1 = pulumi.output(openstack.networking.getTrunk({
- *     name: "trunk1",
+ *     name: "trunk_1",
  * }, { async: true }));
  * ```
  */

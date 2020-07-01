@@ -10,7 +10,6 @@ import * as utilities from "../utilities";
  * Manages a V1 DB configuration resource within OpenStack.
  *
  * ## Example Usage
- *
  * ### Configuration
  *
  * ```typescript
@@ -19,7 +18,7 @@ import * as utilities from "../utilities";
  *
  * const test = new openstack.database.Configuration("test", {
  *     configurations: [{
- *         name: "maxConnections",
+ *         name: "max_connections",
  *         value: "200",
  *     }],
  *     datastore: {

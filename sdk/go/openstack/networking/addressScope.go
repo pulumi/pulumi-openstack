@@ -10,6 +10,62 @@ import (
 )
 
 // Manages a V2 Neutron addressscope resource within OpenStack.
+//
+// ## Example Usage
+// ### Create an Address-scope
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/networking"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := networking.NewAddressScope(ctx, "addressscope1", &networking.AddressScopeArgs{
+// 			IpVersion: pulumi.Int(6),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Create a Subnet Pool from an Address-scope
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/networking"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		addressscope1, err := networking.NewAddressScope(ctx, "addressscope1", &networking.AddressScopeArgs{
+// 			IpVersion: pulumi.Int(6),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = networking.NewSubnetPool(ctx, "subnetpool1", &networking.SubnetPoolArgs{
+// 			AddressScopeId: addressscope1.ID(),
+// 			Prefixes: pulumi.StringArray{
+// 				pulumi.String("fdf7:b13d:dead:beef::/64"),
+// 				pulumi.String("fd65:86cc:a334:39b7::/64"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type AddressScope struct {
 	pulumi.CustomResourceState
 

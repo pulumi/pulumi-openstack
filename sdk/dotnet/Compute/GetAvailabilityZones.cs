@@ -31,7 +31,6 @@ namespace Pulumi.OpenStack.Compute
         /// 
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

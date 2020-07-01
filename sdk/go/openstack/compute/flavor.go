@@ -11,6 +11,35 @@ import (
 )
 
 // Manages a V2 flavor resource within OpenStack.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := compute.NewFlavor(ctx, "test_flavor", &compute.FlavorArgs{
+// 			Disk: pulumi.Int(20),
+// 			ExtraSpecs: pulumi.StringMap{
+// 				"hw:cpu_policy":        pulumi.String("CPU-POLICY"),
+// 				"hw:cpu_thread_policy": pulumi.String("CPU-THREAD-POLICY"),
+// 			},
+// 			Ram:   pulumi.Int(8096),
+// 			Vcpus: pulumi.Int(2),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Flavor struct {
 	pulumi.CustomResourceState
 

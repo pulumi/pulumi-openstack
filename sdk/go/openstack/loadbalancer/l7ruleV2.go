@@ -11,6 +11,79 @@ import (
 )
 
 // Manages a V2 L7 Rule resource within OpenStack.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/loadbalancer"
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/networking"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		network1, err := networking.NewNetwork(ctx, "network1", &networking.NetworkArgs{
+// 			AdminStateUp: pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		subnet1, err := networking.NewSubnet(ctx, "subnet1", &networking.SubnetArgs{
+// 			Cidr:      pulumi.String("192.168.199.0/24"),
+// 			IpVersion: pulumi.Int(4),
+// 			NetworkId: network1.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		loadbalancer1, err := loadbalancer.NewLoadBalancer(ctx, "loadbalancer1", &loadbalancer.LoadBalancerArgs{
+// 			VipSubnetId: subnet1.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		listener1, err := loadbalancer.NewListener(ctx, "listener1", &loadbalancer.ListenerArgs{
+// 			LoadbalancerId: loadbalancer1.ID(),
+// 			Protocol:       pulumi.String("HTTP"),
+// 			ProtocolPort:   pulumi.Int(8080),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = loadbalancer.NewPool(ctx, "pool1", &loadbalancer.PoolArgs{
+// 			LbMethod:       pulumi.String("ROUND_ROBIN"),
+// 			LoadbalancerId: loadbalancer1.ID(),
+// 			Protocol:       pulumi.String("HTTP"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		l7policy1, err := loadbalancer.NewL7PolicyV2(ctx, "l7policy1", &loadbalancer.L7PolicyV2Args{
+// 			Action:      pulumi.String("REDIRECT_TO_URL"),
+// 			Description: pulumi.String("test description"),
+// 			ListenerId:  listener1.ID(),
+// 			Position:    pulumi.Int(1),
+// 			RedirectUrl: pulumi.String("http://www.example.com"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = loadbalancer.NewL7RuleV2(ctx, "l7rule1", &loadbalancer.L7RuleV2Args{
+// 			CompareType: pulumi.String("EQUAL_TO"),
+// 			L7policyId:  l7policy1.ID(),
+// 			Type:        pulumi.String("PATH"),
+// 			Value:       pulumi.String("/api"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type L7RuleV2 struct {
 	pulumi.CustomResourceState
 

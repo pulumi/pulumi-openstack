@@ -12,6 +12,130 @@ import (
 
 // Attaches a Network Interface (a Port) to an Instance using the OpenStack
 // Compute (Nova) v2 API.
+//
+// ## Example Usage
+// ### Basic Attachment
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/compute"
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/networking"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := networking.NewNetwork(ctx, "network1", &networking.NetworkArgs{
+// 			AdminStateUp: pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		instance1, err := compute.NewInstance(ctx, "instance1", &compute.InstanceArgs{
+// 			SecurityGroups: pulumi.StringArray{
+// 				pulumi.String("default"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewInterfaceAttach(ctx, "ai1", &compute.InterfaceAttachArgs{
+// 			InstanceId: instance1.ID(),
+// 			NetworkId:  pulumi.String(openstack_networking_port_v2.Network_1.Id),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Attachment Specifying a Fixed IP
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/compute"
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/networking"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := networking.NewNetwork(ctx, "network1", &networking.NetworkArgs{
+// 			AdminStateUp: pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		instance1, err := compute.NewInstance(ctx, "instance1", &compute.InstanceArgs{
+// 			SecurityGroups: pulumi.StringArray{
+// 				pulumi.String("default"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewInterfaceAttach(ctx, "ai1", &compute.InterfaceAttachArgs{
+// 			FixedIp:    pulumi.String("10.0.10.10"),
+// 			InstanceId: instance1.ID(),
+// 			NetworkId:  pulumi.String(openstack_networking_port_v2.Network_1.Id),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Attachment Using an Existing Port
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/compute"
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/networking"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		network1, err := networking.NewNetwork(ctx, "network1", &networking.NetworkArgs{
+// 			AdminStateUp: pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		port1, err := networking.NewPort(ctx, "port1", &networking.PortArgs{
+// 			AdminStateUp: pulumi.Bool(true),
+// 			NetworkId:    network1.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		instance1, err := compute.NewInstance(ctx, "instance1", &compute.InstanceArgs{
+// 			SecurityGroups: pulumi.StringArray{
+// 				pulumi.String("default"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewInterfaceAttach(ctx, "ai1", &compute.InterfaceAttachArgs{
+// 			InstanceId: instance1.ID(),
+// 			PortId:     port1.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type InterfaceAttach struct {
 	pulumi.CustomResourceState
 

@@ -18,6 +18,36 @@ import (
 // Microsoft Active Directory.
 //
 // Minimum supported Manila microversion is 2.7.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/sharedfilesystem"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := sharedfilesystem.NewSecurityService(ctx, "securityservice1", &sharedfilesystem.SecurityServiceArgs{
+// 			Description: pulumi.String("created by terraform"),
+// 			DnsIp:       pulumi.String("192.168.199.10"),
+// 			Domain:      pulumi.String("example.com"),
+// 			Ou:          pulumi.String("CN=Computers,DC=example,DC=com"),
+// 			Password:    pulumi.String("s8cret"),
+// 			Server:      pulumi.String("192.168.199.10"),
+// 			Type:        pulumi.String("active_directory"),
+// 			User:        pulumi.String("joinDomainUser"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type SecurityService struct {
 	pulumi.CustomResourceState
 

@@ -11,14 +11,12 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
  * const secgroup = pulumi.output(openstack.networking.getSecGroup({
- *     name: "tfTestSecgroup",
+ *     name: "tf_test_secgroup",
  * }, { async: true }));
  * ```
  */

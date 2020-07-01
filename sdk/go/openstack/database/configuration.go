@@ -11,6 +11,40 @@ import (
 )
 
 // Manages a V1 DB configuration resource within OpenStack.
+//
+// ## Example Usage
+// ### Configuration
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/database"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := database.NewConfiguration(ctx, "test", &database.ConfigurationArgs{
+// 			Configurations: database.ConfigurationConfigurationArray{
+// 				&database.ConfigurationConfigurationArgs{
+// 					Name:  pulumi.String("max_connections"),
+// 					Value: pulumi.String("200"),
+// 				},
+// 			},
+// 			Datastore: &database.ConfigurationDatastoreArgs{
+// 				Type:    pulumi.String("mysql"),
+// 				Version: pulumi.String("mysql-5.7"),
+// 			},
+// 			Description: pulumi.String("description"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Configuration struct {
 	pulumi.CustomResourceState
 

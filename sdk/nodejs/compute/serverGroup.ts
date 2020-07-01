@@ -9,34 +9,31 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const testSg = new openstack.compute.ServerGroup("test-sg", {
+ * const test_sg = new openstack.compute.ServerGroup("test-sg", {
  *     policies: ["anti-affinity"],
  * });
  * ```
- *
  * ## Policies
  *
  * * `affinity` - All instances/servers launched in this group will be hosted on
- *     the same compute node.
+ *   the same compute node.
  *
  * * `anti-affinity` - All instances/servers launched in this group will be
- *     hosted on different compute nodes.
+ *   hosted on different compute nodes.
  *
  * * `soft-affinity` - All instances/servers launched in this group will be hosted
- *     on the same compute node if possible, but if not possible they
- *     still will be scheduled instead of failure. To use this policy your
- *     OpenStack environment should support Compute service API 2.15 or above.
+ *   on the same compute node if possible, but if not possible they
+ *   still will be scheduled instead of failure. To use this policy your
+ *   OpenStack environment should support Compute service API 2.15 or above.
  *
  * * `soft-anti-affinity` - All instances/servers launched in this group will be
- *     hosted on different compute nodes if possible, but if not possible they
- *     still will be scheduled instead of failure. To use this policy your
- *     OpenStack environment should support Compute service API 2.15 or above.
+ *   hosted on different compute nodes if possible, but if not possible they
+ *   still will be scheduled instead of failure. To use this policy your
+ *   OpenStack environment should support Compute service API 2.15 or above.
  */
 export class ServerGroup extends pulumi.CustomResource {
     /**

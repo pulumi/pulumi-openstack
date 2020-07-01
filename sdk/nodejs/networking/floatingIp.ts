@@ -12,13 +12,11 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const floatip1 = new openstack.networking.FloatingIp("floatip1", {
+ * const floatip1 = new openstack.networking.FloatingIp("floatip_1", {
  *     pool: "public",
  * });
  * ```

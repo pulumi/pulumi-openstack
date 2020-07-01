@@ -14,8 +14,6 @@ namespace Pulumi.OpenStack.Images
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
@@ -38,7 +36,6 @@ namespace Pulumi.OpenStack.Images
     /// 
     /// }
     /// ```
-    /// 
     /// ## Notes
     /// 
     /// ### Properties

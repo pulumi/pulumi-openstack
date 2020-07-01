@@ -14,8 +14,6 @@ namespace Pulumi.OpenStack.VPNaaS
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;

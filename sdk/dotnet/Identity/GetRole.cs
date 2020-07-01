@@ -34,7 +34,6 @@ namespace Pulumi.OpenStack.Identity
         /// 
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

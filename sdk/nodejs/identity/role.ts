@@ -12,13 +12,11 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const role1 = new openstack.identity.Role("role1", {});
+ * const role1 = new openstack.identity.Role("role_1", {});
  * ```
  */
 export class Role extends pulumi.CustomResource {

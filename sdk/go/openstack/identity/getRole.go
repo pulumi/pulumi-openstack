@@ -8,6 +8,29 @@ import (
 )
 
 // Use this data source to get the ID of an OpenStack role.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/identity"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := identity.LookupRole(ctx, &identity.LookupRoleArgs{
+// 			Name: "admin",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupRole(ctx *pulumi.Context, args *LookupRoleArgs, opts ...pulumi.InvokeOption) (*LookupRoleResult, error) {
 	var rv LookupRoleResult
 	err := ctx.Invoke("openstack:identity/getRole:getRole", args, &rv, opts...)

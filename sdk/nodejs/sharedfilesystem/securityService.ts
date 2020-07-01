@@ -4,6 +4,34 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Use this resource to configure a security service.
+ *
+ * A security service stores configuration information for clients for
+ * authentication and authorization (AuthN/AuthZ). For example, a share server
+ * will be the client for an existing service such as LDAP, Kerberos, or
+ * Microsoft Active Directory.
+ *
+ * Minimum supported Manila microversion is 2.7.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const securityservice1 = new openstack.sharedfilesystem.SecurityService("securityservice_1", {
+ *     description: "created by terraform",
+ *     dnsIp: "192.168.199.10",
+ *     domain: "example.com",
+ *     ou: "CN=Computers,DC=example,DC=com",
+ *     password: "s8cret",
+ *     server: "192.168.199.10",
+ *     type: "active_directory",
+ *     user: "joinDomainUser",
+ * });
+ * ```
+ */
 export class SecurityService extends pulumi.CustomResource {
     /**
      * Get an existing SecurityService resource's state with the given name, ID, and optional extra

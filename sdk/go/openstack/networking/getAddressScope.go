@@ -8,6 +8,34 @@ import (
 )
 
 // Use this data source to get the ID of an available OpenStack address-scope.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/networking"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := 4
+// 		opt1 := "public_addressscope"
+// 		opt2 := true
+// 		_, err := networking.LookupAddressScope(ctx, &networking.LookupAddressScopeArgs{
+// 			IpVersion: &opt0,
+// 			Name:      &opt1,
+// 			Shared:    &opt2,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupAddressScope(ctx *pulumi.Context, args *LookupAddressScopeArgs, opts ...pulumi.InvokeOption) (*LookupAddressScopeResult, error) {
 	var rv LookupAddressScopeResult
 	err := ctx.Invoke("openstack:networking/getAddressScope:getAddressScope", args, &rv, opts...)

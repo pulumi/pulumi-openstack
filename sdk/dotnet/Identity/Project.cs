@@ -17,8 +17,6 @@ namespace Pulumi.OpenStack.Identity
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;

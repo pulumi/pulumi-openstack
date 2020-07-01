@@ -34,7 +34,6 @@ namespace Pulumi.OpenStack.KeyManager
         /// 
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

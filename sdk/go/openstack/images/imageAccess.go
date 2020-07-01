@@ -12,6 +12,85 @@ import (
 
 // Manages members for the shared OpenStack Glance V2 Image within the source
 // project, which owns the Image.
+//
+// ## Example Usage
+// ### Unprivileged user
+//
+// Create a shared image and propose a membership to the
+// `bed6b6cbb86a4e2d8dc2735c2f1000e4` project ID.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/images"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		rancheros, err := images.NewImage(ctx, "rancheros", &images.ImageArgs{
+// 			ContainerFormat: pulumi.String("bare"),
+// 			DiskFormat:      pulumi.String("qcow2"),
+// 			ImageSourceUrl:  pulumi.String("https://releases.rancher.com/os/latest/rancheros-openstack.img"),
+// 			Properties: pulumi.StringMap{
+// 				"key": pulumi.String("value"),
+// 			},
+// 			Visibility: pulumi.String("shared"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = images.NewImageAccess(ctx, "rancherosMember", &images.ImageAccessArgs{
+// 			ImageId:  rancheros.ID(),
+// 			MemberId: pulumi.String("bed6b6cbb86a4e2d8dc2735c2f1000e4"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Privileged user
+//
+// Create a shared image and set a membership to the
+// `bed6b6cbb86a4e2d8dc2735c2f1000e4` project ID.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/images"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		rancheros, err := images.NewImage(ctx, "rancheros", &images.ImageArgs{
+// 			ContainerFormat: pulumi.String("bare"),
+// 			DiskFormat:      pulumi.String("qcow2"),
+// 			ImageSourceUrl:  pulumi.String("https://releases.rancher.com/os/latest/rancheros-openstack.img"),
+// 			Properties: pulumi.StringMap{
+// 				"key": pulumi.String("value"),
+// 			},
+// 			Visibility: pulumi.String("shared"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = images.NewImageAccess(ctx, "rancherosMember", &images.ImageAccessArgs{
+// 			ImageId:  rancheros.ID(),
+// 			MemberId: pulumi.String("bed6b6cbb86a4e2d8dc2735c2f1000e4"),
+// 			Status:   pulumi.String("accepted"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type ImageAccess struct {
 	pulumi.CustomResourceState
 

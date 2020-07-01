@@ -8,6 +8,32 @@ import (
 )
 
 // Use this data source to get the ID of an available OpenStack flavor.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := 512
+// 		opt1 := 1
+// 		_, err := compute.LookupFlavor(ctx, &compute.LookupFlavorArgs{
+// 			Ram:   &opt0,
+// 			Vcpus: &opt1,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupFlavor(ctx *pulumi.Context, args *LookupFlavorArgs, opts ...pulumi.InvokeOption) (*LookupFlavorResult, error) {
 	var rv LookupFlavorResult
 	err := ctx.Invoke("openstack:compute/getFlavor:getFlavor", args, &rv, opts...)

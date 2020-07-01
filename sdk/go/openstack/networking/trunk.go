@@ -11,6 +11,85 @@ import (
 )
 
 // Manages a networking V2 trunk resource within OpenStack.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/compute"
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/networking"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		network1, err := networking.NewNetwork(ctx, "network1", &networking.NetworkArgs{
+// 			AdminStateUp: pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = networking.NewSubnet(ctx, "subnet1", &networking.SubnetArgs{
+// 			Cidr:       pulumi.String("192.168.1.0/24"),
+// 			EnableDhcp: pulumi.Bool(true),
+// 			IpVersion:  pulumi.Int(4),
+// 			NetworkId:  network1.ID(),
+// 			NoGateway:  pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		parentPort1, err := networking.NewPort(ctx, "parentPort1", &networking.PortArgs{
+// 			AdminStateUp: pulumi.Bool(true),
+// 			NetworkId:    network1.ID(),
+// 		}, pulumi.DependsOn([]pulumi.Resource{
+// 			"openstack_networking_subnet_v2.subnet_1",
+// 		}))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		subport1, err := networking.NewPort(ctx, "subport1", &networking.PortArgs{
+// 			AdminStateUp: pulumi.Bool(true),
+// 			NetworkId:    network1.ID(),
+// 		}, pulumi.DependsOn([]pulumi.Resource{
+// 			"openstack_networking_subnet_v2.subnet_1",
+// 		}))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		trunk1, err := networking.NewTrunk(ctx, "trunk1", &networking.TrunkArgs{
+// 			AdminStateUp: pulumi.Bool(true),
+// 			PortId:       parentPort1.ID(),
+// 			SubPorts: networking.TrunkSubPortArray{
+// 				&networking.TrunkSubPortArgs{
+// 					PortId:           subport1.ID(),
+// 					SegmentationId:   pulumi.Int(1),
+// 					SegmentationType: pulumi.String("vlan"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewInstance(ctx, "instance1", &compute.InstanceArgs{
+// 			Networks: compute.InstanceNetworkArray{
+// 				&compute.InstanceNetworkArgs{
+// 					Port: trunk1.PortId,
+// 				},
+// 			},
+// 			SecurityGroups: pulumi.StringArray{
+// 				pulumi.String("default"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Trunk struct {
 	pulumi.CustomResourceState
 

@@ -8,7 +8,6 @@ import * as utilities from "../utilities";
  * Manages a V1 DB database resource within OpenStack.
  *
  * ## Example Usage
- *
  * ### Database
  *
  * ```typescript

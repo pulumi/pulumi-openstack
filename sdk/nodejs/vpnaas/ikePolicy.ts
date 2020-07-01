@@ -11,13 +11,11 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const policy1 = new openstack.vpnaas.IkePolicy("policy1", {});
+ * const policy1 = new openstack.vpnaas.IkePolicy("policy_1", {});
  * ```
  */
 export class IkePolicy extends pulumi.CustomResource {

@@ -20,8 +20,6 @@ namespace Pulumi.OpenStack.ObjectStorage
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;

@@ -8,17 +8,16 @@ import * as utilities from "../utilities";
  * Manages a V2 Neutron QoS bandwidth limit rule resource within OpenStack.
  *
  * ## Example Usage
- *
  * ### Create a QoS Policy with some bandwidth limit rule
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const qosPolicy1 = new openstack.networking.QosPolicy("qosPolicy1", {
- *     description: "bwLimit",
+ * const qosPolicy1 = new openstack.networking.QosPolicy("qos_policy_1", {
+ *     description: "bw_limit",
  * });
- * const bwLimitRule1 = new openstack.networking.QosBandwidthLimitRule("bwLimitRule1", {
+ * const bwLimitRule1 = new openstack.networking.QosBandwidthLimitRule("bw_limit_rule_1", {
  *     direction: "egress",
  *     maxBurstKbps: 300,
  *     maxKbps: 3000,

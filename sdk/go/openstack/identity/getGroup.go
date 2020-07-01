@@ -10,6 +10,29 @@ import (
 // Use this data source to get the ID of an OpenStack group.
 //
 // Note: This usually requires admin privileges.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/identity"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := identity.GetGroup(ctx, &identity.GetGroupArgs{
+// 			Name: "admins",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func GetGroup(ctx *pulumi.Context, args *GetGroupArgs, opts ...pulumi.InvokeOption) (*GetGroupResult, error) {
 	var rv GetGroupResult
 	err := ctx.Invoke("openstack:identity/getGroup:getGroup", args, &rv, opts...)

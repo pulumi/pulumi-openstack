@@ -11,14 +11,12 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
  * const policy = pulumi.output(openstack.firewall.getPolicy({
- *     name: "tfTestPolicy",
+ *     name: "tf_test_policy",
  * }, { async: true }));
  * ```
  */

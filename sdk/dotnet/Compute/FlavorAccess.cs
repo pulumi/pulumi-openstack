@@ -15,11 +15,9 @@ namespace Pulumi.OpenStack.Compute
     /// Note: You _must_ have admin privileges in your OpenStack cloud to use
     /// this resource.
     /// 
-    /// ---
+    /// ***
     /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

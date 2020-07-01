@@ -13,7 +13,6 @@ namespace Pulumi.OpenStack.Networking
     /// Manages a V2 Neutron subnetpool resource within OpenStack.
     /// 
     /// ## Example Usage
-    /// 
     /// ### Create a Subnet Pool
     /// 
     /// ```csharp
@@ -37,7 +36,6 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// }
     /// ```
-    /// 
     /// ### Create a Subnet from a Subnet Pool
     /// 
     /// ```csharp

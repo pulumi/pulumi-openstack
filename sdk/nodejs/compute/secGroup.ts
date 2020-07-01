@@ -17,13 +17,11 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const secgroup1 = new openstack.compute.SecGroup("secgroup1", {
+ * const secgroup1 = new openstack.compute.SecGroup("secgroup_1", {
  *     description: "my security group",
  *     rules: [
  *         {
@@ -41,7 +39,6 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- *
  * ## Notes
  *
  * ### ICMP Rules
@@ -62,10 +59,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const testServer = new openstack.compute.Instance("test-server", {
+ * const test_server = new openstack.compute.Instance("test-server", {
  *     flavorId: "3",
  *     imageId: "ad091b52-742f-469e-8f3c-fd81cadf0743",
- *     keyPair: "myKeyPairName",
+ *     keyPair: "my_key_pair_name",
  *     securityGroups: [openstack_compute_secgroup_v2_secgroup_1.name],
  * });
  * ```

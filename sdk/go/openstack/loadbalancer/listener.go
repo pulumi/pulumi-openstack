@@ -11,6 +11,34 @@ import (
 )
 
 // Manages a V2 listener resource within OpenStack.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/loadbalancer"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := loadbalancer.NewListener(ctx, "listener1", &loadbalancer.ListenerArgs{
+// 			InsertHeaders: pulumi.StringMap{
+// 				"X-Forwarded-For": pulumi.String("true"),
+// 			},
+// 			LoadbalancerId: pulumi.String("d9415786-5f1a-428b-b35f-2f1523e146d2"),
+// 			Protocol:       pulumi.String("HTTP"),
+// 			ProtocolPort:   pulumi.Int(8080),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Listener struct {
 	pulumi.CustomResourceState
 

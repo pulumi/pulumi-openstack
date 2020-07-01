@@ -8,6 +8,30 @@ import (
 )
 
 // Use this data source to get the ID of an available OpenStack router.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/networking"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "router_1"
+// 		_, err := networking.LookupRouter(ctx, &networking.LookupRouterArgs{
+// 			Name: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupRouter(ctx *pulumi.Context, args *LookupRouterArgs, opts ...pulumi.InvokeOption) (*LookupRouterResult, error) {
 	var rv LookupRouterResult
 	err := ctx.Invoke("openstack:networking/getRouter:getRouter", args, &rv, opts...)

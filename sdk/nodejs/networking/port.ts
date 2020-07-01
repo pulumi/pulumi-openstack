@@ -10,49 +10,47 @@ import * as utilities from "../utilities";
  * Manages a V2 port resource within OpenStack.
  *
  * ## Example Usage
- *
  * ### Simple port
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const network1 = new openstack.networking.Network("network1", {
+ * const network1 = new openstack.networking.Network("network_1", {
  *     adminStateUp: true,
  * });
- * const port1 = new openstack.networking.Port("port1", {
+ * const port1 = new openstack.networking.Port("port_1", {
  *     adminStateUp: true,
  *     networkId: network1.id,
  * });
  * ```
- *
  * ### Port with physical binding information
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const network1 = new openstack.networking.Network("network1", {
+ * const network1 = new openstack.networking.Network("network_1", {
  *     adminStateUp: true,
  * });
- * const port1 = new openstack.networking.Port("port1", {
+ * const port1 = new openstack.networking.Port("port_1", {
  *     adminStateUp: true,
  *     binding: {
  *         hostId: "b080b9cf-46e0-4ce8-ad47-0fd4accc872b",
  *         profile: `{
- *   "localLinkInformation": [
+ *   "local_link_information": [
  *     {
- *       "switchInfo": "info1",
- *       "portId": "Ethernet3/4",
- *       "switchId": "12:34:56:78:9A:BC"
+ *       "switch_info": "info1",
+ *       "port_id": "Ethernet3/4",
+ *       "switch_id": "12:34:56:78:9A:BC"
  *     },
  *     {
- *       "switchInfo": "info2",
- *       "portId": "Ethernet3/4",
- *       "switchId": "12:34:56:78:9A:BD"
+ *       "switch_info": "info2",
+ *       "port_id": "Ethernet3/4",
+ *       "switch_id": "12:34:56:78:9A:BD"
  *     }
  *   ],
- *   "vlanType": "allowed"
+ *   "vlan_type": "allowed"
  * }
  * `,
  *         vnicType: "baremetal",
@@ -62,7 +60,6 @@ import * as utilities from "../utilities";
  *     networkId: network1.id,
  * });
  * ```
- *
  * ## Notes
  *
  * ### Ports and Instances

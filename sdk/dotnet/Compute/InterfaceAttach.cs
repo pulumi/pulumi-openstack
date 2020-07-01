@@ -14,7 +14,6 @@ namespace Pulumi.OpenStack.Compute
     /// Compute (Nova) v2 API.
     /// 
     /// ## Example Usage
-    /// 
     /// ### Basic Attachment
     /// 
     /// ```csharp
@@ -45,7 +44,6 @@ namespace Pulumi.OpenStack.Compute
     /// 
     /// }
     /// ```
-    /// 
     /// ### Attachment Specifying a Fixed IP
     /// 
     /// ```csharp
@@ -77,7 +75,6 @@ namespace Pulumi.OpenStack.Compute
     /// 
     /// }
     /// ```
-    /// 
     /// ### Attachment Using an Existing Port
     /// 
     /// ```csharp

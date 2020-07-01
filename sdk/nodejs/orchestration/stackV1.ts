@@ -11,13 +11,11 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const stack1 = new openstack.orchestration.StackV1("stack1", {
+ * const stack1 = new openstack.orchestration.StackV1("stack_1", {
  *     disableRollback: true,
  *     environmentOpts: {
  *         Bin: "\n",

@@ -15,7 +15,7 @@ namespace Pulumi.OpenStack.Images
     /// 
     /// ## Example Usage
     /// 
-    /// 
+    /// Accept a shared image membershipship proposal within the current project.
     /// 
     /// ```csharp
     /// using Pulumi;

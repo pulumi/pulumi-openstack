@@ -15,13 +15,11 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const members1 = new openstack.loadbalancer.Members("members1", {
+ * const members1 = new openstack.loadbalancer.Members("members_1", {
  *     members: [
  *         {
  *             address: "192.168.199.23",

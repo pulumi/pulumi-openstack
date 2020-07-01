@@ -35,8 +35,7 @@ type MembersMember struct {
 // MembersMemberInput is an input type that accepts MembersMemberArgs and MembersMemberOutput values.
 // You can construct a concrete instance of `MembersMemberInput` via:
 //
-// 		 MembersMemberArgs{...}
-//
+//          MembersMemberArgs{...}
 type MembersMemberInput interface {
 	pulumi.Input
 
@@ -81,8 +80,7 @@ func (i MembersMemberArgs) ToMembersMemberOutputWithContext(ctx context.Context)
 // MembersMemberArrayInput is an input type that accepts MembersMemberArray and MembersMemberArrayOutput values.
 // You can construct a concrete instance of `MembersMemberArrayInput` via:
 //
-// 		 MembersMemberArray{ MembersMemberArgs{...} }
-//
+//          MembersMemberArray{ MembersMemberArgs{...} }
 type MembersMemberArrayInput interface {
 	pulumi.Input
 
@@ -190,8 +188,7 @@ type PoolPersistence struct {
 // PoolPersistenceInput is an input type that accepts PoolPersistenceArgs and PoolPersistenceOutput values.
 // You can construct a concrete instance of `PoolPersistenceInput` via:
 //
-// 		 PoolPersistenceArgs{...}
-//
+//          PoolPersistenceArgs{...}
 type PoolPersistenceInput interface {
 	pulumi.Input
 
@@ -231,12 +228,11 @@ func (i PoolPersistenceArgs) ToPoolPersistencePtrOutputWithContext(ctx context.C
 // PoolPersistencePtrInput is an input type that accepts PoolPersistenceArgs, PoolPersistencePtr and PoolPersistencePtrOutput values.
 // You can construct a concrete instance of `PoolPersistencePtrInput` via:
 //
-// 		 PoolPersistenceArgs{...}
+//          PoolPersistenceArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type PoolPersistencePtrInput interface {
 	pulumi.Input
 

@@ -11,6 +11,41 @@ import (
 )
 
 // Manages a V1 stack resource within OpenStack.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/orchestration"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := orchestration.NewStackV1(ctx, "stack1", &orchestration.StackV1Args{
+// 			DisableRollback: pulumi.Bool(true),
+// 			EnvironmentOpts: pulumi.StringMap{
+// 				"Bin": pulumi.String(fmt.Sprintf("%v%v", "\n", "\n")),
+// 			},
+// 			Parameters: pulumi.Float64Map{
+// 				"length": pulumi.Float64(4),
+// 			},
+// 			TemplateOpts: pulumi.StringMap{
+// 				"Bin": pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v", "heat_template_version: 2013-05-23\n", "parameters:\n", "  length:\n", "    type: number\n", "resources:\n", "  test_res:\n", "    type: OS::Heat::TestResource\n", "  random:\n", "    type: OS::Heat::RandomString\n", "    properties:\n", "      length: {get_param: length}\n", "\n")),
+// 			},
+// 			Timeout: pulumi.Int(30),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type StackV1 struct {
 	pulumi.CustomResourceState
 

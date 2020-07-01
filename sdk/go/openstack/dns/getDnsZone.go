@@ -8,6 +8,30 @@ import (
 )
 
 // Use this data source to get the ID of an available OpenStack DNS zone.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/dns"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "example.com"
+// 		_, err := dns.GetDnsZone(ctx, &dns.GetDnsZoneArgs{
+// 			Name: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func GetDnsZone(ctx *pulumi.Context, args *GetDnsZoneArgs, opts ...pulumi.InvokeOption) (*GetDnsZoneResult, error) {
 	var rv GetDnsZoneResult
 	err := ctx.Invoke("openstack:dns/getDnsZone:getDnsZone", args, &rv, opts...)

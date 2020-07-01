@@ -13,8 +13,9 @@ namespace Pulumi.OpenStack.KeyManager
     /// Manages a V1 Barbican container resource within OpenStack.
     /// 
     /// ## Example Usage
-    /// 
     /// ### Simple secret
+    /// 
+    /// The container with the TLS certificates, which can be used by the loadbalancer HTTPS listener.
     /// 
     /// ```csharp
     /// using System.IO;
@@ -84,8 +85,9 @@ namespace Pulumi.OpenStack.KeyManager
     /// 
     /// }
     /// ```
-    /// 
     /// ### Container with the ACL
+    /// 
+    /// &gt; **Note** Only read ACLs are supported
     /// 
     /// ```csharp
     /// using Pulumi;

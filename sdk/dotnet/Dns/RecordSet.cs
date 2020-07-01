@@ -13,7 +13,6 @@ namespace Pulumi.OpenStack.Dns
     /// Manages a DNS record set in the OpenStack DNS Service.
     /// 
     /// ## Example Usage
-    /// 
     /// ### Automatically detect the correct network
     /// 
     /// ```csharp

@@ -10,6 +10,117 @@ import (
 )
 
 // Manages a V1 container resource within OpenStack.
+//
+// ## Example Usage
+// ### Basic Container
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/objectstorage"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := objectstorage.NewContainer(ctx, "container1", &objectstorage.ContainerArgs{
+// 			ContentType: pulumi.String("application/json"),
+// 			Metadata: pulumi.StringMap{
+// 				"test": pulumi.String("true"),
+// 			},
+// 			Region: pulumi.String("RegionOne"),
+// 			Versioning: &objectstorage.ContainerVersioningArgs{
+// 				Location: pulumi.String("tf-test-container-versions"),
+// 				Type:     pulumi.String("versions"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Global Read Access
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/objectstorage"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := objectstorage.NewContainer(ctx, "container1", &objectstorage.ContainerArgs{
+// 			ContainerRead: pulumi.String(".r:*"),
+// 			Region:        pulumi.String("RegionOne"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Global Read and List Access
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/objectstorage"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := objectstorage.NewContainer(ctx, "container1", &objectstorage.ContainerArgs{
+// 			ContainerRead: pulumi.String(".r:*,.rlistings"),
+// 			Region:        pulumi.String("RegionOne"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Write-Only Access for a User
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/identity"
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/objectstorage"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		current, err := identity.GetAuthScope(ctx, &identity.GetAuthScopeArgs{
+// 			Name: "current",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = objectstorage.NewContainer(ctx, "container1", &objectstorage.ContainerArgs{
+// 			ContainerRead:  pulumi.String(fmt.Sprintf("%v%v", ".r:-", _var.Username)),
+// 			ContainerWrite: pulumi.String(fmt.Sprintf("%v%v%v", current.ProjectId, ":", _var.Username)),
+// 			Region:         pulumi.String("RegionOne"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Container struct {
 	pulumi.CustomResourceState
 

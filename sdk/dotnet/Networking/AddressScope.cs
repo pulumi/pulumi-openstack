@@ -13,7 +13,6 @@ namespace Pulumi.OpenStack.Networking
     /// Manages a V2 Neutron addressscope resource within OpenStack.
     /// 
     /// ## Example Usage
-    /// 
     /// ### Create an Address-scope
     /// 
     /// ```csharp
@@ -32,7 +31,6 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// }
     /// ```
-    /// 
     /// ### Create a Subnet Pool from an Address-scope
     /// 
     /// ```csharp

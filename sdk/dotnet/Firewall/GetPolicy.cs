@@ -34,7 +34,6 @@ namespace Pulumi.OpenStack.Firewall
         /// 
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

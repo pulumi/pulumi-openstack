@@ -8,6 +8,30 @@ import (
 )
 
 // Use this data source to get the ID of an available Shared File System snapshot.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/sharedfilesystem"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "snapshot_1"
+// 		_, err := sharedfilesystem.GetSnapshot(ctx, &sharedfilesystem.GetSnapshotArgs{
+// 			Name: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func GetSnapshot(ctx *pulumi.Context, args *GetSnapshotArgs, opts ...pulumi.InvokeOption) (*GetSnapshotResult, error) {
 	var rv GetSnapshotResult
 	err := ctx.Invoke("openstack:sharedfilesystem/getSnapshot:getSnapshot", args, &rv, opts...)

@@ -11,6 +11,37 @@ import (
 )
 
 // Manages a V2 Neutron QoS minimum bandwidth rule resource within OpenStack.
+//
+// ## Example Usage
+// ### Create a QoS Policy with some minimum bandwidth rule
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/networking"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		qosPolicy1, err := networking.NewQosPolicy(ctx, "qosPolicy1", &networking.QosPolicyArgs{
+// 			Description: pulumi.String("min_kbps"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = networking.NewQosMinimumBandwidthRule(ctx, "minimumBandwidthRule1", &networking.QosMinimumBandwidthRuleArgs{
+// 			MinKbps:     pulumi.Int(200),
+// 			QosPolicyId: qosPolicy1.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type QosMinimumBandwidthRule struct {
 	pulumi.CustomResourceState
 

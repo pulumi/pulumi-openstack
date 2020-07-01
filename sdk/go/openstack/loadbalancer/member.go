@@ -11,6 +11,31 @@ import (
 )
 
 // Manages a V2 member resource within OpenStack.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/loadbalancer"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := loadbalancer.NewMember(ctx, "member1", &loadbalancer.MemberArgs{
+// 			Address:      pulumi.String("192.168.199.23"),
+// 			PoolId:       pulumi.String("935685fb-a896-40f9-9ff4-ae531a3a00fe"),
+// 			ProtocolPort: pulumi.Int(8080),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Member struct {
 	pulumi.CustomResourceState
 

@@ -13,7 +13,6 @@ namespace Pulumi.OpenStack.Networking
     /// Manages a V2 port resource within OpenStack.
     /// 
     /// ## Example Usage
-    /// 
     /// ### Simple port
     /// 
     /// ```csharp
@@ -37,7 +36,6 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// }
     /// ```
-    /// 
     /// ### Port with physical binding information
     /// 
     /// ```csharp
@@ -85,7 +83,6 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// }
     /// ```
-    /// 
     /// ## Notes
     /// 
     /// ### Ports and Instances

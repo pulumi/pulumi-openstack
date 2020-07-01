@@ -10,14 +10,13 @@ import * as utilities from "../utilities";
  * Manages a V1 container resource within OpenStack.
  *
  * ## Example Usage
- *
  * ### Basic Container
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const container1 = new openstack.objectstorage.Container("container1", {
+ * const container1 = new openstack.objectstorage.Container("container_1", {
  *     contentType: "application/json",
  *     metadata: {
  *         test: "true",
@@ -29,31 +28,28 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
  * ### Global Read Access
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const container1 = new openstack.objectstorage.Container("container1", {
+ * const container1 = new openstack.objectstorage.Container("container_1", {
  *     containerRead: ".r:*",
  *     region: "RegionOne",
  * });
  * ```
- *
  * ### Global Read and List Access
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const container1 = new openstack.objectstorage.Container("container1", {
+ * const container1 = new openstack.objectstorage.Container("container_1", {
  *     containerRead: ".r:*,.rlistings",
  *     region: "RegionOne",
  * });
  * ```
- *
  * ### Write-Only Access for a User
  *
  * ```typescript
@@ -63,7 +59,7 @@ import * as utilities from "../utilities";
  * const current = pulumi.output(openstack.identity.getAuthScope({
  *     name: "current",
  * }, { async: true }));
- * const container1 = new openstack.objectstorage.Container("container1", {
+ * const container1 = new openstack.objectstorage.Container("container_1", {
  *     containerRead: `.r:-${var_username}`,
  *     containerWrite: pulumi.interpolate`${current.projectId}:${var_username}`,
  *     region: "RegionOne",

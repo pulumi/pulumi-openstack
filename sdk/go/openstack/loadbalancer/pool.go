@@ -11,6 +11,35 @@ import (
 )
 
 // Manages a V2 pool resource within OpenStack.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/loadbalancer"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := loadbalancer.NewPool(ctx, "pool1", &loadbalancer.PoolArgs{
+// 			LbMethod:   pulumi.String("ROUND_ROBIN"),
+// 			ListenerId: pulumi.String("d9415786-5f1a-428b-b35f-2f1523e146d2"),
+// 			Persistence: &loadbalancer.PoolPersistenceArgs{
+// 				CookieName: pulumi.String("testCookie"),
+// 				Type:       pulumi.String("APP_COOKIE"),
+// 			},
+// 			Protocol: pulumi.String("HTTP"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Pool struct {
 	pulumi.CustomResourceState
 
