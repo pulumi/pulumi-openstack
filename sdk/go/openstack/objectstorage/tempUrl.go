@@ -17,6 +17,47 @@ import (
 // will remain in place. If you wish to automatically regenerate a URL, set
 // the `regenerate` argument to `true`. This will create a new resource with
 // a new ID and URL.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/objectstorage"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		container1, err := objectstorage.NewContainer(ctx, "container1", &objectstorage.ContainerArgs{
+// 			Metadata: pulumi.StringMap{
+// 				"Temp-URL-Key": pulumi.String("testkey"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		object1, err := objectstorage.NewContainerObject(ctx, "object1", &objectstorage.ContainerObjectArgs{
+// 			ContainerName: container1.Name,
+// 			Content:       pulumi.String("Hello, world!"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = objectstorage.NewTempUrl(ctx, "objTempurl", &objectstorage.TempUrlArgs{
+// 			Container: container1.Name,
+// 			Method:    pulumi.String("post"),
+// 			Object:    object1.Name,
+// 			Ttl:       pulumi.Int(20),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type TempUrl struct {
 	pulumi.CustomResourceState
 

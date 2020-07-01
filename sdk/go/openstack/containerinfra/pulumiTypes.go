@@ -21,8 +21,7 @@ type ClusterKubeconfig struct {
 // ClusterKubeconfigInput is an input type that accepts ClusterKubeconfigArgs and ClusterKubeconfigOutput values.
 // You can construct a concrete instance of `ClusterKubeconfigInput` via:
 //
-// 		 ClusterKubeconfigArgs{...}
-//
+//          ClusterKubeconfigArgs{...}
 type ClusterKubeconfigInput interface {
 	pulumi.Input
 
@@ -61,12 +60,11 @@ func (i ClusterKubeconfigArgs) ToClusterKubeconfigPtrOutputWithContext(ctx conte
 // ClusterKubeconfigPtrInput is an input type that accepts ClusterKubeconfigArgs, ClusterKubeconfigPtr and ClusterKubeconfigPtrOutput values.
 // You can construct a concrete instance of `ClusterKubeconfigPtrInput` via:
 //
-// 		 ClusterKubeconfigArgs{...}
+//          ClusterKubeconfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterKubeconfigPtrInput interface {
 	pulumi.Input
 

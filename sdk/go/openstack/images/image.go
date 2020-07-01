@@ -12,7 +12,33 @@ import (
 
 // Manages a V2 Image resource within OpenStack Glance.
 //
+// ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/images"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := images.NewImage(ctx, "rancheros", &images.ImageArgs{
+// 			ContainerFormat: pulumi.String("bare"),
+// 			DiskFormat:      pulumi.String("qcow2"),
+// 			ImageSourceUrl:  pulumi.String("https://releases.rancher.com/os/latest/rancheros-openstack.img"),
+// 			Properties: pulumi.StringMap{
+// 				"key": pulumi.String("value"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 // ## Notes
 //
 // ### Properties

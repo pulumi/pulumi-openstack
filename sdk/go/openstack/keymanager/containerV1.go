@@ -11,6 +11,55 @@ import (
 )
 
 // Manages a V1 Barbican container resource within OpenStack.
+//
+// ## Example Usage
+// ### Container with the ACL
+//
+// > **Note** Only read ACLs are supported
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/keymanager"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := keymanager.NewContainerV1(ctx, "tls1", &keymanager.ContainerV1Args{
+// 			Acl: &keymanager.ContainerV1AclArgs{
+// 				Read: &keymanager.ContainerV1AclReadArgs{
+// 					ProjectAccess: pulumi.Bool(false),
+// 					Users: pulumi.StringArray{
+// 						pulumi.String("userid1"),
+// 						pulumi.String("userid2"),
+// 					},
+// 				},
+// 			},
+// 			SecretRefs: keymanager.ContainerV1SecretRefArray{
+// 				&keymanager.ContainerV1SecretRefArgs{
+// 					Name:      pulumi.String("certificate"),
+// 					SecretRef: pulumi.String(openstack_keymanager_secret_v1.Certificate_1.Secret_ref),
+// 				},
+// 				&keymanager.ContainerV1SecretRefArgs{
+// 					Name:      pulumi.String("private_key"),
+// 					SecretRef: pulumi.String(openstack_keymanager_secret_v1.Private_key_1.Secret_ref),
+// 				},
+// 				&keymanager.ContainerV1SecretRefArgs{
+// 					Name:      pulumi.String("intermediates"),
+// 					SecretRef: pulumi.String(openstack_keymanager_secret_v1.Intermediate_1.Secret_ref),
+// 				},
+// 			},
+// 			Type: pulumi.String("certificate"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type ContainerV1 struct {
 	pulumi.CustomResourceState
 

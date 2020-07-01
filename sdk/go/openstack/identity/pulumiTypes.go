@@ -34,8 +34,7 @@ type ApplicationCredentialAccessRule struct {
 // ApplicationCredentialAccessRuleInput is an input type that accepts ApplicationCredentialAccessRuleArgs and ApplicationCredentialAccessRuleOutput values.
 // You can construct a concrete instance of `ApplicationCredentialAccessRuleInput` via:
 //
-// 		 ApplicationCredentialAccessRuleArgs{...}
-//
+//          ApplicationCredentialAccessRuleArgs{...}
 type ApplicationCredentialAccessRuleInput interface {
 	pulumi.Input
 
@@ -79,8 +78,7 @@ func (i ApplicationCredentialAccessRuleArgs) ToApplicationCredentialAccessRuleOu
 // ApplicationCredentialAccessRuleArrayInput is an input type that accepts ApplicationCredentialAccessRuleArray and ApplicationCredentialAccessRuleArrayOutput values.
 // You can construct a concrete instance of `ApplicationCredentialAccessRuleArrayInput` via:
 //
-// 		 ApplicationCredentialAccessRuleArray{ ApplicationCredentialAccessRuleArgs{...} }
-//
+//          ApplicationCredentialAccessRuleArray{ ApplicationCredentialAccessRuleArgs{...} }
 type ApplicationCredentialAccessRuleArrayInput interface {
 	pulumi.Input
 
@@ -175,8 +173,7 @@ type UserMultiFactorAuthRule struct {
 // UserMultiFactorAuthRuleInput is an input type that accepts UserMultiFactorAuthRuleArgs and UserMultiFactorAuthRuleOutput values.
 // You can construct a concrete instance of `UserMultiFactorAuthRuleInput` via:
 //
-// 		 UserMultiFactorAuthRuleArgs{...}
-//
+//          UserMultiFactorAuthRuleArgs{...}
 type UserMultiFactorAuthRuleInput interface {
 	pulumi.Input
 
@@ -205,8 +202,7 @@ func (i UserMultiFactorAuthRuleArgs) ToUserMultiFactorAuthRuleOutputWithContext(
 // UserMultiFactorAuthRuleArrayInput is an input type that accepts UserMultiFactorAuthRuleArray and UserMultiFactorAuthRuleArrayOutput values.
 // You can construct a concrete instance of `UserMultiFactorAuthRuleArrayInput` via:
 //
-// 		 UserMultiFactorAuthRuleArray{ UserMultiFactorAuthRuleArgs{...} }
-//
+//          UserMultiFactorAuthRuleArray{ UserMultiFactorAuthRuleArgs{...} }
 type UserMultiFactorAuthRuleArrayInput interface {
 	pulumi.Input
 
@@ -278,8 +274,7 @@ type GetAuthScopeRole struct {
 // GetAuthScopeRoleInput is an input type that accepts GetAuthScopeRoleArgs and GetAuthScopeRoleOutput values.
 // You can construct a concrete instance of `GetAuthScopeRoleInput` via:
 //
-// 		 GetAuthScopeRoleArgs{...}
-//
+//          GetAuthScopeRoleArgs{...}
 type GetAuthScopeRoleInput interface {
 	pulumi.Input
 
@@ -309,8 +304,7 @@ func (i GetAuthScopeRoleArgs) ToGetAuthScopeRoleOutputWithContext(ctx context.Co
 // GetAuthScopeRoleArrayInput is an input type that accepts GetAuthScopeRoleArray and GetAuthScopeRoleArrayOutput values.
 // You can construct a concrete instance of `GetAuthScopeRoleArrayInput` via:
 //
-// 		 GetAuthScopeRoleArray{ GetAuthScopeRoleArgs{...} }
-//
+//          GetAuthScopeRoleArray{ GetAuthScopeRoleArgs{...} }
 type GetAuthScopeRoleArrayInput interface {
 	pulumi.Input
 

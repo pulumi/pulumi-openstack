@@ -13,6 +13,41 @@ import (
 // Manages a V2 neutron security group rule resource within OpenStack.
 // Unlike Nova security groups, neutron separates the group from the rules
 // and also allows an admin to target a specific tenant_id.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/networking"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		secgroup1, err := networking.NewSecGroup(ctx, "secgroup1", &networking.SecGroupArgs{
+// 			Description: pulumi.String("My neutron security group"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = networking.NewSecGroupRule(ctx, "secgroupRule1", &networking.SecGroupRuleArgs{
+// 			Direction:       pulumi.String("ingress"),
+// 			Ethertype:       pulumi.String("IPv4"),
+// 			PortRangeMax:    pulumi.Int(22),
+// 			PortRangeMin:    pulumi.Int(22),
+// 			Protocol:        pulumi.String("tcp"),
+// 			RemoteIpPrefix:  pulumi.String("0.0.0.0/0"),
+// 			SecurityGroupId: secgroup1.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type SecGroupRule struct {
 	pulumi.CustomResourceState
 

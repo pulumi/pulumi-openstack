@@ -9,6 +9,42 @@ using Pulumi.Serialization;
 
 namespace Pulumi.OpenStack.SharedFileSystem
 {
+    /// <summary>
+    /// Use this resource to configure a security service.
+    /// 
+    /// A security service stores configuration information for clients for
+    /// authentication and authorization (AuthN/AuthZ). For example, a share server
+    /// will be the client for an existing service such as LDAP, Kerberos, or
+    /// Microsoft Active Directory.
+    /// 
+    /// Minimum supported Manila microversion is 2.7.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var securityservice1 = new OpenStack.SharedFileSystem.SecurityService("securityservice1", new OpenStack.SharedFileSystem.SecurityServiceArgs
+    ///         {
+    ///             Description = "created by terraform",
+    ///             DnsIp = "192.168.199.10",
+    ///             Domain = "example.com",
+    ///             Ou = "CN=Computers,DC=example,DC=com",
+    ///             Password = "s8cret",
+    ///             Server = "192.168.199.10",
+    ///             Type = "active_directory",
+    ///             User = "joinDomainUser",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     public partial class SecurityService : Pulumi.CustomResource
     {
         /// <summary>

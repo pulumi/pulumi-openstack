@@ -13,14 +13,12 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
  * const scope = pulumi.output(openstack.identity.getAuthScope({
- *     name: "myScope",
+ *     name: "my_scope",
  * }, { async: true }));
  * ```
  */

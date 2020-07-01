@@ -15,22 +15,20 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const container1 = new openstack.objectstorage.Container("container1", {
+ * const container1 = new openstack.objectstorage.Container("container_1", {
  *     metadata: {
  *         "Temp-URL-Key": "testkey",
  *     },
  * });
- * const object1 = new openstack.objectstorage.ContainerObject("object1", {
+ * const object1 = new openstack.objectstorage.ContainerObject("object_1", {
  *     containerName: container1.name,
  *     content: "Hello, world!",
  * });
- * const objTempurl = new openstack.objectstorage.TempUrl("objTempurl", {
+ * const objTempurl = new openstack.objectstorage.TempUrl("obj_tempurl", {
  *     container: container1.name,
  *     method: "post",
  *     object: object1.name,

@@ -17,8 +17,6 @@ namespace Pulumi.OpenStack.Identity
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
@@ -44,7 +42,7 @@ namespace Pulumi.OpenStack.Identity
     ///             {
     ///                 new OpenStack.Identity.Inputs.UserMultiFactorAuthRuleArgs
     ///                 {
-    ///                     Rule = 
+    ///                     Rules = 
     ///                     {
     ///                         "password",
     ///                         "totp",
@@ -52,7 +50,7 @@ namespace Pulumi.OpenStack.Identity
     ///                 },
     ///                 new OpenStack.Identity.Inputs.UserMultiFactorAuthRuleArgs
     ///                 {
-    ///                     Rule = 
+    ///                     Rules = 
     ///                     {
     ///                         "password",
     ///                     },

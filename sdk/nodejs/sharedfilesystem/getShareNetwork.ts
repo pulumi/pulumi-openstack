@@ -11,14 +11,12 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
  * const sharenetwork1 = pulumi.output(openstack.sharedfilesystem.getShareNetwork({
- *     name: "sharenetwork1",
+ *     name: "sharenetwork_1",
  * }, { async: true }));
  * ```
  */

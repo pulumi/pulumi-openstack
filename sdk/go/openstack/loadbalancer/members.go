@@ -15,6 +15,39 @@ import (
 // > **Note:** This resource works only within Octavia API. For
 // legacy Neutron LBaaS v2 extension please use
 // loadbalancer.Member resource.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/loadbalancer"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := loadbalancer.NewMembers(ctx, "members1", &loadbalancer.MembersArgs{
+// 			Members: loadbalancer.MembersMemberArray{
+// 				&loadbalancer.MembersMemberArgs{
+// 					Address:      pulumi.String("192.168.199.23"),
+// 					ProtocolPort: pulumi.Int(8080),
+// 				},
+// 				&loadbalancer.MembersMemberArgs{
+// 					Address:      pulumi.String("192.168.199.24"),
+// 					ProtocolPort: pulumi.Int(8080),
+// 				},
+// 			},
+// 			PoolId: pulumi.String("935685fb-a896-40f9-9ff4-ae531a3a00fe"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Members struct {
 	pulumi.CustomResourceState
 

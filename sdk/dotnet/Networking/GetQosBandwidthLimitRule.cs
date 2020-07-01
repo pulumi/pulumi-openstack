@@ -13,9 +13,6 @@ namespace Pulumi.OpenStack.Networking
     {
         /// <summary>
         /// Use this data source to get the ID of an available OpenStack QoS bandwidth limit rule.
-        /// 
-        /// {{% examples %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetQosBandwidthLimitRuleResult> InvokeAsync(GetQosBandwidthLimitRuleArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetQosBandwidthLimitRuleResult>("openstack:networking/getQosBandwidthLimitRule:getQosBandwidthLimitRule", args ?? new GetQosBandwidthLimitRuleArgs(), options.WithVersion());

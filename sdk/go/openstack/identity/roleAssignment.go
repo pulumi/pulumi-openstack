@@ -14,6 +14,45 @@ import (
 //
 // Note: You _must_ have admin privileges in your OpenStack cloud to use
 // this resource.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/identity"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		project1, err := identity.NewProject(ctx, "project1", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		user1, err := identity.NewUser(ctx, "user1", &identity.UserArgs{
+// 			DefaultProjectId: project1.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		role1, err := identity.NewRole(ctx, "role1", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = identity.NewRoleAssignment(ctx, "roleAssignment1", &identity.RoleAssignmentArgs{
+// 			ProjectId: project1.ID(),
+// 			RoleId:    role1.ID(),
+// 			UserId:    user1.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type RoleAssignment struct {
 	pulumi.CustomResourceState
 

@@ -13,6 +13,53 @@ import (
 //
 // Note: You _must_ have admin privileges in your OpenStack cloud to use
 // this resource.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/identity"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		project1, err := identity.NewProject(ctx, "project1", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = identity.NewUser(ctx, "user1", &identity.UserArgs{
+// 			DefaultProjectId: project1.ID(),
+// 			Description:      pulumi.String("A user"),
+// 			Extra: pulumi.StringMap{
+// 				"email": pulumi.String("user_1@foobar.com"),
+// 			},
+// 			IgnoreChangePasswordUponFirstUse: pulumi.Bool(true),
+// 			MultiFactorAuthEnabled:           pulumi.Bool(true),
+// 			MultiFactorAuthRules: identity.UserMultiFactorAuthRuleArray{
+// 				&identity.UserMultiFactorAuthRuleArgs{
+// 					Rules: pulumi.StringArray{
+// 						pulumi.String("password"),
+// 						pulumi.String("totp"),
+// 					},
+// 				},
+// 				&identity.UserMultiFactorAuthRuleArgs{
+// 					Rules: pulumi.StringArray{
+// 						pulumi.String("password"),
+// 					},
+// 				},
+// 			},
+// 			Password: pulumi.String("password123"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type User struct {
 	pulumi.CustomResourceState
 

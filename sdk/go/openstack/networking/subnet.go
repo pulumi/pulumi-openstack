@@ -11,6 +11,36 @@ import (
 )
 
 // Manages a V2 Neutron subnet resource within OpenStack.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/networking"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		network1, err := networking.NewNetwork(ctx, "network1", &networking.NetworkArgs{
+// 			AdminStateUp: pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = networking.NewSubnet(ctx, "subnet1", &networking.SubnetArgs{
+// 			Cidr:      pulumi.String("192.168.199.0/24"),
+// 			NetworkId: network1.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Subnet struct {
 	pulumi.CustomResourceState
 
@@ -24,7 +54,6 @@ type Subnet struct {
 	// must be from the same CIDR that the subnet is part of.
 	// The `allocationPool` block is documented below.
 	AllocationPools SubnetAllocationPoolArrayOutput `pulumi:"allocationPools"`
-	//
 	// A block declaring the start and end range of the IP addresses available for
 	// use with DHCP in this subnet.
 	// The `allocationPools` block is documented below.
@@ -139,7 +168,6 @@ type subnetState struct {
 	// must be from the same CIDR that the subnet is part of.
 	// The `allocationPool` block is documented below.
 	AllocationPools []SubnetAllocationPool `pulumi:"allocationPools"`
-	//
 	// A block declaring the start and end range of the IP addresses available for
 	// use with DHCP in this subnet.
 	// The `allocationPools` block is documented below.
@@ -224,7 +252,6 @@ type SubnetState struct {
 	// must be from the same CIDR that the subnet is part of.
 	// The `allocationPool` block is documented below.
 	AllocationPools SubnetAllocationPoolArrayInput
-	//
 	// A block declaring the start and end range of the IP addresses available for
 	// use with DHCP in this subnet.
 	// The `allocationPools` block is documented below.
@@ -310,7 +337,6 @@ type subnetArgs struct {
 	// must be from the same CIDR that the subnet is part of.
 	// The `allocationPool` block is documented below.
 	AllocationPools []SubnetAllocationPool `pulumi:"allocationPools"`
-	//
 	// A block declaring the start and end range of the IP addresses available for
 	// use with DHCP in this subnet.
 	// The `allocationPools` block is documented below.
@@ -393,7 +419,6 @@ type SubnetArgs struct {
 	// must be from the same CIDR that the subnet is part of.
 	// The `allocationPool` block is documented below.
 	AllocationPools SubnetAllocationPoolArrayInput
-	//
 	// A block declaring the start and end range of the IP addresses available for
 	// use with DHCP in this subnet.
 	// The `allocationPools` block is documented below.

@@ -11,6 +11,45 @@ import (
 )
 
 // Manages a DNS record set in the OpenStack DNS Service.
+//
+// ## Example Usage
+// ### Automatically detect the correct network
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/dns"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		exampleZone, err := dns.NewZone(ctx, "exampleZone", &dns.ZoneArgs{
+// 			Description: pulumi.String("a zone"),
+// 			Email:       pulumi.String("email2@example.com"),
+// 			Ttl:         pulumi.Int(6000),
+// 			Type:        pulumi.String("PRIMARY"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = dns.NewRecordSet(ctx, "rsExampleCom", &dns.RecordSetArgs{
+// 			Description: pulumi.String("An example record set"),
+// 			Records: pulumi.StringArray{
+// 				pulumi.String("10.0.0.1"),
+// 			},
+// 			Ttl:    pulumi.Int(3000),
+// 			Type:   pulumi.String("A"),
+// 			ZoneId: exampleZone.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type RecordSet struct {
 	pulumi.CustomResourceState
 

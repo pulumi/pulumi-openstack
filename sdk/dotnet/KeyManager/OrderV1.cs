@@ -13,7 +13,6 @@ namespace Pulumi.OpenStack.KeyManager
     /// Manages a V1 Barbican order resource within OpenStack.
     /// 
     /// ## Example Usage
-    /// 
     /// ### Symmetric key order
     /// 
     /// ```csharp
@@ -39,7 +38,6 @@ namespace Pulumi.OpenStack.KeyManager
     /// 
     /// }
     /// ```
-    /// 
     /// ### Asymmetric key pair order
     /// 
     /// ```csharp

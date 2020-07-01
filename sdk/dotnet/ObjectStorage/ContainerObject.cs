@@ -13,7 +13,6 @@ namespace Pulumi.OpenStack.ObjectStorage
     /// Manages a V1 container object resource within OpenStack.
     /// 
     /// ## Example Usage
-    /// 
     /// ### Example with simple content
     /// 
     /// ```csharp
@@ -52,7 +51,6 @@ namespace Pulumi.OpenStack.ObjectStorage
     /// 
     /// }
     /// ```
-    /// 
     /// ### Example with content from file
     /// 
     /// ```csharp

@@ -11,13 +11,11 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const service1 = new openstack.identity.ServiceV3("service1", {
+ * const service1 = new openstack.identity.ServiceV3("service_1", {
  *     type: "custom",
  * });
  * ```

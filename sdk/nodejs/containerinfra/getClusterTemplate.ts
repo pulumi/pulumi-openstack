@@ -12,14 +12,12 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
  * const clustertemplate1 = pulumi.output(openstack.containerinfra.getClusterTemplate({
- *     name: "clustertemplate1",
+ *     name: "clustertemplate_1",
  * }, { async: true }));
  * ```
  */

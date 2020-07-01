@@ -14,12 +14,10 @@ namespace Pulumi.OpenStack.Compute
     /// 
     /// &gt; **Note:** This usually requires admin privileges.
     /// 
-    /// &gt; **Note:** This resource has a no-op deletion so no actual actions will be done against the OpenStack API 
+    /// &gt; **Note:** This resource has a no-op deletion so no actual actions will be done against the OpenStack API
     ///     in case of delete call.
     /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

@@ -10,6 +10,27 @@ import (
 )
 
 // Manages a V2 Neutron IPSec policy resource within OpenStack.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/vpnaas"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := vpnaas.NewIpSecPolicy(ctx, "policy1", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type IpSecPolicy struct {
 	pulumi.CustomResourceState
 
@@ -27,9 +48,9 @@ type IpSecPolicy struct {
 	EncryptionAlgorithm pulumi.StringOutput `pulumi:"encryptionAlgorithm"`
 	// The lifetime of the security association. Consists of Unit and Value.
 	// - `unit` - (Optional) The units for the lifetime of the security association. Can be either seconds or kilobytes.
-	// Default is seconds.
+	//   Default is seconds.
 	// - `value` - (Optional) The value for the lifetime of the security association. Must be a positive integer.
-	// Default is 3600.
+	//   Default is 3600.
 	Lifetimes IpSecPolicyLifetimeArrayOutput `pulumi:"lifetimes"`
 	// The name of the policy. Changing this updates the name of
 	// the existing policy.
@@ -94,9 +115,9 @@ type ipSecPolicyState struct {
 	EncryptionAlgorithm *string `pulumi:"encryptionAlgorithm"`
 	// The lifetime of the security association. Consists of Unit and Value.
 	// - `unit` - (Optional) The units for the lifetime of the security association. Can be either seconds or kilobytes.
-	// Default is seconds.
+	//   Default is seconds.
 	// - `value` - (Optional) The value for the lifetime of the security association. Must be a positive integer.
-	// Default is 3600.
+	//   Default is 3600.
 	Lifetimes []IpSecPolicyLifetime `pulumi:"lifetimes"`
 	// The name of the policy. Changing this updates the name of
 	// the existing policy.
@@ -134,9 +155,9 @@ type IpSecPolicyState struct {
 	EncryptionAlgorithm pulumi.StringPtrInput
 	// The lifetime of the security association. Consists of Unit and Value.
 	// - `unit` - (Optional) The units for the lifetime of the security association. Can be either seconds or kilobytes.
-	// Default is seconds.
+	//   Default is seconds.
 	// - `value` - (Optional) The value for the lifetime of the security association. Must be a positive integer.
-	// Default is 3600.
+	//   Default is 3600.
 	Lifetimes IpSecPolicyLifetimeArrayInput
 	// The name of the policy. Changing this updates the name of
 	// the existing policy.
@@ -178,9 +199,9 @@ type ipSecPolicyArgs struct {
 	EncryptionAlgorithm *string `pulumi:"encryptionAlgorithm"`
 	// The lifetime of the security association. Consists of Unit and Value.
 	// - `unit` - (Optional) The units for the lifetime of the security association. Can be either seconds or kilobytes.
-	// Default is seconds.
+	//   Default is seconds.
 	// - `value` - (Optional) The value for the lifetime of the security association. Must be a positive integer.
-	// Default is 3600.
+	//   Default is 3600.
 	Lifetimes []IpSecPolicyLifetime `pulumi:"lifetimes"`
 	// The name of the policy. Changing this updates the name of
 	// the existing policy.
@@ -219,9 +240,9 @@ type IpSecPolicyArgs struct {
 	EncryptionAlgorithm pulumi.StringPtrInput
 	// The lifetime of the security association. Consists of Unit and Value.
 	// - `unit` - (Optional) The units for the lifetime of the security association. Can be either seconds or kilobytes.
-	// Default is seconds.
+	//   Default is seconds.
 	// - `value` - (Optional) The value for the lifetime of the security association. Must be a positive integer.
-	// Default is 3600.
+	//   Default is 3600.
 	Lifetimes IpSecPolicyLifetimeArrayInput
 	// The name of the policy. Changing this updates the name of
 	// the existing policy.

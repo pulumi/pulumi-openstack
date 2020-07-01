@@ -8,6 +8,35 @@ import (
 )
 
 // Use this data source to get the ID of an available OpenStack image.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/images"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := true
+// 		opt1 := "Ubuntu 16.04"
+// 		_, err := images.LookupImage(ctx, &images.LookupImageArgs{
+// 			MostRecent: &opt0,
+// 			Name:       &opt1,
+// 			Properties: map[string]interface{}{
+// 				"key": "value",
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupImage(ctx *pulumi.Context, args *LookupImageArgs, opts ...pulumi.InvokeOption) (*LookupImageResult, error) {
 	var rv LookupImageResult
 	err := ctx.Invoke("openstack:images/getImage:getImage", args, &rv, opts...)

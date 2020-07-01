@@ -8,7 +8,6 @@ import * as utilities from "../utilities";
  * Manages a V1 DB user resource within OpenStack.
  *
  * ## Example Usage
- *
  * ### User
  *
  * ```typescript

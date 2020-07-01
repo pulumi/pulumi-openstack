@@ -11,14 +11,12 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
  * const example = pulumi.output(openstack.keymanager.getContainer({
- *     name: "myContainer",
+ *     name: "my_container",
  * }, { async: true }));
  * ```
  */

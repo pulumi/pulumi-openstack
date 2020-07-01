@@ -11,16 +11,14 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const port1 = new openstack.networking.Port("port1", {
+ * const port1 = new openstack.networking.Port("port_1", {
  *     networkId: "a5bbd213-e1d3-49b6-aed1-9df60ea94b9a",
  * });
- * const fip1 = new openstack.networking.FloatingIpAssociate("fip1", {
+ * const fip1 = new openstack.networking.FloatingIpAssociate("fip_1", {
  *     floatingIp: "1.2.3.4",
  *     portId: port1.id,
  * });

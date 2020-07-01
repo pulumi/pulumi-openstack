@@ -21,17 +21,15 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const network1 = new openstack.networking.Network("network1", {
+ * const network1 = new openstack.networking.Network("network_1", {
  *     adminStateUp: true,
  * });
- * const rbacPolicy1 = new openstack.networking.RbacPolicyV2("rbacPolicy1", {
- *     action: "accessAsShared",
+ * const rbacPolicy1 = new openstack.networking.RbacPolicyV2("rbac_policy_1", {
+ *     action: "access_as_shared",
  *     objectId: network1.id,
  *     objectType: "network",
  *     targetTenant: "20415a973c9e45d3917f078950644697",

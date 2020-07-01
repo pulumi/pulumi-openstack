@@ -10,37 +10,38 @@ import * as utilities from "../utilities";
  * Manages a V1 Barbican container resource within OpenStack.
  *
  * ## Example Usage
- *
  * ### Simple secret
+ *
+ * The container with the TLS certificates, which can be used by the loadbalancer HTTPS listener.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fs from "fs";
  * import * as openstack from "@pulumi/openstack";
  *
- * const certificate1 = new openstack.keymanager.SecretV1("certificate1", {
+ * const certificate1 = new openstack.keymanager.SecretV1("certificate_1", {
  *     payload: fs.readFileSync("cert.pem", "utf-8"),
  *     payloadContentType: "text/plain",
  *     secretType: "certificate",
  * });
- * const privateKey1 = new openstack.keymanager.SecretV1("privateKey1", {
+ * const privateKey1 = new openstack.keymanager.SecretV1("private_key_1", {
  *     payload: fs.readFileSync("cert-key.pem", "utf-8"),
  *     payloadContentType: "text/plain",
  *     secretType: "private",
  * });
- * const intermediate1 = new openstack.keymanager.SecretV1("intermediate1", {
+ * const intermediate1 = new openstack.keymanager.SecretV1("intermediate_1", {
  *     payload: fs.readFileSync("intermediate-ca.pem", "utf-8"),
  *     payloadContentType: "text/plain",
  *     secretType: "certificate",
  * });
- * const tls1 = new openstack.keymanager.ContainerV1("tls1", {
+ * const tls1 = new openstack.keymanager.ContainerV1("tls_1", {
  *     secretRefs: [
  *         {
  *             name: "certificate",
  *             secretRef: certificate1.secretRef,
  *         },
  *         {
- *             name: "privateKey",
+ *             name: "private_key",
  *             secretRef: privateKey1.secretRef,
  *         },
  *         {
@@ -53,24 +54,25 @@ import * as utilities from "../utilities";
  * const subnet1 = pulumi.output(openstack.networking.getSubnet({
  *     name: "my-subnet",
  * }, { async: true }));
- * const lb1 = new openstack.loadbalancer.LoadBalancer("lb1", {
+ * const lb1 = new openstack.loadbalancer.LoadBalancer("lb_1", {
  *     vipSubnetId: subnet1.id,
  * });
- * const listener1 = new openstack.loadbalancer.Listener("listener1", {
+ * const listener1 = new openstack.loadbalancer.Listener("listener_1", {
  *     defaultTlsContainerRef: tls1.containerRef,
  *     loadbalancerId: lb1.id,
  *     protocol: "TERMINATED_HTTPS",
  *     protocolPort: 443,
  * });
  * ```
- *
  * ### Container with the ACL
+ *
+ * > **Note** Only read ACLs are supported
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const tls1 = new openstack.keymanager.ContainerV1("tls1", {
+ * const tls1 = new openstack.keymanager.ContainerV1("tls_1", {
  *     acl: {
  *         read: {
  *             projectAccess: false,
@@ -86,7 +88,7 @@ import * as utilities from "../utilities";
  *             secretRef: openstack_keymanager_secret_v1_certificate_1.secretRef,
  *         },
  *         {
- *             name: "privateKey",
+ *             name: "private_key",
  *             secretRef: openstack_keymanager_secret_v1_private_key_1.secretRef,
  *         },
  *         {

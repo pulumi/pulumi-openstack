@@ -11,6 +11,8 @@ namespace Pulumi.OpenStack.Database
 {
     /// <summary>
     /// Manages a V1 DB user resource within OpenStack.
+    /// 
+    /// ## Example Usage
     /// </summary>
     public partial class User : Pulumi.CustomResource
     {

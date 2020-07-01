@@ -9,41 +9,39 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const network1 = new openstack.networking.Network("network1", {
+ * const network1 = new openstack.networking.Network("network_1", {
  *     adminStateUp: true,
  * });
- * const subnet1 = new openstack.networking.Subnet("subnet1", {
+ * const subnet1 = new openstack.networking.Subnet("subnet_1", {
  *     cidr: "192.168.199.0/24",
  *     ipVersion: 4,
  *     networkId: network1.id,
  * });
- * const loadbalancer1 = new openstack.loadbalancer.LoadBalancer("loadbalancer1", {
+ * const loadbalancer1 = new openstack.loadbalancer.LoadBalancer("loadbalancer_1", {
  *     vipSubnetId: subnet1.id,
  * });
- * const listener1 = new openstack.loadbalancer.Listener("listener1", {
+ * const listener1 = new openstack.loadbalancer.Listener("listener_1", {
  *     loadbalancerId: loadbalancer1.id,
  *     protocol: "HTTP",
  *     protocolPort: 8080,
  * });
- * const pool1 = new openstack.loadbalancer.Pool("pool1", {
+ * const pool1 = new openstack.loadbalancer.Pool("pool_1", {
  *     lbMethod: "ROUND_ROBIN",
  *     loadbalancerId: loadbalancer1.id,
  *     protocol: "HTTP",
  * });
- * const l7policy1 = new openstack.loadbalancer.L7PolicyV2("l7policy1", {
+ * const l7policy1 = new openstack.loadbalancer.L7PolicyV2("l7policy_1", {
  *     action: "REDIRECT_TO_URL",
  *     description: "test description",
  *     listenerId: listener1.id,
  *     position: 1,
  *     redirectUrl: "http://www.example.com",
  * });
- * const l7rule1 = new openstack.loadbalancer.L7RuleV2("l7rule1", {
+ * const l7rule1 = new openstack.loadbalancer.L7RuleV2("l7rule_1", {
  *     compareType: "EQUAL_TO",
  *     l7policyId: l7policy1.id,
  *     type: "PATH",

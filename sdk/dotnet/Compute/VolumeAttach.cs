@@ -14,7 +14,6 @@ namespace Pulumi.OpenStack.Compute
     /// Compute (Nova) v2 API.
     /// 
     /// ## Example Usage
-    /// 
     /// ### Basic attachment of a single volume to a single instance
     /// 
     /// ```csharp
@@ -45,8 +44,10 @@ namespace Pulumi.OpenStack.Compute
     /// 
     /// }
     /// ```
-    /// 
     /// ### Using Multiattach-enabled volumes
+    /// 
+    /// Multiattach Volumes are dependent upon your OpenStack cloud and not all
+    /// clouds support multiattach.
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -86,11 +87,20 @@ namespace Pulumi.OpenStack.Compute
     ///             InstanceId = instance2.Id,
     ///             Multiattach = true,
     ///             VolumeId = openstack_blockstorage_volume_v2.Volume_1.Id,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             DependsOn = 
+    ///             {
+    ///                 "openstack_compute_volume_attach_v2.va_1",
+    ///             },
     ///         });
     ///     }
     /// 
     /// }
     /// ```
+    /// 
+    /// It is recommended to use `depends_on` for the attach resources
+    /// to enforce the volume attachments to happen one at a time.
     /// </summary>
     public partial class VolumeAttach : Pulumi.CustomResource
     {

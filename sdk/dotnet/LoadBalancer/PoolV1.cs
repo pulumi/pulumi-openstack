@@ -14,8 +14,6 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
@@ -39,7 +37,6 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// 
     /// }
     /// ```
-    /// 
     /// ## Complete Load Balancing Stack Example
     /// 
     /// ```csharp

@@ -8,6 +8,30 @@ import (
 )
 
 // Use this data source to get the ID of an available OpenStack security group.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/networking"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "tf_test_secgroup"
+// 		_, err := networking.LookupSecGroup(ctx, &networking.LookupSecGroupArgs{
+// 			Name: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupSecGroup(ctx *pulumi.Context, args *LookupSecGroupArgs, opts ...pulumi.InvokeOption) (*LookupSecGroupResult, error) {
 	var rv LookupSecGroupResult
 	err := ctx.Invoke("openstack:networking/getSecGroup:getSecGroup", args, &rv, opts...)

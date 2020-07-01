@@ -8,6 +8,30 @@ import (
 )
 
 // Use this data source to get information about an existing volume.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/blockstorage"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "volume_1"
+// 		_, err := blockstorage.LookupVolumeV2(ctx, &blockstorage.LookupVolumeV2Args{
+// 			Name: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupVolumeV2(ctx *pulumi.Context, args *LookupVolumeV2Args, opts ...pulumi.InvokeOption) (*LookupVolumeV2Result, error) {
 	var rv LookupVolumeV2Result
 	err := ctx.Invoke("openstack:blockstorage/getVolumeV2:getVolumeV2", args, &rv, opts...)

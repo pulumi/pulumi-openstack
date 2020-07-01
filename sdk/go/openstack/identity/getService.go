@@ -10,6 +10,30 @@ import (
 // Use this data source to get the ID of an OpenStack service.
 //
 // > **Note:** This usually requires admin privileges.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/identity"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "keystone"
+// 		_, err := identity.GetService(ctx, &identity.GetServiceArgs{
+// 			Name: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func GetService(ctx *pulumi.Context, args *GetServiceArgs, opts ...pulumi.InvokeOption) (*GetServiceResult, error) {
 	var rv GetServiceResult
 	err := ctx.Invoke("openstack:identity/getService:getService", args, &rv, opts...)

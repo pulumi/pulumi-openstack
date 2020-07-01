@@ -11,6 +11,32 @@ import (
 )
 
 // Manages a V1 load balancer vip resource within OpenStack.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/loadbalancer"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := loadbalancer.NewVip(ctx, "vip1", &loadbalancer.VipArgs{
+// 			PoolId:   pulumi.String("67890"),
+// 			Port:     pulumi.Int(80),
+// 			Protocol: pulumi.String("HTTP"),
+// 			SubnetId: pulumi.String("12345"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Vip struct {
 	pulumi.CustomResourceState
 

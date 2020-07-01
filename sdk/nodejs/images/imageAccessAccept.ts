@@ -10,7 +10,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
+ * Accept a shared image membershipship proposal within the current project.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *     name: "RancherOS",
  *     visibility: "shared",
  * }, { async: true }));
- * const rancherosMember = new openstack.images.ImageAccessAccept("rancherosMember", {
+ * const rancherosMember = new openstack.images.ImageAccessAccept("rancheros_member", {
  *     imageId: rancheros.id,
  *     status: "accepted",
  * });

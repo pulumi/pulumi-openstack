@@ -10,14 +10,13 @@ import * as utilities from "../utilities";
  * Manages a V1 Barbican order resource within OpenStack.
  *
  * ## Example Usage
- *
  * ### Symmetric key order
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const order1 = new openstack.keymanager.OrderV1("order1", {
+ * const order1 = new openstack.keymanager.OrderV1("order_1", {
  *     meta: {
  *         algorithm: "aes",
  *         bitLength: 256,
@@ -27,14 +26,13 @@ import * as utilities from "../utilities";
  *     type: "key",
  * });
  * ```
- *
  * ### Asymmetric key pair order
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const order1 = new openstack.keymanager.OrderV1("order1", {
+ * const order1 = new openstack.keymanager.OrderV1("order_1", {
  *     meta: {
  *         algorithm: "rsa",
  *         bitLength: 4096,

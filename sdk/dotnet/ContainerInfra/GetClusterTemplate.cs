@@ -35,7 +35,6 @@ namespace Pulumi.OpenStack.ContainerInfra
         /// 
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

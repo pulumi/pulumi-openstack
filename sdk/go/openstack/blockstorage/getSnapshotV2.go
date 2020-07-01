@@ -8,6 +8,32 @@ import (
 )
 
 // Use this data source to get information about an existing snapshot.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/blockstorage"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := true
+// 		opt1 := "snapshot_1"
+// 		_, err := blockstorage.GetSnapshotV2(ctx, &blockstorage.GetSnapshotV2Args{
+// 			MostRecent: &opt0,
+// 			Name:       &opt1,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func GetSnapshotV2(ctx *pulumi.Context, args *GetSnapshotV2Args, opts ...pulumi.InvokeOption) (*GetSnapshotV2Result, error) {
 	var rv GetSnapshotV2Result
 	err := ctx.Invoke("openstack:blockstorage/getSnapshotV2:getSnapshotV2", args, &rv, opts...)

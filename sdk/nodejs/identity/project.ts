@@ -12,13 +12,11 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const project1 = new openstack.identity.Project("project1", {
+ * const project1 = new openstack.identity.Project("project_1", {
  *     description: "A project",
  * });
  * ```

@@ -11,6 +11,86 @@ import (
 )
 
 // Manages a V1 container object resource within OpenStack.
+//
+// ## Example Usage
+// ### Example with simple content
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/objectstorage"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		container1, err := objectstorage.NewContainer(ctx, "container1", &objectstorage.ContainerArgs{
+// 			ContentType: pulumi.String("application/json"),
+// 			Metadata: pulumi.StringMap{
+// 				"test": pulumi.String("true"),
+// 			},
+// 			Region: pulumi.String("RegionOne"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = objectstorage.NewContainerObject(ctx, "doc1", &objectstorage.ContainerObjectArgs{
+// 			ContainerName: container1.Name,
+// 			Content:       pulumi.String(fmt.Sprintf("%v%v%v%v", "               {\n", "                 \"foo\" : \"bar\"\n", "               }\n", "\n")),
+// 			ContentType:   pulumi.String("application/json"),
+// 			Metadata: pulumi.StringMap{
+// 				"test": pulumi.String("true"),
+// 			},
+// 			Region: pulumi.String("RegionOne"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Example with content from file
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/objectstorage"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		container1, err := objectstorage.NewContainer(ctx, "container1", &objectstorage.ContainerArgs{
+// 			ContentType: pulumi.String("application/json"),
+// 			Metadata: pulumi.StringMap{
+// 				"test": pulumi.String("true"),
+// 			},
+// 			Region: pulumi.String("RegionOne"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = objectstorage.NewContainerObject(ctx, "doc1", &objectstorage.ContainerObjectArgs{
+// 			ContainerName: container1.Name,
+// 			ContentType:   pulumi.String("application/json"),
+// 			Metadata: pulumi.StringMap{
+// 				"test": pulumi.String("true"),
+// 			},
+// 			Region: pulumi.String("RegionOne"),
+// 			Source: pulumi.String("./default.json"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type ContainerObject struct {
 	pulumi.CustomResourceState
 

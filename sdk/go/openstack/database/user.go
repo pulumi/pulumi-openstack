@@ -11,6 +11,8 @@ import (
 )
 
 // Manages a V1 DB user resource within OpenStack.
+//
+// ## Example Usage
 type User struct {
 	pulumi.CustomResourceState
 

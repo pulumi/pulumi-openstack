@@ -14,6 +14,102 @@ import (
 //
 // A share network stores network information that share servers can use when
 // shares are created.
+//
+// ## Example Usage
+// ### Basic share network
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/networking"
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/sharedfilesystem"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		network1, err := networking.NewNetwork(ctx, "network1", &networking.NetworkArgs{
+// 			AdminStateUp: pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		subnet1, err := networking.NewSubnet(ctx, "subnet1", &networking.SubnetArgs{
+// 			Cidr:      pulumi.String("192.168.199.0/24"),
+// 			IpVersion: pulumi.Int(4),
+// 			NetworkId: network1.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = sharedfilesystem.NewShareNetwork(ctx, "sharenetwork1", &sharedfilesystem.ShareNetworkArgs{
+// 			Description:     pulumi.String("test share network"),
+// 			NeutronNetId:    network1.ID(),
+// 			NeutronSubnetId: subnet1.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Share network with associated security services
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/networking"
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/sharedfilesystem"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		network1, err := networking.NewNetwork(ctx, "network1", &networking.NetworkArgs{
+// 			AdminStateUp: pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		subnet1, err := networking.NewSubnet(ctx, "subnet1", &networking.SubnetArgs{
+// 			Cidr:      pulumi.String("192.168.199.0/24"),
+// 			IpVersion: pulumi.Int(4),
+// 			NetworkId: network1.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		securityservice1, err := sharedfilesystem.NewSecurityService(ctx, "securityservice1", &sharedfilesystem.SecurityServiceArgs{
+// 			Description: pulumi.String("created by terraform"),
+// 			DnsIp:       pulumi.String("192.168.199.10"),
+// 			Domain:      pulumi.String("example.com"),
+// 			Ou:          pulumi.String("CN=Computers,DC=example,DC=com"),
+// 			Password:    pulumi.String("s8cret"),
+// 			Server:      pulumi.String("192.168.199.10"),
+// 			Type:        pulumi.String("active_directory"),
+// 			User:        pulumi.String("joinDomainUser"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = sharedfilesystem.NewShareNetwork(ctx, "sharenetwork1", &sharedfilesystem.ShareNetworkArgs{
+// 			Description:     pulumi.String("test share network with security services"),
+// 			NeutronNetId:    network1.ID(),
+// 			NeutronSubnetId: subnet1.ID(),
+// 			SecurityServiceIds: pulumi.StringArray{
+// 				securityservice1.ID(),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type ShareNetwork struct {
 	pulumi.CustomResourceState
 

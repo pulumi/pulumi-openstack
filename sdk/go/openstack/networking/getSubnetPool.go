@@ -8,6 +8,30 @@ import (
 )
 
 // Use this data source to get the ID of an available OpenStack subnetpool.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/networking"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "subnetpool_1"
+// 		_, err := networking.LookupSubnetPool(ctx, &networking.LookupSubnetPoolArgs{
+// 			Name: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupSubnetPool(ctx *pulumi.Context, args *LookupSubnetPoolArgs, opts ...pulumi.InvokeOption) (*LookupSubnetPoolResult, error) {
 	var rv LookupSubnetPoolResult
 	err := ctx.Invoke("openstack:networking/getSubnetPool:getSubnetPool", args, &rv, opts...)

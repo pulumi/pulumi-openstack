@@ -14,7 +14,6 @@ namespace Pulumi.OpenStack.Compute
     /// `floating_ip` options in `openstack.compute.Instance`.
     /// 
     /// ## Example Usage
-    /// 
     /// ### Automatically detect the correct network
     /// 
     /// ```csharp
@@ -48,7 +47,6 @@ namespace Pulumi.OpenStack.Compute
     /// 
     /// }
     /// ```
-    /// 
     /// ### Explicitly set the network to attach to
     /// 
     /// ```csharp

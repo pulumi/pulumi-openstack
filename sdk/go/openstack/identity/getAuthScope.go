@@ -10,6 +10,29 @@ import (
 // Use this data source to get authentication information about the current
 // auth scope in use. This can be used as self-discovery or introspection of
 // the username or project name currently in use.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/identity"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := identity.GetAuthScope(ctx, &identity.GetAuthScopeArgs{
+// 			Name: "my_scope",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func GetAuthScope(ctx *pulumi.Context, args *GetAuthScopeArgs, opts ...pulumi.InvokeOption) (*GetAuthScopeResult, error) {
 	var rv GetAuthScopeResult
 	err := ctx.Invoke("openstack:identity/getAuthScope:getAuthScope", args, &rv, opts...)

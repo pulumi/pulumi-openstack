@@ -14,8 +14,6 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
@@ -59,7 +57,6 @@ namespace Pulumi.OpenStack.Networking
         public Output<ImmutableArray<Outputs.SubnetAllocationPool>> AllocationPools { get; private set; } = null!;
 
         /// <summary>
-        /// 
         /// A block declaring the start and end range of the IP addresses available for
         /// use with DHCP in this subnet.
         /// The `allocation_pools` block is documented below.
@@ -269,7 +266,6 @@ namespace Pulumi.OpenStack.Networking
         private InputList<Inputs.SubnetAllocationPoolsCollectionArgs>? _allocationPoolsCollection;
 
         /// <summary>
-        /// 
         /// A block declaring the start and end range of the IP addresses available for
         /// use with DHCP in this subnet.
         /// The `allocation_pools` block is documented below.
@@ -482,7 +478,6 @@ namespace Pulumi.OpenStack.Networking
         private InputList<Inputs.SubnetAllocationPoolsCollectionGetArgs>? _allocationPoolsCollection;
 
         /// <summary>
-        /// 
         /// A block declaring the start and end range of the IP addresses available for
         /// use with DHCP in this subnet.
         /// The `allocation_pools` block is documented below.

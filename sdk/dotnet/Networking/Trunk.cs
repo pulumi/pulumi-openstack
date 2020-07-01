@@ -14,8 +14,6 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
@@ -40,11 +38,23 @@ namespace Pulumi.OpenStack.Networking
     ///         {
     ///             AdminStateUp = true,
     ///             NetworkId = network1.Id,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             DependsOn = 
+    ///             {
+    ///                 "openstack_networking_subnet_v2.subnet_1",
+    ///             },
     ///         });
     ///         var subport1 = new OpenStack.Networking.Port("subport1", new OpenStack.Networking.PortArgs
     ///         {
     ///             AdminStateUp = true,
     ///             NetworkId = network1.Id,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             DependsOn = 
+    ///             {
+    ///                 "openstack_networking_subnet_v2.subnet_1",
+    ///             },
     ///         });
     ///         var trunk1 = new OpenStack.Networking.Trunk("trunk1", new OpenStack.Networking.TrunkArgs
     ///         {

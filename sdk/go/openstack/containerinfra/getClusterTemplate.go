@@ -9,6 +9,29 @@ import (
 
 // Use this data source to get the ID of an available OpenStack Magnum cluster
 // template.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/containerinfra"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := containerinfra.LookupClusterTemplate(ctx, &containerinfra.LookupClusterTemplateArgs{
+// 			Name: "clustertemplate_1",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupClusterTemplate(ctx *pulumi.Context, args *LookupClusterTemplateArgs, opts ...pulumi.InvokeOption) (*LookupClusterTemplateResult, error) {
 	var rv LookupClusterTemplateResult
 	err := ctx.Invoke("openstack:containerinfra/getClusterTemplate:getClusterTemplate", args, &rv, opts...)

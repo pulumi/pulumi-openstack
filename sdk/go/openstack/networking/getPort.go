@@ -8,6 +8,30 @@ import (
 )
 
 // Use this data source to get the ID of an available OpenStack port.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/networking"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "port_1"
+// 		_, err := networking.LookupPort(ctx, &networking.LookupPortArgs{
+// 			Name: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupPort(ctx *pulumi.Context, args *LookupPortArgs, opts ...pulumi.InvokeOption) (*LookupPortResult, error) {
 	var rv LookupPortResult
 	err := ctx.Invoke("openstack:networking/getPort:getPort", args, &rv, opts...)

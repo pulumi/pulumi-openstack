@@ -11,15 +11,13 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
  * const publicAddressscope = pulumi.output(openstack.networking.getAddressScope({
  *     ipVersion: 4,
- *     name: "publicAddressscope",
+ *     name: "public_addressscope",
  *     shared: true,
  * }, { async: true }));
  * ```

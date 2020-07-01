@@ -9,25 +9,23 @@ import * as utilities from "../utilities";
  * Compute (Nova) v2 API.
  *
  * ## Example Usage
- *
  * ### Basic attachment of a single volume to a single instance
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const volume1 = new openstack.blockstorage.VolumeV2("volume1", {
+ * const volume1 = new openstack.blockstorage.VolumeV2("volume_1", {
  *     size: 1,
  * });
- * const instance1 = new openstack.compute.Instance("instance1", {
+ * const instance1 = new openstack.compute.Instance("instance_1", {
  *     securityGroups: ["default"],
  * });
- * const va1 = new openstack.compute.VolumeAttach("va1", {
+ * const va1 = new openstack.compute.VolumeAttach("va_1", {
  *     instanceId: instance1.id,
  *     volumeId: volume1.id,
  * });
  * ```
- *
  * ### Attaching multiple volumes to a single instance
  *
  * ```typescript
@@ -40,7 +38,7 @@ import * as utilities from "../utilities";
  *         size: 1,
  *     }));
  * }
- * const instance1 = new openstack.compute.Instance("instance1", {
+ * const instance1 = new openstack.compute.Instance("instance_1", {
  *     securityGroups: ["default"],
  * });
  * const attachments: openstack.compute.VolumeAttach[] = [];
@@ -54,33 +52,70 @@ import * as utilities from "../utilities";
  * export const volumeDevices = attachments.map(v => v.device);
  * ```
  *
- * ### Using Multiattach-enabled volumes
+ * Note that the above example will not guarantee that the volumes are attached in
+ * a deterministic manner. The volumes will be attached in a seemingly random
+ * order.
+ *
+ * If you want to ensure that the volumes are attached in a given order, create
+ * explicit dependencies between the volumes, such as:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const volume1 = new openstack.blockstorage.Volume("volume1", {
+ * const volumes: openstack.blockstorage.VolumeV2[] = [];
+ * for (let i = 0; i < 2; i++) {
+ *     volumes.push(new openstack.blockstorage.VolumeV2(`volumes-${i}`, {
+ *         size: 1,
+ *     }));
+ * }
+ * const instance1 = new openstack.compute.Instance("instance_1", {
+ *     securityGroups: ["default"],
+ * });
+ * const attach1 = new openstack.compute.VolumeAttach("attach_1", {
+ *     instanceId: instance1.id,
+ *     volumeId: volumes[0].id,
+ * });
+ * const attach2 = new openstack.compute.VolumeAttach("attach_2", {
+ *     instanceId: instance1.id,
+ *     volumeId: volumes[1].id,
+ * }, { dependsOn: [attach1] });
+ *
+ * export const volumeDevices = openstack_compute_volume_attach_v2_attachments.map(v => v.device);
+ * ```
+ * ### Using Multiattach-enabled volumes
+ *
+ * Multiattach Volumes are dependent upon your OpenStack cloud and not all
+ * clouds support multiattach.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const volume1 = new openstack.blockstorage.Volume("volume_1", {
  *     multiattach: true,
  *     size: 1,
  * });
- * const instance1 = new openstack.compute.Instance("instance1", {
+ * const instance1 = new openstack.compute.Instance("instance_1", {
  *     securityGroups: ["default"],
  * });
- * const instance2 = new openstack.compute.Instance("instance2", {
+ * const instance2 = new openstack.compute.Instance("instance_2", {
  *     securityGroups: ["default"],
  * });
- * const va1 = new openstack.compute.VolumeAttach("va1", {
+ * const va1 = new openstack.compute.VolumeAttach("va_1", {
  *     instanceId: instance1.id,
  *     multiattach: true,
  *     volumeId: openstack_blockstorage_volume_v2_volume_1.id,
  * });
- * const va2 = new openstack.compute.VolumeAttach("va2", {
+ * const va2 = new openstack.compute.VolumeAttach("va_2", {
  *     instanceId: instance2.id,
  *     multiattach: true,
  *     volumeId: openstack_blockstorage_volume_v2_volume_1.id,
  * }, { dependsOn: [va1] });
  * ```
+ *
+ * It is recommended to use `dependsOn` for the attach resources
+ * to enforce the volume attachments to happen one at a time.
  */
 export class VolumeAttach extends pulumi.CustomResource {
     /**

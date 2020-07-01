@@ -8,6 +8,30 @@ import (
 )
 
 // Use this data source to get the ID of an available OpenStack trunk.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/networking"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "trunk_1"
+// 		_, err := networking.LookupTrunk(ctx, &networking.LookupTrunkArgs{
+// 			Name: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupTrunk(ctx *pulumi.Context, args *LookupTrunkArgs, opts ...pulumi.InvokeOption) (*LookupTrunkResult, error) {
 	var rv LookupTrunkResult
 	err := ctx.Invoke("openstack:networking/getTrunk:getTrunk", args, &rv, opts...)

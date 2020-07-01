@@ -10,7 +10,6 @@ import * as utilities from "../utilities";
  * Manages a V1 DB instance resource within OpenStack.
  *
  * ## Example Usage
- *
  * ### Instance
  *
  * ```typescript

@@ -11,24 +11,47 @@ import (
 
 // Manages a V2 Server Group resource within OpenStack.
 //
+// ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := compute.NewServerGroup(ctx, "test_sg", &compute.ServerGroupArgs{
+// 			Policies: pulumi.StringArray{
+// 				pulumi.String("anti-affinity"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 // ## Policies
 //
 // * `affinity` - All instances/servers launched in this group will be hosted on
-//     the same compute node.
+//   the same compute node.
 //
 // * `anti-affinity` - All instances/servers launched in this group will be
-//     hosted on different compute nodes.
+//   hosted on different compute nodes.
 //
 // * `soft-affinity` - All instances/servers launched in this group will be hosted
-//     on the same compute node if possible, but if not possible they
-//     still will be scheduled instead of failure. To use this policy your
-//     OpenStack environment should support Compute service API 2.15 or above.
+//   on the same compute node if possible, but if not possible they
+//   still will be scheduled instead of failure. To use this policy your
+//   OpenStack environment should support Compute service API 2.15 or above.
 //
 // * `soft-anti-affinity` - All instances/servers launched in this group will be
-//     hosted on different compute nodes if possible, but if not possible they
-//     still will be scheduled instead of failure. To use this policy your
-//     OpenStack environment should support Compute service API 2.15 or above.
+//   hosted on different compute nodes if possible, but if not possible they
+//   still will be scheduled instead of failure. To use this policy your
+//   OpenStack environment should support Compute service API 2.15 or above.
 type ServerGroup struct {
 	pulumi.CustomResourceState
 

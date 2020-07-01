@@ -11,13 +11,11 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const conn1 = new openstack.vpnaas.SiteConnection("conn1", {
+ * const conn1 = new openstack.vpnaas.SiteConnection("conn_1", {
  *     ikepolicyId: openstack_vpnaas_ike_policy_v2_policy_2.id,
  *     ipsecpolicyId: openstack_vpnaas_ipsec_policy_v2_policy_1.id,
  *     localEpGroupId: openstack_vpnaas_endpoint_group_v2_group_2.id,

@@ -11,6 +11,31 @@ import (
 )
 
 // Manages a V1 load balancer member resource within OpenStack.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/loadbalancer"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := loadbalancer.NewMemberV1(ctx, "member1", &loadbalancer.MemberV1Args{
+// 			Address: pulumi.String("192.168.0.10"),
+// 			PoolId:  pulumi.String("d9415786-5f1a-428b-b35f-2f1523e146d2"),
+// 			Port:    pulumi.Int(80),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type MemberV1 struct {
 	pulumi.CustomResourceState
 

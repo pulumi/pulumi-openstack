@@ -35,7 +35,6 @@ namespace Pulumi.OpenStack.Networking
         /// 
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

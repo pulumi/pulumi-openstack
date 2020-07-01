@@ -16,6 +16,41 @@ import (
 //
 // > **Note:** This resource has a no-op deletion so no actual actions will be done against the OpenStack API
 //     in case of delete call.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/blockstorage"
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/identity"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		project1, err := identity.NewProject(ctx, "project1", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = blockstorage.NewQuoteSetV3(ctx, "quotaset1", &blockstorage.QuoteSetV3Args{
+// 			ProjectId:          project1.ID(),
+// 			Volumes:            pulumi.Int(10),
+// 			Snapshots:          pulumi.Int(4),
+// 			Gigabytes:          pulumi.Int(100),
+// 			PerVolumeGigabytes: pulumi.Int(10),
+// 			Backups:            pulumi.Int(4),
+// 			BackupGigabytes:    pulumi.Int(10),
+// 			Groups:             pulumi.Int(100),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type QuoteSetV3 struct {
 	pulumi.CustomResourceState
 

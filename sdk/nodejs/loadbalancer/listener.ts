@@ -9,13 +9,11 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const listener1 = new openstack.loadbalancer.Listener("listener1", {
+ * const listener1 = new openstack.loadbalancer.Listener("listener_1", {
  *     insertHeaders: {
  *         "X-Forwarded-For": "true",
  *     },

@@ -26,8 +26,6 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;

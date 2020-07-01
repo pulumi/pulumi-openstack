@@ -14,8 +14,6 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
@@ -48,12 +46,17 @@ namespace Pulumi.OpenStack.Networking
     ///             DestinationCidr = "10.0.1.0/24",
     ///             NextHop = "192.168.199.254",
     ///             RouterId = router1.Id,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             DependsOn = 
+    ///             {
+    ///                 "openstack_networking_router_interface_v2.int_1",
+    ///             },
     ///         });
     ///     }
     /// 
     /// }
     /// ```
-    /// 
     /// ## Notes
     /// 
     /// The `next_hop` IP address must be directly reachable from the router at the ``openstack.networking.RouterRoute``

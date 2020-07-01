@@ -11,16 +11,14 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const network1 = new openstack.networking.Network("network1", {
+ * const network1 = new openstack.networking.Network("network_1", {
  *     adminStateUp: true,
  * });
- * const subnet1 = new openstack.networking.Subnet("subnet1", {
+ * const subnet1 = new openstack.networking.Subnet("subnet_1", {
  *     cidr: "192.168.199.0/24",
  *     networkId: network1.id,
  * });
@@ -69,7 +67,6 @@ export class Subnet extends pulumi.CustomResource {
      */
     public readonly allocationPools!: pulumi.Output<outputs.networking.SubnetAllocationPool[]>;
     /**
-     *
      * A block declaring the start and end range of the IP addresses available for
      * use with DHCP in this subnet.
      * The `allocationPools` block is documented below.
@@ -269,7 +266,6 @@ export interface SubnetState {
      */
     readonly allocationPools?: pulumi.Input<pulumi.Input<inputs.networking.SubnetAllocationPool>[]>;
     /**
-     *
      * A block declaring the start and end range of the IP addresses available for
      * use with DHCP in this subnet.
      * The `allocationPools` block is documented below.
@@ -394,7 +390,6 @@ export interface SubnetArgs {
      */
     readonly allocationPools?: pulumi.Input<pulumi.Input<inputs.networking.SubnetAllocationPool>[]>;
     /**
-     *
      * A block declaring the start and end range of the IP addresses available for
      * use with DHCP in this subnet.
      * The `allocationPools` block is documented below.

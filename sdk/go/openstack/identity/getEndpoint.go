@@ -10,6 +10,30 @@ import (
 // Use this data source to get the ID of an OpenStack endpoint.
 //
 // > **Note:** This usually requires admin privileges.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/identity"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "demo"
+// 		_, err := identity.GetEndpoint(ctx, &identity.GetEndpointArgs{
+// 			ServiceName: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func GetEndpoint(ctx *pulumi.Context, args *GetEndpointArgs, opts ...pulumi.InvokeOption) (*GetEndpointResult, error) {
 	var rv GetEndpointResult
 	err := ctx.Invoke("openstack:identity/getEndpoint:getEndpoint", args, &rv, opts...)

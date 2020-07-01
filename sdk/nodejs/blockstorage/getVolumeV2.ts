@@ -11,14 +11,12 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
  * const volume1 = pulumi.output(openstack.blockstorage.getVolumeV2({
- *     name: "volume1",
+ *     name: "volume_1",
  * }, { async: true }));
  * ```
  */

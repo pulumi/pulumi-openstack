@@ -32,7 +32,6 @@ namespace Pulumi.OpenStack.SharedFileSystem
         /// 
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

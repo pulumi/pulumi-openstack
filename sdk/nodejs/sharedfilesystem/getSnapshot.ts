@@ -11,14 +11,12 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
  * const snapshot1 = pulumi.output(openstack.sharedfilesystem.getSnapshot({
- *     name: "snapshot1",
+ *     name: "snapshot_1",
  * }, { async: true }));
  * ```
  */

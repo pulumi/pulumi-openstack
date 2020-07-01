@@ -13,7 +13,6 @@ namespace Pulumi.OpenStack.Networking
     /// Manages a V2 Neutron QoS policy resource within OpenStack.
     /// 
     /// ## Example Usage
-    /// 
     /// ### Create a QoS Policy
     /// 
     /// ```csharp

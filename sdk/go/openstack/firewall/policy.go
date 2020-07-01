@@ -10,6 +10,52 @@ import (
 )
 
 // Manages a v1 firewall policy resource within OpenStack.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/firewall"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		rule1, err := firewall.NewRule(ctx, "rule1", &firewall.RuleArgs{
+// 			Action:          pulumi.String("deny"),
+// 			Description:     pulumi.String("drop TELNET traffic"),
+// 			DestinationPort: pulumi.String("23"),
+// 			Enabled:         pulumi.Bool(true),
+// 			Protocol:        pulumi.String("tcp"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		rule2, err := firewall.NewRule(ctx, "rule2", &firewall.RuleArgs{
+// 			Action:          pulumi.String("deny"),
+// 			Description:     pulumi.String("drop NTP traffic"),
+// 			DestinationPort: pulumi.String("123"),
+// 			Enabled:         pulumi.Bool(false),
+// 			Protocol:        pulumi.String("udp"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = firewall.NewPolicy(ctx, "policy1", &firewall.PolicyArgs{
+// 			Rules: pulumi.StringArray{
+// 				rule1.ID(),
+// 				rule2.ID(),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Policy struct {
 	pulumi.CustomResourceState
 

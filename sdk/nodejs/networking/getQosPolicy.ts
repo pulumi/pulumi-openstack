@@ -11,14 +11,12 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
  * const qosPolicy1 = pulumi.output(openstack.networking.getQosPolicy({
- *     name: "qosPolicy1",
+ *     name: "qos_policy_1",
  * }, { async: true }));
  * ```
  */

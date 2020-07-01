@@ -34,7 +34,6 @@ namespace Pulumi.OpenStack.Dns
         /// 
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
