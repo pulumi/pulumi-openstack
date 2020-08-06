@@ -45,6 +45,9 @@ type Listener struct {
 	// The administrative state of the Listener.
 	// A valid value is true (UP) or false (DOWN).
 	AdminStateUp pulumi.BoolPtrOutput `pulumi:"adminStateUp"`
+	// A list of CIDR blocks that are permitted to connect to this listener, denying
+	// all other source addresses. If not present, defaults to allow all.
+	AllowedCidrs pulumi.StringArrayOutput `pulumi:"allowedCidrs"`
 	// The maximum number of connections allowed
 	// for the Listener.
 	ConnectionLimit pulumi.IntOutput `pulumi:"connectionLimit"`
@@ -141,6 +144,9 @@ type listenerState struct {
 	// The administrative state of the Listener.
 	// A valid value is true (UP) or false (DOWN).
 	AdminStateUp *bool `pulumi:"adminStateUp"`
+	// A list of CIDR blocks that are permitted to connect to this listener, denying
+	// all other source addresses. If not present, defaults to allow all.
+	AllowedCidrs []string `pulumi:"allowedCidrs"`
 	// The maximum number of connections allowed
 	// for the Listener.
 	ConnectionLimit *int `pulumi:"connectionLimit"`
@@ -201,6 +207,9 @@ type ListenerState struct {
 	// The administrative state of the Listener.
 	// A valid value is true (UP) or false (DOWN).
 	AdminStateUp pulumi.BoolPtrInput
+	// A list of CIDR blocks that are permitted to connect to this listener, denying
+	// all other source addresses. If not present, defaults to allow all.
+	AllowedCidrs pulumi.StringArrayInput
 	// The maximum number of connections allowed
 	// for the Listener.
 	ConnectionLimit pulumi.IntPtrInput
@@ -265,6 +274,9 @@ type listenerArgs struct {
 	// The administrative state of the Listener.
 	// A valid value is true (UP) or false (DOWN).
 	AdminStateUp *bool `pulumi:"adminStateUp"`
+	// A list of CIDR blocks that are permitted to connect to this listener, denying
+	// all other source addresses. If not present, defaults to allow all.
+	AllowedCidrs []string `pulumi:"allowedCidrs"`
 	// The maximum number of connections allowed
 	// for the Listener.
 	ConnectionLimit *int `pulumi:"connectionLimit"`
@@ -326,6 +338,9 @@ type ListenerArgs struct {
 	// The administrative state of the Listener.
 	// A valid value is true (UP) or false (DOWN).
 	AdminStateUp pulumi.BoolPtrInput
+	// A list of CIDR blocks that are permitted to connect to this listener, denying
+	// all other source addresses. If not present, defaults to allow all.
+	AllowedCidrs pulumi.StringArrayInput
 	// The maximum number of connections allowed
 	// for the Listener.
 	ConnectionLimit pulumi.IntPtrInput

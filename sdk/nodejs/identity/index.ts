@@ -11,6 +11,7 @@ export * from "./getProject";
 export * from "./getRole";
 export * from "./getService";
 export * from "./getUser";
+export * from "./groupV3";
 export * from "./project";
 export * from "./role";
 export * from "./roleAssignment";

@@ -80,6 +80,9 @@ namespace Pulumi.OpenStack.ContainerInfra
     /// * `labels` - (Optional) The list of key value pairs representing additional
     ///   properties of the cluster. Changing this creates a new cluster.
     /// 
+    /// * `merge_labels` - (Optional) Indicates whether the provided labels should be
+    ///   merged with cluster template labels. Changing this creates a new cluster.
+    /// 
     /// * `master_count` - (Optional) The number of master nodes for the cluster.
     ///   Changing this creates a new cluster.
     /// 
@@ -91,6 +94,9 @@ namespace Pulumi.OpenStack.ContainerInfra
     /// 
     /// * `fixed_subnet` - (Optional) The fixed subnet that will be attached to the
     ///   cluster. Changing this creates a new cluster.
+    /// 
+    /// * `floating_ip_enabled` - (Optional) Indicates whether floating IP should be
+    ///   created for every cluster node. Changing this creates a new cluster.
     /// 
     /// ## Attributes reference
     /// 
@@ -112,10 +118,12 @@ namespace Pulumi.OpenStack.ContainerInfra
     /// * `master_flavor` - See Argument Reference above.
     /// * `keypair` - See Argument Reference above.
     /// * `labels` - See Argument Reference above.
+    /// * `merge_labels` - See Argument Reference above.
     /// * `master_count` - See Argument Reference above.
     /// * `node_count` - See Argument Reference above.
     /// * `fixed_network` - See Argument Reference above.
     /// * `fixed_subnet` - See Argument Reference above.
+    /// * `floating_ip_enabled` - See Argument Reference above.
     /// * `master_addresses` - IP addresses of the master node of the cluster.
     /// * `node_addresses` - IP addresses of the node of the cluster.
     /// * `stack_id` - UUID of the Orchestration service stack.
@@ -161,6 +169,9 @@ namespace Pulumi.OpenStack.ContainerInfra
         [Output("flavor")]
         public Output<string> Flavor { get; private set; } = null!;
 
+        [Output("floatingIpEnabled")]
+        public Output<bool> FloatingIpEnabled { get; private set; } = null!;
+
         [Output("keypair")]
         public Output<string> Keypair { get; private set; } = null!;
 
@@ -178,6 +189,9 @@ namespace Pulumi.OpenStack.ContainerInfra
 
         [Output("masterFlavor")]
         public Output<string> MasterFlavor { get; private set; } = null!;
+
+        [Output("mergeLabels")]
+        public Output<bool?> MergeLabels { get; private set; } = null!;
 
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -270,6 +284,9 @@ namespace Pulumi.OpenStack.ContainerInfra
         [Input("flavor")]
         public Input<string>? Flavor { get; set; }
 
+        [Input("floatingIpEnabled")]
+        public Input<bool>? FloatingIpEnabled { get; set; }
+
         [Input("keypair")]
         public Input<string>? Keypair { get; set; }
 
@@ -286,6 +303,9 @@ namespace Pulumi.OpenStack.ContainerInfra
 
         [Input("masterFlavor")]
         public Input<string>? MasterFlavor { get; set; }
+
+        [Input("mergeLabels")]
+        public Input<bool>? MergeLabels { get; set; }
 
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -336,6 +356,9 @@ namespace Pulumi.OpenStack.ContainerInfra
         [Input("flavor")]
         public Input<string>? Flavor { get; set; }
 
+        [Input("floatingIpEnabled")]
+        public Input<bool>? FloatingIpEnabled { get; set; }
+
         [Input("keypair")]
         public Input<string>? Keypair { get; set; }
 
@@ -363,6 +386,9 @@ namespace Pulumi.OpenStack.ContainerInfra
 
         [Input("masterFlavor")]
         public Input<string>? MasterFlavor { get; set; }
+
+        [Input("mergeLabels")]
+        public Input<bool>? MergeLabels { get; set; }
 
         [Input("name")]
         public Input<string>? Name { get; set; }

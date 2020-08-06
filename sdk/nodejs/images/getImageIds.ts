@@ -7,7 +7,8 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Use this data source to get the ID of an available OpenStack image.
+ * Use this data source to get a list of Openstack Image IDs matching the
+ * specified criteria.
  *
  * ## Example Usage
  *
@@ -15,16 +16,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const ubuntu = pulumi.output(openstack.images.getImage({
- *     mostRecent: true,
- *     name: "Ubuntu 16.04",
+ * const images = pulumi.output(openstack.images.getImageIds({
+ *     nameRegex: "^Ubuntu 16\\.04.*-amd64",
  *     properties: {
  *         key: "value",
  *     },
+ *     sort: "updated_at",
  * }, { async: true }));
  * ```
  */
-export function getImage(args?: GetImageArgs, opts?: pulumi.InvokeOptions): Promise<GetImageResult> {
+export function getImageIds(args?: GetImageIdsArgs, opts?: pulumi.InvokeOptions): Promise<GetImageIdsResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -33,15 +34,16 @@ export function getImage(args?: GetImageArgs, opts?: pulumi.InvokeOptions): Prom
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    return pulumi.runtime.invoke("openstack:images/getImage:getImage", {
+    return pulumi.runtime.invoke("openstack:images/getImageIds:getImageIds", {
         "memberStatus": args.memberStatus,
-        "mostRecent": args.mostRecent,
         "name": args.name,
+        "nameRegex": args.nameRegex,
         "owner": args.owner,
         "properties": args.properties,
         "region": args.region,
         "sizeMax": args.sizeMax,
         "sizeMin": args.sizeMin,
+        "sort": args.sort,
         "sortDirection": args.sortDirection,
         "sortKey": args.sortKey,
         "tag": args.tag,
@@ -50,23 +52,26 @@ export function getImage(args?: GetImageArgs, opts?: pulumi.InvokeOptions): Prom
 }
 
 /**
- * A collection of arguments for invoking getImage.
+ * A collection of arguments for invoking getImageIds.
  */
-export interface GetImageArgs {
+export interface GetImageIdsArgs {
     /**
      * The status of the image. Must be one of
      * "accepted", "pending", "rejected", or "all".
      */
     readonly memberStatus?: string;
     /**
-     * If more than one result is returned, use the most
-     * recent image.
-     */
-    readonly mostRecent?: boolean;
-    /**
-     * The name of the image.
+     * The name of the image. Cannot be used simultaneously
+     * with `nameRegex`.
      */
     readonly name?: string;
+    /**
+     * The regular expressian of the name of the image.
+     * Cannot be used simultaneously with `name`. Unlike filtering by `name` the
+     * `nameRegex` filtering does by client on the result of OpenStack search
+     * query.
+     */
+    readonly nameRegex?: string;
     /**
      * The owner (UUID) of the image.
      */
@@ -75,8 +80,6 @@ export interface GetImageArgs {
      * a map of key/value pairs to match an image with.
      * All specified properties must be matched. Unlike other options filtering
      * by `properties` does by client on the result of OpenStack search query.
-     * Filtering is applied if server responce contains at least 2 images. In
-     * case there is only one image the `properties` ignores.
      */
     readonly properties?: {[key: string]: any};
     /**
@@ -95,11 +98,28 @@ export interface GetImageArgs {
      */
     readonly sizeMin?: number;
     /**
+     * Sorts the response by one or more attribute and sort
+     * direction combinations. You can also set multiple sort keys and directions.
+     * Default direction is `desc`. Use the comma (,) character to separate
+     * multiple values. For example expression `sort = "name:asc,status"`
+     * sorts ascending by name and descending by status. `sort` cannot be used
+     * simultaneously with `sortKey`. If both are present in a configuration
+     * then only `sort` will be used.
+     */
+    readonly sort?: string;
+    /**
      * Order the results in either `asc` or `desc`.
+     * Can be applied only with `sortKey`. Defaults to `asc`
+     *
+     * @deprecated Use option 'sort' instead.
      */
     readonly sortDirection?: string;
     /**
-     * Sort images based on a certain key. Defaults to `name`.
+     * Sort images based on a certain key. Defaults to
+     * `name`. `sortKey` cannot be used simultaneously with `sort`. If both
+     * are present in a configuration then only `sort` will be used.
+     *
+     * @deprecated Use option 'sort' instead.
      */
     readonly sortKey?: string;
     /**
@@ -114,78 +134,31 @@ export interface GetImageArgs {
 }
 
 /**
- * A collection of values returned by getImage.
+ * A collection of values returned by getImageIds.
  */
-export interface GetImageResult {
-    /**
-     * The checksum of the data associated with the image.
-     */
-    readonly checksum: string;
-    readonly containerFormat: string;
-    /**
-     * The date the image was created.
-     * * `containerFormat`: The format of the image's container.
-     * * `diskFormat`: The format of the image's disk.
-     */
-    readonly createdAt: string;
-    readonly diskFormat: string;
-    /**
-     * the trailing path after the glance endpoint that represent the
-     * location of the image or the path to retrieve it.
-     */
-    readonly file: string;
+export interface GetImageIdsResult {
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly ids: string[];
     readonly memberStatus?: string;
-    /**
-     * The metadata associated with the image.
-     * Image metadata allow for meaningfully define the image properties
-     * and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
-     */
-    readonly metadata: {[key: string]: any};
-    /**
-     * The minimum amount of disk space required to use the image.
-     */
-    readonly minDiskGb: number;
-    /**
-     * The minimum amount of ram required to use the image.
-     */
-    readonly minRamMb: number;
-    readonly mostRecent?: boolean;
     readonly name?: string;
+    readonly nameRegex?: string;
     readonly owner?: string;
-    /**
-     * Freeform information about the image.
-     */
     readonly properties?: {[key: string]: any};
-    /**
-     * Whether or not the image is protected.
-     */
-    readonly protected: boolean;
     readonly region: string;
-    /**
-     * The path to the JSON-schema that represent
-     * the image or image
-     */
-    readonly schema: string;
-    /**
-     * The size of the image (in bytes).
-     */
-    readonly sizeBytes: number;
     readonly sizeMax?: number;
     readonly sizeMin?: number;
+    readonly sort?: string;
+    /**
+     * @deprecated Use option 'sort' instead.
+     */
     readonly sortDirection?: string;
+    /**
+     * @deprecated Use option 'sort' instead.
+     */
     readonly sortKey?: string;
     readonly tag?: string;
-    /**
-     * The tags list of the image.
-     */
-    readonly tags: string[];
-    /**
-     * The date the image was last updated.
-     */
-    readonly updatedAt: string;
     readonly visibility?: string;
 }

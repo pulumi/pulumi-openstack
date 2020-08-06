@@ -59,7 +59,10 @@ type LookupImageArgs struct {
 	// The owner (UUID) of the image.
 	Owner *string `pulumi:"owner"`
 	// a map of key/value pairs to match an image with.
-	// All specified properties must be matched.
+	// All specified properties must be matched. Unlike other options filtering
+	// by `properties` does by client on the result of OpenStack search query.
+	// Filtering is applied if server responce contains at least 2 images. In
+	// case there is only one image the `properties` ignores.
 	Properties map[string]interface{} `pulumi:"properties"`
 	// The region in which to obtain the V2 Glance client.
 	// A Glance client is needed to create an Image that can be used with

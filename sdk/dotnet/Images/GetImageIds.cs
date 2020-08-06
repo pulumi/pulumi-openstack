@@ -9,10 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.OpenStack.Images
 {
-    public static class GetImage
+    public static class GetImageIds
     {
         /// <summary>
-        /// Use this data source to get the ID of an available OpenStack image.
+        /// Use this data source to get a list of Openstack Image IDs matching the
+        /// specified criteria.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -26,14 +27,14 @@ namespace Pulumi.OpenStack.Images
         /// {
         ///     public MyStack()
         ///     {
-        ///         var ubuntu = Output.Create(OpenStack.Images.GetImage.InvokeAsync(new OpenStack.Images.GetImageArgs
+        ///         var images = Output.Create(OpenStack.Images.GetImageIds.InvokeAsync(new OpenStack.Images.GetImageIdsArgs
         ///         {
-        ///             MostRecent = true,
-        ///             Name = "Ubuntu 16.04",
+        ///             NameRegex = "^Ubuntu 16\\.04.*-amd64",
         ///             Properties = 
         ///             {
         ///                 { "key", "value" },
         ///             },
+        ///             Sort = "updated_at",
         ///         }));
         ///     }
         /// 
@@ -42,12 +43,12 @@ namespace Pulumi.OpenStack.Images
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
-        public static Task<GetImageResult> InvokeAsync(GetImageArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetImageResult>("openstack:images/getImage:getImage", args ?? new GetImageArgs(), options.WithVersion());
+        public static Task<GetImageIdsResult> InvokeAsync(GetImageIdsArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetImageIdsResult>("openstack:images/getImageIds:getImageIds", args ?? new GetImageIdsArgs(), options.WithVersion());
     }
 
 
-    public sealed class GetImageArgs : Pulumi.InvokeArgs
+    public sealed class GetImageIdsArgs : Pulumi.InvokeArgs
     {
         /// <summary>
         /// The status of the image. Must be one of
@@ -57,17 +58,20 @@ namespace Pulumi.OpenStack.Images
         public string? MemberStatus { get; set; }
 
         /// <summary>
-        /// If more than one result is returned, use the most
-        /// recent image.
-        /// </summary>
-        [Input("mostRecent")]
-        public bool? MostRecent { get; set; }
-
-        /// <summary>
-        /// The name of the image.
+        /// The name of the image. Cannot be used simultaneously
+        /// with `name_regex`.
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
+
+        /// <summary>
+        /// The regular expressian of the name of the image.
+        /// Cannot be used simultaneously with `name`. Unlike filtering by `name` the
+        /// `name_regex` filtering does by client on the result of OpenStack search
+        /// query.
+        /// </summary>
+        [Input("nameRegex")]
+        public string? NameRegex { get; set; }
 
         /// <summary>
         /// The owner (UUID) of the image.
@@ -82,8 +86,6 @@ namespace Pulumi.OpenStack.Images
         /// a map of key/value pairs to match an image with.
         /// All specified properties must be matched. Unlike other options filtering
         /// by `properties` does by client on the result of OpenStack search query.
-        /// Filtering is applied if server responce contains at least 2 images. In
-        /// case there is only one image the `properties` ignores.
         /// </summary>
         public Dictionary<string, object> Properties
         {
@@ -113,13 +115,28 @@ namespace Pulumi.OpenStack.Images
         public int? SizeMin { get; set; }
 
         /// <summary>
+        /// Sorts the response by one or more attribute and sort
+        /// direction combinations. You can also set multiple sort keys and directions.
+        /// Default direction is `desc`. Use the comma (,) character to separate
+        /// multiple values. For example expression `sort = "name:asc,status"`
+        /// sorts ascending by name and descending by status. `sort` cannot be used
+        /// simultaneously with `sort_key`. If both are present in a configuration
+        /// then only `sort` will be used.
+        /// </summary>
+        [Input("sort")]
+        public string? Sort { get; set; }
+
+        /// <summary>
         /// Order the results in either `asc` or `desc`.
+        /// Can be applied only with `sort_key`. Defaults to `asc`
         /// </summary>
         [Input("sortDirection")]
         public string? SortDirection { get; set; }
 
         /// <summary>
-        /// Sort images based on a certain key. Defaults to `name`.
+        /// Sort images based on a certain key. Defaults to
+        /// `name`. `sort_key` cannot be used simultaneously with `sort`. If both
+        /// are present in a configuration then only `sort` will be used.
         /// </summary>
         [Input("sortKey")]
         public string? SortKey { get; set; }
@@ -137,128 +154,57 @@ namespace Pulumi.OpenStack.Images
         [Input("visibility")]
         public string? Visibility { get; set; }
 
-        public GetImageArgs()
+        public GetImageIdsArgs()
         {
         }
     }
 
 
     [OutputType]
-    public sealed class GetImageResult
+    public sealed class GetImageIdsResult
     {
-        /// <summary>
-        /// The checksum of the data associated with the image.
-        /// </summary>
-        public readonly string Checksum;
-        public readonly string ContainerFormat;
-        /// <summary>
-        /// The date the image was created.
-        /// * `container_format`: The format of the image's container.
-        /// * `disk_format`: The format of the image's disk.
-        /// </summary>
-        public readonly string CreatedAt;
-        public readonly string DiskFormat;
-        /// <summary>
-        /// the trailing path after the glance endpoint that represent the
-        /// location of the image or the path to retrieve it.
-        /// </summary>
-        public readonly string File;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly ImmutableArray<string> Ids;
         public readonly string? MemberStatus;
-        /// <summary>
-        /// The metadata associated with the image.
-        /// Image metadata allow for meaningfully define the image properties
-        /// and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
-        /// </summary>
-        public readonly ImmutableDictionary<string, object> Metadata;
-        /// <summary>
-        /// The minimum amount of disk space required to use the image.
-        /// </summary>
-        public readonly int MinDiskGb;
-        /// <summary>
-        /// The minimum amount of ram required to use the image.
-        /// </summary>
-        public readonly int MinRamMb;
-        public readonly bool? MostRecent;
         public readonly string? Name;
+        public readonly string? NameRegex;
         public readonly string? Owner;
-        /// <summary>
-        /// Freeform information about the image.
-        /// </summary>
         public readonly ImmutableDictionary<string, object>? Properties;
-        /// <summary>
-        /// Whether or not the image is protected.
-        /// </summary>
-        public readonly bool Protected;
         public readonly string Region;
-        /// <summary>
-        /// The path to the JSON-schema that represent
-        /// the image or image
-        /// </summary>
-        public readonly string Schema;
-        /// <summary>
-        /// The size of the image (in bytes).
-        /// </summary>
-        public readonly int SizeBytes;
         public readonly int? SizeMax;
         public readonly int? SizeMin;
+        public readonly string? Sort;
         public readonly string? SortDirection;
         public readonly string? SortKey;
         public readonly string? Tag;
-        /// <summary>
-        /// The tags list of the image.
-        /// </summary>
-        public readonly ImmutableArray<string> Tags;
-        /// <summary>
-        /// The date the image was last updated.
-        /// </summary>
-        public readonly string UpdatedAt;
         public readonly string? Visibility;
 
         [OutputConstructor]
-        private GetImageResult(
-            string checksum,
-
-            string containerFormat,
-
-            string createdAt,
-
-            string diskFormat,
-
-            string file,
-
+        private GetImageIdsResult(
             string id,
+
+            ImmutableArray<string> ids,
 
             string? memberStatus,
 
-            ImmutableDictionary<string, object> metadata,
-
-            int minDiskGb,
-
-            int minRamMb,
-
-            bool? mostRecent,
-
             string? name,
+
+            string? nameRegex,
 
             string? owner,
 
             ImmutableDictionary<string, object>? properties,
 
-            bool @protected,
-
             string region,
-
-            string schema,
-
-            int sizeBytes,
 
             int? sizeMax,
 
             int? sizeMin,
+
+            string? sort,
 
             string? sortDirection,
 
@@ -266,37 +212,22 @@ namespace Pulumi.OpenStack.Images
 
             string? tag,
 
-            ImmutableArray<string> tags,
-
-            string updatedAt,
-
             string? visibility)
         {
-            Checksum = checksum;
-            ContainerFormat = containerFormat;
-            CreatedAt = createdAt;
-            DiskFormat = diskFormat;
-            File = file;
             Id = id;
+            Ids = ids;
             MemberStatus = memberStatus;
-            Metadata = metadata;
-            MinDiskGb = minDiskGb;
-            MinRamMb = minRamMb;
-            MostRecent = mostRecent;
             Name = name;
+            NameRegex = nameRegex;
             Owner = owner;
             Properties = properties;
-            Protected = @protected;
             Region = region;
-            Schema = schema;
-            SizeBytes = sizeBytes;
             SizeMax = sizeMax;
             SizeMin = sizeMin;
+            Sort = sort;
             SortDirection = sortDirection;
             SortKey = sortKey;
             Tag = tag;
-            Tags = tags;
-            UpdatedAt = updatedAt;
             Visibility = visibility;
         }
     }

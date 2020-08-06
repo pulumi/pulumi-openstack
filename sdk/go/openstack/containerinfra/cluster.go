@@ -84,6 +84,9 @@ import (
 // * `labels` - (Optional) The list of key value pairs representing additional
 //   properties of the cluster. Changing this creates a new cluster.
 //
+// * `mergeLabels` - (Optional) Indicates whether the provided labels should be
+//   merged with cluster template labels. Changing this creates a new cluster.
+//
 // * `masterCount` - (Optional) The number of master nodes for the cluster.
 //   Changing this creates a new cluster.
 //
@@ -95,6 +98,9 @@ import (
 //
 // * `fixedSubnet` - (Optional) The fixed subnet that will be attached to the
 //   cluster. Changing this creates a new cluster.
+//
+// * `floatingIpEnabled` - (Optional) Indicates whether floating IP should be
+//   created for every cluster node. Changing this creates a new cluster.
 //
 // ## Attributes reference
 //
@@ -116,10 +122,12 @@ import (
 // * `masterFlavor` - See Argument Reference above.
 // * `keypair` - See Argument Reference above.
 // * `labels` - See Argument Reference above.
+// * `mergeLabels` - See Argument Reference above.
 // * `masterCount` - See Argument Reference above.
 // * `nodeCount` - See Argument Reference above.
 // * `fixedNetwork` - See Argument Reference above.
 // * `fixedSubnet` - See Argument Reference above.
+// * `floatingIpEnabled` - See Argument Reference above.
 // * `masterAddresses` - IP addresses of the master node of the cluster.
 // * `nodeAddresses` - IP addresses of the node of the cluster.
 // * `stackId` - UUID of the Orchestration service stack.
@@ -143,12 +151,14 @@ type Cluster struct {
 	FixedNetwork      pulumi.StringOutput      `pulumi:"fixedNetwork"`
 	FixedSubnet       pulumi.StringOutput      `pulumi:"fixedSubnet"`
 	Flavor            pulumi.StringOutput      `pulumi:"flavor"`
+	FloatingIpEnabled pulumi.BoolOutput        `pulumi:"floatingIpEnabled"`
 	Keypair           pulumi.StringOutput      `pulumi:"keypair"`
 	Kubeconfig        ClusterKubeconfigOutput  `pulumi:"kubeconfig"`
 	Labels            pulumi.MapOutput         `pulumi:"labels"`
 	MasterAddresses   pulumi.StringArrayOutput `pulumi:"masterAddresses"`
 	MasterCount       pulumi.IntOutput         `pulumi:"masterCount"`
 	MasterFlavor      pulumi.StringOutput      `pulumi:"masterFlavor"`
+	MergeLabels       pulumi.BoolPtrOutput     `pulumi:"mergeLabels"`
 	Name              pulumi.StringOutput      `pulumi:"name"`
 	NodeAddresses     pulumi.StringArrayOutput `pulumi:"nodeAddresses"`
 	NodeCount         pulumi.IntOutput         `pulumi:"nodeCount"`
@@ -201,12 +211,14 @@ type clusterState struct {
 	FixedNetwork      *string                `pulumi:"fixedNetwork"`
 	FixedSubnet       *string                `pulumi:"fixedSubnet"`
 	Flavor            *string                `pulumi:"flavor"`
+	FloatingIpEnabled *bool                  `pulumi:"floatingIpEnabled"`
 	Keypair           *string                `pulumi:"keypair"`
 	Kubeconfig        *ClusterKubeconfig     `pulumi:"kubeconfig"`
 	Labels            map[string]interface{} `pulumi:"labels"`
 	MasterAddresses   []string               `pulumi:"masterAddresses"`
 	MasterCount       *int                   `pulumi:"masterCount"`
 	MasterFlavor      *string                `pulumi:"masterFlavor"`
+	MergeLabels       *bool                  `pulumi:"mergeLabels"`
 	Name              *string                `pulumi:"name"`
 	NodeAddresses     []string               `pulumi:"nodeAddresses"`
 	NodeCount         *int                   `pulumi:"nodeCount"`
@@ -229,12 +241,14 @@ type ClusterState struct {
 	FixedNetwork      pulumi.StringPtrInput
 	FixedSubnet       pulumi.StringPtrInput
 	Flavor            pulumi.StringPtrInput
+	FloatingIpEnabled pulumi.BoolPtrInput
 	Keypair           pulumi.StringPtrInput
 	Kubeconfig        ClusterKubeconfigPtrInput
 	Labels            pulumi.MapInput
 	MasterAddresses   pulumi.StringArrayInput
 	MasterCount       pulumi.IntPtrInput
 	MasterFlavor      pulumi.StringPtrInput
+	MergeLabels       pulumi.BoolPtrInput
 	Name              pulumi.StringPtrInput
 	NodeAddresses     pulumi.StringArrayInput
 	NodeCount         pulumi.IntPtrInput
@@ -257,10 +271,12 @@ type clusterArgs struct {
 	FixedNetwork      *string                `pulumi:"fixedNetwork"`
 	FixedSubnet       *string                `pulumi:"fixedSubnet"`
 	Flavor            *string                `pulumi:"flavor"`
+	FloatingIpEnabled *bool                  `pulumi:"floatingIpEnabled"`
 	Keypair           *string                `pulumi:"keypair"`
 	Labels            map[string]interface{} `pulumi:"labels"`
 	MasterCount       *int                   `pulumi:"masterCount"`
 	MasterFlavor      *string                `pulumi:"masterFlavor"`
+	MergeLabels       *bool                  `pulumi:"mergeLabels"`
 	Name              *string                `pulumi:"name"`
 	NodeCount         *int                   `pulumi:"nodeCount"`
 	Region            *string                `pulumi:"region"`
@@ -275,10 +291,12 @@ type ClusterArgs struct {
 	FixedNetwork      pulumi.StringPtrInput
 	FixedSubnet       pulumi.StringPtrInput
 	Flavor            pulumi.StringPtrInput
+	FloatingIpEnabled pulumi.BoolPtrInput
 	Keypair           pulumi.StringPtrInput
 	Labels            pulumi.MapInput
 	MasterCount       pulumi.IntPtrInput
 	MasterFlavor      pulumi.StringPtrInput
+	MergeLabels       pulumi.BoolPtrInput
 	Name              pulumi.StringPtrInput
 	NodeCount         pulumi.IntPtrInput
 	Region            pulumi.StringPtrInput

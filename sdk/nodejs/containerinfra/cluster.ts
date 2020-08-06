@@ -69,6 +69,9 @@ import * as utilities from "../utilities";
  * * `labels` - (Optional) The list of key value pairs representing additional
  *   properties of the cluster. Changing this creates a new cluster.
  *
+ * * `mergeLabels` - (Optional) Indicates whether the provided labels should be
+ *   merged with cluster template labels. Changing this creates a new cluster.
+ *
  * * `masterCount` - (Optional) The number of master nodes for the cluster.
  *   Changing this creates a new cluster.
  *
@@ -80,6 +83,9 @@ import * as utilities from "../utilities";
  *
  * * `fixedSubnet` - (Optional) The fixed subnet that will be attached to the
  *   cluster. Changing this creates a new cluster.
+ *
+ * * `floatingIpEnabled` - (Optional) Indicates whether floating IP should be
+ *   created for every cluster node. Changing this creates a new cluster.
  *
  * ## Attributes reference
  *
@@ -101,10 +107,12 @@ import * as utilities from "../utilities";
  * * `masterFlavor` - See Argument Reference above.
  * * `keypair` - See Argument Reference above.
  * * `labels` - See Argument Reference above.
+ * * `mergeLabels` - See Argument Reference above.
  * * `masterCount` - See Argument Reference above.
  * * `nodeCount` - See Argument Reference above.
  * * `fixedNetwork` - See Argument Reference above.
  * * `fixedSubnet` - See Argument Reference above.
+ * * `floatingIpEnabled` - See Argument Reference above.
  * * `masterAddresses` - IP addresses of the master node of the cluster.
  * * `nodeAddresses` - IP addresses of the node of the cluster.
  * * `stackId` - UUID of the Orchestration service stack.
@@ -154,12 +162,14 @@ export class Cluster extends pulumi.CustomResource {
     public readonly fixedNetwork!: pulumi.Output<string>;
     public readonly fixedSubnet!: pulumi.Output<string>;
     public readonly flavor!: pulumi.Output<string>;
+    public readonly floatingIpEnabled!: pulumi.Output<boolean>;
     public readonly keypair!: pulumi.Output<string>;
     public /*out*/ readonly kubeconfig!: pulumi.Output<outputs.containerinfra.ClusterKubeconfig>;
     public readonly labels!: pulumi.Output<{[key: string]: any}>;
     public /*out*/ readonly masterAddresses!: pulumi.Output<string[]>;
     public readonly masterCount!: pulumi.Output<number>;
     public readonly masterFlavor!: pulumi.Output<string>;
+    public readonly mergeLabels!: pulumi.Output<boolean | undefined>;
     public readonly name!: pulumi.Output<string>;
     public /*out*/ readonly nodeAddresses!: pulumi.Output<string[]>;
     public readonly nodeCount!: pulumi.Output<number>;
@@ -192,12 +202,14 @@ export class Cluster extends pulumi.CustomResource {
             inputs["fixedNetwork"] = state ? state.fixedNetwork : undefined;
             inputs["fixedSubnet"] = state ? state.fixedSubnet : undefined;
             inputs["flavor"] = state ? state.flavor : undefined;
+            inputs["floatingIpEnabled"] = state ? state.floatingIpEnabled : undefined;
             inputs["keypair"] = state ? state.keypair : undefined;
             inputs["kubeconfig"] = state ? state.kubeconfig : undefined;
             inputs["labels"] = state ? state.labels : undefined;
             inputs["masterAddresses"] = state ? state.masterAddresses : undefined;
             inputs["masterCount"] = state ? state.masterCount : undefined;
             inputs["masterFlavor"] = state ? state.masterFlavor : undefined;
+            inputs["mergeLabels"] = state ? state.mergeLabels : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["nodeAddresses"] = state ? state.nodeAddresses : undefined;
             inputs["nodeCount"] = state ? state.nodeCount : undefined;
@@ -218,10 +230,12 @@ export class Cluster extends pulumi.CustomResource {
             inputs["fixedNetwork"] = args ? args.fixedNetwork : undefined;
             inputs["fixedSubnet"] = args ? args.fixedSubnet : undefined;
             inputs["flavor"] = args ? args.flavor : undefined;
+            inputs["floatingIpEnabled"] = args ? args.floatingIpEnabled : undefined;
             inputs["keypair"] = args ? args.keypair : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["masterCount"] = args ? args.masterCount : undefined;
             inputs["masterFlavor"] = args ? args.masterFlavor : undefined;
+            inputs["mergeLabels"] = args ? args.mergeLabels : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["nodeCount"] = args ? args.nodeCount : undefined;
             inputs["region"] = args ? args.region : undefined;
@@ -263,12 +277,14 @@ export interface ClusterState {
     readonly fixedNetwork?: pulumi.Input<string>;
     readonly fixedSubnet?: pulumi.Input<string>;
     readonly flavor?: pulumi.Input<string>;
+    readonly floatingIpEnabled?: pulumi.Input<boolean>;
     readonly keypair?: pulumi.Input<string>;
     readonly kubeconfig?: pulumi.Input<inputs.containerinfra.ClusterKubeconfig>;
     readonly labels?: pulumi.Input<{[key: string]: any}>;
     readonly masterAddresses?: pulumi.Input<pulumi.Input<string>[]>;
     readonly masterCount?: pulumi.Input<number>;
     readonly masterFlavor?: pulumi.Input<string>;
+    readonly mergeLabels?: pulumi.Input<boolean>;
     readonly name?: pulumi.Input<string>;
     readonly nodeAddresses?: pulumi.Input<pulumi.Input<string>[]>;
     readonly nodeCount?: pulumi.Input<number>;
@@ -290,10 +306,12 @@ export interface ClusterArgs {
     readonly fixedNetwork?: pulumi.Input<string>;
     readonly fixedSubnet?: pulumi.Input<string>;
     readonly flavor?: pulumi.Input<string>;
+    readonly floatingIpEnabled?: pulumi.Input<boolean>;
     readonly keypair?: pulumi.Input<string>;
     readonly labels?: pulumi.Input<{[key: string]: any}>;
     readonly masterCount?: pulumi.Input<number>;
     readonly masterFlavor?: pulumi.Input<string>;
+    readonly mergeLabels?: pulumi.Input<boolean>;
     readonly name?: pulumi.Input<string>;
     readonly nodeCount?: pulumi.Input<number>;
     readonly region?: pulumi.Input<string>;

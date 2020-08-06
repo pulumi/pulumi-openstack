@@ -57,6 +57,11 @@ export class Listener extends pulumi.CustomResource {
      */
     public readonly adminStateUp!: pulumi.Output<boolean | undefined>;
     /**
+     * A list of CIDR blocks that are permitted to connect to this listener, denying
+     * all other source addresses. If not present, defaults to allow all.
+     */
+    public readonly allowedCidrs!: pulumi.Output<string[] | undefined>;
+    /**
      * The maximum number of connections allowed
      * for the Listener.
      */
@@ -156,6 +161,7 @@ export class Listener extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as ListenerState | undefined;
             inputs["adminStateUp"] = state ? state.adminStateUp : undefined;
+            inputs["allowedCidrs"] = state ? state.allowedCidrs : undefined;
             inputs["connectionLimit"] = state ? state.connectionLimit : undefined;
             inputs["defaultPoolId"] = state ? state.defaultPoolId : undefined;
             inputs["defaultTlsContainerRef"] = state ? state.defaultTlsContainerRef : undefined;
@@ -184,6 +190,7 @@ export class Listener extends pulumi.CustomResource {
                 throw new Error("Missing required property 'protocolPort'");
             }
             inputs["adminStateUp"] = args ? args.adminStateUp : undefined;
+            inputs["allowedCidrs"] = args ? args.allowedCidrs : undefined;
             inputs["connectionLimit"] = args ? args.connectionLimit : undefined;
             inputs["defaultPoolId"] = args ? args.defaultPoolId : undefined;
             inputs["defaultTlsContainerRef"] = args ? args.defaultTlsContainerRef : undefined;
@@ -221,6 +228,11 @@ export interface ListenerState {
      * A valid value is true (UP) or false (DOWN).
      */
     readonly adminStateUp?: pulumi.Input<boolean>;
+    /**
+     * A list of CIDR blocks that are permitted to connect to this listener, denying
+     * all other source addresses. If not present, defaults to allow all.
+     */
+    readonly allowedCidrs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The maximum number of connections allowed
      * for the Listener.
@@ -318,6 +330,11 @@ export interface ListenerArgs {
      * A valid value is true (UP) or false (DOWN).
      */
     readonly adminStateUp?: pulumi.Input<boolean>;
+    /**
+     * A list of CIDR blocks that are permitted to connect to this listener, denying
+     * all other source addresses. If not present, defaults to allow all.
+     */
+    readonly allowedCidrs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The maximum number of connections allowed
      * for the Listener.

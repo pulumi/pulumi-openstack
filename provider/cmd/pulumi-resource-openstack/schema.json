@@ -5655,7 +5655,7 @@
             }
         },
         "openstack:containerinfra/cluster:Cluster": {
-            "description": "Manages a V1 Magnum cluster resource within OpenStack.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### Create a Cluster\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst cluster1 = new openstack.containerinfra.Cluster(\"cluster_1\", {\n    clusterTemplateId: \"b9a45c5c-cd03-4958-82aa-b80bf93cb922\",\n    keypair: \"ssh_keypair\",\n    masterCount: 3,\n    nodeCount: 5,\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\ncluster1 = openstack.containerinfra.Cluster(\"cluster1\",\n    cluster_template_id=\"b9a45c5c-cd03-4958-82aa-b80bf93cb922\",\n    keypair=\"ssh_keypair\",\n    master_count=3,\n    node_count=5)\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var cluster1 = new OpenStack.ContainerInfra.Cluster(\"cluster1\", new OpenStack.ContainerInfra.ClusterArgs\n        {\n            ClusterTemplateId = \"b9a45c5c-cd03-4958-82aa-b80bf93cb922\",\n            Keypair = \"ssh_keypair\",\n            MasterCount = 3,\n            NodeCount = 5,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/containerinfra\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := containerinfra.NewCluster(ctx, \"cluster1\", \u0026containerinfra.ClusterArgs{\n\t\t\tClusterTemplateId: pulumi.String(\"b9a45c5c-cd03-4958-82aa-b80bf93cb922\"),\n\t\t\tKeypair:           pulumi.String(\"ssh_keypair\"),\n\t\t\tMasterCount:       pulumi.Int(3),\n\t\t\tNodeCount:         pulumi.Int(5),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Argument reference\n\nThe following arguments are supported:\n\n* `region` - (Optional) The region in which to obtain the V1 Container Infra\n    client. A Container Infra client is needed to create a cluster. If omitted,\n    the `region` argument of the provider is used. Changing this creates a new\n    cluster.\n\n* `name` - (Required) The name of the cluster. Changing this updates the name\n    of the existing cluster template.\n\n* `project_id` - (Optional) The project of the cluster. Required if admin wants\n    to create a cluster in another project. Changing this creates a new\n    cluster.\n\n* `user_id` - (Optional) The user of the cluster. Required if admin wants to\n    create a cluster template for another user. Changing this creates a new\n    cluster.\n\n* `cluster_template_id` - (Required) The UUID of the V1 Container Infra cluster\n    template. Changing this creates a new cluster.\n\n* `create_timeout` - (Optional) The timeout (in minutes) for creating the\n    cluster. Changing this creates a new cluster.\n\n* `discovery_url` - (Optional) The URL used for cluster node discovery.\n    Changing this creates a new cluster.\n\n* `docker_volume_size` - (Optional) The size (in GB) of the Docker volume.\n    Changing this creates a new cluster.\n\n* `flavor` - (Optional) The flavor for the nodes of the cluster. Can be set via\n    the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new\n    cluster.\n\n* `master_flavor` - (Optional) The flavor for the master nodes. Can be set via\n    the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this creates a\n    new cluster.\n\n* `keypair` - (Optional) The name of the Compute service SSH keypair. Changing\n    this creates a new cluster.\n\n* `labels` - (Optional) The list of key value pairs representing additional\n    properties of the cluster. Changing this creates a new cluster.\n\n* `master_count` - (Optional) The number of master nodes for the cluster.\n    Changing this creates a new cluster.\n\n* `node_count` - (Optional) The number of nodes for the cluster. Changing this\n    creates a new cluster.\n    \n* `fixed_network` - (Optional) The fixed network that will be attached to the\n    cluster. Changing this creates a new cluster.\n\n* `fixed_subnet` - (Optional) The fixed subnet that will be attached to the\n    cluster. Changing this creates a new cluster.\n\n## Attributes reference\n\nThe following attributes are exported:\n\n* `region` - See Argument Reference above.\n* `name` - See Argument Reference above.\n* `project_id` - See Argument Reference above.\n* `created_at` - The time at which cluster was created.\n* `updated_at` - The time at which cluster was created.\n* `api_address` - COE API address.\n* `coe_version` - COE software version.\n* `cluster_template_id` - See Argument Reference above.\n* `container_version` - Container software version.\n* `create_timeout` - See Argument Reference above.\n* `discovery_url` - See Argument Reference above.\n* `docker_volume_size` - See Argument Reference above.\n* `flavor` - See Argument Reference above.\n* `master_flavor` - See Argument Reference above.\n* `keypair` - See Argument Reference above.\n* `labels` - See Argument Reference above.\n* `master_count` - See Argument Reference above.\n* `node_count` - See Argument Reference above.\n* `fixed_network` - See Argument Reference above.\n* `fixed_subnet` - See Argument Reference above.\n* `master_addresses` - IP addresses of the master node of the cluster.\n* `node_addresses` - IP addresses of the node of the cluster.\n* `stack_id` - UUID of the Orchestration service stack.\n* `kubeconfig` - The Kubernetes cluster's credentials\n  * `raw_config` - The raw kubeconfig file\n  * `host` - The cluster's API server URL\n  * `cluster_ca_certificate` - The cluster's CA certificate\n  * `client_key` - The client's RSA key\n  * `client_certificate` - The client's certificate\n",
+            "description": "Manages a V1 Magnum cluster resource within OpenStack.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### Create a Cluster\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst cluster1 = new openstack.containerinfra.Cluster(\"cluster_1\", {\n    clusterTemplateId: \"b9a45c5c-cd03-4958-82aa-b80bf93cb922\",\n    keypair: \"ssh_keypair\",\n    masterCount: 3,\n    nodeCount: 5,\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\ncluster1 = openstack.containerinfra.Cluster(\"cluster1\",\n    cluster_template_id=\"b9a45c5c-cd03-4958-82aa-b80bf93cb922\",\n    keypair=\"ssh_keypair\",\n    master_count=3,\n    node_count=5)\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var cluster1 = new OpenStack.ContainerInfra.Cluster(\"cluster1\", new OpenStack.ContainerInfra.ClusterArgs\n        {\n            ClusterTemplateId = \"b9a45c5c-cd03-4958-82aa-b80bf93cb922\",\n            Keypair = \"ssh_keypair\",\n            MasterCount = 3,\n            NodeCount = 5,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/containerinfra\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := containerinfra.NewCluster(ctx, \"cluster1\", \u0026containerinfra.ClusterArgs{\n\t\t\tClusterTemplateId: pulumi.String(\"b9a45c5c-cd03-4958-82aa-b80bf93cb922\"),\n\t\t\tKeypair:           pulumi.String(\"ssh_keypair\"),\n\t\t\tMasterCount:       pulumi.Int(3),\n\t\t\tNodeCount:         pulumi.Int(5),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Argument reference\n\nThe following arguments are supported:\n\n* `region` - (Optional) The region in which to obtain the V1 Container Infra\n    client. A Container Infra client is needed to create a cluster. If omitted,\n    the `region` argument of the provider is used. Changing this creates a new\n    cluster.\n\n* `name` - (Required) The name of the cluster. Changing this updates the name\n    of the existing cluster template.\n\n* `project_id` - (Optional) The project of the cluster. Required if admin wants\n    to create a cluster in another project. Changing this creates a new\n    cluster.\n\n* `user_id` - (Optional) The user of the cluster. Required if admin wants to\n    create a cluster template for another user. Changing this creates a new\n    cluster.\n\n* `cluster_template_id` - (Required) The UUID of the V1 Container Infra cluster\n    template. Changing this creates a new cluster.\n\n* `create_timeout` - (Optional) The timeout (in minutes) for creating the\n    cluster. Changing this creates a new cluster.\n\n* `discovery_url` - (Optional) The URL used for cluster node discovery.\n    Changing this creates a new cluster.\n\n* `docker_volume_size` - (Optional) The size (in GB) of the Docker volume.\n    Changing this creates a new cluster.\n\n* `flavor` - (Optional) The flavor for the nodes of the cluster. Can be set via\n    the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new\n    cluster.\n\n* `master_flavor` - (Optional) The flavor for the master nodes. Can be set via\n    the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this creates a\n    new cluster.\n\n* `keypair` - (Optional) The name of the Compute service SSH keypair. Changing\n    this creates a new cluster.\n\n* `labels` - (Optional) The list of key value pairs representing additional\n    properties of the cluster. Changing this creates a new cluster.\n\n* `merge_labels` - (Optional) Indicates whether the provided labels should be\n    merged with cluster template labels. Changing this creates a new cluster.\n\n* `master_count` - (Optional) The number of master nodes for the cluster.\n    Changing this creates a new cluster.\n\n* `node_count` - (Optional) The number of nodes for the cluster. Changing this\n    creates a new cluster.\n    \n* `fixed_network` - (Optional) The fixed network that will be attached to the\n    cluster. Changing this creates a new cluster.\n\n* `fixed_subnet` - (Optional) The fixed subnet that will be attached to the\n    cluster. Changing this creates a new cluster.\n\n* `floating_ip_enabled` - (Optional) Indicates whether floating IP should be\n    created for every cluster node. Changing this creates a new cluster.\n\n## Attributes reference\n\nThe following attributes are exported:\n\n* `region` - See Argument Reference above.\n* `name` - See Argument Reference above.\n* `project_id` - See Argument Reference above.\n* `created_at` - The time at which cluster was created.\n* `updated_at` - The time at which cluster was created.\n* `api_address` - COE API address.\n* `coe_version` - COE software version.\n* `cluster_template_id` - See Argument Reference above.\n* `container_version` - Container software version.\n* `create_timeout` - See Argument Reference above.\n* `discovery_url` - See Argument Reference above.\n* `docker_volume_size` - See Argument Reference above.\n* `flavor` - See Argument Reference above.\n* `master_flavor` - See Argument Reference above.\n* `keypair` - See Argument Reference above.\n* `labels` - See Argument Reference above.\n* `merge_labels` - See Argument Reference above.\n* `master_count` - See Argument Reference above.\n* `node_count` - See Argument Reference above.\n* `fixed_network` - See Argument Reference above.\n* `fixed_subnet` - See Argument Reference above.\n* `floating_ip_enabled` - See Argument Reference above.\n* `master_addresses` - IP addresses of the master node of the cluster.\n* `node_addresses` - IP addresses of the node of the cluster.\n* `stack_id` - UUID of the Orchestration service stack.\n* `kubeconfig` - The Kubernetes cluster's credentials\n  * `raw_config` - The raw kubeconfig file\n  * `host` - The cluster's API server URL\n  * `cluster_ca_certificate` - The cluster's CA certificate\n  * `client_key` - The client's RSA key\n  * `client_certificate` - The client's certificate\n",
             "properties": {
                 "apiAddress": {
                     "type": "string"
@@ -5690,6 +5690,9 @@
                 "flavor": {
                     "type": "string"
                 },
+                "floatingIpEnabled": {
+                    "type": "boolean"
+                },
                 "keypair": {
                     "type": "string"
                 },
@@ -5713,6 +5716,9 @@
                 },
                 "masterFlavor": {
                     "type": "string"
+                },
+                "mergeLabels": {
+                    "type": "boolean"
                 },
                 "name": {
                     "type": "string"
@@ -5754,6 +5760,7 @@
                 "fixedNetwork",
                 "fixedSubnet",
                 "flavor",
+                "floatingIpEnabled",
                 "keypair",
                 "kubeconfig",
                 "labels",
@@ -5791,6 +5798,9 @@
                 "flavor": {
                     "type": "string"
                 },
+                "floatingIpEnabled": {
+                    "type": "boolean"
+                },
                 "keypair": {
                     "type": "string"
                 },
@@ -5805,6 +5815,9 @@
                 },
                 "masterFlavor": {
                     "type": "string"
+                },
+                "mergeLabels": {
+                    "type": "boolean"
                 },
                 "name": {
                     "type": "string"
@@ -5855,6 +5868,9 @@
                     "flavor": {
                         "type": "string"
                     },
+                    "floatingIpEnabled": {
+                        "type": "boolean"
+                    },
                     "keypair": {
                         "type": "string"
                     },
@@ -5878,6 +5894,9 @@
                     },
                     "masterFlavor": {
                         "type": "string"
+                    },
+                    "mergeLabels": {
+                        "type": "boolean"
                     },
                     "name": {
                         "type": "string"
@@ -7641,6 +7660,72 @@
                     "url": {
                         "type": "string",
                         "description": "The endpoint url.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "openstack:identity/groupV3:GroupV3": {
+            "description": "Manages a V3 group resource within OpenStack Keystone.\n\nNote: You _must_ have admin privileges in your OpenStack cloud to use\nthis resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst group1 = new openstack.identity.GroupV3(\"group_1\", {\n    description: \"group 1\",\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\ngroup1 = openstack.identity.GroupV3(\"group1\", description=\"group 1\")\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var group1 = new OpenStack.Identity.GroupV3(\"group1\", new OpenStack.Identity.GroupV3Args\n        {\n            Description = \"group 1\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/identity\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := identity.NewGroupV3(ctx, \"group1\", \u0026identity.GroupV3Args{\n\t\t\tDescription: pulumi.String(\"group 1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "A description of the group.\n"
+                },
+                "domainId": {
+                    "type": "string",
+                    "description": "The domain the group belongs to.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the group.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region in which to obtain the V3 Keystone client.\nIf omitted, the `region` argument of the provider is used. Changing this\ncreates a new group.\n"
+                }
+            },
+            "required": [
+                "domainId",
+                "name",
+                "region"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "A description of the group.\n"
+                },
+                "domainId": {
+                    "type": "string",
+                    "description": "The domain the group belongs to.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the group.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region in which to obtain the V3 Keystone client.\nIf omitted, the `region` argument of the provider is used. Changing this\ncreates a new group.\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering GroupV3 resources.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "A description of the group.\n"
+                    },
+                    "domainId": {
+                        "type": "string",
+                        "description": "The domain the group belongs to.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the group.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region in which to obtain the V3 Keystone client.\nIf omitted, the `region` argument of the provider is used. Changing this\ncreates a new group.\n"
                     }
                 },
                 "type": "object"
@@ -9536,6 +9621,13 @@
                     "type": "boolean",
                     "description": "The administrative state of the Listener.\nA valid value is true (UP) or false (DOWN).\n"
                 },
+                "allowedCidrs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of CIDR blocks that are permitted to connect to this listener, denying\nall other source addresses. If not present, defaults to allow all.\n"
+                },
                 "connectionLimit": {
                     "type": "integer",
                     "description": "The maximum number of connections allowed\nfor the Listener.\n"
@@ -9626,6 +9718,13 @@
                     "type": "boolean",
                     "description": "The administrative state of the Listener.\nA valid value is true (UP) or false (DOWN).\n"
                 },
+                "allowedCidrs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of CIDR blocks that are permitted to connect to this listener, denying\nall other source addresses. If not present, defaults to allow all.\n"
+                },
                 "connectionLimit": {
                     "type": "integer",
                     "description": "The maximum number of connections allowed\nfor the Listener.\n"
@@ -9708,6 +9807,13 @@
                     "adminStateUp": {
                         "type": "boolean",
                         "description": "The administrative state of the Listener.\nA valid value is true (UP) or false (DOWN).\n"
+                    },
+                    "allowedCidrs": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of CIDR blocks that are permitted to connect to this listener, denying\nall other source addresses. If not present, defaults to allow all.\n"
                     },
                     "connectionLimit": {
                         "type": "integer",
@@ -18489,7 +18595,7 @@
                         "additionalProperties": {
                             "$ref": "pulumi.json#/Any"
                         },
-                        "description": "a map of key/value pairs to match an image with.\nAll specified properties must be matched.\n"
+                        "description": "a map of key/value pairs to match an image with.\nAll specified properties must be matched. Unlike other options filtering\nby `properties` does by client on the result of OpenStack search query.\nFiltering is applied if server responce contains at least 2 images. In\ncase there is only one image the `properties` ignores.\n"
                     },
                     "region": {
                         "type": "string",
@@ -18642,6 +18748,137 @@
                     "sizeBytes",
                     "tags",
                     "updatedAt",
+                    "id"
+                ]
+            }
+        },
+        "openstack:images/getImageIds:getImageIds": {
+            "description": "Use this data source to get a list of Openstack Image IDs matching the\nspecified criteria.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst images = pulumi.output(openstack.images.getImageIds({\n    nameRegex: \"^Ubuntu 16\\\\.04.*-amd64\",\n    properties: {\n        key: \"value\",\n    },\n    sort: \"updated_at\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nimages = openstack.images.get_image_ids(name_regex=\"^Ubuntu 16\\\\.04.*-amd64\",\n    properties={\n        \"key\": \"value\",\n    },\n    sort=\"updated_at\")\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var images = Output.Create(OpenStack.Images.GetImageIds.InvokeAsync(new OpenStack.Images.GetImageIdsArgs\n        {\n            NameRegex = \"^Ubuntu 16\\\\.04.*-amd64\",\n            Properties = \n            {\n                { \"key\", \"value\" },\n            },\n            Sort = \"updated_at\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/images\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := \"^Ubuntu 16\\\\.04.*-amd64\"\n\t\topt1 := \"updated_at\"\n\t\t_, err := images.GetImageIds(ctx, \u0026images.GetImageIdsArgs{\n\t\t\tNameRegex: \u0026opt0,\n\t\t\tProperties: map[string]interface{}{\n\t\t\t\t\"key\": \"value\",\n\t\t\t},\n\t\t\tSort: \u0026opt1,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getImageIds.\n",
+                "properties": {
+                    "memberStatus": {
+                        "type": "string",
+                        "description": "The status of the image. Must be one of\n\"accepted\", \"pending\", \"rejected\", or \"all\".\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the image. Cannot be used simultaneously\nwith `name_regex`.\n"
+                    },
+                    "nameRegex": {
+                        "type": "string",
+                        "description": "The regular expressian of the name of the image.\nCannot be used simultaneously with `name`. Unlike filtering by `name` the\n`name_regex` filtering does by client on the result of OpenStack search\nquery.\n"
+                    },
+                    "owner": {
+                        "type": "string",
+                        "description": "The owner (UUID) of the image.\n"
+                    },
+                    "properties": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "a map of key/value pairs to match an image with.\nAll specified properties must be matched. Unlike other options filtering\nby `properties` does by client on the result of OpenStack search query.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region in which to obtain the V2 Glance client.\nA Glance client is needed to create an Image that can be used with\na compute instance. If omitted, the `region` argument of the provider\nis used.\n"
+                    },
+                    "sizeMax": {
+                        "type": "integer",
+                        "description": "The maximum size (in bytes) of the image to return.\n"
+                    },
+                    "sizeMin": {
+                        "type": "integer",
+                        "description": "The minimum size (in bytes) of the image to return.\n"
+                    },
+                    "sort": {
+                        "type": "string",
+                        "description": "Sorts the response by one or more attribute and sort\ndirection combinations. You can also set multiple sort keys and directions.\nDefault direction is `desc`. Use the comma (,) character to separate\nmultiple values. For example expression `sort = \"name:asc,status\"`\nsorts ascending by name and descending by status. `sort` cannot be used\nsimultaneously with `sort_key`. If both are present in a configuration\nthen only `sort` will be used.\n"
+                    },
+                    "sortDirection": {
+                        "type": "string",
+                        "description": "Order the results in either `asc` or `desc`.\nCan be applied only with `sort_key`. Defaults to `asc`\n",
+                        "deprecationMessage": "Use option 'sort' instead."
+                    },
+                    "sortKey": {
+                        "type": "string",
+                        "description": "Sort images based on a certain key. Defaults to\n`name`. `sort_key` cannot be used simultaneously with `sort`. If both\nare present in a configuration then only `sort` will be used.\n",
+                        "deprecationMessage": "Use option 'sort' instead."
+                    },
+                    "tag": {
+                        "type": "string",
+                        "description": "Search for images with a specific tag.\n"
+                    },
+                    "visibility": {
+                        "type": "string",
+                        "description": "The visibility of the image. Must be one of\n\"public\", \"private\", \"community\", or \"shared\". Defaults to \"private\".\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getImageIds.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "memberStatus": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "nameRegex": {
+                        "type": "string"
+                    },
+                    "owner": {
+                        "type": "string"
+                    },
+                    "properties": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        }
+                    },
+                    "region": {
+                        "type": "string"
+                    },
+                    "sizeMax": {
+                        "type": "integer"
+                    },
+                    "sizeMin": {
+                        "type": "integer"
+                    },
+                    "sort": {
+                        "type": "string"
+                    },
+                    "sortDirection": {
+                        "type": "string",
+                        "deprecationMessage": "Use option 'sort' instead."
+                    },
+                    "sortKey": {
+                        "type": "string",
+                        "deprecationMessage": "Use option 'sort' instead."
+                    },
+                    "tag": {
+                        "type": "string"
+                    },
+                    "visibility": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "ids",
+                    "region",
                     "id"
                 ]
             }
