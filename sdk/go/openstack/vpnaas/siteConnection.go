@@ -25,13 +25,13 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := vpnaas.NewSiteConnection(ctx, "conn1", &vpnaas.SiteConnectionArgs{
-// 			IkepolicyId:    pulumi.String(openstack_vpnaas_ike_policy_v2.Policy_2.Id),
-// 			IpsecpolicyId:  pulumi.String(openstack_vpnaas_ipsec_policy_v2.Policy_1.Id),
-// 			LocalEpGroupId: pulumi.String(openstack_vpnaas_endpoint_group_v2.Group_2.Id),
+// 			IkepolicyId:    pulumi.Any(openstack_vpnaas_ike_policy_v2.Policy_2.Id),
+// 			IpsecpolicyId:  pulumi.Any(openstack_vpnaas_ipsec_policy_v2.Policy_1.Id),
+// 			LocalEpGroupId: pulumi.Any(openstack_vpnaas_endpoint_group_v2.Group_2.Id),
 // 			PeerAddress:    pulumi.String("192.168.10.1"),
-// 			PeerEpGroupId:  pulumi.String(openstack_vpnaas_endpoint_group_v2.Group_1.Id),
+// 			PeerEpGroupId:  pulumi.Any(openstack_vpnaas_endpoint_group_v2.Group_1.Id),
 // 			Psk:            pulumi.String("secret"),
-// 			VpnserviceId:   pulumi.String(openstack_vpnaas_service_v2.Service_1.Id),
+// 			VpnserviceId:   pulumi.Any(openstack_vpnaas_service_v2.Service_1.Id),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -50,9 +50,6 @@ type SiteConnection struct {
 	// Changing this updates the description of the existing connection.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// A dictionary with dead peer detection (DPD) protocol controls.
-	// - `action` - (Optional) The dead peer detection (DPD) action.
-	//   A valid value is clear, hold, restart, disabled, or restart-by-peer.
-	//   Default value is hold.
 	Dpds SiteConnectionDpdArrayOutput `pulumi:"dpds"`
 	// The ID of the IKE policy. Changing this creates a new connection.
 	IkepolicyId pulumi.StringOutput `pulumi:"ikepolicyId"`
@@ -156,9 +153,6 @@ type siteConnectionState struct {
 	// Changing this updates the description of the existing connection.
 	Description *string `pulumi:"description"`
 	// A dictionary with dead peer detection (DPD) protocol controls.
-	// - `action` - (Optional) The dead peer detection (DPD) action.
-	//   A valid value is clear, hold, restart, disabled, or restart-by-peer.
-	//   Default value is hold.
 	Dpds []SiteConnectionDpd `pulumi:"dpds"`
 	// The ID of the IKE policy. Changing this creates a new connection.
 	IkepolicyId *string `pulumi:"ikepolicyId"`
@@ -217,9 +211,6 @@ type SiteConnectionState struct {
 	// Changing this updates the description of the existing connection.
 	Description pulumi.StringPtrInput
 	// A dictionary with dead peer detection (DPD) protocol controls.
-	// - `action` - (Optional) The dead peer detection (DPD) action.
-	//   A valid value is clear, hold, restart, disabled, or restart-by-peer.
-	//   Default value is hold.
 	Dpds SiteConnectionDpdArrayInput
 	// The ID of the IKE policy. Changing this creates a new connection.
 	IkepolicyId pulumi.StringPtrInput
@@ -282,9 +273,6 @@ type siteConnectionArgs struct {
 	// Changing this updates the description of the existing connection.
 	Description *string `pulumi:"description"`
 	// A dictionary with dead peer detection (DPD) protocol controls.
-	// - `action` - (Optional) The dead peer detection (DPD) action.
-	//   A valid value is clear, hold, restart, disabled, or restart-by-peer.
-	//   Default value is hold.
 	Dpds []SiteConnectionDpd `pulumi:"dpds"`
 	// The ID of the IKE policy. Changing this creates a new connection.
 	IkepolicyId string `pulumi:"ikepolicyId"`
@@ -344,9 +332,6 @@ type SiteConnectionArgs struct {
 	// Changing this updates the description of the existing connection.
 	Description pulumi.StringPtrInput
 	// A dictionary with dead peer detection (DPD) protocol controls.
-	// - `action` - (Optional) The dead peer detection (DPD) action.
-	//   A valid value is clear, hold, restart, disabled, or restart-by-peer.
-	//   Default value is hold.
 	Dpds SiteConnectionDpdArrayInput
 	// The ID of the IKE policy. Changing this creates a new connection.
 	IkepolicyId pulumi.StringInput

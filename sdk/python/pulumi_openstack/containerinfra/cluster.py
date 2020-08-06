@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Cluster(pulumi.CustomResource):
@@ -21,12 +21,14 @@ class Cluster(pulumi.CustomResource):
     fixed_network: pulumi.Output[str]
     fixed_subnet: pulumi.Output[str]
     flavor: pulumi.Output[str]
+    floating_ip_enabled: pulumi.Output[bool]
     keypair: pulumi.Output[str]
     kubeconfig: pulumi.Output[dict]
     labels: pulumi.Output[dict]
     master_addresses: pulumi.Output[list]
     master_count: pulumi.Output[float]
     master_flavor: pulumi.Output[str]
+    merge_labels: pulumi.Output[bool]
     name: pulumi.Output[str]
     node_addresses: pulumi.Output[list]
     node_count: pulumi.Output[float]
@@ -35,7 +37,7 @@ class Cluster(pulumi.CustomResource):
     stack_id: pulumi.Output[str]
     updated_at: pulumi.Output[str]
     user_id: pulumi.Output[str]
-    def __init__(__self__, resource_name, opts=None, cluster_template_id=None, create_timeout=None, discovery_url=None, docker_volume_size=None, fixed_network=None, fixed_subnet=None, flavor=None, keypair=None, labels=None, master_count=None, master_flavor=None, name=None, node_count=None, region=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, cluster_template_id=None, create_timeout=None, discovery_url=None, docker_volume_size=None, fixed_network=None, fixed_subnet=None, flavor=None, floating_ip_enabled=None, keypair=None, labels=None, master_count=None, master_flavor=None, merge_labels=None, name=None, node_count=None, region=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a V1 Magnum cluster resource within OpenStack.
 
@@ -98,6 +100,9 @@ class Cluster(pulumi.CustomResource):
         * `labels` - (Optional) The list of key value pairs representing additional
           properties of the cluster. Changing this creates a new cluster.
 
+        * `merge_labels` - (Optional) Indicates whether the provided labels should be
+          merged with cluster template labels. Changing this creates a new cluster.
+
         * `master_count` - (Optional) The number of master nodes for the cluster.
           Changing this creates a new cluster.
 
@@ -109,6 +114,9 @@ class Cluster(pulumi.CustomResource):
 
         * `fixed_subnet` - (Optional) The fixed subnet that will be attached to the
           cluster. Changing this creates a new cluster.
+
+        * `floating_ip_enabled` - (Optional) Indicates whether floating IP should be
+          created for every cluster node. Changing this creates a new cluster.
 
         ## Attributes reference
 
@@ -130,10 +138,12 @@ class Cluster(pulumi.CustomResource):
         * `master_flavor` - See Argument Reference above.
         * `keypair` - See Argument Reference above.
         * `labels` - See Argument Reference above.
+        * `merge_labels` - See Argument Reference above.
         * `master_count` - See Argument Reference above.
         * `node_count` - See Argument Reference above.
         * `fixed_network` - See Argument Reference above.
         * `fixed_subnet` - See Argument Reference above.
+        * `floating_ip_enabled` - See Argument Reference above.
         * `master_addresses` - IP addresses of the master node of the cluster.
         * `node_addresses` - IP addresses of the node of the cluster.
         * `stack_id` - UUID of the Orchestration service stack.
@@ -158,7 +168,7 @@ class Cluster(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -173,10 +183,12 @@ class Cluster(pulumi.CustomResource):
             __props__['fixed_network'] = fixed_network
             __props__['fixed_subnet'] = fixed_subnet
             __props__['flavor'] = flavor
+            __props__['floating_ip_enabled'] = floating_ip_enabled
             __props__['keypair'] = keypair
             __props__['labels'] = labels
             __props__['master_count'] = master_count
             __props__['master_flavor'] = master_flavor
+            __props__['merge_labels'] = merge_labels
             __props__['name'] = name
             __props__['node_count'] = node_count
             __props__['region'] = region
@@ -198,7 +210,7 @@ class Cluster(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, api_address=None, cluster_template_id=None, coe_version=None, container_version=None, create_timeout=None, created_at=None, discovery_url=None, docker_volume_size=None, fixed_network=None, fixed_subnet=None, flavor=None, keypair=None, kubeconfig=None, labels=None, master_addresses=None, master_count=None, master_flavor=None, name=None, node_addresses=None, node_count=None, project_id=None, region=None, stack_id=None, updated_at=None, user_id=None):
+    def get(resource_name, id, opts=None, api_address=None, cluster_template_id=None, coe_version=None, container_version=None, create_timeout=None, created_at=None, discovery_url=None, docker_volume_size=None, fixed_network=None, fixed_subnet=None, flavor=None, floating_ip_enabled=None, keypair=None, kubeconfig=None, labels=None, master_addresses=None, master_count=None, master_flavor=None, merge_labels=None, name=None, node_addresses=None, node_count=None, project_id=None, region=None, stack_id=None, updated_at=None, user_id=None):
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -230,12 +242,14 @@ class Cluster(pulumi.CustomResource):
         __props__["fixed_network"] = fixed_network
         __props__["fixed_subnet"] = fixed_subnet
         __props__["flavor"] = flavor
+        __props__["floating_ip_enabled"] = floating_ip_enabled
         __props__["keypair"] = keypair
         __props__["kubeconfig"] = kubeconfig
         __props__["labels"] = labels
         __props__["master_addresses"] = master_addresses
         __props__["master_count"] = master_count
         __props__["master_flavor"] = master_flavor
+        __props__["merge_labels"] = merge_labels
         __props__["name"] = name
         __props__["node_addresses"] = node_addresses
         __props__["node_count"] = node_count
@@ -247,7 +261,7 @@ class Cluster(pulumi.CustomResource):
         return Cluster(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

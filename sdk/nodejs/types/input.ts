@@ -766,17 +766,40 @@ export namespace sharedfilesystem {
 export namespace vpnaas {
     export interface IkePolicyLifetime {
         units?: pulumi.Input<string>;
+        /**
+         * The value for the lifetime of the security association. Must be a positive integer.
+         * Default is 3600.
+         */
         value?: pulumi.Input<number>;
     }
 
     export interface IpSecPolicyLifetime {
         units?: pulumi.Input<string>;
+        /**
+         * The value for the lifetime of the security association. Must be a positive integer.
+         * Default is 3600.
+         */
         value?: pulumi.Input<number>;
     }
 
     export interface SiteConnectionDpd {
+        /**
+         * The dead peer detection (DPD) action.
+         * A valid value is clear, hold, restart, disabled, or restart-by-peer.
+         * Default value is hold.
+         */
         action?: pulumi.Input<string>;
+        /**
+         * The dead peer detection (DPD) interval, in seconds.
+         * A valid value is a positive integer.
+         * Default is 30.
+         */
         interval?: pulumi.Input<number>;
+        /**
+         * The dead peer detection (DPD) timeout in seconds.
+         * A valid value is a positive integer that is greater than the DPD interval value.
+         * Default is 120.
+         */
         timeout?: pulumi.Input<number>;
     }
 }

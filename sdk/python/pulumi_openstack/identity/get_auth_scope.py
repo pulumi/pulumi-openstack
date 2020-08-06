@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetAuthScopeResult:
     """
@@ -91,6 +92,8 @@ class GetAuthScopeResult:
         """
         The username of the scope.
         """
+
+
 class AwaitableGetAuthScopeResult(GetAuthScopeResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -112,7 +115,8 @@ class AwaitableGetAuthScopeResult(GetAuthScopeResult):
             user_id=self.user_id,
             user_name=self.user_name)
 
-def get_auth_scope(name=None,region=None,opts=None):
+
+def get_auth_scope(name=None, region=None, opts=None):
     """
     Use this data source to get authentication information about the current
     auth scope in use. This can be used as self-discovery or introspection of
@@ -135,14 +139,12 @@ def get_auth_scope(name=None,region=None,opts=None):
            `region` argument of the provider is used.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['region'] = region
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:identity/getAuthScope:getAuthScope', __args__, opts=opts).value
 
     return AwaitableGetAuthScopeResult(

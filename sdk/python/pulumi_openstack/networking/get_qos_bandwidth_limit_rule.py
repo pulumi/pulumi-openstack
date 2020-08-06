@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetQosBandwidthLimitRuleResult:
     """
@@ -49,6 +50,8 @@ class GetQosBandwidthLimitRuleResult:
         """
         See Argument Reference above.
         """
+
+
 class AwaitableGetQosBandwidthLimitRuleResult(GetQosBandwidthLimitRuleResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -62,7 +65,8 @@ class AwaitableGetQosBandwidthLimitRuleResult(GetQosBandwidthLimitRuleResult):
             qos_policy_id=self.qos_policy_id,
             region=self.region)
 
-def get_qos_bandwidth_limit_rule(max_burst_kbps=None,max_kbps=None,qos_policy_id=None,region=None,opts=None):
+
+def get_qos_bandwidth_limit_rule(max_burst_kbps=None, max_kbps=None, qos_policy_id=None, region=None, opts=None):
     """
     Use this data source to get the ID of an available OpenStack QoS bandwidth limit rule.
 
@@ -75,8 +79,6 @@ def get_qos_bandwidth_limit_rule(max_burst_kbps=None,max_kbps=None,qos_policy_id
            `region` argument of the provider is used.
     """
     __args__ = dict()
-
-
     __args__['maxBurstKbps'] = max_burst_kbps
     __args__['maxKbps'] = max_kbps
     __args__['qosPolicyId'] = qos_policy_id
@@ -84,7 +86,7 @@ def get_qos_bandwidth_limit_rule(max_burst_kbps=None,max_kbps=None,qos_policy_id
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:networking/getQosBandwidthLimitRule:getQosBandwidthLimitRule', __args__, opts=opts).value
 
     return AwaitableGetQosBandwidthLimitRuleResult(

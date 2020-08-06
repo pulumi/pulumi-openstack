@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetUserResult:
     """
@@ -79,6 +80,8 @@ class GetUserResult:
         """
         See Argument Reference above.
         """
+
+
 class AwaitableGetUserResult(GetUserResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -97,7 +100,8 @@ class AwaitableGetUserResult(GetUserResult):
             region=self.region,
             unique_id=self.unique_id)
 
-def get_user(domain_id=None,enabled=None,idp_id=None,name=None,password_expires_at=None,protocol_id=None,region=None,unique_id=None,opts=None):
+
+def get_user(domain_id=None, enabled=None, idp_id=None, name=None, password_expires_at=None, protocol_id=None, region=None, unique_id=None, opts=None):
     """
     Use this data source to get the ID of an OpenStack user.
 
@@ -122,8 +126,6 @@ def get_user(domain_id=None,enabled=None,idp_id=None,name=None,password_expires_
     :param str unique_id: The unique ID of the user.
     """
     __args__ = dict()
-
-
     __args__['domainId'] = domain_id
     __args__['enabled'] = enabled
     __args__['idpId'] = idp_id
@@ -135,7 +137,7 @@ def get_user(domain_id=None,enabled=None,idp_id=None,name=None,password_expires_
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:identity/getUser:getUser', __args__, opts=opts).value
 
     return AwaitableGetUserResult(

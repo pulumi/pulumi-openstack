@@ -43,7 +43,7 @@ import (
 // 		}
 // 		_, err = compute.NewInterfaceAttach(ctx, "ai1", &compute.InterfaceAttachArgs{
 // 			InstanceId: instance1.ID(),
-// 			NetworkId:  pulumi.String(openstack_networking_port_v2.Network_1.Id),
+// 			NetworkId:  pulumi.Any(openstack_networking_port_v2.Network_1.Id),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -82,7 +82,7 @@ import (
 // 		_, err = compute.NewInterfaceAttach(ctx, "ai1", &compute.InterfaceAttachArgs{
 // 			FixedIp:    pulumi.String("10.0.10.10"),
 // 			InstanceId: instance1.ID(),
-// 			NetworkId:  pulumi.String(openstack_networking_port_v2.Network_1.Id),
+// 			NetworkId:  pulumi.Any(openstack_networking_port_v2.Network_1.Id),
 // 		})
 // 		if err != nil {
 // 			return err

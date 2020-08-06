@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetPortIdsResult:
     """
@@ -73,6 +74,8 @@ class GetPortIdsResult:
         if tenant_id and not isinstance(tenant_id, str):
             raise TypeError("Expected argument 'tenant_id' to be a str")
         __self__.tenant_id = tenant_id
+
+
 class AwaitableGetPortIdsResult(GetPortIdsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -99,7 +102,8 @@ class AwaitableGetPortIdsResult(GetPortIdsResult):
             tags=self.tags,
             tenant_id=self.tenant_id)
 
-def get_port_ids(admin_state_up=None,description=None,device_id=None,device_owner=None,dns_name=None,fixed_ip=None,mac_address=None,name=None,network_id=None,project_id=None,region=None,security_group_ids=None,sort_direction=None,sort_key=None,status=None,tags=None,tenant_id=None,opts=None):
+
+def get_port_ids(admin_state_up=None, description=None, device_id=None, device_owner=None, dns_name=None, fixed_ip=None, mac_address=None, name=None, network_id=None, project_id=None, region=None, security_group_ids=None, sort_direction=None, sort_key=None, status=None, tags=None, tenant_id=None, opts=None):
     """
     Use this data source to get a list of Openstack Port IDs matching the
     specified criteria.
@@ -134,8 +138,6 @@ def get_port_ids(admin_state_up=None,description=None,device_id=None,device_owne
     :param list tags: The list of port tags to filter.
     """
     __args__ = dict()
-
-
     __args__['adminStateUp'] = admin_state_up
     __args__['description'] = description
     __args__['deviceId'] = device_id
@@ -156,7 +158,7 @@ def get_port_ids(admin_state_up=None,description=None,device_id=None,device_owne
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:networking/getPortIds:getPortIds', __args__, opts=opts).value
 
     return AwaitableGetPortIdsResult(

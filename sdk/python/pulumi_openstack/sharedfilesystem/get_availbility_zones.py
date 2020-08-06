@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetAvailbilityZonesResult:
     """
@@ -31,6 +32,8 @@ class GetAvailbilityZonesResult:
         """
         See Argument Reference above.
         """
+
+
 class AwaitableGetAvailbilityZonesResult(GetAvailbilityZonesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -41,7 +44,8 @@ class AwaitableGetAvailbilityZonesResult(GetAvailbilityZonesResult):
             names=self.names,
             region=self.region)
 
-def get_availbility_zones(region=None,opts=None):
+
+def get_availbility_zones(region=None, opts=None):
     """
     Use this data source to get a list of Shared File System availability zones
     from OpenStack
@@ -60,13 +64,11 @@ def get_availbility_zones(region=None,opts=None):
            client. If omitted, the `region` argument of the provider is used.
     """
     __args__ = dict()
-
-
     __args__['region'] = region
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:sharedfilesystem/getAvailbilityZones:getAvailbilityZones', __args__, opts=opts).value
 
     return AwaitableGetAvailbilityZonesResult(

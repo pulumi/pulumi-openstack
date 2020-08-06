@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetQosPolicyResult:
     """
@@ -79,6 +80,8 @@ class GetQosPolicyResult:
         """
         The time at which QoS policy was created.
         """
+
+
 class AwaitableGetQosPolicyResult(GetQosPolicyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -98,7 +101,8 @@ class AwaitableGetQosPolicyResult(GetQosPolicyResult):
             tags=self.tags,
             updated_at=self.updated_at)
 
-def get_qos_policy(description=None,is_default=None,name=None,project_id=None,region=None,shared=None,tags=None,opts=None):
+
+def get_qos_policy(description=None, is_default=None, name=None, project_id=None, region=None, shared=None, tags=None, opts=None):
     """
     Use this data source to get the ID of an available OpenStack QoS policy.
 
@@ -123,8 +127,6 @@ def get_qos_policy(description=None,is_default=None,name=None,project_id=None,re
     :param list tags: The list of QoS policy tags to filter.
     """
     __args__ = dict()
-
-
     __args__['description'] = description
     __args__['isDefault'] = is_default
     __args__['name'] = name
@@ -135,7 +137,7 @@ def get_qos_policy(description=None,is_default=None,name=None,project_id=None,re
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:networking/getQosPolicy:getQosPolicy', __args__, opts=opts).value
 
     return AwaitableGetQosPolicyResult(

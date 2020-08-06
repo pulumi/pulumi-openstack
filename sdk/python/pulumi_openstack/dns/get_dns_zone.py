@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetDnsZoneResult:
     """
@@ -115,6 +116,8 @@ class GetDnsZoneResult:
         """
         The version of the zone.
         """
+
+
 class AwaitableGetDnsZoneResult(GetDnsZoneResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -139,7 +142,8 @@ class AwaitableGetDnsZoneResult(GetDnsZoneResult):
             updated_at=self.updated_at,
             version=self.version)
 
-def get_dns_zone(attributes=None,created_at=None,description=None,email=None,masters=None,name=None,pool_id=None,project_id=None,region=None,serial=None,status=None,transferred_at=None,ttl=None,type=None,updated_at=None,version=None,opts=None):
+
+def get_dns_zone(attributes=None, created_at=None, description=None, email=None, masters=None, name=None, pool_id=None, project_id=None, region=None, serial=None, status=None, transferred_at=None, ttl=None, type=None, updated_at=None, version=None, opts=None):
     """
     Use this data source to get the ID of an available OpenStack DNS zone.
 
@@ -173,8 +177,6 @@ def get_dns_zone(attributes=None,created_at=None,description=None,email=None,mas
     :param float version: The version of the zone.
     """
     __args__ = dict()
-
-
     __args__['attributes'] = attributes
     __args__['createdAt'] = created_at
     __args__['description'] = description
@@ -194,7 +196,7 @@ def get_dns_zone(attributes=None,created_at=None,description=None,email=None,mas
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:dns/getDnsZone:getDnsZone', __args__, opts=opts).value
 
     return AwaitableGetDnsZoneResult(

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Listener(pulumi.CustomResource):
@@ -14,6 +14,11 @@ class Listener(pulumi.CustomResource):
     """
     The administrative state of the Listener.
     A valid value is true (UP) or false (DOWN).
+    """
+    allowed_cidrs: pulumi.Output[list]
+    """
+    A list of CIDR blocks that are permitted to connect to this listener, denying
+    all other source addresses. If not present, defaults to allow all.
     """
     connection_limit: pulumi.Output[float]
     """
@@ -101,7 +106,7 @@ class Listener(pulumi.CustomResource):
     The time in milliseconds, to wait for additional
     TCP packets for content inspection.
     """
-    def __init__(__self__, resource_name, opts=None, admin_state_up=None, connection_limit=None, default_pool_id=None, default_tls_container_ref=None, description=None, insert_headers=None, loadbalancer_id=None, name=None, protocol=None, protocol_port=None, region=None, sni_container_refs=None, tenant_id=None, timeout_client_data=None, timeout_member_connect=None, timeout_member_data=None, timeout_tcp_inspect=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, admin_state_up=None, allowed_cidrs=None, connection_limit=None, default_pool_id=None, default_tls_container_ref=None, description=None, insert_headers=None, loadbalancer_id=None, name=None, protocol=None, protocol_port=None, region=None, sni_container_refs=None, tenant_id=None, timeout_client_data=None, timeout_member_connect=None, timeout_member_data=None, timeout_tcp_inspect=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a V2 listener resource within OpenStack.
 
@@ -124,6 +129,8 @@ class Listener(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] admin_state_up: The administrative state of the Listener.
                A valid value is true (UP) or false (DOWN).
+        :param pulumi.Input[list] allowed_cidrs: A list of CIDR blocks that are permitted to connect to this listener, denying
+               all other source addresses. If not present, defaults to allow all.
         :param pulumi.Input[float] connection_limit: The maximum number of connections allowed
                for the Listener.
         :param pulumi.Input[str] default_pool_id: The ID of the default pool with which the
@@ -174,13 +181,14 @@ class Listener(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
             __props__['admin_state_up'] = admin_state_up
+            __props__['allowed_cidrs'] = allowed_cidrs
             __props__['connection_limit'] = connection_limit
             __props__['default_pool_id'] = default_pool_id
             __props__['default_tls_container_ref'] = default_tls_container_ref
@@ -210,7 +218,7 @@ class Listener(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, admin_state_up=None, connection_limit=None, default_pool_id=None, default_tls_container_ref=None, description=None, insert_headers=None, loadbalancer_id=None, name=None, protocol=None, protocol_port=None, region=None, sni_container_refs=None, tenant_id=None, timeout_client_data=None, timeout_member_connect=None, timeout_member_data=None, timeout_tcp_inspect=None):
+    def get(resource_name, id, opts=None, admin_state_up=None, allowed_cidrs=None, connection_limit=None, default_pool_id=None, default_tls_container_ref=None, description=None, insert_headers=None, loadbalancer_id=None, name=None, protocol=None, protocol_port=None, region=None, sni_container_refs=None, tenant_id=None, timeout_client_data=None, timeout_member_connect=None, timeout_member_data=None, timeout_tcp_inspect=None):
         """
         Get an existing Listener resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -220,6 +228,8 @@ class Listener(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] admin_state_up: The administrative state of the Listener.
                A valid value is true (UP) or false (DOWN).
+        :param pulumi.Input[list] allowed_cidrs: A list of CIDR blocks that are permitted to connect to this listener, denying
+               all other source addresses. If not present, defaults to allow all.
         :param pulumi.Input[float] connection_limit: The maximum number of connections allowed
                for the Listener.
         :param pulumi.Input[str] default_pool_id: The ID of the default pool with which the
@@ -264,6 +274,7 @@ class Listener(pulumi.CustomResource):
         __props__ = dict()
 
         __props__["admin_state_up"] = admin_state_up
+        __props__["allowed_cidrs"] = allowed_cidrs
         __props__["connection_limit"] = connection_limit
         __props__["default_pool_id"] = default_pool_id
         __props__["default_tls_container_ref"] = default_tls_container_ref
@@ -283,7 +294,7 @@ class Listener(pulumi.CustomResource):
         return Listener(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

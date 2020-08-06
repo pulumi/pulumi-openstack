@@ -47,6 +47,13 @@ namespace Pulumi.OpenStack.LoadBalancer
         public Output<bool?> AdminStateUp { get; private set; } = null!;
 
         /// <summary>
+        /// A list of CIDR blocks that are permitted to connect to this listener, denying
+        /// all other source addresses. If not present, defaults to allow all.
+        /// </summary>
+        [Output("allowedCidrs")]
+        public Output<ImmutableArray<string>> AllowedCidrs { get; private set; } = null!;
+
+        /// <summary>
         /// The maximum number of connections allowed
         /// for the Listener.
         /// </summary>
@@ -217,6 +224,19 @@ namespace Pulumi.OpenStack.LoadBalancer
         [Input("adminStateUp")]
         public Input<bool>? AdminStateUp { get; set; }
 
+        [Input("allowedCidrs")]
+        private InputList<string>? _allowedCidrs;
+
+        /// <summary>
+        /// A list of CIDR blocks that are permitted to connect to this listener, denying
+        /// all other source addresses. If not present, defaults to allow all.
+        /// </summary>
+        public InputList<string> AllowedCidrs
+        {
+            get => _allowedCidrs ?? (_allowedCidrs = new InputList<string>());
+            set => _allowedCidrs = value;
+        }
+
         /// <summary>
         /// The maximum number of connections allowed
         /// for the Listener.
@@ -360,6 +380,19 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// </summary>
         [Input("adminStateUp")]
         public Input<bool>? AdminStateUp { get; set; }
+
+        [Input("allowedCidrs")]
+        private InputList<string>? _allowedCidrs;
+
+        /// <summary>
+        /// A list of CIDR blocks that are permitted to connect to this listener, denying
+        /// all other source addresses. If not present, defaults to allow all.
+        /// </summary>
+        public InputList<string> AllowedCidrs
+        {
+            get => _allowedCidrs ?? (_allowedCidrs = new InputList<string>());
+            set => _allowedCidrs = value;
+        }
 
         /// <summary>
         /// The maximum number of connections allowed

@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetContainerResult:
     """
@@ -88,6 +89,8 @@ class GetContainerResult:
         """
         The date the container ACL was last updated.
         """
+
+
 class AwaitableGetContainerResult(GetContainerResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -107,7 +110,8 @@ class AwaitableGetContainerResult(GetContainerResult):
             type=self.type,
             updated_at=self.updated_at)
 
-def get_container(name=None,region=None,opts=None):
+
+def get_container(name=None, region=None, opts=None):
     """
     Use this data source to get the ID of an available Barbican container.
 
@@ -127,14 +131,12 @@ def get_container(name=None,region=None,opts=None):
            argument of the provider is used.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['region'] = region
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:keymanager/getContainer:getContainer', __args__, opts=opts).value
 
     return AwaitableGetContainerResult(

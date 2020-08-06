@@ -47,10 +47,6 @@ type IkePolicy struct {
 	// Changing this updates the existing policy.
 	IkeVersion pulumi.StringPtrOutput `pulumi:"ikeVersion"`
 	// The lifetime of the security association. Consists of Unit and Value.
-	// - `unit` - (Optional) The units for the lifetime of the security association. Can be either seconds or kilobytes.
-	//   Default is seconds.
-	// - `value` - (Optional) The value for the lifetime of the security association. Must be a positive integer.
-	//   Default is 3600.
 	Lifetimes IkePolicyLifetimeArrayOutput `pulumi:"lifetimes"`
 	// The name of the policy. Changing this updates the name of
 	// the existing policy.
@@ -114,10 +110,6 @@ type ikePolicyState struct {
 	// Changing this updates the existing policy.
 	IkeVersion *string `pulumi:"ikeVersion"`
 	// The lifetime of the security association. Consists of Unit and Value.
-	// - `unit` - (Optional) The units for the lifetime of the security association. Can be either seconds or kilobytes.
-	//   Default is seconds.
-	// - `value` - (Optional) The value for the lifetime of the security association. Must be a positive integer.
-	//   Default is 3600.
 	Lifetimes []IkePolicyLifetime `pulumi:"lifetimes"`
 	// The name of the policy. Changing this updates the name of
 	// the existing policy.
@@ -154,10 +146,6 @@ type IkePolicyState struct {
 	// Changing this updates the existing policy.
 	IkeVersion pulumi.StringPtrInput
 	// The lifetime of the security association. Consists of Unit and Value.
-	// - `unit` - (Optional) The units for the lifetime of the security association. Can be either seconds or kilobytes.
-	//   Default is seconds.
-	// - `value` - (Optional) The value for the lifetime of the security association. Must be a positive integer.
-	//   Default is 3600.
 	Lifetimes IkePolicyLifetimeArrayInput
 	// The name of the policy. Changing this updates the name of
 	// the existing policy.
@@ -198,10 +186,6 @@ type ikePolicyArgs struct {
 	// Changing this updates the existing policy.
 	IkeVersion *string `pulumi:"ikeVersion"`
 	// The lifetime of the security association. Consists of Unit and Value.
-	// - `unit` - (Optional) The units for the lifetime of the security association. Can be either seconds or kilobytes.
-	//   Default is seconds.
-	// - `value` - (Optional) The value for the lifetime of the security association. Must be a positive integer.
-	//   Default is 3600.
 	Lifetimes []IkePolicyLifetime `pulumi:"lifetimes"`
 	// The name of the policy. Changing this updates the name of
 	// the existing policy.
@@ -239,10 +223,6 @@ type IkePolicyArgs struct {
 	// Changing this updates the existing policy.
 	IkeVersion pulumi.StringPtrInput
 	// The lifetime of the security association. Consists of Unit and Value.
-	// - `unit` - (Optional) The units for the lifetime of the security association. Can be either seconds or kilobytes.
-	//   Default is seconds.
-	// - `value` - (Optional) The value for the lifetime of the security association. Must be a positive integer.
-	//   Default is 3600.
 	Lifetimes IkePolicyLifetimeArrayInput
 	// The name of the policy. Changing this updates the name of
 	// the existing policy.

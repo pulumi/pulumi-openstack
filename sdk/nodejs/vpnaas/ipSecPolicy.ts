@@ -68,10 +68,6 @@ export class IpSecPolicy extends pulumi.CustomResource {
     public readonly encryptionAlgorithm!: pulumi.Output<string>;
     /**
      * The lifetime of the security association. Consists of Unit and Value.
-     * - `unit` - (Optional) The units for the lifetime of the security association. Can be either seconds or kilobytes.
-     * Default is seconds.
-     * - `value` - (Optional) The value for the lifetime of the security association. Must be a positive integer.
-     * Default is 3600.
      */
     public readonly lifetimes!: pulumi.Output<outputs.vpnaas.IpSecPolicyLifetime[]>;
     /**
@@ -180,10 +176,6 @@ export interface IpSecPolicyState {
     readonly encryptionAlgorithm?: pulumi.Input<string>;
     /**
      * The lifetime of the security association. Consists of Unit and Value.
-     * - `unit` - (Optional) The units for the lifetime of the security association. Can be either seconds or kilobytes.
-     * Default is seconds.
-     * - `value` - (Optional) The value for the lifetime of the security association. Must be a positive integer.
-     * Default is 3600.
      */
     readonly lifetimes?: pulumi.Input<pulumi.Input<inputs.vpnaas.IpSecPolicyLifetime>[]>;
     /**
@@ -245,10 +237,6 @@ export interface IpSecPolicyArgs {
     readonly encryptionAlgorithm?: pulumi.Input<string>;
     /**
      * The lifetime of the security association. Consists of Unit and Value.
-     * - `unit` - (Optional) The units for the lifetime of the security association. Can be either seconds or kilobytes.
-     * Default is seconds.
-     * - `value` - (Optional) The value for the lifetime of the security association. Must be a positive integer.
-     * Default is 3600.
      */
     readonly lifetimes?: pulumi.Input<pulumi.Input<inputs.vpnaas.IpSecPolicyLifetime>[]>;
     /**

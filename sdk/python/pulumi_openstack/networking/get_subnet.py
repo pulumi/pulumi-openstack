@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetSubnetResult:
     """
@@ -97,6 +98,8 @@ class GetSubnetResult:
         if tenant_id and not isinstance(tenant_id, str):
             raise TypeError("Expected argument 'tenant_id' to be a str")
         __self__.tenant_id = tenant_id
+
+
 class AwaitableGetSubnetResult(GetSubnetResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -125,7 +128,8 @@ class AwaitableGetSubnetResult(GetSubnetResult):
             tags=self.tags,
             tenant_id=self.tenant_id)
 
-def get_subnet(cidr=None,description=None,dhcp_disabled=None,dhcp_enabled=None,gateway_ip=None,ip_version=None,ipv6_address_mode=None,ipv6_ra_mode=None,name=None,network_id=None,region=None,subnet_id=None,subnetpool_id=None,tags=None,tenant_id=None,opts=None):
+
+def get_subnet(cidr=None, description=None, dhcp_disabled=None, dhcp_enabled=None, gateway_ip=None, ip_version=None, ipv6_address_mode=None, ipv6_ra_mode=None, name=None, network_id=None, region=None, subnet_id=None, subnetpool_id=None, tags=None, tenant_id=None, opts=None):
     """
     Use this data source to get the ID of an available OpenStack subnet.
 
@@ -160,8 +164,6 @@ def get_subnet(cidr=None,description=None,dhcp_disabled=None,dhcp_enabled=None,g
     :param str tenant_id: The owner of the subnet.
     """
     __args__ = dict()
-
-
     __args__['cidr'] = cidr
     __args__['description'] = description
     __args__['dhcpDisabled'] = dhcp_disabled
@@ -180,7 +182,7 @@ def get_subnet(cidr=None,description=None,dhcp_disabled=None,dhcp_enabled=None,g
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:networking/getSubnet:getSubnet', __args__, opts=opts).value
 
     return AwaitableGetSubnetResult(

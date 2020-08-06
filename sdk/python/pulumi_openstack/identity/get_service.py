@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetServiceResult:
     """
@@ -49,6 +50,8 @@ class GetServiceResult:
         """
         See Argument Reference above.
         """
+
+
 class AwaitableGetServiceResult(GetServiceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -62,7 +65,8 @@ class AwaitableGetServiceResult(GetServiceResult):
             region=self.region,
             type=self.type)
 
-def get_service(enabled=None,name=None,region=None,type=None,opts=None):
+
+def get_service(enabled=None, name=None, region=None, type=None, opts=None):
     """
     Use this data source to get the ID of an OpenStack service.
 
@@ -85,8 +89,6 @@ def get_service(enabled=None,name=None,region=None,type=None,opts=None):
     :param str type: The service type.
     """
     __args__ = dict()
-
-
     __args__['enabled'] = enabled
     __args__['name'] = name
     __args__['region'] = region
@@ -94,7 +96,7 @@ def get_service(enabled=None,name=None,region=None,type=None,opts=None):
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:identity/getService:getService', __args__, opts=opts).value
 
     return AwaitableGetServiceResult(

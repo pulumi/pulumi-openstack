@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetShareResult:
     """
@@ -105,6 +106,8 @@ class GetShareResult:
         """
         See Argument Reference above.
         """
+
+
 class AwaitableGetShareResult(GetShareResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -127,7 +130,8 @@ class AwaitableGetShareResult(GetShareResult):
             snapshot_id=self.snapshot_id,
             status=self.status)
 
-def get_share(description=None,export_location_path=None,is_public=None,metadata=None,name=None,region=None,share_network_id=None,snapshot_id=None,status=None,opts=None):
+
+def get_share(description=None, export_location_path=None, is_public=None, metadata=None, name=None, region=None, share_network_id=None, snapshot_id=None, status=None, opts=None):
     """
     Use this data source to get the ID of an available Shared File System share.
 
@@ -159,8 +163,6 @@ def get_share(description=None,export_location_path=None,is_public=None,metadata
            `shrinking_possible_data_loss_error`.
     """
     __args__ = dict()
-
-
     __args__['description'] = description
     __args__['exportLocationPath'] = export_location_path
     __args__['isPublic'] = is_public
@@ -173,7 +175,7 @@ def get_share(description=None,export_location_path=None,is_public=None,metadata
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:sharedfilesystem/getShare:getShare', __args__, opts=opts).value
 
     return AwaitableGetShareResult(

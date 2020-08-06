@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetShareNetworkResult:
     """
@@ -92,6 +93,8 @@ class GetShareNetworkResult:
         """
         See Argument Reference above.
         """
+
+
 class AwaitableGetShareNetworkResult(GetShareNetworkResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -112,7 +115,8 @@ class AwaitableGetShareNetworkResult(GetShareNetworkResult):
             security_service_ids=self.security_service_ids,
             segmentation_id=self.segmentation_id)
 
-def get_share_network(description=None,ip_version=None,name=None,network_type=None,neutron_net_id=None,neutron_subnet_id=None,region=None,security_service_id=None,segmentation_id=None,opts=None):
+
+def get_share_network(description=None, ip_version=None, name=None, network_type=None, neutron_net_id=None, neutron_subnet_id=None, region=None, security_service_id=None, segmentation_id=None, opts=None):
     """
     Use this data source to get the ID of an available Shared File System share network.
 
@@ -141,8 +145,6 @@ def get_share_network(description=None,ip_version=None,name=None,network_type=No
     :param float segmentation_id: The share network segmentation ID.
     """
     __args__ = dict()
-
-
     __args__['description'] = description
     __args__['ipVersion'] = ip_version
     __args__['name'] = name
@@ -155,7 +157,7 @@ def get_share_network(description=None,ip_version=None,name=None,network_type=No
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:sharedfilesystem/getShareNetwork:getShareNetwork', __args__, opts=opts).value
 
     return AwaitableGetShareNetworkResult(

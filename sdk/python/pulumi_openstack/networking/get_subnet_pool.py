@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetSubnetPoolResult:
     """
@@ -122,6 +123,8 @@ class GetSubnetPoolResult:
         """
         The time at which subnetpool was created.
         """
+
+
 class AwaitableGetSubnetPoolResult(GetSubnetPoolResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -148,7 +151,8 @@ class AwaitableGetSubnetPoolResult(GetSubnetPoolResult):
             tags=self.tags,
             updated_at=self.updated_at)
 
-def get_subnet_pool(address_scope_id=None,default_prefixlen=None,default_quota=None,description=None,ip_version=None,is_default=None,max_prefixlen=None,min_prefixlen=None,name=None,project_id=None,region=None,shared=None,tags=None,opts=None):
+
+def get_subnet_pool(address_scope_id=None, default_prefixlen=None, default_quota=None, description=None, ip_version=None, is_default=None, max_prefixlen=None, min_prefixlen=None, name=None, project_id=None, region=None, shared=None, tags=None, opts=None):
     """
     Use this data source to get the ID of an available OpenStack subnetpool.
 
@@ -182,8 +186,6 @@ def get_subnet_pool(address_scope_id=None,default_prefixlen=None,default_quota=N
     :param list tags: The list of subnetpool tags to filter.
     """
     __args__ = dict()
-
-
     __args__['addressScopeId'] = address_scope_id
     __args__['defaultPrefixlen'] = default_prefixlen
     __args__['defaultQuota'] = default_quota
@@ -200,7 +202,7 @@ def get_subnet_pool(address_scope_id=None,default_prefixlen=None,default_quota=N
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:networking/getSubnetPool:getSubnetPool', __args__, opts=opts).value
 
     return AwaitableGetSubnetPoolResult(

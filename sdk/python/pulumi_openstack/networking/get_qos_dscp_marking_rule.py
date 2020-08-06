@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetQosDscpMarkingRuleResult:
     """
@@ -37,6 +38,8 @@ class GetQosDscpMarkingRuleResult:
         """
         See Argument Reference above.
         """
+
+
 class AwaitableGetQosDscpMarkingRuleResult(GetQosDscpMarkingRuleResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -48,7 +51,8 @@ class AwaitableGetQosDscpMarkingRuleResult(GetQosDscpMarkingRuleResult):
             qos_policy_id=self.qos_policy_id,
             region=self.region)
 
-def get_qos_dscp_marking_rule(dscp_mark=None,qos_policy_id=None,region=None,opts=None):
+
+def get_qos_dscp_marking_rule(dscp_mark=None, qos_policy_id=None, region=None, opts=None):
     """
     Use this data source to get the ID of an available OpenStack QoS DSCP marking rule.
 
@@ -60,15 +64,13 @@ def get_qos_dscp_marking_rule(dscp_mark=None,qos_policy_id=None,region=None,opts
            `region` argument of the provider is used.
     """
     __args__ = dict()
-
-
     __args__['dscpMark'] = dscp_mark
     __args__['qosPolicyId'] = qos_policy_id
     __args__['region'] = region
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:networking/getQosDscpMarkingRule:getQosDscpMarkingRule', __args__, opts=opts).value
 
     return AwaitableGetQosDscpMarkingRuleResult(

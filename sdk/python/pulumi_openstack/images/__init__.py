@@ -4,6 +4,7 @@
 
 # Export this package's modules as members:
 from .get_image import *
+from .get_image_ids import *
 from .image import *
 from .image_access import *
 from .image_access_accept import *

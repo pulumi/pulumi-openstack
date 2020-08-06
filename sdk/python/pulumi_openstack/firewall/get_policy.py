@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetPolicyResult:
     """
@@ -67,6 +68,8 @@ class GetPolicyResult:
         """
         See Argument Reference above.
         """
+
+
 class AwaitableGetPolicyResult(GetPolicyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -83,7 +86,8 @@ class AwaitableGetPolicyResult(GetPolicyResult):
             shared=self.shared,
             tenant_id=self.tenant_id)
 
-def get_policy(name=None,policy_id=None,region=None,tenant_id=None,opts=None):
+
+def get_policy(name=None, policy_id=None, region=None, tenant_id=None, opts=None):
     """
     Use this data source to get firewall policy information of an available OpenStack firewall policy.
 
@@ -105,8 +109,6 @@ def get_policy(name=None,policy_id=None,region=None,tenant_id=None,opts=None):
     :param str tenant_id: The owner of the firewall policy.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['policyId'] = policy_id
     __args__['region'] = region
@@ -114,7 +116,7 @@ def get_policy(name=None,policy_id=None,region=None,tenant_id=None,opts=None):
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:firewall/getPolicy:getPolicy', __args__, opts=opts).value
 
     return AwaitableGetPolicyResult(

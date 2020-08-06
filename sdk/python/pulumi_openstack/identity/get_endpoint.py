@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetEndpointResult:
     """
@@ -67,6 +68,8 @@ class GetEndpointResult:
         """
         The endpoint URL.
         """
+
+
 class AwaitableGetEndpointResult(GetEndpointResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -83,7 +86,8 @@ class AwaitableGetEndpointResult(GetEndpointResult):
             service_type=self.service_type,
             url=self.url)
 
-def get_endpoint(endpoint_region=None,interface=None,name=None,region=None,service_id=None,service_name=None,service_type=None,opts=None):
+
+def get_endpoint(endpoint_region=None, interface=None, name=None, region=None, service_id=None, service_name=None, service_type=None, opts=None):
     """
     Use this data source to get the ID of an OpenStack endpoint.
 
@@ -111,8 +115,6 @@ def get_endpoint(endpoint_region=None,interface=None,name=None,region=None,servi
     :param str service_type: The service type of the endpoint.
     """
     __args__ = dict()
-
-
     __args__['endpointRegion'] = endpoint_region
     __args__['interface'] = interface
     __args__['name'] = name
@@ -123,7 +125,7 @@ def get_endpoint(endpoint_region=None,interface=None,name=None,region=None,servi
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:identity/getEndpoint:getEndpoint', __args__, opts=opts).value
 
     return AwaitableGetEndpointResult(

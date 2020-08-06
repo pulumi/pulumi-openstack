@@ -27,7 +27,7 @@ import (
 // 		_, err := loadbalancer.NewMonitor(ctx, "monitor1", &loadbalancer.MonitorArgs{
 // 			Delay:      pulumi.Int(20),
 // 			MaxRetries: pulumi.Int(5),
-// 			PoolId:     pulumi.String(openstack_lb_pool_v2.Pool_1.Id),
+// 			PoolId:     pulumi.Any(openstack_lb_pool_v2.Pool_1.Id),
 // 			Timeout:    pulumi.Int(10),
 // 			Type:       pulumi.String("PING"),
 // 		})
