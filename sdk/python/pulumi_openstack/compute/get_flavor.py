@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetFlavorResult:
     """
@@ -58,6 +59,8 @@ class GetFlavorResult:
         if vcpus and not isinstance(vcpus, float):
             raise TypeError("Expected argument 'vcpus' to be a float")
         __self__.vcpus = vcpus
+
+
 class AwaitableGetFlavorResult(GetFlavorResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -78,7 +81,8 @@ class AwaitableGetFlavorResult(GetFlavorResult):
             swap=self.swap,
             vcpus=self.vcpus)
 
-def get_flavor(disk=None,flavor_id=None,is_public=None,min_disk=None,min_ram=None,name=None,ram=None,region=None,rx_tx_factor=None,swap=None,vcpus=None,opts=None):
+
+def get_flavor(disk=None, flavor_id=None, is_public=None, min_disk=None, min_ram=None, name=None, ram=None, region=None, rx_tx_factor=None, swap=None, vcpus=None, opts=None):
     """
     Use this data source to get the ID of an available OpenStack flavor.
 
@@ -110,8 +114,6 @@ def get_flavor(disk=None,flavor_id=None,is_public=None,min_disk=None,min_ram=Non
     :param float vcpus: The amount of VCPUs.
     """
     __args__ = dict()
-
-
     __args__['disk'] = disk
     __args__['flavorId'] = flavor_id
     __args__['isPublic'] = is_public
@@ -126,7 +128,7 @@ def get_flavor(disk=None,flavor_id=None,is_public=None,min_disk=None,min_ram=Non
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:compute/getFlavor:getFlavor', __args__, opts=opts).value
 
     return AwaitableGetFlavorResult(

@@ -935,17 +935,40 @@ export namespace sharedfilesystem {
 export namespace vpnaas {
     export interface IkePolicyLifetime {
         units: string;
+        /**
+         * The value for the lifetime of the security association. Must be a positive integer.
+         * Default is 3600.
+         */
         value: number;
     }
 
     export interface IpSecPolicyLifetime {
         units: string;
+        /**
+         * The value for the lifetime of the security association. Must be a positive integer.
+         * Default is 3600.
+         */
         value: number;
     }
 
     export interface SiteConnectionDpd {
+        /**
+         * The dead peer detection (DPD) action.
+         * A valid value is clear, hold, restart, disabled, or restart-by-peer.
+         * Default value is hold.
+         */
         action: string;
+        /**
+         * The dead peer detection (DPD) interval, in seconds.
+         * A valid value is a positive integer.
+         * Default is 30.
+         */
         interval: number;
+        /**
+         * The dead peer detection (DPD) timeout in seconds.
+         * A valid value is a positive integer that is greater than the DPD interval value.
+         * Default is 120.
+         */
         timeout: number;
     }
 }

@@ -13,8 +13,23 @@ namespace Pulumi.OpenStack.VPNaaS.Outputs
     [OutputType]
     public sealed class SiteConnectionDpd
     {
+        /// <summary>
+        /// The dead peer detection (DPD) action.
+        /// A valid value is clear, hold, restart, disabled, or restart-by-peer.
+        /// Default value is hold.
+        /// </summary>
         public readonly string? Action;
+        /// <summary>
+        /// The dead peer detection (DPD) interval, in seconds.
+        /// A valid value is a positive integer.
+        /// Default is 30.
+        /// </summary>
         public readonly int? Interval;
+        /// <summary>
+        /// The dead peer detection (DPD) timeout in seconds.
+        /// A valid value is a positive integer that is greater than the DPD interval value.
+        /// Default is 120.
+        /// </summary>
         public readonly int? Timeout;
 
         [OutputConstructor]

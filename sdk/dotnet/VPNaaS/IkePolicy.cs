@@ -62,10 +62,6 @@ namespace Pulumi.OpenStack.VPNaaS
 
         /// <summary>
         /// The lifetime of the security association. Consists of Unit and Value.
-        /// - `unit` - (Optional) The units for the lifetime of the security association. Can be either seconds or kilobytes.
-        /// Default is seconds.
-        /// - `value` - (Optional) The value for the lifetime of the security association. Must be a positive integer.
-        /// Default is 3600.
         /// </summary>
         [Output("lifetimes")]
         public Output<ImmutableArray<Outputs.IkePolicyLifetime>> Lifetimes { get; private set; } = null!;
@@ -192,10 +188,6 @@ namespace Pulumi.OpenStack.VPNaaS
 
         /// <summary>
         /// The lifetime of the security association. Consists of Unit and Value.
-        /// - `unit` - (Optional) The units for the lifetime of the security association. Can be either seconds or kilobytes.
-        /// Default is seconds.
-        /// - `value` - (Optional) The value for the lifetime of the security association. Must be a positive integer.
-        /// Default is 3600.
         /// </summary>
         public InputList<Inputs.IkePolicyLifetimeArgs> Lifetimes
         {
@@ -292,10 +284,6 @@ namespace Pulumi.OpenStack.VPNaaS
 
         /// <summary>
         /// The lifetime of the security association. Consists of Unit and Value.
-        /// - `unit` - (Optional) The units for the lifetime of the security association. Can be either seconds or kilobytes.
-        /// Default is seconds.
-        /// - `value` - (Optional) The value for the lifetime of the security association. Must be a positive integer.
-        /// Default is 3600.
         /// </summary>
         public InputList<Inputs.IkePolicyLifetimeGetArgs> Lifetimes
         {

@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetProjectResult:
     """
@@ -67,6 +68,8 @@ class GetProjectResult:
         """
         See Argument Reference above.
         """
+
+
 class AwaitableGetProjectResult(GetProjectResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -83,7 +86,8 @@ class AwaitableGetProjectResult(GetProjectResult):
             region=self.region,
             tags=self.tags)
 
-def get_project(domain_id=None,enabled=None,is_domain=None,name=None,parent_id=None,region=None,opts=None):
+
+def get_project(domain_id=None, enabled=None, is_domain=None, name=None, parent_id=None, region=None, opts=None):
     """
     Use this data source to get the ID of an OpenStack project.
 
@@ -107,8 +111,6 @@ def get_project(domain_id=None,enabled=None,is_domain=None,name=None,parent_id=N
     :param str region: The region the project is located in.
     """
     __args__ = dict()
-
-
     __args__['domainId'] = domain_id
     __args__['enabled'] = enabled
     __args__['isDomain'] = is_domain
@@ -118,7 +120,7 @@ def get_project(domain_id=None,enabled=None,is_domain=None,name=None,parent_id=N
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:identity/getProject:getProject', __args__, opts=opts).value
 
     return AwaitableGetProjectResult(

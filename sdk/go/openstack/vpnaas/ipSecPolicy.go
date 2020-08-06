@@ -47,10 +47,6 @@ type IpSecPolicy struct {
 	// The default value is aes-128. Changing this updates the existing policy.
 	EncryptionAlgorithm pulumi.StringOutput `pulumi:"encryptionAlgorithm"`
 	// The lifetime of the security association. Consists of Unit and Value.
-	// - `unit` - (Optional) The units for the lifetime of the security association. Can be either seconds or kilobytes.
-	//   Default is seconds.
-	// - `value` - (Optional) The value for the lifetime of the security association. Must be a positive integer.
-	//   Default is 3600.
 	Lifetimes IpSecPolicyLifetimeArrayOutput `pulumi:"lifetimes"`
 	// The name of the policy. Changing this updates the name of
 	// the existing policy.
@@ -114,10 +110,6 @@ type ipSecPolicyState struct {
 	// The default value is aes-128. Changing this updates the existing policy.
 	EncryptionAlgorithm *string `pulumi:"encryptionAlgorithm"`
 	// The lifetime of the security association. Consists of Unit and Value.
-	// - `unit` - (Optional) The units for the lifetime of the security association. Can be either seconds or kilobytes.
-	//   Default is seconds.
-	// - `value` - (Optional) The value for the lifetime of the security association. Must be a positive integer.
-	//   Default is 3600.
 	Lifetimes []IpSecPolicyLifetime `pulumi:"lifetimes"`
 	// The name of the policy. Changing this updates the name of
 	// the existing policy.
@@ -154,10 +146,6 @@ type IpSecPolicyState struct {
 	// The default value is aes-128. Changing this updates the existing policy.
 	EncryptionAlgorithm pulumi.StringPtrInput
 	// The lifetime of the security association. Consists of Unit and Value.
-	// - `unit` - (Optional) The units for the lifetime of the security association. Can be either seconds or kilobytes.
-	//   Default is seconds.
-	// - `value` - (Optional) The value for the lifetime of the security association. Must be a positive integer.
-	//   Default is 3600.
 	Lifetimes IpSecPolicyLifetimeArrayInput
 	// The name of the policy. Changing this updates the name of
 	// the existing policy.
@@ -198,10 +186,6 @@ type ipSecPolicyArgs struct {
 	// The default value is aes-128. Changing this updates the existing policy.
 	EncryptionAlgorithm *string `pulumi:"encryptionAlgorithm"`
 	// The lifetime of the security association. Consists of Unit and Value.
-	// - `unit` - (Optional) The units for the lifetime of the security association. Can be either seconds or kilobytes.
-	//   Default is seconds.
-	// - `value` - (Optional) The value for the lifetime of the security association. Must be a positive integer.
-	//   Default is 3600.
 	Lifetimes []IpSecPolicyLifetime `pulumi:"lifetimes"`
 	// The name of the policy. Changing this updates the name of
 	// the existing policy.
@@ -239,10 +223,6 @@ type IpSecPolicyArgs struct {
 	// The default value is aes-128. Changing this updates the existing policy.
 	EncryptionAlgorithm pulumi.StringPtrInput
 	// The lifetime of the security association. Consists of Unit and Value.
-	// - `unit` - (Optional) The units for the lifetime of the security association. Can be either seconds or kilobytes.
-	//   Default is seconds.
-	// - `value` - (Optional) The value for the lifetime of the security association. Must be a positive integer.
-	//   Default is 3600.
 	Lifetimes IpSecPolicyLifetimeArrayInput
 	// The name of the policy. Changing this updates the name of
 	// the existing policy.

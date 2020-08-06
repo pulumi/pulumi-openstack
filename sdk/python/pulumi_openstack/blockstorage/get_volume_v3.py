@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetVolumeV3Result:
     """
@@ -73,6 +74,8 @@ class GetVolumeV3Result:
         """
         The type of the volume.
         """
+
+
 class AwaitableGetVolumeV3Result(GetVolumeV3Result):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -90,7 +93,8 @@ class AwaitableGetVolumeV3Result(GetVolumeV3Result):
             status=self.status,
             volume_type=self.volume_type)
 
-def get_volume_v3(bootable=None,metadata=None,name=None,region=None,status=None,volume_type=None,opts=None):
+
+def get_volume_v3(bootable=None, metadata=None, name=None, region=None, status=None, volume_type=None, opts=None):
     """
     Use this data source to get information about an existing volume.
 
@@ -113,8 +117,6 @@ def get_volume_v3(bootable=None,metadata=None,name=None,region=None,status=None,
     :param str volume_type: The type of the volume.
     """
     __args__ = dict()
-
-
     __args__['bootable'] = bootable
     __args__['metadata'] = metadata
     __args__['name'] = name
@@ -124,7 +126,7 @@ def get_volume_v3(bootable=None,metadata=None,name=None,region=None,status=None,
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:blockstorage/getVolumeV3:getVolumeV3', __args__, opts=opts).value
 
     return AwaitableGetVolumeV3Result(

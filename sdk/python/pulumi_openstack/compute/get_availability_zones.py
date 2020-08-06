@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetAvailabilityZonesResult:
     """
@@ -31,6 +32,8 @@ class GetAvailabilityZonesResult:
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         __self__.state = state
+
+
 class AwaitableGetAvailabilityZonesResult(GetAvailabilityZonesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -42,7 +45,8 @@ class AwaitableGetAvailabilityZonesResult(GetAvailabilityZonesResult):
             region=self.region,
             state=self.state)
 
-def get_availability_zones(region=None,state=None,opts=None):
+
+def get_availability_zones(region=None, state=None, opts=None):
     """
     Use this data source to get a list of availability zones from OpenStack
 
@@ -60,14 +64,12 @@ def get_availability_zones(region=None,state=None,opts=None):
     :param str state: The `state` of the availability zones to match, default ("available").
     """
     __args__ = dict()
-
-
     __args__['region'] = region
     __args__['state'] = state
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:compute/getAvailabilityZones:getAvailabilityZones', __args__, opts=opts).value
 
     return AwaitableGetAvailabilityZonesResult(

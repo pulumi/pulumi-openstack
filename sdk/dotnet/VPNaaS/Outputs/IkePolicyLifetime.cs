@@ -14,6 +14,10 @@ namespace Pulumi.OpenStack.VPNaaS.Outputs
     public sealed class IkePolicyLifetime
     {
         public readonly string? Units;
+        /// <summary>
+        /// The value for the lifetime of the security association. Must be a positive integer.
+        /// Default is 3600.
+        /// </summary>
         public readonly int? Value;
 
         [OutputConstructor]

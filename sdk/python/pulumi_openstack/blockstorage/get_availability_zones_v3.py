@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetAvailabilityZonesV3Result:
     """
@@ -38,6 +39,8 @@ class GetAvailabilityZonesV3Result:
         """
         See Argument Reference above.
         """
+
+
 class AwaitableGetAvailabilityZonesV3Result(GetAvailabilityZonesV3Result):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -49,7 +52,8 @@ class AwaitableGetAvailabilityZonesV3Result(GetAvailabilityZonesV3Result):
             region=self.region,
             state=self.state)
 
-def get_availability_zones_v3(region=None,state=None,opts=None):
+
+def get_availability_zones_v3(region=None, state=None, opts=None):
     """
     Use this data source to get a list of Block Storage availability zones from OpenStack
 
@@ -69,14 +73,12 @@ def get_availability_zones_v3(region=None,state=None,opts=None):
            either be `available` or `unavailable`. Default is `available`.
     """
     __args__ = dict()
-
-
     __args__['region'] = region
     __args__['state'] = state
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:blockstorage/getAvailabilityZonesV3:getAvailabilityZonesV3', __args__, opts=opts).value
 
     return AwaitableGetAvailabilityZonesV3Result(

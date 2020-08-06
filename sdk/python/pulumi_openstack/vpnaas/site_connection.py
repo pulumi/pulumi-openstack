@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class SiteConnection(pulumi.CustomResource):
@@ -23,13 +23,16 @@ class SiteConnection(pulumi.CustomResource):
     dpds: pulumi.Output[list]
     """
     A dictionary with dead peer detection (DPD) protocol controls.
-    - `action` - (Optional) The dead peer detection (DPD) action.
-    A valid value is clear, hold, restart, disabled, or restart-by-peer.
-    Default value is hold.
 
-      * `action` (`str`)
-      * `interval` (`float`)
-      * `timeout` (`float`)
+      * `action` (`str`) - The dead peer detection (DPD) action.
+        A valid value is clear, hold, restart, disabled, or restart-by-peer.
+        Default value is hold.
+      * `interval` (`float`) - The dead peer detection (DPD) interval, in seconds.
+        A valid value is a positive integer.
+        Default is 30.
+      * `timeout` (`float`) - The dead peer detection (DPD) timeout in seconds.
+        A valid value is a positive integer that is greater than the DPD interval value.
+        Default is 120.
     """
     ikepolicy_id: pulumi.Output[str]
     """
@@ -137,9 +140,6 @@ class SiteConnection(pulumi.CustomResource):
         :param pulumi.Input[str] description: The human-readable description for the connection.
                Changing this updates the description of the existing connection.
         :param pulumi.Input[list] dpds: A dictionary with dead peer detection (DPD) protocol controls.
-               - `action` - (Optional) The dead peer detection (DPD) action.
-               A valid value is clear, hold, restart, disabled, or restart-by-peer.
-               Default value is hold.
         :param pulumi.Input[str] ikepolicy_id: The ID of the IKE policy. Changing this creates a new connection.
         :param pulumi.Input[str] initiator: A valid value is response-only or bi-directional. Default is bi-directional.
         :param pulumi.Input[str] ipsecpolicy_id: The ID of the IPsec policy. Changing this creates a new connection.
@@ -174,9 +174,15 @@ class SiteConnection(pulumi.CustomResource):
 
         The **dpds** object supports the following:
 
-          * `action` (`pulumi.Input[str]`)
-          * `interval` (`pulumi.Input[float]`)
-          * `timeout` (`pulumi.Input[float]`)
+          * `action` (`pulumi.Input[str]`) - The dead peer detection (DPD) action.
+            A valid value is clear, hold, restart, disabled, or restart-by-peer.
+            Default value is hold.
+          * `interval` (`pulumi.Input[float]`) - The dead peer detection (DPD) interval, in seconds.
+            A valid value is a positive integer.
+            Default is 30.
+          * `timeout` (`pulumi.Input[float]`) - The dead peer detection (DPD) timeout in seconds.
+            A valid value is a positive integer that is greater than the DPD interval value.
+            Default is 120.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -189,7 +195,7 @@ class SiteConnection(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -246,9 +252,6 @@ class SiteConnection(pulumi.CustomResource):
         :param pulumi.Input[str] description: The human-readable description for the connection.
                Changing this updates the description of the existing connection.
         :param pulumi.Input[list] dpds: A dictionary with dead peer detection (DPD) protocol controls.
-               - `action` - (Optional) The dead peer detection (DPD) action.
-               A valid value is clear, hold, restart, disabled, or restart-by-peer.
-               Default value is hold.
         :param pulumi.Input[str] ikepolicy_id: The ID of the IKE policy. Changing this creates a new connection.
         :param pulumi.Input[str] initiator: A valid value is response-only or bi-directional. Default is bi-directional.
         :param pulumi.Input[str] ipsecpolicy_id: The ID of the IPsec policy. Changing this creates a new connection.
@@ -283,9 +286,15 @@ class SiteConnection(pulumi.CustomResource):
 
         The **dpds** object supports the following:
 
-          * `action` (`pulumi.Input[str]`)
-          * `interval` (`pulumi.Input[float]`)
-          * `timeout` (`pulumi.Input[float]`)
+          * `action` (`pulumi.Input[str]`) - The dead peer detection (DPD) action.
+            A valid value is clear, hold, restart, disabled, or restart-by-peer.
+            Default value is hold.
+          * `interval` (`pulumi.Input[float]`) - The dead peer detection (DPD) interval, in seconds.
+            A valid value is a positive integer.
+            Default is 30.
+          * `timeout` (`pulumi.Input[float]`) - The dead peer detection (DPD) timeout in seconds.
+            A valid value is a positive integer that is greater than the DPD interval value.
+            Default is 120.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -313,7 +322,7 @@ class SiteConnection(pulumi.CustomResource):
         return SiteConnection(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

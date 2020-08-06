@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetClusterTemplateResult:
     """
@@ -223,6 +224,8 @@ class GetClusterTemplateResult:
         The name of the driver that is used for the volumes of the
         cluster nodes.
         """
+
+
 class AwaitableGetClusterTemplateResult(GetClusterTemplateResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -263,7 +266,8 @@ class AwaitableGetClusterTemplateResult(GetClusterTemplateResult):
             user_id=self.user_id,
             volume_driver=self.volume_driver)
 
-def get_cluster_template(name=None,region=None,opts=None):
+
+def get_cluster_template(name=None, region=None, opts=None):
     """
     Use this data source to get the ID of an available OpenStack Magnum cluster
     template.
@@ -284,14 +288,12 @@ def get_cluster_template(name=None,region=None,opts=None):
            If omitted, the `region` argument of the provider is used.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['region'] = region
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:containerinfra/getClusterTemplate:getClusterTemplate', __args__, opts=opts).value
 
     return AwaitableGetClusterTemplateResult(

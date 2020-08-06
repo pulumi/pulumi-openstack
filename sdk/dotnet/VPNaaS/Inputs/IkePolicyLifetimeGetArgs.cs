@@ -15,6 +15,10 @@ namespace Pulumi.OpenStack.VPNaaS.Inputs
         [Input("units")]
         public Input<string>? Units { get; set; }
 
+        /// <summary>
+        /// The value for the lifetime of the security association. Must be a positive integer.
+        /// Default is 3600.
+        /// </summary>
         [Input("value")]
         public Input<int>? Value { get; set; }
 

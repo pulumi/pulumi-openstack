@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetTrunkResult:
     """
@@ -62,6 +63,8 @@ class GetTrunkResult:
         if trunk_id and not isinstance(trunk_id, str):
             raise TypeError("Expected argument 'trunk_id' to be a str")
         __self__.trunk_id = trunk_id
+
+
 class AwaitableGetTrunkResult(GetTrunkResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -81,7 +84,8 @@ class AwaitableGetTrunkResult(GetTrunkResult):
             tags=self.tags,
             trunk_id=self.trunk_id)
 
-def get_trunk(admin_state_up=None,description=None,name=None,port_id=None,project_id=None,region=None,status=None,tags=None,trunk_id=None,opts=None):
+
+def get_trunk(admin_state_up=None, description=None, name=None, port_id=None, project_id=None, region=None, status=None, tags=None, trunk_id=None, opts=None):
     """
     Use this data source to get the ID of an available OpenStack trunk.
 
@@ -108,8 +112,6 @@ def get_trunk(admin_state_up=None,description=None,name=None,port_id=None,projec
     :param str trunk_id: The ID of the trunk.
     """
     __args__ = dict()
-
-
     __args__['adminStateUp'] = admin_state_up
     __args__['description'] = description
     __args__['name'] = name
@@ -122,7 +124,7 @@ def get_trunk(admin_state_up=None,description=None,name=None,port_id=None,projec
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:networking/getTrunk:getTrunk', __args__, opts=opts).value
 
     return AwaitableGetTrunkResult(

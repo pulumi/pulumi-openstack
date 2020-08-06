@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetKeypairResult:
     """
@@ -43,6 +44,8 @@ class GetKeypairResult:
         """
         See Argument Reference above.
         """
+
+
 class AwaitableGetKeypairResult(GetKeypairResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -55,7 +58,8 @@ class AwaitableGetKeypairResult(GetKeypairResult):
             public_key=self.public_key,
             region=self.region)
 
-def get_keypair(name=None,region=None,opts=None):
+
+def get_keypair(name=None, region=None, opts=None):
     """
     Use this data source to get the ID and public key of an OpenStack keypair.
 
@@ -74,14 +78,12 @@ def get_keypair(name=None,region=None,opts=None):
            If omitted, the `region` argument of the provider is used.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['region'] = region
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:compute/getKeypair:getKeypair', __args__, opts=opts).value
 
     return AwaitableGetKeypairResult(

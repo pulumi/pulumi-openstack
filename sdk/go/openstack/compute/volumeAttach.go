@@ -94,7 +94,7 @@ import (
 // 		_, err = compute.NewVolumeAttach(ctx, "va1", &compute.VolumeAttachArgs{
 // 			InstanceId:  instance1.ID(),
 // 			Multiattach: pulumi.Bool(true),
-// 			VolumeId:    pulumi.String(openstack_blockstorage_volume_v2.Volume_1.Id),
+// 			VolumeId:    pulumi.Any(openstack_blockstorage_volume_v2.Volume_1.Id),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -102,7 +102,7 @@ import (
 // 		_, err = compute.NewVolumeAttach(ctx, "va2", &compute.VolumeAttachArgs{
 // 			InstanceId:  instance2.ID(),
 // 			Multiattach: pulumi.Bool(true),
-// 			VolumeId:    pulumi.String(openstack_blockstorage_volume_v2.Volume_1.Id),
+// 			VolumeId:    pulumi.Any(openstack_blockstorage_volume_v2.Volume_1.Id),
 // 		}, pulumi.DependsOn([]pulumi.Resource{
 // 			"openstack_compute_volume_attach_v2.va_1",
 // 		}))

@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetSnapshotResult:
     """
@@ -70,6 +71,8 @@ class GetSnapshotResult:
         """
         See Argument Reference above.
         """
+
+
 class AwaitableGetSnapshotResult(GetSnapshotResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -87,7 +90,8 @@ class AwaitableGetSnapshotResult(GetSnapshotResult):
             size=self.size,
             status=self.status)
 
-def get_snapshot(description=None,name=None,region=None,share_id=None,status=None,opts=None):
+
+def get_snapshot(description=None, name=None, region=None, share_id=None, status=None, opts=None):
     """
     Use this data source to get the ID of an available Shared File System snapshot.
 
@@ -110,8 +114,6 @@ def get_snapshot(description=None,name=None,region=None,share_id=None,status=Non
            `unmanage_error` or `error_deleting`.
     """
     __args__ = dict()
-
-
     __args__['description'] = description
     __args__['name'] = name
     __args__['region'] = region
@@ -120,7 +122,7 @@ def get_snapshot(description=None,name=None,region=None,share_id=None,status=Non
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:sharedfilesystem/getSnapshot:getSnapshot', __args__, opts=opts).value
 
     return AwaitableGetSnapshotResult(

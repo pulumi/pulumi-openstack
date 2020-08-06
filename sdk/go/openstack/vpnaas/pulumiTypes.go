@@ -12,7 +12,9 @@ import (
 
 type IkePolicyLifetime struct {
 	Units *string `pulumi:"units"`
-	Value *int    `pulumi:"value"`
+	// The value for the lifetime of the security association. Must be a positive integer.
+	// Default is 3600.
+	Value *int `pulumi:"value"`
 }
 
 // IkePolicyLifetimeInput is an input type that accepts IkePolicyLifetimeArgs and IkePolicyLifetimeOutput values.
@@ -28,7 +30,9 @@ type IkePolicyLifetimeInput interface {
 
 type IkePolicyLifetimeArgs struct {
 	Units pulumi.StringPtrInput `pulumi:"units"`
-	Value pulumi.IntPtrInput    `pulumi:"value"`
+	// The value for the lifetime of the security association. Must be a positive integer.
+	// Default is 3600.
+	Value pulumi.IntPtrInput `pulumi:"value"`
 }
 
 func (IkePolicyLifetimeArgs) ElementType() reflect.Type {
@@ -86,6 +90,8 @@ func (o IkePolicyLifetimeOutput) Units() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IkePolicyLifetime) *string { return v.Units }).(pulumi.StringPtrOutput)
 }
 
+// The value for the lifetime of the security association. Must be a positive integer.
+// Default is 3600.
 func (o IkePolicyLifetimeOutput) Value() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v IkePolicyLifetime) *int { return v.Value }).(pulumi.IntPtrOutput)
 }
@@ -112,7 +118,9 @@ func (o IkePolicyLifetimeArrayOutput) Index(i pulumi.IntInput) IkePolicyLifetime
 
 type IpSecPolicyLifetime struct {
 	Units *string `pulumi:"units"`
-	Value *int    `pulumi:"value"`
+	// The value for the lifetime of the security association. Must be a positive integer.
+	// Default is 3600.
+	Value *int `pulumi:"value"`
 }
 
 // IpSecPolicyLifetimeInput is an input type that accepts IpSecPolicyLifetimeArgs and IpSecPolicyLifetimeOutput values.
@@ -128,7 +136,9 @@ type IpSecPolicyLifetimeInput interface {
 
 type IpSecPolicyLifetimeArgs struct {
 	Units pulumi.StringPtrInput `pulumi:"units"`
-	Value pulumi.IntPtrInput    `pulumi:"value"`
+	// The value for the lifetime of the security association. Must be a positive integer.
+	// Default is 3600.
+	Value pulumi.IntPtrInput `pulumi:"value"`
 }
 
 func (IpSecPolicyLifetimeArgs) ElementType() reflect.Type {
@@ -186,6 +196,8 @@ func (o IpSecPolicyLifetimeOutput) Units() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IpSecPolicyLifetime) *string { return v.Units }).(pulumi.StringPtrOutput)
 }
 
+// The value for the lifetime of the security association. Must be a positive integer.
+// Default is 3600.
 func (o IpSecPolicyLifetimeOutput) Value() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v IpSecPolicyLifetime) *int { return v.Value }).(pulumi.IntPtrOutput)
 }
@@ -211,9 +223,18 @@ func (o IpSecPolicyLifetimeArrayOutput) Index(i pulumi.IntInput) IpSecPolicyLife
 }
 
 type SiteConnectionDpd struct {
-	Action   *string `pulumi:"action"`
-	Interval *int    `pulumi:"interval"`
-	Timeout  *int    `pulumi:"timeout"`
+	// The dead peer detection (DPD) action.
+	// A valid value is clear, hold, restart, disabled, or restart-by-peer.
+	// Default value is hold.
+	Action *string `pulumi:"action"`
+	// The dead peer detection (DPD) interval, in seconds.
+	// A valid value is a positive integer.
+	// Default is 30.
+	Interval *int `pulumi:"interval"`
+	// The dead peer detection (DPD) timeout in seconds.
+	// A valid value is a positive integer that is greater than the DPD interval value.
+	// Default is 120.
+	Timeout *int `pulumi:"timeout"`
 }
 
 // SiteConnectionDpdInput is an input type that accepts SiteConnectionDpdArgs and SiteConnectionDpdOutput values.
@@ -228,9 +249,18 @@ type SiteConnectionDpdInput interface {
 }
 
 type SiteConnectionDpdArgs struct {
-	Action   pulumi.StringPtrInput `pulumi:"action"`
-	Interval pulumi.IntPtrInput    `pulumi:"interval"`
-	Timeout  pulumi.IntPtrInput    `pulumi:"timeout"`
+	// The dead peer detection (DPD) action.
+	// A valid value is clear, hold, restart, disabled, or restart-by-peer.
+	// Default value is hold.
+	Action pulumi.StringPtrInput `pulumi:"action"`
+	// The dead peer detection (DPD) interval, in seconds.
+	// A valid value is a positive integer.
+	// Default is 30.
+	Interval pulumi.IntPtrInput `pulumi:"interval"`
+	// The dead peer detection (DPD) timeout in seconds.
+	// A valid value is a positive integer that is greater than the DPD interval value.
+	// Default is 120.
+	Timeout pulumi.IntPtrInput `pulumi:"timeout"`
 }
 
 func (SiteConnectionDpdArgs) ElementType() reflect.Type {
@@ -284,14 +314,23 @@ func (o SiteConnectionDpdOutput) ToSiteConnectionDpdOutputWithContext(ctx contex
 	return o
 }
 
+// The dead peer detection (DPD) action.
+// A valid value is clear, hold, restart, disabled, or restart-by-peer.
+// Default value is hold.
 func (o SiteConnectionDpdOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SiteConnectionDpd) *string { return v.Action }).(pulumi.StringPtrOutput)
 }
 
+// The dead peer detection (DPD) interval, in seconds.
+// A valid value is a positive integer.
+// Default is 30.
 func (o SiteConnectionDpdOutput) Interval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SiteConnectionDpd) *int { return v.Interval }).(pulumi.IntPtrOutput)
 }
 
+// The dead peer detection (DPD) timeout in seconds.
+// A valid value is a positive integer that is greater than the DPD interval value.
+// Default is 120.
 func (o SiteConnectionDpdOutput) Timeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SiteConnectionDpd) *int { return v.Timeout }).(pulumi.IntPtrOutput)
 }

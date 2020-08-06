@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetSnapshotV3Result:
     """
@@ -64,6 +65,8 @@ class GetSnapshotV3Result:
         """
         See Argument Reference above.
         """
+
+
 class AwaitableGetSnapshotV3Result(GetSnapshotV3Result):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -80,7 +83,8 @@ class AwaitableGetSnapshotV3Result(GetSnapshotV3Result):
             status=self.status,
             volume_id=self.volume_id)
 
-def get_snapshot_v3(most_recent=None,name=None,region=None,status=None,volume_id=None,opts=None):
+
+def get_snapshot_v3(most_recent=None, name=None, region=None, status=None, volume_id=None, opts=None):
     """
     Use this data source to get information about an existing snapshot.
 
@@ -104,8 +108,6 @@ def get_snapshot_v3(most_recent=None,name=None,region=None,status=None,volume_id
     :param str volume_id: The ID of the snapshot's volume.
     """
     __args__ = dict()
-
-
     __args__['mostRecent'] = most_recent
     __args__['name'] = name
     __args__['region'] = region
@@ -114,7 +116,7 @@ def get_snapshot_v3(most_recent=None,name=None,region=None,status=None,volume_id
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:blockstorage/getSnapshotV3:getSnapshotV3', __args__, opts=opts).value
 
     return AwaitableGetSnapshotV3Result(

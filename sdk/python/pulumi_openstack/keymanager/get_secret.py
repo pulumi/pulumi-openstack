@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetSecretResult:
     """
@@ -152,6 +153,8 @@ class GetSecretResult:
         """
         See Argument Reference above.
         """
+
+
 class AwaitableGetSecretResult(GetSecretResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -182,7 +185,8 @@ class AwaitableGetSecretResult(GetSecretResult):
             updated_at=self.updated_at,
             updated_at_filter=self.updated_at_filter)
 
-def get_secret(acl_only=None,algorithm=None,bit_length=None,created_at_filter=None,expiration_filter=None,mode=None,name=None,region=None,secret_type=None,updated_at_filter=None,opts=None):
+
+def get_secret(acl_only=None, algorithm=None, bit_length=None, created_at_filter=None, expiration_filter=None, mode=None, name=None, region=None, secret_type=None, updated_at_filter=None, opts=None):
     """
     Use this data source to access information about an existing resource.
 
@@ -208,8 +212,6 @@ def get_secret(acl_only=None,algorithm=None,bit_length=None,created_at_filter=No
            detail.
     """
     __args__ = dict()
-
-
     __args__['aclOnly'] = acl_only
     __args__['algorithm'] = algorithm
     __args__['bitLength'] = bit_length
@@ -223,7 +225,7 @@ def get_secret(acl_only=None,algorithm=None,bit_length=None,created_at_filter=No
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:keymanager/getSecret:getSecret', __args__, opts=opts).value
 
     return AwaitableGetSecretResult(

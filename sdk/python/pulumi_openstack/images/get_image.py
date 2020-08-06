@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetImageResult:
     """
@@ -136,6 +137,8 @@ class GetImageResult:
         if visibility and not isinstance(visibility, str):
             raise TypeError("Expected argument 'visibility' to be a str")
         __self__.visibility = visibility
+
+
 class AwaitableGetImageResult(GetImageResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -169,7 +172,8 @@ class AwaitableGetImageResult(GetImageResult):
             updated_at=self.updated_at,
             visibility=self.visibility)
 
-def get_image(member_status=None,most_recent=None,name=None,owner=None,properties=None,region=None,size_max=None,size_min=None,sort_direction=None,sort_key=None,tag=None,visibility=None,opts=None):
+
+def get_image(member_status=None, most_recent=None, name=None, owner=None, properties=None, region=None, size_max=None, size_min=None, sort_direction=None, sort_key=None, tag=None, visibility=None, opts=None):
     """
     Use this data source to get the ID of an available OpenStack image.
 
@@ -211,8 +215,6 @@ def get_image(member_status=None,most_recent=None,name=None,owner=None,propertie
            "public", "private", "community", or "shared". Defaults to "private".
     """
     __args__ = dict()
-
-
     __args__['memberStatus'] = member_status
     __args__['mostRecent'] = most_recent
     __args__['name'] = name
@@ -228,7 +230,7 @@ def get_image(member_status=None,most_recent=None,name=None,owner=None,propertie
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:images/getImage:getImage', __args__, opts=opts).value
 
     return AwaitableGetImageResult(

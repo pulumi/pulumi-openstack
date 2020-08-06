@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetNetworkResult:
     """
@@ -102,6 +103,8 @@ class GetNetworkResult:
         """
         See Argument Reference above.
         """
+
+
 class AwaitableGetNetworkResult(GetNetworkResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -126,7 +129,8 @@ class AwaitableGetNetworkResult(GetNetworkResult):
             tenant_id=self.tenant_id,
             transparent_vlan=self.transparent_vlan)
 
-def get_network(description=None,external=None,matching_subnet_cidr=None,mtu=None,name=None,network_id=None,region=None,status=None,tags=None,tenant_id=None,transparent_vlan=None,opts=None):
+
+def get_network(description=None, external=None, matching_subnet_cidr=None, mtu=None, name=None, network_id=None, region=None, status=None, tags=None, tenant_id=None, transparent_vlan=None, opts=None):
     """
     Use this data source to get the ID of an available OpenStack network.
 
@@ -157,8 +161,6 @@ def get_network(description=None,external=None,matching_subnet_cidr=None,mtu=Non
            network.
     """
     __args__ = dict()
-
-
     __args__['description'] = description
     __args__['external'] = external
     __args__['matchingSubnetCidr'] = matching_subnet_cidr
@@ -173,7 +175,7 @@ def get_network(description=None,external=None,matching_subnet_cidr=None,mtu=Non
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:networking/getNetwork:getNetwork', __args__, opts=opts).value
 
     return AwaitableGetNetworkResult(

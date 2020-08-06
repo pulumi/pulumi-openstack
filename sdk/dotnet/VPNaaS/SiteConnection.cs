@@ -55,9 +55,6 @@ namespace Pulumi.OpenStack.VPNaaS
 
         /// <summary>
         /// A dictionary with dead peer detection (DPD) protocol controls.
-        /// - `action` - (Optional) The dead peer detection (DPD) action.
-        /// A valid value is clear, hold, restart, disabled, or restart-by-peer.
-        /// Default value is hold.
         /// </summary>
         [Output("dpds")]
         public Output<ImmutableArray<Outputs.SiteConnectionDpd>> Dpds { get; private set; } = null!;
@@ -238,9 +235,6 @@ namespace Pulumi.OpenStack.VPNaaS
 
         /// <summary>
         /// A dictionary with dead peer detection (DPD) protocol controls.
-        /// - `action` - (Optional) The dead peer detection (DPD) action.
-        /// A valid value is clear, hold, restart, disabled, or restart-by-peer.
-        /// Default value is hold.
         /// </summary>
         public InputList<Inputs.SiteConnectionDpdArgs> Dpds
         {
@@ -397,9 +391,6 @@ namespace Pulumi.OpenStack.VPNaaS
 
         /// <summary>
         /// A dictionary with dead peer detection (DPD) protocol controls.
-        /// - `action` - (Optional) The dead peer detection (DPD) action.
-        /// A valid value is clear, hold, restart, disabled, or restart-by-peer.
-        /// Default value is hold.
         /// </summary>
         public InputList<Inputs.SiteConnectionDpdGetArgs> Dpds
         {

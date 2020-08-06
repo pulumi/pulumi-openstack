@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetImageIdsResult:
     """
@@ -69,6 +70,8 @@ class GetImageIdsResult:
         if visibility and not isinstance(visibility, str):
             raise TypeError("Expected argument 'visibility' to be a str")
         __self__.visibility = visibility
+
+
 class AwaitableGetImageIdsResult(GetImageIdsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -91,7 +94,8 @@ class AwaitableGetImageIdsResult(GetImageIdsResult):
             tag=self.tag,
             visibility=self.visibility)
 
-def get_image_ids(member_status=None,name=None,name_regex=None,owner=None,properties=None,region=None,size_max=None,size_min=None,sort=None,sort_direction=None,sort_key=None,tag=None,visibility=None,opts=None):
+
+def get_image_ids(member_status=None, name=None, name_regex=None, owner=None, properties=None, region=None, size_max=None, size_min=None, sort=None, sort_direction=None, sort_key=None, tag=None, visibility=None, opts=None):
     """
     Use this data source to get a list of Openstack Image IDs matching the
     specified criteria.
@@ -145,8 +149,6 @@ def get_image_ids(member_status=None,name=None,name_regex=None,owner=None,proper
            "public", "private", "community", or "shared". Defaults to "private".
     """
     __args__ = dict()
-
-
     __args__['memberStatus'] = member_status
     __args__['name'] = name
     __args__['nameRegex'] = name_regex
@@ -163,7 +165,7 @@ def get_image_ids(member_status=None,name=None,name_regex=None,owner=None,proper
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('openstack:images/getImageIds:getImageIds', __args__, opts=opts).value
 
     return AwaitableGetImageIdsResult(

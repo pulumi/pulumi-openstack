@@ -66,9 +66,6 @@ export class SiteConnection extends pulumi.CustomResource {
     public readonly description!: pulumi.Output<string | undefined>;
     /**
      * A dictionary with dead peer detection (DPD) protocol controls.
-     * - `action` - (Optional) The dead peer detection (DPD) action.
-     * A valid value is clear, hold, restart, disabled, or restart-by-peer.
-     * Default value is hold.
      */
     public readonly dpds!: pulumi.Output<outputs.vpnaas.SiteConnectionDpd[]>;
     /**
@@ -249,9 +246,6 @@ export interface SiteConnectionState {
     readonly description?: pulumi.Input<string>;
     /**
      * A dictionary with dead peer detection (DPD) protocol controls.
-     * - `action` - (Optional) The dead peer detection (DPD) action.
-     * A valid value is clear, hold, restart, disabled, or restart-by-peer.
-     * Default value is hold.
      */
     readonly dpds?: pulumi.Input<pulumi.Input<inputs.vpnaas.SiteConnectionDpd>[]>;
     /**
@@ -351,9 +345,6 @@ export interface SiteConnectionArgs {
     readonly description?: pulumi.Input<string>;
     /**
      * A dictionary with dead peer detection (DPD) protocol controls.
-     * - `action` - (Optional) The dead peer detection (DPD) action.
-     * A valid value is clear, hold, restart, disabled, or restart-by-peer.
-     * Default value is hold.
      */
     readonly dpds?: pulumi.Input<pulumi.Input<inputs.vpnaas.SiteConnectionDpd>[]>;
     /**

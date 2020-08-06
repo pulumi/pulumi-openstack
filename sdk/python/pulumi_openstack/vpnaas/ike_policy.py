@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class IkePolicy(pulumi.CustomResource):
@@ -33,13 +33,10 @@ class IkePolicy(pulumi.CustomResource):
     lifetimes: pulumi.Output[list]
     """
     The lifetime of the security association. Consists of Unit and Value.
-    - `unit` - (Optional) The units for the lifetime of the security association. Can be either seconds or kilobytes.
-    Default is seconds.
-    - `value` - (Optional) The value for the lifetime of the security association. Must be a positive integer.
-    Default is 3600.
 
       * `units` (`str`)
-      * `value` (`float`)
+      * `value` (`float`) - The value for the lifetime of the security association. Must be a positive integer.
+        Default is 3600.
     """
     name: pulumi.Output[str]
     """
@@ -96,10 +93,6 @@ class IkePolicy(pulumi.CustomResource):
         :param pulumi.Input[str] ike_version: The IKE mode. A valid value is v1 or v2. Default is v1.
                Changing this updates the existing policy.
         :param pulumi.Input[list] lifetimes: The lifetime of the security association. Consists of Unit and Value.
-               - `unit` - (Optional) The units for the lifetime of the security association. Can be either seconds or kilobytes.
-               Default is seconds.
-               - `value` - (Optional) The value for the lifetime of the security association. Must be a positive integer.
-               Default is 3600.
         :param pulumi.Input[str] name: The name of the policy. Changing this updates the name of
                the existing policy.
         :param pulumi.Input[str] pfs: The perfect forward secrecy mode. Valid values are Group2, Group5 and Group14. Default is Group5.
@@ -117,7 +110,8 @@ class IkePolicy(pulumi.CustomResource):
         The **lifetimes** object supports the following:
 
           * `units` (`pulumi.Input[str]`)
-          * `value` (`pulumi.Input[float]`)
+          * `value` (`pulumi.Input[float]`) - The value for the lifetime of the security association. Must be a positive integer.
+            Default is 3600.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -130,7 +124,7 @@ class IkePolicy(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -171,10 +165,6 @@ class IkePolicy(pulumi.CustomResource):
         :param pulumi.Input[str] ike_version: The IKE mode. A valid value is v1 or v2. Default is v1.
                Changing this updates the existing policy.
         :param pulumi.Input[list] lifetimes: The lifetime of the security association. Consists of Unit and Value.
-               - `unit` - (Optional) The units for the lifetime of the security association. Can be either seconds or kilobytes.
-               Default is seconds.
-               - `value` - (Optional) The value for the lifetime of the security association. Must be a positive integer.
-               Default is 3600.
         :param pulumi.Input[str] name: The name of the policy. Changing this updates the name of
                the existing policy.
         :param pulumi.Input[str] pfs: The perfect forward secrecy mode. Valid values are Group2, Group5 and Group14. Default is Group5.
@@ -192,7 +182,8 @@ class IkePolicy(pulumi.CustomResource):
         The **lifetimes** object supports the following:
 
           * `units` (`pulumi.Input[str]`)
-          * `value` (`pulumi.Input[float]`)
+          * `value` (`pulumi.Input[float]`) - The value for the lifetime of the security association. Must be a positive integer.
+            Default is 3600.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -212,7 +203,7 @@ class IkePolicy(pulumi.CustomResource):
         return IkePolicy(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
