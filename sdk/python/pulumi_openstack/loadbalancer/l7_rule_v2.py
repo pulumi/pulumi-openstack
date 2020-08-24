@@ -5,64 +5,28 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['L7RuleV2']
 
 
 class L7RuleV2(pulumi.CustomResource):
-    admin_state_up: pulumi.Output[bool]
-    """
-    The administrative state of the L7 Rule.
-    A valid value is true (UP) or false (DOWN).
-    """
-    compare_type: pulumi.Output[str]
-    """
-    The comparison type for the L7 rule - can either be
-    CONTAINS, STARTS\_WITH, ENDS_WITH, EQUAL_TO or REGEX
-    """
-    invert: pulumi.Output[bool]
-    """
-    When true the logic of the rule is inverted. For example, with invert
-    true, equal to would become not equal to. Default is false.
-    """
-    key: pulumi.Output[str]
-    """
-    The key to use for the comparison. For example, the name of the cookie to
-    evaluate. Valid when `type` is set to COOKIE or HEADER.
-    """
-    l7policy_id: pulumi.Output[str]
-    """
-    The ID of the L7 Policy to query. Changing this creates a new
-    L7 Rule.
-    """
-    listener_id: pulumi.Output[str]
-    """
-    The ID of the Listener owning this resource.
-    """
-    region: pulumi.Output[str]
-    """
-    The region in which to obtain the V2 Networking client.
-    A Networking client is needed to create an . If omitted, the
-    `region` argument of the provider is used. Changing this creates a new
-    L7 Rule.
-    """
-    tenant_id: pulumi.Output[str]
-    """
-    Required for admins. The UUID of the tenant who owns
-    the L7 Rule.  Only administrative users can specify a tenant UUID
-    other than their own. Changing this creates a new L7 Rule.
-    """
-    type: pulumi.Output[str]
-    """
-    The L7 Rule type - can either be COOKIE, FILE\_TYPE, HEADER,
-    HOST\_NAME or PATH.
-    """
-    value: pulumi.Output[str]
-    """
-    The value to use for the comparison. For example, the file type to
-    compare.
-    """
-    def __init__(__self__, resource_name, opts=None, admin_state_up=None, compare_type=None, invert=None, key=None, l7policy_id=None, region=None, tenant_id=None, type=None, value=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 admin_state_up: Optional[pulumi.Input[bool]] = None,
+                 compare_type: Optional[pulumi.Input[str]] = None,
+                 invert: Optional[pulumi.Input[bool]] = None,
+                 key: Optional[pulumi.Input[str]] = None,
+                 l7policy_id: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 tenant_id: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a V2 L7 Rule resource within OpenStack.
 
@@ -72,7 +36,7 @@ class L7RuleV2(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        network1 = openstack.networking.Network("network1", admin_state_up="true")
+        network1 = openstack.networking.Network("network1", admin_state_up=True)
         subnet1 = openstack.networking.Subnet("subnet1",
             cidr="192.168.199.0/24",
             ip_version=4,
@@ -165,13 +129,25 @@ class L7RuleV2(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, admin_state_up=None, compare_type=None, invert=None, key=None, l7policy_id=None, listener_id=None, region=None, tenant_id=None, type=None, value=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            admin_state_up: Optional[pulumi.Input[bool]] = None,
+            compare_type: Optional[pulumi.Input[str]] = None,
+            invert: Optional[pulumi.Input[bool]] = None,
+            key: Optional[pulumi.Input[str]] = None,
+            l7policy_id: Optional[pulumi.Input[str]] = None,
+            listener_id: Optional[pulumi.Input[str]] = None,
+            region: Optional[pulumi.Input[str]] = None,
+            tenant_id: Optional[pulumi.Input[str]] = None,
+            type: Optional[pulumi.Input[str]] = None,
+            value: Optional[pulumi.Input[str]] = None) -> 'L7RuleV2':
         """
         Get an existing L7RuleV2 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] admin_state_up: The administrative state of the L7 Rule.
                A valid value is true (UP) or false (DOWN).
@@ -212,8 +188,101 @@ class L7RuleV2(pulumi.CustomResource):
         __props__["value"] = value
         return L7RuleV2(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="adminStateUp")
+    def admin_state_up(self) -> Optional[bool]:
+        """
+        The administrative state of the L7 Rule.
+        A valid value is true (UP) or false (DOWN).
+        """
+        return pulumi.get(self, "admin_state_up")
+
+    @property
+    @pulumi.getter(name="compareType")
+    def compare_type(self) -> str:
+        """
+        The comparison type for the L7 rule - can either be
+        CONTAINS, STARTS\_WITH, ENDS_WITH, EQUAL_TO or REGEX
+        """
+        return pulumi.get(self, "compare_type")
+
+    @property
+    @pulumi.getter
+    def invert(self) -> Optional[bool]:
+        """
+        When true the logic of the rule is inverted. For example, with invert
+        true, equal to would become not equal to. Default is false.
+        """
+        return pulumi.get(self, "invert")
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        """
+        The key to use for the comparison. For example, the name of the cookie to
+        evaluate. Valid when `type` is set to COOKIE or HEADER.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter(name="l7policyId")
+    def l7policy_id(self) -> str:
+        """
+        The ID of the L7 Policy to query. Changing this creates a new
+        L7 Rule.
+        """
+        return pulumi.get(self, "l7policy_id")
+
+    @property
+    @pulumi.getter(name="listenerId")
+    def listener_id(self) -> str:
+        """
+        The ID of the Listener owning this resource.
+        """
+        return pulumi.get(self, "listener_id")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The region in which to obtain the V2 Networking client.
+        A Networking client is needed to create an . If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        L7 Rule.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> str:
+        """
+        Required for admins. The UUID of the tenant who owns
+        the L7 Rule.  Only administrative users can specify a tenant UUID
+        other than their own. Changing this creates a new L7 Rule.
+        """
+        return pulumi.get(self, "tenant_id")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The L7 Rule type - can either be COOKIE, FILE\_TYPE, HEADER,
+        HOST\_NAME or PATH.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        The value to use for the comparison. For example, the file type to
+        compare.
+        """
+        return pulumi.get(self, "value")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

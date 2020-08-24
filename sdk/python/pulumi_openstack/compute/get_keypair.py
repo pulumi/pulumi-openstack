@@ -5,10 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
 
+__all__ = [
+    'GetKeypairResult',
+    'AwaitableGetKeypairResult',
+    'get_keypair',
+]
 
+@pulumi.output_type
 class GetKeypairResult:
     """
     A collection of values returned by getKeypair.
@@ -16,34 +22,59 @@ class GetKeypairResult:
     def __init__(__self__, fingerprint=None, id=None, name=None, public_key=None, region=None):
         if fingerprint and not isinstance(fingerprint, str):
             raise TypeError("Expected argument 'fingerprint' to be a str")
-        __self__.fingerprint = fingerprint
+        pulumi.set(__self__, "fingerprint", fingerprint)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if public_key and not isinstance(public_key, str):
+            raise TypeError("Expected argument 'public_key' to be a str")
+        pulumi.set(__self__, "public_key", public_key)
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter
+    def fingerprint(self) -> str:
         """
         The fingerprint of the OpenSSH key.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "fingerprint")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
         """
         See Argument Reference above.
         """
-        if public_key and not isinstance(public_key, str):
-            raise TypeError("Expected argument 'public_key' to be a str")
-        __self__.public_key = public_key
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="publicKey")
+    def public_key(self) -> str:
         """
         The OpenSSH-formatted public key of the keypair.
         """
-        if region and not isinstance(region, str):
-            raise TypeError("Expected argument 'region' to be a str")
-        __self__.region = region
+        return pulumi.get(self, "public_key")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
         """
         See Argument Reference above.
         """
+        return pulumi.get(self, "region")
 
 
 class AwaitableGetKeypairResult(GetKeypairResult):
@@ -59,7 +90,9 @@ class AwaitableGetKeypairResult(GetKeypairResult):
             region=self.region)
 
 
-def get_keypair(name=None, region=None, opts=None):
+def get_keypair(name: Optional[str] = None,
+                region: Optional[str] = None,
+                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKeypairResult:
     """
     Use this data source to get the ID and public key of an OpenStack keypair.
 
@@ -84,11 +117,11 @@ def get_keypair(name=None, region=None, opts=None):
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('openstack:compute/getKeypair:getKeypair', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('openstack:compute/getKeypair:getKeypair', __args__, opts=opts, typ=GetKeypairResult).value
 
     return AwaitableGetKeypairResult(
-        fingerprint=__ret__.get('fingerprint'),
-        id=__ret__.get('id'),
-        name=__ret__.get('name'),
-        public_key=__ret__.get('publicKey'),
-        region=__ret__.get('region'))
+        fingerprint=__ret__.fingerprint,
+        id=__ret__.id,
+        name=__ret__.name,
+        public_key=__ret__.public_key,
+        region=__ret__.region)

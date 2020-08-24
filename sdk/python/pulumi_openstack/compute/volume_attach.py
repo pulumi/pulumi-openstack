@@ -5,37 +5,24 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['VolumeAttach']
 
 
 class VolumeAttach(pulumi.CustomResource):
-    device: pulumi.Output[str]
-    """
-    See Argument Reference above. _NOTE_: The correctness of this
-    information is dependent upon the hypervisor in use. In some cases, this
-    should not be used as an authoritative piece of information.
-    """
-    instance_id: pulumi.Output[str]
-    """
-    The ID of the Instance to attach the Volume to.
-    """
-    multiattach: pulumi.Output[bool]
-    """
-    Enable attachment of multiattach-capable volumes.
-    """
-    region: pulumi.Output[str]
-    """
-    The region in which to obtain the V2 Compute client.
-    A Compute client is needed to create a volume attachment. If omitted, the
-    `region` argument of the provider is used. Changing this creates a
-    new volume attachment.
-    """
-    volume_id: pulumi.Output[str]
-    """
-    The ID of the Volume to attach to an Instance.
-    """
-    def __init__(__self__, resource_name, opts=None, device=None, instance_id=None, multiattach=None, region=None, volume_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 device: Optional[pulumi.Input[str]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
+                 multiattach: Optional[pulumi.Input[bool]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 volume_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Attaches a Block Storage Volume to an Instance using the OpenStack
         Compute (Nova) v2 API.
@@ -127,13 +114,20 @@ class VolumeAttach(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, device=None, instance_id=None, multiattach=None, region=None, volume_id=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            device: Optional[pulumi.Input[str]] = None,
+            instance_id: Optional[pulumi.Input[str]] = None,
+            multiattach: Optional[pulumi.Input[bool]] = None,
+            region: Optional[pulumi.Input[str]] = None,
+            volume_id: Optional[pulumi.Input[str]] = None) -> 'VolumeAttach':
         """
         Get an existing VolumeAttach resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] device: See Argument Reference above. _NOTE_: The correctness of this
                information is dependent upon the hypervisor in use. In some cases, this
@@ -157,8 +151,54 @@ class VolumeAttach(pulumi.CustomResource):
         __props__["volume_id"] = volume_id
         return VolumeAttach(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def device(self) -> str:
+        """
+        See Argument Reference above. _NOTE_: The correctness of this
+        information is dependent upon the hypervisor in use. In some cases, this
+        should not be used as an authoritative piece of information.
+        """
+        return pulumi.get(self, "device")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        """
+        The ID of the Instance to attach the Volume to.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter
+    def multiattach(self) -> Optional[bool]:
+        """
+        Enable attachment of multiattach-capable volumes.
+        """
+        return pulumi.get(self, "multiattach")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The region in which to obtain the V2 Compute client.
+        A Compute client is needed to create a volume attachment. If omitted, the
+        `region` argument of the provider is used. Changing this creates a
+        new volume attachment.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> str:
+        """
+        The ID of the Volume to attach to an Instance.
+        """
+        return pulumi.get(self, "volume_id")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

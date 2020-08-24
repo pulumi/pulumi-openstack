@@ -5,10 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
 
+__all__ = [
+    'GetEndpointResult',
+    'AwaitableGetEndpointResult',
+    'get_endpoint',
+]
 
+@pulumi.output_type
 class GetEndpointResult:
     """
     A collection of values returned by getEndpoint.
@@ -16,58 +22,103 @@ class GetEndpointResult:
     def __init__(__self__, endpoint_region=None, id=None, interface=None, name=None, region=None, service_id=None, service_name=None, service_type=None, url=None):
         if endpoint_region and not isinstance(endpoint_region, str):
             raise TypeError("Expected argument 'endpoint_region' to be a str")
-        __self__.endpoint_region = endpoint_region
+        pulumi.set(__self__, "endpoint_region", endpoint_region)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if interface and not isinstance(interface, str):
+            raise TypeError("Expected argument 'interface' to be a str")
+        pulumi.set(__self__, "interface", interface)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        pulumi.set(__self__, "region", region)
+        if service_id and not isinstance(service_id, str):
+            raise TypeError("Expected argument 'service_id' to be a str")
+        pulumi.set(__self__, "service_id", service_id)
+        if service_name and not isinstance(service_name, str):
+            raise TypeError("Expected argument 'service_name' to be a str")
+        pulumi.set(__self__, "service_name", service_name)
+        if service_type and not isinstance(service_type, str):
+            raise TypeError("Expected argument 'service_type' to be a str")
+        pulumi.set(__self__, "service_type", service_type)
+        if url and not isinstance(url, str):
+            raise TypeError("Expected argument 'url' to be a str")
+        pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter(name="endpointRegion")
+    def endpoint_region(self) -> Optional[str]:
         """
         See Argument Reference above.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "endpoint_region")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if interface and not isinstance(interface, str):
-            raise TypeError("Expected argument 'interface' to be a str")
-        __self__.interface = interface
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def interface(self) -> Optional[str]:
         """
         See Argument Reference above.
         """
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
+        return pulumi.get(self, "interface")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
         """
         See Argument Reference above.
         """
-        if region and not isinstance(region, str):
-            raise TypeError("Expected argument 'region' to be a str")
-        __self__.region = region
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
         """
         See Argument Reference above.
         """
-        if service_id and not isinstance(service_id, str):
-            raise TypeError("Expected argument 'service_id' to be a str")
-        __self__.service_id = service_id
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="serviceId")
+    def service_id(self) -> Optional[str]:
         """
         See Argument Reference above.
         """
-        if service_name and not isinstance(service_name, str):
-            raise TypeError("Expected argument 'service_name' to be a str")
-        __self__.service_name = service_name
+        return pulumi.get(self, "service_id")
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> Optional[str]:
         """
         See Argument Reference above.
         """
-        if service_type and not isinstance(service_type, str):
-            raise TypeError("Expected argument 'service_type' to be a str")
-        __self__.service_type = service_type
+        return pulumi.get(self, "service_name")
+
+    @property
+    @pulumi.getter(name="serviceType")
+    def service_type(self) -> Optional[str]:
         """
         See Argument Reference above.
         """
-        if url and not isinstance(url, str):
-            raise TypeError("Expected argument 'url' to be a str")
-        __self__.url = url
+        return pulumi.get(self, "service_type")
+
+    @property
+    @pulumi.getter
+    def url(self) -> str:
         """
         The endpoint URL.
         """
+        return pulumi.get(self, "url")
 
 
 class AwaitableGetEndpointResult(GetEndpointResult):
@@ -87,7 +138,14 @@ class AwaitableGetEndpointResult(GetEndpointResult):
             url=self.url)
 
 
-def get_endpoint(endpoint_region=None, interface=None, name=None, region=None, service_id=None, service_name=None, service_type=None, opts=None):
+def get_endpoint(endpoint_region: Optional[str] = None,
+                 interface: Optional[str] = None,
+                 name: Optional[str] = None,
+                 region: Optional[str] = None,
+                 service_id: Optional[str] = None,
+                 service_name: Optional[str] = None,
+                 service_type: Optional[str] = None,
+                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEndpointResult:
     """
     Use this data source to get the ID of an OpenStack endpoint.
 
@@ -126,15 +184,15 @@ def get_endpoint(endpoint_region=None, interface=None, name=None, region=None, s
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('openstack:identity/getEndpoint:getEndpoint', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('openstack:identity/getEndpoint:getEndpoint', __args__, opts=opts, typ=GetEndpointResult).value
 
     return AwaitableGetEndpointResult(
-        endpoint_region=__ret__.get('endpointRegion'),
-        id=__ret__.get('id'),
-        interface=__ret__.get('interface'),
-        name=__ret__.get('name'),
-        region=__ret__.get('region'),
-        service_id=__ret__.get('serviceId'),
-        service_name=__ret__.get('serviceName'),
-        service_type=__ret__.get('serviceType'),
-        url=__ret__.get('url'))
+        endpoint_region=__ret__.endpoint_region,
+        id=__ret__.id,
+        interface=__ret__.interface,
+        name=__ret__.name,
+        region=__ret__.region,
+        service_id=__ret__.service_id,
+        service_name=__ret__.service_name,
+        service_type=__ret__.service_type,
+        url=__ret__.url)

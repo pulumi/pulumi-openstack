@@ -5,10 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
 
+__all__ = [
+    'GetSnapshotResult',
+    'AwaitableGetSnapshotResult',
+    'get_snapshot',
+]
 
+@pulumi.output_type
 class GetSnapshotResult:
     """
     A collection of values returned by getSnapshot.
@@ -16,61 +22,111 @@ class GetSnapshotResult:
     def __init__(__self__, description=None, id=None, name=None, project_id=None, region=None, share_id=None, share_proto=None, share_size=None, size=None, status=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
-        __self__.description = description
+        pulumi.set(__self__, "description", description)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if project_id and not isinstance(project_id, str):
+            raise TypeError("Expected argument 'project_id' to be a str")
+        pulumi.set(__self__, "project_id", project_id)
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        pulumi.set(__self__, "region", region)
+        if share_id and not isinstance(share_id, str):
+            raise TypeError("Expected argument 'share_id' to be a str")
+        pulumi.set(__self__, "share_id", share_id)
+        if share_proto and not isinstance(share_proto, str):
+            raise TypeError("Expected argument 'share_proto' to be a str")
+        pulumi.set(__self__, "share_proto", share_proto)
+        if share_size and not isinstance(share_size, float):
+            raise TypeError("Expected argument 'share_size' to be a float")
+        pulumi.set(__self__, "share_size", share_size)
+        if size and not isinstance(size, float):
+            raise TypeError("Expected argument 'size' to be a float")
+        pulumi.set(__self__, "size", size)
+        if status and not isinstance(status, str):
+            raise TypeError("Expected argument 'status' to be a str")
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
         """
         See Argument Reference above.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
         """
         See Argument Reference above.
         """
-        if project_id and not isinstance(project_id, str):
-            raise TypeError("Expected argument 'project_id' to be a str")
-        __self__.project_id = project_id
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
         """
         See Argument Reference above.
         """
-        if region and not isinstance(region, str):
-            raise TypeError("Expected argument 'region' to be a str")
-        __self__.region = region
-        if share_id and not isinstance(share_id, str):
-            raise TypeError("Expected argument 'share_id' to be a str")
-        __self__.share_id = share_id
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="shareId")
+    def share_id(self) -> str:
         """
         The UUID of the source share that was used to create the snapshot.
         """
-        if share_proto and not isinstance(share_proto, str):
-            raise TypeError("Expected argument 'share_proto' to be a str")
-        __self__.share_proto = share_proto
+        return pulumi.get(self, "share_id")
+
+    @property
+    @pulumi.getter(name="shareProto")
+    def share_proto(self) -> str:
         """
         The file system protocol of a share snapshot.
         """
-        if share_size and not isinstance(share_size, float):
-            raise TypeError("Expected argument 'share_size' to be a float")
-        __self__.share_size = share_size
+        return pulumi.get(self, "share_proto")
+
+    @property
+    @pulumi.getter(name="shareSize")
+    def share_size(self) -> float:
         """
         The share snapshot size, in GBs.
         """
-        if size and not isinstance(size, float):
-            raise TypeError("Expected argument 'size' to be a float")
-        __self__.size = size
+        return pulumi.get(self, "share_size")
+
+    @property
+    @pulumi.getter
+    def size(self) -> float:
         """
         The snapshot size, in GBs.
         """
-        if status and not isinstance(status, str):
-            raise TypeError("Expected argument 'status' to be a str")
-        __self__.status = status
+        return pulumi.get(self, "size")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
         """
         See Argument Reference above.
         """
+        return pulumi.get(self, "status")
 
 
 class AwaitableGetSnapshotResult(GetSnapshotResult):
@@ -91,7 +147,12 @@ class AwaitableGetSnapshotResult(GetSnapshotResult):
             status=self.status)
 
 
-def get_snapshot(description=None, name=None, region=None, share_id=None, status=None, opts=None):
+def get_snapshot(description: Optional[str] = None,
+                 name: Optional[str] = None,
+                 region: Optional[str] = None,
+                 share_id: Optional[str] = None,
+                 status: Optional[str] = None,
+                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSnapshotResult:
     """
     Use this data source to get the ID of an available Shared File System snapshot.
 
@@ -123,16 +184,16 @@ def get_snapshot(description=None, name=None, region=None, share_id=None, status
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('openstack:sharedfilesystem/getSnapshot:getSnapshot', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('openstack:sharedfilesystem/getSnapshot:getSnapshot', __args__, opts=opts, typ=GetSnapshotResult).value
 
     return AwaitableGetSnapshotResult(
-        description=__ret__.get('description'),
-        id=__ret__.get('id'),
-        name=__ret__.get('name'),
-        project_id=__ret__.get('projectId'),
-        region=__ret__.get('region'),
-        share_id=__ret__.get('shareId'),
-        share_proto=__ret__.get('shareProto'),
-        share_size=__ret__.get('shareSize'),
-        size=__ret__.get('size'),
-        status=__ret__.get('status'))
+        description=__ret__.description,
+        id=__ret__.id,
+        name=__ret__.name,
+        project_id=__ret__.project_id,
+        region=__ret__.region,
+        share_id=__ret__.share_id,
+        share_proto=__ret__.share_proto,
+        share_size=__ret__.share_size,
+        size=__ret__.size,
+        status=__ret__.status)

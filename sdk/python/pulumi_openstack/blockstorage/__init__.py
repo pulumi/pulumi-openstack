@@ -15,3 +15,5 @@ from .volume_attach import *
 from .volume_attach_v2 import *
 from .volume_v1 import *
 from .volume_v2 import *
+from ._inputs import *
+from . import outputs

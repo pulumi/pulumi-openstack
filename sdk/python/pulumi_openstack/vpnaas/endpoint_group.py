@@ -5,48 +5,26 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['EndpointGroup']
 
 
 class EndpointGroup(pulumi.CustomResource):
-    description: pulumi.Output[str]
-    """
-    The human-readable description for the group.
-    Changing this updates the description of the existing group.
-    """
-    endpoints: pulumi.Output[list]
-    """
-    List of endpoints of the same type, for the endpoint group. The values will depend on the type.
-    Changing this creates a new group.
-    """
-    name: pulumi.Output[str]
-    """
-    The name of the group. Changing this updates the name of
-    the existing group.
-    """
-    region: pulumi.Output[str]
-    """
-    The region in which to obtain the V2 Networking client.
-    A Networking client is needed to create an endpoint group. If omitted, the
-    `region` argument of the provider is used. Changing this creates a new
-    group.
-    """
-    tenant_id: pulumi.Output[str]
-    """
-    The owner of the group. Required if admin wants to
-    create an endpoint group for another project. Changing this creates a new group.
-    """
-    type: pulumi.Output[str]
-    """
-    The type of the endpoints in the group. A valid value is subnet, cidr, network, router, or vlan.
-    Changing this creates a new group.
-    """
-    value_specs: pulumi.Output[dict]
-    """
-    Map of additional options.
-    """
-    def __init__(__self__, resource_name, opts=None, description=None, endpoints=None, name=None, region=None, tenant_id=None, type=None, value_specs=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 endpoints: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 tenant_id: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a V2 Neutron Endpoint Group resource within OpenStack.
 
@@ -68,7 +46,7 @@ class EndpointGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The human-readable description for the group.
                Changing this updates the description of the existing group.
-        :param pulumi.Input[list] endpoints: List of endpoints of the same type, for the endpoint group. The values will depend on the type.
+        :param pulumi.Input[List[pulumi.Input[str]]] endpoints: List of endpoints of the same type, for the endpoint group. The values will depend on the type.
                Changing this creates a new group.
         :param pulumi.Input[str] name: The name of the group. Changing this updates the name of
                the existing group.
@@ -80,7 +58,7 @@ class EndpointGroup(pulumi.CustomResource):
                create an endpoint group for another project. Changing this creates a new group.
         :param pulumi.Input[str] type: The type of the endpoints in the group. A valid value is subnet, cidr, network, router, or vlan.
                Changing this creates a new group.
-        :param pulumi.Input[dict] value_specs: Map of additional options.
+        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -113,17 +91,26 @@ class EndpointGroup(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, description=None, endpoints=None, name=None, region=None, tenant_id=None, type=None, value_specs=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            endpoints: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            region: Optional[pulumi.Input[str]] = None,
+            tenant_id: Optional[pulumi.Input[str]] = None,
+            type: Optional[pulumi.Input[str]] = None,
+            value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'EndpointGroup':
         """
         Get an existing EndpointGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The human-readable description for the group.
                Changing this updates the description of the existing group.
-        :param pulumi.Input[list] endpoints: List of endpoints of the same type, for the endpoint group. The values will depend on the type.
+        :param pulumi.Input[List[pulumi.Input[str]]] endpoints: List of endpoints of the same type, for the endpoint group. The values will depend on the type.
                Changing this creates a new group.
         :param pulumi.Input[str] name: The name of the group. Changing this updates the name of
                the existing group.
@@ -135,7 +122,7 @@ class EndpointGroup(pulumi.CustomResource):
                create an endpoint group for another project. Changing this creates a new group.
         :param pulumi.Input[str] type: The type of the endpoints in the group. A valid value is subnet, cidr, network, router, or vlan.
                Changing this creates a new group.
-        :param pulumi.Input[dict] value_specs: Map of additional options.
+        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -150,8 +137,73 @@ class EndpointGroup(pulumi.CustomResource):
         __props__["value_specs"] = value_specs
         return EndpointGroup(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        The human-readable description for the group.
+        Changing this updates the description of the existing group.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def endpoints(self) -> Optional[List[str]]:
+        """
+        List of endpoints of the same type, for the endpoint group. The values will depend on the type.
+        Changing this creates a new group.
+        """
+        return pulumi.get(self, "endpoints")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the group. Changing this updates the name of
+        the existing group.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The region in which to obtain the V2 Networking client.
+        A Networking client is needed to create an endpoint group. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        group.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> str:
+        """
+        The owner of the group. Required if admin wants to
+        create an endpoint group for another project. Changing this creates a new group.
+        """
+        return pulumi.get(self, "tenant_id")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of the endpoints in the group. A valid value is subnet, cidr, network, router, or vlan.
+        Changing this creates a new group.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="valueSpecs")
+    def value_specs(self) -> Optional[Mapping[str, Any]]:
+        """
+        Map of additional options.
+        """
+        return pulumi.get(self, "value_specs")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

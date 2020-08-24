@@ -5,10 +5,17 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
 
+__all__ = [
+    'GetTrunkResult',
+    'AwaitableGetTrunkResult',
+    'get_trunk',
+]
 
+@pulumi.output_type
 class GetTrunkResult:
     """
     A collection of values returned by getTrunk.
@@ -16,53 +23,113 @@ class GetTrunkResult:
     def __init__(__self__, admin_state_up=None, all_tags=None, description=None, id=None, name=None, port_id=None, project_id=None, region=None, status=None, sub_ports=None, tags=None, trunk_id=None):
         if admin_state_up and not isinstance(admin_state_up, bool):
             raise TypeError("Expected argument 'admin_state_up' to be a bool")
-        __self__.admin_state_up = admin_state_up
+        pulumi.set(__self__, "admin_state_up", admin_state_up)
         if all_tags and not isinstance(all_tags, list):
             raise TypeError("Expected argument 'all_tags' to be a list")
-        __self__.all_tags = all_tags
+        pulumi.set(__self__, "all_tags", all_tags)
+        if description and not isinstance(description, str):
+            raise TypeError("Expected argument 'description' to be a str")
+        pulumi.set(__self__, "description", description)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if port_id and not isinstance(port_id, str):
+            raise TypeError("Expected argument 'port_id' to be a str")
+        pulumi.set(__self__, "port_id", port_id)
+        if project_id and not isinstance(project_id, str):
+            raise TypeError("Expected argument 'project_id' to be a str")
+        pulumi.set(__self__, "project_id", project_id)
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        pulumi.set(__self__, "region", region)
+        if status and not isinstance(status, str):
+            raise TypeError("Expected argument 'status' to be a str")
+        pulumi.set(__self__, "status", status)
+        if sub_ports and not isinstance(sub_ports, list):
+            raise TypeError("Expected argument 'sub_ports' to be a list")
+        pulumi.set(__self__, "sub_ports", sub_ports)
+        if tags and not isinstance(tags, list):
+            raise TypeError("Expected argument 'tags' to be a list")
+        pulumi.set(__self__, "tags", tags)
+        if trunk_id and not isinstance(trunk_id, str):
+            raise TypeError("Expected argument 'trunk_id' to be a str")
+        pulumi.set(__self__, "trunk_id", trunk_id)
+
+    @property
+    @pulumi.getter(name="adminStateUp")
+    def admin_state_up(self) -> Optional[bool]:
+        return pulumi.get(self, "admin_state_up")
+
+    @property
+    @pulumi.getter(name="allTags")
+    def all_tags(self) -> List[str]:
         """
         The set of string tags applied on the trunk.
         """
-        if description and not isinstance(description, str):
-            raise TypeError("Expected argument 'description' to be a str")
-        __self__.description = description
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "all_tags")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
-        if port_id and not isinstance(port_id, str):
-            raise TypeError("Expected argument 'port_id' to be a str")
-        __self__.port_id = port_id
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="portId")
+    def port_id(self) -> Optional[str]:
         """
         The ID of the trunk subport.
         """
-        if project_id and not isinstance(project_id, str):
-            raise TypeError("Expected argument 'project_id' to be a str")
-        __self__.project_id = project_id
-        if region and not isinstance(region, str):
-            raise TypeError("Expected argument 'region' to be a str")
-        __self__.region = region
-        if status and not isinstance(status, str):
-            raise TypeError("Expected argument 'status' to be a str")
-        __self__.status = status
-        if sub_ports and not isinstance(sub_ports, list):
-            raise TypeError("Expected argument 'sub_ports' to be a list")
-        __self__.sub_ports = sub_ports
+        return pulumi.get(self, "port_id")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[str]:
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="subPorts")
+    def sub_ports(self) -> List['outputs.GetTrunkSubPortResult']:
         """
         The set of the trunk subports. The structure of each subport is
         described below.
         """
-        if tags and not isinstance(tags, list):
-            raise TypeError("Expected argument 'tags' to be a list")
-        __self__.tags = tags
-        if trunk_id and not isinstance(trunk_id, str):
-            raise TypeError("Expected argument 'trunk_id' to be a str")
-        __self__.trunk_id = trunk_id
+        return pulumi.get(self, "sub_ports")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[List[str]]:
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="trunkId")
+    def trunk_id(self) -> Optional[str]:
+        return pulumi.get(self, "trunk_id")
 
 
 class AwaitableGetTrunkResult(GetTrunkResult):
@@ -85,7 +152,16 @@ class AwaitableGetTrunkResult(GetTrunkResult):
             trunk_id=self.trunk_id)
 
 
-def get_trunk(admin_state_up=None, description=None, name=None, port_id=None, project_id=None, region=None, status=None, tags=None, trunk_id=None, opts=None):
+def get_trunk(admin_state_up: Optional[bool] = None,
+              description: Optional[str] = None,
+              name: Optional[str] = None,
+              port_id: Optional[str] = None,
+              project_id: Optional[str] = None,
+              region: Optional[str] = None,
+              status: Optional[str] = None,
+              tags: Optional[List[str]] = None,
+              trunk_id: Optional[str] = None,
+              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTrunkResult:
     """
     Use this data source to get the ID of an available OpenStack trunk.
 
@@ -108,7 +184,7 @@ def get_trunk(admin_state_up=None, description=None, name=None, port_id=None, pr
            A Neutron client is needed to retrieve trunk ids. If omitted, the
            `region` argument of the provider is used.
     :param str status: The status of the trunk.
-    :param list tags: The list of trunk tags to filter.
+    :param List[str] tags: The list of trunk tags to filter.
     :param str trunk_id: The ID of the trunk.
     """
     __args__ = dict()
@@ -125,18 +201,18 @@ def get_trunk(admin_state_up=None, description=None, name=None, port_id=None, pr
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('openstack:networking/getTrunk:getTrunk', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('openstack:networking/getTrunk:getTrunk', __args__, opts=opts, typ=GetTrunkResult).value
 
     return AwaitableGetTrunkResult(
-        admin_state_up=__ret__.get('adminStateUp'),
-        all_tags=__ret__.get('allTags'),
-        description=__ret__.get('description'),
-        id=__ret__.get('id'),
-        name=__ret__.get('name'),
-        port_id=__ret__.get('portId'),
-        project_id=__ret__.get('projectId'),
-        region=__ret__.get('region'),
-        status=__ret__.get('status'),
-        sub_ports=__ret__.get('subPorts'),
-        tags=__ret__.get('tags'),
-        trunk_id=__ret__.get('trunkId'))
+        admin_state_up=__ret__.admin_state_up,
+        all_tags=__ret__.all_tags,
+        description=__ret__.description,
+        id=__ret__.id,
+        name=__ret__.name,
+        port_id=__ret__.port_id,
+        project_id=__ret__.project_id,
+        region=__ret__.region,
+        status=__ret__.status,
+        sub_ports=__ret__.sub_ports,
+        tags=__ret__.tags,
+        trunk_id=__ret__.trunk_id)

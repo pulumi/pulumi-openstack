@@ -5,71 +5,32 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['IkePolicy']
 
 
 class IkePolicy(pulumi.CustomResource):
-    auth_algorithm: pulumi.Output[str]
-    """
-    The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.
-    Default is sha1. Changing this updates the algorithm of the existing policy.
-    """
-    description: pulumi.Output[str]
-    """
-    The human-readable description for the policy.
-    Changing this updates the description of the existing policy.
-    """
-    encryption_algorithm: pulumi.Output[str]
-    """
-    The encryption algorithm. Valid values are 3des, aes-128, aes-192 and so on.
-    The default value is aes-128. Changing this updates the existing policy.
-    """
-    ike_version: pulumi.Output[str]
-    """
-    The IKE mode. A valid value is v1 or v2. Default is v1.
-    Changing this updates the existing policy.
-    """
-    lifetimes: pulumi.Output[list]
-    """
-    The lifetime of the security association. Consists of Unit and Value.
-
-      * `units` (`str`)
-      * `value` (`float`) - The value for the lifetime of the security association. Must be a positive integer.
-        Default is 3600.
-    """
-    name: pulumi.Output[str]
-    """
-    The name of the policy. Changing this updates the name of
-    the existing policy.
-    """
-    pfs: pulumi.Output[str]
-    """
-    The perfect forward secrecy mode. Valid values are Group2, Group5 and Group14. Default is Group5.
-    Changing this updates the existing policy.
-    """
-    phase1_negotiation_mode: pulumi.Output[str]
-    """
-    The IKE mode. A valid value is main, which is the default.
-    Changing this updates the existing policy.
-    """
-    region: pulumi.Output[str]
-    """
-    The region in which to obtain the V2 Networking client.
-    A Networking client is needed to create a VPN service. If omitted, the
-    `region` argument of the provider is used. Changing this creates a new
-    service.
-    """
-    tenant_id: pulumi.Output[str]
-    """
-    The owner of the policy. Required if admin wants to
-    create a service for another policy. Changing this creates a new policy.
-    """
-    value_specs: pulumi.Output[dict]
-    """
-    Map of additional options.
-    """
-    def __init__(__self__, resource_name, opts=None, auth_algorithm=None, description=None, encryption_algorithm=None, ike_version=None, lifetimes=None, name=None, pfs=None, phase1_negotiation_mode=None, region=None, tenant_id=None, value_specs=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 auth_algorithm: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 encryption_algorithm: Optional[pulumi.Input[str]] = None,
+                 ike_version: Optional[pulumi.Input[str]] = None,
+                 lifetimes: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['IkePolicyLifetimeArgs']]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 pfs: Optional[pulumi.Input[str]] = None,
+                 phase1_negotiation_mode: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 tenant_id: Optional[pulumi.Input[str]] = None,
+                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a V2 Neutron IKE policy resource within OpenStack.
 
@@ -92,7 +53,7 @@ class IkePolicy(pulumi.CustomResource):
                The default value is aes-128. Changing this updates the existing policy.
         :param pulumi.Input[str] ike_version: The IKE mode. A valid value is v1 or v2. Default is v1.
                Changing this updates the existing policy.
-        :param pulumi.Input[list] lifetimes: The lifetime of the security association. Consists of Unit and Value.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['IkePolicyLifetimeArgs']]]] lifetimes: The lifetime of the security association. Consists of Unit and Value.
         :param pulumi.Input[str] name: The name of the policy. Changing this updates the name of
                the existing policy.
         :param pulumi.Input[str] pfs: The perfect forward secrecy mode. Valid values are Group2, Group5 and Group14. Default is Group5.
@@ -105,13 +66,7 @@ class IkePolicy(pulumi.CustomResource):
                service.
         :param pulumi.Input[str] tenant_id: The owner of the policy. Required if admin wants to
                create a service for another policy. Changing this creates a new policy.
-        :param pulumi.Input[dict] value_specs: Map of additional options.
-
-        The **lifetimes** object supports the following:
-
-          * `units` (`pulumi.Input[str]`)
-          * `value` (`pulumi.Input[float]`) - The value for the lifetime of the security association. Must be a positive integer.
-            Default is 3600.
+        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -148,13 +103,26 @@ class IkePolicy(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, auth_algorithm=None, description=None, encryption_algorithm=None, ike_version=None, lifetimes=None, name=None, pfs=None, phase1_negotiation_mode=None, region=None, tenant_id=None, value_specs=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auth_algorithm: Optional[pulumi.Input[str]] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            encryption_algorithm: Optional[pulumi.Input[str]] = None,
+            ike_version: Optional[pulumi.Input[str]] = None,
+            lifetimes: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['IkePolicyLifetimeArgs']]]]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            pfs: Optional[pulumi.Input[str]] = None,
+            phase1_negotiation_mode: Optional[pulumi.Input[str]] = None,
+            region: Optional[pulumi.Input[str]] = None,
+            tenant_id: Optional[pulumi.Input[str]] = None,
+            value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'IkePolicy':
         """
         Get an existing IkePolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] auth_algorithm: The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.
                Default is sha1. Changing this updates the algorithm of the existing policy.
@@ -164,7 +132,7 @@ class IkePolicy(pulumi.CustomResource):
                The default value is aes-128. Changing this updates the existing policy.
         :param pulumi.Input[str] ike_version: The IKE mode. A valid value is v1 or v2. Default is v1.
                Changing this updates the existing policy.
-        :param pulumi.Input[list] lifetimes: The lifetime of the security association. Consists of Unit and Value.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['IkePolicyLifetimeArgs']]]] lifetimes: The lifetime of the security association. Consists of Unit and Value.
         :param pulumi.Input[str] name: The name of the policy. Changing this updates the name of
                the existing policy.
         :param pulumi.Input[str] pfs: The perfect forward secrecy mode. Valid values are Group2, Group5 and Group14. Default is Group5.
@@ -177,13 +145,7 @@ class IkePolicy(pulumi.CustomResource):
                service.
         :param pulumi.Input[str] tenant_id: The owner of the policy. Required if admin wants to
                create a service for another policy. Changing this creates a new policy.
-        :param pulumi.Input[dict] value_specs: Map of additional options.
-
-        The **lifetimes** object supports the following:
-
-          * `units` (`pulumi.Input[str]`)
-          * `value` (`pulumi.Input[float]`) - The value for the lifetime of the security association. Must be a positive integer.
-            Default is 3600.
+        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -202,8 +164,108 @@ class IkePolicy(pulumi.CustomResource):
         __props__["value_specs"] = value_specs
         return IkePolicy(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="authAlgorithm")
+    def auth_algorithm(self) -> Optional[str]:
+        """
+        The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.
+        Default is sha1. Changing this updates the algorithm of the existing policy.
+        """
+        return pulumi.get(self, "auth_algorithm")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        The human-readable description for the policy.
+        Changing this updates the description of the existing policy.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="encryptionAlgorithm")
+    def encryption_algorithm(self) -> Optional[str]:
+        """
+        The encryption algorithm. Valid values are 3des, aes-128, aes-192 and so on.
+        The default value is aes-128. Changing this updates the existing policy.
+        """
+        return pulumi.get(self, "encryption_algorithm")
+
+    @property
+    @pulumi.getter(name="ikeVersion")
+    def ike_version(self) -> Optional[str]:
+        """
+        The IKE mode. A valid value is v1 or v2. Default is v1.
+        Changing this updates the existing policy.
+        """
+        return pulumi.get(self, "ike_version")
+
+    @property
+    @pulumi.getter
+    def lifetimes(self) -> List['outputs.IkePolicyLifetime']:
+        """
+        The lifetime of the security association. Consists of Unit and Value.
+        """
+        return pulumi.get(self, "lifetimes")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the policy. Changing this updates the name of
+        the existing policy.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def pfs(self) -> Optional[str]:
+        """
+        The perfect forward secrecy mode. Valid values are Group2, Group5 and Group14. Default is Group5.
+        Changing this updates the existing policy.
+        """
+        return pulumi.get(self, "pfs")
+
+    @property
+    @pulumi.getter(name="phase1NegotiationMode")
+    def phase1_negotiation_mode(self) -> Optional[str]:
+        """
+        The IKE mode. A valid value is main, which is the default.
+        Changing this updates the existing policy.
+        """
+        return pulumi.get(self, "phase1_negotiation_mode")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The region in which to obtain the V2 Networking client.
+        A Networking client is needed to create a VPN service. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        service.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> str:
+        """
+        The owner of the policy. Required if admin wants to
+        create a service for another policy. Changing this creates a new policy.
+        """
+        return pulumi.get(self, "tenant_id")
+
+    @property
+    @pulumi.getter(name="valueSpecs")
+    def value_specs(self) -> Optional[Mapping[str, Any]]:
+        """
+        Map of additional options.
+        """
+        return pulumi.get(self, "value_specs")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

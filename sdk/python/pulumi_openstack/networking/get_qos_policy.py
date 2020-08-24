@@ -5,10 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
 
+__all__ = [
+    'GetQosPolicyResult',
+    'AwaitableGetQosPolicyResult',
+    'get_qos_policy',
+]
 
+@pulumi.output_type
 class GetQosPolicyResult:
     """
     A collection of values returned by getQosPolicy.
@@ -16,70 +22,130 @@ class GetQosPolicyResult:
     def __init__(__self__, all_tags=None, created_at=None, description=None, id=None, is_default=None, name=None, project_id=None, region=None, revision_number=None, shared=None, tags=None, updated_at=None):
         if all_tags and not isinstance(all_tags, list):
             raise TypeError("Expected argument 'all_tags' to be a list")
-        __self__.all_tags = all_tags
+        pulumi.set(__self__, "all_tags", all_tags)
+        if created_at and not isinstance(created_at, str):
+            raise TypeError("Expected argument 'created_at' to be a str")
+        pulumi.set(__self__, "created_at", created_at)
+        if description and not isinstance(description, str):
+            raise TypeError("Expected argument 'description' to be a str")
+        pulumi.set(__self__, "description", description)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if is_default and not isinstance(is_default, bool):
+            raise TypeError("Expected argument 'is_default' to be a bool")
+        pulumi.set(__self__, "is_default", is_default)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if project_id and not isinstance(project_id, str):
+            raise TypeError("Expected argument 'project_id' to be a str")
+        pulumi.set(__self__, "project_id", project_id)
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        pulumi.set(__self__, "region", region)
+        if revision_number and not isinstance(revision_number, float):
+            raise TypeError("Expected argument 'revision_number' to be a float")
+        pulumi.set(__self__, "revision_number", revision_number)
+        if shared and not isinstance(shared, bool):
+            raise TypeError("Expected argument 'shared' to be a bool")
+        pulumi.set(__self__, "shared", shared)
+        if tags and not isinstance(tags, list):
+            raise TypeError("Expected argument 'tags' to be a list")
+        pulumi.set(__self__, "tags", tags)
+        if updated_at and not isinstance(updated_at, str):
+            raise TypeError("Expected argument 'updated_at' to be a str")
+        pulumi.set(__self__, "updated_at", updated_at)
+
+    @property
+    @pulumi.getter(name="allTags")
+    def all_tags(self) -> List[str]:
         """
         The set of string tags applied on the QoS policy.
         """
-        if created_at and not isinstance(created_at, str):
-            raise TypeError("Expected argument 'created_at' to be a str")
-        __self__.created_at = created_at
+        return pulumi.get(self, "all_tags")
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> str:
         """
         The time at which QoS policy was created.
         """
-        if description and not isinstance(description, str):
-            raise TypeError("Expected argument 'description' to be a str")
-        __self__.description = description
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
         """
         See Argument Reference above.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if is_default and not isinstance(is_default, bool):
-            raise TypeError("Expected argument 'is_default' to be a bool")
-        __self__.is_default = is_default
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="isDefault")
+    def is_default(self) -> bool:
         """
         See Argument Reference above.
         """
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
+        return pulumi.get(self, "is_default")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
         """
         See Argument Reference above.
         """
-        if project_id and not isinstance(project_id, str):
-            raise TypeError("Expected argument 'project_id' to be a str")
-        __self__.project_id = project_id
-        if region and not isinstance(region, str):
-            raise TypeError("Expected argument 'region' to be a str")
-        __self__.region = region
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
         """
         See Argument Reference above.
         """
-        if revision_number and not isinstance(revision_number, float):
-            raise TypeError("Expected argument 'revision_number' to be a float")
-        __self__.revision_number = revision_number
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="revisionNumber")
+    def revision_number(self) -> float:
         """
         The revision number of the QoS policy.
         """
-        if shared and not isinstance(shared, bool):
-            raise TypeError("Expected argument 'shared' to be a bool")
-        __self__.shared = shared
+        return pulumi.get(self, "revision_number")
+
+    @property
+    @pulumi.getter
+    def shared(self) -> bool:
         """
         See Argument Reference above.
         """
-        if tags and not isinstance(tags, list):
-            raise TypeError("Expected argument 'tags' to be a list")
-        __self__.tags = tags
-        if updated_at and not isinstance(updated_at, str):
-            raise TypeError("Expected argument 'updated_at' to be a str")
-        __self__.updated_at = updated_at
+        return pulumi.get(self, "shared")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[List[str]]:
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> str:
         """
         The time at which QoS policy was created.
         """
+        return pulumi.get(self, "updated_at")
 
 
 class AwaitableGetQosPolicyResult(GetQosPolicyResult):
@@ -102,7 +168,14 @@ class AwaitableGetQosPolicyResult(GetQosPolicyResult):
             updated_at=self.updated_at)
 
 
-def get_qos_policy(description=None, is_default=None, name=None, project_id=None, region=None, shared=None, tags=None, opts=None):
+def get_qos_policy(description: Optional[str] = None,
+                   is_default: Optional[bool] = None,
+                   name: Optional[str] = None,
+                   project_id: Optional[str] = None,
+                   region: Optional[str] = None,
+                   shared: Optional[bool] = None,
+                   tags: Optional[List[str]] = None,
+                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetQosPolicyResult:
     """
     Use this data source to get the ID of an available OpenStack QoS policy.
 
@@ -124,7 +197,7 @@ def get_qos_policy(description=None, is_default=None, name=None, project_id=None
            A Networking client is needed to retrieve a QoS policy ID. If omitted, the
            `region` argument of the provider is used.
     :param bool shared: Whether this QoS policy is shared across all projects.
-    :param list tags: The list of QoS policy tags to filter.
+    :param List[str] tags: The list of QoS policy tags to filter.
     """
     __args__ = dict()
     __args__['description'] = description
@@ -138,18 +211,18 @@ def get_qos_policy(description=None, is_default=None, name=None, project_id=None
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('openstack:networking/getQosPolicy:getQosPolicy', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('openstack:networking/getQosPolicy:getQosPolicy', __args__, opts=opts, typ=GetQosPolicyResult).value
 
     return AwaitableGetQosPolicyResult(
-        all_tags=__ret__.get('allTags'),
-        created_at=__ret__.get('createdAt'),
-        description=__ret__.get('description'),
-        id=__ret__.get('id'),
-        is_default=__ret__.get('isDefault'),
-        name=__ret__.get('name'),
-        project_id=__ret__.get('projectId'),
-        region=__ret__.get('region'),
-        revision_number=__ret__.get('revisionNumber'),
-        shared=__ret__.get('shared'),
-        tags=__ret__.get('tags'),
-        updated_at=__ret__.get('updatedAt'))
+        all_tags=__ret__.all_tags,
+        created_at=__ret__.created_at,
+        description=__ret__.description,
+        id=__ret__.id,
+        is_default=__ret__.is_default,
+        name=__ret__.name,
+        project_id=__ret__.project_id,
+        region=__ret__.region,
+        revision_number=__ret__.revision_number,
+        shared=__ret__.shared,
+        tags=__ret__.tags,
+        updated_at=__ret__.updated_at)

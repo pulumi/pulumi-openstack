@@ -5,10 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
 
+__all__ = [
+    'GetPolicyResult',
+    'AwaitableGetPolicyResult',
+    'get_policy',
+]
 
+@pulumi.output_type
 class GetPolicyResult:
     """
     A collection of values returned by getPolicy.
@@ -16,58 +22,103 @@ class GetPolicyResult:
     def __init__(__self__, audited=None, description=None, id=None, name=None, policy_id=None, region=None, rules=None, shared=None, tenant_id=None):
         if audited and not isinstance(audited, bool):
             raise TypeError("Expected argument 'audited' to be a bool")
-        __self__.audited = audited
+        pulumi.set(__self__, "audited", audited)
+        if description and not isinstance(description, str):
+            raise TypeError("Expected argument 'description' to be a str")
+        pulumi.set(__self__, "description", description)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if policy_id and not isinstance(policy_id, str):
+            raise TypeError("Expected argument 'policy_id' to be a str")
+        pulumi.set(__self__, "policy_id", policy_id)
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        pulumi.set(__self__, "region", region)
+        if rules and not isinstance(rules, list):
+            raise TypeError("Expected argument 'rules' to be a list")
+        pulumi.set(__self__, "rules", rules)
+        if shared and not isinstance(shared, bool):
+            raise TypeError("Expected argument 'shared' to be a bool")
+        pulumi.set(__self__, "shared", shared)
+        if tenant_id and not isinstance(tenant_id, str):
+            raise TypeError("Expected argument 'tenant_id' to be a str")
+        pulumi.set(__self__, "tenant_id", tenant_id)
+
+    @property
+    @pulumi.getter
+    def audited(self) -> bool:
         """
         The audit status of the firewall policy.
         """
-        if description and not isinstance(description, str):
-            raise TypeError("Expected argument 'description' to be a str")
-        __self__.description = description
+        return pulumi.get(self, "audited")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
         """
         The description of the firewall policy.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
         """
         See Argument Reference above.
         """
-        if policy_id and not isinstance(policy_id, str):
-            raise TypeError("Expected argument 'policy_id' to be a str")
-        __self__.policy_id = policy_id
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="policyId")
+    def policy_id(self) -> Optional[str]:
         """
         See Argument Reference above.
         """
-        if region and not isinstance(region, str):
-            raise TypeError("Expected argument 'region' to be a str")
-        __self__.region = region
+        return pulumi.get(self, "policy_id")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
         """
         See Argument Reference above.
         """
-        if rules and not isinstance(rules, list):
-            raise TypeError("Expected argument 'rules' to be a list")
-        __self__.rules = rules
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def rules(self) -> List[str]:
         """
         The array of one or more firewall rules that comprise the policy.
         """
-        if shared and not isinstance(shared, bool):
-            raise TypeError("Expected argument 'shared' to be a bool")
-        __self__.shared = shared
+        return pulumi.get(self, "rules")
+
+    @property
+    @pulumi.getter
+    def shared(self) -> bool:
         """
         The sharing status of the firewall policy.
         """
-        if tenant_id and not isinstance(tenant_id, str):
-            raise TypeError("Expected argument 'tenant_id' to be a str")
-        __self__.tenant_id = tenant_id
+        return pulumi.get(self, "shared")
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> str:
         """
         See Argument Reference above.
         """
+        return pulumi.get(self, "tenant_id")
 
 
 class AwaitableGetPolicyResult(GetPolicyResult):
@@ -87,7 +138,11 @@ class AwaitableGetPolicyResult(GetPolicyResult):
             tenant_id=self.tenant_id)
 
 
-def get_policy(name=None, policy_id=None, region=None, tenant_id=None, opts=None):
+def get_policy(name: Optional[str] = None,
+               policy_id: Optional[str] = None,
+               region: Optional[str] = None,
+               tenant_id: Optional[str] = None,
+               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPolicyResult:
     """
     Use this data source to get firewall policy information of an available OpenStack firewall policy.
 
@@ -117,15 +172,15 @@ def get_policy(name=None, policy_id=None, region=None, tenant_id=None, opts=None
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('openstack:firewall/getPolicy:getPolicy', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('openstack:firewall/getPolicy:getPolicy', __args__, opts=opts, typ=GetPolicyResult).value
 
     return AwaitableGetPolicyResult(
-        audited=__ret__.get('audited'),
-        description=__ret__.get('description'),
-        id=__ret__.get('id'),
-        name=__ret__.get('name'),
-        policy_id=__ret__.get('policyId'),
-        region=__ret__.get('region'),
-        rules=__ret__.get('rules'),
-        shared=__ret__.get('shared'),
-        tenant_id=__ret__.get('tenantId'))
+        audited=__ret__.audited,
+        description=__ret__.description,
+        id=__ret__.id,
+        name=__ret__.name,
+        policy_id=__ret__.policy_id,
+        region=__ret__.region,
+        rules=__ret__.rules,
+        shared=__ret__.shared,
+        tenant_id=__ret__.tenant_id)

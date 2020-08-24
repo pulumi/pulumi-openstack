@@ -5,65 +5,29 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['SecurityService']
 
 
 class SecurityService(pulumi.CustomResource):
-    description: pulumi.Output[str]
-    """
-    The human-readable description for the security service.
-    Changing this updates the description of the existing security service.
-    """
-    dns_ip: pulumi.Output[str]
-    """
-    The security service DNS IP address that is used inside the
-    tenant network.
-    """
-    domain: pulumi.Output[str]
-    """
-    The security service domain.
-    """
-    name: pulumi.Output[str]
-    """
-    The name of the security service. Changing this updates the name
-    of the existing security service.
-    """
-    ou: pulumi.Output[str]
-    """
-    The security service ou. An organizational unit can be added to
-    specify where the share ends up. New in Manila microversion 2.44.
-    """
-    password: pulumi.Output[str]
-    """
-    The user password, if you specify a user.
-    """
-    project_id: pulumi.Output[str]
-    """
-    The owner of the Security Service.
-    """
-    region: pulumi.Output[str]
-    """
-    The region in which to obtain the V2 Shared File System client.
-    A Shared File System client is needed to create a security service. If omitted, the
-    `region` argument of the provider is used. Changing this creates a new
-    security service.
-    """
-    server: pulumi.Output[str]
-    """
-    The security service host name or IP address.
-    """
-    type: pulumi.Output[str]
-    """
-    The security service type - can either be active\_directory,
-    kerberos or ldap.  Changing this updates the existing security service.
-    """
-    user: pulumi.Output[str]
-    """
-    The security service user or group name that is used by the
-    tenant.
-    """
-    def __init__(__self__, resource_name, opts=None, description=None, dns_ip=None, domain=None, name=None, ou=None, password=None, region=None, server=None, type=None, user=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 dns_ip: Optional[pulumi.Input[str]] = None,
+                 domain: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 ou: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 server: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 user: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Use this resource to configure a security service.
 
@@ -150,13 +114,26 @@ class SecurityService(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, description=None, dns_ip=None, domain=None, name=None, ou=None, password=None, project_id=None, region=None, server=None, type=None, user=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            dns_ip: Optional[pulumi.Input[str]] = None,
+            domain: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            ou: Optional[pulumi.Input[str]] = None,
+            password: Optional[pulumi.Input[str]] = None,
+            project_id: Optional[pulumi.Input[str]] = None,
+            region: Optional[pulumi.Input[str]] = None,
+            server: Optional[pulumi.Input[str]] = None,
+            type: Optional[pulumi.Input[str]] = None,
+            user: Optional[pulumi.Input[str]] = None) -> 'SecurityService':
         """
         Get an existing SecurityService resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The human-readable description for the security service.
                Changing this updates the description of the existing security service.
@@ -196,8 +173,106 @@ class SecurityService(pulumi.CustomResource):
         __props__["user"] = user
         return SecurityService(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        The human-readable description for the security service.
+        Changing this updates the description of the existing security service.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="dnsIp")
+    def dns_ip(self) -> Optional[str]:
+        """
+        The security service DNS IP address that is used inside the
+        tenant network.
+        """
+        return pulumi.get(self, "dns_ip")
+
+    @property
+    @pulumi.getter
+    def domain(self) -> Optional[str]:
+        """
+        The security service domain.
+        """
+        return pulumi.get(self, "domain")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the security service. Changing this updates the name
+        of the existing security service.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def ou(self) -> Optional[str]:
+        """
+        The security service ou. An organizational unit can be added to
+        specify where the share ends up. New in Manila microversion 2.44.
+        """
+        return pulumi.get(self, "ou")
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[str]:
+        """
+        The user password, if you specify a user.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        """
+        The owner of the Security Service.
+        """
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The region in which to obtain the V2 Shared File System client.
+        A Shared File System client is needed to create a security service. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        security service.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def server(self) -> Optional[str]:
+        """
+        The security service host name or IP address.
+        """
+        return pulumi.get(self, "server")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The security service type - can either be active\_directory,
+        kerberos or ldap.  Changing this updates the existing security service.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def user(self) -> Optional[str]:
+        """
+        The security service user or group name that is used by the
+        tenant.
+        """
+        return pulumi.get(self, "user")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

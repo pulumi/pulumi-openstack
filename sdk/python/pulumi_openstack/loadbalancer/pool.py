@@ -5,73 +5,31 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['Pool']
 
 
 class Pool(pulumi.CustomResource):
-    admin_state_up: pulumi.Output[bool]
-    """
-    The administrative state of the pool.
-    A valid value is true (UP) or false (DOWN).
-    """
-    description: pulumi.Output[str]
-    """
-    Human-readable description for the pool.
-    """
-    lb_method: pulumi.Output[str]
-    """
-    The load balancing algorithm to
-    distribute traffic to the pool's members. Must be one of
-    ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT (supported only
-    in Octavia).
-    """
-    listener_id: pulumi.Output[str]
-    """
-    The Listener on which the members of the pool
-    will be associated with. Changing this creates a new pool.
-    Note:  One of LoadbalancerID or ListenerID must be provided.
-    """
-    loadbalancer_id: pulumi.Output[str]
-    """
-    The load balancer on which to provision this
-    pool. Changing this creates a new pool.
-    Note:  One of LoadbalancerID or ListenerID must be provided.
-    """
-    name: pulumi.Output[str]
-    """
-    Human-readable name for the pool.
-    """
-    persistence: pulumi.Output[dict]
-    """
-    Omit this field to prevent session persistence.  Indicates
-    whether connections in the same session will be processed by the same Pool
-    member or not. Changing this creates a new pool.
-
-      * `cookieName` (`str`) - The name of the cookie if persistence mode is set
-        appropriately. Required if `type = APP_COOKIE`.
-      * `type` (`str`) - The type of persistence mode. The current specification
-        supports SOURCE_IP, HTTP_COOKIE, and APP_COOKIE.
-    """
-    protocol: pulumi.Output[str]
-    """
-    The protocol - can either be TCP, HTTP, HTTPS, PROXY
-    or UDP (supported only in Octavia). Changing this creates a new pool.
-    """
-    region: pulumi.Output[str]
-    """
-    The region in which to obtain the V2 Networking client.
-    A Networking client is needed to create an . If omitted, the
-    `region` argument of the provider is used. Changing this creates a new
-    pool.
-    """
-    tenant_id: pulumi.Output[str]
-    """
-    Required for admins. The UUID of the tenant who owns
-    the pool.  Only administrative users can specify a tenant UUID
-    other than their own. Changing this creates a new pool.
-    """
-    def __init__(__self__, resource_name, opts=None, admin_state_up=None, description=None, lb_method=None, listener_id=None, loadbalancer_id=None, name=None, persistence=None, protocol=None, region=None, tenant_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 admin_state_up: Optional[pulumi.Input[bool]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 lb_method: Optional[pulumi.Input[str]] = None,
+                 listener_id: Optional[pulumi.Input[str]] = None,
+                 loadbalancer_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 persistence: Optional[pulumi.Input[pulumi.InputType['PoolPersistenceArgs']]] = None,
+                 protocol: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 tenant_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a V2 pool resource within OpenStack.
 
@@ -84,10 +42,10 @@ class Pool(pulumi.CustomResource):
         pool1 = openstack.loadbalancer.Pool("pool1",
             lb_method="ROUND_ROBIN",
             listener_id="d9415786-5f1a-428b-b35f-2f1523e146d2",
-            persistence={
-                "cookieName": "testCookie",
-                "type": "APP_COOKIE",
-            },
+            persistence=openstack.loadbalancer.PoolPersistenceArgs(
+                cookie_name="testCookie",
+                type="APP_COOKIE",
+            ),
             protocol="HTTP")
         ```
 
@@ -107,7 +65,7 @@ class Pool(pulumi.CustomResource):
                pool. Changing this creates a new pool.
                Note:  One of LoadbalancerID or ListenerID must be provided.
         :param pulumi.Input[str] name: Human-readable name for the pool.
-        :param pulumi.Input[dict] persistence: Omit this field to prevent session persistence.  Indicates
+        :param pulumi.Input[pulumi.InputType['PoolPersistenceArgs']] persistence: Omit this field to prevent session persistence.  Indicates
                whether connections in the same session will be processed by the same Pool
                member or not. Changing this creates a new pool.
         :param pulumi.Input[str] protocol: The protocol - can either be TCP, HTTP, HTTPS, PROXY
@@ -119,13 +77,6 @@ class Pool(pulumi.CustomResource):
         :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
                the pool.  Only administrative users can specify a tenant UUID
                other than their own. Changing this creates a new pool.
-
-        The **persistence** object supports the following:
-
-          * `cookieName` (`pulumi.Input[str]`) - The name of the cookie if persistence mode is set
-            appropriately. Required if `type = APP_COOKIE`.
-          * `type` (`pulumi.Input[str]`) - The type of persistence mode. The current specification
-            supports SOURCE_IP, HTTP_COOKIE, and APP_COOKIE.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -165,13 +116,25 @@ class Pool(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, admin_state_up=None, description=None, lb_method=None, listener_id=None, loadbalancer_id=None, name=None, persistence=None, protocol=None, region=None, tenant_id=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            admin_state_up: Optional[pulumi.Input[bool]] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            lb_method: Optional[pulumi.Input[str]] = None,
+            listener_id: Optional[pulumi.Input[str]] = None,
+            loadbalancer_id: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            persistence: Optional[pulumi.Input[pulumi.InputType['PoolPersistenceArgs']]] = None,
+            protocol: Optional[pulumi.Input[str]] = None,
+            region: Optional[pulumi.Input[str]] = None,
+            tenant_id: Optional[pulumi.Input[str]] = None) -> 'Pool':
         """
         Get an existing Pool resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] admin_state_up: The administrative state of the pool.
                A valid value is true (UP) or false (DOWN).
@@ -187,7 +150,7 @@ class Pool(pulumi.CustomResource):
                pool. Changing this creates a new pool.
                Note:  One of LoadbalancerID or ListenerID must be provided.
         :param pulumi.Input[str] name: Human-readable name for the pool.
-        :param pulumi.Input[dict] persistence: Omit this field to prevent session persistence.  Indicates
+        :param pulumi.Input[pulumi.InputType['PoolPersistenceArgs']] persistence: Omit this field to prevent session persistence.  Indicates
                whether connections in the same session will be processed by the same Pool
                member or not. Changing this creates a new pool.
         :param pulumi.Input[str] protocol: The protocol - can either be TCP, HTTP, HTTPS, PROXY
@@ -199,13 +162,6 @@ class Pool(pulumi.CustomResource):
         :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
                the pool.  Only administrative users can specify a tenant UUID
                other than their own. Changing this creates a new pool.
-
-        The **persistence** object supports the following:
-
-          * `cookieName` (`pulumi.Input[str]`) - The name of the cookie if persistence mode is set
-            appropriately. Required if `type = APP_COOKIE`.
-          * `type` (`pulumi.Input[str]`) - The type of persistence mode. The current specification
-            supports SOURCE_IP, HTTP_COOKIE, and APP_COOKIE.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -223,8 +179,105 @@ class Pool(pulumi.CustomResource):
         __props__["tenant_id"] = tenant_id
         return Pool(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="adminStateUp")
+    def admin_state_up(self) -> Optional[bool]:
+        """
+        The administrative state of the pool.
+        A valid value is true (UP) or false (DOWN).
+        """
+        return pulumi.get(self, "admin_state_up")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        Human-readable description for the pool.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="lbMethod")
+    def lb_method(self) -> str:
+        """
+        The load balancing algorithm to
+        distribute traffic to the pool's members. Must be one of
+        ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT (supported only
+        in Octavia).
+        """
+        return pulumi.get(self, "lb_method")
+
+    @property
+    @pulumi.getter(name="listenerId")
+    def listener_id(self) -> Optional[str]:
+        """
+        The Listener on which the members of the pool
+        will be associated with. Changing this creates a new pool.
+        Note:  One of LoadbalancerID or ListenerID must be provided.
+        """
+        return pulumi.get(self, "listener_id")
+
+    @property
+    @pulumi.getter(name="loadbalancerId")
+    def loadbalancer_id(self) -> Optional[str]:
+        """
+        The load balancer on which to provision this
+        pool. Changing this creates a new pool.
+        Note:  One of LoadbalancerID or ListenerID must be provided.
+        """
+        return pulumi.get(self, "loadbalancer_id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Human-readable name for the pool.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def persistence(self) -> 'outputs.PoolPersistence':
+        """
+        Omit this field to prevent session persistence.  Indicates
+        whether connections in the same session will be processed by the same Pool
+        member or not. Changing this creates a new pool.
+        """
+        return pulumi.get(self, "persistence")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> str:
+        """
+        The protocol - can either be TCP, HTTP, HTTPS, PROXY
+        or UDP (supported only in Octavia). Changing this creates a new pool.
+        """
+        return pulumi.get(self, "protocol")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The region in which to obtain the V2 Networking client.
+        A Networking client is needed to create an . If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        pool.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> str:
+        """
+        Required for admins. The UUID of the tenant who owns
+        the pool.  Only administrative users can specify a tenant UUID
+        other than their own. Changing this creates a new pool.
+        """
+        return pulumi.get(self, "tenant_id")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

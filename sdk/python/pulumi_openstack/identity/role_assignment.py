@@ -5,33 +5,25 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['RoleAssignment']
 
 
 class RoleAssignment(pulumi.CustomResource):
-    domain_id: pulumi.Output[str]
-    """
-    The domain to assign the role in.
-    """
-    group_id: pulumi.Output[str]
-    """
-    The group to assign the role to.
-    """
-    project_id: pulumi.Output[str]
-    """
-    The project to assign the role in.
-    """
-    region: pulumi.Output[str]
-    role_id: pulumi.Output[str]
-    """
-    The role to assign.
-    """
-    user_id: pulumi.Output[str]
-    """
-    The user to assign the role to.
-    """
-    def __init__(__self__, resource_name, opts=None, domain_id=None, group_id=None, project_id=None, region=None, role_id=None, user_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 domain_id: Optional[pulumi.Input[str]] = None,
+                 group_id: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 role_id: Optional[pulumi.Input[str]] = None,
+                 user_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a V3 Role assignment within OpenStack Keystone.
 
@@ -93,13 +85,21 @@ class RoleAssignment(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, domain_id=None, group_id=None, project_id=None, region=None, role_id=None, user_id=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            domain_id: Optional[pulumi.Input[str]] = None,
+            group_id: Optional[pulumi.Input[str]] = None,
+            project_id: Optional[pulumi.Input[str]] = None,
+            region: Optional[pulumi.Input[str]] = None,
+            role_id: Optional[pulumi.Input[str]] = None,
+            user_id: Optional[pulumi.Input[str]] = None) -> 'RoleAssignment':
         """
         Get an existing RoleAssignment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] domain_id: The domain to assign the role in.
         :param pulumi.Input[str] group_id: The group to assign the role to.
@@ -119,8 +119,54 @@ class RoleAssignment(pulumi.CustomResource):
         __props__["user_id"] = user_id
         return RoleAssignment(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="domainId")
+    def domain_id(self) -> Optional[str]:
+        """
+        The domain to assign the role in.
+        """
+        return pulumi.get(self, "domain_id")
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[str]:
+        """
+        The group to assign the role to.
+        """
+        return pulumi.get(self, "group_id")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[str]:
+        """
+        The project to assign the role in.
+        """
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="roleId")
+    def role_id(self) -> str:
+        """
+        The role to assign.
+        """
+        return pulumi.get(self, "role_id")
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> Optional[str]:
+        """
+        The user to assign the role to.
+        """
+        return pulumi.get(self, "user_id")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

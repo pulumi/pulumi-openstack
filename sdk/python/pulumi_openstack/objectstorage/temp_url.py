@@ -5,45 +5,26 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['TempUrl']
 
 
 class TempUrl(pulumi.CustomResource):
-    container: pulumi.Output[str]
-    """
-    The container name the object belongs to.
-    """
-    method: pulumi.Output[str]
-    """
-    The method allowed when accessing this URL.
-    Valid values are `GET`, and `POST`. Default is `GET`.
-    """
-    object: pulumi.Output[str]
-    """
-    The object name the tempurl is for.
-    """
-    regenerate: pulumi.Output[bool]
-    """
-    Whether to automatically regenerate the URL when
-    it has expired. If set to true, this will create a new resource with a new
-    ID and new URL. Defaults to false.
-    """
-    region: pulumi.Output[str]
-    """
-    The region the tempurl is located in.
-    """
-    split: pulumi.Output[str]
-    ttl: pulumi.Output[float]
-    """
-    The TTL, in seconds, for the URL. For how long it should
-    be valid.
-    """
-    url: pulumi.Output[str]
-    """
-    The URL
-    """
-    def __init__(__self__, resource_name, opts=None, container=None, method=None, object=None, regenerate=None, region=None, split=None, ttl=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 container: Optional[pulumi.Input[str]] = None,
+                 method: Optional[pulumi.Input[str]] = None,
+                 object: Optional[pulumi.Input[str]] = None,
+                 regenerate: Optional[pulumi.Input[bool]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 split: Optional[pulumi.Input[str]] = None,
+                 ttl: Optional[pulumi.Input[float]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Use this resource to generate an OpenStack Object Storage temporary URL.
 
@@ -123,13 +104,23 @@ class TempUrl(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, container=None, method=None, object=None, regenerate=None, region=None, split=None, ttl=None, url=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            container: Optional[pulumi.Input[str]] = None,
+            method: Optional[pulumi.Input[str]] = None,
+            object: Optional[pulumi.Input[str]] = None,
+            regenerate: Optional[pulumi.Input[bool]] = None,
+            region: Optional[pulumi.Input[str]] = None,
+            split: Optional[pulumi.Input[str]] = None,
+            ttl: Optional[pulumi.Input[float]] = None,
+            url: Optional[pulumi.Input[str]] = None) -> 'TempUrl':
         """
         Get an existing TempUrl resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] container: The container name the object belongs to.
         :param pulumi.Input[str] method: The method allowed when accessing this URL.
@@ -157,8 +148,74 @@ class TempUrl(pulumi.CustomResource):
         __props__["url"] = url
         return TempUrl(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def container(self) -> str:
+        """
+        The container name the object belongs to.
+        """
+        return pulumi.get(self, "container")
+
+    @property
+    @pulumi.getter
+    def method(self) -> Optional[str]:
+        """
+        The method allowed when accessing this URL.
+        Valid values are `GET`, and `POST`. Default is `GET`.
+        """
+        return pulumi.get(self, "method")
+
+    @property
+    @pulumi.getter
+    def object(self) -> str:
+        """
+        The object name the tempurl is for.
+        """
+        return pulumi.get(self, "object")
+
+    @property
+    @pulumi.getter
+    def regenerate(self) -> Optional[bool]:
+        """
+        Whether to automatically regenerate the URL when
+        it has expired. If set to true, this will create a new resource with a new
+        ID and new URL. Defaults to false.
+        """
+        return pulumi.get(self, "regenerate")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The region the tempurl is located in.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def split(self) -> Optional[str]:
+        return pulumi.get(self, "split")
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> float:
+        """
+        The TTL, in seconds, for the URL. For how long it should
+        be valid.
+        """
+        return pulumi.get(self, "ttl")
+
+    @property
+    @pulumi.getter
+    def url(self) -> str:
+        """
+        The URL
+        """
+        return pulumi.get(self, "url")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

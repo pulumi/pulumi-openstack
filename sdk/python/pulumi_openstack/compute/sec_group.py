@@ -5,54 +5,25 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['SecGroup']
 
 
 class SecGroup(pulumi.CustomResource):
-    description: pulumi.Output[str]
-    """
-    A description for the security group. Changing this
-    updates the `description` of an existing security group.
-    """
-    name: pulumi.Output[str]
-    """
-    A unique name for the security group. Changing this
-    updates the `name` of an existing security group.
-    """
-    region: pulumi.Output[str]
-    """
-    The region in which to obtain the V2 Compute client.
-    A Compute client is needed to create a security group. If omitted, the
-    `region` argument of the provider is used. Changing this creates a new
-    security group.
-    """
-    rules: pulumi.Output[list]
-    """
-    A rule describing how the security group operates. The
-    rule object structure is documented below. Changing this updates the
-    security group rules. As shown in the example above, multiple rule blocks
-    may be used.
-
-      * `cidr` (`str`) - Required if `from_group_id` or `self` is empty. The IP range
-        that will be the source of network traffic to the security group. Use 0.0.0.0/0
-        to allow all IP addresses. Changing this creates a new security group rule. Cannot
-        be combined with `from_group_id` or `self`.
-      * `fromGroupId` (`str`) - Required if `cidr` or `self` is empty. The ID of a
-        group from which to forward traffic to the parent group. Changing this creates a
-        new security group rule. Cannot be combined with `cidr` or `self`.
-      * `fromPort` (`float`) - An integer representing the lower bound of the port
-        range to open. Changing this creates a new security group rule.
-      * `id` (`str`)
-      * `ipProtocol` (`str`) - The protocol type that will be allowed. Changing
-        this creates a new security group rule.
-      * `self` (`bool`) - Required if `cidr` and `from_group_id` is empty. If true,
-        the security group itself will be added as a source to this ingress rule. Cannot
-        be combined with `cidr` or `from_group_id`.
-      * `toPort` (`float`) - An integer representing the upper bound of the port
-        range to open. Changing this creates a new security group rule.
-    """
-    def __init__(__self__, resource_name, opts=None, description=None, name=None, region=None, rules=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['SecGroupRuleArgs']]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a V2 security group resource within OpenStack.
 
@@ -71,18 +42,18 @@ class SecGroup(pulumi.CustomResource):
         secgroup1 = openstack.compute.SecGroup("secgroup1",
             description="my security group",
             rules=[
-                {
-                    "cidr": "0.0.0.0/0",
-                    "fromPort": 22,
-                    "ipProtocol": "tcp",
-                    "toPort": 22,
-                },
-                {
-                    "cidr": "0.0.0.0/0",
-                    "fromPort": 80,
-                    "ipProtocol": "tcp",
-                    "toPort": 80,
-                },
+                openstack.compute.SecGroupRuleArgs(
+                    cidr="0.0.0.0/0",
+                    from_port=22,
+                    ip_protocol="tcp",
+                    to_port=22,
+                ),
+                openstack.compute.SecGroupRuleArgs(
+                    cidr="0.0.0.0/0",
+                    from_port=80,
+                    ip_protocol="tcp",
+                    to_port=80,
+                ),
             ])
         ```
         ## Notes
@@ -122,30 +93,10 @@ class SecGroup(pulumi.CustomResource):
                A Compute client is needed to create a security group. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
                security group.
-        :param pulumi.Input[list] rules: A rule describing how the security group operates. The
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['SecGroupRuleArgs']]]] rules: A rule describing how the security group operates. The
                rule object structure is documented below. Changing this updates the
                security group rules. As shown in the example above, multiple rule blocks
                may be used.
-
-        The **rules** object supports the following:
-
-          * `cidr` (`pulumi.Input[str]`) - Required if `from_group_id` or `self` is empty. The IP range
-            that will be the source of network traffic to the security group. Use 0.0.0.0/0
-            to allow all IP addresses. Changing this creates a new security group rule. Cannot
-            be combined with `from_group_id` or `self`.
-          * `fromGroupId` (`pulumi.Input[str]`) - Required if `cidr` or `self` is empty. The ID of a
-            group from which to forward traffic to the parent group. Changing this creates a
-            new security group rule. Cannot be combined with `cidr` or `self`.
-          * `fromPort` (`pulumi.Input[float]`) - An integer representing the lower bound of the port
-            range to open. Changing this creates a new security group rule.
-          * `id` (`pulumi.Input[str]`)
-          * `ipProtocol` (`pulumi.Input[str]`) - The protocol type that will be allowed. Changing
-            this creates a new security group rule.
-          * `self` (`pulumi.Input[bool]`) - Required if `cidr` and `from_group_id` is empty. If true,
-            the security group itself will be added as a source to this ingress rule. Cannot
-            be combined with `cidr` or `from_group_id`.
-          * `toPort` (`pulumi.Input[float]`) - An integer representing the upper bound of the port
-            range to open. Changing this creates a new security group rule.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -177,13 +128,19 @@ class SecGroup(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, description=None, name=None, region=None, rules=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            region: Optional[pulumi.Input[str]] = None,
+            rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['SecGroupRuleArgs']]]]] = None) -> 'SecGroup':
         """
         Get an existing SecGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description for the security group. Changing this
                updates the `description` of an existing security group.
@@ -193,30 +150,10 @@ class SecGroup(pulumi.CustomResource):
                A Compute client is needed to create a security group. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
                security group.
-        :param pulumi.Input[list] rules: A rule describing how the security group operates. The
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['SecGroupRuleArgs']]]] rules: A rule describing how the security group operates. The
                rule object structure is documented below. Changing this updates the
                security group rules. As shown in the example above, multiple rule blocks
                may be used.
-
-        The **rules** object supports the following:
-
-          * `cidr` (`pulumi.Input[str]`) - Required if `from_group_id` or `self` is empty. The IP range
-            that will be the source of network traffic to the security group. Use 0.0.0.0/0
-            to allow all IP addresses. Changing this creates a new security group rule. Cannot
-            be combined with `from_group_id` or `self`.
-          * `fromGroupId` (`pulumi.Input[str]`) - Required if `cidr` or `self` is empty. The ID of a
-            group from which to forward traffic to the parent group. Changing this creates a
-            new security group rule. Cannot be combined with `cidr` or `self`.
-          * `fromPort` (`pulumi.Input[float]`) - An integer representing the lower bound of the port
-            range to open. Changing this creates a new security group rule.
-          * `id` (`pulumi.Input[str]`)
-          * `ipProtocol` (`pulumi.Input[str]`) - The protocol type that will be allowed. Changing
-            this creates a new security group rule.
-          * `self` (`pulumi.Input[bool]`) - Required if `cidr` and `from_group_id` is empty. If true,
-            the security group itself will be added as a source to this ingress rule. Cannot
-            be combined with `cidr` or `from_group_id`.
-          * `toPort` (`pulumi.Input[float]`) - An integer representing the upper bound of the port
-            range to open. Changing this creates a new security group rule.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -228,8 +165,49 @@ class SecGroup(pulumi.CustomResource):
         __props__["rules"] = rules
         return SecGroup(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        A description for the security group. Changing this
+        updates the `description` of an existing security group.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        A unique name for the security group. Changing this
+        updates the `name` of an existing security group.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The region in which to obtain the V2 Compute client.
+        A Compute client is needed to create a security group. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        security group.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def rules(self) -> List['outputs.SecGroupRule']:
+        """
+        A rule describing how the security group operates. The
+        rule object structure is documented below. Changing this updates the
+        security group rules. As shown in the example above, multiple rule blocks
+        may be used.
+        """
+        return pulumi.get(self, "rules")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

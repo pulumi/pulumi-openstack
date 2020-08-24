@@ -38,3 +38,5 @@ from .subnet import *
 from .subnet_pool import *
 from .subnet_route import *
 from .trunk import *
+from ._inputs import *
+from . import outputs

@@ -5,73 +5,31 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['VolumeV1']
 
 
 class VolumeV1(pulumi.CustomResource):
-    attachments: pulumi.Output[list]
-    """
-    If a volume is attached to an instance, this attribute will
-    display the Attachment ID, Instance ID, and the Device as the Instance
-    sees it.
-
-      * `device` (`str`)
-      * `id` (`str`)
-      * `instance_id` (`str`)
-    """
-    availability_zone: pulumi.Output[str]
-    """
-    The availability zone for the volume.
-    Changing this creates a new volume.
-    """
-    description: pulumi.Output[str]
-    """
-    A description of the volume. Changing this updates
-    the volume's description.
-    """
-    image_id: pulumi.Output[str]
-    """
-    The image ID from which to create the volume.
-    Changing this creates a new volume.
-    """
-    metadata: pulumi.Output[dict]
-    """
-    Metadata key/value pairs to associate with the volume.
-    Changing this updates the existing volume metadata.
-    """
-    name: pulumi.Output[str]
-    """
-    A unique name for the volume. Changing this updates the
-    volume's name.
-    """
-    region: pulumi.Output[str]
-    """
-    The region in which to create the volume. If
-    omitted, the `region` argument of the provider is used. Changing this
-    creates a new volume.
-    """
-    size: pulumi.Output[float]
-    """
-    The size of the volume to create (in gigabytes). Changing
-    this creates a new volume.
-    """
-    snapshot_id: pulumi.Output[str]
-    """
-    The snapshot ID from which to create the volume.
-    Changing this creates a new volume.
-    """
-    source_vol_id: pulumi.Output[str]
-    """
-    The volume ID from which to create the volume.
-    Changing this creates a new volume.
-    """
-    volume_type: pulumi.Output[str]
-    """
-    The type of volume to create.
-    Changing this creates a new volume.
-    """
-    def __init__(__self__, resource_name, opts=None, availability_zone=None, description=None, image_id=None, metadata=None, name=None, region=None, size=None, snapshot_id=None, source_vol_id=None, volume_type=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 availability_zone: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 image_id: Optional[pulumi.Input[str]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 size: Optional[pulumi.Input[float]] = None,
+                 snapshot_id: Optional[pulumi.Input[str]] = None,
+                 source_vol_id: Optional[pulumi.Input[str]] = None,
+                 volume_type: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a V1 volume resource within OpenStack.
 
@@ -95,7 +53,7 @@ class VolumeV1(pulumi.CustomResource):
                the volume's description.
         :param pulumi.Input[str] image_id: The image ID from which to create the volume.
                Changing this creates a new volume.
-        :param pulumi.Input[dict] metadata: Metadata key/value pairs to associate with the volume.
+        :param pulumi.Input[Mapping[str, Any]] metadata: Metadata key/value pairs to associate with the volume.
                Changing this updates the existing volume metadata.
         :param pulumi.Input[str] name: A unique name for the volume. Changing this updates the
                volume's name.
@@ -148,15 +106,28 @@ class VolumeV1(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, attachments=None, availability_zone=None, description=None, image_id=None, metadata=None, name=None, region=None, size=None, snapshot_id=None, source_vol_id=None, volume_type=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            attachments: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['VolumeV1AttachmentArgs']]]]] = None,
+            availability_zone: Optional[pulumi.Input[str]] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            image_id: Optional[pulumi.Input[str]] = None,
+            metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            region: Optional[pulumi.Input[str]] = None,
+            size: Optional[pulumi.Input[float]] = None,
+            snapshot_id: Optional[pulumi.Input[str]] = None,
+            source_vol_id: Optional[pulumi.Input[str]] = None,
+            volume_type: Optional[pulumi.Input[str]] = None) -> 'VolumeV1':
         """
         Get an existing VolumeV1 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] attachments: If a volume is attached to an instance, this attribute will
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['VolumeV1AttachmentArgs']]]] attachments: If a volume is attached to an instance, this attribute will
                display the Attachment ID, Instance ID, and the Device as the Instance
                sees it.
         :param pulumi.Input[str] availability_zone: The availability zone for the volume.
@@ -165,7 +136,7 @@ class VolumeV1(pulumi.CustomResource):
                the volume's description.
         :param pulumi.Input[str] image_id: The image ID from which to create the volume.
                Changing this creates a new volume.
-        :param pulumi.Input[dict] metadata: Metadata key/value pairs to associate with the volume.
+        :param pulumi.Input[Mapping[str, Any]] metadata: Metadata key/value pairs to associate with the volume.
                Changing this updates the existing volume metadata.
         :param pulumi.Input[str] name: A unique name for the volume. Changing this updates the
                volume's name.
@@ -180,12 +151,6 @@ class VolumeV1(pulumi.CustomResource):
                Changing this creates a new volume.
         :param pulumi.Input[str] volume_type: The type of volume to create.
                Changing this creates a new volume.
-
-        The **attachments** object supports the following:
-
-          * `device` (`pulumi.Input[str]`)
-          * `id` (`pulumi.Input[str]`)
-          * `instance_id` (`pulumi.Input[str]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -204,8 +169,110 @@ class VolumeV1(pulumi.CustomResource):
         __props__["volume_type"] = volume_type
         return VolumeV1(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def attachments(self) -> List['outputs.VolumeV1Attachment']:
+        """
+        If a volume is attached to an instance, this attribute will
+        display the Attachment ID, Instance ID, and the Device as the Instance
+        sees it.
+        """
+        return pulumi.get(self, "attachments")
+
+    @property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> str:
+        """
+        The availability zone for the volume.
+        Changing this creates a new volume.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        A description of the volume. Changing this updates
+        the volume's description.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="imageId")
+    def image_id(self) -> Optional[str]:
+        """
+        The image ID from which to create the volume.
+        Changing this creates a new volume.
+        """
+        return pulumi.get(self, "image_id")
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Mapping[str, Any]:
+        """
+        Metadata key/value pairs to associate with the volume.
+        Changing this updates the existing volume metadata.
+        """
+        return pulumi.get(self, "metadata")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        A unique name for the volume. Changing this updates the
+        volume's name.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The region in which to create the volume. If
+        omitted, the `region` argument of the provider is used. Changing this
+        creates a new volume.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def size(self) -> float:
+        """
+        The size of the volume to create (in gigabytes). Changing
+        this creates a new volume.
+        """
+        return pulumi.get(self, "size")
+
+    @property
+    @pulumi.getter(name="snapshotId")
+    def snapshot_id(self) -> Optional[str]:
+        """
+        The snapshot ID from which to create the volume.
+        Changing this creates a new volume.
+        """
+        return pulumi.get(self, "snapshot_id")
+
+    @property
+    @pulumi.getter(name="sourceVolId")
+    def source_vol_id(self) -> Optional[str]:
+        """
+        The volume ID from which to create the volume.
+        Changing this creates a new volume.
+        """
+        return pulumi.get(self, "source_vol_id")
+
+    @property
+    @pulumi.getter(name="volumeType")
+    def volume_type(self) -> str:
+        """
+        The type of volume to create.
+        Changing this creates a new volume.
+        """
+        return pulumi.get(self, "volume_type")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

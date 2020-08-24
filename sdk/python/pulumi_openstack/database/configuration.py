@@ -5,40 +5,26 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['Configuration']
 
 
 class Configuration(pulumi.CustomResource):
-    configurations: pulumi.Output[list]
-    """
-    An array of configuration parameter name and value. Can be specified multiple times. The configuration object structure is documented below.
-
-      * `name` (`str`) - Configuration parameter name. Changing this creates a new resource.
-      * `value` (`str`) - Configuration parameter value. Changing this creates a new resource.
-    """
-    datastore: pulumi.Output[dict]
-    """
-    An array of database engine type and version. The datastore
-    object structure is documented below. Changing this creates resource.
-
-      * `type` (`str`) - Database engine type to be used with this configuration. Changing this creates a new resource.
-      * `version` (`str`) - Version of database engine type to be used with this configuration. Changing this creates a new resource.
-    """
-    description: pulumi.Output[str]
-    """
-    Description of the resource.
-    """
-    name: pulumi.Output[str]
-    """
-    Configuration parameter name. Changing this creates a new resource.
-    """
-    region: pulumi.Output[str]
-    """
-    The region in which to create the db instance. Changing this
-    creates a new instance.
-    """
-    def __init__(__self__, resource_name, opts=None, configurations=None, datastore=None, description=None, name=None, region=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 configurations: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ConfigurationConfigurationArgs']]]]] = None,
+                 datastore: Optional[pulumi.Input[pulumi.InputType['ConfigurationDatastoreArgs']]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a V1 DB configuration resource within OpenStack.
 
@@ -50,36 +36,26 @@ class Configuration(pulumi.CustomResource):
         import pulumi_openstack as openstack
 
         test = openstack.database.Configuration("test",
-            configurations=[{
-                "name": "max_connections",
-                "value": 200,
-            }],
-            datastore={
-                "type": "mysql",
-                "version": "mysql-5.7",
-            },
+            configurations=[openstack.database.ConfigurationConfigurationArgs(
+                name="max_connections",
+                value="200",
+            )],
+            datastore=openstack.database.ConfigurationDatastoreArgs(
+                type="mysql",
+                version="mysql-5.7",
+            ),
             description="description")
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] configurations: An array of configuration parameter name and value. Can be specified multiple times. The configuration object structure is documented below.
-        :param pulumi.Input[dict] datastore: An array of database engine type and version. The datastore
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ConfigurationConfigurationArgs']]]] configurations: An array of configuration parameter name and value. Can be specified multiple times. The configuration object structure is documented below.
+        :param pulumi.Input[pulumi.InputType['ConfigurationDatastoreArgs']] datastore: An array of database engine type and version. The datastore
                object structure is documented below. Changing this creates resource.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] name: Configuration parameter name. Changing this creates a new resource.
         :param pulumi.Input[str] region: The region in which to create the db instance. Changing this
                creates a new instance.
-
-        The **configurations** object supports the following:
-
-          * `name` (`pulumi.Input[str]`) - Configuration parameter name. Changing this creates a new resource.
-          * `value` (`pulumi.Input[str]`) - Configuration parameter value. Changing this creates a new resource.
-
-        The **datastore** object supports the following:
-
-          * `type` (`pulumi.Input[str]`) - Database engine type to be used with this configuration. Changing this creates a new resource.
-          * `version` (`pulumi.Input[str]`) - Version of database engine type to be used with this configuration. Changing this creates a new resource.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -114,31 +90,28 @@ class Configuration(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, configurations=None, datastore=None, description=None, name=None, region=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            configurations: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ConfigurationConfigurationArgs']]]]] = None,
+            datastore: Optional[pulumi.Input[pulumi.InputType['ConfigurationDatastoreArgs']]] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            region: Optional[pulumi.Input[str]] = None) -> 'Configuration':
         """
         Get an existing Configuration resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] configurations: An array of configuration parameter name and value. Can be specified multiple times. The configuration object structure is documented below.
-        :param pulumi.Input[dict] datastore: An array of database engine type and version. The datastore
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ConfigurationConfigurationArgs']]]] configurations: An array of configuration parameter name and value. Can be specified multiple times. The configuration object structure is documented below.
+        :param pulumi.Input[pulumi.InputType['ConfigurationDatastoreArgs']] datastore: An array of database engine type and version. The datastore
                object structure is documented below. Changing this creates resource.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] name: Configuration parameter name. Changing this creates a new resource.
         :param pulumi.Input[str] region: The region in which to create the db instance. Changing this
                creates a new instance.
-
-        The **configurations** object supports the following:
-
-          * `name` (`pulumi.Input[str]`) - Configuration parameter name. Changing this creates a new resource.
-          * `value` (`pulumi.Input[str]`) - Configuration parameter value. Changing this creates a new resource.
-
-        The **datastore** object supports the following:
-
-          * `type` (`pulumi.Input[str]`) - Database engine type to be used with this configuration. Changing this creates a new resource.
-          * `version` (`pulumi.Input[str]`) - Version of database engine type to be used with this configuration. Changing this creates a new resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -151,8 +124,51 @@ class Configuration(pulumi.CustomResource):
         __props__["region"] = region
         return Configuration(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def configurations(self) -> Optional[List['outputs.ConfigurationConfiguration']]:
+        """
+        An array of configuration parameter name and value. Can be specified multiple times. The configuration object structure is documented below.
+        """
+        return pulumi.get(self, "configurations")
+
+    @property
+    @pulumi.getter
+    def datastore(self) -> 'outputs.ConfigurationDatastore':
+        """
+        An array of database engine type and version. The datastore
+        object structure is documented below. Changing this creates resource.
+        """
+        return pulumi.get(self, "datastore")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        Description of the resource.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Configuration parameter name. Changing this creates a new resource.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The region in which to create the db instance. Changing this
+        creates a new instance.
+        """
+        return pulumi.get(self, "region")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

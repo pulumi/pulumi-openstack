@@ -5,10 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
 
+__all__ = [
+    'GetFloatingIpResult',
+    'AwaitableGetFloatingIpResult',
+    'get_floating_ip',
+]
 
+@pulumi.output_type
 class GetFloatingIpResult:
     """
     A collection of values returned by getFloatingIp.
@@ -16,57 +22,122 @@ class GetFloatingIpResult:
     def __init__(__self__, address=None, all_tags=None, description=None, dns_domain=None, dns_name=None, fixed_ip=None, id=None, pool=None, port_id=None, region=None, status=None, tags=None, tenant_id=None):
         if address and not isinstance(address, str):
             raise TypeError("Expected argument 'address' to be a str")
-        __self__.address = address
+        pulumi.set(__self__, "address", address)
         if all_tags and not isinstance(all_tags, list):
             raise TypeError("Expected argument 'all_tags' to be a list")
-        __self__.all_tags = all_tags
+        pulumi.set(__self__, "all_tags", all_tags)
+        if description and not isinstance(description, str):
+            raise TypeError("Expected argument 'description' to be a str")
+        pulumi.set(__self__, "description", description)
+        if dns_domain and not isinstance(dns_domain, str):
+            raise TypeError("Expected argument 'dns_domain' to be a str")
+        pulumi.set(__self__, "dns_domain", dns_domain)
+        if dns_name and not isinstance(dns_name, str):
+            raise TypeError("Expected argument 'dns_name' to be a str")
+        pulumi.set(__self__, "dns_name", dns_name)
+        if fixed_ip and not isinstance(fixed_ip, str):
+            raise TypeError("Expected argument 'fixed_ip' to be a str")
+        pulumi.set(__self__, "fixed_ip", fixed_ip)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if pool and not isinstance(pool, str):
+            raise TypeError("Expected argument 'pool' to be a str")
+        pulumi.set(__self__, "pool", pool)
+        if port_id and not isinstance(port_id, str):
+            raise TypeError("Expected argument 'port_id' to be a str")
+        pulumi.set(__self__, "port_id", port_id)
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        pulumi.set(__self__, "region", region)
+        if status and not isinstance(status, str):
+            raise TypeError("Expected argument 'status' to be a str")
+        pulumi.set(__self__, "status", status)
+        if tags and not isinstance(tags, list):
+            raise TypeError("Expected argument 'tags' to be a list")
+        pulumi.set(__self__, "tags", tags)
+        if tenant_id and not isinstance(tenant_id, str):
+            raise TypeError("Expected argument 'tenant_id' to be a str")
+        pulumi.set(__self__, "tenant_id", tenant_id)
+
+    @property
+    @pulumi.getter
+    def address(self) -> Optional[str]:
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter(name="allTags")
+    def all_tags(self) -> List[str]:
         """
         A set of string tags applied on the floating IP.
         """
-        if description and not isinstance(description, str):
-            raise TypeError("Expected argument 'description' to be a str")
-        __self__.description = description
-        if dns_domain and not isinstance(dns_domain, str):
-            raise TypeError("Expected argument 'dns_domain' to be a str")
-        __self__.dns_domain = dns_domain
+        return pulumi.get(self, "all_tags")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="dnsDomain")
+    def dns_domain(self) -> str:
         """
         The floating IP DNS domain. Available, when Neutron DNS
         extension is enabled.
         """
-        if dns_name and not isinstance(dns_name, str):
-            raise TypeError("Expected argument 'dns_name' to be a str")
-        __self__.dns_name = dns_name
+        return pulumi.get(self, "dns_domain")
+
+    @property
+    @pulumi.getter(name="dnsName")
+    def dns_name(self) -> str:
         """
         The floating IP DNS name. Available, when Neutron DNS extension
         is enabled.
         """
-        if fixed_ip and not isinstance(fixed_ip, str):
-            raise TypeError("Expected argument 'fixed_ip' to be a str")
-        __self__.fixed_ip = fixed_ip
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "dns_name")
+
+    @property
+    @pulumi.getter(name="fixedIp")
+    def fixed_ip(self) -> Optional[str]:
+        return pulumi.get(self, "fixed_ip")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if pool and not isinstance(pool, str):
-            raise TypeError("Expected argument 'pool' to be a str")
-        __self__.pool = pool
-        if port_id and not isinstance(port_id, str):
-            raise TypeError("Expected argument 'port_id' to be a str")
-        __self__.port_id = port_id
-        if region and not isinstance(region, str):
-            raise TypeError("Expected argument 'region' to be a str")
-        __self__.region = region
-        if status and not isinstance(status, str):
-            raise TypeError("Expected argument 'status' to be a str")
-        __self__.status = status
-        if tags and not isinstance(tags, list):
-            raise TypeError("Expected argument 'tags' to be a list")
-        __self__.tags = tags
-        if tenant_id and not isinstance(tenant_id, str):
-            raise TypeError("Expected argument 'tenant_id' to be a str")
-        __self__.tenant_id = tenant_id
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def pool(self) -> Optional[str]:
+        return pulumi.get(self, "pool")
+
+    @property
+    @pulumi.getter(name="portId")
+    def port_id(self) -> Optional[str]:
+        return pulumi.get(self, "port_id")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[str]:
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[str]:
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[List[str]]:
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> Optional[str]:
+        return pulumi.get(self, "tenant_id")
 
 
 class AwaitableGetFloatingIpResult(GetFloatingIpResult):
@@ -90,7 +161,16 @@ class AwaitableGetFloatingIpResult(GetFloatingIpResult):
             tenant_id=self.tenant_id)
 
 
-def get_floating_ip(address=None, description=None, fixed_ip=None, pool=None, port_id=None, region=None, status=None, tags=None, tenant_id=None, opts=None):
+def get_floating_ip(address: Optional[str] = None,
+                    description: Optional[str] = None,
+                    fixed_ip: Optional[str] = None,
+                    pool: Optional[str] = None,
+                    port_id: Optional[str] = None,
+                    region: Optional[str] = None,
+                    status: Optional[str] = None,
+                    tags: Optional[List[str]] = None,
+                    tenant_id: Optional[str] = None,
+                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFloatingIpResult:
     """
     Use this data source to get the ID of an available OpenStack floating IP.
 
@@ -113,7 +193,7 @@ def get_floating_ip(address=None, description=None, fixed_ip=None, pool=None, po
            A Neutron client is needed to retrieve floating IP ids. If omitted, the
            `region` argument of the provider is used.
     :param str status: status of the floating IP (ACTIVE/DOWN).
-    :param list tags: The list of floating IP tags to filter.
+    :param List[str] tags: The list of floating IP tags to filter.
     :param str tenant_id: The owner of the floating IP.
     """
     __args__ = dict()
@@ -130,19 +210,19 @@ def get_floating_ip(address=None, description=None, fixed_ip=None, pool=None, po
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('openstack:networking/getFloatingIp:getFloatingIp', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('openstack:networking/getFloatingIp:getFloatingIp', __args__, opts=opts, typ=GetFloatingIpResult).value
 
     return AwaitableGetFloatingIpResult(
-        address=__ret__.get('address'),
-        all_tags=__ret__.get('allTags'),
-        description=__ret__.get('description'),
-        dns_domain=__ret__.get('dnsDomain'),
-        dns_name=__ret__.get('dnsName'),
-        fixed_ip=__ret__.get('fixedIp'),
-        id=__ret__.get('id'),
-        pool=__ret__.get('pool'),
-        port_id=__ret__.get('portId'),
-        region=__ret__.get('region'),
-        status=__ret__.get('status'),
-        tags=__ret__.get('tags'),
-        tenant_id=__ret__.get('tenantId'))
+        address=__ret__.address,
+        all_tags=__ret__.all_tags,
+        description=__ret__.description,
+        dns_domain=__ret__.dns_domain,
+        dns_name=__ret__.dns_name,
+        fixed_ip=__ret__.fixed_ip,
+        id=__ret__.id,
+        pool=__ret__.pool,
+        port_id=__ret__.port_id,
+        region=__ret__.region,
+        status=__ret__.status,
+        tags=__ret__.tags,
+        tenant_id=__ret__.tenant_id)

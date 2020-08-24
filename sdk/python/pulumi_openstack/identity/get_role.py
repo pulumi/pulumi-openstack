@@ -5,10 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
 
+__all__ = [
+    'GetRoleResult',
+    'AwaitableGetRoleResult',
+    'get_role',
+]
 
+@pulumi.output_type
 class GetRoleResult:
     """
     A collection of values returned by getRole.
@@ -16,28 +22,48 @@ class GetRoleResult:
     def __init__(__self__, domain_id=None, id=None, name=None, region=None):
         if domain_id and not isinstance(domain_id, str):
             raise TypeError("Expected argument 'domain_id' to be a str")
-        __self__.domain_id = domain_id
+        pulumi.set(__self__, "domain_id", domain_id)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter(name="domainId")
+    def domain_id(self) -> str:
         """
         See Argument Reference above.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "domain_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
         """
         See Argument Reference above.
         """
-        if region and not isinstance(region, str):
-            raise TypeError("Expected argument 'region' to be a str")
-        __self__.region = region
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
         """
         See Argument Reference above.
         """
+        return pulumi.get(self, "region")
 
 
 class AwaitableGetRoleResult(GetRoleResult):
@@ -52,7 +78,10 @@ class AwaitableGetRoleResult(GetRoleResult):
             region=self.region)
 
 
-def get_role(domain_id=None, name=None, region=None, opts=None):
+def get_role(domain_id: Optional[str] = None,
+             name: Optional[str] = None,
+             region: Optional[str] = None,
+             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRoleResult:
     """
     Use this data source to get the ID of an OpenStack role.
 
@@ -79,10 +108,10 @@ def get_role(domain_id=None, name=None, region=None, opts=None):
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('openstack:identity/getRole:getRole', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('openstack:identity/getRole:getRole', __args__, opts=opts, typ=GetRoleResult).value
 
     return AwaitableGetRoleResult(
-        domain_id=__ret__.get('domainId'),
-        id=__ret__.get('id'),
-        name=__ret__.get('name'),
-        region=__ret__.get('region'))
+        domain_id=__ret__.domain_id,
+        id=__ret__.id,
+        name=__ret__.name,
+        region=__ret__.region)

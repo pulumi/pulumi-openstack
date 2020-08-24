@@ -5,49 +5,33 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['User']
 
 
 class User(pulumi.CustomResource):
-    databases: pulumi.Output[list]
-    """
-    A list of database user should have access to.
-    """
-    host: pulumi.Output[str]
-    instance_id: pulumi.Output[str]
-    name: pulumi.Output[str]
-    """
-    A unique name for the resource.
-    """
-    password: pulumi.Output[str]
-    """
-    User's password.
-    """
-    region: pulumi.Output[str]
-    """
-    Openstack region resource is created in.
-    """
-    def __init__(__self__, resource_name, opts=None, databases=None, host=None, instance_id=None, name=None, password=None, region=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 databases: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 host: Optional[pulumi.Input[str]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a V1 DB user resource within OpenStack.
 
         ## Example Usage
-        ### User
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        basic = openstack.database.User("basic",
-            databases=["testdb"],
-            instance=openstack_db_instance_v1["basic"]["id"],
-            password="password")
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] databases: A list of database user should have access to.
+        :param pulumi.Input[List[pulumi.Input[str]]] databases: A list of database user should have access to.
         :param pulumi.Input[str] name: A unique name for the resource.
         :param pulumi.Input[str] password: User's password.
         :param pulumi.Input[str] region: Openstack region resource is created in.
@@ -86,15 +70,23 @@ class User(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, databases=None, host=None, instance_id=None, name=None, password=None, region=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            databases: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            host: Optional[pulumi.Input[str]] = None,
+            instance_id: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            password: Optional[pulumi.Input[str]] = None,
+            region: Optional[pulumi.Input[str]] = None) -> 'User':
         """
         Get an existing User resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] databases: A list of database user should have access to.
+        :param pulumi.Input[List[pulumi.Input[str]]] databases: A list of database user should have access to.
         :param pulumi.Input[str] name: A unique name for the resource.
         :param pulumi.Input[str] password: User's password.
         :param pulumi.Input[str] region: Openstack region resource is created in.
@@ -111,8 +103,51 @@ class User(pulumi.CustomResource):
         __props__["region"] = region
         return User(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def databases(self) -> List[str]:
+        """
+        A list of database user should have access to.
+        """
+        return pulumi.get(self, "databases")
+
+    @property
+    @pulumi.getter
+    def host(self) -> Optional[str]:
+        return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        A unique name for the resource.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def password(self) -> str:
+        """
+        User's password.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        Openstack region resource is created in.
+        """
+        return pulumi.get(self, "region")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

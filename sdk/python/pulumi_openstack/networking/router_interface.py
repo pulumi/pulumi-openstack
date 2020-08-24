@@ -5,34 +5,23 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['RouterInterface']
 
 
 class RouterInterface(pulumi.CustomResource):
-    port_id: pulumi.Output[str]
-    """
-    ID of the port this interface connects to. Changing
-    this creates a new router interface.
-    """
-    region: pulumi.Output[str]
-    """
-    The region in which to obtain the V2 networking client.
-    A networking client is needed to create a router. If omitted, the
-    `region` argument of the provider is used. Changing this creates a new
-    router interface.
-    """
-    router_id: pulumi.Output[str]
-    """
-    ID of the router this interface belongs to. Changing
-    this creates a new router interface.
-    """
-    subnet_id: pulumi.Output[str]
-    """
-    ID of the subnet this interface connects to. Changing
-    this creates a new router interface.
-    """
-    def __init__(__self__, resource_name, opts=None, port_id=None, region=None, router_id=None, subnet_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 port_id: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 router_id: Optional[pulumi.Input[str]] = None,
+                 subnet_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a V2 router interface resource within OpenStack.
 
@@ -42,7 +31,7 @@ class RouterInterface(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        network1 = openstack.networking.Network("network1", admin_state_up="true")
+        network1 = openstack.networking.Network("network1", admin_state_up=True)
         subnet1 = openstack.networking.Subnet("subnet1",
             cidr="192.168.199.0/24",
             ip_version=4,
@@ -96,13 +85,19 @@ class RouterInterface(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, port_id=None, region=None, router_id=None, subnet_id=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            port_id: Optional[pulumi.Input[str]] = None,
+            region: Optional[pulumi.Input[str]] = None,
+            router_id: Optional[pulumi.Input[str]] = None,
+            subnet_id: Optional[pulumi.Input[str]] = None) -> 'RouterInterface':
         """
         Get an existing RouterInterface resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] port_id: ID of the port this interface connects to. Changing
                this creates a new router interface.
@@ -125,8 +120,47 @@ class RouterInterface(pulumi.CustomResource):
         __props__["subnet_id"] = subnet_id
         return RouterInterface(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="portId")
+    def port_id(self) -> str:
+        """
+        ID of the port this interface connects to. Changing
+        this creates a new router interface.
+        """
+        return pulumi.get(self, "port_id")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The region in which to obtain the V2 networking client.
+        A networking client is needed to create a router. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        router interface.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="routerId")
+    def router_id(self) -> str:
+        """
+        ID of the router this interface belongs to. Changing
+        this creates a new router interface.
+        """
+        return pulumi.get(self, "router_id")
+
+    @property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> str:
+        """
+        ID of the subnet this interface connects to. Changing
+        this creates a new router interface.
+        """
+        return pulumi.get(self, "subnet_id")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

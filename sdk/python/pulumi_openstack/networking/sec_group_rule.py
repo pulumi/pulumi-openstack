@@ -5,93 +5,30 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['SecGroupRule']
 
 
 class SecGroupRule(pulumi.CustomResource):
-    description: pulumi.Output[str]
-    """
-    A description of the rule. Changing this creates a new security group rule.
-    """
-    direction: pulumi.Output[str]
-    """
-    The direction of the rule, valid values are __ingress__
-    or __egress__. Changing this creates a new security group rule.
-    """
-    ethertype: pulumi.Output[str]
-    """
-    The layer 3 protocol type, valid values are __IPv4__
-    or __IPv6__. Changing this creates a new security group rule.
-    """
-    port_range_max: pulumi.Output[float]
-    """
-    The higher part of the allowed port range, valid
-    integer value needs to be between 1 and 65535. Changing this creates a new
-    security group rule.
-    """
-    port_range_min: pulumi.Output[float]
-    """
-    The lower part of the allowed port range, valid
-    integer value needs to be between 1 and 65535. Changing this creates a new
-    security group rule.
-    """
-    protocol: pulumi.Output[str]
-    """
-    The layer 4 protocol type, valid values are following. Changing this creates a new security group rule. This is required if you want to specify a port range.
-    * __tcp__
-    * __udp__
-    * __icmp__
-    * __ah__
-    * __dccp__
-    * __egp__
-    * __esp__
-    * __gre__
-    * __igmp__
-    * __ipv6-encap__
-    * __ipv6-frag__
-    * __ipv6-icmp__
-    * __ipv6-nonxt__
-    * __ipv6-opts__
-    * __ipv6-route__
-    * __ospf__
-    * __pgm__
-    * __rsvp__
-    * __sctp__
-    * __udplite__
-    * __vrrp__
-    """
-    region: pulumi.Output[str]
-    """
-    The region in which to obtain the V2 networking client.
-    A networking client is needed to create a port. If omitted, the
-    `region` argument of the provider is used. Changing this creates a new
-    security group rule.
-    """
-    remote_group_id: pulumi.Output[str]
-    """
-    The remote group id, the value needs to be an
-    Openstack ID of a security group in the same tenant. Changing this creates
-    a new security group rule.
-    """
-    remote_ip_prefix: pulumi.Output[str]
-    """
-    The remote CIDR, the value needs to be a valid
-    CIDR (i.e. 192.168.0.0/16). Changing this creates a new security group rule.
-    """
-    security_group_id: pulumi.Output[str]
-    """
-    The security group id the rule should belong
-    to, the value needs to be an Openstack ID of a security group in the same
-    tenant. Changing this creates a new security group rule.
-    """
-    tenant_id: pulumi.Output[str]
-    """
-    The owner of the security group. Required if admin
-    wants to create a port for another tenant. Changing this creates a new
-    security group rule.
-    """
-    def __init__(__self__, resource_name, opts=None, description=None, direction=None, ethertype=None, port_range_max=None, port_range_min=None, protocol=None, region=None, remote_group_id=None, remote_ip_prefix=None, security_group_id=None, tenant_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 direction: Optional[pulumi.Input[str]] = None,
+                 ethertype: Optional[pulumi.Input[str]] = None,
+                 port_range_max: Optional[pulumi.Input[float]] = None,
+                 port_range_min: Optional[pulumi.Input[float]] = None,
+                 protocol: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 remote_group_id: Optional[pulumi.Input[str]] = None,
+                 remote_ip_prefix: Optional[pulumi.Input[str]] = None,
+                 security_group_id: Optional[pulumi.Input[str]] = None,
+                 tenant_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a V2 neutron security group rule resource within OpenStack.
         Unlike Nova security groups, neutron separates the group from the rules
@@ -206,13 +143,26 @@ class SecGroupRule(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, description=None, direction=None, ethertype=None, port_range_max=None, port_range_min=None, protocol=None, region=None, remote_group_id=None, remote_ip_prefix=None, security_group_id=None, tenant_id=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            direction: Optional[pulumi.Input[str]] = None,
+            ethertype: Optional[pulumi.Input[str]] = None,
+            port_range_max: Optional[pulumi.Input[float]] = None,
+            port_range_min: Optional[pulumi.Input[float]] = None,
+            protocol: Optional[pulumi.Input[str]] = None,
+            region: Optional[pulumi.Input[str]] = None,
+            remote_group_id: Optional[pulumi.Input[str]] = None,
+            remote_ip_prefix: Optional[pulumi.Input[str]] = None,
+            security_group_id: Optional[pulumi.Input[str]] = None,
+            tenant_id: Optional[pulumi.Input[str]] = None) -> 'SecGroupRule':
         """
         Get an existing SecGroupRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description of the rule. Changing this creates a new security group rule.
         :param pulumi.Input[str] direction: The direction of the rule, valid values are __ingress__
@@ -280,8 +230,134 @@ class SecGroupRule(pulumi.CustomResource):
         __props__["tenant_id"] = tenant_id
         return SecGroupRule(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        A description of the rule. Changing this creates a new security group rule.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def direction(self) -> str:
+        """
+        The direction of the rule, valid values are __ingress__
+        or __egress__. Changing this creates a new security group rule.
+        """
+        return pulumi.get(self, "direction")
+
+    @property
+    @pulumi.getter
+    def ethertype(self) -> str:
+        """
+        The layer 3 protocol type, valid values are __IPv4__
+        or __IPv6__. Changing this creates a new security group rule.
+        """
+        return pulumi.get(self, "ethertype")
+
+    @property
+    @pulumi.getter(name="portRangeMax")
+    def port_range_max(self) -> float:
+        """
+        The higher part of the allowed port range, valid
+        integer value needs to be between 1 and 65535. Changing this creates a new
+        security group rule.
+        """
+        return pulumi.get(self, "port_range_max")
+
+    @property
+    @pulumi.getter(name="portRangeMin")
+    def port_range_min(self) -> float:
+        """
+        The lower part of the allowed port range, valid
+        integer value needs to be between 1 and 65535. Changing this creates a new
+        security group rule.
+        """
+        return pulumi.get(self, "port_range_min")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> str:
+        """
+        The layer 4 protocol type, valid values are following. Changing this creates a new security group rule. This is required if you want to specify a port range.
+        * __tcp__
+        * __udp__
+        * __icmp__
+        * __ah__
+        * __dccp__
+        * __egp__
+        * __esp__
+        * __gre__
+        * __igmp__
+        * __ipv6-encap__
+        * __ipv6-frag__
+        * __ipv6-icmp__
+        * __ipv6-nonxt__
+        * __ipv6-opts__
+        * __ipv6-route__
+        * __ospf__
+        * __pgm__
+        * __rsvp__
+        * __sctp__
+        * __udplite__
+        * __vrrp__
+        """
+        return pulumi.get(self, "protocol")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The region in which to obtain the V2 networking client.
+        A networking client is needed to create a port. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        security group rule.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="remoteGroupId")
+    def remote_group_id(self) -> str:
+        """
+        The remote group id, the value needs to be an
+        Openstack ID of a security group in the same tenant. Changing this creates
+        a new security group rule.
+        """
+        return pulumi.get(self, "remote_group_id")
+
+    @property
+    @pulumi.getter(name="remoteIpPrefix")
+    def remote_ip_prefix(self) -> str:
+        """
+        The remote CIDR, the value needs to be a valid
+        CIDR (i.e. 192.168.0.0/16). Changing this creates a new security group rule.
+        """
+        return pulumi.get(self, "remote_ip_prefix")
+
+    @property
+    @pulumi.getter(name="securityGroupId")
+    def security_group_id(self) -> str:
+        """
+        The security group id the rule should belong
+        to, the value needs to be an Openstack ID of a security group in the same
+        tenant. Changing this creates a new security group rule.
+        """
+        return pulumi.get(self, "security_group_id")
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> str:
+        """
+        The owner of the security group. Required if admin
+        wants to create a port for another tenant. Changing this creates a new
+        security group rule.
+        """
+        return pulumi.get(self, "tenant_id")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

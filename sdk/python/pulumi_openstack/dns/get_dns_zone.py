@@ -5,10 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
 
+__all__ = [
+    'GetDnsZoneResult',
+    'AwaitableGetDnsZoneResult',
+    'get_dns_zone',
+]
 
+@pulumi.output_type
 class GetDnsZoneResult:
     """
     A collection of values returned by getDnsZone.
@@ -16,106 +22,191 @@ class GetDnsZoneResult:
     def __init__(__self__, attributes=None, created_at=None, description=None, email=None, id=None, masters=None, name=None, pool_id=None, project_id=None, region=None, serial=None, status=None, transferred_at=None, ttl=None, type=None, updated_at=None, version=None):
         if attributes and not isinstance(attributes, dict):
             raise TypeError("Expected argument 'attributes' to be a dict")
-        __self__.attributes = attributes
+        pulumi.set(__self__, "attributes", attributes)
+        if created_at and not isinstance(created_at, str):
+            raise TypeError("Expected argument 'created_at' to be a str")
+        pulumi.set(__self__, "created_at", created_at)
+        if description and not isinstance(description, str):
+            raise TypeError("Expected argument 'description' to be a str")
+        pulumi.set(__self__, "description", description)
+        if email and not isinstance(email, str):
+            raise TypeError("Expected argument 'email' to be a str")
+        pulumi.set(__self__, "email", email)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if masters and not isinstance(masters, list):
+            raise TypeError("Expected argument 'masters' to be a list")
+        pulumi.set(__self__, "masters", masters)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if pool_id and not isinstance(pool_id, str):
+            raise TypeError("Expected argument 'pool_id' to be a str")
+        pulumi.set(__self__, "pool_id", pool_id)
+        if project_id and not isinstance(project_id, str):
+            raise TypeError("Expected argument 'project_id' to be a str")
+        pulumi.set(__self__, "project_id", project_id)
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        pulumi.set(__self__, "region", region)
+        if serial and not isinstance(serial, float):
+            raise TypeError("Expected argument 'serial' to be a float")
+        pulumi.set(__self__, "serial", serial)
+        if status and not isinstance(status, str):
+            raise TypeError("Expected argument 'status' to be a str")
+        pulumi.set(__self__, "status", status)
+        if transferred_at and not isinstance(transferred_at, str):
+            raise TypeError("Expected argument 'transferred_at' to be a str")
+        pulumi.set(__self__, "transferred_at", transferred_at)
+        if ttl and not isinstance(ttl, float):
+            raise TypeError("Expected argument 'ttl' to be a float")
+        pulumi.set(__self__, "ttl", ttl)
+        if type and not isinstance(type, str):
+            raise TypeError("Expected argument 'type' to be a str")
+        pulumi.set(__self__, "type", type)
+        if updated_at and not isinstance(updated_at, str):
+            raise TypeError("Expected argument 'updated_at' to be a str")
+        pulumi.set(__self__, "updated_at", updated_at)
+        if version and not isinstance(version, float):
+            raise TypeError("Expected argument 'version' to be a float")
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def attributes(self) -> Mapping[str, Any]:
         """
         Attributes of the DNS Service scheduler.
         """
-        if created_at and not isinstance(created_at, str):
-            raise TypeError("Expected argument 'created_at' to be a str")
-        __self__.created_at = created_at
+        return pulumi.get(self, "attributes")
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> str:
         """
         The time the zone was created.
         """
-        if description and not isinstance(description, str):
-            raise TypeError("Expected argument 'description' to be a str")
-        __self__.description = description
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
         """
         See Argument Reference above.
         """
-        if email and not isinstance(email, str):
-            raise TypeError("Expected argument 'email' to be a str")
-        __self__.email = email
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def email(self) -> Optional[str]:
         """
         See Argument Reference above.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "email")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if masters and not isinstance(masters, list):
-            raise TypeError("Expected argument 'masters' to be a list")
-        __self__.masters = masters
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def masters(self) -> List[str]:
         """
         An array of master DNS servers. When `type` is  `SECONDARY`.
         """
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
+        return pulumi.get(self, "masters")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
         """
         See Argument Reference above.
         """
-        if pool_id and not isinstance(pool_id, str):
-            raise TypeError("Expected argument 'pool_id' to be a str")
-        __self__.pool_id = pool_id
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="poolId")
+    def pool_id(self) -> str:
         """
         The ID of the pool hosting the zone.
         """
-        if project_id and not isinstance(project_id, str):
-            raise TypeError("Expected argument 'project_id' to be a str")
-        __self__.project_id = project_id
+        return pulumi.get(self, "pool_id")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
         """
         The project ID that owns the zone.
         """
-        if region and not isinstance(region, str):
-            raise TypeError("Expected argument 'region' to be a str")
-        __self__.region = region
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
         """
         See Argument Reference above.
         """
-        if serial and not isinstance(serial, float):
-            raise TypeError("Expected argument 'serial' to be a float")
-        __self__.serial = serial
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def serial(self) -> float:
         """
         The serial number of the zone.
         """
-        if status and not isinstance(status, str):
-            raise TypeError("Expected argument 'status' to be a str")
-        __self__.status = status
+        return pulumi.get(self, "serial")
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[str]:
         """
         See Argument Reference above.
         """
-        if transferred_at and not isinstance(transferred_at, str):
-            raise TypeError("Expected argument 'transferred_at' to be a str")
-        __self__.transferred_at = transferred_at
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="transferredAt")
+    def transferred_at(self) -> str:
         """
         The time the zone was transferred.
         """
-        if ttl and not isinstance(ttl, float):
-            raise TypeError("Expected argument 'ttl' to be a float")
-        __self__.ttl = ttl
+        return pulumi.get(self, "transferred_at")
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> Optional[float]:
         """
         See Argument Reference above.
         """
-        if type and not isinstance(type, str):
-            raise TypeError("Expected argument 'type' to be a str")
-        __self__.type = type
+        return pulumi.get(self, "ttl")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
         """
         See Argument Reference above.
         """
-        if updated_at and not isinstance(updated_at, str):
-            raise TypeError("Expected argument 'updated_at' to be a str")
-        __self__.updated_at = updated_at
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> str:
         """
         The time the zone was last updated.
         """
-        if version and not isinstance(version, float):
-            raise TypeError("Expected argument 'version' to be a float")
-        __self__.version = version
+        return pulumi.get(self, "updated_at")
+
+    @property
+    @pulumi.getter
+    def version(self) -> float:
         """
         The version of the zone.
         """
+        return pulumi.get(self, "version")
 
 
 class AwaitableGetDnsZoneResult(GetDnsZoneResult):
@@ -143,7 +234,23 @@ class AwaitableGetDnsZoneResult(GetDnsZoneResult):
             version=self.version)
 
 
-def get_dns_zone(attributes=None, created_at=None, description=None, email=None, masters=None, name=None, pool_id=None, project_id=None, region=None, serial=None, status=None, transferred_at=None, ttl=None, type=None, updated_at=None, version=None, opts=None):
+def get_dns_zone(attributes: Optional[Mapping[str, Any]] = None,
+                 created_at: Optional[str] = None,
+                 description: Optional[str] = None,
+                 email: Optional[str] = None,
+                 masters: Optional[List[str]] = None,
+                 name: Optional[str] = None,
+                 pool_id: Optional[str] = None,
+                 project_id: Optional[str] = None,
+                 region: Optional[str] = None,
+                 serial: Optional[float] = None,
+                 status: Optional[str] = None,
+                 transferred_at: Optional[str] = None,
+                 ttl: Optional[float] = None,
+                 type: Optional[str] = None,
+                 updated_at: Optional[str] = None,
+                 version: Optional[float] = None,
+                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDnsZoneResult:
     """
     Use this data source to get the ID of an available OpenStack DNS zone.
 
@@ -157,11 +264,11 @@ def get_dns_zone(attributes=None, created_at=None, description=None, email=None,
     ```
 
 
-    :param dict attributes: Attributes of the DNS Service scheduler.
+    :param Mapping[str, Any] attributes: Attributes of the DNS Service scheduler.
     :param str created_at: The time the zone was created.
     :param str description: A description of the zone.
     :param str email: The email contact for the zone record.
-    :param list masters: An array of master DNS servers. When `type` is  `SECONDARY`.
+    :param List[str] masters: An array of master DNS servers. When `type` is  `SECONDARY`.
     :param str name: The name of the zone.
     :param str pool_id: The ID of the pool hosting the zone.
     :param str project_id: The project ID that owns the zone.
@@ -197,23 +304,23 @@ def get_dns_zone(attributes=None, created_at=None, description=None, email=None,
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('openstack:dns/getDnsZone:getDnsZone', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('openstack:dns/getDnsZone:getDnsZone', __args__, opts=opts, typ=GetDnsZoneResult).value
 
     return AwaitableGetDnsZoneResult(
-        attributes=__ret__.get('attributes'),
-        created_at=__ret__.get('createdAt'),
-        description=__ret__.get('description'),
-        email=__ret__.get('email'),
-        id=__ret__.get('id'),
-        masters=__ret__.get('masters'),
-        name=__ret__.get('name'),
-        pool_id=__ret__.get('poolId'),
-        project_id=__ret__.get('projectId'),
-        region=__ret__.get('region'),
-        serial=__ret__.get('serial'),
-        status=__ret__.get('status'),
-        transferred_at=__ret__.get('transferredAt'),
-        ttl=__ret__.get('ttl'),
-        type=__ret__.get('type'),
-        updated_at=__ret__.get('updatedAt'),
-        version=__ret__.get('version'))
+        attributes=__ret__.attributes,
+        created_at=__ret__.created_at,
+        description=__ret__.description,
+        email=__ret__.email,
+        id=__ret__.id,
+        masters=__ret__.masters,
+        name=__ret__.name,
+        pool_id=__ret__.pool_id,
+        project_id=__ret__.project_id,
+        region=__ret__.region,
+        serial=__ret__.serial,
+        status=__ret__.status,
+        transferred_at=__ret__.transferred_at,
+        ttl=__ret__.ttl,
+        type=__ret__.type,
+        updated_at=__ret__.updated_at,
+        version=__ret__.version)

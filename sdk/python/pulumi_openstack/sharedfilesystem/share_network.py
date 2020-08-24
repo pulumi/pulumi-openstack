@@ -5,66 +5,25 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['ShareNetwork']
 
 
 class ShareNetwork(pulumi.CustomResource):
-    cidr: pulumi.Output[str]
-    """
-    The share network CIDR.
-    """
-    description: pulumi.Output[str]
-    """
-    The human-readable description for the share network.
-    Changing this updates the description of the existing share network.
-    """
-    ip_version: pulumi.Output[float]
-    """
-    The IP version of the share network. Can either be 4 or 6.
-    """
-    name: pulumi.Output[str]
-    """
-    The name for the share network. Changing this updates the name
-    of the existing share network.
-    """
-    network_type: pulumi.Output[str]
-    """
-    The share network type. Can either be VLAN, VXLAN, GRE, or flat.
-    """
-    neutron_net_id: pulumi.Output[str]
-    """
-    The UUID of a neutron network when setting up or updating
-    a share network. Changing this updates the existing share network if it's not used by
-    shares.
-    """
-    neutron_subnet_id: pulumi.Output[str]
-    """
-    The UUID of the neutron subnet when setting up or
-    updating a share network. Changing this updates the existing share network if it's
-    not used by shares.
-    """
-    project_id: pulumi.Output[str]
-    """
-    The owner of the Share Network.
-    """
-    region: pulumi.Output[str]
-    """
-    The region in which to obtain the V2 Shared File System client.
-    A Shared File System client is needed to create a share network. If omitted, the
-    `region` argument of the provider is used. Changing this creates a new
-    share network.
-    """
-    security_service_ids: pulumi.Output[list]
-    """
-    The list of security service IDs to associate with
-    the share network. The security service must be specified by ID and not name.
-    """
-    segmentation_id: pulumi.Output[float]
-    """
-    The share network segmentation ID.
-    """
-    def __init__(__self__, resource_name, opts=None, description=None, name=None, neutron_net_id=None, neutron_subnet_id=None, region=None, security_service_ids=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 neutron_net_id: Optional[pulumi.Input[str]] = None,
+                 neutron_subnet_id: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 security_service_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Use this resource to configure a share network.
 
@@ -78,7 +37,7 @@ class ShareNetwork(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        network1 = openstack.networking.Network("network1", admin_state_up="true")
+        network1 = openstack.networking.Network("network1", admin_state_up=True)
         subnet1 = openstack.networking.Subnet("subnet1",
             cidr="192.168.199.0/24",
             ip_version=4,
@@ -94,7 +53,7 @@ class ShareNetwork(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        network1 = openstack.networking.Network("network1", admin_state_up="true")
+        network1 = openstack.networking.Network("network1", admin_state_up=True)
         subnet1 = openstack.networking.Subnet("subnet1",
             cidr="192.168.199.0/24",
             ip_version=4,
@@ -131,7 +90,7 @@ class ShareNetwork(pulumi.CustomResource):
                A Shared File System client is needed to create a share network. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
                share network.
-        :param pulumi.Input[list] security_service_ids: The list of security service IDs to associate with
+        :param pulumi.Input[List[pulumi.Input[str]]] security_service_ids: The list of security service IDs to associate with
                the share network. The security service must be specified by ID and not name.
         """
         if __name__ is not None:
@@ -173,13 +132,26 @@ class ShareNetwork(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, cidr=None, description=None, ip_version=None, name=None, network_type=None, neutron_net_id=None, neutron_subnet_id=None, project_id=None, region=None, security_service_ids=None, segmentation_id=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cidr: Optional[pulumi.Input[str]] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            ip_version: Optional[pulumi.Input[float]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            network_type: Optional[pulumi.Input[str]] = None,
+            neutron_net_id: Optional[pulumi.Input[str]] = None,
+            neutron_subnet_id: Optional[pulumi.Input[str]] = None,
+            project_id: Optional[pulumi.Input[str]] = None,
+            region: Optional[pulumi.Input[str]] = None,
+            security_service_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            segmentation_id: Optional[pulumi.Input[float]] = None) -> 'ShareNetwork':
         """
         Get an existing ShareNetwork resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cidr: The share network CIDR.
         :param pulumi.Input[str] description: The human-readable description for the share network.
@@ -199,7 +171,7 @@ class ShareNetwork(pulumi.CustomResource):
                A Shared File System client is needed to create a share network. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
                share network.
-        :param pulumi.Input[list] security_service_ids: The list of security service IDs to associate with
+        :param pulumi.Input[List[pulumi.Input[str]]] security_service_ids: The list of security service IDs to associate with
                the share network. The security service must be specified by ID and not name.
         :param pulumi.Input[float] segmentation_id: The share network segmentation ID.
         """
@@ -220,8 +192,107 @@ class ShareNetwork(pulumi.CustomResource):
         __props__["segmentation_id"] = segmentation_id
         return ShareNetwork(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def cidr(self) -> str:
+        """
+        The share network CIDR.
+        """
+        return pulumi.get(self, "cidr")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        The human-readable description for the share network.
+        Changing this updates the description of the existing share network.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="ipVersion")
+    def ip_version(self) -> float:
+        """
+        The IP version of the share network. Can either be 4 or 6.
+        """
+        return pulumi.get(self, "ip_version")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name for the share network. Changing this updates the name
+        of the existing share network.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="networkType")
+    def network_type(self) -> str:
+        """
+        The share network type. Can either be VLAN, VXLAN, GRE, or flat.
+        """
+        return pulumi.get(self, "network_type")
+
+    @property
+    @pulumi.getter(name="neutronNetId")
+    def neutron_net_id(self) -> str:
+        """
+        The UUID of a neutron network when setting up or updating
+        a share network. Changing this updates the existing share network if it's not used by
+        shares.
+        """
+        return pulumi.get(self, "neutron_net_id")
+
+    @property
+    @pulumi.getter(name="neutronSubnetId")
+    def neutron_subnet_id(self) -> str:
+        """
+        The UUID of the neutron subnet when setting up or
+        updating a share network. Changing this updates the existing share network if it's
+        not used by shares.
+        """
+        return pulumi.get(self, "neutron_subnet_id")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        """
+        The owner of the Share Network.
+        """
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The region in which to obtain the V2 Shared File System client.
+        A Shared File System client is needed to create a share network. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        share network.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="securityServiceIds")
+    def security_service_ids(self) -> Optional[List[str]]:
+        """
+        The list of security service IDs to associate with
+        the share network. The security service must be specified by ID and not name.
+        """
+        return pulumi.get(self, "security_service_ids")
+
+    @property
+    @pulumi.getter(name="segmentationId")
+    def segmentation_id(self) -> float:
+        """
+        The share network segmentation ID.
+        """
+        return pulumi.get(self, "segmentation_id")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

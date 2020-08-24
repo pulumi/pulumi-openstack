@@ -17,3 +17,5 @@ from .quota_set_v2 import *
 from .sec_group import *
 from .server_group import *
 from .volume_attach import *
+from ._inputs import *
+from . import outputs

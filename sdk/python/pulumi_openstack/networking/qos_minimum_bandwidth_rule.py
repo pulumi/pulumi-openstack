@@ -5,32 +5,23 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['QosMinimumBandwidthRule']
 
 
 class QosMinimumBandwidthRule(pulumi.CustomResource):
-    direction: pulumi.Output[str]
-    """
-    The direction of traffic. Defaults to "egress". Changing this updates the direction of the
-    existing QoS minimum bandwidth rule.
-    """
-    min_kbps: pulumi.Output[float]
-    """
-    The minimum kilobits per second. Changing this updates the min kbps value of the existing
-    QoS minimum bandwidth rule.
-    """
-    qos_policy_id: pulumi.Output[str]
-    """
-    The QoS policy reference. Changing this creates a new QoS minimum bandwidth rule.
-    """
-    region: pulumi.Output[str]
-    """
-    The region in which to obtain the V2 Networking client.
-    A Networking client is needed to create a Neutron QoS minimum bandwidth rule. If omitted, the
-    `region` argument of the provider is used. Changing this creates a new QoS minimum bandwidth rule.
-    """
-    def __init__(__self__, resource_name, opts=None, direction=None, min_kbps=None, qos_policy_id=None, region=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 direction: Optional[pulumi.Input[str]] = None,
+                 min_kbps: Optional[pulumi.Input[float]] = None,
+                 qos_policy_id: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a V2 Neutron QoS minimum bandwidth rule resource within OpenStack.
 
@@ -90,13 +81,19 @@ class QosMinimumBandwidthRule(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, direction=None, min_kbps=None, qos_policy_id=None, region=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            direction: Optional[pulumi.Input[str]] = None,
+            min_kbps: Optional[pulumi.Input[float]] = None,
+            qos_policy_id: Optional[pulumi.Input[str]] = None,
+            region: Optional[pulumi.Input[str]] = None) -> 'QosMinimumBandwidthRule':
         """
         Get an existing QosMinimumBandwidthRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] direction: The direction of traffic. Defaults to "egress". Changing this updates the direction of the
                existing QoS minimum bandwidth rule.
@@ -117,8 +114,45 @@ class QosMinimumBandwidthRule(pulumi.CustomResource):
         __props__["region"] = region
         return QosMinimumBandwidthRule(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[str]:
+        """
+        The direction of traffic. Defaults to "egress". Changing this updates the direction of the
+        existing QoS minimum bandwidth rule.
+        """
+        return pulumi.get(self, "direction")
+
+    @property
+    @pulumi.getter(name="minKbps")
+    def min_kbps(self) -> float:
+        """
+        The minimum kilobits per second. Changing this updates the min kbps value of the existing
+        QoS minimum bandwidth rule.
+        """
+        return pulumi.get(self, "min_kbps")
+
+    @property
+    @pulumi.getter(name="qosPolicyId")
+    def qos_policy_id(self) -> str:
+        """
+        The QoS policy reference. Changing this creates a new QoS minimum bandwidth rule.
+        """
+        return pulumi.get(self, "qos_policy_id")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The region in which to obtain the V2 Networking client.
+        A Networking client is needed to create a Neutron QoS minimum bandwidth rule. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new QoS minimum bandwidth rule.
+        """
+        return pulumi.get(self, "region")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

@@ -5,10 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
 
+__all__ = [
+    'GetImageIdsResult',
+    'AwaitableGetImageIdsResult',
+    'get_image_ids',
+]
 
+@pulumi.output_type
 class GetImageIdsResult:
     """
     A collection of values returned by getImageIds.
@@ -16,60 +22,135 @@ class GetImageIdsResult:
     def __init__(__self__, id=None, ids=None, member_status=None, name=None, name_regex=None, owner=None, properties=None, region=None, size_max=None, size_min=None, sort=None, sort_direction=None, sort_key=None, tag=None, visibility=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
+        pulumi.set(__self__, "id", id)
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
-        __self__.ids = ids
+        pulumi.set(__self__, "ids", ids)
         if member_status and not isinstance(member_status, str):
             raise TypeError("Expected argument 'member_status' to be a str")
-        __self__.member_status = member_status
+        pulumi.set(__self__, "member_status", member_status)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
+        pulumi.set(__self__, "name", name)
         if name_regex and not isinstance(name_regex, str):
             raise TypeError("Expected argument 'name_regex' to be a str")
-        __self__.name_regex = name_regex
+        pulumi.set(__self__, "name_regex", name_regex)
         if owner and not isinstance(owner, str):
             raise TypeError("Expected argument 'owner' to be a str")
-        __self__.owner = owner
+        pulumi.set(__self__, "owner", owner)
         if properties and not isinstance(properties, dict):
             raise TypeError("Expected argument 'properties' to be a dict")
-        __self__.properties = properties
+        pulumi.set(__self__, "properties", properties)
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
-        __self__.region = region
+        pulumi.set(__self__, "region", region)
         if size_max and not isinstance(size_max, float):
             raise TypeError("Expected argument 'size_max' to be a float")
-        __self__.size_max = size_max
+        pulumi.set(__self__, "size_max", size_max)
         if size_min and not isinstance(size_min, float):
             raise TypeError("Expected argument 'size_min' to be a float")
-        __self__.size_min = size_min
+        pulumi.set(__self__, "size_min", size_min)
         if sort and not isinstance(sort, str):
             raise TypeError("Expected argument 'sort' to be a str")
-        __self__.sort = sort
+        pulumi.set(__self__, "sort", sort)
         if sort_direction and not isinstance(sort_direction, str):
             raise TypeError("Expected argument 'sort_direction' to be a str")
         if sort_direction is not None:
             warnings.warn("Use option 'sort' instead.", DeprecationWarning)
             pulumi.log.warn("sort_direction is deprecated: Use option 'sort' instead.")
 
-        __self__.sort_direction = sort_direction
+        pulumi.set(__self__, "sort_direction", sort_direction)
         if sort_key and not isinstance(sort_key, str):
             raise TypeError("Expected argument 'sort_key' to be a str")
         if sort_key is not None:
             warnings.warn("Use option 'sort' instead.", DeprecationWarning)
             pulumi.log.warn("sort_key is deprecated: Use option 'sort' instead.")
 
-        __self__.sort_key = sort_key
+        pulumi.set(__self__, "sort_key", sort_key)
         if tag and not isinstance(tag, str):
             raise TypeError("Expected argument 'tag' to be a str")
-        __self__.tag = tag
+        pulumi.set(__self__, "tag", tag)
         if visibility and not isinstance(visibility, str):
             raise TypeError("Expected argument 'visibility' to be a str")
-        __self__.visibility = visibility
+        pulumi.set(__self__, "visibility", visibility)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The provider-assigned unique ID for this managed resource.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def ids(self) -> List[str]:
+        return pulumi.get(self, "ids")
+
+    @property
+    @pulumi.getter(name="memberStatus")
+    def member_status(self) -> Optional[str]:
+        return pulumi.get(self, "member_status")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="nameRegex")
+    def name_regex(self) -> Optional[str]:
+        return pulumi.get(self, "name_regex")
+
+    @property
+    @pulumi.getter
+    def owner(self) -> Optional[str]:
+        return pulumi.get(self, "owner")
+
+    @property
+    @pulumi.getter
+    def properties(self) -> Optional[Mapping[str, Any]]:
+        return pulumi.get(self, "properties")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="sizeMax")
+    def size_max(self) -> Optional[float]:
+        return pulumi.get(self, "size_max")
+
+    @property
+    @pulumi.getter(name="sizeMin")
+    def size_min(self) -> Optional[float]:
+        return pulumi.get(self, "size_min")
+
+    @property
+    @pulumi.getter
+    def sort(self) -> Optional[str]:
+        return pulumi.get(self, "sort")
+
+    @property
+    @pulumi.getter(name="sortDirection")
+    def sort_direction(self) -> Optional[str]:
+        return pulumi.get(self, "sort_direction")
+
+    @property
+    @pulumi.getter(name="sortKey")
+    def sort_key(self) -> Optional[str]:
+        return pulumi.get(self, "sort_key")
+
+    @property
+    @pulumi.getter
+    def tag(self) -> Optional[str]:
+        return pulumi.get(self, "tag")
+
+    @property
+    @pulumi.getter
+    def visibility(self) -> Optional[str]:
+        return pulumi.get(self, "visibility")
 
 
 class AwaitableGetImageIdsResult(GetImageIdsResult):
@@ -95,7 +176,20 @@ class AwaitableGetImageIdsResult(GetImageIdsResult):
             visibility=self.visibility)
 
 
-def get_image_ids(member_status=None, name=None, name_regex=None, owner=None, properties=None, region=None, size_max=None, size_min=None, sort=None, sort_direction=None, sort_key=None, tag=None, visibility=None, opts=None):
+def get_image_ids(member_status: Optional[str] = None,
+                  name: Optional[str] = None,
+                  name_regex: Optional[str] = None,
+                  owner: Optional[str] = None,
+                  properties: Optional[Mapping[str, Any]] = None,
+                  region: Optional[str] = None,
+                  size_max: Optional[float] = None,
+                  size_min: Optional[float] = None,
+                  sort: Optional[str] = None,
+                  sort_direction: Optional[str] = None,
+                  sort_key: Optional[str] = None,
+                  tag: Optional[str] = None,
+                  visibility: Optional[str] = None,
+                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetImageIdsResult:
     """
     Use this data source to get a list of Openstack Image IDs matching the
     specified criteria.
@@ -123,7 +217,7 @@ def get_image_ids(member_status=None, name=None, name_regex=None, owner=None, pr
            `name_regex` filtering does by client on the result of OpenStack search
            query.
     :param str owner: The owner (UUID) of the image.
-    :param dict properties: a map of key/value pairs to match an image with.
+    :param Mapping[str, Any] properties: a map of key/value pairs to match an image with.
            All specified properties must be matched. Unlike other options filtering
            by `properties` does by client on the result of OpenStack search query.
     :param str region: The region in which to obtain the V2 Glance client.
@@ -166,21 +260,21 @@ def get_image_ids(member_status=None, name=None, name_regex=None, owner=None, pr
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('openstack:images/getImageIds:getImageIds', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('openstack:images/getImageIds:getImageIds', __args__, opts=opts, typ=GetImageIdsResult).value
 
     return AwaitableGetImageIdsResult(
-        id=__ret__.get('id'),
-        ids=__ret__.get('ids'),
-        member_status=__ret__.get('memberStatus'),
-        name=__ret__.get('name'),
-        name_regex=__ret__.get('nameRegex'),
-        owner=__ret__.get('owner'),
-        properties=__ret__.get('properties'),
-        region=__ret__.get('region'),
-        size_max=__ret__.get('sizeMax'),
-        size_min=__ret__.get('sizeMin'),
-        sort=__ret__.get('sort'),
-        sort_direction=__ret__.get('sortDirection'),
-        sort_key=__ret__.get('sortKey'),
-        tag=__ret__.get('tag'),
-        visibility=__ret__.get('visibility'))
+        id=__ret__.id,
+        ids=__ret__.ids,
+        member_status=__ret__.member_status,
+        name=__ret__.name,
+        name_regex=__ret__.name_regex,
+        owner=__ret__.owner,
+        properties=__ret__.properties,
+        region=__ret__.region,
+        size_max=__ret__.size_max,
+        size_min=__ret__.size_min,
+        sort=__ret__.sort,
+        sort_direction=__ret__.sort_direction,
+        sort_key=__ret__.sort_key,
+        tag=__ret__.tag,
+        visibility=__ret__.visibility)

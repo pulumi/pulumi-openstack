@@ -5,58 +5,28 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['QuoteSetV3']
 
 
 class QuoteSetV3(pulumi.CustomResource):
-    backup_gigabytes: pulumi.Output[float]
-    """
-    Quota value for backup gigabytes. Changing
-    this updates the existing quotaset.
-    """
-    backups: pulumi.Output[float]
-    """
-    Quota value for backups. Changing this updates the
-    existing quotaset.
-    """
-    gigabytes: pulumi.Output[float]
-    """
-    Quota value for gigabytes. Changing this updates the
-    existing quotaset.
-    """
-    groups: pulumi.Output[float]
-    """
-    Quota value for groups. Changing this updates the
-    existing quotaset.
-    """
-    per_volume_gigabytes: pulumi.Output[float]
-    """
-    Quota value for gigabytes per volume .
-    Changing this updates the existing quotaset.
-    """
-    project_id: pulumi.Output[str]
-    """
-    ID of the project to manage quotas. Changing this
-    creates a new quotaset.
-    """
-    region: pulumi.Output[str]
-    """
-    The region in which to create the volume. If
-    omitted, the `region` argument of the provider is used. Changing this
-    creates a new quotaset.
-    """
-    snapshots: pulumi.Output[float]
-    """
-    Quota value for snapshots. Changing this updates the
-    existing quotaset.
-    """
-    volumes: pulumi.Output[float]
-    """
-    Quota value for volumes. Changing this updates the
-    existing quotaset.
-    """
-    def __init__(__self__, resource_name, opts=None, backup_gigabytes=None, backups=None, gigabytes=None, groups=None, per_volume_gigabytes=None, project_id=None, region=None, snapshots=None, volumes=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 backup_gigabytes: Optional[pulumi.Input[float]] = None,
+                 backups: Optional[pulumi.Input[float]] = None,
+                 gigabytes: Optional[pulumi.Input[float]] = None,
+                 groups: Optional[pulumi.Input[float]] = None,
+                 per_volume_gigabytes: Optional[pulumi.Input[float]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 snapshots: Optional[pulumi.Input[float]] = None,
+                 volumes: Optional[pulumi.Input[float]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a V3 block storage quotaset resource within OpenStack.
 
@@ -140,13 +110,24 @@ class QuoteSetV3(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, backup_gigabytes=None, backups=None, gigabytes=None, groups=None, per_volume_gigabytes=None, project_id=None, region=None, snapshots=None, volumes=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            backup_gigabytes: Optional[pulumi.Input[float]] = None,
+            backups: Optional[pulumi.Input[float]] = None,
+            gigabytes: Optional[pulumi.Input[float]] = None,
+            groups: Optional[pulumi.Input[float]] = None,
+            per_volume_gigabytes: Optional[pulumi.Input[float]] = None,
+            project_id: Optional[pulumi.Input[str]] = None,
+            region: Optional[pulumi.Input[str]] = None,
+            snapshots: Optional[pulumi.Input[float]] = None,
+            volumes: Optional[pulumi.Input[float]] = None) -> 'QuoteSetV3':
         """
         Get an existing QuoteSetV3 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] backup_gigabytes: Quota value for backup gigabytes. Changing
                this updates the existing quotaset.
@@ -183,8 +164,91 @@ class QuoteSetV3(pulumi.CustomResource):
         __props__["volumes"] = volumes
         return QuoteSetV3(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="backupGigabytes")
+    def backup_gigabytes(self) -> float:
+        """
+        Quota value for backup gigabytes. Changing
+        this updates the existing quotaset.
+        """
+        return pulumi.get(self, "backup_gigabytes")
+
+    @property
+    @pulumi.getter
+    def backups(self) -> float:
+        """
+        Quota value for backups. Changing this updates the
+        existing quotaset.
+        """
+        return pulumi.get(self, "backups")
+
+    @property
+    @pulumi.getter
+    def gigabytes(self) -> float:
+        """
+        Quota value for gigabytes. Changing this updates the
+        existing quotaset.
+        """
+        return pulumi.get(self, "gigabytes")
+
+    @property
+    @pulumi.getter
+    def groups(self) -> float:
+        """
+        Quota value for groups. Changing this updates the
+        existing quotaset.
+        """
+        return pulumi.get(self, "groups")
+
+    @property
+    @pulumi.getter(name="perVolumeGigabytes")
+    def per_volume_gigabytes(self) -> float:
+        """
+        Quota value for gigabytes per volume .
+        Changing this updates the existing quotaset.
+        """
+        return pulumi.get(self, "per_volume_gigabytes")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        """
+        ID of the project to manage quotas. Changing this
+        creates a new quotaset.
+        """
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The region in which to create the volume. If
+        omitted, the `region` argument of the provider is used. Changing this
+        creates a new quotaset.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def snapshots(self) -> float:
+        """
+        Quota value for snapshots. Changing this updates the
+        existing quotaset.
+        """
+        return pulumi.get(self, "snapshots")
+
+    @property
+    @pulumi.getter
+    def volumes(self) -> float:
+        """
+        Quota value for volumes. Changing this updates the
+        existing quotaset.
+        """
+        return pulumi.get(self, "volumes")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

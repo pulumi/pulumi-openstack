@@ -5,10 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
 
+__all__ = [
+    'GetPortIdsResult',
+    'AwaitableGetPortIdsResult',
+    'get_port_ids',
+]
 
+@pulumi.output_type
 class GetPortIdsResult:
     """
     A collection of values returned by getPortIds.
@@ -16,64 +22,159 @@ class GetPortIdsResult:
     def __init__(__self__, admin_state_up=None, description=None, device_id=None, device_owner=None, dns_name=None, fixed_ip=None, id=None, ids=None, mac_address=None, name=None, network_id=None, project_id=None, region=None, security_group_ids=None, sort_direction=None, sort_key=None, status=None, tags=None, tenant_id=None):
         if admin_state_up and not isinstance(admin_state_up, bool):
             raise TypeError("Expected argument 'admin_state_up' to be a bool")
-        __self__.admin_state_up = admin_state_up
+        pulumi.set(__self__, "admin_state_up", admin_state_up)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
-        __self__.description = description
+        pulumi.set(__self__, "description", description)
         if device_id and not isinstance(device_id, str):
             raise TypeError("Expected argument 'device_id' to be a str")
-        __self__.device_id = device_id
+        pulumi.set(__self__, "device_id", device_id)
         if device_owner and not isinstance(device_owner, str):
             raise TypeError("Expected argument 'device_owner' to be a str")
-        __self__.device_owner = device_owner
+        pulumi.set(__self__, "device_owner", device_owner)
         if dns_name and not isinstance(dns_name, str):
             raise TypeError("Expected argument 'dns_name' to be a str")
-        __self__.dns_name = dns_name
+        pulumi.set(__self__, "dns_name", dns_name)
         if fixed_ip and not isinstance(fixed_ip, str):
             raise TypeError("Expected argument 'fixed_ip' to be a str")
-        __self__.fixed_ip = fixed_ip
+        pulumi.set(__self__, "fixed_ip", fixed_ip)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if ids and not isinstance(ids, list):
+            raise TypeError("Expected argument 'ids' to be a list")
+        pulumi.set(__self__, "ids", ids)
+        if mac_address and not isinstance(mac_address, str):
+            raise TypeError("Expected argument 'mac_address' to be a str")
+        pulumi.set(__self__, "mac_address", mac_address)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if network_id and not isinstance(network_id, str):
+            raise TypeError("Expected argument 'network_id' to be a str")
+        pulumi.set(__self__, "network_id", network_id)
+        if project_id and not isinstance(project_id, str):
+            raise TypeError("Expected argument 'project_id' to be a str")
+        pulumi.set(__self__, "project_id", project_id)
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        pulumi.set(__self__, "region", region)
+        if security_group_ids and not isinstance(security_group_ids, list):
+            raise TypeError("Expected argument 'security_group_ids' to be a list")
+        pulumi.set(__self__, "security_group_ids", security_group_ids)
+        if sort_direction and not isinstance(sort_direction, str):
+            raise TypeError("Expected argument 'sort_direction' to be a str")
+        pulumi.set(__self__, "sort_direction", sort_direction)
+        if sort_key and not isinstance(sort_key, str):
+            raise TypeError("Expected argument 'sort_key' to be a str")
+        pulumi.set(__self__, "sort_key", sort_key)
+        if status and not isinstance(status, str):
+            raise TypeError("Expected argument 'status' to be a str")
+        pulumi.set(__self__, "status", status)
+        if tags and not isinstance(tags, list):
+            raise TypeError("Expected argument 'tags' to be a list")
+        pulumi.set(__self__, "tags", tags)
+        if tenant_id and not isinstance(tenant_id, str):
+            raise TypeError("Expected argument 'tenant_id' to be a str")
+        pulumi.set(__self__, "tenant_id", tenant_id)
+
+    @property
+    @pulumi.getter(name="adminStateUp")
+    def admin_state_up(self) -> Optional[bool]:
+        return pulumi.get(self, "admin_state_up")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="deviceId")
+    def device_id(self) -> Optional[str]:
+        return pulumi.get(self, "device_id")
+
+    @property
+    @pulumi.getter(name="deviceOwner")
+    def device_owner(self) -> Optional[str]:
+        return pulumi.get(self, "device_owner")
+
+    @property
+    @pulumi.getter(name="dnsName")
+    def dns_name(self) -> Optional[str]:
+        return pulumi.get(self, "dns_name")
+
+    @property
+    @pulumi.getter(name="fixedIp")
+    def fixed_ip(self) -> Optional[str]:
+        return pulumi.get(self, "fixed_ip")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if ids and not isinstance(ids, list):
-            raise TypeError("Expected argument 'ids' to be a list")
-        __self__.ids = ids
-        if mac_address and not isinstance(mac_address, str):
-            raise TypeError("Expected argument 'mac_address' to be a str")
-        __self__.mac_address = mac_address
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
-        if network_id and not isinstance(network_id, str):
-            raise TypeError("Expected argument 'network_id' to be a str")
-        __self__.network_id = network_id
-        if project_id and not isinstance(project_id, str):
-            raise TypeError("Expected argument 'project_id' to be a str")
-        __self__.project_id = project_id
-        if region and not isinstance(region, str):
-            raise TypeError("Expected argument 'region' to be a str")
-        __self__.region = region
-        if security_group_ids and not isinstance(security_group_ids, list):
-            raise TypeError("Expected argument 'security_group_ids' to be a list")
-        __self__.security_group_ids = security_group_ids
-        if sort_direction and not isinstance(sort_direction, str):
-            raise TypeError("Expected argument 'sort_direction' to be a str")
-        __self__.sort_direction = sort_direction
-        if sort_key and not isinstance(sort_key, str):
-            raise TypeError("Expected argument 'sort_key' to be a str")
-        __self__.sort_key = sort_key
-        if status and not isinstance(status, str):
-            raise TypeError("Expected argument 'status' to be a str")
-        __self__.status = status
-        if tags and not isinstance(tags, list):
-            raise TypeError("Expected argument 'tags' to be a list")
-        __self__.tags = tags
-        if tenant_id and not isinstance(tenant_id, str):
-            raise TypeError("Expected argument 'tenant_id' to be a str")
-        __self__.tenant_id = tenant_id
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def ids(self) -> List[str]:
+        return pulumi.get(self, "ids")
+
+    @property
+    @pulumi.getter(name="macAddress")
+    def mac_address(self) -> Optional[str]:
+        return pulumi.get(self, "mac_address")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="networkId")
+    def network_id(self) -> Optional[str]:
+        return pulumi.get(self, "network_id")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[str]:
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[str]:
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="securityGroupIds")
+    def security_group_ids(self) -> Optional[List[str]]:
+        return pulumi.get(self, "security_group_ids")
+
+    @property
+    @pulumi.getter(name="sortDirection")
+    def sort_direction(self) -> Optional[str]:
+        return pulumi.get(self, "sort_direction")
+
+    @property
+    @pulumi.getter(name="sortKey")
+    def sort_key(self) -> Optional[str]:
+        return pulumi.get(self, "sort_key")
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[str]:
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[List[str]]:
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> Optional[str]:
+        return pulumi.get(self, "tenant_id")
 
 
 class AwaitableGetPortIdsResult(GetPortIdsResult):
@@ -103,7 +204,24 @@ class AwaitableGetPortIdsResult(GetPortIdsResult):
             tenant_id=self.tenant_id)
 
 
-def get_port_ids(admin_state_up=None, description=None, device_id=None, device_owner=None, dns_name=None, fixed_ip=None, mac_address=None, name=None, network_id=None, project_id=None, region=None, security_group_ids=None, sort_direction=None, sort_key=None, status=None, tags=None, tenant_id=None, opts=None):
+def get_port_ids(admin_state_up: Optional[bool] = None,
+                 description: Optional[str] = None,
+                 device_id: Optional[str] = None,
+                 device_owner: Optional[str] = None,
+                 dns_name: Optional[str] = None,
+                 fixed_ip: Optional[str] = None,
+                 mac_address: Optional[str] = None,
+                 name: Optional[str] = None,
+                 network_id: Optional[str] = None,
+                 project_id: Optional[str] = None,
+                 region: Optional[str] = None,
+                 security_group_ids: Optional[List[str]] = None,
+                 sort_direction: Optional[str] = None,
+                 sort_key: Optional[str] = None,
+                 status: Optional[str] = None,
+                 tags: Optional[List[str]] = None,
+                 tenant_id: Optional[str] = None,
+                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPortIdsResult:
     """
     Use this data source to get a list of Openstack Port IDs matching the
     specified criteria.
@@ -130,12 +248,12 @@ def get_port_ids(admin_state_up=None, description=None, device_id=None, device_o
     :param str region: The region in which to obtain the V2 Neutron client.
            A Neutron client is needed to retrieve port ids. If omitted, the
            `region` argument of the provider is used.
-    :param list security_group_ids: The list of port security group IDs to filter.
+    :param List[str] security_group_ids: The list of port security group IDs to filter.
     :param str sort_direction: Order the results in either `asc` or `desc`.
            Defaults to none.
     :param str sort_key: Sort ports based on a certain key. Defaults to none.
     :param str status: The status of the port.
-    :param list tags: The list of port tags to filter.
+    :param List[str] tags: The list of port tags to filter.
     """
     __args__ = dict()
     __args__['adminStateUp'] = admin_state_up
@@ -159,25 +277,25 @@ def get_port_ids(admin_state_up=None, description=None, device_id=None, device_o
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('openstack:networking/getPortIds:getPortIds', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('openstack:networking/getPortIds:getPortIds', __args__, opts=opts, typ=GetPortIdsResult).value
 
     return AwaitableGetPortIdsResult(
-        admin_state_up=__ret__.get('adminStateUp'),
-        description=__ret__.get('description'),
-        device_id=__ret__.get('deviceId'),
-        device_owner=__ret__.get('deviceOwner'),
-        dns_name=__ret__.get('dnsName'),
-        fixed_ip=__ret__.get('fixedIp'),
-        id=__ret__.get('id'),
-        ids=__ret__.get('ids'),
-        mac_address=__ret__.get('macAddress'),
-        name=__ret__.get('name'),
-        network_id=__ret__.get('networkId'),
-        project_id=__ret__.get('projectId'),
-        region=__ret__.get('region'),
-        security_group_ids=__ret__.get('securityGroupIds'),
-        sort_direction=__ret__.get('sortDirection'),
-        sort_key=__ret__.get('sortKey'),
-        status=__ret__.get('status'),
-        tags=__ret__.get('tags'),
-        tenant_id=__ret__.get('tenantId'))
+        admin_state_up=__ret__.admin_state_up,
+        description=__ret__.description,
+        device_id=__ret__.device_id,
+        device_owner=__ret__.device_owner,
+        dns_name=__ret__.dns_name,
+        fixed_ip=__ret__.fixed_ip,
+        id=__ret__.id,
+        ids=__ret__.ids,
+        mac_address=__ret__.mac_address,
+        name=__ret__.name,
+        network_id=__ret__.network_id,
+        project_id=__ret__.project_id,
+        region=__ret__.region,
+        security_group_ids=__ret__.security_group_ids,
+        sort_direction=__ret__.sort_direction,
+        sort_key=__ret__.sort_key,
+        status=__ret__.status,
+        tags=__ret__.tags,
+        tenant_id=__ret__.tenant_id)

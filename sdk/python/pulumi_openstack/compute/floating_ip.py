@@ -5,37 +5,21 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['FloatingIp']
 
 
 class FloatingIp(pulumi.CustomResource):
-    address: pulumi.Output[str]
-    """
-    The actual floating IP address itself.
-    """
-    fixed_ip: pulumi.Output[str]
-    """
-    The fixed IP address corresponding to the floating IP.
-    """
-    instance_id: pulumi.Output[str]
-    """
-    UUID of the compute instance associated with the floating IP.
-    """
-    pool: pulumi.Output[str]
-    """
-    The name of the pool from which to obtain the floating
-    IP. Changing this creates a new floating IP.
-    """
-    region: pulumi.Output[str]
-    """
-    The region in which to obtain the V2 Compute client.
-    A Compute client is needed to create a floating IP that can be used with
-    a compute instance. If omitted, the `region` argument of the provider
-    is used. Changing this creates a new floating IP (which may or may not
-    have a different address).
-    """
-    def __init__(__self__, resource_name, opts=None, pool=None, region=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 pool: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a V2 floating IP resource within OpenStack Nova (compute)
         that can be used for compute instances.
@@ -95,13 +79,20 @@ class FloatingIp(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, address=None, fixed_ip=None, instance_id=None, pool=None, region=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            address: Optional[pulumi.Input[str]] = None,
+            fixed_ip: Optional[pulumi.Input[str]] = None,
+            instance_id: Optional[pulumi.Input[str]] = None,
+            pool: Optional[pulumi.Input[str]] = None,
+            region: Optional[pulumi.Input[str]] = None) -> 'FloatingIp':
         """
         Get an existing FloatingIp resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address: The actual floating IP address itself.
         :param pulumi.Input[str] fixed_ip: The fixed IP address corresponding to the floating IP.
@@ -125,8 +116,54 @@ class FloatingIp(pulumi.CustomResource):
         __props__["region"] = region
         return FloatingIp(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def address(self) -> str:
+        """
+        The actual floating IP address itself.
+        """
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter(name="fixedIp")
+    def fixed_ip(self) -> str:
+        """
+        The fixed IP address corresponding to the floating IP.
+        """
+        return pulumi.get(self, "fixed_ip")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        """
+        UUID of the compute instance associated with the floating IP.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter
+    def pool(self) -> str:
+        """
+        The name of the pool from which to obtain the floating
+        IP. Changing this creates a new floating IP.
+        """
+        return pulumi.get(self, "pool")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The region in which to obtain the V2 Compute client.
+        A Compute client is needed to create a floating IP that can be used with
+        a compute instance. If omitted, the `region` argument of the provider
+        is used. Changing this creates a new floating IP (which may or may not
+        have a different address).
+        """
+        return pulumi.get(self, "region")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

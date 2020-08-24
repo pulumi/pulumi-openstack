@@ -5,8 +5,42 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = [
+    'allow_reauth',
+    'application_credential_id',
+    'application_credential_name',
+    'application_credential_secret',
+    'auth_url',
+    'cacert_file',
+    'cert',
+    'cloud',
+    'default_domain',
+    'delayed_auth',
+    'disable_no_cache_header',
+    'domain_id',
+    'domain_name',
+    'endpoint_overrides',
+    'endpoint_type',
+    'insecure',
+    'key',
+    'max_retries',
+    'password',
+    'project_domain_id',
+    'project_domain_name',
+    'region',
+    'swauth',
+    'tenant_id',
+    'tenant_name',
+    'token',
+    'use_octavia',
+    'user_domain_id',
+    'user_domain_name',
+    'user_id',
+    'user_name',
+]
 
 __config__ = pulumi.Config('openstack')
 

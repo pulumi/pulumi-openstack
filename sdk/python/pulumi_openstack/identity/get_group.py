@@ -5,10 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
 
+__all__ = [
+    'GetGroupResult',
+    'AwaitableGetGroupResult',
+    'get_group',
+]
 
+@pulumi.output_type
 class GetGroupResult:
     """
     A collection of values returned by getGroup.
@@ -16,34 +22,59 @@ class GetGroupResult:
     def __init__(__self__, description=None, domain_id=None, id=None, name=None, region=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
-        __self__.description = description
+        pulumi.set(__self__, "description", description)
+        if domain_id and not isinstance(domain_id, str):
+            raise TypeError("Expected argument 'domain_id' to be a str")
+        pulumi.set(__self__, "domain_id", domain_id)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
         """
         A description of the group.
         """
-        if domain_id and not isinstance(domain_id, str):
-            raise TypeError("Expected argument 'domain_id' to be a str")
-        __self__.domain_id = domain_id
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="domainId")
+    def domain_id(self) -> str:
         """
         See Argument Reference above.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "domain_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
         """
         See Argument Reference above.
         """
-        if region and not isinstance(region, str):
-            raise TypeError("Expected argument 'region' to be a str")
-        __self__.region = region
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
         """
         See Argument Reference above.
         """
+        return pulumi.get(self, "region")
 
 
 class AwaitableGetGroupResult(GetGroupResult):
@@ -59,7 +90,10 @@ class AwaitableGetGroupResult(GetGroupResult):
             region=self.region)
 
 
-def get_group(domain_id=None, name=None, region=None, opts=None):
+def get_group(domain_id: Optional[str] = None,
+              name: Optional[str] = None,
+              region: Optional[str] = None,
+              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGroupResult:
     """
     Use this data source to get the ID of an OpenStack group.
 
@@ -88,11 +122,11 @@ def get_group(domain_id=None, name=None, region=None, opts=None):
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('openstack:identity/getGroup:getGroup', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('openstack:identity/getGroup:getGroup', __args__, opts=opts, typ=GetGroupResult).value
 
     return AwaitableGetGroupResult(
-        description=__ret__.get('description'),
-        domain_id=__ret__.get('domainId'),
-        id=__ret__.get('id'),
-        name=__ret__.get('name'),
-        region=__ret__.get('region'))
+        description=__ret__.description,
+        domain_id=__ret__.domain_id,
+        id=__ret__.id,
+        name=__ret__.name,
+        region=__ret__.region)

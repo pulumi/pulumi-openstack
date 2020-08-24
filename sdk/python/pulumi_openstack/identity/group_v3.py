@@ -5,30 +5,23 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['GroupV3']
 
 
 class GroupV3(pulumi.CustomResource):
-    description: pulumi.Output[str]
-    """
-    A description of the group.
-    """
-    domain_id: pulumi.Output[str]
-    """
-    The domain the group belongs to.
-    """
-    name: pulumi.Output[str]
-    """
-    The name of the group.
-    """
-    region: pulumi.Output[str]
-    """
-    The region in which to obtain the V3 Keystone client.
-    If omitted, the `region` argument of the provider is used. Changing this
-    creates a new group.
-    """
-    def __init__(__self__, resource_name, opts=None, description=None, domain_id=None, name=None, region=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 domain_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a V3 group resource within OpenStack Keystone.
 
@@ -81,13 +74,19 @@ class GroupV3(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, description=None, domain_id=None, name=None, region=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            domain_id: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            region: Optional[pulumi.Input[str]] = None) -> 'GroupV3':
         """
         Get an existing GroupV3 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description of the group.
         :param pulumi.Input[str] domain_id: The domain the group belongs to.
@@ -106,8 +105,43 @@ class GroupV3(pulumi.CustomResource):
         __props__["region"] = region
         return GroupV3(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        A description of the group.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="domainId")
+    def domain_id(self) -> str:
+        """
+        The domain the group belongs to.
+        """
+        return pulumi.get(self, "domain_id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the group.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The region in which to obtain the V3 Keystone client.
+        If omitted, the `region` argument of the provider is used. Changing this
+        creates a new group.
+        """
+        return pulumi.get(self, "region")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

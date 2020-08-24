@@ -5,83 +5,32 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['Monitor']
 
 
 class Monitor(pulumi.CustomResource):
-    admin_state_up: pulumi.Output[bool]
-    """
-    The administrative state of the monitor.
-    A valid value is true (UP) or false (DOWN).
-    """
-    delay: pulumi.Output[float]
-    """
-    The time, in seconds, between sending probes to members.
-    """
-    expected_codes: pulumi.Output[str]
-    """
-    Required for HTTP(S) types. Expected HTTP codes
-    for a passing HTTP(S) monitor. You can either specify a single status like
-    "200", or a range like "200-202".
-    """
-    http_method: pulumi.Output[str]
-    """
-    Required for HTTP(S) types. The HTTP method used
-    for requests by the monitor. If this attribute is not specified, it
-    defaults to "GET".
-    """
-    max_retries: pulumi.Output[float]
-    """
-    Number of permissible ping failures before
-    changing the member's status to INACTIVE. Must be a number between 1
-    and 10.
-    """
-    max_retries_down: pulumi.Output[float]
-    """
-    Number of permissible ping failures befor changing the member's
-    status to ERROR. Must be a number between 1 and 10 (supported only in Octavia).
-    Changing this updates the max_retries_down of the existing monitor.
-    """
-    name: pulumi.Output[str]
-    """
-    The Name of the Monitor.
-    """
-    pool_id: pulumi.Output[str]
-    """
-    The id of the pool that this monitor will be assigned to.
-    """
-    region: pulumi.Output[str]
-    """
-    The region in which to obtain the V2 Networking client.
-    A Networking client is needed to create an . If omitted, the
-    `region` argument of the provider is used. Changing this creates a new
-    monitor.
-    """
-    tenant_id: pulumi.Output[str]
-    """
-    Required for admins. The UUID of the tenant who owns
-    the monitor.  Only administrative users can specify a tenant UUID
-    other than their own. Changing this creates a new monitor.
-    """
-    timeout: pulumi.Output[float]
-    """
-    Maximum number of seconds for a monitor to wait for a
-    ping reply before it times out. The value must be less than the delay
-    value.
-    """
-    type: pulumi.Output[str]
-    """
-    The type of probe, which is PING, TCP, HTTP, HTTPS,
-    TLS-HELLO or UDP-CONNECT (supported only in Octavia), that is sent by the load
-    balancer to verify the member state. Changing this creates a new monitor.
-    """
-    url_path: pulumi.Output[str]
-    """
-    Required for HTTP(S) types. URI path that will be
-    accessed if monitor type is HTTP or HTTPS.
-    """
-    def __init__(__self__, resource_name, opts=None, admin_state_up=None, delay=None, expected_codes=None, http_method=None, max_retries=None, max_retries_down=None, name=None, pool_id=None, region=None, tenant_id=None, timeout=None, type=None, url_path=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 admin_state_up: Optional[pulumi.Input[bool]] = None,
+                 delay: Optional[pulumi.Input[float]] = None,
+                 expected_codes: Optional[pulumi.Input[str]] = None,
+                 http_method: Optional[pulumi.Input[str]] = None,
+                 max_retries: Optional[pulumi.Input[float]] = None,
+                 max_retries_down: Optional[pulumi.Input[float]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 pool_id: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 tenant_id: Optional[pulumi.Input[str]] = None,
+                 timeout: Optional[pulumi.Input[float]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 url_path: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a V2 monitor resource within OpenStack.
 
@@ -181,13 +130,28 @@ class Monitor(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, admin_state_up=None, delay=None, expected_codes=None, http_method=None, max_retries=None, max_retries_down=None, name=None, pool_id=None, region=None, tenant_id=None, timeout=None, type=None, url_path=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            admin_state_up: Optional[pulumi.Input[bool]] = None,
+            delay: Optional[pulumi.Input[float]] = None,
+            expected_codes: Optional[pulumi.Input[str]] = None,
+            http_method: Optional[pulumi.Input[str]] = None,
+            max_retries: Optional[pulumi.Input[float]] = None,
+            max_retries_down: Optional[pulumi.Input[float]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            pool_id: Optional[pulumi.Input[str]] = None,
+            region: Optional[pulumi.Input[str]] = None,
+            tenant_id: Optional[pulumi.Input[str]] = None,
+            timeout: Optional[pulumi.Input[float]] = None,
+            type: Optional[pulumi.Input[str]] = None,
+            url_path: Optional[pulumi.Input[str]] = None) -> 'Monitor':
         """
         Get an existing Monitor resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] admin_state_up: The administrative state of the monitor.
                A valid value is true (UP) or false (DOWN).
@@ -241,8 +205,132 @@ class Monitor(pulumi.CustomResource):
         __props__["url_path"] = url_path
         return Monitor(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="adminStateUp")
+    def admin_state_up(self) -> Optional[bool]:
+        """
+        The administrative state of the monitor.
+        A valid value is true (UP) or false (DOWN).
+        """
+        return pulumi.get(self, "admin_state_up")
+
+    @property
+    @pulumi.getter
+    def delay(self) -> float:
+        """
+        The time, in seconds, between sending probes to members.
+        """
+        return pulumi.get(self, "delay")
+
+    @property
+    @pulumi.getter(name="expectedCodes")
+    def expected_codes(self) -> str:
+        """
+        Required for HTTP(S) types. Expected HTTP codes
+        for a passing HTTP(S) monitor. You can either specify a single status like
+        "200", or a range like "200-202".
+        """
+        return pulumi.get(self, "expected_codes")
+
+    @property
+    @pulumi.getter(name="httpMethod")
+    def http_method(self) -> str:
+        """
+        Required for HTTP(S) types. The HTTP method used
+        for requests by the monitor. If this attribute is not specified, it
+        defaults to "GET".
+        """
+        return pulumi.get(self, "http_method")
+
+    @property
+    @pulumi.getter(name="maxRetries")
+    def max_retries(self) -> float:
+        """
+        Number of permissible ping failures before
+        changing the member's status to INACTIVE. Must be a number between 1
+        and 10.
+        """
+        return pulumi.get(self, "max_retries")
+
+    @property
+    @pulumi.getter(name="maxRetriesDown")
+    def max_retries_down(self) -> float:
+        """
+        Number of permissible ping failures befor changing the member's
+        status to ERROR. Must be a number between 1 and 10 (supported only in Octavia).
+        Changing this updates the max_retries_down of the existing monitor.
+        """
+        return pulumi.get(self, "max_retries_down")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The Name of the Monitor.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="poolId")
+    def pool_id(self) -> str:
+        """
+        The id of the pool that this monitor will be assigned to.
+        """
+        return pulumi.get(self, "pool_id")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The region in which to obtain the V2 Networking client.
+        A Networking client is needed to create an . If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        monitor.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> str:
+        """
+        Required for admins. The UUID of the tenant who owns
+        the monitor.  Only administrative users can specify a tenant UUID
+        other than their own. Changing this creates a new monitor.
+        """
+        return pulumi.get(self, "tenant_id")
+
+    @property
+    @pulumi.getter
+    def timeout(self) -> float:
+        """
+        Maximum number of seconds for a monitor to wait for a
+        ping reply before it times out. The value must be less than the delay
+        value.
+        """
+        return pulumi.get(self, "timeout")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of probe, which is PING, TCP, HTTP, HTTPS,
+        TLS-HELLO or UDP-CONNECT (supported only in Octavia), that is sent by the load
+        balancer to verify the member state. Changing this creates a new monitor.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="urlPath")
+    def url_path(self) -> str:
+        """
+        Required for HTTP(S) types. URI path that will be
+        accessed if monitor type is HTTP or HTTPS.
+        """
+        return pulumi.get(self, "url_path")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

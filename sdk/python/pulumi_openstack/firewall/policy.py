@@ -5,56 +5,27 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['Policy']
 
 
 class Policy(pulumi.CustomResource):
-    audited: pulumi.Output[bool]
-    """
-    Audit status of the firewall policy
-    (must be "true" or "false" if provided - defaults to "false").
-    This status is set to "false" whenever the firewall policy or any of its
-    rules are changed. Changing this updates the `audited` status of an existing
-    firewall policy.
-    """
-    description: pulumi.Output[str]
-    """
-    A description for the firewall policy. Changing
-    this updates the `description` of an existing firewall policy.
-    """
-    name: pulumi.Output[str]
-    """
-    A name for the firewall policy. Changing this
-    updates the `name` of an existing firewall policy.
-    """
-    region: pulumi.Output[str]
-    """
-    The region in which to obtain the v1 networking client.
-    A networking client is needed to create a firewall policy. If omitted, the
-    `region` argument of the provider is used. Changing this creates a new
-    firewall policy.
-    """
-    rules: pulumi.Output[list]
-    """
-    An array of one or more firewall rules that comprise
-    the policy. Changing this results in adding/removing rules from the
-    existing firewall policy.
-    """
-    shared: pulumi.Output[bool]
-    """
-    Sharing status of the firewall policy (must be "true"
-    or "false" if provided). If this is "true" the policy is visible to, and
-    can be used in, firewalls in other tenants. Changing this updates the
-    `shared` status of an existing firewall policy. Only administrative users
-    can specify if the policy should be shared.
-    """
-    tenant_id: pulumi.Output[str]
-    value_specs: pulumi.Output[dict]
-    """
-    Map of additional options.
-    """
-    def __init__(__self__, resource_name, opts=None, audited=None, description=None, name=None, region=None, rules=None, shared=None, tenant_id=None, value_specs=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 audited: Optional[pulumi.Input[bool]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 rules: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 shared: Optional[pulumi.Input[bool]] = None,
+                 tenant_id: Optional[pulumi.Input[str]] = None,
+                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a v1 firewall policy resource within OpenStack.
 
@@ -68,13 +39,13 @@ class Policy(pulumi.CustomResource):
             action="deny",
             description="drop TELNET traffic",
             destination_port="23",
-            enabled="true",
+            enabled=True,
             protocol="tcp")
         rule2 = openstack.firewall.Rule("rule2",
             action="deny",
             description="drop NTP traffic",
             destination_port="123",
-            enabled="false",
+            enabled=False,
             protocol="udp")
         policy1 = openstack.firewall.Policy("policy1", rules=[
             rule1.id,
@@ -97,7 +68,7 @@ class Policy(pulumi.CustomResource):
                A networking client is needed to create a firewall policy. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
                firewall policy.
-        :param pulumi.Input[list] rules: An array of one or more firewall rules that comprise
+        :param pulumi.Input[List[pulumi.Input[str]]] rules: An array of one or more firewall rules that comprise
                the policy. Changing this results in adding/removing rules from the
                existing firewall policy.
         :param pulumi.Input[bool] shared: Sharing status of the firewall policy (must be "true"
@@ -105,7 +76,7 @@ class Policy(pulumi.CustomResource):
                can be used in, firewalls in other tenants. Changing this updates the
                `shared` status of an existing firewall policy. Only administrative users
                can specify if the policy should be shared.
-        :param pulumi.Input[dict] value_specs: Map of additional options.
+        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -139,13 +110,23 @@ class Policy(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, audited=None, description=None, name=None, region=None, rules=None, shared=None, tenant_id=None, value_specs=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            audited: Optional[pulumi.Input[bool]] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            region: Optional[pulumi.Input[str]] = None,
+            rules: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            shared: Optional[pulumi.Input[bool]] = None,
+            tenant_id: Optional[pulumi.Input[str]] = None,
+            value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'Policy':
         """
         Get an existing Policy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] audited: Audit status of the firewall policy
                (must be "true" or "false" if provided - defaults to "false").
@@ -160,7 +141,7 @@ class Policy(pulumi.CustomResource):
                A networking client is needed to create a firewall policy. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
                firewall policy.
-        :param pulumi.Input[list] rules: An array of one or more firewall rules that comprise
+        :param pulumi.Input[List[pulumi.Input[str]]] rules: An array of one or more firewall rules that comprise
                the policy. Changing this results in adding/removing rules from the
                existing firewall policy.
         :param pulumi.Input[bool] shared: Sharing status of the firewall policy (must be "true"
@@ -168,7 +149,7 @@ class Policy(pulumi.CustomResource):
                can be used in, firewalls in other tenants. Changing this updates the
                `shared` status of an existing firewall policy. Only administrative users
                can specify if the policy should be shared.
-        :param pulumi.Input[dict] value_specs: Map of additional options.
+        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -184,8 +165,85 @@ class Policy(pulumi.CustomResource):
         __props__["value_specs"] = value_specs
         return Policy(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def audited(self) -> Optional[bool]:
+        """
+        Audit status of the firewall policy
+        (must be "true" or "false" if provided - defaults to "false").
+        This status is set to "false" whenever the firewall policy or any of its
+        rules are changed. Changing this updates the `audited` status of an existing
+        firewall policy.
+        """
+        return pulumi.get(self, "audited")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        A description for the firewall policy. Changing
+        this updates the `description` of an existing firewall policy.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        A name for the firewall policy. Changing this
+        updates the `name` of an existing firewall policy.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The region in which to obtain the v1 networking client.
+        A networking client is needed to create a firewall policy. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        firewall policy.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[List[str]]:
+        """
+        An array of one or more firewall rules that comprise
+        the policy. Changing this results in adding/removing rules from the
+        existing firewall policy.
+        """
+        return pulumi.get(self, "rules")
+
+    @property
+    @pulumi.getter
+    def shared(self) -> Optional[bool]:
+        """
+        Sharing status of the firewall policy (must be "true"
+        or "false" if provided). If this is "true" the policy is visible to, and
+        can be used in, firewalls in other tenants. Changing this updates the
+        `shared` status of an existing firewall policy. Only administrative users
+        can specify if the policy should be shared.
+        """
+        return pulumi.get(self, "shared")
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> str:
+        return pulumi.get(self, "tenant_id")
+
+    @property
+    @pulumi.getter(name="valueSpecs")
+    def value_specs(self) -> Optional[Mapping[str, Any]]:
+        """
+        Map of additional options.
+        """
+        return pulumi.get(self, "value_specs")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

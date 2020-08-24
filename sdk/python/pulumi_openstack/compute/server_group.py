@@ -5,37 +5,23 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['ServerGroup']
 
 
 class ServerGroup(pulumi.CustomResource):
-    members: pulumi.Output[list]
-    """
-    The instances that are part of this server group.
-    """
-    name: pulumi.Output[str]
-    """
-    A unique name for the server group. Changing this creates
-    a new server group.
-    """
-    policies: pulumi.Output[list]
-    """
-    The set of policies for the server group. All policies
-    are mutually exclusive. See the Policies section for more information.
-    Changing this creates a new server group.
-    """
-    region: pulumi.Output[str]
-    """
-    The region in which to obtain the V2 Compute client.
-    If omitted, the `region` argument of the provider is used. Changing
-    this creates a new server group.
-    """
-    value_specs: pulumi.Output[dict]
-    """
-    Map of additional options.
-    """
-    def __init__(__self__, resource_name, opts=None, name=None, policies=None, region=None, value_specs=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 policies: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a V2 Server Group resource within OpenStack.
 
@@ -69,13 +55,13 @@ class ServerGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: A unique name for the server group. Changing this creates
                a new server group.
-        :param pulumi.Input[list] policies: The set of policies for the server group. All policies
+        :param pulumi.Input[List[pulumi.Input[str]]] policies: The set of policies for the server group. All policies
                are mutually exclusive. See the Policies section for more information.
                Changing this creates a new server group.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Compute client.
                If omitted, the `region` argument of the provider is used. Changing
                this creates a new server group.
-        :param pulumi.Input[dict] value_specs: Map of additional options.
+        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -106,24 +92,31 @@ class ServerGroup(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, members=None, name=None, policies=None, region=None, value_specs=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            members: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            policies: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            region: Optional[pulumi.Input[str]] = None,
+            value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'ServerGroup':
         """
         Get an existing ServerGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] members: The instances that are part of this server group.
+        :param pulumi.Input[List[pulumi.Input[str]]] members: The instances that are part of this server group.
         :param pulumi.Input[str] name: A unique name for the server group. Changing this creates
                a new server group.
-        :param pulumi.Input[list] policies: The set of policies for the server group. All policies
+        :param pulumi.Input[List[pulumi.Input[str]]] policies: The set of policies for the server group. All policies
                are mutually exclusive. See the Policies section for more information.
                Changing this creates a new server group.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Compute client.
                If omitted, the `region` argument of the provider is used. Changing
                this creates a new server group.
-        :param pulumi.Input[dict] value_specs: Map of additional options.
+        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -136,8 +129,54 @@ class ServerGroup(pulumi.CustomResource):
         __props__["value_specs"] = value_specs
         return ServerGroup(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def members(self) -> List[str]:
+        """
+        The instances that are part of this server group.
+        """
+        return pulumi.get(self, "members")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        A unique name for the server group. Changing this creates
+        a new server group.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def policies(self) -> Optional[List[str]]:
+        """
+        The set of policies for the server group. All policies
+        are mutually exclusive. See the Policies section for more information.
+        Changing this creates a new server group.
+        """
+        return pulumi.get(self, "policies")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The region in which to obtain the V2 Compute client.
+        If omitted, the `region` argument of the provider is used. Changing
+        this creates a new server group.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="valueSpecs")
+    def value_specs(self) -> Optional[Mapping[str, Any]]:
+        """
+        Map of additional options.
+        """
+        return pulumi.get(self, "value_specs")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+
