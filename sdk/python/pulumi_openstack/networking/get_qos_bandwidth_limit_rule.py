@@ -5,10 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
 
+__all__ = [
+    'GetQosBandwidthLimitRuleResult',
+    'AwaitableGetQosBandwidthLimitRuleResult',
+    'get_qos_bandwidth_limit_rule',
+]
 
+@pulumi.output_type
 class GetQosBandwidthLimitRuleResult:
     """
     A collection of values returned by getQosBandwidthLimitRule.
@@ -16,40 +22,70 @@ class GetQosBandwidthLimitRuleResult:
     def __init__(__self__, direction=None, id=None, max_burst_kbps=None, max_kbps=None, qos_policy_id=None, region=None):
         if direction and not isinstance(direction, str):
             raise TypeError("Expected argument 'direction' to be a str")
-        __self__.direction = direction
+        pulumi.set(__self__, "direction", direction)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if max_burst_kbps and not isinstance(max_burst_kbps, float):
+            raise TypeError("Expected argument 'max_burst_kbps' to be a float")
+        pulumi.set(__self__, "max_burst_kbps", max_burst_kbps)
+        if max_kbps and not isinstance(max_kbps, float):
+            raise TypeError("Expected argument 'max_kbps' to be a float")
+        pulumi.set(__self__, "max_kbps", max_kbps)
+        if qos_policy_id and not isinstance(qos_policy_id, str):
+            raise TypeError("Expected argument 'qos_policy_id' to be a str")
+        pulumi.set(__self__, "qos_policy_id", qos_policy_id)
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter
+    def direction(self) -> str:
         """
         See Argument Reference above.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "direction")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if max_burst_kbps and not isinstance(max_burst_kbps, float):
-            raise TypeError("Expected argument 'max_burst_kbps' to be a float")
-        __self__.max_burst_kbps = max_burst_kbps
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="maxBurstKbps")
+    def max_burst_kbps(self) -> float:
         """
         See Argument Reference above.
         """
-        if max_kbps and not isinstance(max_kbps, float):
-            raise TypeError("Expected argument 'max_kbps' to be a float")
-        __self__.max_kbps = max_kbps
+        return pulumi.get(self, "max_burst_kbps")
+
+    @property
+    @pulumi.getter(name="maxKbps")
+    def max_kbps(self) -> float:
         """
         See Argument Reference above.
         """
-        if qos_policy_id and not isinstance(qos_policy_id, str):
-            raise TypeError("Expected argument 'qos_policy_id' to be a str")
-        __self__.qos_policy_id = qos_policy_id
+        return pulumi.get(self, "max_kbps")
+
+    @property
+    @pulumi.getter(name="qosPolicyId")
+    def qos_policy_id(self) -> str:
         """
         See Argument Reference above.
         """
-        if region and not isinstance(region, str):
-            raise TypeError("Expected argument 'region' to be a str")
-        __self__.region = region
+        return pulumi.get(self, "qos_policy_id")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
         """
         See Argument Reference above.
         """
+        return pulumi.get(self, "region")
 
 
 class AwaitableGetQosBandwidthLimitRuleResult(GetQosBandwidthLimitRuleResult):
@@ -66,7 +102,11 @@ class AwaitableGetQosBandwidthLimitRuleResult(GetQosBandwidthLimitRuleResult):
             region=self.region)
 
 
-def get_qos_bandwidth_limit_rule(max_burst_kbps=None, max_kbps=None, qos_policy_id=None, region=None, opts=None):
+def get_qos_bandwidth_limit_rule(max_burst_kbps: Optional[float] = None,
+                                 max_kbps: Optional[float] = None,
+                                 qos_policy_id: Optional[str] = None,
+                                 region: Optional[str] = None,
+                                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetQosBandwidthLimitRuleResult:
     """
     Use this data source to get the ID of an available OpenStack QoS bandwidth limit rule.
 
@@ -87,12 +127,12 @@ def get_qos_bandwidth_limit_rule(max_burst_kbps=None, max_kbps=None, qos_policy_
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('openstack:networking/getQosBandwidthLimitRule:getQosBandwidthLimitRule', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('openstack:networking/getQosBandwidthLimitRule:getQosBandwidthLimitRule', __args__, opts=opts, typ=GetQosBandwidthLimitRuleResult).value
 
     return AwaitableGetQosBandwidthLimitRuleResult(
-        direction=__ret__.get('direction'),
-        id=__ret__.get('id'),
-        max_burst_kbps=__ret__.get('maxBurstKbps'),
-        max_kbps=__ret__.get('maxKbps'),
-        qos_policy_id=__ret__.get('qosPolicyId'),
-        region=__ret__.get('region'))
+        direction=__ret__.direction,
+        id=__ret__.id,
+        max_burst_kbps=__ret__.max_burst_kbps,
+        max_kbps=__ret__.max_kbps,
+        qos_policy_id=__ret__.qos_policy_id,
+        region=__ret__.region)

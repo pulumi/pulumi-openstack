@@ -5,140 +5,41 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['Subnet']
 
 
 class Subnet(pulumi.CustomResource):
-    all_tags: pulumi.Output[list]
-    """
-    The collection of ags assigned on the subnet, which have been
-    explicitly and implicitly added.
-    """
-    allocation_pools: pulumi.Output[list]
-    """
-    A block declaring the start and end range of
-    the IP addresses available for use with DHCP in this subnet. Multiple
-    `allocation_pool` blocks can be declared, providing the subnet with more
-    than one range of IP addresses to use with DHCP. However, each IP range
-    must be from the same CIDR that the subnet is part of.
-    The `allocation_pool` block is documented below.
-
-      * `end` (`str`) - The ending address.
-      * `start` (`str`) - The starting address.
-    """
-    allocation_pools_collection: pulumi.Output[list]
-    """
-    A block declaring the start and end range of the IP addresses available for
-    use with DHCP in this subnet.
-    The `allocation_pools` block is documented below.
-
-      * `end` (`str`) - The ending address.
-      * `start` (`str`) - The starting address.
-    """
-    cidr: pulumi.Output[str]
-    """
-    CIDR representing IP range for this subnet, based on IP
-    version. You can omit this option if you are creating a subnet from a
-    subnet pool.
-    """
-    description: pulumi.Output[str]
-    """
-    Human-readable description of the subnet. Changing this
-    updates the name of the existing subnet.
-    """
-    dns_nameservers: pulumi.Output[list]
-    """
-    An array of DNS name server names used by hosts
-    in this subnet. Changing this updates the DNS name servers for the existing
-    subnet.
-    """
-    enable_dhcp: pulumi.Output[bool]
-    """
-    The administrative state of the network.
-    Acceptable values are "true" and "false". Changing this value enables or
-    disables the DHCP capabilities of the existing subnet. Defaults to true.
-    """
-    gateway_ip: pulumi.Output[str]
-    """
-    Default gateway used by devices in this subnet.
-    Leaving this blank and not setting `no_gateway` will cause a default
-    gateway of `.1` to be used. Changing this updates the gateway IP of the
-    existing subnet.
-    """
-    host_routes: pulumi.Output[list]
-    """
-    (**Deprecated** - use `networking.SubnetRoute`
-    instead) An array of routes that should be used by devices
-    with IPs from this subnet (not including local subnet route). The host_route
-    object structure is documented below. Changing this updates the host routes
-    for the existing subnet.
-
-      * `destination_cidr` (`str`) - The destination CIDR.
-      * `next_hop` (`str`) - The next hop in the route.
-    """
-    ip_version: pulumi.Output[float]
-    """
-    IP version, either 4 (default) or 6. Changing this creates a
-    new subnet.
-    """
-    ipv6_address_mode: pulumi.Output[str]
-    """
-    The IPv6 address mode. Valid values are
-    `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.
-    """
-    ipv6_ra_mode: pulumi.Output[str]
-    """
-    The IPv6 Router Advertisement mode. Valid values
-    are `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.
-    """
-    name: pulumi.Output[str]
-    """
-    The name of the subnet. Changing this updates the name of
-    the existing subnet.
-    """
-    network_id: pulumi.Output[str]
-    """
-    The UUID of the parent network. Changing this
-    creates a new subnet.
-    """
-    no_gateway: pulumi.Output[bool]
-    """
-    Do not set a gateway IP on this subnet. Changing
-    this removes or adds a default gateway IP of the existing subnet.
-    """
-    prefix_length: pulumi.Output[float]
-    """
-    The prefix length to use when creating a subnet
-    from a subnet pool. The default subnet pool prefix length that was defined
-    when creating the subnet pool will be used if not provided. Changing this
-    creates a new subnet.
-    """
-    region: pulumi.Output[str]
-    """
-    The region in which to obtain the V2 Networking client.
-    A Networking client is needed to create a Neutron subnet. If omitted, the
-    `region` argument of the provider is used. Changing this creates a new
-    subnet.
-    """
-    subnetpool_id: pulumi.Output[str]
-    """
-    The ID of the subnetpool associated with the subnet.
-    """
-    tags: pulumi.Output[list]
-    """
-    A set of string tags for the subnet.
-    """
-    tenant_id: pulumi.Output[str]
-    """
-    The owner of the subnet. Required if admin wants to
-    create a subnet for another tenant. Changing this creates a new subnet.
-    """
-    value_specs: pulumi.Output[dict]
-    """
-    Map of additional options.
-    """
-    def __init__(__self__, resource_name, opts=None, allocation_pools=None, allocation_pools_collection=None, cidr=None, description=None, dns_nameservers=None, enable_dhcp=None, gateway_ip=None, host_routes=None, ip_version=None, ipv6_address_mode=None, ipv6_ra_mode=None, name=None, network_id=None, no_gateway=None, prefix_length=None, region=None, subnetpool_id=None, tags=None, tenant_id=None, value_specs=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 allocation_pools: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['SubnetAllocationPoolArgs']]]]] = None,
+                 allocation_pools_collection: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['SubnetAllocationPoolsCollectionArgs']]]]] = None,
+                 cidr: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 dns_nameservers: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 enable_dhcp: Optional[pulumi.Input[bool]] = None,
+                 gateway_ip: Optional[pulumi.Input[str]] = None,
+                 host_routes: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['SubnetHostRouteArgs']]]]] = None,
+                 ip_version: Optional[pulumi.Input[float]] = None,
+                 ipv6_address_mode: Optional[pulumi.Input[str]] = None,
+                 ipv6_ra_mode: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 network_id: Optional[pulumi.Input[str]] = None,
+                 no_gateway: Optional[pulumi.Input[bool]] = None,
+                 prefix_length: Optional[pulumi.Input[float]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 subnetpool_id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 tenant_id: Optional[pulumi.Input[str]] = None,
+                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a V2 Neutron subnet resource within OpenStack.
 
@@ -148,7 +49,7 @@ class Subnet(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        network1 = openstack.networking.Network("network1", admin_state_up="true")
+        network1 = openstack.networking.Network("network1", admin_state_up=True)
         subnet1 = openstack.networking.Subnet("subnet1",
             cidr="192.168.199.0/24",
             network_id=network1.id)
@@ -156,13 +57,13 @@ class Subnet(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] allocation_pools: A block declaring the start and end range of
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['SubnetAllocationPoolArgs']]]] allocation_pools: A block declaring the start and end range of
                the IP addresses available for use with DHCP in this subnet. Multiple
                `allocation_pool` blocks can be declared, providing the subnet with more
                than one range of IP addresses to use with DHCP. However, each IP range
                must be from the same CIDR that the subnet is part of.
                The `allocation_pool` block is documented below.
-        :param pulumi.Input[list] allocation_pools_collection: A block declaring the start and end range of the IP addresses available for
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['SubnetAllocationPoolsCollectionArgs']]]] allocation_pools_collection: A block declaring the start and end range of the IP addresses available for
                use with DHCP in this subnet.
                The `allocation_pools` block is documented below.
         :param pulumi.Input[str] cidr: CIDR representing IP range for this subnet, based on IP
@@ -170,7 +71,7 @@ class Subnet(pulumi.CustomResource):
                subnet pool.
         :param pulumi.Input[str] description: Human-readable description of the subnet. Changing this
                updates the name of the existing subnet.
-        :param pulumi.Input[list] dns_nameservers: An array of DNS name server names used by hosts
+        :param pulumi.Input[List[pulumi.Input[str]]] dns_nameservers: An array of DNS name server names used by hosts
                in this subnet. Changing this updates the DNS name servers for the existing
                subnet.
         :param pulumi.Input[bool] enable_dhcp: The administrative state of the network.
@@ -180,7 +81,7 @@ class Subnet(pulumi.CustomResource):
                Leaving this blank and not setting `no_gateway` will cause a default
                gateway of `.1` to be used. Changing this updates the gateway IP of the
                existing subnet.
-        :param pulumi.Input[list] host_routes: (**Deprecated** - use `networking.SubnetRoute`
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['SubnetHostRouteArgs']]]] host_routes: (**Deprecated** - use `networking.SubnetRoute`
                instead) An array of routes that should be used by devices
                with IPs from this subnet (not including local subnet route). The host_route
                object structure is documented below. Changing this updates the host routes
@@ -206,25 +107,10 @@ class Subnet(pulumi.CustomResource):
                `region` argument of the provider is used. Changing this creates a new
                subnet.
         :param pulumi.Input[str] subnetpool_id: The ID of the subnetpool associated with the subnet.
-        :param pulumi.Input[list] tags: A set of string tags for the subnet.
+        :param pulumi.Input[List[pulumi.Input[str]]] tags: A set of string tags for the subnet.
         :param pulumi.Input[str] tenant_id: The owner of the subnet. Required if admin wants to
                create a subnet for another tenant. Changing this creates a new subnet.
-        :param pulumi.Input[dict] value_specs: Map of additional options.
-
-        The **allocation_pools** object supports the following:
-
-          * `end` (`pulumi.Input[str]`) - The ending address.
-          * `start` (`pulumi.Input[str]`) - The starting address.
-
-        The **allocation_pools_collection** object supports the following:
-
-          * `end` (`pulumi.Input[str]`) - The ending address.
-          * `start` (`pulumi.Input[str]`) - The starting address.
-
-        The **host_routes** object supports the following:
-
-          * `destination_cidr` (`pulumi.Input[str]`) - The destination CIDR.
-          * `next_hop` (`pulumi.Input[str]`) - The next hop in the route.
+        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -279,23 +165,46 @@ class Subnet(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, all_tags=None, allocation_pools=None, allocation_pools_collection=None, cidr=None, description=None, dns_nameservers=None, enable_dhcp=None, gateway_ip=None, host_routes=None, ip_version=None, ipv6_address_mode=None, ipv6_ra_mode=None, name=None, network_id=None, no_gateway=None, prefix_length=None, region=None, subnetpool_id=None, tags=None, tenant_id=None, value_specs=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            all_tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            allocation_pools: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['SubnetAllocationPoolArgs']]]]] = None,
+            allocation_pools_collection: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['SubnetAllocationPoolsCollectionArgs']]]]] = None,
+            cidr: Optional[pulumi.Input[str]] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            dns_nameservers: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            enable_dhcp: Optional[pulumi.Input[bool]] = None,
+            gateway_ip: Optional[pulumi.Input[str]] = None,
+            host_routes: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['SubnetHostRouteArgs']]]]] = None,
+            ip_version: Optional[pulumi.Input[float]] = None,
+            ipv6_address_mode: Optional[pulumi.Input[str]] = None,
+            ipv6_ra_mode: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            network_id: Optional[pulumi.Input[str]] = None,
+            no_gateway: Optional[pulumi.Input[bool]] = None,
+            prefix_length: Optional[pulumi.Input[float]] = None,
+            region: Optional[pulumi.Input[str]] = None,
+            subnetpool_id: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            tenant_id: Optional[pulumi.Input[str]] = None,
+            value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'Subnet':
         """
         Get an existing Subnet resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] all_tags: The collection of ags assigned on the subnet, which have been
+        :param pulumi.Input[List[pulumi.Input[str]]] all_tags: The collection of ags assigned on the subnet, which have been
                explicitly and implicitly added.
-        :param pulumi.Input[list] allocation_pools: A block declaring the start and end range of
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['SubnetAllocationPoolArgs']]]] allocation_pools: A block declaring the start and end range of
                the IP addresses available for use with DHCP in this subnet. Multiple
                `allocation_pool` blocks can be declared, providing the subnet with more
                than one range of IP addresses to use with DHCP. However, each IP range
                must be from the same CIDR that the subnet is part of.
                The `allocation_pool` block is documented below.
-        :param pulumi.Input[list] allocation_pools_collection: A block declaring the start and end range of the IP addresses available for
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['SubnetAllocationPoolsCollectionArgs']]]] allocation_pools_collection: A block declaring the start and end range of the IP addresses available for
                use with DHCP in this subnet.
                The `allocation_pools` block is documented below.
         :param pulumi.Input[str] cidr: CIDR representing IP range for this subnet, based on IP
@@ -303,7 +212,7 @@ class Subnet(pulumi.CustomResource):
                subnet pool.
         :param pulumi.Input[str] description: Human-readable description of the subnet. Changing this
                updates the name of the existing subnet.
-        :param pulumi.Input[list] dns_nameservers: An array of DNS name server names used by hosts
+        :param pulumi.Input[List[pulumi.Input[str]]] dns_nameservers: An array of DNS name server names used by hosts
                in this subnet. Changing this updates the DNS name servers for the existing
                subnet.
         :param pulumi.Input[bool] enable_dhcp: The administrative state of the network.
@@ -313,7 +222,7 @@ class Subnet(pulumi.CustomResource):
                Leaving this blank and not setting `no_gateway` will cause a default
                gateway of `.1` to be used. Changing this updates the gateway IP of the
                existing subnet.
-        :param pulumi.Input[list] host_routes: (**Deprecated** - use `networking.SubnetRoute`
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['SubnetHostRouteArgs']]]] host_routes: (**Deprecated** - use `networking.SubnetRoute`
                instead) An array of routes that should be used by devices
                with IPs from this subnet (not including local subnet route). The host_route
                object structure is documented below. Changing this updates the host routes
@@ -339,25 +248,10 @@ class Subnet(pulumi.CustomResource):
                `region` argument of the provider is used. Changing this creates a new
                subnet.
         :param pulumi.Input[str] subnetpool_id: The ID of the subnetpool associated with the subnet.
-        :param pulumi.Input[list] tags: A set of string tags for the subnet.
+        :param pulumi.Input[List[pulumi.Input[str]]] tags: A set of string tags for the subnet.
         :param pulumi.Input[str] tenant_id: The owner of the subnet. Required if admin wants to
                create a subnet for another tenant. Changing this creates a new subnet.
-        :param pulumi.Input[dict] value_specs: Map of additional options.
-
-        The **allocation_pools** object supports the following:
-
-          * `end` (`pulumi.Input[str]`) - The ending address.
-          * `start` (`pulumi.Input[str]`) - The starting address.
-
-        The **allocation_pools_collection** object supports the following:
-
-          * `end` (`pulumi.Input[str]`) - The ending address.
-          * `start` (`pulumi.Input[str]`) - The starting address.
-
-        The **host_routes** object supports the following:
-
-          * `destination_cidr` (`pulumi.Input[str]`) - The destination CIDR.
-          * `next_hop` (`pulumi.Input[str]`) - The next hop in the route.
+        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -386,8 +280,212 @@ class Subnet(pulumi.CustomResource):
         __props__["value_specs"] = value_specs
         return Subnet(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="allTags")
+    def all_tags(self) -> List[str]:
+        """
+        The collection of ags assigned on the subnet, which have been
+        explicitly and implicitly added.
+        """
+        return pulumi.get(self, "all_tags")
+
+    @property
+    @pulumi.getter(name="allocationPools")
+    def allocation_pools(self) -> List['outputs.SubnetAllocationPool']:
+        """
+        A block declaring the start and end range of
+        the IP addresses available for use with DHCP in this subnet. Multiple
+        `allocation_pool` blocks can be declared, providing the subnet with more
+        than one range of IP addresses to use with DHCP. However, each IP range
+        must be from the same CIDR that the subnet is part of.
+        The `allocation_pool` block is documented below.
+        """
+        return pulumi.get(self, "allocation_pools")
+
+    @property
+    @pulumi.getter(name="allocationPoolsCollection")
+    def allocation_pools_collection(self) -> List['outputs.SubnetAllocationPoolsCollection']:
+        """
+        A block declaring the start and end range of the IP addresses available for
+        use with DHCP in this subnet.
+        The `allocation_pools` block is documented below.
+        """
+        return pulumi.get(self, "allocation_pools_collection")
+
+    @property
+    @pulumi.getter
+    def cidr(self) -> str:
+        """
+        CIDR representing IP range for this subnet, based on IP
+        version. You can omit this option if you are creating a subnet from a
+        subnet pool.
+        """
+        return pulumi.get(self, "cidr")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        Human-readable description of the subnet. Changing this
+        updates the name of the existing subnet.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="dnsNameservers")
+    def dns_nameservers(self) -> Optional[List[str]]:
+        """
+        An array of DNS name server names used by hosts
+        in this subnet. Changing this updates the DNS name servers for the existing
+        subnet.
+        """
+        return pulumi.get(self, "dns_nameservers")
+
+    @property
+    @pulumi.getter(name="enableDhcp")
+    def enable_dhcp(self) -> Optional[bool]:
+        """
+        The administrative state of the network.
+        Acceptable values are "true" and "false". Changing this value enables or
+        disables the DHCP capabilities of the existing subnet. Defaults to true.
+        """
+        return pulumi.get(self, "enable_dhcp")
+
+    @property
+    @pulumi.getter(name="gatewayIp")
+    def gateway_ip(self) -> str:
+        """
+        Default gateway used by devices in this subnet.
+        Leaving this blank and not setting `no_gateway` will cause a default
+        gateway of `.1` to be used. Changing this updates the gateway IP of the
+        existing subnet.
+        """
+        return pulumi.get(self, "gateway_ip")
+
+    @property
+    @pulumi.getter(name="hostRoutes")
+    def host_routes(self) -> Optional[List['outputs.SubnetHostRoute']]:
+        """
+        (**Deprecated** - use `networking.SubnetRoute`
+        instead) An array of routes that should be used by devices
+        with IPs from this subnet (not including local subnet route). The host_route
+        object structure is documented below. Changing this updates the host routes
+        for the existing subnet.
+        """
+        return pulumi.get(self, "host_routes")
+
+    @property
+    @pulumi.getter(name="ipVersion")
+    def ip_version(self) -> Optional[float]:
+        """
+        IP version, either 4 (default) or 6. Changing this creates a
+        new subnet.
+        """
+        return pulumi.get(self, "ip_version")
+
+    @property
+    @pulumi.getter(name="ipv6AddressMode")
+    def ipv6_address_mode(self) -> str:
+        """
+        The IPv6 address mode. Valid values are
+        `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.
+        """
+        return pulumi.get(self, "ipv6_address_mode")
+
+    @property
+    @pulumi.getter(name="ipv6RaMode")
+    def ipv6_ra_mode(self) -> str:
+        """
+        The IPv6 Router Advertisement mode. Valid values
+        are `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.
+        """
+        return pulumi.get(self, "ipv6_ra_mode")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the subnet. Changing this updates the name of
+        the existing subnet.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="networkId")
+    def network_id(self) -> str:
+        """
+        The UUID of the parent network. Changing this
+        creates a new subnet.
+        """
+        return pulumi.get(self, "network_id")
+
+    @property
+    @pulumi.getter(name="noGateway")
+    def no_gateway(self) -> Optional[bool]:
+        """
+        Do not set a gateway IP on this subnet. Changing
+        this removes or adds a default gateway IP of the existing subnet.
+        """
+        return pulumi.get(self, "no_gateway")
+
+    @property
+    @pulumi.getter(name="prefixLength")
+    def prefix_length(self) -> Optional[float]:
+        """
+        The prefix length to use when creating a subnet
+        from a subnet pool. The default subnet pool prefix length that was defined
+        when creating the subnet pool will be used if not provided. Changing this
+        creates a new subnet.
+        """
+        return pulumi.get(self, "prefix_length")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The region in which to obtain the V2 Networking client.
+        A Networking client is needed to create a Neutron subnet. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        subnet.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="subnetpoolId")
+    def subnetpool_id(self) -> Optional[str]:
+        """
+        The ID of the subnetpool associated with the subnet.
+        """
+        return pulumi.get(self, "subnetpool_id")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[List[str]]:
+        """
+        A set of string tags for the subnet.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> str:
+        """
+        The owner of the subnet. Required if admin wants to
+        create a subnet for another tenant. Changing this creates a new subnet.
+        """
+        return pulumi.get(self, "tenant_id")
+
+    @property
+    @pulumi.getter(name="valueSpecs")
+    def value_specs(self) -> Optional[Mapping[str, Any]]:
+        """
+        Map of additional options.
+        """
+        return pulumi.get(self, "value_specs")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

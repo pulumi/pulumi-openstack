@@ -5,63 +5,27 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['Service']
 
 
 class Service(pulumi.CustomResource):
-    admin_state_up: pulumi.Output[bool]
-    """
-    The administrative state of the resource. Can either be up(true) or down(false).
-    Changing this updates the administrative state of the existing service.
-    """
-    description: pulumi.Output[str]
-    """
-    The human-readable description for the service.
-    Changing this updates the description of the existing service.
-    """
-    external_v4_ip: pulumi.Output[str]
-    """
-    The read-only external (public) IPv4 address that is used for the VPN service.
-    """
-    external_v6_ip: pulumi.Output[str]
-    """
-    The read-only external (public) IPv6 address that is used for the VPN service.
-    """
-    name: pulumi.Output[str]
-    """
-    The name of the service. Changing this updates the name of
-    the existing service.
-    """
-    region: pulumi.Output[str]
-    """
-    The region in which to obtain the V2 Networking client.
-    A Networking client is needed to create a VPN service. If omitted, the
-    `region` argument of the provider is used. Changing this creates a new
-    service.
-    """
-    router_id: pulumi.Output[str]
-    """
-    The ID of the router. Changing this creates a new service.
-    """
-    status: pulumi.Output[str]
-    """
-    Indicates whether IPsec VPN service is currently operational. Values are ACTIVE, DOWN, BUILD, ERROR, PENDING_CREATE, PENDING_UPDATE, or PENDING_DELETE.
-    """
-    subnet_id: pulumi.Output[str]
-    """
-    SubnetID is the ID of the subnet. Default is null.
-    """
-    tenant_id: pulumi.Output[str]
-    """
-    The owner of the service. Required if admin wants to
-    create a service for another project. Changing this creates a new service.
-    """
-    value_specs: pulumi.Output[dict]
-    """
-    Map of additional options.
-    """
-    def __init__(__self__, resource_name, opts=None, admin_state_up=None, description=None, name=None, region=None, router_id=None, subnet_id=None, tenant_id=None, value_specs=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 admin_state_up: Optional[pulumi.Input[bool]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 router_id: Optional[pulumi.Input[str]] = None,
+                 subnet_id: Optional[pulumi.Input[str]] = None,
+                 tenant_id: Optional[pulumi.Input[str]] = None,
+                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a V2 Neutron VPN service resource within OpenStack.
 
@@ -72,7 +36,7 @@ class Service(pulumi.CustomResource):
         import pulumi_openstack as openstack
 
         service1 = openstack.vpnaas.Service("service1",
-            admin_state_up="true",
+            admin_state_up=True,
             router_id="14a75700-fc03-4602-9294-26ee44f366b3")
         ```
 
@@ -92,7 +56,7 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] subnet_id: SubnetID is the ID of the subnet. Default is null.
         :param pulumi.Input[str] tenant_id: The owner of the service. Required if admin wants to
                create a service for another project. Changing this creates a new service.
-        :param pulumi.Input[dict] value_specs: Map of additional options.
+        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -131,13 +95,26 @@ class Service(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, admin_state_up=None, description=None, external_v4_ip=None, external_v6_ip=None, name=None, region=None, router_id=None, status=None, subnet_id=None, tenant_id=None, value_specs=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            admin_state_up: Optional[pulumi.Input[bool]] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            external_v4_ip: Optional[pulumi.Input[str]] = None,
+            external_v6_ip: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            region: Optional[pulumi.Input[str]] = None,
+            router_id: Optional[pulumi.Input[str]] = None,
+            status: Optional[pulumi.Input[str]] = None,
+            subnet_id: Optional[pulumi.Input[str]] = None,
+            tenant_id: Optional[pulumi.Input[str]] = None,
+            value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'Service':
         """
         Get an existing Service resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] admin_state_up: The administrative state of the resource. Can either be up(true) or down(false).
                Changing this updates the administrative state of the existing service.
@@ -156,7 +133,7 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] subnet_id: SubnetID is the ID of the subnet. Default is null.
         :param pulumi.Input[str] tenant_id: The owner of the service. Required if admin wants to
                create a service for another project. Changing this creates a new service.
-        :param pulumi.Input[dict] value_specs: Map of additional options.
+        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -175,8 +152,104 @@ class Service(pulumi.CustomResource):
         __props__["value_specs"] = value_specs
         return Service(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="adminStateUp")
+    def admin_state_up(self) -> Optional[bool]:
+        """
+        The administrative state of the resource. Can either be up(true) or down(false).
+        Changing this updates the administrative state of the existing service.
+        """
+        return pulumi.get(self, "admin_state_up")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        The human-readable description for the service.
+        Changing this updates the description of the existing service.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="externalV4Ip")
+    def external_v4_ip(self) -> str:
+        """
+        The read-only external (public) IPv4 address that is used for the VPN service.
+        """
+        return pulumi.get(self, "external_v4_ip")
+
+    @property
+    @pulumi.getter(name="externalV6Ip")
+    def external_v6_ip(self) -> str:
+        """
+        The read-only external (public) IPv6 address that is used for the VPN service.
+        """
+        return pulumi.get(self, "external_v6_ip")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the service. Changing this updates the name of
+        the existing service.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The region in which to obtain the V2 Networking client.
+        A Networking client is needed to create a VPN service. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        service.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="routerId")
+    def router_id(self) -> str:
+        """
+        The ID of the router. Changing this creates a new service.
+        """
+        return pulumi.get(self, "router_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        Indicates whether IPsec VPN service is currently operational. Values are ACTIVE, DOWN, BUILD, ERROR, PENDING_CREATE, PENDING_UPDATE, or PENDING_DELETE.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> Optional[str]:
+        """
+        SubnetID is the ID of the subnet. Default is null.
+        """
+        return pulumi.get(self, "subnet_id")
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> str:
+        """
+        The owner of the service. Required if admin wants to
+        create a service for another project. Changing this creates a new service.
+        """
+        return pulumi.get(self, "tenant_id")
+
+    @property
+    @pulumi.getter(name="valueSpecs")
+    def value_specs(self) -> Optional[Mapping[str, Any]]:
+        """
+        Map of additional options.
+        """
+        return pulumi.get(self, "value_specs")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

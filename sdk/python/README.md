@@ -1,4 +1,10 @@
-[![Build Status](https://travis-ci.com/pulumi/pulumi-openstack.svg?token=eHg7Zp5zdDDJfTjY8ejq&branch=master)](https://travis-ci.com/pulumi/pulumi-openstack)
+[![Actions Status](https://github.com/pulumi/pulumi-openstack/workflows/master/badge.svg)](https://github.com/pulumi/pulumi-openstack/actions)
+[![Slack](http://www.pulumi.com/images/docs/badges/slack.svg)](https://slack.pulumi.com)
+[![NPM version](https://badge.fury.io/js/%40pulumi%2Fopenstack.svg)](https://www.npmjs.com/package/@pulumi/openstack)
+[![Python version](https://badge.fury.io/py/pulumi-openstack.svg)](https://pypi.org/project/pulumi-openstack)
+[![NuGet version](https://badge.fury.io/nu/pulumi.openstack.svg)](https://badge.fury.io/nu/pulumi.openstack)
+[![PkgGoDev](https://pkg.go.dev/badge/github.com/pulumi/pulumi-openstack/sdk/v2/go)](https://pkg.go.dev/github.com/pulumi/pulumi-openstack/sdk/v2/go)
+[![License](https://img.shields.io/npm/l/%40pulumi%2Fpulumi.svg)](https://github.com/pulumi/pulumi-openstack/blob/master/LICENSE)
 
 # OpenStack Resource Provider
 

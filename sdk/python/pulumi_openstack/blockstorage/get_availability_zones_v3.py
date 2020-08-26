@@ -5,10 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
 
+__all__ = [
+    'GetAvailabilityZonesV3Result',
+    'AwaitableGetAvailabilityZonesV3Result',
+    'get_availability_zones_v3',
+]
 
+@pulumi.output_type
 class GetAvailabilityZonesV3Result:
     """
     A collection of values returned by getAvailabilityZonesV3.
@@ -16,29 +22,49 @@ class GetAvailabilityZonesV3Result:
     def __init__(__self__, id=None, names=None, region=None, state=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if names and not isinstance(names, list):
+            raise TypeError("Expected argument 'names' to be a list")
+        pulumi.set(__self__, "names", names)
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        pulumi.set(__self__, "region", region)
+        if state and not isinstance(state, str):
+            raise TypeError("Expected argument 'state' to be a str")
+        pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if names and not isinstance(names, list):
-            raise TypeError("Expected argument 'names' to be a list")
-        __self__.names = names
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def names(self) -> List[str]:
         """
         The names of the availability zones, ordered alphanumerically, that
         match the queried `state`.
         """
-        if region and not isinstance(region, str):
-            raise TypeError("Expected argument 'region' to be a str")
-        __self__.region = region
+        return pulumi.get(self, "names")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
         """
         See Argument Reference above.
         """
-        if state and not isinstance(state, str):
-            raise TypeError("Expected argument 'state' to be a str")
-        __self__.state = state
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[str]:
         """
         See Argument Reference above.
         """
+        return pulumi.get(self, "state")
 
 
 class AwaitableGetAvailabilityZonesV3Result(GetAvailabilityZonesV3Result):
@@ -53,7 +79,9 @@ class AwaitableGetAvailabilityZonesV3Result(GetAvailabilityZonesV3Result):
             state=self.state)
 
 
-def get_availability_zones_v3(region=None, state=None, opts=None):
+def get_availability_zones_v3(region: Optional[str] = None,
+                              state: Optional[str] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAvailabilityZonesV3Result:
     """
     Use this data source to get a list of Block Storage availability zones from OpenStack
 
@@ -79,10 +107,10 @@ def get_availability_zones_v3(region=None, state=None, opts=None):
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('openstack:blockstorage/getAvailabilityZonesV3:getAvailabilityZonesV3', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('openstack:blockstorage/getAvailabilityZonesV3:getAvailabilityZonesV3', __args__, opts=opts, typ=GetAvailabilityZonesV3Result).value
 
     return AwaitableGetAvailabilityZonesV3Result(
-        id=__ret__.get('id'),
-        names=__ret__.get('names'),
-        region=__ret__.get('region'),
-        state=__ret__.get('state'))
+        id=__ret__.id,
+        names=__ret__.names,
+        region=__ret__.region,
+        state=__ret__.state)

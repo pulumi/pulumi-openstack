@@ -5,68 +5,30 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['QuotaV2']
 
 
 class QuotaV2(pulumi.CustomResource):
-    floatingip: pulumi.Output[float]
-    """
-    Quota value for floating IPs. Changing this updates the
-    existing quota.
-    """
-    network: pulumi.Output[float]
-    """
-    Quota value for networks. Changing this updates the
-    existing quota.
-    """
-    port: pulumi.Output[float]
-    """
-    Quota value for ports. Changing this updates the
-    existing quota.
-    """
-    project_id: pulumi.Output[str]
-    """
-    ID of the project to manage quota. Changing this
-    creates new quota.
-    """
-    rbac_policy: pulumi.Output[float]
-    """
-    Quota value for RBAC policies.
-    Changing this updates the existing quota.
-    """
-    region: pulumi.Output[str]
-    """
-    The region in which to create the quota. If
-    omitted, the `region` argument of the provider is used. Changing this
-    creates new quota.
-    """
-    router: pulumi.Output[float]
-    """
-    Quota value for routers. Changing this updates the
-    existing quota.
-    """
-    security_group: pulumi.Output[float]
-    """
-    Quota value for security groups. Changing
-    this updates the existing quota.
-    """
-    security_group_rule: pulumi.Output[float]
-    """
-    Quota value for security group rules.
-    Changing this updates the existing quota.
-    """
-    subnet: pulumi.Output[float]
-    """
-    Quota value for subnets. Changing
-    this updates the existing quota.
-    """
-    subnetpool: pulumi.Output[float]
-    """
-    Quota value for subnetpools.
-    Changing this updates the existing quota.
-    """
-    def __init__(__self__, resource_name, opts=None, floatingip=None, network=None, port=None, project_id=None, rbac_policy=None, region=None, router=None, security_group=None, security_group_rule=None, subnet=None, subnetpool=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 floatingip: Optional[pulumi.Input[float]] = None,
+                 network: Optional[pulumi.Input[float]] = None,
+                 port: Optional[pulumi.Input[float]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
+                 rbac_policy: Optional[pulumi.Input[float]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 router: Optional[pulumi.Input[float]] = None,
+                 security_group: Optional[pulumi.Input[float]] = None,
+                 security_group_rule: Optional[pulumi.Input[float]] = None,
+                 subnet: Optional[pulumi.Input[float]] = None,
+                 subnetpool: Optional[pulumi.Input[float]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a V2 networking quota resource within OpenStack.
 
@@ -138,13 +100,26 @@ class QuotaV2(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, floatingip=None, network=None, port=None, project_id=None, rbac_policy=None, region=None, router=None, security_group=None, security_group_rule=None, subnet=None, subnetpool=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            floatingip: Optional[pulumi.Input[float]] = None,
+            network: Optional[pulumi.Input[float]] = None,
+            port: Optional[pulumi.Input[float]] = None,
+            project_id: Optional[pulumi.Input[str]] = None,
+            rbac_policy: Optional[pulumi.Input[float]] = None,
+            region: Optional[pulumi.Input[str]] = None,
+            router: Optional[pulumi.Input[float]] = None,
+            security_group: Optional[pulumi.Input[float]] = None,
+            security_group_rule: Optional[pulumi.Input[float]] = None,
+            subnet: Optional[pulumi.Input[float]] = None,
+            subnetpool: Optional[pulumi.Input[float]] = None) -> 'QuotaV2':
         """
         Get an existing QuotaV2 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] floatingip: Quota value for floating IPs. Changing this updates the
                existing quota.
@@ -187,8 +162,109 @@ class QuotaV2(pulumi.CustomResource):
         __props__["subnetpool"] = subnetpool
         return QuotaV2(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def floatingip(self) -> float:
+        """
+        Quota value for floating IPs. Changing this updates the
+        existing quota.
+        """
+        return pulumi.get(self, "floatingip")
+
+    @property
+    @pulumi.getter
+    def network(self) -> float:
+        """
+        Quota value for networks. Changing this updates the
+        existing quota.
+        """
+        return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter
+    def port(self) -> float:
+        """
+        Quota value for ports. Changing this updates the
+        existing quota.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        """
+        ID of the project to manage quota. Changing this
+        creates new quota.
+        """
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter(name="rbacPolicy")
+    def rbac_policy(self) -> float:
+        """
+        Quota value for RBAC policies.
+        Changing this updates the existing quota.
+        """
+        return pulumi.get(self, "rbac_policy")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The region in which to create the quota. If
+        omitted, the `region` argument of the provider is used. Changing this
+        creates new quota.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def router(self) -> float:
+        """
+        Quota value for routers. Changing this updates the
+        existing quota.
+        """
+        return pulumi.get(self, "router")
+
+    @property
+    @pulumi.getter(name="securityGroup")
+    def security_group(self) -> float:
+        """
+        Quota value for security groups. Changing
+        this updates the existing quota.
+        """
+        return pulumi.get(self, "security_group")
+
+    @property
+    @pulumi.getter(name="securityGroupRule")
+    def security_group_rule(self) -> float:
+        """
+        Quota value for security group rules.
+        Changing this updates the existing quota.
+        """
+        return pulumi.get(self, "security_group_rule")
+
+    @property
+    @pulumi.getter
+    def subnet(self) -> float:
+        """
+        Quota value for subnets. Changing
+        this updates the existing quota.
+        """
+        return pulumi.get(self, "subnet")
+
+    @property
+    @pulumi.getter
+    def subnetpool(self) -> float:
+        """
+        Quota value for subnetpools.
+        Changing this updates the existing quota.
+        """
+        return pulumi.get(self, "subnetpool")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

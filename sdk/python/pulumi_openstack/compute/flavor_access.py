@@ -5,27 +5,22 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['FlavorAccess']
 
 
 class FlavorAccess(pulumi.CustomResource):
-    flavor_id: pulumi.Output[str]
-    """
-    The UUID of flavor to use. Changing this creates a new flavor access.
-    """
-    region: pulumi.Output[str]
-    """
-    The region in which to obtain the V2 Compute client.
-    If omitted, the `region` argument of the provider is used.
-    Changing this creates a new flavor access.
-    """
-    tenant_id: pulumi.Output[str]
-    """
-    The UUID of tenant which is allowed to use the flavor.
-    Changing this creates a new flavor access.
-    """
-    def __init__(__self__, resource_name, opts=None, flavor_id=None, region=None, tenant_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 flavor_id: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 tenant_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a project access for flavor V2 resource within OpenStack.
 
@@ -42,10 +37,10 @@ class FlavorAccess(pulumi.CustomResource):
 
         project1 = openstack.identity.Project("project1")
         flavor1 = openstack.compute.Flavor("flavor1",
-            disk="20",
+            disk=20,
             is_public=False,
-            ram="8096",
-            vcpus="2")
+            ram=8096,
+            vcpus=2)
         access1 = openstack.compute.FlavorAccess("access1",
             flavor_id=flavor1.id,
             tenant_id=project1.id)
@@ -91,13 +86,18 @@ class FlavorAccess(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, flavor_id=None, region=None, tenant_id=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            flavor_id: Optional[pulumi.Input[str]] = None,
+            region: Optional[pulumi.Input[str]] = None,
+            tenant_id: Optional[pulumi.Input[str]] = None) -> 'FlavorAccess':
         """
         Get an existing FlavorAccess resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] flavor_id: The UUID of flavor to use. Changing this creates a new flavor access.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Compute client.
@@ -115,8 +115,36 @@ class FlavorAccess(pulumi.CustomResource):
         __props__["tenant_id"] = tenant_id
         return FlavorAccess(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="flavorId")
+    def flavor_id(self) -> str:
+        """
+        The UUID of flavor to use. Changing this creates a new flavor access.
+        """
+        return pulumi.get(self, "flavor_id")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The region in which to obtain the V2 Compute client.
+        If omitted, the `region` argument of the provider is used.
+        Changing this creates a new flavor access.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> str:
+        """
+        The UUID of tenant which is allowed to use the flavor.
+        Changing this creates a new flavor access.
+        """
+        return pulumi.get(self, "tenant_id")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

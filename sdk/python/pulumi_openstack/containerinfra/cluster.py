@@ -5,39 +5,37 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['Cluster']
 
 
 class Cluster(pulumi.CustomResource):
-    api_address: pulumi.Output[str]
-    cluster_template_id: pulumi.Output[str]
-    coe_version: pulumi.Output[str]
-    container_version: pulumi.Output[str]
-    create_timeout: pulumi.Output[float]
-    created_at: pulumi.Output[str]
-    discovery_url: pulumi.Output[str]
-    docker_volume_size: pulumi.Output[float]
-    fixed_network: pulumi.Output[str]
-    fixed_subnet: pulumi.Output[str]
-    flavor: pulumi.Output[str]
-    floating_ip_enabled: pulumi.Output[bool]
-    keypair: pulumi.Output[str]
-    kubeconfig: pulumi.Output[dict]
-    labels: pulumi.Output[dict]
-    master_addresses: pulumi.Output[list]
-    master_count: pulumi.Output[float]
-    master_flavor: pulumi.Output[str]
-    merge_labels: pulumi.Output[bool]
-    name: pulumi.Output[str]
-    node_addresses: pulumi.Output[list]
-    node_count: pulumi.Output[float]
-    project_id: pulumi.Output[str]
-    region: pulumi.Output[str]
-    stack_id: pulumi.Output[str]
-    updated_at: pulumi.Output[str]
-    user_id: pulumi.Output[str]
-    def __init__(__self__, resource_name, opts=None, cluster_template_id=None, create_timeout=None, discovery_url=None, docker_volume_size=None, fixed_network=None, fixed_subnet=None, flavor=None, floating_ip_enabled=None, keypair=None, labels=None, master_count=None, master_flavor=None, merge_labels=None, name=None, node_count=None, region=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 cluster_template_id: Optional[pulumi.Input[str]] = None,
+                 create_timeout: Optional[pulumi.Input[float]] = None,
+                 discovery_url: Optional[pulumi.Input[str]] = None,
+                 docker_volume_size: Optional[pulumi.Input[float]] = None,
+                 fixed_network: Optional[pulumi.Input[str]] = None,
+                 fixed_subnet: Optional[pulumi.Input[str]] = None,
+                 flavor: Optional[pulumi.Input[str]] = None,
+                 floating_ip_enabled: Optional[pulumi.Input[bool]] = None,
+                 keypair: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 master_count: Optional[pulumi.Input[float]] = None,
+                 master_flavor: Optional[pulumi.Input[str]] = None,
+                 merge_labels: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 node_count: Optional[pulumi.Input[float]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a V1 Magnum cluster resource within OpenStack.
 
@@ -210,22 +208,43 @@ class Cluster(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, api_address=None, cluster_template_id=None, coe_version=None, container_version=None, create_timeout=None, created_at=None, discovery_url=None, docker_volume_size=None, fixed_network=None, fixed_subnet=None, flavor=None, floating_ip_enabled=None, keypair=None, kubeconfig=None, labels=None, master_addresses=None, master_count=None, master_flavor=None, merge_labels=None, name=None, node_addresses=None, node_count=None, project_id=None, region=None, stack_id=None, updated_at=None, user_id=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            api_address: Optional[pulumi.Input[str]] = None,
+            cluster_template_id: Optional[pulumi.Input[str]] = None,
+            coe_version: Optional[pulumi.Input[str]] = None,
+            container_version: Optional[pulumi.Input[str]] = None,
+            create_timeout: Optional[pulumi.Input[float]] = None,
+            created_at: Optional[pulumi.Input[str]] = None,
+            discovery_url: Optional[pulumi.Input[str]] = None,
+            docker_volume_size: Optional[pulumi.Input[float]] = None,
+            fixed_network: Optional[pulumi.Input[str]] = None,
+            fixed_subnet: Optional[pulumi.Input[str]] = None,
+            flavor: Optional[pulumi.Input[str]] = None,
+            floating_ip_enabled: Optional[pulumi.Input[bool]] = None,
+            keypair: Optional[pulumi.Input[str]] = None,
+            kubeconfig: Optional[pulumi.Input[pulumi.InputType['ClusterKubeconfigArgs']]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            master_addresses: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            master_count: Optional[pulumi.Input[float]] = None,
+            master_flavor: Optional[pulumi.Input[str]] = None,
+            merge_labels: Optional[pulumi.Input[bool]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            node_addresses: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            node_count: Optional[pulumi.Input[float]] = None,
+            project_id: Optional[pulumi.Input[str]] = None,
+            region: Optional[pulumi.Input[str]] = None,
+            stack_id: Optional[pulumi.Input[str]] = None,
+            updated_at: Optional[pulumi.Input[str]] = None,
+            user_id: Optional[pulumi.Input[str]] = None) -> 'Cluster':
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-
-        The **kubeconfig** object supports the following:
-
-          * `client_certificate` (`pulumi.Input[str]`)
-          * `client_key` (`pulumi.Input[str]`)
-          * `cluster_ca_certificate` (`pulumi.Input[str]`)
-          * `host` (`pulumi.Input[str]`)
-          * `raw_config` (`pulumi.Input[str]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -260,8 +279,144 @@ class Cluster(pulumi.CustomResource):
         __props__["user_id"] = user_id
         return Cluster(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="apiAddress")
+    def api_address(self) -> str:
+        return pulumi.get(self, "api_address")
+
+    @property
+    @pulumi.getter(name="clusterTemplateId")
+    def cluster_template_id(self) -> str:
+        return pulumi.get(self, "cluster_template_id")
+
+    @property
+    @pulumi.getter(name="coeVersion")
+    def coe_version(self) -> str:
+        return pulumi.get(self, "coe_version")
+
+    @property
+    @pulumi.getter(name="containerVersion")
+    def container_version(self) -> str:
+        return pulumi.get(self, "container_version")
+
+    @property
+    @pulumi.getter(name="createTimeout")
+    def create_timeout(self) -> float:
+        return pulumi.get(self, "create_timeout")
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> str:
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter(name="discoveryUrl")
+    def discovery_url(self) -> str:
+        return pulumi.get(self, "discovery_url")
+
+    @property
+    @pulumi.getter(name="dockerVolumeSize")
+    def docker_volume_size(self) -> float:
+        return pulumi.get(self, "docker_volume_size")
+
+    @property
+    @pulumi.getter(name="fixedNetwork")
+    def fixed_network(self) -> str:
+        return pulumi.get(self, "fixed_network")
+
+    @property
+    @pulumi.getter(name="fixedSubnet")
+    def fixed_subnet(self) -> str:
+        return pulumi.get(self, "fixed_subnet")
+
+    @property
+    @pulumi.getter
+    def flavor(self) -> str:
+        return pulumi.get(self, "flavor")
+
+    @property
+    @pulumi.getter(name="floatingIpEnabled")
+    def floating_ip_enabled(self) -> bool:
+        return pulumi.get(self, "floating_ip_enabled")
+
+    @property
+    @pulumi.getter
+    def keypair(self) -> str:
+        return pulumi.get(self, "keypair")
+
+    @property
+    @pulumi.getter
+    def kubeconfig(self) -> 'outputs.ClusterKubeconfig':
+        return pulumi.get(self, "kubeconfig")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="masterAddresses")
+    def master_addresses(self) -> List[str]:
+        return pulumi.get(self, "master_addresses")
+
+    @property
+    @pulumi.getter(name="masterCount")
+    def master_count(self) -> float:
+        return pulumi.get(self, "master_count")
+
+    @property
+    @pulumi.getter(name="masterFlavor")
+    def master_flavor(self) -> str:
+        return pulumi.get(self, "master_flavor")
+
+    @property
+    @pulumi.getter(name="mergeLabels")
+    def merge_labels(self) -> Optional[bool]:
+        return pulumi.get(self, "merge_labels")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="nodeAddresses")
+    def node_addresses(self) -> List[str]:
+        return pulumi.get(self, "node_addresses")
+
+    @property
+    @pulumi.getter(name="nodeCount")
+    def node_count(self) -> float:
+        return pulumi.get(self, "node_count")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="stackId")
+    def stack_id(self) -> str:
+        return pulumi.get(self, "stack_id")
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> str:
+        return pulumi.get(self, "updated_at")
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> str:
+        return pulumi.get(self, "user_id")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

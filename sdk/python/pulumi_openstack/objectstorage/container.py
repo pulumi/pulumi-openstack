@@ -5,66 +5,31 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['Container']
 
 
 class Container(pulumi.CustomResource):
-    container_read: pulumi.Output[str]
-    """
-    Sets an access control list (ACL) that grants
-    read access. This header can contain a comma-delimited list of users that
-    can read the container (allows the GET method for all objects in the
-    container). Changing this updates the access control list read access.
-    """
-    container_sync_key: pulumi.Output[str]
-    """
-    The secret key for container synchronization.
-    Changing this updates container synchronization.
-    """
-    container_sync_to: pulumi.Output[str]
-    """
-    The destination for container synchronization.
-    Changing this updates container synchronization.
-    """
-    container_write: pulumi.Output[str]
-    """
-    Sets an ACL that grants write access.
-    Changing this updates the access control list write access.
-    """
-    content_type: pulumi.Output[str]
-    """
-    The MIME type for the container. Changing this
-    updates the MIME type.
-    """
-    force_destroy: pulumi.Output[bool]
-    """
-    A boolean that indicates all objects should be deleted from the container so that the container can be destroyed without error. These objects are not recoverable.
-    """
-    metadata: pulumi.Output[dict]
-    """
-    Custom key/value pairs to associate with the container.
-    Changing this updates the existing container metadata.
-    """
-    name: pulumi.Output[str]
-    """
-    A unique name for the container. Changing this creates a
-    new container.
-    """
-    region: pulumi.Output[str]
-    """
-    The region in which to create the container. If
-    omitted, the `region` argument of the provider is used. Changing this
-    creates a new container.
-    """
-    versioning: pulumi.Output[dict]
-    """
-    Enable object versioning. The structure is described below.
-
-      * `location` (`str`) - Container in which versions will be stored.
-      * `type` (`str`) - Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/api/object_versioning.html).
-    """
-    def __init__(__self__, resource_name, opts=None, container_read=None, container_sync_key=None, container_sync_to=None, container_write=None, content_type=None, force_destroy=None, metadata=None, name=None, region=None, versioning=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 container_read: Optional[pulumi.Input[str]] = None,
+                 container_sync_key: Optional[pulumi.Input[str]] = None,
+                 container_sync_to: Optional[pulumi.Input[str]] = None,
+                 container_write: Optional[pulumi.Input[str]] = None,
+                 content_type: Optional[pulumi.Input[str]] = None,
+                 force_destroy: Optional[pulumi.Input[bool]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 versioning: Optional[pulumi.Input[pulumi.InputType['ContainerVersioningArgs']]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a V1 container resource within OpenStack.
 
@@ -81,10 +46,10 @@ class Container(pulumi.CustomResource):
                 "test": "true",
             },
             region="RegionOne",
-            versioning={
-                "location": "tf-test-container-versions",
-                "type": "versions",
-            })
+            versioning=openstack.objectstorage.ContainerVersioningArgs(
+                location="tf-test-container-versions",
+                type="versions",
+            ))
         ```
         ### Global Read Access
 
@@ -134,19 +99,14 @@ class Container(pulumi.CustomResource):
         :param pulumi.Input[str] content_type: The MIME type for the container. Changing this
                updates the MIME type.
         :param pulumi.Input[bool] force_destroy: A boolean that indicates all objects should be deleted from the container so that the container can be destroyed without error. These objects are not recoverable.
-        :param pulumi.Input[dict] metadata: Custom key/value pairs to associate with the container.
+        :param pulumi.Input[Mapping[str, Any]] metadata: Custom key/value pairs to associate with the container.
                Changing this updates the existing container metadata.
         :param pulumi.Input[str] name: A unique name for the container. Changing this creates a
                new container.
         :param pulumi.Input[str] region: The region in which to create the container. If
                omitted, the `region` argument of the provider is used. Changing this
                creates a new container.
-        :param pulumi.Input[dict] versioning: Enable object versioning. The structure is described below.
-
-        The **versioning** object supports the following:
-
-          * `location` (`pulumi.Input[str]`) - Container in which versions will be stored.
-          * `type` (`pulumi.Input[str]`) - Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/api/object_versioning.html).
+        :param pulumi.Input[pulumi.InputType['ContainerVersioningArgs']] versioning: Enable object versioning. The structure is described below.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -182,13 +142,25 @@ class Container(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, container_read=None, container_sync_key=None, container_sync_to=None, container_write=None, content_type=None, force_destroy=None, metadata=None, name=None, region=None, versioning=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            container_read: Optional[pulumi.Input[str]] = None,
+            container_sync_key: Optional[pulumi.Input[str]] = None,
+            container_sync_to: Optional[pulumi.Input[str]] = None,
+            container_write: Optional[pulumi.Input[str]] = None,
+            content_type: Optional[pulumi.Input[str]] = None,
+            force_destroy: Optional[pulumi.Input[bool]] = None,
+            metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            region: Optional[pulumi.Input[str]] = None,
+            versioning: Optional[pulumi.Input[pulumi.InputType['ContainerVersioningArgs']]] = None) -> 'Container':
         """
         Get an existing Container resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] container_read: Sets an access control list (ACL) that grants
                read access. This header can contain a comma-delimited list of users that
@@ -203,19 +175,14 @@ class Container(pulumi.CustomResource):
         :param pulumi.Input[str] content_type: The MIME type for the container. Changing this
                updates the MIME type.
         :param pulumi.Input[bool] force_destroy: A boolean that indicates all objects should be deleted from the container so that the container can be destroyed without error. These objects are not recoverable.
-        :param pulumi.Input[dict] metadata: Custom key/value pairs to associate with the container.
+        :param pulumi.Input[Mapping[str, Any]] metadata: Custom key/value pairs to associate with the container.
                Changing this updates the existing container metadata.
         :param pulumi.Input[str] name: A unique name for the container. Changing this creates a
                new container.
         :param pulumi.Input[str] region: The region in which to create the container. If
                omitted, the `region` argument of the provider is used. Changing this
                creates a new container.
-        :param pulumi.Input[dict] versioning: Enable object versioning. The structure is described below.
-
-        The **versioning** object supports the following:
-
-          * `location` (`pulumi.Input[str]`) - Container in which versions will be stored.
-          * `type` (`pulumi.Input[str]`) - Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/api/object_versioning.html).
+        :param pulumi.Input[pulumi.InputType['ContainerVersioningArgs']] versioning: Enable object versioning. The structure is described below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -233,8 +200,100 @@ class Container(pulumi.CustomResource):
         __props__["versioning"] = versioning
         return Container(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="containerRead")
+    def container_read(self) -> Optional[str]:
+        """
+        Sets an access control list (ACL) that grants
+        read access. This header can contain a comma-delimited list of users that
+        can read the container (allows the GET method for all objects in the
+        container). Changing this updates the access control list read access.
+        """
+        return pulumi.get(self, "container_read")
+
+    @property
+    @pulumi.getter(name="containerSyncKey")
+    def container_sync_key(self) -> Optional[str]:
+        """
+        The secret key for container synchronization.
+        Changing this updates container synchronization.
+        """
+        return pulumi.get(self, "container_sync_key")
+
+    @property
+    @pulumi.getter(name="containerSyncTo")
+    def container_sync_to(self) -> Optional[str]:
+        """
+        The destination for container synchronization.
+        Changing this updates container synchronization.
+        """
+        return pulumi.get(self, "container_sync_to")
+
+    @property
+    @pulumi.getter(name="containerWrite")
+    def container_write(self) -> Optional[str]:
+        """
+        Sets an ACL that grants write access.
+        Changing this updates the access control list write access.
+        """
+        return pulumi.get(self, "container_write")
+
+    @property
+    @pulumi.getter(name="contentType")
+    def content_type(self) -> Optional[str]:
+        """
+        The MIME type for the container. Changing this
+        updates the MIME type.
+        """
+        return pulumi.get(self, "content_type")
+
+    @property
+    @pulumi.getter(name="forceDestroy")
+    def force_destroy(self) -> Optional[bool]:
+        """
+        A boolean that indicates all objects should be deleted from the container so that the container can be destroyed without error. These objects are not recoverable.
+        """
+        return pulumi.get(self, "force_destroy")
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Optional[Mapping[str, Any]]:
+        """
+        Custom key/value pairs to associate with the container.
+        Changing this updates the existing container metadata.
+        """
+        return pulumi.get(self, "metadata")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        A unique name for the container. Changing this creates a
+        new container.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The region in which to create the container. If
+        omitted, the `region` argument of the provider is used. Changing this
+        creates a new container.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def versioning(self) -> Optional['outputs.ContainerVersioning']:
+        """
+        Enable object versioning. The structure is described below.
+        """
+        return pulumi.get(self, "versioning")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

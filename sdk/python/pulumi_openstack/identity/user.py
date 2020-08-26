@@ -5,77 +5,34 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['User']
 
 
 class User(pulumi.CustomResource):
-    default_project_id: pulumi.Output[str]
-    """
-    The default project this user belongs to.
-    """
-    description: pulumi.Output[str]
-    """
-    A description of the user.
-    """
-    domain_id: pulumi.Output[str]
-    """
-    The domain this user belongs to.
-    """
-    enabled: pulumi.Output[bool]
-    """
-    Whether the user is enabled or disabled. Valid
-    values are `true` and `false`.
-    """
-    extra: pulumi.Output[dict]
-    """
-    Free-form key/value pairs of extra information.
-    """
-    ignore_change_password_upon_first_use: pulumi.Output[bool]
-    """
-    User will not have to
-    change their password upon first use. Valid values are `true` and `false`.
-    """
-    ignore_lockout_failure_attempts: pulumi.Output[bool]
-    """
-    User will not have a failure
-    lockout placed on their account. Valid values are `true` and `false`.
-    """
-    ignore_password_expiry: pulumi.Output[bool]
-    """
-    User's password will not expire.
-    Valid values are `true` and `false`.
-    """
-    multi_factor_auth_enabled: pulumi.Output[bool]
-    """
-    Whether to enable multi-factor
-    authentication. Valid values are `true` and `false`.
-    """
-    multi_factor_auth_rules: pulumi.Output[list]
-    """
-    A multi-factor authentication rule.
-    The structure is documented below. Please see the
-    [Ocata release notes](https://docs.openstack.org/releasenotes/keystone/ocata.html)
-    for more information on how to use mulit-factor rules.
-
-      * `rules` (`list`) - A list of authentication plugins that the user must
-        authenticate with.
-    """
-    name: pulumi.Output[str]
-    """
-    The name of the user.
-    """
-    password: pulumi.Output[str]
-    """
-    The password for the user.
-    """
-    region: pulumi.Output[str]
-    """
-    The region in which to obtain the V3 Keystone client.
-    If omitted, the `region` argument of the provider is used. Changing this
-    creates a new User.
-    """
-    def __init__(__self__, resource_name, opts=None, default_project_id=None, description=None, domain_id=None, enabled=None, extra=None, ignore_change_password_upon_first_use=None, ignore_lockout_failure_attempts=None, ignore_password_expiry=None, multi_factor_auth_enabled=None, multi_factor_auth_rules=None, name=None, password=None, region=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 default_project_id: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 domain_id: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 extra: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 ignore_change_password_upon_first_use: Optional[pulumi.Input[bool]] = None,
+                 ignore_lockout_failure_attempts: Optional[pulumi.Input[bool]] = None,
+                 ignore_password_expiry: Optional[pulumi.Input[bool]] = None,
+                 multi_factor_auth_enabled: Optional[pulumi.Input[bool]] = None,
+                 multi_factor_auth_rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['UserMultiFactorAuthRuleArgs']]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a V3 User resource within OpenStack Keystone.
 
@@ -98,15 +55,15 @@ class User(pulumi.CustomResource):
             ignore_change_password_upon_first_use=True,
             multi_factor_auth_enabled=True,
             multi_factor_auth_rules=[
-                {
-                    "rules": [
+                openstack.identity.UserMultiFactorAuthRuleArgs(
+                    rules=[
                         "password",
                         "totp",
                     ],
-                },
-                {
-                    "rules": ["password"],
-                },
+                ),
+                openstack.identity.UserMultiFactorAuthRuleArgs(
+                    rules=["password"],
+                ),
             ],
             password="password123")
         ```
@@ -118,7 +75,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] domain_id: The domain this user belongs to.
         :param pulumi.Input[bool] enabled: Whether the user is enabled or disabled. Valid
                values are `true` and `false`.
-        :param pulumi.Input[dict] extra: Free-form key/value pairs of extra information.
+        :param pulumi.Input[Mapping[str, Any]] extra: Free-form key/value pairs of extra information.
         :param pulumi.Input[bool] ignore_change_password_upon_first_use: User will not have to
                change their password upon first use. Valid values are `true` and `false`.
         :param pulumi.Input[bool] ignore_lockout_failure_attempts: User will not have a failure
@@ -127,7 +84,7 @@ class User(pulumi.CustomResource):
                Valid values are `true` and `false`.
         :param pulumi.Input[bool] multi_factor_auth_enabled: Whether to enable multi-factor
                authentication. Valid values are `true` and `false`.
-        :param pulumi.Input[list] multi_factor_auth_rules: A multi-factor authentication rule.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['UserMultiFactorAuthRuleArgs']]]] multi_factor_auth_rules: A multi-factor authentication rule.
                The structure is documented below. Please see the
                [Ocata release notes](https://docs.openstack.org/releasenotes/keystone/ocata.html)
                for more information on how to use mulit-factor rules.
@@ -136,11 +93,6 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region in which to obtain the V3 Keystone client.
                If omitted, the `region` argument of the provider is used. Changing this
                creates a new User.
-
-        The **multi_factor_auth_rules** object supports the following:
-
-          * `rules` (`pulumi.Input[list]`) - A list of authentication plugins that the user must
-            authenticate with.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -179,20 +131,35 @@ class User(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, default_project_id=None, description=None, domain_id=None, enabled=None, extra=None, ignore_change_password_upon_first_use=None, ignore_lockout_failure_attempts=None, ignore_password_expiry=None, multi_factor_auth_enabled=None, multi_factor_auth_rules=None, name=None, password=None, region=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            default_project_id: Optional[pulumi.Input[str]] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            domain_id: Optional[pulumi.Input[str]] = None,
+            enabled: Optional[pulumi.Input[bool]] = None,
+            extra: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            ignore_change_password_upon_first_use: Optional[pulumi.Input[bool]] = None,
+            ignore_lockout_failure_attempts: Optional[pulumi.Input[bool]] = None,
+            ignore_password_expiry: Optional[pulumi.Input[bool]] = None,
+            multi_factor_auth_enabled: Optional[pulumi.Input[bool]] = None,
+            multi_factor_auth_rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['UserMultiFactorAuthRuleArgs']]]]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            password: Optional[pulumi.Input[str]] = None,
+            region: Optional[pulumi.Input[str]] = None) -> 'User':
         """
         Get an existing User resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] default_project_id: The default project this user belongs to.
         :param pulumi.Input[str] description: A description of the user.
         :param pulumi.Input[str] domain_id: The domain this user belongs to.
         :param pulumi.Input[bool] enabled: Whether the user is enabled or disabled. Valid
                values are `true` and `false`.
-        :param pulumi.Input[dict] extra: Free-form key/value pairs of extra information.
+        :param pulumi.Input[Mapping[str, Any]] extra: Free-form key/value pairs of extra information.
         :param pulumi.Input[bool] ignore_change_password_upon_first_use: User will not have to
                change their password upon first use. Valid values are `true` and `false`.
         :param pulumi.Input[bool] ignore_lockout_failure_attempts: User will not have a failure
@@ -201,7 +168,7 @@ class User(pulumi.CustomResource):
                Valid values are `true` and `false`.
         :param pulumi.Input[bool] multi_factor_auth_enabled: Whether to enable multi-factor
                authentication. Valid values are `true` and `false`.
-        :param pulumi.Input[list] multi_factor_auth_rules: A multi-factor authentication rule.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['UserMultiFactorAuthRuleArgs']]]] multi_factor_auth_rules: A multi-factor authentication rule.
                The structure is documented below. Please see the
                [Ocata release notes](https://docs.openstack.org/releasenotes/keystone/ocata.html)
                for more information on how to use mulit-factor rules.
@@ -210,11 +177,6 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region in which to obtain the V3 Keystone client.
                If omitted, the `region` argument of the provider is used. Changing this
                creates a new User.
-
-        The **multi_factor_auth_rules** object supports the following:
-
-          * `rules` (`pulumi.Input[list]`) - A list of authentication plugins that the user must
-            authenticate with.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -235,8 +197,123 @@ class User(pulumi.CustomResource):
         __props__["region"] = region
         return User(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="defaultProjectId")
+    def default_project_id(self) -> str:
+        """
+        The default project this user belongs to.
+        """
+        return pulumi.get(self, "default_project_id")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        A description of the user.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="domainId")
+    def domain_id(self) -> str:
+        """
+        The domain this user belongs to.
+        """
+        return pulumi.get(self, "domain_id")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Whether the user is enabled or disabled. Valid
+        values are `true` and `false`.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def extra(self) -> Optional[Mapping[str, Any]]:
+        """
+        Free-form key/value pairs of extra information.
+        """
+        return pulumi.get(self, "extra")
+
+    @property
+    @pulumi.getter(name="ignoreChangePasswordUponFirstUse")
+    def ignore_change_password_upon_first_use(self) -> Optional[bool]:
+        """
+        User will not have to
+        change their password upon first use. Valid values are `true` and `false`.
+        """
+        return pulumi.get(self, "ignore_change_password_upon_first_use")
+
+    @property
+    @pulumi.getter(name="ignoreLockoutFailureAttempts")
+    def ignore_lockout_failure_attempts(self) -> Optional[bool]:
+        """
+        User will not have a failure
+        lockout placed on their account. Valid values are `true` and `false`.
+        """
+        return pulumi.get(self, "ignore_lockout_failure_attempts")
+
+    @property
+    @pulumi.getter(name="ignorePasswordExpiry")
+    def ignore_password_expiry(self) -> Optional[bool]:
+        """
+        User's password will not expire.
+        Valid values are `true` and `false`.
+        """
+        return pulumi.get(self, "ignore_password_expiry")
+
+    @property
+    @pulumi.getter(name="multiFactorAuthEnabled")
+    def multi_factor_auth_enabled(self) -> Optional[bool]:
+        """
+        Whether to enable multi-factor
+        authentication. Valid values are `true` and `false`.
+        """
+        return pulumi.get(self, "multi_factor_auth_enabled")
+
+    @property
+    @pulumi.getter(name="multiFactorAuthRules")
+    def multi_factor_auth_rules(self) -> Optional[List['outputs.UserMultiFactorAuthRule']]:
+        """
+        A multi-factor authentication rule.
+        The structure is documented below. Please see the
+        [Ocata release notes](https://docs.openstack.org/releasenotes/keystone/ocata.html)
+        for more information on how to use mulit-factor rules.
+        """
+        return pulumi.get(self, "multi_factor_auth_rules")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the user.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[str]:
+        """
+        The password for the user.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The region in which to obtain the V3 Keystone client.
+        If omitted, the `region` argument of the provider is used. Changing this
+        creates a new User.
+        """
+        return pulumi.get(self, "region")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

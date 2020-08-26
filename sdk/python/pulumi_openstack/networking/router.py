@@ -5,105 +5,35 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['Router']
 
 
 class Router(pulumi.CustomResource):
-    admin_state_up: pulumi.Output[bool]
-    """
-    Administrative up/down status for the router
-    (must be "true" or "false" if provided). Changing this updates the
-    `admin_state_up` of an existing router.
-    """
-    all_tags: pulumi.Output[list]
-    """
-    The collection of tags assigned on the router, which have been
-    explicitly and implicitly added.
-    """
-    availability_zone_hints: pulumi.Output[list]
-    """
-    An availability zone is used to make 
-    network resources highly available. Used for resources with high availability so that they are scheduled on different availability zones. Changing
-    this creates a new router.
-    """
-    description: pulumi.Output[str]
-    """
-    Human-readable description for the router.
-    """
-    distributed: pulumi.Output[bool]
-    """
-    Indicates whether or not to create a
-    distributed router. The default policy setting in Neutron restricts
-    usage of this property to administrative users only.
-    """
-    enable_snat: pulumi.Output[bool]
-    """
-    Enable Source NAT for the router. Valid values are
-    "true" or "false". An `external_network_id` has to be set in order to
-    set this property. Changing this updates the `enable_snat` of the router.
-    Setting this value **requires** an **ext-gw-mode** extension to be enabled
-    in OpenStack Neutron.
-    """
-    external_fixed_ips: pulumi.Output[list]
-    """
-    An external fixed IP for the router. This
-    can be repeated. The structure is described below. An `external_network_id`
-    has to be set in order to set this property. Changing this updates the
-    external fixed IPs of the router.
-
-      * `ip_address` (`str`) - The IP address to set on the router.
-      * `subnet_id` (`str`) - Subnet in which the fixed IP belongs to.
-    """
-    external_gateway: pulumi.Output[str]
-    """
-    The
-    network UUID of an external gateway for the router. A router with an
-    external gateway is required if any compute instances or load balancers
-    will be using floating IPs. Changing this updates the external gateway
-    of an existing router.
-    """
-    external_network_id: pulumi.Output[str]
-    """
-    The network UUID of an external gateway
-    for the router. A router with an external gateway is required if any
-    compute instances or load balancers will be using floating IPs. Changing
-    this updates the external gateway of the router.
-    """
-    name: pulumi.Output[str]
-    """
-    A unique name for the router. Changing this
-    updates the `name` of an existing router.
-    """
-    region: pulumi.Output[str]
-    """
-    The region in which to obtain the V2 networking client.
-    A networking client is needed to create a router. If omitted, the
-    `region` argument of the provider is used. Changing this creates a new
-    router.
-    """
-    tags: pulumi.Output[list]
-    """
-    A set of string tags for the router.
-    """
-    tenant_id: pulumi.Output[str]
-    """
-    The owner of the floating IP. Required if admin wants
-    to create a router for another tenant. Changing this creates a new router.
-    """
-    value_specs: pulumi.Output[dict]
-    """
-    Map of additional driver-specific options.
-    """
-    vendor_options: pulumi.Output[dict]
-    """
-    Map of additional vendor-specific options.
-    Supported options are described below.
-
-      * `setRouterGatewayAfterCreate` (`bool`) - Boolean to control whether
-        the Router gateway is assigned during creation or updated after creation.
-    """
-    def __init__(__self__, resource_name, opts=None, admin_state_up=None, availability_zone_hints=None, description=None, distributed=None, enable_snat=None, external_fixed_ips=None, external_gateway=None, external_network_id=None, name=None, region=None, tags=None, tenant_id=None, value_specs=None, vendor_options=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 admin_state_up: Optional[pulumi.Input[bool]] = None,
+                 availability_zone_hints: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 distributed: Optional[pulumi.Input[bool]] = None,
+                 enable_snat: Optional[pulumi.Input[bool]] = None,
+                 external_fixed_ips: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['RouterExternalFixedIpArgs']]]]] = None,
+                 external_gateway: Optional[pulumi.Input[str]] = None,
+                 external_network_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 tenant_id: Optional[pulumi.Input[str]] = None,
+                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 vendor_options: Optional[pulumi.Input[pulumi.InputType['RouterVendorOptionsArgs']]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a V2 router resource within OpenStack.
 
@@ -123,7 +53,7 @@ class Router(pulumi.CustomResource):
         :param pulumi.Input[bool] admin_state_up: Administrative up/down status for the router
                (must be "true" or "false" if provided). Changing this updates the
                `admin_state_up` of an existing router.
-        :param pulumi.Input[list] availability_zone_hints: An availability zone is used to make 
+        :param pulumi.Input[List[pulumi.Input[str]]] availability_zone_hints: An availability zone is used to make 
                network resources highly available. Used for resources with high availability so that they are scheduled on different availability zones. Changing
                this creates a new router.
         :param pulumi.Input[str] description: Human-readable description for the router.
@@ -135,7 +65,7 @@ class Router(pulumi.CustomResource):
                set this property. Changing this updates the `enable_snat` of the router.
                Setting this value **requires** an **ext-gw-mode** extension to be enabled
                in OpenStack Neutron.
-        :param pulumi.Input[list] external_fixed_ips: An external fixed IP for the router. This
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['RouterExternalFixedIpArgs']]]] external_fixed_ips: An external fixed IP for the router. This
                can be repeated. The structure is described below. An `external_network_id`
                has to be set in order to set this property. Changing this updates the
                external fixed IPs of the router.
@@ -154,22 +84,12 @@ class Router(pulumi.CustomResource):
                A networking client is needed to create a router. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
                router.
-        :param pulumi.Input[list] tags: A set of string tags for the router.
+        :param pulumi.Input[List[pulumi.Input[str]]] tags: A set of string tags for the router.
         :param pulumi.Input[str] tenant_id: The owner of the floating IP. Required if admin wants
                to create a router for another tenant. Changing this creates a new router.
-        :param pulumi.Input[dict] value_specs: Map of additional driver-specific options.
-        :param pulumi.Input[dict] vendor_options: Map of additional vendor-specific options.
+        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional driver-specific options.
+        :param pulumi.Input[pulumi.InputType['RouterVendorOptionsArgs']] vendor_options: Map of additional vendor-specific options.
                Supported options are described below.
-
-        The **external_fixed_ips** object supports the following:
-
-          * `ip_address` (`pulumi.Input[str]`) - The IP address to set on the router.
-          * `subnet_id` (`pulumi.Input[str]`) - Subnet in which the fixed IP belongs to.
-
-        The **vendor_options** object supports the following:
-
-          * `setRouterGatewayAfterCreate` (`pulumi.Input[bool]`) - Boolean to control whether
-            the Router gateway is assigned during creation or updated after creation.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -213,20 +133,37 @@ class Router(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, admin_state_up=None, all_tags=None, availability_zone_hints=None, description=None, distributed=None, enable_snat=None, external_fixed_ips=None, external_gateway=None, external_network_id=None, name=None, region=None, tags=None, tenant_id=None, value_specs=None, vendor_options=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            admin_state_up: Optional[pulumi.Input[bool]] = None,
+            all_tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            availability_zone_hints: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            distributed: Optional[pulumi.Input[bool]] = None,
+            enable_snat: Optional[pulumi.Input[bool]] = None,
+            external_fixed_ips: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['RouterExternalFixedIpArgs']]]]] = None,
+            external_gateway: Optional[pulumi.Input[str]] = None,
+            external_network_id: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            region: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            tenant_id: Optional[pulumi.Input[str]] = None,
+            value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            vendor_options: Optional[pulumi.Input[pulumi.InputType['RouterVendorOptionsArgs']]] = None) -> 'Router':
         """
         Get an existing Router resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] admin_state_up: Administrative up/down status for the router
                (must be "true" or "false" if provided). Changing this updates the
                `admin_state_up` of an existing router.
-        :param pulumi.Input[list] all_tags: The collection of tags assigned on the router, which have been
+        :param pulumi.Input[List[pulumi.Input[str]]] all_tags: The collection of tags assigned on the router, which have been
                explicitly and implicitly added.
-        :param pulumi.Input[list] availability_zone_hints: An availability zone is used to make 
+        :param pulumi.Input[List[pulumi.Input[str]]] availability_zone_hints: An availability zone is used to make 
                network resources highly available. Used for resources with high availability so that they are scheduled on different availability zones. Changing
                this creates a new router.
         :param pulumi.Input[str] description: Human-readable description for the router.
@@ -238,7 +175,7 @@ class Router(pulumi.CustomResource):
                set this property. Changing this updates the `enable_snat` of the router.
                Setting this value **requires** an **ext-gw-mode** extension to be enabled
                in OpenStack Neutron.
-        :param pulumi.Input[list] external_fixed_ips: An external fixed IP for the router. This
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['RouterExternalFixedIpArgs']]]] external_fixed_ips: An external fixed IP for the router. This
                can be repeated. The structure is described below. An `external_network_id`
                has to be set in order to set this property. Changing this updates the
                external fixed IPs of the router.
@@ -257,22 +194,12 @@ class Router(pulumi.CustomResource):
                A networking client is needed to create a router. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
                router.
-        :param pulumi.Input[list] tags: A set of string tags for the router.
+        :param pulumi.Input[List[pulumi.Input[str]]] tags: A set of string tags for the router.
         :param pulumi.Input[str] tenant_id: The owner of the floating IP. Required if admin wants
                to create a router for another tenant. Changing this creates a new router.
-        :param pulumi.Input[dict] value_specs: Map of additional driver-specific options.
-        :param pulumi.Input[dict] vendor_options: Map of additional vendor-specific options.
+        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional driver-specific options.
+        :param pulumi.Input[pulumi.InputType['RouterVendorOptionsArgs']] vendor_options: Map of additional vendor-specific options.
                Supported options are described below.
-
-        The **external_fixed_ips** object supports the following:
-
-          * `ip_address` (`pulumi.Input[str]`) - The IP address to set on the router.
-          * `subnet_id` (`pulumi.Input[str]`) - Subnet in which the fixed IP belongs to.
-
-        The **vendor_options** object supports the following:
-
-          * `setRouterGatewayAfterCreate` (`pulumi.Input[bool]`) - Boolean to control whether
-            the Router gateway is assigned during creation or updated after creation.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -295,8 +222,156 @@ class Router(pulumi.CustomResource):
         __props__["vendor_options"] = vendor_options
         return Router(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="adminStateUp")
+    def admin_state_up(self) -> bool:
+        """
+        Administrative up/down status for the router
+        (must be "true" or "false" if provided). Changing this updates the
+        `admin_state_up` of an existing router.
+        """
+        return pulumi.get(self, "admin_state_up")
+
+    @property
+    @pulumi.getter(name="allTags")
+    def all_tags(self) -> List[str]:
+        """
+        The collection of tags assigned on the router, which have been
+        explicitly and implicitly added.
+        """
+        return pulumi.get(self, "all_tags")
+
+    @property
+    @pulumi.getter(name="availabilityZoneHints")
+    def availability_zone_hints(self) -> List[str]:
+        """
+        An availability zone is used to make 
+        network resources highly available. Used for resources with high availability so that they are scheduled on different availability zones. Changing
+        this creates a new router.
+        """
+        return pulumi.get(self, "availability_zone_hints")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        Human-readable description for the router.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def distributed(self) -> bool:
+        """
+        Indicates whether or not to create a
+        distributed router. The default policy setting in Neutron restricts
+        usage of this property to administrative users only.
+        """
+        return pulumi.get(self, "distributed")
+
+    @property
+    @pulumi.getter(name="enableSnat")
+    def enable_snat(self) -> bool:
+        """
+        Enable Source NAT for the router. Valid values are
+        "true" or "false". An `external_network_id` has to be set in order to
+        set this property. Changing this updates the `enable_snat` of the router.
+        Setting this value **requires** an **ext-gw-mode** extension to be enabled
+        in OpenStack Neutron.
+        """
+        return pulumi.get(self, "enable_snat")
+
+    @property
+    @pulumi.getter(name="externalFixedIps")
+    def external_fixed_ips(self) -> List['outputs.RouterExternalFixedIp']:
+        """
+        An external fixed IP for the router. This
+        can be repeated. The structure is described below. An `external_network_id`
+        has to be set in order to set this property. Changing this updates the
+        external fixed IPs of the router.
+        """
+        return pulumi.get(self, "external_fixed_ips")
+
+    @property
+    @pulumi.getter(name="externalGateway")
+    def external_gateway(self) -> str:
+        """
+        The
+        network UUID of an external gateway for the router. A router with an
+        external gateway is required if any compute instances or load balancers
+        will be using floating IPs. Changing this updates the external gateway
+        of an existing router.
+        """
+        return pulumi.get(self, "external_gateway")
+
+    @property
+    @pulumi.getter(name="externalNetworkId")
+    def external_network_id(self) -> str:
+        """
+        The network UUID of an external gateway
+        for the router. A router with an external gateway is required if any
+        compute instances or load balancers will be using floating IPs. Changing
+        this updates the external gateway of the router.
+        """
+        return pulumi.get(self, "external_network_id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        A unique name for the router. Changing this
+        updates the `name` of an existing router.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The region in which to obtain the V2 networking client.
+        A networking client is needed to create a router. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        router.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[List[str]]:
+        """
+        A set of string tags for the router.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> str:
+        """
+        The owner of the floating IP. Required if admin wants
+        to create a router for another tenant. Changing this creates a new router.
+        """
+        return pulumi.get(self, "tenant_id")
+
+    @property
+    @pulumi.getter(name="valueSpecs")
+    def value_specs(self) -> Optional[Mapping[str, Any]]:
+        """
+        Map of additional driver-specific options.
+        """
+        return pulumi.get(self, "value_specs")
+
+    @property
+    @pulumi.getter(name="vendorOptions")
+    def vendor_options(self) -> Optional['outputs.RouterVendorOptions']:
+        """
+        Map of additional vendor-specific options.
+        Supported options are described below.
+        """
+        return pulumi.get(self, "vendor_options")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

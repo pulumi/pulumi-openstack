@@ -5,10 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
 
+__all__ = [
+    'GetSecGroupResult',
+    'AwaitableGetSecGroupResult',
+    'get_sec_group',
+]
 
+@pulumi.output_type
 class GetSecGroupResult:
     """
     A collection of values returned by getSecGroup.
@@ -16,41 +22,81 @@ class GetSecGroupResult:
     def __init__(__self__, all_tags=None, description=None, id=None, name=None, region=None, secgroup_id=None, tags=None, tenant_id=None):
         if all_tags and not isinstance(all_tags, list):
             raise TypeError("Expected argument 'all_tags' to be a list")
-        __self__.all_tags = all_tags
+        pulumi.set(__self__, "all_tags", all_tags)
+        if description and not isinstance(description, str):
+            raise TypeError("Expected argument 'description' to be a str")
+        pulumi.set(__self__, "description", description)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        pulumi.set(__self__, "region", region)
+        if secgroup_id and not isinstance(secgroup_id, str):
+            raise TypeError("Expected argument 'secgroup_id' to be a str")
+        pulumi.set(__self__, "secgroup_id", secgroup_id)
+        if tags and not isinstance(tags, list):
+            raise TypeError("Expected argument 'tags' to be a list")
+        pulumi.set(__self__, "tags", tags)
+        if tenant_id and not isinstance(tenant_id, str):
+            raise TypeError("Expected argument 'tenant_id' to be a str")
+        pulumi.set(__self__, "tenant_id", tenant_id)
+
+    @property
+    @pulumi.getter(name="allTags")
+    def all_tags(self) -> List[str]:
         """
         The set of string tags applied on the security group.
         """
-        if description and not isinstance(description, str):
-            raise TypeError("Expected argument 'description' to be a str")
-        __self__.description = description
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "all_tags")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
         """
         See Argument Reference above.
         * `description`- See Argument Reference above.
         """
-        if region and not isinstance(region, str):
-            raise TypeError("Expected argument 'region' to be a str")
-        __self__.region = region
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
         """
         See Argument Reference above.
         """
-        if secgroup_id and not isinstance(secgroup_id, str):
-            raise TypeError("Expected argument 'secgroup_id' to be a str")
-        __self__.secgroup_id = secgroup_id
-        if tags and not isinstance(tags, list):
-            raise TypeError("Expected argument 'tags' to be a list")
-        __self__.tags = tags
-        if tenant_id and not isinstance(tenant_id, str):
-            raise TypeError("Expected argument 'tenant_id' to be a str")
-        __self__.tenant_id = tenant_id
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="secgroupId")
+    def secgroup_id(self) -> Optional[str]:
+        return pulumi.get(self, "secgroup_id")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[List[str]]:
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> str:
+        return pulumi.get(self, "tenant_id")
 
 
 class AwaitableGetSecGroupResult(GetSecGroupResult):
@@ -69,7 +115,13 @@ class AwaitableGetSecGroupResult(GetSecGroupResult):
             tenant_id=self.tenant_id)
 
 
-def get_sec_group(description=None, name=None, region=None, secgroup_id=None, tags=None, tenant_id=None, opts=None):
+def get_sec_group(description: Optional[str] = None,
+                  name: Optional[str] = None,
+                  region: Optional[str] = None,
+                  secgroup_id: Optional[str] = None,
+                  tags: Optional[List[str]] = None,
+                  tenant_id: Optional[str] = None,
+                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSecGroupResult:
     """
     Use this data source to get the ID of an available OpenStack security group.
 
@@ -89,7 +141,7 @@ def get_sec_group(description=None, name=None, region=None, secgroup_id=None, ta
            A Neutron client is needed to retrieve security groups ids. If omitted, the
            `region` argument of the provider is used.
     :param str secgroup_id: The ID of the security group.
-    :param list tags: The list of security group tags to filter.
+    :param List[str] tags: The list of security group tags to filter.
     :param str tenant_id: The owner of the security group.
     """
     __args__ = dict()
@@ -103,14 +155,14 @@ def get_sec_group(description=None, name=None, region=None, secgroup_id=None, ta
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('openstack:networking/getSecGroup:getSecGroup', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('openstack:networking/getSecGroup:getSecGroup', __args__, opts=opts, typ=GetSecGroupResult).value
 
     return AwaitableGetSecGroupResult(
-        all_tags=__ret__.get('allTags'),
-        description=__ret__.get('description'),
-        id=__ret__.get('id'),
-        name=__ret__.get('name'),
-        region=__ret__.get('region'),
-        secgroup_id=__ret__.get('secgroupId'),
-        tags=__ret__.get('tags'),
-        tenant_id=__ret__.get('tenantId'))
+        all_tags=__ret__.all_tags,
+        description=__ret__.description,
+        id=__ret__.id,
+        name=__ret__.name,
+        region=__ret__.region,
+        secgroup_id=__ret__.secgroup_id,
+        tags=__ret__.tags,
+        tenant_id=__ret__.tenant_id)

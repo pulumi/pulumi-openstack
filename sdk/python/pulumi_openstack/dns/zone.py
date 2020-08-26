@@ -5,56 +5,28 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['Zone']
 
 
 class Zone(pulumi.CustomResource):
-    attributes: pulumi.Output[dict]
-    """
-    Attributes for the DNS Service scheduler.
-    Changing this creates a new zone.
-    """
-    description: pulumi.Output[str]
-    """
-    A description of the zone.
-    """
-    email: pulumi.Output[str]
-    """
-    The email contact for the zone record.
-    """
-    masters: pulumi.Output[list]
-    """
-    An array of master DNS servers. For when `type` is
-    `SECONDARY`.
-    """
-    name: pulumi.Output[str]
-    """
-    The name of the zone. Note the `.` at the end of the name.
-    Changing this creates a new DNS zone.
-    """
-    region: pulumi.Output[str]
-    """
-    The region in which to obtain the V2 Compute client.
-    Keypairs are associated with accounts, but a Compute client is needed to
-    create one. If omitted, the `region` argument of the provider is used.
-    Changing this creates a new DNS zone.
-    """
-    ttl: pulumi.Output[float]
-    """
-    The time to live (TTL) of the zone.
-    """
-    type: pulumi.Output[str]
-    """
-    The type of zone. Can either be `PRIMARY` or `SECONDARY`.
-    Changing this creates a new zone.
-    """
-    value_specs: pulumi.Output[dict]
-    """
-    Map of additional options. Changing this creates a
-    new zone.
-    """
-    def __init__(__self__, resource_name, opts=None, attributes=None, description=None, email=None, masters=None, name=None, region=None, ttl=None, type=None, value_specs=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 attributes: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 email: Optional[pulumi.Input[str]] = None,
+                 masters: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 ttl: Optional[pulumi.Input[float]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a DNS zone in the OpenStack DNS Service.
 
@@ -74,11 +46,11 @@ class Zone(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] attributes: Attributes for the DNS Service scheduler.
+        :param pulumi.Input[Mapping[str, Any]] attributes: Attributes for the DNS Service scheduler.
                Changing this creates a new zone.
         :param pulumi.Input[str] description: A description of the zone.
         :param pulumi.Input[str] email: The email contact for the zone record.
-        :param pulumi.Input[list] masters: An array of master DNS servers. For when `type` is
+        :param pulumi.Input[List[pulumi.Input[str]]] masters: An array of master DNS servers. For when `type` is
                `SECONDARY`.
         :param pulumi.Input[str] name: The name of the zone. Note the `.` at the end of the name.
                Changing this creates a new DNS zone.
@@ -89,7 +61,7 @@ class Zone(pulumi.CustomResource):
         :param pulumi.Input[float] ttl: The time to live (TTL) of the zone.
         :param pulumi.Input[str] type: The type of zone. Can either be `PRIMARY` or `SECONDARY`.
                Changing this creates a new zone.
-        :param pulumi.Input[dict] value_specs: Map of additional options. Changing this creates a
+        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options. Changing this creates a
                new zone.
         """
         if __name__ is not None:
@@ -125,19 +97,30 @@ class Zone(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, attributes=None, description=None, email=None, masters=None, name=None, region=None, ttl=None, type=None, value_specs=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            attributes: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            email: Optional[pulumi.Input[str]] = None,
+            masters: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            region: Optional[pulumi.Input[str]] = None,
+            ttl: Optional[pulumi.Input[float]] = None,
+            type: Optional[pulumi.Input[str]] = None,
+            value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'Zone':
         """
         Get an existing Zone resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] attributes: Attributes for the DNS Service scheduler.
+        :param pulumi.Input[Mapping[str, Any]] attributes: Attributes for the DNS Service scheduler.
                Changing this creates a new zone.
         :param pulumi.Input[str] description: A description of the zone.
         :param pulumi.Input[str] email: The email contact for the zone record.
-        :param pulumi.Input[list] masters: An array of master DNS servers. For when `type` is
+        :param pulumi.Input[List[pulumi.Input[str]]] masters: An array of master DNS servers. For when `type` is
                `SECONDARY`.
         :param pulumi.Input[str] name: The name of the zone. Note the `.` at the end of the name.
                Changing this creates a new DNS zone.
@@ -148,7 +131,7 @@ class Zone(pulumi.CustomResource):
         :param pulumi.Input[float] ttl: The time to live (TTL) of the zone.
         :param pulumi.Input[str] type: The type of zone. Can either be `PRIMARY` or `SECONDARY`.
                Changing this creates a new zone.
-        :param pulumi.Input[dict] value_specs: Map of additional options. Changing this creates a
+        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options. Changing this creates a
                new zone.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -166,8 +149,89 @@ class Zone(pulumi.CustomResource):
         __props__["value_specs"] = value_specs
         return Zone(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def attributes(self) -> Optional[Mapping[str, Any]]:
+        """
+        Attributes for the DNS Service scheduler.
+        Changing this creates a new zone.
+        """
+        return pulumi.get(self, "attributes")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        A description of the zone.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def email(self) -> Optional[str]:
+        """
+        The email contact for the zone record.
+        """
+        return pulumi.get(self, "email")
+
+    @property
+    @pulumi.getter
+    def masters(self) -> Optional[List[str]]:
+        """
+        An array of master DNS servers. For when `type` is
+        `SECONDARY`.
+        """
+        return pulumi.get(self, "masters")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the zone. Note the `.` at the end of the name.
+        Changing this creates a new DNS zone.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The region in which to obtain the V2 Compute client.
+        Keypairs are associated with accounts, but a Compute client is needed to
+        create one. If omitted, the `region` argument of the provider is used.
+        Changing this creates a new DNS zone.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> float:
+        """
+        The time to live (TTL) of the zone.
+        """
+        return pulumi.get(self, "ttl")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of zone. Can either be `PRIMARY` or `SECONDARY`.
+        Changing this creates a new zone.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="valueSpecs")
+    def value_specs(self) -> Optional[Mapping[str, Any]]:
+        """
+        Map of additional options. Changing this creates a
+        new zone.
+        """
+        return pulumi.get(self, "value_specs")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

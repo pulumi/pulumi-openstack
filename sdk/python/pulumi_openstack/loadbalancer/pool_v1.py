@@ -5,56 +5,27 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['PoolV1']
 
 
 class PoolV1(pulumi.CustomResource):
-    lb_method: pulumi.Output[str]
-    """
-    The algorithm used to distribute load between the
-    members of the pool. The current specification supports 'ROUND_ROBIN' and
-    'LEAST_CONNECTIONS' as valid values for this attribute.
-    """
-    lb_provider: pulumi.Output[str]
-    """
-    The backend load balancing provider. For example:
-    `haproxy`, `F5`, etc.
-    """
-    monitor_ids: pulumi.Output[list]
-    """
-    A list of IDs of monitors to associate with the
-    pool.
-    """
-    name: pulumi.Output[str]
-    """
-    The name of the pool. Changing this updates the name of
-    the existing pool.
-    """
-    protocol: pulumi.Output[str]
-    """
-    The protocol used by the pool members, you can use
-    either 'TCP, 'HTTP', or 'HTTPS'. Changing this creates a new pool.
-    """
-    region: pulumi.Output[str]
-    """
-    The region in which to obtain the V2 Networking client.
-    A Networking client is needed to create an LB pool. If omitted, the
-    `region` argument of the provider is used. Changing this creates a new
-    LB pool.
-    """
-    subnet_id: pulumi.Output[str]
-    """
-    The network on which the members of the pool will be
-    located. Only members that are on this network can be added to the pool.
-    Changing this creates a new pool.
-    """
-    tenant_id: pulumi.Output[str]
-    """
-    The owner of the member. Required if admin wants to
-    create a pool member for another tenant. Changing this creates a new member.
-    """
-    def __init__(__self__, resource_name, opts=None, lb_method=None, lb_provider=None, monitor_ids=None, name=None, protocol=None, region=None, subnet_id=None, tenant_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 lb_method: Optional[pulumi.Input[str]] = None,
+                 lb_provider: Optional[pulumi.Input[str]] = None,
+                 monitor_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 protocol: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 subnet_id: Optional[pulumi.Input[str]] = None,
+                 tenant_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a V1 load balancer pool resource within OpenStack.
 
@@ -77,7 +48,7 @@ class PoolV1(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        network1 = openstack.networking.Network("network1", admin_state_up="true")
+        network1 = openstack.networking.Network("network1", admin_state_up=True)
         subnet1 = openstack.networking.Subnet("subnet1",
             cidr="192.168.199.0/24",
             ip_version=4,
@@ -85,31 +56,31 @@ class PoolV1(pulumi.CustomResource):
         secgroup1 = openstack.compute.SecGroup("secgroup1",
             description="Rules for secgroup_1",
             rules=[
-                {
-                    "cidr": "0.0.0.0/0",
-                    "fromPort": -1,
-                    "ipProtocol": "icmp",
-                    "toPort": -1,
-                },
-                {
-                    "cidr": "0.0.0.0/0",
-                    "fromPort": 80,
-                    "ipProtocol": "tcp",
-                    "toPort": 80,
-                },
+                openstack.compute.SecGroupRuleArgs(
+                    cidr="0.0.0.0/0",
+                    from_port=-1,
+                    ip_protocol="icmp",
+                    to_port=-1,
+                ),
+                openstack.compute.SecGroupRuleArgs(
+                    cidr="0.0.0.0/0",
+                    from_port=80,
+                    ip_protocol="tcp",
+                    to_port=80,
+                ),
             ])
         instance1 = openstack.compute.Instance("instance1",
-            networks=[{
-                "uuid": network1.id,
-            }],
+            networks=[openstack.compute.InstanceNetworkArgs(
+                uuid=network1.id,
+            )],
             security_groups=[
                 "default",
                 secgroup1.name,
             ])
         instance2 = openstack.compute.Instance("instance2",
-            networks=[{
-                "uuid": network1.id,
-            }],
+            networks=[openstack.compute.InstanceNetworkArgs(
+                uuid=network1.id,
+            )],
             security_groups=[
                 "default",
                 secgroup1.name,
@@ -151,7 +122,7 @@ class PoolV1(pulumi.CustomResource):
                'LEAST_CONNECTIONS' as valid values for this attribute.
         :param pulumi.Input[str] lb_provider: The backend load balancing provider. For example:
                `haproxy`, `F5`, etc.
-        :param pulumi.Input[list] monitor_ids: A list of IDs of monitors to associate with the
+        :param pulumi.Input[List[pulumi.Input[str]]] monitor_ids: A list of IDs of monitors to associate with the
                pool.
         :param pulumi.Input[str] name: The name of the pool. Changing this updates the name of
                the existing pool.
@@ -205,20 +176,30 @@ class PoolV1(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, lb_method=None, lb_provider=None, monitor_ids=None, name=None, protocol=None, region=None, subnet_id=None, tenant_id=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            lb_method: Optional[pulumi.Input[str]] = None,
+            lb_provider: Optional[pulumi.Input[str]] = None,
+            monitor_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            protocol: Optional[pulumi.Input[str]] = None,
+            region: Optional[pulumi.Input[str]] = None,
+            subnet_id: Optional[pulumi.Input[str]] = None,
+            tenant_id: Optional[pulumi.Input[str]] = None) -> 'PoolV1':
         """
         Get an existing PoolV1 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] lb_method: The algorithm used to distribute load between the
                members of the pool. The current specification supports 'ROUND_ROBIN' and
                'LEAST_CONNECTIONS' as valid values for this attribute.
         :param pulumi.Input[str] lb_provider: The backend load balancing provider. For example:
                `haproxy`, `F5`, etc.
-        :param pulumi.Input[list] monitor_ids: A list of IDs of monitors to associate with the
+        :param pulumi.Input[List[pulumi.Input[str]]] monitor_ids: A list of IDs of monitors to associate with the
                pool.
         :param pulumi.Input[str] name: The name of the pool. Changing this updates the name of
                the existing pool.
@@ -248,8 +229,85 @@ class PoolV1(pulumi.CustomResource):
         __props__["tenant_id"] = tenant_id
         return PoolV1(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="lbMethod")
+    def lb_method(self) -> str:
+        """
+        The algorithm used to distribute load between the
+        members of the pool. The current specification supports 'ROUND_ROBIN' and
+        'LEAST_CONNECTIONS' as valid values for this attribute.
+        """
+        return pulumi.get(self, "lb_method")
+
+    @property
+    @pulumi.getter(name="lbProvider")
+    def lb_provider(self) -> str:
+        """
+        The backend load balancing provider. For example:
+        `haproxy`, `F5`, etc.
+        """
+        return pulumi.get(self, "lb_provider")
+
+    @property
+    @pulumi.getter(name="monitorIds")
+    def monitor_ids(self) -> Optional[List[str]]:
+        """
+        A list of IDs of monitors to associate with the
+        pool.
+        """
+        return pulumi.get(self, "monitor_ids")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the pool. Changing this updates the name of
+        the existing pool.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> str:
+        """
+        The protocol used by the pool members, you can use
+        either 'TCP, 'HTTP', or 'HTTPS'. Changing this creates a new pool.
+        """
+        return pulumi.get(self, "protocol")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The region in which to obtain the V2 Networking client.
+        A Networking client is needed to create an LB pool. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        LB pool.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> str:
+        """
+        The network on which the members of the pool will be
+        located. Only members that are on this network can be added to the pool.
+        Changing this creates a new pool.
+        """
+        return pulumi.get(self, "subnet_id")
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> str:
+        """
+        The owner of the member. Required if admin wants to
+        create a pool member for another tenant. Changing this creates a new member.
+        """
+        return pulumi.get(self, "tenant_id")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

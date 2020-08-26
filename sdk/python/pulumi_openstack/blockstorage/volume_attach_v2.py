@@ -5,82 +5,31 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['VolumeAttachV2']
 
 
 class VolumeAttachV2(pulumi.CustomResource):
-    attach_mode: pulumi.Output[str]
-    """
-    Specify whether to attach the volume as Read-Only
-    (`ro`) or Read-Write (`rw`). Only values of `ro` and `rw` are accepted.
-    If left unspecified, the Block Storage API will apply a default of `rw`.
-    """
-    data: pulumi.Output[dict]
-    """
-    This is a map of key/value pairs that contain the connection
-    information. You will want to pass this information to a provisioner
-    script to finalize the connection. See below for more information.
-    """
-    device: pulumi.Output[str]
-    """
-    The device to tell the Block Storage service this
-    volume will be attached as. This is purely for informational purposes.
-    You can specify `auto` or a device such as `/dev/vdc`.
-    """
-    driver_volume_type: pulumi.Output[str]
-    """
-    The storage driver that the volume is based on.
-    """
-    host_name: pulumi.Output[str]
-    """
-    The host to attach the volume to.
-    """
-    initiator: pulumi.Output[str]
-    """
-    The iSCSI initiator string to make the connection.
-    """
-    ip_address: pulumi.Output[str]
-    """
-    The IP address of the `host_name` above.
-    """
-    mount_point_base: pulumi.Output[str]
-    """
-    A mount point base name for shared storage.
-    """
-    multipath: pulumi.Output[bool]
-    """
-    Whether to connect to this volume via multipath.
-    """
-    os_type: pulumi.Output[str]
-    """
-    The iSCSI initiator OS type.
-    """
-    platform: pulumi.Output[str]
-    """
-    The iSCSI initiator platform.
-    """
-    region: pulumi.Output[str]
-    """
-    The region in which to obtain the V2 Block Storage
-    client. A Block Storage client is needed to create a volume attachment.
-    If omitted, the `region` argument of the provider is used. Changing this
-    creates a new volume attachment.
-    """
-    volume_id: pulumi.Output[str]
-    """
-    The ID of the Volume to attach to an Instance.
-    """
-    wwnn: pulumi.Output[str]
-    """
-    A wwnn name. Used for Fibre Channel connections.
-    """
-    wwpns: pulumi.Output[list]
-    """
-    An array of wwpn strings. Used for Fibre Channel
-    connections.
-    """
-    def __init__(__self__, resource_name, opts=None, attach_mode=None, device=None, host_name=None, initiator=None, ip_address=None, multipath=None, os_type=None, platform=None, region=None, volume_id=None, wwnn=None, wwpns=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 attach_mode: Optional[pulumi.Input[str]] = None,
+                 device: Optional[pulumi.Input[str]] = None,
+                 host_name: Optional[pulumi.Input[str]] = None,
+                 initiator: Optional[pulumi.Input[str]] = None,
+                 ip_address: Optional[pulumi.Input[str]] = None,
+                 multipath: Optional[pulumi.Input[bool]] = None,
+                 os_type: Optional[pulumi.Input[str]] = None,
+                 platform: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 volume_id: Optional[pulumi.Input[str]] = None,
+                 wwnn: Optional[pulumi.Input[str]] = None,
+                 wwpns: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         This resource is experimental and may be removed in the future! Feedback
         is requested if you find this resource useful or if you find any problems
@@ -133,7 +82,7 @@ class VolumeAttachV2(pulumi.CustomResource):
                creates a new volume attachment.
         :param pulumi.Input[str] volume_id: The ID of the Volume to attach to an Instance.
         :param pulumi.Input[str] wwnn: A wwnn name. Used for Fibre Channel connections.
-        :param pulumi.Input[list] wwpns: An array of wwpn strings. Used for Fibre Channel
+        :param pulumi.Input[List[pulumi.Input[str]]] wwpns: An array of wwpn strings. Used for Fibre Channel
                connections.
         """
         if __name__ is not None:
@@ -179,18 +128,35 @@ class VolumeAttachV2(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, attach_mode=None, data=None, device=None, driver_volume_type=None, host_name=None, initiator=None, ip_address=None, mount_point_base=None, multipath=None, os_type=None, platform=None, region=None, volume_id=None, wwnn=None, wwpns=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            attach_mode: Optional[pulumi.Input[str]] = None,
+            data: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            device: Optional[pulumi.Input[str]] = None,
+            driver_volume_type: Optional[pulumi.Input[str]] = None,
+            host_name: Optional[pulumi.Input[str]] = None,
+            initiator: Optional[pulumi.Input[str]] = None,
+            ip_address: Optional[pulumi.Input[str]] = None,
+            mount_point_base: Optional[pulumi.Input[str]] = None,
+            multipath: Optional[pulumi.Input[bool]] = None,
+            os_type: Optional[pulumi.Input[str]] = None,
+            platform: Optional[pulumi.Input[str]] = None,
+            region: Optional[pulumi.Input[str]] = None,
+            volume_id: Optional[pulumi.Input[str]] = None,
+            wwnn: Optional[pulumi.Input[str]] = None,
+            wwpns: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None) -> 'VolumeAttachV2':
         """
         Get an existing VolumeAttachV2 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] attach_mode: Specify whether to attach the volume as Read-Only
                (`ro`) or Read-Write (`rw`). Only values of `ro` and `rw` are accepted.
                If left unspecified, the Block Storage API will apply a default of `rw`.
-        :param pulumi.Input[dict] data: This is a map of key/value pairs that contain the connection
+        :param pulumi.Input[Mapping[str, Any]] data: This is a map of key/value pairs that contain the connection
                information. You will want to pass this information to a provisioner
                script to finalize the connection. See below for more information.
         :param pulumi.Input[str] device: The device to tell the Block Storage service this
@@ -210,7 +176,7 @@ class VolumeAttachV2(pulumi.CustomResource):
                creates a new volume attachment.
         :param pulumi.Input[str] volume_id: The ID of the Volume to attach to an Instance.
         :param pulumi.Input[str] wwnn: A wwnn name. Used for Fibre Channel connections.
-        :param pulumi.Input[list] wwpns: An array of wwpn strings. Used for Fibre Channel
+        :param pulumi.Input[List[pulumi.Input[str]]] wwpns: An array of wwpn strings. Used for Fibre Channel
                connections.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -234,8 +200,139 @@ class VolumeAttachV2(pulumi.CustomResource):
         __props__["wwpns"] = wwpns
         return VolumeAttachV2(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="attachMode")
+    def attach_mode(self) -> Optional[str]:
+        """
+        Specify whether to attach the volume as Read-Only
+        (`ro`) or Read-Write (`rw`). Only values of `ro` and `rw` are accepted.
+        If left unspecified, the Block Storage API will apply a default of `rw`.
+        """
+        return pulumi.get(self, "attach_mode")
+
+    @property
+    @pulumi.getter
+    def data(self) -> Mapping[str, Any]:
+        """
+        This is a map of key/value pairs that contain the connection
+        information. You will want to pass this information to a provisioner
+        script to finalize the connection. See below for more information.
+        """
+        return pulumi.get(self, "data")
+
+    @property
+    @pulumi.getter
+    def device(self) -> Optional[str]:
+        """
+        The device to tell the Block Storage service this
+        volume will be attached as. This is purely for informational purposes.
+        You can specify `auto` or a device such as `/dev/vdc`.
+        """
+        return pulumi.get(self, "device")
+
+    @property
+    @pulumi.getter(name="driverVolumeType")
+    def driver_volume_type(self) -> str:
+        """
+        The storage driver that the volume is based on.
+        """
+        return pulumi.get(self, "driver_volume_type")
+
+    @property
+    @pulumi.getter(name="hostName")
+    def host_name(self) -> str:
+        """
+        The host to attach the volume to.
+        """
+        return pulumi.get(self, "host_name")
+
+    @property
+    @pulumi.getter
+    def initiator(self) -> Optional[str]:
+        """
+        The iSCSI initiator string to make the connection.
+        """
+        return pulumi.get(self, "initiator")
+
+    @property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> Optional[str]:
+        """
+        The IP address of the `host_name` above.
+        """
+        return pulumi.get(self, "ip_address")
+
+    @property
+    @pulumi.getter(name="mountPointBase")
+    def mount_point_base(self) -> str:
+        """
+        A mount point base name for shared storage.
+        """
+        return pulumi.get(self, "mount_point_base")
+
+    @property
+    @pulumi.getter
+    def multipath(self) -> Optional[bool]:
+        """
+        Whether to connect to this volume via multipath.
+        """
+        return pulumi.get(self, "multipath")
+
+    @property
+    @pulumi.getter(name="osType")
+    def os_type(self) -> Optional[str]:
+        """
+        The iSCSI initiator OS type.
+        """
+        return pulumi.get(self, "os_type")
+
+    @property
+    @pulumi.getter
+    def platform(self) -> Optional[str]:
+        """
+        The iSCSI initiator platform.
+        """
+        return pulumi.get(self, "platform")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The region in which to obtain the V2 Block Storage
+        client. A Block Storage client is needed to create a volume attachment.
+        If omitted, the `region` argument of the provider is used. Changing this
+        creates a new volume attachment.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> str:
+        """
+        The ID of the Volume to attach to an Instance.
+        """
+        return pulumi.get(self, "volume_id")
+
+    @property
+    @pulumi.getter
+    def wwnn(self) -> Optional[str]:
+        """
+        A wwnn name. Used for Fibre Channel connections.
+        """
+        return pulumi.get(self, "wwnn")
+
+    @property
+    @pulumi.getter
+    def wwpns(self) -> Optional[List[str]]:
+        """
+        An array of wwpn strings. Used for Fibre Channel
+        connections.
+        """
+        return pulumi.get(self, "wwpns")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

@@ -5,52 +5,27 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['RecordSet']
 
 
 class RecordSet(pulumi.CustomResource):
-    description: pulumi.Output[str]
-    """
-    A description of the  record set.
-    """
-    name: pulumi.Output[str]
-    """
-    The name of the record set. Note the `.` at the end of the name.
-    Changing this creates a new DNS  record set.
-    """
-    records: pulumi.Output[list]
-    """
-    An array of DNS records. _Note:_ if an IPv6 address
-    contains brackets (`[ ]`), the brackets will be stripped and the modified
-    address will be recorded in the state.
-    """
-    region: pulumi.Output[str]
-    """
-    The region in which to obtain the V2 DNS client.
-    If omitted, the `region` argument of the provider is used.
-    Changing this creates a new DNS  record set.
-    """
-    ttl: pulumi.Output[float]
-    """
-    The time to live (TTL) of the record set.
-    """
-    type: pulumi.Output[str]
-    """
-    The type of record set. Examples: "A", "MX".
-    Changing this creates a new DNS  record set.
-    """
-    value_specs: pulumi.Output[dict]
-    """
-    Map of additional options. Changing this creates a
-    new record set.
-    """
-    zone_id: pulumi.Output[str]
-    """
-    The ID of the zone in which to create the record set.
-    Changing this creates a new DNS  record set.
-    """
-    def __init__(__self__, resource_name, opts=None, description=None, name=None, records=None, region=None, ttl=None, type=None, value_specs=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 records: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 ttl: Optional[pulumi.Input[float]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a DNS record set in the OpenStack DNS Service.
 
@@ -79,7 +54,7 @@ class RecordSet(pulumi.CustomResource):
         :param pulumi.Input[str] description: A description of the  record set.
         :param pulumi.Input[str] name: The name of the record set. Note the `.` at the end of the name.
                Changing this creates a new DNS  record set.
-        :param pulumi.Input[list] records: An array of DNS records. _Note:_ if an IPv6 address
+        :param pulumi.Input[List[pulumi.Input[str]]] records: An array of DNS records. _Note:_ if an IPv6 address
                contains brackets (`[ ]`), the brackets will be stripped and the modified
                address will be recorded in the state.
         :param pulumi.Input[str] region: The region in which to obtain the V2 DNS client.
@@ -88,7 +63,7 @@ class RecordSet(pulumi.CustomResource):
         :param pulumi.Input[float] ttl: The time to live (TTL) of the record set.
         :param pulumi.Input[str] type: The type of record set. Examples: "A", "MX".
                Changing this creates a new DNS  record set.
-        :param pulumi.Input[dict] value_specs: Map of additional options. Changing this creates a
+        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options. Changing this creates a
                new record set.
         :param pulumi.Input[str] zone_id: The ID of the zone in which to create the record set.
                Changing this creates a new DNS  record set.
@@ -127,18 +102,28 @@ class RecordSet(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, description=None, name=None, records=None, region=None, ttl=None, type=None, value_specs=None, zone_id=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            records: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            region: Optional[pulumi.Input[str]] = None,
+            ttl: Optional[pulumi.Input[float]] = None,
+            type: Optional[pulumi.Input[str]] = None,
+            value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            zone_id: Optional[pulumi.Input[str]] = None) -> 'RecordSet':
         """
         Get an existing RecordSet resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description of the  record set.
         :param pulumi.Input[str] name: The name of the record set. Note the `.` at the end of the name.
                Changing this creates a new DNS  record set.
-        :param pulumi.Input[list] records: An array of DNS records. _Note:_ if an IPv6 address
+        :param pulumi.Input[List[pulumi.Input[str]]] records: An array of DNS records. _Note:_ if an IPv6 address
                contains brackets (`[ ]`), the brackets will be stripped and the modified
                address will be recorded in the state.
         :param pulumi.Input[str] region: The region in which to obtain the V2 DNS client.
@@ -147,7 +132,7 @@ class RecordSet(pulumi.CustomResource):
         :param pulumi.Input[float] ttl: The time to live (TTL) of the record set.
         :param pulumi.Input[str] type: The type of record set. Examples: "A", "MX".
                Changing this creates a new DNS  record set.
-        :param pulumi.Input[dict] value_specs: Map of additional options. Changing this creates a
+        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options. Changing this creates a
                new record set.
         :param pulumi.Input[str] zone_id: The ID of the zone in which to create the record set.
                Changing this creates a new DNS  record set.
@@ -166,8 +151,81 @@ class RecordSet(pulumi.CustomResource):
         __props__["zone_id"] = zone_id
         return RecordSet(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        A description of the  record set.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the record set. Note the `.` at the end of the name.
+        Changing this creates a new DNS  record set.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def records(self) -> Optional[List[str]]:
+        """
+        An array of DNS records. _Note:_ if an IPv6 address
+        contains brackets (`[ ]`), the brackets will be stripped and the modified
+        address will be recorded in the state.
+        """
+        return pulumi.get(self, "records")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The region in which to obtain the V2 DNS client.
+        If omitted, the `region` argument of the provider is used.
+        Changing this creates a new DNS  record set.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> float:
+        """
+        The time to live (TTL) of the record set.
+        """
+        return pulumi.get(self, "ttl")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of record set. Examples: "A", "MX".
+        Changing this creates a new DNS  record set.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="valueSpecs")
+    def value_specs(self) -> Optional[Mapping[str, Any]]:
+        """
+        Map of additional options. Changing this creates a
+        new record set.
+        """
+        return pulumi.get(self, "value_specs")
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> str:
+        """
+        The ID of the zone in which to create the record set.
+        Changing this creates a new DNS  record set.
+        """
+        return pulumi.get(self, "zone_id")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

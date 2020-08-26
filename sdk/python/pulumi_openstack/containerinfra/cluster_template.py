@@ -5,44 +5,47 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['ClusterTemplate']
 
 
 class ClusterTemplate(pulumi.CustomResource):
-    apiserver_port: pulumi.Output[float]
-    cluster_distro: pulumi.Output[str]
-    coe: pulumi.Output[str]
-    created_at: pulumi.Output[str]
-    dns_nameserver: pulumi.Output[str]
-    docker_storage_driver: pulumi.Output[str]
-    docker_volume_size: pulumi.Output[float]
-    external_network_id: pulumi.Output[str]
-    fixed_network: pulumi.Output[str]
-    fixed_subnet: pulumi.Output[str]
-    flavor: pulumi.Output[str]
-    floating_ip_enabled: pulumi.Output[bool]
-    http_proxy: pulumi.Output[str]
-    https_proxy: pulumi.Output[str]
-    image: pulumi.Output[str]
-    insecure_registry: pulumi.Output[str]
-    keypair_id: pulumi.Output[str]
-    labels: pulumi.Output[dict]
-    master_flavor: pulumi.Output[str]
-    master_lb_enabled: pulumi.Output[bool]
-    name: pulumi.Output[str]
-    network_driver: pulumi.Output[str]
-    no_proxy: pulumi.Output[str]
-    project_id: pulumi.Output[str]
-    public: pulumi.Output[bool]
-    region: pulumi.Output[str]
-    registry_enabled: pulumi.Output[bool]
-    server_type: pulumi.Output[str]
-    tls_disabled: pulumi.Output[bool]
-    updated_at: pulumi.Output[str]
-    user_id: pulumi.Output[str]
-    volume_driver: pulumi.Output[str]
-    def __init__(__self__, resource_name, opts=None, apiserver_port=None, cluster_distro=None, coe=None, dns_nameserver=None, docker_storage_driver=None, docker_volume_size=None, external_network_id=None, fixed_network=None, fixed_subnet=None, flavor=None, floating_ip_enabled=None, http_proxy=None, https_proxy=None, image=None, insecure_registry=None, keypair_id=None, labels=None, master_flavor=None, master_lb_enabled=None, name=None, network_driver=None, no_proxy=None, public=None, region=None, registry_enabled=None, server_type=None, tls_disabled=None, volume_driver=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 apiserver_port: Optional[pulumi.Input[float]] = None,
+                 cluster_distro: Optional[pulumi.Input[str]] = None,
+                 coe: Optional[pulumi.Input[str]] = None,
+                 dns_nameserver: Optional[pulumi.Input[str]] = None,
+                 docker_storage_driver: Optional[pulumi.Input[str]] = None,
+                 docker_volume_size: Optional[pulumi.Input[float]] = None,
+                 external_network_id: Optional[pulumi.Input[str]] = None,
+                 fixed_network: Optional[pulumi.Input[str]] = None,
+                 fixed_subnet: Optional[pulumi.Input[str]] = None,
+                 flavor: Optional[pulumi.Input[str]] = None,
+                 floating_ip_enabled: Optional[pulumi.Input[bool]] = None,
+                 http_proxy: Optional[pulumi.Input[str]] = None,
+                 https_proxy: Optional[pulumi.Input[str]] = None,
+                 image: Optional[pulumi.Input[str]] = None,
+                 insecure_registry: Optional[pulumi.Input[str]] = None,
+                 keypair_id: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 master_flavor: Optional[pulumi.Input[str]] = None,
+                 master_lb_enabled: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 network_driver: Optional[pulumi.Input[str]] = None,
+                 no_proxy: Optional[pulumi.Input[str]] = None,
+                 public: Optional[pulumi.Input[bool]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 registry_enabled: Optional[pulumi.Input[bool]] = None,
+                 server_type: Optional[pulumi.Input[str]] = None,
+                 tls_disabled: Optional[pulumi.Input[bool]] = None,
+                 volume_driver: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a V1 Magnum cluster template resource within OpenStack.
 
@@ -293,13 +296,47 @@ class ClusterTemplate(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, apiserver_port=None, cluster_distro=None, coe=None, created_at=None, dns_nameserver=None, docker_storage_driver=None, docker_volume_size=None, external_network_id=None, fixed_network=None, fixed_subnet=None, flavor=None, floating_ip_enabled=None, http_proxy=None, https_proxy=None, image=None, insecure_registry=None, keypair_id=None, labels=None, master_flavor=None, master_lb_enabled=None, name=None, network_driver=None, no_proxy=None, project_id=None, public=None, region=None, registry_enabled=None, server_type=None, tls_disabled=None, updated_at=None, user_id=None, volume_driver=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            apiserver_port: Optional[pulumi.Input[float]] = None,
+            cluster_distro: Optional[pulumi.Input[str]] = None,
+            coe: Optional[pulumi.Input[str]] = None,
+            created_at: Optional[pulumi.Input[str]] = None,
+            dns_nameserver: Optional[pulumi.Input[str]] = None,
+            docker_storage_driver: Optional[pulumi.Input[str]] = None,
+            docker_volume_size: Optional[pulumi.Input[float]] = None,
+            external_network_id: Optional[pulumi.Input[str]] = None,
+            fixed_network: Optional[pulumi.Input[str]] = None,
+            fixed_subnet: Optional[pulumi.Input[str]] = None,
+            flavor: Optional[pulumi.Input[str]] = None,
+            floating_ip_enabled: Optional[pulumi.Input[bool]] = None,
+            http_proxy: Optional[pulumi.Input[str]] = None,
+            https_proxy: Optional[pulumi.Input[str]] = None,
+            image: Optional[pulumi.Input[str]] = None,
+            insecure_registry: Optional[pulumi.Input[str]] = None,
+            keypair_id: Optional[pulumi.Input[str]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            master_flavor: Optional[pulumi.Input[str]] = None,
+            master_lb_enabled: Optional[pulumi.Input[bool]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            network_driver: Optional[pulumi.Input[str]] = None,
+            no_proxy: Optional[pulumi.Input[str]] = None,
+            project_id: Optional[pulumi.Input[str]] = None,
+            public: Optional[pulumi.Input[bool]] = None,
+            region: Optional[pulumi.Input[str]] = None,
+            registry_enabled: Optional[pulumi.Input[bool]] = None,
+            server_type: Optional[pulumi.Input[str]] = None,
+            tls_disabled: Optional[pulumi.Input[bool]] = None,
+            updated_at: Optional[pulumi.Input[str]] = None,
+            user_id: Optional[pulumi.Input[str]] = None,
+            volume_driver: Optional[pulumi.Input[str]] = None) -> 'ClusterTemplate':
         """
         Get an existing ClusterTemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -340,8 +377,169 @@ class ClusterTemplate(pulumi.CustomResource):
         __props__["volume_driver"] = volume_driver
         return ClusterTemplate(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="apiserverPort")
+    def apiserver_port(self) -> Optional[float]:
+        return pulumi.get(self, "apiserver_port")
+
+    @property
+    @pulumi.getter(name="clusterDistro")
+    def cluster_distro(self) -> str:
+        return pulumi.get(self, "cluster_distro")
+
+    @property
+    @pulumi.getter
+    def coe(self) -> str:
+        return pulumi.get(self, "coe")
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> str:
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter(name="dnsNameserver")
+    def dns_nameserver(self) -> Optional[str]:
+        return pulumi.get(self, "dns_nameserver")
+
+    @property
+    @pulumi.getter(name="dockerStorageDriver")
+    def docker_storage_driver(self) -> Optional[str]:
+        return pulumi.get(self, "docker_storage_driver")
+
+    @property
+    @pulumi.getter(name="dockerVolumeSize")
+    def docker_volume_size(self) -> Optional[float]:
+        return pulumi.get(self, "docker_volume_size")
+
+    @property
+    @pulumi.getter(name="externalNetworkId")
+    def external_network_id(self) -> Optional[str]:
+        return pulumi.get(self, "external_network_id")
+
+    @property
+    @pulumi.getter(name="fixedNetwork")
+    def fixed_network(self) -> Optional[str]:
+        return pulumi.get(self, "fixed_network")
+
+    @property
+    @pulumi.getter(name="fixedSubnet")
+    def fixed_subnet(self) -> Optional[str]:
+        return pulumi.get(self, "fixed_subnet")
+
+    @property
+    @pulumi.getter
+    def flavor(self) -> Optional[str]:
+        return pulumi.get(self, "flavor")
+
+    @property
+    @pulumi.getter(name="floatingIpEnabled")
+    def floating_ip_enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "floating_ip_enabled")
+
+    @property
+    @pulumi.getter(name="httpProxy")
+    def http_proxy(self) -> Optional[str]:
+        return pulumi.get(self, "http_proxy")
+
+    @property
+    @pulumi.getter(name="httpsProxy")
+    def https_proxy(self) -> Optional[str]:
+        return pulumi.get(self, "https_proxy")
+
+    @property
+    @pulumi.getter
+    def image(self) -> str:
+        return pulumi.get(self, "image")
+
+    @property
+    @pulumi.getter(name="insecureRegistry")
+    def insecure_registry(self) -> Optional[str]:
+        return pulumi.get(self, "insecure_registry")
+
+    @property
+    @pulumi.getter(name="keypairId")
+    def keypair_id(self) -> Optional[str]:
+        return pulumi.get(self, "keypair_id")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[Mapping[str, Any]]:
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="masterFlavor")
+    def master_flavor(self) -> Optional[str]:
+        return pulumi.get(self, "master_flavor")
+
+    @property
+    @pulumi.getter(name="masterLbEnabled")
+    def master_lb_enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "master_lb_enabled")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="networkDriver")
+    def network_driver(self) -> str:
+        return pulumi.get(self, "network_driver")
+
+    @property
+    @pulumi.getter(name="noProxy")
+    def no_proxy(self) -> Optional[str]:
+        return pulumi.get(self, "no_proxy")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter
+    def public(self) -> Optional[bool]:
+        return pulumi.get(self, "public")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="registryEnabled")
+    def registry_enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "registry_enabled")
+
+    @property
+    @pulumi.getter(name="serverType")
+    def server_type(self) -> str:
+        return pulumi.get(self, "server_type")
+
+    @property
+    @pulumi.getter(name="tlsDisabled")
+    def tls_disabled(self) -> Optional[bool]:
+        return pulumi.get(self, "tls_disabled")
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> str:
+        return pulumi.get(self, "updated_at")
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> str:
+        return pulumi.get(self, "user_id")
+
+    @property
+    @pulumi.getter(name="volumeDriver")
+    def volume_driver(self) -> Optional[str]:
+        return pulumi.get(self, "volume_driver")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

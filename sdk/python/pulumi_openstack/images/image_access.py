@@ -5,44 +5,23 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['ImageAccess']
 
 
 class ImageAccess(pulumi.CustomResource):
-    created_at: pulumi.Output[str]
-    """
-    The date the image access was created.
-    """
-    image_id: pulumi.Output[str]
-    """
-    The image ID.
-    """
-    member_id: pulumi.Output[str]
-    """
-    The member ID, e.g. the target project ID.
-    """
-    region: pulumi.Output[str]
-    """
-    The region in which to obtain the V2 Glance client.
-    A Glance client is needed to manage Image members. If omitted, the `region`
-    argument of the provider is used. Changing this creates a new resource.
-    """
-    schema: pulumi.Output[str]
-    """
-    The member schema.
-    """
-    status: pulumi.Output[str]
-    """
-    The member proposal status. Optional if admin wants to
-    force the member proposal acceptance. Can either be `accepted`, `rejected` or
-    `pending`. Defaults to `pending`. Foridden for non-admin users.
-    """
-    updated_at: pulumi.Output[str]
-    """
-    The date the image access was last updated.
-    """
-    def __init__(__self__, resource_name, opts=None, image_id=None, member_id=None, region=None, status=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 image_id: Optional[pulumi.Input[str]] = None,
+                 member_id: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages members for the shared OpenStack Glance V2 Image within the source
         project, which owns the Image.
@@ -138,13 +117,22 @@ class ImageAccess(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, created_at=None, image_id=None, member_id=None, region=None, schema=None, status=None, updated_at=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            created_at: Optional[pulumi.Input[str]] = None,
+            image_id: Optional[pulumi.Input[str]] = None,
+            member_id: Optional[pulumi.Input[str]] = None,
+            region: Optional[pulumi.Input[str]] = None,
+            schema: Optional[pulumi.Input[str]] = None,
+            status: Optional[pulumi.Input[str]] = None,
+            updated_at: Optional[pulumi.Input[str]] = None) -> 'ImageAccess':
         """
         Get an existing ImageAccess resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] created_at: The date the image access was created.
         :param pulumi.Input[str] image_id: The image ID.
@@ -171,8 +159,69 @@ class ImageAccess(pulumi.CustomResource):
         __props__["updated_at"] = updated_at
         return ImageAccess(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> str:
+        """
+        The date the image access was created.
+        """
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter(name="imageId")
+    def image_id(self) -> str:
+        """
+        The image ID.
+        """
+        return pulumi.get(self, "image_id")
+
+    @property
+    @pulumi.getter(name="memberId")
+    def member_id(self) -> str:
+        """
+        The member ID, e.g. the target project ID.
+        """
+        return pulumi.get(self, "member_id")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The region in which to obtain the V2 Glance client.
+        A Glance client is needed to manage Image members. If omitted, the `region`
+        argument of the provider is used. Changing this creates a new resource.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def schema(self) -> str:
+        """
+        The member schema.
+        """
+        return pulumi.get(self, "schema")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The member proposal status. Optional if admin wants to
+        force the member proposal acceptance. Can either be `accepted`, `rejected` or
+        `pending`. Defaults to `pending`. Foridden for non-admin users.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> str:
+        """
+        The date the image access was last updated.
+        """
+        return pulumi.get(self, "updated_at")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

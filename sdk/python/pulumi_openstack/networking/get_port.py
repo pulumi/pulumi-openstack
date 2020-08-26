@@ -5,10 +5,17 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
 
+__all__ = [
+    'GetPortResult',
+    'AwaitableGetPortResult',
+    'get_port',
+]
 
+@pulumi.output_type
 class GetPortResult:
     """
     A collection of values returned by getPort.
@@ -16,137 +23,257 @@ class GetPortResult:
     def __init__(__self__, admin_state_up=None, all_fixed_ips=None, all_security_group_ids=None, all_tags=None, allowed_address_pairs=None, bindings=None, description=None, device_id=None, device_owner=None, dns_assignments=None, dns_name=None, extra_dhcp_options=None, fixed_ip=None, id=None, mac_address=None, name=None, network_id=None, port_id=None, project_id=None, region=None, security_group_ids=None, status=None, tags=None, tenant_id=None):
         if admin_state_up and not isinstance(admin_state_up, bool):
             raise TypeError("Expected argument 'admin_state_up' to be a bool")
-        __self__.admin_state_up = admin_state_up
+        pulumi.set(__self__, "admin_state_up", admin_state_up)
+        if all_fixed_ips and not isinstance(all_fixed_ips, list):
+            raise TypeError("Expected argument 'all_fixed_ips' to be a list")
+        pulumi.set(__self__, "all_fixed_ips", all_fixed_ips)
+        if all_security_group_ids and not isinstance(all_security_group_ids, list):
+            raise TypeError("Expected argument 'all_security_group_ids' to be a list")
+        pulumi.set(__self__, "all_security_group_ids", all_security_group_ids)
+        if all_tags and not isinstance(all_tags, list):
+            raise TypeError("Expected argument 'all_tags' to be a list")
+        pulumi.set(__self__, "all_tags", all_tags)
+        if allowed_address_pairs and not isinstance(allowed_address_pairs, list):
+            raise TypeError("Expected argument 'allowed_address_pairs' to be a list")
+        pulumi.set(__self__, "allowed_address_pairs", allowed_address_pairs)
+        if bindings and not isinstance(bindings, list):
+            raise TypeError("Expected argument 'bindings' to be a list")
+        pulumi.set(__self__, "bindings", bindings)
+        if description and not isinstance(description, str):
+            raise TypeError("Expected argument 'description' to be a str")
+        pulumi.set(__self__, "description", description)
+        if device_id and not isinstance(device_id, str):
+            raise TypeError("Expected argument 'device_id' to be a str")
+        pulumi.set(__self__, "device_id", device_id)
+        if device_owner and not isinstance(device_owner, str):
+            raise TypeError("Expected argument 'device_owner' to be a str")
+        pulumi.set(__self__, "device_owner", device_owner)
+        if dns_assignments and not isinstance(dns_assignments, list):
+            raise TypeError("Expected argument 'dns_assignments' to be a list")
+        pulumi.set(__self__, "dns_assignments", dns_assignments)
+        if dns_name and not isinstance(dns_name, str):
+            raise TypeError("Expected argument 'dns_name' to be a str")
+        pulumi.set(__self__, "dns_name", dns_name)
+        if extra_dhcp_options and not isinstance(extra_dhcp_options, list):
+            raise TypeError("Expected argument 'extra_dhcp_options' to be a list")
+        pulumi.set(__self__, "extra_dhcp_options", extra_dhcp_options)
+        if fixed_ip and not isinstance(fixed_ip, str):
+            raise TypeError("Expected argument 'fixed_ip' to be a str")
+        pulumi.set(__self__, "fixed_ip", fixed_ip)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if mac_address and not isinstance(mac_address, str):
+            raise TypeError("Expected argument 'mac_address' to be a str")
+        pulumi.set(__self__, "mac_address", mac_address)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if network_id and not isinstance(network_id, str):
+            raise TypeError("Expected argument 'network_id' to be a str")
+        pulumi.set(__self__, "network_id", network_id)
+        if port_id and not isinstance(port_id, str):
+            raise TypeError("Expected argument 'port_id' to be a str")
+        pulumi.set(__self__, "port_id", port_id)
+        if project_id and not isinstance(project_id, str):
+            raise TypeError("Expected argument 'project_id' to be a str")
+        pulumi.set(__self__, "project_id", project_id)
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        pulumi.set(__self__, "region", region)
+        if security_group_ids and not isinstance(security_group_ids, list):
+            raise TypeError("Expected argument 'security_group_ids' to be a list")
+        pulumi.set(__self__, "security_group_ids", security_group_ids)
+        if status and not isinstance(status, str):
+            raise TypeError("Expected argument 'status' to be a str")
+        pulumi.set(__self__, "status", status)
+        if tags and not isinstance(tags, list):
+            raise TypeError("Expected argument 'tags' to be a list")
+        pulumi.set(__self__, "tags", tags)
+        if tenant_id and not isinstance(tenant_id, str):
+            raise TypeError("Expected argument 'tenant_id' to be a str")
+        pulumi.set(__self__, "tenant_id", tenant_id)
+
+    @property
+    @pulumi.getter(name="adminStateUp")
+    def admin_state_up(self) -> Optional[bool]:
         """
         See Argument Reference above.
         """
-        if all_fixed_ips and not isinstance(all_fixed_ips, list):
-            raise TypeError("Expected argument 'all_fixed_ips' to be a list")
-        __self__.all_fixed_ips = all_fixed_ips
+        return pulumi.get(self, "admin_state_up")
+
+    @property
+    @pulumi.getter(name="allFixedIps")
+    def all_fixed_ips(self) -> List[str]:
         """
         The collection of Fixed IP addresses on the port in the
         order returned by the Network v2 API.
         """
-        if all_security_group_ids and not isinstance(all_security_group_ids, list):
-            raise TypeError("Expected argument 'all_security_group_ids' to be a list")
-        __self__.all_security_group_ids = all_security_group_ids
+        return pulumi.get(self, "all_fixed_ips")
+
+    @property
+    @pulumi.getter(name="allSecurityGroupIds")
+    def all_security_group_ids(self) -> List[str]:
         """
         The set of security group IDs applied on the port.
         """
-        if all_tags and not isinstance(all_tags, list):
-            raise TypeError("Expected argument 'all_tags' to be a list")
-        __self__.all_tags = all_tags
+        return pulumi.get(self, "all_security_group_ids")
+
+    @property
+    @pulumi.getter(name="allTags")
+    def all_tags(self) -> List[str]:
         """
         The set of string tags applied on the port.
         """
-        if allowed_address_pairs and not isinstance(allowed_address_pairs, list):
-            raise TypeError("Expected argument 'allowed_address_pairs' to be a list")
-        __self__.allowed_address_pairs = allowed_address_pairs
+        return pulumi.get(self, "all_tags")
+
+    @property
+    @pulumi.getter(name="allowedAddressPairs")
+    def allowed_address_pairs(self) -> List['outputs.GetPortAllowedAddressPairResult']:
         """
         An IP/MAC Address pair of additional IP
         addresses that can be active on this port. The structure is described
         below.
         """
-        if bindings and not isinstance(bindings, list):
-            raise TypeError("Expected argument 'bindings' to be a list")
-        __self__.bindings = bindings
+        return pulumi.get(self, "allowed_address_pairs")
+
+    @property
+    @pulumi.getter
+    def bindings(self) -> List['outputs.GetPortBindingResult']:
         """
         The port binding information. The structure is described below.
         """
-        if description and not isinstance(description, str):
-            raise TypeError("Expected argument 'description' to be a str")
-        __self__.description = description
+        return pulumi.get(self, "bindings")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
         """
         See Argument Reference above.
         """
-        if device_id and not isinstance(device_id, str):
-            raise TypeError("Expected argument 'device_id' to be a str")
-        __self__.device_id = device_id
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="deviceId")
+    def device_id(self) -> Optional[str]:
         """
         See Argument Reference above.
         """
-        if device_owner and not isinstance(device_owner, str):
-            raise TypeError("Expected argument 'device_owner' to be a str")
-        __self__.device_owner = device_owner
+        return pulumi.get(self, "device_id")
+
+    @property
+    @pulumi.getter(name="deviceOwner")
+    def device_owner(self) -> Optional[str]:
         """
         See Argument Reference above.
         """
-        if dns_assignments and not isinstance(dns_assignments, list):
-            raise TypeError("Expected argument 'dns_assignments' to be a list")
-        __self__.dns_assignments = dns_assignments
+        return pulumi.get(self, "device_owner")
+
+    @property
+    @pulumi.getter(name="dnsAssignments")
+    def dns_assignments(self) -> List[Mapping[str, Any]]:
         """
         The list of maps representing port DNS assignments.
         """
-        if dns_name and not isinstance(dns_name, str):
-            raise TypeError("Expected argument 'dns_name' to be a str")
-        __self__.dns_name = dns_name
+        return pulumi.get(self, "dns_assignments")
+
+    @property
+    @pulumi.getter(name="dnsName")
+    def dns_name(self) -> Optional[str]:
         """
         See Argument Reference above.
         """
-        if extra_dhcp_options and not isinstance(extra_dhcp_options, list):
-            raise TypeError("Expected argument 'extra_dhcp_options' to be a list")
-        __self__.extra_dhcp_options = extra_dhcp_options
+        return pulumi.get(self, "dns_name")
+
+    @property
+    @pulumi.getter(name="extraDhcpOptions")
+    def extra_dhcp_options(self) -> List['outputs.GetPortExtraDhcpOptionResult']:
         """
         An extra DHCP option configured on the port.
         The structure is described below.
         """
-        if fixed_ip and not isinstance(fixed_ip, str):
-            raise TypeError("Expected argument 'fixed_ip' to be a str")
-        __self__.fixed_ip = fixed_ip
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "extra_dhcp_options")
+
+    @property
+    @pulumi.getter(name="fixedIp")
+    def fixed_ip(self) -> Optional[str]:
+        return pulumi.get(self, "fixed_ip")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if mac_address and not isinstance(mac_address, str):
-            raise TypeError("Expected argument 'mac_address' to be a str")
-        __self__.mac_address = mac_address
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="macAddress")
+    def mac_address(self) -> Optional[str]:
         """
         The additional MAC address.
         """
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
+        return pulumi.get(self, "mac_address")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
         """
         Name of the DHCP option.
         """
-        if network_id and not isinstance(network_id, str):
-            raise TypeError("Expected argument 'network_id' to be a str")
-        __self__.network_id = network_id
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="networkId")
+    def network_id(self) -> Optional[str]:
         """
         See Argument Reference above.
         """
-        if port_id and not isinstance(port_id, str):
-            raise TypeError("Expected argument 'port_id' to be a str")
-        __self__.port_id = port_id
+        return pulumi.get(self, "network_id")
+
+    @property
+    @pulumi.getter(name="portId")
+    def port_id(self) -> Optional[str]:
         """
         See Argument Reference above.
         """
-        if project_id and not isinstance(project_id, str):
-            raise TypeError("Expected argument 'project_id' to be a str")
-        __self__.project_id = project_id
+        return pulumi.get(self, "port_id")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[str]:
         """
         See Argument Reference above.
         """
-        if region and not isinstance(region, str):
-            raise TypeError("Expected argument 'region' to be a str")
-        __self__.region = region
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[str]:
         """
         See Argument Reference above.
         """
-        if security_group_ids and not isinstance(security_group_ids, list):
-            raise TypeError("Expected argument 'security_group_ids' to be a list")
-        __self__.security_group_ids = security_group_ids
-        if status and not isinstance(status, str):
-            raise TypeError("Expected argument 'status' to be a str")
-        __self__.status = status
-        if tags and not isinstance(tags, list):
-            raise TypeError("Expected argument 'tags' to be a list")
-        __self__.tags = tags
-        if tenant_id and not isinstance(tenant_id, str):
-            raise TypeError("Expected argument 'tenant_id' to be a str")
-        __self__.tenant_id = tenant_id
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="securityGroupIds")
+    def security_group_ids(self) -> Optional[List[str]]:
+        return pulumi.get(self, "security_group_ids")
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[str]:
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[List[str]]:
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> Optional[str]:
+        return pulumi.get(self, "tenant_id")
 
 
 class AwaitableGetPortResult(GetPortResult):
@@ -181,7 +308,23 @@ class AwaitableGetPortResult(GetPortResult):
             tenant_id=self.tenant_id)
 
 
-def get_port(admin_state_up=None, description=None, device_id=None, device_owner=None, dns_name=None, fixed_ip=None, mac_address=None, name=None, network_id=None, port_id=None, project_id=None, region=None, security_group_ids=None, status=None, tags=None, tenant_id=None, opts=None):
+def get_port(admin_state_up: Optional[bool] = None,
+             description: Optional[str] = None,
+             device_id: Optional[str] = None,
+             device_owner: Optional[str] = None,
+             dns_name: Optional[str] = None,
+             fixed_ip: Optional[str] = None,
+             mac_address: Optional[str] = None,
+             name: Optional[str] = None,
+             network_id: Optional[str] = None,
+             port_id: Optional[str] = None,
+             project_id: Optional[str] = None,
+             region: Optional[str] = None,
+             security_group_ids: Optional[List[str]] = None,
+             status: Optional[str] = None,
+             tags: Optional[List[str]] = None,
+             tenant_id: Optional[str] = None,
+             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPortResult:
     """
     Use this data source to get the ID of an available OpenStack port.
 
@@ -210,9 +353,9 @@ def get_port(admin_state_up=None, description=None, device_id=None, device_owner
     :param str region: The region in which to obtain the V2 Neutron client.
            A Neutron client is needed to retrieve port ids. If omitted, the
            `region` argument of the provider is used.
-    :param list security_group_ids: The list of port security group IDs to filter.
+    :param List[str] security_group_ids: The list of port security group IDs to filter.
     :param str status: The status of the port.
-    :param list tags: The list of port tags to filter.
+    :param List[str] tags: The list of port tags to filter.
     """
     __args__ = dict()
     __args__['adminStateUp'] = admin_state_up
@@ -235,30 +378,30 @@ def get_port(admin_state_up=None, description=None, device_id=None, device_owner
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('openstack:networking/getPort:getPort', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('openstack:networking/getPort:getPort', __args__, opts=opts, typ=GetPortResult).value
 
     return AwaitableGetPortResult(
-        admin_state_up=__ret__.get('adminStateUp'),
-        all_fixed_ips=__ret__.get('allFixedIps'),
-        all_security_group_ids=__ret__.get('allSecurityGroupIds'),
-        all_tags=__ret__.get('allTags'),
-        allowed_address_pairs=__ret__.get('allowedAddressPairs'),
-        bindings=__ret__.get('bindings'),
-        description=__ret__.get('description'),
-        device_id=__ret__.get('deviceId'),
-        device_owner=__ret__.get('deviceOwner'),
-        dns_assignments=__ret__.get('dnsAssignments'),
-        dns_name=__ret__.get('dnsName'),
-        extra_dhcp_options=__ret__.get('extraDhcpOptions'),
-        fixed_ip=__ret__.get('fixedIp'),
-        id=__ret__.get('id'),
-        mac_address=__ret__.get('macAddress'),
-        name=__ret__.get('name'),
-        network_id=__ret__.get('networkId'),
-        port_id=__ret__.get('portId'),
-        project_id=__ret__.get('projectId'),
-        region=__ret__.get('region'),
-        security_group_ids=__ret__.get('securityGroupIds'),
-        status=__ret__.get('status'),
-        tags=__ret__.get('tags'),
-        tenant_id=__ret__.get('tenantId'))
+        admin_state_up=__ret__.admin_state_up,
+        all_fixed_ips=__ret__.all_fixed_ips,
+        all_security_group_ids=__ret__.all_security_group_ids,
+        all_tags=__ret__.all_tags,
+        allowed_address_pairs=__ret__.allowed_address_pairs,
+        bindings=__ret__.bindings,
+        description=__ret__.description,
+        device_id=__ret__.device_id,
+        device_owner=__ret__.device_owner,
+        dns_assignments=__ret__.dns_assignments,
+        dns_name=__ret__.dns_name,
+        extra_dhcp_options=__ret__.extra_dhcp_options,
+        fixed_ip=__ret__.fixed_ip,
+        id=__ret__.id,
+        mac_address=__ret__.mac_address,
+        name=__ret__.name,
+        network_id=__ret__.network_id,
+        port_id=__ret__.port_id,
+        project_id=__ret__.project_id,
+        region=__ret__.region,
+        security_group_ids=__ret__.security_group_ids,
+        status=__ret__.status,
+        tags=__ret__.tags,
+        tenant_id=__ret__.tenant_id)

@@ -5,102 +5,38 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['StackV1']
 
 
 class StackV1(pulumi.CustomResource):
-    capabilities: pulumi.Output[list]
-    """
-    List of stack capabilities for stack.
-    """
-    creation_time: pulumi.Output[str]
-    """
-    The date and time when the resource was created. The date
-    and time stamp format is ISO 8601: CCYY-MM-DDThh:mm:ss±hh:mm
-    For example, 2015-08-27T09:49:58-05:00. The ±hh:mm value, if included,
-    is the time zone as an offset from UTC.
-    """
-    description: pulumi.Output[str]
-    """
-    The description of the stack resource.
-    """
-    disable_rollback: pulumi.Output[bool]
-    """
-    Enables or disables deletion of all stack
-    resources when a stack creation fails. Default is true, meaning all
-    resources are not deleted when stack creation fails.
-    """
-    environment_opts: pulumi.Output[dict]
-    """
-    Environment key/value pairs to associate with
-    the stack which contains details for the environment of the stack.
-    Allowed keys: Bin, URL, Files. Changing this updates the existing stack
-    Environment Opts.
-    """
-    name: pulumi.Output[str]
-    """
-    A unique name for the stack. It must start with an
-    alphabetic character. Changing this updates the stack's name.
-    """
-    notification_topics: pulumi.Output[list]
-    """
-    List of notification topics for stack.
-    """
-    outputs: pulumi.Output[list]
-    """
-    A list of stack outputs.
-
-      * `description` (`str`) - The description of the stack resource.
-      * `outputKey` (`str`)
-      * `outputValue` (`str`)
-    """
-    parameters: pulumi.Output[dict]
-    """
-    User-defined key/value pairs as parameters to pass
-    to the template. Changing this updates the existing stack parameters.
-    """
-    region: pulumi.Output[str]
-    """
-    The region in which to create the stack. If
-    omitted, the `region` argument of the provider is used. Changing this
-    creates a new stack.
-    """
-    status: pulumi.Output[str]
-    """
-    The status of the stack.
-    """
-    status_reason: pulumi.Output[str]
-    """
-    The reason for the current status of the stack.
-    """
-    tags: pulumi.Output[list]
-    """
-    A list of tags to assosciate with the Stack
-    """
-    template_description: pulumi.Output[str]
-    """
-    The description of the stack template.
-    """
-    template_opts: pulumi.Output[dict]
-    """
-    Template key/value pairs to associate with the
-    stack which contains either the template file or url.
-    Allowed keys: Bin, URL, Files. Changing this updates the existing stack
-    Template Opts.
-    """
-    timeout: pulumi.Output[float]
-    """
-    The timeout for stack action in minutes.
-    """
-    updated_time: pulumi.Output[str]
-    """
-    The date and time when the resource was updated. The date
-    and time stamp format is ISO 8601: CCYY-MM-DDThh:mm:ss±hh:mm
-    For example, 2015-08-27T09:49:58-05:00. The ±hh:mm value, if included,
-    is the time zone as an offset from UTC.
-    """
-    def __init__(__self__, resource_name, opts=None, capabilities=None, creation_time=None, description=None, disable_rollback=None, environment_opts=None, name=None, notification_topics=None, outputs=None, parameters=None, region=None, status=None, status_reason=None, tags=None, template_description=None, template_opts=None, timeout=None, updated_time=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 capabilities: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 creation_time: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 disable_rollback: Optional[pulumi.Input[bool]] = None,
+                 environment_opts: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 notification_topics: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 outputs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['StackV1OutputArgs']]]]] = None,
+                 parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 status_reason: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 template_description: Optional[pulumi.Input[str]] = None,
+                 template_opts: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 timeout: Optional[pulumi.Input[float]] = None,
+                 updated_time: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a V1 stack resource within OpenStack.
 
@@ -138,7 +74,7 @@ class StackV1(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] capabilities: List of stack capabilities for stack.
+        :param pulumi.Input[List[pulumi.Input[str]]] capabilities: List of stack capabilities for stack.
         :param pulumi.Input[str] creation_time: The date and time when the resource was created. The date
                and time stamp format is ISO 8601: CCYY-MM-DDThh:mm:ss±hh:mm
                For example, 2015-08-27T09:49:58-05:00. The ±hh:mm value, if included,
@@ -147,24 +83,24 @@ class StackV1(pulumi.CustomResource):
         :param pulumi.Input[bool] disable_rollback: Enables or disables deletion of all stack
                resources when a stack creation fails. Default is true, meaning all
                resources are not deleted when stack creation fails.
-        :param pulumi.Input[dict] environment_opts: Environment key/value pairs to associate with
+        :param pulumi.Input[Mapping[str, Any]] environment_opts: Environment key/value pairs to associate with
                the stack which contains details for the environment of the stack.
                Allowed keys: Bin, URL, Files. Changing this updates the existing stack
                Environment Opts.
         :param pulumi.Input[str] name: A unique name for the stack. It must start with an
                alphabetic character. Changing this updates the stack's name.
-        :param pulumi.Input[list] notification_topics: List of notification topics for stack.
-        :param pulumi.Input[list] outputs: A list of stack outputs.
-        :param pulumi.Input[dict] parameters: User-defined key/value pairs as parameters to pass
+        :param pulumi.Input[List[pulumi.Input[str]]] notification_topics: List of notification topics for stack.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['StackV1OutputArgs']]]] outputs: A list of stack outputs.
+        :param pulumi.Input[Mapping[str, Any]] parameters: User-defined key/value pairs as parameters to pass
                to the template. Changing this updates the existing stack parameters.
         :param pulumi.Input[str] region: The region in which to create the stack. If
                omitted, the `region` argument of the provider is used. Changing this
                creates a new stack.
         :param pulumi.Input[str] status: The status of the stack.
         :param pulumi.Input[str] status_reason: The reason for the current status of the stack.
-        :param pulumi.Input[list] tags: A list of tags to assosciate with the Stack
+        :param pulumi.Input[List[pulumi.Input[str]]] tags: A list of tags to assosciate with the Stack
         :param pulumi.Input[str] template_description: The description of the stack template.
-        :param pulumi.Input[dict] template_opts: Template key/value pairs to associate with the
+        :param pulumi.Input[Mapping[str, Any]] template_opts: Template key/value pairs to associate with the
                stack which contains either the template file or url.
                Allowed keys: Bin, URL, Files. Changing this updates the existing stack
                Template Opts.
@@ -173,12 +109,6 @@ class StackV1(pulumi.CustomResource):
                and time stamp format is ISO 8601: CCYY-MM-DDThh:mm:ss±hh:mm
                For example, 2015-08-27T09:49:58-05:00. The ±hh:mm value, if included,
                is the time zone as an offset from UTC.
-
-        The **outputs** object supports the following:
-
-          * `description` (`pulumi.Input[str]`) - The description of the stack resource.
-          * `outputKey` (`pulumi.Input[str]`)
-          * `outputValue` (`pulumi.Input[str]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -223,15 +153,34 @@ class StackV1(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, capabilities=None, creation_time=None, description=None, disable_rollback=None, environment_opts=None, name=None, notification_topics=None, outputs=None, parameters=None, region=None, status=None, status_reason=None, tags=None, template_description=None, template_opts=None, timeout=None, updated_time=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            capabilities: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            creation_time: Optional[pulumi.Input[str]] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            disable_rollback: Optional[pulumi.Input[bool]] = None,
+            environment_opts: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            notification_topics: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            outputs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['StackV1OutputArgs']]]]] = None,
+            parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            region: Optional[pulumi.Input[str]] = None,
+            status: Optional[pulumi.Input[str]] = None,
+            status_reason: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            template_description: Optional[pulumi.Input[str]] = None,
+            template_opts: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            timeout: Optional[pulumi.Input[float]] = None,
+            updated_time: Optional[pulumi.Input[str]] = None) -> 'StackV1':
         """
         Get an existing StackV1 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] capabilities: List of stack capabilities for stack.
+        :param pulumi.Input[List[pulumi.Input[str]]] capabilities: List of stack capabilities for stack.
         :param pulumi.Input[str] creation_time: The date and time when the resource was created. The date
                and time stamp format is ISO 8601: CCYY-MM-DDThh:mm:ss±hh:mm
                For example, 2015-08-27T09:49:58-05:00. The ±hh:mm value, if included,
@@ -240,24 +189,24 @@ class StackV1(pulumi.CustomResource):
         :param pulumi.Input[bool] disable_rollback: Enables or disables deletion of all stack
                resources when a stack creation fails. Default is true, meaning all
                resources are not deleted when stack creation fails.
-        :param pulumi.Input[dict] environment_opts: Environment key/value pairs to associate with
+        :param pulumi.Input[Mapping[str, Any]] environment_opts: Environment key/value pairs to associate with
                the stack which contains details for the environment of the stack.
                Allowed keys: Bin, URL, Files. Changing this updates the existing stack
                Environment Opts.
         :param pulumi.Input[str] name: A unique name for the stack. It must start with an
                alphabetic character. Changing this updates the stack's name.
-        :param pulumi.Input[list] notification_topics: List of notification topics for stack.
-        :param pulumi.Input[list] outputs: A list of stack outputs.
-        :param pulumi.Input[dict] parameters: User-defined key/value pairs as parameters to pass
+        :param pulumi.Input[List[pulumi.Input[str]]] notification_topics: List of notification topics for stack.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['StackV1OutputArgs']]]] outputs: A list of stack outputs.
+        :param pulumi.Input[Mapping[str, Any]] parameters: User-defined key/value pairs as parameters to pass
                to the template. Changing this updates the existing stack parameters.
         :param pulumi.Input[str] region: The region in which to create the stack. If
                omitted, the `region` argument of the provider is used. Changing this
                creates a new stack.
         :param pulumi.Input[str] status: The status of the stack.
         :param pulumi.Input[str] status_reason: The reason for the current status of the stack.
-        :param pulumi.Input[list] tags: A list of tags to assosciate with the Stack
+        :param pulumi.Input[List[pulumi.Input[str]]] tags: A list of tags to assosciate with the Stack
         :param pulumi.Input[str] template_description: The description of the stack template.
-        :param pulumi.Input[dict] template_opts: Template key/value pairs to associate with the
+        :param pulumi.Input[Mapping[str, Any]] template_opts: Template key/value pairs to associate with the
                stack which contains either the template file or url.
                Allowed keys: Bin, URL, Files. Changing this updates the existing stack
                Template Opts.
@@ -266,12 +215,6 @@ class StackV1(pulumi.CustomResource):
                and time stamp format is ISO 8601: CCYY-MM-DDThh:mm:ss±hh:mm
                For example, 2015-08-27T09:49:58-05:00. The ±hh:mm value, if included,
                is the time zone as an offset from UTC.
-
-        The **outputs** object supports the following:
-
-          * `description` (`pulumi.Input[str]`) - The description of the stack resource.
-          * `outputKey` (`pulumi.Input[str]`)
-          * `outputValue` (`pulumi.Input[str]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -296,8 +239,163 @@ class StackV1(pulumi.CustomResource):
         __props__["updated_time"] = updated_time
         return StackV1(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def capabilities(self) -> List[str]:
+        """
+        List of stack capabilities for stack.
+        """
+        return pulumi.get(self, "capabilities")
+
+    @property
+    @pulumi.getter(name="creationTime")
+    def creation_time(self) -> str:
+        """
+        The date and time when the resource was created. The date
+        and time stamp format is ISO 8601: CCYY-MM-DDThh:mm:ss±hh:mm
+        For example, 2015-08-27T09:49:58-05:00. The ±hh:mm value, if included,
+        is the time zone as an offset from UTC.
+        """
+        return pulumi.get(self, "creation_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the stack resource.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="disableRollback")
+    def disable_rollback(self) -> bool:
+        """
+        Enables or disables deletion of all stack
+        resources when a stack creation fails. Default is true, meaning all
+        resources are not deleted when stack creation fails.
+        """
+        return pulumi.get(self, "disable_rollback")
+
+    @property
+    @pulumi.getter(name="environmentOpts")
+    def environment_opts(self) -> Optional[Mapping[str, Any]]:
+        """
+        Environment key/value pairs to associate with
+        the stack which contains details for the environment of the stack.
+        Allowed keys: Bin, URL, Files. Changing this updates the existing stack
+        Environment Opts.
+        """
+        return pulumi.get(self, "environment_opts")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        A unique name for the stack. It must start with an
+        alphabetic character. Changing this updates the stack's name.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="notificationTopics")
+    def notification_topics(self) -> List[str]:
+        """
+        List of notification topics for stack.
+        """
+        return pulumi.get(self, "notification_topics")
+
+    @property
+    @pulumi.getter
+    def outputs(self) -> List['outputs.StackV1Output']:
+        """
+        A list of stack outputs.
+        """
+        return pulumi.get(self, "outputs")
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> Optional[Mapping[str, Any]]:
+        """
+        User-defined key/value pairs as parameters to pass
+        to the template. Changing this updates the existing stack parameters.
+        """
+        return pulumi.get(self, "parameters")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The region in which to create the stack. If
+        omitted, the `region` argument of the provider is used. Changing this
+        creates a new stack.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the stack.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="statusReason")
+    def status_reason(self) -> str:
+        """
+        The reason for the current status of the stack.
+        """
+        return pulumi.get(self, "status_reason")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> List[str]:
+        """
+        A list of tags to assosciate with the Stack
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="templateDescription")
+    def template_description(self) -> str:
+        """
+        The description of the stack template.
+        """
+        return pulumi.get(self, "template_description")
+
+    @property
+    @pulumi.getter(name="templateOpts")
+    def template_opts(self) -> Mapping[str, Any]:
+        """
+        Template key/value pairs to associate with the
+        stack which contains either the template file or url.
+        Allowed keys: Bin, URL, Files. Changing this updates the existing stack
+        Template Opts.
+        """
+        return pulumi.get(self, "template_opts")
+
+    @property
+    @pulumi.getter
+    def timeout(self) -> float:
+        """
+        The timeout for stack action in minutes.
+        """
+        return pulumi.get(self, "timeout")
+
+    @property
+    @pulumi.getter(name="updatedTime")
+    def updated_time(self) -> str:
+        """
+        The date and time when the resource was updated. The date
+        and time stamp format is ISO 8601: CCYY-MM-DDThh:mm:ss±hh:mm
+        For example, 2015-08-27T09:49:58-05:00. The ±hh:mm value, if included,
+        is the time zone as an offset from UTC.
+        """
+        return pulumi.get(self, "updated_time")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

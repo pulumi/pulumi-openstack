@@ -5,10 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
 
+__all__ = [
+    'GetVolumeV3Result',
+    'AwaitableGetVolumeV3Result',
+    'get_volume_v3',
+]
 
+@pulumi.output_type
 class GetVolumeV3Result:
     """
     A collection of values returned by getVolumeV3.
@@ -16,64 +22,114 @@ class GetVolumeV3Result:
     def __init__(__self__, bootable=None, id=None, metadata=None, multiattach=None, name=None, region=None, size=None, source_volume_id=None, status=None, volume_type=None):
         if bootable and not isinstance(bootable, str):
             raise TypeError("Expected argument 'bootable' to be a str")
-        __self__.bootable = bootable
+        pulumi.set(__self__, "bootable", bootable)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if metadata and not isinstance(metadata, dict):
+            raise TypeError("Expected argument 'metadata' to be a dict")
+        pulumi.set(__self__, "metadata", metadata)
+        if multiattach and not isinstance(multiattach, bool):
+            raise TypeError("Expected argument 'multiattach' to be a bool")
+        pulumi.set(__self__, "multiattach", multiattach)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        pulumi.set(__self__, "region", region)
+        if size and not isinstance(size, float):
+            raise TypeError("Expected argument 'size' to be a float")
+        pulumi.set(__self__, "size", size)
+        if source_volume_id and not isinstance(source_volume_id, str):
+            raise TypeError("Expected argument 'source_volume_id' to be a str")
+        pulumi.set(__self__, "source_volume_id", source_volume_id)
+        if status and not isinstance(status, str):
+            raise TypeError("Expected argument 'status' to be a str")
+        pulumi.set(__self__, "status", status)
+        if volume_type and not isinstance(volume_type, str):
+            raise TypeError("Expected argument 'volume_type' to be a str")
+        pulumi.set(__self__, "volume_type", volume_type)
+
+    @property
+    @pulumi.getter
+    def bootable(self) -> str:
         """
         Indicates if the volume is bootable.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "bootable")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if metadata and not isinstance(metadata, dict):
-            raise TypeError("Expected argument 'metadata' to be a dict")
-        __self__.metadata = metadata
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Mapping[str, Any]:
         """
         See Argument Reference above.
         """
-        if multiattach and not isinstance(multiattach, bool):
-            raise TypeError("Expected argument 'multiattach' to be a bool")
-        __self__.multiattach = multiattach
+        return pulumi.get(self, "metadata")
+
+    @property
+    @pulumi.getter
+    def multiattach(self) -> bool:
         """
         Indicates if the volume can be attached to more then one server.
         """
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
+        return pulumi.get(self, "multiattach")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
         """
         See Argument Reference above.
         """
-        if region and not isinstance(region, str):
-            raise TypeError("Expected argument 'region' to be a str")
-        __self__.region = region
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
         """
         See Argument Reference above.
         """
-        if size and not isinstance(size, float):
-            raise TypeError("Expected argument 'size' to be a float")
-        __self__.size = size
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def size(self) -> float:
         """
         The size of the volume in GBs.
         """
-        if source_volume_id and not isinstance(source_volume_id, str):
-            raise TypeError("Expected argument 'source_volume_id' to be a str")
-        __self__.source_volume_id = source_volume_id
+        return pulumi.get(self, "size")
+
+    @property
+    @pulumi.getter(name="sourceVolumeId")
+    def source_volume_id(self) -> str:
         """
         The ID of the volume from which the current volume was created.
         """
-        if status and not isinstance(status, str):
-            raise TypeError("Expected argument 'status' to be a str")
-        __self__.status = status
+        return pulumi.get(self, "source_volume_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
         """
         See Argument Reference above.
         """
-        if volume_type and not isinstance(volume_type, str):
-            raise TypeError("Expected argument 'volume_type' to be a str")
-        __self__.volume_type = volume_type
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="volumeType")
+    def volume_type(self) -> str:
         """
         The type of the volume.
         """
+        return pulumi.get(self, "volume_type")
 
 
 class AwaitableGetVolumeV3Result(GetVolumeV3Result):
@@ -94,7 +150,13 @@ class AwaitableGetVolumeV3Result(GetVolumeV3Result):
             volume_type=self.volume_type)
 
 
-def get_volume_v3(bootable=None, metadata=None, name=None, region=None, status=None, volume_type=None, opts=None):
+def get_volume_v3(bootable: Optional[str] = None,
+                  metadata: Optional[Mapping[str, Any]] = None,
+                  name: Optional[str] = None,
+                  region: Optional[str] = None,
+                  status: Optional[str] = None,
+                  volume_type: Optional[str] = None,
+                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVolumeV3Result:
     """
     Use this data source to get information about an existing volume.
 
@@ -109,7 +171,7 @@ def get_volume_v3(bootable=None, metadata=None, name=None, region=None, status=N
 
 
     :param str bootable: Indicates if the volume is bootable.
-    :param dict metadata: Metadata key/value pairs associated with the volume.
+    :param Mapping[str, Any] metadata: Metadata key/value pairs associated with the volume.
     :param str name: The name of the volume.
     :param str region: The region in which to obtain the V3 Block Storage
            client. If omitted, the `region` argument of the provider is used.
@@ -127,16 +189,16 @@ def get_volume_v3(bootable=None, metadata=None, name=None, region=None, status=N
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('openstack:blockstorage/getVolumeV3:getVolumeV3', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('openstack:blockstorage/getVolumeV3:getVolumeV3', __args__, opts=opts, typ=GetVolumeV3Result).value
 
     return AwaitableGetVolumeV3Result(
-        bootable=__ret__.get('bootable'),
-        id=__ret__.get('id'),
-        metadata=__ret__.get('metadata'),
-        multiattach=__ret__.get('multiattach'),
-        name=__ret__.get('name'),
-        region=__ret__.get('region'),
-        size=__ret__.get('size'),
-        source_volume_id=__ret__.get('sourceVolumeId'),
-        status=__ret__.get('status'),
-        volume_type=__ret__.get('volumeType'))
+        bootable=__ret__.bootable,
+        id=__ret__.id,
+        metadata=__ret__.metadata,
+        multiattach=__ret__.multiattach,
+        name=__ret__.name,
+        region=__ret__.region,
+        size=__ret__.size,
+        source_volume_id=__ret__.source_volume_id,
+        status=__ret__.status,
+        volume_type=__ret__.volume_type)

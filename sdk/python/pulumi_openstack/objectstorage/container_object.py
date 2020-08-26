@@ -5,119 +5,34 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['ContainerObject']
 
 
 class ContainerObject(pulumi.CustomResource):
-    container_name: pulumi.Output[str]
-    """
-    A unique (within an account) name for the container. 
-    The container name must be from 1 to 256 characters long and can start
-    with any character and contain any pattern. Character set must be UTF-8.
-    The container name cannot contain a slash (/) character because this
-    character delimits the container and object name. For example, the path
-    /v1/account/www/pages specifies the www container, not the www/pages container.
-    """
-    content: pulumi.Output[str]
-    """
-    A string representing the content of the object. Conflicts with
-    `source` and `copy_from`.
-    """
-    content_disposition: pulumi.Output[str]
-    """
-    A string which specifies the override behavior for 
-    the browser. For example, this header might specify that the browser use a download
-    program to save this file rather than show the file, which is the default.
-    """
-    content_encoding: pulumi.Output[str]
-    """
-    A string representing the value of the Content-Encoding
-    metadata.
-    """
-    content_length: pulumi.Output[float]
-    """
-    If the operation succeeds, this value is zero (0) or the 
-    length of informational or error text in the response body.
-    """
-    content_type: pulumi.Output[str]
-    """
-    A string which sets the MIME type for the object.
-    """
-    copy_from: pulumi.Output[str]
-    """
-    A string representing the name of an object 
-    used to create the new object by copying the `copy_from` object. The value is in form
-    {container}/{object}. You must UTF-8-encode and then URL-encode the names of the
-    container and object before you include them in the header. Conflicts with `source` and
-    `content`.
-    """
-    date: pulumi.Output[str]
-    """
-    The date and time the system responded to the request, using the preferred 
-    format of RFC 7231 as shown in this example Thu, 16 Jun 2016 15:10:38 GMT. The
-    time is always in UTC.
-    """
-    delete_after: pulumi.Output[float]
-    """
-    An integer representing the number of seconds after which the
-    system removes the object. Internally, the Object Storage system stores this value in
-    the X-Delete-At metadata item.
-    """
-    delete_at: pulumi.Output[str]
-    """
-    An string representing the date when the system removes the object. 
-    For example, "2015-08-26" is equivalent to Mon, Wed, 26 Aug 2015 00:00:00 GMT.
-    """
-    detect_content_type: pulumi.Output[bool]
-    """
-    If set to true, Object Storage guesses the content 
-    type based on the file extension and ignores the value sent in the Content-Type
-    header, if present.
-    """
-    etag: pulumi.Output[str]
-    """
-    Used to trigger updates. The only meaningful value is ${md5(file("path/to/file"))}.
-    """
-    last_modified: pulumi.Output[str]
-    """
-    The date and time when the object was last modified. The date and time 
-    stamp format is ISO 8601:
-    CCYY-MM-DDThh:mm:ss±hh:mm
-    For example, 2015-08-27T09:49:58-05:00.
-    The ±hh:mm value, if included, is the time zone as an offset from UTC. In the previous
-    example, the offset value is -05:00.
-    """
-    metadata: pulumi.Output[dict]
-    name: pulumi.Output[str]
-    """
-    A unique name for the object.
-    """
-    object_manifest: pulumi.Output[str]
-    """
-    A string set to specify that this is a dynamic large 
-    object manifest object. The value is the container and object name prefix of the
-    segment objects in the form container/prefix. You must UTF-8-encode and then
-    URL-encode the names of the container and prefix before you include them in this
-    header.
-    """
-    region: pulumi.Output[str]
-    """
-    The region in which to create the container. If
-    omitted, the `region` argument of the provider is used. Changing this
-    creates a new container.
-    """
-    source: pulumi.Output[str]
-    """
-    A string representing the local path of a file which will be used
-    as the object's content. Conflicts with `source` and `copy_from`.
-    """
-    trans_id: pulumi.Output[str]
-    """
-    A unique transaction ID for this request. Your service provider might 
-    need this value if you report a problem.
-    """
-    def __init__(__self__, resource_name, opts=None, container_name=None, content=None, content_disposition=None, content_encoding=None, content_type=None, copy_from=None, delete_after=None, delete_at=None, detect_content_type=None, etag=None, metadata=None, name=None, object_manifest=None, region=None, source=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 container_name: Optional[pulumi.Input[str]] = None,
+                 content: Optional[pulumi.Input[str]] = None,
+                 content_disposition: Optional[pulumi.Input[str]] = None,
+                 content_encoding: Optional[pulumi.Input[str]] = None,
+                 content_type: Optional[pulumi.Input[str]] = None,
+                 copy_from: Optional[pulumi.Input[str]] = None,
+                 delete_after: Optional[pulumi.Input[float]] = None,
+                 delete_at: Optional[pulumi.Input[str]] = None,
+                 detect_content_type: Optional[pulumi.Input[bool]] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 object_manifest: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 source: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a V1 container object resource within OpenStack.
 
@@ -256,13 +171,34 @@ class ContainerObject(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, container_name=None, content=None, content_disposition=None, content_encoding=None, content_length=None, content_type=None, copy_from=None, date=None, delete_after=None, delete_at=None, detect_content_type=None, etag=None, last_modified=None, metadata=None, name=None, object_manifest=None, region=None, source=None, trans_id=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            container_name: Optional[pulumi.Input[str]] = None,
+            content: Optional[pulumi.Input[str]] = None,
+            content_disposition: Optional[pulumi.Input[str]] = None,
+            content_encoding: Optional[pulumi.Input[str]] = None,
+            content_length: Optional[pulumi.Input[float]] = None,
+            content_type: Optional[pulumi.Input[str]] = None,
+            copy_from: Optional[pulumi.Input[str]] = None,
+            date: Optional[pulumi.Input[str]] = None,
+            delete_after: Optional[pulumi.Input[float]] = None,
+            delete_at: Optional[pulumi.Input[str]] = None,
+            detect_content_type: Optional[pulumi.Input[bool]] = None,
+            etag: Optional[pulumi.Input[str]] = None,
+            last_modified: Optional[pulumi.Input[str]] = None,
+            metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            object_manifest: Optional[pulumi.Input[str]] = None,
+            region: Optional[pulumi.Input[str]] = None,
+            source: Optional[pulumi.Input[str]] = None,
+            trans_id: Optional[pulumi.Input[str]] = None) -> 'ContainerObject':
         """
         Get an existing ContainerObject resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] container_name: A unique (within an account) name for the container. 
                The container name must be from 1 to 256 characters long and can start
@@ -342,8 +278,192 @@ class ContainerObject(pulumi.CustomResource):
         __props__["trans_id"] = trans_id
         return ContainerObject(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="containerName")
+    def container_name(self) -> str:
+        """
+        A unique (within an account) name for the container. 
+        The container name must be from 1 to 256 characters long and can start
+        with any character and contain any pattern. Character set must be UTF-8.
+        The container name cannot contain a slash (/) character because this
+        character delimits the container and object name. For example, the path
+        /v1/account/www/pages specifies the www container, not the www/pages container.
+        """
+        return pulumi.get(self, "container_name")
+
+    @property
+    @pulumi.getter
+    def content(self) -> Optional[str]:
+        """
+        A string representing the content of the object. Conflicts with
+        `source` and `copy_from`.
+        """
+        return pulumi.get(self, "content")
+
+    @property
+    @pulumi.getter(name="contentDisposition")
+    def content_disposition(self) -> str:
+        """
+        A string which specifies the override behavior for 
+        the browser. For example, this header might specify that the browser use a download
+        program to save this file rather than show the file, which is the default.
+        """
+        return pulumi.get(self, "content_disposition")
+
+    @property
+    @pulumi.getter(name="contentEncoding")
+    def content_encoding(self) -> str:
+        """
+        A string representing the value of the Content-Encoding
+        metadata.
+        """
+        return pulumi.get(self, "content_encoding")
+
+    @property
+    @pulumi.getter(name="contentLength")
+    def content_length(self) -> float:
+        """
+        If the operation succeeds, this value is zero (0) or the 
+        length of informational or error text in the response body.
+        """
+        return pulumi.get(self, "content_length")
+
+    @property
+    @pulumi.getter(name="contentType")
+    def content_type(self) -> str:
+        """
+        A string which sets the MIME type for the object.
+        """
+        return pulumi.get(self, "content_type")
+
+    @property
+    @pulumi.getter(name="copyFrom")
+    def copy_from(self) -> Optional[str]:
+        """
+        A string representing the name of an object 
+        used to create the new object by copying the `copy_from` object. The value is in form
+        {container}/{object}. You must UTF-8-encode and then URL-encode the names of the
+        container and object before you include them in the header. Conflicts with `source` and
+        `content`.
+        """
+        return pulumi.get(self, "copy_from")
+
+    @property
+    @pulumi.getter
+    def date(self) -> str:
+        """
+        The date and time the system responded to the request, using the preferred 
+        format of RFC 7231 as shown in this example Thu, 16 Jun 2016 15:10:38 GMT. The
+        time is always in UTC.
+        """
+        return pulumi.get(self, "date")
+
+    @property
+    @pulumi.getter(name="deleteAfter")
+    def delete_after(self) -> Optional[float]:
+        """
+        An integer representing the number of seconds after which the
+        system removes the object. Internally, the Object Storage system stores this value in
+        the X-Delete-At metadata item.
+        """
+        return pulumi.get(self, "delete_after")
+
+    @property
+    @pulumi.getter(name="deleteAt")
+    def delete_at(self) -> str:
+        """
+        An string representing the date when the system removes the object. 
+        For example, "2015-08-26" is equivalent to Mon, Wed, 26 Aug 2015 00:00:00 GMT.
+        """
+        return pulumi.get(self, "delete_at")
+
+    @property
+    @pulumi.getter(name="detectContentType")
+    def detect_content_type(self) -> Optional[bool]:
+        """
+        If set to true, Object Storage guesses the content 
+        type based on the file extension and ignores the value sent in the Content-Type
+        header, if present.
+        """
+        return pulumi.get(self, "detect_content_type")
+
+    @property
+    @pulumi.getter
+    def etag(self) -> str:
+        """
+        Used to trigger updates. The only meaningful value is ${md5(file("path/to/file"))}.
+        """
+        return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter(name="lastModified")
+    def last_modified(self) -> str:
+        """
+        The date and time when the object was last modified. The date and time 
+        stamp format is ISO 8601:
+        CCYY-MM-DDThh:mm:ss±hh:mm
+        For example, 2015-08-27T09:49:58-05:00.
+        The ±hh:mm value, if included, is the time zone as an offset from UTC. In the previous
+        example, the offset value is -05:00.
+        """
+        return pulumi.get(self, "last_modified")
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Optional[Mapping[str, Any]]:
+        return pulumi.get(self, "metadata")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        A unique name for the object.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="objectManifest")
+    def object_manifest(self) -> str:
+        """
+        A string set to specify that this is a dynamic large 
+        object manifest object. The value is the container and object name prefix of the
+        segment objects in the form container/prefix. You must UTF-8-encode and then
+        URL-encode the names of the container and prefix before you include them in this
+        header.
+        """
+        return pulumi.get(self, "object_manifest")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The region in which to create the container. If
+        omitted, the `region` argument of the provider is used. Changing this
+        creates a new container.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def source(self) -> Optional[str]:
+        """
+        A string representing the local path of a file which will be used
+        as the object's content. Conflicts with `source` and `copy_from`.
+        """
+        return pulumi.get(self, "source")
+
+    @property
+    @pulumi.getter(name="transId")
+    def trans_id(self) -> str:
+        """
+        A unique transaction ID for this request. Your service provider might 
+        need this value if you report a problem.
+        """
+        return pulumi.get(self, "trans_id")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

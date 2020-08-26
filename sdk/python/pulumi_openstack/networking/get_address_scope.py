@@ -5,10 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
 
+__all__ = [
+    'GetAddressScopeResult',
+    'AwaitableGetAddressScopeResult',
+    'get_address_scope',
+]
 
+@pulumi.output_type
 class GetAddressScopeResult:
     """
     A collection of values returned by getAddressScope.
@@ -16,37 +22,67 @@ class GetAddressScopeResult:
     def __init__(__self__, id=None, ip_version=None, name=None, project_id=None, region=None, shared=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if ip_version and not isinstance(ip_version, float):
+            raise TypeError("Expected argument 'ip_version' to be a float")
+        pulumi.set(__self__, "ip_version", ip_version)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if project_id and not isinstance(project_id, str):
+            raise TypeError("Expected argument 'project_id' to be a str")
+        pulumi.set(__self__, "project_id", project_id)
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        pulumi.set(__self__, "region", region)
+        if shared and not isinstance(shared, bool):
+            raise TypeError("Expected argument 'shared' to be a bool")
+        pulumi.set(__self__, "shared", shared)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if ip_version and not isinstance(ip_version, float):
-            raise TypeError("Expected argument 'ip_version' to be a float")
-        __self__.ip_version = ip_version
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="ipVersion")
+    def ip_version(self) -> Optional[float]:
         """
         See Argument Reference above.
         """
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
+        return pulumi.get(self, "ip_version")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
         """
         See Argument Reference above.
         """
-        if project_id and not isinstance(project_id, str):
-            raise TypeError("Expected argument 'project_id' to be a str")
-        __self__.project_id = project_id
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[str]:
         """
         See Argument Reference above.
         """
-        if region and not isinstance(region, str):
-            raise TypeError("Expected argument 'region' to be a str")
-        __self__.region = region
-        if shared and not isinstance(shared, bool):
-            raise TypeError("Expected argument 'shared' to be a bool")
-        __self__.shared = shared
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[str]:
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def shared(self) -> Optional[bool]:
         """
         See Argument Reference above.
         """
+        return pulumi.get(self, "shared")
 
 
 class AwaitableGetAddressScopeResult(GetAddressScopeResult):
@@ -63,7 +99,12 @@ class AwaitableGetAddressScopeResult(GetAddressScopeResult):
             shared=self.shared)
 
 
-def get_address_scope(ip_version=None, name=None, project_id=None, region=None, shared=None, opts=None):
+def get_address_scope(ip_version: Optional[float] = None,
+                      name: Optional[str] = None,
+                      project_id: Optional[str] = None,
+                      region: Optional[str] = None,
+                      shared: Optional[bool] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAddressScopeResult:
     """
     Use this data source to get the ID of an available OpenStack address-scope.
 
@@ -98,12 +139,12 @@ def get_address_scope(ip_version=None, name=None, project_id=None, region=None, 
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('openstack:networking/getAddressScope:getAddressScope', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('openstack:networking/getAddressScope:getAddressScope', __args__, opts=opts, typ=GetAddressScopeResult).value
 
     return AwaitableGetAddressScopeResult(
-        id=__ret__.get('id'),
-        ip_version=__ret__.get('ipVersion'),
-        name=__ret__.get('name'),
-        project_id=__ret__.get('projectId'),
-        region=__ret__.get('region'),
-        shared=__ret__.get('shared'))
+        id=__ret__.id,
+        ip_version=__ret__.ip_version,
+        name=__ret__.name,
+        project_id=__ret__.project_id,
+        region=__ret__.region,
+        shared=__ret__.shared)

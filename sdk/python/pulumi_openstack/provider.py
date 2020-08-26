@@ -6,12 +6,50 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
+
+__all__ = ['Provider']
 
 
 class Provider(pulumi.ProviderResource):
-    def __init__(__self__, resource_name, opts=None, allow_reauth=None, application_credential_id=None, application_credential_name=None, application_credential_secret=None, auth_url=None, cacert_file=None, cert=None, cloud=None, default_domain=None, delayed_auth=None, disable_no_cache_header=None, domain_id=None, domain_name=None, endpoint_overrides=None, endpoint_type=None, insecure=None, key=None, max_retries=None, password=None, project_domain_id=None, project_domain_name=None, region=None, swauth=None, tenant_id=None, tenant_name=None, token=None, use_octavia=None, user_domain_id=None, user_domain_name=None, user_id=None, user_name=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 allow_reauth: Optional[pulumi.Input[bool]] = None,
+                 application_credential_id: Optional[pulumi.Input[str]] = None,
+                 application_credential_name: Optional[pulumi.Input[str]] = None,
+                 application_credential_secret: Optional[pulumi.Input[str]] = None,
+                 auth_url: Optional[pulumi.Input[str]] = None,
+                 cacert_file: Optional[pulumi.Input[str]] = None,
+                 cert: Optional[pulumi.Input[str]] = None,
+                 cloud: Optional[pulumi.Input[str]] = None,
+                 default_domain: Optional[pulumi.Input[str]] = None,
+                 delayed_auth: Optional[pulumi.Input[bool]] = None,
+                 disable_no_cache_header: Optional[pulumi.Input[bool]] = None,
+                 domain_id: Optional[pulumi.Input[str]] = None,
+                 domain_name: Optional[pulumi.Input[str]] = None,
+                 endpoint_overrides: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 endpoint_type: Optional[pulumi.Input[str]] = None,
+                 insecure: Optional[pulumi.Input[bool]] = None,
+                 key: Optional[pulumi.Input[str]] = None,
+                 max_retries: Optional[pulumi.Input[float]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
+                 project_domain_id: Optional[pulumi.Input[str]] = None,
+                 project_domain_name: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 swauth: Optional[pulumi.Input[bool]] = None,
+                 tenant_id: Optional[pulumi.Input[str]] = None,
+                 tenant_name: Optional[pulumi.Input[str]] = None,
+                 token: Optional[pulumi.Input[str]] = None,
+                 use_octavia: Optional[pulumi.Input[bool]] = None,
+                 user_domain_id: Optional[pulumi.Input[str]] = None,
+                 user_domain_name: Optional[pulumi.Input[str]] = None,
+                 user_id: Optional[pulumi.Input[str]] = None,
+                 user_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         The provider type for the openstack package. By default, resources use package-wide configuration
         settings, however an explicit `Provider` instance may be created and passed during resource
@@ -35,7 +73,7 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[bool] disable_no_cache_header: If set to `true`, the HTTP `Cache-Control: no-cache` header will not be added by default to all API requests.
         :param pulumi.Input[str] domain_id: The ID of the Domain to scope to (Identity v3).
         :param pulumi.Input[str] domain_name: The name of the Domain to scope to (Identity v3).
-        :param pulumi.Input[dict] endpoint_overrides: A map of services with an endpoint to override what was from the Keystone catalog
+        :param pulumi.Input[Mapping[str, Any]] endpoint_overrides: A map of services with an endpoint to override what was from the Keystone catalog
         :param pulumi.Input[bool] insecure: Trust self-signed certificates.
         :param pulumi.Input[str] key: A client private key to authenticate with.
         :param pulumi.Input[float] max_retries: How many times HTTP connection should be retried until giving up.
@@ -168,3 +206,4 @@ class Provider(pulumi.ProviderResource):
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

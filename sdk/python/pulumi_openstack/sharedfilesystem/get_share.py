@@ -5,10 +5,17 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
 
+__all__ = [
+    'GetShareResult',
+    'AwaitableGetShareResult',
+    'get_share',
+]
 
+@pulumi.output_type
 class GetShareResult:
     """
     A collection of values returned by getShare.
@@ -16,96 +23,171 @@ class GetShareResult:
     def __init__(__self__, availability_zone=None, description=None, export_location_path=None, export_locations=None, id=None, is_public=None, metadata=None, name=None, project_id=None, region=None, share_network_id=None, share_proto=None, size=None, snapshot_id=None, status=None):
         if availability_zone and not isinstance(availability_zone, str):
             raise TypeError("Expected argument 'availability_zone' to be a str")
-        __self__.availability_zone = availability_zone
+        pulumi.set(__self__, "availability_zone", availability_zone)
+        if description and not isinstance(description, str):
+            raise TypeError("Expected argument 'description' to be a str")
+        pulumi.set(__self__, "description", description)
+        if export_location_path and not isinstance(export_location_path, str):
+            raise TypeError("Expected argument 'export_location_path' to be a str")
+        pulumi.set(__self__, "export_location_path", export_location_path)
+        if export_locations and not isinstance(export_locations, list):
+            raise TypeError("Expected argument 'export_locations' to be a list")
+        pulumi.set(__self__, "export_locations", export_locations)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if is_public and not isinstance(is_public, bool):
+            raise TypeError("Expected argument 'is_public' to be a bool")
+        pulumi.set(__self__, "is_public", is_public)
+        if metadata and not isinstance(metadata, dict):
+            raise TypeError("Expected argument 'metadata' to be a dict")
+        pulumi.set(__self__, "metadata", metadata)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if project_id and not isinstance(project_id, str):
+            raise TypeError("Expected argument 'project_id' to be a str")
+        pulumi.set(__self__, "project_id", project_id)
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        pulumi.set(__self__, "region", region)
+        if share_network_id and not isinstance(share_network_id, str):
+            raise TypeError("Expected argument 'share_network_id' to be a str")
+        pulumi.set(__self__, "share_network_id", share_network_id)
+        if share_proto and not isinstance(share_proto, str):
+            raise TypeError("Expected argument 'share_proto' to be a str")
+        pulumi.set(__self__, "share_proto", share_proto)
+        if size and not isinstance(size, float):
+            raise TypeError("Expected argument 'size' to be a float")
+        pulumi.set(__self__, "size", size)
+        if snapshot_id and not isinstance(snapshot_id, str):
+            raise TypeError("Expected argument 'snapshot_id' to be a str")
+        pulumi.set(__self__, "snapshot_id", snapshot_id)
+        if status and not isinstance(status, str):
+            raise TypeError("Expected argument 'status' to be a str")
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> str:
         """
         The share availability zone.
         """
-        if description and not isinstance(description, str):
-            raise TypeError("Expected argument 'description' to be a str")
-        __self__.description = description
+        return pulumi.get(self, "availability_zone")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
         """
         See Argument Reference above.
         """
-        if export_location_path and not isinstance(export_location_path, str):
-            raise TypeError("Expected argument 'export_location_path' to be a str")
-        __self__.export_location_path = export_location_path
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="exportLocationPath")
+    def export_location_path(self) -> Optional[str]:
         """
         See Argument Reference above.
         """
-        if export_locations and not isinstance(export_locations, list):
-            raise TypeError("Expected argument 'export_locations' to be a list")
-        __self__.export_locations = export_locations
+        return pulumi.get(self, "export_location_path")
+
+    @property
+    @pulumi.getter(name="exportLocations")
+    def export_locations(self) -> List['outputs.GetShareExportLocationResult']:
         """
         A list of export locations. For example, when a share
         server has more than one network interface, it can have multiple export
         locations.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "export_locations")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if is_public and not isinstance(is_public, bool):
-            raise TypeError("Expected argument 'is_public' to be a bool")
-        __self__.is_public = is_public
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="isPublic")
+    def is_public(self) -> bool:
         """
         See Argument Reference above.
         """
-        if metadata and not isinstance(metadata, dict):
-            raise TypeError("Expected argument 'metadata' to be a dict")
-        __self__.metadata = metadata
+        return pulumi.get(self, "is_public")
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Mapping[str, Any]:
         """
         See Argument Reference above.
         """
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
+        return pulumi.get(self, "metadata")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
         """
         See Argument Reference above.
         """
-        if project_id and not isinstance(project_id, str):
-            raise TypeError("Expected argument 'project_id' to be a str")
-        __self__.project_id = project_id
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
         """
         See Argument Reference above.
         """
-        if region and not isinstance(region, str):
-            raise TypeError("Expected argument 'region' to be a str")
-        __self__.region = region
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
         """
         The region in which to obtain the V2 Shared File System client.
         """
-        if share_network_id and not isinstance(share_network_id, str):
-            raise TypeError("Expected argument 'share_network_id' to be a str")
-        __self__.share_network_id = share_network_id
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="shareNetworkId")
+    def share_network_id(self) -> str:
         """
         See Argument Reference above.
         """
-        if share_proto and not isinstance(share_proto, str):
-            raise TypeError("Expected argument 'share_proto' to be a str")
-        __self__.share_proto = share_proto
+        return pulumi.get(self, "share_network_id")
+
+    @property
+    @pulumi.getter(name="shareProto")
+    def share_proto(self) -> str:
         """
         The share protocol.
         """
-        if size and not isinstance(size, float):
-            raise TypeError("Expected argument 'size' to be a float")
-        __self__.size = size
+        return pulumi.get(self, "share_proto")
+
+    @property
+    @pulumi.getter
+    def size(self) -> float:
         """
         The share size, in GBs.
         """
-        if snapshot_id and not isinstance(snapshot_id, str):
-            raise TypeError("Expected argument 'snapshot_id' to be a str")
-        __self__.snapshot_id = snapshot_id
+        return pulumi.get(self, "size")
+
+    @property
+    @pulumi.getter(name="snapshotId")
+    def snapshot_id(self) -> str:
         """
         See Argument Reference above.
         """
-        if status and not isinstance(status, str):
-            raise TypeError("Expected argument 'status' to be a str")
-        __self__.status = status
+        return pulumi.get(self, "snapshot_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
         """
         See Argument Reference above.
         """
+        return pulumi.get(self, "status")
 
 
 class AwaitableGetShareResult(GetShareResult):
@@ -131,7 +213,16 @@ class AwaitableGetShareResult(GetShareResult):
             status=self.status)
 
 
-def get_share(description=None, export_location_path=None, is_public=None, metadata=None, name=None, region=None, share_network_id=None, snapshot_id=None, status=None, opts=None):
+def get_share(description: Optional[str] = None,
+              export_location_path: Optional[str] = None,
+              is_public: Optional[bool] = None,
+              metadata: Optional[Mapping[str, Any]] = None,
+              name: Optional[str] = None,
+              region: Optional[str] = None,
+              share_network_id: Optional[str] = None,
+              snapshot_id: Optional[str] = None,
+              status: Optional[str] = None,
+              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetShareResult:
     """
     Use this data source to get the ID of an available Shared File System share.
 
@@ -150,7 +241,7 @@ def get_share(description=None, export_location_path=None, is_public=None, metad
            since Manila API version 2.35.
     :param bool is_public: The level of visibility for the share.
            length.
-    :param dict metadata: One or more metadata key and value pairs as a dictionary of
+    :param Mapping[str, Any] metadata: One or more metadata key and value pairs as a dictionary of
            strings.
     :param str name: The name of the share.
     :param str region: The region in which to obtain the V2 Shared File System client.
@@ -176,21 +267,21 @@ def get_share(description=None, export_location_path=None, is_public=None, metad
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('openstack:sharedfilesystem/getShare:getShare', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('openstack:sharedfilesystem/getShare:getShare', __args__, opts=opts, typ=GetShareResult).value
 
     return AwaitableGetShareResult(
-        availability_zone=__ret__.get('availabilityZone'),
-        description=__ret__.get('description'),
-        export_location_path=__ret__.get('exportLocationPath'),
-        export_locations=__ret__.get('exportLocations'),
-        id=__ret__.get('id'),
-        is_public=__ret__.get('isPublic'),
-        metadata=__ret__.get('metadata'),
-        name=__ret__.get('name'),
-        project_id=__ret__.get('projectId'),
-        region=__ret__.get('region'),
-        share_network_id=__ret__.get('shareNetworkId'),
-        share_proto=__ret__.get('shareProto'),
-        size=__ret__.get('size'),
-        snapshot_id=__ret__.get('snapshotId'),
-        status=__ret__.get('status'))
+        availability_zone=__ret__.availability_zone,
+        description=__ret__.description,
+        export_location_path=__ret__.export_location_path,
+        export_locations=__ret__.export_locations,
+        id=__ret__.id,
+        is_public=__ret__.is_public,
+        metadata=__ret__.metadata,
+        name=__ret__.name,
+        project_id=__ret__.project_id,
+        region=__ret__.region,
+        share_network_id=__ret__.share_network_id,
+        share_proto=__ret__.share_proto,
+        size=__ret__.size,
+        snapshot_id=__ret__.snapshot_id,
+        status=__ret__.status)

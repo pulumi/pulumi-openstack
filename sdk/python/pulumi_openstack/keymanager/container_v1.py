@@ -5,76 +5,26 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['ContainerV1']
 
 
 class ContainerV1(pulumi.CustomResource):
-    acl: pulumi.Output[dict]
-    """
-    Allows to control an access to a container. Currently only
-    the `read` operation is supported. If not specified, the container is
-    accessible project wide. The `read` structure is described below.
-
-      * `read` (`dict`)
-        * `created_at` (`str`) - The date the container ACL was created.
-        * `projectAccess` (`bool`) - Whether the container is accessible project wide.
-          Defaults to `true`.
-        * `updated_at` (`str`) - The date the container ACL was last updated.
-        * `users` (`list`) - The list of user IDs, which are allowed to access the
-          container, when `project_access` is set to `false`.
-    """
-    consumers: pulumi.Output[list]
-    """
-    The list of the container consumers. The structure is described below.
-
-      * `name` (`str`) - The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
-      * `url` (`str`) - The consumer URL.
-    """
-    container_ref: pulumi.Output[str]
-    """
-    The container reference / where to find the container.
-    """
-    created_at: pulumi.Output[str]
-    """
-    The date the container ACL was created.
-    """
-    creator_id: pulumi.Output[str]
-    """
-    The creator of the container.
-    """
-    name: pulumi.Output[str]
-    """
-    The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
-    """
-    region: pulumi.Output[str]
-    """
-    The region in which to obtain the V1 KeyManager client.
-    A KeyManager client is needed to create a container. If omitted, the
-    `region` argument of the provider is used. Changing this creates a new
-    V1 container.
-    """
-    secret_refs: pulumi.Output[list]
-    """
-    A set of dictionaries containing references to secrets. The structure is described
-    below.
-
-      * `name` (`str`) - The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
-      * `secret_ref` (`str`) - The secret reference / where to find the secret, URL.
-    """
-    status: pulumi.Output[str]
-    """
-    The status of the container.
-    """
-    type: pulumi.Output[str]
-    """
-    Used to indicate the type of container. Must be one of `generic`, `rsa` or `certificate`.
-    """
-    updated_at: pulumi.Output[str]
-    """
-    The date the container ACL was last updated.
-    """
-    def __init__(__self__, resource_name, opts=None, acl=None, name=None, region=None, secret_refs=None, type=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 acl: Optional[pulumi.Input[pulumi.InputType['ContainerV1AclArgs']]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 secret_refs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ContainerV1SecretRefArgs']]]]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a V1 Barbican container resource within OpenStack.
 
@@ -101,18 +51,18 @@ class ContainerV1(pulumi.CustomResource):
             secret_type="certificate")
         tls1 = openstack.keymanager.ContainerV1("tls1",
             secret_refs=[
-                {
-                    "name": "certificate",
-                    "secret_ref": certificate1.secret_ref,
-                },
-                {
-                    "name": "private_key",
-                    "secret_ref": private_key1.secret_ref,
-                },
-                {
-                    "name": "intermediates",
-                    "secret_ref": intermediate1.secret_ref,
-                },
+                openstack.keymanager.ContainerV1SecretRefArgs(
+                    name="certificate",
+                    secret_ref=certificate1.secret_ref,
+                ),
+                openstack.keymanager.ContainerV1SecretRefArgs(
+                    name="private_key",
+                    secret_ref=private_key1.secret_ref,
+                ),
+                openstack.keymanager.ContainerV1SecretRefArgs(
+                    name="intermediates",
+                    secret_ref=intermediate1.secret_ref,
+                ),
             ],
             type="certificate")
         subnet1 = openstack.networking.get_subnet(name="my-subnet")
@@ -132,35 +82,35 @@ class ContainerV1(pulumi.CustomResource):
         import pulumi_openstack as openstack
 
         tls1 = openstack.keymanager.ContainerV1("tls1",
-            acl={
-                "read": {
-                    "projectAccess": False,
-                    "users": [
+            acl=openstack.keymanager.ContainerV1AclArgs(
+                read=openstack.keymanager.ContainerV1AclReadArgs(
+                    project_access=False,
+                    users=[
                         "userid1",
                         "userid2",
                     ],
-                },
-            },
+                ),
+            ),
             secret_refs=[
-                {
-                    "name": "certificate",
-                    "secret_ref": openstack_keymanager_secret_v1["certificate_1"]["secret_ref"],
-                },
-                {
-                    "name": "private_key",
-                    "secret_ref": openstack_keymanager_secret_v1["private_key_1"]["secret_ref"],
-                },
-                {
-                    "name": "intermediates",
-                    "secret_ref": openstack_keymanager_secret_v1["intermediate_1"]["secret_ref"],
-                },
+                openstack.keymanager.ContainerV1SecretRefArgs(
+                    name="certificate",
+                    secret_ref=openstack_keymanager_secret_v1["certificate_1"]["secret_ref"],
+                ),
+                openstack.keymanager.ContainerV1SecretRefArgs(
+                    name="private_key",
+                    secret_ref=openstack_keymanager_secret_v1["private_key_1"]["secret_ref"],
+                ),
+                openstack.keymanager.ContainerV1SecretRefArgs(
+                    name="intermediates",
+                    secret_ref=openstack_keymanager_secret_v1["intermediate_1"]["secret_ref"],
+                ),
             ],
             type="certificate")
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] acl: Allows to control an access to a container. Currently only
+        :param pulumi.Input[pulumi.InputType['ContainerV1AclArgs']] acl: Allows to control an access to a container. Currently only
                the `read` operation is supported. If not specified, the container is
                accessible project wide. The `read` structure is described below.
         :param pulumi.Input[str] name: The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
@@ -168,24 +118,9 @@ class ContainerV1(pulumi.CustomResource):
                A KeyManager client is needed to create a container. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
                V1 container.
-        :param pulumi.Input[list] secret_refs: A set of dictionaries containing references to secrets. The structure is described
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ContainerV1SecretRefArgs']]]] secret_refs: A set of dictionaries containing references to secrets. The structure is described
                below.
         :param pulumi.Input[str] type: Used to indicate the type of container. Must be one of `generic`, `rsa` or `certificate`.
-
-        The **acl** object supports the following:
-
-          * `read` (`pulumi.Input[dict]`)
-            * `created_at` (`pulumi.Input[str]`) - The date the container ACL was created.
-            * `projectAccess` (`pulumi.Input[bool]`) - Whether the container is accessible project wide.
-              Defaults to `true`.
-            * `updated_at` (`pulumi.Input[str]`) - The date the container ACL was last updated.
-            * `users` (`pulumi.Input[list]`) - The list of user IDs, which are allowed to access the
-              container, when `project_access` is set to `false`.
-
-        The **secret_refs** object supports the following:
-
-          * `name` (`pulumi.Input[str]`) - The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
-          * `secret_ref` (`pulumi.Input[str]`) - The secret reference / where to find the secret, URL.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -224,18 +159,31 @@ class ContainerV1(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, acl=None, consumers=None, container_ref=None, created_at=None, creator_id=None, name=None, region=None, secret_refs=None, status=None, type=None, updated_at=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            acl: Optional[pulumi.Input[pulumi.InputType['ContainerV1AclArgs']]] = None,
+            consumers: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ContainerV1ConsumerArgs']]]]] = None,
+            container_ref: Optional[pulumi.Input[str]] = None,
+            created_at: Optional[pulumi.Input[str]] = None,
+            creator_id: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            region: Optional[pulumi.Input[str]] = None,
+            secret_refs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ContainerV1SecretRefArgs']]]]] = None,
+            status: Optional[pulumi.Input[str]] = None,
+            type: Optional[pulumi.Input[str]] = None,
+            updated_at: Optional[pulumi.Input[str]] = None) -> 'ContainerV1':
         """
         Get an existing ContainerV1 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] acl: Allows to control an access to a container. Currently only
+        :param pulumi.Input[pulumi.InputType['ContainerV1AclArgs']] acl: Allows to control an access to a container. Currently only
                the `read` operation is supported. If not specified, the container is
                accessible project wide. The `read` structure is described below.
-        :param pulumi.Input[list] consumers: The list of the container consumers. The structure is described below.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ContainerV1ConsumerArgs']]]] consumers: The list of the container consumers. The structure is described below.
         :param pulumi.Input[str] container_ref: The container reference / where to find the container.
         :param pulumi.Input[str] created_at: The date the container ACL was created.
         :param pulumi.Input[str] creator_id: The creator of the container.
@@ -244,31 +192,11 @@ class ContainerV1(pulumi.CustomResource):
                A KeyManager client is needed to create a container. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
                V1 container.
-        :param pulumi.Input[list] secret_refs: A set of dictionaries containing references to secrets. The structure is described
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ContainerV1SecretRefArgs']]]] secret_refs: A set of dictionaries containing references to secrets. The structure is described
                below.
         :param pulumi.Input[str] status: The status of the container.
         :param pulumi.Input[str] type: Used to indicate the type of container. Must be one of `generic`, `rsa` or `certificate`.
         :param pulumi.Input[str] updated_at: The date the container ACL was last updated.
-
-        The **acl** object supports the following:
-
-          * `read` (`pulumi.Input[dict]`)
-            * `created_at` (`pulumi.Input[str]`) - The date the container ACL was created.
-            * `projectAccess` (`pulumi.Input[bool]`) - Whether the container is accessible project wide.
-              Defaults to `true`.
-            * `updated_at` (`pulumi.Input[str]`) - The date the container ACL was last updated.
-            * `users` (`pulumi.Input[list]`) - The list of user IDs, which are allowed to access the
-              container, when `project_access` is set to `false`.
-
-        The **consumers** object supports the following:
-
-          * `name` (`pulumi.Input[str]`) - The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
-          * `url` (`pulumi.Input[str]`) - The consumer URL.
-
-        The **secret_refs** object supports the following:
-
-          * `name` (`pulumi.Input[str]`) - The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
-          * `secret_ref` (`pulumi.Input[str]`) - The secret reference / where to find the secret, URL.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -287,8 +215,103 @@ class ContainerV1(pulumi.CustomResource):
         __props__["updated_at"] = updated_at
         return ContainerV1(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def acl(self) -> 'outputs.ContainerV1Acl':
+        """
+        Allows to control an access to a container. Currently only
+        the `read` operation is supported. If not specified, the container is
+        accessible project wide. The `read` structure is described below.
+        """
+        return pulumi.get(self, "acl")
+
+    @property
+    @pulumi.getter
+    def consumers(self) -> List['outputs.ContainerV1Consumer']:
+        """
+        The list of the container consumers. The structure is described below.
+        """
+        return pulumi.get(self, "consumers")
+
+    @property
+    @pulumi.getter(name="containerRef")
+    def container_ref(self) -> str:
+        """
+        The container reference / where to find the container.
+        """
+        return pulumi.get(self, "container_ref")
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> str:
+        """
+        The date the container ACL was created.
+        """
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter(name="creatorId")
+    def creator_id(self) -> str:
+        """
+        The creator of the container.
+        """
+        return pulumi.get(self, "creator_id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The region in which to obtain the V1 KeyManager client.
+        A KeyManager client is needed to create a container. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        V1 container.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="secretRefs")
+    def secret_refs(self) -> Optional[List['outputs.ContainerV1SecretRef']]:
+        """
+        A set of dictionaries containing references to secrets. The structure is described
+        below.
+        """
+        return pulumi.get(self, "secret_refs")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the container.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Used to indicate the type of container. Must be one of `generic`, `rsa` or `certificate`.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> str:
+        """
+        The date the container ACL was last updated.
+        """
+        return pulumi.get(self, "updated_at")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

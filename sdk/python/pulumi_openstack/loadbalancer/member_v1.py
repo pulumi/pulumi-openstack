@@ -5,46 +5,26 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['MemberV1']
 
 
 class MemberV1(pulumi.CustomResource):
-    address: pulumi.Output[str]
-    """
-    The IP address of the member. Changing this creates a
-    new member.
-    """
-    admin_state_up: pulumi.Output[bool]
-    """
-    The administrative state of the member.
-    Acceptable values are 'true' and 'false'. Changing this value updates the
-    state of the existing member.
-    """
-    pool_id: pulumi.Output[str]
-    """
-    The ID of the LB pool. Changing this creates a new
-    member.
-    """
-    port: pulumi.Output[float]
-    """
-    An integer representing the port on which the member is
-    hosted. Changing this creates a new member.
-    """
-    region: pulumi.Output[str]
-    """
-    The region in which to obtain the V2 Networking client.
-    A Networking client is needed to create an LB member. If omitted, the
-    `region` argument of the provider is used. Changing this creates a new
-    LB member.
-    """
-    tenant_id: pulumi.Output[str]
-    """
-    The owner of the member. Required if admin wants to
-    create a member for another tenant. Changing this creates a new member.
-    """
-    weight: pulumi.Output[float]
-    def __init__(__self__, resource_name, opts=None, address=None, admin_state_up=None, pool_id=None, port=None, region=None, tenant_id=None, weight=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 address: Optional[pulumi.Input[str]] = None,
+                 admin_state_up: Optional[pulumi.Input[bool]] = None,
+                 pool_id: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[float]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 tenant_id: Optional[pulumi.Input[str]] = None,
+                 weight: Optional[pulumi.Input[float]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a V1 load balancer member resource within OpenStack.
 
@@ -115,13 +95,22 @@ class MemberV1(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, address=None, admin_state_up=None, pool_id=None, port=None, region=None, tenant_id=None, weight=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            address: Optional[pulumi.Input[str]] = None,
+            admin_state_up: Optional[pulumi.Input[bool]] = None,
+            pool_id: Optional[pulumi.Input[str]] = None,
+            port: Optional[pulumi.Input[float]] = None,
+            region: Optional[pulumi.Input[str]] = None,
+            tenant_id: Optional[pulumi.Input[str]] = None,
+            weight: Optional[pulumi.Input[float]] = None) -> 'MemberV1':
         """
         Get an existing MemberV1 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address: The IP address of the member. Changing this creates a
                new member.
@@ -152,8 +141,71 @@ class MemberV1(pulumi.CustomResource):
         __props__["weight"] = weight
         return MemberV1(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def address(self) -> str:
+        """
+        The IP address of the member. Changing this creates a
+        new member.
+        """
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter(name="adminStateUp")
+    def admin_state_up(self) -> bool:
+        """
+        The administrative state of the member.
+        Acceptable values are 'true' and 'false'. Changing this value updates the
+        state of the existing member.
+        """
+        return pulumi.get(self, "admin_state_up")
+
+    @property
+    @pulumi.getter(name="poolId")
+    def pool_id(self) -> str:
+        """
+        The ID of the LB pool. Changing this creates a new
+        member.
+        """
+        return pulumi.get(self, "pool_id")
+
+    @property
+    @pulumi.getter
+    def port(self) -> float:
+        """
+        An integer representing the port on which the member is
+        hosted. Changing this creates a new member.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The region in which to obtain the V2 Networking client.
+        A Networking client is needed to create an LB member. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        LB member.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> Optional[str]:
+        """
+        The owner of the member. Required if admin wants to
+        create a member for another tenant. Changing this creates a new member.
+        """
+        return pulumi.get(self, "tenant_id")
+
+    @property
+    @pulumi.getter
+    def weight(self) -> float:
+        return pulumi.get(self, "weight")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

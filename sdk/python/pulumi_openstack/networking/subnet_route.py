@@ -5,34 +5,23 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['SubnetRoute']
 
 
 class SubnetRoute(pulumi.CustomResource):
-    destination_cidr: pulumi.Output[str]
-    """
-    CIDR block to match on the packet’s destination IP. Changing
-    this creates a new routing entry.
-    """
-    next_hop: pulumi.Output[str]
-    """
-    IP address of the next hop gateway.  Changing
-    this creates a new routing entry.
-    """
-    region: pulumi.Output[str]
-    """
-    The region in which to obtain the V2 networking client.
-    A networking client is needed to configure a routing entry on a subnet. If omitted, the
-    `region` argument of the provider is used. Changing this creates a new
-    routing entry.
-    """
-    subnet_id: pulumi.Output[str]
-    """
-    ID of the subnet this routing entry belongs to. Changing
-    this creates a new routing entry.
-    """
-    def __init__(__self__, resource_name, opts=None, destination_cidr=None, next_hop=None, region=None, subnet_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 destination_cidr: Optional[pulumi.Input[str]] = None,
+                 next_hop: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 subnet_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Creates a routing entry on a OpenStack V2 subnet.
 
@@ -42,8 +31,8 @@ class SubnetRoute(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        router1 = openstack.networking.Router("router1", admin_state_up="true")
-        network1 = openstack.networking.Network("network1", admin_state_up="true")
+        router1 = openstack.networking.Router("router1", admin_state_up=True)
+        network1 = openstack.networking.Network("network1", admin_state_up=True)
         subnet1 = openstack.networking.Subnet("subnet1",
             cidr="192.168.199.0/24",
             ip_version=4,
@@ -101,13 +90,19 @@ class SubnetRoute(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, destination_cidr=None, next_hop=None, region=None, subnet_id=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            destination_cidr: Optional[pulumi.Input[str]] = None,
+            next_hop: Optional[pulumi.Input[str]] = None,
+            region: Optional[pulumi.Input[str]] = None,
+            subnet_id: Optional[pulumi.Input[str]] = None) -> 'SubnetRoute':
         """
         Get an existing SubnetRoute resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] destination_cidr: CIDR block to match on the packet’s destination IP. Changing
                this creates a new routing entry.
@@ -130,8 +125,47 @@ class SubnetRoute(pulumi.CustomResource):
         __props__["subnet_id"] = subnet_id
         return SubnetRoute(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="destinationCidr")
+    def destination_cidr(self) -> str:
+        """
+        CIDR block to match on the packet’s destination IP. Changing
+        this creates a new routing entry.
+        """
+        return pulumi.get(self, "destination_cidr")
+
+    @property
+    @pulumi.getter(name="nextHop")
+    def next_hop(self) -> str:
+        """
+        IP address of the next hop gateway.  Changing
+        this creates a new routing entry.
+        """
+        return pulumi.get(self, "next_hop")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The region in which to obtain the V2 networking client.
+        A networking client is needed to configure a routing entry on a subnet. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        routing entry.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> str:
+        """
+        ID of the subnet this routing entry belongs to. Changing
+        this creates a new routing entry.
+        """
+        return pulumi.get(self, "subnet_id")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

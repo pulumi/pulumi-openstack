@@ -8,3 +8,5 @@ from .ike_policy import *
 from .ip_sec_policy import *
 from .service import *
 from .site_connection import *
+from ._inputs import *
+from . import outputs

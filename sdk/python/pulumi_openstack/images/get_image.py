@@ -5,10 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
 
+__all__ = [
+    'GetImageResult',
+    'AwaitableGetImageResult',
+    'get_image',
+]
 
+@pulumi.output_type
 class GetImageResult:
     """
     A collection of values returned by getImage.
@@ -16,127 +22,257 @@ class GetImageResult:
     def __init__(__self__, checksum=None, container_format=None, created_at=None, disk_format=None, file=None, id=None, member_status=None, metadata=None, min_disk_gb=None, min_ram_mb=None, most_recent=None, name=None, owner=None, properties=None, protected=None, region=None, schema=None, size_bytes=None, size_max=None, size_min=None, sort_direction=None, sort_key=None, tag=None, tags=None, updated_at=None, visibility=None):
         if checksum and not isinstance(checksum, str):
             raise TypeError("Expected argument 'checksum' to be a str")
-        __self__.checksum = checksum
+        pulumi.set(__self__, "checksum", checksum)
+        if container_format and not isinstance(container_format, str):
+            raise TypeError("Expected argument 'container_format' to be a str")
+        pulumi.set(__self__, "container_format", container_format)
+        if created_at and not isinstance(created_at, str):
+            raise TypeError("Expected argument 'created_at' to be a str")
+        pulumi.set(__self__, "created_at", created_at)
+        if disk_format and not isinstance(disk_format, str):
+            raise TypeError("Expected argument 'disk_format' to be a str")
+        pulumi.set(__self__, "disk_format", disk_format)
+        if file and not isinstance(file, str):
+            raise TypeError("Expected argument 'file' to be a str")
+        pulumi.set(__self__, "file", file)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if member_status and not isinstance(member_status, str):
+            raise TypeError("Expected argument 'member_status' to be a str")
+        pulumi.set(__self__, "member_status", member_status)
+        if metadata and not isinstance(metadata, dict):
+            raise TypeError("Expected argument 'metadata' to be a dict")
+        pulumi.set(__self__, "metadata", metadata)
+        if min_disk_gb and not isinstance(min_disk_gb, float):
+            raise TypeError("Expected argument 'min_disk_gb' to be a float")
+        pulumi.set(__self__, "min_disk_gb", min_disk_gb)
+        if min_ram_mb and not isinstance(min_ram_mb, float):
+            raise TypeError("Expected argument 'min_ram_mb' to be a float")
+        pulumi.set(__self__, "min_ram_mb", min_ram_mb)
+        if most_recent and not isinstance(most_recent, bool):
+            raise TypeError("Expected argument 'most_recent' to be a bool")
+        pulumi.set(__self__, "most_recent", most_recent)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if owner and not isinstance(owner, str):
+            raise TypeError("Expected argument 'owner' to be a str")
+        pulumi.set(__self__, "owner", owner)
+        if properties and not isinstance(properties, dict):
+            raise TypeError("Expected argument 'properties' to be a dict")
+        pulumi.set(__self__, "properties", properties)
+        if protected and not isinstance(protected, bool):
+            raise TypeError("Expected argument 'protected' to be a bool")
+        pulumi.set(__self__, "protected", protected)
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        pulumi.set(__self__, "region", region)
+        if schema and not isinstance(schema, str):
+            raise TypeError("Expected argument 'schema' to be a str")
+        pulumi.set(__self__, "schema", schema)
+        if size_bytes and not isinstance(size_bytes, float):
+            raise TypeError("Expected argument 'size_bytes' to be a float")
+        pulumi.set(__self__, "size_bytes", size_bytes)
+        if size_max and not isinstance(size_max, float):
+            raise TypeError("Expected argument 'size_max' to be a float")
+        pulumi.set(__self__, "size_max", size_max)
+        if size_min and not isinstance(size_min, float):
+            raise TypeError("Expected argument 'size_min' to be a float")
+        pulumi.set(__self__, "size_min", size_min)
+        if sort_direction and not isinstance(sort_direction, str):
+            raise TypeError("Expected argument 'sort_direction' to be a str")
+        pulumi.set(__self__, "sort_direction", sort_direction)
+        if sort_key and not isinstance(sort_key, str):
+            raise TypeError("Expected argument 'sort_key' to be a str")
+        pulumi.set(__self__, "sort_key", sort_key)
+        if tag and not isinstance(tag, str):
+            raise TypeError("Expected argument 'tag' to be a str")
+        pulumi.set(__self__, "tag", tag)
+        if tags and not isinstance(tags, list):
+            raise TypeError("Expected argument 'tags' to be a list")
+        pulumi.set(__self__, "tags", tags)
+        if updated_at and not isinstance(updated_at, str):
+            raise TypeError("Expected argument 'updated_at' to be a str")
+        pulumi.set(__self__, "updated_at", updated_at)
+        if visibility and not isinstance(visibility, str):
+            raise TypeError("Expected argument 'visibility' to be a str")
+        pulumi.set(__self__, "visibility", visibility)
+
+    @property
+    @pulumi.getter
+    def checksum(self) -> str:
         """
         The checksum of the data associated with the image.
         """
-        if container_format and not isinstance(container_format, str):
-            raise TypeError("Expected argument 'container_format' to be a str")
-        __self__.container_format = container_format
-        if created_at and not isinstance(created_at, str):
-            raise TypeError("Expected argument 'created_at' to be a str")
-        __self__.created_at = created_at
+        return pulumi.get(self, "checksum")
+
+    @property
+    @pulumi.getter(name="containerFormat")
+    def container_format(self) -> str:
+        return pulumi.get(self, "container_format")
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> str:
         """
         The date the image was created.
         * `container_format`: The format of the image's container.
         * `disk_format`: The format of the image's disk.
         """
-        if disk_format and not isinstance(disk_format, str):
-            raise TypeError("Expected argument 'disk_format' to be a str")
-        __self__.disk_format = disk_format
-        if file and not isinstance(file, str):
-            raise TypeError("Expected argument 'file' to be a str")
-        __self__.file = file
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter(name="diskFormat")
+    def disk_format(self) -> str:
+        return pulumi.get(self, "disk_format")
+
+    @property
+    @pulumi.getter
+    def file(self) -> str:
         """
         the trailing path after the glance endpoint that represent the
         location of the image or the path to retrieve it.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "file")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if member_status and not isinstance(member_status, str):
-            raise TypeError("Expected argument 'member_status' to be a str")
-        __self__.member_status = member_status
-        if metadata and not isinstance(metadata, dict):
-            raise TypeError("Expected argument 'metadata' to be a dict")
-        __self__.metadata = metadata
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="memberStatus")
+    def member_status(self) -> Optional[str]:
+        return pulumi.get(self, "member_status")
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Mapping[str, Any]:
         """
         The metadata associated with the image.
         Image metadata allow for meaningfully define the image properties
         and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
         """
-        if min_disk_gb and not isinstance(min_disk_gb, float):
-            raise TypeError("Expected argument 'min_disk_gb' to be a float")
-        __self__.min_disk_gb = min_disk_gb
+        return pulumi.get(self, "metadata")
+
+    @property
+    @pulumi.getter(name="minDiskGb")
+    def min_disk_gb(self) -> float:
         """
         The minimum amount of disk space required to use the image.
         """
-        if min_ram_mb and not isinstance(min_ram_mb, float):
-            raise TypeError("Expected argument 'min_ram_mb' to be a float")
-        __self__.min_ram_mb = min_ram_mb
+        return pulumi.get(self, "min_disk_gb")
+
+    @property
+    @pulumi.getter(name="minRamMb")
+    def min_ram_mb(self) -> float:
         """
         The minimum amount of ram required to use the image.
         """
-        if most_recent and not isinstance(most_recent, bool):
-            raise TypeError("Expected argument 'most_recent' to be a bool")
-        __self__.most_recent = most_recent
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
-        if owner and not isinstance(owner, str):
-            raise TypeError("Expected argument 'owner' to be a str")
-        __self__.owner = owner
-        if properties and not isinstance(properties, dict):
-            raise TypeError("Expected argument 'properties' to be a dict")
-        __self__.properties = properties
+        return pulumi.get(self, "min_ram_mb")
+
+    @property
+    @pulumi.getter(name="mostRecent")
+    def most_recent(self) -> Optional[bool]:
+        return pulumi.get(self, "most_recent")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def owner(self) -> Optional[str]:
+        return pulumi.get(self, "owner")
+
+    @property
+    @pulumi.getter
+    def properties(self) -> Optional[Mapping[str, Any]]:
         """
         Freeform information about the image.
         """
-        if protected and not isinstance(protected, bool):
-            raise TypeError("Expected argument 'protected' to be a bool")
-        __self__.protected = protected
+        return pulumi.get(self, "properties")
+
+    @property
+    @pulumi.getter
+    def protected(self) -> bool:
         """
         Whether or not the image is protected.
         """
-        if region and not isinstance(region, str):
-            raise TypeError("Expected argument 'region' to be a str")
-        __self__.region = region
-        if schema and not isinstance(schema, str):
-            raise TypeError("Expected argument 'schema' to be a str")
-        __self__.schema = schema
+        return pulumi.get(self, "protected")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def schema(self) -> str:
         """
         The path to the JSON-schema that represent
         the image or image
         """
-        if size_bytes and not isinstance(size_bytes, float):
-            raise TypeError("Expected argument 'size_bytes' to be a float")
-        __self__.size_bytes = size_bytes
+        return pulumi.get(self, "schema")
+
+    @property
+    @pulumi.getter(name="sizeBytes")
+    def size_bytes(self) -> float:
         """
         The size of the image (in bytes).
         """
-        if size_max and not isinstance(size_max, float):
-            raise TypeError("Expected argument 'size_max' to be a float")
-        __self__.size_max = size_max
-        if size_min and not isinstance(size_min, float):
-            raise TypeError("Expected argument 'size_min' to be a float")
-        __self__.size_min = size_min
-        if sort_direction and not isinstance(sort_direction, str):
-            raise TypeError("Expected argument 'sort_direction' to be a str")
-        __self__.sort_direction = sort_direction
-        if sort_key and not isinstance(sort_key, str):
-            raise TypeError("Expected argument 'sort_key' to be a str")
-        __self__.sort_key = sort_key
-        if tag and not isinstance(tag, str):
-            raise TypeError("Expected argument 'tag' to be a str")
-        __self__.tag = tag
-        if tags and not isinstance(tags, list):
-            raise TypeError("Expected argument 'tags' to be a list")
-        __self__.tags = tags
+        return pulumi.get(self, "size_bytes")
+
+    @property
+    @pulumi.getter(name="sizeMax")
+    def size_max(self) -> Optional[float]:
+        return pulumi.get(self, "size_max")
+
+    @property
+    @pulumi.getter(name="sizeMin")
+    def size_min(self) -> Optional[float]:
+        return pulumi.get(self, "size_min")
+
+    @property
+    @pulumi.getter(name="sortDirection")
+    def sort_direction(self) -> Optional[str]:
+        return pulumi.get(self, "sort_direction")
+
+    @property
+    @pulumi.getter(name="sortKey")
+    def sort_key(self) -> Optional[str]:
+        return pulumi.get(self, "sort_key")
+
+    @property
+    @pulumi.getter
+    def tag(self) -> Optional[str]:
+        return pulumi.get(self, "tag")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> List[str]:
         """
         The tags list of the image.
         """
-        if updated_at and not isinstance(updated_at, str):
-            raise TypeError("Expected argument 'updated_at' to be a str")
-        __self__.updated_at = updated_at
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> str:
         """
         The date the image was last updated.
         """
-        if visibility and not isinstance(visibility, str):
-            raise TypeError("Expected argument 'visibility' to be a str")
-        __self__.visibility = visibility
+        return pulumi.get(self, "updated_at")
+
+    @property
+    @pulumi.getter
+    def visibility(self) -> Optional[str]:
+        return pulumi.get(self, "visibility")
 
 
 class AwaitableGetImageResult(GetImageResult):
@@ -173,7 +309,19 @@ class AwaitableGetImageResult(GetImageResult):
             visibility=self.visibility)
 
 
-def get_image(member_status=None, most_recent=None, name=None, owner=None, properties=None, region=None, size_max=None, size_min=None, sort_direction=None, sort_key=None, tag=None, visibility=None, opts=None):
+def get_image(member_status: Optional[str] = None,
+              most_recent: Optional[bool] = None,
+              name: Optional[str] = None,
+              owner: Optional[str] = None,
+              properties: Optional[Mapping[str, Any]] = None,
+              region: Optional[str] = None,
+              size_max: Optional[float] = None,
+              size_min: Optional[float] = None,
+              sort_direction: Optional[str] = None,
+              sort_key: Optional[str] = None,
+              tag: Optional[str] = None,
+              visibility: Optional[str] = None,
+              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetImageResult:
     """
     Use this data source to get the ID of an available OpenStack image.
 
@@ -197,7 +345,7 @@ def get_image(member_status=None, most_recent=None, name=None, owner=None, prope
            recent image.
     :param str name: The name of the image.
     :param str owner: The owner (UUID) of the image.
-    :param dict properties: a map of key/value pairs to match an image with.
+    :param Mapping[str, Any] properties: a map of key/value pairs to match an image with.
            All specified properties must be matched. Unlike other options filtering
            by `properties` does by client on the result of OpenStack search query.
            Filtering is applied if server responce contains at least 2 images. In
@@ -231,32 +379,32 @@ def get_image(member_status=None, most_recent=None, name=None, owner=None, prope
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('openstack:images/getImage:getImage', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('openstack:images/getImage:getImage', __args__, opts=opts, typ=GetImageResult).value
 
     return AwaitableGetImageResult(
-        checksum=__ret__.get('checksum'),
-        container_format=__ret__.get('containerFormat'),
-        created_at=__ret__.get('createdAt'),
-        disk_format=__ret__.get('diskFormat'),
-        file=__ret__.get('file'),
-        id=__ret__.get('id'),
-        member_status=__ret__.get('memberStatus'),
-        metadata=__ret__.get('metadata'),
-        min_disk_gb=__ret__.get('minDiskGb'),
-        min_ram_mb=__ret__.get('minRamMb'),
-        most_recent=__ret__.get('mostRecent'),
-        name=__ret__.get('name'),
-        owner=__ret__.get('owner'),
-        properties=__ret__.get('properties'),
-        protected=__ret__.get('protected'),
-        region=__ret__.get('region'),
-        schema=__ret__.get('schema'),
-        size_bytes=__ret__.get('sizeBytes'),
-        size_max=__ret__.get('sizeMax'),
-        size_min=__ret__.get('sizeMin'),
-        sort_direction=__ret__.get('sortDirection'),
-        sort_key=__ret__.get('sortKey'),
-        tag=__ret__.get('tag'),
-        tags=__ret__.get('tags'),
-        updated_at=__ret__.get('updatedAt'),
-        visibility=__ret__.get('visibility'))
+        checksum=__ret__.checksum,
+        container_format=__ret__.container_format,
+        created_at=__ret__.created_at,
+        disk_format=__ret__.disk_format,
+        file=__ret__.file,
+        id=__ret__.id,
+        member_status=__ret__.member_status,
+        metadata=__ret__.metadata,
+        min_disk_gb=__ret__.min_disk_gb,
+        min_ram_mb=__ret__.min_ram_mb,
+        most_recent=__ret__.most_recent,
+        name=__ret__.name,
+        owner=__ret__.owner,
+        properties=__ret__.properties,
+        protected=__ret__.protected,
+        region=__ret__.region,
+        schema=__ret__.schema,
+        size_bytes=__ret__.size_bytes,
+        size_max=__ret__.size_max,
+        size_min=__ret__.size_min,
+        sort_direction=__ret__.sort_direction,
+        sort_key=__ret__.sort_key,
+        tag=__ret__.tag,
+        tags=__ret__.tags,
+        updated_at=__ret__.updated_at,
+        visibility=__ret__.visibility)

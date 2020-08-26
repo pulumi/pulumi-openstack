@@ -15,3 +15,5 @@ from .monitor_v1 import *
 from .pool import *
 from .pool_v1 import *
 from .vip import *
+from ._inputs import *
+from . import outputs

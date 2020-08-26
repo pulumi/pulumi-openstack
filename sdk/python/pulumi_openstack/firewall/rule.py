@@ -5,86 +5,32 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['Rule']
 
 
 class Rule(pulumi.CustomResource):
-    action: pulumi.Output[str]
-    """
-    Action to be taken ( must be "allow" or "deny") when the
-    firewall rule matches. Changing this updates the `action` of an existing
-    firewall rule.
-    """
-    description: pulumi.Output[str]
-    """
-    A description for the firewall rule. Changing this
-    updates the `description` of an existing firewall rule.
-    """
-    destination_ip_address: pulumi.Output[str]
-    """
-    The destination IP address on which the
-    firewall rule operates. Changing this updates the `destination_ip_address`
-    of an existing firewall rule.
-    """
-    destination_port: pulumi.Output[str]
-    """
-    The destination port on which the firewall
-    rule operates. Changing this updates the `destination_port` of an existing
-    firewall rule.
-    """
-    enabled: pulumi.Output[bool]
-    """
-    Enabled status for the firewall rule (must be "true"
-    or "false" if provided - defaults to "true"). Changing this updates the
-    `enabled` status of an existing firewall rule.
-    """
-    ip_version: pulumi.Output[float]
-    """
-    IP version, either 4 (default) or 6. Changing this
-    updates the `ip_version` of an existing firewall rule.
-    """
-    name: pulumi.Output[str]
-    """
-    A unique name for the firewall rule. Changing this
-    updates the `name` of an existing firewall rule.
-    """
-    protocol: pulumi.Output[str]
-    """
-    The protocol type on which the firewall rule operates.
-    Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
-    `protocol` of an existing firewall rule.
-    """
-    region: pulumi.Output[str]
-    """
-    The region in which to obtain the v1 Compute client.
-    A Compute client is needed to create a firewall rule. If omitted, the
-    `region` argument of the provider is used. Changing this creates a new
-    firewall rule.
-    """
-    source_ip_address: pulumi.Output[str]
-    """
-    The source IP address on which the firewall
-    rule operates. Changing this updates the `source_ip_address` of an existing
-    firewall rule.
-    """
-    source_port: pulumi.Output[str]
-    """
-    The source port on which the firewall
-    rule operates. Changing this updates the `source_port` of an existing
-    firewall rule.
-    """
-    tenant_id: pulumi.Output[str]
-    """
-    The owner of the firewall rule. Required if admin
-    wants to create a firewall rule for another tenant. Changing this creates a
-    new firewall rule.
-    """
-    value_specs: pulumi.Output[dict]
-    """
-    Map of additional options.
-    """
-    def __init__(__self__, resource_name, opts=None, action=None, description=None, destination_ip_address=None, destination_port=None, enabled=None, ip_version=None, name=None, protocol=None, region=None, source_ip_address=None, source_port=None, tenant_id=None, value_specs=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 action: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 destination_ip_address: Optional[pulumi.Input[str]] = None,
+                 destination_port: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 ip_version: Optional[pulumi.Input[float]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 protocol: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 source_ip_address: Optional[pulumi.Input[str]] = None,
+                 source_port: Optional[pulumi.Input[str]] = None,
+                 tenant_id: Optional[pulumi.Input[str]] = None,
+                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a v1 firewall rule resource within OpenStack.
 
@@ -98,7 +44,7 @@ class Rule(pulumi.CustomResource):
             action="deny",
             description="drop TELNET traffic",
             destination_port="23",
-            enabled="true",
+            enabled=True,
             protocol="tcp")
         ```
 
@@ -138,7 +84,7 @@ class Rule(pulumi.CustomResource):
         :param pulumi.Input[str] tenant_id: The owner of the firewall rule. Required if admin
                wants to create a firewall rule for another tenant. Changing this creates a
                new firewall rule.
-        :param pulumi.Input[dict] value_specs: Map of additional options.
+        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -181,13 +127,28 @@ class Rule(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, action=None, description=None, destination_ip_address=None, destination_port=None, enabled=None, ip_version=None, name=None, protocol=None, region=None, source_ip_address=None, source_port=None, tenant_id=None, value_specs=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            action: Optional[pulumi.Input[str]] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            destination_ip_address: Optional[pulumi.Input[str]] = None,
+            destination_port: Optional[pulumi.Input[str]] = None,
+            enabled: Optional[pulumi.Input[bool]] = None,
+            ip_version: Optional[pulumi.Input[float]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            protocol: Optional[pulumi.Input[str]] = None,
+            region: Optional[pulumi.Input[str]] = None,
+            source_ip_address: Optional[pulumi.Input[str]] = None,
+            source_port: Optional[pulumi.Input[str]] = None,
+            tenant_id: Optional[pulumi.Input[str]] = None,
+            value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'Rule':
         """
         Get an existing Rule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action: Action to be taken ( must be "allow" or "deny") when the
                firewall rule matches. Changing this updates the `action` of an existing
@@ -223,7 +184,7 @@ class Rule(pulumi.CustomResource):
         :param pulumi.Input[str] tenant_id: The owner of the firewall rule. Required if admin
                wants to create a firewall rule for another tenant. Changing this creates a
                new firewall rule.
-        :param pulumi.Input[dict] value_specs: Map of additional options.
+        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -244,8 +205,135 @@ class Rule(pulumi.CustomResource):
         __props__["value_specs"] = value_specs
         return Rule(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def action(self) -> str:
+        """
+        Action to be taken ( must be "allow" or "deny") when the
+        firewall rule matches. Changing this updates the `action` of an existing
+        firewall rule.
+        """
+        return pulumi.get(self, "action")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        A description for the firewall rule. Changing this
+        updates the `description` of an existing firewall rule.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="destinationIpAddress")
+    def destination_ip_address(self) -> Optional[str]:
+        """
+        The destination IP address on which the
+        firewall rule operates. Changing this updates the `destination_ip_address`
+        of an existing firewall rule.
+        """
+        return pulumi.get(self, "destination_ip_address")
+
+    @property
+    @pulumi.getter(name="destinationPort")
+    def destination_port(self) -> Optional[str]:
+        """
+        The destination port on which the firewall
+        rule operates. Changing this updates the `destination_port` of an existing
+        firewall rule.
+        """
+        return pulumi.get(self, "destination_port")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Enabled status for the firewall rule (must be "true"
+        or "false" if provided - defaults to "true"). Changing this updates the
+        `enabled` status of an existing firewall rule.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="ipVersion")
+    def ip_version(self) -> Optional[float]:
+        """
+        IP version, either 4 (default) or 6. Changing this
+        updates the `ip_version` of an existing firewall rule.
+        """
+        return pulumi.get(self, "ip_version")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        A unique name for the firewall rule. Changing this
+        updates the `name` of an existing firewall rule.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> str:
+        """
+        The protocol type on which the firewall rule operates.
+        Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
+        `protocol` of an existing firewall rule.
+        """
+        return pulumi.get(self, "protocol")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The region in which to obtain the v1 Compute client.
+        A Compute client is needed to create a firewall rule. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        firewall rule.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="sourceIpAddress")
+    def source_ip_address(self) -> Optional[str]:
+        """
+        The source IP address on which the firewall
+        rule operates. Changing this updates the `source_ip_address` of an existing
+        firewall rule.
+        """
+        return pulumi.get(self, "source_ip_address")
+
+    @property
+    @pulumi.getter(name="sourcePort")
+    def source_port(self) -> Optional[str]:
+        """
+        The source port on which the firewall
+        rule operates. Changing this updates the `source_port` of an existing
+        firewall rule.
+        """
+        return pulumi.get(self, "source_port")
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> Optional[str]:
+        """
+        The owner of the firewall rule. Required if admin
+        wants to create a firewall rule for another tenant. Changing this creates a
+        new firewall rule.
+        """
+        return pulumi.get(self, "tenant_id")
+
+    @property
+    @pulumi.getter(name="valueSpecs")
+    def value_specs(self) -> Optional[Mapping[str, Any]]:
+        """
+        Map of additional options.
+        """
+        return pulumi.get(self, "value_specs")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

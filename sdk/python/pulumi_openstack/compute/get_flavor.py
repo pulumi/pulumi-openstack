@@ -5,10 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
 
+__all__ = [
+    'GetFlavorResult',
+    'AwaitableGetFlavorResult',
+    'get_flavor',
+]
 
+@pulumi.output_type
 class GetFlavorResult:
     """
     A collection of values returned by getFlavor.
@@ -16,49 +22,114 @@ class GetFlavorResult:
     def __init__(__self__, disk=None, extra_specs=None, flavor_id=None, id=None, is_public=None, min_disk=None, min_ram=None, name=None, ram=None, region=None, rx_tx_factor=None, swap=None, vcpus=None):
         if disk and not isinstance(disk, float):
             raise TypeError("Expected argument 'disk' to be a float")
-        __self__.disk = disk
+        pulumi.set(__self__, "disk", disk)
         if extra_specs and not isinstance(extra_specs, dict):
             raise TypeError("Expected argument 'extra_specs' to be a dict")
-        __self__.extra_specs = extra_specs
+        pulumi.set(__self__, "extra_specs", extra_specs)
+        if flavor_id and not isinstance(flavor_id, str):
+            raise TypeError("Expected argument 'flavor_id' to be a str")
+        pulumi.set(__self__, "flavor_id", flavor_id)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if is_public and not isinstance(is_public, bool):
+            raise TypeError("Expected argument 'is_public' to be a bool")
+        pulumi.set(__self__, "is_public", is_public)
+        if min_disk and not isinstance(min_disk, float):
+            raise TypeError("Expected argument 'min_disk' to be a float")
+        pulumi.set(__self__, "min_disk", min_disk)
+        if min_ram and not isinstance(min_ram, float):
+            raise TypeError("Expected argument 'min_ram' to be a float")
+        pulumi.set(__self__, "min_ram", min_ram)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if ram and not isinstance(ram, float):
+            raise TypeError("Expected argument 'ram' to be a float")
+        pulumi.set(__self__, "ram", ram)
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        pulumi.set(__self__, "region", region)
+        if rx_tx_factor and not isinstance(rx_tx_factor, float):
+            raise TypeError("Expected argument 'rx_tx_factor' to be a float")
+        pulumi.set(__self__, "rx_tx_factor", rx_tx_factor)
+        if swap and not isinstance(swap, float):
+            raise TypeError("Expected argument 'swap' to be a float")
+        pulumi.set(__self__, "swap", swap)
+        if vcpus and not isinstance(vcpus, float):
+            raise TypeError("Expected argument 'vcpus' to be a float")
+        pulumi.set(__self__, "vcpus", vcpus)
+
+    @property
+    @pulumi.getter
+    def disk(self) -> Optional[float]:
+        return pulumi.get(self, "disk")
+
+    @property
+    @pulumi.getter(name="extraSpecs")
+    def extra_specs(self) -> Mapping[str, Any]:
         """
         Key/Value pairs of metadata for the flavor.
         """
-        if flavor_id and not isinstance(flavor_id, str):
-            raise TypeError("Expected argument 'flavor_id' to be a str")
-        __self__.flavor_id = flavor_id
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "extra_specs")
+
+    @property
+    @pulumi.getter(name="flavorId")
+    def flavor_id(self) -> Optional[str]:
+        return pulumi.get(self, "flavor_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if is_public and not isinstance(is_public, bool):
-            raise TypeError("Expected argument 'is_public' to be a bool")
-        __self__.is_public = is_public
-        if min_disk and not isinstance(min_disk, float):
-            raise TypeError("Expected argument 'min_disk' to be a float")
-        __self__.min_disk = min_disk
-        if min_ram and not isinstance(min_ram, float):
-            raise TypeError("Expected argument 'min_ram' to be a float")
-        __self__.min_ram = min_ram
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
-        if ram and not isinstance(ram, float):
-            raise TypeError("Expected argument 'ram' to be a float")
-        __self__.ram = ram
-        if region and not isinstance(region, str):
-            raise TypeError("Expected argument 'region' to be a str")
-        __self__.region = region
-        if rx_tx_factor and not isinstance(rx_tx_factor, float):
-            raise TypeError("Expected argument 'rx_tx_factor' to be a float")
-        __self__.rx_tx_factor = rx_tx_factor
-        if swap and not isinstance(swap, float):
-            raise TypeError("Expected argument 'swap' to be a float")
-        __self__.swap = swap
-        if vcpus and not isinstance(vcpus, float):
-            raise TypeError("Expected argument 'vcpus' to be a float")
-        __self__.vcpus = vcpus
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="isPublic")
+    def is_public(self) -> Optional[bool]:
+        return pulumi.get(self, "is_public")
+
+    @property
+    @pulumi.getter(name="minDisk")
+    def min_disk(self) -> Optional[float]:
+        return pulumi.get(self, "min_disk")
+
+    @property
+    @pulumi.getter(name="minRam")
+    def min_ram(self) -> Optional[float]:
+        return pulumi.get(self, "min_ram")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def ram(self) -> Optional[float]:
+        return pulumi.get(self, "ram")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="rxTxFactor")
+    def rx_tx_factor(self) -> Optional[float]:
+        return pulumi.get(self, "rx_tx_factor")
+
+    @property
+    @pulumi.getter
+    def swap(self) -> Optional[float]:
+        return pulumi.get(self, "swap")
+
+    @property
+    @pulumi.getter
+    def vcpus(self) -> Optional[float]:
+        return pulumi.get(self, "vcpus")
 
 
 class AwaitableGetFlavorResult(GetFlavorResult):
@@ -82,7 +153,18 @@ class AwaitableGetFlavorResult(GetFlavorResult):
             vcpus=self.vcpus)
 
 
-def get_flavor(disk=None, flavor_id=None, is_public=None, min_disk=None, min_ram=None, name=None, ram=None, region=None, rx_tx_factor=None, swap=None, vcpus=None, opts=None):
+def get_flavor(disk: Optional[float] = None,
+               flavor_id: Optional[str] = None,
+               is_public: Optional[bool] = None,
+               min_disk: Optional[float] = None,
+               min_ram: Optional[float] = None,
+               name: Optional[str] = None,
+               ram: Optional[float] = None,
+               region: Optional[str] = None,
+               rx_tx_factor: Optional[float] = None,
+               swap: Optional[float] = None,
+               vcpus: Optional[float] = None,
+               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFlavorResult:
     """
     Use this data source to get the ID of an available OpenStack flavor.
 
@@ -129,19 +211,19 @@ def get_flavor(disk=None, flavor_id=None, is_public=None, min_disk=None, min_ram
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('openstack:compute/getFlavor:getFlavor', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('openstack:compute/getFlavor:getFlavor', __args__, opts=opts, typ=GetFlavorResult).value
 
     return AwaitableGetFlavorResult(
-        disk=__ret__.get('disk'),
-        extra_specs=__ret__.get('extraSpecs'),
-        flavor_id=__ret__.get('flavorId'),
-        id=__ret__.get('id'),
-        is_public=__ret__.get('isPublic'),
-        min_disk=__ret__.get('minDisk'),
-        min_ram=__ret__.get('minRam'),
-        name=__ret__.get('name'),
-        ram=__ret__.get('ram'),
-        region=__ret__.get('region'),
-        rx_tx_factor=__ret__.get('rxTxFactor'),
-        swap=__ret__.get('swap'),
-        vcpus=__ret__.get('vcpus'))
+        disk=__ret__.disk,
+        extra_specs=__ret__.extra_specs,
+        flavor_id=__ret__.flavor_id,
+        id=__ret__.id,
+        is_public=__ret__.is_public,
+        min_disk=__ret__.min_disk,
+        min_ram=__ret__.min_ram,
+        name=__ret__.name,
+        ram=__ret__.ram,
+        region=__ret__.region,
+        rx_tx_factor=__ret__.rx_tx_factor,
+        swap=__ret__.swap,
+        vcpus=__ret__.vcpus)
