@@ -13,7 +13,7 @@ __all__ = ['PoolV1']
 
 class PoolV1(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  lb_method: Optional[pulumi.Input[str]] = None,
                  lb_provider: Optional[pulumi.Input[str]] = None,
@@ -231,7 +231,7 @@ class PoolV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="lbMethod")
-    def lb_method(self) -> str:
+    def lb_method(self) -> pulumi.Output[str]:
         """
         The algorithm used to distribute load between the
         members of the pool. The current specification supports 'ROUND_ROBIN' and
@@ -241,7 +241,7 @@ class PoolV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="lbProvider")
-    def lb_provider(self) -> str:
+    def lb_provider(self) -> pulumi.Output[str]:
         """
         The backend load balancing provider. For example:
         `haproxy`, `F5`, etc.
@@ -250,7 +250,7 @@ class PoolV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="monitorIds")
-    def monitor_ids(self) -> Optional[List[str]]:
+    def monitor_ids(self) -> pulumi.Output[Optional[List[str]]]:
         """
         A list of IDs of monitors to associate with the
         pool.
@@ -259,7 +259,7 @@ class PoolV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the pool. Changing this updates the name of
         the existing pool.
@@ -268,7 +268,7 @@ class PoolV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def protocol(self) -> str:
+    def protocol(self) -> pulumi.Output[str]:
         """
         The protocol used by the pool members, you can use
         either 'TCP, 'HTTP', or 'HTTPS'. Changing this creates a new pool.
@@ -277,7 +277,7 @@ class PoolV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create an LB pool. If omitted, the
@@ -288,7 +288,7 @@ class PoolV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="subnetId")
-    def subnet_id(self) -> str:
+    def subnet_id(self) -> pulumi.Output[str]:
         """
         The network on which the members of the pool will be
         located. Only members that are on this network can be added to the pool.
@@ -298,7 +298,7 @@ class PoolV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> str:
+    def tenant_id(self) -> pulumi.Output[str]:
         """
         The owner of the member. Required if admin wants to
         create a pool member for another tenant. Changing this creates a new member.

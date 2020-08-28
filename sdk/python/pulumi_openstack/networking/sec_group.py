@@ -13,7 +13,7 @@ __all__ = ['SecGroup']
 
 class SecGroup(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  delete_default_rules: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -121,7 +121,7 @@ class SecGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allTags")
-    def all_tags(self) -> List[str]:
+    def all_tags(self) -> pulumi.Output[List[str]]:
         """
         The collection of tags assigned on the security group, which have
         been explicitly and implicitly added.
@@ -130,7 +130,7 @@ class SecGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="deleteDefaultRules")
-    def delete_default_rules(self) -> Optional[bool]:
+    def delete_default_rules(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether or not to delete the default
         egress security rules. This is `false` by default. See the below note
@@ -140,7 +140,7 @@ class SecGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> str:
+    def description(self) -> pulumi.Output[str]:
         """
         A unique name for the security group.
         """
@@ -148,7 +148,7 @@ class SecGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         A unique name for the security group.
         """
@@ -156,7 +156,7 @@ class SecGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to obtain the V2 networking client.
         A networking client is needed to create a port. If omitted, the
@@ -167,7 +167,7 @@ class SecGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List[str]]:
+    def tags(self) -> pulumi.Output[Optional[List[str]]]:
         """
         A set of string tags for the security group.
         """
@@ -175,7 +175,7 @@ class SecGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> str:
+    def tenant_id(self) -> pulumi.Output[str]:
         """
         The owner of the security group. Required if admin
         wants to create a port for another tenant. Changing this creates a new

@@ -13,7 +13,7 @@ __all__ = ['RoleAssignment']
 
 class RoleAssignment(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  domain_id: Optional[pulumi.Input[str]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
@@ -121,7 +121,7 @@ class RoleAssignment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="domainId")
-    def domain_id(self) -> Optional[str]:
+    def domain_id(self) -> pulumi.Output[Optional[str]]:
         """
         The domain to assign the role in.
         """
@@ -129,7 +129,7 @@ class RoleAssignment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[str]:
+    def group_id(self) -> pulumi.Output[Optional[str]]:
         """
         The group to assign the role to.
         """
@@ -137,7 +137,7 @@ class RoleAssignment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[str]:
+    def project_id(self) -> pulumi.Output[Optional[str]]:
         """
         The project to assign the role in.
         """
@@ -145,12 +145,12 @@ class RoleAssignment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="roleId")
-    def role_id(self) -> str:
+    def role_id(self) -> pulumi.Output[str]:
         """
         The role to assign.
         """
@@ -158,7 +158,7 @@ class RoleAssignment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[str]:
+    def user_id(self) -> pulumi.Output[Optional[str]]:
         """
         The user to assign the role to.
         """

@@ -15,7 +15,7 @@ __all__ = ['VolumeV1']
 
 class VolumeV1(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  availability_zone: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -171,7 +171,7 @@ class VolumeV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def attachments(self) -> List['outputs.VolumeV1Attachment']:
+    def attachments(self) -> pulumi.Output[List['outputs.VolumeV1Attachment']]:
         """
         If a volume is attached to an instance, this attribute will
         display the Attachment ID, Instance ID, and the Device as the Instance
@@ -181,7 +181,7 @@ class VolumeV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="availabilityZone")
-    def availability_zone(self) -> str:
+    def availability_zone(self) -> pulumi.Output[str]:
         """
         The availability zone for the volume.
         Changing this creates a new volume.
@@ -190,7 +190,7 @@ class VolumeV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         A description of the volume. Changing this updates
         the volume's description.
@@ -199,7 +199,7 @@ class VolumeV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="imageId")
-    def image_id(self) -> Optional[str]:
+    def image_id(self) -> pulumi.Output[Optional[str]]:
         """
         The image ID from which to create the volume.
         Changing this creates a new volume.
@@ -208,7 +208,7 @@ class VolumeV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def metadata(self) -> Mapping[str, Any]:
+    def metadata(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Metadata key/value pairs to associate with the volume.
         Changing this updates the existing volume metadata.
@@ -217,7 +217,7 @@ class VolumeV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         A unique name for the volume. Changing this updates the
         volume's name.
@@ -226,7 +226,7 @@ class VolumeV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to create the volume. If
         omitted, the `region` argument of the provider is used. Changing this
@@ -236,7 +236,7 @@ class VolumeV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def size(self) -> float:
+    def size(self) -> pulumi.Output[float]:
         """
         The size of the volume to create (in gigabytes). Changing
         this creates a new volume.
@@ -245,7 +245,7 @@ class VolumeV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="snapshotId")
-    def snapshot_id(self) -> Optional[str]:
+    def snapshot_id(self) -> pulumi.Output[Optional[str]]:
         """
         The snapshot ID from which to create the volume.
         Changing this creates a new volume.
@@ -254,7 +254,7 @@ class VolumeV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sourceVolId")
-    def source_vol_id(self) -> Optional[str]:
+    def source_vol_id(self) -> pulumi.Output[Optional[str]]:
         """
         The volume ID from which to create the volume.
         Changing this creates a new volume.
@@ -263,7 +263,7 @@ class VolumeV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="volumeType")
-    def volume_type(self) -> str:
+    def volume_type(self) -> pulumi.Output[str]:
         """
         The type of volume to create.
         Changing this creates a new volume.

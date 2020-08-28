@@ -15,7 +15,7 @@ __all__ = ['Cluster']
 
 class Cluster(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_template_id: Optional[pulumi.Input[str]] = None,
                  create_timeout: Optional[pulumi.Input[float]] = None,
@@ -281,137 +281,137 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="apiAddress")
-    def api_address(self) -> str:
+    def api_address(self) -> pulumi.Output[str]:
         return pulumi.get(self, "api_address")
 
     @property
     @pulumi.getter(name="clusterTemplateId")
-    def cluster_template_id(self) -> str:
+    def cluster_template_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "cluster_template_id")
 
     @property
     @pulumi.getter(name="coeVersion")
-    def coe_version(self) -> str:
+    def coe_version(self) -> pulumi.Output[str]:
         return pulumi.get(self, "coe_version")
 
     @property
     @pulumi.getter(name="containerVersion")
-    def container_version(self) -> str:
+    def container_version(self) -> pulumi.Output[str]:
         return pulumi.get(self, "container_version")
 
     @property
     @pulumi.getter(name="createTimeout")
-    def create_timeout(self) -> float:
+    def create_timeout(self) -> pulumi.Output[float]:
         return pulumi.get(self, "create_timeout")
 
     @property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> str:
+    def created_at(self) -> pulumi.Output[str]:
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter(name="discoveryUrl")
-    def discovery_url(self) -> str:
+    def discovery_url(self) -> pulumi.Output[str]:
         return pulumi.get(self, "discovery_url")
 
     @property
     @pulumi.getter(name="dockerVolumeSize")
-    def docker_volume_size(self) -> float:
+    def docker_volume_size(self) -> pulumi.Output[float]:
         return pulumi.get(self, "docker_volume_size")
 
     @property
     @pulumi.getter(name="fixedNetwork")
-    def fixed_network(self) -> str:
+    def fixed_network(self) -> pulumi.Output[str]:
         return pulumi.get(self, "fixed_network")
 
     @property
     @pulumi.getter(name="fixedSubnet")
-    def fixed_subnet(self) -> str:
+    def fixed_subnet(self) -> pulumi.Output[str]:
         return pulumi.get(self, "fixed_subnet")
 
     @property
     @pulumi.getter
-    def flavor(self) -> str:
+    def flavor(self) -> pulumi.Output[str]:
         return pulumi.get(self, "flavor")
 
     @property
     @pulumi.getter(name="floatingIpEnabled")
-    def floating_ip_enabled(self) -> bool:
+    def floating_ip_enabled(self) -> pulumi.Output[bool]:
         return pulumi.get(self, "floating_ip_enabled")
 
     @property
     @pulumi.getter
-    def keypair(self) -> str:
+    def keypair(self) -> pulumi.Output[str]:
         return pulumi.get(self, "keypair")
 
     @property
     @pulumi.getter
-    def kubeconfig(self) -> 'outputs.ClusterKubeconfig':
+    def kubeconfig(self) -> pulumi.Output['outputs.ClusterKubeconfig']:
         return pulumi.get(self, "kubeconfig")
 
     @property
     @pulumi.getter
-    def labels(self) -> Mapping[str, Any]:
+    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
         return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter(name="masterAddresses")
-    def master_addresses(self) -> List[str]:
+    def master_addresses(self) -> pulumi.Output[List[str]]:
         return pulumi.get(self, "master_addresses")
 
     @property
     @pulumi.getter(name="masterCount")
-    def master_count(self) -> float:
+    def master_count(self) -> pulumi.Output[float]:
         return pulumi.get(self, "master_count")
 
     @property
     @pulumi.getter(name="masterFlavor")
-    def master_flavor(self) -> str:
+    def master_flavor(self) -> pulumi.Output[str]:
         return pulumi.get(self, "master_flavor")
 
     @property
     @pulumi.getter(name="mergeLabels")
-    def merge_labels(self) -> Optional[bool]:
+    def merge_labels(self) -> pulumi.Output[Optional[bool]]:
         return pulumi.get(self, "merge_labels")
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="nodeAddresses")
-    def node_addresses(self) -> List[str]:
+    def node_addresses(self) -> pulumi.Output[List[str]]:
         return pulumi.get(self, "node_addresses")
 
     @property
     @pulumi.getter(name="nodeCount")
-    def node_count(self) -> float:
+    def node_count(self) -> pulumi.Output[float]:
         return pulumi.get(self, "node_count")
 
     @property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> str:
+    def project_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="stackId")
-    def stack_id(self) -> str:
+    def stack_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "stack_id")
 
     @property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> str:
+    def updated_at(self) -> pulumi.Output[str]:
         return pulumi.get(self, "updated_at")
 
     @property
     @pulumi.getter(name="userId")
-    def user_id(self) -> str:
+    def user_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "user_id")
 
     def translate_output_property(self, prop):

@@ -13,7 +13,7 @@ __all__ = ['Listener']
 
 class Listener(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin_state_up: Optional[pulumi.Input[bool]] = None,
                  allowed_cidrs: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -244,7 +244,7 @@ class Listener(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="adminStateUp")
-    def admin_state_up(self) -> Optional[bool]:
+    def admin_state_up(self) -> pulumi.Output[Optional[bool]]:
         """
         The administrative state of the Listener.
         A valid value is true (UP) or false (DOWN).
@@ -253,7 +253,7 @@ class Listener(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allowedCidrs")
-    def allowed_cidrs(self) -> Optional[List[str]]:
+    def allowed_cidrs(self) -> pulumi.Output[Optional[List[str]]]:
         """
         A list of CIDR blocks that are permitted to connect to this listener, denying
         all other source addresses. If not present, defaults to allow all.
@@ -262,7 +262,7 @@ class Listener(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="connectionLimit")
-    def connection_limit(self) -> float:
+    def connection_limit(self) -> pulumi.Output[float]:
         """
         The maximum number of connections allowed
         for the Listener.
@@ -271,7 +271,7 @@ class Listener(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultPoolId")
-    def default_pool_id(self) -> str:
+    def default_pool_id(self) -> pulumi.Output[str]:
         """
         The ID of the default pool with which the
         Listener is associated.
@@ -280,7 +280,7 @@ class Listener(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultTlsContainerRef")
-    def default_tls_container_ref(self) -> Optional[str]:
+    def default_tls_container_ref(self) -> pulumi.Output[Optional[str]]:
         """
         A reference to a Barbican Secrets
         container which stores TLS information. This is required if the protocol
@@ -292,7 +292,7 @@ class Listener(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         Human-readable description for the Listener.
         """
@@ -300,7 +300,7 @@ class Listener(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="insertHeaders")
-    def insert_headers(self) -> Optional[Mapping[str, Any]]:
+    def insert_headers(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         The list of key value pairs representing headers to insert
         into the request before it is sent to the backend members. Changing this updates the headers of the
@@ -310,7 +310,7 @@ class Listener(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="loadbalancerId")
-    def loadbalancer_id(self) -> str:
+    def loadbalancer_id(self) -> pulumi.Output[str]:
         """
         The load balancer on which to provision this
         Listener. Changing this creates a new Listener.
@@ -319,7 +319,7 @@ class Listener(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Human-readable name for the Listener. Does not have
         to be unique.
@@ -328,7 +328,7 @@ class Listener(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def protocol(self) -> str:
+    def protocol(self) -> pulumi.Output[str]:
         """
         The protocol - can either be TCP, HTTP, HTTPS,
         TERMINATED_HTTPS or UDP (supported only in Octavia). Changing this creates a
@@ -338,7 +338,7 @@ class Listener(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="protocolPort")
-    def protocol_port(self) -> float:
+    def protocol_port(self) -> pulumi.Output[float]:
         """
         The port on which to listen for client traffic.
         Changing this creates a new Listener.
@@ -347,7 +347,7 @@ class Listener(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create an . If omitted, the
@@ -358,7 +358,7 @@ class Listener(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sniContainerRefs")
-    def sni_container_refs(self) -> Optional[List[str]]:
+    def sni_container_refs(self) -> pulumi.Output[Optional[List[str]]]:
         """
         A list of references to Barbican Secrets
         containers which store SNI information. See
@@ -369,7 +369,7 @@ class Listener(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> str:
+    def tenant_id(self) -> pulumi.Output[str]:
         """
         Required for admins. The UUID of the tenant who owns
         the Listener.  Only administrative users can specify a tenant UUID
@@ -379,7 +379,7 @@ class Listener(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="timeoutClientData")
-    def timeout_client_data(self) -> float:
+    def timeout_client_data(self) -> pulumi.Output[float]:
         """
         The client inactivity timeout in milliseconds.
         """
@@ -387,7 +387,7 @@ class Listener(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="timeoutMemberConnect")
-    def timeout_member_connect(self) -> float:
+    def timeout_member_connect(self) -> pulumi.Output[float]:
         """
         The member connection timeout in milliseconds.
         """
@@ -395,7 +395,7 @@ class Listener(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="timeoutMemberData")
-    def timeout_member_data(self) -> float:
+    def timeout_member_data(self) -> pulumi.Output[float]:
         """
         The member inactivity timeout in milliseconds.
         """
@@ -403,7 +403,7 @@ class Listener(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="timeoutTcpInspect")
-    def timeout_tcp_inspect(self) -> float:
+    def timeout_tcp_inspect(self) -> pulumi.Output[float]:
         """
         The time in milliseconds, to wait for additional
         TCP packets for content inspection.

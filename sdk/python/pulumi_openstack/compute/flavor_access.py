@@ -13,7 +13,7 @@ __all__ = ['FlavorAccess']
 
 class FlavorAccess(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  flavor_id: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -117,7 +117,7 @@ class FlavorAccess(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="flavorId")
-    def flavor_id(self) -> str:
+    def flavor_id(self) -> pulumi.Output[str]:
         """
         The UUID of flavor to use. Changing this creates a new flavor access.
         """
@@ -125,7 +125,7 @@ class FlavorAccess(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to obtain the V2 Compute client.
         If omitted, the `region` argument of the provider is used.
@@ -135,7 +135,7 @@ class FlavorAccess(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> str:
+    def tenant_id(self) -> pulumi.Output[str]:
         """
         The UUID of tenant which is allowed to use the flavor.
         Changing this creates a new flavor access.

@@ -15,7 +15,7 @@ __all__ = ['OrderV1']
 
 class OrderV1(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  meta: Optional[pulumi.Input[pulumi.InputType['OrderV1MetaArgs']]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -164,7 +164,7 @@ class OrderV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="containerRef")
-    def container_ref(self) -> str:
+    def container_ref(self) -> pulumi.Output[str]:
         """
         The container reference / where to find the container.
         """
@@ -172,7 +172,7 @@ class OrderV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def created(self) -> str:
+    def created(self) -> pulumi.Output[str]:
         """
         The date the order was created.
         """
@@ -180,7 +180,7 @@ class OrderV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="creatorId")
-    def creator_id(self) -> str:
+    def creator_id(self) -> pulumi.Output[str]:
         """
         The creator of the order.
         """
@@ -188,7 +188,7 @@ class OrderV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def meta(self) -> 'outputs.OrderV1Meta':
+    def meta(self) -> pulumi.Output['outputs.OrderV1Meta']:
         """
         Dictionary containing the order metadata used to generate the order. The structure is described below.
         """
@@ -196,7 +196,7 @@ class OrderV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="orderRef")
-    def order_ref(self) -> str:
+    def order_ref(self) -> pulumi.Output[str]:
         """
         The order reference / where to find the order.
         """
@@ -204,7 +204,7 @@ class OrderV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to obtain the V1 KeyManager client.
         A KeyManager client is needed to create a order. If omitted, the
@@ -215,7 +215,7 @@ class OrderV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="secretRef")
-    def secret_ref(self) -> str:
+    def secret_ref(self) -> pulumi.Output[str]:
         """
         The secret reference / where to find the secret.
         """
@@ -223,7 +223,7 @@ class OrderV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> str:
+    def status(self) -> pulumi.Output[str]:
         """
         The status of the order.
         """
@@ -231,7 +231,7 @@ class OrderV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="subStatus")
-    def sub_status(self) -> str:
+    def sub_status(self) -> pulumi.Output[str]:
         """
         The sub status of the order.
         """
@@ -239,7 +239,7 @@ class OrderV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="subStatusMessage")
-    def sub_status_message(self) -> str:
+    def sub_status_message(self) -> pulumi.Output[str]:
         """
         The sub status message of the order.
         """
@@ -247,7 +247,7 @@ class OrderV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def type(self) -> str:
+    def type(self) -> pulumi.Output[str]:
         """
         The type of key to be generated. Must be one of `asymmetric`, `key`.
         """
@@ -255,7 +255,7 @@ class OrderV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def updated(self) -> str:
+    def updated(self) -> pulumi.Output[str]:
         """
         The date the order was last updated.
         """

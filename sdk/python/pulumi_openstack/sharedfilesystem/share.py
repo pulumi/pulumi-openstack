@@ -15,7 +15,7 @@ __all__ = ['Share']
 
 class Share(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  availability_zone: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -219,7 +219,7 @@ class Share(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allMetadata")
-    def all_metadata(self) -> Mapping[str, Any]:
+    def all_metadata(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         The map of metadata, assigned on the share, which has been
         explicitly and implicitly added.
@@ -228,7 +228,7 @@ class Share(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="availabilityZone")
-    def availability_zone(self) -> str:
+    def availability_zone(self) -> pulumi.Output[str]:
         """
         The share availability zone. Changing this creates a
         new share.
@@ -237,7 +237,7 @@ class Share(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         The human-readable description for the share.
         Changing this updates the description of the existing share.
@@ -246,7 +246,7 @@ class Share(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="exportLocations")
-    def export_locations(self) -> List['outputs.ShareExportLocation']:
+    def export_locations(self) -> pulumi.Output[List['outputs.ShareExportLocation']]:
         """
         A list of export locations. For example, when a share server
         has more than one network interface, it can have multiple export locations.
@@ -255,7 +255,7 @@ class Share(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="hasReplicas")
-    def has_replicas(self) -> bool:
+    def has_replicas(self) -> pulumi.Output[bool]:
         """
         Indicates whether a share has replicas or not.
         """
@@ -263,7 +263,7 @@ class Share(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def host(self) -> str:
+    def host(self) -> pulumi.Output[str]:
         """
         The share host name.
         """
@@ -271,7 +271,7 @@ class Share(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="isPublic")
-    def is_public(self) -> Optional[bool]:
+    def is_public(self) -> pulumi.Output[Optional[bool]]:
         """
         The level of visibility for the share. Set to true to make
         share public. Set to false to make it private. Default value is false. Changing this
@@ -281,7 +281,7 @@ class Share(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def metadata(self) -> Optional[Mapping[str, Any]]:
+    def metadata(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         One or more metadata key and value pairs as a dictionary of
         strings.
@@ -290,7 +290,7 @@ class Share(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the share. Changing this updates the name
         of the existing share.
@@ -299,7 +299,7 @@ class Share(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> str:
+    def project_id(self) -> pulumi.Output[str]:
         """
         The owner of the Share.
         """
@@ -307,7 +307,7 @@ class Share(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to obtain the V2 Shared File System client.
         A Shared File System client is needed to create a share. Changing this
@@ -317,7 +317,7 @@ class Share(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="replicationType")
-    def replication_type(self) -> str:
+    def replication_type(self) -> pulumi.Output[str]:
         """
         The share replication type.
         """
@@ -325,7 +325,7 @@ class Share(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="shareNetworkId")
-    def share_network_id(self) -> str:
+    def share_network_id(self) -> pulumi.Output[str]:
         """
         The UUID of a share network where the share server exists
         or will be created. If `share_network_id` is not set and you provide a `snapshot_id`,
@@ -335,7 +335,7 @@ class Share(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="shareProto")
-    def share_proto(self) -> str:
+    def share_proto(self) -> pulumi.Output[str]:
         """
         The share protocol - can either be NFS, CIFS,
         CEPHFS, GLUSTERFS, HDFS or MAPRFS. Changing this creates a new share.
@@ -344,7 +344,7 @@ class Share(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="shareServerId")
-    def share_server_id(self) -> str:
+    def share_server_id(self) -> pulumi.Output[str]:
         """
         The UUID of the share server.
         """
@@ -352,7 +352,7 @@ class Share(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="shareType")
-    def share_type(self) -> str:
+    def share_type(self) -> pulumi.Output[str]:
         """
         The share type name. If you omit this parameter, the default
         share type is used.
@@ -361,7 +361,7 @@ class Share(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def size(self) -> float:
+    def size(self) -> pulumi.Output[float]:
         """
         The share size, in GBs. The requested share size cannot be greater
         than the allowed GB quota. Changing this resizes the existing share.
@@ -370,7 +370,7 @@ class Share(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="snapshotId")
-    def snapshot_id(self) -> Optional[str]:
+    def snapshot_id(self) -> pulumi.Output[Optional[str]]:
         """
         The UUID of the share's base snapshot. Changing this creates
         a new share.

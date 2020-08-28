@@ -13,7 +13,7 @@ __all__ = ['EndpointV3']
 
 class EndpointV3(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  endpoint_region: Optional[pulumi.Input[str]] = None,
                  interface: Optional[pulumi.Input[str]] = None,
@@ -138,7 +138,7 @@ class EndpointV3(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="endpointRegion")
-    def endpoint_region(self) -> str:
+    def endpoint_region(self) -> pulumi.Output[str]:
         """
         The endpoint region. The `region` and
         `endpoint_region` can be different.
@@ -147,7 +147,7 @@ class EndpointV3(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def interface(self) -> Optional[str]:
+    def interface(self) -> pulumi.Output[Optional[str]]:
         """
         The endpoint interface. Valid values are `public`,
         `internal` and `admin`. Default value is `public`
@@ -156,7 +156,7 @@ class EndpointV3(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The endpoint name.
         """
@@ -164,7 +164,7 @@ class EndpointV3(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to obtain the V3 Keystone client.
         If omitted, the `region` argument of the provider is used.
@@ -173,7 +173,7 @@ class EndpointV3(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceId")
-    def service_id(self) -> str:
+    def service_id(self) -> pulumi.Output[str]:
         """
         The endpoint service ID.
         """
@@ -181,7 +181,7 @@ class EndpointV3(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceName")
-    def service_name(self) -> str:
+    def service_name(self) -> pulumi.Output[str]:
         """
         The service name of the endpoint.
         """
@@ -189,7 +189,7 @@ class EndpointV3(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceType")
-    def service_type(self) -> str:
+    def service_type(self) -> pulumi.Output[str]:
         """
         The service type of the endpoint.
         """
@@ -197,7 +197,7 @@ class EndpointV3(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def url(self) -> str:
+    def url(self) -> pulumi.Output[str]:
         """
         The endpoint url.
         """

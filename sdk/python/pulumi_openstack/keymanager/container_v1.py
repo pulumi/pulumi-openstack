@@ -15,7 +15,7 @@ __all__ = ['ContainerV1']
 
 class ContainerV1(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acl: Optional[pulumi.Input[pulumi.InputType['ContainerV1AclArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -217,7 +217,7 @@ class ContainerV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def acl(self) -> 'outputs.ContainerV1Acl':
+    def acl(self) -> pulumi.Output['outputs.ContainerV1Acl']:
         """
         Allows to control an access to a container. Currently only
         the `read` operation is supported. If not specified, the container is
@@ -227,7 +227,7 @@ class ContainerV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def consumers(self) -> List['outputs.ContainerV1Consumer']:
+    def consumers(self) -> pulumi.Output[List['outputs.ContainerV1Consumer']]:
         """
         The list of the container consumers. The structure is described below.
         """
@@ -235,7 +235,7 @@ class ContainerV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="containerRef")
-    def container_ref(self) -> str:
+    def container_ref(self) -> pulumi.Output[str]:
         """
         The container reference / where to find the container.
         """
@@ -243,7 +243,7 @@ class ContainerV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> str:
+    def created_at(self) -> pulumi.Output[str]:
         """
         The date the container ACL was created.
         """
@@ -251,7 +251,7 @@ class ContainerV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="creatorId")
-    def creator_id(self) -> str:
+    def creator_id(self) -> pulumi.Output[str]:
         """
         The creator of the container.
         """
@@ -259,7 +259,7 @@ class ContainerV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
         """
@@ -267,7 +267,7 @@ class ContainerV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to obtain the V1 KeyManager client.
         A KeyManager client is needed to create a container. If omitted, the
@@ -278,7 +278,7 @@ class ContainerV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="secretRefs")
-    def secret_refs(self) -> Optional[List['outputs.ContainerV1SecretRef']]:
+    def secret_refs(self) -> pulumi.Output[Optional[List['outputs.ContainerV1SecretRef']]]:
         """
         A set of dictionaries containing references to secrets. The structure is described
         below.
@@ -287,7 +287,7 @@ class ContainerV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> str:
+    def status(self) -> pulumi.Output[str]:
         """
         The status of the container.
         """
@@ -295,7 +295,7 @@ class ContainerV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def type(self) -> str:
+    def type(self) -> pulumi.Output[str]:
         """
         Used to indicate the type of container. Must be one of `generic`, `rsa` or `certificate`.
         """
@@ -303,7 +303,7 @@ class ContainerV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> str:
+    def updated_at(self) -> pulumi.Output[str]:
         """
         The date the container ACL was last updated.
         """

@@ -13,7 +13,7 @@ __all__ = ['RbacPolicyV2']
 
 class RbacPolicyV2(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: Optional[pulumi.Input[str]] = None,
                  object_id: Optional[pulumi.Input[str]] = None,
@@ -150,7 +150,7 @@ class RbacPolicyV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def action(self) -> str:
+    def action(self) -> pulumi.Output[str]:
         """
         Action for the RBAC policy. Can either be
         `access_as_external` or `access_as_shared`.
@@ -159,7 +159,7 @@ class RbacPolicyV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="objectId")
-    def object_id(self) -> str:
+    def object_id(self) -> pulumi.Output[str]:
         """
         The ID of the `object_type` resource. An
         `object_type` of `network` returns a network ID and an `object_type` of
@@ -169,7 +169,7 @@ class RbacPolicyV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="objectType")
-    def object_type(self) -> str:
+    def object_type(self) -> pulumi.Output[str]:
         """
         The type of the object that the RBAC policy
         affects. Can either be `qos-policy` or `network`.
@@ -178,12 +178,12 @@ class RbacPolicyV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> str:
+    def project_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to obtain the V2 networking client.
         A networking client is needed to configure a routing entry on a subnet. If omitted, the
@@ -194,7 +194,7 @@ class RbacPolicyV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="targetTenant")
-    def target_tenant(self) -> str:
+    def target_tenant(self) -> pulumi.Output[str]:
         """
         The ID of the tenant to which the RBAC policy
         will be enforced.

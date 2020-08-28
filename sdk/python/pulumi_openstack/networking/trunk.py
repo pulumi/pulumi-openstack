@@ -15,7 +15,7 @@ __all__ = ['Trunk']
 
 class Trunk(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin_state_up: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -178,7 +178,7 @@ class Trunk(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="adminStateUp")
-    def admin_state_up(self) -> Optional[bool]:
+    def admin_state_up(self) -> pulumi.Output[Optional[bool]]:
         """
         Administrative up/down status for the trunk
         (must be "true" or "false" if provided). Changing this updates the
@@ -188,7 +188,7 @@ class Trunk(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allTags")
-    def all_tags(self) -> List[str]:
+    def all_tags(self) -> pulumi.Output[List[str]]:
         """
         The collection of tags assigned on the trunk, which have been
         explicitly and implicitly added.
@@ -197,7 +197,7 @@ class Trunk(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         Human-readable description of the trunk. Changing this
         updates the name of the existing trunk.
@@ -206,7 +206,7 @@ class Trunk(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         A unique name for the trunk. Changing this
         updates the `name` of an existing trunk.
@@ -215,7 +215,7 @@ class Trunk(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="portId")
-    def port_id(self) -> str:
+    def port_id(self) -> pulumi.Output[str]:
         """
         The ID of the port to be made a subport of the trunk.
         """
@@ -223,7 +223,7 @@ class Trunk(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to obtain the V2 networking client.
         A networking client is needed to create a trunk. If omitted, the
@@ -234,7 +234,7 @@ class Trunk(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="subPorts")
-    def sub_ports(self) -> Optional[List['outputs.TrunkSubPort']]:
+    def sub_ports(self) -> pulumi.Output[Optional[List['outputs.TrunkSubPort']]]:
         """
         The set of ports that will be made subports of the trunk.
         The structure of each subport is described below.
@@ -243,7 +243,7 @@ class Trunk(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List[str]]:
+    def tags(self) -> pulumi.Output[Optional[List[str]]]:
         """
         A set of string tags for the port.
         """
@@ -251,7 +251,7 @@ class Trunk(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> str:
+    def tenant_id(self) -> pulumi.Output[str]:
         """
         The owner of the Trunk. Required if admin wants
         to create a trunk on behalf of another tenant. Changing this creates a new trunk.

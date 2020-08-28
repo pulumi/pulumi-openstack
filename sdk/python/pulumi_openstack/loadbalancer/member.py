@@ -13,7 +13,7 @@ __all__ = ['Member']
 
 class Member(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  address: Optional[pulumi.Input[str]] = None,
                  admin_state_up: Optional[pulumi.Input[bool]] = None,
@@ -163,7 +163,7 @@ class Member(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def address(self) -> str:
+    def address(self) -> pulumi.Output[str]:
         """
         The IP address of the member to receive traffic from
         the load balancer. Changing this creates a new member.
@@ -172,7 +172,7 @@ class Member(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="adminStateUp")
-    def admin_state_up(self) -> Optional[bool]:
+    def admin_state_up(self) -> pulumi.Output[Optional[bool]]:
         """
         The administrative state of the member.
         A valid value is true (UP) or false (DOWN). Defaults to true.
@@ -181,7 +181,7 @@ class Member(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Human-readable name for the member.
         """
@@ -189,7 +189,7 @@ class Member(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="poolId")
-    def pool_id(self) -> str:
+    def pool_id(self) -> pulumi.Output[str]:
         """
         The id of the pool that this member will be assigned
         to. Changing this creates a new member.
@@ -198,7 +198,7 @@ class Member(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="protocolPort")
-    def protocol_port(self) -> float:
+    def protocol_port(self) -> pulumi.Output[float]:
         """
         The port on which to listen for client traffic.
         Changing this creates a new member.
@@ -207,7 +207,7 @@ class Member(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create a member. If omitted, the `region`
@@ -217,7 +217,7 @@ class Member(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="subnetId")
-    def subnet_id(self) -> Optional[str]:
+    def subnet_id(self) -> pulumi.Output[Optional[str]]:
         """
         The subnet in which to access the member. Changing
         this creates a new member.
@@ -226,7 +226,7 @@ class Member(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> str:
+    def tenant_id(self) -> pulumi.Output[str]:
         """
         Required for admins. The UUID of the tenant who owns
         the member.  Only administrative users can specify a tenant UUID
@@ -236,7 +236,7 @@ class Member(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def weight(self) -> float:
+    def weight(self) -> pulumi.Output[float]:
         """
         A positive integer value that indicates the relative
         portion of traffic that this member should receive from the pool. For

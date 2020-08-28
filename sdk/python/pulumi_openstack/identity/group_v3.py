@@ -13,7 +13,7 @@ __all__ = ['GroupV3']
 
 class GroupV3(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  domain_id: Optional[pulumi.Input[str]] = None,
@@ -107,7 +107,7 @@ class GroupV3(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         A description of the group.
         """
@@ -115,7 +115,7 @@ class GroupV3(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="domainId")
-    def domain_id(self) -> str:
+    def domain_id(self) -> pulumi.Output[str]:
         """
         The domain the group belongs to.
         """
@@ -123,7 +123,7 @@ class GroupV3(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the group.
         """
@@ -131,7 +131,7 @@ class GroupV3(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to obtain the V3 Keystone client.
         If omitted, the `region` argument of the provider is used. Changing this

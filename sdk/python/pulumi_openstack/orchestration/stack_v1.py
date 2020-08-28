@@ -15,7 +15,7 @@ __all__ = ['StackV1']
 
 class StackV1(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  capabilities: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  creation_time: Optional[pulumi.Input[str]] = None,
@@ -241,7 +241,7 @@ class StackV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def capabilities(self) -> List[str]:
+    def capabilities(self) -> pulumi.Output[List[str]]:
         """
         List of stack capabilities for stack.
         """
@@ -249,7 +249,7 @@ class StackV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="creationTime")
-    def creation_time(self) -> str:
+    def creation_time(self) -> pulumi.Output[str]:
         """
         The date and time when the resource was created. The date
         and time stamp format is ISO 8601: CCYY-MM-DDThh:mm:ss±hh:mm
@@ -260,7 +260,7 @@ class StackV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> str:
+    def description(self) -> pulumi.Output[str]:
         """
         The description of the stack resource.
         """
@@ -268,7 +268,7 @@ class StackV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="disableRollback")
-    def disable_rollback(self) -> bool:
+    def disable_rollback(self) -> pulumi.Output[bool]:
         """
         Enables or disables deletion of all stack
         resources when a stack creation fails. Default is true, meaning all
@@ -278,7 +278,7 @@ class StackV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="environmentOpts")
-    def environment_opts(self) -> Optional[Mapping[str, Any]]:
+    def environment_opts(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         Environment key/value pairs to associate with
         the stack which contains details for the environment of the stack.
@@ -289,7 +289,7 @@ class StackV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         A unique name for the stack. It must start with an
         alphabetic character. Changing this updates the stack's name.
@@ -298,7 +298,7 @@ class StackV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="notificationTopics")
-    def notification_topics(self) -> List[str]:
+    def notification_topics(self) -> pulumi.Output[List[str]]:
         """
         List of notification topics for stack.
         """
@@ -306,7 +306,7 @@ class StackV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def outputs(self) -> List['outputs.StackV1Output']:
+    def outputs(self) -> pulumi.Output[List['outputs.StackV1Output']]:
         """
         A list of stack outputs.
         """
@@ -314,7 +314,7 @@ class StackV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def parameters(self) -> Optional[Mapping[str, Any]]:
+    def parameters(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         User-defined key/value pairs as parameters to pass
         to the template. Changing this updates the existing stack parameters.
@@ -323,7 +323,7 @@ class StackV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to create the stack. If
         omitted, the `region` argument of the provider is used. Changing this
@@ -333,7 +333,7 @@ class StackV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> str:
+    def status(self) -> pulumi.Output[str]:
         """
         The status of the stack.
         """
@@ -341,7 +341,7 @@ class StackV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="statusReason")
-    def status_reason(self) -> str:
+    def status_reason(self) -> pulumi.Output[str]:
         """
         The reason for the current status of the stack.
         """
@@ -349,7 +349,7 @@ class StackV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> List[str]:
+    def tags(self) -> pulumi.Output[List[str]]:
         """
         A list of tags to assosciate with the Stack
         """
@@ -357,7 +357,7 @@ class StackV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="templateDescription")
-    def template_description(self) -> str:
+    def template_description(self) -> pulumi.Output[str]:
         """
         The description of the stack template.
         """
@@ -365,7 +365,7 @@ class StackV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="templateOpts")
-    def template_opts(self) -> Mapping[str, Any]:
+    def template_opts(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Template key/value pairs to associate with the
         stack which contains either the template file or url.
@@ -376,7 +376,7 @@ class StackV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def timeout(self) -> float:
+    def timeout(self) -> pulumi.Output[float]:
         """
         The timeout for stack action in minutes.
         """
@@ -384,7 +384,7 @@ class StackV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="updatedTime")
-    def updated_time(self) -> str:
+    def updated_time(self) -> pulumi.Output[str]:
         """
         The date and time when the resource was updated. The date
         and time stamp format is ISO 8601: CCYY-MM-DDThh:mm:ss±hh:mm

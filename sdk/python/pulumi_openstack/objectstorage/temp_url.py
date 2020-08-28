@@ -13,7 +13,7 @@ __all__ = ['TempUrl']
 
 class TempUrl(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  container: Optional[pulumi.Input[str]] = None,
                  method: Optional[pulumi.Input[str]] = None,
@@ -150,7 +150,7 @@ class TempUrl(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def container(self) -> str:
+    def container(self) -> pulumi.Output[str]:
         """
         The container name the object belongs to.
         """
@@ -158,7 +158,7 @@ class TempUrl(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def method(self) -> Optional[str]:
+    def method(self) -> pulumi.Output[Optional[str]]:
         """
         The method allowed when accessing this URL.
         Valid values are `GET`, and `POST`. Default is `GET`.
@@ -167,7 +167,7 @@ class TempUrl(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def object(self) -> str:
+    def object(self) -> pulumi.Output[str]:
         """
         The object name the tempurl is for.
         """
@@ -175,7 +175,7 @@ class TempUrl(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def regenerate(self) -> Optional[bool]:
+    def regenerate(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether to automatically regenerate the URL when
         it has expired. If set to true, this will create a new resource with a new
@@ -185,7 +185,7 @@ class TempUrl(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region the tempurl is located in.
         """
@@ -193,12 +193,12 @@ class TempUrl(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def split(self) -> Optional[str]:
+    def split(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "split")
 
     @property
     @pulumi.getter
-    def ttl(self) -> float:
+    def ttl(self) -> pulumi.Output[float]:
         """
         The TTL, in seconds, for the URL. For how long it should
         be valid.
@@ -207,7 +207,7 @@ class TempUrl(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def url(self) -> str:
+    def url(self) -> pulumi.Output[str]:
         """
         The URL
         """

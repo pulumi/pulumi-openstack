@@ -13,7 +13,7 @@ __all__ = ['Rule']
 
 class Rule(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -207,7 +207,7 @@ class Rule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def action(self) -> str:
+    def action(self) -> pulumi.Output[str]:
         """
         Action to be taken ( must be "allow" or "deny") when the
         firewall rule matches. Changing this updates the `action` of an existing
@@ -217,7 +217,7 @@ class Rule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         A description for the firewall rule. Changing this
         updates the `description` of an existing firewall rule.
@@ -226,7 +226,7 @@ class Rule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="destinationIpAddress")
-    def destination_ip_address(self) -> Optional[str]:
+    def destination_ip_address(self) -> pulumi.Output[Optional[str]]:
         """
         The destination IP address on which the
         firewall rule operates. Changing this updates the `destination_ip_address`
@@ -236,7 +236,7 @@ class Rule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="destinationPort")
-    def destination_port(self) -> Optional[str]:
+    def destination_port(self) -> pulumi.Output[Optional[str]]:
         """
         The destination port on which the firewall
         rule operates. Changing this updates the `destination_port` of an existing
@@ -246,7 +246,7 @@ class Rule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def enabled(self) -> Optional[bool]:
+    def enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Enabled status for the firewall rule (must be "true"
         or "false" if provided - defaults to "true"). Changing this updates the
@@ -256,7 +256,7 @@ class Rule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ipVersion")
-    def ip_version(self) -> Optional[float]:
+    def ip_version(self) -> pulumi.Output[Optional[float]]:
         """
         IP version, either 4 (default) or 6. Changing this
         updates the `ip_version` of an existing firewall rule.
@@ -265,7 +265,7 @@ class Rule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         A unique name for the firewall rule. Changing this
         updates the `name` of an existing firewall rule.
@@ -274,7 +274,7 @@ class Rule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def protocol(self) -> str:
+    def protocol(self) -> pulumi.Output[str]:
         """
         The protocol type on which the firewall rule operates.
         Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
@@ -284,7 +284,7 @@ class Rule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to obtain the v1 Compute client.
         A Compute client is needed to create a firewall rule. If omitted, the
@@ -295,7 +295,7 @@ class Rule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sourceIpAddress")
-    def source_ip_address(self) -> Optional[str]:
+    def source_ip_address(self) -> pulumi.Output[Optional[str]]:
         """
         The source IP address on which the firewall
         rule operates. Changing this updates the `source_ip_address` of an existing
@@ -305,7 +305,7 @@ class Rule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sourcePort")
-    def source_port(self) -> Optional[str]:
+    def source_port(self) -> pulumi.Output[Optional[str]]:
         """
         The source port on which the firewall
         rule operates. Changing this updates the `source_port` of an existing
@@ -315,7 +315,7 @@ class Rule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> Optional[str]:
+    def tenant_id(self) -> pulumi.Output[Optional[str]]:
         """
         The owner of the firewall rule. Required if admin
         wants to create a firewall rule for another tenant. Changing this creates a
@@ -325,7 +325,7 @@ class Rule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[Mapping[str, Any]]:
+    def value_specs(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         Map of additional options.
         """

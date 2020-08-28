@@ -13,7 +13,7 @@ __all__ = ['FloatingIpAssociate']
 
 class FloatingIpAssociate(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  fixed_ip: Optional[pulumi.Input[str]] = None,
                  floating_ip: Optional[pulumi.Input[str]] = None,
@@ -117,12 +117,12 @@ class FloatingIpAssociate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="fixedIp")
-    def fixed_ip(self) -> str:
+    def fixed_ip(self) -> pulumi.Output[str]:
         return pulumi.get(self, "fixed_ip")
 
     @property
     @pulumi.getter(name="floatingIp")
-    def floating_ip(self) -> str:
+    def floating_ip(self) -> pulumi.Output[str]:
         """
         IP Address of an existing floating IP.
         """
@@ -130,7 +130,7 @@ class FloatingIpAssociate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="portId")
-    def port_id(self) -> str:
+    def port_id(self) -> pulumi.Output[str]:
         """
         ID of an existing port with at least one IP address to
         associate with this floating IP.
@@ -139,7 +139,7 @@ class FloatingIpAssociate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create a floating IP that can be used with

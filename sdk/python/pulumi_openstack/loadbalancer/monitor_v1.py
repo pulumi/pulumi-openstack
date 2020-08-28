@@ -13,7 +13,7 @@ __all__ = ['MonitorV1']
 
 class MonitorV1(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin_state_up: Optional[pulumi.Input[str]] = None,
                  delay: Optional[pulumi.Input[float]] = None,
@@ -189,7 +189,7 @@ class MonitorV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="adminStateUp")
-    def admin_state_up(self) -> str:
+    def admin_state_up(self) -> pulumi.Output[str]:
         """
         The administrative state of the monitor.
         Acceptable values are "true" and "false". Changing this value updates the
@@ -199,7 +199,7 @@ class MonitorV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def delay(self) -> float:
+    def delay(self) -> pulumi.Output[float]:
         """
         The time, in seconds, between sending probes to members.
         Changing this creates a new monitor.
@@ -208,7 +208,7 @@ class MonitorV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="expectedCodes")
-    def expected_codes(self) -> Optional[str]:
+    def expected_codes(self) -> pulumi.Output[Optional[str]]:
         """
         Required for HTTP(S) types. Expected HTTP codes
         for a passing HTTP(S) monitor. You can either specify a single status like
@@ -219,7 +219,7 @@ class MonitorV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="httpMethod")
-    def http_method(self) -> Optional[str]:
+    def http_method(self) -> pulumi.Output[Optional[str]]:
         """
         Required for HTTP(S) types. The HTTP method used
         for requests by the monitor. If this attribute is not specified, it defaults
@@ -229,7 +229,7 @@ class MonitorV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxRetries")
-    def max_retries(self) -> float:
+    def max_retries(self) -> pulumi.Output[float]:
         """
         Number of permissible ping failures before changing
         the member's status to INACTIVE. Must be a number between 1 and 10. Changing
@@ -239,7 +239,7 @@ class MonitorV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create an LB monitor. If omitted, the
@@ -250,7 +250,7 @@ class MonitorV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> str:
+    def tenant_id(self) -> pulumi.Output[str]:
         """
         The owner of the monitor. Required if admin wants to
         create a monitor for another tenant. Changing this creates a new monitor.
@@ -259,7 +259,7 @@ class MonitorV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def timeout(self) -> float:
+    def timeout(self) -> pulumi.Output[float]:
         """
         Maximum number of seconds for a monitor to wait for a
         ping reply before it times out. The value must be less than the delay value.
@@ -269,7 +269,7 @@ class MonitorV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def type(self) -> str:
+    def type(self) -> pulumi.Output[str]:
         """
         The type of probe, which is PING, TCP, HTTP, or HTTPS,
         that is sent by the monitor to verify the member state. Changing this
@@ -279,7 +279,7 @@ class MonitorV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="urlPath")
-    def url_path(self) -> Optional[str]:
+    def url_path(self) -> pulumi.Output[Optional[str]]:
         """
         Required for HTTP(S) types. URI path that will be
         accessed if monitor type is HTTP or HTTPS. Changing this updates the

@@ -13,7 +13,7 @@ __all__ = ['SubnetPool']
 
 class SubnetPool(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  address_scope_id: Optional[pulumi.Input[str]] = None,
                  default_prefixlen: Optional[pulumi.Input[float]] = None,
@@ -256,7 +256,7 @@ class SubnetPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="addressScopeId")
-    def address_scope_id(self) -> Optional[str]:
+    def address_scope_id(self) -> pulumi.Output[Optional[str]]:
         """
         The Neutron address scope to assign to the
         subnetpool. Changing this updates the address scope id of the existing
@@ -266,7 +266,7 @@ class SubnetPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allTags")
-    def all_tags(self) -> List[str]:
+    def all_tags(self) -> pulumi.Output[List[str]]:
         """
         The collection of tags assigned on the subnetpool, which have been
         explicitly and implicitly added.
@@ -275,7 +275,7 @@ class SubnetPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> str:
+    def created_at(self) -> pulumi.Output[str]:
         """
         The time at which subnetpool was created.
         """
@@ -283,7 +283,7 @@ class SubnetPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultPrefixlen")
-    def default_prefixlen(self) -> float:
+    def default_prefixlen(self) -> pulumi.Output[float]:
         """
         The size of the prefix to allocate when the cidr
         or prefixlen attributes are omitted when you create the subnet. Defaults to the
@@ -294,7 +294,7 @@ class SubnetPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultQuota")
-    def default_quota(self) -> Optional[float]:
+    def default_quota(self) -> pulumi.Output[Optional[float]]:
         """
         The per-project quota on the prefix space that can be
         allocated from the subnetpool for project subnets. Changing this updates the
@@ -304,7 +304,7 @@ class SubnetPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         The human-readable description for the subnetpool.
         Changing this updates the description of the existing subnetpool.
@@ -313,7 +313,7 @@ class SubnetPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ipVersion")
-    def ip_version(self) -> float:
+    def ip_version(self) -> pulumi.Output[float]:
         """
         The IP protocol version.
         """
@@ -321,7 +321,7 @@ class SubnetPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="isDefault")
-    def is_default(self) -> Optional[bool]:
+    def is_default(self) -> pulumi.Output[Optional[bool]]:
         """
         Indicates whether the subnetpool is default
         subnetpool or not. Changing this updates the default status of the existing
@@ -331,7 +331,7 @@ class SubnetPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxPrefixlen")
-    def max_prefixlen(self) -> float:
+    def max_prefixlen(self) -> pulumi.Output[float]:
         """
         The maximum prefix size that can be allocated from
         the subnetpool. For IPv4 subnetpools, default is 32. For IPv6 subnetpools,
@@ -342,7 +342,7 @@ class SubnetPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="minPrefixlen")
-    def min_prefixlen(self) -> float:
+    def min_prefixlen(self) -> pulumi.Output[float]:
         """
         The smallest prefix that can be allocated from a
         subnetpool. For IPv4 subnetpools, default is 8. For IPv6 subnetpools, default
@@ -352,7 +352,7 @@ class SubnetPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the subnetpool. Changing this updates the name of
         the existing subnetpool.
@@ -361,7 +361,7 @@ class SubnetPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def prefixes(self) -> List[str]:
+    def prefixes(self) -> pulumi.Output[List[str]]:
         """
         A list of subnet prefixes to assign to the subnetpool.
         Neutron API merges adjacent prefixes and treats them as a single prefix. Each
@@ -373,7 +373,7 @@ class SubnetPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> str:
+    def project_id(self) -> pulumi.Output[str]:
         """
         The owner of the subnetpool. Required if admin wants to
         create a subnetpool for another project. Changing this creates a new subnetpool.
@@ -382,7 +382,7 @@ class SubnetPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create a Neutron subnetpool. If omitted, the
@@ -393,7 +393,7 @@ class SubnetPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="revisionNumber")
-    def revision_number(self) -> float:
+    def revision_number(self) -> pulumi.Output[float]:
         """
         The revision number of the subnetpool.
         """
@@ -401,7 +401,7 @@ class SubnetPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def shared(self) -> Optional[bool]:
+    def shared(self) -> pulumi.Output[Optional[bool]]:
         """
         Indicates whether this subnetpool is shared across
         all projects. Changing this updates the shared status of the existing
@@ -411,7 +411,7 @@ class SubnetPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List[str]]:
+    def tags(self) -> pulumi.Output[Optional[List[str]]]:
         """
         A set of string tags for the subnetpool.
         """
@@ -419,7 +419,7 @@ class SubnetPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> str:
+    def updated_at(self) -> pulumi.Output[str]:
         """
         The time at which subnetpool was created.
         """
@@ -427,7 +427,7 @@ class SubnetPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[Mapping[str, Any]]:
+    def value_specs(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         Map of additional options.
         """

@@ -13,7 +13,7 @@ __all__ = ['VolumeAttach']
 
 class VolumeAttach(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  attach_mode: Optional[pulumi.Input[str]] = None,
                  device: Optional[pulumi.Input[str]] = None,
@@ -202,7 +202,7 @@ class VolumeAttach(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="attachMode")
-    def attach_mode(self) -> Optional[str]:
+    def attach_mode(self) -> pulumi.Output[Optional[str]]:
         """
         Specify whether to attach the volume as Read-Only
         (`ro`) or Read-Write (`rw`). Only values of `ro` and `rw` are accepted.
@@ -212,7 +212,7 @@ class VolumeAttach(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def data(self) -> Mapping[str, Any]:
+    def data(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         This is a map of key/value pairs that contain the connection
         information. You will want to pass this information to a provisioner
@@ -222,7 +222,7 @@ class VolumeAttach(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def device(self) -> Optional[str]:
+    def device(self) -> pulumi.Output[Optional[str]]:
         """
         The device to tell the Block Storage service this
         volume will be attached as. This is purely for informational purposes.
@@ -232,7 +232,7 @@ class VolumeAttach(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="driverVolumeType")
-    def driver_volume_type(self) -> str:
+    def driver_volume_type(self) -> pulumi.Output[str]:
         """
         The storage driver that the volume is based on.
         """
@@ -240,7 +240,7 @@ class VolumeAttach(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="hostName")
-    def host_name(self) -> str:
+    def host_name(self) -> pulumi.Output[str]:
         """
         The host to attach the volume to.
         """
@@ -248,7 +248,7 @@ class VolumeAttach(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def initiator(self) -> Optional[str]:
+    def initiator(self) -> pulumi.Output[Optional[str]]:
         """
         The iSCSI initiator string to make the connection.
         """
@@ -256,7 +256,7 @@ class VolumeAttach(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ipAddress")
-    def ip_address(self) -> Optional[str]:
+    def ip_address(self) -> pulumi.Output[Optional[str]]:
         """
         The IP address of the `host_name` above.
         """
@@ -264,7 +264,7 @@ class VolumeAttach(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="mountPointBase")
-    def mount_point_base(self) -> str:
+    def mount_point_base(self) -> pulumi.Output[str]:
         """
         A mount point base name for shared storage.
         """
@@ -272,7 +272,7 @@ class VolumeAttach(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def multipath(self) -> Optional[bool]:
+    def multipath(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether to connect to this volume via multipath.
         """
@@ -280,7 +280,7 @@ class VolumeAttach(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="osType")
-    def os_type(self) -> Optional[str]:
+    def os_type(self) -> pulumi.Output[Optional[str]]:
         """
         The iSCSI initiator OS type.
         """
@@ -288,7 +288,7 @@ class VolumeAttach(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def platform(self) -> Optional[str]:
+    def platform(self) -> pulumi.Output[Optional[str]]:
         """
         The iSCSI initiator platform.
         """
@@ -296,7 +296,7 @@ class VolumeAttach(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to obtain the V3 Block Storage
         client. A Block Storage client is needed to create a volume attachment.
@@ -307,7 +307,7 @@ class VolumeAttach(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> str:
+    def volume_id(self) -> pulumi.Output[str]:
         """
         The ID of the Volume to attach to an Instance.
         """
@@ -315,7 +315,7 @@ class VolumeAttach(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def wwnn(self) -> Optional[str]:
+    def wwnn(self) -> pulumi.Output[Optional[str]]:
         """
         A wwnn name. Used for Fibre Channel connections.
         """
@@ -323,7 +323,7 @@ class VolumeAttach(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def wwpns(self) -> Optional[List[str]]:
+    def wwpns(self) -> pulumi.Output[Optional[List[str]]]:
         """
         An array of wwpn strings. Used for Fibre Channel
         connections.

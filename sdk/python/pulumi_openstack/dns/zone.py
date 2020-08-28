@@ -13,7 +13,7 @@ __all__ = ['Zone']
 
 class Zone(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  attributes: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -151,7 +151,7 @@ class Zone(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def attributes(self) -> Optional[Mapping[str, Any]]:
+    def attributes(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         Attributes for the DNS Service scheduler.
         Changing this creates a new zone.
@@ -160,7 +160,7 @@ class Zone(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         A description of the zone.
         """
@@ -168,7 +168,7 @@ class Zone(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def email(self) -> Optional[str]:
+    def email(self) -> pulumi.Output[Optional[str]]:
         """
         The email contact for the zone record.
         """
@@ -176,7 +176,7 @@ class Zone(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def masters(self) -> Optional[List[str]]:
+    def masters(self) -> pulumi.Output[Optional[List[str]]]:
         """
         An array of master DNS servers. For when `type` is
         `SECONDARY`.
@@ -185,7 +185,7 @@ class Zone(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the zone. Note the `.` at the end of the name.
         Changing this creates a new DNS zone.
@@ -194,7 +194,7 @@ class Zone(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to obtain the V2 Compute client.
         Keypairs are associated with accounts, but a Compute client is needed to
@@ -205,7 +205,7 @@ class Zone(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def ttl(self) -> float:
+    def ttl(self) -> pulumi.Output[float]:
         """
         The time to live (TTL) of the zone.
         """
@@ -213,7 +213,7 @@ class Zone(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def type(self) -> str:
+    def type(self) -> pulumi.Output[str]:
         """
         The type of zone. Can either be `PRIMARY` or `SECONDARY`.
         Changing this creates a new zone.
@@ -222,7 +222,7 @@ class Zone(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[Mapping[str, Any]]:
+    def value_specs(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         Map of additional options. Changing this creates a
         new zone.

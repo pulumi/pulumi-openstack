@@ -13,7 +13,7 @@ __all__ = ['Service']
 
 class Service(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin_state_up: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -154,7 +154,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="adminStateUp")
-    def admin_state_up(self) -> Optional[bool]:
+    def admin_state_up(self) -> pulumi.Output[Optional[bool]]:
         """
         The administrative state of the resource. Can either be up(true) or down(false).
         Changing this updates the administrative state of the existing service.
@@ -163,7 +163,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         The human-readable description for the service.
         Changing this updates the description of the existing service.
@@ -172,7 +172,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="externalV4Ip")
-    def external_v4_ip(self) -> str:
+    def external_v4_ip(self) -> pulumi.Output[str]:
         """
         The read-only external (public) IPv4 address that is used for the VPN service.
         """
@@ -180,7 +180,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="externalV6Ip")
-    def external_v6_ip(self) -> str:
+    def external_v6_ip(self) -> pulumi.Output[str]:
         """
         The read-only external (public) IPv6 address that is used for the VPN service.
         """
@@ -188,7 +188,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the service. Changing this updates the name of
         the existing service.
@@ -197,7 +197,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create a VPN service. If omitted, the
@@ -208,7 +208,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="routerId")
-    def router_id(self) -> str:
+    def router_id(self) -> pulumi.Output[str]:
         """
         The ID of the router. Changing this creates a new service.
         """
@@ -216,7 +216,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> str:
+    def status(self) -> pulumi.Output[str]:
         """
         Indicates whether IPsec VPN service is currently operational. Values are ACTIVE, DOWN, BUILD, ERROR, PENDING_CREATE, PENDING_UPDATE, or PENDING_DELETE.
         """
@@ -224,7 +224,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="subnetId")
-    def subnet_id(self) -> Optional[str]:
+    def subnet_id(self) -> pulumi.Output[Optional[str]]:
         """
         SubnetID is the ID of the subnet. Default is null.
         """
@@ -232,7 +232,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> str:
+    def tenant_id(self) -> pulumi.Output[str]:
         """
         The owner of the service. Required if admin wants to
         create a service for another project. Changing this creates a new service.
@@ -241,7 +241,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[Mapping[str, Any]]:
+    def value_specs(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         Map of additional options.
         """

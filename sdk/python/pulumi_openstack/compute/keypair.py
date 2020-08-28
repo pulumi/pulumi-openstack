@@ -13,7 +13,7 @@ __all__ = ['Keypair']
 
 class Keypair(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  public_key: Optional[pulumi.Input[str]] = None,
@@ -114,7 +114,7 @@ class Keypair(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def fingerprint(self) -> str:
+    def fingerprint(self) -> pulumi.Output[str]:
         """
         The fingerprint of the public key.
         """
@@ -122,7 +122,7 @@ class Keypair(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         A unique name for the keypair. Changing this creates a new
         keypair.
@@ -131,7 +131,7 @@ class Keypair(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="privateKey")
-    def private_key(self) -> str:
+    def private_key(self) -> pulumi.Output[str]:
         """
         The generated private key when no public key is specified.
         """
@@ -139,7 +139,7 @@ class Keypair(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="publicKey")
-    def public_key(self) -> str:
+    def public_key(self) -> pulumi.Output[str]:
         """
         A pregenerated OpenSSH-formatted public key.
         Changing this creates a new keypair. If a public key is not specified, then
@@ -151,7 +151,7 @@ class Keypair(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to obtain the V2 Compute client.
         Keypairs are associated with accounts, but a Compute client is needed to
@@ -162,7 +162,7 @@ class Keypair(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[Mapping[str, Any]]:
+    def value_specs(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         Map of additional options.
         """

@@ -13,7 +13,7 @@ __all__ = ['QosBandwidthLimitRule']
 
 class QosBandwidthLimitRule(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  direction: Optional[pulumi.Input[str]] = None,
                  max_burst_kbps: Optional[pulumi.Input[float]] = None,
@@ -126,7 +126,7 @@ class QosBandwidthLimitRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def direction(self) -> Optional[str]:
+    def direction(self) -> pulumi.Output[Optional[str]]:
         """
         The direction of traffic. Defaults to "egress". Changing this updates the direction of the
         existing QoS bandwidth limit rule.
@@ -135,7 +135,7 @@ class QosBandwidthLimitRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxBurstKbps")
-    def max_burst_kbps(self) -> Optional[float]:
+    def max_burst_kbps(self) -> pulumi.Output[Optional[float]]:
         """
         The maximum burst size in kilobits of a QoS bandwidth limit rule. Changing this updates the
         maximum burst size in kilobits of the existing QoS bandwidth limit rule.
@@ -144,7 +144,7 @@ class QosBandwidthLimitRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxKbps")
-    def max_kbps(self) -> float:
+    def max_kbps(self) -> pulumi.Output[float]:
         """
         The maximum kilobits per second of a QoS bandwidth limit rule. Changing this updates the
         maximum kilobits per second of the existing QoS bandwidth limit rule.
@@ -153,7 +153,7 @@ class QosBandwidthLimitRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="qosPolicyId")
-    def qos_policy_id(self) -> str:
+    def qos_policy_id(self) -> pulumi.Output[str]:
         """
         The QoS policy reference. Changing this creates a new QoS bandwidth limit rule.
         """
@@ -161,7 +161,7 @@ class QosBandwidthLimitRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create a Neutron QoS bandwidth limit rule. If omitted, the

@@ -13,7 +13,7 @@ __all__ = ['ServiceV3']
 
 class ServiceV3(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
@@ -112,7 +112,7 @@ class ServiceV3(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         The service description.
         """
@@ -120,7 +120,7 @@ class ServiceV3(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def enabled(self) -> Optional[bool]:
+    def enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         The service status. Defaults to `true`.
         """
@@ -128,7 +128,7 @@ class ServiceV3(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The service name.
         """
@@ -136,7 +136,7 @@ class ServiceV3(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to obtain the V3 Keystone client.
         If omitted, the `region` argument of the provider is used.
@@ -145,7 +145,7 @@ class ServiceV3(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def type(self) -> str:
+    def type(self) -> pulumi.Output[str]:
         """
         The service type.
         """

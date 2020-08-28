@@ -15,7 +15,7 @@ __all__ = ['Volume']
 
 class Volume(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  availability_zone: Optional[pulumi.Input[str]] = None,
                  consistency_group_id: Optional[pulumi.Input[str]] = None,
@@ -207,7 +207,7 @@ class Volume(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def attachments(self) -> List['outputs.VolumeAttachment']:
+    def attachments(self) -> pulumi.Output[List['outputs.VolumeAttachment']]:
         """
         If a volume is attached to an instance, this attribute will
         display the Attachment ID, Instance ID, and the Device as the Instance
@@ -217,7 +217,7 @@ class Volume(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="availabilityZone")
-    def availability_zone(self) -> str:
+    def availability_zone(self) -> pulumi.Output[str]:
         """
         The availability zone for the volume.
         Changing this creates a new volume.
@@ -226,7 +226,7 @@ class Volume(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="consistencyGroupId")
-    def consistency_group_id(self) -> Optional[str]:
+    def consistency_group_id(self) -> pulumi.Output[Optional[str]]:
         """
         The consistency group to place the volume
         in.
@@ -235,7 +235,7 @@ class Volume(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         A description of the volume. Changing this updates
         the volume's description.
@@ -244,7 +244,7 @@ class Volume(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enableOnlineResize")
-    def enable_online_resize(self) -> Optional[bool]:
+    def enable_online_resize(self) -> pulumi.Output[Optional[bool]]:
         """
         When this option is set it allows extending
         attached volumes. Note: updating size of an attached volume requires Cinder
@@ -254,7 +254,7 @@ class Volume(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="imageId")
-    def image_id(self) -> Optional[str]:
+    def image_id(self) -> pulumi.Output[Optional[str]]:
         """
         The image ID from which to create the volume.
         Changing this creates a new volume.
@@ -263,7 +263,7 @@ class Volume(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def metadata(self) -> Mapping[str, Any]:
+    def metadata(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Metadata key/value pairs to associate with the volume.
         Changing this updates the existing volume metadata.
@@ -272,7 +272,7 @@ class Volume(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def multiattach(self) -> Optional[bool]:
+    def multiattach(self) -> pulumi.Output[Optional[bool]]:
         """
         Allow the volume to be attached to more than one Compute instance.
         """
@@ -280,7 +280,7 @@ class Volume(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         A unique name for the volume. Changing this updates the
         volume's name.
@@ -289,7 +289,7 @@ class Volume(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to create the volume. If
         omitted, the `region` argument of the provider is used. Changing this
@@ -299,7 +299,7 @@ class Volume(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="schedulerHints")
-    def scheduler_hints(self) -> Optional[List['outputs.VolumeSchedulerHint']]:
+    def scheduler_hints(self) -> pulumi.Output[Optional[List['outputs.VolumeSchedulerHint']]]:
         """
         Provide the Cinder scheduler with hints on where
         to instantiate a volume in the OpenStack cloud. The available hints are described below.
@@ -308,7 +308,7 @@ class Volume(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def size(self) -> float:
+    def size(self) -> pulumi.Output[float]:
         """
         The size of the volume to create (in gigabytes).
         """
@@ -316,7 +316,7 @@ class Volume(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="snapshotId")
-    def snapshot_id(self) -> Optional[str]:
+    def snapshot_id(self) -> pulumi.Output[Optional[str]]:
         """
         The snapshot ID from which to create the volume.
         Changing this creates a new volume.
@@ -325,7 +325,7 @@ class Volume(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sourceReplica")
-    def source_replica(self) -> Optional[str]:
+    def source_replica(self) -> pulumi.Output[Optional[str]]:
         """
         The volume ID to replicate with.
         """
@@ -333,7 +333,7 @@ class Volume(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sourceVolId")
-    def source_vol_id(self) -> Optional[str]:
+    def source_vol_id(self) -> pulumi.Output[Optional[str]]:
         """
         The volume ID from which to create the volume.
         Changing this creates a new volume.
@@ -342,7 +342,7 @@ class Volume(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="volumeType")
-    def volume_type(self) -> str:
+    def volume_type(self) -> pulumi.Output[str]:
         """
         The type of volume to create.
         Changing this creates a new volume.

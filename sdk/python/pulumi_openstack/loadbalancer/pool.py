@@ -15,7 +15,7 @@ __all__ = ['Pool']
 
 class Pool(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin_state_up: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -181,7 +181,7 @@ class Pool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="adminStateUp")
-    def admin_state_up(self) -> Optional[bool]:
+    def admin_state_up(self) -> pulumi.Output[Optional[bool]]:
         """
         The administrative state of the pool.
         A valid value is true (UP) or false (DOWN).
@@ -190,7 +190,7 @@ class Pool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         Human-readable description for the pool.
         """
@@ -198,7 +198,7 @@ class Pool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="lbMethod")
-    def lb_method(self) -> str:
+    def lb_method(self) -> pulumi.Output[str]:
         """
         The load balancing algorithm to
         distribute traffic to the pool's members. Must be one of
@@ -209,7 +209,7 @@ class Pool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="listenerId")
-    def listener_id(self) -> Optional[str]:
+    def listener_id(self) -> pulumi.Output[Optional[str]]:
         """
         The Listener on which the members of the pool
         will be associated with. Changing this creates a new pool.
@@ -219,7 +219,7 @@ class Pool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="loadbalancerId")
-    def loadbalancer_id(self) -> Optional[str]:
+    def loadbalancer_id(self) -> pulumi.Output[Optional[str]]:
         """
         The load balancer on which to provision this
         pool. Changing this creates a new pool.
@@ -229,7 +229,7 @@ class Pool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Human-readable name for the pool.
         """
@@ -237,7 +237,7 @@ class Pool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def persistence(self) -> 'outputs.PoolPersistence':
+    def persistence(self) -> pulumi.Output['outputs.PoolPersistence']:
         """
         Omit this field to prevent session persistence.  Indicates
         whether connections in the same session will be processed by the same Pool
@@ -247,7 +247,7 @@ class Pool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def protocol(self) -> str:
+    def protocol(self) -> pulumi.Output[str]:
         """
         The protocol - can either be TCP, HTTP, HTTPS, PROXY
         or UDP (supported only in Octavia). Changing this creates a new pool.
@@ -256,7 +256,7 @@ class Pool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create an . If omitted, the
@@ -267,7 +267,7 @@ class Pool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> str:
+    def tenant_id(self) -> pulumi.Output[str]:
         """
         Required for admins. The UUID of the tenant who owns
         the pool.  Only administrative users can specify a tenant UUID

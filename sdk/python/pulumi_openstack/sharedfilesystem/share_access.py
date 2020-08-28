@@ -13,7 +13,7 @@ __all__ = ['ShareAccess']
 
 class ShareAccess(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_level: Optional[pulumi.Input[str]] = None,
                  access_to: Optional[pulumi.Input[str]] = None,
@@ -118,7 +118,7 @@ class ShareAccess(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accessKey")
-    def access_key(self) -> str:
+    def access_key(self) -> pulumi.Output[str]:
         """
         The access credential of the entity granted access.
         """
@@ -126,7 +126,7 @@ class ShareAccess(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accessLevel")
-    def access_level(self) -> str:
+    def access_level(self) -> pulumi.Output[str]:
         """
         The access level to the share. Can either be `rw` or `ro`.
         """
@@ -134,7 +134,7 @@ class ShareAccess(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accessTo")
-    def access_to(self) -> str:
+    def access_to(self) -> pulumi.Output[str]:
         """
         The value that defines the access. Can either be an IP
         address or a username verified by configured Security Service of the Share Network.
@@ -143,7 +143,7 @@ class ShareAccess(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accessType")
-    def access_type(self) -> str:
+    def access_type(self) -> pulumi.Output[str]:
         """
         The access rule type. Can either be an ip, user,
         cert, or cephx. cephx support requires an OpenStack environment that supports
@@ -153,7 +153,7 @@ class ShareAccess(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to obtain the V2 Shared File System client.
         A Shared File System client is needed to create a share access. Changing this
@@ -163,7 +163,7 @@ class ShareAccess(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="shareId")
-    def share_id(self) -> str:
+    def share_id(self) -> pulumi.Output[str]:
         """
         The UUID of the share to which you are granted access.
         """

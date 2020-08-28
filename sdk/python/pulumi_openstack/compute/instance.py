@@ -15,7 +15,7 @@ __all__ = ['Instance']
 
 class Instance(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_ip_v4: Optional[pulumi.Input[str]] = None,
                  access_ip_v6: Optional[pulumi.Input[str]] = None,
@@ -316,7 +316,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accessIpV4")
-    def access_ip_v4(self) -> str:
+    def access_ip_v4(self) -> pulumi.Output[str]:
         """
         The first detected Fixed IPv4 address.
         """
@@ -324,7 +324,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accessIpV6")
-    def access_ip_v6(self) -> str:
+    def access_ip_v6(self) -> pulumi.Output[str]:
         """
         The first detected Fixed IPv6 address.
         """
@@ -332,7 +332,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="adminPass")
-    def admin_pass(self) -> Optional[str]:
+    def admin_pass(self) -> pulumi.Output[Optional[str]]:
         """
         The administrative password to assign to the server.
         Changing this changes the root password on the existing server.
@@ -341,12 +341,12 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allMetadata")
-    def all_metadata(self) -> Mapping[str, Any]:
+    def all_metadata(self) -> pulumi.Output[Mapping[str, Any]]:
         return pulumi.get(self, "all_metadata")
 
     @property
     @pulumi.getter(name="allTags")
-    def all_tags(self) -> List[str]:
+    def all_tags(self) -> pulumi.Output[List[str]]:
         """
         The collection of tags assigned on the instance, which have
         been explicitly and implicitly added.
@@ -355,7 +355,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="availabilityZone")
-    def availability_zone(self) -> str:
+    def availability_zone(self) -> pulumi.Output[str]:
         """
         The availability zone in which to create
         the server. Conflicts with `availability_zone_hints`. Changing this creates
@@ -365,7 +365,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="availabilityZoneHints")
-    def availability_zone_hints(self) -> Optional[str]:
+    def availability_zone_hints(self) -> pulumi.Output[Optional[str]]:
         """
         The availability zone in which to
         create the server. This argument is preferred to `availability_zone`, when
@@ -378,7 +378,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="blockDevices")
-    def block_devices(self) -> Optional[List['outputs.InstanceBlockDevice']]:
+    def block_devices(self) -> pulumi.Output[Optional[List['outputs.InstanceBlockDevice']]]:
         """
         Configuration of block devices. The block_device
         structure is documented below. Changing this creates a new server.
@@ -391,7 +391,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="configDrive")
-    def config_drive(self) -> Optional[bool]:
+    def config_drive(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether to use the config_drive feature to
         configure the instance. Changing this creates a new server.
@@ -400,7 +400,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="flavorId")
-    def flavor_id(self) -> str:
+    def flavor_id(self) -> pulumi.Output[str]:
         """
         The flavor ID of
         the desired flavor for the server. Changing this resizes the existing server.
@@ -409,7 +409,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="flavorName")
-    def flavor_name(self) -> str:
+    def flavor_name(self) -> pulumi.Output[str]:
         """
         The name of the
         desired flavor for the server. Changing this resizes the existing server.
@@ -418,7 +418,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="forceDelete")
-    def force_delete(self) -> Optional[bool]:
+    def force_delete(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether to force the OpenStack instance to be
         forcefully deleted. This is useful for environments that have reclaim / soft
@@ -428,7 +428,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="imageId")
-    def image_id(self) -> str:
+    def image_id(self) -> pulumi.Output[str]:
         """
         (Optional; Required if `image_name` is empty and not booting
         from a volume. Do not specify if booting from a volume.) The image ID of
@@ -438,7 +438,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="imageName")
-    def image_name(self) -> str:
+    def image_name(self) -> pulumi.Output[str]:
         """
         (Optional; Required if `image_id` is empty and not booting
         from a volume. Do not specify if booting from a volume.) The name of the
@@ -448,7 +448,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="keyPair")
-    def key_pair(self) -> Optional[str]:
+    def key_pair(self) -> pulumi.Output[Optional[str]]:
         """
         The name of a key pair to put on the server. The key
         pair must already be created and associated with the tenant's account.
@@ -458,7 +458,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def metadata(self) -> Optional[Mapping[str, Any]]:
+    def metadata(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         Metadata key/value pairs to make available from
         within the instance. Changing this updates the existing server metadata.
@@ -467,7 +467,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The human-readable
         name of the network. Changing this creates a new server.
@@ -476,7 +476,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def networks(self) -> List['outputs.InstanceNetwork']:
+    def networks(self) -> pulumi.Output[List['outputs.InstanceNetwork']]:
         """
         An array of one or more networks to attach to the
         instance. The network object structure is documented below. Changing this
@@ -486,7 +486,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def personalities(self) -> Optional[List['outputs.InstancePersonality']]:
+    def personalities(self) -> pulumi.Output[Optional[List['outputs.InstancePersonality']]]:
         """
         Customize the personality of an instance by
         defining one or more files and their contents. The personality structure
@@ -496,7 +496,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="powerState")
-    def power_state(self) -> Optional[str]:
+    def power_state(self) -> pulumi.Output[Optional[str]]:
         """
         Provide the VM state. Only 'active' and 'shutoff'
         are supported values. *Note*: If the initial power_state is the shutoff
@@ -507,7 +507,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to create the server instance. If
         omitted, the `region` argument of the provider is used. Changing this
@@ -517,7 +517,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="schedulerHints")
-    def scheduler_hints(self) -> Optional[List['outputs.InstanceSchedulerHint']]:
+    def scheduler_hints(self) -> pulumi.Output[Optional[List['outputs.InstanceSchedulerHint']]]:
         """
         Provide the Nova scheduler with hints on how
         the instance should be launched. The available hints are described below.
@@ -526,7 +526,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityGroups")
-    def security_groups(self) -> List[str]:
+    def security_groups(self) -> pulumi.Output[List[str]]:
         """
         An array of one or more security group names
         or ids to associate with the server. Changing this results in adding/removing
@@ -538,7 +538,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="stopBeforeDestroy")
-    def stop_before_destroy(self) -> Optional[bool]:
+    def stop_before_destroy(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether to try stop instance gracefully
         before destroying it, thus giving chance for guest OS daemons to stop correctly.
@@ -548,7 +548,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List[str]]:
+    def tags(self) -> pulumi.Output[Optional[List[str]]]:
         """
         A set of string tags for the instance. Changing this
         updates the existing instance tags.
@@ -557,7 +557,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="userData")
-    def user_data(self) -> Optional[str]:
+    def user_data(self) -> pulumi.Output[Optional[str]]:
         """
         The user data to provide when launching the instance.
         Changing this creates a new server.
@@ -566,7 +566,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vendorOptions")
-    def vendor_options(self) -> Optional['outputs.InstanceVendorOptions']:
+    def vendor_options(self) -> pulumi.Output[Optional['outputs.InstanceVendorOptions']]:
         """
         Map of additional vendor-specific options.
         Supported options are described below.

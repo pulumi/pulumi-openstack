@@ -13,7 +13,7 @@ __all__ = ['L7PolicyV2']
 
 class L7PolicyV2(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: Optional[pulumi.Input[str]] = None,
                  admin_state_up: Optional[pulumi.Input[bool]] = None,
@@ -181,7 +181,7 @@ class L7PolicyV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def action(self) -> str:
+    def action(self) -> pulumi.Output[str]:
         """
         The L7 Policy action - can either be REDIRECT\_TO\_POOL,
         REDIRECT\_TO\_URL or REJECT.
@@ -190,7 +190,7 @@ class L7PolicyV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="adminStateUp")
-    def admin_state_up(self) -> Optional[bool]:
+    def admin_state_up(self) -> pulumi.Output[Optional[bool]]:
         """
         The administrative state of the L7 Policy.
         A valid value is true (UP) or false (DOWN).
@@ -199,7 +199,7 @@ class L7PolicyV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         Human-readable description for the L7 Policy.
         """
@@ -207,7 +207,7 @@ class L7PolicyV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="listenerId")
-    def listener_id(self) -> str:
+    def listener_id(self) -> pulumi.Output[str]:
         """
         The Listener on which the L7 Policy will be associated with.
         Changing this creates a new L7 Policy.
@@ -216,7 +216,7 @@ class L7PolicyV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Human-readable name for the L7 Policy. Does not have
         to be unique.
@@ -225,7 +225,7 @@ class L7PolicyV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def position(self) -> float:
+    def position(self) -> pulumi.Output[float]:
         """
         The position of this policy on the listener. Positions start at 1.
         """
@@ -233,7 +233,7 @@ class L7PolicyV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="redirectPoolId")
-    def redirect_pool_id(self) -> Optional[str]:
+    def redirect_pool_id(self) -> pulumi.Output[Optional[str]]:
         """
         Requests matching this policy will be redirected to the
         pool with this ID. Only valid if action is REDIRECT\_TO\_POOL.
@@ -242,7 +242,7 @@ class L7PolicyV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="redirectUrl")
-    def redirect_url(self) -> Optional[str]:
+    def redirect_url(self) -> pulumi.Output[Optional[str]]:
         """
         Requests matching this policy will be redirected to this URL.
         Only valid if action is REDIRECT\_TO\_URL.
@@ -251,7 +251,7 @@ class L7PolicyV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create an . If omitted, the
@@ -262,7 +262,7 @@ class L7PolicyV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> str:
+    def tenant_id(self) -> pulumi.Output[str]:
         """
         Required for admins. The UUID of the tenant who owns
         the L7 Policy.  Only administrative users can specify a tenant UUID

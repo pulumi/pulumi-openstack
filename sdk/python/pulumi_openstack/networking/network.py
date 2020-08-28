@@ -15,7 +15,7 @@ __all__ = ['Network']
 
 class Network(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin_state_up: Optional[pulumi.Input[bool]] = None,
                  availability_zone_hints: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -258,7 +258,7 @@ class Network(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="adminStateUp")
-    def admin_state_up(self) -> bool:
+    def admin_state_up(self) -> pulumi.Output[bool]:
         """
         The administrative state of the network.
         Acceptable values are "true" and "false". Changing this value updates the
@@ -268,7 +268,7 @@ class Network(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allTags")
-    def all_tags(self) -> List[str]:
+    def all_tags(self) -> pulumi.Output[List[str]]:
         """
         The collection of tags assigned on the network, which have been
         explicitly and implicitly added.
@@ -277,7 +277,7 @@ class Network(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="availabilityZoneHints")
-    def availability_zone_hints(self) -> List[str]:
+    def availability_zone_hints(self) -> pulumi.Output[List[str]]:
         """
         An availability zone is used to make
         network resources highly available. Used for resources with high availability
@@ -288,7 +288,7 @@ class Network(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         Human-readable description of the network. Changing this
         updates the name of the existing network.
@@ -297,7 +297,7 @@ class Network(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dnsDomain")
-    def dns_domain(self) -> str:
+    def dns_domain(self) -> pulumi.Output[str]:
         """
         The network DNS domain. Available, when Neutron DNS
         extension is enabled. The `dns_domain` of a network in conjunction with the
@@ -308,7 +308,7 @@ class Network(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def external(self) -> bool:
+    def external(self) -> pulumi.Output[bool]:
         """
         Specifies whether the network resource has the
         external routing facility. Valid values are true and false. Defaults to
@@ -318,7 +318,7 @@ class Network(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def mtu(self) -> float:
+    def mtu(self) -> pulumi.Output[float]:
         """
         The network MTU. Available for read-only, when Neutron
         `net-mtu` extension is enabled. Available for the modification, when
@@ -328,7 +328,7 @@ class Network(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the network. Changing this updates the name of
         the existing network.
@@ -337,7 +337,7 @@ class Network(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="portSecurityEnabled")
-    def port_security_enabled(self) -> bool:
+    def port_security_enabled(self) -> pulumi.Output[bool]:
         """
         Whether to explicitly enable or disable
         port security on the network. Port Security is usually enabled by default, so
@@ -349,7 +349,7 @@ class Network(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="qosPolicyId")
-    def qos_policy_id(self) -> str:
+    def qos_policy_id(self) -> pulumi.Output[str]:
         """
         Reference to the associated QoS policy.
         """
@@ -357,7 +357,7 @@ class Network(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create a Neutron network. If omitted, the
@@ -368,7 +368,7 @@ class Network(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def segments(self) -> Optional[List['outputs.NetworkSegment']]:
+    def segments(self) -> pulumi.Output[Optional[List['outputs.NetworkSegment']]]:
         """
         An array of one or more provider segment objects.
         """
@@ -376,7 +376,7 @@ class Network(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def shared(self) -> bool:
+    def shared(self) -> pulumi.Output[bool]:
         """
         Specifies whether the network resource can be accessed
         by any tenant or not. Changing this updates the sharing capabilities of the
@@ -386,7 +386,7 @@ class Network(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List[str]]:
+    def tags(self) -> pulumi.Output[Optional[List[str]]]:
         """
         A set of string tags for the network.
         """
@@ -394,7 +394,7 @@ class Network(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> str:
+    def tenant_id(self) -> pulumi.Output[str]:
         """
         The owner of the network. Required if admin wants to
         create a network for another tenant. Changing this creates a new network.
@@ -403,7 +403,7 @@ class Network(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="transparentVlan")
-    def transparent_vlan(self) -> bool:
+    def transparent_vlan(self) -> pulumi.Output[bool]:
         """
         Specifies whether the network resource has the
         VLAN transparent attribute set. Valid values are true and false. Defaults to
@@ -414,7 +414,7 @@ class Network(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[Mapping[str, Any]]:
+    def value_specs(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         Map of additional options.
         """

@@ -13,7 +13,7 @@ __all__ = ['MemberV1']
 
 class MemberV1(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  address: Optional[pulumi.Input[str]] = None,
                  admin_state_up: Optional[pulumi.Input[bool]] = None,
@@ -143,7 +143,7 @@ class MemberV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def address(self) -> str:
+    def address(self) -> pulumi.Output[str]:
         """
         The IP address of the member. Changing this creates a
         new member.
@@ -152,7 +152,7 @@ class MemberV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="adminStateUp")
-    def admin_state_up(self) -> bool:
+    def admin_state_up(self) -> pulumi.Output[bool]:
         """
         The administrative state of the member.
         Acceptable values are 'true' and 'false'. Changing this value updates the
@@ -162,7 +162,7 @@ class MemberV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="poolId")
-    def pool_id(self) -> str:
+    def pool_id(self) -> pulumi.Output[str]:
         """
         The ID of the LB pool. Changing this creates a new
         member.
@@ -171,7 +171,7 @@ class MemberV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def port(self) -> float:
+    def port(self) -> pulumi.Output[float]:
         """
         An integer representing the port on which the member is
         hosted. Changing this creates a new member.
@@ -180,7 +180,7 @@ class MemberV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create an LB member. If omitted, the
@@ -191,7 +191,7 @@ class MemberV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> Optional[str]:
+    def tenant_id(self) -> pulumi.Output[Optional[str]]:
         """
         The owner of the member. Required if admin wants to
         create a member for another tenant. Changing this creates a new member.
@@ -200,7 +200,7 @@ class MemberV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def weight(self) -> float:
+    def weight(self) -> pulumi.Output[float]:
         return pulumi.get(self, "weight")
 
     def translate_output_property(self, prop):

@@ -13,7 +13,7 @@ __all__ = ['QosPolicy']
 
 class QosPolicy(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  is_default: Optional[pulumi.Input[bool]] = None,
@@ -162,7 +162,7 @@ class QosPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allTags")
-    def all_tags(self) -> List[str]:
+    def all_tags(self) -> pulumi.Output[List[str]]:
         """
         The collection of tags assigned on the QoS policy, which have been
         explicitly and implicitly added.
@@ -171,7 +171,7 @@ class QosPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> str:
+    def created_at(self) -> pulumi.Output[str]:
         """
         The time at which QoS policy was created.
         """
@@ -179,7 +179,7 @@ class QosPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         The human-readable description for the QoS policy.
         Changing this updates the description of the existing QoS policy.
@@ -188,7 +188,7 @@ class QosPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="isDefault")
-    def is_default(self) -> Optional[bool]:
+    def is_default(self) -> pulumi.Output[Optional[bool]]:
         """
         Indicates whether the QoS policy is default
         QoS policy or not. Changing this updates the default status of the existing
@@ -198,7 +198,7 @@ class QosPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the QoS policy. Changing this updates the name of
         the existing QoS policy.
@@ -207,7 +207,7 @@ class QosPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> str:
+    def project_id(self) -> pulumi.Output[str]:
         """
         The owner of the QoS policy. Required if admin wants to
         create a QoS policy for another project. Changing this creates a new QoS policy.
@@ -216,7 +216,7 @@ class QosPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create a Neutron Qos policy. If omitted, the
@@ -227,7 +227,7 @@ class QosPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="revisionNumber")
-    def revision_number(self) -> float:
+    def revision_number(self) -> pulumi.Output[float]:
         """
         The revision number of the QoS policy.
         """
@@ -235,7 +235,7 @@ class QosPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def shared(self) -> Optional[bool]:
+    def shared(self) -> pulumi.Output[Optional[bool]]:
         """
         Indicates whether this QoS policy is shared across
         all projects. Changing this updates the shared status of the existing
@@ -245,7 +245,7 @@ class QosPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List[str]]:
+    def tags(self) -> pulumi.Output[Optional[List[str]]]:
         """
         A set of string tags for the QoS policy.
         """
@@ -253,7 +253,7 @@ class QosPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> str:
+    def updated_at(self) -> pulumi.Output[str]:
         """
         The time at which QoS policy was created.
         """
@@ -261,7 +261,7 @@ class QosPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[Mapping[str, Any]]:
+    def value_specs(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         Map of additional options.
         """

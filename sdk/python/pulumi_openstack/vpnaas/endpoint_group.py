@@ -13,7 +13,7 @@ __all__ = ['EndpointGroup']
 
 class EndpointGroup(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  endpoints: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -139,7 +139,7 @@ class EndpointGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         The human-readable description for the group.
         Changing this updates the description of the existing group.
@@ -148,7 +148,7 @@ class EndpointGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def endpoints(self) -> Optional[List[str]]:
+    def endpoints(self) -> pulumi.Output[Optional[List[str]]]:
         """
         List of endpoints of the same type, for the endpoint group. The values will depend on the type.
         Changing this creates a new group.
@@ -157,7 +157,7 @@ class EndpointGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the group. Changing this updates the name of
         the existing group.
@@ -166,7 +166,7 @@ class EndpointGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create an endpoint group. If omitted, the
@@ -177,7 +177,7 @@ class EndpointGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> str:
+    def tenant_id(self) -> pulumi.Output[str]:
         """
         The owner of the group. Required if admin wants to
         create an endpoint group for another project. Changing this creates a new group.
@@ -186,7 +186,7 @@ class EndpointGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def type(self) -> str:
+    def type(self) -> pulumi.Output[str]:
         """
         The type of the endpoints in the group. A valid value is subnet, cidr, network, router, or vlan.
         Changing this creates a new group.
@@ -195,7 +195,7 @@ class EndpointGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[Mapping[str, Any]]:
+    def value_specs(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         Map of additional options.
         """

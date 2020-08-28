@@ -13,7 +13,7 @@ __all__ = ['PortSecGroupAssociate']
 
 class PortSecGroupAssociate(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  enforce: Optional[pulumi.Input[bool]] = None,
                  port_id: Optional[pulumi.Input[str]] = None,
@@ -111,7 +111,7 @@ class PortSecGroupAssociate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allSecurityGroupIds")
-    def all_security_group_ids(self) -> List[str]:
+    def all_security_group_ids(self) -> pulumi.Output[List[str]]:
         """
         The collection of Security Group IDs on the port
         which have been explicitly and implicitly added.
@@ -120,7 +120,7 @@ class PortSecGroupAssociate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def enforce(self) -> Optional[bool]:
+    def enforce(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether to replace or append the list of security
         groups, specified in the `security_group_ids`. Defaults to `false`.
@@ -129,7 +129,7 @@ class PortSecGroupAssociate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="portId")
-    def port_id(self) -> str:
+    def port_id(self) -> pulumi.Output[str]:
         """
         An UUID of the port to apply security groups to.
         """
@@ -137,7 +137,7 @@ class PortSecGroupAssociate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to obtain the V2 networking client.
         A networking client is needed to manage a port. If omitted, the
@@ -148,7 +148,7 @@ class PortSecGroupAssociate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityGroupIds")
-    def security_group_ids(self) -> List[str]:
+    def security_group_ids(self) -> pulumi.Output[List[str]]:
         """
         A list of security group IDs to apply to
         the port. The security groups must be specified by ID and not name (as

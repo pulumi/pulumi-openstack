@@ -13,7 +13,7 @@ __all__ = ['Flavor']
 
 class Flavor(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  disk: Optional[pulumi.Input[float]] = None,
                  ephemeral: Optional[pulumi.Input[float]] = None,
@@ -167,7 +167,7 @@ class Flavor(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def disk(self) -> float:
+    def disk(self) -> pulumi.Output[float]:
         """
         The amount of disk space in gigabytes to use for the root
         (/) partition. Changing this creates a new flavor.
@@ -176,12 +176,12 @@ class Flavor(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def ephemeral(self) -> Optional[float]:
+    def ephemeral(self) -> pulumi.Output[Optional[float]]:
         return pulumi.get(self, "ephemeral")
 
     @property
     @pulumi.getter(name="extraSpecs")
-    def extra_specs(self) -> Mapping[str, Any]:
+    def extra_specs(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Key/Value pairs of metadata for the flavor.
         """
@@ -189,7 +189,7 @@ class Flavor(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="isPublic")
-    def is_public(self) -> Optional[bool]:
+    def is_public(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether the flavor is public. Changing this creates
         a new flavor.
@@ -198,7 +198,7 @@ class Flavor(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         A unique name for the flavor. Changing this creates a new
         flavor.
@@ -207,7 +207,7 @@ class Flavor(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def ram(self) -> float:
+    def ram(self) -> pulumi.Output[float]:
         """
         The amount of RAM to use, in megabytes. Changing this
         creates a new flavor.
@@ -216,7 +216,7 @@ class Flavor(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to obtain the V2 Compute client.
         Flavors are associated with accounts, but a Compute client is needed to
@@ -227,7 +227,7 @@ class Flavor(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="rxTxFactor")
-    def rx_tx_factor(self) -> Optional[float]:
+    def rx_tx_factor(self) -> pulumi.Output[Optional[float]]:
         """
         RX/TX bandwith factor. The default is 1. Changing
         this creates a new flavor.
@@ -236,7 +236,7 @@ class Flavor(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def swap(self) -> Optional[float]:
+    def swap(self) -> pulumi.Output[Optional[float]]:
         """
         The amount of disk space in megabytes to use. If
         unspecified, the default is 0. Changing this creates a new flavor.
@@ -245,7 +245,7 @@ class Flavor(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def vcpus(self) -> float:
+    def vcpus(self) -> pulumi.Output[float]:
         """
         The number of virtual CPUs to use. Changing this creates
         a new flavor.
