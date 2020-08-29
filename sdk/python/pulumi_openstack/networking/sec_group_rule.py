@@ -13,7 +13,7 @@ __all__ = ['SecGroupRule']
 
 class SecGroupRule(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  direction: Optional[pulumi.Input[str]] = None,
@@ -232,7 +232,7 @@ class SecGroupRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         A description of the rule. Changing this creates a new security group rule.
         """
@@ -240,7 +240,7 @@ class SecGroupRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def direction(self) -> str:
+    def direction(self) -> pulumi.Output[str]:
         """
         The direction of the rule, valid values are __ingress__
         or __egress__. Changing this creates a new security group rule.
@@ -249,7 +249,7 @@ class SecGroupRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def ethertype(self) -> str:
+    def ethertype(self) -> pulumi.Output[str]:
         """
         The layer 3 protocol type, valid values are __IPv4__
         or __IPv6__. Changing this creates a new security group rule.
@@ -258,7 +258,7 @@ class SecGroupRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="portRangeMax")
-    def port_range_max(self) -> float:
+    def port_range_max(self) -> pulumi.Output[float]:
         """
         The higher part of the allowed port range, valid
         integer value needs to be between 1 and 65535. Changing this creates a new
@@ -268,7 +268,7 @@ class SecGroupRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="portRangeMin")
-    def port_range_min(self) -> float:
+    def port_range_min(self) -> pulumi.Output[float]:
         """
         The lower part of the allowed port range, valid
         integer value needs to be between 1 and 65535. Changing this creates a new
@@ -278,7 +278,7 @@ class SecGroupRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def protocol(self) -> str:
+    def protocol(self) -> pulumi.Output[str]:
         """
         The layer 4 protocol type, valid values are following. Changing this creates a new security group rule. This is required if you want to specify a port range.
         * __tcp__
@@ -307,7 +307,7 @@ class SecGroupRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to obtain the V2 networking client.
         A networking client is needed to create a port. If omitted, the
@@ -318,7 +318,7 @@ class SecGroupRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="remoteGroupId")
-    def remote_group_id(self) -> str:
+    def remote_group_id(self) -> pulumi.Output[str]:
         """
         The remote group id, the value needs to be an
         Openstack ID of a security group in the same tenant. Changing this creates
@@ -328,7 +328,7 @@ class SecGroupRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="remoteIpPrefix")
-    def remote_ip_prefix(self) -> str:
+    def remote_ip_prefix(self) -> pulumi.Output[str]:
         """
         The remote CIDR, the value needs to be a valid
         CIDR (i.e. 192.168.0.0/16). Changing this creates a new security group rule.
@@ -337,7 +337,7 @@ class SecGroupRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityGroupId")
-    def security_group_id(self) -> str:
+    def security_group_id(self) -> pulumi.Output[str]:
         """
         The security group id the rule should belong
         to, the value needs to be an Openstack ID of a security group in the same
@@ -347,7 +347,7 @@ class SecGroupRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> str:
+    def tenant_id(self) -> pulumi.Output[str]:
         """
         The owner of the security group. Required if admin
         wants to create a port for another tenant. Changing this creates a new

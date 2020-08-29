@@ -13,7 +13,7 @@ __all__ = ['Policy']
 
 class Policy(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  audited: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -167,7 +167,7 @@ class Policy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def audited(self) -> Optional[bool]:
+    def audited(self) -> pulumi.Output[Optional[bool]]:
         """
         Audit status of the firewall policy
         (must be "true" or "false" if provided - defaults to "false").
@@ -179,7 +179,7 @@ class Policy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         A description for the firewall policy. Changing
         this updates the `description` of an existing firewall policy.
@@ -188,7 +188,7 @@ class Policy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         A name for the firewall policy. Changing this
         updates the `name` of an existing firewall policy.
@@ -197,7 +197,7 @@ class Policy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to obtain the v1 networking client.
         A networking client is needed to create a firewall policy. If omitted, the
@@ -208,7 +208,7 @@ class Policy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def rules(self) -> Optional[List[str]]:
+    def rules(self) -> pulumi.Output[Optional[List[str]]]:
         """
         An array of one or more firewall rules that comprise
         the policy. Changing this results in adding/removing rules from the
@@ -218,7 +218,7 @@ class Policy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def shared(self) -> Optional[bool]:
+    def shared(self) -> pulumi.Output[Optional[bool]]:
         """
         Sharing status of the firewall policy (must be "true"
         or "false" if provided). If this is "true" the policy is visible to, and
@@ -230,12 +230,12 @@ class Policy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> str:
+    def tenant_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "tenant_id")
 
     @property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[Mapping[str, Any]]:
+    def value_specs(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         Map of additional options.
         """

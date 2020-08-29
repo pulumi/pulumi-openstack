@@ -15,7 +15,7 @@ __all__ = ['IkePolicy']
 
 class IkePolicy(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auth_algorithm: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -166,7 +166,7 @@ class IkePolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="authAlgorithm")
-    def auth_algorithm(self) -> Optional[str]:
+    def auth_algorithm(self) -> pulumi.Output[Optional[str]]:
         """
         The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.
         Default is sha1. Changing this updates the algorithm of the existing policy.
@@ -175,7 +175,7 @@ class IkePolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         The human-readable description for the policy.
         Changing this updates the description of the existing policy.
@@ -184,7 +184,7 @@ class IkePolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="encryptionAlgorithm")
-    def encryption_algorithm(self) -> Optional[str]:
+    def encryption_algorithm(self) -> pulumi.Output[Optional[str]]:
         """
         The encryption algorithm. Valid values are 3des, aes-128, aes-192 and so on.
         The default value is aes-128. Changing this updates the existing policy.
@@ -193,7 +193,7 @@ class IkePolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ikeVersion")
-    def ike_version(self) -> Optional[str]:
+    def ike_version(self) -> pulumi.Output[Optional[str]]:
         """
         The IKE mode. A valid value is v1 or v2. Default is v1.
         Changing this updates the existing policy.
@@ -202,7 +202,7 @@ class IkePolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def lifetimes(self) -> List['outputs.IkePolicyLifetime']:
+    def lifetimes(self) -> pulumi.Output[List['outputs.IkePolicyLifetime']]:
         """
         The lifetime of the security association. Consists of Unit and Value.
         """
@@ -210,7 +210,7 @@ class IkePolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the policy. Changing this updates the name of
         the existing policy.
@@ -219,7 +219,7 @@ class IkePolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def pfs(self) -> Optional[str]:
+    def pfs(self) -> pulumi.Output[Optional[str]]:
         """
         The perfect forward secrecy mode. Valid values are Group2, Group5 and Group14. Default is Group5.
         Changing this updates the existing policy.
@@ -228,7 +228,7 @@ class IkePolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="phase1NegotiationMode")
-    def phase1_negotiation_mode(self) -> Optional[str]:
+    def phase1_negotiation_mode(self) -> pulumi.Output[Optional[str]]:
         """
         The IKE mode. A valid value is main, which is the default.
         Changing this updates the existing policy.
@@ -237,7 +237,7 @@ class IkePolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create a VPN service. If omitted, the
@@ -248,7 +248,7 @@ class IkePolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> str:
+    def tenant_id(self) -> pulumi.Output[str]:
         """
         The owner of the policy. Required if admin wants to
         create a service for another policy. Changing this creates a new policy.
@@ -257,7 +257,7 @@ class IkePolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[Mapping[str, Any]]:
+    def value_specs(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         Map of additional options.
         """

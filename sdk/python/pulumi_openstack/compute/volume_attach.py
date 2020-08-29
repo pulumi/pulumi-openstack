@@ -13,7 +13,7 @@ __all__ = ['VolumeAttach']
 
 class VolumeAttach(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  device: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
@@ -153,7 +153,7 @@ class VolumeAttach(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def device(self) -> str:
+    def device(self) -> pulumi.Output[str]:
         """
         See Argument Reference above. _NOTE_: The correctness of this
         information is dependent upon the hypervisor in use. In some cases, this
@@ -163,7 +163,7 @@ class VolumeAttach(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> str:
+    def instance_id(self) -> pulumi.Output[str]:
         """
         The ID of the Instance to attach the Volume to.
         """
@@ -171,7 +171,7 @@ class VolumeAttach(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def multiattach(self) -> Optional[bool]:
+    def multiattach(self) -> pulumi.Output[Optional[bool]]:
         """
         Enable attachment of multiattach-capable volumes.
         """
@@ -179,7 +179,7 @@ class VolumeAttach(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to obtain the V2 Compute client.
         A Compute client is needed to create a volume attachment. If omitted, the
@@ -190,7 +190,7 @@ class VolumeAttach(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> str:
+    def volume_id(self) -> pulumi.Output[str]:
         """
         The ID of the Volume to attach to an Instance.
         """

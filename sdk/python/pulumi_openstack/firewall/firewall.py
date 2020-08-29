@@ -13,7 +13,7 @@ __all__ = ['Firewall']
 
 class Firewall(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin_state_up: Optional[pulumi.Input[bool]] = None,
                  associated_routers: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -176,7 +176,7 @@ class Firewall(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="adminStateUp")
-    def admin_state_up(self) -> Optional[bool]:
+    def admin_state_up(self) -> pulumi.Output[Optional[bool]]:
         """
         Administrative up/down status for the firewall
         (must be "true" or "false" if provided - defaults to "true").
@@ -186,7 +186,7 @@ class Firewall(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="associatedRouters")
-    def associated_routers(self) -> List[str]:
+    def associated_routers(self) -> pulumi.Output[List[str]]:
         """
         Router(s) to associate this firewall instance
         with. Must be a list of strings. Changing this updates the associated routers
@@ -196,7 +196,7 @@ class Firewall(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         A description for the firewall. Changing this
         updates the `description` of an existing firewall.
@@ -205,7 +205,7 @@ class Firewall(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         A name for the firewall. Changing this
         updates the `name` of an existing firewall.
@@ -214,7 +214,7 @@ class Firewall(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="noRouters")
-    def no_routers(self) -> Optional[bool]:
+    def no_routers(self) -> pulumi.Output[Optional[bool]]:
         """
         Should this firewall not be associated with any routers
         (must be "true" or "false" if provide - defaults to "false").
@@ -224,7 +224,7 @@ class Firewall(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="policyId")
-    def policy_id(self) -> str:
+    def policy_id(self) -> pulumi.Output[str]:
         """
         The policy resource id for the firewall. Changing
         this updates the `policy_id` of an existing firewall.
@@ -233,7 +233,7 @@ class Firewall(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to obtain the v1 networking client.
         A networking client is needed to create a firewall. If omitted, the
@@ -244,7 +244,7 @@ class Firewall(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> str:
+    def tenant_id(self) -> pulumi.Output[str]:
         """
         The owner of the floating IP. Required if admin wants
         to create a firewall for another tenant. Changing this creates a new
@@ -254,7 +254,7 @@ class Firewall(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[Mapping[str, Any]]:
+    def value_specs(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         Map of additional options.
         """

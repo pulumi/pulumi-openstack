@@ -13,7 +13,7 @@ __all__ = ['User']
 
 class User(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  databases: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  host: Optional[pulumi.Input[str]] = None,
@@ -105,7 +105,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def databases(self) -> List[str]:
+    def databases(self) -> pulumi.Output[List[str]]:
         """
         A list of database user should have access to.
         """
@@ -113,17 +113,17 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def host(self) -> Optional[str]:
+    def host(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "host")
 
     @property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> str:
+    def instance_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "instance_id")
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         A unique name for the resource.
         """
@@ -131,7 +131,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def password(self) -> str:
+    def password(self) -> pulumi.Output[str]:
         """
         User's password.
         """
@@ -139,7 +139,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         Openstack region resource is created in.
         """

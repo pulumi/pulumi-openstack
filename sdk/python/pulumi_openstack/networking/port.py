@@ -15,7 +15,7 @@ __all__ = ['Port']
 
 class Port(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin_state_up: Optional[pulumi.Input[bool]] = None,
                  allowed_address_pairs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['PortAllowedAddressPairArgs']]]]] = None,
@@ -332,7 +332,7 @@ class Port(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="adminStateUp")
-    def admin_state_up(self) -> bool:
+    def admin_state_up(self) -> pulumi.Output[bool]:
         """
         Administrative up/down status for the port
         (must be `true` or `false` if provided). Changing this updates the
@@ -342,7 +342,7 @@ class Port(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allFixedIps")
-    def all_fixed_ips(self) -> List[str]:
+    def all_fixed_ips(self) -> pulumi.Output[List[str]]:
         """
         The collection of Fixed IP addresses on the port in the
         order returned by the Network v2 API.
@@ -351,7 +351,7 @@ class Port(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allSecurityGroupIds")
-    def all_security_group_ids(self) -> List[str]:
+    def all_security_group_ids(self) -> pulumi.Output[List[str]]:
         """
         The collection of Security Group IDs on the port
         which have been explicitly and implicitly added.
@@ -360,7 +360,7 @@ class Port(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allTags")
-    def all_tags(self) -> List[str]:
+    def all_tags(self) -> pulumi.Output[List[str]]:
         """
         The collection of tags assigned on the port, which have been
         explicitly and implicitly added.
@@ -369,7 +369,7 @@ class Port(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allowedAddressPairs")
-    def allowed_address_pairs(self) -> Optional[List['outputs.PortAllowedAddressPair']]:
+    def allowed_address_pairs(self) -> pulumi.Output[Optional[List['outputs.PortAllowedAddressPair']]]:
         """
         An IP/MAC Address pair of additional IP
         addresses that can be active on this port. The structure is described
@@ -379,7 +379,7 @@ class Port(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def binding(self) -> 'outputs.PortBinding':
+    def binding(self) -> pulumi.Output['outputs.PortBinding']:
         """
         The port binding allows to specify binding information
         for the port. The structure is described below.
@@ -388,7 +388,7 @@ class Port(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         Human-readable description of the port. Changing
         this updates the `description` of an existing port.
@@ -397,7 +397,7 @@ class Port(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="deviceId")
-    def device_id(self) -> str:
+    def device_id(self) -> pulumi.Output[str]:
         """
         The ID of the device attached to the port. Changing this
         creates a new port.
@@ -406,7 +406,7 @@ class Port(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="deviceOwner")
-    def device_owner(self) -> str:
+    def device_owner(self) -> pulumi.Output[str]:
         """
         The device owner of the port. Changing this creates
         a new port.
@@ -415,7 +415,7 @@ class Port(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dnsAssignments")
-    def dns_assignments(self) -> List[Mapping[str, Any]]:
+    def dns_assignments(self) -> pulumi.Output[List[Mapping[str, Any]]]:
         """
         The list of maps representing port DNS assignments.
         """
@@ -423,7 +423,7 @@ class Port(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dnsName")
-    def dns_name(self) -> str:
+    def dns_name(self) -> pulumi.Output[str]:
         """
         The port DNS name. Available, when Neutron DNS extension
         is enabled.
@@ -432,7 +432,7 @@ class Port(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="extraDhcpOptions")
-    def extra_dhcp_options(self) -> Optional[List['outputs.PortExtraDhcpOption']]:
+    def extra_dhcp_options(self) -> pulumi.Output[Optional[List['outputs.PortExtraDhcpOption']]]:
         """
         An extra DHCP option that needs to be configured
         on the port. The structure is described below. Can be specified multiple
@@ -442,7 +442,7 @@ class Port(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="fixedIps")
-    def fixed_ips(self) -> Optional[List['outputs.PortFixedIp']]:
+    def fixed_ips(self) -> pulumi.Output[Optional[List['outputs.PortFixedIp']]]:
         """
         An array of desired IPs for
         this port. The structure is described below.
@@ -451,7 +451,7 @@ class Port(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="macAddress")
-    def mac_address(self) -> str:
+    def mac_address(self) -> pulumi.Output[str]:
         """
         The additional MAC address.
         """
@@ -459,7 +459,7 @@ class Port(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the DHCP option.
         """
@@ -467,7 +467,7 @@ class Port(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="networkId")
-    def network_id(self) -> str:
+    def network_id(self) -> pulumi.Output[str]:
         """
         The ID of the network to attach the port to. Changing
         this creates a new port.
@@ -476,7 +476,7 @@ class Port(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="noFixedIp")
-    def no_fixed_ip(self) -> Optional[bool]:
+    def no_fixed_ip(self) -> pulumi.Output[Optional[bool]]:
         """
         Create a port with no fixed
         IP address. This will also remove any fixed IPs previously set on a port. `true`
@@ -486,7 +486,7 @@ class Port(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="noSecurityGroups")
-    def no_security_groups(self) -> Optional[bool]:
+    def no_security_groups(self) -> pulumi.Output[Optional[bool]]:
         """
         If set to
         `true`, then no security groups are applied to the port. If set to `false` and
@@ -498,7 +498,7 @@ class Port(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="portSecurityEnabled")
-    def port_security_enabled(self) -> bool:
+    def port_security_enabled(self) -> pulumi.Output[bool]:
         """
         Whether to explicitly enable or disable
         port security on the port. Port Security is usually enabled by default, so
@@ -511,7 +511,7 @@ class Port(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="qosPolicyId")
-    def qos_policy_id(self) -> str:
+    def qos_policy_id(self) -> pulumi.Output[str]:
         """
         Reference to the associated QoS policy.
         """
@@ -519,7 +519,7 @@ class Port(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create a port. If omitted, the
@@ -530,7 +530,7 @@ class Port(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityGroupIds")
-    def security_group_ids(self) -> Optional[List[str]]:
+    def security_group_ids(self) -> pulumi.Output[Optional[List[str]]]:
         """
         A list
         of security group IDs to apply to the port. The security groups must be
@@ -541,7 +541,7 @@ class Port(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List[str]]:
+    def tags(self) -> pulumi.Output[Optional[List[str]]]:
         """
         A set of string tags for the port.
         """
@@ -549,7 +549,7 @@ class Port(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> str:
+    def tenant_id(self) -> pulumi.Output[str]:
         """
         The owner of the port. Required if admin wants
         to create a port for another tenant. Changing this creates a new port.
@@ -558,7 +558,7 @@ class Port(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[Mapping[str, Any]]:
+    def value_specs(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         Map of additional options.
         """

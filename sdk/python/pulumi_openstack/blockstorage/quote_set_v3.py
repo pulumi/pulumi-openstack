@@ -13,7 +13,7 @@ __all__ = ['QuoteSetV3']
 
 class QuoteSetV3(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backup_gigabytes: Optional[pulumi.Input[float]] = None,
                  backups: Optional[pulumi.Input[float]] = None,
@@ -166,7 +166,7 @@ class QuoteSetV3(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="backupGigabytes")
-    def backup_gigabytes(self) -> float:
+    def backup_gigabytes(self) -> pulumi.Output[float]:
         """
         Quota value for backup gigabytes. Changing
         this updates the existing quotaset.
@@ -175,7 +175,7 @@ class QuoteSetV3(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def backups(self) -> float:
+    def backups(self) -> pulumi.Output[float]:
         """
         Quota value for backups. Changing this updates the
         existing quotaset.
@@ -184,7 +184,7 @@ class QuoteSetV3(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def gigabytes(self) -> float:
+    def gigabytes(self) -> pulumi.Output[float]:
         """
         Quota value for gigabytes. Changing this updates the
         existing quotaset.
@@ -193,7 +193,7 @@ class QuoteSetV3(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def groups(self) -> float:
+    def groups(self) -> pulumi.Output[float]:
         """
         Quota value for groups. Changing this updates the
         existing quotaset.
@@ -202,7 +202,7 @@ class QuoteSetV3(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="perVolumeGigabytes")
-    def per_volume_gigabytes(self) -> float:
+    def per_volume_gigabytes(self) -> pulumi.Output[float]:
         """
         Quota value for gigabytes per volume .
         Changing this updates the existing quotaset.
@@ -211,7 +211,7 @@ class QuoteSetV3(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> str:
+    def project_id(self) -> pulumi.Output[str]:
         """
         ID of the project to manage quotas. Changing this
         creates a new quotaset.
@@ -220,7 +220,7 @@ class QuoteSetV3(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to create the volume. If
         omitted, the `region` argument of the provider is used. Changing this
@@ -230,7 +230,7 @@ class QuoteSetV3(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def snapshots(self) -> float:
+    def snapshots(self) -> pulumi.Output[float]:
         """
         Quota value for snapshots. Changing this updates the
         existing quotaset.
@@ -239,7 +239,7 @@ class QuoteSetV3(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def volumes(self) -> float:
+    def volumes(self) -> pulumi.Output[float]:
         """
         Quota value for volumes. Changing this updates the
         existing quotaset.

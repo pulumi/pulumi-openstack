@@ -13,7 +13,7 @@ __all__ = ['QosDscpMarkingRule']
 
 class QosDscpMarkingRule(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dscp_mark: Optional[pulumi.Input[float]] = None,
                  qos_policy_id: Optional[pulumi.Input[str]] = None,
@@ -108,7 +108,7 @@ class QosDscpMarkingRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dscpMark")
-    def dscp_mark(self) -> float:
+    def dscp_mark(self) -> pulumi.Output[float]:
         """
         The value of DSCP mark. Changing this updates the DSCP mark value existing
         QoS DSCP marking rule.
@@ -117,7 +117,7 @@ class QosDscpMarkingRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="qosPolicyId")
-    def qos_policy_id(self) -> str:
+    def qos_policy_id(self) -> pulumi.Output[str]:
         """
         The QoS policy reference. Changing this creates a new QoS DSCP marking rule.
         """
@@ -125,7 +125,7 @@ class QosDscpMarkingRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create a Neutron QoS DSCP marking rule. If omitted, the

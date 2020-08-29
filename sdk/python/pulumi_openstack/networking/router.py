@@ -15,7 +15,7 @@ __all__ = ['Router']
 
 class Router(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin_state_up: Optional[pulumi.Input[bool]] = None,
                  availability_zone_hints: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -224,7 +224,7 @@ class Router(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="adminStateUp")
-    def admin_state_up(self) -> bool:
+    def admin_state_up(self) -> pulumi.Output[bool]:
         """
         Administrative up/down status for the router
         (must be "true" or "false" if provided). Changing this updates the
@@ -234,7 +234,7 @@ class Router(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allTags")
-    def all_tags(self) -> List[str]:
+    def all_tags(self) -> pulumi.Output[List[str]]:
         """
         The collection of tags assigned on the router, which have been
         explicitly and implicitly added.
@@ -243,7 +243,7 @@ class Router(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="availabilityZoneHints")
-    def availability_zone_hints(self) -> List[str]:
+    def availability_zone_hints(self) -> pulumi.Output[List[str]]:
         """
         An availability zone is used to make 
         network resources highly available. Used for resources with high availability so that they are scheduled on different availability zones. Changing
@@ -253,7 +253,7 @@ class Router(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         Human-readable description for the router.
         """
@@ -261,7 +261,7 @@ class Router(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def distributed(self) -> bool:
+    def distributed(self) -> pulumi.Output[bool]:
         """
         Indicates whether or not to create a
         distributed router. The default policy setting in Neutron restricts
@@ -271,7 +271,7 @@ class Router(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enableSnat")
-    def enable_snat(self) -> bool:
+    def enable_snat(self) -> pulumi.Output[bool]:
         """
         Enable Source NAT for the router. Valid values are
         "true" or "false". An `external_network_id` has to be set in order to
@@ -283,7 +283,7 @@ class Router(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="externalFixedIps")
-    def external_fixed_ips(self) -> List['outputs.RouterExternalFixedIp']:
+    def external_fixed_ips(self) -> pulumi.Output[List['outputs.RouterExternalFixedIp']]:
         """
         An external fixed IP for the router. This
         can be repeated. The structure is described below. An `external_network_id`
@@ -294,7 +294,7 @@ class Router(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="externalGateway")
-    def external_gateway(self) -> str:
+    def external_gateway(self) -> pulumi.Output[str]:
         """
         The
         network UUID of an external gateway for the router. A router with an
@@ -306,7 +306,7 @@ class Router(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="externalNetworkId")
-    def external_network_id(self) -> str:
+    def external_network_id(self) -> pulumi.Output[str]:
         """
         The network UUID of an external gateway
         for the router. A router with an external gateway is required if any
@@ -317,7 +317,7 @@ class Router(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         A unique name for the router. Changing this
         updates the `name` of an existing router.
@@ -326,7 +326,7 @@ class Router(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to obtain the V2 networking client.
         A networking client is needed to create a router. If omitted, the
@@ -337,7 +337,7 @@ class Router(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List[str]]:
+    def tags(self) -> pulumi.Output[Optional[List[str]]]:
         """
         A set of string tags for the router.
         """
@@ -345,7 +345,7 @@ class Router(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> str:
+    def tenant_id(self) -> pulumi.Output[str]:
         """
         The owner of the floating IP. Required if admin wants
         to create a router for another tenant. Changing this creates a new router.
@@ -354,7 +354,7 @@ class Router(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[Mapping[str, Any]]:
+    def value_specs(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         Map of additional driver-specific options.
         """
@@ -362,7 +362,7 @@ class Router(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vendorOptions")
-    def vendor_options(self) -> Optional['outputs.RouterVendorOptions']:
+    def vendor_options(self) -> pulumi.Output[Optional['outputs.RouterVendorOptions']]:
         """
         Map of additional vendor-specific options.
         Supported options are described below.

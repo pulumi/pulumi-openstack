@@ -15,7 +15,7 @@ __all__ = ['SiteConnection']
 
 class SiteConnection(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin_state_up: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -245,7 +245,7 @@ class SiteConnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="adminStateUp")
-    def admin_state_up(self) -> Optional[bool]:
+    def admin_state_up(self) -> pulumi.Output[Optional[bool]]:
         """
         The administrative state of the resource. Can either be up(true) or down(false).
         Changing this updates the administrative state of the existing connection.
@@ -254,7 +254,7 @@ class SiteConnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         The human-readable description for the connection.
         Changing this updates the description of the existing connection.
@@ -263,7 +263,7 @@ class SiteConnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def dpds(self) -> List['outputs.SiteConnectionDpd']:
+    def dpds(self) -> pulumi.Output[List['outputs.SiteConnectionDpd']]:
         """
         A dictionary with dead peer detection (DPD) protocol controls.
         """
@@ -271,7 +271,7 @@ class SiteConnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ikepolicyId")
-    def ikepolicy_id(self) -> str:
+    def ikepolicy_id(self) -> pulumi.Output[str]:
         """
         The ID of the IKE policy. Changing this creates a new connection.
         """
@@ -279,7 +279,7 @@ class SiteConnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def initiator(self) -> str:
+    def initiator(self) -> pulumi.Output[str]:
         """
         A valid value is response-only or bi-directional. Default is bi-directional.
         """
@@ -287,7 +287,7 @@ class SiteConnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ipsecpolicyId")
-    def ipsecpolicy_id(self) -> str:
+    def ipsecpolicy_id(self) -> pulumi.Output[str]:
         """
         The ID of the IPsec policy. Changing this creates a new connection.
         """
@@ -295,7 +295,7 @@ class SiteConnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="localEpGroupId")
-    def local_ep_group_id(self) -> Optional[str]:
+    def local_ep_group_id(self) -> pulumi.Output[Optional[str]]:
         """
         The ID for the endpoint group that contains private subnets for the local side of the connection.
         You must specify this parameter with the peer_ep_group_id parameter unless
@@ -306,7 +306,7 @@ class SiteConnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="localId")
-    def local_id(self) -> Optional[str]:
+    def local_id(self) -> pulumi.Output[Optional[str]]:
         """
         An ID to be used instead of the external IP address for a virtual router used in traffic between instances on different networks in east-west traffic.
         Most often, local ID would be domain name, email address, etc.
@@ -316,7 +316,7 @@ class SiteConnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def mtu(self) -> float:
+    def mtu(self) -> pulumi.Output[float]:
         """
         The maximum transmission unit (MTU) value to address fragmentation.
         Minimum value is 68 for IPv4, and 1280 for IPv6.
@@ -325,7 +325,7 @@ class SiteConnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the connection. Changing this updates the name of
         the existing connection.
@@ -334,7 +334,7 @@ class SiteConnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="peerAddress")
-    def peer_address(self) -> str:
+    def peer_address(self) -> pulumi.Output[str]:
         """
         The peer gateway public IPv4 or IPv6 address or FQDN.
         """
@@ -342,7 +342,7 @@ class SiteConnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="peerCidrs")
-    def peer_cidrs(self) -> Optional[List[str]]:
+    def peer_cidrs(self) -> pulumi.Output[Optional[List[str]]]:
         """
         Unique list of valid peer private CIDRs in the form < net_address > / < prefix > .
         """
@@ -350,7 +350,7 @@ class SiteConnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="peerEpGroupId")
-    def peer_ep_group_id(self) -> Optional[str]:
+    def peer_ep_group_id(self) -> pulumi.Output[Optional[str]]:
         """
         The ID for the endpoint group that contains private CIDRs in the form < net_address > / < prefix > for the peer side of the connection.
         You must specify this parameter with the local_ep_group_id parameter unless in backward-compatible mode
@@ -360,7 +360,7 @@ class SiteConnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="peerId")
-    def peer_id(self) -> str:
+    def peer_id(self) -> pulumi.Output[str]:
         """
         The peer router identity for authentication. A valid value is an IPv4 address, IPv6 address, e-mail address, key ID, or FQDN.
         Typically, this value matches the peer_address value.
@@ -370,7 +370,7 @@ class SiteConnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def psk(self) -> str:
+    def psk(self) -> pulumi.Output[str]:
         """
         The pre-shared key. A valid value is any string.
         """
@@ -378,7 +378,7 @@ class SiteConnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create an IPSec site connection. If omitted, the
@@ -389,7 +389,7 @@ class SiteConnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> str:
+    def tenant_id(self) -> pulumi.Output[str]:
         """
         The owner of the connection. Required if admin wants to
         create a connection for another project. Changing this creates a new connection.
@@ -398,7 +398,7 @@ class SiteConnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[Mapping[str, Any]]:
+    def value_specs(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         Map of additional options.
         """
@@ -406,7 +406,7 @@ class SiteConnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vpnserviceId")
-    def vpnservice_id(self) -> str:
+    def vpnservice_id(self) -> pulumi.Output[str]:
         """
         The ID of the VPN service. Changing this creates a new connection.
         """

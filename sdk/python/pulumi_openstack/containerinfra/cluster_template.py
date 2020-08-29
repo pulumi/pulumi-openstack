@@ -13,7 +13,7 @@ __all__ = ['ClusterTemplate']
 
 class ClusterTemplate(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  apiserver_port: Optional[pulumi.Input[float]] = None,
                  cluster_distro: Optional[pulumi.Input[str]] = None,
@@ -379,162 +379,162 @@ class ClusterTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="apiserverPort")
-    def apiserver_port(self) -> Optional[float]:
+    def apiserver_port(self) -> pulumi.Output[Optional[float]]:
         return pulumi.get(self, "apiserver_port")
 
     @property
     @pulumi.getter(name="clusterDistro")
-    def cluster_distro(self) -> str:
+    def cluster_distro(self) -> pulumi.Output[str]:
         return pulumi.get(self, "cluster_distro")
 
     @property
     @pulumi.getter
-    def coe(self) -> str:
+    def coe(self) -> pulumi.Output[str]:
         return pulumi.get(self, "coe")
 
     @property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> str:
+    def created_at(self) -> pulumi.Output[str]:
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter(name="dnsNameserver")
-    def dns_nameserver(self) -> Optional[str]:
+    def dns_nameserver(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "dns_nameserver")
 
     @property
     @pulumi.getter(name="dockerStorageDriver")
-    def docker_storage_driver(self) -> Optional[str]:
+    def docker_storage_driver(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "docker_storage_driver")
 
     @property
     @pulumi.getter(name="dockerVolumeSize")
-    def docker_volume_size(self) -> Optional[float]:
+    def docker_volume_size(self) -> pulumi.Output[Optional[float]]:
         return pulumi.get(self, "docker_volume_size")
 
     @property
     @pulumi.getter(name="externalNetworkId")
-    def external_network_id(self) -> Optional[str]:
+    def external_network_id(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "external_network_id")
 
     @property
     @pulumi.getter(name="fixedNetwork")
-    def fixed_network(self) -> Optional[str]:
+    def fixed_network(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "fixed_network")
 
     @property
     @pulumi.getter(name="fixedSubnet")
-    def fixed_subnet(self) -> Optional[str]:
+    def fixed_subnet(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "fixed_subnet")
 
     @property
     @pulumi.getter
-    def flavor(self) -> Optional[str]:
+    def flavor(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "flavor")
 
     @property
     @pulumi.getter(name="floatingIpEnabled")
-    def floating_ip_enabled(self) -> Optional[bool]:
+    def floating_ip_enabled(self) -> pulumi.Output[Optional[bool]]:
         return pulumi.get(self, "floating_ip_enabled")
 
     @property
     @pulumi.getter(name="httpProxy")
-    def http_proxy(self) -> Optional[str]:
+    def http_proxy(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "http_proxy")
 
     @property
     @pulumi.getter(name="httpsProxy")
-    def https_proxy(self) -> Optional[str]:
+    def https_proxy(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "https_proxy")
 
     @property
     @pulumi.getter
-    def image(self) -> str:
+    def image(self) -> pulumi.Output[str]:
         return pulumi.get(self, "image")
 
     @property
     @pulumi.getter(name="insecureRegistry")
-    def insecure_registry(self) -> Optional[str]:
+    def insecure_registry(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "insecure_registry")
 
     @property
     @pulumi.getter(name="keypairId")
-    def keypair_id(self) -> Optional[str]:
+    def keypair_id(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "keypair_id")
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[Mapping[str, Any]]:
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter(name="masterFlavor")
-    def master_flavor(self) -> Optional[str]:
+    def master_flavor(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "master_flavor")
 
     @property
     @pulumi.getter(name="masterLbEnabled")
-    def master_lb_enabled(self) -> Optional[bool]:
+    def master_lb_enabled(self) -> pulumi.Output[Optional[bool]]:
         return pulumi.get(self, "master_lb_enabled")
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="networkDriver")
-    def network_driver(self) -> str:
+    def network_driver(self) -> pulumi.Output[str]:
         return pulumi.get(self, "network_driver")
 
     @property
     @pulumi.getter(name="noProxy")
-    def no_proxy(self) -> Optional[str]:
+    def no_proxy(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "no_proxy")
 
     @property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> str:
+    def project_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter
-    def public(self) -> Optional[bool]:
+    def public(self) -> pulumi.Output[Optional[bool]]:
         return pulumi.get(self, "public")
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="registryEnabled")
-    def registry_enabled(self) -> Optional[bool]:
+    def registry_enabled(self) -> pulumi.Output[Optional[bool]]:
         return pulumi.get(self, "registry_enabled")
 
     @property
     @pulumi.getter(name="serverType")
-    def server_type(self) -> str:
+    def server_type(self) -> pulumi.Output[str]:
         return pulumi.get(self, "server_type")
 
     @property
     @pulumi.getter(name="tlsDisabled")
-    def tls_disabled(self) -> Optional[bool]:
+    def tls_disabled(self) -> pulumi.Output[Optional[bool]]:
         return pulumi.get(self, "tls_disabled")
 
     @property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> str:
+    def updated_at(self) -> pulumi.Output[str]:
         return pulumi.get(self, "updated_at")
 
     @property
     @pulumi.getter(name="userId")
-    def user_id(self) -> str:
+    def user_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "user_id")
 
     @property
     @pulumi.getter(name="volumeDriver")
-    def volume_driver(self) -> Optional[str]:
+    def volume_driver(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "volume_driver")
 
     def translate_output_property(self, prop):

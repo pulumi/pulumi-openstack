@@ -13,7 +13,7 @@ __all__ = ['ContainerObject']
 
 class ContainerObject(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  container_name: Optional[pulumi.Input[str]] = None,
                  content: Optional[pulumi.Input[str]] = None,
@@ -280,7 +280,7 @@ class ContainerObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="containerName")
-    def container_name(self) -> str:
+    def container_name(self) -> pulumi.Output[str]:
         """
         A unique (within an account) name for the container. 
         The container name must be from 1 to 256 characters long and can start
@@ -293,7 +293,7 @@ class ContainerObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def content(self) -> Optional[str]:
+    def content(self) -> pulumi.Output[Optional[str]]:
         """
         A string representing the content of the object. Conflicts with
         `source` and `copy_from`.
@@ -302,7 +302,7 @@ class ContainerObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="contentDisposition")
-    def content_disposition(self) -> str:
+    def content_disposition(self) -> pulumi.Output[str]:
         """
         A string which specifies the override behavior for 
         the browser. For example, this header might specify that the browser use a download
@@ -312,7 +312,7 @@ class ContainerObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="contentEncoding")
-    def content_encoding(self) -> str:
+    def content_encoding(self) -> pulumi.Output[str]:
         """
         A string representing the value of the Content-Encoding
         metadata.
@@ -321,7 +321,7 @@ class ContainerObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="contentLength")
-    def content_length(self) -> float:
+    def content_length(self) -> pulumi.Output[float]:
         """
         If the operation succeeds, this value is zero (0) or the 
         length of informational or error text in the response body.
@@ -330,7 +330,7 @@ class ContainerObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="contentType")
-    def content_type(self) -> str:
+    def content_type(self) -> pulumi.Output[str]:
         """
         A string which sets the MIME type for the object.
         """
@@ -338,7 +338,7 @@ class ContainerObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="copyFrom")
-    def copy_from(self) -> Optional[str]:
+    def copy_from(self) -> pulumi.Output[Optional[str]]:
         """
         A string representing the name of an object 
         used to create the new object by copying the `copy_from` object. The value is in form
@@ -350,7 +350,7 @@ class ContainerObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def date(self) -> str:
+    def date(self) -> pulumi.Output[str]:
         """
         The date and time the system responded to the request, using the preferred 
         format of RFC 7231 as shown in this example Thu, 16 Jun 2016 15:10:38 GMT. The
@@ -360,7 +360,7 @@ class ContainerObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="deleteAfter")
-    def delete_after(self) -> Optional[float]:
+    def delete_after(self) -> pulumi.Output[Optional[float]]:
         """
         An integer representing the number of seconds after which the
         system removes the object. Internally, the Object Storage system stores this value in
@@ -370,7 +370,7 @@ class ContainerObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="deleteAt")
-    def delete_at(self) -> str:
+    def delete_at(self) -> pulumi.Output[str]:
         """
         An string representing the date when the system removes the object. 
         For example, "2015-08-26" is equivalent to Mon, Wed, 26 Aug 2015 00:00:00 GMT.
@@ -379,7 +379,7 @@ class ContainerObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="detectContentType")
-    def detect_content_type(self) -> Optional[bool]:
+    def detect_content_type(self) -> pulumi.Output[Optional[bool]]:
         """
         If set to true, Object Storage guesses the content 
         type based on the file extension and ignores the value sent in the Content-Type
@@ -389,7 +389,7 @@ class ContainerObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def etag(self) -> str:
+    def etag(self) -> pulumi.Output[str]:
         """
         Used to trigger updates. The only meaningful value is ${md5(file("path/to/file"))}.
         """
@@ -397,7 +397,7 @@ class ContainerObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="lastModified")
-    def last_modified(self) -> str:
+    def last_modified(self) -> pulumi.Output[str]:
         """
         The date and time when the object was last modified. The date and time 
         stamp format is ISO 8601:
@@ -410,12 +410,12 @@ class ContainerObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def metadata(self) -> Optional[Mapping[str, Any]]:
+    def metadata(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         return pulumi.get(self, "metadata")
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         A unique name for the object.
         """
@@ -423,7 +423,7 @@ class ContainerObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="objectManifest")
-    def object_manifest(self) -> str:
+    def object_manifest(self) -> pulumi.Output[str]:
         """
         A string set to specify that this is a dynamic large 
         object manifest object. The value is the container and object name prefix of the
@@ -435,7 +435,7 @@ class ContainerObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to create the container. If
         omitted, the `region` argument of the provider is used. Changing this
@@ -445,7 +445,7 @@ class ContainerObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def source(self) -> Optional[str]:
+    def source(self) -> pulumi.Output[Optional[str]]:
         """
         A string representing the local path of a file which will be used
         as the object's content. Conflicts with `source` and `copy_from`.
@@ -454,7 +454,7 @@ class ContainerObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="transId")
-    def trans_id(self) -> str:
+    def trans_id(self) -> pulumi.Output[str]:
         """
         A unique transaction ID for this request. Your service provider might 
         need this value if you report a problem.

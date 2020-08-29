@@ -13,7 +13,7 @@ __all__ = ['FloatingIp']
 
 class FloatingIp(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  address: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -198,7 +198,7 @@ class FloatingIp(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def address(self) -> str:
+    def address(self) -> pulumi.Output[str]:
         """
         The actual/specific floating IP to obtain. By default,
         non-admin users are not able to specify a floating IP, so you must either be
@@ -209,7 +209,7 @@ class FloatingIp(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allTags")
-    def all_tags(self) -> List[str]:
+    def all_tags(self) -> pulumi.Output[List[str]]:
         """
         The collection of tags assigned on the floating IP, which have
         been explicitly and implicitly added.
@@ -218,7 +218,7 @@ class FloatingIp(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         Human-readable description for the floating IP.
         """
@@ -226,7 +226,7 @@ class FloatingIp(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dnsDomain")
-    def dns_domain(self) -> str:
+    def dns_domain(self) -> pulumi.Output[str]:
         """
         The floating IP DNS domain. Available, when Neutron
         DNS extension is enabled. The data in this attribute will be published in an
@@ -237,7 +237,7 @@ class FloatingIp(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dnsName")
-    def dns_name(self) -> str:
+    def dns_name(self) -> pulumi.Output[str]:
         """
         The floating IP DNS name. Available, when Neutron DNS
         extension is enabled. The data in this attribute will be published in an
@@ -248,7 +248,7 @@ class FloatingIp(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="fixedIp")
-    def fixed_ip(self) -> str:
+    def fixed_ip(self) -> pulumi.Output[str]:
         """
         Fixed IP of the port to associate with this floating IP. Required if
         the port has multiple fixed IPs.
@@ -257,7 +257,7 @@ class FloatingIp(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def pool(self) -> str:
+    def pool(self) -> pulumi.Output[str]:
         """
         The name of the pool from which to obtain the floating
         IP. Changing this creates a new floating IP.
@@ -266,7 +266,7 @@ class FloatingIp(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="portId")
-    def port_id(self) -> str:
+    def port_id(self) -> pulumi.Output[str]:
         """
         ID of an existing port with at least one IP address to
         associate with this floating IP.
@@ -275,7 +275,7 @@ class FloatingIp(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create a floating IP that can be used with
@@ -287,7 +287,7 @@ class FloatingIp(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="subnetId")
-    def subnet_id(self) -> Optional[str]:
+    def subnet_id(self) -> pulumi.Output[Optional[str]]:
         """
         The subnet ID of the floating IP pool. Specify this if
         the floating IP network has multiple subnets.
@@ -296,7 +296,7 @@ class FloatingIp(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List[str]]:
+    def tags(self) -> pulumi.Output[Optional[List[str]]]:
         """
         A set of string tags for the floating IP.
         """
@@ -304,7 +304,7 @@ class FloatingIp(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> str:
+    def tenant_id(self) -> pulumi.Output[str]:
         """
         The target tenant ID in which to allocate the floating
         IP, if you specify this together with a port_id, make sure the target port
@@ -315,7 +315,7 @@ class FloatingIp(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[Mapping[str, Any]]:
+    def value_specs(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         Map of additional options.
         """

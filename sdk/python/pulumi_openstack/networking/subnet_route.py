@@ -13,7 +13,7 @@ __all__ = ['SubnetRoute']
 
 class SubnetRoute(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  destination_cidr: Optional[pulumi.Input[str]] = None,
                  next_hop: Optional[pulumi.Input[str]] = None,
@@ -127,7 +127,7 @@ class SubnetRoute(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="destinationCidr")
-    def destination_cidr(self) -> str:
+    def destination_cidr(self) -> pulumi.Output[str]:
         """
         CIDR block to match on the packet’s destination IP. Changing
         this creates a new routing entry.
@@ -136,7 +136,7 @@ class SubnetRoute(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nextHop")
-    def next_hop(self) -> str:
+    def next_hop(self) -> pulumi.Output[str]:
         """
         IP address of the next hop gateway.  Changing
         this creates a new routing entry.
@@ -145,7 +145,7 @@ class SubnetRoute(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to obtain the V2 networking client.
         A networking client is needed to configure a routing entry on a subnet. If omitted, the
@@ -156,7 +156,7 @@ class SubnetRoute(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="subnetId")
-    def subnet_id(self) -> str:
+    def subnet_id(self) -> pulumi.Output[str]:
         """
         ID of the subnet this routing entry belongs to. Changing
         this creates a new routing entry.

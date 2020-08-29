@@ -13,7 +13,7 @@ __all__ = ['L7RuleV2']
 
 class L7RuleV2(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin_state_up: Optional[pulumi.Input[bool]] = None,
                  compare_type: Optional[pulumi.Input[str]] = None,
@@ -190,7 +190,7 @@ class L7RuleV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="adminStateUp")
-    def admin_state_up(self) -> Optional[bool]:
+    def admin_state_up(self) -> pulumi.Output[Optional[bool]]:
         """
         The administrative state of the L7 Rule.
         A valid value is true (UP) or false (DOWN).
@@ -199,7 +199,7 @@ class L7RuleV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="compareType")
-    def compare_type(self) -> str:
+    def compare_type(self) -> pulumi.Output[str]:
         """
         The comparison type for the L7 rule - can either be
         CONTAINS, STARTS\_WITH, ENDS_WITH, EQUAL_TO or REGEX
@@ -208,7 +208,7 @@ class L7RuleV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def invert(self) -> Optional[bool]:
+    def invert(self) -> pulumi.Output[Optional[bool]]:
         """
         When true the logic of the rule is inverted. For example, with invert
         true, equal to would become not equal to. Default is false.
@@ -217,7 +217,7 @@ class L7RuleV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def key(self) -> Optional[str]:
+    def key(self) -> pulumi.Output[Optional[str]]:
         """
         The key to use for the comparison. For example, the name of the cookie to
         evaluate. Valid when `type` is set to COOKIE or HEADER.
@@ -226,7 +226,7 @@ class L7RuleV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="l7policyId")
-    def l7policy_id(self) -> str:
+    def l7policy_id(self) -> pulumi.Output[str]:
         """
         The ID of the L7 Policy to query. Changing this creates a new
         L7 Rule.
@@ -235,7 +235,7 @@ class L7RuleV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="listenerId")
-    def listener_id(self) -> str:
+    def listener_id(self) -> pulumi.Output[str]:
         """
         The ID of the Listener owning this resource.
         """
@@ -243,7 +243,7 @@ class L7RuleV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create an . If omitted, the
@@ -254,7 +254,7 @@ class L7RuleV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> str:
+    def tenant_id(self) -> pulumi.Output[str]:
         """
         Required for admins. The UUID of the tenant who owns
         the L7 Rule.  Only administrative users can specify a tenant UUID
@@ -264,7 +264,7 @@ class L7RuleV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def type(self) -> str:
+    def type(self) -> pulumi.Output[str]:
         """
         The L7 Rule type - can either be COOKIE, FILE\_TYPE, HEADER,
         HOST\_NAME or PATH.
@@ -273,7 +273,7 @@ class L7RuleV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def value(self) -> str:
+    def value(self) -> pulumi.Output[str]:
         """
         The value to use for the comparison. For example, the file type to
         compare.

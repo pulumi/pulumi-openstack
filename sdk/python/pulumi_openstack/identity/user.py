@@ -15,7 +15,7 @@ __all__ = ['User']
 
 class User(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  default_project_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -199,7 +199,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultProjectId")
-    def default_project_id(self) -> str:
+    def default_project_id(self) -> pulumi.Output[str]:
         """
         The default project this user belongs to.
         """
@@ -207,7 +207,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         A description of the user.
         """
@@ -215,7 +215,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="domainId")
-    def domain_id(self) -> str:
+    def domain_id(self) -> pulumi.Output[str]:
         """
         The domain this user belongs to.
         """
@@ -223,7 +223,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def enabled(self) -> Optional[bool]:
+    def enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether the user is enabled or disabled. Valid
         values are `true` and `false`.
@@ -232,7 +232,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def extra(self) -> Optional[Mapping[str, Any]]:
+    def extra(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         Free-form key/value pairs of extra information.
         """
@@ -240,7 +240,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ignoreChangePasswordUponFirstUse")
-    def ignore_change_password_upon_first_use(self) -> Optional[bool]:
+    def ignore_change_password_upon_first_use(self) -> pulumi.Output[Optional[bool]]:
         """
         User will not have to
         change their password upon first use. Valid values are `true` and `false`.
@@ -249,7 +249,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ignoreLockoutFailureAttempts")
-    def ignore_lockout_failure_attempts(self) -> Optional[bool]:
+    def ignore_lockout_failure_attempts(self) -> pulumi.Output[Optional[bool]]:
         """
         User will not have a failure
         lockout placed on their account. Valid values are `true` and `false`.
@@ -258,7 +258,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ignorePasswordExpiry")
-    def ignore_password_expiry(self) -> Optional[bool]:
+    def ignore_password_expiry(self) -> pulumi.Output[Optional[bool]]:
         """
         User's password will not expire.
         Valid values are `true` and `false`.
@@ -267,7 +267,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="multiFactorAuthEnabled")
-    def multi_factor_auth_enabled(self) -> Optional[bool]:
+    def multi_factor_auth_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether to enable multi-factor
         authentication. Valid values are `true` and `false`.
@@ -276,7 +276,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="multiFactorAuthRules")
-    def multi_factor_auth_rules(self) -> Optional[List['outputs.UserMultiFactorAuthRule']]:
+    def multi_factor_auth_rules(self) -> pulumi.Output[Optional[List['outputs.UserMultiFactorAuthRule']]]:
         """
         A multi-factor authentication rule.
         The structure is documented below. Please see the
@@ -287,7 +287,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the user.
         """
@@ -295,7 +295,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def password(self) -> Optional[str]:
+    def password(self) -> pulumi.Output[Optional[str]]:
         """
         The password for the user.
         """
@@ -303,7 +303,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to obtain the V3 Keystone client.
         If omitted, the `region` argument of the provider is used. Changing this

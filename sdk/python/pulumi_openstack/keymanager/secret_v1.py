@@ -15,7 +15,7 @@ __all__ = ['SecretV1']
 
 class SecretV1(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acl: Optional[pulumi.Input[pulumi.InputType['SecretV1AclArgs']]] = None,
                  algorithm: Optional[pulumi.Input[str]] = None,
@@ -181,7 +181,7 @@ class SecretV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def acl(self) -> 'outputs.SecretV1Acl':
+    def acl(self) -> pulumi.Output['outputs.SecretV1Acl']:
         """
         Allows to control an access to a secret. Currently only the
         `read` operation is supported. If not specified, the secret is accessible
@@ -191,7 +191,7 @@ class SecretV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def algorithm(self) -> str:
+    def algorithm(self) -> pulumi.Output[str]:
         """
         Metadata provided by a user or system for informational purposes.
         """
@@ -199,7 +199,7 @@ class SecretV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allMetadata")
-    def all_metadata(self) -> Mapping[str, Any]:
+    def all_metadata(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         The map of metadata, assigned on the secret, which has been
         explicitly and implicitly added.
@@ -208,7 +208,7 @@ class SecretV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="bitLength")
-    def bit_length(self) -> float:
+    def bit_length(self) -> pulumi.Output[float]:
         """
         Metadata provided by a user or system for informational purposes.
         """
@@ -216,7 +216,7 @@ class SecretV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="contentTypes")
-    def content_types(self) -> Mapping[str, Any]:
+    def content_types(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         The map of the content types, assigned on the secret.
         """
@@ -224,7 +224,7 @@ class SecretV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> str:
+    def created_at(self) -> pulumi.Output[str]:
         """
         The date the secret ACL was created.
         """
@@ -232,7 +232,7 @@ class SecretV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="creatorId")
-    def creator_id(self) -> str:
+    def creator_id(self) -> pulumi.Output[str]:
         """
         The creator of the secret.
         """
@@ -240,7 +240,7 @@ class SecretV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def expiration(self) -> Optional[str]:
+    def expiration(self) -> pulumi.Output[Optional[str]]:
         """
         The expiration time of the secret in the RFC3339 timestamp format (e.g. `2019-03-09T12:58:49Z`). If omitted, a secret will never expire. Changing this creates a new secret.
         """
@@ -248,7 +248,7 @@ class SecretV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def metadata(self) -> Optional[Mapping[str, Any]]:
+    def metadata(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         Additional Metadata for the secret.
         """
@@ -256,7 +256,7 @@ class SecretV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def mode(self) -> str:
+    def mode(self) -> pulumi.Output[str]:
         """
         Metadata provided by a user or system for informational purposes.
         """
@@ -264,7 +264,7 @@ class SecretV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Human-readable name for the Secret. Does not have
         to be unique.
@@ -273,7 +273,7 @@ class SecretV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def payload(self) -> str:
+    def payload(self) -> pulumi.Output[str]:
         """
         The secret's data to be stored. **payload\_content\_type** must also be supplied if **payload** is included.
         """
@@ -281,7 +281,7 @@ class SecretV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="payloadContentEncoding")
-    def payload_content_encoding(self) -> Optional[str]:
+    def payload_content_encoding(self) -> pulumi.Output[Optional[str]]:
         """
         (required if **payload** is encoded) The encoding used for the payload to be able to include it in the JSON request. Must be either `base64` or `binary`.
         """
@@ -289,7 +289,7 @@ class SecretV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="payloadContentType")
-    def payload_content_type(self) -> Optional[str]:
+    def payload_content_type(self) -> pulumi.Output[Optional[str]]:
         """
         (required if **payload** is included) The media type for the content of the payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.
         """
@@ -297,7 +297,7 @@ class SecretV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to obtain the V1 KeyManager client.
         A KeyManager client is needed to create a secret. If omitted, the
@@ -308,7 +308,7 @@ class SecretV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="secretRef")
-    def secret_ref(self) -> str:
+    def secret_ref(self) -> pulumi.Output[str]:
         """
         The secret reference / where to find the secret.
         """
@@ -316,7 +316,7 @@ class SecretV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="secretType")
-    def secret_type(self) -> str:
+    def secret_type(self) -> pulumi.Output[str]:
         """
         Used to indicate the type of secret being stored. For more information see [Secret types](https://docs.openstack.org/barbican/latest/api/reference/secret_types.html).
         """
@@ -324,7 +324,7 @@ class SecretV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> str:
+    def status(self) -> pulumi.Output[str]:
         """
         The status of the secret.
         """
@@ -332,7 +332,7 @@ class SecretV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> str:
+    def updated_at(self) -> pulumi.Output[str]:
         """
         The date the secret ACL was last updated.
         """

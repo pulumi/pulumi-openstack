@@ -13,7 +13,7 @@ __all__ = ['ImageAccessAccept']
 
 class ImageAccessAccept(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
                  member_id: Optional[pulumi.Input[str]] = None,
@@ -134,7 +134,7 @@ class ImageAccessAccept(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> str:
+    def created_at(self) -> pulumi.Output[str]:
         """
         The date the image membership was created.
         """
@@ -142,7 +142,7 @@ class ImageAccessAccept(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="imageId")
-    def image_id(self) -> str:
+    def image_id(self) -> pulumi.Output[str]:
         """
         The proposed image ID.
         """
@@ -150,7 +150,7 @@ class ImageAccessAccept(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="memberId")
-    def member_id(self) -> str:
+    def member_id(self) -> pulumi.Output[str]:
         """
         The member ID, e.g. the target project ID. Optional
         for admin accounts. Defaults to the current scope project ID.
@@ -159,7 +159,7 @@ class ImageAccessAccept(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to obtain the V2 Glance client.
         A Glance client is needed to manage Image memberships. If omitted, the
@@ -170,7 +170,7 @@ class ImageAccessAccept(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def schema(self) -> str:
+    def schema(self) -> pulumi.Output[str]:
         """
         The membership schema.
         """
@@ -178,7 +178,7 @@ class ImageAccessAccept(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> str:
+    def status(self) -> pulumi.Output[str]:
         """
         The membership proposal status. Can either be
         `accepted`, `rejected` or `pending`.
@@ -187,7 +187,7 @@ class ImageAccessAccept(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> str:
+    def updated_at(self) -> pulumi.Output[str]:
         """
         The date the image membership was last updated.
         """

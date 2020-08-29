@@ -15,7 +15,7 @@ __all__ = ['Configuration']
 
 class Configuration(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  configurations: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ConfigurationConfigurationArgs']]]]] = None,
                  datastore: Optional[pulumi.Input[pulumi.InputType['ConfigurationDatastoreArgs']]] = None,
@@ -126,7 +126,7 @@ class Configuration(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def configurations(self) -> Optional[List['outputs.ConfigurationConfiguration']]:
+    def configurations(self) -> pulumi.Output[Optional[List['outputs.ConfigurationConfiguration']]]:
         """
         An array of configuration parameter name and value. Can be specified multiple times. The configuration object structure is documented below.
         """
@@ -134,7 +134,7 @@ class Configuration(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def datastore(self) -> 'outputs.ConfigurationDatastore':
+    def datastore(self) -> pulumi.Output['outputs.ConfigurationDatastore']:
         """
         An array of database engine type and version. The datastore
         object structure is documented below. Changing this creates resource.
@@ -143,7 +143,7 @@ class Configuration(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> str:
+    def description(self) -> pulumi.Output[str]:
         """
         Description of the resource.
         """
@@ -151,7 +151,7 @@ class Configuration(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Configuration parameter name. Changing this creates a new resource.
         """
@@ -159,7 +159,7 @@ class Configuration(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to create the db instance. Changing this
         creates a new instance.

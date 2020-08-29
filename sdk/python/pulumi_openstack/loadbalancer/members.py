@@ -15,7 +15,7 @@ __all__ = ['Members']
 
 class Members(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  members: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MembersMemberArgs']]]]] = None,
                  pool_id: Optional[pulumi.Input[str]] = None,
@@ -123,7 +123,7 @@ class Members(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def members(self) -> Optional[List['outputs.MembersMember']]:
+    def members(self) -> pulumi.Output[Optional[List['outputs.MembersMember']]]:
         """
         A set of dictionaries containing member parameters. The
         structure is described below.
@@ -132,7 +132,7 @@ class Members(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="poolId")
-    def pool_id(self) -> str:
+    def pool_id(self) -> pulumi.Output[str]:
         """
         The id of the pool that members will be assigned to.
         Changing this creates a new members resource.
@@ -141,7 +141,7 @@ class Members(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create pool members. If omitted, the

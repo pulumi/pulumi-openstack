@@ -13,7 +13,7 @@ __all__ = ['AddressScope']
 
 class AddressScope(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ip_version: Optional[pulumi.Input[float]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -139,7 +139,7 @@ class AddressScope(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ipVersion")
-    def ip_version(self) -> Optional[float]:
+    def ip_version(self) -> pulumi.Output[Optional[float]]:
         """
         IP version, either 4 (default) or 6. Changing this
         creates a new address-scope.
@@ -148,7 +148,7 @@ class AddressScope(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the address-scope. Changing this updates the
         name of the existing address-scope.
@@ -157,7 +157,7 @@ class AddressScope(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> str:
+    def project_id(self) -> pulumi.Output[str]:
         """
         The owner of the address-scope. Required if admin
         wants to create a address-scope for another project. Changing this creates a
@@ -167,7 +167,7 @@ class AddressScope(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create a Neutron address-scope. If omitted,
@@ -178,7 +178,7 @@ class AddressScope(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def shared(self) -> bool:
+    def shared(self) -> pulumi.Output[bool]:
         """
         Indicates whether this address-scope is shared across
         all projects. Changing this updates the shared status of the existing

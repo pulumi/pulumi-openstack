@@ -13,7 +13,7 @@ __all__ = ['QuotaV2']
 
 class QuotaV2(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  floatingip: Optional[pulumi.Input[float]] = None,
                  network: Optional[pulumi.Input[float]] = None,
@@ -164,7 +164,7 @@ class QuotaV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def floatingip(self) -> float:
+    def floatingip(self) -> pulumi.Output[float]:
         """
         Quota value for floating IPs. Changing this updates the
         existing quota.
@@ -173,7 +173,7 @@ class QuotaV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def network(self) -> float:
+    def network(self) -> pulumi.Output[float]:
         """
         Quota value for networks. Changing this updates the
         existing quota.
@@ -182,7 +182,7 @@ class QuotaV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def port(self) -> float:
+    def port(self) -> pulumi.Output[float]:
         """
         Quota value for ports. Changing this updates the
         existing quota.
@@ -191,7 +191,7 @@ class QuotaV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> str:
+    def project_id(self) -> pulumi.Output[str]:
         """
         ID of the project to manage quota. Changing this
         creates new quota.
@@ -200,7 +200,7 @@ class QuotaV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="rbacPolicy")
-    def rbac_policy(self) -> float:
+    def rbac_policy(self) -> pulumi.Output[float]:
         """
         Quota value for RBAC policies.
         Changing this updates the existing quota.
@@ -209,7 +209,7 @@ class QuotaV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to create the quota. If
         omitted, the `region` argument of the provider is used. Changing this
@@ -219,7 +219,7 @@ class QuotaV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def router(self) -> float:
+    def router(self) -> pulumi.Output[float]:
         """
         Quota value for routers. Changing this updates the
         existing quota.
@@ -228,7 +228,7 @@ class QuotaV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityGroup")
-    def security_group(self) -> float:
+    def security_group(self) -> pulumi.Output[float]:
         """
         Quota value for security groups. Changing
         this updates the existing quota.
@@ -237,7 +237,7 @@ class QuotaV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityGroupRule")
-    def security_group_rule(self) -> float:
+    def security_group_rule(self) -> pulumi.Output[float]:
         """
         Quota value for security group rules.
         Changing this updates the existing quota.
@@ -246,7 +246,7 @@ class QuotaV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def subnet(self) -> float:
+    def subnet(self) -> pulumi.Output[float]:
         """
         Quota value for subnets. Changing
         this updates the existing quota.
@@ -255,7 +255,7 @@ class QuotaV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def subnetpool(self) -> float:
+    def subnetpool(self) -> pulumi.Output[float]:
         """
         Quota value for subnetpools.
         Changing this updates the existing quota.

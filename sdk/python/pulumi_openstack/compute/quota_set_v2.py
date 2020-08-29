@@ -13,7 +13,7 @@ __all__ = ['QuotaSetV2']
 
 class QuotaSetV2(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cores: Optional[pulumi.Input[float]] = None,
                  fixed_ips: Optional[pulumi.Input[float]] = None,
@@ -221,7 +221,7 @@ class QuotaSetV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def cores(self) -> float:
+    def cores(self) -> pulumi.Output[float]:
         """
         Quota value for cores.
         Changing this updates the existing quotaset.
@@ -230,7 +230,7 @@ class QuotaSetV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="fixedIps")
-    def fixed_ips(self) -> float:
+    def fixed_ips(self) -> pulumi.Output[float]:
         """
         Quota value for fixed IPs.
         Changing this updates the existing quotaset.
@@ -239,7 +239,7 @@ class QuotaSetV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="floatingIps")
-    def floating_ips(self) -> float:
+    def floating_ips(self) -> pulumi.Output[float]:
         """
         Quota value for floating IPs.
         Changing this updates the existing quotaset.
@@ -248,7 +248,7 @@ class QuotaSetV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="injectedFileContentBytes")
-    def injected_file_content_bytes(self) -> float:
+    def injected_file_content_bytes(self) -> pulumi.Output[float]:
         """
         Quota value for content bytes
         of injected files. Changing this updates the existing quotaset.
@@ -257,7 +257,7 @@ class QuotaSetV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="injectedFilePathBytes")
-    def injected_file_path_bytes(self) -> float:
+    def injected_file_path_bytes(self) -> pulumi.Output[float]:
         """
         Quota value for path bytes of
         injected files. Changing this updates the existing quotaset.
@@ -266,7 +266,7 @@ class QuotaSetV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="injectedFiles")
-    def injected_files(self) -> float:
+    def injected_files(self) -> pulumi.Output[float]:
         """
         Quota value for injected files.
         Changing this updates the existing quotaset.
@@ -275,7 +275,7 @@ class QuotaSetV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def instances(self) -> float:
+    def instances(self) -> pulumi.Output[float]:
         """
         Quota value for instances.
         Changing this updates the existing quotaset.
@@ -284,7 +284,7 @@ class QuotaSetV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="keyPairs")
-    def key_pairs(self) -> float:
+    def key_pairs(self) -> pulumi.Output[float]:
         """
         Quota value for key pairs.
         Changing this updates the existing quotaset.
@@ -293,7 +293,7 @@ class QuotaSetV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="metadataItems")
-    def metadata_items(self) -> float:
+    def metadata_items(self) -> pulumi.Output[float]:
         """
         Quota value for metadata items.
         Changing this updates the existing quotaset.
@@ -302,7 +302,7 @@ class QuotaSetV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> str:
+    def project_id(self) -> pulumi.Output[str]:
         """
         ID of the project to manage quotas.
         Changing this creates a new quotaset.
@@ -311,7 +311,7 @@ class QuotaSetV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def ram(self) -> float:
+    def ram(self) -> pulumi.Output[float]:
         """
         Quota value for RAM.
         Changing this updates the existing quotaset.
@@ -320,7 +320,7 @@ class QuotaSetV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to create the volume. If
         omitted, the `region` argument of the provider is used. Changing this
@@ -330,7 +330,7 @@ class QuotaSetV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityGroupRules")
-    def security_group_rules(self) -> float:
+    def security_group_rules(self) -> pulumi.Output[float]:
         """
         Quota value for security group rules.
         Changing this updates the existing quotaset.
@@ -339,7 +339,7 @@ class QuotaSetV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityGroups")
-    def security_groups(self) -> float:
+    def security_groups(self) -> pulumi.Output[float]:
         """
         Quota value for security groups.
         Changing this updates the existing quotaset.
@@ -348,7 +348,7 @@ class QuotaSetV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serverGroupMembers")
-    def server_group_members(self) -> float:
+    def server_group_members(self) -> pulumi.Output[float]:
         """
         Quota value for server groups members.
         Changing this updates the existing quotaset.
@@ -357,7 +357,7 @@ class QuotaSetV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serverGroups")
-    def server_groups(self) -> float:
+    def server_groups(self) -> pulumi.Output[float]:
         """
         Quota value for server groups.
         Changing this updates the existing quotaset.

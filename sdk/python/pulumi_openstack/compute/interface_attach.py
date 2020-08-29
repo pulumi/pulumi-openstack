@@ -13,7 +13,7 @@ __all__ = ['InterfaceAttach']
 
 class InterfaceAttach(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  fixed_ip: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
@@ -152,7 +152,7 @@ class InterfaceAttach(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="fixedIp")
-    def fixed_ip(self) -> Optional[str]:
+    def fixed_ip(self) -> pulumi.Output[Optional[str]]:
         """
         An IP address to assosciate with the port.
         _NOTE_: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.
@@ -161,7 +161,7 @@ class InterfaceAttach(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> str:
+    def instance_id(self) -> pulumi.Output[str]:
         """
         The ID of the Instance to attach the Port or Network to.
         """
@@ -169,7 +169,7 @@ class InterfaceAttach(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="networkId")
-    def network_id(self) -> str:
+    def network_id(self) -> pulumi.Output[str]:
         """
         The ID of the Network to attach to an Instance. A port will be created automatically.
         _NOTE_: This option and `port_id` are mutually exclusive.
@@ -178,7 +178,7 @@ class InterfaceAttach(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="portId")
-    def port_id(self) -> str:
+    def port_id(self) -> pulumi.Output[str]:
         """
         The ID of the Port to attach to an Instance.
         _NOTE_: This option and `network_id` are mutually exclusive.
@@ -187,7 +187,7 @@ class InterfaceAttach(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to create the interface attachment.
         If omitted, the `region` argument of the provider is used. Changing this

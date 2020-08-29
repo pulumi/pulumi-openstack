@@ -15,7 +15,7 @@ __all__ = ['SecGroup']
 
 class SecGroup(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -167,7 +167,7 @@ class SecGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> str:
+    def description(self) -> pulumi.Output[str]:
         """
         A description for the security group. Changing this
         updates the `description` of an existing security group.
@@ -176,7 +176,7 @@ class SecGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         A unique name for the security group. Changing this
         updates the `name` of an existing security group.
@@ -185,7 +185,7 @@ class SecGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to obtain the V2 Compute client.
         A Compute client is needed to create a security group. If omitted, the
@@ -196,7 +196,7 @@ class SecGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def rules(self) -> List['outputs.SecGroupRule']:
+    def rules(self) -> pulumi.Output[List['outputs.SecGroupRule']]:
         """
         A rule describing how the security group operates. The
         rule object structure is documented below. Changing this updates the

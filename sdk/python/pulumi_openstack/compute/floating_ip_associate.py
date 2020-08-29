@@ -13,7 +13,7 @@ __all__ = ['FloatingIpAssociate']
 
 class FloatingIpAssociate(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  fixed_ip: Optional[pulumi.Input[str]] = None,
                  floating_ip: Optional[pulumi.Input[str]] = None,
@@ -149,7 +149,7 @@ class FloatingIpAssociate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="fixedIp")
-    def fixed_ip(self) -> Optional[str]:
+    def fixed_ip(self) -> pulumi.Output[Optional[str]]:
         """
         The specific IP address to direct traffic to.
         """
@@ -157,7 +157,7 @@ class FloatingIpAssociate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="floatingIp")
-    def floating_ip(self) -> str:
+    def floating_ip(self) -> pulumi.Output[str]:
         """
         The floating IP to associate.
         """
@@ -165,7 +165,7 @@ class FloatingIpAssociate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> str:
+    def instance_id(self) -> pulumi.Output[str]:
         """
         The instance to associte the floating IP with.
         """
@@ -173,7 +173,7 @@ class FloatingIpAssociate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to obtain the V2 Compute client.
         Keypairs are associated with accounts, but a Compute client is needed to
@@ -184,7 +184,7 @@ class FloatingIpAssociate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="waitUntilAssociated")
-    def wait_until_associated(self) -> Optional[bool]:
+    def wait_until_associated(self) -> pulumi.Output[Optional[bool]]:
         return pulumi.get(self, "wait_until_associated")
 
     def translate_output_property(self, prop):

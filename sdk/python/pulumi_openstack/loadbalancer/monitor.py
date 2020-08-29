@@ -13,7 +13,7 @@ __all__ = ['Monitor']
 
 class Monitor(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin_state_up: Optional[pulumi.Input[bool]] = None,
                  delay: Optional[pulumi.Input[float]] = None,
@@ -207,7 +207,7 @@ class Monitor(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="adminStateUp")
-    def admin_state_up(self) -> Optional[bool]:
+    def admin_state_up(self) -> pulumi.Output[Optional[bool]]:
         """
         The administrative state of the monitor.
         A valid value is true (UP) or false (DOWN).
@@ -216,7 +216,7 @@ class Monitor(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def delay(self) -> float:
+    def delay(self) -> pulumi.Output[float]:
         """
         The time, in seconds, between sending probes to members.
         """
@@ -224,7 +224,7 @@ class Monitor(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="expectedCodes")
-    def expected_codes(self) -> str:
+    def expected_codes(self) -> pulumi.Output[str]:
         """
         Required for HTTP(S) types. Expected HTTP codes
         for a passing HTTP(S) monitor. You can either specify a single status like
@@ -234,7 +234,7 @@ class Monitor(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="httpMethod")
-    def http_method(self) -> str:
+    def http_method(self) -> pulumi.Output[str]:
         """
         Required for HTTP(S) types. The HTTP method used
         for requests by the monitor. If this attribute is not specified, it
@@ -244,7 +244,7 @@ class Monitor(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxRetries")
-    def max_retries(self) -> float:
+    def max_retries(self) -> pulumi.Output[float]:
         """
         Number of permissible ping failures before
         changing the member's status to INACTIVE. Must be a number between 1
@@ -254,7 +254,7 @@ class Monitor(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxRetriesDown")
-    def max_retries_down(self) -> float:
+    def max_retries_down(self) -> pulumi.Output[float]:
         """
         Number of permissible ping failures befor changing the member's
         status to ERROR. Must be a number between 1 and 10 (supported only in Octavia).
@@ -264,7 +264,7 @@ class Monitor(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The Name of the Monitor.
         """
@@ -272,7 +272,7 @@ class Monitor(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="poolId")
-    def pool_id(self) -> str:
+    def pool_id(self) -> pulumi.Output[str]:
         """
         The id of the pool that this monitor will be assigned to.
         """
@@ -280,7 +280,7 @@ class Monitor(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create an . If omitted, the
@@ -291,7 +291,7 @@ class Monitor(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> str:
+    def tenant_id(self) -> pulumi.Output[str]:
         """
         Required for admins. The UUID of the tenant who owns
         the monitor.  Only administrative users can specify a tenant UUID
@@ -301,7 +301,7 @@ class Monitor(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def timeout(self) -> float:
+    def timeout(self) -> pulumi.Output[float]:
         """
         Maximum number of seconds for a monitor to wait for a
         ping reply before it times out. The value must be less than the delay
@@ -311,7 +311,7 @@ class Monitor(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def type(self) -> str:
+    def type(self) -> pulumi.Output[str]:
         """
         The type of probe, which is PING, TCP, HTTP, HTTPS,
         TLS-HELLO or UDP-CONNECT (supported only in Octavia), that is sent by the load
@@ -321,7 +321,7 @@ class Monitor(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="urlPath")
-    def url_path(self) -> str:
+    def url_path(self) -> pulumi.Output[str]:
         """
         Required for HTTP(S) types. URI path that will be
         accessed if monitor type is HTTP or HTTPS.

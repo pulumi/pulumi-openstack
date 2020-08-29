@@ -15,7 +15,7 @@ __all__ = ['Container']
 
 class Container(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  container_read: Optional[pulumi.Input[str]] = None,
                  container_sync_key: Optional[pulumi.Input[str]] = None,
@@ -202,7 +202,7 @@ class Container(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="containerRead")
-    def container_read(self) -> Optional[str]:
+    def container_read(self) -> pulumi.Output[Optional[str]]:
         """
         Sets an access control list (ACL) that grants
         read access. This header can contain a comma-delimited list of users that
@@ -213,7 +213,7 @@ class Container(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="containerSyncKey")
-    def container_sync_key(self) -> Optional[str]:
+    def container_sync_key(self) -> pulumi.Output[Optional[str]]:
         """
         The secret key for container synchronization.
         Changing this updates container synchronization.
@@ -222,7 +222,7 @@ class Container(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="containerSyncTo")
-    def container_sync_to(self) -> Optional[str]:
+    def container_sync_to(self) -> pulumi.Output[Optional[str]]:
         """
         The destination for container synchronization.
         Changing this updates container synchronization.
@@ -231,7 +231,7 @@ class Container(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="containerWrite")
-    def container_write(self) -> Optional[str]:
+    def container_write(self) -> pulumi.Output[Optional[str]]:
         """
         Sets an ACL that grants write access.
         Changing this updates the access control list write access.
@@ -240,7 +240,7 @@ class Container(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="contentType")
-    def content_type(self) -> Optional[str]:
+    def content_type(self) -> pulumi.Output[Optional[str]]:
         """
         The MIME type for the container. Changing this
         updates the MIME type.
@@ -249,7 +249,7 @@ class Container(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="forceDestroy")
-    def force_destroy(self) -> Optional[bool]:
+    def force_destroy(self) -> pulumi.Output[Optional[bool]]:
         """
         A boolean that indicates all objects should be deleted from the container so that the container can be destroyed without error. These objects are not recoverable.
         """
@@ -257,7 +257,7 @@ class Container(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def metadata(self) -> Optional[Mapping[str, Any]]:
+    def metadata(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         Custom key/value pairs to associate with the container.
         Changing this updates the existing container metadata.
@@ -266,7 +266,7 @@ class Container(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         A unique name for the container. Changing this creates a
         new container.
@@ -275,7 +275,7 @@ class Container(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to create the container. If
         omitted, the `region` argument of the provider is used. Changing this
@@ -285,7 +285,7 @@ class Container(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def versioning(self) -> Optional['outputs.ContainerVersioning']:
+    def versioning(self) -> pulumi.Output[Optional['outputs.ContainerVersioning']]:
         """
         Enable object versioning. The structure is described below.
         """

@@ -13,7 +13,7 @@ __all__ = ['RouterInterface']
 
 class RouterInterface(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  port_id: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -122,7 +122,7 @@ class RouterInterface(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="portId")
-    def port_id(self) -> str:
+    def port_id(self) -> pulumi.Output[str]:
         """
         ID of the port this interface connects to. Changing
         this creates a new router interface.
@@ -131,7 +131,7 @@ class RouterInterface(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to obtain the V2 networking client.
         A networking client is needed to create a router. If omitted, the
@@ -142,7 +142,7 @@ class RouterInterface(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="routerId")
-    def router_id(self) -> str:
+    def router_id(self) -> pulumi.Output[str]:
         """
         ID of the router this interface belongs to. Changing
         this creates a new router interface.
@@ -151,7 +151,7 @@ class RouterInterface(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="subnetId")
-    def subnet_id(self) -> str:
+    def subnet_id(self) -> pulumi.Output[str]:
         """
         ID of the subnet this interface connects to. Changing
         this creates a new router interface.

@@ -13,7 +13,7 @@ __all__ = ['LoadBalancer']
 
 class LoadBalancer(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin_state_up: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -186,7 +186,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="adminStateUp")
-    def admin_state_up(self) -> Optional[bool]:
+    def admin_state_up(self) -> pulumi.Output[Optional[bool]]:
         """
         The administrative state of the Loadbalancer.
         A valid value is true (UP) or false (DOWN).
@@ -195,7 +195,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         Human-readable description for the Loadbalancer.
         """
@@ -203,7 +203,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="flavorId")
-    def flavor_id(self) -> Optional[str]:
+    def flavor_id(self) -> pulumi.Output[Optional[str]]:
         """
         The UUID of a flavor. Changing this creates a new
         loadbalancer.
@@ -212,7 +212,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="loadbalancerProvider")
-    def loadbalancer_provider(self) -> str:
+    def loadbalancer_provider(self) -> pulumi.Output[str]:
         """
         The name of the provider. Changing this
         creates a new loadbalancer.
@@ -221,7 +221,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Human-readable name for the Loadbalancer. Does not have
         to be unique.
@@ -230,7 +230,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create an LB member. If omitted, the
@@ -241,7 +241,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityGroupIds")
-    def security_group_ids(self) -> List[str]:
+    def security_group_ids(self) -> pulumi.Output[List[str]]:
         """
         A list of security group IDs to apply to the
         loadbalancer. The security groups must be specified by ID and not name (as
@@ -251,7 +251,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> str:
+    def tenant_id(self) -> pulumi.Output[str]:
         """
         Required for admins. The UUID of the tenant who owns
         the Loadbalancer.  Only administrative users can specify a tenant UUID
@@ -261,7 +261,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vipAddress")
-    def vip_address(self) -> str:
+    def vip_address(self) -> pulumi.Output[str]:
         """
         The ip address of the load balancer.
         Changing this creates a new loadbalancer.
@@ -270,7 +270,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vipNetworkId")
-    def vip_network_id(self) -> str:
+    def vip_network_id(self) -> pulumi.Output[str]:
         """
         The network on which to allocate the
         Loadbalancer's address. A tenant can only create Loadbalancers on networks
@@ -282,7 +282,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vipPortId")
-    def vip_port_id(self) -> str:
+    def vip_port_id(self) -> pulumi.Output[str]:
         """
         The Port ID of the Load Balancer IP.
         """
@@ -290,7 +290,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vipSubnetId")
-    def vip_subnet_id(self) -> str:
+    def vip_subnet_id(self) -> pulumi.Output[str]:
         """
         The subnet on which to allocate the
         Loadbalancer's address. A tenant can only create Loadbalancers on networks

@@ -13,7 +13,7 @@ __all__ = ['Image']
 
 class Image(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  container_format: Optional[pulumi.Input[str]] = None,
                  disk_format: Optional[pulumi.Input[str]] = None,
@@ -279,7 +279,7 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def checksum(self) -> str:
+    def checksum(self) -> pulumi.Output[str]:
         """
         The checksum of the data associated with the image.
         """
@@ -287,7 +287,7 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="containerFormat")
-    def container_format(self) -> str:
+    def container_format(self) -> pulumi.Output[str]:
         """
         The container format. Must be one of
         "ami", "ari", "aki", "bare", "ovf".
@@ -296,7 +296,7 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> str:
+    def created_at(self) -> pulumi.Output[str]:
         """
         The date the image was created.
         """
@@ -304,7 +304,7 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="diskFormat")
-    def disk_format(self) -> str:
+    def disk_format(self) -> pulumi.Output[str]:
         """
         The disk format. Must be one of
         "ami", "ari", "aki", "vhd", "vmdk", "raw", "qcow2", "vdi", "iso".
@@ -313,7 +313,7 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def file(self) -> str:
+    def file(self) -> pulumi.Output[str]:
         """
         the trailing path after the glance
         endpoint that represent the location of the image
@@ -323,12 +323,12 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="imageCachePath")
-    def image_cache_path(self) -> Optional[str]:
+    def image_cache_path(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "image_cache_path")
 
     @property
     @pulumi.getter(name="imageSourceUrl")
-    def image_source_url(self) -> Optional[str]:
+    def image_source_url(self) -> pulumi.Output[Optional[str]]:
         """
         This is the url of the raw image. If `web_download`
         is not used, then the image will be downloaded in the `image_cache_path` before
@@ -339,7 +339,7 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="localFilePath")
-    def local_file_path(self) -> Optional[str]:
+    def local_file_path(self) -> pulumi.Output[Optional[str]]:
         """
         This is the filepath of the raw image file
         that will be uploaded to Glance. Conflicts with `image_source_url` and
@@ -349,7 +349,7 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def metadata(self) -> Mapping[str, Any]:
+    def metadata(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         The metadata associated with the image.
         Image metadata allow for meaningfully define the image properties
@@ -359,7 +359,7 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="minDiskGb")
-    def min_disk_gb(self) -> Optional[float]:
+    def min_disk_gb(self) -> pulumi.Output[Optional[float]]:
         """
         Amount of disk space (in GB) required to boot image.
         Defaults to 0.
@@ -368,7 +368,7 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="minRamMb")
-    def min_ram_mb(self) -> Optional[float]:
+    def min_ram_mb(self) -> pulumi.Output[Optional[float]]:
         """
         Amount of ram (in MB) required to boot image.
         Defauts to 0.
@@ -377,7 +377,7 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the image.
         """
@@ -385,7 +385,7 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def owner(self) -> str:
+    def owner(self) -> pulumi.Output[str]:
         """
         The id of the openstack user who owns the image.
         """
@@ -393,7 +393,7 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def properties(self) -> Mapping[str, Any]:
+    def properties(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         A map of key/value pairs to set freeform
         information about an image. See the "Notes" section for further
@@ -403,7 +403,7 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def protected(self) -> Optional[bool]:
+    def protected(self) -> pulumi.Output[Optional[bool]]:
         """
         If true, image will not be deletable.
         Defaults to false.
@@ -412,7 +412,7 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which to obtain the V2 Glance client.
         A Glance client is needed to create an Image that can be used with
@@ -423,7 +423,7 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def schema(self) -> str:
+    def schema(self) -> pulumi.Output[str]:
         """
         The path to the JSON-schema that represent
         the image or image
@@ -432,7 +432,7 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sizeBytes")
-    def size_bytes(self) -> float:
+    def size_bytes(self) -> pulumi.Output[float]:
         """
         The size in bytes of the data associated with the image.
         """
@@ -440,7 +440,7 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> str:
+    def status(self) -> pulumi.Output[str]:
         """
         The status of the image. It can be "queued", "active"
         or "saving".
@@ -449,7 +449,7 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List[str]]:
+    def tags(self) -> pulumi.Output[Optional[List[str]]]:
         """
         The tags of the image. It must be a list of strings.
         At this time, it is not possible to delete all tags of an image.
@@ -458,7 +458,7 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="updateAt")
-    def update_at(self) -> str:
+    def update_at(self) -> pulumi.Output[str]:
         """
         (**Deprecated** - use `updated_at` instead)
         """
@@ -466,7 +466,7 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> str:
+    def updated_at(self) -> pulumi.Output[str]:
         """
         The date the image was last updated.
         """
@@ -474,7 +474,7 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="verifyChecksum")
-    def verify_checksum(self) -> Optional[bool]:
+    def verify_checksum(self) -> pulumi.Output[Optional[bool]]:
         """
         If false, the checksum will not be verified
         once the image is finished uploading. Conflicts with `web_download`.
@@ -484,7 +484,7 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def visibility(self) -> Optional[str]:
+    def visibility(self) -> pulumi.Output[Optional[str]]:
         """
         The visibility of the image. Must be one of
         "public", "private", "community", or "shared". The ability to set the
@@ -494,7 +494,7 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="webDownload")
-    def web_download(self) -> Optional[bool]:
+    def web_download(self) -> pulumi.Output[Optional[bool]]:
         """
         If true, the "web-download" import method will
         be used to let Openstack download the image directly from the remote source.
