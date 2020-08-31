@@ -19,7 +19,7 @@ class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, api_address=None, cluster_template_id=None, coe_version=None, container_version=None, create_timeout=None, created_at=None, discovery_url=None, docker_volume_size=None, fixed_network=None, fixed_subnet=None, flavor=None, id=None, keypair=None, labels=None, master_addresses=None, master_count=None, master_flavor=None, name=None, node_addresses=None, node_count=None, project_id=None, region=None, stack_id=None, updated_at=None, user_id=None):
+    def __init__(__self__, api_address=None, cluster_template_id=None, coe_version=None, container_version=None, create_timeout=None, created_at=None, discovery_url=None, docker_volume_size=None, fixed_network=None, fixed_subnet=None, flavor=None, floating_ip_enabled=None, id=None, keypair=None, labels=None, master_addresses=None, master_count=None, master_flavor=None, name=None, node_addresses=None, node_count=None, project_id=None, region=None, stack_id=None, updated_at=None, user_id=None):
         if api_address and not isinstance(api_address, str):
             raise TypeError("Expected argument 'api_address' to be a str")
         pulumi.set(__self__, "api_address", api_address)
@@ -53,6 +53,9 @@ class GetClusterResult:
         if flavor and not isinstance(flavor, str):
             raise TypeError("Expected argument 'flavor' to be a str")
         pulumi.set(__self__, "flavor", flavor)
+        if floating_ip_enabled and not isinstance(floating_ip_enabled, bool):
+            raise TypeError("Expected argument 'floating_ip_enabled' to be a bool")
+        pulumi.set(__self__, "floating_ip_enabled", floating_ip_enabled)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -180,6 +183,11 @@ class GetClusterResult:
         The flavor for the nodes of the cluster.
         """
         return pulumi.get(self, "flavor")
+
+    @property
+    @pulumi.getter(name="floatingIpEnabled")
+    def floating_ip_enabled(self) -> bool:
+        return pulumi.get(self, "floating_ip_enabled")
 
     @property
     @pulumi.getter
@@ -312,6 +320,7 @@ class AwaitableGetClusterResult(GetClusterResult):
             fixed_network=self.fixed_network,
             fixed_subnet=self.fixed_subnet,
             flavor=self.flavor,
+            floating_ip_enabled=self.floating_ip_enabled,
             id=self.id,
             keypair=self.keypair,
             labels=self.labels,
@@ -370,6 +379,7 @@ def get_cluster(name: Optional[str] = None,
         fixed_network=__ret__.fixed_network,
         fixed_subnet=__ret__.fixed_subnet,
         flavor=__ret__.flavor,
+        floating_ip_enabled=__ret__.floating_ip_enabled,
         id=__ret__.id,
         keypair=__ret__.keypair,
         labels=__ret__.labels,

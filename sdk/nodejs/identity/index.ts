@@ -3,6 +3,7 @@
 
 // Export members:
 export * from "./applicationCredential";
+export * from "./ec2CredentialV3";
 export * from "./endpointV3";
 export * from "./getAuthScope";
 export * from "./getEndpoint";

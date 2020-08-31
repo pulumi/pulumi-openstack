@@ -9,6 +9,7 @@ from .floating_ip import *
 from .floating_ip_associate import *
 from .get_availability_zones import *
 from .get_flavor import *
+from .get_instance_v2 import *
 from .get_keypair import *
 from .instance import *
 from .interface_attach import *

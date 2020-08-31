@@ -95,6 +95,7 @@ export interface GetClusterResult {
      * The flavor for the nodes of the cluster.
      */
     readonly flavor: string;
+    readonly floatingIpEnabled: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */

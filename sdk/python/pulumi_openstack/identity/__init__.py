@@ -4,6 +4,7 @@
 
 # Export this package's modules as members:
 from .application_credential import *
+from .ec2_credential_v3 import *
 from .endpoint_v3 import *
 from .get_auth_scope import *
 from .get_endpoint import *
