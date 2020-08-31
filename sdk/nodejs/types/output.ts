@@ -90,6 +90,33 @@ export namespace blockstorage {
 }
 
 export namespace compute {
+    export interface GetInstanceV2Network {
+        /**
+         * The IPv4 address assigned to this network port.
+         */
+        fixedIpV4: string;
+        /**
+         * The IPv6 address assigned to this network port.
+         */
+        fixedIpV6: string;
+        /**
+         * The MAC address assigned to this network interface.
+         */
+        mac: string;
+        /**
+         * The name of the network
+         */
+        name: string;
+        /**
+         * The port UUID for this network
+         */
+        port: string;
+        /**
+         * The UUID of the network
+         */
+        uuid: string;
+    }
+
     export interface InstanceBlockDevice {
         /**
          * The boot index of the volume. It defaults to 0.

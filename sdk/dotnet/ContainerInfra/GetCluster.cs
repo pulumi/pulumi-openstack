@@ -108,6 +108,7 @@ namespace Pulumi.OpenStack.ContainerInfra
         /// The flavor for the nodes of the cluster.
         /// </summary>
         public readonly string Flavor;
+        public readonly bool FloatingIpEnabled;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -190,6 +191,8 @@ namespace Pulumi.OpenStack.ContainerInfra
 
             string flavor,
 
+            bool floatingIpEnabled,
+
             string id,
 
             string keypair,
@@ -229,6 +232,7 @@ namespace Pulumi.OpenStack.ContainerInfra
             FixedNetwork = fixedNetwork;
             FixedSubnet = fixedSubnet;
             Flavor = flavor;
+            FloatingIpEnabled = floatingIpEnabled;
             Id = id;
             Keypair = keypair;
             Labels = labels;

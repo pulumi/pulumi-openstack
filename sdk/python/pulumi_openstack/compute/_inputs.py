@@ -15,6 +15,7 @@ __all__ = [
     'InstanceSchedulerHintArgs',
     'InstanceVendorOptionsArgs',
     'SecGroupRuleArgs',
+    'GetInstanceV2NetworkArgs',
 ]
 
 @pulumi.input_type
@@ -685,5 +686,102 @@ class SecGroupRuleArgs:
     @self.setter
     def self(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "self", value)
+
+
+@pulumi.input_type
+class GetInstanceV2NetworkArgs:
+    def __init__(__self__, *,
+                 fixed_ip_v4: str,
+                 fixed_ip_v6: str,
+                 mac: str,
+                 name: str,
+                 port: str,
+                 uuid: str):
+        """
+        :param str fixed_ip_v4: The IPv4 address assigned to this network port.
+        :param str fixed_ip_v6: The IPv6 address assigned to this network port.
+        :param str mac: The MAC address assigned to this network interface.
+        :param str name: The name of the network
+        :param str port: The port UUID for this network
+        :param str uuid: The UUID of the network
+        """
+        pulumi.set(__self__, "fixed_ip_v4", fixed_ip_v4)
+        pulumi.set(__self__, "fixed_ip_v6", fixed_ip_v6)
+        pulumi.set(__self__, "mac", mac)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "uuid", uuid)
+
+    @property
+    @pulumi.getter(name="fixedIpV4")
+    def fixed_ip_v4(self) -> str:
+        """
+        The IPv4 address assigned to this network port.
+        """
+        return pulumi.get(self, "fixed_ip_v4")
+
+    @fixed_ip_v4.setter
+    def fixed_ip_v4(self, value: str):
+        pulumi.set(self, "fixed_ip_v4", value)
+
+    @property
+    @pulumi.getter(name="fixedIpV6")
+    def fixed_ip_v6(self) -> str:
+        """
+        The IPv6 address assigned to this network port.
+        """
+        return pulumi.get(self, "fixed_ip_v6")
+
+    @fixed_ip_v6.setter
+    def fixed_ip_v6(self, value: str):
+        pulumi.set(self, "fixed_ip_v6", value)
+
+    @property
+    @pulumi.getter
+    def mac(self) -> str:
+        """
+        The MAC address assigned to this network interface.
+        """
+        return pulumi.get(self, "mac")
+
+    @mac.setter
+    def mac(self, value: str):
+        pulumi.set(self, "mac", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the network
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: str):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> str:
+        """
+        The port UUID for this network
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: str):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> str:
+        """
+        The UUID of the network
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: str):
+        pulumi.set(self, "uuid", value)
 
 

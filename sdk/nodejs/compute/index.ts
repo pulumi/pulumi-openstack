@@ -8,6 +8,7 @@ export * from "./floatingIp";
 export * from "./floatingIpAssociate";
 export * from "./getAvailabilityZones";
 export * from "./getFlavor";
+export * from "./getInstanceV2";
 export * from "./getKeypair";
 export * from "./instance";
 export * from "./interfaceAttach";

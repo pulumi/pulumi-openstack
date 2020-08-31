@@ -1025,6 +1025,148 @@ func (o SecGroupRuleArrayOutput) Index(i pulumi.IntInput) SecGroupRuleOutput {
 	}).(SecGroupRuleOutput)
 }
 
+type GetInstanceV2Network struct {
+	// The IPv4 address assigned to this network port.
+	FixedIpV4 string `pulumi:"fixedIpV4"`
+	// The IPv6 address assigned to this network port.
+	FixedIpV6 string `pulumi:"fixedIpV6"`
+	// The MAC address assigned to this network interface.
+	Mac string `pulumi:"mac"`
+	// The name of the network
+	Name string `pulumi:"name"`
+	// The port UUID for this network
+	Port string `pulumi:"port"`
+	// The UUID of the network
+	Uuid string `pulumi:"uuid"`
+}
+
+// GetInstanceV2NetworkInput is an input type that accepts GetInstanceV2NetworkArgs and GetInstanceV2NetworkOutput values.
+// You can construct a concrete instance of `GetInstanceV2NetworkInput` via:
+//
+//          GetInstanceV2NetworkArgs{...}
+type GetInstanceV2NetworkInput interface {
+	pulumi.Input
+
+	ToGetInstanceV2NetworkOutput() GetInstanceV2NetworkOutput
+	ToGetInstanceV2NetworkOutputWithContext(context.Context) GetInstanceV2NetworkOutput
+}
+
+type GetInstanceV2NetworkArgs struct {
+	// The IPv4 address assigned to this network port.
+	FixedIpV4 pulumi.StringInput `pulumi:"fixedIpV4"`
+	// The IPv6 address assigned to this network port.
+	FixedIpV6 pulumi.StringInput `pulumi:"fixedIpV6"`
+	// The MAC address assigned to this network interface.
+	Mac pulumi.StringInput `pulumi:"mac"`
+	// The name of the network
+	Name pulumi.StringInput `pulumi:"name"`
+	// The port UUID for this network
+	Port pulumi.StringInput `pulumi:"port"`
+	// The UUID of the network
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (GetInstanceV2NetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceV2Network)(nil)).Elem()
+}
+
+func (i GetInstanceV2NetworkArgs) ToGetInstanceV2NetworkOutput() GetInstanceV2NetworkOutput {
+	return i.ToGetInstanceV2NetworkOutputWithContext(context.Background())
+}
+
+func (i GetInstanceV2NetworkArgs) ToGetInstanceV2NetworkOutputWithContext(ctx context.Context) GetInstanceV2NetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceV2NetworkOutput)
+}
+
+// GetInstanceV2NetworkArrayInput is an input type that accepts GetInstanceV2NetworkArray and GetInstanceV2NetworkArrayOutput values.
+// You can construct a concrete instance of `GetInstanceV2NetworkArrayInput` via:
+//
+//          GetInstanceV2NetworkArray{ GetInstanceV2NetworkArgs{...} }
+type GetInstanceV2NetworkArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceV2NetworkArrayOutput() GetInstanceV2NetworkArrayOutput
+	ToGetInstanceV2NetworkArrayOutputWithContext(context.Context) GetInstanceV2NetworkArrayOutput
+}
+
+type GetInstanceV2NetworkArray []GetInstanceV2NetworkInput
+
+func (GetInstanceV2NetworkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceV2Network)(nil)).Elem()
+}
+
+func (i GetInstanceV2NetworkArray) ToGetInstanceV2NetworkArrayOutput() GetInstanceV2NetworkArrayOutput {
+	return i.ToGetInstanceV2NetworkArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceV2NetworkArray) ToGetInstanceV2NetworkArrayOutputWithContext(ctx context.Context) GetInstanceV2NetworkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceV2NetworkArrayOutput)
+}
+
+type GetInstanceV2NetworkOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceV2NetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceV2Network)(nil)).Elem()
+}
+
+func (o GetInstanceV2NetworkOutput) ToGetInstanceV2NetworkOutput() GetInstanceV2NetworkOutput {
+	return o
+}
+
+func (o GetInstanceV2NetworkOutput) ToGetInstanceV2NetworkOutputWithContext(ctx context.Context) GetInstanceV2NetworkOutput {
+	return o
+}
+
+// The IPv4 address assigned to this network port.
+func (o GetInstanceV2NetworkOutput) FixedIpV4() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceV2Network) string { return v.FixedIpV4 }).(pulumi.StringOutput)
+}
+
+// The IPv6 address assigned to this network port.
+func (o GetInstanceV2NetworkOutput) FixedIpV6() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceV2Network) string { return v.FixedIpV6 }).(pulumi.StringOutput)
+}
+
+// The MAC address assigned to this network interface.
+func (o GetInstanceV2NetworkOutput) Mac() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceV2Network) string { return v.Mac }).(pulumi.StringOutput)
+}
+
+// The name of the network
+func (o GetInstanceV2NetworkOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceV2Network) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The port UUID for this network
+func (o GetInstanceV2NetworkOutput) Port() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceV2Network) string { return v.Port }).(pulumi.StringOutput)
+}
+
+// The UUID of the network
+func (o GetInstanceV2NetworkOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceV2Network) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type GetInstanceV2NetworkArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceV2NetworkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceV2Network)(nil)).Elem()
+}
+
+func (o GetInstanceV2NetworkArrayOutput) ToGetInstanceV2NetworkArrayOutput() GetInstanceV2NetworkArrayOutput {
+	return o
+}
+
+func (o GetInstanceV2NetworkArrayOutput) ToGetInstanceV2NetworkArrayOutputWithContext(ctx context.Context) GetInstanceV2NetworkArrayOutput {
+	return o
+}
+
+func (o GetInstanceV2NetworkArrayOutput) Index(i pulumi.IntInput) GetInstanceV2NetworkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceV2Network {
+		return vs[0].([]GetInstanceV2Network)[vs[1].(int)]
+	}).(GetInstanceV2NetworkOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(InstanceBlockDeviceOutput{})
 	pulumi.RegisterOutputType(InstanceBlockDeviceArrayOutput{})
@@ -1038,4 +1180,6 @@ func init() {
 	pulumi.RegisterOutputType(InstanceVendorOptionsPtrOutput{})
 	pulumi.RegisterOutputType(SecGroupRuleOutput{})
 	pulumi.RegisterOutputType(SecGroupRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceV2NetworkOutput{})
+	pulumi.RegisterOutputType(GetInstanceV2NetworkArrayOutput{})
 }

@@ -286,6 +286,7 @@ func Provider() tfbridge.ProviderInfo {
 			"openstack_identity_endpoint_v3":               {Tok: openstackResource(identityMod, "EndpointV3")},
 			"openstack_identity_service_v3":                {Tok: openstackResource(identityMod, "ServiceV3")},
 			"openstack_identity_group_v3":                  {Tok: openstackResource(identityMod, "GroupV3")},
+			"openstack_identity_ec2_credential_v3":         {Tok: openstackResource(identityMod, "Ec2CredentialV3")},
 
 			// Images
 			"openstack_images_image_v2":               {Tok: openstackResource(imagesMod, "Image")},
@@ -397,6 +398,7 @@ func Provider() tfbridge.ProviderInfo {
 			"openstack_compute_availability_zones_v2": {Tok: openstackDataSource(computeMod, "getAvailabilityZones")},
 			"openstack_compute_flavor_v2":             {Tok: openstackDataSource(computeMod, "getFlavor")},
 			"openstack_compute_keypair_v2":            {Tok: openstackDataSource(computeMod, "getKeypair")},
+			"openstack_compute_instance_v2":           {Tok: openstackDataSource(computeMod, "getInstanceV2")},
 
 			// Container Infrastructure
 			"openstack_containerinfra_cluster_v1":         {Tok: openstackDataSource(containerinfraMod, "getCluster")},

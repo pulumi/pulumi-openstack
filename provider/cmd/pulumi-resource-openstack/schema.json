@@ -906,6 +906,78 @@
                 }
             }
         },
+        "openstack:compute/getInstanceV2Network:getInstanceV2Network": {
+            "properties": {
+                "fixedIpV4": {
+                    "type": "string",
+                    "description": "The IPv4 address assigned to this network port.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "fixedIpV6": {
+                    "type": "string",
+                    "description": "The IPv6 address assigned to this network port.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "mac": {
+                    "type": "string",
+                    "description": "The MAC address assigned to this network interface.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the network\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "port": {
+                    "type": "string",
+                    "description": "The port UUID for this network\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "uuid": {
+                    "type": "string",
+                    "description": "The UUID of the network\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "fixedIpV4",
+                "fixedIpV6",
+                "mac",
+                "name",
+                "port",
+                "uuid"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "openstack:containerinfra/ClusterKubeconfig:ClusterKubeconfig": {
             "properties": {
                 "clientCertificate": {
@@ -7550,6 +7622,84 @@
                     "unrestricted": {
                         "type": "boolean",
                         "description": "A flag indicating whether the application\ncredential may be used for creation or destruction of other application\ncredentials or trusts. Changing this creates a new application credential.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "openstack:identity/ec2CredentialV3:Ec2CredentialV3": {
+            "description": "Manages a V3 EC2 Credential resource within OpenStack Keystone.\nEC2 credentials in Openstack are used to access S3 compatible Swift/RadosGW endpoints\n\n\u003e **Note:** All arguments including the EC2 credential access key and secret\nwill be stored in the raw state as plain-text. [Read more about sensitive data\nin state](https://www.terraform.io/docs/state/sensitive-data.html).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### EC2 credential in current project scope\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst ec2Key1 = new openstack.identity.Ec2CredentialV3(\"ec2_key1\", {});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nec2_key1 = openstack.identity.Ec2CredentialV3(\"ec2Key1\")\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var ec2Key1 = new OpenStack.Identity.Ec2CredentialV3(\"ec2Key1\", new OpenStack.Identity.Ec2CredentialV3Args\n        {\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/identity\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := identity.NewEc2CredentialV3(ctx, \"ec2Key1\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### EC2 credential in pre-defined project scope\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst ec2Key1 = new openstack.identity.Ec2CredentialV3(\"ec2_key1\", {\n    projectId: \"f7ac731cc11f40efbc03a9f9e1d1d21f\",\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nec2_key1 = openstack.identity.Ec2CredentialV3(\"ec2Key1\", project_id=\"f7ac731cc11f40efbc03a9f9e1d1d21f\")\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var ec2Key1 = new OpenStack.Identity.Ec2CredentialV3(\"ec2Key1\", new OpenStack.Identity.Ec2CredentialV3Args\n        {\n            ProjectId = \"f7ac731cc11f40efbc03a9f9e1d1d21f\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/identity\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := identity.NewEc2CredentialV3(ctx, \"ec2Key1\", \u0026identity.Ec2CredentialV3Args{\n\t\t\tProjectId: pulumi.String(\"f7ac731cc11f40efbc03a9f9e1d1d21f\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "access": {
+                    "type": "string",
+                    "description": "contains an EC2 credential access UUID\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "The ID of the project the EC2 credential is created\nfor and that authentication requests using this EC2 credential will\nbe scoped to.\n"
+                },
+                "region": {
+                    "type": "string"
+                },
+                "secret": {
+                    "type": "string",
+                    "description": "contains an EC2 credential secret UUID\n"
+                },
+                "trustId": {
+                    "type": "string",
+                    "description": "contains an EC2 credential trust ID scope\n"
+                },
+                "userId": {
+                    "type": "string",
+                    "description": "The ID of the user the EC2 credential is created for.\n"
+                }
+            },
+            "required": [
+                "access",
+                "projectId",
+                "region",
+                "secret",
+                "trustId",
+                "userId"
+            ],
+            "inputProperties": {
+                "projectId": {
+                    "type": "string",
+                    "description": "The ID of the project the EC2 credential is created\nfor and that authentication requests using this EC2 credential will\nbe scoped to.\n"
+                },
+                "region": {
+                    "type": "string"
+                },
+                "userId": {
+                    "type": "string",
+                    "description": "The ID of the user the EC2 credential is created for.\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Ec2CredentialV3 resources.\n",
+                "properties": {
+                    "access": {
+                        "type": "string",
+                        "description": "contains an EC2 credential access UUID\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "The ID of the project the EC2 credential is created\nfor and that authentication requests using this EC2 credential will\nbe scoped to.\n"
+                    },
+                    "region": {
+                        "type": "string"
+                    },
+                    "secret": {
+                        "type": "string",
+                        "description": "contains an EC2 credential secret UUID\n"
+                    },
+                    "trustId": {
+                        "type": "string",
+                        "description": "contains an EC2 credential trust ID scope\n"
+                    },
+                    "userId": {
+                        "type": "string",
+                        "description": "The ID of the user the EC2 credential is created for.\n"
                     }
                 },
                 "type": "object"
@@ -17378,6 +17528,129 @@
                 ]
             }
         },
+        "openstack:compute/getInstanceV2:getInstanceV2": {
+            "description": "Use this data source to get the details of a running server\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst instance = pulumi.output(openstack.compute.getInstanceV2({\n    // Randomly generated UUID, for demonstration purposes\n    id: \"2ba26dc6-a12d-4889-8f25-794ea5bf4453\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\ninstance = openstack.compute.get_instance_v2(id=\"2ba26dc6-a12d-4889-8f25-794ea5bf4453\")\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var instance = Output.Create(OpenStack.Compute.GetInstanceV2.InvokeAsync(new OpenStack.Compute.GetInstanceV2Args\n        {\n            Id = \"2ba26dc6-a12d-4889-8f25-794ea5bf4453\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/compute\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := compute.GetInstanceV2(ctx, \u0026compute.GetInstanceV2Args{\n\t\t\tId: \"2ba26dc6-a12d-4889-8f25-794ea5bf4453\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getInstanceV2.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The UUID of the instance\n"
+                    },
+                    "networks": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/openstack:compute/getInstanceV2Network:getInstanceV2Network"
+                        },
+                        "description": "An array of maps, detailed below.\n"
+                    },
+                    "region": {
+                        "type": "string"
+                    },
+                    "userData": {
+                        "type": "string",
+                        "description": "The user data added when the server was created.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getInstanceV2.\n",
+                "properties": {
+                    "accessIpV4": {
+                        "type": "string",
+                        "description": "The first IPv4 address assigned to this server.\n"
+                    },
+                    "accessIpV6": {
+                        "type": "string",
+                        "description": "The first IPv6 address assigned to this server.\n"
+                    },
+                    "availabilityZone": {
+                        "type": "string",
+                        "description": "The availability zone of this server.\n"
+                    },
+                    "flavorId": {
+                        "type": "string",
+                        "description": "The flavor ID used to create the server.\n"
+                    },
+                    "flavorName": {
+                        "type": "string",
+                        "description": "The flavor name used to create the server.\n"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "imageId": {
+                        "type": "string",
+                        "description": "The image ID used to create the server.\n"
+                    },
+                    "keyPair": {
+                        "type": "string",
+                        "description": "The name of the key pair assigned to this server.\n"
+                    },
+                    "metadata": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "A set of key/value pairs made available to the server.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the network\n"
+                    },
+                    "networks": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/openstack:compute/getInstanceV2Network:getInstanceV2Network"
+                        },
+                        "description": "An array of maps, detailed below.\n"
+                    },
+                    "region": {
+                        "type": "string"
+                    },
+                    "securityGroups": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "An array of security group names associated with this server.\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A set of string tags assigned to this server.\n"
+                    },
+                    "userData": {
+                        "type": "string",
+                        "description": "The user data added when the server was created.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "accessIpV4",
+                    "accessIpV6",
+                    "availabilityZone",
+                    "flavorId",
+                    "flavorName",
+                    "id",
+                    "imageId",
+                    "keyPair",
+                    "metadata",
+                    "name",
+                    "networks",
+                    "region",
+                    "securityGroups",
+                    "tags",
+                    "userData"
+                ]
+            }
+        },
         "openstack:compute/getKeypair:getKeypair": {
             "description": "Use this data source to get the ID and public key of an OpenStack keypair.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst kp = pulumi.output(openstack.compute.getKeypair({\n    name: \"sand\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nkp = openstack.compute.get_keypair(name=\"sand\")\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var kp = Output.Create(OpenStack.Compute.GetKeypair.InvokeAsync(new OpenStack.Compute.GetKeypairArgs\n        {\n            Name = \"sand\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/compute\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := compute.LookupKeypair(ctx, \u0026compute.LookupKeypairArgs{\n\t\t\tName: \"sand\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
@@ -17496,6 +17769,9 @@
                         "type": "string",
                         "description": "The flavor for the nodes of the cluster.\n"
                     },
+                    "floatingIpEnabled": {
+                        "type": "boolean"
+                    },
                     "id": {
                         "type": "string",
                         "description": "The provider-assigned unique ID for this managed resource.\n"
@@ -17575,6 +17851,7 @@
                     "fixedNetwork",
                     "fixedSubnet",
                     "flavor",
+                    "floatingIpEnabled",
                     "keypair",
                     "labels",
                     "masterAddresses",
