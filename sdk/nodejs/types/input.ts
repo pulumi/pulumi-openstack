@@ -830,4 +830,3 @@ export namespace vpnaas {
         timeout?: pulumi.Input<number>;
     }
 }
-
