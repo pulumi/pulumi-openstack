@@ -999,4 +999,3 @@ export namespace vpnaas {
         timeout: number;
     }
 }
-
