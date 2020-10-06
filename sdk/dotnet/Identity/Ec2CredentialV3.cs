@@ -11,7 +11,8 @@ namespace Pulumi.OpenStack.Identity
 {
     /// <summary>
     /// Manages a V3 EC2 Credential resource within OpenStack Keystone.
-    /// EC2 credentials in Openstack are used to access S3 compatible Swift/RadosGW endpoints
+    /// EC2 credentials in OpenStack are used to access S3 compatible Swift/RadosGW
+    /// endpoints or to authenticate against Keystone.
     /// 
     /// &gt; **Note:** All arguments including the EC2 credential access key and secret
     /// will be stored in the raw state as plain-text. [Read more about sensitive data
@@ -36,6 +37,7 @@ namespace Pulumi.OpenStack.Identity
     /// }
     /// ```
     /// ### EC2 credential in pre-defined project scope
+    /// 
     /// ```csharp
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
@@ -69,6 +71,11 @@ namespace Pulumi.OpenStack.Identity
         [Output("projectId")]
         public Output<string> ProjectId { get; private set; } = null!;
 
+        /// <summary>
+        /// The region in which to obtain the V3 Keystone client.
+        /// If omitted, the `region` argument of the provider is used. Changing this
+        /// creates a new EC2 credential.
+        /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
 
@@ -144,6 +151,11 @@ namespace Pulumi.OpenStack.Identity
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
+        /// <summary>
+        /// The region in which to obtain the V3 Keystone client.
+        /// If omitted, the `region` argument of the provider is used. Changing this
+        /// creates a new EC2 credential.
+        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
@@ -174,6 +186,11 @@ namespace Pulumi.OpenStack.Identity
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
+        /// <summary>
+        /// The region in which to obtain the V3 Keystone client.
+        /// If omitted, the `region` argument of the provider is used. Changing this
+        /// creates a new EC2 credential.
+        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 

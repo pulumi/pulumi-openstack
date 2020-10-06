@@ -72,6 +72,10 @@ type Instance struct {
 	// The human-readable
 	// name of the network. Changing this creates a new server.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Special string for `network` option to create
+	// the server. `networkMode` can be `"auto"` or `"none"`.
+	// Please see the following [reference](https://docs.openstack.org/api-ref/compute/?expanded=create-server-detail#id11) for more information. Conflicts with `network`.
+	NetworkMode pulumi.StringPtrOutput `pulumi:"networkMode"`
 	// An array of one or more networks to attach to the
 	// instance. The network object structure is documented below. Changing this
 	// creates a new server.
@@ -201,6 +205,10 @@ type instanceState struct {
 	// The human-readable
 	// name of the network. Changing this creates a new server.
 	Name *string `pulumi:"name"`
+	// Special string for `network` option to create
+	// the server. `networkMode` can be `"auto"` or `"none"`.
+	// Please see the following [reference](https://docs.openstack.org/api-ref/compute/?expanded=create-server-detail#id11) for more information. Conflicts with `network`.
+	NetworkMode *string `pulumi:"networkMode"`
 	// An array of one or more networks to attach to the
 	// instance. The network object structure is documented below. Changing this
 	// creates a new server.
@@ -303,6 +311,10 @@ type InstanceState struct {
 	// The human-readable
 	// name of the network. Changing this creates a new server.
 	Name pulumi.StringPtrInput
+	// Special string for `network` option to create
+	// the server. `networkMode` can be `"auto"` or `"none"`.
+	// Please see the following [reference](https://docs.openstack.org/api-ref/compute/?expanded=create-server-detail#id11) for more information. Conflicts with `network`.
+	NetworkMode pulumi.StringPtrInput
 	// An array of one or more networks to attach to the
 	// instance. The network object structure is documented below. Changing this
 	// creates a new server.
@@ -405,6 +417,10 @@ type instanceArgs struct {
 	// The human-readable
 	// name of the network. Changing this creates a new server.
 	Name *string `pulumi:"name"`
+	// Special string for `network` option to create
+	// the server. `networkMode` can be `"auto"` or `"none"`.
+	// Please see the following [reference](https://docs.openstack.org/api-ref/compute/?expanded=create-server-detail#id11) for more information. Conflicts with `network`.
+	NetworkMode *string `pulumi:"networkMode"`
 	// An array of one or more networks to attach to the
 	// instance. The network object structure is documented below. Changing this
 	// creates a new server.
@@ -504,6 +520,10 @@ type InstanceArgs struct {
 	// The human-readable
 	// name of the network. Changing this creates a new server.
 	Name pulumi.StringPtrInput
+	// Special string for `network` option to create
+	// the server. `networkMode` can be `"auto"` or `"none"`.
+	// Please see the following [reference](https://docs.openstack.org/api-ref/compute/?expanded=create-server-detail#id11) for more information. Conflicts with `network`.
+	NetworkMode pulumi.StringPtrInput
 	// An array of one or more networks to attach to the
 	// instance. The network object structure is documented below. Changing this
 	// creates a new server.

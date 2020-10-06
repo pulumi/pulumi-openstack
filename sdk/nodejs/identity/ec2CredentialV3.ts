@@ -6,7 +6,8 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a V3 EC2 Credential resource within OpenStack Keystone.
- * EC2 credentials in Openstack are used to access S3 compatible Swift/RadosGW endpoints
+ * EC2 credentials in OpenStack are used to access S3 compatible Swift/RadosGW
+ * endpoints or to authenticate against Keystone.
  *
  * > **Note:** All arguments including the EC2 credential access key and secret
  * will be stored in the raw state as plain-text. [Read more about sensitive data
@@ -22,6 +23,7 @@ import * as utilities from "../utilities";
  * const ec2Key1 = new openstack.identity.Ec2CredentialV3("ec2_key1", {});
  * ```
  * ### EC2 credential in pre-defined project scope
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -69,6 +71,11 @@ export class Ec2CredentialV3 extends pulumi.CustomResource {
      * be scoped to.
      */
     public readonly projectId!: pulumi.Output<string>;
+    /**
+     * The region in which to obtain the V3 Keystone client.
+     * If omitted, the `region` argument of the provider is used. Changing this
+     * creates a new EC2 credential.
+     */
     public readonly region!: pulumi.Output<string>;
     /**
      * contains an EC2 credential secret UUID
@@ -135,6 +142,11 @@ export interface Ec2CredentialV3State {
      * be scoped to.
      */
     readonly projectId?: pulumi.Input<string>;
+    /**
+     * The region in which to obtain the V3 Keystone client.
+     * If omitted, the `region` argument of the provider is used. Changing this
+     * creates a new EC2 credential.
+     */
     readonly region?: pulumi.Input<string>;
     /**
      * contains an EC2 credential secret UUID
@@ -160,6 +172,11 @@ export interface Ec2CredentialV3Args {
      * be scoped to.
      */
     readonly projectId?: pulumi.Input<string>;
+    /**
+     * The region in which to obtain the V3 Keystone client.
+     * If omitted, the `region` argument of the provider is used. Changing this
+     * creates a new EC2 credential.
+     */
     readonly region?: pulumi.Input<string>;
     /**
      * The ID of the user the EC2 credential is created for.
