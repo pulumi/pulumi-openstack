@@ -10,7 +10,8 @@ import (
 )
 
 // Manages a V3 EC2 Credential resource within OpenStack Keystone.
-// EC2 credentials in Openstack are used to access S3 compatible Swift/RadosGW endpoints
+// EC2 credentials in OpenStack are used to access S3 compatible Swift/RadosGW
+// endpoints or to authenticate against Keystone.
 //
 // > **Note:** All arguments including the EC2 credential access key and secret
 // will be stored in the raw state as plain-text. [Read more about sensitive data
@@ -38,6 +39,7 @@ import (
 // }
 // ```
 // ### EC2 credential in pre-defined project scope
+//
 // ```go
 // package main
 //
@@ -67,7 +69,10 @@ type Ec2CredentialV3 struct {
 	// for and that authentication requests using this EC2 credential will
 	// be scoped to.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
-	Region    pulumi.StringOutput `pulumi:"region"`
+	// The region in which to obtain the V3 Keystone client.
+	// If omitted, the `region` argument of the provider is used. Changing this
+	// creates a new EC2 credential.
+	Region pulumi.StringOutput `pulumi:"region"`
 	// contains an EC2 credential secret UUID
 	Secret pulumi.StringOutput `pulumi:"secret"`
 	// contains an EC2 credential trust ID scope
@@ -110,7 +115,10 @@ type ec2CredentialV3State struct {
 	// for and that authentication requests using this EC2 credential will
 	// be scoped to.
 	ProjectId *string `pulumi:"projectId"`
-	Region    *string `pulumi:"region"`
+	// The region in which to obtain the V3 Keystone client.
+	// If omitted, the `region` argument of the provider is used. Changing this
+	// creates a new EC2 credential.
+	Region *string `pulumi:"region"`
 	// contains an EC2 credential secret UUID
 	Secret *string `pulumi:"secret"`
 	// contains an EC2 credential trust ID scope
@@ -126,7 +134,10 @@ type Ec2CredentialV3State struct {
 	// for and that authentication requests using this EC2 credential will
 	// be scoped to.
 	ProjectId pulumi.StringPtrInput
-	Region    pulumi.StringPtrInput
+	// The region in which to obtain the V3 Keystone client.
+	// If omitted, the `region` argument of the provider is used. Changing this
+	// creates a new EC2 credential.
+	Region pulumi.StringPtrInput
 	// contains an EC2 credential secret UUID
 	Secret pulumi.StringPtrInput
 	// contains an EC2 credential trust ID scope
@@ -144,7 +155,10 @@ type ec2CredentialV3Args struct {
 	// for and that authentication requests using this EC2 credential will
 	// be scoped to.
 	ProjectId *string `pulumi:"projectId"`
-	Region    *string `pulumi:"region"`
+	// The region in which to obtain the V3 Keystone client.
+	// If omitted, the `region` argument of the provider is used. Changing this
+	// creates a new EC2 credential.
+	Region *string `pulumi:"region"`
 	// The ID of the user the EC2 credential is created for.
 	UserId *string `pulumi:"userId"`
 }
@@ -155,7 +169,10 @@ type Ec2CredentialV3Args struct {
 	// for and that authentication requests using this EC2 credential will
 	// be scoped to.
 	ProjectId pulumi.StringPtrInput
-	Region    pulumi.StringPtrInput
+	// The region in which to obtain the V3 Keystone client.
+	// If omitted, the `region` argument of the provider is used. Changing this
+	// creates a new EC2 credential.
+	Region pulumi.StringPtrInput
 	// The ID of the user the EC2 credential is created for.
 	UserId pulumi.StringPtrInput
 }

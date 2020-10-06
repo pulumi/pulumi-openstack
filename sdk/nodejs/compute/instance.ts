@@ -127,6 +127,12 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * Special string for `network` option to create
+     * the server. `networkMode` can be `"auto"` or `"none"`.
+     * Please see the following [reference](https://docs.openstack.org/api-ref/compute/?expanded=create-server-detail#id11) for more information. Conflicts with `network`.
+     */
+    public readonly networkMode!: pulumi.Output<string | undefined>;
+    /**
      * An array of one or more networks to attach to the
      * instance. The network object structure is documented below. Changing this
      * creates a new server.
@@ -215,6 +221,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["keyPair"] = state ? state.keyPair : undefined;
             inputs["metadata"] = state ? state.metadata : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["networkMode"] = state ? state.networkMode : undefined;
             inputs["networks"] = state ? state.networks : undefined;
             inputs["personalities"] = state ? state.personalities : undefined;
             inputs["powerState"] = state ? state.powerState : undefined;
@@ -242,6 +249,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["keyPair"] = args ? args.keyPair : undefined;
             inputs["metadata"] = args ? args.metadata : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["networkMode"] = args ? args.networkMode : undefined;
             inputs["networks"] = args ? args.networks : undefined;
             inputs["personalities"] = args ? args.personalities : undefined;
             inputs["powerState"] = args ? args.powerState : undefined;
@@ -362,6 +370,12 @@ export interface InstanceState {
      * name of the network. Changing this creates a new server.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * Special string for `network` option to create
+     * the server. `networkMode` can be `"auto"` or `"none"`.
+     * Please see the following [reference](https://docs.openstack.org/api-ref/compute/?expanded=create-server-detail#id11) for more information. Conflicts with `network`.
+     */
+    readonly networkMode?: pulumi.Input<string>;
     /**
      * An array of one or more networks to attach to the
      * instance. The network object structure is documented below. Changing this
@@ -513,6 +527,12 @@ export interface InstanceArgs {
      * name of the network. Changing this creates a new server.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * Special string for `network` option to create
+     * the server. `networkMode` can be `"auto"` or `"none"`.
+     * Please see the following [reference](https://docs.openstack.org/api-ref/compute/?expanded=create-server-detail#id11) for more information. Conflicts with `network`.
+     */
+    readonly networkMode?: pulumi.Input<string>;
     /**
      * An array of one or more networks to attach to the
      * instance. The network object structure is documented below. Changing this

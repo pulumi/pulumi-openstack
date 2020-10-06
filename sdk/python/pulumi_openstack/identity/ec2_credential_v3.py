@@ -23,7 +23,8 @@ class Ec2CredentialV3(pulumi.CustomResource):
                  __opts__=None):
         """
         Manages a V3 EC2 Credential resource within OpenStack Keystone.
-        EC2 credentials in Openstack are used to access S3 compatible Swift/RadosGW endpoints
+        EC2 credentials in OpenStack are used to access S3 compatible Swift/RadosGW
+        endpoints or to authenticate against Keystone.
 
         > **Note:** All arguments including the EC2 credential access key and secret
         will be stored in the raw state as plain-text. [Read more about sensitive data
@@ -39,6 +40,7 @@ class Ec2CredentialV3(pulumi.CustomResource):
         ec2_key1 = openstack.identity.Ec2CredentialV3("ec2Key1")
         ```
         ### EC2 credential in pre-defined project scope
+
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -51,6 +53,9 @@ class Ec2CredentialV3(pulumi.CustomResource):
         :param pulumi.Input[str] project_id: The ID of the project the EC2 credential is created
                for and that authentication requests using this EC2 credential will
                be scoped to.
+        :param pulumi.Input[str] region: The region in which to obtain the V3 Keystone client.
+               If omitted, the `region` argument of the provider is used. Changing this
+               creates a new EC2 credential.
         :param pulumi.Input[str] user_id: The ID of the user the EC2 credential is created for.
         """
         if __name__ is not None:
@@ -103,6 +108,9 @@ class Ec2CredentialV3(pulumi.CustomResource):
         :param pulumi.Input[str] project_id: The ID of the project the EC2 credential is created
                for and that authentication requests using this EC2 credential will
                be scoped to.
+        :param pulumi.Input[str] region: The region in which to obtain the V3 Keystone client.
+               If omitted, the `region` argument of the provider is used. Changing this
+               creates a new EC2 credential.
         :param pulumi.Input[str] secret: contains an EC2 credential secret UUID
         :param pulumi.Input[str] trust_id: contains an EC2 credential trust ID scope
         :param pulumi.Input[str] user_id: The ID of the user the EC2 credential is created for.
@@ -140,6 +148,11 @@ class Ec2CredentialV3(pulumi.CustomResource):
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
+        """
+        The region in which to obtain the V3 Keystone client.
+        If omitted, the `region` argument of the provider is used. Changing this
+        creates a new EC2 credential.
+        """
         return pulumi.get(self, "region")
 
     @property

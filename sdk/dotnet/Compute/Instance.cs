@@ -138,6 +138,14 @@ namespace Pulumi.OpenStack.Compute
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Special string for `network` option to create
+        /// the server. `network_mode` can be `"auto"` or `"none"`.
+        /// Please see the following [reference](https://docs.openstack.org/api-ref/compute/?expanded=create-server-detail#id11) for more information. Conflicts with `network`.
+        /// </summary>
+        [Output("networkMode")]
+        public Output<string?> NetworkMode { get; private set; } = null!;
+
+        /// <summary>
         /// An array of one or more networks to attach to the
         /// instance. The network object structure is documented below. Changing this
         /// creates a new server.
@@ -389,6 +397,14 @@ namespace Pulumi.OpenStack.Compute
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Special string for `network` option to create
+        /// the server. `network_mode` can be `"auto"` or `"none"`.
+        /// Please see the following [reference](https://docs.openstack.org/api-ref/compute/?expanded=create-server-detail#id11) for more information. Conflicts with `network`.
+        /// </summary>
+        [Input("networkMode")]
+        public Input<string>? NetworkMode { get; set; }
 
         [Input("networks")]
         private InputList<Inputs.InstanceNetworkArgs>? _networks;
@@ -654,6 +670,14 @@ namespace Pulumi.OpenStack.Compute
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Special string for `network` option to create
+        /// the server. `network_mode` can be `"auto"` or `"none"`.
+        /// Please see the following [reference](https://docs.openstack.org/api-ref/compute/?expanded=create-server-detail#id11) for more information. Conflicts with `network`.
+        /// </summary>
+        [Input("networkMode")]
+        public Input<string>? NetworkMode { get; set; }
 
         [Input("networks")]
         private InputList<Inputs.InstanceNetworkGetArgs>? _networks;

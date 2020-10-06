@@ -19,10 +19,9 @@ import (
 	"unicode"
 
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
-	"github.com/terraform-providers/terraform-provider-openstack/openstack"
-
 	"github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfbridge"
 	"github.com/pulumi/pulumi/sdk/v2/go/common/tokens"
+	"github.com/terraform-provider-openstack/terraform-provider-openstack/openstack"
 )
 
 // all of the OpenStack token components used below.
@@ -87,6 +86,7 @@ func Provider() tfbridge.ProviderInfo {
 		Keywords:    []string{"pulumi", "openstack"},
 		Homepage:    "https://pulumi.io",
 		License:     "Apache-2.0",
+		GitHubOrg:   "terraform-provider-openstack",
 		Repository:  "https://github.com/pulumi/pulumi-openstack",
 		Config: map[string]*tfbridge.SchemaInfo{
 			"auth_url": {

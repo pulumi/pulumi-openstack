@@ -7,7 +7,7 @@
     ],
     "homepage": "https://pulumi.io",
     "license": "Apache-2.0",
-    "attribution": "This Pulumi package is based on the [`openstack` Terraform Provider](https://github.com/terraform-providers/terraform-provider-openstack).",
+    "attribution": "This Pulumi package is based on the [`openstack` Terraform Provider](https://github.com/terraform-provider-openstack/terraform-provider-openstack).",
     "repository": "https://github.com/pulumi/pulumi-openstack",
     "meta": {
         "moduleFormat": "(.*)(?:/[^/]*)"
@@ -4736,6 +4736,10 @@
                     "type": "string",
                     "description": "The human-readable\nname of the network. Changing this creates a new server.\n"
                 },
+                "networkMode": {
+                    "type": "string",
+                    "description": "Special string for `network` option to create\nthe server. `network_mode` can be `\"auto\"` or `\"none\"`.\nPlease see the following [reference](https://docs.openstack.org/api-ref/compute/?expanded=create-server-detail#id11) for more information. Conflicts with `network`.\n"
+                },
                 "networks": {
                     "type": "array",
                     "items": {
@@ -4874,6 +4878,10 @@
                     "type": "string",
                     "description": "The human-readable\nname of the network. Changing this creates a new server.\n"
                 },
+                "networkMode": {
+                    "type": "string",
+                    "description": "Special string for `network` option to create\nthe server. `network_mode` can be `\"auto\"` or `\"none\"`.\nPlease see the following [reference](https://docs.openstack.org/api-ref/compute/?expanded=create-server-detail#id11) for more information. Conflicts with `network`.\n"
+                },
                 "networks": {
                     "type": "array",
                     "items": {
@@ -5011,6 +5019,10 @@
                     "name": {
                         "type": "string",
                         "description": "The human-readable\nname of the network. Changing this creates a new server.\n"
+                    },
+                    "networkMode": {
+                        "type": "string",
+                        "description": "Special string for `network` option to create\nthe server. `network_mode` can be `\"auto\"` or `\"none\"`.\nPlease see the following [reference](https://docs.openstack.org/api-ref/compute/?expanded=create-server-detail#id11) for more information. Conflicts with `network`.\n"
                     },
                     "networks": {
                         "type": "array",
@@ -7628,7 +7640,7 @@
             }
         },
         "openstack:identity/ec2CredentialV3:Ec2CredentialV3": {
-            "description": "Manages a V3 EC2 Credential resource within OpenStack Keystone.\nEC2 credentials in Openstack are used to access S3 compatible Swift/RadosGW endpoints\n\n\u003e **Note:** All arguments including the EC2 credential access key and secret\nwill be stored in the raw state as plain-text. [Read more about sensitive data\nin state](https://www.terraform.io/docs/state/sensitive-data.html).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### EC2 credential in current project scope\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst ec2Key1 = new openstack.identity.Ec2CredentialV3(\"ec2_key1\", {});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nec2_key1 = openstack.identity.Ec2CredentialV3(\"ec2Key1\")\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var ec2Key1 = new OpenStack.Identity.Ec2CredentialV3(\"ec2Key1\", new OpenStack.Identity.Ec2CredentialV3Args\n        {\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/identity\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := identity.NewEc2CredentialV3(ctx, \"ec2Key1\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### EC2 credential in pre-defined project scope\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst ec2Key1 = new openstack.identity.Ec2CredentialV3(\"ec2_key1\", {\n    projectId: \"f7ac731cc11f40efbc03a9f9e1d1d21f\",\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nec2_key1 = openstack.identity.Ec2CredentialV3(\"ec2Key1\", project_id=\"f7ac731cc11f40efbc03a9f9e1d1d21f\")\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var ec2Key1 = new OpenStack.Identity.Ec2CredentialV3(\"ec2Key1\", new OpenStack.Identity.Ec2CredentialV3Args\n        {\n            ProjectId = \"f7ac731cc11f40efbc03a9f9e1d1d21f\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/identity\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := identity.NewEc2CredentialV3(ctx, \"ec2Key1\", \u0026identity.Ec2CredentialV3Args{\n\t\t\tProjectId: pulumi.String(\"f7ac731cc11f40efbc03a9f9e1d1d21f\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Manages a V3 EC2 Credential resource within OpenStack Keystone.\nEC2 credentials in OpenStack are used to access S3 compatible Swift/RadosGW\nendpoints or to authenticate against Keystone.\n\n\u003e **Note:** All arguments including the EC2 credential access key and secret\nwill be stored in the raw state as plain-text. [Read more about sensitive data\nin state](https://www.terraform.io/docs/state/sensitive-data.html).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### EC2 credential in current project scope\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst ec2Key1 = new openstack.identity.Ec2CredentialV3(\"ec2_key1\", {});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nec2_key1 = openstack.identity.Ec2CredentialV3(\"ec2Key1\")\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var ec2Key1 = new OpenStack.Identity.Ec2CredentialV3(\"ec2Key1\", new OpenStack.Identity.Ec2CredentialV3Args\n        {\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/identity\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := identity.NewEc2CredentialV3(ctx, \"ec2Key1\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### EC2 credential in pre-defined project scope\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst ec2Key1 = new openstack.identity.Ec2CredentialV3(\"ec2_key1\", {\n    projectId: \"f7ac731cc11f40efbc03a9f9e1d1d21f\",\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nec2_key1 = openstack.identity.Ec2CredentialV3(\"ec2Key1\", project_id=\"f7ac731cc11f40efbc03a9f9e1d1d21f\")\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var ec2Key1 = new OpenStack.Identity.Ec2CredentialV3(\"ec2Key1\", new OpenStack.Identity.Ec2CredentialV3Args\n        {\n            ProjectId = \"f7ac731cc11f40efbc03a9f9e1d1d21f\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/identity\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := identity.NewEc2CredentialV3(ctx, \"ec2Key1\", \u0026identity.Ec2CredentialV3Args{\n\t\t\tProjectId: pulumi.String(\"f7ac731cc11f40efbc03a9f9e1d1d21f\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "access": {
                     "type": "string",
@@ -7639,7 +7651,8 @@
                     "description": "The ID of the project the EC2 credential is created\nfor and that authentication requests using this EC2 credential will\nbe scoped to.\n"
                 },
                 "region": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The region in which to obtain the V3 Keystone client.\nIf omitted, the `region` argument of the provider is used. Changing this\ncreates a new EC2 credential.\n"
                 },
                 "secret": {
                     "type": "string",
@@ -7668,7 +7681,8 @@
                     "description": "The ID of the project the EC2 credential is created\nfor and that authentication requests using this EC2 credential will\nbe scoped to.\n"
                 },
                 "region": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The region in which to obtain the V3 Keystone client.\nIf omitted, the `region` argument of the provider is used. Changing this\ncreates a new EC2 credential.\n"
                 },
                 "userId": {
                     "type": "string",
@@ -7687,7 +7701,8 @@
                         "description": "The ID of the project the EC2 credential is created\nfor and that authentication requests using this EC2 credential will\nbe scoped to.\n"
                     },
                     "region": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The region in which to obtain the V3 Keystone client.\nIf omitted, the `region` argument of the provider is used. Changing this\ncreates a new EC2 credential.\n"
                     },
                     "secret": {
                         "type": "string",
@@ -21495,11 +21510,11 @@
             "disableUnionOutputTypes": true,
             "packageDescription": "A Pulumi package for creating and managing OpenStack cloud resources.",
             "packageName": "",
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/terraform-providers/terraform-provider-openstack)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-openstack` repo](https://github.com/pulumi/pulumi-openstack/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-providers/terraform-provider-openstack` repo](https://github.com/terraform-providers/terraform-provider-openstack/issues).",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/terraform-provider-openstack/terraform-provider-openstack)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-openstack` repo](https://github.com/pulumi/pulumi-openstack/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-openstack/terraform-provider-openstack` repo](https://github.com/terraform-provider-openstack/terraform-provider-openstack/issues).",
             "typescriptVersion": ""
         },
         "python": {
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/terraform-providers/terraform-provider-openstack)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-openstack` repo](https://github.com/pulumi/pulumi-openstack/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-providers/terraform-provider-openstack` repo](https://github.com/terraform-providers/terraform-provider-openstack/issues).",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/terraform-provider-openstack/terraform-provider-openstack)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-openstack` repo](https://github.com/pulumi/pulumi-openstack/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-openstack/terraform-provider-openstack` repo](https://github.com/terraform-provider-openstack/terraform-provider-openstack/issues).",
             "requires": {
                 "pulumi": "\u003e=2.9.0,\u003c3.0.0"
             },

@@ -32,6 +32,7 @@ class Instance(pulumi.CustomResource):
                  key_pair: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 network_mode: Optional[pulumi.Input[str]] = None,
                  networks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceNetworkArgs']]]]] = None,
                  personalities: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['InstancePersonalityArgs']]]]] = None,
                  power_state: Optional[pulumi.Input[str]] = None,
@@ -90,6 +91,9 @@ class Instance(pulumi.CustomResource):
                within the instance. Changing this updates the existing server metadata.
         :param pulumi.Input[str] name: The human-readable
                name of the network. Changing this creates a new server.
+        :param pulumi.Input[str] network_mode: Special string for `network` option to create
+               the server. `network_mode` can be `"auto"` or `"none"`.
+               Please see the following [reference](https://docs.openstack.org/api-ref/compute/?expanded=create-server-detail#id11) for more information. Conflicts with `network`.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceNetworkArgs']]]] networks: An array of one or more networks to attach to the
                instance. The network object structure is documented below. Changing this
                creates a new server.
@@ -152,6 +156,7 @@ class Instance(pulumi.CustomResource):
             __props__['key_pair'] = key_pair
             __props__['metadata'] = metadata
             __props__['name'] = name
+            __props__['network_mode'] = network_mode
             __props__['networks'] = networks
             __props__['personalities'] = personalities
             __props__['power_state'] = power_state
@@ -191,6 +196,7 @@ class Instance(pulumi.CustomResource):
             key_pair: Optional[pulumi.Input[str]] = None,
             metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            network_mode: Optional[pulumi.Input[str]] = None,
             networks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceNetworkArgs']]]]] = None,
             personalities: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['InstancePersonalityArgs']]]]] = None,
             power_state: Optional[pulumi.Input[str]] = None,
@@ -251,6 +257,9 @@ class Instance(pulumi.CustomResource):
                within the instance. Changing this updates the existing server metadata.
         :param pulumi.Input[str] name: The human-readable
                name of the network. Changing this creates a new server.
+        :param pulumi.Input[str] network_mode: Special string for `network` option to create
+               the server. `network_mode` can be `"auto"` or `"none"`.
+               Please see the following [reference](https://docs.openstack.org/api-ref/compute/?expanded=create-server-detail#id11) for more information. Conflicts with `network`.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceNetworkArgs']]]] networks: An array of one or more networks to attach to the
                instance. The network object structure is documented below. Changing this
                creates a new server.
@@ -302,6 +311,7 @@ class Instance(pulumi.CustomResource):
         __props__["key_pair"] = key_pair
         __props__["metadata"] = metadata
         __props__["name"] = name
+        __props__["network_mode"] = network_mode
         __props__["networks"] = networks
         __props__["personalities"] = personalities
         __props__["power_state"] = power_state
@@ -473,6 +483,16 @@ class Instance(pulumi.CustomResource):
         name of the network. Changing this creates a new server.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="networkMode")
+    def network_mode(self) -> pulumi.Output[Optional[str]]:
+        """
+        Special string for `network` option to create
+        the server. `network_mode` can be `"auto"` or `"none"`.
+        Please see the following [reference](https://docs.openstack.org/api-ref/compute/?expanded=create-server-detail#id11) for more information. Conflicts with `network`.
+        """
+        return pulumi.get(self, "network_mode")
 
     @property
     @pulumi.getter
