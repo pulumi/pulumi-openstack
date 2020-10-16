@@ -644,6 +644,14 @@
                         }
                     }
                 },
+                "floatingIp": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "mac": {
                     "type": "string",
                     "language": {
@@ -686,6 +694,7 @@
                     "requiredOutputs": [
                         "fixedIpV4",
                         "fixedIpV6",
+                        "floatingIp",
                         "mac",
                         "name",
                         "port",

@@ -20,6 +20,7 @@ import (
 
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfbridge"
+	shimv1 "github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfshim/sdk-v1"
 	"github.com/pulumi/pulumi/sdk/v2/go/common/tokens"
 	"github.com/terraform-provider-openstack/terraform-provider-openstack/openstack"
 )
@@ -77,7 +78,7 @@ func openstackResource(mod string, res string) tokens.Type {
 
 // Provider returns additional overlaid schema and metadata associated with the openstack package.
 func Provider() tfbridge.ProviderInfo {
-	p := openstack.Provider().(*schema.Provider)
+	p := shimv1.NewProvider(openstack.Provider().(*schema.Provider))
 
 	prov := tfbridge.ProviderInfo{
 		P:           p,
@@ -483,23 +484,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 	}
 
-	// For all resources with name properties, we will add an auto-name property.  Make sure to skip those that
-	// already have a name mapping entry, since those may have custom overrides set above (e.g., for length).
-	const openstackName = "name"
-	for resname, res := range prov.Resources {
-		if schema := p.ResourcesMap[resname]; schema != nil {
-			// Only apply auto-name to input properties (Optional || Required) named `name`
-			if tfs, has := schema.Schema[openstackName]; has && (tfs.Optional || tfs.Required) {
-				if _, hasfield := res.Fields[openstackName]; !hasfield {
-					if res.Fields == nil {
-						res.Fields = make(map[string]*tfbridge.SchemaInfo)
-					}
-					// Use conservative options that apply broadly for OpenStack.
-					res.Fields[openstackName] = tfbridge.AutoName(openstackName, 255)
-				}
-			}
-		}
-	}
+	prov.SetAutonaming(255, "-")
 
 	return prov
 }

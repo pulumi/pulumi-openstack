@@ -216,6 +216,7 @@ class InstanceNetworkArgs:
                  access_network: Optional[pulumi.Input[bool]] = None,
                  fixed_ip_v4: Optional[pulumi.Input[str]] = None,
                  fixed_ip_v6: Optional[pulumi.Input[str]] = None,
+                 floating_ip: Optional[pulumi.Input[str]] = None,
                  mac: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[str]] = None,
@@ -238,6 +239,8 @@ class InstanceNetworkArgs:
             pulumi.set(__self__, "fixed_ip_v4", fixed_ip_v4)
         if fixed_ip_v6 is not None:
             pulumi.set(__self__, "fixed_ip_v6", fixed_ip_v6)
+        if floating_ip is not None:
+            pulumi.set(__self__, "floating_ip", floating_ip)
         if mac is not None:
             pulumi.set(__self__, "mac", mac)
         if name is not None:
@@ -281,6 +284,15 @@ class InstanceNetworkArgs:
     @fixed_ip_v6.setter
     def fixed_ip_v6(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "fixed_ip_v6", value)
+
+    @property
+    @pulumi.getter(name="floatingIp")
+    def floating_ip(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "floating_ip")
+
+    @floating_ip.setter
+    def floating_ip(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "floating_ip", value)
 
     @property
     @pulumi.getter
