@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -92,16 +92,16 @@ class ApplicationCredentialAccessRule(dict):
 @pulumi.output_type
 class UserMultiFactorAuthRule(dict):
     def __init__(__self__, *,
-                 rules: List[str]):
+                 rules: Sequence[str]):
         """
-        :param List[str] rules: A list of authentication plugins that the user must
+        :param Sequence[str] rules: A list of authentication plugins that the user must
                authenticate with.
         """
         pulumi.set(__self__, "rules", rules)
 
     @property
     @pulumi.getter
-    def rules(self) -> List[str]:
+    def rules(self) -> Sequence[str]:
         """
         A list of authentication plugins that the user must
         authenticate with.

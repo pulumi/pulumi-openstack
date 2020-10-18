@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -22,20 +22,20 @@ __all__ = [
 class InstanceBlockDeviceArgs:
     def __init__(__self__, *,
                  source_type: pulumi.Input[str],
-                 boot_index: Optional[pulumi.Input[float]] = None,
+                 boot_index: Optional[pulumi.Input[int]] = None,
                  delete_on_termination: Optional[pulumi.Input[bool]] = None,
                  destination_type: Optional[pulumi.Input[str]] = None,
                  device_type: Optional[pulumi.Input[str]] = None,
                  disk_bus: Optional[pulumi.Input[str]] = None,
                  guest_format: Optional[pulumi.Input[str]] = None,
                  uuid: Optional[pulumi.Input[str]] = None,
-                 volume_size: Optional[pulumi.Input[float]] = None,
+                 volume_size: Optional[pulumi.Input[int]] = None,
                  volume_type: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] source_type: The source type of the device. Must be one of
                "blank", "image", "volume", or "snapshot". Changing this creates a new
                server.
-        :param pulumi.Input[float] boot_index: The boot index of the volume. It defaults to 0.
+        :param pulumi.Input[int] boot_index: The boot index of the volume. It defaults to 0.
                Changing this creates a new server.
         :param pulumi.Input[bool] delete_on_termination: Delete the volume / block device upon
                termination of the instance. Defaults to false. Changing this creates a
@@ -48,7 +48,7 @@ class InstanceBlockDeviceArgs:
                thing is to leave this empty. Changing this creates a new server.
         :param pulumi.Input[str] uuid: The UUID of
                the image, volume, or snapshot. Changing this creates a new server.
-        :param pulumi.Input[float] volume_size: The size of the volume to create (in gigabytes). Required
+        :param pulumi.Input[int] volume_size: The size of the volume to create (in gigabytes). Required
                in the following combinations: source=image and destination=volume,
                source=blank and destination=local, and source=blank and destination=volume.
                Changing this creates a new server.
@@ -93,7 +93,7 @@ class InstanceBlockDeviceArgs:
 
     @property
     @pulumi.getter(name="bootIndex")
-    def boot_index(self) -> Optional[pulumi.Input[float]]:
+    def boot_index(self) -> Optional[pulumi.Input[int]]:
         """
         The boot index of the volume. It defaults to 0.
         Changing this creates a new server.
@@ -101,7 +101,7 @@ class InstanceBlockDeviceArgs:
         return pulumi.get(self, "boot_index")
 
     @boot_index.setter
-    def boot_index(self, value: Optional[pulumi.Input[float]]):
+    def boot_index(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "boot_index", value)
 
     @property
@@ -181,7 +181,7 @@ class InstanceBlockDeviceArgs:
 
     @property
     @pulumi.getter(name="volumeSize")
-    def volume_size(self) -> Optional[pulumi.Input[float]]:
+    def volume_size(self) -> Optional[pulumi.Input[int]]:
         """
         The size of the volume to create (in gigabytes). Required
         in the following combinations: source=image and destination=volume,
@@ -191,7 +191,7 @@ class InstanceBlockDeviceArgs:
         return pulumi.get(self, "volume_size")
 
     @volume_size.setter
-    def volume_size(self, value: Optional[pulumi.Input[float]]):
+    def volume_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "volume_size", value)
 
     @property
@@ -385,27 +385,27 @@ class InstanceSchedulerHintArgs:
     def __init__(__self__, *,
                  additional_properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  build_near_host_ip: Optional[pulumi.Input[str]] = None,
-                 different_hosts: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 different_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  group: Optional[pulumi.Input[str]] = None,
-                 queries: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 same_hosts: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 queries: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 same_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  target_cell: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[Mapping[str, Any]] additional_properties: Arbitrary key/value pairs of additional
                properties to pass to the scheduler.
         :param pulumi.Input[str] build_near_host_ip: An IP Address in CIDR form. The instance
                will be placed on a compute node that is in the same subnet.
-        :param pulumi.Input[List[pulumi.Input[str]]] different_hosts: A list of instance UUIDs. The instance will
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] different_hosts: A list of instance UUIDs. The instance will
                be scheduled on a different host than all other instances.
         :param pulumi.Input[str] group: A UUID of a Server Group. The instance will be placed
                into that group.
-        :param pulumi.Input[List[pulumi.Input[str]]] queries: A conditional query that a compute node must pass in
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] queries: A conditional query that a compute node must pass in
                order to host an instance. The query must use the `JsonFilter` syntax
                which is described
                [here](https://docs.openstack.org/nova/latest/admin/configuration/schedulers.html#jsonfilter).
                At this time, only simple queries are supported. Compound queries using
                `and`, `or`, or `not` are not supported. An example of a simple query is:
-        :param pulumi.Input[List[pulumi.Input[str]]] same_hosts: A list of instance UUIDs. The instance will be
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] same_hosts: A list of instance UUIDs. The instance will be
                scheduled on the same host of those specified.
         :param pulumi.Input[str] target_cell: The name of a cell to host the instance.
         """
@@ -452,7 +452,7 @@ class InstanceSchedulerHintArgs:
 
     @property
     @pulumi.getter(name="differentHosts")
-    def different_hosts(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def different_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A list of instance UUIDs. The instance will
         be scheduled on a different host than all other instances.
@@ -460,7 +460,7 @@ class InstanceSchedulerHintArgs:
         return pulumi.get(self, "different_hosts")
 
     @different_hosts.setter
-    def different_hosts(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def different_hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "different_hosts", value)
 
     @property
@@ -478,7 +478,7 @@ class InstanceSchedulerHintArgs:
 
     @property
     @pulumi.getter
-    def queries(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def queries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A conditional query that a compute node must pass in
         order to host an instance. The query must use the `JsonFilter` syntax
@@ -490,12 +490,12 @@ class InstanceSchedulerHintArgs:
         return pulumi.get(self, "queries")
 
     @queries.setter
-    def queries(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def queries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "queries", value)
 
     @property
     @pulumi.getter(name="sameHosts")
-    def same_hosts(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def same_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A list of instance UUIDs. The instance will be
         scheduled on the same host of those specified.
@@ -503,7 +503,7 @@ class InstanceSchedulerHintArgs:
         return pulumi.get(self, "same_hosts")
 
     @same_hosts.setter
-    def same_hosts(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def same_hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "same_hosts", value)
 
     @property
@@ -571,19 +571,19 @@ class InstanceVendorOptionsArgs:
 @pulumi.input_type
 class SecGroupRuleArgs:
     def __init__(__self__, *,
-                 from_port: pulumi.Input[float],
+                 from_port: pulumi.Input[int],
                  ip_protocol: pulumi.Input[str],
-                 to_port: pulumi.Input[float],
+                 to_port: pulumi.Input[int],
                  cidr: Optional[pulumi.Input[str]] = None,
                  from_group_id: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  self: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[float] from_port: An integer representing the lower bound of the port
+        :param pulumi.Input[int] from_port: An integer representing the lower bound of the port
                range to open. Changing this creates a new security group rule.
         :param pulumi.Input[str] ip_protocol: The protocol type that will be allowed. Changing
                this creates a new security group rule.
-        :param pulumi.Input[float] to_port: An integer representing the upper bound of the port
+        :param pulumi.Input[int] to_port: An integer representing the upper bound of the port
                range to open. Changing this creates a new security group rule.
         :param pulumi.Input[str] cidr: Required if `from_group_id` or `self` is empty. The IP range
                that will be the source of network traffic to the security group. Use 0.0.0.0/0
@@ -610,7 +610,7 @@ class SecGroupRuleArgs:
 
     @property
     @pulumi.getter(name="fromPort")
-    def from_port(self) -> pulumi.Input[float]:
+    def from_port(self) -> pulumi.Input[int]:
         """
         An integer representing the lower bound of the port
         range to open. Changing this creates a new security group rule.
@@ -618,7 +618,7 @@ class SecGroupRuleArgs:
         return pulumi.get(self, "from_port")
 
     @from_port.setter
-    def from_port(self, value: pulumi.Input[float]):
+    def from_port(self, value: pulumi.Input[int]):
         pulumi.set(self, "from_port", value)
 
     @property
@@ -636,7 +636,7 @@ class SecGroupRuleArgs:
 
     @property
     @pulumi.getter(name="toPort")
-    def to_port(self) -> pulumi.Input[float]:
+    def to_port(self) -> pulumi.Input[int]:
         """
         An integer representing the upper bound of the port
         range to open. Changing this creates a new security group rule.
@@ -644,7 +644,7 @@ class SecGroupRuleArgs:
         return pulumi.get(self, "to_port")
 
     @to_port.setter
-    def to_port(self, value: pulumi.Input[float]):
+    def to_port(self, value: pulumi.Input[int]):
         pulumi.set(self, "to_port", value)
 
     @property

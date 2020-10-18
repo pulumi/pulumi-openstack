@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -27,11 +27,11 @@ class NetworkSegmentArgs:
     def __init__(__self__, *,
                  network_type: Optional[pulumi.Input[str]] = None,
                  physical_network: Optional[pulumi.Input[str]] = None,
-                 segmentation_id: Optional[pulumi.Input[float]] = None):
+                 segmentation_id: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] network_type: The type of physical network.
         :param pulumi.Input[str] physical_network: The physical network where this network is implemented.
-        :param pulumi.Input[float] segmentation_id: An isolated segment on the physical network.
+        :param pulumi.Input[int] segmentation_id: An isolated segment on the physical network.
         """
         if network_type is not None:
             pulumi.set(__self__, "network_type", network_type)
@@ -66,14 +66,14 @@ class NetworkSegmentArgs:
 
     @property
     @pulumi.getter(name="segmentationId")
-    def segmentation_id(self) -> Optional[pulumi.Input[float]]:
+    def segmentation_id(self) -> Optional[pulumi.Input[int]]:
         """
         An isolated segment on the physical network.
         """
         return pulumi.get(self, "segmentation_id")
 
     @segmentation_id.setter
-    def segmentation_id(self, value: Optional[pulumi.Input[float]]):
+    def segmentation_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "segmentation_id", value)
 
 
@@ -215,11 +215,11 @@ class PortExtraDhcpOptionArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  value: pulumi.Input[str],
-                 ip_version: Optional[pulumi.Input[float]] = None):
+                 ip_version: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] name: Name of the DHCP option.
         :param pulumi.Input[str] value: Value of the DHCP option.
-        :param pulumi.Input[float] ip_version: IP protocol version. Defaults to 4.
+        :param pulumi.Input[int] ip_version: IP protocol version. Defaults to 4.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
@@ -252,14 +252,14 @@ class PortExtraDhcpOptionArgs:
 
     @property
     @pulumi.getter(name="ipVersion")
-    def ip_version(self) -> Optional[pulumi.Input[float]]:
+    def ip_version(self) -> Optional[pulumi.Input[int]]:
         """
         IP protocol version. Defaults to 4.
         """
         return pulumi.get(self, "ip_version")
 
     @ip_version.setter
-    def ip_version(self, value: Optional[pulumi.Input[float]]):
+    def ip_version(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "ip_version", value)
 
 
@@ -482,11 +482,11 @@ class SubnetHostRouteArgs:
 class TrunkSubPortArgs:
     def __init__(__self__, *,
                  port_id: pulumi.Input[str],
-                 segmentation_id: pulumi.Input[float],
+                 segmentation_id: pulumi.Input[int],
                  segmentation_type: pulumi.Input[str]):
         """
         :param pulumi.Input[str] port_id: The ID of the port to be made a subport of the trunk.
-        :param pulumi.Input[float] segmentation_id: The numeric id of the subport segment.
+        :param pulumi.Input[int] segmentation_id: The numeric id of the subport segment.
         :param pulumi.Input[str] segmentation_type: The segmentation technology to use, e.g., "vlan".
         """
         pulumi.set(__self__, "port_id", port_id)
@@ -507,14 +507,14 @@ class TrunkSubPortArgs:
 
     @property
     @pulumi.getter(name="segmentationId")
-    def segmentation_id(self) -> pulumi.Input[float]:
+    def segmentation_id(self) -> pulumi.Input[int]:
         """
         The numeric id of the subport segment.
         """
         return pulumi.get(self, "segmentation_id")
 
     @segmentation_id.setter
-    def segmentation_id(self, value: pulumi.Input[float]):
+    def segmentation_id(self, value: pulumi.Input[int]):
         pulumi.set(self, "segmentation_id", value)
 
     @property

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['TempUrl']
@@ -21,7 +21,7 @@ class TempUrl(pulumi.CustomResource):
                  regenerate: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  split: Optional[pulumi.Input[str]] = None,
-                 ttl: Optional[pulumi.Input[float]] = None,
+                 ttl: Optional[pulumi.Input[int]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -63,7 +63,7 @@ class TempUrl(pulumi.CustomResource):
                it has expired. If set to true, this will create a new resource with a new
                ID and new URL. Defaults to false.
         :param pulumi.Input[str] region: The region the tempurl is located in.
-        :param pulumi.Input[float] ttl: The TTL, in seconds, for the URL. For how long it should
+        :param pulumi.Input[int] ttl: The TTL, in seconds, for the URL. For how long it should
                be valid.
         """
         if __name__ is not None:
@@ -113,7 +113,7 @@ class TempUrl(pulumi.CustomResource):
             regenerate: Optional[pulumi.Input[bool]] = None,
             region: Optional[pulumi.Input[str]] = None,
             split: Optional[pulumi.Input[str]] = None,
-            ttl: Optional[pulumi.Input[float]] = None,
+            ttl: Optional[pulumi.Input[int]] = None,
             url: Optional[pulumi.Input[str]] = None) -> 'TempUrl':
         """
         Get an existing TempUrl resource's state with the given name, id, and optional extra
@@ -130,7 +130,7 @@ class TempUrl(pulumi.CustomResource):
                it has expired. If set to true, this will create a new resource with a new
                ID and new URL. Defaults to false.
         :param pulumi.Input[str] region: The region the tempurl is located in.
-        :param pulumi.Input[float] ttl: The TTL, in seconds, for the URL. For how long it should
+        :param pulumi.Input[int] ttl: The TTL, in seconds, for the URL. For how long it should
                be valid.
         :param pulumi.Input[str] url: The URL
         """
@@ -198,7 +198,7 @@ class TempUrl(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def ttl(self) -> pulumi.Output[float]:
+    def ttl(self) -> pulumi.Output[int]:
         """
         The TTL, in seconds, for the URL. For how long it should
         be valid.

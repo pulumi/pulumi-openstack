@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -20,8 +20,8 @@ class GetClusterTemplateResult:
     A collection of values returned by getClusterTemplate.
     """
     def __init__(__self__, apiserver_port=None, cluster_distro=None, coe=None, created_at=None, dns_nameserver=None, docker_storage_driver=None, docker_volume_size=None, external_network_id=None, fixed_network=None, fixed_subnet=None, flavor=None, floating_ip_enabled=None, http_proxy=None, https_proxy=None, id=None, image=None, insecure_registry=None, keypair_id=None, labels=None, master_flavor=None, master_lb_enabled=None, name=None, network_driver=None, no_proxy=None, project_id=None, public=None, region=None, registry_enabled=None, server_type=None, tls_disabled=None, updated_at=None, user_id=None, volume_driver=None):
-        if apiserver_port and not isinstance(apiserver_port, float):
-            raise TypeError("Expected argument 'apiserver_port' to be a float")
+        if apiserver_port and not isinstance(apiserver_port, int):
+            raise TypeError("Expected argument 'apiserver_port' to be a int")
         pulumi.set(__self__, "apiserver_port", apiserver_port)
         if cluster_distro and not isinstance(cluster_distro, str):
             raise TypeError("Expected argument 'cluster_distro' to be a str")
@@ -38,8 +38,8 @@ class GetClusterTemplateResult:
         if docker_storage_driver and not isinstance(docker_storage_driver, str):
             raise TypeError("Expected argument 'docker_storage_driver' to be a str")
         pulumi.set(__self__, "docker_storage_driver", docker_storage_driver)
-        if docker_volume_size and not isinstance(docker_volume_size, float):
-            raise TypeError("Expected argument 'docker_volume_size' to be a float")
+        if docker_volume_size and not isinstance(docker_volume_size, int):
+            raise TypeError("Expected argument 'docker_volume_size' to be a int")
         pulumi.set(__self__, "docker_volume_size", docker_volume_size)
         if external_network_id and not isinstance(external_network_id, str):
             raise TypeError("Expected argument 'external_network_id' to be a str")
@@ -122,7 +122,7 @@ class GetClusterTemplateResult:
 
     @property
     @pulumi.getter(name="apiserverPort")
-    def apiserver_port(self) -> float:
+    def apiserver_port(self) -> int:
         """
         The API server port for the Container Orchestration
         Engine for this cluster template.
@@ -173,7 +173,7 @@ class GetClusterTemplateResult:
 
     @property
     @pulumi.getter(name="dockerVolumeSize")
-    def docker_volume_size(self) -> float:
+    def docker_volume_size(self) -> int:
         """
         The size (in GB) of the Docker volume.
         """

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -47,13 +47,13 @@ class ContainerV1AclRead(dict):
                  created_at: Optional[str] = None,
                  project_access: Optional[bool] = None,
                  updated_at: Optional[str] = None,
-                 users: Optional[List[str]] = None):
+                 users: Optional[Sequence[str]] = None):
         """
         :param str created_at: The date the container ACL was created.
         :param bool project_access: Whether the container is accessible project wide.
                Defaults to `true`.
         :param str updated_at: The date the container ACL was last updated.
-        :param List[str] users: The list of user IDs, which are allowed to access the
+        :param Sequence[str] users: The list of user IDs, which are allowed to access the
                container, when `project_access` is set to `false`.
         """
         if created_at is not None:
@@ -92,7 +92,7 @@ class ContainerV1AclRead(dict):
 
     @property
     @pulumi.getter
-    def users(self) -> Optional[List[str]]:
+    def users(self) -> Optional[Sequence[str]]:
         """
         The list of user IDs, which are allowed to access the
         container, when `project_access` is set to `false`.
@@ -174,14 +174,14 @@ class ContainerV1SecretRef(dict):
 class OrderV1Meta(dict):
     def __init__(__self__, *,
                  algorithm: str,
-                 bit_length: float,
+                 bit_length: int,
                  expiration: Optional[str] = None,
                  mode: Optional[str] = None,
                  name: Optional[str] = None,
                  payload_content_type: Optional[str] = None):
         """
         :param str algorithm: Algorithm to use for key generation.
-        :param float bit_length: - Bit lenght of key to be generated.
+        :param int bit_length: - Bit lenght of key to be generated.
         :param str expiration: This is a UTC timestamp in ISO 8601 format YYYY-MM-DDTHH:MM:SSZ. If set, the secret will not be available after this time.
         :param str mode: The mode to use for key generation.
         :param str name: The name of the secret set by the user.
@@ -208,7 +208,7 @@ class OrderV1Meta(dict):
 
     @property
     @pulumi.getter(name="bitLength")
-    def bit_length(self) -> float:
+    def bit_length(self) -> int:
         """
         - Bit lenght of key to be generated.
         """
@@ -272,13 +272,13 @@ class SecretV1AclRead(dict):
                  created_at: Optional[str] = None,
                  project_access: Optional[bool] = None,
                  updated_at: Optional[str] = None,
-                 users: Optional[List[str]] = None):
+                 users: Optional[Sequence[str]] = None):
         """
         :param str created_at: The date the secret ACL was created.
         :param bool project_access: Whether the secret is accessible project wide.
                Defaults to `true`.
         :param str updated_at: The date the secret ACL was last updated.
-        :param List[str] users: The list of user IDs, which are allowed to access the
+        :param Sequence[str] users: The list of user IDs, which are allowed to access the
                secret, when `project_access` is set to `false`.
         """
         if created_at is not None:
@@ -317,7 +317,7 @@ class SecretV1AclRead(dict):
 
     @property
     @pulumi.getter
-    def users(self) -> Optional[List[str]]:
+    def users(self) -> Optional[Sequence[str]]:
         """
         The list of user IDs, which are allowed to access the
         secret, when `project_access` is set to `false`.
@@ -346,12 +346,12 @@ class GetContainerAclReadResult(dict):
                  created_at: str,
                  updated_at: str,
                  project_access: Optional[bool] = None,
-                 users: Optional[List[str]] = None):
+                 users: Optional[Sequence[str]] = None):
         """
         :param str created_at: The date the container ACL was created.
         :param str updated_at: The date the container ACL was last updated.
         :param bool project_access: Whether the container is accessible project wide.
-        :param List[str] users: The list of user IDs, which are allowed to access the container,
+        :param Sequence[str] users: The list of user IDs, which are allowed to access the container,
                when `project_access` is set to `false`.
         """
         pulumi.set(__self__, "created_at", created_at)
@@ -387,7 +387,7 @@ class GetContainerAclReadResult(dict):
 
     @property
     @pulumi.getter
-    def users(self) -> Optional[List[str]]:
+    def users(self) -> Optional[Sequence[str]]:
         """
         The list of user IDs, which are allowed to access the container,
         when `project_access` is set to `false`.
@@ -475,12 +475,12 @@ class GetSecretAclReadResult(dict):
                  created_at: str,
                  updated_at: str,
                  project_access: Optional[bool] = None,
-                 users: Optional[List[str]] = None):
+                 users: Optional[Sequence[str]] = None):
         """
         :param str created_at: The date the secret ACL was created.
         :param str updated_at: The date the secret ACL was last updated.
         :param bool project_access: Whether the secret is accessible project wide.
-        :param List[str] users: The list of user IDs, which are allowed to access the secret, when
+        :param Sequence[str] users: The list of user IDs, which are allowed to access the secret, when
                `project_access` is set to `false`.
         """
         pulumi.set(__self__, "created_at", created_at)
@@ -516,7 +516,7 @@ class GetSecretAclReadResult(dict):
 
     @property
     @pulumi.getter
-    def users(self) -> Optional[List[str]]:
+    def users(self) -> Optional[Sequence[str]]:
         """
         The list of user IDs, which are allowed to access the secret, when
         `project_access` is set to `false`.

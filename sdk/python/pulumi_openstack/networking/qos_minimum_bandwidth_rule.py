@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['QosMinimumBandwidthRule']
@@ -16,7 +16,7 @@ class QosMinimumBandwidthRule(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  direction: Optional[pulumi.Input[str]] = None,
-                 min_kbps: Optional[pulumi.Input[float]] = None,
+                 min_kbps: Optional[pulumi.Input[int]] = None,
                  qos_policy_id: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -42,7 +42,7 @@ class QosMinimumBandwidthRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] direction: The direction of traffic. Defaults to "egress". Changing this updates the direction of the
                existing QoS minimum bandwidth rule.
-        :param pulumi.Input[float] min_kbps: The minimum kilobits per second. Changing this updates the min kbps value of the existing
+        :param pulumi.Input[int] min_kbps: The minimum kilobits per second. Changing this updates the min kbps value of the existing
                QoS minimum bandwidth rule.
         :param pulumi.Input[str] qos_policy_id: The QoS policy reference. Changing this creates a new QoS minimum bandwidth rule.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
@@ -85,7 +85,7 @@ class QosMinimumBandwidthRule(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             direction: Optional[pulumi.Input[str]] = None,
-            min_kbps: Optional[pulumi.Input[float]] = None,
+            min_kbps: Optional[pulumi.Input[int]] = None,
             qos_policy_id: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None) -> 'QosMinimumBandwidthRule':
         """
@@ -97,7 +97,7 @@ class QosMinimumBandwidthRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] direction: The direction of traffic. Defaults to "egress". Changing this updates the direction of the
                existing QoS minimum bandwidth rule.
-        :param pulumi.Input[float] min_kbps: The minimum kilobits per second. Changing this updates the min kbps value of the existing
+        :param pulumi.Input[int] min_kbps: The minimum kilobits per second. Changing this updates the min kbps value of the existing
                QoS minimum bandwidth rule.
         :param pulumi.Input[str] qos_policy_id: The QoS policy reference. Changing this creates a new QoS minimum bandwidth rule.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
@@ -125,7 +125,7 @@ class QosMinimumBandwidthRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="minKbps")
-    def min_kbps(self) -> pulumi.Output[float]:
+    def min_kbps(self) -> pulumi.Output[int]:
         """
         The minimum kilobits per second. Changing this updates the min kbps value of the existing
         QoS minimum bandwidth rule.

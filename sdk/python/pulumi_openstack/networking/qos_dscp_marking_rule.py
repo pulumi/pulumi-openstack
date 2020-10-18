@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['QosDscpMarkingRule']
@@ -15,7 +15,7 @@ class QosDscpMarkingRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dscp_mark: Optional[pulumi.Input[float]] = None,
+                 dscp_mark: Optional[pulumi.Input[int]] = None,
                  qos_policy_id: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -39,7 +39,7 @@ class QosDscpMarkingRule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] dscp_mark: The value of DSCP mark. Changing this updates the DSCP mark value existing
+        :param pulumi.Input[int] dscp_mark: The value of DSCP mark. Changing this updates the DSCP mark value existing
                QoS DSCP marking rule.
         :param pulumi.Input[str] qos_policy_id: The QoS policy reference. Changing this creates a new QoS DSCP marking rule.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
@@ -80,7 +80,7 @@ class QosDscpMarkingRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            dscp_mark: Optional[pulumi.Input[float]] = None,
+            dscp_mark: Optional[pulumi.Input[int]] = None,
             qos_policy_id: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None) -> 'QosDscpMarkingRule':
         """
@@ -90,7 +90,7 @@ class QosDscpMarkingRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] dscp_mark: The value of DSCP mark. Changing this updates the DSCP mark value existing
+        :param pulumi.Input[int] dscp_mark: The value of DSCP mark. Changing this updates the DSCP mark value existing
                QoS DSCP marking rule.
         :param pulumi.Input[str] qos_policy_id: The QoS policy reference. Changing this creates a new QoS DSCP marking rule.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
@@ -108,7 +108,7 @@ class QosDscpMarkingRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dscpMark")
-    def dscp_mark(self) -> pulumi.Output[float]:
+    def dscp_mark(self) -> pulumi.Output[int]:
         """
         The value of DSCP mark. Changing this updates the DSCP mark value existing
         QoS DSCP marking rule.

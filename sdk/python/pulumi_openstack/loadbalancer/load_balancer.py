@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['LoadBalancer']
@@ -21,7 +21,7 @@ class LoadBalancer(pulumi.CustomResource):
                  loadbalancer_provider: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 security_group_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  vip_address: Optional[pulumi.Input[str]] = None,
                  vip_network_id: Optional[pulumi.Input[str]] = None,
@@ -56,7 +56,7 @@ class LoadBalancer(pulumi.CustomResource):
                A Networking client is needed to create an LB member. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
                LB member.
-        :param pulumi.Input[List[pulumi.Input[str]]] security_group_ids: A list of security group IDs to apply to the
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of security group IDs to apply to the
                loadbalancer. The security groups must be specified by ID and not name (as
                opposed to how they are configured with the Compute Instance).
         :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
@@ -120,7 +120,7 @@ class LoadBalancer(pulumi.CustomResource):
             loadbalancer_provider: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
-            security_group_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             tenant_id: Optional[pulumi.Input[str]] = None,
             vip_address: Optional[pulumi.Input[str]] = None,
             vip_network_id: Optional[pulumi.Input[str]] = None,
@@ -146,7 +146,7 @@ class LoadBalancer(pulumi.CustomResource):
                A Networking client is needed to create an LB member. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
                LB member.
-        :param pulumi.Input[List[pulumi.Input[str]]] security_group_ids: A list of security group IDs to apply to the
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of security group IDs to apply to the
                loadbalancer. The security groups must be specified by ID and not name (as
                opposed to how they are configured with the Compute Instance).
         :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
@@ -241,7 +241,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityGroupIds")
-    def security_group_ids(self) -> pulumi.Output[List[str]]:
+    def security_group_ids(self) -> pulumi.Output[Sequence[str]]:
         """
         A list of security group IDs to apply to the
         loadbalancer. The security groups must be specified by ID and not name (as

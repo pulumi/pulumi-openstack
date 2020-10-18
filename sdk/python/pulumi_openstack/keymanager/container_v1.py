@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -20,7 +20,7 @@ class ContainerV1(pulumi.CustomResource):
                  acl: Optional[pulumi.Input[pulumi.InputType['ContainerV1AclArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 secret_refs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ContainerV1SecretRefArgs']]]]] = None,
+                 secret_refs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerV1SecretRefArgs']]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -118,7 +118,7 @@ class ContainerV1(pulumi.CustomResource):
                A KeyManager client is needed to create a container. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
                V1 container.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ContainerV1SecretRefArgs']]]] secret_refs: A set of dictionaries containing references to secrets. The structure is described
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerV1SecretRefArgs']]]] secret_refs: A set of dictionaries containing references to secrets. The structure is described
                below.
         :param pulumi.Input[str] type: Used to indicate the type of container. Must be one of `generic`, `rsa` or `certificate`.
         """
@@ -163,13 +163,13 @@ class ContainerV1(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             acl: Optional[pulumi.Input[pulumi.InputType['ContainerV1AclArgs']]] = None,
-            consumers: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ContainerV1ConsumerArgs']]]]] = None,
+            consumers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerV1ConsumerArgs']]]]] = None,
             container_ref: Optional[pulumi.Input[str]] = None,
             created_at: Optional[pulumi.Input[str]] = None,
             creator_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
-            secret_refs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ContainerV1SecretRefArgs']]]]] = None,
+            secret_refs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerV1SecretRefArgs']]]]] = None,
             status: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None,
             updated_at: Optional[pulumi.Input[str]] = None) -> 'ContainerV1':
@@ -183,7 +183,7 @@ class ContainerV1(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ContainerV1AclArgs']] acl: Allows to control an access to a container. Currently only
                the `read` operation is supported. If not specified, the container is
                accessible project wide. The `read` structure is described below.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ContainerV1ConsumerArgs']]]] consumers: The list of the container consumers. The structure is described below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerV1ConsumerArgs']]]] consumers: The list of the container consumers. The structure is described below.
         :param pulumi.Input[str] container_ref: The container reference / where to find the container.
         :param pulumi.Input[str] created_at: The date the container ACL was created.
         :param pulumi.Input[str] creator_id: The creator of the container.
@@ -192,7 +192,7 @@ class ContainerV1(pulumi.CustomResource):
                A KeyManager client is needed to create a container. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
                V1 container.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ContainerV1SecretRefArgs']]]] secret_refs: A set of dictionaries containing references to secrets. The structure is described
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerV1SecretRefArgs']]]] secret_refs: A set of dictionaries containing references to secrets. The structure is described
                below.
         :param pulumi.Input[str] status: The status of the container.
         :param pulumi.Input[str] type: Used to indicate the type of container. Must be one of `generic`, `rsa` or `certificate`.
@@ -227,7 +227,7 @@ class ContainerV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def consumers(self) -> pulumi.Output[List['outputs.ContainerV1Consumer']]:
+    def consumers(self) -> pulumi.Output[Sequence['outputs.ContainerV1Consumer']]:
         """
         The list of the container consumers. The structure is described below.
         """
@@ -278,7 +278,7 @@ class ContainerV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="secretRefs")
-    def secret_refs(self) -> pulumi.Output[Optional[List['outputs.ContainerV1SecretRef']]]:
+    def secret_refs(self) -> pulumi.Output[Optional[Sequence['outputs.ContainerV1SecretRef']]]:
         """
         A set of dictionaries containing references to secrets. The structure is described
         below.

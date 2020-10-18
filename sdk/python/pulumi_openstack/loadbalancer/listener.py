@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['Listener']
@@ -16,8 +16,8 @@ class Listener(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin_state_up: Optional[pulumi.Input[bool]] = None,
-                 allowed_cidrs: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 connection_limit: Optional[pulumi.Input[float]] = None,
+                 allowed_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 connection_limit: Optional[pulumi.Input[int]] = None,
                  default_pool_id: Optional[pulumi.Input[str]] = None,
                  default_tls_container_ref: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -25,14 +25,14 @@ class Listener(pulumi.CustomResource):
                  loadbalancer_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
-                 protocol_port: Optional[pulumi.Input[float]] = None,
+                 protocol_port: Optional[pulumi.Input[int]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 sni_container_refs: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 sni_container_refs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
-                 timeout_client_data: Optional[pulumi.Input[float]] = None,
-                 timeout_member_connect: Optional[pulumi.Input[float]] = None,
-                 timeout_member_data: Optional[pulumi.Input[float]] = None,
-                 timeout_tcp_inspect: Optional[pulumi.Input[float]] = None,
+                 timeout_client_data: Optional[pulumi.Input[int]] = None,
+                 timeout_member_connect: Optional[pulumi.Input[int]] = None,
+                 timeout_member_data: Optional[pulumi.Input[int]] = None,
+                 timeout_tcp_inspect: Optional[pulumi.Input[int]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -58,9 +58,9 @@ class Listener(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] admin_state_up: The administrative state of the Listener.
                A valid value is true (UP) or false (DOWN).
-        :param pulumi.Input[List[pulumi.Input[str]]] allowed_cidrs: A list of CIDR blocks that are permitted to connect to this listener, denying
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_cidrs: A list of CIDR blocks that are permitted to connect to this listener, denying
                all other source addresses. If not present, defaults to allow all.
-        :param pulumi.Input[float] connection_limit: The maximum number of connections allowed
+        :param pulumi.Input[int] connection_limit: The maximum number of connections allowed
                for the Listener.
         :param pulumi.Input[str] default_pool_id: The ID of the default pool with which the
                Listener is associated.
@@ -80,23 +80,23 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[str] protocol: The protocol - can either be TCP, HTTP, HTTPS,
                TERMINATED_HTTPS or UDP (supported only in Octavia). Changing this creates a
                new Listener.
-        :param pulumi.Input[float] protocol_port: The port on which to listen for client traffic.
+        :param pulumi.Input[int] protocol_port: The port on which to listen for client traffic.
                Changing this creates a new Listener.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
                A Networking client is needed to create an . If omitted, the
                `region` argument of the provider is used. Changing this creates a new
                Listener.
-        :param pulumi.Input[List[pulumi.Input[str]]] sni_container_refs: A list of references to Barbican Secrets
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] sni_container_refs: A list of references to Barbican Secrets
                containers which store SNI information. See
                [here](https://wiki.openstack.org/wiki/Network/LBaaS/docs/how-to-create-tls-loadbalancer)
                for more information.
         :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
                the Listener.  Only administrative users can specify a tenant UUID
                other than their own. Changing this creates a new Listener.
-        :param pulumi.Input[float] timeout_client_data: The client inactivity timeout in milliseconds.
-        :param pulumi.Input[float] timeout_member_connect: The member connection timeout in milliseconds.
-        :param pulumi.Input[float] timeout_member_data: The member inactivity timeout in milliseconds.
-        :param pulumi.Input[float] timeout_tcp_inspect: The time in milliseconds, to wait for additional
+        :param pulumi.Input[int] timeout_client_data: The client inactivity timeout in milliseconds.
+        :param pulumi.Input[int] timeout_member_connect: The member connection timeout in milliseconds.
+        :param pulumi.Input[int] timeout_member_data: The member inactivity timeout in milliseconds.
+        :param pulumi.Input[int] timeout_tcp_inspect: The time in milliseconds, to wait for additional
                TCP packets for content inspection.
         """
         if __name__ is not None:
@@ -151,8 +151,8 @@ class Listener(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             admin_state_up: Optional[pulumi.Input[bool]] = None,
-            allowed_cidrs: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            connection_limit: Optional[pulumi.Input[float]] = None,
+            allowed_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            connection_limit: Optional[pulumi.Input[int]] = None,
             default_pool_id: Optional[pulumi.Input[str]] = None,
             default_tls_container_ref: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -160,14 +160,14 @@ class Listener(pulumi.CustomResource):
             loadbalancer_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             protocol: Optional[pulumi.Input[str]] = None,
-            protocol_port: Optional[pulumi.Input[float]] = None,
+            protocol_port: Optional[pulumi.Input[int]] = None,
             region: Optional[pulumi.Input[str]] = None,
-            sni_container_refs: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            sni_container_refs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             tenant_id: Optional[pulumi.Input[str]] = None,
-            timeout_client_data: Optional[pulumi.Input[float]] = None,
-            timeout_member_connect: Optional[pulumi.Input[float]] = None,
-            timeout_member_data: Optional[pulumi.Input[float]] = None,
-            timeout_tcp_inspect: Optional[pulumi.Input[float]] = None) -> 'Listener':
+            timeout_client_data: Optional[pulumi.Input[int]] = None,
+            timeout_member_connect: Optional[pulumi.Input[int]] = None,
+            timeout_member_data: Optional[pulumi.Input[int]] = None,
+            timeout_tcp_inspect: Optional[pulumi.Input[int]] = None) -> 'Listener':
         """
         Get an existing Listener resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -177,9 +177,9 @@ class Listener(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] admin_state_up: The administrative state of the Listener.
                A valid value is true (UP) or false (DOWN).
-        :param pulumi.Input[List[pulumi.Input[str]]] allowed_cidrs: A list of CIDR blocks that are permitted to connect to this listener, denying
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_cidrs: A list of CIDR blocks that are permitted to connect to this listener, denying
                all other source addresses. If not present, defaults to allow all.
-        :param pulumi.Input[float] connection_limit: The maximum number of connections allowed
+        :param pulumi.Input[int] connection_limit: The maximum number of connections allowed
                for the Listener.
         :param pulumi.Input[str] default_pool_id: The ID of the default pool with which the
                Listener is associated.
@@ -199,23 +199,23 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[str] protocol: The protocol - can either be TCP, HTTP, HTTPS,
                TERMINATED_HTTPS or UDP (supported only in Octavia). Changing this creates a
                new Listener.
-        :param pulumi.Input[float] protocol_port: The port on which to listen for client traffic.
+        :param pulumi.Input[int] protocol_port: The port on which to listen for client traffic.
                Changing this creates a new Listener.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
                A Networking client is needed to create an . If omitted, the
                `region` argument of the provider is used. Changing this creates a new
                Listener.
-        :param pulumi.Input[List[pulumi.Input[str]]] sni_container_refs: A list of references to Barbican Secrets
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] sni_container_refs: A list of references to Barbican Secrets
                containers which store SNI information. See
                [here](https://wiki.openstack.org/wiki/Network/LBaaS/docs/how-to-create-tls-loadbalancer)
                for more information.
         :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
                the Listener.  Only administrative users can specify a tenant UUID
                other than their own. Changing this creates a new Listener.
-        :param pulumi.Input[float] timeout_client_data: The client inactivity timeout in milliseconds.
-        :param pulumi.Input[float] timeout_member_connect: The member connection timeout in milliseconds.
-        :param pulumi.Input[float] timeout_member_data: The member inactivity timeout in milliseconds.
-        :param pulumi.Input[float] timeout_tcp_inspect: The time in milliseconds, to wait for additional
+        :param pulumi.Input[int] timeout_client_data: The client inactivity timeout in milliseconds.
+        :param pulumi.Input[int] timeout_member_connect: The member connection timeout in milliseconds.
+        :param pulumi.Input[int] timeout_member_data: The member inactivity timeout in milliseconds.
+        :param pulumi.Input[int] timeout_tcp_inspect: The time in milliseconds, to wait for additional
                TCP packets for content inspection.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -253,7 +253,7 @@ class Listener(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allowedCidrs")
-    def allowed_cidrs(self) -> pulumi.Output[Optional[List[str]]]:
+    def allowed_cidrs(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         A list of CIDR blocks that are permitted to connect to this listener, denying
         all other source addresses. If not present, defaults to allow all.
@@ -262,7 +262,7 @@ class Listener(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="connectionLimit")
-    def connection_limit(self) -> pulumi.Output[float]:
+    def connection_limit(self) -> pulumi.Output[int]:
         """
         The maximum number of connections allowed
         for the Listener.
@@ -338,7 +338,7 @@ class Listener(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="protocolPort")
-    def protocol_port(self) -> pulumi.Output[float]:
+    def protocol_port(self) -> pulumi.Output[int]:
         """
         The port on which to listen for client traffic.
         Changing this creates a new Listener.
@@ -358,7 +358,7 @@ class Listener(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sniContainerRefs")
-    def sni_container_refs(self) -> pulumi.Output[Optional[List[str]]]:
+    def sni_container_refs(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         A list of references to Barbican Secrets
         containers which store SNI information. See
@@ -379,7 +379,7 @@ class Listener(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="timeoutClientData")
-    def timeout_client_data(self) -> pulumi.Output[float]:
+    def timeout_client_data(self) -> pulumi.Output[int]:
         """
         The client inactivity timeout in milliseconds.
         """
@@ -387,7 +387,7 @@ class Listener(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="timeoutMemberConnect")
-    def timeout_member_connect(self) -> pulumi.Output[float]:
+    def timeout_member_connect(self) -> pulumi.Output[int]:
         """
         The member connection timeout in milliseconds.
         """
@@ -395,7 +395,7 @@ class Listener(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="timeoutMemberData")
-    def timeout_member_data(self) -> pulumi.Output[float]:
+    def timeout_member_data(self) -> pulumi.Output[int]:
         """
         The member inactivity timeout in milliseconds.
         """
@@ -403,7 +403,7 @@ class Listener(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="timeoutTcpInspect")
-    def timeout_tcp_inspect(self) -> pulumi.Output[float]:
+    def timeout_tcp_inspect(self) -> pulumi.Output[int]:
         """
         The time in milliseconds, to wait for additional
         TCP packets for content inspection.

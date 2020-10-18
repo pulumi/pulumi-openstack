@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -30,8 +30,8 @@ class GetSecretResult:
         if algorithm and not isinstance(algorithm, str):
             raise TypeError("Expected argument 'algorithm' to be a str")
         pulumi.set(__self__, "algorithm", algorithm)
-        if bit_length and not isinstance(bit_length, float):
-            raise TypeError("Expected argument 'bit_length' to be a float")
+        if bit_length and not isinstance(bit_length, int):
+            raise TypeError("Expected argument 'bit_length' to be a int")
         pulumi.set(__self__, "bit_length", bit_length)
         if content_types and not isinstance(content_types, dict):
             raise TypeError("Expected argument 'content_types' to be a dict")
@@ -101,7 +101,7 @@ class GetSecretResult:
 
     @property
     @pulumi.getter
-    def acls(self) -> List['outputs.GetSecretAclResult']:
+    def acls(self) -> Sequence['outputs.GetSecretAclResult']:
         """
         The list of ACLs assigned to a secret. The `read` structure is described below.
         """
@@ -117,7 +117,7 @@ class GetSecretResult:
 
     @property
     @pulumi.getter(name="bitLength")
-    def bit_length(self) -> Optional[float]:
+    def bit_length(self) -> Optional[int]:
         """
         See Argument Reference above.
         """
@@ -310,7 +310,7 @@ class AwaitableGetSecretResult(GetSecretResult):
 
 def get_secret(acl_only: Optional[bool] = None,
                algorithm: Optional[str] = None,
-               bit_length: Optional[float] = None,
+               bit_length: Optional[int] = None,
                created_at_filter: Optional[str] = None,
                expiration_filter: Optional[str] = None,
                mode: Optional[str] = None,
@@ -325,7 +325,7 @@ def get_secret(acl_only: Optional[bool] = None,
     :param bool acl_only: Select the Secret with an ACL that contains the user.
            Project scope is ignored. Defaults to `false`.
     :param str algorithm: The Secret algorithm.
-    :param float bit_length: The Secret bit length.
+    :param int bit_length: The Secret bit length.
     :param str created_at_filter: Date filter to select the Secret with
            created matching the specified criteria. See Date Filters below for more
            detail.

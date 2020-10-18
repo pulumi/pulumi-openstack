@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -44,11 +44,11 @@ class GetImageIdsResult:
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
-        if size_max and not isinstance(size_max, float):
-            raise TypeError("Expected argument 'size_max' to be a float")
+        if size_max and not isinstance(size_max, int):
+            raise TypeError("Expected argument 'size_max' to be a int")
         pulumi.set(__self__, "size_max", size_max)
-        if size_min and not isinstance(size_min, float):
-            raise TypeError("Expected argument 'size_min' to be a float")
+        if size_min and not isinstance(size_min, int):
+            raise TypeError("Expected argument 'size_min' to be a int")
         pulumi.set(__self__, "size_min", size_min)
         if sort and not isinstance(sort, str):
             raise TypeError("Expected argument 'sort' to be a str")
@@ -84,7 +84,7 @@ class GetImageIdsResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         return pulumi.get(self, "ids")
 
     @property
@@ -119,12 +119,12 @@ class GetImageIdsResult:
 
     @property
     @pulumi.getter(name="sizeMax")
-    def size_max(self) -> Optional[float]:
+    def size_max(self) -> Optional[int]:
         return pulumi.get(self, "size_max")
 
     @property
     @pulumi.getter(name="sizeMin")
-    def size_min(self) -> Optional[float]:
+    def size_min(self) -> Optional[int]:
         return pulumi.get(self, "size_min")
 
     @property
@@ -182,8 +182,8 @@ def get_image_ids(member_status: Optional[str] = None,
                   owner: Optional[str] = None,
                   properties: Optional[Mapping[str, Any]] = None,
                   region: Optional[str] = None,
-                  size_max: Optional[float] = None,
-                  size_min: Optional[float] = None,
+                  size_max: Optional[int] = None,
+                  size_min: Optional[int] = None,
                   sort: Optional[str] = None,
                   sort_direction: Optional[str] = None,
                   sort_key: Optional[str] = None,
@@ -224,8 +224,8 @@ def get_image_ids(member_status: Optional[str] = None,
            A Glance client is needed to create an Image that can be used with
            a compute instance. If omitted, the `region` argument of the provider
            is used.
-    :param float size_max: The maximum size (in bytes) of the image to return.
-    :param float size_min: The minimum size (in bytes) of the image to return.
+    :param int size_max: The maximum size (in bytes) of the image to return.
+    :param int size_min: The minimum size (in bytes) of the image to return.
     :param str sort: Sorts the response by one or more attribute and sort
            direction combinations. You can also set multiple sort keys and directions.
            Default direction is `desc`. Use the comma (,) character to separate

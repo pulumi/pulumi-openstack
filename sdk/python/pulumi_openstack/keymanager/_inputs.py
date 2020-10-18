@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -41,13 +41,13 @@ class ContainerV1AclReadArgs:
                  created_at: Optional[pulumi.Input[str]] = None,
                  project_access: Optional[pulumi.Input[bool]] = None,
                  updated_at: Optional[pulumi.Input[str]] = None,
-                 users: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] created_at: The date the container ACL was created.
         :param pulumi.Input[bool] project_access: Whether the container is accessible project wide.
                Defaults to `true`.
         :param pulumi.Input[str] updated_at: The date the container ACL was last updated.
-        :param pulumi.Input[List[pulumi.Input[str]]] users: The list of user IDs, which are allowed to access the
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] users: The list of user IDs, which are allowed to access the
                container, when `project_access` is set to `false`.
         """
         if created_at is not None:
@@ -98,7 +98,7 @@ class ContainerV1AclReadArgs:
 
     @property
     @pulumi.getter
-    def users(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The list of user IDs, which are allowed to access the
         container, when `project_access` is set to `false`.
@@ -106,7 +106,7 @@ class ContainerV1AclReadArgs:
         return pulumi.get(self, "users")
 
     @users.setter
-    def users(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "users", value)
 
 
@@ -191,14 +191,14 @@ class ContainerV1SecretRefArgs:
 class OrderV1MetaArgs:
     def __init__(__self__, *,
                  algorithm: pulumi.Input[str],
-                 bit_length: pulumi.Input[float],
+                 bit_length: pulumi.Input[int],
                  expiration: Optional[pulumi.Input[str]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  payload_content_type: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] algorithm: Algorithm to use for key generation.
-        :param pulumi.Input[float] bit_length: - Bit lenght of key to be generated.
+        :param pulumi.Input[int] bit_length: - Bit lenght of key to be generated.
         :param pulumi.Input[str] expiration: This is a UTC timestamp in ISO 8601 format YYYY-MM-DDTHH:MM:SSZ. If set, the secret will not be available after this time.
         :param pulumi.Input[str] mode: The mode to use for key generation.
         :param pulumi.Input[str] name: The name of the secret set by the user.
@@ -229,14 +229,14 @@ class OrderV1MetaArgs:
 
     @property
     @pulumi.getter(name="bitLength")
-    def bit_length(self) -> pulumi.Input[float]:
+    def bit_length(self) -> pulumi.Input[int]:
         """
         - Bit lenght of key to be generated.
         """
         return pulumi.get(self, "bit_length")
 
     @bit_length.setter
-    def bit_length(self, value: pulumi.Input[float]):
+    def bit_length(self, value: pulumi.Input[int]):
         pulumi.set(self, "bit_length", value)
 
     @property
@@ -311,13 +311,13 @@ class SecretV1AclReadArgs:
                  created_at: Optional[pulumi.Input[str]] = None,
                  project_access: Optional[pulumi.Input[bool]] = None,
                  updated_at: Optional[pulumi.Input[str]] = None,
-                 users: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] created_at: The date the secret ACL was created.
         :param pulumi.Input[bool] project_access: Whether the secret is accessible project wide.
                Defaults to `true`.
         :param pulumi.Input[str] updated_at: The date the secret ACL was last updated.
-        :param pulumi.Input[List[pulumi.Input[str]]] users: The list of user IDs, which are allowed to access the
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] users: The list of user IDs, which are allowed to access the
                secret, when `project_access` is set to `false`.
         """
         if created_at is not None:
@@ -368,7 +368,7 @@ class SecretV1AclReadArgs:
 
     @property
     @pulumi.getter
-    def users(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The list of user IDs, which are allowed to access the
         secret, when `project_access` is set to `false`.
@@ -376,7 +376,7 @@ class SecretV1AclReadArgs:
         return pulumi.get(self, "users")
 
     @users.setter
-    def users(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "users", value)
 
 

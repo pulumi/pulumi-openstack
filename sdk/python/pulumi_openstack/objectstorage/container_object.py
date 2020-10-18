@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['ContainerObject']
@@ -21,7 +21,7 @@ class ContainerObject(pulumi.CustomResource):
                  content_encoding: Optional[pulumi.Input[str]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  copy_from: Optional[pulumi.Input[str]] = None,
-                 delete_after: Optional[pulumi.Input[float]] = None,
+                 delete_after: Optional[pulumi.Input[int]] = None,
                  delete_at: Optional[pulumi.Input[str]] = None,
                  detect_content_type: Optional[pulumi.Input[bool]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
@@ -105,7 +105,7 @@ class ContainerObject(pulumi.CustomResource):
                {container}/{object}. You must UTF-8-encode and then URL-encode the names of the
                container and object before you include them in the header. Conflicts with `source` and
                `content`.
-        :param pulumi.Input[float] delete_after: An integer representing the number of seconds after which the
+        :param pulumi.Input[int] delete_after: An integer representing the number of seconds after which the
                system removes the object. Internally, the Object Storage system stores this value in
                the X-Delete-At metadata item.
         :param pulumi.Input[str] delete_at: An string representing the date when the system removes the object. 
@@ -178,11 +178,11 @@ class ContainerObject(pulumi.CustomResource):
             content: Optional[pulumi.Input[str]] = None,
             content_disposition: Optional[pulumi.Input[str]] = None,
             content_encoding: Optional[pulumi.Input[str]] = None,
-            content_length: Optional[pulumi.Input[float]] = None,
+            content_length: Optional[pulumi.Input[int]] = None,
             content_type: Optional[pulumi.Input[str]] = None,
             copy_from: Optional[pulumi.Input[str]] = None,
             date: Optional[pulumi.Input[str]] = None,
-            delete_after: Optional[pulumi.Input[float]] = None,
+            delete_after: Optional[pulumi.Input[int]] = None,
             delete_at: Optional[pulumi.Input[str]] = None,
             detect_content_type: Optional[pulumi.Input[bool]] = None,
             etag: Optional[pulumi.Input[str]] = None,
@@ -213,7 +213,7 @@ class ContainerObject(pulumi.CustomResource):
                program to save this file rather than show the file, which is the default.
         :param pulumi.Input[str] content_encoding: A string representing the value of the Content-Encoding
                metadata.
-        :param pulumi.Input[float] content_length: If the operation succeeds, this value is zero (0) or the 
+        :param pulumi.Input[int] content_length: If the operation succeeds, this value is zero (0) or the 
                length of informational or error text in the response body.
         :param pulumi.Input[str] content_type: A string which sets the MIME type for the object.
         :param pulumi.Input[str] copy_from: A string representing the name of an object 
@@ -224,7 +224,7 @@ class ContainerObject(pulumi.CustomResource):
         :param pulumi.Input[str] date: The date and time the system responded to the request, using the preferred 
                format of RFC 7231 as shown in this example Thu, 16 Jun 2016 15:10:38 GMT. The
                time is always in UTC.
-        :param pulumi.Input[float] delete_after: An integer representing the number of seconds after which the
+        :param pulumi.Input[int] delete_after: An integer representing the number of seconds after which the
                system removes the object. Internally, the Object Storage system stores this value in
                the X-Delete-At metadata item.
         :param pulumi.Input[str] delete_at: An string representing the date when the system removes the object. 
@@ -321,7 +321,7 @@ class ContainerObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="contentLength")
-    def content_length(self) -> pulumi.Output[float]:
+    def content_length(self) -> pulumi.Output[int]:
         """
         If the operation succeeds, this value is zero (0) or the 
         length of informational or error text in the response body.
@@ -360,7 +360,7 @@ class ContainerObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="deleteAfter")
-    def delete_after(self) -> pulumi.Output[Optional[float]]:
+    def delete_after(self) -> pulumi.Output[Optional[int]]:
         """
         An integer representing the number of seconds after which the
         system removes the object. Internally, the Object Storage system stores this value in

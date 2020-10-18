@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -17,22 +17,22 @@ class StackV1(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 capabilities: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 capabilities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  creation_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disable_rollback: Optional[pulumi.Input[bool]] = None,
                  environment_opts: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 notification_topics: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 outputs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['StackV1OutputArgs']]]]] = None,
+                 notification_topics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 outputs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StackV1OutputArgs']]]]] = None,
                  parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  status_reason: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template_description: Optional[pulumi.Input[str]] = None,
                  template_opts: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 timeout: Optional[pulumi.Input[float]] = None,
+                 timeout: Optional[pulumi.Input[int]] = None,
                  updated_time: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -74,7 +74,7 @@ class StackV1(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[str]]] capabilities: List of stack capabilities for stack.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] capabilities: List of stack capabilities for stack.
         :param pulumi.Input[str] creation_time: The date and time when the resource was created. The date
                and time stamp format is ISO 8601: CCYY-MM-DDThh:mm:ss±hh:mm
                For example, 2015-08-27T09:49:58-05:00. The ±hh:mm value, if included,
@@ -89,8 +89,8 @@ class StackV1(pulumi.CustomResource):
                Environment Opts.
         :param pulumi.Input[str] name: A unique name for the stack. It must start with an
                alphabetic character. Changing this updates the stack's name.
-        :param pulumi.Input[List[pulumi.Input[str]]] notification_topics: List of notification topics for stack.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['StackV1OutputArgs']]]] outputs: A list of stack outputs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_topics: List of notification topics for stack.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StackV1OutputArgs']]]] outputs: A list of stack outputs.
         :param pulumi.Input[Mapping[str, Any]] parameters: User-defined key/value pairs as parameters to pass
                to the template. Changing this updates the existing stack parameters.
         :param pulumi.Input[str] region: The region in which to create the stack. If
@@ -98,13 +98,13 @@ class StackV1(pulumi.CustomResource):
                creates a new stack.
         :param pulumi.Input[str] status: The status of the stack.
         :param pulumi.Input[str] status_reason: The reason for the current status of the stack.
-        :param pulumi.Input[List[pulumi.Input[str]]] tags: A list of tags to assosciate with the Stack
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags to assosciate with the Stack
         :param pulumi.Input[str] template_description: The description of the stack template.
         :param pulumi.Input[Mapping[str, Any]] template_opts: Template key/value pairs to associate with the
                stack which contains either the template file or url.
                Allowed keys: Bin, URL, Files. Changing this updates the existing stack
                Template Opts.
-        :param pulumi.Input[float] timeout: The timeout for stack action in minutes.
+        :param pulumi.Input[int] timeout: The timeout for stack action in minutes.
         :param pulumi.Input[str] updated_time: The date and time when the resource was updated. The date
                and time stamp format is ISO 8601: CCYY-MM-DDThh:mm:ss±hh:mm
                For example, 2015-08-27T09:49:58-05:00. The ±hh:mm value, if included,
@@ -156,22 +156,22 @@ class StackV1(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            capabilities: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            capabilities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             creation_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             disable_rollback: Optional[pulumi.Input[bool]] = None,
             environment_opts: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            notification_topics: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            outputs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['StackV1OutputArgs']]]]] = None,
+            notification_topics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            outputs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StackV1OutputArgs']]]]] = None,
             parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             region: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             status_reason: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             template_description: Optional[pulumi.Input[str]] = None,
             template_opts: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-            timeout: Optional[pulumi.Input[float]] = None,
+            timeout: Optional[pulumi.Input[int]] = None,
             updated_time: Optional[pulumi.Input[str]] = None) -> 'StackV1':
         """
         Get an existing StackV1 resource's state with the given name, id, and optional extra
@@ -180,7 +180,7 @@ class StackV1(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[str]]] capabilities: List of stack capabilities for stack.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] capabilities: List of stack capabilities for stack.
         :param pulumi.Input[str] creation_time: The date and time when the resource was created. The date
                and time stamp format is ISO 8601: CCYY-MM-DDThh:mm:ss±hh:mm
                For example, 2015-08-27T09:49:58-05:00. The ±hh:mm value, if included,
@@ -195,8 +195,8 @@ class StackV1(pulumi.CustomResource):
                Environment Opts.
         :param pulumi.Input[str] name: A unique name for the stack. It must start with an
                alphabetic character. Changing this updates the stack's name.
-        :param pulumi.Input[List[pulumi.Input[str]]] notification_topics: List of notification topics for stack.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['StackV1OutputArgs']]]] outputs: A list of stack outputs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_topics: List of notification topics for stack.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StackV1OutputArgs']]]] outputs: A list of stack outputs.
         :param pulumi.Input[Mapping[str, Any]] parameters: User-defined key/value pairs as parameters to pass
                to the template. Changing this updates the existing stack parameters.
         :param pulumi.Input[str] region: The region in which to create the stack. If
@@ -204,13 +204,13 @@ class StackV1(pulumi.CustomResource):
                creates a new stack.
         :param pulumi.Input[str] status: The status of the stack.
         :param pulumi.Input[str] status_reason: The reason for the current status of the stack.
-        :param pulumi.Input[List[pulumi.Input[str]]] tags: A list of tags to assosciate with the Stack
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags to assosciate with the Stack
         :param pulumi.Input[str] template_description: The description of the stack template.
         :param pulumi.Input[Mapping[str, Any]] template_opts: Template key/value pairs to associate with the
                stack which contains either the template file or url.
                Allowed keys: Bin, URL, Files. Changing this updates the existing stack
                Template Opts.
-        :param pulumi.Input[float] timeout: The timeout for stack action in minutes.
+        :param pulumi.Input[int] timeout: The timeout for stack action in minutes.
         :param pulumi.Input[str] updated_time: The date and time when the resource was updated. The date
                and time stamp format is ISO 8601: CCYY-MM-DDThh:mm:ss±hh:mm
                For example, 2015-08-27T09:49:58-05:00. The ±hh:mm value, if included,
@@ -241,7 +241,7 @@ class StackV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def capabilities(self) -> pulumi.Output[List[str]]:
+    def capabilities(self) -> pulumi.Output[Sequence[str]]:
         """
         List of stack capabilities for stack.
         """
@@ -298,7 +298,7 @@ class StackV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="notificationTopics")
-    def notification_topics(self) -> pulumi.Output[List[str]]:
+    def notification_topics(self) -> pulumi.Output[Sequence[str]]:
         """
         List of notification topics for stack.
         """
@@ -306,7 +306,7 @@ class StackV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def outputs(self) -> pulumi.Output[List['outputs.StackV1Output']]:
+    def outputs(self) -> pulumi.Output[Sequence['outputs.StackV1Output']]:
         """
         A list of stack outputs.
         """
@@ -349,7 +349,7 @@ class StackV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[List[str]]:
+    def tags(self) -> pulumi.Output[Sequence[str]]:
         """
         A list of tags to assosciate with the Stack
         """
@@ -376,7 +376,7 @@ class StackV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def timeout(self) -> pulumi.Output[float]:
+    def timeout(self) -> pulumi.Output[int]:
         """
         The timeout for stack action in minutes.
         """

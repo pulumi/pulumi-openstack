@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['EndpointGroup']
@@ -16,7 +16,7 @@ class EndpointGroup(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 endpoints: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
@@ -46,7 +46,7 @@ class EndpointGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The human-readable description for the group.
                Changing this updates the description of the existing group.
-        :param pulumi.Input[List[pulumi.Input[str]]] endpoints: List of endpoints of the same type, for the endpoint group. The values will depend on the type.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] endpoints: List of endpoints of the same type, for the endpoint group. The values will depend on the type.
                Changing this creates a new group.
         :param pulumi.Input[str] name: The name of the group. Changing this updates the name of
                the existing group.
@@ -95,7 +95,7 @@ class EndpointGroup(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
-            endpoints: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             tenant_id: Optional[pulumi.Input[str]] = None,
@@ -110,7 +110,7 @@ class EndpointGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The human-readable description for the group.
                Changing this updates the description of the existing group.
-        :param pulumi.Input[List[pulumi.Input[str]]] endpoints: List of endpoints of the same type, for the endpoint group. The values will depend on the type.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] endpoints: List of endpoints of the same type, for the endpoint group. The values will depend on the type.
                Changing this creates a new group.
         :param pulumi.Input[str] name: The name of the group. Changing this updates the name of
                the existing group.
@@ -148,7 +148,7 @@ class EndpointGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def endpoints(self) -> pulumi.Output[Optional[List[str]]]:
+    def endpoints(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         List of endpoints of the same type, for the endpoint group. The values will depend on the type.
         Changing this creates a new group.

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['PoolV1']
@@ -17,7 +17,7 @@ class PoolV1(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  lb_method: Optional[pulumi.Input[str]] = None,
                  lb_provider: Optional[pulumi.Input[str]] = None,
-                 monitor_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 monitor_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -122,7 +122,7 @@ class PoolV1(pulumi.CustomResource):
                'LEAST_CONNECTIONS' as valid values for this attribute.
         :param pulumi.Input[str] lb_provider: The backend load balancing provider. For example:
                `haproxy`, `F5`, etc.
-        :param pulumi.Input[List[pulumi.Input[str]]] monitor_ids: A list of IDs of monitors to associate with the
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] monitor_ids: A list of IDs of monitors to associate with the
                pool.
         :param pulumi.Input[str] name: The name of the pool. Changing this updates the name of
                the existing pool.
@@ -181,7 +181,7 @@ class PoolV1(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             lb_method: Optional[pulumi.Input[str]] = None,
             lb_provider: Optional[pulumi.Input[str]] = None,
-            monitor_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            monitor_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             protocol: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
@@ -199,7 +199,7 @@ class PoolV1(pulumi.CustomResource):
                'LEAST_CONNECTIONS' as valid values for this attribute.
         :param pulumi.Input[str] lb_provider: The backend load balancing provider. For example:
                `haproxy`, `F5`, etc.
-        :param pulumi.Input[List[pulumi.Input[str]]] monitor_ids: A list of IDs of monitors to associate with the
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] monitor_ids: A list of IDs of monitors to associate with the
                pool.
         :param pulumi.Input[str] name: The name of the pool. Changing this updates the name of
                the existing pool.
@@ -250,7 +250,7 @@ class PoolV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="monitorIds")
-    def monitor_ids(self) -> pulumi.Output[Optional[List[str]]]:
+    def monitor_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         A list of IDs of monitors to associate with the
         pool.

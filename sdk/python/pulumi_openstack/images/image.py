@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['Image']
@@ -20,13 +20,13 @@ class Image(pulumi.CustomResource):
                  image_cache_path: Optional[pulumi.Input[str]] = None,
                  image_source_url: Optional[pulumi.Input[str]] = None,
                  local_file_path: Optional[pulumi.Input[str]] = None,
-                 min_disk_gb: Optional[pulumi.Input[float]] = None,
-                 min_ram_mb: Optional[pulumi.Input[float]] = None,
+                 min_disk_gb: Optional[pulumi.Input[int]] = None,
+                 min_ram_mb: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  protected: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  verify_checksum: Optional[pulumi.Input[bool]] = None,
                  visibility: Optional[pulumi.Input[str]] = None,
                  web_download: Optional[pulumi.Input[bool]] = None,
@@ -79,9 +79,9 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[str] local_file_path: This is the filepath of the raw image file
                that will be uploaded to Glance. Conflicts with `image_source_url` and
                `web_download`.
-        :param pulumi.Input[float] min_disk_gb: Amount of disk space (in GB) required to boot image.
+        :param pulumi.Input[int] min_disk_gb: Amount of disk space (in GB) required to boot image.
                Defaults to 0.
-        :param pulumi.Input[float] min_ram_mb: Amount of ram (in MB) required to boot image.
+        :param pulumi.Input[int] min_ram_mb: Amount of ram (in MB) required to boot image.
                Defauts to 0.
         :param pulumi.Input[str] name: The name of the image.
         :param pulumi.Input[Mapping[str, Any]] properties: A map of key/value pairs to set freeform
@@ -93,7 +93,7 @@ class Image(pulumi.CustomResource):
                A Glance client is needed to create an Image that can be used with
                a compute instance. If omitted, the `region` argument of the provider
                is used. Changing this creates a new Image.
-        :param pulumi.Input[List[pulumi.Input[str]]] tags: The tags of the image. It must be a list of strings.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the image. It must be a list of strings.
                At this time, it is not possible to delete all tags of an image.
         :param pulumi.Input[bool] verify_checksum: If false, the checksum will not be verified
                once the image is finished uploading. Conflicts with `web_download`.
@@ -170,17 +170,17 @@ class Image(pulumi.CustomResource):
             image_source_url: Optional[pulumi.Input[str]] = None,
             local_file_path: Optional[pulumi.Input[str]] = None,
             metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-            min_disk_gb: Optional[pulumi.Input[float]] = None,
-            min_ram_mb: Optional[pulumi.Input[float]] = None,
+            min_disk_gb: Optional[pulumi.Input[int]] = None,
+            min_ram_mb: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             owner: Optional[pulumi.Input[str]] = None,
             properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             protected: Optional[pulumi.Input[bool]] = None,
             region: Optional[pulumi.Input[str]] = None,
             schema: Optional[pulumi.Input[str]] = None,
-            size_bytes: Optional[pulumi.Input[float]] = None,
+            size_bytes: Optional[pulumi.Input[int]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             update_at: Optional[pulumi.Input[str]] = None,
             updated_at: Optional[pulumi.Input[str]] = None,
             verify_checksum: Optional[pulumi.Input[bool]] = None,
@@ -212,9 +212,9 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] metadata: The metadata associated with the image.
                Image metadata allow for meaningfully define the image properties
                and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
-        :param pulumi.Input[float] min_disk_gb: Amount of disk space (in GB) required to boot image.
+        :param pulumi.Input[int] min_disk_gb: Amount of disk space (in GB) required to boot image.
                Defaults to 0.
-        :param pulumi.Input[float] min_ram_mb: Amount of ram (in MB) required to boot image.
+        :param pulumi.Input[int] min_ram_mb: Amount of ram (in MB) required to boot image.
                Defauts to 0.
         :param pulumi.Input[str] name: The name of the image.
         :param pulumi.Input[str] owner: The id of the openstack user who owns the image.
@@ -229,10 +229,10 @@ class Image(pulumi.CustomResource):
                is used. Changing this creates a new Image.
         :param pulumi.Input[str] schema: The path to the JSON-schema that represent
                the image or image
-        :param pulumi.Input[float] size_bytes: The size in bytes of the data associated with the image.
+        :param pulumi.Input[int] size_bytes: The size in bytes of the data associated with the image.
         :param pulumi.Input[str] status: The status of the image. It can be "queued", "active"
                or "saving".
-        :param pulumi.Input[List[pulumi.Input[str]]] tags: The tags of the image. It must be a list of strings.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the image. It must be a list of strings.
                At this time, it is not possible to delete all tags of an image.
         :param pulumi.Input[str] update_at: (**Deprecated** - use `updated_at` instead)
         :param pulumi.Input[str] updated_at: The date the image was last updated.
@@ -359,7 +359,7 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="minDiskGb")
-    def min_disk_gb(self) -> pulumi.Output[Optional[float]]:
+    def min_disk_gb(self) -> pulumi.Output[Optional[int]]:
         """
         Amount of disk space (in GB) required to boot image.
         Defaults to 0.
@@ -368,7 +368,7 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="minRamMb")
-    def min_ram_mb(self) -> pulumi.Output[Optional[float]]:
+    def min_ram_mb(self) -> pulumi.Output[Optional[int]]:
         """
         Amount of ram (in MB) required to boot image.
         Defauts to 0.
@@ -432,7 +432,7 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sizeBytes")
-    def size_bytes(self) -> pulumi.Output[float]:
+    def size_bytes(self) -> pulumi.Output[int]:
         """
         The size in bytes of the data associated with the image.
         """
@@ -449,7 +449,7 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[List[str]]]:
+    def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         The tags of the image. It must be a list of strings.
         At this time, it is not possible to delete all tags of an image.

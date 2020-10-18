@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['QuoteSetV2']
@@ -15,15 +15,15 @@ class QuoteSetV2(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backup_gigabytes: Optional[pulumi.Input[float]] = None,
-                 backups: Optional[pulumi.Input[float]] = None,
-                 gigabytes: Optional[pulumi.Input[float]] = None,
-                 groups: Optional[pulumi.Input[float]] = None,
-                 per_volume_gigabytes: Optional[pulumi.Input[float]] = None,
+                 backup_gigabytes: Optional[pulumi.Input[int]] = None,
+                 backups: Optional[pulumi.Input[int]] = None,
+                 gigabytes: Optional[pulumi.Input[int]] = None,
+                 groups: Optional[pulumi.Input[int]] = None,
+                 per_volume_gigabytes: Optional[pulumi.Input[int]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 snapshots: Optional[pulumi.Input[float]] = None,
-                 volumes: Optional[pulumi.Input[float]] = None,
+                 snapshots: Optional[pulumi.Input[int]] = None,
+                 volumes: Optional[pulumi.Input[int]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -55,24 +55,24 @@ class QuoteSetV2(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] backup_gigabytes: Quota value for backup gigabytes. Changing
+        :param pulumi.Input[int] backup_gigabytes: Quota value for backup gigabytes. Changing
                this updates the existing quotaset.
-        :param pulumi.Input[float] backups: Quota value for backups. Changing this updates the
+        :param pulumi.Input[int] backups: Quota value for backups. Changing this updates the
                existing quotaset.
-        :param pulumi.Input[float] gigabytes: Quota value for gigabytes. Changing this updates the
+        :param pulumi.Input[int] gigabytes: Quota value for gigabytes. Changing this updates the
                existing quotaset.
-        :param pulumi.Input[float] groups: Quota value for groups. Changing this updates the
+        :param pulumi.Input[int] groups: Quota value for groups. Changing this updates the
                existing quotaset.
-        :param pulumi.Input[float] per_volume_gigabytes: Quota value for gigabytes per volume .
+        :param pulumi.Input[int] per_volume_gigabytes: Quota value for gigabytes per volume .
                Changing this updates the existing quotaset.
         :param pulumi.Input[str] project_id: ID of the project to manage quotas. Changing this
                creates a new quotaset.
         :param pulumi.Input[str] region: The region in which to create the volume. If
                omitted, the `region` argument of the provider is used. Changing this
                creates a new quotaset.
-        :param pulumi.Input[float] snapshots: Quota value for snapshots. Changing this updates the
+        :param pulumi.Input[int] snapshots: Quota value for snapshots. Changing this updates the
                existing quotaset.
-        :param pulumi.Input[float] volumes: Quota value for volumes. Changing this updates the
+        :param pulumi.Input[int] volumes: Quota value for volumes. Changing this updates the
                existing quotaset.
         """
         if __name__ is not None:
@@ -113,15 +113,15 @@ class QuoteSetV2(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            backup_gigabytes: Optional[pulumi.Input[float]] = None,
-            backups: Optional[pulumi.Input[float]] = None,
-            gigabytes: Optional[pulumi.Input[float]] = None,
-            groups: Optional[pulumi.Input[float]] = None,
-            per_volume_gigabytes: Optional[pulumi.Input[float]] = None,
+            backup_gigabytes: Optional[pulumi.Input[int]] = None,
+            backups: Optional[pulumi.Input[int]] = None,
+            gigabytes: Optional[pulumi.Input[int]] = None,
+            groups: Optional[pulumi.Input[int]] = None,
+            per_volume_gigabytes: Optional[pulumi.Input[int]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
-            snapshots: Optional[pulumi.Input[float]] = None,
-            volumes: Optional[pulumi.Input[float]] = None) -> 'QuoteSetV2':
+            snapshots: Optional[pulumi.Input[int]] = None,
+            volumes: Optional[pulumi.Input[int]] = None) -> 'QuoteSetV2':
         """
         Get an existing QuoteSetV2 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -129,24 +129,24 @@ class QuoteSetV2(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] backup_gigabytes: Quota value for backup gigabytes. Changing
+        :param pulumi.Input[int] backup_gigabytes: Quota value for backup gigabytes. Changing
                this updates the existing quotaset.
-        :param pulumi.Input[float] backups: Quota value for backups. Changing this updates the
+        :param pulumi.Input[int] backups: Quota value for backups. Changing this updates the
                existing quotaset.
-        :param pulumi.Input[float] gigabytes: Quota value for gigabytes. Changing this updates the
+        :param pulumi.Input[int] gigabytes: Quota value for gigabytes. Changing this updates the
                existing quotaset.
-        :param pulumi.Input[float] groups: Quota value for groups. Changing this updates the
+        :param pulumi.Input[int] groups: Quota value for groups. Changing this updates the
                existing quotaset.
-        :param pulumi.Input[float] per_volume_gigabytes: Quota value for gigabytes per volume .
+        :param pulumi.Input[int] per_volume_gigabytes: Quota value for gigabytes per volume .
                Changing this updates the existing quotaset.
         :param pulumi.Input[str] project_id: ID of the project to manage quotas. Changing this
                creates a new quotaset.
         :param pulumi.Input[str] region: The region in which to create the volume. If
                omitted, the `region` argument of the provider is used. Changing this
                creates a new quotaset.
-        :param pulumi.Input[float] snapshots: Quota value for snapshots. Changing this updates the
+        :param pulumi.Input[int] snapshots: Quota value for snapshots. Changing this updates the
                existing quotaset.
-        :param pulumi.Input[float] volumes: Quota value for volumes. Changing this updates the
+        :param pulumi.Input[int] volumes: Quota value for volumes. Changing this updates the
                existing quotaset.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -166,7 +166,7 @@ class QuoteSetV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="backupGigabytes")
-    def backup_gigabytes(self) -> pulumi.Output[float]:
+    def backup_gigabytes(self) -> pulumi.Output[int]:
         """
         Quota value for backup gigabytes. Changing
         this updates the existing quotaset.
@@ -175,7 +175,7 @@ class QuoteSetV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def backups(self) -> pulumi.Output[float]:
+    def backups(self) -> pulumi.Output[int]:
         """
         Quota value for backups. Changing this updates the
         existing quotaset.
@@ -184,7 +184,7 @@ class QuoteSetV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def gigabytes(self) -> pulumi.Output[float]:
+    def gigabytes(self) -> pulumi.Output[int]:
         """
         Quota value for gigabytes. Changing this updates the
         existing quotaset.
@@ -193,7 +193,7 @@ class QuoteSetV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def groups(self) -> pulumi.Output[float]:
+    def groups(self) -> pulumi.Output[int]:
         """
         Quota value for groups. Changing this updates the
         existing quotaset.
@@ -202,7 +202,7 @@ class QuoteSetV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="perVolumeGigabytes")
-    def per_volume_gigabytes(self) -> pulumi.Output[float]:
+    def per_volume_gigabytes(self) -> pulumi.Output[int]:
         """
         Quota value for gigabytes per volume .
         Changing this updates the existing quotaset.
@@ -230,7 +230,7 @@ class QuoteSetV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def snapshots(self) -> pulumi.Output[float]:
+    def snapshots(self) -> pulumi.Output[int]:
         """
         Quota value for snapshots. Changing this updates the
         existing quotaset.
@@ -239,7 +239,7 @@ class QuoteSetV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def volumes(self) -> pulumi.Output[float]:
+    def volumes(self) -> pulumi.Output[int]:
         """
         Quota value for volumes. Changing this updates the
         existing quotaset.

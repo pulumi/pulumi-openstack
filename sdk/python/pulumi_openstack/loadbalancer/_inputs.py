@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -17,22 +17,22 @@ __all__ = [
 class MembersMemberArgs:
     def __init__(__self__, *,
                  address: pulumi.Input[str],
-                 protocol_port: pulumi.Input[float],
+                 protocol_port: pulumi.Input[int],
                  admin_state_up: Optional[pulumi.Input[bool]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  subnet_id: Optional[pulumi.Input[str]] = None,
-                 weight: Optional[pulumi.Input[float]] = None):
+                 weight: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] address: The IP address of the members to receive traffic from
                the load balancer.
-        :param pulumi.Input[float] protocol_port: The port on which to listen for client traffic.
+        :param pulumi.Input[int] protocol_port: The port on which to listen for client traffic.
         :param pulumi.Input[bool] admin_state_up: The administrative state of the member.
                A valid value is true (UP) or false (DOWN). Defaults to true.
         :param pulumi.Input[str] id: The unique ID for the members.
         :param pulumi.Input[str] name: Human-readable name for the member.
         :param pulumi.Input[str] subnet_id: The subnet in which to access the member.
-        :param pulumi.Input[float] weight: A positive integer value that indicates the relative
+        :param pulumi.Input[int] weight: A positive integer value that indicates the relative
                portion of traffic that this members should receive from the pool. For
                example, a member with a weight of 10 receives five times as much traffic
                as a member with a weight of 2. Defaults to 1.
@@ -65,14 +65,14 @@ class MembersMemberArgs:
 
     @property
     @pulumi.getter(name="protocolPort")
-    def protocol_port(self) -> pulumi.Input[float]:
+    def protocol_port(self) -> pulumi.Input[int]:
         """
         The port on which to listen for client traffic.
         """
         return pulumi.get(self, "protocol_port")
 
     @protocol_port.setter
-    def protocol_port(self, value: pulumi.Input[float]):
+    def protocol_port(self, value: pulumi.Input[int]):
         pulumi.set(self, "protocol_port", value)
 
     @property
@@ -126,7 +126,7 @@ class MembersMemberArgs:
 
     @property
     @pulumi.getter
-    def weight(self) -> Optional[pulumi.Input[float]]:
+    def weight(self) -> Optional[pulumi.Input[int]]:
         """
         A positive integer value that indicates the relative
         portion of traffic that this members should receive from the pool. For
@@ -136,7 +136,7 @@ class MembersMemberArgs:
         return pulumi.get(self, "weight")
 
     @weight.setter
-    def weight(self, value: Optional[pulumi.Input[float]]):
+    def weight(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "weight", value)
 
 

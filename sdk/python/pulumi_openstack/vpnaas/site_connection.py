@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -19,16 +19,16 @@ class SiteConnection(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin_state_up: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 dpds: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['SiteConnectionDpdArgs']]]]] = None,
+                 dpds: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SiteConnectionDpdArgs']]]]] = None,
                  ikepolicy_id: Optional[pulumi.Input[str]] = None,
                  initiator: Optional[pulumi.Input[str]] = None,
                  ipsecpolicy_id: Optional[pulumi.Input[str]] = None,
                  local_ep_group_id: Optional[pulumi.Input[str]] = None,
                  local_id: Optional[pulumi.Input[str]] = None,
-                 mtu: Optional[pulumi.Input[float]] = None,
+                 mtu: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  peer_address: Optional[pulumi.Input[str]] = None,
-                 peer_cidrs: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 peer_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  peer_ep_group_id: Optional[pulumi.Input[str]] = None,
                  peer_id: Optional[pulumi.Input[str]] = None,
                  psk: Optional[pulumi.Input[str]] = None,
@@ -64,7 +64,7 @@ class SiteConnection(pulumi.CustomResource):
                Changing this updates the administrative state of the existing connection.
         :param pulumi.Input[str] description: The human-readable description for the connection.
                Changing this updates the description of the existing connection.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['SiteConnectionDpdArgs']]]] dpds: A dictionary with dead peer detection (DPD) protocol controls.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SiteConnectionDpdArgs']]]] dpds: A dictionary with dead peer detection (DPD) protocol controls.
         :param pulumi.Input[str] ikepolicy_id: The ID of the IKE policy. Changing this creates a new connection.
         :param pulumi.Input[str] initiator: A valid value is response-only or bi-directional. Default is bi-directional.
         :param pulumi.Input[str] ipsecpolicy_id: The ID of the IPsec policy. Changing this creates a new connection.
@@ -75,12 +75,12 @@ class SiteConnection(pulumi.CustomResource):
         :param pulumi.Input[str] local_id: An ID to be used instead of the external IP address for a virtual router used in traffic between instances on different networks in east-west traffic.
                Most often, local ID would be domain name, email address, etc.
                If this is not configured then the external IP address will be used as the ID.
-        :param pulumi.Input[float] mtu: The maximum transmission unit (MTU) value to address fragmentation.
+        :param pulumi.Input[int] mtu: The maximum transmission unit (MTU) value to address fragmentation.
                Minimum value is 68 for IPv4, and 1280 for IPv6.
         :param pulumi.Input[str] name: The name of the connection. Changing this updates the name of
                the existing connection.
         :param pulumi.Input[str] peer_address: The peer gateway public IPv4 or IPv6 address or FQDN.
-        :param pulumi.Input[List[pulumi.Input[str]]] peer_cidrs: Unique list of valid peer private CIDRs in the form < net_address > / < prefix > .
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] peer_cidrs: Unique list of valid peer private CIDRs in the form < net_address > / < prefix > .
         :param pulumi.Input[str] peer_ep_group_id: The ID for the endpoint group that contains private CIDRs in the form < net_address > / < prefix > for the peer side of the connection.
                You must specify this parameter with the local_ep_group_id parameter unless in backward-compatible mode
                where peer_cidrs is provided with a subnet_id for the VPN service.
@@ -157,16 +157,16 @@ class SiteConnection(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             admin_state_up: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            dpds: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['SiteConnectionDpdArgs']]]]] = None,
+            dpds: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SiteConnectionDpdArgs']]]]] = None,
             ikepolicy_id: Optional[pulumi.Input[str]] = None,
             initiator: Optional[pulumi.Input[str]] = None,
             ipsecpolicy_id: Optional[pulumi.Input[str]] = None,
             local_ep_group_id: Optional[pulumi.Input[str]] = None,
             local_id: Optional[pulumi.Input[str]] = None,
-            mtu: Optional[pulumi.Input[float]] = None,
+            mtu: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             peer_address: Optional[pulumi.Input[str]] = None,
-            peer_cidrs: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            peer_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             peer_ep_group_id: Optional[pulumi.Input[str]] = None,
             peer_id: Optional[pulumi.Input[str]] = None,
             psk: Optional[pulumi.Input[str]] = None,
@@ -185,7 +185,7 @@ class SiteConnection(pulumi.CustomResource):
                Changing this updates the administrative state of the existing connection.
         :param pulumi.Input[str] description: The human-readable description for the connection.
                Changing this updates the description of the existing connection.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['SiteConnectionDpdArgs']]]] dpds: A dictionary with dead peer detection (DPD) protocol controls.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SiteConnectionDpdArgs']]]] dpds: A dictionary with dead peer detection (DPD) protocol controls.
         :param pulumi.Input[str] ikepolicy_id: The ID of the IKE policy. Changing this creates a new connection.
         :param pulumi.Input[str] initiator: A valid value is response-only or bi-directional. Default is bi-directional.
         :param pulumi.Input[str] ipsecpolicy_id: The ID of the IPsec policy. Changing this creates a new connection.
@@ -196,12 +196,12 @@ class SiteConnection(pulumi.CustomResource):
         :param pulumi.Input[str] local_id: An ID to be used instead of the external IP address for a virtual router used in traffic between instances on different networks in east-west traffic.
                Most often, local ID would be domain name, email address, etc.
                If this is not configured then the external IP address will be used as the ID.
-        :param pulumi.Input[float] mtu: The maximum transmission unit (MTU) value to address fragmentation.
+        :param pulumi.Input[int] mtu: The maximum transmission unit (MTU) value to address fragmentation.
                Minimum value is 68 for IPv4, and 1280 for IPv6.
         :param pulumi.Input[str] name: The name of the connection. Changing this updates the name of
                the existing connection.
         :param pulumi.Input[str] peer_address: The peer gateway public IPv4 or IPv6 address or FQDN.
-        :param pulumi.Input[List[pulumi.Input[str]]] peer_cidrs: Unique list of valid peer private CIDRs in the form < net_address > / < prefix > .
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] peer_cidrs: Unique list of valid peer private CIDRs in the form < net_address > / < prefix > .
         :param pulumi.Input[str] peer_ep_group_id: The ID for the endpoint group that contains private CIDRs in the form < net_address > / < prefix > for the peer side of the connection.
                You must specify this parameter with the local_ep_group_id parameter unless in backward-compatible mode
                where peer_cidrs is provided with a subnet_id for the VPN service.
@@ -263,7 +263,7 @@ class SiteConnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def dpds(self) -> pulumi.Output[List['outputs.SiteConnectionDpd']]:
+    def dpds(self) -> pulumi.Output[Sequence['outputs.SiteConnectionDpd']]:
         """
         A dictionary with dead peer detection (DPD) protocol controls.
         """
@@ -316,7 +316,7 @@ class SiteConnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def mtu(self) -> pulumi.Output[float]:
+    def mtu(self) -> pulumi.Output[int]:
         """
         The maximum transmission unit (MTU) value to address fragmentation.
         Minimum value is 68 for IPv4, and 1280 for IPv6.
@@ -342,7 +342,7 @@ class SiteConnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="peerCidrs")
-    def peer_cidrs(self) -> pulumi.Output[Optional[List[str]]]:
+    def peer_cidrs(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         Unique list of valid peer private CIDRs in the form < net_address > / < prefix > .
         """

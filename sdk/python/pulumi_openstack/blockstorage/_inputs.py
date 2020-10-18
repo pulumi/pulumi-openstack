@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -61,14 +61,14 @@ class VolumeAttachmentArgs:
 class VolumeSchedulerHintArgs:
     def __init__(__self__, *,
                  additional_properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 different_hosts: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 different_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  local_to_instance: Optional[pulumi.Input[str]] = None,
                  query: Optional[pulumi.Input[str]] = None,
-                 same_hosts: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 same_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[Mapping[str, Any]] additional_properties: Arbitrary key/value pairs of additional
                properties to pass to the scheduler.
-        :param pulumi.Input[List[pulumi.Input[str]]] different_hosts: The volume should be scheduled on a 
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] different_hosts: The volume should be scheduled on a 
                different host from the set of volumes specified in the list provided.
         :param pulumi.Input[str] local_to_instance: An instance UUID. The volume should be 
                scheduled on the same host as the instance.
@@ -78,7 +78,7 @@ class VolumeSchedulerHintArgs:
                [here](https://docs.openstack.org/cinder/latest/configuration/block-storage/scheduler-filters.html#jsonfilter).
                At this time, only simple queries are supported. Compound queries using
                `and`, `or`, or `not` are not supported. An example of a simple query is:
-        :param pulumi.Input[List[pulumi.Input[str]]] same_hosts: A list of volume UUIDs. The volume should be
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] same_hosts: A list of volume UUIDs. The volume should be
                scheduled on the same host as another volume specified in the list provided.
         """
         if additional_properties is not None:
@@ -107,7 +107,7 @@ class VolumeSchedulerHintArgs:
 
     @property
     @pulumi.getter(name="differentHosts")
-    def different_hosts(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def different_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The volume should be scheduled on a 
         different host from the set of volumes specified in the list provided.
@@ -115,7 +115,7 @@ class VolumeSchedulerHintArgs:
         return pulumi.get(self, "different_hosts")
 
     @different_hosts.setter
-    def different_hosts(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def different_hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "different_hosts", value)
 
     @property
@@ -150,7 +150,7 @@ class VolumeSchedulerHintArgs:
 
     @property
     @pulumi.getter(name="sameHosts")
-    def same_hosts(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def same_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A list of volume UUIDs. The volume should be
         scheduled on the same host as another volume specified in the list provided.
@@ -158,7 +158,7 @@ class VolumeSchedulerHintArgs:
         return pulumi.get(self, "same_hosts")
 
     @same_hosts.setter
-    def same_hosts(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def same_hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "same_hosts", value)
 
 
@@ -248,14 +248,14 @@ class VolumeV2AttachmentArgs:
 class VolumeV2SchedulerHintArgs:
     def __init__(__self__, *,
                  additional_properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 different_hosts: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 different_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  local_to_instance: Optional[pulumi.Input[str]] = None,
                  query: Optional[pulumi.Input[str]] = None,
-                 same_hosts: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 same_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[Mapping[str, Any]] additional_properties: Arbitrary key/value pairs of additional
                properties to pass to the scheduler.
-        :param pulumi.Input[List[pulumi.Input[str]]] different_hosts: The volume should be scheduled on a 
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] different_hosts: The volume should be scheduled on a 
                different host from the set of volumes specified in the list provided.
         :param pulumi.Input[str] local_to_instance: An instance UUID. The volume should be 
                scheduled on the same host as the instance.
@@ -265,7 +265,7 @@ class VolumeV2SchedulerHintArgs:
                [here](https://docs.openstack.org/cinder/latest/configuration/block-storage/scheduler-filters.html#jsonfilter).
                At this time, only simple queries are supported. Compound queries using
                `and`, `or`, or `not` are not supported. An example of a simple query is:
-        :param pulumi.Input[List[pulumi.Input[str]]] same_hosts: A list of volume UUIDs. The volume should be
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] same_hosts: A list of volume UUIDs. The volume should be
                scheduled on the same host as another volume specified in the list provided.
         """
         if additional_properties is not None:
@@ -294,7 +294,7 @@ class VolumeV2SchedulerHintArgs:
 
     @property
     @pulumi.getter(name="differentHosts")
-    def different_hosts(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def different_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The volume should be scheduled on a 
         different host from the set of volumes specified in the list provided.
@@ -302,7 +302,7 @@ class VolumeV2SchedulerHintArgs:
         return pulumi.get(self, "different_hosts")
 
     @different_hosts.setter
-    def different_hosts(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def different_hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "different_hosts", value)
 
     @property
@@ -337,7 +337,7 @@ class VolumeV2SchedulerHintArgs:
 
     @property
     @pulumi.getter(name="sameHosts")
-    def same_hosts(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def same_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A list of volume UUIDs. The volume should be
         scheduled on the same host as another volume specified in the list provided.
@@ -345,7 +345,7 @@ class VolumeV2SchedulerHintArgs:
         return pulumi.get(self, "same_hosts")
 
     @same_hosts.setter
-    def same_hosts(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def same_hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "same_hosts", value)
 
 

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -74,7 +74,7 @@ class GetRouterResult:
 
     @property
     @pulumi.getter(name="allTags")
-    def all_tags(self) -> List[str]:
+    def all_tags(self) -> Sequence[str]:
         """
         The set of string tags applied on the router.
         """
@@ -82,7 +82,7 @@ class GetRouterResult:
 
     @property
     @pulumi.getter(name="availabilityZoneHints")
-    def availability_zone_hints(self) -> List[str]:
+    def availability_zone_hints(self) -> Sequence[str]:
         """
         The availability zone that is used to make router resources highly available.
         """
@@ -108,7 +108,7 @@ class GetRouterResult:
 
     @property
     @pulumi.getter(name="externalFixedIps")
-    def external_fixed_ips(self) -> List['outputs.GetRouterExternalFixedIpResult']:
+    def external_fixed_ips(self) -> Sequence['outputs.GetRouterExternalFixedIpResult']:
         """
         The external fixed IPs of the router.
         """
@@ -152,7 +152,7 @@ class GetRouterResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List[str]]:
+    def tags(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "tags")
 
     @property
@@ -192,7 +192,7 @@ def get_router(admin_state_up: Optional[bool] = None,
                region: Optional[str] = None,
                router_id: Optional[str] = None,
                status: Optional[str] = None,
-               tags: Optional[List[str]] = None,
+               tags: Optional[Sequence[str]] = None,
                tenant_id: Optional[str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRouterResult:
     """
@@ -218,7 +218,7 @@ def get_router(admin_state_up: Optional[bool] = None,
            `region` argument of the provider is used.
     :param str router_id: The UUID of the router resource.
     :param str status: The status of the router (ACTIVE/DOWN).
-    :param List[str] tags: The list of router tags to filter.
+    :param Sequence[str] tags: The list of router tags to filter.
     :param str tenant_id: The owner of the router.
     """
     __args__ = dict()

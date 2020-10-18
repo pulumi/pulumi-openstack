@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['Firewall']
@@ -16,7 +16,7 @@ class Firewall(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin_state_up: Optional[pulumi.Input[bool]] = None,
-                 associated_routers: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 associated_routers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  no_routers: Optional[pulumi.Input[bool]] = None,
@@ -60,7 +60,7 @@ class Firewall(pulumi.CustomResource):
         :param pulumi.Input[bool] admin_state_up: Administrative up/down status for the firewall
                (must be "true" or "false" if provided - defaults to "true").
                Changing this updates the `admin_state_up` of an existing firewall.
-        :param pulumi.Input[List[pulumi.Input[str]]] associated_routers: Router(s) to associate this firewall instance
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] associated_routers: Router(s) to associate this firewall instance
                with. Must be a list of strings. Changing this updates the associated routers
                of an existing firewall. Conflicts with `no_routers`.
         :param pulumi.Input[str] description: A description for the firewall. Changing this
@@ -120,7 +120,7 @@ class Firewall(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             admin_state_up: Optional[pulumi.Input[bool]] = None,
-            associated_routers: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            associated_routers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             no_routers: Optional[pulumi.Input[bool]] = None,
@@ -138,7 +138,7 @@ class Firewall(pulumi.CustomResource):
         :param pulumi.Input[bool] admin_state_up: Administrative up/down status for the firewall
                (must be "true" or "false" if provided - defaults to "true").
                Changing this updates the `admin_state_up` of an existing firewall.
-        :param pulumi.Input[List[pulumi.Input[str]]] associated_routers: Router(s) to associate this firewall instance
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] associated_routers: Router(s) to associate this firewall instance
                with. Must be a list of strings. Changing this updates the associated routers
                of an existing firewall. Conflicts with `no_routers`.
         :param pulumi.Input[str] description: A description for the firewall. Changing this
@@ -186,7 +186,7 @@ class Firewall(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="associatedRouters")
-    def associated_routers(self) -> pulumi.Output[List[str]]:
+    def associated_routers(self) -> pulumi.Output[Sequence[str]]:
         """
         Router(s) to associate this firewall instance
         with. Must be a list of strings. Changing this updates the associated routers

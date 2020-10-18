@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -23,8 +23,8 @@ class GetAddressScopeResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
-        if ip_version and not isinstance(ip_version, float):
-            raise TypeError("Expected argument 'ip_version' to be a float")
+        if ip_version and not isinstance(ip_version, int):
+            raise TypeError("Expected argument 'ip_version' to be a int")
         pulumi.set(__self__, "ip_version", ip_version)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
@@ -49,7 +49,7 @@ class GetAddressScopeResult:
 
     @property
     @pulumi.getter(name="ipVersion")
-    def ip_version(self) -> Optional[float]:
+    def ip_version(self) -> Optional[int]:
         """
         See Argument Reference above.
         """
@@ -99,7 +99,7 @@ class AwaitableGetAddressScopeResult(GetAddressScopeResult):
             shared=self.shared)
 
 
-def get_address_scope(ip_version: Optional[float] = None,
+def get_address_scope(ip_version: Optional[int] = None,
                       name: Optional[str] = None,
                       project_id: Optional[str] = None,
                       region: Optional[str] = None,
@@ -120,7 +120,7 @@ def get_address_scope(ip_version: Optional[float] = None,
     ```
 
 
-    :param float ip_version: IP version.
+    :param int ip_version: IP version.
     :param str name: Name of the address-scope.
     :param str project_id: The owner of the address-scope.
     :param str region: The region in which to obtain the V2 Neutron client.

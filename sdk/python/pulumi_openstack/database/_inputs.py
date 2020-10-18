@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -273,13 +273,13 @@ class InstanceNetworkArgs:
 class InstanceUserArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
-                 databases: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 databases: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  host: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] name: Database to be created on new instance. Changing this creates a
                new instance.
-        :param pulumi.Input[List[pulumi.Input[str]]] databases: A list of databases that user will have access to. If not specified, 
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] databases: A list of databases that user will have access to. If not specified, 
                user has access to all databases on th einstance. Changing this creates a new instance.
         :param pulumi.Input[str] host: An ip address or % sign indicating what ip addresses can connect with
                this user credentials. Changing this creates a new instance.
@@ -309,7 +309,7 @@ class InstanceUserArgs:
 
     @property
     @pulumi.getter
-    def databases(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def databases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A list of databases that user will have access to. If not specified, 
         user has access to all databases on th einstance. Changing this creates a new instance.
@@ -317,7 +317,7 @@ class InstanceUserArgs:
         return pulumi.get(self, "databases")
 
     @databases.setter
-    def databases(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def databases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "databases", value)
 
     @property

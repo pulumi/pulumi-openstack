@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -44,8 +44,8 @@ class GetNetworkResult:
         if matching_subnet_cidr and not isinstance(matching_subnet_cidr, str):
             raise TypeError("Expected argument 'matching_subnet_cidr' to be a str")
         pulumi.set(__self__, "matching_subnet_cidr", matching_subnet_cidr)
-        if mtu and not isinstance(mtu, float):
-            raise TypeError("Expected argument 'mtu' to be a float")
+        if mtu and not isinstance(mtu, int):
+            raise TypeError("Expected argument 'mtu' to be a int")
         pulumi.set(__self__, "mtu", mtu)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
@@ -82,7 +82,7 @@ class GetNetworkResult:
 
     @property
     @pulumi.getter(name="allTags")
-    def all_tags(self) -> List[str]:
+    def all_tags(self) -> Sequence[str]:
         """
         The set of string tags applied on the network.
         """
@@ -90,7 +90,7 @@ class GetNetworkResult:
 
     @property
     @pulumi.getter(name="availabilityZoneHints")
-    def availability_zone_hints(self) -> List[str]:
+    def availability_zone_hints(self) -> Sequence[str]:
         """
         The availability zone candidates for the network.
         """
@@ -136,7 +136,7 @@ class GetNetworkResult:
 
     @property
     @pulumi.getter
-    def mtu(self) -> Optional[float]:
+    def mtu(self) -> Optional[int]:
         """
         See Argument Reference above.
         """
@@ -179,7 +179,7 @@ class GetNetworkResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List[str]]:
+    def tags(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "tags")
 
     @property
@@ -224,12 +224,12 @@ class AwaitableGetNetworkResult(GetNetworkResult):
 def get_network(description: Optional[str] = None,
                 external: Optional[bool] = None,
                 matching_subnet_cidr: Optional[str] = None,
-                mtu: Optional[float] = None,
+                mtu: Optional[int] = None,
                 name: Optional[str] = None,
                 network_id: Optional[str] = None,
                 region: Optional[str] = None,
                 status: Optional[str] = None,
-                tags: Optional[List[str]] = None,
+                tags: Optional[Sequence[str]] = None,
                 tenant_id: Optional[str] = None,
                 transparent_vlan: Optional[bool] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNetworkResult:
@@ -249,7 +249,7 @@ def get_network(description: Optional[str] = None,
     :param str description: Human-readable description of the network.
     :param bool external: The external routing facility of the network.
     :param str matching_subnet_cidr: The CIDR of a subnet within the network.
-    :param float mtu: The network MTU to filter. Available, when Neutron `net-mtu`
+    :param int mtu: The network MTU to filter. Available, when Neutron `net-mtu`
            extension is enabled.
     :param str name: The name of the network.
     :param str network_id: The ID of the network.
@@ -257,7 +257,7 @@ def get_network(description: Optional[str] = None,
            A Neutron client is needed to retrieve networks ids. If omitted, the
            `region` argument of the provider is used.
     :param str status: The status of the network.
-    :param List[str] tags: The list of network tags to filter.
+    :param Sequence[str] tags: The list of network tags to filter.
     :param str tenant_id: The owner of the network.
     :param bool transparent_vlan: The VLAN transparent attribute for the
            network.

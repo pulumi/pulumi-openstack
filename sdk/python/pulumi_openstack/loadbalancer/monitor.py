@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['Monitor']
@@ -16,16 +16,16 @@ class Monitor(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin_state_up: Optional[pulumi.Input[bool]] = None,
-                 delay: Optional[pulumi.Input[float]] = None,
+                 delay: Optional[pulumi.Input[int]] = None,
                  expected_codes: Optional[pulumi.Input[str]] = None,
                  http_method: Optional[pulumi.Input[str]] = None,
-                 max_retries: Optional[pulumi.Input[float]] = None,
-                 max_retries_down: Optional[pulumi.Input[float]] = None,
+                 max_retries: Optional[pulumi.Input[int]] = None,
+                 max_retries_down: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  pool_id: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
-                 timeout: Optional[pulumi.Input[float]] = None,
+                 timeout: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  url_path: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -52,17 +52,17 @@ class Monitor(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] admin_state_up: The administrative state of the monitor.
                A valid value is true (UP) or false (DOWN).
-        :param pulumi.Input[float] delay: The time, in seconds, between sending probes to members.
+        :param pulumi.Input[int] delay: The time, in seconds, between sending probes to members.
         :param pulumi.Input[str] expected_codes: Required for HTTP(S) types. Expected HTTP codes
                for a passing HTTP(S) monitor. You can either specify a single status like
                "200", or a range like "200-202".
         :param pulumi.Input[str] http_method: Required for HTTP(S) types. The HTTP method used
                for requests by the monitor. If this attribute is not specified, it
                defaults to "GET".
-        :param pulumi.Input[float] max_retries: Number of permissible ping failures before
+        :param pulumi.Input[int] max_retries: Number of permissible ping failures before
                changing the member's status to INACTIVE. Must be a number between 1
                and 10.
-        :param pulumi.Input[float] max_retries_down: Number of permissible ping failures befor changing the member's
+        :param pulumi.Input[int] max_retries_down: Number of permissible ping failures befor changing the member's
                status to ERROR. Must be a number between 1 and 10 (supported only in Octavia).
                Changing this updates the max_retries_down of the existing monitor.
         :param pulumi.Input[str] name: The Name of the Monitor.
@@ -74,7 +74,7 @@ class Monitor(pulumi.CustomResource):
         :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
                the monitor.  Only administrative users can specify a tenant UUID
                other than their own. Changing this creates a new monitor.
-        :param pulumi.Input[float] timeout: Maximum number of seconds for a monitor to wait for a
+        :param pulumi.Input[int] timeout: Maximum number of seconds for a monitor to wait for a
                ping reply before it times out. The value must be less than the delay
                value.
         :param pulumi.Input[str] type: The type of probe, which is PING, TCP, HTTP, HTTPS,
@@ -134,16 +134,16 @@ class Monitor(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             admin_state_up: Optional[pulumi.Input[bool]] = None,
-            delay: Optional[pulumi.Input[float]] = None,
+            delay: Optional[pulumi.Input[int]] = None,
             expected_codes: Optional[pulumi.Input[str]] = None,
             http_method: Optional[pulumi.Input[str]] = None,
-            max_retries: Optional[pulumi.Input[float]] = None,
-            max_retries_down: Optional[pulumi.Input[float]] = None,
+            max_retries: Optional[pulumi.Input[int]] = None,
+            max_retries_down: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             pool_id: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             tenant_id: Optional[pulumi.Input[str]] = None,
-            timeout: Optional[pulumi.Input[float]] = None,
+            timeout: Optional[pulumi.Input[int]] = None,
             type: Optional[pulumi.Input[str]] = None,
             url_path: Optional[pulumi.Input[str]] = None) -> 'Monitor':
         """
@@ -155,17 +155,17 @@ class Monitor(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] admin_state_up: The administrative state of the monitor.
                A valid value is true (UP) or false (DOWN).
-        :param pulumi.Input[float] delay: The time, in seconds, between sending probes to members.
+        :param pulumi.Input[int] delay: The time, in seconds, between sending probes to members.
         :param pulumi.Input[str] expected_codes: Required for HTTP(S) types. Expected HTTP codes
                for a passing HTTP(S) monitor. You can either specify a single status like
                "200", or a range like "200-202".
         :param pulumi.Input[str] http_method: Required for HTTP(S) types. The HTTP method used
                for requests by the monitor. If this attribute is not specified, it
                defaults to "GET".
-        :param pulumi.Input[float] max_retries: Number of permissible ping failures before
+        :param pulumi.Input[int] max_retries: Number of permissible ping failures before
                changing the member's status to INACTIVE. Must be a number between 1
                and 10.
-        :param pulumi.Input[float] max_retries_down: Number of permissible ping failures befor changing the member's
+        :param pulumi.Input[int] max_retries_down: Number of permissible ping failures befor changing the member's
                status to ERROR. Must be a number between 1 and 10 (supported only in Octavia).
                Changing this updates the max_retries_down of the existing monitor.
         :param pulumi.Input[str] name: The Name of the Monitor.
@@ -177,7 +177,7 @@ class Monitor(pulumi.CustomResource):
         :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
                the monitor.  Only administrative users can specify a tenant UUID
                other than their own. Changing this creates a new monitor.
-        :param pulumi.Input[float] timeout: Maximum number of seconds for a monitor to wait for a
+        :param pulumi.Input[int] timeout: Maximum number of seconds for a monitor to wait for a
                ping reply before it times out. The value must be less than the delay
                value.
         :param pulumi.Input[str] type: The type of probe, which is PING, TCP, HTTP, HTTPS,
@@ -216,7 +216,7 @@ class Monitor(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def delay(self) -> pulumi.Output[float]:
+    def delay(self) -> pulumi.Output[int]:
         """
         The time, in seconds, between sending probes to members.
         """
@@ -244,7 +244,7 @@ class Monitor(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxRetries")
-    def max_retries(self) -> pulumi.Output[float]:
+    def max_retries(self) -> pulumi.Output[int]:
         """
         Number of permissible ping failures before
         changing the member's status to INACTIVE. Must be a number between 1
@@ -254,7 +254,7 @@ class Monitor(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxRetriesDown")
-    def max_retries_down(self) -> pulumi.Output[float]:
+    def max_retries_down(self) -> pulumi.Output[int]:
         """
         Number of permissible ping failures befor changing the member's
         status to ERROR. Must be a number between 1 and 10 (supported only in Octavia).
@@ -301,7 +301,7 @@ class Monitor(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def timeout(self) -> pulumi.Output[float]:
+    def timeout(self) -> pulumi.Output[int]:
         """
         Maximum number of seconds for a monitor to wait for a
         ping reply before it times out. The value must be less than the delay

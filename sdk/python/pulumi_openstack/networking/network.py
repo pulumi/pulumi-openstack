@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -18,18 +18,18 @@ class Network(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin_state_up: Optional[pulumi.Input[bool]] = None,
-                 availability_zone_hints: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 availability_zone_hints: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dns_domain: Optional[pulumi.Input[str]] = None,
                  external: Optional[pulumi.Input[bool]] = None,
-                 mtu: Optional[pulumi.Input[float]] = None,
+                 mtu: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  port_security_enabled: Optional[pulumi.Input[bool]] = None,
                  qos_policy_id: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 segments: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['NetworkSegmentArgs']]]]] = None,
+                 segments: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkSegmentArgs']]]]] = None,
                  shared: Optional[pulumi.Input[bool]] = None,
-                 tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  transparent_vlan: Optional[pulumi.Input[bool]] = None,
                  value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -78,7 +78,7 @@ class Network(pulumi.CustomResource):
         :param pulumi.Input[bool] admin_state_up: The administrative state of the network.
                Acceptable values are "true" and "false". Changing this value updates the
                state of the existing network.
-        :param pulumi.Input[List[pulumi.Input[str]]] availability_zone_hints: An availability zone is used to make
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] availability_zone_hints: An availability zone is used to make
                network resources highly available. Used for resources with high availability
                so that they are scheduled on different availability zones. Changing this
                creates a new network.
@@ -91,7 +91,7 @@ class Network(pulumi.CustomResource):
         :param pulumi.Input[bool] external: Specifies whether the network resource has the
                external routing facility. Valid values are true and false. Defaults to
                false. Changing this updates the external attribute of the existing network.
-        :param pulumi.Input[float] mtu: The network MTU. Available for read-only, when Neutron
+        :param pulumi.Input[int] mtu: The network MTU. Available for read-only, when Neutron
                `net-mtu` extension is enabled. Available for the modification, when
                Neutron `net-mtu-writable` extension is enabled.
         :param pulumi.Input[str] name: The name of the network. Changing this updates the name of
@@ -106,11 +106,11 @@ class Network(pulumi.CustomResource):
                A Networking client is needed to create a Neutron network. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
                network.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['NetworkSegmentArgs']]]] segments: An array of one or more provider segment objects.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkSegmentArgs']]]] segments: An array of one or more provider segment objects.
         :param pulumi.Input[bool] shared: Specifies whether the network resource can be accessed
                by any tenant or not. Changing this updates the sharing capabilities of the
                existing network.
-        :param pulumi.Input[List[pulumi.Input[str]]] tags: A set of string tags for the network.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of string tags for the network.
         :param pulumi.Input[str] tenant_id: The owner of the network. Required if admin wants to
                create a network for another tenant. Changing this creates a new network.
         :param pulumi.Input[bool] transparent_vlan: Specifies whether the network resource has the
@@ -164,19 +164,19 @@ class Network(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             admin_state_up: Optional[pulumi.Input[bool]] = None,
-            all_tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            availability_zone_hints: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            all_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            availability_zone_hints: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             dns_domain: Optional[pulumi.Input[str]] = None,
             external: Optional[pulumi.Input[bool]] = None,
-            mtu: Optional[pulumi.Input[float]] = None,
+            mtu: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             port_security_enabled: Optional[pulumi.Input[bool]] = None,
             qos_policy_id: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
-            segments: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['NetworkSegmentArgs']]]]] = None,
+            segments: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkSegmentArgs']]]]] = None,
             shared: Optional[pulumi.Input[bool]] = None,
-            tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             tenant_id: Optional[pulumi.Input[str]] = None,
             transparent_vlan: Optional[pulumi.Input[bool]] = None,
             value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'Network':
@@ -190,9 +190,9 @@ class Network(pulumi.CustomResource):
         :param pulumi.Input[bool] admin_state_up: The administrative state of the network.
                Acceptable values are "true" and "false". Changing this value updates the
                state of the existing network.
-        :param pulumi.Input[List[pulumi.Input[str]]] all_tags: The collection of tags assigned on the network, which have been
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] all_tags: The collection of tags assigned on the network, which have been
                explicitly and implicitly added.
-        :param pulumi.Input[List[pulumi.Input[str]]] availability_zone_hints: An availability zone is used to make
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] availability_zone_hints: An availability zone is used to make
                network resources highly available. Used for resources with high availability
                so that they are scheduled on different availability zones. Changing this
                creates a new network.
@@ -205,7 +205,7 @@ class Network(pulumi.CustomResource):
         :param pulumi.Input[bool] external: Specifies whether the network resource has the
                external routing facility. Valid values are true and false. Defaults to
                false. Changing this updates the external attribute of the existing network.
-        :param pulumi.Input[float] mtu: The network MTU. Available for read-only, when Neutron
+        :param pulumi.Input[int] mtu: The network MTU. Available for read-only, when Neutron
                `net-mtu` extension is enabled. Available for the modification, when
                Neutron `net-mtu-writable` extension is enabled.
         :param pulumi.Input[str] name: The name of the network. Changing this updates the name of
@@ -220,11 +220,11 @@ class Network(pulumi.CustomResource):
                A Networking client is needed to create a Neutron network. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
                network.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['NetworkSegmentArgs']]]] segments: An array of one or more provider segment objects.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkSegmentArgs']]]] segments: An array of one or more provider segment objects.
         :param pulumi.Input[bool] shared: Specifies whether the network resource can be accessed
                by any tenant or not. Changing this updates the sharing capabilities of the
                existing network.
-        :param pulumi.Input[List[pulumi.Input[str]]] tags: A set of string tags for the network.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of string tags for the network.
         :param pulumi.Input[str] tenant_id: The owner of the network. Required if admin wants to
                create a network for another tenant. Changing this creates a new network.
         :param pulumi.Input[bool] transparent_vlan: Specifies whether the network resource has the
@@ -268,7 +268,7 @@ class Network(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allTags")
-    def all_tags(self) -> pulumi.Output[List[str]]:
+    def all_tags(self) -> pulumi.Output[Sequence[str]]:
         """
         The collection of tags assigned on the network, which have been
         explicitly and implicitly added.
@@ -277,7 +277,7 @@ class Network(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="availabilityZoneHints")
-    def availability_zone_hints(self) -> pulumi.Output[List[str]]:
+    def availability_zone_hints(self) -> pulumi.Output[Sequence[str]]:
         """
         An availability zone is used to make
         network resources highly available. Used for resources with high availability
@@ -318,7 +318,7 @@ class Network(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def mtu(self) -> pulumi.Output[float]:
+    def mtu(self) -> pulumi.Output[int]:
         """
         The network MTU. Available for read-only, when Neutron
         `net-mtu` extension is enabled. Available for the modification, when
@@ -368,7 +368,7 @@ class Network(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def segments(self) -> pulumi.Output[Optional[List['outputs.NetworkSegment']]]:
+    def segments(self) -> pulumi.Output[Optional[Sequence['outputs.NetworkSegment']]]:
         """
         An array of one or more provider segment objects.
         """
@@ -386,7 +386,7 @@ class Network(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[List[str]]]:
+    def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         A set of string tags for the network.
         """

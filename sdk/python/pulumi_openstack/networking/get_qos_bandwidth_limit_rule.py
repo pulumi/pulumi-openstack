@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -26,11 +26,11 @@ class GetQosBandwidthLimitRuleResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
-        if max_burst_kbps and not isinstance(max_burst_kbps, float):
-            raise TypeError("Expected argument 'max_burst_kbps' to be a float")
+        if max_burst_kbps and not isinstance(max_burst_kbps, int):
+            raise TypeError("Expected argument 'max_burst_kbps' to be a int")
         pulumi.set(__self__, "max_burst_kbps", max_burst_kbps)
-        if max_kbps and not isinstance(max_kbps, float):
-            raise TypeError("Expected argument 'max_kbps' to be a float")
+        if max_kbps and not isinstance(max_kbps, int):
+            raise TypeError("Expected argument 'max_kbps' to be a int")
         pulumi.set(__self__, "max_kbps", max_kbps)
         if qos_policy_id and not isinstance(qos_policy_id, str):
             raise TypeError("Expected argument 'qos_policy_id' to be a str")
@@ -57,7 +57,7 @@ class GetQosBandwidthLimitRuleResult:
 
     @property
     @pulumi.getter(name="maxBurstKbps")
-    def max_burst_kbps(self) -> float:
+    def max_burst_kbps(self) -> int:
         """
         See Argument Reference above.
         """
@@ -65,7 +65,7 @@ class GetQosBandwidthLimitRuleResult:
 
     @property
     @pulumi.getter(name="maxKbps")
-    def max_kbps(self) -> float:
+    def max_kbps(self) -> int:
         """
         See Argument Reference above.
         """
@@ -102,8 +102,8 @@ class AwaitableGetQosBandwidthLimitRuleResult(GetQosBandwidthLimitRuleResult):
             region=self.region)
 
 
-def get_qos_bandwidth_limit_rule(max_burst_kbps: Optional[float] = None,
-                                 max_kbps: Optional[float] = None,
+def get_qos_bandwidth_limit_rule(max_burst_kbps: Optional[int] = None,
+                                 max_kbps: Optional[int] = None,
                                  qos_policy_id: Optional[str] = None,
                                  region: Optional[str] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetQosBandwidthLimitRuleResult:
@@ -111,8 +111,8 @@ def get_qos_bandwidth_limit_rule(max_burst_kbps: Optional[float] = None,
     Use this data source to get the ID of an available OpenStack QoS bandwidth limit rule.
 
 
-    :param float max_burst_kbps: The maximum burst size in kilobits of a QoS bandwidth limit rule.
-    :param float max_kbps: The maximum kilobits per second of a QoS bandwidth limit rule.
+    :param int max_burst_kbps: The maximum burst size in kilobits of a QoS bandwidth limit rule.
+    :param int max_kbps: The maximum kilobits per second of a QoS bandwidth limit rule.
     :param str qos_policy_id: The QoS policy reference.
     :param str region: The region in which to obtain the V2 Networking client.
            A Networking client is needed to create a Neutron QoS bandwidth limit rule. If omitted, the

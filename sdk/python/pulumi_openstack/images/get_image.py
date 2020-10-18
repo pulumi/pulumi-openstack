@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -44,11 +44,11 @@ class GetImageResult:
         if metadata and not isinstance(metadata, dict):
             raise TypeError("Expected argument 'metadata' to be a dict")
         pulumi.set(__self__, "metadata", metadata)
-        if min_disk_gb and not isinstance(min_disk_gb, float):
-            raise TypeError("Expected argument 'min_disk_gb' to be a float")
+        if min_disk_gb and not isinstance(min_disk_gb, int):
+            raise TypeError("Expected argument 'min_disk_gb' to be a int")
         pulumi.set(__self__, "min_disk_gb", min_disk_gb)
-        if min_ram_mb and not isinstance(min_ram_mb, float):
-            raise TypeError("Expected argument 'min_ram_mb' to be a float")
+        if min_ram_mb and not isinstance(min_ram_mb, int):
+            raise TypeError("Expected argument 'min_ram_mb' to be a int")
         pulumi.set(__self__, "min_ram_mb", min_ram_mb)
         if most_recent and not isinstance(most_recent, bool):
             raise TypeError("Expected argument 'most_recent' to be a bool")
@@ -71,14 +71,14 @@ class GetImageResult:
         if schema and not isinstance(schema, str):
             raise TypeError("Expected argument 'schema' to be a str")
         pulumi.set(__self__, "schema", schema)
-        if size_bytes and not isinstance(size_bytes, float):
-            raise TypeError("Expected argument 'size_bytes' to be a float")
+        if size_bytes and not isinstance(size_bytes, int):
+            raise TypeError("Expected argument 'size_bytes' to be a int")
         pulumi.set(__self__, "size_bytes", size_bytes)
-        if size_max and not isinstance(size_max, float):
-            raise TypeError("Expected argument 'size_max' to be a float")
+        if size_max and not isinstance(size_max, int):
+            raise TypeError("Expected argument 'size_max' to be a int")
         pulumi.set(__self__, "size_max", size_max)
-        if size_min and not isinstance(size_min, float):
-            raise TypeError("Expected argument 'size_min' to be a float")
+        if size_min and not isinstance(size_min, int):
+            raise TypeError("Expected argument 'size_min' to be a int")
         pulumi.set(__self__, "size_min", size_min)
         if sort_direction and not isinstance(sort_direction, str):
             raise TypeError("Expected argument 'sort_direction' to be a str")
@@ -161,7 +161,7 @@ class GetImageResult:
 
     @property
     @pulumi.getter(name="minDiskGb")
-    def min_disk_gb(self) -> float:
+    def min_disk_gb(self) -> int:
         """
         The minimum amount of disk space required to use the image.
         """
@@ -169,7 +169,7 @@ class GetImageResult:
 
     @property
     @pulumi.getter(name="minRamMb")
-    def min_ram_mb(self) -> float:
+    def min_ram_mb(self) -> int:
         """
         The minimum amount of ram required to use the image.
         """
@@ -222,7 +222,7 @@ class GetImageResult:
 
     @property
     @pulumi.getter(name="sizeBytes")
-    def size_bytes(self) -> float:
+    def size_bytes(self) -> int:
         """
         The size of the image (in bytes).
         """
@@ -230,12 +230,12 @@ class GetImageResult:
 
     @property
     @pulumi.getter(name="sizeMax")
-    def size_max(self) -> Optional[float]:
+    def size_max(self) -> Optional[int]:
         return pulumi.get(self, "size_max")
 
     @property
     @pulumi.getter(name="sizeMin")
-    def size_min(self) -> Optional[float]:
+    def size_min(self) -> Optional[int]:
         return pulumi.get(self, "size_min")
 
     @property
@@ -255,7 +255,7 @@ class GetImageResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> List[str]:
+    def tags(self) -> Sequence[str]:
         """
         The tags list of the image.
         """
@@ -315,8 +315,8 @@ def get_image(member_status: Optional[str] = None,
               owner: Optional[str] = None,
               properties: Optional[Mapping[str, Any]] = None,
               region: Optional[str] = None,
-              size_max: Optional[float] = None,
-              size_min: Optional[float] = None,
+              size_max: Optional[int] = None,
+              size_min: Optional[int] = None,
               sort_direction: Optional[str] = None,
               sort_key: Optional[str] = None,
               tag: Optional[str] = None,
@@ -354,8 +354,8 @@ def get_image(member_status: Optional[str] = None,
            A Glance client is needed to create an Image that can be used with
            a compute instance. If omitted, the `region` argument of the provider
            is used.
-    :param float size_max: The maximum size (in bytes) of the image to return.
-    :param float size_min: The minimum size (in bytes) of the image to return.
+    :param int size_max: The maximum size (in bytes) of the image to return.
+    :param int size_min: The minimum size (in bytes) of the image to return.
     :param str sort_direction: Order the results in either `asc` or `desc`.
     :param str sort_key: Sort images based on a certain key. Defaults to `name`.
     :param str tag: Search for images with a specific tag.

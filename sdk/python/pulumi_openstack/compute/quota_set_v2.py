@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['QuotaSetV2']
@@ -15,22 +15,22 @@ class QuotaSetV2(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cores: Optional[pulumi.Input[float]] = None,
-                 fixed_ips: Optional[pulumi.Input[float]] = None,
-                 floating_ips: Optional[pulumi.Input[float]] = None,
-                 injected_file_content_bytes: Optional[pulumi.Input[float]] = None,
-                 injected_file_path_bytes: Optional[pulumi.Input[float]] = None,
-                 injected_files: Optional[pulumi.Input[float]] = None,
-                 instances: Optional[pulumi.Input[float]] = None,
-                 key_pairs: Optional[pulumi.Input[float]] = None,
-                 metadata_items: Optional[pulumi.Input[float]] = None,
+                 cores: Optional[pulumi.Input[int]] = None,
+                 fixed_ips: Optional[pulumi.Input[int]] = None,
+                 floating_ips: Optional[pulumi.Input[int]] = None,
+                 injected_file_content_bytes: Optional[pulumi.Input[int]] = None,
+                 injected_file_path_bytes: Optional[pulumi.Input[int]] = None,
+                 injected_files: Optional[pulumi.Input[int]] = None,
+                 instances: Optional[pulumi.Input[int]] = None,
+                 key_pairs: Optional[pulumi.Input[int]] = None,
+                 metadata_items: Optional[pulumi.Input[int]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 ram: Optional[pulumi.Input[float]] = None,
+                 ram: Optional[pulumi.Input[int]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 security_group_rules: Optional[pulumi.Input[float]] = None,
-                 security_groups: Optional[pulumi.Input[float]] = None,
-                 server_group_members: Optional[pulumi.Input[float]] = None,
-                 server_groups: Optional[pulumi.Input[float]] = None,
+                 security_group_rules: Optional[pulumi.Input[int]] = None,
+                 security_groups: Optional[pulumi.Input[int]] = None,
+                 server_group_members: Optional[pulumi.Input[int]] = None,
+                 server_groups: Optional[pulumi.Input[int]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -61,38 +61,38 @@ class QuotaSetV2(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] cores: Quota value for cores.
+        :param pulumi.Input[int] cores: Quota value for cores.
                Changing this updates the existing quotaset.
-        :param pulumi.Input[float] fixed_ips: Quota value for fixed IPs.
+        :param pulumi.Input[int] fixed_ips: Quota value for fixed IPs.
                Changing this updates the existing quotaset.
-        :param pulumi.Input[float] floating_ips: Quota value for floating IPs.
+        :param pulumi.Input[int] floating_ips: Quota value for floating IPs.
                Changing this updates the existing quotaset.
-        :param pulumi.Input[float] injected_file_content_bytes: Quota value for content bytes
+        :param pulumi.Input[int] injected_file_content_bytes: Quota value for content bytes
                of injected files. Changing this updates the existing quotaset.
-        :param pulumi.Input[float] injected_file_path_bytes: Quota value for path bytes of
+        :param pulumi.Input[int] injected_file_path_bytes: Quota value for path bytes of
                injected files. Changing this updates the existing quotaset.
-        :param pulumi.Input[float] injected_files: Quota value for injected files.
+        :param pulumi.Input[int] injected_files: Quota value for injected files.
                Changing this updates the existing quotaset.
-        :param pulumi.Input[float] instances: Quota value for instances.
+        :param pulumi.Input[int] instances: Quota value for instances.
                Changing this updates the existing quotaset.
-        :param pulumi.Input[float] key_pairs: Quota value for key pairs.
+        :param pulumi.Input[int] key_pairs: Quota value for key pairs.
                Changing this updates the existing quotaset.
-        :param pulumi.Input[float] metadata_items: Quota value for metadata items.
+        :param pulumi.Input[int] metadata_items: Quota value for metadata items.
                Changing this updates the existing quotaset.
         :param pulumi.Input[str] project_id: ID of the project to manage quotas.
                Changing this creates a new quotaset.
-        :param pulumi.Input[float] ram: Quota value for RAM.
+        :param pulumi.Input[int] ram: Quota value for RAM.
                Changing this updates the existing quotaset.
         :param pulumi.Input[str] region: The region in which to create the volume. If
                omitted, the `region` argument of the provider is used. Changing this
                creates a new quotaset.
-        :param pulumi.Input[float] security_group_rules: Quota value for security group rules.
+        :param pulumi.Input[int] security_group_rules: Quota value for security group rules.
                Changing this updates the existing quotaset.
-        :param pulumi.Input[float] security_groups: Quota value for security groups.
+        :param pulumi.Input[int] security_groups: Quota value for security groups.
                Changing this updates the existing quotaset.
-        :param pulumi.Input[float] server_group_members: Quota value for server groups members.
+        :param pulumi.Input[int] server_group_members: Quota value for server groups members.
                Changing this updates the existing quotaset.
-        :param pulumi.Input[float] server_groups: Quota value for server groups.
+        :param pulumi.Input[int] server_groups: Quota value for server groups.
                Changing this updates the existing quotaset.
         """
         if __name__ is not None:
@@ -140,22 +140,22 @@ class QuotaSetV2(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cores: Optional[pulumi.Input[float]] = None,
-            fixed_ips: Optional[pulumi.Input[float]] = None,
-            floating_ips: Optional[pulumi.Input[float]] = None,
-            injected_file_content_bytes: Optional[pulumi.Input[float]] = None,
-            injected_file_path_bytes: Optional[pulumi.Input[float]] = None,
-            injected_files: Optional[pulumi.Input[float]] = None,
-            instances: Optional[pulumi.Input[float]] = None,
-            key_pairs: Optional[pulumi.Input[float]] = None,
-            metadata_items: Optional[pulumi.Input[float]] = None,
+            cores: Optional[pulumi.Input[int]] = None,
+            fixed_ips: Optional[pulumi.Input[int]] = None,
+            floating_ips: Optional[pulumi.Input[int]] = None,
+            injected_file_content_bytes: Optional[pulumi.Input[int]] = None,
+            injected_file_path_bytes: Optional[pulumi.Input[int]] = None,
+            injected_files: Optional[pulumi.Input[int]] = None,
+            instances: Optional[pulumi.Input[int]] = None,
+            key_pairs: Optional[pulumi.Input[int]] = None,
+            metadata_items: Optional[pulumi.Input[int]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
-            ram: Optional[pulumi.Input[float]] = None,
+            ram: Optional[pulumi.Input[int]] = None,
             region: Optional[pulumi.Input[str]] = None,
-            security_group_rules: Optional[pulumi.Input[float]] = None,
-            security_groups: Optional[pulumi.Input[float]] = None,
-            server_group_members: Optional[pulumi.Input[float]] = None,
-            server_groups: Optional[pulumi.Input[float]] = None) -> 'QuotaSetV2':
+            security_group_rules: Optional[pulumi.Input[int]] = None,
+            security_groups: Optional[pulumi.Input[int]] = None,
+            server_group_members: Optional[pulumi.Input[int]] = None,
+            server_groups: Optional[pulumi.Input[int]] = None) -> 'QuotaSetV2':
         """
         Get an existing QuotaSetV2 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -163,38 +163,38 @@ class QuotaSetV2(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] cores: Quota value for cores.
+        :param pulumi.Input[int] cores: Quota value for cores.
                Changing this updates the existing quotaset.
-        :param pulumi.Input[float] fixed_ips: Quota value for fixed IPs.
+        :param pulumi.Input[int] fixed_ips: Quota value for fixed IPs.
                Changing this updates the existing quotaset.
-        :param pulumi.Input[float] floating_ips: Quota value for floating IPs.
+        :param pulumi.Input[int] floating_ips: Quota value for floating IPs.
                Changing this updates the existing quotaset.
-        :param pulumi.Input[float] injected_file_content_bytes: Quota value for content bytes
+        :param pulumi.Input[int] injected_file_content_bytes: Quota value for content bytes
                of injected files. Changing this updates the existing quotaset.
-        :param pulumi.Input[float] injected_file_path_bytes: Quota value for path bytes of
+        :param pulumi.Input[int] injected_file_path_bytes: Quota value for path bytes of
                injected files. Changing this updates the existing quotaset.
-        :param pulumi.Input[float] injected_files: Quota value for injected files.
+        :param pulumi.Input[int] injected_files: Quota value for injected files.
                Changing this updates the existing quotaset.
-        :param pulumi.Input[float] instances: Quota value for instances.
+        :param pulumi.Input[int] instances: Quota value for instances.
                Changing this updates the existing quotaset.
-        :param pulumi.Input[float] key_pairs: Quota value for key pairs.
+        :param pulumi.Input[int] key_pairs: Quota value for key pairs.
                Changing this updates the existing quotaset.
-        :param pulumi.Input[float] metadata_items: Quota value for metadata items.
+        :param pulumi.Input[int] metadata_items: Quota value for metadata items.
                Changing this updates the existing quotaset.
         :param pulumi.Input[str] project_id: ID of the project to manage quotas.
                Changing this creates a new quotaset.
-        :param pulumi.Input[float] ram: Quota value for RAM.
+        :param pulumi.Input[int] ram: Quota value for RAM.
                Changing this updates the existing quotaset.
         :param pulumi.Input[str] region: The region in which to create the volume. If
                omitted, the `region` argument of the provider is used. Changing this
                creates a new quotaset.
-        :param pulumi.Input[float] security_group_rules: Quota value for security group rules.
+        :param pulumi.Input[int] security_group_rules: Quota value for security group rules.
                Changing this updates the existing quotaset.
-        :param pulumi.Input[float] security_groups: Quota value for security groups.
+        :param pulumi.Input[int] security_groups: Quota value for security groups.
                Changing this updates the existing quotaset.
-        :param pulumi.Input[float] server_group_members: Quota value for server groups members.
+        :param pulumi.Input[int] server_group_members: Quota value for server groups members.
                Changing this updates the existing quotaset.
-        :param pulumi.Input[float] server_groups: Quota value for server groups.
+        :param pulumi.Input[int] server_groups: Quota value for server groups.
                Changing this updates the existing quotaset.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -221,7 +221,7 @@ class QuotaSetV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def cores(self) -> pulumi.Output[float]:
+    def cores(self) -> pulumi.Output[int]:
         """
         Quota value for cores.
         Changing this updates the existing quotaset.
@@ -230,7 +230,7 @@ class QuotaSetV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="fixedIps")
-    def fixed_ips(self) -> pulumi.Output[float]:
+    def fixed_ips(self) -> pulumi.Output[int]:
         """
         Quota value for fixed IPs.
         Changing this updates the existing quotaset.
@@ -239,7 +239,7 @@ class QuotaSetV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="floatingIps")
-    def floating_ips(self) -> pulumi.Output[float]:
+    def floating_ips(self) -> pulumi.Output[int]:
         """
         Quota value for floating IPs.
         Changing this updates the existing quotaset.
@@ -248,7 +248,7 @@ class QuotaSetV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="injectedFileContentBytes")
-    def injected_file_content_bytes(self) -> pulumi.Output[float]:
+    def injected_file_content_bytes(self) -> pulumi.Output[int]:
         """
         Quota value for content bytes
         of injected files. Changing this updates the existing quotaset.
@@ -257,7 +257,7 @@ class QuotaSetV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="injectedFilePathBytes")
-    def injected_file_path_bytes(self) -> pulumi.Output[float]:
+    def injected_file_path_bytes(self) -> pulumi.Output[int]:
         """
         Quota value for path bytes of
         injected files. Changing this updates the existing quotaset.
@@ -266,7 +266,7 @@ class QuotaSetV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="injectedFiles")
-    def injected_files(self) -> pulumi.Output[float]:
+    def injected_files(self) -> pulumi.Output[int]:
         """
         Quota value for injected files.
         Changing this updates the existing quotaset.
@@ -275,7 +275,7 @@ class QuotaSetV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def instances(self) -> pulumi.Output[float]:
+    def instances(self) -> pulumi.Output[int]:
         """
         Quota value for instances.
         Changing this updates the existing quotaset.
@@ -284,7 +284,7 @@ class QuotaSetV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="keyPairs")
-    def key_pairs(self) -> pulumi.Output[float]:
+    def key_pairs(self) -> pulumi.Output[int]:
         """
         Quota value for key pairs.
         Changing this updates the existing quotaset.
@@ -293,7 +293,7 @@ class QuotaSetV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="metadataItems")
-    def metadata_items(self) -> pulumi.Output[float]:
+    def metadata_items(self) -> pulumi.Output[int]:
         """
         Quota value for metadata items.
         Changing this updates the existing quotaset.
@@ -311,7 +311,7 @@ class QuotaSetV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def ram(self) -> pulumi.Output[float]:
+    def ram(self) -> pulumi.Output[int]:
         """
         Quota value for RAM.
         Changing this updates the existing quotaset.
@@ -330,7 +330,7 @@ class QuotaSetV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityGroupRules")
-    def security_group_rules(self) -> pulumi.Output[float]:
+    def security_group_rules(self) -> pulumi.Output[int]:
         """
         Quota value for security group rules.
         Changing this updates the existing quotaset.
@@ -339,7 +339,7 @@ class QuotaSetV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityGroups")
-    def security_groups(self) -> pulumi.Output[float]:
+    def security_groups(self) -> pulumi.Output[int]:
         """
         Quota value for security groups.
         Changing this updates the existing quotaset.
@@ -348,7 +348,7 @@ class QuotaSetV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serverGroupMembers")
-    def server_group_members(self) -> pulumi.Output[float]:
+    def server_group_members(self) -> pulumi.Output[int]:
         """
         Quota value for server groups members.
         Changing this updates the existing quotaset.
@@ -357,7 +357,7 @@ class QuotaSetV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serverGroups")
-    def server_groups(self) -> pulumi.Output[float]:
+    def server_groups(self) -> pulumi.Output[int]:
         """
         Quota value for server groups.
         Changing this updates the existing quotaset.

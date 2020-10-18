@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -118,7 +118,7 @@ class GetPortIdsResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> List[str]:
+    def ids(self) -> Sequence[str]:
         return pulumi.get(self, "ids")
 
     @property
@@ -148,7 +148,7 @@ class GetPortIdsResult:
 
     @property
     @pulumi.getter(name="securityGroupIds")
-    def security_group_ids(self) -> Optional[List[str]]:
+    def security_group_ids(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "security_group_ids")
 
     @property
@@ -168,7 +168,7 @@ class GetPortIdsResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List[str]]:
+    def tags(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "tags")
 
     @property
@@ -215,11 +215,11 @@ def get_port_ids(admin_state_up: Optional[bool] = None,
                  network_id: Optional[str] = None,
                  project_id: Optional[str] = None,
                  region: Optional[str] = None,
-                 security_group_ids: Optional[List[str]] = None,
+                 security_group_ids: Optional[Sequence[str]] = None,
                  sort_direction: Optional[str] = None,
                  sort_key: Optional[str] = None,
                  status: Optional[str] = None,
-                 tags: Optional[List[str]] = None,
+                 tags: Optional[Sequence[str]] = None,
                  tenant_id: Optional[str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPortIdsResult:
     """
@@ -248,12 +248,12 @@ def get_port_ids(admin_state_up: Optional[bool] = None,
     :param str region: The region in which to obtain the V2 Neutron client.
            A Neutron client is needed to retrieve port ids. If omitted, the
            `region` argument of the provider is used.
-    :param List[str] security_group_ids: The list of port security group IDs to filter.
+    :param Sequence[str] security_group_ids: The list of port security group IDs to filter.
     :param str sort_direction: Order the results in either `asc` or `desc`.
            Defaults to none.
     :param str sort_key: Sort ports based on a certain key. Defaults to none.
     :param str status: The status of the port.
-    :param List[str] tags: The list of port tags to filter.
+    :param Sequence[str] tags: The list of port tags to filter.
     """
     __args__ = dict()
     __args__['adminStateUp'] = admin_state_up

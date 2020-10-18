@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['QosBandwidthLimitRule']
@@ -16,8 +16,8 @@ class QosBandwidthLimitRule(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  direction: Optional[pulumi.Input[str]] = None,
-                 max_burst_kbps: Optional[pulumi.Input[float]] = None,
-                 max_kbps: Optional[pulumi.Input[float]] = None,
+                 max_burst_kbps: Optional[pulumi.Input[int]] = None,
+                 max_kbps: Optional[pulumi.Input[int]] = None,
                  qos_policy_id: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -45,9 +45,9 @@ class QosBandwidthLimitRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] direction: The direction of traffic. Defaults to "egress". Changing this updates the direction of the
                existing QoS bandwidth limit rule.
-        :param pulumi.Input[float] max_burst_kbps: The maximum burst size in kilobits of a QoS bandwidth limit rule. Changing this updates the
+        :param pulumi.Input[int] max_burst_kbps: The maximum burst size in kilobits of a QoS bandwidth limit rule. Changing this updates the
                maximum burst size in kilobits of the existing QoS bandwidth limit rule.
-        :param pulumi.Input[float] max_kbps: The maximum kilobits per second of a QoS bandwidth limit rule. Changing this updates the
+        :param pulumi.Input[int] max_kbps: The maximum kilobits per second of a QoS bandwidth limit rule. Changing this updates the
                maximum kilobits per second of the existing QoS bandwidth limit rule.
         :param pulumi.Input[str] qos_policy_id: The QoS policy reference. Changing this creates a new QoS bandwidth limit rule.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
@@ -91,8 +91,8 @@ class QosBandwidthLimitRule(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             direction: Optional[pulumi.Input[str]] = None,
-            max_burst_kbps: Optional[pulumi.Input[float]] = None,
-            max_kbps: Optional[pulumi.Input[float]] = None,
+            max_burst_kbps: Optional[pulumi.Input[int]] = None,
+            max_kbps: Optional[pulumi.Input[int]] = None,
             qos_policy_id: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None) -> 'QosBandwidthLimitRule':
         """
@@ -104,9 +104,9 @@ class QosBandwidthLimitRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] direction: The direction of traffic. Defaults to "egress". Changing this updates the direction of the
                existing QoS bandwidth limit rule.
-        :param pulumi.Input[float] max_burst_kbps: The maximum burst size in kilobits of a QoS bandwidth limit rule. Changing this updates the
+        :param pulumi.Input[int] max_burst_kbps: The maximum burst size in kilobits of a QoS bandwidth limit rule. Changing this updates the
                maximum burst size in kilobits of the existing QoS bandwidth limit rule.
-        :param pulumi.Input[float] max_kbps: The maximum kilobits per second of a QoS bandwidth limit rule. Changing this updates the
+        :param pulumi.Input[int] max_kbps: The maximum kilobits per second of a QoS bandwidth limit rule. Changing this updates the
                maximum kilobits per second of the existing QoS bandwidth limit rule.
         :param pulumi.Input[str] qos_policy_id: The QoS policy reference. Changing this creates a new QoS bandwidth limit rule.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
@@ -135,7 +135,7 @@ class QosBandwidthLimitRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxBurstKbps")
-    def max_burst_kbps(self) -> pulumi.Output[Optional[float]]:
+    def max_burst_kbps(self) -> pulumi.Output[Optional[int]]:
         """
         The maximum burst size in kilobits of a QoS bandwidth limit rule. Changing this updates the
         maximum burst size in kilobits of the existing QoS bandwidth limit rule.
@@ -144,7 +144,7 @@ class QosBandwidthLimitRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxKbps")
-    def max_kbps(self) -> pulumi.Output[float]:
+    def max_kbps(self) -> pulumi.Output[int]:
         """
         The maximum kilobits per second of a QoS bandwidth limit rule. Changing this updates the
         maximum kilobits per second of the existing QoS bandwidth limit rule.

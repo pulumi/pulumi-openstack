@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -29,11 +29,11 @@ class GetSubnetPoolResult:
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
         pulumi.set(__self__, "created_at", created_at)
-        if default_prefixlen and not isinstance(default_prefixlen, float):
-            raise TypeError("Expected argument 'default_prefixlen' to be a float")
+        if default_prefixlen and not isinstance(default_prefixlen, int):
+            raise TypeError("Expected argument 'default_prefixlen' to be a int")
         pulumi.set(__self__, "default_prefixlen", default_prefixlen)
-        if default_quota and not isinstance(default_quota, float):
-            raise TypeError("Expected argument 'default_quota' to be a float")
+        if default_quota and not isinstance(default_quota, int):
+            raise TypeError("Expected argument 'default_quota' to be a int")
         pulumi.set(__self__, "default_quota", default_quota)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
@@ -41,17 +41,17 @@ class GetSubnetPoolResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
-        if ip_version and not isinstance(ip_version, float):
-            raise TypeError("Expected argument 'ip_version' to be a float")
+        if ip_version and not isinstance(ip_version, int):
+            raise TypeError("Expected argument 'ip_version' to be a int")
         pulumi.set(__self__, "ip_version", ip_version)
         if is_default and not isinstance(is_default, bool):
             raise TypeError("Expected argument 'is_default' to be a bool")
         pulumi.set(__self__, "is_default", is_default)
-        if max_prefixlen and not isinstance(max_prefixlen, float):
-            raise TypeError("Expected argument 'max_prefixlen' to be a float")
+        if max_prefixlen and not isinstance(max_prefixlen, int):
+            raise TypeError("Expected argument 'max_prefixlen' to be a int")
         pulumi.set(__self__, "max_prefixlen", max_prefixlen)
-        if min_prefixlen and not isinstance(min_prefixlen, float):
-            raise TypeError("Expected argument 'min_prefixlen' to be a float")
+        if min_prefixlen and not isinstance(min_prefixlen, int):
+            raise TypeError("Expected argument 'min_prefixlen' to be a int")
         pulumi.set(__self__, "min_prefixlen", min_prefixlen)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
@@ -65,8 +65,8 @@ class GetSubnetPoolResult:
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
-        if revision_number and not isinstance(revision_number, float):
-            raise TypeError("Expected argument 'revision_number' to be a float")
+        if revision_number and not isinstance(revision_number, int):
+            raise TypeError("Expected argument 'revision_number' to be a int")
         pulumi.set(__self__, "revision_number", revision_number)
         if shared and not isinstance(shared, bool):
             raise TypeError("Expected argument 'shared' to be a bool")
@@ -89,7 +89,7 @@ class GetSubnetPoolResult:
 
     @property
     @pulumi.getter(name="allTags")
-    def all_tags(self) -> List[str]:
+    def all_tags(self) -> Sequence[str]:
         """
         The set of string tags applied on the subnetpool.
         """
@@ -105,7 +105,7 @@ class GetSubnetPoolResult:
 
     @property
     @pulumi.getter(name="defaultPrefixlen")
-    def default_prefixlen(self) -> float:
+    def default_prefixlen(self) -> int:
         """
         See Argument Reference above.
         """
@@ -113,7 +113,7 @@ class GetSubnetPoolResult:
 
     @property
     @pulumi.getter(name="defaultQuota")
-    def default_quota(self) -> float:
+    def default_quota(self) -> int:
         """
         See Argument Reference above.
         """
@@ -137,7 +137,7 @@ class GetSubnetPoolResult:
 
     @property
     @pulumi.getter(name="ipVersion")
-    def ip_version(self) -> float:
+    def ip_version(self) -> int:
         return pulumi.get(self, "ip_version")
 
     @property
@@ -150,7 +150,7 @@ class GetSubnetPoolResult:
 
     @property
     @pulumi.getter(name="maxPrefixlen")
-    def max_prefixlen(self) -> float:
+    def max_prefixlen(self) -> int:
         """
         See Argument Reference above.
         """
@@ -158,7 +158,7 @@ class GetSubnetPoolResult:
 
     @property
     @pulumi.getter(name="minPrefixlen")
-    def min_prefixlen(self) -> float:
+    def min_prefixlen(self) -> int:
         """
         See Argument Reference above.
         """
@@ -174,7 +174,7 @@ class GetSubnetPoolResult:
 
     @property
     @pulumi.getter
-    def prefixes(self) -> List[str]:
+    def prefixes(self) -> Sequence[str]:
         """
         See Argument Reference above.
         """
@@ -198,7 +198,7 @@ class GetSubnetPoolResult:
 
     @property
     @pulumi.getter(name="revisionNumber")
-    def revision_number(self) -> float:
+    def revision_number(self) -> int:
         """
         The revision number of the subnetpool.
         """
@@ -214,7 +214,7 @@ class GetSubnetPoolResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List[str]]:
+    def tags(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "tags")
 
     @property
@@ -254,18 +254,18 @@ class AwaitableGetSubnetPoolResult(GetSubnetPoolResult):
 
 
 def get_subnet_pool(address_scope_id: Optional[str] = None,
-                    default_prefixlen: Optional[float] = None,
-                    default_quota: Optional[float] = None,
+                    default_prefixlen: Optional[int] = None,
+                    default_quota: Optional[int] = None,
                     description: Optional[str] = None,
-                    ip_version: Optional[float] = None,
+                    ip_version: Optional[int] = None,
                     is_default: Optional[bool] = None,
-                    max_prefixlen: Optional[float] = None,
-                    min_prefixlen: Optional[float] = None,
+                    max_prefixlen: Optional[int] = None,
+                    min_prefixlen: Optional[int] = None,
                     name: Optional[str] = None,
                     project_id: Optional[str] = None,
                     region: Optional[str] = None,
                     shared: Optional[bool] = None,
-                    tags: Optional[List[str]] = None,
+                    tags: Optional[Sequence[str]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSubnetPoolResult:
     """
     Use this data source to get the ID of an available OpenStack subnetpool.
@@ -282,22 +282,22 @@ def get_subnet_pool(address_scope_id: Optional[str] = None,
 
     :param str address_scope_id: The Neutron address scope that subnetpools
            is assigned to.
-    :param float default_prefixlen: The size of the subnetpool default prefix
+    :param int default_prefixlen: The size of the subnetpool default prefix
            length.
-    :param float default_quota: The per-project quota on the prefix space that
+    :param int default_quota: The per-project quota on the prefix space that
            can be allocated from the subnetpool for project subnets.
     :param str description: The human-readable description for the subnetpool.
-    :param float ip_version: The IP protocol version.
+    :param int ip_version: The IP protocol version.
     :param bool is_default: Whether the subnetpool is default subnetpool or not.
-    :param float max_prefixlen: The size of the subnetpool max prefix length.
-    :param float min_prefixlen: The size of the subnetpool min prefix length.
+    :param int max_prefixlen: The size of the subnetpool max prefix length.
+    :param int min_prefixlen: The size of the subnetpool min prefix length.
     :param str name: The name of the subnetpool.
     :param str project_id: The owner of the subnetpool.
     :param str region: The region in which to obtain the V2 Networking client.
            A Networking client is needed to retrieve a subnetpool id. If omitted, the
            `region` argument of the provider is used.
     :param bool shared: Whether this subnetpool is shared across all projects.
-    :param List[str] tags: The list of subnetpool tags to filter.
+    :param Sequence[str] tags: The list of subnetpool tags to filter.
     """
     __args__ = dict()
     __args__['addressScopeId'] = address_scope_id

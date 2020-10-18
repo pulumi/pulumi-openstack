@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -22,8 +22,8 @@ class Trunk(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  port_id: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 sub_ports: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['TrunkSubPortArgs']]]]] = None,
-                 tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 sub_ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TrunkSubPortArgs']]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -81,9 +81,9 @@ class Trunk(pulumi.CustomResource):
                A networking client is needed to create a trunk. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
                trunk.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['TrunkSubPortArgs']]]] sub_ports: The set of ports that will be made subports of the trunk.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TrunkSubPortArgs']]]] sub_ports: The set of ports that will be made subports of the trunk.
                The structure of each subport is described below.
-        :param pulumi.Input[List[pulumi.Input[str]]] tags: A set of string tags for the port.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of string tags for the port.
         :param pulumi.Input[str] tenant_id: The owner of the Trunk. Required if admin wants
                to create a trunk on behalf of another tenant. Changing this creates a new trunk.
         """
@@ -126,13 +126,13 @@ class Trunk(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             admin_state_up: Optional[pulumi.Input[bool]] = None,
-            all_tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            all_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             port_id: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
-            sub_ports: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['TrunkSubPortArgs']]]]] = None,
-            tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            sub_ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TrunkSubPortArgs']]]]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             tenant_id: Optional[pulumi.Input[str]] = None) -> 'Trunk':
         """
         Get an existing Trunk resource's state with the given name, id, and optional extra
@@ -144,7 +144,7 @@ class Trunk(pulumi.CustomResource):
         :param pulumi.Input[bool] admin_state_up: Administrative up/down status for the trunk
                (must be "true" or "false" if provided). Changing this updates the
                `admin_state_up` of an existing trunk.
-        :param pulumi.Input[List[pulumi.Input[str]]] all_tags: The collection of tags assigned on the trunk, which have been
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] all_tags: The collection of tags assigned on the trunk, which have been
                explicitly and implicitly added.
         :param pulumi.Input[str] description: Human-readable description of the trunk. Changing this
                updates the name of the existing trunk.
@@ -155,9 +155,9 @@ class Trunk(pulumi.CustomResource):
                A networking client is needed to create a trunk. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
                trunk.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['TrunkSubPortArgs']]]] sub_ports: The set of ports that will be made subports of the trunk.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TrunkSubPortArgs']]]] sub_ports: The set of ports that will be made subports of the trunk.
                The structure of each subport is described below.
-        :param pulumi.Input[List[pulumi.Input[str]]] tags: A set of string tags for the port.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of string tags for the port.
         :param pulumi.Input[str] tenant_id: The owner of the Trunk. Required if admin wants
                to create a trunk on behalf of another tenant. Changing this creates a new trunk.
         """
@@ -188,7 +188,7 @@ class Trunk(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allTags")
-    def all_tags(self) -> pulumi.Output[List[str]]:
+    def all_tags(self) -> pulumi.Output[Sequence[str]]:
         """
         The collection of tags assigned on the trunk, which have been
         explicitly and implicitly added.
@@ -234,7 +234,7 @@ class Trunk(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="subPorts")
-    def sub_ports(self) -> pulumi.Output[Optional[List['outputs.TrunkSubPort']]]:
+    def sub_ports(self) -> pulumi.Output[Optional[Sequence['outputs.TrunkSubPort']]]:
         """
         The set of ports that will be made subports of the trunk.
         The structure of each subport is described below.
@@ -243,7 +243,7 @@ class Trunk(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[List[str]]]:
+    def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         A set of string tags for the port.
         """

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -132,7 +132,7 @@ class GetAuthScopeResult:
 
     @property
     @pulumi.getter
-    def roles(self) -> List['outputs.GetAuthScopeRoleResult']:
+    def roles(self) -> Sequence['outputs.GetAuthScopeRoleResult']:
         """
         A list of roles in the current scope. See reference below.
         """

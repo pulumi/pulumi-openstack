@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -236,13 +236,13 @@ class InstanceNetwork(dict):
 class InstanceUser(dict):
     def __init__(__self__, *,
                  name: str,
-                 databases: Optional[List[str]] = None,
+                 databases: Optional[Sequence[str]] = None,
                  host: Optional[str] = None,
                  password: Optional[str] = None):
         """
         :param str name: Database to be created on new instance. Changing this creates a
                new instance.
-        :param List[str] databases: A list of databases that user will have access to. If not specified, 
+        :param Sequence[str] databases: A list of databases that user will have access to. If not specified, 
                user has access to all databases on th einstance. Changing this creates a new instance.
         :param str host: An ip address or % sign indicating what ip addresses can connect with
                this user credentials. Changing this creates a new instance.
@@ -268,7 +268,7 @@ class InstanceUser(dict):
 
     @property
     @pulumi.getter
-    def databases(self) -> Optional[List[str]]:
+    def databases(self) -> Optional[Sequence[str]]:
         """
         A list of databases that user will have access to. If not specified, 
         user has access to all databases on th einstance. Changing this creates a new instance.

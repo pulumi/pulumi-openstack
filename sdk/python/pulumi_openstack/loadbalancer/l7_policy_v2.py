@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['L7PolicyV2']
@@ -20,7 +20,7 @@ class L7PolicyV2(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  listener_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 position: Optional[pulumi.Input[float]] = None,
+                 position: Optional[pulumi.Input[int]] = None,
                  redirect_pool_id: Optional[pulumi.Input[str]] = None,
                  redirect_url: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -70,7 +70,7 @@ class L7PolicyV2(pulumi.CustomResource):
                Changing this creates a new L7 Policy.
         :param pulumi.Input[str] name: Human-readable name for the L7 Policy. Does not have
                to be unique.
-        :param pulumi.Input[float] position: The position of this policy on the listener. Positions start at 1.
+        :param pulumi.Input[int] position: The position of this policy on the listener. Positions start at 1.
         :param pulumi.Input[str] redirect_pool_id: Requests matching this policy will be redirected to the
                pool with this ID. Only valid if action is REDIRECT\_TO\_POOL.
         :param pulumi.Input[str] redirect_url: Requests matching this policy will be redirected to this URL.
@@ -129,7 +129,7 @@ class L7PolicyV2(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             listener_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            position: Optional[pulumi.Input[float]] = None,
+            position: Optional[pulumi.Input[int]] = None,
             redirect_pool_id: Optional[pulumi.Input[str]] = None,
             redirect_url: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
@@ -150,7 +150,7 @@ class L7PolicyV2(pulumi.CustomResource):
                Changing this creates a new L7 Policy.
         :param pulumi.Input[str] name: Human-readable name for the L7 Policy. Does not have
                to be unique.
-        :param pulumi.Input[float] position: The position of this policy on the listener. Positions start at 1.
+        :param pulumi.Input[int] position: The position of this policy on the listener. Positions start at 1.
         :param pulumi.Input[str] redirect_pool_id: Requests matching this policy will be redirected to the
                pool with this ID. Only valid if action is REDIRECT\_TO\_POOL.
         :param pulumi.Input[str] redirect_url: Requests matching this policy will be redirected to this URL.
@@ -225,7 +225,7 @@ class L7PolicyV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def position(self) -> pulumi.Output[float]:
+    def position(self) -> pulumi.Output[int]:
         """
         The position of this policy on the listener. Positions start at 1.
         """
