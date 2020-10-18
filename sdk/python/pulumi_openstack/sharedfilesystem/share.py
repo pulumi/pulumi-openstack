@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -26,7 +26,7 @@ class Share(pulumi.CustomResource):
                  share_network_id: Optional[pulumi.Input[str]] = None,
                  share_proto: Optional[pulumi.Input[str]] = None,
                  share_type: Optional[pulumi.Input[str]] = None,
-                 size: Optional[pulumi.Input[float]] = None,
+                 size: Optional[pulumi.Input[int]] = None,
                  snapshot_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -79,7 +79,7 @@ class Share(pulumi.CustomResource):
                CEPHFS, GLUSTERFS, HDFS or MAPRFS. Changing this creates a new share.
         :param pulumi.Input[str] share_type: The share type name. If you omit this parameter, the default
                share type is used.
-        :param pulumi.Input[float] size: The share size, in GBs. The requested share size cannot be greater
+        :param pulumi.Input[int] size: The share size, in GBs. The requested share size cannot be greater
                than the allowed GB quota. Changing this resizes the existing share.
         :param pulumi.Input[str] snapshot_id: The UUID of the share's base snapshot. Changing this creates
                a new share.
@@ -136,7 +136,7 @@ class Share(pulumi.CustomResource):
             all_metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             availability_zone: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            export_locations: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ShareExportLocationArgs']]]]] = None,
+            export_locations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ShareExportLocationArgs']]]]] = None,
             has_replicas: Optional[pulumi.Input[bool]] = None,
             host: Optional[pulumi.Input[str]] = None,
             is_public: Optional[pulumi.Input[bool]] = None,
@@ -149,7 +149,7 @@ class Share(pulumi.CustomResource):
             share_proto: Optional[pulumi.Input[str]] = None,
             share_server_id: Optional[pulumi.Input[str]] = None,
             share_type: Optional[pulumi.Input[str]] = None,
-            size: Optional[pulumi.Input[float]] = None,
+            size: Optional[pulumi.Input[int]] = None,
             snapshot_id: Optional[pulumi.Input[str]] = None) -> 'Share':
         """
         Get an existing Share resource's state with the given name, id, and optional extra
@@ -164,7 +164,7 @@ class Share(pulumi.CustomResource):
                new share.
         :param pulumi.Input[str] description: The human-readable description for the share.
                Changing this updates the description of the existing share.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ShareExportLocationArgs']]]] export_locations: A list of export locations. For example, when a share server
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ShareExportLocationArgs']]]] export_locations: A list of export locations. For example, when a share server
                has more than one network interface, it can have multiple export locations.
         :param pulumi.Input[bool] has_replicas: Indicates whether a share has replicas or not.
         :param pulumi.Input[str] host: The share host name.
@@ -188,7 +188,7 @@ class Share(pulumi.CustomResource):
         :param pulumi.Input[str] share_server_id: The UUID of the share server.
         :param pulumi.Input[str] share_type: The share type name. If you omit this parameter, the default
                share type is used.
-        :param pulumi.Input[float] size: The share size, in GBs. The requested share size cannot be greater
+        :param pulumi.Input[int] size: The share size, in GBs. The requested share size cannot be greater
                than the allowed GB quota. Changing this resizes the existing share.
         :param pulumi.Input[str] snapshot_id: The UUID of the share's base snapshot. Changing this creates
                a new share.
@@ -246,7 +246,7 @@ class Share(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="exportLocations")
-    def export_locations(self) -> pulumi.Output[List['outputs.ShareExportLocation']]:
+    def export_locations(self) -> pulumi.Output[Sequence['outputs.ShareExportLocation']]:
         """
         A list of export locations. For example, when a share server
         has more than one network interface, it can have multiple export locations.
@@ -361,7 +361,7 @@ class Share(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def size(self) -> pulumi.Output[float]:
+    def size(self) -> pulumi.Output[int]:
         """
         The share size, in GBs. The requested share size cannot be greater
         than the allowed GB quota. Changing this resizes the existing share.

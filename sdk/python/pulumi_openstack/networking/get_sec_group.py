@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -47,7 +47,7 @@ class GetSecGroupResult:
 
     @property
     @pulumi.getter(name="allTags")
-    def all_tags(self) -> List[str]:
+    def all_tags(self) -> Sequence[str]:
         """
         The set of string tags applied on the security group.
         """
@@ -90,7 +90,7 @@ class GetSecGroupResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List[str]]:
+    def tags(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "tags")
 
     @property
@@ -119,7 +119,7 @@ def get_sec_group(description: Optional[str] = None,
                   name: Optional[str] = None,
                   region: Optional[str] = None,
                   secgroup_id: Optional[str] = None,
-                  tags: Optional[List[str]] = None,
+                  tags: Optional[Sequence[str]] = None,
                   tenant_id: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSecGroupResult:
     """
@@ -141,7 +141,7 @@ def get_sec_group(description: Optional[str] = None,
            A Neutron client is needed to retrieve security groups ids. If omitted, the
            `region` argument of the provider is used.
     :param str secgroup_id: The ID of the security group.
-    :param List[str] tags: The list of security group tags to filter.
+    :param Sequence[str] tags: The list of security group tags to filter.
     :param str tenant_id: The owner of the security group.
     """
     __args__ = dict()

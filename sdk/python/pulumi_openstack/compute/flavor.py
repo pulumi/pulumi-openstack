@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['Flavor']
@@ -15,16 +15,16 @@ class Flavor(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 disk: Optional[pulumi.Input[float]] = None,
-                 ephemeral: Optional[pulumi.Input[float]] = None,
+                 disk: Optional[pulumi.Input[int]] = None,
+                 ephemeral: Optional[pulumi.Input[int]] = None,
                  extra_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  is_public: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 ram: Optional[pulumi.Input[float]] = None,
+                 ram: Optional[pulumi.Input[int]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  rx_tx_factor: Optional[pulumi.Input[float]] = None,
-                 swap: Optional[pulumi.Input[float]] = None,
-                 vcpus: Optional[pulumi.Input[float]] = None,
+                 swap: Optional[pulumi.Input[int]] = None,
+                 vcpus: Optional[pulumi.Input[int]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -49,14 +49,14 @@ class Flavor(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] disk: The amount of disk space in gigabytes to use for the root
+        :param pulumi.Input[int] disk: The amount of disk space in gigabytes to use for the root
                (/) partition. Changing this creates a new flavor.
         :param pulumi.Input[Mapping[str, Any]] extra_specs: Key/Value pairs of metadata for the flavor.
         :param pulumi.Input[bool] is_public: Whether the flavor is public. Changing this creates
                a new flavor.
         :param pulumi.Input[str] name: A unique name for the flavor. Changing this creates a new
                flavor.
-        :param pulumi.Input[float] ram: The amount of RAM to use, in megabytes. Changing this
+        :param pulumi.Input[int] ram: The amount of RAM to use, in megabytes. Changing this
                creates a new flavor.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Compute client.
                Flavors are associated with accounts, but a Compute client is needed to
@@ -64,9 +64,9 @@ class Flavor(pulumi.CustomResource):
                Changing this creates a new flavor.
         :param pulumi.Input[float] rx_tx_factor: RX/TX bandwith factor. The default is 1. Changing
                this creates a new flavor.
-        :param pulumi.Input[float] swap: The amount of disk space in megabytes to use. If
+        :param pulumi.Input[int] swap: The amount of disk space in megabytes to use. If
                unspecified, the default is 0. Changing this creates a new flavor.
-        :param pulumi.Input[float] vcpus: The number of virtual CPUs to use. Changing this creates
+        :param pulumi.Input[int] vcpus: The number of virtual CPUs to use. Changing this creates
                a new flavor.
         """
         if __name__ is not None:
@@ -112,16 +112,16 @@ class Flavor(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            disk: Optional[pulumi.Input[float]] = None,
-            ephemeral: Optional[pulumi.Input[float]] = None,
+            disk: Optional[pulumi.Input[int]] = None,
+            ephemeral: Optional[pulumi.Input[int]] = None,
             extra_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             is_public: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            ram: Optional[pulumi.Input[float]] = None,
+            ram: Optional[pulumi.Input[int]] = None,
             region: Optional[pulumi.Input[str]] = None,
             rx_tx_factor: Optional[pulumi.Input[float]] = None,
-            swap: Optional[pulumi.Input[float]] = None,
-            vcpus: Optional[pulumi.Input[float]] = None) -> 'Flavor':
+            swap: Optional[pulumi.Input[int]] = None,
+            vcpus: Optional[pulumi.Input[int]] = None) -> 'Flavor':
         """
         Get an existing Flavor resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -129,14 +129,14 @@ class Flavor(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] disk: The amount of disk space in gigabytes to use for the root
+        :param pulumi.Input[int] disk: The amount of disk space in gigabytes to use for the root
                (/) partition. Changing this creates a new flavor.
         :param pulumi.Input[Mapping[str, Any]] extra_specs: Key/Value pairs of metadata for the flavor.
         :param pulumi.Input[bool] is_public: Whether the flavor is public. Changing this creates
                a new flavor.
         :param pulumi.Input[str] name: A unique name for the flavor. Changing this creates a new
                flavor.
-        :param pulumi.Input[float] ram: The amount of RAM to use, in megabytes. Changing this
+        :param pulumi.Input[int] ram: The amount of RAM to use, in megabytes. Changing this
                creates a new flavor.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Compute client.
                Flavors are associated with accounts, but a Compute client is needed to
@@ -144,9 +144,9 @@ class Flavor(pulumi.CustomResource):
                Changing this creates a new flavor.
         :param pulumi.Input[float] rx_tx_factor: RX/TX bandwith factor. The default is 1. Changing
                this creates a new flavor.
-        :param pulumi.Input[float] swap: The amount of disk space in megabytes to use. If
+        :param pulumi.Input[int] swap: The amount of disk space in megabytes to use. If
                unspecified, the default is 0. Changing this creates a new flavor.
-        :param pulumi.Input[float] vcpus: The number of virtual CPUs to use. Changing this creates
+        :param pulumi.Input[int] vcpus: The number of virtual CPUs to use. Changing this creates
                a new flavor.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -167,7 +167,7 @@ class Flavor(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def disk(self) -> pulumi.Output[float]:
+    def disk(self) -> pulumi.Output[int]:
         """
         The amount of disk space in gigabytes to use for the root
         (/) partition. Changing this creates a new flavor.
@@ -176,7 +176,7 @@ class Flavor(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def ephemeral(self) -> pulumi.Output[Optional[float]]:
+    def ephemeral(self) -> pulumi.Output[Optional[int]]:
         return pulumi.get(self, "ephemeral")
 
     @property
@@ -207,7 +207,7 @@ class Flavor(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def ram(self) -> pulumi.Output[float]:
+    def ram(self) -> pulumi.Output[int]:
         """
         The amount of RAM to use, in megabytes. Changing this
         creates a new flavor.
@@ -236,7 +236,7 @@ class Flavor(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def swap(self) -> pulumi.Output[Optional[float]]:
+    def swap(self) -> pulumi.Output[Optional[int]]:
         """
         The amount of disk space in megabytes to use. If
         unspecified, the default is 0. Changing this creates a new flavor.
@@ -245,7 +245,7 @@ class Flavor(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def vcpus(self) -> pulumi.Output[float]:
+    def vcpus(self) -> pulumi.Output[int]:
         """
         The number of virtual CPUs to use. Changing this creates
         a new flavor.

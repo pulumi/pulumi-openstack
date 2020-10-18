@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['VolumeAttach']
@@ -26,7 +26,7 @@ class VolumeAttach(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  volume_id: Optional[pulumi.Input[str]] = None,
                  wwnn: Optional[pulumi.Input[str]] = None,
-                 wwpns: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 wwpns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -82,7 +82,7 @@ class VolumeAttach(pulumi.CustomResource):
                creates a new volume attachment.
         :param pulumi.Input[str] volume_id: The ID of the Volume to attach to an Instance.
         :param pulumi.Input[str] wwnn: A wwnn name. Used for Fibre Channel connections.
-        :param pulumi.Input[List[pulumi.Input[str]]] wwpns: An array of wwpn strings. Used for Fibre Channel
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] wwpns: An array of wwpn strings. Used for Fibre Channel
                connections.
         """
         if __name__ is not None:
@@ -145,7 +145,7 @@ class VolumeAttach(pulumi.CustomResource):
             region: Optional[pulumi.Input[str]] = None,
             volume_id: Optional[pulumi.Input[str]] = None,
             wwnn: Optional[pulumi.Input[str]] = None,
-            wwpns: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None) -> 'VolumeAttach':
+            wwpns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'VolumeAttach':
         """
         Get an existing VolumeAttach resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -176,7 +176,7 @@ class VolumeAttach(pulumi.CustomResource):
                creates a new volume attachment.
         :param pulumi.Input[str] volume_id: The ID of the Volume to attach to an Instance.
         :param pulumi.Input[str] wwnn: A wwnn name. Used for Fibre Channel connections.
-        :param pulumi.Input[List[pulumi.Input[str]]] wwpns: An array of wwpn strings. Used for Fibre Channel
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] wwpns: An array of wwpn strings. Used for Fibre Channel
                connections.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -323,7 +323,7 @@ class VolumeAttach(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def wwpns(self) -> pulumi.Output[Optional[List[str]]]:
+    def wwpns(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         An array of wwpn strings. Used for Fibre Channel
         connections.

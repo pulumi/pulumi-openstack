@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['QuotaV2']
@@ -15,17 +15,17 @@ class QuotaV2(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 floatingip: Optional[pulumi.Input[float]] = None,
-                 network: Optional[pulumi.Input[float]] = None,
-                 port: Optional[pulumi.Input[float]] = None,
+                 floatingip: Optional[pulumi.Input[int]] = None,
+                 network: Optional[pulumi.Input[int]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 rbac_policy: Optional[pulumi.Input[float]] = None,
+                 rbac_policy: Optional[pulumi.Input[int]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 router: Optional[pulumi.Input[float]] = None,
-                 security_group: Optional[pulumi.Input[float]] = None,
-                 security_group_rule: Optional[pulumi.Input[float]] = None,
-                 subnet: Optional[pulumi.Input[float]] = None,
-                 subnetpool: Optional[pulumi.Input[float]] = None,
+                 router: Optional[pulumi.Input[int]] = None,
+                 security_group: Optional[pulumi.Input[int]] = None,
+                 security_group_rule: Optional[pulumi.Input[int]] = None,
+                 subnet: Optional[pulumi.Input[int]] = None,
+                 subnetpool: Optional[pulumi.Input[int]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -39,28 +39,28 @@ class QuotaV2(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] floatingip: Quota value for floating IPs. Changing this updates the
+        :param pulumi.Input[int] floatingip: Quota value for floating IPs. Changing this updates the
                existing quota.
-        :param pulumi.Input[float] network: Quota value for networks. Changing this updates the
+        :param pulumi.Input[int] network: Quota value for networks. Changing this updates the
                existing quota.
-        :param pulumi.Input[float] port: Quota value for ports. Changing this updates the
+        :param pulumi.Input[int] port: Quota value for ports. Changing this updates the
                existing quota.
         :param pulumi.Input[str] project_id: ID of the project to manage quota. Changing this
                creates new quota.
-        :param pulumi.Input[float] rbac_policy: Quota value for RBAC policies.
+        :param pulumi.Input[int] rbac_policy: Quota value for RBAC policies.
                Changing this updates the existing quota.
         :param pulumi.Input[str] region: The region in which to create the quota. If
                omitted, the `region` argument of the provider is used. Changing this
                creates new quota.
-        :param pulumi.Input[float] router: Quota value for routers. Changing this updates the
+        :param pulumi.Input[int] router: Quota value for routers. Changing this updates the
                existing quota.
-        :param pulumi.Input[float] security_group: Quota value for security groups. Changing
+        :param pulumi.Input[int] security_group: Quota value for security groups. Changing
                this updates the existing quota.
-        :param pulumi.Input[float] security_group_rule: Quota value for security group rules.
+        :param pulumi.Input[int] security_group_rule: Quota value for security group rules.
                Changing this updates the existing quota.
-        :param pulumi.Input[float] subnet: Quota value for subnets. Changing
+        :param pulumi.Input[int] subnet: Quota value for subnets. Changing
                this updates the existing quota.
-        :param pulumi.Input[float] subnetpool: Quota value for subnetpools.
+        :param pulumi.Input[int] subnetpool: Quota value for subnetpools.
                Changing this updates the existing quota.
         """
         if __name__ is not None:
@@ -103,17 +103,17 @@ class QuotaV2(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            floatingip: Optional[pulumi.Input[float]] = None,
-            network: Optional[pulumi.Input[float]] = None,
-            port: Optional[pulumi.Input[float]] = None,
+            floatingip: Optional[pulumi.Input[int]] = None,
+            network: Optional[pulumi.Input[int]] = None,
+            port: Optional[pulumi.Input[int]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
-            rbac_policy: Optional[pulumi.Input[float]] = None,
+            rbac_policy: Optional[pulumi.Input[int]] = None,
             region: Optional[pulumi.Input[str]] = None,
-            router: Optional[pulumi.Input[float]] = None,
-            security_group: Optional[pulumi.Input[float]] = None,
-            security_group_rule: Optional[pulumi.Input[float]] = None,
-            subnet: Optional[pulumi.Input[float]] = None,
-            subnetpool: Optional[pulumi.Input[float]] = None) -> 'QuotaV2':
+            router: Optional[pulumi.Input[int]] = None,
+            security_group: Optional[pulumi.Input[int]] = None,
+            security_group_rule: Optional[pulumi.Input[int]] = None,
+            subnet: Optional[pulumi.Input[int]] = None,
+            subnetpool: Optional[pulumi.Input[int]] = None) -> 'QuotaV2':
         """
         Get an existing QuotaV2 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -121,28 +121,28 @@ class QuotaV2(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] floatingip: Quota value for floating IPs. Changing this updates the
+        :param pulumi.Input[int] floatingip: Quota value for floating IPs. Changing this updates the
                existing quota.
-        :param pulumi.Input[float] network: Quota value for networks. Changing this updates the
+        :param pulumi.Input[int] network: Quota value for networks. Changing this updates the
                existing quota.
-        :param pulumi.Input[float] port: Quota value for ports. Changing this updates the
+        :param pulumi.Input[int] port: Quota value for ports. Changing this updates the
                existing quota.
         :param pulumi.Input[str] project_id: ID of the project to manage quota. Changing this
                creates new quota.
-        :param pulumi.Input[float] rbac_policy: Quota value for RBAC policies.
+        :param pulumi.Input[int] rbac_policy: Quota value for RBAC policies.
                Changing this updates the existing quota.
         :param pulumi.Input[str] region: The region in which to create the quota. If
                omitted, the `region` argument of the provider is used. Changing this
                creates new quota.
-        :param pulumi.Input[float] router: Quota value for routers. Changing this updates the
+        :param pulumi.Input[int] router: Quota value for routers. Changing this updates the
                existing quota.
-        :param pulumi.Input[float] security_group: Quota value for security groups. Changing
+        :param pulumi.Input[int] security_group: Quota value for security groups. Changing
                this updates the existing quota.
-        :param pulumi.Input[float] security_group_rule: Quota value for security group rules.
+        :param pulumi.Input[int] security_group_rule: Quota value for security group rules.
                Changing this updates the existing quota.
-        :param pulumi.Input[float] subnet: Quota value for subnets. Changing
+        :param pulumi.Input[int] subnet: Quota value for subnets. Changing
                this updates the existing quota.
-        :param pulumi.Input[float] subnetpool: Quota value for subnetpools.
+        :param pulumi.Input[int] subnetpool: Quota value for subnetpools.
                Changing this updates the existing quota.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -164,7 +164,7 @@ class QuotaV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def floatingip(self) -> pulumi.Output[float]:
+    def floatingip(self) -> pulumi.Output[int]:
         """
         Quota value for floating IPs. Changing this updates the
         existing quota.
@@ -173,7 +173,7 @@ class QuotaV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def network(self) -> pulumi.Output[float]:
+    def network(self) -> pulumi.Output[int]:
         """
         Quota value for networks. Changing this updates the
         existing quota.
@@ -182,7 +182,7 @@ class QuotaV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def port(self) -> pulumi.Output[float]:
+    def port(self) -> pulumi.Output[int]:
         """
         Quota value for ports. Changing this updates the
         existing quota.
@@ -200,7 +200,7 @@ class QuotaV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="rbacPolicy")
-    def rbac_policy(self) -> pulumi.Output[float]:
+    def rbac_policy(self) -> pulumi.Output[int]:
         """
         Quota value for RBAC policies.
         Changing this updates the existing quota.
@@ -219,7 +219,7 @@ class QuotaV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def router(self) -> pulumi.Output[float]:
+    def router(self) -> pulumi.Output[int]:
         """
         Quota value for routers. Changing this updates the
         existing quota.
@@ -228,7 +228,7 @@ class QuotaV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityGroup")
-    def security_group(self) -> pulumi.Output[float]:
+    def security_group(self) -> pulumi.Output[int]:
         """
         Quota value for security groups. Changing
         this updates the existing quota.
@@ -237,7 +237,7 @@ class QuotaV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityGroupRule")
-    def security_group_rule(self) -> pulumi.Output[float]:
+    def security_group_rule(self) -> pulumi.Output[int]:
         """
         Quota value for security group rules.
         Changing this updates the existing quota.
@@ -246,7 +246,7 @@ class QuotaV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def subnet(self) -> pulumi.Output[float]:
+    def subnet(self) -> pulumi.Output[int]:
         """
         Quota value for subnets. Changing
         this updates the existing quota.
@@ -255,7 +255,7 @@ class QuotaV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def subnetpool(self) -> pulumi.Output[float]:
+    def subnetpool(self) -> pulumi.Output[int]:
         """
         Quota value for subnetpools.
         Changing this updates the existing quota.

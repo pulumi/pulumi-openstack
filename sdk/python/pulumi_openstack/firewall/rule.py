@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['Rule']
@@ -20,7 +20,7 @@ class Rule(pulumi.CustomResource):
                  destination_ip_address: Optional[pulumi.Input[str]] = None,
                  destination_port: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 ip_version: Optional[pulumi.Input[float]] = None,
+                 ip_version: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -64,7 +64,7 @@ class Rule(pulumi.CustomResource):
         :param pulumi.Input[bool] enabled: Enabled status for the firewall rule (must be "true"
                or "false" if provided - defaults to "true"). Changing this updates the
                `enabled` status of an existing firewall rule.
-        :param pulumi.Input[float] ip_version: IP version, either 4 (default) or 6. Changing this
+        :param pulumi.Input[int] ip_version: IP version, either 4 (default) or 6. Changing this
                updates the `ip_version` of an existing firewall rule.
         :param pulumi.Input[str] name: A unique name for the firewall rule. Changing this
                updates the `name` of an existing firewall rule.
@@ -135,7 +135,7 @@ class Rule(pulumi.CustomResource):
             destination_ip_address: Optional[pulumi.Input[str]] = None,
             destination_port: Optional[pulumi.Input[str]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
-            ip_version: Optional[pulumi.Input[float]] = None,
+            ip_version: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             protocol: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
@@ -164,7 +164,7 @@ class Rule(pulumi.CustomResource):
         :param pulumi.Input[bool] enabled: Enabled status for the firewall rule (must be "true"
                or "false" if provided - defaults to "true"). Changing this updates the
                `enabled` status of an existing firewall rule.
-        :param pulumi.Input[float] ip_version: IP version, either 4 (default) or 6. Changing this
+        :param pulumi.Input[int] ip_version: IP version, either 4 (default) or 6. Changing this
                updates the `ip_version` of an existing firewall rule.
         :param pulumi.Input[str] name: A unique name for the firewall rule. Changing this
                updates the `name` of an existing firewall rule.
@@ -256,7 +256,7 @@ class Rule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ipVersion")
-    def ip_version(self) -> pulumi.Output[Optional[float]]:
+    def ip_version(self) -> pulumi.Output[Optional[int]]:
         """
         IP version, either 4 (default) or 6. Changing this
         updates the `ip_version` of an existing firewall rule.

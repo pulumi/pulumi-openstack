@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['Zone']
@@ -18,10 +18,10 @@ class Zone(pulumi.CustomResource):
                  attributes: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  email: Optional[pulumi.Input[str]] = None,
-                 masters: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 masters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 ttl: Optional[pulumi.Input[float]] = None,
+                 ttl: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None,
@@ -50,7 +50,7 @@ class Zone(pulumi.CustomResource):
                Changing this creates a new zone.
         :param pulumi.Input[str] description: A description of the zone.
         :param pulumi.Input[str] email: The email contact for the zone record.
-        :param pulumi.Input[List[pulumi.Input[str]]] masters: An array of master DNS servers. For when `type` is
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] masters: An array of master DNS servers. For when `type` is
                `SECONDARY`.
         :param pulumi.Input[str] name: The name of the zone. Note the `.` at the end of the name.
                Changing this creates a new DNS zone.
@@ -58,7 +58,7 @@ class Zone(pulumi.CustomResource):
                Keypairs are associated with accounts, but a Compute client is needed to
                create one. If omitted, the `region` argument of the provider is used.
                Changing this creates a new DNS zone.
-        :param pulumi.Input[float] ttl: The time to live (TTL) of the zone.
+        :param pulumi.Input[int] ttl: The time to live (TTL) of the zone.
         :param pulumi.Input[str] type: The type of zone. Can either be `PRIMARY` or `SECONDARY`.
                Changing this creates a new zone.
         :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options. Changing this creates a
@@ -103,10 +103,10 @@ class Zone(pulumi.CustomResource):
             attributes: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             email: Optional[pulumi.Input[str]] = None,
-            masters: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            masters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
-            ttl: Optional[pulumi.Input[float]] = None,
+            ttl: Optional[pulumi.Input[int]] = None,
             type: Optional[pulumi.Input[str]] = None,
             value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'Zone':
         """
@@ -120,7 +120,7 @@ class Zone(pulumi.CustomResource):
                Changing this creates a new zone.
         :param pulumi.Input[str] description: A description of the zone.
         :param pulumi.Input[str] email: The email contact for the zone record.
-        :param pulumi.Input[List[pulumi.Input[str]]] masters: An array of master DNS servers. For when `type` is
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] masters: An array of master DNS servers. For when `type` is
                `SECONDARY`.
         :param pulumi.Input[str] name: The name of the zone. Note the `.` at the end of the name.
                Changing this creates a new DNS zone.
@@ -128,7 +128,7 @@ class Zone(pulumi.CustomResource):
                Keypairs are associated with accounts, but a Compute client is needed to
                create one. If omitted, the `region` argument of the provider is used.
                Changing this creates a new DNS zone.
-        :param pulumi.Input[float] ttl: The time to live (TTL) of the zone.
+        :param pulumi.Input[int] ttl: The time to live (TTL) of the zone.
         :param pulumi.Input[str] type: The type of zone. Can either be `PRIMARY` or `SECONDARY`.
                Changing this creates a new zone.
         :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options. Changing this creates a
@@ -176,7 +176,7 @@ class Zone(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def masters(self) -> pulumi.Output[Optional[List[str]]]:
+    def masters(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         An array of master DNS servers. For when `type` is
         `SECONDARY`.
@@ -205,7 +205,7 @@ class Zone(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def ttl(self) -> pulumi.Output[float]:
+    def ttl(self) -> pulumi.Output[int]:
         """
         The time to live (TTL) of the zone.
         """

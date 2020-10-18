@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['User']
@@ -15,7 +15,7 @@ class User(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 databases: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 databases: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  host: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -31,7 +31,7 @@ class User(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[str]]] databases: A list of database user should have access to.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] databases: A list of database user should have access to.
         :param pulumi.Input[str] name: A unique name for the resource.
         :param pulumi.Input[str] password: User's password.
         :param pulumi.Input[str] region: Openstack region resource is created in.
@@ -73,7 +73,7 @@ class User(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            databases: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            databases: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             host: Optional[pulumi.Input[str]] = None,
             instance_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -86,7 +86,7 @@ class User(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[str]]] databases: A list of database user should have access to.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] databases: A list of database user should have access to.
         :param pulumi.Input[str] name: A unique name for the resource.
         :param pulumi.Input[str] password: User's password.
         :param pulumi.Input[str] region: Openstack region resource is created in.
@@ -105,7 +105,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def databases(self) -> pulumi.Output[List[str]]:
+    def databases(self) -> pulumi.Output[Sequence[str]]:
         """
         A list of database user should have access to.
         """

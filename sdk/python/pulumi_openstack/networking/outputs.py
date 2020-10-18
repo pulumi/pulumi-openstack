@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -34,11 +34,11 @@ class NetworkSegment(dict):
     def __init__(__self__, *,
                  network_type: Optional[str] = None,
                  physical_network: Optional[str] = None,
-                 segmentation_id: Optional[float] = None):
+                 segmentation_id: Optional[int] = None):
         """
         :param str network_type: The type of physical network.
         :param str physical_network: The physical network where this network is implemented.
-        :param float segmentation_id: An isolated segment on the physical network.
+        :param int segmentation_id: An isolated segment on the physical network.
         """
         if network_type is not None:
             pulumi.set(__self__, "network_type", network_type)
@@ -65,7 +65,7 @@ class NetworkSegment(dict):
 
     @property
     @pulumi.getter(name="segmentationId")
-    def segmentation_id(self) -> Optional[float]:
+    def segmentation_id(self) -> Optional[int]:
         """
         An isolated segment on the physical network.
         """
@@ -191,11 +191,11 @@ class PortExtraDhcpOption(dict):
     def __init__(__self__, *,
                  name: str,
                  value: str,
-                 ip_version: Optional[float] = None):
+                 ip_version: Optional[int] = None):
         """
         :param str name: Name of the DHCP option.
         :param str value: Value of the DHCP option.
-        :param float ip_version: IP protocol version. Defaults to 4.
+        :param int ip_version: IP protocol version. Defaults to 4.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
@@ -220,7 +220,7 @@ class PortExtraDhcpOption(dict):
 
     @property
     @pulumi.getter(name="ipVersion")
-    def ip_version(self) -> Optional[float]:
+    def ip_version(self) -> Optional[int]:
         """
         IP protocol version. Defaults to 4.
         """
@@ -423,11 +423,11 @@ class SubnetHostRoute(dict):
 class TrunkSubPort(dict):
     def __init__(__self__, *,
                  port_id: str,
-                 segmentation_id: float,
+                 segmentation_id: int,
                  segmentation_type: str):
         """
         :param str port_id: The ID of the port to be made a subport of the trunk.
-        :param float segmentation_id: The numeric id of the subport segment.
+        :param int segmentation_id: The numeric id of the subport segment.
         :param str segmentation_type: The segmentation technology to use, e.g., "vlan".
         """
         pulumi.set(__self__, "port_id", port_id)
@@ -444,7 +444,7 @@ class TrunkSubPort(dict):
 
     @property
     @pulumi.getter(name="segmentationId")
-    def segmentation_id(self) -> float:
+    def segmentation_id(self) -> int:
         """
         The numeric id of the subport segment.
         """
@@ -558,11 +558,11 @@ class GetPortBindingResult(dict):
 @pulumi.output_type
 class GetPortExtraDhcpOptionResult(dict):
     def __init__(__self__, *,
-                 ip_version: float,
+                 ip_version: int,
                  name: str,
                  value: str):
         """
-        :param float ip_version: IP protocol version
+        :param int ip_version: IP protocol version
         :param str name: The name of the port.
         :param str value: Value of the DHCP option.
         """
@@ -572,7 +572,7 @@ class GetPortExtraDhcpOptionResult(dict):
 
     @property
     @pulumi.getter(name="ipVersion")
-    def ip_version(self) -> float:
+    def ip_version(self) -> int:
         """
         IP protocol version
         """
@@ -664,11 +664,11 @@ class GetSubnetHostRouteResult(dict):
 class GetTrunkSubPortResult(dict):
     def __init__(__self__, *,
                  port_id: str,
-                 segmentation_id: float,
+                 segmentation_id: int,
                  segmentation_type: str):
         """
         :param str port_id: The ID of the trunk parent port.
-        :param float segmentation_id: The numeric id of the subport segment.
+        :param int segmentation_id: The numeric id of the subport segment.
         :param str segmentation_type: The segmenation tecnology used, e.g., "vlan".
         """
         pulumi.set(__self__, "port_id", port_id)
@@ -685,7 +685,7 @@ class GetTrunkSubPortResult(dict):
 
     @property
     @pulumi.getter(name="segmentationId")
-    def segmentation_id(self) -> float:
+    def segmentation_id(self) -> int:
         """
         The numeric id of the subport segment.
         """

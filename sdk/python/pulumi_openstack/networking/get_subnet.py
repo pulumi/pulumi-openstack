@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -54,8 +54,8 @@ class GetSubnetResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
-        if ip_version and not isinstance(ip_version, float):
-            raise TypeError("Expected argument 'ip_version' to be a float")
+        if ip_version and not isinstance(ip_version, int):
+            raise TypeError("Expected argument 'ip_version' to be a int")
         pulumi.set(__self__, "ip_version", ip_version)
         if ipv6_address_mode and not isinstance(ipv6_address_mode, str):
             raise TypeError("Expected argument 'ipv6_address_mode' to be a str")
@@ -87,7 +87,7 @@ class GetSubnetResult:
 
     @property
     @pulumi.getter(name="allTags")
-    def all_tags(self) -> List[str]:
+    def all_tags(self) -> Sequence[str]:
         """
         A set of string tags applied on the subnet.
         """
@@ -95,7 +95,7 @@ class GetSubnetResult:
 
     @property
     @pulumi.getter(name="allocationPools")
-    def allocation_pools(self) -> List['outputs.GetSubnetAllocationPoolResult']:
+    def allocation_pools(self) -> Sequence['outputs.GetSubnetAllocationPoolResult']:
         """
         Allocation pools of the subnet.
         """
@@ -123,7 +123,7 @@ class GetSubnetResult:
 
     @property
     @pulumi.getter(name="dnsNameservers")
-    def dns_nameservers(self) -> List[str]:
+    def dns_nameservers(self) -> Sequence[str]:
         """
         DNS Nameservers of the subnet.
         """
@@ -144,7 +144,7 @@ class GetSubnetResult:
 
     @property
     @pulumi.getter(name="hostRoutes")
-    def host_routes(self) -> List['outputs.GetSubnetHostRouteResult']:
+    def host_routes(self) -> Sequence['outputs.GetSubnetHostRouteResult']:
         """
         Host Routes of the subnet.
         """
@@ -160,7 +160,7 @@ class GetSubnetResult:
 
     @property
     @pulumi.getter(name="ipVersion")
-    def ip_version(self) -> float:
+    def ip_version(self) -> int:
         return pulumi.get(self, "ip_version")
 
     @property
@@ -203,7 +203,7 @@ class GetSubnetResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List[str]]:
+    def tags(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "tags")
 
     @property
@@ -246,7 +246,7 @@ def get_subnet(cidr: Optional[str] = None,
                dhcp_disabled: Optional[bool] = None,
                dhcp_enabled: Optional[bool] = None,
                gateway_ip: Optional[str] = None,
-               ip_version: Optional[float] = None,
+               ip_version: Optional[int] = None,
                ipv6_address_mode: Optional[str] = None,
                ipv6_ra_mode: Optional[str] = None,
                name: Optional[str] = None,
@@ -254,7 +254,7 @@ def get_subnet(cidr: Optional[str] = None,
                region: Optional[str] = None,
                subnet_id: Optional[str] = None,
                subnetpool_id: Optional[str] = None,
-               tags: Optional[List[str]] = None,
+               tags: Optional[Sequence[str]] = None,
                tenant_id: Optional[str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSubnetResult:
     """
@@ -275,7 +275,7 @@ def get_subnet(cidr: Optional[str] = None,
     :param bool dhcp_disabled: If the subnet has DHCP disabled.
     :param bool dhcp_enabled: If the subnet has DHCP enabled.
     :param str gateway_ip: The IP of the subnet's gateway.
-    :param float ip_version: The IP version of the subnet (either 4 or 6).
+    :param int ip_version: The IP version of the subnet (either 4 or 6).
     :param str ipv6_address_mode: The IPv6 address mode. Valid values are
            `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.
     :param str ipv6_ra_mode: The IPv6 Router Advertisement mode. Valid values
@@ -287,7 +287,7 @@ def get_subnet(cidr: Optional[str] = None,
            `region` argument of the provider is used.
     :param str subnet_id: The ID of the subnet.
     :param str subnetpool_id: The ID of the subnetpool associated with the subnet.
-    :param List[str] tags: The list of subnet tags to filter.
+    :param Sequence[str] tags: The list of subnet tags to filter.
     :param str tenant_id: The owner of the subnet.
     """
     __args__ = dict()

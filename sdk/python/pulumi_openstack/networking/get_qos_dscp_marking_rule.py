@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -20,8 +20,8 @@ class GetQosDscpMarkingRuleResult:
     A collection of values returned by getQosDscpMarkingRule.
     """
     def __init__(__self__, dscp_mark=None, id=None, qos_policy_id=None, region=None):
-        if dscp_mark and not isinstance(dscp_mark, float):
-            raise TypeError("Expected argument 'dscp_mark' to be a float")
+        if dscp_mark and not isinstance(dscp_mark, int):
+            raise TypeError("Expected argument 'dscp_mark' to be a int")
         pulumi.set(__self__, "dscp_mark", dscp_mark)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
@@ -35,7 +35,7 @@ class GetQosDscpMarkingRuleResult:
 
     @property
     @pulumi.getter(name="dscpMark")
-    def dscp_mark(self) -> float:
+    def dscp_mark(self) -> int:
         """
         See Argument Reference above.
         """
@@ -78,7 +78,7 @@ class AwaitableGetQosDscpMarkingRuleResult(GetQosDscpMarkingRuleResult):
             region=self.region)
 
 
-def get_qos_dscp_marking_rule(dscp_mark: Optional[float] = None,
+def get_qos_dscp_marking_rule(dscp_mark: Optional[int] = None,
                               qos_policy_id: Optional[str] = None,
                               region: Optional[str] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetQosDscpMarkingRuleResult:
@@ -86,7 +86,7 @@ def get_qos_dscp_marking_rule(dscp_mark: Optional[float] = None,
     Use this data source to get the ID of an available OpenStack QoS DSCP marking rule.
 
 
-    :param float dscp_mark: The value of a DSCP mark.
+    :param int dscp_mark: The value of a DSCP mark.
     :param str qos_policy_id: The QoS policy reference.
     :param str region: The region in which to obtain the V2 Networking client.
            A Networking client is needed to create a Neutron QoS DSCP marking rule. If omitted, the

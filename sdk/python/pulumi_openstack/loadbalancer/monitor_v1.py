@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['MonitorV1']
@@ -16,13 +16,13 @@ class MonitorV1(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin_state_up: Optional[pulumi.Input[str]] = None,
-                 delay: Optional[pulumi.Input[float]] = None,
+                 delay: Optional[pulumi.Input[int]] = None,
                  expected_codes: Optional[pulumi.Input[str]] = None,
                  http_method: Optional[pulumi.Input[str]] = None,
-                 max_retries: Optional[pulumi.Input[float]] = None,
+                 max_retries: Optional[pulumi.Input[int]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
-                 timeout: Optional[pulumi.Input[float]] = None,
+                 timeout: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  url_path: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -50,7 +50,7 @@ class MonitorV1(pulumi.CustomResource):
         :param pulumi.Input[str] admin_state_up: The administrative state of the monitor.
                Acceptable values are "true" and "false". Changing this value updates the
                state of the existing monitor.
-        :param pulumi.Input[float] delay: The time, in seconds, between sending probes to members.
+        :param pulumi.Input[int] delay: The time, in seconds, between sending probes to members.
                Changing this creates a new monitor.
         :param pulumi.Input[str] expected_codes: Required for HTTP(S) types. Expected HTTP codes
                for a passing HTTP(S) monitor. You can either specify a single status like
@@ -59,7 +59,7 @@ class MonitorV1(pulumi.CustomResource):
         :param pulumi.Input[str] http_method: Required for HTTP(S) types. The HTTP method used
                for requests by the monitor. If this attribute is not specified, it defaults
                to "GET". Changing this updates the http_method of the existing monitor.
-        :param pulumi.Input[float] max_retries: Number of permissible ping failures before changing
+        :param pulumi.Input[int] max_retries: Number of permissible ping failures before changing
                the member's status to INACTIVE. Must be a number between 1 and 10. Changing
                this updates the max_retries of the existing monitor.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
@@ -68,7 +68,7 @@ class MonitorV1(pulumi.CustomResource):
                LB monitor.
         :param pulumi.Input[str] tenant_id: The owner of the monitor. Required if admin wants to
                create a monitor for another tenant. Changing this creates a new monitor.
-        :param pulumi.Input[float] timeout: Maximum number of seconds for a monitor to wait for a
+        :param pulumi.Input[int] timeout: Maximum number of seconds for a monitor to wait for a
                ping reply before it times out. The value must be less than the delay value.
                Changing this updates the timeout of the existing monitor.
         :param pulumi.Input[str] type: The type of probe, which is PING, TCP, HTTP, or HTTPS,
@@ -124,13 +124,13 @@ class MonitorV1(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             admin_state_up: Optional[pulumi.Input[str]] = None,
-            delay: Optional[pulumi.Input[float]] = None,
+            delay: Optional[pulumi.Input[int]] = None,
             expected_codes: Optional[pulumi.Input[str]] = None,
             http_method: Optional[pulumi.Input[str]] = None,
-            max_retries: Optional[pulumi.Input[float]] = None,
+            max_retries: Optional[pulumi.Input[int]] = None,
             region: Optional[pulumi.Input[str]] = None,
             tenant_id: Optional[pulumi.Input[str]] = None,
-            timeout: Optional[pulumi.Input[float]] = None,
+            timeout: Optional[pulumi.Input[int]] = None,
             type: Optional[pulumi.Input[str]] = None,
             url_path: Optional[pulumi.Input[str]] = None) -> 'MonitorV1':
         """
@@ -143,7 +143,7 @@ class MonitorV1(pulumi.CustomResource):
         :param pulumi.Input[str] admin_state_up: The administrative state of the monitor.
                Acceptable values are "true" and "false". Changing this value updates the
                state of the existing monitor.
-        :param pulumi.Input[float] delay: The time, in seconds, between sending probes to members.
+        :param pulumi.Input[int] delay: The time, in seconds, between sending probes to members.
                Changing this creates a new monitor.
         :param pulumi.Input[str] expected_codes: Required for HTTP(S) types. Expected HTTP codes
                for a passing HTTP(S) monitor. You can either specify a single status like
@@ -152,7 +152,7 @@ class MonitorV1(pulumi.CustomResource):
         :param pulumi.Input[str] http_method: Required for HTTP(S) types. The HTTP method used
                for requests by the monitor. If this attribute is not specified, it defaults
                to "GET". Changing this updates the http_method of the existing monitor.
-        :param pulumi.Input[float] max_retries: Number of permissible ping failures before changing
+        :param pulumi.Input[int] max_retries: Number of permissible ping failures before changing
                the member's status to INACTIVE. Must be a number between 1 and 10. Changing
                this updates the max_retries of the existing monitor.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
@@ -161,7 +161,7 @@ class MonitorV1(pulumi.CustomResource):
                LB monitor.
         :param pulumi.Input[str] tenant_id: The owner of the monitor. Required if admin wants to
                create a monitor for another tenant. Changing this creates a new monitor.
-        :param pulumi.Input[float] timeout: Maximum number of seconds for a monitor to wait for a
+        :param pulumi.Input[int] timeout: Maximum number of seconds for a monitor to wait for a
                ping reply before it times out. The value must be less than the delay value.
                Changing this updates the timeout of the existing monitor.
         :param pulumi.Input[str] type: The type of probe, which is PING, TCP, HTTP, or HTTPS,
@@ -199,7 +199,7 @@ class MonitorV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def delay(self) -> pulumi.Output[float]:
+    def delay(self) -> pulumi.Output[int]:
         """
         The time, in seconds, between sending probes to members.
         Changing this creates a new monitor.
@@ -229,7 +229,7 @@ class MonitorV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxRetries")
-    def max_retries(self) -> pulumi.Output[float]:
+    def max_retries(self) -> pulumi.Output[int]:
         """
         Number of permissible ping failures before changing
         the member's status to INACTIVE. Must be a number between 1 and 10. Changing
@@ -259,7 +259,7 @@ class MonitorV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def timeout(self) -> pulumi.Output[float]:
+    def timeout(self) -> pulumi.Output[int]:
         """
         Maximum number of seconds for a monitor to wait for a
         ping reply before it times out. The value must be less than the delay value.

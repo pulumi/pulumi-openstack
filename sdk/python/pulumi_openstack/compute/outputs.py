@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -22,20 +22,20 @@ __all__ = [
 class InstanceBlockDevice(dict):
     def __init__(__self__, *,
                  source_type: str,
-                 boot_index: Optional[float] = None,
+                 boot_index: Optional[int] = None,
                  delete_on_termination: Optional[bool] = None,
                  destination_type: Optional[str] = None,
                  device_type: Optional[str] = None,
                  disk_bus: Optional[str] = None,
                  guest_format: Optional[str] = None,
                  uuid: Optional[str] = None,
-                 volume_size: Optional[float] = None,
+                 volume_size: Optional[int] = None,
                  volume_type: Optional[str] = None):
         """
         :param str source_type: The source type of the device. Must be one of
                "blank", "image", "volume", or "snapshot". Changing this creates a new
                server.
-        :param float boot_index: The boot index of the volume. It defaults to 0.
+        :param int boot_index: The boot index of the volume. It defaults to 0.
                Changing this creates a new server.
         :param bool delete_on_termination: Delete the volume / block device upon
                termination of the instance. Defaults to false. Changing this creates a
@@ -48,7 +48,7 @@ class InstanceBlockDevice(dict):
                thing is to leave this empty. Changing this creates a new server.
         :param str uuid: The UUID of
                the image, volume, or snapshot. Changing this creates a new server.
-        :param float volume_size: The size of the volume to create (in gigabytes). Required
+        :param int volume_size: The size of the volume to create (in gigabytes). Required
                in the following combinations: source=image and destination=volume,
                source=blank and destination=local, and source=blank and destination=volume.
                Changing this creates a new server.
@@ -89,7 +89,7 @@ class InstanceBlockDevice(dict):
 
     @property
     @pulumi.getter(name="bootIndex")
-    def boot_index(self) -> Optional[float]:
+    def boot_index(self) -> Optional[int]:
         """
         The boot index of the volume. It defaults to 0.
         Changing this creates a new server.
@@ -149,7 +149,7 @@ class InstanceBlockDevice(dict):
 
     @property
     @pulumi.getter(name="volumeSize")
-    def volume_size(self) -> Optional[float]:
+    def volume_size(self) -> Optional[int]:
         """
         The size of the volume to create (in gigabytes). Required
         in the following combinations: source=image and destination=volume,
@@ -179,6 +179,7 @@ class InstanceNetwork(dict):
                  access_network: Optional[bool] = None,
                  fixed_ip_v4: Optional[str] = None,
                  fixed_ip_v6: Optional[str] = None,
+                 floating_ip: Optional[str] = None,
                  mac: Optional[str] = None,
                  name: Optional[str] = None,
                  port: Optional[str] = None,
@@ -201,6 +202,8 @@ class InstanceNetwork(dict):
             pulumi.set(__self__, "fixed_ip_v4", fixed_ip_v4)
         if fixed_ip_v6 is not None:
             pulumi.set(__self__, "fixed_ip_v6", fixed_ip_v6)
+        if floating_ip is not None:
+            pulumi.set(__self__, "floating_ip", floating_ip)
         if mac is not None:
             pulumi.set(__self__, "mac", mac)
         if name is not None:
@@ -232,6 +235,11 @@ class InstanceNetwork(dict):
     @pulumi.getter(name="fixedIpV6")
     def fixed_ip_v6(self) -> Optional[str]:
         return pulumi.get(self, "fixed_ip_v6")
+
+    @property
+    @pulumi.getter(name="floatingIp")
+    def floating_ip(self) -> Optional[str]:
+        return pulumi.get(self, "floating_ip")
 
     @property
     @pulumi.getter
@@ -306,27 +314,27 @@ class InstanceSchedulerHint(dict):
     def __init__(__self__, *,
                  additional_properties: Optional[Mapping[str, Any]] = None,
                  build_near_host_ip: Optional[str] = None,
-                 different_hosts: Optional[List[str]] = None,
+                 different_hosts: Optional[Sequence[str]] = None,
                  group: Optional[str] = None,
-                 queries: Optional[List[str]] = None,
-                 same_hosts: Optional[List[str]] = None,
+                 queries: Optional[Sequence[str]] = None,
+                 same_hosts: Optional[Sequence[str]] = None,
                  target_cell: Optional[str] = None):
         """
         :param Mapping[str, Any] additional_properties: Arbitrary key/value pairs of additional
                properties to pass to the scheduler.
         :param str build_near_host_ip: An IP Address in CIDR form. The instance
                will be placed on a compute node that is in the same subnet.
-        :param List[str] different_hosts: A list of instance UUIDs. The instance will
+        :param Sequence[str] different_hosts: A list of instance UUIDs. The instance will
                be scheduled on a different host than all other instances.
         :param str group: A UUID of a Server Group. The instance will be placed
                into that group.
-        :param List[str] queries: A conditional query that a compute node must pass in
+        :param Sequence[str] queries: A conditional query that a compute node must pass in
                order to host an instance. The query must use the `JsonFilter` syntax
                which is described
                [here](https://docs.openstack.org/nova/latest/admin/configuration/schedulers.html#jsonfilter).
                At this time, only simple queries are supported. Compound queries using
                `and`, `or`, or `not` are not supported. An example of a simple query is:
-        :param List[str] same_hosts: A list of instance UUIDs. The instance will be
+        :param Sequence[str] same_hosts: A list of instance UUIDs. The instance will be
                scheduled on the same host of those specified.
         :param str target_cell: The name of a cell to host the instance.
         """
@@ -365,7 +373,7 @@ class InstanceSchedulerHint(dict):
 
     @property
     @pulumi.getter(name="differentHosts")
-    def different_hosts(self) -> Optional[List[str]]:
+    def different_hosts(self) -> Optional[Sequence[str]]:
         """
         A list of instance UUIDs. The instance will
         be scheduled on a different host than all other instances.
@@ -383,7 +391,7 @@ class InstanceSchedulerHint(dict):
 
     @property
     @pulumi.getter
-    def queries(self) -> Optional[List[str]]:
+    def queries(self) -> Optional[Sequence[str]]:
         """
         A conditional query that a compute node must pass in
         order to host an instance. The query must use the `JsonFilter` syntax
@@ -396,7 +404,7 @@ class InstanceSchedulerHint(dict):
 
     @property
     @pulumi.getter(name="sameHosts")
-    def same_hosts(self) -> Optional[List[str]]:
+    def same_hosts(self) -> Optional[Sequence[str]]:
         """
         A list of instance UUIDs. The instance will be
         scheduled on the same host of those specified.
@@ -462,19 +470,19 @@ class InstanceVendorOptions(dict):
 @pulumi.output_type
 class SecGroupRule(dict):
     def __init__(__self__, *,
-                 from_port: float,
+                 from_port: int,
                  ip_protocol: str,
-                 to_port: float,
+                 to_port: int,
                  cidr: Optional[str] = None,
                  from_group_id: Optional[str] = None,
                  id: Optional[str] = None,
                  self: Optional[bool] = None):
         """
-        :param float from_port: An integer representing the lower bound of the port
+        :param int from_port: An integer representing the lower bound of the port
                range to open. Changing this creates a new security group rule.
         :param str ip_protocol: The protocol type that will be allowed. Changing
                this creates a new security group rule.
-        :param float to_port: An integer representing the upper bound of the port
+        :param int to_port: An integer representing the upper bound of the port
                range to open. Changing this creates a new security group rule.
         :param str cidr: Required if `from_group_id` or `self` is empty. The IP range
                that will be the source of network traffic to the security group. Use 0.0.0.0/0
@@ -501,7 +509,7 @@ class SecGroupRule(dict):
 
     @property
     @pulumi.getter(name="fromPort")
-    def from_port(self) -> float:
+    def from_port(self) -> int:
         """
         An integer representing the lower bound of the port
         range to open. Changing this creates a new security group rule.
@@ -519,7 +527,7 @@ class SecGroupRule(dict):
 
     @property
     @pulumi.getter(name="toPort")
-    def to_port(self) -> float:
+    def to_port(self) -> int:
         """
         An integer representing the upper bound of the port
         range to open. Changing this creates a new security group rule.

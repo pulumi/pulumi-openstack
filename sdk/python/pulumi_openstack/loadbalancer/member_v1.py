@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['MemberV1']
@@ -18,10 +18,10 @@ class MemberV1(pulumi.CustomResource):
                  address: Optional[pulumi.Input[str]] = None,
                  admin_state_up: Optional[pulumi.Input[bool]] = None,
                  pool_id: Optional[pulumi.Input[str]] = None,
-                 port: Optional[pulumi.Input[float]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
-                 weight: Optional[pulumi.Input[float]] = None,
+                 weight: Optional[pulumi.Input[int]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -49,7 +49,7 @@ class MemberV1(pulumi.CustomResource):
                state of the existing member.
         :param pulumi.Input[str] pool_id: The ID of the LB pool. Changing this creates a new
                member.
-        :param pulumi.Input[float] port: An integer representing the port on which the member is
+        :param pulumi.Input[int] port: An integer representing the port on which the member is
                hosted. Changing this creates a new member.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
                A Networking client is needed to create an LB member. If omitted, the
@@ -101,10 +101,10 @@ class MemberV1(pulumi.CustomResource):
             address: Optional[pulumi.Input[str]] = None,
             admin_state_up: Optional[pulumi.Input[bool]] = None,
             pool_id: Optional[pulumi.Input[str]] = None,
-            port: Optional[pulumi.Input[float]] = None,
+            port: Optional[pulumi.Input[int]] = None,
             region: Optional[pulumi.Input[str]] = None,
             tenant_id: Optional[pulumi.Input[str]] = None,
-            weight: Optional[pulumi.Input[float]] = None) -> 'MemberV1':
+            weight: Optional[pulumi.Input[int]] = None) -> 'MemberV1':
         """
         Get an existing MemberV1 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -119,7 +119,7 @@ class MemberV1(pulumi.CustomResource):
                state of the existing member.
         :param pulumi.Input[str] pool_id: The ID of the LB pool. Changing this creates a new
                member.
-        :param pulumi.Input[float] port: An integer representing the port on which the member is
+        :param pulumi.Input[int] port: An integer representing the port on which the member is
                hosted. Changing this creates a new member.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
                A Networking client is needed to create an LB member. If omitted, the
@@ -171,7 +171,7 @@ class MemberV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def port(self) -> pulumi.Output[float]:
+    def port(self) -> pulumi.Output[int]:
         """
         An integer representing the port on which the member is
         hosted. Changing this creates a new member.
@@ -200,7 +200,7 @@ class MemberV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def weight(self) -> pulumi.Output[float]:
+    def weight(self) -> pulumi.Output[int]:
         return pulumi.get(self, "weight")
 
     def translate_output_property(self, prop):

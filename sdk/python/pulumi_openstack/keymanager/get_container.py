@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -60,7 +60,7 @@ class GetContainerResult:
 
     @property
     @pulumi.getter
-    def acls(self) -> List['outputs.GetContainerAclResult']:
+    def acls(self) -> Sequence['outputs.GetContainerAclResult']:
         """
         The list of ACLs assigned to a container. The `read` structure is
         described below.
@@ -69,7 +69,7 @@ class GetContainerResult:
 
     @property
     @pulumi.getter
-    def consumers(self) -> List['outputs.GetContainerConsumerResult']:
+    def consumers(self) -> Sequence['outputs.GetContainerConsumerResult']:
         """
         The list of the container consumers. The structure is described
         below.
@@ -126,7 +126,7 @@ class GetContainerResult:
 
     @property
     @pulumi.getter(name="secretRefs")
-    def secret_refs(self) -> List['outputs.GetContainerSecretRefResult']:
+    def secret_refs(self) -> Sequence['outputs.GetContainerSecretRefResult']:
         """
         A set of dictionaries containing references to secrets. The
         structure is described below.

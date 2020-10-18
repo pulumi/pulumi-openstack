@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -67,7 +67,7 @@ class GetFloatingIpResult:
 
     @property
     @pulumi.getter(name="allTags")
-    def all_tags(self) -> List[str]:
+    def all_tags(self) -> Sequence[str]:
         """
         A set of string tags applied on the floating IP.
         """
@@ -131,7 +131,7 @@ class GetFloatingIpResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List[str]]:
+    def tags(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "tags")
 
     @property
@@ -168,7 +168,7 @@ def get_floating_ip(address: Optional[str] = None,
                     port_id: Optional[str] = None,
                     region: Optional[str] = None,
                     status: Optional[str] = None,
-                    tags: Optional[List[str]] = None,
+                    tags: Optional[Sequence[str]] = None,
                     tenant_id: Optional[str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFloatingIpResult:
     """
@@ -193,7 +193,7 @@ def get_floating_ip(address: Optional[str] = None,
            A Neutron client is needed to retrieve floating IP ids. If omitted, the
            `region` argument of the provider is used.
     :param str status: status of the floating IP (ACTIVE/DOWN).
-    :param List[str] tags: The list of floating IP tags to filter.
+    :param Sequence[str] tags: The list of floating IP tags to filter.
     :param str tenant_id: The owner of the floating IP.
     """
     __args__ = dict()

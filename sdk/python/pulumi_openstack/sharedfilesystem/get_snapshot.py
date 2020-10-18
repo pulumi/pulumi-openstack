@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -41,11 +41,11 @@ class GetSnapshotResult:
         if share_proto and not isinstance(share_proto, str):
             raise TypeError("Expected argument 'share_proto' to be a str")
         pulumi.set(__self__, "share_proto", share_proto)
-        if share_size and not isinstance(share_size, float):
-            raise TypeError("Expected argument 'share_size' to be a float")
+        if share_size and not isinstance(share_size, int):
+            raise TypeError("Expected argument 'share_size' to be a int")
         pulumi.set(__self__, "share_size", share_size)
-        if size and not isinstance(size, float):
-            raise TypeError("Expected argument 'size' to be a float")
+        if size and not isinstance(size, int):
+            raise TypeError("Expected argument 'size' to be a int")
         pulumi.set(__self__, "size", size)
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
@@ -106,7 +106,7 @@ class GetSnapshotResult:
 
     @property
     @pulumi.getter(name="shareSize")
-    def share_size(self) -> float:
+    def share_size(self) -> int:
         """
         The share snapshot size, in GBs.
         """
@@ -114,7 +114,7 @@ class GetSnapshotResult:
 
     @property
     @pulumi.getter
-    def size(self) -> float:
+    def size(self) -> int:
         """
         The snapshot size, in GBs.
         """

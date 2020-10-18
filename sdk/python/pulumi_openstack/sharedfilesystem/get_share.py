@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -57,8 +57,8 @@ class GetShareResult:
         if share_proto and not isinstance(share_proto, str):
             raise TypeError("Expected argument 'share_proto' to be a str")
         pulumi.set(__self__, "share_proto", share_proto)
-        if size and not isinstance(size, float):
-            raise TypeError("Expected argument 'size' to be a float")
+        if size and not isinstance(size, int):
+            raise TypeError("Expected argument 'size' to be a int")
         pulumi.set(__self__, "size", size)
         if snapshot_id and not isinstance(snapshot_id, str):
             raise TypeError("Expected argument 'snapshot_id' to be a str")
@@ -93,7 +93,7 @@ class GetShareResult:
 
     @property
     @pulumi.getter(name="exportLocations")
-    def export_locations(self) -> List['outputs.GetShareExportLocationResult']:
+    def export_locations(self) -> Sequence['outputs.GetShareExportLocationResult']:
         """
         A list of export locations. For example, when a share
         server has more than one network interface, it can have multiple export
@@ -167,7 +167,7 @@ class GetShareResult:
 
     @property
     @pulumi.getter
-    def size(self) -> float:
+    def size(self) -> int:
         """
         The share size, in GBs.
         """

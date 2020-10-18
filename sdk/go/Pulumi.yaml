@@ -1,3 +1,0 @@
-name: openstack
-description: A Pulumi resource provider for openstack.
-language: go

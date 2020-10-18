@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -98,7 +98,7 @@ class GetPolicyResult:
 
     @property
     @pulumi.getter
-    def rules(self) -> List[str]:
+    def rules(self) -> Sequence[str]:
         """
         The array of one or more firewall rules that comprise the policy.
         """

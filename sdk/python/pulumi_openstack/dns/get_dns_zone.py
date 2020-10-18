@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -50,8 +50,8 @@ class GetDnsZoneResult:
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
-        if serial and not isinstance(serial, float):
-            raise TypeError("Expected argument 'serial' to be a float")
+        if serial and not isinstance(serial, int):
+            raise TypeError("Expected argument 'serial' to be a int")
         pulumi.set(__self__, "serial", serial)
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
@@ -59,8 +59,8 @@ class GetDnsZoneResult:
         if transferred_at and not isinstance(transferred_at, str):
             raise TypeError("Expected argument 'transferred_at' to be a str")
         pulumi.set(__self__, "transferred_at", transferred_at)
-        if ttl and not isinstance(ttl, float):
-            raise TypeError("Expected argument 'ttl' to be a float")
+        if ttl and not isinstance(ttl, int):
+            raise TypeError("Expected argument 'ttl' to be a int")
         pulumi.set(__self__, "ttl", ttl)
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
@@ -68,8 +68,8 @@ class GetDnsZoneResult:
         if updated_at and not isinstance(updated_at, str):
             raise TypeError("Expected argument 'updated_at' to be a str")
         pulumi.set(__self__, "updated_at", updated_at)
-        if version and not isinstance(version, float):
-            raise TypeError("Expected argument 'version' to be a float")
+        if version and not isinstance(version, int):
+            raise TypeError("Expected argument 'version' to be a int")
         pulumi.set(__self__, "version", version)
 
     @property
@@ -114,7 +114,7 @@ class GetDnsZoneResult:
 
     @property
     @pulumi.getter
-    def masters(self) -> List[str]:
+    def masters(self) -> Sequence[str]:
         """
         An array of master DNS servers. When `type` is  `SECONDARY`.
         """
@@ -154,7 +154,7 @@ class GetDnsZoneResult:
 
     @property
     @pulumi.getter
-    def serial(self) -> float:
+    def serial(self) -> int:
         """
         The serial number of the zone.
         """
@@ -178,7 +178,7 @@ class GetDnsZoneResult:
 
     @property
     @pulumi.getter
-    def ttl(self) -> Optional[float]:
+    def ttl(self) -> Optional[int]:
         """
         See Argument Reference above.
         """
@@ -202,7 +202,7 @@ class GetDnsZoneResult:
 
     @property
     @pulumi.getter
-    def version(self) -> float:
+    def version(self) -> int:
         """
         The version of the zone.
         """
@@ -238,18 +238,18 @@ def get_dns_zone(attributes: Optional[Mapping[str, Any]] = None,
                  created_at: Optional[str] = None,
                  description: Optional[str] = None,
                  email: Optional[str] = None,
-                 masters: Optional[List[str]] = None,
+                 masters: Optional[Sequence[str]] = None,
                  name: Optional[str] = None,
                  pool_id: Optional[str] = None,
                  project_id: Optional[str] = None,
                  region: Optional[str] = None,
-                 serial: Optional[float] = None,
+                 serial: Optional[int] = None,
                  status: Optional[str] = None,
                  transferred_at: Optional[str] = None,
-                 ttl: Optional[float] = None,
+                 ttl: Optional[int] = None,
                  type: Optional[str] = None,
                  updated_at: Optional[str] = None,
-                 version: Optional[float] = None,
+                 version: Optional[int] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDnsZoneResult:
     """
     Use this data source to get the ID of an available OpenStack DNS zone.
@@ -268,20 +268,20 @@ def get_dns_zone(attributes: Optional[Mapping[str, Any]] = None,
     :param str created_at: The time the zone was created.
     :param str description: A description of the zone.
     :param str email: The email contact for the zone record.
-    :param List[str] masters: An array of master DNS servers. When `type` is  `SECONDARY`.
+    :param Sequence[str] masters: An array of master DNS servers. When `type` is  `SECONDARY`.
     :param str name: The name of the zone.
     :param str pool_id: The ID of the pool hosting the zone.
     :param str project_id: The project ID that owns the zone.
     :param str region: The region in which to obtain the V2 DNS client.
            A DNS client is needed to retrieve zone ids. If omitted, the
            `region` argument of the provider is used.
-    :param float serial: The serial number of the zone.
+    :param int serial: The serial number of the zone.
     :param str status: The zone's status.
     :param str transferred_at: The time the zone was transferred.
-    :param float ttl: The time to live (TTL) of the zone.
+    :param int ttl: The time to live (TTL) of the zone.
     :param str type: The type of the zone. Can either be `PRIMARY` or `SECONDARY`.
     :param str updated_at: The time the zone was last updated.
-    :param float version: The version of the zone.
+    :param int version: The version of the zone.
     """
     __args__ = dict()
     __args__['attributes'] = attributes

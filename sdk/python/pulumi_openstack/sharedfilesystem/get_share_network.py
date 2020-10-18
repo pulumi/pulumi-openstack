@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -29,8 +29,8 @@ class GetShareNetworkResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
-        if ip_version and not isinstance(ip_version, float):
-            raise TypeError("Expected argument 'ip_version' to be a float")
+        if ip_version and not isinstance(ip_version, int):
+            raise TypeError("Expected argument 'ip_version' to be a int")
         pulumi.set(__self__, "ip_version", ip_version)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
@@ -56,8 +56,8 @@ class GetShareNetworkResult:
         if security_service_ids and not isinstance(security_service_ids, list):
             raise TypeError("Expected argument 'security_service_ids' to be a list")
         pulumi.set(__self__, "security_service_ids", security_service_ids)
-        if segmentation_id and not isinstance(segmentation_id, float):
-            raise TypeError("Expected argument 'segmentation_id' to be a float")
+        if segmentation_id and not isinstance(segmentation_id, int):
+            raise TypeError("Expected argument 'segmentation_id' to be a int")
         pulumi.set(__self__, "segmentation_id", segmentation_id)
 
     @property
@@ -86,7 +86,7 @@ class GetShareNetworkResult:
 
     @property
     @pulumi.getter(name="ipVersion")
-    def ip_version(self) -> float:
+    def ip_version(self) -> int:
         """
         See Argument Reference above.
         """
@@ -150,7 +150,7 @@ class GetShareNetworkResult:
 
     @property
     @pulumi.getter(name="securityServiceIds")
-    def security_service_ids(self) -> List[str]:
+    def security_service_ids(self) -> Sequence[str]:
         """
         The list of security service IDs associated with
         the share network.
@@ -159,7 +159,7 @@ class GetShareNetworkResult:
 
     @property
     @pulumi.getter(name="segmentationId")
-    def segmentation_id(self) -> float:
+    def segmentation_id(self) -> int:
         """
         See Argument Reference above.
         """
@@ -188,14 +188,14 @@ class AwaitableGetShareNetworkResult(GetShareNetworkResult):
 
 
 def get_share_network(description: Optional[str] = None,
-                      ip_version: Optional[float] = None,
+                      ip_version: Optional[int] = None,
                       name: Optional[str] = None,
                       network_type: Optional[str] = None,
                       neutron_net_id: Optional[str] = None,
                       neutron_subnet_id: Optional[str] = None,
                       region: Optional[str] = None,
                       security_service_id: Optional[str] = None,
-                      segmentation_id: Optional[float] = None,
+                      segmentation_id: Optional[int] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetShareNetworkResult:
     """
     Use this data source to get the ID of an available Shared File System share network.
@@ -211,7 +211,7 @@ def get_share_network(description: Optional[str] = None,
 
 
     :param str description: The human-readable description of the share network.
-    :param float ip_version: The IP version of the share network. Can either be 4 or 6.
+    :param int ip_version: The IP version of the share network. Can either be 4 or 6.
     :param str name: The name of the share network.
     :param str network_type: The share network type. Can either be VLAN, VXLAN,
            GRE, or flat.
@@ -222,7 +222,7 @@ def get_share_network(description: Optional[str] = None,
            `region` argument of the provider is used.
     :param str security_service_id: The security service IDs associated with
            the share network.
-    :param float segmentation_id: The share network segmentation ID.
+    :param int segmentation_id: The share network segmentation ID.
     """
     __args__ = dict()
     __args__['description'] = description

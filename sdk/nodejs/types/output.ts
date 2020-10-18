@@ -184,6 +184,7 @@ export namespace compute {
          */
         fixedIpV4: string;
         fixedIpV6: string;
+        floatingIp: string;
         mac: string;
         /**
          * The human-readable

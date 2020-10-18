@@ -184,6 +184,7 @@ export namespace compute {
          */
         fixedIpV4?: pulumi.Input<string>;
         fixedIpV6?: pulumi.Input<string>;
+        floatingIp?: pulumi.Input<string>;
         mac?: pulumi.Input<string>;
         /**
          * The human-readable

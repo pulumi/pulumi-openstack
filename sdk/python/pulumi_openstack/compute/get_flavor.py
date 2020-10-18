@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -20,8 +20,8 @@ class GetFlavorResult:
     A collection of values returned by getFlavor.
     """
     def __init__(__self__, disk=None, extra_specs=None, flavor_id=None, id=None, is_public=None, min_disk=None, min_ram=None, name=None, ram=None, region=None, rx_tx_factor=None, swap=None, vcpus=None):
-        if disk and not isinstance(disk, float):
-            raise TypeError("Expected argument 'disk' to be a float")
+        if disk and not isinstance(disk, int):
+            raise TypeError("Expected argument 'disk' to be a int")
         pulumi.set(__self__, "disk", disk)
         if extra_specs and not isinstance(extra_specs, dict):
             raise TypeError("Expected argument 'extra_specs' to be a dict")
@@ -35,17 +35,17 @@ class GetFlavorResult:
         if is_public and not isinstance(is_public, bool):
             raise TypeError("Expected argument 'is_public' to be a bool")
         pulumi.set(__self__, "is_public", is_public)
-        if min_disk and not isinstance(min_disk, float):
-            raise TypeError("Expected argument 'min_disk' to be a float")
+        if min_disk and not isinstance(min_disk, int):
+            raise TypeError("Expected argument 'min_disk' to be a int")
         pulumi.set(__self__, "min_disk", min_disk)
-        if min_ram and not isinstance(min_ram, float):
-            raise TypeError("Expected argument 'min_ram' to be a float")
+        if min_ram and not isinstance(min_ram, int):
+            raise TypeError("Expected argument 'min_ram' to be a int")
         pulumi.set(__self__, "min_ram", min_ram)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
-        if ram and not isinstance(ram, float):
-            raise TypeError("Expected argument 'ram' to be a float")
+        if ram and not isinstance(ram, int):
+            raise TypeError("Expected argument 'ram' to be a int")
         pulumi.set(__self__, "ram", ram)
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
@@ -53,16 +53,16 @@ class GetFlavorResult:
         if rx_tx_factor and not isinstance(rx_tx_factor, float):
             raise TypeError("Expected argument 'rx_tx_factor' to be a float")
         pulumi.set(__self__, "rx_tx_factor", rx_tx_factor)
-        if swap and not isinstance(swap, float):
-            raise TypeError("Expected argument 'swap' to be a float")
+        if swap and not isinstance(swap, int):
+            raise TypeError("Expected argument 'swap' to be a int")
         pulumi.set(__self__, "swap", swap)
-        if vcpus and not isinstance(vcpus, float):
-            raise TypeError("Expected argument 'vcpus' to be a float")
+        if vcpus and not isinstance(vcpus, int):
+            raise TypeError("Expected argument 'vcpus' to be a int")
         pulumi.set(__self__, "vcpus", vcpus)
 
     @property
     @pulumi.getter
-    def disk(self) -> Optional[float]:
+    def disk(self) -> Optional[int]:
         return pulumi.get(self, "disk")
 
     @property
@@ -93,12 +93,12 @@ class GetFlavorResult:
 
     @property
     @pulumi.getter(name="minDisk")
-    def min_disk(self) -> Optional[float]:
+    def min_disk(self) -> Optional[int]:
         return pulumi.get(self, "min_disk")
 
     @property
     @pulumi.getter(name="minRam")
-    def min_ram(self) -> Optional[float]:
+    def min_ram(self) -> Optional[int]:
         return pulumi.get(self, "min_ram")
 
     @property
@@ -108,7 +108,7 @@ class GetFlavorResult:
 
     @property
     @pulumi.getter
-    def ram(self) -> Optional[float]:
+    def ram(self) -> Optional[int]:
         return pulumi.get(self, "ram")
 
     @property
@@ -123,12 +123,12 @@ class GetFlavorResult:
 
     @property
     @pulumi.getter
-    def swap(self) -> Optional[float]:
+    def swap(self) -> Optional[int]:
         return pulumi.get(self, "swap")
 
     @property
     @pulumi.getter
-    def vcpus(self) -> Optional[float]:
+    def vcpus(self) -> Optional[int]:
         return pulumi.get(self, "vcpus")
 
 
@@ -153,17 +153,17 @@ class AwaitableGetFlavorResult(GetFlavorResult):
             vcpus=self.vcpus)
 
 
-def get_flavor(disk: Optional[float] = None,
+def get_flavor(disk: Optional[int] = None,
                flavor_id: Optional[str] = None,
                is_public: Optional[bool] = None,
-               min_disk: Optional[float] = None,
-               min_ram: Optional[float] = None,
+               min_disk: Optional[int] = None,
+               min_ram: Optional[int] = None,
                name: Optional[str] = None,
-               ram: Optional[float] = None,
+               ram: Optional[int] = None,
                region: Optional[str] = None,
                rx_tx_factor: Optional[float] = None,
-               swap: Optional[float] = None,
-               vcpus: Optional[float] = None,
+               swap: Optional[int] = None,
+               vcpus: Optional[int] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFlavorResult:
     """
     Use this data source to get the ID of an available OpenStack flavor.
@@ -179,21 +179,21 @@ def get_flavor(disk: Optional[float] = None,
     ```
 
 
-    :param float disk: The exact amount of disk (in gigabytes).
+    :param int disk: The exact amount of disk (in gigabytes).
     :param str flavor_id: The ID of the flavor. Conflicts with the `name`,
            `min_ram` and `min_disk`
     :param bool is_public: The flavor visibility.
-    :param float min_disk: The minimum amount of disk (in gigabytes). Conflicts
+    :param int min_disk: The minimum amount of disk (in gigabytes). Conflicts
            with the `flavor_id`.
-    :param float min_ram: The minimum amount of RAM (in megabytes). Conflicts
+    :param int min_ram: The minimum amount of RAM (in megabytes). Conflicts
            with the `flavor_id`.
     :param str name: The name of the flavor. Conflicts with the `flavor_id`.
-    :param float ram: The exact amount of RAM (in megabytes).
+    :param int ram: The exact amount of RAM (in megabytes).
     :param str region: The region in which to obtain the V2 Compute client.
            If omitted, the `region` argument of the provider is used.
     :param float rx_tx_factor: The `rx_tx_factor` of the flavor.
-    :param float swap: The amount of swap (in gigabytes).
-    :param float vcpus: The amount of VCPUs.
+    :param int swap: The amount of swap (in gigabytes).
+    :param int vcpus: The amount of VCPUs.
     """
     __args__ = dict()
     __args__['disk'] = disk

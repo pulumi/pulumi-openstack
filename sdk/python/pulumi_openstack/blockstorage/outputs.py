@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -52,14 +52,14 @@ class VolumeAttachment(dict):
 class VolumeSchedulerHint(dict):
     def __init__(__self__, *,
                  additional_properties: Optional[Mapping[str, Any]] = None,
-                 different_hosts: Optional[List[str]] = None,
+                 different_hosts: Optional[Sequence[str]] = None,
                  local_to_instance: Optional[str] = None,
                  query: Optional[str] = None,
-                 same_hosts: Optional[List[str]] = None):
+                 same_hosts: Optional[Sequence[str]] = None):
         """
         :param Mapping[str, Any] additional_properties: Arbitrary key/value pairs of additional
                properties to pass to the scheduler.
-        :param List[str] different_hosts: The volume should be scheduled on a 
+        :param Sequence[str] different_hosts: The volume should be scheduled on a 
                different host from the set of volumes specified in the list provided.
         :param str local_to_instance: An instance UUID. The volume should be 
                scheduled on the same host as the instance.
@@ -69,7 +69,7 @@ class VolumeSchedulerHint(dict):
                [here](https://docs.openstack.org/cinder/latest/configuration/block-storage/scheduler-filters.html#jsonfilter).
                At this time, only simple queries are supported. Compound queries using
                `and`, `or`, or `not` are not supported. An example of a simple query is:
-        :param List[str] same_hosts: A list of volume UUIDs. The volume should be
+        :param Sequence[str] same_hosts: A list of volume UUIDs. The volume should be
                scheduled on the same host as another volume specified in the list provided.
         """
         if additional_properties is not None:
@@ -94,7 +94,7 @@ class VolumeSchedulerHint(dict):
 
     @property
     @pulumi.getter(name="differentHosts")
-    def different_hosts(self) -> Optional[List[str]]:
+    def different_hosts(self) -> Optional[Sequence[str]]:
         """
         The volume should be scheduled on a 
         different host from the set of volumes specified in the list provided.
@@ -125,7 +125,7 @@ class VolumeSchedulerHint(dict):
 
     @property
     @pulumi.getter(name="sameHosts")
-    def same_hosts(self) -> Optional[List[str]]:
+    def same_hosts(self) -> Optional[Sequence[str]]:
         """
         A list of volume UUIDs. The volume should be
         scheduled on the same host as another volume specified in the list provided.
@@ -204,14 +204,14 @@ class VolumeV2Attachment(dict):
 class VolumeV2SchedulerHint(dict):
     def __init__(__self__, *,
                  additional_properties: Optional[Mapping[str, Any]] = None,
-                 different_hosts: Optional[List[str]] = None,
+                 different_hosts: Optional[Sequence[str]] = None,
                  local_to_instance: Optional[str] = None,
                  query: Optional[str] = None,
-                 same_hosts: Optional[List[str]] = None):
+                 same_hosts: Optional[Sequence[str]] = None):
         """
         :param Mapping[str, Any] additional_properties: Arbitrary key/value pairs of additional
                properties to pass to the scheduler.
-        :param List[str] different_hosts: The volume should be scheduled on a 
+        :param Sequence[str] different_hosts: The volume should be scheduled on a 
                different host from the set of volumes specified in the list provided.
         :param str local_to_instance: An instance UUID. The volume should be 
                scheduled on the same host as the instance.
@@ -221,7 +221,7 @@ class VolumeV2SchedulerHint(dict):
                [here](https://docs.openstack.org/cinder/latest/configuration/block-storage/scheduler-filters.html#jsonfilter).
                At this time, only simple queries are supported. Compound queries using
                `and`, `or`, or `not` are not supported. An example of a simple query is:
-        :param List[str] same_hosts: A list of volume UUIDs. The volume should be
+        :param Sequence[str] same_hosts: A list of volume UUIDs. The volume should be
                scheduled on the same host as another volume specified in the list provided.
         """
         if additional_properties is not None:
@@ -246,7 +246,7 @@ class VolumeV2SchedulerHint(dict):
 
     @property
     @pulumi.getter(name="differentHosts")
-    def different_hosts(self) -> Optional[List[str]]:
+    def different_hosts(self) -> Optional[Sequence[str]]:
         """
         The volume should be scheduled on a 
         different host from the set of volumes specified in the list provided.
@@ -277,7 +277,7 @@ class VolumeV2SchedulerHint(dict):
 
     @property
     @pulumi.getter(name="sameHosts")
-    def same_hosts(self) -> Optional[List[str]]:
+    def same_hosts(self) -> Optional[Sequence[str]]:
         """
         A list of volume UUIDs. The volume should be
         scheduled on the same host as another volume specified in the list provided.

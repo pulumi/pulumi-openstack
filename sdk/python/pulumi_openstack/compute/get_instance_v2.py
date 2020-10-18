@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -147,7 +147,7 @@ class GetInstanceV2Result:
 
     @property
     @pulumi.getter
-    def networks(self) -> List['outputs.GetInstanceV2NetworkResult']:
+    def networks(self) -> Sequence['outputs.GetInstanceV2NetworkResult']:
         """
         An array of maps, detailed below.
         """
@@ -160,7 +160,7 @@ class GetInstanceV2Result:
 
     @property
     @pulumi.getter(name="securityGroups")
-    def security_groups(self) -> List[str]:
+    def security_groups(self) -> Sequence[str]:
         """
         An array of security group names associated with this server.
         """
@@ -168,7 +168,7 @@ class GetInstanceV2Result:
 
     @property
     @pulumi.getter
-    def tags(self) -> List[str]:
+    def tags(self) -> Sequence[str]:
         """
         A set of string tags assigned to this server.
         """
@@ -207,7 +207,7 @@ class AwaitableGetInstanceV2Result(GetInstanceV2Result):
 
 
 def get_instance_v2(id: Optional[str] = None,
-                    networks: Optional[List[pulumi.InputType['GetInstanceV2NetworkArgs']]] = None,
+                    networks: Optional[Sequence[pulumi.InputType['GetInstanceV2NetworkArgs']]] = None,
                     region: Optional[str] = None,
                     user_data: Optional[str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstanceV2Result:
@@ -225,7 +225,7 @@ def get_instance_v2(id: Optional[str] = None,
 
 
     :param str id: The UUID of the instance
-    :param List[pulumi.InputType['GetInstanceV2NetworkArgs']] networks: An array of maps, detailed below.
+    :param Sequence[pulumi.InputType['GetInstanceV2NetworkArgs']] networks: An array of maps, detailed below.
     :param str user_data: The user data added when the server was created.
     """
     __args__ = dict()

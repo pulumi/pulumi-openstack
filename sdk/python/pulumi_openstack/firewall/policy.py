@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['Policy']
@@ -19,7 +19,7 @@ class Policy(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  shared: Optional[pulumi.Input[bool]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -68,7 +68,7 @@ class Policy(pulumi.CustomResource):
                A networking client is needed to create a firewall policy. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
                firewall policy.
-        :param pulumi.Input[List[pulumi.Input[str]]] rules: An array of one or more firewall rules that comprise
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] rules: An array of one or more firewall rules that comprise
                the policy. Changing this results in adding/removing rules from the
                existing firewall policy.
         :param pulumi.Input[bool] shared: Sharing status of the firewall policy (must be "true"
@@ -117,7 +117,7 @@ class Policy(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
-            rules: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            rules: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             shared: Optional[pulumi.Input[bool]] = None,
             tenant_id: Optional[pulumi.Input[str]] = None,
             value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'Policy':
@@ -141,7 +141,7 @@ class Policy(pulumi.CustomResource):
                A networking client is needed to create a firewall policy. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
                firewall policy.
-        :param pulumi.Input[List[pulumi.Input[str]]] rules: An array of one or more firewall rules that comprise
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] rules: An array of one or more firewall rules that comprise
                the policy. Changing this results in adding/removing rules from the
                existing firewall policy.
         :param pulumi.Input[bool] shared: Sharing status of the firewall policy (must be "true"
@@ -208,7 +208,7 @@ class Policy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def rules(self) -> pulumi.Output[Optional[List[str]]]:
+    def rules(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         An array of one or more firewall rules that comprise
         the policy. Changing this results in adding/removing rules from the

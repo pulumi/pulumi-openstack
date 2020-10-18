@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['SecGroupRule']
@@ -18,8 +18,8 @@ class SecGroupRule(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  direction: Optional[pulumi.Input[str]] = None,
                  ethertype: Optional[pulumi.Input[str]] = None,
-                 port_range_max: Optional[pulumi.Input[float]] = None,
-                 port_range_min: Optional[pulumi.Input[float]] = None,
+                 port_range_max: Optional[pulumi.Input[int]] = None,
+                 port_range_min: Optional[pulumi.Input[int]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  remote_group_id: Optional[pulumi.Input[str]] = None,
@@ -58,10 +58,10 @@ class SecGroupRule(pulumi.CustomResource):
                or __egress__. Changing this creates a new security group rule.
         :param pulumi.Input[str] ethertype: The layer 3 protocol type, valid values are __IPv4__
                or __IPv6__. Changing this creates a new security group rule.
-        :param pulumi.Input[float] port_range_max: The higher part of the allowed port range, valid
+        :param pulumi.Input[int] port_range_max: The higher part of the allowed port range, valid
                integer value needs to be between 1 and 65535. Changing this creates a new
                security group rule.
-        :param pulumi.Input[float] port_range_min: The lower part of the allowed port range, valid
+        :param pulumi.Input[int] port_range_min: The lower part of the allowed port range, valid
                integer value needs to be between 1 and 65535. Changing this creates a new
                security group rule.
         :param pulumi.Input[str] protocol: The layer 4 protocol type, valid values are following. Changing this creates a new security group rule. This is required if you want to specify a port range.
@@ -149,8 +149,8 @@ class SecGroupRule(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             direction: Optional[pulumi.Input[str]] = None,
             ethertype: Optional[pulumi.Input[str]] = None,
-            port_range_max: Optional[pulumi.Input[float]] = None,
-            port_range_min: Optional[pulumi.Input[float]] = None,
+            port_range_max: Optional[pulumi.Input[int]] = None,
+            port_range_min: Optional[pulumi.Input[int]] = None,
             protocol: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             remote_group_id: Optional[pulumi.Input[str]] = None,
@@ -169,10 +169,10 @@ class SecGroupRule(pulumi.CustomResource):
                or __egress__. Changing this creates a new security group rule.
         :param pulumi.Input[str] ethertype: The layer 3 protocol type, valid values are __IPv4__
                or __IPv6__. Changing this creates a new security group rule.
-        :param pulumi.Input[float] port_range_max: The higher part of the allowed port range, valid
+        :param pulumi.Input[int] port_range_max: The higher part of the allowed port range, valid
                integer value needs to be between 1 and 65535. Changing this creates a new
                security group rule.
-        :param pulumi.Input[float] port_range_min: The lower part of the allowed port range, valid
+        :param pulumi.Input[int] port_range_min: The lower part of the allowed port range, valid
                integer value needs to be between 1 and 65535. Changing this creates a new
                security group rule.
         :param pulumi.Input[str] protocol: The layer 4 protocol type, valid values are following. Changing this creates a new security group rule. This is required if you want to specify a port range.
@@ -258,7 +258,7 @@ class SecGroupRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="portRangeMax")
-    def port_range_max(self) -> pulumi.Output[float]:
+    def port_range_max(self) -> pulumi.Output[int]:
         """
         The higher part of the allowed port range, valid
         integer value needs to be between 1 and 65535. Changing this creates a new
@@ -268,7 +268,7 @@ class SecGroupRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="portRangeMin")
-    def port_range_min(self) -> pulumi.Output[float]:
+    def port_range_min(self) -> pulumi.Output[int]:
         """
         The lower part of the allowed port range, valid
         integer value needs to be between 1 and 65535. Changing this creates a new

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -65,7 +65,7 @@ class GetTrunkResult:
 
     @property
     @pulumi.getter(name="allTags")
-    def all_tags(self) -> List[str]:
+    def all_tags(self) -> Sequence[str]:
         """
         The set of string tags applied on the trunk.
         """
@@ -114,7 +114,7 @@ class GetTrunkResult:
 
     @property
     @pulumi.getter(name="subPorts")
-    def sub_ports(self) -> List['outputs.GetTrunkSubPortResult']:
+    def sub_ports(self) -> Sequence['outputs.GetTrunkSubPortResult']:
         """
         The set of the trunk subports. The structure of each subport is
         described below.
@@ -123,7 +123,7 @@ class GetTrunkResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List[str]]:
+    def tags(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "tags")
 
     @property
@@ -159,7 +159,7 @@ def get_trunk(admin_state_up: Optional[bool] = None,
               project_id: Optional[str] = None,
               region: Optional[str] = None,
               status: Optional[str] = None,
-              tags: Optional[List[str]] = None,
+              tags: Optional[Sequence[str]] = None,
               trunk_id: Optional[str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTrunkResult:
     """
@@ -184,7 +184,7 @@ def get_trunk(admin_state_up: Optional[bool] = None,
            A Neutron client is needed to retrieve trunk ids. If omitted, the
            `region` argument of the provider is used.
     :param str status: The status of the trunk.
-    :param List[str] tags: The list of trunk tags to filter.
+    :param Sequence[str] tags: The list of trunk tags to filter.
     :param str trunk_id: The ID of the trunk.
     """
     __args__ = dict()

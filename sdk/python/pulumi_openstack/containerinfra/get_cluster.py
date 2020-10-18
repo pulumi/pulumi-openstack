@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -32,8 +32,8 @@ class GetClusterResult:
         if container_version and not isinstance(container_version, str):
             raise TypeError("Expected argument 'container_version' to be a str")
         pulumi.set(__self__, "container_version", container_version)
-        if create_timeout and not isinstance(create_timeout, float):
-            raise TypeError("Expected argument 'create_timeout' to be a float")
+        if create_timeout and not isinstance(create_timeout, int):
+            raise TypeError("Expected argument 'create_timeout' to be a int")
         pulumi.set(__self__, "create_timeout", create_timeout)
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
@@ -41,8 +41,8 @@ class GetClusterResult:
         if discovery_url and not isinstance(discovery_url, str):
             raise TypeError("Expected argument 'discovery_url' to be a str")
         pulumi.set(__self__, "discovery_url", discovery_url)
-        if docker_volume_size and not isinstance(docker_volume_size, float):
-            raise TypeError("Expected argument 'docker_volume_size' to be a float")
+        if docker_volume_size and not isinstance(docker_volume_size, int):
+            raise TypeError("Expected argument 'docker_volume_size' to be a int")
         pulumi.set(__self__, "docker_volume_size", docker_volume_size)
         if fixed_network and not isinstance(fixed_network, str):
             raise TypeError("Expected argument 'fixed_network' to be a str")
@@ -68,8 +68,8 @@ class GetClusterResult:
         if master_addresses and not isinstance(master_addresses, list):
             raise TypeError("Expected argument 'master_addresses' to be a list")
         pulumi.set(__self__, "master_addresses", master_addresses)
-        if master_count and not isinstance(master_count, float):
-            raise TypeError("Expected argument 'master_count' to be a float")
+        if master_count and not isinstance(master_count, int):
+            raise TypeError("Expected argument 'master_count' to be a int")
         pulumi.set(__self__, "master_count", master_count)
         if master_flavor and not isinstance(master_flavor, str):
             raise TypeError("Expected argument 'master_flavor' to be a str")
@@ -80,8 +80,8 @@ class GetClusterResult:
         if node_addresses and not isinstance(node_addresses, list):
             raise TypeError("Expected argument 'node_addresses' to be a list")
         pulumi.set(__self__, "node_addresses", node_addresses)
-        if node_count and not isinstance(node_count, float):
-            raise TypeError("Expected argument 'node_count' to be a float")
+        if node_count and not isinstance(node_count, int):
+            raise TypeError("Expected argument 'node_count' to be a int")
         pulumi.set(__self__, "node_count", node_count)
         if project_id and not isinstance(project_id, str):
             raise TypeError("Expected argument 'project_id' to be a str")
@@ -130,7 +130,7 @@ class GetClusterResult:
 
     @property
     @pulumi.getter(name="createTimeout")
-    def create_timeout(self) -> float:
+    def create_timeout(self) -> int:
         """
         The timeout (in minutes) for creating the cluster.
         """
@@ -154,7 +154,7 @@ class GetClusterResult:
 
     @property
     @pulumi.getter(name="dockerVolumeSize")
-    def docker_volume_size(self) -> float:
+    def docker_volume_size(self) -> int:
         """
         The size (in GB) of the Docker volume.
         """
@@ -216,7 +216,7 @@ class GetClusterResult:
 
     @property
     @pulumi.getter(name="masterAddresses")
-    def master_addresses(self) -> List[str]:
+    def master_addresses(self) -> Sequence[str]:
         """
         IP addresses of the master node of the cluster.
         """
@@ -224,7 +224,7 @@ class GetClusterResult:
 
     @property
     @pulumi.getter(name="masterCount")
-    def master_count(self) -> float:
+    def master_count(self) -> int:
         """
         The number of master nodes for the cluster.
         """
@@ -248,7 +248,7 @@ class GetClusterResult:
 
     @property
     @pulumi.getter(name="nodeAddresses")
-    def node_addresses(self) -> List[str]:
+    def node_addresses(self) -> Sequence[str]:
         """
         IP addresses of the node of the cluster.
         """
@@ -256,7 +256,7 @@ class GetClusterResult:
 
     @property
     @pulumi.getter(name="nodeCount")
-    def node_count(self) -> float:
+    def node_count(self) -> int:
         """
         The number of nodes for the cluster.
         """

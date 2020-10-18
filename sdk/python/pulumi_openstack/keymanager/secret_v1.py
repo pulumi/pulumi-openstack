@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -19,7 +19,7 @@ class SecretV1(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acl: Optional[pulumi.Input[pulumi.InputType['SecretV1AclArgs']]] = None,
                  algorithm: Optional[pulumi.Input[str]] = None,
-                 bit_length: Optional[pulumi.Input[float]] = None,
+                 bit_length: Optional[pulumi.Input[int]] = None,
                  expiration: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
@@ -40,7 +40,7 @@ class SecretV1(pulumi.CustomResource):
                `read` operation is supported. If not specified, the secret is accessible
                project wide.
         :param pulumi.Input[str] algorithm: Metadata provided by a user or system for informational purposes.
-        :param pulumi.Input[float] bit_length: Metadata provided by a user or system for informational purposes.
+        :param pulumi.Input[int] bit_length: Metadata provided by a user or system for informational purposes.
         :param pulumi.Input[str] expiration: The expiration time of the secret in the RFC3339 timestamp format (e.g. `2019-03-09T12:58:49Z`). If omitted, a secret will never expire. Changing this creates a new secret.
         :param pulumi.Input[Mapping[str, Any]] metadata: Additional Metadata for the secret.
         :param pulumi.Input[str] mode: Metadata provided by a user or system for informational purposes.
@@ -104,7 +104,7 @@ class SecretV1(pulumi.CustomResource):
             acl: Optional[pulumi.Input[pulumi.InputType['SecretV1AclArgs']]] = None,
             algorithm: Optional[pulumi.Input[str]] = None,
             all_metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-            bit_length: Optional[pulumi.Input[float]] = None,
+            bit_length: Optional[pulumi.Input[int]] = None,
             content_types: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             created_at: Optional[pulumi.Input[str]] = None,
             creator_id: Optional[pulumi.Input[str]] = None,
@@ -133,7 +133,7 @@ class SecretV1(pulumi.CustomResource):
         :param pulumi.Input[str] algorithm: Metadata provided by a user or system for informational purposes.
         :param pulumi.Input[Mapping[str, Any]] all_metadata: The map of metadata, assigned on the secret, which has been
                explicitly and implicitly added.
-        :param pulumi.Input[float] bit_length: Metadata provided by a user or system for informational purposes.
+        :param pulumi.Input[int] bit_length: Metadata provided by a user or system for informational purposes.
         :param pulumi.Input[Mapping[str, Any]] content_types: The map of the content types, assigned on the secret.
         :param pulumi.Input[str] created_at: The date the secret ACL was created.
         :param pulumi.Input[str] creator_id: The creator of the secret.
@@ -208,7 +208,7 @@ class SecretV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="bitLength")
-    def bit_length(self) -> pulumi.Output[float]:
+    def bit_length(self) -> pulumi.Output[int]:
         """
         Metadata provided by a user or system for informational purposes.
         """

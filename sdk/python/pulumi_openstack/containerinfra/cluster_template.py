@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['ClusterTemplate']
@@ -15,12 +15,12 @@ class ClusterTemplate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 apiserver_port: Optional[pulumi.Input[float]] = None,
+                 apiserver_port: Optional[pulumi.Input[int]] = None,
                  cluster_distro: Optional[pulumi.Input[str]] = None,
                  coe: Optional[pulumi.Input[str]] = None,
                  dns_nameserver: Optional[pulumi.Input[str]] = None,
                  docker_storage_driver: Optional[pulumi.Input[str]] = None,
-                 docker_volume_size: Optional[pulumi.Input[float]] = None,
+                 docker_volume_size: Optional[pulumi.Input[int]] = None,
                  external_network_id: Optional[pulumi.Input[str]] = None,
                  fixed_network: Optional[pulumi.Input[str]] = None,
                  fixed_subnet: Optional[pulumi.Input[str]] = None,
@@ -299,13 +299,13 @@ class ClusterTemplate(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            apiserver_port: Optional[pulumi.Input[float]] = None,
+            apiserver_port: Optional[pulumi.Input[int]] = None,
             cluster_distro: Optional[pulumi.Input[str]] = None,
             coe: Optional[pulumi.Input[str]] = None,
             created_at: Optional[pulumi.Input[str]] = None,
             dns_nameserver: Optional[pulumi.Input[str]] = None,
             docker_storage_driver: Optional[pulumi.Input[str]] = None,
-            docker_volume_size: Optional[pulumi.Input[float]] = None,
+            docker_volume_size: Optional[pulumi.Input[int]] = None,
             external_network_id: Optional[pulumi.Input[str]] = None,
             fixed_network: Optional[pulumi.Input[str]] = None,
             fixed_subnet: Optional[pulumi.Input[str]] = None,
@@ -379,7 +379,7 @@ class ClusterTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="apiserverPort")
-    def apiserver_port(self) -> pulumi.Output[Optional[float]]:
+    def apiserver_port(self) -> pulumi.Output[Optional[int]]:
         return pulumi.get(self, "apiserver_port")
 
     @property
@@ -409,7 +409,7 @@ class ClusterTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dockerVolumeSize")
-    def docker_volume_size(self) -> pulumi.Output[Optional[float]]:
+    def docker_volume_size(self) -> pulumi.Output[Optional[int]]:
         return pulumi.get(self, "docker_volume_size")
 
     @property

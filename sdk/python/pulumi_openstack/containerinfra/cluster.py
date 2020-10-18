@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -18,20 +18,20 @@ class Cluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_template_id: Optional[pulumi.Input[str]] = None,
-                 create_timeout: Optional[pulumi.Input[float]] = None,
+                 create_timeout: Optional[pulumi.Input[int]] = None,
                  discovery_url: Optional[pulumi.Input[str]] = None,
-                 docker_volume_size: Optional[pulumi.Input[float]] = None,
+                 docker_volume_size: Optional[pulumi.Input[int]] = None,
                  fixed_network: Optional[pulumi.Input[str]] = None,
                  fixed_subnet: Optional[pulumi.Input[str]] = None,
                  flavor: Optional[pulumi.Input[str]] = None,
                  floating_ip_enabled: Optional[pulumi.Input[bool]] = None,
                  keypair: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 master_count: Optional[pulumi.Input[float]] = None,
+                 master_count: Optional[pulumi.Input[int]] = None,
                  master_flavor: Optional[pulumi.Input[str]] = None,
                  merge_labels: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 node_count: Optional[pulumi.Input[float]] = None,
+                 node_count: Optional[pulumi.Input[int]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -215,10 +215,10 @@ class Cluster(pulumi.CustomResource):
             cluster_template_id: Optional[pulumi.Input[str]] = None,
             coe_version: Optional[pulumi.Input[str]] = None,
             container_version: Optional[pulumi.Input[str]] = None,
-            create_timeout: Optional[pulumi.Input[float]] = None,
+            create_timeout: Optional[pulumi.Input[int]] = None,
             created_at: Optional[pulumi.Input[str]] = None,
             discovery_url: Optional[pulumi.Input[str]] = None,
-            docker_volume_size: Optional[pulumi.Input[float]] = None,
+            docker_volume_size: Optional[pulumi.Input[int]] = None,
             fixed_network: Optional[pulumi.Input[str]] = None,
             fixed_subnet: Optional[pulumi.Input[str]] = None,
             flavor: Optional[pulumi.Input[str]] = None,
@@ -226,13 +226,13 @@ class Cluster(pulumi.CustomResource):
             keypair: Optional[pulumi.Input[str]] = None,
             kubeconfig: Optional[pulumi.Input[pulumi.InputType['ClusterKubeconfigArgs']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-            master_addresses: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            master_count: Optional[pulumi.Input[float]] = None,
+            master_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            master_count: Optional[pulumi.Input[int]] = None,
             master_flavor: Optional[pulumi.Input[str]] = None,
             merge_labels: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            node_addresses: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            node_count: Optional[pulumi.Input[float]] = None,
+            node_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            node_count: Optional[pulumi.Input[int]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             stack_id: Optional[pulumi.Input[str]] = None,
@@ -301,7 +301,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="createTimeout")
-    def create_timeout(self) -> pulumi.Output[float]:
+    def create_timeout(self) -> pulumi.Output[int]:
         return pulumi.get(self, "create_timeout")
 
     @property
@@ -316,7 +316,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dockerVolumeSize")
-    def docker_volume_size(self) -> pulumi.Output[float]:
+    def docker_volume_size(self) -> pulumi.Output[int]:
         return pulumi.get(self, "docker_volume_size")
 
     @property
@@ -356,12 +356,12 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="masterAddresses")
-    def master_addresses(self) -> pulumi.Output[List[str]]:
+    def master_addresses(self) -> pulumi.Output[Sequence[str]]:
         return pulumi.get(self, "master_addresses")
 
     @property
     @pulumi.getter(name="masterCount")
-    def master_count(self) -> pulumi.Output[float]:
+    def master_count(self) -> pulumi.Output[int]:
         return pulumi.get(self, "master_count")
 
     @property
@@ -381,12 +381,12 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nodeAddresses")
-    def node_addresses(self) -> pulumi.Output[List[str]]:
+    def node_addresses(self) -> pulumi.Output[Sequence[str]]:
         return pulumi.get(self, "node_addresses")
 
     @property
     @pulumi.getter(name="nodeCount")
-    def node_count(self) -> pulumi.Output[float]:
+    def node_count(self) -> pulumi.Output[int]:
         return pulumi.get(self, "node_count")
 
     @property

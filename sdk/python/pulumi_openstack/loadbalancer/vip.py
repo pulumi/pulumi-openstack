@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['Vip']
@@ -17,13 +17,13 @@ class Vip(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  address: Optional[pulumi.Input[str]] = None,
                  admin_state_up: Optional[pulumi.Input[bool]] = None,
-                 conn_limit: Optional[pulumi.Input[float]] = None,
+                 conn_limit: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  floating_ip: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  persistence: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  pool_id: Optional[pulumi.Input[str]] = None,
-                 port: Optional[pulumi.Input[float]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  subnet_id: Optional[pulumi.Input[str]] = None,
@@ -54,7 +54,7 @@ class Vip(pulumi.CustomResource):
         :param pulumi.Input[bool] admin_state_up: The administrative state of the vip.
                Acceptable values are "true" and "false". Changing this value updates the
                state of the existing vip.
-        :param pulumi.Input[float] conn_limit: The maximum number of connections allowed for the
+        :param pulumi.Input[int] conn_limit: The maximum number of connections allowed for the
                vip. Default is -1, meaning no limit. Changing this updates the conn_limit
                of the existing vip.
         :param pulumi.Input[str] description: Human-readable description for the vip. Changing
@@ -68,7 +68,7 @@ class Vip(pulumi.CustomResource):
                the persistence of the existing vip.
         :param pulumi.Input[str] pool_id: The ID of the pool with which the vip is associated.
                Changing this updates the pool_id of the existing vip.
-        :param pulumi.Input[float] port: The port on which to listen for client traffic. Changing
+        :param pulumi.Input[int] port: The port on which to listen for client traffic. Changing
                this creates a new vip.
         :param pulumi.Input[str] protocol: The protocol - can be either 'TCP, 'HTTP', or
                HTTPS'. Changing this creates a new vip.
@@ -134,13 +134,13 @@ class Vip(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             address: Optional[pulumi.Input[str]] = None,
             admin_state_up: Optional[pulumi.Input[bool]] = None,
-            conn_limit: Optional[pulumi.Input[float]] = None,
+            conn_limit: Optional[pulumi.Input[int]] = None,
             description: Optional[pulumi.Input[str]] = None,
             floating_ip: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             persistence: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             pool_id: Optional[pulumi.Input[str]] = None,
-            port: Optional[pulumi.Input[float]] = None,
+            port: Optional[pulumi.Input[int]] = None,
             port_id: Optional[pulumi.Input[str]] = None,
             protocol: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
@@ -158,7 +158,7 @@ class Vip(pulumi.CustomResource):
         :param pulumi.Input[bool] admin_state_up: The administrative state of the vip.
                Acceptable values are "true" and "false". Changing this value updates the
                state of the existing vip.
-        :param pulumi.Input[float] conn_limit: The maximum number of connections allowed for the
+        :param pulumi.Input[int] conn_limit: The maximum number of connections allowed for the
                vip. Default is -1, meaning no limit. Changing this updates the conn_limit
                of the existing vip.
         :param pulumi.Input[str] description: Human-readable description for the vip. Changing
@@ -172,7 +172,7 @@ class Vip(pulumi.CustomResource):
                the persistence of the existing vip.
         :param pulumi.Input[str] pool_id: The ID of the pool with which the vip is associated.
                Changing this updates the pool_id of the existing vip.
-        :param pulumi.Input[float] port: The port on which to listen for client traffic. Changing
+        :param pulumi.Input[int] port: The port on which to listen for client traffic. Changing
                this creates a new vip.
         :param pulumi.Input[str] port_id: Port UUID for this VIP at associated floating IP (if any).
         :param pulumi.Input[str] protocol: The protocol - can be either 'TCP, 'HTTP', or
@@ -229,7 +229,7 @@ class Vip(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="connLimit")
-    def conn_limit(self) -> pulumi.Output[float]:
+    def conn_limit(self) -> pulumi.Output[int]:
         """
         The maximum number of connections allowed for the
         vip. Default is -1, meaning no limit. Changing this updates the conn_limit
@@ -285,7 +285,7 @@ class Vip(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def port(self) -> pulumi.Output[float]:
+    def port(self) -> pulumi.Output[int]:
         """
         The port on which to listen for client traffic. Changing
         this creates a new vip.

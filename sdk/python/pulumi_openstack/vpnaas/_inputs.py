@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -18,9 +18,9 @@ __all__ = [
 class IkePolicyLifetimeArgs:
     def __init__(__self__, *,
                  units: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[float]] = None):
+                 value: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[float] value: The value for the lifetime of the security association. Must be a positive integer.
+        :param pulumi.Input[int] value: The value for the lifetime of the security association. Must be a positive integer.
                Default is 3600.
         """
         if units is not None:
@@ -39,7 +39,7 @@ class IkePolicyLifetimeArgs:
 
     @property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[float]]:
+    def value(self) -> Optional[pulumi.Input[int]]:
         """
         The value for the lifetime of the security association. Must be a positive integer.
         Default is 3600.
@@ -47,7 +47,7 @@ class IkePolicyLifetimeArgs:
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[float]]):
+    def value(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "value", value)
 
 
@@ -55,9 +55,9 @@ class IkePolicyLifetimeArgs:
 class IpSecPolicyLifetimeArgs:
     def __init__(__self__, *,
                  units: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[float]] = None):
+                 value: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[float] value: The value for the lifetime of the security association. Must be a positive integer.
+        :param pulumi.Input[int] value: The value for the lifetime of the security association. Must be a positive integer.
                Default is 3600.
         """
         if units is not None:
@@ -76,7 +76,7 @@ class IpSecPolicyLifetimeArgs:
 
     @property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[float]]:
+    def value(self) -> Optional[pulumi.Input[int]]:
         """
         The value for the lifetime of the security association. Must be a positive integer.
         Default is 3600.
@@ -84,7 +84,7 @@ class IpSecPolicyLifetimeArgs:
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[float]]):
+    def value(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "value", value)
 
 
@@ -92,16 +92,16 @@ class IpSecPolicyLifetimeArgs:
 class SiteConnectionDpdArgs:
     def __init__(__self__, *,
                  action: Optional[pulumi.Input[str]] = None,
-                 interval: Optional[pulumi.Input[float]] = None,
-                 timeout: Optional[pulumi.Input[float]] = None):
+                 interval: Optional[pulumi.Input[int]] = None,
+                 timeout: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] action: The dead peer detection (DPD) action.
                A valid value is clear, hold, restart, disabled, or restart-by-peer.
                Default value is hold.
-        :param pulumi.Input[float] interval: The dead peer detection (DPD) interval, in seconds.
+        :param pulumi.Input[int] interval: The dead peer detection (DPD) interval, in seconds.
                A valid value is a positive integer.
                Default is 30.
-        :param pulumi.Input[float] timeout: The dead peer detection (DPD) timeout in seconds.
+        :param pulumi.Input[int] timeout: The dead peer detection (DPD) timeout in seconds.
                A valid value is a positive integer that is greater than the DPD interval value.
                Default is 120.
         """
@@ -128,7 +128,7 @@ class SiteConnectionDpdArgs:
 
     @property
     @pulumi.getter
-    def interval(self) -> Optional[pulumi.Input[float]]:
+    def interval(self) -> Optional[pulumi.Input[int]]:
         """
         The dead peer detection (DPD) interval, in seconds.
         A valid value is a positive integer.
@@ -137,12 +137,12 @@ class SiteConnectionDpdArgs:
         return pulumi.get(self, "interval")
 
     @interval.setter
-    def interval(self, value: Optional[pulumi.Input[float]]):
+    def interval(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "interval", value)
 
     @property
     @pulumi.getter
-    def timeout(self) -> Optional[pulumi.Input[float]]:
+    def timeout(self) -> Optional[pulumi.Input[int]]:
         """
         The dead peer detection (DPD) timeout in seconds.
         A valid value is a positive integer that is greater than the DPD interval value.
@@ -151,7 +151,7 @@ class SiteConnectionDpdArgs:
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: Optional[pulumi.Input[float]]):
+    def timeout(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "timeout", value)
 
 

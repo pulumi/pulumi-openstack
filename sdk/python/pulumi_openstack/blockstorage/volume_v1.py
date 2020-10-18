@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -23,7 +23,7 @@ class VolumeV1(pulumi.CustomResource):
                  metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 size: Optional[pulumi.Input[float]] = None,
+                 size: Optional[pulumi.Input[int]] = None,
                  snapshot_id: Optional[pulumi.Input[str]] = None,
                  source_vol_id: Optional[pulumi.Input[str]] = None,
                  volume_type: Optional[pulumi.Input[str]] = None,
@@ -60,7 +60,7 @@ class VolumeV1(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region in which to create the volume. If
                omitted, the `region` argument of the provider is used. Changing this
                creates a new volume.
-        :param pulumi.Input[float] size: The size of the volume to create (in gigabytes). Changing
+        :param pulumi.Input[int] size: The size of the volume to create (in gigabytes). Changing
                this creates a new volume.
         :param pulumi.Input[str] snapshot_id: The snapshot ID from which to create the volume.
                Changing this creates a new volume.
@@ -109,14 +109,14 @@ class VolumeV1(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            attachments: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['VolumeV1AttachmentArgs']]]]] = None,
+            attachments: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VolumeV1AttachmentArgs']]]]] = None,
             availability_zone: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             image_id: Optional[pulumi.Input[str]] = None,
             metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
-            size: Optional[pulumi.Input[float]] = None,
+            size: Optional[pulumi.Input[int]] = None,
             snapshot_id: Optional[pulumi.Input[str]] = None,
             source_vol_id: Optional[pulumi.Input[str]] = None,
             volume_type: Optional[pulumi.Input[str]] = None) -> 'VolumeV1':
@@ -127,7 +127,7 @@ class VolumeV1(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['VolumeV1AttachmentArgs']]]] attachments: If a volume is attached to an instance, this attribute will
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VolumeV1AttachmentArgs']]]] attachments: If a volume is attached to an instance, this attribute will
                display the Attachment ID, Instance ID, and the Device as the Instance
                sees it.
         :param pulumi.Input[str] availability_zone: The availability zone for the volume.
@@ -143,7 +143,7 @@ class VolumeV1(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region in which to create the volume. If
                omitted, the `region` argument of the provider is used. Changing this
                creates a new volume.
-        :param pulumi.Input[float] size: The size of the volume to create (in gigabytes). Changing
+        :param pulumi.Input[int] size: The size of the volume to create (in gigabytes). Changing
                this creates a new volume.
         :param pulumi.Input[str] snapshot_id: The snapshot ID from which to create the volume.
                Changing this creates a new volume.
@@ -171,7 +171,7 @@ class VolumeV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def attachments(self) -> pulumi.Output[List['outputs.VolumeV1Attachment']]:
+    def attachments(self) -> pulumi.Output[Sequence['outputs.VolumeV1Attachment']]:
         """
         If a volume is attached to an instance, this attribute will
         display the Attachment ID, Instance ID, and the Device as the Instance
@@ -236,7 +236,7 @@ class VolumeV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def size(self) -> pulumi.Output[float]:
+    def size(self) -> pulumi.Output[int]:
         """
         The size of the volume to create (in gigabytes). Changing
         this creates a new volume.

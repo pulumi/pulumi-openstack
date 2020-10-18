@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -44,8 +44,8 @@ class GetQosPolicyResult:
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
-        if revision_number and not isinstance(revision_number, float):
-            raise TypeError("Expected argument 'revision_number' to be a float")
+        if revision_number and not isinstance(revision_number, int):
+            raise TypeError("Expected argument 'revision_number' to be a int")
         pulumi.set(__self__, "revision_number", revision_number)
         if shared and not isinstance(shared, bool):
             raise TypeError("Expected argument 'shared' to be a bool")
@@ -59,7 +59,7 @@ class GetQosPolicyResult:
 
     @property
     @pulumi.getter(name="allTags")
-    def all_tags(self) -> List[str]:
+    def all_tags(self) -> Sequence[str]:
         """
         The set of string tags applied on the QoS policy.
         """
@@ -120,7 +120,7 @@ class GetQosPolicyResult:
 
     @property
     @pulumi.getter(name="revisionNumber")
-    def revision_number(self) -> float:
+    def revision_number(self) -> int:
         """
         The revision number of the QoS policy.
         """
@@ -136,7 +136,7 @@ class GetQosPolicyResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List[str]]:
+    def tags(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "tags")
 
     @property
@@ -174,7 +174,7 @@ def get_qos_policy(description: Optional[str] = None,
                    project_id: Optional[str] = None,
                    region: Optional[str] = None,
                    shared: Optional[bool] = None,
-                   tags: Optional[List[str]] = None,
+                   tags: Optional[Sequence[str]] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetQosPolicyResult:
     """
     Use this data source to get the ID of an available OpenStack QoS policy.
@@ -197,7 +197,7 @@ def get_qos_policy(description: Optional[str] = None,
            A Networking client is needed to retrieve a QoS policy ID. If omitted, the
            `region` argument of the provider is used.
     :param bool shared: Whether this QoS policy is shared across all projects.
-    :param List[str] tags: The list of QoS policy tags to filter.
+    :param Sequence[str] tags: The list of QoS policy tags to filter.
     """
     __args__ = dict()
     __args__['description'] = description
