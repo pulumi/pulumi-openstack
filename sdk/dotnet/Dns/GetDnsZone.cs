@@ -44,6 +44,13 @@ namespace Pulumi.OpenStack.Dns
 
     public sealed class GetDnsZoneArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Try to obtain zone ID by listing all projects
+        /// (requires admin role by default, depends on your policy configuration)
+        /// </summary>
+        [Input("allProjects")]
+        public string? AllProjects { get; set; }
+
         [Input("attributes")]
         private Dictionary<string, object>? _attributes;
 
@@ -99,7 +106,8 @@ namespace Pulumi.OpenStack.Dns
         public string? PoolId { get; set; }
 
         /// <summary>
-        /// The project ID that owns the zone.
+        /// The ID of the project the DNS zone is obtained from,
+        /// sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned user role in target project)
         /// </summary>
         [Input("projectId")]
         public string? ProjectId { get; set; }
@@ -163,6 +171,7 @@ namespace Pulumi.OpenStack.Dns
     [OutputType]
     public sealed class GetDnsZoneResult
     {
+        public readonly string? AllProjects;
         /// <summary>
         /// Attributes of the DNS Service scheduler.
         /// </summary>
@@ -234,6 +243,8 @@ namespace Pulumi.OpenStack.Dns
 
         [OutputConstructor]
         private GetDnsZoneResult(
+            string? allProjects,
+
             ImmutableDictionary<string, object> attributes,
 
             string createdAt,
@@ -268,6 +279,7 @@ namespace Pulumi.OpenStack.Dns
 
             int version)
         {
+            AllProjects = allProjects;
             Attributes = attributes;
             CreatedAt = createdAt;
             Description = description;

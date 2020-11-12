@@ -16,6 +16,40 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// &gt; **Note:** This resource has a no-op deletion so no actual actions will be done against the OpenStack API
     ///     in case of delete call.
+    /// 
+    /// &gt; **Note:** This resource has all-in creation so all optional quota arguments that were not specified are
+    ///     created with zero value.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var project1 = new OpenStack.Identity.Project("project1", new OpenStack.Identity.ProjectArgs
+    ///         {
+    ///         });
+    ///         var quota1 = new OpenStack.Networking.QuotaV2("quota1", new OpenStack.Networking.QuotaV2Args
+    ///         {
+    ///             ProjectId = project1.Id,
+    ///             Floatingip = 10,
+    ///             Network = 4,
+    ///             Port = 100,
+    ///             RbacPolicy = 10,
+    ///             Router = 4,
+    ///             SecurityGroup = 10,
+    ///             SecurityGroupRule = 100,
+    ///             Subnet = 8,
+    ///             Subnetpool = 2,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class QuotaV2 : Pulumi.CustomResource
     {

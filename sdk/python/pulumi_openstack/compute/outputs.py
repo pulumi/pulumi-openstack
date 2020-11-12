@@ -314,6 +314,7 @@ class InstanceSchedulerHint(dict):
     def __init__(__self__, *,
                  additional_properties: Optional[Mapping[str, Any]] = None,
                  build_near_host_ip: Optional[str] = None,
+                 different_cells: Optional[Sequence[str]] = None,
                  different_hosts: Optional[Sequence[str]] = None,
                  group: Optional[str] = None,
                  queries: Optional[Sequence[str]] = None,
@@ -324,6 +325,7 @@ class InstanceSchedulerHint(dict):
                properties to pass to the scheduler.
         :param str build_near_host_ip: An IP Address in CIDR form. The instance
                will be placed on a compute node that is in the same subnet.
+        :param Sequence[str] different_cells: The names of cells where not to build the instance.
         :param Sequence[str] different_hosts: A list of instance UUIDs. The instance will
                be scheduled on a different host than all other instances.
         :param str group: A UUID of a Server Group. The instance will be placed
@@ -342,6 +344,8 @@ class InstanceSchedulerHint(dict):
             pulumi.set(__self__, "additional_properties", additional_properties)
         if build_near_host_ip is not None:
             pulumi.set(__self__, "build_near_host_ip", build_near_host_ip)
+        if different_cells is not None:
+            pulumi.set(__self__, "different_cells", different_cells)
         if different_hosts is not None:
             pulumi.set(__self__, "different_hosts", different_hosts)
         if group is not None:
@@ -370,6 +374,14 @@ class InstanceSchedulerHint(dict):
         will be placed on a compute node that is in the same subnet.
         """
         return pulumi.get(self, "build_near_host_ip")
+
+    @property
+    @pulumi.getter(name="differentCells")
+    def different_cells(self) -> Optional[Sequence[str]]:
+        """
+        The names of cells where not to build the instance.
+        """
+        return pulumi.get(self, "different_cells")
 
     @property
     @pulumi.getter(name="differentHosts")

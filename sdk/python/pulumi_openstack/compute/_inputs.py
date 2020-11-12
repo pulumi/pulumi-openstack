@@ -385,6 +385,7 @@ class InstanceSchedulerHintArgs:
     def __init__(__self__, *,
                  additional_properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  build_near_host_ip: Optional[pulumi.Input[str]] = None,
+                 different_cells: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  different_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  group: Optional[pulumi.Input[str]] = None,
                  queries: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -395,6 +396,7 @@ class InstanceSchedulerHintArgs:
                properties to pass to the scheduler.
         :param pulumi.Input[str] build_near_host_ip: An IP Address in CIDR form. The instance
                will be placed on a compute node that is in the same subnet.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] different_cells: The names of cells where not to build the instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] different_hosts: A list of instance UUIDs. The instance will
                be scheduled on a different host than all other instances.
         :param pulumi.Input[str] group: A UUID of a Server Group. The instance will be placed
@@ -413,6 +415,8 @@ class InstanceSchedulerHintArgs:
             pulumi.set(__self__, "additional_properties", additional_properties)
         if build_near_host_ip is not None:
             pulumi.set(__self__, "build_near_host_ip", build_near_host_ip)
+        if different_cells is not None:
+            pulumi.set(__self__, "different_cells", different_cells)
         if different_hosts is not None:
             pulumi.set(__self__, "different_hosts", different_hosts)
         if group is not None:
@@ -449,6 +453,18 @@ class InstanceSchedulerHintArgs:
     @build_near_host_ip.setter
     def build_near_host_ip(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "build_near_host_ip", value)
+
+    @property
+    @pulumi.getter(name="differentCells")
+    def different_cells(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The names of cells where not to build the instance.
+        """
+        return pulumi.get(self, "different_cells")
+
+    @different_cells.setter
+    def different_cells(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "different_cells", value)
 
     @property
     @pulumi.getter(name="differentHosts")

@@ -509,6 +509,8 @@ type InstanceSchedulerHint struct {
 	// An IP Address in CIDR form. The instance
 	// will be placed on a compute node that is in the same subnet.
 	BuildNearHostIp *string `pulumi:"buildNearHostIp"`
+	// The names of cells where not to build the instance.
+	DifferentCells []string `pulumi:"differentCells"`
 	// A list of instance UUIDs. The instance will
 	// be scheduled on a different host than all other instances.
 	DifferentHosts []string `pulumi:"differentHosts"`
@@ -547,6 +549,8 @@ type InstanceSchedulerHintArgs struct {
 	// An IP Address in CIDR form. The instance
 	// will be placed on a compute node that is in the same subnet.
 	BuildNearHostIp pulumi.StringPtrInput `pulumi:"buildNearHostIp"`
+	// The names of cells where not to build the instance.
+	DifferentCells pulumi.StringArrayInput `pulumi:"differentCells"`
 	// A list of instance UUIDs. The instance will
 	// be scheduled on a different host than all other instances.
 	DifferentHosts pulumi.StringArrayInput `pulumi:"differentHosts"`
@@ -628,6 +632,11 @@ func (o InstanceSchedulerHintOutput) AdditionalProperties() pulumi.MapOutput {
 // will be placed on a compute node that is in the same subnet.
 func (o InstanceSchedulerHintOutput) BuildNearHostIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceSchedulerHint) *string { return v.BuildNearHostIp }).(pulumi.StringPtrOutput)
+}
+
+// The names of cells where not to build the instance.
+func (o InstanceSchedulerHintOutput) DifferentCells() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InstanceSchedulerHint) []string { return v.DifferentCells }).(pulumi.StringArrayOutput)
 }
 
 // A list of instance UUIDs. The instance will

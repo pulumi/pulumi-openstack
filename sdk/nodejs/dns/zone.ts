@@ -74,6 +74,12 @@ export class Zone extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * The ID of the project DNS zone is created
+     * for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+     * user role in target project)
+     */
+    public readonly projectId!: pulumi.Output<string>;
+    /**
      * The region in which to obtain the V2 Compute client.
      * Keypairs are associated with accounts, but a Compute client is needed to
      * create one. If omitted, the `region` argument of the provider is used.
@@ -112,6 +118,7 @@ export class Zone extends pulumi.CustomResource {
             inputs["email"] = state ? state.email : undefined;
             inputs["masters"] = state ? state.masters : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["projectId"] = state ? state.projectId : undefined;
             inputs["region"] = state ? state.region : undefined;
             inputs["ttl"] = state ? state.ttl : undefined;
             inputs["type"] = state ? state.type : undefined;
@@ -123,6 +130,7 @@ export class Zone extends pulumi.CustomResource {
             inputs["email"] = args ? args.email : undefined;
             inputs["masters"] = args ? args.masters : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["projectId"] = args ? args.projectId : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["ttl"] = args ? args.ttl : undefined;
             inputs["type"] = args ? args.type : undefined;
@@ -166,6 +174,12 @@ export interface ZoneState {
      * Changing this creates a new DNS zone.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The ID of the project DNS zone is created
+     * for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+     * user role in target project)
+     */
+    readonly projectId?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 Compute client.
      * Keypairs are associated with accounts, but a Compute client is needed to
@@ -216,6 +230,12 @@ export interface ZoneArgs {
      * Changing this creates a new DNS zone.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The ID of the project DNS zone is created
+     * for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+     * user role in target project)
+     */
+    readonly projectId?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 Compute client.
      * Keypairs are associated with accounts, but a Compute client is needed to

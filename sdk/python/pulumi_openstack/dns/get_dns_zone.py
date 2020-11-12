@@ -19,7 +19,10 @@ class GetDnsZoneResult:
     """
     A collection of values returned by getDnsZone.
     """
-    def __init__(__self__, attributes=None, created_at=None, description=None, email=None, id=None, masters=None, name=None, pool_id=None, project_id=None, region=None, serial=None, status=None, transferred_at=None, ttl=None, type=None, updated_at=None, version=None):
+    def __init__(__self__, all_projects=None, attributes=None, created_at=None, description=None, email=None, id=None, masters=None, name=None, pool_id=None, project_id=None, region=None, serial=None, status=None, transferred_at=None, ttl=None, type=None, updated_at=None, version=None):
+        if all_projects and not isinstance(all_projects, str):
+            raise TypeError("Expected argument 'all_projects' to be a str")
+        pulumi.set(__self__, "all_projects", all_projects)
         if attributes and not isinstance(attributes, dict):
             raise TypeError("Expected argument 'attributes' to be a dict")
         pulumi.set(__self__, "attributes", attributes)
@@ -71,6 +74,11 @@ class GetDnsZoneResult:
         if version and not isinstance(version, int):
             raise TypeError("Expected argument 'version' to be a int")
         pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="allProjects")
+    def all_projects(self) -> Optional[str]:
+        return pulumi.get(self, "all_projects")
 
     @property
     @pulumi.getter
@@ -215,6 +223,7 @@ class AwaitableGetDnsZoneResult(GetDnsZoneResult):
         if False:
             yield self
         return GetDnsZoneResult(
+            all_projects=self.all_projects,
             attributes=self.attributes,
             created_at=self.created_at,
             description=self.description,
@@ -234,7 +243,8 @@ class AwaitableGetDnsZoneResult(GetDnsZoneResult):
             version=self.version)
 
 
-def get_dns_zone(attributes: Optional[Mapping[str, Any]] = None,
+def get_dns_zone(all_projects: Optional[str] = None,
+                 attributes: Optional[Mapping[str, Any]] = None,
                  created_at: Optional[str] = None,
                  description: Optional[str] = None,
                  email: Optional[str] = None,
@@ -264,6 +274,8 @@ def get_dns_zone(attributes: Optional[Mapping[str, Any]] = None,
     ```
 
 
+    :param str all_projects: Try to obtain zone ID by listing all projects
+           (requires admin role by default, depends on your policy configuration)
     :param Mapping[str, Any] attributes: Attributes of the DNS Service scheduler.
     :param str created_at: The time the zone was created.
     :param str description: A description of the zone.
@@ -271,7 +283,8 @@ def get_dns_zone(attributes: Optional[Mapping[str, Any]] = None,
     :param Sequence[str] masters: An array of master DNS servers. When `type` is  `SECONDARY`.
     :param str name: The name of the zone.
     :param str pool_id: The ID of the pool hosting the zone.
-    :param str project_id: The project ID that owns the zone.
+    :param str project_id: The ID of the project the DNS zone is obtained from,
+           sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned user role in target project)
     :param str region: The region in which to obtain the V2 DNS client.
            A DNS client is needed to retrieve zone ids. If omitted, the
            `region` argument of the provider is used.
@@ -284,6 +297,7 @@ def get_dns_zone(attributes: Optional[Mapping[str, Any]] = None,
     :param int version: The version of the zone.
     """
     __args__ = dict()
+    __args__['allProjects'] = all_projects
     __args__['attributes'] = attributes
     __args__['createdAt'] = created_at
     __args__['description'] = description
@@ -307,6 +321,7 @@ def get_dns_zone(attributes: Optional[Mapping[str, Any]] = None,
     __ret__ = pulumi.runtime.invoke('openstack:dns/getDnsZone:getDnsZone', __args__, opts=opts, typ=GetDnsZoneResult).value
 
     return AwaitableGetDnsZoneResult(
+        all_projects=__ret__.all_projects,
         attributes=__ret__.attributes,
         created_at=__ret__.created_at,
         description=__ret__.description,

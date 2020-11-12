@@ -226,6 +226,10 @@ export namespace compute {
          */
         buildNearHostIp?: string;
         /**
+         * The names of cells where not to build the instance.
+         */
+        differentCells?: string[];
+        /**
          * A list of instance UUIDs. The instance will
          * be scheduled on a different host than all other instances.
          */
@@ -806,7 +810,7 @@ export namespace networking {
         /**
          * The ID of the host to allocate port on.
          */
-        hostId?: string;
+        hostId: string;
         /**
          * Custom data to be passed as `binding:profile`. Data
          * must be passed as JSON.

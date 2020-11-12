@@ -43,6 +43,9 @@ func GetDnsZone(ctx *pulumi.Context, args *GetDnsZoneArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getDnsZone.
 type GetDnsZoneArgs struct {
+	// Try to obtain zone ID by listing all projects
+	// (requires admin role by default, depends on your policy configuration)
+	AllProjects *string `pulumi:"allProjects"`
 	// Attributes of the DNS Service scheduler.
 	Attributes map[string]interface{} `pulumi:"attributes"`
 	// The time the zone was created.
@@ -57,7 +60,8 @@ type GetDnsZoneArgs struct {
 	Name *string `pulumi:"name"`
 	// The ID of the pool hosting the zone.
 	PoolId *string `pulumi:"poolId"`
-	// The project ID that owns the zone.
+	// The ID of the project the DNS zone is obtained from,
+	// sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned user role in target project)
 	ProjectId *string `pulumi:"projectId"`
 	// The region in which to obtain the V2 DNS client.
 	// A DNS client is needed to retrieve zone ids. If omitted, the
@@ -81,6 +85,7 @@ type GetDnsZoneArgs struct {
 
 // A collection of values returned by getDnsZone.
 type GetDnsZoneResult struct {
+	AllProjects *string `pulumi:"allProjects"`
 	// Attributes of the DNS Service scheduler.
 	Attributes map[string]interface{} `pulumi:"attributes"`
 	// The time the zone was created.

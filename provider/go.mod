@@ -3,10 +3,10 @@ module github.com/pulumi/pulumi-openstack/provider/v2
 go 1.14
 
 require (
-	github.com/hashicorp/terraform-plugin-sdk v1.15.0
+	github.com/hashicorp/terraform-plugin-sdk v1.16.0
 	github.com/pulumi/pulumi-terraform-bridge/v2 v2.12.1
 	github.com/pulumi/pulumi/sdk/v2 v2.12.0
-	github.com/terraform-provider-openstack/terraform-provider-openstack v1.32.0
+	github.com/terraform-provider-openstack/terraform-provider-openstack v1.33.0
 )
 
 replace (
