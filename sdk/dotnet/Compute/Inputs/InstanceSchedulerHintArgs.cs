@@ -32,6 +32,18 @@ namespace Pulumi.OpenStack.Compute.Inputs
         [Input("buildNearHostIp")]
         public Input<string>? BuildNearHostIp { get; set; }
 
+        [Input("differentCells")]
+        private InputList<string>? _differentCells;
+
+        /// <summary>
+        /// The names of cells where not to build the instance.
+        /// </summary>
+        public InputList<string> DifferentCells
+        {
+            get => _differentCells ?? (_differentCells = new InputList<string>());
+            set => _differentCells = value;
+        }
+
         [Input("differentHosts")]
         private InputList<string>? _differentHosts;
 

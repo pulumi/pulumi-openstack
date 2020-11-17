@@ -226,6 +226,10 @@ export namespace compute {
          */
         buildNearHostIp?: pulumi.Input<string>;
         /**
+         * The names of cells where not to build the instance.
+         */
+        differentCells?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
          * A list of instance UUIDs. The instance will
          * be scheduled on a different host than all other instances.
          */

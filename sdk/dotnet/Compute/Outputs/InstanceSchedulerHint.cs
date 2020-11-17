@@ -24,6 +24,10 @@ namespace Pulumi.OpenStack.Compute.Outputs
         /// </summary>
         public readonly string? BuildNearHostIp;
         /// <summary>
+        /// The names of cells where not to build the instance.
+        /// </summary>
+        public readonly ImmutableArray<string> DifferentCells;
+        /// <summary>
         /// A list of instance UUIDs. The instance will
         /// be scheduled on a different host than all other instances.
         /// </summary>
@@ -58,6 +62,8 @@ namespace Pulumi.OpenStack.Compute.Outputs
 
             string? buildNearHostIp,
 
+            ImmutableArray<string> differentCells,
+
             ImmutableArray<string> differentHosts,
 
             string? group,
@@ -70,6 +76,7 @@ namespace Pulumi.OpenStack.Compute.Outputs
         {
             AdditionalProperties = additionalProperties;
             BuildNearHostIp = buildNearHostIp;
+            DifferentCells = differentCells;
             DifferentHosts = differentHosts;
             Group = group;
             Queries = queries;

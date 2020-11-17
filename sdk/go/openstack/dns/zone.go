@@ -53,6 +53,10 @@ type Zone struct {
 	// The name of the zone. Note the `.` at the end of the name.
 	// Changing this creates a new DNS zone.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The ID of the project DNS zone is created
+	// for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+	// user role in target project)
+	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// The region in which to obtain the V2 Compute client.
 	// Keypairs are associated with accounts, but a Compute client is needed to
 	// create one. If omitted, the `region` argument of the provider is used.
@@ -109,6 +113,10 @@ type zoneState struct {
 	// The name of the zone. Note the `.` at the end of the name.
 	// Changing this creates a new DNS zone.
 	Name *string `pulumi:"name"`
+	// The ID of the project DNS zone is created
+	// for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+	// user role in target project)
+	ProjectId *string `pulumi:"projectId"`
 	// The region in which to obtain the V2 Compute client.
 	// Keypairs are associated with accounts, but a Compute client is needed to
 	// create one. If omitted, the `region` argument of the provider is used.
@@ -138,6 +146,10 @@ type ZoneState struct {
 	// The name of the zone. Note the `.` at the end of the name.
 	// Changing this creates a new DNS zone.
 	Name pulumi.StringPtrInput
+	// The ID of the project DNS zone is created
+	// for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+	// user role in target project)
+	ProjectId pulumi.StringPtrInput
 	// The region in which to obtain the V2 Compute client.
 	// Keypairs are associated with accounts, but a Compute client is needed to
 	// create one. If omitted, the `region` argument of the provider is used.
@@ -171,6 +183,10 @@ type zoneArgs struct {
 	// The name of the zone. Note the `.` at the end of the name.
 	// Changing this creates a new DNS zone.
 	Name *string `pulumi:"name"`
+	// The ID of the project DNS zone is created
+	// for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+	// user role in target project)
+	ProjectId *string `pulumi:"projectId"`
 	// The region in which to obtain the V2 Compute client.
 	// Keypairs are associated with accounts, but a Compute client is needed to
 	// create one. If omitted, the `region` argument of the provider is used.
@@ -201,6 +217,10 @@ type ZoneArgs struct {
 	// The name of the zone. Note the `.` at the end of the name.
 	// Changing this creates a new DNS zone.
 	Name pulumi.StringPtrInput
+	// The ID of the project DNS zone is created
+	// for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+	// user role in target project)
+	ProjectId pulumi.StringPtrInput
 	// The region in which to obtain the V2 Compute client.
 	// Keypairs are associated with accounts, but a Compute client is needed to
 	// create one. If omitted, the `region` argument of the provider is used.

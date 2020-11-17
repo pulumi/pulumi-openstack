@@ -30,6 +30,7 @@ export function getDnsZone(args?: GetDnsZoneArgs, opts?: pulumi.InvokeOptions): 
         opts.version = utilities.getVersion();
     }
     return pulumi.runtime.invoke("openstack:dns/getDnsZone:getDnsZone", {
+        "allProjects": args.allProjects,
         "attributes": args.attributes,
         "createdAt": args.createdAt,
         "description": args.description,
@@ -53,6 +54,11 @@ export function getDnsZone(args?: GetDnsZoneArgs, opts?: pulumi.InvokeOptions): 
  * A collection of arguments for invoking getDnsZone.
  */
 export interface GetDnsZoneArgs {
+    /**
+     * Try to obtain zone ID by listing all projects
+     * (requires admin role by default, depends on your policy configuration)
+     */
+    readonly allProjects?: string;
     /**
      * Attributes of the DNS Service scheduler.
      */
@@ -82,7 +88,8 @@ export interface GetDnsZoneArgs {
      */
     readonly poolId?: string;
     /**
-     * The project ID that owns the zone.
+     * The ID of the project the DNS zone is obtained from,
+     * sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned user role in target project)
      */
     readonly projectId?: string;
     /**
@@ -125,6 +132,7 @@ export interface GetDnsZoneArgs {
  * A collection of values returned by getDnsZone.
  */
 export interface GetDnsZoneResult {
+    readonly allProjects?: string;
     /**
      * Attributes of the DNS Service scheduler.
      */

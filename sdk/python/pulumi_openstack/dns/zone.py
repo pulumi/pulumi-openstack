@@ -20,6 +20,7 @@ class Zone(pulumi.CustomResource):
                  email: Optional[pulumi.Input[str]] = None,
                  masters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  ttl: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -54,6 +55,9 @@ class Zone(pulumi.CustomResource):
                `SECONDARY`.
         :param pulumi.Input[str] name: The name of the zone. Note the `.` at the end of the name.
                Changing this creates a new DNS zone.
+        :param pulumi.Input[str] project_id: The ID of the project DNS zone is created
+               for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+               user role in target project)
         :param pulumi.Input[str] region: The region in which to obtain the V2 Compute client.
                Keypairs are associated with accounts, but a Compute client is needed to
                create one. If omitted, the `region` argument of the provider is used.
@@ -86,6 +90,7 @@ class Zone(pulumi.CustomResource):
             __props__['email'] = email
             __props__['masters'] = masters
             __props__['name'] = name
+            __props__['project_id'] = project_id
             __props__['region'] = region
             __props__['ttl'] = ttl
             __props__['type'] = type
@@ -105,6 +110,7 @@ class Zone(pulumi.CustomResource):
             email: Optional[pulumi.Input[str]] = None,
             masters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            project_id: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             ttl: Optional[pulumi.Input[int]] = None,
             type: Optional[pulumi.Input[str]] = None,
@@ -124,6 +130,9 @@ class Zone(pulumi.CustomResource):
                `SECONDARY`.
         :param pulumi.Input[str] name: The name of the zone. Note the `.` at the end of the name.
                Changing this creates a new DNS zone.
+        :param pulumi.Input[str] project_id: The ID of the project DNS zone is created
+               for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+               user role in target project)
         :param pulumi.Input[str] region: The region in which to obtain the V2 Compute client.
                Keypairs are associated with accounts, but a Compute client is needed to
                create one. If omitted, the `region` argument of the provider is used.
@@ -143,6 +152,7 @@ class Zone(pulumi.CustomResource):
         __props__["email"] = email
         __props__["masters"] = masters
         __props__["name"] = name
+        __props__["project_id"] = project_id
         __props__["region"] = region
         __props__["ttl"] = ttl
         __props__["type"] = type
@@ -191,6 +201,16 @@ class Zone(pulumi.CustomResource):
         Changing this creates a new DNS zone.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the project DNS zone is created
+        for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+        user role in target project)
+        """
+        return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter
