@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v1.33.0 of the OpenStack Terraform Provider
+_(none)_
 
 ---
+
+## 2.9.0 (2020-11-17)
+* Upgrade to v1.33.0 of the OpenStack Terraform Provider
 
 ## 2.8.1 (2020-11-06)
 * Upgrade to pulumi-terraform-bridge v2.12.1
