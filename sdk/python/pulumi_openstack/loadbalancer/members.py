@@ -50,6 +50,14 @@ class Members(pulumi.CustomResource):
             pool_id="935685fb-a896-40f9-9ff4-ae531a3a00fe")
         ```
 
+        ## Import
+
+        Load Balancer Pool Members can be imported using the Pool ID, e.g.
+
+        ```sh
+         $ pulumi import openstack:loadbalancer/members:Members members_1 c22974d2-4c95-4bcb-9819-0afc5ed303d5
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MembersMemberArgs']]]] members: A set of dictionaries containing member parameters. The

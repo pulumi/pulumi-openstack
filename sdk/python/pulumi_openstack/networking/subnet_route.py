@@ -43,6 +43,14 @@ class SubnetRoute(pulumi.CustomResource):
             subnet_id=subnet1.id)
         ```
 
+        ## Import
+
+        Routing entries can be imported using a combined ID using the following format``<subnet_id>-route-<destination_cidr>-<next_hop>``
+
+        ```sh
+         $ pulumi import openstack:networking/subnetRoute:SubnetRoute subnet_route_1 686fe248-386c-4f70-9f6c-281607dad079-route-10.0.1.0/24-192.168.199.25
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] destination_cidr: CIDR block to match on the packet’s destination IP. Changing

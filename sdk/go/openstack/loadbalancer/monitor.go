@@ -4,6 +4,7 @@
 package loadbalancer
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -37,6 +38,20 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Load Balancer Pool Monitor can be imported using the Monitor ID, e.g.
+//
+// ```sh
+//  $ pulumi import openstack:loadbalancer/monitor:Monitor monitor_1 47c26fc3-2403-427a-8c79-1589bd0533c2
+// ```
+//
+//  In case of using OpenContrail, the import may not work properly. If you face an issue, try to import the monitor providing its parent pool ID
+//
+// ```sh
+//  $ pulumi import openstack:loadbalancer/monitor:Monitor monitor_1 47c26fc3-2403-427a-8c79-1589bd0533c2/708bc224-0f8c-4981-ac82-97095fe051b6
 // ```
 type Monitor struct {
 	pulumi.CustomResourceState
@@ -329,4 +344,43 @@ type MonitorArgs struct {
 
 func (MonitorArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*monitorArgs)(nil)).Elem()
+}
+
+type MonitorInput interface {
+	pulumi.Input
+
+	ToMonitorOutput() MonitorOutput
+	ToMonitorOutputWithContext(ctx context.Context) MonitorOutput
+}
+
+func (Monitor) ElementType() reflect.Type {
+	return reflect.TypeOf((*Monitor)(nil)).Elem()
+}
+
+func (i Monitor) ToMonitorOutput() MonitorOutput {
+	return i.ToMonitorOutputWithContext(context.Background())
+}
+
+func (i Monitor) ToMonitorOutputWithContext(ctx context.Context) MonitorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorOutput)
+}
+
+type MonitorOutput struct {
+	*pulumi.OutputState
+}
+
+func (MonitorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitorOutput)(nil)).Elem()
+}
+
+func (o MonitorOutput) ToMonitorOutput() MonitorOutput {
+	return o
+}
+
+func (o MonitorOutput) ToMonitorOutputWithContext(ctx context.Context) MonitorOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(MonitorOutput{})
 }

@@ -37,6 +37,14 @@ namespace Pulumi.OpenStack.Compute
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Flavors can be imported using the `ID`, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import openstack:compute/flavor:Flavor my-flavor 4142e64b-1b35-44a0-9b1e-5affc7af1106
+    /// ```
     /// </summary>
     public partial class Flavor : Pulumi.CustomResource
     {

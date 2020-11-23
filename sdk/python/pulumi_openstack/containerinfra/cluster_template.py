@@ -233,6 +233,14 @@ class ClusterTemplate(pulumi.CustomResource):
         * `tls_disabled` - See Argument Reference above.
         * `volume_driver` - See Argument Reference above.
 
+        ## Import
+
+        Cluster templates can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:containerinfra/clusterTemplate:ClusterTemplate clustertemplate_1 b9a45c5c-cd03-4958-82aa-b80bf93cb922
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """

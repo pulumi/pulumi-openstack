@@ -4,6 +4,7 @@
 package identity
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -43,6 +44,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Endpoints can be imported using the `id`, e.g.
+//
+// ```sh
+//  $ pulumi import openstack:identity/endpointV3:EndpointV3 endpoint_1 5392472b-106a-4845-90c6-7c8445f18770
 // ```
 type EndpointV3 struct {
 	pulumi.CustomResourceState
@@ -191,4 +200,43 @@ type EndpointV3Args struct {
 
 func (EndpointV3Args) ElementType() reflect.Type {
 	return reflect.TypeOf((*endpointV3Args)(nil)).Elem()
+}
+
+type EndpointV3Input interface {
+	pulumi.Input
+
+	ToEndpointV3Output() EndpointV3Output
+	ToEndpointV3OutputWithContext(ctx context.Context) EndpointV3Output
+}
+
+func (EndpointV3) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointV3)(nil)).Elem()
+}
+
+func (i EndpointV3) ToEndpointV3Output() EndpointV3Output {
+	return i.ToEndpointV3OutputWithContext(context.Background())
+}
+
+func (i EndpointV3) ToEndpointV3OutputWithContext(ctx context.Context) EndpointV3Output {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointV3Output)
+}
+
+type EndpointV3Output struct {
+	*pulumi.OutputState
+}
+
+func (EndpointV3Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointV3Output)(nil)).Elem()
+}
+
+func (o EndpointV3Output) ToEndpointV3Output() EndpointV3Output {
+	return o
+}
+
+func (o EndpointV3Output) ToEndpointV3OutputWithContext(ctx context.Context) EndpointV3Output {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(EndpointV3Output{})
 }

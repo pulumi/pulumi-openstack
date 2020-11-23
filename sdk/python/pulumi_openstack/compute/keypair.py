@@ -23,7 +23,14 @@ class Keypair(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a Keypair resource with the given unique name, props, and options.
+        ## Import
+
+        Keypairs can be imported using the `name`, e.g.
+
+        ```sh
+         $ pulumi import openstack:compute/keypair:Keypair my-keypair test-keypair
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: A unique name for the keypair. Changing this creates a new

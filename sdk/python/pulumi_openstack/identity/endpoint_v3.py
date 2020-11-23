@@ -42,6 +42,14 @@ class EndpointV3(pulumi.CustomResource):
             url="http://my-endpoint")
         ```
 
+        ## Import
+
+        Endpoints can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:identity/endpointV3:EndpointV3 endpoint_1 5392472b-106a-4845-90c6-7c8445f18770
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] endpoint_region: The endpoint region. The `region` and

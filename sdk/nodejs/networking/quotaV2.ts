@@ -35,6 +35,14 @@ import * as utilities from "../utilities";
  *     subnetpool: 2,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Quotas can be imported using the `project_id`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import openstack:networking/quotaV2:QuotaV2 quota_1 2a0f2240-c5e6-41de-896d-e80d97428d6b
+ * ```
  */
 export class QuotaV2 extends pulumi.CustomResource {
     /**

@@ -4,6 +4,7 @@
 package dns
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -49,6 +50,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// This resource can be imported by specifying the zone ID and recordset ID, separated by a forward slash.
+//
+// ```sh
+//  $ pulumi import openstack:dns/recordSet:RecordSet recordset_1 <zone_id>/<recordset_id>
 // ```
 type RecordSet struct {
 	pulumi.CustomResourceState
@@ -224,4 +233,43 @@ type RecordSetArgs struct {
 
 func (RecordSetArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*recordSetArgs)(nil)).Elem()
+}
+
+type RecordSetInput interface {
+	pulumi.Input
+
+	ToRecordSetOutput() RecordSetOutput
+	ToRecordSetOutputWithContext(ctx context.Context) RecordSetOutput
+}
+
+func (RecordSet) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecordSet)(nil)).Elem()
+}
+
+func (i RecordSet) ToRecordSetOutput() RecordSetOutput {
+	return i.ToRecordSetOutputWithContext(context.Background())
+}
+
+func (i RecordSet) ToRecordSetOutputWithContext(ctx context.Context) RecordSetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordSetOutput)
+}
+
+type RecordSetOutput struct {
+	*pulumi.OutputState
+}
+
+func (RecordSetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecordSetOutput)(nil)).Elem()
+}
+
+func (o RecordSetOutput) ToRecordSetOutput() RecordSetOutput {
+	return o
+}
+
+func (o RecordSetOutput) ToRecordSetOutputWithContext(ctx context.Context) RecordSetOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RecordSetOutput{})
 }

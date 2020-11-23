@@ -32,6 +32,14 @@ namespace Pulumi.OpenStack.BlockStorage
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Volumes can be imported using the `id`, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import openstack:blockstorage/volumeV2:VolumeV2 volume_1 ea257959-eeb1-4c10-8d33-26f0409a755d
+    /// ```
     /// </summary>
     public partial class VolumeV2 : Pulumi.CustomResource
     {

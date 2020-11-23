@@ -42,6 +42,14 @@ class EndpointGroup(pulumi.CustomResource):
             type="cidr")
         ```
 
+        ## Import
+
+        Groups can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:vpnaas/endpointGroup:EndpointGroup group_1 832cb7f3-59fe-40cf-8f64-8350ffc03272
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The human-readable description for the group.

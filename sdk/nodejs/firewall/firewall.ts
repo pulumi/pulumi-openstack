@@ -37,6 +37,14 @@ import * as utilities from "../utilities";
  *     policyId: policy1.id,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Firewalls can be imported using the `id`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import openstack:firewall/firewall:Firewall firewall_1 c9e39fb2-ce20-46c8-a964-25f3898c7a97
+ * ```
  */
 export class Firewall extends pulumi.CustomResource {
     /**

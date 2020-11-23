@@ -4,12 +4,20 @@
 package sharedfilesystem
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// This resource can be imported by specifying the ID of the share and the ID of the share access, separated by a slash, e.g.
+//
+// ```sh
+//  $ pulumi import openstack:sharedfilesystem/shareAccess:ShareAccess share_access_1 <share id>/<share access id>
+// ```
 type ShareAccess struct {
 	pulumi.CustomResourceState
 
@@ -154,4 +162,43 @@ type ShareAccessArgs struct {
 
 func (ShareAccessArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*shareAccessArgs)(nil)).Elem()
+}
+
+type ShareAccessInput interface {
+	pulumi.Input
+
+	ToShareAccessOutput() ShareAccessOutput
+	ToShareAccessOutputWithContext(ctx context.Context) ShareAccessOutput
+}
+
+func (ShareAccess) ElementType() reflect.Type {
+	return reflect.TypeOf((*ShareAccess)(nil)).Elem()
+}
+
+func (i ShareAccess) ToShareAccessOutput() ShareAccessOutput {
+	return i.ToShareAccessOutputWithContext(context.Background())
+}
+
+func (i ShareAccess) ToShareAccessOutputWithContext(ctx context.Context) ShareAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShareAccessOutput)
+}
+
+type ShareAccessOutput struct {
+	*pulumi.OutputState
+}
+
+func (ShareAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ShareAccessOutput)(nil)).Elem()
+}
+
+func (o ShareAccessOutput) ToShareAccessOutput() ShareAccessOutput {
+	return o
+}
+
+func (o ShareAccessOutput) ToShareAccessOutputWithContext(ctx context.Context) ShareAccessOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ShareAccessOutput{})
 }

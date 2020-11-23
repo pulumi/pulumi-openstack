@@ -4,6 +4,7 @@
 package loadbalancer
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -35,6 +36,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Load Balancer Pool Member can be imported using the Pool ID and Member ID separated by a slash, e.g.
+//
+// ```sh
+//  $ pulumi import openstack:loadbalancer/member:Member member_1 c22974d2-4c95-4bcb-9819-0afc5ed303d5/9563b79c-8460-47da-8a95-2711b746510f
 // ```
 type Member struct {
 	pulumi.CustomResourceState
@@ -246,4 +255,43 @@ type MemberArgs struct {
 
 func (MemberArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*memberArgs)(nil)).Elem()
+}
+
+type MemberInput interface {
+	pulumi.Input
+
+	ToMemberOutput() MemberOutput
+	ToMemberOutputWithContext(ctx context.Context) MemberOutput
+}
+
+func (Member) ElementType() reflect.Type {
+	return reflect.TypeOf((*Member)(nil)).Elem()
+}
+
+func (i Member) ToMemberOutput() MemberOutput {
+	return i.ToMemberOutputWithContext(context.Background())
+}
+
+func (i Member) ToMemberOutputWithContext(ctx context.Context) MemberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MemberOutput)
+}
+
+type MemberOutput struct {
+	*pulumi.OutputState
+}
+
+func (MemberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MemberOutput)(nil)).Elem()
+}
+
+func (o MemberOutput) ToMemberOutput() MemberOutput {
+	return o
+}
+
+func (o MemberOutput) ToMemberOutputWithContext(ctx context.Context) MemberOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(MemberOutput{})
 }

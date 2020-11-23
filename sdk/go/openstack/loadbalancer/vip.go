@@ -4,6 +4,7 @@
 package loadbalancer
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -36,6 +37,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Load Balancer VIPs can be imported using the `id`, e.g.
+//
+// ```sh
+//  $ pulumi import openstack:loadbalancer/vip:Vip vip_1 50e16b26-89c1-475e-a492-76167182511e
 // ```
 type Vip struct {
 	pulumi.CustomResourceState
@@ -336,4 +345,43 @@ type VipArgs struct {
 
 func (VipArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*vipArgs)(nil)).Elem()
+}
+
+type VipInput interface {
+	pulumi.Input
+
+	ToVipOutput() VipOutput
+	ToVipOutputWithContext(ctx context.Context) VipOutput
+}
+
+func (Vip) ElementType() reflect.Type {
+	return reflect.TypeOf((*Vip)(nil)).Elem()
+}
+
+func (i Vip) ToVipOutput() VipOutput {
+	return i.ToVipOutputWithContext(context.Background())
+}
+
+func (i Vip) ToVipOutputWithContext(ctx context.Context) VipOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VipOutput)
+}
+
+type VipOutput struct {
+	*pulumi.OutputState
+}
+
+func (VipOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VipOutput)(nil)).Elem()
+}
+
+func (o VipOutput) ToVipOutput() VipOutput {
+	return o
+}
+
+func (o VipOutput) ToVipOutputWithContext(ctx context.Context) VipOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(VipOutput{})
 }

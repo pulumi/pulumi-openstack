@@ -191,6 +191,14 @@ import * as utilities from "../utilities";
  * * `serverType` - See Argument Reference above.
  * * `tlsDisabled` - See Argument Reference above.
  * * `volumeDriver` - See Argument Reference above.
+ *
+ * ## Import
+ *
+ * Cluster templates can be imported using the `id`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import openstack:containerinfra/clusterTemplate:ClusterTemplate clustertemplate_1 b9a45c5c-cd03-4958-82aa-b80bf93cb922
+ * ```
  */
 export class ClusterTemplate extends pulumi.CustomResource {
     /**

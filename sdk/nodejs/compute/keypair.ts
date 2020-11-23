@@ -4,6 +4,15 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * ## Import
+ *
+ * Keypairs can be imported using the `name`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import openstack:compute/keypair:Keypair my-keypair test-keypair
+ * ```
+ */
 export class Keypair extends pulumi.CustomResource {
     /**
      * Get an existing Keypair resource's state with the given name, ID, and optional extra

@@ -48,6 +48,14 @@ class Ec2CredentialV3(pulumi.CustomResource):
         ec2_key1 = openstack.identity.Ec2CredentialV3("ec2Key1", project_id="f7ac731cc11f40efbc03a9f9e1d1d21f")
         ```
 
+        ## Import
+
+        EC2 Credentials can be imported using the `access`, e.g.
+
+        ```sh
+         $ pulumi import openstack:identity/ec2CredentialV3:Ec2CredentialV3 ec2_cred_1 2d0ac4a2f81b4b0f9513ee49e780647d
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] project_id: The ID of the project the EC2 credential is created

@@ -4,6 +4,7 @@
 package networking
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -33,6 +34,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// QoS Policies can be imported using the `id`, e.g.
+//
+// ```sh
+//  $ pulumi import openstack:networking/qosPolicy:QosPolicy qos_policy_1 d6ae28ce-fcb5-4180-aa62-d260a27e09ae
 // ```
 type QosPolicy struct {
 	pulumi.CustomResourceState
@@ -242,4 +251,43 @@ type QosPolicyArgs struct {
 
 func (QosPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*qosPolicyArgs)(nil)).Elem()
+}
+
+type QosPolicyInput interface {
+	pulumi.Input
+
+	ToQosPolicyOutput() QosPolicyOutput
+	ToQosPolicyOutputWithContext(ctx context.Context) QosPolicyOutput
+}
+
+func (QosPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*QosPolicy)(nil)).Elem()
+}
+
+func (i QosPolicy) ToQosPolicyOutput() QosPolicyOutput {
+	return i.ToQosPolicyOutputWithContext(context.Background())
+}
+
+func (i QosPolicy) ToQosPolicyOutputWithContext(ctx context.Context) QosPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QosPolicyOutput)
+}
+
+type QosPolicyOutput struct {
+	*pulumi.OutputState
+}
+
+func (QosPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QosPolicyOutput)(nil)).Elem()
+}
+
+func (o QosPolicyOutput) ToQosPolicyOutput() QosPolicyOutput {
+	return o
+}
+
+func (o QosPolicyOutput) ToQosPolicyOutputWithContext(ctx context.Context) QosPolicyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(QosPolicyOutput{})
 }

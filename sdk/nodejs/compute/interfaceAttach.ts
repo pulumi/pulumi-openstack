@@ -126,6 +126,14 @@ import * as utilities from "../utilities";
  *     portId: pulumi.all(ports.map(v => v.id)).apply(id => id.map(v => v)[1]),
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Interface Attachments can be imported using the Instance ID and Port ID separated by a slash, e.g.
+ *
+ * ```sh
+ *  $ pulumi import openstack:compute/interfaceAttach:InterfaceAttach ai_1 89c60255-9bd6-460c-822a-e2b959ede9d2/45670584-225f-46c3-b33e-6707b589b666
+ * ```
  */
 export class InterfaceAttach extends pulumi.CustomResource {
     /**

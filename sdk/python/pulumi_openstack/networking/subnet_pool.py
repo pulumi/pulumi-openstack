@@ -64,6 +64,14 @@ class SubnetPool(pulumi.CustomResource):
             subnetpool_id=subnetpool1.id)
         ```
 
+        ## Import
+
+        Subnetpools can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:networking/subnetPool:SubnetPool subnetpool_1 832cb7f3-59fe-40cf-8f64-8350ffc03272
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address_scope_id: The Neutron address scope to assign to the

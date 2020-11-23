@@ -4,6 +4,7 @@
 package sharedfilesystem
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -47,6 +48,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// This resource can be imported by specifying the ID of the security service
+//
+// ```sh
+//  $ pulumi import openstack:sharedfilesystem/securityService:SecurityService securityservice_1 <id>
 // ```
 type SecurityService struct {
 	pulumi.CustomResourceState
@@ -253,4 +262,43 @@ type SecurityServiceArgs struct {
 
 func (SecurityServiceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*securityServiceArgs)(nil)).Elem()
+}
+
+type SecurityServiceInput interface {
+	pulumi.Input
+
+	ToSecurityServiceOutput() SecurityServiceOutput
+	ToSecurityServiceOutputWithContext(ctx context.Context) SecurityServiceOutput
+}
+
+func (SecurityService) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityService)(nil)).Elem()
+}
+
+func (i SecurityService) ToSecurityServiceOutput() SecurityServiceOutput {
+	return i.ToSecurityServiceOutputWithContext(context.Background())
+}
+
+func (i SecurityService) ToSecurityServiceOutputWithContext(ctx context.Context) SecurityServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityServiceOutput)
+}
+
+type SecurityServiceOutput struct {
+	*pulumi.OutputState
+}
+
+func (SecurityServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityServiceOutput)(nil)).Elem()
+}
+
+func (o SecurityServiceOutput) ToSecurityServiceOutput() SecurityServiceOutput {
+	return o
+}
+
+func (o SecurityServiceOutput) ToSecurityServiceOutputWithContext(ctx context.Context) SecurityServiceOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SecurityServiceOutput{})
 }

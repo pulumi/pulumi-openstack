@@ -4,6 +4,7 @@
 package identity
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -116,6 +117,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Application Credentials can be imported using the `id`, e.g.
+//
+// ```sh
+//  $ pulumi import openstack:identity/applicationCredential:ApplicationCredential application_credential_1 c17304b7-0953-4738-abb0-67005882b0a0
 // ```
 type ApplicationCredential struct {
 	pulumi.CustomResourceState
@@ -345,4 +354,43 @@ type ApplicationCredentialArgs struct {
 
 func (ApplicationCredentialArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*applicationCredentialArgs)(nil)).Elem()
+}
+
+type ApplicationCredentialInput interface {
+	pulumi.Input
+
+	ToApplicationCredentialOutput() ApplicationCredentialOutput
+	ToApplicationCredentialOutputWithContext(ctx context.Context) ApplicationCredentialOutput
+}
+
+func (ApplicationCredential) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationCredential)(nil)).Elem()
+}
+
+func (i ApplicationCredential) ToApplicationCredentialOutput() ApplicationCredentialOutput {
+	return i.ToApplicationCredentialOutputWithContext(context.Background())
+}
+
+func (i ApplicationCredential) ToApplicationCredentialOutputWithContext(ctx context.Context) ApplicationCredentialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationCredentialOutput)
+}
+
+type ApplicationCredentialOutput struct {
+	*pulumi.OutputState
+}
+
+func (ApplicationCredentialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationCredentialOutput)(nil)).Elem()
+}
+
+func (o ApplicationCredentialOutput) ToApplicationCredentialOutput() ApplicationCredentialOutput {
+	return o
+}
+
+func (o ApplicationCredentialOutput) ToApplicationCredentialOutputWithContext(ctx context.Context) ApplicationCredentialOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ApplicationCredentialOutput{})
 }

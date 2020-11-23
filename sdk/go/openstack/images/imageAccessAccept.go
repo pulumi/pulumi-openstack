@@ -4,6 +4,7 @@
 package images
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -48,6 +49,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Image access acceptance status can be imported using the `image_id`, e.g.
+//
+// ```sh
+//  $ pulumi import openstack:images/imageAccessAccept:ImageAccessAccept openstack_images_image_access_accept_v2 89c60255-9bd6-460c-822a-e2b959ede9d2
 // ```
 type ImageAccessAccept struct {
 	pulumi.CustomResourceState
@@ -189,4 +198,43 @@ type ImageAccessAcceptArgs struct {
 
 func (ImageAccessAcceptArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*imageAccessAcceptArgs)(nil)).Elem()
+}
+
+type ImageAccessAcceptInput interface {
+	pulumi.Input
+
+	ToImageAccessAcceptOutput() ImageAccessAcceptOutput
+	ToImageAccessAcceptOutputWithContext(ctx context.Context) ImageAccessAcceptOutput
+}
+
+func (ImageAccessAccept) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageAccessAccept)(nil)).Elem()
+}
+
+func (i ImageAccessAccept) ToImageAccessAcceptOutput() ImageAccessAcceptOutput {
+	return i.ToImageAccessAcceptOutputWithContext(context.Background())
+}
+
+func (i ImageAccessAccept) ToImageAccessAcceptOutputWithContext(ctx context.Context) ImageAccessAcceptOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageAccessAcceptOutput)
+}
+
+type ImageAccessAcceptOutput struct {
+	*pulumi.OutputState
+}
+
+func (ImageAccessAcceptOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageAccessAcceptOutput)(nil)).Elem()
+}
+
+func (o ImageAccessAcceptOutput) ToImageAccessAcceptOutput() ImageAccessAcceptOutput {
+	return o
+}
+
+func (o ImageAccessAcceptOutput) ToImageAccessAcceptOutputWithContext(ctx context.Context) ImageAccessAcceptOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ImageAccessAcceptOutput{})
 }

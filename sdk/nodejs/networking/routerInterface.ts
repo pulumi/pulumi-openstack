@@ -29,6 +29,14 @@ import * as utilities from "../utilities";
  *     subnetId: subnet1.id,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Router Interfaces can be imported using the port `id`, e.g. $ openstack port list --router <router name or id>
+ *
+ * ```sh
+ *  $ pulumi import openstack:networking/routerInterface:RouterInterface int_1 <port id from above output>
+ * ```
  */
 export class RouterInterface extends pulumi.CustomResource {
     /**

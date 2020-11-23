@@ -4,6 +4,7 @@
 package networking
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -54,6 +55,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// RBAC policies can be imported using the `id`, e.g.
+//
+// ```sh
+//  $ pulumi import openstack:networking/rbacPolicyV2:RbacPolicyV2 rbac_policy_1 eae26a3e-1c33-4cc1-9c31-0cd729c438a1
 // ```
 type RbacPolicyV2 struct {
 	pulumi.CustomResourceState
@@ -211,4 +220,43 @@ type RbacPolicyV2Args struct {
 
 func (RbacPolicyV2Args) ElementType() reflect.Type {
 	return reflect.TypeOf((*rbacPolicyV2Args)(nil)).Elem()
+}
+
+type RbacPolicyV2Input interface {
+	pulumi.Input
+
+	ToRbacPolicyV2Output() RbacPolicyV2Output
+	ToRbacPolicyV2OutputWithContext(ctx context.Context) RbacPolicyV2Output
+}
+
+func (RbacPolicyV2) ElementType() reflect.Type {
+	return reflect.TypeOf((*RbacPolicyV2)(nil)).Elem()
+}
+
+func (i RbacPolicyV2) ToRbacPolicyV2Output() RbacPolicyV2Output {
+	return i.ToRbacPolicyV2OutputWithContext(context.Background())
+}
+
+func (i RbacPolicyV2) ToRbacPolicyV2OutputWithContext(ctx context.Context) RbacPolicyV2Output {
+	return pulumi.ToOutputWithContext(ctx, i).(RbacPolicyV2Output)
+}
+
+type RbacPolicyV2Output struct {
+	*pulumi.OutputState
+}
+
+func (RbacPolicyV2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*RbacPolicyV2Output)(nil)).Elem()
+}
+
+func (o RbacPolicyV2Output) ToRbacPolicyV2Output() RbacPolicyV2Output {
+	return o
+}
+
+func (o RbacPolicyV2Output) ToRbacPolicyV2OutputWithContext(ctx context.Context) RbacPolicyV2Output {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RbacPolicyV2Output{})
 }

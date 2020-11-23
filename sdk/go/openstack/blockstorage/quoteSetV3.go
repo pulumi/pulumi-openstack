@@ -4,6 +4,7 @@
 package blockstorage
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -53,6 +54,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Quotasets can be imported using the `project_id`, e.g.
+//
+// ```sh
+//  $ pulumi import openstack:blockstorage/quoteSetV3:QuoteSetV3 quotaset_1 2a0f2240-c5e6-41de-896d-e80d97428d6b
 // ```
 type QuoteSetV3 struct {
 	pulumi.CustomResourceState
@@ -248,4 +257,43 @@ type QuoteSetV3Args struct {
 
 func (QuoteSetV3Args) ElementType() reflect.Type {
 	return reflect.TypeOf((*quoteSetV3Args)(nil)).Elem()
+}
+
+type QuoteSetV3Input interface {
+	pulumi.Input
+
+	ToQuoteSetV3Output() QuoteSetV3Output
+	ToQuoteSetV3OutputWithContext(ctx context.Context) QuoteSetV3Output
+}
+
+func (QuoteSetV3) ElementType() reflect.Type {
+	return reflect.TypeOf((*QuoteSetV3)(nil)).Elem()
+}
+
+func (i QuoteSetV3) ToQuoteSetV3Output() QuoteSetV3Output {
+	return i.ToQuoteSetV3OutputWithContext(context.Background())
+}
+
+func (i QuoteSetV3) ToQuoteSetV3OutputWithContext(ctx context.Context) QuoteSetV3Output {
+	return pulumi.ToOutputWithContext(ctx, i).(QuoteSetV3Output)
+}
+
+type QuoteSetV3Output struct {
+	*pulumi.OutputState
+}
+
+func (QuoteSetV3Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*QuoteSetV3Output)(nil)).Elem()
+}
+
+func (o QuoteSetV3Output) ToQuoteSetV3Output() QuoteSetV3Output {
+	return o
+}
+
+func (o QuoteSetV3Output) ToQuoteSetV3OutputWithContext(ctx context.Context) QuoteSetV3Output {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(QuoteSetV3Output{})
 }

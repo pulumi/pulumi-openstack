@@ -47,6 +47,14 @@ class Flavor(pulumi.CustomResource):
             vcpus=2)
         ```
 
+        ## Import
+
+        Flavors can be imported using the `ID`, e.g.
+
+        ```sh
+         $ pulumi import openstack:compute/flavor:Flavor my-flavor 4142e64b-1b35-44a0-9b1e-5affc7af1106
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] disk: The amount of disk space in gigabytes to use for the root

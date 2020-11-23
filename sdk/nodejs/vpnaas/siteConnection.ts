@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -24,6 +23,14 @@ import * as utilities from "../utilities";
  *     psk: "secret",
  *     vpnserviceId: openstack_vpnaas_service_v2_service_1.id,
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * Site Connections can be imported using the `id`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import openstack:vpnaas/siteConnection:SiteConnection conn_1 832cb7f3-59fe-40cf-8f64-8350ffc03272
  * ```
  */
 export class SiteConnection extends pulumi.CustomResource {

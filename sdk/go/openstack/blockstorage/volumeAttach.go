@@ -4,6 +4,7 @@
 package blockstorage
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -57,6 +58,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// It is not possible to import this resource.
 type VolumeAttach struct {
 	pulumi.CustomResourceState
 
@@ -298,4 +303,43 @@ type VolumeAttachArgs struct {
 
 func (VolumeAttachArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*volumeAttachArgs)(nil)).Elem()
+}
+
+type VolumeAttachInput interface {
+	pulumi.Input
+
+	ToVolumeAttachOutput() VolumeAttachOutput
+	ToVolumeAttachOutputWithContext(ctx context.Context) VolumeAttachOutput
+}
+
+func (VolumeAttach) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeAttach)(nil)).Elem()
+}
+
+func (i VolumeAttach) ToVolumeAttachOutput() VolumeAttachOutput {
+	return i.ToVolumeAttachOutputWithContext(context.Background())
+}
+
+func (i VolumeAttach) ToVolumeAttachOutputWithContext(ctx context.Context) VolumeAttachOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeAttachOutput)
+}
+
+type VolumeAttachOutput struct {
+	*pulumi.OutputState
+}
+
+func (VolumeAttachOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeAttachOutput)(nil)).Elem()
+}
+
+func (o VolumeAttachOutput) ToVolumeAttachOutput() VolumeAttachOutput {
+	return o
+}
+
+func (o VolumeAttachOutput) ToVolumeAttachOutputWithContext(ctx context.Context) VolumeAttachOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(VolumeAttachOutput{})
 }

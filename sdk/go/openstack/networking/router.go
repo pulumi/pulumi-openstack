@@ -4,6 +4,7 @@
 package networking
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -33,6 +34,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Routers can be imported using the `id`, e.g.
+//
+// ```sh
+//  $ pulumi import openstack:networking/router:Router router_1 014395cd-89fc-4c9b-96b7-13d1ee79dad2
 // ```
 type Router struct {
 	pulumi.CustomResourceState
@@ -374,4 +383,43 @@ type RouterArgs struct {
 
 func (RouterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*routerArgs)(nil)).Elem()
+}
+
+type RouterInput interface {
+	pulumi.Input
+
+	ToRouterOutput() RouterOutput
+	ToRouterOutputWithContext(ctx context.Context) RouterOutput
+}
+
+func (Router) ElementType() reflect.Type {
+	return reflect.TypeOf((*Router)(nil)).Elem()
+}
+
+func (i Router) ToRouterOutput() RouterOutput {
+	return i.ToRouterOutputWithContext(context.Background())
+}
+
+func (i Router) ToRouterOutputWithContext(ctx context.Context) RouterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterOutput)
+}
+
+type RouterOutput struct {
+	*pulumi.OutputState
+}
+
+func (RouterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterOutput)(nil)).Elem()
+}
+
+func (o RouterOutput) ToRouterOutput() RouterOutput {
+	return o
+}
+
+func (o RouterOutput) ToRouterOutputWithContext(ctx context.Context) RouterOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RouterOutput{})
 }

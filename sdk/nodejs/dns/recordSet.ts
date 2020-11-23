@@ -28,6 +28,14 @@ import * as utilities from "../utilities";
  *     zoneId: exampleZone.id,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * This resource can be imported by specifying the zone ID and recordset ID, separated by a forward slash.
+ *
+ * ```sh
+ *  $ pulumi import openstack:dns/recordSet:RecordSet recordset_1 <zone_id>/<recordset_id>
+ * ```
  */
 export class RecordSet extends pulumi.CustomResource {
     /**

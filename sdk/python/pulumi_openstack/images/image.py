@@ -66,6 +66,14 @@ class Image(pulumi.CustomResource):
         In addition, the `direct_url` property is also automatically reconciled if the
         Image Service set it.
 
+        ## Import
+
+        Images can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:images/image:Image rancheros 89c60255-9bd6-460c-822a-e2b959ede9d2
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] container_format: The container format. Must be one of

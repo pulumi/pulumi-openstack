@@ -4,6 +4,7 @@
 package firewall
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -62,6 +63,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Firewalls can be imported using the `id`, e.g.
+//
+// ```sh
+//  $ pulumi import openstack:firewall/firewall:Firewall firewall_1 c9e39fb2-ce20-46c8-a964-25f3898c7a97
 // ```
 type Firewall struct {
 	pulumi.CustomResourceState
@@ -277,4 +286,43 @@ type FirewallArgs struct {
 
 func (FirewallArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*firewallArgs)(nil)).Elem()
+}
+
+type FirewallInput interface {
+	pulumi.Input
+
+	ToFirewallOutput() FirewallOutput
+	ToFirewallOutputWithContext(ctx context.Context) FirewallOutput
+}
+
+func (Firewall) ElementType() reflect.Type {
+	return reflect.TypeOf((*Firewall)(nil)).Elem()
+}
+
+func (i Firewall) ToFirewallOutput() FirewallOutput {
+	return i.ToFirewallOutputWithContext(context.Background())
+}
+
+func (i Firewall) ToFirewallOutputWithContext(ctx context.Context) FirewallOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallOutput)
+}
+
+type FirewallOutput struct {
+	*pulumi.OutputState
+}
+
+func (FirewallOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallOutput)(nil)).Elem()
+}
+
+func (o FirewallOutput) ToFirewallOutput() FirewallOutput {
+	return o
+}
+
+func (o FirewallOutput) ToFirewallOutputWithContext(ctx context.Context) FirewallOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(FirewallOutput{})
 }

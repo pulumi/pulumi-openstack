@@ -4,11 +4,19 @@
 package networking
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// Security Groups can be imported using the `id`, e.g.
+//
+// ```sh
+//  $ pulumi import openstack:networking/secGroup:SecGroup secgroup_1 38809219-5e8a-4852-9139-6f461c90e8bc
+// ```
 type SecGroup struct {
 	pulumi.CustomResourceState
 
@@ -164,4 +172,43 @@ type SecGroupArgs struct {
 
 func (SecGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*secGroupArgs)(nil)).Elem()
+}
+
+type SecGroupInput interface {
+	pulumi.Input
+
+	ToSecGroupOutput() SecGroupOutput
+	ToSecGroupOutputWithContext(ctx context.Context) SecGroupOutput
+}
+
+func (SecGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecGroup)(nil)).Elem()
+}
+
+func (i SecGroup) ToSecGroupOutput() SecGroupOutput {
+	return i.ToSecGroupOutputWithContext(context.Background())
+}
+
+func (i SecGroup) ToSecGroupOutputWithContext(ctx context.Context) SecGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecGroupOutput)
+}
+
+type SecGroupOutput struct {
+	*pulumi.OutputState
+}
+
+func (SecGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecGroupOutput)(nil)).Elem()
+}
+
+func (o SecGroupOutput) ToSecGroupOutput() SecGroupOutput {
+	return o
+}
+
+func (o SecGroupOutput) ToSecGroupOutputWithContext(ctx context.Context) SecGroupOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SecGroupOutput{})
 }

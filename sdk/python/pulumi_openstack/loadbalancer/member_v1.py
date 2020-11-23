@@ -40,6 +40,14 @@ class MemberV1(pulumi.CustomResource):
             port=80)
         ```
 
+        ## Import
+
+        Load Balancer Members can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:loadbalancer/memberV1:MemberV1 member_1 a7498676-4fe4-4243-a864-2eaaf18c73df
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address: The IP address of the member. Changing this creates a

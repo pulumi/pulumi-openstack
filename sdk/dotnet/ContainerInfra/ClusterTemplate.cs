@@ -205,6 +205,14 @@ namespace Pulumi.OpenStack.ContainerInfra
     /// * `server_type` - See Argument Reference above.
     /// * `tls_disabled` - See Argument Reference above.
     /// * `volume_driver` - See Argument Reference above.
+    /// 
+    /// ## Import
+    /// 
+    /// Cluster templates can be imported using the `id`, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import openstack:containerinfra/clusterTemplate:ClusterTemplate clustertemplate_1 b9a45c5c-cd03-4958-82aa-b80bf93cb922
+    /// ```
     /// </summary>
     public partial class ClusterTemplate : Pulumi.CustomResource
     {

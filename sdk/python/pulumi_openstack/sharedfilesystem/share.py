@@ -56,6 +56,14 @@ class Share(pulumi.CustomResource):
             size=1)
         ```
 
+        ## Import
+
+        This resource can be imported by specifying the ID of the share
+
+        ```sh
+         $ pulumi import openstack:sharedfilesystem/share:Share share_1 <id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] availability_zone: The share availability zone. Changing this creates a

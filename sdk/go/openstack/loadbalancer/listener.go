@@ -4,6 +4,7 @@
 package loadbalancer
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -38,6 +39,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Load Balancer Listener can be imported using the Listener ID, e.g.
+//
+// ```sh
+//  $ pulumi import openstack:loadbalancer/listener:Listener listener_1 b67ce64e-8b26-405d-afeb-4a078901f15a
 // ```
 type Listener struct {
 	pulumi.CustomResourceState
@@ -399,4 +408,43 @@ type ListenerArgs struct {
 
 func (ListenerArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*listenerArgs)(nil)).Elem()
+}
+
+type ListenerInput interface {
+	pulumi.Input
+
+	ToListenerOutput() ListenerOutput
+	ToListenerOutputWithContext(ctx context.Context) ListenerOutput
+}
+
+func (Listener) ElementType() reflect.Type {
+	return reflect.TypeOf((*Listener)(nil)).Elem()
+}
+
+func (i Listener) ToListenerOutput() ListenerOutput {
+	return i.ToListenerOutputWithContext(context.Background())
+}
+
+func (i Listener) ToListenerOutputWithContext(ctx context.Context) ListenerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerOutput)
+}
+
+type ListenerOutput struct {
+	*pulumi.OutputState
+}
+
+func (ListenerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListenerOutput)(nil)).Elem()
+}
+
+func (o ListenerOutput) ToListenerOutput() ListenerOutput {
+	return o
+}
+
+func (o ListenerOutput) ToListenerOutputWithContext(ctx context.Context) ListenerOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ListenerOutput{})
 }

@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -53,6 +54,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// This resource can be imported by specifying all two arguments, separated by a forward slash
+//
+// ```sh
+//  $ pulumi import openstack:compute/flavorAccess:FlavorAccess access_1 <flavor_id>/<tenant_id>
 // ```
 type FlavorAccess struct {
 	pulumi.CustomResourceState
@@ -156,4 +165,43 @@ type FlavorAccessArgs struct {
 
 func (FlavorAccessArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*flavorAccessArgs)(nil)).Elem()
+}
+
+type FlavorAccessInput interface {
+	pulumi.Input
+
+	ToFlavorAccessOutput() FlavorAccessOutput
+	ToFlavorAccessOutputWithContext(ctx context.Context) FlavorAccessOutput
+}
+
+func (FlavorAccess) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlavorAccess)(nil)).Elem()
+}
+
+func (i FlavorAccess) ToFlavorAccessOutput() FlavorAccessOutput {
+	return i.ToFlavorAccessOutputWithContext(context.Background())
+}
+
+func (i FlavorAccess) ToFlavorAccessOutputWithContext(ctx context.Context) FlavorAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlavorAccessOutput)
+}
+
+type FlavorAccessOutput struct {
+	*pulumi.OutputState
+}
+
+func (FlavorAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlavorAccessOutput)(nil)).Elem()
+}
+
+func (o FlavorAccessOutput) ToFlavorAccessOutput() FlavorAccessOutput {
+	return o
+}
+
+func (o FlavorAccessOutput) ToFlavorAccessOutputWithContext(ctx context.Context) FlavorAccessOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(FlavorAccessOutput{})
 }

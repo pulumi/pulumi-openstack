@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.OpenStack.KeyManager
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// Secrets can be imported using the secret id (the last part of the secret reference), e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import openstack:keymanager/secretV1:SecretV1 secret_1 8a7a79c2-cf17-4e65-b2ae-ddc8bfcf6c74
+    /// ```
+    /// </summary>
     public partial class SecretV1 : Pulumi.CustomResource
     {
         /// <summary>

@@ -4,6 +4,7 @@
 package networking
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -278,4 +279,43 @@ type TrunkArgs struct {
 
 func (TrunkArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*trunkArgs)(nil)).Elem()
+}
+
+type TrunkInput interface {
+	pulumi.Input
+
+	ToTrunkOutput() TrunkOutput
+	ToTrunkOutputWithContext(ctx context.Context) TrunkOutput
+}
+
+func (Trunk) ElementType() reflect.Type {
+	return reflect.TypeOf((*Trunk)(nil)).Elem()
+}
+
+func (i Trunk) ToTrunkOutput() TrunkOutput {
+	return i.ToTrunkOutputWithContext(context.Background())
+}
+
+func (i Trunk) ToTrunkOutputWithContext(ctx context.Context) TrunkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrunkOutput)
+}
+
+type TrunkOutput struct {
+	*pulumi.OutputState
+}
+
+func (TrunkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrunkOutput)(nil)).Elem()
+}
+
+func (o TrunkOutput) ToTrunkOutput() TrunkOutput {
+	return o
+}
+
+func (o TrunkOutput) ToTrunkOutputWithContext(ctx context.Context) TrunkOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(TrunkOutput{})
 }

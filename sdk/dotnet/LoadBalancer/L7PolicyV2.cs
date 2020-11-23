@@ -60,6 +60,14 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Load Balancer L7 Policy can be imported using the L7 Policy ID, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import openstack:loadbalancer/l7PolicyV2:L7PolicyV2 l7policy_1 8a7a79c2-cf17-4e65-b2ae-ddc8bfcf6c74
+    /// ```
     /// </summary>
     public partial class L7PolicyV2 : Pulumi.CustomResource
     {

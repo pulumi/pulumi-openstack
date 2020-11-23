@@ -4,6 +4,7 @@
 package identity
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -35,6 +36,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Services can be imported using the `id`, e.g.
+//
+// ```sh
+//  $ pulumi import openstack:identity/serviceV3:ServiceV3 service_1 6688e967-158a-496f-a224-cae3414e6b61
 // ```
 type ServiceV3 struct {
 	pulumi.CustomResourceState
@@ -145,4 +154,43 @@ type ServiceV3Args struct {
 
 func (ServiceV3Args) ElementType() reflect.Type {
 	return reflect.TypeOf((*serviceV3Args)(nil)).Elem()
+}
+
+type ServiceV3Input interface {
+	pulumi.Input
+
+	ToServiceV3Output() ServiceV3Output
+	ToServiceV3OutputWithContext(ctx context.Context) ServiceV3Output
+}
+
+func (ServiceV3) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceV3)(nil)).Elem()
+}
+
+func (i ServiceV3) ToServiceV3Output() ServiceV3Output {
+	return i.ToServiceV3OutputWithContext(context.Background())
+}
+
+func (i ServiceV3) ToServiceV3OutputWithContext(ctx context.Context) ServiceV3Output {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceV3Output)
+}
+
+type ServiceV3Output struct {
+	*pulumi.OutputState
+}
+
+func (ServiceV3Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceV3Output)(nil)).Elem()
+}
+
+func (o ServiceV3Output) ToServiceV3Output() ServiceV3Output {
+	return o
+}
+
+func (o ServiceV3Output) ToServiceV3OutputWithContext(ctx context.Context) ServiceV3Output {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ServiceV3Output{})
 }

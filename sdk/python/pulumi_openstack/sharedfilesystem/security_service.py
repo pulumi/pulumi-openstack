@@ -55,6 +55,14 @@ class SecurityService(pulumi.CustomResource):
             user="joinDomainUser")
         ```
 
+        ## Import
+
+        This resource can be imported by specifying the ID of the security service
+
+        ```sh
+         $ pulumi import openstack:sharedfilesystem/securityService:SecurityService securityservice_1 <id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The human-readable description for the security service.

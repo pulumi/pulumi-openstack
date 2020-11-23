@@ -22,4 +22,23 @@ import * as orchestration from "./orchestration";
 import * as sharedfilesystem from "./sharedfilesystem";
 import * as types from "./types";
 import * as vpnaas from "./vpnaas";
-export {blockstorage, compute, config, containerinfra, database, dns, firewall, identity, images, keymanager, loadbalancer, networking, objectstorage, orchestration, sharedfilesystem, types, vpnaas};
+
+export {
+    blockstorage,
+    compute,
+    config,
+    containerinfra,
+    database,
+    dns,
+    firewall,
+    identity,
+    images,
+    keymanager,
+    loadbalancer,
+    networking,
+    objectstorage,
+    orchestration,
+    sharedfilesystem,
+    types,
+    vpnaas,
+};

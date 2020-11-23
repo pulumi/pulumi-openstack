@@ -4,6 +4,7 @@
 package vpnaas
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -39,6 +40,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Site Connections can be imported using the `id`, e.g.
+//
+// ```sh
+//  $ pulumi import openstack:vpnaas/siteConnection:SiteConnection conn_1 832cb7f3-59fe-40cf-8f64-8350ffc03272
 // ```
 type SiteConnection struct {
 	pulumi.CustomResourceState
@@ -384,4 +393,43 @@ type SiteConnectionArgs struct {
 
 func (SiteConnectionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*siteConnectionArgs)(nil)).Elem()
+}
+
+type SiteConnectionInput interface {
+	pulumi.Input
+
+	ToSiteConnectionOutput() SiteConnectionOutput
+	ToSiteConnectionOutputWithContext(ctx context.Context) SiteConnectionOutput
+}
+
+func (SiteConnection) ElementType() reflect.Type {
+	return reflect.TypeOf((*SiteConnection)(nil)).Elem()
+}
+
+func (i SiteConnection) ToSiteConnectionOutput() SiteConnectionOutput {
+	return i.ToSiteConnectionOutputWithContext(context.Background())
+}
+
+func (i SiteConnection) ToSiteConnectionOutputWithContext(ctx context.Context) SiteConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteConnectionOutput)
+}
+
+type SiteConnectionOutput struct {
+	*pulumi.OutputState
+}
+
+func (SiteConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SiteConnectionOutput)(nil)).Elem()
+}
+
+func (o SiteConnectionOutput) ToSiteConnectionOutput() SiteConnectionOutput {
+	return o
+}
+
+func (o SiteConnectionOutput) ToSiteConnectionOutputWithContext(ctx context.Context) SiteConnectionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SiteConnectionOutput{})
 }

@@ -4,6 +4,7 @@
 package networking
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -70,6 +71,14 @@ import (
 // The `nextHop` IP address must be directly reachable from the router at the ``networking.RouterRoute``
 // resource creation time.  You can ensure that by explicitly specifying a dependency on the ``networking.RouterInterface``
 // resource that connects the next hop to the router, as in the example above.
+//
+// ## Import
+//
+// Routing entries can be imported using a combined ID using the following format``<router_id>-route-<destination_cidr>-<next_hop>``
+//
+// ```sh
+//  $ pulumi import openstack:networking/routerRoute:RouterRoute router_route_1 686fe248-386c-4f70-9f6c-281607dad079-route-10.0.1.0/24-192.168.199.25
+// ```
 type RouterRoute struct {
 	pulumi.CustomResourceState
 
@@ -200,4 +209,43 @@ type RouterRouteArgs struct {
 
 func (RouterRouteArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*routerRouteArgs)(nil)).Elem()
+}
+
+type RouterRouteInput interface {
+	pulumi.Input
+
+	ToRouterRouteOutput() RouterRouteOutput
+	ToRouterRouteOutputWithContext(ctx context.Context) RouterRouteOutput
+}
+
+func (RouterRoute) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterRoute)(nil)).Elem()
+}
+
+func (i RouterRoute) ToRouterRouteOutput() RouterRouteOutput {
+	return i.ToRouterRouteOutputWithContext(context.Background())
+}
+
+func (i RouterRoute) ToRouterRouteOutputWithContext(ctx context.Context) RouterRouteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterRouteOutput)
+}
+
+type RouterRouteOutput struct {
+	*pulumi.OutputState
+}
+
+func (RouterRouteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterRouteOutput)(nil)).Elem()
+}
+
+func (o RouterRouteOutput) ToRouterRouteOutput() RouterRouteOutput {
+	return o
+}
+
+func (o RouterRouteOutput) ToRouterRouteOutputWithContext(ctx context.Context) RouterRouteOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RouterRouteOutput{})
 }

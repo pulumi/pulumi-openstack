@@ -98,6 +98,14 @@ class Port(pulumi.CustomResource):
         Ports. Please see the `compute.Instance` documentation for further
         documentation.
 
+        ## Import
+
+        Ports can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:networking/port:Port port_1 eae26a3e-1c33-4cc1-9c31-0cd729c438a1
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] admin_state_up: Administrative up/down status for the port

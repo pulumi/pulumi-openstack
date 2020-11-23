@@ -24,7 +24,14 @@ class ShareAccess(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a ShareAccess resource with the given unique name, props, and options.
+        ## Import
+
+        This resource can be imported by specifying the ID of the share and the ID of the share access, separated by a slash, e.g.
+
+        ```sh
+         $ pulumi import openstack:sharedfilesystem/shareAccess:ShareAccess share_access_1 <share id>/<share access id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_level: The access level to the share. Can either be `rw` or `ro`.

@@ -4,6 +4,7 @@
 package networking
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -146,4 +147,43 @@ type PortSecGroupAssociateArgs struct {
 
 func (PortSecGroupAssociateArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*portSecGroupAssociateArgs)(nil)).Elem()
+}
+
+type PortSecGroupAssociateInput interface {
+	pulumi.Input
+
+	ToPortSecGroupAssociateOutput() PortSecGroupAssociateOutput
+	ToPortSecGroupAssociateOutputWithContext(ctx context.Context) PortSecGroupAssociateOutput
+}
+
+func (PortSecGroupAssociate) ElementType() reflect.Type {
+	return reflect.TypeOf((*PortSecGroupAssociate)(nil)).Elem()
+}
+
+func (i PortSecGroupAssociate) ToPortSecGroupAssociateOutput() PortSecGroupAssociateOutput {
+	return i.ToPortSecGroupAssociateOutputWithContext(context.Background())
+}
+
+func (i PortSecGroupAssociate) ToPortSecGroupAssociateOutputWithContext(ctx context.Context) PortSecGroupAssociateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortSecGroupAssociateOutput)
+}
+
+type PortSecGroupAssociateOutput struct {
+	*pulumi.OutputState
+}
+
+func (PortSecGroupAssociateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PortSecGroupAssociateOutput)(nil)).Elem()
+}
+
+func (o PortSecGroupAssociateOutput) ToPortSecGroupAssociateOutput() PortSecGroupAssociateOutput {
+	return o
+}
+
+func (o PortSecGroupAssociateOutput) ToPortSecGroupAssociateOutputWithContext(ctx context.Context) PortSecGroupAssociateOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(PortSecGroupAssociateOutput{})
 }

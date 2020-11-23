@@ -54,6 +54,14 @@ class Listener(pulumi.CustomResource):
             protocol_port=8080)
         ```
 
+        ## Import
+
+        Load Balancer Listener can be imported using the Listener ID, e.g.
+
+        ```sh
+         $ pulumi import openstack:loadbalancer/listener:Listener listener_1 b67ce64e-8b26-405d-afeb-4a078901f15a
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] admin_state_up: The administrative state of the Listener.

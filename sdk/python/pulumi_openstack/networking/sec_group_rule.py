@@ -51,6 +51,14 @@ class SecGroupRule(pulumi.CustomResource):
             security_group_id=secgroup1.id)
         ```
 
+        ## Import
+
+        Security Group Rules can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:networking/secGroupRule:SecGroupRule secgroup_rule_1 aeb68ee3-6e9d-4256-955c-9584a6212745
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description of the rule. Changing this creates a new security group rule.

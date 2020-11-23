@@ -49,6 +49,14 @@ class Pool(pulumi.CustomResource):
             protocol="HTTP")
         ```
 
+        ## Import
+
+        Load Balancer Pool can be imported using the Pool ID, e.g.
+
+        ```sh
+         $ pulumi import openstack:loadbalancer/pool:Pool pool_1 60ad9ee4-249a-4d60-a45b-aa60e046c513
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] admin_state_up: The administrative state of the pool.

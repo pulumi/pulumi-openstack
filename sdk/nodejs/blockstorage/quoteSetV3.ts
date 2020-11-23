@@ -33,6 +33,14 @@ import * as utilities from "../utilities";
  *     groups: 100,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Quotasets can be imported using the `project_id`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import openstack:blockstorage/quoteSetV3:QuoteSetV3 quotaset_1 2a0f2240-c5e6-41de-896d-e80d97428d6b
+ * ```
  */
 export class QuoteSetV3 extends pulumi.CustomResource {
     /**

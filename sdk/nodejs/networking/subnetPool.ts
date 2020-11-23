@@ -40,6 +40,14 @@ import * as utilities from "../utilities";
  *     subnetpoolId: subnetpool1.id,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Subnetpools can be imported using the `id`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import openstack:networking/subnetPool:SubnetPool subnetpool_1 832cb7f3-59fe-40cf-8f64-8350ffc03272
+ * ```
  */
 export class SubnetPool extends pulumi.CustomResource {
     /**

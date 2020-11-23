@@ -32,6 +32,14 @@ namespace Pulumi.OpenStack.Identity
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Services can be imported using the `id`, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import openstack:identity/serviceV3:ServiceV3 service_1 6688e967-158a-496f-a224-cae3414e6b61
+    /// ```
     /// </summary>
     public partial class ServiceV3 : Pulumi.CustomResource
     {

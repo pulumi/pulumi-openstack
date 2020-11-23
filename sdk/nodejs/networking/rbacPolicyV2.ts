@@ -35,6 +35,14 @@ import * as utilities from "../utilities";
  *     targetTenant: "20415a973c9e45d3917f078950644697",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * RBAC policies can be imported using the `id`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import openstack:networking/rbacPolicyV2:RbacPolicyV2 rbac_policy_1 eae26a3e-1c33-4cc1-9c31-0cd729c438a1
+ * ```
  */
 export class RbacPolicyV2 extends pulumi.CustomResource {
     /**

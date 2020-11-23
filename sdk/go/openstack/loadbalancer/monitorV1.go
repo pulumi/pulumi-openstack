@@ -4,6 +4,7 @@
 package loadbalancer
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -37,6 +38,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Load Balancer Members can be imported using the `id`, e.g.
+//
+// ```sh
+//  $ pulumi import openstack:loadbalancer/monitorV1:MonitorV1 monitor_1 119d7530-72e9-449a-aa97-124a5ef1992c
 // ```
 type MonitorV1 struct {
 	pulumi.CustomResourceState
@@ -301,4 +310,43 @@ type MonitorV1Args struct {
 
 func (MonitorV1Args) ElementType() reflect.Type {
 	return reflect.TypeOf((*monitorV1Args)(nil)).Elem()
+}
+
+type MonitorV1Input interface {
+	pulumi.Input
+
+	ToMonitorV1Output() MonitorV1Output
+	ToMonitorV1OutputWithContext(ctx context.Context) MonitorV1Output
+}
+
+func (MonitorV1) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitorV1)(nil)).Elem()
+}
+
+func (i MonitorV1) ToMonitorV1Output() MonitorV1Output {
+	return i.ToMonitorV1OutputWithContext(context.Background())
+}
+
+func (i MonitorV1) ToMonitorV1OutputWithContext(ctx context.Context) MonitorV1Output {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorV1Output)
+}
+
+type MonitorV1Output struct {
+	*pulumi.OutputState
+}
+
+func (MonitorV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitorV1Output)(nil)).Elem()
+}
+
+func (o MonitorV1Output) ToMonitorV1Output() MonitorV1Output {
+	return o
+}
+
+func (o MonitorV1Output) ToMonitorV1OutputWithContext(ctx context.Context) MonitorV1Output {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(MonitorV1Output{})
 }

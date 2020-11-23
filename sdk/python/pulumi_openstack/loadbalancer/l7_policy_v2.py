@@ -59,6 +59,14 @@ class L7PolicyV2(pulumi.CustomResource):
             redirect_pool_id=pool1.id)
         ```
 
+        ## Import
+
+        Load Balancer L7 Policy can be imported using the L7 Policy ID, e.g.
+
+        ```sh
+         $ pulumi import openstack:loadbalancer/l7PolicyV2:L7PolicyV2 l7policy_1 8a7a79c2-cf17-4e65-b2ae-ddc8bfcf6c74
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action: The L7 Policy action - can either be REDIRECT\_TO\_POOL,

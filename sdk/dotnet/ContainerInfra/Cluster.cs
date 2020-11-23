@@ -133,6 +133,14 @@ namespace Pulumi.OpenStack.ContainerInfra
     ///   * `cluster_ca_certificate` - The cluster's CA certificate
     ///   * `client_key` - The client's RSA key
     ///   * `client_certificate` - The client's certificate
+    /// 
+    /// ## Import
+    /// 
+    /// Clusters can be imported using the `id`, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import openstack:containerinfra/cluster:Cluster cluster_1 ce0f9463-dd25-474b-9fe8-94de63e5e42b
+    /// ```
     /// </summary>
     public partial class Cluster : Pulumi.CustomResource
     {

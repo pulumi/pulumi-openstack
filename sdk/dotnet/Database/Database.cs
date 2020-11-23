@@ -31,6 +31,14 @@ namespace Pulumi.OpenStack.Database
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Databases can be imported by using `instance-id/db-name`, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import openstack:database/database:Database mydb 7b9e3cd3-00d9-449c-b074-8439f8e274fa/mydb
+    /// ```
     /// </summary>
     public partial class Database : Pulumi.CustomResource
     {

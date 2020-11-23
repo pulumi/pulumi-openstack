@@ -104,6 +104,14 @@ import * as utilities from "../utilities";
  * ## Notes
  *
  * The `member` block is deprecated in favor of the `openstack.loadbalancer.MemberV1` resource.
+ *
+ * ## Import
+ *
+ * Load Balancer Pools can be imported using the `id`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import openstack:loadbalancer/poolV1:PoolV1 pool_1 b255e6ba-02ad-43e6-8951-3428ca26b713
+ * ```
  */
 export class PoolV1 extends pulumi.CustomResource {
     /**

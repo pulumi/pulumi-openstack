@@ -54,6 +54,14 @@ namespace Pulumi.OpenStack.Identity
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// EC2 Credentials can be imported using the `access`, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import openstack:identity/ec2CredentialV3:Ec2CredentialV3 ec2_cred_1 2d0ac4a2f81b4b0f9513ee49e780647d
+    /// ```
     /// </summary>
     public partial class Ec2CredentialV3 : Pulumi.CustomResource
     {

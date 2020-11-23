@@ -4,6 +4,7 @@
 package loadbalancer
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -35,6 +36,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Load Balancer Members can be imported using the `id`, e.g.
+//
+// ```sh
+//  $ pulumi import openstack:loadbalancer/memberV1:MemberV1 member_1 a7498676-4fe4-4243-a864-2eaaf18c73df
 // ```
 type MemberV1 struct {
 	pulumi.CustomResourceState
@@ -206,4 +215,43 @@ type MemberV1Args struct {
 
 func (MemberV1Args) ElementType() reflect.Type {
 	return reflect.TypeOf((*memberV1Args)(nil)).Elem()
+}
+
+type MemberV1Input interface {
+	pulumi.Input
+
+	ToMemberV1Output() MemberV1Output
+	ToMemberV1OutputWithContext(ctx context.Context) MemberV1Output
+}
+
+func (MemberV1) ElementType() reflect.Type {
+	return reflect.TypeOf((*MemberV1)(nil)).Elem()
+}
+
+func (i MemberV1) ToMemberV1Output() MemberV1Output {
+	return i.ToMemberV1OutputWithContext(context.Background())
+}
+
+func (i MemberV1) ToMemberV1OutputWithContext(ctx context.Context) MemberV1Output {
+	return pulumi.ToOutputWithContext(ctx, i).(MemberV1Output)
+}
+
+type MemberV1Output struct {
+	*pulumi.OutputState
+}
+
+func (MemberV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*MemberV1Output)(nil)).Elem()
+}
+
+func (o MemberV1Output) ToMemberV1Output() MemberV1Output {
+	return o
+}
+
+func (o MemberV1Output) ToMemberV1OutputWithContext(ctx context.Context) MemberV1Output {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(MemberV1Output{})
 }

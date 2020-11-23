@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -106,6 +107,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// This resource can be imported by specifying all three arguments, separated by a forward slash
+//
+// ```sh
+//  $ pulumi import openstack:compute/floatingIpAssociate:FloatingIpAssociate fip_1 <floating_ip>/<instance_id>/<fixed_ip>
 // ```
 type FloatingIpAssociate struct {
 	pulumi.CustomResourceState
@@ -224,4 +233,43 @@ type FloatingIpAssociateArgs struct {
 
 func (FloatingIpAssociateArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*floatingIpAssociateArgs)(nil)).Elem()
+}
+
+type FloatingIpAssociateInput interface {
+	pulumi.Input
+
+	ToFloatingIpAssociateOutput() FloatingIpAssociateOutput
+	ToFloatingIpAssociateOutputWithContext(ctx context.Context) FloatingIpAssociateOutput
+}
+
+func (FloatingIpAssociate) ElementType() reflect.Type {
+	return reflect.TypeOf((*FloatingIpAssociate)(nil)).Elem()
+}
+
+func (i FloatingIpAssociate) ToFloatingIpAssociateOutput() FloatingIpAssociateOutput {
+	return i.ToFloatingIpAssociateOutputWithContext(context.Background())
+}
+
+func (i FloatingIpAssociate) ToFloatingIpAssociateOutputWithContext(ctx context.Context) FloatingIpAssociateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FloatingIpAssociateOutput)
+}
+
+type FloatingIpAssociateOutput struct {
+	*pulumi.OutputState
+}
+
+func (FloatingIpAssociateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FloatingIpAssociateOutput)(nil)).Elem()
+}
+
+func (o FloatingIpAssociateOutput) ToFloatingIpAssociateOutput() FloatingIpAssociateOutput {
+	return o
+}
+
+func (o FloatingIpAssociateOutput) ToFloatingIpAssociateOutputWithContext(ctx context.Context) FloatingIpAssociateOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(FloatingIpAssociateOutput{})
 }

@@ -62,6 +62,14 @@ namespace Pulumi.OpenStack.Networking
     /// The `next_hop` IP address must be directly reachable from the router at the ``openstack.networking.RouterRoute``
     /// resource creation time.  You can ensure that by explicitly specifying a dependency on the ``openstack.networking.RouterInterface``
     /// resource that connects the next hop to the router, as in the example above.
+    /// 
+    /// ## Import
+    /// 
+    /// Routing entries can be imported using a combined ID using the following format``&lt;router_id&gt;-route-&lt;destination_cidr&gt;-&lt;next_hop&gt;``
+    /// 
+    /// ```sh
+    ///  $ pulumi import openstack:networking/routerRoute:RouterRoute router_route_1 686fe248-386c-4f70-9f6c-281607dad079-route-10.0.1.0/24-192.168.199.25
+    /// ```
     /// </summary>
     public partial class RouterRoute : Pulumi.CustomResource
     {

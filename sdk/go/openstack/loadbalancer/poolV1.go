@@ -4,6 +4,7 @@
 package loadbalancer
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -170,6 +171,14 @@ import (
 // ## Notes
 //
 // The `member` block is deprecated in favor of the `loadbalancer.MemberV1` resource.
+//
+// ## Import
+//
+// Load Balancer Pools can be imported using the `id`, e.g.
+//
+// ```sh
+//  $ pulumi import openstack:loadbalancer/poolV1:PoolV1 pool_1 b255e6ba-02ad-43e6-8951-3428ca26b713
+// ```
 type PoolV1 struct {
 	pulumi.CustomResourceState
 
@@ -370,4 +379,43 @@ type PoolV1Args struct {
 
 func (PoolV1Args) ElementType() reflect.Type {
 	return reflect.TypeOf((*poolV1Args)(nil)).Elem()
+}
+
+type PoolV1Input interface {
+	pulumi.Input
+
+	ToPoolV1Output() PoolV1Output
+	ToPoolV1OutputWithContext(ctx context.Context) PoolV1Output
+}
+
+func (PoolV1) ElementType() reflect.Type {
+	return reflect.TypeOf((*PoolV1)(nil)).Elem()
+}
+
+func (i PoolV1) ToPoolV1Output() PoolV1Output {
+	return i.ToPoolV1OutputWithContext(context.Background())
+}
+
+func (i PoolV1) ToPoolV1OutputWithContext(ctx context.Context) PoolV1Output {
+	return pulumi.ToOutputWithContext(ctx, i).(PoolV1Output)
+}
+
+type PoolV1Output struct {
+	*pulumi.OutputState
+}
+
+func (PoolV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*PoolV1Output)(nil)).Elem()
+}
+
+func (o PoolV1Output) ToPoolV1Output() PoolV1Output {
+	return o
+}
+
+func (o PoolV1Output) ToPoolV1OutputWithContext(ctx context.Context) PoolV1Output {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(PoolV1Output{})
 }

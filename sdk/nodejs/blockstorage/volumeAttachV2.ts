@@ -37,6 +37,10 @@ import * as utilities from "../utilities";
  *     volumeId: volume1.id,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * It is not possible to import this resource.
  */
 export class VolumeAttachV2 extends pulumi.CustomResource {
     /**

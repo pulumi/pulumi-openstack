@@ -47,6 +47,14 @@ class Vip(pulumi.CustomResource):
             subnet_id="12345")
         ```
 
+        ## Import
+
+        Load Balancer VIPs can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:loadbalancer/vip:Vip vip_1 50e16b26-89c1-475e-a492-76167182511e
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address: The IP address of the vip. Changing this creates a new

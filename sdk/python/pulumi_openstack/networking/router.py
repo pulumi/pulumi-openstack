@@ -48,6 +48,14 @@ class Router(pulumi.CustomResource):
             external_network_id="f67f0d72-0ddf-11e4-9d95-e1f29f417e2f")
         ```
 
+        ## Import
+
+        Routers can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:networking/router:Router router_1 014395cd-89fc-4c9b-96b7-13d1ee79dad2
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] admin_state_up: Administrative up/down status for the router
@@ -115,7 +123,7 @@ class Router(pulumi.CustomResource):
             __props__['enable_snat'] = enable_snat
             __props__['external_fixed_ips'] = external_fixed_ips
             if external_gateway is not None:
-                warnings.warn("use external_network_id instead", DeprecationWarning)
+                warnings.warn("""use external_network_id instead""", DeprecationWarning)
                 pulumi.log.warn("external_gateway is deprecated: use external_network_id instead")
             __props__['external_gateway'] = external_gateway
             __props__['external_network_id'] = external_network_id

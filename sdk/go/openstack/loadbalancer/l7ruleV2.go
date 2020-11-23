@@ -4,6 +4,7 @@
 package loadbalancer
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -83,6 +84,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Load Balancer L7 Rule can be imported using the L7 Policy ID and L7 Rule ID separated by a slash, e.g.
+//
+// ```sh
+//  $ pulumi import openstack:loadbalancer/l7RuleV2:L7RuleV2 l7rule_1 e0bd694a-abbe-450e-b329-0931fd1cc5eb/4086b0c9-b18c-4d1c-b6b8-4c56c3ad2a9e
 // ```
 type L7RuleV2 struct {
 	pulumi.CustomResourceState
@@ -303,4 +312,43 @@ type L7RuleV2Args struct {
 
 func (L7RuleV2Args) ElementType() reflect.Type {
 	return reflect.TypeOf((*l7ruleV2Args)(nil)).Elem()
+}
+
+type L7RuleV2Input interface {
+	pulumi.Input
+
+	ToL7RuleV2Output() L7RuleV2Output
+	ToL7RuleV2OutputWithContext(ctx context.Context) L7RuleV2Output
+}
+
+func (L7RuleV2) ElementType() reflect.Type {
+	return reflect.TypeOf((*L7RuleV2)(nil)).Elem()
+}
+
+func (i L7RuleV2) ToL7RuleV2Output() L7RuleV2Output {
+	return i.ToL7RuleV2OutputWithContext(context.Background())
+}
+
+func (i L7RuleV2) ToL7RuleV2OutputWithContext(ctx context.Context) L7RuleV2Output {
+	return pulumi.ToOutputWithContext(ctx, i).(L7RuleV2Output)
+}
+
+type L7RuleV2Output struct {
+	*pulumi.OutputState
+}
+
+func (L7RuleV2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*L7RuleV2Output)(nil)).Elem()
+}
+
+func (o L7RuleV2Output) ToL7RuleV2Output() L7RuleV2Output {
+	return o
+}
+
+func (o L7RuleV2Output) ToL7RuleV2OutputWithContext(ctx context.Context) L7RuleV2Output {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(L7RuleV2Output{})
 }

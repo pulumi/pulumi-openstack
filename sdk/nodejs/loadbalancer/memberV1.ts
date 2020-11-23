@@ -19,6 +19,14 @@ import * as utilities from "../utilities";
  *     port: 80,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Load Balancer Members can be imported using the `id`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import openstack:loadbalancer/memberV1:MemberV1 member_1 a7498676-4fe4-4243-a864-2eaaf18c73df
+ * ```
  */
 export class MemberV1 extends pulumi.CustomResource {
     /**

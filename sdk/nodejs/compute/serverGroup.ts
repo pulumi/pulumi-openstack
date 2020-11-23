@@ -34,6 +34,14 @@ import * as utilities from "../utilities";
  *   hosted on different compute nodes if possible, but if not possible they
  *   still will be scheduled instead of failure. To use this policy your
  *   OpenStack environment should support Compute service API 2.15 or above.
+ *
+ * ## Import
+ *
+ * Server Groups can be imported using the `id`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import openstack:compute/serverGroup:ServerGroup test-sg 1bc30ee9-9d5b-4c30-bdd5-7f1e663f5edf
+ * ```
  */
 export class ServerGroup extends pulumi.CustomResource {
     /**

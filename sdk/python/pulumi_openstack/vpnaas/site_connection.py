@@ -58,6 +58,14 @@ class SiteConnection(pulumi.CustomResource):
             vpnservice_id=openstack_vpnaas_service_v2["service_1"]["id"])
         ```
 
+        ## Import
+
+        Site Connections can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:vpnaas/siteConnection:SiteConnection conn_1 832cb7f3-59fe-40cf-8f64-8350ffc03272
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] admin_state_up: The administrative state of the resource. Can either be up(true) or down(false).

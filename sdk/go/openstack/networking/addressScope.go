@@ -4,6 +4,7 @@
 package networking
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -65,6 +66,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Address-scopes can be imported using the `id`, e.g.
+//
+// ```sh
+//  $ pulumi import openstack:networking/addressScope:AddressScope addressscope_1 9cc35860-522a-4d35-974d-51d4b011801e
 // ```
 type AddressScope struct {
 	pulumi.CustomResourceState
@@ -212,4 +221,43 @@ type AddressScopeArgs struct {
 
 func (AddressScopeArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*addressScopeArgs)(nil)).Elem()
+}
+
+type AddressScopeInput interface {
+	pulumi.Input
+
+	ToAddressScopeOutput() AddressScopeOutput
+	ToAddressScopeOutputWithContext(ctx context.Context) AddressScopeOutput
+}
+
+func (AddressScope) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddressScope)(nil)).Elem()
+}
+
+func (i AddressScope) ToAddressScopeOutput() AddressScopeOutput {
+	return i.ToAddressScopeOutputWithContext(context.Background())
+}
+
+func (i AddressScope) ToAddressScopeOutputWithContext(ctx context.Context) AddressScopeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddressScopeOutput)
+}
+
+type AddressScopeOutput struct {
+	*pulumi.OutputState
+}
+
+func (AddressScopeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddressScopeOutput)(nil)).Elem()
+}
+
+func (o AddressScopeOutput) ToAddressScopeOutput() AddressScopeOutput {
+	return o
+}
+
+func (o AddressScopeOutput) ToAddressScopeOutputWithContext(ctx context.Context) AddressScopeOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AddressScopeOutput{})
 }

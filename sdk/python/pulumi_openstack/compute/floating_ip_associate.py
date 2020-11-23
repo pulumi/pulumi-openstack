@@ -70,6 +70,14 @@ class FloatingIpAssociate(pulumi.CustomResource):
             instance_id=instance1.id)
         ```
 
+        ## Import
+
+        This resource can be imported by specifying all three arguments, separated by a forward slash
+
+        ```sh
+         $ pulumi import openstack:compute/floatingIpAssociate:FloatingIpAssociate fip_1 <floating_ip>/<instance_id>/<fixed_ip>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] fixed_ip: The specific IP address to direct traffic to.

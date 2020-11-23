@@ -41,6 +41,14 @@ class Project(pulumi.CustomResource):
         project1 = openstack.identity.Project("project1", description="A project")
         ```
 
+        ## Import
+
+        Projects can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:identity/project:Project project_1 89c60255-9bd6-460c-822a-e2b959ede9d2
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description of the project.

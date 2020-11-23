@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -65,6 +64,14 @@ import * as utilities from "../utilities";
  *     keyPair: "my_key_pair_name",
  *     securityGroups: [openstack_compute_secgroup_v2_secgroup_1.name],
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * Security Groups can be imported using the `id`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import openstack:compute/secGroup:SecGroup my_secgroup 1bc30ee9-9d5b-4c30-bdd5-7f1e663f5edf
  * ```
  */
 export class SecGroup extends pulumi.CustomResource {

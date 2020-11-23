@@ -45,6 +45,14 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Router Interfaces can be imported using the port `id`, e.g. $ openstack port list --router &lt;router name or id&gt;
+    /// 
+    /// ```sh
+    ///  $ pulumi import openstack:networking/routerInterface:RouterInterface int_1 &lt;port id from above output&gt;
+    /// ```
     /// </summary>
     public partial class RouterInterface : Pulumi.CustomResource
     {

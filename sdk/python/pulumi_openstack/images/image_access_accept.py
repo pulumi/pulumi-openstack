@@ -42,6 +42,14 @@ class ImageAccessAccept(pulumi.CustomResource):
             status="accepted")
         ```
 
+        ## Import
+
+        Image access acceptance status can be imported using the `image_id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:images/imageAccessAccept:ImageAccessAccept openstack_images_image_access_accept_v2 89c60255-9bd6-460c-822a-e2b959ede9d2
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] image_id: The proposed image ID.

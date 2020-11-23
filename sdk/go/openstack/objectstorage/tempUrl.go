@@ -4,6 +4,7 @@
 package objectstorage
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -209,4 +210,43 @@ type TempUrlArgs struct {
 
 func (TempUrlArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*tempUrlArgs)(nil)).Elem()
+}
+
+type TempUrlInput interface {
+	pulumi.Input
+
+	ToTempUrlOutput() TempUrlOutput
+	ToTempUrlOutputWithContext(ctx context.Context) TempUrlOutput
+}
+
+func (TempUrl) ElementType() reflect.Type {
+	return reflect.TypeOf((*TempUrl)(nil)).Elem()
+}
+
+func (i TempUrl) ToTempUrlOutput() TempUrlOutput {
+	return i.ToTempUrlOutputWithContext(context.Background())
+}
+
+func (i TempUrl) ToTempUrlOutputWithContext(ctx context.Context) TempUrlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TempUrlOutput)
+}
+
+type TempUrlOutput struct {
+	*pulumi.OutputState
+}
+
+func (TempUrlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TempUrlOutput)(nil)).Elem()
+}
+
+func (o TempUrlOutput) ToTempUrlOutput() TempUrlOutput {
+	return o
+}
+
+func (o TempUrlOutput) ToTempUrlOutputWithContext(ctx context.Context) TempUrlOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(TempUrlOutput{})
 }

@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -16,6 +15,14 @@ import * as utilities from "../utilities";
  * import * as openstack from "@pulumi/openstack";
  *
  * const policy1 = new openstack.vpnaas.IpSecPolicy("policy_1", {});
+ * ```
+ *
+ * ## Import
+ *
+ * Policies can be imported using the `id`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import openstack:vpnaas/ipSecPolicy:IpSecPolicy policy_1 832cb7f3-59fe-40cf-8f64-8350ffc03272
  * ```
  */
 export class IpSecPolicy extends pulumi.CustomResource {

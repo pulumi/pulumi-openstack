@@ -4,6 +4,7 @@
 package networking
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -43,6 +44,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// QoS bandwidth limit rules can be imported using the `qos_policy_id/bandwidth_limit_rule` format, e.g.
+//
+// ```sh
+//  $ pulumi import openstack:networking/qosBandwidthLimitRule:QosBandwidthLimitRule bw_limit_rule_1 d6ae28ce-fcb5-4180-aa62-d260a27e09ae/46dfb556-b92f-48ce-94c5-9a9e2140de94
 // ```
 type QosBandwidthLimitRule struct {
 	pulumi.CustomResourceState
@@ -176,4 +185,43 @@ type QosBandwidthLimitRuleArgs struct {
 
 func (QosBandwidthLimitRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*qosBandwidthLimitRuleArgs)(nil)).Elem()
+}
+
+type QosBandwidthLimitRuleInput interface {
+	pulumi.Input
+
+	ToQosBandwidthLimitRuleOutput() QosBandwidthLimitRuleOutput
+	ToQosBandwidthLimitRuleOutputWithContext(ctx context.Context) QosBandwidthLimitRuleOutput
+}
+
+func (QosBandwidthLimitRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*QosBandwidthLimitRule)(nil)).Elem()
+}
+
+func (i QosBandwidthLimitRule) ToQosBandwidthLimitRuleOutput() QosBandwidthLimitRuleOutput {
+	return i.ToQosBandwidthLimitRuleOutputWithContext(context.Background())
+}
+
+func (i QosBandwidthLimitRule) ToQosBandwidthLimitRuleOutputWithContext(ctx context.Context) QosBandwidthLimitRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QosBandwidthLimitRuleOutput)
+}
+
+type QosBandwidthLimitRuleOutput struct {
+	*pulumi.OutputState
+}
+
+func (QosBandwidthLimitRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QosBandwidthLimitRuleOutput)(nil)).Elem()
+}
+
+func (o QosBandwidthLimitRuleOutput) ToQosBandwidthLimitRuleOutput() QosBandwidthLimitRuleOutput {
+	return o
+}
+
+func (o QosBandwidthLimitRuleOutput) ToQosBandwidthLimitRuleOutputWithContext(ctx context.Context) QosBandwidthLimitRuleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(QosBandwidthLimitRuleOutput{})
 }

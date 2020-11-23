@@ -29,6 +29,14 @@ namespace Pulumi.OpenStack.VPNaaS
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Services can be imported using the `id`, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import openstack:vpnaas/ikePolicy:IkePolicy policy_1 832cb7f3-59fe-40cf-8f64-8350ffc03272
+    /// ```
     /// </summary>
     public partial class IkePolicy : Pulumi.CustomResource
     {

@@ -4,6 +4,7 @@
 package networking
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -47,6 +48,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Security Group Rules can be imported using the `id`, e.g.
+//
+// ```sh
+//  $ pulumi import openstack:networking/secGroupRule:SecGroupRule secgroup_rule_1 aeb68ee3-6e9d-4256-955c-9584a6212745
 // ```
 type SecGroupRule struct {
 	pulumi.CustomResourceState
@@ -403,4 +412,43 @@ type SecGroupRuleArgs struct {
 
 func (SecGroupRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*secGroupRuleArgs)(nil)).Elem()
+}
+
+type SecGroupRuleInput interface {
+	pulumi.Input
+
+	ToSecGroupRuleOutput() SecGroupRuleOutput
+	ToSecGroupRuleOutputWithContext(ctx context.Context) SecGroupRuleOutput
+}
+
+func (SecGroupRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecGroupRule)(nil)).Elem()
+}
+
+func (i SecGroupRule) ToSecGroupRuleOutput() SecGroupRuleOutput {
+	return i.ToSecGroupRuleOutputWithContext(context.Background())
+}
+
+func (i SecGroupRule) ToSecGroupRuleOutputWithContext(ctx context.Context) SecGroupRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecGroupRuleOutput)
+}
+
+type SecGroupRuleOutput struct {
+	*pulumi.OutputState
+}
+
+func (SecGroupRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecGroupRuleOutput)(nil)).Elem()
+}
+
+func (o SecGroupRuleOutput) ToSecGroupRuleOutput() SecGroupRuleOutput {
+	return o
+}
+
+func (o SecGroupRuleOutput) ToSecGroupRuleOutputWithContext(ctx context.Context) SecGroupRuleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SecGroupRuleOutput{})
 }

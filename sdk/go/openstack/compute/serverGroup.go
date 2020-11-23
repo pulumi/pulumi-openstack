@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -52,6 +53,14 @@ import (
 //   hosted on different compute nodes if possible, but if not possible they
 //   still will be scheduled instead of failure. To use this policy your
 //   OpenStack environment should support Compute service API 2.15 or above.
+//
+// ## Import
+//
+// Server Groups can be imported using the `id`, e.g.
+//
+// ```sh
+//  $ pulumi import openstack:compute/serverGroup:ServerGroup test-sg 1bc30ee9-9d5b-4c30-bdd5-7f1e663f5edf
+// ```
 type ServerGroup struct {
 	pulumi.CustomResourceState
 
@@ -174,4 +183,43 @@ type ServerGroupArgs struct {
 
 func (ServerGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*serverGroupArgs)(nil)).Elem()
+}
+
+type ServerGroupInput interface {
+	pulumi.Input
+
+	ToServerGroupOutput() ServerGroupOutput
+	ToServerGroupOutputWithContext(ctx context.Context) ServerGroupOutput
+}
+
+func (ServerGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerGroup)(nil)).Elem()
+}
+
+func (i ServerGroup) ToServerGroupOutput() ServerGroupOutput {
+	return i.ToServerGroupOutputWithContext(context.Background())
+}
+
+func (i ServerGroup) ToServerGroupOutputWithContext(ctx context.Context) ServerGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerGroupOutput)
+}
+
+type ServerGroupOutput struct {
+	*pulumi.OutputState
+}
+
+func (ServerGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerGroupOutput)(nil)).Elem()
+}
+
+func (o ServerGroupOutput) ToServerGroupOutput() ServerGroupOutput {
+	return o
+}
+
+func (o ServerGroupOutput) ToServerGroupOutputWithContext(ctx context.Context) ServerGroupOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ServerGroupOutput{})
 }

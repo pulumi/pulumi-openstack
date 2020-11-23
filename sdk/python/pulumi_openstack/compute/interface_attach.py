@@ -69,6 +69,14 @@ class InterfaceAttach(pulumi.CustomResource):
             port_id=port1.id)
         ```
 
+        ## Import
+
+        Interface Attachments can be imported using the Instance ID and Port ID separated by a slash, e.g.
+
+        ```sh
+         $ pulumi import openstack:compute/interfaceAttach:InterfaceAttach ai_1 89c60255-9bd6-460c-822a-e2b959ede9d2/45670584-225f-46c3-b33e-6707b589b666
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] fixed_ip: An IP address to assosciate with the port.

@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.OpenStack.Compute
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// Keypairs can be imported using the `name`, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import openstack:compute/keypair:Keypair my-keypair test-keypair
+    /// ```
+    /// </summary>
     public partial class Keypair : Pulumi.CustomResource
     {
         /// <summary>

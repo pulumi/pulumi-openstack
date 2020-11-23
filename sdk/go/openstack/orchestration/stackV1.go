@@ -4,6 +4,7 @@
 package orchestration
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -45,6 +46,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// stacks can be imported using the `id`, e.g.
+//
+// ```sh
+//  $ pulumi import openstack:orchestration/stackV1:StackV1 stack_1 ea257959-eeb1-4c10-8d33-26f0409a755d
 // ```
 type StackV1 struct {
 	pulumi.CustomResourceState
@@ -360,4 +369,43 @@ type StackV1Args struct {
 
 func (StackV1Args) ElementType() reflect.Type {
 	return reflect.TypeOf((*stackV1Args)(nil)).Elem()
+}
+
+type StackV1Input interface {
+	pulumi.Input
+
+	ToStackV1Output() StackV1Output
+	ToStackV1OutputWithContext(ctx context.Context) StackV1Output
+}
+
+func (StackV1) ElementType() reflect.Type {
+	return reflect.TypeOf((*StackV1)(nil)).Elem()
+}
+
+func (i StackV1) ToStackV1Output() StackV1Output {
+	return i.ToStackV1OutputWithContext(context.Background())
+}
+
+func (i StackV1) ToStackV1OutputWithContext(ctx context.Context) StackV1Output {
+	return pulumi.ToOutputWithContext(ctx, i).(StackV1Output)
+}
+
+type StackV1Output struct {
+	*pulumi.OutputState
+}
+
+func (StackV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*StackV1Output)(nil)).Elem()
+}
+
+func (o StackV1Output) ToStackV1Output() StackV1Output {
+	return o
+}
+
+func (o StackV1Output) ToStackV1OutputWithContext(ctx context.Context) StackV1Output {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(StackV1Output{})
 }

@@ -4,6 +4,7 @@
 package objectstorage
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -466,4 +467,43 @@ type ContainerObjectArgs struct {
 
 func (ContainerObjectArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*containerObjectArgs)(nil)).Elem()
+}
+
+type ContainerObjectInput interface {
+	pulumi.Input
+
+	ToContainerObjectOutput() ContainerObjectOutput
+	ToContainerObjectOutputWithContext(ctx context.Context) ContainerObjectOutput
+}
+
+func (ContainerObject) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerObject)(nil)).Elem()
+}
+
+func (i ContainerObject) ToContainerObjectOutput() ContainerObjectOutput {
+	return i.ToContainerObjectOutputWithContext(context.Background())
+}
+
+func (i ContainerObject) ToContainerObjectOutputWithContext(ctx context.Context) ContainerObjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerObjectOutput)
+}
+
+type ContainerObjectOutput struct {
+	*pulumi.OutputState
+}
+
+func (ContainerObjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerObjectOutput)(nil)).Elem()
+}
+
+func (o ContainerObjectOutput) ToContainerObjectOutput() ContainerObjectOutput {
+	return o
+}
+
+func (o ContainerObjectOutput) ToContainerObjectOutputWithContext(ctx context.Context) ContainerObjectOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ContainerObjectOutput{})
 }

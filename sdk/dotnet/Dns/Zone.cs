@@ -34,6 +34,18 @@ namespace Pulumi.OpenStack.Dns
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// This resource can be imported by specifying the zone ID with optional project ID
+    /// 
+    /// ```sh
+    ///  $ pulumi import openstack:dns/zone:Zone zone_1 &lt;zone_id&gt;
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import openstack:dns/zone:Zone zone_1 &lt;zone_id&gt;:&lt;project_id&gt;
+    /// ```
     /// </summary>
     public partial class Zone : Pulumi.CustomResource
     {

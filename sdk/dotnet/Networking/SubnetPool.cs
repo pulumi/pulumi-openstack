@@ -67,6 +67,14 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Subnetpools can be imported using the `id`, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import openstack:networking/subnetPool:SubnetPool subnetpool_1 832cb7f3-59fe-40cf-8f64-8350ffc03272
+    /// ```
     /// </summary>
     public partial class SubnetPool : Pulumi.CustomResource
     {

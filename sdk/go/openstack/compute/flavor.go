@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -39,6 +40,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Flavors can be imported using the `ID`, e.g.
+//
+// ```sh
+//  $ pulumi import openstack:compute/flavor:Flavor my-flavor 4142e64b-1b35-44a0-9b1e-5affc7af1106
 // ```
 type Flavor struct {
 	pulumi.CustomResourceState
@@ -245,4 +254,43 @@ type FlavorArgs struct {
 
 func (FlavorArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*flavorArgs)(nil)).Elem()
+}
+
+type FlavorInput interface {
+	pulumi.Input
+
+	ToFlavorOutput() FlavorOutput
+	ToFlavorOutputWithContext(ctx context.Context) FlavorOutput
+}
+
+func (Flavor) ElementType() reflect.Type {
+	return reflect.TypeOf((*Flavor)(nil)).Elem()
+}
+
+func (i Flavor) ToFlavorOutput() FlavorOutput {
+	return i.ToFlavorOutputWithContext(context.Background())
+}
+
+func (i Flavor) ToFlavorOutputWithContext(ctx context.Context) FlavorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlavorOutput)
+}
+
+type FlavorOutput struct {
+	*pulumi.OutputState
+}
+
+func (FlavorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlavorOutput)(nil)).Elem()
+}
+
+func (o FlavorOutput) ToFlavorOutput() FlavorOutput {
+	return o
+}
+
+func (o FlavorOutput) ToFlavorOutputWithContext(ctx context.Context) FlavorOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(FlavorOutput{})
 }

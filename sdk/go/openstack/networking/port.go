@@ -4,6 +4,7 @@
 package networking
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -87,6 +88,14 @@ import (
 // There are some notes to consider when connecting Instances to networks using
 // Ports. Please see the `compute.Instance` documentation for further
 // documentation.
+//
+// ## Import
+//
+// Ports can be imported using the `id`, e.g.
+//
+// ```sh
+//  $ pulumi import openstack:networking/port:Port port_1 eae26a3e-1c33-4cc1-9c31-0cd729c438a1
+// ```
 type Port struct {
 	pulumi.CustomResourceState
 
@@ -539,4 +548,43 @@ type PortArgs struct {
 
 func (PortArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*portArgs)(nil)).Elem()
+}
+
+type PortInput interface {
+	pulumi.Input
+
+	ToPortOutput() PortOutput
+	ToPortOutputWithContext(ctx context.Context) PortOutput
+}
+
+func (Port) ElementType() reflect.Type {
+	return reflect.TypeOf((*Port)(nil)).Elem()
+}
+
+func (i Port) ToPortOutput() PortOutput {
+	return i.ToPortOutputWithContext(context.Background())
+}
+
+func (i Port) ToPortOutputWithContext(ctx context.Context) PortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortOutput)
+}
+
+type PortOutput struct {
+	*pulumi.OutputState
+}
+
+func (PortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PortOutput)(nil)).Elem()
+}
+
+func (o PortOutput) ToPortOutput() PortOutput {
+	return o
+}
+
+func (o PortOutput) ToPortOutputWithContext(ctx context.Context) PortOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(PortOutput{})
 }

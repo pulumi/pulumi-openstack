@@ -4,6 +4,7 @@
 package objectstorage
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -120,6 +121,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// This resource can be imported by specifying the name of the containerSome attributes can't be imported * `force_destroy` * `content_type` * `metadata` * `container_sync_to` * `container_sync_key` So you'll have to `terraform plan` and `terraform apply` after the import to fix those missing attributes.
+//
+// ```sh
+//  $ pulumi import openstack:objectstorage/container:Container container_1 <name>
 // ```
 type Container struct {
 	pulumi.CustomResourceState
@@ -327,4 +336,43 @@ type ContainerArgs struct {
 
 func (ContainerArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*containerArgs)(nil)).Elem()
+}
+
+type ContainerInput interface {
+	pulumi.Input
+
+	ToContainerOutput() ContainerOutput
+	ToContainerOutputWithContext(ctx context.Context) ContainerOutput
+}
+
+func (Container) ElementType() reflect.Type {
+	return reflect.TypeOf((*Container)(nil)).Elem()
+}
+
+func (i Container) ToContainerOutput() ContainerOutput {
+	return i.ToContainerOutputWithContext(context.Background())
+}
+
+func (i Container) ToContainerOutputWithContext(ctx context.Context) ContainerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerOutput)
+}
+
+type ContainerOutput struct {
+	*pulumi.OutputState
+}
+
+func (ContainerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerOutput)(nil)).Elem()
+}
+
+func (o ContainerOutput) ToContainerOutput() ContainerOutput {
+	return o
+}
+
+func (o ContainerOutput) ToContainerOutputWithContext(ctx context.Context) ContainerOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ContainerOutput{})
 }

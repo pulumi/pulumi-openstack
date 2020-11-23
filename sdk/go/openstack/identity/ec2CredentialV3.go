@@ -4,6 +4,7 @@
 package identity
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -59,6 +60,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// EC2 Credentials can be imported using the `access`, e.g.
+//
+// ```sh
+//  $ pulumi import openstack:identity/ec2CredentialV3:Ec2CredentialV3 ec2_cred_1 2d0ac4a2f81b4b0f9513ee49e780647d
 // ```
 type Ec2CredentialV3 struct {
 	pulumi.CustomResourceState
@@ -179,4 +188,43 @@ type Ec2CredentialV3Args struct {
 
 func (Ec2CredentialV3Args) ElementType() reflect.Type {
 	return reflect.TypeOf((*ec2CredentialV3Args)(nil)).Elem()
+}
+
+type Ec2CredentialV3Input interface {
+	pulumi.Input
+
+	ToEc2CredentialV3Output() Ec2CredentialV3Output
+	ToEc2CredentialV3OutputWithContext(ctx context.Context) Ec2CredentialV3Output
+}
+
+func (Ec2CredentialV3) ElementType() reflect.Type {
+	return reflect.TypeOf((*Ec2CredentialV3)(nil)).Elem()
+}
+
+func (i Ec2CredentialV3) ToEc2CredentialV3Output() Ec2CredentialV3Output {
+	return i.ToEc2CredentialV3OutputWithContext(context.Background())
+}
+
+func (i Ec2CredentialV3) ToEc2CredentialV3OutputWithContext(ctx context.Context) Ec2CredentialV3Output {
+	return pulumi.ToOutputWithContext(ctx, i).(Ec2CredentialV3Output)
+}
+
+type Ec2CredentialV3Output struct {
+	*pulumi.OutputState
+}
+
+func (Ec2CredentialV3Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*Ec2CredentialV3Output)(nil)).Elem()
+}
+
+func (o Ec2CredentialV3Output) ToEc2CredentialV3Output() Ec2CredentialV3Output {
+	return o
+}
+
+func (o Ec2CredentialV3Output) ToEc2CredentialV3OutputWithContext(ctx context.Context) Ec2CredentialV3Output {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(Ec2CredentialV3Output{})
 }

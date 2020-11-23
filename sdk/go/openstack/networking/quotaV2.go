@@ -4,6 +4,7 @@
 package networking
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -55,6 +56,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Quotas can be imported using the `project_id`, e.g.
+//
+// ```sh
+//  $ pulumi import openstack:networking/quotaV2:QuotaV2 quota_1 2a0f2240-c5e6-41de-896d-e80d97428d6b
 // ```
 type QuotaV2 struct {
 	pulumi.CustomResourceState
@@ -280,4 +289,43 @@ type QuotaV2Args struct {
 
 func (QuotaV2Args) ElementType() reflect.Type {
 	return reflect.TypeOf((*quotaV2Args)(nil)).Elem()
+}
+
+type QuotaV2Input interface {
+	pulumi.Input
+
+	ToQuotaV2Output() QuotaV2Output
+	ToQuotaV2OutputWithContext(ctx context.Context) QuotaV2Output
+}
+
+func (QuotaV2) ElementType() reflect.Type {
+	return reflect.TypeOf((*QuotaV2)(nil)).Elem()
+}
+
+func (i QuotaV2) ToQuotaV2Output() QuotaV2Output {
+	return i.ToQuotaV2OutputWithContext(context.Background())
+}
+
+func (i QuotaV2) ToQuotaV2OutputWithContext(ctx context.Context) QuotaV2Output {
+	return pulumi.ToOutputWithContext(ctx, i).(QuotaV2Output)
+}
+
+type QuotaV2Output struct {
+	*pulumi.OutputState
+}
+
+func (QuotaV2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*QuotaV2Output)(nil)).Elem()
+}
+
+func (o QuotaV2Output) ToQuotaV2Output() QuotaV2Output {
+	return o
+}
+
+func (o QuotaV2Output) ToQuotaV2OutputWithContext(ctx context.Context) QuotaV2Output {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(QuotaV2Output{})
 }

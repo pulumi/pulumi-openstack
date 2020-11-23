@@ -4,11 +4,19 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// Keypairs can be imported using the `name`, e.g.
+//
+// ```sh
+//  $ pulumi import openstack:compute/keypair:Keypair my-keypair test-keypair
+// ```
 type Keypair struct {
 	pulumi.CustomResourceState
 
@@ -152,4 +160,43 @@ type KeypairArgs struct {
 
 func (KeypairArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*keypairArgs)(nil)).Elem()
+}
+
+type KeypairInput interface {
+	pulumi.Input
+
+	ToKeypairOutput() KeypairOutput
+	ToKeypairOutputWithContext(ctx context.Context) KeypairOutput
+}
+
+func (Keypair) ElementType() reflect.Type {
+	return reflect.TypeOf((*Keypair)(nil)).Elem()
+}
+
+func (i Keypair) ToKeypairOutput() KeypairOutput {
+	return i.ToKeypairOutputWithContext(context.Background())
+}
+
+func (i Keypair) ToKeypairOutputWithContext(ctx context.Context) KeypairOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeypairOutput)
+}
+
+type KeypairOutput struct {
+	*pulumi.OutputState
+}
+
+func (KeypairOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeypairOutput)(nil)).Elem()
+}
+
+func (o KeypairOutput) ToKeypairOutput() KeypairOutput {
+	return o
+}
+
+func (o KeypairOutput) ToKeypairOutputWithContext(ctx context.Context) KeypairOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(KeypairOutput{})
 }

@@ -4,6 +4,7 @@
 package networking
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -41,6 +42,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// QoS DSCP marking rules can be imported using the `qos_policy_id/dscp_marking_rule_id` format, e.g.
+//
+// ```sh
+//  $ pulumi import openstack:networking/qosDscpMarkingRule:QosDscpMarkingRule dscp_marking_rule_1 d6ae28ce-fcb5-4180-aa62-d260a27e09ae/46dfb556-b92f-48ce-94c5-9a9e2140de94
 // ```
 type QosDscpMarkingRule struct {
 	pulumi.CustomResourceState
@@ -144,4 +153,43 @@ type QosDscpMarkingRuleArgs struct {
 
 func (QosDscpMarkingRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*qosDscpMarkingRuleArgs)(nil)).Elem()
+}
+
+type QosDscpMarkingRuleInput interface {
+	pulumi.Input
+
+	ToQosDscpMarkingRuleOutput() QosDscpMarkingRuleOutput
+	ToQosDscpMarkingRuleOutputWithContext(ctx context.Context) QosDscpMarkingRuleOutput
+}
+
+func (QosDscpMarkingRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*QosDscpMarkingRule)(nil)).Elem()
+}
+
+func (i QosDscpMarkingRule) ToQosDscpMarkingRuleOutput() QosDscpMarkingRuleOutput {
+	return i.ToQosDscpMarkingRuleOutputWithContext(context.Background())
+}
+
+func (i QosDscpMarkingRule) ToQosDscpMarkingRuleOutputWithContext(ctx context.Context) QosDscpMarkingRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QosDscpMarkingRuleOutput)
+}
+
+type QosDscpMarkingRuleOutput struct {
+	*pulumi.OutputState
+}
+
+func (QosDscpMarkingRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QosDscpMarkingRuleOutput)(nil)).Elem()
+}
+
+func (o QosDscpMarkingRuleOutput) ToQosDscpMarkingRuleOutput() QosDscpMarkingRuleOutput {
+	return o
+}
+
+func (o QosDscpMarkingRuleOutput) ToQosDscpMarkingRuleOutputWithContext(ctx context.Context) QosDscpMarkingRuleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(QosDscpMarkingRuleOutput{})
 }

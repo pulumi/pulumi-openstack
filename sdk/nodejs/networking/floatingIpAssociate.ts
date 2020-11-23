@@ -23,6 +23,14 @@ import * as utilities from "../utilities";
  *     portId: port1.id,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Floating IP associations can be imported using the `id` of the floating IP, e.g.
+ *
+ * ```sh
+ *  $ pulumi import openstack:networking/floatingIpAssociate:FloatingIpAssociate fip 2c7f39f3-702b-48d1-940c-b50384177ee1
+ * ```
  */
 export class FloatingIpAssociate extends pulumi.CustomResource {
     /**

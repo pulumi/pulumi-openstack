@@ -61,6 +61,10 @@ class VolumeAttachV2(pulumi.CustomResource):
             volume_id=volume1.id)
         ```
 
+        ## Import
+
+        It is not possible to import this resource.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] attach_mode: Specify whether to attach the volume as Read-Only

@@ -18,6 +18,14 @@ import * as utilities from "../utilities";
  *     routerId: "14a75700-fc03-4602-9294-26ee44f366b3",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Services can be imported using the `id`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import openstack:vpnaas/service:Service service_1 832cb7f3-59fe-40cf-8f64-8350ffc03272
+ * ```
  */
 export class Service extends pulumi.CustomResource {
     /**

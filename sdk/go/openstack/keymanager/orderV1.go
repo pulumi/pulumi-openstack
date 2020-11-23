@@ -4,6 +4,7 @@
 package keymanager
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -67,6 +68,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Orders can be imported using the order id (the last part of the order reference), e.g.
+//
+// ```sh
+//  $ pulumi import openstack:keymanager/orderV1:OrderV1 order_1 0c6cd26a-c012-4d7b-8034-057c0f1c2953
 // ```
 type OrderV1 struct {
 	pulumi.CustomResourceState
@@ -224,4 +233,43 @@ type OrderV1Args struct {
 
 func (OrderV1Args) ElementType() reflect.Type {
 	return reflect.TypeOf((*orderV1Args)(nil)).Elem()
+}
+
+type OrderV1Input interface {
+	pulumi.Input
+
+	ToOrderV1Output() OrderV1Output
+	ToOrderV1OutputWithContext(ctx context.Context) OrderV1Output
+}
+
+func (OrderV1) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrderV1)(nil)).Elem()
+}
+
+func (i OrderV1) ToOrderV1Output() OrderV1Output {
+	return i.ToOrderV1OutputWithContext(context.Background())
+}
+
+func (i OrderV1) ToOrderV1OutputWithContext(ctx context.Context) OrderV1Output {
+	return pulumi.ToOutputWithContext(ctx, i).(OrderV1Output)
+}
+
+type OrderV1Output struct {
+	*pulumi.OutputState
+}
+
+func (OrderV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrderV1Output)(nil)).Elem()
+}
+
+func (o OrderV1Output) ToOrderV1Output() OrderV1Output {
+	return o
+}
+
+func (o OrderV1Output) ToOrderV1OutputWithContext(ctx context.Context) OrderV1Output {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(OrderV1Output{})
 }

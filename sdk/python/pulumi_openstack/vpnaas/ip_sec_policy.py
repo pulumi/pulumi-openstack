@@ -43,6 +43,14 @@ class IpSecPolicy(pulumi.CustomResource):
         policy1 = openstack.vpnaas.IpSecPolicy("policy1")
         ```
 
+        ## Import
+
+        Policies can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:vpnaas/ipSecPolicy:IpSecPolicy policy_1 832cb7f3-59fe-40cf-8f64-8350ffc03272
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] auth_algorithm: The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.

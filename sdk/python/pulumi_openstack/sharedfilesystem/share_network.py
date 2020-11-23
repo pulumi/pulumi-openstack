@@ -74,6 +74,14 @@ class ShareNetwork(pulumi.CustomResource):
             security_service_ids=[securityservice1.id])
         ```
 
+        ## Import
+
+        This resource can be imported by specifying the ID of the share network
+
+        ```sh
+         $ pulumi import openstack:sharedfilesystem/shareNetwork:ShareNetwork sharenetwork_1 <id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The human-readable description for the share network.

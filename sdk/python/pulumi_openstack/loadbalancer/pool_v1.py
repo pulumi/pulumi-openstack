@@ -115,6 +115,14 @@ class PoolV1(pulumi.CustomResource):
 
         The `member` block is deprecated in favor of the `loadbalancer.MemberV1` resource.
 
+        ## Import
+
+        Load Balancer Pools can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:loadbalancer/poolV1:PoolV1 pool_1 b255e6ba-02ad-43e6-8951-3428ca26b713
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] lb_method: The algorithm used to distribute load between the

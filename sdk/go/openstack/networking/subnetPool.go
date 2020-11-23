@@ -4,6 +4,7 @@
 package networking
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -76,6 +77,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Subnetpools can be imported using the `id`, e.g.
+//
+// ```sh
+//  $ pulumi import openstack:networking/subnetPool:SubnetPool subnetpool_1 832cb7f3-59fe-40cf-8f64-8350ffc03272
 // ```
 type SubnetPool struct {
 	pulumi.CustomResourceState
@@ -438,4 +447,43 @@ type SubnetPoolArgs struct {
 
 func (SubnetPoolArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*subnetPoolArgs)(nil)).Elem()
+}
+
+type SubnetPoolInput interface {
+	pulumi.Input
+
+	ToSubnetPoolOutput() SubnetPoolOutput
+	ToSubnetPoolOutputWithContext(ctx context.Context) SubnetPoolOutput
+}
+
+func (SubnetPool) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubnetPool)(nil)).Elem()
+}
+
+func (i SubnetPool) ToSubnetPoolOutput() SubnetPoolOutput {
+	return i.ToSubnetPoolOutputWithContext(context.Background())
+}
+
+func (i SubnetPool) ToSubnetPoolOutputWithContext(ctx context.Context) SubnetPoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetPoolOutput)
+}
+
+type SubnetPoolOutput struct {
+	*pulumi.OutputState
+}
+
+func (SubnetPoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubnetPoolOutput)(nil)).Elem()
+}
+
+func (o SubnetPoolOutput) ToSubnetPoolOutput() SubnetPoolOutput {
+	return o
+}
+
+func (o SubnetPoolOutput) ToSubnetPoolOutputWithContext(ctx context.Context) SubnetPoolOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SubnetPoolOutput{})
 }

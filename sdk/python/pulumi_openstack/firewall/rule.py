@@ -48,6 +48,14 @@ class Rule(pulumi.CustomResource):
             protocol="tcp")
         ```
 
+        ## Import
+
+        Firewall Rules can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:firewall/rule:Rule rule_1 8dbc0c28-e49c-463f-b712-5c5d1bbac327
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action: Action to be taken ( must be "allow" or "deny") when the

@@ -92,6 +92,14 @@ namespace Pulumi.OpenStack.Compute
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// This resource can be imported by specifying all three arguments, separated by a forward slash
+    /// 
+    /// ```sh
+    ///  $ pulumi import openstack:compute/floatingIpAssociate:FloatingIpAssociate fip_1 &lt;floating_ip&gt;/&lt;instance_id&gt;/&lt;fixed_ip&gt;
+    /// ```
     /// </summary>
     public partial class FloatingIpAssociate : Pulumi.CustomResource
     {

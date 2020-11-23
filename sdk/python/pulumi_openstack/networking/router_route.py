@@ -52,6 +52,14 @@ class RouterRoute(pulumi.CustomResource):
         resource creation time.  You can ensure that by explicitly specifying a dependency on the ``networking.RouterInterface``
         resource that connects the next hop to the router, as in the example above.
 
+        ## Import
+
+        Routing entries can be imported using a combined ID using the following format``<router_id>-route-<destination_cidr>-<next_hop>``
+
+        ```sh
+         $ pulumi import openstack:networking/routerRoute:RouterRoute router_route_1 686fe248-386c-4f70-9f6c-281607dad079-route-10.0.1.0/24-192.168.199.25
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] destination_cidr: CIDR block to match on the packet’s destination IP. Changing

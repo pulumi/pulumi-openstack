@@ -4,6 +4,7 @@
 package networking
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -55,6 +56,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Routing entries can be imported using a combined ID using the following format``<subnet_id>-route-<destination_cidr>-<next_hop>``
+//
+// ```sh
+//  $ pulumi import openstack:networking/subnetRoute:SubnetRoute subnet_route_1 686fe248-386c-4f70-9f6c-281607dad079-route-10.0.1.0/24-192.168.199.25
 // ```
 type SubnetRoute struct {
 	pulumi.CustomResourceState
@@ -186,4 +195,43 @@ type SubnetRouteArgs struct {
 
 func (SubnetRouteArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*subnetRouteArgs)(nil)).Elem()
+}
+
+type SubnetRouteInput interface {
+	pulumi.Input
+
+	ToSubnetRouteOutput() SubnetRouteOutput
+	ToSubnetRouteOutputWithContext(ctx context.Context) SubnetRouteOutput
+}
+
+func (SubnetRoute) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubnetRoute)(nil)).Elem()
+}
+
+func (i SubnetRoute) ToSubnetRouteOutput() SubnetRouteOutput {
+	return i.ToSubnetRouteOutputWithContext(context.Background())
+}
+
+func (i SubnetRoute) ToSubnetRouteOutputWithContext(ctx context.Context) SubnetRouteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetRouteOutput)
+}
+
+type SubnetRouteOutput struct {
+	*pulumi.OutputState
+}
+
+func (SubnetRouteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubnetRouteOutput)(nil)).Elem()
+}
+
+func (o SubnetRouteOutput) ToSubnetRouteOutput() SubnetRouteOutput {
+	return o
+}
+
+func (o SubnetRouteOutput) ToSubnetRouteOutputWithContext(ctx context.Context) SubnetRouteOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SubnetRouteOutput{})
 }
