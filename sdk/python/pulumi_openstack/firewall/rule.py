@@ -111,7 +111,7 @@ class Rule(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if action is None:
+            if action is None and not opts.urn:
                 raise TypeError("Missing required property 'action'")
             __props__['action'] = action
             __props__['description'] = description
@@ -120,7 +120,7 @@ class Rule(pulumi.CustomResource):
             __props__['enabled'] = enabled
             __props__['ip_version'] = ip_version
             __props__['name'] = name
-            if protocol is None:
+            if protocol is None and not opts.urn:
                 raise TypeError("Missing required property 'protocol'")
             __props__['protocol'] = protocol
             __props__['region'] = region

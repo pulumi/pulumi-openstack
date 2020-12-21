@@ -115,17 +115,17 @@ class Vip(pulumi.CustomResource):
             __props__['floating_ip'] = floating_ip
             __props__['name'] = name
             __props__['persistence'] = persistence
-            if pool_id is None:
+            if pool_id is None and not opts.urn:
                 raise TypeError("Missing required property 'pool_id'")
             __props__['pool_id'] = pool_id
-            if port is None:
+            if port is None and not opts.urn:
                 raise TypeError("Missing required property 'port'")
             __props__['port'] = port
-            if protocol is None:
+            if protocol is None and not opts.urn:
                 raise TypeError("Missing required property 'protocol'")
             __props__['protocol'] = protocol
             __props__['region'] = region
-            if subnet_id is None:
+            if subnet_id is None and not opts.urn:
                 raise TypeError("Missing required property 'subnet_id'")
             __props__['subnet_id'] = subnet_id
             __props__['tenant_id'] = tenant_id

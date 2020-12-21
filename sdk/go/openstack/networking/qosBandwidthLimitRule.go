@@ -76,14 +76,15 @@ type QosBandwidthLimitRule struct {
 // NewQosBandwidthLimitRule registers a new resource with the given unique name, arguments, and options.
 func NewQosBandwidthLimitRule(ctx *pulumi.Context,
 	name string, args *QosBandwidthLimitRuleArgs, opts ...pulumi.ResourceOption) (*QosBandwidthLimitRule, error) {
-	if args == nil || args.MaxKbps == nil {
-		return nil, errors.New("missing required argument 'MaxKbps'")
-	}
-	if args == nil || args.QosPolicyId == nil {
-		return nil, errors.New("missing required argument 'QosPolicyId'")
-	}
 	if args == nil {
-		args = &QosBandwidthLimitRuleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.MaxKbps == nil {
+		return nil, errors.New("invalid value for required argument 'MaxKbps'")
+	}
+	if args.QosPolicyId == nil {
+		return nil, errors.New("invalid value for required argument 'QosPolicyId'")
 	}
 	var resource QosBandwidthLimitRule
 	err := ctx.RegisterResource("openstack:networking/qosBandwidthLimitRule:QosBandwidthLimitRule", name, args, &resource, opts...)

@@ -124,17 +124,18 @@ type SecGroupRule struct {
 // NewSecGroupRule registers a new resource with the given unique name, arguments, and options.
 func NewSecGroupRule(ctx *pulumi.Context,
 	name string, args *SecGroupRuleArgs, opts ...pulumi.ResourceOption) (*SecGroupRule, error) {
-	if args == nil || args.Direction == nil {
-		return nil, errors.New("missing required argument 'Direction'")
-	}
-	if args == nil || args.Ethertype == nil {
-		return nil, errors.New("missing required argument 'Ethertype'")
-	}
-	if args == nil || args.SecurityGroupId == nil {
-		return nil, errors.New("missing required argument 'SecurityGroupId'")
-	}
 	if args == nil {
-		args = &SecGroupRuleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Direction == nil {
+		return nil, errors.New("invalid value for required argument 'Direction'")
+	}
+	if args.Ethertype == nil {
+		return nil, errors.New("invalid value for required argument 'Ethertype'")
+	}
+	if args.SecurityGroupId == nil {
+		return nil, errors.New("invalid value for required argument 'SecurityGroupId'")
 	}
 	var resource SecGroupRule
 	err := ctx.RegisterResource("openstack:networking/secGroupRule:SecGroupRule", name, args, &resource, opts...)

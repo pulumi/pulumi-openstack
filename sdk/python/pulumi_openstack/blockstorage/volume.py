@@ -117,7 +117,7 @@ class Volume(pulumi.CustomResource):
             __props__['name'] = name
             __props__['region'] = region
             __props__['scheduler_hints'] = scheduler_hints
-            if size is None:
+            if size is None and not opts.urn:
                 raise TypeError("Missing required property 'size'")
             __props__['size'] = size
             __props__['snapshot_id'] = snapshot_id

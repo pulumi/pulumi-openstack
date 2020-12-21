@@ -98,10 +98,10 @@ export class Configuration extends pulumi.CustomResource {
             inputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as ConfigurationArgs | undefined;
-            if (!args || args.datastore === undefined) {
+            if ((!args || args.datastore === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'datastore'");
             }
-            if (!args || args.description === undefined) {
+            if ((!args || args.description === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'description'");
             }
             inputs["configurations"] = args ? args.configurations : undefined;

@@ -140,7 +140,7 @@ export class QuoteSetV2 extends pulumi.CustomResource {
             inputs["volumes"] = state ? state.volumes : undefined;
         } else {
             const args = argsOrState as QuoteSetV2Args | undefined;
-            if (!args || args.projectId === undefined) {
+            if ((!args || args.projectId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'projectId'");
             }
             inputs["backupGigabytes"] = args ? args.backupGigabytes : undefined;

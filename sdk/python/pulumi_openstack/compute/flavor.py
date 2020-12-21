@@ -18,6 +18,7 @@ class Flavor(pulumi.CustomResource):
                  disk: Optional[pulumi.Input[int]] = None,
                  ephemeral: Optional[pulumi.Input[int]] = None,
                  extra_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 flavor_id: Optional[pulumi.Input[str]] = None,
                  is_public: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  ram: Optional[pulumi.Input[int]] = None,
@@ -57,9 +58,13 @@ class Flavor(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] disk: The amount of disk space in gigabytes to use for the root
+        :param pulumi.Input[int] disk: The amount of disk space in GiB to use for the root
                (/) partition. Changing this creates a new flavor.
+        :param pulumi.Input[int] ephemeral: The amount of ephemeral in GiB. If unspecified,
+               the default is 0. Changing this creates a new flavor.
         :param pulumi.Input[Mapping[str, Any]] extra_specs: Key/Value pairs of metadata for the flavor.
+        :param pulumi.Input[str] flavor_id: Unique ID (integer or UUID) of flavor to create. Changing
+               this creates a new flavor.
         :param pulumi.Input[bool] is_public: Whether the flavor is public. Changing this creates
                a new flavor.
         :param pulumi.Input[str] name: A unique name for the flavor. Changing this creates a new
@@ -94,20 +99,21 @@ class Flavor(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if disk is None:
+            if disk is None and not opts.urn:
                 raise TypeError("Missing required property 'disk'")
             __props__['disk'] = disk
             __props__['ephemeral'] = ephemeral
             __props__['extra_specs'] = extra_specs
+            __props__['flavor_id'] = flavor_id
             __props__['is_public'] = is_public
             __props__['name'] = name
-            if ram is None:
+            if ram is None and not opts.urn:
                 raise TypeError("Missing required property 'ram'")
             __props__['ram'] = ram
             __props__['region'] = region
             __props__['rx_tx_factor'] = rx_tx_factor
             __props__['swap'] = swap
-            if vcpus is None:
+            if vcpus is None and not opts.urn:
                 raise TypeError("Missing required property 'vcpus'")
             __props__['vcpus'] = vcpus
         super(Flavor, __self__).__init__(
@@ -123,6 +129,7 @@ class Flavor(pulumi.CustomResource):
             disk: Optional[pulumi.Input[int]] = None,
             ephemeral: Optional[pulumi.Input[int]] = None,
             extra_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            flavor_id: Optional[pulumi.Input[str]] = None,
             is_public: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             ram: Optional[pulumi.Input[int]] = None,
@@ -137,9 +144,13 @@ class Flavor(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] disk: The amount of disk space in gigabytes to use for the root
+        :param pulumi.Input[int] disk: The amount of disk space in GiB to use for the root
                (/) partition. Changing this creates a new flavor.
+        :param pulumi.Input[int] ephemeral: The amount of ephemeral in GiB. If unspecified,
+               the default is 0. Changing this creates a new flavor.
         :param pulumi.Input[Mapping[str, Any]] extra_specs: Key/Value pairs of metadata for the flavor.
+        :param pulumi.Input[str] flavor_id: Unique ID (integer or UUID) of flavor to create. Changing
+               this creates a new flavor.
         :param pulumi.Input[bool] is_public: Whether the flavor is public. Changing this creates
                a new flavor.
         :param pulumi.Input[str] name: A unique name for the flavor. Changing this creates a new
@@ -164,6 +175,7 @@ class Flavor(pulumi.CustomResource):
         __props__["disk"] = disk
         __props__["ephemeral"] = ephemeral
         __props__["extra_specs"] = extra_specs
+        __props__["flavor_id"] = flavor_id
         __props__["is_public"] = is_public
         __props__["name"] = name
         __props__["ram"] = ram
@@ -177,7 +189,7 @@ class Flavor(pulumi.CustomResource):
     @pulumi.getter
     def disk(self) -> pulumi.Output[int]:
         """
-        The amount of disk space in gigabytes to use for the root
+        The amount of disk space in GiB to use for the root
         (/) partition. Changing this creates a new flavor.
         """
         return pulumi.get(self, "disk")
@@ -185,6 +197,10 @@ class Flavor(pulumi.CustomResource):
     @property
     @pulumi.getter
     def ephemeral(self) -> pulumi.Output[Optional[int]]:
+        """
+        The amount of ephemeral in GiB. If unspecified,
+        the default is 0. Changing this creates a new flavor.
+        """
         return pulumi.get(self, "ephemeral")
 
     @property
@@ -194,6 +210,15 @@ class Flavor(pulumi.CustomResource):
         Key/Value pairs of metadata for the flavor.
         """
         return pulumi.get(self, "extra_specs")
+
+    @property
+    @pulumi.getter(name="flavorId")
+    def flavor_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        Unique ID (integer or UUID) of flavor to create. Changing
+        this creates a new flavor.
+        """
+        return pulumi.get(self, "flavor_id")
 
     @property
     @pulumi.getter(name="isPublic")

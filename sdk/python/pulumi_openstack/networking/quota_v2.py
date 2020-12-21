@@ -114,7 +114,7 @@ class QuotaV2(pulumi.CustomResource):
             __props__['floatingip'] = floatingip
             __props__['network'] = network
             __props__['port'] = port
-            if project_id is None:
+            if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
             __props__['project_id'] = project_id
             __props__['rbac_policy'] = rbac_policy

@@ -128,13 +128,13 @@ export class Member extends pulumi.CustomResource {
             inputs["weight"] = state ? state.weight : undefined;
         } else {
             const args = argsOrState as MemberArgs | undefined;
-            if (!args || args.address === undefined) {
+            if ((!args || args.address === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'address'");
             }
-            if (!args || args.poolId === undefined) {
+            if ((!args || args.poolId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'poolId'");
             }
-            if (!args || args.protocolPort === undefined) {
+            if ((!args || args.protocolPort === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'protocolPort'");
             }
             inputs["address"] = args ? args.address : undefined;

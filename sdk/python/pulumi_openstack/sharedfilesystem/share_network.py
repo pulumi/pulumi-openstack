@@ -120,10 +120,10 @@ class ShareNetwork(pulumi.CustomResource):
 
             __props__['description'] = description
             __props__['name'] = name
-            if neutron_net_id is None:
+            if neutron_net_id is None and not opts.urn:
                 raise TypeError("Missing required property 'neutron_net_id'")
             __props__['neutron_net_id'] = neutron_net_id
-            if neutron_subnet_id is None:
+            if neutron_subnet_id is None and not opts.urn:
                 raise TypeError("Missing required property 'neutron_subnet_id'")
             __props__['neutron_subnet_id'] = neutron_subnet_id
             __props__['region'] = region

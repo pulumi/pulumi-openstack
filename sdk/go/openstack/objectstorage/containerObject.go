@@ -171,11 +171,12 @@ type ContainerObject struct {
 // NewContainerObject registers a new resource with the given unique name, arguments, and options.
 func NewContainerObject(ctx *pulumi.Context,
 	name string, args *ContainerObjectArgs, opts ...pulumi.ResourceOption) (*ContainerObject, error) {
-	if args == nil || args.ContainerName == nil {
-		return nil, errors.New("missing required argument 'ContainerName'")
-	}
 	if args == nil {
-		args = &ContainerObjectArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ContainerName == nil {
+		return nil, errors.New("invalid value for required argument 'ContainerName'")
 	}
 	var resource ContainerObject
 	err := ctx.RegisterResource("openstack:objectstorage/containerObject:ContainerObject", name, args, &resource, opts...)

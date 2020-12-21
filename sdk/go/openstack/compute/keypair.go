@@ -48,6 +48,7 @@ func NewKeypair(ctx *pulumi.Context,
 	if args == nil {
 		args = &KeypairArgs{}
 	}
+
 	var resource Keypair
 	err := ctx.RegisterResource("openstack:compute/keypair:Keypair", name, args, &resource, opts...)
 	if err != nil {

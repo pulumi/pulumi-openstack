@@ -125,32 +125,32 @@ class SiteConnection(pulumi.CustomResource):
             __props__['admin_state_up'] = admin_state_up
             __props__['description'] = description
             __props__['dpds'] = dpds
-            if ikepolicy_id is None:
+            if ikepolicy_id is None and not opts.urn:
                 raise TypeError("Missing required property 'ikepolicy_id'")
             __props__['ikepolicy_id'] = ikepolicy_id
             __props__['initiator'] = initiator
-            if ipsecpolicy_id is None:
+            if ipsecpolicy_id is None and not opts.urn:
                 raise TypeError("Missing required property 'ipsecpolicy_id'")
             __props__['ipsecpolicy_id'] = ipsecpolicy_id
             __props__['local_ep_group_id'] = local_ep_group_id
             __props__['local_id'] = local_id
             __props__['mtu'] = mtu
             __props__['name'] = name
-            if peer_address is None:
+            if peer_address is None and not opts.urn:
                 raise TypeError("Missing required property 'peer_address'")
             __props__['peer_address'] = peer_address
             __props__['peer_cidrs'] = peer_cidrs
             __props__['peer_ep_group_id'] = peer_ep_group_id
-            if peer_id is None:
+            if peer_id is None and not opts.urn:
                 raise TypeError("Missing required property 'peer_id'")
             __props__['peer_id'] = peer_id
-            if psk is None:
+            if psk is None and not opts.urn:
                 raise TypeError("Missing required property 'psk'")
             __props__['psk'] = psk
             __props__['region'] = region
             __props__['tenant_id'] = tenant_id
             __props__['value_specs'] = value_specs
-            if vpnservice_id is None:
+            if vpnservice_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vpnservice_id'")
             __props__['vpnservice_id'] = vpnservice_id
         super(SiteConnection, __self__).__init__(

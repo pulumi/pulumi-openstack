@@ -68,14 +68,15 @@ type QosDscpMarkingRule struct {
 // NewQosDscpMarkingRule registers a new resource with the given unique name, arguments, and options.
 func NewQosDscpMarkingRule(ctx *pulumi.Context,
 	name string, args *QosDscpMarkingRuleArgs, opts ...pulumi.ResourceOption) (*QosDscpMarkingRule, error) {
-	if args == nil || args.DscpMark == nil {
-		return nil, errors.New("missing required argument 'DscpMark'")
-	}
-	if args == nil || args.QosPolicyId == nil {
-		return nil, errors.New("missing required argument 'QosPolicyId'")
-	}
 	if args == nil {
-		args = &QosDscpMarkingRuleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DscpMark == nil {
+		return nil, errors.New("invalid value for required argument 'DscpMark'")
+	}
+	if args.QosPolicyId == nil {
+		return nil, errors.New("invalid value for required argument 'QosPolicyId'")
 	}
 	var resource QosDscpMarkingRule
 	err := ctx.RegisterResource("openstack:networking/qosDscpMarkingRule:QosDscpMarkingRule", name, args, &resource, opts...)

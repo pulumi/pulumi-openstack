@@ -92,10 +92,10 @@ export class QosDscpMarkingRule extends pulumi.CustomResource {
             inputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as QosDscpMarkingRuleArgs | undefined;
-            if (!args || args.dscpMark === undefined) {
+            if ((!args || args.dscpMark === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'dscpMark'");
             }
-            if (!args || args.qosPolicyId === undefined) {
+            if ((!args || args.qosPolicyId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'qosPolicyId'");
             }
             inputs["dscpMark"] = args ? args.dscpMark : undefined;

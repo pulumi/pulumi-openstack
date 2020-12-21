@@ -127,11 +127,12 @@ type Trunk struct {
 // NewTrunk registers a new resource with the given unique name, arguments, and options.
 func NewTrunk(ctx *pulumi.Context,
 	name string, args *TrunkArgs, opts ...pulumi.ResourceOption) (*Trunk, error) {
-	if args == nil || args.PortId == nil {
-		return nil, errors.New("missing required argument 'PortId'")
-	}
 	if args == nil {
-		args = &TrunkArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.PortId == nil {
+		return nil, errors.New("invalid value for required argument 'PortId'")
 	}
 	var resource Trunk
 	err := ctx.RegisterResource("openstack:networking/trunk:Trunk", name, args, &resource, opts...)

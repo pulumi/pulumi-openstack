@@ -105,14 +105,14 @@ class Pool(pulumi.CustomResource):
 
             __props__['admin_state_up'] = admin_state_up
             __props__['description'] = description
-            if lb_method is None:
+            if lb_method is None and not opts.urn:
                 raise TypeError("Missing required property 'lb_method'")
             __props__['lb_method'] = lb_method
             __props__['listener_id'] = listener_id
             __props__['loadbalancer_id'] = loadbalancer_id
             __props__['name'] = name
             __props__['persistence'] = persistence
-            if protocol is None:
+            if protocol is None and not opts.urn:
                 raise TypeError("Missing required property 'protocol'")
             __props__['protocol'] = protocol
             __props__['region'] = region

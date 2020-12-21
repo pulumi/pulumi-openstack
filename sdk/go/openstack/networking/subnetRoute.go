@@ -87,17 +87,18 @@ type SubnetRoute struct {
 // NewSubnetRoute registers a new resource with the given unique name, arguments, and options.
 func NewSubnetRoute(ctx *pulumi.Context,
 	name string, args *SubnetRouteArgs, opts ...pulumi.ResourceOption) (*SubnetRoute, error) {
-	if args == nil || args.DestinationCidr == nil {
-		return nil, errors.New("missing required argument 'DestinationCidr'")
-	}
-	if args == nil || args.NextHop == nil {
-		return nil, errors.New("missing required argument 'NextHop'")
-	}
-	if args == nil || args.SubnetId == nil {
-		return nil, errors.New("missing required argument 'SubnetId'")
-	}
 	if args == nil {
-		args = &SubnetRouteArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DestinationCidr == nil {
+		return nil, errors.New("invalid value for required argument 'DestinationCidr'")
+	}
+	if args.NextHop == nil {
+		return nil, errors.New("invalid value for required argument 'NextHop'")
+	}
+	if args.SubnetId == nil {
+		return nil, errors.New("invalid value for required argument 'SubnetId'")
 	}
 	var resource SubnetRoute
 	err := ctx.RegisterResource("openstack:networking/subnetRoute:SubnetRoute", name, args, &resource, opts...)

@@ -277,7 +277,7 @@ export class Port extends pulumi.CustomResource {
             inputs["valueSpecs"] = state ? state.valueSpecs : undefined;
         } else {
             const args = argsOrState as PortArgs | undefined;
-            if (!args || args.networkId === undefined) {
+            if ((!args || args.networkId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'networkId'");
             }
             inputs["adminStateUp"] = args ? args.adminStateUp : undefined;

@@ -69,6 +69,12 @@ namespace Pulumi.OpenStack.Orchestration
     public partial class StackV1 : Pulumi.CustomResource
     {
         /// <summary>
+        /// A list of stack outputs.
+        /// </summary>
+        [Output("StackOutputs")]
+        public Output<ImmutableArray<Outputs.StackV1StackOutput>> StackOutputs { get; private set; } = null!;
+
+        /// <summary>
         /// List of stack capabilities for stack.
         /// </summary>
         [Output("capabilities")]
@@ -118,12 +124,6 @@ namespace Pulumi.OpenStack.Orchestration
         /// </summary>
         [Output("notificationTopics")]
         public Output<ImmutableArray<string>> NotificationTopics { get; private set; } = null!;
-
-        /// <summary>
-        /// A list of stack outputs.
-        /// </summary>
-        [Output("outputs")]
-        public Output<ImmutableArray<Outputs.StackV1Output>> Outputs { get; private set; } = null!;
 
         /// <summary>
         /// User-defined key/value pairs as parameters to pass
@@ -234,6 +234,18 @@ namespace Pulumi.OpenStack.Orchestration
 
     public sealed class StackV1Args : Pulumi.ResourceArgs
     {
+        [Input("StackOutputs")]
+        private InputList<Inputs.StackV1StackOutputArgs>? _StackOutputs;
+
+        /// <summary>
+        /// A list of stack outputs.
+        /// </summary>
+        public InputList<Inputs.StackV1StackOutputArgs> StackOutputs
+        {
+            get => _StackOutputs ?? (_StackOutputs = new InputList<Inputs.StackV1StackOutputArgs>());
+            set => _StackOutputs = value;
+        }
+
         [Input("capabilities")]
         private InputList<string>? _capabilities;
 
@@ -301,18 +313,6 @@ namespace Pulumi.OpenStack.Orchestration
         {
             get => _notificationTopics ?? (_notificationTopics = new InputList<string>());
             set => _notificationTopics = value;
-        }
-
-        [Input("outputs")]
-        private InputList<Inputs.StackV1OutputArgs>? _outputs;
-
-        /// <summary>
-        /// A list of stack outputs.
-        /// </summary>
-        public InputList<Inputs.StackV1OutputArgs> Outputs
-        {
-            get => _outputs ?? (_outputs = new InputList<Inputs.StackV1OutputArgs>());
-            set => _outputs = value;
         }
 
         [Input("parameters")]
@@ -403,6 +403,18 @@ namespace Pulumi.OpenStack.Orchestration
 
     public sealed class StackV1State : Pulumi.ResourceArgs
     {
+        [Input("StackOutputs")]
+        private InputList<Inputs.StackV1StackOutputGetArgs>? _StackOutputs;
+
+        /// <summary>
+        /// A list of stack outputs.
+        /// </summary>
+        public InputList<Inputs.StackV1StackOutputGetArgs> StackOutputs
+        {
+            get => _StackOutputs ?? (_StackOutputs = new InputList<Inputs.StackV1StackOutputGetArgs>());
+            set => _StackOutputs = value;
+        }
+
         [Input("capabilities")]
         private InputList<string>? _capabilities;
 
@@ -470,18 +482,6 @@ namespace Pulumi.OpenStack.Orchestration
         {
             get => _notificationTopics ?? (_notificationTopics = new InputList<string>());
             set => _notificationTopics = value;
-        }
-
-        [Input("outputs")]
-        private InputList<Inputs.StackV1OutputGetArgs>? _outputs;
-
-        /// <summary>
-        /// A list of stack outputs.
-        /// </summary>
-        public InputList<Inputs.StackV1OutputGetArgs> Outputs
-        {
-            get => _outputs ?? (_outputs = new InputList<Inputs.StackV1OutputGetArgs>());
-            set => _outputs = value;
         }
 
         [Input("parameters")]

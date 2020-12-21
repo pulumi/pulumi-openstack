@@ -257,14 +257,15 @@ type ClusterTemplate struct {
 // NewClusterTemplate registers a new resource with the given unique name, arguments, and options.
 func NewClusterTemplate(ctx *pulumi.Context,
 	name string, args *ClusterTemplateArgs, opts ...pulumi.ResourceOption) (*ClusterTemplate, error) {
-	if args == nil || args.Coe == nil {
-		return nil, errors.New("missing required argument 'Coe'")
-	}
-	if args == nil || args.Image == nil {
-		return nil, errors.New("missing required argument 'Image'")
-	}
 	if args == nil {
-		args = &ClusterTemplateArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Coe == nil {
+		return nil, errors.New("invalid value for required argument 'Coe'")
+	}
+	if args.Image == nil {
+		return nil, errors.New("invalid value for required argument 'Image'")
 	}
 	var resource ClusterTemplate
 	err := ctx.RegisterResource("openstack:containerinfra/clusterTemplate:ClusterTemplate", name, args, &resource, opts...)

@@ -147,7 +147,7 @@ export class Trunk extends pulumi.CustomResource {
             inputs["tenantId"] = state ? state.tenantId : undefined;
         } else {
             const args = argsOrState as TrunkArgs | undefined;
-            if (!args || args.portId === undefined) {
+            if ((!args || args.portId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'portId'");
             }
             inputs["adminStateUp"] = args ? args.adminStateUp : undefined;

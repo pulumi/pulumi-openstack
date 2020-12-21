@@ -155,10 +155,10 @@ export class OrderV1 extends pulumi.CustomResource {
             inputs["updated"] = state ? state.updated : undefined;
         } else {
             const args = argsOrState as OrderV1Args | undefined;
-            if (!args || args.meta === undefined) {
+            if ((!args || args.meta === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'meta'");
             }
-            if (!args || args.type === undefined) {
+            if ((!args || args.type === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'type'");
             }
             inputs["meta"] = args ? args.meta : undefined;

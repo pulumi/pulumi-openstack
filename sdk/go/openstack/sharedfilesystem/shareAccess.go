@@ -43,20 +43,21 @@ type ShareAccess struct {
 // NewShareAccess registers a new resource with the given unique name, arguments, and options.
 func NewShareAccess(ctx *pulumi.Context,
 	name string, args *ShareAccessArgs, opts ...pulumi.ResourceOption) (*ShareAccess, error) {
-	if args == nil || args.AccessLevel == nil {
-		return nil, errors.New("missing required argument 'AccessLevel'")
-	}
-	if args == nil || args.AccessTo == nil {
-		return nil, errors.New("missing required argument 'AccessTo'")
-	}
-	if args == nil || args.AccessType == nil {
-		return nil, errors.New("missing required argument 'AccessType'")
-	}
-	if args == nil || args.ShareId == nil {
-		return nil, errors.New("missing required argument 'ShareId'")
-	}
 	if args == nil {
-		args = &ShareAccessArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AccessLevel == nil {
+		return nil, errors.New("invalid value for required argument 'AccessLevel'")
+	}
+	if args.AccessTo == nil {
+		return nil, errors.New("invalid value for required argument 'AccessTo'")
+	}
+	if args.AccessType == nil {
+		return nil, errors.New("invalid value for required argument 'AccessType'")
+	}
+	if args.ShareId == nil {
+		return nil, errors.New("invalid value for required argument 'ShareId'")
 	}
 	var resource ShareAccess
 	err := ctx.RegisterResource("openstack:sharedfilesystem/shareAccess:ShareAccess", name, args, &resource, opts...)

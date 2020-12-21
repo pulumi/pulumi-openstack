@@ -108,13 +108,13 @@ export class SubnetRoute extends pulumi.CustomResource {
             inputs["subnetId"] = state ? state.subnetId : undefined;
         } else {
             const args = argsOrState as SubnetRouteArgs | undefined;
-            if (!args || args.destinationCidr === undefined) {
+            if ((!args || args.destinationCidr === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'destinationCidr'");
             }
-            if (!args || args.nextHop === undefined) {
+            if ((!args || args.nextHop === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'nextHop'");
             }
-            if (!args || args.subnetId === undefined) {
+            if ((!args || args.subnetId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'subnetId'");
             }
             inputs["destinationCidr"] = args ? args.destinationCidr : undefined;

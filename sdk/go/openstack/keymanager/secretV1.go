@@ -73,6 +73,7 @@ func NewSecretV1(ctx *pulumi.Context,
 	if args == nil {
 		args = &SecretV1Args{}
 	}
+
 	var resource SecretV1
 	err := ctx.RegisterResource("openstack:keymanager/secretV1:SecretV1", name, args, &resource, opts...)
 	if err != nil {

@@ -62,17 +62,17 @@ class ShareAccess(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if access_level is None:
+            if access_level is None and not opts.urn:
                 raise TypeError("Missing required property 'access_level'")
             __props__['access_level'] = access_level
-            if access_to is None:
+            if access_to is None and not opts.urn:
                 raise TypeError("Missing required property 'access_to'")
             __props__['access_to'] = access_to
-            if access_type is None:
+            if access_type is None and not opts.urn:
                 raise TypeError("Missing required property 'access_type'")
             __props__['access_type'] = access_type
             __props__['region'] = region
-            if share_id is None:
+            if share_id is None and not opts.urn:
                 raise TypeError("Missing required property 'share_id'")
             __props__['share_id'] = share_id
             __props__['access_key'] = None

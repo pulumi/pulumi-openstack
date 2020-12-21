@@ -143,6 +143,14 @@ export namespace compute {
          * thing is to leave this empty. Changing this creates a new server.
          */
         diskBus?: string;
+        /**
+         * Specifies the guest server disk file system format,
+         * such as `ext2`, `ext3`, `ext4`, `xfs` or `swap`. Swap block device mappings
+         * have the following restrictions: sourceType must be blank and destinationType
+         * must be local and only one swap disk per server and the size of the swap disk
+         * must be less than or equal to the swap size of the flavor. Changing this
+         * creates a new server.
+         */
         guestFormat?: string;
         /**
          * The source type of the device. Must be one of
@@ -941,7 +949,7 @@ export namespace objectstorage {
 }
 
 export namespace orchestration {
-    export interface StackV1Output {
+    export interface StackV1StackOutput {
         /**
          * The description of the stack resource.
          */

@@ -36,14 +36,15 @@ type PortSecGroupAssociate struct {
 // NewPortSecGroupAssociate registers a new resource with the given unique name, arguments, and options.
 func NewPortSecGroupAssociate(ctx *pulumi.Context,
 	name string, args *PortSecGroupAssociateArgs, opts ...pulumi.ResourceOption) (*PortSecGroupAssociate, error) {
-	if args == nil || args.PortId == nil {
-		return nil, errors.New("missing required argument 'PortId'")
-	}
-	if args == nil || args.SecurityGroupIds == nil {
-		return nil, errors.New("missing required argument 'SecurityGroupIds'")
-	}
 	if args == nil {
-		args = &PortSecGroupAssociateArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.PortId == nil {
+		return nil, errors.New("invalid value for required argument 'PortId'")
+	}
+	if args.SecurityGroupIds == nil {
+		return nil, errors.New("invalid value for required argument 'SecurityGroupIds'")
 	}
 	var resource PortSecGroupAssociate
 	err := ctx.RegisterResource("openstack:networking/portSecGroupAssociate:PortSecGroupAssociate", name, args, &resource, opts...)

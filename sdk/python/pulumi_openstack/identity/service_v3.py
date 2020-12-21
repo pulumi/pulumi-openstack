@@ -75,7 +75,7 @@ class ServiceV3(pulumi.CustomResource):
             __props__['enabled'] = enabled
             __props__['name'] = name
             __props__['region'] = region
-            if type is None:
+            if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__['type'] = type
         super(ServiceV3, __self__).__init__(

@@ -155,10 +155,10 @@ export class L7PolicyV2 extends pulumi.CustomResource {
             inputs["tenantId"] = state ? state.tenantId : undefined;
         } else {
             const args = argsOrState as L7PolicyV2Args | undefined;
-            if (!args || args.action === undefined) {
+            if ((!args || args.action === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'action'");
             }
-            if (!args || args.listenerId === undefined) {
+            if ((!args || args.listenerId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'listenerId'");
             }
             inputs["action"] = args ? args.action : undefined;

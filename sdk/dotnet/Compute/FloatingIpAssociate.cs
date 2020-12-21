@@ -10,8 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.OpenStack.Compute
 {
     /// <summary>
-    /// Associate a floating IP to an instance. This can be used instead of the
-    /// `floating_ip` options in `openstack.compute.Instance`.
+    /// Associate a floating IP to an instance.
     /// 
     /// ## Example Usage
     /// ### Automatically detect the correct network

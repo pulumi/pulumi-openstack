@@ -81,10 +81,10 @@ class QosBandwidthLimitRule(pulumi.CustomResource):
 
             __props__['direction'] = direction
             __props__['max_burst_kbps'] = max_burst_kbps
-            if max_kbps is None:
+            if max_kbps is None and not opts.urn:
                 raise TypeError("Missing required property 'max_kbps'")
             __props__['max_kbps'] = max_kbps
-            if qos_policy_id is None:
+            if qos_policy_id is None and not opts.urn:
                 raise TypeError("Missing required property 'qos_policy_id'")
             __props__['qos_policy_id'] = qos_policy_id
             __props__['region'] = region

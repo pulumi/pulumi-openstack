@@ -87,7 +87,7 @@ class Members(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['members'] = members
-            if pool_id is None:
+            if pool_id is None and not opts.urn:
                 raise TypeError("Missing required property 'pool_id'")
             __props__['pool_id'] = pool_id
             __props__['region'] = region

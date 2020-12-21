@@ -82,14 +82,15 @@ type Instance struct {
 // NewInstance registers a new resource with the given unique name, arguments, and options.
 func NewInstance(ctx *pulumi.Context,
 	name string, args *InstanceArgs, opts ...pulumi.ResourceOption) (*Instance, error) {
-	if args == nil || args.Datastore == nil {
-		return nil, errors.New("missing required argument 'Datastore'")
-	}
-	if args == nil || args.Size == nil {
-		return nil, errors.New("missing required argument 'Size'")
-	}
 	if args == nil {
-		args = &InstanceArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Datastore == nil {
+		return nil, errors.New("invalid value for required argument 'Datastore'")
+	}
+	if args.Size == nil {
+		return nil, errors.New("invalid value for required argument 'Size'")
 	}
 	var resource Instance
 	err := ctx.RegisterResource("openstack:database/instance:Instance", name, args, &resource, opts...)

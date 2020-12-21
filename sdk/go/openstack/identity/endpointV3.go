@@ -80,17 +80,18 @@ type EndpointV3 struct {
 // NewEndpointV3 registers a new resource with the given unique name, arguments, and options.
 func NewEndpointV3(ctx *pulumi.Context,
 	name string, args *EndpointV3Args, opts ...pulumi.ResourceOption) (*EndpointV3, error) {
-	if args == nil || args.EndpointRegion == nil {
-		return nil, errors.New("missing required argument 'EndpointRegion'")
-	}
-	if args == nil || args.ServiceId == nil {
-		return nil, errors.New("missing required argument 'ServiceId'")
-	}
-	if args == nil || args.Url == nil {
-		return nil, errors.New("missing required argument 'Url'")
-	}
 	if args == nil {
-		args = &EndpointV3Args{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.EndpointRegion == nil {
+		return nil, errors.New("invalid value for required argument 'EndpointRegion'")
+	}
+	if args.ServiceId == nil {
+		return nil, errors.New("invalid value for required argument 'ServiceId'")
+	}
+	if args.Url == nil {
+		return nil, errors.New("invalid value for required argument 'Url'")
 	}
 	var resource EndpointV3
 	err := ctx.RegisterResource("openstack:identity/endpointV3:EndpointV3", name, args, &resource, opts...)

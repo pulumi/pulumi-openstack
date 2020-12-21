@@ -108,7 +108,7 @@ class QuoteSetV2(pulumi.CustomResource):
             __props__['gigabytes'] = gigabytes
             __props__['groups'] = groups
             __props__['per_volume_gigabytes'] = per_volume_gigabytes
-            if project_id is None:
+            if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
             __props__['project_id'] = project_id
             __props__['region'] = region

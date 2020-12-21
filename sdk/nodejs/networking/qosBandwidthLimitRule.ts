@@ -106,10 +106,10 @@ export class QosBandwidthLimitRule extends pulumi.CustomResource {
             inputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as QosBandwidthLimitRuleArgs | undefined;
-            if (!args || args.maxKbps === undefined) {
+            if ((!args || args.maxKbps === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'maxKbps'");
             }
-            if (!args || args.qosPolicyId === undefined) {
+            if ((!args || args.qosPolicyId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'qosPolicyId'");
             }
             inputs["direction"] = args ? args.direction : undefined;

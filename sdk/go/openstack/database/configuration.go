@@ -66,14 +66,15 @@ type Configuration struct {
 // NewConfiguration registers a new resource with the given unique name, arguments, and options.
 func NewConfiguration(ctx *pulumi.Context,
 	name string, args *ConfigurationArgs, opts ...pulumi.ResourceOption) (*Configuration, error) {
-	if args == nil || args.Datastore == nil {
-		return nil, errors.New("missing required argument 'Datastore'")
-	}
-	if args == nil || args.Description == nil {
-		return nil, errors.New("missing required argument 'Description'")
-	}
 	if args == nil {
-		args = &ConfigurationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Datastore == nil {
+		return nil, errors.New("invalid value for required argument 'Datastore'")
+	}
+	if args.Description == nil {
+		return nil, errors.New("invalid value for required argument 'Description'")
 	}
 	var resource Configuration
 	err := ctx.RegisterResource("openstack:database/configuration:Configuration", name, args, &resource, opts...)

@@ -159,14 +159,15 @@ type ShareNetwork struct {
 // NewShareNetwork registers a new resource with the given unique name, arguments, and options.
 func NewShareNetwork(ctx *pulumi.Context,
 	name string, args *ShareNetworkArgs, opts ...pulumi.ResourceOption) (*ShareNetwork, error) {
-	if args == nil || args.NeutronNetId == nil {
-		return nil, errors.New("missing required argument 'NeutronNetId'")
-	}
-	if args == nil || args.NeutronSubnetId == nil {
-		return nil, errors.New("missing required argument 'NeutronSubnetId'")
-	}
 	if args == nil {
-		args = &ShareNetworkArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.NeutronNetId == nil {
+		return nil, errors.New("invalid value for required argument 'NeutronNetId'")
+	}
+	if args.NeutronSubnetId == nil {
+		return nil, errors.New("invalid value for required argument 'NeutronSubnetId'")
 	}
 	var resource ShareNetwork
 	err := ctx.RegisterResource("openstack:sharedfilesystem/shareNetwork:ShareNetwork", name, args, &resource, opts...)

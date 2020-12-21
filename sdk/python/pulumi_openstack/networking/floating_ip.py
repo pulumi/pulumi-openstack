@@ -110,7 +110,7 @@ class FloatingIp(pulumi.CustomResource):
             __props__['dns_domain'] = dns_domain
             __props__['dns_name'] = dns_name
             __props__['fixed_ip'] = fixed_ip
-            if pool is None:
+            if pool is None and not opts.urn:
                 raise TypeError("Missing required property 'pool'")
             __props__['pool'] = pool
             __props__['port_id'] = port_id

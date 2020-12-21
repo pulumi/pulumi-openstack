@@ -179,10 +179,10 @@ export class ShareNetwork extends pulumi.CustomResource {
             inputs["segmentationId"] = state ? state.segmentationId : undefined;
         } else {
             const args = argsOrState as ShareNetworkArgs | undefined;
-            if (!args || args.neutronNetId === undefined) {
+            if ((!args || args.neutronNetId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'neutronNetId'");
             }
-            if (!args || args.neutronSubnetId === undefined) {
+            if ((!args || args.neutronSubnetId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'neutronSubnetId'");
             }
             inputs["description"] = args ? args.description : undefined;

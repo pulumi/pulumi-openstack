@@ -64,11 +64,12 @@ type ServiceV3 struct {
 // NewServiceV3 registers a new resource with the given unique name, arguments, and options.
 func NewServiceV3(ctx *pulumi.Context,
 	name string, args *ServiceV3Args, opts ...pulumi.ResourceOption) (*ServiceV3, error) {
-	if args == nil || args.Type == nil {
-		return nil, errors.New("missing required argument 'Type'")
-	}
 	if args == nil {
-		args = &ServiceV3Args{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Type == nil {
+		return nil, errors.New("invalid value for required argument 'Type'")
 	}
 	var resource ServiceV3
 	err := ctx.RegisterResource("openstack:identity/serviceV3:ServiceV3", name, args, &resource, opts...)

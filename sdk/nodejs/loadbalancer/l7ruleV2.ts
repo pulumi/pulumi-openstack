@@ -162,16 +162,16 @@ export class L7RuleV2 extends pulumi.CustomResource {
             inputs["value"] = state ? state.value : undefined;
         } else {
             const args = argsOrState as L7RuleV2Args | undefined;
-            if (!args || args.compareType === undefined) {
+            if ((!args || args.compareType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'compareType'");
             }
-            if (!args || args.l7policyId === undefined) {
+            if ((!args || args.l7policyId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'l7policyId'");
             }
-            if (!args || args.type === undefined) {
+            if ((!args || args.type === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'type'");
             }
-            if (!args || args.value === undefined) {
+            if ((!args || args.value === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'value'");
             }
             inputs["adminStateUp"] = args ? args.adminStateUp : undefined;

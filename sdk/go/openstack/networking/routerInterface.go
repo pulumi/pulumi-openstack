@@ -86,11 +86,12 @@ type RouterInterface struct {
 // NewRouterInterface registers a new resource with the given unique name, arguments, and options.
 func NewRouterInterface(ctx *pulumi.Context,
 	name string, args *RouterInterfaceArgs, opts ...pulumi.ResourceOption) (*RouterInterface, error) {
-	if args == nil || args.RouterId == nil {
-		return nil, errors.New("missing required argument 'RouterId'")
-	}
 	if args == nil {
-		args = &RouterInterfaceArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.RouterId == nil {
+		return nil, errors.New("invalid value for required argument 'RouterId'")
 	}
 	var resource RouterInterface
 	err := ctx.RegisterResource("openstack:networking/routerInterface:RouterInterface", name, args, &resource, opts...)

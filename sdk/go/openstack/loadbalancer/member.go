@@ -83,17 +83,18 @@ type Member struct {
 // NewMember registers a new resource with the given unique name, arguments, and options.
 func NewMember(ctx *pulumi.Context,
 	name string, args *MemberArgs, opts ...pulumi.ResourceOption) (*Member, error) {
-	if args == nil || args.Address == nil {
-		return nil, errors.New("missing required argument 'Address'")
-	}
-	if args == nil || args.PoolId == nil {
-		return nil, errors.New("missing required argument 'PoolId'")
-	}
-	if args == nil || args.ProtocolPort == nil {
-		return nil, errors.New("missing required argument 'ProtocolPort'")
-	}
 	if args == nil {
-		args = &MemberArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Address == nil {
+		return nil, errors.New("invalid value for required argument 'Address'")
+	}
+	if args.PoolId == nil {
+		return nil, errors.New("invalid value for required argument 'PoolId'")
+	}
+	if args.ProtocolPort == nil {
+		return nil, errors.New("invalid value for required argument 'ProtocolPort'")
 	}
 	var resource Member
 	err := ctx.RegisterResource("openstack:loadbalancer/member:Member", name, args, &resource, opts...)

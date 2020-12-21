@@ -158,7 +158,7 @@ export class FloatingIp extends pulumi.CustomResource {
             inputs["valueSpecs"] = state ? state.valueSpecs : undefined;
         } else {
             const args = argsOrState as FloatingIpArgs | undefined;
-            if (!args || args.pool === undefined) {
+            if ((!args || args.pool === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'pool'");
             }
             inputs["address"] = args ? args.address : undefined;

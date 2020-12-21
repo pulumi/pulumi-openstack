@@ -133,20 +133,21 @@ type L7RuleV2 struct {
 // NewL7RuleV2 registers a new resource with the given unique name, arguments, and options.
 func NewL7RuleV2(ctx *pulumi.Context,
 	name string, args *L7RuleV2Args, opts ...pulumi.ResourceOption) (*L7RuleV2, error) {
-	if args == nil || args.CompareType == nil {
-		return nil, errors.New("missing required argument 'CompareType'")
-	}
-	if args == nil || args.L7policyId == nil {
-		return nil, errors.New("missing required argument 'L7policyId'")
-	}
-	if args == nil || args.Type == nil {
-		return nil, errors.New("missing required argument 'Type'")
-	}
-	if args == nil || args.Value == nil {
-		return nil, errors.New("missing required argument 'Value'")
-	}
 	if args == nil {
-		args = &L7RuleV2Args{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.CompareType == nil {
+		return nil, errors.New("invalid value for required argument 'CompareType'")
+	}
+	if args.L7policyId == nil {
+		return nil, errors.New("invalid value for required argument 'L7policyId'")
+	}
+	if args.Type == nil {
+		return nil, errors.New("invalid value for required argument 'Type'")
+	}
+	if args.Value == nil {
+		return nil, errors.New("invalid value for required argument 'Value'")
 	}
 	var resource L7RuleV2
 	err := ctx.RegisterResource("openstack:loadbalancer/l7RuleV2:L7RuleV2", name, args, &resource, opts...)

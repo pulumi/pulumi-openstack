@@ -124,6 +124,7 @@ func NewInstance(ctx *pulumi.Context,
 	if args == nil {
 		args = &InstanceArgs{}
 	}
+
 	var resource Instance
 	err := ctx.RegisterResource("openstack:compute/instance:Instance", name, args, &resource, opts...)
 	if err != nil {

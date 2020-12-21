@@ -97,10 +97,10 @@ export class FloatingIpAssociate extends pulumi.CustomResource {
             inputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as FloatingIpAssociateArgs | undefined;
-            if (!args || args.floatingIp === undefined) {
+            if ((!args || args.floatingIp === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'floatingIp'");
             }
-            if (!args || args.portId === undefined) {
+            if ((!args || args.portId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'portId'");
             }
             inputs["fixedIp"] = args ? args.fixedIp : undefined;

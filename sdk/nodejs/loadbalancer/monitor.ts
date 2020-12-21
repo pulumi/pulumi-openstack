@@ -163,19 +163,19 @@ export class Monitor extends pulumi.CustomResource {
             inputs["urlPath"] = state ? state.urlPath : undefined;
         } else {
             const args = argsOrState as MonitorArgs | undefined;
-            if (!args || args.delay === undefined) {
+            if ((!args || args.delay === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'delay'");
             }
-            if (!args || args.maxRetries === undefined) {
+            if ((!args || args.maxRetries === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'maxRetries'");
             }
-            if (!args || args.poolId === undefined) {
+            if ((!args || args.poolId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'poolId'");
             }
-            if (!args || args.timeout === undefined) {
+            if ((!args || args.timeout === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'timeout'");
             }
-            if (!args || args.type === undefined) {
+            if ((!args || args.type === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'type'");
             }
             inputs["adminStateUp"] = args ? args.adminStateUp : undefined;

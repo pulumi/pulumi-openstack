@@ -181,11 +181,12 @@ type Cluster struct {
 // NewCluster registers a new resource with the given unique name, arguments, and options.
 func NewCluster(ctx *pulumi.Context,
 	name string, args *ClusterArgs, opts ...pulumi.ResourceOption) (*Cluster, error) {
-	if args == nil || args.ClusterTemplateId == nil {
-		return nil, errors.New("missing required argument 'ClusterTemplateId'")
-	}
 	if args == nil {
-		args = &ClusterArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ClusterTemplateId == nil {
+		return nil, errors.New("invalid value for required argument 'ClusterTemplateId'")
 	}
 	var resource Cluster
 	err := ctx.RegisterResource("openstack:containerinfra/cluster:Cluster", name, args, &resource, opts...)

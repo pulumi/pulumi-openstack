@@ -44,7 +44,7 @@ class RouterRoute(pulumi.CustomResource):
             destination_cidr="10.0.1.0/24",
             next_hop="192.168.199.254",
             router_id=router1.id,
-            opts=ResourceOptions(depends_on=["openstack_networking_router_interface_v2.int_1"]))
+            opts=pulumi.ResourceOptions(depends_on=["openstack_networking_router_interface_v2.int_1"]))
         ```
         ## Notes
 
@@ -90,14 +90,14 @@ class RouterRoute(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if destination_cidr is None:
+            if destination_cidr is None and not opts.urn:
                 raise TypeError("Missing required property 'destination_cidr'")
             __props__['destination_cidr'] = destination_cidr
-            if next_hop is None:
+            if next_hop is None and not opts.urn:
                 raise TypeError("Missing required property 'next_hop'")
             __props__['next_hop'] = next_hop
             __props__['region'] = region
-            if router_id is None:
+            if router_id is None and not opts.urn:
                 raise TypeError("Missing required property 'router_id'")
             __props__['router_id'] = router_id
         super(RouterRoute, __self__).__init__(

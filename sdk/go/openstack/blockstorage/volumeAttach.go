@@ -110,14 +110,15 @@ type VolumeAttach struct {
 // NewVolumeAttach registers a new resource with the given unique name, arguments, and options.
 func NewVolumeAttach(ctx *pulumi.Context,
 	name string, args *VolumeAttachArgs, opts ...pulumi.ResourceOption) (*VolumeAttach, error) {
-	if args == nil || args.HostName == nil {
-		return nil, errors.New("missing required argument 'HostName'")
-	}
-	if args == nil || args.VolumeId == nil {
-		return nil, errors.New("missing required argument 'VolumeId'")
-	}
 	if args == nil {
-		args = &VolumeAttachArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.HostName == nil {
+		return nil, errors.New("invalid value for required argument 'HostName'")
+	}
+	if args.VolumeId == nil {
+		return nil, errors.New("invalid value for required argument 'VolumeId'")
 	}
 	var resource VolumeAttach
 	err := ctx.RegisterResource("openstack:blockstorage/volumeAttach:VolumeAttach", name, args, &resource, opts...)

@@ -62,7 +62,7 @@ class VolumeAttach(pulumi.CustomResource):
             instance_id=instance2.id,
             multiattach=True,
             volume_id=openstack_blockstorage_volume_v2["volume_1"]["id"],
-            opts=ResourceOptions(depends_on=["openstack_compute_volume_attach_v2.va_1"]))
+            opts=pulumi.ResourceOptions(depends_on=["openstack_compute_volume_attach_v2.va_1"]))
         ```
 
         It is recommended to use `depends_on` for the attach resources
@@ -107,12 +107,12 @@ class VolumeAttach(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['device'] = device
-            if instance_id is None:
+            if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
             __props__['instance_id'] = instance_id
             __props__['multiattach'] = multiattach
             __props__['region'] = region
-            if volume_id is None:
+            if volume_id is None and not opts.urn:
                 raise TypeError("Missing required property 'volume_id'")
             __props__['volume_id'] = volume_id
         super(VolumeAttach, __self__).__init__(

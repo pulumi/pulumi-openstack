@@ -208,13 +208,13 @@ export class PoolV1 extends pulumi.CustomResource {
             inputs["tenantId"] = state ? state.tenantId : undefined;
         } else {
             const args = argsOrState as PoolV1Args | undefined;
-            if (!args || args.lbMethod === undefined) {
+            if ((!args || args.lbMethod === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'lbMethod'");
             }
-            if (!args || args.protocol === undefined) {
+            if ((!args || args.protocol === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'protocol'");
             }
-            if (!args || args.subnetId === undefined) {
+            if ((!args || args.subnetId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'subnetId'");
             }
             inputs["lbMethod"] = args ? args.lbMethod : undefined;

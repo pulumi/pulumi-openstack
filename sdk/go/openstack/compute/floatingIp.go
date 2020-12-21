@@ -72,11 +72,12 @@ type FloatingIp struct {
 // NewFloatingIp registers a new resource with the given unique name, arguments, and options.
 func NewFloatingIp(ctx *pulumi.Context,
 	name string, args *FloatingIpArgs, opts ...pulumi.ResourceOption) (*FloatingIp, error) {
-	if args == nil || args.Pool == nil {
-		return nil, errors.New("missing required argument 'Pool'")
-	}
 	if args == nil {
-		args = &FloatingIpArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Pool == nil {
+		return nil, errors.New("invalid value for required argument 'Pool'")
 	}
 	var resource FloatingIp
 	err := ctx.RegisterResource("openstack:compute/floatingIp:FloatingIp", name, args, &resource, opts...)

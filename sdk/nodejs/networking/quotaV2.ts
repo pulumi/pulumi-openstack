@@ -154,7 +154,7 @@ export class QuotaV2 extends pulumi.CustomResource {
             inputs["subnetpool"] = state ? state.subnetpool : undefined;
         } else {
             const args = argsOrState as QuotaV2Args | undefined;
-            if (!args || args.projectId === undefined) {
+            if ((!args || args.projectId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'projectId'");
             }
             inputs["floatingip"] = args ? args.floatingip : undefined;

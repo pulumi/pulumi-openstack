@@ -218,7 +218,7 @@ export class Subnet extends pulumi.CustomResource {
             inputs["valueSpecs"] = state ? state.valueSpecs : undefined;
         } else {
             const args = argsOrState as SubnetArgs | undefined;
-            if (!args || args.networkId === undefined) {
+            if ((!args || args.networkId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'networkId'");
             }
             inputs["allocationPools"] = args ? args.allocationPools : undefined;

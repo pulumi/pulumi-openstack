@@ -50,6 +50,7 @@ func NewSecGroup(ctx *pulumi.Context,
 	if args == nil {
 		args = &SecGroupArgs{}
 	}
+
 	var resource SecGroup
 	err := ctx.RegisterResource("openstack:networking/secGroup:SecGroup", name, args, &resource, opts...)
 	if err != nil {

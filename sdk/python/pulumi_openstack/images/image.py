@@ -130,10 +130,10 @@ class Image(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if container_format is None:
+            if container_format is None and not opts.urn:
                 raise TypeError("Missing required property 'container_format'")
             __props__['container_format'] = container_format
-            if disk_format is None:
+            if disk_format is None and not opts.urn:
                 raise TypeError("Missing required property 'disk_format'")
             __props__['disk_format'] = disk_format
             __props__['image_cache_path'] = image_cache_path

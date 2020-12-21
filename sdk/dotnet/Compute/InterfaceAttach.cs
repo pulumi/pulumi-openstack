@@ -126,7 +126,7 @@ namespace Pulumi.OpenStack.Compute
         /// _NOTE_: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.
         /// </summary>
         [Output("fixedIp")]
-        public Output<string?> FixedIp { get; private set; } = null!;
+        public Output<string> FixedIp { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the Instance to attach the Port or Network to.

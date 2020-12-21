@@ -126,14 +126,15 @@ type ImageAccess struct {
 // NewImageAccess registers a new resource with the given unique name, arguments, and options.
 func NewImageAccess(ctx *pulumi.Context,
 	name string, args *ImageAccessArgs, opts ...pulumi.ResourceOption) (*ImageAccess, error) {
-	if args == nil || args.ImageId == nil {
-		return nil, errors.New("missing required argument 'ImageId'")
-	}
-	if args == nil || args.MemberId == nil {
-		return nil, errors.New("missing required argument 'MemberId'")
-	}
 	if args == nil {
-		args = &ImageAccessArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ImageId == nil {
+		return nil, errors.New("invalid value for required argument 'ImageId'")
+	}
+	if args.MemberId == nil {
+		return nil, errors.New("invalid value for required argument 'MemberId'")
 	}
 	var resource ImageAccess
 	err := ctx.RegisterResource("openstack:images/imageAccess:ImageAccess", name, args, &resource, opts...)

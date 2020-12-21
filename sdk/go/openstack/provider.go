@@ -24,6 +24,7 @@ func NewProvider(ctx *pulumi.Context,
 	if args == nil {
 		args = &ProviderArgs{}
 	}
+
 	if args.AllowReauth == nil {
 		args.AllowReauth = pulumi.BoolPtr(getEnvOrDefault(false, parseEnvBool, "OS_ALLOW_REAUTH").(bool))
 	}

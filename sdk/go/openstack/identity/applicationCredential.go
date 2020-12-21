@@ -174,6 +174,7 @@ func NewApplicationCredential(ctx *pulumi.Context,
 	if args == nil {
 		args = &ApplicationCredentialArgs{}
 	}
+
 	var resource ApplicationCredential
 	err := ctx.RegisterResource("openstack:identity/applicationCredential:ApplicationCredential", name, args, &resource, opts...)
 	if err != nil {

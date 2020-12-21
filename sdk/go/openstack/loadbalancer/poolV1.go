@@ -215,17 +215,18 @@ type PoolV1 struct {
 // NewPoolV1 registers a new resource with the given unique name, arguments, and options.
 func NewPoolV1(ctx *pulumi.Context,
 	name string, args *PoolV1Args, opts ...pulumi.ResourceOption) (*PoolV1, error) {
-	if args == nil || args.LbMethod == nil {
-		return nil, errors.New("missing required argument 'LbMethod'")
-	}
-	if args == nil || args.Protocol == nil {
-		return nil, errors.New("missing required argument 'Protocol'")
-	}
-	if args == nil || args.SubnetId == nil {
-		return nil, errors.New("missing required argument 'SubnetId'")
-	}
 	if args == nil {
-		args = &PoolV1Args{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.LbMethod == nil {
+		return nil, errors.New("invalid value for required argument 'LbMethod'")
+	}
+	if args.Protocol == nil {
+		return nil, errors.New("invalid value for required argument 'Protocol'")
+	}
+	if args.SubnetId == nil {
+		return nil, errors.New("invalid value for required argument 'SubnetId'")
 	}
 	var resource PoolV1
 	err := ctx.RegisterResource("openstack:loadbalancer/poolV1:PoolV1", name, args, &resource, opts...)

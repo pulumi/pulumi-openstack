@@ -46,6 +46,12 @@ class InstanceBlockDevice(dict):
                common thing is to leave this empty. Changing this creates a new server.
         :param str disk_bus: The low-level disk bus that will be used. Most common
                thing is to leave this empty. Changing this creates a new server.
+        :param str guest_format: Specifies the guest server disk file system format,
+               such as `ext2`, `ext3`, `ext4`, `xfs` or `swap`. Swap block device mappings
+               have the following restrictions: source_type must be blank and destination_type
+               must be local and only one swap disk per server and the size of the swap disk
+               must be less than or equal to the swap size of the flavor. Changing this
+               creates a new server.
         :param str uuid: The UUID of
                the image, volume, or snapshot. Changing this creates a new server.
         :param int volume_size: The size of the volume to create (in gigabytes). Required
@@ -136,6 +142,14 @@ class InstanceBlockDevice(dict):
     @property
     @pulumi.getter(name="guestFormat")
     def guest_format(self) -> Optional[str]:
+        """
+        Specifies the guest server disk file system format,
+        such as `ext2`, `ext3`, `ext4`, `xfs` or `swap`. Swap block device mappings
+        have the following restrictions: source_type must be blank and destination_type
+        must be local and only one swap disk per server and the size of the swap disk
+        must be less than or equal to the swap size of the flavor. Changing this
+        creates a new server.
+        """
         return pulumi.get(self, "guest_format")
 
     @property

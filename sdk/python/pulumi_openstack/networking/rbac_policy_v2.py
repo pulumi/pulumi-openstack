@@ -93,17 +93,17 @@ class RbacPolicyV2(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if action is None:
+            if action is None and not opts.urn:
                 raise TypeError("Missing required property 'action'")
             __props__['action'] = action
-            if object_id is None:
+            if object_id is None and not opts.urn:
                 raise TypeError("Missing required property 'object_id'")
             __props__['object_id'] = object_id
-            if object_type is None:
+            if object_type is None and not opts.urn:
                 raise TypeError("Missing required property 'object_type'")
             __props__['object_type'] = object_type
             __props__['region'] = region
-            if target_tenant is None:
+            if target_tenant is None and not opts.urn:
                 raise TypeError("Missing required property 'target_tenant'")
             __props__['target_tenant'] = target_tenant
             __props__['project_id'] = None

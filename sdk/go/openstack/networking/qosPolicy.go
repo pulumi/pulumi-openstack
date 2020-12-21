@@ -89,6 +89,7 @@ func NewQosPolicy(ctx *pulumi.Context,
 	if args == nil {
 		args = &QosPolicyArgs{}
 	}
+
 	var resource QosPolicy
 	err := ctx.RegisterResource("openstack:networking/qosPolicy:QosPolicy", name, args, &resource, opts...)
 	if err != nil {

@@ -102,20 +102,21 @@ type Vip struct {
 // NewVip registers a new resource with the given unique name, arguments, and options.
 func NewVip(ctx *pulumi.Context,
 	name string, args *VipArgs, opts ...pulumi.ResourceOption) (*Vip, error) {
-	if args == nil || args.PoolId == nil {
-		return nil, errors.New("missing required argument 'PoolId'")
-	}
-	if args == nil || args.Port == nil {
-		return nil, errors.New("missing required argument 'Port'")
-	}
-	if args == nil || args.Protocol == nil {
-		return nil, errors.New("missing required argument 'Protocol'")
-	}
-	if args == nil || args.SubnetId == nil {
-		return nil, errors.New("missing required argument 'SubnetId'")
-	}
 	if args == nil {
-		args = &VipArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.PoolId == nil {
+		return nil, errors.New("invalid value for required argument 'PoolId'")
+	}
+	if args.Port == nil {
+		return nil, errors.New("invalid value for required argument 'Port'")
+	}
+	if args.Protocol == nil {
+		return nil, errors.New("invalid value for required argument 'Protocol'")
+	}
+	if args.SubnetId == nil {
+		return nil, errors.New("invalid value for required argument 'SubnetId'")
 	}
 	var resource Vip
 	err := ctx.RegisterResource("openstack:loadbalancer/vip:Vip", name, args, &resource, opts...)

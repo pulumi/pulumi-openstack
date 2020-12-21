@@ -118,10 +118,10 @@ export class ImageAccessAccept extends pulumi.CustomResource {
             inputs["updatedAt"] = state ? state.updatedAt : undefined;
         } else {
             const args = argsOrState as ImageAccessAcceptArgs | undefined;
-            if (!args || args.imageId === undefined) {
+            if ((!args || args.imageId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'imageId'");
             }
-            if (!args || args.status === undefined) {
+            if ((!args || args.status === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'status'");
             }
             inputs["imageId"] = args ? args.imageId : undefined;

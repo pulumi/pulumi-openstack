@@ -11,7 +11,7 @@ namespace Pulumi.OpenStack.Orchestration.Outputs
 {
 
     [OutputType]
-    public sealed class StackV1Output
+    public sealed class StackV1StackOutput
     {
         /// <summary>
         /// The description of the stack resource.
@@ -21,7 +21,7 @@ namespace Pulumi.OpenStack.Orchestration.Outputs
         public readonly string OutputValue;
 
         [OutputConstructor]
-        private StackV1Output(
+        private StackV1StackOutput(
             string? description,
 
             string outputKey,

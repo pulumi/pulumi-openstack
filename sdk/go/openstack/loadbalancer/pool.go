@@ -93,14 +93,15 @@ type Pool struct {
 // NewPool registers a new resource with the given unique name, arguments, and options.
 func NewPool(ctx *pulumi.Context,
 	name string, args *PoolArgs, opts ...pulumi.ResourceOption) (*Pool, error) {
-	if args == nil || args.LbMethod == nil {
-		return nil, errors.New("missing required argument 'LbMethod'")
-	}
-	if args == nil || args.Protocol == nil {
-		return nil, errors.New("missing required argument 'Protocol'")
-	}
 	if args == nil {
-		args = &PoolArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.LbMethod == nil {
+		return nil, errors.New("invalid value for required argument 'LbMethod'")
+	}
+	if args.Protocol == nil {
+		return nil, errors.New("invalid value for required argument 'Protocol'")
 	}
 	var resource Pool
 	err := ctx.RegisterResource("openstack:loadbalancer/pool:Pool", name, args, &resource, opts...)

@@ -54,11 +54,13 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] description: A description of the project.
         :param pulumi.Input[str] domain_id: The domain this project belongs to.
         :param pulumi.Input[bool] enabled: Whether the project is enabled or disabled. Valid
-               values are `true` and `false`.
+               values are `true` and `false`. Default is `true`.
         :param pulumi.Input[bool] is_domain: Whether this project is a domain. Valid values
-               are `true` and `false`.
+               are `true` and `false`. Default is `false`. Changing this creates a new
+               project/domain.
         :param pulumi.Input[str] name: The name of the project.
-        :param pulumi.Input[str] parent_id: The parent of this project.
+        :param pulumi.Input[str] parent_id: The parent of this project. Changing this creates
+               a new project.
         :param pulumi.Input[str] region: The region in which to obtain the V3 Keystone client.
                If omitted, the `region` argument of the provider is used. Changing this
                creates a new project.
@@ -118,11 +120,13 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] description: A description of the project.
         :param pulumi.Input[str] domain_id: The domain this project belongs to.
         :param pulumi.Input[bool] enabled: Whether the project is enabled or disabled. Valid
-               values are `true` and `false`.
+               values are `true` and `false`. Default is `true`.
         :param pulumi.Input[bool] is_domain: Whether this project is a domain. Valid values
-               are `true` and `false`.
+               are `true` and `false`. Default is `false`. Changing this creates a new
+               project/domain.
         :param pulumi.Input[str] name: The name of the project.
-        :param pulumi.Input[str] parent_id: The parent of this project.
+        :param pulumi.Input[str] parent_id: The parent of this project. Changing this creates
+               a new project.
         :param pulumi.Input[str] region: The region in which to obtain the V3 Keystone client.
                If omitted, the `region` argument of the provider is used. Changing this
                creates a new project.
@@ -164,7 +168,7 @@ class Project(pulumi.CustomResource):
     def enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether the project is enabled or disabled. Valid
-        values are `true` and `false`.
+        values are `true` and `false`. Default is `true`.
         """
         return pulumi.get(self, "enabled")
 
@@ -173,7 +177,8 @@ class Project(pulumi.CustomResource):
     def is_domain(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether this project is a domain. Valid values
-        are `true` and `false`.
+        are `true` and `false`. Default is `false`. Changing this creates a new
+        project/domain.
         """
         return pulumi.get(self, "is_domain")
 
@@ -189,7 +194,8 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="parentId")
     def parent_id(self) -> pulumi.Output[str]:
         """
-        The parent of this project.
+        The parent of this project. Changing this creates
+        a new project.
         """
         return pulumi.get(self, "parent_id")
 

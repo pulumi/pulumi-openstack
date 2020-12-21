@@ -163,17 +163,17 @@ class PoolV1(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if lb_method is None:
+            if lb_method is None and not opts.urn:
                 raise TypeError("Missing required property 'lb_method'")
             __props__['lb_method'] = lb_method
             __props__['lb_provider'] = lb_provider
             __props__['monitor_ids'] = monitor_ids
             __props__['name'] = name
-            if protocol is None:
+            if protocol is None and not opts.urn:
                 raise TypeError("Missing required property 'protocol'")
             __props__['protocol'] = protocol
             __props__['region'] = region
-            if subnet_id is None:
+            if subnet_id is None and not opts.urn:
                 raise TypeError("Missing required property 'subnet_id'")
             __props__['subnet_id'] = subnet_id
             __props__['tenant_id'] = tenant_id

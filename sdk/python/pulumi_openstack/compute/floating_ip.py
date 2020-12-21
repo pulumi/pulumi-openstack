@@ -73,7 +73,7 @@ class FloatingIp(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if pool is None:
+            if pool is None and not opts.urn:
                 raise TypeError("Missing required property 'pool'")
             __props__['pool'] = pool
             __props__['region'] = region

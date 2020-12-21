@@ -142,10 +142,10 @@ export class Pool extends pulumi.CustomResource {
             inputs["tenantId"] = state ? state.tenantId : undefined;
         } else {
             const args = argsOrState as PoolArgs | undefined;
-            if (!args || args.lbMethod === undefined) {
+            if ((!args || args.lbMethod === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'lbMethod'");
             }
-            if (!args || args.protocol === undefined) {
+            if ((!args || args.protocol === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'protocol'");
             }
             inputs["adminStateUp"] = args ? args.adminStateUp : undefined;

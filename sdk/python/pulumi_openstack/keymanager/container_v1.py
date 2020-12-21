@@ -151,7 +151,7 @@ class ContainerV1(pulumi.CustomResource):
             __props__['name'] = name
             __props__['region'] = region
             __props__['secret_refs'] = secret_refs
-            if type is None:
+            if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__['type'] = type
             __props__['consumers'] = None

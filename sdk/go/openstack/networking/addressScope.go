@@ -105,6 +105,7 @@ func NewAddressScope(ctx *pulumi.Context,
 	if args == nil {
 		args = &AddressScopeArgs{}
 	}
+
 	var resource AddressScope
 	err := ctx.RegisterResource("openstack:networking/addressScope:AddressScope", name, args, &resource, opts...)
 	if err != nil {

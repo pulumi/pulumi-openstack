@@ -107,11 +107,12 @@ type QuotaV2 struct {
 // NewQuotaV2 registers a new resource with the given unique name, arguments, and options.
 func NewQuotaV2(ctx *pulumi.Context,
 	name string, args *QuotaV2Args, opts ...pulumi.ResourceOption) (*QuotaV2, error) {
-	if args == nil || args.ProjectId == nil {
-		return nil, errors.New("missing required argument 'ProjectId'")
-	}
 	if args == nil {
-		args = &QuotaV2Args{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ProjectId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectId'")
 	}
 	var resource QuotaV2
 	err := ctx.RegisterResource("openstack:networking/quotaV2:QuotaV2", name, args, &resource, opts...)

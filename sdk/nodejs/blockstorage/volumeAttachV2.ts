@@ -170,10 +170,10 @@ export class VolumeAttachV2 extends pulumi.CustomResource {
             inputs["wwpns"] = state ? state.wwpns : undefined;
         } else {
             const args = argsOrState as VolumeAttachV2Args | undefined;
-            if (!args || args.hostName === undefined) {
+            if ((!args || args.hostName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'hostName'");
             }
-            if (!args || args.volumeId === undefined) {
+            if ((!args || args.volumeId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'volumeId'");
             }
             inputs["attachMode"] = args ? args.attachMode : undefined;

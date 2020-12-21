@@ -17,6 +17,7 @@ class Zone(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  attributes: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disable_status_check: Optional[pulumi.Input[bool]] = None,
                  email: Optional[pulumi.Input[str]] = None,
                  masters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -62,6 +63,9 @@ class Zone(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] attributes: Attributes for the DNS Service scheduler.
                Changing this creates a new zone.
         :param pulumi.Input[str] description: A description of the zone.
+        :param pulumi.Input[bool] disable_status_check: Disable wait for zone to reach ACTIVE
+               status. The check is enabled by default. If this argument is true, zone
+               will be considered as created/updated if OpenStack request returned success.
         :param pulumi.Input[str] email: The email contact for the zone record.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] masters: An array of master DNS servers. For when `type` is
                `SECONDARY`.
@@ -99,6 +103,7 @@ class Zone(pulumi.CustomResource):
 
             __props__['attributes'] = attributes
             __props__['description'] = description
+            __props__['disable_status_check'] = disable_status_check
             __props__['email'] = email
             __props__['masters'] = masters
             __props__['name'] = name
@@ -119,6 +124,7 @@ class Zone(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             attributes: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            disable_status_check: Optional[pulumi.Input[bool]] = None,
             email: Optional[pulumi.Input[str]] = None,
             masters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -137,6 +143,9 @@ class Zone(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] attributes: Attributes for the DNS Service scheduler.
                Changing this creates a new zone.
         :param pulumi.Input[str] description: A description of the zone.
+        :param pulumi.Input[bool] disable_status_check: Disable wait for zone to reach ACTIVE
+               status. The check is enabled by default. If this argument is true, zone
+               will be considered as created/updated if OpenStack request returned success.
         :param pulumi.Input[str] email: The email contact for the zone record.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] masters: An array of master DNS servers. For when `type` is
                `SECONDARY`.
@@ -161,6 +170,7 @@ class Zone(pulumi.CustomResource):
 
         __props__["attributes"] = attributes
         __props__["description"] = description
+        __props__["disable_status_check"] = disable_status_check
         __props__["email"] = email
         __props__["masters"] = masters
         __props__["name"] = name
@@ -187,6 +197,16 @@ class Zone(pulumi.CustomResource):
         A description of the zone.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="disableStatusCheck")
+    def disable_status_check(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Disable wait for zone to reach ACTIVE
+        status. The check is enabled by default. If this argument is true, zone
+        will be considered as created/updated if OpenStack request returned success.
+        """
+        return pulumi.get(self, "disable_status_check")
 
     @property
     @pulumi.getter

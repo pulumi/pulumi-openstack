@@ -172,13 +172,13 @@ export class SecGroupRule extends pulumi.CustomResource {
             inputs["tenantId"] = state ? state.tenantId : undefined;
         } else {
             const args = argsOrState as SecGroupRuleArgs | undefined;
-            if (!args || args.direction === undefined) {
+            if ((!args || args.direction === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'direction'");
             }
-            if (!args || args.ethertype === undefined) {
+            if ((!args || args.ethertype === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'ethertype'");
             }
-            if (!args || args.securityGroupId === undefined) {
+            if ((!args || args.securityGroupId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'securityGroupId'");
             }
             inputs["description"] = args ? args.description : undefined;

@@ -101,17 +101,18 @@ type RouterRoute struct {
 // NewRouterRoute registers a new resource with the given unique name, arguments, and options.
 func NewRouterRoute(ctx *pulumi.Context,
 	name string, args *RouterRouteArgs, opts ...pulumi.ResourceOption) (*RouterRoute, error) {
-	if args == nil || args.DestinationCidr == nil {
-		return nil, errors.New("missing required argument 'DestinationCidr'")
-	}
-	if args == nil || args.NextHop == nil {
-		return nil, errors.New("missing required argument 'NextHop'")
-	}
-	if args == nil || args.RouterId == nil {
-		return nil, errors.New("missing required argument 'RouterId'")
-	}
 	if args == nil {
-		args = &RouterRouteArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DestinationCidr == nil {
+		return nil, errors.New("invalid value for required argument 'DestinationCidr'")
+	}
+	if args.NextHop == nil {
+		return nil, errors.New("invalid value for required argument 'NextHop'")
+	}
+	if args.RouterId == nil {
+		return nil, errors.New("invalid value for required argument 'RouterId'")
 	}
 	var resource RouterRoute
 	err := ctx.RegisterResource("openstack:networking/routerRoute:RouterRoute", name, args, &resource, opts...)

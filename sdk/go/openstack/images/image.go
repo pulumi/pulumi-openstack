@@ -150,14 +150,15 @@ type Image struct {
 // NewImage registers a new resource with the given unique name, arguments, and options.
 func NewImage(ctx *pulumi.Context,
 	name string, args *ImageArgs, opts ...pulumi.ResourceOption) (*Image, error) {
-	if args == nil || args.ContainerFormat == nil {
-		return nil, errors.New("missing required argument 'ContainerFormat'")
-	}
-	if args == nil || args.DiskFormat == nil {
-		return nil, errors.New("missing required argument 'DiskFormat'")
-	}
 	if args == nil {
-		args = &ImageArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ContainerFormat == nil {
+		return nil, errors.New("invalid value for required argument 'ContainerFormat'")
+	}
+	if args.DiskFormat == nil {
+		return nil, errors.New("invalid value for required argument 'DiskFormat'")
 	}
 	var resource Image
 	err := ctx.RegisterResource("openstack:images/image:Image", name, args, &resource, opts...)

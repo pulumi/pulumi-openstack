@@ -80,11 +80,11 @@ class FlavorAccess(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if flavor_id is None:
+            if flavor_id is None and not opts.urn:
                 raise TypeError("Missing required property 'flavor_id'")
             __props__['flavor_id'] = flavor_id
             __props__['region'] = region
-            if tenant_id is None:
+            if tenant_id is None and not opts.urn:
                 raise TypeError("Missing required property 'tenant_id'")
             __props__['tenant_id'] = tenant_id
         super(FlavorAccess, __self__).__init__(

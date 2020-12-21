@@ -116,17 +116,18 @@ type Listener struct {
 // NewListener registers a new resource with the given unique name, arguments, and options.
 func NewListener(ctx *pulumi.Context,
 	name string, args *ListenerArgs, opts ...pulumi.ResourceOption) (*Listener, error) {
-	if args == nil || args.LoadbalancerId == nil {
-		return nil, errors.New("missing required argument 'LoadbalancerId'")
-	}
-	if args == nil || args.Protocol == nil {
-		return nil, errors.New("missing required argument 'Protocol'")
-	}
-	if args == nil || args.ProtocolPort == nil {
-		return nil, errors.New("missing required argument 'ProtocolPort'")
-	}
 	if args == nil {
-		args = &ListenerArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.LoadbalancerId == nil {
+		return nil, errors.New("invalid value for required argument 'LoadbalancerId'")
+	}
+	if args.Protocol == nil {
+		return nil, errors.New("invalid value for required argument 'Protocol'")
+	}
+	if args.ProtocolPort == nil {
+		return nil, errors.New("invalid value for required argument 'ProtocolPort'")
 	}
 	var resource Listener
 	err := ctx.RegisterResource("openstack:loadbalancer/listener:Listener", name, args, &resource, opts...)

@@ -142,7 +142,7 @@ class SubnetPool(pulumi.CustomResource):
             __props__['max_prefixlen'] = max_prefixlen
             __props__['min_prefixlen'] = min_prefixlen
             __props__['name'] = name
-            if prefixes is None:
+            if prefixes is None and not opts.urn:
                 raise TypeError("Missing required property 'prefixes'")
             __props__['prefixes'] = prefixes
             __props__['project_id'] = project_id

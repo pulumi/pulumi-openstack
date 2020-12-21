@@ -129,14 +129,15 @@ type Share struct {
 // NewShare registers a new resource with the given unique name, arguments, and options.
 func NewShare(ctx *pulumi.Context,
 	name string, args *ShareArgs, opts ...pulumi.ResourceOption) (*Share, error) {
-	if args == nil || args.ShareProto == nil {
-		return nil, errors.New("missing required argument 'ShareProto'")
-	}
-	if args == nil || args.Size == nil {
-		return nil, errors.New("missing required argument 'Size'")
-	}
 	if args == nil {
-		args = &ShareArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ShareProto == nil {
+		return nil, errors.New("invalid value for required argument 'ShareProto'")
+	}
+	if args.Size == nil {
+		return nil, errors.New("invalid value for required argument 'Size'")
 	}
 	var resource Share
 	err := ctx.RegisterResource("openstack:sharedfilesystem/share:Share", name, args, &resource, opts...)

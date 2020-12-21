@@ -77,6 +77,10 @@ export class StackV1 extends pulumi.CustomResource {
     }
 
     /**
+     * A list of stack outputs.
+     */
+    public readonly StackOutputs!: pulumi.Output<outputs.orchestration.StackV1StackOutput[]>;
+    /**
      * List of stack capabilities for stack.
      */
     public readonly capabilities!: pulumi.Output<string[]>;
@@ -113,10 +117,6 @@ export class StackV1 extends pulumi.CustomResource {
      * List of notification topics for stack.
      */
     public readonly notificationTopics!: pulumi.Output<string[]>;
-    /**
-     * A list of stack outputs.
-     */
-    public readonly outputs!: pulumi.Output<outputs.orchestration.StackV1Output[]>;
     /**
      * User-defined key/value pairs as parameters to pass
      * to the template. Changing this updates the existing stack parameters.
@@ -175,6 +175,7 @@ export class StackV1 extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as StackV1State | undefined;
+            inputs["StackOutputs"] = state ? state.StackOutputs : undefined;
             inputs["capabilities"] = state ? state.capabilities : undefined;
             inputs["creationTime"] = state ? state.creationTime : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -182,7 +183,6 @@ export class StackV1 extends pulumi.CustomResource {
             inputs["environmentOpts"] = state ? state.environmentOpts : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["notificationTopics"] = state ? state.notificationTopics : undefined;
-            inputs["outputs"] = state ? state.outputs : undefined;
             inputs["parameters"] = state ? state.parameters : undefined;
             inputs["region"] = state ? state.region : undefined;
             inputs["status"] = state ? state.status : undefined;
@@ -194,9 +194,10 @@ export class StackV1 extends pulumi.CustomResource {
             inputs["updatedTime"] = state ? state.updatedTime : undefined;
         } else {
             const args = argsOrState as StackV1Args | undefined;
-            if (!args || args.templateOpts === undefined) {
+            if ((!args || args.templateOpts === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'templateOpts'");
             }
+            inputs["StackOutputs"] = args ? args.StackOutputs : undefined;
             inputs["capabilities"] = args ? args.capabilities : undefined;
             inputs["creationTime"] = args ? args.creationTime : undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -204,7 +205,6 @@ export class StackV1 extends pulumi.CustomResource {
             inputs["environmentOpts"] = args ? args.environmentOpts : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["notificationTopics"] = args ? args.notificationTopics : undefined;
-            inputs["outputs"] = args ? args.outputs : undefined;
             inputs["parameters"] = args ? args.parameters : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["status"] = args ? args.status : undefined;
@@ -230,6 +230,10 @@ export class StackV1 extends pulumi.CustomResource {
  * Input properties used for looking up and filtering StackV1 resources.
  */
 export interface StackV1State {
+    /**
+     * A list of stack outputs.
+     */
+    readonly StackOutputs?: pulumi.Input<pulumi.Input<inputs.orchestration.StackV1StackOutput>[]>;
     /**
      * List of stack capabilities for stack.
      */
@@ -267,10 +271,6 @@ export interface StackV1State {
      * List of notification topics for stack.
      */
     readonly notificationTopics?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * A list of stack outputs.
-     */
-    readonly outputs?: pulumi.Input<pulumi.Input<inputs.orchestration.StackV1Output>[]>;
     /**
      * User-defined key/value pairs as parameters to pass
      * to the template. Changing this updates the existing stack parameters.
@@ -323,6 +323,10 @@ export interface StackV1State {
  */
 export interface StackV1Args {
     /**
+     * A list of stack outputs.
+     */
+    readonly StackOutputs?: pulumi.Input<pulumi.Input<inputs.orchestration.StackV1StackOutput>[]>;
+    /**
      * List of stack capabilities for stack.
      */
     readonly capabilities?: pulumi.Input<pulumi.Input<string>[]>;
@@ -359,10 +363,6 @@ export interface StackV1Args {
      * List of notification topics for stack.
      */
     readonly notificationTopics?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * A list of stack outputs.
-     */
-    readonly outputs?: pulumi.Input<pulumi.Input<inputs.orchestration.StackV1Output>[]>;
     /**
      * User-defined key/value pairs as parameters to pass
      * to the template. Changing this updates the existing stack parameters.

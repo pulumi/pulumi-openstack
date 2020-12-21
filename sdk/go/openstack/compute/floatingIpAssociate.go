@@ -11,8 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Associate a floating IP to an instance. This can be used instead of the
-// `floatingIp` options in `compute.Instance`.
+// Associate a floating IP to an instance.
 //
 // ## Example Usage
 // ### Automatically detect the correct network
@@ -136,14 +135,15 @@ type FloatingIpAssociate struct {
 // NewFloatingIpAssociate registers a new resource with the given unique name, arguments, and options.
 func NewFloatingIpAssociate(ctx *pulumi.Context,
 	name string, args *FloatingIpAssociateArgs, opts ...pulumi.ResourceOption) (*FloatingIpAssociate, error) {
-	if args == nil || args.FloatingIp == nil {
-		return nil, errors.New("missing required argument 'FloatingIp'")
-	}
-	if args == nil || args.InstanceId == nil {
-		return nil, errors.New("missing required argument 'InstanceId'")
-	}
 	if args == nil {
-		args = &FloatingIpAssociateArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.FloatingIp == nil {
+		return nil, errors.New("invalid value for required argument 'FloatingIp'")
+	}
+	if args.InstanceId == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
 	var resource FloatingIpAssociate
 	err := ctx.RegisterResource("openstack:compute/floatingIpAssociate:FloatingIpAssociate", name, args, &resource, opts...)

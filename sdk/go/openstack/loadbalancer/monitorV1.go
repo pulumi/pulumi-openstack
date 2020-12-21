@@ -95,20 +95,21 @@ type MonitorV1 struct {
 // NewMonitorV1 registers a new resource with the given unique name, arguments, and options.
 func NewMonitorV1(ctx *pulumi.Context,
 	name string, args *MonitorV1Args, opts ...pulumi.ResourceOption) (*MonitorV1, error) {
-	if args == nil || args.Delay == nil {
-		return nil, errors.New("missing required argument 'Delay'")
-	}
-	if args == nil || args.MaxRetries == nil {
-		return nil, errors.New("missing required argument 'MaxRetries'")
-	}
-	if args == nil || args.Timeout == nil {
-		return nil, errors.New("missing required argument 'Timeout'")
-	}
-	if args == nil || args.Type == nil {
-		return nil, errors.New("missing required argument 'Type'")
-	}
 	if args == nil {
-		args = &MonitorV1Args{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Delay == nil {
+		return nil, errors.New("invalid value for required argument 'Delay'")
+	}
+	if args.MaxRetries == nil {
+		return nil, errors.New("invalid value for required argument 'MaxRetries'")
+	}
+	if args.Timeout == nil {
+		return nil, errors.New("invalid value for required argument 'Timeout'")
+	}
+	if args.Type == nil {
+		return nil, errors.New("invalid value for required argument 'Type'")
 	}
 	var resource MonitorV1
 	err := ctx.RegisterResource("openstack:loadbalancer/monitorV1:MonitorV1", name, args, &resource, opts...)

@@ -84,6 +84,7 @@ func NewIpSecPolicy(ctx *pulumi.Context,
 	if args == nil {
 		args = &IpSecPolicyArgs{}
 	}
+
 	var resource IpSecPolicy
 	err := ctx.RegisterResource("openstack:vpnaas/ipSecPolicy:IpSecPolicy", name, args, &resource, opts...)
 	if err != nil {

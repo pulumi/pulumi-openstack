@@ -58,6 +58,8 @@ import (
 type StackV1 struct {
 	pulumi.CustomResourceState
 
+	// A list of stack outputs.
+	StackOutputs StackV1StackOutputArrayOutput `pulumi:"StackOutputs"`
 	// List of stack capabilities for stack.
 	Capabilities pulumi.StringArrayOutput `pulumi:"capabilities"`
 	// The date and time when the resource was created. The date
@@ -81,8 +83,6 @@ type StackV1 struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// List of notification topics for stack.
 	NotificationTopics pulumi.StringArrayOutput `pulumi:"notificationTopics"`
-	// A list of stack outputs.
-	Outputs StackV1OutputArrayOutput `pulumi:"outputs"`
 	// User-defined key/value pairs as parameters to pass
 	// to the template. Changing this updates the existing stack parameters.
 	Parameters pulumi.MapOutput `pulumi:"parameters"`
@@ -115,11 +115,12 @@ type StackV1 struct {
 // NewStackV1 registers a new resource with the given unique name, arguments, and options.
 func NewStackV1(ctx *pulumi.Context,
 	name string, args *StackV1Args, opts ...pulumi.ResourceOption) (*StackV1, error) {
-	if args == nil || args.TemplateOpts == nil {
-		return nil, errors.New("missing required argument 'TemplateOpts'")
-	}
 	if args == nil {
-		args = &StackV1Args{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.TemplateOpts == nil {
+		return nil, errors.New("invalid value for required argument 'TemplateOpts'")
 	}
 	var resource StackV1
 	err := ctx.RegisterResource("openstack:orchestration/stackV1:StackV1", name, args, &resource, opts...)
@@ -143,6 +144,8 @@ func GetStackV1(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering StackV1 resources.
 type stackV1State struct {
+	// A list of stack outputs.
+	StackOutputs []StackV1StackOutput `pulumi:"StackOutputs"`
 	// List of stack capabilities for stack.
 	Capabilities []string `pulumi:"capabilities"`
 	// The date and time when the resource was created. The date
@@ -166,8 +169,6 @@ type stackV1State struct {
 	Name *string `pulumi:"name"`
 	// List of notification topics for stack.
 	NotificationTopics []string `pulumi:"notificationTopics"`
-	// A list of stack outputs.
-	Outputs []StackV1Output `pulumi:"outputs"`
 	// User-defined key/value pairs as parameters to pass
 	// to the template. Changing this updates the existing stack parameters.
 	Parameters map[string]interface{} `pulumi:"parameters"`
@@ -198,6 +199,8 @@ type stackV1State struct {
 }
 
 type StackV1State struct {
+	// A list of stack outputs.
+	StackOutputs StackV1StackOutputArrayInput
 	// List of stack capabilities for stack.
 	Capabilities pulumi.StringArrayInput
 	// The date and time when the resource was created. The date
@@ -221,8 +224,6 @@ type StackV1State struct {
 	Name pulumi.StringPtrInput
 	// List of notification topics for stack.
 	NotificationTopics pulumi.StringArrayInput
-	// A list of stack outputs.
-	Outputs StackV1OutputArrayInput
 	// User-defined key/value pairs as parameters to pass
 	// to the template. Changing this updates the existing stack parameters.
 	Parameters pulumi.MapInput
@@ -257,6 +258,8 @@ func (StackV1State) ElementType() reflect.Type {
 }
 
 type stackV1Args struct {
+	// A list of stack outputs.
+	StackOutputs []StackV1StackOutput `pulumi:"StackOutputs"`
 	// List of stack capabilities for stack.
 	Capabilities []string `pulumi:"capabilities"`
 	// The date and time when the resource was created. The date
@@ -280,8 +283,6 @@ type stackV1Args struct {
 	Name *string `pulumi:"name"`
 	// List of notification topics for stack.
 	NotificationTopics []string `pulumi:"notificationTopics"`
-	// A list of stack outputs.
-	Outputs []StackV1Output `pulumi:"outputs"`
 	// User-defined key/value pairs as parameters to pass
 	// to the template. Changing this updates the existing stack parameters.
 	Parameters map[string]interface{} `pulumi:"parameters"`
@@ -313,6 +314,8 @@ type stackV1Args struct {
 
 // The set of arguments for constructing a StackV1 resource.
 type StackV1Args struct {
+	// A list of stack outputs.
+	StackOutputs StackV1StackOutputArrayInput
 	// List of stack capabilities for stack.
 	Capabilities pulumi.StringArrayInput
 	// The date and time when the resource was created. The date
@@ -336,8 +339,6 @@ type StackV1Args struct {
 	Name pulumi.StringPtrInput
 	// List of notification topics for stack.
 	NotificationTopics pulumi.StringArrayInput
-	// A list of stack outputs.
-	Outputs StackV1OutputArrayInput
 	// User-defined key/value pairs as parameters to pass
 	// to the template. Changing this updates the existing stack parameters.
 	Parameters pulumi.MapInput

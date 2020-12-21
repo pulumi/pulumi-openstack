@@ -84,6 +84,7 @@ func NewIkePolicy(ctx *pulumi.Context,
 	if args == nil {
 		args = &IkePolicyArgs{}
 	}
+
 	var resource IkePolicy
 	err := ctx.RegisterResource("openstack:vpnaas/ikePolicy:IkePolicy", name, args, &resource, opts...)
 	if err != nil {

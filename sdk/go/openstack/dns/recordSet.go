@@ -91,11 +91,12 @@ type RecordSet struct {
 // NewRecordSet registers a new resource with the given unique name, arguments, and options.
 func NewRecordSet(ctx *pulumi.Context,
 	name string, args *RecordSetArgs, opts ...pulumi.ResourceOption) (*RecordSet, error) {
-	if args == nil || args.ZoneId == nil {
-		return nil, errors.New("missing required argument 'ZoneId'")
-	}
 	if args == nil {
-		args = &RecordSetArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ZoneId == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	var resource RecordSet
 	err := ctx.RegisterResource("openstack:dns/recordSet:RecordSet", name, args, &resource, opts...)

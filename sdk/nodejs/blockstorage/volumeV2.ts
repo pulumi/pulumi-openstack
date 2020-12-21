@@ -157,7 +157,7 @@ export class VolumeV2 extends pulumi.CustomResource {
             inputs["volumeType"] = state ? state.volumeType : undefined;
         } else {
             const args = argsOrState as VolumeV2Args | undefined;
-            if (!args || args.size === undefined) {
+            if ((!args || args.size === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'size'");
             }
             inputs["availabilityZone"] = args ? args.availabilityZone : undefined;

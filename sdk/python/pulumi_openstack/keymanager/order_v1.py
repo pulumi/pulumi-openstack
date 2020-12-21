@@ -91,11 +91,11 @@ class OrderV1(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if meta is None:
+            if meta is None and not opts.urn:
                 raise TypeError("Missing required property 'meta'")
             __props__['meta'] = meta
             __props__['region'] = region
-            if type is None:
+            if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__['type'] = type
             __props__['container_ref'] = None

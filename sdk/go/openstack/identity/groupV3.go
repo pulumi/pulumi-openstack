@@ -66,6 +66,7 @@ func NewGroupV3(ctx *pulumi.Context,
 	if args == nil {
 		args = &GroupV3Args{}
 	}
+
 	var resource GroupV3
 	err := ctx.RegisterResource("openstack:identity/groupV3:GroupV3", name, args, &resource, opts...)
 	if err != nil {

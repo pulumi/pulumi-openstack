@@ -71,10 +71,10 @@ class QosDscpMarkingRule(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if dscp_mark is None:
+            if dscp_mark is None and not opts.urn:
                 raise TypeError("Missing required property 'dscp_mark'")
             __props__['dscp_mark'] = dscp_mark
-            if qos_policy_id is None:
+            if qos_policy_id is None and not opts.urn:
                 raise TypeError("Missing required property 'qos_policy_id'")
             __props__['qos_policy_id'] = qos_policy_id
             __props__['region'] = region

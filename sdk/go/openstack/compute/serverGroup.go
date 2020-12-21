@@ -87,6 +87,7 @@ func NewServerGroup(ctx *pulumi.Context,
 	if args == nil {
 		args = &ServerGroupArgs{}
 	}
+
 	var resource ServerGroup
 	err := ctx.RegisterResource("openstack:compute/serverGroup:ServerGroup", name, args, &resource, opts...)
 	if err != nil {

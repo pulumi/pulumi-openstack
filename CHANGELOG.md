@@ -2,8 +2,14 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to pulumi-terraform-bridge v2.13.2  
-  * This adds support for import specific examples in documentation
+* Upgrade to v1.34.0 of the OpenStack Terraform Provider
+* Upgrade to v2.16.0 of pulumi-terraform-bridge which includes
+  * Bug fix: Correcting an issue where replacements were not being correctly identified and leading to panics.
+  * Bug fix: Corrects a panic caused by reading sets with partially-known elements.
+  * Preserve unknowns during provider preview
+  * This adds support for import specific examples in documentation  
+  **PLEASE NOTE:**
+  * `openstack.Orchestration.StackV1` has had an output value rename from `Outputs` to `StackOutputs`.  
 
 ---
 

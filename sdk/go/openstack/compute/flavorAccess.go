@@ -80,14 +80,15 @@ type FlavorAccess struct {
 // NewFlavorAccess registers a new resource with the given unique name, arguments, and options.
 func NewFlavorAccess(ctx *pulumi.Context,
 	name string, args *FlavorAccessArgs, opts ...pulumi.ResourceOption) (*FlavorAccess, error) {
-	if args == nil || args.FlavorId == nil {
-		return nil, errors.New("missing required argument 'FlavorId'")
-	}
-	if args == nil || args.TenantId == nil {
-		return nil, errors.New("missing required argument 'TenantId'")
-	}
 	if args == nil {
-		args = &FlavorAccessArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.FlavorId == nil {
+		return nil, errors.New("invalid value for required argument 'FlavorId'")
+	}
+	if args.TenantId == nil {
+		return nil, errors.New("invalid value for required argument 'TenantId'")
 	}
 	var resource FlavorAccess
 	err := ctx.RegisterResource("openstack:compute/flavorAccess:FlavorAccess", name, args, &resource, opts...)

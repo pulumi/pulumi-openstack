@@ -81,11 +81,12 @@ type Service struct {
 // NewService registers a new resource with the given unique name, arguments, and options.
 func NewService(ctx *pulumi.Context,
 	name string, args *ServiceArgs, opts ...pulumi.ResourceOption) (*Service, error) {
-	if args == nil || args.RouterId == nil {
-		return nil, errors.New("missing required argument 'RouterId'")
-	}
 	if args == nil {
-		args = &ServiceArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.RouterId == nil {
+		return nil, errors.New("invalid value for required argument 'RouterId'")
 	}
 	var resource Service
 	err := ctx.RegisterResource("openstack:vpnaas/service:Service", name, args, &resource, opts...)

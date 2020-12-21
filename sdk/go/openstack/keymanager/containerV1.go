@@ -105,11 +105,12 @@ type ContainerV1 struct {
 // NewContainerV1 registers a new resource with the given unique name, arguments, and options.
 func NewContainerV1(ctx *pulumi.Context,
 	name string, args *ContainerV1Args, opts ...pulumi.ResourceOption) (*ContainerV1, error) {
-	if args == nil || args.Type == nil {
-		return nil, errors.New("missing required argument 'Type'")
-	}
 	if args == nil {
-		args = &ContainerV1Args{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Type == nil {
+		return nil, errors.New("invalid value for required argument 'Type'")
 	}
 	var resource ContainerV1
 	err := ctx.RegisterResource("openstack:keymanager/containerV1:ContainerV1", name, args, &resource, opts...)

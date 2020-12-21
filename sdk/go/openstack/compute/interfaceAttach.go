@@ -150,7 +150,7 @@ type InterfaceAttach struct {
 
 	// An IP address to assosciate with the port.
 	// _NOTE_: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.
-	FixedIp pulumi.StringPtrOutput `pulumi:"fixedIp"`
+	FixedIp pulumi.StringOutput `pulumi:"fixedIp"`
 	// The ID of the Instance to attach the Port or Network to.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// The ID of the Network to attach to an Instance. A port will be created automatically.
@@ -168,11 +168,12 @@ type InterfaceAttach struct {
 // NewInterfaceAttach registers a new resource with the given unique name, arguments, and options.
 func NewInterfaceAttach(ctx *pulumi.Context,
 	name string, args *InterfaceAttachArgs, opts ...pulumi.ResourceOption) (*InterfaceAttach, error) {
-	if args == nil || args.InstanceId == nil {
-		return nil, errors.New("missing required argument 'InstanceId'")
-	}
 	if args == nil {
-		args = &InterfaceAttachArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.InstanceId == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
 	var resource InterfaceAttach
 	err := ctx.RegisterResource("openstack:compute/interfaceAttach:InterfaceAttach", name, args, &resource, opts...)

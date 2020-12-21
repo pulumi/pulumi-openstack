@@ -189,7 +189,7 @@ class Port(pulumi.CustomResource):
             __props__['fixed_ips'] = fixed_ips
             __props__['mac_address'] = mac_address
             __props__['name'] = name
-            if network_id is None:
+            if network_id is None and not opts.urn:
                 raise TypeError("Missing required property 'network_id'")
             __props__['network_id'] = network_id
             __props__['no_fixed_ip'] = no_fixed_ip

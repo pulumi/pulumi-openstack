@@ -112,14 +112,15 @@ type OrderV1 struct {
 // NewOrderV1 registers a new resource with the given unique name, arguments, and options.
 func NewOrderV1(ctx *pulumi.Context,
 	name string, args *OrderV1Args, opts ...pulumi.ResourceOption) (*OrderV1, error) {
-	if args == nil || args.Meta == nil {
-		return nil, errors.New("missing required argument 'Meta'")
-	}
-	if args == nil || args.Type == nil {
-		return nil, errors.New("missing required argument 'Type'")
-	}
 	if args == nil {
-		args = &OrderV1Args{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Meta == nil {
+		return nil, errors.New("invalid value for required argument 'Meta'")
+	}
+	if args.Type == nil {
+		return nil, errors.New("invalid value for required argument 'Type'")
 	}
 	var resource OrderV1
 	err := ctx.RegisterResource("openstack:keymanager/orderV1:OrderV1", name, args, &resource, opts...)

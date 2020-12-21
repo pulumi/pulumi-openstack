@@ -76,10 +76,10 @@ class FloatingIpAssociate(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['fixed_ip'] = fixed_ip
-            if floating_ip is None:
+            if floating_ip is None and not opts.urn:
                 raise TypeError("Missing required property 'floating_ip'")
             __props__['floating_ip'] = floating_ip
-            if port_id is None:
+            if port_id is None and not opts.urn:
                 raise TypeError("Missing required property 'port_id'")
             __props__['port_id'] = port_id
             __props__['region'] = region

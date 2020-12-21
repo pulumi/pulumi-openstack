@@ -104,20 +104,20 @@ class MonitorV1(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['admin_state_up'] = admin_state_up
-            if delay is None:
+            if delay is None and not opts.urn:
                 raise TypeError("Missing required property 'delay'")
             __props__['delay'] = delay
             __props__['expected_codes'] = expected_codes
             __props__['http_method'] = http_method
-            if max_retries is None:
+            if max_retries is None and not opts.urn:
                 raise TypeError("Missing required property 'max_retries'")
             __props__['max_retries'] = max_retries
             __props__['region'] = region
             __props__['tenant_id'] = tenant_id
-            if timeout is None:
+            if timeout is None and not opts.urn:
                 raise TypeError("Missing required property 'timeout'")
             __props__['timeout'] = timeout
-            if type is None:
+            if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__['type'] = type
             __props__['url_path'] = url_path

@@ -91,15 +91,15 @@ class Member(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if address is None:
+            if address is None and not opts.urn:
                 raise TypeError("Missing required property 'address'")
             __props__['address'] = address
             __props__['admin_state_up'] = admin_state_up
             __props__['name'] = name
-            if pool_id is None:
+            if pool_id is None and not opts.urn:
                 raise TypeError("Missing required property 'pool_id'")
             __props__['pool_id'] = pool_id
-            if protocol_port is None:
+            if protocol_port is None and not opts.urn:
                 raise TypeError("Missing required property 'protocol_port'")
             __props__['protocol_port'] = protocol_port
             __props__['region'] = region

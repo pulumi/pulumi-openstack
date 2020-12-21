@@ -98,10 +98,10 @@ export class QosMinimumBandwidthRule extends pulumi.CustomResource {
             inputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as QosMinimumBandwidthRuleArgs | undefined;
-            if (!args || args.minKbps === undefined) {
+            if ((!args || args.minKbps === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'minKbps'");
             }
-            if (!args || args.qosPolicyId === undefined) {
+            if ((!args || args.qosPolicyId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'qosPolicyId'");
             }
             inputs["direction"] = args ? args.direction : undefined;

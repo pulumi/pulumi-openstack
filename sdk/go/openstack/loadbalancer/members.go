@@ -76,11 +76,12 @@ type Members struct {
 // NewMembers registers a new resource with the given unique name, arguments, and options.
 func NewMembers(ctx *pulumi.Context,
 	name string, args *MembersArgs, opts ...pulumi.ResourceOption) (*Members, error) {
-	if args == nil || args.PoolId == nil {
-		return nil, errors.New("missing required argument 'PoolId'")
-	}
 	if args == nil {
-		args = &MembersArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.PoolId == nil {
+		return nil, errors.New("invalid value for required argument 'PoolId'")
 	}
 	var resource Members
 	err := ctx.RegisterResource("openstack:loadbalancer/members:Members", name, args, &resource, opts...)

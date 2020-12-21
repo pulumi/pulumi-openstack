@@ -100,7 +100,7 @@ class RecordSet(pulumi.CustomResource):
             __props__['ttl'] = ttl
             __props__['type'] = type
             __props__['value_specs'] = value_specs
-            if zone_id is None:
+            if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__['zone_id'] = zone_id
         super(RecordSet, __self__).__init__(

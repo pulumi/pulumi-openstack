@@ -67,12 +67,13 @@ export class Project extends pulumi.CustomResource {
     public readonly domainId!: pulumi.Output<string>;
     /**
      * Whether the project is enabled or disabled. Valid
-     * values are `true` and `false`.
+     * values are `true` and `false`. Default is `true`.
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
      * Whether this project is a domain. Valid values
-     * are `true` and `false`.
+     * are `true` and `false`. Default is `false`. Changing this creates a new
+     * project/domain.
      */
     public readonly isDomain!: pulumi.Output<boolean | undefined>;
     /**
@@ -80,7 +81,8 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The parent of this project.
+     * The parent of this project. Changing this creates
+     * a new project.
      */
     public readonly parentId!: pulumi.Output<string>;
     /**
@@ -151,12 +153,13 @@ export interface ProjectState {
     readonly domainId?: pulumi.Input<string>;
     /**
      * Whether the project is enabled or disabled. Valid
-     * values are `true` and `false`.
+     * values are `true` and `false`. Default is `true`.
      */
     readonly enabled?: pulumi.Input<boolean>;
     /**
      * Whether this project is a domain. Valid values
-     * are `true` and `false`.
+     * are `true` and `false`. Default is `false`. Changing this creates a new
+     * project/domain.
      */
     readonly isDomain?: pulumi.Input<boolean>;
     /**
@@ -164,7 +167,8 @@ export interface ProjectState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The parent of this project.
+     * The parent of this project. Changing this creates
+     * a new project.
      */
     readonly parentId?: pulumi.Input<string>;
     /**
@@ -194,12 +198,13 @@ export interface ProjectArgs {
     readonly domainId?: pulumi.Input<string>;
     /**
      * Whether the project is enabled or disabled. Valid
-     * values are `true` and `false`.
+     * values are `true` and `false`. Default is `true`.
      */
     readonly enabled?: pulumi.Input<boolean>;
     /**
      * Whether this project is a domain. Valid values
-     * are `true` and `false`.
+     * are `true` and `false`. Default is `false`. Changing this creates a new
+     * project/domain.
      */
     readonly isDomain?: pulumi.Input<boolean>;
     /**
@@ -207,7 +212,8 @@ export interface ProjectArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The parent of this project.
+     * The parent of this project. Changing this creates
+     * a new project.
      */
     readonly parentId?: pulumi.Input<string>;
     /**

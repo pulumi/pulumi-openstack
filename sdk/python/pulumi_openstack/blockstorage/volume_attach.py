@@ -107,7 +107,7 @@ class VolumeAttach(pulumi.CustomResource):
 
             __props__['attach_mode'] = attach_mode
             __props__['device'] = device
-            if host_name is None:
+            if host_name is None and not opts.urn:
                 raise TypeError("Missing required property 'host_name'")
             __props__['host_name'] = host_name
             __props__['initiator'] = initiator
@@ -116,7 +116,7 @@ class VolumeAttach(pulumi.CustomResource):
             __props__['os_type'] = os_type
             __props__['platform'] = platform
             __props__['region'] = region
-            if volume_id is None:
+            if volume_id is None and not opts.urn:
                 raise TypeError("Missing required property 'volume_id'")
             __props__['volume_id'] = volume_id
             __props__['wwnn'] = wwnn

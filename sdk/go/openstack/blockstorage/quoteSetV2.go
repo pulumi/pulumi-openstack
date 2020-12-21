@@ -99,11 +99,12 @@ type QuoteSetV2 struct {
 // NewQuoteSetV2 registers a new resource with the given unique name, arguments, and options.
 func NewQuoteSetV2(ctx *pulumi.Context,
 	name string, args *QuoteSetV2Args, opts ...pulumi.ResourceOption) (*QuoteSetV2, error) {
-	if args == nil || args.ProjectId == nil {
-		return nil, errors.New("missing required argument 'ProjectId'")
-	}
 	if args == nil {
-		args = &QuoteSetV2Args{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ProjectId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectId'")
 	}
 	var resource QuoteSetV2
 	err := ctx.RegisterResource("openstack:blockstorage/quoteSetV2:QuoteSetV2", name, args, &resource, opts...)

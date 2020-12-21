@@ -75,10 +75,10 @@ class QosMinimumBandwidthRule(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['direction'] = direction
-            if min_kbps is None:
+            if min_kbps is None and not opts.urn:
                 raise TypeError("Missing required property 'min_kbps'")
             __props__['min_kbps'] = min_kbps
-            if qos_policy_id is None:
+            if qos_policy_id is None and not opts.urn:
                 raise TypeError("Missing required property 'qos_policy_id'")
             __props__['qos_policy_id'] = qos_policy_id
             __props__['region'] = region

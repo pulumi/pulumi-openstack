@@ -52,12 +52,17 @@ import (
 type Flavor struct {
 	pulumi.CustomResourceState
 
-	// The amount of disk space in gigabytes to use for the root
+	// The amount of disk space in GiB to use for the root
 	// (/) partition. Changing this creates a new flavor.
-	Disk      pulumi.IntOutput    `pulumi:"disk"`
+	Disk pulumi.IntOutput `pulumi:"disk"`
+	// The amount of ephemeral in GiB. If unspecified,
+	// the default is 0. Changing this creates a new flavor.
 	Ephemeral pulumi.IntPtrOutput `pulumi:"ephemeral"`
 	// Key/Value pairs of metadata for the flavor.
 	ExtraSpecs pulumi.MapOutput `pulumi:"extraSpecs"`
+	// Unique ID (integer or UUID) of flavor to create. Changing
+	// this creates a new flavor.
+	FlavorId pulumi.StringPtrOutput `pulumi:"flavorId"`
 	// Whether the flavor is public. Changing this creates
 	// a new flavor.
 	IsPublic pulumi.BoolPtrOutput `pulumi:"isPublic"`
@@ -86,17 +91,18 @@ type Flavor struct {
 // NewFlavor registers a new resource with the given unique name, arguments, and options.
 func NewFlavor(ctx *pulumi.Context,
 	name string, args *FlavorArgs, opts ...pulumi.ResourceOption) (*Flavor, error) {
-	if args == nil || args.Disk == nil {
-		return nil, errors.New("missing required argument 'Disk'")
-	}
-	if args == nil || args.Ram == nil {
-		return nil, errors.New("missing required argument 'Ram'")
-	}
-	if args == nil || args.Vcpus == nil {
-		return nil, errors.New("missing required argument 'Vcpus'")
-	}
 	if args == nil {
-		args = &FlavorArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Disk == nil {
+		return nil, errors.New("invalid value for required argument 'Disk'")
+	}
+	if args.Ram == nil {
+		return nil, errors.New("invalid value for required argument 'Ram'")
+	}
+	if args.Vcpus == nil {
+		return nil, errors.New("invalid value for required argument 'Vcpus'")
 	}
 	var resource Flavor
 	err := ctx.RegisterResource("openstack:compute/flavor:Flavor", name, args, &resource, opts...)
@@ -120,12 +126,17 @@ func GetFlavor(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Flavor resources.
 type flavorState struct {
-	// The amount of disk space in gigabytes to use for the root
+	// The amount of disk space in GiB to use for the root
 	// (/) partition. Changing this creates a new flavor.
-	Disk      *int `pulumi:"disk"`
+	Disk *int `pulumi:"disk"`
+	// The amount of ephemeral in GiB. If unspecified,
+	// the default is 0. Changing this creates a new flavor.
 	Ephemeral *int `pulumi:"ephemeral"`
 	// Key/Value pairs of metadata for the flavor.
 	ExtraSpecs map[string]interface{} `pulumi:"extraSpecs"`
+	// Unique ID (integer or UUID) of flavor to create. Changing
+	// this creates a new flavor.
+	FlavorId *string `pulumi:"flavorId"`
 	// Whether the flavor is public. Changing this creates
 	// a new flavor.
 	IsPublic *bool `pulumi:"isPublic"`
@@ -152,12 +163,17 @@ type flavorState struct {
 }
 
 type FlavorState struct {
-	// The amount of disk space in gigabytes to use for the root
+	// The amount of disk space in GiB to use for the root
 	// (/) partition. Changing this creates a new flavor.
-	Disk      pulumi.IntPtrInput
+	Disk pulumi.IntPtrInput
+	// The amount of ephemeral in GiB. If unspecified,
+	// the default is 0. Changing this creates a new flavor.
 	Ephemeral pulumi.IntPtrInput
 	// Key/Value pairs of metadata for the flavor.
 	ExtraSpecs pulumi.MapInput
+	// Unique ID (integer or UUID) of flavor to create. Changing
+	// this creates a new flavor.
+	FlavorId pulumi.StringPtrInput
 	// Whether the flavor is public. Changing this creates
 	// a new flavor.
 	IsPublic pulumi.BoolPtrInput
@@ -188,12 +204,17 @@ func (FlavorState) ElementType() reflect.Type {
 }
 
 type flavorArgs struct {
-	// The amount of disk space in gigabytes to use for the root
+	// The amount of disk space in GiB to use for the root
 	// (/) partition. Changing this creates a new flavor.
-	Disk      int  `pulumi:"disk"`
+	Disk int `pulumi:"disk"`
+	// The amount of ephemeral in GiB. If unspecified,
+	// the default is 0. Changing this creates a new flavor.
 	Ephemeral *int `pulumi:"ephemeral"`
 	// Key/Value pairs of metadata for the flavor.
 	ExtraSpecs map[string]interface{} `pulumi:"extraSpecs"`
+	// Unique ID (integer or UUID) of flavor to create. Changing
+	// this creates a new flavor.
+	FlavorId *string `pulumi:"flavorId"`
 	// Whether the flavor is public. Changing this creates
 	// a new flavor.
 	IsPublic *bool `pulumi:"isPublic"`
@@ -221,12 +242,17 @@ type flavorArgs struct {
 
 // The set of arguments for constructing a Flavor resource.
 type FlavorArgs struct {
-	// The amount of disk space in gigabytes to use for the root
+	// The amount of disk space in GiB to use for the root
 	// (/) partition. Changing this creates a new flavor.
-	Disk      pulumi.IntInput
+	Disk pulumi.IntInput
+	// The amount of ephemeral in GiB. If unspecified,
+	// the default is 0. Changing this creates a new flavor.
 	Ephemeral pulumi.IntPtrInput
 	// Key/Value pairs of metadata for the flavor.
 	ExtraSpecs pulumi.MapInput
+	// Unique ID (integer or UUID) of flavor to create. Changing
+	// this creates a new flavor.
+	FlavorId pulumi.StringPtrInput
 	// Whether the flavor is public. Changing this creates
 	// a new flavor.
 	IsPublic pulumi.BoolPtrInput

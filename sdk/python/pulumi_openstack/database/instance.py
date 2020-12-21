@@ -92,14 +92,14 @@ class Instance(pulumi.CustomResource):
 
             __props__['configuration_id'] = configuration_id
             __props__['databases'] = databases
-            if datastore is None:
+            if datastore is None and not opts.urn:
                 raise TypeError("Missing required property 'datastore'")
             __props__['datastore'] = datastore
             __props__['flavor_id'] = flavor_id
             __props__['name'] = name
             __props__['networks'] = networks
             __props__['region'] = region
-            if size is None:
+            if size is None and not opts.urn:
                 raise TypeError("Missing required property 'size'")
             __props__['size'] = size
             __props__['users'] = users

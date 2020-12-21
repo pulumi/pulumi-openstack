@@ -71,14 +71,15 @@ type QosMinimumBandwidthRule struct {
 // NewQosMinimumBandwidthRule registers a new resource with the given unique name, arguments, and options.
 func NewQosMinimumBandwidthRule(ctx *pulumi.Context,
 	name string, args *QosMinimumBandwidthRuleArgs, opts ...pulumi.ResourceOption) (*QosMinimumBandwidthRule, error) {
-	if args == nil || args.MinKbps == nil {
-		return nil, errors.New("missing required argument 'MinKbps'")
-	}
-	if args == nil || args.QosPolicyId == nil {
-		return nil, errors.New("missing required argument 'QosPolicyId'")
-	}
 	if args == nil {
-		args = &QosMinimumBandwidthRuleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.MinKbps == nil {
+		return nil, errors.New("invalid value for required argument 'MinKbps'")
+	}
+	if args.QosPolicyId == nil {
+		return nil, errors.New("invalid value for required argument 'QosPolicyId'")
 	}
 	var resource QosMinimumBandwidthRule
 	err := ctx.RegisterResource("openstack:networking/qosMinimumBandwidthRule:QosMinimumBandwidthRule", name, args, &resource, opts...)

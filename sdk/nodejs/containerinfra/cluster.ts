@@ -227,7 +227,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["userId"] = state ? state.userId : undefined;
         } else {
             const args = argsOrState as ClusterArgs | undefined;
-            if (!args || args.clusterTemplateId === undefined) {
+            if ((!args || args.clusterTemplateId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'clusterTemplateId'");
             }
             inputs["clusterTemplateId"] = args ? args.clusterTemplateId : undefined;

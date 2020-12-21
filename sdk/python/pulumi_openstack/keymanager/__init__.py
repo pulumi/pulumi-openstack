@@ -10,3 +10,32 @@ from .order_v1 import *
 from .secret_v1 import *
 from ._inputs import *
 from . import outputs
+
+def _register_module():
+    import pulumi
+    from .. import _utilities
+
+
+    class Module(pulumi.runtime.ResourceModule):
+        _version = _utilities.get_semver_version()
+
+        def version(self):
+            return Module._version
+
+        def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
+            if typ == "openstack:keymanager/containerV1:ContainerV1":
+                return ContainerV1(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "openstack:keymanager/orderV1:OrderV1":
+                return OrderV1(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "openstack:keymanager/secretV1:SecretV1":
+                return SecretV1(name, pulumi.ResourceOptions(urn=urn))
+            else:
+                raise Exception(f"unknown resource type {typ}")
+
+
+    _module_instance = Module()
+    pulumi.runtime.register_resource_module("openstack", "keymanager/containerV1", _module_instance)
+    pulumi.runtime.register_resource_module("openstack", "keymanager/orderV1", _module_instance)
+    pulumi.runtime.register_resource_module("openstack", "keymanager/secretV1", _module_instance)
+
+_register_module()

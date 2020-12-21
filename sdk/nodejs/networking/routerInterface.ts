@@ -107,7 +107,7 @@ export class RouterInterface extends pulumi.CustomResource {
             inputs["subnetId"] = state ? state.subnetId : undefined;
         } else {
             const args = argsOrState as RouterInterfaceArgs | undefined;
-            if (!args || args.routerId === undefined) {
+            if ((!args || args.routerId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'routerId'");
             }
             inputs["portId"] = args ? args.portId : undefined;

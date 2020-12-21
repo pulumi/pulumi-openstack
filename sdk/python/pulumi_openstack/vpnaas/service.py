@@ -87,7 +87,7 @@ class Service(pulumi.CustomResource):
             __props__['description'] = description
             __props__['name'] = name
             __props__['region'] = region
-            if router_id is None:
+            if router_id is None and not opts.urn:
                 raise TypeError("Missing required property 'router_id'")
             __props__['router_id'] = router_id
             __props__['subnet_id'] = subnet_id

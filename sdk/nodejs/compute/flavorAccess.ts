@@ -100,10 +100,10 @@ export class FlavorAccess extends pulumi.CustomResource {
             inputs["tenantId"] = state ? state.tenantId : undefined;
         } else {
             const args = argsOrState as FlavorAccessArgs | undefined;
-            if (!args || args.flavorId === undefined) {
+            if ((!args || args.flavorId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'flavorId'");
             }
-            if (!args || args.tenantId === undefined) {
+            if ((!args || args.tenantId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'tenantId'");
             }
             inputs["flavorId"] = args ? args.flavorId : undefined;

@@ -21,3 +21,50 @@ from .service_v3 import *
 from .user import *
 from ._inputs import *
 from . import outputs
+
+def _register_module():
+    import pulumi
+    from .. import _utilities
+
+
+    class Module(pulumi.runtime.ResourceModule):
+        _version = _utilities.get_semver_version()
+
+        def version(self):
+            return Module._version
+
+        def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
+            if typ == "openstack:identity/applicationCredential:ApplicationCredential":
+                return ApplicationCredential(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "openstack:identity/ec2CredentialV3:Ec2CredentialV3":
+                return Ec2CredentialV3(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "openstack:identity/endpointV3:EndpointV3":
+                return EndpointV3(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "openstack:identity/groupV3:GroupV3":
+                return GroupV3(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "openstack:identity/project:Project":
+                return Project(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "openstack:identity/role:Role":
+                return Role(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "openstack:identity/roleAssignment:RoleAssignment":
+                return RoleAssignment(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "openstack:identity/serviceV3:ServiceV3":
+                return ServiceV3(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "openstack:identity/user:User":
+                return User(name, pulumi.ResourceOptions(urn=urn))
+            else:
+                raise Exception(f"unknown resource type {typ}")
+
+
+    _module_instance = Module()
+    pulumi.runtime.register_resource_module("openstack", "identity/applicationCredential", _module_instance)
+    pulumi.runtime.register_resource_module("openstack", "identity/ec2CredentialV3", _module_instance)
+    pulumi.runtime.register_resource_module("openstack", "identity/endpointV3", _module_instance)
+    pulumi.runtime.register_resource_module("openstack", "identity/groupV3", _module_instance)
+    pulumi.runtime.register_resource_module("openstack", "identity/project", _module_instance)
+    pulumi.runtime.register_resource_module("openstack", "identity/role", _module_instance)
+    pulumi.runtime.register_resource_module("openstack", "identity/roleAssignment", _module_instance)
+    pulumi.runtime.register_resource_module("openstack", "identity/serviceV3", _module_instance)
+    pulumi.runtime.register_resource_module("openstack", "identity/user", _module_instance)
+
+_register_module()

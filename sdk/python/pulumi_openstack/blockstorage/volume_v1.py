@@ -100,7 +100,7 @@ class VolumeV1(pulumi.CustomResource):
             __props__['metadata'] = metadata
             __props__['name'] = name
             __props__['region'] = region
-            if size is None:
+            if size is None and not opts.urn:
                 raise TypeError("Missing required property 'size'")
             __props__['size'] = size
             __props__['snapshot_id'] = snapshot_id

@@ -73,11 +73,12 @@ type RoleAssignment struct {
 // NewRoleAssignment registers a new resource with the given unique name, arguments, and options.
 func NewRoleAssignment(ctx *pulumi.Context,
 	name string, args *RoleAssignmentArgs, opts ...pulumi.ResourceOption) (*RoleAssignment, error) {
-	if args == nil || args.RoleId == nil {
-		return nil, errors.New("missing required argument 'RoleId'")
-	}
 	if args == nil {
-		args = &RoleAssignmentArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.RoleId == nil {
+		return nil, errors.New("invalid value for required argument 'RoleId'")
 	}
 	var resource RoleAssignment
 	err := ctx.RegisterResource("openstack:identity/roleAssignment:RoleAssignment", name, args, &resource, opts...)

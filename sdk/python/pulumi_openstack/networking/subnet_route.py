@@ -81,14 +81,14 @@ class SubnetRoute(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if destination_cidr is None:
+            if destination_cidr is None and not opts.urn:
                 raise TypeError("Missing required property 'destination_cidr'")
             __props__['destination_cidr'] = destination_cidr
-            if next_hop is None:
+            if next_hop is None and not opts.urn:
                 raise TypeError("Missing required property 'next_hop'")
             __props__['next_hop'] = next_hop
             __props__['region'] = region
-            if subnet_id is None:
+            if subnet_id is None and not opts.urn:
                 raise TypeError("Missing required property 'subnet_id'")
             __props__['subnet_id'] = subnet_id
         super(SubnetRoute, __self__).__init__(

@@ -107,10 +107,10 @@ class ImageAccess(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if image_id is None:
+            if image_id is None and not opts.urn:
                 raise TypeError("Missing required property 'image_id'")
             __props__['image_id'] = image_id
-            if member_id is None:
+            if member_id is None and not opts.urn:
                 raise TypeError("Missing required property 'member_id'")
             __props__['member_id'] = member_id
             __props__['region'] = region

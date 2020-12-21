@@ -188,13 +188,13 @@ export class Listener extends pulumi.CustomResource {
             inputs["timeoutTcpInspect"] = state ? state.timeoutTcpInspect : undefined;
         } else {
             const args = argsOrState as ListenerArgs | undefined;
-            if (!args || args.loadbalancerId === undefined) {
+            if ((!args || args.loadbalancerId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'loadbalancerId'");
             }
-            if (!args || args.protocol === undefined) {
+            if ((!args || args.protocol === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'protocol'");
             }
-            if (!args || args.protocolPort === undefined) {
+            if ((!args || args.protocolPort === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'protocolPort'");
             }
             inputs["adminStateUp"] = args ? args.adminStateUp : undefined;

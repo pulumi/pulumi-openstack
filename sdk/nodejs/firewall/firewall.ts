@@ -148,7 +148,7 @@ export class Firewall extends pulumi.CustomResource {
             inputs["valueSpecs"] = state ? state.valueSpecs : undefined;
         } else {
             const args = argsOrState as FirewallArgs | undefined;
-            if (!args || args.policyId === undefined) {
+            if ((!args || args.policyId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'policyId'");
             }
             inputs["adminStateUp"] = args ? args.adminStateUp : undefined;

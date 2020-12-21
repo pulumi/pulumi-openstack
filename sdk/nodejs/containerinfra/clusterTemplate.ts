@@ -307,10 +307,10 @@ export class ClusterTemplate extends pulumi.CustomResource {
             inputs["volumeDriver"] = state ? state.volumeDriver : undefined;
         } else {
             const args = argsOrState as ClusterTemplateArgs | undefined;
-            if (!args || args.coe === undefined) {
+            if ((!args || args.coe === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'coe'");
             }
-            if (!args || args.image === undefined) {
+            if ((!args || args.image === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'image'");
             }
             inputs["apiserverPort"] = args ? args.apiserverPort : undefined;

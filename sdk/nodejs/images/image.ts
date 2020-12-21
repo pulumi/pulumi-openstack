@@ -241,10 +241,10 @@ export class Image extends pulumi.CustomResource {
             inputs["webDownload"] = state ? state.webDownload : undefined;
         } else {
             const args = argsOrState as ImageArgs | undefined;
-            if (!args || args.containerFormat === undefined) {
+            if ((!args || args.containerFormat === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'containerFormat'");
             }
-            if (!args || args.diskFormat === undefined) {
+            if ((!args || args.diskFormat === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'diskFormat'");
             }
             inputs["containerFormat"] = args ? args.containerFormat : undefined;

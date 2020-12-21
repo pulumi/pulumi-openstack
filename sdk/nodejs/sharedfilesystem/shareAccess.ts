@@ -91,16 +91,16 @@ export class ShareAccess extends pulumi.CustomResource {
             inputs["shareId"] = state ? state.shareId : undefined;
         } else {
             const args = argsOrState as ShareAccessArgs | undefined;
-            if (!args || args.accessLevel === undefined) {
+            if ((!args || args.accessLevel === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'accessLevel'");
             }
-            if (!args || args.accessTo === undefined) {
+            if ((!args || args.accessTo === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'accessTo'");
             }
-            if (!args || args.accessType === undefined) {
+            if ((!args || args.accessType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'accessType'");
             }
-            if (!args || args.shareId === undefined) {
+            if ((!args || args.shareId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'shareId'");
             }
             inputs["accessLevel"] = args ? args.accessLevel : undefined;

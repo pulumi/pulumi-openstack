@@ -79,6 +79,7 @@ func NewEndpointGroup(ctx *pulumi.Context,
 	if args == nil {
 		args = &EndpointGroupArgs{}
 	}
+
 	var resource EndpointGroup
 	err := ctx.RegisterResource("openstack:vpnaas/endpointGroup:EndpointGroup", name, args, &resource, opts...)
 	if err != nil {

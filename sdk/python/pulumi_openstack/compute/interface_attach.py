@@ -108,7 +108,7 @@ class InterfaceAttach(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['fixed_ip'] = fixed_ip
-            if instance_id is None:
+            if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
             __props__['instance_id'] = instance_id
             __props__['network_id'] = network_id
@@ -160,7 +160,7 @@ class InterfaceAttach(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="fixedIp")
-    def fixed_ip(self) -> pulumi.Output[Optional[str]]:
+    def fixed_ip(self) -> pulumi.Output[str]:
         """
         An IP address to assosciate with the port.
         _NOTE_: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.

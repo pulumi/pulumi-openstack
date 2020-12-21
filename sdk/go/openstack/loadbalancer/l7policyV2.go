@@ -123,14 +123,15 @@ type L7PolicyV2 struct {
 // NewL7PolicyV2 registers a new resource with the given unique name, arguments, and options.
 func NewL7PolicyV2(ctx *pulumi.Context,
 	name string, args *L7PolicyV2Args, opts ...pulumi.ResourceOption) (*L7PolicyV2, error) {
-	if args == nil || args.Action == nil {
-		return nil, errors.New("missing required argument 'Action'")
-	}
-	if args == nil || args.ListenerId == nil {
-		return nil, errors.New("missing required argument 'ListenerId'")
-	}
 	if args == nil {
-		args = &L7PolicyV2Args{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Action == nil {
+		return nil, errors.New("invalid value for required argument 'Action'")
+	}
+	if args.ListenerId == nil {
+		return nil, errors.New("invalid value for required argument 'ListenerId'")
 	}
 	var resource L7PolicyV2
 	err := ctx.RegisterResource("openstack:loadbalancer/l7PolicyV2:L7PolicyV2", name, args, &resource, opts...)

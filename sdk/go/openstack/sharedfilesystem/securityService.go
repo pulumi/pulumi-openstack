@@ -96,11 +96,12 @@ type SecurityService struct {
 // NewSecurityService registers a new resource with the given unique name, arguments, and options.
 func NewSecurityService(ctx *pulumi.Context,
 	name string, args *SecurityServiceArgs, opts ...pulumi.ResourceOption) (*SecurityService, error) {
-	if args == nil || args.Type == nil {
-		return nil, errors.New("missing required argument 'Type'")
-	}
 	if args == nil {
-		args = &SecurityServiceArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Type == nil {
+		return nil, errors.New("invalid value for required argument 'Type'")
 	}
 	var resource SecurityService
 	err := ctx.RegisterResource("openstack:sharedfilesystem/securityService:SecurityService", name, args, &resource, opts...)

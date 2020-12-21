@@ -112,26 +112,27 @@ type SiteConnection struct {
 // NewSiteConnection registers a new resource with the given unique name, arguments, and options.
 func NewSiteConnection(ctx *pulumi.Context,
 	name string, args *SiteConnectionArgs, opts ...pulumi.ResourceOption) (*SiteConnection, error) {
-	if args == nil || args.IkepolicyId == nil {
-		return nil, errors.New("missing required argument 'IkepolicyId'")
-	}
-	if args == nil || args.IpsecpolicyId == nil {
-		return nil, errors.New("missing required argument 'IpsecpolicyId'")
-	}
-	if args == nil || args.PeerAddress == nil {
-		return nil, errors.New("missing required argument 'PeerAddress'")
-	}
-	if args == nil || args.PeerId == nil {
-		return nil, errors.New("missing required argument 'PeerId'")
-	}
-	if args == nil || args.Psk == nil {
-		return nil, errors.New("missing required argument 'Psk'")
-	}
-	if args == nil || args.VpnserviceId == nil {
-		return nil, errors.New("missing required argument 'VpnserviceId'")
-	}
 	if args == nil {
-		args = &SiteConnectionArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.IkepolicyId == nil {
+		return nil, errors.New("invalid value for required argument 'IkepolicyId'")
+	}
+	if args.IpsecpolicyId == nil {
+		return nil, errors.New("invalid value for required argument 'IpsecpolicyId'")
+	}
+	if args.PeerAddress == nil {
+		return nil, errors.New("invalid value for required argument 'PeerAddress'")
+	}
+	if args.PeerId == nil {
+		return nil, errors.New("invalid value for required argument 'PeerId'")
+	}
+	if args.Psk == nil {
+		return nil, errors.New("invalid value for required argument 'Psk'")
+	}
+	if args.VpnserviceId == nil {
+		return nil, errors.New("invalid value for required argument 'VpnserviceId'")
 	}
 	var resource SiteConnection
 	err := ctx.RegisterResource("openstack:vpnaas/siteConnection:SiteConnection", name, args, &resource, opts...)

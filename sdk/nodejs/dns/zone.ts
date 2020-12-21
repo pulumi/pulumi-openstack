@@ -72,6 +72,12 @@ export class Zone extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * Disable wait for zone to reach ACTIVE
+     * status. The check is enabled by default. If this argument is true, zone
+     * will be considered as created/updated if OpenStack request returned success.
+     */
+    public readonly disableStatusCheck!: pulumi.Output<boolean | undefined>;
+    /**
      * The email contact for the zone record.
      */
     public readonly email!: pulumi.Output<string | undefined>;
@@ -127,6 +133,7 @@ export class Zone extends pulumi.CustomResource {
             const state = argsOrState as ZoneState | undefined;
             inputs["attributes"] = state ? state.attributes : undefined;
             inputs["description"] = state ? state.description : undefined;
+            inputs["disableStatusCheck"] = state ? state.disableStatusCheck : undefined;
             inputs["email"] = state ? state.email : undefined;
             inputs["masters"] = state ? state.masters : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -139,6 +146,7 @@ export class Zone extends pulumi.CustomResource {
             const args = argsOrState as ZoneArgs | undefined;
             inputs["attributes"] = args ? args.attributes : undefined;
             inputs["description"] = args ? args.description : undefined;
+            inputs["disableStatusCheck"] = args ? args.disableStatusCheck : undefined;
             inputs["email"] = args ? args.email : undefined;
             inputs["masters"] = args ? args.masters : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -172,6 +180,12 @@ export interface ZoneState {
      * A description of the zone.
      */
     readonly description?: pulumi.Input<string>;
+    /**
+     * Disable wait for zone to reach ACTIVE
+     * status. The check is enabled by default. If this argument is true, zone
+     * will be considered as created/updated if OpenStack request returned success.
+     */
+    readonly disableStatusCheck?: pulumi.Input<boolean>;
     /**
      * The email contact for the zone record.
      */
@@ -228,6 +242,12 @@ export interface ZoneArgs {
      * A description of the zone.
      */
     readonly description?: pulumi.Input<string>;
+    /**
+     * Disable wait for zone to reach ACTIVE
+     * status. The check is enabled by default. If this argument is true, zone
+     * will be considered as created/updated if OpenStack request returned success.
+     */
+    readonly disableStatusCheck?: pulumi.Input<boolean>;
     /**
      * The email contact for the zone record.
      */

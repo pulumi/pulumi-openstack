@@ -88,11 +88,12 @@ type VolumeV1 struct {
 // NewVolumeV1 registers a new resource with the given unique name, arguments, and options.
 func NewVolumeV1(ctx *pulumi.Context,
 	name string, args *VolumeV1Args, opts ...pulumi.ResourceOption) (*VolumeV1, error) {
-	if args == nil || args.Size == nil {
-		return nil, errors.New("missing required argument 'Size'")
-	}
 	if args == nil {
-		args = &VolumeV1Args{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Size == nil {
+		return nil, errors.New("invalid value for required argument 'Size'")
 	}
 	var resource VolumeV1
 	err := ctx.RegisterResource("openstack:blockstorage/volumeV1:VolumeV1", name, args, &resource, opts...)

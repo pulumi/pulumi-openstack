@@ -188,11 +188,12 @@ type Port struct {
 // NewPort registers a new resource with the given unique name, arguments, and options.
 func NewPort(ctx *pulumi.Context,
 	name string, args *PortArgs, opts ...pulumi.ResourceOption) (*Port, error) {
-	if args == nil || args.NetworkId == nil {
-		return nil, errors.New("missing required argument 'NetworkId'")
-	}
 	if args == nil {
-		args = &PortArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.NetworkId == nil {
+		return nil, errors.New("invalid value for required argument 'NetworkId'")
 	}
 	var resource Port
 	err := ctx.RegisterResource("openstack:networking/port:Port", name, args, &resource, opts...)

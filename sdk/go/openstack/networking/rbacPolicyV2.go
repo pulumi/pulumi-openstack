@@ -91,20 +91,21 @@ type RbacPolicyV2 struct {
 // NewRbacPolicyV2 registers a new resource with the given unique name, arguments, and options.
 func NewRbacPolicyV2(ctx *pulumi.Context,
 	name string, args *RbacPolicyV2Args, opts ...pulumi.ResourceOption) (*RbacPolicyV2, error) {
-	if args == nil || args.Action == nil {
-		return nil, errors.New("missing required argument 'Action'")
-	}
-	if args == nil || args.ObjectId == nil {
-		return nil, errors.New("missing required argument 'ObjectId'")
-	}
-	if args == nil || args.ObjectType == nil {
-		return nil, errors.New("missing required argument 'ObjectType'")
-	}
-	if args == nil || args.TargetTenant == nil {
-		return nil, errors.New("missing required argument 'TargetTenant'")
-	}
 	if args == nil {
-		args = &RbacPolicyV2Args{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Action == nil {
+		return nil, errors.New("invalid value for required argument 'Action'")
+	}
+	if args.ObjectId == nil {
+		return nil, errors.New("invalid value for required argument 'ObjectId'")
+	}
+	if args.ObjectType == nil {
+		return nil, errors.New("invalid value for required argument 'ObjectType'")
+	}
+	if args.TargetTenant == nil {
+		return nil, errors.New("invalid value for required argument 'TargetTenant'")
 	}
 	var resource RbacPolicyV2
 	err := ctx.RegisterResource("openstack:networking/rbacPolicyV2:RbacPolicyV2", name, args, &resource, opts...)

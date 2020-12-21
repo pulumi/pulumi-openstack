@@ -113,6 +113,7 @@ func NewRouter(ctx *pulumi.Context,
 	if args == nil {
 		args = &RouterArgs{}
 	}
+
 	var resource Router
 	err := ctx.RegisterResource("openstack:networking/router:Router", name, args, &resource, opts...)
 	if err != nil {

@@ -96,6 +96,7 @@ func NewEc2CredentialV3(ctx *pulumi.Context,
 	if args == nil {
 		args = &Ec2CredentialV3Args{}
 	}
+
 	var resource Ec2CredentialV3
 	err := ctx.RegisterResource("openstack:identity/ec2CredentialV3:Ec2CredentialV3", name, args, &resource, opts...)
 	if err != nil {

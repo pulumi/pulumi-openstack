@@ -108,12 +108,12 @@ class L7PolicyV2(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if action is None:
+            if action is None and not opts.urn:
                 raise TypeError("Missing required property 'action'")
             __props__['action'] = action
             __props__['admin_state_up'] = admin_state_up
             __props__['description'] = description
-            if listener_id is None:
+            if listener_id is None and not opts.urn:
                 raise TypeError("Missing required property 'listener_id'")
             __props__['listener_id'] = listener_id
             __props__['name'] = name

@@ -167,7 +167,7 @@ export class InterfaceAttach extends pulumi.CustomResource {
      * An IP address to assosciate with the port.
      * _NOTE_: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.
      */
-    public readonly fixedIp!: pulumi.Output<string | undefined>;
+    public readonly fixedIp!: pulumi.Output<string>;
     /**
      * The ID of the Instance to attach the Port or Network to.
      */
@@ -208,7 +208,7 @@ export class InterfaceAttach extends pulumi.CustomResource {
             inputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as InterfaceAttachArgs | undefined;
-            if (!args || args.instanceId === undefined) {
+            if ((!args || args.instanceId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'instanceId'");
             }
             inputs["fixedIp"] = args ? args.fixedIp : undefined;

@@ -132,7 +132,7 @@ export class Service extends pulumi.CustomResource {
             inputs["valueSpecs"] = state ? state.valueSpecs : undefined;
         } else {
             const args = argsOrState as ServiceArgs | undefined;
-            if (!args || args.routerId === undefined) {
+            if ((!args || args.routerId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'routerId'");
             }
             inputs["adminStateUp"] = args ? args.adminStateUp : undefined;

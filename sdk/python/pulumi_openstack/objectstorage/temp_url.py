@@ -83,17 +83,17 @@ class TempUrl(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if container is None:
+            if container is None and not opts.urn:
                 raise TypeError("Missing required property 'container'")
             __props__['container'] = container
             __props__['method'] = method
-            if object is None:
+            if object is None and not opts.urn:
                 raise TypeError("Missing required property 'object'")
             __props__['object'] = object
             __props__['regenerate'] = regenerate
             __props__['region'] = region
             __props__['split'] = split
-            if ttl is None:
+            if ttl is None and not opts.urn:
                 raise TypeError("Missing required property 'ttl'")
             __props__['ttl'] = ttl
             __props__['url'] = None

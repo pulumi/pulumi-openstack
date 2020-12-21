@@ -159,11 +159,12 @@ type SubnetPool struct {
 // NewSubnetPool registers a new resource with the given unique name, arguments, and options.
 func NewSubnetPool(ctx *pulumi.Context,
 	name string, args *SubnetPoolArgs, opts ...pulumi.ResourceOption) (*SubnetPool, error) {
-	if args == nil || args.Prefixes == nil {
-		return nil, errors.New("missing required argument 'Prefixes'")
-	}
 	if args == nil {
-		args = &SubnetPoolArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Prefixes == nil {
+		return nil, errors.New("invalid value for required argument 'Prefixes'")
 	}
 	var resource SubnetPool
 	err := ctx.RegisterResource("openstack:networking/subnetPool:SubnetPool", name, args, &resource, opts...)
