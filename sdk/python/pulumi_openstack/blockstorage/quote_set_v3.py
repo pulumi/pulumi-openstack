@@ -56,6 +56,14 @@ class QuoteSetV3(pulumi.CustomResource):
             groups=100)
         ```
 
+        ## Import
+
+        Quotasets can be imported using the `project_id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:blockstorage/quoteSetV3:QuoteSetV3 quotaset_1 2a0f2240-c5e6-41de-896d-e80d97428d6b
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] backup_gigabytes: Quota value for backup gigabytes. Changing
@@ -100,7 +108,7 @@ class QuoteSetV3(pulumi.CustomResource):
             __props__['gigabytes'] = gigabytes
             __props__['groups'] = groups
             __props__['per_volume_gigabytes'] = per_volume_gigabytes
-            if project_id is None:
+            if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
             __props__['project_id'] = project_id
             __props__['region'] = region

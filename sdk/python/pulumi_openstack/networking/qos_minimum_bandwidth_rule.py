@@ -38,6 +38,14 @@ class QosMinimumBandwidthRule(pulumi.CustomResource):
             qos_policy_id=qos_policy1.id)
         ```
 
+        ## Import
+
+        QoS minimum bandwidth rules can be imported using the `qos_policy_id/minimum_bandwidth_rule_id` format, e.g.
+
+        ```sh
+         $ pulumi import openstack:networking/qosMinimumBandwidthRule:QosMinimumBandwidthRule minimum_bandwidth_rule_1 d6ae28ce-fcb5-4180-aa62-d260a27e09ae/46dfb556-b92f-48ce-94c5-9a9e2140de94
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] direction: The direction of traffic. Defaults to "egress". Changing this updates the direction of the
@@ -67,10 +75,10 @@ class QosMinimumBandwidthRule(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['direction'] = direction
-            if min_kbps is None:
+            if min_kbps is None and not opts.urn:
                 raise TypeError("Missing required property 'min_kbps'")
             __props__['min_kbps'] = min_kbps
-            if qos_policy_id is None:
+            if qos_policy_id is None and not opts.urn:
                 raise TypeError("Missing required property 'qos_policy_id'")
             __props__['qos_policy_id'] = qos_policy_id
             __props__['region'] = region

@@ -63,6 +63,14 @@ class L7RuleV2(pulumi.CustomResource):
             value="/api")
         ```
 
+        ## Import
+
+        Load Balancer L7 Rule can be imported using the L7 Policy ID and L7 Rule ID separated by a slash, e.g.
+
+        ```sh
+         $ pulumi import openstack:loadbalancer/l7RuleV2:L7RuleV2 l7rule_1 e0bd694a-abbe-450e-b329-0931fd1cc5eb/4086b0c9-b18c-4d1c-b6b8-4c56c3ad2a9e
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] admin_state_up: The administrative state of the L7 Rule.
@@ -105,20 +113,20 @@ class L7RuleV2(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['admin_state_up'] = admin_state_up
-            if compare_type is None:
+            if compare_type is None and not opts.urn:
                 raise TypeError("Missing required property 'compare_type'")
             __props__['compare_type'] = compare_type
             __props__['invert'] = invert
             __props__['key'] = key
-            if l7policy_id is None:
+            if l7policy_id is None and not opts.urn:
                 raise TypeError("Missing required property 'l7policy_id'")
             __props__['l7policy_id'] = l7policy_id
             __props__['region'] = region
             __props__['tenant_id'] = tenant_id
-            if type is None:
+            if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__['type'] = type
-            if value is None:
+            if value is None and not opts.urn:
                 raise TypeError("Missing required property 'value'")
             __props__['value'] = value
             __props__['listener_id'] = None

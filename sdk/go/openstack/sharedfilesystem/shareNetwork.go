@@ -4,6 +4,7 @@
 package sharedfilesystem
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -110,6 +111,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// This resource can be imported by specifying the ID of the share network
+//
+// ```sh
+//  $ pulumi import openstack:sharedfilesystem/shareNetwork:ShareNetwork sharenetwork_1 <id>
+// ```
 type ShareNetwork struct {
 	pulumi.CustomResourceState
 
@@ -150,14 +159,15 @@ type ShareNetwork struct {
 // NewShareNetwork registers a new resource with the given unique name, arguments, and options.
 func NewShareNetwork(ctx *pulumi.Context,
 	name string, args *ShareNetworkArgs, opts ...pulumi.ResourceOption) (*ShareNetwork, error) {
-	if args == nil || args.NeutronNetId == nil {
-		return nil, errors.New("missing required argument 'NeutronNetId'")
-	}
-	if args == nil || args.NeutronSubnetId == nil {
-		return nil, errors.New("missing required argument 'NeutronSubnetId'")
-	}
 	if args == nil {
-		args = &ShareNetworkArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.NeutronNetId == nil {
+		return nil, errors.New("invalid value for required argument 'NeutronNetId'")
+	}
+	if args.NeutronSubnetId == nil {
+		return nil, errors.New("invalid value for required argument 'NeutronSubnetId'")
 	}
 	var resource ShareNetwork
 	err := ctx.RegisterResource("openstack:sharedfilesystem/shareNetwork:ShareNetwork", name, args, &resource, opts...)
@@ -307,4 +317,43 @@ type ShareNetworkArgs struct {
 
 func (ShareNetworkArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*shareNetworkArgs)(nil)).Elem()
+}
+
+type ShareNetworkInput interface {
+	pulumi.Input
+
+	ToShareNetworkOutput() ShareNetworkOutput
+	ToShareNetworkOutputWithContext(ctx context.Context) ShareNetworkOutput
+}
+
+func (ShareNetwork) ElementType() reflect.Type {
+	return reflect.TypeOf((*ShareNetwork)(nil)).Elem()
+}
+
+func (i ShareNetwork) ToShareNetworkOutput() ShareNetworkOutput {
+	return i.ToShareNetworkOutputWithContext(context.Background())
+}
+
+func (i ShareNetwork) ToShareNetworkOutputWithContext(ctx context.Context) ShareNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShareNetworkOutput)
+}
+
+type ShareNetworkOutput struct {
+	*pulumi.OutputState
+}
+
+func (ShareNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ShareNetworkOutput)(nil)).Elem()
+}
+
+func (o ShareNetworkOutput) ToShareNetworkOutput() ShareNetworkOutput {
+	return o
+}
+
+func (o ShareNetworkOutput) ToShareNetworkOutputWithContext(ctx context.Context) ShareNetworkOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ShareNetworkOutput{})
 }

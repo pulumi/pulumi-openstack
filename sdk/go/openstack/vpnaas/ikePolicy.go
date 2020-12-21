@@ -4,6 +4,7 @@
 package vpnaas
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -30,6 +31,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Services can be imported using the `id`, e.g.
+//
+// ```sh
+//  $ pulumi import openstack:vpnaas/ikePolicy:IkePolicy policy_1 832cb7f3-59fe-40cf-8f64-8350ffc03272
 // ```
 type IkePolicy struct {
 	pulumi.CustomResourceState
@@ -75,6 +84,7 @@ func NewIkePolicy(ctx *pulumi.Context,
 	if args == nil {
 		args = &IkePolicyArgs{}
 	}
+
 	var resource IkePolicy
 	err := ctx.RegisterResource("openstack:vpnaas/ikePolicy:IkePolicy", name, args, &resource, opts...)
 	if err != nil {
@@ -247,4 +257,43 @@ type IkePolicyArgs struct {
 
 func (IkePolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*ikePolicyArgs)(nil)).Elem()
+}
+
+type IkePolicyInput interface {
+	pulumi.Input
+
+	ToIkePolicyOutput() IkePolicyOutput
+	ToIkePolicyOutputWithContext(ctx context.Context) IkePolicyOutput
+}
+
+func (IkePolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*IkePolicy)(nil)).Elem()
+}
+
+func (i IkePolicy) ToIkePolicyOutput() IkePolicyOutput {
+	return i.ToIkePolicyOutputWithContext(context.Background())
+}
+
+func (i IkePolicy) ToIkePolicyOutputWithContext(ctx context.Context) IkePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IkePolicyOutput)
+}
+
+type IkePolicyOutput struct {
+	*pulumi.OutputState
+}
+
+func (IkePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IkePolicyOutput)(nil)).Elem()
+}
+
+func (o IkePolicyOutput) ToIkePolicyOutput() IkePolicyOutput {
+	return o
+}
+
+func (o IkePolicyOutput) ToIkePolicyOutputWithContext(ctx context.Context) IkePolicyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(IkePolicyOutput{})
 }

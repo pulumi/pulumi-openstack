@@ -4,6 +4,7 @@
 package identity
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -44,6 +45,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Endpoints can be imported using the `id`, e.g.
+//
+// ```sh
+//  $ pulumi import openstack:identity/endpointV3:EndpointV3 endpoint_1 5392472b-106a-4845-90c6-7c8445f18770
+// ```
 type EndpointV3 struct {
 	pulumi.CustomResourceState
 
@@ -71,17 +80,18 @@ type EndpointV3 struct {
 // NewEndpointV3 registers a new resource with the given unique name, arguments, and options.
 func NewEndpointV3(ctx *pulumi.Context,
 	name string, args *EndpointV3Args, opts ...pulumi.ResourceOption) (*EndpointV3, error) {
-	if args == nil || args.EndpointRegion == nil {
-		return nil, errors.New("missing required argument 'EndpointRegion'")
-	}
-	if args == nil || args.ServiceId == nil {
-		return nil, errors.New("missing required argument 'ServiceId'")
-	}
-	if args == nil || args.Url == nil {
-		return nil, errors.New("missing required argument 'Url'")
-	}
 	if args == nil {
-		args = &EndpointV3Args{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.EndpointRegion == nil {
+		return nil, errors.New("invalid value for required argument 'EndpointRegion'")
+	}
+	if args.ServiceId == nil {
+		return nil, errors.New("invalid value for required argument 'ServiceId'")
+	}
+	if args.Url == nil {
+		return nil, errors.New("invalid value for required argument 'Url'")
 	}
 	var resource EndpointV3
 	err := ctx.RegisterResource("openstack:identity/endpointV3:EndpointV3", name, args, &resource, opts...)
@@ -191,4 +201,43 @@ type EndpointV3Args struct {
 
 func (EndpointV3Args) ElementType() reflect.Type {
 	return reflect.TypeOf((*endpointV3Args)(nil)).Elem()
+}
+
+type EndpointV3Input interface {
+	pulumi.Input
+
+	ToEndpointV3Output() EndpointV3Output
+	ToEndpointV3OutputWithContext(ctx context.Context) EndpointV3Output
+}
+
+func (EndpointV3) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointV3)(nil)).Elem()
+}
+
+func (i EndpointV3) ToEndpointV3Output() EndpointV3Output {
+	return i.ToEndpointV3OutputWithContext(context.Background())
+}
+
+func (i EndpointV3) ToEndpointV3OutputWithContext(ctx context.Context) EndpointV3Output {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointV3Output)
+}
+
+type EndpointV3Output struct {
+	*pulumi.OutputState
+}
+
+func (EndpointV3Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointV3Output)(nil)).Elem()
+}
+
+func (o EndpointV3Output) ToEndpointV3Output() EndpointV3Output {
+	return o
+}
+
+func (o EndpointV3Output) ToEndpointV3OutputWithContext(ctx context.Context) EndpointV3Output {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(EndpointV3Output{})
 }

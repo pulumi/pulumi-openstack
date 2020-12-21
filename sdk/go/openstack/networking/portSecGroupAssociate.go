@@ -4,6 +4,7 @@
 package networking
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -35,14 +36,15 @@ type PortSecGroupAssociate struct {
 // NewPortSecGroupAssociate registers a new resource with the given unique name, arguments, and options.
 func NewPortSecGroupAssociate(ctx *pulumi.Context,
 	name string, args *PortSecGroupAssociateArgs, opts ...pulumi.ResourceOption) (*PortSecGroupAssociate, error) {
-	if args == nil || args.PortId == nil {
-		return nil, errors.New("missing required argument 'PortId'")
-	}
-	if args == nil || args.SecurityGroupIds == nil {
-		return nil, errors.New("missing required argument 'SecurityGroupIds'")
-	}
 	if args == nil {
-		args = &PortSecGroupAssociateArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.PortId == nil {
+		return nil, errors.New("invalid value for required argument 'PortId'")
+	}
+	if args.SecurityGroupIds == nil {
+		return nil, errors.New("invalid value for required argument 'SecurityGroupIds'")
 	}
 	var resource PortSecGroupAssociate
 	err := ctx.RegisterResource("openstack:networking/portSecGroupAssociate:PortSecGroupAssociate", name, args, &resource, opts...)
@@ -146,4 +148,43 @@ type PortSecGroupAssociateArgs struct {
 
 func (PortSecGroupAssociateArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*portSecGroupAssociateArgs)(nil)).Elem()
+}
+
+type PortSecGroupAssociateInput interface {
+	pulumi.Input
+
+	ToPortSecGroupAssociateOutput() PortSecGroupAssociateOutput
+	ToPortSecGroupAssociateOutputWithContext(ctx context.Context) PortSecGroupAssociateOutput
+}
+
+func (PortSecGroupAssociate) ElementType() reflect.Type {
+	return reflect.TypeOf((*PortSecGroupAssociate)(nil)).Elem()
+}
+
+func (i PortSecGroupAssociate) ToPortSecGroupAssociateOutput() PortSecGroupAssociateOutput {
+	return i.ToPortSecGroupAssociateOutputWithContext(context.Background())
+}
+
+func (i PortSecGroupAssociate) ToPortSecGroupAssociateOutputWithContext(ctx context.Context) PortSecGroupAssociateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortSecGroupAssociateOutput)
+}
+
+type PortSecGroupAssociateOutput struct {
+	*pulumi.OutputState
+}
+
+func (PortSecGroupAssociateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PortSecGroupAssociateOutput)(nil)).Elem()
+}
+
+func (o PortSecGroupAssociateOutput) ToPortSecGroupAssociateOutput() PortSecGroupAssociateOutput {
+	return o
+}
+
+func (o PortSecGroupAssociateOutput) ToPortSecGroupAssociateOutputWithContext(ctx context.Context) PortSecGroupAssociateOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(PortSecGroupAssociateOutput{})
 }

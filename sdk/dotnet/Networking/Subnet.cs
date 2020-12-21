@@ -35,6 +35,14 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Subnets can be imported using the `id`, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import openstack:networking/subnet:Subnet subnet_1 da4faf16-5546-41e4-8330-4d0002b74048
+    /// ```
     /// </summary>
     public partial class Subnet : Pulumi.CustomResource
     {

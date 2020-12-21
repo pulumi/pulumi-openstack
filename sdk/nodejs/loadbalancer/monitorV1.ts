@@ -21,6 +21,14 @@ import * as utilities from "../utilities";
  *     type: "PING",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Load Balancer Members can be imported using the `id`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import openstack:loadbalancer/monitorV1:MonitorV1 monitor_1 119d7530-72e9-449a-aa97-124a5ef1992c
+ * ```
  */
 export class MonitorV1 extends pulumi.CustomResource {
     /**
@@ -135,16 +143,16 @@ export class MonitorV1 extends pulumi.CustomResource {
             inputs["urlPath"] = state ? state.urlPath : undefined;
         } else {
             const args = argsOrState as MonitorV1Args | undefined;
-            if (!args || args.delay === undefined) {
+            if ((!args || args.delay === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'delay'");
             }
-            if (!args || args.maxRetries === undefined) {
+            if ((!args || args.maxRetries === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'maxRetries'");
             }
-            if (!args || args.timeout === undefined) {
+            if ((!args || args.timeout === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'timeout'");
             }
-            if (!args || args.type === undefined) {
+            if ((!args || args.type === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'type'");
             }
             inputs["adminStateUp"] = args ? args.adminStateUp : undefined;

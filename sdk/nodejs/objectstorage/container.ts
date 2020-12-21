@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -64,6 +63,14 @@ import * as utilities from "../utilities";
  *     containerWrite: pulumi.interpolate`${current.projectId}:${var_username}`,
  *     region: "RegionOne",
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * This resource can be imported by specifying the name of the containerSome attributes can't be imported * `force_destroy` * `content_type` * `metadata` * `container_sync_to` * `container_sync_key` So you'll have to `terraform plan` and `terraform apply` after the import to fix those missing attributes.
+ *
+ * ```sh
+ *  $ pulumi import openstack:objectstorage/container:Container container_1 <name>
  * ```
  */
 export class Container extends pulumi.CustomResource {

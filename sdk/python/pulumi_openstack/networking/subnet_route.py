@@ -43,6 +43,14 @@ class SubnetRoute(pulumi.CustomResource):
             subnet_id=subnet1.id)
         ```
 
+        ## Import
+
+        Routing entries can be imported using a combined ID using the following format``<subnet_id>-route-<destination_cidr>-<next_hop>``
+
+        ```sh
+         $ pulumi import openstack:networking/subnetRoute:SubnetRoute subnet_route_1 686fe248-386c-4f70-9f6c-281607dad079-route-10.0.1.0/24-192.168.199.25
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] destination_cidr: CIDR block to match on the packet’s destination IP. Changing
@@ -73,14 +81,14 @@ class SubnetRoute(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if destination_cidr is None:
+            if destination_cidr is None and not opts.urn:
                 raise TypeError("Missing required property 'destination_cidr'")
             __props__['destination_cidr'] = destination_cidr
-            if next_hop is None:
+            if next_hop is None and not opts.urn:
                 raise TypeError("Missing required property 'next_hop'")
             __props__['next_hop'] = next_hop
             __props__['region'] = region
-            if subnet_id is None:
+            if subnet_id is None and not opts.urn:
                 raise TypeError("Missing required property 'subnet_id'")
             __props__['subnet_id'] = subnet_id
         super(SubnetRoute, __self__).__init__(

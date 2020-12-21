@@ -33,7 +33,14 @@ class SecretV1(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a SecretV1 resource with the given unique name, props, and options.
+        ## Import
+
+        Secrets can be imported using the secret id (the last part of the secret reference), e.g.
+
+        ```sh
+         $ pulumi import openstack:keymanager/secretV1:SecretV1 secret_1 8a7a79c2-cf17-4e65-b2ae-ddc8bfcf6c74
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['SecretV1AclArgs']] acl: Allows to control an access to a secret. Currently only the

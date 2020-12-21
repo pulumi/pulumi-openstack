@@ -19,6 +19,14 @@ import * as utilities from "../utilities";
  *     type: "custom",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Services can be imported using the `id`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import openstack:identity/serviceV3:ServiceV3 service_1 6688e967-158a-496f-a224-cae3414e6b61
+ * ```
  */
 export class ServiceV3 extends pulumi.CustomResource {
     /**
@@ -89,7 +97,7 @@ export class ServiceV3 extends pulumi.CustomResource {
             inputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as ServiceV3Args | undefined;
-            if (!args || args.type === undefined) {
+            if ((!args || args.type === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'type'");
             }
             inputs["description"] = args ? args.description : undefined;

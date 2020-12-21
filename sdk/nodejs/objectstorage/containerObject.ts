@@ -227,7 +227,7 @@ export class ContainerObject extends pulumi.CustomResource {
             inputs["transId"] = state ? state.transId : undefined;
         } else {
             const args = argsOrState as ContainerObjectArgs | undefined;
-            if (!args || args.containerName === undefined) {
+            if ((!args || args.containerName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'containerName'");
             }
             inputs["containerName"] = args ? args.containerName : undefined;

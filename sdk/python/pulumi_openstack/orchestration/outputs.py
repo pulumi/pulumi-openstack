@@ -9,11 +9,11 @@ from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
-    'StackV1Output',
+    'StackV1StackOutput',
 ]
 
 @pulumi.output_type
-class StackV1Output(dict):
+class StackV1StackOutput(dict):
     def __init__(__self__, *,
                  output_key: str,
                  output_value: str,

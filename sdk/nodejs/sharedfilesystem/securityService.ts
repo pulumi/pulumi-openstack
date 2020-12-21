@@ -31,6 +31,14 @@ import * as utilities from "../utilities";
  *     user: "joinDomainUser",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * This resource can be imported by specifying the ID of the security service
+ *
+ * ```sh
+ *  $ pulumi import openstack:sharedfilesystem/securityService:SecurityService securityservice_1 <id>
+ * ```
  */
 export class SecurityService extends pulumi.CustomResource {
     /**
@@ -139,7 +147,7 @@ export class SecurityService extends pulumi.CustomResource {
             inputs["user"] = state ? state.user : undefined;
         } else {
             const args = argsOrState as SecurityServiceArgs | undefined;
-            if (!args || args.type === undefined) {
+            if ((!args || args.type === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'type'");
             }
             inputs["description"] = args ? args.description : undefined;

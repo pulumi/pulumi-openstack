@@ -37,16 +37,28 @@ namespace Pulumi.OpenStack.Compute
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Flavors can be imported using the `ID`, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import openstack:compute/flavor:Flavor my-flavor 4142e64b-1b35-44a0-9b1e-5affc7af1106
+    /// ```
     /// </summary>
     public partial class Flavor : Pulumi.CustomResource
     {
         /// <summary>
-        /// The amount of disk space in gigabytes to use for the root
+        /// The amount of disk space in GiB to use for the root
         /// (/) partition. Changing this creates a new flavor.
         /// </summary>
         [Output("disk")]
         public Output<int> Disk { get; private set; } = null!;
 
+        /// <summary>
+        /// The amount of ephemeral in GiB. If unspecified,
+        /// the default is 0. Changing this creates a new flavor.
+        /// </summary>
         [Output("ephemeral")]
         public Output<int?> Ephemeral { get; private set; } = null!;
 
@@ -55,6 +67,13 @@ namespace Pulumi.OpenStack.Compute
         /// </summary>
         [Output("extraSpecs")]
         public Output<ImmutableDictionary<string, object>> ExtraSpecs { get; private set; } = null!;
+
+        /// <summary>
+        /// Unique ID (integer or UUID) of flavor to create. Changing
+        /// this creates a new flavor.
+        /// </summary>
+        [Output("flavorId")]
+        public Output<string?> FlavorId { get; private set; } = null!;
 
         /// <summary>
         /// Whether the flavor is public. Changing this creates
@@ -154,12 +173,16 @@ namespace Pulumi.OpenStack.Compute
     public sealed class FlavorArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The amount of disk space in gigabytes to use for the root
+        /// The amount of disk space in GiB to use for the root
         /// (/) partition. Changing this creates a new flavor.
         /// </summary>
         [Input("disk", required: true)]
         public Input<int> Disk { get; set; } = null!;
 
+        /// <summary>
+        /// The amount of ephemeral in GiB. If unspecified,
+        /// the default is 0. Changing this creates a new flavor.
+        /// </summary>
         [Input("ephemeral")]
         public Input<int>? Ephemeral { get; set; }
 
@@ -174,6 +197,13 @@ namespace Pulumi.OpenStack.Compute
             get => _extraSpecs ?? (_extraSpecs = new InputMap<object>());
             set => _extraSpecs = value;
         }
+
+        /// <summary>
+        /// Unique ID (integer or UUID) of flavor to create. Changing
+        /// this creates a new flavor.
+        /// </summary>
+        [Input("flavorId")]
+        public Input<string>? FlavorId { get; set; }
 
         /// <summary>
         /// Whether the flavor is public. Changing this creates
@@ -234,12 +264,16 @@ namespace Pulumi.OpenStack.Compute
     public sealed class FlavorState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The amount of disk space in gigabytes to use for the root
+        /// The amount of disk space in GiB to use for the root
         /// (/) partition. Changing this creates a new flavor.
         /// </summary>
         [Input("disk")]
         public Input<int>? Disk { get; set; }
 
+        /// <summary>
+        /// The amount of ephemeral in GiB. If unspecified,
+        /// the default is 0. Changing this creates a new flavor.
+        /// </summary>
         [Input("ephemeral")]
         public Input<int>? Ephemeral { get; set; }
 
@@ -254,6 +288,13 @@ namespace Pulumi.OpenStack.Compute
             get => _extraSpecs ?? (_extraSpecs = new InputMap<object>());
             set => _extraSpecs = value;
         }
+
+        /// <summary>
+        /// Unique ID (integer or UUID) of flavor to create. Changing
+        /// this creates a new flavor.
+        /// </summary>
+        [Input("flavorId")]
+        public Input<string>? FlavorId { get; set; }
 
         /// <summary>
         /// Whether the flavor is public. Changing this creates

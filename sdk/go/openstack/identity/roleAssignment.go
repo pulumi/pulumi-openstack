@@ -4,6 +4,7 @@
 package identity
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -72,11 +73,12 @@ type RoleAssignment struct {
 // NewRoleAssignment registers a new resource with the given unique name, arguments, and options.
 func NewRoleAssignment(ctx *pulumi.Context,
 	name string, args *RoleAssignmentArgs, opts ...pulumi.ResourceOption) (*RoleAssignment, error) {
-	if args == nil || args.RoleId == nil {
-		return nil, errors.New("missing required argument 'RoleId'")
-	}
 	if args == nil {
-		args = &RoleAssignmentArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.RoleId == nil {
+		return nil, errors.New("invalid value for required argument 'RoleId'")
 	}
 	var resource RoleAssignment
 	err := ctx.RegisterResource("openstack:identity/roleAssignment:RoleAssignment", name, args, &resource, opts...)
@@ -162,4 +164,43 @@ type RoleAssignmentArgs struct {
 
 func (RoleAssignmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*roleAssignmentArgs)(nil)).Elem()
+}
+
+type RoleAssignmentInput interface {
+	pulumi.Input
+
+	ToRoleAssignmentOutput() RoleAssignmentOutput
+	ToRoleAssignmentOutputWithContext(ctx context.Context) RoleAssignmentOutput
+}
+
+func (RoleAssignment) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoleAssignment)(nil)).Elem()
+}
+
+func (i RoleAssignment) ToRoleAssignmentOutput() RoleAssignmentOutput {
+	return i.ToRoleAssignmentOutputWithContext(context.Background())
+}
+
+func (i RoleAssignment) ToRoleAssignmentOutputWithContext(ctx context.Context) RoleAssignmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoleAssignmentOutput)
+}
+
+type RoleAssignmentOutput struct {
+	*pulumi.OutputState
+}
+
+func (RoleAssignmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoleAssignmentOutput)(nil)).Elem()
+}
+
+func (o RoleAssignmentOutput) ToRoleAssignmentOutput() RoleAssignmentOutput {
+	return o
+}
+
+func (o RoleAssignmentOutput) ToRoleAssignmentOutputWithContext(ctx context.Context) RoleAssignmentOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RoleAssignmentOutput{})
 }

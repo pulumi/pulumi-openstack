@@ -37,6 +37,14 @@ class ServiceV3(pulumi.CustomResource):
         service1 = openstack.identity.ServiceV3("service1", type="custom")
         ```
 
+        ## Import
+
+        Services can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:identity/serviceV3:ServiceV3 service_1 6688e967-158a-496f-a224-cae3414e6b61
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The service description.
@@ -67,7 +75,7 @@ class ServiceV3(pulumi.CustomResource):
             __props__['enabled'] = enabled
             __props__['name'] = name
             __props__['region'] = region
-            if type is None:
+            if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__['type'] = type
         super(ServiceV3, __self__).__init__(

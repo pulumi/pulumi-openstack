@@ -66,6 +66,14 @@ class Image(pulumi.CustomResource):
         In addition, the `direct_url` property is also automatically reconciled if the
         Image Service set it.
 
+        ## Import
+
+        Images can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:images/image:Image rancheros 89c60255-9bd6-460c-822a-e2b959ede9d2
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] container_format: The container format. Must be one of
@@ -122,10 +130,10 @@ class Image(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if container_format is None:
+            if container_format is None and not opts.urn:
                 raise TypeError("Missing required property 'container_format'")
             __props__['container_format'] = container_format
-            if disk_format is None:
+            if disk_format is None and not opts.urn:
                 raise TypeError("Missing required property 'disk_format'")
             __props__['disk_format'] = disk_format
             __props__['image_cache_path'] = image_cache_path

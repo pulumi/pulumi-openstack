@@ -48,6 +48,14 @@ namespace Pulumi.OpenStack.Compute.Inputs
         [Input("diskBus")]
         public Input<string>? DiskBus { get; set; }
 
+        /// <summary>
+        /// Specifies the guest server disk file system format,
+        /// such as `ext2`, `ext3`, `ext4`, `xfs` or `swap`. Swap block device mappings
+        /// have the following restrictions: source_type must be blank and destination_type
+        /// must be local and only one swap disk per server and the size of the swap disk
+        /// must be less than or equal to the swap size of the flavor. Changing this
+        /// creates a new server.
+        /// </summary>
         [Input("guestFormat")]
         public Input<string>? GuestFormat { get; set; }
 

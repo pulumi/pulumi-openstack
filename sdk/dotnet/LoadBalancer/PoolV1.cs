@@ -153,6 +153,14 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// ## Notes
     /// 
     /// The `member` block is deprecated in favor of the `openstack.loadbalancer.MemberV1` resource.
+    /// 
+    /// ## Import
+    /// 
+    /// Load Balancer Pools can be imported using the `id`, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import openstack:loadbalancer/poolV1:PoolV1 pool_1 b255e6ba-02ad-43e6-8951-3428ca26b713
+    /// ```
     /// </summary>
     public partial class PoolV1 : Pulumi.CustomResource
     {

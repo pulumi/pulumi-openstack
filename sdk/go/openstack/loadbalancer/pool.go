@@ -4,6 +4,7 @@
 package loadbalancer
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -39,6 +40,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Load Balancer Pool can be imported using the Pool ID, e.g.
+//
+// ```sh
+//  $ pulumi import openstack:loadbalancer/pool:Pool pool_1 60ad9ee4-249a-4d60-a45b-aa60e046c513
 // ```
 type Pool struct {
 	pulumi.CustomResourceState
@@ -84,14 +93,15 @@ type Pool struct {
 // NewPool registers a new resource with the given unique name, arguments, and options.
 func NewPool(ctx *pulumi.Context,
 	name string, args *PoolArgs, opts ...pulumi.ResourceOption) (*Pool, error) {
-	if args == nil || args.LbMethod == nil {
-		return nil, errors.New("missing required argument 'LbMethod'")
-	}
-	if args == nil || args.Protocol == nil {
-		return nil, errors.New("missing required argument 'Protocol'")
-	}
 	if args == nil {
-		args = &PoolArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.LbMethod == nil {
+		return nil, errors.New("invalid value for required argument 'LbMethod'")
+	}
+	if args.Protocol == nil {
+		return nil, errors.New("invalid value for required argument 'Protocol'")
 	}
 	var resource Pool
 	err := ctx.RegisterResource("openstack:loadbalancer/pool:Pool", name, args, &resource, opts...)
@@ -277,4 +287,43 @@ type PoolArgs struct {
 
 func (PoolArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*poolArgs)(nil)).Elem()
+}
+
+type PoolInput interface {
+	pulumi.Input
+
+	ToPoolOutput() PoolOutput
+	ToPoolOutputWithContext(ctx context.Context) PoolOutput
+}
+
+func (Pool) ElementType() reflect.Type {
+	return reflect.TypeOf((*Pool)(nil)).Elem()
+}
+
+func (i Pool) ToPoolOutput() PoolOutput {
+	return i.ToPoolOutputWithContext(context.Background())
+}
+
+func (i Pool) ToPoolOutputWithContext(ctx context.Context) PoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PoolOutput)
+}
+
+type PoolOutput struct {
+	*pulumi.OutputState
+}
+
+func (PoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PoolOutput)(nil)).Elem()
+}
+
+func (o PoolOutput) ToPoolOutput() PoolOutput {
+	return o
+}
+
+func (o PoolOutput) ToPoolOutputWithContext(ctx context.Context) PoolOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(PoolOutput{})
 }

@@ -4,6 +4,7 @@
 package networking
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -87,6 +88,14 @@ import (
 // There are some notes to consider when connecting Instances to networks using
 // Ports. Please see the `compute.Instance` documentation for further
 // documentation.
+//
+// ## Import
+//
+// Ports can be imported using the `id`, e.g.
+//
+// ```sh
+//  $ pulumi import openstack:networking/port:Port port_1 eae26a3e-1c33-4cc1-9c31-0cd729c438a1
+// ```
 type Port struct {
 	pulumi.CustomResourceState
 
@@ -179,11 +188,12 @@ type Port struct {
 // NewPort registers a new resource with the given unique name, arguments, and options.
 func NewPort(ctx *pulumi.Context,
 	name string, args *PortArgs, opts ...pulumi.ResourceOption) (*Port, error) {
-	if args == nil || args.NetworkId == nil {
-		return nil, errors.New("missing required argument 'NetworkId'")
-	}
 	if args == nil {
-		args = &PortArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.NetworkId == nil {
+		return nil, errors.New("invalid value for required argument 'NetworkId'")
 	}
 	var resource Port
 	err := ctx.RegisterResource("openstack:networking/port:Port", name, args, &resource, opts...)
@@ -539,4 +549,43 @@ type PortArgs struct {
 
 func (PortArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*portArgs)(nil)).Elem()
+}
+
+type PortInput interface {
+	pulumi.Input
+
+	ToPortOutput() PortOutput
+	ToPortOutputWithContext(ctx context.Context) PortOutput
+}
+
+func (Port) ElementType() reflect.Type {
+	return reflect.TypeOf((*Port)(nil)).Elem()
+}
+
+func (i Port) ToPortOutput() PortOutput {
+	return i.ToPortOutputWithContext(context.Background())
+}
+
+func (i Port) ToPortOutputWithContext(ctx context.Context) PortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortOutput)
+}
+
+type PortOutput struct {
+	*pulumi.OutputState
+}
+
+func (PortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PortOutput)(nil)).Elem()
+}
+
+func (o PortOutput) ToPortOutput() PortOutput {
+	return o
+}
+
+func (o PortOutput) ToPortOutputWithContext(ctx context.Context) PortOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(PortOutput{})
 }

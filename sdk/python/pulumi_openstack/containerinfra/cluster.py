@@ -152,6 +152,14 @@ class Cluster(pulumi.CustomResource):
           * `client_key` - The client's RSA key
           * `client_certificate` - The client's certificate
 
+        ## Import
+
+        Clusters can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:containerinfra/cluster:Cluster cluster_1 ce0f9463-dd25-474b-9fe8-94de63e5e42b
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -172,7 +180,7 @@ class Cluster(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if cluster_template_id is None:
+            if cluster_template_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_template_id'")
             __props__['cluster_template_id'] = cluster_template_id
             __props__['create_timeout'] = create_timeout

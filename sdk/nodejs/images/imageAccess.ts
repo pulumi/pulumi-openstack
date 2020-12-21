@@ -56,6 +56,14 @@ import * as utilities from "../utilities";
  *     status: "accepted",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Image access can be imported using the `image_id` and the `member_id`, separated by a slash, e.g.
+ *
+ * ```sh
+ *  $ pulumi import openstack:images/imageAccess:ImageAccess openstack_images_image_access_v2 89c60255-9bd6-460c-822a-e2b959ede9d2/bed6b6cbb86a4e2d8dc2735c2f1000e4
+ * ```
  */
 export class ImageAccess extends pulumi.CustomResource {
     /**
@@ -139,10 +147,10 @@ export class ImageAccess extends pulumi.CustomResource {
             inputs["updatedAt"] = state ? state.updatedAt : undefined;
         } else {
             const args = argsOrState as ImageAccessArgs | undefined;
-            if (!args || args.imageId === undefined) {
+            if ((!args || args.imageId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'imageId'");
             }
-            if (!args || args.memberId === undefined) {
+            if ((!args || args.memberId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'memberId'");
             }
             inputs["imageId"] = args ? args.imageId : undefined;

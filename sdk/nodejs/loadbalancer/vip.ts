@@ -20,6 +20,14 @@ import * as utilities from "../utilities";
  *     subnetId: "12345",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Load Balancer VIPs can be imported using the `id`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import openstack:loadbalancer/vip:Vip vip_1 50e16b26-89c1-475e-a492-76167182511e
+ * ```
  */
 export class Vip extends pulumi.CustomResource {
     /**
@@ -154,16 +162,16 @@ export class Vip extends pulumi.CustomResource {
             inputs["tenantId"] = state ? state.tenantId : undefined;
         } else {
             const args = argsOrState as VipArgs | undefined;
-            if (!args || args.poolId === undefined) {
+            if ((!args || args.poolId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'poolId'");
             }
-            if (!args || args.port === undefined) {
+            if ((!args || args.port === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'port'");
             }
-            if (!args || args.protocol === undefined) {
+            if ((!args || args.protocol === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'protocol'");
             }
-            if (!args || args.subnetId === undefined) {
+            if ((!args || args.subnetId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'subnetId'");
             }
             inputs["address"] = args ? args.address : undefined;

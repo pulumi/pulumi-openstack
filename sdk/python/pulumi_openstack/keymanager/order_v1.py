@@ -57,6 +57,14 @@ class OrderV1(pulumi.CustomResource):
             type="asymmetric")
         ```
 
+        ## Import
+
+        Orders can be imported using the order id (the last part of the order reference), e.g.
+
+        ```sh
+         $ pulumi import openstack:keymanager/orderV1:OrderV1 order_1 0c6cd26a-c012-4d7b-8034-057c0f1c2953
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['OrderV1MetaArgs']] meta: Dictionary containing the order metadata used to generate the order. The structure is described below.
@@ -83,11 +91,11 @@ class OrderV1(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if meta is None:
+            if meta is None and not opts.urn:
                 raise TypeError("Missing required property 'meta'")
             __props__['meta'] = meta
             __props__['region'] = region
-            if type is None:
+            if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__['type'] = type
             __props__['container_ref'] = None

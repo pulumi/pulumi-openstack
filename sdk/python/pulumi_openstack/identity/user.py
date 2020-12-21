@@ -68,6 +68,14 @@ class User(pulumi.CustomResource):
             password="password123")
         ```
 
+        ## Import
+
+        Users can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:identity/user:User user_1 89c60255-9bd6-460c-822a-e2b959ede9d2
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] default_project_id: The default project this user belongs to.

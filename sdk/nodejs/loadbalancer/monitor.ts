@@ -21,6 +21,20 @@ import * as utilities from "../utilities";
  *     type: "PING",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Load Balancer Pool Monitor can be imported using the Monitor ID, e.g.
+ *
+ * ```sh
+ *  $ pulumi import openstack:loadbalancer/monitor:Monitor monitor_1 47c26fc3-2403-427a-8c79-1589bd0533c2
+ * ```
+ *
+ *  In case of using OpenContrail, the import may not work properly. If you face an issue, try to import the monitor providing its parent pool ID
+ *
+ * ```sh
+ *  $ pulumi import openstack:loadbalancer/monitor:Monitor monitor_1 47c26fc3-2403-427a-8c79-1589bd0533c2/708bc224-0f8c-4981-ac82-97095fe051b6
+ * ```
  */
 export class Monitor extends pulumi.CustomResource {
     /**
@@ -149,19 +163,19 @@ export class Monitor extends pulumi.CustomResource {
             inputs["urlPath"] = state ? state.urlPath : undefined;
         } else {
             const args = argsOrState as MonitorArgs | undefined;
-            if (!args || args.delay === undefined) {
+            if ((!args || args.delay === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'delay'");
             }
-            if (!args || args.maxRetries === undefined) {
+            if ((!args || args.maxRetries === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'maxRetries'");
             }
-            if (!args || args.poolId === undefined) {
+            if ((!args || args.poolId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'poolId'");
             }
-            if (!args || args.timeout === undefined) {
+            if ((!args || args.timeout === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'timeout'");
             }
-            if (!args || args.type === undefined) {
+            if ((!args || args.type === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'type'");
             }
             inputs["adminStateUp"] = args ? args.adminStateUp : undefined;

@@ -4,6 +4,7 @@
 package loadbalancer
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -48,6 +49,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Load Balancer Pool Members can be imported using the Pool ID, e.g.
+//
+// ```sh
+//  $ pulumi import openstack:loadbalancer/members:Members members_1 c22974d2-4c95-4bcb-9819-0afc5ed303d5
+// ```
 type Members struct {
 	pulumi.CustomResourceState
 
@@ -67,11 +76,12 @@ type Members struct {
 // NewMembers registers a new resource with the given unique name, arguments, and options.
 func NewMembers(ctx *pulumi.Context,
 	name string, args *MembersArgs, opts ...pulumi.ResourceOption) (*Members, error) {
-	if args == nil || args.PoolId == nil {
-		return nil, errors.New("missing required argument 'PoolId'")
-	}
 	if args == nil {
-		args = &MembersArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.PoolId == nil {
+		return nil, errors.New("invalid value for required argument 'PoolId'")
 	}
 	var resource Members
 	err := ctx.RegisterResource("openstack:loadbalancer/members:Members", name, args, &resource, opts...)
@@ -157,4 +167,43 @@ type MembersArgs struct {
 
 func (MembersArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*membersArgs)(nil)).Elem()
+}
+
+type MembersInput interface {
+	pulumi.Input
+
+	ToMembersOutput() MembersOutput
+	ToMembersOutputWithContext(ctx context.Context) MembersOutput
+}
+
+func (Members) ElementType() reflect.Type {
+	return reflect.TypeOf((*Members)(nil)).Elem()
+}
+
+func (i Members) ToMembersOutput() MembersOutput {
+	return i.ToMembersOutputWithContext(context.Background())
+}
+
+func (i Members) ToMembersOutputWithContext(ctx context.Context) MembersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MembersOutput)
+}
+
+type MembersOutput struct {
+	*pulumi.OutputState
+}
+
+func (MembersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MembersOutput)(nil)).Elem()
+}
+
+func (o MembersOutput) ToMembersOutput() MembersOutput {
+	return o
+}
+
+func (o MembersOutput) ToMembersOutputWithContext(ctx context.Context) MembersOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(MembersOutput{})
 }

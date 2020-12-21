@@ -4,6 +4,7 @@
 package networking
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -40,6 +41,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Subnets can be imported using the `id`, e.g.
+//
+// ```sh
+//  $ pulumi import openstack:networking/subnet:Subnet subnet_1 da4faf16-5546-41e4-8330-4d0002b74048
 // ```
 type Subnet struct {
 	pulumi.CustomResourceState
@@ -130,11 +139,12 @@ type Subnet struct {
 // NewSubnet registers a new resource with the given unique name, arguments, and options.
 func NewSubnet(ctx *pulumi.Context,
 	name string, args *SubnetArgs, opts ...pulumi.ResourceOption) (*Subnet, error) {
-	if args == nil || args.NetworkId == nil {
-		return nil, errors.New("missing required argument 'NetworkId'")
-	}
 	if args == nil {
-		args = &SubnetArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.NetworkId == nil {
+		return nil, errors.New("invalid value for required argument 'NetworkId'")
 	}
 	var resource Subnet
 	err := ctx.RegisterResource("openstack:networking/subnet:Subnet", name, args, &resource, opts...)
@@ -494,4 +504,43 @@ type SubnetArgs struct {
 
 func (SubnetArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*subnetArgs)(nil)).Elem()
+}
+
+type SubnetInput interface {
+	pulumi.Input
+
+	ToSubnetOutput() SubnetOutput
+	ToSubnetOutputWithContext(ctx context.Context) SubnetOutput
+}
+
+func (Subnet) ElementType() reflect.Type {
+	return reflect.TypeOf((*Subnet)(nil)).Elem()
+}
+
+func (i Subnet) ToSubnetOutput() SubnetOutput {
+	return i.ToSubnetOutputWithContext(context.Background())
+}
+
+func (i Subnet) ToSubnetOutputWithContext(ctx context.Context) SubnetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetOutput)
+}
+
+type SubnetOutput struct {
+	*pulumi.OutputState
+}
+
+func (SubnetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubnetOutput)(nil)).Elem()
+}
+
+func (o SubnetOutput) ToSubnetOutput() SubnetOutput {
+	return o
+}
+
+func (o SubnetOutput) ToSubnetOutputWithContext(ctx context.Context) SubnetOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SubnetOutput{})
 }

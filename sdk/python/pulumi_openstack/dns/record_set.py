@@ -49,6 +49,14 @@ class RecordSet(pulumi.CustomResource):
             zone_id=example_zone.id)
         ```
 
+        ## Import
+
+        This resource can be imported by specifying the zone ID and recordset ID, separated by a forward slash.
+
+        ```sh
+         $ pulumi import openstack:dns/recordSet:RecordSet recordset_1 <zone_id>/<recordset_id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description of the  record set.
@@ -92,7 +100,7 @@ class RecordSet(pulumi.CustomResource):
             __props__['ttl'] = ttl
             __props__['type'] = type
             __props__['value_specs'] = value_specs
-            if zone_id is None:
+            if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__['zone_id'] = zone_id
         super(RecordSet, __self__).__init__(

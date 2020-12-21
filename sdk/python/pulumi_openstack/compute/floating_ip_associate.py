@@ -24,8 +24,7 @@ class FloatingIpAssociate(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Associate a floating IP to an instance. This can be used instead of the
-        `floating_ip` options in `compute.Instance`.
+        Associate a floating IP to an instance.
 
         ## Example Usage
         ### Automatically detect the correct network
@@ -70,6 +69,14 @@ class FloatingIpAssociate(pulumi.CustomResource):
             instance_id=instance1.id)
         ```
 
+        ## Import
+
+        This resource can be imported by specifying all three arguments, separated by a forward slash
+
+        ```sh
+         $ pulumi import openstack:compute/floatingIpAssociate:FloatingIpAssociate fip_1 <floating_ip>/<instance_id>/<fixed_ip>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] fixed_ip: The specific IP address to direct traffic to.
@@ -98,10 +105,10 @@ class FloatingIpAssociate(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['fixed_ip'] = fixed_ip
-            if floating_ip is None:
+            if floating_ip is None and not opts.urn:
                 raise TypeError("Missing required property 'floating_ip'")
             __props__['floating_ip'] = floating_ip
-            if instance_id is None:
+            if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
             __props__['instance_id'] = instance_id
             __props__['region'] = region

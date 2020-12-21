@@ -18,6 +18,14 @@ import * as utilities from "../utilities";
  *     instanceId: openstack_db_instance_v1_basic.id,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Databases can be imported by using `instance-id/db-name`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import openstack:database/database:Database mydb 7b9e3cd3-00d9-449c-b074-8439f8e274fa/mydb
+ * ```
  */
 export class Database extends pulumi.CustomResource {
     /**
@@ -77,7 +85,7 @@ export class Database extends pulumi.CustomResource {
             inputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as DatabaseArgs | undefined;
-            if (!args || args.instanceId === undefined) {
+            if ((!args || args.instanceId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'instanceId'");
             }
             inputs["instanceId"] = args ? args.instanceId : undefined;

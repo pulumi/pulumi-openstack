@@ -4,6 +4,15 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * ## Import
+ *
+ * This resource can be imported by specifying the ID of the share and the ID of the share access, separated by a slash, e.g.
+ *
+ * ```sh
+ *  $ pulumi import openstack:sharedfilesystem/shareAccess:ShareAccess share_access_1 <share id>/<share access id>
+ * ```
+ */
 export class ShareAccess extends pulumi.CustomResource {
     /**
      * Get an existing ShareAccess resource's state with the given name, ID, and optional extra
@@ -82,16 +91,16 @@ export class ShareAccess extends pulumi.CustomResource {
             inputs["shareId"] = state ? state.shareId : undefined;
         } else {
             const args = argsOrState as ShareAccessArgs | undefined;
-            if (!args || args.accessLevel === undefined) {
+            if ((!args || args.accessLevel === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'accessLevel'");
             }
-            if (!args || args.accessTo === undefined) {
+            if ((!args || args.accessTo === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'accessTo'");
             }
-            if (!args || args.accessType === undefined) {
+            if ((!args || args.accessType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'accessType'");
             }
-            if (!args || args.shareId === undefined) {
+            if ((!args || args.shareId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'shareId'");
             }
             inputs["accessLevel"] = args ? args.accessLevel : undefined;

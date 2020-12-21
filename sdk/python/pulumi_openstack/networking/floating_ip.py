@@ -45,6 +45,14 @@ class FloatingIp(pulumi.CustomResource):
         floatip1 = openstack.networking.FloatingIp("floatip1", pool="public")
         ```
 
+        ## Import
+
+        Floating IPs can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:networking/floatingIp:FloatingIp floatip_1 2c7f39f3-702b-48d1-940c-b50384177ee1
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address: The actual/specific floating IP to obtain. By default,
@@ -102,7 +110,7 @@ class FloatingIp(pulumi.CustomResource):
             __props__['dns_domain'] = dns_domain
             __props__['dns_name'] = dns_name
             __props__['fixed_ip'] = fixed_ip
-            if pool is None:
+            if pool is None and not opts.urn:
                 raise TypeError("Missing required property 'pool'")
             __props__['pool'] = pool
             __props__['port_id'] = port_id

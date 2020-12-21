@@ -21,6 +21,14 @@ import * as utilities from "../utilities";
  *     protocol: "tcp",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Firewall Rules can be imported using the `id`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import openstack:firewall/rule:Rule rule_1 8dbc0c28-e49c-463f-b712-5c5d1bbac327
+ * ```
  */
 export class Rule extends pulumi.CustomResource {
     /**
@@ -152,10 +160,10 @@ export class Rule extends pulumi.CustomResource {
             inputs["valueSpecs"] = state ? state.valueSpecs : undefined;
         } else {
             const args = argsOrState as RuleArgs | undefined;
-            if (!args || args.action === undefined) {
+            if ((!args || args.action === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'action'");
             }
-            if (!args || args.protocol === undefined) {
+            if ((!args || args.protocol === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'protocol'");
             }
             inputs["action"] = args ? args.action : undefined;

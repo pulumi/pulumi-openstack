@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -24,6 +23,14 @@ import * as utilities from "../utilities";
  *     psk: "secret",
  *     vpnserviceId: openstack_vpnaas_service_v2_service_1.id,
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * Site Connections can be imported using the `id`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import openstack:vpnaas/siteConnection:SiteConnection conn_1 832cb7f3-59fe-40cf-8f64-8350ffc03272
  * ```
  */
 export class SiteConnection extends pulumi.CustomResource {
@@ -181,22 +188,22 @@ export class SiteConnection extends pulumi.CustomResource {
             inputs["vpnserviceId"] = state ? state.vpnserviceId : undefined;
         } else {
             const args = argsOrState as SiteConnectionArgs | undefined;
-            if (!args || args.ikepolicyId === undefined) {
+            if ((!args || args.ikepolicyId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'ikepolicyId'");
             }
-            if (!args || args.ipsecpolicyId === undefined) {
+            if ((!args || args.ipsecpolicyId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'ipsecpolicyId'");
             }
-            if (!args || args.peerAddress === undefined) {
+            if ((!args || args.peerAddress === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'peerAddress'");
             }
-            if (!args || args.peerId === undefined) {
+            if ((!args || args.peerId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'peerId'");
             }
-            if (!args || args.psk === undefined) {
+            if ((!args || args.psk === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'psk'");
             }
-            if (!args || args.vpnserviceId === undefined) {
+            if ((!args || args.vpnserviceId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'vpnserviceId'");
             }
             inputs["adminStateUp"] = args ? args.adminStateUp : undefined;

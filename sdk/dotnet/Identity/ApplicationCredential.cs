@@ -112,6 +112,14 @@ namespace Pulumi.OpenStack.Identity
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Application Credentials can be imported using the `id`, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import openstack:identity/applicationCredential:ApplicationCredential application_credential_1 c17304b7-0953-4738-abb0-67005882b0a0
+    /// ```
     /// </summary>
     public partial class ApplicationCredential : Pulumi.CustomResource
     {

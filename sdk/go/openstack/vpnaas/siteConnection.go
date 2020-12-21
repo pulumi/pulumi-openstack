@@ -4,6 +4,7 @@
 package vpnaas
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -39,6 +40,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Site Connections can be imported using the `id`, e.g.
+//
+// ```sh
+//  $ pulumi import openstack:vpnaas/siteConnection:SiteConnection conn_1 832cb7f3-59fe-40cf-8f64-8350ffc03272
 // ```
 type SiteConnection struct {
 	pulumi.CustomResourceState
@@ -103,26 +112,27 @@ type SiteConnection struct {
 // NewSiteConnection registers a new resource with the given unique name, arguments, and options.
 func NewSiteConnection(ctx *pulumi.Context,
 	name string, args *SiteConnectionArgs, opts ...pulumi.ResourceOption) (*SiteConnection, error) {
-	if args == nil || args.IkepolicyId == nil {
-		return nil, errors.New("missing required argument 'IkepolicyId'")
-	}
-	if args == nil || args.IpsecpolicyId == nil {
-		return nil, errors.New("missing required argument 'IpsecpolicyId'")
-	}
-	if args == nil || args.PeerAddress == nil {
-		return nil, errors.New("missing required argument 'PeerAddress'")
-	}
-	if args == nil || args.PeerId == nil {
-		return nil, errors.New("missing required argument 'PeerId'")
-	}
-	if args == nil || args.Psk == nil {
-		return nil, errors.New("missing required argument 'Psk'")
-	}
-	if args == nil || args.VpnserviceId == nil {
-		return nil, errors.New("missing required argument 'VpnserviceId'")
-	}
 	if args == nil {
-		args = &SiteConnectionArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.IkepolicyId == nil {
+		return nil, errors.New("invalid value for required argument 'IkepolicyId'")
+	}
+	if args.IpsecpolicyId == nil {
+		return nil, errors.New("invalid value for required argument 'IpsecpolicyId'")
+	}
+	if args.PeerAddress == nil {
+		return nil, errors.New("invalid value for required argument 'PeerAddress'")
+	}
+	if args.PeerId == nil {
+		return nil, errors.New("invalid value for required argument 'PeerId'")
+	}
+	if args.Psk == nil {
+		return nil, errors.New("invalid value for required argument 'Psk'")
+	}
+	if args.VpnserviceId == nil {
+		return nil, errors.New("invalid value for required argument 'VpnserviceId'")
 	}
 	var resource SiteConnection
 	err := ctx.RegisterResource("openstack:vpnaas/siteConnection:SiteConnection", name, args, &resource, opts...)
@@ -384,4 +394,43 @@ type SiteConnectionArgs struct {
 
 func (SiteConnectionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*siteConnectionArgs)(nil)).Elem()
+}
+
+type SiteConnectionInput interface {
+	pulumi.Input
+
+	ToSiteConnectionOutput() SiteConnectionOutput
+	ToSiteConnectionOutputWithContext(ctx context.Context) SiteConnectionOutput
+}
+
+func (SiteConnection) ElementType() reflect.Type {
+	return reflect.TypeOf((*SiteConnection)(nil)).Elem()
+}
+
+func (i SiteConnection) ToSiteConnectionOutput() SiteConnectionOutput {
+	return i.ToSiteConnectionOutputWithContext(context.Background())
+}
+
+func (i SiteConnection) ToSiteConnectionOutputWithContext(ctx context.Context) SiteConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteConnectionOutput)
+}
+
+type SiteConnectionOutput struct {
+	*pulumi.OutputState
+}
+
+func (SiteConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SiteConnectionOutput)(nil)).Elem()
+}
+
+func (o SiteConnectionOutput) ToSiteConnectionOutput() SiteConnectionOutput {
+	return o
+}
+
+func (o SiteConnectionOutput) ToSiteConnectionOutputWithContext(ctx context.Context) SiteConnectionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SiteConnectionOutput{})
 }

@@ -4,6 +4,7 @@
 package networking
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -55,6 +56,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// RBAC policies can be imported using the `id`, e.g.
+//
+// ```sh
+//  $ pulumi import openstack:networking/rbacPolicyV2:RbacPolicyV2 rbac_policy_1 eae26a3e-1c33-4cc1-9c31-0cd729c438a1
+// ```
 type RbacPolicyV2 struct {
 	pulumi.CustomResourceState
 
@@ -82,20 +91,21 @@ type RbacPolicyV2 struct {
 // NewRbacPolicyV2 registers a new resource with the given unique name, arguments, and options.
 func NewRbacPolicyV2(ctx *pulumi.Context,
 	name string, args *RbacPolicyV2Args, opts ...pulumi.ResourceOption) (*RbacPolicyV2, error) {
-	if args == nil || args.Action == nil {
-		return nil, errors.New("missing required argument 'Action'")
-	}
-	if args == nil || args.ObjectId == nil {
-		return nil, errors.New("missing required argument 'ObjectId'")
-	}
-	if args == nil || args.ObjectType == nil {
-		return nil, errors.New("missing required argument 'ObjectType'")
-	}
-	if args == nil || args.TargetTenant == nil {
-		return nil, errors.New("missing required argument 'TargetTenant'")
-	}
 	if args == nil {
-		args = &RbacPolicyV2Args{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Action == nil {
+		return nil, errors.New("invalid value for required argument 'Action'")
+	}
+	if args.ObjectId == nil {
+		return nil, errors.New("invalid value for required argument 'ObjectId'")
+	}
+	if args.ObjectType == nil {
+		return nil, errors.New("invalid value for required argument 'ObjectType'")
+	}
+	if args.TargetTenant == nil {
+		return nil, errors.New("invalid value for required argument 'TargetTenant'")
 	}
 	var resource RbacPolicyV2
 	err := ctx.RegisterResource("openstack:networking/rbacPolicyV2:RbacPolicyV2", name, args, &resource, opts...)
@@ -211,4 +221,43 @@ type RbacPolicyV2Args struct {
 
 func (RbacPolicyV2Args) ElementType() reflect.Type {
 	return reflect.TypeOf((*rbacPolicyV2Args)(nil)).Elem()
+}
+
+type RbacPolicyV2Input interface {
+	pulumi.Input
+
+	ToRbacPolicyV2Output() RbacPolicyV2Output
+	ToRbacPolicyV2OutputWithContext(ctx context.Context) RbacPolicyV2Output
+}
+
+func (RbacPolicyV2) ElementType() reflect.Type {
+	return reflect.TypeOf((*RbacPolicyV2)(nil)).Elem()
+}
+
+func (i RbacPolicyV2) ToRbacPolicyV2Output() RbacPolicyV2Output {
+	return i.ToRbacPolicyV2OutputWithContext(context.Background())
+}
+
+func (i RbacPolicyV2) ToRbacPolicyV2OutputWithContext(ctx context.Context) RbacPolicyV2Output {
+	return pulumi.ToOutputWithContext(ctx, i).(RbacPolicyV2Output)
+}
+
+type RbacPolicyV2Output struct {
+	*pulumi.OutputState
+}
+
+func (RbacPolicyV2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*RbacPolicyV2Output)(nil)).Elem()
+}
+
+func (o RbacPolicyV2Output) ToRbacPolicyV2Output() RbacPolicyV2Output {
+	return o
+}
+
+func (o RbacPolicyV2Output) ToRbacPolicyV2OutputWithContext(ctx context.Context) RbacPolicyV2Output {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RbacPolicyV2Output{})
 }

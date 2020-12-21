@@ -98,7 +98,7 @@ export class RoleAssignment extends pulumi.CustomResource {
             inputs["userId"] = state ? state.userId : undefined;
         } else {
             const args = argsOrState as RoleAssignmentArgs | undefined;
-            if (!args || args.roleId === undefined) {
+            if ((!args || args.roleId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'roleId'");
             }
             inputs["domainId"] = args ? args.domainId : undefined;

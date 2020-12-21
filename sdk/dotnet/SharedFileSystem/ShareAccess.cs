@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.OpenStack.SharedFileSystem
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// This resource can be imported by specifying the ID of the share and the ID of the share access, separated by a slash, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import openstack:sharedfilesystem/shareAccess:ShareAccess share_access_1 &lt;share id&gt;/&lt;share access id&gt;
+    /// ```
+    /// </summary>
     public partial class ShareAccess : Pulumi.CustomResource
     {
         /// <summary>

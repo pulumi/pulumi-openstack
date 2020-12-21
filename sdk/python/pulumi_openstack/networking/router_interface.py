@@ -42,6 +42,14 @@ class RouterInterface(pulumi.CustomResource):
             subnet_id=subnet1.id)
         ```
 
+        ## Import
+
+        Router Interfaces can be imported using the port `id`, e.g. $ openstack port list --router <router name or id>
+
+        ```sh
+         $ pulumi import openstack:networking/routerInterface:RouterInterface int_1 <port id from above output>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] port_id: ID of the port this interface connects to. Changing
@@ -74,7 +82,7 @@ class RouterInterface(pulumi.CustomResource):
 
             __props__['port_id'] = port_id
             __props__['region'] = region
-            if router_id is None:
+            if router_id is None and not opts.urn:
                 raise TypeError("Missing required property 'router_id'")
             __props__['router_id'] = router_id
             __props__['subnet_id'] = subnet_id

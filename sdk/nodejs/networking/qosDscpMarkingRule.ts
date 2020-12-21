@@ -22,6 +22,14 @@ import * as utilities from "../utilities";
  *     qosPolicyId: qosPolicy1.id,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * QoS DSCP marking rules can be imported using the `qos_policy_id/dscp_marking_rule_id` format, e.g.
+ *
+ * ```sh
+ *  $ pulumi import openstack:networking/qosDscpMarkingRule:QosDscpMarkingRule dscp_marking_rule_1 d6ae28ce-fcb5-4180-aa62-d260a27e09ae/46dfb556-b92f-48ce-94c5-9a9e2140de94
+ * ```
  */
 export class QosDscpMarkingRule extends pulumi.CustomResource {
     /**
@@ -84,10 +92,10 @@ export class QosDscpMarkingRule extends pulumi.CustomResource {
             inputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as QosDscpMarkingRuleArgs | undefined;
-            if (!args || args.dscpMark === undefined) {
+            if ((!args || args.dscpMark === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'dscpMark'");
             }
-            if (!args || args.qosPolicyId === undefined) {
+            if ((!args || args.qosPolicyId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'qosPolicyId'");
             }
             inputs["dscpMark"] = args ? args.dscpMark : undefined;

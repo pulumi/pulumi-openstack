@@ -48,6 +48,14 @@ namespace Pulumi.OpenStack.BlockStorage
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Quotasets can be imported using the `project_id`, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import openstack:blockstorage/quoteSetV2:QuoteSetV2 quotaset_1 2a0f2240-c5e6-41de-896d-e80d97428d6b
+    /// ```
     /// </summary>
     public partial class QuoteSetV2 : Pulumi.CustomResource
     {

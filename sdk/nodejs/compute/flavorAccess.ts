@@ -30,6 +30,14 @@ import * as utilities from "../utilities";
  *     tenantId: project1.id,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * This resource can be imported by specifying all two arguments, separated by a forward slash
+ *
+ * ```sh
+ *  $ pulumi import openstack:compute/flavorAccess:FlavorAccess access_1 <flavor_id>/<tenant_id>
+ * ```
  */
 export class FlavorAccess extends pulumi.CustomResource {
     /**
@@ -92,10 +100,10 @@ export class FlavorAccess extends pulumi.CustomResource {
             inputs["tenantId"] = state ? state.tenantId : undefined;
         } else {
             const args = argsOrState as FlavorAccessArgs | undefined;
-            if (!args || args.flavorId === undefined) {
+            if ((!args || args.flavorId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'flavorId'");
             }
-            if (!args || args.tenantId === undefined) {
+            if ((!args || args.tenantId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'tenantId'");
             }
             inputs["flavorId"] = args ? args.flavorId : undefined;

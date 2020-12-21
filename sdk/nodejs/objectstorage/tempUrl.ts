@@ -120,13 +120,13 @@ export class TempUrl extends pulumi.CustomResource {
             inputs["url"] = state ? state.url : undefined;
         } else {
             const args = argsOrState as TempUrlArgs | undefined;
-            if (!args || args.container === undefined) {
+            if ((!args || args.container === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'container'");
             }
-            if (!args || args.object === undefined) {
+            if ((!args || args.object === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'object'");
             }
-            if (!args || args.ttl === undefined) {
+            if ((!args || args.ttl === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'ttl'");
             }
             inputs["container"] = args ? args.container : undefined;

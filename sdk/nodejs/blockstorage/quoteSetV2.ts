@@ -33,6 +33,14 @@ import * as utilities from "../utilities";
  *     groups: 100,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Quotasets can be imported using the `project_id`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import openstack:blockstorage/quoteSetV2:QuoteSetV2 quotaset_1 2a0f2240-c5e6-41de-896d-e80d97428d6b
+ * ```
  */
 export class QuoteSetV2 extends pulumi.CustomResource {
     /**
@@ -132,7 +140,7 @@ export class QuoteSetV2 extends pulumi.CustomResource {
             inputs["volumes"] = state ? state.volumes : undefined;
         } else {
             const args = argsOrState as QuoteSetV2Args | undefined;
-            if (!args || args.projectId === undefined) {
+            if ((!args || args.projectId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'projectId'");
             }
             inputs["backupGigabytes"] = args ? args.backupGigabytes : undefined;

@@ -46,6 +46,14 @@ class FlavorAccess(pulumi.CustomResource):
             tenant_id=project1.id)
         ```
 
+        ## Import
+
+        This resource can be imported by specifying all two arguments, separated by a forward slash
+
+        ```sh
+         $ pulumi import openstack:compute/flavorAccess:FlavorAccess access_1 <flavor_id>/<tenant_id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] flavor_id: The UUID of flavor to use. Changing this creates a new flavor access.
@@ -72,11 +80,11 @@ class FlavorAccess(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if flavor_id is None:
+            if flavor_id is None and not opts.urn:
                 raise TypeError("Missing required property 'flavor_id'")
             __props__['flavor_id'] = flavor_id
             __props__['region'] = region
-            if tenant_id is None:
+            if tenant_id is None and not opts.urn:
                 raise TypeError("Missing required property 'tenant_id'")
             __props__['tenant_id'] = tenant_id
         super(FlavorAccess, __self__).__init__(

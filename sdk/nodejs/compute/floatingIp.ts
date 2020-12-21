@@ -23,6 +23,14 @@ import * as utilities from "../utilities";
  *     pool: "public",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Floating IPs can be imported using the `id`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import openstack:compute/floatingIp:FloatingIp floatip_1 89c60255-9bd6-460c-822a-e2b959ede9d2
+ * ```
  */
 export class FloatingIp extends pulumi.CustomResource {
     /**
@@ -97,7 +105,7 @@ export class FloatingIp extends pulumi.CustomResource {
             inputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as FloatingIpArgs | undefined;
-            if (!args || args.pool === undefined) {
+            if ((!args || args.pool === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'pool'");
             }
             inputs["pool"] = args ? args.pool : undefined;

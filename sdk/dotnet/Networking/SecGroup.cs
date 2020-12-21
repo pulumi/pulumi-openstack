@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.OpenStack.Networking
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// Security Groups can be imported using the `id`, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import openstack:networking/secGroup:SecGroup secgroup_1 38809219-5e8a-4852-9139-6f461c90e8bc
+    /// ```
+    /// </summary>
     public partial class SecGroup : Pulumi.CustomResource
     {
         /// <summary>

@@ -51,6 +51,14 @@ class ServerGroup(pulumi.CustomResource):
           still will be scheduled instead of failure. To use this policy your
           OpenStack environment should support Compute service API 2.15 or above.
 
+        ## Import
+
+        Server Groups can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:compute/serverGroup:ServerGroup test-sg 1bc30ee9-9d5b-4c30-bdd5-7f1e663f5edf
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: A unique name for the server group. Changing this creates

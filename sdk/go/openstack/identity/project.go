@@ -4,6 +4,7 @@
 package identity
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -36,6 +37,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Projects can be imported using the `id`, e.g.
+//
+// ```sh
+//  $ pulumi import openstack:identity/project:Project project_1 89c60255-9bd6-460c-822a-e2b959ede9d2
+// ```
 type Project struct {
 	pulumi.CustomResourceState
 
@@ -44,14 +53,16 @@ type Project struct {
 	// The domain this project belongs to.
 	DomainId pulumi.StringOutput `pulumi:"domainId"`
 	// Whether the project is enabled or disabled. Valid
-	// values are `true` and `false`.
+	// values are `true` and `false`. Default is `true`.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
 	// Whether this project is a domain. Valid values
-	// are `true` and `false`.
+	// are `true` and `false`. Default is `false`. Changing this creates a new
+	// project/domain.
 	IsDomain pulumi.BoolPtrOutput `pulumi:"isDomain"`
 	// The name of the project.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The parent of this project.
+	// The parent of this project. Changing this creates
+	// a new project.
 	ParentId pulumi.StringOutput `pulumi:"parentId"`
 	// The region in which to obtain the V3 Keystone client.
 	// If omitted, the `region` argument of the provider is used. Changing this
@@ -68,6 +79,7 @@ func NewProject(ctx *pulumi.Context,
 	if args == nil {
 		args = &ProjectArgs{}
 	}
+
 	var resource Project
 	err := ctx.RegisterResource("openstack:identity/project:Project", name, args, &resource, opts...)
 	if err != nil {
@@ -95,14 +107,16 @@ type projectState struct {
 	// The domain this project belongs to.
 	DomainId *string `pulumi:"domainId"`
 	// Whether the project is enabled or disabled. Valid
-	// values are `true` and `false`.
+	// values are `true` and `false`. Default is `true`.
 	Enabled *bool `pulumi:"enabled"`
 	// Whether this project is a domain. Valid values
-	// are `true` and `false`.
+	// are `true` and `false`. Default is `false`. Changing this creates a new
+	// project/domain.
 	IsDomain *bool `pulumi:"isDomain"`
 	// The name of the project.
 	Name *string `pulumi:"name"`
-	// The parent of this project.
+	// The parent of this project. Changing this creates
+	// a new project.
 	ParentId *string `pulumi:"parentId"`
 	// The region in which to obtain the V3 Keystone client.
 	// If omitted, the `region` argument of the provider is used. Changing this
@@ -119,14 +133,16 @@ type ProjectState struct {
 	// The domain this project belongs to.
 	DomainId pulumi.StringPtrInput
 	// Whether the project is enabled or disabled. Valid
-	// values are `true` and `false`.
+	// values are `true` and `false`. Default is `true`.
 	Enabled pulumi.BoolPtrInput
 	// Whether this project is a domain. Valid values
-	// are `true` and `false`.
+	// are `true` and `false`. Default is `false`. Changing this creates a new
+	// project/domain.
 	IsDomain pulumi.BoolPtrInput
 	// The name of the project.
 	Name pulumi.StringPtrInput
-	// The parent of this project.
+	// The parent of this project. Changing this creates
+	// a new project.
 	ParentId pulumi.StringPtrInput
 	// The region in which to obtain the V3 Keystone client.
 	// If omitted, the `region` argument of the provider is used. Changing this
@@ -147,14 +163,16 @@ type projectArgs struct {
 	// The domain this project belongs to.
 	DomainId *string `pulumi:"domainId"`
 	// Whether the project is enabled or disabled. Valid
-	// values are `true` and `false`.
+	// values are `true` and `false`. Default is `true`.
 	Enabled *bool `pulumi:"enabled"`
 	// Whether this project is a domain. Valid values
-	// are `true` and `false`.
+	// are `true` and `false`. Default is `false`. Changing this creates a new
+	// project/domain.
 	IsDomain *bool `pulumi:"isDomain"`
 	// The name of the project.
 	Name *string `pulumi:"name"`
-	// The parent of this project.
+	// The parent of this project. Changing this creates
+	// a new project.
 	ParentId *string `pulumi:"parentId"`
 	// The region in which to obtain the V3 Keystone client.
 	// If omitted, the `region` argument of the provider is used. Changing this
@@ -172,14 +190,16 @@ type ProjectArgs struct {
 	// The domain this project belongs to.
 	DomainId pulumi.StringPtrInput
 	// Whether the project is enabled or disabled. Valid
-	// values are `true` and `false`.
+	// values are `true` and `false`. Default is `true`.
 	Enabled pulumi.BoolPtrInput
 	// Whether this project is a domain. Valid values
-	// are `true` and `false`.
+	// are `true` and `false`. Default is `false`. Changing this creates a new
+	// project/domain.
 	IsDomain pulumi.BoolPtrInput
 	// The name of the project.
 	Name pulumi.StringPtrInput
-	// The parent of this project.
+	// The parent of this project. Changing this creates
+	// a new project.
 	ParentId pulumi.StringPtrInput
 	// The region in which to obtain the V3 Keystone client.
 	// If omitted, the `region` argument of the provider is used. Changing this
@@ -192,4 +212,43 @@ type ProjectArgs struct {
 
 func (ProjectArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectArgs)(nil)).Elem()
+}
+
+type ProjectInput interface {
+	pulumi.Input
+
+	ToProjectOutput() ProjectOutput
+	ToProjectOutputWithContext(ctx context.Context) ProjectOutput
+}
+
+func (Project) ElementType() reflect.Type {
+	return reflect.TypeOf((*Project)(nil)).Elem()
+}
+
+func (i Project) ToProjectOutput() ProjectOutput {
+	return i.ToProjectOutputWithContext(context.Background())
+}
+
+func (i Project) ToProjectOutputWithContext(ctx context.Context) ProjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectOutput)
+}
+
+type ProjectOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectOutput)(nil)).Elem()
+}
+
+func (o ProjectOutput) ToProjectOutput() ProjectOutput {
+	return o
+}
+
+func (o ProjectOutput) ToProjectOutputWithContext(ctx context.Context) ProjectOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ProjectOutput{})
 }

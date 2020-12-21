@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -54,6 +55,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// This resource can be imported by specifying all two arguments, separated by a forward slash
+//
+// ```sh
+//  $ pulumi import openstack:compute/flavorAccess:FlavorAccess access_1 <flavor_id>/<tenant_id>
+// ```
 type FlavorAccess struct {
 	pulumi.CustomResourceState
 
@@ -71,14 +80,15 @@ type FlavorAccess struct {
 // NewFlavorAccess registers a new resource with the given unique name, arguments, and options.
 func NewFlavorAccess(ctx *pulumi.Context,
 	name string, args *FlavorAccessArgs, opts ...pulumi.ResourceOption) (*FlavorAccess, error) {
-	if args == nil || args.FlavorId == nil {
-		return nil, errors.New("missing required argument 'FlavorId'")
-	}
-	if args == nil || args.TenantId == nil {
-		return nil, errors.New("missing required argument 'TenantId'")
-	}
 	if args == nil {
-		args = &FlavorAccessArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.FlavorId == nil {
+		return nil, errors.New("invalid value for required argument 'FlavorId'")
+	}
+	if args.TenantId == nil {
+		return nil, errors.New("invalid value for required argument 'TenantId'")
 	}
 	var resource FlavorAccess
 	err := ctx.RegisterResource("openstack:compute/flavorAccess:FlavorAccess", name, args, &resource, opts...)
@@ -156,4 +166,43 @@ type FlavorAccessArgs struct {
 
 func (FlavorAccessArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*flavorAccessArgs)(nil)).Elem()
+}
+
+type FlavorAccessInput interface {
+	pulumi.Input
+
+	ToFlavorAccessOutput() FlavorAccessOutput
+	ToFlavorAccessOutputWithContext(ctx context.Context) FlavorAccessOutput
+}
+
+func (FlavorAccess) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlavorAccess)(nil)).Elem()
+}
+
+func (i FlavorAccess) ToFlavorAccessOutput() FlavorAccessOutput {
+	return i.ToFlavorAccessOutputWithContext(context.Background())
+}
+
+func (i FlavorAccess) ToFlavorAccessOutputWithContext(ctx context.Context) FlavorAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlavorAccessOutput)
+}
+
+type FlavorAccessOutput struct {
+	*pulumi.OutputState
+}
+
+func (FlavorAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlavorAccessOutput)(nil)).Elem()
+}
+
+func (o FlavorAccessOutput) ToFlavorAccessOutput() FlavorAccessOutput {
+	return o
+}
+
+func (o FlavorAccessOutput) ToFlavorAccessOutputWithContext(ctx context.Context) FlavorAccessOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(FlavorAccessOutput{})
 }

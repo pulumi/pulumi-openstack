@@ -4,12 +4,20 @@
 package sharedfilesystem
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// This resource can be imported by specifying the ID of the share and the ID of the share access, separated by a slash, e.g.
+//
+// ```sh
+//  $ pulumi import openstack:sharedfilesystem/shareAccess:ShareAccess share_access_1 <share id>/<share access id>
+// ```
 type ShareAccess struct {
 	pulumi.CustomResourceState
 
@@ -35,20 +43,21 @@ type ShareAccess struct {
 // NewShareAccess registers a new resource with the given unique name, arguments, and options.
 func NewShareAccess(ctx *pulumi.Context,
 	name string, args *ShareAccessArgs, opts ...pulumi.ResourceOption) (*ShareAccess, error) {
-	if args == nil || args.AccessLevel == nil {
-		return nil, errors.New("missing required argument 'AccessLevel'")
-	}
-	if args == nil || args.AccessTo == nil {
-		return nil, errors.New("missing required argument 'AccessTo'")
-	}
-	if args == nil || args.AccessType == nil {
-		return nil, errors.New("missing required argument 'AccessType'")
-	}
-	if args == nil || args.ShareId == nil {
-		return nil, errors.New("missing required argument 'ShareId'")
-	}
 	if args == nil {
-		args = &ShareAccessArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AccessLevel == nil {
+		return nil, errors.New("invalid value for required argument 'AccessLevel'")
+	}
+	if args.AccessTo == nil {
+		return nil, errors.New("invalid value for required argument 'AccessTo'")
+	}
+	if args.AccessType == nil {
+		return nil, errors.New("invalid value for required argument 'AccessType'")
+	}
+	if args.ShareId == nil {
+		return nil, errors.New("invalid value for required argument 'ShareId'")
 	}
 	var resource ShareAccess
 	err := ctx.RegisterResource("openstack:sharedfilesystem/shareAccess:ShareAccess", name, args, &resource, opts...)
@@ -154,4 +163,43 @@ type ShareAccessArgs struct {
 
 func (ShareAccessArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*shareAccessArgs)(nil)).Elem()
+}
+
+type ShareAccessInput interface {
+	pulumi.Input
+
+	ToShareAccessOutput() ShareAccessOutput
+	ToShareAccessOutputWithContext(ctx context.Context) ShareAccessOutput
+}
+
+func (ShareAccess) ElementType() reflect.Type {
+	return reflect.TypeOf((*ShareAccess)(nil)).Elem()
+}
+
+func (i ShareAccess) ToShareAccessOutput() ShareAccessOutput {
+	return i.ToShareAccessOutputWithContext(context.Background())
+}
+
+func (i ShareAccess) ToShareAccessOutputWithContext(ctx context.Context) ShareAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShareAccessOutput)
+}
+
+type ShareAccessOutput struct {
+	*pulumi.OutputState
+}
+
+func (ShareAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ShareAccessOutput)(nil)).Elem()
+}
+
+func (o ShareAccessOutput) ToShareAccessOutput() ShareAccessOutput {
+	return o
+}
+
+func (o ShareAccessOutput) ToShareAccessOutputWithContext(ctx context.Context) ShareAccessOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ShareAccessOutput{})
 }

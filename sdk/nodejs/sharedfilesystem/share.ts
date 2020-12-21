@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -34,6 +33,14 @@ import * as utilities from "../utilities";
  *     shareProto: "NFS",
  *     size: 1,
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * This resource can be imported by specifying the ID of the share
+ *
+ * ```sh
+ *  $ pulumi import openstack:sharedfilesystem/share:Share share_1 <id>
  * ```
  */
 export class Share extends pulumi.CustomResource {
@@ -185,10 +192,10 @@ export class Share extends pulumi.CustomResource {
             inputs["snapshotId"] = state ? state.snapshotId : undefined;
         } else {
             const args = argsOrState as ShareArgs | undefined;
-            if (!args || args.shareProto === undefined) {
+            if ((!args || args.shareProto === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'shareProto'");
             }
-            if (!args || args.size === undefined) {
+            if ((!args || args.size === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'size'");
             }
             inputs["availabilityZone"] = args ? args.availabilityZone : undefined;

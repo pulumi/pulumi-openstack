@@ -4,6 +4,7 @@
 package identity
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -60,6 +61,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Users can be imported using the `id`, e.g.
+//
+// ```sh
+//  $ pulumi import openstack:identity/user:User user_1 89c60255-9bd6-460c-822a-e2b959ede9d2
+// ```
 type User struct {
 	pulumi.CustomResourceState
 
@@ -107,6 +116,7 @@ func NewUser(ctx *pulumi.Context,
 	if args == nil {
 		args = &UserArgs{}
 	}
+
 	var resource User
 	err := ctx.RegisterResource("openstack:identity/user:User", name, args, &resource, opts...)
 	if err != nil {
@@ -291,4 +301,43 @@ type UserArgs struct {
 
 func (UserArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*userArgs)(nil)).Elem()
+}
+
+type UserInput interface {
+	pulumi.Input
+
+	ToUserOutput() UserOutput
+	ToUserOutputWithContext(ctx context.Context) UserOutput
+}
+
+func (User) ElementType() reflect.Type {
+	return reflect.TypeOf((*User)(nil)).Elem()
+}
+
+func (i User) ToUserOutput() UserOutput {
+	return i.ToUserOutputWithContext(context.Background())
+}
+
+func (i User) ToUserOutputWithContext(ctx context.Context) UserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserOutput)
+}
+
+type UserOutput struct {
+	*pulumi.OutputState
+}
+
+func (UserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserOutput)(nil)).Elem()
+}
+
+func (o UserOutput) ToUserOutput() UserOutput {
+	return o
+}
+
+func (o UserOutput) ToUserOutputWithContext(ctx context.Context) UserOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(UserOutput{})
 }

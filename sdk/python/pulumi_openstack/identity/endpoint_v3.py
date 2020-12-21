@@ -42,6 +42,14 @@ class EndpointV3(pulumi.CustomResource):
             url="http://my-endpoint")
         ```
 
+        ## Import
+
+        Endpoints can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:identity/endpointV3:EndpointV3 endpoint_1 5392472b-106a-4845-90c6-7c8445f18770
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] endpoint_region: The endpoint region. The `region` and
@@ -71,16 +79,16 @@ class EndpointV3(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if endpoint_region is None:
+            if endpoint_region is None and not opts.urn:
                 raise TypeError("Missing required property 'endpoint_region'")
             __props__['endpoint_region'] = endpoint_region
             __props__['interface'] = interface
             __props__['name'] = name
             __props__['region'] = region
-            if service_id is None:
+            if service_id is None and not opts.urn:
                 raise TypeError("Missing required property 'service_id'")
             __props__['service_id'] = service_id
-            if url is None:
+            if url is None and not opts.urn:
                 raise TypeError("Missing required property 'url'")
             __props__['url'] = url
             __props__['service_name'] = None

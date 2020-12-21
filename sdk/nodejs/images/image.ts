@@ -37,6 +37,14 @@ import * as utilities from "../utilities";
  *
  * In addition, the `directUrl` property is also automatically reconciled if the
  * Image Service set it.
+ *
+ * ## Import
+ *
+ * Images can be imported using the `id`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import openstack:images/image:Image rancheros 89c60255-9bd6-460c-822a-e2b959ede9d2
+ * ```
  */
 export class Image extends pulumi.CustomResource {
     /**
@@ -233,10 +241,10 @@ export class Image extends pulumi.CustomResource {
             inputs["webDownload"] = state ? state.webDownload : undefined;
         } else {
             const args = argsOrState as ImageArgs | undefined;
-            if (!args || args.containerFormat === undefined) {
+            if ((!args || args.containerFormat === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'containerFormat'");
             }
-            if (!args || args.diskFormat === undefined) {
+            if ((!args || args.diskFormat === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'diskFormat'");
             }
             inputs["containerFormat"] = args ? args.containerFormat : undefined;

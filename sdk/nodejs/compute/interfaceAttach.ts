@@ -126,6 +126,14 @@ import * as utilities from "../utilities";
  *     portId: pulumi.all(ports.map(v => v.id)).apply(id => id.map(v => v)[1]),
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Interface Attachments can be imported using the Instance ID and Port ID separated by a slash, e.g.
+ *
+ * ```sh
+ *  $ pulumi import openstack:compute/interfaceAttach:InterfaceAttach ai_1 89c60255-9bd6-460c-822a-e2b959ede9d2/45670584-225f-46c3-b33e-6707b589b666
+ * ```
  */
 export class InterfaceAttach extends pulumi.CustomResource {
     /**
@@ -159,7 +167,7 @@ export class InterfaceAttach extends pulumi.CustomResource {
      * An IP address to assosciate with the port.
      * _NOTE_: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.
      */
-    public readonly fixedIp!: pulumi.Output<string | undefined>;
+    public readonly fixedIp!: pulumi.Output<string>;
     /**
      * The ID of the Instance to attach the Port or Network to.
      */
@@ -200,7 +208,7 @@ export class InterfaceAttach extends pulumi.CustomResource {
             inputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as InterfaceAttachArgs | undefined;
-            if (!args || args.instanceId === undefined) {
+            if ((!args || args.instanceId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'instanceId'");
             }
             inputs["fixedIp"] = args ? args.fixedIp : undefined;

@@ -39,6 +39,14 @@ class QosPolicy(pulumi.CustomResource):
         qos_policy1 = openstack.networking.QosPolicy("qosPolicy1", description="bw_limit")
         ```
 
+        ## Import
+
+        QoS Policies can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:networking/qosPolicy:QosPolicy qos_policy_1 d6ae28ce-fcb5-4180-aa62-d260a27e09ae
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The human-readable description for the QoS policy.

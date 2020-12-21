@@ -74,7 +74,7 @@ class RoleAssignment(pulumi.CustomResource):
             __props__['group_id'] = group_id
             __props__['project_id'] = project_id
             __props__['region'] = region
-            if role_id is None:
+            if role_id is None and not opts.urn:
                 raise TypeError("Missing required property 'role_id'")
             __props__['role_id'] = role_id
             __props__['user_id'] = user_id

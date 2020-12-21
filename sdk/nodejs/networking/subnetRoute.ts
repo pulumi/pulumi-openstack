@@ -30,6 +30,14 @@ import * as utilities from "../utilities";
  *     subnetId: subnet1.id,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Routing entries can be imported using a combined ID using the following format``<subnet_id>-route-<destination_cidr>-<next_hop>``
+ *
+ * ```sh
+ *  $ pulumi import openstack:networking/subnetRoute:SubnetRoute subnet_route_1 686fe248-386c-4f70-9f6c-281607dad079-route-10.0.1.0/24-192.168.199.25
+ * ```
  */
 export class SubnetRoute extends pulumi.CustomResource {
     /**
@@ -100,13 +108,13 @@ export class SubnetRoute extends pulumi.CustomResource {
             inputs["subnetId"] = state ? state.subnetId : undefined;
         } else {
             const args = argsOrState as SubnetRouteArgs | undefined;
-            if (!args || args.destinationCidr === undefined) {
+            if ((!args || args.destinationCidr === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'destinationCidr'");
             }
-            if (!args || args.nextHop === undefined) {
+            if ((!args || args.nextHop === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'nextHop'");
             }
-            if (!args || args.subnetId === undefined) {
+            if ((!args || args.subnetId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'subnetId'");
             }
             inputs["destinationCidr"] = args ? args.destinationCidr : undefined;

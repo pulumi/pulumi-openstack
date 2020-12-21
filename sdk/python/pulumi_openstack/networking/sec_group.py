@@ -25,7 +25,14 @@ class SecGroup(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a SecGroup resource with the given unique name, props, and options.
+        ## Import
+
+        Security Groups can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:networking/secGroup:SecGroup secgroup_1 38809219-5e8a-4852-9139-6f461c90e8bc
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] delete_default_rules: Whether or not to delete the default

@@ -4,6 +4,7 @@
 package containerinfra
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -208,6 +209,14 @@ import (
 // * `serverType` - See Argument Reference above.
 // * `tlsDisabled` - See Argument Reference above.
 // * `volumeDriver` - See Argument Reference above.
+//
+// ## Import
+//
+// Cluster templates can be imported using the `id`, e.g.
+//
+// ```sh
+//  $ pulumi import openstack:containerinfra/clusterTemplate:ClusterTemplate clustertemplate_1 b9a45c5c-cd03-4958-82aa-b80bf93cb922
+// ```
 type ClusterTemplate struct {
 	pulumi.CustomResourceState
 
@@ -248,14 +257,15 @@ type ClusterTemplate struct {
 // NewClusterTemplate registers a new resource with the given unique name, arguments, and options.
 func NewClusterTemplate(ctx *pulumi.Context,
 	name string, args *ClusterTemplateArgs, opts ...pulumi.ResourceOption) (*ClusterTemplate, error) {
-	if args == nil || args.Coe == nil {
-		return nil, errors.New("missing required argument 'Coe'")
-	}
-	if args == nil || args.Image == nil {
-		return nil, errors.New("missing required argument 'Image'")
-	}
 	if args == nil {
-		args = &ClusterTemplateArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Coe == nil {
+		return nil, errors.New("invalid value for required argument 'Coe'")
+	}
+	if args.Image == nil {
+		return nil, errors.New("invalid value for required argument 'Image'")
 	}
 	var resource ClusterTemplate
 	err := ctx.RegisterResource("openstack:containerinfra/clusterTemplate:ClusterTemplate", name, args, &resource, opts...)
@@ -417,4 +427,43 @@ type ClusterTemplateArgs struct {
 
 func (ClusterTemplateArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*clusterTemplateArgs)(nil)).Elem()
+}
+
+type ClusterTemplateInput interface {
+	pulumi.Input
+
+	ToClusterTemplateOutput() ClusterTemplateOutput
+	ToClusterTemplateOutputWithContext(ctx context.Context) ClusterTemplateOutput
+}
+
+func (ClusterTemplate) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterTemplate)(nil)).Elem()
+}
+
+func (i ClusterTemplate) ToClusterTemplateOutput() ClusterTemplateOutput {
+	return i.ToClusterTemplateOutputWithContext(context.Background())
+}
+
+func (i ClusterTemplate) ToClusterTemplateOutputWithContext(ctx context.Context) ClusterTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTemplateOutput)
+}
+
+type ClusterTemplateOutput struct {
+	*pulumi.OutputState
+}
+
+func (ClusterTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterTemplateOutput)(nil)).Elem()
+}
+
+func (o ClusterTemplateOutput) ToClusterTemplateOutput() ClusterTemplateOutput {
+	return o
+}
+
+func (o ClusterTemplateOutput) ToClusterTemplateOutputWithContext(ctx context.Context) ClusterTemplateOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ClusterTemplateOutput{})
 }

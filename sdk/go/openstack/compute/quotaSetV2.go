@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -52,6 +53,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Quotasets can be imported using the `project_id`, e.g.
+//
+// ```sh
+//  $ pulumi import openstack:compute/quotaSetV2:QuotaSetV2 quotaset_1 2a0f2240-c5e6-41de-896d-e80d97428d6b
 // ```
 type QuotaSetV2 struct {
 	pulumi.CustomResourceState
@@ -110,11 +119,12 @@ type QuotaSetV2 struct {
 // NewQuotaSetV2 registers a new resource with the given unique name, arguments, and options.
 func NewQuotaSetV2(ctx *pulumi.Context,
 	name string, args *QuotaSetV2Args, opts ...pulumi.ResourceOption) (*QuotaSetV2, error) {
-	if args == nil || args.ProjectId == nil {
-		return nil, errors.New("missing required argument 'ProjectId'")
-	}
 	if args == nil {
-		args = &QuotaSetV2Args{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ProjectId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectId'")
 	}
 	var resource QuotaSetV2
 	err := ctx.RegisterResource("openstack:compute/quotaSetV2:QuotaSetV2", name, args, &resource, opts...)
@@ -352,4 +362,43 @@ type QuotaSetV2Args struct {
 
 func (QuotaSetV2Args) ElementType() reflect.Type {
 	return reflect.TypeOf((*quotaSetV2Args)(nil)).Elem()
+}
+
+type QuotaSetV2Input interface {
+	pulumi.Input
+
+	ToQuotaSetV2Output() QuotaSetV2Output
+	ToQuotaSetV2OutputWithContext(ctx context.Context) QuotaSetV2Output
+}
+
+func (QuotaSetV2) ElementType() reflect.Type {
+	return reflect.TypeOf((*QuotaSetV2)(nil)).Elem()
+}
+
+func (i QuotaSetV2) ToQuotaSetV2Output() QuotaSetV2Output {
+	return i.ToQuotaSetV2OutputWithContext(context.Background())
+}
+
+func (i QuotaSetV2) ToQuotaSetV2OutputWithContext(ctx context.Context) QuotaSetV2Output {
+	return pulumi.ToOutputWithContext(ctx, i).(QuotaSetV2Output)
+}
+
+type QuotaSetV2Output struct {
+	*pulumi.OutputState
+}
+
+func (QuotaSetV2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*QuotaSetV2Output)(nil)).Elem()
+}
+
+func (o QuotaSetV2Output) ToQuotaSetV2Output() QuotaSetV2Output {
+	return o
+}
+
+func (o QuotaSetV2Output) ToQuotaSetV2OutputWithContext(ctx context.Context) QuotaSetV2Output {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(QuotaSetV2Output{})
 }

@@ -4,6 +4,7 @@
 package vpnaas
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -30,6 +31,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Policies can be imported using the `id`, e.g.
+//
+// ```sh
+//  $ pulumi import openstack:vpnaas/ipSecPolicy:IpSecPolicy policy_1 832cb7f3-59fe-40cf-8f64-8350ffc03272
 // ```
 type IpSecPolicy struct {
 	pulumi.CustomResourceState
@@ -75,6 +84,7 @@ func NewIpSecPolicy(ctx *pulumi.Context,
 	if args == nil {
 		args = &IpSecPolicyArgs{}
 	}
+
 	var resource IpSecPolicy
 	err := ctx.RegisterResource("openstack:vpnaas/ipSecPolicy:IpSecPolicy", name, args, &resource, opts...)
 	if err != nil {
@@ -247,4 +257,43 @@ type IpSecPolicyArgs struct {
 
 func (IpSecPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*ipSecPolicyArgs)(nil)).Elem()
+}
+
+type IpSecPolicyInput interface {
+	pulumi.Input
+
+	ToIpSecPolicyOutput() IpSecPolicyOutput
+	ToIpSecPolicyOutputWithContext(ctx context.Context) IpSecPolicyOutput
+}
+
+func (IpSecPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpSecPolicy)(nil)).Elem()
+}
+
+func (i IpSecPolicy) ToIpSecPolicyOutput() IpSecPolicyOutput {
+	return i.ToIpSecPolicyOutputWithContext(context.Background())
+}
+
+func (i IpSecPolicy) ToIpSecPolicyOutputWithContext(ctx context.Context) IpSecPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpSecPolicyOutput)
+}
+
+type IpSecPolicyOutput struct {
+	*pulumi.OutputState
+}
+
+func (IpSecPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpSecPolicyOutput)(nil)).Elem()
+}
+
+func (o IpSecPolicyOutput) ToIpSecPolicyOutput() IpSecPolicyOutput {
+	return o
+}
+
+func (o IpSecPolicyOutput) ToIpSecPolicyOutputWithContext(ctx context.Context) IpSecPolicyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(IpSecPolicyOutput{})
 }

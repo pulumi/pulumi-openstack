@@ -4,14 +4,14 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Associate a floating IP to an instance. This can be used instead of the
-// `floatingIp` options in `compute.Instance`.
+// Associate a floating IP to an instance.
 //
 // ## Example Usage
 // ### Automatically detect the correct network
@@ -107,6 +107,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// This resource can be imported by specifying all three arguments, separated by a forward slash
+//
+// ```sh
+//  $ pulumi import openstack:compute/floatingIpAssociate:FloatingIpAssociate fip_1 <floating_ip>/<instance_id>/<fixed_ip>
+// ```
 type FloatingIpAssociate struct {
 	pulumi.CustomResourceState
 
@@ -127,14 +135,15 @@ type FloatingIpAssociate struct {
 // NewFloatingIpAssociate registers a new resource with the given unique name, arguments, and options.
 func NewFloatingIpAssociate(ctx *pulumi.Context,
 	name string, args *FloatingIpAssociateArgs, opts ...pulumi.ResourceOption) (*FloatingIpAssociate, error) {
-	if args == nil || args.FloatingIp == nil {
-		return nil, errors.New("missing required argument 'FloatingIp'")
-	}
-	if args == nil || args.InstanceId == nil {
-		return nil, errors.New("missing required argument 'InstanceId'")
-	}
 	if args == nil {
-		args = &FloatingIpAssociateArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.FloatingIp == nil {
+		return nil, errors.New("invalid value for required argument 'FloatingIp'")
+	}
+	if args.InstanceId == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
 	var resource FloatingIpAssociate
 	err := ctx.RegisterResource("openstack:compute/floatingIpAssociate:FloatingIpAssociate", name, args, &resource, opts...)
@@ -224,4 +233,43 @@ type FloatingIpAssociateArgs struct {
 
 func (FloatingIpAssociateArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*floatingIpAssociateArgs)(nil)).Elem()
+}
+
+type FloatingIpAssociateInput interface {
+	pulumi.Input
+
+	ToFloatingIpAssociateOutput() FloatingIpAssociateOutput
+	ToFloatingIpAssociateOutputWithContext(ctx context.Context) FloatingIpAssociateOutput
+}
+
+func (FloatingIpAssociate) ElementType() reflect.Type {
+	return reflect.TypeOf((*FloatingIpAssociate)(nil)).Elem()
+}
+
+func (i FloatingIpAssociate) ToFloatingIpAssociateOutput() FloatingIpAssociateOutput {
+	return i.ToFloatingIpAssociateOutputWithContext(context.Background())
+}
+
+func (i FloatingIpAssociate) ToFloatingIpAssociateOutputWithContext(ctx context.Context) FloatingIpAssociateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FloatingIpAssociateOutput)
+}
+
+type FloatingIpAssociateOutput struct {
+	*pulumi.OutputState
+}
+
+func (FloatingIpAssociateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FloatingIpAssociateOutput)(nil)).Elem()
+}
+
+func (o FloatingIpAssociateOutput) ToFloatingIpAssociateOutput() FloatingIpAssociateOutput {
+	return o
+}
+
+func (o FloatingIpAssociateOutput) ToFloatingIpAssociateOutputWithContext(ctx context.Context) FloatingIpAssociateOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(FloatingIpAssociateOutput{})
 }

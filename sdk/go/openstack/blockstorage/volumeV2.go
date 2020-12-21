@@ -4,6 +4,7 @@
 package blockstorage
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -35,6 +36,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Volumes can be imported using the `id`, e.g.
+//
+// ```sh
+//  $ pulumi import openstack:blockstorage/volumeV2:VolumeV2 volume_1 ea257959-eeb1-4c10-8d33-26f0409a755d
 // ```
 type VolumeV2 struct {
 	pulumi.CustomResourceState
@@ -87,11 +96,12 @@ type VolumeV2 struct {
 // NewVolumeV2 registers a new resource with the given unique name, arguments, and options.
 func NewVolumeV2(ctx *pulumi.Context,
 	name string, args *VolumeV2Args, opts ...pulumi.ResourceOption) (*VolumeV2, error) {
-	if args == nil || args.Size == nil {
-		return nil, errors.New("missing required argument 'Size'")
-	}
 	if args == nil {
-		args = &VolumeV2Args{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Size == nil {
+		return nil, errors.New("invalid value for required argument 'Size'")
 	}
 	var resource VolumeV2
 	err := ctx.RegisterResource("openstack:blockstorage/volumeV2:VolumeV2", name, args, &resource, opts...)
@@ -297,4 +307,43 @@ type VolumeV2Args struct {
 
 func (VolumeV2Args) ElementType() reflect.Type {
 	return reflect.TypeOf((*volumeV2Args)(nil)).Elem()
+}
+
+type VolumeV2Input interface {
+	pulumi.Input
+
+	ToVolumeV2Output() VolumeV2Output
+	ToVolumeV2OutputWithContext(ctx context.Context) VolumeV2Output
+}
+
+func (VolumeV2) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeV2)(nil)).Elem()
+}
+
+func (i VolumeV2) ToVolumeV2Output() VolumeV2Output {
+	return i.ToVolumeV2OutputWithContext(context.Background())
+}
+
+func (i VolumeV2) ToVolumeV2OutputWithContext(ctx context.Context) VolumeV2Output {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeV2Output)
+}
+
+type VolumeV2Output struct {
+	*pulumi.OutputState
+}
+
+func (VolumeV2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeV2Output)(nil)).Elem()
+}
+
+func (o VolumeV2Output) ToVolumeV2Output() VolumeV2Output {
+	return o
+}
+
+func (o VolumeV2Output) ToVolumeV2OutputWithContext(ctx context.Context) VolumeV2Output {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(VolumeV2Output{})
 }

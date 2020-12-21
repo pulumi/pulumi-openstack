@@ -33,6 +33,14 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Floating IPs can be imported using the `id`, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import openstack:networking/floatingIp:FloatingIp floatip_1 2c7f39f3-702b-48d1-940c-b50384177ee1
+    /// ```
     /// </summary>
     public partial class FloatingIp : Pulumi.CustomResource
     {

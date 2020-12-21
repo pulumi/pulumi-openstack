@@ -40,6 +40,14 @@ class MemberV1(pulumi.CustomResource):
             port=80)
         ```
 
+        ## Import
+
+        Load Balancer Members can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:loadbalancer/memberV1:MemberV1 member_1 a7498676-4fe4-4243-a864-2eaaf18c73df
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address: The IP address of the member. Changing this creates a
@@ -75,14 +83,14 @@ class MemberV1(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if address is None:
+            if address is None and not opts.urn:
                 raise TypeError("Missing required property 'address'")
             __props__['address'] = address
             __props__['admin_state_up'] = admin_state_up
-            if pool_id is None:
+            if pool_id is None and not opts.urn:
                 raise TypeError("Missing required property 'pool_id'")
             __props__['pool_id'] = pool_id
-            if port is None:
+            if port is None and not opts.urn:
                 raise TypeError("Missing required property 'port'")
             __props__['port'] = port
             __props__['region'] = region

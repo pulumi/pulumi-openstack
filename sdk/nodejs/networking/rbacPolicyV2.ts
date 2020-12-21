@@ -35,6 +35,14 @@ import * as utilities from "../utilities";
  *     targetTenant: "20415a973c9e45d3917f078950644697",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * RBAC policies can be imported using the `id`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import openstack:networking/rbacPolicyV2:RbacPolicyV2 rbac_policy_1 eae26a3e-1c33-4cc1-9c31-0cd729c438a1
+ * ```
  */
 export class RbacPolicyV2 extends pulumi.CustomResource {
     /**
@@ -114,16 +122,16 @@ export class RbacPolicyV2 extends pulumi.CustomResource {
             inputs["targetTenant"] = state ? state.targetTenant : undefined;
         } else {
             const args = argsOrState as RbacPolicyV2Args | undefined;
-            if (!args || args.action === undefined) {
+            if ((!args || args.action === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'action'");
             }
-            if (!args || args.objectId === undefined) {
+            if ((!args || args.objectId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'objectId'");
             }
-            if (!args || args.objectType === undefined) {
+            if ((!args || args.objectType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'objectType'");
             }
-            if (!args || args.targetTenant === undefined) {
+            if ((!args || args.targetTenant === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'targetTenant'");
             }
             inputs["action"] = args ? args.action : undefined;

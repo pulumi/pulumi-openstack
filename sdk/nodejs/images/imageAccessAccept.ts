@@ -26,6 +26,14 @@ import * as utilities from "../utilities";
  *     status: "accepted",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Image access acceptance status can be imported using the `image_id`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import openstack:images/imageAccessAccept:ImageAccessAccept openstack_images_image_access_accept_v2 89c60255-9bd6-460c-822a-e2b959ede9d2
+ * ```
  */
 export class ImageAccessAccept extends pulumi.CustomResource {
     /**
@@ -110,10 +118,10 @@ export class ImageAccessAccept extends pulumi.CustomResource {
             inputs["updatedAt"] = state ? state.updatedAt : undefined;
         } else {
             const args = argsOrState as ImageAccessAcceptArgs | undefined;
-            if (!args || args.imageId === undefined) {
+            if ((!args || args.imageId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'imageId'");
             }
-            if (!args || args.status === undefined) {
+            if ((!args || args.status === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'status'");
             }
             inputs["imageId"] = args ? args.imageId : undefined;

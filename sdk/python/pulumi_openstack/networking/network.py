@@ -73,6 +73,14 @@ class Network(pulumi.CustomResource):
             security_groups=[secgroup1.name])
         ```
 
+        ## Import
+
+        Networks can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:networking/network:Network network_1 d90ce693-5ccf-4136-a0ed-152ce412b6b9
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] admin_state_up: The administrative state of the network.

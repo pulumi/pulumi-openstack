@@ -45,6 +45,14 @@ class MonitorV1(pulumi.CustomResource):
             type="PING")
         ```
 
+        ## Import
+
+        Load Balancer Members can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:loadbalancer/monitorV1:MonitorV1 monitor_1 119d7530-72e9-449a-aa97-124a5ef1992c
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] admin_state_up: The administrative state of the monitor.
@@ -96,20 +104,20 @@ class MonitorV1(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['admin_state_up'] = admin_state_up
-            if delay is None:
+            if delay is None and not opts.urn:
                 raise TypeError("Missing required property 'delay'")
             __props__['delay'] = delay
             __props__['expected_codes'] = expected_codes
             __props__['http_method'] = http_method
-            if max_retries is None:
+            if max_retries is None and not opts.urn:
                 raise TypeError("Missing required property 'max_retries'")
             __props__['max_retries'] = max_retries
             __props__['region'] = region
             __props__['tenant_id'] = tenant_id
-            if timeout is None:
+            if timeout is None and not opts.urn:
                 raise TypeError("Missing required property 'timeout'")
             __props__['timeout'] = timeout
-            if type is None:
+            if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__['type'] = type
             __props__['url_path'] = url_path

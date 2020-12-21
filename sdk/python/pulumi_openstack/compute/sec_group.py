@@ -83,6 +83,14 @@ class SecGroup(pulumi.CustomResource):
             security_groups=[openstack_compute_secgroup_v2["secgroup_1"]["name"]])
         ```
 
+        ## Import
+
+        Security Groups can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:compute/secGroup:SecGroup my_secgroup 1bc30ee9-9d5b-4c30-bdd5-7f1e663f5edf
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description for the security group. Changing this
@@ -115,7 +123,7 @@ class SecGroup(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if description is None:
+            if description is None and not opts.urn:
                 raise TypeError("Missing required property 'description'")
             __props__['description'] = description
             __props__['name'] = name

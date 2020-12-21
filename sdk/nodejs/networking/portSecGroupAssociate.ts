@@ -79,10 +79,10 @@ export class PortSecGroupAssociate extends pulumi.CustomResource {
             inputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
         } else {
             const args = argsOrState as PortSecGroupAssociateArgs | undefined;
-            if (!args || args.portId === undefined) {
+            if ((!args || args.portId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'portId'");
             }
-            if (!args || args.securityGroupIds === undefined) {
+            if ((!args || args.securityGroupIds === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'securityGroupIds'");
             }
             inputs["enforce"] = args ? args.enforce : undefined;

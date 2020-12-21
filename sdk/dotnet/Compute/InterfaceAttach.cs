@@ -110,6 +110,14 @@ namespace Pulumi.OpenStack.Compute
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Interface Attachments can be imported using the Instance ID and Port ID separated by a slash, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import openstack:compute/interfaceAttach:InterfaceAttach ai_1 89c60255-9bd6-460c-822a-e2b959ede9d2/45670584-225f-46c3-b33e-6707b589b666
+    /// ```
     /// </summary>
     public partial class InterfaceAttach : Pulumi.CustomResource
     {
@@ -118,7 +126,7 @@ namespace Pulumi.OpenStack.Compute
         /// _NOTE_: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.
         /// </summary>
         [Output("fixedIp")]
-        public Output<string?> FixedIp { get; private set; } = null!;
+        public Output<string> FixedIp { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the Instance to attach the Port or Network to.

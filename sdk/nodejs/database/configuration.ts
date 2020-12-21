@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -99,10 +98,10 @@ export class Configuration extends pulumi.CustomResource {
             inputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as ConfigurationArgs | undefined;
-            if (!args || args.datastore === undefined) {
+            if ((!args || args.datastore === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'datastore'");
             }
-            if (!args || args.description === undefined) {
+            if ((!args || args.description === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'description'");
             }
             inputs["configurations"] = args ? args.configurations : undefined;

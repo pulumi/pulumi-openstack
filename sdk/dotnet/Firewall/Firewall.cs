@@ -54,6 +54,14 @@ namespace Pulumi.OpenStack.Firewall
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Firewalls can be imported using the `id`, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import openstack:firewall/firewall:Firewall firewall_1 c9e39fb2-ce20-46c8-a964-25f3898c7a97
+    /// ```
     /// </summary>
     public partial class Firewall : Pulumi.CustomResource
     {

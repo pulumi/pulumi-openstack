@@ -4,6 +4,7 @@
 package loadbalancer
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -37,6 +38,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Load Balancer Members can be imported using the `id`, e.g.
+//
+// ```sh
+//  $ pulumi import openstack:loadbalancer/monitorV1:MonitorV1 monitor_1 119d7530-72e9-449a-aa97-124a5ef1992c
 // ```
 type MonitorV1 struct {
 	pulumi.CustomResourceState
@@ -86,20 +95,21 @@ type MonitorV1 struct {
 // NewMonitorV1 registers a new resource with the given unique name, arguments, and options.
 func NewMonitorV1(ctx *pulumi.Context,
 	name string, args *MonitorV1Args, opts ...pulumi.ResourceOption) (*MonitorV1, error) {
-	if args == nil || args.Delay == nil {
-		return nil, errors.New("missing required argument 'Delay'")
-	}
-	if args == nil || args.MaxRetries == nil {
-		return nil, errors.New("missing required argument 'MaxRetries'")
-	}
-	if args == nil || args.Timeout == nil {
-		return nil, errors.New("missing required argument 'Timeout'")
-	}
-	if args == nil || args.Type == nil {
-		return nil, errors.New("missing required argument 'Type'")
-	}
 	if args == nil {
-		args = &MonitorV1Args{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Delay == nil {
+		return nil, errors.New("invalid value for required argument 'Delay'")
+	}
+	if args.MaxRetries == nil {
+		return nil, errors.New("invalid value for required argument 'MaxRetries'")
+	}
+	if args.Timeout == nil {
+		return nil, errors.New("invalid value for required argument 'Timeout'")
+	}
+	if args.Type == nil {
+		return nil, errors.New("invalid value for required argument 'Type'")
 	}
 	var resource MonitorV1
 	err := ctx.RegisterResource("openstack:loadbalancer/monitorV1:MonitorV1", name, args, &resource, opts...)
@@ -301,4 +311,43 @@ type MonitorV1Args struct {
 
 func (MonitorV1Args) ElementType() reflect.Type {
 	return reflect.TypeOf((*monitorV1Args)(nil)).Elem()
+}
+
+type MonitorV1Input interface {
+	pulumi.Input
+
+	ToMonitorV1Output() MonitorV1Output
+	ToMonitorV1OutputWithContext(ctx context.Context) MonitorV1Output
+}
+
+func (MonitorV1) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitorV1)(nil)).Elem()
+}
+
+func (i MonitorV1) ToMonitorV1Output() MonitorV1Output {
+	return i.ToMonitorV1OutputWithContext(context.Background())
+}
+
+func (i MonitorV1) ToMonitorV1OutputWithContext(ctx context.Context) MonitorV1Output {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorV1Output)
+}
+
+type MonitorV1Output struct {
+	*pulumi.OutputState
+}
+
+func (MonitorV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitorV1Output)(nil)).Elem()
+}
+
+func (o MonitorV1Output) ToMonitorV1Output() MonitorV1Output {
+	return o
+}
+
+func (o MonitorV1Output) ToMonitorV1OutputWithContext(ctx context.Context) MonitorV1Output {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(MonitorV1Output{})
 }

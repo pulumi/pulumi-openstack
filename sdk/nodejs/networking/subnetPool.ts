@@ -40,6 +40,14 @@ import * as utilities from "../utilities";
  *     subnetpoolId: subnetpool1.id,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Subnetpools can be imported using the `id`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import openstack:networking/subnetPool:SubnetPool subnetpool_1 832cb7f3-59fe-40cf-8f64-8350ffc03272
+ * ```
  */
 export class SubnetPool extends pulumi.CustomResource {
     /**
@@ -206,7 +214,7 @@ export class SubnetPool extends pulumi.CustomResource {
             inputs["valueSpecs"] = state ? state.valueSpecs : undefined;
         } else {
             const args = argsOrState as SubnetPoolArgs | undefined;
-            if (!args || args.prefixes === undefined) {
+            if ((!args || args.prefixes === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'prefixes'");
             }
             inputs["addressScopeId"] = args ? args.addressScopeId : undefined;

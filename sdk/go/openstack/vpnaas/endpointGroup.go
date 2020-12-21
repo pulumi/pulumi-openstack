@@ -4,6 +4,7 @@
 package vpnaas
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -36,6 +37,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Groups can be imported using the `id`, e.g.
+//
+// ```sh
+//  $ pulumi import openstack:vpnaas/endpointGroup:EndpointGroup group_1 832cb7f3-59fe-40cf-8f64-8350ffc03272
 // ```
 type EndpointGroup struct {
 	pulumi.CustomResourceState
@@ -70,6 +79,7 @@ func NewEndpointGroup(ctx *pulumi.Context,
 	if args == nil {
 		args = &EndpointGroupArgs{}
 	}
+
 	var resource EndpointGroup
 	err := ctx.RegisterResource("openstack:vpnaas/endpointGroup:EndpointGroup", name, args, &resource, opts...)
 	if err != nil {
@@ -198,4 +208,43 @@ type EndpointGroupArgs struct {
 
 func (EndpointGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*endpointGroupArgs)(nil)).Elem()
+}
+
+type EndpointGroupInput interface {
+	pulumi.Input
+
+	ToEndpointGroupOutput() EndpointGroupOutput
+	ToEndpointGroupOutputWithContext(ctx context.Context) EndpointGroupOutput
+}
+
+func (EndpointGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointGroup)(nil)).Elem()
+}
+
+func (i EndpointGroup) ToEndpointGroupOutput() EndpointGroupOutput {
+	return i.ToEndpointGroupOutputWithContext(context.Background())
+}
+
+func (i EndpointGroup) ToEndpointGroupOutputWithContext(ctx context.Context) EndpointGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointGroupOutput)
+}
+
+type EndpointGroupOutput struct {
+	*pulumi.OutputState
+}
+
+func (EndpointGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointGroupOutput)(nil)).Elem()
+}
+
+func (o EndpointGroupOutput) ToEndpointGroupOutput() EndpointGroupOutput {
+	return o
+}
+
+func (o EndpointGroupOutput) ToEndpointGroupOutputWithContext(ctx context.Context) EndpointGroupOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(EndpointGroupOutput{})
 }

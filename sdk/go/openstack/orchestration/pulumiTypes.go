@@ -10,116 +10,116 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-type StackV1Output struct {
+type StackV1StackOutput struct {
 	// The description of the stack resource.
 	Description *string `pulumi:"description"`
 	OutputKey   string  `pulumi:"outputKey"`
 	OutputValue string  `pulumi:"outputValue"`
 }
 
-// StackV1OutputInput is an input type that accepts StackV1OutputArgs and StackV1OutputOutput values.
-// You can construct a concrete instance of `StackV1OutputInput` via:
+// StackV1StackOutputInput is an input type that accepts StackV1StackOutputArgs and StackV1StackOutputOutput values.
+// You can construct a concrete instance of `StackV1StackOutputInput` via:
 //
-//          StackV1OutputArgs{...}
-type StackV1OutputInput interface {
+//          StackV1StackOutputArgs{...}
+type StackV1StackOutputInput interface {
 	pulumi.Input
 
-	ToStackV1OutputOutput() StackV1OutputOutput
-	ToStackV1OutputOutputWithContext(context.Context) StackV1OutputOutput
+	ToStackV1StackOutputOutput() StackV1StackOutputOutput
+	ToStackV1StackOutputOutputWithContext(context.Context) StackV1StackOutputOutput
 }
 
-type StackV1OutputArgs struct {
+type StackV1StackOutputArgs struct {
 	// The description of the stack resource.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	OutputKey   pulumi.StringInput    `pulumi:"outputKey"`
 	OutputValue pulumi.StringInput    `pulumi:"outputValue"`
 }
 
-func (StackV1OutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*StackV1Output)(nil)).Elem()
+func (StackV1StackOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StackV1StackOutput)(nil)).Elem()
 }
 
-func (i StackV1OutputArgs) ToStackV1OutputOutput() StackV1OutputOutput {
-	return i.ToStackV1OutputOutputWithContext(context.Background())
+func (i StackV1StackOutputArgs) ToStackV1StackOutputOutput() StackV1StackOutputOutput {
+	return i.ToStackV1StackOutputOutputWithContext(context.Background())
 }
 
-func (i StackV1OutputArgs) ToStackV1OutputOutputWithContext(ctx context.Context) StackV1OutputOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StackV1OutputOutput)
+func (i StackV1StackOutputArgs) ToStackV1StackOutputOutputWithContext(ctx context.Context) StackV1StackOutputOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StackV1StackOutputOutput)
 }
 
-// StackV1OutputArrayInput is an input type that accepts StackV1OutputArray and StackV1OutputArrayOutput values.
-// You can construct a concrete instance of `StackV1OutputArrayInput` via:
+// StackV1StackOutputArrayInput is an input type that accepts StackV1StackOutputArray and StackV1StackOutputArrayOutput values.
+// You can construct a concrete instance of `StackV1StackOutputArrayInput` via:
 //
-//          StackV1OutputArray{ StackV1OutputArgs{...} }
-type StackV1OutputArrayInput interface {
+//          StackV1StackOutputArray{ StackV1StackOutputArgs{...} }
+type StackV1StackOutputArrayInput interface {
 	pulumi.Input
 
-	ToStackV1OutputArrayOutput() StackV1OutputArrayOutput
-	ToStackV1OutputArrayOutputWithContext(context.Context) StackV1OutputArrayOutput
+	ToStackV1StackOutputArrayOutput() StackV1StackOutputArrayOutput
+	ToStackV1StackOutputArrayOutputWithContext(context.Context) StackV1StackOutputArrayOutput
 }
 
-type StackV1OutputArray []StackV1OutputInput
+type StackV1StackOutputArray []StackV1StackOutputInput
 
-func (StackV1OutputArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]StackV1Output)(nil)).Elem()
+func (StackV1StackOutputArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StackV1StackOutput)(nil)).Elem()
 }
 
-func (i StackV1OutputArray) ToStackV1OutputArrayOutput() StackV1OutputArrayOutput {
-	return i.ToStackV1OutputArrayOutputWithContext(context.Background())
+func (i StackV1StackOutputArray) ToStackV1StackOutputArrayOutput() StackV1StackOutputArrayOutput {
+	return i.ToStackV1StackOutputArrayOutputWithContext(context.Background())
 }
 
-func (i StackV1OutputArray) ToStackV1OutputArrayOutputWithContext(ctx context.Context) StackV1OutputArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StackV1OutputArrayOutput)
+func (i StackV1StackOutputArray) ToStackV1StackOutputArrayOutputWithContext(ctx context.Context) StackV1StackOutputArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StackV1StackOutputArrayOutput)
 }
 
-type StackV1OutputOutput struct{ *pulumi.OutputState }
+type StackV1StackOutputOutput struct{ *pulumi.OutputState }
 
-func (StackV1OutputOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*StackV1Output)(nil)).Elem()
+func (StackV1StackOutputOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StackV1StackOutput)(nil)).Elem()
 }
 
-func (o StackV1OutputOutput) ToStackV1OutputOutput() StackV1OutputOutput {
+func (o StackV1StackOutputOutput) ToStackV1StackOutputOutput() StackV1StackOutputOutput {
 	return o
 }
 
-func (o StackV1OutputOutput) ToStackV1OutputOutputWithContext(ctx context.Context) StackV1OutputOutput {
+func (o StackV1StackOutputOutput) ToStackV1StackOutputOutputWithContext(ctx context.Context) StackV1StackOutputOutput {
 	return o
 }
 
 // The description of the stack resource.
-func (o StackV1OutputOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v StackV1Output) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o StackV1StackOutputOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StackV1StackOutput) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-func (o StackV1OutputOutput) OutputKey() pulumi.StringOutput {
-	return o.ApplyT(func(v StackV1Output) string { return v.OutputKey }).(pulumi.StringOutput)
+func (o StackV1StackOutputOutput) OutputKey() pulumi.StringOutput {
+	return o.ApplyT(func(v StackV1StackOutput) string { return v.OutputKey }).(pulumi.StringOutput)
 }
 
-func (o StackV1OutputOutput) OutputValue() pulumi.StringOutput {
-	return o.ApplyT(func(v StackV1Output) string { return v.OutputValue }).(pulumi.StringOutput)
+func (o StackV1StackOutputOutput) OutputValue() pulumi.StringOutput {
+	return o.ApplyT(func(v StackV1StackOutput) string { return v.OutputValue }).(pulumi.StringOutput)
 }
 
-type StackV1OutputArrayOutput struct{ *pulumi.OutputState }
+type StackV1StackOutputArrayOutput struct{ *pulumi.OutputState }
 
-func (StackV1OutputArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]StackV1Output)(nil)).Elem()
+func (StackV1StackOutputArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StackV1StackOutput)(nil)).Elem()
 }
 
-func (o StackV1OutputArrayOutput) ToStackV1OutputArrayOutput() StackV1OutputArrayOutput {
+func (o StackV1StackOutputArrayOutput) ToStackV1StackOutputArrayOutput() StackV1StackOutputArrayOutput {
 	return o
 }
 
-func (o StackV1OutputArrayOutput) ToStackV1OutputArrayOutputWithContext(ctx context.Context) StackV1OutputArrayOutput {
+func (o StackV1StackOutputArrayOutput) ToStackV1StackOutputArrayOutputWithContext(ctx context.Context) StackV1StackOutputArrayOutput {
 	return o
 }
 
-func (o StackV1OutputArrayOutput) Index(i pulumi.IntInput) StackV1OutputOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StackV1Output {
-		return vs[0].([]StackV1Output)[vs[1].(int)]
-	}).(StackV1OutputOutput)
+func (o StackV1StackOutputArrayOutput) Index(i pulumi.IntInput) StackV1StackOutputOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StackV1StackOutput {
+		return vs[0].([]StackV1StackOutput)[vs[1].(int)]
+	}).(StackV1StackOutputOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(StackV1OutputOutput{})
-	pulumi.RegisterOutputType(StackV1OutputArrayOutput{})
+	pulumi.RegisterOutputType(StackV1StackOutputOutput{})
+	pulumi.RegisterOutputType(StackV1StackOutputArrayOutput{})
 }

@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -136,12 +137,20 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Interface Attachments can be imported using the Instance ID and Port ID separated by a slash, e.g.
+//
+// ```sh
+//  $ pulumi import openstack:compute/interfaceAttach:InterfaceAttach ai_1 89c60255-9bd6-460c-822a-e2b959ede9d2/45670584-225f-46c3-b33e-6707b589b666
+// ```
 type InterfaceAttach struct {
 	pulumi.CustomResourceState
 
 	// An IP address to assosciate with the port.
 	// _NOTE_: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.
-	FixedIp pulumi.StringPtrOutput `pulumi:"fixedIp"`
+	FixedIp pulumi.StringOutput `pulumi:"fixedIp"`
 	// The ID of the Instance to attach the Port or Network to.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// The ID of the Network to attach to an Instance. A port will be created automatically.
@@ -159,11 +168,12 @@ type InterfaceAttach struct {
 // NewInterfaceAttach registers a new resource with the given unique name, arguments, and options.
 func NewInterfaceAttach(ctx *pulumi.Context,
 	name string, args *InterfaceAttachArgs, opts ...pulumi.ResourceOption) (*InterfaceAttach, error) {
-	if args == nil || args.InstanceId == nil {
-		return nil, errors.New("missing required argument 'InstanceId'")
-	}
 	if args == nil {
-		args = &InterfaceAttachArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.InstanceId == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
 	var resource InterfaceAttach
 	err := ctx.RegisterResource("openstack:compute/interfaceAttach:InterfaceAttach", name, args, &resource, opts...)
@@ -265,4 +275,43 @@ type InterfaceAttachArgs struct {
 
 func (InterfaceAttachArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*interfaceAttachArgs)(nil)).Elem()
+}
+
+type InterfaceAttachInput interface {
+	pulumi.Input
+
+	ToInterfaceAttachOutput() InterfaceAttachOutput
+	ToInterfaceAttachOutputWithContext(ctx context.Context) InterfaceAttachOutput
+}
+
+func (InterfaceAttach) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterfaceAttach)(nil)).Elem()
+}
+
+func (i InterfaceAttach) ToInterfaceAttachOutput() InterfaceAttachOutput {
+	return i.ToInterfaceAttachOutputWithContext(context.Background())
+}
+
+func (i InterfaceAttach) ToInterfaceAttachOutputWithContext(ctx context.Context) InterfaceAttachOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfaceAttachOutput)
+}
+
+type InterfaceAttachOutput struct {
+	*pulumi.OutputState
+}
+
+func (InterfaceAttachOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterfaceAttachOutput)(nil)).Elem()
+}
+
+func (o InterfaceAttachOutput) ToInterfaceAttachOutput() InterfaceAttachOutput {
+	return o
+}
+
+func (o InterfaceAttachOutput) ToInterfaceAttachOutputWithContext(ctx context.Context) InterfaceAttachOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(InterfaceAttachOutput{})
 }

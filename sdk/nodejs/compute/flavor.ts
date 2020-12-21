@@ -23,6 +23,14 @@ import * as utilities from "../utilities";
  *     vcpus: 2,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Flavors can be imported using the `ID`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import openstack:compute/flavor:Flavor my-flavor 4142e64b-1b35-44a0-9b1e-5affc7af1106
+ * ```
  */
 export class Flavor extends pulumi.CustomResource {
     /**
@@ -53,15 +61,24 @@ export class Flavor extends pulumi.CustomResource {
     }
 
     /**
-     * The amount of disk space in gigabytes to use for the root
+     * The amount of disk space in GiB to use for the root
      * (/) partition. Changing this creates a new flavor.
      */
     public readonly disk!: pulumi.Output<number>;
+    /**
+     * The amount of ephemeral in GiB. If unspecified,
+     * the default is 0. Changing this creates a new flavor.
+     */
     public readonly ephemeral!: pulumi.Output<number | undefined>;
     /**
      * Key/Value pairs of metadata for the flavor.
      */
     public readonly extraSpecs!: pulumi.Output<{[key: string]: any}>;
+    /**
+     * Unique ID (integer or UUID) of flavor to create. Changing
+     * this creates a new flavor.
+     */
+    public readonly flavorId!: pulumi.Output<string | undefined>;
     /**
      * Whether the flavor is public. Changing this creates
      * a new flavor.
@@ -115,6 +132,7 @@ export class Flavor extends pulumi.CustomResource {
             inputs["disk"] = state ? state.disk : undefined;
             inputs["ephemeral"] = state ? state.ephemeral : undefined;
             inputs["extraSpecs"] = state ? state.extraSpecs : undefined;
+            inputs["flavorId"] = state ? state.flavorId : undefined;
             inputs["isPublic"] = state ? state.isPublic : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["ram"] = state ? state.ram : undefined;
@@ -124,18 +142,19 @@ export class Flavor extends pulumi.CustomResource {
             inputs["vcpus"] = state ? state.vcpus : undefined;
         } else {
             const args = argsOrState as FlavorArgs | undefined;
-            if (!args || args.disk === undefined) {
+            if ((!args || args.disk === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'disk'");
             }
-            if (!args || args.ram === undefined) {
+            if ((!args || args.ram === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'ram'");
             }
-            if (!args || args.vcpus === undefined) {
+            if ((!args || args.vcpus === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'vcpus'");
             }
             inputs["disk"] = args ? args.disk : undefined;
             inputs["ephemeral"] = args ? args.ephemeral : undefined;
             inputs["extraSpecs"] = args ? args.extraSpecs : undefined;
+            inputs["flavorId"] = args ? args.flavorId : undefined;
             inputs["isPublic"] = args ? args.isPublic : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["ram"] = args ? args.ram : undefined;
@@ -160,15 +179,24 @@ export class Flavor extends pulumi.CustomResource {
  */
 export interface FlavorState {
     /**
-     * The amount of disk space in gigabytes to use for the root
+     * The amount of disk space in GiB to use for the root
      * (/) partition. Changing this creates a new flavor.
      */
     readonly disk?: pulumi.Input<number>;
+    /**
+     * The amount of ephemeral in GiB. If unspecified,
+     * the default is 0. Changing this creates a new flavor.
+     */
     readonly ephemeral?: pulumi.Input<number>;
     /**
      * Key/Value pairs of metadata for the flavor.
      */
     readonly extraSpecs?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * Unique ID (integer or UUID) of flavor to create. Changing
+     * this creates a new flavor.
+     */
+    readonly flavorId?: pulumi.Input<string>;
     /**
      * Whether the flavor is public. Changing this creates
      * a new flavor.
@@ -213,15 +241,24 @@ export interface FlavorState {
  */
 export interface FlavorArgs {
     /**
-     * The amount of disk space in gigabytes to use for the root
+     * The amount of disk space in GiB to use for the root
      * (/) partition. Changing this creates a new flavor.
      */
     readonly disk: pulumi.Input<number>;
+    /**
+     * The amount of ephemeral in GiB. If unspecified,
+     * the default is 0. Changing this creates a new flavor.
+     */
     readonly ephemeral?: pulumi.Input<number>;
     /**
      * Key/Value pairs of metadata for the flavor.
      */
     readonly extraSpecs?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * Unique ID (integer or UUID) of flavor to create. Changing
+     * this creates a new flavor.
+     */
+    readonly flavorId?: pulumi.Input<string>;
     /**
      * Whether the flavor is public. Changing this creates
      * a new flavor.

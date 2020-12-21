@@ -2,10 +2,18 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
+/**
+ * ## Import
+ *
+ * Secrets can be imported using the secret id (the last part of the secret reference), e.g.
+ *
+ * ```sh
+ *  $ pulumi import openstack:keymanager/secretV1:SecretV1 secret_1 8a7a79c2-cf17-4e65-b2ae-ddc8bfcf6c74
+ * ```
+ */
 export class SecretV1 extends pulumi.CustomResource {
     /**
      * Get an existing SecretV1 resource's state with the given name, ID, and optional extra

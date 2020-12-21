@@ -4,11 +4,19 @@
 package keymanager
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// Secrets can be imported using the secret id (the last part of the secret reference), e.g.
+//
+// ```sh
+//  $ pulumi import openstack:keymanager/secretV1:SecretV1 secret_1 8a7a79c2-cf17-4e65-b2ae-ddc8bfcf6c74
+// ```
 type SecretV1 struct {
 	pulumi.CustomResourceState
 
@@ -65,6 +73,7 @@ func NewSecretV1(ctx *pulumi.Context,
 	if args == nil {
 		args = &SecretV1Args{}
 	}
+
 	var resource SecretV1
 	err := ctx.RegisterResource("openstack:keymanager/secretV1:SecretV1", name, args, &resource, opts...)
 	if err != nil {
@@ -255,4 +264,43 @@ type SecretV1Args struct {
 
 func (SecretV1Args) ElementType() reflect.Type {
 	return reflect.TypeOf((*secretV1Args)(nil)).Elem()
+}
+
+type SecretV1Input interface {
+	pulumi.Input
+
+	ToSecretV1Output() SecretV1Output
+	ToSecretV1OutputWithContext(ctx context.Context) SecretV1Output
+}
+
+func (SecretV1) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretV1)(nil)).Elem()
+}
+
+func (i SecretV1) ToSecretV1Output() SecretV1Output {
+	return i.ToSecretV1OutputWithContext(context.Background())
+}
+
+func (i SecretV1) ToSecretV1OutputWithContext(ctx context.Context) SecretV1Output {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretV1Output)
+}
+
+type SecretV1Output struct {
+	*pulumi.OutputState
+}
+
+func (SecretV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretV1Output)(nil)).Elem()
+}
+
+func (o SecretV1Output) ToSecretV1Output() SecretV1Output {
+	return o
+}
+
+func (o SecretV1Output) ToSecretV1OutputWithContext(ctx context.Context) SecretV1Output {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SecretV1Output{})
 }

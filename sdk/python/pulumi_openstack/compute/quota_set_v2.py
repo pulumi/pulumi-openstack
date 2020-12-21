@@ -62,6 +62,14 @@ class QuotaSetV2(pulumi.CustomResource):
             server_group_members=8)
         ```
 
+        ## Import
+
+        Quotasets can be imported using the `project_id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:compute/quotaSetV2:QuotaSetV2 quotaset_1 2a0f2240-c5e6-41de-896d-e80d97428d6b
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] cores: Quota value for cores.
@@ -124,7 +132,7 @@ class QuotaSetV2(pulumi.CustomResource):
             __props__['instances'] = instances
             __props__['key_pairs'] = key_pairs
             __props__['metadata_items'] = metadata_items
-            if project_id is None:
+            if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
             __props__['project_id'] = project_id
             __props__['ram'] = ram

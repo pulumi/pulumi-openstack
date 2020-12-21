@@ -5,8 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Associate a floating IP to an instance. This can be used instead of the
- * `floatingIp` options in `openstack.compute.Instance`.
+ * Associate a floating IP to an instance.
  *
  * ## Example Usage
  * ### Automatically detect the correct network
@@ -57,6 +56,14 @@ import * as utilities from "../utilities";
  *     floatingIp: fip1FloatingIp.address,
  *     instanceId: instance1.id,
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * This resource can be imported by specifying all three arguments, separated by a forward slash
+ *
+ * ```sh
+ *  $ pulumi import openstack:compute/floatingIpAssociate:FloatingIpAssociate fip_1 <floating_ip>/<instance_id>/<fixed_ip>
  * ```
  */
 export class FloatingIpAssociate extends pulumi.CustomResource {
@@ -127,10 +134,10 @@ export class FloatingIpAssociate extends pulumi.CustomResource {
             inputs["waitUntilAssociated"] = state ? state.waitUntilAssociated : undefined;
         } else {
             const args = argsOrState as FloatingIpAssociateArgs | undefined;
-            if (!args || args.floatingIp === undefined) {
+            if ((!args || args.floatingIp === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'floatingIp'");
             }
-            if (!args || args.instanceId === undefined) {
+            if ((!args || args.instanceId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'instanceId'");
             }
             inputs["fixedIp"] = args ? args.fixedIp : undefined;

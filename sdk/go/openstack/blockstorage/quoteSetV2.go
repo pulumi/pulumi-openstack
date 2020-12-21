@@ -4,6 +4,7 @@
 package blockstorage
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -54,6 +55,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Quotasets can be imported using the `project_id`, e.g.
+//
+// ```sh
+//  $ pulumi import openstack:blockstorage/quoteSetV2:QuoteSetV2 quotaset_1 2a0f2240-c5e6-41de-896d-e80d97428d6b
+// ```
 type QuoteSetV2 struct {
 	pulumi.CustomResourceState
 
@@ -90,11 +99,12 @@ type QuoteSetV2 struct {
 // NewQuoteSetV2 registers a new resource with the given unique name, arguments, and options.
 func NewQuoteSetV2(ctx *pulumi.Context,
 	name string, args *QuoteSetV2Args, opts ...pulumi.ResourceOption) (*QuoteSetV2, error) {
-	if args == nil || args.ProjectId == nil {
-		return nil, errors.New("missing required argument 'ProjectId'")
-	}
 	if args == nil {
-		args = &QuoteSetV2Args{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ProjectId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectId'")
 	}
 	var resource QuoteSetV2
 	err := ctx.RegisterResource("openstack:blockstorage/quoteSetV2:QuoteSetV2", name, args, &resource, opts...)
@@ -248,4 +258,43 @@ type QuoteSetV2Args struct {
 
 func (QuoteSetV2Args) ElementType() reflect.Type {
 	return reflect.TypeOf((*quoteSetV2Args)(nil)).Elem()
+}
+
+type QuoteSetV2Input interface {
+	pulumi.Input
+
+	ToQuoteSetV2Output() QuoteSetV2Output
+	ToQuoteSetV2OutputWithContext(ctx context.Context) QuoteSetV2Output
+}
+
+func (QuoteSetV2) ElementType() reflect.Type {
+	return reflect.TypeOf((*QuoteSetV2)(nil)).Elem()
+}
+
+func (i QuoteSetV2) ToQuoteSetV2Output() QuoteSetV2Output {
+	return i.ToQuoteSetV2OutputWithContext(context.Background())
+}
+
+func (i QuoteSetV2) ToQuoteSetV2OutputWithContext(ctx context.Context) QuoteSetV2Output {
+	return pulumi.ToOutputWithContext(ctx, i).(QuoteSetV2Output)
+}
+
+type QuoteSetV2Output struct {
+	*pulumi.OutputState
+}
+
+func (QuoteSetV2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*QuoteSetV2Output)(nil)).Elem()
+}
+
+func (o QuoteSetV2Output) ToQuoteSetV2Output() QuoteSetV2Output {
+	return o
+}
+
+func (o QuoteSetV2Output) ToQuoteSetV2OutputWithContext(ctx context.Context) QuoteSetV2Output {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(QuoteSetV2Output{})
 }

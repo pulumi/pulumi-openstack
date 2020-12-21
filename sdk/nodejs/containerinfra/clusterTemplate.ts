@@ -191,6 +191,14 @@ import * as utilities from "../utilities";
  * * `serverType` - See Argument Reference above.
  * * `tlsDisabled` - See Argument Reference above.
  * * `volumeDriver` - See Argument Reference above.
+ *
+ * ## Import
+ *
+ * Cluster templates can be imported using the `id`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import openstack:containerinfra/clusterTemplate:ClusterTemplate clustertemplate_1 b9a45c5c-cd03-4958-82aa-b80bf93cb922
+ * ```
  */
 export class ClusterTemplate extends pulumi.CustomResource {
     /**
@@ -299,10 +307,10 @@ export class ClusterTemplate extends pulumi.CustomResource {
             inputs["volumeDriver"] = state ? state.volumeDriver : undefined;
         } else {
             const args = argsOrState as ClusterTemplateArgs | undefined;
-            if (!args || args.coe === undefined) {
+            if ((!args || args.coe === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'coe'");
             }
-            if (!args || args.image === undefined) {
+            if ((!args || args.image === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'image'");
             }
             inputs["apiserverPort"] = args ? args.apiserverPort : undefined;

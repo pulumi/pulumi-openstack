@@ -42,6 +42,14 @@ import * as utilities from "../utilities";
  *     redirectPoolId: pool1.id,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Load Balancer L7 Policy can be imported using the L7 Policy ID, e.g.
+ *
+ * ```sh
+ *  $ pulumi import openstack:loadbalancer/l7PolicyV2:L7PolicyV2 l7policy_1 8a7a79c2-cf17-4e65-b2ae-ddc8bfcf6c74
+ * ```
  */
 export class L7PolicyV2 extends pulumi.CustomResource {
     /**
@@ -147,10 +155,10 @@ export class L7PolicyV2 extends pulumi.CustomResource {
             inputs["tenantId"] = state ? state.tenantId : undefined;
         } else {
             const args = argsOrState as L7PolicyV2Args | undefined;
-            if (!args || args.action === undefined) {
+            if ((!args || args.action === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'action'");
             }
-            if (!args || args.listenerId === undefined) {
+            if ((!args || args.listenerId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'listenerId'");
             }
             inputs["action"] = args ? args.action : undefined;

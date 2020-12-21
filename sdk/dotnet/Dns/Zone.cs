@@ -34,6 +34,18 @@ namespace Pulumi.OpenStack.Dns
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// This resource can be imported by specifying the zone ID with optional project ID
+    /// 
+    /// ```sh
+    ///  $ pulumi import openstack:dns/zone:Zone zone_1 &lt;zone_id&gt;
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import openstack:dns/zone:Zone zone_1 &lt;zone_id&gt;:&lt;project_id&gt;
+    /// ```
     /// </summary>
     public partial class Zone : Pulumi.CustomResource
     {
@@ -49,6 +61,14 @@ namespace Pulumi.OpenStack.Dns
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Disable wait for zone to reach ACTIVE
+        /// status. The check is enabled by default. If this argument is true, zone
+        /// will be considered as created/updated if OpenStack request returned success.
+        /// </summary>
+        [Output("disableStatusCheck")]
+        public Output<bool?> DisableStatusCheck { get; private set; } = null!;
 
         /// <summary>
         /// The email contact for the zone record.
@@ -173,6 +193,14 @@ namespace Pulumi.OpenStack.Dns
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Disable wait for zone to reach ACTIVE
+        /// status. The check is enabled by default. If this argument is true, zone
+        /// will be considered as created/updated if OpenStack request returned success.
+        /// </summary>
+        [Input("disableStatusCheck")]
+        public Input<bool>? DisableStatusCheck { get; set; }
+
+        /// <summary>
         /// The email contact for the zone record.
         /// </summary>
         [Input("email")]
@@ -266,6 +294,14 @@ namespace Pulumi.OpenStack.Dns
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Disable wait for zone to reach ACTIVE
+        /// status. The check is enabled by default. If this argument is true, zone
+        /// will be considered as created/updated if OpenStack request returned success.
+        /// </summary>
+        [Input("disableStatusCheck")]
+        public Input<bool>? DisableStatusCheck { get; set; }
 
         /// <summary>
         /// The email contact for the zone record.

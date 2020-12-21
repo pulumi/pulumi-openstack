@@ -42,6 +42,14 @@ class Member(pulumi.CustomResource):
             protocol_port=8080)
         ```
 
+        ## Import
+
+        Load Balancer Pool Member can be imported using the Pool ID and Member ID separated by a slash, e.g.
+
+        ```sh
+         $ pulumi import openstack:loadbalancer/member:Member member_1 c22974d2-4c95-4bcb-9819-0afc5ed303d5/9563b79c-8460-47da-8a95-2711b746510f
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address: The IP address of the member to receive traffic from
@@ -83,15 +91,15 @@ class Member(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if address is None:
+            if address is None and not opts.urn:
                 raise TypeError("Missing required property 'address'")
             __props__['address'] = address
             __props__['admin_state_up'] = admin_state_up
             __props__['name'] = name
-            if pool_id is None:
+            if pool_id is None and not opts.urn:
                 raise TypeError("Missing required property 'pool_id'")
             __props__['pool_id'] = pool_id
-            if protocol_port is None:
+            if protocol_port is None and not opts.urn:
                 raise TypeError("Missing required property 'protocol_port'")
             __props__['protocol_port'] = protocol_port
             __props__['region'] = region

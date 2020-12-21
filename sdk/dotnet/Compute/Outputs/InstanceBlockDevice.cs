@@ -39,6 +39,14 @@ namespace Pulumi.OpenStack.Compute.Outputs
         /// thing is to leave this empty. Changing this creates a new server.
         /// </summary>
         public readonly string? DiskBus;
+        /// <summary>
+        /// Specifies the guest server disk file system format,
+        /// such as `ext2`, `ext3`, `ext4`, `xfs` or `swap`. Swap block device mappings
+        /// have the following restrictions: source_type must be blank and destination_type
+        /// must be local and only one swap disk per server and the size of the swap disk
+        /// must be less than or equal to the swap size of the flavor. Changing this
+        /// creates a new server.
+        /// </summary>
         public readonly string? GuestFormat;
         /// <summary>
         /// The source type of the device. Must be one of

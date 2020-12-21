@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -47,6 +46,14 @@ import * as utilities from "../utilities";
  *     }],
  *     securityGroups: [secgroup1.name],
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * Networks can be imported using the `id`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import openstack:networking/network:Network network_1 d90ce693-5ccf-4136-a0ed-152ce412b6b9
  * ```
  */
 export class Network extends pulumi.CustomResource {

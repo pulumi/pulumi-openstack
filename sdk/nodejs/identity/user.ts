@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -40,6 +39,14 @@ import * as utilities from "../utilities";
  *     ],
  *     password: "password123",
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * Users can be imported using the `id`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import openstack:identity/user:User user_1 89c60255-9bd6-460c-822a-e2b959ede9d2
  * ```
  */
 export class User extends pulumi.CustomResource {

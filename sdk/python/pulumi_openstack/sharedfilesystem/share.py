@@ -56,6 +56,14 @@ class Share(pulumi.CustomResource):
             size=1)
         ```
 
+        ## Import
+
+        This resource can be imported by specifying the ID of the share
+
+        ```sh
+         $ pulumi import openstack:sharedfilesystem/share:Share share_1 <id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] availability_zone: The share availability zone. Changing this creates a
@@ -108,11 +116,11 @@ class Share(pulumi.CustomResource):
             __props__['name'] = name
             __props__['region'] = region
             __props__['share_network_id'] = share_network_id
-            if share_proto is None:
+            if share_proto is None and not opts.urn:
                 raise TypeError("Missing required property 'share_proto'")
             __props__['share_proto'] = share_proto
             __props__['share_type'] = share_type
-            if size is None:
+            if size is None and not opts.urn:
                 raise TypeError("Missing required property 'size'")
             __props__['size'] = size
             __props__['snapshot_id'] = snapshot_id

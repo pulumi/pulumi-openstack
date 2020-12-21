@@ -47,11 +47,11 @@ class Trunk(pulumi.CustomResource):
         parent_port1 = openstack.networking.Port("parentPort1",
             admin_state_up=True,
             network_id=network1.id,
-            opts=ResourceOptions(depends_on=["openstack_networking_subnet_v2.subnet_1"]))
+            opts=pulumi.ResourceOptions(depends_on=["openstack_networking_subnet_v2.subnet_1"]))
         subport1 = openstack.networking.Port("subport1",
             admin_state_up=True,
             network_id=network1.id,
-            opts=ResourceOptions(depends_on=["openstack_networking_subnet_v2.subnet_1"]))
+            opts=pulumi.ResourceOptions(depends_on=["openstack_networking_subnet_v2.subnet_1"]))
         trunk1 = openstack.networking.Trunk("trunk1",
             admin_state_up=True,
             port_id=parent_port1.id,
@@ -107,7 +107,7 @@ class Trunk(pulumi.CustomResource):
             __props__['admin_state_up'] = admin_state_up
             __props__['description'] = description
             __props__['name'] = name
-            if port_id is None:
+            if port_id is None and not opts.urn:
                 raise TypeError("Missing required property 'port_id'")
             __props__['port_id'] = port_id
             __props__['region'] = region

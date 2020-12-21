@@ -33,6 +33,14 @@ namespace Pulumi.OpenStack.Identity
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Projects can be imported using the `id`, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import openstack:identity/project:Project project_1 89c60255-9bd6-460c-822a-e2b959ede9d2
+    /// ```
     /// </summary>
     public partial class Project : Pulumi.CustomResource
     {
@@ -50,14 +58,15 @@ namespace Pulumi.OpenStack.Identity
 
         /// <summary>
         /// Whether the project is enabled or disabled. Valid
-        /// values are `true` and `false`.
+        /// values are `true` and `false`. Default is `true`.
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
 
         /// <summary>
         /// Whether this project is a domain. Valid values
-        /// are `true` and `false`.
+        /// are `true` and `false`. Default is `false`. Changing this creates a new
+        /// project/domain.
         /// </summary>
         [Output("isDomain")]
         public Output<bool?> IsDomain { get; private set; } = null!;
@@ -69,7 +78,8 @@ namespace Pulumi.OpenStack.Identity
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The parent of this project.
+        /// The parent of this project. Changing this creates
+        /// a new project.
         /// </summary>
         [Output("parentId")]
         public Output<string> ParentId { get; private set; } = null!;
@@ -149,14 +159,15 @@ namespace Pulumi.OpenStack.Identity
 
         /// <summary>
         /// Whether the project is enabled or disabled. Valid
-        /// values are `true` and `false`.
+        /// values are `true` and `false`. Default is `true`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
         /// Whether this project is a domain. Valid values
-        /// are `true` and `false`.
+        /// are `true` and `false`. Default is `false`. Changing this creates a new
+        /// project/domain.
         /// </summary>
         [Input("isDomain")]
         public Input<bool>? IsDomain { get; set; }
@@ -168,7 +179,8 @@ namespace Pulumi.OpenStack.Identity
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The parent of this project.
+        /// The parent of this project. Changing this creates
+        /// a new project.
         /// </summary>
         [Input("parentId")]
         public Input<string>? ParentId { get; set; }
@@ -215,14 +227,15 @@ namespace Pulumi.OpenStack.Identity
 
         /// <summary>
         /// Whether the project is enabled or disabled. Valid
-        /// values are `true` and `false`.
+        /// values are `true` and `false`. Default is `true`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
         /// Whether this project is a domain. Valid values
-        /// are `true` and `false`.
+        /// are `true` and `false`. Default is `false`. Changing this creates a new
+        /// project/domain.
         /// </summary>
         [Input("isDomain")]
         public Input<bool>? IsDomain { get; set; }
@@ -234,7 +247,8 @@ namespace Pulumi.OpenStack.Identity
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The parent of this project.
+        /// The parent of this project. Changing this creates
+        /// a new project.
         /// </summary>
         [Input("parentId")]
         public Input<string>? ParentId { get; set; }

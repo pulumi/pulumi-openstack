@@ -4,6 +4,7 @@
 package identity
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -36,6 +37,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Services can be imported using the `id`, e.g.
+//
+// ```sh
+//  $ pulumi import openstack:identity/serviceV3:ServiceV3 service_1 6688e967-158a-496f-a224-cae3414e6b61
+// ```
 type ServiceV3 struct {
 	pulumi.CustomResourceState
 
@@ -55,11 +64,12 @@ type ServiceV3 struct {
 // NewServiceV3 registers a new resource with the given unique name, arguments, and options.
 func NewServiceV3(ctx *pulumi.Context,
 	name string, args *ServiceV3Args, opts ...pulumi.ResourceOption) (*ServiceV3, error) {
-	if args == nil || args.Type == nil {
-		return nil, errors.New("missing required argument 'Type'")
-	}
 	if args == nil {
-		args = &ServiceV3Args{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Type == nil {
+		return nil, errors.New("invalid value for required argument 'Type'")
 	}
 	var resource ServiceV3
 	err := ctx.RegisterResource("openstack:identity/serviceV3:ServiceV3", name, args, &resource, opts...)
@@ -145,4 +155,43 @@ type ServiceV3Args struct {
 
 func (ServiceV3Args) ElementType() reflect.Type {
 	return reflect.TypeOf((*serviceV3Args)(nil)).Elem()
+}
+
+type ServiceV3Input interface {
+	pulumi.Input
+
+	ToServiceV3Output() ServiceV3Output
+	ToServiceV3OutputWithContext(ctx context.Context) ServiceV3Output
+}
+
+func (ServiceV3) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceV3)(nil)).Elem()
+}
+
+func (i ServiceV3) ToServiceV3Output() ServiceV3Output {
+	return i.ToServiceV3OutputWithContext(context.Background())
+}
+
+func (i ServiceV3) ToServiceV3OutputWithContext(ctx context.Context) ServiceV3Output {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceV3Output)
+}
+
+type ServiceV3Output struct {
+	*pulumi.OutputState
+}
+
+func (ServiceV3Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceV3Output)(nil)).Elem()
+}
+
+func (o ServiceV3Output) ToServiceV3Output() ServiceV3Output {
+	return o
+}
+
+func (o ServiceV3Output) ToServiceV3OutputWithContext(ctx context.Context) ServiceV3Output {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ServiceV3Output{})
 }

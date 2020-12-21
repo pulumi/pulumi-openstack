@@ -19,6 +19,14 @@ import * as utilities from "../utilities";
  *     port: 80,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Load Balancer Members can be imported using the `id`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import openstack:loadbalancer/memberV1:MemberV1 member_1 a7498676-4fe4-4243-a864-2eaaf18c73df
+ * ```
  */
 export class MemberV1 extends pulumi.CustomResource {
     /**
@@ -104,13 +112,13 @@ export class MemberV1 extends pulumi.CustomResource {
             inputs["weight"] = state ? state.weight : undefined;
         } else {
             const args = argsOrState as MemberV1Args | undefined;
-            if (!args || args.address === undefined) {
+            if ((!args || args.address === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'address'");
             }
-            if (!args || args.poolId === undefined) {
+            if ((!args || args.poolId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'poolId'");
             }
-            if (!args || args.port === undefined) {
+            if ((!args || args.port === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'port'");
             }
             inputs["address"] = args ? args.address : undefined;

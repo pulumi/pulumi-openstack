@@ -4,6 +4,7 @@
 package sharedfilesystem
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -48,6 +49,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// This resource can be imported by specifying the ID of the security service
+//
+// ```sh
+//  $ pulumi import openstack:sharedfilesystem/securityService:SecurityService securityservice_1 <id>
+// ```
 type SecurityService struct {
 	pulumi.CustomResourceState
 
@@ -87,11 +96,12 @@ type SecurityService struct {
 // NewSecurityService registers a new resource with the given unique name, arguments, and options.
 func NewSecurityService(ctx *pulumi.Context,
 	name string, args *SecurityServiceArgs, opts ...pulumi.ResourceOption) (*SecurityService, error) {
-	if args == nil || args.Type == nil {
-		return nil, errors.New("missing required argument 'Type'")
-	}
 	if args == nil {
-		args = &SecurityServiceArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Type == nil {
+		return nil, errors.New("invalid value for required argument 'Type'")
 	}
 	var resource SecurityService
 	err := ctx.RegisterResource("openstack:sharedfilesystem/securityService:SecurityService", name, args, &resource, opts...)
@@ -253,4 +263,43 @@ type SecurityServiceArgs struct {
 
 func (SecurityServiceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*securityServiceArgs)(nil)).Elem()
+}
+
+type SecurityServiceInput interface {
+	pulumi.Input
+
+	ToSecurityServiceOutput() SecurityServiceOutput
+	ToSecurityServiceOutputWithContext(ctx context.Context) SecurityServiceOutput
+}
+
+func (SecurityService) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityService)(nil)).Elem()
+}
+
+func (i SecurityService) ToSecurityServiceOutput() SecurityServiceOutput {
+	return i.ToSecurityServiceOutputWithContext(context.Background())
+}
+
+func (i SecurityService) ToSecurityServiceOutputWithContext(ctx context.Context) SecurityServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityServiceOutput)
+}
+
+type SecurityServiceOutput struct {
+	*pulumi.OutputState
+}
+
+func (SecurityServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityServiceOutput)(nil)).Elem()
+}
+
+func (o SecurityServiceOutput) ToSecurityServiceOutput() SecurityServiceOutput {
+	return o
+}
+
+func (o SecurityServiceOutput) ToSecurityServiceOutputWithContext(ctx context.Context) SecurityServiceOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SecurityServiceOutput{})
 }

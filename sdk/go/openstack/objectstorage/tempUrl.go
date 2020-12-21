@@ -4,6 +4,7 @@
 package objectstorage
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -85,17 +86,18 @@ type TempUrl struct {
 // NewTempUrl registers a new resource with the given unique name, arguments, and options.
 func NewTempUrl(ctx *pulumi.Context,
 	name string, args *TempUrlArgs, opts ...pulumi.ResourceOption) (*TempUrl, error) {
-	if args == nil || args.Container == nil {
-		return nil, errors.New("missing required argument 'Container'")
-	}
-	if args == nil || args.Object == nil {
-		return nil, errors.New("missing required argument 'Object'")
-	}
-	if args == nil || args.Ttl == nil {
-		return nil, errors.New("missing required argument 'Ttl'")
-	}
 	if args == nil {
-		args = &TempUrlArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Container == nil {
+		return nil, errors.New("invalid value for required argument 'Container'")
+	}
+	if args.Object == nil {
+		return nil, errors.New("invalid value for required argument 'Object'")
+	}
+	if args.Ttl == nil {
+		return nil, errors.New("invalid value for required argument 'Ttl'")
 	}
 	var resource TempUrl
 	err := ctx.RegisterResource("openstack:objectstorage/tempUrl:TempUrl", name, args, &resource, opts...)
@@ -209,4 +211,43 @@ type TempUrlArgs struct {
 
 func (TempUrlArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*tempUrlArgs)(nil)).Elem()
+}
+
+type TempUrlInput interface {
+	pulumi.Input
+
+	ToTempUrlOutput() TempUrlOutput
+	ToTempUrlOutputWithContext(ctx context.Context) TempUrlOutput
+}
+
+func (TempUrl) ElementType() reflect.Type {
+	return reflect.TypeOf((*TempUrl)(nil)).Elem()
+}
+
+func (i TempUrl) ToTempUrlOutput() TempUrlOutput {
+	return i.ToTempUrlOutputWithContext(context.Background())
+}
+
+func (i TempUrl) ToTempUrlOutputWithContext(ctx context.Context) TempUrlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TempUrlOutput)
+}
+
+type TempUrlOutput struct {
+	*pulumi.OutputState
+}
+
+func (TempUrlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TempUrlOutput)(nil)).Elem()
+}
+
+func (o TempUrlOutput) ToTempUrlOutput() TempUrlOutput {
+	return o
+}
+
+func (o TempUrlOutput) ToTempUrlOutputWithContext(ctx context.Context) TempUrlOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(TempUrlOutput{})
 }

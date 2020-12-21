@@ -36,6 +36,14 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Load Balancer Listener can be imported using the Listener ID, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import openstack:loadbalancer/listener:Listener listener_1 b67ce64e-8b26-405d-afeb-4a078901f15a
+    /// ```
     /// </summary>
     public partial class Listener : Pulumi.CustomResource
     {

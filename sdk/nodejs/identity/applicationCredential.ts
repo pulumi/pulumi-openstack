@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -77,6 +76,14 @@ import * as utilities from "../utilities";
  *     ],
  *     expiresAt: "2019-02-13T12:12:12Z",
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * Application Credentials can be imported using the `id`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import openstack:identity/applicationCredential:ApplicationCredential application_credential_1 c17304b7-0953-4738-abb0-67005882b0a0
  * ```
  */
 export class ApplicationCredential extends pulumi.CustomResource {

@@ -4,6 +4,7 @@
 package images
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -49,6 +50,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Image access acceptance status can be imported using the `image_id`, e.g.
+//
+// ```sh
+//  $ pulumi import openstack:images/imageAccessAccept:ImageAccessAccept openstack_images_image_access_accept_v2 89c60255-9bd6-460c-822a-e2b959ede9d2
+// ```
 type ImageAccessAccept struct {
 	pulumi.CustomResourceState
 
@@ -76,14 +85,15 @@ type ImageAccessAccept struct {
 // NewImageAccessAccept registers a new resource with the given unique name, arguments, and options.
 func NewImageAccessAccept(ctx *pulumi.Context,
 	name string, args *ImageAccessAcceptArgs, opts ...pulumi.ResourceOption) (*ImageAccessAccept, error) {
-	if args == nil || args.ImageId == nil {
-		return nil, errors.New("missing required argument 'ImageId'")
-	}
-	if args == nil || args.Status == nil {
-		return nil, errors.New("missing required argument 'Status'")
-	}
 	if args == nil {
-		args = &ImageAccessAcceptArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ImageId == nil {
+		return nil, errors.New("invalid value for required argument 'ImageId'")
+	}
+	if args.Status == nil {
+		return nil, errors.New("invalid value for required argument 'Status'")
 	}
 	var resource ImageAccessAccept
 	err := ctx.RegisterResource("openstack:images/imageAccessAccept:ImageAccessAccept", name, args, &resource, opts...)
@@ -189,4 +199,43 @@ type ImageAccessAcceptArgs struct {
 
 func (ImageAccessAcceptArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*imageAccessAcceptArgs)(nil)).Elem()
+}
+
+type ImageAccessAcceptInput interface {
+	pulumi.Input
+
+	ToImageAccessAcceptOutput() ImageAccessAcceptOutput
+	ToImageAccessAcceptOutputWithContext(ctx context.Context) ImageAccessAcceptOutput
+}
+
+func (ImageAccessAccept) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageAccessAccept)(nil)).Elem()
+}
+
+func (i ImageAccessAccept) ToImageAccessAcceptOutput() ImageAccessAcceptOutput {
+	return i.ToImageAccessAcceptOutputWithContext(context.Background())
+}
+
+func (i ImageAccessAccept) ToImageAccessAcceptOutputWithContext(ctx context.Context) ImageAccessAcceptOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageAccessAcceptOutput)
+}
+
+type ImageAccessAcceptOutput struct {
+	*pulumi.OutputState
+}
+
+func (ImageAccessAcceptOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageAccessAcceptOutput)(nil)).Elem()
+}
+
+func (o ImageAccessAcceptOutput) ToImageAccessAcceptOutput() ImageAccessAcceptOutput {
+	return o
+}
+
+func (o ImageAccessAcceptOutput) ToImageAccessAcceptOutputWithContext(ctx context.Context) ImageAccessAcceptOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ImageAccessAcceptOutput{})
 }

@@ -4,6 +4,7 @@
 package loadbalancer
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -75,6 +76,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Load Balancer L7 Policy can be imported using the L7 Policy ID, e.g.
+//
+// ```sh
+//  $ pulumi import openstack:loadbalancer/l7PolicyV2:L7PolicyV2 l7policy_1 8a7a79c2-cf17-4e65-b2ae-ddc8bfcf6c74
+// ```
 type L7PolicyV2 struct {
 	pulumi.CustomResourceState
 
@@ -114,14 +123,15 @@ type L7PolicyV2 struct {
 // NewL7PolicyV2 registers a new resource with the given unique name, arguments, and options.
 func NewL7PolicyV2(ctx *pulumi.Context,
 	name string, args *L7PolicyV2Args, opts ...pulumi.ResourceOption) (*L7PolicyV2, error) {
-	if args == nil || args.Action == nil {
-		return nil, errors.New("missing required argument 'Action'")
-	}
-	if args == nil || args.ListenerId == nil {
-		return nil, errors.New("missing required argument 'ListenerId'")
-	}
 	if args == nil {
-		args = &L7PolicyV2Args{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Action == nil {
+		return nil, errors.New("invalid value for required argument 'Action'")
+	}
+	if args.ListenerId == nil {
+		return nil, errors.New("invalid value for required argument 'ListenerId'")
 	}
 	var resource L7PolicyV2
 	err := ctx.RegisterResource("openstack:loadbalancer/l7PolicyV2:L7PolicyV2", name, args, &resource, opts...)
@@ -287,4 +297,43 @@ type L7PolicyV2Args struct {
 
 func (L7PolicyV2Args) ElementType() reflect.Type {
 	return reflect.TypeOf((*l7policyV2Args)(nil)).Elem()
+}
+
+type L7PolicyV2Input interface {
+	pulumi.Input
+
+	ToL7PolicyV2Output() L7PolicyV2Output
+	ToL7PolicyV2OutputWithContext(ctx context.Context) L7PolicyV2Output
+}
+
+func (L7PolicyV2) ElementType() reflect.Type {
+	return reflect.TypeOf((*L7PolicyV2)(nil)).Elem()
+}
+
+func (i L7PolicyV2) ToL7PolicyV2Output() L7PolicyV2Output {
+	return i.ToL7PolicyV2OutputWithContext(context.Background())
+}
+
+func (i L7PolicyV2) ToL7PolicyV2OutputWithContext(ctx context.Context) L7PolicyV2Output {
+	return pulumi.ToOutputWithContext(ctx, i).(L7PolicyV2Output)
+}
+
+type L7PolicyV2Output struct {
+	*pulumi.OutputState
+}
+
+func (L7PolicyV2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*L7PolicyV2Output)(nil)).Elem()
+}
+
+func (o L7PolicyV2Output) ToL7PolicyV2Output() L7PolicyV2Output {
+	return o
+}
+
+func (o L7PolicyV2Output) ToL7PolicyV2OutputWithContext(ctx context.Context) L7PolicyV2Output {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(L7PolicyV2Output{})
 }

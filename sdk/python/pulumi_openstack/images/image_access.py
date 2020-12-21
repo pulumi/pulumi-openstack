@@ -71,6 +71,14 @@ class ImageAccess(pulumi.CustomResource):
             status="accepted")
         ```
 
+        ## Import
+
+        Image access can be imported using the `image_id` and the `member_id`, separated by a slash, e.g.
+
+        ```sh
+         $ pulumi import openstack:images/imageAccess:ImageAccess openstack_images_image_access_v2 89c60255-9bd6-460c-822a-e2b959ede9d2/bed6b6cbb86a4e2d8dc2735c2f1000e4
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] image_id: The image ID.
@@ -99,10 +107,10 @@ class ImageAccess(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if image_id is None:
+            if image_id is None and not opts.urn:
                 raise TypeError("Missing required property 'image_id'")
             __props__['image_id'] = image_id
-            if member_id is None:
+            if member_id is None and not opts.urn:
                 raise TypeError("Missing required property 'member_id'")
             __props__['member_id'] = member_id
             __props__['region'] = region

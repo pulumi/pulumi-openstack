@@ -58,6 +58,14 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Address-scopes can be imported using the `id`, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import openstack:networking/addressScope:AddressScope addressscope_1 9cc35860-522a-4d35-974d-51d4b011801e
+    /// ```
     /// </summary>
     public partial class AddressScope : Pulumi.CustomResource
     {

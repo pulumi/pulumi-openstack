@@ -48,6 +48,14 @@ class VolumeV2(pulumi.CustomResource):
             size=3)
         ```
 
+        ## Import
+
+        Volumes can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:blockstorage/volumeV2:VolumeV2 volume_1 ea257959-eeb1-4c10-8d33-26f0409a755d
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] availability_zone: The availability zone for the volume.
@@ -102,7 +110,7 @@ class VolumeV2(pulumi.CustomResource):
             __props__['name'] = name
             __props__['region'] = region
             __props__['scheduler_hints'] = scheduler_hints
-            if size is None:
+            if size is None and not opts.urn:
                 raise TypeError("Missing required property 'size'")
             __props__['size'] = size
             __props__['snapshot_id'] = snapshot_id

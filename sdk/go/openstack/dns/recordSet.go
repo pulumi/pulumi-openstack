@@ -4,6 +4,7 @@
 package dns
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -50,6 +51,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// This resource can be imported by specifying the zone ID and recordset ID, separated by a forward slash.
+//
+// ```sh
+//  $ pulumi import openstack:dns/recordSet:RecordSet recordset_1 <zone_id>/<recordset_id>
+// ```
 type RecordSet struct {
 	pulumi.CustomResourceState
 
@@ -82,11 +91,12 @@ type RecordSet struct {
 // NewRecordSet registers a new resource with the given unique name, arguments, and options.
 func NewRecordSet(ctx *pulumi.Context,
 	name string, args *RecordSetArgs, opts ...pulumi.ResourceOption) (*RecordSet, error) {
-	if args == nil || args.ZoneId == nil {
-		return nil, errors.New("missing required argument 'ZoneId'")
-	}
 	if args == nil {
-		args = &RecordSetArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ZoneId == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	var resource RecordSet
 	err := ctx.RegisterResource("openstack:dns/recordSet:RecordSet", name, args, &resource, opts...)
@@ -224,4 +234,43 @@ type RecordSetArgs struct {
 
 func (RecordSetArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*recordSetArgs)(nil)).Elem()
+}
+
+type RecordSetInput interface {
+	pulumi.Input
+
+	ToRecordSetOutput() RecordSetOutput
+	ToRecordSetOutputWithContext(ctx context.Context) RecordSetOutput
+}
+
+func (RecordSet) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecordSet)(nil)).Elem()
+}
+
+func (i RecordSet) ToRecordSetOutput() RecordSetOutput {
+	return i.ToRecordSetOutputWithContext(context.Background())
+}
+
+func (i RecordSet) ToRecordSetOutputWithContext(ctx context.Context) RecordSetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordSetOutput)
+}
+
+type RecordSetOutput struct {
+	*pulumi.OutputState
+}
+
+func (RecordSetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecordSetOutput)(nil)).Elem()
+}
+
+func (o RecordSetOutput) ToRecordSetOutput() RecordSetOutput {
+	return o
+}
+
+func (o RecordSetOutput) ToRecordSetOutputWithContext(ctx context.Context) RecordSetOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RecordSetOutput{})
 }

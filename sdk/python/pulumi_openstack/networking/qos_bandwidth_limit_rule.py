@@ -41,6 +41,14 @@ class QosBandwidthLimitRule(pulumi.CustomResource):
             qos_policy_id=qos_policy1.id)
         ```
 
+        ## Import
+
+        QoS bandwidth limit rules can be imported using the `qos_policy_id/bandwidth_limit_rule` format, e.g.
+
+        ```sh
+         $ pulumi import openstack:networking/qosBandwidthLimitRule:QosBandwidthLimitRule bw_limit_rule_1 d6ae28ce-fcb5-4180-aa62-d260a27e09ae/46dfb556-b92f-48ce-94c5-9a9e2140de94
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] direction: The direction of traffic. Defaults to "egress". Changing this updates the direction of the
@@ -73,10 +81,10 @@ class QosBandwidthLimitRule(pulumi.CustomResource):
 
             __props__['direction'] = direction
             __props__['max_burst_kbps'] = max_burst_kbps
-            if max_kbps is None:
+            if max_kbps is None and not opts.urn:
                 raise TypeError("Missing required property 'max_kbps'")
             __props__['max_kbps'] = max_kbps
-            if qos_policy_id is None:
+            if qos_policy_id is None and not opts.urn:
                 raise TypeError("Missing required property 'qos_policy_id'")
             __props__['qos_policy_id'] = qos_policy_id
             __props__['region'] = region

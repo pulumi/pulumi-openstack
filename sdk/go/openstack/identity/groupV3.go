@@ -4,6 +4,7 @@
 package identity
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -36,6 +37,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// groups can be imported using the `id`, e.g.
+//
+// ```sh
+//  $ pulumi import openstack:identity/groupV3:GroupV3 group_1 89c60255-9bd6-460c-822a-e2b959ede9d2
+// ```
 type GroupV3 struct {
 	pulumi.CustomResourceState
 
@@ -57,6 +66,7 @@ func NewGroupV3(ctx *pulumi.Context,
 	if args == nil {
 		args = &GroupV3Args{}
 	}
+
 	var resource GroupV3
 	err := ctx.RegisterResource("openstack:identity/groupV3:GroupV3", name, args, &resource, opts...)
 	if err != nil {
@@ -137,4 +147,43 @@ type GroupV3Args struct {
 
 func (GroupV3Args) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupV3Args)(nil)).Elem()
+}
+
+type GroupV3Input interface {
+	pulumi.Input
+
+	ToGroupV3Output() GroupV3Output
+	ToGroupV3OutputWithContext(ctx context.Context) GroupV3Output
+}
+
+func (GroupV3) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupV3)(nil)).Elem()
+}
+
+func (i GroupV3) ToGroupV3Output() GroupV3Output {
+	return i.ToGroupV3OutputWithContext(context.Background())
+}
+
+func (i GroupV3) ToGroupV3OutputWithContext(ctx context.Context) GroupV3Output {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupV3Output)
+}
+
+type GroupV3Output struct {
+	*pulumi.OutputState
+}
+
+func (GroupV3Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupV3Output)(nil)).Elem()
+}
+
+func (o GroupV3Output) ToGroupV3Output() GroupV3Output {
+	return o
+}
+
+func (o GroupV3Output) ToGroupV3OutputWithContext(ctx context.Context) GroupV3Output {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(GroupV3Output{})
 }

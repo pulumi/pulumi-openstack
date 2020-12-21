@@ -383,7 +383,14 @@ func Provider() tfbridge.ProviderInfo {
 			"openstack_keymanager_order_v1":     {Tok: openstackResource(keymanagerMod, "OrderV1")},
 
 			// Orchestration
-			"openstack_orchestration_stack_v1": {Tok: openstackResource(orchestrationMod, "StackV1")},
+			"openstack_orchestration_stack_v1": {
+				Tok: openstackResource(orchestrationMod, "StackV1"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"outputs": {
+						Name: "StackOutputs",
+					},
+				},
+			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			// Block Storage

@@ -4,6 +4,7 @@
 package identity
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -34,6 +35,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Roles can be imported using the `id`, e.g.
+//
+// ```sh
+//  $ pulumi import openstack:identity/role:Role role_1 89c60255-9bd6-460c-822a-e2b959ede9d2
+// ```
 type Role struct {
 	pulumi.CustomResourceState
 
@@ -53,6 +62,7 @@ func NewRole(ctx *pulumi.Context,
 	if args == nil {
 		args = &RoleArgs{}
 	}
+
 	var resource Role
 	err := ctx.RegisterResource("openstack:identity/role:Role", name, args, &resource, opts...)
 	if err != nil {
@@ -125,4 +135,43 @@ type RoleArgs struct {
 
 func (RoleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*roleArgs)(nil)).Elem()
+}
+
+type RoleInput interface {
+	pulumi.Input
+
+	ToRoleOutput() RoleOutput
+	ToRoleOutputWithContext(ctx context.Context) RoleOutput
+}
+
+func (Role) ElementType() reflect.Type {
+	return reflect.TypeOf((*Role)(nil)).Elem()
+}
+
+func (i Role) ToRoleOutput() RoleOutput {
+	return i.ToRoleOutputWithContext(context.Background())
+}
+
+func (i Role) ToRoleOutputWithContext(ctx context.Context) RoleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoleOutput)
+}
+
+type RoleOutput struct {
+	*pulumi.OutputState
+}
+
+func (RoleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoleOutput)(nil)).Elem()
+}
+
+func (o RoleOutput) ToRoleOutput() RoleOutput {
+	return o
+}
+
+func (o RoleOutput) ToRoleOutputWithContext(ctx context.Context) RoleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RoleOutput{})
 }

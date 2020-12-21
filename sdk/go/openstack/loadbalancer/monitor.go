@@ -4,6 +4,7 @@
 package loadbalancer
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -37,6 +38,20 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Load Balancer Pool Monitor can be imported using the Monitor ID, e.g.
+//
+// ```sh
+//  $ pulumi import openstack:loadbalancer/monitor:Monitor monitor_1 47c26fc3-2403-427a-8c79-1589bd0533c2
+// ```
+//
+//  In case of using OpenContrail, the import may not work properly. If you face an issue, try to import the monitor providing its parent pool ID
+//
+// ```sh
+//  $ pulumi import openstack:loadbalancer/monitor:Monitor monitor_1 47c26fc3-2403-427a-8c79-1589bd0533c2/708bc224-0f8c-4981-ac82-97095fe051b6
 // ```
 type Monitor struct {
 	pulumi.CustomResourceState
@@ -91,23 +106,24 @@ type Monitor struct {
 // NewMonitor registers a new resource with the given unique name, arguments, and options.
 func NewMonitor(ctx *pulumi.Context,
 	name string, args *MonitorArgs, opts ...pulumi.ResourceOption) (*Monitor, error) {
-	if args == nil || args.Delay == nil {
-		return nil, errors.New("missing required argument 'Delay'")
-	}
-	if args == nil || args.MaxRetries == nil {
-		return nil, errors.New("missing required argument 'MaxRetries'")
-	}
-	if args == nil || args.PoolId == nil {
-		return nil, errors.New("missing required argument 'PoolId'")
-	}
-	if args == nil || args.Timeout == nil {
-		return nil, errors.New("missing required argument 'Timeout'")
-	}
-	if args == nil || args.Type == nil {
-		return nil, errors.New("missing required argument 'Type'")
-	}
 	if args == nil {
-		args = &MonitorArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Delay == nil {
+		return nil, errors.New("invalid value for required argument 'Delay'")
+	}
+	if args.MaxRetries == nil {
+		return nil, errors.New("invalid value for required argument 'MaxRetries'")
+	}
+	if args.PoolId == nil {
+		return nil, errors.New("invalid value for required argument 'PoolId'")
+	}
+	if args.Timeout == nil {
+		return nil, errors.New("invalid value for required argument 'Timeout'")
+	}
+	if args.Type == nil {
+		return nil, errors.New("invalid value for required argument 'Type'")
 	}
 	var resource Monitor
 	err := ctx.RegisterResource("openstack:loadbalancer/monitor:Monitor", name, args, &resource, opts...)
@@ -329,4 +345,43 @@ type MonitorArgs struct {
 
 func (MonitorArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*monitorArgs)(nil)).Elem()
+}
+
+type MonitorInput interface {
+	pulumi.Input
+
+	ToMonitorOutput() MonitorOutput
+	ToMonitorOutputWithContext(ctx context.Context) MonitorOutput
+}
+
+func (Monitor) ElementType() reflect.Type {
+	return reflect.TypeOf((*Monitor)(nil)).Elem()
+}
+
+func (i Monitor) ToMonitorOutput() MonitorOutput {
+	return i.ToMonitorOutputWithContext(context.Background())
+}
+
+func (i Monitor) ToMonitorOutputWithContext(ctx context.Context) MonitorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorOutput)
+}
+
+type MonitorOutput struct {
+	*pulumi.OutputState
+}
+
+func (MonitorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitorOutput)(nil)).Elem()
+}
+
+func (o MonitorOutput) ToMonitorOutput() MonitorOutput {
+	return o
+}
+
+func (o MonitorOutput) ToMonitorOutputWithContext(ctx context.Context) MonitorOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(MonitorOutput{})
 }

@@ -55,6 +55,14 @@ class Subnet(pulumi.CustomResource):
             network_id=network1.id)
         ```
 
+        ## Import
+
+        Subnets can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:networking/subnet:Subnet subnet_1 da4faf16-5546-41e4-8330-4d0002b74048
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SubnetAllocationPoolArgs']]]] allocation_pools: A block declaring the start and end range of
@@ -130,8 +138,8 @@ class Subnet(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['allocation_pools'] = allocation_pools
-            if allocation_pools_collection is not None:
-                warnings.warn("use allocation_pool instead", DeprecationWarning)
+            if allocation_pools_collection is not None and not opts.urn:
+                warnings.warn("""use allocation_pool instead""", DeprecationWarning)
                 pulumi.log.warn("allocation_pools_collection is deprecated: use allocation_pool instead")
             __props__['allocation_pools_collection'] = allocation_pools_collection
             __props__['cidr'] = cidr
@@ -139,15 +147,15 @@ class Subnet(pulumi.CustomResource):
             __props__['dns_nameservers'] = dns_nameservers
             __props__['enable_dhcp'] = enable_dhcp
             __props__['gateway_ip'] = gateway_ip
-            if host_routes is not None:
-                warnings.warn("Use openstack_networking_subnet_route_v2 instead", DeprecationWarning)
+            if host_routes is not None and not opts.urn:
+                warnings.warn("""Use openstack_networking_subnet_route_v2 instead""", DeprecationWarning)
                 pulumi.log.warn("host_routes is deprecated: Use openstack_networking_subnet_route_v2 instead")
             __props__['host_routes'] = host_routes
             __props__['ip_version'] = ip_version
             __props__['ipv6_address_mode'] = ipv6_address_mode
             __props__['ipv6_ra_mode'] = ipv6_ra_mode
             __props__['name'] = name
-            if network_id is None:
+            if network_id is None and not opts.urn:
                 raise TypeError("Missing required property 'network_id'")
             __props__['network_id'] = network_id
             __props__['no_gateway'] = no_gateway

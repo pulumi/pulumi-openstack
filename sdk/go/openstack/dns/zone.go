@@ -4,6 +4,7 @@
 package dns
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -37,6 +38,18 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// This resource can be imported by specifying the zone ID with optional project ID
+//
+// ```sh
+//  $ pulumi import openstack:dns/zone:Zone zone_1 <zone_id>
+// ```
+//
+// ```sh
+//  $ pulumi import openstack:dns/zone:Zone zone_1 <zone_id>:<project_id>
+// ```
 type Zone struct {
 	pulumi.CustomResourceState
 
@@ -45,6 +58,10 @@ type Zone struct {
 	Attributes pulumi.MapOutput `pulumi:"attributes"`
 	// A description of the zone.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Disable wait for zone to reach ACTIVE
+	// status. The check is enabled by default. If this argument is true, zone
+	// will be considered as created/updated if OpenStack request returned success.
+	DisableStatusCheck pulumi.BoolPtrOutput `pulumi:"disableStatusCheck"`
 	// The email contact for the zone record.
 	Email pulumi.StringPtrOutput `pulumi:"email"`
 	// An array of master DNS servers. For when `type` is
@@ -78,6 +95,7 @@ func NewZone(ctx *pulumi.Context,
 	if args == nil {
 		args = &ZoneArgs{}
 	}
+
 	var resource Zone
 	err := ctx.RegisterResource("openstack:dns/zone:Zone", name, args, &resource, opts...)
 	if err != nil {
@@ -105,6 +123,10 @@ type zoneState struct {
 	Attributes map[string]interface{} `pulumi:"attributes"`
 	// A description of the zone.
 	Description *string `pulumi:"description"`
+	// Disable wait for zone to reach ACTIVE
+	// status. The check is enabled by default. If this argument is true, zone
+	// will be considered as created/updated if OpenStack request returned success.
+	DisableStatusCheck *bool `pulumi:"disableStatusCheck"`
 	// The email contact for the zone record.
 	Email *string `pulumi:"email"`
 	// An array of master DNS servers. For when `type` is
@@ -138,6 +160,10 @@ type ZoneState struct {
 	Attributes pulumi.MapInput
 	// A description of the zone.
 	Description pulumi.StringPtrInput
+	// Disable wait for zone to reach ACTIVE
+	// status. The check is enabled by default. If this argument is true, zone
+	// will be considered as created/updated if OpenStack request returned success.
+	DisableStatusCheck pulumi.BoolPtrInput
 	// The email contact for the zone record.
 	Email pulumi.StringPtrInput
 	// An array of master DNS servers. For when `type` is
@@ -175,6 +201,10 @@ type zoneArgs struct {
 	Attributes map[string]interface{} `pulumi:"attributes"`
 	// A description of the zone.
 	Description *string `pulumi:"description"`
+	// Disable wait for zone to reach ACTIVE
+	// status. The check is enabled by default. If this argument is true, zone
+	// will be considered as created/updated if OpenStack request returned success.
+	DisableStatusCheck *bool `pulumi:"disableStatusCheck"`
 	// The email contact for the zone record.
 	Email *string `pulumi:"email"`
 	// An array of master DNS servers. For when `type` is
@@ -209,6 +239,10 @@ type ZoneArgs struct {
 	Attributes pulumi.MapInput
 	// A description of the zone.
 	Description pulumi.StringPtrInput
+	// Disable wait for zone to reach ACTIVE
+	// status. The check is enabled by default. If this argument is true, zone
+	// will be considered as created/updated if OpenStack request returned success.
+	DisableStatusCheck pulumi.BoolPtrInput
 	// The email contact for the zone record.
 	Email pulumi.StringPtrInput
 	// An array of master DNS servers. For when `type` is
@@ -238,4 +272,43 @@ type ZoneArgs struct {
 
 func (ZoneArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*zoneArgs)(nil)).Elem()
+}
+
+type ZoneInput interface {
+	pulumi.Input
+
+	ToZoneOutput() ZoneOutput
+	ToZoneOutputWithContext(ctx context.Context) ZoneOutput
+}
+
+func (Zone) ElementType() reflect.Type {
+	return reflect.TypeOf((*Zone)(nil)).Elem()
+}
+
+func (i Zone) ToZoneOutput() ZoneOutput {
+	return i.ToZoneOutputWithContext(context.Background())
+}
+
+func (i Zone) ToZoneOutputWithContext(ctx context.Context) ZoneOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneOutput)
+}
+
+type ZoneOutput struct {
+	*pulumi.OutputState
+}
+
+func (ZoneOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneOutput)(nil)).Elem()
+}
+
+func (o ZoneOutput) ToZoneOutput() ZoneOutput {
+	return o
+}
+
+func (o ZoneOutput) ToZoneOutputWithContext(ctx context.Context) ZoneOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ZoneOutput{})
 }

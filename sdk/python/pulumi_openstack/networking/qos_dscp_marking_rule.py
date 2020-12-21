@@ -37,6 +37,14 @@ class QosDscpMarkingRule(pulumi.CustomResource):
             qos_policy_id=qos_policy1.id)
         ```
 
+        ## Import
+
+        QoS DSCP marking rules can be imported using the `qos_policy_id/dscp_marking_rule_id` format, e.g.
+
+        ```sh
+         $ pulumi import openstack:networking/qosDscpMarkingRule:QosDscpMarkingRule dscp_marking_rule_1 d6ae28ce-fcb5-4180-aa62-d260a27e09ae/46dfb556-b92f-48ce-94c5-9a9e2140de94
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] dscp_mark: The value of DSCP mark. Changing this updates the DSCP mark value existing
@@ -63,10 +71,10 @@ class QosDscpMarkingRule(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if dscp_mark is None:
+            if dscp_mark is None and not opts.urn:
                 raise TypeError("Missing required property 'dscp_mark'")
             __props__['dscp_mark'] = dscp_mark
-            if qos_policy_id is None:
+            if qos_policy_id is None and not opts.urn:
                 raise TypeError("Missing required property 'qos_policy_id'")
             __props__['qos_policy_id'] = qos_policy_id
             __props__['region'] = region

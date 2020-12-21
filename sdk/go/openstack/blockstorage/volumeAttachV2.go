@@ -4,6 +4,7 @@
 package blockstorage
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -57,6 +58,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// It is not possible to import this resource.
 type VolumeAttachV2 struct {
 	pulumi.CustomResourceState
 
@@ -105,14 +110,15 @@ type VolumeAttachV2 struct {
 // NewVolumeAttachV2 registers a new resource with the given unique name, arguments, and options.
 func NewVolumeAttachV2(ctx *pulumi.Context,
 	name string, args *VolumeAttachV2Args, opts ...pulumi.ResourceOption) (*VolumeAttachV2, error) {
-	if args == nil || args.HostName == nil {
-		return nil, errors.New("missing required argument 'HostName'")
-	}
-	if args == nil || args.VolumeId == nil {
-		return nil, errors.New("missing required argument 'VolumeId'")
-	}
 	if args == nil {
-		args = &VolumeAttachV2Args{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.HostName == nil {
+		return nil, errors.New("invalid value for required argument 'HostName'")
+	}
+	if args.VolumeId == nil {
+		return nil, errors.New("invalid value for required argument 'VolumeId'")
 	}
 	var resource VolumeAttachV2
 	err := ctx.RegisterResource("openstack:blockstorage/volumeAttachV2:VolumeAttachV2", name, args, &resource, opts...)
@@ -298,4 +304,43 @@ type VolumeAttachV2Args struct {
 
 func (VolumeAttachV2Args) ElementType() reflect.Type {
 	return reflect.TypeOf((*volumeAttachV2Args)(nil)).Elem()
+}
+
+type VolumeAttachV2Input interface {
+	pulumi.Input
+
+	ToVolumeAttachV2Output() VolumeAttachV2Output
+	ToVolumeAttachV2OutputWithContext(ctx context.Context) VolumeAttachV2Output
+}
+
+func (VolumeAttachV2) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeAttachV2)(nil)).Elem()
+}
+
+func (i VolumeAttachV2) ToVolumeAttachV2Output() VolumeAttachV2Output {
+	return i.ToVolumeAttachV2OutputWithContext(context.Background())
+}
+
+func (i VolumeAttachV2) ToVolumeAttachV2OutputWithContext(ctx context.Context) VolumeAttachV2Output {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeAttachV2Output)
+}
+
+type VolumeAttachV2Output struct {
+	*pulumi.OutputState
+}
+
+func (VolumeAttachV2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeAttachV2Output)(nil)).Elem()
+}
+
+func (o VolumeAttachV2Output) ToVolumeAttachV2Output() VolumeAttachV2Output {
+	return o
+}
+
+func (o VolumeAttachV2Output) ToVolumeAttachV2OutputWithContext(ctx context.Context) VolumeAttachV2Output {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(VolumeAttachV2Output{})
 }

@@ -13,3 +13,35 @@ from .share_access import *
 from .share_network import *
 from ._inputs import *
 from . import outputs
+
+def _register_module():
+    import pulumi
+    from .. import _utilities
+
+
+    class Module(pulumi.runtime.ResourceModule):
+        _version = _utilities.get_semver_version()
+
+        def version(self):
+            return Module._version
+
+        def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
+            if typ == "openstack:sharedfilesystem/securityService:SecurityService":
+                return SecurityService(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "openstack:sharedfilesystem/share:Share":
+                return Share(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "openstack:sharedfilesystem/shareAccess:ShareAccess":
+                return ShareAccess(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "openstack:sharedfilesystem/shareNetwork:ShareNetwork":
+                return ShareNetwork(name, pulumi.ResourceOptions(urn=urn))
+            else:
+                raise Exception(f"unknown resource type {typ}")
+
+
+    _module_instance = Module()
+    pulumi.runtime.register_resource_module("openstack", "sharedfilesystem/securityService", _module_instance)
+    pulumi.runtime.register_resource_module("openstack", "sharedfilesystem/share", _module_instance)
+    pulumi.runtime.register_resource_module("openstack", "sharedfilesystem/shareAccess", _module_instance)
+    pulumi.runtime.register_resource_module("openstack", "sharedfilesystem/shareNetwork", _module_instance)
+
+_register_module()

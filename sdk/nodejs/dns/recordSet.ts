@@ -28,6 +28,14 @@ import * as utilities from "../utilities";
  *     zoneId: exampleZone.id,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * This resource can be imported by specifying the zone ID and recordset ID, separated by a forward slash.
+ *
+ * ```sh
+ *  $ pulumi import openstack:dns/recordSet:RecordSet recordset_1 <zone_id>/<recordset_id>
+ * ```
  */
 export class RecordSet extends pulumi.CustomResource {
     /**
@@ -120,7 +128,7 @@ export class RecordSet extends pulumi.CustomResource {
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as RecordSetArgs | undefined;
-            if (!args || args.zoneId === undefined) {
+            if ((!args || args.zoneId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'zoneId'");
             }
             inputs["description"] = args ? args.description : undefined;

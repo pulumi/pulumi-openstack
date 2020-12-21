@@ -53,6 +53,14 @@ class Policy(pulumi.CustomResource):
         ])
         ```
 
+        ## Import
+
+        Firewall Policies can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:firewall/policy:Policy policy_1 07f422e6-c596-474b-8b94-fe2c12506ce0
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] audited: Audit status of the firewall policy

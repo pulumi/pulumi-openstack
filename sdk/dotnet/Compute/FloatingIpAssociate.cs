@@ -10,8 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.OpenStack.Compute
 {
     /// <summary>
-    /// Associate a floating IP to an instance. This can be used instead of the
-    /// `floating_ip` options in `openstack.compute.Instance`.
+    /// Associate a floating IP to an instance.
     /// 
     /// ## Example Usage
     /// ### Automatically detect the correct network
@@ -91,6 +90,14 @@ namespace Pulumi.OpenStack.Compute
     ///     }
     /// 
     /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// This resource can be imported by specifying all three arguments, separated by a forward slash
+    /// 
+    /// ```sh
+    ///  $ pulumi import openstack:compute/floatingIpAssociate:FloatingIpAssociate fip_1 &lt;floating_ip&gt;/&lt;instance_id&gt;/&lt;fixed_ip&gt;
     /// ```
     /// </summary>
     public partial class FloatingIpAssociate : Pulumi.CustomResource

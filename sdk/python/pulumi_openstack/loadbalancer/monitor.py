@@ -48,6 +48,20 @@ class Monitor(pulumi.CustomResource):
             type="PING")
         ```
 
+        ## Import
+
+        Load Balancer Pool Monitor can be imported using the Monitor ID, e.g.
+
+        ```sh
+         $ pulumi import openstack:loadbalancer/monitor:Monitor monitor_1 47c26fc3-2403-427a-8c79-1589bd0533c2
+        ```
+
+         In case of using OpenContrail, the import may not work properly. If you face an issue, try to import the monitor providing its parent pool ID
+
+        ```sh
+         $ pulumi import openstack:loadbalancer/monitor:Monitor monitor_1 47c26fc3-2403-427a-8c79-1589bd0533c2/708bc224-0f8c-4981-ac82-97095fe051b6
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] admin_state_up: The administrative state of the monitor.
@@ -101,25 +115,25 @@ class Monitor(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['admin_state_up'] = admin_state_up
-            if delay is None:
+            if delay is None and not opts.urn:
                 raise TypeError("Missing required property 'delay'")
             __props__['delay'] = delay
             __props__['expected_codes'] = expected_codes
             __props__['http_method'] = http_method
-            if max_retries is None:
+            if max_retries is None and not opts.urn:
                 raise TypeError("Missing required property 'max_retries'")
             __props__['max_retries'] = max_retries
             __props__['max_retries_down'] = max_retries_down
             __props__['name'] = name
-            if pool_id is None:
+            if pool_id is None and not opts.urn:
                 raise TypeError("Missing required property 'pool_id'")
             __props__['pool_id'] = pool_id
             __props__['region'] = region
             __props__['tenant_id'] = tenant_id
-            if timeout is None:
+            if timeout is None and not opts.urn:
                 raise TypeError("Missing required property 'timeout'")
             __props__['timeout'] = timeout
-            if type is None:
+            if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__['type'] = type
             __props__['url_path'] = url_path

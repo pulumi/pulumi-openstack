@@ -116,6 +116,14 @@ import * as utilities from "../utilities";
  *
  * It is recommended to use `dependsOn` for the attach resources
  * to enforce the volume attachments to happen one at a time.
+ *
+ * ## Import
+ *
+ * Volume Attachments can be imported using the Instance ID and Volume ID separated by a slash, e.g.
+ *
+ * ```sh
+ *  $ pulumi import openstack:compute/volumeAttach:VolumeAttach va_1 89c60255-9bd6-460c-822a-e2b959ede9d2/45670584-225f-46c3-b33e-6707b589b666
+ * ```
  */
 export class VolumeAttach extends pulumi.CustomResource {
     /**
@@ -190,10 +198,10 @@ export class VolumeAttach extends pulumi.CustomResource {
             inputs["volumeId"] = state ? state.volumeId : undefined;
         } else {
             const args = argsOrState as VolumeAttachArgs | undefined;
-            if (!args || args.instanceId === undefined) {
+            if ((!args || args.instanceId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if (!args || args.volumeId === undefined) {
+            if ((!args || args.volumeId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'volumeId'");
             }
             inputs["device"] = args ? args.device : undefined;

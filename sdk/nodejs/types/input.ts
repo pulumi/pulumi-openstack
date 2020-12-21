@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 
 export namespace blockstorage {
     export interface VolumeAttachment {
@@ -144,6 +143,14 @@ export namespace compute {
          * thing is to leave this empty. Changing this creates a new server.
          */
         diskBus?: pulumi.Input<string>;
+        /**
+         * Specifies the guest server disk file system format,
+         * such as `ext2`, `ext3`, `ext4`, `xfs` or `swap`. Swap block device mappings
+         * have the following restrictions: sourceType must be blank and destinationType
+         * must be local and only one swap disk per server and the size of the swap disk
+         * must be less than or equal to the swap size of the flavor. Changing this
+         * creates a new server.
+         */
         guestFormat?: pulumi.Input<string>;
         /**
          * The source type of the device. Must be one of
@@ -778,7 +785,7 @@ export namespace objectstorage {
 }
 
 export namespace orchestration {
-    export interface StackV1Output {
+    export interface StackV1StackOutput {
         /**
          * The description of the stack resource.
          */

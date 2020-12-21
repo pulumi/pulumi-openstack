@@ -4,6 +4,7 @@
 package networking
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -126,11 +127,12 @@ type Trunk struct {
 // NewTrunk registers a new resource with the given unique name, arguments, and options.
 func NewTrunk(ctx *pulumi.Context,
 	name string, args *TrunkArgs, opts ...pulumi.ResourceOption) (*Trunk, error) {
-	if args == nil || args.PortId == nil {
-		return nil, errors.New("missing required argument 'PortId'")
-	}
 	if args == nil {
-		args = &TrunkArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.PortId == nil {
+		return nil, errors.New("invalid value for required argument 'PortId'")
 	}
 	var resource Trunk
 	err := ctx.RegisterResource("openstack:networking/trunk:Trunk", name, args, &resource, opts...)
@@ -278,4 +280,43 @@ type TrunkArgs struct {
 
 func (TrunkArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*trunkArgs)(nil)).Elem()
+}
+
+type TrunkInput interface {
+	pulumi.Input
+
+	ToTrunkOutput() TrunkOutput
+	ToTrunkOutputWithContext(ctx context.Context) TrunkOutput
+}
+
+func (Trunk) ElementType() reflect.Type {
+	return reflect.TypeOf((*Trunk)(nil)).Elem()
+}
+
+func (i Trunk) ToTrunkOutput() TrunkOutput {
+	return i.ToTrunkOutputWithContext(context.Background())
+}
+
+func (i Trunk) ToTrunkOutputWithContext(ctx context.Context) TrunkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrunkOutput)
+}
+
+type TrunkOutput struct {
+	*pulumi.OutputState
+}
+
+func (TrunkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrunkOutput)(nil)).Elem()
+}
+
+func (o TrunkOutput) ToTrunkOutput() TrunkOutput {
+	return o
+}
+
+func (o TrunkOutput) ToTrunkOutputWithContext(ctx context.Context) TrunkOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(TrunkOutput{})
 }

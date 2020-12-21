@@ -97,6 +97,14 @@ class ApplicationCredential(pulumi.CustomResource):
             expires_at="2019-02-13T12:12:12Z")
         ```
 
+        ## Import
+
+        Application Credentials can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:identity/applicationCredential:ApplicationCredential application_credential_1 c17304b7-0953-4738-abb0-67005882b0a0
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationCredentialAccessRuleArgs']]]] access_rules: A collection of one or more access rules, which

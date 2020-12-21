@@ -74,6 +74,14 @@ class ShareNetwork(pulumi.CustomResource):
             security_service_ids=[securityservice1.id])
         ```
 
+        ## Import
+
+        This resource can be imported by specifying the ID of the share network
+
+        ```sh
+         $ pulumi import openstack:sharedfilesystem/shareNetwork:ShareNetwork sharenetwork_1 <id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The human-readable description for the share network.
@@ -112,10 +120,10 @@ class ShareNetwork(pulumi.CustomResource):
 
             __props__['description'] = description
             __props__['name'] = name
-            if neutron_net_id is None:
+            if neutron_net_id is None and not opts.urn:
                 raise TypeError("Missing required property 'neutron_net_id'")
             __props__['neutron_net_id'] = neutron_net_id
-            if neutron_subnet_id is None:
+            if neutron_subnet_id is None and not opts.urn:
                 raise TypeError("Missing required property 'neutron_subnet_id'")
             __props__['neutron_subnet_id'] = neutron_subnet_id
             __props__['region'] = region

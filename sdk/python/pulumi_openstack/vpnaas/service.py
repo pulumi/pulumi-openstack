@@ -40,6 +40,14 @@ class Service(pulumi.CustomResource):
             router_id="14a75700-fc03-4602-9294-26ee44f366b3")
         ```
 
+        ## Import
+
+        Services can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:vpnaas/service:Service service_1 832cb7f3-59fe-40cf-8f64-8350ffc03272
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] admin_state_up: The administrative state of the resource. Can either be up(true) or down(false).
@@ -79,7 +87,7 @@ class Service(pulumi.CustomResource):
             __props__['description'] = description
             __props__['name'] = name
             __props__['region'] = region
-            if router_id is None:
+            if router_id is None and not opts.urn:
                 raise TypeError("Missing required property 'router_id'")
             __props__['router_id'] = router_id
             __props__['subnet_id'] = subnet_id

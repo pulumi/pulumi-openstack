@@ -45,6 +45,14 @@ namespace Pulumi.OpenStack.Dns
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// This resource can be imported by specifying the zone ID and recordset ID, separated by a forward slash.
+    /// 
+    /// ```sh
+    ///  $ pulumi import openstack:dns/recordSet:RecordSet recordset_1 &lt;zone_id&gt;/&lt;recordset_id&gt;
+    /// ```
     /// </summary>
     public partial class RecordSet : Pulumi.CustomResource
     {

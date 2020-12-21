@@ -69,6 +69,14 @@ class InterfaceAttach(pulumi.CustomResource):
             port_id=port1.id)
         ```
 
+        ## Import
+
+        Interface Attachments can be imported using the Instance ID and Port ID separated by a slash, e.g.
+
+        ```sh
+         $ pulumi import openstack:compute/interfaceAttach:InterfaceAttach ai_1 89c60255-9bd6-460c-822a-e2b959ede9d2/45670584-225f-46c3-b33e-6707b589b666
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] fixed_ip: An IP address to assosciate with the port.
@@ -100,7 +108,7 @@ class InterfaceAttach(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['fixed_ip'] = fixed_ip
-            if instance_id is None:
+            if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
             __props__['instance_id'] = instance_id
             __props__['network_id'] = network_id
@@ -152,7 +160,7 @@ class InterfaceAttach(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="fixedIp")
-    def fixed_ip(self) -> pulumi.Output[Optional[str]]:
+    def fixed_ip(self) -> pulumi.Output[str]:
         """
         An IP address to assosciate with the port.
         _NOTE_: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.

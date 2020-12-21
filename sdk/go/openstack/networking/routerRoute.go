@@ -4,6 +4,7 @@
 package networking
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -70,6 +71,14 @@ import (
 // The `nextHop` IP address must be directly reachable from the router at the ``networking.RouterRoute``
 // resource creation time.  You can ensure that by explicitly specifying a dependency on the ``networking.RouterInterface``
 // resource that connects the next hop to the router, as in the example above.
+//
+// ## Import
+//
+// Routing entries can be imported using a combined ID using the following format``<router_id>-route-<destination_cidr>-<next_hop>``
+//
+// ```sh
+//  $ pulumi import openstack:networking/routerRoute:RouterRoute router_route_1 686fe248-386c-4f70-9f6c-281607dad079-route-10.0.1.0/24-192.168.199.25
+// ```
 type RouterRoute struct {
 	pulumi.CustomResourceState
 
@@ -92,17 +101,18 @@ type RouterRoute struct {
 // NewRouterRoute registers a new resource with the given unique name, arguments, and options.
 func NewRouterRoute(ctx *pulumi.Context,
 	name string, args *RouterRouteArgs, opts ...pulumi.ResourceOption) (*RouterRoute, error) {
-	if args == nil || args.DestinationCidr == nil {
-		return nil, errors.New("missing required argument 'DestinationCidr'")
-	}
-	if args == nil || args.NextHop == nil {
-		return nil, errors.New("missing required argument 'NextHop'")
-	}
-	if args == nil || args.RouterId == nil {
-		return nil, errors.New("missing required argument 'RouterId'")
-	}
 	if args == nil {
-		args = &RouterRouteArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DestinationCidr == nil {
+		return nil, errors.New("invalid value for required argument 'DestinationCidr'")
+	}
+	if args.NextHop == nil {
+		return nil, errors.New("invalid value for required argument 'NextHop'")
+	}
+	if args.RouterId == nil {
+		return nil, errors.New("invalid value for required argument 'RouterId'")
 	}
 	var resource RouterRoute
 	err := ctx.RegisterResource("openstack:networking/routerRoute:RouterRoute", name, args, &resource, opts...)
@@ -200,4 +210,43 @@ type RouterRouteArgs struct {
 
 func (RouterRouteArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*routerRouteArgs)(nil)).Elem()
+}
+
+type RouterRouteInput interface {
+	pulumi.Input
+
+	ToRouterRouteOutput() RouterRouteOutput
+	ToRouterRouteOutputWithContext(ctx context.Context) RouterRouteOutput
+}
+
+func (RouterRoute) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterRoute)(nil)).Elem()
+}
+
+func (i RouterRoute) ToRouterRouteOutput() RouterRouteOutput {
+	return i.ToRouterRouteOutputWithContext(context.Background())
+}
+
+func (i RouterRoute) ToRouterRouteOutputWithContext(ctx context.Context) RouterRouteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterRouteOutput)
+}
+
+type RouterRouteOutput struct {
+	*pulumi.OutputState
+}
+
+func (RouterRouteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterRouteOutput)(nil)).Elem()
+}
+
+func (o RouterRouteOutput) ToRouterRouteOutput() RouterRouteOutput {
+	return o
+}
+
+func (o RouterRouteOutput) ToRouterRouteOutputWithContext(ctx context.Context) RouterRouteOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RouterRouteOutput{})
 }

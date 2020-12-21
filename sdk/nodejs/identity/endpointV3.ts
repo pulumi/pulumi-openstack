@@ -24,6 +24,14 @@ import * as utilities from "../utilities";
  *     url: "http://my-endpoint",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Endpoints can be imported using the `id`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import openstack:identity/endpointV3:EndpointV3 endpoint_1 5392472b-106a-4845-90c6-7c8445f18770
+ * ```
  */
 export class EndpointV3 extends pulumi.CustomResource {
     /**
@@ -111,13 +119,13 @@ export class EndpointV3 extends pulumi.CustomResource {
             inputs["url"] = state ? state.url : undefined;
         } else {
             const args = argsOrState as EndpointV3Args | undefined;
-            if (!args || args.endpointRegion === undefined) {
+            if ((!args || args.endpointRegion === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'endpointRegion'");
             }
-            if (!args || args.serviceId === undefined) {
+            if ((!args || args.serviceId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'serviceId'");
             }
-            if (!args || args.url === undefined) {
+            if ((!args || args.url === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'url'");
             }
             inputs["endpointRegion"] = args ? args.endpointRegion : undefined;

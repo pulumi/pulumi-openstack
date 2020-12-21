@@ -19,6 +19,14 @@ import * as utilities from "../utilities";
  *     protocolPort: 8080,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Load Balancer Pool Member can be imported using the Pool ID and Member ID separated by a slash, e.g.
+ *
+ * ```sh
+ *  $ pulumi import openstack:loadbalancer/member:Member member_1 c22974d2-4c95-4bcb-9819-0afc5ed303d5/9563b79c-8460-47da-8a95-2711b746510f
+ * ```
  */
 export class Member extends pulumi.CustomResource {
     /**
@@ -120,13 +128,13 @@ export class Member extends pulumi.CustomResource {
             inputs["weight"] = state ? state.weight : undefined;
         } else {
             const args = argsOrState as MemberArgs | undefined;
-            if (!args || args.address === undefined) {
+            if ((!args || args.address === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'address'");
             }
-            if (!args || args.poolId === undefined) {
+            if ((!args || args.poolId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'poolId'");
             }
-            if (!args || args.protocolPort === undefined) {
+            if ((!args || args.protocolPort === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'protocolPort'");
             }
             inputs["address"] = args ? args.address : undefined;

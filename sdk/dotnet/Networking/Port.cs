@@ -90,6 +90,14 @@ namespace Pulumi.OpenStack.Networking
     /// There are some notes to consider when connecting Instances to networks using
     /// Ports. Please see the `openstack.compute.Instance` documentation for further
     /// documentation.
+    /// 
+    /// ## Import
+    /// 
+    /// Ports can be imported using the `id`, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import openstack:networking/port:Port port_1 eae26a3e-1c33-4cc1-9c31-0cd729c438a1
+    /// ```
     /// </summary>
     public partial class Port : Pulumi.CustomResource
     {

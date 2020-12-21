@@ -54,6 +54,14 @@ class Listener(pulumi.CustomResource):
             protocol_port=8080)
         ```
 
+        ## Import
+
+        Load Balancer Listener can be imported using the Listener ID, e.g.
+
+        ```sh
+         $ pulumi import openstack:loadbalancer/listener:Listener listener_1 b67ce64e-8b26-405d-afeb-4a078901f15a
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] admin_state_up: The administrative state of the Listener.
@@ -123,14 +131,14 @@ class Listener(pulumi.CustomResource):
             __props__['default_tls_container_ref'] = default_tls_container_ref
             __props__['description'] = description
             __props__['insert_headers'] = insert_headers
-            if loadbalancer_id is None:
+            if loadbalancer_id is None and not opts.urn:
                 raise TypeError("Missing required property 'loadbalancer_id'")
             __props__['loadbalancer_id'] = loadbalancer_id
             __props__['name'] = name
-            if protocol is None:
+            if protocol is None and not opts.urn:
                 raise TypeError("Missing required property 'protocol'")
             __props__['protocol'] = protocol
-            if protocol_port is None:
+            if protocol_port is None and not opts.urn:
                 raise TypeError("Missing required property 'protocol_port'")
             __props__['protocol_port'] = protocol_port
             __props__['region'] = region

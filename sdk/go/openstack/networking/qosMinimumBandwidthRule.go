@@ -4,6 +4,7 @@
 package networking
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -42,6 +43,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// QoS minimum bandwidth rules can be imported using the `qos_policy_id/minimum_bandwidth_rule_id` format, e.g.
+//
+// ```sh
+//  $ pulumi import openstack:networking/qosMinimumBandwidthRule:QosMinimumBandwidthRule minimum_bandwidth_rule_1 d6ae28ce-fcb5-4180-aa62-d260a27e09ae/46dfb556-b92f-48ce-94c5-9a9e2140de94
+// ```
 type QosMinimumBandwidthRule struct {
 	pulumi.CustomResourceState
 
@@ -62,14 +71,15 @@ type QosMinimumBandwidthRule struct {
 // NewQosMinimumBandwidthRule registers a new resource with the given unique name, arguments, and options.
 func NewQosMinimumBandwidthRule(ctx *pulumi.Context,
 	name string, args *QosMinimumBandwidthRuleArgs, opts ...pulumi.ResourceOption) (*QosMinimumBandwidthRule, error) {
-	if args == nil || args.MinKbps == nil {
-		return nil, errors.New("missing required argument 'MinKbps'")
-	}
-	if args == nil || args.QosPolicyId == nil {
-		return nil, errors.New("missing required argument 'QosPolicyId'")
-	}
 	if args == nil {
-		args = &QosMinimumBandwidthRuleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.MinKbps == nil {
+		return nil, errors.New("invalid value for required argument 'MinKbps'")
+	}
+	if args.QosPolicyId == nil {
+		return nil, errors.New("invalid value for required argument 'QosPolicyId'")
 	}
 	var resource QosMinimumBandwidthRule
 	err := ctx.RegisterResource("openstack:networking/qosMinimumBandwidthRule:QosMinimumBandwidthRule", name, args, &resource, opts...)
@@ -159,4 +169,43 @@ type QosMinimumBandwidthRuleArgs struct {
 
 func (QosMinimumBandwidthRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*qosMinimumBandwidthRuleArgs)(nil)).Elem()
+}
+
+type QosMinimumBandwidthRuleInput interface {
+	pulumi.Input
+
+	ToQosMinimumBandwidthRuleOutput() QosMinimumBandwidthRuleOutput
+	ToQosMinimumBandwidthRuleOutputWithContext(ctx context.Context) QosMinimumBandwidthRuleOutput
+}
+
+func (QosMinimumBandwidthRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*QosMinimumBandwidthRule)(nil)).Elem()
+}
+
+func (i QosMinimumBandwidthRule) ToQosMinimumBandwidthRuleOutput() QosMinimumBandwidthRuleOutput {
+	return i.ToQosMinimumBandwidthRuleOutputWithContext(context.Background())
+}
+
+func (i QosMinimumBandwidthRule) ToQosMinimumBandwidthRuleOutputWithContext(ctx context.Context) QosMinimumBandwidthRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QosMinimumBandwidthRuleOutput)
+}
+
+type QosMinimumBandwidthRuleOutput struct {
+	*pulumi.OutputState
+}
+
+func (QosMinimumBandwidthRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QosMinimumBandwidthRuleOutput)(nil)).Elem()
+}
+
+func (o QosMinimumBandwidthRuleOutput) ToQosMinimumBandwidthRuleOutput() QosMinimumBandwidthRuleOutput {
+	return o
+}
+
+func (o QosMinimumBandwidthRuleOutput) ToQosMinimumBandwidthRuleOutputWithContext(ctx context.Context) QosMinimumBandwidthRuleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(QosMinimumBandwidthRuleOutput{})
 }

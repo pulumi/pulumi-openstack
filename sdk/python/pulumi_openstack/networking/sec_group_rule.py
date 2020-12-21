@@ -51,6 +51,14 @@ class SecGroupRule(pulumi.CustomResource):
             security_group_id=secgroup1.id)
         ```
 
+        ## Import
+
+        Security Group Rules can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:networking/secGroupRule:SecGroupRule secgroup_rule_1 aeb68ee3-6e9d-4256-955c-9584a6212745
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description of the rule. Changing this creates a new security group rule.
@@ -120,10 +128,10 @@ class SecGroupRule(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['description'] = description
-            if direction is None:
+            if direction is None and not opts.urn:
                 raise TypeError("Missing required property 'direction'")
             __props__['direction'] = direction
-            if ethertype is None:
+            if ethertype is None and not opts.urn:
                 raise TypeError("Missing required property 'ethertype'")
             __props__['ethertype'] = ethertype
             __props__['port_range_max'] = port_range_max
@@ -132,7 +140,7 @@ class SecGroupRule(pulumi.CustomResource):
             __props__['region'] = region
             __props__['remote_group_id'] = remote_group_id
             __props__['remote_ip_prefix'] = remote_ip_prefix
-            if security_group_id is None:
+            if security_group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'security_group_id'")
             __props__['security_group_id'] = security_group_id
             __props__['tenant_id'] = tenant_id

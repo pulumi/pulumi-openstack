@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -32,6 +31,14 @@ import * as utilities from "../utilities";
  *     ],
  *     poolId: "935685fb-a896-40f9-9ff4-ae531a3a00fe",
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * Load Balancer Pool Members can be imported using the Pool ID, e.g.
+ *
+ * ```sh
+ *  $ pulumi import openstack:loadbalancer/members:Members members_1 c22974d2-4c95-4bcb-9819-0afc5ed303d5
  * ```
  */
 export class Members extends pulumi.CustomResource {
@@ -97,7 +104,7 @@ export class Members extends pulumi.CustomResource {
             inputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as MembersArgs | undefined;
-            if (!args || args.poolId === undefined) {
+            if ((!args || args.poolId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'poolId'");
             }
             inputs["members"] = args ? args.members : undefined;

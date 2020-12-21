@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -75,6 +76,14 @@ import (
 // ```
 //
 // A list of ICMP types and codes can be found [here](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages).
+//
+// ## Import
+//
+// Security Groups can be imported using the `id`, e.g.
+//
+// ```sh
+//  $ pulumi import openstack:compute/secGroup:SecGroup my_secgroup 1bc30ee9-9d5b-4c30-bdd5-7f1e663f5edf
+// ```
 type SecGroup struct {
 	pulumi.CustomResourceState
 
@@ -99,11 +108,12 @@ type SecGroup struct {
 // NewSecGroup registers a new resource with the given unique name, arguments, and options.
 func NewSecGroup(ctx *pulumi.Context,
 	name string, args *SecGroupArgs, opts ...pulumi.ResourceOption) (*SecGroup, error) {
-	if args == nil || args.Description == nil {
-		return nil, errors.New("missing required argument 'Description'")
-	}
 	if args == nil {
-		args = &SecGroupArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Description == nil {
+		return nil, errors.New("invalid value for required argument 'Description'")
 	}
 	var resource SecGroup
 	err := ctx.RegisterResource("openstack:compute/secGroup:SecGroup", name, args, &resource, opts...)
@@ -209,4 +219,43 @@ type SecGroupArgs struct {
 
 func (SecGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*secGroupArgs)(nil)).Elem()
+}
+
+type SecGroupInput interface {
+	pulumi.Input
+
+	ToSecGroupOutput() SecGroupOutput
+	ToSecGroupOutputWithContext(ctx context.Context) SecGroupOutput
+}
+
+func (SecGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecGroup)(nil)).Elem()
+}
+
+func (i SecGroup) ToSecGroupOutput() SecGroupOutput {
+	return i.ToSecGroupOutputWithContext(context.Background())
+}
+
+func (i SecGroup) ToSecGroupOutputWithContext(ctx context.Context) SecGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecGroupOutput)
+}
+
+type SecGroupOutput struct {
+	*pulumi.OutputState
+}
+
+func (SecGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecGroupOutput)(nil)).Elem()
+}
+
+func (o SecGroupOutput) ToSecGroupOutput() SecGroupOutput {
+	return o
+}
+
+func (o SecGroupOutput) ToSecGroupOutputWithContext(ctx context.Context) SecGroupOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SecGroupOutput{})
 }

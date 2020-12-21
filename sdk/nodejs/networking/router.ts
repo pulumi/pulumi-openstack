@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -19,6 +18,14 @@ import * as utilities from "../utilities";
  *     adminStateUp: true,
  *     externalNetworkId: "f67f0d72-0ddf-11e4-9d95-e1f29f417e2f",
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * Routers can be imported using the `id`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import openstack:networking/router:Router router_1 014395cd-89fc-4c9b-96b7-13d1ee79dad2
  * ```
  */
 export class Router extends pulumi.CustomResource {

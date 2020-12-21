@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -24,6 +23,14 @@ import * as utilities from "../utilities";
  *     },
  *     protocol: "HTTP",
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * Load Balancer Pool can be imported using the Pool ID, e.g.
+ *
+ * ```sh
+ *  $ pulumi import openstack:loadbalancer/pool:Pool pool_1 60ad9ee4-249a-4d60-a45b-aa60e046c513
  * ```
  */
 export class Pool extends pulumi.CustomResource {
@@ -135,10 +142,10 @@ export class Pool extends pulumi.CustomResource {
             inputs["tenantId"] = state ? state.tenantId : undefined;
         } else {
             const args = argsOrState as PoolArgs | undefined;
-            if (!args || args.lbMethod === undefined) {
+            if ((!args || args.lbMethod === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'lbMethod'");
             }
-            if (!args || args.protocol === undefined) {
+            if ((!args || args.protocol === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'protocol'");
             }
             inputs["adminStateUp"] = args ? args.adminStateUp : undefined;

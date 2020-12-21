@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -67,6 +66,14 @@ import * as utilities from "../utilities";
  * There are some notes to consider when connecting Instances to networks using
  * Ports. Please see the `openstack.compute.Instance` documentation for further
  * documentation.
+ *
+ * ## Import
+ *
+ * Ports can be imported using the `id`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import openstack:networking/port:Port port_1 eae26a3e-1c33-4cc1-9c31-0cd729c438a1
+ * ```
  */
 export class Port extends pulumi.CustomResource {
     /**
@@ -270,7 +277,7 @@ export class Port extends pulumi.CustomResource {
             inputs["valueSpecs"] = state ? state.valueSpecs : undefined;
         } else {
             const args = argsOrState as PortArgs | undefined;
-            if (!args || args.networkId === undefined) {
+            if ((!args || args.networkId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'networkId'");
             }
             inputs["adminStateUp"] = args ? args.adminStateUp : undefined;

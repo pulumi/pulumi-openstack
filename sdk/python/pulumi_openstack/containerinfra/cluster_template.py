@@ -233,6 +233,14 @@ class ClusterTemplate(pulumi.CustomResource):
         * `tls_disabled` - See Argument Reference above.
         * `volume_driver` - See Argument Reference above.
 
+        ## Import
+
+        Cluster templates can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:containerinfra/clusterTemplate:ClusterTemplate clustertemplate_1 b9a45c5c-cd03-4958-82aa-b80bf93cb922
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -255,7 +263,7 @@ class ClusterTemplate(pulumi.CustomResource):
 
             __props__['apiserver_port'] = apiserver_port
             __props__['cluster_distro'] = cluster_distro
-            if coe is None:
+            if coe is None and not opts.urn:
                 raise TypeError("Missing required property 'coe'")
             __props__['coe'] = coe
             __props__['dns_nameserver'] = dns_nameserver
@@ -268,7 +276,7 @@ class ClusterTemplate(pulumi.CustomResource):
             __props__['floating_ip_enabled'] = floating_ip_enabled
             __props__['http_proxy'] = http_proxy
             __props__['https_proxy'] = https_proxy
-            if image is None:
+            if image is None and not opts.urn:
                 raise TypeError("Missing required property 'image'")
             __props__['image'] = image
             __props__['insecure_registry'] = insecure_registry

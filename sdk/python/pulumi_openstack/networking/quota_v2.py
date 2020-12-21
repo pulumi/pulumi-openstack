@@ -60,6 +60,14 @@ class QuotaV2(pulumi.CustomResource):
             subnetpool=2)
         ```
 
+        ## Import
+
+        Quotas can be imported using the `project_id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:networking/quotaV2:QuotaV2 quota_1 2a0f2240-c5e6-41de-896d-e80d97428d6b
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] floatingip: Quota value for floating IPs. Changing this updates the
@@ -106,7 +114,7 @@ class QuotaV2(pulumi.CustomResource):
             __props__['floatingip'] = floatingip
             __props__['network'] = network
             __props__['port'] = port
-            if project_id is None:
+            if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
             __props__['project_id'] = project_id
             __props__['rbac_policy'] = rbac_policy

@@ -4,6 +4,7 @@
 package keymanager
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -60,6 +61,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Containers can be imported using the container id (the last part of the container reference), e.g.
+//
+// ```sh
+//  $ pulumi import openstack:keymanager/containerV1:ContainerV1 container_1 0c6cd26a-c012-4d7b-8034-057c0f1c2953
+// ```
 type ContainerV1 struct {
 	pulumi.CustomResourceState
 
@@ -96,11 +105,12 @@ type ContainerV1 struct {
 // NewContainerV1 registers a new resource with the given unique name, arguments, and options.
 func NewContainerV1(ctx *pulumi.Context,
 	name string, args *ContainerV1Args, opts ...pulumi.ResourceOption) (*ContainerV1, error) {
-	if args == nil || args.Type == nil {
-		return nil, errors.New("missing required argument 'Type'")
-	}
 	if args == nil {
-		args = &ContainerV1Args{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Type == nil {
+		return nil, errors.New("invalid value for required argument 'Type'")
 	}
 	var resource ContainerV1
 	err := ctx.RegisterResource("openstack:keymanager/containerV1:ContainerV1", name, args, &resource, opts...)
@@ -230,4 +240,43 @@ type ContainerV1Args struct {
 
 func (ContainerV1Args) ElementType() reflect.Type {
 	return reflect.TypeOf((*containerV1Args)(nil)).Elem()
+}
+
+type ContainerV1Input interface {
+	pulumi.Input
+
+	ToContainerV1Output() ContainerV1Output
+	ToContainerV1OutputWithContext(ctx context.Context) ContainerV1Output
+}
+
+func (ContainerV1) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerV1)(nil)).Elem()
+}
+
+func (i ContainerV1) ToContainerV1Output() ContainerV1Output {
+	return i.ToContainerV1OutputWithContext(context.Background())
+}
+
+func (i ContainerV1) ToContainerV1OutputWithContext(ctx context.Context) ContainerV1Output {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerV1Output)
+}
+
+type ContainerV1Output struct {
+	*pulumi.OutputState
+}
+
+func (ContainerV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerV1Output)(nil)).Elem()
+}
+
+func (o ContainerV1Output) ToContainerV1Output() ContainerV1Output {
+	return o
+}
+
+func (o ContainerV1Output) ToContainerV1OutputWithContext(ctx context.Context) ContainerV1Output {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ContainerV1Output{})
 }
