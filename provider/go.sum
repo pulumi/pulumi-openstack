@@ -311,8 +311,6 @@ github.com/googleapis/gax-go/v2 v2.0.4/go.mod h1:0Wqv26UfaUD9n4G6kQubkQ+KchISgw+
 github.com/googleapis/gax-go/v2 v2.0.5 h1:sjZBwGj9Jlw33ImPtvFviGYvseOtDM7hkSKB7+Tv3SM=
 github.com/googleapis/gax-go/v2 v2.0.5/go.mod h1:DWXyrwAJ9X0FpwwEdw+IPEYBICEFu5mhpdKc/us6bOk=
 github.com/gophercloud/gophercloud v0.6.1-0.20191122030953-d8ac278c1c9d/go.mod h1:ozGNgr9KYOVATV5jsgHl/ceCDXGuguqOZAzoQ/2vcNM=
-github.com/gophercloud/gophercloud v0.12.1-0.20200827191144-bb4781e9de45 h1:qvMqZxf8hx1Udiv1dXTp9rmGflhBYvgoVva+AQBJ4XM=
-github.com/gophercloud/gophercloud v0.12.1-0.20200827191144-bb4781e9de45/go.mod h1:w2NJEd88d4igNL1KUHzBsKMvS/ByJTzgltTGWKT7AC8=
 github.com/gophercloud/gophercloud v0.14.0 h1:c2Byo+YMxhHlTJ3TPptjQ4dOQ1YknTHDJ/9zClDH+84=
 github.com/gophercloud/gophercloud v0.14.0/go.mod h1:VX0Ibx85B60B5XOrZr6kaNwrmPUzcmMpwxvQ1WQIIWM=
 github.com/gophercloud/utils v0.0.0-20201101202656-8677e053dcf1 h1:W9579vuRvR1tBzjDMn4E2HwYx4OZUWxH/7SQwWnKwbM=
@@ -640,10 +638,8 @@ github.com/stretchr/testify v1.5.1 h1:nOGnQDM7FYENwehXlg/kFVnos3rEvtKTjRvOWSzb6H
 github.com/stretchr/testify v1.5.1/go.mod h1:5W2xD1RspED5o8YsWQXVCued0rvSQ+mT+I5cxcmMvtA=
 github.com/stretchr/testify v1.6.1 h1:hDPOHmpOpP40lSULcqw7IrRb/u7w6RpDC9399XyoNd0=
 github.com/stretchr/testify v1.6.1/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/h/Wwjteg=
-github.com/terraform-provider-openstack/terraform-provider-openstack v1.33.0 h1:Qpdp7xXWnq1xcWVmc33GAj+geyRM6Ej8b2DcR30j3N8=
-github.com/terraform-provider-openstack/terraform-provider-openstack v1.33.0/go.mod h1:NA2Iaq+p8yIzeHAY9DHEedL/SqrT0AInYP9GTqVLe1k=
-github.com/terraform-provider-openstack/terraform-provider-openstack v1.34.0 h1:lpjpRE3gRsAMCxsTsZk8F+9Pv2IVn3HMcyxG7DEt/xI=
-github.com/terraform-provider-openstack/terraform-provider-openstack v1.34.0/go.mod h1:WUrnT4umm3/AWzPGRJh5ohRF44TTe0YYNUyFit2JT1E=
+github.com/terraform-provider-openstack/terraform-provider-openstack v1.34.1 h1:TZHvWv5vdw3e+kQKB1CjJ4ByuTN9qwoJxjcSuUFsmjI=
+github.com/terraform-provider-openstack/terraform-provider-openstack v1.34.1/go.mod h1:WUrnT4umm3/AWzPGRJh5ohRF44TTe0YYNUyFit2JT1E=
 github.com/terraform-providers/terraform-provider-archive v1.3.0 h1:8WzDXMwTdTd4Z7KAUjnYwopk1DgGJ/DLH0xowJ8h+/8=
 github.com/terraform-providers/terraform-provider-archive v1.3.0/go.mod h1:7oAwNW55F65KauS++/XmAnrXhLfQRTYt549eYs4zU0w=
 github.com/terraform-providers/terraform-provider-http v1.2.0 h1:pOP/SNlLjB18CydtTJJwzkZGkHYX3LWzIoQpYQuBdyw=
@@ -784,8 +780,6 @@ golang.org/x/net v0.0.0-20190724013045-ca1201d0de80/go.mod h1:z5CRVTTTmAJ677TzLL
 golang.org/x/net v0.0.0-20190813141303-74dc4d7220e7/go.mod h1:z5CRVTTTmAJ677TzLLGU+0bjPO0LkuOLi4/5GtJWs/s=
 golang.org/x/net v0.0.0-20191009170851-d66e71096ffb/go.mod h1:z5CRVTTTmAJ677TzLLGU+0bjPO0LkuOLi4/5GtJWs/s=
 golang.org/x/net v0.0.0-20191112182307-2180aed22343/go.mod h1:z5CRVTTTmAJ677TzLLGU+0bjPO0LkuOLi4/5GtJWs/s=
-golang.org/x/net v0.0.0-20191126235420-ef20fe5d7933 h1:e6HwijUxhDe+hPNjZQQn9bA5PW3vNmnN64U2ZW759Lk=
-golang.org/x/net v0.0.0-20191126235420-ef20fe5d7933/go.mod h1:z5CRVTTTmAJ677TzLLGU+0bjPO0LkuOLi4/5GtJWs/s=
 golang.org/x/net v0.0.0-20191209160850-c0dbc17a3553/go.mod h1:z5CRVTTTmAJ677TzLLGU+0bjPO0LkuOLi4/5GtJWs/s=
 golang.org/x/net v0.0.0-20200114155413-6afb5195e5aa/go.mod h1:z5CRVTTTmAJ677TzLLGU+0bjPO0LkuOLi4/5GtJWs/s=
 golang.org/x/net v0.0.0-20200202094626-16171245cfb2/go.mod h1:z5CRVTTTmAJ677TzLLGU+0bjPO0LkuOLi4/5GtJWs/s=
@@ -907,8 +901,6 @@ golang.org/x/tools v0.0.0-20191115202509-3a792d9c32b2/go.mod h1:b+2E5dAYhXwXZwtn
 golang.org/x/tools v0.0.0-20191119224855-298f0cb1881e/go.mod h1:b+2E5dAYhXwXZwtnZ6UAqBI28+e2cm9otk0dWdXHAEo=
 golang.org/x/tools v0.0.0-20191125144606-a911d9008d1f/go.mod h1:b+2E5dAYhXwXZwtnZ6UAqBI28+e2cm9otk0dWdXHAEo=
 golang.org/x/tools v0.0.0-20191130070609-6e064ea0cf2d/go.mod h1:b+2E5dAYhXwXZwtnZ6UAqBI28+e2cm9otk0dWdXHAEo=
-golang.org/x/tools v0.0.0-20191203134012-c197fd4bf371 h1:Cjq6sG3gnKDchzWy7ouGQklhxMtWvh4AhSNJ0qGIeo4=
-golang.org/x/tools v0.0.0-20191203134012-c197fd4bf371/go.mod h1:b+2E5dAYhXwXZwtnZ6UAqBI28+e2cm9otk0dWdXHAEo=
 golang.org/x/tools v0.0.0-20191216173652-a0e659d51361/go.mod h1:TB2adYChydJhpapKDTa4BR/hXlZSLoq2Wpct/0txZ28=
 golang.org/x/tools v0.0.0-20191227053925-7b8e75db28f4/go.mod h1:TB2adYChydJhpapKDTa4BR/hXlZSLoq2Wpct/0txZ28=
 golang.org/x/tools v0.0.0-20200117161641-43d50277825c/go.mod h1:TB2adYChydJhpapKDTa4BR/hXlZSLoq2Wpct/0txZ28=

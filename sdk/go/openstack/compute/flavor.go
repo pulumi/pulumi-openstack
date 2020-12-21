@@ -62,7 +62,7 @@ type Flavor struct {
 	ExtraSpecs pulumi.MapOutput `pulumi:"extraSpecs"`
 	// Unique ID (integer or UUID) of flavor to create. Changing
 	// this creates a new flavor.
-	FlavorId pulumi.StringPtrOutput `pulumi:"flavorId"`
+	FlavorId pulumi.StringOutput `pulumi:"flavorId"`
 	// Whether the flavor is public. Changing this creates
 	// a new flavor.
 	IsPublic pulumi.BoolPtrOutput `pulumi:"isPublic"`

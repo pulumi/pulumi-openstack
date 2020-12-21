@@ -213,7 +213,7 @@ class Flavor(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="flavorId")
-    def flavor_id(self) -> pulumi.Output[Optional[str]]:
+    def flavor_id(self) -> pulumi.Output[str]:
         """
         Unique ID (integer or UUID) of flavor to create. Changing
         this creates a new flavor.

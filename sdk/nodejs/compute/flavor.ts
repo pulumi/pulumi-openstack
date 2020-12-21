@@ -78,7 +78,7 @@ export class Flavor extends pulumi.CustomResource {
      * Unique ID (integer or UUID) of flavor to create. Changing
      * this creates a new flavor.
      */
-    public readonly flavorId!: pulumi.Output<string | undefined>;
+    public readonly flavorId!: pulumi.Output<string>;
     /**
      * Whether the flavor is public. Changing this creates
      * a new flavor.
