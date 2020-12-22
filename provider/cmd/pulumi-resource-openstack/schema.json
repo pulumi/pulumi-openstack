@@ -4372,6 +4372,7 @@
             "required": [
                 "disk",
                 "extraSpecs",
+                "flavorId",
                 "name",
                 "ram",
                 "region",

@@ -73,7 +73,7 @@ namespace Pulumi.OpenStack.Compute
         /// this creates a new flavor.
         /// </summary>
         [Output("flavorId")]
-        public Output<string?> FlavorId { get; private set; } = null!;
+        public Output<string> FlavorId { get; private set; } = null!;
 
         /// <summary>
         /// Whether the flavor is public. Changing this creates
