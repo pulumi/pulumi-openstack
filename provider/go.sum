@@ -582,11 +582,15 @@ github.com/prometheus/procfs v0.0.0-20190507164030-5867b95ac084/go.mod h1:TjEm7z
 github.com/prometheus/tsdb v0.7.1/go.mod h1:qhTCs0VvXwvX/y3TZrWD7rabWM+ijKTux40TwIPHuXU=
 github.com/pulumi/pulumi-terraform-bridge/v2 v2.16.0 h1:jTxndT/rY6bN3DyVIsX4Q4B+LPSAOrRlnNW/W6GzDH4=
 github.com/pulumi/pulumi-terraform-bridge/v2 v2.16.0/go.mod h1:/oSHj3Hg9zd8xT2dKVoBifeBbH+/pLPqmTDypgN5FHk=
+github.com/pulumi/pulumi-terraform-bridge/v2 v2.17.0 h1:QIlM45O+pD2oKJdcvmpom7CHZpC2GOjWpIA2j3QXscU=
+github.com/pulumi/pulumi-terraform-bridge/v2 v2.17.0/go.mod h1:/oSHj3Hg9zd8xT2dKVoBifeBbH+/pLPqmTDypgN5FHk=
 github.com/pulumi/pulumi/pkg/v2 v2.15.1-0.20201202214525-260620430c4c h1:M4BMhdOt1le+7JtOhR7uOVrpvu9HnN9388AI/Je9/3Y=
 github.com/pulumi/pulumi/pkg/v2 v2.15.1-0.20201202214525-260620430c4c/go.mod h1:xLEDqsipr92IXfe8EJrl8bANoEUtwmBJGBE8X8PKmP0=
 github.com/pulumi/pulumi/sdk/v2 v2.2.1/go.mod h1:QNbWpL4gvf3X0lUFT7TXA2Jo1ff/Ti2l97AyFGYwvW4=
 github.com/pulumi/pulumi/sdk/v2 v2.15.1-0.20201202214525-260620430c4c h1:nYFMU38MKDY+CuU8LpIw6AaX/wwXMNzINqXvjw5MUtQ=
 github.com/pulumi/pulumi/sdk/v2 v2.15.1-0.20201202214525-260620430c4c/go.mod h1:Z9ifPo/Q0+hUpAyguVx2gp5Sx+CBumnWvYQDhrM8l3E=
+github.com/pulumi/pulumi/sdk/v2 v2.17.0 h1:mFsYS4Qnpk0uGcN4cGPd/S6KWdx92BbudOerxf5JlcA=
+github.com/pulumi/pulumi/sdk/v2 v2.17.0/go.mod h1:fCFhRV6NmidWetmgDPA76efL+s0JqLlS54JJIwfOt+o=
 github.com/pulumi/terraform-diff-reader v0.0.0-20201211191010-ad4715e9285e h1:Dik4Qe/+xguB8JagPyXNlbOnRiXGmq/PSPQTGunYnTk=
 github.com/pulumi/terraform-diff-reader v0.0.0-20201211191010-ad4715e9285e/go.mod h1:sZ9FUzGO+yM41hsQHs/yIcj/Y993qMdBxBU5mpDmAfQ=
 github.com/rjeczalik/notify v0.9.2 h1:MiTWrPj55mNDHEiIX5YUSKefw/+lCQVoAFmD6oQm5w8=
