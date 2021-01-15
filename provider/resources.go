@@ -263,6 +263,7 @@ func Provider() tfbridge.ProviderInfo {
 			"openstack_compute_servergroup_v2":          {Tok: openstackResource(computeMod, "ServerGroup")},
 			"openstack_compute_volume_attach_v2":        {Tok: openstackResource(computeMod, "VolumeAttach")},
 			"openstack_compute_quotaset_v2":             {Tok: openstackResource(computeMod, "QuotaSetV2")},
+			"openstack_compute_aggregate_v2":            {Tok: openstackResource(computeMod, "AggregateV2")},
 
 			// Container Infrastructure
 			"openstack_containerinfra_cluster_v1":         {Tok: openstackResource(containerinfraMod, "Cluster")},
@@ -407,6 +408,8 @@ func Provider() tfbridge.ProviderInfo {
 			"openstack_compute_flavor_v2":             {Tok: openstackDataSource(computeMod, "getFlavor")},
 			"openstack_compute_keypair_v2":            {Tok: openstackDataSource(computeMod, "getKeypair")},
 			"openstack_compute_instance_v2":           {Tok: openstackDataSource(computeMod, "getInstanceV2")},
+			"openstack_compute_aggregate_v2":          {Tok: openstackDataSource(computeMod, "getAggregateV2")},
+			"openstack_compute_hypervisor_v2":         {Tok: openstackDataSource(computeMod, "getHypervisorV2")},
 
 			// Container Infrastructure
 			"openstack_containerinfra_cluster_v1":         {Tok: openstackDataSource(containerinfraMod, "getCluster")},

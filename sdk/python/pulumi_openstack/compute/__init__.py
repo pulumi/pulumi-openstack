@@ -3,12 +3,15 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
+from .aggregate_v2 import *
 from .flavor import *
 from .flavor_access import *
 from .floating_ip import *
 from .floating_ip_associate import *
+from .get_aggregate_v2 import *
 from .get_availability_zones import *
 from .get_flavor import *
+from .get_hypervisor_v2 import *
 from .get_instance_v2 import *
 from .get_keypair import *
 from .instance import *
@@ -33,7 +36,9 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "openstack:compute/flavor:Flavor":
+            if typ == "openstack:compute/aggregateV2:AggregateV2":
+                return AggregateV2(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "openstack:compute/flavor:Flavor":
                 return Flavor(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "openstack:compute/flavorAccess:FlavorAccess":
                 return FlavorAccess(name, pulumi.ResourceOptions(urn=urn))
@@ -60,6 +65,7 @@ def _register_module():
 
 
     _module_instance = Module()
+    pulumi.runtime.register_resource_module("openstack", "compute/aggregateV2", _module_instance)
     pulumi.runtime.register_resource_module("openstack", "compute/flavor", _module_instance)
     pulumi.runtime.register_resource_module("openstack", "compute/flavorAccess", _module_instance)
     pulumi.runtime.register_resource_module("openstack", "compute/floatingIp", _module_instance)

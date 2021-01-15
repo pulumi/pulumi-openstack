@@ -319,6 +319,15 @@ export namespace compute {
          */
         toPort: number;
     }
+
+    export interface VolumeAttachVendorOptions {
+        /**
+         * Boolean to control whether
+         * to ignore volume status confirmation of the attached volume. This can be helpful
+         * to work with some OpenStack clouds which don't have the Block Storage V3 API available.
+         */
+        ignoreVolumeConfirmation?: boolean;
+    }
 }
 
 export namespace containerinfra {

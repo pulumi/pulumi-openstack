@@ -15,6 +15,7 @@ __all__ = [
     'InstanceSchedulerHintArgs',
     'InstanceVendorOptionsArgs',
     'SecGroupRuleArgs',
+    'VolumeAttachVendorOptionsArgs',
     'GetInstanceV2NetworkArgs',
 ]
 
@@ -728,6 +729,33 @@ class SecGroupRuleArgs:
     @self.setter
     def self(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "self", value)
+
+
+@pulumi.input_type
+class VolumeAttachVendorOptionsArgs:
+    def __init__(__self__, *,
+                 ignore_volume_confirmation: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] ignore_volume_confirmation: Boolean to control whether
+               to ignore volume status confirmation of the attached volume. This can be helpful
+               to work with some OpenStack clouds which don't have the Block Storage V3 API available.
+        """
+        if ignore_volume_confirmation is not None:
+            pulumi.set(__self__, "ignore_volume_confirmation", ignore_volume_confirmation)
+
+    @property
+    @pulumi.getter(name="ignoreVolumeConfirmation")
+    def ignore_volume_confirmation(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Boolean to control whether
+        to ignore volume status confirmation of the attached volume. This can be helpful
+        to work with some OpenStack clouds which don't have the Block Storage V3 API available.
+        """
+        return pulumi.get(self, "ignore_volume_confirmation")
+
+    @ignore_volume_confirmation.setter
+    def ignore_volume_confirmation(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ignore_volume_confirmation", value)
 
 
 @pulumi.input_type

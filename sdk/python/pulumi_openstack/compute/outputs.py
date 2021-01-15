@@ -15,6 +15,7 @@ __all__ = [
     'InstanceSchedulerHint',
     'InstanceVendorOptions',
     'SecGroupRule',
+    'VolumeAttachVendorOptions',
     'GetInstanceV2NetworkResult',
 ]
 
@@ -595,6 +596,32 @@ class SecGroupRule(dict):
         be combined with `cidr` or `from_group_id`.
         """
         return pulumi.get(self, "self")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class VolumeAttachVendorOptions(dict):
+    def __init__(__self__, *,
+                 ignore_volume_confirmation: Optional[bool] = None):
+        """
+        :param bool ignore_volume_confirmation: Boolean to control whether
+               to ignore volume status confirmation of the attached volume. This can be helpful
+               to work with some OpenStack clouds which don't have the Block Storage V3 API available.
+        """
+        if ignore_volume_confirmation is not None:
+            pulumi.set(__self__, "ignore_volume_confirmation", ignore_volume_confirmation)
+
+    @property
+    @pulumi.getter(name="ignoreVolumeConfirmation")
+    def ignore_volume_confirmation(self) -> Optional[bool]:
+        """
+        Boolean to control whether
+        to ignore volume status confirmation of the attached volume. This can be helpful
+        to work with some OpenStack clouds which don't have the Block Storage V3 API available.
+        """
+        return pulumi.get(self, "ignore_volume_confirmation")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

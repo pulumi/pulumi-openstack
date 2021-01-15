@@ -5,12 +5,15 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export * from "./aggregateV2";
 export * from "./flavor";
 export * from "./flavorAccess";
 export * from "./floatingIp";
 export * from "./floatingIpAssociate";
+export * from "./getAggregateV2";
 export * from "./getAvailabilityZones";
 export * from "./getFlavor";
+export * from "./getHypervisorV2";
 export * from "./getInstanceV2";
 export * from "./getKeypair";
 export * from "./instance";
@@ -22,6 +25,7 @@ export * from "./serverGroup";
 export * from "./volumeAttach";
 
 // Import resources to register:
+import { AggregateV2 } from "./aggregateV2";
 import { Flavor } from "./flavor";
 import { FlavorAccess } from "./flavorAccess";
 import { FloatingIp } from "./floatingIp";
@@ -38,6 +42,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "openstack:compute/aggregateV2:AggregateV2":
+                return new AggregateV2(name, <any>undefined, { urn })
             case "openstack:compute/flavor:Flavor":
                 return new Flavor(name, <any>undefined, { urn })
             case "openstack:compute/flavorAccess:FlavorAccess":
@@ -65,6 +71,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("openstack", "compute/aggregateV2", _module)
 pulumi.runtime.registerResourceModule("openstack", "compute/flavor", _module)
 pulumi.runtime.registerResourceModule("openstack", "compute/flavorAccess", _module)
 pulumi.runtime.registerResourceModule("openstack", "compute/floatingIp", _module)

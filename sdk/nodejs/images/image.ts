@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  * this resource will automatically reconcile these with the user-provided
  * properties.
  *
- * In addition, the `directUrl` property is also automatically reconciled if the
+ * In addition, the `directUrl` and `stores` properties are also automatically reconciled if the
  * Image Service set it.
  *
  * ## Import
@@ -99,6 +99,11 @@ export class Image extends pulumi.CustomResource {
      */
     public /*out*/ readonly file!: pulumi.Output<string>;
     public readonly imageCachePath!: pulumi.Output<string | undefined>;
+    /**
+     * Unique ID (valid UUID) of image to create. Changing 
+     * this creates a new image.
+     */
+    public readonly imageId!: pulumi.Output<string>;
     /**
      * This is the url of the raw image. If `webDownload`
      * is not used, then the image will be downloaded in the `imageCachePath` before
@@ -220,6 +225,7 @@ export class Image extends pulumi.CustomResource {
             inputs["diskFormat"] = state ? state.diskFormat : undefined;
             inputs["file"] = state ? state.file : undefined;
             inputs["imageCachePath"] = state ? state.imageCachePath : undefined;
+            inputs["imageId"] = state ? state.imageId : undefined;
             inputs["imageSourceUrl"] = state ? state.imageSourceUrl : undefined;
             inputs["localFilePath"] = state ? state.localFilePath : undefined;
             inputs["metadata"] = state ? state.metadata : undefined;
@@ -250,6 +256,7 @@ export class Image extends pulumi.CustomResource {
             inputs["containerFormat"] = args ? args.containerFormat : undefined;
             inputs["diskFormat"] = args ? args.diskFormat : undefined;
             inputs["imageCachePath"] = args ? args.imageCachePath : undefined;
+            inputs["imageId"] = args ? args.imageId : undefined;
             inputs["imageSourceUrl"] = args ? args.imageSourceUrl : undefined;
             inputs["localFilePath"] = args ? args.localFilePath : undefined;
             inputs["minDiskGb"] = args ? args.minDiskGb : undefined;
@@ -313,6 +320,11 @@ export interface ImageState {
      */
     readonly file?: pulumi.Input<string>;
     readonly imageCachePath?: pulumi.Input<string>;
+    /**
+     * Unique ID (valid UUID) of image to create. Changing 
+     * this creates a new image.
+     */
+    readonly imageId?: pulumi.Input<string>;
     /**
      * This is the url of the raw image. If `webDownload`
      * is not used, then the image will be downloaded in the `imageCachePath` before
@@ -432,6 +444,11 @@ export interface ImageArgs {
      */
     readonly diskFormat: pulumi.Input<string>;
     readonly imageCachePath?: pulumi.Input<string>;
+    /**
+     * Unique ID (valid UUID) of image to create. Changing 
+     * this creates a new image.
+     */
+    readonly imageId?: pulumi.Input<string>;
     /**
      * This is the url of the raw image. If `webDownload`
      * is not used, then the image will be downloaded in the `imageCachePath` before

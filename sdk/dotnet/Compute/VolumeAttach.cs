@@ -142,6 +142,13 @@ namespace Pulumi.OpenStack.Compute
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
+        /// Map of additional vendor-specific options.
+        /// Supported options are described below.
+        /// </summary>
+        [Output("vendorOptions")]
+        public Output<Outputs.VolumeAttachVendorOptions?> VendorOptions { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the Volume to attach to an Instance.
         /// </summary>
         [Output("volumeId")]
@@ -223,6 +230,13 @@ namespace Pulumi.OpenStack.Compute
         public Input<string>? Region { get; set; }
 
         /// <summary>
+        /// Map of additional vendor-specific options.
+        /// Supported options are described below.
+        /// </summary>
+        [Input("vendorOptions")]
+        public Input<Inputs.VolumeAttachVendorOptionsArgs>? VendorOptions { get; set; }
+
+        /// <summary>
         /// The ID of the Volume to attach to an Instance.
         /// </summary>
         [Input("volumeId", required: true)]
@@ -263,6 +277,13 @@ namespace Pulumi.OpenStack.Compute
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// Map of additional vendor-specific options.
+        /// Supported options are described below.
+        /// </summary>
+        [Input("vendorOptions")]
+        public Input<Inputs.VolumeAttachVendorOptionsGetArgs>? VendorOptions { get; set; }
 
         /// <summary>
         /// The ID of the Volume to attach to an Instance.

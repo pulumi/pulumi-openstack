@@ -7,6 +7,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
 
 __all__ = ['VolumeAttach']
 
@@ -19,6 +21,7 @@ class VolumeAttach(pulumi.CustomResource):
                  instance_id: Optional[pulumi.Input[str]] = None,
                  multiattach: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 vendor_options: Optional[pulumi.Input[pulumi.InputType['VolumeAttachVendorOptionsArgs']]] = None,
                  volume_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -87,6 +90,8 @@ class VolumeAttach(pulumi.CustomResource):
                A Compute client is needed to create a volume attachment. If omitted, the
                `region` argument of the provider is used. Changing this creates a
                new volume attachment.
+        :param pulumi.Input[pulumi.InputType['VolumeAttachVendorOptionsArgs']] vendor_options: Map of additional vendor-specific options.
+               Supported options are described below.
         :param pulumi.Input[str] volume_id: The ID of the Volume to attach to an Instance.
         """
         if __name__ is not None:
@@ -112,6 +117,7 @@ class VolumeAttach(pulumi.CustomResource):
             __props__['instance_id'] = instance_id
             __props__['multiattach'] = multiattach
             __props__['region'] = region
+            __props__['vendor_options'] = vendor_options
             if volume_id is None and not opts.urn:
                 raise TypeError("Missing required property 'volume_id'")
             __props__['volume_id'] = volume_id
@@ -129,6 +135,7 @@ class VolumeAttach(pulumi.CustomResource):
             instance_id: Optional[pulumi.Input[str]] = None,
             multiattach: Optional[pulumi.Input[bool]] = None,
             region: Optional[pulumi.Input[str]] = None,
+            vendor_options: Optional[pulumi.Input[pulumi.InputType['VolumeAttachVendorOptionsArgs']]] = None,
             volume_id: Optional[pulumi.Input[str]] = None) -> 'VolumeAttach':
         """
         Get an existing VolumeAttach resource's state with the given name, id, and optional extra
@@ -146,6 +153,8 @@ class VolumeAttach(pulumi.CustomResource):
                A Compute client is needed to create a volume attachment. If omitted, the
                `region` argument of the provider is used. Changing this creates a
                new volume attachment.
+        :param pulumi.Input[pulumi.InputType['VolumeAttachVendorOptionsArgs']] vendor_options: Map of additional vendor-specific options.
+               Supported options are described below.
         :param pulumi.Input[str] volume_id: The ID of the Volume to attach to an Instance.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -156,6 +165,7 @@ class VolumeAttach(pulumi.CustomResource):
         __props__["instance_id"] = instance_id
         __props__["multiattach"] = multiattach
         __props__["region"] = region
+        __props__["vendor_options"] = vendor_options
         __props__["volume_id"] = volume_id
         return VolumeAttach(resource_name, opts=opts, __props__=__props__)
 
@@ -195,6 +205,15 @@ class VolumeAttach(pulumi.CustomResource):
         new volume attachment.
         """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="vendorOptions")
+    def vendor_options(self) -> pulumi.Output[Optional['outputs.VolumeAttachVendorOptions']]:
+        """
+        Map of additional vendor-specific options.
+        Supported options are described below.
+        """
+        return pulumi.get(self, "vendor_options")
 
     @property
     @pulumi.getter(name="volumeId")

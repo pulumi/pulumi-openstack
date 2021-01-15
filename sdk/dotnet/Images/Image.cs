@@ -49,7 +49,7 @@ namespace Pulumi.OpenStack.Images
     /// this resource will automatically reconcile these with the user-provided
     /// properties.
     /// 
-    /// In addition, the `direct_url` property is also automatically reconciled if the
+    /// In addition, the `direct_url` and `stores` properties are also automatically reconciled if the
     /// Image Service set it.
     /// 
     /// ## Import
@@ -98,6 +98,13 @@ namespace Pulumi.OpenStack.Images
 
         [Output("imageCachePath")]
         public Output<string?> ImageCachePath { get; private set; } = null!;
+
+        /// <summary>
+        /// Unique ID (valid UUID) of image to create. Changing 
+        /// this creates a new image.
+        /// </summary>
+        [Output("imageId")]
+        public Output<string> ImageId { get; private set; } = null!;
 
         /// <summary>
         /// This is the url of the raw image. If `web_download`
@@ -301,6 +308,13 @@ namespace Pulumi.OpenStack.Images
         public Input<string>? ImageCachePath { get; set; }
 
         /// <summary>
+        /// Unique ID (valid UUID) of image to create. Changing 
+        /// this creates a new image.
+        /// </summary>
+        [Input("imageId")]
+        public Input<string>? ImageId { get; set; }
+
+        /// <summary>
         /// This is the url of the raw image. If `web_download`
         /// is not used, then the image will be downloaded in the `image_cache_path` before
         /// being uploaded to Glance.
@@ -447,6 +461,13 @@ namespace Pulumi.OpenStack.Images
 
         [Input("imageCachePath")]
         public Input<string>? ImageCachePath { get; set; }
+
+        /// <summary>
+        /// Unique ID (valid UUID) of image to create. Changing 
+        /// this creates a new image.
+        /// </summary>
+        [Input("imageId")]
+        public Input<string>? ImageId { get; set; }
 
         /// <summary>
         /// This is the url of the raw image. If `web_download`
