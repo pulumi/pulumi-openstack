@@ -928,6 +928,20 @@
                 }
             }
         },
+        "openstack:compute/VolumeAttachVendorOptions:VolumeAttachVendorOptions": {
+            "properties": {
+                "ignoreVolumeConfirmation": {
+                    "type": "boolean",
+                    "description": "Boolean to control whether\nto ignore volume status confirmation of the attached volume. This can be helpful\nto work with some OpenStack clouds which don't have the Block Storage V3 API available.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
         "openstack:compute/getInstanceV2Network:getInstanceV2Network": {
             "properties": {
                 "fixedIpV4": {
@@ -4318,6 +4332,92 @@
                 "type": "object"
             }
         },
+        "openstack:compute/aggregateV2:AggregateV2": {
+            "description": "Manages a Host Aggregate within Openstack Nova.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### Full example\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst dellServers = new openstack.compute.AggregateV2(\"dell_servers\", {\n    hosts: [\n        \"myhost01.example.com\",\n        \"myhost02.example.com\",\n    ],\n    metadata: {\n        cpus: \"56\",\n    },\n    zone: \"nova\",\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\ndell_servers = openstack.compute.AggregateV2(\"dellServers\",\n    hosts=[\n        \"myhost01.example.com\",\n        \"myhost02.example.com\",\n    ],\n    metadata={\n        \"cpus\": \"56\",\n    },\n    zone=\"nova\")\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var dellServers = new OpenStack.Compute.AggregateV2(\"dellServers\", new OpenStack.Compute.AggregateV2Args\n        {\n            Hosts = \n            {\n                \"myhost01.example.com\",\n                \"myhost02.example.com\",\n            },\n            Metadata = \n            {\n                { \"cpus\", \"56\" },\n            },\n            Zone = \"nova\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/compute\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := compute.NewAggregateV2(ctx, \"dellServers\", \u0026compute.AggregateV2Args{\n\t\t\tHosts: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"myhost01.example.com\"),\n\t\t\t\tpulumi.String(\"myhost02.example.com\"),\n\t\t\t},\n\t\t\tMetadata: pulumi.StringMap{\n\t\t\t\t\"cpus\": pulumi.String(\"56\"),\n\t\t\t},\n\t\t\tZone: pulumi.String(\"nova\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### Minimum required example\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst test = new openstack.compute.AggregateV2(\"test\", {});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\ntest = openstack.compute.AggregateV2(\"test\")\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var test = new OpenStack.Compute.AggregateV2(\"test\", new OpenStack.Compute.AggregateV2Args\n        {\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/compute\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := compute.NewAggregateV2(ctx, \"test\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nYou can import an existing Host Aggregate by their ID.\n\n```sh\n $ pulumi import openstack:compute/aggregateV2:AggregateV2 myaggregate 24\n```\n\n The ID can be obtained with an openstack command$ openstack aggregate list +----+------+-------------------+ | ID | Name | Availability Zone | +----+------+-------------------+ | 59 | test | None\n\n\n\n\n\n\n\n\n\n\n\n\n\n| +----+------+-------------------+ ",
+            "properties": {
+                "hosts": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The list of hosts contained in the Host Aggregate. The hosts must be added\nto Openstack and visible in the web interface, or the provider will fail to add them to the host\naggregate.\n"
+                },
+                "metadata": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "The metadata of the Host Aggregate. Can be useful to indicate scheduler hints.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the Host Aggregate\n"
+                },
+                "zone": {
+                    "type": "string",
+                    "description": "The name of the Availability Zone to use. If ommited, it will take the default\navailability zone.\n"
+                }
+            },
+            "required": [
+                "name",
+                "zone"
+            ],
+            "inputProperties": {
+                "hosts": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The list of hosts contained in the Host Aggregate. The hosts must be added\nto Openstack and visible in the web interface, or the provider will fail to add them to the host\naggregate.\n"
+                },
+                "metadata": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "The metadata of the Host Aggregate. Can be useful to indicate scheduler hints.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the Host Aggregate\n"
+                },
+                "zone": {
+                    "type": "string",
+                    "description": "The name of the Availability Zone to use. If ommited, it will take the default\navailability zone.\n"
+                }
+            },
+            "requiredInputs": [
+                "zone"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering AggregateV2 resources.\n",
+                "properties": {
+                    "hosts": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The list of hosts contained in the Host Aggregate. The hosts must be added\nto Openstack and visible in the web interface, or the provider will fail to add them to the host\naggregate.\n"
+                    },
+                    "metadata": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "The metadata of the Host Aggregate. Can be useful to indicate scheduler hints.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the Host Aggregate\n"
+                    },
+                    "zone": {
+                        "type": "string",
+                        "description": "The name of the Availability Zone to use. If ommited, it will take the default\navailability zone.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "openstack:compute/flavor:Flavor": {
             "description": "Manages a V2 flavor resource within OpenStack.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst test_flavor = new openstack.compute.Flavor(\"test-flavor\", {\n    disk: 20,\n    extraSpecs: {\n        \"hw:cpu_policy\": \"CPU-POLICY\",\n        \"hw:cpu_thread_policy\": \"CPU-THREAD-POLICY\",\n    },\n    ram: 8096,\n    vcpus: 2,\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\ntest_flavor = openstack.compute.Flavor(\"test-flavor\",\n    disk=20,\n    extra_specs={\n        \"hw:cpu_policy\": \"CPU-POLICY\",\n        \"hw:cpu_thread_policy\": \"CPU-THREAD-POLICY\",\n    },\n    ram=8096,\n    vcpus=2)\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var test_flavor = new OpenStack.Compute.Flavor(\"test-flavor\", new OpenStack.Compute.FlavorArgs\n        {\n            Disk = 20,\n            ExtraSpecs = \n            {\n                { \"hw:cpu_policy\", \"CPU-POLICY\" },\n                { \"hw:cpu_thread_policy\", \"CPU-THREAD-POLICY\" },\n            },\n            Ram = 8096,\n            Vcpus = 2,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/compute\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := compute.NewFlavor(ctx, \"test_flavor\", \u0026compute.FlavorArgs{\n\t\t\tDisk: pulumi.Int(20),\n\t\t\tExtraSpecs: pulumi.StringMap{\n\t\t\t\t\"hw:cpu_policy\":        pulumi.String(\"CPU-POLICY\"),\n\t\t\t\t\"hw:cpu_thread_policy\": pulumi.String(\"CPU-THREAD-POLICY\"),\n\t\t\t},\n\t\t\tRam:   pulumi.Int(8096),\n\t\t\tVcpus: pulumi.Int(2),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nFlavors can be imported using the `ID`, e.g.\n\n```sh\n $ pulumi import openstack:compute/flavor:Flavor my-flavor 4142e64b-1b35-44a0-9b1e-5affc7af1106\n```\n\n ",
             "properties": {
@@ -5720,6 +5820,10 @@
                     "type": "string",
                     "description": "The region in which to obtain the V2 Compute client.\nA Compute client is needed to create a volume attachment. If omitted, the\n`region` argument of the provider is used. Changing this creates a\nnew volume attachment.\n"
                 },
+                "vendorOptions": {
+                    "$ref": "#/types/openstack:compute/VolumeAttachVendorOptions:VolumeAttachVendorOptions",
+                    "description": "Map of additional vendor-specific options.\nSupported options are described below.\n"
+                },
                 "volumeId": {
                     "type": "string",
                     "description": "The ID of the Volume to attach to an Instance.\n"
@@ -5748,6 +5852,10 @@
                     "type": "string",
                     "description": "The region in which to obtain the V2 Compute client.\nA Compute client is needed to create a volume attachment. If omitted, the\n`region` argument of the provider is used. Changing this creates a\nnew volume attachment.\n"
                 },
+                "vendorOptions": {
+                    "$ref": "#/types/openstack:compute/VolumeAttachVendorOptions:VolumeAttachVendorOptions",
+                    "description": "Map of additional vendor-specific options.\nSupported options are described below.\n"
+                },
                 "volumeId": {
                     "type": "string",
                     "description": "The ID of the Volume to attach to an Instance.\n"
@@ -5775,6 +5883,10 @@
                     "region": {
                         "type": "string",
                         "description": "The region in which to obtain the V2 Compute client.\nA Compute client is needed to create a volume attachment. If omitted, the\n`region` argument of the provider is used. Changing this creates a\nnew volume attachment.\n"
+                    },
+                    "vendorOptions": {
+                        "$ref": "#/types/openstack:compute/VolumeAttachVendorOptions:VolumeAttachVendorOptions",
+                        "description": "Map of additional vendor-specific options.\nSupported options are described below.\n"
                     },
                     "volumeId": {
                         "type": "string",
@@ -8509,7 +8621,7 @@
             }
         },
         "openstack:images/image:Image": {
-            "description": "Manages a V2 Image resource within OpenStack Glance.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst rancheros = new openstack.images.Image(\"rancheros\", {\n    containerFormat: \"bare\",\n    diskFormat: \"qcow2\",\n    imageSourceUrl: \"https://releases.rancher.com/os/latest/rancheros-openstack.img\",\n    properties: {\n        key: \"value\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nrancheros = openstack.images.Image(\"rancheros\",\n    container_format=\"bare\",\n    disk_format=\"qcow2\",\n    image_source_url=\"https://releases.rancher.com/os/latest/rancheros-openstack.img\",\n    properties={\n        \"key\": \"value\",\n    })\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var rancheros = new OpenStack.Images.Image(\"rancheros\", new OpenStack.Images.ImageArgs\n        {\n            ContainerFormat = \"bare\",\n            DiskFormat = \"qcow2\",\n            ImageSourceUrl = \"https://releases.rancher.com/os/latest/rancheros-openstack.img\",\n            Properties = \n            {\n                { \"key\", \"value\" },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/images\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := images.NewImage(ctx, \"rancheros\", \u0026images.ImageArgs{\n\t\t\tContainerFormat: pulumi.String(\"bare\"),\n\t\t\tDiskFormat:      pulumi.String(\"qcow2\"),\n\t\t\tImageSourceUrl:  pulumi.String(\"https://releases.rancher.com/os/latest/rancheros-openstack.img\"),\n\t\t\tProperties: pulumi.StringMap{\n\t\t\t\t\"key\": pulumi.String(\"value\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Notes\n\n### Properties\n\nThis resource supports the ability to add properties to a resource during\ncreation as well as add, update, and delete properties during an update of this\nresource.\n\nNewer versions of OpenStack are adding some read-only properties to each image.\nThese properties start with the prefix `os_`. If these properties are detected,\nthis resource will automatically reconcile these with the user-provided\nproperties.\n\nIn addition, the `direct_url` property is also automatically reconciled if the\nImage Service set it.\n\n\n## Import\n\nImages can be imported using the `id`, e.g.\n\n```sh\n $ pulumi import openstack:images/image:Image rancheros 89c60255-9bd6-460c-822a-e2b959ede9d2\n```\n\n ",
+            "description": "Manages a V2 Image resource within OpenStack Glance.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst rancheros = new openstack.images.Image(\"rancheros\", {\n    containerFormat: \"bare\",\n    diskFormat: \"qcow2\",\n    imageSourceUrl: \"https://releases.rancher.com/os/latest/rancheros-openstack.img\",\n    properties: {\n        key: \"value\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nrancheros = openstack.images.Image(\"rancheros\",\n    container_format=\"bare\",\n    disk_format=\"qcow2\",\n    image_source_url=\"https://releases.rancher.com/os/latest/rancheros-openstack.img\",\n    properties={\n        \"key\": \"value\",\n    })\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var rancheros = new OpenStack.Images.Image(\"rancheros\", new OpenStack.Images.ImageArgs\n        {\n            ContainerFormat = \"bare\",\n            DiskFormat = \"qcow2\",\n            ImageSourceUrl = \"https://releases.rancher.com/os/latest/rancheros-openstack.img\",\n            Properties = \n            {\n                { \"key\", \"value\" },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/images\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := images.NewImage(ctx, \"rancheros\", \u0026images.ImageArgs{\n\t\t\tContainerFormat: pulumi.String(\"bare\"),\n\t\t\tDiskFormat:      pulumi.String(\"qcow2\"),\n\t\t\tImageSourceUrl:  pulumi.String(\"https://releases.rancher.com/os/latest/rancheros-openstack.img\"),\n\t\t\tProperties: pulumi.StringMap{\n\t\t\t\t\"key\": pulumi.String(\"value\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Notes\n\n### Properties\n\nThis resource supports the ability to add properties to a resource during\ncreation as well as add, update, and delete properties during an update of this\nresource.\n\nNewer versions of OpenStack are adding some read-only properties to each image.\nThese properties start with the prefix `os_`. If these properties are detected,\nthis resource will automatically reconcile these with the user-provided\nproperties.\n\nIn addition, the `direct_url` and `stores` properties are also automatically reconciled if the\nImage Service set it.\n\n\n## Import\n\nImages can be imported using the `id`, e.g.\n\n```sh\n $ pulumi import openstack:images/image:Image rancheros 89c60255-9bd6-460c-822a-e2b959ede9d2\n```\n\n ",
             "properties": {
                 "checksum": {
                     "type": "string",
@@ -8533,6 +8645,10 @@
                 },
                 "imageCachePath": {
                     "type": "string"
+                },
+                "imageId": {
+                    "type": "string",
+                    "description": "Unique ID (valid UUID) of image to create. Changing \nthis creates a new image.\n"
                 },
                 "imageSourceUrl": {
                     "type": "string",
@@ -8627,6 +8743,7 @@
                 "createdAt",
                 "diskFormat",
                 "file",
+                "imageId",
                 "metadata",
                 "name",
                 "owner",
@@ -8649,6 +8766,10 @@
                 },
                 "imageCachePath": {
                     "type": "string"
+                },
+                "imageId": {
+                    "type": "string",
+                    "description": "Unique ID (valid UUID) of image to create. Changing \nthis creates a new image.\n"
                 },
                 "imageSourceUrl": {
                     "type": "string",
@@ -8734,6 +8855,10 @@
                     },
                     "imageCachePath": {
                         "type": "string"
+                    },
+                    "imageId": {
+                        "type": "string",
+                        "description": "Unique ID (valid UUID) of image to create. Changing \nthis creates a new image.\n"
                     },
                     "imageSourceUrl": {
                         "type": "string",
@@ -17459,6 +17584,75 @@
                 ]
             }
         },
+        "openstack:compute/getAggregateV2:getAggregateV2": {
+            "description": "Use this data source to get information about host aggregates\nby name.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst test = pulumi.output(openstack.compute.getAggregateV2({\n    name: \"test\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\ntest = openstack.compute.get_aggregate_v2(name=\"test\")\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var test = Output.Create(OpenStack.Compute.GetAggregateV2.InvokeAsync(new OpenStack.Compute.GetAggregateV2Args\n        {\n            Name = \"test\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/compute\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := compute.LookupAggregateV2(ctx, \u0026compute.LookupAggregateV2Args{\n\t\t\tName: \"test\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getAggregateV2.\n",
+                "properties": {
+                    "hosts": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of Hypervisors contained in the Host Aggregate\n"
+                    },
+                    "metadata": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Metadata of the Host Aggregate\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the host aggregate\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getAggregateV2.\n",
+                "properties": {
+                    "hosts": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of Hypervisors contained in the Host Aggregate\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "metadata": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Metadata of the Host Aggregate\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "See Argument Reference above.\n"
+                    },
+                    "zone": {
+                        "type": "string",
+                        "description": "Availability zone of the Host Aggregate\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "hosts",
+                    "metadata",
+                    "name",
+                    "zone",
+                    "id"
+                ]
+            }
+        },
         "openstack:compute/getAvailabilityZones:getAvailabilityZones": {
             "description": "Use this data source to get a list of availability zones from OpenStack\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst zones = pulumi.output(openstack.compute.getAvailabilityZones({ async: true }));\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nzones = openstack.compute.get_availability_zones()\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var zones = Output.Create(OpenStack.Compute.GetAvailabilityZones.InvokeAsync());\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/compute\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := compute.GetAvailabilityZones(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
@@ -17608,6 +17802,75 @@
                 "required": [
                     "extraSpecs",
                     "region",
+                    "id"
+                ]
+            }
+        },
+        "openstack:compute/getHypervisorV2:getHypervisorV2": {
+            "description": "Use this data source to get information about hypervisors\nby hostname.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst host01 = pulumi.output(openstack.compute.getHypervisorV2({\n    hostname: \"host01\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nhost01 = openstack.compute.get_hypervisor_v2(hostname=\"host01\")\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var host01 = Output.Create(OpenStack.Compute.GetHypervisorV2.InvokeAsync(new OpenStack.Compute.GetHypervisorV2Args\n        {\n            Hostname = \"host01\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/compute\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := compute.GetHypervisorV2(ctx, \u0026compute.GetHypervisorV2Args{\n\t\t\tHostname: \"host01\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getHypervisorV2.\n",
+                "properties": {
+                    "hostname": {
+                        "type": "string",
+                        "description": "The hostname of the hypervisor\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "hostname"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getHypervisorV2.\n",
+                "properties": {
+                    "disk": {
+                        "type": "integer",
+                        "description": "The amount in GigaBytes of local storage the hypervisor can provide\n"
+                    },
+                    "hostIp": {
+                        "type": "string",
+                        "description": "The IP address of the Hypervisor\n"
+                    },
+                    "hostname": {
+                        "type": "string",
+                        "description": "See Argument Reference above.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "memory": {
+                        "type": "integer",
+                        "description": "The number in MegaBytes of memory the hypervisor can provide\n"
+                    },
+                    "state": {
+                        "type": "string",
+                        "description": "The state of the hypervisor (`up` or `down`)\n"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "The status of the hypervisor (`enabled` or `disabled`)\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The type of the hypervisor (example: `QEMU`)\n"
+                    },
+                    "vcpus": {
+                        "type": "integer",
+                        "description": "The number of virtual CPUs the hypervisor can provide\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "disk",
+                    "hostIp",
+                    "hostname",
+                    "memory",
+                    "state",
+                    "status",
+                    "type",
+                    "vcpus",
                     "id"
                 ]
             }

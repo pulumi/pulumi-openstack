@@ -53,7 +53,7 @@ import (
 // this resource will automatically reconcile these with the user-provided
 // properties.
 //
-// In addition, the `directUrl` property is also automatically reconciled if the
+// In addition, the `directUrl` and `stores` properties are also automatically reconciled if the
 // Image Service set it.
 //
 // ## Import
@@ -81,6 +81,9 @@ type Image struct {
 	// or the path to retrieve it.
 	File           pulumi.StringOutput    `pulumi:"file"`
 	ImageCachePath pulumi.StringPtrOutput `pulumi:"imageCachePath"`
+	// Unique ID (valid UUID) of image to create. Changing
+	// this creates a new image.
+	ImageId pulumi.StringOutput `pulumi:"imageId"`
 	// This is the url of the raw image. If `webDownload`
 	// is not used, then the image will be downloaded in the `imageCachePath` before
 	// being uploaded to Glance.
@@ -197,6 +200,9 @@ type imageState struct {
 	// or the path to retrieve it.
 	File           *string `pulumi:"file"`
 	ImageCachePath *string `pulumi:"imageCachePath"`
+	// Unique ID (valid UUID) of image to create. Changing
+	// this creates a new image.
+	ImageId *string `pulumi:"imageId"`
 	// This is the url of the raw image. If `webDownload`
 	// is not used, then the image will be downloaded in the `imageCachePath` before
 	// being uploaded to Glance.
@@ -279,6 +285,9 @@ type ImageState struct {
 	// or the path to retrieve it.
 	File           pulumi.StringPtrInput
 	ImageCachePath pulumi.StringPtrInput
+	// Unique ID (valid UUID) of image to create. Changing
+	// this creates a new image.
+	ImageId pulumi.StringPtrInput
 	// This is the url of the raw image. If `webDownload`
 	// is not used, then the image will be downloaded in the `imageCachePath` before
 	// being uploaded to Glance.
@@ -357,6 +366,9 @@ type imageArgs struct {
 	// "ami", "ari", "aki", "vhd", "vmdk", "raw", "qcow2", "vdi", "iso".
 	DiskFormat     string  `pulumi:"diskFormat"`
 	ImageCachePath *string `pulumi:"imageCachePath"`
+	// Unique ID (valid UUID) of image to create. Changing
+	// this creates a new image.
+	ImageId *string `pulumi:"imageId"`
 	// This is the url of the raw image. If `webDownload`
 	// is not used, then the image will be downloaded in the `imageCachePath` before
 	// being uploaded to Glance.
@@ -412,6 +424,9 @@ type ImageArgs struct {
 	// "ami", "ari", "aki", "vhd", "vmdk", "raw", "qcow2", "vdi", "iso".
 	DiskFormat     pulumi.StringInput
 	ImageCachePath pulumi.StringPtrInput
+	// Unique ID (valid UUID) of image to create. Changing
+	// this creates a new image.
+	ImageId pulumi.StringPtrInput
 	// This is the url of the raw image. If `webDownload`
 	// is not used, then the image will be downloaded in the `imageCachePath` before
 	// being uploaded to Glance.

@@ -141,6 +141,9 @@ type VolumeAttach struct {
 	// `region` argument of the provider is used. Changing this creates a
 	// new volume attachment.
 	Region pulumi.StringOutput `pulumi:"region"`
+	// Map of additional vendor-specific options.
+	// Supported options are described below.
+	VendorOptions VolumeAttachVendorOptionsPtrOutput `pulumi:"vendorOptions"`
 	// The ID of the Volume to attach to an Instance.
 	VolumeId pulumi.StringOutput `pulumi:"volumeId"`
 }
@@ -193,6 +196,9 @@ type volumeAttachState struct {
 	// `region` argument of the provider is used. Changing this creates a
 	// new volume attachment.
 	Region *string `pulumi:"region"`
+	// Map of additional vendor-specific options.
+	// Supported options are described below.
+	VendorOptions *VolumeAttachVendorOptions `pulumi:"vendorOptions"`
 	// The ID of the Volume to attach to an Instance.
 	VolumeId *string `pulumi:"volumeId"`
 }
@@ -211,6 +217,9 @@ type VolumeAttachState struct {
 	// `region` argument of the provider is used. Changing this creates a
 	// new volume attachment.
 	Region pulumi.StringPtrInput
+	// Map of additional vendor-specific options.
+	// Supported options are described below.
+	VendorOptions VolumeAttachVendorOptionsPtrInput
 	// The ID of the Volume to attach to an Instance.
 	VolumeId pulumi.StringPtrInput
 }
@@ -233,6 +242,9 @@ type volumeAttachArgs struct {
 	// `region` argument of the provider is used. Changing this creates a
 	// new volume attachment.
 	Region *string `pulumi:"region"`
+	// Map of additional vendor-specific options.
+	// Supported options are described below.
+	VendorOptions *VolumeAttachVendorOptions `pulumi:"vendorOptions"`
 	// The ID of the Volume to attach to an Instance.
 	VolumeId string `pulumi:"volumeId"`
 }
@@ -252,6 +264,9 @@ type VolumeAttachArgs struct {
 	// `region` argument of the provider is used. Changing this creates a
 	// new volume attachment.
 	Region pulumi.StringPtrInput
+	// Map of additional vendor-specific options.
+	// Supported options are described below.
+	VendorOptions VolumeAttachVendorOptionsPtrInput
 	// The ID of the Volume to attach to an Instance.
 	VolumeId pulumi.StringInput
 }

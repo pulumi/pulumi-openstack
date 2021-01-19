@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -175,6 +176,11 @@ export class VolumeAttach extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
+     * Map of additional vendor-specific options.
+     * Supported options are described below.
+     */
+    public readonly vendorOptions!: pulumi.Output<outputs.compute.VolumeAttachVendorOptions | undefined>;
+    /**
      * The ID of the Volume to attach to an Instance.
      */
     public readonly volumeId!: pulumi.Output<string>;
@@ -195,6 +201,7 @@ export class VolumeAttach extends pulumi.CustomResource {
             inputs["instanceId"] = state ? state.instanceId : undefined;
             inputs["multiattach"] = state ? state.multiattach : undefined;
             inputs["region"] = state ? state.region : undefined;
+            inputs["vendorOptions"] = state ? state.vendorOptions : undefined;
             inputs["volumeId"] = state ? state.volumeId : undefined;
         } else {
             const args = argsOrState as VolumeAttachArgs | undefined;
@@ -208,6 +215,7 @@ export class VolumeAttach extends pulumi.CustomResource {
             inputs["instanceId"] = args ? args.instanceId : undefined;
             inputs["multiattach"] = args ? args.multiattach : undefined;
             inputs["region"] = args ? args.region : undefined;
+            inputs["vendorOptions"] = args ? args.vendorOptions : undefined;
             inputs["volumeId"] = args ? args.volumeId : undefined;
         }
         if (!opts) {
@@ -247,6 +255,11 @@ export interface VolumeAttachState {
      */
     readonly region?: pulumi.Input<string>;
     /**
+     * Map of additional vendor-specific options.
+     * Supported options are described below.
+     */
+    readonly vendorOptions?: pulumi.Input<inputs.compute.VolumeAttachVendorOptions>;
+    /**
      * The ID of the Volume to attach to an Instance.
      */
     readonly volumeId?: pulumi.Input<string>;
@@ -277,6 +290,11 @@ export interface VolumeAttachArgs {
      * new volume attachment.
      */
     readonly region?: pulumi.Input<string>;
+    /**
+     * Map of additional vendor-specific options.
+     * Supported options are described below.
+     */
+    readonly vendorOptions?: pulumi.Input<inputs.compute.VolumeAttachVendorOptions>;
     /**
      * The ID of the Volume to attach to an Instance.
      */

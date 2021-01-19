@@ -1058,6 +1058,145 @@ func (o SecGroupRuleArrayOutput) Index(i pulumi.IntInput) SecGroupRuleOutput {
 	}).(SecGroupRuleOutput)
 }
 
+type VolumeAttachVendorOptions struct {
+	// Boolean to control whether
+	// to ignore volume status confirmation of the attached volume. This can be helpful
+	// to work with some OpenStack clouds which don't have the Block Storage V3 API available.
+	IgnoreVolumeConfirmation *bool `pulumi:"ignoreVolumeConfirmation"`
+}
+
+// VolumeAttachVendorOptionsInput is an input type that accepts VolumeAttachVendorOptionsArgs and VolumeAttachVendorOptionsOutput values.
+// You can construct a concrete instance of `VolumeAttachVendorOptionsInput` via:
+//
+//          VolumeAttachVendorOptionsArgs{...}
+type VolumeAttachVendorOptionsInput interface {
+	pulumi.Input
+
+	ToVolumeAttachVendorOptionsOutput() VolumeAttachVendorOptionsOutput
+	ToVolumeAttachVendorOptionsOutputWithContext(context.Context) VolumeAttachVendorOptionsOutput
+}
+
+type VolumeAttachVendorOptionsArgs struct {
+	// Boolean to control whether
+	// to ignore volume status confirmation of the attached volume. This can be helpful
+	// to work with some OpenStack clouds which don't have the Block Storage V3 API available.
+	IgnoreVolumeConfirmation pulumi.BoolPtrInput `pulumi:"ignoreVolumeConfirmation"`
+}
+
+func (VolumeAttachVendorOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeAttachVendorOptions)(nil)).Elem()
+}
+
+func (i VolumeAttachVendorOptionsArgs) ToVolumeAttachVendorOptionsOutput() VolumeAttachVendorOptionsOutput {
+	return i.ToVolumeAttachVendorOptionsOutputWithContext(context.Background())
+}
+
+func (i VolumeAttachVendorOptionsArgs) ToVolumeAttachVendorOptionsOutputWithContext(ctx context.Context) VolumeAttachVendorOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeAttachVendorOptionsOutput)
+}
+
+func (i VolumeAttachVendorOptionsArgs) ToVolumeAttachVendorOptionsPtrOutput() VolumeAttachVendorOptionsPtrOutput {
+	return i.ToVolumeAttachVendorOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i VolumeAttachVendorOptionsArgs) ToVolumeAttachVendorOptionsPtrOutputWithContext(ctx context.Context) VolumeAttachVendorOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeAttachVendorOptionsOutput).ToVolumeAttachVendorOptionsPtrOutputWithContext(ctx)
+}
+
+// VolumeAttachVendorOptionsPtrInput is an input type that accepts VolumeAttachVendorOptionsArgs, VolumeAttachVendorOptionsPtr and VolumeAttachVendorOptionsPtrOutput values.
+// You can construct a concrete instance of `VolumeAttachVendorOptionsPtrInput` via:
+//
+//          VolumeAttachVendorOptionsArgs{...}
+//
+//  or:
+//
+//          nil
+type VolumeAttachVendorOptionsPtrInput interface {
+	pulumi.Input
+
+	ToVolumeAttachVendorOptionsPtrOutput() VolumeAttachVendorOptionsPtrOutput
+	ToVolumeAttachVendorOptionsPtrOutputWithContext(context.Context) VolumeAttachVendorOptionsPtrOutput
+}
+
+type volumeAttachVendorOptionsPtrType VolumeAttachVendorOptionsArgs
+
+func VolumeAttachVendorOptionsPtr(v *VolumeAttachVendorOptionsArgs) VolumeAttachVendorOptionsPtrInput {
+	return (*volumeAttachVendorOptionsPtrType)(v)
+}
+
+func (*volumeAttachVendorOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VolumeAttachVendorOptions)(nil)).Elem()
+}
+
+func (i *volumeAttachVendorOptionsPtrType) ToVolumeAttachVendorOptionsPtrOutput() VolumeAttachVendorOptionsPtrOutput {
+	return i.ToVolumeAttachVendorOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *volumeAttachVendorOptionsPtrType) ToVolumeAttachVendorOptionsPtrOutputWithContext(ctx context.Context) VolumeAttachVendorOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeAttachVendorOptionsPtrOutput)
+}
+
+type VolumeAttachVendorOptionsOutput struct{ *pulumi.OutputState }
+
+func (VolumeAttachVendorOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeAttachVendorOptions)(nil)).Elem()
+}
+
+func (o VolumeAttachVendorOptionsOutput) ToVolumeAttachVendorOptionsOutput() VolumeAttachVendorOptionsOutput {
+	return o
+}
+
+func (o VolumeAttachVendorOptionsOutput) ToVolumeAttachVendorOptionsOutputWithContext(ctx context.Context) VolumeAttachVendorOptionsOutput {
+	return o
+}
+
+func (o VolumeAttachVendorOptionsOutput) ToVolumeAttachVendorOptionsPtrOutput() VolumeAttachVendorOptionsPtrOutput {
+	return o.ToVolumeAttachVendorOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o VolumeAttachVendorOptionsOutput) ToVolumeAttachVendorOptionsPtrOutputWithContext(ctx context.Context) VolumeAttachVendorOptionsPtrOutput {
+	return o.ApplyT(func(v VolumeAttachVendorOptions) *VolumeAttachVendorOptions {
+		return &v
+	}).(VolumeAttachVendorOptionsPtrOutput)
+}
+
+// Boolean to control whether
+// to ignore volume status confirmation of the attached volume. This can be helpful
+// to work with some OpenStack clouds which don't have the Block Storage V3 API available.
+func (o VolumeAttachVendorOptionsOutput) IgnoreVolumeConfirmation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VolumeAttachVendorOptions) *bool { return v.IgnoreVolumeConfirmation }).(pulumi.BoolPtrOutput)
+}
+
+type VolumeAttachVendorOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (VolumeAttachVendorOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VolumeAttachVendorOptions)(nil)).Elem()
+}
+
+func (o VolumeAttachVendorOptionsPtrOutput) ToVolumeAttachVendorOptionsPtrOutput() VolumeAttachVendorOptionsPtrOutput {
+	return o
+}
+
+func (o VolumeAttachVendorOptionsPtrOutput) ToVolumeAttachVendorOptionsPtrOutputWithContext(ctx context.Context) VolumeAttachVendorOptionsPtrOutput {
+	return o
+}
+
+func (o VolumeAttachVendorOptionsPtrOutput) Elem() VolumeAttachVendorOptionsOutput {
+	return o.ApplyT(func(v *VolumeAttachVendorOptions) VolumeAttachVendorOptions { return *v }).(VolumeAttachVendorOptionsOutput)
+}
+
+// Boolean to control whether
+// to ignore volume status confirmation of the attached volume. This can be helpful
+// to work with some OpenStack clouds which don't have the Block Storage V3 API available.
+func (o VolumeAttachVendorOptionsPtrOutput) IgnoreVolumeConfirmation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VolumeAttachVendorOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IgnoreVolumeConfirmation
+	}).(pulumi.BoolPtrOutput)
+}
+
 type GetInstanceV2Network struct {
 	// The IPv4 address assigned to this network port.
 	FixedIpV4 string `pulumi:"fixedIpV4"`
@@ -1213,6 +1352,8 @@ func init() {
 	pulumi.RegisterOutputType(InstanceVendorOptionsPtrOutput{})
 	pulumi.RegisterOutputType(SecGroupRuleOutput{})
 	pulumi.RegisterOutputType(SecGroupRuleArrayOutput{})
+	pulumi.RegisterOutputType(VolumeAttachVendorOptionsOutput{})
+	pulumi.RegisterOutputType(VolumeAttachVendorOptionsPtrOutput{})
 	pulumi.RegisterOutputType(GetInstanceV2NetworkOutput{})
 	pulumi.RegisterOutputType(GetInstanceV2NetworkArrayOutput{})
 }

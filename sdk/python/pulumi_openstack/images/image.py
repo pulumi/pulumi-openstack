@@ -18,6 +18,7 @@ class Image(pulumi.CustomResource):
                  container_format: Optional[pulumi.Input[str]] = None,
                  disk_format: Optional[pulumi.Input[str]] = None,
                  image_cache_path: Optional[pulumi.Input[str]] = None,
+                 image_id: Optional[pulumi.Input[str]] = None,
                  image_source_url: Optional[pulumi.Input[str]] = None,
                  local_file_path: Optional[pulumi.Input[str]] = None,
                  min_disk_gb: Optional[pulumi.Input[int]] = None,
@@ -63,7 +64,7 @@ class Image(pulumi.CustomResource):
         this resource will automatically reconcile these with the user-provided
         properties.
 
-        In addition, the `direct_url` property is also automatically reconciled if the
+        In addition, the `direct_url` and `stores` properties are also automatically reconciled if the
         Image Service set it.
 
         ## Import
@@ -80,6 +81,8 @@ class Image(pulumi.CustomResource):
                "ami", "ari", "aki", "bare", "ovf".
         :param pulumi.Input[str] disk_format: The disk format. Must be one of
                "ami", "ari", "aki", "vhd", "vmdk", "raw", "qcow2", "vdi", "iso".
+        :param pulumi.Input[str] image_id: Unique ID (valid UUID) of image to create. Changing 
+               this creates a new image.
         :param pulumi.Input[str] image_source_url: This is the url of the raw image. If `web_download`
                is not used, then the image will be downloaded in the `image_cache_path` before
                being uploaded to Glance.
@@ -137,6 +140,7 @@ class Image(pulumi.CustomResource):
                 raise TypeError("Missing required property 'disk_format'")
             __props__['disk_format'] = disk_format
             __props__['image_cache_path'] = image_cache_path
+            __props__['image_id'] = image_id
             __props__['image_source_url'] = image_source_url
             __props__['local_file_path'] = local_file_path
             __props__['min_disk_gb'] = min_disk_gb
@@ -175,6 +179,7 @@ class Image(pulumi.CustomResource):
             disk_format: Optional[pulumi.Input[str]] = None,
             file: Optional[pulumi.Input[str]] = None,
             image_cache_path: Optional[pulumi.Input[str]] = None,
+            image_id: Optional[pulumi.Input[str]] = None,
             image_source_url: Optional[pulumi.Input[str]] = None,
             local_file_path: Optional[pulumi.Input[str]] = None,
             metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -210,6 +215,8 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[str] file: the trailing path after the glance
                endpoint that represent the location of the image
                or the path to retrieve it.
+        :param pulumi.Input[str] image_id: Unique ID (valid UUID) of image to create. Changing 
+               this creates a new image.
         :param pulumi.Input[str] image_source_url: This is the url of the raw image. If `web_download`
                is not used, then the image will be downloaded in the `image_cache_path` before
                being uploaded to Glance.
@@ -264,6 +271,7 @@ class Image(pulumi.CustomResource):
         __props__["disk_format"] = disk_format
         __props__["file"] = file
         __props__["image_cache_path"] = image_cache_path
+        __props__["image_id"] = image_id
         __props__["image_source_url"] = image_source_url
         __props__["local_file_path"] = local_file_path
         __props__["metadata"] = metadata
@@ -333,6 +341,15 @@ class Image(pulumi.CustomResource):
     @pulumi.getter(name="imageCachePath")
     def image_cache_path(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "image_cache_path")
+
+    @property
+    @pulumi.getter(name="imageId")
+    def image_id(self) -> pulumi.Output[str]:
+        """
+        Unique ID (valid UUID) of image to create. Changing 
+        this creates a new image.
+        """
+        return pulumi.get(self, "image_id")
 
     @property
     @pulumi.getter(name="imageSourceUrl")
