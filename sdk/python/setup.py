@@ -48,7 +48,7 @@ setup(name='pulumi_openstack',
       packages=find_packages(),
       package_data={
           'pulumi_openstack': [
-              'py.typed'
+              'py.typed',
           ]
       },
       install_requires=[

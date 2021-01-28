@@ -54,6 +54,7 @@ namespace Pulumi.OpenStack.Networking
     ///  $ pulumi import openstack:networking/routerInterface:RouterInterface int_1 &lt;port id from above output&gt;
     /// ```
     /// </summary>
+    [OpenStackResourceType("openstack:networking/routerInterface:RouterInterface")]
     public partial class RouterInterface : Pulumi.CustomResource
     {
         /// <summary>

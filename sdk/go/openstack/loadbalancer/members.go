@@ -176,15 +176,15 @@ type MembersInput interface {
 	ToMembersOutputWithContext(ctx context.Context) MembersOutput
 }
 
-func (Members) ElementType() reflect.Type {
-	return reflect.TypeOf((*Members)(nil)).Elem()
+func (*Members) ElementType() reflect.Type {
+	return reflect.TypeOf((*Members)(nil))
 }
 
-func (i Members) ToMembersOutput() MembersOutput {
+func (i *Members) ToMembersOutput() MembersOutput {
 	return i.ToMembersOutputWithContext(context.Background())
 }
 
-func (i Members) ToMembersOutputWithContext(ctx context.Context) MembersOutput {
+func (i *Members) ToMembersOutputWithContext(ctx context.Context) MembersOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MembersOutput)
 }
 
@@ -193,7 +193,7 @@ type MembersOutput struct {
 }
 
 func (MembersOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MembersOutput)(nil)).Elem()
+	return reflect.TypeOf((*Members)(nil))
 }
 
 func (o MembersOutput) ToMembersOutput() MembersOutput {

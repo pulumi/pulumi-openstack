@@ -267,15 +267,15 @@ type QuoteSetV3Input interface {
 	ToQuoteSetV3OutputWithContext(ctx context.Context) QuoteSetV3Output
 }
 
-func (QuoteSetV3) ElementType() reflect.Type {
-	return reflect.TypeOf((*QuoteSetV3)(nil)).Elem()
+func (*QuoteSetV3) ElementType() reflect.Type {
+	return reflect.TypeOf((*QuoteSetV3)(nil))
 }
 
-func (i QuoteSetV3) ToQuoteSetV3Output() QuoteSetV3Output {
+func (i *QuoteSetV3) ToQuoteSetV3Output() QuoteSetV3Output {
 	return i.ToQuoteSetV3OutputWithContext(context.Background())
 }
 
-func (i QuoteSetV3) ToQuoteSetV3OutputWithContext(ctx context.Context) QuoteSetV3Output {
+func (i *QuoteSetV3) ToQuoteSetV3OutputWithContext(ctx context.Context) QuoteSetV3Output {
 	return pulumi.ToOutputWithContext(ctx, i).(QuoteSetV3Output)
 }
 
@@ -284,7 +284,7 @@ type QuoteSetV3Output struct {
 }
 
 func (QuoteSetV3Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*QuoteSetV3Output)(nil)).Elem()
+	return reflect.TypeOf((*QuoteSetV3)(nil))
 }
 
 func (o QuoteSetV3Output) ToQuoteSetV3Output() QuoteSetV3Output {

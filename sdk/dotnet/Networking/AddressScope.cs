@@ -67,6 +67,7 @@ namespace Pulumi.OpenStack.Networking
     ///  $ pulumi import openstack:networking/addressScope:AddressScope addressscope_1 9cc35860-522a-4d35-974d-51d4b011801e
     /// ```
     /// </summary>
+    [OpenStackResourceType("openstack:networking/addressScope:AddressScope")]
     public partial class AddressScope : Pulumi.CustomResource
     {
         /// <summary>

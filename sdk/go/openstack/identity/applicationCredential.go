@@ -364,15 +364,15 @@ type ApplicationCredentialInput interface {
 	ToApplicationCredentialOutputWithContext(ctx context.Context) ApplicationCredentialOutput
 }
 
-func (ApplicationCredential) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApplicationCredential)(nil)).Elem()
+func (*ApplicationCredential) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationCredential)(nil))
 }
 
-func (i ApplicationCredential) ToApplicationCredentialOutput() ApplicationCredentialOutput {
+func (i *ApplicationCredential) ToApplicationCredentialOutput() ApplicationCredentialOutput {
 	return i.ToApplicationCredentialOutputWithContext(context.Background())
 }
 
-func (i ApplicationCredential) ToApplicationCredentialOutputWithContext(ctx context.Context) ApplicationCredentialOutput {
+func (i *ApplicationCredential) ToApplicationCredentialOutputWithContext(ctx context.Context) ApplicationCredentialOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationCredentialOutput)
 }
 
@@ -381,7 +381,7 @@ type ApplicationCredentialOutput struct {
 }
 
 func (ApplicationCredentialOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApplicationCredentialOutput)(nil)).Elem()
+	return reflect.TypeOf((*ApplicationCredential)(nil))
 }
 
 func (o ApplicationCredentialOutput) ToApplicationCredentialOutput() ApplicationCredentialOutput {

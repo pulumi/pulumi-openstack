@@ -70,6 +70,7 @@ namespace Pulumi.OpenStack.Compute
     /// 
     /// | +----+------+-------------------+
     /// </summary>
+    [OpenStackResourceType("openstack:compute/aggregateV2:AggregateV2")]
     public partial class AggregateV2 : Pulumi.CustomResource
     {
         /// <summary>

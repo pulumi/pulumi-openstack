@@ -182,15 +182,15 @@ type SecGroupInput interface {
 	ToSecGroupOutputWithContext(ctx context.Context) SecGroupOutput
 }
 
-func (SecGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecGroup)(nil)).Elem()
+func (*SecGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecGroup)(nil))
 }
 
-func (i SecGroup) ToSecGroupOutput() SecGroupOutput {
+func (i *SecGroup) ToSecGroupOutput() SecGroupOutput {
 	return i.ToSecGroupOutputWithContext(context.Background())
 }
 
-func (i SecGroup) ToSecGroupOutputWithContext(ctx context.Context) SecGroupOutput {
+func (i *SecGroup) ToSecGroupOutputWithContext(ctx context.Context) SecGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SecGroupOutput)
 }
 
@@ -199,7 +199,7 @@ type SecGroupOutput struct {
 }
 
 func (SecGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecGroupOutput)(nil)).Elem()
+	return reflect.TypeOf((*SecGroup)(nil))
 }
 
 func (o SecGroupOutput) ToSecGroupOutput() SecGroupOutput {

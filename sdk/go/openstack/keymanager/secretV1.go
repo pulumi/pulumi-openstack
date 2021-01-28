@@ -273,15 +273,15 @@ type SecretV1Input interface {
 	ToSecretV1OutputWithContext(ctx context.Context) SecretV1Output
 }
 
-func (SecretV1) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecretV1)(nil)).Elem()
+func (*SecretV1) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretV1)(nil))
 }
 
-func (i SecretV1) ToSecretV1Output() SecretV1Output {
+func (i *SecretV1) ToSecretV1Output() SecretV1Output {
 	return i.ToSecretV1OutputWithContext(context.Background())
 }
 
-func (i SecretV1) ToSecretV1OutputWithContext(ctx context.Context) SecretV1Output {
+func (i *SecretV1) ToSecretV1OutputWithContext(ctx context.Context) SecretV1Output {
 	return pulumi.ToOutputWithContext(ctx, i).(SecretV1Output)
 }
 
@@ -290,7 +290,7 @@ type SecretV1Output struct {
 }
 
 func (SecretV1Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecretV1Output)(nil)).Elem()
+	return reflect.TypeOf((*SecretV1)(nil))
 }
 
 func (o SecretV1Output) ToSecretV1Output() SecretV1Output {

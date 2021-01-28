@@ -18,6 +18,7 @@ namespace Pulumi.OpenStack.Compute
     ///  $ pulumi import openstack:compute/keypair:Keypair my-keypair test-keypair
     /// ```
     /// </summary>
+    [OpenStackResourceType("openstack:compute/keypair:Keypair")]
     public partial class Keypair : Pulumi.CustomResource
     {
         /// <summary>

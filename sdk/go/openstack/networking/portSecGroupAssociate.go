@@ -157,15 +157,15 @@ type PortSecGroupAssociateInput interface {
 	ToPortSecGroupAssociateOutputWithContext(ctx context.Context) PortSecGroupAssociateOutput
 }
 
-func (PortSecGroupAssociate) ElementType() reflect.Type {
-	return reflect.TypeOf((*PortSecGroupAssociate)(nil)).Elem()
+func (*PortSecGroupAssociate) ElementType() reflect.Type {
+	return reflect.TypeOf((*PortSecGroupAssociate)(nil))
 }
 
-func (i PortSecGroupAssociate) ToPortSecGroupAssociateOutput() PortSecGroupAssociateOutput {
+func (i *PortSecGroupAssociate) ToPortSecGroupAssociateOutput() PortSecGroupAssociateOutput {
 	return i.ToPortSecGroupAssociateOutputWithContext(context.Background())
 }
 
-func (i PortSecGroupAssociate) ToPortSecGroupAssociateOutputWithContext(ctx context.Context) PortSecGroupAssociateOutput {
+func (i *PortSecGroupAssociate) ToPortSecGroupAssociateOutputWithContext(ctx context.Context) PortSecGroupAssociateOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PortSecGroupAssociateOutput)
 }
 
@@ -174,7 +174,7 @@ type PortSecGroupAssociateOutput struct {
 }
 
 func (PortSecGroupAssociateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PortSecGroupAssociateOutput)(nil)).Elem()
+	return reflect.TypeOf((*PortSecGroupAssociate)(nil))
 }
 
 func (o PortSecGroupAssociateOutput) ToPortSecGroupAssociateOutput() PortSecGroupAssociateOutput {

@@ -45,6 +45,7 @@ namespace Pulumi.OpenStack.Compute
     ///  $ pulumi import openstack:compute/floatingIp:FloatingIp floatip_1 89c60255-9bd6-460c-822a-e2b959ede9d2
     /// ```
     /// </summary>
+    [OpenStackResourceType("openstack:compute/floatingIp:FloatingIp")]
     public partial class FloatingIp : Pulumi.CustomResource
     {
         /// <summary>

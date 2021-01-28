@@ -71,6 +71,7 @@ namespace Pulumi.OpenStack.KeyManager
     ///  $ pulumi import openstack:keymanager/orderV1:OrderV1 order_1 0c6cd26a-c012-4d7b-8034-057c0f1c2953
     /// ```
     /// </summary>
+    [OpenStackResourceType("openstack:keymanager/orderV1:OrderV1")]
     public partial class OrderV1 : Pulumi.CustomResource
     {
         /// <summary>

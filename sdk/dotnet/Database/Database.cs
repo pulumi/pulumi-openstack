@@ -40,6 +40,7 @@ namespace Pulumi.OpenStack.Database
     ///  $ pulumi import openstack:database/database:Database mydb 7b9e3cd3-00d9-449c-b074-8439f8e274fa/mydb
     /// ```
     /// </summary>
+    [OpenStackResourceType("openstack:database/database:Database")]
     public partial class Database : Pulumi.CustomResource
     {
         /// <summary>

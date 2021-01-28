@@ -77,4 +77,11 @@ namespace Pulumi.OpenStack
             }
         }
     }
+
+    internal sealed class OpenStackResourceTypeAttribute : Pulumi.ResourceTypeAttribute
+    {
+        public OpenStackResourceTypeAttribute(string type) : base(type, Utilities.Version)
+        {
+        }
+    }
 }

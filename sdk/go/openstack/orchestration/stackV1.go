@@ -379,15 +379,15 @@ type StackV1Input interface {
 	ToStackV1OutputWithContext(ctx context.Context) StackV1Output
 }
 
-func (StackV1) ElementType() reflect.Type {
-	return reflect.TypeOf((*StackV1)(nil)).Elem()
+func (*StackV1) ElementType() reflect.Type {
+	return reflect.TypeOf((*StackV1)(nil))
 }
 
-func (i StackV1) ToStackV1Output() StackV1Output {
+func (i *StackV1) ToStackV1Output() StackV1Output {
 	return i.ToStackV1OutputWithContext(context.Background())
 }
 
-func (i StackV1) ToStackV1OutputWithContext(ctx context.Context) StackV1Output {
+func (i *StackV1) ToStackV1OutputWithContext(ctx context.Context) StackV1Output {
 	return pulumi.ToOutputWithContext(ctx, i).(StackV1Output)
 }
 
@@ -396,7 +396,7 @@ type StackV1Output struct {
 }
 
 func (StackV1Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*StackV1Output)(nil)).Elem()
+	return reflect.TypeOf((*StackV1)(nil))
 }
 
 func (o StackV1Output) ToStackV1Output() StackV1Output {

@@ -45,6 +45,7 @@ namespace Pulumi.OpenStack.LoadBalancer
     ///  $ pulumi import openstack:loadbalancer/listener:Listener listener_1 b67ce64e-8b26-405d-afeb-4a078901f15a
     /// ```
     /// </summary>
+    [OpenStackResourceType("openstack:loadbalancer/listener:Listener")]
     public partial class Listener : Pulumi.CustomResource
     {
         /// <summary>

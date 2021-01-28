@@ -371,15 +371,15 @@ type QuotaSetV2Input interface {
 	ToQuotaSetV2OutputWithContext(ctx context.Context) QuotaSetV2Output
 }
 
-func (QuotaSetV2) ElementType() reflect.Type {
-	return reflect.TypeOf((*QuotaSetV2)(nil)).Elem()
+func (*QuotaSetV2) ElementType() reflect.Type {
+	return reflect.TypeOf((*QuotaSetV2)(nil))
 }
 
-func (i QuotaSetV2) ToQuotaSetV2Output() QuotaSetV2Output {
+func (i *QuotaSetV2) ToQuotaSetV2Output() QuotaSetV2Output {
 	return i.ToQuotaSetV2OutputWithContext(context.Background())
 }
 
-func (i QuotaSetV2) ToQuotaSetV2OutputWithContext(ctx context.Context) QuotaSetV2Output {
+func (i *QuotaSetV2) ToQuotaSetV2OutputWithContext(ctx context.Context) QuotaSetV2Output {
 	return pulumi.ToOutputWithContext(ctx, i).(QuotaSetV2Output)
 }
 
@@ -388,7 +388,7 @@ type QuotaSetV2Output struct {
 }
 
 func (QuotaSetV2Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*QuotaSetV2Output)(nil)).Elem()
+	return reflect.TypeOf((*QuotaSetV2)(nil))
 }
 
 func (o QuotaSetV2Output) ToQuotaSetV2Output() QuotaSetV2Output {

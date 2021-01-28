@@ -231,15 +231,15 @@ type AddressScopeInput interface {
 	ToAddressScopeOutputWithContext(ctx context.Context) AddressScopeOutput
 }
 
-func (AddressScope) ElementType() reflect.Type {
-	return reflect.TypeOf((*AddressScope)(nil)).Elem()
+func (*AddressScope) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddressScope)(nil))
 }
 
-func (i AddressScope) ToAddressScopeOutput() AddressScopeOutput {
+func (i *AddressScope) ToAddressScopeOutput() AddressScopeOutput {
 	return i.ToAddressScopeOutputWithContext(context.Background())
 }
 
-func (i AddressScope) ToAddressScopeOutputWithContext(ctx context.Context) AddressScopeOutput {
+func (i *AddressScope) ToAddressScopeOutputWithContext(ctx context.Context) AddressScopeOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AddressScopeOutput)
 }
 
@@ -248,7 +248,7 @@ type AddressScopeOutput struct {
 }
 
 func (AddressScopeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AddressScopeOutput)(nil)).Elem()
+	return reflect.TypeOf((*AddressScope)(nil))
 }
 
 func (o AddressScopeOutput) ToAddressScopeOutput() AddressScopeOutput {

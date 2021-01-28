@@ -179,15 +179,15 @@ type FloatingIpAssociateInput interface {
 	ToFloatingIpAssociateOutputWithContext(ctx context.Context) FloatingIpAssociateOutput
 }
 
-func (FloatingIpAssociate) ElementType() reflect.Type {
-	return reflect.TypeOf((*FloatingIpAssociate)(nil)).Elem()
+func (*FloatingIpAssociate) ElementType() reflect.Type {
+	return reflect.TypeOf((*FloatingIpAssociate)(nil))
 }
 
-func (i FloatingIpAssociate) ToFloatingIpAssociateOutput() FloatingIpAssociateOutput {
+func (i *FloatingIpAssociate) ToFloatingIpAssociateOutput() FloatingIpAssociateOutput {
 	return i.ToFloatingIpAssociateOutputWithContext(context.Background())
 }
 
-func (i FloatingIpAssociate) ToFloatingIpAssociateOutputWithContext(ctx context.Context) FloatingIpAssociateOutput {
+func (i *FloatingIpAssociate) ToFloatingIpAssociateOutputWithContext(ctx context.Context) FloatingIpAssociateOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FloatingIpAssociateOutput)
 }
 
@@ -196,7 +196,7 @@ type FloatingIpAssociateOutput struct {
 }
 
 func (FloatingIpAssociateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FloatingIpAssociateOutput)(nil)).Elem()
+	return reflect.TypeOf((*FloatingIpAssociate)(nil))
 }
 
 func (o FloatingIpAssociateOutput) ToFloatingIpAssociateOutput() FloatingIpAssociateOutput {

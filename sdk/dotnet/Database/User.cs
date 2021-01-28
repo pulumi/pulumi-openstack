@@ -14,6 +14,7 @@ namespace Pulumi.OpenStack.Database
     /// 
     /// ## Example Usage
     /// </summary>
+    [OpenStackResourceType("openstack:database/user:User")]
     public partial class User : Pulumi.CustomResource
     {
         /// <summary>

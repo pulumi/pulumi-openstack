@@ -46,6 +46,7 @@ namespace Pulumi.OpenStack.Database
     /// }
     /// ```
     /// </summary>
+    [OpenStackResourceType("openstack:database/instance:Instance")]
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>

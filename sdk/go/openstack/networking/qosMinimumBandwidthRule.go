@@ -178,15 +178,15 @@ type QosMinimumBandwidthRuleInput interface {
 	ToQosMinimumBandwidthRuleOutputWithContext(ctx context.Context) QosMinimumBandwidthRuleOutput
 }
 
-func (QosMinimumBandwidthRule) ElementType() reflect.Type {
-	return reflect.TypeOf((*QosMinimumBandwidthRule)(nil)).Elem()
+func (*QosMinimumBandwidthRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*QosMinimumBandwidthRule)(nil))
 }
 
-func (i QosMinimumBandwidthRule) ToQosMinimumBandwidthRuleOutput() QosMinimumBandwidthRuleOutput {
+func (i *QosMinimumBandwidthRule) ToQosMinimumBandwidthRuleOutput() QosMinimumBandwidthRuleOutput {
 	return i.ToQosMinimumBandwidthRuleOutputWithContext(context.Background())
 }
 
-func (i QosMinimumBandwidthRule) ToQosMinimumBandwidthRuleOutputWithContext(ctx context.Context) QosMinimumBandwidthRuleOutput {
+func (i *QosMinimumBandwidthRule) ToQosMinimumBandwidthRuleOutputWithContext(ctx context.Context) QosMinimumBandwidthRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(QosMinimumBandwidthRuleOutput)
 }
 
@@ -195,7 +195,7 @@ type QosMinimumBandwidthRuleOutput struct {
 }
 
 func (QosMinimumBandwidthRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*QosMinimumBandwidthRuleOutput)(nil)).Elem()
+	return reflect.TypeOf((*QosMinimumBandwidthRule)(nil))
 }
 
 func (o QosMinimumBandwidthRuleOutput) ToQosMinimumBandwidthRuleOutput() QosMinimumBandwidthRuleOutput {

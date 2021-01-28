@@ -220,15 +220,15 @@ type TempUrlInput interface {
 	ToTempUrlOutputWithContext(ctx context.Context) TempUrlOutput
 }
 
-func (TempUrl) ElementType() reflect.Type {
-	return reflect.TypeOf((*TempUrl)(nil)).Elem()
+func (*TempUrl) ElementType() reflect.Type {
+	return reflect.TypeOf((*TempUrl)(nil))
 }
 
-func (i TempUrl) ToTempUrlOutput() TempUrlOutput {
+func (i *TempUrl) ToTempUrlOutput() TempUrlOutput {
 	return i.ToTempUrlOutputWithContext(context.Background())
 }
 
-func (i TempUrl) ToTempUrlOutputWithContext(ctx context.Context) TempUrlOutput {
+func (i *TempUrl) ToTempUrlOutputWithContext(ctx context.Context) TempUrlOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TempUrlOutput)
 }
 
@@ -237,7 +237,7 @@ type TempUrlOutput struct {
 }
 
 func (TempUrlOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TempUrlOutput)(nil)).Elem()
+	return reflect.TypeOf((*TempUrl)(nil))
 }
 
 func (o TempUrlOutput) ToTempUrlOutput() TempUrlOutput {

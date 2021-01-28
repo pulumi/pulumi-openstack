@@ -42,6 +42,7 @@ namespace Pulumi.OpenStack.Networking
     ///  $ pulumi import openstack:networking/floatingIp:FloatingIp floatip_1 2c7f39f3-702b-48d1-940c-b50384177ee1
     /// ```
     /// </summary>
+    [OpenStackResourceType("openstack:networking/floatingIp:FloatingIp")]
     public partial class FloatingIp : Pulumi.CustomResource
     {
         /// <summary>

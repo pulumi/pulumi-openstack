@@ -18,6 +18,7 @@ namespace Pulumi.OpenStack.Networking
     ///  $ pulumi import openstack:networking/secGroup:SecGroup secgroup_1 38809219-5e8a-4852-9139-6f461c90e8bc
     /// ```
     /// </summary>
+    [OpenStackResourceType("openstack:networking/secGroup:SecGroup")]
     public partial class SecGroup : Pulumi.CustomResource
     {
         /// <summary>

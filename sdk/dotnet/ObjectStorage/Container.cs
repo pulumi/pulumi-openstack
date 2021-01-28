@@ -112,6 +112,7 @@ namespace Pulumi.OpenStack.ObjectStorage
     ///  $ pulumi import openstack:objectstorage/container:Container container_1 &lt;name&gt;
     /// ```
     /// </summary>
+    [OpenStackResourceType("openstack:objectstorage/container:Container")]
     public partial class Container : Pulumi.CustomResource
     {
         /// <summary>

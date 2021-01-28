@@ -142,6 +142,7 @@ namespace Pulumi.OpenStack.ContainerInfra
     ///  $ pulumi import openstack:containerinfra/cluster:Cluster cluster_1 ce0f9463-dd25-474b-9fe8-94de63e5e42b
     /// ```
     /// </summary>
+    [OpenStackResourceType("openstack:containerinfra/cluster:Cluster")]
     public partial class Cluster : Pulumi.CustomResource
     {
         [Output("apiAddress")]

@@ -53,6 +53,7 @@ namespace Pulumi.OpenStack.SharedFileSystem
     ///  $ pulumi import openstack:sharedfilesystem/securityService:SecurityService securityservice_1 &lt;id&gt;
     /// ```
     /// </summary>
+    [OpenStackResourceType("openstack:sharedfilesystem/securityService:SecurityService")]
     public partial class SecurityService : Pulumi.CustomResource
     {
         /// <summary>

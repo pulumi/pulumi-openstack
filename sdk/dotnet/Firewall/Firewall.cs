@@ -63,6 +63,7 @@ namespace Pulumi.OpenStack.Firewall
     ///  $ pulumi import openstack:firewall/firewall:Firewall firewall_1 c9e39fb2-ce20-46c8-a964-25f3898c7a97
     /// ```
     /// </summary>
+    [OpenStackResourceType("openstack:firewall/firewall:Firewall")]
     public partial class Firewall : Pulumi.CustomResource
     {
         /// <summary>

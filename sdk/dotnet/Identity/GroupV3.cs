@@ -42,6 +42,7 @@ namespace Pulumi.OpenStack.Identity
     ///  $ pulumi import openstack:identity/groupV3:GroupV3 group_1 89c60255-9bd6-460c-822a-e2b959ede9d2
     /// ```
     /// </summary>
+    [OpenStackResourceType("openstack:identity/groupV3:GroupV3")]
     public partial class GroupV3 : Pulumi.CustomResource
     {
         /// <summary>

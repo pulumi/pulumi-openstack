@@ -322,15 +322,15 @@ type L7RuleV2Input interface {
 	ToL7RuleV2OutputWithContext(ctx context.Context) L7RuleV2Output
 }
 
-func (L7RuleV2) ElementType() reflect.Type {
-	return reflect.TypeOf((*L7RuleV2)(nil)).Elem()
+func (*L7RuleV2) ElementType() reflect.Type {
+	return reflect.TypeOf((*L7RuleV2)(nil))
 }
 
-func (i L7RuleV2) ToL7RuleV2Output() L7RuleV2Output {
+func (i *L7RuleV2) ToL7RuleV2Output() L7RuleV2Output {
 	return i.ToL7RuleV2OutputWithContext(context.Background())
 }
 
-func (i L7RuleV2) ToL7RuleV2OutputWithContext(ctx context.Context) L7RuleV2Output {
+func (i *L7RuleV2) ToL7RuleV2OutputWithContext(ctx context.Context) L7RuleV2Output {
 	return pulumi.ToOutputWithContext(ctx, i).(L7RuleV2Output)
 }
 
@@ -339,7 +339,7 @@ type L7RuleV2Output struct {
 }
 
 func (L7RuleV2Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*L7RuleV2Output)(nil)).Elem()
+	return reflect.TypeOf((*L7RuleV2)(nil))
 }
 
 func (o L7RuleV2Output) ToL7RuleV2Output() L7RuleV2Output {

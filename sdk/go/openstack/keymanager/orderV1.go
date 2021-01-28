@@ -243,15 +243,15 @@ type OrderV1Input interface {
 	ToOrderV1OutputWithContext(ctx context.Context) OrderV1Output
 }
 
-func (OrderV1) ElementType() reflect.Type {
-	return reflect.TypeOf((*OrderV1)(nil)).Elem()
+func (*OrderV1) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrderV1)(nil))
 }
 
-func (i OrderV1) ToOrderV1Output() OrderV1Output {
+func (i *OrderV1) ToOrderV1Output() OrderV1Output {
 	return i.ToOrderV1OutputWithContext(context.Background())
 }
 
-func (i OrderV1) ToOrderV1OutputWithContext(ctx context.Context) OrderV1Output {
+func (i *OrderV1) ToOrderV1OutputWithContext(ctx context.Context) OrderV1Output {
 	return pulumi.ToOutputWithContext(ctx, i).(OrderV1Output)
 }
 
@@ -260,7 +260,7 @@ type OrderV1Output struct {
 }
 
 func (OrderV1Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*OrderV1Output)(nil)).Elem()
+	return reflect.TypeOf((*OrderV1)(nil))
 }
 
 func (o OrderV1Output) ToOrderV1Output() OrderV1Output {

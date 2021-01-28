@@ -63,6 +63,7 @@ namespace Pulumi.OpenStack.Identity
     ///  $ pulumi import openstack:identity/ec2CredentialV3:Ec2CredentialV3 ec2_cred_1 2d0ac4a2f81b4b0f9513ee49e780647d
     /// ```
     /// </summary>
+    [OpenStackResourceType("openstack:identity/ec2CredentialV3:Ec2CredentialV3")]
     public partial class Ec2CredentialV3 : Pulumi.CustomResource
     {
         /// <summary>

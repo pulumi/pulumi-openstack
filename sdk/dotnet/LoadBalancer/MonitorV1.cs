@@ -43,6 +43,7 @@ namespace Pulumi.OpenStack.LoadBalancer
     ///  $ pulumi import openstack:loadbalancer/monitorV1:MonitorV1 monitor_1 119d7530-72e9-449a-aa97-124a5ef1992c
     /// ```
     /// </summary>
+    [OpenStackResourceType("openstack:loadbalancer/monitorV1:MonitorV1")]
     public partial class MonitorV1 : Pulumi.CustomResource
     {
         /// <summary>

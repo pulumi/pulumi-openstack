@@ -170,15 +170,15 @@ type KeypairInput interface {
 	ToKeypairOutputWithContext(ctx context.Context) KeypairOutput
 }
 
-func (Keypair) ElementType() reflect.Type {
-	return reflect.TypeOf((*Keypair)(nil)).Elem()
+func (*Keypair) ElementType() reflect.Type {
+	return reflect.TypeOf((*Keypair)(nil))
 }
 
-func (i Keypair) ToKeypairOutput() KeypairOutput {
+func (i *Keypair) ToKeypairOutput() KeypairOutput {
 	return i.ToKeypairOutputWithContext(context.Background())
 }
 
-func (i Keypair) ToKeypairOutputWithContext(ctx context.Context) KeypairOutput {
+func (i *Keypair) ToKeypairOutputWithContext(ctx context.Context) KeypairOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KeypairOutput)
 }
 
@@ -187,7 +187,7 @@ type KeypairOutput struct {
 }
 
 func (KeypairOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*KeypairOutput)(nil)).Elem()
+	return reflect.TypeOf((*Keypair)(nil))
 }
 
 func (o KeypairOutput) ToKeypairOutput() KeypairOutput {

@@ -266,15 +266,15 @@ type IkePolicyInput interface {
 	ToIkePolicyOutputWithContext(ctx context.Context) IkePolicyOutput
 }
 
-func (IkePolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*IkePolicy)(nil)).Elem()
+func (*IkePolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*IkePolicy)(nil))
 }
 
-func (i IkePolicy) ToIkePolicyOutput() IkePolicyOutput {
+func (i *IkePolicy) ToIkePolicyOutput() IkePolicyOutput {
 	return i.ToIkePolicyOutputWithContext(context.Background())
 }
 
-func (i IkePolicy) ToIkePolicyOutputWithContext(ctx context.Context) IkePolicyOutput {
+func (i *IkePolicy) ToIkePolicyOutputWithContext(ctx context.Context) IkePolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IkePolicyOutput)
 }
 
@@ -283,7 +283,7 @@ type IkePolicyOutput struct {
 }
 
 func (IkePolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IkePolicyOutput)(nil)).Elem()
+	return reflect.TypeOf((*IkePolicy)(nil))
 }
 
 func (o IkePolicyOutput) ToIkePolicyOutput() IkePolicyOutput {

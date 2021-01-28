@@ -477,15 +477,15 @@ type ContainerObjectInput interface {
 	ToContainerObjectOutputWithContext(ctx context.Context) ContainerObjectOutput
 }
 
-func (ContainerObject) ElementType() reflect.Type {
-	return reflect.TypeOf((*ContainerObject)(nil)).Elem()
+func (*ContainerObject) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerObject)(nil))
 }
 
-func (i ContainerObject) ToContainerObjectOutput() ContainerObjectOutput {
+func (i *ContainerObject) ToContainerObjectOutput() ContainerObjectOutput {
 	return i.ToContainerObjectOutputWithContext(context.Background())
 }
 
-func (i ContainerObject) ToContainerObjectOutputWithContext(ctx context.Context) ContainerObjectOutput {
+func (i *ContainerObject) ToContainerObjectOutputWithContext(ctx context.Context) ContainerObjectOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerObjectOutput)
 }
 
@@ -494,7 +494,7 @@ type ContainerObjectOutput struct {
 }
 
 func (ContainerObjectOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ContainerObjectOutput)(nil)).Elem()
+	return reflect.TypeOf((*ContainerObject)(nil))
 }
 
 func (o ContainerObjectOutput) ToContainerObjectOutput() ContainerObjectOutput {

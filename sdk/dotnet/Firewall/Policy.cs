@@ -59,6 +59,7 @@ namespace Pulumi.OpenStack.Firewall
     ///  $ pulumi import openstack:firewall/policy:Policy policy_1 07f422e6-c596-474b-8b94-fe2c12506ce0
     /// ```
     /// </summary>
+    [OpenStackResourceType("openstack:firewall/policy:Policy")]
     public partial class Policy : Pulumi.CustomResource
     {
         /// <summary>

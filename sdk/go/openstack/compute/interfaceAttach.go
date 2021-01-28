@@ -284,15 +284,15 @@ type InterfaceAttachInput interface {
 	ToInterfaceAttachOutputWithContext(ctx context.Context) InterfaceAttachOutput
 }
 
-func (InterfaceAttach) ElementType() reflect.Type {
-	return reflect.TypeOf((*InterfaceAttach)(nil)).Elem()
+func (*InterfaceAttach) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterfaceAttach)(nil))
 }
 
-func (i InterfaceAttach) ToInterfaceAttachOutput() InterfaceAttachOutput {
+func (i *InterfaceAttach) ToInterfaceAttachOutput() InterfaceAttachOutput {
 	return i.ToInterfaceAttachOutputWithContext(context.Background())
 }
 
-func (i InterfaceAttach) ToInterfaceAttachOutputWithContext(ctx context.Context) InterfaceAttachOutput {
+func (i *InterfaceAttach) ToInterfaceAttachOutputWithContext(ctx context.Context) InterfaceAttachOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InterfaceAttachOutput)
 }
 
@@ -301,7 +301,7 @@ type InterfaceAttachOutput struct {
 }
 
 func (InterfaceAttachOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InterfaceAttachOutput)(nil)).Elem()
+	return reflect.TypeOf((*InterfaceAttach)(nil))
 }
 
 func (o InterfaceAttachOutput) ToInterfaceAttachOutput() InterfaceAttachOutput {

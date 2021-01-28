@@ -389,15 +389,15 @@ type PoolV1Input interface {
 	ToPoolV1OutputWithContext(ctx context.Context) PoolV1Output
 }
 
-func (PoolV1) ElementType() reflect.Type {
-	return reflect.TypeOf((*PoolV1)(nil)).Elem()
+func (*PoolV1) ElementType() reflect.Type {
+	return reflect.TypeOf((*PoolV1)(nil))
 }
 
-func (i PoolV1) ToPoolV1Output() PoolV1Output {
+func (i *PoolV1) ToPoolV1Output() PoolV1Output {
 	return i.ToPoolV1OutputWithContext(context.Background())
 }
 
-func (i PoolV1) ToPoolV1OutputWithContext(ctx context.Context) PoolV1Output {
+func (i *PoolV1) ToPoolV1OutputWithContext(ctx context.Context) PoolV1Output {
 	return pulumi.ToOutputWithContext(ctx, i).(PoolV1Output)
 }
 
@@ -406,7 +406,7 @@ type PoolV1Output struct {
 }
 
 func (PoolV1Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*PoolV1Output)(nil)).Elem()
+	return reflect.TypeOf((*PoolV1)(nil))
 }
 
 func (o PoolV1Output) ToPoolV1Output() PoolV1Output {

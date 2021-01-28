@@ -230,15 +230,15 @@ type RbacPolicyV2Input interface {
 	ToRbacPolicyV2OutputWithContext(ctx context.Context) RbacPolicyV2Output
 }
 
-func (RbacPolicyV2) ElementType() reflect.Type {
-	return reflect.TypeOf((*RbacPolicyV2)(nil)).Elem()
+func (*RbacPolicyV2) ElementType() reflect.Type {
+	return reflect.TypeOf((*RbacPolicyV2)(nil))
 }
 
-func (i RbacPolicyV2) ToRbacPolicyV2Output() RbacPolicyV2Output {
+func (i *RbacPolicyV2) ToRbacPolicyV2Output() RbacPolicyV2Output {
 	return i.ToRbacPolicyV2OutputWithContext(context.Background())
 }
 
-func (i RbacPolicyV2) ToRbacPolicyV2OutputWithContext(ctx context.Context) RbacPolicyV2Output {
+func (i *RbacPolicyV2) ToRbacPolicyV2OutputWithContext(ctx context.Context) RbacPolicyV2Output {
 	return pulumi.ToOutputWithContext(ctx, i).(RbacPolicyV2Output)
 }
 
@@ -247,7 +247,7 @@ type RbacPolicyV2Output struct {
 }
 
 func (RbacPolicyV2Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*RbacPolicyV2Output)(nil)).Elem()
+	return reflect.TypeOf((*RbacPolicyV2)(nil))
 }
 
 func (o RbacPolicyV2Output) ToRbacPolicyV2Output() RbacPolicyV2Output {

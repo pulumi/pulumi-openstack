@@ -272,15 +272,15 @@ type SecurityServiceInput interface {
 	ToSecurityServiceOutputWithContext(ctx context.Context) SecurityServiceOutput
 }
 
-func (SecurityService) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityService)(nil)).Elem()
+func (*SecurityService) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityService)(nil))
 }
 
-func (i SecurityService) ToSecurityServiceOutput() SecurityServiceOutput {
+func (i *SecurityService) ToSecurityServiceOutput() SecurityServiceOutput {
 	return i.ToSecurityServiceOutputWithContext(context.Background())
 }
 
-func (i SecurityService) ToSecurityServiceOutputWithContext(ctx context.Context) SecurityServiceOutput {
+func (i *SecurityService) ToSecurityServiceOutputWithContext(ctx context.Context) SecurityServiceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityServiceOutput)
 }
 
@@ -289,7 +289,7 @@ type SecurityServiceOutput struct {
 }
 
 func (SecurityServiceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityServiceOutput)(nil)).Elem()
+	return reflect.TypeOf((*SecurityService)(nil))
 }
 
 func (o SecurityServiceOutput) ToSecurityServiceOutput() SecurityServiceOutput {

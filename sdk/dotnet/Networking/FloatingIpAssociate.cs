@@ -46,6 +46,7 @@ namespace Pulumi.OpenStack.Networking
     ///  $ pulumi import openstack:networking/floatingIpAssociate:FloatingIpAssociate fip 2c7f39f3-702b-48d1-940c-b50384177ee1
     /// ```
     /// </summary>
+    [OpenStackResourceType("openstack:networking/floatingIpAssociate:FloatingIpAssociate")]
     public partial class FloatingIpAssociate : Pulumi.CustomResource
     {
         [Output("fixedIp")]

@@ -249,15 +249,15 @@ type ContainerV1Input interface {
 	ToContainerV1OutputWithContext(ctx context.Context) ContainerV1Output
 }
 
-func (ContainerV1) ElementType() reflect.Type {
-	return reflect.TypeOf((*ContainerV1)(nil)).Elem()
+func (*ContainerV1) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerV1)(nil))
 }
 
-func (i ContainerV1) ToContainerV1Output() ContainerV1Output {
+func (i *ContainerV1) ToContainerV1Output() ContainerV1Output {
 	return i.ToContainerV1OutputWithContext(context.Background())
 }
 
-func (i ContainerV1) ToContainerV1OutputWithContext(ctx context.Context) ContainerV1Output {
+func (i *ContainerV1) ToContainerV1OutputWithContext(ctx context.Context) ContainerV1Output {
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerV1Output)
 }
 
@@ -266,7 +266,7 @@ type ContainerV1Output struct {
 }
 
 func (ContainerV1Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*ContainerV1Output)(nil)).Elem()
+	return reflect.TypeOf((*ContainerV1)(nil))
 }
 
 func (o ContainerV1Output) ToContainerV1Output() ContainerV1Output {

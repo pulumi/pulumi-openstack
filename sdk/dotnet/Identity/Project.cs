@@ -42,6 +42,7 @@ namespace Pulumi.OpenStack.Identity
     ///  $ pulumi import openstack:identity/project:Project project_1 89c60255-9bd6-460c-822a-e2b959ede9d2
     /// ```
     /// </summary>
+    [OpenStackResourceType("openstack:identity/project:Project")]
     public partial class Project : Pulumi.CustomResource
     {
         /// <summary>
