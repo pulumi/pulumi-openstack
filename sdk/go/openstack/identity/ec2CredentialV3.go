@@ -198,15 +198,15 @@ type Ec2CredentialV3Input interface {
 	ToEc2CredentialV3OutputWithContext(ctx context.Context) Ec2CredentialV3Output
 }
 
-func (Ec2CredentialV3) ElementType() reflect.Type {
-	return reflect.TypeOf((*Ec2CredentialV3)(nil)).Elem()
+func (*Ec2CredentialV3) ElementType() reflect.Type {
+	return reflect.TypeOf((*Ec2CredentialV3)(nil))
 }
 
-func (i Ec2CredentialV3) ToEc2CredentialV3Output() Ec2CredentialV3Output {
+func (i *Ec2CredentialV3) ToEc2CredentialV3Output() Ec2CredentialV3Output {
 	return i.ToEc2CredentialV3OutputWithContext(context.Background())
 }
 
-func (i Ec2CredentialV3) ToEc2CredentialV3OutputWithContext(ctx context.Context) Ec2CredentialV3Output {
+func (i *Ec2CredentialV3) ToEc2CredentialV3OutputWithContext(ctx context.Context) Ec2CredentialV3Output {
 	return pulumi.ToOutputWithContext(ctx, i).(Ec2CredentialV3Output)
 }
 
@@ -215,7 +215,7 @@ type Ec2CredentialV3Output struct {
 }
 
 func (Ec2CredentialV3Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*Ec2CredentialV3Output)(nil)).Elem()
+	return reflect.TypeOf((*Ec2CredentialV3)(nil))
 }
 
 func (o Ec2CredentialV3Output) ToEc2CredentialV3Output() Ec2CredentialV3Output {

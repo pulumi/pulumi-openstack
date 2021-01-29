@@ -245,15 +245,15 @@ type ImageAccessInput interface {
 	ToImageAccessOutputWithContext(ctx context.Context) ImageAccessOutput
 }
 
-func (ImageAccess) ElementType() reflect.Type {
-	return reflect.TypeOf((*ImageAccess)(nil)).Elem()
+func (*ImageAccess) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageAccess)(nil))
 }
 
-func (i ImageAccess) ToImageAccessOutput() ImageAccessOutput {
+func (i *ImageAccess) ToImageAccessOutput() ImageAccessOutput {
 	return i.ToImageAccessOutputWithContext(context.Background())
 }
 
-func (i ImageAccess) ToImageAccessOutputWithContext(ctx context.Context) ImageAccessOutput {
+func (i *ImageAccess) ToImageAccessOutputWithContext(ctx context.Context) ImageAccessOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ImageAccessOutput)
 }
 
@@ -262,7 +262,7 @@ type ImageAccessOutput struct {
 }
 
 func (ImageAccessOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ImageAccessOutput)(nil)).Elem()
+	return reflect.TypeOf((*ImageAccess)(nil))
 }
 
 func (o ImageAccessOutput) ToImageAccessOutput() ImageAccessOutput {

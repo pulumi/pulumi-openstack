@@ -41,6 +41,7 @@ namespace Pulumi.OpenStack.Identity
     ///  $ pulumi import openstack:identity/serviceV3:ServiceV3 service_1 6688e967-158a-496f-a224-cae3414e6b61
     /// ```
     /// </summary>
+    [OpenStackResourceType("openstack:identity/serviceV3:ServiceV3")]
     public partial class ServiceV3 : Pulumi.CustomResource
     {
         /// <summary>

@@ -89,6 +89,7 @@ namespace Pulumi.OpenStack.Networking
     /// }
     /// ```
     /// </summary>
+    [OpenStackResourceType("openstack:networking/trunk:Trunk")]
     public partial class Trunk : Pulumi.CustomResource
     {
         /// <summary>

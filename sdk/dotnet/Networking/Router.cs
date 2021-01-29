@@ -40,6 +40,7 @@ namespace Pulumi.OpenStack.Networking
     ///  $ pulumi import openstack:networking/router:Router router_1 014395cd-89fc-4c9b-96b7-13d1ee79dad2
     /// ```
     /// </summary>
+    [OpenStackResourceType("openstack:networking/router:Router")]
     public partial class Router : Pulumi.CustomResource
     {
         /// <summary>

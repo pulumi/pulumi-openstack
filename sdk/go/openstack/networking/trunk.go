@@ -289,15 +289,15 @@ type TrunkInput interface {
 	ToTrunkOutputWithContext(ctx context.Context) TrunkOutput
 }
 
-func (Trunk) ElementType() reflect.Type {
-	return reflect.TypeOf((*Trunk)(nil)).Elem()
+func (*Trunk) ElementType() reflect.Type {
+	return reflect.TypeOf((*Trunk)(nil))
 }
 
-func (i Trunk) ToTrunkOutput() TrunkOutput {
+func (i *Trunk) ToTrunkOutput() TrunkOutput {
 	return i.ToTrunkOutputWithContext(context.Background())
 }
 
-func (i Trunk) ToTrunkOutputWithContext(ctx context.Context) TrunkOutput {
+func (i *Trunk) ToTrunkOutputWithContext(ctx context.Context) TrunkOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TrunkOutput)
 }
 
@@ -306,7 +306,7 @@ type TrunkOutput struct {
 }
 
 func (TrunkOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TrunkOutput)(nil)).Elem()
+	return reflect.TypeOf((*Trunk)(nil))
 }
 
 func (o TrunkOutput) ToTrunkOutput() TrunkOutput {

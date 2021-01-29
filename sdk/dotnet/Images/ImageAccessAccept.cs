@@ -49,6 +49,7 @@ namespace Pulumi.OpenStack.Images
     ///  $ pulumi import openstack:images/imageAccessAccept:ImageAccessAccept openstack_images_image_access_accept_v2 89c60255-9bd6-460c-822a-e2b959ede9d2
     /// ```
     /// </summary>
+    [OpenStackResourceType("openstack:images/imageAccessAccept:ImageAccessAccept")]
     public partial class ImageAccessAccept : Pulumi.CustomResource
     {
         /// <summary>

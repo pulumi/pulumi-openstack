@@ -76,6 +76,7 @@ namespace Pulumi.OpenStack.Networking
     ///  $ pulumi import openstack:networking/subnetPool:SubnetPool subnetpool_1 832cb7f3-59fe-40cf-8f64-8350ffc03272
     /// ```
     /// </summary>
+    [OpenStackResourceType("openstack:networking/subnetPool:SubnetPool")]
     public partial class SubnetPool : Pulumi.CustomResource
     {
         /// <summary>

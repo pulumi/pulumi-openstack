@@ -99,6 +99,7 @@ namespace Pulumi.OpenStack.Networking
     ///  $ pulumi import openstack:networking/port:Port port_1 eae26a3e-1c33-4cc1-9c31-0cd729c438a1
     /// ```
     /// </summary>
+    [OpenStackResourceType("openstack:networking/port:Port")]
     public partial class Port : Pulumi.CustomResource
     {
         /// <summary>

@@ -121,6 +121,7 @@ namespace Pulumi.OpenStack.Identity
     ///  $ pulumi import openstack:identity/applicationCredential:ApplicationCredential application_credential_1 c17304b7-0953-4738-abb0-67005882b0a0
     /// ```
     /// </summary>
+    [OpenStackResourceType("openstack:identity/applicationCredential:ApplicationCredential")]
     public partial class ApplicationCredential : Pulumi.CustomResource
     {
         /// <summary>

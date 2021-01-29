@@ -195,15 +195,15 @@ type QosBandwidthLimitRuleInput interface {
 	ToQosBandwidthLimitRuleOutputWithContext(ctx context.Context) QosBandwidthLimitRuleOutput
 }
 
-func (QosBandwidthLimitRule) ElementType() reflect.Type {
-	return reflect.TypeOf((*QosBandwidthLimitRule)(nil)).Elem()
+func (*QosBandwidthLimitRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*QosBandwidthLimitRule)(nil))
 }
 
-func (i QosBandwidthLimitRule) ToQosBandwidthLimitRuleOutput() QosBandwidthLimitRuleOutput {
+func (i *QosBandwidthLimitRule) ToQosBandwidthLimitRuleOutput() QosBandwidthLimitRuleOutput {
 	return i.ToQosBandwidthLimitRuleOutputWithContext(context.Background())
 }
 
-func (i QosBandwidthLimitRule) ToQosBandwidthLimitRuleOutputWithContext(ctx context.Context) QosBandwidthLimitRuleOutput {
+func (i *QosBandwidthLimitRule) ToQosBandwidthLimitRuleOutputWithContext(ctx context.Context) QosBandwidthLimitRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(QosBandwidthLimitRuleOutput)
 }
 
@@ -212,7 +212,7 @@ type QosBandwidthLimitRuleOutput struct {
 }
 
 func (QosBandwidthLimitRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*QosBandwidthLimitRuleOutput)(nil)).Elem()
+	return reflect.TypeOf((*QosBandwidthLimitRule)(nil))
 }
 
 func (o QosBandwidthLimitRuleOutput) ToQosBandwidthLimitRuleOutput() QosBandwidthLimitRuleOutput {

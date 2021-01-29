@@ -46,6 +46,7 @@ namespace Pulumi.OpenStack.LoadBalancer
     ///  $ pulumi import openstack:loadbalancer/pool:Pool pool_1 60ad9ee4-249a-4d60-a45b-aa60e046c513
     /// ```
     /// </summary>
+    [OpenStackResourceType("openstack:loadbalancer/pool:Pool")]
     public partial class Pool : Pulumi.CustomResource
     {
         /// <summary>

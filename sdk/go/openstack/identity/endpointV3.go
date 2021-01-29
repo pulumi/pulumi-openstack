@@ -210,15 +210,15 @@ type EndpointV3Input interface {
 	ToEndpointV3OutputWithContext(ctx context.Context) EndpointV3Output
 }
 
-func (EndpointV3) ElementType() reflect.Type {
-	return reflect.TypeOf((*EndpointV3)(nil)).Elem()
+func (*EndpointV3) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointV3)(nil))
 }
 
-func (i EndpointV3) ToEndpointV3Output() EndpointV3Output {
+func (i *EndpointV3) ToEndpointV3Output() EndpointV3Output {
 	return i.ToEndpointV3OutputWithContext(context.Background())
 }
 
-func (i EndpointV3) ToEndpointV3OutputWithContext(ctx context.Context) EndpointV3Output {
+func (i *EndpointV3) ToEndpointV3OutputWithContext(ctx context.Context) EndpointV3Output {
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointV3Output)
 }
 
@@ -227,7 +227,7 @@ type EndpointV3Output struct {
 }
 
 func (EndpointV3Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*EndpointV3Output)(nil)).Elem()
+	return reflect.TypeOf((*EndpointV3)(nil))
 }
 
 func (o EndpointV3Output) ToEndpointV3Output() EndpointV3Output {

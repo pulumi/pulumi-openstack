@@ -58,6 +58,7 @@ namespace Pulumi.OpenStack.SharedFileSystem
     ///  $ pulumi import openstack:sharedfilesystem/share:Share share_1 &lt;id&gt;
     /// ```
     /// </summary>
+    [OpenStackResourceType("openstack:sharedfilesystem/share:Share")]
     public partial class Share : Pulumi.CustomResource
     {
         /// <summary>

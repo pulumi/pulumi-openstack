@@ -144,6 +144,7 @@ namespace Pulumi.OpenStack.KeyManager
     ///  $ pulumi import openstack:keymanager/containerV1:ContainerV1 container_1 0c6cd26a-c012-4d7b-8034-057c0f1c2953
     /// ```
     /// </summary>
+    [OpenStackResourceType("openstack:keymanager/containerV1:ContainerV1")]
     public partial class ContainerV1 : Pulumi.CustomResource
     {
         /// <summary>

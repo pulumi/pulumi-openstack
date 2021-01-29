@@ -100,6 +100,7 @@ namespace Pulumi.OpenStack.SharedFileSystem
     ///  $ pulumi import openstack:sharedfilesystem/shareNetwork:ShareNetwork sharenetwork_1 &lt;id&gt;
     /// ```
     /// </summary>
+    [OpenStackResourceType("openstack:sharedfilesystem/shareNetwork:ShareNetwork")]
     public partial class ShareNetwork : Pulumi.CustomResource
     {
         /// <summary>

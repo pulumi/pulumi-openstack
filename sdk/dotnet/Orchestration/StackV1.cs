@@ -66,6 +66,7 @@ namespace Pulumi.OpenStack.Orchestration
     ///  $ pulumi import openstack:orchestration/stackV1:StackV1 stack_1 ea257959-eeb1-4c10-8d33-26f0409a755d
     /// ```
     /// </summary>
+    [OpenStackResourceType("openstack:orchestration/stackV1:StackV1")]
     public partial class StackV1 : Pulumi.CustomResource
     {
         /// <summary>

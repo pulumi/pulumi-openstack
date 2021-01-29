@@ -55,6 +55,7 @@ namespace Pulumi.OpenStack.Compute
     ///  $ pulumi import openstack:compute/flavorAccess:FlavorAccess access_1 &lt;flavor_id&gt;/&lt;tenant_id&gt;
     /// ```
     /// </summary>
+    [OpenStackResourceType("openstack:compute/flavorAccess:FlavorAccess")]
     public partial class FlavorAccess : Pulumi.CustomResource
     {
         /// <summary>

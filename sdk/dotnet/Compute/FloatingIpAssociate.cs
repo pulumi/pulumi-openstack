@@ -100,6 +100,7 @@ namespace Pulumi.OpenStack.Compute
     ///  $ pulumi import openstack:compute/floatingIpAssociate:FloatingIpAssociate fip_1 &lt;floating_ip&gt;/&lt;instance_id&gt;/&lt;fixed_ip&gt;
     /// ```
     /// </summary>
+    [OpenStackResourceType("openstack:compute/floatingIpAssociate:FloatingIpAssociate")]
     public partial class FloatingIpAssociate : Pulumi.CustomResource
     {
         /// <summary>

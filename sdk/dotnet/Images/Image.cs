@@ -60,6 +60,7 @@ namespace Pulumi.OpenStack.Images
     ///  $ pulumi import openstack:images/image:Image rancheros 89c60255-9bd6-460c-822a-e2b959ede9d2
     /// ```
     /// </summary>
+    [OpenStackResourceType("openstack:images/image:Image")]
     public partial class Image : Pulumi.CustomResource
     {
         /// <summary>

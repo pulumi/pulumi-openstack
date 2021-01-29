@@ -457,15 +457,15 @@ type SubnetPoolInput interface {
 	ToSubnetPoolOutputWithContext(ctx context.Context) SubnetPoolOutput
 }
 
-func (SubnetPool) ElementType() reflect.Type {
-	return reflect.TypeOf((*SubnetPool)(nil)).Elem()
+func (*SubnetPool) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubnetPool)(nil))
 }
 
-func (i SubnetPool) ToSubnetPoolOutput() SubnetPoolOutput {
+func (i *SubnetPool) ToSubnetPoolOutput() SubnetPoolOutput {
 	return i.ToSubnetPoolOutputWithContext(context.Background())
 }
 
-func (i SubnetPool) ToSubnetPoolOutputWithContext(ctx context.Context) SubnetPoolOutput {
+func (i *SubnetPool) ToSubnetPoolOutputWithContext(ctx context.Context) SubnetPoolOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SubnetPoolOutput)
 }
 
@@ -474,7 +474,7 @@ type SubnetPoolOutput struct {
 }
 
 func (SubnetPoolOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SubnetPoolOutput)(nil)).Elem()
+	return reflect.TypeOf((*SubnetPool)(nil))
 }
 
 func (o SubnetPoolOutput) ToSubnetPoolOutput() SubnetPoolOutput {

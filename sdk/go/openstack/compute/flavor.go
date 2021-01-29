@@ -289,15 +289,15 @@ type FlavorInput interface {
 	ToFlavorOutputWithContext(ctx context.Context) FlavorOutput
 }
 
-func (Flavor) ElementType() reflect.Type {
-	return reflect.TypeOf((*Flavor)(nil)).Elem()
+func (*Flavor) ElementType() reflect.Type {
+	return reflect.TypeOf((*Flavor)(nil))
 }
 
-func (i Flavor) ToFlavorOutput() FlavorOutput {
+func (i *Flavor) ToFlavorOutput() FlavorOutput {
 	return i.ToFlavorOutputWithContext(context.Background())
 }
 
-func (i Flavor) ToFlavorOutputWithContext(ctx context.Context) FlavorOutput {
+func (i *Flavor) ToFlavorOutputWithContext(ctx context.Context) FlavorOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FlavorOutput)
 }
 
@@ -306,7 +306,7 @@ type FlavorOutput struct {
 }
 
 func (FlavorOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FlavorOutput)(nil)).Elem()
+	return reflect.TypeOf((*Flavor)(nil))
 }
 
 func (o FlavorOutput) ToFlavorOutput() FlavorOutput {

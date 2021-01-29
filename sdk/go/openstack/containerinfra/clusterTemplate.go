@@ -436,15 +436,15 @@ type ClusterTemplateInput interface {
 	ToClusterTemplateOutputWithContext(ctx context.Context) ClusterTemplateOutput
 }
 
-func (ClusterTemplate) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterTemplate)(nil)).Elem()
+func (*ClusterTemplate) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterTemplate)(nil))
 }
 
-func (i ClusterTemplate) ToClusterTemplateOutput() ClusterTemplateOutput {
+func (i *ClusterTemplate) ToClusterTemplateOutput() ClusterTemplateOutput {
 	return i.ToClusterTemplateOutputWithContext(context.Background())
 }
 
-func (i ClusterTemplate) ToClusterTemplateOutputWithContext(ctx context.Context) ClusterTemplateOutput {
+func (i *ClusterTemplate) ToClusterTemplateOutputWithContext(ctx context.Context) ClusterTemplateOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterTemplateOutput)
 }
 
@@ -453,7 +453,7 @@ type ClusterTemplateOutput struct {
 }
 
 func (ClusterTemplateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterTemplateOutput)(nil)).Elem()
+	return reflect.TypeOf((*ClusterTemplate)(nil))
 }
 
 func (o ClusterTemplateOutput) ToClusterTemplateOutput() ClusterTemplateOutput {

@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.OpenStack.Networking
 {
+    [OpenStackResourceType("openstack:networking/portSecGroupAssociate:PortSecGroupAssociate")]
     public partial class PortSecGroupAssociate : Pulumi.CustomResource
     {
         /// <summary>

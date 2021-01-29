@@ -90,6 +90,7 @@ namespace Pulumi.OpenStack.Networking
     ///  $ pulumi import openstack:networking/network:Network network_1 d90ce693-5ccf-4136-a0ed-152ce412b6b9
     /// ```
     /// </summary>
+    [OpenStackResourceType("openstack:networking/network:Network")]
     public partial class Network : Pulumi.CustomResource
     {
         /// <summary>

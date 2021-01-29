@@ -326,15 +326,15 @@ type ShareNetworkInput interface {
 	ToShareNetworkOutputWithContext(ctx context.Context) ShareNetworkOutput
 }
 
-func (ShareNetwork) ElementType() reflect.Type {
-	return reflect.TypeOf((*ShareNetwork)(nil)).Elem()
+func (*ShareNetwork) ElementType() reflect.Type {
+	return reflect.TypeOf((*ShareNetwork)(nil))
 }
 
-func (i ShareNetwork) ToShareNetworkOutput() ShareNetworkOutput {
+func (i *ShareNetwork) ToShareNetworkOutput() ShareNetworkOutput {
 	return i.ToShareNetworkOutputWithContext(context.Background())
 }
 
-func (i ShareNetwork) ToShareNetworkOutputWithContext(ctx context.Context) ShareNetworkOutput {
+func (i *ShareNetwork) ToShareNetworkOutputWithContext(ctx context.Context) ShareNetworkOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ShareNetworkOutput)
 }
 
@@ -343,7 +343,7 @@ type ShareNetworkOutput struct {
 }
 
 func (ShareNetworkOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ShareNetworkOutput)(nil)).Elem()
+	return reflect.TypeOf((*ShareNetwork)(nil))
 }
 
 func (o ShareNetworkOutput) ToShareNetworkOutput() ShareNetworkOutput {

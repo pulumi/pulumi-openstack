@@ -175,15 +175,15 @@ type FlavorAccessInput interface {
 	ToFlavorAccessOutputWithContext(ctx context.Context) FlavorAccessOutput
 }
 
-func (FlavorAccess) ElementType() reflect.Type {
-	return reflect.TypeOf((*FlavorAccess)(nil)).Elem()
+func (*FlavorAccess) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlavorAccess)(nil))
 }
 
-func (i FlavorAccess) ToFlavorAccessOutput() FlavorAccessOutput {
+func (i *FlavorAccess) ToFlavorAccessOutput() FlavorAccessOutput {
 	return i.ToFlavorAccessOutputWithContext(context.Background())
 }
 
-func (i FlavorAccess) ToFlavorAccessOutputWithContext(ctx context.Context) FlavorAccessOutput {
+func (i *FlavorAccess) ToFlavorAccessOutputWithContext(ctx context.Context) FlavorAccessOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FlavorAccessOutput)
 }
 
@@ -192,7 +192,7 @@ type FlavorAccessOutput struct {
 }
 
 func (FlavorAccessOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FlavorAccessOutput)(nil)).Elem()
+	return reflect.TypeOf((*FlavorAccess)(nil))
 }
 
 func (o FlavorAccessOutput) ToFlavorAccessOutput() FlavorAccessOutput {

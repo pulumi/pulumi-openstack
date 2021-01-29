@@ -69,6 +69,7 @@ namespace Pulumi.OpenStack.LoadBalancer
     ///  $ pulumi import openstack:loadbalancer/l7PolicyV2:L7PolicyV2 l7policy_1 8a7a79c2-cf17-4e65-b2ae-ddc8bfcf6c74
     /// ```
     /// </summary>
+    [OpenStackResourceType("openstack:loadbalancer/l7PolicyV2:L7PolicyV2")]
     public partial class L7PolicyV2 : Pulumi.CustomResource
     {
         /// <summary>

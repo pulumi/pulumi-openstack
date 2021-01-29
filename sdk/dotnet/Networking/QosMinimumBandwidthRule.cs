@@ -45,6 +45,7 @@ namespace Pulumi.OpenStack.Networking
     ///  $ pulumi import openstack:networking/qosMinimumBandwidthRule:QosMinimumBandwidthRule minimum_bandwidth_rule_1 d6ae28ce-fcb5-4180-aa62-d260a27e09ae/46dfb556-b92f-48ce-94c5-9a9e2140de94
     /// ```
     /// </summary>
+    [OpenStackResourceType("openstack:networking/qosMinimumBandwidthRule:QosMinimumBandwidthRule")]
     public partial class QosMinimumBandwidthRule : Pulumi.CustomResource
     {
         /// <summary>

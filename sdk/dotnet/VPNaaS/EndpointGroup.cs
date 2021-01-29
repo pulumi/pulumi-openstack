@@ -44,6 +44,7 @@ namespace Pulumi.OpenStack.VPNaaS
     ///  $ pulumi import openstack:vpnaas/endpointGroup:EndpointGroup group_1 832cb7f3-59fe-40cf-8f64-8350ffc03272
     /// ```
     /// </summary>
+    [OpenStackResourceType("openstack:vpnaas/endpointGroup:EndpointGroup")]
     public partial class EndpointGroup : Pulumi.CustomResource
     {
         /// <summary>

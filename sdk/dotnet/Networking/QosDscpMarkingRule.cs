@@ -45,6 +45,7 @@ namespace Pulumi.OpenStack.Networking
     ///  $ pulumi import openstack:networking/qosDscpMarkingRule:QosDscpMarkingRule dscp_marking_rule_1 d6ae28ce-fcb5-4180-aa62-d260a27e09ae/46dfb556-b92f-48ce-94c5-9a9e2140de94
     /// ```
     /// </summary>
+    [OpenStackResourceType("openstack:networking/qosDscpMarkingRule:QosDscpMarkingRule")]
     public partial class QosDscpMarkingRule : Pulumi.CustomResource
     {
         /// <summary>

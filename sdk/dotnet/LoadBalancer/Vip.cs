@@ -42,6 +42,7 @@ namespace Pulumi.OpenStack.LoadBalancer
     ///  $ pulumi import openstack:loadbalancer/vip:Vip vip_1 50e16b26-89c1-475e-a492-76167182511e
     /// ```
     /// </summary>
+    [OpenStackResourceType("openstack:loadbalancer/vip:Vip")]
     public partial class Vip : Pulumi.CustomResource
     {
         /// <summary>

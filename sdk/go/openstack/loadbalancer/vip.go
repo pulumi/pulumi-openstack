@@ -355,15 +355,15 @@ type VipInput interface {
 	ToVipOutputWithContext(ctx context.Context) VipOutput
 }
 
-func (Vip) ElementType() reflect.Type {
-	return reflect.TypeOf((*Vip)(nil)).Elem()
+func (*Vip) ElementType() reflect.Type {
+	return reflect.TypeOf((*Vip)(nil))
 }
 
-func (i Vip) ToVipOutput() VipOutput {
+func (i *Vip) ToVipOutput() VipOutput {
 	return i.ToVipOutputWithContext(context.Background())
 }
 
-func (i Vip) ToVipOutputWithContext(ctx context.Context) VipOutput {
+func (i *Vip) ToVipOutputWithContext(ctx context.Context) VipOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VipOutput)
 }
 
@@ -372,7 +372,7 @@ type VipOutput struct {
 }
 
 func (VipOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VipOutput)(nil)).Elem()
+	return reflect.TypeOf((*Vip)(nil))
 }
 
 func (o VipOutput) ToVipOutput() VipOutput {

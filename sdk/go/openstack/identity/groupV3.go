@@ -156,15 +156,15 @@ type GroupV3Input interface {
 	ToGroupV3OutputWithContext(ctx context.Context) GroupV3Output
 }
 
-func (GroupV3) ElementType() reflect.Type {
-	return reflect.TypeOf((*GroupV3)(nil)).Elem()
+func (*GroupV3) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupV3)(nil))
 }
 
-func (i GroupV3) ToGroupV3Output() GroupV3Output {
+func (i *GroupV3) ToGroupV3Output() GroupV3Output {
 	return i.ToGroupV3OutputWithContext(context.Background())
 }
 
-func (i GroupV3) ToGroupV3OutputWithContext(ctx context.Context) GroupV3Output {
+func (i *GroupV3) ToGroupV3OutputWithContext(ctx context.Context) GroupV3Output {
 	return pulumi.ToOutputWithContext(ctx, i).(GroupV3Output)
 }
 
@@ -173,7 +173,7 @@ type GroupV3Output struct {
 }
 
 func (GroupV3Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*GroupV3Output)(nil)).Elem()
+	return reflect.TypeOf((*GroupV3)(nil))
 }
 
 func (o GroupV3Output) ToGroupV3Output() GroupV3Output {

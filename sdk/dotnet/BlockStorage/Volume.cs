@@ -41,6 +41,7 @@ namespace Pulumi.OpenStack.BlockStorage
     ///  $ pulumi import openstack:blockstorage/volume:Volume volume_1 ea257959-eeb1-4c10-8d33-26f0409a755d
     /// ```
     /// </summary>
+    [OpenStackResourceType("openstack:blockstorage/volume:Volume")]
     public partial class Volume : Pulumi.CustomResource
     {
         /// <summary>

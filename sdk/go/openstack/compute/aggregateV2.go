@@ -194,15 +194,15 @@ type AggregateV2Input interface {
 	ToAggregateV2OutputWithContext(ctx context.Context) AggregateV2Output
 }
 
-func (AggregateV2) ElementType() reflect.Type {
-	return reflect.TypeOf((*AggregateV2)(nil)).Elem()
+func (*AggregateV2) ElementType() reflect.Type {
+	return reflect.TypeOf((*AggregateV2)(nil))
 }
 
-func (i AggregateV2) ToAggregateV2Output() AggregateV2Output {
+func (i *AggregateV2) ToAggregateV2Output() AggregateV2Output {
 	return i.ToAggregateV2OutputWithContext(context.Background())
 }
 
-func (i AggregateV2) ToAggregateV2OutputWithContext(ctx context.Context) AggregateV2Output {
+func (i *AggregateV2) ToAggregateV2OutputWithContext(ctx context.Context) AggregateV2Output {
 	return pulumi.ToOutputWithContext(ctx, i).(AggregateV2Output)
 }
 
@@ -211,7 +211,7 @@ type AggregateV2Output struct {
 }
 
 func (AggregateV2Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*AggregateV2Output)(nil)).Elem()
+	return reflect.TypeOf((*AggregateV2)(nil))
 }
 
 func (o AggregateV2Output) ToAggregateV2Output() AggregateV2Output {

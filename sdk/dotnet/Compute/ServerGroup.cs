@@ -59,6 +59,7 @@ namespace Pulumi.OpenStack.Compute
     ///  $ pulumi import openstack:compute/serverGroup:ServerGroup test-sg 1bc30ee9-9d5b-4c30-bdd5-7f1e663f5edf
     /// ```
     /// </summary>
+    [OpenStackResourceType("openstack:compute/serverGroup:ServerGroup")]
     public partial class ServerGroup : Pulumi.CustomResource
     {
         /// <summary>

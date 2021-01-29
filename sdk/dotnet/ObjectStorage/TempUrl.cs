@@ -52,6 +52,7 @@ namespace Pulumi.OpenStack.ObjectStorage
     /// }
     /// ```
     /// </summary>
+    [OpenStackResourceType("openstack:objectstorage/tempUrl:TempUrl")]
     public partial class TempUrl : Pulumi.CustomResource
     {
         /// <summary>

@@ -56,6 +56,7 @@ namespace Pulumi.OpenStack.LoadBalancer
     ///  $ pulumi import openstack:loadbalancer/members:Members members_1 c22974d2-4c95-4bcb-9819-0afc5ed303d5
     /// ```
     /// </summary>
+    [OpenStackResourceType("openstack:loadbalancer/members:Members")]
     public partial class Members : Pulumi.CustomResource
     {
         /// <summary>

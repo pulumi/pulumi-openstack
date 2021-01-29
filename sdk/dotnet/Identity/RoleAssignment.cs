@@ -46,6 +46,7 @@ namespace Pulumi.OpenStack.Identity
     /// }
     /// ```
     /// </summary>
+    [OpenStackResourceType("openstack:identity/roleAssignment:RoleAssignment")]
     public partial class RoleAssignment : Pulumi.CustomResource
     {
         /// <summary>

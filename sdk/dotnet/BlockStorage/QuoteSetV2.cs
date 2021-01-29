@@ -57,6 +57,7 @@ namespace Pulumi.OpenStack.BlockStorage
     ///  $ pulumi import openstack:blockstorage/quoteSetV2:QuoteSetV2 quotaset_1 2a0f2240-c5e6-41de-896d-e80d97428d6b
     /// ```
     /// </summary>
+    [OpenStackResourceType("openstack:blockstorage/quoteSetV2:QuoteSetV2")]
     public partial class QuoteSetV2 : Pulumi.CustomResource
     {
         /// <summary>

@@ -208,15 +208,15 @@ type ImageAccessAcceptInput interface {
 	ToImageAccessAcceptOutputWithContext(ctx context.Context) ImageAccessAcceptOutput
 }
 
-func (ImageAccessAccept) ElementType() reflect.Type {
-	return reflect.TypeOf((*ImageAccessAccept)(nil)).Elem()
+func (*ImageAccessAccept) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageAccessAccept)(nil))
 }
 
-func (i ImageAccessAccept) ToImageAccessAcceptOutput() ImageAccessAcceptOutput {
+func (i *ImageAccessAccept) ToImageAccessAcceptOutput() ImageAccessAcceptOutput {
 	return i.ToImageAccessAcceptOutputWithContext(context.Background())
 }
 
-func (i ImageAccessAccept) ToImageAccessAcceptOutputWithContext(ctx context.Context) ImageAccessAcceptOutput {
+func (i *ImageAccessAccept) ToImageAccessAcceptOutputWithContext(ctx context.Context) ImageAccessAcceptOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ImageAccessAcceptOutput)
 }
 
@@ -225,7 +225,7 @@ type ImageAccessAcceptOutput struct {
 }
 
 func (ImageAccessAcceptOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ImageAccessAcceptOutput)(nil)).Elem()
+	return reflect.TypeOf((*ImageAccessAccept)(nil))
 }
 
 func (o ImageAccessAcceptOutput) ToImageAccessAcceptOutput() ImageAccessAcceptOutput {

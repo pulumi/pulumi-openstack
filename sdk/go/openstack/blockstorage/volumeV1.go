@@ -276,15 +276,15 @@ type VolumeV1Input interface {
 	ToVolumeV1OutputWithContext(ctx context.Context) VolumeV1Output
 }
 
-func (VolumeV1) ElementType() reflect.Type {
-	return reflect.TypeOf((*VolumeV1)(nil)).Elem()
+func (*VolumeV1) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeV1)(nil))
 }
 
-func (i VolumeV1) ToVolumeV1Output() VolumeV1Output {
+func (i *VolumeV1) ToVolumeV1Output() VolumeV1Output {
 	return i.ToVolumeV1OutputWithContext(context.Background())
 }
 
-func (i VolumeV1) ToVolumeV1OutputWithContext(ctx context.Context) VolumeV1Output {
+func (i *VolumeV1) ToVolumeV1OutputWithContext(ctx context.Context) VolumeV1Output {
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeV1Output)
 }
 
@@ -293,7 +293,7 @@ type VolumeV1Output struct {
 }
 
 func (VolumeV1Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*VolumeV1Output)(nil)).Elem()
+	return reflect.TypeOf((*VolumeV1)(nil))
 }
 
 func (o VolumeV1Output) ToVolumeV1Output() VolumeV1Output {

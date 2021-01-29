@@ -214,6 +214,7 @@ namespace Pulumi.OpenStack.ContainerInfra
     ///  $ pulumi import openstack:containerinfra/clusterTemplate:ClusterTemplate clustertemplate_1 b9a45c5c-cd03-4958-82aa-b80bf93cb922
     /// ```
     /// </summary>
+    [OpenStackResourceType("openstack:containerinfra/clusterTemplate:ClusterTemplate")]
     public partial class ClusterTemplate : Pulumi.CustomResource
     {
         [Output("apiserverPort")]

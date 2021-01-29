@@ -313,15 +313,15 @@ type VolumeAttachV2Input interface {
 	ToVolumeAttachV2OutputWithContext(ctx context.Context) VolumeAttachV2Output
 }
 
-func (VolumeAttachV2) ElementType() reflect.Type {
-	return reflect.TypeOf((*VolumeAttachV2)(nil)).Elem()
+func (*VolumeAttachV2) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeAttachV2)(nil))
 }
 
-func (i VolumeAttachV2) ToVolumeAttachV2Output() VolumeAttachV2Output {
+func (i *VolumeAttachV2) ToVolumeAttachV2Output() VolumeAttachV2Output {
 	return i.ToVolumeAttachV2OutputWithContext(context.Background())
 }
 
-func (i VolumeAttachV2) ToVolumeAttachV2OutputWithContext(ctx context.Context) VolumeAttachV2Output {
+func (i *VolumeAttachV2) ToVolumeAttachV2OutputWithContext(ctx context.Context) VolumeAttachV2Output {
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeAttachV2Output)
 }
 
@@ -330,7 +330,7 @@ type VolumeAttachV2Output struct {
 }
 
 func (VolumeAttachV2Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*VolumeAttachV2Output)(nil)).Elem()
+	return reflect.TypeOf((*VolumeAttachV2)(nil))
 }
 
 func (o VolumeAttachV2Output) ToVolumeAttachV2Output() VolumeAttachV2Output {

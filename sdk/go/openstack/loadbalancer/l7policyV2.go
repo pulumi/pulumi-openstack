@@ -306,15 +306,15 @@ type L7PolicyV2Input interface {
 	ToL7PolicyV2OutputWithContext(ctx context.Context) L7PolicyV2Output
 }
 
-func (L7PolicyV2) ElementType() reflect.Type {
-	return reflect.TypeOf((*L7PolicyV2)(nil)).Elem()
+func (*L7PolicyV2) ElementType() reflect.Type {
+	return reflect.TypeOf((*L7PolicyV2)(nil))
 }
 
-func (i L7PolicyV2) ToL7PolicyV2Output() L7PolicyV2Output {
+func (i *L7PolicyV2) ToL7PolicyV2Output() L7PolicyV2Output {
 	return i.ToL7PolicyV2OutputWithContext(context.Background())
 }
 
-func (i L7PolicyV2) ToL7PolicyV2OutputWithContext(ctx context.Context) L7PolicyV2Output {
+func (i *L7PolicyV2) ToL7PolicyV2OutputWithContext(ctx context.Context) L7PolicyV2Output {
 	return pulumi.ToOutputWithContext(ctx, i).(L7PolicyV2Output)
 }
 
@@ -323,7 +323,7 @@ type L7PolicyV2Output struct {
 }
 
 func (L7PolicyV2Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*L7PolicyV2Output)(nil)).Elem()
+	return reflect.TypeOf((*L7PolicyV2)(nil))
 }
 
 func (o L7PolicyV2Output) ToL7PolicyV2Output() L7PolicyV2Output {

@@ -205,15 +205,15 @@ type SubnetRouteInput interface {
 	ToSubnetRouteOutputWithContext(ctx context.Context) SubnetRouteOutput
 }
 
-func (SubnetRoute) ElementType() reflect.Type {
-	return reflect.TypeOf((*SubnetRoute)(nil)).Elem()
+func (*SubnetRoute) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubnetRoute)(nil))
 }
 
-func (i SubnetRoute) ToSubnetRouteOutput() SubnetRouteOutput {
+func (i *SubnetRoute) ToSubnetRouteOutput() SubnetRouteOutput {
 	return i.ToSubnetRouteOutputWithContext(context.Background())
 }
 
-func (i SubnetRoute) ToSubnetRouteOutputWithContext(ctx context.Context) SubnetRouteOutput {
+func (i *SubnetRoute) ToSubnetRouteOutputWithContext(ctx context.Context) SubnetRouteOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SubnetRouteOutput)
 }
 
@@ -222,7 +222,7 @@ type SubnetRouteOutput struct {
 }
 
 func (SubnetRouteOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SubnetRouteOutput)(nil)).Elem()
+	return reflect.TypeOf((*SubnetRoute)(nil))
 }
 
 func (o SubnetRouteOutput) ToSubnetRouteOutput() SubnetRouteOutput {

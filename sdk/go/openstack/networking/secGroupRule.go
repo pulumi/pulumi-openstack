@@ -422,15 +422,15 @@ type SecGroupRuleInput interface {
 	ToSecGroupRuleOutputWithContext(ctx context.Context) SecGroupRuleOutput
 }
 
-func (SecGroupRule) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecGroupRule)(nil)).Elem()
+func (*SecGroupRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecGroupRule)(nil))
 }
 
-func (i SecGroupRule) ToSecGroupRuleOutput() SecGroupRuleOutput {
+func (i *SecGroupRule) ToSecGroupRuleOutput() SecGroupRuleOutput {
 	return i.ToSecGroupRuleOutputWithContext(context.Background())
 }
 
-func (i SecGroupRule) ToSecGroupRuleOutputWithContext(ctx context.Context) SecGroupRuleOutput {
+func (i *SecGroupRule) ToSecGroupRuleOutputWithContext(ctx context.Context) SecGroupRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SecGroupRuleOutput)
 }
 
@@ -439,7 +439,7 @@ type SecGroupRuleOutput struct {
 }
 
 func (SecGroupRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecGroupRuleOutput)(nil)).Elem()
+	return reflect.TypeOf((*SecGroupRule)(nil))
 }
 
 func (o SecGroupRuleOutput) ToSecGroupRuleOutput() SecGroupRuleOutput {

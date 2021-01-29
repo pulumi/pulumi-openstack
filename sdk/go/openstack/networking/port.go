@@ -558,15 +558,15 @@ type PortInput interface {
 	ToPortOutputWithContext(ctx context.Context) PortOutput
 }
 
-func (Port) ElementType() reflect.Type {
-	return reflect.TypeOf((*Port)(nil)).Elem()
+func (*Port) ElementType() reflect.Type {
+	return reflect.TypeOf((*Port)(nil))
 }
 
-func (i Port) ToPortOutput() PortOutput {
+func (i *Port) ToPortOutput() PortOutput {
 	return i.ToPortOutputWithContext(context.Background())
 }
 
-func (i Port) ToPortOutputWithContext(ctx context.Context) PortOutput {
+func (i *Port) ToPortOutputWithContext(ctx context.Context) PortOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PortOutput)
 }
 
@@ -575,7 +575,7 @@ type PortOutput struct {
 }
 
 func (PortOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PortOutput)(nil)).Elem()
+	return reflect.TypeOf((*Port)(nil))
 }
 
 func (o PortOutput) ToPortOutput() PortOutput {

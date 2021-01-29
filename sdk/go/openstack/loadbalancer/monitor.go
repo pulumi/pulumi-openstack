@@ -354,15 +354,15 @@ type MonitorInput interface {
 	ToMonitorOutputWithContext(ctx context.Context) MonitorOutput
 }
 
-func (Monitor) ElementType() reflect.Type {
-	return reflect.TypeOf((*Monitor)(nil)).Elem()
+func (*Monitor) ElementType() reflect.Type {
+	return reflect.TypeOf((*Monitor)(nil))
 }
 
-func (i Monitor) ToMonitorOutput() MonitorOutput {
+func (i *Monitor) ToMonitorOutput() MonitorOutput {
 	return i.ToMonitorOutputWithContext(context.Background())
 }
 
-func (i Monitor) ToMonitorOutputWithContext(ctx context.Context) MonitorOutput {
+func (i *Monitor) ToMonitorOutputWithContext(ctx context.Context) MonitorOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MonitorOutput)
 }
 
@@ -371,7 +371,7 @@ type MonitorOutput struct {
 }
 
 func (MonitorOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MonitorOutput)(nil)).Elem()
+	return reflect.TypeOf((*Monitor)(nil))
 }
 
 func (o MonitorOutput) ToMonitorOutput() MonitorOutput {

@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.OpenStack.Compute
 {
+    [OpenStackResourceType("openstack:compute/instance:Instance")]
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>

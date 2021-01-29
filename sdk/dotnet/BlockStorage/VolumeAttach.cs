@@ -56,6 +56,7 @@ namespace Pulumi.OpenStack.BlockStorage
     /// 
     /// It is not possible to import this resource.
     /// </summary>
+    [OpenStackResourceType("openstack:blockstorage/volumeAttach:VolumeAttach")]
     public partial class VolumeAttach : Pulumi.CustomResource
     {
         /// <summary>

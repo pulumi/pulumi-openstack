@@ -40,6 +40,7 @@ namespace Pulumi.OpenStack.Networking
     ///  $ pulumi import openstack:networking/qosPolicy:QosPolicy qos_policy_1 d6ae28ce-fcb5-4180-aa62-d260a27e09ae
     /// ```
     /// </summary>
+    [OpenStackResourceType("openstack:networking/qosPolicy:QosPolicy")]
     public partial class QosPolicy : Pulumi.CustomResource
     {
         /// <summary>

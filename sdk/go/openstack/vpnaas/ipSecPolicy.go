@@ -266,15 +266,15 @@ type IpSecPolicyInput interface {
 	ToIpSecPolicyOutputWithContext(ctx context.Context) IpSecPolicyOutput
 }
 
-func (IpSecPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*IpSecPolicy)(nil)).Elem()
+func (*IpSecPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpSecPolicy)(nil))
 }
 
-func (i IpSecPolicy) ToIpSecPolicyOutput() IpSecPolicyOutput {
+func (i *IpSecPolicy) ToIpSecPolicyOutput() IpSecPolicyOutput {
 	return i.ToIpSecPolicyOutputWithContext(context.Background())
 }
 
-func (i IpSecPolicy) ToIpSecPolicyOutputWithContext(ctx context.Context) IpSecPolicyOutput {
+func (i *IpSecPolicy) ToIpSecPolicyOutputWithContext(ctx context.Context) IpSecPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IpSecPolicyOutput)
 }
 
@@ -283,7 +283,7 @@ type IpSecPolicyOutput struct {
 }
 
 func (IpSecPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IpSecPolicyOutput)(nil)).Elem()
+	return reflect.TypeOf((*IpSecPolicy)(nil))
 }
 
 func (o IpSecPolicyOutput) ToIpSecPolicyOutput() IpSecPolicyOutput {

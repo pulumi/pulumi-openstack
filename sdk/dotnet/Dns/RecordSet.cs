@@ -54,6 +54,7 @@ namespace Pulumi.OpenStack.Dns
     ///  $ pulumi import openstack:dns/recordSet:RecordSet recordset_1 &lt;zone_id&gt;/&lt;recordset_id&gt;
     /// ```
     /// </summary>
+    [OpenStackResourceType("openstack:dns/recordSet:RecordSet")]
     public partial class RecordSet : Pulumi.CustomResource
     {
         /// <summary>

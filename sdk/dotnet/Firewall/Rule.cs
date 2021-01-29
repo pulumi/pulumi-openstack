@@ -43,6 +43,7 @@ namespace Pulumi.OpenStack.Firewall
     ///  $ pulumi import openstack:firewall/rule:Rule rule_1 8dbc0c28-e49c-463f-b712-5c5d1bbac327
     /// ```
     /// </summary>
+    [OpenStackResourceType("openstack:firewall/rule:Rule")]
     public partial class Rule : Pulumi.CustomResource
     {
         /// <summary>

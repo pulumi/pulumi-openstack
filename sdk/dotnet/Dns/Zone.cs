@@ -47,6 +47,7 @@ namespace Pulumi.OpenStack.Dns
     ///  $ pulumi import openstack:dns/zone:Zone zone_1 &lt;zone_id&gt;:&lt;project_id&gt;
     /// ```
     /// </summary>
+    [OpenStackResourceType("openstack:dns/zone:Zone")]
     public partial class Zone : Pulumi.CustomResource
     {
         /// <summary>

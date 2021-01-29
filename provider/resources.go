@@ -15,6 +15,9 @@
 package openstack
 
 import (
+	"fmt"
+	"github.com/pulumi/pulumi-openstack/provider/v2/pkg/version"
+	"path/filepath"
 	"strings"
 	"unicode"
 
@@ -483,6 +486,15 @@ func Provider() tfbridge.ProviderInfo {
 			Requires: map[string]string{
 				"pulumi": ">=2.15.0,<3.0.0",
 			},
+		},
+		Golang: &tfbridge.GolangInfo{
+			ImportBasePath: filepath.Join(
+				fmt.Sprintf("github.com/pulumi/pulumi-%[1]s/sdk/", openstackPkg),
+				tfbridge.GetModuleMajorVersion(version.Version),
+				"go",
+				openstackPkg,
+			),
+			GenerateResourceContainerTypes: true,
 		},
 		CSharp: &tfbridge.CSharpInfo{
 			PackageReferences: map[string]string{

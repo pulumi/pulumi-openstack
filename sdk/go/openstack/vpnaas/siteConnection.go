@@ -403,15 +403,15 @@ type SiteConnectionInput interface {
 	ToSiteConnectionOutputWithContext(ctx context.Context) SiteConnectionOutput
 }
 
-func (SiteConnection) ElementType() reflect.Type {
-	return reflect.TypeOf((*SiteConnection)(nil)).Elem()
+func (*SiteConnection) ElementType() reflect.Type {
+	return reflect.TypeOf((*SiteConnection)(nil))
 }
 
-func (i SiteConnection) ToSiteConnectionOutput() SiteConnectionOutput {
+func (i *SiteConnection) ToSiteConnectionOutput() SiteConnectionOutput {
 	return i.ToSiteConnectionOutputWithContext(context.Background())
 }
 
-func (i SiteConnection) ToSiteConnectionOutputWithContext(ctx context.Context) SiteConnectionOutput {
+func (i *SiteConnection) ToSiteConnectionOutputWithContext(ctx context.Context) SiteConnectionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SiteConnectionOutput)
 }
 
@@ -420,7 +420,7 @@ type SiteConnectionOutput struct {
 }
 
 func (SiteConnectionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SiteConnectionOutput)(nil)).Elem()
+	return reflect.TypeOf((*SiteConnection)(nil))
 }
 
 func (o SiteConnectionOutput) ToSiteConnectionOutput() SiteConnectionOutput {

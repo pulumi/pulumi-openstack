@@ -172,15 +172,15 @@ type ShareAccessInput interface {
 	ToShareAccessOutputWithContext(ctx context.Context) ShareAccessOutput
 }
 
-func (ShareAccess) ElementType() reflect.Type {
-	return reflect.TypeOf((*ShareAccess)(nil)).Elem()
+func (*ShareAccess) ElementType() reflect.Type {
+	return reflect.TypeOf((*ShareAccess)(nil))
 }
 
-func (i ShareAccess) ToShareAccessOutput() ShareAccessOutput {
+func (i *ShareAccess) ToShareAccessOutput() ShareAccessOutput {
 	return i.ToShareAccessOutputWithContext(context.Background())
 }
 
-func (i ShareAccess) ToShareAccessOutputWithContext(ctx context.Context) ShareAccessOutput {
+func (i *ShareAccess) ToShareAccessOutputWithContext(ctx context.Context) ShareAccessOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ShareAccessOutput)
 }
 
@@ -189,7 +189,7 @@ type ShareAccessOutput struct {
 }
 
 func (ShareAccessOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ShareAccessOutput)(nil)).Elem()
+	return reflect.TypeOf((*ShareAccess)(nil))
 }
 
 func (o ShareAccessOutput) ToShareAccessOutput() ShareAccessOutput {
