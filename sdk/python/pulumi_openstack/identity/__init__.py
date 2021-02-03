@@ -19,6 +19,7 @@ from .role import *
 from .role_assignment import *
 from .service_v3 import *
 from .user import *
+from .user_membership_v3 import *
 from ._inputs import *
 from . import outputs
 
@@ -52,6 +53,8 @@ def _register_module():
                 return ServiceV3(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "openstack:identity/user:User":
                 return User(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "openstack:identity/userMembershipV3:UserMembershipV3":
+                return UserMembershipV3(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 
@@ -66,5 +69,6 @@ def _register_module():
     pulumi.runtime.register_resource_module("openstack", "identity/roleAssignment", _module_instance)
     pulumi.runtime.register_resource_module("openstack", "identity/serviceV3", _module_instance)
     pulumi.runtime.register_resource_module("openstack", "identity/user", _module_instance)
+    pulumi.runtime.register_resource_module("openstack", "identity/userMembershipV3", _module_instance)
 
 _register_module()

@@ -39,6 +39,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r, err = NewServiceV3(ctx, name, nil, pulumi.URN_(urn))
 	case "openstack:identity/user:User":
 		r, err = NewUser(ctx, name, nil, pulumi.URN_(urn))
+	case "openstack:identity/userMembershipV3:UserMembershipV3":
+		r, err = NewUserMembershipV3(ctx, name, nil, pulumi.URN_(urn))
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -94,6 +96,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"openstack",
 		"identity/user",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"openstack",
+		"identity/userMembershipV3",
 		&module{version},
 	)
 }

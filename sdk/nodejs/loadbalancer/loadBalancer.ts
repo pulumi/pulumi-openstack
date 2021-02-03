@@ -67,7 +67,7 @@ export class LoadBalancer extends pulumi.CustomResource {
      * The UUID of a flavor. Changing this creates a new
      * loadbalancer.
      */
-    public readonly flavorId!: pulumi.Output<string | undefined>;
+    public readonly flavorId!: pulumi.Output<string>;
     /**
      * The name of the provider. Changing this
      * creates a new loadbalancer.

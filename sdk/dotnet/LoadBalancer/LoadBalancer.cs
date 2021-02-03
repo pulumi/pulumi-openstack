@@ -60,7 +60,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// loadbalancer.
         /// </summary>
         [Output("flavorId")]
-        public Output<string?> FlavorId { get; private set; } = null!;
+        public Output<string> FlavorId { get; private set; } = null!;
 
         /// <summary>
         /// The name of the provider. Changing this

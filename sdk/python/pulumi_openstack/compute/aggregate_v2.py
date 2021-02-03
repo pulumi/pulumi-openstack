@@ -93,8 +93,6 @@ class AggregateV2(pulumi.CustomResource):
             __props__['hosts'] = hosts
             __props__['metadata'] = metadata
             __props__['name'] = name
-            if zone is None and not opts.urn:
-                raise TypeError("Missing required property 'zone'")
             __props__['zone'] = zone
         super(AggregateV2, __self__).__init__(
             'openstack:compute/aggregateV2:AggregateV2',
@@ -163,7 +161,7 @@ class AggregateV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def zone(self) -> pulumi.Output[str]:
+    def zone(self) -> pulumi.Output[Optional[str]]:
         """
         The name of the Availability Zone to use. If ommited, it will take the default
         availability zone.

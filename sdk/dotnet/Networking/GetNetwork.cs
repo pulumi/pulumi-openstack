@@ -178,6 +178,10 @@ namespace Pulumi.OpenStack.Networking
         /// </summary>
         public readonly string Shared;
         public readonly string? Status;
+        /// <summary>
+        /// A list of subnet IDs belonging to the network.
+        /// </summary>
+        public readonly ImmutableArray<string> Subnets;
         public readonly ImmutableArray<string> Tags;
         public readonly string? TenantId;
         /// <summary>
@@ -215,6 +219,8 @@ namespace Pulumi.OpenStack.Networking
 
             string? status,
 
+            ImmutableArray<string> subnets,
+
             ImmutableArray<string> tags,
 
             string? tenantId,
@@ -235,6 +241,7 @@ namespace Pulumi.OpenStack.Networking
             Region = region;
             Shared = shared;
             Status = status;
+            Subnets = subnets;
             Tags = tags;
             TenantId = tenantId;
             TransparentVlan = transparentVlan;

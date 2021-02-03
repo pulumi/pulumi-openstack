@@ -92,7 +92,7 @@ export class AggregateV2 extends pulumi.CustomResource {
      * The name of the Availability Zone to use. If ommited, it will take the default
      * availability zone.
      */
-    public readonly zone!: pulumi.Output<string>;
+    public readonly zone!: pulumi.Output<string | undefined>;
 
     /**
      * Create a AggregateV2 resource with the given unique name, arguments, and options.
@@ -101,7 +101,7 @@ export class AggregateV2 extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: AggregateV2Args, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: AggregateV2Args, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AggregateV2Args | AggregateV2State, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
@@ -112,9 +112,6 @@ export class AggregateV2 extends pulumi.CustomResource {
             inputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as AggregateV2Args | undefined;
-            if ((!args || args.zone === undefined) && !(opts && opts.urn)) {
-                throw new Error("Missing required property 'zone'");
-            }
             inputs["hosts"] = args ? args.hosts : undefined;
             inputs["metadata"] = args ? args.metadata : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -178,5 +175,5 @@ export interface AggregateV2Args {
      * The name of the Availability Zone to use. If ommited, it will take the default
      * availability zone.
      */
-    readonly zone: pulumi.Input<string>;
+    readonly zone?: pulumi.Input<string>;
 }

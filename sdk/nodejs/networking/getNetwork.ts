@@ -150,6 +150,10 @@ export interface GetNetworkResult {
      */
     readonly shared: string;
     readonly status?: string;
+    /**
+     * A list of subnet IDs belonging to the network.
+     */
+    readonly subnets: string[];
     readonly tags?: string[];
     readonly tenantId?: string;
     /**

@@ -7,57 +7,37 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
-from . import outputs
 
 __all__ = [
-    'GetSubnetResult',
-    'AwaitableGetSubnetResult',
-    'get_subnet',
+    'GetSubnetIdsV2Result',
+    'AwaitableGetSubnetIdsV2Result',
+    'get_subnet_ids_v2',
 ]
 
 @pulumi.output_type
-class GetSubnetResult:
+class GetSubnetIdsV2Result:
     """
-    A collection of values returned by getSubnet.
+    A collection of values returned by getSubnetIdsV2.
     """
-    def __init__(__self__, all_tags=None, allocation_pools=None, cidr=None, description=None, dhcp_disabled=None, dhcp_enabled=None, dns_nameservers=None, enable_dhcp=None, gateway_ip=None, host_routes=None, id=None, ip_version=None, ipv6_address_mode=None, ipv6_ra_mode=None, name=None, network_id=None, region=None, subnet_id=None, subnetpool_id=None, tags=None, tenant_id=None):
-        if all_tags and not isinstance(all_tags, list):
-            raise TypeError("Expected argument 'all_tags' to be a list")
-        pulumi.set(__self__, "all_tags", all_tags)
-        if allocation_pools and not isinstance(allocation_pools, list):
-            raise TypeError("Expected argument 'allocation_pools' to be a list")
-        pulumi.set(__self__, "allocation_pools", allocation_pools)
+    def __init__(__self__, cidr=None, description=None, dhcp_enabled=None, gateway_ip=None, id=None, ids=None, ip_version=None, ipv6_address_mode=None, ipv6_ra_mode=None, name=None, name_regex=None, network_id=None, region=None, sort_direction=None, sort_key=None, subnetpool_id=None, tags=None, tenant_id=None):
         if cidr and not isinstance(cidr, str):
             raise TypeError("Expected argument 'cidr' to be a str")
         pulumi.set(__self__, "cidr", cidr)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
-        if dhcp_disabled and not isinstance(dhcp_disabled, bool):
-            raise TypeError("Expected argument 'dhcp_disabled' to be a bool")
-        if dhcp_disabled is not None:
-            warnings.warn("""use dhcp_enabled instead""", DeprecationWarning)
-            pulumi.log.warn("dhcp_disabled is deprecated: use dhcp_enabled instead")
-
-        pulumi.set(__self__, "dhcp_disabled", dhcp_disabled)
         if dhcp_enabled and not isinstance(dhcp_enabled, bool):
             raise TypeError("Expected argument 'dhcp_enabled' to be a bool")
         pulumi.set(__self__, "dhcp_enabled", dhcp_enabled)
-        if dns_nameservers and not isinstance(dns_nameservers, list):
-            raise TypeError("Expected argument 'dns_nameservers' to be a list")
-        pulumi.set(__self__, "dns_nameservers", dns_nameservers)
-        if enable_dhcp and not isinstance(enable_dhcp, bool):
-            raise TypeError("Expected argument 'enable_dhcp' to be a bool")
-        pulumi.set(__self__, "enable_dhcp", enable_dhcp)
         if gateway_ip and not isinstance(gateway_ip, str):
             raise TypeError("Expected argument 'gateway_ip' to be a str")
         pulumi.set(__self__, "gateway_ip", gateway_ip)
-        if host_routes and not isinstance(host_routes, list):
-            raise TypeError("Expected argument 'host_routes' to be a list")
-        pulumi.set(__self__, "host_routes", host_routes)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if ids and not isinstance(ids, list):
+            raise TypeError("Expected argument 'ids' to be a list")
+        pulumi.set(__self__, "ids", ids)
         if ip_version and not isinstance(ip_version, int):
             raise TypeError("Expected argument 'ip_version' to be a int")
         pulumi.set(__self__, "ip_version", ip_version)
@@ -70,15 +50,21 @@ class GetSubnetResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if name_regex and not isinstance(name_regex, str):
+            raise TypeError("Expected argument 'name_regex' to be a str")
+        pulumi.set(__self__, "name_regex", name_regex)
         if network_id and not isinstance(network_id, str):
             raise TypeError("Expected argument 'network_id' to be a str")
         pulumi.set(__self__, "network_id", network_id)
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
-        if subnet_id and not isinstance(subnet_id, str):
-            raise TypeError("Expected argument 'subnet_id' to be a str")
-        pulumi.set(__self__, "subnet_id", subnet_id)
+        if sort_direction and not isinstance(sort_direction, str):
+            raise TypeError("Expected argument 'sort_direction' to be a str")
+        pulumi.set(__self__, "sort_direction", sort_direction)
+        if sort_key and not isinstance(sort_key, str):
+            raise TypeError("Expected argument 'sort_key' to be a str")
+        pulumi.set(__self__, "sort_key", sort_key)
         if subnetpool_id and not isinstance(subnetpool_id, str):
             raise TypeError("Expected argument 'subnetpool_id' to be a str")
         pulumi.set(__self__, "subnetpool_id", subnetpool_id)
@@ -90,35 +76,14 @@ class GetSubnetResult:
         pulumi.set(__self__, "tenant_id", tenant_id)
 
     @property
-    @pulumi.getter(name="allTags")
-    def all_tags(self) -> Sequence[str]:
-        """
-        A set of string tags applied on the subnet.
-        """
-        return pulumi.get(self, "all_tags")
-
-    @property
-    @pulumi.getter(name="allocationPools")
-    def allocation_pools(self) -> Sequence['outputs.GetSubnetAllocationPoolResult']:
-        """
-        Allocation pools of the subnet.
-        """
-        return pulumi.get(self, "allocation_pools")
-
-    @property
     @pulumi.getter
-    def cidr(self) -> str:
+    def cidr(self) -> Optional[str]:
         return pulumi.get(self, "cidr")
 
     @property
     @pulumi.getter
-    def description(self) -> str:
+    def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
-
-    @property
-    @pulumi.getter(name="dhcpDisabled")
-    def dhcp_disabled(self) -> Optional[bool]:
-        return pulumi.get(self, "dhcp_disabled")
 
     @property
     @pulumi.getter(name="dhcpEnabled")
@@ -126,33 +91,9 @@ class GetSubnetResult:
         return pulumi.get(self, "dhcp_enabled")
 
     @property
-    @pulumi.getter(name="dnsNameservers")
-    def dns_nameservers(self) -> Sequence[str]:
-        """
-        DNS Nameservers of the subnet.
-        """
-        return pulumi.get(self, "dns_nameservers")
-
-    @property
-    @pulumi.getter(name="enableDhcp")
-    def enable_dhcp(self) -> bool:
-        """
-        Whether the subnet has DHCP enabled or not.
-        """
-        return pulumi.get(self, "enable_dhcp")
-
-    @property
     @pulumi.getter(name="gatewayIp")
-    def gateway_ip(self) -> str:
+    def gateway_ip(self) -> Optional[str]:
         return pulumi.get(self, "gateway_ip")
-
-    @property
-    @pulumi.getter(name="hostRoutes")
-    def host_routes(self) -> Sequence['outputs.GetSubnetHostRouteResult']:
-        """
-        Host Routes of the subnet.
-        """
-        return pulumi.get(self, "host_routes")
 
     @property
     @pulumi.getter
@@ -163,13 +104,18 @@ class GetSubnetResult:
         return pulumi.get(self, "id")
 
     @property
+    @pulumi.getter
+    def ids(self) -> Sequence[str]:
+        return pulumi.get(self, "ids")
+
+    @property
     @pulumi.getter(name="ipVersion")
-    def ip_version(self) -> int:
+    def ip_version(self) -> Optional[int]:
         return pulumi.get(self, "ip_version")
 
     @property
     @pulumi.getter(name="ipv6AddressMode")
-    def ipv6_address_mode(self) -> str:
+    def ipv6_address_mode(self) -> Optional[str]:
         return pulumi.get(self, "ipv6_address_mode")
 
     @property
@@ -179,30 +125,37 @@ class GetSubnetResult:
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> Optional[str]:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="nameRegex")
+    def name_regex(self) -> Optional[str]:
+        return pulumi.get(self, "name_regex")
+
+    @property
     @pulumi.getter(name="networkId")
-    def network_id(self) -> str:
+    def network_id(self) -> Optional[str]:
         return pulumi.get(self, "network_id")
 
     @property
     @pulumi.getter
     def region(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "region")
 
     @property
-    @pulumi.getter(name="subnetId")
-    def subnet_id(self) -> str:
-        return pulumi.get(self, "subnet_id")
+    @pulumi.getter(name="sortDirection")
+    def sort_direction(self) -> Optional[str]:
+        return pulumi.get(self, "sort_direction")
+
+    @property
+    @pulumi.getter(name="sortKey")
+    def sort_key(self) -> Optional[str]:
+        return pulumi.get(self, "sort_key")
 
     @property
     @pulumi.getter(name="subnetpoolId")
-    def subnetpool_id(self) -> str:
+    def subnetpool_id(self) -> Optional[str]:
         return pulumi.get(self, "subnetpool_id")
 
     @property
@@ -212,57 +165,56 @@ class GetSubnetResult:
 
     @property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> str:
+    def tenant_id(self) -> Optional[str]:
         return pulumi.get(self, "tenant_id")
 
 
-class AwaitableGetSubnetResult(GetSubnetResult):
+class AwaitableGetSubnetIdsV2Result(GetSubnetIdsV2Result):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return GetSubnetResult(
-            all_tags=self.all_tags,
-            allocation_pools=self.allocation_pools,
+        return GetSubnetIdsV2Result(
             cidr=self.cidr,
             description=self.description,
-            dhcp_disabled=self.dhcp_disabled,
             dhcp_enabled=self.dhcp_enabled,
-            dns_nameservers=self.dns_nameservers,
-            enable_dhcp=self.enable_dhcp,
             gateway_ip=self.gateway_ip,
-            host_routes=self.host_routes,
             id=self.id,
+            ids=self.ids,
             ip_version=self.ip_version,
             ipv6_address_mode=self.ipv6_address_mode,
             ipv6_ra_mode=self.ipv6_ra_mode,
             name=self.name,
+            name_regex=self.name_regex,
             network_id=self.network_id,
             region=self.region,
-            subnet_id=self.subnet_id,
+            sort_direction=self.sort_direction,
+            sort_key=self.sort_key,
             subnetpool_id=self.subnetpool_id,
             tags=self.tags,
             tenant_id=self.tenant_id)
 
 
-def get_subnet(cidr: Optional[str] = None,
-               description: Optional[str] = None,
-               dhcp_disabled: Optional[bool] = None,
-               dhcp_enabled: Optional[bool] = None,
-               gateway_ip: Optional[str] = None,
-               ip_version: Optional[int] = None,
-               ipv6_address_mode: Optional[str] = None,
-               ipv6_ra_mode: Optional[str] = None,
-               name: Optional[str] = None,
-               network_id: Optional[str] = None,
-               region: Optional[str] = None,
-               subnet_id: Optional[str] = None,
-               subnetpool_id: Optional[str] = None,
-               tags: Optional[Sequence[str]] = None,
-               tenant_id: Optional[str] = None,
-               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSubnetResult:
+def get_subnet_ids_v2(cidr: Optional[str] = None,
+                      description: Optional[str] = None,
+                      dhcp_enabled: Optional[bool] = None,
+                      gateway_ip: Optional[str] = None,
+                      ip_version: Optional[int] = None,
+                      ipv6_address_mode: Optional[str] = None,
+                      ipv6_ra_mode: Optional[str] = None,
+                      name: Optional[str] = None,
+                      name_regex: Optional[str] = None,
+                      network_id: Optional[str] = None,
+                      region: Optional[str] = None,
+                      sort_direction: Optional[str] = None,
+                      sort_key: Optional[str] = None,
+                      subnetpool_id: Optional[str] = None,
+                      tags: Optional[Sequence[str]] = None,
+                      tenant_id: Optional[str] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSubnetIdsV2Result:
     """
-    Use this data source to get the ID of an available OpenStack subnet.
+    Use this data source to get a list of Openstack Subnet IDs matching the
+    specified criteria.
 
     ## Example Usage
 
@@ -270,7 +222,8 @@ def get_subnet(cidr: Optional[str] = None,
     import pulumi
     import pulumi_openstack as openstack
 
-    subnet1 = openstack.networking.get_subnet(name="subnet_1")
+    subnets = openstack.networking.get_subnet_ids_v2(name_regex="public",
+        tags=["public"])
     ```
 
 
@@ -288,7 +241,9 @@ def get_subnet(cidr: Optional[str] = None,
     :param str region: The region in which to obtain the V2 Neutron client.
            A Neutron client is needed to retrieve subnet ids. If omitted, the
            `region` argument of the provider is used.
-    :param str subnet_id: The ID of the subnet.
+    :param str sort_direction: Order the results in either `asc` or `desc`.
+           Defaults to none.
+    :param str sort_key: Sort subnets based on a certain key. Defaults to none.
     :param str subnetpool_id: The ID of the subnetpool associated with the subnet.
     :param Sequence[str] tags: The list of subnet tags to filter.
     :param str tenant_id: The owner of the subnet.
@@ -296,16 +251,17 @@ def get_subnet(cidr: Optional[str] = None,
     __args__ = dict()
     __args__['cidr'] = cidr
     __args__['description'] = description
-    __args__['dhcpDisabled'] = dhcp_disabled
     __args__['dhcpEnabled'] = dhcp_enabled
     __args__['gatewayIp'] = gateway_ip
     __args__['ipVersion'] = ip_version
     __args__['ipv6AddressMode'] = ipv6_address_mode
     __args__['ipv6RaMode'] = ipv6_ra_mode
     __args__['name'] = name
+    __args__['nameRegex'] = name_regex
     __args__['networkId'] = network_id
     __args__['region'] = region
-    __args__['subnetId'] = subnet_id
+    __args__['sortDirection'] = sort_direction
+    __args__['sortKey'] = sort_key
     __args__['subnetpoolId'] = subnetpool_id
     __args__['tags'] = tags
     __args__['tenantId'] = tenant_id
@@ -313,27 +269,24 @@ def get_subnet(cidr: Optional[str] = None,
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('openstack:networking/getSubnet:getSubnet', __args__, opts=opts, typ=GetSubnetResult).value
+    __ret__ = pulumi.runtime.invoke('openstack:networking/getSubnetIdsV2:getSubnetIdsV2', __args__, opts=opts, typ=GetSubnetIdsV2Result).value
 
-    return AwaitableGetSubnetResult(
-        all_tags=__ret__.all_tags,
-        allocation_pools=__ret__.allocation_pools,
+    return AwaitableGetSubnetIdsV2Result(
         cidr=__ret__.cidr,
         description=__ret__.description,
-        dhcp_disabled=__ret__.dhcp_disabled,
         dhcp_enabled=__ret__.dhcp_enabled,
-        dns_nameservers=__ret__.dns_nameservers,
-        enable_dhcp=__ret__.enable_dhcp,
         gateway_ip=__ret__.gateway_ip,
-        host_routes=__ret__.host_routes,
         id=__ret__.id,
+        ids=__ret__.ids,
         ip_version=__ret__.ip_version,
         ipv6_address_mode=__ret__.ipv6_address_mode,
         ipv6_ra_mode=__ret__.ipv6_ra_mode,
         name=__ret__.name,
+        name_regex=__ret__.name_regex,
         network_id=__ret__.network_id,
         region=__ret__.region,
-        subnet_id=__ret__.subnet_id,
+        sort_direction=__ret__.sort_direction,
+        sort_key=__ret__.sort_key,
         subnetpool_id=__ret__.subnetpool_id,
         tags=__ret__.tags,
         tenant_id=__ret__.tenant_id)
