@@ -25,6 +25,7 @@ class Router(pulumi.CustomResource):
                  external_fixed_ips: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterExternalFixedIpArgs']]]]] = None,
                  external_gateway: Optional[pulumi.Input[str]] = None,
                  external_network_id: Optional[pulumi.Input[str]] = None,
+                 external_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -62,8 +63,9 @@ class Router(pulumi.CustomResource):
                (must be "true" or "false" if provided). Changing this updates the
                `admin_state_up` of an existing router.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] availability_zone_hints: An availability zone is used to make 
-               network resources highly available. Used for resources with high availability so that they are scheduled on different availability zones. Changing
-               this creates a new router.
+               network resources highly available. Used for resources with high availability
+               so that they are scheduled on different availability zones. Changing this
+               creates a new router.
         :param pulumi.Input[str] description: Human-readable description for the router.
         :param pulumi.Input[bool] distributed: Indicates whether or not to create a
                distributed router. The default policy setting in Neutron restricts
@@ -86,6 +88,11 @@ class Router(pulumi.CustomResource):
                for the router. A router with an external gateway is required if any
                compute instances or load balancers will be using floating IPs. Changing
                this updates the external gateway of the router.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] external_subnet_ids: A list of external subnet IDs to try over
+               each to obtain a fixed IP for the router. If a subnet ID in a list has
+               exhausted floating IP pool, the next subnet ID will be tried. This argument is
+               used only during the router creation and allows to set only one external fixed
+               IP. Conflicts with an `external_fixed_ip` argument.
         :param pulumi.Input[str] name: A unique name for the router. Changing this
                updates the `name` of an existing router.
         :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
@@ -127,6 +134,7 @@ class Router(pulumi.CustomResource):
                 pulumi.log.warn("external_gateway is deprecated: use external_network_id instead")
             __props__['external_gateway'] = external_gateway
             __props__['external_network_id'] = external_network_id
+            __props__['external_subnet_ids'] = external_subnet_ids
             __props__['name'] = name
             __props__['region'] = region
             __props__['tags'] = tags
@@ -153,6 +161,7 @@ class Router(pulumi.CustomResource):
             external_fixed_ips: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterExternalFixedIpArgs']]]]] = None,
             external_gateway: Optional[pulumi.Input[str]] = None,
             external_network_id: Optional[pulumi.Input[str]] = None,
+            external_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -172,8 +181,9 @@ class Router(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] all_tags: The collection of tags assigned on the router, which have been
                explicitly and implicitly added.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] availability_zone_hints: An availability zone is used to make 
-               network resources highly available. Used for resources with high availability so that they are scheduled on different availability zones. Changing
-               this creates a new router.
+               network resources highly available. Used for resources with high availability
+               so that they are scheduled on different availability zones. Changing this
+               creates a new router.
         :param pulumi.Input[str] description: Human-readable description for the router.
         :param pulumi.Input[bool] distributed: Indicates whether or not to create a
                distributed router. The default policy setting in Neutron restricts
@@ -196,6 +206,11 @@ class Router(pulumi.CustomResource):
                for the router. A router with an external gateway is required if any
                compute instances or load balancers will be using floating IPs. Changing
                this updates the external gateway of the router.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] external_subnet_ids: A list of external subnet IDs to try over
+               each to obtain a fixed IP for the router. If a subnet ID in a list has
+               exhausted floating IP pool, the next subnet ID will be tried. This argument is
+               used only during the router creation and allows to set only one external fixed
+               IP. Conflicts with an `external_fixed_ip` argument.
         :param pulumi.Input[str] name: A unique name for the router. Changing this
                updates the `name` of an existing router.
         :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
@@ -222,6 +237,7 @@ class Router(pulumi.CustomResource):
         __props__["external_fixed_ips"] = external_fixed_ips
         __props__["external_gateway"] = external_gateway
         __props__["external_network_id"] = external_network_id
+        __props__["external_subnet_ids"] = external_subnet_ids
         __props__["name"] = name
         __props__["region"] = region
         __props__["tags"] = tags
@@ -254,8 +270,9 @@ class Router(pulumi.CustomResource):
     def availability_zone_hints(self) -> pulumi.Output[Sequence[str]]:
         """
         An availability zone is used to make 
-        network resources highly available. Used for resources with high availability so that they are scheduled on different availability zones. Changing
-        this creates a new router.
+        network resources highly available. Used for resources with high availability
+        so that they are scheduled on different availability zones. Changing this
+        creates a new router.
         """
         return pulumi.get(self, "availability_zone_hints")
 
@@ -322,6 +339,18 @@ class Router(pulumi.CustomResource):
         this updates the external gateway of the router.
         """
         return pulumi.get(self, "external_network_id")
+
+    @property
+    @pulumi.getter(name="externalSubnetIds")
+    def external_subnet_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        A list of external subnet IDs to try over
+        each to obtain a fixed IP for the router. If a subnet ID in a list has
+        exhausted floating IP pool, the next subnet ID will be tried. This argument is
+        used only during the router creation and allows to set only one external fixed
+        IP. Conflicts with an `external_fixed_ip` argument.
+        """
+        return pulumi.get(self, "external_subnet_ids")
 
     @property
     @pulumi.getter

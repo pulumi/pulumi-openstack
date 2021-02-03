@@ -45,9 +45,9 @@ func LookupSubnet(ctx *pulumi.Context, args *LookupSubnetArgs, opts ...pulumi.In
 type LookupSubnetArgs struct {
 	// The CIDR of the subnet.
 	Cidr *string `pulumi:"cidr"`
-	// Human-readable description for the subnet.
+	// Human-readable description of the subnet.
 	Description *string `pulumi:"description"`
-	// If the subnet has DHCP disabled.
+	// Deprecated: use dhcp_enabled instead
 	DhcpDisabled *bool `pulumi:"dhcpDisabled"`
 	// If the subnet has DHCP enabled.
 	DhcpEnabled *bool `pulumi:"dhcpEnabled"`
@@ -87,8 +87,9 @@ type LookupSubnetResult struct {
 	AllocationPools []GetSubnetAllocationPool `pulumi:"allocationPools"`
 	Cidr            string                    `pulumi:"cidr"`
 	Description     string                    `pulumi:"description"`
-	DhcpDisabled    *bool                     `pulumi:"dhcpDisabled"`
-	DhcpEnabled     *bool                     `pulumi:"dhcpEnabled"`
+	// Deprecated: use dhcp_enabled instead
+	DhcpDisabled *bool `pulumi:"dhcpDisabled"`
+	DhcpEnabled  *bool `pulumi:"dhcpEnabled"`
 	// DNS Nameservers of the subnet.
 	DnsNameservers []string `pulumi:"dnsNameservers"`
 	// Whether the subnet has DHCP enabled or not.

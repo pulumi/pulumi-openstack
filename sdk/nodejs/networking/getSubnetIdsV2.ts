@@ -6,7 +6,8 @@ import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
- * Use this data source to get the ID of an available OpenStack subnet.
+ * Use this data source to get a list of Openstack Subnet IDs matching the
+ * specified criteria.
  *
  * ## Example Usage
  *
@@ -14,12 +15,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const subnet1 = pulumi.output(openstack.networking.getSubnet({
- *     name: "subnet_1",
+ * const subnets = pulumi.output(openstack.networking.getSubnetIdsV2({
+ *     nameRegex: "public",
+ *     tags: ["public"],
  * }, { async: true }));
  * ```
  */
-export function getSubnet(args?: GetSubnetArgs, opts?: pulumi.InvokeOptions): Promise<GetSubnetResult> {
+export function getSubnetIdsV2(args?: GetSubnetIdsV2Args, opts?: pulumi.InvokeOptions): Promise<GetSubnetIdsV2Result> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -28,19 +30,20 @@ export function getSubnet(args?: GetSubnetArgs, opts?: pulumi.InvokeOptions): Pr
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    return pulumi.runtime.invoke("openstack:networking/getSubnet:getSubnet", {
+    return pulumi.runtime.invoke("openstack:networking/getSubnetIdsV2:getSubnetIdsV2", {
         "cidr": args.cidr,
         "description": args.description,
-        "dhcpDisabled": args.dhcpDisabled,
         "dhcpEnabled": args.dhcpEnabled,
         "gatewayIp": args.gatewayIp,
         "ipVersion": args.ipVersion,
         "ipv6AddressMode": args.ipv6AddressMode,
         "ipv6RaMode": args.ipv6RaMode,
         "name": args.name,
+        "nameRegex": args.nameRegex,
         "networkId": args.networkId,
         "region": args.region,
-        "subnetId": args.subnetId,
+        "sortDirection": args.sortDirection,
+        "sortKey": args.sortKey,
         "subnetpoolId": args.subnetpoolId,
         "tags": args.tags,
         "tenantId": args.tenantId,
@@ -48,9 +51,9 @@ export function getSubnet(args?: GetSubnetArgs, opts?: pulumi.InvokeOptions): Pr
 }
 
 /**
- * A collection of arguments for invoking getSubnet.
+ * A collection of arguments for invoking getSubnetIdsV2.
  */
-export interface GetSubnetArgs {
+export interface GetSubnetIdsV2Args {
     /**
      * The CIDR of the subnet.
      */
@@ -59,10 +62,6 @@ export interface GetSubnetArgs {
      * Human-readable description of the subnet.
      */
     readonly description?: string;
-    /**
-     * @deprecated use dhcp_enabled instead
-     */
-    readonly dhcpDisabled?: boolean;
     /**
      * If the subnet has DHCP enabled.
      */
@@ -89,6 +88,7 @@ export interface GetSubnetArgs {
      * The name of the subnet.
      */
     readonly name?: string;
+    readonly nameRegex?: string;
     /**
      * The ID of the network the subnet belongs to.
      */
@@ -100,9 +100,14 @@ export interface GetSubnetArgs {
      */
     readonly region?: string;
     /**
-     * The ID of the subnet.
+     * Order the results in either `asc` or `desc`.
+     * Defaults to none.
      */
-    readonly subnetId?: string;
+    readonly sortDirection?: string;
+    /**
+     * Sort subnets based on a certain key. Defaults to none.
+     */
+    readonly sortKey?: string;
     /**
      * The ID of the subnetpool associated with the subnet.
      */
@@ -118,52 +123,28 @@ export interface GetSubnetArgs {
 }
 
 /**
- * A collection of values returned by getSubnet.
+ * A collection of values returned by getSubnetIdsV2.
  */
-export interface GetSubnetResult {
-    /**
-     * A set of string tags applied on the subnet.
-     */
-    readonly allTags: string[];
-    /**
-     * Allocation pools of the subnet.
-     */
-    readonly allocationPools: outputs.networking.GetSubnetAllocationPool[];
-    readonly cidr: string;
-    readonly description: string;
-    /**
-     * @deprecated use dhcp_enabled instead
-     */
-    readonly dhcpDisabled?: boolean;
+export interface GetSubnetIdsV2Result {
+    readonly cidr?: string;
+    readonly description?: string;
     readonly dhcpEnabled?: boolean;
-    /**
-     * DNS Nameservers of the subnet.
-     */
-    readonly dnsNameservers: string[];
-    /**
-     * Whether the subnet has DHCP enabled or not.
-     */
-    readonly enableDhcp: boolean;
-    readonly gatewayIp: string;
-    /**
-     * Host Routes of the subnet.
-     */
-    readonly hostRoutes: outputs.networking.GetSubnetHostRoute[];
+    readonly gatewayIp?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    readonly ipVersion: number;
-    readonly ipv6AddressMode: string;
+    readonly ids: string[];
+    readonly ipVersion?: number;
+    readonly ipv6AddressMode?: string;
     readonly ipv6RaMode: string;
-    readonly name: string;
-    readonly networkId: string;
-    /**
-     * See Argument Reference above.
-     */
+    readonly name?: string;
+    readonly nameRegex?: string;
+    readonly networkId?: string;
     readonly region: string;
-    readonly subnetId: string;
-    readonly subnetpoolId: string;
+    readonly sortDirection?: string;
+    readonly sortKey?: string;
+    readonly subnetpoolId?: string;
     readonly tags?: string[];
-    readonly tenantId: string;
+    readonly tenantId?: string;
 }

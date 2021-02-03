@@ -4359,8 +4359,7 @@
                 }
             },
             "required": [
-                "name",
-                "zone"
+                "name"
             ],
             "inputProperties": {
                 "hosts": {
@@ -4386,9 +4385,6 @@
                     "description": "The name of the Availability Zone to use. If ommited, it will take the default\navailability zone.\n"
                 }
             },
-            "requiredInputs": [
-                "zone"
-            ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering AggregateV2 resources.\n",
                 "properties": {
@@ -8620,6 +8616,64 @@
                 "type": "object"
             }
         },
+        "openstack:identity/userMembershipV3:UserMembershipV3": {
+            "description": "Manages a user membership to group V3 resource within OpenStack.\n\nNote: You _must_ have admin privileges in your OpenStack cloud to use\nthis resource.\n\n---\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst project1 = new openstack.identity.Project(\"project_1\", {});\nconst user1 = new openstack.identity.User(\"user_1\", {\n    defaultProjectId: project1.id,\n});\nconst group1 = new openstack.identity.GroupV3(\"group_1\", {\n    description: \"group 1\",\n});\nconst role1 = new openstack.identity.Role(\"role_1\", {});\nconst userMembership1 = new openstack.identity.UserMembershipV3(\"user_membership_1\", {\n    groupId: group1.id,\n    userId: user1.id,\n});\nconst roleAssignment1 = new openstack.identity.RoleAssignment(\"role_assignment_1\", {\n    groupId: group1.id,\n    projectId: project1.id,\n    roleId: role1.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nproject1 = openstack.identity.Project(\"project1\")\nuser1 = openstack.identity.User(\"user1\", default_project_id=project1.id)\ngroup1 = openstack.identity.GroupV3(\"group1\", description=\"group 1\")\nrole1 = openstack.identity.Role(\"role1\")\nuser_membership1 = openstack.identity.UserMembershipV3(\"userMembership1\",\n    group_id=group1.id,\n    user_id=user1.id)\nrole_assignment1 = openstack.identity.RoleAssignment(\"roleAssignment1\",\n    group_id=group1.id,\n    project_id=project1.id,\n    role_id=role1.id)\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var project1 = new OpenStack.Identity.Project(\"project1\", new OpenStack.Identity.ProjectArgs\n        {\n        });\n        var user1 = new OpenStack.Identity.User(\"user1\", new OpenStack.Identity.UserArgs\n        {\n            DefaultProjectId = project1.Id,\n        });\n        var group1 = new OpenStack.Identity.GroupV3(\"group1\", new OpenStack.Identity.GroupV3Args\n        {\n            Description = \"group 1\",\n        });\n        var role1 = new OpenStack.Identity.Role(\"role1\", new OpenStack.Identity.RoleArgs\n        {\n        });\n        var userMembership1 = new OpenStack.Identity.UserMembershipV3(\"userMembership1\", new OpenStack.Identity.UserMembershipV3Args\n        {\n            GroupId = group1.Id,\n            UserId = user1.Id,\n        });\n        var roleAssignment1 = new OpenStack.Identity.RoleAssignment(\"roleAssignment1\", new OpenStack.Identity.RoleAssignmentArgs\n        {\n            GroupId = group1.Id,\n            ProjectId = project1.Id,\n            RoleId = role1.Id,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/identity\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tproject1, err := identity.NewProject(ctx, \"project1\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tuser1, err := identity.NewUser(ctx, \"user1\", \u0026identity.UserArgs{\n\t\t\tDefaultProjectId: project1.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tgroup1, err := identity.NewGroupV3(ctx, \"group1\", \u0026identity.GroupV3Args{\n\t\t\tDescription: pulumi.String(\"group 1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\trole1, err := identity.NewRole(ctx, \"role1\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = identity.NewUserMembershipV3(ctx, \"userMembership1\", \u0026identity.UserMembershipV3Args{\n\t\t\tGroupId: group1.ID(),\n\t\t\tUserId:  user1.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = identity.NewRoleAssignment(ctx, \"roleAssignment1\", \u0026identity.RoleAssignmentArgs{\n\t\t\tGroupId:   group1.ID(),\n\t\t\tProjectId: project1.ID(),\n\t\t\tRoleId:    role1.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nThis resource can be imported by specifying all two arguments, separated by a forward slash\n\n```sh\n $ pulumi import openstack:identity/userMembershipV3:UserMembershipV3 user_membership_1 \u003cuser_id\u003e/\u003cgroup_id\u003e\n```\n\n ",
+            "properties": {
+                "groupId": {
+                    "type": "string",
+                    "description": "The UUID of group to which the user will be added.\nChanging this creates a new user membership.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region in which to obtain the V3 Identity client.\nIf omitted, the `region` argument of the provider is used.\nChanging this creates a new user membership.\n"
+                },
+                "userId": {
+                    "type": "string",
+                    "description": "The UUID of user to use. Changing this creates a new user membership.\n"
+                }
+            },
+            "required": [
+                "groupId",
+                "region",
+                "userId"
+            ],
+            "inputProperties": {
+                "groupId": {
+                    "type": "string",
+                    "description": "The UUID of group to which the user will be added.\nChanging this creates a new user membership.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region in which to obtain the V3 Identity client.\nIf omitted, the `region` argument of the provider is used.\nChanging this creates a new user membership.\n"
+                },
+                "userId": {
+                    "type": "string",
+                    "description": "The UUID of user to use. Changing this creates a new user membership.\n"
+                }
+            },
+            "requiredInputs": [
+                "groupId",
+                "userId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering UserMembershipV3 resources.\n",
+                "properties": {
+                    "groupId": {
+                        "type": "string",
+                        "description": "The UUID of group to which the user will be added.\nChanging this creates a new user membership.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region in which to obtain the V3 Identity client.\nIf omitted, the `region` argument of the provider is used.\nChanging this creates a new user membership.\n"
+                    },
+                    "userId": {
+                        "type": "string",
+                        "description": "The UUID of user to use. Changing this creates a new user membership.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "openstack:images/image:Image": {
             "description": "Manages a V2 Image resource within OpenStack Glance.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst rancheros = new openstack.images.Image(\"rancheros\", {\n    containerFormat: \"bare\",\n    diskFormat: \"qcow2\",\n    imageSourceUrl: \"https://releases.rancher.com/os/latest/rancheros-openstack.img\",\n    properties: {\n        key: \"value\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nrancheros = openstack.images.Image(\"rancheros\",\n    container_format=\"bare\",\n    disk_format=\"qcow2\",\n    image_source_url=\"https://releases.rancher.com/os/latest/rancheros-openstack.img\",\n    properties={\n        \"key\": \"value\",\n    })\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var rancheros = new OpenStack.Images.Image(\"rancheros\", new OpenStack.Images.ImageArgs\n        {\n            ContainerFormat = \"bare\",\n            DiskFormat = \"qcow2\",\n            ImageSourceUrl = \"https://releases.rancher.com/os/latest/rancheros-openstack.img\",\n            Properties = \n            {\n                { \"key\", \"value\" },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/images\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := images.NewImage(ctx, \"rancheros\", \u0026images.ImageArgs{\n\t\t\tContainerFormat: pulumi.String(\"bare\"),\n\t\t\tDiskFormat:      pulumi.String(\"qcow2\"),\n\t\t\tImageSourceUrl:  pulumi.String(\"https://releases.rancher.com/os/latest/rancheros-openstack.img\"),\n\t\t\tProperties: pulumi.StringMap{\n\t\t\t\t\"key\": pulumi.String(\"value\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Notes\n\n### Properties\n\nThis resource supports the ability to add properties to a resource during\ncreation as well as add, update, and delete properties during an update of this\nresource.\n\nNewer versions of OpenStack are adding some read-only properties to each image.\nThese properties start with the prefix `os_`. If these properties are detected,\nthis resource will automatically reconcile these with the user-provided\nproperties.\n\nIn addition, the `direct_url` and `stores` properties are also automatically reconciled if the\nImage Service set it.\n\n\n## Import\n\nImages can be imported using the `id`, e.g.\n\n```sh\n $ pulumi import openstack:images/image:Image rancheros 89c60255-9bd6-460c-822a-e2b959ede9d2\n```\n\n ",
             "properties": {
@@ -10307,6 +10361,7 @@
                 }
             },
             "required": [
+                "flavorId",
                 "loadbalancerProvider",
                 "name",
                 "region",
@@ -13339,7 +13394,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "An availability zone is used to make \nnetwork resources highly available. Used for resources with high availability so that they are scheduled on different availability zones. Changing\nthis creates a new router.\n"
+                    "description": "An availability zone is used to make \nnetwork resources highly available. Used for resources with high availability\nso that they are scheduled on different availability zones. Changing this\ncreates a new router.\n"
                 },
                 "description": {
                     "type": "string",
@@ -13368,6 +13423,13 @@
                 "externalNetworkId": {
                     "type": "string",
                     "description": "The network UUID of an external gateway\nfor the router. A router with an external gateway is required if any\ncompute instances or load balancers will be using floating IPs. Changing\nthis updates the external gateway of the router.\n"
+                },
+                "externalSubnetIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of external subnet IDs to try over\neach to obtain a fixed IP for the router. If a subnet ID in a list has\nexhausted floating IP pool, the next subnet ID will be tried. This argument is\nused only during the router creation and allows to set only one external fixed\nIP. Conflicts with an `external_fixed_ip` argument.\n"
                 },
                 "name": {
                     "type": "string",
@@ -13423,7 +13485,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "An availability zone is used to make \nnetwork resources highly available. Used for resources with high availability so that they are scheduled on different availability zones. Changing\nthis creates a new router.\n"
+                    "description": "An availability zone is used to make \nnetwork resources highly available. Used for resources with high availability\nso that they are scheduled on different availability zones. Changing this\ncreates a new router.\n"
                 },
                 "description": {
                     "type": "string",
@@ -13452,6 +13514,13 @@
                 "externalNetworkId": {
                     "type": "string",
                     "description": "The network UUID of an external gateway\nfor the router. A router with an external gateway is required if any\ncompute instances or load balancers will be using floating IPs. Changing\nthis updates the external gateway of the router.\n"
+                },
+                "externalSubnetIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of external subnet IDs to try over\neach to obtain a fixed IP for the router. If a subnet ID in a list has\nexhausted floating IP pool, the next subnet ID will be tried. This argument is\nused only during the router creation and allows to set only one external fixed\nIP. Conflicts with an `external_fixed_ip` argument.\n"
                 },
                 "name": {
                     "type": "string",
@@ -13503,7 +13572,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "An availability zone is used to make \nnetwork resources highly available. Used for resources with high availability so that they are scheduled on different availability zones. Changing\nthis creates a new router.\n"
+                        "description": "An availability zone is used to make \nnetwork resources highly available. Used for resources with high availability\nso that they are scheduled on different availability zones. Changing this\ncreates a new router.\n"
                     },
                     "description": {
                         "type": "string",
@@ -13532,6 +13601,13 @@
                     "externalNetworkId": {
                         "type": "string",
                         "description": "The network UUID of an external gateway\nfor the router. A router with an external gateway is required if any\ncompute instances or load balancers will be using floating IPs. Changing\nthis updates the external gateway of the router.\n"
+                    },
+                    "externalSubnetIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of external subnet IDs to try over\neach to obtain a fixed IP for the router. If a subnet ID in a list has\nexhausted floating IP pool, the next subnet ID will be tried. This argument is\nused only during the router creation and allows to set only one external fixed\nIP. Conflicts with an `external_fixed_ip` argument.\n"
                     },
                     "name": {
                         "type": "string",
@@ -20068,6 +20144,13 @@
                     "status": {
                         "type": "string"
                     },
+                    "subnets": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of subnet IDs belonging to the network.\n"
+                    },
                     "tags": {
                         "type": "array",
                         "items": {
@@ -20090,6 +20173,7 @@
                     "dnsDomain",
                     "region",
                     "shared",
+                    "subnets",
                     "id"
                 ]
             }
@@ -20977,11 +21061,11 @@
                     },
                     "description": {
                         "type": "string",
-                        "description": "Human-readable description for the subnet.\n"
+                        "description": "Human-readable description of the subnet.\n"
                     },
                     "dhcpDisabled": {
                         "type": "boolean",
-                        "description": "If the subnet has DHCP disabled.\n"
+                        "deprecationMessage": "use dhcp_enabled instead"
                     },
                     "dhcpEnabled": {
                         "type": "boolean",
@@ -21061,7 +21145,8 @@
                         "type": "string"
                     },
                     "dhcpDisabled": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "deprecationMessage": "use dhcp_enabled instead"
                     },
                     "dhcpEnabled": {
                         "type": "boolean"
@@ -21145,6 +21230,154 @@
                     "subnetId",
                     "subnetpoolId",
                     "tenantId",
+                    "id"
+                ]
+            }
+        },
+        "openstack:networking/getSubnetIdsV2:getSubnetIdsV2": {
+            "description": "Use this data source to get a list of Openstack Subnet IDs matching the\nspecified criteria.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst subnets = pulumi.output(openstack.networking.getSubnetIdsV2({\n    nameRegex: \"public\",\n    tags: [\"public\"],\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nsubnets = openstack.networking.get_subnet_ids_v2(name_regex=\"public\",\n    tags=[\"public\"])\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var subnets = Output.Create(OpenStack.Networking.GetSubnetIdsV2.InvokeAsync(new OpenStack.Networking.GetSubnetIdsV2Args\n        {\n            NameRegex = \"public\",\n            Tags = \n            {\n                \"public\",\n            },\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/networking\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := \"public\"\n\t\t_, err := networking.GetSubnetIdsV2(ctx, \u0026networking.GetSubnetIdsV2Args{\n\t\t\tNameRegex: \u0026opt0,\n\t\t\tTags: []string{\n\t\t\t\t\"public\",\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getSubnetIdsV2.\n",
+                "properties": {
+                    "cidr": {
+                        "type": "string",
+                        "description": "The CIDR of the subnet.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Human-readable description of the subnet.\n"
+                    },
+                    "dhcpEnabled": {
+                        "type": "boolean",
+                        "description": "If the subnet has DHCP enabled.\n"
+                    },
+                    "gatewayIp": {
+                        "type": "string",
+                        "description": "The IP of the subnet's gateway.\n"
+                    },
+                    "ipVersion": {
+                        "type": "integer",
+                        "description": "The IP version of the subnet (either 4 or 6).\n"
+                    },
+                    "ipv6AddressMode": {
+                        "type": "string",
+                        "description": "The IPv6 address mode. Valid values are\n`dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.\n"
+                    },
+                    "ipv6RaMode": {
+                        "type": "string",
+                        "description": "The IPv6 Router Advertisement mode. Valid values\nare `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the subnet.\n"
+                    },
+                    "nameRegex": {
+                        "type": "string"
+                    },
+                    "networkId": {
+                        "type": "string",
+                        "description": "The ID of the network the subnet belongs to.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region in which to obtain the V2 Neutron client.\nA Neutron client is needed to retrieve subnet ids. If omitted, the\n`region` argument of the provider is used.\n"
+                    },
+                    "sortDirection": {
+                        "type": "string",
+                        "description": "Order the results in either `asc` or `desc`.\nDefaults to none.\n"
+                    },
+                    "sortKey": {
+                        "type": "string",
+                        "description": "Sort subnets based on a certain key. Defaults to none.\n"
+                    },
+                    "subnetpoolId": {
+                        "type": "string",
+                        "description": "The ID of the subnetpool associated with the subnet.\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The list of subnet tags to filter.\n"
+                    },
+                    "tenantId": {
+                        "type": "string",
+                        "description": "The owner of the subnet.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getSubnetIdsV2.\n",
+                "properties": {
+                    "cidr": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "dhcpEnabled": {
+                        "type": "boolean"
+                    },
+                    "gatewayIp": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "ipVersion": {
+                        "type": "integer"
+                    },
+                    "ipv6AddressMode": {
+                        "type": "string"
+                    },
+                    "ipv6RaMode": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "nameRegex": {
+                        "type": "string"
+                    },
+                    "networkId": {
+                        "type": "string"
+                    },
+                    "region": {
+                        "type": "string"
+                    },
+                    "sortDirection": {
+                        "type": "string"
+                    },
+                    "sortKey": {
+                        "type": "string"
+                    },
+                    "subnetpoolId": {
+                        "type": "string"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "tenantId": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "ids",
+                    "ipv6RaMode",
+                    "region",
                     "id"
                 ]
             }

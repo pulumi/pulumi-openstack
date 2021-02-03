@@ -9,10 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.OpenStack.Networking
 {
-    public static class GetSubnet
+    public static class GetSubnetIdsV2
     {
         /// <summary>
-        /// Use this data source to get the ID of an available OpenStack subnet.
+        /// Use this data source to get a list of Openstack Subnet IDs matching the
+        /// specified criteria.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -26,9 +27,13 @@ namespace Pulumi.OpenStack.Networking
         /// {
         ///     public MyStack()
         ///     {
-        ///         var subnet1 = Output.Create(OpenStack.Networking.GetSubnet.InvokeAsync(new OpenStack.Networking.GetSubnetArgs
+        ///         var subnets = Output.Create(OpenStack.Networking.GetSubnetIdsV2.InvokeAsync(new OpenStack.Networking.GetSubnetIdsV2Args
         ///         {
-        ///             Name = "subnet_1",
+        ///             NameRegex = "public",
+        ///             Tags = 
+        ///             {
+        ///                 "public",
+        ///             },
         ///         }));
         ///     }
         /// 
@@ -37,12 +42,12 @@ namespace Pulumi.OpenStack.Networking
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
-        public static Task<GetSubnetResult> InvokeAsync(GetSubnetArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSubnetResult>("openstack:networking/getSubnet:getSubnet", args ?? new GetSubnetArgs(), options.WithVersion());
+        public static Task<GetSubnetIdsV2Result> InvokeAsync(GetSubnetIdsV2Args? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSubnetIdsV2Result>("openstack:networking/getSubnetIdsV2:getSubnetIdsV2", args ?? new GetSubnetIdsV2Args(), options.WithVersion());
     }
 
 
-    public sealed class GetSubnetArgs : Pulumi.InvokeArgs
+    public sealed class GetSubnetIdsV2Args : Pulumi.InvokeArgs
     {
         /// <summary>
         /// The CIDR of the subnet.
@@ -55,9 +60,6 @@ namespace Pulumi.OpenStack.Networking
         /// </summary>
         [Input("description")]
         public string? Description { get; set; }
-
-        [Input("dhcpDisabled")]
-        public bool? DhcpDisabled { get; set; }
 
         /// <summary>
         /// If the subnet has DHCP enabled.
@@ -97,6 +99,9 @@ namespace Pulumi.OpenStack.Networking
         [Input("name")]
         public string? Name { get; set; }
 
+        [Input("nameRegex")]
+        public string? NameRegex { get; set; }
+
         /// <summary>
         /// The ID of the network the subnet belongs to.
         /// </summary>
@@ -112,10 +117,17 @@ namespace Pulumi.OpenStack.Networking
         public string? Region { get; set; }
 
         /// <summary>
-        /// The ID of the subnet.
+        /// Order the results in either `asc` or `desc`.
+        /// Defaults to none.
         /// </summary>
-        [Input("subnetId")]
-        public string? SubnetId { get; set; }
+        [Input("sortDirection")]
+        public string? SortDirection { get; set; }
+
+        /// <summary>
+        /// Sort subnets based on a certain key. Defaults to none.
+        /// </summary>
+        [Input("sortKey")]
+        public string? SortKey { get; set; }
 
         /// <summary>
         /// The ID of the subnetpool associated with the subnet.
@@ -141,120 +153,90 @@ namespace Pulumi.OpenStack.Networking
         [Input("tenantId")]
         public string? TenantId { get; set; }
 
-        public GetSubnetArgs()
+        public GetSubnetIdsV2Args()
         {
         }
     }
 
 
     [OutputType]
-    public sealed class GetSubnetResult
+    public sealed class GetSubnetIdsV2Result
     {
-        /// <summary>
-        /// A set of string tags applied on the subnet.
-        /// </summary>
-        public readonly ImmutableArray<string> AllTags;
-        /// <summary>
-        /// Allocation pools of the subnet.
-        /// </summary>
-        public readonly ImmutableArray<Outputs.GetSubnetAllocationPoolResult> AllocationPools;
-        public readonly string Cidr;
-        public readonly string Description;
-        public readonly bool? DhcpDisabled;
+        public readonly string? Cidr;
+        public readonly string? Description;
         public readonly bool? DhcpEnabled;
-        /// <summary>
-        /// DNS Nameservers of the subnet.
-        /// </summary>
-        public readonly ImmutableArray<string> DnsNameservers;
-        /// <summary>
-        /// Whether the subnet has DHCP enabled or not.
-        /// </summary>
-        public readonly bool EnableDhcp;
-        public readonly string GatewayIp;
-        /// <summary>
-        /// Host Routes of the subnet.
-        /// </summary>
-        public readonly ImmutableArray<Outputs.GetSubnetHostRouteResult> HostRoutes;
+        public readonly string? GatewayIp;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        public readonly int IpVersion;
-        public readonly string Ipv6AddressMode;
+        public readonly ImmutableArray<string> Ids;
+        public readonly int? IpVersion;
+        public readonly string? Ipv6AddressMode;
         public readonly string Ipv6RaMode;
-        public readonly string Name;
-        public readonly string NetworkId;
-        /// <summary>
-        /// See Argument Reference above.
-        /// </summary>
+        public readonly string? Name;
+        public readonly string? NameRegex;
+        public readonly string? NetworkId;
         public readonly string Region;
-        public readonly string SubnetId;
-        public readonly string SubnetpoolId;
+        public readonly string? SortDirection;
+        public readonly string? SortKey;
+        public readonly string? SubnetpoolId;
         public readonly ImmutableArray<string> Tags;
-        public readonly string TenantId;
+        public readonly string? TenantId;
 
         [OutputConstructor]
-        private GetSubnetResult(
-            ImmutableArray<string> allTags,
+        private GetSubnetIdsV2Result(
+            string? cidr,
 
-            ImmutableArray<Outputs.GetSubnetAllocationPoolResult> allocationPools,
-
-            string cidr,
-
-            string description,
-
-            bool? dhcpDisabled,
+            string? description,
 
             bool? dhcpEnabled,
 
-            ImmutableArray<string> dnsNameservers,
-
-            bool enableDhcp,
-
-            string gatewayIp,
-
-            ImmutableArray<Outputs.GetSubnetHostRouteResult> hostRoutes,
+            string? gatewayIp,
 
             string id,
 
-            int ipVersion,
+            ImmutableArray<string> ids,
 
-            string ipv6AddressMode,
+            int? ipVersion,
+
+            string? ipv6AddressMode,
 
             string ipv6RaMode,
 
-            string name,
+            string? name,
 
-            string networkId,
+            string? nameRegex,
+
+            string? networkId,
 
             string region,
 
-            string subnetId,
+            string? sortDirection,
 
-            string subnetpoolId,
+            string? sortKey,
+
+            string? subnetpoolId,
 
             ImmutableArray<string> tags,
 
-            string tenantId)
+            string? tenantId)
         {
-            AllTags = allTags;
-            AllocationPools = allocationPools;
             Cidr = cidr;
             Description = description;
-            DhcpDisabled = dhcpDisabled;
             DhcpEnabled = dhcpEnabled;
-            DnsNameservers = dnsNameservers;
-            EnableDhcp = enableDhcp;
             GatewayIp = gatewayIp;
-            HostRoutes = hostRoutes;
             Id = id;
+            Ids = ids;
             IpVersion = ipVersion;
             Ipv6AddressMode = ipv6AddressMode;
             Ipv6RaMode = ipv6RaMode;
             Name = name;
+            NameRegex = nameRegex;
             NetworkId = networkId;
             Region = region;
-            SubnetId = subnetId;
+            SortDirection = sortDirection;
+            SortKey = sortKey;
             SubnetpoolId = subnetpoolId;
             Tags = tags;
             TenantId = tenantId;

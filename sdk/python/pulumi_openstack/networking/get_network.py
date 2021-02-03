@@ -19,7 +19,7 @@ class GetNetworkResult:
     """
     A collection of values returned by getNetwork.
     """
-    def __init__(__self__, admin_state_up=None, all_tags=None, availability_zone_hints=None, description=None, dns_domain=None, external=None, id=None, matching_subnet_cidr=None, mtu=None, name=None, network_id=None, region=None, shared=None, status=None, tags=None, tenant_id=None, transparent_vlan=None):
+    def __init__(__self__, admin_state_up=None, all_tags=None, availability_zone_hints=None, description=None, dns_domain=None, external=None, id=None, matching_subnet_cidr=None, mtu=None, name=None, network_id=None, region=None, shared=None, status=None, subnets=None, tags=None, tenant_id=None, transparent_vlan=None):
         if admin_state_up and not isinstance(admin_state_up, str):
             raise TypeError("Expected argument 'admin_state_up' to be a str")
         pulumi.set(__self__, "admin_state_up", admin_state_up)
@@ -62,6 +62,9 @@ class GetNetworkResult:
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
         pulumi.set(__self__, "status", status)
+        if subnets and not isinstance(subnets, list):
+            raise TypeError("Expected argument 'subnets' to be a list")
+        pulumi.set(__self__, "subnets", subnets)
         if tags and not isinstance(tags, list):
             raise TypeError("Expected argument 'tags' to be a list")
         pulumi.set(__self__, "tags", tags)
@@ -179,6 +182,14 @@ class GetNetworkResult:
 
     @property
     @pulumi.getter
+    def subnets(self) -> Sequence[str]:
+        """
+        A list of subnet IDs belonging to the network.
+        """
+        return pulumi.get(self, "subnets")
+
+    @property
+    @pulumi.getter
     def tags(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "tags")
 
@@ -216,6 +227,7 @@ class AwaitableGetNetworkResult(GetNetworkResult):
             region=self.region,
             shared=self.shared,
             status=self.status,
+            subnets=self.subnets,
             tags=self.tags,
             tenant_id=self.tenant_id,
             transparent_vlan=self.transparent_vlan)
@@ -295,6 +307,7 @@ def get_network(description: Optional[str] = None,
         region=__ret__.region,
         shared=__ret__.shared,
         status=__ret__.status,
+        subnets=__ret__.subnets,
         tags=__ret__.tags,
         tenant_id=__ret__.tenant_id,
         transparent_vlan=__ret__.transparent_vlan)

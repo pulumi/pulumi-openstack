@@ -21,6 +21,7 @@ export * from "./role";
 export * from "./roleAssignment";
 export * from "./serviceV3";
 export * from "./user";
+export * from "./userMembershipV3";
 
 // Import resources to register:
 import { ApplicationCredential } from "./applicationCredential";
@@ -32,6 +33,7 @@ import { Role } from "./role";
 import { RoleAssignment } from "./roleAssignment";
 import { ServiceV3 } from "./serviceV3";
 import { User } from "./user";
+import { UserMembershipV3 } from "./userMembershipV3";
 
 const _module = {
     version: utilities.getVersion(),
@@ -55,6 +57,8 @@ const _module = {
                 return new ServiceV3(name, <any>undefined, { urn })
             case "openstack:identity/user:User":
                 return new User(name, <any>undefined, { urn })
+            case "openstack:identity/userMembershipV3:UserMembershipV3":
+                return new UserMembershipV3(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -69,3 +73,4 @@ pulumi.runtime.registerResourceModule("openstack", "identity/role", _module)
 pulumi.runtime.registerResourceModule("openstack", "identity/roleAssignment", _module)
 pulumi.runtime.registerResourceModule("openstack", "identity/serviceV3", _module)
 pulumi.runtime.registerResourceModule("openstack", "identity/user", _module)
+pulumi.runtime.registerResourceModule("openstack", "identity/userMembershipV3", _module)

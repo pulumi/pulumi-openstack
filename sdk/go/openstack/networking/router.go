@@ -54,8 +54,9 @@ type Router struct {
 	// explicitly and implicitly added.
 	AllTags pulumi.StringArrayOutput `pulumi:"allTags"`
 	// An availability zone is used to make
-	// network resources highly available. Used for resources with high availability so that they are scheduled on different availability zones. Changing
-	// this creates a new router.
+	// network resources highly available. Used for resources with high availability
+	// so that they are scheduled on different availability zones. Changing this
+	// creates a new router.
 	AvailabilityZoneHints pulumi.StringArrayOutput `pulumi:"availabilityZoneHints"`
 	// Human-readable description for the router.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -87,6 +88,12 @@ type Router struct {
 	// compute instances or load balancers will be using floating IPs. Changing
 	// this updates the external gateway of the router.
 	ExternalNetworkId pulumi.StringOutput `pulumi:"externalNetworkId"`
+	// A list of external subnet IDs to try over
+	// each to obtain a fixed IP for the router. If a subnet ID in a list has
+	// exhausted floating IP pool, the next subnet ID will be tried. This argument is
+	// used only during the router creation and allows to set only one external fixed
+	// IP. Conflicts with an `externalFixedIp` argument.
+	ExternalSubnetIds pulumi.StringArrayOutput `pulumi:"externalSubnetIds"`
 	// A unique name for the router. Changing this
 	// updates the `name` of an existing router.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -144,8 +151,9 @@ type routerState struct {
 	// explicitly and implicitly added.
 	AllTags []string `pulumi:"allTags"`
 	// An availability zone is used to make
-	// network resources highly available. Used for resources with high availability so that they are scheduled on different availability zones. Changing
-	// this creates a new router.
+	// network resources highly available. Used for resources with high availability
+	// so that they are scheduled on different availability zones. Changing this
+	// creates a new router.
 	AvailabilityZoneHints []string `pulumi:"availabilityZoneHints"`
 	// Human-readable description for the router.
 	Description *string `pulumi:"description"`
@@ -177,6 +185,12 @@ type routerState struct {
 	// compute instances or load balancers will be using floating IPs. Changing
 	// this updates the external gateway of the router.
 	ExternalNetworkId *string `pulumi:"externalNetworkId"`
+	// A list of external subnet IDs to try over
+	// each to obtain a fixed IP for the router. If a subnet ID in a list has
+	// exhausted floating IP pool, the next subnet ID will be tried. This argument is
+	// used only during the router creation and allows to set only one external fixed
+	// IP. Conflicts with an `externalFixedIp` argument.
+	ExternalSubnetIds []string `pulumi:"externalSubnetIds"`
 	// A unique name for the router. Changing this
 	// updates the `name` of an existing router.
 	Name *string `pulumi:"name"`
@@ -206,8 +220,9 @@ type RouterState struct {
 	// explicitly and implicitly added.
 	AllTags pulumi.StringArrayInput
 	// An availability zone is used to make
-	// network resources highly available. Used for resources with high availability so that they are scheduled on different availability zones. Changing
-	// this creates a new router.
+	// network resources highly available. Used for resources with high availability
+	// so that they are scheduled on different availability zones. Changing this
+	// creates a new router.
 	AvailabilityZoneHints pulumi.StringArrayInput
 	// Human-readable description for the router.
 	Description pulumi.StringPtrInput
@@ -239,6 +254,12 @@ type RouterState struct {
 	// compute instances or load balancers will be using floating IPs. Changing
 	// this updates the external gateway of the router.
 	ExternalNetworkId pulumi.StringPtrInput
+	// A list of external subnet IDs to try over
+	// each to obtain a fixed IP for the router. If a subnet ID in a list has
+	// exhausted floating IP pool, the next subnet ID will be tried. This argument is
+	// used only during the router creation and allows to set only one external fixed
+	// IP. Conflicts with an `externalFixedIp` argument.
+	ExternalSubnetIds pulumi.StringArrayInput
 	// A unique name for the router. Changing this
 	// updates the `name` of an existing router.
 	Name pulumi.StringPtrInput
@@ -269,8 +290,9 @@ type routerArgs struct {
 	// `adminStateUp` of an existing router.
 	AdminStateUp *bool `pulumi:"adminStateUp"`
 	// An availability zone is used to make
-	// network resources highly available. Used for resources with high availability so that they are scheduled on different availability zones. Changing
-	// this creates a new router.
+	// network resources highly available. Used for resources with high availability
+	// so that they are scheduled on different availability zones. Changing this
+	// creates a new router.
 	AvailabilityZoneHints []string `pulumi:"availabilityZoneHints"`
 	// Human-readable description for the router.
 	Description *string `pulumi:"description"`
@@ -302,6 +324,12 @@ type routerArgs struct {
 	// compute instances or load balancers will be using floating IPs. Changing
 	// this updates the external gateway of the router.
 	ExternalNetworkId *string `pulumi:"externalNetworkId"`
+	// A list of external subnet IDs to try over
+	// each to obtain a fixed IP for the router. If a subnet ID in a list has
+	// exhausted floating IP pool, the next subnet ID will be tried. This argument is
+	// used only during the router creation and allows to set only one external fixed
+	// IP. Conflicts with an `externalFixedIp` argument.
+	ExternalSubnetIds []string `pulumi:"externalSubnetIds"`
 	// A unique name for the router. Changing this
 	// updates the `name` of an existing router.
 	Name *string `pulumi:"name"`
@@ -329,8 +357,9 @@ type RouterArgs struct {
 	// `adminStateUp` of an existing router.
 	AdminStateUp pulumi.BoolPtrInput
 	// An availability zone is used to make
-	// network resources highly available. Used for resources with high availability so that they are scheduled on different availability zones. Changing
-	// this creates a new router.
+	// network resources highly available. Used for resources with high availability
+	// so that they are scheduled on different availability zones. Changing this
+	// creates a new router.
 	AvailabilityZoneHints pulumi.StringArrayInput
 	// Human-readable description for the router.
 	Description pulumi.StringPtrInput
@@ -362,6 +391,12 @@ type RouterArgs struct {
 	// compute instances or load balancers will be using floating IPs. Changing
 	// this updates the external gateway of the router.
 	ExternalNetworkId pulumi.StringPtrInput
+	// A list of external subnet IDs to try over
+	// each to obtain a fixed IP for the router. If a subnet ID in a list has
+	// exhausted floating IP pool, the next subnet ID will be tried. This argument is
+	// used only during the router creation and allows to set only one external fixed
+	// IP. Conflicts with an `externalFixedIp` argument.
+	ExternalSubnetIds pulumi.StringArrayInput
 	// A unique name for the router. Changing this
 	// updates the `name` of an existing router.
 	Name pulumi.StringPtrInput

@@ -60,8 +60,9 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// An availability zone is used to make 
-        /// network resources highly available. Used for resources with high availability so that they are scheduled on different availability zones. Changing
-        /// this creates a new router.
+        /// network resources highly available. Used for resources with high availability
+        /// so that they are scheduled on different availability zones. Changing this
+        /// creates a new router.
         /// </summary>
         [Output("availabilityZoneHints")]
         public Output<ImmutableArray<string>> AvailabilityZoneHints { get; private set; } = null!;
@@ -117,6 +118,16 @@ namespace Pulumi.OpenStack.Networking
         /// </summary>
         [Output("externalNetworkId")]
         public Output<string> ExternalNetworkId { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of external subnet IDs to try over
+        /// each to obtain a fixed IP for the router. If a subnet ID in a list has
+        /// exhausted floating IP pool, the next subnet ID will be tried. This argument is
+        /// used only during the router creation and allows to set only one external fixed
+        /// IP. Conflicts with an `external_fixed_ip` argument.
+        /// </summary>
+        [Output("externalSubnetIds")]
+        public Output<ImmutableArray<string>> ExternalSubnetIds { get; private set; } = null!;
 
         /// <summary>
         /// A unique name for the router. Changing this
@@ -219,8 +230,9 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// An availability zone is used to make 
-        /// network resources highly available. Used for resources with high availability so that they are scheduled on different availability zones. Changing
-        /// this creates a new router.
+        /// network resources highly available. Used for resources with high availability
+        /// so that they are scheduled on different availability zones. Changing this
+        /// creates a new router.
         /// </summary>
         public InputList<string> AvailabilityZoneHints
         {
@@ -285,6 +297,22 @@ namespace Pulumi.OpenStack.Networking
         /// </summary>
         [Input("externalNetworkId")]
         public Input<string>? ExternalNetworkId { get; set; }
+
+        [Input("externalSubnetIds")]
+        private InputList<string>? _externalSubnetIds;
+
+        /// <summary>
+        /// A list of external subnet IDs to try over
+        /// each to obtain a fixed IP for the router. If a subnet ID in a list has
+        /// exhausted floating IP pool, the next subnet ID will be tried. This argument is
+        /// used only during the router creation and allows to set only one external fixed
+        /// IP. Conflicts with an `external_fixed_ip` argument.
+        /// </summary>
+        public InputList<string> ExternalSubnetIds
+        {
+            get => _externalSubnetIds ?? (_externalSubnetIds = new InputList<string>());
+            set => _externalSubnetIds = value;
+        }
 
         /// <summary>
         /// A unique name for the router. Changing this
@@ -373,8 +401,9 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// An availability zone is used to make 
-        /// network resources highly available. Used for resources with high availability so that they are scheduled on different availability zones. Changing
-        /// this creates a new router.
+        /// network resources highly available. Used for resources with high availability
+        /// so that they are scheduled on different availability zones. Changing this
+        /// creates a new router.
         /// </summary>
         public InputList<string> AvailabilityZoneHints
         {
@@ -439,6 +468,22 @@ namespace Pulumi.OpenStack.Networking
         /// </summary>
         [Input("externalNetworkId")]
         public Input<string>? ExternalNetworkId { get; set; }
+
+        [Input("externalSubnetIds")]
+        private InputList<string>? _externalSubnetIds;
+
+        /// <summary>
+        /// A list of external subnet IDs to try over
+        /// each to obtain a fixed IP for the router. If a subnet ID in a list has
+        /// exhausted floating IP pool, the next subnet ID will be tried. This argument is
+        /// used only during the router creation and allows to set only one external fixed
+        /// IP. Conflicts with an `external_fixed_ip` argument.
+        /// </summary>
+        public InputList<string> ExternalSubnetIds
+        {
+            get => _externalSubnetIds ?? (_externalSubnetIds = new InputList<string>());
+            set => _externalSubnetIds = value;
+        }
 
         /// <summary>
         /// A unique name for the router. Changing this

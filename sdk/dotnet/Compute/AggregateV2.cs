@@ -98,7 +98,7 @@ namespace Pulumi.OpenStack.Compute
         /// availability zone.
         /// </summary>
         [Output("zone")]
-        public Output<string> Zone { get; private set; } = null!;
+        public Output<string?> Zone { get; private set; } = null!;
 
 
         /// <summary>
@@ -108,7 +108,7 @@ namespace Pulumi.OpenStack.Compute
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public AggregateV2(string name, AggregateV2Args args, CustomResourceOptions? options = null)
+        public AggregateV2(string name, AggregateV2Args? args = null, CustomResourceOptions? options = null)
             : base("openstack:compute/aggregateV2:AggregateV2", name, args ?? new AggregateV2Args(), MakeResourceOptions(options, ""))
         {
         }
@@ -182,8 +182,8 @@ namespace Pulumi.OpenStack.Compute
         /// The name of the Availability Zone to use. If ommited, it will take the default
         /// availability zone.
         /// </summary>
-        [Input("zone", required: true)]
-        public Input<string> Zone { get; set; } = null!;
+        [Input("zone")]
+        public Input<string>? Zone { get; set; }
 
         public AggregateV2Args()
         {

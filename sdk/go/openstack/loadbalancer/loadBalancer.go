@@ -52,7 +52,7 @@ type LoadBalancer struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The UUID of a flavor. Changing this creates a new
 	// loadbalancer.
-	FlavorId pulumi.StringPtrOutput `pulumi:"flavorId"`
+	FlavorId pulumi.StringOutput `pulumi:"flavorId"`
 	// The name of the provider. Changing this
 	// creates a new loadbalancer.
 	LoadbalancerProvider pulumi.StringOutput `pulumi:"loadbalancerProvider"`

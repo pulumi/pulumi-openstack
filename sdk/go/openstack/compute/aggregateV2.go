@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
@@ -88,19 +87,16 @@ type AggregateV2 struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The name of the Availability Zone to use. If ommited, it will take the default
 	// availability zone.
-	Zone pulumi.StringOutput `pulumi:"zone"`
+	Zone pulumi.StringPtrOutput `pulumi:"zone"`
 }
 
 // NewAggregateV2 registers a new resource with the given unique name, arguments, and options.
 func NewAggregateV2(ctx *pulumi.Context,
 	name string, args *AggregateV2Args, opts ...pulumi.ResourceOption) (*AggregateV2, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &AggregateV2Args{}
 	}
 
-	if args.Zone == nil {
-		return nil, errors.New("invalid value for required argument 'Zone'")
-	}
 	var resource AggregateV2
 	err := ctx.RegisterResource("openstack:compute/aggregateV2:AggregateV2", name, args, &resource, opts...)
 	if err != nil {
@@ -165,7 +161,7 @@ type aggregateV2Args struct {
 	Name *string `pulumi:"name"`
 	// The name of the Availability Zone to use. If ommited, it will take the default
 	// availability zone.
-	Zone string `pulumi:"zone"`
+	Zone *string `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a AggregateV2 resource.
@@ -180,7 +176,7 @@ type AggregateV2Args struct {
 	Name pulumi.StringPtrInput
 	// The name of the Availability Zone to use. If ommited, it will take the default
 	// availability zone.
-	Zone pulumi.StringInput
+	Zone pulumi.StringPtrInput
 }
 
 func (AggregateV2Args) ElementType() reflect.Type {

@@ -211,7 +211,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="flavorId")
-    def flavor_id(self) -> pulumi.Output[Optional[str]]:
+    def flavor_id(self) -> pulumi.Output[str]:
         """
         The UUID of a flavor. Changing this creates a new
         loadbalancer.

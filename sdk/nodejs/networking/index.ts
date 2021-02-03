@@ -20,6 +20,7 @@ export * from "./getQosPolicy";
 export * from "./getRouter";
 export * from "./getSecGroup";
 export * from "./getSubnet";
+export * from "./getSubnetIdsV2";
 export * from "./getSubnetPool";
 export * from "./getTrunk";
 export * from "./network";

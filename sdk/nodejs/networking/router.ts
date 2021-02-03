@@ -69,8 +69,9 @@ export class Router extends pulumi.CustomResource {
     public /*out*/ readonly allTags!: pulumi.Output<string[]>;
     /**
      * An availability zone is used to make 
-     * network resources highly available. Used for resources with high availability so that they are scheduled on different availability zones. Changing
-     * this creates a new router.
+     * network resources highly available. Used for resources with high availability
+     * so that they are scheduled on different availability zones. Changing this
+     * creates a new router.
      */
     public readonly availabilityZoneHints!: pulumi.Output<string[]>;
     /**
@@ -115,6 +116,14 @@ export class Router extends pulumi.CustomResource {
      * this updates the external gateway of the router.
      */
     public readonly externalNetworkId!: pulumi.Output<string>;
+    /**
+     * A list of external subnet IDs to try over
+     * each to obtain a fixed IP for the router. If a subnet ID in a list has
+     * exhausted floating IP pool, the next subnet ID will be tried. This argument is
+     * used only during the router creation and allows to set only one external fixed
+     * IP. Conflicts with an `externalFixedIp` argument.
+     */
+    public readonly externalSubnetIds!: pulumi.Output<string[] | undefined>;
     /**
      * A unique name for the router. Changing this
      * updates the `name` of an existing router.
@@ -167,6 +176,7 @@ export class Router extends pulumi.CustomResource {
             inputs["externalFixedIps"] = state ? state.externalFixedIps : undefined;
             inputs["externalGateway"] = state ? state.externalGateway : undefined;
             inputs["externalNetworkId"] = state ? state.externalNetworkId : undefined;
+            inputs["externalSubnetIds"] = state ? state.externalSubnetIds : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["region"] = state ? state.region : undefined;
             inputs["tags"] = state ? state.tags : undefined;
@@ -183,6 +193,7 @@ export class Router extends pulumi.CustomResource {
             inputs["externalFixedIps"] = args ? args.externalFixedIps : undefined;
             inputs["externalGateway"] = args ? args.externalGateway : undefined;
             inputs["externalNetworkId"] = args ? args.externalNetworkId : undefined;
+            inputs["externalSubnetIds"] = args ? args.externalSubnetIds : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["tags"] = args ? args.tags : undefined;
@@ -219,8 +230,9 @@ export interface RouterState {
     readonly allTags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * An availability zone is used to make 
-     * network resources highly available. Used for resources with high availability so that they are scheduled on different availability zones. Changing
-     * this creates a new router.
+     * network resources highly available. Used for resources with high availability
+     * so that they are scheduled on different availability zones. Changing this
+     * creates a new router.
      */
     readonly availabilityZoneHints?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -265,6 +277,14 @@ export interface RouterState {
      * this updates the external gateway of the router.
      */
     readonly externalNetworkId?: pulumi.Input<string>;
+    /**
+     * A list of external subnet IDs to try over
+     * each to obtain a fixed IP for the router. If a subnet ID in a list has
+     * exhausted floating IP pool, the next subnet ID will be tried. This argument is
+     * used only during the router creation and allows to set only one external fixed
+     * IP. Conflicts with an `externalFixedIp` argument.
+     */
+    readonly externalSubnetIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A unique name for the router. Changing this
      * updates the `name` of an existing router.
@@ -309,8 +329,9 @@ export interface RouterArgs {
     readonly adminStateUp?: pulumi.Input<boolean>;
     /**
      * An availability zone is used to make 
-     * network resources highly available. Used for resources with high availability so that they are scheduled on different availability zones. Changing
-     * this creates a new router.
+     * network resources highly available. Used for resources with high availability
+     * so that they are scheduled on different availability zones. Changing this
+     * creates a new router.
      */
     readonly availabilityZoneHints?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -355,6 +376,14 @@ export interface RouterArgs {
      * this updates the external gateway of the router.
      */
     readonly externalNetworkId?: pulumi.Input<string>;
+    /**
+     * A list of external subnet IDs to try over
+     * each to obtain a fixed IP for the router. If a subnet ID in a list has
+     * exhausted floating IP pool, the next subnet ID will be tried. This argument is
+     * used only during the router creation and allows to set only one external fixed
+     * IP. Conflicts with an `externalFixedIp` argument.
+     */
+    readonly externalSubnetIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A unique name for the router. Changing this
      * updates the `name` of an existing router.

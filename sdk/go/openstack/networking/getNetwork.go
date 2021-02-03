@@ -98,8 +98,10 @@ type LookupNetworkResult struct {
 	Region string `pulumi:"region"`
 	// Specifies whether the network resource can be accessed by any
 	// tenant or not.
-	Shared   string   `pulumi:"shared"`
-	Status   *string  `pulumi:"status"`
+	Shared string  `pulumi:"shared"`
+	Status *string `pulumi:"status"`
+	// A list of subnet IDs belonging to the network.
+	Subnets  []string `pulumi:"subnets"`
 	Tags     []string `pulumi:"tags"`
 	TenantId *string  `pulumi:"tenantId"`
 	// See Argument Reference above.
