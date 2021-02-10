@@ -4,23 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages a V1 DB user resource within OpenStack.
- *
- * ## Example Usage
- * ### User
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const basic = new openstack.database.User("basic", {
- *     databases: ["testdb"],
- *     instance: openstack_db_instance_v1_basic.id,
- *     password: "password",
- * });
- * ```
- */
 export class User extends pulumi.CustomResource {
     /**
      * Get an existing User resource's state with the given name, ID, and optional extra

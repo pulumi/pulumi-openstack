@@ -24,6 +24,7 @@ class FloatingIp(pulumi.CustomResource):
                  port_id: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  subnet_id: Optional[pulumi.Input[str]] = None,
+                 subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -31,20 +32,6 @@ class FloatingIp(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Manages a V2 floating IP resource within OpenStack Neutron (networking)
-        that can be used for load balancers.
-        These are similar to Nova (compute) floating IP resources,
-        but only compute floating IPs can be used with compute instances.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        floatip1 = openstack.networking.FloatingIp("floatip1", pool="public")
-        ```
-
         ## Import
 
         Floating IPs can be imported using the `id`, e.g.
@@ -81,6 +68,10 @@ class FloatingIp(pulumi.CustomResource):
                floating IP (which may or may not have a different address).
         :param pulumi.Input[str] subnet_id: The subnet ID of the floating IP pool. Specify this if
                the floating IP network has multiple subnets.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A list of external subnet IDs to try over each to
+               allocate a floating IP address. If a subnet ID in a list has exhausted
+               floating IP pool, the next subnet ID will be tried. This argument is used only
+               during the resource creation. Conflicts with a `subnet_id` argument.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of string tags for the floating IP.
         :param pulumi.Input[str] tenant_id: The target tenant ID in which to allocate the floating
                IP, if you specify this together with a port_id, make sure the target port
@@ -116,6 +107,7 @@ class FloatingIp(pulumi.CustomResource):
             __props__['port_id'] = port_id
             __props__['region'] = region
             __props__['subnet_id'] = subnet_id
+            __props__['subnet_ids'] = subnet_ids
             __props__['tags'] = tags
             __props__['tenant_id'] = tenant_id
             __props__['value_specs'] = value_specs
@@ -140,6 +132,7 @@ class FloatingIp(pulumi.CustomResource):
             port_id: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             subnet_id: Optional[pulumi.Input[str]] = None,
+            subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             tenant_id: Optional[pulumi.Input[str]] = None,
             value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'FloatingIp':
@@ -178,6 +171,10 @@ class FloatingIp(pulumi.CustomResource):
                floating IP (which may or may not have a different address).
         :param pulumi.Input[str] subnet_id: The subnet ID of the floating IP pool. Specify this if
                the floating IP network has multiple subnets.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A list of external subnet IDs to try over each to
+               allocate a floating IP address. If a subnet ID in a list has exhausted
+               floating IP pool, the next subnet ID will be tried. This argument is used only
+               during the resource creation. Conflicts with a `subnet_id` argument.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of string tags for the floating IP.
         :param pulumi.Input[str] tenant_id: The target tenant ID in which to allocate the floating
                IP, if you specify this together with a port_id, make sure the target port
@@ -199,6 +196,7 @@ class FloatingIp(pulumi.CustomResource):
         __props__["port_id"] = port_id
         __props__["region"] = region
         __props__["subnet_id"] = subnet_id
+        __props__["subnet_ids"] = subnet_ids
         __props__["tags"] = tags
         __props__["tenant_id"] = tenant_id
         __props__["value_specs"] = value_specs
@@ -295,12 +293,23 @@ class FloatingIp(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="subnetId")
-    def subnet_id(self) -> pulumi.Output[Optional[str]]:
+    def subnet_id(self) -> pulumi.Output[str]:
         """
         The subnet ID of the floating IP pool. Specify this if
         the floating IP network has multiple subnets.
         """
         return pulumi.get(self, "subnet_id")
+
+    @property
+    @pulumi.getter(name="subnetIds")
+    def subnet_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        A list of external subnet IDs to try over each to
+        allocate a floating IP address. If a subnet ID in a list has exhausted
+        floating IP pool, the next subnet ID will be tried. This argument is used only
+        during the resource creation. Conflicts with a `subnet_id` argument.
+        """
+        return pulumi.get(self, "subnet_ids")
 
     @property
     @pulumi.getter

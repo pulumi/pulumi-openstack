@@ -12,7 +12,7 @@ import (
 
 // Manages a V3 Role resource within OpenStack Keystone.
 //
-// Note: You _must_ have admin privileges in your OpenStack cloud to use
+// > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
 // this resource.
 //
 // ## Example Usage

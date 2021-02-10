@@ -10,48 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.OpenStack.Images
 {
     /// <summary>
-    /// Manages a V2 Image resource within OpenStack Glance.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using OpenStack = Pulumi.OpenStack;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var rancheros = new OpenStack.Images.Image("rancheros", new OpenStack.Images.ImageArgs
-    ///         {
-    ///             ContainerFormat = "bare",
-    ///             DiskFormat = "qcow2",
-    ///             ImageSourceUrl = "https://releases.rancher.com/os/latest/rancheros-openstack.img",
-    ///             Properties = 
-    ///             {
-    ///                 { "key", "value" },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ## Notes
-    /// 
-    /// ### Properties
-    /// 
-    /// This resource supports the ability to add properties to a resource during
-    /// creation as well as add, update, and delete properties during an update of this
-    /// resource.
-    /// 
-    /// Newer versions of OpenStack are adding some read-only properties to each image.
-    /// These properties start with the prefix `os_`. If these properties are detected,
-    /// this resource will automatically reconcile these with the user-provided
-    /// properties.
-    /// 
-    /// In addition, the `direct_url` and `stores` properties are also automatically reconciled if the
-    /// Image Service set it.
-    /// 
     /// ## Import
     /// 
     /// Images can be imported using the `id`, e.g.
@@ -108,6 +66,12 @@ namespace Pulumi.OpenStack.Images
         public Output<string> ImageId { get; private set; } = null!;
 
         /// <summary>
+        /// The password of basic auth to download `image_source_url`.
+        /// </summary>
+        [Output("imageSourcePassword")]
+        public Output<string?> ImageSourcePassword { get; private set; } = null!;
+
+        /// <summary>
         /// This is the url of the raw image. If `web_download`
         /// is not used, then the image will be downloaded in the `image_cache_path` before
         /// being uploaded to Glance.
@@ -115,6 +79,12 @@ namespace Pulumi.OpenStack.Images
         /// </summary>
         [Output("imageSourceUrl")]
         public Output<string?> ImageSourceUrl { get; private set; } = null!;
+
+        /// <summary>
+        /// The username of basic auth to download `image_source_url`.
+        /// </summary>
+        [Output("imageSourceUsername")]
+        public Output<string?> ImageSourceUsername { get; private set; } = null!;
 
         /// <summary>
         /// This is the filepath of the raw image file
@@ -316,6 +286,12 @@ namespace Pulumi.OpenStack.Images
         public Input<string>? ImageId { get; set; }
 
         /// <summary>
+        /// The password of basic auth to download `image_source_url`.
+        /// </summary>
+        [Input("imageSourcePassword")]
+        public Input<string>? ImageSourcePassword { get; set; }
+
+        /// <summary>
         /// This is the url of the raw image. If `web_download`
         /// is not used, then the image will be downloaded in the `image_cache_path` before
         /// being uploaded to Glance.
@@ -323,6 +299,12 @@ namespace Pulumi.OpenStack.Images
         /// </summary>
         [Input("imageSourceUrl")]
         public Input<string>? ImageSourceUrl { get; set; }
+
+        /// <summary>
+        /// The username of basic auth to download `image_source_url`.
+        /// </summary>
+        [Input("imageSourceUsername")]
+        public Input<string>? ImageSourceUsername { get; set; }
 
         /// <summary>
         /// This is the filepath of the raw image file
@@ -471,6 +453,12 @@ namespace Pulumi.OpenStack.Images
         public Input<string>? ImageId { get; set; }
 
         /// <summary>
+        /// The password of basic auth to download `image_source_url`.
+        /// </summary>
+        [Input("imageSourcePassword")]
+        public Input<string>? ImageSourcePassword { get; set; }
+
+        /// <summary>
         /// This is the url of the raw image. If `web_download`
         /// is not used, then the image will be downloaded in the `image_cache_path` before
         /// being uploaded to Glance.
@@ -478,6 +466,12 @@ namespace Pulumi.OpenStack.Images
         /// </summary>
         [Input("imageSourceUrl")]
         public Input<string>? ImageSourceUrl { get; set; }
+
+        /// <summary>
+        /// The username of basic auth to download `image_source_url`.
+        /// </summary>
+        [Input("imageSourceUsername")]
+        public Input<string>? ImageSourceUsername { get; set; }
 
         /// <summary>
         /// This is the filepath of the raw image file

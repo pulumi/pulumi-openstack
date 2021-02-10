@@ -10,30 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.OpenStack.Networking
 {
     /// <summary>
-    /// Manages a V2 floating IP resource within OpenStack Neutron (networking)
-    /// that can be used for load balancers.
-    /// These are similar to Nova (compute) floating IP resources,
-    /// but only compute floating IPs can be used with compute instances.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using OpenStack = Pulumi.OpenStack;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var floatip1 = new OpenStack.Networking.FloatingIp("floatip1", new OpenStack.Networking.FloatingIpArgs
-    ///         {
-    ///             Pool = "public",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Floating IPs can be imported using the `id`, e.g.
@@ -121,7 +97,16 @@ namespace Pulumi.OpenStack.Networking
         /// the floating IP network has multiple subnets.
         /// </summary>
         [Output("subnetId")]
-        public Output<string?> SubnetId { get; private set; } = null!;
+        public Output<string> SubnetId { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of external subnet IDs to try over each to
+        /// allocate a floating IP address. If a subnet ID in a list has exhausted
+        /// floating IP pool, the next subnet ID will be tried. This argument is used only
+        /// during the resource creation. Conflicts with a `subnet_id` argument.
+        /// </summary>
+        [Output("subnetIds")]
+        public Output<ImmutableArray<string>> SubnetIds { get; private set; } = null!;
 
         /// <summary>
         /// A set of string tags for the floating IP.
@@ -261,6 +246,21 @@ namespace Pulumi.OpenStack.Networking
         [Input("subnetId")]
         public Input<string>? SubnetId { get; set; }
 
+        [Input("subnetIds")]
+        private InputList<string>? _subnetIds;
+
+        /// <summary>
+        /// A list of external subnet IDs to try over each to
+        /// allocate a floating IP address. If a subnet ID in a list has exhausted
+        /// floating IP pool, the next subnet ID will be tried. This argument is used only
+        /// during the resource creation. Conflicts with a `subnet_id` argument.
+        /// </summary>
+        public InputList<string> SubnetIds
+        {
+            get => _subnetIds ?? (_subnetIds = new InputList<string>());
+            set => _subnetIds = value;
+        }
+
         [Input("tags")]
         private InputList<string>? _tags;
 
@@ -384,6 +384,21 @@ namespace Pulumi.OpenStack.Networking
         /// </summary>
         [Input("subnetId")]
         public Input<string>? SubnetId { get; set; }
+
+        [Input("subnetIds")]
+        private InputList<string>? _subnetIds;
+
+        /// <summary>
+        /// A list of external subnet IDs to try over each to
+        /// allocate a floating IP address. If a subnet ID in a list has exhausted
+        /// floating IP pool, the next subnet ID will be tried. This argument is used only
+        /// during the resource creation. Conflicts with a `subnet_id` argument.
+        /// </summary>
+        public InputList<string> SubnetIds
+        {
+            get => _subnetIds ?? (_subnetIds = new InputList<string>());
+            set => _subnetIds = value;
+        }
 
         [Input("tags")]
         private InputList<string>? _tags;

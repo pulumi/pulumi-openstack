@@ -11,51 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Manages a V2 Image resource within OpenStack Glance.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/images"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := images.NewImage(ctx, "rancheros", &images.ImageArgs{
-// 			ContainerFormat: pulumi.String("bare"),
-// 			DiskFormat:      pulumi.String("qcow2"),
-// 			ImageSourceUrl:  pulumi.String("https://releases.rancher.com/os/latest/rancheros-openstack.img"),
-// 			Properties: pulumi.StringMap{
-// 				"key": pulumi.String("value"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ## Notes
-//
-// ### Properties
-//
-// This resource supports the ability to add properties to a resource during
-// creation as well as add, update, and delete properties during an update of this
-// resource.
-//
-// Newer versions of OpenStack are adding some read-only properties to each image.
-// These properties start with the prefix `os_`. If these properties are detected,
-// this resource will automatically reconcile these with the user-provided
-// properties.
-//
-// In addition, the `directUrl` and `stores` properties are also automatically reconciled if the
-// Image Service set it.
-//
 // ## Import
 //
 // Images can be imported using the `id`, e.g.
@@ -84,11 +39,15 @@ type Image struct {
 	// Unique ID (valid UUID) of image to create. Changing
 	// this creates a new image.
 	ImageId pulumi.StringOutput `pulumi:"imageId"`
+	// The password of basic auth to download `imageSourceUrl`.
+	ImageSourcePassword pulumi.StringPtrOutput `pulumi:"imageSourcePassword"`
 	// This is the url of the raw image. If `webDownload`
 	// is not used, then the image will be downloaded in the `imageCachePath` before
 	// being uploaded to Glance.
 	// Conflicts with `localFilePath`.
 	ImageSourceUrl pulumi.StringPtrOutput `pulumi:"imageSourceUrl"`
+	// The username of basic auth to download `imageSourceUrl`.
+	ImageSourceUsername pulumi.StringPtrOutput `pulumi:"imageSourceUsername"`
 	// This is the filepath of the raw image file
 	// that will be uploaded to Glance. Conflicts with `imageSourceUrl` and
 	// `webDownload`.
@@ -203,11 +162,15 @@ type imageState struct {
 	// Unique ID (valid UUID) of image to create. Changing
 	// this creates a new image.
 	ImageId *string `pulumi:"imageId"`
+	// The password of basic auth to download `imageSourceUrl`.
+	ImageSourcePassword *string `pulumi:"imageSourcePassword"`
 	// This is the url of the raw image. If `webDownload`
 	// is not used, then the image will be downloaded in the `imageCachePath` before
 	// being uploaded to Glance.
 	// Conflicts with `localFilePath`.
 	ImageSourceUrl *string `pulumi:"imageSourceUrl"`
+	// The username of basic auth to download `imageSourceUrl`.
+	ImageSourceUsername *string `pulumi:"imageSourceUsername"`
 	// This is the filepath of the raw image file
 	// that will be uploaded to Glance. Conflicts with `imageSourceUrl` and
 	// `webDownload`.
@@ -288,11 +251,15 @@ type ImageState struct {
 	// Unique ID (valid UUID) of image to create. Changing
 	// this creates a new image.
 	ImageId pulumi.StringPtrInput
+	// The password of basic auth to download `imageSourceUrl`.
+	ImageSourcePassword pulumi.StringPtrInput
 	// This is the url of the raw image. If `webDownload`
 	// is not used, then the image will be downloaded in the `imageCachePath` before
 	// being uploaded to Glance.
 	// Conflicts with `localFilePath`.
 	ImageSourceUrl pulumi.StringPtrInput
+	// The username of basic auth to download `imageSourceUrl`.
+	ImageSourceUsername pulumi.StringPtrInput
 	// This is the filepath of the raw image file
 	// that will be uploaded to Glance. Conflicts with `imageSourceUrl` and
 	// `webDownload`.
@@ -369,11 +336,15 @@ type imageArgs struct {
 	// Unique ID (valid UUID) of image to create. Changing
 	// this creates a new image.
 	ImageId *string `pulumi:"imageId"`
+	// The password of basic auth to download `imageSourceUrl`.
+	ImageSourcePassword *string `pulumi:"imageSourcePassword"`
 	// This is the url of the raw image. If `webDownload`
 	// is not used, then the image will be downloaded in the `imageCachePath` before
 	// being uploaded to Glance.
 	// Conflicts with `localFilePath`.
 	ImageSourceUrl *string `pulumi:"imageSourceUrl"`
+	// The username of basic auth to download `imageSourceUrl`.
+	ImageSourceUsername *string `pulumi:"imageSourceUsername"`
 	// This is the filepath of the raw image file
 	// that will be uploaded to Glance. Conflicts with `imageSourceUrl` and
 	// `webDownload`.
@@ -427,11 +398,15 @@ type ImageArgs struct {
 	// Unique ID (valid UUID) of image to create. Changing
 	// this creates a new image.
 	ImageId pulumi.StringPtrInput
+	// The password of basic auth to download `imageSourceUrl`.
+	ImageSourcePassword pulumi.StringPtrInput
 	// This is the url of the raw image. If `webDownload`
 	// is not used, then the image will be downloaded in the `imageCachePath` before
 	// being uploaded to Glance.
 	// Conflicts with `localFilePath`.
 	ImageSourceUrl pulumi.StringPtrInput
+	// The username of basic auth to download `imageSourceUrl`.
+	ImageSourceUsername pulumi.StringPtrInput
 	// This is the filepath of the raw image file
 	// that will be uploaded to Glance. Conflicts with `imageSourceUrl` and
 	// `webDownload`.

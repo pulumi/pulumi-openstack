@@ -10,58 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Manages a V3 EC2 Credential resource within OpenStack Keystone.
-// EC2 credentials in OpenStack are used to access S3 compatible Swift/RadosGW
-// endpoints or to authenticate against Keystone.
-//
-// > **Note:** All arguments including the EC2 credential access key and secret
-// will be stored in the raw state as plain-text. [Read more about sensitive data
-// in state](https://www.terraform.io/docs/state/sensitive-data.html).
-//
-// ## Example Usage
-// ### EC2 credential in current project scope
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/identity"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := identity.NewEc2CredentialV3(ctx, "ec2Key1", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ### EC2 credential in pre-defined project scope
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/identity"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := identity.NewEc2CredentialV3(ctx, "ec2Key1", &identity.Ec2CredentialV3Args{
-// 			ProjectId: pulumi.String("f7ac731cc11f40efbc03a9f9e1d1d21f"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-//
 // ## Import
 //
 // EC2 Credentials can be imported using the `access`, e.g.

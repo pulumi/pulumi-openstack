@@ -5,30 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
-/**
- * Manages a V1 DB instance resource within OpenStack.
- *
- * ## Example Usage
- * ### Instance
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const test = new openstack.database.Instance("test", {
- *     datastore: {
- *         type: "mysql",
- *         version: "mysql-5.7",
- *     },
- *     flavorId: "31792d21-c355-4587-9290-56c1ed0ca376",
- *     networks: [{
- *         uuid: "c0612505-caf2-4fb0-b7cb-56a0240a2b12",
- *     }],
- *     region: "region-test",
- *     size: 8,
- * });
- * ```
- */
 export class Instance extends pulumi.CustomResource {
     /**
      * Get an existing Instance resource's state with the given name, ID, and optional extra

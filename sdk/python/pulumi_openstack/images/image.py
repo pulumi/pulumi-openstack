@@ -19,7 +19,9 @@ class Image(pulumi.CustomResource):
                  disk_format: Optional[pulumi.Input[str]] = None,
                  image_cache_path: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
+                 image_source_password: Optional[pulumi.Input[str]] = None,
                  image_source_url: Optional[pulumi.Input[str]] = None,
+                 image_source_username: Optional[pulumi.Input[str]] = None,
                  local_file_path: Optional[pulumi.Input[str]] = None,
                  min_disk_gb: Optional[pulumi.Input[int]] = None,
                  min_ram_mb: Optional[pulumi.Input[int]] = None,
@@ -35,38 +37,6 @@ class Image(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Manages a V2 Image resource within OpenStack Glance.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        rancheros = openstack.images.Image("rancheros",
-            container_format="bare",
-            disk_format="qcow2",
-            image_source_url="https://releases.rancher.com/os/latest/rancheros-openstack.img",
-            properties={
-                "key": "value",
-            })
-        ```
-        ## Notes
-
-        ### Properties
-
-        This resource supports the ability to add properties to a resource during
-        creation as well as add, update, and delete properties during an update of this
-        resource.
-
-        Newer versions of OpenStack are adding some read-only properties to each image.
-        These properties start with the prefix `os_`. If these properties are detected,
-        this resource will automatically reconcile these with the user-provided
-        properties.
-
-        In addition, the `direct_url` and `stores` properties are also automatically reconciled if the
-        Image Service set it.
-
         ## Import
 
         Images can be imported using the `id`, e.g.
@@ -83,10 +53,12 @@ class Image(pulumi.CustomResource):
                "ami", "ari", "aki", "vhd", "vmdk", "raw", "qcow2", "vdi", "iso".
         :param pulumi.Input[str] image_id: Unique ID (valid UUID) of image to create. Changing 
                this creates a new image.
+        :param pulumi.Input[str] image_source_password: The password of basic auth to download `image_source_url`.
         :param pulumi.Input[str] image_source_url: This is the url of the raw image. If `web_download`
                is not used, then the image will be downloaded in the `image_cache_path` before
                being uploaded to Glance.
                Conflicts with `local_file_path`.
+        :param pulumi.Input[str] image_source_username: The username of basic auth to download `image_source_url`.
         :param pulumi.Input[str] local_file_path: This is the filepath of the raw image file
                that will be uploaded to Glance. Conflicts with `image_source_url` and
                `web_download`.
@@ -141,7 +113,9 @@ class Image(pulumi.CustomResource):
             __props__['disk_format'] = disk_format
             __props__['image_cache_path'] = image_cache_path
             __props__['image_id'] = image_id
+            __props__['image_source_password'] = image_source_password
             __props__['image_source_url'] = image_source_url
+            __props__['image_source_username'] = image_source_username
             __props__['local_file_path'] = local_file_path
             __props__['min_disk_gb'] = min_disk_gb
             __props__['min_ram_mb'] = min_ram_mb
@@ -180,7 +154,9 @@ class Image(pulumi.CustomResource):
             file: Optional[pulumi.Input[str]] = None,
             image_cache_path: Optional[pulumi.Input[str]] = None,
             image_id: Optional[pulumi.Input[str]] = None,
+            image_source_password: Optional[pulumi.Input[str]] = None,
             image_source_url: Optional[pulumi.Input[str]] = None,
+            image_source_username: Optional[pulumi.Input[str]] = None,
             local_file_path: Optional[pulumi.Input[str]] = None,
             metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             min_disk_gb: Optional[pulumi.Input[int]] = None,
@@ -217,10 +193,12 @@ class Image(pulumi.CustomResource):
                or the path to retrieve it.
         :param pulumi.Input[str] image_id: Unique ID (valid UUID) of image to create. Changing 
                this creates a new image.
+        :param pulumi.Input[str] image_source_password: The password of basic auth to download `image_source_url`.
         :param pulumi.Input[str] image_source_url: This is the url of the raw image. If `web_download`
                is not used, then the image will be downloaded in the `image_cache_path` before
                being uploaded to Glance.
                Conflicts with `local_file_path`.
+        :param pulumi.Input[str] image_source_username: The username of basic auth to download `image_source_url`.
         :param pulumi.Input[str] local_file_path: This is the filepath of the raw image file
                that will be uploaded to Glance. Conflicts with `image_source_url` and
                `web_download`.
@@ -272,7 +250,9 @@ class Image(pulumi.CustomResource):
         __props__["file"] = file
         __props__["image_cache_path"] = image_cache_path
         __props__["image_id"] = image_id
+        __props__["image_source_password"] = image_source_password
         __props__["image_source_url"] = image_source_url
+        __props__["image_source_username"] = image_source_username
         __props__["local_file_path"] = local_file_path
         __props__["metadata"] = metadata
         __props__["min_disk_gb"] = min_disk_gb
@@ -352,6 +332,14 @@ class Image(pulumi.CustomResource):
         return pulumi.get(self, "image_id")
 
     @property
+    @pulumi.getter(name="imageSourcePassword")
+    def image_source_password(self) -> pulumi.Output[Optional[str]]:
+        """
+        The password of basic auth to download `image_source_url`.
+        """
+        return pulumi.get(self, "image_source_password")
+
+    @property
     @pulumi.getter(name="imageSourceUrl")
     def image_source_url(self) -> pulumi.Output[Optional[str]]:
         """
@@ -361,6 +349,14 @@ class Image(pulumi.CustomResource):
         Conflicts with `local_file_path`.
         """
         return pulumi.get(self, "image_source_url")
+
+    @property
+    @pulumi.getter(name="imageSourceUsername")
+    def image_source_username(self) -> pulumi.Output[Optional[str]]:
+        """
+        The username of basic auth to download `image_source_url`.
+        """
+        return pulumi.get(self, "image_source_username")
 
     @property
     @pulumi.getter(name="localFilePath")

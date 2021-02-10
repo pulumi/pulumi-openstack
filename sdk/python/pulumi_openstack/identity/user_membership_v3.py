@@ -24,7 +24,7 @@ class UserMembershipV3(pulumi.CustomResource):
         """
         Manages a user membership to group V3 resource within OpenStack.
 
-        Note: You _must_ have admin privileges in your OpenStack cloud to use
+        > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
         this resource.
 
         ***
