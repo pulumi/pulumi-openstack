@@ -14,7 +14,8 @@ namespace Pulumi.OpenStack.Identity
         /// <summary>
         /// Use this data source to get the ID of an OpenStack group.
         /// 
-        /// Note: This usually requires admin privileges.
+        /// &gt; **Note:** You _must_ have admin privileges in your OpenStack cloud to use
+        /// this resource.
         /// 
         /// {{% examples %}}
         /// ## Example Usage

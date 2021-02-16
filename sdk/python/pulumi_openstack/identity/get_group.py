@@ -97,7 +97,8 @@ def get_group(domain_id: Optional[str] = None,
     """
     Use this data source to get the ID of an OpenStack group.
 
-    Note: This usually requires admin privileges.
+    > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
+    this resource.
 
     ## Example Usage
 

@@ -5,39 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Manages a V2 Image resource within OpenStack Glance.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const rancheros = new openstack.images.Image("rancheros", {
- *     containerFormat: "bare",
- *     diskFormat: "qcow2",
- *     imageSourceUrl: "https://releases.rancher.com/os/latest/rancheros-openstack.img",
- *     properties: {
- *         key: "value",
- *     },
- * });
- * ```
- * ## Notes
- *
- * ### Properties
- *
- * This resource supports the ability to add properties to a resource during
- * creation as well as add, update, and delete properties during an update of this
- * resource.
- *
- * Newer versions of OpenStack are adding some read-only properties to each image.
- * These properties start with the prefix `os_`. If these properties are detected,
- * this resource will automatically reconcile these with the user-provided
- * properties.
- *
- * In addition, the `directUrl` and `stores` properties are also automatically reconciled if the
- * Image Service set it.
- *
  * ## Import
  *
  * Images can be imported using the `id`, e.g.
@@ -105,12 +72,20 @@ export class Image extends pulumi.CustomResource {
      */
     public readonly imageId!: pulumi.Output<string>;
     /**
+     * The password of basic auth to download `imageSourceUrl`.
+     */
+    public readonly imageSourcePassword!: pulumi.Output<string | undefined>;
+    /**
      * This is the url of the raw image. If `webDownload`
      * is not used, then the image will be downloaded in the `imageCachePath` before
      * being uploaded to Glance.
      * Conflicts with `localFilePath`.
      */
     public readonly imageSourceUrl!: pulumi.Output<string | undefined>;
+    /**
+     * The username of basic auth to download `imageSourceUrl`.
+     */
+    public readonly imageSourceUsername!: pulumi.Output<string | undefined>;
     /**
      * This is the filepath of the raw image file
      * that will be uploaded to Glance. Conflicts with `imageSourceUrl` and
@@ -226,7 +201,9 @@ export class Image extends pulumi.CustomResource {
             inputs["file"] = state ? state.file : undefined;
             inputs["imageCachePath"] = state ? state.imageCachePath : undefined;
             inputs["imageId"] = state ? state.imageId : undefined;
+            inputs["imageSourcePassword"] = state ? state.imageSourcePassword : undefined;
             inputs["imageSourceUrl"] = state ? state.imageSourceUrl : undefined;
+            inputs["imageSourceUsername"] = state ? state.imageSourceUsername : undefined;
             inputs["localFilePath"] = state ? state.localFilePath : undefined;
             inputs["metadata"] = state ? state.metadata : undefined;
             inputs["minDiskGb"] = state ? state.minDiskGb : undefined;
@@ -257,7 +234,9 @@ export class Image extends pulumi.CustomResource {
             inputs["diskFormat"] = args ? args.diskFormat : undefined;
             inputs["imageCachePath"] = args ? args.imageCachePath : undefined;
             inputs["imageId"] = args ? args.imageId : undefined;
+            inputs["imageSourcePassword"] = args ? args.imageSourcePassword : undefined;
             inputs["imageSourceUrl"] = args ? args.imageSourceUrl : undefined;
+            inputs["imageSourceUsername"] = args ? args.imageSourceUsername : undefined;
             inputs["localFilePath"] = args ? args.localFilePath : undefined;
             inputs["minDiskGb"] = args ? args.minDiskGb : undefined;
             inputs["minRamMb"] = args ? args.minRamMb : undefined;
@@ -326,12 +305,20 @@ export interface ImageState {
      */
     readonly imageId?: pulumi.Input<string>;
     /**
+     * The password of basic auth to download `imageSourceUrl`.
+     */
+    readonly imageSourcePassword?: pulumi.Input<string>;
+    /**
      * This is the url of the raw image. If `webDownload`
      * is not used, then the image will be downloaded in the `imageCachePath` before
      * being uploaded to Glance.
      * Conflicts with `localFilePath`.
      */
     readonly imageSourceUrl?: pulumi.Input<string>;
+    /**
+     * The username of basic auth to download `imageSourceUrl`.
+     */
+    readonly imageSourceUsername?: pulumi.Input<string>;
     /**
      * This is the filepath of the raw image file
      * that will be uploaded to Glance. Conflicts with `imageSourceUrl` and
@@ -450,12 +437,20 @@ export interface ImageArgs {
      */
     readonly imageId?: pulumi.Input<string>;
     /**
+     * The password of basic auth to download `imageSourceUrl`.
+     */
+    readonly imageSourcePassword?: pulumi.Input<string>;
+    /**
      * This is the url of the raw image. If `webDownload`
      * is not used, then the image will be downloaded in the `imageCachePath` before
      * being uploaded to Glance.
      * Conflicts with `localFilePath`.
      */
     readonly imageSourceUrl?: pulumi.Input<string>;
+    /**
+     * The username of basic auth to download `imageSourceUrl`.
+     */
+    readonly imageSourceUsername?: pulumi.Input<string>;
     /**
      * This is the filepath of the raw image file
      * that will be uploaded to Glance. Conflicts with `imageSourceUrl` and

@@ -5,34 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Manages a V3 EC2 Credential resource within OpenStack Keystone.
- * EC2 credentials in OpenStack are used to access S3 compatible Swift/RadosGW
- * endpoints or to authenticate against Keystone.
- *
- * > **Note:** All arguments including the EC2 credential access key and secret
- * will be stored in the raw state as plain-text. [Read more about sensitive data
- * in state](https://www.terraform.io/docs/state/sensitive-data.html).
- *
- * ## Example Usage
- * ### EC2 credential in current project scope
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const ec2Key1 = new openstack.identity.Ec2CredentialV3("ec2_key1", {});
- * ```
- * ### EC2 credential in pre-defined project scope
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const ec2Key1 = new openstack.identity.Ec2CredentialV3("ec2_key1", {
- *     projectId: "f7ac731cc11f40efbc03a9f9e1d1d21f",
- * });
- * ```
- *
  * ## Import
  *
  * EC2 Credentials can be imported using the `access`, e.g.

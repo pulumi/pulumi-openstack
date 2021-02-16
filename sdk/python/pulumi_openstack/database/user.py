@@ -25,10 +25,7 @@ class User(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Manages a V1 DB user resource within OpenStack.
-
-        ## Example Usage
-
+        Create a User resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] databases: A list of database user should have access to.

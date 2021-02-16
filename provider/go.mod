@@ -6,7 +6,7 @@ require (
 	github.com/hashicorp/terraform-plugin-sdk v1.16.0
 	github.com/pulumi/pulumi-terraform-bridge/v2 v2.18.1
 	github.com/pulumi/pulumi/sdk/v2 v2.18.0
-	github.com/terraform-provider-openstack/terraform-provider-openstack v1.36.0
+	github.com/terraform-provider-openstack/terraform-provider-openstack v1.37.0
 )
 
 replace (

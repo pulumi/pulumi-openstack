@@ -11,9 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Manages a V1 DB user resource within OpenStack.
-//
-// ## Example Usage
 type User struct {
 	pulumi.CustomResourceState
 

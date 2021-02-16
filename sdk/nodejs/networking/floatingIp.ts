@@ -5,22 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Manages a V2 floating IP resource within OpenStack Neutron (networking)
- * that can be used for load balancers.
- * These are similar to Nova (compute) floating IP resources,
- * but only compute floating IPs can be used with compute instances.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const floatip1 = new openstack.networking.FloatingIp("floatip_1", {
- *     pool: "public",
- * });
- * ```
- *
  * ## Import
  *
  * Floating IPs can be imported using the `id`, e.g.
@@ -114,7 +98,14 @@ export class FloatingIp extends pulumi.CustomResource {
      * The subnet ID of the floating IP pool. Specify this if
      * the floating IP network has multiple subnets.
      */
-    public readonly subnetId!: pulumi.Output<string | undefined>;
+    public readonly subnetId!: pulumi.Output<string>;
+    /**
+     * A list of external subnet IDs to try over each to
+     * allocate a floating IP address. If a subnet ID in a list has exhausted
+     * floating IP pool, the next subnet ID will be tried. This argument is used only
+     * during the resource creation. Conflicts with a `subnetId` argument.
+     */
+    public readonly subnetIds!: pulumi.Output<string[] | undefined>;
     /**
      * A set of string tags for the floating IP.
      */
@@ -153,6 +144,7 @@ export class FloatingIp extends pulumi.CustomResource {
             inputs["portId"] = state ? state.portId : undefined;
             inputs["region"] = state ? state.region : undefined;
             inputs["subnetId"] = state ? state.subnetId : undefined;
+            inputs["subnetIds"] = state ? state.subnetIds : undefined;
             inputs["tags"] = state ? state.tags : undefined;
             inputs["tenantId"] = state ? state.tenantId : undefined;
             inputs["valueSpecs"] = state ? state.valueSpecs : undefined;
@@ -170,6 +162,7 @@ export class FloatingIp extends pulumi.CustomResource {
             inputs["portId"] = args ? args.portId : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["subnetId"] = args ? args.subnetId : undefined;
+            inputs["subnetIds"] = args ? args.subnetIds : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["tenantId"] = args ? args.tenantId : undefined;
             inputs["valueSpecs"] = args ? args.valueSpecs : undefined;
@@ -249,6 +242,13 @@ export interface FloatingIpState {
      */
     readonly subnetId?: pulumi.Input<string>;
     /**
+     * A list of external subnet IDs to try over each to
+     * allocate a floating IP address. If a subnet ID in a list has exhausted
+     * floating IP pool, the next subnet ID will be tried. This argument is used only
+     * during the resource creation. Conflicts with a `subnetId` argument.
+     */
+    readonly subnetIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * A set of string tags for the floating IP.
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
@@ -322,6 +322,13 @@ export interface FloatingIpArgs {
      * the floating IP network has multiple subnets.
      */
     readonly subnetId?: pulumi.Input<string>;
+    /**
+     * A list of external subnet IDs to try over each to
+     * allocate a floating IP address. If a subnet ID in a list has exhausted
+     * floating IP pool, the next subnet ID will be tried. This argument is used only
+     * during the resource creation. Conflicts with a `subnetId` argument.
+     */
+    readonly subnetIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A set of string tags for the floating IP.
      */

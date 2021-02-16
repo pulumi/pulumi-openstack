@@ -22,32 +22,6 @@ class Ec2CredentialV3(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Manages a V3 EC2 Credential resource within OpenStack Keystone.
-        EC2 credentials in OpenStack are used to access S3 compatible Swift/RadosGW
-        endpoints or to authenticate against Keystone.
-
-        > **Note:** All arguments including the EC2 credential access key and secret
-        will be stored in the raw state as plain-text. [Read more about sensitive data
-        in state](https://www.terraform.io/docs/state/sensitive-data.html).
-
-        ## Example Usage
-        ### EC2 credential in current project scope
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        ec2_key1 = openstack.identity.Ec2CredentialV3("ec2Key1")
-        ```
-        ### EC2 credential in pre-defined project scope
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        ec2_key1 = openstack.identity.Ec2CredentialV3("ec2Key1", project_id="f7ac731cc11f40efbc03a9f9e1d1d21f")
-        ```
-
         ## Import
 
         EC2 Credentials can be imported using the `access`, e.g.

@@ -11,34 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Manages a V2 floating IP resource within OpenStack Neutron (networking)
-// that can be used for load balancers.
-// These are similar to Nova (compute) floating IP resources,
-// but only compute floating IPs can be used with compute instances.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/networking"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := networking.NewFloatingIp(ctx, "floatip1", &networking.FloatingIpArgs{
-// 			Pool: pulumi.String("public"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-//
 // ## Import
 //
 // Floating IPs can be imported using the `id`, e.g.
@@ -86,7 +58,12 @@ type FloatingIp struct {
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The subnet ID of the floating IP pool. Specify this if
 	// the floating IP network has multiple subnets.
-	SubnetId pulumi.StringPtrOutput `pulumi:"subnetId"`
+	SubnetId pulumi.StringOutput `pulumi:"subnetId"`
+	// A list of external subnet IDs to try over each to
+	// allocate a floating IP address. If a subnet ID in a list has exhausted
+	// floating IP pool, the next subnet ID will be tried. This argument is used only
+	// during the resource creation. Conflicts with a `subnetId` argument.
+	SubnetIds pulumi.StringArrayOutput `pulumi:"subnetIds"`
 	// A set of string tags for the floating IP.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// The target tenant ID in which to allocate the floating
@@ -168,6 +145,11 @@ type floatingIpState struct {
 	// The subnet ID of the floating IP pool. Specify this if
 	// the floating IP network has multiple subnets.
 	SubnetId *string `pulumi:"subnetId"`
+	// A list of external subnet IDs to try over each to
+	// allocate a floating IP address. If a subnet ID in a list has exhausted
+	// floating IP pool, the next subnet ID will be tried. This argument is used only
+	// during the resource creation. Conflicts with a `subnetId` argument.
+	SubnetIds []string `pulumi:"subnetIds"`
 	// A set of string tags for the floating IP.
 	Tags []string `pulumi:"tags"`
 	// The target tenant ID in which to allocate the floating
@@ -218,6 +200,11 @@ type FloatingIpState struct {
 	// The subnet ID of the floating IP pool. Specify this if
 	// the floating IP network has multiple subnets.
 	SubnetId pulumi.StringPtrInput
+	// A list of external subnet IDs to try over each to
+	// allocate a floating IP address. If a subnet ID in a list has exhausted
+	// floating IP pool, the next subnet ID will be tried. This argument is used only
+	// during the resource creation. Conflicts with a `subnetId` argument.
+	SubnetIds pulumi.StringArrayInput
 	// A set of string tags for the floating IP.
 	Tags pulumi.StringArrayInput
 	// The target tenant ID in which to allocate the floating
@@ -269,6 +256,11 @@ type floatingIpArgs struct {
 	// The subnet ID of the floating IP pool. Specify this if
 	// the floating IP network has multiple subnets.
 	SubnetId *string `pulumi:"subnetId"`
+	// A list of external subnet IDs to try over each to
+	// allocate a floating IP address. If a subnet ID in a list has exhausted
+	// floating IP pool, the next subnet ID will be tried. This argument is used only
+	// during the resource creation. Conflicts with a `subnetId` argument.
+	SubnetIds []string `pulumi:"subnetIds"`
 	// A set of string tags for the floating IP.
 	Tags []string `pulumi:"tags"`
 	// The target tenant ID in which to allocate the floating
@@ -317,6 +309,11 @@ type FloatingIpArgs struct {
 	// The subnet ID of the floating IP pool. Specify this if
 	// the floating IP network has multiple subnets.
 	SubnetId pulumi.StringPtrInput
+	// A list of external subnet IDs to try over each to
+	// allocate a floating IP address. If a subnet ID in a list has exhausted
+	// floating IP pool, the next subnet ID will be tried. This argument is used only
+	// during the resource creation. Conflicts with a `subnetId` argument.
+	SubnetIds pulumi.StringArrayInput
 	// A set of string tags for the floating IP.
 	Tags pulumi.StringArrayInput
 	// The target tenant ID in which to allocate the floating

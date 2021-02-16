@@ -31,36 +31,6 @@ class VolumeAttach(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        > **Note:** This resource usually requires admin privileges.
-
-        > **Note:** This resource does not actually attach a volume to an instance. Please use
-        the `compute.VolumeAttach` resource for that.
-
-        Creates a general purpose attachment connection to a Block
-        Storage volume using the OpenStack Block Storage (Cinder) v3 API.
-
-        Depending on your Block Storage service configuration, this
-        resource can assist in attaching a volume to a non-OpenStack resource
-        such as a bare-metal server or a remote virtual machine in a
-        different cloud provider.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        volume1 = openstack.blockstorage.Volume("volume1", size=1)
-        va1 = openstack.blockstorage.VolumeAttach("va1",
-            device="auto",
-            host_name="devstack",
-            initiator="iqn.1993-08.org.debian:01:e9861fb1859",
-            ip_address="192.168.255.10",
-            os_type="linux2",
-            platform="x86_64",
-            volume_id=volume1.id)
-        ```
-
         ## Import
 
         It is not possible to import this resource.
