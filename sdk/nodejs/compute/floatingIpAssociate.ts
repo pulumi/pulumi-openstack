@@ -125,7 +125,8 @@ export class FloatingIpAssociate extends pulumi.CustomResource {
     constructor(name: string, args: FloatingIpAssociateArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FloatingIpAssociateArgs | FloatingIpAssociateState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as FloatingIpAssociateState | undefined;
             inputs["fixedIp"] = state ? state.fixedIp : undefined;
             inputs["floatingIp"] = state ? state.floatingIp : undefined;
@@ -134,10 +135,10 @@ export class FloatingIpAssociate extends pulumi.CustomResource {
             inputs["waitUntilAssociated"] = state ? state.waitUntilAssociated : undefined;
         } else {
             const args = argsOrState as FloatingIpAssociateArgs | undefined;
-            if ((!args || args.floatingIp === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.floatingIp === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'floatingIp'");
             }
-            if ((!args || args.instanceId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
             inputs["fixedIp"] = args ? args.fixedIp : undefined;
@@ -146,12 +147,8 @@ export class FloatingIpAssociate extends pulumi.CustomResource {
             inputs["region"] = args ? args.region : undefined;
             inputs["waitUntilAssociated"] = args ? args.waitUntilAssociated : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(FloatingIpAssociate.__pulumiType, name, inputs, opts);
     }

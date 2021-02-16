@@ -199,7 +199,8 @@ export class InterfaceAttach extends pulumi.CustomResource {
     constructor(name: string, args: InterfaceAttachArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InterfaceAttachArgs | InterfaceAttachState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as InterfaceAttachState | undefined;
             inputs["fixedIp"] = state ? state.fixedIp : undefined;
             inputs["instanceId"] = state ? state.instanceId : undefined;
@@ -208,7 +209,7 @@ export class InterfaceAttach extends pulumi.CustomResource {
             inputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as InterfaceAttachArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
             inputs["fixedIp"] = args ? args.fixedIp : undefined;
@@ -217,12 +218,8 @@ export class InterfaceAttach extends pulumi.CustomResource {
             inputs["portId"] = args ? args.portId : undefined;
             inputs["region"] = args ? args.region : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(InterfaceAttach.__pulumiType, name, inputs, opts);
     }

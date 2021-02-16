@@ -170,7 +170,8 @@ export class Share extends pulumi.CustomResource {
     constructor(name: string, args: ShareArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ShareArgs | ShareState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ShareState | undefined;
             inputs["allMetadata"] = state ? state.allMetadata : undefined;
             inputs["availabilityZone"] = state ? state.availabilityZone : undefined;
@@ -192,10 +193,10 @@ export class Share extends pulumi.CustomResource {
             inputs["snapshotId"] = state ? state.snapshotId : undefined;
         } else {
             const args = argsOrState as ShareArgs | undefined;
-            if ((!args || args.shareProto === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.shareProto === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'shareProto'");
             }
-            if ((!args || args.size === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.size === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'size'");
             }
             inputs["availabilityZone"] = args ? args.availabilityZone : undefined;
@@ -217,12 +218,8 @@ export class Share extends pulumi.CustomResource {
             inputs["replicationType"] = undefined /*out*/;
             inputs["shareServerId"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Share.__pulumiType, name, inputs, opts);
     }

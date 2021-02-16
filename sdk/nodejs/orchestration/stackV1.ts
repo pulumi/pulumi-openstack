@@ -173,7 +173,8 @@ export class StackV1 extends pulumi.CustomResource {
     constructor(name: string, args: StackV1Args, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: StackV1Args | StackV1State, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as StackV1State | undefined;
             inputs["StackOutputs"] = state ? state.StackOutputs : undefined;
             inputs["capabilities"] = state ? state.capabilities : undefined;
@@ -194,7 +195,7 @@ export class StackV1 extends pulumi.CustomResource {
             inputs["updatedTime"] = state ? state.updatedTime : undefined;
         } else {
             const args = argsOrState as StackV1Args | undefined;
-            if ((!args || args.templateOpts === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.templateOpts === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'templateOpts'");
             }
             inputs["StackOutputs"] = args ? args.StackOutputs : undefined;
@@ -215,12 +216,8 @@ export class StackV1 extends pulumi.CustomResource {
             inputs["timeout"] = args ? args.timeout : undefined;
             inputs["updatedTime"] = args ? args.updatedTime : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(StackV1.__pulumiType, name, inputs, opts);
     }

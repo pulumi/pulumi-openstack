@@ -119,7 +119,8 @@ export class IkePolicy extends pulumi.CustomResource {
     constructor(name: string, args?: IkePolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: IkePolicyArgs | IkePolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as IkePolicyState | undefined;
             inputs["authAlgorithm"] = state ? state.authAlgorithm : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -146,12 +147,8 @@ export class IkePolicy extends pulumi.CustomResource {
             inputs["tenantId"] = args ? args.tenantId : undefined;
             inputs["valueSpecs"] = args ? args.valueSpecs : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(IkePolicy.__pulumiType, name, inputs, opts);
     }

@@ -104,7 +104,8 @@ export class AggregateV2 extends pulumi.CustomResource {
     constructor(name: string, args?: AggregateV2Args, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AggregateV2Args | AggregateV2State, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as AggregateV2State | undefined;
             inputs["hosts"] = state ? state.hosts : undefined;
             inputs["metadata"] = state ? state.metadata : undefined;
@@ -117,12 +118,8 @@ export class AggregateV2 extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["zone"] = args ? args.zone : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(AggregateV2.__pulumiType, name, inputs, opts);
     }

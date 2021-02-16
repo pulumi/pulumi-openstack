@@ -267,6 +267,85 @@ func (i *ApplicationCredential) ToApplicationCredentialOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationCredentialOutput)
 }
 
+func (i *ApplicationCredential) ToApplicationCredentialPtrOutput() ApplicationCredentialPtrOutput {
+	return i.ToApplicationCredentialPtrOutputWithContext(context.Background())
+}
+
+func (i *ApplicationCredential) ToApplicationCredentialPtrOutputWithContext(ctx context.Context) ApplicationCredentialPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationCredentialPtrOutput)
+}
+
+type ApplicationCredentialPtrInput interface {
+	pulumi.Input
+
+	ToApplicationCredentialPtrOutput() ApplicationCredentialPtrOutput
+	ToApplicationCredentialPtrOutputWithContext(ctx context.Context) ApplicationCredentialPtrOutput
+}
+
+type applicationCredentialPtrType ApplicationCredentialArgs
+
+func (*applicationCredentialPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationCredential)(nil))
+}
+
+func (i *applicationCredentialPtrType) ToApplicationCredentialPtrOutput() ApplicationCredentialPtrOutput {
+	return i.ToApplicationCredentialPtrOutputWithContext(context.Background())
+}
+
+func (i *applicationCredentialPtrType) ToApplicationCredentialPtrOutputWithContext(ctx context.Context) ApplicationCredentialPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationCredentialPtrOutput)
+}
+
+// ApplicationCredentialArrayInput is an input type that accepts ApplicationCredentialArray and ApplicationCredentialArrayOutput values.
+// You can construct a concrete instance of `ApplicationCredentialArrayInput` via:
+//
+//          ApplicationCredentialArray{ ApplicationCredentialArgs{...} }
+type ApplicationCredentialArrayInput interface {
+	pulumi.Input
+
+	ToApplicationCredentialArrayOutput() ApplicationCredentialArrayOutput
+	ToApplicationCredentialArrayOutputWithContext(context.Context) ApplicationCredentialArrayOutput
+}
+
+type ApplicationCredentialArray []ApplicationCredentialInput
+
+func (ApplicationCredentialArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ApplicationCredential)(nil))
+}
+
+func (i ApplicationCredentialArray) ToApplicationCredentialArrayOutput() ApplicationCredentialArrayOutput {
+	return i.ToApplicationCredentialArrayOutputWithContext(context.Background())
+}
+
+func (i ApplicationCredentialArray) ToApplicationCredentialArrayOutputWithContext(ctx context.Context) ApplicationCredentialArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationCredentialArrayOutput)
+}
+
+// ApplicationCredentialMapInput is an input type that accepts ApplicationCredentialMap and ApplicationCredentialMapOutput values.
+// You can construct a concrete instance of `ApplicationCredentialMapInput` via:
+//
+//          ApplicationCredentialMap{ "key": ApplicationCredentialArgs{...} }
+type ApplicationCredentialMapInput interface {
+	pulumi.Input
+
+	ToApplicationCredentialMapOutput() ApplicationCredentialMapOutput
+	ToApplicationCredentialMapOutputWithContext(context.Context) ApplicationCredentialMapOutput
+}
+
+type ApplicationCredentialMap map[string]ApplicationCredentialInput
+
+func (ApplicationCredentialMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ApplicationCredential)(nil))
+}
+
+func (i ApplicationCredentialMap) ToApplicationCredentialMapOutput() ApplicationCredentialMapOutput {
+	return i.ToApplicationCredentialMapOutputWithContext(context.Background())
+}
+
+func (i ApplicationCredentialMap) ToApplicationCredentialMapOutputWithContext(ctx context.Context) ApplicationCredentialMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationCredentialMapOutput)
+}
+
 type ApplicationCredentialOutput struct {
 	*pulumi.OutputState
 }
@@ -283,6 +362,75 @@ func (o ApplicationCredentialOutput) ToApplicationCredentialOutputWithContext(ct
 	return o
 }
 
+func (o ApplicationCredentialOutput) ToApplicationCredentialPtrOutput() ApplicationCredentialPtrOutput {
+	return o.ToApplicationCredentialPtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationCredentialOutput) ToApplicationCredentialPtrOutputWithContext(ctx context.Context) ApplicationCredentialPtrOutput {
+	return o.ApplyT(func(v ApplicationCredential) *ApplicationCredential {
+		return &v
+	}).(ApplicationCredentialPtrOutput)
+}
+
+type ApplicationCredentialPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ApplicationCredentialPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationCredential)(nil))
+}
+
+func (o ApplicationCredentialPtrOutput) ToApplicationCredentialPtrOutput() ApplicationCredentialPtrOutput {
+	return o
+}
+
+func (o ApplicationCredentialPtrOutput) ToApplicationCredentialPtrOutputWithContext(ctx context.Context) ApplicationCredentialPtrOutput {
+	return o
+}
+
+type ApplicationCredentialArrayOutput struct{ *pulumi.OutputState }
+
+func (ApplicationCredentialArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationCredential)(nil))
+}
+
+func (o ApplicationCredentialArrayOutput) ToApplicationCredentialArrayOutput() ApplicationCredentialArrayOutput {
+	return o
+}
+
+func (o ApplicationCredentialArrayOutput) ToApplicationCredentialArrayOutputWithContext(ctx context.Context) ApplicationCredentialArrayOutput {
+	return o
+}
+
+func (o ApplicationCredentialArrayOutput) Index(i pulumi.IntInput) ApplicationCredentialOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationCredential {
+		return vs[0].([]ApplicationCredential)[vs[1].(int)]
+	}).(ApplicationCredentialOutput)
+}
+
+type ApplicationCredentialMapOutput struct{ *pulumi.OutputState }
+
+func (ApplicationCredentialMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ApplicationCredential)(nil))
+}
+
+func (o ApplicationCredentialMapOutput) ToApplicationCredentialMapOutput() ApplicationCredentialMapOutput {
+	return o
+}
+
+func (o ApplicationCredentialMapOutput) ToApplicationCredentialMapOutputWithContext(ctx context.Context) ApplicationCredentialMapOutput {
+	return o
+}
+
+func (o ApplicationCredentialMapOutput) MapIndex(k pulumi.StringInput) ApplicationCredentialOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ApplicationCredential {
+		return vs[0].(map[string]ApplicationCredential)[vs[1].(string)]
+	}).(ApplicationCredentialOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ApplicationCredentialOutput{})
+	pulumi.RegisterOutputType(ApplicationCredentialPtrOutput{})
+	pulumi.RegisterOutputType(ApplicationCredentialArrayOutput{})
+	pulumi.RegisterOutputType(ApplicationCredentialMapOutput{})
 }

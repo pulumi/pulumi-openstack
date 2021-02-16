@@ -248,7 +248,8 @@ export class Port extends pulumi.CustomResource {
     constructor(name: string, args: PortArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: PortArgs | PortState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as PortState | undefined;
             inputs["adminStateUp"] = state ? state.adminStateUp : undefined;
             inputs["allFixedIps"] = state ? state.allFixedIps : undefined;
@@ -277,7 +278,7 @@ export class Port extends pulumi.CustomResource {
             inputs["valueSpecs"] = state ? state.valueSpecs : undefined;
         } else {
             const args = argsOrState as PortArgs | undefined;
-            if ((!args || args.networkId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.networkId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'networkId'");
             }
             inputs["adminStateUp"] = args ? args.adminStateUp : undefined;
@@ -306,12 +307,8 @@ export class Port extends pulumi.CustomResource {
             inputs["allTags"] = undefined /*out*/;
             inputs["dnsAssignments"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Port.__pulumiType, name, inputs, opts);
     }

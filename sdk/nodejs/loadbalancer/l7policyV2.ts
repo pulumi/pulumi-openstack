@@ -141,7 +141,8 @@ export class L7PolicyV2 extends pulumi.CustomResource {
     constructor(name: string, args: L7PolicyV2Args, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: L7PolicyV2Args | L7PolicyV2State, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as L7PolicyV2State | undefined;
             inputs["action"] = state ? state.action : undefined;
             inputs["adminStateUp"] = state ? state.adminStateUp : undefined;
@@ -155,10 +156,10 @@ export class L7PolicyV2 extends pulumi.CustomResource {
             inputs["tenantId"] = state ? state.tenantId : undefined;
         } else {
             const args = argsOrState as L7PolicyV2Args | undefined;
-            if ((!args || args.action === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.action === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'action'");
             }
-            if ((!args || args.listenerId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.listenerId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'listenerId'");
             }
             inputs["action"] = args ? args.action : undefined;
@@ -172,12 +173,8 @@ export class L7PolicyV2 extends pulumi.CustomResource {
             inputs["region"] = args ? args.region : undefined;
             inputs["tenantId"] = args ? args.tenantId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(L7PolicyV2.__pulumiType, name, inputs, opts);
     }

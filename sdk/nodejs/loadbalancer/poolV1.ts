@@ -196,7 +196,8 @@ export class PoolV1 extends pulumi.CustomResource {
     constructor(name: string, args: PoolV1Args, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: PoolV1Args | PoolV1State, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as PoolV1State | undefined;
             inputs["lbMethod"] = state ? state.lbMethod : undefined;
             inputs["lbProvider"] = state ? state.lbProvider : undefined;
@@ -208,13 +209,13 @@ export class PoolV1 extends pulumi.CustomResource {
             inputs["tenantId"] = state ? state.tenantId : undefined;
         } else {
             const args = argsOrState as PoolV1Args | undefined;
-            if ((!args || args.lbMethod === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.lbMethod === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'lbMethod'");
             }
-            if ((!args || args.protocol === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.protocol === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'protocol'");
             }
-            if ((!args || args.subnetId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.subnetId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'subnetId'");
             }
             inputs["lbMethod"] = args ? args.lbMethod : undefined;
@@ -226,12 +227,8 @@ export class PoolV1 extends pulumi.CustomResource {
             inputs["subnetId"] = args ? args.subnetId : undefined;
             inputs["tenantId"] = args ? args.tenantId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(PoolV1.__pulumiType, name, inputs, opts);
     }

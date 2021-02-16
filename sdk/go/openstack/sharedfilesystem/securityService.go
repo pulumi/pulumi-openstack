@@ -288,6 +288,85 @@ func (i *SecurityService) ToSecurityServiceOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityServiceOutput)
 }
 
+func (i *SecurityService) ToSecurityServicePtrOutput() SecurityServicePtrOutput {
+	return i.ToSecurityServicePtrOutputWithContext(context.Background())
+}
+
+func (i *SecurityService) ToSecurityServicePtrOutputWithContext(ctx context.Context) SecurityServicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityServicePtrOutput)
+}
+
+type SecurityServicePtrInput interface {
+	pulumi.Input
+
+	ToSecurityServicePtrOutput() SecurityServicePtrOutput
+	ToSecurityServicePtrOutputWithContext(ctx context.Context) SecurityServicePtrOutput
+}
+
+type securityServicePtrType SecurityServiceArgs
+
+func (*securityServicePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityService)(nil))
+}
+
+func (i *securityServicePtrType) ToSecurityServicePtrOutput() SecurityServicePtrOutput {
+	return i.ToSecurityServicePtrOutputWithContext(context.Background())
+}
+
+func (i *securityServicePtrType) ToSecurityServicePtrOutputWithContext(ctx context.Context) SecurityServicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityServicePtrOutput)
+}
+
+// SecurityServiceArrayInput is an input type that accepts SecurityServiceArray and SecurityServiceArrayOutput values.
+// You can construct a concrete instance of `SecurityServiceArrayInput` via:
+//
+//          SecurityServiceArray{ SecurityServiceArgs{...} }
+type SecurityServiceArrayInput interface {
+	pulumi.Input
+
+	ToSecurityServiceArrayOutput() SecurityServiceArrayOutput
+	ToSecurityServiceArrayOutputWithContext(context.Context) SecurityServiceArrayOutput
+}
+
+type SecurityServiceArray []SecurityServiceInput
+
+func (SecurityServiceArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*SecurityService)(nil))
+}
+
+func (i SecurityServiceArray) ToSecurityServiceArrayOutput() SecurityServiceArrayOutput {
+	return i.ToSecurityServiceArrayOutputWithContext(context.Background())
+}
+
+func (i SecurityServiceArray) ToSecurityServiceArrayOutputWithContext(ctx context.Context) SecurityServiceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityServiceArrayOutput)
+}
+
+// SecurityServiceMapInput is an input type that accepts SecurityServiceMap and SecurityServiceMapOutput values.
+// You can construct a concrete instance of `SecurityServiceMapInput` via:
+//
+//          SecurityServiceMap{ "key": SecurityServiceArgs{...} }
+type SecurityServiceMapInput interface {
+	pulumi.Input
+
+	ToSecurityServiceMapOutput() SecurityServiceMapOutput
+	ToSecurityServiceMapOutputWithContext(context.Context) SecurityServiceMapOutput
+}
+
+type SecurityServiceMap map[string]SecurityServiceInput
+
+func (SecurityServiceMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*SecurityService)(nil))
+}
+
+func (i SecurityServiceMap) ToSecurityServiceMapOutput() SecurityServiceMapOutput {
+	return i.ToSecurityServiceMapOutputWithContext(context.Background())
+}
+
+func (i SecurityServiceMap) ToSecurityServiceMapOutputWithContext(ctx context.Context) SecurityServiceMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityServiceMapOutput)
+}
+
 type SecurityServiceOutput struct {
 	*pulumi.OutputState
 }
@@ -304,6 +383,75 @@ func (o SecurityServiceOutput) ToSecurityServiceOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o SecurityServiceOutput) ToSecurityServicePtrOutput() SecurityServicePtrOutput {
+	return o.ToSecurityServicePtrOutputWithContext(context.Background())
+}
+
+func (o SecurityServiceOutput) ToSecurityServicePtrOutputWithContext(ctx context.Context) SecurityServicePtrOutput {
+	return o.ApplyT(func(v SecurityService) *SecurityService {
+		return &v
+	}).(SecurityServicePtrOutput)
+}
+
+type SecurityServicePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SecurityServicePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityService)(nil))
+}
+
+func (o SecurityServicePtrOutput) ToSecurityServicePtrOutput() SecurityServicePtrOutput {
+	return o
+}
+
+func (o SecurityServicePtrOutput) ToSecurityServicePtrOutputWithContext(ctx context.Context) SecurityServicePtrOutput {
+	return o
+}
+
+type SecurityServiceArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityServiceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityService)(nil))
+}
+
+func (o SecurityServiceArrayOutput) ToSecurityServiceArrayOutput() SecurityServiceArrayOutput {
+	return o
+}
+
+func (o SecurityServiceArrayOutput) ToSecurityServiceArrayOutputWithContext(ctx context.Context) SecurityServiceArrayOutput {
+	return o
+}
+
+func (o SecurityServiceArrayOutput) Index(i pulumi.IntInput) SecurityServiceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityService {
+		return vs[0].([]SecurityService)[vs[1].(int)]
+	}).(SecurityServiceOutput)
+}
+
+type SecurityServiceMapOutput struct{ *pulumi.OutputState }
+
+func (SecurityServiceMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SecurityService)(nil))
+}
+
+func (o SecurityServiceMapOutput) ToSecurityServiceMapOutput() SecurityServiceMapOutput {
+	return o
+}
+
+func (o SecurityServiceMapOutput) ToSecurityServiceMapOutputWithContext(ctx context.Context) SecurityServiceMapOutput {
+	return o
+}
+
+func (o SecurityServiceMapOutput) MapIndex(k pulumi.StringInput) SecurityServiceOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SecurityService {
+		return vs[0].(map[string]SecurityService)[vs[1].(string)]
+	}).(SecurityServiceOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(SecurityServiceOutput{})
+	pulumi.RegisterOutputType(SecurityServicePtrOutput{})
+	pulumi.RegisterOutputType(SecurityServiceArrayOutput{})
+	pulumi.RegisterOutputType(SecurityServiceMapOutput{})
 }

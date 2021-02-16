@@ -129,7 +129,8 @@ export class MonitorV1 extends pulumi.CustomResource {
     constructor(name: string, args: MonitorV1Args, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: MonitorV1Args | MonitorV1State, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as MonitorV1State | undefined;
             inputs["adminStateUp"] = state ? state.adminStateUp : undefined;
             inputs["delay"] = state ? state.delay : undefined;
@@ -143,16 +144,16 @@ export class MonitorV1 extends pulumi.CustomResource {
             inputs["urlPath"] = state ? state.urlPath : undefined;
         } else {
             const args = argsOrState as MonitorV1Args | undefined;
-            if ((!args || args.delay === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.delay === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'delay'");
             }
-            if ((!args || args.maxRetries === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.maxRetries === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'maxRetries'");
             }
-            if ((!args || args.timeout === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.timeout === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'timeout'");
             }
-            if ((!args || args.type === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
             inputs["adminStateUp"] = args ? args.adminStateUp : undefined;
@@ -166,12 +167,8 @@ export class MonitorV1 extends pulumi.CustomResource {
             inputs["type"] = args ? args.type : undefined;
             inputs["urlPath"] = args ? args.urlPath : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(MonitorV1.__pulumiType, name, inputs, opts);
     }

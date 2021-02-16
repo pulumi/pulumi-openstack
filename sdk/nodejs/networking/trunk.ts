@@ -134,7 +134,8 @@ export class Trunk extends pulumi.CustomResource {
     constructor(name: string, args: TrunkArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TrunkArgs | TrunkState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as TrunkState | undefined;
             inputs["adminStateUp"] = state ? state.adminStateUp : undefined;
             inputs["allTags"] = state ? state.allTags : undefined;
@@ -147,7 +148,7 @@ export class Trunk extends pulumi.CustomResource {
             inputs["tenantId"] = state ? state.tenantId : undefined;
         } else {
             const args = argsOrState as TrunkArgs | undefined;
-            if ((!args || args.portId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.portId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'portId'");
             }
             inputs["adminStateUp"] = args ? args.adminStateUp : undefined;
@@ -160,12 +161,8 @@ export class Trunk extends pulumi.CustomResource {
             inputs["tenantId"] = args ? args.tenantId : undefined;
             inputs["allTags"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Trunk.__pulumiType, name, inputs, opts);
     }

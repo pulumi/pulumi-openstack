@@ -301,6 +301,85 @@ func (i *Trunk) ToTrunkOutputWithContext(ctx context.Context) TrunkOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TrunkOutput)
 }
 
+func (i *Trunk) ToTrunkPtrOutput() TrunkPtrOutput {
+	return i.ToTrunkPtrOutputWithContext(context.Background())
+}
+
+func (i *Trunk) ToTrunkPtrOutputWithContext(ctx context.Context) TrunkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrunkPtrOutput)
+}
+
+type TrunkPtrInput interface {
+	pulumi.Input
+
+	ToTrunkPtrOutput() TrunkPtrOutput
+	ToTrunkPtrOutputWithContext(ctx context.Context) TrunkPtrOutput
+}
+
+type trunkPtrType TrunkArgs
+
+func (*trunkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Trunk)(nil))
+}
+
+func (i *trunkPtrType) ToTrunkPtrOutput() TrunkPtrOutput {
+	return i.ToTrunkPtrOutputWithContext(context.Background())
+}
+
+func (i *trunkPtrType) ToTrunkPtrOutputWithContext(ctx context.Context) TrunkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrunkPtrOutput)
+}
+
+// TrunkArrayInput is an input type that accepts TrunkArray and TrunkArrayOutput values.
+// You can construct a concrete instance of `TrunkArrayInput` via:
+//
+//          TrunkArray{ TrunkArgs{...} }
+type TrunkArrayInput interface {
+	pulumi.Input
+
+	ToTrunkArrayOutput() TrunkArrayOutput
+	ToTrunkArrayOutputWithContext(context.Context) TrunkArrayOutput
+}
+
+type TrunkArray []TrunkInput
+
+func (TrunkArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*Trunk)(nil))
+}
+
+func (i TrunkArray) ToTrunkArrayOutput() TrunkArrayOutput {
+	return i.ToTrunkArrayOutputWithContext(context.Background())
+}
+
+func (i TrunkArray) ToTrunkArrayOutputWithContext(ctx context.Context) TrunkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrunkArrayOutput)
+}
+
+// TrunkMapInput is an input type that accepts TrunkMap and TrunkMapOutput values.
+// You can construct a concrete instance of `TrunkMapInput` via:
+//
+//          TrunkMap{ "key": TrunkArgs{...} }
+type TrunkMapInput interface {
+	pulumi.Input
+
+	ToTrunkMapOutput() TrunkMapOutput
+	ToTrunkMapOutputWithContext(context.Context) TrunkMapOutput
+}
+
+type TrunkMap map[string]TrunkInput
+
+func (TrunkMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*Trunk)(nil))
+}
+
+func (i TrunkMap) ToTrunkMapOutput() TrunkMapOutput {
+	return i.ToTrunkMapOutputWithContext(context.Background())
+}
+
+func (i TrunkMap) ToTrunkMapOutputWithContext(ctx context.Context) TrunkMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrunkMapOutput)
+}
+
 type TrunkOutput struct {
 	*pulumi.OutputState
 }
@@ -317,6 +396,75 @@ func (o TrunkOutput) ToTrunkOutputWithContext(ctx context.Context) TrunkOutput {
 	return o
 }
 
+func (o TrunkOutput) ToTrunkPtrOutput() TrunkPtrOutput {
+	return o.ToTrunkPtrOutputWithContext(context.Background())
+}
+
+func (o TrunkOutput) ToTrunkPtrOutputWithContext(ctx context.Context) TrunkPtrOutput {
+	return o.ApplyT(func(v Trunk) *Trunk {
+		return &v
+	}).(TrunkPtrOutput)
+}
+
+type TrunkPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (TrunkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Trunk)(nil))
+}
+
+func (o TrunkPtrOutput) ToTrunkPtrOutput() TrunkPtrOutput {
+	return o
+}
+
+func (o TrunkPtrOutput) ToTrunkPtrOutputWithContext(ctx context.Context) TrunkPtrOutput {
+	return o
+}
+
+type TrunkArrayOutput struct{ *pulumi.OutputState }
+
+func (TrunkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Trunk)(nil))
+}
+
+func (o TrunkArrayOutput) ToTrunkArrayOutput() TrunkArrayOutput {
+	return o
+}
+
+func (o TrunkArrayOutput) ToTrunkArrayOutputWithContext(ctx context.Context) TrunkArrayOutput {
+	return o
+}
+
+func (o TrunkArrayOutput) Index(i pulumi.IntInput) TrunkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Trunk {
+		return vs[0].([]Trunk)[vs[1].(int)]
+	}).(TrunkOutput)
+}
+
+type TrunkMapOutput struct{ *pulumi.OutputState }
+
+func (TrunkMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Trunk)(nil))
+}
+
+func (o TrunkMapOutput) ToTrunkMapOutput() TrunkMapOutput {
+	return o
+}
+
+func (o TrunkMapOutput) ToTrunkMapOutputWithContext(ctx context.Context) TrunkMapOutput {
+	return o
+}
+
+func (o TrunkMapOutput) MapIndex(k pulumi.StringInput) TrunkOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Trunk {
+		return vs[0].(map[string]Trunk)[vs[1].(string)]
+	}).(TrunkOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(TrunkOutput{})
+	pulumi.RegisterOutputType(TrunkPtrOutput{})
+	pulumi.RegisterOutputType(TrunkArrayOutput{})
+	pulumi.RegisterOutputType(TrunkMapOutput{})
 }

@@ -112,7 +112,8 @@ export class RbacPolicyV2 extends pulumi.CustomResource {
     constructor(name: string, args: RbacPolicyV2Args, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RbacPolicyV2Args | RbacPolicyV2State, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as RbacPolicyV2State | undefined;
             inputs["action"] = state ? state.action : undefined;
             inputs["objectId"] = state ? state.objectId : undefined;
@@ -122,16 +123,16 @@ export class RbacPolicyV2 extends pulumi.CustomResource {
             inputs["targetTenant"] = state ? state.targetTenant : undefined;
         } else {
             const args = argsOrState as RbacPolicyV2Args | undefined;
-            if ((!args || args.action === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.action === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'action'");
             }
-            if ((!args || args.objectId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.objectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'objectId'");
             }
-            if ((!args || args.objectType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.objectType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'objectType'");
             }
-            if ((!args || args.targetTenant === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.targetTenant === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'targetTenant'");
             }
             inputs["action"] = args ? args.action : undefined;
@@ -141,12 +142,8 @@ export class RbacPolicyV2 extends pulumi.CustomResource {
             inputs["targetTenant"] = args ? args.targetTenant : undefined;
             inputs["projectId"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(RbacPolicyV2.__pulumiType, name, inputs, opts);
     }

@@ -489,6 +489,85 @@ func (i *ContainerObject) ToContainerObjectOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerObjectOutput)
 }
 
+func (i *ContainerObject) ToContainerObjectPtrOutput() ContainerObjectPtrOutput {
+	return i.ToContainerObjectPtrOutputWithContext(context.Background())
+}
+
+func (i *ContainerObject) ToContainerObjectPtrOutputWithContext(ctx context.Context) ContainerObjectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerObjectPtrOutput)
+}
+
+type ContainerObjectPtrInput interface {
+	pulumi.Input
+
+	ToContainerObjectPtrOutput() ContainerObjectPtrOutput
+	ToContainerObjectPtrOutputWithContext(ctx context.Context) ContainerObjectPtrOutput
+}
+
+type containerObjectPtrType ContainerObjectArgs
+
+func (*containerObjectPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerObject)(nil))
+}
+
+func (i *containerObjectPtrType) ToContainerObjectPtrOutput() ContainerObjectPtrOutput {
+	return i.ToContainerObjectPtrOutputWithContext(context.Background())
+}
+
+func (i *containerObjectPtrType) ToContainerObjectPtrOutputWithContext(ctx context.Context) ContainerObjectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerObjectPtrOutput)
+}
+
+// ContainerObjectArrayInput is an input type that accepts ContainerObjectArray and ContainerObjectArrayOutput values.
+// You can construct a concrete instance of `ContainerObjectArrayInput` via:
+//
+//          ContainerObjectArray{ ContainerObjectArgs{...} }
+type ContainerObjectArrayInput interface {
+	pulumi.Input
+
+	ToContainerObjectArrayOutput() ContainerObjectArrayOutput
+	ToContainerObjectArrayOutputWithContext(context.Context) ContainerObjectArrayOutput
+}
+
+type ContainerObjectArray []ContainerObjectInput
+
+func (ContainerObjectArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ContainerObject)(nil))
+}
+
+func (i ContainerObjectArray) ToContainerObjectArrayOutput() ContainerObjectArrayOutput {
+	return i.ToContainerObjectArrayOutputWithContext(context.Background())
+}
+
+func (i ContainerObjectArray) ToContainerObjectArrayOutputWithContext(ctx context.Context) ContainerObjectArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerObjectArrayOutput)
+}
+
+// ContainerObjectMapInput is an input type that accepts ContainerObjectMap and ContainerObjectMapOutput values.
+// You can construct a concrete instance of `ContainerObjectMapInput` via:
+//
+//          ContainerObjectMap{ "key": ContainerObjectArgs{...} }
+type ContainerObjectMapInput interface {
+	pulumi.Input
+
+	ToContainerObjectMapOutput() ContainerObjectMapOutput
+	ToContainerObjectMapOutputWithContext(context.Context) ContainerObjectMapOutput
+}
+
+type ContainerObjectMap map[string]ContainerObjectInput
+
+func (ContainerObjectMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ContainerObject)(nil))
+}
+
+func (i ContainerObjectMap) ToContainerObjectMapOutput() ContainerObjectMapOutput {
+	return i.ToContainerObjectMapOutputWithContext(context.Background())
+}
+
+func (i ContainerObjectMap) ToContainerObjectMapOutputWithContext(ctx context.Context) ContainerObjectMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerObjectMapOutput)
+}
+
 type ContainerObjectOutput struct {
 	*pulumi.OutputState
 }
@@ -505,6 +584,75 @@ func (o ContainerObjectOutput) ToContainerObjectOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o ContainerObjectOutput) ToContainerObjectPtrOutput() ContainerObjectPtrOutput {
+	return o.ToContainerObjectPtrOutputWithContext(context.Background())
+}
+
+func (o ContainerObjectOutput) ToContainerObjectPtrOutputWithContext(ctx context.Context) ContainerObjectPtrOutput {
+	return o.ApplyT(func(v ContainerObject) *ContainerObject {
+		return &v
+	}).(ContainerObjectPtrOutput)
+}
+
+type ContainerObjectPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ContainerObjectPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerObject)(nil))
+}
+
+func (o ContainerObjectPtrOutput) ToContainerObjectPtrOutput() ContainerObjectPtrOutput {
+	return o
+}
+
+func (o ContainerObjectPtrOutput) ToContainerObjectPtrOutputWithContext(ctx context.Context) ContainerObjectPtrOutput {
+	return o
+}
+
+type ContainerObjectArrayOutput struct{ *pulumi.OutputState }
+
+func (ContainerObjectArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContainerObject)(nil))
+}
+
+func (o ContainerObjectArrayOutput) ToContainerObjectArrayOutput() ContainerObjectArrayOutput {
+	return o
+}
+
+func (o ContainerObjectArrayOutput) ToContainerObjectArrayOutputWithContext(ctx context.Context) ContainerObjectArrayOutput {
+	return o
+}
+
+func (o ContainerObjectArrayOutput) Index(i pulumi.IntInput) ContainerObjectOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContainerObject {
+		return vs[0].([]ContainerObject)[vs[1].(int)]
+	}).(ContainerObjectOutput)
+}
+
+type ContainerObjectMapOutput struct{ *pulumi.OutputState }
+
+func (ContainerObjectMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ContainerObject)(nil))
+}
+
+func (o ContainerObjectMapOutput) ToContainerObjectMapOutput() ContainerObjectMapOutput {
+	return o
+}
+
+func (o ContainerObjectMapOutput) ToContainerObjectMapOutputWithContext(ctx context.Context) ContainerObjectMapOutput {
+	return o
+}
+
+func (o ContainerObjectMapOutput) MapIndex(k pulumi.StringInput) ContainerObjectOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ContainerObject {
+		return vs[0].(map[string]ContainerObject)[vs[1].(string)]
+	}).(ContainerObjectOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ContainerObjectOutput{})
+	pulumi.RegisterOutputType(ContainerObjectPtrOutput{})
+	pulumi.RegisterOutputType(ContainerObjectArrayOutput{})
+	pulumi.RegisterOutputType(ContainerObjectMapOutput{})
 }

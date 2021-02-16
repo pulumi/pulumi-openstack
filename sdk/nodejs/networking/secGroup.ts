@@ -88,7 +88,8 @@ export class SecGroup extends pulumi.CustomResource {
     constructor(name: string, args?: SecGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SecGroupArgs | SecGroupState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as SecGroupState | undefined;
             inputs["allTags"] = state ? state.allTags : undefined;
             inputs["deleteDefaultRules"] = state ? state.deleteDefaultRules : undefined;
@@ -107,12 +108,8 @@ export class SecGroup extends pulumi.CustomResource {
             inputs["tenantId"] = args ? args.tenantId : undefined;
             inputs["allTags"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(SecGroup.__pulumiType, name, inputs, opts);
     }

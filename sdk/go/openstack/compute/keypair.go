@@ -182,6 +182,85 @@ func (i *Keypair) ToKeypairOutputWithContext(ctx context.Context) KeypairOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(KeypairOutput)
 }
 
+func (i *Keypair) ToKeypairPtrOutput() KeypairPtrOutput {
+	return i.ToKeypairPtrOutputWithContext(context.Background())
+}
+
+func (i *Keypair) ToKeypairPtrOutputWithContext(ctx context.Context) KeypairPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeypairPtrOutput)
+}
+
+type KeypairPtrInput interface {
+	pulumi.Input
+
+	ToKeypairPtrOutput() KeypairPtrOutput
+	ToKeypairPtrOutputWithContext(ctx context.Context) KeypairPtrOutput
+}
+
+type keypairPtrType KeypairArgs
+
+func (*keypairPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Keypair)(nil))
+}
+
+func (i *keypairPtrType) ToKeypairPtrOutput() KeypairPtrOutput {
+	return i.ToKeypairPtrOutputWithContext(context.Background())
+}
+
+func (i *keypairPtrType) ToKeypairPtrOutputWithContext(ctx context.Context) KeypairPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeypairPtrOutput)
+}
+
+// KeypairArrayInput is an input type that accepts KeypairArray and KeypairArrayOutput values.
+// You can construct a concrete instance of `KeypairArrayInput` via:
+//
+//          KeypairArray{ KeypairArgs{...} }
+type KeypairArrayInput interface {
+	pulumi.Input
+
+	ToKeypairArrayOutput() KeypairArrayOutput
+	ToKeypairArrayOutputWithContext(context.Context) KeypairArrayOutput
+}
+
+type KeypairArray []KeypairInput
+
+func (KeypairArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*Keypair)(nil))
+}
+
+func (i KeypairArray) ToKeypairArrayOutput() KeypairArrayOutput {
+	return i.ToKeypairArrayOutputWithContext(context.Background())
+}
+
+func (i KeypairArray) ToKeypairArrayOutputWithContext(ctx context.Context) KeypairArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeypairArrayOutput)
+}
+
+// KeypairMapInput is an input type that accepts KeypairMap and KeypairMapOutput values.
+// You can construct a concrete instance of `KeypairMapInput` via:
+//
+//          KeypairMap{ "key": KeypairArgs{...} }
+type KeypairMapInput interface {
+	pulumi.Input
+
+	ToKeypairMapOutput() KeypairMapOutput
+	ToKeypairMapOutputWithContext(context.Context) KeypairMapOutput
+}
+
+type KeypairMap map[string]KeypairInput
+
+func (KeypairMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*Keypair)(nil))
+}
+
+func (i KeypairMap) ToKeypairMapOutput() KeypairMapOutput {
+	return i.ToKeypairMapOutputWithContext(context.Background())
+}
+
+func (i KeypairMap) ToKeypairMapOutputWithContext(ctx context.Context) KeypairMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeypairMapOutput)
+}
+
 type KeypairOutput struct {
 	*pulumi.OutputState
 }
@@ -198,6 +277,75 @@ func (o KeypairOutput) ToKeypairOutputWithContext(ctx context.Context) KeypairOu
 	return o
 }
 
+func (o KeypairOutput) ToKeypairPtrOutput() KeypairPtrOutput {
+	return o.ToKeypairPtrOutputWithContext(context.Background())
+}
+
+func (o KeypairOutput) ToKeypairPtrOutputWithContext(ctx context.Context) KeypairPtrOutput {
+	return o.ApplyT(func(v Keypair) *Keypair {
+		return &v
+	}).(KeypairPtrOutput)
+}
+
+type KeypairPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (KeypairPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Keypair)(nil))
+}
+
+func (o KeypairPtrOutput) ToKeypairPtrOutput() KeypairPtrOutput {
+	return o
+}
+
+func (o KeypairPtrOutput) ToKeypairPtrOutputWithContext(ctx context.Context) KeypairPtrOutput {
+	return o
+}
+
+type KeypairArrayOutput struct{ *pulumi.OutputState }
+
+func (KeypairArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Keypair)(nil))
+}
+
+func (o KeypairArrayOutput) ToKeypairArrayOutput() KeypairArrayOutput {
+	return o
+}
+
+func (o KeypairArrayOutput) ToKeypairArrayOutputWithContext(ctx context.Context) KeypairArrayOutput {
+	return o
+}
+
+func (o KeypairArrayOutput) Index(i pulumi.IntInput) KeypairOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Keypair {
+		return vs[0].([]Keypair)[vs[1].(int)]
+	}).(KeypairOutput)
+}
+
+type KeypairMapOutput struct{ *pulumi.OutputState }
+
+func (KeypairMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Keypair)(nil))
+}
+
+func (o KeypairMapOutput) ToKeypairMapOutput() KeypairMapOutput {
+	return o
+}
+
+func (o KeypairMapOutput) ToKeypairMapOutputWithContext(ctx context.Context) KeypairMapOutput {
+	return o
+}
+
+func (o KeypairMapOutput) MapIndex(k pulumi.StringInput) KeypairOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Keypair {
+		return vs[0].(map[string]Keypair)[vs[1].(string)]
+	}).(KeypairOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(KeypairOutput{})
+	pulumi.RegisterOutputType(KeypairPtrOutput{})
+	pulumi.RegisterOutputType(KeypairArrayOutput{})
+	pulumi.RegisterOutputType(KeypairMapOutput{})
 }

@@ -148,7 +148,8 @@ export class L7RuleV2 extends pulumi.CustomResource {
     constructor(name: string, args: L7RuleV2Args, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: L7RuleV2Args | L7RuleV2State, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as L7RuleV2State | undefined;
             inputs["adminStateUp"] = state ? state.adminStateUp : undefined;
             inputs["compareType"] = state ? state.compareType : undefined;
@@ -162,16 +163,16 @@ export class L7RuleV2 extends pulumi.CustomResource {
             inputs["value"] = state ? state.value : undefined;
         } else {
             const args = argsOrState as L7RuleV2Args | undefined;
-            if ((!args || args.compareType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.compareType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'compareType'");
             }
-            if ((!args || args.l7policyId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.l7policyId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'l7policyId'");
             }
-            if ((!args || args.type === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            if ((!args || args.value === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.value === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
             inputs["adminStateUp"] = args ? args.adminStateUp : undefined;
@@ -185,12 +186,8 @@ export class L7RuleV2 extends pulumi.CustomResource {
             inputs["value"] = args ? args.value : undefined;
             inputs["listenerId"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(L7RuleV2.__pulumiType, name, inputs, opts);
     }

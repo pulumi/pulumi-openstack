@@ -192,7 +192,8 @@ export class Image extends pulumi.CustomResource {
     constructor(name: string, args: ImageArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ImageArgs | ImageState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ImageState | undefined;
             inputs["checksum"] = state ? state.checksum : undefined;
             inputs["containerFormat"] = state ? state.containerFormat : undefined;
@@ -224,10 +225,10 @@ export class Image extends pulumi.CustomResource {
             inputs["webDownload"] = state ? state.webDownload : undefined;
         } else {
             const args = argsOrState as ImageArgs | undefined;
-            if ((!args || args.containerFormat === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.containerFormat === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'containerFormat'");
             }
-            if ((!args || args.diskFormat === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.diskFormat === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'diskFormat'");
             }
             inputs["containerFormat"] = args ? args.containerFormat : undefined;
@@ -259,12 +260,8 @@ export class Image extends pulumi.CustomResource {
             inputs["updateAt"] = undefined /*out*/;
             inputs["updatedAt"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Image.__pulumiType, name, inputs, opts);
     }

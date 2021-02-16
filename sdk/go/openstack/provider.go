@@ -28,38 +28,11 @@ func NewProvider(ctx *pulumi.Context,
 	if args.AllowReauth == nil {
 		args.AllowReauth = pulumi.BoolPtr(getEnvOrDefault(false, parseEnvBool, "OS_ALLOW_REAUTH").(bool))
 	}
-	if args.ApplicationCredentialId == nil {
-		args.ApplicationCredentialId = pulumi.StringPtr(getEnvOrDefault("", nil, "OS_APPLICATION_CREDENTIAL_ID").(string))
-	}
-	if args.ApplicationCredentialName == nil {
-		args.ApplicationCredentialName = pulumi.StringPtr(getEnvOrDefault("", nil, "OS_APPLICATION_CREDENTIAL_NAME").(string))
-	}
-	if args.ApplicationCredentialSecret == nil {
-		args.ApplicationCredentialSecret = pulumi.StringPtr(getEnvOrDefault("", nil, "OS_APPLICATION_CREDENTIAL_SECRET").(string))
-	}
-	if args.AuthUrl == nil {
-		args.AuthUrl = pulumi.StringPtr(getEnvOrDefault("", nil, "OS_AUTH_URL").(string))
-	}
-	if args.CacertFile == nil {
-		args.CacertFile = pulumi.StringPtr(getEnvOrDefault("", nil, "OS_CACERT").(string))
-	}
-	if args.Cert == nil {
-		args.Cert = pulumi.StringPtr(getEnvOrDefault("", nil, "OS_CERT").(string))
-	}
 	if args.Cloud == nil {
 		args.Cloud = pulumi.StringPtr(getEnvOrDefault("", nil, "OS_CLOUD").(string))
 	}
-	if args.DefaultDomain == nil {
-		args.DefaultDomain = pulumi.StringPtr(getEnvOrDefault("default", nil, "OS_DEFAULT_DOMAIN").(string))
-	}
 	if args.DelayedAuth == nil {
 		args.DelayedAuth = pulumi.BoolPtr(getEnvOrDefault(false, parseEnvBool, "OS_DELAYED_AUTH").(bool))
-	}
-	if args.DomainId == nil {
-		args.DomainId = pulumi.StringPtr(getEnvOrDefault("", nil, "OS_DOMAIN_ID").(string))
-	}
-	if args.DomainName == nil {
-		args.DomainName = pulumi.StringPtr(getEnvOrDefault("", nil, "OS_DOMAIN_NAME").(string))
 	}
 	if args.EndpointType == nil {
 		args.EndpointType = pulumi.StringPtr(getEnvOrDefault("", nil, "OS_ENDPOINT_TYPE").(string))
@@ -67,47 +40,14 @@ func NewProvider(ctx *pulumi.Context,
 	if args.Insecure == nil {
 		args.Insecure = pulumi.BoolPtr(getEnvOrDefault(false, parseEnvBool, "OS_INSECURE").(bool))
 	}
-	if args.Key == nil {
-		args.Key = pulumi.StringPtr(getEnvOrDefault("", nil, "OS_KEY").(string))
-	}
-	if args.Password == nil {
-		args.Password = pulumi.StringPtr(getEnvOrDefault("", nil, "OS_PASSWORD").(string))
-	}
-	if args.ProjectDomainId == nil {
-		args.ProjectDomainId = pulumi.StringPtr(getEnvOrDefault("", nil, "OS_PROJECT_DOMAIN_ID").(string))
-	}
-	if args.ProjectDomainName == nil {
-		args.ProjectDomainName = pulumi.StringPtr(getEnvOrDefault("", nil, "OS_PROJECT_DOMAIN_NAME").(string))
-	}
 	if args.Region == nil {
 		args.Region = pulumi.StringPtr(getEnvOrDefault("", nil, "OS_REGION_NAME").(string))
 	}
 	if args.Swauth == nil {
 		args.Swauth = pulumi.BoolPtr(getEnvOrDefault(false, parseEnvBool, "OS_SWAUTH").(bool))
 	}
-	if args.TenantId == nil {
-		args.TenantId = pulumi.StringPtr(getEnvOrDefault("", nil, "OS_TENANT_ID", "OS_PROJECT_ID").(string))
-	}
-	if args.TenantName == nil {
-		args.TenantName = pulumi.StringPtr(getEnvOrDefault("", nil, "OS_TENANT_NAME", "OS_PROJECT_NAME").(string))
-	}
-	if args.Token == nil {
-		args.Token = pulumi.StringPtr(getEnvOrDefault("", nil, "OS_TOKEN", "OS_AUTH_TOKEN").(string))
-	}
 	if args.UseOctavia == nil {
 		args.UseOctavia = pulumi.BoolPtr(getEnvOrDefault(false, parseEnvBool, "OS_USE_OCTAVIA").(bool))
-	}
-	if args.UserDomainId == nil {
-		args.UserDomainId = pulumi.StringPtr(getEnvOrDefault("", nil, "OS_USER_DOMAIN_ID").(string))
-	}
-	if args.UserDomainName == nil {
-		args.UserDomainName = pulumi.StringPtr(getEnvOrDefault("", nil, "OS_USER_DOMAIN_NAME").(string))
-	}
-	if args.UserId == nil {
-		args.UserId = pulumi.StringPtr(getEnvOrDefault("", nil, "OS_USER_ID").(string))
-	}
-	if args.UserName == nil {
-		args.UserName = pulumi.StringPtr(getEnvOrDefault("", nil, "OS_USERNAME").(string))
 	}
 	var resource Provider
 	err := ctx.RegisterResource("pulumi:providers:openstack", name, args, &resource, opts...)
@@ -273,6 +213,35 @@ func (i *Provider) ToProviderOutputWithContext(ctx context.Context) ProviderOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ProviderOutput)
 }
 
+func (i *Provider) ToProviderPtrOutput() ProviderPtrOutput {
+	return i.ToProviderPtrOutputWithContext(context.Background())
+}
+
+func (i *Provider) ToProviderPtrOutputWithContext(ctx context.Context) ProviderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderPtrOutput)
+}
+
+type ProviderPtrInput interface {
+	pulumi.Input
+
+	ToProviderPtrOutput() ProviderPtrOutput
+	ToProviderPtrOutputWithContext(ctx context.Context) ProviderPtrOutput
+}
+
+type providerPtrType ProviderArgs
+
+func (*providerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Provider)(nil))
+}
+
+func (i *providerPtrType) ToProviderPtrOutput() ProviderPtrOutput {
+	return i.ToProviderPtrOutputWithContext(context.Background())
+}
+
+func (i *providerPtrType) ToProviderPtrOutputWithContext(ctx context.Context) ProviderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderPtrOutput)
+}
+
 type ProviderOutput struct {
 	*pulumi.OutputState
 }
@@ -289,6 +258,33 @@ func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) Provide
 	return o
 }
 
+func (o ProviderOutput) ToProviderPtrOutput() ProviderPtrOutput {
+	return o.ToProviderPtrOutputWithContext(context.Background())
+}
+
+func (o ProviderOutput) ToProviderPtrOutputWithContext(ctx context.Context) ProviderPtrOutput {
+	return o.ApplyT(func(v Provider) *Provider {
+		return &v
+	}).(ProviderPtrOutput)
+}
+
+type ProviderPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProviderPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Provider)(nil))
+}
+
+func (o ProviderPtrOutput) ToProviderPtrOutput() ProviderPtrOutput {
+	return o
+}
+
+func (o ProviderPtrOutput) ToProviderPtrOutputWithContext(ctx context.Context) ProviderPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ProviderOutput{})
+	pulumi.RegisterOutputType(ProviderPtrOutput{})
 }

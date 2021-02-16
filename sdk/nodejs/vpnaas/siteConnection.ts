@@ -165,7 +165,8 @@ export class SiteConnection extends pulumi.CustomResource {
     constructor(name: string, args: SiteConnectionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SiteConnectionArgs | SiteConnectionState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as SiteConnectionState | undefined;
             inputs["adminStateUp"] = state ? state.adminStateUp : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -188,22 +189,22 @@ export class SiteConnection extends pulumi.CustomResource {
             inputs["vpnserviceId"] = state ? state.vpnserviceId : undefined;
         } else {
             const args = argsOrState as SiteConnectionArgs | undefined;
-            if ((!args || args.ikepolicyId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.ikepolicyId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'ikepolicyId'");
             }
-            if ((!args || args.ipsecpolicyId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.ipsecpolicyId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'ipsecpolicyId'");
             }
-            if ((!args || args.peerAddress === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.peerAddress === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'peerAddress'");
             }
-            if ((!args || args.peerId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.peerId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'peerId'");
             }
-            if ((!args || args.psk === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.psk === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'psk'");
             }
-            if ((!args || args.vpnserviceId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.vpnserviceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vpnserviceId'");
             }
             inputs["adminStateUp"] = args ? args.adminStateUp : undefined;
@@ -226,12 +227,8 @@ export class SiteConnection extends pulumi.CustomResource {
             inputs["valueSpecs"] = args ? args.valueSpecs : undefined;
             inputs["vpnserviceId"] = args ? args.vpnserviceId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(SiteConnection.__pulumiType, name, inputs, opts);
     }

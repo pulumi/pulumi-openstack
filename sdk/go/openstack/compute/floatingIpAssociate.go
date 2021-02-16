@@ -254,6 +254,85 @@ func (i *FloatingIpAssociate) ToFloatingIpAssociateOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(FloatingIpAssociateOutput)
 }
 
+func (i *FloatingIpAssociate) ToFloatingIpAssociatePtrOutput() FloatingIpAssociatePtrOutput {
+	return i.ToFloatingIpAssociatePtrOutputWithContext(context.Background())
+}
+
+func (i *FloatingIpAssociate) ToFloatingIpAssociatePtrOutputWithContext(ctx context.Context) FloatingIpAssociatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FloatingIpAssociatePtrOutput)
+}
+
+type FloatingIpAssociatePtrInput interface {
+	pulumi.Input
+
+	ToFloatingIpAssociatePtrOutput() FloatingIpAssociatePtrOutput
+	ToFloatingIpAssociatePtrOutputWithContext(ctx context.Context) FloatingIpAssociatePtrOutput
+}
+
+type floatingIpAssociatePtrType FloatingIpAssociateArgs
+
+func (*floatingIpAssociatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FloatingIpAssociate)(nil))
+}
+
+func (i *floatingIpAssociatePtrType) ToFloatingIpAssociatePtrOutput() FloatingIpAssociatePtrOutput {
+	return i.ToFloatingIpAssociatePtrOutputWithContext(context.Background())
+}
+
+func (i *floatingIpAssociatePtrType) ToFloatingIpAssociatePtrOutputWithContext(ctx context.Context) FloatingIpAssociatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FloatingIpAssociatePtrOutput)
+}
+
+// FloatingIpAssociateArrayInput is an input type that accepts FloatingIpAssociateArray and FloatingIpAssociateArrayOutput values.
+// You can construct a concrete instance of `FloatingIpAssociateArrayInput` via:
+//
+//          FloatingIpAssociateArray{ FloatingIpAssociateArgs{...} }
+type FloatingIpAssociateArrayInput interface {
+	pulumi.Input
+
+	ToFloatingIpAssociateArrayOutput() FloatingIpAssociateArrayOutput
+	ToFloatingIpAssociateArrayOutputWithContext(context.Context) FloatingIpAssociateArrayOutput
+}
+
+type FloatingIpAssociateArray []FloatingIpAssociateInput
+
+func (FloatingIpAssociateArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*FloatingIpAssociate)(nil))
+}
+
+func (i FloatingIpAssociateArray) ToFloatingIpAssociateArrayOutput() FloatingIpAssociateArrayOutput {
+	return i.ToFloatingIpAssociateArrayOutputWithContext(context.Background())
+}
+
+func (i FloatingIpAssociateArray) ToFloatingIpAssociateArrayOutputWithContext(ctx context.Context) FloatingIpAssociateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FloatingIpAssociateArrayOutput)
+}
+
+// FloatingIpAssociateMapInput is an input type that accepts FloatingIpAssociateMap and FloatingIpAssociateMapOutput values.
+// You can construct a concrete instance of `FloatingIpAssociateMapInput` via:
+//
+//          FloatingIpAssociateMap{ "key": FloatingIpAssociateArgs{...} }
+type FloatingIpAssociateMapInput interface {
+	pulumi.Input
+
+	ToFloatingIpAssociateMapOutput() FloatingIpAssociateMapOutput
+	ToFloatingIpAssociateMapOutputWithContext(context.Context) FloatingIpAssociateMapOutput
+}
+
+type FloatingIpAssociateMap map[string]FloatingIpAssociateInput
+
+func (FloatingIpAssociateMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*FloatingIpAssociate)(nil))
+}
+
+func (i FloatingIpAssociateMap) ToFloatingIpAssociateMapOutput() FloatingIpAssociateMapOutput {
+	return i.ToFloatingIpAssociateMapOutputWithContext(context.Background())
+}
+
+func (i FloatingIpAssociateMap) ToFloatingIpAssociateMapOutputWithContext(ctx context.Context) FloatingIpAssociateMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FloatingIpAssociateMapOutput)
+}
+
 type FloatingIpAssociateOutput struct {
 	*pulumi.OutputState
 }
@@ -270,6 +349,75 @@ func (o FloatingIpAssociateOutput) ToFloatingIpAssociateOutputWithContext(ctx co
 	return o
 }
 
+func (o FloatingIpAssociateOutput) ToFloatingIpAssociatePtrOutput() FloatingIpAssociatePtrOutput {
+	return o.ToFloatingIpAssociatePtrOutputWithContext(context.Background())
+}
+
+func (o FloatingIpAssociateOutput) ToFloatingIpAssociatePtrOutputWithContext(ctx context.Context) FloatingIpAssociatePtrOutput {
+	return o.ApplyT(func(v FloatingIpAssociate) *FloatingIpAssociate {
+		return &v
+	}).(FloatingIpAssociatePtrOutput)
+}
+
+type FloatingIpAssociatePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (FloatingIpAssociatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FloatingIpAssociate)(nil))
+}
+
+func (o FloatingIpAssociatePtrOutput) ToFloatingIpAssociatePtrOutput() FloatingIpAssociatePtrOutput {
+	return o
+}
+
+func (o FloatingIpAssociatePtrOutput) ToFloatingIpAssociatePtrOutputWithContext(ctx context.Context) FloatingIpAssociatePtrOutput {
+	return o
+}
+
+type FloatingIpAssociateArrayOutput struct{ *pulumi.OutputState }
+
+func (FloatingIpAssociateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FloatingIpAssociate)(nil))
+}
+
+func (o FloatingIpAssociateArrayOutput) ToFloatingIpAssociateArrayOutput() FloatingIpAssociateArrayOutput {
+	return o
+}
+
+func (o FloatingIpAssociateArrayOutput) ToFloatingIpAssociateArrayOutputWithContext(ctx context.Context) FloatingIpAssociateArrayOutput {
+	return o
+}
+
+func (o FloatingIpAssociateArrayOutput) Index(i pulumi.IntInput) FloatingIpAssociateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FloatingIpAssociate {
+		return vs[0].([]FloatingIpAssociate)[vs[1].(int)]
+	}).(FloatingIpAssociateOutput)
+}
+
+type FloatingIpAssociateMapOutput struct{ *pulumi.OutputState }
+
+func (FloatingIpAssociateMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]FloatingIpAssociate)(nil))
+}
+
+func (o FloatingIpAssociateMapOutput) ToFloatingIpAssociateMapOutput() FloatingIpAssociateMapOutput {
+	return o
+}
+
+func (o FloatingIpAssociateMapOutput) ToFloatingIpAssociateMapOutputWithContext(ctx context.Context) FloatingIpAssociateMapOutput {
+	return o
+}
+
+func (o FloatingIpAssociateMapOutput) MapIndex(k pulumi.StringInput) FloatingIpAssociateOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) FloatingIpAssociate {
+		return vs[0].(map[string]FloatingIpAssociate)[vs[1].(string)]
+	}).(FloatingIpAssociateOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(FloatingIpAssociateOutput{})
+	pulumi.RegisterOutputType(FloatingIpAssociatePtrOutput{})
+	pulumi.RegisterOutputType(FloatingIpAssociateArrayOutput{})
+	pulumi.RegisterOutputType(FloatingIpAssociateMapOutput{})
 }

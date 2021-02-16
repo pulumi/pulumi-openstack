@@ -194,6 +194,85 @@ func (i *SecGroup) ToSecGroupOutputWithContext(ctx context.Context) SecGroupOutp
 	return pulumi.ToOutputWithContext(ctx, i).(SecGroupOutput)
 }
 
+func (i *SecGroup) ToSecGroupPtrOutput() SecGroupPtrOutput {
+	return i.ToSecGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *SecGroup) ToSecGroupPtrOutputWithContext(ctx context.Context) SecGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecGroupPtrOutput)
+}
+
+type SecGroupPtrInput interface {
+	pulumi.Input
+
+	ToSecGroupPtrOutput() SecGroupPtrOutput
+	ToSecGroupPtrOutputWithContext(ctx context.Context) SecGroupPtrOutput
+}
+
+type secGroupPtrType SecGroupArgs
+
+func (*secGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecGroup)(nil))
+}
+
+func (i *secGroupPtrType) ToSecGroupPtrOutput() SecGroupPtrOutput {
+	return i.ToSecGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *secGroupPtrType) ToSecGroupPtrOutputWithContext(ctx context.Context) SecGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecGroupPtrOutput)
+}
+
+// SecGroupArrayInput is an input type that accepts SecGroupArray and SecGroupArrayOutput values.
+// You can construct a concrete instance of `SecGroupArrayInput` via:
+//
+//          SecGroupArray{ SecGroupArgs{...} }
+type SecGroupArrayInput interface {
+	pulumi.Input
+
+	ToSecGroupArrayOutput() SecGroupArrayOutput
+	ToSecGroupArrayOutputWithContext(context.Context) SecGroupArrayOutput
+}
+
+type SecGroupArray []SecGroupInput
+
+func (SecGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*SecGroup)(nil))
+}
+
+func (i SecGroupArray) ToSecGroupArrayOutput() SecGroupArrayOutput {
+	return i.ToSecGroupArrayOutputWithContext(context.Background())
+}
+
+func (i SecGroupArray) ToSecGroupArrayOutputWithContext(ctx context.Context) SecGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecGroupArrayOutput)
+}
+
+// SecGroupMapInput is an input type that accepts SecGroupMap and SecGroupMapOutput values.
+// You can construct a concrete instance of `SecGroupMapInput` via:
+//
+//          SecGroupMap{ "key": SecGroupArgs{...} }
+type SecGroupMapInput interface {
+	pulumi.Input
+
+	ToSecGroupMapOutput() SecGroupMapOutput
+	ToSecGroupMapOutputWithContext(context.Context) SecGroupMapOutput
+}
+
+type SecGroupMap map[string]SecGroupInput
+
+func (SecGroupMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*SecGroup)(nil))
+}
+
+func (i SecGroupMap) ToSecGroupMapOutput() SecGroupMapOutput {
+	return i.ToSecGroupMapOutputWithContext(context.Background())
+}
+
+func (i SecGroupMap) ToSecGroupMapOutputWithContext(ctx context.Context) SecGroupMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecGroupMapOutput)
+}
+
 type SecGroupOutput struct {
 	*pulumi.OutputState
 }
@@ -210,6 +289,75 @@ func (o SecGroupOutput) ToSecGroupOutputWithContext(ctx context.Context) SecGrou
 	return o
 }
 
+func (o SecGroupOutput) ToSecGroupPtrOutput() SecGroupPtrOutput {
+	return o.ToSecGroupPtrOutputWithContext(context.Background())
+}
+
+func (o SecGroupOutput) ToSecGroupPtrOutputWithContext(ctx context.Context) SecGroupPtrOutput {
+	return o.ApplyT(func(v SecGroup) *SecGroup {
+		return &v
+	}).(SecGroupPtrOutput)
+}
+
+type SecGroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SecGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecGroup)(nil))
+}
+
+func (o SecGroupPtrOutput) ToSecGroupPtrOutput() SecGroupPtrOutput {
+	return o
+}
+
+func (o SecGroupPtrOutput) ToSecGroupPtrOutputWithContext(ctx context.Context) SecGroupPtrOutput {
+	return o
+}
+
+type SecGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (SecGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecGroup)(nil))
+}
+
+func (o SecGroupArrayOutput) ToSecGroupArrayOutput() SecGroupArrayOutput {
+	return o
+}
+
+func (o SecGroupArrayOutput) ToSecGroupArrayOutputWithContext(ctx context.Context) SecGroupArrayOutput {
+	return o
+}
+
+func (o SecGroupArrayOutput) Index(i pulumi.IntInput) SecGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecGroup {
+		return vs[0].([]SecGroup)[vs[1].(int)]
+	}).(SecGroupOutput)
+}
+
+type SecGroupMapOutput struct{ *pulumi.OutputState }
+
+func (SecGroupMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SecGroup)(nil))
+}
+
+func (o SecGroupMapOutput) ToSecGroupMapOutput() SecGroupMapOutput {
+	return o
+}
+
+func (o SecGroupMapOutput) ToSecGroupMapOutputWithContext(ctx context.Context) SecGroupMapOutput {
+	return o
+}
+
+func (o SecGroupMapOutput) MapIndex(k pulumi.StringInput) SecGroupOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SecGroup {
+		return vs[0].(map[string]SecGroup)[vs[1].(string)]
+	}).(SecGroupOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(SecGroupOutput{})
+	pulumi.RegisterOutputType(SecGroupPtrOutput{})
+	pulumi.RegisterOutputType(SecGroupArrayOutput{})
+	pulumi.RegisterOutputType(SecGroupMapOutput{})
 }

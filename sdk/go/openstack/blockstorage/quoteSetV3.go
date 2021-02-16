@@ -279,6 +279,85 @@ func (i *QuoteSetV3) ToQuoteSetV3OutputWithContext(ctx context.Context) QuoteSet
 	return pulumi.ToOutputWithContext(ctx, i).(QuoteSetV3Output)
 }
 
+func (i *QuoteSetV3) ToQuoteSetV3PtrOutput() QuoteSetV3PtrOutput {
+	return i.ToQuoteSetV3PtrOutputWithContext(context.Background())
+}
+
+func (i *QuoteSetV3) ToQuoteSetV3PtrOutputWithContext(ctx context.Context) QuoteSetV3PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QuoteSetV3PtrOutput)
+}
+
+type QuoteSetV3PtrInput interface {
+	pulumi.Input
+
+	ToQuoteSetV3PtrOutput() QuoteSetV3PtrOutput
+	ToQuoteSetV3PtrOutputWithContext(ctx context.Context) QuoteSetV3PtrOutput
+}
+
+type quoteSetV3PtrType QuoteSetV3Args
+
+func (*quoteSetV3PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**QuoteSetV3)(nil))
+}
+
+func (i *quoteSetV3PtrType) ToQuoteSetV3PtrOutput() QuoteSetV3PtrOutput {
+	return i.ToQuoteSetV3PtrOutputWithContext(context.Background())
+}
+
+func (i *quoteSetV3PtrType) ToQuoteSetV3PtrOutputWithContext(ctx context.Context) QuoteSetV3PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QuoteSetV3PtrOutput)
+}
+
+// QuoteSetV3ArrayInput is an input type that accepts QuoteSetV3Array and QuoteSetV3ArrayOutput values.
+// You can construct a concrete instance of `QuoteSetV3ArrayInput` via:
+//
+//          QuoteSetV3Array{ QuoteSetV3Args{...} }
+type QuoteSetV3ArrayInput interface {
+	pulumi.Input
+
+	ToQuoteSetV3ArrayOutput() QuoteSetV3ArrayOutput
+	ToQuoteSetV3ArrayOutputWithContext(context.Context) QuoteSetV3ArrayOutput
+}
+
+type QuoteSetV3Array []QuoteSetV3Input
+
+func (QuoteSetV3Array) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*QuoteSetV3)(nil))
+}
+
+func (i QuoteSetV3Array) ToQuoteSetV3ArrayOutput() QuoteSetV3ArrayOutput {
+	return i.ToQuoteSetV3ArrayOutputWithContext(context.Background())
+}
+
+func (i QuoteSetV3Array) ToQuoteSetV3ArrayOutputWithContext(ctx context.Context) QuoteSetV3ArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QuoteSetV3ArrayOutput)
+}
+
+// QuoteSetV3MapInput is an input type that accepts QuoteSetV3Map and QuoteSetV3MapOutput values.
+// You can construct a concrete instance of `QuoteSetV3MapInput` via:
+//
+//          QuoteSetV3Map{ "key": QuoteSetV3Args{...} }
+type QuoteSetV3MapInput interface {
+	pulumi.Input
+
+	ToQuoteSetV3MapOutput() QuoteSetV3MapOutput
+	ToQuoteSetV3MapOutputWithContext(context.Context) QuoteSetV3MapOutput
+}
+
+type QuoteSetV3Map map[string]QuoteSetV3Input
+
+func (QuoteSetV3Map) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*QuoteSetV3)(nil))
+}
+
+func (i QuoteSetV3Map) ToQuoteSetV3MapOutput() QuoteSetV3MapOutput {
+	return i.ToQuoteSetV3MapOutputWithContext(context.Background())
+}
+
+func (i QuoteSetV3Map) ToQuoteSetV3MapOutputWithContext(ctx context.Context) QuoteSetV3MapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QuoteSetV3MapOutput)
+}
+
 type QuoteSetV3Output struct {
 	*pulumi.OutputState
 }
@@ -295,6 +374,75 @@ func (o QuoteSetV3Output) ToQuoteSetV3OutputWithContext(ctx context.Context) Quo
 	return o
 }
 
+func (o QuoteSetV3Output) ToQuoteSetV3PtrOutput() QuoteSetV3PtrOutput {
+	return o.ToQuoteSetV3PtrOutputWithContext(context.Background())
+}
+
+func (o QuoteSetV3Output) ToQuoteSetV3PtrOutputWithContext(ctx context.Context) QuoteSetV3PtrOutput {
+	return o.ApplyT(func(v QuoteSetV3) *QuoteSetV3 {
+		return &v
+	}).(QuoteSetV3PtrOutput)
+}
+
+type QuoteSetV3PtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (QuoteSetV3PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**QuoteSetV3)(nil))
+}
+
+func (o QuoteSetV3PtrOutput) ToQuoteSetV3PtrOutput() QuoteSetV3PtrOutput {
+	return o
+}
+
+func (o QuoteSetV3PtrOutput) ToQuoteSetV3PtrOutputWithContext(ctx context.Context) QuoteSetV3PtrOutput {
+	return o
+}
+
+type QuoteSetV3ArrayOutput struct{ *pulumi.OutputState }
+
+func (QuoteSetV3ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]QuoteSetV3)(nil))
+}
+
+func (o QuoteSetV3ArrayOutput) ToQuoteSetV3ArrayOutput() QuoteSetV3ArrayOutput {
+	return o
+}
+
+func (o QuoteSetV3ArrayOutput) ToQuoteSetV3ArrayOutputWithContext(ctx context.Context) QuoteSetV3ArrayOutput {
+	return o
+}
+
+func (o QuoteSetV3ArrayOutput) Index(i pulumi.IntInput) QuoteSetV3Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) QuoteSetV3 {
+		return vs[0].([]QuoteSetV3)[vs[1].(int)]
+	}).(QuoteSetV3Output)
+}
+
+type QuoteSetV3MapOutput struct{ *pulumi.OutputState }
+
+func (QuoteSetV3MapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]QuoteSetV3)(nil))
+}
+
+func (o QuoteSetV3MapOutput) ToQuoteSetV3MapOutput() QuoteSetV3MapOutput {
+	return o
+}
+
+func (o QuoteSetV3MapOutput) ToQuoteSetV3MapOutputWithContext(ctx context.Context) QuoteSetV3MapOutput {
+	return o
+}
+
+func (o QuoteSetV3MapOutput) MapIndex(k pulumi.StringInput) QuoteSetV3Output {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) QuoteSetV3 {
+		return vs[0].(map[string]QuoteSetV3)[vs[1].(string)]
+	}).(QuoteSetV3Output)
+}
+
 func init() {
 	pulumi.RegisterOutputType(QuoteSetV3Output{})
+	pulumi.RegisterOutputType(QuoteSetV3PtrOutput{})
+	pulumi.RegisterOutputType(QuoteSetV3ArrayOutput{})
+	pulumi.RegisterOutputType(QuoteSetV3MapOutput{})
 }

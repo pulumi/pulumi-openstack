@@ -415,6 +415,85 @@ func (i *SiteConnection) ToSiteConnectionOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(SiteConnectionOutput)
 }
 
+func (i *SiteConnection) ToSiteConnectionPtrOutput() SiteConnectionPtrOutput {
+	return i.ToSiteConnectionPtrOutputWithContext(context.Background())
+}
+
+func (i *SiteConnection) ToSiteConnectionPtrOutputWithContext(ctx context.Context) SiteConnectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteConnectionPtrOutput)
+}
+
+type SiteConnectionPtrInput interface {
+	pulumi.Input
+
+	ToSiteConnectionPtrOutput() SiteConnectionPtrOutput
+	ToSiteConnectionPtrOutputWithContext(ctx context.Context) SiteConnectionPtrOutput
+}
+
+type siteConnectionPtrType SiteConnectionArgs
+
+func (*siteConnectionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SiteConnection)(nil))
+}
+
+func (i *siteConnectionPtrType) ToSiteConnectionPtrOutput() SiteConnectionPtrOutput {
+	return i.ToSiteConnectionPtrOutputWithContext(context.Background())
+}
+
+func (i *siteConnectionPtrType) ToSiteConnectionPtrOutputWithContext(ctx context.Context) SiteConnectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteConnectionPtrOutput)
+}
+
+// SiteConnectionArrayInput is an input type that accepts SiteConnectionArray and SiteConnectionArrayOutput values.
+// You can construct a concrete instance of `SiteConnectionArrayInput` via:
+//
+//          SiteConnectionArray{ SiteConnectionArgs{...} }
+type SiteConnectionArrayInput interface {
+	pulumi.Input
+
+	ToSiteConnectionArrayOutput() SiteConnectionArrayOutput
+	ToSiteConnectionArrayOutputWithContext(context.Context) SiteConnectionArrayOutput
+}
+
+type SiteConnectionArray []SiteConnectionInput
+
+func (SiteConnectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*SiteConnection)(nil))
+}
+
+func (i SiteConnectionArray) ToSiteConnectionArrayOutput() SiteConnectionArrayOutput {
+	return i.ToSiteConnectionArrayOutputWithContext(context.Background())
+}
+
+func (i SiteConnectionArray) ToSiteConnectionArrayOutputWithContext(ctx context.Context) SiteConnectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteConnectionArrayOutput)
+}
+
+// SiteConnectionMapInput is an input type that accepts SiteConnectionMap and SiteConnectionMapOutput values.
+// You can construct a concrete instance of `SiteConnectionMapInput` via:
+//
+//          SiteConnectionMap{ "key": SiteConnectionArgs{...} }
+type SiteConnectionMapInput interface {
+	pulumi.Input
+
+	ToSiteConnectionMapOutput() SiteConnectionMapOutput
+	ToSiteConnectionMapOutputWithContext(context.Context) SiteConnectionMapOutput
+}
+
+type SiteConnectionMap map[string]SiteConnectionInput
+
+func (SiteConnectionMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*SiteConnection)(nil))
+}
+
+func (i SiteConnectionMap) ToSiteConnectionMapOutput() SiteConnectionMapOutput {
+	return i.ToSiteConnectionMapOutputWithContext(context.Background())
+}
+
+func (i SiteConnectionMap) ToSiteConnectionMapOutputWithContext(ctx context.Context) SiteConnectionMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteConnectionMapOutput)
+}
+
 type SiteConnectionOutput struct {
 	*pulumi.OutputState
 }
@@ -431,6 +510,75 @@ func (o SiteConnectionOutput) ToSiteConnectionOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o SiteConnectionOutput) ToSiteConnectionPtrOutput() SiteConnectionPtrOutput {
+	return o.ToSiteConnectionPtrOutputWithContext(context.Background())
+}
+
+func (o SiteConnectionOutput) ToSiteConnectionPtrOutputWithContext(ctx context.Context) SiteConnectionPtrOutput {
+	return o.ApplyT(func(v SiteConnection) *SiteConnection {
+		return &v
+	}).(SiteConnectionPtrOutput)
+}
+
+type SiteConnectionPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SiteConnectionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SiteConnection)(nil))
+}
+
+func (o SiteConnectionPtrOutput) ToSiteConnectionPtrOutput() SiteConnectionPtrOutput {
+	return o
+}
+
+func (o SiteConnectionPtrOutput) ToSiteConnectionPtrOutputWithContext(ctx context.Context) SiteConnectionPtrOutput {
+	return o
+}
+
+type SiteConnectionArrayOutput struct{ *pulumi.OutputState }
+
+func (SiteConnectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SiteConnection)(nil))
+}
+
+func (o SiteConnectionArrayOutput) ToSiteConnectionArrayOutput() SiteConnectionArrayOutput {
+	return o
+}
+
+func (o SiteConnectionArrayOutput) ToSiteConnectionArrayOutputWithContext(ctx context.Context) SiteConnectionArrayOutput {
+	return o
+}
+
+func (o SiteConnectionArrayOutput) Index(i pulumi.IntInput) SiteConnectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SiteConnection {
+		return vs[0].([]SiteConnection)[vs[1].(int)]
+	}).(SiteConnectionOutput)
+}
+
+type SiteConnectionMapOutput struct{ *pulumi.OutputState }
+
+func (SiteConnectionMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SiteConnection)(nil))
+}
+
+func (o SiteConnectionMapOutput) ToSiteConnectionMapOutput() SiteConnectionMapOutput {
+	return o
+}
+
+func (o SiteConnectionMapOutput) ToSiteConnectionMapOutputWithContext(ctx context.Context) SiteConnectionMapOutput {
+	return o
+}
+
+func (o SiteConnectionMapOutput) MapIndex(k pulumi.StringInput) SiteConnectionOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SiteConnection {
+		return vs[0].(map[string]SiteConnection)[vs[1].(string)]
+	}).(SiteConnectionOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(SiteConnectionOutput{})
+	pulumi.RegisterOutputType(SiteConnectionPtrOutput{})
+	pulumi.RegisterOutputType(SiteConnectionArrayOutput{})
+	pulumi.RegisterOutputType(SiteConnectionMapOutput{})
 }

@@ -80,7 +80,8 @@ export class Ec2CredentialV3 extends pulumi.CustomResource {
     constructor(name: string, args?: Ec2CredentialV3Args, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: Ec2CredentialV3Args | Ec2CredentialV3State, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as Ec2CredentialV3State | undefined;
             inputs["access"] = state ? state.access : undefined;
             inputs["projectId"] = state ? state.projectId : undefined;
@@ -97,12 +98,8 @@ export class Ec2CredentialV3 extends pulumi.CustomResource {
             inputs["secret"] = undefined /*out*/;
             inputs["trustId"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Ec2CredentialV3.__pulumiType, name, inputs, opts);
     }

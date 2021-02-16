@@ -119,7 +119,8 @@ export class IpSecPolicy extends pulumi.CustomResource {
     constructor(name: string, args?: IpSecPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: IpSecPolicyArgs | IpSecPolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as IpSecPolicyState | undefined;
             inputs["authAlgorithm"] = state ? state.authAlgorithm : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -146,12 +147,8 @@ export class IpSecPolicy extends pulumi.CustomResource {
             inputs["transformProtocol"] = args ? args.transformProtocol : undefined;
             inputs["valueSpecs"] = args ? args.valueSpecs : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(IpSecPolicy.__pulumiType, name, inputs, opts);
     }

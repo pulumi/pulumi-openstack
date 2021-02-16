@@ -164,7 +164,8 @@ export class ShareNetwork extends pulumi.CustomResource {
     constructor(name: string, args: ShareNetworkArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ShareNetworkArgs | ShareNetworkState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ShareNetworkState | undefined;
             inputs["cidr"] = state ? state.cidr : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -179,10 +180,10 @@ export class ShareNetwork extends pulumi.CustomResource {
             inputs["segmentationId"] = state ? state.segmentationId : undefined;
         } else {
             const args = argsOrState as ShareNetworkArgs | undefined;
-            if ((!args || args.neutronNetId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.neutronNetId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'neutronNetId'");
             }
-            if ((!args || args.neutronSubnetId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.neutronSubnetId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'neutronSubnetId'");
             }
             inputs["description"] = args ? args.description : undefined;
@@ -197,12 +198,8 @@ export class ShareNetwork extends pulumi.CustomResource {
             inputs["projectId"] = undefined /*out*/;
             inputs["segmentationId"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ShareNetwork.__pulumiType, name, inputs, opts);
     }

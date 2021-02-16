@@ -237,6 +237,85 @@ func (i *MemberV1) ToMemberV1OutputWithContext(ctx context.Context) MemberV1Outp
 	return pulumi.ToOutputWithContext(ctx, i).(MemberV1Output)
 }
 
+func (i *MemberV1) ToMemberV1PtrOutput() MemberV1PtrOutput {
+	return i.ToMemberV1PtrOutputWithContext(context.Background())
+}
+
+func (i *MemberV1) ToMemberV1PtrOutputWithContext(ctx context.Context) MemberV1PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MemberV1PtrOutput)
+}
+
+type MemberV1PtrInput interface {
+	pulumi.Input
+
+	ToMemberV1PtrOutput() MemberV1PtrOutput
+	ToMemberV1PtrOutputWithContext(ctx context.Context) MemberV1PtrOutput
+}
+
+type memberV1PtrType MemberV1Args
+
+func (*memberV1PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MemberV1)(nil))
+}
+
+func (i *memberV1PtrType) ToMemberV1PtrOutput() MemberV1PtrOutput {
+	return i.ToMemberV1PtrOutputWithContext(context.Background())
+}
+
+func (i *memberV1PtrType) ToMemberV1PtrOutputWithContext(ctx context.Context) MemberV1PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MemberV1PtrOutput)
+}
+
+// MemberV1ArrayInput is an input type that accepts MemberV1Array and MemberV1ArrayOutput values.
+// You can construct a concrete instance of `MemberV1ArrayInput` via:
+//
+//          MemberV1Array{ MemberV1Args{...} }
+type MemberV1ArrayInput interface {
+	pulumi.Input
+
+	ToMemberV1ArrayOutput() MemberV1ArrayOutput
+	ToMemberV1ArrayOutputWithContext(context.Context) MemberV1ArrayOutput
+}
+
+type MemberV1Array []MemberV1Input
+
+func (MemberV1Array) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*MemberV1)(nil))
+}
+
+func (i MemberV1Array) ToMemberV1ArrayOutput() MemberV1ArrayOutput {
+	return i.ToMemberV1ArrayOutputWithContext(context.Background())
+}
+
+func (i MemberV1Array) ToMemberV1ArrayOutputWithContext(ctx context.Context) MemberV1ArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MemberV1ArrayOutput)
+}
+
+// MemberV1MapInput is an input type that accepts MemberV1Map and MemberV1MapOutput values.
+// You can construct a concrete instance of `MemberV1MapInput` via:
+//
+//          MemberV1Map{ "key": MemberV1Args{...} }
+type MemberV1MapInput interface {
+	pulumi.Input
+
+	ToMemberV1MapOutput() MemberV1MapOutput
+	ToMemberV1MapOutputWithContext(context.Context) MemberV1MapOutput
+}
+
+type MemberV1Map map[string]MemberV1Input
+
+func (MemberV1Map) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*MemberV1)(nil))
+}
+
+func (i MemberV1Map) ToMemberV1MapOutput() MemberV1MapOutput {
+	return i.ToMemberV1MapOutputWithContext(context.Background())
+}
+
+func (i MemberV1Map) ToMemberV1MapOutputWithContext(ctx context.Context) MemberV1MapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MemberV1MapOutput)
+}
+
 type MemberV1Output struct {
 	*pulumi.OutputState
 }
@@ -253,6 +332,75 @@ func (o MemberV1Output) ToMemberV1OutputWithContext(ctx context.Context) MemberV
 	return o
 }
 
+func (o MemberV1Output) ToMemberV1PtrOutput() MemberV1PtrOutput {
+	return o.ToMemberV1PtrOutputWithContext(context.Background())
+}
+
+func (o MemberV1Output) ToMemberV1PtrOutputWithContext(ctx context.Context) MemberV1PtrOutput {
+	return o.ApplyT(func(v MemberV1) *MemberV1 {
+		return &v
+	}).(MemberV1PtrOutput)
+}
+
+type MemberV1PtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (MemberV1PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MemberV1)(nil))
+}
+
+func (o MemberV1PtrOutput) ToMemberV1PtrOutput() MemberV1PtrOutput {
+	return o
+}
+
+func (o MemberV1PtrOutput) ToMemberV1PtrOutputWithContext(ctx context.Context) MemberV1PtrOutput {
+	return o
+}
+
+type MemberV1ArrayOutput struct{ *pulumi.OutputState }
+
+func (MemberV1ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MemberV1)(nil))
+}
+
+func (o MemberV1ArrayOutput) ToMemberV1ArrayOutput() MemberV1ArrayOutput {
+	return o
+}
+
+func (o MemberV1ArrayOutput) ToMemberV1ArrayOutputWithContext(ctx context.Context) MemberV1ArrayOutput {
+	return o
+}
+
+func (o MemberV1ArrayOutput) Index(i pulumi.IntInput) MemberV1Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MemberV1 {
+		return vs[0].([]MemberV1)[vs[1].(int)]
+	}).(MemberV1Output)
+}
+
+type MemberV1MapOutput struct{ *pulumi.OutputState }
+
+func (MemberV1MapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]MemberV1)(nil))
+}
+
+func (o MemberV1MapOutput) ToMemberV1MapOutput() MemberV1MapOutput {
+	return o
+}
+
+func (o MemberV1MapOutput) ToMemberV1MapOutputWithContext(ctx context.Context) MemberV1MapOutput {
+	return o
+}
+
+func (o MemberV1MapOutput) MapIndex(k pulumi.StringInput) MemberV1Output {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) MemberV1 {
+		return vs[0].(map[string]MemberV1)[vs[1].(string)]
+	}).(MemberV1Output)
+}
+
 func init() {
 	pulumi.RegisterOutputType(MemberV1Output{})
+	pulumi.RegisterOutputType(MemberV1PtrOutput{})
+	pulumi.RegisterOutputType(MemberV1ArrayOutput{})
+	pulumi.RegisterOutputType(MemberV1MapOutput{})
 }

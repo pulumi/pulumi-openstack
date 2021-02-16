@@ -100,7 +100,8 @@ export class SubnetRoute extends pulumi.CustomResource {
     constructor(name: string, args: SubnetRouteArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SubnetRouteArgs | SubnetRouteState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as SubnetRouteState | undefined;
             inputs["destinationCidr"] = state ? state.destinationCidr : undefined;
             inputs["nextHop"] = state ? state.nextHop : undefined;
@@ -108,13 +109,13 @@ export class SubnetRoute extends pulumi.CustomResource {
             inputs["subnetId"] = state ? state.subnetId : undefined;
         } else {
             const args = argsOrState as SubnetRouteArgs | undefined;
-            if ((!args || args.destinationCidr === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.destinationCidr === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'destinationCidr'");
             }
-            if ((!args || args.nextHop === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.nextHop === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'nextHop'");
             }
-            if ((!args || args.subnetId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.subnetId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'subnetId'");
             }
             inputs["destinationCidr"] = args ? args.destinationCidr : undefined;
@@ -122,12 +123,8 @@ export class SubnetRoute extends pulumi.CustomResource {
             inputs["region"] = args ? args.region : undefined;
             inputs["subnetId"] = args ? args.subnetId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(SubnetRoute.__pulumiType, name, inputs, opts);
     }

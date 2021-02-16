@@ -107,7 +107,8 @@ export class ImageAccessAccept extends pulumi.CustomResource {
     constructor(name: string, args: ImageAccessAcceptArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ImageAccessAcceptArgs | ImageAccessAcceptState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ImageAccessAcceptState | undefined;
             inputs["createdAt"] = state ? state.createdAt : undefined;
             inputs["imageId"] = state ? state.imageId : undefined;
@@ -118,10 +119,10 @@ export class ImageAccessAccept extends pulumi.CustomResource {
             inputs["updatedAt"] = state ? state.updatedAt : undefined;
         } else {
             const args = argsOrState as ImageAccessAcceptArgs | undefined;
-            if ((!args || args.imageId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.imageId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'imageId'");
             }
-            if ((!args || args.status === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.status === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'status'");
             }
             inputs["imageId"] = args ? args.imageId : undefined;
@@ -132,12 +133,8 @@ export class ImageAccessAccept extends pulumi.CustomResource {
             inputs["schema"] = undefined /*out*/;
             inputs["updatedAt"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ImageAccessAccept.__pulumiType, name, inputs, opts);
     }

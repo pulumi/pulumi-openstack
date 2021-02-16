@@ -50,32 +50,32 @@ If set to `false`, OpenStack authorization won't be perfomed automatically, if t
 Defaults to `true`
 """
 
-application_credential_id = __config__.get('applicationCredentialId') or _utilities.get_env('OS_APPLICATION_CREDENTIAL_ID')
+application_credential_id = __config__.get('applicationCredentialId')
 """
 Application Credential ID to login with.
 """
 
-application_credential_name = __config__.get('applicationCredentialName') or _utilities.get_env('OS_APPLICATION_CREDENTIAL_NAME')
+application_credential_name = __config__.get('applicationCredentialName')
 """
 Application Credential name to login with.
 """
 
-application_credential_secret = __config__.get('applicationCredentialSecret') or _utilities.get_env('OS_APPLICATION_CREDENTIAL_SECRET')
+application_credential_secret = __config__.get('applicationCredentialSecret')
 """
 Application Credential secret to login with.
 """
 
-auth_url = __config__.get('authUrl') or _utilities.get_env('OS_AUTH_URL')
+auth_url = __config__.get('authUrl')
 """
 The Identity authentication URL.
 """
 
-cacert_file = __config__.get('cacertFile') or _utilities.get_env('OS_CACERT')
+cacert_file = __config__.get('cacertFile')
 """
 A Custom CA certificate.
 """
 
-cert = __config__.get('cert') or _utilities.get_env('OS_CERT')
+cert = __config__.get('cert')
 """
 A client certificate to authenticate with.
 """
@@ -85,7 +85,7 @@ cloud = __config__.get('cloud') or _utilities.get_env('OS_CLOUD')
 An entry in a `clouds.yaml` file to use.
 """
 
-default_domain = __config__.get('defaultDomain') or (_utilities.get_env('OS_DEFAULT_DOMAIN') or 'default')
+default_domain = __config__.get('defaultDomain')
 """
 The name of the Domain ID to scope to if no other domain is specified. Defaults to `default` (Identity v3).
 """
@@ -101,12 +101,12 @@ disable_no_cache_header = __config__.get('disableNoCacheHeader')
 If set to `true`, the HTTP `Cache-Control: no-cache` header will not be added by default to all API requests.
 """
 
-domain_id = __config__.get('domainId') or _utilities.get_env('OS_DOMAIN_ID')
+domain_id = __config__.get('domainId')
 """
 The ID of the Domain to scope to (Identity v3).
 """
 
-domain_name = __config__.get('domainName') or _utilities.get_env('OS_DOMAIN_NAME')
+domain_name = __config__.get('domainName')
 """
 The name of the Domain to scope to (Identity v3).
 """
@@ -123,7 +123,7 @@ insecure = __config__.get('insecure') or _utilities.get_env_bool('OS_INSECURE')
 Trust self-signed certificates.
 """
 
-key = __config__.get('key') or _utilities.get_env('OS_KEY')
+key = __config__.get('key')
 """
 A client private key to authenticate with.
 """
@@ -133,17 +133,17 @@ max_retries = __config__.get('maxRetries')
 How many times HTTP connection should be retried until giving up.
 """
 
-password = __config__.get('password') or _utilities.get_env('OS_PASSWORD')
+password = __config__.get('password')
 """
 Password to login with.
 """
 
-project_domain_id = __config__.get('projectDomainId') or _utilities.get_env('OS_PROJECT_DOMAIN_ID')
+project_domain_id = __config__.get('projectDomainId')
 """
 The ID of the domain where the proejct resides (Identity v3).
 """
 
-project_domain_name = __config__.get('projectDomainName') or _utilities.get_env('OS_PROJECT_DOMAIN_NAME')
+project_domain_name = __config__.get('projectDomainName')
 """
 The name of the domain where the project resides (Identity v3).
 """
@@ -158,17 +158,17 @@ swauth = __config__.get('swauth') or _utilities.get_env_bool('OS_SWAUTH')
 Use Swift's authentication system instead of Keystone. Only used for interaction with Swift.
 """
 
-tenant_id = __config__.get('tenantId') or _utilities.get_env('OS_TENANT_ID', 'OS_PROJECT_ID')
+tenant_id = __config__.get('tenantId')
 """
 The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.
 """
 
-tenant_name = __config__.get('tenantName') or _utilities.get_env('OS_TENANT_NAME', 'OS_PROJECT_NAME')
+tenant_name = __config__.get('tenantName')
 """
 The name of the Tenant (Identity v2) or Project (Identity v3) to login with.
 """
 
-token = __config__.get('token') or _utilities.get_env('OS_TOKEN', 'OS_AUTH_TOKEN')
+token = __config__.get('token')
 """
 Authentication token to use as an alternative to username/password.
 """
@@ -178,22 +178,22 @@ use_octavia = __config__.get('useOctavia') or _utilities.get_env_bool('OS_USE_OC
 If set to `true`, API requests will go the Load Balancer service (Octavia) instead of the Networking service (Neutron).
 """
 
-user_domain_id = __config__.get('userDomainId') or _utilities.get_env('OS_USER_DOMAIN_ID')
+user_domain_id = __config__.get('userDomainId')
 """
 The ID of the domain where the user resides (Identity v3).
 """
 
-user_domain_name = __config__.get('userDomainName') or _utilities.get_env('OS_USER_DOMAIN_NAME')
+user_domain_name = __config__.get('userDomainName')
 """
 The name of the domain where the user resides (Identity v3).
 """
 
-user_id = __config__.get('userId') or _utilities.get_env('OS_USER_ID')
+user_id = __config__.get('userId')
 """
 Username to login with.
 """
 
-user_name = __config__.get('userName') or _utilities.get_env('OS_USERNAME')
+user_name = __config__.get('userName')
 """
 Username to login with.
 """

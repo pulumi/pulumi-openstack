@@ -135,7 +135,8 @@ export class Firewall extends pulumi.CustomResource {
     constructor(name: string, args: FirewallArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FirewallArgs | FirewallState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as FirewallState | undefined;
             inputs["adminStateUp"] = state ? state.adminStateUp : undefined;
             inputs["associatedRouters"] = state ? state.associatedRouters : undefined;
@@ -148,7 +149,7 @@ export class Firewall extends pulumi.CustomResource {
             inputs["valueSpecs"] = state ? state.valueSpecs : undefined;
         } else {
             const args = argsOrState as FirewallArgs | undefined;
-            if ((!args || args.policyId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.policyId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policyId'");
             }
             inputs["adminStateUp"] = args ? args.adminStateUp : undefined;
@@ -161,12 +162,8 @@ export class Firewall extends pulumi.CustomResource {
             inputs["tenantId"] = args ? args.tenantId : undefined;
             inputs["valueSpecs"] = args ? args.valueSpecs : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Firewall.__pulumiType, name, inputs, opts);
     }

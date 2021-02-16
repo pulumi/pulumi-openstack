@@ -139,7 +139,8 @@ export class OrderV1 extends pulumi.CustomResource {
     constructor(name: string, args: OrderV1Args, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: OrderV1Args | OrderV1State, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as OrderV1State | undefined;
             inputs["containerRef"] = state ? state.containerRef : undefined;
             inputs["created"] = state ? state.created : undefined;
@@ -155,10 +156,10 @@ export class OrderV1 extends pulumi.CustomResource {
             inputs["updated"] = state ? state.updated : undefined;
         } else {
             const args = argsOrState as OrderV1Args | undefined;
-            if ((!args || args.meta === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.meta === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'meta'");
             }
-            if ((!args || args.type === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
             inputs["meta"] = args ? args.meta : undefined;
@@ -174,12 +175,8 @@ export class OrderV1 extends pulumi.CustomResource {
             inputs["subStatusMessage"] = undefined /*out*/;
             inputs["updated"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(OrderV1.__pulumiType, name, inputs, opts);
     }

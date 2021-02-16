@@ -469,6 +469,85 @@ func (i *SubnetPool) ToSubnetPoolOutputWithContext(ctx context.Context) SubnetPo
 	return pulumi.ToOutputWithContext(ctx, i).(SubnetPoolOutput)
 }
 
+func (i *SubnetPool) ToSubnetPoolPtrOutput() SubnetPoolPtrOutput {
+	return i.ToSubnetPoolPtrOutputWithContext(context.Background())
+}
+
+func (i *SubnetPool) ToSubnetPoolPtrOutputWithContext(ctx context.Context) SubnetPoolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetPoolPtrOutput)
+}
+
+type SubnetPoolPtrInput interface {
+	pulumi.Input
+
+	ToSubnetPoolPtrOutput() SubnetPoolPtrOutput
+	ToSubnetPoolPtrOutputWithContext(ctx context.Context) SubnetPoolPtrOutput
+}
+
+type subnetPoolPtrType SubnetPoolArgs
+
+func (*subnetPoolPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubnetPool)(nil))
+}
+
+func (i *subnetPoolPtrType) ToSubnetPoolPtrOutput() SubnetPoolPtrOutput {
+	return i.ToSubnetPoolPtrOutputWithContext(context.Background())
+}
+
+func (i *subnetPoolPtrType) ToSubnetPoolPtrOutputWithContext(ctx context.Context) SubnetPoolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetPoolPtrOutput)
+}
+
+// SubnetPoolArrayInput is an input type that accepts SubnetPoolArray and SubnetPoolArrayOutput values.
+// You can construct a concrete instance of `SubnetPoolArrayInput` via:
+//
+//          SubnetPoolArray{ SubnetPoolArgs{...} }
+type SubnetPoolArrayInput interface {
+	pulumi.Input
+
+	ToSubnetPoolArrayOutput() SubnetPoolArrayOutput
+	ToSubnetPoolArrayOutputWithContext(context.Context) SubnetPoolArrayOutput
+}
+
+type SubnetPoolArray []SubnetPoolInput
+
+func (SubnetPoolArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*SubnetPool)(nil))
+}
+
+func (i SubnetPoolArray) ToSubnetPoolArrayOutput() SubnetPoolArrayOutput {
+	return i.ToSubnetPoolArrayOutputWithContext(context.Background())
+}
+
+func (i SubnetPoolArray) ToSubnetPoolArrayOutputWithContext(ctx context.Context) SubnetPoolArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetPoolArrayOutput)
+}
+
+// SubnetPoolMapInput is an input type that accepts SubnetPoolMap and SubnetPoolMapOutput values.
+// You can construct a concrete instance of `SubnetPoolMapInput` via:
+//
+//          SubnetPoolMap{ "key": SubnetPoolArgs{...} }
+type SubnetPoolMapInput interface {
+	pulumi.Input
+
+	ToSubnetPoolMapOutput() SubnetPoolMapOutput
+	ToSubnetPoolMapOutputWithContext(context.Context) SubnetPoolMapOutput
+}
+
+type SubnetPoolMap map[string]SubnetPoolInput
+
+func (SubnetPoolMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*SubnetPool)(nil))
+}
+
+func (i SubnetPoolMap) ToSubnetPoolMapOutput() SubnetPoolMapOutput {
+	return i.ToSubnetPoolMapOutputWithContext(context.Background())
+}
+
+func (i SubnetPoolMap) ToSubnetPoolMapOutputWithContext(ctx context.Context) SubnetPoolMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetPoolMapOutput)
+}
+
 type SubnetPoolOutput struct {
 	*pulumi.OutputState
 }
@@ -485,6 +564,75 @@ func (o SubnetPoolOutput) ToSubnetPoolOutputWithContext(ctx context.Context) Sub
 	return o
 }
 
+func (o SubnetPoolOutput) ToSubnetPoolPtrOutput() SubnetPoolPtrOutput {
+	return o.ToSubnetPoolPtrOutputWithContext(context.Background())
+}
+
+func (o SubnetPoolOutput) ToSubnetPoolPtrOutputWithContext(ctx context.Context) SubnetPoolPtrOutput {
+	return o.ApplyT(func(v SubnetPool) *SubnetPool {
+		return &v
+	}).(SubnetPoolPtrOutput)
+}
+
+type SubnetPoolPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SubnetPoolPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubnetPool)(nil))
+}
+
+func (o SubnetPoolPtrOutput) ToSubnetPoolPtrOutput() SubnetPoolPtrOutput {
+	return o
+}
+
+func (o SubnetPoolPtrOutput) ToSubnetPoolPtrOutputWithContext(ctx context.Context) SubnetPoolPtrOutput {
+	return o
+}
+
+type SubnetPoolArrayOutput struct{ *pulumi.OutputState }
+
+func (SubnetPoolArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SubnetPool)(nil))
+}
+
+func (o SubnetPoolArrayOutput) ToSubnetPoolArrayOutput() SubnetPoolArrayOutput {
+	return o
+}
+
+func (o SubnetPoolArrayOutput) ToSubnetPoolArrayOutputWithContext(ctx context.Context) SubnetPoolArrayOutput {
+	return o
+}
+
+func (o SubnetPoolArrayOutput) Index(i pulumi.IntInput) SubnetPoolOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SubnetPool {
+		return vs[0].([]SubnetPool)[vs[1].(int)]
+	}).(SubnetPoolOutput)
+}
+
+type SubnetPoolMapOutput struct{ *pulumi.OutputState }
+
+func (SubnetPoolMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SubnetPool)(nil))
+}
+
+func (o SubnetPoolMapOutput) ToSubnetPoolMapOutput() SubnetPoolMapOutput {
+	return o
+}
+
+func (o SubnetPoolMapOutput) ToSubnetPoolMapOutputWithContext(ctx context.Context) SubnetPoolMapOutput {
+	return o
+}
+
+func (o SubnetPoolMapOutput) MapIndex(k pulumi.StringInput) SubnetPoolOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SubnetPool {
+		return vs[0].(map[string]SubnetPool)[vs[1].(string)]
+	}).(SubnetPoolOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(SubnetPoolOutput{})
+	pulumi.RegisterOutputType(SubnetPoolPtrOutput{})
+	pulumi.RegisterOutputType(SubnetPoolArrayOutput{})
+	pulumi.RegisterOutputType(SubnetPoolMapOutput{})
 }

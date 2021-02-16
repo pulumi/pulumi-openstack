@@ -93,89 +93,9 @@ func Provider() tfbridge.ProviderInfo {
 		GitHubOrg:   "terraform-provider-openstack",
 		Repository:  "https://github.com/pulumi/pulumi-openstack",
 		Config: map[string]*tfbridge.SchemaInfo{
-			"auth_url": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"OS_AUTH_URL"},
-				},
-			},
 			"region": {
 				Default: &tfbridge.DefaultInfo{
 					EnvVars: []string{"OS_REGION_NAME"},
-				},
-			},
-			"user_name": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"OS_USERNAME"},
-				},
-			},
-			"user_id": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"OS_USER_ID"},
-				},
-			},
-			"tenant_id": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{
-						"OS_TENANT_ID",
-						"OS_PROJECT_ID",
-					},
-				},
-			},
-			"tenant_name": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{
-						"OS_TENANT_NAME",
-						"OS_PROJECT_NAME",
-					},
-				},
-			},
-			"password": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"OS_PASSWORD"},
-				},
-			},
-			"token": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{
-						"OS_TOKEN",
-						"OS_AUTH_TOKEN",
-					},
-				},
-			},
-			"user_domain_name": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"OS_USER_DOMAIN_NAME"},
-				},
-			},
-			"user_domain_id": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"OS_USER_DOMAIN_ID"},
-				},
-			},
-			"project_domain_name": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"OS_PROJECT_DOMAIN_NAME"},
-				},
-			},
-			"project_domain_id": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"OS_PROJECT_DOMAIN_ID"},
-				},
-			},
-			"domain_id": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"OS_DOMAIN_ID"},
-				},
-			},
-			"domain_name": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"OS_DOMAIN_NAME"},
-				},
-			},
-			"default_domain": {
-				Default: &tfbridge.DefaultInfo{
-					Value:   "default",
-					EnvVars: []string{"OS_DEFAULT_DOMAIN"},
 				},
 			},
 			"insecure": {
@@ -186,21 +106,6 @@ func Provider() tfbridge.ProviderInfo {
 			"endpoint_type": {
 				Default: &tfbridge.DefaultInfo{
 					EnvVars: []string{"OS_ENDPOINT_TYPE"},
-				},
-			},
-			"cacert_file": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"OS_CACERT"},
-				},
-			},
-			"cert": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"OS_CERT"},
-				},
-			},
-			"key": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"OS_KEY"},
 				},
 			},
 			"swauth": {
@@ -216,21 +121,6 @@ func Provider() tfbridge.ProviderInfo {
 			"cloud": {
 				Default: &tfbridge.DefaultInfo{
 					EnvVars: []string{"OS_CLOUD"},
-				},
-			},
-			"application_credential_id": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"OS_APPLICATION_CREDENTIAL_ID"},
-				},
-			},
-			"application_credential_name": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"OS_APPLICATION_CREDENTIAL_NAME"},
-				},
-			},
-			"application_credential_secret": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"OS_APPLICATION_CREDENTIAL_SECRET"},
 				},
 			},
 			"delayed_auth": {

@@ -201,7 +201,8 @@ export class Instance extends pulumi.CustomResource {
     constructor(name: string, args?: InstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InstanceArgs | InstanceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
             inputs["accessIpV4"] = state ? state.accessIpV4 : undefined;
             inputs["accessIpV6"] = state ? state.accessIpV6 : undefined;
@@ -262,12 +263,8 @@ export class Instance extends pulumi.CustomResource {
             inputs["allMetadata"] = undefined /*out*/;
             inputs["allTags"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Instance.__pulumiType, name, inputs, opts);
     }

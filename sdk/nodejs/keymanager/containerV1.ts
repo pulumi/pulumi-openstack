@@ -196,7 +196,8 @@ export class ContainerV1 extends pulumi.CustomResource {
     constructor(name: string, args: ContainerV1Args, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ContainerV1Args | ContainerV1State, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ContainerV1State | undefined;
             inputs["acl"] = state ? state.acl : undefined;
             inputs["consumers"] = state ? state.consumers : undefined;
@@ -211,7 +212,7 @@ export class ContainerV1 extends pulumi.CustomResource {
             inputs["updatedAt"] = state ? state.updatedAt : undefined;
         } else {
             const args = argsOrState as ContainerV1Args | undefined;
-            if ((!args || args.type === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
             inputs["acl"] = args ? args.acl : undefined;
@@ -226,12 +227,8 @@ export class ContainerV1 extends pulumi.CustomResource {
             inputs["status"] = undefined /*out*/;
             inputs["updatedAt"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ContainerV1.__pulumiType, name, inputs, opts);
     }

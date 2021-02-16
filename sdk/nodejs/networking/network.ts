@@ -191,7 +191,8 @@ export class Network extends pulumi.CustomResource {
     constructor(name: string, args?: NetworkArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NetworkArgs | NetworkState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as NetworkState | undefined;
             inputs["adminStateUp"] = state ? state.adminStateUp : undefined;
             inputs["allTags"] = state ? state.allTags : undefined;
@@ -230,12 +231,8 @@ export class Network extends pulumi.CustomResource {
             inputs["valueSpecs"] = args ? args.valueSpecs : undefined;
             inputs["allTags"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Network.__pulumiType, name, inputs, opts);
     }

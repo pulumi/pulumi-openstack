@@ -191,7 +191,8 @@ export class SubnetPool extends pulumi.CustomResource {
     constructor(name: string, args: SubnetPoolArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SubnetPoolArgs | SubnetPoolState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as SubnetPoolState | undefined;
             inputs["addressScopeId"] = state ? state.addressScopeId : undefined;
             inputs["allTags"] = state ? state.allTags : undefined;
@@ -214,7 +215,7 @@ export class SubnetPool extends pulumi.CustomResource {
             inputs["valueSpecs"] = state ? state.valueSpecs : undefined;
         } else {
             const args = argsOrState as SubnetPoolArgs | undefined;
-            if ((!args || args.prefixes === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.prefixes === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'prefixes'");
             }
             inputs["addressScopeId"] = args ? args.addressScopeId : undefined;
@@ -237,12 +238,8 @@ export class SubnetPool extends pulumi.CustomResource {
             inputs["revisionNumber"] = undefined /*out*/;
             inputs["updatedAt"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(SubnetPool.__pulumiType, name, inputs, opts);
     }

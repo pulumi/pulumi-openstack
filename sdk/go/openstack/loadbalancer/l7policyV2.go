@@ -318,6 +318,85 @@ func (i *L7PolicyV2) ToL7PolicyV2OutputWithContext(ctx context.Context) L7Policy
 	return pulumi.ToOutputWithContext(ctx, i).(L7PolicyV2Output)
 }
 
+func (i *L7PolicyV2) ToL7PolicyV2PtrOutput() L7PolicyV2PtrOutput {
+	return i.ToL7PolicyV2PtrOutputWithContext(context.Background())
+}
+
+func (i *L7PolicyV2) ToL7PolicyV2PtrOutputWithContext(ctx context.Context) L7PolicyV2PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(L7PolicyV2PtrOutput)
+}
+
+type L7PolicyV2PtrInput interface {
+	pulumi.Input
+
+	ToL7PolicyV2PtrOutput() L7PolicyV2PtrOutput
+	ToL7PolicyV2PtrOutputWithContext(ctx context.Context) L7PolicyV2PtrOutput
+}
+
+type l7policyV2PtrType L7PolicyV2Args
+
+func (*l7policyV2PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**L7PolicyV2)(nil))
+}
+
+func (i *l7policyV2PtrType) ToL7PolicyV2PtrOutput() L7PolicyV2PtrOutput {
+	return i.ToL7PolicyV2PtrOutputWithContext(context.Background())
+}
+
+func (i *l7policyV2PtrType) ToL7PolicyV2PtrOutputWithContext(ctx context.Context) L7PolicyV2PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(L7PolicyV2PtrOutput)
+}
+
+// L7PolicyV2ArrayInput is an input type that accepts L7PolicyV2Array and L7PolicyV2ArrayOutput values.
+// You can construct a concrete instance of `L7PolicyV2ArrayInput` via:
+//
+//          L7PolicyV2Array{ L7PolicyV2Args{...} }
+type L7PolicyV2ArrayInput interface {
+	pulumi.Input
+
+	ToL7PolicyV2ArrayOutput() L7PolicyV2ArrayOutput
+	ToL7PolicyV2ArrayOutputWithContext(context.Context) L7PolicyV2ArrayOutput
+}
+
+type L7PolicyV2Array []L7PolicyV2Input
+
+func (L7PolicyV2Array) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*L7PolicyV2)(nil))
+}
+
+func (i L7PolicyV2Array) ToL7PolicyV2ArrayOutput() L7PolicyV2ArrayOutput {
+	return i.ToL7PolicyV2ArrayOutputWithContext(context.Background())
+}
+
+func (i L7PolicyV2Array) ToL7PolicyV2ArrayOutputWithContext(ctx context.Context) L7PolicyV2ArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(L7PolicyV2ArrayOutput)
+}
+
+// L7PolicyV2MapInput is an input type that accepts L7PolicyV2Map and L7PolicyV2MapOutput values.
+// You can construct a concrete instance of `L7PolicyV2MapInput` via:
+//
+//          L7PolicyV2Map{ "key": L7PolicyV2Args{...} }
+type L7PolicyV2MapInput interface {
+	pulumi.Input
+
+	ToL7PolicyV2MapOutput() L7PolicyV2MapOutput
+	ToL7PolicyV2MapOutputWithContext(context.Context) L7PolicyV2MapOutput
+}
+
+type L7PolicyV2Map map[string]L7PolicyV2Input
+
+func (L7PolicyV2Map) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*L7PolicyV2)(nil))
+}
+
+func (i L7PolicyV2Map) ToL7PolicyV2MapOutput() L7PolicyV2MapOutput {
+	return i.ToL7PolicyV2MapOutputWithContext(context.Background())
+}
+
+func (i L7PolicyV2Map) ToL7PolicyV2MapOutputWithContext(ctx context.Context) L7PolicyV2MapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(L7PolicyV2MapOutput)
+}
+
 type L7PolicyV2Output struct {
 	*pulumi.OutputState
 }
@@ -334,6 +413,75 @@ func (o L7PolicyV2Output) ToL7PolicyV2OutputWithContext(ctx context.Context) L7P
 	return o
 }
 
+func (o L7PolicyV2Output) ToL7PolicyV2PtrOutput() L7PolicyV2PtrOutput {
+	return o.ToL7PolicyV2PtrOutputWithContext(context.Background())
+}
+
+func (o L7PolicyV2Output) ToL7PolicyV2PtrOutputWithContext(ctx context.Context) L7PolicyV2PtrOutput {
+	return o.ApplyT(func(v L7PolicyV2) *L7PolicyV2 {
+		return &v
+	}).(L7PolicyV2PtrOutput)
+}
+
+type L7PolicyV2PtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (L7PolicyV2PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**L7PolicyV2)(nil))
+}
+
+func (o L7PolicyV2PtrOutput) ToL7PolicyV2PtrOutput() L7PolicyV2PtrOutput {
+	return o
+}
+
+func (o L7PolicyV2PtrOutput) ToL7PolicyV2PtrOutputWithContext(ctx context.Context) L7PolicyV2PtrOutput {
+	return o
+}
+
+type L7PolicyV2ArrayOutput struct{ *pulumi.OutputState }
+
+func (L7PolicyV2ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]L7PolicyV2)(nil))
+}
+
+func (o L7PolicyV2ArrayOutput) ToL7PolicyV2ArrayOutput() L7PolicyV2ArrayOutput {
+	return o
+}
+
+func (o L7PolicyV2ArrayOutput) ToL7PolicyV2ArrayOutputWithContext(ctx context.Context) L7PolicyV2ArrayOutput {
+	return o
+}
+
+func (o L7PolicyV2ArrayOutput) Index(i pulumi.IntInput) L7PolicyV2Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) L7PolicyV2 {
+		return vs[0].([]L7PolicyV2)[vs[1].(int)]
+	}).(L7PolicyV2Output)
+}
+
+type L7PolicyV2MapOutput struct{ *pulumi.OutputState }
+
+func (L7PolicyV2MapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]L7PolicyV2)(nil))
+}
+
+func (o L7PolicyV2MapOutput) ToL7PolicyV2MapOutput() L7PolicyV2MapOutput {
+	return o
+}
+
+func (o L7PolicyV2MapOutput) ToL7PolicyV2MapOutputWithContext(ctx context.Context) L7PolicyV2MapOutput {
+	return o
+}
+
+func (o L7PolicyV2MapOutput) MapIndex(k pulumi.StringInput) L7PolicyV2Output {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) L7PolicyV2 {
+		return vs[0].(map[string]L7PolicyV2)[vs[1].(string)]
+	}).(L7PolicyV2Output)
+}
+
 func init() {
 	pulumi.RegisterOutputType(L7PolicyV2Output{})
+	pulumi.RegisterOutputType(L7PolicyV2PtrOutput{})
+	pulumi.RegisterOutputType(L7PolicyV2ArrayOutput{})
+	pulumi.RegisterOutputType(L7PolicyV2MapOutput{})
 }

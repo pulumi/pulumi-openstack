@@ -201,6 +201,85 @@ func (i *UserMembershipV3) ToUserMembershipV3OutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(UserMembershipV3Output)
 }
 
+func (i *UserMembershipV3) ToUserMembershipV3PtrOutput() UserMembershipV3PtrOutput {
+	return i.ToUserMembershipV3PtrOutputWithContext(context.Background())
+}
+
+func (i *UserMembershipV3) ToUserMembershipV3PtrOutputWithContext(ctx context.Context) UserMembershipV3PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserMembershipV3PtrOutput)
+}
+
+type UserMembershipV3PtrInput interface {
+	pulumi.Input
+
+	ToUserMembershipV3PtrOutput() UserMembershipV3PtrOutput
+	ToUserMembershipV3PtrOutputWithContext(ctx context.Context) UserMembershipV3PtrOutput
+}
+
+type userMembershipV3PtrType UserMembershipV3Args
+
+func (*userMembershipV3PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserMembershipV3)(nil))
+}
+
+func (i *userMembershipV3PtrType) ToUserMembershipV3PtrOutput() UserMembershipV3PtrOutput {
+	return i.ToUserMembershipV3PtrOutputWithContext(context.Background())
+}
+
+func (i *userMembershipV3PtrType) ToUserMembershipV3PtrOutputWithContext(ctx context.Context) UserMembershipV3PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserMembershipV3PtrOutput)
+}
+
+// UserMembershipV3ArrayInput is an input type that accepts UserMembershipV3Array and UserMembershipV3ArrayOutput values.
+// You can construct a concrete instance of `UserMembershipV3ArrayInput` via:
+//
+//          UserMembershipV3Array{ UserMembershipV3Args{...} }
+type UserMembershipV3ArrayInput interface {
+	pulumi.Input
+
+	ToUserMembershipV3ArrayOutput() UserMembershipV3ArrayOutput
+	ToUserMembershipV3ArrayOutputWithContext(context.Context) UserMembershipV3ArrayOutput
+}
+
+type UserMembershipV3Array []UserMembershipV3Input
+
+func (UserMembershipV3Array) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*UserMembershipV3)(nil))
+}
+
+func (i UserMembershipV3Array) ToUserMembershipV3ArrayOutput() UserMembershipV3ArrayOutput {
+	return i.ToUserMembershipV3ArrayOutputWithContext(context.Background())
+}
+
+func (i UserMembershipV3Array) ToUserMembershipV3ArrayOutputWithContext(ctx context.Context) UserMembershipV3ArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserMembershipV3ArrayOutput)
+}
+
+// UserMembershipV3MapInput is an input type that accepts UserMembershipV3Map and UserMembershipV3MapOutput values.
+// You can construct a concrete instance of `UserMembershipV3MapInput` via:
+//
+//          UserMembershipV3Map{ "key": UserMembershipV3Args{...} }
+type UserMembershipV3MapInput interface {
+	pulumi.Input
+
+	ToUserMembershipV3MapOutput() UserMembershipV3MapOutput
+	ToUserMembershipV3MapOutputWithContext(context.Context) UserMembershipV3MapOutput
+}
+
+type UserMembershipV3Map map[string]UserMembershipV3Input
+
+func (UserMembershipV3Map) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*UserMembershipV3)(nil))
+}
+
+func (i UserMembershipV3Map) ToUserMembershipV3MapOutput() UserMembershipV3MapOutput {
+	return i.ToUserMembershipV3MapOutputWithContext(context.Background())
+}
+
+func (i UserMembershipV3Map) ToUserMembershipV3MapOutputWithContext(ctx context.Context) UserMembershipV3MapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserMembershipV3MapOutput)
+}
+
 type UserMembershipV3Output struct {
 	*pulumi.OutputState
 }
@@ -217,6 +296,75 @@ func (o UserMembershipV3Output) ToUserMembershipV3OutputWithContext(ctx context.
 	return o
 }
 
+func (o UserMembershipV3Output) ToUserMembershipV3PtrOutput() UserMembershipV3PtrOutput {
+	return o.ToUserMembershipV3PtrOutputWithContext(context.Background())
+}
+
+func (o UserMembershipV3Output) ToUserMembershipV3PtrOutputWithContext(ctx context.Context) UserMembershipV3PtrOutput {
+	return o.ApplyT(func(v UserMembershipV3) *UserMembershipV3 {
+		return &v
+	}).(UserMembershipV3PtrOutput)
+}
+
+type UserMembershipV3PtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (UserMembershipV3PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserMembershipV3)(nil))
+}
+
+func (o UserMembershipV3PtrOutput) ToUserMembershipV3PtrOutput() UserMembershipV3PtrOutput {
+	return o
+}
+
+func (o UserMembershipV3PtrOutput) ToUserMembershipV3PtrOutputWithContext(ctx context.Context) UserMembershipV3PtrOutput {
+	return o
+}
+
+type UserMembershipV3ArrayOutput struct{ *pulumi.OutputState }
+
+func (UserMembershipV3ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UserMembershipV3)(nil))
+}
+
+func (o UserMembershipV3ArrayOutput) ToUserMembershipV3ArrayOutput() UserMembershipV3ArrayOutput {
+	return o
+}
+
+func (o UserMembershipV3ArrayOutput) ToUserMembershipV3ArrayOutputWithContext(ctx context.Context) UserMembershipV3ArrayOutput {
+	return o
+}
+
+func (o UserMembershipV3ArrayOutput) Index(i pulumi.IntInput) UserMembershipV3Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UserMembershipV3 {
+		return vs[0].([]UserMembershipV3)[vs[1].(int)]
+	}).(UserMembershipV3Output)
+}
+
+type UserMembershipV3MapOutput struct{ *pulumi.OutputState }
+
+func (UserMembershipV3MapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]UserMembershipV3)(nil))
+}
+
+func (o UserMembershipV3MapOutput) ToUserMembershipV3MapOutput() UserMembershipV3MapOutput {
+	return o
+}
+
+func (o UserMembershipV3MapOutput) ToUserMembershipV3MapOutputWithContext(ctx context.Context) UserMembershipV3MapOutput {
+	return o
+}
+
+func (o UserMembershipV3MapOutput) MapIndex(k pulumi.StringInput) UserMembershipV3Output {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) UserMembershipV3 {
+		return vs[0].(map[string]UserMembershipV3)[vs[1].(string)]
+	}).(UserMembershipV3Output)
+}
+
 func init() {
 	pulumi.RegisterOutputType(UserMembershipV3Output{})
+	pulumi.RegisterOutputType(UserMembershipV3PtrOutput{})
+	pulumi.RegisterOutputType(UserMembershipV3ArrayOutput{})
+	pulumi.RegisterOutputType(UserMembershipV3MapOutput{})
 }

@@ -97,26 +97,23 @@ export class Members extends pulumi.CustomResource {
     constructor(name: string, args: MembersArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: MembersArgs | MembersState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as MembersState | undefined;
             inputs["members"] = state ? state.members : undefined;
             inputs["poolId"] = state ? state.poolId : undefined;
             inputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as MembersArgs | undefined;
-            if ((!args || args.poolId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.poolId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'poolId'");
             }
             inputs["members"] = args ? args.members : undefined;
             inputs["poolId"] = args ? args.poolId : undefined;
             inputs["region"] = args ? args.region : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Members.__pulumiType, name, inputs, opts);
     }

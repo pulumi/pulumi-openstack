@@ -434,6 +434,85 @@ func (i *SecGroupRule) ToSecGroupRuleOutputWithContext(ctx context.Context) SecG
 	return pulumi.ToOutputWithContext(ctx, i).(SecGroupRuleOutput)
 }
 
+func (i *SecGroupRule) ToSecGroupRulePtrOutput() SecGroupRulePtrOutput {
+	return i.ToSecGroupRulePtrOutputWithContext(context.Background())
+}
+
+func (i *SecGroupRule) ToSecGroupRulePtrOutputWithContext(ctx context.Context) SecGroupRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecGroupRulePtrOutput)
+}
+
+type SecGroupRulePtrInput interface {
+	pulumi.Input
+
+	ToSecGroupRulePtrOutput() SecGroupRulePtrOutput
+	ToSecGroupRulePtrOutputWithContext(ctx context.Context) SecGroupRulePtrOutput
+}
+
+type secGroupRulePtrType SecGroupRuleArgs
+
+func (*secGroupRulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecGroupRule)(nil))
+}
+
+func (i *secGroupRulePtrType) ToSecGroupRulePtrOutput() SecGroupRulePtrOutput {
+	return i.ToSecGroupRulePtrOutputWithContext(context.Background())
+}
+
+func (i *secGroupRulePtrType) ToSecGroupRulePtrOutputWithContext(ctx context.Context) SecGroupRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecGroupRulePtrOutput)
+}
+
+// SecGroupRuleArrayInput is an input type that accepts SecGroupRuleArray and SecGroupRuleArrayOutput values.
+// You can construct a concrete instance of `SecGroupRuleArrayInput` via:
+//
+//          SecGroupRuleArray{ SecGroupRuleArgs{...} }
+type SecGroupRuleArrayInput interface {
+	pulumi.Input
+
+	ToSecGroupRuleArrayOutput() SecGroupRuleArrayOutput
+	ToSecGroupRuleArrayOutputWithContext(context.Context) SecGroupRuleArrayOutput
+}
+
+type SecGroupRuleArray []SecGroupRuleInput
+
+func (SecGroupRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*SecGroupRule)(nil))
+}
+
+func (i SecGroupRuleArray) ToSecGroupRuleArrayOutput() SecGroupRuleArrayOutput {
+	return i.ToSecGroupRuleArrayOutputWithContext(context.Background())
+}
+
+func (i SecGroupRuleArray) ToSecGroupRuleArrayOutputWithContext(ctx context.Context) SecGroupRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecGroupRuleArrayOutput)
+}
+
+// SecGroupRuleMapInput is an input type that accepts SecGroupRuleMap and SecGroupRuleMapOutput values.
+// You can construct a concrete instance of `SecGroupRuleMapInput` via:
+//
+//          SecGroupRuleMap{ "key": SecGroupRuleArgs{...} }
+type SecGroupRuleMapInput interface {
+	pulumi.Input
+
+	ToSecGroupRuleMapOutput() SecGroupRuleMapOutput
+	ToSecGroupRuleMapOutputWithContext(context.Context) SecGroupRuleMapOutput
+}
+
+type SecGroupRuleMap map[string]SecGroupRuleInput
+
+func (SecGroupRuleMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*SecGroupRule)(nil))
+}
+
+func (i SecGroupRuleMap) ToSecGroupRuleMapOutput() SecGroupRuleMapOutput {
+	return i.ToSecGroupRuleMapOutputWithContext(context.Background())
+}
+
+func (i SecGroupRuleMap) ToSecGroupRuleMapOutputWithContext(ctx context.Context) SecGroupRuleMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecGroupRuleMapOutput)
+}
+
 type SecGroupRuleOutput struct {
 	*pulumi.OutputState
 }
@@ -450,6 +529,75 @@ func (o SecGroupRuleOutput) ToSecGroupRuleOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o SecGroupRuleOutput) ToSecGroupRulePtrOutput() SecGroupRulePtrOutput {
+	return o.ToSecGroupRulePtrOutputWithContext(context.Background())
+}
+
+func (o SecGroupRuleOutput) ToSecGroupRulePtrOutputWithContext(ctx context.Context) SecGroupRulePtrOutput {
+	return o.ApplyT(func(v SecGroupRule) *SecGroupRule {
+		return &v
+	}).(SecGroupRulePtrOutput)
+}
+
+type SecGroupRulePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SecGroupRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecGroupRule)(nil))
+}
+
+func (o SecGroupRulePtrOutput) ToSecGroupRulePtrOutput() SecGroupRulePtrOutput {
+	return o
+}
+
+func (o SecGroupRulePtrOutput) ToSecGroupRulePtrOutputWithContext(ctx context.Context) SecGroupRulePtrOutput {
+	return o
+}
+
+type SecGroupRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (SecGroupRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecGroupRule)(nil))
+}
+
+func (o SecGroupRuleArrayOutput) ToSecGroupRuleArrayOutput() SecGroupRuleArrayOutput {
+	return o
+}
+
+func (o SecGroupRuleArrayOutput) ToSecGroupRuleArrayOutputWithContext(ctx context.Context) SecGroupRuleArrayOutput {
+	return o
+}
+
+func (o SecGroupRuleArrayOutput) Index(i pulumi.IntInput) SecGroupRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecGroupRule {
+		return vs[0].([]SecGroupRule)[vs[1].(int)]
+	}).(SecGroupRuleOutput)
+}
+
+type SecGroupRuleMapOutput struct{ *pulumi.OutputState }
+
+func (SecGroupRuleMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SecGroupRule)(nil))
+}
+
+func (o SecGroupRuleMapOutput) ToSecGroupRuleMapOutput() SecGroupRuleMapOutput {
+	return o
+}
+
+func (o SecGroupRuleMapOutput) ToSecGroupRuleMapOutputWithContext(ctx context.Context) SecGroupRuleMapOutput {
+	return o
+}
+
+func (o SecGroupRuleMapOutput) MapIndex(k pulumi.StringInput) SecGroupRuleOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SecGroupRule {
+		return vs[0].(map[string]SecGroupRule)[vs[1].(string)]
+	}).(SecGroupRuleOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(SecGroupRuleOutput{})
+	pulumi.RegisterOutputType(SecGroupRulePtrOutput{})
+	pulumi.RegisterOutputType(SecGroupRuleArrayOutput{})
+	pulumi.RegisterOutputType(SecGroupRuleMapOutput{})
 }

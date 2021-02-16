@@ -175,6 +175,85 @@ func (i *QosDscpMarkingRule) ToQosDscpMarkingRuleOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(QosDscpMarkingRuleOutput)
 }
 
+func (i *QosDscpMarkingRule) ToQosDscpMarkingRulePtrOutput() QosDscpMarkingRulePtrOutput {
+	return i.ToQosDscpMarkingRulePtrOutputWithContext(context.Background())
+}
+
+func (i *QosDscpMarkingRule) ToQosDscpMarkingRulePtrOutputWithContext(ctx context.Context) QosDscpMarkingRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QosDscpMarkingRulePtrOutput)
+}
+
+type QosDscpMarkingRulePtrInput interface {
+	pulumi.Input
+
+	ToQosDscpMarkingRulePtrOutput() QosDscpMarkingRulePtrOutput
+	ToQosDscpMarkingRulePtrOutputWithContext(ctx context.Context) QosDscpMarkingRulePtrOutput
+}
+
+type qosDscpMarkingRulePtrType QosDscpMarkingRuleArgs
+
+func (*qosDscpMarkingRulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**QosDscpMarkingRule)(nil))
+}
+
+func (i *qosDscpMarkingRulePtrType) ToQosDscpMarkingRulePtrOutput() QosDscpMarkingRulePtrOutput {
+	return i.ToQosDscpMarkingRulePtrOutputWithContext(context.Background())
+}
+
+func (i *qosDscpMarkingRulePtrType) ToQosDscpMarkingRulePtrOutputWithContext(ctx context.Context) QosDscpMarkingRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QosDscpMarkingRulePtrOutput)
+}
+
+// QosDscpMarkingRuleArrayInput is an input type that accepts QosDscpMarkingRuleArray and QosDscpMarkingRuleArrayOutput values.
+// You can construct a concrete instance of `QosDscpMarkingRuleArrayInput` via:
+//
+//          QosDscpMarkingRuleArray{ QosDscpMarkingRuleArgs{...} }
+type QosDscpMarkingRuleArrayInput interface {
+	pulumi.Input
+
+	ToQosDscpMarkingRuleArrayOutput() QosDscpMarkingRuleArrayOutput
+	ToQosDscpMarkingRuleArrayOutputWithContext(context.Context) QosDscpMarkingRuleArrayOutput
+}
+
+type QosDscpMarkingRuleArray []QosDscpMarkingRuleInput
+
+func (QosDscpMarkingRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*QosDscpMarkingRule)(nil))
+}
+
+func (i QosDscpMarkingRuleArray) ToQosDscpMarkingRuleArrayOutput() QosDscpMarkingRuleArrayOutput {
+	return i.ToQosDscpMarkingRuleArrayOutputWithContext(context.Background())
+}
+
+func (i QosDscpMarkingRuleArray) ToQosDscpMarkingRuleArrayOutputWithContext(ctx context.Context) QosDscpMarkingRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QosDscpMarkingRuleArrayOutput)
+}
+
+// QosDscpMarkingRuleMapInput is an input type that accepts QosDscpMarkingRuleMap and QosDscpMarkingRuleMapOutput values.
+// You can construct a concrete instance of `QosDscpMarkingRuleMapInput` via:
+//
+//          QosDscpMarkingRuleMap{ "key": QosDscpMarkingRuleArgs{...} }
+type QosDscpMarkingRuleMapInput interface {
+	pulumi.Input
+
+	ToQosDscpMarkingRuleMapOutput() QosDscpMarkingRuleMapOutput
+	ToQosDscpMarkingRuleMapOutputWithContext(context.Context) QosDscpMarkingRuleMapOutput
+}
+
+type QosDscpMarkingRuleMap map[string]QosDscpMarkingRuleInput
+
+func (QosDscpMarkingRuleMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*QosDscpMarkingRule)(nil))
+}
+
+func (i QosDscpMarkingRuleMap) ToQosDscpMarkingRuleMapOutput() QosDscpMarkingRuleMapOutput {
+	return i.ToQosDscpMarkingRuleMapOutputWithContext(context.Background())
+}
+
+func (i QosDscpMarkingRuleMap) ToQosDscpMarkingRuleMapOutputWithContext(ctx context.Context) QosDscpMarkingRuleMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QosDscpMarkingRuleMapOutput)
+}
+
 type QosDscpMarkingRuleOutput struct {
 	*pulumi.OutputState
 }
@@ -191,6 +270,75 @@ func (o QosDscpMarkingRuleOutput) ToQosDscpMarkingRuleOutputWithContext(ctx cont
 	return o
 }
 
+func (o QosDscpMarkingRuleOutput) ToQosDscpMarkingRulePtrOutput() QosDscpMarkingRulePtrOutput {
+	return o.ToQosDscpMarkingRulePtrOutputWithContext(context.Background())
+}
+
+func (o QosDscpMarkingRuleOutput) ToQosDscpMarkingRulePtrOutputWithContext(ctx context.Context) QosDscpMarkingRulePtrOutput {
+	return o.ApplyT(func(v QosDscpMarkingRule) *QosDscpMarkingRule {
+		return &v
+	}).(QosDscpMarkingRulePtrOutput)
+}
+
+type QosDscpMarkingRulePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (QosDscpMarkingRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**QosDscpMarkingRule)(nil))
+}
+
+func (o QosDscpMarkingRulePtrOutput) ToQosDscpMarkingRulePtrOutput() QosDscpMarkingRulePtrOutput {
+	return o
+}
+
+func (o QosDscpMarkingRulePtrOutput) ToQosDscpMarkingRulePtrOutputWithContext(ctx context.Context) QosDscpMarkingRulePtrOutput {
+	return o
+}
+
+type QosDscpMarkingRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (QosDscpMarkingRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]QosDscpMarkingRule)(nil))
+}
+
+func (o QosDscpMarkingRuleArrayOutput) ToQosDscpMarkingRuleArrayOutput() QosDscpMarkingRuleArrayOutput {
+	return o
+}
+
+func (o QosDscpMarkingRuleArrayOutput) ToQosDscpMarkingRuleArrayOutputWithContext(ctx context.Context) QosDscpMarkingRuleArrayOutput {
+	return o
+}
+
+func (o QosDscpMarkingRuleArrayOutput) Index(i pulumi.IntInput) QosDscpMarkingRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) QosDscpMarkingRule {
+		return vs[0].([]QosDscpMarkingRule)[vs[1].(int)]
+	}).(QosDscpMarkingRuleOutput)
+}
+
+type QosDscpMarkingRuleMapOutput struct{ *pulumi.OutputState }
+
+func (QosDscpMarkingRuleMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]QosDscpMarkingRule)(nil))
+}
+
+func (o QosDscpMarkingRuleMapOutput) ToQosDscpMarkingRuleMapOutput() QosDscpMarkingRuleMapOutput {
+	return o
+}
+
+func (o QosDscpMarkingRuleMapOutput) ToQosDscpMarkingRuleMapOutputWithContext(ctx context.Context) QosDscpMarkingRuleMapOutput {
+	return o
+}
+
+func (o QosDscpMarkingRuleMapOutput) MapIndex(k pulumi.StringInput) QosDscpMarkingRuleOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) QosDscpMarkingRule {
+		return vs[0].(map[string]QosDscpMarkingRule)[vs[1].(string)]
+	}).(QosDscpMarkingRuleOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(QosDscpMarkingRuleOutput{})
+	pulumi.RegisterOutputType(QosDscpMarkingRulePtrOutput{})
+	pulumi.RegisterOutputType(QosDscpMarkingRuleArrayOutput{})
+	pulumi.RegisterOutputType(QosDscpMarkingRuleMapOutput{})
 }
