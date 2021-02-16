@@ -242,6 +242,85 @@ func (i *RbacPolicyV2) ToRbacPolicyV2OutputWithContext(ctx context.Context) Rbac
 	return pulumi.ToOutputWithContext(ctx, i).(RbacPolicyV2Output)
 }
 
+func (i *RbacPolicyV2) ToRbacPolicyV2PtrOutput() RbacPolicyV2PtrOutput {
+	return i.ToRbacPolicyV2PtrOutputWithContext(context.Background())
+}
+
+func (i *RbacPolicyV2) ToRbacPolicyV2PtrOutputWithContext(ctx context.Context) RbacPolicyV2PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RbacPolicyV2PtrOutput)
+}
+
+type RbacPolicyV2PtrInput interface {
+	pulumi.Input
+
+	ToRbacPolicyV2PtrOutput() RbacPolicyV2PtrOutput
+	ToRbacPolicyV2PtrOutputWithContext(ctx context.Context) RbacPolicyV2PtrOutput
+}
+
+type rbacPolicyV2PtrType RbacPolicyV2Args
+
+func (*rbacPolicyV2PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RbacPolicyV2)(nil))
+}
+
+func (i *rbacPolicyV2PtrType) ToRbacPolicyV2PtrOutput() RbacPolicyV2PtrOutput {
+	return i.ToRbacPolicyV2PtrOutputWithContext(context.Background())
+}
+
+func (i *rbacPolicyV2PtrType) ToRbacPolicyV2PtrOutputWithContext(ctx context.Context) RbacPolicyV2PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RbacPolicyV2PtrOutput)
+}
+
+// RbacPolicyV2ArrayInput is an input type that accepts RbacPolicyV2Array and RbacPolicyV2ArrayOutput values.
+// You can construct a concrete instance of `RbacPolicyV2ArrayInput` via:
+//
+//          RbacPolicyV2Array{ RbacPolicyV2Args{...} }
+type RbacPolicyV2ArrayInput interface {
+	pulumi.Input
+
+	ToRbacPolicyV2ArrayOutput() RbacPolicyV2ArrayOutput
+	ToRbacPolicyV2ArrayOutputWithContext(context.Context) RbacPolicyV2ArrayOutput
+}
+
+type RbacPolicyV2Array []RbacPolicyV2Input
+
+func (RbacPolicyV2Array) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*RbacPolicyV2)(nil))
+}
+
+func (i RbacPolicyV2Array) ToRbacPolicyV2ArrayOutput() RbacPolicyV2ArrayOutput {
+	return i.ToRbacPolicyV2ArrayOutputWithContext(context.Background())
+}
+
+func (i RbacPolicyV2Array) ToRbacPolicyV2ArrayOutputWithContext(ctx context.Context) RbacPolicyV2ArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RbacPolicyV2ArrayOutput)
+}
+
+// RbacPolicyV2MapInput is an input type that accepts RbacPolicyV2Map and RbacPolicyV2MapOutput values.
+// You can construct a concrete instance of `RbacPolicyV2MapInput` via:
+//
+//          RbacPolicyV2Map{ "key": RbacPolicyV2Args{...} }
+type RbacPolicyV2MapInput interface {
+	pulumi.Input
+
+	ToRbacPolicyV2MapOutput() RbacPolicyV2MapOutput
+	ToRbacPolicyV2MapOutputWithContext(context.Context) RbacPolicyV2MapOutput
+}
+
+type RbacPolicyV2Map map[string]RbacPolicyV2Input
+
+func (RbacPolicyV2Map) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*RbacPolicyV2)(nil))
+}
+
+func (i RbacPolicyV2Map) ToRbacPolicyV2MapOutput() RbacPolicyV2MapOutput {
+	return i.ToRbacPolicyV2MapOutputWithContext(context.Background())
+}
+
+func (i RbacPolicyV2Map) ToRbacPolicyV2MapOutputWithContext(ctx context.Context) RbacPolicyV2MapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RbacPolicyV2MapOutput)
+}
+
 type RbacPolicyV2Output struct {
 	*pulumi.OutputState
 }
@@ -258,6 +337,75 @@ func (o RbacPolicyV2Output) ToRbacPolicyV2OutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o RbacPolicyV2Output) ToRbacPolicyV2PtrOutput() RbacPolicyV2PtrOutput {
+	return o.ToRbacPolicyV2PtrOutputWithContext(context.Background())
+}
+
+func (o RbacPolicyV2Output) ToRbacPolicyV2PtrOutputWithContext(ctx context.Context) RbacPolicyV2PtrOutput {
+	return o.ApplyT(func(v RbacPolicyV2) *RbacPolicyV2 {
+		return &v
+	}).(RbacPolicyV2PtrOutput)
+}
+
+type RbacPolicyV2PtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (RbacPolicyV2PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RbacPolicyV2)(nil))
+}
+
+func (o RbacPolicyV2PtrOutput) ToRbacPolicyV2PtrOutput() RbacPolicyV2PtrOutput {
+	return o
+}
+
+func (o RbacPolicyV2PtrOutput) ToRbacPolicyV2PtrOutputWithContext(ctx context.Context) RbacPolicyV2PtrOutput {
+	return o
+}
+
+type RbacPolicyV2ArrayOutput struct{ *pulumi.OutputState }
+
+func (RbacPolicyV2ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RbacPolicyV2)(nil))
+}
+
+func (o RbacPolicyV2ArrayOutput) ToRbacPolicyV2ArrayOutput() RbacPolicyV2ArrayOutput {
+	return o
+}
+
+func (o RbacPolicyV2ArrayOutput) ToRbacPolicyV2ArrayOutputWithContext(ctx context.Context) RbacPolicyV2ArrayOutput {
+	return o
+}
+
+func (o RbacPolicyV2ArrayOutput) Index(i pulumi.IntInput) RbacPolicyV2Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RbacPolicyV2 {
+		return vs[0].([]RbacPolicyV2)[vs[1].(int)]
+	}).(RbacPolicyV2Output)
+}
+
+type RbacPolicyV2MapOutput struct{ *pulumi.OutputState }
+
+func (RbacPolicyV2MapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]RbacPolicyV2)(nil))
+}
+
+func (o RbacPolicyV2MapOutput) ToRbacPolicyV2MapOutput() RbacPolicyV2MapOutput {
+	return o
+}
+
+func (o RbacPolicyV2MapOutput) ToRbacPolicyV2MapOutputWithContext(ctx context.Context) RbacPolicyV2MapOutput {
+	return o
+}
+
+func (o RbacPolicyV2MapOutput) MapIndex(k pulumi.StringInput) RbacPolicyV2Output {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) RbacPolicyV2 {
+		return vs[0].(map[string]RbacPolicyV2)[vs[1].(string)]
+	}).(RbacPolicyV2Output)
+}
+
 func init() {
 	pulumi.RegisterOutputType(RbacPolicyV2Output{})
+	pulumi.RegisterOutputType(RbacPolicyV2PtrOutput{})
+	pulumi.RegisterOutputType(RbacPolicyV2ArrayOutput{})
+	pulumi.RegisterOutputType(RbacPolicyV2MapOutput{})
 }

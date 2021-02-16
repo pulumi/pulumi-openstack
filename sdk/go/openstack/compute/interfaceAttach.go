@@ -296,6 +296,85 @@ func (i *InterfaceAttach) ToInterfaceAttachOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(InterfaceAttachOutput)
 }
 
+func (i *InterfaceAttach) ToInterfaceAttachPtrOutput() InterfaceAttachPtrOutput {
+	return i.ToInterfaceAttachPtrOutputWithContext(context.Background())
+}
+
+func (i *InterfaceAttach) ToInterfaceAttachPtrOutputWithContext(ctx context.Context) InterfaceAttachPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfaceAttachPtrOutput)
+}
+
+type InterfaceAttachPtrInput interface {
+	pulumi.Input
+
+	ToInterfaceAttachPtrOutput() InterfaceAttachPtrOutput
+	ToInterfaceAttachPtrOutputWithContext(ctx context.Context) InterfaceAttachPtrOutput
+}
+
+type interfaceAttachPtrType InterfaceAttachArgs
+
+func (*interfaceAttachPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InterfaceAttach)(nil))
+}
+
+func (i *interfaceAttachPtrType) ToInterfaceAttachPtrOutput() InterfaceAttachPtrOutput {
+	return i.ToInterfaceAttachPtrOutputWithContext(context.Background())
+}
+
+func (i *interfaceAttachPtrType) ToInterfaceAttachPtrOutputWithContext(ctx context.Context) InterfaceAttachPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfaceAttachPtrOutput)
+}
+
+// InterfaceAttachArrayInput is an input type that accepts InterfaceAttachArray and InterfaceAttachArrayOutput values.
+// You can construct a concrete instance of `InterfaceAttachArrayInput` via:
+//
+//          InterfaceAttachArray{ InterfaceAttachArgs{...} }
+type InterfaceAttachArrayInput interface {
+	pulumi.Input
+
+	ToInterfaceAttachArrayOutput() InterfaceAttachArrayOutput
+	ToInterfaceAttachArrayOutputWithContext(context.Context) InterfaceAttachArrayOutput
+}
+
+type InterfaceAttachArray []InterfaceAttachInput
+
+func (InterfaceAttachArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*InterfaceAttach)(nil))
+}
+
+func (i InterfaceAttachArray) ToInterfaceAttachArrayOutput() InterfaceAttachArrayOutput {
+	return i.ToInterfaceAttachArrayOutputWithContext(context.Background())
+}
+
+func (i InterfaceAttachArray) ToInterfaceAttachArrayOutputWithContext(ctx context.Context) InterfaceAttachArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfaceAttachArrayOutput)
+}
+
+// InterfaceAttachMapInput is an input type that accepts InterfaceAttachMap and InterfaceAttachMapOutput values.
+// You can construct a concrete instance of `InterfaceAttachMapInput` via:
+//
+//          InterfaceAttachMap{ "key": InterfaceAttachArgs{...} }
+type InterfaceAttachMapInput interface {
+	pulumi.Input
+
+	ToInterfaceAttachMapOutput() InterfaceAttachMapOutput
+	ToInterfaceAttachMapOutputWithContext(context.Context) InterfaceAttachMapOutput
+}
+
+type InterfaceAttachMap map[string]InterfaceAttachInput
+
+func (InterfaceAttachMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*InterfaceAttach)(nil))
+}
+
+func (i InterfaceAttachMap) ToInterfaceAttachMapOutput() InterfaceAttachMapOutput {
+	return i.ToInterfaceAttachMapOutputWithContext(context.Background())
+}
+
+func (i InterfaceAttachMap) ToInterfaceAttachMapOutputWithContext(ctx context.Context) InterfaceAttachMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfaceAttachMapOutput)
+}
+
 type InterfaceAttachOutput struct {
 	*pulumi.OutputState
 }
@@ -312,6 +391,75 @@ func (o InterfaceAttachOutput) ToInterfaceAttachOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o InterfaceAttachOutput) ToInterfaceAttachPtrOutput() InterfaceAttachPtrOutput {
+	return o.ToInterfaceAttachPtrOutputWithContext(context.Background())
+}
+
+func (o InterfaceAttachOutput) ToInterfaceAttachPtrOutputWithContext(ctx context.Context) InterfaceAttachPtrOutput {
+	return o.ApplyT(func(v InterfaceAttach) *InterfaceAttach {
+		return &v
+	}).(InterfaceAttachPtrOutput)
+}
+
+type InterfaceAttachPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (InterfaceAttachPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InterfaceAttach)(nil))
+}
+
+func (o InterfaceAttachPtrOutput) ToInterfaceAttachPtrOutput() InterfaceAttachPtrOutput {
+	return o
+}
+
+func (o InterfaceAttachPtrOutput) ToInterfaceAttachPtrOutputWithContext(ctx context.Context) InterfaceAttachPtrOutput {
+	return o
+}
+
+type InterfaceAttachArrayOutput struct{ *pulumi.OutputState }
+
+func (InterfaceAttachArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InterfaceAttach)(nil))
+}
+
+func (o InterfaceAttachArrayOutput) ToInterfaceAttachArrayOutput() InterfaceAttachArrayOutput {
+	return o
+}
+
+func (o InterfaceAttachArrayOutput) ToInterfaceAttachArrayOutputWithContext(ctx context.Context) InterfaceAttachArrayOutput {
+	return o
+}
+
+func (o InterfaceAttachArrayOutput) Index(i pulumi.IntInput) InterfaceAttachOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InterfaceAttach {
+		return vs[0].([]InterfaceAttach)[vs[1].(int)]
+	}).(InterfaceAttachOutput)
+}
+
+type InterfaceAttachMapOutput struct{ *pulumi.OutputState }
+
+func (InterfaceAttachMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]InterfaceAttach)(nil))
+}
+
+func (o InterfaceAttachMapOutput) ToInterfaceAttachMapOutput() InterfaceAttachMapOutput {
+	return o
+}
+
+func (o InterfaceAttachMapOutput) ToInterfaceAttachMapOutputWithContext(ctx context.Context) InterfaceAttachMapOutput {
+	return o
+}
+
+func (o InterfaceAttachMapOutput) MapIndex(k pulumi.StringInput) InterfaceAttachOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) InterfaceAttach {
+		return vs[0].(map[string]InterfaceAttach)[vs[1].(string)]
+	}).(InterfaceAttachOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(InterfaceAttachOutput{})
+	pulumi.RegisterOutputType(InterfaceAttachPtrOutput{})
+	pulumi.RegisterOutputType(InterfaceAttachArrayOutput{})
+	pulumi.RegisterOutputType(InterfaceAttachMapOutput{})
 }

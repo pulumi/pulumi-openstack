@@ -70,7 +70,8 @@ export class PortSecGroupAssociate extends pulumi.CustomResource {
     constructor(name: string, args: PortSecGroupAssociateArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: PortSecGroupAssociateArgs | PortSecGroupAssociateState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as PortSecGroupAssociateState | undefined;
             inputs["allSecurityGroupIds"] = state ? state.allSecurityGroupIds : undefined;
             inputs["enforce"] = state ? state.enforce : undefined;
@@ -79,10 +80,10 @@ export class PortSecGroupAssociate extends pulumi.CustomResource {
             inputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
         } else {
             const args = argsOrState as PortSecGroupAssociateArgs | undefined;
-            if ((!args || args.portId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.portId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'portId'");
             }
-            if ((!args || args.securityGroupIds === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.securityGroupIds === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'securityGroupIds'");
             }
             inputs["enforce"] = args ? args.enforce : undefined;
@@ -91,12 +92,8 @@ export class PortSecGroupAssociate extends pulumi.CustomResource {
             inputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
             inputs["allSecurityGroupIds"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(PortSecGroupAssociate.__pulumiType, name, inputs, opts);
     }

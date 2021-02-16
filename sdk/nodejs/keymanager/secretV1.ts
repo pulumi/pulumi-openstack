@@ -136,7 +136,8 @@ export class SecretV1 extends pulumi.CustomResource {
     constructor(name: string, args?: SecretV1Args, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SecretV1Args | SecretV1State, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as SecretV1State | undefined;
             inputs["acl"] = state ? state.acl : undefined;
             inputs["algorithm"] = state ? state.algorithm : undefined;
@@ -179,12 +180,8 @@ export class SecretV1 extends pulumi.CustomResource {
             inputs["status"] = undefined /*out*/;
             inputs["updatedAt"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(SecretV1.__pulumiType, name, inputs, opts);
     }

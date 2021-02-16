@@ -86,7 +86,8 @@ export class GroupV3 extends pulumi.CustomResource {
     constructor(name: string, args?: GroupV3Args, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GroupV3Args | GroupV3State, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as GroupV3State | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["domainId"] = state ? state.domainId : undefined;
@@ -99,12 +100,8 @@ export class GroupV3 extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["region"] = args ? args.region : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(GroupV3.__pulumiType, name, inputs, opts);
     }

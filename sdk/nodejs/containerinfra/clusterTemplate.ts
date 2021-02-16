@@ -271,7 +271,8 @@ export class ClusterTemplate extends pulumi.CustomResource {
     constructor(name: string, args: ClusterTemplateArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ClusterTemplateArgs | ClusterTemplateState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ClusterTemplateState | undefined;
             inputs["apiserverPort"] = state ? state.apiserverPort : undefined;
             inputs["clusterDistro"] = state ? state.clusterDistro : undefined;
@@ -307,10 +308,10 @@ export class ClusterTemplate extends pulumi.CustomResource {
             inputs["volumeDriver"] = state ? state.volumeDriver : undefined;
         } else {
             const args = argsOrState as ClusterTemplateArgs | undefined;
-            if ((!args || args.coe === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.coe === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'coe'");
             }
-            if ((!args || args.image === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.image === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'image'");
             }
             inputs["apiserverPort"] = args ? args.apiserverPort : undefined;
@@ -346,12 +347,8 @@ export class ClusterTemplate extends pulumi.CustomResource {
             inputs["updatedAt"] = undefined /*out*/;
             inputs["userId"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ClusterTemplate.__pulumiType, name, inputs, opts);
     }

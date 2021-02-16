@@ -125,7 +125,8 @@ export class VolumeV1 extends pulumi.CustomResource {
     constructor(name: string, args: VolumeV1Args, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: VolumeV1Args | VolumeV1State, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as VolumeV1State | undefined;
             inputs["attachments"] = state ? state.attachments : undefined;
             inputs["availabilityZone"] = state ? state.availabilityZone : undefined;
@@ -140,7 +141,7 @@ export class VolumeV1 extends pulumi.CustomResource {
             inputs["volumeType"] = state ? state.volumeType : undefined;
         } else {
             const args = argsOrState as VolumeV1Args | undefined;
-            if ((!args || args.size === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.size === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'size'");
             }
             inputs["availabilityZone"] = args ? args.availabilityZone : undefined;
@@ -155,12 +156,8 @@ export class VolumeV1 extends pulumi.CustomResource {
             inputs["volumeType"] = args ? args.volumeType : undefined;
             inputs["attachments"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(VolumeV1.__pulumiType, name, inputs, opts);
     }

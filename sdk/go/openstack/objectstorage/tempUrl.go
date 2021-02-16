@@ -232,6 +232,85 @@ func (i *TempUrl) ToTempUrlOutputWithContext(ctx context.Context) TempUrlOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(TempUrlOutput)
 }
 
+func (i *TempUrl) ToTempUrlPtrOutput() TempUrlPtrOutput {
+	return i.ToTempUrlPtrOutputWithContext(context.Background())
+}
+
+func (i *TempUrl) ToTempUrlPtrOutputWithContext(ctx context.Context) TempUrlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TempUrlPtrOutput)
+}
+
+type TempUrlPtrInput interface {
+	pulumi.Input
+
+	ToTempUrlPtrOutput() TempUrlPtrOutput
+	ToTempUrlPtrOutputWithContext(ctx context.Context) TempUrlPtrOutput
+}
+
+type tempUrlPtrType TempUrlArgs
+
+func (*tempUrlPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TempUrl)(nil))
+}
+
+func (i *tempUrlPtrType) ToTempUrlPtrOutput() TempUrlPtrOutput {
+	return i.ToTempUrlPtrOutputWithContext(context.Background())
+}
+
+func (i *tempUrlPtrType) ToTempUrlPtrOutputWithContext(ctx context.Context) TempUrlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TempUrlPtrOutput)
+}
+
+// TempUrlArrayInput is an input type that accepts TempUrlArray and TempUrlArrayOutput values.
+// You can construct a concrete instance of `TempUrlArrayInput` via:
+//
+//          TempUrlArray{ TempUrlArgs{...} }
+type TempUrlArrayInput interface {
+	pulumi.Input
+
+	ToTempUrlArrayOutput() TempUrlArrayOutput
+	ToTempUrlArrayOutputWithContext(context.Context) TempUrlArrayOutput
+}
+
+type TempUrlArray []TempUrlInput
+
+func (TempUrlArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*TempUrl)(nil))
+}
+
+func (i TempUrlArray) ToTempUrlArrayOutput() TempUrlArrayOutput {
+	return i.ToTempUrlArrayOutputWithContext(context.Background())
+}
+
+func (i TempUrlArray) ToTempUrlArrayOutputWithContext(ctx context.Context) TempUrlArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TempUrlArrayOutput)
+}
+
+// TempUrlMapInput is an input type that accepts TempUrlMap and TempUrlMapOutput values.
+// You can construct a concrete instance of `TempUrlMapInput` via:
+//
+//          TempUrlMap{ "key": TempUrlArgs{...} }
+type TempUrlMapInput interface {
+	pulumi.Input
+
+	ToTempUrlMapOutput() TempUrlMapOutput
+	ToTempUrlMapOutputWithContext(context.Context) TempUrlMapOutput
+}
+
+type TempUrlMap map[string]TempUrlInput
+
+func (TempUrlMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*TempUrl)(nil))
+}
+
+func (i TempUrlMap) ToTempUrlMapOutput() TempUrlMapOutput {
+	return i.ToTempUrlMapOutputWithContext(context.Background())
+}
+
+func (i TempUrlMap) ToTempUrlMapOutputWithContext(ctx context.Context) TempUrlMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TempUrlMapOutput)
+}
+
 type TempUrlOutput struct {
 	*pulumi.OutputState
 }
@@ -248,6 +327,75 @@ func (o TempUrlOutput) ToTempUrlOutputWithContext(ctx context.Context) TempUrlOu
 	return o
 }
 
+func (o TempUrlOutput) ToTempUrlPtrOutput() TempUrlPtrOutput {
+	return o.ToTempUrlPtrOutputWithContext(context.Background())
+}
+
+func (o TempUrlOutput) ToTempUrlPtrOutputWithContext(ctx context.Context) TempUrlPtrOutput {
+	return o.ApplyT(func(v TempUrl) *TempUrl {
+		return &v
+	}).(TempUrlPtrOutput)
+}
+
+type TempUrlPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (TempUrlPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TempUrl)(nil))
+}
+
+func (o TempUrlPtrOutput) ToTempUrlPtrOutput() TempUrlPtrOutput {
+	return o
+}
+
+func (o TempUrlPtrOutput) ToTempUrlPtrOutputWithContext(ctx context.Context) TempUrlPtrOutput {
+	return o
+}
+
+type TempUrlArrayOutput struct{ *pulumi.OutputState }
+
+func (TempUrlArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TempUrl)(nil))
+}
+
+func (o TempUrlArrayOutput) ToTempUrlArrayOutput() TempUrlArrayOutput {
+	return o
+}
+
+func (o TempUrlArrayOutput) ToTempUrlArrayOutputWithContext(ctx context.Context) TempUrlArrayOutput {
+	return o
+}
+
+func (o TempUrlArrayOutput) Index(i pulumi.IntInput) TempUrlOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TempUrl {
+		return vs[0].([]TempUrl)[vs[1].(int)]
+	}).(TempUrlOutput)
+}
+
+type TempUrlMapOutput struct{ *pulumi.OutputState }
+
+func (TempUrlMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]TempUrl)(nil))
+}
+
+func (o TempUrlMapOutput) ToTempUrlMapOutput() TempUrlMapOutput {
+	return o
+}
+
+func (o TempUrlMapOutput) ToTempUrlMapOutputWithContext(ctx context.Context) TempUrlMapOutput {
+	return o
+}
+
+func (o TempUrlMapOutput) MapIndex(k pulumi.StringInput) TempUrlOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) TempUrl {
+		return vs[0].(map[string]TempUrl)[vs[1].(string)]
+	}).(TempUrlOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(TempUrlOutput{})
+	pulumi.RegisterOutputType(TempUrlPtrOutput{})
+	pulumi.RegisterOutputType(TempUrlArrayOutput{})
+	pulumi.RegisterOutputType(TempUrlMapOutput{})
 }

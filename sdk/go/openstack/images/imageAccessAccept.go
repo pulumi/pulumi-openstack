@@ -220,6 +220,85 @@ func (i *ImageAccessAccept) ToImageAccessAcceptOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ImageAccessAcceptOutput)
 }
 
+func (i *ImageAccessAccept) ToImageAccessAcceptPtrOutput() ImageAccessAcceptPtrOutput {
+	return i.ToImageAccessAcceptPtrOutputWithContext(context.Background())
+}
+
+func (i *ImageAccessAccept) ToImageAccessAcceptPtrOutputWithContext(ctx context.Context) ImageAccessAcceptPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageAccessAcceptPtrOutput)
+}
+
+type ImageAccessAcceptPtrInput interface {
+	pulumi.Input
+
+	ToImageAccessAcceptPtrOutput() ImageAccessAcceptPtrOutput
+	ToImageAccessAcceptPtrOutputWithContext(ctx context.Context) ImageAccessAcceptPtrOutput
+}
+
+type imageAccessAcceptPtrType ImageAccessAcceptArgs
+
+func (*imageAccessAcceptPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImageAccessAccept)(nil))
+}
+
+func (i *imageAccessAcceptPtrType) ToImageAccessAcceptPtrOutput() ImageAccessAcceptPtrOutput {
+	return i.ToImageAccessAcceptPtrOutputWithContext(context.Background())
+}
+
+func (i *imageAccessAcceptPtrType) ToImageAccessAcceptPtrOutputWithContext(ctx context.Context) ImageAccessAcceptPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageAccessAcceptPtrOutput)
+}
+
+// ImageAccessAcceptArrayInput is an input type that accepts ImageAccessAcceptArray and ImageAccessAcceptArrayOutput values.
+// You can construct a concrete instance of `ImageAccessAcceptArrayInput` via:
+//
+//          ImageAccessAcceptArray{ ImageAccessAcceptArgs{...} }
+type ImageAccessAcceptArrayInput interface {
+	pulumi.Input
+
+	ToImageAccessAcceptArrayOutput() ImageAccessAcceptArrayOutput
+	ToImageAccessAcceptArrayOutputWithContext(context.Context) ImageAccessAcceptArrayOutput
+}
+
+type ImageAccessAcceptArray []ImageAccessAcceptInput
+
+func (ImageAccessAcceptArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ImageAccessAccept)(nil))
+}
+
+func (i ImageAccessAcceptArray) ToImageAccessAcceptArrayOutput() ImageAccessAcceptArrayOutput {
+	return i.ToImageAccessAcceptArrayOutputWithContext(context.Background())
+}
+
+func (i ImageAccessAcceptArray) ToImageAccessAcceptArrayOutputWithContext(ctx context.Context) ImageAccessAcceptArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageAccessAcceptArrayOutput)
+}
+
+// ImageAccessAcceptMapInput is an input type that accepts ImageAccessAcceptMap and ImageAccessAcceptMapOutput values.
+// You can construct a concrete instance of `ImageAccessAcceptMapInput` via:
+//
+//          ImageAccessAcceptMap{ "key": ImageAccessAcceptArgs{...} }
+type ImageAccessAcceptMapInput interface {
+	pulumi.Input
+
+	ToImageAccessAcceptMapOutput() ImageAccessAcceptMapOutput
+	ToImageAccessAcceptMapOutputWithContext(context.Context) ImageAccessAcceptMapOutput
+}
+
+type ImageAccessAcceptMap map[string]ImageAccessAcceptInput
+
+func (ImageAccessAcceptMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ImageAccessAccept)(nil))
+}
+
+func (i ImageAccessAcceptMap) ToImageAccessAcceptMapOutput() ImageAccessAcceptMapOutput {
+	return i.ToImageAccessAcceptMapOutputWithContext(context.Background())
+}
+
+func (i ImageAccessAcceptMap) ToImageAccessAcceptMapOutputWithContext(ctx context.Context) ImageAccessAcceptMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageAccessAcceptMapOutput)
+}
+
 type ImageAccessAcceptOutput struct {
 	*pulumi.OutputState
 }
@@ -236,6 +315,75 @@ func (o ImageAccessAcceptOutput) ToImageAccessAcceptOutputWithContext(ctx contex
 	return o
 }
 
+func (o ImageAccessAcceptOutput) ToImageAccessAcceptPtrOutput() ImageAccessAcceptPtrOutput {
+	return o.ToImageAccessAcceptPtrOutputWithContext(context.Background())
+}
+
+func (o ImageAccessAcceptOutput) ToImageAccessAcceptPtrOutputWithContext(ctx context.Context) ImageAccessAcceptPtrOutput {
+	return o.ApplyT(func(v ImageAccessAccept) *ImageAccessAccept {
+		return &v
+	}).(ImageAccessAcceptPtrOutput)
+}
+
+type ImageAccessAcceptPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ImageAccessAcceptPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImageAccessAccept)(nil))
+}
+
+func (o ImageAccessAcceptPtrOutput) ToImageAccessAcceptPtrOutput() ImageAccessAcceptPtrOutput {
+	return o
+}
+
+func (o ImageAccessAcceptPtrOutput) ToImageAccessAcceptPtrOutputWithContext(ctx context.Context) ImageAccessAcceptPtrOutput {
+	return o
+}
+
+type ImageAccessAcceptArrayOutput struct{ *pulumi.OutputState }
+
+func (ImageAccessAcceptArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ImageAccessAccept)(nil))
+}
+
+func (o ImageAccessAcceptArrayOutput) ToImageAccessAcceptArrayOutput() ImageAccessAcceptArrayOutput {
+	return o
+}
+
+func (o ImageAccessAcceptArrayOutput) ToImageAccessAcceptArrayOutputWithContext(ctx context.Context) ImageAccessAcceptArrayOutput {
+	return o
+}
+
+func (o ImageAccessAcceptArrayOutput) Index(i pulumi.IntInput) ImageAccessAcceptOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ImageAccessAccept {
+		return vs[0].([]ImageAccessAccept)[vs[1].(int)]
+	}).(ImageAccessAcceptOutput)
+}
+
+type ImageAccessAcceptMapOutput struct{ *pulumi.OutputState }
+
+func (ImageAccessAcceptMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ImageAccessAccept)(nil))
+}
+
+func (o ImageAccessAcceptMapOutput) ToImageAccessAcceptMapOutput() ImageAccessAcceptMapOutput {
+	return o
+}
+
+func (o ImageAccessAcceptMapOutput) ToImageAccessAcceptMapOutputWithContext(ctx context.Context) ImageAccessAcceptMapOutput {
+	return o
+}
+
+func (o ImageAccessAcceptMapOutput) MapIndex(k pulumi.StringInput) ImageAccessAcceptOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ImageAccessAccept {
+		return vs[0].(map[string]ImageAccessAccept)[vs[1].(string)]
+	}).(ImageAccessAcceptOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ImageAccessAcceptOutput{})
+	pulumi.RegisterOutputType(ImageAccessAcceptPtrOutput{})
+	pulumi.RegisterOutputType(ImageAccessAcceptArrayOutput{})
+	pulumi.RegisterOutputType(ImageAccessAcceptMapOutput{})
 }

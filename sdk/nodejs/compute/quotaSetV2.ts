@@ -161,7 +161,8 @@ export class QuotaSetV2 extends pulumi.CustomResource {
     constructor(name: string, args: QuotaSetV2Args, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: QuotaSetV2Args | QuotaSetV2State, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as QuotaSetV2State | undefined;
             inputs["cores"] = state ? state.cores : undefined;
             inputs["fixedIps"] = state ? state.fixedIps : undefined;
@@ -181,7 +182,7 @@ export class QuotaSetV2 extends pulumi.CustomResource {
             inputs["serverGroups"] = state ? state.serverGroups : undefined;
         } else {
             const args = argsOrState as QuotaSetV2Args | undefined;
-            if ((!args || args.projectId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.projectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
             inputs["cores"] = args ? args.cores : undefined;
@@ -201,12 +202,8 @@ export class QuotaSetV2 extends pulumi.CustomResource {
             inputs["serverGroupMembers"] = args ? args.serverGroupMembers : undefined;
             inputs["serverGroups"] = args ? args.serverGroups : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(QuotaSetV2.__pulumiType, name, inputs, opts);
     }

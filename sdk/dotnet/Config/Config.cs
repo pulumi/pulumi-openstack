@@ -17,32 +17,32 @@ namespace Pulumi.OpenStack
         /// <summary>
         /// Application Credential ID to login with.
         /// </summary>
-        public static string? ApplicationCredentialId { get; set; } = __config.Get("applicationCredentialId") ?? Utilities.GetEnv("OS_APPLICATION_CREDENTIAL_ID");
+        public static string? ApplicationCredentialId { get; set; } = __config.Get("applicationCredentialId");
 
         /// <summary>
         /// Application Credential name to login with.
         /// </summary>
-        public static string? ApplicationCredentialName { get; set; } = __config.Get("applicationCredentialName") ?? Utilities.GetEnv("OS_APPLICATION_CREDENTIAL_NAME");
+        public static string? ApplicationCredentialName { get; set; } = __config.Get("applicationCredentialName");
 
         /// <summary>
         /// Application Credential secret to login with.
         /// </summary>
-        public static string? ApplicationCredentialSecret { get; set; } = __config.Get("applicationCredentialSecret") ?? Utilities.GetEnv("OS_APPLICATION_CREDENTIAL_SECRET");
+        public static string? ApplicationCredentialSecret { get; set; } = __config.Get("applicationCredentialSecret");
 
         /// <summary>
         /// The Identity authentication URL.
         /// </summary>
-        public static string? AuthUrl { get; set; } = __config.Get("authUrl") ?? Utilities.GetEnv("OS_AUTH_URL");
+        public static string? AuthUrl { get; set; } = __config.Get("authUrl");
 
         /// <summary>
         /// A Custom CA certificate.
         /// </summary>
-        public static string? CacertFile { get; set; } = __config.Get("cacertFile") ?? Utilities.GetEnv("OS_CACERT");
+        public static string? CacertFile { get; set; } = __config.Get("cacertFile");
 
         /// <summary>
         /// A client certificate to authenticate with.
         /// </summary>
-        public static string? Cert { get; set; } = __config.Get("cert") ?? Utilities.GetEnv("OS_CERT");
+        public static string? Cert { get; set; } = __config.Get("cert");
 
         /// <summary>
         /// An entry in a `clouds.yaml` file to use.
@@ -52,7 +52,7 @@ namespace Pulumi.OpenStack
         /// <summary>
         /// The name of the Domain ID to scope to if no other domain is specified. Defaults to `default` (Identity v3).
         /// </summary>
-        public static string? DefaultDomain { get; set; } = __config.Get("defaultDomain") ?? Utilities.GetEnv("OS_DEFAULT_DOMAIN") ?? "default";
+        public static string? DefaultDomain { get; set; } = __config.Get("defaultDomain");
 
         /// <summary>
         /// If set to `false`, OpenStack authorization will be perfomed, every time the service provider client is called. Defaults
@@ -68,12 +68,12 @@ namespace Pulumi.OpenStack
         /// <summary>
         /// The ID of the Domain to scope to (Identity v3).
         /// </summary>
-        public static string? DomainId { get; set; } = __config.Get("domainId") ?? Utilities.GetEnv("OS_DOMAIN_ID");
+        public static string? DomainId { get; set; } = __config.Get("domainId");
 
         /// <summary>
         /// The name of the Domain to scope to (Identity v3).
         /// </summary>
-        public static string? DomainName { get; set; } = __config.Get("domainName") ?? Utilities.GetEnv("OS_DOMAIN_NAME");
+        public static string? DomainName { get; set; } = __config.Get("domainName");
 
         /// <summary>
         /// A map of services with an endpoint to override what was from the Keystone catalog
@@ -90,7 +90,7 @@ namespace Pulumi.OpenStack
         /// <summary>
         /// A client private key to authenticate with.
         /// </summary>
-        public static string? Key { get; set; } = __config.Get("key") ?? Utilities.GetEnv("OS_KEY");
+        public static string? Key { get; set; } = __config.Get("key");
 
         /// <summary>
         /// How many times HTTP connection should be retried until giving up.
@@ -100,17 +100,17 @@ namespace Pulumi.OpenStack
         /// <summary>
         /// Password to login with.
         /// </summary>
-        public static string? Password { get; set; } = __config.Get("password") ?? Utilities.GetEnv("OS_PASSWORD");
+        public static string? Password { get; set; } = __config.Get("password");
 
         /// <summary>
         /// The ID of the domain where the proejct resides (Identity v3).
         /// </summary>
-        public static string? ProjectDomainId { get; set; } = __config.Get("projectDomainId") ?? Utilities.GetEnv("OS_PROJECT_DOMAIN_ID");
+        public static string? ProjectDomainId { get; set; } = __config.Get("projectDomainId");
 
         /// <summary>
         /// The name of the domain where the project resides (Identity v3).
         /// </summary>
-        public static string? ProjectDomainName { get; set; } = __config.Get("projectDomainName") ?? Utilities.GetEnv("OS_PROJECT_DOMAIN_NAME");
+        public static string? ProjectDomainName { get; set; } = __config.Get("projectDomainName");
 
         /// <summary>
         /// The OpenStack region to connect to.
@@ -125,17 +125,17 @@ namespace Pulumi.OpenStack
         /// <summary>
         /// The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.
         /// </summary>
-        public static string? TenantId { get; set; } = __config.Get("tenantId") ?? Utilities.GetEnv("OS_TENANT_ID", "OS_PROJECT_ID");
+        public static string? TenantId { get; set; } = __config.Get("tenantId");
 
         /// <summary>
         /// The name of the Tenant (Identity v2) or Project (Identity v3) to login with.
         /// </summary>
-        public static string? TenantName { get; set; } = __config.Get("tenantName") ?? Utilities.GetEnv("OS_TENANT_NAME", "OS_PROJECT_NAME");
+        public static string? TenantName { get; set; } = __config.Get("tenantName");
 
         /// <summary>
         /// Authentication token to use as an alternative to username/password.
         /// </summary>
-        public static string? Token { get; set; } = __config.Get("token") ?? Utilities.GetEnv("OS_TOKEN", "OS_AUTH_TOKEN");
+        public static string? Token { get; set; } = __config.Get("token");
 
         /// <summary>
         /// If set to `true`, API requests will go the Load Balancer service (Octavia) instead of the Networking service (Neutron).
@@ -145,22 +145,22 @@ namespace Pulumi.OpenStack
         /// <summary>
         /// The ID of the domain where the user resides (Identity v3).
         /// </summary>
-        public static string? UserDomainId { get; set; } = __config.Get("userDomainId") ?? Utilities.GetEnv("OS_USER_DOMAIN_ID");
+        public static string? UserDomainId { get; set; } = __config.Get("userDomainId");
 
         /// <summary>
         /// The name of the domain where the user resides (Identity v3).
         /// </summary>
-        public static string? UserDomainName { get; set; } = __config.Get("userDomainName") ?? Utilities.GetEnv("OS_USER_DOMAIN_NAME");
+        public static string? UserDomainName { get; set; } = __config.Get("userDomainName");
 
         /// <summary>
         /// Username to login with.
         /// </summary>
-        public static string? UserId { get; set; } = __config.Get("userId") ?? Utilities.GetEnv("OS_USER_ID");
+        public static string? UserId { get; set; } = __config.Get("userId");
 
         /// <summary>
         /// Username to login with.
         /// </summary>
-        public static string? UserName { get; set; } = __config.Get("userName") ?? Utilities.GetEnv("OS_USERNAME");
+        public static string? UserName { get; set; } = __config.Get("userName");
 
     }
 }

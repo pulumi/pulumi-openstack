@@ -99,7 +99,8 @@ export class RouterInterface extends pulumi.CustomResource {
     constructor(name: string, args: RouterInterfaceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RouterInterfaceArgs | RouterInterfaceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as RouterInterfaceState | undefined;
             inputs["portId"] = state ? state.portId : undefined;
             inputs["region"] = state ? state.region : undefined;
@@ -107,7 +108,7 @@ export class RouterInterface extends pulumi.CustomResource {
             inputs["subnetId"] = state ? state.subnetId : undefined;
         } else {
             const args = argsOrState as RouterInterfaceArgs | undefined;
-            if ((!args || args.routerId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.routerId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'routerId'");
             }
             inputs["portId"] = args ? args.portId : undefined;
@@ -115,12 +116,8 @@ export class RouterInterface extends pulumi.CustomResource {
             inputs["routerId"] = args ? args.routerId : undefined;
             inputs["subnetId"] = args ? args.subnetId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(RouterInterface.__pulumiType, name, inputs, opts);
     }

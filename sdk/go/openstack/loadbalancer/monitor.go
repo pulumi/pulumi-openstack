@@ -366,6 +366,85 @@ func (i *Monitor) ToMonitorOutputWithContext(ctx context.Context) MonitorOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(MonitorOutput)
 }
 
+func (i *Monitor) ToMonitorPtrOutput() MonitorPtrOutput {
+	return i.ToMonitorPtrOutputWithContext(context.Background())
+}
+
+func (i *Monitor) ToMonitorPtrOutputWithContext(ctx context.Context) MonitorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorPtrOutput)
+}
+
+type MonitorPtrInput interface {
+	pulumi.Input
+
+	ToMonitorPtrOutput() MonitorPtrOutput
+	ToMonitorPtrOutputWithContext(ctx context.Context) MonitorPtrOutput
+}
+
+type monitorPtrType MonitorArgs
+
+func (*monitorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Monitor)(nil))
+}
+
+func (i *monitorPtrType) ToMonitorPtrOutput() MonitorPtrOutput {
+	return i.ToMonitorPtrOutputWithContext(context.Background())
+}
+
+func (i *monitorPtrType) ToMonitorPtrOutputWithContext(ctx context.Context) MonitorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorPtrOutput)
+}
+
+// MonitorArrayInput is an input type that accepts MonitorArray and MonitorArrayOutput values.
+// You can construct a concrete instance of `MonitorArrayInput` via:
+//
+//          MonitorArray{ MonitorArgs{...} }
+type MonitorArrayInput interface {
+	pulumi.Input
+
+	ToMonitorArrayOutput() MonitorArrayOutput
+	ToMonitorArrayOutputWithContext(context.Context) MonitorArrayOutput
+}
+
+type MonitorArray []MonitorInput
+
+func (MonitorArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*Monitor)(nil))
+}
+
+func (i MonitorArray) ToMonitorArrayOutput() MonitorArrayOutput {
+	return i.ToMonitorArrayOutputWithContext(context.Background())
+}
+
+func (i MonitorArray) ToMonitorArrayOutputWithContext(ctx context.Context) MonitorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorArrayOutput)
+}
+
+// MonitorMapInput is an input type that accepts MonitorMap and MonitorMapOutput values.
+// You can construct a concrete instance of `MonitorMapInput` via:
+//
+//          MonitorMap{ "key": MonitorArgs{...} }
+type MonitorMapInput interface {
+	pulumi.Input
+
+	ToMonitorMapOutput() MonitorMapOutput
+	ToMonitorMapOutputWithContext(context.Context) MonitorMapOutput
+}
+
+type MonitorMap map[string]MonitorInput
+
+func (MonitorMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*Monitor)(nil))
+}
+
+func (i MonitorMap) ToMonitorMapOutput() MonitorMapOutput {
+	return i.ToMonitorMapOutputWithContext(context.Background())
+}
+
+func (i MonitorMap) ToMonitorMapOutputWithContext(ctx context.Context) MonitorMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorMapOutput)
+}
+
 type MonitorOutput struct {
 	*pulumi.OutputState
 }
@@ -382,6 +461,75 @@ func (o MonitorOutput) ToMonitorOutputWithContext(ctx context.Context) MonitorOu
 	return o
 }
 
+func (o MonitorOutput) ToMonitorPtrOutput() MonitorPtrOutput {
+	return o.ToMonitorPtrOutputWithContext(context.Background())
+}
+
+func (o MonitorOutput) ToMonitorPtrOutputWithContext(ctx context.Context) MonitorPtrOutput {
+	return o.ApplyT(func(v Monitor) *Monitor {
+		return &v
+	}).(MonitorPtrOutput)
+}
+
+type MonitorPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (MonitorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Monitor)(nil))
+}
+
+func (o MonitorPtrOutput) ToMonitorPtrOutput() MonitorPtrOutput {
+	return o
+}
+
+func (o MonitorPtrOutput) ToMonitorPtrOutputWithContext(ctx context.Context) MonitorPtrOutput {
+	return o
+}
+
+type MonitorArrayOutput struct{ *pulumi.OutputState }
+
+func (MonitorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Monitor)(nil))
+}
+
+func (o MonitorArrayOutput) ToMonitorArrayOutput() MonitorArrayOutput {
+	return o
+}
+
+func (o MonitorArrayOutput) ToMonitorArrayOutputWithContext(ctx context.Context) MonitorArrayOutput {
+	return o
+}
+
+func (o MonitorArrayOutput) Index(i pulumi.IntInput) MonitorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Monitor {
+		return vs[0].([]Monitor)[vs[1].(int)]
+	}).(MonitorOutput)
+}
+
+type MonitorMapOutput struct{ *pulumi.OutputState }
+
+func (MonitorMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Monitor)(nil))
+}
+
+func (o MonitorMapOutput) ToMonitorMapOutput() MonitorMapOutput {
+	return o
+}
+
+func (o MonitorMapOutput) ToMonitorMapOutputWithContext(ctx context.Context) MonitorMapOutput {
+	return o
+}
+
+func (o MonitorMapOutput) MapIndex(k pulumi.StringInput) MonitorOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Monitor {
+		return vs[0].(map[string]Monitor)[vs[1].(string)]
+	}).(MonitorOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(MonitorOutput{})
+	pulumi.RegisterOutputType(MonitorPtrOutput{})
+	pulumi.RegisterOutputType(MonitorArrayOutput{})
+	pulumi.RegisterOutputType(MonitorMapOutput{})
 }

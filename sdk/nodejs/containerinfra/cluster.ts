@@ -80,7 +80,8 @@ export class Cluster extends pulumi.CustomResource {
     constructor(name: string, args: ClusterArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ClusterArgs | ClusterState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ClusterState | undefined;
             inputs["apiAddress"] = state ? state.apiAddress : undefined;
             inputs["clusterTemplateId"] = state ? state.clusterTemplateId : undefined;
@@ -111,7 +112,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["userId"] = state ? state.userId : undefined;
         } else {
             const args = argsOrState as ClusterArgs | undefined;
-            if ((!args || args.clusterTemplateId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.clusterTemplateId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'clusterTemplateId'");
             }
             inputs["clusterTemplateId"] = args ? args.clusterTemplateId : undefined;
@@ -142,12 +143,8 @@ export class Cluster extends pulumi.CustomResource {
             inputs["updatedAt"] = undefined /*out*/;
             inputs["userId"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Cluster.__pulumiType, name, inputs, opts);
     }

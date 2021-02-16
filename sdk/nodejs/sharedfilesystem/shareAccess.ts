@@ -81,7 +81,8 @@ export class ShareAccess extends pulumi.CustomResource {
     constructor(name: string, args: ShareAccessArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ShareAccessArgs | ShareAccessState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ShareAccessState | undefined;
             inputs["accessKey"] = state ? state.accessKey : undefined;
             inputs["accessLevel"] = state ? state.accessLevel : undefined;
@@ -91,16 +92,16 @@ export class ShareAccess extends pulumi.CustomResource {
             inputs["shareId"] = state ? state.shareId : undefined;
         } else {
             const args = argsOrState as ShareAccessArgs | undefined;
-            if ((!args || args.accessLevel === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.accessLevel === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accessLevel'");
             }
-            if ((!args || args.accessTo === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.accessTo === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accessTo'");
             }
-            if ((!args || args.accessType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.accessType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accessType'");
             }
-            if ((!args || args.shareId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.shareId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'shareId'");
             }
             inputs["accessLevel"] = args ? args.accessLevel : undefined;
@@ -110,12 +111,8 @@ export class ShareAccess extends pulumi.CustomResource {
             inputs["shareId"] = args ? args.shareId : undefined;
             inputs["accessKey"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ShareAccess.__pulumiType, name, inputs, opts);
     }

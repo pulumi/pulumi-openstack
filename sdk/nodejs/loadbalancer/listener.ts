@@ -166,7 +166,8 @@ export class Listener extends pulumi.CustomResource {
     constructor(name: string, args: ListenerArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ListenerArgs | ListenerState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ListenerState | undefined;
             inputs["adminStateUp"] = state ? state.adminStateUp : undefined;
             inputs["allowedCidrs"] = state ? state.allowedCidrs : undefined;
@@ -188,13 +189,13 @@ export class Listener extends pulumi.CustomResource {
             inputs["timeoutTcpInspect"] = state ? state.timeoutTcpInspect : undefined;
         } else {
             const args = argsOrState as ListenerArgs | undefined;
-            if ((!args || args.loadbalancerId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.loadbalancerId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'loadbalancerId'");
             }
-            if ((!args || args.protocol === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.protocol === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'protocol'");
             }
-            if ((!args || args.protocolPort === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.protocolPort === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'protocolPort'");
             }
             inputs["adminStateUp"] = args ? args.adminStateUp : undefined;
@@ -216,12 +217,8 @@ export class Listener extends pulumi.CustomResource {
             inputs["timeoutMemberData"] = args ? args.timeoutMemberData : undefined;
             inputs["timeoutTcpInspect"] = args ? args.timeoutTcpInspect : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Listener.__pulumiType, name, inputs, opts);
     }

@@ -158,6 +158,85 @@ func (i *Ec2CredentialV3) ToEc2CredentialV3OutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(Ec2CredentialV3Output)
 }
 
+func (i *Ec2CredentialV3) ToEc2CredentialV3PtrOutput() Ec2CredentialV3PtrOutput {
+	return i.ToEc2CredentialV3PtrOutputWithContext(context.Background())
+}
+
+func (i *Ec2CredentialV3) ToEc2CredentialV3PtrOutputWithContext(ctx context.Context) Ec2CredentialV3PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Ec2CredentialV3PtrOutput)
+}
+
+type Ec2CredentialV3PtrInput interface {
+	pulumi.Input
+
+	ToEc2CredentialV3PtrOutput() Ec2CredentialV3PtrOutput
+	ToEc2CredentialV3PtrOutputWithContext(ctx context.Context) Ec2CredentialV3PtrOutput
+}
+
+type ec2CredentialV3PtrType Ec2CredentialV3Args
+
+func (*ec2CredentialV3PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Ec2CredentialV3)(nil))
+}
+
+func (i *ec2CredentialV3PtrType) ToEc2CredentialV3PtrOutput() Ec2CredentialV3PtrOutput {
+	return i.ToEc2CredentialV3PtrOutputWithContext(context.Background())
+}
+
+func (i *ec2CredentialV3PtrType) ToEc2CredentialV3PtrOutputWithContext(ctx context.Context) Ec2CredentialV3PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Ec2CredentialV3PtrOutput)
+}
+
+// Ec2CredentialV3ArrayInput is an input type that accepts Ec2CredentialV3Array and Ec2CredentialV3ArrayOutput values.
+// You can construct a concrete instance of `Ec2CredentialV3ArrayInput` via:
+//
+//          Ec2CredentialV3Array{ Ec2CredentialV3Args{...} }
+type Ec2CredentialV3ArrayInput interface {
+	pulumi.Input
+
+	ToEc2CredentialV3ArrayOutput() Ec2CredentialV3ArrayOutput
+	ToEc2CredentialV3ArrayOutputWithContext(context.Context) Ec2CredentialV3ArrayOutput
+}
+
+type Ec2CredentialV3Array []Ec2CredentialV3Input
+
+func (Ec2CredentialV3Array) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*Ec2CredentialV3)(nil))
+}
+
+func (i Ec2CredentialV3Array) ToEc2CredentialV3ArrayOutput() Ec2CredentialV3ArrayOutput {
+	return i.ToEc2CredentialV3ArrayOutputWithContext(context.Background())
+}
+
+func (i Ec2CredentialV3Array) ToEc2CredentialV3ArrayOutputWithContext(ctx context.Context) Ec2CredentialV3ArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Ec2CredentialV3ArrayOutput)
+}
+
+// Ec2CredentialV3MapInput is an input type that accepts Ec2CredentialV3Map and Ec2CredentialV3MapOutput values.
+// You can construct a concrete instance of `Ec2CredentialV3MapInput` via:
+//
+//          Ec2CredentialV3Map{ "key": Ec2CredentialV3Args{...} }
+type Ec2CredentialV3MapInput interface {
+	pulumi.Input
+
+	ToEc2CredentialV3MapOutput() Ec2CredentialV3MapOutput
+	ToEc2CredentialV3MapOutputWithContext(context.Context) Ec2CredentialV3MapOutput
+}
+
+type Ec2CredentialV3Map map[string]Ec2CredentialV3Input
+
+func (Ec2CredentialV3Map) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*Ec2CredentialV3)(nil))
+}
+
+func (i Ec2CredentialV3Map) ToEc2CredentialV3MapOutput() Ec2CredentialV3MapOutput {
+	return i.ToEc2CredentialV3MapOutputWithContext(context.Background())
+}
+
+func (i Ec2CredentialV3Map) ToEc2CredentialV3MapOutputWithContext(ctx context.Context) Ec2CredentialV3MapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Ec2CredentialV3MapOutput)
+}
+
 type Ec2CredentialV3Output struct {
 	*pulumi.OutputState
 }
@@ -174,6 +253,75 @@ func (o Ec2CredentialV3Output) ToEc2CredentialV3OutputWithContext(ctx context.Co
 	return o
 }
 
+func (o Ec2CredentialV3Output) ToEc2CredentialV3PtrOutput() Ec2CredentialV3PtrOutput {
+	return o.ToEc2CredentialV3PtrOutputWithContext(context.Background())
+}
+
+func (o Ec2CredentialV3Output) ToEc2CredentialV3PtrOutputWithContext(ctx context.Context) Ec2CredentialV3PtrOutput {
+	return o.ApplyT(func(v Ec2CredentialV3) *Ec2CredentialV3 {
+		return &v
+	}).(Ec2CredentialV3PtrOutput)
+}
+
+type Ec2CredentialV3PtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (Ec2CredentialV3PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Ec2CredentialV3)(nil))
+}
+
+func (o Ec2CredentialV3PtrOutput) ToEc2CredentialV3PtrOutput() Ec2CredentialV3PtrOutput {
+	return o
+}
+
+func (o Ec2CredentialV3PtrOutput) ToEc2CredentialV3PtrOutputWithContext(ctx context.Context) Ec2CredentialV3PtrOutput {
+	return o
+}
+
+type Ec2CredentialV3ArrayOutput struct{ *pulumi.OutputState }
+
+func (Ec2CredentialV3ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Ec2CredentialV3)(nil))
+}
+
+func (o Ec2CredentialV3ArrayOutput) ToEc2CredentialV3ArrayOutput() Ec2CredentialV3ArrayOutput {
+	return o
+}
+
+func (o Ec2CredentialV3ArrayOutput) ToEc2CredentialV3ArrayOutputWithContext(ctx context.Context) Ec2CredentialV3ArrayOutput {
+	return o
+}
+
+func (o Ec2CredentialV3ArrayOutput) Index(i pulumi.IntInput) Ec2CredentialV3Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Ec2CredentialV3 {
+		return vs[0].([]Ec2CredentialV3)[vs[1].(int)]
+	}).(Ec2CredentialV3Output)
+}
+
+type Ec2CredentialV3MapOutput struct{ *pulumi.OutputState }
+
+func (Ec2CredentialV3MapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Ec2CredentialV3)(nil))
+}
+
+func (o Ec2CredentialV3MapOutput) ToEc2CredentialV3MapOutput() Ec2CredentialV3MapOutput {
+	return o
+}
+
+func (o Ec2CredentialV3MapOutput) ToEc2CredentialV3MapOutputWithContext(ctx context.Context) Ec2CredentialV3MapOutput {
+	return o
+}
+
+func (o Ec2CredentialV3MapOutput) MapIndex(k pulumi.StringInput) Ec2CredentialV3Output {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Ec2CredentialV3 {
+		return vs[0].(map[string]Ec2CredentialV3)[vs[1].(string)]
+	}).(Ec2CredentialV3Output)
+}
+
 func init() {
 	pulumi.RegisterOutputType(Ec2CredentialV3Output{})
+	pulumi.RegisterOutputType(Ec2CredentialV3PtrOutput{})
+	pulumi.RegisterOutputType(Ec2CredentialV3ArrayOutput{})
+	pulumi.RegisterOutputType(Ec2CredentialV3MapOutput{})
 }

@@ -391,6 +391,85 @@ func (i *StackV1) ToStackV1OutputWithContext(ctx context.Context) StackV1Output 
 	return pulumi.ToOutputWithContext(ctx, i).(StackV1Output)
 }
 
+func (i *StackV1) ToStackV1PtrOutput() StackV1PtrOutput {
+	return i.ToStackV1PtrOutputWithContext(context.Background())
+}
+
+func (i *StackV1) ToStackV1PtrOutputWithContext(ctx context.Context) StackV1PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StackV1PtrOutput)
+}
+
+type StackV1PtrInput interface {
+	pulumi.Input
+
+	ToStackV1PtrOutput() StackV1PtrOutput
+	ToStackV1PtrOutputWithContext(ctx context.Context) StackV1PtrOutput
+}
+
+type stackV1PtrType StackV1Args
+
+func (*stackV1PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StackV1)(nil))
+}
+
+func (i *stackV1PtrType) ToStackV1PtrOutput() StackV1PtrOutput {
+	return i.ToStackV1PtrOutputWithContext(context.Background())
+}
+
+func (i *stackV1PtrType) ToStackV1PtrOutputWithContext(ctx context.Context) StackV1PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StackV1PtrOutput)
+}
+
+// StackV1ArrayInput is an input type that accepts StackV1Array and StackV1ArrayOutput values.
+// You can construct a concrete instance of `StackV1ArrayInput` via:
+//
+//          StackV1Array{ StackV1Args{...} }
+type StackV1ArrayInput interface {
+	pulumi.Input
+
+	ToStackV1ArrayOutput() StackV1ArrayOutput
+	ToStackV1ArrayOutputWithContext(context.Context) StackV1ArrayOutput
+}
+
+type StackV1Array []StackV1Input
+
+func (StackV1Array) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*StackV1)(nil))
+}
+
+func (i StackV1Array) ToStackV1ArrayOutput() StackV1ArrayOutput {
+	return i.ToStackV1ArrayOutputWithContext(context.Background())
+}
+
+func (i StackV1Array) ToStackV1ArrayOutputWithContext(ctx context.Context) StackV1ArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StackV1ArrayOutput)
+}
+
+// StackV1MapInput is an input type that accepts StackV1Map and StackV1MapOutput values.
+// You can construct a concrete instance of `StackV1MapInput` via:
+//
+//          StackV1Map{ "key": StackV1Args{...} }
+type StackV1MapInput interface {
+	pulumi.Input
+
+	ToStackV1MapOutput() StackV1MapOutput
+	ToStackV1MapOutputWithContext(context.Context) StackV1MapOutput
+}
+
+type StackV1Map map[string]StackV1Input
+
+func (StackV1Map) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*StackV1)(nil))
+}
+
+func (i StackV1Map) ToStackV1MapOutput() StackV1MapOutput {
+	return i.ToStackV1MapOutputWithContext(context.Background())
+}
+
+func (i StackV1Map) ToStackV1MapOutputWithContext(ctx context.Context) StackV1MapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StackV1MapOutput)
+}
+
 type StackV1Output struct {
 	*pulumi.OutputState
 }
@@ -407,6 +486,75 @@ func (o StackV1Output) ToStackV1OutputWithContext(ctx context.Context) StackV1Ou
 	return o
 }
 
+func (o StackV1Output) ToStackV1PtrOutput() StackV1PtrOutput {
+	return o.ToStackV1PtrOutputWithContext(context.Background())
+}
+
+func (o StackV1Output) ToStackV1PtrOutputWithContext(ctx context.Context) StackV1PtrOutput {
+	return o.ApplyT(func(v StackV1) *StackV1 {
+		return &v
+	}).(StackV1PtrOutput)
+}
+
+type StackV1PtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (StackV1PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StackV1)(nil))
+}
+
+func (o StackV1PtrOutput) ToStackV1PtrOutput() StackV1PtrOutput {
+	return o
+}
+
+func (o StackV1PtrOutput) ToStackV1PtrOutputWithContext(ctx context.Context) StackV1PtrOutput {
+	return o
+}
+
+type StackV1ArrayOutput struct{ *pulumi.OutputState }
+
+func (StackV1ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StackV1)(nil))
+}
+
+func (o StackV1ArrayOutput) ToStackV1ArrayOutput() StackV1ArrayOutput {
+	return o
+}
+
+func (o StackV1ArrayOutput) ToStackV1ArrayOutputWithContext(ctx context.Context) StackV1ArrayOutput {
+	return o
+}
+
+func (o StackV1ArrayOutput) Index(i pulumi.IntInput) StackV1Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StackV1 {
+		return vs[0].([]StackV1)[vs[1].(int)]
+	}).(StackV1Output)
+}
+
+type StackV1MapOutput struct{ *pulumi.OutputState }
+
+func (StackV1MapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]StackV1)(nil))
+}
+
+func (o StackV1MapOutput) ToStackV1MapOutput() StackV1MapOutput {
+	return o
+}
+
+func (o StackV1MapOutput) ToStackV1MapOutputWithContext(ctx context.Context) StackV1MapOutput {
+	return o
+}
+
+func (o StackV1MapOutput) MapIndex(k pulumi.StringInput) StackV1Output {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) StackV1 {
+		return vs[0].(map[string]StackV1)[vs[1].(string)]
+	}).(StackV1Output)
+}
+
 func init() {
 	pulumi.RegisterOutputType(StackV1Output{})
+	pulumi.RegisterOutputType(StackV1PtrOutput{})
+	pulumi.RegisterOutputType(StackV1ArrayOutput{})
+	pulumi.RegisterOutputType(StackV1MapOutput{})
 }

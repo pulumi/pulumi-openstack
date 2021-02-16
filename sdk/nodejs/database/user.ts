@@ -61,7 +61,8 @@ export class User extends pulumi.CustomResource {
     constructor(name: string, args: UserArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: UserArgs | UserState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as UserState | undefined;
             inputs["databases"] = state ? state.databases : undefined;
             inputs["host"] = state ? state.host : undefined;
@@ -71,10 +72,10 @@ export class User extends pulumi.CustomResource {
             inputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as UserArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.password === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.password === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'password'");
             }
             inputs["databases"] = args ? args.databases : undefined;
@@ -84,12 +85,8 @@ export class User extends pulumi.CustomResource {
             inputs["password"] = args ? args.password : undefined;
             inputs["region"] = args ? args.region : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(User.__pulumiType, name, inputs, opts);
     }

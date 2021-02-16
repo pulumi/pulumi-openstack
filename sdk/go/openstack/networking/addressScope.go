@@ -243,6 +243,85 @@ func (i *AddressScope) ToAddressScopeOutputWithContext(ctx context.Context) Addr
 	return pulumi.ToOutputWithContext(ctx, i).(AddressScopeOutput)
 }
 
+func (i *AddressScope) ToAddressScopePtrOutput() AddressScopePtrOutput {
+	return i.ToAddressScopePtrOutputWithContext(context.Background())
+}
+
+func (i *AddressScope) ToAddressScopePtrOutputWithContext(ctx context.Context) AddressScopePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddressScopePtrOutput)
+}
+
+type AddressScopePtrInput interface {
+	pulumi.Input
+
+	ToAddressScopePtrOutput() AddressScopePtrOutput
+	ToAddressScopePtrOutputWithContext(ctx context.Context) AddressScopePtrOutput
+}
+
+type addressScopePtrType AddressScopeArgs
+
+func (*addressScopePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AddressScope)(nil))
+}
+
+func (i *addressScopePtrType) ToAddressScopePtrOutput() AddressScopePtrOutput {
+	return i.ToAddressScopePtrOutputWithContext(context.Background())
+}
+
+func (i *addressScopePtrType) ToAddressScopePtrOutputWithContext(ctx context.Context) AddressScopePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddressScopePtrOutput)
+}
+
+// AddressScopeArrayInput is an input type that accepts AddressScopeArray and AddressScopeArrayOutput values.
+// You can construct a concrete instance of `AddressScopeArrayInput` via:
+//
+//          AddressScopeArray{ AddressScopeArgs{...} }
+type AddressScopeArrayInput interface {
+	pulumi.Input
+
+	ToAddressScopeArrayOutput() AddressScopeArrayOutput
+	ToAddressScopeArrayOutputWithContext(context.Context) AddressScopeArrayOutput
+}
+
+type AddressScopeArray []AddressScopeInput
+
+func (AddressScopeArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*AddressScope)(nil))
+}
+
+func (i AddressScopeArray) ToAddressScopeArrayOutput() AddressScopeArrayOutput {
+	return i.ToAddressScopeArrayOutputWithContext(context.Background())
+}
+
+func (i AddressScopeArray) ToAddressScopeArrayOutputWithContext(ctx context.Context) AddressScopeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddressScopeArrayOutput)
+}
+
+// AddressScopeMapInput is an input type that accepts AddressScopeMap and AddressScopeMapOutput values.
+// You can construct a concrete instance of `AddressScopeMapInput` via:
+//
+//          AddressScopeMap{ "key": AddressScopeArgs{...} }
+type AddressScopeMapInput interface {
+	pulumi.Input
+
+	ToAddressScopeMapOutput() AddressScopeMapOutput
+	ToAddressScopeMapOutputWithContext(context.Context) AddressScopeMapOutput
+}
+
+type AddressScopeMap map[string]AddressScopeInput
+
+func (AddressScopeMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*AddressScope)(nil))
+}
+
+func (i AddressScopeMap) ToAddressScopeMapOutput() AddressScopeMapOutput {
+	return i.ToAddressScopeMapOutputWithContext(context.Background())
+}
+
+func (i AddressScopeMap) ToAddressScopeMapOutputWithContext(ctx context.Context) AddressScopeMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddressScopeMapOutput)
+}
+
 type AddressScopeOutput struct {
 	*pulumi.OutputState
 }
@@ -259,6 +338,75 @@ func (o AddressScopeOutput) ToAddressScopeOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o AddressScopeOutput) ToAddressScopePtrOutput() AddressScopePtrOutput {
+	return o.ToAddressScopePtrOutputWithContext(context.Background())
+}
+
+func (o AddressScopeOutput) ToAddressScopePtrOutputWithContext(ctx context.Context) AddressScopePtrOutput {
+	return o.ApplyT(func(v AddressScope) *AddressScope {
+		return &v
+	}).(AddressScopePtrOutput)
+}
+
+type AddressScopePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AddressScopePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AddressScope)(nil))
+}
+
+func (o AddressScopePtrOutput) ToAddressScopePtrOutput() AddressScopePtrOutput {
+	return o
+}
+
+func (o AddressScopePtrOutput) ToAddressScopePtrOutputWithContext(ctx context.Context) AddressScopePtrOutput {
+	return o
+}
+
+type AddressScopeArrayOutput struct{ *pulumi.OutputState }
+
+func (AddressScopeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AddressScope)(nil))
+}
+
+func (o AddressScopeArrayOutput) ToAddressScopeArrayOutput() AddressScopeArrayOutput {
+	return o
+}
+
+func (o AddressScopeArrayOutput) ToAddressScopeArrayOutputWithContext(ctx context.Context) AddressScopeArrayOutput {
+	return o
+}
+
+func (o AddressScopeArrayOutput) Index(i pulumi.IntInput) AddressScopeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AddressScope {
+		return vs[0].([]AddressScope)[vs[1].(int)]
+	}).(AddressScopeOutput)
+}
+
+type AddressScopeMapOutput struct{ *pulumi.OutputState }
+
+func (AddressScopeMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AddressScope)(nil))
+}
+
+func (o AddressScopeMapOutput) ToAddressScopeMapOutput() AddressScopeMapOutput {
+	return o
+}
+
+func (o AddressScopeMapOutput) ToAddressScopeMapOutputWithContext(ctx context.Context) AddressScopeMapOutput {
+	return o
+}
+
+func (o AddressScopeMapOutput) MapIndex(k pulumi.StringInput) AddressScopeOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AddressScope {
+		return vs[0].(map[string]AddressScope)[vs[1].(string)]
+	}).(AddressScopeOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AddressScopeOutput{})
+	pulumi.RegisterOutputType(AddressScopePtrOutput{})
+	pulumi.RegisterOutputType(AddressScopeArrayOutput{})
+	pulumi.RegisterOutputType(AddressScopeMapOutput{})
 }

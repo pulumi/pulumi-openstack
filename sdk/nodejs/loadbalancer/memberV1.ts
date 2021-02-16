@@ -101,7 +101,8 @@ export class MemberV1 extends pulumi.CustomResource {
     constructor(name: string, args: MemberV1Args, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: MemberV1Args | MemberV1State, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as MemberV1State | undefined;
             inputs["address"] = state ? state.address : undefined;
             inputs["adminStateUp"] = state ? state.adminStateUp : undefined;
@@ -112,13 +113,13 @@ export class MemberV1 extends pulumi.CustomResource {
             inputs["weight"] = state ? state.weight : undefined;
         } else {
             const args = argsOrState as MemberV1Args | undefined;
-            if ((!args || args.address === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.address === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'address'");
             }
-            if ((!args || args.poolId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.poolId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'poolId'");
             }
-            if ((!args || args.port === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.port === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'port'");
             }
             inputs["address"] = args ? args.address : undefined;
@@ -129,12 +130,8 @@ export class MemberV1 extends pulumi.CustomResource {
             inputs["tenantId"] = args ? args.tenantId : undefined;
             inputs["weight"] = args ? args.weight : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(MemberV1.__pulumiType, name, inputs, opts);
     }

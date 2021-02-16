@@ -128,7 +128,8 @@ export class Pool extends pulumi.CustomResource {
     constructor(name: string, args: PoolArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: PoolArgs | PoolState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as PoolState | undefined;
             inputs["adminStateUp"] = state ? state.adminStateUp : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -142,10 +143,10 @@ export class Pool extends pulumi.CustomResource {
             inputs["tenantId"] = state ? state.tenantId : undefined;
         } else {
             const args = argsOrState as PoolArgs | undefined;
-            if ((!args || args.lbMethod === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.lbMethod === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'lbMethod'");
             }
-            if ((!args || args.protocol === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.protocol === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'protocol'");
             }
             inputs["adminStateUp"] = args ? args.adminStateUp : undefined;
@@ -159,12 +160,8 @@ export class Pool extends pulumi.CustomResource {
             inputs["region"] = args ? args.region : undefined;
             inputs["tenantId"] = args ? args.tenantId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Pool.__pulumiType, name, inputs, opts);
     }

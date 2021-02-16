@@ -204,7 +204,8 @@ export class ContainerObject extends pulumi.CustomResource {
     constructor(name: string, args: ContainerObjectArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ContainerObjectArgs | ContainerObjectState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ContainerObjectState | undefined;
             inputs["containerName"] = state ? state.containerName : undefined;
             inputs["content"] = state ? state.content : undefined;
@@ -227,7 +228,7 @@ export class ContainerObject extends pulumi.CustomResource {
             inputs["transId"] = state ? state.transId : undefined;
         } else {
             const args = argsOrState as ContainerObjectArgs | undefined;
-            if ((!args || args.containerName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.containerName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'containerName'");
             }
             inputs["containerName"] = args ? args.containerName : undefined;
@@ -250,12 +251,8 @@ export class ContainerObject extends pulumi.CustomResource {
             inputs["lastModified"] = undefined /*out*/;
             inputs["transId"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ContainerObject.__pulumiType, name, inputs, opts);
     }

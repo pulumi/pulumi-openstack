@@ -193,7 +193,8 @@ export class Subnet extends pulumi.CustomResource {
     constructor(name: string, args: SubnetArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SubnetArgs | SubnetState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as SubnetState | undefined;
             inputs["allTags"] = state ? state.allTags : undefined;
             inputs["allocationPools"] = state ? state.allocationPools : undefined;
@@ -218,7 +219,7 @@ export class Subnet extends pulumi.CustomResource {
             inputs["valueSpecs"] = state ? state.valueSpecs : undefined;
         } else {
             const args = argsOrState as SubnetArgs | undefined;
-            if ((!args || args.networkId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.networkId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'networkId'");
             }
             inputs["allocationPools"] = args ? args.allocationPools : undefined;
@@ -243,12 +244,8 @@ export class Subnet extends pulumi.CustomResource {
             inputs["valueSpecs"] = args ? args.valueSpecs : undefined;
             inputs["allTags"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Subnet.__pulumiType, name, inputs, opts);
     }

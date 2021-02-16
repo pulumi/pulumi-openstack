@@ -112,7 +112,8 @@ export class AddressScope extends pulumi.CustomResource {
     constructor(name: string, args?: AddressScopeArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AddressScopeArgs | AddressScopeState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as AddressScopeState | undefined;
             inputs["ipVersion"] = state ? state.ipVersion : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -127,12 +128,8 @@ export class AddressScope extends pulumi.CustomResource {
             inputs["region"] = args ? args.region : undefined;
             inputs["shared"] = args ? args.shared : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(AddressScope.__pulumiType, name, inputs, opts);
     }

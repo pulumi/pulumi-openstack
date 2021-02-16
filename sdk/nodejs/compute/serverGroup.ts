@@ -107,7 +107,8 @@ export class ServerGroup extends pulumi.CustomResource {
     constructor(name: string, args?: ServerGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ServerGroupArgs | ServerGroupState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ServerGroupState | undefined;
             inputs["members"] = state ? state.members : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -122,12 +123,8 @@ export class ServerGroup extends pulumi.CustomResource {
             inputs["valueSpecs"] = args ? args.valueSpecs : undefined;
             inputs["members"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ServerGroup.__pulumiType, name, inputs, opts);
     }

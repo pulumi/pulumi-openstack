@@ -133,7 +133,8 @@ export class LoadBalancer extends pulumi.CustomResource {
     constructor(name: string, args?: LoadBalancerArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: LoadBalancerArgs | LoadBalancerState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as LoadBalancerState | undefined;
             inputs["adminStateUp"] = state ? state.adminStateUp : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -162,12 +163,8 @@ export class LoadBalancer extends pulumi.CustomResource {
             inputs["vipSubnetId"] = args ? args.vipSubnetId : undefined;
             inputs["vipPortId"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(LoadBalancer.__pulumiType, name, inputs, opts);
     }

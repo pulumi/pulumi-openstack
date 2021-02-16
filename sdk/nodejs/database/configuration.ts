@@ -89,7 +89,8 @@ export class Configuration extends pulumi.CustomResource {
     constructor(name: string, args: ConfigurationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ConfigurationArgs | ConfigurationState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ConfigurationState | undefined;
             inputs["configurations"] = state ? state.configurations : undefined;
             inputs["datastore"] = state ? state.datastore : undefined;
@@ -98,10 +99,10 @@ export class Configuration extends pulumi.CustomResource {
             inputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as ConfigurationArgs | undefined;
-            if ((!args || args.datastore === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.datastore === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'datastore'");
             }
-            if ((!args || args.description === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.description === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'description'");
             }
             inputs["configurations"] = args ? args.configurations : undefined;
@@ -110,12 +111,8 @@ export class Configuration extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["region"] = args ? args.region : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Configuration.__pulumiType, name, inputs, opts);
     }

@@ -90,7 +90,8 @@ export class QosMinimumBandwidthRule extends pulumi.CustomResource {
     constructor(name: string, args: QosMinimumBandwidthRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: QosMinimumBandwidthRuleArgs | QosMinimumBandwidthRuleState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as QosMinimumBandwidthRuleState | undefined;
             inputs["direction"] = state ? state.direction : undefined;
             inputs["minKbps"] = state ? state.minKbps : undefined;
@@ -98,10 +99,10 @@ export class QosMinimumBandwidthRule extends pulumi.CustomResource {
             inputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as QosMinimumBandwidthRuleArgs | undefined;
-            if ((!args || args.minKbps === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.minKbps === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'minKbps'");
             }
-            if ((!args || args.qosPolicyId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.qosPolicyId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'qosPolicyId'");
             }
             inputs["direction"] = args ? args.direction : undefined;
@@ -109,12 +110,8 @@ export class QosMinimumBandwidthRule extends pulumi.CustomResource {
             inputs["qosPolicyId"] = args ? args.qosPolicyId : undefined;
             inputs["region"] = args ? args.region : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(QosMinimumBandwidthRule.__pulumiType, name, inputs, opts);
     }

@@ -146,7 +146,8 @@ export class Monitor extends pulumi.CustomResource {
     constructor(name: string, args: MonitorArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: MonitorArgs | MonitorState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as MonitorState | undefined;
             inputs["adminStateUp"] = state ? state.adminStateUp : undefined;
             inputs["delay"] = state ? state.delay : undefined;
@@ -163,19 +164,19 @@ export class Monitor extends pulumi.CustomResource {
             inputs["urlPath"] = state ? state.urlPath : undefined;
         } else {
             const args = argsOrState as MonitorArgs | undefined;
-            if ((!args || args.delay === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.delay === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'delay'");
             }
-            if ((!args || args.maxRetries === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.maxRetries === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'maxRetries'");
             }
-            if ((!args || args.poolId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.poolId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'poolId'");
             }
-            if ((!args || args.timeout === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.timeout === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'timeout'");
             }
-            if ((!args || args.type === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
             inputs["adminStateUp"] = args ? args.adminStateUp : undefined;
@@ -192,12 +193,8 @@ export class Monitor extends pulumi.CustomResource {
             inputs["type"] = args ? args.type : undefined;
             inputs["urlPath"] = args ? args.urlPath : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Monitor.__pulumiType, name, inputs, opts);
     }

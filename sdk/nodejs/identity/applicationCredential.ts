@@ -108,7 +108,8 @@ export class ApplicationCredential extends pulumi.CustomResource {
     constructor(name: string, args?: ApplicationCredentialArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ApplicationCredentialArgs | ApplicationCredentialState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ApplicationCredentialState | undefined;
             inputs["accessRules"] = state ? state.accessRules : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -131,12 +132,8 @@ export class ApplicationCredential extends pulumi.CustomResource {
             inputs["unrestricted"] = args ? args.unrestricted : undefined;
             inputs["projectId"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ApplicationCredential.__pulumiType, name, inputs, opts);
     }

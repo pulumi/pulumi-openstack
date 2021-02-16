@@ -125,7 +125,8 @@ export class QosPolicy extends pulumi.CustomResource {
     constructor(name: string, args?: QosPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: QosPolicyArgs | QosPolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as QosPolicyState | undefined;
             inputs["allTags"] = state ? state.allTags : undefined;
             inputs["createdAt"] = state ? state.createdAt : undefined;
@@ -154,12 +155,8 @@ export class QosPolicy extends pulumi.CustomResource {
             inputs["revisionNumber"] = undefined /*out*/;
             inputs["updatedAt"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(QosPolicy.__pulumiType, name, inputs, opts);
     }

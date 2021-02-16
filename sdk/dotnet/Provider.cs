@@ -239,33 +239,13 @@ namespace Pulumi.OpenStack
         public ProviderArgs()
         {
             AllowReauth = Utilities.GetEnvBoolean("OS_ALLOW_REAUTH");
-            ApplicationCredentialId = Utilities.GetEnv("OS_APPLICATION_CREDENTIAL_ID");
-            ApplicationCredentialName = Utilities.GetEnv("OS_APPLICATION_CREDENTIAL_NAME");
-            ApplicationCredentialSecret = Utilities.GetEnv("OS_APPLICATION_CREDENTIAL_SECRET");
-            AuthUrl = Utilities.GetEnv("OS_AUTH_URL");
-            CacertFile = Utilities.GetEnv("OS_CACERT");
-            Cert = Utilities.GetEnv("OS_CERT");
             Cloud = Utilities.GetEnv("OS_CLOUD");
-            DefaultDomain = Utilities.GetEnv("OS_DEFAULT_DOMAIN") ?? "default";
             DelayedAuth = Utilities.GetEnvBoolean("OS_DELAYED_AUTH");
-            DomainId = Utilities.GetEnv("OS_DOMAIN_ID");
-            DomainName = Utilities.GetEnv("OS_DOMAIN_NAME");
             EndpointType = Utilities.GetEnv("OS_ENDPOINT_TYPE");
             Insecure = Utilities.GetEnvBoolean("OS_INSECURE");
-            Key = Utilities.GetEnv("OS_KEY");
-            Password = Utilities.GetEnv("OS_PASSWORD");
-            ProjectDomainId = Utilities.GetEnv("OS_PROJECT_DOMAIN_ID");
-            ProjectDomainName = Utilities.GetEnv("OS_PROJECT_DOMAIN_NAME");
             Region = Utilities.GetEnv("OS_REGION_NAME");
             Swauth = Utilities.GetEnvBoolean("OS_SWAUTH");
-            TenantId = Utilities.GetEnv("OS_TENANT_ID", "OS_PROJECT_ID");
-            TenantName = Utilities.GetEnv("OS_TENANT_NAME", "OS_PROJECT_NAME");
-            Token = Utilities.GetEnv("OS_TOKEN", "OS_AUTH_TOKEN");
             UseOctavia = Utilities.GetEnvBoolean("OS_USE_OCTAVIA");
-            UserDomainId = Utilities.GetEnv("OS_USER_DOMAIN_ID");
-            UserDomainName = Utilities.GetEnv("OS_USER_DOMAIN_NAME");
-            UserId = Utilities.GetEnv("OS_USER_ID");
-            UserName = Utilities.GetEnv("OS_USERNAME");
         }
     }
 }

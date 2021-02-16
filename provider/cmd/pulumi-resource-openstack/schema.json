@@ -25,57 +25,27 @@
             },
             "applicationCredentialId": {
                 "type": "string",
-                "description": "Application Credential ID to login with.\n",
-                "defaultInfo": {
-                    "environment": [
-                        "OS_APPLICATION_CREDENTIAL_ID"
-                    ]
-                }
+                "description": "Application Credential ID to login with.\n"
             },
             "applicationCredentialName": {
                 "type": "string",
-                "description": "Application Credential name to login with.\n",
-                "defaultInfo": {
-                    "environment": [
-                        "OS_APPLICATION_CREDENTIAL_NAME"
-                    ]
-                }
+                "description": "Application Credential name to login with.\n"
             },
             "applicationCredentialSecret": {
                 "type": "string",
-                "description": "Application Credential secret to login with.\n",
-                "defaultInfo": {
-                    "environment": [
-                        "OS_APPLICATION_CREDENTIAL_SECRET"
-                    ]
-                }
+                "description": "Application Credential secret to login with.\n"
             },
             "authUrl": {
                 "type": "string",
-                "description": "The Identity authentication URL.\n",
-                "defaultInfo": {
-                    "environment": [
-                        "OS_AUTH_URL"
-                    ]
-                }
+                "description": "The Identity authentication URL.\n"
             },
             "cacertFile": {
                 "type": "string",
-                "description": "A Custom CA certificate.\n",
-                "defaultInfo": {
-                    "environment": [
-                        "OS_CACERT"
-                    ]
-                }
+                "description": "A Custom CA certificate.\n"
             },
             "cert": {
                 "type": "string",
-                "description": "A client certificate to authenticate with.\n",
-                "defaultInfo": {
-                    "environment": [
-                        "OS_CERT"
-                    ]
-                }
+                "description": "A client certificate to authenticate with.\n"
             },
             "cloud": {
                 "type": "string",
@@ -88,13 +58,7 @@
             },
             "defaultDomain": {
                 "type": "string",
-                "description": "The name of the Domain ID to scope to if no other domain is specified. Defaults to `default` (Identity v3).\n",
-                "default": "default",
-                "defaultInfo": {
-                    "environment": [
-                        "OS_DEFAULT_DOMAIN"
-                    ]
-                }
+                "description": "The name of the Domain ID to scope to if no other domain is specified. Defaults to `default` (Identity v3).\n"
             },
             "delayedAuth": {
                 "type": "boolean",
@@ -111,21 +75,11 @@
             },
             "domainId": {
                 "type": "string",
-                "description": "The ID of the Domain to scope to (Identity v3).\n",
-                "defaultInfo": {
-                    "environment": [
-                        "OS_DOMAIN_ID"
-                    ]
-                }
+                "description": "The ID of the Domain to scope to (Identity v3).\n"
             },
             "domainName": {
                 "type": "string",
-                "description": "The name of the Domain to scope to (Identity v3).\n",
-                "defaultInfo": {
-                    "environment": [
-                        "OS_DOMAIN_NAME"
-                    ]
-                }
+                "description": "The name of the Domain to scope to (Identity v3).\n"
             },
             "endpointOverrides": {
                 "type": "object",
@@ -153,12 +107,7 @@
             },
             "key": {
                 "type": "string",
-                "description": "A client private key to authenticate with.\n",
-                "defaultInfo": {
-                    "environment": [
-                        "OS_KEY"
-                    ]
-                }
+                "description": "A client private key to authenticate with.\n"
             },
             "maxRetries": {
                 "type": "integer",
@@ -166,30 +115,15 @@
             },
             "password": {
                 "type": "string",
-                "description": "Password to login with.\n",
-                "defaultInfo": {
-                    "environment": [
-                        "OS_PASSWORD"
-                    ]
-                }
+                "description": "Password to login with.\n"
             },
             "projectDomainId": {
                 "type": "string",
-                "description": "The ID of the domain where the proejct resides (Identity v3).\n",
-                "defaultInfo": {
-                    "environment": [
-                        "OS_PROJECT_DOMAIN_ID"
-                    ]
-                }
+                "description": "The ID of the domain where the proejct resides (Identity v3).\n"
             },
             "projectDomainName": {
                 "type": "string",
-                "description": "The name of the domain where the project resides (Identity v3).\n",
-                "defaultInfo": {
-                    "environment": [
-                        "OS_PROJECT_DOMAIN_NAME"
-                    ]
-                }
+                "description": "The name of the domain where the project resides (Identity v3).\n"
             },
             "region": {
                 "type": "string",
@@ -211,33 +145,15 @@
             },
             "tenantId": {
                 "type": "string",
-                "description": "The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.\n",
-                "defaultInfo": {
-                    "environment": [
-                        "OS_TENANT_ID",
-                        "OS_PROJECT_ID"
-                    ]
-                }
+                "description": "The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.\n"
             },
             "tenantName": {
                 "type": "string",
-                "description": "The name of the Tenant (Identity v2) or Project (Identity v3) to login with.\n",
-                "defaultInfo": {
-                    "environment": [
-                        "OS_TENANT_NAME",
-                        "OS_PROJECT_NAME"
-                    ]
-                }
+                "description": "The name of the Tenant (Identity v2) or Project (Identity v3) to login with.\n"
             },
             "token": {
                 "type": "string",
-                "description": "Authentication token to use as an alternative to username/password.\n",
-                "defaultInfo": {
-                    "environment": [
-                        "OS_TOKEN",
-                        "OS_AUTH_TOKEN"
-                    ]
-                }
+                "description": "Authentication token to use as an alternative to username/password.\n"
             },
             "useOctavia": {
                 "type": "boolean",
@@ -250,39 +166,19 @@
             },
             "userDomainId": {
                 "type": "string",
-                "description": "The ID of the domain where the user resides (Identity v3).\n",
-                "defaultInfo": {
-                    "environment": [
-                        "OS_USER_DOMAIN_ID"
-                    ]
-                }
+                "description": "The ID of the domain where the user resides (Identity v3).\n"
             },
             "userDomainName": {
                 "type": "string",
-                "description": "The name of the domain where the user resides (Identity v3).\n",
-                "defaultInfo": {
-                    "environment": [
-                        "OS_USER_DOMAIN_NAME"
-                    ]
-                }
+                "description": "The name of the domain where the user resides (Identity v3).\n"
             },
             "userId": {
                 "type": "string",
-                "description": "Username to login with.\n",
-                "defaultInfo": {
-                    "environment": [
-                        "OS_USER_ID"
-                    ]
-                }
+                "description": "Username to login with.\n"
             },
             "userName": {
                 "type": "string",
-                "description": "Username to login with.\n",
-                "defaultInfo": {
-                    "environment": [
-                        "OS_USERNAME"
-                    ]
-                }
+                "description": "Username to login with.\n"
             }
         }
     },
@@ -2766,57 +2662,27 @@
             },
             "applicationCredentialId": {
                 "type": "string",
-                "description": "Application Credential ID to login with.\n",
-                "defaultInfo": {
-                    "environment": [
-                        "OS_APPLICATION_CREDENTIAL_ID"
-                    ]
-                }
+                "description": "Application Credential ID to login with.\n"
             },
             "applicationCredentialName": {
                 "type": "string",
-                "description": "Application Credential name to login with.\n",
-                "defaultInfo": {
-                    "environment": [
-                        "OS_APPLICATION_CREDENTIAL_NAME"
-                    ]
-                }
+                "description": "Application Credential name to login with.\n"
             },
             "applicationCredentialSecret": {
                 "type": "string",
-                "description": "Application Credential secret to login with.\n",
-                "defaultInfo": {
-                    "environment": [
-                        "OS_APPLICATION_CREDENTIAL_SECRET"
-                    ]
-                }
+                "description": "Application Credential secret to login with.\n"
             },
             "authUrl": {
                 "type": "string",
-                "description": "The Identity authentication URL.\n",
-                "defaultInfo": {
-                    "environment": [
-                        "OS_AUTH_URL"
-                    ]
-                }
+                "description": "The Identity authentication URL.\n"
             },
             "cacertFile": {
                 "type": "string",
-                "description": "A Custom CA certificate.\n",
-                "defaultInfo": {
-                    "environment": [
-                        "OS_CACERT"
-                    ]
-                }
+                "description": "A Custom CA certificate.\n"
             },
             "cert": {
                 "type": "string",
-                "description": "A client certificate to authenticate with.\n",
-                "defaultInfo": {
-                    "environment": [
-                        "OS_CERT"
-                    ]
-                }
+                "description": "A client certificate to authenticate with.\n"
             },
             "cloud": {
                 "type": "string",
@@ -2829,13 +2695,7 @@
             },
             "defaultDomain": {
                 "type": "string",
-                "description": "The name of the Domain ID to scope to if no other domain is specified. Defaults to `default` (Identity v3).\n",
-                "default": "default",
-                "defaultInfo": {
-                    "environment": [
-                        "OS_DEFAULT_DOMAIN"
-                    ]
-                }
+                "description": "The name of the Domain ID to scope to if no other domain is specified. Defaults to `default` (Identity v3).\n"
             },
             "delayedAuth": {
                 "type": "boolean",
@@ -2852,21 +2712,11 @@
             },
             "domainId": {
                 "type": "string",
-                "description": "The ID of the Domain to scope to (Identity v3).\n",
-                "defaultInfo": {
-                    "environment": [
-                        "OS_DOMAIN_ID"
-                    ]
-                }
+                "description": "The ID of the Domain to scope to (Identity v3).\n"
             },
             "domainName": {
                 "type": "string",
-                "description": "The name of the Domain to scope to (Identity v3).\n",
-                "defaultInfo": {
-                    "environment": [
-                        "OS_DOMAIN_NAME"
-                    ]
-                }
+                "description": "The name of the Domain to scope to (Identity v3).\n"
             },
             "endpointOverrides": {
                 "type": "object",
@@ -2894,12 +2744,7 @@
             },
             "key": {
                 "type": "string",
-                "description": "A client private key to authenticate with.\n",
-                "defaultInfo": {
-                    "environment": [
-                        "OS_KEY"
-                    ]
-                }
+                "description": "A client private key to authenticate with.\n"
             },
             "maxRetries": {
                 "type": "integer",
@@ -2907,30 +2752,15 @@
             },
             "password": {
                 "type": "string",
-                "description": "Password to login with.\n",
-                "defaultInfo": {
-                    "environment": [
-                        "OS_PASSWORD"
-                    ]
-                }
+                "description": "Password to login with.\n"
             },
             "projectDomainId": {
                 "type": "string",
-                "description": "The ID of the domain where the proejct resides (Identity v3).\n",
-                "defaultInfo": {
-                    "environment": [
-                        "OS_PROJECT_DOMAIN_ID"
-                    ]
-                }
+                "description": "The ID of the domain where the proejct resides (Identity v3).\n"
             },
             "projectDomainName": {
                 "type": "string",
-                "description": "The name of the domain where the project resides (Identity v3).\n",
-                "defaultInfo": {
-                    "environment": [
-                        "OS_PROJECT_DOMAIN_NAME"
-                    ]
-                }
+                "description": "The name of the domain where the project resides (Identity v3).\n"
             },
             "region": {
                 "type": "string",
@@ -2952,33 +2782,15 @@
             },
             "tenantId": {
                 "type": "string",
-                "description": "The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.\n",
-                "defaultInfo": {
-                    "environment": [
-                        "OS_TENANT_ID",
-                        "OS_PROJECT_ID"
-                    ]
-                }
+                "description": "The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.\n"
             },
             "tenantName": {
                 "type": "string",
-                "description": "The name of the Tenant (Identity v2) or Project (Identity v3) to login with.\n",
-                "defaultInfo": {
-                    "environment": [
-                        "OS_TENANT_NAME",
-                        "OS_PROJECT_NAME"
-                    ]
-                }
+                "description": "The name of the Tenant (Identity v2) or Project (Identity v3) to login with.\n"
             },
             "token": {
                 "type": "string",
-                "description": "Authentication token to use as an alternative to username/password.\n",
-                "defaultInfo": {
-                    "environment": [
-                        "OS_TOKEN",
-                        "OS_AUTH_TOKEN"
-                    ]
-                }
+                "description": "Authentication token to use as an alternative to username/password.\n"
             },
             "useOctavia": {
                 "type": "boolean",
@@ -2991,39 +2803,19 @@
             },
             "userDomainId": {
                 "type": "string",
-                "description": "The ID of the domain where the user resides (Identity v3).\n",
-                "defaultInfo": {
-                    "environment": [
-                        "OS_USER_DOMAIN_ID"
-                    ]
-                }
+                "description": "The ID of the domain where the user resides (Identity v3).\n"
             },
             "userDomainName": {
                 "type": "string",
-                "description": "The name of the domain where the user resides (Identity v3).\n",
-                "defaultInfo": {
-                    "environment": [
-                        "OS_USER_DOMAIN_NAME"
-                    ]
-                }
+                "description": "The name of the domain where the user resides (Identity v3).\n"
             },
             "userId": {
                 "type": "string",
-                "description": "Username to login with.\n",
-                "defaultInfo": {
-                    "environment": [
-                        "OS_USER_ID"
-                    ]
-                }
+                "description": "Username to login with.\n"
             },
             "userName": {
                 "type": "string",
-                "description": "Username to login with.\n",
-                "defaultInfo": {
-                    "environment": [
-                        "OS_USERNAME"
-                    ]
-                }
+                "description": "Username to login with.\n"
             }
         }
     },

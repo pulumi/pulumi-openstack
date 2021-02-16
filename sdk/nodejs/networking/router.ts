@@ -165,7 +165,8 @@ export class Router extends pulumi.CustomResource {
     constructor(name: string, args?: RouterArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RouterArgs | RouterState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as RouterState | undefined;
             inputs["adminStateUp"] = state ? state.adminStateUp : undefined;
             inputs["allTags"] = state ? state.allTags : undefined;
@@ -202,12 +203,8 @@ export class Router extends pulumi.CustomResource {
             inputs["vendorOptions"] = args ? args.vendorOptions : undefined;
             inputs["allTags"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Router.__pulumiType, name, inputs, opts);
     }

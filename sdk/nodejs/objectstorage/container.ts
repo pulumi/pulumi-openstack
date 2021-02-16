@@ -163,7 +163,8 @@ export class Container extends pulumi.CustomResource {
     constructor(name: string, args?: ContainerArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ContainerArgs | ContainerState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ContainerState | undefined;
             inputs["containerRead"] = state ? state.containerRead : undefined;
             inputs["containerSyncKey"] = state ? state.containerSyncKey : undefined;
@@ -188,12 +189,8 @@ export class Container extends pulumi.CustomResource {
             inputs["region"] = args ? args.region : undefined;
             inputs["versioning"] = args ? args.versioning : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Container.__pulumiType, name, inputs, opts);
     }

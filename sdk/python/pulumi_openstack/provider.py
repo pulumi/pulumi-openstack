@@ -110,39 +110,21 @@ class Provider(pulumi.ProviderResource):
             if allow_reauth is None:
                 allow_reauth = _utilities.get_env_bool('OS_ALLOW_REAUTH')
             __props__['allow_reauth'] = pulumi.Output.from_input(allow_reauth).apply(pulumi.runtime.to_json) if allow_reauth is not None else None
-            if application_credential_id is None:
-                application_credential_id = _utilities.get_env('OS_APPLICATION_CREDENTIAL_ID')
             __props__['application_credential_id'] = application_credential_id
-            if application_credential_name is None:
-                application_credential_name = _utilities.get_env('OS_APPLICATION_CREDENTIAL_NAME')
             __props__['application_credential_name'] = application_credential_name
-            if application_credential_secret is None:
-                application_credential_secret = _utilities.get_env('OS_APPLICATION_CREDENTIAL_SECRET')
             __props__['application_credential_secret'] = application_credential_secret
-            if auth_url is None:
-                auth_url = _utilities.get_env('OS_AUTH_URL')
             __props__['auth_url'] = auth_url
-            if cacert_file is None:
-                cacert_file = _utilities.get_env('OS_CACERT')
             __props__['cacert_file'] = cacert_file
-            if cert is None:
-                cert = _utilities.get_env('OS_CERT')
             __props__['cert'] = cert
             if cloud is None:
                 cloud = _utilities.get_env('OS_CLOUD')
             __props__['cloud'] = cloud
-            if default_domain is None:
-                default_domain = (_utilities.get_env('OS_DEFAULT_DOMAIN') or 'default')
             __props__['default_domain'] = default_domain
             if delayed_auth is None:
                 delayed_auth = _utilities.get_env_bool('OS_DELAYED_AUTH')
             __props__['delayed_auth'] = pulumi.Output.from_input(delayed_auth).apply(pulumi.runtime.to_json) if delayed_auth is not None else None
             __props__['disable_no_cache_header'] = pulumi.Output.from_input(disable_no_cache_header).apply(pulumi.runtime.to_json) if disable_no_cache_header is not None else None
-            if domain_id is None:
-                domain_id = _utilities.get_env('OS_DOMAIN_ID')
             __props__['domain_id'] = domain_id
-            if domain_name is None:
-                domain_name = _utilities.get_env('OS_DOMAIN_NAME')
             __props__['domain_name'] = domain_name
             __props__['endpoint_overrides'] = pulumi.Output.from_input(endpoint_overrides).apply(pulumi.runtime.to_json) if endpoint_overrides is not None else None
             if endpoint_type is None:
@@ -151,18 +133,10 @@ class Provider(pulumi.ProviderResource):
             if insecure is None:
                 insecure = _utilities.get_env_bool('OS_INSECURE')
             __props__['insecure'] = pulumi.Output.from_input(insecure).apply(pulumi.runtime.to_json) if insecure is not None else None
-            if key is None:
-                key = _utilities.get_env('OS_KEY')
             __props__['key'] = key
             __props__['max_retries'] = pulumi.Output.from_input(max_retries).apply(pulumi.runtime.to_json) if max_retries is not None else None
-            if password is None:
-                password = _utilities.get_env('OS_PASSWORD')
             __props__['password'] = password
-            if project_domain_id is None:
-                project_domain_id = _utilities.get_env('OS_PROJECT_DOMAIN_ID')
             __props__['project_domain_id'] = project_domain_id
-            if project_domain_name is None:
-                project_domain_name = _utilities.get_env('OS_PROJECT_DOMAIN_NAME')
             __props__['project_domain_name'] = project_domain_name
             if region is None:
                 region = _utilities.get_env('OS_REGION_NAME')
@@ -170,29 +144,15 @@ class Provider(pulumi.ProviderResource):
             if swauth is None:
                 swauth = _utilities.get_env_bool('OS_SWAUTH')
             __props__['swauth'] = pulumi.Output.from_input(swauth).apply(pulumi.runtime.to_json) if swauth is not None else None
-            if tenant_id is None:
-                tenant_id = _utilities.get_env('OS_TENANT_ID', 'OS_PROJECT_ID')
             __props__['tenant_id'] = tenant_id
-            if tenant_name is None:
-                tenant_name = _utilities.get_env('OS_TENANT_NAME', 'OS_PROJECT_NAME')
             __props__['tenant_name'] = tenant_name
-            if token is None:
-                token = _utilities.get_env('OS_TOKEN', 'OS_AUTH_TOKEN')
             __props__['token'] = token
             if use_octavia is None:
                 use_octavia = _utilities.get_env_bool('OS_USE_OCTAVIA')
             __props__['use_octavia'] = pulumi.Output.from_input(use_octavia).apply(pulumi.runtime.to_json) if use_octavia is not None else None
-            if user_domain_id is None:
-                user_domain_id = _utilities.get_env('OS_USER_DOMAIN_ID')
             __props__['user_domain_id'] = user_domain_id
-            if user_domain_name is None:
-                user_domain_name = _utilities.get_env('OS_USER_DOMAIN_NAME')
             __props__['user_domain_name'] = user_domain_name
-            if user_id is None:
-                user_id = _utilities.get_env('OS_USER_ID')
             __props__['user_id'] = user_id
-            if user_name is None:
-                user_name = _utilities.get_env('OS_USERNAME')
             __props__['user_name'] = user_name
         super(Provider, __self__).__init__(
             'openstack',

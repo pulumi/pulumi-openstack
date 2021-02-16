@@ -202,6 +202,85 @@ func (i *AggregateV2) ToAggregateV2OutputWithContext(ctx context.Context) Aggreg
 	return pulumi.ToOutputWithContext(ctx, i).(AggregateV2Output)
 }
 
+func (i *AggregateV2) ToAggregateV2PtrOutput() AggregateV2PtrOutput {
+	return i.ToAggregateV2PtrOutputWithContext(context.Background())
+}
+
+func (i *AggregateV2) ToAggregateV2PtrOutputWithContext(ctx context.Context) AggregateV2PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AggregateV2PtrOutput)
+}
+
+type AggregateV2PtrInput interface {
+	pulumi.Input
+
+	ToAggregateV2PtrOutput() AggregateV2PtrOutput
+	ToAggregateV2PtrOutputWithContext(ctx context.Context) AggregateV2PtrOutput
+}
+
+type aggregateV2PtrType AggregateV2Args
+
+func (*aggregateV2PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AggregateV2)(nil))
+}
+
+func (i *aggregateV2PtrType) ToAggregateV2PtrOutput() AggregateV2PtrOutput {
+	return i.ToAggregateV2PtrOutputWithContext(context.Background())
+}
+
+func (i *aggregateV2PtrType) ToAggregateV2PtrOutputWithContext(ctx context.Context) AggregateV2PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AggregateV2PtrOutput)
+}
+
+// AggregateV2ArrayInput is an input type that accepts AggregateV2Array and AggregateV2ArrayOutput values.
+// You can construct a concrete instance of `AggregateV2ArrayInput` via:
+//
+//          AggregateV2Array{ AggregateV2Args{...} }
+type AggregateV2ArrayInput interface {
+	pulumi.Input
+
+	ToAggregateV2ArrayOutput() AggregateV2ArrayOutput
+	ToAggregateV2ArrayOutputWithContext(context.Context) AggregateV2ArrayOutput
+}
+
+type AggregateV2Array []AggregateV2Input
+
+func (AggregateV2Array) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*AggregateV2)(nil))
+}
+
+func (i AggregateV2Array) ToAggregateV2ArrayOutput() AggregateV2ArrayOutput {
+	return i.ToAggregateV2ArrayOutputWithContext(context.Background())
+}
+
+func (i AggregateV2Array) ToAggregateV2ArrayOutputWithContext(ctx context.Context) AggregateV2ArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AggregateV2ArrayOutput)
+}
+
+// AggregateV2MapInput is an input type that accepts AggregateV2Map and AggregateV2MapOutput values.
+// You can construct a concrete instance of `AggregateV2MapInput` via:
+//
+//          AggregateV2Map{ "key": AggregateV2Args{...} }
+type AggregateV2MapInput interface {
+	pulumi.Input
+
+	ToAggregateV2MapOutput() AggregateV2MapOutput
+	ToAggregateV2MapOutputWithContext(context.Context) AggregateV2MapOutput
+}
+
+type AggregateV2Map map[string]AggregateV2Input
+
+func (AggregateV2Map) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*AggregateV2)(nil))
+}
+
+func (i AggregateV2Map) ToAggregateV2MapOutput() AggregateV2MapOutput {
+	return i.ToAggregateV2MapOutputWithContext(context.Background())
+}
+
+func (i AggregateV2Map) ToAggregateV2MapOutputWithContext(ctx context.Context) AggregateV2MapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AggregateV2MapOutput)
+}
+
 type AggregateV2Output struct {
 	*pulumi.OutputState
 }
@@ -218,6 +297,75 @@ func (o AggregateV2Output) ToAggregateV2OutputWithContext(ctx context.Context) A
 	return o
 }
 
+func (o AggregateV2Output) ToAggregateV2PtrOutput() AggregateV2PtrOutput {
+	return o.ToAggregateV2PtrOutputWithContext(context.Background())
+}
+
+func (o AggregateV2Output) ToAggregateV2PtrOutputWithContext(ctx context.Context) AggregateV2PtrOutput {
+	return o.ApplyT(func(v AggregateV2) *AggregateV2 {
+		return &v
+	}).(AggregateV2PtrOutput)
+}
+
+type AggregateV2PtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AggregateV2PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AggregateV2)(nil))
+}
+
+func (o AggregateV2PtrOutput) ToAggregateV2PtrOutput() AggregateV2PtrOutput {
+	return o
+}
+
+func (o AggregateV2PtrOutput) ToAggregateV2PtrOutputWithContext(ctx context.Context) AggregateV2PtrOutput {
+	return o
+}
+
+type AggregateV2ArrayOutput struct{ *pulumi.OutputState }
+
+func (AggregateV2ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AggregateV2)(nil))
+}
+
+func (o AggregateV2ArrayOutput) ToAggregateV2ArrayOutput() AggregateV2ArrayOutput {
+	return o
+}
+
+func (o AggregateV2ArrayOutput) ToAggregateV2ArrayOutputWithContext(ctx context.Context) AggregateV2ArrayOutput {
+	return o
+}
+
+func (o AggregateV2ArrayOutput) Index(i pulumi.IntInput) AggregateV2Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AggregateV2 {
+		return vs[0].([]AggregateV2)[vs[1].(int)]
+	}).(AggregateV2Output)
+}
+
+type AggregateV2MapOutput struct{ *pulumi.OutputState }
+
+func (AggregateV2MapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AggregateV2)(nil))
+}
+
+func (o AggregateV2MapOutput) ToAggregateV2MapOutput() AggregateV2MapOutput {
+	return o
+}
+
+func (o AggregateV2MapOutput) ToAggregateV2MapOutputWithContext(ctx context.Context) AggregateV2MapOutput {
+	return o
+}
+
+func (o AggregateV2MapOutput) MapIndex(k pulumi.StringInput) AggregateV2Output {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AggregateV2 {
+		return vs[0].(map[string]AggregateV2)[vs[1].(string)]
+	}).(AggregateV2Output)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AggregateV2Output{})
+	pulumi.RegisterOutputType(AggregateV2PtrOutput{})
+	pulumi.RegisterOutputType(AggregateV2ArrayOutput{})
+	pulumi.RegisterOutputType(AggregateV2MapOutput{})
 }

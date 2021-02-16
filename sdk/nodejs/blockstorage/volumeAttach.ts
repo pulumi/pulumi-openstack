@@ -118,7 +118,8 @@ export class VolumeAttach extends pulumi.CustomResource {
     constructor(name: string, args: VolumeAttachArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: VolumeAttachArgs | VolumeAttachState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as VolumeAttachState | undefined;
             inputs["attachMode"] = state ? state.attachMode : undefined;
             inputs["data"] = state ? state.data : undefined;
@@ -137,10 +138,10 @@ export class VolumeAttach extends pulumi.CustomResource {
             inputs["wwpns"] = state ? state.wwpns : undefined;
         } else {
             const args = argsOrState as VolumeAttachArgs | undefined;
-            if ((!args || args.hostName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.hostName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'hostName'");
             }
-            if ((!args || args.volumeId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.volumeId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'volumeId'");
             }
             inputs["attachMode"] = args ? args.attachMode : undefined;
@@ -159,12 +160,8 @@ export class VolumeAttach extends pulumi.CustomResource {
             inputs["driverVolumeType"] = undefined /*out*/;
             inputs["mountPointBase"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(VolumeAttach.__pulumiType, name, inputs, opts);
     }

@@ -35,45 +35,42 @@ export class Provider extends pulumi.ProviderResource {
      */
     constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let inputs: pulumi.Inputs = {};
+        opts = opts || {};
         {
             inputs["allowReauth"] = pulumi.output((args ? args.allowReauth : undefined) || <any>utilities.getEnvBoolean("OS_ALLOW_REAUTH")).apply(JSON.stringify);
-            inputs["applicationCredentialId"] = (args ? args.applicationCredentialId : undefined) || utilities.getEnv("OS_APPLICATION_CREDENTIAL_ID");
-            inputs["applicationCredentialName"] = (args ? args.applicationCredentialName : undefined) || utilities.getEnv("OS_APPLICATION_CREDENTIAL_NAME");
-            inputs["applicationCredentialSecret"] = (args ? args.applicationCredentialSecret : undefined) || utilities.getEnv("OS_APPLICATION_CREDENTIAL_SECRET");
-            inputs["authUrl"] = (args ? args.authUrl : undefined) || utilities.getEnv("OS_AUTH_URL");
-            inputs["cacertFile"] = (args ? args.cacertFile : undefined) || utilities.getEnv("OS_CACERT");
-            inputs["cert"] = (args ? args.cert : undefined) || utilities.getEnv("OS_CERT");
+            inputs["applicationCredentialId"] = args ? args.applicationCredentialId : undefined;
+            inputs["applicationCredentialName"] = args ? args.applicationCredentialName : undefined;
+            inputs["applicationCredentialSecret"] = args ? args.applicationCredentialSecret : undefined;
+            inputs["authUrl"] = args ? args.authUrl : undefined;
+            inputs["cacertFile"] = args ? args.cacertFile : undefined;
+            inputs["cert"] = args ? args.cert : undefined;
             inputs["cloud"] = (args ? args.cloud : undefined) || utilities.getEnv("OS_CLOUD");
-            inputs["defaultDomain"] = (args ? args.defaultDomain : undefined) || (utilities.getEnv("OS_DEFAULT_DOMAIN") || "default");
+            inputs["defaultDomain"] = args ? args.defaultDomain : undefined;
             inputs["delayedAuth"] = pulumi.output((args ? args.delayedAuth : undefined) || <any>utilities.getEnvBoolean("OS_DELAYED_AUTH")).apply(JSON.stringify);
             inputs["disableNoCacheHeader"] = pulumi.output(args ? args.disableNoCacheHeader : undefined).apply(JSON.stringify);
-            inputs["domainId"] = (args ? args.domainId : undefined) || utilities.getEnv("OS_DOMAIN_ID");
-            inputs["domainName"] = (args ? args.domainName : undefined) || utilities.getEnv("OS_DOMAIN_NAME");
+            inputs["domainId"] = args ? args.domainId : undefined;
+            inputs["domainName"] = args ? args.domainName : undefined;
             inputs["endpointOverrides"] = pulumi.output(args ? args.endpointOverrides : undefined).apply(JSON.stringify);
             inputs["endpointType"] = (args ? args.endpointType : undefined) || utilities.getEnv("OS_ENDPOINT_TYPE");
             inputs["insecure"] = pulumi.output((args ? args.insecure : undefined) || <any>utilities.getEnvBoolean("OS_INSECURE")).apply(JSON.stringify);
-            inputs["key"] = (args ? args.key : undefined) || utilities.getEnv("OS_KEY");
+            inputs["key"] = args ? args.key : undefined;
             inputs["maxRetries"] = pulumi.output(args ? args.maxRetries : undefined).apply(JSON.stringify);
-            inputs["password"] = (args ? args.password : undefined) || utilities.getEnv("OS_PASSWORD");
-            inputs["projectDomainId"] = (args ? args.projectDomainId : undefined) || utilities.getEnv("OS_PROJECT_DOMAIN_ID");
-            inputs["projectDomainName"] = (args ? args.projectDomainName : undefined) || utilities.getEnv("OS_PROJECT_DOMAIN_NAME");
+            inputs["password"] = args ? args.password : undefined;
+            inputs["projectDomainId"] = args ? args.projectDomainId : undefined;
+            inputs["projectDomainName"] = args ? args.projectDomainName : undefined;
             inputs["region"] = (args ? args.region : undefined) || utilities.getEnv("OS_REGION_NAME");
             inputs["swauth"] = pulumi.output((args ? args.swauth : undefined) || <any>utilities.getEnvBoolean("OS_SWAUTH")).apply(JSON.stringify);
-            inputs["tenantId"] = (args ? args.tenantId : undefined) || utilities.getEnv("OS_TENANT_ID", "OS_PROJECT_ID");
-            inputs["tenantName"] = (args ? args.tenantName : undefined) || utilities.getEnv("OS_TENANT_NAME", "OS_PROJECT_NAME");
-            inputs["token"] = (args ? args.token : undefined) || utilities.getEnv("OS_TOKEN", "OS_AUTH_TOKEN");
+            inputs["tenantId"] = args ? args.tenantId : undefined;
+            inputs["tenantName"] = args ? args.tenantName : undefined;
+            inputs["token"] = args ? args.token : undefined;
             inputs["useOctavia"] = pulumi.output((args ? args.useOctavia : undefined) || <any>utilities.getEnvBoolean("OS_USE_OCTAVIA")).apply(JSON.stringify);
-            inputs["userDomainId"] = (args ? args.userDomainId : undefined) || utilities.getEnv("OS_USER_DOMAIN_ID");
-            inputs["userDomainName"] = (args ? args.userDomainName : undefined) || utilities.getEnv("OS_USER_DOMAIN_NAME");
-            inputs["userId"] = (args ? args.userId : undefined) || utilities.getEnv("OS_USER_ID");
-            inputs["userName"] = (args ? args.userName : undefined) || utilities.getEnv("OS_USERNAME");
+            inputs["userDomainId"] = args ? args.userDomainId : undefined;
+            inputs["userDomainName"] = args ? args.userDomainName : undefined;
+            inputs["userId"] = args ? args.userId : undefined;
+            inputs["userName"] = args ? args.userName : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Provider.__pulumiType, name, inputs, opts);
     }

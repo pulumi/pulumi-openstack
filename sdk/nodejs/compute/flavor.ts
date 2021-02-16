@@ -127,7 +127,8 @@ export class Flavor extends pulumi.CustomResource {
     constructor(name: string, args: FlavorArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FlavorArgs | FlavorState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as FlavorState | undefined;
             inputs["disk"] = state ? state.disk : undefined;
             inputs["ephemeral"] = state ? state.ephemeral : undefined;
@@ -142,13 +143,13 @@ export class Flavor extends pulumi.CustomResource {
             inputs["vcpus"] = state ? state.vcpus : undefined;
         } else {
             const args = argsOrState as FlavorArgs | undefined;
-            if ((!args || args.disk === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.disk === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'disk'");
             }
-            if ((!args || args.ram === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.ram === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'ram'");
             }
-            if ((!args || args.vcpus === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.vcpus === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vcpus'");
             }
             inputs["disk"] = args ? args.disk : undefined;
@@ -163,12 +164,8 @@ export class Flavor extends pulumi.CustomResource {
             inputs["swap"] = args ? args.swap : undefined;
             inputs["vcpus"] = args ? args.vcpus : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Flavor.__pulumiType, name, inputs, opts);
     }

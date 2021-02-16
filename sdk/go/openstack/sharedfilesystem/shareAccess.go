@@ -184,6 +184,85 @@ func (i *ShareAccess) ToShareAccessOutputWithContext(ctx context.Context) ShareA
 	return pulumi.ToOutputWithContext(ctx, i).(ShareAccessOutput)
 }
 
+func (i *ShareAccess) ToShareAccessPtrOutput() ShareAccessPtrOutput {
+	return i.ToShareAccessPtrOutputWithContext(context.Background())
+}
+
+func (i *ShareAccess) ToShareAccessPtrOutputWithContext(ctx context.Context) ShareAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShareAccessPtrOutput)
+}
+
+type ShareAccessPtrInput interface {
+	pulumi.Input
+
+	ToShareAccessPtrOutput() ShareAccessPtrOutput
+	ToShareAccessPtrOutputWithContext(ctx context.Context) ShareAccessPtrOutput
+}
+
+type shareAccessPtrType ShareAccessArgs
+
+func (*shareAccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ShareAccess)(nil))
+}
+
+func (i *shareAccessPtrType) ToShareAccessPtrOutput() ShareAccessPtrOutput {
+	return i.ToShareAccessPtrOutputWithContext(context.Background())
+}
+
+func (i *shareAccessPtrType) ToShareAccessPtrOutputWithContext(ctx context.Context) ShareAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShareAccessPtrOutput)
+}
+
+// ShareAccessArrayInput is an input type that accepts ShareAccessArray and ShareAccessArrayOutput values.
+// You can construct a concrete instance of `ShareAccessArrayInput` via:
+//
+//          ShareAccessArray{ ShareAccessArgs{...} }
+type ShareAccessArrayInput interface {
+	pulumi.Input
+
+	ToShareAccessArrayOutput() ShareAccessArrayOutput
+	ToShareAccessArrayOutputWithContext(context.Context) ShareAccessArrayOutput
+}
+
+type ShareAccessArray []ShareAccessInput
+
+func (ShareAccessArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ShareAccess)(nil))
+}
+
+func (i ShareAccessArray) ToShareAccessArrayOutput() ShareAccessArrayOutput {
+	return i.ToShareAccessArrayOutputWithContext(context.Background())
+}
+
+func (i ShareAccessArray) ToShareAccessArrayOutputWithContext(ctx context.Context) ShareAccessArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShareAccessArrayOutput)
+}
+
+// ShareAccessMapInput is an input type that accepts ShareAccessMap and ShareAccessMapOutput values.
+// You can construct a concrete instance of `ShareAccessMapInput` via:
+//
+//          ShareAccessMap{ "key": ShareAccessArgs{...} }
+type ShareAccessMapInput interface {
+	pulumi.Input
+
+	ToShareAccessMapOutput() ShareAccessMapOutput
+	ToShareAccessMapOutputWithContext(context.Context) ShareAccessMapOutput
+}
+
+type ShareAccessMap map[string]ShareAccessInput
+
+func (ShareAccessMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ShareAccess)(nil))
+}
+
+func (i ShareAccessMap) ToShareAccessMapOutput() ShareAccessMapOutput {
+	return i.ToShareAccessMapOutputWithContext(context.Background())
+}
+
+func (i ShareAccessMap) ToShareAccessMapOutputWithContext(ctx context.Context) ShareAccessMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShareAccessMapOutput)
+}
+
 type ShareAccessOutput struct {
 	*pulumi.OutputState
 }
@@ -200,6 +279,75 @@ func (o ShareAccessOutput) ToShareAccessOutputWithContext(ctx context.Context) S
 	return o
 }
 
+func (o ShareAccessOutput) ToShareAccessPtrOutput() ShareAccessPtrOutput {
+	return o.ToShareAccessPtrOutputWithContext(context.Background())
+}
+
+func (o ShareAccessOutput) ToShareAccessPtrOutputWithContext(ctx context.Context) ShareAccessPtrOutput {
+	return o.ApplyT(func(v ShareAccess) *ShareAccess {
+		return &v
+	}).(ShareAccessPtrOutput)
+}
+
+type ShareAccessPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ShareAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ShareAccess)(nil))
+}
+
+func (o ShareAccessPtrOutput) ToShareAccessPtrOutput() ShareAccessPtrOutput {
+	return o
+}
+
+func (o ShareAccessPtrOutput) ToShareAccessPtrOutputWithContext(ctx context.Context) ShareAccessPtrOutput {
+	return o
+}
+
+type ShareAccessArrayOutput struct{ *pulumi.OutputState }
+
+func (ShareAccessArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ShareAccess)(nil))
+}
+
+func (o ShareAccessArrayOutput) ToShareAccessArrayOutput() ShareAccessArrayOutput {
+	return o
+}
+
+func (o ShareAccessArrayOutput) ToShareAccessArrayOutputWithContext(ctx context.Context) ShareAccessArrayOutput {
+	return o
+}
+
+func (o ShareAccessArrayOutput) Index(i pulumi.IntInput) ShareAccessOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ShareAccess {
+		return vs[0].([]ShareAccess)[vs[1].(int)]
+	}).(ShareAccessOutput)
+}
+
+type ShareAccessMapOutput struct{ *pulumi.OutputState }
+
+func (ShareAccessMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ShareAccess)(nil))
+}
+
+func (o ShareAccessMapOutput) ToShareAccessMapOutput() ShareAccessMapOutput {
+	return o
+}
+
+func (o ShareAccessMapOutput) ToShareAccessMapOutputWithContext(ctx context.Context) ShareAccessMapOutput {
+	return o
+}
+
+func (o ShareAccessMapOutput) MapIndex(k pulumi.StringInput) ShareAccessOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ShareAccess {
+		return vs[0].(map[string]ShareAccess)[vs[1].(string)]
+	}).(ShareAccessOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ShareAccessOutput{})
+	pulumi.RegisterOutputType(ShareAccessPtrOutput{})
+	pulumi.RegisterOutputType(ShareAccessArrayOutput{})
+	pulumi.RegisterOutputType(ShareAccessMapOutput{})
 }

@@ -93,29 +93,26 @@ export class FlavorAccess extends pulumi.CustomResource {
     constructor(name: string, args: FlavorAccessArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FlavorAccessArgs | FlavorAccessState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as FlavorAccessState | undefined;
             inputs["flavorId"] = state ? state.flavorId : undefined;
             inputs["region"] = state ? state.region : undefined;
             inputs["tenantId"] = state ? state.tenantId : undefined;
         } else {
             const args = argsOrState as FlavorAccessArgs | undefined;
-            if ((!args || args.flavorId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.flavorId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'flavorId'");
             }
-            if ((!args || args.tenantId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.tenantId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tenantId'");
             }
             inputs["flavorId"] = args ? args.flavorId : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["tenantId"] = args ? args.tenantId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(FlavorAccess.__pulumiType, name, inputs, opts);
     }

@@ -97,7 +97,8 @@ export class QosBandwidthLimitRule extends pulumi.CustomResource {
     constructor(name: string, args: QosBandwidthLimitRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: QosBandwidthLimitRuleArgs | QosBandwidthLimitRuleState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as QosBandwidthLimitRuleState | undefined;
             inputs["direction"] = state ? state.direction : undefined;
             inputs["maxBurstKbps"] = state ? state.maxBurstKbps : undefined;
@@ -106,10 +107,10 @@ export class QosBandwidthLimitRule extends pulumi.CustomResource {
             inputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as QosBandwidthLimitRuleArgs | undefined;
-            if ((!args || args.maxKbps === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.maxKbps === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'maxKbps'");
             }
-            if ((!args || args.qosPolicyId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.qosPolicyId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'qosPolicyId'");
             }
             inputs["direction"] = args ? args.direction : undefined;
@@ -118,12 +119,8 @@ export class QosBandwidthLimitRule extends pulumi.CustomResource {
             inputs["qosPolicyId"] = args ? args.qosPolicyId : undefined;
             inputs["region"] = args ? args.region : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(QosBandwidthLimitRule.__pulumiType, name, inputs, opts);
     }

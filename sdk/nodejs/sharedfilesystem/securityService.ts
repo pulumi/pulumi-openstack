@@ -136,7 +136,8 @@ export class SecurityService extends pulumi.CustomResource {
     constructor(name: string, args: SecurityServiceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SecurityServiceArgs | SecurityServiceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as SecurityServiceState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["dnsIp"] = state ? state.dnsIp : undefined;
@@ -151,7 +152,7 @@ export class SecurityService extends pulumi.CustomResource {
             inputs["user"] = state ? state.user : undefined;
         } else {
             const args = argsOrState as SecurityServiceArgs | undefined;
-            if ((!args || args.type === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
             inputs["description"] = args ? args.description : undefined;
@@ -166,12 +167,8 @@ export class SecurityService extends pulumi.CustomResource {
             inputs["user"] = args ? args.user : undefined;
             inputs["projectId"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(SecurityService.__pulumiType, name, inputs, opts);
     }

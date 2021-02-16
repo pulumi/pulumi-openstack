@@ -144,7 +144,8 @@ export class Vip extends pulumi.CustomResource {
     constructor(name: string, args: VipArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: VipArgs | VipState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as VipState | undefined;
             inputs["address"] = state ? state.address : undefined;
             inputs["adminStateUp"] = state ? state.adminStateUp : undefined;
@@ -162,16 +163,16 @@ export class Vip extends pulumi.CustomResource {
             inputs["tenantId"] = state ? state.tenantId : undefined;
         } else {
             const args = argsOrState as VipArgs | undefined;
-            if ((!args || args.poolId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.poolId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'poolId'");
             }
-            if ((!args || args.port === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.port === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'port'");
             }
-            if ((!args || args.protocol === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.protocol === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'protocol'");
             }
-            if ((!args || args.subnetId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.subnetId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'subnetId'");
             }
             inputs["address"] = args ? args.address : undefined;
@@ -189,12 +190,8 @@ export class Vip extends pulumi.CustomResource {
             inputs["tenantId"] = args ? args.tenantId : undefined;
             inputs["portId"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Vip.__pulumiType, name, inputs, opts);
     }

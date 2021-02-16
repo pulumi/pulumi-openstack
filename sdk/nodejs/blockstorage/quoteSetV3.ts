@@ -127,7 +127,8 @@ export class QuoteSetV3 extends pulumi.CustomResource {
     constructor(name: string, args: QuoteSetV3Args, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: QuoteSetV3Args | QuoteSetV3State, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as QuoteSetV3State | undefined;
             inputs["backupGigabytes"] = state ? state.backupGigabytes : undefined;
             inputs["backups"] = state ? state.backups : undefined;
@@ -140,7 +141,7 @@ export class QuoteSetV3 extends pulumi.CustomResource {
             inputs["volumes"] = state ? state.volumes : undefined;
         } else {
             const args = argsOrState as QuoteSetV3Args | undefined;
-            if ((!args || args.projectId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.projectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
             inputs["backupGigabytes"] = args ? args.backupGigabytes : undefined;
@@ -153,12 +154,8 @@ export class QuoteSetV3 extends pulumi.CustomResource {
             inputs["snapshots"] = args ? args.snapshots : undefined;
             inputs["volumes"] = args ? args.volumes : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(QuoteSetV3.__pulumiType, name, inputs, opts);
     }

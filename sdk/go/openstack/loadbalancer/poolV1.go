@@ -401,6 +401,85 @@ func (i *PoolV1) ToPoolV1OutputWithContext(ctx context.Context) PoolV1Output {
 	return pulumi.ToOutputWithContext(ctx, i).(PoolV1Output)
 }
 
+func (i *PoolV1) ToPoolV1PtrOutput() PoolV1PtrOutput {
+	return i.ToPoolV1PtrOutputWithContext(context.Background())
+}
+
+func (i *PoolV1) ToPoolV1PtrOutputWithContext(ctx context.Context) PoolV1PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PoolV1PtrOutput)
+}
+
+type PoolV1PtrInput interface {
+	pulumi.Input
+
+	ToPoolV1PtrOutput() PoolV1PtrOutput
+	ToPoolV1PtrOutputWithContext(ctx context.Context) PoolV1PtrOutput
+}
+
+type poolV1PtrType PoolV1Args
+
+func (*poolV1PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PoolV1)(nil))
+}
+
+func (i *poolV1PtrType) ToPoolV1PtrOutput() PoolV1PtrOutput {
+	return i.ToPoolV1PtrOutputWithContext(context.Background())
+}
+
+func (i *poolV1PtrType) ToPoolV1PtrOutputWithContext(ctx context.Context) PoolV1PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PoolV1PtrOutput)
+}
+
+// PoolV1ArrayInput is an input type that accepts PoolV1Array and PoolV1ArrayOutput values.
+// You can construct a concrete instance of `PoolV1ArrayInput` via:
+//
+//          PoolV1Array{ PoolV1Args{...} }
+type PoolV1ArrayInput interface {
+	pulumi.Input
+
+	ToPoolV1ArrayOutput() PoolV1ArrayOutput
+	ToPoolV1ArrayOutputWithContext(context.Context) PoolV1ArrayOutput
+}
+
+type PoolV1Array []PoolV1Input
+
+func (PoolV1Array) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*PoolV1)(nil))
+}
+
+func (i PoolV1Array) ToPoolV1ArrayOutput() PoolV1ArrayOutput {
+	return i.ToPoolV1ArrayOutputWithContext(context.Background())
+}
+
+func (i PoolV1Array) ToPoolV1ArrayOutputWithContext(ctx context.Context) PoolV1ArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PoolV1ArrayOutput)
+}
+
+// PoolV1MapInput is an input type that accepts PoolV1Map and PoolV1MapOutput values.
+// You can construct a concrete instance of `PoolV1MapInput` via:
+//
+//          PoolV1Map{ "key": PoolV1Args{...} }
+type PoolV1MapInput interface {
+	pulumi.Input
+
+	ToPoolV1MapOutput() PoolV1MapOutput
+	ToPoolV1MapOutputWithContext(context.Context) PoolV1MapOutput
+}
+
+type PoolV1Map map[string]PoolV1Input
+
+func (PoolV1Map) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*PoolV1)(nil))
+}
+
+func (i PoolV1Map) ToPoolV1MapOutput() PoolV1MapOutput {
+	return i.ToPoolV1MapOutputWithContext(context.Background())
+}
+
+func (i PoolV1Map) ToPoolV1MapOutputWithContext(ctx context.Context) PoolV1MapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PoolV1MapOutput)
+}
+
 type PoolV1Output struct {
 	*pulumi.OutputState
 }
@@ -417,6 +496,75 @@ func (o PoolV1Output) ToPoolV1OutputWithContext(ctx context.Context) PoolV1Outpu
 	return o
 }
 
+func (o PoolV1Output) ToPoolV1PtrOutput() PoolV1PtrOutput {
+	return o.ToPoolV1PtrOutputWithContext(context.Background())
+}
+
+func (o PoolV1Output) ToPoolV1PtrOutputWithContext(ctx context.Context) PoolV1PtrOutput {
+	return o.ApplyT(func(v PoolV1) *PoolV1 {
+		return &v
+	}).(PoolV1PtrOutput)
+}
+
+type PoolV1PtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (PoolV1PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PoolV1)(nil))
+}
+
+func (o PoolV1PtrOutput) ToPoolV1PtrOutput() PoolV1PtrOutput {
+	return o
+}
+
+func (o PoolV1PtrOutput) ToPoolV1PtrOutputWithContext(ctx context.Context) PoolV1PtrOutput {
+	return o
+}
+
+type PoolV1ArrayOutput struct{ *pulumi.OutputState }
+
+func (PoolV1ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PoolV1)(nil))
+}
+
+func (o PoolV1ArrayOutput) ToPoolV1ArrayOutput() PoolV1ArrayOutput {
+	return o
+}
+
+func (o PoolV1ArrayOutput) ToPoolV1ArrayOutputWithContext(ctx context.Context) PoolV1ArrayOutput {
+	return o
+}
+
+func (o PoolV1ArrayOutput) Index(i pulumi.IntInput) PoolV1Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PoolV1 {
+		return vs[0].([]PoolV1)[vs[1].(int)]
+	}).(PoolV1Output)
+}
+
+type PoolV1MapOutput struct{ *pulumi.OutputState }
+
+func (PoolV1MapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]PoolV1)(nil))
+}
+
+func (o PoolV1MapOutput) ToPoolV1MapOutput() PoolV1MapOutput {
+	return o
+}
+
+func (o PoolV1MapOutput) ToPoolV1MapOutputWithContext(ctx context.Context) PoolV1MapOutput {
+	return o
+}
+
+func (o PoolV1MapOutput) MapIndex(k pulumi.StringInput) PoolV1Output {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) PoolV1 {
+		return vs[0].(map[string]PoolV1)[vs[1].(string)]
+	}).(PoolV1Output)
+}
+
 func init() {
 	pulumi.RegisterOutputType(PoolV1Output{})
+	pulumi.RegisterOutputType(PoolV1PtrOutput{})
+	pulumi.RegisterOutputType(PoolV1ArrayOutput{})
+	pulumi.RegisterOutputType(PoolV1MapOutput{})
 }

@@ -107,7 +107,8 @@ export class Project extends pulumi.CustomResource {
     constructor(name: string, args?: ProjectArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ProjectArgs | ProjectState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ProjectState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["domainId"] = state ? state.domainId : undefined;
@@ -128,12 +129,8 @@ export class Project extends pulumi.CustomResource {
             inputs["region"] = args ? args.region : undefined;
             inputs["tags"] = args ? args.tags : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Project.__pulumiType, name, inputs, opts);
     }

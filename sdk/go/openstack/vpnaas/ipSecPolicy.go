@@ -278,6 +278,85 @@ func (i *IpSecPolicy) ToIpSecPolicyOutputWithContext(ctx context.Context) IpSecP
 	return pulumi.ToOutputWithContext(ctx, i).(IpSecPolicyOutput)
 }
 
+func (i *IpSecPolicy) ToIpSecPolicyPtrOutput() IpSecPolicyPtrOutput {
+	return i.ToIpSecPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *IpSecPolicy) ToIpSecPolicyPtrOutputWithContext(ctx context.Context) IpSecPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpSecPolicyPtrOutput)
+}
+
+type IpSecPolicyPtrInput interface {
+	pulumi.Input
+
+	ToIpSecPolicyPtrOutput() IpSecPolicyPtrOutput
+	ToIpSecPolicyPtrOutputWithContext(ctx context.Context) IpSecPolicyPtrOutput
+}
+
+type ipSecPolicyPtrType IpSecPolicyArgs
+
+func (*ipSecPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IpSecPolicy)(nil))
+}
+
+func (i *ipSecPolicyPtrType) ToIpSecPolicyPtrOutput() IpSecPolicyPtrOutput {
+	return i.ToIpSecPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *ipSecPolicyPtrType) ToIpSecPolicyPtrOutputWithContext(ctx context.Context) IpSecPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpSecPolicyPtrOutput)
+}
+
+// IpSecPolicyArrayInput is an input type that accepts IpSecPolicyArray and IpSecPolicyArrayOutput values.
+// You can construct a concrete instance of `IpSecPolicyArrayInput` via:
+//
+//          IpSecPolicyArray{ IpSecPolicyArgs{...} }
+type IpSecPolicyArrayInput interface {
+	pulumi.Input
+
+	ToIpSecPolicyArrayOutput() IpSecPolicyArrayOutput
+	ToIpSecPolicyArrayOutputWithContext(context.Context) IpSecPolicyArrayOutput
+}
+
+type IpSecPolicyArray []IpSecPolicyInput
+
+func (IpSecPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*IpSecPolicy)(nil))
+}
+
+func (i IpSecPolicyArray) ToIpSecPolicyArrayOutput() IpSecPolicyArrayOutput {
+	return i.ToIpSecPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i IpSecPolicyArray) ToIpSecPolicyArrayOutputWithContext(ctx context.Context) IpSecPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpSecPolicyArrayOutput)
+}
+
+// IpSecPolicyMapInput is an input type that accepts IpSecPolicyMap and IpSecPolicyMapOutput values.
+// You can construct a concrete instance of `IpSecPolicyMapInput` via:
+//
+//          IpSecPolicyMap{ "key": IpSecPolicyArgs{...} }
+type IpSecPolicyMapInput interface {
+	pulumi.Input
+
+	ToIpSecPolicyMapOutput() IpSecPolicyMapOutput
+	ToIpSecPolicyMapOutputWithContext(context.Context) IpSecPolicyMapOutput
+}
+
+type IpSecPolicyMap map[string]IpSecPolicyInput
+
+func (IpSecPolicyMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*IpSecPolicy)(nil))
+}
+
+func (i IpSecPolicyMap) ToIpSecPolicyMapOutput() IpSecPolicyMapOutput {
+	return i.ToIpSecPolicyMapOutputWithContext(context.Background())
+}
+
+func (i IpSecPolicyMap) ToIpSecPolicyMapOutputWithContext(ctx context.Context) IpSecPolicyMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpSecPolicyMapOutput)
+}
+
 type IpSecPolicyOutput struct {
 	*pulumi.OutputState
 }
@@ -294,6 +373,75 @@ func (o IpSecPolicyOutput) ToIpSecPolicyOutputWithContext(ctx context.Context) I
 	return o
 }
 
+func (o IpSecPolicyOutput) ToIpSecPolicyPtrOutput() IpSecPolicyPtrOutput {
+	return o.ToIpSecPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o IpSecPolicyOutput) ToIpSecPolicyPtrOutputWithContext(ctx context.Context) IpSecPolicyPtrOutput {
+	return o.ApplyT(func(v IpSecPolicy) *IpSecPolicy {
+		return &v
+	}).(IpSecPolicyPtrOutput)
+}
+
+type IpSecPolicyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (IpSecPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IpSecPolicy)(nil))
+}
+
+func (o IpSecPolicyPtrOutput) ToIpSecPolicyPtrOutput() IpSecPolicyPtrOutput {
+	return o
+}
+
+func (o IpSecPolicyPtrOutput) ToIpSecPolicyPtrOutputWithContext(ctx context.Context) IpSecPolicyPtrOutput {
+	return o
+}
+
+type IpSecPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (IpSecPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IpSecPolicy)(nil))
+}
+
+func (o IpSecPolicyArrayOutput) ToIpSecPolicyArrayOutput() IpSecPolicyArrayOutput {
+	return o
+}
+
+func (o IpSecPolicyArrayOutput) ToIpSecPolicyArrayOutputWithContext(ctx context.Context) IpSecPolicyArrayOutput {
+	return o
+}
+
+func (o IpSecPolicyArrayOutput) Index(i pulumi.IntInput) IpSecPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IpSecPolicy {
+		return vs[0].([]IpSecPolicy)[vs[1].(int)]
+	}).(IpSecPolicyOutput)
+}
+
+type IpSecPolicyMapOutput struct{ *pulumi.OutputState }
+
+func (IpSecPolicyMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]IpSecPolicy)(nil))
+}
+
+func (o IpSecPolicyMapOutput) ToIpSecPolicyMapOutput() IpSecPolicyMapOutput {
+	return o
+}
+
+func (o IpSecPolicyMapOutput) ToIpSecPolicyMapOutputWithContext(ctx context.Context) IpSecPolicyMapOutput {
+	return o
+}
+
+func (o IpSecPolicyMapOutput) MapIndex(k pulumi.StringInput) IpSecPolicyOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) IpSecPolicy {
+		return vs[0].(map[string]IpSecPolicy)[vs[1].(string)]
+	}).(IpSecPolicyOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(IpSecPolicyOutput{})
+	pulumi.RegisterOutputType(IpSecPolicyPtrOutput{})
+	pulumi.RegisterOutputType(IpSecPolicyArrayOutput{})
+	pulumi.RegisterOutputType(IpSecPolicyMapOutput{})
 }

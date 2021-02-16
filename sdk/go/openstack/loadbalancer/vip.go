@@ -367,6 +367,85 @@ func (i *Vip) ToVipOutputWithContext(ctx context.Context) VipOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VipOutput)
 }
 
+func (i *Vip) ToVipPtrOutput() VipPtrOutput {
+	return i.ToVipPtrOutputWithContext(context.Background())
+}
+
+func (i *Vip) ToVipPtrOutputWithContext(ctx context.Context) VipPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VipPtrOutput)
+}
+
+type VipPtrInput interface {
+	pulumi.Input
+
+	ToVipPtrOutput() VipPtrOutput
+	ToVipPtrOutputWithContext(ctx context.Context) VipPtrOutput
+}
+
+type vipPtrType VipArgs
+
+func (*vipPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Vip)(nil))
+}
+
+func (i *vipPtrType) ToVipPtrOutput() VipPtrOutput {
+	return i.ToVipPtrOutputWithContext(context.Background())
+}
+
+func (i *vipPtrType) ToVipPtrOutputWithContext(ctx context.Context) VipPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VipPtrOutput)
+}
+
+// VipArrayInput is an input type that accepts VipArray and VipArrayOutput values.
+// You can construct a concrete instance of `VipArrayInput` via:
+//
+//          VipArray{ VipArgs{...} }
+type VipArrayInput interface {
+	pulumi.Input
+
+	ToVipArrayOutput() VipArrayOutput
+	ToVipArrayOutputWithContext(context.Context) VipArrayOutput
+}
+
+type VipArray []VipInput
+
+func (VipArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*Vip)(nil))
+}
+
+func (i VipArray) ToVipArrayOutput() VipArrayOutput {
+	return i.ToVipArrayOutputWithContext(context.Background())
+}
+
+func (i VipArray) ToVipArrayOutputWithContext(ctx context.Context) VipArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VipArrayOutput)
+}
+
+// VipMapInput is an input type that accepts VipMap and VipMapOutput values.
+// You can construct a concrete instance of `VipMapInput` via:
+//
+//          VipMap{ "key": VipArgs{...} }
+type VipMapInput interface {
+	pulumi.Input
+
+	ToVipMapOutput() VipMapOutput
+	ToVipMapOutputWithContext(context.Context) VipMapOutput
+}
+
+type VipMap map[string]VipInput
+
+func (VipMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*Vip)(nil))
+}
+
+func (i VipMap) ToVipMapOutput() VipMapOutput {
+	return i.ToVipMapOutputWithContext(context.Background())
+}
+
+func (i VipMap) ToVipMapOutputWithContext(ctx context.Context) VipMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VipMapOutput)
+}
+
 type VipOutput struct {
 	*pulumi.OutputState
 }
@@ -383,6 +462,75 @@ func (o VipOutput) ToVipOutputWithContext(ctx context.Context) VipOutput {
 	return o
 }
 
+func (o VipOutput) ToVipPtrOutput() VipPtrOutput {
+	return o.ToVipPtrOutputWithContext(context.Background())
+}
+
+func (o VipOutput) ToVipPtrOutputWithContext(ctx context.Context) VipPtrOutput {
+	return o.ApplyT(func(v Vip) *Vip {
+		return &v
+	}).(VipPtrOutput)
+}
+
+type VipPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (VipPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Vip)(nil))
+}
+
+func (o VipPtrOutput) ToVipPtrOutput() VipPtrOutput {
+	return o
+}
+
+func (o VipPtrOutput) ToVipPtrOutputWithContext(ctx context.Context) VipPtrOutput {
+	return o
+}
+
+type VipArrayOutput struct{ *pulumi.OutputState }
+
+func (VipArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Vip)(nil))
+}
+
+func (o VipArrayOutput) ToVipArrayOutput() VipArrayOutput {
+	return o
+}
+
+func (o VipArrayOutput) ToVipArrayOutputWithContext(ctx context.Context) VipArrayOutput {
+	return o
+}
+
+func (o VipArrayOutput) Index(i pulumi.IntInput) VipOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Vip {
+		return vs[0].([]Vip)[vs[1].(int)]
+	}).(VipOutput)
+}
+
+type VipMapOutput struct{ *pulumi.OutputState }
+
+func (VipMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Vip)(nil))
+}
+
+func (o VipMapOutput) ToVipMapOutput() VipMapOutput {
+	return o
+}
+
+func (o VipMapOutput) ToVipMapOutputWithContext(ctx context.Context) VipMapOutput {
+	return o
+}
+
+func (o VipMapOutput) MapIndex(k pulumi.StringInput) VipOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Vip {
+		return vs[0].(map[string]Vip)[vs[1].(string)]
+	}).(VipOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(VipOutput{})
+	pulumi.RegisterOutputType(VipPtrOutput{})
+	pulumi.RegisterOutputType(VipArrayOutput{})
+	pulumi.RegisterOutputType(VipMapOutput{})
 }

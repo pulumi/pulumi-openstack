@@ -105,7 +105,8 @@ export class EndpointGroup extends pulumi.CustomResource {
     constructor(name: string, args?: EndpointGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EndpointGroupArgs | EndpointGroupState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as EndpointGroupState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["endpoints"] = state ? state.endpoints : undefined;
@@ -124,12 +125,8 @@ export class EndpointGroup extends pulumi.CustomResource {
             inputs["type"] = args ? args.type : undefined;
             inputs["valueSpecs"] = args ? args.valueSpecs : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(EndpointGroup.__pulumiType, name, inputs, opts);
     }

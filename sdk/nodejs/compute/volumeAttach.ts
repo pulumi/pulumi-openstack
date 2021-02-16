@@ -195,7 +195,8 @@ export class VolumeAttach extends pulumi.CustomResource {
     constructor(name: string, args: VolumeAttachArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: VolumeAttachArgs | VolumeAttachState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as VolumeAttachState | undefined;
             inputs["device"] = state ? state.device : undefined;
             inputs["instanceId"] = state ? state.instanceId : undefined;
@@ -205,10 +206,10 @@ export class VolumeAttach extends pulumi.CustomResource {
             inputs["volumeId"] = state ? state.volumeId : undefined;
         } else {
             const args = argsOrState as VolumeAttachArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.volumeId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.volumeId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'volumeId'");
             }
             inputs["device"] = args ? args.device : undefined;
@@ -218,12 +219,8 @@ export class VolumeAttach extends pulumi.CustomResource {
             inputs["vendorOptions"] = args ? args.vendorOptions : undefined;
             inputs["volumeId"] = args ? args.volumeId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(VolumeAttach.__pulumiType, name, inputs, opts);
     }
