@@ -188,10 +188,11 @@ namespace Pulumi.OpenStack.Compute
 
         /// <summary>
         /// An array of one or more security group names
-        /// or ids to associate with the server. Changing this results in adding/removing
+        /// to associate with the server. Changing this results in adding/removing
         /// security groups from the existing server. *Note*: When attaching the
         /// instance to networks using Ports, place the security groups on the Port
-        /// and not the instance.
+        /// and not the instance. *Note*: Names should be used and not ids, as ids
+        /// trigger unnecessary updates.
         /// </summary>
         [Output("securityGroups")]
         public Output<ImmutableArray<string>> SecurityGroups { get; private set; } = null!;
@@ -470,10 +471,11 @@ namespace Pulumi.OpenStack.Compute
 
         /// <summary>
         /// An array of one or more security group names
-        /// or ids to associate with the server. Changing this results in adding/removing
+        /// to associate with the server. Changing this results in adding/removing
         /// security groups from the existing server. *Note*: When attaching the
         /// instance to networks using Ports, place the security groups on the Port
-        /// and not the instance.
+        /// and not the instance. *Note*: Names should be used and not ids, as ids
+        /// trigger unnecessary updates.
         /// </summary>
         public InputList<string> SecurityGroups
         {
@@ -743,10 +745,11 @@ namespace Pulumi.OpenStack.Compute
 
         /// <summary>
         /// An array of one or more security group names
-        /// or ids to associate with the server. Changing this results in adding/removing
+        /// to associate with the server. Changing this results in adding/removing
         /// security groups from the existing server. *Note*: When attaching the
         /// instance to networks using Ports, place the security groups on the Port
-        /// and not the instance.
+        /// and not the instance. *Note*: Names should be used and not ids, as ids
+        /// trigger unnecessary updates.
         /// </summary>
         public InputList<string> SecurityGroups
         {

@@ -111,9 +111,10 @@ export class LoadBalancer extends pulumi.CustomResource {
      */
     public readonly vipNetworkId!: pulumi.Output<string>;
     /**
-     * The Port ID of the Load Balancer IP.
+     * The port UUID that the loadbalancer will use.
+     * Changing this creates a new loadbalancer. It is available only for Octavia.
      */
-    public /*out*/ readonly vipPortId!: pulumi.Output<string>;
+    public readonly vipPortId!: pulumi.Output<string>;
     /**
      * The subnet on which to allocate the
      * Loadbalancer's address. A tenant can only create Loadbalancers on networks
@@ -160,8 +161,8 @@ export class LoadBalancer extends pulumi.CustomResource {
             inputs["tenantId"] = args ? args.tenantId : undefined;
             inputs["vipAddress"] = args ? args.vipAddress : undefined;
             inputs["vipNetworkId"] = args ? args.vipNetworkId : undefined;
+            inputs["vipPortId"] = args ? args.vipPortId : undefined;
             inputs["vipSubnetId"] = args ? args.vipSubnetId : undefined;
-            inputs["vipPortId"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -231,7 +232,8 @@ export interface LoadBalancerState {
      */
     readonly vipNetworkId?: pulumi.Input<string>;
     /**
-     * The Port ID of the Load Balancer IP.
+     * The port UUID that the loadbalancer will use.
+     * Changing this creates a new loadbalancer. It is available only for Octavia.
      */
     readonly vipPortId?: pulumi.Input<string>;
     /**
@@ -304,6 +306,11 @@ export interface LoadBalancerArgs {
      * It is available only for Octavia.
      */
     readonly vipNetworkId?: pulumi.Input<string>;
+    /**
+     * The port UUID that the loadbalancer will use.
+     * Changing this creates a new loadbalancer. It is available only for Octavia.
+     */
+    readonly vipPortId?: pulumi.Input<string>;
     /**
      * The subnet on which to allocate the
      * Loadbalancer's address. A tenant can only create Loadbalancers on networks

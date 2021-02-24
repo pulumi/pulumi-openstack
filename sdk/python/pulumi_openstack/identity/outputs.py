@@ -7,11 +7,14 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
+from . import outputs
 
 __all__ = [
     'ApplicationCredentialAccessRule',
     'UserMultiFactorAuthRule',
     'GetAuthScopeRoleResult',
+    'GetAuthScopeServiceCatalogResult',
+    'GetAuthScopeServiceCatalogEndpointResult',
 ]
 
 @pulumi.output_type
@@ -139,5 +142,124 @@ class GetAuthScopeRoleResult(dict):
         The name of the role.
         """
         return pulumi.get(self, "role_name")
+
+
+@pulumi.output_type
+class GetAuthScopeServiceCatalogResult(dict):
+    def __init__(__self__, *,
+                 endpoints: Sequence['outputs.GetAuthScopeServiceCatalogEndpointResult'],
+                 id: str,
+                 name: str,
+                 type: str):
+        """
+        :param Sequence['GetAuthScopeServiceCatalogEndpointArgs'] endpoints: A list of endpoints for the service.
+        :param str id: The ID of the endpoint.
+        :param str name: The name of the scope. This is an arbitrary name which is
+               only used as a unique identifier so an actual token isn't used as the ID.
+        :param str type: The type of the service.
+        """
+        pulumi.set(__self__, "endpoints", endpoints)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def endpoints(self) -> Sequence['outputs.GetAuthScopeServiceCatalogEndpointResult']:
+        """
+        A list of endpoints for the service.
+        """
+        return pulumi.get(self, "endpoints")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the endpoint.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the scope. This is an arbitrary name which is
+        only used as a unique identifier so an actual token isn't used as the ID.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of the service.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetAuthScopeServiceCatalogEndpointResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 interface: str,
+                 region: str,
+                 region_id: str,
+                 url: str):
+        """
+        :param str id: The ID of the endpoint.
+        :param str interface: The interface of the endpoint.
+        :param str region: The region in which to obtain the V3 Identity client.
+               A Identity client is needed to retrieve tokens IDs. If omitted, the
+               `region` argument of the provider is used.
+        :param str region_id: The region ID of the endpoint.
+        :param str url: The URL of the endpoint.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "interface", interface)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "region_id", region_id)
+        pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the endpoint.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def interface(self) -> str:
+        """
+        The interface of the endpoint.
+        """
+        return pulumi.get(self, "interface")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The region in which to obtain the V3 Identity client.
+        A Identity client is needed to retrieve tokens IDs. If omitted, the
+        `region` argument of the provider is used.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> str:
+        """
+        The region ID of the endpoint.
+        """
+        return pulumi.get(self, "region_id")
+
+    @property
+    @pulumi.getter
+    def url(self) -> str:
+        """
+        The URL of the endpoint.
+        """
+        return pulumi.get(self, "url")
 
 

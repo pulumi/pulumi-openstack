@@ -20,7 +20,7 @@ class GetAuthScopeResult:
     """
     A collection of values returned by getAuthScope.
     """
-    def __init__(__self__, domain_id=None, domain_name=None, id=None, name=None, project_domain_id=None, project_domain_name=None, project_id=None, project_name=None, region=None, roles=None, user_domain_id=None, user_domain_name=None, user_id=None, user_name=None):
+    def __init__(__self__, domain_id=None, domain_name=None, id=None, name=None, project_domain_id=None, project_domain_name=None, project_id=None, project_name=None, region=None, roles=None, service_catalogs=None, user_domain_id=None, user_domain_name=None, user_id=None, user_name=None):
         if domain_id and not isinstance(domain_id, str):
             raise TypeError("Expected argument 'domain_id' to be a str")
         pulumi.set(__self__, "domain_id", domain_id)
@@ -51,6 +51,9 @@ class GetAuthScopeResult:
         if roles and not isinstance(roles, list):
             raise TypeError("Expected argument 'roles' to be a list")
         pulumi.set(__self__, "roles", roles)
+        if service_catalogs and not isinstance(service_catalogs, list):
+            raise TypeError("Expected argument 'service_catalogs' to be a list")
+        pulumi.set(__self__, "service_catalogs", service_catalogs)
         if user_domain_id and not isinstance(user_domain_id, str):
             raise TypeError("Expected argument 'user_domain_id' to be a str")
         pulumi.set(__self__, "user_domain_id", user_domain_id)
@@ -91,6 +94,9 @@ class GetAuthScopeResult:
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The name of the service.
+        """
         return pulumi.get(self, "name")
 
     @property
@@ -128,6 +134,9 @@ class GetAuthScopeResult:
     @property
     @pulumi.getter
     def region(self) -> str:
+        """
+        The region of the endpoint.
+        """
         return pulumi.get(self, "region")
 
     @property
@@ -137,6 +146,14 @@ class GetAuthScopeResult:
         A list of roles in the current scope. See reference below.
         """
         return pulumi.get(self, "roles")
+
+    @property
+    @pulumi.getter(name="serviceCatalogs")
+    def service_catalogs(self) -> Sequence['outputs.GetAuthScopeServiceCatalogResult']:
+        """
+        A list of service catalog entries returned with the token.
+        """
+        return pulumi.get(self, "service_catalogs")
 
     @property
     @pulumi.getter(name="userDomainId")
@@ -187,6 +204,7 @@ class AwaitableGetAuthScopeResult(GetAuthScopeResult):
             project_name=self.project_name,
             region=self.region,
             roles=self.roles,
+            service_catalogs=self.service_catalogs,
             user_domain_id=self.user_domain_id,
             user_domain_name=self.user_domain_name,
             user_id=self.user_id,
@@ -199,7 +217,7 @@ def get_auth_scope(name: Optional[str] = None,
     """
     Use this data source to get authentication information about the current
     auth scope in use. This can be used as self-discovery or introspection of
-    the username or project name currently in use.
+    the username or project name currently in use as well as the service catalog.
 
     ## Example Usage
 
@@ -208,6 +226,17 @@ def get_auth_scope(name: Optional[str] = None,
     import pulumi_openstack as openstack
 
     scope = openstack.identity.get_auth_scope(name="my_scope")
+    ```
+
+    To find the the public object storage endpoint for "region1" as listed in the
+    service catalog:
+
+    ```python
+    import pulumi
+
+    object_store_service = [entry for entry in data["openstack_identity_auth_scope_v3"]["scope"]["service_catalog"] if entry["type"] == "object-store"][0]
+    object_store_endpoint = [endpoint for endpoint in object_store_service["endpoints"] if endpoint["interface"] == "public" and endpoint["region"] == "region1"][0]
+    object_store_public_url = object_store_endpoint["url"]
     ```
 
 
@@ -237,6 +266,7 @@ def get_auth_scope(name: Optional[str] = None,
         project_name=__ret__.project_name,
         region=__ret__.region,
         roles=__ret__.roles,
+        service_catalogs=__ret__.service_catalogs,
         user_domain_id=__ret__.user_domain_id,
         user_domain_name=__ret__.user_domain_name,
         user_id=__ret__.user_id,

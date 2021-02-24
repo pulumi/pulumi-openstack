@@ -481,6 +481,51 @@ export namespace identity {
         roleName: string;
     }
 
+    export interface GetAuthScopeServiceCatalog {
+        /**
+         * A list of endpoints for the service.
+         */
+        endpoints: outputs.identity.GetAuthScopeServiceCatalogEndpoint[];
+        /**
+         * The ID of the endpoint.
+         */
+        id: string;
+        /**
+         * The name of the scope. This is an arbitrary name which is
+         * only used as a unique identifier so an actual token isn't used as the ID.
+         */
+        name: string;
+        /**
+         * The type of the service.
+         */
+        type: string;
+    }
+
+    export interface GetAuthScopeServiceCatalogEndpoint {
+        /**
+         * The ID of the endpoint.
+         */
+        id: string;
+        /**
+         * The interface of the endpoint.
+         */
+        interface: string;
+        /**
+         * The region in which to obtain the V3 Identity client.
+         * A Identity client is needed to retrieve tokens IDs. If omitted, the
+         * `region` argument of the provider is used.
+         */
+        region: string;
+        /**
+         * The region ID of the endpoint.
+         */
+        regionId: string;
+        /**
+         * The URL of the endpoint.
+         */
+        url: string;
+    }
+
     export interface UserMultiFactorAuthRule {
         /**
          * A list of authentication plugins that the user must

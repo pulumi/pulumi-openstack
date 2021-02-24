@@ -14,30 +14,7 @@ namespace Pulumi.OpenStack.Identity
         /// <summary>
         /// Use this data source to get authentication information about the current
         /// auth scope in use. This can be used as self-discovery or introspection of
-        /// the username or project name currently in use.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using OpenStack = Pulumi.OpenStack;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var scope = Output.Create(OpenStack.Identity.GetAuthScope.InvokeAsync(new OpenStack.Identity.GetAuthScopeArgs
-        ///         {
-        ///             Name = "my_scope",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// the username or project name currently in use as well as the service catalog.
         /// </summary>
         public static Task<GetAuthScopeResult> InvokeAsync(GetAuthScopeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAuthScopeResult>("openstack:identity/getAuthScope:getAuthScope", args ?? new GetAuthScopeArgs(), options.WithVersion());
@@ -82,6 +59,9 @@ namespace Pulumi.OpenStack.Identity
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The name of the service.
+        /// </summary>
         public readonly string Name;
         /// <summary>
         /// The domain ID of the project.
@@ -99,11 +79,18 @@ namespace Pulumi.OpenStack.Identity
         /// The project name of the scope.
         /// </summary>
         public readonly string ProjectName;
+        /// <summary>
+        /// The region of the endpoint.
+        /// </summary>
         public readonly string Region;
         /// <summary>
         /// A list of roles in the current scope. See reference below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAuthScopeRoleResult> Roles;
+        /// <summary>
+        /// A list of service catalog entries returned with the token.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetAuthScopeServiceCatalogResult> ServiceCatalogs;
         /// <summary>
         /// The domain ID of the user.
         /// </summary>
@@ -143,6 +130,8 @@ namespace Pulumi.OpenStack.Identity
 
             ImmutableArray<Outputs.GetAuthScopeRoleResult> roles,
 
+            ImmutableArray<Outputs.GetAuthScopeServiceCatalogResult> serviceCatalogs,
+
             string userDomainId,
 
             string userDomainName,
@@ -161,6 +150,7 @@ namespace Pulumi.OpenStack.Identity
             ProjectName = projectName;
             Region = region;
             Roles = roles;
+            ServiceCatalogs = serviceCatalogs;
             UserDomainId = userDomainId;
             UserDomainName = userDomainName;
             UserId = userId;

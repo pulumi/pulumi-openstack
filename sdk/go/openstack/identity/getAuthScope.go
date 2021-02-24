@@ -9,30 +9,7 @@ import (
 
 // Use this data source to get authentication information about the current
 // auth scope in use. This can be used as self-discovery or introspection of
-// the username or project name currently in use.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/identity"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := identity.GetAuthScope(ctx, &identity.GetAuthScopeArgs{
-// 			Name: "my_scope",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
+// the username or project name currently in use as well as the service catalog.
 func GetAuthScope(ctx *pulumi.Context, args *GetAuthScopeArgs, opts ...pulumi.InvokeOption) (*GetAuthScopeResult, error) {
 	var rv GetAuthScopeResult
 	err := ctx.Invoke("openstack:identity/getAuthScope:getAuthScope", args, &rv, opts...)
@@ -60,7 +37,8 @@ type GetAuthScopeResult struct {
 	// The domain name of the scope.
 	DomainName string `pulumi:"domainName"`
 	// The provider-assigned unique ID for this managed resource.
-	Id   string `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// The name of the service.
 	Name string `pulumi:"name"`
 	// The domain ID of the project.
 	ProjectDomainId string `pulumi:"projectDomainId"`
@@ -70,9 +48,12 @@ type GetAuthScopeResult struct {
 	ProjectId string `pulumi:"projectId"`
 	// The project name of the scope.
 	ProjectName string `pulumi:"projectName"`
-	Region      string `pulumi:"region"`
+	// The region of the endpoint.
+	Region string `pulumi:"region"`
 	// A list of roles in the current scope. See reference below.
 	Roles []GetAuthScopeRole `pulumi:"roles"`
+	// A list of service catalog entries returned with the token.
+	ServiceCatalogs []GetAuthScopeServiceCatalog `pulumi:"serviceCatalogs"`
 	// The domain ID of the user.
 	UserDomainId string `pulumi:"userDomainId"`
 	// The domain name of the user.

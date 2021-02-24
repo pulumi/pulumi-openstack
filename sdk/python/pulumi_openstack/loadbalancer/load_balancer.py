@@ -25,6 +25,7 @@ class LoadBalancer(pulumi.CustomResource):
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  vip_address: Optional[pulumi.Input[str]] = None,
                  vip_network_id: Optional[pulumi.Input[str]] = None,
+                 vip_port_id: Optional[pulumi.Input[str]] = None,
                  vip_subnet_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -77,6 +78,8 @@ class LoadBalancer(pulumi.CustomResource):
                authorized by policy (e.g. networks that belong to them or networks that
                are shared).  Changing this creates a new loadbalancer.
                It is available only for Octavia.
+        :param pulumi.Input[str] vip_port_id: The port UUID that the loadbalancer will use.
+               Changing this creates a new loadbalancer. It is available only for Octavia.
         :param pulumi.Input[str] vip_subnet_id: The subnet on which to allocate the
                Loadbalancer's address. A tenant can only create Loadbalancers on networks
                authorized by policy (e.g. networks that belong to them or networks that
@@ -110,8 +113,8 @@ class LoadBalancer(pulumi.CustomResource):
             __props__['tenant_id'] = tenant_id
             __props__['vip_address'] = vip_address
             __props__['vip_network_id'] = vip_network_id
+            __props__['vip_port_id'] = vip_port_id
             __props__['vip_subnet_id'] = vip_subnet_id
-            __props__['vip_port_id'] = None
         super(LoadBalancer, __self__).__init__(
             'openstack:loadbalancer/loadBalancer:LoadBalancer',
             resource_name,
@@ -167,7 +170,8 @@ class LoadBalancer(pulumi.CustomResource):
                authorized by policy (e.g. networks that belong to them or networks that
                are shared).  Changing this creates a new loadbalancer.
                It is available only for Octavia.
-        :param pulumi.Input[str] vip_port_id: The Port ID of the Load Balancer IP.
+        :param pulumi.Input[str] vip_port_id: The port UUID that the loadbalancer will use.
+               Changing this creates a new loadbalancer. It is available only for Octavia.
         :param pulumi.Input[str] vip_subnet_id: The subnet on which to allocate the
                Loadbalancer's address. A tenant can only create Loadbalancers on networks
                authorized by policy (e.g. networks that belong to them or networks that
@@ -292,7 +296,8 @@ class LoadBalancer(pulumi.CustomResource):
     @pulumi.getter(name="vipPortId")
     def vip_port_id(self) -> pulumi.Output[str]:
         """
-        The Port ID of the Load Balancer IP.
+        The port UUID that the loadbalancer will use.
+        Changing this creates a new loadbalancer. It is available only for Octavia.
         """
         return pulumi.get(self, "vip_port_id")
 

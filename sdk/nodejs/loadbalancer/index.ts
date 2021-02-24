@@ -16,6 +16,7 @@ export * from "./monitor";
 export * from "./monitorV1";
 export * from "./pool";
 export * from "./poolV1";
+export * from "./quota";
 export * from "./vip";
 
 // Import resources to register:
@@ -30,6 +31,7 @@ import { Monitor } from "./monitor";
 import { MonitorV1 } from "./monitorV1";
 import { Pool } from "./pool";
 import { PoolV1 } from "./poolV1";
+import { Quota } from "./quota";
 import { Vip } from "./vip";
 
 const _module = {
@@ -58,6 +60,8 @@ const _module = {
                 return new Pool(name, <any>undefined, { urn })
             case "openstack:loadbalancer/poolV1:PoolV1":
                 return new PoolV1(name, <any>undefined, { urn })
+            case "openstack:loadbalancer/quota:Quota":
+                return new Quota(name, <any>undefined, { urn })
             case "openstack:loadbalancer/vip:Vip":
                 return new Vip(name, <any>undefined, { urn })
             default:
@@ -76,4 +80,5 @@ pulumi.runtime.registerResourceModule("openstack", "loadbalancer/monitor", _modu
 pulumi.runtime.registerResourceModule("openstack", "loadbalancer/monitorV1", _module)
 pulumi.runtime.registerResourceModule("openstack", "loadbalancer/pool", _module)
 pulumi.runtime.registerResourceModule("openstack", "loadbalancer/poolV1", _module)
+pulumi.runtime.registerResourceModule("openstack", "loadbalancer/quota", _module)
 pulumi.runtime.registerResourceModule("openstack", "loadbalancer/vip", _module)

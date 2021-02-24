@@ -43,6 +43,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r, err = NewPool(ctx, name, nil, pulumi.URN_(urn))
 	case "openstack:loadbalancer/poolV1:PoolV1":
 		r, err = NewPoolV1(ctx, name, nil, pulumi.URN_(urn))
+	case "openstack:loadbalancer/quota:Quota":
+		r, err = NewQuota(ctx, name, nil, pulumi.URN_(urn))
 	case "openstack:loadbalancer/vip:Vip":
 		r, err = NewVip(ctx, name, nil, pulumi.URN_(urn))
 	default:
@@ -110,6 +112,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"openstack",
 		"loadbalancer/poolV1",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"openstack",
+		"loadbalancer/quota",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -119,7 +119,8 @@ namespace Pulumi.OpenStack.LoadBalancer
         public Output<string> VipNetworkId { get; private set; } = null!;
 
         /// <summary>
-        /// The Port ID of the Load Balancer IP.
+        /// The port UUID that the loadbalancer will use.
+        /// Changing this creates a new loadbalancer. It is available only for Octavia.
         /// </summary>
         [Output("vipPortId")]
         public Output<string> VipPortId { get; private set; } = null!;
@@ -263,6 +264,13 @@ namespace Pulumi.OpenStack.LoadBalancer
         public Input<string>? VipNetworkId { get; set; }
 
         /// <summary>
+        /// The port UUID that the loadbalancer will use.
+        /// Changing this creates a new loadbalancer. It is available only for Octavia.
+        /// </summary>
+        [Input("vipPortId")]
+        public Input<string>? VipPortId { get; set; }
+
+        /// <summary>
         /// The subnet on which to allocate the
         /// Loadbalancer's address. A tenant can only create Loadbalancers on networks
         /// authorized by policy (e.g. networks that belong to them or networks that
@@ -362,7 +370,8 @@ namespace Pulumi.OpenStack.LoadBalancer
         public Input<string>? VipNetworkId { get; set; }
 
         /// <summary>
-        /// The Port ID of the Load Balancer IP.
+        /// The port UUID that the loadbalancer will use.
+        /// Changing this creates a new loadbalancer. It is available only for Octavia.
         /// </summary>
         [Input("vipPortId")]
         public Input<string>? VipPortId { get; set; }
