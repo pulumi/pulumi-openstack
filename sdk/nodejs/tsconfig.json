@@ -109,6 +109,7 @@
         "loadbalancer/monitorV1.ts",
         "loadbalancer/pool.ts",
         "loadbalancer/poolV1.ts",
+        "loadbalancer/quota.ts",
         "loadbalancer/vip.ts",
         "networking/addressScope.ts",
         "networking/floatingIp.ts",

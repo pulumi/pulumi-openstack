@@ -1253,6 +1253,123 @@
                 }
             }
         },
+        "openstack:identity/getAuthScopeServiceCatalog:getAuthScopeServiceCatalog": {
+            "properties": {
+                "endpoints": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/openstack:identity/getAuthScopeServiceCatalogEndpoint:getAuthScopeServiceCatalogEndpoint"
+                    },
+                    "description": "A list of endpoints for the service.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The ID of the endpoint.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the scope. This is an arbitrary name which is\nonly used as a unique identifier so an actual token isn't used as the ID.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of the service.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "endpoints",
+                "id",
+                "name",
+                "type"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "openstack:identity/getAuthScopeServiceCatalogEndpoint:getAuthScopeServiceCatalogEndpoint": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "The ID of the endpoint.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "interface": {
+                    "type": "string",
+                    "description": "The interface of the endpoint.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region in which to obtain the V3 Identity client.\nA Identity client is needed to retrieve tokens IDs. If omitted, the\n`region` argument of the provider is used.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "regionId": {
+                    "type": "string",
+                    "description": "The region ID of the endpoint.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "url": {
+                    "type": "string",
+                    "description": "The URL of the endpoint.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "interface",
+                "region",
+                "regionId",
+                "url"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "openstack:keymanager/ContainerV1Acl:ContainerV1Acl": {
             "properties": {
                 "read": {
@@ -4701,7 +4818,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "An array of one or more security group names\nor ids to associate with the server. Changing this results in adding/removing\nsecurity groups from the existing server. *Note*: When attaching the\ninstance to networks using Ports, place the security groups on the Port\nand not the instance.\n"
+                    "description": "An array of one or more security group names\nto associate with the server. Changing this results in adding/removing\nsecurity groups from the existing server. *Note*: When attaching the\ninstance to networks using Ports, place the security groups on the Port\nand not the instance. *Note*: Names should be used and not ids, as ids\ntrigger unnecessary updates.\n"
                 },
                 "stopBeforeDestroy": {
                     "type": "boolean",
@@ -4843,7 +4960,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "An array of one or more security group names\nor ids to associate with the server. Changing this results in adding/removing\nsecurity groups from the existing server. *Note*: When attaching the\ninstance to networks using Ports, place the security groups on the Port\nand not the instance.\n"
+                    "description": "An array of one or more security group names\nto associate with the server. Changing this results in adding/removing\nsecurity groups from the existing server. *Note*: When attaching the\ninstance to networks using Ports, place the security groups on the Port\nand not the instance. *Note*: Names should be used and not ids, as ids\ntrigger unnecessary updates.\n"
                 },
                 "stopBeforeDestroy": {
                     "type": "boolean",
@@ -4985,7 +5102,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "An array of one or more security group names\nor ids to associate with the server. Changing this results in adding/removing\nsecurity groups from the existing server. *Note*: When attaching the\ninstance to networks using Ports, place the security groups on the Port\nand not the instance.\n"
+                        "description": "An array of one or more security group names\nto associate with the server. Changing this results in adding/removing\nsecurity groups from the existing server. *Note*: When attaching the\ninstance to networks using Ports, place the security groups on the Port\nand not the instance. *Note*: Names should be used and not ids, as ids\ntrigger unnecessary updates.\n"
                     },
                     "stopBeforeDestroy": {
                         "type": "boolean",
@@ -10167,7 +10284,7 @@
                 },
                 "vipPortId": {
                     "type": "string",
-                    "description": "The Port ID of the Load Balancer IP.\n"
+                    "description": "The port UUID that the loadbalancer will use.\nChanging this creates a new loadbalancer. It is available only for Octavia.\n"
                 },
                 "vipSubnetId": {
                     "type": "string",
@@ -10230,6 +10347,10 @@
                     "type": "string",
                     "description": "The network on which to allocate the\nLoadbalancer's address. A tenant can only create Loadbalancers on networks\nauthorized by policy (e.g. networks that belong to them or networks that\nare shared).  Changing this creates a new loadbalancer.\nIt is available only for Octavia.\n"
                 },
+                "vipPortId": {
+                    "type": "string",
+                    "description": "The port UUID that the loadbalancer will use.\nChanging this creates a new loadbalancer. It is available only for Octavia.\n"
+                },
                 "vipSubnetId": {
                     "type": "string",
                     "description": "The subnet on which to allocate the\nLoadbalancer's address. A tenant can only create Loadbalancers on networks\nauthorized by policy (e.g. networks that belong to them or networks that\nare shared).  Changing this creates a new loadbalancer.\nIt is required to Neutron LBaaS but optional for Octavia.\n"
@@ -10283,7 +10404,7 @@
                     },
                     "vipPortId": {
                         "type": "string",
-                        "description": "The Port ID of the Load Balancer IP.\n"
+                        "description": "The port UUID that the loadbalancer will use.\nChanging this creates a new loadbalancer. It is available only for Octavia.\n"
                     },
                     "vipSubnetId": {
                         "type": "string",
@@ -11225,6 +11346,141 @@
                     "tenantId": {
                         "type": "string",
                         "description": "The owner of the member. Required if admin wants to\ncreate a pool member for another tenant. Changing this creates a new member.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "openstack:loadbalancer/quota:Quota": {
+            "description": "Manages a V2 load balancer quota resource within OpenStack.\n\n\u003e **Note:** This usually requires admin privileges.\n\n\u003e **Note:** This resource is only available for Octavia.\n\n\u003e **Note:** This resource has a no-op deletion so no actual actions will be done against the OpenStack\n   API in case of delete call.\n\n\u003e **Note:** This resource has all-in creation so all optional quota arguments that were not specified are\n   created with zero value.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst project1 = new openstack.identity.Project(\"project_1\", {});\nconst quota1 = new openstack.loadbalancer.Quota(\"quota_1\", {\n    healthMonitor: 10,\n    l7Policy: 11,\n    l7Rule: 12,\n    listener: 7,\n    loadbalancer: 6,\n    member: 8,\n    pool: 9,\n    projectId: project1.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nproject1 = openstack.identity.Project(\"project1\")\nquota1 = openstack.loadbalancer.Quota(\"quota1\",\n    health_monitor=10,\n    l7_policy=11,\n    l7_rule=12,\n    listener=7,\n    loadbalancer=6,\n    member=8,\n    pool=9,\n    project_id=project1.id)\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var project1 = new OpenStack.Identity.Project(\"project1\", new OpenStack.Identity.ProjectArgs\n        {\n        });\n        var quota1 = new OpenStack.LoadBalancer.Quota(\"quota1\", new OpenStack.LoadBalancer.QuotaArgs\n        {\n            HealthMonitor = 10,\n            L7Policy = 11,\n            L7Rule = 12,\n            Listener = 7,\n            Loadbalancer = 6,\n            Member = 8,\n            Pool = 9,\n            ProjectId = project1.Id,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/identity\"\n\t\"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/loadbalancer\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tproject1, err := identity.NewProject(ctx, \"project1\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = loadbalancer.NewQuota(ctx, \"quota1\", \u0026loadbalancer.QuotaArgs{\n\t\t\tHealthMonitor: pulumi.Int(10),\n\t\t\tL7Policy:      pulumi.Int(11),\n\t\t\tL7Rule:        pulumi.Int(12),\n\t\t\tListener:      pulumi.Int(7),\n\t\t\tLoadbalancer:  pulumi.Int(6),\n\t\t\tMember:        pulumi.Int(8),\n\t\t\tPool:          pulumi.Int(9),\n\t\t\tProjectId:     project1.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nQuotas can be imported using the `project_id/region_name`, where region_name is the one defined is the Openstack credentials that are in use. E.g.\n\n```sh\n $ pulumi import openstack:loadbalancer/quota:Quota quota_1 2a0f2240-c5e6-41de-896d-e80d97428d6b/region_1\n```\n\n ",
+            "properties": {
+                "healthMonitor": {
+                    "type": "integer",
+                    "description": "Quota value for health_monitors. Changing\nthis updates the existing quota. Omitting it sets it to 0.\n"
+                },
+                "l7Policy": {
+                    "type": "integer",
+                    "description": "Quota value for l7_policies. Changing this\nupdates the existing quota. Omitting it sets it to 0. Available in\nOctavia 2.19.\n"
+                },
+                "l7Rule": {
+                    "type": "integer",
+                    "description": "Quota value for l7_rules. Changing this\nupdates the existing quota. Omitting it sets it to 0. Available in\nOctavia 2.19.\n"
+                },
+                "listener": {
+                    "type": "integer",
+                    "description": "Quota value for listeners. Changing this updates\nthe existing quota. Omitting it sets it to 0.\n"
+                },
+                "loadbalancer": {
+                    "type": "integer",
+                    "description": "Quota value for loadbalancers. Changing this\nupdates the existing quota. Omitting it sets it to 0.\n"
+                },
+                "member": {
+                    "type": "integer",
+                    "description": "Quota value for members. Changing this updates\nthe existing quota. Omitting it sets it to 0.\n"
+                },
+                "pool": {
+                    "type": "integer",
+                    "description": "Quota value for pools. Changing this updates the\nthe existing quota. Omitting it sets it to 0.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "ID of the project to manage quotas. Changing this\ncreates a new quota.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "Region in which to manage quotas. Changing this\ncreates a new quota. If ommited, the region of the credentials is used.\n"
+                }
+            },
+            "required": [
+                "healthMonitor",
+                "l7Policy",
+                "l7Rule",
+                "listener",
+                "loadbalancer",
+                "member",
+                "pool",
+                "projectId",
+                "region"
+            ],
+            "inputProperties": {
+                "healthMonitor": {
+                    "type": "integer",
+                    "description": "Quota value for health_monitors. Changing\nthis updates the existing quota. Omitting it sets it to 0.\n"
+                },
+                "l7Policy": {
+                    "type": "integer",
+                    "description": "Quota value for l7_policies. Changing this\nupdates the existing quota. Omitting it sets it to 0. Available in\nOctavia 2.19.\n"
+                },
+                "l7Rule": {
+                    "type": "integer",
+                    "description": "Quota value for l7_rules. Changing this\nupdates the existing quota. Omitting it sets it to 0. Available in\nOctavia 2.19.\n"
+                },
+                "listener": {
+                    "type": "integer",
+                    "description": "Quota value for listeners. Changing this updates\nthe existing quota. Omitting it sets it to 0.\n"
+                },
+                "loadbalancer": {
+                    "type": "integer",
+                    "description": "Quota value for loadbalancers. Changing this\nupdates the existing quota. Omitting it sets it to 0.\n"
+                },
+                "member": {
+                    "type": "integer",
+                    "description": "Quota value for members. Changing this updates\nthe existing quota. Omitting it sets it to 0.\n"
+                },
+                "pool": {
+                    "type": "integer",
+                    "description": "Quota value for pools. Changing this updates the\nthe existing quota. Omitting it sets it to 0.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "ID of the project to manage quotas. Changing this\ncreates a new quota.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "Region in which to manage quotas. Changing this\ncreates a new quota. If ommited, the region of the credentials is used.\n"
+                }
+            },
+            "requiredInputs": [
+                "projectId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Quota resources.\n",
+                "properties": {
+                    "healthMonitor": {
+                        "type": "integer",
+                        "description": "Quota value for health_monitors. Changing\nthis updates the existing quota. Omitting it sets it to 0.\n"
+                    },
+                    "l7Policy": {
+                        "type": "integer",
+                        "description": "Quota value for l7_policies. Changing this\nupdates the existing quota. Omitting it sets it to 0. Available in\nOctavia 2.19.\n"
+                    },
+                    "l7Rule": {
+                        "type": "integer",
+                        "description": "Quota value for l7_rules. Changing this\nupdates the existing quota. Omitting it sets it to 0. Available in\nOctavia 2.19.\n"
+                    },
+                    "listener": {
+                        "type": "integer",
+                        "description": "Quota value for listeners. Changing this updates\nthe existing quota. Omitting it sets it to 0.\n"
+                    },
+                    "loadbalancer": {
+                        "type": "integer",
+                        "description": "Quota value for loadbalancers. Changing this\nupdates the existing quota. Omitting it sets it to 0.\n"
+                    },
+                    "member": {
+                        "type": "integer",
+                        "description": "Quota value for members. Changing this updates\nthe existing quota. Omitting it sets it to 0.\n"
+                    },
+                    "pool": {
+                        "type": "integer",
+                        "description": "Quota value for pools. Changing this updates the\nthe existing quota. Omitting it sets it to 0.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "ID of the project to manage quotas. Changing this\ncreates a new quota.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "Region in which to manage quotas. Changing this\ncreates a new quota. If ommited, the region of the credentials is used.\n"
                     }
                 },
                 "type": "object"
@@ -12958,7 +13214,7 @@
             }
         },
         "openstack:networking/quotaV2:QuotaV2": {
-            "description": "Manages a V2 networking quota resource within OpenStack.\n\n\u003e **Note:** This usually requires admin privileges.\n\n\u003e **Note:** This resource has a no-op deletion so no actual actions will be done against the OpenStack API\n    in case of delete call.\n\n\u003e **Note:** This resource has all-in creation so all optional quota arguments that were not specified are\n    created with zero value.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst project1 = new openstack.identity.Project(\"project1\", {});\nconst quota1 = new openstack.networking.QuotaV2(\"quota1\", {\n    projectId: project1.id,\n    floatingip: 10,\n    network: 4,\n    port: 100,\n    rbacPolicy: 10,\n    router: 4,\n    securityGroup: 10,\n    securityGroupRule: 100,\n    subnet: 8,\n    subnetpool: 2,\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nproject1 = openstack.identity.Project(\"project1\")\nquota1 = openstack.networking.QuotaV2(\"quota1\",\n    project_id=project1.id,\n    floatingip=10,\n    network=4,\n    port=100,\n    rbac_policy=10,\n    router=4,\n    security_group=10,\n    security_group_rule=100,\n    subnet=8,\n    subnetpool=2)\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var project1 = new OpenStack.Identity.Project(\"project1\", new OpenStack.Identity.ProjectArgs\n        {\n        });\n        var quota1 = new OpenStack.Networking.QuotaV2(\"quota1\", new OpenStack.Networking.QuotaV2Args\n        {\n            ProjectId = project1.Id,\n            Floatingip = 10,\n            Network = 4,\n            Port = 100,\n            RbacPolicy = 10,\n            Router = 4,\n            SecurityGroup = 10,\n            SecurityGroupRule = 100,\n            Subnet = 8,\n            Subnetpool = 2,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/identity\"\n\t\"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/networking\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tproject1, err := identity.NewProject(ctx, \"project1\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = networking.NewQuotaV2(ctx, \"quota1\", \u0026networking.QuotaV2Args{\n\t\t\tProjectId:         project1.ID(),\n\t\t\tFloatingip:        pulumi.Int(10),\n\t\t\tNetwork:           pulumi.Int(4),\n\t\t\tPort:              pulumi.Int(100),\n\t\t\tRbacPolicy:        pulumi.Int(10),\n\t\t\tRouter:            pulumi.Int(4),\n\t\t\tSecurityGroup:     pulumi.Int(10),\n\t\t\tSecurityGroupRule: pulumi.Int(100),\n\t\t\tSubnet:            pulumi.Int(8),\n\t\t\tSubnetpool:        pulumi.Int(2),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nQuotas can be imported using the `project_id`, e.g.\n\n```sh\n $ pulumi import openstack:networking/quotaV2:QuotaV2 quota_1 2a0f2240-c5e6-41de-896d-e80d97428d6b\n```\n\n ",
+            "description": "Manages a V2 networking quota resource within OpenStack.\n\n\u003e **Note:** This usually requires admin privileges.\n\n\u003e **Note:** This resource has a no-op deletion so no actual actions will be done against the OpenStack API\n    in case of delete call.\n\n\u003e **Note:** This resource has all-in creation so all optional quota arguments that were not specified are\n    created with zero value.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst project1 = new openstack.identity.Project(\"project1\", {});\nconst quota1 = new openstack.networking.QuotaV2(\"quota1\", {\n    projectId: project1.id,\n    floatingip: 10,\n    network: 4,\n    port: 100,\n    rbacPolicy: 10,\n    router: 4,\n    securityGroup: 10,\n    securityGroupRule: 100,\n    subnet: 8,\n    subnetpool: 2,\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nproject1 = openstack.identity.Project(\"project1\")\nquota1 = openstack.networking.QuotaV2(\"quota1\",\n    project_id=project1.id,\n    floatingip=10,\n    network=4,\n    port=100,\n    rbac_policy=10,\n    router=4,\n    security_group=10,\n    security_group_rule=100,\n    subnet=8,\n    subnetpool=2)\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var project1 = new OpenStack.Identity.Project(\"project1\", new OpenStack.Identity.ProjectArgs\n        {\n        });\n        var quota1 = new OpenStack.Networking.QuotaV2(\"quota1\", new OpenStack.Networking.QuotaV2Args\n        {\n            ProjectId = project1.Id,\n            Floatingip = 10,\n            Network = 4,\n            Port = 100,\n            RbacPolicy = 10,\n            Router = 4,\n            SecurityGroup = 10,\n            SecurityGroupRule = 100,\n            Subnet = 8,\n            Subnetpool = 2,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/identity\"\n\t\"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/networking\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tproject1, err := identity.NewProject(ctx, \"project1\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = networking.NewQuotaV2(ctx, \"quota1\", \u0026networking.QuotaV2Args{\n\t\t\tProjectId:         project1.ID(),\n\t\t\tFloatingip:        pulumi.Int(10),\n\t\t\tNetwork:           pulumi.Int(4),\n\t\t\tPort:              pulumi.Int(100),\n\t\t\tRbacPolicy:        pulumi.Int(10),\n\t\t\tRouter:            pulumi.Int(4),\n\t\t\tSecurityGroup:     pulumi.Int(10),\n\t\t\tSecurityGroupRule: pulumi.Int(100),\n\t\t\tSubnet:            pulumi.Int(8),\n\t\t\tSubnetpool:        pulumi.Int(2),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nQuotas can be imported using the `project_id/region_name`, e.g.\n\n```sh\n $ pulumi import openstack:networking/quotaV2:QuotaV2 quota_1 2a0f2240-c5e6-41de-896d-e80d97428d6b/region_1\n```\n\n ",
             "properties": {
                 "floatingip": {
                     "type": "integer",
@@ -18583,7 +18839,7 @@
             }
         },
         "openstack:identity/getAuthScope:getAuthScope": {
-            "description": "Use this data source to get authentication information about the current\nauth scope in use. This can be used as self-discovery or introspection of\nthe username or project name currently in use.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst scope = pulumi.output(openstack.identity.getAuthScope({\n    name: \"my_scope\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nscope = openstack.identity.get_auth_scope(name=\"my_scope\")\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var scope = Output.Create(OpenStack.Identity.GetAuthScope.InvokeAsync(new OpenStack.Identity.GetAuthScopeArgs\n        {\n            Name = \"my_scope\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/identity\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := identity.GetAuthScope(ctx, \u0026identity.GetAuthScopeArgs{\n\t\t\tName: \"my_scope\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Use this data source to get authentication information about the current\nauth scope in use. This can be used as self-discovery or introspection of\nthe username or project name currently in use as well as the service catalog.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst scope = pulumi.output(openstack.identity.getAuthScope({\n    name: \"my_scope\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nscope = openstack.identity.get_auth_scope(name=\"my_scope\")\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var scope = Output.Create(OpenStack.Identity.GetAuthScope.InvokeAsync(new OpenStack.Identity.GetAuthScopeArgs\n        {\n            Name = \"my_scope\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/identity\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := identity.GetAuthScope(ctx, \u0026identity.GetAuthScopeArgs{\n\t\t\tName: \"my_scope\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\nTo find the the public object storage endpoint for \"region1\" as listed in the\nservice catalog:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n\nconst objectStoreService = .filter(entry =\u003e entry.type == \"object-store\").map(entry =\u003e entry)[0];\nconst objectStoreEndpoint = .filter(endpoint =\u003e endpoint[\"interface\"] == \"public\" \u0026\u0026 endpoint.region == \"region1\").map(endpoint =\u003e endpoint)[0];\nconst objectStorePublicUrl = objectStoreEndpoint.url;\n```\n```python\nimport pulumi\n\nobject_store_service = [entry for entry in data[\"openstack_identity_auth_scope_v3\"][\"scope\"][\"service_catalog\"] if entry[\"type\"] == \"object-store\"][0]\nobject_store_endpoint = [endpoint for endpoint in object_store_service[\"endpoints\"] if endpoint[\"interface\"] == \"public\" and endpoint[\"region\"] == \"region1\"][0]\nobject_store_public_url = object_store_endpoint[\"url\"]\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getAuthScope.\n",
                 "properties": {
@@ -18617,7 +18873,8 @@
                         "description": "The provider-assigned unique ID for this managed resource.\n"
                     },
                     "name": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The name of the service.\n"
                     },
                     "projectDomainId": {
                         "type": "string",
@@ -18636,7 +18893,8 @@
                         "description": "The project name of the scope.\n"
                     },
                     "region": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The region of the endpoint.\n"
                     },
                     "roles": {
                         "type": "array",
@@ -18644,6 +18902,13 @@
                             "$ref": "#/types/openstack:identity/getAuthScopeRole:getAuthScopeRole"
                         },
                         "description": "A list of roles in the current scope. See reference below.\n"
+                    },
+                    "serviceCatalogs": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/openstack:identity/getAuthScopeServiceCatalog:getAuthScopeServiceCatalog"
+                        },
+                        "description": "A list of service catalog entries returned with the token.\n"
                     },
                     "userDomainId": {
                         "type": "string",
@@ -18673,6 +18938,7 @@
                     "projectName",
                     "region",
                     "roles",
+                    "serviceCatalogs",
                     "userDomainId",
                     "userDomainName",
                     "userId",

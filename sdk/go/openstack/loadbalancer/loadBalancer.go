@@ -81,7 +81,8 @@ type LoadBalancer struct {
 	// are shared).  Changing this creates a new loadbalancer.
 	// It is available only for Octavia.
 	VipNetworkId pulumi.StringOutput `pulumi:"vipNetworkId"`
-	// The Port ID of the Load Balancer IP.
+	// The port UUID that the loadbalancer will use.
+	// Changing this creates a new loadbalancer. It is available only for Octavia.
 	VipPortId pulumi.StringOutput `pulumi:"vipPortId"`
 	// The subnet on which to allocate the
 	// Loadbalancer's address. A tenant can only create Loadbalancers on networks
@@ -156,7 +157,8 @@ type loadBalancerState struct {
 	// are shared).  Changing this creates a new loadbalancer.
 	// It is available only for Octavia.
 	VipNetworkId *string `pulumi:"vipNetworkId"`
-	// The Port ID of the Load Balancer IP.
+	// The port UUID that the loadbalancer will use.
+	// Changing this creates a new loadbalancer. It is available only for Octavia.
 	VipPortId *string `pulumi:"vipPortId"`
 	// The subnet on which to allocate the
 	// Loadbalancer's address. A tenant can only create Loadbalancers on networks
@@ -203,7 +205,8 @@ type LoadBalancerState struct {
 	// are shared).  Changing this creates a new loadbalancer.
 	// It is available only for Octavia.
 	VipNetworkId pulumi.StringPtrInput
-	// The Port ID of the Load Balancer IP.
+	// The port UUID that the loadbalancer will use.
+	// Changing this creates a new loadbalancer. It is available only for Octavia.
 	VipPortId pulumi.StringPtrInput
 	// The subnet on which to allocate the
 	// Loadbalancer's address. A tenant can only create Loadbalancers on networks
@@ -254,6 +257,9 @@ type loadBalancerArgs struct {
 	// are shared).  Changing this creates a new loadbalancer.
 	// It is available only for Octavia.
 	VipNetworkId *string `pulumi:"vipNetworkId"`
+	// The port UUID that the loadbalancer will use.
+	// Changing this creates a new loadbalancer. It is available only for Octavia.
+	VipPortId *string `pulumi:"vipPortId"`
 	// The subnet on which to allocate the
 	// Loadbalancer's address. A tenant can only create Loadbalancers on networks
 	// authorized by policy (e.g. networks that belong to them or networks that
@@ -300,6 +306,9 @@ type LoadBalancerArgs struct {
 	// are shared).  Changing this creates a new loadbalancer.
 	// It is available only for Octavia.
 	VipNetworkId pulumi.StringPtrInput
+	// The port UUID that the loadbalancer will use.
+	// Changing this creates a new loadbalancer. It is available only for Octavia.
+	VipPortId pulumi.StringPtrInput
 	// The subnet on which to allocate the
 	// Loadbalancer's address. A tenant can only create Loadbalancers on networks
 	// authorized by policy (e.g. networks that belong to them or networks that

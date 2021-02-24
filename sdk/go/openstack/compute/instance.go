@@ -98,10 +98,11 @@ type Instance struct {
 	// the instance should be launched. The available hints are described below.
 	SchedulerHints InstanceSchedulerHintArrayOutput `pulumi:"schedulerHints"`
 	// An array of one or more security group names
-	// or ids to associate with the server. Changing this results in adding/removing
+	// to associate with the server. Changing this results in adding/removing
 	// security groups from the existing server. *Note*: When attaching the
 	// instance to networks using Ports, place the security groups on the Port
-	// and not the instance.
+	// and not the instance. *Note*: Names should be used and not ids, as ids
+	// trigger unnecessary updates.
 	SecurityGroups pulumi.StringArrayOutput `pulumi:"securityGroups"`
 	// Whether to try stop instance gracefully
 	// before destroying it, thus giving chance for guest OS daemons to stop correctly.
@@ -232,10 +233,11 @@ type instanceState struct {
 	// the instance should be launched. The available hints are described below.
 	SchedulerHints []InstanceSchedulerHint `pulumi:"schedulerHints"`
 	// An array of one or more security group names
-	// or ids to associate with the server. Changing this results in adding/removing
+	// to associate with the server. Changing this results in adding/removing
 	// security groups from the existing server. *Note*: When attaching the
 	// instance to networks using Ports, place the security groups on the Port
-	// and not the instance.
+	// and not the instance. *Note*: Names should be used and not ids, as ids
+	// trigger unnecessary updates.
 	SecurityGroups []string `pulumi:"securityGroups"`
 	// Whether to try stop instance gracefully
 	// before destroying it, thus giving chance for guest OS daemons to stop correctly.
@@ -338,10 +340,11 @@ type InstanceState struct {
 	// the instance should be launched. The available hints are described below.
 	SchedulerHints InstanceSchedulerHintArrayInput
 	// An array of one or more security group names
-	// or ids to associate with the server. Changing this results in adding/removing
+	// to associate with the server. Changing this results in adding/removing
 	// security groups from the existing server. *Note*: When attaching the
 	// instance to networks using Ports, place the security groups on the Port
-	// and not the instance.
+	// and not the instance. *Note*: Names should be used and not ids, as ids
+	// trigger unnecessary updates.
 	SecurityGroups pulumi.StringArrayInput
 	// Whether to try stop instance gracefully
 	// before destroying it, thus giving chance for guest OS daemons to stop correctly.
@@ -444,10 +447,11 @@ type instanceArgs struct {
 	// the instance should be launched. The available hints are described below.
 	SchedulerHints []InstanceSchedulerHint `pulumi:"schedulerHints"`
 	// An array of one or more security group names
-	// or ids to associate with the server. Changing this results in adding/removing
+	// to associate with the server. Changing this results in adding/removing
 	// security groups from the existing server. *Note*: When attaching the
 	// instance to networks using Ports, place the security groups on the Port
-	// and not the instance.
+	// and not the instance. *Note*: Names should be used and not ids, as ids
+	// trigger unnecessary updates.
 	SecurityGroups []string `pulumi:"securityGroups"`
 	// Whether to try stop instance gracefully
 	// before destroying it, thus giving chance for guest OS daemons to stop correctly.
@@ -547,10 +551,11 @@ type InstanceArgs struct {
 	// the instance should be launched. The available hints are described below.
 	SchedulerHints InstanceSchedulerHintArrayInput
 	// An array of one or more security group names
-	// or ids to associate with the server. Changing this results in adding/removing
+	// to associate with the server. Changing this results in adding/removing
 	// security groups from the existing server. *Note*: When attaching the
 	// instance to networks using Ports, place the security groups on the Port
-	// and not the instance.
+	// and not the instance. *Note*: Names should be used and not ids, as ids
+	// trigger unnecessary updates.
 	SecurityGroups pulumi.StringArrayInput
 	// Whether to try stop instance gracefully
 	// before destroying it, thus giving chance for guest OS daemons to stop correctly.

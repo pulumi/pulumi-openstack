@@ -163,10 +163,11 @@ export class Instance extends pulumi.CustomResource {
     public readonly schedulerHints!: pulumi.Output<outputs.compute.InstanceSchedulerHint[] | undefined>;
     /**
      * An array of one or more security group names
-     * or ids to associate with the server. Changing this results in adding/removing
+     * to associate with the server. Changing this results in adding/removing
      * security groups from the existing server. *Note*: When attaching the
      * instance to networks using Ports, place the security groups on the Port
-     * and not the instance.
+     * and not the instance. *Note*: Names should be used and not ids, as ids
+     * trigger unnecessary updates.
      */
     public readonly securityGroups!: pulumi.Output<string[]>;
     /**
@@ -404,10 +405,11 @@ export interface InstanceState {
     readonly schedulerHints?: pulumi.Input<pulumi.Input<inputs.compute.InstanceSchedulerHint>[]>;
     /**
      * An array of one or more security group names
-     * or ids to associate with the server. Changing this results in adding/removing
+     * to associate with the server. Changing this results in adding/removing
      * security groups from the existing server. *Note*: When attaching the
      * instance to networks using Ports, place the security groups on the Port
-     * and not the instance.
+     * and not the instance. *Note*: Names should be used and not ids, as ids
+     * trigger unnecessary updates.
      */
     readonly securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -561,10 +563,11 @@ export interface InstanceArgs {
     readonly schedulerHints?: pulumi.Input<pulumi.Input<inputs.compute.InstanceSchedulerHint>[]>;
     /**
      * An array of one or more security group names
-     * or ids to associate with the server. Changing this results in adding/removing
+     * to associate with the server. Changing this results in adding/removing
      * security groups from the existing server. *Note*: When attaching the
      * instance to networks using Ports, place the security groups on the Port
-     * and not the instance.
+     * and not the instance. *Note*: Names should be used and not ids, as ids
+     * trigger unnecessary updates.
      */
     readonly securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
     /**

@@ -370,6 +370,272 @@ func (o GetAuthScopeRoleArrayOutput) Index(i pulumi.IntInput) GetAuthScopeRoleOu
 	}).(GetAuthScopeRoleOutput)
 }
 
+type GetAuthScopeServiceCatalog struct {
+	// A list of endpoints for the service.
+	Endpoints []GetAuthScopeServiceCatalogEndpoint `pulumi:"endpoints"`
+	// The ID of the endpoint.
+	Id string `pulumi:"id"`
+	// The name of the scope. This is an arbitrary name which is
+	// only used as a unique identifier so an actual token isn't used as the ID.
+	Name string `pulumi:"name"`
+	// The type of the service.
+	Type string `pulumi:"type"`
+}
+
+// GetAuthScopeServiceCatalogInput is an input type that accepts GetAuthScopeServiceCatalogArgs and GetAuthScopeServiceCatalogOutput values.
+// You can construct a concrete instance of `GetAuthScopeServiceCatalogInput` via:
+//
+//          GetAuthScopeServiceCatalogArgs{...}
+type GetAuthScopeServiceCatalogInput interface {
+	pulumi.Input
+
+	ToGetAuthScopeServiceCatalogOutput() GetAuthScopeServiceCatalogOutput
+	ToGetAuthScopeServiceCatalogOutputWithContext(context.Context) GetAuthScopeServiceCatalogOutput
+}
+
+type GetAuthScopeServiceCatalogArgs struct {
+	// A list of endpoints for the service.
+	Endpoints GetAuthScopeServiceCatalogEndpointArrayInput `pulumi:"endpoints"`
+	// The ID of the endpoint.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The name of the scope. This is an arbitrary name which is
+	// only used as a unique identifier so an actual token isn't used as the ID.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The type of the service.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetAuthScopeServiceCatalogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAuthScopeServiceCatalog)(nil)).Elem()
+}
+
+func (i GetAuthScopeServiceCatalogArgs) ToGetAuthScopeServiceCatalogOutput() GetAuthScopeServiceCatalogOutput {
+	return i.ToGetAuthScopeServiceCatalogOutputWithContext(context.Background())
+}
+
+func (i GetAuthScopeServiceCatalogArgs) ToGetAuthScopeServiceCatalogOutputWithContext(ctx context.Context) GetAuthScopeServiceCatalogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAuthScopeServiceCatalogOutput)
+}
+
+// GetAuthScopeServiceCatalogArrayInput is an input type that accepts GetAuthScopeServiceCatalogArray and GetAuthScopeServiceCatalogArrayOutput values.
+// You can construct a concrete instance of `GetAuthScopeServiceCatalogArrayInput` via:
+//
+//          GetAuthScopeServiceCatalogArray{ GetAuthScopeServiceCatalogArgs{...} }
+type GetAuthScopeServiceCatalogArrayInput interface {
+	pulumi.Input
+
+	ToGetAuthScopeServiceCatalogArrayOutput() GetAuthScopeServiceCatalogArrayOutput
+	ToGetAuthScopeServiceCatalogArrayOutputWithContext(context.Context) GetAuthScopeServiceCatalogArrayOutput
+}
+
+type GetAuthScopeServiceCatalogArray []GetAuthScopeServiceCatalogInput
+
+func (GetAuthScopeServiceCatalogArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAuthScopeServiceCatalog)(nil)).Elem()
+}
+
+func (i GetAuthScopeServiceCatalogArray) ToGetAuthScopeServiceCatalogArrayOutput() GetAuthScopeServiceCatalogArrayOutput {
+	return i.ToGetAuthScopeServiceCatalogArrayOutputWithContext(context.Background())
+}
+
+func (i GetAuthScopeServiceCatalogArray) ToGetAuthScopeServiceCatalogArrayOutputWithContext(ctx context.Context) GetAuthScopeServiceCatalogArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAuthScopeServiceCatalogArrayOutput)
+}
+
+type GetAuthScopeServiceCatalogOutput struct{ *pulumi.OutputState }
+
+func (GetAuthScopeServiceCatalogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAuthScopeServiceCatalog)(nil)).Elem()
+}
+
+func (o GetAuthScopeServiceCatalogOutput) ToGetAuthScopeServiceCatalogOutput() GetAuthScopeServiceCatalogOutput {
+	return o
+}
+
+func (o GetAuthScopeServiceCatalogOutput) ToGetAuthScopeServiceCatalogOutputWithContext(ctx context.Context) GetAuthScopeServiceCatalogOutput {
+	return o
+}
+
+// A list of endpoints for the service.
+func (o GetAuthScopeServiceCatalogOutput) Endpoints() GetAuthScopeServiceCatalogEndpointArrayOutput {
+	return o.ApplyT(func(v GetAuthScopeServiceCatalog) []GetAuthScopeServiceCatalogEndpoint { return v.Endpoints }).(GetAuthScopeServiceCatalogEndpointArrayOutput)
+}
+
+// The ID of the endpoint.
+func (o GetAuthScopeServiceCatalogOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAuthScopeServiceCatalog) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the scope. This is an arbitrary name which is
+// only used as a unique identifier so an actual token isn't used as the ID.
+func (o GetAuthScopeServiceCatalogOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAuthScopeServiceCatalog) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The type of the service.
+func (o GetAuthScopeServiceCatalogOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAuthScopeServiceCatalog) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetAuthScopeServiceCatalogArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAuthScopeServiceCatalogArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAuthScopeServiceCatalog)(nil)).Elem()
+}
+
+func (o GetAuthScopeServiceCatalogArrayOutput) ToGetAuthScopeServiceCatalogArrayOutput() GetAuthScopeServiceCatalogArrayOutput {
+	return o
+}
+
+func (o GetAuthScopeServiceCatalogArrayOutput) ToGetAuthScopeServiceCatalogArrayOutputWithContext(ctx context.Context) GetAuthScopeServiceCatalogArrayOutput {
+	return o
+}
+
+func (o GetAuthScopeServiceCatalogArrayOutput) Index(i pulumi.IntInput) GetAuthScopeServiceCatalogOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAuthScopeServiceCatalog {
+		return vs[0].([]GetAuthScopeServiceCatalog)[vs[1].(int)]
+	}).(GetAuthScopeServiceCatalogOutput)
+}
+
+type GetAuthScopeServiceCatalogEndpoint struct {
+	// The ID of the endpoint.
+	Id string `pulumi:"id"`
+	// The interface of the endpoint.
+	Interface string `pulumi:"interface"`
+	// The region in which to obtain the V3 Identity client.
+	// A Identity client is needed to retrieve tokens IDs. If omitted, the
+	// `region` argument of the provider is used.
+	Region string `pulumi:"region"`
+	// The region ID of the endpoint.
+	RegionId string `pulumi:"regionId"`
+	// The URL of the endpoint.
+	Url string `pulumi:"url"`
+}
+
+// GetAuthScopeServiceCatalogEndpointInput is an input type that accepts GetAuthScopeServiceCatalogEndpointArgs and GetAuthScopeServiceCatalogEndpointOutput values.
+// You can construct a concrete instance of `GetAuthScopeServiceCatalogEndpointInput` via:
+//
+//          GetAuthScopeServiceCatalogEndpointArgs{...}
+type GetAuthScopeServiceCatalogEndpointInput interface {
+	pulumi.Input
+
+	ToGetAuthScopeServiceCatalogEndpointOutput() GetAuthScopeServiceCatalogEndpointOutput
+	ToGetAuthScopeServiceCatalogEndpointOutputWithContext(context.Context) GetAuthScopeServiceCatalogEndpointOutput
+}
+
+type GetAuthScopeServiceCatalogEndpointArgs struct {
+	// The ID of the endpoint.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The interface of the endpoint.
+	Interface pulumi.StringInput `pulumi:"interface"`
+	// The region in which to obtain the V3 Identity client.
+	// A Identity client is needed to retrieve tokens IDs. If omitted, the
+	// `region` argument of the provider is used.
+	Region pulumi.StringInput `pulumi:"region"`
+	// The region ID of the endpoint.
+	RegionId pulumi.StringInput `pulumi:"regionId"`
+	// The URL of the endpoint.
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (GetAuthScopeServiceCatalogEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAuthScopeServiceCatalogEndpoint)(nil)).Elem()
+}
+
+func (i GetAuthScopeServiceCatalogEndpointArgs) ToGetAuthScopeServiceCatalogEndpointOutput() GetAuthScopeServiceCatalogEndpointOutput {
+	return i.ToGetAuthScopeServiceCatalogEndpointOutputWithContext(context.Background())
+}
+
+func (i GetAuthScopeServiceCatalogEndpointArgs) ToGetAuthScopeServiceCatalogEndpointOutputWithContext(ctx context.Context) GetAuthScopeServiceCatalogEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAuthScopeServiceCatalogEndpointOutput)
+}
+
+// GetAuthScopeServiceCatalogEndpointArrayInput is an input type that accepts GetAuthScopeServiceCatalogEndpointArray and GetAuthScopeServiceCatalogEndpointArrayOutput values.
+// You can construct a concrete instance of `GetAuthScopeServiceCatalogEndpointArrayInput` via:
+//
+//          GetAuthScopeServiceCatalogEndpointArray{ GetAuthScopeServiceCatalogEndpointArgs{...} }
+type GetAuthScopeServiceCatalogEndpointArrayInput interface {
+	pulumi.Input
+
+	ToGetAuthScopeServiceCatalogEndpointArrayOutput() GetAuthScopeServiceCatalogEndpointArrayOutput
+	ToGetAuthScopeServiceCatalogEndpointArrayOutputWithContext(context.Context) GetAuthScopeServiceCatalogEndpointArrayOutput
+}
+
+type GetAuthScopeServiceCatalogEndpointArray []GetAuthScopeServiceCatalogEndpointInput
+
+func (GetAuthScopeServiceCatalogEndpointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAuthScopeServiceCatalogEndpoint)(nil)).Elem()
+}
+
+func (i GetAuthScopeServiceCatalogEndpointArray) ToGetAuthScopeServiceCatalogEndpointArrayOutput() GetAuthScopeServiceCatalogEndpointArrayOutput {
+	return i.ToGetAuthScopeServiceCatalogEndpointArrayOutputWithContext(context.Background())
+}
+
+func (i GetAuthScopeServiceCatalogEndpointArray) ToGetAuthScopeServiceCatalogEndpointArrayOutputWithContext(ctx context.Context) GetAuthScopeServiceCatalogEndpointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAuthScopeServiceCatalogEndpointArrayOutput)
+}
+
+type GetAuthScopeServiceCatalogEndpointOutput struct{ *pulumi.OutputState }
+
+func (GetAuthScopeServiceCatalogEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAuthScopeServiceCatalogEndpoint)(nil)).Elem()
+}
+
+func (o GetAuthScopeServiceCatalogEndpointOutput) ToGetAuthScopeServiceCatalogEndpointOutput() GetAuthScopeServiceCatalogEndpointOutput {
+	return o
+}
+
+func (o GetAuthScopeServiceCatalogEndpointOutput) ToGetAuthScopeServiceCatalogEndpointOutputWithContext(ctx context.Context) GetAuthScopeServiceCatalogEndpointOutput {
+	return o
+}
+
+// The ID of the endpoint.
+func (o GetAuthScopeServiceCatalogEndpointOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAuthScopeServiceCatalogEndpoint) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The interface of the endpoint.
+func (o GetAuthScopeServiceCatalogEndpointOutput) Interface() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAuthScopeServiceCatalogEndpoint) string { return v.Interface }).(pulumi.StringOutput)
+}
+
+// The region in which to obtain the V3 Identity client.
+// A Identity client is needed to retrieve tokens IDs. If omitted, the
+// `region` argument of the provider is used.
+func (o GetAuthScopeServiceCatalogEndpointOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAuthScopeServiceCatalogEndpoint) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// The region ID of the endpoint.
+func (o GetAuthScopeServiceCatalogEndpointOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAuthScopeServiceCatalogEndpoint) string { return v.RegionId }).(pulumi.StringOutput)
+}
+
+// The URL of the endpoint.
+func (o GetAuthScopeServiceCatalogEndpointOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAuthScopeServiceCatalogEndpoint) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type GetAuthScopeServiceCatalogEndpointArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAuthScopeServiceCatalogEndpointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAuthScopeServiceCatalogEndpoint)(nil)).Elem()
+}
+
+func (o GetAuthScopeServiceCatalogEndpointArrayOutput) ToGetAuthScopeServiceCatalogEndpointArrayOutput() GetAuthScopeServiceCatalogEndpointArrayOutput {
+	return o
+}
+
+func (o GetAuthScopeServiceCatalogEndpointArrayOutput) ToGetAuthScopeServiceCatalogEndpointArrayOutputWithContext(ctx context.Context) GetAuthScopeServiceCatalogEndpointArrayOutput {
+	return o
+}
+
+func (o GetAuthScopeServiceCatalogEndpointArrayOutput) Index(i pulumi.IntInput) GetAuthScopeServiceCatalogEndpointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAuthScopeServiceCatalogEndpoint {
+		return vs[0].([]GetAuthScopeServiceCatalogEndpoint)[vs[1].(int)]
+	}).(GetAuthScopeServiceCatalogEndpointOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ApplicationCredentialAccessRuleOutput{})
 	pulumi.RegisterOutputType(ApplicationCredentialAccessRuleArrayOutput{})
@@ -377,4 +643,8 @@ func init() {
 	pulumi.RegisterOutputType(UserMultiFactorAuthRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetAuthScopeRoleOutput{})
 	pulumi.RegisterOutputType(GetAuthScopeRoleArrayOutput{})
+	pulumi.RegisterOutputType(GetAuthScopeServiceCatalogOutput{})
+	pulumi.RegisterOutputType(GetAuthScopeServiceCatalogArrayOutput{})
+	pulumi.RegisterOutputType(GetAuthScopeServiceCatalogEndpointOutput{})
+	pulumi.RegisterOutputType(GetAuthScopeServiceCatalogEndpointArrayOutput{})
 }

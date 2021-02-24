@@ -240,6 +240,7 @@ func Provider() tfbridge.ProviderInfo {
 			"openstack_lb_pool_v2":         {Tok: openstackResource(lbMod, "Pool")},
 			"openstack_lb_member_v2":       {Tok: openstackResource(lbMod, "Member")},
 			"openstack_lb_monitor_v2":      {Tok: openstackResource(lbMod, "Monitor")},
+			"openstack_lb_quota_v2":        {Tok: openstackResource(lbMod, "Quota")},
 			"openstack_lb_members_v2": {
 				Tok: openstackResource(lbMod, "Members"),
 				Fields: map[string]*tfbridge.SchemaInfo{

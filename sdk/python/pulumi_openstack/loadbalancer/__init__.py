@@ -14,6 +14,7 @@ from .monitor import *
 from .monitor_v1 import *
 from .pool import *
 from .pool_v1 import *
+from .quota import *
 from .vip import *
 from ._inputs import *
 from . import outputs
@@ -52,6 +53,8 @@ def _register_module():
                 return Pool(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "openstack:loadbalancer/poolV1:PoolV1":
                 return PoolV1(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "openstack:loadbalancer/quota:Quota":
+                return Quota(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "openstack:loadbalancer/vip:Vip":
                 return Vip(name, pulumi.ResourceOptions(urn=urn))
             else:
@@ -70,6 +73,7 @@ def _register_module():
     pulumi.runtime.register_resource_module("openstack", "loadbalancer/monitorV1", _module_instance)
     pulumi.runtime.register_resource_module("openstack", "loadbalancer/pool", _module_instance)
     pulumi.runtime.register_resource_module("openstack", "loadbalancer/poolV1", _module_instance)
+    pulumi.runtime.register_resource_module("openstack", "loadbalancer/quota", _module_instance)
     pulumi.runtime.register_resource_module("openstack", "loadbalancer/vip", _module_instance)
 
 _register_module()

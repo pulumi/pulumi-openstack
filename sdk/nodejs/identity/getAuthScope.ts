@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
 /**
  * Use this data source to get authentication information about the current
  * auth scope in use. This can be used as self-discovery or introspection of
- * the username or project name currently in use.
+ * the username or project name currently in use as well as the service catalog.
  *
  * ## Example Usage
  *
@@ -19,6 +19,17 @@ import * as utilities from "../utilities";
  * const scope = pulumi.output(openstack.identity.getAuthScope({
  *     name: "my_scope",
  * }, { async: true }));
+ * ```
+ *
+ * To find the the public object storage endpoint for "region1" as listed in the
+ * service catalog:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ *
+ * const objectStoreService = .filter(entry => entry.type == "object-store").map(entry => entry)[0];
+ * const objectStoreEndpoint = .filter(endpoint => endpoint["interface"] == "public" && endpoint.region == "region1").map(endpoint => endpoint)[0];
+ * const objectStorePublicUrl = objectStoreEndpoint.url;
  * ```
  */
 export function getAuthScope(args: GetAuthScopeArgs, opts?: pulumi.InvokeOptions): Promise<GetAuthScopeResult> {
@@ -68,6 +79,9 @@ export interface GetAuthScopeResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The name of the service.
+     */
     readonly name: string;
     /**
      * The domain ID of the project.
@@ -85,11 +99,18 @@ export interface GetAuthScopeResult {
      * The project name of the scope.
      */
     readonly projectName: string;
+    /**
+     * The region of the endpoint.
+     */
     readonly region: string;
     /**
      * A list of roles in the current scope. See reference below.
      */
     readonly roles: outputs.identity.GetAuthScopeRole[];
+    /**
+     * A list of service catalog entries returned with the token.
+     */
+    readonly serviceCatalogs: outputs.identity.GetAuthScopeServiceCatalog[];
     /**
      * The domain ID of the user.
      */

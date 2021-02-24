@@ -110,10 +110,11 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceSchedulerHintArgs']]]] scheduler_hints: Provide the Nova scheduler with hints on how
                the instance should be launched. The available hints are described below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: An array of one or more security group names
-               or ids to associate with the server. Changing this results in adding/removing
+               to associate with the server. Changing this results in adding/removing
                security groups from the existing server. *Note*: When attaching the
                instance to networks using Ports, place the security groups on the Port
-               and not the instance.
+               and not the instance. *Note*: Names should be used and not ids, as ids
+               trigger unnecessary updates.
         :param pulumi.Input[bool] stop_before_destroy: Whether to try stop instance gracefully
                before destroying it, thus giving chance for guest OS daemons to stop correctly.
                If instance doesn't stop within timeout, it will be destroyed anyway.
@@ -276,10 +277,11 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceSchedulerHintArgs']]]] scheduler_hints: Provide the Nova scheduler with hints on how
                the instance should be launched. The available hints are described below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: An array of one or more security group names
-               or ids to associate with the server. Changing this results in adding/removing
+               to associate with the server. Changing this results in adding/removing
                security groups from the existing server. *Note*: When attaching the
                instance to networks using Ports, place the security groups on the Port
-               and not the instance.
+               and not the instance. *Note*: Names should be used and not ids, as ids
+               trigger unnecessary updates.
         :param pulumi.Input[bool] stop_before_destroy: Whether to try stop instance gracefully
                before destroying it, thus giving chance for guest OS daemons to stop correctly.
                If instance doesn't stop within timeout, it will be destroyed anyway.
@@ -549,10 +551,11 @@ class Instance(pulumi.CustomResource):
     def security_groups(self) -> pulumi.Output[Sequence[str]]:
         """
         An array of one or more security group names
-        or ids to associate with the server. Changing this results in adding/removing
+        to associate with the server. Changing this results in adding/removing
         security groups from the existing server. *Note*: When attaching the
         instance to networks using Ports, place the security groups on the Port
-        and not the instance.
+        and not the instance. *Note*: Names should be used and not ids, as ids
+        trigger unnecessary updates.
         """
         return pulumi.get(self, "security_groups")
 
