@@ -33,6 +33,7 @@ export function getImage(args?: GetImageArgs, opts?: pulumi.InvokeOptions): Prom
         opts.version = utilities.getVersion();
     }
     return pulumi.runtime.invoke("openstack:images/getImage:getImage", {
+        "hidden": args.hidden,
         "memberStatus": args.memberStatus,
         "mostRecent": args.mostRecent,
         "name": args.name,
@@ -52,6 +53,10 @@ export function getImage(args?: GetImageArgs, opts?: pulumi.InvokeOptions): Prom
  * A collection of arguments for invoking getImage.
  */
 export interface GetImageArgs {
+    /**
+     * Whether or not the image is hidden from public list.
+     */
+    readonly hidden?: boolean;
     /**
      * The status of the image. Must be one of
      * "accepted", "pending", "rejected", or "all".
@@ -133,6 +138,7 @@ export interface GetImageResult {
      * location of the image or the path to retrieve it.
      */
     readonly file: string;
+    readonly hidden?: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */

@@ -50,6 +50,12 @@ namespace Pulumi.OpenStack.Images
     public sealed class GetImageArgs : Pulumi.InvokeArgs
     {
         /// <summary>
+        /// Whether or not the image is hidden from public list.
+        /// </summary>
+        [Input("hidden")]
+        public bool? Hidden { get; set; }
+
+        /// <summary>
         /// The status of the image. Must be one of
         /// "accepted", "pending", "rejected", or "all".
         /// </summary>
@@ -163,6 +169,7 @@ namespace Pulumi.OpenStack.Images
         /// location of the image or the path to retrieve it.
         /// </summary>
         public readonly string File;
+        public readonly bool? Hidden;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -230,6 +237,8 @@ namespace Pulumi.OpenStack.Images
 
             string file,
 
+            bool? hidden,
+
             string id,
 
             string? memberStatus,
@@ -277,6 +286,7 @@ namespace Pulumi.OpenStack.Images
             CreatedAt = createdAt;
             DiskFormat = diskFormat;
             File = file;
+            Hidden = hidden;
             Id = id;
             MemberStatus = memberStatus;
             Metadata = metadata;

@@ -19,7 +19,7 @@ import (
 //     in case of delete call.
 //
 // > **Note:** This resource has all-in creation so all optional quota arguments that were not specified are
-//     created with zero value.
+//     created with zero value. This excludes volume type quota.
 //
 // ## Example Usage
 //
@@ -47,6 +47,11 @@ import (
 // 			Backups:            pulumi.Int(4),
 // 			BackupGigabytes:    pulumi.Int(10),
 // 			Groups:             pulumi.Int(100),
+// 			VolumeTypeQuota: pulumi.Float64Map{
+// 				"volumes_ssd":   pulumi.Float64(30),
+// 				"gigabytes_ssd": pulumi.Float64(500),
+// 				"snapshots_ssd": pulumi.Float64(10),
+// 			},
 // 		})
 // 		if err != nil {
 // 			return err
@@ -58,10 +63,10 @@ import (
 //
 // ## Import
 //
-// Quotasets can be imported using the `project_id`, e.g.
+// Quotasets can be imported using the `project_id/region`, e.g.
 //
 // ```sh
-//  $ pulumi import openstack:blockstorage/quoteSetV2:QuoteSetV2 quotaset_1 2a0f2240-c5e6-41de-896d-e80d97428d6b
+//  $ pulumi import openstack:blockstorage/quoteSetV2:QuoteSetV2 quotaset_1 2a0f2240-c5e6-41de-896d-e80d97428d6b/region_1
 // ```
 type QuoteSetV2 struct {
 	pulumi.CustomResourceState
@@ -91,6 +96,10 @@ type QuoteSetV2 struct {
 	// Quota value for snapshots. Changing this updates the
 	// existing quotaset.
 	Snapshots pulumi.IntOutput `pulumi:"snapshots"`
+	// Key/Value pairs for setting quota for
+	// volumes types. Possible keys are `snapshots_<volume_type_name>`,
+	// `volumes_<volume_type_name>` and `gigabytes_<volume_type_name>`.
+	VolumeTypeQuota pulumi.MapOutput `pulumi:"volumeTypeQuota"`
 	// Quota value for volumes. Changing this updates the
 	// existing quotaset.
 	Volumes pulumi.IntOutput `pulumi:"volumes"`
@@ -153,6 +162,10 @@ type quoteSetV2State struct {
 	// Quota value for snapshots. Changing this updates the
 	// existing quotaset.
 	Snapshots *int `pulumi:"snapshots"`
+	// Key/Value pairs for setting quota for
+	// volumes types. Possible keys are `snapshots_<volume_type_name>`,
+	// `volumes_<volume_type_name>` and `gigabytes_<volume_type_name>`.
+	VolumeTypeQuota map[string]interface{} `pulumi:"volumeTypeQuota"`
 	// Quota value for volumes. Changing this updates the
 	// existing quotaset.
 	Volumes *int `pulumi:"volumes"`
@@ -184,6 +197,10 @@ type QuoteSetV2State struct {
 	// Quota value for snapshots. Changing this updates the
 	// existing quotaset.
 	Snapshots pulumi.IntPtrInput
+	// Key/Value pairs for setting quota for
+	// volumes types. Possible keys are `snapshots_<volume_type_name>`,
+	// `volumes_<volume_type_name>` and `gigabytes_<volume_type_name>`.
+	VolumeTypeQuota pulumi.MapInput
 	// Quota value for volumes. Changing this updates the
 	// existing quotaset.
 	Volumes pulumi.IntPtrInput
@@ -219,6 +236,10 @@ type quoteSetV2Args struct {
 	// Quota value for snapshots. Changing this updates the
 	// existing quotaset.
 	Snapshots *int `pulumi:"snapshots"`
+	// Key/Value pairs for setting quota for
+	// volumes types. Possible keys are `snapshots_<volume_type_name>`,
+	// `volumes_<volume_type_name>` and `gigabytes_<volume_type_name>`.
+	VolumeTypeQuota map[string]interface{} `pulumi:"volumeTypeQuota"`
 	// Quota value for volumes. Changing this updates the
 	// existing quotaset.
 	Volumes *int `pulumi:"volumes"`
@@ -251,6 +272,10 @@ type QuoteSetV2Args struct {
 	// Quota value for snapshots. Changing this updates the
 	// existing quotaset.
 	Snapshots pulumi.IntPtrInput
+	// Key/Value pairs for setting quota for
+	// volumes types. Possible keys are `snapshots_<volume_type_name>`,
+	// `volumes_<volume_type_name>` and `gigabytes_<volume_type_name>`.
+	VolumeTypeQuota pulumi.MapInput
 	// Quota value for volumes. Changing this updates the
 	// existing quotaset.
 	Volumes pulumi.IntPtrInput

@@ -55,6 +55,13 @@ namespace Pulumi.OpenStack.Images
         [Output("file")]
         public Output<string> File { get; private set; } = null!;
 
+        /// <summary>
+        /// If true, image will be hidden from public list.
+        /// Defaults to false.
+        /// </summary>
+        [Output("hidden")]
+        public Output<bool?> Hidden { get; private set; } = null!;
+
         [Output("imageCachePath")]
         public Output<string?> ImageCachePath { get; private set; } = null!;
 
@@ -275,6 +282,13 @@ namespace Pulumi.OpenStack.Images
         [Input("diskFormat", required: true)]
         public Input<string> DiskFormat { get; set; } = null!;
 
+        /// <summary>
+        /// If true, image will be hidden from public list.
+        /// Defaults to false.
+        /// </summary>
+        [Input("hidden")]
+        public Input<bool>? Hidden { get; set; }
+
         [Input("imageCachePath")]
         public Input<string>? ImageCachePath { get; set; }
 
@@ -441,6 +455,13 @@ namespace Pulumi.OpenStack.Images
         /// </summary>
         [Input("file")]
         public Input<string>? File { get; set; }
+
+        /// <summary>
+        /// If true, image will be hidden from public list.
+        /// Defaults to false.
+        /// </summary>
+        [Input("hidden")]
+        public Input<bool>? Hidden { get; set; }
 
         [Input("imageCachePath")]
         public Input<string>? ImageCachePath { get; set; }

@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *     in case of delete call.
  *
  * > **Note:** This resource has all-in creation so all optional quota arguments that were not specified are
- *     created with zero value.
+ *     created with zero value. This excludes volume type quota.
  *
  * ## Example Usage
  *
@@ -31,15 +31,20 @@ import * as utilities from "../utilities";
  *     backups: 4,
  *     backupGigabytes: 10,
  *     groups: 100,
+ *     volumeTypeQuota: {
+ *         volumes_ssd: 30,
+ *         gigabytes_ssd: 500,
+ *         snapshots_ssd: 10,
+ *     },
  * });
  * ```
  *
  * ## Import
  *
- * Quotasets can be imported using the `project_id`, e.g.
+ * Quotasets can be imported using the `project_id/region`, e.g.
  *
  * ```sh
- *  $ pulumi import openstack:blockstorage/quoteSetV2:QuoteSetV2 quotaset_1 2a0f2240-c5e6-41de-896d-e80d97428d6b
+ *  $ pulumi import openstack:blockstorage/quoteSetV2:QuoteSetV2 quotaset_1 2a0f2240-c5e6-41de-896d-e80d97428d6b/region_1
  * ```
  */
 export class QuoteSetV2 extends pulumi.CustomResource {
@@ -112,6 +117,12 @@ export class QuoteSetV2 extends pulumi.CustomResource {
      */
     public readonly snapshots!: pulumi.Output<number>;
     /**
+     * Key/Value pairs for setting quota for
+     * volumes types. Possible keys are `snapshots_<volume_type_name>`,
+     * `volumes_<volume_type_name>` and `gigabytes_<volume_type_name>`.
+     */
+    public readonly volumeTypeQuota!: pulumi.Output<{[key: string]: any} | undefined>;
+    /**
      * Quota value for volumes. Changing this updates the
      * existing quotaset.
      */
@@ -138,6 +149,7 @@ export class QuoteSetV2 extends pulumi.CustomResource {
             inputs["projectId"] = state ? state.projectId : undefined;
             inputs["region"] = state ? state.region : undefined;
             inputs["snapshots"] = state ? state.snapshots : undefined;
+            inputs["volumeTypeQuota"] = state ? state.volumeTypeQuota : undefined;
             inputs["volumes"] = state ? state.volumes : undefined;
         } else {
             const args = argsOrState as QuoteSetV2Args | undefined;
@@ -152,6 +164,7 @@ export class QuoteSetV2 extends pulumi.CustomResource {
             inputs["projectId"] = args ? args.projectId : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["snapshots"] = args ? args.snapshots : undefined;
+            inputs["volumeTypeQuota"] = args ? args.volumeTypeQuota : undefined;
             inputs["volumes"] = args ? args.volumes : undefined;
         }
         if (!opts.version) {
@@ -207,6 +220,12 @@ export interface QuoteSetV2State {
      */
     readonly snapshots?: pulumi.Input<number>;
     /**
+     * Key/Value pairs for setting quota for
+     * volumes types. Possible keys are `snapshots_<volume_type_name>`,
+     * `volumes_<volume_type_name>` and `gigabytes_<volume_type_name>`.
+     */
+    readonly volumeTypeQuota?: pulumi.Input<{[key: string]: any}>;
+    /**
      * Quota value for volumes. Changing this updates the
      * existing quotaset.
      */
@@ -258,6 +277,12 @@ export interface QuoteSetV2Args {
      * existing quotaset.
      */
     readonly snapshots?: pulumi.Input<number>;
+    /**
+     * Key/Value pairs for setting quota for
+     * volumes types. Possible keys are `snapshots_<volume_type_name>`,
+     * `volumes_<volume_type_name>` and `gigabytes_<volume_type_name>`.
+     */
+    readonly volumeTypeQuota?: pulumi.Input<{[key: string]: any}>;
     /**
      * Quota value for volumes. Changing this updates the
      * existing quotaset.

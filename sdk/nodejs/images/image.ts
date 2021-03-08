@@ -65,6 +65,11 @@ export class Image extends pulumi.CustomResource {
      * or the path to retrieve it.
      */
     public /*out*/ readonly file!: pulumi.Output<string>;
+    /**
+     * If true, image will be hidden from public list.
+     * Defaults to false.
+     */
+    public readonly hidden!: pulumi.Output<boolean | undefined>;
     public readonly imageCachePath!: pulumi.Output<string | undefined>;
     /**
      * Unique ID (valid UUID) of image to create. Changing 
@@ -200,6 +205,7 @@ export class Image extends pulumi.CustomResource {
             inputs["createdAt"] = state ? state.createdAt : undefined;
             inputs["diskFormat"] = state ? state.diskFormat : undefined;
             inputs["file"] = state ? state.file : undefined;
+            inputs["hidden"] = state ? state.hidden : undefined;
             inputs["imageCachePath"] = state ? state.imageCachePath : undefined;
             inputs["imageId"] = state ? state.imageId : undefined;
             inputs["imageSourcePassword"] = state ? state.imageSourcePassword : undefined;
@@ -233,6 +239,7 @@ export class Image extends pulumi.CustomResource {
             }
             inputs["containerFormat"] = args ? args.containerFormat : undefined;
             inputs["diskFormat"] = args ? args.diskFormat : undefined;
+            inputs["hidden"] = args ? args.hidden : undefined;
             inputs["imageCachePath"] = args ? args.imageCachePath : undefined;
             inputs["imageId"] = args ? args.imageId : undefined;
             inputs["imageSourcePassword"] = args ? args.imageSourcePassword : undefined;
@@ -295,6 +302,11 @@ export interface ImageState {
      * or the path to retrieve it.
      */
     readonly file?: pulumi.Input<string>;
+    /**
+     * If true, image will be hidden from public list.
+     * Defaults to false.
+     */
+    readonly hidden?: pulumi.Input<boolean>;
     readonly imageCachePath?: pulumi.Input<string>;
     /**
      * Unique ID (valid UUID) of image to create. Changing 
@@ -427,6 +439,11 @@ export interface ImageArgs {
      * "ami", "ari", "aki", "vhd", "vmdk", "raw", "qcow2", "vdi", "iso".
      */
     readonly diskFormat: pulumi.Input<string>;
+    /**
+     * If true, image will be hidden from public list.
+     * Defaults to false.
+     */
+    readonly hidden?: pulumi.Input<boolean>;
     readonly imageCachePath?: pulumi.Input<string>;
     /**
      * Unique ID (valid UUID) of image to create. Changing 

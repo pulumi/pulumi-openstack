@@ -23,6 +23,7 @@ class QuoteSetV2(pulumi.CustomResource):
                  project_id: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  snapshots: Optional[pulumi.Input[int]] = None,
+                 volume_type_quota: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  volumes: Optional[pulumi.Input[int]] = None,
                  __props__=None,
                  __name__=None,
@@ -36,7 +37,7 @@ class QuoteSetV2(pulumi.CustomResource):
             in case of delete call.
 
         > **Note:** This resource has all-in creation so all optional quota arguments that were not specified are
-            created with zero value.
+            created with zero value. This excludes volume type quota.
 
         ## Example Usage
 
@@ -53,15 +54,20 @@ class QuoteSetV2(pulumi.CustomResource):
             per_volume_gigabytes=10,
             backups=4,
             backup_gigabytes=10,
-            groups=100)
+            groups=100,
+            volume_type_quota={
+                "volumes_ssd": 30,
+                "gigabytes_ssd": 500,
+                "snapshots_ssd": 10,
+            })
         ```
 
         ## Import
 
-        Quotasets can be imported using the `project_id`, e.g.
+        Quotasets can be imported using the `project_id/region`, e.g.
 
         ```sh
-         $ pulumi import openstack:blockstorage/quoteSetV2:QuoteSetV2 quotaset_1 2a0f2240-c5e6-41de-896d-e80d97428d6b
+         $ pulumi import openstack:blockstorage/quoteSetV2:QuoteSetV2 quotaset_1 2a0f2240-c5e6-41de-896d-e80d97428d6b/region_1
         ```
 
         :param str resource_name: The name of the resource.
@@ -83,6 +89,9 @@ class QuoteSetV2(pulumi.CustomResource):
                creates a new quotaset.
         :param pulumi.Input[int] snapshots: Quota value for snapshots. Changing this updates the
                existing quotaset.
+        :param pulumi.Input[Mapping[str, Any]] volume_type_quota: Key/Value pairs for setting quota for
+               volumes types. Possible keys are `snapshots_<volume_type_name>`,
+               `volumes_<volume_type_name>` and `gigabytes_<volume_type_name>`.
         :param pulumi.Input[int] volumes: Quota value for volumes. Changing this updates the
                existing quotaset.
         """
@@ -113,6 +122,7 @@ class QuoteSetV2(pulumi.CustomResource):
             __props__['project_id'] = project_id
             __props__['region'] = region
             __props__['snapshots'] = snapshots
+            __props__['volume_type_quota'] = volume_type_quota
             __props__['volumes'] = volumes
         super(QuoteSetV2, __self__).__init__(
             'openstack:blockstorage/quoteSetV2:QuoteSetV2',
@@ -132,6 +142,7 @@ class QuoteSetV2(pulumi.CustomResource):
             project_id: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             snapshots: Optional[pulumi.Input[int]] = None,
+            volume_type_quota: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             volumes: Optional[pulumi.Input[int]] = None) -> 'QuoteSetV2':
         """
         Get an existing QuoteSetV2 resource's state with the given name, id, and optional extra
@@ -157,6 +168,9 @@ class QuoteSetV2(pulumi.CustomResource):
                creates a new quotaset.
         :param pulumi.Input[int] snapshots: Quota value for snapshots. Changing this updates the
                existing quotaset.
+        :param pulumi.Input[Mapping[str, Any]] volume_type_quota: Key/Value pairs for setting quota for
+               volumes types. Possible keys are `snapshots_<volume_type_name>`,
+               `volumes_<volume_type_name>` and `gigabytes_<volume_type_name>`.
         :param pulumi.Input[int] volumes: Quota value for volumes. Changing this updates the
                existing quotaset.
         """
@@ -172,6 +186,7 @@ class QuoteSetV2(pulumi.CustomResource):
         __props__["project_id"] = project_id
         __props__["region"] = region
         __props__["snapshots"] = snapshots
+        __props__["volume_type_quota"] = volume_type_quota
         __props__["volumes"] = volumes
         return QuoteSetV2(resource_name, opts=opts, __props__=__props__)
 
@@ -247,6 +262,16 @@ class QuoteSetV2(pulumi.CustomResource):
         existing quotaset.
         """
         return pulumi.get(self, "snapshots")
+
+    @property
+    @pulumi.getter(name="volumeTypeQuota")
+    def volume_type_quota(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        """
+        Key/Value pairs for setting quota for
+        volumes types. Possible keys are `snapshots_<volume_type_name>`,
+        `volumes_<volume_type_name>` and `gigabytes_<volume_type_name>`.
+        """
+        return pulumi.get(self, "volume_type_quota")
 
     @property
     @pulumi.getter

@@ -18,7 +18,7 @@ namespace Pulumi.OpenStack.BlockStorage
     ///     in case of delete call.
     /// 
     /// &gt; **Note:** This resource has all-in creation so all optional quota arguments that were not specified are
-    ///     created with zero value.
+    ///     created with zero value. This excludes volume type quota.
     /// 
     /// ## Example Usage
     /// 
@@ -43,6 +43,12 @@ namespace Pulumi.OpenStack.BlockStorage
     ///             Backups = 4,
     ///             BackupGigabytes = 10,
     ///             Groups = 100,
+    ///             VolumeTypeQuota = 
+    ///             {
+    ///                 { "volumes_ssd", 30 },
+    ///                 { "gigabytes_ssd", 500 },
+    ///                 { "snapshots_ssd", 10 },
+    ///             },
     ///         });
     ///     }
     /// 
@@ -51,10 +57,10 @@ namespace Pulumi.OpenStack.BlockStorage
     /// 
     /// ## Import
     /// 
-    /// Quotasets can be imported using the `project_id`, e.g.
+    /// Quotasets can be imported using the `project_id/region`, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import openstack:blockstorage/quoteSetV3:QuoteSetV3 quotaset_1 2a0f2240-c5e6-41de-896d-e80d97428d6b
+    ///  $ pulumi import openstack:blockstorage/quoteSetV3:QuoteSetV3 quotaset_1 2a0f2240-c5e6-41de-896d-e80d97428d6b/region_1
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:blockstorage/quoteSetV3:QuoteSetV3")]
@@ -116,6 +122,14 @@ namespace Pulumi.OpenStack.BlockStorage
         /// </summary>
         [Output("snapshots")]
         public Output<int> Snapshots { get; private set; } = null!;
+
+        /// <summary>
+        /// Key/Value pairs for setting quota for
+        /// volumes types. Possible keys are `snapshots_&lt;volume_type_name&gt;`,
+        /// `volumes_&lt;volume_type_name&gt;` and `gigabytes_&lt;volume_type_name&gt;`.
+        /// </summary>
+        [Output("volumeTypeQuota")]
+        public Output<ImmutableDictionary<string, object>?> VolumeTypeQuota { get; private set; } = null!;
 
         /// <summary>
         /// Quota value for volumes. Changing this updates the
@@ -227,6 +241,20 @@ namespace Pulumi.OpenStack.BlockStorage
         [Input("snapshots")]
         public Input<int>? Snapshots { get; set; }
 
+        [Input("volumeTypeQuota")]
+        private InputMap<object>? _volumeTypeQuota;
+
+        /// <summary>
+        /// Key/Value pairs for setting quota for
+        /// volumes types. Possible keys are `snapshots_&lt;volume_type_name&gt;`,
+        /// `volumes_&lt;volume_type_name&gt;` and `gigabytes_&lt;volume_type_name&gt;`.
+        /// </summary>
+        public InputMap<object> VolumeTypeQuota
+        {
+            get => _volumeTypeQuota ?? (_volumeTypeQuota = new InputMap<object>());
+            set => _volumeTypeQuota = value;
+        }
+
         /// <summary>
         /// Quota value for volumes. Changing this updates the
         /// existing quotaset.
@@ -297,6 +325,20 @@ namespace Pulumi.OpenStack.BlockStorage
         /// </summary>
         [Input("snapshots")]
         public Input<int>? Snapshots { get; set; }
+
+        [Input("volumeTypeQuota")]
+        private InputMap<object>? _volumeTypeQuota;
+
+        /// <summary>
+        /// Key/Value pairs for setting quota for
+        /// volumes types. Possible keys are `snapshots_&lt;volume_type_name&gt;`,
+        /// `volumes_&lt;volume_type_name&gt;` and `gigabytes_&lt;volume_type_name&gt;`.
+        /// </summary>
+        public InputMap<object> VolumeTypeQuota
+        {
+            get => _volumeTypeQuota ?? (_volumeTypeQuota = new InputMap<object>());
+            set => _volumeTypeQuota = value;
+        }
 
         /// <summary>
         /// Quota value for volumes. Changing this updates the
