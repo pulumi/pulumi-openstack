@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v1.39.0 of the OpenStack Terraform Provider
+_(none)_
 
 ---
+
+## 2.16.0 (2021-03-09)
+* Upgrade to v1.39.0 of the OpenStack Terraform Provider
 
 ## 2.15.0 (2021-02-24)
 * Upgrade to v1.38.0 of the OpenStack Terraform Provider
