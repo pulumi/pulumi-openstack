@@ -19,7 +19,7 @@ class GetImageResult:
     """
     A collection of values returned by getImage.
     """
-    def __init__(__self__, checksum=None, container_format=None, created_at=None, disk_format=None, file=None, id=None, member_status=None, metadata=None, min_disk_gb=None, min_ram_mb=None, most_recent=None, name=None, owner=None, properties=None, protected=None, region=None, schema=None, size_bytes=None, size_max=None, size_min=None, sort_direction=None, sort_key=None, tag=None, tags=None, updated_at=None, visibility=None):
+    def __init__(__self__, checksum=None, container_format=None, created_at=None, disk_format=None, file=None, hidden=None, id=None, member_status=None, metadata=None, min_disk_gb=None, min_ram_mb=None, most_recent=None, name=None, owner=None, properties=None, protected=None, region=None, schema=None, size_bytes=None, size_max=None, size_min=None, sort_direction=None, sort_key=None, tag=None, tags=None, updated_at=None, visibility=None):
         if checksum and not isinstance(checksum, str):
             raise TypeError("Expected argument 'checksum' to be a str")
         pulumi.set(__self__, "checksum", checksum)
@@ -35,6 +35,9 @@ class GetImageResult:
         if file and not isinstance(file, str):
             raise TypeError("Expected argument 'file' to be a str")
         pulumi.set(__self__, "file", file)
+        if hidden and not isinstance(hidden, bool):
+            raise TypeError("Expected argument 'hidden' to be a bool")
+        pulumi.set(__self__, "hidden", hidden)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -135,6 +138,11 @@ class GetImageResult:
         location of the image or the path to retrieve it.
         """
         return pulumi.get(self, "file")
+
+    @property
+    @pulumi.getter
+    def hidden(self) -> Optional[bool]:
+        return pulumi.get(self, "hidden")
 
     @property
     @pulumi.getter
@@ -286,6 +294,7 @@ class AwaitableGetImageResult(GetImageResult):
             created_at=self.created_at,
             disk_format=self.disk_format,
             file=self.file,
+            hidden=self.hidden,
             id=self.id,
             member_status=self.member_status,
             metadata=self.metadata,
@@ -309,7 +318,8 @@ class AwaitableGetImageResult(GetImageResult):
             visibility=self.visibility)
 
 
-def get_image(member_status: Optional[str] = None,
+def get_image(hidden: Optional[bool] = None,
+              member_status: Optional[str] = None,
               most_recent: Optional[bool] = None,
               name: Optional[str] = None,
               owner: Optional[str] = None,
@@ -339,6 +349,7 @@ def get_image(member_status: Optional[str] = None,
     ```
 
 
+    :param bool hidden: Whether or not the image is hidden from public list.
     :param str member_status: The status of the image. Must be one of
            "accepted", "pending", "rejected", or "all".
     :param bool most_recent: If more than one result is returned, use the most
@@ -363,6 +374,7 @@ def get_image(member_status: Optional[str] = None,
            "public", "private", "community", or "shared". Defaults to "private".
     """
     __args__ = dict()
+    __args__['hidden'] = hidden
     __args__['memberStatus'] = member_status
     __args__['mostRecent'] = most_recent
     __args__['name'] = name
@@ -387,6 +399,7 @@ def get_image(member_status: Optional[str] = None,
         created_at=__ret__.created_at,
         disk_format=__ret__.disk_format,
         file=__ret__.file,
+        hidden=__ret__.hidden,
         id=__ret__.id,
         member_status=__ret__.member_status,
         metadata=__ret__.metadata,

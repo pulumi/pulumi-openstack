@@ -17,6 +17,7 @@ class Image(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  container_format: Optional[pulumi.Input[str]] = None,
                  disk_format: Optional[pulumi.Input[str]] = None,
+                 hidden: Optional[pulumi.Input[bool]] = None,
                  image_cache_path: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
                  image_source_password: Optional[pulumi.Input[str]] = None,
@@ -51,6 +52,8 @@ class Image(pulumi.CustomResource):
                "ami", "ari", "aki", "bare", "ovf".
         :param pulumi.Input[str] disk_format: The disk format. Must be one of
                "ami", "ari", "aki", "vhd", "vmdk", "raw", "qcow2", "vdi", "iso".
+        :param pulumi.Input[bool] hidden: If true, image will be hidden from public list.
+               Defaults to false.
         :param pulumi.Input[str] image_id: Unique ID (valid UUID) of image to create. Changing 
                this creates a new image.
         :param pulumi.Input[str] image_source_password: The password of basic auth to download `image_source_url`.
@@ -111,6 +114,7 @@ class Image(pulumi.CustomResource):
             if disk_format is None and not opts.urn:
                 raise TypeError("Missing required property 'disk_format'")
             __props__['disk_format'] = disk_format
+            __props__['hidden'] = hidden
             __props__['image_cache_path'] = image_cache_path
             __props__['image_id'] = image_id
             __props__['image_source_password'] = image_source_password
@@ -152,6 +156,7 @@ class Image(pulumi.CustomResource):
             created_at: Optional[pulumi.Input[str]] = None,
             disk_format: Optional[pulumi.Input[str]] = None,
             file: Optional[pulumi.Input[str]] = None,
+            hidden: Optional[pulumi.Input[bool]] = None,
             image_cache_path: Optional[pulumi.Input[str]] = None,
             image_id: Optional[pulumi.Input[str]] = None,
             image_source_password: Optional[pulumi.Input[str]] = None,
@@ -191,6 +196,8 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[str] file: the trailing path after the glance
                endpoint that represent the location of the image
                or the path to retrieve it.
+        :param pulumi.Input[bool] hidden: If true, image will be hidden from public list.
+               Defaults to false.
         :param pulumi.Input[str] image_id: Unique ID (valid UUID) of image to create. Changing 
                this creates a new image.
         :param pulumi.Input[str] image_source_password: The password of basic auth to download `image_source_url`.
@@ -248,6 +255,7 @@ class Image(pulumi.CustomResource):
         __props__["created_at"] = created_at
         __props__["disk_format"] = disk_format
         __props__["file"] = file
+        __props__["hidden"] = hidden
         __props__["image_cache_path"] = image_cache_path
         __props__["image_id"] = image_id
         __props__["image_source_password"] = image_source_password
@@ -316,6 +324,15 @@ class Image(pulumi.CustomResource):
         or the path to retrieve it.
         """
         return pulumi.get(self, "file")
+
+    @property
+    @pulumi.getter
+    def hidden(self) -> pulumi.Output[Optional[bool]]:
+        """
+        If true, image will be hidden from public list.
+        Defaults to false.
+        """
+        return pulumi.get(self, "hidden")
 
     @property
     @pulumi.getter(name="imageCachePath")

@@ -2938,7 +2938,7 @@
     },
     "resources": {
         "openstack:blockstorage/quoteSetV2:QuoteSetV2": {
-            "description": "Manages a V2 block storage quotaset resource within OpenStack.\n\n\u003e **Note:** This usually requires admin privileges.\n\n\u003e **Note:** This resource has a no-op deletion so no actual actions will be done against the OpenStack API\n    in case of delete call.\n\n\u003e **Note:** This resource has all-in creation so all optional quota arguments that were not specified are\n    created with zero value.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst project1 = new openstack.identity.Project(\"project1\", {});\nconst quotaset1 = new openstack.blockstorage.QuoteSetV2(\"quotaset1\", {\n    projectId: project1.id,\n    volumes: 10,\n    snapshots: 4,\n    gigabytes: 100,\n    perVolumeGigabytes: 10,\n    backups: 4,\n    backupGigabytes: 10,\n    groups: 100,\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nproject1 = openstack.identity.Project(\"project1\")\nquotaset1 = openstack.blockstorage.QuoteSetV2(\"quotaset1\",\n    project_id=project1.id,\n    volumes=10,\n    snapshots=4,\n    gigabytes=100,\n    per_volume_gigabytes=10,\n    backups=4,\n    backup_gigabytes=10,\n    groups=100)\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var project1 = new OpenStack.Identity.Project(\"project1\", new OpenStack.Identity.ProjectArgs\n        {\n        });\n        var quotaset1 = new OpenStack.BlockStorage.QuoteSetV2(\"quotaset1\", new OpenStack.BlockStorage.QuoteSetV2Args\n        {\n            ProjectId = project1.Id,\n            Volumes = 10,\n            Snapshots = 4,\n            Gigabytes = 100,\n            PerVolumeGigabytes = 10,\n            Backups = 4,\n            BackupGigabytes = 10,\n            Groups = 100,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/blockstorage\"\n\t\"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/identity\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tproject1, err := identity.NewProject(ctx, \"project1\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = blockstorage.NewQuoteSetV2(ctx, \"quotaset1\", \u0026blockstorage.QuoteSetV2Args{\n\t\t\tProjectId:          project1.ID(),\n\t\t\tVolumes:            pulumi.Int(10),\n\t\t\tSnapshots:          pulumi.Int(4),\n\t\t\tGigabytes:          pulumi.Int(100),\n\t\t\tPerVolumeGigabytes: pulumi.Int(10),\n\t\t\tBackups:            pulumi.Int(4),\n\t\t\tBackupGigabytes:    pulumi.Int(10),\n\t\t\tGroups:             pulumi.Int(100),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nQuotasets can be imported using the `project_id`, e.g.\n\n```sh\n $ pulumi import openstack:blockstorage/quoteSetV2:QuoteSetV2 quotaset_1 2a0f2240-c5e6-41de-896d-e80d97428d6b\n```\n\n ",
+            "description": "Manages a V2 block storage quotaset resource within OpenStack.\n\n\u003e **Note:** This usually requires admin privileges.\n\n\u003e **Note:** This resource has a no-op deletion so no actual actions will be done against the OpenStack API\n    in case of delete call.\n\n\u003e **Note:** This resource has all-in creation so all optional quota arguments that were not specified are\n    created with zero value. This excludes volume type quota.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst project1 = new openstack.identity.Project(\"project1\", {});\nconst quotaset1 = new openstack.blockstorage.QuoteSetV2(\"quotaset1\", {\n    projectId: project1.id,\n    volumes: 10,\n    snapshots: 4,\n    gigabytes: 100,\n    perVolumeGigabytes: 10,\n    backups: 4,\n    backupGigabytes: 10,\n    groups: 100,\n    volumeTypeQuota: {\n        volumes_ssd: 30,\n        gigabytes_ssd: 500,\n        snapshots_ssd: 10,\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nproject1 = openstack.identity.Project(\"project1\")\nquotaset1 = openstack.blockstorage.QuoteSetV2(\"quotaset1\",\n    project_id=project1.id,\n    volumes=10,\n    snapshots=4,\n    gigabytes=100,\n    per_volume_gigabytes=10,\n    backups=4,\n    backup_gigabytes=10,\n    groups=100,\n    volume_type_quota={\n        \"volumes_ssd\": 30,\n        \"gigabytes_ssd\": 500,\n        \"snapshots_ssd\": 10,\n    })\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var project1 = new OpenStack.Identity.Project(\"project1\", new OpenStack.Identity.ProjectArgs\n        {\n        });\n        var quotaset1 = new OpenStack.BlockStorage.QuoteSetV2(\"quotaset1\", new OpenStack.BlockStorage.QuoteSetV2Args\n        {\n            ProjectId = project1.Id,\n            Volumes = 10,\n            Snapshots = 4,\n            Gigabytes = 100,\n            PerVolumeGigabytes = 10,\n            Backups = 4,\n            BackupGigabytes = 10,\n            Groups = 100,\n            VolumeTypeQuota = \n            {\n                { \"volumes_ssd\", 30 },\n                { \"gigabytes_ssd\", 500 },\n                { \"snapshots_ssd\", 10 },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/blockstorage\"\n\t\"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/identity\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tproject1, err := identity.NewProject(ctx, \"project1\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = blockstorage.NewQuoteSetV2(ctx, \"quotaset1\", \u0026blockstorage.QuoteSetV2Args{\n\t\t\tProjectId:          project1.ID(),\n\t\t\tVolumes:            pulumi.Int(10),\n\t\t\tSnapshots:          pulumi.Int(4),\n\t\t\tGigabytes:          pulumi.Int(100),\n\t\t\tPerVolumeGigabytes: pulumi.Int(10),\n\t\t\tBackups:            pulumi.Int(4),\n\t\t\tBackupGigabytes:    pulumi.Int(10),\n\t\t\tGroups:             pulumi.Int(100),\n\t\t\tVolumeTypeQuota: pulumi.Float64Map{\n\t\t\t\t\"volumes_ssd\":   pulumi.Float64(30),\n\t\t\t\t\"gigabytes_ssd\": pulumi.Float64(500),\n\t\t\t\t\"snapshots_ssd\": pulumi.Float64(10),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nQuotasets can be imported using the `project_id/region`, e.g.\n\n```sh\n $ pulumi import openstack:blockstorage/quoteSetV2:QuoteSetV2 quotaset_1 2a0f2240-c5e6-41de-896d-e80d97428d6b/region_1\n```\n\n ",
             "properties": {
                 "backupGigabytes": {
                     "type": "integer",
@@ -2971,6 +2971,13 @@
                 "snapshots": {
                     "type": "integer",
                     "description": "Quota value for snapshots. Changing this updates the\nexisting quotaset.\n"
+                },
+                "volumeTypeQuota": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Key/Value pairs for setting quota for\nvolumes types. Possible keys are `snapshots_\u003cvolume_type_name\u003e`,\n`volumes_\u003cvolume_type_name\u003e` and `gigabytes_\u003cvolume_type_name\u003e`.\n"
                 },
                 "volumes": {
                     "type": "integer",
@@ -3020,6 +3027,13 @@
                 "snapshots": {
                     "type": "integer",
                     "description": "Quota value for snapshots. Changing this updates the\nexisting quotaset.\n"
+                },
+                "volumeTypeQuota": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Key/Value pairs for setting quota for\nvolumes types. Possible keys are `snapshots_\u003cvolume_type_name\u003e`,\n`volumes_\u003cvolume_type_name\u003e` and `gigabytes_\u003cvolume_type_name\u003e`.\n"
                 },
                 "volumes": {
                     "type": "integer",
@@ -3064,6 +3078,13 @@
                         "type": "integer",
                         "description": "Quota value for snapshots. Changing this updates the\nexisting quotaset.\n"
                     },
+                    "volumeTypeQuota": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "Key/Value pairs for setting quota for\nvolumes types. Possible keys are `snapshots_\u003cvolume_type_name\u003e`,\n`volumes_\u003cvolume_type_name\u003e` and `gigabytes_\u003cvolume_type_name\u003e`.\n"
+                    },
                     "volumes": {
                         "type": "integer",
                         "description": "Quota value for volumes. Changing this updates the\nexisting quotaset.\n"
@@ -3073,7 +3094,7 @@
             }
         },
         "openstack:blockstorage/quoteSetV3:QuoteSetV3": {
-            "description": "Manages a V3 block storage quotaset resource within OpenStack.\n\n\u003e **Note:** This usually requires admin privileges.\n\n\u003e **Note:** This resource has a no-op deletion so no actual actions will be done against the OpenStack API\n    in case of delete call.\n\n\u003e **Note:** This resource has all-in creation so all optional quota arguments that were not specified are\n    created with zero value.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst project1 = new openstack.identity.Project(\"project1\", {});\nconst quotaset1 = new openstack.blockstorage.QuoteSetV3(\"quotaset1\", {\n    projectId: project1.id,\n    volumes: 10,\n    snapshots: 4,\n    gigabytes: 100,\n    perVolumeGigabytes: 10,\n    backups: 4,\n    backupGigabytes: 10,\n    groups: 100,\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nproject1 = openstack.identity.Project(\"project1\")\nquotaset1 = openstack.blockstorage.QuoteSetV3(\"quotaset1\",\n    project_id=project1.id,\n    volumes=10,\n    snapshots=4,\n    gigabytes=100,\n    per_volume_gigabytes=10,\n    backups=4,\n    backup_gigabytes=10,\n    groups=100)\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var project1 = new OpenStack.Identity.Project(\"project1\", new OpenStack.Identity.ProjectArgs\n        {\n        });\n        var quotaset1 = new OpenStack.BlockStorage.QuoteSetV3(\"quotaset1\", new OpenStack.BlockStorage.QuoteSetV3Args\n        {\n            ProjectId = project1.Id,\n            Volumes = 10,\n            Snapshots = 4,\n            Gigabytes = 100,\n            PerVolumeGigabytes = 10,\n            Backups = 4,\n            BackupGigabytes = 10,\n            Groups = 100,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/blockstorage\"\n\t\"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/identity\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tproject1, err := identity.NewProject(ctx, \"project1\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = blockstorage.NewQuoteSetV3(ctx, \"quotaset1\", \u0026blockstorage.QuoteSetV3Args{\n\t\t\tProjectId:          project1.ID(),\n\t\t\tVolumes:            pulumi.Int(10),\n\t\t\tSnapshots:          pulumi.Int(4),\n\t\t\tGigabytes:          pulumi.Int(100),\n\t\t\tPerVolumeGigabytes: pulumi.Int(10),\n\t\t\tBackups:            pulumi.Int(4),\n\t\t\tBackupGigabytes:    pulumi.Int(10),\n\t\t\tGroups:             pulumi.Int(100),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nQuotasets can be imported using the `project_id`, e.g.\n\n```sh\n $ pulumi import openstack:blockstorage/quoteSetV3:QuoteSetV3 quotaset_1 2a0f2240-c5e6-41de-896d-e80d97428d6b\n```\n\n ",
+            "description": "Manages a V3 block storage quotaset resource within OpenStack.\n\n\u003e **Note:** This usually requires admin privileges.\n\n\u003e **Note:** This resource has a no-op deletion so no actual actions will be done against the OpenStack API\n    in case of delete call.\n\n\u003e **Note:** This resource has all-in creation so all optional quota arguments that were not specified are\n    created with zero value. This excludes volume type quota.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst project1 = new openstack.identity.Project(\"project1\", {});\nconst quotaset1 = new openstack.blockstorage.QuoteSetV3(\"quotaset1\", {\n    projectId: project1.id,\n    volumes: 10,\n    snapshots: 4,\n    gigabytes: 100,\n    perVolumeGigabytes: 10,\n    backups: 4,\n    backupGigabytes: 10,\n    groups: 100,\n    volumeTypeQuota: {\n        volumes_ssd: 30,\n        gigabytes_ssd: 500,\n        snapshots_ssd: 10,\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nproject1 = openstack.identity.Project(\"project1\")\nquotaset1 = openstack.blockstorage.QuoteSetV3(\"quotaset1\",\n    project_id=project1.id,\n    volumes=10,\n    snapshots=4,\n    gigabytes=100,\n    per_volume_gigabytes=10,\n    backups=4,\n    backup_gigabytes=10,\n    groups=100,\n    volume_type_quota={\n        \"volumes_ssd\": 30,\n        \"gigabytes_ssd\": 500,\n        \"snapshots_ssd\": 10,\n    })\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var project1 = new OpenStack.Identity.Project(\"project1\", new OpenStack.Identity.ProjectArgs\n        {\n        });\n        var quotaset1 = new OpenStack.BlockStorage.QuoteSetV3(\"quotaset1\", new OpenStack.BlockStorage.QuoteSetV3Args\n        {\n            ProjectId = project1.Id,\n            Volumes = 10,\n            Snapshots = 4,\n            Gigabytes = 100,\n            PerVolumeGigabytes = 10,\n            Backups = 4,\n            BackupGigabytes = 10,\n            Groups = 100,\n            VolumeTypeQuota = \n            {\n                { \"volumes_ssd\", 30 },\n                { \"gigabytes_ssd\", 500 },\n                { \"snapshots_ssd\", 10 },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/blockstorage\"\n\t\"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/identity\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tproject1, err := identity.NewProject(ctx, \"project1\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = blockstorage.NewQuoteSetV3(ctx, \"quotaset1\", \u0026blockstorage.QuoteSetV3Args{\n\t\t\tProjectId:          project1.ID(),\n\t\t\tVolumes:            pulumi.Int(10),\n\t\t\tSnapshots:          pulumi.Int(4),\n\t\t\tGigabytes:          pulumi.Int(100),\n\t\t\tPerVolumeGigabytes: pulumi.Int(10),\n\t\t\tBackups:            pulumi.Int(4),\n\t\t\tBackupGigabytes:    pulumi.Int(10),\n\t\t\tGroups:             pulumi.Int(100),\n\t\t\tVolumeTypeQuota: pulumi.Float64Map{\n\t\t\t\t\"volumes_ssd\":   pulumi.Float64(30),\n\t\t\t\t\"gigabytes_ssd\": pulumi.Float64(500),\n\t\t\t\t\"snapshots_ssd\": pulumi.Float64(10),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nQuotasets can be imported using the `project_id/region`, e.g.\n\n```sh\n $ pulumi import openstack:blockstorage/quoteSetV3:QuoteSetV3 quotaset_1 2a0f2240-c5e6-41de-896d-e80d97428d6b/region_1\n```\n\n ",
             "properties": {
                 "backupGigabytes": {
                     "type": "integer",
@@ -3106,6 +3127,13 @@
                 "snapshots": {
                     "type": "integer",
                     "description": "Quota value for snapshots. Changing this updates the\nexisting quotaset.\n"
+                },
+                "volumeTypeQuota": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Key/Value pairs for setting quota for\nvolumes types. Possible keys are `snapshots_\u003cvolume_type_name\u003e`,\n`volumes_\u003cvolume_type_name\u003e` and `gigabytes_\u003cvolume_type_name\u003e`.\n"
                 },
                 "volumes": {
                     "type": "integer",
@@ -3156,6 +3184,13 @@
                     "type": "integer",
                     "description": "Quota value for snapshots. Changing this updates the\nexisting quotaset.\n"
                 },
+                "volumeTypeQuota": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Key/Value pairs for setting quota for\nvolumes types. Possible keys are `snapshots_\u003cvolume_type_name\u003e`,\n`volumes_\u003cvolume_type_name\u003e` and `gigabytes_\u003cvolume_type_name\u003e`.\n"
+                },
                 "volumes": {
                     "type": "integer",
                     "description": "Quota value for volumes. Changing this updates the\nexisting quotaset.\n"
@@ -3198,6 +3233,13 @@
                     "snapshots": {
                         "type": "integer",
                         "description": "Quota value for snapshots. Changing this updates the\nexisting quotaset.\n"
+                    },
+                    "volumeTypeQuota": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "Key/Value pairs for setting quota for\nvolumes types. Possible keys are `snapshots_\u003cvolume_type_name\u003e`,\n`volumes_\u003cvolume_type_name\u003e` and `gigabytes_\u003cvolume_type_name\u003e`.\n"
                     },
                     "volumes": {
                         "type": "integer",
@@ -5304,7 +5346,7 @@
             }
         },
         "openstack:compute/quotaSetV2:QuotaSetV2": {
-            "description": "Manages a V2 compute quotaset resource within OpenStack.\n\n\u003e **Note:** This usually requires admin privileges.\n\n\u003e **Note:** This resource has a no-op deletion so no actual actions will be done against the OpenStack API\n    in case of delete call.\n\n\u003e **Note:** This resource has all-in creation so all optional quota arguments that were not specified are\n    created with zero value.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst project1 = new openstack.identity.Project(\"project1\", {});\nconst quotaset1 = new openstack.compute.QuotaSetV2(\"quotaset1\", {\n    projectId: project1.id,\n    keyPairs: 10,\n    ram: 40960,\n    cores: 32,\n    instances: 20,\n    serverGroups: 4,\n    serverGroupMembers: 8,\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nproject1 = openstack.identity.Project(\"project1\")\nquotaset1 = openstack.compute.QuotaSetV2(\"quotaset1\",\n    project_id=project1.id,\n    key_pairs=10,\n    ram=40960,\n    cores=32,\n    instances=20,\n    server_groups=4,\n    server_group_members=8)\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var project1 = new OpenStack.Identity.Project(\"project1\", new OpenStack.Identity.ProjectArgs\n        {\n        });\n        var quotaset1 = new OpenStack.Compute.QuotaSetV2(\"quotaset1\", new OpenStack.Compute.QuotaSetV2Args\n        {\n            ProjectId = project1.Id,\n            KeyPairs = 10,\n            Ram = 40960,\n            Cores = 32,\n            Instances = 20,\n            ServerGroups = 4,\n            ServerGroupMembers = 8,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/compute\"\n\t\"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/identity\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tproject1, err := identity.NewProject(ctx, \"project1\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = compute.NewQuotaSetV2(ctx, \"quotaset1\", \u0026compute.QuotaSetV2Args{\n\t\t\tProjectId:          project1.ID(),\n\t\t\tKeyPairs:           pulumi.Int(10),\n\t\t\tRam:                pulumi.Int(40960),\n\t\t\tCores:              pulumi.Int(32),\n\t\t\tInstances:          pulumi.Int(20),\n\t\t\tServerGroups:       pulumi.Int(4),\n\t\t\tServerGroupMembers: pulumi.Int(8),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nQuotasets can be imported using the `project_id`, e.g.\n\n```sh\n $ pulumi import openstack:compute/quotaSetV2:QuotaSetV2 quotaset_1 2a0f2240-c5e6-41de-896d-e80d97428d6b\n```\n\n ",
+            "description": "Manages a V2 compute quotaset resource within OpenStack.\n\n\u003e **Note:** This usually requires admin privileges.\n\n\u003e **Note:** This resource has a no-op deletion so no actual actions will be done against the OpenStack API\n    in case of delete call.\n\n\u003e **Note:** This resource has all-in creation so all optional quota arguments that were not specified are\n    created with zero value.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst project1 = new openstack.identity.Project(\"project1\", {});\nconst quotaset1 = new openstack.compute.QuotaSetV2(\"quotaset1\", {\n    projectId: project1.id,\n    keyPairs: 10,\n    ram: 40960,\n    cores: 32,\n    instances: 20,\n    serverGroups: 4,\n    serverGroupMembers: 8,\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nproject1 = openstack.identity.Project(\"project1\")\nquotaset1 = openstack.compute.QuotaSetV2(\"quotaset1\",\n    project_id=project1.id,\n    key_pairs=10,\n    ram=40960,\n    cores=32,\n    instances=20,\n    server_groups=4,\n    server_group_members=8)\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var project1 = new OpenStack.Identity.Project(\"project1\", new OpenStack.Identity.ProjectArgs\n        {\n        });\n        var quotaset1 = new OpenStack.Compute.QuotaSetV2(\"quotaset1\", new OpenStack.Compute.QuotaSetV2Args\n        {\n            ProjectId = project1.Id,\n            KeyPairs = 10,\n            Ram = 40960,\n            Cores = 32,\n            Instances = 20,\n            ServerGroups = 4,\n            ServerGroupMembers = 8,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/compute\"\n\t\"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/identity\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tproject1, err := identity.NewProject(ctx, \"project1\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = compute.NewQuotaSetV2(ctx, \"quotaset1\", \u0026compute.QuotaSetV2Args{\n\t\t\tProjectId:          project1.ID(),\n\t\t\tKeyPairs:           pulumi.Int(10),\n\t\t\tRam:                pulumi.Int(40960),\n\t\t\tCores:              pulumi.Int(32),\n\t\t\tInstances:          pulumi.Int(20),\n\t\t\tServerGroups:       pulumi.Int(4),\n\t\t\tServerGroupMembers: pulumi.Int(8),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nQuotasets can be imported using the `project_id/region_name`, e.g.\n\n```sh\n $ pulumi import openstack:compute/quotaSetV2:QuotaSetV2 quotaset_1 2a0f2240-c5e6-41de-896d-e80d97428d6b/region_1\n```\n\n ",
             "properties": {
                 "cores": {
                     "type": "integer",
@@ -8604,6 +8646,10 @@
                     "type": "string",
                     "description": "the trailing path after the glance\nendpoint that represent the location of the image\nor the path to retrieve it.\n"
                 },
+                "hidden": {
+                    "type": "boolean",
+                    "description": "If true, image will be hidden from public list.\nDefaults to false.\n"
+                },
                 "imageCachePath": {
                     "type": "string"
                 },
@@ -8733,6 +8779,10 @@
                     "type": "string",
                     "description": "The disk format. Must be one of\n\"ami\", \"ari\", \"aki\", \"vhd\", \"vmdk\", \"raw\", \"qcow2\", \"vdi\", \"iso\".\n"
                 },
+                "hidden": {
+                    "type": "boolean",
+                    "description": "If true, image will be hidden from public list.\nDefaults to false.\n"
+                },
                 "imageCachePath": {
                     "type": "string"
                 },
@@ -8829,6 +8879,10 @@
                     "file": {
                         "type": "string",
                         "description": "the trailing path after the glance\nendpoint that represent the location of the image\nor the path to retrieve it.\n"
+                    },
+                    "hidden": {
+                        "type": "boolean",
+                        "description": "If true, image will be hidden from public list.\nDefaults to false.\n"
                     },
                     "imageCachePath": {
                         "type": "string"
@@ -19388,6 +19442,10 @@
             "inputs": {
                 "description": "A collection of arguments for invoking getImage.\n",
                 "properties": {
+                    "hidden": {
+                        "type": "boolean",
+                        "description": "Whether or not the image is hidden from public list.\n"
+                    },
                     "memberStatus": {
                         "type": "string",
                         "description": "The status of the image. Must be one of\n\"accepted\", \"pending\", \"rejected\", or \"all\".\n"
@@ -19462,6 +19520,9 @@
                     "file": {
                         "type": "string",
                         "description": "the trailing path after the glance endpoint that represent the\nlocation of the image or the path to retrieve it.\n"
+                    },
+                    "hidden": {
+                        "type": "boolean"
                     },
                     "id": {
                         "type": "string",

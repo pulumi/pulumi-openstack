@@ -48,6 +48,8 @@ func LookupImage(ctx *pulumi.Context, args *LookupImageArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getImage.
 type LookupImageArgs struct {
+	// Whether or not the image is hidden from public list.
+	Hidden *bool `pulumi:"hidden"`
 	// The status of the image. Must be one of
 	// "accepted", "pending", "rejected", or "all".
 	MemberStatus *string `pulumi:"memberStatus"`
@@ -96,7 +98,8 @@ type LookupImageResult struct {
 	DiskFormat string `pulumi:"diskFormat"`
 	// the trailing path after the glance endpoint that represent the
 	// location of the image or the path to retrieve it.
-	File string `pulumi:"file"`
+	File   string `pulumi:"file"`
+	Hidden *bool  `pulumi:"hidden"`
 	// The provider-assigned unique ID for this managed resource.
 	Id           string  `pulumi:"id"`
 	MemberStatus *string `pulumi:"memberStatus"`
