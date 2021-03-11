@@ -69,7 +69,7 @@ The following configuration points are available:
   `OS_TENANT_ID` or `OS_PROJECT_ID` environment variables are used.
 - `openstack:tenantName` - (Optional) The Name of the Tenant (Identity v2) or Project (Identity v3) to login with. If omitted, 
   the `OS_TENANT_NAME` or `OS_PROJECT_NAME` environment variable are used.
-- `openstack:tenantName` - (Optional) The Password to login with. If omitted, the
+- `openstack:password` - (Optional) The Password to login with. If omitted, the
   `OS_PASSWORD` environment variable is used.
 - `openstack:token` - (Optional) A token is an expiring, temporary means of access issued via the Keystone service. By specifying 
   a token, you do not have to specify a username/password combination, since the token was already created by a username/password 
