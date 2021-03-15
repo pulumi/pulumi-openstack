@@ -57,14 +57,14 @@ class GetImageIdsResult:
             raise TypeError("Expected argument 'sort_direction' to be a str")
         if sort_direction is not None:
             warnings.warn("""Use option 'sort' instead.""", DeprecationWarning)
-            pulumi.log.warn("sort_direction is deprecated: Use option 'sort' instead.")
+            pulumi.log.warn("""sort_direction is deprecated: Use option 'sort' instead.""")
 
         pulumi.set(__self__, "sort_direction", sort_direction)
         if sort_key and not isinstance(sort_key, str):
             raise TypeError("Expected argument 'sort_key' to be a str")
         if sort_key is not None:
             warnings.warn("""Use option 'sort' instead.""", DeprecationWarning)
-            pulumi.log.warn("sort_key is deprecated: Use option 'sort' instead.")
+            pulumi.log.warn("""sort_key is deprecated: Use option 'sort' instead.""")
 
         pulumi.set(__self__, "sort_key", sort_key)
         if tag and not isinstance(tag, str):

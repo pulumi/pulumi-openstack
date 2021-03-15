@@ -37,7 +37,7 @@ class GetSubnetResult:
             raise TypeError("Expected argument 'dhcp_disabled' to be a bool")
         if dhcp_disabled is not None:
             warnings.warn("""use dhcp_enabled instead""", DeprecationWarning)
-            pulumi.log.warn("dhcp_disabled is deprecated: use dhcp_enabled instead")
+            pulumi.log.warn("""dhcp_disabled is deprecated: use dhcp_enabled instead""")
 
         pulumi.set(__self__, "dhcp_disabled", dhcp_disabled)
         if dhcp_enabled and not isinstance(dhcp_enabled, bool):
