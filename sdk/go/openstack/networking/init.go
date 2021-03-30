@@ -31,6 +31,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r, err = NewNetwork(ctx, name, nil, pulumi.URN_(urn))
 	case "openstack:networking/port:Port":
 		r, err = NewPort(ctx, name, nil, pulumi.URN_(urn))
+	case "openstack:networking/portForwardingV2:PortForwardingV2":
+		r, err = NewPortForwardingV2(ctx, name, nil, pulumi.URN_(urn))
 	case "openstack:networking/portSecGroupAssociate:PortSecGroupAssociate":
 		r, err = NewPortSecGroupAssociate(ctx, name, nil, pulumi.URN_(urn))
 	case "openstack:networking/qosBandwidthLimitRule:QosBandwidthLimitRule":
@@ -98,6 +100,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"openstack",
 		"networking/port",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"openstack",
+		"networking/portForwardingV2",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

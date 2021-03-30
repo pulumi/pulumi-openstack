@@ -25,6 +25,7 @@ export * from "./getSubnetPool";
 export * from "./getTrunk";
 export * from "./network";
 export * from "./port";
+export * from "./portForwardingV2";
 export * from "./portSecGroupAssociate";
 export * from "./qosBandwidthLimitRule";
 export * from "./qosDscpMarkingRule";
@@ -48,6 +49,7 @@ import { FloatingIp } from "./floatingIp";
 import { FloatingIpAssociate } from "./floatingIpAssociate";
 import { Network } from "./network";
 import { Port } from "./port";
+import { PortForwardingV2 } from "./portForwardingV2";
 import { PortSecGroupAssociate } from "./portSecGroupAssociate";
 import { QosBandwidthLimitRule } from "./qosBandwidthLimitRule";
 import { QosDscpMarkingRule } from "./qosDscpMarkingRule";
@@ -79,6 +81,8 @@ const _module = {
                 return new Network(name, <any>undefined, { urn })
             case "openstack:networking/port:Port":
                 return new Port(name, <any>undefined, { urn })
+            case "openstack:networking/portForwardingV2:PortForwardingV2":
+                return new PortForwardingV2(name, <any>undefined, { urn })
             case "openstack:networking/portSecGroupAssociate:PortSecGroupAssociate":
                 return new PortSecGroupAssociate(name, <any>undefined, { urn })
             case "openstack:networking/qosBandwidthLimitRule:QosBandwidthLimitRule":
@@ -121,6 +125,7 @@ pulumi.runtime.registerResourceModule("openstack", "networking/floatingIp", _mod
 pulumi.runtime.registerResourceModule("openstack", "networking/floatingIpAssociate", _module)
 pulumi.runtime.registerResourceModule("openstack", "networking/network", _module)
 pulumi.runtime.registerResourceModule("openstack", "networking/port", _module)
+pulumi.runtime.registerResourceModule("openstack", "networking/portForwardingV2", _module)
 pulumi.runtime.registerResourceModule("openstack", "networking/portSecGroupAssociate", _module)
 pulumi.runtime.registerResourceModule("openstack", "networking/qosBandwidthLimitRule", _module)
 pulumi.runtime.registerResourceModule("openstack", "networking/qosDscpMarkingRule", _module)

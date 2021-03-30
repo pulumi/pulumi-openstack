@@ -23,6 +23,7 @@ from .get_subnet_pool import *
 from .get_trunk import *
 from .network import *
 from .port import *
+from .port_forwarding_v2 import *
 from .port_sec_group_associate import *
 from .qos_bandwidth_limit_rule import *
 from .qos_dscp_marking_rule import *
@@ -64,6 +65,8 @@ def _register_module():
                 return Network(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "openstack:networking/port:Port":
                 return Port(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "openstack:networking/portForwardingV2:PortForwardingV2":
+                return PortForwardingV2(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "openstack:networking/portSecGroupAssociate:PortSecGroupAssociate":
                 return PortSecGroupAssociate(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "openstack:networking/qosBandwidthLimitRule:QosBandwidthLimitRule":
@@ -106,6 +109,7 @@ def _register_module():
     pulumi.runtime.register_resource_module("openstack", "networking/floatingIpAssociate", _module_instance)
     pulumi.runtime.register_resource_module("openstack", "networking/network", _module_instance)
     pulumi.runtime.register_resource_module("openstack", "networking/port", _module_instance)
+    pulumi.runtime.register_resource_module("openstack", "networking/portForwardingV2", _module_instance)
     pulumi.runtime.register_resource_module("openstack", "networking/portSecGroupAssociate", _module_instance)
     pulumi.runtime.register_resource_module("openstack", "networking/qosBandwidthLimitRule", _module_instance)
     pulumi.runtime.register_resource_module("openstack", "networking/qosDscpMarkingRule", _module_instance)
