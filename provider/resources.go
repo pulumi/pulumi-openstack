@@ -143,6 +143,7 @@ func Provider() tfbridge.ProviderInfo {
 			"openstack_blockstorage_volume_attach_v3": {Tok: openstackResource(blockstorageMod, "VolumeAttach")},
 			"openstack_blockstorage_quotaset_v2":      {Tok: openstackResource(blockstorageMod, "QuoteSetV2")},
 			"openstack_blockstorage_quotaset_v3":      {Tok: openstackResource(blockstorageMod, "QuoteSetV3")},
+			"openstack_blockstorage_volume_type_v3":   {Tok: openstackResource(blockstorageMod, "VolumeTypeV3")},
 
 			// Compute
 			"openstack_compute_flavor_v2":               {Tok: openstackResource(computeMod, "Flavor")},
@@ -224,9 +225,10 @@ func Provider() tfbridge.ProviderInfo {
 			"openstack_networking_qos_minimum_bandwidth_rule_v2": {
 				Tok: openstackResource(networkingMod, "QosMinimumBandwidthRule"),
 			},
-			"openstack_networking_qos_policy_v2":  {Tok: openstackResource(networkingMod, "QosPolicy")},
-			"openstack_networking_rbac_policy_v2": {Tok: openstackResource(networkingMod, "RbacPolicyV2")},
-			"openstack_networking_quota_v2":       {Tok: openstackResource(networkingMod, "QuotaV2")},
+			"openstack_networking_qos_policy_v2":     {Tok: openstackResource(networkingMod, "QosPolicy")},
+			"openstack_networking_rbac_policy_v2":    {Tok: openstackResource(networkingMod, "RbacPolicyV2")},
+			"openstack_networking_quota_v2":          {Tok: openstackResource(networkingMod, "QuotaV2")},
+			"openstack_networking_portforwarding_v2": {Tok: openstackResource(networkingMod, "PortForwardingV2")},
 
 			// Load Balancer
 			"openstack_lb_member_v1":       {Tok: openstackResource(lbMod, "MemberV1")},

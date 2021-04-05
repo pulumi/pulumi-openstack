@@ -15,6 +15,7 @@ export * from "./quoteSetV3";
 export * from "./volume";
 export * from "./volumeAttach";
 export * from "./volumeAttachV2";
+export * from "./volumeTypeV3";
 export * from "./volumeV1";
 export * from "./volumeV2";
 
@@ -24,6 +25,7 @@ import { QuoteSetV3 } from "./quoteSetV3";
 import { Volume } from "./volume";
 import { VolumeAttach } from "./volumeAttach";
 import { VolumeAttachV2 } from "./volumeAttachV2";
+import { VolumeTypeV3 } from "./volumeTypeV3";
 import { VolumeV1 } from "./volumeV1";
 import { VolumeV2 } from "./volumeV2";
 
@@ -41,6 +43,8 @@ const _module = {
                 return new VolumeAttach(name, <any>undefined, { urn })
             case "openstack:blockstorage/volumeAttachV2:VolumeAttachV2":
                 return new VolumeAttachV2(name, <any>undefined, { urn })
+            case "openstack:blockstorage/volumeTypeV3:VolumeTypeV3":
+                return new VolumeTypeV3(name, <any>undefined, { urn })
             case "openstack:blockstorage/volumeV1:VolumeV1":
                 return new VolumeV1(name, <any>undefined, { urn })
             case "openstack:blockstorage/volumeV2:VolumeV2":
@@ -55,5 +59,6 @@ pulumi.runtime.registerResourceModule("openstack", "blockstorage/quoteSetV3", _m
 pulumi.runtime.registerResourceModule("openstack", "blockstorage/volume", _module)
 pulumi.runtime.registerResourceModule("openstack", "blockstorage/volumeAttach", _module)
 pulumi.runtime.registerResourceModule("openstack", "blockstorage/volumeAttachV2", _module)
+pulumi.runtime.registerResourceModule("openstack", "blockstorage/volumeTypeV3", _module)
 pulumi.runtime.registerResourceModule("openstack", "blockstorage/volumeV1", _module)
 pulumi.runtime.registerResourceModule("openstack", "blockstorage/volumeV2", _module)

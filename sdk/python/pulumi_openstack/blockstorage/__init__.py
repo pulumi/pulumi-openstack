@@ -13,6 +13,7 @@ from .quote_set_v3 import *
 from .volume import *
 from .volume_attach import *
 from .volume_attach_v2 import *
+from .volume_type_v3 import *
 from .volume_v1 import *
 from .volume_v2 import *
 from ._inputs import *
@@ -40,6 +41,8 @@ def _register_module():
                 return VolumeAttach(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "openstack:blockstorage/volumeAttachV2:VolumeAttachV2":
                 return VolumeAttachV2(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "openstack:blockstorage/volumeTypeV3:VolumeTypeV3":
+                return VolumeTypeV3(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "openstack:blockstorage/volumeV1:VolumeV1":
                 return VolumeV1(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "openstack:blockstorage/volumeV2:VolumeV2":
@@ -54,6 +57,7 @@ def _register_module():
     pulumi.runtime.register_resource_module("openstack", "blockstorage/volume", _module_instance)
     pulumi.runtime.register_resource_module("openstack", "blockstorage/volumeAttach", _module_instance)
     pulumi.runtime.register_resource_module("openstack", "blockstorage/volumeAttachV2", _module_instance)
+    pulumi.runtime.register_resource_module("openstack", "blockstorage/volumeTypeV3", _module_instance)
     pulumi.runtime.register_resource_module("openstack", "blockstorage/volumeV1", _module_instance)
     pulumi.runtime.register_resource_module("openstack", "blockstorage/volumeV2", _module_instance)
 

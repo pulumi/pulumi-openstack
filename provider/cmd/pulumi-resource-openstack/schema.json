@@ -3902,6 +3902,95 @@
                 "type": "object"
             }
         },
+        "openstack:blockstorage/volumeTypeV3:VolumeTypeV3": {
+            "description": "Manages a V3 block storage volume type resource within OpenStack.\n\n\u003e **Note:** This usually requires admin privileges.\n\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst volumeType1 = new openstack.blockstorage.VolumeTypeV3(\"volume_type_1\", {\n    description: \"Volume type 1\",\n    extraSpecs: {\n        capabilities: \"gpu\",\n        volume_backend_name: \"ssd\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nvolume_type1 = openstack.blockstorage.VolumeTypeV3(\"volumeType1\",\n    description=\"Volume type 1\",\n    extra_specs={\n        \"capabilities\": \"gpu\",\n        \"volume_backend_name\": \"ssd\",\n    })\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var volumeType1 = new OpenStack.BlockStorage.VolumeTypeV3(\"volumeType1\", new OpenStack.BlockStorage.VolumeTypeV3Args\n        {\n            Description = \"Volume type 1\",\n            ExtraSpecs = \n            {\n                { \"capabilities\", \"gpu\" },\n                { \"volume_backend_name\", \"ssd\" },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/blockstorage\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := blockstorage.NewVolumeTypeV3(ctx, \"volumeType1\", \u0026blockstorage.VolumeTypeV3Args{\n\t\t\tDescription: pulumi.String(\"Volume type 1\"),\n\t\t\tExtraSpecs: pulumi.StringMap{\n\t\t\t\t\"capabilities\":        pulumi.String(\"gpu\"),\n\t\t\t\t\"volume_backend_name\": pulumi.String(\"ssd\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nVolume types can be imported using the `volume_type_id`, e.g.\n\n```sh\n $ pulumi import openstack:blockstorage/volumeTypeV3:VolumeTypeV3 volume_type_1 941793f0-0a34-4bc4-b72e-a6326ae58283\n```\n\n ",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "Human-readable description of the port. Changing\nthis updates the `description` of an existing volume type.\n"
+                },
+                "extraSpecs": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Key/Value pairs of metadata for the volume type.\n"
+                },
+                "isPublic": {
+                    "type": "boolean",
+                    "description": "Whether the volume type is public. Changing\nthis updates the `is_public` of an existing volume type.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the volume type.  Changing this\nupdates the `name` of an existing volume type.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region in which to create the volume. If\nomitted, the `region` argument of the provider is used. Changing this\ncreates a new quotaset.\n"
+                }
+            },
+            "required": [
+                "description",
+                "extraSpecs",
+                "isPublic",
+                "name",
+                "region"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "Human-readable description of the port. Changing\nthis updates the `description` of an existing volume type.\n"
+                },
+                "extraSpecs": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Key/Value pairs of metadata for the volume type.\n"
+                },
+                "isPublic": {
+                    "type": "boolean",
+                    "description": "Whether the volume type is public. Changing\nthis updates the `is_public` of an existing volume type.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the volume type.  Changing this\nupdates the `name` of an existing volume type.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region in which to create the volume. If\nomitted, the `region` argument of the provider is used. Changing this\ncreates a new quotaset.\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering VolumeTypeV3 resources.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "Human-readable description of the port. Changing\nthis updates the `description` of an existing volume type.\n"
+                    },
+                    "extraSpecs": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "Key/Value pairs of metadata for the volume type.\n"
+                    },
+                    "isPublic": {
+                        "type": "boolean",
+                        "description": "Whether the volume type is public. Changing\nthis updates the `is_public` of an existing volume type.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the volume type.  Changing this\nupdates the `name` of an existing volume type.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region in which to create the volume. If\nomitted, the `region` argument of the provider is used. Changing this\ncreates a new quotaset.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "openstack:blockstorage/volumeV1:VolumeV1": {
             "description": "Manages a V1 volume resource within OpenStack.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst volume1 = new openstack.blockstorage.VolumeV1(\"volume_1\", {\n    description: \"first test volume\",\n    region: \"RegionOne\",\n    size: 3,\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nvolume1 = openstack.blockstorage.VolumeV1(\"volume1\",\n    description=\"first test volume\",\n    region=\"RegionOne\",\n    size=3)\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var volume1 = new OpenStack.BlockStorage.VolumeV1(\"volume1\", new OpenStack.BlockStorage.VolumeV1Args\n        {\n            Description = \"first test volume\",\n            Region = \"RegionOne\",\n            Size = 3,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/blockstorage\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := blockstorage.NewVolumeV1(ctx, \"volume1\", \u0026blockstorage.VolumeV1Args{\n\t\t\tDescription: pulumi.String(\"first test volume\"),\n\t\t\tRegion:      pulumi.String(\"RegionOne\"),\n\t\t\tSize:        pulumi.Int(3),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nVolumes can be imported using the `id`, e.g.\n\n```sh\n $ pulumi import openstack:blockstorage/volumeV1:VolumeV1 volume_1 ea257959-eeb1-4c10-8d33-26f0409a755d\n```\n\n ",
             "properties": {
@@ -12785,6 +12874,132 @@
                             "$ref": "pulumi.json#/Any"
                         },
                         "description": "Map of additional options.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "openstack:networking/portForwardingV2:PortForwardingV2": {
+            "description": "Manages a V2 portforwarding resource within OpenStack.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### Simple portforwarding\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst pf1 = new openstack.networking.PortForwardingV2(\"pf_1\", {\n    externalPort: 7233,\n    floatingipId: \"7a52eb59-7d47-415d-a884-046666a6fbae\",\n    internalPort: 25,\n    internalPortId: \"b930d7f6-ceb7-40a0-8b81-a425dd994ccf\",\n    protocol: \"tcp\",\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\npf1 = openstack.networking.PortForwardingV2(\"pf1\",\n    external_port=7233,\n    floatingip_id=\"7a52eb59-7d47-415d-a884-046666a6fbae\",\n    internal_port=25,\n    internal_port_id=\"b930d7f6-ceb7-40a0-8b81-a425dd994ccf\",\n    protocol=\"tcp\")\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var pf1 = new OpenStack.Networking.PortForwardingV2(\"pf1\", new OpenStack.Networking.PortForwardingV2Args\n        {\n            ExternalPort = 7233,\n            FloatingipId = \"7a52eb59-7d47-415d-a884-046666a6fbae\",\n            InternalPort = 25,\n            InternalPortId = \"b930d7f6-ceb7-40a0-8b81-a425dd994ccf\",\n            Protocol = \"tcp\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/networking\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := networking.NewPortForwardingV2(ctx, \"pf1\", \u0026networking.PortForwardingV2Args{\n\t\t\tExternalPort:   pulumi.Int(7233),\n\t\t\tFloatingipId:   pulumi.String(\"7a52eb59-7d47-415d-a884-046666a6fbae\"),\n\t\t\tInternalPort:   pulumi.Int(25),\n\t\t\tInternalPortId: pulumi.String(\"b930d7f6-ceb7-40a0-8b81-a425dd994ccf\"),\n\t\t\tProtocol:       pulumi.String(\"tcp\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "A text describing the port forwarding. Changing this\nupdates the `description` of an existing port forwarding.\n"
+                },
+                "externalPort": {
+                    "type": "integer",
+                    "description": "The TCP/UDP/other protocol port number of the port forwarding. Changing this\nupdates the `external_port` of an existing port forwarding.\n"
+                },
+                "floatingipId": {
+                    "type": "string",
+                    "description": "The ID of the Neutron floating IP address. Changing this creates a new port forwarding.\n"
+                },
+                "internalIpAddress": {
+                    "type": "string",
+                    "description": "The fixed IPv4 address of the Neutron port associated with the port forwarding.\nChanging this updates the `internal_ip_address` of an existing port forwarding.\n"
+                },
+                "internalPort": {
+                    "type": "integer",
+                    "description": "The TCP/UDP/other protocol port number of the Neutron port fixed IP address associated to the\nport forwarding. Changing this updates the `internal_port` of an existing port forwarding.\n"
+                },
+                "internalPortId": {
+                    "type": "string",
+                    "description": "The ID of the Neutron port associated with the port forwarding. Changing\nthis updates the `internal_port_id` of an existing port forwarding.\n"
+                },
+                "protocol": {
+                    "type": "string",
+                    "description": "The IP protocol used in the port forwarding. Changing this updates the `protocol`\nof an existing port forwarding.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region in which to obtain the V2 networking client.\nA networking client is needed to create a port forwarding. If omitted, the\n`region` argument of the provider is used. Changing this creates a new\nport forwarding.\n"
+                }
+            },
+            "required": [
+                "externalPort",
+                "floatingipId",
+                "internalIpAddress",
+                "internalPort",
+                "internalPortId",
+                "protocol",
+                "region"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "A text describing the port forwarding. Changing this\nupdates the `description` of an existing port forwarding.\n"
+                },
+                "externalPort": {
+                    "type": "integer",
+                    "description": "The TCP/UDP/other protocol port number of the port forwarding. Changing this\nupdates the `external_port` of an existing port forwarding.\n"
+                },
+                "floatingipId": {
+                    "type": "string",
+                    "description": "The ID of the Neutron floating IP address. Changing this creates a new port forwarding.\n"
+                },
+                "internalIpAddress": {
+                    "type": "string",
+                    "description": "The fixed IPv4 address of the Neutron port associated with the port forwarding.\nChanging this updates the `internal_ip_address` of an existing port forwarding.\n"
+                },
+                "internalPort": {
+                    "type": "integer",
+                    "description": "The TCP/UDP/other protocol port number of the Neutron port fixed IP address associated to the\nport forwarding. Changing this updates the `internal_port` of an existing port forwarding.\n"
+                },
+                "internalPortId": {
+                    "type": "string",
+                    "description": "The ID of the Neutron port associated with the port forwarding. Changing\nthis updates the `internal_port_id` of an existing port forwarding.\n"
+                },
+                "protocol": {
+                    "type": "string",
+                    "description": "The IP protocol used in the port forwarding. Changing this updates the `protocol`\nof an existing port forwarding.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region in which to obtain the V2 networking client.\nA networking client is needed to create a port forwarding. If omitted, the\n`region` argument of the provider is used. Changing this creates a new\nport forwarding.\n"
+                }
+            },
+            "requiredInputs": [
+                "externalPort",
+                "floatingipId",
+                "internalIpAddress",
+                "internalPort",
+                "internalPortId",
+                "protocol"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering PortForwardingV2 resources.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "A text describing the port forwarding. Changing this\nupdates the `description` of an existing port forwarding.\n"
+                    },
+                    "externalPort": {
+                        "type": "integer",
+                        "description": "The TCP/UDP/other protocol port number of the port forwarding. Changing this\nupdates the `external_port` of an existing port forwarding.\n"
+                    },
+                    "floatingipId": {
+                        "type": "string",
+                        "description": "The ID of the Neutron floating IP address. Changing this creates a new port forwarding.\n"
+                    },
+                    "internalIpAddress": {
+                        "type": "string",
+                        "description": "The fixed IPv4 address of the Neutron port associated with the port forwarding.\nChanging this updates the `internal_ip_address` of an existing port forwarding.\n"
+                    },
+                    "internalPort": {
+                        "type": "integer",
+                        "description": "The TCP/UDP/other protocol port number of the Neutron port fixed IP address associated to the\nport forwarding. Changing this updates the `internal_port` of an existing port forwarding.\n"
+                    },
+                    "internalPortId": {
+                        "type": "string",
+                        "description": "The ID of the Neutron port associated with the port forwarding. Changing\nthis updates the `internal_port_id` of an existing port forwarding.\n"
+                    },
+                    "protocol": {
+                        "type": "string",
+                        "description": "The IP protocol used in the port forwarding. Changing this updates the `protocol`\nof an existing port forwarding.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region in which to obtain the V2 networking client.\nA networking client is needed to create a port forwarding. If omitted, the\n`region` argument of the provider is used. Changing this creates a new\nport forwarding.\n"
                     }
                 },
                 "type": "object"
