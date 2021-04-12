@@ -5,13 +5,113 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['RbacPolicyV2']
+__all__ = ['RbacPolicyV2Args', 'RbacPolicyV2']
+
+@pulumi.input_type
+class RbacPolicyV2Args:
+    def __init__(__self__, *,
+                 action: pulumi.Input[str],
+                 object_id: pulumi.Input[str],
+                 object_type: pulumi.Input[str],
+                 target_tenant: pulumi.Input[str],
+                 region: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a RbacPolicyV2 resource.
+        :param pulumi.Input[str] action: Action for the RBAC policy. Can either be
+               `access_as_external` or `access_as_shared`.
+        :param pulumi.Input[str] object_id: The ID of the `object_type` resource. An
+               `object_type` of `network` returns a network ID and an `object_type` of
+               `qos_policy` returns a QoS ID.
+        :param pulumi.Input[str] object_type: The type of the object that the RBAC policy
+               affects. Can either be `qos-policy` or `network`.
+        :param pulumi.Input[str] target_tenant: The ID of the tenant to which the RBAC policy
+               will be enforced.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
+               A networking client is needed to configure a routing entry on a subnet. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               routing entry.
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "object_id", object_id)
+        pulumi.set(__self__, "object_type", object_type)
+        pulumi.set(__self__, "target_tenant", target_tenant)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter
+    def action(self) -> pulumi.Input[str]:
+        """
+        Action for the RBAC policy. Can either be
+        `access_as_external` or `access_as_shared`.
+        """
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: pulumi.Input[str]):
+        pulumi.set(self, "action", value)
+
+    @property
+    @pulumi.getter(name="objectId")
+    def object_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the `object_type` resource. An
+        `object_type` of `network` returns a network ID and an `object_type` of
+        `qos_policy` returns a QoS ID.
+        """
+        return pulumi.get(self, "object_id")
+
+    @object_id.setter
+    def object_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "object_id", value)
+
+    @property
+    @pulumi.getter(name="objectType")
+    def object_type(self) -> pulumi.Input[str]:
+        """
+        The type of the object that the RBAC policy
+        affects. Can either be `qos-policy` or `network`.
+        """
+        return pulumi.get(self, "object_type")
+
+    @object_type.setter
+    def object_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "object_type", value)
+
+    @property
+    @pulumi.getter(name="targetTenant")
+    def target_tenant(self) -> pulumi.Input[str]:
+        """
+        The ID of the tenant to which the RBAC policy
+        will be enforced.
+        """
+        return pulumi.get(self, "target_tenant")
+
+    @target_tenant.setter
+    def target_tenant(self, value: pulumi.Input[str]):
+        pulumi.set(self, "target_tenant", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V2 networking client.
+        A networking client is needed to configure a routing entry on a subnet. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        routing entry.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
 
 
 class RbacPolicyV2(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -76,6 +176,72 @@ class RbacPolicyV2(pulumi.CustomResource):
         :param pulumi.Input[str] target_tenant: The ID of the tenant to which the RBAC policy
                will be enforced.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: RbacPolicyV2Args,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        The RBAC policy resource contains functionality for working with Neutron RBAC
+        Policies. Role-Based Access Control (RBAC) policy framework enables both
+        operators and users to grant access to resources for specific projects.
+
+        Sharing an object with a specific project is accomplished by creating a
+        policy entry that permits the target project the `access_as_shared` action
+        on that object.
+
+        To make a network available as an external network for specific projects
+        rather than all projects, use the `access_as_external` action.
+        If a network is marked as external during creation, it now implicitly creates
+        a wildcard RBAC policy granting everyone access to preserve previous behavior
+        before this feature was added.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        network1 = openstack.networking.Network("network1", admin_state_up=True)
+        rbac_policy1 = openstack.networking.RbacPolicyV2("rbacPolicy1",
+            action="access_as_shared",
+            object_id=network1.id,
+            object_type="network",
+            target_tenant="20415a973c9e45d3917f078950644697")
+        ```
+
+        ## Import
+
+        RBAC policies can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:networking/rbacPolicyV2:RbacPolicyV2 rbac_policy_1 eae26a3e-1c33-4cc1-9c31-0cd729c438a1
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param RbacPolicyV2Args args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(RbacPolicyV2Args, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 action: Optional[pulumi.Input[str]] = None,
+                 object_id: Optional[pulumi.Input[str]] = None,
+                 object_type: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 target_tenant: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

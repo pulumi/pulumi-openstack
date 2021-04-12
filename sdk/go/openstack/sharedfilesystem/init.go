@@ -22,17 +22,18 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "openstack:sharedfilesystem/securityService:SecurityService":
-		r, err = NewSecurityService(ctx, name, nil, pulumi.URN_(urn))
+		r = &SecurityService{}
 	case "openstack:sharedfilesystem/share:Share":
-		r, err = NewShare(ctx, name, nil, pulumi.URN_(urn))
+		r = &Share{}
 	case "openstack:sharedfilesystem/shareAccess:ShareAccess":
-		r, err = NewShareAccess(ctx, name, nil, pulumi.URN_(urn))
+		r = &ShareAccess{}
 	case "openstack:sharedfilesystem/shareNetwork:ShareNetwork":
-		r, err = NewShareNetwork(ctx, name, nil, pulumi.URN_(urn))
+		r = &ShareNetwork{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

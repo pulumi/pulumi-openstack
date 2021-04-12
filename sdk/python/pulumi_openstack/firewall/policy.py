@@ -5,13 +5,175 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['Policy']
+__all__ = ['PolicyArgs', 'Policy']
+
+@pulumi.input_type
+class PolicyArgs:
+    def __init__(__self__, *,
+                 audited: Optional[pulumi.Input[bool]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 shared: Optional[pulumi.Input[bool]] = None,
+                 tenant_id: Optional[pulumi.Input[str]] = None,
+                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+        """
+        The set of arguments for constructing a Policy resource.
+        :param pulumi.Input[bool] audited: Audit status of the firewall policy
+               (must be "true" or "false" if provided - defaults to "false").
+               This status is set to "false" whenever the firewall policy or any of its
+               rules are changed. Changing this updates the `audited` status of an existing
+               firewall policy.
+        :param pulumi.Input[str] description: A description for the firewall policy. Changing
+               this updates the `description` of an existing firewall policy.
+        :param pulumi.Input[str] name: A name for the firewall policy. Changing this
+               updates the `name` of an existing firewall policy.
+        :param pulumi.Input[str] region: The region in which to obtain the v1 networking client.
+               A networking client is needed to create a firewall policy. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               firewall policy.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] rules: An array of one or more firewall rules that comprise
+               the policy. Changing this results in adding/removing rules from the
+               existing firewall policy.
+        :param pulumi.Input[bool] shared: Sharing status of the firewall policy (must be "true"
+               or "false" if provided). If this is "true" the policy is visible to, and
+               can be used in, firewalls in other tenants. Changing this updates the
+               `shared` status of an existing firewall policy. Only administrative users
+               can specify if the policy should be shared.
+        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
+        """
+        if audited is not None:
+            pulumi.set(__self__, "audited", audited)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+        if shared is not None:
+            pulumi.set(__self__, "shared", shared)
+        if tenant_id is not None:
+            pulumi.set(__self__, "tenant_id", tenant_id)
+        if value_specs is not None:
+            pulumi.set(__self__, "value_specs", value_specs)
+
+    @property
+    @pulumi.getter
+    def audited(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Audit status of the firewall policy
+        (must be "true" or "false" if provided - defaults to "false").
+        This status is set to "false" whenever the firewall policy or any of its
+        rules are changed. Changing this updates the `audited` status of an existing
+        firewall policy.
+        """
+        return pulumi.get(self, "audited")
+
+    @audited.setter
+    def audited(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "audited", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A description for the firewall policy. Changing
+        this updates the `description` of an existing firewall policy.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A name for the firewall policy. Changing this
+        updates the `name` of an existing firewall policy.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the v1 networking client.
+        A networking client is needed to create a firewall policy. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        firewall policy.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        An array of one or more firewall rules that comprise
+        the policy. Changing this results in adding/removing rules from the
+        existing firewall policy.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "rules", value)
+
+    @property
+    @pulumi.getter
+    def shared(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Sharing status of the firewall policy (must be "true"
+        or "false" if provided). If this is "true" the policy is visible to, and
+        can be used in, firewalls in other tenants. Changing this updates the
+        `shared` status of an existing firewall policy. Only administrative users
+        can specify if the policy should be shared.
+        """
+        return pulumi.get(self, "shared")
+
+    @shared.setter
+    def shared(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "shared", value)
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "tenant_id")
+
+    @tenant_id.setter
+    def tenant_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tenant_id", value)
+
+    @property
+    @pulumi.getter(name="valueSpecs")
+    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Map of additional options.
+        """
+        return pulumi.get(self, "value_specs")
+
+    @value_specs.setter
+    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "value_specs", value)
 
 
 class Policy(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -86,6 +248,73 @@ class Policy(pulumi.CustomResource):
                can specify if the policy should be shared.
         :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[PolicyArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Manages a v1 firewall policy resource within OpenStack.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        rule1 = openstack.firewall.Rule("rule1",
+            action="deny",
+            description="drop TELNET traffic",
+            destination_port="23",
+            enabled=True,
+            protocol="tcp")
+        rule2 = openstack.firewall.Rule("rule2",
+            action="deny",
+            description="drop NTP traffic",
+            destination_port="123",
+            enabled=False,
+            protocol="udp")
+        policy1 = openstack.firewall.Policy("policy1", rules=[
+            rule1.id,
+            rule2.id,
+        ])
+        ```
+
+        ## Import
+
+        Firewall Policies can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:firewall/policy:Policy policy_1 07f422e6-c596-474b-8b94-fe2c12506ce0
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param PolicyArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(PolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 audited: Optional[pulumi.Input[bool]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 shared: Optional[pulumi.Input[bool]] = None,
+                 tenant_id: Optional[pulumi.Input[str]] = None,
+                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

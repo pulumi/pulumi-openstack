@@ -22,35 +22,36 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "openstack:loadbalancer/l7PolicyV2:L7PolicyV2":
-		r, err = NewL7PolicyV2(ctx, name, nil, pulumi.URN_(urn))
+		r = &L7PolicyV2{}
 	case "openstack:loadbalancer/l7RuleV2:L7RuleV2":
-		r, err = NewL7RuleV2(ctx, name, nil, pulumi.URN_(urn))
+		r = &L7RuleV2{}
 	case "openstack:loadbalancer/listener:Listener":
-		r, err = NewListener(ctx, name, nil, pulumi.URN_(urn))
+		r = &Listener{}
 	case "openstack:loadbalancer/loadBalancer:LoadBalancer":
-		r, err = NewLoadBalancer(ctx, name, nil, pulumi.URN_(urn))
+		r = &LoadBalancer{}
 	case "openstack:loadbalancer/member:Member":
-		r, err = NewMember(ctx, name, nil, pulumi.URN_(urn))
+		r = &Member{}
 	case "openstack:loadbalancer/memberV1:MemberV1":
-		r, err = NewMemberV1(ctx, name, nil, pulumi.URN_(urn))
+		r = &MemberV1{}
 	case "openstack:loadbalancer/members:Members":
-		r, err = NewMembers(ctx, name, nil, pulumi.URN_(urn))
+		r = &Members{}
 	case "openstack:loadbalancer/monitor:Monitor":
-		r, err = NewMonitor(ctx, name, nil, pulumi.URN_(urn))
+		r = &Monitor{}
 	case "openstack:loadbalancer/monitorV1:MonitorV1":
-		r, err = NewMonitorV1(ctx, name, nil, pulumi.URN_(urn))
+		r = &MonitorV1{}
 	case "openstack:loadbalancer/pool:Pool":
-		r, err = NewPool(ctx, name, nil, pulumi.URN_(urn))
+		r = &Pool{}
 	case "openstack:loadbalancer/poolV1:PoolV1":
-		r, err = NewPoolV1(ctx, name, nil, pulumi.URN_(urn))
+		r = &PoolV1{}
 	case "openstack:loadbalancer/quota:Quota":
-		r, err = NewQuota(ctx, name, nil, pulumi.URN_(urn))
+		r = &Quota{}
 	case "openstack:loadbalancer/vip:Vip":
-		r, err = NewVip(ctx, name, nil, pulumi.URN_(urn))
+		r = &Vip{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

@@ -5,13 +5,107 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['ShareAccess']
+__all__ = ['ShareAccessArgs', 'ShareAccess']
+
+@pulumi.input_type
+class ShareAccessArgs:
+    def __init__(__self__, *,
+                 access_level: pulumi.Input[str],
+                 access_to: pulumi.Input[str],
+                 access_type: pulumi.Input[str],
+                 share_id: pulumi.Input[str],
+                 region: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a ShareAccess resource.
+        :param pulumi.Input[str] access_level: The access level to the share. Can either be `rw` or `ro`.
+        :param pulumi.Input[str] access_to: The value that defines the access. Can either be an IP
+               address or a username verified by configured Security Service of the Share Network.
+        :param pulumi.Input[str] access_type: The access rule type. Can either be an ip, user,
+               cert, or cephx. cephx support requires an OpenStack environment that supports
+               Shared Filesystem microversion 2.13 (Mitaka) or later.
+        :param pulumi.Input[str] share_id: The UUID of the share to which you are granted access.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Shared File System client.
+               A Shared File System client is needed to create a share access. Changing this
+               creates a new share access.
+        """
+        pulumi.set(__self__, "access_level", access_level)
+        pulumi.set(__self__, "access_to", access_to)
+        pulumi.set(__self__, "access_type", access_type)
+        pulumi.set(__self__, "share_id", share_id)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> pulumi.Input[str]:
+        """
+        The access level to the share. Can either be `rw` or `ro`.
+        """
+        return pulumi.get(self, "access_level")
+
+    @access_level.setter
+    def access_level(self, value: pulumi.Input[str]):
+        pulumi.set(self, "access_level", value)
+
+    @property
+    @pulumi.getter(name="accessTo")
+    def access_to(self) -> pulumi.Input[str]:
+        """
+        The value that defines the access. Can either be an IP
+        address or a username verified by configured Security Service of the Share Network.
+        """
+        return pulumi.get(self, "access_to")
+
+    @access_to.setter
+    def access_to(self, value: pulumi.Input[str]):
+        pulumi.set(self, "access_to", value)
+
+    @property
+    @pulumi.getter(name="accessType")
+    def access_type(self) -> pulumi.Input[str]:
+        """
+        The access rule type. Can either be an ip, user,
+        cert, or cephx. cephx support requires an OpenStack environment that supports
+        Shared Filesystem microversion 2.13 (Mitaka) or later.
+        """
+        return pulumi.get(self, "access_type")
+
+    @access_type.setter
+    def access_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "access_type", value)
+
+    @property
+    @pulumi.getter(name="shareId")
+    def share_id(self) -> pulumi.Input[str]:
+        """
+        The UUID of the share to which you are granted access.
+        """
+        return pulumi.get(self, "share_id")
+
+    @share_id.setter
+    def share_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "share_id", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V2 Shared File System client.
+        A Shared File System client is needed to create a share access. Changing this
+        creates a new share access.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
 
 
 class ShareAccess(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -45,6 +139,44 @@ class ShareAccess(pulumi.CustomResource):
                creates a new share access.
         :param pulumi.Input[str] share_id: The UUID of the share to which you are granted access.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ShareAccessArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## Import
+
+        This resource can be imported by specifying the ID of the share and the ID of the share access, separated by a slash, e.g.
+
+        ```sh
+         $ pulumi import openstack:sharedfilesystem/shareAccess:ShareAccess share_access_1 <share id>/<share access id>
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ShareAccessArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ShareAccessArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 access_level: Optional[pulumi.Input[str]] = None,
+                 access_to: Optional[pulumi.Input[str]] = None,
+                 access_type: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 share_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

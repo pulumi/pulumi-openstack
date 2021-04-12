@@ -5,13 +5,73 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['UserMembershipV3']
+__all__ = ['UserMembershipV3Args', 'UserMembershipV3']
+
+@pulumi.input_type
+class UserMembershipV3Args:
+    def __init__(__self__, *,
+                 group_id: pulumi.Input[str],
+                 user_id: pulumi.Input[str],
+                 region: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a UserMembershipV3 resource.
+        :param pulumi.Input[str] group_id: The UUID of group to which the user will be added.
+               Changing this creates a new user membership.
+        :param pulumi.Input[str] user_id: The UUID of user to use. Changing this creates a new user membership.
+        :param pulumi.Input[str] region: The region in which to obtain the V3 Identity client.
+               If omitted, the `region` argument of the provider is used.
+               Changing this creates a new user membership.
+        """
+        pulumi.set(__self__, "group_id", group_id)
+        pulumi.set(__self__, "user_id", user_id)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> pulumi.Input[str]:
+        """
+        The UUID of group to which the user will be added.
+        Changing this creates a new user membership.
+        """
+        return pulumi.get(self, "group_id")
+
+    @group_id.setter
+    def group_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "group_id", value)
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> pulumi.Input[str]:
+        """
+        The UUID of user to use. Changing this creates a new user membership.
+        """
+        return pulumi.get(self, "user_id")
+
+    @user_id.setter
+    def user_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "user_id", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V3 Identity client.
+        If omitted, the `region` argument of the provider is used.
+        Changing this creates a new user membership.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
 
 
 class UserMembershipV3(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -65,6 +125,68 @@ class UserMembershipV3(pulumi.CustomResource):
                Changing this creates a new user membership.
         :param pulumi.Input[str] user_id: The UUID of user to use. Changing this creates a new user membership.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: UserMembershipV3Args,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Manages a user membership to group V3 resource within OpenStack.
+
+        > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
+        this resource.
+
+        ***
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        project1 = openstack.identity.Project("project1")
+        user1 = openstack.identity.User("user1", default_project_id=project1.id)
+        group1 = openstack.identity.GroupV3("group1", description="group 1")
+        role1 = openstack.identity.Role("role1")
+        user_membership1 = openstack.identity.UserMembershipV3("userMembership1",
+            group_id=group1.id,
+            user_id=user1.id)
+        role_assignment1 = openstack.identity.RoleAssignment("roleAssignment1",
+            group_id=group1.id,
+            project_id=project1.id,
+            role_id=role1.id)
+        ```
+
+        ## Import
+
+        This resource can be imported by specifying all two arguments, separated by a forward slash
+
+        ```sh
+         $ pulumi import openstack:identity/userMembershipV3:UserMembershipV3 user_membership_1 <user_id>/<group_id>
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param UserMembershipV3Args args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(UserMembershipV3Args, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 group_id: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 user_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

@@ -22,15 +22,16 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "openstack:keymanager/containerV1:ContainerV1":
-		r, err = NewContainerV1(ctx, name, nil, pulumi.URN_(urn))
+		r = &ContainerV1{}
 	case "openstack:keymanager/orderV1:OrderV1":
-		r, err = NewOrderV1(ctx, name, nil, pulumi.URN_(urn))
+		r = &OrderV1{}
 	case "openstack:keymanager/secretV1:SecretV1":
-		r, err = NewSecretV1(ctx, name, nil, pulumi.URN_(urn))
+		r = &SecretV1{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

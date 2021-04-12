@@ -5,15 +5,227 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['SecretV1']
+__all__ = ['SecretV1Args', 'SecretV1']
+
+@pulumi.input_type
+class SecretV1Args:
+    def __init__(__self__, *,
+                 acl: Optional[pulumi.Input['SecretV1AclArgs']] = None,
+                 algorithm: Optional[pulumi.Input[str]] = None,
+                 bit_length: Optional[pulumi.Input[int]] = None,
+                 expiration: Optional[pulumi.Input[str]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 mode: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 payload: Optional[pulumi.Input[str]] = None,
+                 payload_content_encoding: Optional[pulumi.Input[str]] = None,
+                 payload_content_type: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 secret_type: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a SecretV1 resource.
+        :param pulumi.Input['SecretV1AclArgs'] acl: Allows to control an access to a secret. Currently only the
+               `read` operation is supported. If not specified, the secret is accessible
+               project wide.
+        :param pulumi.Input[str] algorithm: Metadata provided by a user or system for informational purposes.
+        :param pulumi.Input[int] bit_length: Metadata provided by a user or system for informational purposes.
+        :param pulumi.Input[str] expiration: The expiration time of the secret in the RFC3339 timestamp format (e.g. `2019-03-09T12:58:49Z`). If omitted, a secret will never expire. Changing this creates a new secret.
+        :param pulumi.Input[Mapping[str, Any]] metadata: Additional Metadata for the secret.
+        :param pulumi.Input[str] mode: Metadata provided by a user or system for informational purposes.
+        :param pulumi.Input[str] name: Human-readable name for the Secret. Does not have
+               to be unique.
+        :param pulumi.Input[str] payload: The secret's data to be stored. **payload\_content\_type** must also be supplied if **payload** is included.
+        :param pulumi.Input[str] payload_content_encoding: (required if **payload** is encoded) The encoding used for the payload to be able to include it in the JSON request. Must be either `base64` or `binary`.
+        :param pulumi.Input[str] payload_content_type: (required if **payload** is included) The media type for the content of the payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.
+        :param pulumi.Input[str] region: The region in which to obtain the V1 KeyManager client.
+               A KeyManager client is needed to create a secret. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               V1 secret.
+        :param pulumi.Input[str] secret_type: Used to indicate the type of secret being stored. For more information see [Secret types](https://docs.openstack.org/barbican/latest/api/reference/secret_types.html).
+        """
+        if acl is not None:
+            pulumi.set(__self__, "acl", acl)
+        if algorithm is not None:
+            pulumi.set(__self__, "algorithm", algorithm)
+        if bit_length is not None:
+            pulumi.set(__self__, "bit_length", bit_length)
+        if expiration is not None:
+            pulumi.set(__self__, "expiration", expiration)
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if payload is not None:
+            pulumi.set(__self__, "payload", payload)
+        if payload_content_encoding is not None:
+            pulumi.set(__self__, "payload_content_encoding", payload_content_encoding)
+        if payload_content_type is not None:
+            pulumi.set(__self__, "payload_content_type", payload_content_type)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if secret_type is not None:
+            pulumi.set(__self__, "secret_type", secret_type)
+
+    @property
+    @pulumi.getter
+    def acl(self) -> Optional[pulumi.Input['SecretV1AclArgs']]:
+        """
+        Allows to control an access to a secret. Currently only the
+        `read` operation is supported. If not specified, the secret is accessible
+        project wide.
+        """
+        return pulumi.get(self, "acl")
+
+    @acl.setter
+    def acl(self, value: Optional[pulumi.Input['SecretV1AclArgs']]):
+        pulumi.set(self, "acl", value)
+
+    @property
+    @pulumi.getter
+    def algorithm(self) -> Optional[pulumi.Input[str]]:
+        """
+        Metadata provided by a user or system for informational purposes.
+        """
+        return pulumi.get(self, "algorithm")
+
+    @algorithm.setter
+    def algorithm(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "algorithm", value)
+
+    @property
+    @pulumi.getter(name="bitLength")
+    def bit_length(self) -> Optional[pulumi.Input[int]]:
+        """
+        Metadata provided by a user or system for informational purposes.
+        """
+        return pulumi.get(self, "bit_length")
+
+    @bit_length.setter
+    def bit_length(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "bit_length", value)
+
+    @property
+    @pulumi.getter
+    def expiration(self) -> Optional[pulumi.Input[str]]:
+        """
+        The expiration time of the secret in the RFC3339 timestamp format (e.g. `2019-03-09T12:58:49Z`). If omitted, a secret will never expire. Changing this creates a new secret.
+        """
+        return pulumi.get(self, "expiration")
+
+    @expiration.setter
+    def expiration(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expiration", value)
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Additional Metadata for the secret.
+        """
+        return pulumi.get(self, "metadata")
+
+    @metadata.setter
+    def metadata(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "metadata", value)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Metadata provided by a user or system for informational purposes.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mode", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Human-readable name for the Secret. Does not have
+        to be unique.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def payload(self) -> Optional[pulumi.Input[str]]:
+        """
+        The secret's data to be stored. **payload\_content\_type** must also be supplied if **payload** is included.
+        """
+        return pulumi.get(self, "payload")
+
+    @payload.setter
+    def payload(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "payload", value)
+
+    @property
+    @pulumi.getter(name="payloadContentEncoding")
+    def payload_content_encoding(self) -> Optional[pulumi.Input[str]]:
+        """
+        (required if **payload** is encoded) The encoding used for the payload to be able to include it in the JSON request. Must be either `base64` or `binary`.
+        """
+        return pulumi.get(self, "payload_content_encoding")
+
+    @payload_content_encoding.setter
+    def payload_content_encoding(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "payload_content_encoding", value)
+
+    @property
+    @pulumi.getter(name="payloadContentType")
+    def payload_content_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        (required if **payload** is included) The media type for the content of the payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.
+        """
+        return pulumi.get(self, "payload_content_type")
+
+    @payload_content_type.setter
+    def payload_content_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "payload_content_type", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V1 KeyManager client.
+        A KeyManager client is needed to create a secret. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        V1 secret.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="secretType")
+    def secret_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Used to indicate the type of secret being stored. For more information see [Secret types](https://docs.openstack.org/barbican/latest/api/reference/secret_types.html).
+        """
+        return pulumi.get(self, "secret_type")
+
+    @secret_type.setter
+    def secret_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secret_type", value)
 
 
 class SecretV1(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -62,6 +274,51 @@ class SecretV1(pulumi.CustomResource):
                V1 secret.
         :param pulumi.Input[str] secret_type: Used to indicate the type of secret being stored. For more information see [Secret types](https://docs.openstack.org/barbican/latest/api/reference/secret_types.html).
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[SecretV1Args] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## Import
+
+        Secrets can be imported using the secret id (the last part of the secret reference), e.g.
+
+        ```sh
+         $ pulumi import openstack:keymanager/secretV1:SecretV1 secret_1 8a7a79c2-cf17-4e65-b2ae-ddc8bfcf6c74
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param SecretV1Args args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(SecretV1Args, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 acl: Optional[pulumi.Input[pulumi.InputType['SecretV1AclArgs']]] = None,
+                 algorithm: Optional[pulumi.Input[str]] = None,
+                 bit_length: Optional[pulumi.Input[int]] = None,
+                 expiration: Optional[pulumi.Input[str]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 mode: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 payload: Optional[pulumi.Input[str]] = None,
+                 payload_content_encoding: Optional[pulumi.Input[str]] = None,
+                 payload_content_type: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 secret_type: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

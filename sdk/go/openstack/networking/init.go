@@ -22,53 +22,54 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "openstack:networking/addressScope:AddressScope":
-		r, err = NewAddressScope(ctx, name, nil, pulumi.URN_(urn))
+		r = &AddressScope{}
 	case "openstack:networking/floatingIp:FloatingIp":
-		r, err = NewFloatingIp(ctx, name, nil, pulumi.URN_(urn))
+		r = &FloatingIp{}
 	case "openstack:networking/floatingIpAssociate:FloatingIpAssociate":
-		r, err = NewFloatingIpAssociate(ctx, name, nil, pulumi.URN_(urn))
+		r = &FloatingIpAssociate{}
 	case "openstack:networking/network:Network":
-		r, err = NewNetwork(ctx, name, nil, pulumi.URN_(urn))
+		r = &Network{}
 	case "openstack:networking/port:Port":
-		r, err = NewPort(ctx, name, nil, pulumi.URN_(urn))
+		r = &Port{}
 	case "openstack:networking/portForwardingV2:PortForwardingV2":
-		r, err = NewPortForwardingV2(ctx, name, nil, pulumi.URN_(urn))
+		r = &PortForwardingV2{}
 	case "openstack:networking/portSecGroupAssociate:PortSecGroupAssociate":
-		r, err = NewPortSecGroupAssociate(ctx, name, nil, pulumi.URN_(urn))
+		r = &PortSecGroupAssociate{}
 	case "openstack:networking/qosBandwidthLimitRule:QosBandwidthLimitRule":
-		r, err = NewQosBandwidthLimitRule(ctx, name, nil, pulumi.URN_(urn))
+		r = &QosBandwidthLimitRule{}
 	case "openstack:networking/qosDscpMarkingRule:QosDscpMarkingRule":
-		r, err = NewQosDscpMarkingRule(ctx, name, nil, pulumi.URN_(urn))
+		r = &QosDscpMarkingRule{}
 	case "openstack:networking/qosMinimumBandwidthRule:QosMinimumBandwidthRule":
-		r, err = NewQosMinimumBandwidthRule(ctx, name, nil, pulumi.URN_(urn))
+		r = &QosMinimumBandwidthRule{}
 	case "openstack:networking/qosPolicy:QosPolicy":
-		r, err = NewQosPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &QosPolicy{}
 	case "openstack:networking/quotaV2:QuotaV2":
-		r, err = NewQuotaV2(ctx, name, nil, pulumi.URN_(urn))
+		r = &QuotaV2{}
 	case "openstack:networking/rbacPolicyV2:RbacPolicyV2":
-		r, err = NewRbacPolicyV2(ctx, name, nil, pulumi.URN_(urn))
+		r = &RbacPolicyV2{}
 	case "openstack:networking/router:Router":
-		r, err = NewRouter(ctx, name, nil, pulumi.URN_(urn))
+		r = &Router{}
 	case "openstack:networking/routerInterface:RouterInterface":
-		r, err = NewRouterInterface(ctx, name, nil, pulumi.URN_(urn))
+		r = &RouterInterface{}
 	case "openstack:networking/routerRoute:RouterRoute":
-		r, err = NewRouterRoute(ctx, name, nil, pulumi.URN_(urn))
+		r = &RouterRoute{}
 	case "openstack:networking/secGroup:SecGroup":
-		r, err = NewSecGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &SecGroup{}
 	case "openstack:networking/secGroupRule:SecGroupRule":
-		r, err = NewSecGroupRule(ctx, name, nil, pulumi.URN_(urn))
+		r = &SecGroupRule{}
 	case "openstack:networking/subnet:Subnet":
-		r, err = NewSubnet(ctx, name, nil, pulumi.URN_(urn))
+		r = &Subnet{}
 	case "openstack:networking/subnetPool:SubnetPool":
-		r, err = NewSubnetPool(ctx, name, nil, pulumi.URN_(urn))
+		r = &SubnetPool{}
 	case "openstack:networking/subnetRoute:SubnetRoute":
-		r, err = NewSubnetRoute(ctx, name, nil, pulumi.URN_(urn))
+		r = &SubnetRoute{}
 	case "openstack:networking/trunk:Trunk":
-		r, err = NewTrunk(ctx, name, nil, pulumi.URN_(urn))
+		r = &Trunk{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

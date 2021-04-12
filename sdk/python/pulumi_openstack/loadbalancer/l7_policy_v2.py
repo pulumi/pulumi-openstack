@@ -5,13 +5,201 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['L7PolicyV2']
+__all__ = ['L7PolicyV2Args', 'L7PolicyV2']
+
+@pulumi.input_type
+class L7PolicyV2Args:
+    def __init__(__self__, *,
+                 action: pulumi.Input[str],
+                 listener_id: pulumi.Input[str],
+                 admin_state_up: Optional[pulumi.Input[bool]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 position: Optional[pulumi.Input[int]] = None,
+                 redirect_pool_id: Optional[pulumi.Input[str]] = None,
+                 redirect_url: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 tenant_id: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a L7PolicyV2 resource.
+        :param pulumi.Input[str] action: The L7 Policy action - can either be REDIRECT\_TO\_POOL,
+               REDIRECT\_TO\_URL or REJECT.
+        :param pulumi.Input[str] listener_id: The Listener on which the L7 Policy will be associated with.
+               Changing this creates a new L7 Policy.
+        :param pulumi.Input[bool] admin_state_up: The administrative state of the L7 Policy.
+               A valid value is true (UP) or false (DOWN).
+        :param pulumi.Input[str] description: Human-readable description for the L7 Policy.
+        :param pulumi.Input[str] name: Human-readable name for the L7 Policy. Does not have
+               to be unique.
+        :param pulumi.Input[int] position: The position of this policy on the listener. Positions start at 1.
+        :param pulumi.Input[str] redirect_pool_id: Requests matching this policy will be redirected to the
+               pool with this ID. Only valid if action is REDIRECT\_TO\_POOL.
+        :param pulumi.Input[str] redirect_url: Requests matching this policy will be redirected to this URL.
+               Only valid if action is REDIRECT\_TO\_URL.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
+               A Networking client is needed to create an . If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               L7 Policy.
+        :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
+               the L7 Policy.  Only administrative users can specify a tenant UUID
+               other than their own. Changing this creates a new L7 Policy.
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "listener_id", listener_id)
+        if admin_state_up is not None:
+            pulumi.set(__self__, "admin_state_up", admin_state_up)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if position is not None:
+            pulumi.set(__self__, "position", position)
+        if redirect_pool_id is not None:
+            pulumi.set(__self__, "redirect_pool_id", redirect_pool_id)
+        if redirect_url is not None:
+            pulumi.set(__self__, "redirect_url", redirect_url)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if tenant_id is not None:
+            pulumi.set(__self__, "tenant_id", tenant_id)
+
+    @property
+    @pulumi.getter
+    def action(self) -> pulumi.Input[str]:
+        """
+        The L7 Policy action - can either be REDIRECT\_TO\_POOL,
+        REDIRECT\_TO\_URL or REJECT.
+        """
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: pulumi.Input[str]):
+        pulumi.set(self, "action", value)
+
+    @property
+    @pulumi.getter(name="listenerId")
+    def listener_id(self) -> pulumi.Input[str]:
+        """
+        The Listener on which the L7 Policy will be associated with.
+        Changing this creates a new L7 Policy.
+        """
+        return pulumi.get(self, "listener_id")
+
+    @listener_id.setter
+    def listener_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "listener_id", value)
+
+    @property
+    @pulumi.getter(name="adminStateUp")
+    def admin_state_up(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The administrative state of the L7 Policy.
+        A valid value is true (UP) or false (DOWN).
+        """
+        return pulumi.get(self, "admin_state_up")
+
+    @admin_state_up.setter
+    def admin_state_up(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "admin_state_up", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Human-readable description for the L7 Policy.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Human-readable name for the L7 Policy. Does not have
+        to be unique.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def position(self) -> Optional[pulumi.Input[int]]:
+        """
+        The position of this policy on the listener. Positions start at 1.
+        """
+        return pulumi.get(self, "position")
+
+    @position.setter
+    def position(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "position", value)
+
+    @property
+    @pulumi.getter(name="redirectPoolId")
+    def redirect_pool_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Requests matching this policy will be redirected to the
+        pool with this ID. Only valid if action is REDIRECT\_TO\_POOL.
+        """
+        return pulumi.get(self, "redirect_pool_id")
+
+    @redirect_pool_id.setter
+    def redirect_pool_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "redirect_pool_id", value)
+
+    @property
+    @pulumi.getter(name="redirectUrl")
+    def redirect_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        Requests matching this policy will be redirected to this URL.
+        Only valid if action is REDIRECT\_TO\_URL.
+        """
+        return pulumi.get(self, "redirect_url")
+
+    @redirect_url.setter
+    def redirect_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "redirect_url", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V2 Networking client.
+        A Networking client is needed to create an . If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        L7 Policy.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required for admins. The UUID of the tenant who owns
+        the L7 Policy.  Only administrative users can specify a tenant UUID
+        other than their own. Changing this creates a new L7 Policy.
+        """
+        return pulumi.get(self, "tenant_id")
+
+    @tenant_id.setter
+    def tenant_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tenant_id", value)
 
 
 class L7PolicyV2(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -91,6 +279,79 @@ class L7PolicyV2(pulumi.CustomResource):
                the L7 Policy.  Only administrative users can specify a tenant UUID
                other than their own. Changing this creates a new L7 Policy.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: L7PolicyV2Args,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Manages a Load Balancer L7 Policy resource within OpenStack.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        network1 = openstack.networking.Network("network1", admin_state_up=True)
+        subnet1 = openstack.networking.Subnet("subnet1",
+            cidr="192.168.199.0/24",
+            ip_version=4,
+            network_id=network1.id)
+        loadbalancer1 = openstack.loadbalancer.LoadBalancer("loadbalancer1", vip_subnet_id=subnet1.id)
+        listener1 = openstack.loadbalancer.Listener("listener1",
+            loadbalancer_id=loadbalancer1.id,
+            protocol="HTTP",
+            protocol_port=8080)
+        pool1 = openstack.loadbalancer.Pool("pool1",
+            lb_method="ROUND_ROBIN",
+            loadbalancer_id=loadbalancer1.id,
+            protocol="HTTP")
+        l7policy1 = openstack.loadbalancer.L7PolicyV2("l7policy1",
+            action="REDIRECT_TO_POOL",
+            description="test l7 policy",
+            listener_id=listener1.id,
+            position=1,
+            redirect_pool_id=pool1.id)
+        ```
+
+        ## Import
+
+        Load Balancer L7 Policy can be imported using the L7 Policy ID, e.g.
+
+        ```sh
+         $ pulumi import openstack:loadbalancer/l7PolicyV2:L7PolicyV2 l7policy_1 8a7a79c2-cf17-4e65-b2ae-ddc8bfcf6c74
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param L7PolicyV2Args args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(L7PolicyV2Args, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 action: Optional[pulumi.Input[str]] = None,
+                 admin_state_up: Optional[pulumi.Input[bool]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 listener_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 position: Optional[pulumi.Input[int]] = None,
+                 redirect_pool_id: Optional[pulumi.Input[str]] = None,
+                 redirect_url: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 tenant_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

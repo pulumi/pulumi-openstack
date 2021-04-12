@@ -5,15 +5,105 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Configuration']
+__all__ = ['ConfigurationArgs', 'Configuration']
+
+@pulumi.input_type
+class ConfigurationArgs:
+    def __init__(__self__, *,
+                 datastore: pulumi.Input['ConfigurationDatastoreArgs'],
+                 description: pulumi.Input[str],
+                 configurations: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigurationConfigurationArgs']]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Configuration resource.
+        :param pulumi.Input['ConfigurationDatastoreArgs'] datastore: An array of database engine type and version. The datastore
+               object structure is documented below. Changing this creates resource.
+        :param pulumi.Input[str] description: Description of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input['ConfigurationConfigurationArgs']]] configurations: An array of configuration parameter name and value. Can be specified multiple times. The configuration object structure is documented below.
+        :param pulumi.Input[str] name: Configuration parameter name. Changing this creates a new resource.
+        :param pulumi.Input[str] region: The region in which to create the db instance. Changing this
+               creates a new instance.
+        """
+        pulumi.set(__self__, "datastore", datastore)
+        pulumi.set(__self__, "description", description)
+        if configurations is not None:
+            pulumi.set(__self__, "configurations", configurations)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter
+    def datastore(self) -> pulumi.Input['ConfigurationDatastoreArgs']:
+        """
+        An array of database engine type and version. The datastore
+        object structure is documented below. Changing this creates resource.
+        """
+        return pulumi.get(self, "datastore")
+
+    @datastore.setter
+    def datastore(self, value: pulumi.Input['ConfigurationDatastoreArgs']):
+        pulumi.set(self, "datastore", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[str]:
+        """
+        Description of the resource.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[str]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def configurations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConfigurationConfigurationArgs']]]]:
+        """
+        An array of configuration parameter name and value. Can be specified multiple times. The configuration object structure is documented below.
+        """
+        return pulumi.get(self, "configurations")
+
+    @configurations.setter
+    def configurations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigurationConfigurationArgs']]]]):
+        pulumi.set(self, "configurations", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Configuration parameter name. Changing this creates a new resource.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to create the db instance. Changing this
+        creates a new instance.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
 
 
 class Configuration(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -57,6 +147,57 @@ class Configuration(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region in which to create the db instance. Changing this
                creates a new instance.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ConfigurationArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Manages a V1 DB configuration resource within OpenStack.
+
+        ## Example Usage
+        ### Configuration
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        test = openstack.database.Configuration("test",
+            configurations=[openstack.database.ConfigurationConfigurationArgs(
+                name="max_connections",
+                value="200",
+            )],
+            datastore=openstack.database.ConfigurationDatastoreArgs(
+                type="mysql",
+                version="mysql-5.7",
+            ),
+            description="description")
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ConfigurationArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ConfigurationArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 configurations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigurationConfigurationArgs']]]]] = None,
+                 datastore: Optional[pulumi.Input[pulumi.InputType['ConfigurationDatastoreArgs']]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

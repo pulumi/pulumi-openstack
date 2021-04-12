@@ -5,13 +5,62 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['FloatingIp']
+__all__ = ['FloatingIpArgs', 'FloatingIp']
+
+@pulumi.input_type
+class FloatingIpArgs:
+    def __init__(__self__, *,
+                 pool: pulumi.Input[str],
+                 region: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a FloatingIp resource.
+        :param pulumi.Input[str] pool: The name of the pool from which to obtain the floating
+               IP. Changing this creates a new floating IP.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Compute client.
+               A Compute client is needed to create a floating IP that can be used with
+               a compute instance. If omitted, the `region` argument of the provider
+               is used. Changing this creates a new floating IP (which may or may not
+               have a different address).
+        """
+        pulumi.set(__self__, "pool", pool)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter
+    def pool(self) -> pulumi.Input[str]:
+        """
+        The name of the pool from which to obtain the floating
+        IP. Changing this creates a new floating IP.
+        """
+        return pulumi.get(self, "pool")
+
+    @pool.setter
+    def pool(self, value: pulumi.Input[str]):
+        pulumi.set(self, "pool", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V2 Compute client.
+        A Compute client is needed to create a floating IP that can be used with
+        a compute instance. If omitted, the `region` argument of the provider
+        is used. Changing this creates a new floating IP (which may or may not
+        have a different address).
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
 
 
 class FloatingIp(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -56,6 +105,58 @@ class FloatingIp(pulumi.CustomResource):
                is used. Changing this creates a new floating IP (which may or may not
                have a different address).
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: FloatingIpArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Manages a V2 floating IP resource within OpenStack Nova (compute)
+        that can be used for compute instances.
+
+        Please note that managing floating IPs through the OpenStack Compute API has
+        been deprecated. Unless you are using an older OpenStack environment, it is
+        recommended to use the `networking.FloatingIp`
+        resource instead, which uses the OpenStack Networking API.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        floatip1 = openstack.compute.FloatingIp("floatip1", pool="public")
+        ```
+
+        ## Import
+
+        Floating IPs can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:compute/floatingIp:FloatingIp floatip_1 89c60255-9bd6-460c-822a-e2b959ede9d2
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param FloatingIpArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(FloatingIpArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 pool: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

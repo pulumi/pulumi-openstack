@@ -5,13 +5,101 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['Keypair']
+__all__ = ['KeypairArgs', 'Keypair']
+
+@pulumi.input_type
+class KeypairArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 public_key: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+        """
+        The set of arguments for constructing a Keypair resource.
+        :param pulumi.Input[str] name: A unique name for the keypair. Changing this creates a new
+               keypair.
+        :param pulumi.Input[str] public_key: A pregenerated OpenSSH-formatted public key.
+               Changing this creates a new keypair. If a public key is not specified, then
+               a public/private key pair will be automatically generated. If a pair is
+               created, then destroying this resource means you will lose access to that
+               keypair forever.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Compute client.
+               Keypairs are associated with accounts, but a Compute client is needed to
+               create one. If omitted, the `region` argument of the provider is used.
+               Changing this creates a new keypair.
+        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if public_key is not None:
+            pulumi.set(__self__, "public_key", public_key)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if value_specs is not None:
+            pulumi.set(__self__, "value_specs", value_specs)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A unique name for the keypair. Changing this creates a new
+        keypair.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="publicKey")
+    def public_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        A pregenerated OpenSSH-formatted public key.
+        Changing this creates a new keypair. If a public key is not specified, then
+        a public/private key pair will be automatically generated. If a pair is
+        created, then destroying this resource means you will lose access to that
+        keypair forever.
+        """
+        return pulumi.get(self, "public_key")
+
+    @public_key.setter
+    def public_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "public_key", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V2 Compute client.
+        Keypairs are associated with accounts, but a Compute client is needed to
+        create one. If omitted, the `region` argument of the provider is used.
+        Changing this creates a new keypair.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="valueSpecs")
+    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Map of additional options.
+        """
+        return pulumi.get(self, "value_specs")
+
+    @value_specs.setter
+    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "value_specs", value)
 
 
 class Keypair(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -46,6 +134,43 @@ class Keypair(pulumi.CustomResource):
                Changing this creates a new keypair.
         :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[KeypairArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## Import
+
+        Keypairs can be imported using the `name`, e.g.
+
+        ```sh
+         $ pulumi import openstack:compute/keypair:Keypair my-keypair test-keypair
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param KeypairArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(KeypairArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 public_key: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

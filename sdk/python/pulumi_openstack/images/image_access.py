@@ -5,13 +5,91 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['ImageAccess']
+__all__ = ['ImageAccessArgs', 'ImageAccess']
+
+@pulumi.input_type
+class ImageAccessArgs:
+    def __init__(__self__, *,
+                 image_id: pulumi.Input[str],
+                 member_id: pulumi.Input[str],
+                 region: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a ImageAccess resource.
+        :param pulumi.Input[str] image_id: The image ID.
+        :param pulumi.Input[str] member_id: The member ID, e.g. the target project ID.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Glance client.
+               A Glance client is needed to manage Image members. If omitted, the `region`
+               argument of the provider is used. Changing this creates a new resource.
+        :param pulumi.Input[str] status: The member proposal status. Optional if admin wants to
+               force the member proposal acceptance. Can either be `accepted`, `rejected` or
+               `pending`. Defaults to `pending`. Foridden for non-admin users.
+        """
+        pulumi.set(__self__, "image_id", image_id)
+        pulumi.set(__self__, "member_id", member_id)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="imageId")
+    def image_id(self) -> pulumi.Input[str]:
+        """
+        The image ID.
+        """
+        return pulumi.get(self, "image_id")
+
+    @image_id.setter
+    def image_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "image_id", value)
+
+    @property
+    @pulumi.getter(name="memberId")
+    def member_id(self) -> pulumi.Input[str]:
+        """
+        The member ID, e.g. the target project ID.
+        """
+        return pulumi.get(self, "member_id")
+
+    @member_id.setter
+    def member_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "member_id", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V2 Glance client.
+        A Glance client is needed to manage Image members. If omitted, the `region`
+        argument of the provider is used. Changing this creates a new resource.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The member proposal status. Optional if admin wants to
+        force the member proposal acceptance. Can either be `accepted`, `rejected` or
+        `pending`. Defaults to `pending`. Foridden for non-admin users.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
 
 
 class ImageAccess(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -90,6 +168,91 @@ class ImageAccess(pulumi.CustomResource):
                force the member proposal acceptance. Can either be `accepted`, `rejected` or
                `pending`. Defaults to `pending`. Foridden for non-admin users.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ImageAccessArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Manages members for the shared OpenStack Glance V2 Image within the source
+        project, which owns the Image.
+
+        ## Example Usage
+        ### Unprivileged user
+
+        Create a shared image and propose a membership to the
+        `bed6b6cbb86a4e2d8dc2735c2f1000e4` project ID.
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        rancheros = openstack.images.Image("rancheros",
+            container_format="bare",
+            disk_format="qcow2",
+            image_source_url="https://releases.rancher.com/os/latest/rancheros-openstack.img",
+            properties={
+                "key": "value",
+            },
+            visibility="shared")
+        rancheros_member = openstack.images.ImageAccess("rancherosMember",
+            image_id=rancheros.id,
+            member_id="bed6b6cbb86a4e2d8dc2735c2f1000e4")
+        ```
+        ### Privileged user
+
+        Create a shared image and set a membership to the
+        `bed6b6cbb86a4e2d8dc2735c2f1000e4` project ID.
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        rancheros = openstack.images.Image("rancheros",
+            container_format="bare",
+            disk_format="qcow2",
+            image_source_url="https://releases.rancher.com/os/latest/rancheros-openstack.img",
+            properties={
+                "key": "value",
+            },
+            visibility="shared")
+        rancheros_member = openstack.images.ImageAccess("rancherosMember",
+            image_id=rancheros.id,
+            member_id="bed6b6cbb86a4e2d8dc2735c2f1000e4",
+            status="accepted")
+        ```
+
+        ## Import
+
+        Image access can be imported using the `image_id` and the `member_id`, separated by a slash, e.g.
+
+        ```sh
+         $ pulumi import openstack:images/imageAccess:ImageAccess openstack_images_image_access_v2 89c60255-9bd6-460c-822a-e2b959ede9d2/bed6b6cbb86a4e2d8dc2735c2f1000e4
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ImageAccessArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ImageAccessArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 image_id: Optional[pulumi.Input[str]] = None,
+                 member_id: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

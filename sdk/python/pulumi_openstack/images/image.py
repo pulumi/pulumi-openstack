@@ -5,13 +5,367 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['Image']
+__all__ = ['ImageArgs', 'Image']
+
+@pulumi.input_type
+class ImageArgs:
+    def __init__(__self__, *,
+                 container_format: pulumi.Input[str],
+                 disk_format: pulumi.Input[str],
+                 hidden: Optional[pulumi.Input[bool]] = None,
+                 image_cache_path: Optional[pulumi.Input[str]] = None,
+                 image_id: Optional[pulumi.Input[str]] = None,
+                 image_source_password: Optional[pulumi.Input[str]] = None,
+                 image_source_url: Optional[pulumi.Input[str]] = None,
+                 image_source_username: Optional[pulumi.Input[str]] = None,
+                 local_file_path: Optional[pulumi.Input[str]] = None,
+                 min_disk_gb: Optional[pulumi.Input[int]] = None,
+                 min_ram_mb: Optional[pulumi.Input[int]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 protected: Optional[pulumi.Input[bool]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 verify_checksum: Optional[pulumi.Input[bool]] = None,
+                 visibility: Optional[pulumi.Input[str]] = None,
+                 web_download: Optional[pulumi.Input[bool]] = None):
+        """
+        The set of arguments for constructing a Image resource.
+        :param pulumi.Input[str] container_format: The container format. Must be one of
+               "ami", "ari", "aki", "bare", "ovf".
+        :param pulumi.Input[str] disk_format: The disk format. Must be one of
+               "ami", "ari", "aki", "vhd", "vmdk", "raw", "qcow2", "vdi", "iso".
+        :param pulumi.Input[bool] hidden: If true, image will be hidden from public list.
+               Defaults to false.
+        :param pulumi.Input[str] image_id: Unique ID (valid UUID) of image to create. Changing 
+               this creates a new image.
+        :param pulumi.Input[str] image_source_password: The password of basic auth to download `image_source_url`.
+        :param pulumi.Input[str] image_source_url: This is the url of the raw image. If `web_download`
+               is not used, then the image will be downloaded in the `image_cache_path` before
+               being uploaded to Glance.
+               Conflicts with `local_file_path`.
+        :param pulumi.Input[str] image_source_username: The username of basic auth to download `image_source_url`.
+        :param pulumi.Input[str] local_file_path: This is the filepath of the raw image file
+               that will be uploaded to Glance. Conflicts with `image_source_url` and
+               `web_download`.
+        :param pulumi.Input[int] min_disk_gb: Amount of disk space (in GB) required to boot image.
+               Defaults to 0.
+        :param pulumi.Input[int] min_ram_mb: Amount of ram (in MB) required to boot image.
+               Defauts to 0.
+        :param pulumi.Input[str] name: The name of the image.
+        :param pulumi.Input[Mapping[str, Any]] properties: A map of key/value pairs to set freeform
+               information about an image. See the "Notes" section for further
+               information about properties.
+        :param pulumi.Input[bool] protected: If true, image will not be deletable.
+               Defaults to false.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Glance client.
+               A Glance client is needed to create an Image that can be used with
+               a compute instance. If omitted, the `region` argument of the provider
+               is used. Changing this creates a new Image.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the image. It must be a list of strings.
+               At this time, it is not possible to delete all tags of an image.
+        :param pulumi.Input[bool] verify_checksum: If false, the checksum will not be verified
+               once the image is finished uploading. Conflicts with `web_download`.
+               Defaults to true when not using `web_download`.
+        :param pulumi.Input[str] visibility: The visibility of the image. Must be one of
+               "public", "private", "community", or "shared". The ability to set the
+               visibility depends upon the configuration of the OpenStack cloud.
+        :param pulumi.Input[bool] web_download: If true, the "web-download" import method will
+               be used to let Openstack download the image directly from the remote source.
+               Conflicts with `local_file_path`. Defaults to false.
+        """
+        pulumi.set(__self__, "container_format", container_format)
+        pulumi.set(__self__, "disk_format", disk_format)
+        if hidden is not None:
+            pulumi.set(__self__, "hidden", hidden)
+        if image_cache_path is not None:
+            pulumi.set(__self__, "image_cache_path", image_cache_path)
+        if image_id is not None:
+            pulumi.set(__self__, "image_id", image_id)
+        if image_source_password is not None:
+            pulumi.set(__self__, "image_source_password", image_source_password)
+        if image_source_url is not None:
+            pulumi.set(__self__, "image_source_url", image_source_url)
+        if image_source_username is not None:
+            pulumi.set(__self__, "image_source_username", image_source_username)
+        if local_file_path is not None:
+            pulumi.set(__self__, "local_file_path", local_file_path)
+        if min_disk_gb is not None:
+            pulumi.set(__self__, "min_disk_gb", min_disk_gb)
+        if min_ram_mb is not None:
+            pulumi.set(__self__, "min_ram_mb", min_ram_mb)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if properties is not None:
+            pulumi.set(__self__, "properties", properties)
+        if protected is not None:
+            pulumi.set(__self__, "protected", protected)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if verify_checksum is not None:
+            pulumi.set(__self__, "verify_checksum", verify_checksum)
+        if visibility is not None:
+            pulumi.set(__self__, "visibility", visibility)
+        if web_download is not None:
+            pulumi.set(__self__, "web_download", web_download)
+
+    @property
+    @pulumi.getter(name="containerFormat")
+    def container_format(self) -> pulumi.Input[str]:
+        """
+        The container format. Must be one of
+        "ami", "ari", "aki", "bare", "ovf".
+        """
+        return pulumi.get(self, "container_format")
+
+    @container_format.setter
+    def container_format(self, value: pulumi.Input[str]):
+        pulumi.set(self, "container_format", value)
+
+    @property
+    @pulumi.getter(name="diskFormat")
+    def disk_format(self) -> pulumi.Input[str]:
+        """
+        The disk format. Must be one of
+        "ami", "ari", "aki", "vhd", "vmdk", "raw", "qcow2", "vdi", "iso".
+        """
+        return pulumi.get(self, "disk_format")
+
+    @disk_format.setter
+    def disk_format(self, value: pulumi.Input[str]):
+        pulumi.set(self, "disk_format", value)
+
+    @property
+    @pulumi.getter
+    def hidden(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, image will be hidden from public list.
+        Defaults to false.
+        """
+        return pulumi.get(self, "hidden")
+
+    @hidden.setter
+    def hidden(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "hidden", value)
+
+    @property
+    @pulumi.getter(name="imageCachePath")
+    def image_cache_path(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "image_cache_path")
+
+    @image_cache_path.setter
+    def image_cache_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image_cache_path", value)
+
+    @property
+    @pulumi.getter(name="imageId")
+    def image_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Unique ID (valid UUID) of image to create. Changing 
+        this creates a new image.
+        """
+        return pulumi.get(self, "image_id")
+
+    @image_id.setter
+    def image_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image_id", value)
+
+    @property
+    @pulumi.getter(name="imageSourcePassword")
+    def image_source_password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password of basic auth to download `image_source_url`.
+        """
+        return pulumi.get(self, "image_source_password")
+
+    @image_source_password.setter
+    def image_source_password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image_source_password", value)
+
+    @property
+    @pulumi.getter(name="imageSourceUrl")
+    def image_source_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        This is the url of the raw image. If `web_download`
+        is not used, then the image will be downloaded in the `image_cache_path` before
+        being uploaded to Glance.
+        Conflicts with `local_file_path`.
+        """
+        return pulumi.get(self, "image_source_url")
+
+    @image_source_url.setter
+    def image_source_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image_source_url", value)
+
+    @property
+    @pulumi.getter(name="imageSourceUsername")
+    def image_source_username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username of basic auth to download `image_source_url`.
+        """
+        return pulumi.get(self, "image_source_username")
+
+    @image_source_username.setter
+    def image_source_username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image_source_username", value)
+
+    @property
+    @pulumi.getter(name="localFilePath")
+    def local_file_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        This is the filepath of the raw image file
+        that will be uploaded to Glance. Conflicts with `image_source_url` and
+        `web_download`.
+        """
+        return pulumi.get(self, "local_file_path")
+
+    @local_file_path.setter
+    def local_file_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "local_file_path", value)
+
+    @property
+    @pulumi.getter(name="minDiskGb")
+    def min_disk_gb(self) -> Optional[pulumi.Input[int]]:
+        """
+        Amount of disk space (in GB) required to boot image.
+        Defaults to 0.
+        """
+        return pulumi.get(self, "min_disk_gb")
+
+    @min_disk_gb.setter
+    def min_disk_gb(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_disk_gb", value)
+
+    @property
+    @pulumi.getter(name="minRamMb")
+    def min_ram_mb(self) -> Optional[pulumi.Input[int]]:
+        """
+        Amount of ram (in MB) required to boot image.
+        Defauts to 0.
+        """
+        return pulumi.get(self, "min_ram_mb")
+
+    @min_ram_mb.setter
+    def min_ram_mb(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_ram_mb", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the image.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def properties(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A map of key/value pairs to set freeform
+        information about an image. See the "Notes" section for further
+        information about properties.
+        """
+        return pulumi.get(self, "properties")
+
+    @properties.setter
+    def properties(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "properties", value)
+
+    @property
+    @pulumi.getter
+    def protected(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, image will not be deletable.
+        Defaults to false.
+        """
+        return pulumi.get(self, "protected")
+
+    @protected.setter
+    def protected(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "protected", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V2 Glance client.
+        A Glance client is needed to create an Image that can be used with
+        a compute instance. If omitted, the `region` argument of the provider
+        is used. Changing this creates a new Image.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The tags of the image. It must be a list of strings.
+        At this time, it is not possible to delete all tags of an image.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="verifyChecksum")
+    def verify_checksum(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If false, the checksum will not be verified
+        once the image is finished uploading. Conflicts with `web_download`.
+        Defaults to true when not using `web_download`.
+        """
+        return pulumi.get(self, "verify_checksum")
+
+    @verify_checksum.setter
+    def verify_checksum(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "verify_checksum", value)
+
+    @property
+    @pulumi.getter
+    def visibility(self) -> Optional[pulumi.Input[str]]:
+        """
+        The visibility of the image. Must be one of
+        "public", "private", "community", or "shared". The ability to set the
+        visibility depends upon the configuration of the OpenStack cloud.
+        """
+        return pulumi.get(self, "visibility")
+
+    @visibility.setter
+    def visibility(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "visibility", value)
+
+    @property
+    @pulumi.getter(name="webDownload")
+    def web_download(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, the "web-download" import method will
+        be used to let Openstack download the image directly from the remote source.
+        Conflicts with `local_file_path`. Defaults to false.
+        """
+        return pulumi.get(self, "web_download")
+
+    @web_download.setter
+    def web_download(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "web_download", value)
 
 
 class Image(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -91,6 +445,58 @@ class Image(pulumi.CustomResource):
                be used to let Openstack download the image directly from the remote source.
                Conflicts with `local_file_path`. Defaults to false.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ImageArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## Import
+
+        Images can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:images/image:Image rancheros 89c60255-9bd6-460c-822a-e2b959ede9d2
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ImageArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ImageArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 container_format: Optional[pulumi.Input[str]] = None,
+                 disk_format: Optional[pulumi.Input[str]] = None,
+                 hidden: Optional[pulumi.Input[bool]] = None,
+                 image_cache_path: Optional[pulumi.Input[str]] = None,
+                 image_id: Optional[pulumi.Input[str]] = None,
+                 image_source_password: Optional[pulumi.Input[str]] = None,
+                 image_source_url: Optional[pulumi.Input[str]] = None,
+                 image_source_username: Optional[pulumi.Input[str]] = None,
+                 local_file_path: Optional[pulumi.Input[str]] = None,
+                 min_disk_gb: Optional[pulumi.Input[int]] = None,
+                 min_ram_mb: Optional[pulumi.Input[int]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 protected: Optional[pulumi.Input[bool]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 verify_checksum: Optional[pulumi.Input[bool]] = None,
+                 visibility: Optional[pulumi.Input[str]] = None,
+                 web_download: Optional[pulumi.Input[bool]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

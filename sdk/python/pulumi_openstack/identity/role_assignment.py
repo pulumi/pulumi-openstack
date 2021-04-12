@@ -5,13 +5,112 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['RoleAssignment']
+__all__ = ['RoleAssignmentArgs', 'RoleAssignment']
+
+@pulumi.input_type
+class RoleAssignmentArgs:
+    def __init__(__self__, *,
+                 role_id: pulumi.Input[str],
+                 domain_id: Optional[pulumi.Input[str]] = None,
+                 group_id: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 user_id: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a RoleAssignment resource.
+        :param pulumi.Input[str] role_id: The role to assign.
+        :param pulumi.Input[str] domain_id: The domain to assign the role in.
+        :param pulumi.Input[str] group_id: The group to assign the role to.
+        :param pulumi.Input[str] project_id: The project to assign the role in.
+        :param pulumi.Input[str] user_id: The user to assign the role to.
+        """
+        pulumi.set(__self__, "role_id", role_id)
+        if domain_id is not None:
+            pulumi.set(__self__, "domain_id", domain_id)
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if user_id is not None:
+            pulumi.set(__self__, "user_id", user_id)
+
+    @property
+    @pulumi.getter(name="roleId")
+    def role_id(self) -> pulumi.Input[str]:
+        """
+        The role to assign.
+        """
+        return pulumi.get(self, "role_id")
+
+    @role_id.setter
+    def role_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "role_id", value)
+
+    @property
+    @pulumi.getter(name="domainId")
+    def domain_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The domain to assign the role in.
+        """
+        return pulumi.get(self, "domain_id")
+
+    @domain_id.setter
+    def domain_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "domain_id", value)
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The group to assign the role to.
+        """
+        return pulumi.get(self, "group_id")
+
+    @group_id.setter
+    def group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group_id", value)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The project to assign the role in.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_id", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The user to assign the role to.
+        """
+        return pulumi.get(self, "user_id")
+
+    @user_id.setter
+    def user_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_id", value)
 
 
 class RoleAssignment(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -53,6 +152,57 @@ class RoleAssignment(pulumi.CustomResource):
         :param pulumi.Input[str] role_id: The role to assign.
         :param pulumi.Input[str] user_id: The user to assign the role to.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: RoleAssignmentArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Manages a V3 Role assignment within OpenStack Keystone.
+
+        > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
+        this resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        project1 = openstack.identity.Project("project1")
+        user1 = openstack.identity.User("user1", default_project_id=project1.id)
+        role1 = openstack.identity.Role("role1")
+        role_assignment1 = openstack.identity.RoleAssignment("roleAssignment1",
+            project_id=project1.id,
+            role_id=role1.id,
+            user_id=user1.id)
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param RoleAssignmentArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(RoleAssignmentArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 domain_id: Optional[pulumi.Input[str]] = None,
+                 group_id: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 role_id: Optional[pulumi.Input[str]] = None,
+                 user_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

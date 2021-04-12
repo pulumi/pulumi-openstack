@@ -5,15 +5,214 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Cluster']
+__all__ = ['ClusterArgs', 'Cluster']
+
+@pulumi.input_type
+class ClusterArgs:
+    def __init__(__self__, *,
+                 cluster_template_id: pulumi.Input[str],
+                 create_timeout: Optional[pulumi.Input[int]] = None,
+                 discovery_url: Optional[pulumi.Input[str]] = None,
+                 docker_volume_size: Optional[pulumi.Input[int]] = None,
+                 fixed_network: Optional[pulumi.Input[str]] = None,
+                 fixed_subnet: Optional[pulumi.Input[str]] = None,
+                 flavor: Optional[pulumi.Input[str]] = None,
+                 floating_ip_enabled: Optional[pulumi.Input[bool]] = None,
+                 keypair: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 master_count: Optional[pulumi.Input[int]] = None,
+                 master_flavor: Optional[pulumi.Input[str]] = None,
+                 merge_labels: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 node_count: Optional[pulumi.Input[int]] = None,
+                 region: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Cluster resource.
+        """
+        pulumi.set(__self__, "cluster_template_id", cluster_template_id)
+        if create_timeout is not None:
+            pulumi.set(__self__, "create_timeout", create_timeout)
+        if discovery_url is not None:
+            pulumi.set(__self__, "discovery_url", discovery_url)
+        if docker_volume_size is not None:
+            pulumi.set(__self__, "docker_volume_size", docker_volume_size)
+        if fixed_network is not None:
+            pulumi.set(__self__, "fixed_network", fixed_network)
+        if fixed_subnet is not None:
+            pulumi.set(__self__, "fixed_subnet", fixed_subnet)
+        if flavor is not None:
+            pulumi.set(__self__, "flavor", flavor)
+        if floating_ip_enabled is not None:
+            pulumi.set(__self__, "floating_ip_enabled", floating_ip_enabled)
+        if keypair is not None:
+            pulumi.set(__self__, "keypair", keypair)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if master_count is not None:
+            pulumi.set(__self__, "master_count", master_count)
+        if master_flavor is not None:
+            pulumi.set(__self__, "master_flavor", master_flavor)
+        if merge_labels is not None:
+            pulumi.set(__self__, "merge_labels", merge_labels)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if node_count is not None:
+            pulumi.set(__self__, "node_count", node_count)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter(name="clusterTemplateId")
+    def cluster_template_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "cluster_template_id")
+
+    @cluster_template_id.setter
+    def cluster_template_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cluster_template_id", value)
+
+    @property
+    @pulumi.getter(name="createTimeout")
+    def create_timeout(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "create_timeout")
+
+    @create_timeout.setter
+    def create_timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "create_timeout", value)
+
+    @property
+    @pulumi.getter(name="discoveryUrl")
+    def discovery_url(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "discovery_url")
+
+    @discovery_url.setter
+    def discovery_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "discovery_url", value)
+
+    @property
+    @pulumi.getter(name="dockerVolumeSize")
+    def docker_volume_size(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "docker_volume_size")
+
+    @docker_volume_size.setter
+    def docker_volume_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "docker_volume_size", value)
+
+    @property
+    @pulumi.getter(name="fixedNetwork")
+    def fixed_network(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "fixed_network")
+
+    @fixed_network.setter
+    def fixed_network(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fixed_network", value)
+
+    @property
+    @pulumi.getter(name="fixedSubnet")
+    def fixed_subnet(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "fixed_subnet")
+
+    @fixed_subnet.setter
+    def fixed_subnet(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fixed_subnet", value)
+
+    @property
+    @pulumi.getter
+    def flavor(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "flavor")
+
+    @flavor.setter
+    def flavor(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "flavor", value)
+
+    @property
+    @pulumi.getter(name="floatingIpEnabled")
+    def floating_ip_enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "floating_ip_enabled")
+
+    @floating_ip_enabled.setter
+    def floating_ip_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "floating_ip_enabled", value)
+
+    @property
+    @pulumi.getter
+    def keypair(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "keypair")
+
+    @keypair.setter
+    def keypair(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "keypair", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="masterCount")
+    def master_count(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "master_count")
+
+    @master_count.setter
+    def master_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "master_count", value)
+
+    @property
+    @pulumi.getter(name="masterFlavor")
+    def master_flavor(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "master_flavor")
+
+    @master_flavor.setter
+    def master_flavor(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "master_flavor", value)
+
+    @property
+    @pulumi.getter(name="mergeLabels")
+    def merge_labels(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "merge_labels")
+
+    @merge_labels.setter
+    def merge_labels(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "merge_labels", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="nodeCount")
+    def node_count(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "node_count")
+
+    @node_count.setter
+    def node_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "node_count", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
 
 
 class Cluster(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -48,6 +247,55 @@ class Cluster(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ClusterArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## Import
+
+        Clusters can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:containerinfra/cluster:Cluster cluster_1 ce0f9463-dd25-474b-9fe8-94de63e5e42b
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ClusterArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ClusterArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 cluster_template_id: Optional[pulumi.Input[str]] = None,
+                 create_timeout: Optional[pulumi.Input[int]] = None,
+                 discovery_url: Optional[pulumi.Input[str]] = None,
+                 docker_volume_size: Optional[pulumi.Input[int]] = None,
+                 fixed_network: Optional[pulumi.Input[str]] = None,
+                 fixed_subnet: Optional[pulumi.Input[str]] = None,
+                 flavor: Optional[pulumi.Input[str]] = None,
+                 floating_ip_enabled: Optional[pulumi.Input[bool]] = None,
+                 keypair: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 master_count: Optional[pulumi.Input[int]] = None,
+                 master_flavor: Optional[pulumi.Input[str]] = None,
+                 merge_labels: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 node_count: Optional[pulumi.Input[int]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

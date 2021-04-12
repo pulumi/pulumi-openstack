@@ -5,13 +5,135 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['ShareNetwork']
+__all__ = ['ShareNetworkArgs', 'ShareNetwork']
+
+@pulumi.input_type
+class ShareNetworkArgs:
+    def __init__(__self__, *,
+                 neutron_net_id: pulumi.Input[str],
+                 neutron_subnet_id: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 security_service_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        The set of arguments for constructing a ShareNetwork resource.
+        :param pulumi.Input[str] neutron_net_id: The UUID of a neutron network when setting up or updating
+               a share network. Changing this updates the existing share network if it's not used by
+               shares.
+        :param pulumi.Input[str] neutron_subnet_id: The UUID of the neutron subnet when setting up or
+               updating a share network. Changing this updates the existing share network if it's
+               not used by shares.
+        :param pulumi.Input[str] description: The human-readable description for the share network.
+               Changing this updates the description of the existing share network.
+        :param pulumi.Input[str] name: The name for the share network. Changing this updates the name
+               of the existing share network.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Shared File System client.
+               A Shared File System client is needed to create a share network. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               share network.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_service_ids: The list of security service IDs to associate with
+               the share network. The security service must be specified by ID and not name.
+        """
+        pulumi.set(__self__, "neutron_net_id", neutron_net_id)
+        pulumi.set(__self__, "neutron_subnet_id", neutron_subnet_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if security_service_ids is not None:
+            pulumi.set(__self__, "security_service_ids", security_service_ids)
+
+    @property
+    @pulumi.getter(name="neutronNetId")
+    def neutron_net_id(self) -> pulumi.Input[str]:
+        """
+        The UUID of a neutron network when setting up or updating
+        a share network. Changing this updates the existing share network if it's not used by
+        shares.
+        """
+        return pulumi.get(self, "neutron_net_id")
+
+    @neutron_net_id.setter
+    def neutron_net_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "neutron_net_id", value)
+
+    @property
+    @pulumi.getter(name="neutronSubnetId")
+    def neutron_subnet_id(self) -> pulumi.Input[str]:
+        """
+        The UUID of the neutron subnet when setting up or
+        updating a share network. Changing this updates the existing share network if it's
+        not used by shares.
+        """
+        return pulumi.get(self, "neutron_subnet_id")
+
+    @neutron_subnet_id.setter
+    def neutron_subnet_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "neutron_subnet_id", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The human-readable description for the share network.
+        Changing this updates the description of the existing share network.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name for the share network. Changing this updates the name
+        of the existing share network.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V2 Shared File System client.
+        A Shared File System client is needed to create a share network. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        share network.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="securityServiceIds")
+    def security_service_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The list of security service IDs to associate with
+        the share network. The security service must be specified by ID and not name.
+        """
+        return pulumi.get(self, "security_service_ids")
+
+    @security_service_ids.setter
+    def security_service_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "security_service_ids", value)
 
 
 class ShareNetwork(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -101,6 +223,94 @@ class ShareNetwork(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_service_ids: The list of security service IDs to associate with
                the share network. The security service must be specified by ID and not name.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ShareNetworkArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Use this resource to configure a share network.
+
+        A share network stores network information that share servers can use when
+        shares are created.
+
+        ## Example Usage
+        ### Basic share network
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        network1 = openstack.networking.Network("network1", admin_state_up=True)
+        subnet1 = openstack.networking.Subnet("subnet1",
+            cidr="192.168.199.0/24",
+            ip_version=4,
+            network_id=network1.id)
+        sharenetwork1 = openstack.sharedfilesystem.ShareNetwork("sharenetwork1",
+            description="test share network",
+            neutron_net_id=network1.id,
+            neutron_subnet_id=subnet1.id)
+        ```
+        ### Share network with associated security services
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        network1 = openstack.networking.Network("network1", admin_state_up=True)
+        subnet1 = openstack.networking.Subnet("subnet1",
+            cidr="192.168.199.0/24",
+            ip_version=4,
+            network_id=network1.id)
+        securityservice1 = openstack.sharedfilesystem.SecurityService("securityservice1",
+            description="created by terraform",
+            dns_ip="192.168.199.10",
+            domain="example.com",
+            ou="CN=Computers,DC=example,DC=com",
+            password="s8cret",
+            server="192.168.199.10",
+            type="active_directory",
+            user="joinDomainUser")
+        sharenetwork1 = openstack.sharedfilesystem.ShareNetwork("sharenetwork1",
+            description="test share network with security services",
+            neutron_net_id=network1.id,
+            neutron_subnet_id=subnet1.id,
+            security_service_ids=[securityservice1.id])
+        ```
+
+        ## Import
+
+        This resource can be imported by specifying the ID of the share network
+
+        ```sh
+         $ pulumi import openstack:sharedfilesystem/shareNetwork:ShareNetwork sharenetwork_1 <id>
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ShareNetworkArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ShareNetworkArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 neutron_net_id: Optional[pulumi.Input[str]] = None,
+                 neutron_subnet_id: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 security_service_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

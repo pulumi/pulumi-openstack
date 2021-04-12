@@ -5,13 +5,217 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['MonitorV1']
+__all__ = ['MonitorV1Args', 'MonitorV1']
+
+@pulumi.input_type
+class MonitorV1Args:
+    def __init__(__self__, *,
+                 delay: pulumi.Input[int],
+                 max_retries: pulumi.Input[int],
+                 timeout: pulumi.Input[int],
+                 type: pulumi.Input[str],
+                 admin_state_up: Optional[pulumi.Input[str]] = None,
+                 expected_codes: Optional[pulumi.Input[str]] = None,
+                 http_method: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 tenant_id: Optional[pulumi.Input[str]] = None,
+                 url_path: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a MonitorV1 resource.
+        :param pulumi.Input[int] delay: The time, in seconds, between sending probes to members.
+               Changing this creates a new monitor.
+        :param pulumi.Input[int] max_retries: Number of permissible ping failures before changing
+               the member's status to INACTIVE. Must be a number between 1 and 10. Changing
+               this updates the max_retries of the existing monitor.
+        :param pulumi.Input[int] timeout: Maximum number of seconds for a monitor to wait for a
+               ping reply before it times out. The value must be less than the delay value.
+               Changing this updates the timeout of the existing monitor.
+        :param pulumi.Input[str] type: The type of probe, which is PING, TCP, HTTP, or HTTPS,
+               that is sent by the monitor to verify the member state. Changing this
+               creates a new monitor.
+        :param pulumi.Input[str] admin_state_up: The administrative state of the monitor.
+               Acceptable values are "true" and "false". Changing this value updates the
+               state of the existing monitor.
+        :param pulumi.Input[str] expected_codes: Required for HTTP(S) types. Expected HTTP codes
+               for a passing HTTP(S) monitor. You can either specify a single status like
+               "200", or a range like "200-202". Changing this updates the expected_codes
+               of the existing monitor.
+        :param pulumi.Input[str] http_method: Required for HTTP(S) types. The HTTP method used
+               for requests by the monitor. If this attribute is not specified, it defaults
+               to "GET". Changing this updates the http_method of the existing monitor.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
+               A Networking client is needed to create an LB monitor. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               LB monitor.
+        :param pulumi.Input[str] tenant_id: The owner of the monitor. Required if admin wants to
+               create a monitor for another tenant. Changing this creates a new monitor.
+        :param pulumi.Input[str] url_path: Required for HTTP(S) types. URI path that will be
+               accessed if monitor type is HTTP or HTTPS. Changing this updates the
+               url_path of the existing monitor.
+        """
+        pulumi.set(__self__, "delay", delay)
+        pulumi.set(__self__, "max_retries", max_retries)
+        pulumi.set(__self__, "timeout", timeout)
+        pulumi.set(__self__, "type", type)
+        if admin_state_up is not None:
+            pulumi.set(__self__, "admin_state_up", admin_state_up)
+        if expected_codes is not None:
+            pulumi.set(__self__, "expected_codes", expected_codes)
+        if http_method is not None:
+            pulumi.set(__self__, "http_method", http_method)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if tenant_id is not None:
+            pulumi.set(__self__, "tenant_id", tenant_id)
+        if url_path is not None:
+            pulumi.set(__self__, "url_path", url_path)
+
+    @property
+    @pulumi.getter
+    def delay(self) -> pulumi.Input[int]:
+        """
+        The time, in seconds, between sending probes to members.
+        Changing this creates a new monitor.
+        """
+        return pulumi.get(self, "delay")
+
+    @delay.setter
+    def delay(self, value: pulumi.Input[int]):
+        pulumi.set(self, "delay", value)
+
+    @property
+    @pulumi.getter(name="maxRetries")
+    def max_retries(self) -> pulumi.Input[int]:
+        """
+        Number of permissible ping failures before changing
+        the member's status to INACTIVE. Must be a number between 1 and 10. Changing
+        this updates the max_retries of the existing monitor.
+        """
+        return pulumi.get(self, "max_retries")
+
+    @max_retries.setter
+    def max_retries(self, value: pulumi.Input[int]):
+        pulumi.set(self, "max_retries", value)
+
+    @property
+    @pulumi.getter
+    def timeout(self) -> pulumi.Input[int]:
+        """
+        Maximum number of seconds for a monitor to wait for a
+        ping reply before it times out. The value must be less than the delay value.
+        Changing this updates the timeout of the existing monitor.
+        """
+        return pulumi.get(self, "timeout")
+
+    @timeout.setter
+    def timeout(self, value: pulumi.Input[int]):
+        pulumi.set(self, "timeout", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        The type of probe, which is PING, TCP, HTTP, or HTTPS,
+        that is sent by the monitor to verify the member state. Changing this
+        creates a new monitor.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="adminStateUp")
+    def admin_state_up(self) -> Optional[pulumi.Input[str]]:
+        """
+        The administrative state of the monitor.
+        Acceptable values are "true" and "false". Changing this value updates the
+        state of the existing monitor.
+        """
+        return pulumi.get(self, "admin_state_up")
+
+    @admin_state_up.setter
+    def admin_state_up(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "admin_state_up", value)
+
+    @property
+    @pulumi.getter(name="expectedCodes")
+    def expected_codes(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required for HTTP(S) types. Expected HTTP codes
+        for a passing HTTP(S) monitor. You can either specify a single status like
+        "200", or a range like "200-202". Changing this updates the expected_codes
+        of the existing monitor.
+        """
+        return pulumi.get(self, "expected_codes")
+
+    @expected_codes.setter
+    def expected_codes(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expected_codes", value)
+
+    @property
+    @pulumi.getter(name="httpMethod")
+    def http_method(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required for HTTP(S) types. The HTTP method used
+        for requests by the monitor. If this attribute is not specified, it defaults
+        to "GET". Changing this updates the http_method of the existing monitor.
+        """
+        return pulumi.get(self, "http_method")
+
+    @http_method.setter
+    def http_method(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "http_method", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V2 Networking client.
+        A Networking client is needed to create an LB monitor. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        LB monitor.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The owner of the monitor. Required if admin wants to
+        create a monitor for another tenant. Changing this creates a new monitor.
+        """
+        return pulumi.get(self, "tenant_id")
+
+    @tenant_id.setter
+    def tenant_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tenant_id", value)
+
+    @property
+    @pulumi.getter(name="urlPath")
+    def url_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required for HTTP(S) types. URI path that will be
+        accessed if monitor type is HTTP or HTTPS. Changing this updates the
+        url_path of the existing monitor.
+        """
+        return pulumi.get(self, "url_path")
+
+    @url_path.setter
+    def url_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "url_path", value)
 
 
 class MonitorV1(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -86,6 +290,65 @@ class MonitorV1(pulumi.CustomResource):
                accessed if monitor type is HTTP or HTTPS. Changing this updates the
                url_path of the existing monitor.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: MonitorV1Args,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Manages a V1 load balancer monitor resource within OpenStack.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        monitor1 = openstack.loadbalancer.MonitorV1("monitor1",
+            admin_state_up="true",
+            delay=30,
+            max_retries=3,
+            timeout=5,
+            type="PING")
+        ```
+
+        ## Import
+
+        Load Balancer Members can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:loadbalancer/monitorV1:MonitorV1 monitor_1 119d7530-72e9-449a-aa97-124a5ef1992c
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param MonitorV1Args args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(MonitorV1Args, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 admin_state_up: Optional[pulumi.Input[str]] = None,
+                 delay: Optional[pulumi.Input[int]] = None,
+                 expected_codes: Optional[pulumi.Input[str]] = None,
+                 http_method: Optional[pulumi.Input[str]] = None,
+                 max_retries: Optional[pulumi.Input[int]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 tenant_id: Optional[pulumi.Input[str]] = None,
+                 timeout: Optional[pulumi.Input[int]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 url_path: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
