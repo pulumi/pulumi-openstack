@@ -5,13 +5,134 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['TempUrl']
+__all__ = ['TempUrlArgs', 'TempUrl']
+
+@pulumi.input_type
+class TempUrlArgs:
+    def __init__(__self__, *,
+                 container: pulumi.Input[str],
+                 object: pulumi.Input[str],
+                 ttl: pulumi.Input[int],
+                 method: Optional[pulumi.Input[str]] = None,
+                 regenerate: Optional[pulumi.Input[bool]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 split: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a TempUrl resource.
+        :param pulumi.Input[str] container: The container name the object belongs to.
+        :param pulumi.Input[str] object: The object name the tempurl is for.
+        :param pulumi.Input[int] ttl: The TTL, in seconds, for the URL. For how long it should
+               be valid.
+        :param pulumi.Input[str] method: The method allowed when accessing this URL.
+               Valid values are `GET`, and `POST`. Default is `GET`.
+        :param pulumi.Input[bool] regenerate: Whether to automatically regenerate the URL when
+               it has expired. If set to true, this will create a new resource with a new
+               ID and new URL. Defaults to false.
+        :param pulumi.Input[str] region: The region the tempurl is located in.
+        """
+        pulumi.set(__self__, "container", container)
+        pulumi.set(__self__, "object", object)
+        pulumi.set(__self__, "ttl", ttl)
+        if method is not None:
+            pulumi.set(__self__, "method", method)
+        if regenerate is not None:
+            pulumi.set(__self__, "regenerate", regenerate)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if split is not None:
+            pulumi.set(__self__, "split", split)
+
+    @property
+    @pulumi.getter
+    def container(self) -> pulumi.Input[str]:
+        """
+        The container name the object belongs to.
+        """
+        return pulumi.get(self, "container")
+
+    @container.setter
+    def container(self, value: pulumi.Input[str]):
+        pulumi.set(self, "container", value)
+
+    @property
+    @pulumi.getter
+    def object(self) -> pulumi.Input[str]:
+        """
+        The object name the tempurl is for.
+        """
+        return pulumi.get(self, "object")
+
+    @object.setter
+    def object(self, value: pulumi.Input[str]):
+        pulumi.set(self, "object", value)
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> pulumi.Input[int]:
+        """
+        The TTL, in seconds, for the URL. For how long it should
+        be valid.
+        """
+        return pulumi.get(self, "ttl")
+
+    @ttl.setter
+    def ttl(self, value: pulumi.Input[int]):
+        pulumi.set(self, "ttl", value)
+
+    @property
+    @pulumi.getter
+    def method(self) -> Optional[pulumi.Input[str]]:
+        """
+        The method allowed when accessing this URL.
+        Valid values are `GET`, and `POST`. Default is `GET`.
+        """
+        return pulumi.get(self, "method")
+
+    @method.setter
+    def method(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "method", value)
+
+    @property
+    @pulumi.getter
+    def regenerate(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to automatically regenerate the URL when
+        it has expired. If set to true, this will create a new resource with a new
+        ID and new URL. Defaults to false.
+        """
+        return pulumi.get(self, "regenerate")
+
+    @regenerate.setter
+    def regenerate(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "regenerate", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region the tempurl is located in.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter
+    def split(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "split")
+
+    @split.setter
+    def split(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "split", value)
 
 
 class TempUrl(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -66,6 +187,65 @@ class TempUrl(pulumi.CustomResource):
         :param pulumi.Input[int] ttl: The TTL, in seconds, for the URL. For how long it should
                be valid.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: TempUrlArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Use this resource to generate an OpenStack Object Storage temporary URL.
+
+        The temporary URL will be valid for as long as TTL is set to (in seconds).
+        Once the URL has expired, it will no longer be valid, but the resource
+        will remain in place. If you wish to automatically regenerate a URL, set
+        the `regenerate` argument to `true`. This will create a new resource with
+        a new ID and URL.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        container1 = openstack.objectstorage.Container("container1", metadata={
+            "Temp-URL-Key": "testkey",
+        })
+        object1 = openstack.objectstorage.ContainerObject("object1",
+            container_name=container1.name,
+            content="Hello, world!")
+        obj_tempurl = openstack.objectstorage.TempUrl("objTempurl",
+            container=container1.name,
+            method="post",
+            object=object1.name,
+            ttl=20)
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param TempUrlArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(TempUrlArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 container: Optional[pulumi.Input[str]] = None,
+                 method: Optional[pulumi.Input[str]] = None,
+                 object: Optional[pulumi.Input[str]] = None,
+                 regenerate: Optional[pulumi.Input[bool]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 split: Optional[pulumi.Input[str]] = None,
+                 ttl: Optional[pulumi.Input[int]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

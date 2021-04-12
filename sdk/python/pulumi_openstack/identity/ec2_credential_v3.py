@@ -5,13 +5,77 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['Ec2CredentialV3']
+__all__ = ['Ec2CredentialV3Args', 'Ec2CredentialV3']
+
+@pulumi.input_type
+class Ec2CredentialV3Args:
+    def __init__(__self__, *,
+                 project_id: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 user_id: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Ec2CredentialV3 resource.
+        :param pulumi.Input[str] project_id: The ID of the project the EC2 credential is created
+               for and that authentication requests using this EC2 credential will
+               be scoped to.
+        :param pulumi.Input[str] region: The region in which to obtain the V3 Keystone client.
+               If omitted, the `region` argument of the provider is used. Changing this
+               creates a new EC2 credential.
+        :param pulumi.Input[str] user_id: The ID of the user the EC2 credential is created for.
+        """
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if user_id is not None:
+            pulumi.set(__self__, "user_id", user_id)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project the EC2 credential is created
+        for and that authentication requests using this EC2 credential will
+        be scoped to.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_id", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V3 Keystone client.
+        If omitted, the `region` argument of the provider is used. Changing this
+        creates a new EC2 credential.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the user the EC2 credential is created for.
+        """
+        return pulumi.get(self, "user_id")
+
+    @user_id.setter
+    def user_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_id", value)
 
 
 class Ec2CredentialV3(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -40,6 +104,42 @@ class Ec2CredentialV3(pulumi.CustomResource):
                creates a new EC2 credential.
         :param pulumi.Input[str] user_id: The ID of the user the EC2 credential is created for.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[Ec2CredentialV3Args] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## Import
+
+        EC2 Credentials can be imported using the `access`, e.g.
+
+        ```sh
+         $ pulumi import openstack:identity/ec2CredentialV3:Ec2CredentialV3 ec2_cred_1 2d0ac4a2f81b4b0f9513ee49e780647d
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param Ec2CredentialV3Args args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(Ec2CredentialV3Args, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 user_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

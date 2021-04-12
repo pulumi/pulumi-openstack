@@ -22,19 +22,20 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "openstack:vpnaas/endpointGroup:EndpointGroup":
-		r, err = NewEndpointGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &EndpointGroup{}
 	case "openstack:vpnaas/ikePolicy:IkePolicy":
-		r, err = NewIkePolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &IkePolicy{}
 	case "openstack:vpnaas/ipSecPolicy:IpSecPolicy":
-		r, err = NewIpSecPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &IpSecPolicy{}
 	case "openstack:vpnaas/service:Service":
-		r, err = NewService(ctx, name, nil, pulumi.URN_(urn))
+		r = &Service{}
 	case "openstack:vpnaas/siteConnection:SiteConnection":
-		r, err = NewSiteConnection(ctx, name, nil, pulumi.URN_(urn))
+		r = &SiteConnection{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

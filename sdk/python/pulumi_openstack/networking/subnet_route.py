@@ -5,13 +5,94 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['SubnetRoute']
+__all__ = ['SubnetRouteArgs', 'SubnetRoute']
+
+@pulumi.input_type
+class SubnetRouteArgs:
+    def __init__(__self__, *,
+                 destination_cidr: pulumi.Input[str],
+                 next_hop: pulumi.Input[str],
+                 subnet_id: pulumi.Input[str],
+                 region: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a SubnetRoute resource.
+        :param pulumi.Input[str] destination_cidr: CIDR block to match on the packet’s destination IP. Changing
+               this creates a new routing entry.
+        :param pulumi.Input[str] next_hop: IP address of the next hop gateway.  Changing
+               this creates a new routing entry.
+        :param pulumi.Input[str] subnet_id: ID of the subnet this routing entry belongs to. Changing
+               this creates a new routing entry.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
+               A networking client is needed to configure a routing entry on a subnet. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               routing entry.
+        """
+        pulumi.set(__self__, "destination_cidr", destination_cidr)
+        pulumi.set(__self__, "next_hop", next_hop)
+        pulumi.set(__self__, "subnet_id", subnet_id)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter(name="destinationCidr")
+    def destination_cidr(self) -> pulumi.Input[str]:
+        """
+        CIDR block to match on the packet’s destination IP. Changing
+        this creates a new routing entry.
+        """
+        return pulumi.get(self, "destination_cidr")
+
+    @destination_cidr.setter
+    def destination_cidr(self, value: pulumi.Input[str]):
+        pulumi.set(self, "destination_cidr", value)
+
+    @property
+    @pulumi.getter(name="nextHop")
+    def next_hop(self) -> pulumi.Input[str]:
+        """
+        IP address of the next hop gateway.  Changing
+        this creates a new routing entry.
+        """
+        return pulumi.get(self, "next_hop")
+
+    @next_hop.setter
+    def next_hop(self, value: pulumi.Input[str]):
+        pulumi.set(self, "next_hop", value)
+
+    @property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> pulumi.Input[str]:
+        """
+        ID of the subnet this routing entry belongs to. Changing
+        this creates a new routing entry.
+        """
+        return pulumi.get(self, "subnet_id")
+
+    @subnet_id.setter
+    def subnet_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "subnet_id", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V2 networking client.
+        A networking client is needed to configure a routing entry on a subnet. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        routing entry.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
 
 
 class SubnetRoute(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -64,6 +145,63 @@ class SubnetRoute(pulumi.CustomResource):
         :param pulumi.Input[str] subnet_id: ID of the subnet this routing entry belongs to. Changing
                this creates a new routing entry.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: SubnetRouteArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Creates a routing entry on a OpenStack V2 subnet.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        router1 = openstack.networking.Router("router1", admin_state_up=True)
+        network1 = openstack.networking.Network("network1", admin_state_up=True)
+        subnet1 = openstack.networking.Subnet("subnet1",
+            cidr="192.168.199.0/24",
+            ip_version=4,
+            network_id=network1.id)
+        subnet_route1 = openstack.networking.SubnetRoute("subnetRoute1",
+            destination_cidr="10.0.1.0/24",
+            next_hop="192.168.199.254",
+            subnet_id=subnet1.id)
+        ```
+
+        ## Import
+
+        Routing entries can be imported using a combined ID using the following format``<subnet_id>-route-<destination_cidr>-<next_hop>``
+
+        ```sh
+         $ pulumi import openstack:networking/subnetRoute:SubnetRoute subnet_route_1 686fe248-386c-4f70-9f6c-281607dad079-route-10.0.1.0/24-192.168.199.25
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param SubnetRouteArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(SubnetRouteArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 destination_cidr: Optional[pulumi.Input[str]] = None,
+                 next_hop: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 subnet_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

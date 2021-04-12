@@ -5,15 +5,75 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['OrderV1']
+__all__ = ['OrderV1Args', 'OrderV1']
+
+@pulumi.input_type
+class OrderV1Args:
+    def __init__(__self__, *,
+                 meta: pulumi.Input['OrderV1MetaArgs'],
+                 type: pulumi.Input[str],
+                 region: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a OrderV1 resource.
+        :param pulumi.Input['OrderV1MetaArgs'] meta: Dictionary containing the order metadata used to generate the order. The structure is described below.
+        :param pulumi.Input[str] type: The type of key to be generated. Must be one of `asymmetric`, `key`.
+        :param pulumi.Input[str] region: The region in which to obtain the V1 KeyManager client.
+               A KeyManager client is needed to create a order. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               V1 order.
+        """
+        pulumi.set(__self__, "meta", meta)
+        pulumi.set(__self__, "type", type)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter
+    def meta(self) -> pulumi.Input['OrderV1MetaArgs']:
+        """
+        Dictionary containing the order metadata used to generate the order. The structure is described below.
+        """
+        return pulumi.get(self, "meta")
+
+    @meta.setter
+    def meta(self, value: pulumi.Input['OrderV1MetaArgs']):
+        pulumi.set(self, "meta", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        The type of key to be generated. Must be one of `asymmetric`, `key`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V1 KeyManager client.
+        A KeyManager client is needed to create a order. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        V1 order.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
 
 
 class OrderV1(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -74,6 +134,75 @@ class OrderV1(pulumi.CustomResource):
                V1 order.
         :param pulumi.Input[str] type: The type of key to be generated. Must be one of `asymmetric`, `key`.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: OrderV1Args,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Manages a V1 Barbican order resource within OpenStack.
+
+        ## Example Usage
+        ### Symmetric key order
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        order1 = openstack.keymanager.OrderV1("order1",
+            meta=openstack.keymanager.OrderV1MetaArgs(
+                algorithm="aes",
+                bit_length=256,
+                mode="cbc",
+                name="mysecret",
+            ),
+            type="key")
+        ```
+        ### Asymmetric key pair order
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        order1 = openstack.keymanager.OrderV1("order1",
+            meta=openstack.keymanager.OrderV1MetaArgs(
+                algorithm="rsa",
+                bit_length=4096,
+                name="mysecret",
+            ),
+            type="asymmetric")
+        ```
+
+        ## Import
+
+        Orders can be imported using the order id (the last part of the order reference), e.g.
+
+        ```sh
+         $ pulumi import openstack:keymanager/orderV1:OrderV1 order_1 0c6cd26a-c012-4d7b-8034-057c0f1c2953
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param OrderV1Args args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(OrderV1Args, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 meta: Optional[pulumi.Input[pulumi.InputType['OrderV1MetaArgs']]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

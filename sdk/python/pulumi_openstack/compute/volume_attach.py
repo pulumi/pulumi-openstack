@@ -5,15 +5,129 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['VolumeAttach']
+__all__ = ['VolumeAttachArgs', 'VolumeAttach']
+
+@pulumi.input_type
+class VolumeAttachArgs:
+    def __init__(__self__, *,
+                 instance_id: pulumi.Input[str],
+                 volume_id: pulumi.Input[str],
+                 device: Optional[pulumi.Input[str]] = None,
+                 multiattach: Optional[pulumi.Input[bool]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 vendor_options: Optional[pulumi.Input['VolumeAttachVendorOptionsArgs']] = None):
+        """
+        The set of arguments for constructing a VolumeAttach resource.
+        :param pulumi.Input[str] instance_id: The ID of the Instance to attach the Volume to.
+        :param pulumi.Input[str] volume_id: The ID of the Volume to attach to an Instance.
+        :param pulumi.Input[str] device: See Argument Reference above. _NOTE_: The correctness of this
+               information is dependent upon the hypervisor in use. In some cases, this
+               should not be used as an authoritative piece of information.
+        :param pulumi.Input[bool] multiattach: Enable attachment of multiattach-capable volumes.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Compute client.
+               A Compute client is needed to create a volume attachment. If omitted, the
+               `region` argument of the provider is used. Changing this creates a
+               new volume attachment.
+        :param pulumi.Input['VolumeAttachVendorOptionsArgs'] vendor_options: Map of additional vendor-specific options.
+               Supported options are described below.
+        """
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "volume_id", volume_id)
+        if device is not None:
+            pulumi.set(__self__, "device", device)
+        if multiattach is not None:
+            pulumi.set(__self__, "multiattach", multiattach)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if vendor_options is not None:
+            pulumi.set(__self__, "vendor_options", vendor_options)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the Instance to attach the Volume to.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "instance_id", value)
+
+    @property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the Volume to attach to an Instance.
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "volume_id", value)
+
+    @property
+    @pulumi.getter
+    def device(self) -> Optional[pulumi.Input[str]]:
+        """
+        See Argument Reference above. _NOTE_: The correctness of this
+        information is dependent upon the hypervisor in use. In some cases, this
+        should not be used as an authoritative piece of information.
+        """
+        return pulumi.get(self, "device")
+
+    @device.setter
+    def device(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "device", value)
+
+    @property
+    @pulumi.getter
+    def multiattach(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable attachment of multiattach-capable volumes.
+        """
+        return pulumi.get(self, "multiattach")
+
+    @multiattach.setter
+    def multiattach(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "multiattach", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V2 Compute client.
+        A Compute client is needed to create a volume attachment. If omitted, the
+        `region` argument of the provider is used. Changing this creates a
+        new volume attachment.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="vendorOptions")
+    def vendor_options(self) -> Optional[pulumi.Input['VolumeAttachVendorOptionsArgs']]:
+        """
+        Map of additional vendor-specific options.
+        Supported options are described below.
+        """
+        return pulumi.get(self, "vendor_options")
+
+    @vendor_options.setter
+    def vendor_options(self, value: Optional[pulumi.Input['VolumeAttachVendorOptionsArgs']]):
+        pulumi.set(self, "vendor_options", value)
 
 
 class VolumeAttach(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -94,6 +208,89 @@ class VolumeAttach(pulumi.CustomResource):
                Supported options are described below.
         :param pulumi.Input[str] volume_id: The ID of the Volume to attach to an Instance.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: VolumeAttachArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Attaches a Block Storage Volume to an Instance using the OpenStack
+        Compute (Nova) v2 API.
+
+        ## Example Usage
+        ### Basic attachment of a single volume to a single instance
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        volume1 = openstack.blockstorage.VolumeV2("volume1", size=1)
+        instance1 = openstack.compute.Instance("instance1", security_groups=["default"])
+        va1 = openstack.compute.VolumeAttach("va1",
+            instance_id=instance1.id,
+            volume_id=volume1.id)
+        ```
+        ### Using Multiattach-enabled volumes
+
+        Multiattach Volumes are dependent upon your OpenStack cloud and not all
+        clouds support multiattach.
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        volume1 = openstack.blockstorage.Volume("volume1",
+            multiattach=True,
+            size=1)
+        instance1 = openstack.compute.Instance("instance1", security_groups=["default"])
+        instance2 = openstack.compute.Instance("instance2", security_groups=["default"])
+        va1 = openstack.compute.VolumeAttach("va1",
+            instance_id=instance1.id,
+            multiattach=True,
+            volume_id=openstack_blockstorage_volume_v2["volume_1"]["id"])
+        va2 = openstack.compute.VolumeAttach("va2",
+            instance_id=instance2.id,
+            multiattach=True,
+            volume_id=openstack_blockstorage_volume_v2["volume_1"]["id"],
+            opts=pulumi.ResourceOptions(depends_on=["openstack_compute_volume_attach_v2.va_1"]))
+        ```
+
+        It is recommended to use `depends_on` for the attach resources
+        to enforce the volume attachments to happen one at a time.
+
+        ## Import
+
+        Volume Attachments can be imported using the Instance ID and Volume ID separated by a slash, e.g.
+
+        ```sh
+         $ pulumi import openstack:compute/volumeAttach:VolumeAttach va_1 89c60255-9bd6-460c-822a-e2b959ede9d2/45670584-225f-46c3-b33e-6707b589b666
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param VolumeAttachArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(VolumeAttachArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 device: Optional[pulumi.Input[str]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
+                 multiattach: Optional[pulumi.Input[bool]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 vendor_options: Optional[pulumi.Input[pulumi.InputType['VolumeAttachVendorOptionsArgs']]] = None,
+                 volume_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

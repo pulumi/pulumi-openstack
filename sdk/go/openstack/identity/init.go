@@ -22,29 +22,30 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "openstack:identity/applicationCredential:ApplicationCredential":
-		r, err = NewApplicationCredential(ctx, name, nil, pulumi.URN_(urn))
+		r = &ApplicationCredential{}
 	case "openstack:identity/ec2CredentialV3:Ec2CredentialV3":
-		r, err = NewEc2CredentialV3(ctx, name, nil, pulumi.URN_(urn))
+		r = &Ec2CredentialV3{}
 	case "openstack:identity/endpointV3:EndpointV3":
-		r, err = NewEndpointV3(ctx, name, nil, pulumi.URN_(urn))
+		r = &EndpointV3{}
 	case "openstack:identity/groupV3:GroupV3":
-		r, err = NewGroupV3(ctx, name, nil, pulumi.URN_(urn))
+		r = &GroupV3{}
 	case "openstack:identity/project:Project":
-		r, err = NewProject(ctx, name, nil, pulumi.URN_(urn))
+		r = &Project{}
 	case "openstack:identity/role:Role":
-		r, err = NewRole(ctx, name, nil, pulumi.URN_(urn))
+		r = &Role{}
 	case "openstack:identity/roleAssignment:RoleAssignment":
-		r, err = NewRoleAssignment(ctx, name, nil, pulumi.URN_(urn))
+		r = &RoleAssignment{}
 	case "openstack:identity/serviceV3:ServiceV3":
-		r, err = NewServiceV3(ctx, name, nil, pulumi.URN_(urn))
+		r = &ServiceV3{}
 	case "openstack:identity/user:User":
-		r, err = NewUser(ctx, name, nil, pulumi.URN_(urn))
+		r = &User{}
 	case "openstack:identity/userMembershipV3:UserMembershipV3":
-		r, err = NewUserMembershipV3(ctx, name, nil, pulumi.URN_(urn))
+		r = &UserMembershipV3{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

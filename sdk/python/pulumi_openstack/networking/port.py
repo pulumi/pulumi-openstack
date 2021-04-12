@@ -5,15 +5,420 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Port']
+__all__ = ['PortArgs', 'Port']
+
+@pulumi.input_type
+class PortArgs:
+    def __init__(__self__, *,
+                 network_id: pulumi.Input[str],
+                 admin_state_up: Optional[pulumi.Input[bool]] = None,
+                 allowed_address_pairs: Optional[pulumi.Input[Sequence[pulumi.Input['PortAllowedAddressPairArgs']]]] = None,
+                 binding: Optional[pulumi.Input['PortBindingArgs']] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 device_id: Optional[pulumi.Input[str]] = None,
+                 device_owner: Optional[pulumi.Input[str]] = None,
+                 dns_name: Optional[pulumi.Input[str]] = None,
+                 extra_dhcp_options: Optional[pulumi.Input[Sequence[pulumi.Input['PortExtraDhcpOptionArgs']]]] = None,
+                 fixed_ips: Optional[pulumi.Input[Sequence[pulumi.Input['PortFixedIpArgs']]]] = None,
+                 mac_address: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 no_fixed_ip: Optional[pulumi.Input[bool]] = None,
+                 no_security_groups: Optional[pulumi.Input[bool]] = None,
+                 port_security_enabled: Optional[pulumi.Input[bool]] = None,
+                 qos_policy_id: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tenant_id: Optional[pulumi.Input[str]] = None,
+                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+        """
+        The set of arguments for constructing a Port resource.
+        :param pulumi.Input[str] network_id: The ID of the network to attach the port to. Changing
+               this creates a new port.
+        :param pulumi.Input[bool] admin_state_up: Administrative up/down status for the port
+               (must be `true` or `false` if provided). Changing this updates the
+               `admin_state_up` of an existing port.
+        :param pulumi.Input[Sequence[pulumi.Input['PortAllowedAddressPairArgs']]] allowed_address_pairs: An IP/MAC Address pair of additional IP
+               addresses that can be active on this port. The structure is described
+               below.
+        :param pulumi.Input['PortBindingArgs'] binding: The port binding allows to specify binding information
+               for the port. The structure is described below.
+        :param pulumi.Input[str] description: Human-readable description of the port. Changing
+               this updates the `description` of an existing port.
+        :param pulumi.Input[str] device_id: The ID of the device attached to the port. Changing this
+               creates a new port.
+        :param pulumi.Input[str] device_owner: The device owner of the port. Changing this creates
+               a new port.
+        :param pulumi.Input[str] dns_name: The port DNS name. Available, when Neutron DNS extension
+               is enabled.
+        :param pulumi.Input[Sequence[pulumi.Input['PortExtraDhcpOptionArgs']]] extra_dhcp_options: An extra DHCP option that needs to be configured
+               on the port. The structure is described below. Can be specified multiple
+               times.
+        :param pulumi.Input[Sequence[pulumi.Input['PortFixedIpArgs']]] fixed_ips: An array of desired IPs for
+               this port. The structure is described below.
+        :param pulumi.Input[str] mac_address: The additional MAC address.
+        :param pulumi.Input[str] name: Name of the DHCP option.
+        :param pulumi.Input[bool] no_fixed_ip: Create a port with no fixed
+               IP address. This will also remove any fixed IPs previously set on a port. `true`
+               is the only valid value for this argument.
+        :param pulumi.Input[bool] no_security_groups: If set to
+               `true`, then no security groups are applied to the port. If set to `false` and
+               no `security_group_ids` are specified, then the port will yield to the default
+               behavior of the Networking service, which is to usually apply the "default"
+               security group.
+        :param pulumi.Input[bool] port_security_enabled: Whether to explicitly enable or disable
+               port security on the port. Port Security is usually enabled by default, so
+               omitting argument will usually result in a value of `true`. Setting this
+               explicitly to `false` will disable port security. In order to disable port
+               security, the port must not have any security groups. Valid values are `true`
+               and `false`.
+        :param pulumi.Input[str] qos_policy_id: Reference to the associated QoS policy.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
+               A Networking client is needed to create a port. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               port.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list
+               of security group IDs to apply to the port. The security groups must be
+               specified by ID and not name (as opposed to how they are configured with
+               the Compute Instance).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of string tags for the port.
+        :param pulumi.Input[str] tenant_id: The owner of the port. Required if admin wants
+               to create a port for another tenant. Changing this creates a new port.
+        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
+        """
+        pulumi.set(__self__, "network_id", network_id)
+        if admin_state_up is not None:
+            pulumi.set(__self__, "admin_state_up", admin_state_up)
+        if allowed_address_pairs is not None:
+            pulumi.set(__self__, "allowed_address_pairs", allowed_address_pairs)
+        if binding is not None:
+            pulumi.set(__self__, "binding", binding)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if device_id is not None:
+            pulumi.set(__self__, "device_id", device_id)
+        if device_owner is not None:
+            pulumi.set(__self__, "device_owner", device_owner)
+        if dns_name is not None:
+            pulumi.set(__self__, "dns_name", dns_name)
+        if extra_dhcp_options is not None:
+            pulumi.set(__self__, "extra_dhcp_options", extra_dhcp_options)
+        if fixed_ips is not None:
+            pulumi.set(__self__, "fixed_ips", fixed_ips)
+        if mac_address is not None:
+            pulumi.set(__self__, "mac_address", mac_address)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if no_fixed_ip is not None:
+            pulumi.set(__self__, "no_fixed_ip", no_fixed_ip)
+        if no_security_groups is not None:
+            pulumi.set(__self__, "no_security_groups", no_security_groups)
+        if port_security_enabled is not None:
+            pulumi.set(__self__, "port_security_enabled", port_security_enabled)
+        if qos_policy_id is not None:
+            pulumi.set(__self__, "qos_policy_id", qos_policy_id)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if security_group_ids is not None:
+            pulumi.set(__self__, "security_group_ids", security_group_ids)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if tenant_id is not None:
+            pulumi.set(__self__, "tenant_id", tenant_id)
+        if value_specs is not None:
+            pulumi.set(__self__, "value_specs", value_specs)
+
+    @property
+    @pulumi.getter(name="networkId")
+    def network_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the network to attach the port to. Changing
+        this creates a new port.
+        """
+        return pulumi.get(self, "network_id")
+
+    @network_id.setter
+    def network_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "network_id", value)
+
+    @property
+    @pulumi.getter(name="adminStateUp")
+    def admin_state_up(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Administrative up/down status for the port
+        (must be `true` or `false` if provided). Changing this updates the
+        `admin_state_up` of an existing port.
+        """
+        return pulumi.get(self, "admin_state_up")
+
+    @admin_state_up.setter
+    def admin_state_up(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "admin_state_up", value)
+
+    @property
+    @pulumi.getter(name="allowedAddressPairs")
+    def allowed_address_pairs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PortAllowedAddressPairArgs']]]]:
+        """
+        An IP/MAC Address pair of additional IP
+        addresses that can be active on this port. The structure is described
+        below.
+        """
+        return pulumi.get(self, "allowed_address_pairs")
+
+    @allowed_address_pairs.setter
+    def allowed_address_pairs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PortAllowedAddressPairArgs']]]]):
+        pulumi.set(self, "allowed_address_pairs", value)
+
+    @property
+    @pulumi.getter
+    def binding(self) -> Optional[pulumi.Input['PortBindingArgs']]:
+        """
+        The port binding allows to specify binding information
+        for the port. The structure is described below.
+        """
+        return pulumi.get(self, "binding")
+
+    @binding.setter
+    def binding(self, value: Optional[pulumi.Input['PortBindingArgs']]):
+        pulumi.set(self, "binding", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Human-readable description of the port. Changing
+        this updates the `description` of an existing port.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="deviceId")
+    def device_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the device attached to the port. Changing this
+        creates a new port.
+        """
+        return pulumi.get(self, "device_id")
+
+    @device_id.setter
+    def device_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "device_id", value)
+
+    @property
+    @pulumi.getter(name="deviceOwner")
+    def device_owner(self) -> Optional[pulumi.Input[str]]:
+        """
+        The device owner of the port. Changing this creates
+        a new port.
+        """
+        return pulumi.get(self, "device_owner")
+
+    @device_owner.setter
+    def device_owner(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "device_owner", value)
+
+    @property
+    @pulumi.getter(name="dnsName")
+    def dns_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The port DNS name. Available, when Neutron DNS extension
+        is enabled.
+        """
+        return pulumi.get(self, "dns_name")
+
+    @dns_name.setter
+    def dns_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dns_name", value)
+
+    @property
+    @pulumi.getter(name="extraDhcpOptions")
+    def extra_dhcp_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PortExtraDhcpOptionArgs']]]]:
+        """
+        An extra DHCP option that needs to be configured
+        on the port. The structure is described below. Can be specified multiple
+        times.
+        """
+        return pulumi.get(self, "extra_dhcp_options")
+
+    @extra_dhcp_options.setter
+    def extra_dhcp_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PortExtraDhcpOptionArgs']]]]):
+        pulumi.set(self, "extra_dhcp_options", value)
+
+    @property
+    @pulumi.getter(name="fixedIps")
+    def fixed_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PortFixedIpArgs']]]]:
+        """
+        An array of desired IPs for
+        this port. The structure is described below.
+        """
+        return pulumi.get(self, "fixed_ips")
+
+    @fixed_ips.setter
+    def fixed_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PortFixedIpArgs']]]]):
+        pulumi.set(self, "fixed_ips", value)
+
+    @property
+    @pulumi.getter(name="macAddress")
+    def mac_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        The additional MAC address.
+        """
+        return pulumi.get(self, "mac_address")
+
+    @mac_address.setter
+    def mac_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mac_address", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the DHCP option.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="noFixedIp")
+    def no_fixed_ip(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Create a port with no fixed
+        IP address. This will also remove any fixed IPs previously set on a port. `true`
+        is the only valid value for this argument.
+        """
+        return pulumi.get(self, "no_fixed_ip")
+
+    @no_fixed_ip.setter
+    def no_fixed_ip(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "no_fixed_ip", value)
+
+    @property
+    @pulumi.getter(name="noSecurityGroups")
+    def no_security_groups(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set to
+        `true`, then no security groups are applied to the port. If set to `false` and
+        no `security_group_ids` are specified, then the port will yield to the default
+        behavior of the Networking service, which is to usually apply the "default"
+        security group.
+        """
+        return pulumi.get(self, "no_security_groups")
+
+    @no_security_groups.setter
+    def no_security_groups(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "no_security_groups", value)
+
+    @property
+    @pulumi.getter(name="portSecurityEnabled")
+    def port_security_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to explicitly enable or disable
+        port security on the port. Port Security is usually enabled by default, so
+        omitting argument will usually result in a value of `true`. Setting this
+        explicitly to `false` will disable port security. In order to disable port
+        security, the port must not have any security groups. Valid values are `true`
+        and `false`.
+        """
+        return pulumi.get(self, "port_security_enabled")
+
+    @port_security_enabled.setter
+    def port_security_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "port_security_enabled", value)
+
+    @property
+    @pulumi.getter(name="qosPolicyId")
+    def qos_policy_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Reference to the associated QoS policy.
+        """
+        return pulumi.get(self, "qos_policy_id")
+
+    @qos_policy_id.setter
+    def qos_policy_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "qos_policy_id", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V2 Networking client.
+        A Networking client is needed to create a port. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        port.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="securityGroupIds")
+    def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list
+        of security group IDs to apply to the port. The security groups must be
+        specified by ID and not name (as opposed to how they are configured with
+        the Compute Instance).
+        """
+        return pulumi.get(self, "security_group_ids")
+
+    @security_group_ids.setter
+    def security_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "security_group_ids", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A set of string tags for the port.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The owner of the port. Required if admin wants
+        to create a port for another tenant. Changing this creates a new port.
+        """
+        return pulumi.get(self, "tenant_id")
+
+    @tenant_id.setter
+    def tenant_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tenant_id", value)
+
+    @property
+    @pulumi.getter(name="valueSpecs")
+    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Map of additional options.
+        """
+        return pulumi.get(self, "value_specs")
+
+    @value_specs.setter
+    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "value_specs", value)
 
 
 class Port(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -161,6 +566,116 @@ class Port(pulumi.CustomResource):
                to create a port for another tenant. Changing this creates a new port.
         :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: PortArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Manages a V2 port resource within OpenStack.
+
+        ## Example Usage
+        ### Simple port
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        network1 = openstack.networking.Network("network1", admin_state_up=True)
+        port1 = openstack.networking.Port("port1",
+            admin_state_up=True,
+            network_id=network1.id)
+        ```
+        ### Port with physical binding information
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        network1 = openstack.networking.Network("network1", admin_state_up=True)
+        port1 = openstack.networking.Port("port1",
+            admin_state_up=True,
+            binding=openstack.networking.PortBindingArgs(
+                host_id="b080b9cf-46e0-4ce8-ad47-0fd4accc872b",
+                profile=\"\"\"{
+          "local_link_information": [
+            {
+              "switch_info": "info1",
+              "port_id": "Ethernet3/4",
+              "switch_id": "12:34:56:78:9A:BC"
+            },
+            {
+              "switch_info": "info2",
+              "port_id": "Ethernet3/4",
+              "switch_id": "12:34:56:78:9A:BD"
+            }
+          ],
+          "vlan_type": "allowed"
+        }
+
+        \"\"\",
+                vnic_type="baremetal",
+            ),
+            device_id="cdf70fcf-c161-4f24-9c70-96b3f5a54b71",
+            device_owner="baremetal:none",
+            network_id=network1.id)
+        ```
+        ## Notes
+
+        ### Ports and Instances
+
+        There are some notes to consider when connecting Instances to networks using
+        Ports. Please see the `compute.Instance` documentation for further
+        documentation.
+
+        ## Import
+
+        Ports can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:networking/port:Port port_1 eae26a3e-1c33-4cc1-9c31-0cd729c438a1
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param PortArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(PortArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 admin_state_up: Optional[pulumi.Input[bool]] = None,
+                 allowed_address_pairs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PortAllowedAddressPairArgs']]]]] = None,
+                 binding: Optional[pulumi.Input[pulumi.InputType['PortBindingArgs']]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 device_id: Optional[pulumi.Input[str]] = None,
+                 device_owner: Optional[pulumi.Input[str]] = None,
+                 dns_name: Optional[pulumi.Input[str]] = None,
+                 extra_dhcp_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PortExtraDhcpOptionArgs']]]]] = None,
+                 fixed_ips: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PortFixedIpArgs']]]]] = None,
+                 mac_address: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 network_id: Optional[pulumi.Input[str]] = None,
+                 no_fixed_ip: Optional[pulumi.Input[bool]] = None,
+                 no_security_groups: Optional[pulumi.Input[bool]] = None,
+                 port_security_enabled: Optional[pulumi.Input[bool]] = None,
+                 qos_policy_id: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tenant_id: Optional[pulumi.Input[str]] = None,
+                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

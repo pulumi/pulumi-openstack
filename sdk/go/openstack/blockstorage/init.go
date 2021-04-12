@@ -22,25 +22,26 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "openstack:blockstorage/quoteSetV2:QuoteSetV2":
-		r, err = NewQuoteSetV2(ctx, name, nil, pulumi.URN_(urn))
+		r = &QuoteSetV2{}
 	case "openstack:blockstorage/quoteSetV3:QuoteSetV3":
-		r, err = NewQuoteSetV3(ctx, name, nil, pulumi.URN_(urn))
+		r = &QuoteSetV3{}
 	case "openstack:blockstorage/volume:Volume":
-		r, err = NewVolume(ctx, name, nil, pulumi.URN_(urn))
+		r = &Volume{}
 	case "openstack:blockstorage/volumeAttach:VolumeAttach":
-		r, err = NewVolumeAttach(ctx, name, nil, pulumi.URN_(urn))
+		r = &VolumeAttach{}
 	case "openstack:blockstorage/volumeAttachV2:VolumeAttachV2":
-		r, err = NewVolumeAttachV2(ctx, name, nil, pulumi.URN_(urn))
+		r = &VolumeAttachV2{}
 	case "openstack:blockstorage/volumeTypeV3:VolumeTypeV3":
-		r, err = NewVolumeTypeV3(ctx, name, nil, pulumi.URN_(urn))
+		r = &VolumeTypeV3{}
 	case "openstack:blockstorage/volumeV1:VolumeV1":
-		r, err = NewVolumeV1(ctx, name, nil, pulumi.URN_(urn))
+		r = &VolumeV1{}
 	case "openstack:blockstorage/volumeV2:VolumeV2":
-		r, err = NewVolumeV2(ctx, name, nil, pulumi.URN_(urn))
+		r = &VolumeV2{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

@@ -5,13 +5,163 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['Project']
+__all__ = ['ProjectArgs', 'Project']
+
+@pulumi.input_type
+class ProjectArgs:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
+                 domain_id: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 is_domain: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 parent_id: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        The set of arguments for constructing a Project resource.
+        :param pulumi.Input[str] description: A description of the project.
+        :param pulumi.Input[str] domain_id: The domain this project belongs to.
+        :param pulumi.Input[bool] enabled: Whether the project is enabled or disabled. Valid
+               values are `true` and `false`. Default is `true`.
+        :param pulumi.Input[bool] is_domain: Whether this project is a domain. Valid values
+               are `true` and `false`. Default is `false`. Changing this creates a new
+               project/domain.
+        :param pulumi.Input[str] name: The name of the project.
+        :param pulumi.Input[str] parent_id: The parent of this project. Changing this creates
+               a new project.
+        :param pulumi.Input[str] region: The region in which to obtain the V3 Keystone client.
+               If omitted, the `region` argument of the provider is used. Changing this
+               creates a new project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags for the project. Changing this updates the existing
+               project.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if domain_id is not None:
+            pulumi.set(__self__, "domain_id", domain_id)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if is_domain is not None:
+            pulumi.set(__self__, "is_domain", is_domain)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if parent_id is not None:
+            pulumi.set(__self__, "parent_id", parent_id)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A description of the project.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="domainId")
+    def domain_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The domain this project belongs to.
+        """
+        return pulumi.get(self, "domain_id")
+
+    @domain_id.setter
+    def domain_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "domain_id", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the project is enabled or disabled. Valid
+        values are `true` and `false`. Default is `true`.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="isDomain")
+    def is_domain(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether this project is a domain. Valid values
+        are `true` and `false`. Default is `false`. Changing this creates a new
+        project/domain.
+        """
+        return pulumi.get(self, "is_domain")
+
+    @is_domain.setter
+    def is_domain(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_domain", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the project.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="parentId")
+    def parent_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The parent of this project. Changing this creates
+        a new project.
+        """
+        return pulumi.get(self, "parent_id")
+
+    @parent_id.setter
+    def parent_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parent_id", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V3 Keystone client.
+        If omitted, the `region` argument of the provider is used. Changing this
+        creates a new project.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Tags for the project. Changing this updates the existing
+        project.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
 
 
 class Project(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -67,6 +217,61 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags for the project. Changing this updates the existing
                project.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[ProjectArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Manages a V3 Project resource within OpenStack Keystone.
+
+        > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
+        this resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        project1 = openstack.identity.Project("project1", description="A project")
+        ```
+
+        ## Import
+
+        Projects can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:identity/project:Project project_1 89c60255-9bd6-460c-822a-e2b959ede9d2
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ProjectArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ProjectArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 domain_id: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 is_domain: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 parent_id: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

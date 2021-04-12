@@ -5,13 +5,107 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['User']
+__all__ = ['UserArgs', 'User']
+
+@pulumi.input_type
+class UserArgs:
+    def __init__(__self__, *,
+                 instance_id: pulumi.Input[str],
+                 password: pulumi.Input[str],
+                 databases: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 host: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a User resource.
+        :param pulumi.Input[str] password: User's password.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] databases: A list of database user should have access to.
+        :param pulumi.Input[str] name: A unique name for the resource.
+        :param pulumi.Input[str] region: Openstack region resource is created in.
+        """
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "password", password)
+        if databases is not None:
+            pulumi.set(__self__, "databases", databases)
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "instance_id", value)
+
+    @property
+    @pulumi.getter
+    def password(self) -> pulumi.Input[str]:
+        """
+        User's password.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: pulumi.Input[str]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter
+    def databases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of database user should have access to.
+        """
+        return pulumi.get(self, "databases")
+
+    @databases.setter
+    def databases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "databases", value)
+
+    @property
+    @pulumi.getter
+    def host(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "host", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A unique name for the resource.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        Openstack region resource is created in.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
 
 
 class User(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -33,6 +127,38 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] password: User's password.
         :param pulumi.Input[str] region: Openstack region resource is created in.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: UserArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Create a User resource with the given unique name, props, and options.
+        :param str resource_name: The name of the resource.
+        :param UserArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(UserArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 databases: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 host: Optional[pulumi.Input[str]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

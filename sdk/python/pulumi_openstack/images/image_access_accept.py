@@ -5,13 +5,93 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['ImageAccessAccept']
+__all__ = ['ImageAccessAcceptArgs', 'ImageAccessAccept']
+
+@pulumi.input_type
+class ImageAccessAcceptArgs:
+    def __init__(__self__, *,
+                 image_id: pulumi.Input[str],
+                 status: pulumi.Input[str],
+                 member_id: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a ImageAccessAccept resource.
+        :param pulumi.Input[str] image_id: The proposed image ID.
+        :param pulumi.Input[str] status: The membership proposal status. Can either be
+               `accepted`, `rejected` or `pending`.
+        :param pulumi.Input[str] member_id: The member ID, e.g. the target project ID. Optional
+               for admin accounts. Defaults to the current scope project ID.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Glance client.
+               A Glance client is needed to manage Image memberships. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               membership.
+        """
+        pulumi.set(__self__, "image_id", image_id)
+        pulumi.set(__self__, "status", status)
+        if member_id is not None:
+            pulumi.set(__self__, "member_id", member_id)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter(name="imageId")
+    def image_id(self) -> pulumi.Input[str]:
+        """
+        The proposed image ID.
+        """
+        return pulumi.get(self, "image_id")
+
+    @image_id.setter
+    def image_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "image_id", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Input[str]:
+        """
+        The membership proposal status. Can either be
+        `accepted`, `rejected` or `pending`.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: pulumi.Input[str]):
+        pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter(name="memberId")
+    def member_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The member ID, e.g. the target project ID. Optional
+        for admin accounts. Defaults to the current scope project ID.
+        """
+        return pulumi.get(self, "member_id")
+
+    @member_id.setter
+    def member_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "member_id", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V2 Glance client.
+        A Glance client is needed to manage Image memberships. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        membership.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
 
 
 class ImageAccessAccept(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -62,6 +142,62 @@ class ImageAccessAccept(pulumi.CustomResource):
         :param pulumi.Input[str] status: The membership proposal status. Can either be
                `accepted`, `rejected` or `pending`.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ImageAccessAcceptArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Manages memberships status for the shared OpenStack Glance V2 Image within the
+        destination project, which has a member proposal.
+
+        ## Example Usage
+
+        Accept a shared image membershipship proposal within the current project.
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        rancheros = openstack.images.get_image(member_status="all",
+            name="RancherOS",
+            visibility="shared")
+        rancheros_member = openstack.images.ImageAccessAccept("rancherosMember",
+            image_id=rancheros.id,
+            status="accepted")
+        ```
+
+        ## Import
+
+        Image access acceptance status can be imported using the `image_id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:images/imageAccessAccept:ImageAccessAccept openstack_images_image_access_accept_v2 89c60255-9bd6-460c-822a-e2b959ede9d2
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ImageAccessAcceptArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ImageAccessAcceptArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 image_id: Optional[pulumi.Input[str]] = None,
+                 member_id: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

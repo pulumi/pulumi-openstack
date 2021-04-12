@@ -5,13 +5,95 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['ServerGroup']
+__all__ = ['ServerGroupArgs', 'ServerGroup']
+
+@pulumi.input_type
+class ServerGroupArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+        """
+        The set of arguments for constructing a ServerGroup resource.
+        :param pulumi.Input[str] name: A unique name for the server group. Changing this creates
+               a new server group.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] policies: The set of policies for the server group. All policies
+               are mutually exclusive. See the Policies section for more information.
+               Changing this creates a new server group.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Compute client.
+               If omitted, the `region` argument of the provider is used. Changing
+               this creates a new server group.
+        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if policies is not None:
+            pulumi.set(__self__, "policies", policies)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if value_specs is not None:
+            pulumi.set(__self__, "value_specs", value_specs)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A unique name for the server group. Changing this creates
+        a new server group.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The set of policies for the server group. All policies
+        are mutually exclusive. See the Policies section for more information.
+        Changing this creates a new server group.
+        """
+        return pulumi.get(self, "policies")
+
+    @policies.setter
+    def policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "policies", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V2 Compute client.
+        If omitted, the `region` argument of the provider is used. Changing
+        this creates a new server group.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="valueSpecs")
+    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Map of additional options.
+        """
+        return pulumi.get(self, "value_specs")
+
+    @value_specs.setter
+    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "value_specs", value)
 
 
 class ServerGroup(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -71,6 +153,71 @@ class ServerGroup(pulumi.CustomResource):
                this creates a new server group.
         :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[ServerGroupArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Manages a V2 Server Group resource within OpenStack.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        test_sg = openstack.compute.ServerGroup("test-sg", policies=["anti-affinity"])
+        ```
+        ## Policies
+
+        * `affinity` - All instances/servers launched in this group will be hosted on
+          the same compute node.
+
+        * `anti-affinity` - All instances/servers launched in this group will be
+          hosted on different compute nodes.
+
+        * `soft-affinity` - All instances/servers launched in this group will be hosted
+          on the same compute node if possible, but if not possible they
+          still will be scheduled instead of failure. To use this policy your
+          OpenStack environment should support Compute service API 2.15 or above.
+
+        * `soft-anti-affinity` - All instances/servers launched in this group will be
+          hosted on different compute nodes if possible, but if not possible they
+          still will be scheduled instead of failure. To use this policy your
+          OpenStack environment should support Compute service API 2.15 or above.
+
+        ## Import
+
+        Server Groups can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:compute/serverGroup:ServerGroup test-sg 1bc30ee9-9d5b-4c30-bdd5-7f1e663f5edf
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ServerGroupArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ServerGroupArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

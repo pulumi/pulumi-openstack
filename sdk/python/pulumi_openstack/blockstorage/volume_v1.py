@@ -5,15 +5,204 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['VolumeV1']
+__all__ = ['VolumeV1Args', 'VolumeV1']
+
+@pulumi.input_type
+class VolumeV1Args:
+    def __init__(__self__, *,
+                 size: pulumi.Input[int],
+                 availability_zone: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 image_id: Optional[pulumi.Input[str]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 snapshot_id: Optional[pulumi.Input[str]] = None,
+                 source_vol_id: Optional[pulumi.Input[str]] = None,
+                 volume_type: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a VolumeV1 resource.
+        :param pulumi.Input[int] size: The size of the volume to create (in gigabytes). Changing
+               this creates a new volume.
+        :param pulumi.Input[str] availability_zone: The availability zone for the volume.
+               Changing this creates a new volume.
+        :param pulumi.Input[str] description: A description of the volume. Changing this updates
+               the volume's description.
+        :param pulumi.Input[str] image_id: The image ID from which to create the volume.
+               Changing this creates a new volume.
+        :param pulumi.Input[Mapping[str, Any]] metadata: Metadata key/value pairs to associate with the volume.
+               Changing this updates the existing volume metadata.
+        :param pulumi.Input[str] name: A unique name for the volume. Changing this updates the
+               volume's name.
+        :param pulumi.Input[str] region: The region in which to create the volume. If
+               omitted, the `region` argument of the provider is used. Changing this
+               creates a new volume.
+        :param pulumi.Input[str] snapshot_id: The snapshot ID from which to create the volume.
+               Changing this creates a new volume.
+        :param pulumi.Input[str] source_vol_id: The volume ID from which to create the volume.
+               Changing this creates a new volume.
+        :param pulumi.Input[str] volume_type: The type of volume to create.
+               Changing this creates a new volume.
+        """
+        pulumi.set(__self__, "size", size)
+        if availability_zone is not None:
+            pulumi.set(__self__, "availability_zone", availability_zone)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if image_id is not None:
+            pulumi.set(__self__, "image_id", image_id)
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if snapshot_id is not None:
+            pulumi.set(__self__, "snapshot_id", snapshot_id)
+        if source_vol_id is not None:
+            pulumi.set(__self__, "source_vol_id", source_vol_id)
+        if volume_type is not None:
+            pulumi.set(__self__, "volume_type", volume_type)
+
+    @property
+    @pulumi.getter
+    def size(self) -> pulumi.Input[int]:
+        """
+        The size of the volume to create (in gigabytes). Changing
+        this creates a new volume.
+        """
+        return pulumi.get(self, "size")
+
+    @size.setter
+    def size(self, value: pulumi.Input[int]):
+        pulumi.set(self, "size", value)
+
+    @property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        The availability zone for the volume.
+        Changing this creates a new volume.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @availability_zone.setter
+    def availability_zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "availability_zone", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A description of the volume. Changing this updates
+        the volume's description.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="imageId")
+    def image_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The image ID from which to create the volume.
+        Changing this creates a new volume.
+        """
+        return pulumi.get(self, "image_id")
+
+    @image_id.setter
+    def image_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image_id", value)
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Metadata key/value pairs to associate with the volume.
+        Changing this updates the existing volume metadata.
+        """
+        return pulumi.get(self, "metadata")
+
+    @metadata.setter
+    def metadata(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "metadata", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A unique name for the volume. Changing this updates the
+        volume's name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to create the volume. If
+        omitted, the `region` argument of the provider is used. Changing this
+        creates a new volume.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="snapshotId")
+    def snapshot_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The snapshot ID from which to create the volume.
+        Changing this creates a new volume.
+        """
+        return pulumi.get(self, "snapshot_id")
+
+    @snapshot_id.setter
+    def snapshot_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "snapshot_id", value)
+
+    @property
+    @pulumi.getter(name="sourceVolId")
+    def source_vol_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The volume ID from which to create the volume.
+        Changing this creates a new volume.
+        """
+        return pulumi.get(self, "source_vol_id")
+
+    @source_vol_id.setter
+    def source_vol_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_vol_id", value)
+
+    @property
+    @pulumi.getter(name="volumeType")
+    def volume_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of volume to create.
+        Changing this creates a new volume.
+        """
+        return pulumi.get(self, "volume_type")
+
+    @volume_type.setter
+    def volume_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "volume_type", value)
 
 
 class VolumeV1(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -77,6 +266,63 @@ class VolumeV1(pulumi.CustomResource):
         :param pulumi.Input[str] volume_type: The type of volume to create.
                Changing this creates a new volume.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: VolumeV1Args,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Manages a V1 volume resource within OpenStack.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        volume1 = openstack.blockstorage.VolumeV1("volume1",
+            description="first test volume",
+            region="RegionOne",
+            size=3)
+        ```
+
+        ## Import
+
+        Volumes can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:blockstorage/volumeV1:VolumeV1 volume_1 ea257959-eeb1-4c10-8d33-26f0409a755d
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param VolumeV1Args args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(VolumeV1Args, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 availability_zone: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 image_id: Optional[pulumi.Input[str]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 size: Optional[pulumi.Input[int]] = None,
+                 snapshot_id: Optional[pulumi.Input[str]] = None,
+                 source_vol_id: Optional[pulumi.Input[str]] = None,
+                 volume_type: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

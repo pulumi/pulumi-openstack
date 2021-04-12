@@ -5,13 +5,68 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['Database']
+__all__ = ['DatabaseArgs', 'Database']
+
+@pulumi.input_type
+class DatabaseArgs:
+    def __init__(__self__, *,
+                 instance_id: pulumi.Input[str],
+                 name: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Database resource.
+        :param pulumi.Input[str] instance_id: The ID for the database instance.
+        :param pulumi.Input[str] name: A unique name for the resource.
+        :param pulumi.Input[str] region: Openstack region resource is created in.
+        """
+        pulumi.set(__self__, "instance_id", instance_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Input[str]:
+        """
+        The ID for the database instance.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "instance_id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A unique name for the resource.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        Openstack region resource is created in.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
 
 
 class Database(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -48,6 +103,54 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[str] name: A unique name for the resource.
         :param pulumi.Input[str] region: Openstack region resource is created in.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: DatabaseArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Manages a V1 DB database resource within OpenStack.
+
+        ## Example Usage
+        ### Database
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        mydb = openstack.database.Database("mydb", instance_id=openstack_db_instance_v1["basic"]["id"])
+        ```
+
+        ## Import
+
+        Databases can be imported by using `instance-id/db-name`, e.g.
+
+        ```sh
+         $ pulumi import openstack:database/database:Database mydb 7b9e3cd3-00d9-449c-b074-8439f8e274fa/mydb
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param DatabaseArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(DatabaseArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

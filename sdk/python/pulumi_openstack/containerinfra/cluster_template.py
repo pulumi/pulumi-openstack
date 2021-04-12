@@ -5,13 +5,355 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['ClusterTemplate']
+__all__ = ['ClusterTemplateArgs', 'ClusterTemplate']
+
+@pulumi.input_type
+class ClusterTemplateArgs:
+    def __init__(__self__, *,
+                 coe: pulumi.Input[str],
+                 image: pulumi.Input[str],
+                 apiserver_port: Optional[pulumi.Input[int]] = None,
+                 cluster_distro: Optional[pulumi.Input[str]] = None,
+                 dns_nameserver: Optional[pulumi.Input[str]] = None,
+                 docker_storage_driver: Optional[pulumi.Input[str]] = None,
+                 docker_volume_size: Optional[pulumi.Input[int]] = None,
+                 external_network_id: Optional[pulumi.Input[str]] = None,
+                 fixed_network: Optional[pulumi.Input[str]] = None,
+                 fixed_subnet: Optional[pulumi.Input[str]] = None,
+                 flavor: Optional[pulumi.Input[str]] = None,
+                 floating_ip_enabled: Optional[pulumi.Input[bool]] = None,
+                 http_proxy: Optional[pulumi.Input[str]] = None,
+                 https_proxy: Optional[pulumi.Input[str]] = None,
+                 insecure_registry: Optional[pulumi.Input[str]] = None,
+                 keypair_id: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 master_flavor: Optional[pulumi.Input[str]] = None,
+                 master_lb_enabled: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 network_driver: Optional[pulumi.Input[str]] = None,
+                 no_proxy: Optional[pulumi.Input[str]] = None,
+                 public: Optional[pulumi.Input[bool]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 registry_enabled: Optional[pulumi.Input[bool]] = None,
+                 server_type: Optional[pulumi.Input[str]] = None,
+                 tls_disabled: Optional[pulumi.Input[bool]] = None,
+                 volume_driver: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a ClusterTemplate resource.
+        """
+        pulumi.set(__self__, "coe", coe)
+        pulumi.set(__self__, "image", image)
+        if apiserver_port is not None:
+            pulumi.set(__self__, "apiserver_port", apiserver_port)
+        if cluster_distro is not None:
+            pulumi.set(__self__, "cluster_distro", cluster_distro)
+        if dns_nameserver is not None:
+            pulumi.set(__self__, "dns_nameserver", dns_nameserver)
+        if docker_storage_driver is not None:
+            pulumi.set(__self__, "docker_storage_driver", docker_storage_driver)
+        if docker_volume_size is not None:
+            pulumi.set(__self__, "docker_volume_size", docker_volume_size)
+        if external_network_id is not None:
+            pulumi.set(__self__, "external_network_id", external_network_id)
+        if fixed_network is not None:
+            pulumi.set(__self__, "fixed_network", fixed_network)
+        if fixed_subnet is not None:
+            pulumi.set(__self__, "fixed_subnet", fixed_subnet)
+        if flavor is not None:
+            pulumi.set(__self__, "flavor", flavor)
+        if floating_ip_enabled is not None:
+            pulumi.set(__self__, "floating_ip_enabled", floating_ip_enabled)
+        if http_proxy is not None:
+            pulumi.set(__self__, "http_proxy", http_proxy)
+        if https_proxy is not None:
+            pulumi.set(__self__, "https_proxy", https_proxy)
+        if insecure_registry is not None:
+            pulumi.set(__self__, "insecure_registry", insecure_registry)
+        if keypair_id is not None:
+            pulumi.set(__self__, "keypair_id", keypair_id)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if master_flavor is not None:
+            pulumi.set(__self__, "master_flavor", master_flavor)
+        if master_lb_enabled is not None:
+            pulumi.set(__self__, "master_lb_enabled", master_lb_enabled)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if network_driver is not None:
+            pulumi.set(__self__, "network_driver", network_driver)
+        if no_proxy is not None:
+            pulumi.set(__self__, "no_proxy", no_proxy)
+        if public is not None:
+            pulumi.set(__self__, "public", public)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if registry_enabled is not None:
+            pulumi.set(__self__, "registry_enabled", registry_enabled)
+        if server_type is not None:
+            pulumi.set(__self__, "server_type", server_type)
+        if tls_disabled is not None:
+            pulumi.set(__self__, "tls_disabled", tls_disabled)
+        if volume_driver is not None:
+            pulumi.set(__self__, "volume_driver", volume_driver)
+
+    @property
+    @pulumi.getter
+    def coe(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "coe")
+
+    @coe.setter
+    def coe(self, value: pulumi.Input[str]):
+        pulumi.set(self, "coe", value)
+
+    @property
+    @pulumi.getter
+    def image(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "image")
+
+    @image.setter
+    def image(self, value: pulumi.Input[str]):
+        pulumi.set(self, "image", value)
+
+    @property
+    @pulumi.getter(name="apiserverPort")
+    def apiserver_port(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "apiserver_port")
+
+    @apiserver_port.setter
+    def apiserver_port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "apiserver_port", value)
+
+    @property
+    @pulumi.getter(name="clusterDistro")
+    def cluster_distro(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "cluster_distro")
+
+    @cluster_distro.setter
+    def cluster_distro(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_distro", value)
+
+    @property
+    @pulumi.getter(name="dnsNameserver")
+    def dns_nameserver(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "dns_nameserver")
+
+    @dns_nameserver.setter
+    def dns_nameserver(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dns_nameserver", value)
+
+    @property
+    @pulumi.getter(name="dockerStorageDriver")
+    def docker_storage_driver(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "docker_storage_driver")
+
+    @docker_storage_driver.setter
+    def docker_storage_driver(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "docker_storage_driver", value)
+
+    @property
+    @pulumi.getter(name="dockerVolumeSize")
+    def docker_volume_size(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "docker_volume_size")
+
+    @docker_volume_size.setter
+    def docker_volume_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "docker_volume_size", value)
+
+    @property
+    @pulumi.getter(name="externalNetworkId")
+    def external_network_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "external_network_id")
+
+    @external_network_id.setter
+    def external_network_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "external_network_id", value)
+
+    @property
+    @pulumi.getter(name="fixedNetwork")
+    def fixed_network(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "fixed_network")
+
+    @fixed_network.setter
+    def fixed_network(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fixed_network", value)
+
+    @property
+    @pulumi.getter(name="fixedSubnet")
+    def fixed_subnet(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "fixed_subnet")
+
+    @fixed_subnet.setter
+    def fixed_subnet(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fixed_subnet", value)
+
+    @property
+    @pulumi.getter
+    def flavor(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "flavor")
+
+    @flavor.setter
+    def flavor(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "flavor", value)
+
+    @property
+    @pulumi.getter(name="floatingIpEnabled")
+    def floating_ip_enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "floating_ip_enabled")
+
+    @floating_ip_enabled.setter
+    def floating_ip_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "floating_ip_enabled", value)
+
+    @property
+    @pulumi.getter(name="httpProxy")
+    def http_proxy(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "http_proxy")
+
+    @http_proxy.setter
+    def http_proxy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "http_proxy", value)
+
+    @property
+    @pulumi.getter(name="httpsProxy")
+    def https_proxy(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "https_proxy")
+
+    @https_proxy.setter
+    def https_proxy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "https_proxy", value)
+
+    @property
+    @pulumi.getter(name="insecureRegistry")
+    def insecure_registry(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "insecure_registry")
+
+    @insecure_registry.setter
+    def insecure_registry(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "insecure_registry", value)
+
+    @property
+    @pulumi.getter(name="keypairId")
+    def keypair_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "keypair_id")
+
+    @keypair_id.setter
+    def keypair_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "keypair_id", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="masterFlavor")
+    def master_flavor(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "master_flavor")
+
+    @master_flavor.setter
+    def master_flavor(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "master_flavor", value)
+
+    @property
+    @pulumi.getter(name="masterLbEnabled")
+    def master_lb_enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "master_lb_enabled")
+
+    @master_lb_enabled.setter
+    def master_lb_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "master_lb_enabled", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="networkDriver")
+    def network_driver(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "network_driver")
+
+    @network_driver.setter
+    def network_driver(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_driver", value)
+
+    @property
+    @pulumi.getter(name="noProxy")
+    def no_proxy(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "no_proxy")
+
+    @no_proxy.setter
+    def no_proxy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "no_proxy", value)
+
+    @property
+    @pulumi.getter
+    def public(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "public")
+
+    @public.setter
+    def public(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "public", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="registryEnabled")
+    def registry_enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "registry_enabled")
+
+    @registry_enabled.setter
+    def registry_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "registry_enabled", value)
+
+    @property
+    @pulumi.getter(name="serverType")
+    def server_type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "server_type")
+
+    @server_type.setter
+    def server_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "server_type", value)
+
+    @property
+    @pulumi.getter(name="tlsDisabled")
+    def tls_disabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "tls_disabled")
+
+    @tls_disabled.setter
+    def tls_disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "tls_disabled", value)
+
+    @property
+    @pulumi.getter(name="volumeDriver")
+    def volume_driver(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "volume_driver")
+
+    @volume_driver.setter
+    def volume_driver(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "volume_driver", value)
 
 
 class ClusterTemplate(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -244,6 +586,253 @@ class ClusterTemplate(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ClusterTemplateArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Manages a V1 Magnum cluster template resource within OpenStack.
+
+        ## Example Usage
+        ### Create a Cluster template
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        clustertemplate1 = openstack.containerinfra.ClusterTemplate("clustertemplate1",
+            coe="kubernetes",
+            dns_nameserver="1.1.1.1",
+            docker_storage_driver="devicemapper",
+            docker_volume_size=10,
+            flavor="m1.small",
+            floating_ip_enabled=False,
+            image="Fedora-Atomic-27",
+            labels={
+                "influx_grafana_dashboard_enabled": "true",
+                "kube_dashboard_enabled": "true",
+                "kube_tag": "1.11.1",
+                "prometheus_monitoring": "true",
+            },
+            master_flavor="m1.medium",
+            master_lb_enabled=True,
+            network_driver="flannel",
+            server_type="vm",
+            volume_driver="cinder")
+        ```
+        ## Argument reference
+
+        The following arguments are supported:
+
+        * `region` - (Optional) The region in which to obtain the V1 Container Infra
+          client. A Container Infra client is needed to create a cluster template. If
+          omitted,the `region` argument of the provider is used. Changing this
+          creates a new cluster template.
+
+        * `name` - (Required) The name of the cluster template. Changing this updates
+          the name of the existing cluster template.
+
+        * `project_id` - (Optional) The project of the cluster template. Required if
+          admin wants to create a cluster template in another project. Changing this
+          creates a new cluster template.
+
+        * `user_id` - (Optional) The user of the cluster template. Required if admin
+          wants to create a cluster template for another user. Changing this creates
+          a new cluster template.
+
+        * `apiserver_port` - (Optional) The API server port for the Container
+          Orchestration Engine for this cluster template. Changing this updates the
+          API server port of the existing cluster template.
+
+        * `coe` - (Required) The Container Orchestration Engine for this cluster
+          template. Changing this updates the engine of the existing cluster
+          template.
+
+        * `cluster_distro` - (Optional) The distro for the cluster (fedora-atomic,
+          coreos, etc.). Changing this updates the cluster distro of the existing
+          cluster template.
+
+        * `dns_nameserver` - (Optional) Address of the DNS nameserver that is used in
+          nodes of the cluster. Changing this updates the DNS nameserver of the
+          existing cluster template.
+
+        * `docker_storage_driver` - (Optional) Docker storage driver. Changing this
+          updates the Docker storage driver of the existing cluster template.
+
+        * `docker_volume_size` - (Optional) The size (in GB) of the Docker volume.
+          Changing this updates the Docker volume size of the existing cluster
+          template.
+
+        * `external_network_id` - (Optional) The ID of the external network that will
+          be used for the cluster. Changing this updates the external network ID of
+          the existing cluster template.
+
+        * `fixed_network` - (Optional) The fixed network that will be attached to the
+          cluster. Changing this updates the fixed network of the existing cluster
+          template.
+
+        * `fixed_subnet` - (Optional) The fixed subnet that will be attached to the
+          cluster. Changing this updates the fixed subnet of the existing cluster
+          template.
+
+        * `flavor` - (Optional) The flavor for the nodes of the cluster. Can be set via
+          the `OS_MAGNUM_FLAVOR` environment variable. Changing this updates the
+          flavor of the existing cluster template.
+
+        * `master_flavor` - (Optional) The flavor for the master nodes. Can be set via
+          the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this updates
+          the master flavor of the existing cluster template.
+
+        * `floating_ip_enabled` - (Optional) Indicates whether created cluster should
+          create floating IP for every node or not. Changing this updates the
+          floating IP enabled attribute of the existing cluster template.
+
+        * `http_proxy` - (Optional) The address of a proxy for receiving all HTTP
+          requests and relay them. Changing this updates the HTTP proxy address of
+          the existing cluster template.
+
+        * `https_proxy` - (Optional) The address of a proxy for receiving all HTTPS
+          requests and relay them. Changing this updates the HTTPS proxy address of
+          the existing cluster template.
+
+        * `image` - (Required) The reference to an image that is used for nodes of the
+          cluster. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
+          Changing this updates the image attribute of the existing cluster template.
+
+        * `insecure_registry` - (Optional) The insecure registry URL for the cluster
+          template. Changing this updates the insecure registry attribute of the
+          existing cluster template.
+
+        * `keypair_id` - (Optional) The name of the Compute service SSH keypair.
+          Changing this updates the keypair of the existing cluster template.
+
+        * `labels` - (Optional) The list of key value pairs representing additional
+          properties of the cluster template. Changing this updates the labels of the
+          existing cluster template.
+
+        * `master_lb_enabled` - (Optional) Indicates whether created cluster should
+          has a loadbalancer for master nodes or not. Changing this updates the
+          attribute of the existing cluster template.
+
+        * `network_driver` - (Optional) The name of the driver for the container
+          network. Changing this updates the network driver of the existing cluster
+          template.
+
+        * `no_proxy` - (Optional) A comma-separated list of IP addresses that shouldn't
+          be used in the cluster. Changing this updates the no proxy list of the
+          existing cluster template.
+
+        * `public` - (Optional) Indicates whether cluster template should be public.
+          Changing this updates the public attribute of the existing cluster
+          template.
+
+        * `registry_enabled` - (Optional) Indicates whether Docker registry is enabled
+          in the cluster. Changing this updates the registry enabled attribute of the
+          existing cluster template.
+
+        * `server_type` - (Optional) The server type for the cluster template. Changing
+          this updates the server type of the existing cluster template.
+
+        * `tls_disabled` - (Optional) Indicates whether the TLS should be disabled in
+          the cluster. Changing this updates the attribute of the existing cluster.
+
+        * `volume_driver` - (Optional) The name of the driver that is used for the
+          volumes of the cluster nodes. Changing this updates the volume driver of
+          the existing cluster template.
+
+        ## Attributes reference
+
+        The following attributes are exported:
+
+        * `region` - See Argument Reference above.
+        * `name` - See Argument Reference above.
+        * `project_id` - See Argument Reference above.
+        * `created_at` - The time at which cluster template was created.
+        * `updated_at` - The time at which cluster template was created.
+        * `apiserver_port` - See Argument Reference above.
+        * `coe` - See Argument Reference above.
+        * `cluster_distro` - See Argument Reference above.
+        * `dns_nameserver` - See Argument Reference above.
+        * `docker_storage_driver` - See Argument Reference above.
+        * `docker_volume_size` - See Argument Reference above.
+        * `external_network_id` - See Argument Reference above.
+        * `fixed_network` - See Argument Reference above.
+        * `fixed_subnet` - See Argument Reference above.
+        * `flavor` - See Argument Reference above.
+        * `master_flavor` - See Argument Reference above.
+        * `floating_ip_enabled` - See Argument Reference above.
+        * `http_proxy` - See Argument Reference above.
+        * `https_proxy` - See Argument Reference above.
+        * `image` - See Argument Reference above.
+        * `insecure_registry` - See Argument Reference above.
+        * `keypair_id` - See Argument Reference above.
+        * `labels` - See Argument Reference above.
+        * `links` - A list containing associated cluster template links.
+        * `master_lb_enabled` - See Argument Reference above.
+        * `network_driver` - See Argument Reference above.
+        * `no_proxy` - See Argument Reference above.
+        * `public` - See Argument Reference above.
+        * `registry_enabled` - See Argument Reference above.
+        * `server_type` - See Argument Reference above.
+        * `tls_disabled` - See Argument Reference above.
+        * `volume_driver` - See Argument Reference above.
+
+        ## Import
+
+        Cluster templates can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:containerinfra/clusterTemplate:ClusterTemplate clustertemplate_1 b9a45c5c-cd03-4958-82aa-b80bf93cb922
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ClusterTemplateArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ClusterTemplateArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 apiserver_port: Optional[pulumi.Input[int]] = None,
+                 cluster_distro: Optional[pulumi.Input[str]] = None,
+                 coe: Optional[pulumi.Input[str]] = None,
+                 dns_nameserver: Optional[pulumi.Input[str]] = None,
+                 docker_storage_driver: Optional[pulumi.Input[str]] = None,
+                 docker_volume_size: Optional[pulumi.Input[int]] = None,
+                 external_network_id: Optional[pulumi.Input[str]] = None,
+                 fixed_network: Optional[pulumi.Input[str]] = None,
+                 fixed_subnet: Optional[pulumi.Input[str]] = None,
+                 flavor: Optional[pulumi.Input[str]] = None,
+                 floating_ip_enabled: Optional[pulumi.Input[bool]] = None,
+                 http_proxy: Optional[pulumi.Input[str]] = None,
+                 https_proxy: Optional[pulumi.Input[str]] = None,
+                 image: Optional[pulumi.Input[str]] = None,
+                 insecure_registry: Optional[pulumi.Input[str]] = None,
+                 keypair_id: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 master_flavor: Optional[pulumi.Input[str]] = None,
+                 master_lb_enabled: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 network_driver: Optional[pulumi.Input[str]] = None,
+                 no_proxy: Optional[pulumi.Input[str]] = None,
+                 public: Optional[pulumi.Input[bool]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 registry_enabled: Optional[pulumi.Input[bool]] = None,
+                 server_type: Optional[pulumi.Input[str]] = None,
+                 tls_disabled: Optional[pulumi.Input[bool]] = None,
+                 volume_driver: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

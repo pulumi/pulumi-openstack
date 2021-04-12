@@ -22,15 +22,16 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "openstack:images/image:Image":
-		r, err = NewImage(ctx, name, nil, pulumi.URN_(urn))
+		r = &Image{}
 	case "openstack:images/imageAccess:ImageAccess":
-		r, err = NewImageAccess(ctx, name, nil, pulumi.URN_(urn))
+		r = &ImageAccess{}
 	case "openstack:images/imageAccessAccept:ImageAccessAccept":
-		r, err = NewImageAccessAccept(ctx, name, nil, pulumi.URN_(urn))
+		r = &ImageAccessAccept{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

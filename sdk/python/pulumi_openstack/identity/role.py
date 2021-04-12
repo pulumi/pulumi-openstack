@@ -5,13 +5,73 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['Role']
+__all__ = ['RoleArgs', 'Role']
+
+@pulumi.input_type
+class RoleArgs:
+    def __init__(__self__, *,
+                 domain_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Role resource.
+        :param pulumi.Input[str] domain_id: The domain the role belongs to.
+        :param pulumi.Input[str] name: The name of the role.
+        :param pulumi.Input[str] region: The region in which to obtain the V3 Keystone client.
+               If omitted, the `region` argument of the provider is used. Changing this
+               creates a new Role.
+        """
+        if domain_id is not None:
+            pulumi.set(__self__, "domain_id", domain_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter(name="domainId")
+    def domain_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The domain the role belongs to.
+        """
+        return pulumi.get(self, "domain_id")
+
+    @domain_id.setter
+    def domain_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "domain_id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the role.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V3 Keystone client.
+        If omitted, the `region` argument of the provider is used. Changing this
+        creates a new Role.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
 
 
 class Role(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -52,6 +112,56 @@ class Role(pulumi.CustomResource):
                If omitted, the `region` argument of the provider is used. Changing this
                creates a new Role.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[RoleArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Manages a V3 Role resource within OpenStack Keystone.
+
+        > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
+        this resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        role1 = openstack.identity.Role("role1")
+        ```
+
+        ## Import
+
+        Roles can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:identity/role:Role role_1 89c60255-9bd6-460c-822a-e2b959ede9d2
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param RoleArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(RoleArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 domain_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

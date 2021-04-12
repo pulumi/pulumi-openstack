@@ -5,15 +5,535 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Instance']
+__all__ = ['InstanceArgs', 'Instance']
+
+@pulumi.input_type
+class InstanceArgs:
+    def __init__(__self__, *,
+                 access_ip_v4: Optional[pulumi.Input[str]] = None,
+                 access_ip_v6: Optional[pulumi.Input[str]] = None,
+                 admin_pass: Optional[pulumi.Input[str]] = None,
+                 availability_zone: Optional[pulumi.Input[str]] = None,
+                 availability_zone_hints: Optional[pulumi.Input[str]] = None,
+                 block_devices: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceBlockDeviceArgs']]]] = None,
+                 config_drive: Optional[pulumi.Input[bool]] = None,
+                 flavor_id: Optional[pulumi.Input[str]] = None,
+                 flavor_name: Optional[pulumi.Input[str]] = None,
+                 force_delete: Optional[pulumi.Input[bool]] = None,
+                 image_id: Optional[pulumi.Input[str]] = None,
+                 image_name: Optional[pulumi.Input[str]] = None,
+                 key_pair: Optional[pulumi.Input[str]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 network_mode: Optional[pulumi.Input[str]] = None,
+                 networks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkArgs']]]] = None,
+                 personalities: Optional[pulumi.Input[Sequence[pulumi.Input['InstancePersonalityArgs']]]] = None,
+                 power_state: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 scheduler_hints: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceSchedulerHintArgs']]]] = None,
+                 security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 stop_before_destroy: Optional[pulumi.Input[bool]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 user_data: Optional[pulumi.Input[str]] = None,
+                 vendor_options: Optional[pulumi.Input['InstanceVendorOptionsArgs']] = None):
+        """
+        The set of arguments for constructing a Instance resource.
+        :param pulumi.Input[str] access_ip_v4: The first detected Fixed IPv4 address.
+        :param pulumi.Input[str] access_ip_v6: The first detected Fixed IPv6 address.
+        :param pulumi.Input[str] admin_pass: The administrative password to assign to the server.
+               Changing this changes the root password on the existing server.
+        :param pulumi.Input[str] availability_zone: The availability zone in which to create
+               the server. Conflicts with `availability_zone_hints`. Changing this creates
+               a new server.
+        :param pulumi.Input[str] availability_zone_hints: The availability zone in which to
+               create the server. This argument is preferred to `availability_zone`, when
+               scheduling the server on a
+               [particular](https://docs.openstack.org/nova/latest/admin/availability-zones.html)
+               host or node. Conflicts with `availability_zone`. Changing this creates a
+               new server.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceBlockDeviceArgs']]] block_devices: Configuration of block devices. The block_device
+               structure is documented below. Changing this creates a new server.
+               You can specify multiple block devices which will create an instance with
+               multiple disks. This configuration is very flexible, so please see the
+               following [reference](https://docs.openstack.org/nova/latest/user/block-device-mapping.html)
+               for more information.
+        :param pulumi.Input[bool] config_drive: Whether to use the config_drive feature to
+               configure the instance. Changing this creates a new server.
+        :param pulumi.Input[str] flavor_id: The flavor ID of
+               the desired flavor for the server. Changing this resizes the existing server.
+        :param pulumi.Input[str] flavor_name: The name of the
+               desired flavor for the server. Changing this resizes the existing server.
+        :param pulumi.Input[bool] force_delete: Whether to force the OpenStack instance to be
+               forcefully deleted. This is useful for environments that have reclaim / soft
+               deletion enabled.
+        :param pulumi.Input[str] image_id: (Optional; Required if `image_name` is empty and not booting
+               from a volume. Do not specify if booting from a volume.) The image ID of
+               the desired image for the server. Changing this creates a new server.
+        :param pulumi.Input[str] image_name: (Optional; Required if `image_id` is empty and not booting
+               from a volume. Do not specify if booting from a volume.) The name of the
+               desired image for the server. Changing this creates a new server.
+        :param pulumi.Input[str] key_pair: The name of a key pair to put on the server. The key
+               pair must already be created and associated with the tenant's account.
+               Changing this creates a new server.
+        :param pulumi.Input[Mapping[str, Any]] metadata: Metadata key/value pairs to make available from
+               within the instance. Changing this updates the existing server metadata.
+        :param pulumi.Input[str] name: The human-readable
+               name of the network. Changing this creates a new server.
+        :param pulumi.Input[str] network_mode: Special string for `network` option to create
+               the server. `network_mode` can be `"auto"` or `"none"`.
+               Please see the following [reference](https://docs.openstack.org/api-ref/compute/?expanded=create-server-detail#id11) for more information. Conflicts with `network`.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceNetworkArgs']]] networks: An array of one or more networks to attach to the
+               instance. The network object structure is documented below. Changing this
+               creates a new server.
+        :param pulumi.Input[Sequence[pulumi.Input['InstancePersonalityArgs']]] personalities: Customize the personality of an instance by
+               defining one or more files and their contents. The personality structure
+               is described below.
+        :param pulumi.Input[str] power_state: Provide the VM state. Only 'active' and 'shutoff'
+               are supported values. *Note*: If the initial power_state is the shutoff
+               the VM will be stopped immediately after build and the provisioners like
+               remote-exec or files are not supported.
+        :param pulumi.Input[str] region: The region in which to create the server instance. If
+               omitted, the `region` argument of the provider is used. Changing this
+               creates a new server.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceSchedulerHintArgs']]] scheduler_hints: Provide the Nova scheduler with hints on how
+               the instance should be launched. The available hints are described below.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: An array of one or more security group names
+               to associate with the server. Changing this results in adding/removing
+               security groups from the existing server. *Note*: When attaching the
+               instance to networks using Ports, place the security groups on the Port
+               and not the instance. *Note*: Names should be used and not ids, as ids
+               trigger unnecessary updates.
+        :param pulumi.Input[bool] stop_before_destroy: Whether to try stop instance gracefully
+               before destroying it, thus giving chance for guest OS daemons to stop correctly.
+               If instance doesn't stop within timeout, it will be destroyed anyway.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of string tags for the instance. Changing this
+               updates the existing instance tags.
+        :param pulumi.Input[str] user_data: The user data to provide when launching the instance.
+               Changing this creates a new server.
+        :param pulumi.Input['InstanceVendorOptionsArgs'] vendor_options: Map of additional vendor-specific options.
+               Supported options are described below.
+        """
+        if access_ip_v4 is not None:
+            pulumi.set(__self__, "access_ip_v4", access_ip_v4)
+        if access_ip_v6 is not None:
+            pulumi.set(__self__, "access_ip_v6", access_ip_v6)
+        if admin_pass is not None:
+            pulumi.set(__self__, "admin_pass", admin_pass)
+        if availability_zone is not None:
+            pulumi.set(__self__, "availability_zone", availability_zone)
+        if availability_zone_hints is not None:
+            pulumi.set(__self__, "availability_zone_hints", availability_zone_hints)
+        if block_devices is not None:
+            pulumi.set(__self__, "block_devices", block_devices)
+        if config_drive is not None:
+            pulumi.set(__self__, "config_drive", config_drive)
+        if flavor_id is not None:
+            pulumi.set(__self__, "flavor_id", flavor_id)
+        if flavor_name is not None:
+            pulumi.set(__self__, "flavor_name", flavor_name)
+        if force_delete is not None:
+            pulumi.set(__self__, "force_delete", force_delete)
+        if image_id is not None:
+            pulumi.set(__self__, "image_id", image_id)
+        if image_name is not None:
+            pulumi.set(__self__, "image_name", image_name)
+        if key_pair is not None:
+            pulumi.set(__self__, "key_pair", key_pair)
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if network_mode is not None:
+            pulumi.set(__self__, "network_mode", network_mode)
+        if networks is not None:
+            pulumi.set(__self__, "networks", networks)
+        if personalities is not None:
+            pulumi.set(__self__, "personalities", personalities)
+        if power_state is not None:
+            pulumi.set(__self__, "power_state", power_state)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if scheduler_hints is not None:
+            pulumi.set(__self__, "scheduler_hints", scheduler_hints)
+        if security_groups is not None:
+            pulumi.set(__self__, "security_groups", security_groups)
+        if stop_before_destroy is not None:
+            pulumi.set(__self__, "stop_before_destroy", stop_before_destroy)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if user_data is not None:
+            pulumi.set(__self__, "user_data", user_data)
+        if vendor_options is not None:
+            pulumi.set(__self__, "vendor_options", vendor_options)
+
+    @property
+    @pulumi.getter(name="accessIpV4")
+    def access_ip_v4(self) -> Optional[pulumi.Input[str]]:
+        """
+        The first detected Fixed IPv4 address.
+        """
+        return pulumi.get(self, "access_ip_v4")
+
+    @access_ip_v4.setter
+    def access_ip_v4(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_ip_v4", value)
+
+    @property
+    @pulumi.getter(name="accessIpV6")
+    def access_ip_v6(self) -> Optional[pulumi.Input[str]]:
+        """
+        The first detected Fixed IPv6 address.
+        """
+        return pulumi.get(self, "access_ip_v6")
+
+    @access_ip_v6.setter
+    def access_ip_v6(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_ip_v6", value)
+
+    @property
+    @pulumi.getter(name="adminPass")
+    def admin_pass(self) -> Optional[pulumi.Input[str]]:
+        """
+        The administrative password to assign to the server.
+        Changing this changes the root password on the existing server.
+        """
+        return pulumi.get(self, "admin_pass")
+
+    @admin_pass.setter
+    def admin_pass(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "admin_pass", value)
+
+    @property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        The availability zone in which to create
+        the server. Conflicts with `availability_zone_hints`. Changing this creates
+        a new server.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @availability_zone.setter
+    def availability_zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "availability_zone", value)
+
+    @property
+    @pulumi.getter(name="availabilityZoneHints")
+    def availability_zone_hints(self) -> Optional[pulumi.Input[str]]:
+        """
+        The availability zone in which to
+        create the server. This argument is preferred to `availability_zone`, when
+        scheduling the server on a
+        [particular](https://docs.openstack.org/nova/latest/admin/availability-zones.html)
+        host or node. Conflicts with `availability_zone`. Changing this creates a
+        new server.
+        """
+        return pulumi.get(self, "availability_zone_hints")
+
+    @availability_zone_hints.setter
+    def availability_zone_hints(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "availability_zone_hints", value)
+
+    @property
+    @pulumi.getter(name="blockDevices")
+    def block_devices(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceBlockDeviceArgs']]]]:
+        """
+        Configuration of block devices. The block_device
+        structure is documented below. Changing this creates a new server.
+        You can specify multiple block devices which will create an instance with
+        multiple disks. This configuration is very flexible, so please see the
+        following [reference](https://docs.openstack.org/nova/latest/user/block-device-mapping.html)
+        for more information.
+        """
+        return pulumi.get(self, "block_devices")
+
+    @block_devices.setter
+    def block_devices(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceBlockDeviceArgs']]]]):
+        pulumi.set(self, "block_devices", value)
+
+    @property
+    @pulumi.getter(name="configDrive")
+    def config_drive(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to use the config_drive feature to
+        configure the instance. Changing this creates a new server.
+        """
+        return pulumi.get(self, "config_drive")
+
+    @config_drive.setter
+    def config_drive(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "config_drive", value)
+
+    @property
+    @pulumi.getter(name="flavorId")
+    def flavor_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The flavor ID of
+        the desired flavor for the server. Changing this resizes the existing server.
+        """
+        return pulumi.get(self, "flavor_id")
+
+    @flavor_id.setter
+    def flavor_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "flavor_id", value)
+
+    @property
+    @pulumi.getter(name="flavorName")
+    def flavor_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the
+        desired flavor for the server. Changing this resizes the existing server.
+        """
+        return pulumi.get(self, "flavor_name")
+
+    @flavor_name.setter
+    def flavor_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "flavor_name", value)
+
+    @property
+    @pulumi.getter(name="forceDelete")
+    def force_delete(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to force the OpenStack instance to be
+        forcefully deleted. This is useful for environments that have reclaim / soft
+        deletion enabled.
+        """
+        return pulumi.get(self, "force_delete")
+
+    @force_delete.setter
+    def force_delete(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_delete", value)
+
+    @property
+    @pulumi.getter(name="imageId")
+    def image_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Optional; Required if `image_name` is empty and not booting
+        from a volume. Do not specify if booting from a volume.) The image ID of
+        the desired image for the server. Changing this creates a new server.
+        """
+        return pulumi.get(self, "image_id")
+
+    @image_id.setter
+    def image_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image_id", value)
+
+    @property
+    @pulumi.getter(name="imageName")
+    def image_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Optional; Required if `image_id` is empty and not booting
+        from a volume. Do not specify if booting from a volume.) The name of the
+        desired image for the server. Changing this creates a new server.
+        """
+        return pulumi.get(self, "image_name")
+
+    @image_name.setter
+    def image_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image_name", value)
+
+    @property
+    @pulumi.getter(name="keyPair")
+    def key_pair(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of a key pair to put on the server. The key
+        pair must already be created and associated with the tenant's account.
+        Changing this creates a new server.
+        """
+        return pulumi.get(self, "key_pair")
+
+    @key_pair.setter
+    def key_pair(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key_pair", value)
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Metadata key/value pairs to make available from
+        within the instance. Changing this updates the existing server metadata.
+        """
+        return pulumi.get(self, "metadata")
+
+    @metadata.setter
+    def metadata(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "metadata", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The human-readable
+        name of the network. Changing this creates a new server.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="networkMode")
+    def network_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Special string for `network` option to create
+        the server. `network_mode` can be `"auto"` or `"none"`.
+        Please see the following [reference](https://docs.openstack.org/api-ref/compute/?expanded=create-server-detail#id11) for more information. Conflicts with `network`.
+        """
+        return pulumi.get(self, "network_mode")
+
+    @network_mode.setter
+    def network_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_mode", value)
+
+    @property
+    @pulumi.getter
+    def networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkArgs']]]]:
+        """
+        An array of one or more networks to attach to the
+        instance. The network object structure is documented below. Changing this
+        creates a new server.
+        """
+        return pulumi.get(self, "networks")
+
+    @networks.setter
+    def networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkArgs']]]]):
+        pulumi.set(self, "networks", value)
+
+    @property
+    @pulumi.getter
+    def personalities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstancePersonalityArgs']]]]:
+        """
+        Customize the personality of an instance by
+        defining one or more files and their contents. The personality structure
+        is described below.
+        """
+        return pulumi.get(self, "personalities")
+
+    @personalities.setter
+    def personalities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstancePersonalityArgs']]]]):
+        pulumi.set(self, "personalities", value)
+
+    @property
+    @pulumi.getter(name="powerState")
+    def power_state(self) -> Optional[pulumi.Input[str]]:
+        """
+        Provide the VM state. Only 'active' and 'shutoff'
+        are supported values. *Note*: If the initial power_state is the shutoff
+        the VM will be stopped immediately after build and the provisioners like
+        remote-exec or files are not supported.
+        """
+        return pulumi.get(self, "power_state")
+
+    @power_state.setter
+    def power_state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "power_state", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to create the server instance. If
+        omitted, the `region` argument of the provider is used. Changing this
+        creates a new server.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="schedulerHints")
+    def scheduler_hints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceSchedulerHintArgs']]]]:
+        """
+        Provide the Nova scheduler with hints on how
+        the instance should be launched. The available hints are described below.
+        """
+        return pulumi.get(self, "scheduler_hints")
+
+    @scheduler_hints.setter
+    def scheduler_hints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceSchedulerHintArgs']]]]):
+        pulumi.set(self, "scheduler_hints", value)
+
+    @property
+    @pulumi.getter(name="securityGroups")
+    def security_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        An array of one or more security group names
+        to associate with the server. Changing this results in adding/removing
+        security groups from the existing server. *Note*: When attaching the
+        instance to networks using Ports, place the security groups on the Port
+        and not the instance. *Note*: Names should be used and not ids, as ids
+        trigger unnecessary updates.
+        """
+        return pulumi.get(self, "security_groups")
+
+    @security_groups.setter
+    def security_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "security_groups", value)
+
+    @property
+    @pulumi.getter(name="stopBeforeDestroy")
+    def stop_before_destroy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to try stop instance gracefully
+        before destroying it, thus giving chance for guest OS daemons to stop correctly.
+        If instance doesn't stop within timeout, it will be destroyed anyway.
+        """
+        return pulumi.get(self, "stop_before_destroy")
+
+    @stop_before_destroy.setter
+    def stop_before_destroy(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "stop_before_destroy", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A set of string tags for the instance. Changing this
+        updates the existing instance tags.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="userData")
+    def user_data(self) -> Optional[pulumi.Input[str]]:
+        """
+        The user data to provide when launching the instance.
+        Changing this creates a new server.
+        """
+        return pulumi.get(self, "user_data")
+
+    @user_data.setter
+    def user_data(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_data", value)
+
+    @property
+    @pulumi.getter(name="vendorOptions")
+    def vendor_options(self) -> Optional[pulumi.Input['InstanceVendorOptionsArgs']]:
+        """
+        Map of additional vendor-specific options.
+        Supported options are described below.
+        """
+        return pulumi.get(self, "vendor_options")
+
+    @vendor_options.setter
+    def vendor_options(self, value: Optional[pulumi.Input['InstanceVendorOptionsArgs']]):
+        pulumi.set(self, "vendor_options", value)
 
 
 class Instance(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -125,6 +645,58 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['InstanceVendorOptionsArgs']] vendor_options: Map of additional vendor-specific options.
                Supported options are described below.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[InstanceArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Create a Instance resource with the given unique name, props, and options.
+        :param str resource_name: The name of the resource.
+        :param InstanceArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(InstanceArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 access_ip_v4: Optional[pulumi.Input[str]] = None,
+                 access_ip_v6: Optional[pulumi.Input[str]] = None,
+                 admin_pass: Optional[pulumi.Input[str]] = None,
+                 availability_zone: Optional[pulumi.Input[str]] = None,
+                 availability_zone_hints: Optional[pulumi.Input[str]] = None,
+                 block_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceBlockDeviceArgs']]]]] = None,
+                 config_drive: Optional[pulumi.Input[bool]] = None,
+                 flavor_id: Optional[pulumi.Input[str]] = None,
+                 flavor_name: Optional[pulumi.Input[str]] = None,
+                 force_delete: Optional[pulumi.Input[bool]] = None,
+                 image_id: Optional[pulumi.Input[str]] = None,
+                 image_name: Optional[pulumi.Input[str]] = None,
+                 key_pair: Optional[pulumi.Input[str]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 network_mode: Optional[pulumi.Input[str]] = None,
+                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNetworkArgs']]]]] = None,
+                 personalities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstancePersonalityArgs']]]]] = None,
+                 power_state: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 scheduler_hints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceSchedulerHintArgs']]]]] = None,
+                 security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 stop_before_destroy: Optional[pulumi.Input[bool]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 user_data: Optional[pulumi.Input[str]] = None,
+                 vendor_options: Optional[pulumi.Input[pulumi.InputType['InstanceVendorOptionsArgs']]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

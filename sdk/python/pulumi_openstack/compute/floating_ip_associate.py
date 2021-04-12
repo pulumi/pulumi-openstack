@@ -5,13 +5,101 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['FloatingIpAssociate']
+__all__ = ['FloatingIpAssociateArgs', 'FloatingIpAssociate']
+
+@pulumi.input_type
+class FloatingIpAssociateArgs:
+    def __init__(__self__, *,
+                 floating_ip: pulumi.Input[str],
+                 instance_id: pulumi.Input[str],
+                 fixed_ip: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 wait_until_associated: Optional[pulumi.Input[bool]] = None):
+        """
+        The set of arguments for constructing a FloatingIpAssociate resource.
+        :param pulumi.Input[str] floating_ip: The floating IP to associate.
+        :param pulumi.Input[str] instance_id: The instance to associte the floating IP with.
+        :param pulumi.Input[str] fixed_ip: The specific IP address to direct traffic to.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Compute client.
+               Keypairs are associated with accounts, but a Compute client is needed to
+               create one. If omitted, the `region` argument of the provider is used.
+               Changing this creates a new floatingip_associate.
+        """
+        pulumi.set(__self__, "floating_ip", floating_ip)
+        pulumi.set(__self__, "instance_id", instance_id)
+        if fixed_ip is not None:
+            pulumi.set(__self__, "fixed_ip", fixed_ip)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if wait_until_associated is not None:
+            pulumi.set(__self__, "wait_until_associated", wait_until_associated)
+
+    @property
+    @pulumi.getter(name="floatingIp")
+    def floating_ip(self) -> pulumi.Input[str]:
+        """
+        The floating IP to associate.
+        """
+        return pulumi.get(self, "floating_ip")
+
+    @floating_ip.setter
+    def floating_ip(self, value: pulumi.Input[str]):
+        pulumi.set(self, "floating_ip", value)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Input[str]:
+        """
+        The instance to associte the floating IP with.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "instance_id", value)
+
+    @property
+    @pulumi.getter(name="fixedIp")
+    def fixed_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specific IP address to direct traffic to.
+        """
+        return pulumi.get(self, "fixed_ip")
+
+    @fixed_ip.setter
+    def fixed_ip(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fixed_ip", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V2 Compute client.
+        Keypairs are associated with accounts, but a Compute client is needed to
+        create one. If omitted, the `region` argument of the provider is used.
+        Changing this creates a new floatingip_associate.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="waitUntilAssociated")
+    def wait_until_associated(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "wait_until_associated")
+
+    @wait_until_associated.setter
+    def wait_until_associated(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "wait_until_associated", value)
 
 
 class FloatingIpAssociate(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -87,6 +175,89 @@ class FloatingIpAssociate(pulumi.CustomResource):
                create one. If omitted, the `region` argument of the provider is used.
                Changing this creates a new floatingip_associate.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: FloatingIpAssociateArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Associate a floating IP to an instance.
+
+        ## Example Usage
+        ### Automatically detect the correct network
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        instance1 = openstack.compute.Instance("instance1",
+            flavor_id="3",
+            image_id="ad091b52-742f-469e-8f3c-fd81cadf0743",
+            key_pair="my_key_pair_name",
+            security_groups=["default"])
+        fip1_floating_ip = openstack.networking.FloatingIp("fip1FloatingIp", pool="my_pool")
+        fip1_floating_ip_associate = openstack.compute.FloatingIpAssociate("fip1FloatingIpAssociate",
+            floating_ip=fip1_floating_ip.address,
+            instance_id=instance1.id)
+        ```
+        ### Explicitly set the network to attach to
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        instance1 = openstack.compute.Instance("instance1",
+            flavor_id="3",
+            image_id="ad091b52-742f-469e-8f3c-fd81cadf0743",
+            key_pair="my_key_pair_name",
+            networks=[
+                openstack.compute.InstanceNetworkArgs(
+                    name="my_network",
+                ),
+                openstack.compute.InstanceNetworkArgs(
+                    name="default",
+                ),
+            ],
+            security_groups=["default"])
+        fip1_floating_ip = openstack.networking.FloatingIp("fip1FloatingIp", pool="my_pool")
+        fip1_floating_ip_associate = openstack.compute.FloatingIpAssociate("fip1FloatingIpAssociate",
+            fixed_ip=instance1.networks[1].fixed_ip_v4,
+            floating_ip=fip1_floating_ip.address,
+            instance_id=instance1.id)
+        ```
+
+        ## Import
+
+        This resource can be imported by specifying all three arguments, separated by a forward slash
+
+        ```sh
+         $ pulumi import openstack:compute/floatingIpAssociate:FloatingIpAssociate fip_1 <floating_ip>/<instance_id>/<fixed_ip>
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param FloatingIpAssociateArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(FloatingIpAssociateArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 fixed_ip: Optional[pulumi.Input[str]] = None,
+                 floating_ip: Optional[pulumi.Input[str]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 wait_until_associated: Optional[pulumi.Input[bool]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

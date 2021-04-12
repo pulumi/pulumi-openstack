@@ -5,15 +5,80 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Members']
+__all__ = ['MembersArgs', 'Members']
+
+@pulumi.input_type
+class MembersArgs:
+    def __init__(__self__, *,
+                 pool_id: pulumi.Input[str],
+                 members: Optional[pulumi.Input[Sequence[pulumi.Input['MembersMemberArgs']]]] = None,
+                 region: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Members resource.
+        :param pulumi.Input[str] pool_id: The id of the pool that members will be assigned to.
+               Changing this creates a new members resource.
+        :param pulumi.Input[Sequence[pulumi.Input['MembersMemberArgs']]] members: A set of dictionaries containing member parameters. The
+               structure is described below.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
+               A Networking client is needed to create pool members. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               members resource.
+        """
+        pulumi.set(__self__, "pool_id", pool_id)
+        if members is not None:
+            pulumi.set(__self__, "members", members)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter(name="poolId")
+    def pool_id(self) -> pulumi.Input[str]:
+        """
+        The id of the pool that members will be assigned to.
+        Changing this creates a new members resource.
+        """
+        return pulumi.get(self, "pool_id")
+
+    @pool_id.setter
+    def pool_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "pool_id", value)
+
+    @property
+    @pulumi.getter
+    def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MembersMemberArgs']]]]:
+        """
+        A set of dictionaries containing member parameters. The
+        structure is described below.
+        """
+        return pulumi.get(self, "members")
+
+    @members.setter
+    def members(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MembersMemberArgs']]]]):
+        pulumi.set(self, "members", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V2 Networking client.
+        A Networking client is needed to create pool members. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        members resource.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
 
 
 class Members(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -69,6 +134,68 @@ class Members(pulumi.CustomResource):
                `region` argument of the provider is used. Changing this creates a new
                members resource.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: MembersArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Manages a V2 members resource within OpenStack (batch members update).
+
+        > **Note:** This resource works only within Octavia API. For
+        legacy Neutron LBaaS v2 extension please use
+        loadbalancer.Member resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        members1 = openstack.loadbalancer.Members("members1",
+            members=[
+                openstack.loadbalancer.MembersMemberArgs(
+                    address="192.168.199.23",
+                    protocol_port=8080,
+                ),
+                openstack.loadbalancer.MembersMemberArgs(
+                    address="192.168.199.24",
+                    protocol_port=8080,
+                ),
+            ],
+            pool_id="935685fb-a896-40f9-9ff4-ae531a3a00fe")
+        ```
+
+        ## Import
+
+        Load Balancer Pool Members can be imported using the Pool ID, e.g.
+
+        ```sh
+         $ pulumi import openstack:loadbalancer/members:Members members_1 c22974d2-4c95-4bcb-9819-0afc5ed303d5
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param MembersArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(MembersArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 members: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MembersMemberArgs']]]]] = None,
+                 pool_id: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

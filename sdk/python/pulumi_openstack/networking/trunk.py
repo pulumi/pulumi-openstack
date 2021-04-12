@@ -5,15 +5,168 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Trunk']
+__all__ = ['TrunkArgs', 'Trunk']
+
+@pulumi.input_type
+class TrunkArgs:
+    def __init__(__self__, *,
+                 port_id: pulumi.Input[str],
+                 admin_state_up: Optional[pulumi.Input[bool]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 sub_ports: Optional[pulumi.Input[Sequence[pulumi.Input['TrunkSubPortArgs']]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tenant_id: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Trunk resource.
+        :param pulumi.Input[str] port_id: The ID of the port to be made a subport of the trunk.
+        :param pulumi.Input[bool] admin_state_up: Administrative up/down status for the trunk
+               (must be "true" or "false" if provided). Changing this updates the
+               `admin_state_up` of an existing trunk.
+        :param pulumi.Input[str] description: Human-readable description of the trunk. Changing this
+               updates the name of the existing trunk.
+        :param pulumi.Input[str] name: A unique name for the trunk. Changing this
+               updates the `name` of an existing trunk.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
+               A networking client is needed to create a trunk. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               trunk.
+        :param pulumi.Input[Sequence[pulumi.Input['TrunkSubPortArgs']]] sub_ports: The set of ports that will be made subports of the trunk.
+               The structure of each subport is described below.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of string tags for the port.
+        :param pulumi.Input[str] tenant_id: The owner of the Trunk. Required if admin wants
+               to create a trunk on behalf of another tenant. Changing this creates a new trunk.
+        """
+        pulumi.set(__self__, "port_id", port_id)
+        if admin_state_up is not None:
+            pulumi.set(__self__, "admin_state_up", admin_state_up)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if sub_ports is not None:
+            pulumi.set(__self__, "sub_ports", sub_ports)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if tenant_id is not None:
+            pulumi.set(__self__, "tenant_id", tenant_id)
+
+    @property
+    @pulumi.getter(name="portId")
+    def port_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the port to be made a subport of the trunk.
+        """
+        return pulumi.get(self, "port_id")
+
+    @port_id.setter
+    def port_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "port_id", value)
+
+    @property
+    @pulumi.getter(name="adminStateUp")
+    def admin_state_up(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Administrative up/down status for the trunk
+        (must be "true" or "false" if provided). Changing this updates the
+        `admin_state_up` of an existing trunk.
+        """
+        return pulumi.get(self, "admin_state_up")
+
+    @admin_state_up.setter
+    def admin_state_up(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "admin_state_up", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Human-readable description of the trunk. Changing this
+        updates the name of the existing trunk.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A unique name for the trunk. Changing this
+        updates the `name` of an existing trunk.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V2 networking client.
+        A networking client is needed to create a trunk. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        trunk.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="subPorts")
+    def sub_ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TrunkSubPortArgs']]]]:
+        """
+        The set of ports that will be made subports of the trunk.
+        The structure of each subport is described below.
+        """
+        return pulumi.get(self, "sub_ports")
+
+    @sub_ports.setter
+    def sub_ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TrunkSubPortArgs']]]]):
+        pulumi.set(self, "sub_ports", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A set of string tags for the port.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The owner of the Trunk. Required if admin wants
+        to create a trunk on behalf of another tenant. Changing this creates a new trunk.
+        """
+        return pulumi.get(self, "tenant_id")
+
+    @tenant_id.setter
+    def tenant_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tenant_id", value)
 
 
 class Trunk(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -87,6 +240,77 @@ class Trunk(pulumi.CustomResource):
         :param pulumi.Input[str] tenant_id: The owner of the Trunk. Required if admin wants
                to create a trunk on behalf of another tenant. Changing this creates a new trunk.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: TrunkArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Manages a networking V2 trunk resource within OpenStack.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        network1 = openstack.networking.Network("network1", admin_state_up=True)
+        subnet1 = openstack.networking.Subnet("subnet1",
+            cidr="192.168.1.0/24",
+            enable_dhcp=True,
+            ip_version=4,
+            network_id=network1.id,
+            no_gateway=True)
+        parent_port1 = openstack.networking.Port("parentPort1",
+            admin_state_up=True,
+            network_id=network1.id,
+            opts=pulumi.ResourceOptions(depends_on=["openstack_networking_subnet_v2.subnet_1"]))
+        subport1 = openstack.networking.Port("subport1",
+            admin_state_up=True,
+            network_id=network1.id,
+            opts=pulumi.ResourceOptions(depends_on=["openstack_networking_subnet_v2.subnet_1"]))
+        trunk1 = openstack.networking.Trunk("trunk1",
+            admin_state_up=True,
+            port_id=parent_port1.id,
+            sub_ports=[openstack.networking.TrunkSubPortArgs(
+                port_id=subport1.id,
+                segmentation_id=1,
+                segmentation_type="vlan",
+            )])
+        instance1 = openstack.compute.Instance("instance1",
+            networks=[openstack.compute.InstanceNetworkArgs(
+                port=trunk1.port_id,
+            )],
+            security_groups=["default"])
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param TrunkArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(TrunkArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 admin_state_up: Optional[pulumi.Input[bool]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 port_id: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 sub_ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TrunkSubPortArgs']]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tenant_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

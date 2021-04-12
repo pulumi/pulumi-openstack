@@ -22,33 +22,34 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "openstack:compute/aggregateV2:AggregateV2":
-		r, err = NewAggregateV2(ctx, name, nil, pulumi.URN_(urn))
+		r = &AggregateV2{}
 	case "openstack:compute/flavor:Flavor":
-		r, err = NewFlavor(ctx, name, nil, pulumi.URN_(urn))
+		r = &Flavor{}
 	case "openstack:compute/flavorAccess:FlavorAccess":
-		r, err = NewFlavorAccess(ctx, name, nil, pulumi.URN_(urn))
+		r = &FlavorAccess{}
 	case "openstack:compute/floatingIp:FloatingIp":
-		r, err = NewFloatingIp(ctx, name, nil, pulumi.URN_(urn))
+		r = &FloatingIp{}
 	case "openstack:compute/floatingIpAssociate:FloatingIpAssociate":
-		r, err = NewFloatingIpAssociate(ctx, name, nil, pulumi.URN_(urn))
+		r = &FloatingIpAssociate{}
 	case "openstack:compute/instance:Instance":
-		r, err = NewInstance(ctx, name, nil, pulumi.URN_(urn))
+		r = &Instance{}
 	case "openstack:compute/interfaceAttach:InterfaceAttach":
-		r, err = NewInterfaceAttach(ctx, name, nil, pulumi.URN_(urn))
+		r = &InterfaceAttach{}
 	case "openstack:compute/keypair:Keypair":
-		r, err = NewKeypair(ctx, name, nil, pulumi.URN_(urn))
+		r = &Keypair{}
 	case "openstack:compute/quotaSetV2:QuotaSetV2":
-		r, err = NewQuotaSetV2(ctx, name, nil, pulumi.URN_(urn))
+		r = &QuotaSetV2{}
 	case "openstack:compute/secGroup:SecGroup":
-		r, err = NewSecGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &SecGroup{}
 	case "openstack:compute/serverGroup:ServerGroup":
-		r, err = NewServerGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &ServerGroup{}
 	case "openstack:compute/volumeAttach:VolumeAttach":
-		r, err = NewVolumeAttach(ctx, name, nil, pulumi.URN_(urn))
+		r = &VolumeAttach{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

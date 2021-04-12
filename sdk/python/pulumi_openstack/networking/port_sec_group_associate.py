@@ -5,13 +5,95 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['PortSecGroupAssociate']
+__all__ = ['PortSecGroupAssociateArgs', 'PortSecGroupAssociate']
+
+@pulumi.input_type
+class PortSecGroupAssociateArgs:
+    def __init__(__self__, *,
+                 port_id: pulumi.Input[str],
+                 security_group_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 enforce: Optional[pulumi.Input[bool]] = None,
+                 region: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a PortSecGroupAssociate resource.
+        :param pulumi.Input[str] port_id: An UUID of the port to apply security groups to.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of security group IDs to apply to
+               the port. The security groups must be specified by ID and not name (as
+               opposed to how they are configured with the Compute Instance).
+        :param pulumi.Input[bool] enforce: Whether to replace or append the list of security
+               groups, specified in the `security_group_ids`. Defaults to `false`.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
+               A networking client is needed to manage a port. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               resource.
+        """
+        pulumi.set(__self__, "port_id", port_id)
+        pulumi.set(__self__, "security_group_ids", security_group_ids)
+        if enforce is not None:
+            pulumi.set(__self__, "enforce", enforce)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter(name="portId")
+    def port_id(self) -> pulumi.Input[str]:
+        """
+        An UUID of the port to apply security groups to.
+        """
+        return pulumi.get(self, "port_id")
+
+    @port_id.setter
+    def port_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "port_id", value)
+
+    @property
+    @pulumi.getter(name="securityGroupIds")
+    def security_group_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        A list of security group IDs to apply to
+        the port. The security groups must be specified by ID and not name (as
+        opposed to how they are configured with the Compute Instance).
+        """
+        return pulumi.get(self, "security_group_ids")
+
+    @security_group_ids.setter
+    def security_group_ids(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "security_group_ids", value)
+
+    @property
+    @pulumi.getter
+    def enforce(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to replace or append the list of security
+        groups, specified in the `security_group_ids`. Defaults to `false`.
+        """
+        return pulumi.get(self, "enforce")
+
+    @enforce.setter
+    def enforce(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enforce", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V2 networking client.
+        A networking client is needed to manage a port. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        resource.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
 
 
 class PortSecGroupAssociate(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -37,6 +119,36 @@ class PortSecGroupAssociate(pulumi.CustomResource):
                the port. The security groups must be specified by ID and not name (as
                opposed to how they are configured with the Compute Instance).
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: PortSecGroupAssociateArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Create a PortSecGroupAssociate resource with the given unique name, props, and options.
+        :param str resource_name: The name of the resource.
+        :param PortSecGroupAssociateArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(PortSecGroupAssociateArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 enforce: Optional[pulumi.Input[bool]] = None,
+                 port_id: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
