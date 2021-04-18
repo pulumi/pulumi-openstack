@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -75,6 +75,98 @@ class ConfigurationArgs:
     @configurations.setter
     def configurations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigurationConfigurationArgs']]]]):
         pulumi.set(self, "configurations", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Configuration parameter name. Changing this creates a new resource.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to create the db instance. Changing this
+        creates a new instance.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+
+@pulumi.input_type
+class _ConfigurationState:
+    def __init__(__self__, *,
+                 configurations: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigurationConfigurationArgs']]]] = None,
+                 datastore: Optional[pulumi.Input['ConfigurationDatastoreArgs']] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Configuration resources.
+        :param pulumi.Input[Sequence[pulumi.Input['ConfigurationConfigurationArgs']]] configurations: An array of configuration parameter name and value. Can be specified multiple times. The configuration object structure is documented below.
+        :param pulumi.Input['ConfigurationDatastoreArgs'] datastore: An array of database engine type and version. The datastore
+               object structure is documented below. Changing this creates resource.
+        :param pulumi.Input[str] description: Description of the resource.
+        :param pulumi.Input[str] name: Configuration parameter name. Changing this creates a new resource.
+        :param pulumi.Input[str] region: The region in which to create the db instance. Changing this
+               creates a new instance.
+        """
+        if configurations is not None:
+            pulumi.set(__self__, "configurations", configurations)
+        if datastore is not None:
+            pulumi.set(__self__, "datastore", datastore)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter
+    def configurations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConfigurationConfigurationArgs']]]]:
+        """
+        An array of configuration parameter name and value. Can be specified multiple times. The configuration object structure is documented below.
+        """
+        return pulumi.get(self, "configurations")
+
+    @configurations.setter
+    def configurations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigurationConfigurationArgs']]]]):
+        pulumi.set(self, "configurations", value)
+
+    @property
+    @pulumi.getter
+    def datastore(self) -> Optional[pulumi.Input['ConfigurationDatastoreArgs']]:
+        """
+        An array of database engine type and version. The datastore
+        object structure is documented below. Changing this creates resource.
+        """
+        return pulumi.get(self, "datastore")
+
+    @datastore.setter
+    def datastore(self, value: Optional[pulumi.Input['ConfigurationDatastoreArgs']]):
+        pulumi.set(self, "datastore", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of the resource.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
 
     @property
     @pulumi.getter
@@ -213,17 +305,17 @@ class Configuration(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ConfigurationArgs.__new__(ConfigurationArgs)
 
-            __props__['configurations'] = configurations
+            __props__.__dict__["configurations"] = configurations
             if datastore is None and not opts.urn:
                 raise TypeError("Missing required property 'datastore'")
-            __props__['datastore'] = datastore
+            __props__.__dict__["datastore"] = datastore
             if description is None and not opts.urn:
                 raise TypeError("Missing required property 'description'")
-            __props__['description'] = description
-            __props__['name'] = name
-            __props__['region'] = region
+            __props__.__dict__["description"] = description
+            __props__.__dict__["name"] = name
+            __props__.__dict__["region"] = region
         super(Configuration, __self__).__init__(
             'openstack:database/configuration:Configuration',
             resource_name,
@@ -256,13 +348,13 @@ class Configuration(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ConfigurationState.__new__(_ConfigurationState)
 
-        __props__["configurations"] = configurations
-        __props__["datastore"] = datastore
-        __props__["description"] = description
-        __props__["name"] = name
-        __props__["region"] = region
+        __props__.__dict__["configurations"] = configurations
+        __props__.__dict__["datastore"] = datastore
+        __props__.__dict__["description"] = description
+        __props__.__dict__["name"] = name
+        __props__.__dict__["region"] = region
         return Configuration(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -306,10 +398,4 @@ class Configuration(pulumi.CustomResource):
         creates a new instance.
         """
         return pulumi.get(self, "region")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

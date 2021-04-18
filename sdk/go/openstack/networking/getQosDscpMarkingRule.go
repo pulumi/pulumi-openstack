@@ -4,7 +4,7 @@
 package networking
 
 import (
-	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Use this data source to get the ID of an available OpenStack QoS DSCP marking rule.

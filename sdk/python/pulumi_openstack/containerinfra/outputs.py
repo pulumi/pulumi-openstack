@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = [
     'ClusterKubeconfig',
@@ -14,6 +14,29 @@ __all__ = [
 
 @pulumi.output_type
 class ClusterKubeconfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clientCertificate":
+            suggest = "client_certificate"
+        elif key == "clientKey":
+            suggest = "client_key"
+        elif key == "clusterCaCertificate":
+            suggest = "cluster_ca_certificate"
+        elif key == "rawConfig":
+            suggest = "raw_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterKubeconfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterKubeconfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterKubeconfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  client_certificate: Optional[str] = None,
                  client_key: Optional[str] = None,
@@ -55,8 +78,5 @@ class ClusterKubeconfig(dict):
     @pulumi.getter(name="rawConfig")
     def raw_config(self) -> Optional[str]:
         return pulumi.get(self, "raw_config")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

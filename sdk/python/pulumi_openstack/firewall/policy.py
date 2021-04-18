@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['PolicyArgs', 'Policy']
 
@@ -23,6 +23,168 @@ class PolicyArgs:
                  value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         The set of arguments for constructing a Policy resource.
+        :param pulumi.Input[bool] audited: Audit status of the firewall policy
+               (must be "true" or "false" if provided - defaults to "false").
+               This status is set to "false" whenever the firewall policy or any of its
+               rules are changed. Changing this updates the `audited` status of an existing
+               firewall policy.
+        :param pulumi.Input[str] description: A description for the firewall policy. Changing
+               this updates the `description` of an existing firewall policy.
+        :param pulumi.Input[str] name: A name for the firewall policy. Changing this
+               updates the `name` of an existing firewall policy.
+        :param pulumi.Input[str] region: The region in which to obtain the v1 networking client.
+               A networking client is needed to create a firewall policy. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               firewall policy.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] rules: An array of one or more firewall rules that comprise
+               the policy. Changing this results in adding/removing rules from the
+               existing firewall policy.
+        :param pulumi.Input[bool] shared: Sharing status of the firewall policy (must be "true"
+               or "false" if provided). If this is "true" the policy is visible to, and
+               can be used in, firewalls in other tenants. Changing this updates the
+               `shared` status of an existing firewall policy. Only administrative users
+               can specify if the policy should be shared.
+        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
+        """
+        if audited is not None:
+            pulumi.set(__self__, "audited", audited)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+        if shared is not None:
+            pulumi.set(__self__, "shared", shared)
+        if tenant_id is not None:
+            pulumi.set(__self__, "tenant_id", tenant_id)
+        if value_specs is not None:
+            pulumi.set(__self__, "value_specs", value_specs)
+
+    @property
+    @pulumi.getter
+    def audited(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Audit status of the firewall policy
+        (must be "true" or "false" if provided - defaults to "false").
+        This status is set to "false" whenever the firewall policy or any of its
+        rules are changed. Changing this updates the `audited` status of an existing
+        firewall policy.
+        """
+        return pulumi.get(self, "audited")
+
+    @audited.setter
+    def audited(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "audited", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A description for the firewall policy. Changing
+        this updates the `description` of an existing firewall policy.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A name for the firewall policy. Changing this
+        updates the `name` of an existing firewall policy.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the v1 networking client.
+        A networking client is needed to create a firewall policy. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        firewall policy.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        An array of one or more firewall rules that comprise
+        the policy. Changing this results in adding/removing rules from the
+        existing firewall policy.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "rules", value)
+
+    @property
+    @pulumi.getter
+    def shared(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Sharing status of the firewall policy (must be "true"
+        or "false" if provided). If this is "true" the policy is visible to, and
+        can be used in, firewalls in other tenants. Changing this updates the
+        `shared` status of an existing firewall policy. Only administrative users
+        can specify if the policy should be shared.
+        """
+        return pulumi.get(self, "shared")
+
+    @shared.setter
+    def shared(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "shared", value)
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "tenant_id")
+
+    @tenant_id.setter
+    def tenant_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tenant_id", value)
+
+    @property
+    @pulumi.getter(name="valueSpecs")
+    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Map of additional options.
+        """
+        return pulumi.get(self, "value_specs")
+
+    @value_specs.setter
+    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "value_specs", value)
+
+
+@pulumi.input_type
+class _PolicyState:
+    def __init__(__self__, *,
+                 audited: Optional[pulumi.Input[bool]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 shared: Optional[pulumi.Input[bool]] = None,
+                 tenant_id: Optional[pulumi.Input[str]] = None,
+                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+        """
+        Input properties used for looking up and filtering Policy resources.
         :param pulumi.Input[bool] audited: Audit status of the firewall policy
                (must be "true" or "false" if provided - defaults to "false").
                This status is set to "false" whenever the firewall policy or any of its
@@ -330,16 +492,16 @@ class Policy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = PolicyArgs.__new__(PolicyArgs)
 
-            __props__['audited'] = audited
-            __props__['description'] = description
-            __props__['name'] = name
-            __props__['region'] = region
-            __props__['rules'] = rules
-            __props__['shared'] = shared
-            __props__['tenant_id'] = tenant_id
-            __props__['value_specs'] = value_specs
+            __props__.__dict__["audited"] = audited
+            __props__.__dict__["description"] = description
+            __props__.__dict__["name"] = name
+            __props__.__dict__["region"] = region
+            __props__.__dict__["rules"] = rules
+            __props__.__dict__["shared"] = shared
+            __props__.__dict__["tenant_id"] = tenant_id
+            __props__.__dict__["value_specs"] = value_specs
         super(Policy, __self__).__init__(
             'openstack:firewall/policy:Policy',
             resource_name,
@@ -390,16 +552,16 @@ class Policy(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _PolicyState.__new__(_PolicyState)
 
-        __props__["audited"] = audited
-        __props__["description"] = description
-        __props__["name"] = name
-        __props__["region"] = region
-        __props__["rules"] = rules
-        __props__["shared"] = shared
-        __props__["tenant_id"] = tenant_id
-        __props__["value_specs"] = value_specs
+        __props__.__dict__["audited"] = audited
+        __props__.__dict__["description"] = description
+        __props__.__dict__["name"] = name
+        __props__.__dict__["region"] = region
+        __props__.__dict__["rules"] = rules
+        __props__.__dict__["shared"] = shared
+        __props__.__dict__["tenant_id"] = tenant_id
+        __props__.__dict__["value_specs"] = value_specs
         return Policy(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -477,10 +639,4 @@ class Policy(pulumi.CustomResource):
         Map of additional options.
         """
         return pulumi.get(self, "value_specs")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

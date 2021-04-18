@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['RbacPolicyV2Args', 'RbacPolicyV2']
 
@@ -108,6 +108,122 @@ class RbacPolicyV2Args:
     @region.setter
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
+
+
+@pulumi.input_type
+class _RbacPolicyV2State:
+    def __init__(__self__, *,
+                 action: Optional[pulumi.Input[str]] = None,
+                 object_id: Optional[pulumi.Input[str]] = None,
+                 object_type: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 target_tenant: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering RbacPolicyV2 resources.
+        :param pulumi.Input[str] action: Action for the RBAC policy. Can either be
+               `access_as_external` or `access_as_shared`.
+        :param pulumi.Input[str] object_id: The ID of the `object_type` resource. An
+               `object_type` of `network` returns a network ID and an `object_type` of
+               `qos_policy` returns a QoS ID.
+        :param pulumi.Input[str] object_type: The type of the object that the RBAC policy
+               affects. Can either be `qos-policy` or `network`.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
+               A networking client is needed to configure a routing entry on a subnet. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               routing entry.
+        :param pulumi.Input[str] target_tenant: The ID of the tenant to which the RBAC policy
+               will be enforced.
+        """
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+        if object_id is not None:
+            pulumi.set(__self__, "object_id", object_id)
+        if object_type is not None:
+            pulumi.set(__self__, "object_type", object_type)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if target_tenant is not None:
+            pulumi.set(__self__, "target_tenant", target_tenant)
+
+    @property
+    @pulumi.getter
+    def action(self) -> Optional[pulumi.Input[str]]:
+        """
+        Action for the RBAC policy. Can either be
+        `access_as_external` or `access_as_shared`.
+        """
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "action", value)
+
+    @property
+    @pulumi.getter(name="objectId")
+    def object_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the `object_type` resource. An
+        `object_type` of `network` returns a network ID and an `object_type` of
+        `qos_policy` returns a QoS ID.
+        """
+        return pulumi.get(self, "object_id")
+
+    @object_id.setter
+    def object_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "object_id", value)
+
+    @property
+    @pulumi.getter(name="objectType")
+    def object_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the object that the RBAC policy
+        affects. Can either be `qos-policy` or `network`.
+        """
+        return pulumi.get(self, "object_type")
+
+    @object_type.setter
+    def object_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "object_type", value)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_id", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V2 networking client.
+        A networking client is needed to configure a routing entry on a subnet. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        routing entry.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="targetTenant")
+    def target_tenant(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the tenant to which the RBAC policy
+        will be enforced.
+        """
+        return pulumi.get(self, "target_tenant")
+
+    @target_tenant.setter
+    def target_tenant(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "target_tenant", value)
 
 
 class RbacPolicyV2(pulumi.CustomResource):
@@ -257,22 +373,22 @@ class RbacPolicyV2(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = RbacPolicyV2Args.__new__(RbacPolicyV2Args)
 
             if action is None and not opts.urn:
                 raise TypeError("Missing required property 'action'")
-            __props__['action'] = action
+            __props__.__dict__["action"] = action
             if object_id is None and not opts.urn:
                 raise TypeError("Missing required property 'object_id'")
-            __props__['object_id'] = object_id
+            __props__.__dict__["object_id"] = object_id
             if object_type is None and not opts.urn:
                 raise TypeError("Missing required property 'object_type'")
-            __props__['object_type'] = object_type
-            __props__['region'] = region
+            __props__.__dict__["object_type"] = object_type
+            __props__.__dict__["region"] = region
             if target_tenant is None and not opts.urn:
                 raise TypeError("Missing required property 'target_tenant'")
-            __props__['target_tenant'] = target_tenant
-            __props__['project_id'] = None
+            __props__.__dict__["target_tenant"] = target_tenant
+            __props__.__dict__["project_id"] = None
         super(RbacPolicyV2, __self__).__init__(
             'openstack:networking/rbacPolicyV2:RbacPolicyV2',
             resource_name,
@@ -312,14 +428,14 @@ class RbacPolicyV2(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _RbacPolicyV2State.__new__(_RbacPolicyV2State)
 
-        __props__["action"] = action
-        __props__["object_id"] = object_id
-        __props__["object_type"] = object_type
-        __props__["project_id"] = project_id
-        __props__["region"] = region
-        __props__["target_tenant"] = target_tenant
+        __props__.__dict__["action"] = action
+        __props__.__dict__["object_id"] = object_id
+        __props__.__dict__["object_type"] = object_type
+        __props__.__dict__["project_id"] = project_id
+        __props__.__dict__["region"] = region
+        __props__.__dict__["target_tenant"] = target_tenant
         return RbacPolicyV2(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -374,10 +490,4 @@ class RbacPolicyV2(pulumi.CustomResource):
         will be enforced.
         """
         return pulumi.get(self, "target_tenant")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

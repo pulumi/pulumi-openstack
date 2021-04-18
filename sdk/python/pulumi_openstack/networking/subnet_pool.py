@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['SubnetPoolArgs', 'SubnetPool']
 
@@ -309,6 +309,372 @@ class SubnetPoolArgs:
         pulumi.set(self, "value_specs", value)
 
 
+@pulumi.input_type
+class _SubnetPoolState:
+    def __init__(__self__, *,
+                 address_scope_id: Optional[pulumi.Input[str]] = None,
+                 all_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 created_at: Optional[pulumi.Input[str]] = None,
+                 default_prefixlen: Optional[pulumi.Input[int]] = None,
+                 default_quota: Optional[pulumi.Input[int]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 ip_version: Optional[pulumi.Input[int]] = None,
+                 is_default: Optional[pulumi.Input[bool]] = None,
+                 max_prefixlen: Optional[pulumi.Input[int]] = None,
+                 min_prefixlen: Optional[pulumi.Input[int]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 revision_number: Optional[pulumi.Input[int]] = None,
+                 shared: Optional[pulumi.Input[bool]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 updated_at: Optional[pulumi.Input[str]] = None,
+                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+        """
+        Input properties used for looking up and filtering SubnetPool resources.
+        :param pulumi.Input[str] address_scope_id: The Neutron address scope to assign to the
+               subnetpool. Changing this updates the address scope id of the existing
+               subnetpool.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] all_tags: The collection of tags assigned on the subnetpool, which have been
+               explicitly and implicitly added.
+        :param pulumi.Input[str] created_at: The time at which subnetpool was created.
+        :param pulumi.Input[int] default_prefixlen: The size of the prefix to allocate when the cidr
+               or prefixlen attributes are omitted when you create the subnet. Defaults to the
+               MinPrefixLen. Changing this updates the default prefixlen of the existing
+               subnetpool.
+        :param pulumi.Input[int] default_quota: The per-project quota on the prefix space that can be
+               allocated from the subnetpool for project subnets. Changing this updates the
+               default quota of the existing subnetpool.
+        :param pulumi.Input[str] description: The human-readable description for the subnetpool.
+               Changing this updates the description of the existing subnetpool.
+        :param pulumi.Input[int] ip_version: The IP protocol version.
+        :param pulumi.Input[bool] is_default: Indicates whether the subnetpool is default
+               subnetpool or not. Changing this updates the default status of the existing
+               subnetpool.
+        :param pulumi.Input[int] max_prefixlen: The maximum prefix size that can be allocated from
+               the subnetpool. For IPv4 subnetpools, default is 32. For IPv6 subnetpools,
+               default is 128. Changing this updates the max prefixlen of the existing
+               subnetpool.
+        :param pulumi.Input[int] min_prefixlen: The smallest prefix that can be allocated from a
+               subnetpool. For IPv4 subnetpools, default is 8. For IPv6 subnetpools, default
+               is 64. Changing this updates the min prefixlen of the existing subnetpool.
+        :param pulumi.Input[str] name: The name of the subnetpool. Changing this updates the name of
+               the existing subnetpool.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] prefixes: A list of subnet prefixes to assign to the subnetpool.
+               Neutron API merges adjacent prefixes and treats them as a single prefix. Each
+               subnet prefix must be unique among all subnet prefixes in all subnetpools that
+               are associated with the address scope. Changing this updates the prefixes list
+               of the existing subnetpool.
+        :param pulumi.Input[str] project_id: The owner of the subnetpool. Required if admin wants to
+               create a subnetpool for another project. Changing this creates a new subnetpool.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
+               A Networking client is needed to create a Neutron subnetpool. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               subnetpool.
+        :param pulumi.Input[int] revision_number: The revision number of the subnetpool.
+        :param pulumi.Input[bool] shared: Indicates whether this subnetpool is shared across
+               all projects. Changing this updates the shared status of the existing
+               subnetpool.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of string tags for the subnetpool.
+        :param pulumi.Input[str] updated_at: The time at which subnetpool was created.
+        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
+        """
+        if address_scope_id is not None:
+            pulumi.set(__self__, "address_scope_id", address_scope_id)
+        if all_tags is not None:
+            pulumi.set(__self__, "all_tags", all_tags)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if default_prefixlen is not None:
+            pulumi.set(__self__, "default_prefixlen", default_prefixlen)
+        if default_quota is not None:
+            pulumi.set(__self__, "default_quota", default_quota)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if ip_version is not None:
+            pulumi.set(__self__, "ip_version", ip_version)
+        if is_default is not None:
+            pulumi.set(__self__, "is_default", is_default)
+        if max_prefixlen is not None:
+            pulumi.set(__self__, "max_prefixlen", max_prefixlen)
+        if min_prefixlen is not None:
+            pulumi.set(__self__, "min_prefixlen", min_prefixlen)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if prefixes is not None:
+            pulumi.set(__self__, "prefixes", prefixes)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if revision_number is not None:
+            pulumi.set(__self__, "revision_number", revision_number)
+        if shared is not None:
+            pulumi.set(__self__, "shared", shared)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+        if value_specs is not None:
+            pulumi.set(__self__, "value_specs", value_specs)
+
+    @property
+    @pulumi.getter(name="addressScopeId")
+    def address_scope_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Neutron address scope to assign to the
+        subnetpool. Changing this updates the address scope id of the existing
+        subnetpool.
+        """
+        return pulumi.get(self, "address_scope_id")
+
+    @address_scope_id.setter
+    def address_scope_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "address_scope_id", value)
+
+    @property
+    @pulumi.getter(name="allTags")
+    def all_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The collection of tags assigned on the subnetpool, which have been
+        explicitly and implicitly added.
+        """
+        return pulumi.get(self, "all_tags")
+
+    @all_tags.setter
+    def all_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "all_tags", value)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time at which subnetpool was created.
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_at", value)
+
+    @property
+    @pulumi.getter(name="defaultPrefixlen")
+    def default_prefixlen(self) -> Optional[pulumi.Input[int]]:
+        """
+        The size of the prefix to allocate when the cidr
+        or prefixlen attributes are omitted when you create the subnet. Defaults to the
+        MinPrefixLen. Changing this updates the default prefixlen of the existing
+        subnetpool.
+        """
+        return pulumi.get(self, "default_prefixlen")
+
+    @default_prefixlen.setter
+    def default_prefixlen(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "default_prefixlen", value)
+
+    @property
+    @pulumi.getter(name="defaultQuota")
+    def default_quota(self) -> Optional[pulumi.Input[int]]:
+        """
+        The per-project quota on the prefix space that can be
+        allocated from the subnetpool for project subnets. Changing this updates the
+        default quota of the existing subnetpool.
+        """
+        return pulumi.get(self, "default_quota")
+
+    @default_quota.setter
+    def default_quota(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "default_quota", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The human-readable description for the subnetpool.
+        Changing this updates the description of the existing subnetpool.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="ipVersion")
+    def ip_version(self) -> Optional[pulumi.Input[int]]:
+        """
+        The IP protocol version.
+        """
+        return pulumi.get(self, "ip_version")
+
+    @ip_version.setter
+    def ip_version(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ip_version", value)
+
+    @property
+    @pulumi.getter(name="isDefault")
+    def is_default(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether the subnetpool is default
+        subnetpool or not. Changing this updates the default status of the existing
+        subnetpool.
+        """
+        return pulumi.get(self, "is_default")
+
+    @is_default.setter
+    def is_default(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_default", value)
+
+    @property
+    @pulumi.getter(name="maxPrefixlen")
+    def max_prefixlen(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum prefix size that can be allocated from
+        the subnetpool. For IPv4 subnetpools, default is 32. For IPv6 subnetpools,
+        default is 128. Changing this updates the max prefixlen of the existing
+        subnetpool.
+        """
+        return pulumi.get(self, "max_prefixlen")
+
+    @max_prefixlen.setter
+    def max_prefixlen(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_prefixlen", value)
+
+    @property
+    @pulumi.getter(name="minPrefixlen")
+    def min_prefixlen(self) -> Optional[pulumi.Input[int]]:
+        """
+        The smallest prefix that can be allocated from a
+        subnetpool. For IPv4 subnetpools, default is 8. For IPv6 subnetpools, default
+        is 64. Changing this updates the min prefixlen of the existing subnetpool.
+        """
+        return pulumi.get(self, "min_prefixlen")
+
+    @min_prefixlen.setter
+    def min_prefixlen(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_prefixlen", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the subnetpool. Changing this updates the name of
+        the existing subnetpool.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def prefixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of subnet prefixes to assign to the subnetpool.
+        Neutron API merges adjacent prefixes and treats them as a single prefix. Each
+        subnet prefix must be unique among all subnet prefixes in all subnetpools that
+        are associated with the address scope. Changing this updates the prefixes list
+        of the existing subnetpool.
+        """
+        return pulumi.get(self, "prefixes")
+
+    @prefixes.setter
+    def prefixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "prefixes", value)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The owner of the subnetpool. Required if admin wants to
+        create a subnetpool for another project. Changing this creates a new subnetpool.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_id", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V2 Networking client.
+        A Networking client is needed to create a Neutron subnetpool. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        subnetpool.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="revisionNumber")
+    def revision_number(self) -> Optional[pulumi.Input[int]]:
+        """
+        The revision number of the subnetpool.
+        """
+        return pulumi.get(self, "revision_number")
+
+    @revision_number.setter
+    def revision_number(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "revision_number", value)
+
+    @property
+    @pulumi.getter
+    def shared(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether this subnetpool is shared across
+        all projects. Changing this updates the shared status of the existing
+        subnetpool.
+        """
+        return pulumi.get(self, "shared")
+
+    @shared.setter
+    def shared(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "shared", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A set of string tags for the subnetpool.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time at which subnetpool was created.
+        """
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "updated_at", value)
+
+    @property
+    @pulumi.getter(name="valueSpecs")
+    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Map of additional options.
+        """
+        return pulumi.get(self, "value_specs")
+
+    @value_specs.setter
+    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "value_specs", value)
+
+
 class SubnetPool(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -508,29 +874,29 @@ class SubnetPool(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = SubnetPoolArgs.__new__(SubnetPoolArgs)
 
-            __props__['address_scope_id'] = address_scope_id
-            __props__['default_prefixlen'] = default_prefixlen
-            __props__['default_quota'] = default_quota
-            __props__['description'] = description
-            __props__['ip_version'] = ip_version
-            __props__['is_default'] = is_default
-            __props__['max_prefixlen'] = max_prefixlen
-            __props__['min_prefixlen'] = min_prefixlen
-            __props__['name'] = name
+            __props__.__dict__["address_scope_id"] = address_scope_id
+            __props__.__dict__["default_prefixlen"] = default_prefixlen
+            __props__.__dict__["default_quota"] = default_quota
+            __props__.__dict__["description"] = description
+            __props__.__dict__["ip_version"] = ip_version
+            __props__.__dict__["is_default"] = is_default
+            __props__.__dict__["max_prefixlen"] = max_prefixlen
+            __props__.__dict__["min_prefixlen"] = min_prefixlen
+            __props__.__dict__["name"] = name
             if prefixes is None and not opts.urn:
                 raise TypeError("Missing required property 'prefixes'")
-            __props__['prefixes'] = prefixes
-            __props__['project_id'] = project_id
-            __props__['region'] = region
-            __props__['shared'] = shared
-            __props__['tags'] = tags
-            __props__['value_specs'] = value_specs
-            __props__['all_tags'] = None
-            __props__['created_at'] = None
-            __props__['revision_number'] = None
-            __props__['updated_at'] = None
+            __props__.__dict__["prefixes"] = prefixes
+            __props__.__dict__["project_id"] = project_id
+            __props__.__dict__["region"] = region
+            __props__.__dict__["shared"] = shared
+            __props__.__dict__["tags"] = tags
+            __props__.__dict__["value_specs"] = value_specs
+            __props__.__dict__["all_tags"] = None
+            __props__.__dict__["created_at"] = None
+            __props__.__dict__["revision_number"] = None
+            __props__.__dict__["updated_at"] = None
         super(SubnetPool, __self__).__init__(
             'openstack:networking/subnetPool:SubnetPool',
             resource_name,
@@ -616,27 +982,27 @@ class SubnetPool(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _SubnetPoolState.__new__(_SubnetPoolState)
 
-        __props__["address_scope_id"] = address_scope_id
-        __props__["all_tags"] = all_tags
-        __props__["created_at"] = created_at
-        __props__["default_prefixlen"] = default_prefixlen
-        __props__["default_quota"] = default_quota
-        __props__["description"] = description
-        __props__["ip_version"] = ip_version
-        __props__["is_default"] = is_default
-        __props__["max_prefixlen"] = max_prefixlen
-        __props__["min_prefixlen"] = min_prefixlen
-        __props__["name"] = name
-        __props__["prefixes"] = prefixes
-        __props__["project_id"] = project_id
-        __props__["region"] = region
-        __props__["revision_number"] = revision_number
-        __props__["shared"] = shared
-        __props__["tags"] = tags
-        __props__["updated_at"] = updated_at
-        __props__["value_specs"] = value_specs
+        __props__.__dict__["address_scope_id"] = address_scope_id
+        __props__.__dict__["all_tags"] = all_tags
+        __props__.__dict__["created_at"] = created_at
+        __props__.__dict__["default_prefixlen"] = default_prefixlen
+        __props__.__dict__["default_quota"] = default_quota
+        __props__.__dict__["description"] = description
+        __props__.__dict__["ip_version"] = ip_version
+        __props__.__dict__["is_default"] = is_default
+        __props__.__dict__["max_prefixlen"] = max_prefixlen
+        __props__.__dict__["min_prefixlen"] = min_prefixlen
+        __props__.__dict__["name"] = name
+        __props__.__dict__["prefixes"] = prefixes
+        __props__.__dict__["project_id"] = project_id
+        __props__.__dict__["region"] = region
+        __props__.__dict__["revision_number"] = revision_number
+        __props__.__dict__["shared"] = shared
+        __props__.__dict__["tags"] = tags
+        __props__.__dict__["updated_at"] = updated_at
+        __props__.__dict__["value_specs"] = value_specs
         return SubnetPool(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -817,10 +1183,4 @@ class SubnetPool(pulumi.CustomResource):
         Map of additional options.
         """
         return pulumi.get(self, "value_specs")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

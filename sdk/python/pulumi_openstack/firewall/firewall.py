@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['FirewallArgs', 'Firewall']
 
@@ -146,6 +146,186 @@ class FirewallArgs:
     @no_routers.setter
     def no_routers(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "no_routers", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the v1 networking client.
+        A networking client is needed to create a firewall. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        firewall.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The owner of the floating IP. Required if admin wants
+        to create a firewall for another tenant. Changing this creates a new
+        firewall.
+        """
+        return pulumi.get(self, "tenant_id")
+
+    @tenant_id.setter
+    def tenant_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tenant_id", value)
+
+    @property
+    @pulumi.getter(name="valueSpecs")
+    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Map of additional options.
+        """
+        return pulumi.get(self, "value_specs")
+
+    @value_specs.setter
+    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "value_specs", value)
+
+
+@pulumi.input_type
+class _FirewallState:
+    def __init__(__self__, *,
+                 admin_state_up: Optional[pulumi.Input[bool]] = None,
+                 associated_routers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 no_routers: Optional[pulumi.Input[bool]] = None,
+                 policy_id: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 tenant_id: Optional[pulumi.Input[str]] = None,
+                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+        """
+        Input properties used for looking up and filtering Firewall resources.
+        :param pulumi.Input[bool] admin_state_up: Administrative up/down status for the firewall
+               (must be "true" or "false" if provided - defaults to "true").
+               Changing this updates the `admin_state_up` of an existing firewall.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] associated_routers: Router(s) to associate this firewall instance
+               with. Must be a list of strings. Changing this updates the associated routers
+               of an existing firewall. Conflicts with `no_routers`.
+        :param pulumi.Input[str] description: A description for the firewall. Changing this
+               updates the `description` of an existing firewall.
+        :param pulumi.Input[str] name: A name for the firewall. Changing this
+               updates the `name` of an existing firewall.
+        :param pulumi.Input[bool] no_routers: Should this firewall not be associated with any routers
+               (must be "true" or "false" if provide - defaults to "false").
+               Conflicts with `associated_routers`.
+        :param pulumi.Input[str] policy_id: The policy resource id for the firewall. Changing
+               this updates the `policy_id` of an existing firewall.
+        :param pulumi.Input[str] region: The region in which to obtain the v1 networking client.
+               A networking client is needed to create a firewall. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               firewall.
+        :param pulumi.Input[str] tenant_id: The owner of the floating IP. Required if admin wants
+               to create a firewall for another tenant. Changing this creates a new
+               firewall.
+        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
+        """
+        if admin_state_up is not None:
+            pulumi.set(__self__, "admin_state_up", admin_state_up)
+        if associated_routers is not None:
+            pulumi.set(__self__, "associated_routers", associated_routers)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if no_routers is not None:
+            pulumi.set(__self__, "no_routers", no_routers)
+        if policy_id is not None:
+            pulumi.set(__self__, "policy_id", policy_id)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if tenant_id is not None:
+            pulumi.set(__self__, "tenant_id", tenant_id)
+        if value_specs is not None:
+            pulumi.set(__self__, "value_specs", value_specs)
+
+    @property
+    @pulumi.getter(name="adminStateUp")
+    def admin_state_up(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Administrative up/down status for the firewall
+        (must be "true" or "false" if provided - defaults to "true").
+        Changing this updates the `admin_state_up` of an existing firewall.
+        """
+        return pulumi.get(self, "admin_state_up")
+
+    @admin_state_up.setter
+    def admin_state_up(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "admin_state_up", value)
+
+    @property
+    @pulumi.getter(name="associatedRouters")
+    def associated_routers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Router(s) to associate this firewall instance
+        with. Must be a list of strings. Changing this updates the associated routers
+        of an existing firewall. Conflicts with `no_routers`.
+        """
+        return pulumi.get(self, "associated_routers")
+
+    @associated_routers.setter
+    def associated_routers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "associated_routers", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A description for the firewall. Changing this
+        updates the `description` of an existing firewall.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A name for the firewall. Changing this
+        updates the `name` of an existing firewall.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="noRouters")
+    def no_routers(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Should this firewall not be associated with any routers
+        (must be "true" or "false" if provide - defaults to "false").
+        Conflicts with `associated_routers`.
+        """
+        return pulumi.get(self, "no_routers")
+
+    @no_routers.setter
+    def no_routers(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "no_routers", value)
+
+    @property
+    @pulumi.getter(name="policyId")
+    def policy_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The policy resource id for the firewall. Changing
+        this updates the `policy_id` of an existing firewall.
+        """
+        return pulumi.get(self, "policy_id")
+
+    @policy_id.setter
+    def policy_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "policy_id", value)
 
     @property
     @pulumi.getter
@@ -352,19 +532,19 @@ class Firewall(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = FirewallArgs.__new__(FirewallArgs)
 
-            __props__['admin_state_up'] = admin_state_up
-            __props__['associated_routers'] = associated_routers
-            __props__['description'] = description
-            __props__['name'] = name
-            __props__['no_routers'] = no_routers
+            __props__.__dict__["admin_state_up"] = admin_state_up
+            __props__.__dict__["associated_routers"] = associated_routers
+            __props__.__dict__["description"] = description
+            __props__.__dict__["name"] = name
+            __props__.__dict__["no_routers"] = no_routers
             if policy_id is None and not opts.urn:
                 raise TypeError("Missing required property 'policy_id'")
-            __props__['policy_id'] = policy_id
-            __props__['region'] = region
-            __props__['tenant_id'] = tenant_id
-            __props__['value_specs'] = value_specs
+            __props__.__dict__["policy_id"] = policy_id
+            __props__.__dict__["region"] = region
+            __props__.__dict__["tenant_id"] = tenant_id
+            __props__.__dict__["value_specs"] = value_specs
         super(Firewall, __self__).__init__(
             'openstack:firewall/firewall:Firewall',
             resource_name,
@@ -417,17 +597,17 @@ class Firewall(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _FirewallState.__new__(_FirewallState)
 
-        __props__["admin_state_up"] = admin_state_up
-        __props__["associated_routers"] = associated_routers
-        __props__["description"] = description
-        __props__["name"] = name
-        __props__["no_routers"] = no_routers
-        __props__["policy_id"] = policy_id
-        __props__["region"] = region
-        __props__["tenant_id"] = tenant_id
-        __props__["value_specs"] = value_specs
+        __props__.__dict__["admin_state_up"] = admin_state_up
+        __props__.__dict__["associated_routers"] = associated_routers
+        __props__.__dict__["description"] = description
+        __props__.__dict__["name"] = name
+        __props__.__dict__["no_routers"] = no_routers
+        __props__.__dict__["policy_id"] = policy_id
+        __props__.__dict__["region"] = region
+        __props__.__dict__["tenant_id"] = tenant_id
+        __props__.__dict__["value_specs"] = value_specs
         return Firewall(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -515,10 +695,4 @@ class Firewall(pulumi.CustomResource):
         Map of additional options.
         """
         return pulumi.get(self, "value_specs")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

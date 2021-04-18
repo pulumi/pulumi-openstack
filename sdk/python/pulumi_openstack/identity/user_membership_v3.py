@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['UserMembershipV3Args', 'UserMembershipV3']
 
@@ -68,6 +68,68 @@ class UserMembershipV3Args:
     @region.setter
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
+
+
+@pulumi.input_type
+class _UserMembershipV3State:
+    def __init__(__self__, *,
+                 group_id: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 user_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering UserMembershipV3 resources.
+        :param pulumi.Input[str] group_id: The UUID of group to which the user will be added.
+               Changing this creates a new user membership.
+        :param pulumi.Input[str] region: The region in which to obtain the V3 Identity client.
+               If omitted, the `region` argument of the provider is used.
+               Changing this creates a new user membership.
+        :param pulumi.Input[str] user_id: The UUID of user to use. Changing this creates a new user membership.
+        """
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if user_id is not None:
+            pulumi.set(__self__, "user_id", user_id)
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The UUID of group to which the user will be added.
+        Changing this creates a new user membership.
+        """
+        return pulumi.get(self, "group_id")
+
+    @group_id.setter
+    def group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group_id", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V3 Identity client.
+        If omitted, the `region` argument of the provider is used.
+        Changing this creates a new user membership.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The UUID of user to use. Changing this creates a new user membership.
+        """
+        return pulumi.get(self, "user_id")
+
+    @user_id.setter
+    def user_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_id", value)
 
 
 class UserMembershipV3(pulumi.CustomResource):
@@ -202,15 +264,15 @@ class UserMembershipV3(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = UserMembershipV3Args.__new__(UserMembershipV3Args)
 
             if group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'group_id'")
-            __props__['group_id'] = group_id
-            __props__['region'] = region
+            __props__.__dict__["group_id"] = group_id
+            __props__.__dict__["region"] = region
             if user_id is None and not opts.urn:
                 raise TypeError("Missing required property 'user_id'")
-            __props__['user_id'] = user_id
+            __props__.__dict__["user_id"] = user_id
         super(UserMembershipV3, __self__).__init__(
             'openstack:identity/userMembershipV3:UserMembershipV3',
             resource_name,
@@ -240,11 +302,11 @@ class UserMembershipV3(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _UserMembershipV3State.__new__(_UserMembershipV3State)
 
-        __props__["group_id"] = group_id
-        __props__["region"] = region
-        __props__["user_id"] = user_id
+        __props__.__dict__["group_id"] = group_id
+        __props__.__dict__["region"] = region
+        __props__.__dict__["user_id"] = user_id
         return UserMembershipV3(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -273,10 +335,4 @@ class UserMembershipV3(pulumi.CustomResource):
         The UUID of user to use. Changing this creates a new user membership.
         """
         return pulumi.get(self, "user_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

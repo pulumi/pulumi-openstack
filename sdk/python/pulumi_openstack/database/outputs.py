@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = [
     'ConfigurationConfiguration',
@@ -45,9 +45,6 @@ class ConfigurationConfiguration(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ConfigurationDatastore(dict):
@@ -76,9 +73,6 @@ class ConfigurationDatastore(dict):
         Version of database engine type to be used with this configuration. Changing this creates a new resource.
         """
         return pulumi.get(self, "version")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -126,9 +120,6 @@ class InstanceDatabase(dict):
         """
         return pulumi.get(self, "collate")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class InstanceDatastore(dict):
@@ -162,12 +153,28 @@ class InstanceDatastore(dict):
         """
         return pulumi.get(self, "version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class InstanceNetwork(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fixedIpV4":
+            suggest = "fixed_ip_v4"
+        elif key == "fixedIpV6":
+            suggest = "fixed_ip_v6"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceNetwork. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceNetwork.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceNetwork.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  fixed_ip_v4: Optional[str] = None,
                  fixed_ip_v6: Optional[str] = None,
@@ -227,9 +234,6 @@ class InstanceNetwork(dict):
         attach to the instance. Changing this creates a new instance.
         """
         return pulumi.get(self, "uuid")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -292,8 +296,5 @@ class InstanceUser(dict):
         new instance.
         """
         return pulumi.get(self, "password")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = [
     'StackV1StackOutput',
@@ -14,6 +14,25 @@ __all__ = [
 
 @pulumi.output_type
 class StackV1StackOutput(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "outputKey":
+            suggest = "output_key"
+        elif key == "outputValue":
+            suggest = "output_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StackV1StackOutput. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StackV1StackOutput.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StackV1StackOutput.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  output_key: str,
                  output_value: str,
@@ -43,8 +62,5 @@ class StackV1StackOutput(dict):
         The description of the stack resource.
         """
         return pulumi.get(self, "description")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

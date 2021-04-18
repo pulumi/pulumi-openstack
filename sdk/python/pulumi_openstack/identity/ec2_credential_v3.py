@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['Ec2CredentialV3Args', 'Ec2CredentialV3']
 
@@ -60,6 +60,118 @@ class Ec2CredentialV3Args:
     @region.setter
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the user the EC2 credential is created for.
+        """
+        return pulumi.get(self, "user_id")
+
+    @user_id.setter
+    def user_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_id", value)
+
+
+@pulumi.input_type
+class _Ec2CredentialV3State:
+    def __init__(__self__, *,
+                 access: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 secret: Optional[pulumi.Input[str]] = None,
+                 trust_id: Optional[pulumi.Input[str]] = None,
+                 user_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Ec2CredentialV3 resources.
+        :param pulumi.Input[str] access: contains an EC2 credential access UUID
+        :param pulumi.Input[str] project_id: The ID of the project the EC2 credential is created
+               for and that authentication requests using this EC2 credential will
+               be scoped to.
+        :param pulumi.Input[str] region: The region in which to obtain the V3 Keystone client.
+               If omitted, the `region` argument of the provider is used. Changing this
+               creates a new EC2 credential.
+        :param pulumi.Input[str] secret: contains an EC2 credential secret UUID
+        :param pulumi.Input[str] trust_id: contains an EC2 credential trust ID scope
+        :param pulumi.Input[str] user_id: The ID of the user the EC2 credential is created for.
+        """
+        if access is not None:
+            pulumi.set(__self__, "access", access)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if secret is not None:
+            pulumi.set(__self__, "secret", secret)
+        if trust_id is not None:
+            pulumi.set(__self__, "trust_id", trust_id)
+        if user_id is not None:
+            pulumi.set(__self__, "user_id", user_id)
+
+    @property
+    @pulumi.getter
+    def access(self) -> Optional[pulumi.Input[str]]:
+        """
+        contains an EC2 credential access UUID
+        """
+        return pulumi.get(self, "access")
+
+    @access.setter
+    def access(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access", value)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project the EC2 credential is created
+        for and that authentication requests using this EC2 credential will
+        be scoped to.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_id", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V3 Keystone client.
+        If omitted, the `region` argument of the provider is used. Changing this
+        creates a new EC2 credential.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter
+    def secret(self) -> Optional[pulumi.Input[str]]:
+        """
+        contains an EC2 credential secret UUID
+        """
+        return pulumi.get(self, "secret")
+
+    @secret.setter
+    def secret(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secret", value)
+
+    @property
+    @pulumi.getter(name="trustId")
+    def trust_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        contains an EC2 credential trust ID scope
+        """
+        return pulumi.get(self, "trust_id")
+
+    @trust_id.setter
+    def trust_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "trust_id", value)
 
     @property
     @pulumi.getter(name="userId")
@@ -155,14 +267,14 @@ class Ec2CredentialV3(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = Ec2CredentialV3Args.__new__(Ec2CredentialV3Args)
 
-            __props__['project_id'] = project_id
-            __props__['region'] = region
-            __props__['user_id'] = user_id
-            __props__['access'] = None
-            __props__['secret'] = None
-            __props__['trust_id'] = None
+            __props__.__dict__["project_id"] = project_id
+            __props__.__dict__["region"] = region
+            __props__.__dict__["user_id"] = user_id
+            __props__.__dict__["access"] = None
+            __props__.__dict__["secret"] = None
+            __props__.__dict__["trust_id"] = None
         super(Ec2CredentialV3, __self__).__init__(
             'openstack:identity/ec2CredentialV3:Ec2CredentialV3',
             resource_name,
@@ -199,14 +311,14 @@ class Ec2CredentialV3(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _Ec2CredentialV3State.__new__(_Ec2CredentialV3State)
 
-        __props__["access"] = access
-        __props__["project_id"] = project_id
-        __props__["region"] = region
-        __props__["secret"] = secret
-        __props__["trust_id"] = trust_id
-        __props__["user_id"] = user_id
+        __props__.__dict__["access"] = access
+        __props__.__dict__["project_id"] = project_id
+        __props__.__dict__["region"] = region
+        __props__.__dict__["secret"] = secret
+        __props__.__dict__["trust_id"] = trust_id
+        __props__.__dict__["user_id"] = user_id
         return Ec2CredentialV3(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -260,10 +372,4 @@ class Ec2CredentialV3(pulumi.CustomResource):
         The ID of the user the EC2 credential is created for.
         """
         return pulumi.get(self, "user_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -60,6 +60,72 @@ class MembersArgs:
     @members.setter
     def members(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MembersMemberArgs']]]]):
         pulumi.set(self, "members", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V2 Networking client.
+        A Networking client is needed to create pool members. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        members resource.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+
+@pulumi.input_type
+class _MembersState:
+    def __init__(__self__, *,
+                 members: Optional[pulumi.Input[Sequence[pulumi.Input['MembersMemberArgs']]]] = None,
+                 pool_id: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Members resources.
+        :param pulumi.Input[Sequence[pulumi.Input['MembersMemberArgs']]] members: A set of dictionaries containing member parameters. The
+               structure is described below.
+        :param pulumi.Input[str] pool_id: The id of the pool that members will be assigned to.
+               Changing this creates a new members resource.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
+               A Networking client is needed to create pool members. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               members resource.
+        """
+        if members is not None:
+            pulumi.set(__self__, "members", members)
+        if pool_id is not None:
+            pulumi.set(__self__, "pool_id", pool_id)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter
+    def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MembersMemberArgs']]]]:
+        """
+        A set of dictionaries containing member parameters. The
+        structure is described below.
+        """
+        return pulumi.get(self, "members")
+
+    @members.setter
+    def members(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MembersMemberArgs']]]]):
+        pulumi.set(self, "members", value)
+
+    @property
+    @pulumi.getter(name="poolId")
+    def pool_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The id of the pool that members will be assigned to.
+        Changing this creates a new members resource.
+        """
+        return pulumi.get(self, "pool_id")
+
+    @pool_id.setter
+    def pool_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pool_id", value)
 
     @property
     @pulumi.getter
@@ -211,13 +277,13 @@ class Members(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = MembersArgs.__new__(MembersArgs)
 
-            __props__['members'] = members
+            __props__.__dict__["members"] = members
             if pool_id is None and not opts.urn:
                 raise TypeError("Missing required property 'pool_id'")
-            __props__['pool_id'] = pool_id
-            __props__['region'] = region
+            __props__.__dict__["pool_id"] = pool_id
+            __props__.__dict__["region"] = region
         super(Members, __self__).__init__(
             'openstack:loadbalancer/members:Members',
             resource_name,
@@ -249,11 +315,11 @@ class Members(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _MembersState.__new__(_MembersState)
 
-        __props__["members"] = members
-        __props__["pool_id"] = pool_id
-        __props__["region"] = region
+        __props__.__dict__["members"] = members
+        __props__.__dict__["pool_id"] = pool_id
+        __props__.__dict__["region"] = region
         return Members(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -284,10 +350,4 @@ class Members(pulumi.CustomResource):
         members resource.
         """
         return pulumi.get(self, "region")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

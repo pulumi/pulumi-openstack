@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = [
     'InstanceBlockDevice',
@@ -21,6 +21,39 @@ __all__ = [
 
 @pulumi.output_type
 class InstanceBlockDevice(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceType":
+            suggest = "source_type"
+        elif key == "bootIndex":
+            suggest = "boot_index"
+        elif key == "deleteOnTermination":
+            suggest = "delete_on_termination"
+        elif key == "destinationType":
+            suggest = "destination_type"
+        elif key == "deviceType":
+            suggest = "device_type"
+        elif key == "diskBus":
+            suggest = "disk_bus"
+        elif key == "guestFormat":
+            suggest = "guest_format"
+        elif key == "volumeSize":
+            suggest = "volume_size"
+        elif key == "volumeType":
+            suggest = "volume_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceBlockDevice. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceBlockDevice.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceBlockDevice.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  source_type: str,
                  boot_index: Optional[int] = None,
@@ -184,12 +217,32 @@ class InstanceBlockDevice(dict):
         """
         return pulumi.get(self, "volume_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class InstanceNetwork(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessNetwork":
+            suggest = "access_network"
+        elif key == "fixedIpV4":
+            suggest = "fixed_ip_v4"
+        elif key == "fixedIpV6":
+            suggest = "fixed_ip_v6"
+        elif key == "floatingIp":
+            suggest = "floating_ip"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceNetwork. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceNetwork.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceNetwork.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  access_network: Optional[bool] = None,
                  fixed_ip_v4: Optional[str] = None,
@@ -288,9 +341,6 @@ class InstanceNetwork(dict):
         """
         return pulumi.get(self, "uuid")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class InstancePersonality(dict):
@@ -320,12 +370,36 @@ class InstancePersonality(dict):
         """
         return pulumi.get(self, "file")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class InstanceSchedulerHint(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "additionalProperties":
+            suggest = "additional_properties"
+        elif key == "buildNearHostIp":
+            suggest = "build_near_host_ip"
+        elif key == "differentCells":
+            suggest = "different_cells"
+        elif key == "differentHosts":
+            suggest = "different_hosts"
+        elif key == "sameHosts":
+            suggest = "same_hosts"
+        elif key == "targetCell":
+            suggest = "target_cell"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceSchedulerHint. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceSchedulerHint.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceSchedulerHint.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  additional_properties: Optional[Mapping[str, Any]] = None,
                  build_near_host_ip: Optional[str] = None,
@@ -446,12 +520,28 @@ class InstanceSchedulerHint(dict):
         """
         return pulumi.get(self, "target_cell")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class InstanceVendorOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "detachPortsBeforeDestroy":
+            suggest = "detach_ports_before_destroy"
+        elif key == "ignoreResizeConfirmation":
+            suggest = "ignore_resize_confirmation"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceVendorOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceVendorOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceVendorOptions.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  detach_ports_before_destroy: Optional[bool] = None,
                  ignore_resize_confirmation: Optional[bool] = None):
@@ -490,12 +580,32 @@ class InstanceVendorOptions(dict):
         """
         return pulumi.get(self, "ignore_resize_confirmation")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SecGroupRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fromPort":
+            suggest = "from_port"
+        elif key == "ipProtocol":
+            suggest = "ip_protocol"
+        elif key == "toPort":
+            suggest = "to_port"
+        elif key == "fromGroupId":
+            suggest = "from_group_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecGroupRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecGroupRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecGroupRule.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  from_port: int,
                  ip_protocol: str,
@@ -597,12 +707,26 @@ class SecGroupRule(dict):
         """
         return pulumi.get(self, "self")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class VolumeAttachVendorOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ignoreVolumeConfirmation":
+            suggest = "ignore_volume_confirmation"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VolumeAttachVendorOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VolumeAttachVendorOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VolumeAttachVendorOptions.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  ignore_volume_confirmation: Optional[bool] = None):
         """
@@ -622,9 +746,6 @@ class VolumeAttachVendorOptions(dict):
         to work with some OpenStack clouds which don't have the Block Storage V3 API available.
         """
         return pulumi.get(self, "ignore_volume_confirmation")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type

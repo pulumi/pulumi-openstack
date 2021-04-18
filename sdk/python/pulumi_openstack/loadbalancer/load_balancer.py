@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['LoadBalancerArgs', 'LoadBalancer']
 
@@ -27,6 +27,248 @@ class LoadBalancerArgs:
                  vip_subnet_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a LoadBalancer resource.
+        :param pulumi.Input[bool] admin_state_up: The administrative state of the Loadbalancer.
+               A valid value is true (UP) or false (DOWN).
+        :param pulumi.Input[str] description: Human-readable description for the Loadbalancer.
+        :param pulumi.Input[str] flavor_id: The UUID of a flavor. Changing this creates a new
+               loadbalancer.
+        :param pulumi.Input[str] loadbalancer_provider: The name of the provider. Changing this
+               creates a new loadbalancer.
+        :param pulumi.Input[str] name: Human-readable name for the Loadbalancer. Does not have
+               to be unique.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
+               A Networking client is needed to create an LB member. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               LB member.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of security group IDs to apply to the
+               loadbalancer. The security groups must be specified by ID and not name (as
+               opposed to how they are configured with the Compute Instance).
+        :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
+               the Loadbalancer.  Only administrative users can specify a tenant UUID
+               other than their own.  Changing this creates a new loadbalancer.
+        :param pulumi.Input[str] vip_address: The ip address of the load balancer.
+               Changing this creates a new loadbalancer.
+        :param pulumi.Input[str] vip_network_id: The network on which to allocate the
+               Loadbalancer's address. A tenant can only create Loadbalancers on networks
+               authorized by policy (e.g. networks that belong to them or networks that
+               are shared).  Changing this creates a new loadbalancer.
+               It is available only for Octavia.
+        :param pulumi.Input[str] vip_port_id: The port UUID that the loadbalancer will use.
+               Changing this creates a new loadbalancer. It is available only for Octavia.
+        :param pulumi.Input[str] vip_subnet_id: The subnet on which to allocate the
+               Loadbalancer's address. A tenant can only create Loadbalancers on networks
+               authorized by policy (e.g. networks that belong to them or networks that
+               are shared).  Changing this creates a new loadbalancer.
+               It is required to Neutron LBaaS but optional for Octavia.
+        """
+        if admin_state_up is not None:
+            pulumi.set(__self__, "admin_state_up", admin_state_up)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if flavor_id is not None:
+            pulumi.set(__self__, "flavor_id", flavor_id)
+        if loadbalancer_provider is not None:
+            pulumi.set(__self__, "loadbalancer_provider", loadbalancer_provider)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if security_group_ids is not None:
+            pulumi.set(__self__, "security_group_ids", security_group_ids)
+        if tenant_id is not None:
+            pulumi.set(__self__, "tenant_id", tenant_id)
+        if vip_address is not None:
+            pulumi.set(__self__, "vip_address", vip_address)
+        if vip_network_id is not None:
+            pulumi.set(__self__, "vip_network_id", vip_network_id)
+        if vip_port_id is not None:
+            pulumi.set(__self__, "vip_port_id", vip_port_id)
+        if vip_subnet_id is not None:
+            pulumi.set(__self__, "vip_subnet_id", vip_subnet_id)
+
+    @property
+    @pulumi.getter(name="adminStateUp")
+    def admin_state_up(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The administrative state of the Loadbalancer.
+        A valid value is true (UP) or false (DOWN).
+        """
+        return pulumi.get(self, "admin_state_up")
+
+    @admin_state_up.setter
+    def admin_state_up(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "admin_state_up", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Human-readable description for the Loadbalancer.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="flavorId")
+    def flavor_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The UUID of a flavor. Changing this creates a new
+        loadbalancer.
+        """
+        return pulumi.get(self, "flavor_id")
+
+    @flavor_id.setter
+    def flavor_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "flavor_id", value)
+
+    @property
+    @pulumi.getter(name="loadbalancerProvider")
+    def loadbalancer_provider(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the provider. Changing this
+        creates a new loadbalancer.
+        """
+        return pulumi.get(self, "loadbalancer_provider")
+
+    @loadbalancer_provider.setter
+    def loadbalancer_provider(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "loadbalancer_provider", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Human-readable name for the Loadbalancer. Does not have
+        to be unique.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V2 Networking client.
+        A Networking client is needed to create an LB member. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        LB member.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="securityGroupIds")
+    def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of security group IDs to apply to the
+        loadbalancer. The security groups must be specified by ID and not name (as
+        opposed to how they are configured with the Compute Instance).
+        """
+        return pulumi.get(self, "security_group_ids")
+
+    @security_group_ids.setter
+    def security_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "security_group_ids", value)
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required for admins. The UUID of the tenant who owns
+        the Loadbalancer.  Only administrative users can specify a tenant UUID
+        other than their own.  Changing this creates a new loadbalancer.
+        """
+        return pulumi.get(self, "tenant_id")
+
+    @tenant_id.setter
+    def tenant_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tenant_id", value)
+
+    @property
+    @pulumi.getter(name="vipAddress")
+    def vip_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ip address of the load balancer.
+        Changing this creates a new loadbalancer.
+        """
+        return pulumi.get(self, "vip_address")
+
+    @vip_address.setter
+    def vip_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vip_address", value)
+
+    @property
+    @pulumi.getter(name="vipNetworkId")
+    def vip_network_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The network on which to allocate the
+        Loadbalancer's address. A tenant can only create Loadbalancers on networks
+        authorized by policy (e.g. networks that belong to them or networks that
+        are shared).  Changing this creates a new loadbalancer.
+        It is available only for Octavia.
+        """
+        return pulumi.get(self, "vip_network_id")
+
+    @vip_network_id.setter
+    def vip_network_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vip_network_id", value)
+
+    @property
+    @pulumi.getter(name="vipPortId")
+    def vip_port_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The port UUID that the loadbalancer will use.
+        Changing this creates a new loadbalancer. It is available only for Octavia.
+        """
+        return pulumi.get(self, "vip_port_id")
+
+    @vip_port_id.setter
+    def vip_port_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vip_port_id", value)
+
+    @property
+    @pulumi.getter(name="vipSubnetId")
+    def vip_subnet_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The subnet on which to allocate the
+        Loadbalancer's address. A tenant can only create Loadbalancers on networks
+        authorized by policy (e.g. networks that belong to them or networks that
+        are shared).  Changing this creates a new loadbalancer.
+        It is required to Neutron LBaaS but optional for Octavia.
+        """
+        return pulumi.get(self, "vip_subnet_id")
+
+    @vip_subnet_id.setter
+    def vip_subnet_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vip_subnet_id", value)
+
+
+@pulumi.input_type
+class _LoadBalancerState:
+    def __init__(__self__, *,
+                 admin_state_up: Optional[pulumi.Input[bool]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 flavor_id: Optional[pulumi.Input[str]] = None,
+                 loadbalancer_provider: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tenant_id: Optional[pulumi.Input[str]] = None,
+                 vip_address: Optional[pulumi.Input[str]] = None,
+                 vip_network_id: Optional[pulumi.Input[str]] = None,
+                 vip_port_id: Optional[pulumi.Input[str]] = None,
+                 vip_subnet_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering LoadBalancer resources.
         :param pulumi.Input[bool] admin_state_up: The administrative state of the Loadbalancer.
                A valid value is true (UP) or false (DOWN).
         :param pulumi.Input[str] description: Human-readable description for the Loadbalancer.
@@ -399,20 +641,20 @@ class LoadBalancer(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = LoadBalancerArgs.__new__(LoadBalancerArgs)
 
-            __props__['admin_state_up'] = admin_state_up
-            __props__['description'] = description
-            __props__['flavor_id'] = flavor_id
-            __props__['loadbalancer_provider'] = loadbalancer_provider
-            __props__['name'] = name
-            __props__['region'] = region
-            __props__['security_group_ids'] = security_group_ids
-            __props__['tenant_id'] = tenant_id
-            __props__['vip_address'] = vip_address
-            __props__['vip_network_id'] = vip_network_id
-            __props__['vip_port_id'] = vip_port_id
-            __props__['vip_subnet_id'] = vip_subnet_id
+            __props__.__dict__["admin_state_up"] = admin_state_up
+            __props__.__dict__["description"] = description
+            __props__.__dict__["flavor_id"] = flavor_id
+            __props__.__dict__["loadbalancer_provider"] = loadbalancer_provider
+            __props__.__dict__["name"] = name
+            __props__.__dict__["region"] = region
+            __props__.__dict__["security_group_ids"] = security_group_ids
+            __props__.__dict__["tenant_id"] = tenant_id
+            __props__.__dict__["vip_address"] = vip_address
+            __props__.__dict__["vip_network_id"] = vip_network_id
+            __props__.__dict__["vip_port_id"] = vip_port_id
+            __props__.__dict__["vip_subnet_id"] = vip_subnet_id
         super(LoadBalancer, __self__).__init__(
             'openstack:loadbalancer/loadBalancer:LoadBalancer',
             resource_name,
@@ -478,20 +720,20 @@ class LoadBalancer(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _LoadBalancerState.__new__(_LoadBalancerState)
 
-        __props__["admin_state_up"] = admin_state_up
-        __props__["description"] = description
-        __props__["flavor_id"] = flavor_id
-        __props__["loadbalancer_provider"] = loadbalancer_provider
-        __props__["name"] = name
-        __props__["region"] = region
-        __props__["security_group_ids"] = security_group_ids
-        __props__["tenant_id"] = tenant_id
-        __props__["vip_address"] = vip_address
-        __props__["vip_network_id"] = vip_network_id
-        __props__["vip_port_id"] = vip_port_id
-        __props__["vip_subnet_id"] = vip_subnet_id
+        __props__.__dict__["admin_state_up"] = admin_state_up
+        __props__.__dict__["description"] = description
+        __props__.__dict__["flavor_id"] = flavor_id
+        __props__.__dict__["loadbalancer_provider"] = loadbalancer_provider
+        __props__.__dict__["name"] = name
+        __props__.__dict__["region"] = region
+        __props__.__dict__["security_group_ids"] = security_group_ids
+        __props__.__dict__["tenant_id"] = tenant_id
+        __props__.__dict__["vip_address"] = vip_address
+        __props__.__dict__["vip_network_id"] = vip_network_id
+        __props__.__dict__["vip_port_id"] = vip_port_id
+        __props__.__dict__["vip_subnet_id"] = vip_subnet_id
         return LoadBalancer(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -610,10 +852,4 @@ class LoadBalancer(pulumi.CustomResource):
         It is required to Neutron LBaaS but optional for Octavia.
         """
         return pulumi.get(self, "vip_subnet_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

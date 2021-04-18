@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['QosDscpMarkingRuleArgs', 'QosDscpMarkingRule']
 
@@ -53,6 +53,68 @@ class QosDscpMarkingRuleArgs:
 
     @qos_policy_id.setter
     def qos_policy_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "qos_policy_id", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V2 Networking client.
+        A Networking client is needed to create a Neutron QoS DSCP marking rule. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new QoS DSCP marking rule.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+
+@pulumi.input_type
+class _QosDscpMarkingRuleState:
+    def __init__(__self__, *,
+                 dscp_mark: Optional[pulumi.Input[int]] = None,
+                 qos_policy_id: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering QosDscpMarkingRule resources.
+        :param pulumi.Input[int] dscp_mark: The value of DSCP mark. Changing this updates the DSCP mark value existing
+               QoS DSCP marking rule.
+        :param pulumi.Input[str] qos_policy_id: The QoS policy reference. Changing this creates a new QoS DSCP marking rule.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
+               A Networking client is needed to create a Neutron QoS DSCP marking rule. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new QoS DSCP marking rule.
+        """
+        if dscp_mark is not None:
+            pulumi.set(__self__, "dscp_mark", dscp_mark)
+        if qos_policy_id is not None:
+            pulumi.set(__self__, "qos_policy_id", qos_policy_id)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter(name="dscpMark")
+    def dscp_mark(self) -> Optional[pulumi.Input[int]]:
+        """
+        The value of DSCP mark. Changing this updates the DSCP mark value existing
+        QoS DSCP marking rule.
+        """
+        return pulumi.get(self, "dscp_mark")
+
+    @dscp_mark.setter
+    def dscp_mark(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "dscp_mark", value)
+
+    @property
+    @pulumi.getter(name="qosPolicyId")
+    def qos_policy_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The QoS policy reference. Changing this creates a new QoS DSCP marking rule.
+        """
+        return pulumi.get(self, "qos_policy_id")
+
+    @qos_policy_id.setter
+    def qos_policy_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "qos_policy_id", value)
 
     @property
@@ -180,15 +242,15 @@ class QosDscpMarkingRule(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = QosDscpMarkingRuleArgs.__new__(QosDscpMarkingRuleArgs)
 
             if dscp_mark is None and not opts.urn:
                 raise TypeError("Missing required property 'dscp_mark'")
-            __props__['dscp_mark'] = dscp_mark
+            __props__.__dict__["dscp_mark"] = dscp_mark
             if qos_policy_id is None and not opts.urn:
                 raise TypeError("Missing required property 'qos_policy_id'")
-            __props__['qos_policy_id'] = qos_policy_id
-            __props__['region'] = region
+            __props__.__dict__["qos_policy_id"] = qos_policy_id
+            __props__.__dict__["region"] = region
         super(QosDscpMarkingRule, __self__).__init__(
             'openstack:networking/qosDscpMarkingRule:QosDscpMarkingRule',
             resource_name,
@@ -218,11 +280,11 @@ class QosDscpMarkingRule(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _QosDscpMarkingRuleState.__new__(_QosDscpMarkingRuleState)
 
-        __props__["dscp_mark"] = dscp_mark
-        __props__["qos_policy_id"] = qos_policy_id
-        __props__["region"] = region
+        __props__.__dict__["dscp_mark"] = dscp_mark
+        __props__.__dict__["qos_policy_id"] = qos_policy_id
+        __props__.__dict__["region"] = region
         return QosDscpMarkingRule(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -251,10 +313,4 @@ class QosDscpMarkingRule(pulumi.CustomResource):
         `region` argument of the provider is used. Changing this creates a new QoS DSCP marking rule.
         """
         return pulumi.get(self, "region")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

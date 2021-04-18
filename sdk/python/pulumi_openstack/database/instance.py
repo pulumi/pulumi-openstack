@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -180,6 +180,176 @@ class InstanceArgs:
         pulumi.set(self, "users", value)
 
 
+@pulumi.input_type
+class _InstanceState:
+    def __init__(__self__, *,
+                 configuration_id: Optional[pulumi.Input[str]] = None,
+                 databases: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDatabaseArgs']]]] = None,
+                 datastore: Optional[pulumi.Input['InstanceDatastoreArgs']] = None,
+                 flavor_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 networks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkArgs']]]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 size: Optional[pulumi.Input[int]] = None,
+                 users: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceUserArgs']]]] = None):
+        """
+        Input properties used for looking up and filtering Instance resources.
+        :param pulumi.Input[str] configuration_id: Configuration ID to be attached to the instance. Database instance
+               will be rebooted when configuration is detached.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceDatabaseArgs']]] databases: An array of database name, charset and collate. The database
+               object structure is documented below.
+        :param pulumi.Input['InstanceDatastoreArgs'] datastore: An array of database engine type and version. The datastore
+               object structure is documented below. Changing this creates a new instance.
+        :param pulumi.Input[str] flavor_id: The flavor ID of the desired flavor for the instance.
+               Changing this creates new instance.
+        :param pulumi.Input[str] name: Database to be created on new instance. Changing this creates a
+               new instance.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceNetworkArgs']]] networks: An array of one or more networks to attach to the
+               instance. The network object structure is documented below. Changing this
+               creates a new instance.
+        :param pulumi.Input[str] region: The region in which to create the db instance. Changing this
+               creates a new instance.
+        :param pulumi.Input[int] size: Specifies the volume size in GB. Changing this creates new instance.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceUserArgs']]] users: An array of username, password, host and databases. The user
+               object structure is documented below.
+        """
+        if configuration_id is not None:
+            pulumi.set(__self__, "configuration_id", configuration_id)
+        if databases is not None:
+            pulumi.set(__self__, "databases", databases)
+        if datastore is not None:
+            pulumi.set(__self__, "datastore", datastore)
+        if flavor_id is not None:
+            pulumi.set(__self__, "flavor_id", flavor_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if networks is not None:
+            pulumi.set(__self__, "networks", networks)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+        if users is not None:
+            pulumi.set(__self__, "users", users)
+
+    @property
+    @pulumi.getter(name="configurationId")
+    def configuration_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Configuration ID to be attached to the instance. Database instance
+        will be rebooted when configuration is detached.
+        """
+        return pulumi.get(self, "configuration_id")
+
+    @configuration_id.setter
+    def configuration_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "configuration_id", value)
+
+    @property
+    @pulumi.getter
+    def databases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDatabaseArgs']]]]:
+        """
+        An array of database name, charset and collate. The database
+        object structure is documented below.
+        """
+        return pulumi.get(self, "databases")
+
+    @databases.setter
+    def databases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDatabaseArgs']]]]):
+        pulumi.set(self, "databases", value)
+
+    @property
+    @pulumi.getter
+    def datastore(self) -> Optional[pulumi.Input['InstanceDatastoreArgs']]:
+        """
+        An array of database engine type and version. The datastore
+        object structure is documented below. Changing this creates a new instance.
+        """
+        return pulumi.get(self, "datastore")
+
+    @datastore.setter
+    def datastore(self, value: Optional[pulumi.Input['InstanceDatastoreArgs']]):
+        pulumi.set(self, "datastore", value)
+
+    @property
+    @pulumi.getter(name="flavorId")
+    def flavor_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The flavor ID of the desired flavor for the instance.
+        Changing this creates new instance.
+        """
+        return pulumi.get(self, "flavor_id")
+
+    @flavor_id.setter
+    def flavor_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "flavor_id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Database to be created on new instance. Changing this creates a
+        new instance.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkArgs']]]]:
+        """
+        An array of one or more networks to attach to the
+        instance. The network object structure is documented below. Changing this
+        creates a new instance.
+        """
+        return pulumi.get(self, "networks")
+
+    @networks.setter
+    def networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkArgs']]]]):
+        pulumi.set(self, "networks", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to create the db instance. Changing this
+        creates a new instance.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter
+    def size(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies the volume size in GB. Changing this creates new instance.
+        """
+        return pulumi.get(self, "size")
+
+    @size.setter
+    def size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "size", value)
+
+    @property
+    @pulumi.getter
+    def users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceUserArgs']]]]:
+        """
+        An array of username, password, host and databases. The user
+        object structure is documented below.
+        """
+        return pulumi.get(self, "users")
+
+    @users.setter
+    def users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceUserArgs']]]]):
+        pulumi.set(self, "users", value)
+
+
 class Instance(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -270,21 +440,21 @@ class Instance(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = InstanceArgs.__new__(InstanceArgs)
 
-            __props__['configuration_id'] = configuration_id
-            __props__['databases'] = databases
+            __props__.__dict__["configuration_id"] = configuration_id
+            __props__.__dict__["databases"] = databases
             if datastore is None and not opts.urn:
                 raise TypeError("Missing required property 'datastore'")
-            __props__['datastore'] = datastore
-            __props__['flavor_id'] = flavor_id
-            __props__['name'] = name
-            __props__['networks'] = networks
-            __props__['region'] = region
+            __props__.__dict__["datastore"] = datastore
+            __props__.__dict__["flavor_id"] = flavor_id
+            __props__.__dict__["name"] = name
+            __props__.__dict__["networks"] = networks
+            __props__.__dict__["region"] = region
             if size is None and not opts.urn:
                 raise TypeError("Missing required property 'size'")
-            __props__['size'] = size
-            __props__['users'] = users
+            __props__.__dict__["size"] = size
+            __props__.__dict__["users"] = users
         super(Instance, __self__).__init__(
             'openstack:database/instance:Instance',
             resource_name,
@@ -332,17 +502,17 @@ class Instance(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _InstanceState.__new__(_InstanceState)
 
-        __props__["configuration_id"] = configuration_id
-        __props__["databases"] = databases
-        __props__["datastore"] = datastore
-        __props__["flavor_id"] = flavor_id
-        __props__["name"] = name
-        __props__["networks"] = networks
-        __props__["region"] = region
-        __props__["size"] = size
-        __props__["users"] = users
+        __props__.__dict__["configuration_id"] = configuration_id
+        __props__.__dict__["databases"] = databases
+        __props__.__dict__["datastore"] = datastore
+        __props__.__dict__["flavor_id"] = flavor_id
+        __props__.__dict__["name"] = name
+        __props__.__dict__["networks"] = networks
+        __props__.__dict__["region"] = region
+        __props__.__dict__["size"] = size
+        __props__.__dict__["users"] = users
         return Instance(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -425,10 +595,4 @@ class Instance(pulumi.CustomResource):
         object structure is documented below.
         """
         return pulumi.get(self, "users")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

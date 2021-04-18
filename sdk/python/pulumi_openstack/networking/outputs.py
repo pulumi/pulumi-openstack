@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = [
     'NetworkSegment',
@@ -31,6 +31,27 @@ __all__ = [
 
 @pulumi.output_type
 class NetworkSegment(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "networkType":
+            suggest = "network_type"
+        elif key == "physicalNetwork":
+            suggest = "physical_network"
+        elif key == "segmentationId":
+            suggest = "segmentation_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NetworkSegment. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NetworkSegment.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NetworkSegment.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  network_type: Optional[str] = None,
                  physical_network: Optional[str] = None,
@@ -71,12 +92,28 @@ class NetworkSegment(dict):
         """
         return pulumi.get(self, "segmentation_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PortAllowedAddressPair(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipAddress":
+            suggest = "ip_address"
+        elif key == "macAddress":
+            suggest = "mac_address"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PortAllowedAddressPair. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PortAllowedAddressPair.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PortAllowedAddressPair.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  ip_address: str,
                  mac_address: Optional[str] = None):
@@ -104,12 +141,32 @@ class PortAllowedAddressPair(dict):
         """
         return pulumi.get(self, "mac_address")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PortBinding(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "hostId":
+            suggest = "host_id"
+        elif key == "vifDetails":
+            suggest = "vif_details"
+        elif key == "vifType":
+            suggest = "vif_type"
+        elif key == "vnicType":
+            suggest = "vnic_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PortBinding. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PortBinding.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PortBinding.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  host_id: Optional[str] = None,
                  profile: Optional[str] = None,
@@ -182,12 +239,26 @@ class PortBinding(dict):
         """
         return pulumi.get(self, "vnic_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PortExtraDhcpOption(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipVersion":
+            suggest = "ip_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PortExtraDhcpOption. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PortExtraDhcpOption.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PortExtraDhcpOption.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  value: str,
@@ -226,12 +297,28 @@ class PortExtraDhcpOption(dict):
         """
         return pulumi.get(self, "ip_version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PortFixedIp(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "subnetId":
+            suggest = "subnet_id"
+        elif key == "ipAddress":
+            suggest = "ip_address"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PortFixedIp. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PortFixedIp.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PortFixedIp.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  subnet_id: str,
                  ip_address: Optional[str] = None):
@@ -261,12 +348,28 @@ class PortFixedIp(dict):
         """
         return pulumi.get(self, "ip_address")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RouterExternalFixedIp(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipAddress":
+            suggest = "ip_address"
+        elif key == "subnetId":
+            suggest = "subnet_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RouterExternalFixedIp. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RouterExternalFixedIp.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RouterExternalFixedIp.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  ip_address: Optional[str] = None,
                  subnet_id: Optional[str] = None):
@@ -295,12 +398,26 @@ class RouterExternalFixedIp(dict):
         """
         return pulumi.get(self, "subnet_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RouterVendorOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "setRouterGatewayAfterCreate":
+            suggest = "set_router_gateway_after_create"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RouterVendorOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RouterVendorOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RouterVendorOptions.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  set_router_gateway_after_create: Optional[bool] = None):
         """
@@ -318,9 +435,6 @@ class RouterVendorOptions(dict):
         the Router gateway is assigned during creation or updated after creation.
         """
         return pulumi.get(self, "set_router_gateway_after_create")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -351,9 +465,6 @@ class SubnetAllocationPool(dict):
         """
         return pulumi.get(self, "start")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SubnetAllocationPoolsCollection(dict):
@@ -383,12 +494,28 @@ class SubnetAllocationPoolsCollection(dict):
         """
         return pulumi.get(self, "start")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SubnetHostRoute(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "destinationCidr":
+            suggest = "destination_cidr"
+        elif key == "nextHop":
+            suggest = "next_hop"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SubnetHostRoute. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SubnetHostRoute.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SubnetHostRoute.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  destination_cidr: str,
                  next_hop: str):
@@ -415,12 +542,30 @@ class SubnetHostRoute(dict):
         """
         return pulumi.get(self, "next_hop")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TrunkSubPort(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "portId":
+            suggest = "port_id"
+        elif key == "segmentationId":
+            suggest = "segmentation_id"
+        elif key == "segmentationType":
+            suggest = "segmentation_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TrunkSubPort. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TrunkSubPort.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TrunkSubPort.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  port_id: str,
                  segmentation_id: int,
@@ -457,9 +602,6 @@ class TrunkSubPort(dict):
         The segmentation technology to use, e.g., "vlan".
         """
         return pulumi.get(self, "segmentation_type")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
