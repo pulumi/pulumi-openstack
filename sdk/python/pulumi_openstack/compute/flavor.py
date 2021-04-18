@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['FlavorArgs', 'Flavor']
 
@@ -215,6 +215,214 @@ class FlavorArgs:
         pulumi.set(self, "swap", value)
 
 
+@pulumi.input_type
+class _FlavorState:
+    def __init__(__self__, *,
+                 disk: Optional[pulumi.Input[int]] = None,
+                 ephemeral: Optional[pulumi.Input[int]] = None,
+                 extra_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 flavor_id: Optional[pulumi.Input[str]] = None,
+                 is_public: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 ram: Optional[pulumi.Input[int]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 rx_tx_factor: Optional[pulumi.Input[float]] = None,
+                 swap: Optional[pulumi.Input[int]] = None,
+                 vcpus: Optional[pulumi.Input[int]] = None):
+        """
+        Input properties used for looking up and filtering Flavor resources.
+        :param pulumi.Input[int] disk: The amount of disk space in GiB to use for the root
+               (/) partition. Changing this creates a new flavor.
+        :param pulumi.Input[int] ephemeral: The amount of ephemeral in GiB. If unspecified,
+               the default is 0. Changing this creates a new flavor.
+        :param pulumi.Input[Mapping[str, Any]] extra_specs: Key/Value pairs of metadata for the flavor.
+        :param pulumi.Input[str] flavor_id: Unique ID (integer or UUID) of flavor to create. Changing
+               this creates a new flavor.
+        :param pulumi.Input[bool] is_public: Whether the flavor is public. Changing this creates
+               a new flavor.
+        :param pulumi.Input[str] name: A unique name for the flavor. Changing this creates a new
+               flavor.
+        :param pulumi.Input[int] ram: The amount of RAM to use, in megabytes. Changing this
+               creates a new flavor.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Compute client.
+               Flavors are associated with accounts, but a Compute client is needed to
+               create one. If omitted, the `region` argument of the provider is used.
+               Changing this creates a new flavor.
+        :param pulumi.Input[float] rx_tx_factor: RX/TX bandwith factor. The default is 1. Changing
+               this creates a new flavor.
+        :param pulumi.Input[int] swap: The amount of disk space in megabytes to use. If
+               unspecified, the default is 0. Changing this creates a new flavor.
+        :param pulumi.Input[int] vcpus: The number of virtual CPUs to use. Changing this creates
+               a new flavor.
+        """
+        if disk is not None:
+            pulumi.set(__self__, "disk", disk)
+        if ephemeral is not None:
+            pulumi.set(__self__, "ephemeral", ephemeral)
+        if extra_specs is not None:
+            pulumi.set(__self__, "extra_specs", extra_specs)
+        if flavor_id is not None:
+            pulumi.set(__self__, "flavor_id", flavor_id)
+        if is_public is not None:
+            pulumi.set(__self__, "is_public", is_public)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if ram is not None:
+            pulumi.set(__self__, "ram", ram)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if rx_tx_factor is not None:
+            pulumi.set(__self__, "rx_tx_factor", rx_tx_factor)
+        if swap is not None:
+            pulumi.set(__self__, "swap", swap)
+        if vcpus is not None:
+            pulumi.set(__self__, "vcpus", vcpus)
+
+    @property
+    @pulumi.getter
+    def disk(self) -> Optional[pulumi.Input[int]]:
+        """
+        The amount of disk space in GiB to use for the root
+        (/) partition. Changing this creates a new flavor.
+        """
+        return pulumi.get(self, "disk")
+
+    @disk.setter
+    def disk(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "disk", value)
+
+    @property
+    @pulumi.getter
+    def ephemeral(self) -> Optional[pulumi.Input[int]]:
+        """
+        The amount of ephemeral in GiB. If unspecified,
+        the default is 0. Changing this creates a new flavor.
+        """
+        return pulumi.get(self, "ephemeral")
+
+    @ephemeral.setter
+    def ephemeral(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ephemeral", value)
+
+    @property
+    @pulumi.getter(name="extraSpecs")
+    def extra_specs(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Key/Value pairs of metadata for the flavor.
+        """
+        return pulumi.get(self, "extra_specs")
+
+    @extra_specs.setter
+    def extra_specs(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "extra_specs", value)
+
+    @property
+    @pulumi.getter(name="flavorId")
+    def flavor_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Unique ID (integer or UUID) of flavor to create. Changing
+        this creates a new flavor.
+        """
+        return pulumi.get(self, "flavor_id")
+
+    @flavor_id.setter
+    def flavor_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "flavor_id", value)
+
+    @property
+    @pulumi.getter(name="isPublic")
+    def is_public(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the flavor is public. Changing this creates
+        a new flavor.
+        """
+        return pulumi.get(self, "is_public")
+
+    @is_public.setter
+    def is_public(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_public", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A unique name for the flavor. Changing this creates a new
+        flavor.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def ram(self) -> Optional[pulumi.Input[int]]:
+        """
+        The amount of RAM to use, in megabytes. Changing this
+        creates a new flavor.
+        """
+        return pulumi.get(self, "ram")
+
+    @ram.setter
+    def ram(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ram", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V2 Compute client.
+        Flavors are associated with accounts, but a Compute client is needed to
+        create one. If omitted, the `region` argument of the provider is used.
+        Changing this creates a new flavor.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="rxTxFactor")
+    def rx_tx_factor(self) -> Optional[pulumi.Input[float]]:
+        """
+        RX/TX bandwith factor. The default is 1. Changing
+        this creates a new flavor.
+        """
+        return pulumi.get(self, "rx_tx_factor")
+
+    @rx_tx_factor.setter
+    def rx_tx_factor(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "rx_tx_factor", value)
+
+    @property
+    @pulumi.getter
+    def swap(self) -> Optional[pulumi.Input[int]]:
+        """
+        The amount of disk space in megabytes to use. If
+        unspecified, the default is 0. Changing this creates a new flavor.
+        """
+        return pulumi.get(self, "swap")
+
+    @swap.setter
+    def swap(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "swap", value)
+
+    @property
+    @pulumi.getter
+    def vcpus(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of virtual CPUs to use. Changing this creates
+        a new flavor.
+        """
+        return pulumi.get(self, "vcpus")
+
+    @vcpus.setter
+    def vcpus(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "vcpus", value)
+
+
 class Flavor(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -364,25 +572,25 @@ class Flavor(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = FlavorArgs.__new__(FlavorArgs)
 
             if disk is None and not opts.urn:
                 raise TypeError("Missing required property 'disk'")
-            __props__['disk'] = disk
-            __props__['ephemeral'] = ephemeral
-            __props__['extra_specs'] = extra_specs
-            __props__['flavor_id'] = flavor_id
-            __props__['is_public'] = is_public
-            __props__['name'] = name
+            __props__.__dict__["disk"] = disk
+            __props__.__dict__["ephemeral"] = ephemeral
+            __props__.__dict__["extra_specs"] = extra_specs
+            __props__.__dict__["flavor_id"] = flavor_id
+            __props__.__dict__["is_public"] = is_public
+            __props__.__dict__["name"] = name
             if ram is None and not opts.urn:
                 raise TypeError("Missing required property 'ram'")
-            __props__['ram'] = ram
-            __props__['region'] = region
-            __props__['rx_tx_factor'] = rx_tx_factor
-            __props__['swap'] = swap
+            __props__.__dict__["ram"] = ram
+            __props__.__dict__["region"] = region
+            __props__.__dict__["rx_tx_factor"] = rx_tx_factor
+            __props__.__dict__["swap"] = swap
             if vcpus is None and not opts.urn:
                 raise TypeError("Missing required property 'vcpus'")
-            __props__['vcpus'] = vcpus
+            __props__.__dict__["vcpus"] = vcpus
         super(Flavor, __self__).__init__(
             'openstack:compute/flavor:Flavor',
             resource_name,
@@ -437,19 +645,19 @@ class Flavor(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _FlavorState.__new__(_FlavorState)
 
-        __props__["disk"] = disk
-        __props__["ephemeral"] = ephemeral
-        __props__["extra_specs"] = extra_specs
-        __props__["flavor_id"] = flavor_id
-        __props__["is_public"] = is_public
-        __props__["name"] = name
-        __props__["ram"] = ram
-        __props__["region"] = region
-        __props__["rx_tx_factor"] = rx_tx_factor
-        __props__["swap"] = swap
-        __props__["vcpus"] = vcpus
+        __props__.__dict__["disk"] = disk
+        __props__.__dict__["ephemeral"] = ephemeral
+        __props__.__dict__["extra_specs"] = extra_specs
+        __props__.__dict__["flavor_id"] = flavor_id
+        __props__.__dict__["is_public"] = is_public
+        __props__.__dict__["name"] = name
+        __props__.__dict__["ram"] = ram
+        __props__.__dict__["region"] = region
+        __props__.__dict__["rx_tx_factor"] = rx_tx_factor
+        __props__.__dict__["swap"] = swap
+        __props__.__dict__["vcpus"] = vcpus
         return Flavor(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -551,10 +759,4 @@ class Flavor(pulumi.CustomResource):
         a new flavor.
         """
         return pulumi.get(self, "vcpus")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

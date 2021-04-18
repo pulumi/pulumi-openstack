@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = [
     'VolumeAttachment',
@@ -18,6 +18,23 @@ __all__ = [
 
 @pulumi.output_type
 class VolumeAttachment(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "instanceId":
+            suggest = "instance_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VolumeAttachment. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VolumeAttachment.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VolumeAttachment.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  device: Optional[str] = None,
                  id: Optional[str] = None,
@@ -43,13 +60,33 @@ class VolumeAttachment(dict):
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[str]:
         return pulumi.get(self, "instance_id")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
 class VolumeSchedulerHint(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "additionalProperties":
+            suggest = "additional_properties"
+        elif key == "differentHosts":
+            suggest = "different_hosts"
+        elif key == "localToInstance":
+            suggest = "local_to_instance"
+        elif key == "sameHosts":
+            suggest = "same_hosts"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VolumeSchedulerHint. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VolumeSchedulerHint.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VolumeSchedulerHint.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  additional_properties: Optional[Mapping[str, Any]] = None,
                  different_hosts: Optional[Sequence[str]] = None,
@@ -131,13 +168,27 @@ class VolumeSchedulerHint(dict):
         scheduled on the same host as another volume specified in the list provided.
         """
         return pulumi.get(self, "same_hosts")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
 class VolumeV1Attachment(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "instanceId":
+            suggest = "instance_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VolumeV1Attachment. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VolumeV1Attachment.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VolumeV1Attachment.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  device: Optional[str] = None,
                  id: Optional[str] = None,
@@ -163,13 +214,27 @@ class VolumeV1Attachment(dict):
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[str]:
         return pulumi.get(self, "instance_id")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
 class VolumeV2Attachment(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "instanceId":
+            suggest = "instance_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VolumeV2Attachment. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VolumeV2Attachment.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VolumeV2Attachment.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  device: Optional[str] = None,
                  id: Optional[str] = None,
@@ -196,12 +261,32 @@ class VolumeV2Attachment(dict):
     def instance_id(self) -> Optional[str]:
         return pulumi.get(self, "instance_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class VolumeV2SchedulerHint(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "additionalProperties":
+            suggest = "additional_properties"
+        elif key == "differentHosts":
+            suggest = "different_hosts"
+        elif key == "localToInstance":
+            suggest = "local_to_instance"
+        elif key == "sameHosts":
+            suggest = "same_hosts"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VolumeV2SchedulerHint. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VolumeV2SchedulerHint.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VolumeV2SchedulerHint.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  additional_properties: Optional[Mapping[str, Any]] = None,
                  different_hosts: Optional[Sequence[str]] = None,
@@ -283,8 +368,5 @@ class VolumeV2SchedulerHint(dict):
         scheduled on the same host as another volume specified in the list provided.
         """
         return pulumi.get(self, "same_hosts")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

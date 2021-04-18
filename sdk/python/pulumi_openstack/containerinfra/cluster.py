@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -211,6 +211,338 @@ class ClusterArgs:
         pulumi.set(self, "region", value)
 
 
+@pulumi.input_type
+class _ClusterState:
+    def __init__(__self__, *,
+                 api_address: Optional[pulumi.Input[str]] = None,
+                 cluster_template_id: Optional[pulumi.Input[str]] = None,
+                 coe_version: Optional[pulumi.Input[str]] = None,
+                 container_version: Optional[pulumi.Input[str]] = None,
+                 create_timeout: Optional[pulumi.Input[int]] = None,
+                 created_at: Optional[pulumi.Input[str]] = None,
+                 discovery_url: Optional[pulumi.Input[str]] = None,
+                 docker_volume_size: Optional[pulumi.Input[int]] = None,
+                 fixed_network: Optional[pulumi.Input[str]] = None,
+                 fixed_subnet: Optional[pulumi.Input[str]] = None,
+                 flavor: Optional[pulumi.Input[str]] = None,
+                 floating_ip_enabled: Optional[pulumi.Input[bool]] = None,
+                 keypair: Optional[pulumi.Input[str]] = None,
+                 kubeconfig: Optional[pulumi.Input['ClusterKubeconfigArgs']] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 master_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 master_count: Optional[pulumi.Input[int]] = None,
+                 master_flavor: Optional[pulumi.Input[str]] = None,
+                 merge_labels: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 node_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 node_count: Optional[pulumi.Input[int]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 stack_id: Optional[pulumi.Input[str]] = None,
+                 updated_at: Optional[pulumi.Input[str]] = None,
+                 user_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Cluster resources.
+        """
+        if api_address is not None:
+            pulumi.set(__self__, "api_address", api_address)
+        if cluster_template_id is not None:
+            pulumi.set(__self__, "cluster_template_id", cluster_template_id)
+        if coe_version is not None:
+            pulumi.set(__self__, "coe_version", coe_version)
+        if container_version is not None:
+            pulumi.set(__self__, "container_version", container_version)
+        if create_timeout is not None:
+            pulumi.set(__self__, "create_timeout", create_timeout)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if discovery_url is not None:
+            pulumi.set(__self__, "discovery_url", discovery_url)
+        if docker_volume_size is not None:
+            pulumi.set(__self__, "docker_volume_size", docker_volume_size)
+        if fixed_network is not None:
+            pulumi.set(__self__, "fixed_network", fixed_network)
+        if fixed_subnet is not None:
+            pulumi.set(__self__, "fixed_subnet", fixed_subnet)
+        if flavor is not None:
+            pulumi.set(__self__, "flavor", flavor)
+        if floating_ip_enabled is not None:
+            pulumi.set(__self__, "floating_ip_enabled", floating_ip_enabled)
+        if keypair is not None:
+            pulumi.set(__self__, "keypair", keypair)
+        if kubeconfig is not None:
+            pulumi.set(__self__, "kubeconfig", kubeconfig)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if master_addresses is not None:
+            pulumi.set(__self__, "master_addresses", master_addresses)
+        if master_count is not None:
+            pulumi.set(__self__, "master_count", master_count)
+        if master_flavor is not None:
+            pulumi.set(__self__, "master_flavor", master_flavor)
+        if merge_labels is not None:
+            pulumi.set(__self__, "merge_labels", merge_labels)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if node_addresses is not None:
+            pulumi.set(__self__, "node_addresses", node_addresses)
+        if node_count is not None:
+            pulumi.set(__self__, "node_count", node_count)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if stack_id is not None:
+            pulumi.set(__self__, "stack_id", stack_id)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+        if user_id is not None:
+            pulumi.set(__self__, "user_id", user_id)
+
+    @property
+    @pulumi.getter(name="apiAddress")
+    def api_address(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "api_address")
+
+    @api_address.setter
+    def api_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "api_address", value)
+
+    @property
+    @pulumi.getter(name="clusterTemplateId")
+    def cluster_template_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "cluster_template_id")
+
+    @cluster_template_id.setter
+    def cluster_template_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_template_id", value)
+
+    @property
+    @pulumi.getter(name="coeVersion")
+    def coe_version(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "coe_version")
+
+    @coe_version.setter
+    def coe_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "coe_version", value)
+
+    @property
+    @pulumi.getter(name="containerVersion")
+    def container_version(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "container_version")
+
+    @container_version.setter
+    def container_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "container_version", value)
+
+    @property
+    @pulumi.getter(name="createTimeout")
+    def create_timeout(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "create_timeout")
+
+    @create_timeout.setter
+    def create_timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "create_timeout", value)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_at", value)
+
+    @property
+    @pulumi.getter(name="discoveryUrl")
+    def discovery_url(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "discovery_url")
+
+    @discovery_url.setter
+    def discovery_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "discovery_url", value)
+
+    @property
+    @pulumi.getter(name="dockerVolumeSize")
+    def docker_volume_size(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "docker_volume_size")
+
+    @docker_volume_size.setter
+    def docker_volume_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "docker_volume_size", value)
+
+    @property
+    @pulumi.getter(name="fixedNetwork")
+    def fixed_network(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "fixed_network")
+
+    @fixed_network.setter
+    def fixed_network(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fixed_network", value)
+
+    @property
+    @pulumi.getter(name="fixedSubnet")
+    def fixed_subnet(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "fixed_subnet")
+
+    @fixed_subnet.setter
+    def fixed_subnet(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fixed_subnet", value)
+
+    @property
+    @pulumi.getter
+    def flavor(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "flavor")
+
+    @flavor.setter
+    def flavor(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "flavor", value)
+
+    @property
+    @pulumi.getter(name="floatingIpEnabled")
+    def floating_ip_enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "floating_ip_enabled")
+
+    @floating_ip_enabled.setter
+    def floating_ip_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "floating_ip_enabled", value)
+
+    @property
+    @pulumi.getter
+    def keypair(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "keypair")
+
+    @keypair.setter
+    def keypair(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "keypair", value)
+
+    @property
+    @pulumi.getter
+    def kubeconfig(self) -> Optional[pulumi.Input['ClusterKubeconfigArgs']]:
+        return pulumi.get(self, "kubeconfig")
+
+    @kubeconfig.setter
+    def kubeconfig(self, value: Optional[pulumi.Input['ClusterKubeconfigArgs']]):
+        pulumi.set(self, "kubeconfig", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="masterAddresses")
+    def master_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "master_addresses")
+
+    @master_addresses.setter
+    def master_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "master_addresses", value)
+
+    @property
+    @pulumi.getter(name="masterCount")
+    def master_count(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "master_count")
+
+    @master_count.setter
+    def master_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "master_count", value)
+
+    @property
+    @pulumi.getter(name="masterFlavor")
+    def master_flavor(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "master_flavor")
+
+    @master_flavor.setter
+    def master_flavor(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "master_flavor", value)
+
+    @property
+    @pulumi.getter(name="mergeLabels")
+    def merge_labels(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "merge_labels")
+
+    @merge_labels.setter
+    def merge_labels(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "merge_labels", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="nodeAddresses")
+    def node_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "node_addresses")
+
+    @node_addresses.setter
+    def node_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "node_addresses", value)
+
+    @property
+    @pulumi.getter(name="nodeCount")
+    def node_count(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "node_count")
+
+    @node_count.setter
+    def node_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "node_count", value)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_id", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="stackId")
+    def stack_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "stack_id")
+
+    @stack_id.setter
+    def stack_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "stack_id", value)
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "updated_at", value)
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "user_id")
+
+    @user_id.setter
+    def user_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_id", value)
+
+
 class Cluster(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -311,37 +643,37 @@ class Cluster(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ClusterArgs.__new__(ClusterArgs)
 
             if cluster_template_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_template_id'")
-            __props__['cluster_template_id'] = cluster_template_id
-            __props__['create_timeout'] = create_timeout
-            __props__['discovery_url'] = discovery_url
-            __props__['docker_volume_size'] = docker_volume_size
-            __props__['fixed_network'] = fixed_network
-            __props__['fixed_subnet'] = fixed_subnet
-            __props__['flavor'] = flavor
-            __props__['floating_ip_enabled'] = floating_ip_enabled
-            __props__['keypair'] = keypair
-            __props__['labels'] = labels
-            __props__['master_count'] = master_count
-            __props__['master_flavor'] = master_flavor
-            __props__['merge_labels'] = merge_labels
-            __props__['name'] = name
-            __props__['node_count'] = node_count
-            __props__['region'] = region
-            __props__['api_address'] = None
-            __props__['coe_version'] = None
-            __props__['container_version'] = None
-            __props__['created_at'] = None
-            __props__['kubeconfig'] = None
-            __props__['master_addresses'] = None
-            __props__['node_addresses'] = None
-            __props__['project_id'] = None
-            __props__['stack_id'] = None
-            __props__['updated_at'] = None
-            __props__['user_id'] = None
+            __props__.__dict__["cluster_template_id"] = cluster_template_id
+            __props__.__dict__["create_timeout"] = create_timeout
+            __props__.__dict__["discovery_url"] = discovery_url
+            __props__.__dict__["docker_volume_size"] = docker_volume_size
+            __props__.__dict__["fixed_network"] = fixed_network
+            __props__.__dict__["fixed_subnet"] = fixed_subnet
+            __props__.__dict__["flavor"] = flavor
+            __props__.__dict__["floating_ip_enabled"] = floating_ip_enabled
+            __props__.__dict__["keypair"] = keypair
+            __props__.__dict__["labels"] = labels
+            __props__.__dict__["master_count"] = master_count
+            __props__.__dict__["master_flavor"] = master_flavor
+            __props__.__dict__["merge_labels"] = merge_labels
+            __props__.__dict__["name"] = name
+            __props__.__dict__["node_count"] = node_count
+            __props__.__dict__["region"] = region
+            __props__.__dict__["api_address"] = None
+            __props__.__dict__["coe_version"] = None
+            __props__.__dict__["container_version"] = None
+            __props__.__dict__["created_at"] = None
+            __props__.__dict__["kubeconfig"] = None
+            __props__.__dict__["master_addresses"] = None
+            __props__.__dict__["node_addresses"] = None
+            __props__.__dict__["project_id"] = None
+            __props__.__dict__["stack_id"] = None
+            __props__.__dict__["updated_at"] = None
+            __props__.__dict__["user_id"] = None
         super(Cluster, __self__).__init__(
             'openstack:containerinfra/cluster:Cluster',
             resource_name,
@@ -389,35 +721,35 @@ class Cluster(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ClusterState.__new__(_ClusterState)
 
-        __props__["api_address"] = api_address
-        __props__["cluster_template_id"] = cluster_template_id
-        __props__["coe_version"] = coe_version
-        __props__["container_version"] = container_version
-        __props__["create_timeout"] = create_timeout
-        __props__["created_at"] = created_at
-        __props__["discovery_url"] = discovery_url
-        __props__["docker_volume_size"] = docker_volume_size
-        __props__["fixed_network"] = fixed_network
-        __props__["fixed_subnet"] = fixed_subnet
-        __props__["flavor"] = flavor
-        __props__["floating_ip_enabled"] = floating_ip_enabled
-        __props__["keypair"] = keypair
-        __props__["kubeconfig"] = kubeconfig
-        __props__["labels"] = labels
-        __props__["master_addresses"] = master_addresses
-        __props__["master_count"] = master_count
-        __props__["master_flavor"] = master_flavor
-        __props__["merge_labels"] = merge_labels
-        __props__["name"] = name
-        __props__["node_addresses"] = node_addresses
-        __props__["node_count"] = node_count
-        __props__["project_id"] = project_id
-        __props__["region"] = region
-        __props__["stack_id"] = stack_id
-        __props__["updated_at"] = updated_at
-        __props__["user_id"] = user_id
+        __props__.__dict__["api_address"] = api_address
+        __props__.__dict__["cluster_template_id"] = cluster_template_id
+        __props__.__dict__["coe_version"] = coe_version
+        __props__.__dict__["container_version"] = container_version
+        __props__.__dict__["create_timeout"] = create_timeout
+        __props__.__dict__["created_at"] = created_at
+        __props__.__dict__["discovery_url"] = discovery_url
+        __props__.__dict__["docker_volume_size"] = docker_volume_size
+        __props__.__dict__["fixed_network"] = fixed_network
+        __props__.__dict__["fixed_subnet"] = fixed_subnet
+        __props__.__dict__["flavor"] = flavor
+        __props__.__dict__["floating_ip_enabled"] = floating_ip_enabled
+        __props__.__dict__["keypair"] = keypair
+        __props__.__dict__["kubeconfig"] = kubeconfig
+        __props__.__dict__["labels"] = labels
+        __props__.__dict__["master_addresses"] = master_addresses
+        __props__.__dict__["master_count"] = master_count
+        __props__.__dict__["master_flavor"] = master_flavor
+        __props__.__dict__["merge_labels"] = merge_labels
+        __props__.__dict__["name"] = name
+        __props__.__dict__["node_addresses"] = node_addresses
+        __props__.__dict__["node_count"] = node_count
+        __props__.__dict__["project_id"] = project_id
+        __props__.__dict__["region"] = region
+        __props__.__dict__["stack_id"] = stack_id
+        __props__.__dict__["updated_at"] = updated_at
+        __props__.__dict__["user_id"] = user_id
         return Cluster(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -554,10 +886,4 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="userId")
     def user_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "user_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

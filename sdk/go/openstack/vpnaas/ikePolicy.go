@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Manages a V2 Neutron IKE policy resource within OpenStack.
@@ -18,8 +18,8 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/vpnaas"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/vpnaas"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {

@@ -4,7 +4,7 @@
 package firewall
 
 import (
-	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Use this data source to get firewall policy information of an available OpenStack firewall policy.
@@ -15,8 +15,8 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/firewall"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/firewall"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['RouterRouteArgs', 'RouterRoute']
 
@@ -89,6 +89,90 @@ class RouterRouteArgs:
     @region.setter
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
+
+
+@pulumi.input_type
+class _RouterRouteState:
+    def __init__(__self__, *,
+                 destination_cidr: Optional[pulumi.Input[str]] = None,
+                 next_hop: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 router_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering RouterRoute resources.
+        :param pulumi.Input[str] destination_cidr: CIDR block to match on the packet’s destination IP. Changing
+               this creates a new routing entry.
+        :param pulumi.Input[str] next_hop: IP address of the next hop gateway.  Changing
+               this creates a new routing entry.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
+               A networking client is needed to configure a routing entry on a router. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               routing entry.
+        :param pulumi.Input[str] router_id: ID of the router this routing entry belongs to. Changing
+               this creates a new routing entry.
+        """
+        if destination_cidr is not None:
+            pulumi.set(__self__, "destination_cidr", destination_cidr)
+        if next_hop is not None:
+            pulumi.set(__self__, "next_hop", next_hop)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if router_id is not None:
+            pulumi.set(__self__, "router_id", router_id)
+
+    @property
+    @pulumi.getter(name="destinationCidr")
+    def destination_cidr(self) -> Optional[pulumi.Input[str]]:
+        """
+        CIDR block to match on the packet’s destination IP. Changing
+        this creates a new routing entry.
+        """
+        return pulumi.get(self, "destination_cidr")
+
+    @destination_cidr.setter
+    def destination_cidr(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "destination_cidr", value)
+
+    @property
+    @pulumi.getter(name="nextHop")
+    def next_hop(self) -> Optional[pulumi.Input[str]]:
+        """
+        IP address of the next hop gateway.  Changing
+        this creates a new routing entry.
+        """
+        return pulumi.get(self, "next_hop")
+
+    @next_hop.setter
+    def next_hop(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "next_hop", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V2 networking client.
+        A networking client is needed to configure a routing entry on a router. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        routing entry.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="routerId")
+    def router_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the router this routing entry belongs to. Changing
+        this creates a new routing entry.
+        """
+        return pulumi.get(self, "router_id")
+
+    @router_id.setter
+    def router_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "router_id", value)
 
 
 class RouterRoute(pulumi.CustomResource):
@@ -235,18 +319,18 @@ class RouterRoute(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = RouterRouteArgs.__new__(RouterRouteArgs)
 
             if destination_cidr is None and not opts.urn:
                 raise TypeError("Missing required property 'destination_cidr'")
-            __props__['destination_cidr'] = destination_cidr
+            __props__.__dict__["destination_cidr"] = destination_cidr
             if next_hop is None and not opts.urn:
                 raise TypeError("Missing required property 'next_hop'")
-            __props__['next_hop'] = next_hop
-            __props__['region'] = region
+            __props__.__dict__["next_hop"] = next_hop
+            __props__.__dict__["region"] = region
             if router_id is None and not opts.urn:
                 raise TypeError("Missing required property 'router_id'")
-            __props__['router_id'] = router_id
+            __props__.__dict__["router_id"] = router_id
         super(RouterRoute, __self__).__init__(
             'openstack:networking/routerRoute:RouterRoute',
             resource_name,
@@ -281,12 +365,12 @@ class RouterRoute(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _RouterRouteState.__new__(_RouterRouteState)
 
-        __props__["destination_cidr"] = destination_cidr
-        __props__["next_hop"] = next_hop
-        __props__["region"] = region
-        __props__["router_id"] = router_id
+        __props__.__dict__["destination_cidr"] = destination_cidr
+        __props__.__dict__["next_hop"] = next_hop
+        __props__.__dict__["region"] = region
+        __props__.__dict__["router_id"] = router_id
         return RouterRoute(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -326,10 +410,4 @@ class RouterRoute(pulumi.CustomResource):
         this creates a new routing entry.
         """
         return pulumi.get(self, "router_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

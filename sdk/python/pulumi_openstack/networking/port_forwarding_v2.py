@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['PortForwardingV2Args', 'PortForwardingV2']
 
@@ -158,6 +158,160 @@ class PortForwardingV2Args:
         pulumi.set(self, "region", value)
 
 
+@pulumi.input_type
+class _PortForwardingV2State:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
+                 external_port: Optional[pulumi.Input[int]] = None,
+                 floatingip_id: Optional[pulumi.Input[str]] = None,
+                 internal_ip_address: Optional[pulumi.Input[str]] = None,
+                 internal_port: Optional[pulumi.Input[int]] = None,
+                 internal_port_id: Optional[pulumi.Input[str]] = None,
+                 protocol: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering PortForwardingV2 resources.
+        :param pulumi.Input[str] description: A text describing the port forwarding. Changing this
+               updates the `description` of an existing port forwarding.
+        :param pulumi.Input[int] external_port: The TCP/UDP/other protocol port number of the port forwarding. Changing this
+               updates the `external_port` of an existing port forwarding.
+        :param pulumi.Input[str] floatingip_id: The ID of the Neutron floating IP address. Changing this creates a new port forwarding.
+        :param pulumi.Input[str] internal_ip_address: The fixed IPv4 address of the Neutron port associated with the port forwarding.
+               Changing this updates the `internal_ip_address` of an existing port forwarding.
+        :param pulumi.Input[int] internal_port: The TCP/UDP/other protocol port number of the Neutron port fixed IP address associated to the
+               port forwarding. Changing this updates the `internal_port` of an existing port forwarding.
+        :param pulumi.Input[str] internal_port_id: The ID of the Neutron port associated with the port forwarding. Changing
+               this updates the `internal_port_id` of an existing port forwarding.
+        :param pulumi.Input[str] protocol: The IP protocol used in the port forwarding. Changing this updates the `protocol`
+               of an existing port forwarding.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
+               A networking client is needed to create a port forwarding. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               port forwarding.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if external_port is not None:
+            pulumi.set(__self__, "external_port", external_port)
+        if floatingip_id is not None:
+            pulumi.set(__self__, "floatingip_id", floatingip_id)
+        if internal_ip_address is not None:
+            pulumi.set(__self__, "internal_ip_address", internal_ip_address)
+        if internal_port is not None:
+            pulumi.set(__self__, "internal_port", internal_port)
+        if internal_port_id is not None:
+            pulumi.set(__self__, "internal_port_id", internal_port_id)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A text describing the port forwarding. Changing this
+        updates the `description` of an existing port forwarding.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="externalPort")
+    def external_port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The TCP/UDP/other protocol port number of the port forwarding. Changing this
+        updates the `external_port` of an existing port forwarding.
+        """
+        return pulumi.get(self, "external_port")
+
+    @external_port.setter
+    def external_port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "external_port", value)
+
+    @property
+    @pulumi.getter(name="floatingipId")
+    def floatingip_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the Neutron floating IP address. Changing this creates a new port forwarding.
+        """
+        return pulumi.get(self, "floatingip_id")
+
+    @floatingip_id.setter
+    def floatingip_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "floatingip_id", value)
+
+    @property
+    @pulumi.getter(name="internalIpAddress")
+    def internal_ip_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        The fixed IPv4 address of the Neutron port associated with the port forwarding.
+        Changing this updates the `internal_ip_address` of an existing port forwarding.
+        """
+        return pulumi.get(self, "internal_ip_address")
+
+    @internal_ip_address.setter
+    def internal_ip_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "internal_ip_address", value)
+
+    @property
+    @pulumi.getter(name="internalPort")
+    def internal_port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The TCP/UDP/other protocol port number of the Neutron port fixed IP address associated to the
+        port forwarding. Changing this updates the `internal_port` of an existing port forwarding.
+        """
+        return pulumi.get(self, "internal_port")
+
+    @internal_port.setter
+    def internal_port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "internal_port", value)
+
+    @property
+    @pulumi.getter(name="internalPortId")
+    def internal_port_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the Neutron port associated with the port forwarding. Changing
+        this updates the `internal_port_id` of an existing port forwarding.
+        """
+        return pulumi.get(self, "internal_port_id")
+
+    @internal_port_id.setter
+    def internal_port_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "internal_port_id", value)
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP protocol used in the port forwarding. Changing this updates the `protocol`
+        of an existing port forwarding.
+        """
+        return pulumi.get(self, "protocol")
+
+    @protocol.setter
+    def protocol(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "protocol", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V2 networking client.
+        A networking client is needed to create a port forwarding. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        port forwarding.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+
 class PortForwardingV2(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -277,28 +431,28 @@ class PortForwardingV2(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = PortForwardingV2Args.__new__(PortForwardingV2Args)
 
-            __props__['description'] = description
+            __props__.__dict__["description"] = description
             if external_port is None and not opts.urn:
                 raise TypeError("Missing required property 'external_port'")
-            __props__['external_port'] = external_port
+            __props__.__dict__["external_port"] = external_port
             if floatingip_id is None and not opts.urn:
                 raise TypeError("Missing required property 'floatingip_id'")
-            __props__['floatingip_id'] = floatingip_id
+            __props__.__dict__["floatingip_id"] = floatingip_id
             if internal_ip_address is None and not opts.urn:
                 raise TypeError("Missing required property 'internal_ip_address'")
-            __props__['internal_ip_address'] = internal_ip_address
+            __props__.__dict__["internal_ip_address"] = internal_ip_address
             if internal_port is None and not opts.urn:
                 raise TypeError("Missing required property 'internal_port'")
-            __props__['internal_port'] = internal_port
+            __props__.__dict__["internal_port"] = internal_port
             if internal_port_id is None and not opts.urn:
                 raise TypeError("Missing required property 'internal_port_id'")
-            __props__['internal_port_id'] = internal_port_id
+            __props__.__dict__["internal_port_id"] = internal_port_id
             if protocol is None and not opts.urn:
                 raise TypeError("Missing required property 'protocol'")
-            __props__['protocol'] = protocol
-            __props__['region'] = region
+            __props__.__dict__["protocol"] = protocol
+            __props__.__dict__["region"] = region
         super(PortForwardingV2, __self__).__init__(
             'openstack:networking/portForwardingV2:PortForwardingV2',
             resource_name,
@@ -344,16 +498,16 @@ class PortForwardingV2(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _PortForwardingV2State.__new__(_PortForwardingV2State)
 
-        __props__["description"] = description
-        __props__["external_port"] = external_port
-        __props__["floatingip_id"] = floatingip_id
-        __props__["internal_ip_address"] = internal_ip_address
-        __props__["internal_port"] = internal_port
-        __props__["internal_port_id"] = internal_port_id
-        __props__["protocol"] = protocol
-        __props__["region"] = region
+        __props__.__dict__["description"] = description
+        __props__.__dict__["external_port"] = external_port
+        __props__.__dict__["floatingip_id"] = floatingip_id
+        __props__.__dict__["internal_ip_address"] = internal_ip_address
+        __props__.__dict__["internal_port"] = internal_port
+        __props__.__dict__["internal_port_id"] = internal_port_id
+        __props__.__dict__["protocol"] = protocol
+        __props__.__dict__["region"] = region
         return PortForwardingV2(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -428,10 +582,4 @@ class PortForwardingV2(pulumi.CustomResource):
         port forwarding.
         """
         return pulumi.get(self, "region")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

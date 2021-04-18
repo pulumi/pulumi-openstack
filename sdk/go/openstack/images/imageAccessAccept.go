@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Manages memberships status for the shared OpenStack Glance V2 Image within the
@@ -22,8 +22,8 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/images"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/images"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {

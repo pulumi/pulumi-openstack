@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['RouterInterfaceArgs', 'RouterInterface']
 
@@ -78,6 +78,90 @@ class RouterInterfaceArgs:
     @region.setter
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the subnet this interface connects to. Changing
+        this creates a new router interface.
+        """
+        return pulumi.get(self, "subnet_id")
+
+    @subnet_id.setter
+    def subnet_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subnet_id", value)
+
+
+@pulumi.input_type
+class _RouterInterfaceState:
+    def __init__(__self__, *,
+                 port_id: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 router_id: Optional[pulumi.Input[str]] = None,
+                 subnet_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering RouterInterface resources.
+        :param pulumi.Input[str] port_id: ID of the port this interface connects to. Changing
+               this creates a new router interface.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
+               A networking client is needed to create a router. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               router interface.
+        :param pulumi.Input[str] router_id: ID of the router this interface belongs to. Changing
+               this creates a new router interface.
+        :param pulumi.Input[str] subnet_id: ID of the subnet this interface connects to. Changing
+               this creates a new router interface.
+        """
+        if port_id is not None:
+            pulumi.set(__self__, "port_id", port_id)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if router_id is not None:
+            pulumi.set(__self__, "router_id", router_id)
+        if subnet_id is not None:
+            pulumi.set(__self__, "subnet_id", subnet_id)
+
+    @property
+    @pulumi.getter(name="portId")
+    def port_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the port this interface connects to. Changing
+        this creates a new router interface.
+        """
+        return pulumi.get(self, "port_id")
+
+    @port_id.setter
+    def port_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "port_id", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V2 networking client.
+        A networking client is needed to create a router. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        router interface.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="routerId")
+    def router_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the router this interface belongs to. Changing
+        this creates a new router interface.
+        """
+        return pulumi.get(self, "router_id")
+
+    @router_id.setter
+    def router_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "router_id", value)
 
     @property
     @pulumi.getter(name="subnetId")
@@ -217,14 +301,14 @@ class RouterInterface(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = RouterInterfaceArgs.__new__(RouterInterfaceArgs)
 
-            __props__['port_id'] = port_id
-            __props__['region'] = region
+            __props__.__dict__["port_id"] = port_id
+            __props__.__dict__["region"] = region
             if router_id is None and not opts.urn:
                 raise TypeError("Missing required property 'router_id'")
-            __props__['router_id'] = router_id
-            __props__['subnet_id'] = subnet_id
+            __props__.__dict__["router_id"] = router_id
+            __props__.__dict__["subnet_id"] = subnet_id
         super(RouterInterface, __self__).__init__(
             'openstack:networking/routerInterface:RouterInterface',
             resource_name,
@@ -259,12 +343,12 @@ class RouterInterface(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _RouterInterfaceState.__new__(_RouterInterfaceState)
 
-        __props__["port_id"] = port_id
-        __props__["region"] = region
-        __props__["router_id"] = router_id
-        __props__["subnet_id"] = subnet_id
+        __props__.__dict__["port_id"] = port_id
+        __props__.__dict__["region"] = region
+        __props__.__dict__["router_id"] = router_id
+        __props__.__dict__["subnet_id"] = subnet_id
         return RouterInterface(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -304,10 +388,4 @@ class RouterInterface(pulumi.CustomResource):
         this creates a new router interface.
         """
         return pulumi.get(self, "subnet_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['MemberV1Args', 'MemberV1']
 
@@ -102,6 +102,140 @@ class MemberV1Args:
     @admin_state_up.setter
     def admin_state_up(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "admin_state_up", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V2 Networking client.
+        A Networking client is needed to create an LB member. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        LB member.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The owner of the member. Required if admin wants to
+        create a member for another tenant. Changing this creates a new member.
+        """
+        return pulumi.get(self, "tenant_id")
+
+    @tenant_id.setter
+    def tenant_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tenant_id", value)
+
+    @property
+    @pulumi.getter
+    def weight(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "weight")
+
+    @weight.setter
+    def weight(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "weight", value)
+
+
+@pulumi.input_type
+class _MemberV1State:
+    def __init__(__self__, *,
+                 address: Optional[pulumi.Input[str]] = None,
+                 admin_state_up: Optional[pulumi.Input[bool]] = None,
+                 pool_id: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 tenant_id: Optional[pulumi.Input[str]] = None,
+                 weight: Optional[pulumi.Input[int]] = None):
+        """
+        Input properties used for looking up and filtering MemberV1 resources.
+        :param pulumi.Input[str] address: The IP address of the member. Changing this creates a
+               new member.
+        :param pulumi.Input[bool] admin_state_up: The administrative state of the member.
+               Acceptable values are 'true' and 'false'. Changing this value updates the
+               state of the existing member.
+        :param pulumi.Input[str] pool_id: The ID of the LB pool. Changing this creates a new
+               member.
+        :param pulumi.Input[int] port: An integer representing the port on which the member is
+               hosted. Changing this creates a new member.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
+               A Networking client is needed to create an LB member. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               LB member.
+        :param pulumi.Input[str] tenant_id: The owner of the member. Required if admin wants to
+               create a member for another tenant. Changing this creates a new member.
+        """
+        if address is not None:
+            pulumi.set(__self__, "address", address)
+        if admin_state_up is not None:
+            pulumi.set(__self__, "admin_state_up", admin_state_up)
+        if pool_id is not None:
+            pulumi.set(__self__, "pool_id", pool_id)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if tenant_id is not None:
+            pulumi.set(__self__, "tenant_id", tenant_id)
+        if weight is not None:
+            pulumi.set(__self__, "weight", weight)
+
+    @property
+    @pulumi.getter
+    def address(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP address of the member. Changing this creates a
+        new member.
+        """
+        return pulumi.get(self, "address")
+
+    @address.setter
+    def address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "address", value)
+
+    @property
+    @pulumi.getter(name="adminStateUp")
+    def admin_state_up(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The administrative state of the member.
+        Acceptable values are 'true' and 'false'. Changing this value updates the
+        state of the existing member.
+        """
+        return pulumi.get(self, "admin_state_up")
+
+    @admin_state_up.setter
+    def admin_state_up(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "admin_state_up", value)
+
+    @property
+    @pulumi.getter(name="poolId")
+    def pool_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the LB pool. Changing this creates a new
+        member.
+        """
+        return pulumi.get(self, "pool_id")
+
+    @pool_id.setter
+    def pool_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pool_id", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        An integer representing the port on which the member is
+        hosted. Changing this creates a new member.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port", value)
 
     @property
     @pulumi.getter
@@ -266,21 +400,21 @@ class MemberV1(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = MemberV1Args.__new__(MemberV1Args)
 
             if address is None and not opts.urn:
                 raise TypeError("Missing required property 'address'")
-            __props__['address'] = address
-            __props__['admin_state_up'] = admin_state_up
+            __props__.__dict__["address"] = address
+            __props__.__dict__["admin_state_up"] = admin_state_up
             if pool_id is None and not opts.urn:
                 raise TypeError("Missing required property 'pool_id'")
-            __props__['pool_id'] = pool_id
+            __props__.__dict__["pool_id"] = pool_id
             if port is None and not opts.urn:
                 raise TypeError("Missing required property 'port'")
-            __props__['port'] = port
-            __props__['region'] = region
-            __props__['tenant_id'] = tenant_id
-            __props__['weight'] = weight
+            __props__.__dict__["port"] = port
+            __props__.__dict__["region"] = region
+            __props__.__dict__["tenant_id"] = tenant_id
+            __props__.__dict__["weight"] = weight
         super(MemberV1, __self__).__init__(
             'openstack:loadbalancer/memberV1:MemberV1',
             resource_name,
@@ -323,15 +457,15 @@ class MemberV1(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _MemberV1State.__new__(_MemberV1State)
 
-        __props__["address"] = address
-        __props__["admin_state_up"] = admin_state_up
-        __props__["pool_id"] = pool_id
-        __props__["port"] = port
-        __props__["region"] = region
-        __props__["tenant_id"] = tenant_id
-        __props__["weight"] = weight
+        __props__.__dict__["address"] = address
+        __props__.__dict__["admin_state_up"] = admin_state_up
+        __props__.__dict__["pool_id"] = pool_id
+        __props__.__dict__["port"] = port
+        __props__.__dict__["region"] = region
+        __props__.__dict__["tenant_id"] = tenant_id
+        __props__.__dict__["weight"] = weight
         return MemberV1(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -395,10 +529,4 @@ class MemberV1(pulumi.CustomResource):
     @pulumi.getter
     def weight(self) -> pulumi.Output[int]:
         return pulumi.get(self, "weight")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

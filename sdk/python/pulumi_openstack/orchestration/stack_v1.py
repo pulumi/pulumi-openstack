@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -327,6 +327,322 @@ class StackV1Args:
         pulumi.set(self, "updated_time", value)
 
 
+@pulumi.input_type
+class _StackV1State:
+    def __init__(__self__, *,
+                 stack_outputs: Optional[pulumi.Input[Sequence[pulumi.Input['StackV1StackOutputArgs']]]] = None,
+                 capabilities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 creation_time: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 disable_rollback: Optional[pulumi.Input[bool]] = None,
+                 environment_opts: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 notification_topics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 status_reason: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 template_description: Optional[pulumi.Input[str]] = None,
+                 template_opts: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 timeout: Optional[pulumi.Input[int]] = None,
+                 updated_time: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering StackV1 resources.
+        :param pulumi.Input[Sequence[pulumi.Input['StackV1StackOutputArgs']]] stack_outputs: A list of stack outputs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] capabilities: List of stack capabilities for stack.
+        :param pulumi.Input[str] creation_time: The date and time when the resource was created. The date
+               and time stamp format is ISO 8601: CCYY-MM-DDThh:mm:ss±hh:mm
+               For example, 2015-08-27T09:49:58-05:00. The ±hh:mm value, if included,
+               is the time zone as an offset from UTC.
+        :param pulumi.Input[str] description: The description of the stack resource.
+        :param pulumi.Input[bool] disable_rollback: Enables or disables deletion of all stack
+               resources when a stack creation fails. Default is true, meaning all
+               resources are not deleted when stack creation fails.
+        :param pulumi.Input[Mapping[str, Any]] environment_opts: Environment key/value pairs to associate with
+               the stack which contains details for the environment of the stack.
+               Allowed keys: Bin, URL, Files. Changing this updates the existing stack
+               Environment Opts.
+        :param pulumi.Input[str] name: A unique name for the stack. It must start with an
+               alphabetic character. Changing this updates the stack's name.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_topics: List of notification topics for stack.
+        :param pulumi.Input[Mapping[str, Any]] parameters: User-defined key/value pairs as parameters to pass
+               to the template. Changing this updates the existing stack parameters.
+        :param pulumi.Input[str] region: The region in which to create the stack. If
+               omitted, the `region` argument of the provider is used. Changing this
+               creates a new stack.
+        :param pulumi.Input[str] status: The status of the stack.
+        :param pulumi.Input[str] status_reason: The reason for the current status of the stack.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags to assosciate with the Stack
+        :param pulumi.Input[str] template_description: The description of the stack template.
+        :param pulumi.Input[Mapping[str, Any]] template_opts: Template key/value pairs to associate with the
+               stack which contains either the template file or url.
+               Allowed keys: Bin, URL, Files. Changing this updates the existing stack
+               Template Opts.
+        :param pulumi.Input[int] timeout: The timeout for stack action in minutes.
+        :param pulumi.Input[str] updated_time: The date and time when the resource was updated. The date
+               and time stamp format is ISO 8601: CCYY-MM-DDThh:mm:ss±hh:mm
+               For example, 2015-08-27T09:49:58-05:00. The ±hh:mm value, if included,
+               is the time zone as an offset from UTC.
+        """
+        if stack_outputs is not None:
+            pulumi.set(__self__, "stack_outputs", stack_outputs)
+        if capabilities is not None:
+            pulumi.set(__self__, "capabilities", capabilities)
+        if creation_time is not None:
+            pulumi.set(__self__, "creation_time", creation_time)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if disable_rollback is not None:
+            pulumi.set(__self__, "disable_rollback", disable_rollback)
+        if environment_opts is not None:
+            pulumi.set(__self__, "environment_opts", environment_opts)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if notification_topics is not None:
+            pulumi.set(__self__, "notification_topics", notification_topics)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if status_reason is not None:
+            pulumi.set(__self__, "status_reason", status_reason)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if template_description is not None:
+            pulumi.set(__self__, "template_description", template_description)
+        if template_opts is not None:
+            pulumi.set(__self__, "template_opts", template_opts)
+        if timeout is not None:
+            pulumi.set(__self__, "timeout", timeout)
+        if updated_time is not None:
+            pulumi.set(__self__, "updated_time", updated_time)
+
+    @property
+    @pulumi.getter(name="StackOutputs")
+    def stack_outputs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StackV1StackOutputArgs']]]]:
+        """
+        A list of stack outputs.
+        """
+        return pulumi.get(self, "stack_outputs")
+
+    @stack_outputs.setter
+    def stack_outputs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StackV1StackOutputArgs']]]]):
+        pulumi.set(self, "stack_outputs", value)
+
+    @property
+    @pulumi.getter
+    def capabilities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of stack capabilities for stack.
+        """
+        return pulumi.get(self, "capabilities")
+
+    @capabilities.setter
+    def capabilities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "capabilities", value)
+
+    @property
+    @pulumi.getter(name="creationTime")
+    def creation_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The date and time when the resource was created. The date
+        and time stamp format is ISO 8601: CCYY-MM-DDThh:mm:ss±hh:mm
+        For example, 2015-08-27T09:49:58-05:00. The ±hh:mm value, if included,
+        is the time zone as an offset from UTC.
+        """
+        return pulumi.get(self, "creation_time")
+
+    @creation_time.setter
+    def creation_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "creation_time", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the stack resource.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="disableRollback")
+    def disable_rollback(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enables or disables deletion of all stack
+        resources when a stack creation fails. Default is true, meaning all
+        resources are not deleted when stack creation fails.
+        """
+        return pulumi.get(self, "disable_rollback")
+
+    @disable_rollback.setter
+    def disable_rollback(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_rollback", value)
+
+    @property
+    @pulumi.getter(name="environmentOpts")
+    def environment_opts(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Environment key/value pairs to associate with
+        the stack which contains details for the environment of the stack.
+        Allowed keys: Bin, URL, Files. Changing this updates the existing stack
+        Environment Opts.
+        """
+        return pulumi.get(self, "environment_opts")
+
+    @environment_opts.setter
+    def environment_opts(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "environment_opts", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A unique name for the stack. It must start with an
+        alphabetic character. Changing this updates the stack's name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="notificationTopics")
+    def notification_topics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of notification topics for stack.
+        """
+        return pulumi.get(self, "notification_topics")
+
+    @notification_topics.setter
+    def notification_topics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "notification_topics", value)
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        User-defined key/value pairs as parameters to pass
+        to the template. Changing this updates the existing stack parameters.
+        """
+        return pulumi.get(self, "parameters")
+
+    @parameters.setter
+    def parameters(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "parameters", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to create the stack. If
+        omitted, the `region` argument of the provider is used. Changing this
+        creates a new stack.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The status of the stack.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter(name="statusReason")
+    def status_reason(self) -> Optional[pulumi.Input[str]]:
+        """
+        The reason for the current status of the stack.
+        """
+        return pulumi.get(self, "status_reason")
+
+    @status_reason.setter
+    def status_reason(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status_reason", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of tags to assosciate with the Stack
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="templateDescription")
+    def template_description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the stack template.
+        """
+        return pulumi.get(self, "template_description")
+
+    @template_description.setter
+    def template_description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "template_description", value)
+
+    @property
+    @pulumi.getter(name="templateOpts")
+    def template_opts(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Template key/value pairs to associate with the
+        stack which contains either the template file or url.
+        Allowed keys: Bin, URL, Files. Changing this updates the existing stack
+        Template Opts.
+        """
+        return pulumi.get(self, "template_opts")
+
+    @template_opts.setter
+    def template_opts(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "template_opts", value)
+
+    @property
+    @pulumi.getter
+    def timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        The timeout for stack action in minutes.
+        """
+        return pulumi.get(self, "timeout")
+
+    @timeout.setter
+    def timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "timeout", value)
+
+    @property
+    @pulumi.getter(name="updatedTime")
+    def updated_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The date and time when the resource was updated. The date
+        and time stamp format is ISO 8601: CCYY-MM-DDThh:mm:ss±hh:mm
+        For example, 2015-08-27T09:49:58-05:00. The ±hh:mm value, if included,
+        is the time zone as an offset from UTC.
+        """
+        return pulumi.get(self, "updated_time")
+
+    @updated_time.setter
+    def updated_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "updated_time", value)
+
+
 class StackV1(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -532,27 +848,27 @@ class StackV1(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = StackV1Args.__new__(StackV1Args)
 
-            __props__['stack_outputs'] = stack_outputs
-            __props__['capabilities'] = capabilities
-            __props__['creation_time'] = creation_time
-            __props__['description'] = description
-            __props__['disable_rollback'] = disable_rollback
-            __props__['environment_opts'] = environment_opts
-            __props__['name'] = name
-            __props__['notification_topics'] = notification_topics
-            __props__['parameters'] = parameters
-            __props__['region'] = region
-            __props__['status'] = status
-            __props__['status_reason'] = status_reason
-            __props__['tags'] = tags
-            __props__['template_description'] = template_description
+            __props__.__dict__["stack_outputs"] = stack_outputs
+            __props__.__dict__["capabilities"] = capabilities
+            __props__.__dict__["creation_time"] = creation_time
+            __props__.__dict__["description"] = description
+            __props__.__dict__["disable_rollback"] = disable_rollback
+            __props__.__dict__["environment_opts"] = environment_opts
+            __props__.__dict__["name"] = name
+            __props__.__dict__["notification_topics"] = notification_topics
+            __props__.__dict__["parameters"] = parameters
+            __props__.__dict__["region"] = region
+            __props__.__dict__["status"] = status
+            __props__.__dict__["status_reason"] = status_reason
+            __props__.__dict__["tags"] = tags
+            __props__.__dict__["template_description"] = template_description
             if template_opts is None and not opts.urn:
                 raise TypeError("Missing required property 'template_opts'")
-            __props__['template_opts'] = template_opts
-            __props__['timeout'] = timeout
-            __props__['updated_time'] = updated_time
+            __props__.__dict__["template_opts"] = template_opts
+            __props__.__dict__["timeout"] = timeout
+            __props__.__dict__["updated_time"] = updated_time
         super(StackV1, __self__).__init__(
             'openstack:orchestration/stackV1:StackV1',
             resource_name,
@@ -625,25 +941,25 @@ class StackV1(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _StackV1State.__new__(_StackV1State)
 
-        __props__["stack_outputs"] = stack_outputs
-        __props__["capabilities"] = capabilities
-        __props__["creation_time"] = creation_time
-        __props__["description"] = description
-        __props__["disable_rollback"] = disable_rollback
-        __props__["environment_opts"] = environment_opts
-        __props__["name"] = name
-        __props__["notification_topics"] = notification_topics
-        __props__["parameters"] = parameters
-        __props__["region"] = region
-        __props__["status"] = status
-        __props__["status_reason"] = status_reason
-        __props__["tags"] = tags
-        __props__["template_description"] = template_description
-        __props__["template_opts"] = template_opts
-        __props__["timeout"] = timeout
-        __props__["updated_time"] = updated_time
+        __props__.__dict__["stack_outputs"] = stack_outputs
+        __props__.__dict__["capabilities"] = capabilities
+        __props__.__dict__["creation_time"] = creation_time
+        __props__.__dict__["description"] = description
+        __props__.__dict__["disable_rollback"] = disable_rollback
+        __props__.__dict__["environment_opts"] = environment_opts
+        __props__.__dict__["name"] = name
+        __props__.__dict__["notification_topics"] = notification_topics
+        __props__.__dict__["parameters"] = parameters
+        __props__.__dict__["region"] = region
+        __props__.__dict__["status"] = status
+        __props__.__dict__["status_reason"] = status_reason
+        __props__.__dict__["tags"] = tags
+        __props__.__dict__["template_description"] = template_description
+        __props__.__dict__["template_opts"] = template_opts
+        __props__.__dict__["timeout"] = timeout
+        __props__.__dict__["updated_time"] = updated_time
         return StackV1(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -799,10 +1115,4 @@ class StackV1(pulumi.CustomResource):
         is the time zone as an offset from UTC.
         """
         return pulumi.get(self, "updated_time")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

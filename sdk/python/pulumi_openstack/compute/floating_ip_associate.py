@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['FloatingIpAssociateArgs', 'FloatingIpAssociate']
 
@@ -72,6 +72,96 @@ class FloatingIpAssociateArgs:
     @fixed_ip.setter
     def fixed_ip(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "fixed_ip", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V2 Compute client.
+        Keypairs are associated with accounts, but a Compute client is needed to
+        create one. If omitted, the `region` argument of the provider is used.
+        Changing this creates a new floatingip_associate.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="waitUntilAssociated")
+    def wait_until_associated(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "wait_until_associated")
+
+    @wait_until_associated.setter
+    def wait_until_associated(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "wait_until_associated", value)
+
+
+@pulumi.input_type
+class _FloatingIpAssociateState:
+    def __init__(__self__, *,
+                 fixed_ip: Optional[pulumi.Input[str]] = None,
+                 floating_ip: Optional[pulumi.Input[str]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 wait_until_associated: Optional[pulumi.Input[bool]] = None):
+        """
+        Input properties used for looking up and filtering FloatingIpAssociate resources.
+        :param pulumi.Input[str] fixed_ip: The specific IP address to direct traffic to.
+        :param pulumi.Input[str] floating_ip: The floating IP to associate.
+        :param pulumi.Input[str] instance_id: The instance to associte the floating IP with.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Compute client.
+               Keypairs are associated with accounts, but a Compute client is needed to
+               create one. If omitted, the `region` argument of the provider is used.
+               Changing this creates a new floatingip_associate.
+        """
+        if fixed_ip is not None:
+            pulumi.set(__self__, "fixed_ip", fixed_ip)
+        if floating_ip is not None:
+            pulumi.set(__self__, "floating_ip", floating_ip)
+        if instance_id is not None:
+            pulumi.set(__self__, "instance_id", instance_id)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if wait_until_associated is not None:
+            pulumi.set(__self__, "wait_until_associated", wait_until_associated)
+
+    @property
+    @pulumi.getter(name="fixedIp")
+    def fixed_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specific IP address to direct traffic to.
+        """
+        return pulumi.get(self, "fixed_ip")
+
+    @fixed_ip.setter
+    def fixed_ip(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fixed_ip", value)
+
+    @property
+    @pulumi.getter(name="floatingIp")
+    def floating_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        The floating IP to associate.
+        """
+        return pulumi.get(self, "floating_ip")
+
+    @floating_ip.setter
+    def floating_ip(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "floating_ip", value)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The instance to associte the floating IP with.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_id", value)
 
     @property
     @pulumi.getter
@@ -273,17 +363,17 @@ class FloatingIpAssociate(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = FloatingIpAssociateArgs.__new__(FloatingIpAssociateArgs)
 
-            __props__['fixed_ip'] = fixed_ip
+            __props__.__dict__["fixed_ip"] = fixed_ip
             if floating_ip is None and not opts.urn:
                 raise TypeError("Missing required property 'floating_ip'")
-            __props__['floating_ip'] = floating_ip
+            __props__.__dict__["floating_ip"] = floating_ip
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
-            __props__['instance_id'] = instance_id
-            __props__['region'] = region
-            __props__['wait_until_associated'] = wait_until_associated
+            __props__.__dict__["instance_id"] = instance_id
+            __props__.__dict__["region"] = region
+            __props__.__dict__["wait_until_associated"] = wait_until_associated
         super(FloatingIpAssociate, __self__).__init__(
             'openstack:compute/floatingIpAssociate:FloatingIpAssociate',
             resource_name,
@@ -316,13 +406,13 @@ class FloatingIpAssociate(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _FloatingIpAssociateState.__new__(_FloatingIpAssociateState)
 
-        __props__["fixed_ip"] = fixed_ip
-        __props__["floating_ip"] = floating_ip
-        __props__["instance_id"] = instance_id
-        __props__["region"] = region
-        __props__["wait_until_associated"] = wait_until_associated
+        __props__.__dict__["fixed_ip"] = fixed_ip
+        __props__.__dict__["floating_ip"] = floating_ip
+        __props__.__dict__["instance_id"] = instance_id
+        __props__.__dict__["region"] = region
+        __props__.__dict__["wait_until_associated"] = wait_until_associated
         return FloatingIpAssociate(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -364,10 +454,4 @@ class FloatingIpAssociate(pulumi.CustomResource):
     @pulumi.getter(name="waitUntilAssociated")
     def wait_until_associated(self) -> pulumi.Output[Optional[bool]]:
         return pulumi.get(self, "wait_until_associated")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['ProviderArgs', 'Provider']
 
@@ -686,64 +686,58 @@ class Provider(pulumi.ProviderResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ProviderArgs.__new__(ProviderArgs)
 
             if allow_reauth is None:
                 allow_reauth = _utilities.get_env_bool('OS_ALLOW_REAUTH')
-            __props__['allow_reauth'] = pulumi.Output.from_input(allow_reauth).apply(pulumi.runtime.to_json) if allow_reauth is not None else None
-            __props__['application_credential_id'] = application_credential_id
-            __props__['application_credential_name'] = application_credential_name
-            __props__['application_credential_secret'] = application_credential_secret
-            __props__['auth_url'] = auth_url
-            __props__['cacert_file'] = cacert_file
-            __props__['cert'] = cert
+            __props__.__dict__["allow_reauth"] = pulumi.Output.from_input(allow_reauth).apply(pulumi.runtime.to_json) if allow_reauth is not None else None
+            __props__.__dict__["application_credential_id"] = application_credential_id
+            __props__.__dict__["application_credential_name"] = application_credential_name
+            __props__.__dict__["application_credential_secret"] = application_credential_secret
+            __props__.__dict__["auth_url"] = auth_url
+            __props__.__dict__["cacert_file"] = cacert_file
+            __props__.__dict__["cert"] = cert
             if cloud is None:
                 cloud = _utilities.get_env('OS_CLOUD')
-            __props__['cloud'] = cloud
-            __props__['default_domain'] = default_domain
+            __props__.__dict__["cloud"] = cloud
+            __props__.__dict__["default_domain"] = default_domain
             if delayed_auth is None:
                 delayed_auth = _utilities.get_env_bool('OS_DELAYED_AUTH')
-            __props__['delayed_auth'] = pulumi.Output.from_input(delayed_auth).apply(pulumi.runtime.to_json) if delayed_auth is not None else None
-            __props__['disable_no_cache_header'] = pulumi.Output.from_input(disable_no_cache_header).apply(pulumi.runtime.to_json) if disable_no_cache_header is not None else None
-            __props__['domain_id'] = domain_id
-            __props__['domain_name'] = domain_name
-            __props__['endpoint_overrides'] = pulumi.Output.from_input(endpoint_overrides).apply(pulumi.runtime.to_json) if endpoint_overrides is not None else None
+            __props__.__dict__["delayed_auth"] = pulumi.Output.from_input(delayed_auth).apply(pulumi.runtime.to_json) if delayed_auth is not None else None
+            __props__.__dict__["disable_no_cache_header"] = pulumi.Output.from_input(disable_no_cache_header).apply(pulumi.runtime.to_json) if disable_no_cache_header is not None else None
+            __props__.__dict__["domain_id"] = domain_id
+            __props__.__dict__["domain_name"] = domain_name
+            __props__.__dict__["endpoint_overrides"] = pulumi.Output.from_input(endpoint_overrides).apply(pulumi.runtime.to_json) if endpoint_overrides is not None else None
             if endpoint_type is None:
                 endpoint_type = _utilities.get_env('OS_ENDPOINT_TYPE')
-            __props__['endpoint_type'] = endpoint_type
+            __props__.__dict__["endpoint_type"] = endpoint_type
             if insecure is None:
                 insecure = _utilities.get_env_bool('OS_INSECURE')
-            __props__['insecure'] = pulumi.Output.from_input(insecure).apply(pulumi.runtime.to_json) if insecure is not None else None
-            __props__['key'] = key
-            __props__['max_retries'] = pulumi.Output.from_input(max_retries).apply(pulumi.runtime.to_json) if max_retries is not None else None
-            __props__['password'] = password
-            __props__['project_domain_id'] = project_domain_id
-            __props__['project_domain_name'] = project_domain_name
+            __props__.__dict__["insecure"] = pulumi.Output.from_input(insecure).apply(pulumi.runtime.to_json) if insecure is not None else None
+            __props__.__dict__["key"] = key
+            __props__.__dict__["max_retries"] = pulumi.Output.from_input(max_retries).apply(pulumi.runtime.to_json) if max_retries is not None else None
+            __props__.__dict__["password"] = password
+            __props__.__dict__["project_domain_id"] = project_domain_id
+            __props__.__dict__["project_domain_name"] = project_domain_name
             if region is None:
                 region = _utilities.get_env('OS_REGION_NAME')
-            __props__['region'] = region
+            __props__.__dict__["region"] = region
             if swauth is None:
                 swauth = _utilities.get_env_bool('OS_SWAUTH')
-            __props__['swauth'] = pulumi.Output.from_input(swauth).apply(pulumi.runtime.to_json) if swauth is not None else None
-            __props__['tenant_id'] = tenant_id
-            __props__['tenant_name'] = tenant_name
-            __props__['token'] = token
+            __props__.__dict__["swauth"] = pulumi.Output.from_input(swauth).apply(pulumi.runtime.to_json) if swauth is not None else None
+            __props__.__dict__["tenant_id"] = tenant_id
+            __props__.__dict__["tenant_name"] = tenant_name
+            __props__.__dict__["token"] = token
             if use_octavia is None:
                 use_octavia = _utilities.get_env_bool('OS_USE_OCTAVIA')
-            __props__['use_octavia'] = pulumi.Output.from_input(use_octavia).apply(pulumi.runtime.to_json) if use_octavia is not None else None
-            __props__['user_domain_id'] = user_domain_id
-            __props__['user_domain_name'] = user_domain_name
-            __props__['user_id'] = user_id
-            __props__['user_name'] = user_name
+            __props__.__dict__["use_octavia"] = pulumi.Output.from_input(use_octavia).apply(pulumi.runtime.to_json) if use_octavia is not None else None
+            __props__.__dict__["user_domain_id"] = user_domain_id
+            __props__.__dict__["user_domain_name"] = user_domain_name
+            __props__.__dict__["user_id"] = user_id
+            __props__.__dict__["user_name"] = user_name
         super(Provider, __self__).__init__(
             'openstack',
             resource_name,
             __props__,
             opts)
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

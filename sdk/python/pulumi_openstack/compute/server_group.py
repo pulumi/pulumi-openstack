@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['ServerGroupArgs', 'ServerGroup']
 
@@ -37,6 +37,104 @@ class ServerGroupArgs:
             pulumi.set(__self__, "region", region)
         if value_specs is not None:
             pulumi.set(__self__, "value_specs", value_specs)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A unique name for the server group. Changing this creates
+        a new server group.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The set of policies for the server group. All policies
+        are mutually exclusive. See the Policies section for more information.
+        Changing this creates a new server group.
+        """
+        return pulumi.get(self, "policies")
+
+    @policies.setter
+    def policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "policies", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V2 Compute client.
+        If omitted, the `region` argument of the provider is used. Changing
+        this creates a new server group.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="valueSpecs")
+    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Map of additional options.
+        """
+        return pulumi.get(self, "value_specs")
+
+    @value_specs.setter
+    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "value_specs", value)
+
+
+@pulumi.input_type
+class _ServerGroupState:
+    def __init__(__self__, *,
+                 members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+        """
+        Input properties used for looking up and filtering ServerGroup resources.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: The instances that are part of this server group.
+        :param pulumi.Input[str] name: A unique name for the server group. Changing this creates
+               a new server group.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] policies: The set of policies for the server group. All policies
+               are mutually exclusive. See the Policies section for more information.
+               Changing this creates a new server group.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Compute client.
+               If omitted, the `region` argument of the provider is used. Changing
+               this creates a new server group.
+        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
+        """
+        if members is not None:
+            pulumi.set(__self__, "members", members)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if policies is not None:
+            pulumi.set(__self__, "policies", policies)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if value_specs is not None:
+            pulumi.set(__self__, "value_specs", value_specs)
+
+    @property
+    @pulumi.getter
+    def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The instances that are part of this server group.
+        """
+        return pulumi.get(self, "members")
+
+    @members.setter
+    def members(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "members", value)
 
     @property
     @pulumi.getter
@@ -233,13 +331,13 @@ class ServerGroup(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ServerGroupArgs.__new__(ServerGroupArgs)
 
-            __props__['name'] = name
-            __props__['policies'] = policies
-            __props__['region'] = region
-            __props__['value_specs'] = value_specs
-            __props__['members'] = None
+            __props__.__dict__["name"] = name
+            __props__.__dict__["policies"] = policies
+            __props__.__dict__["region"] = region
+            __props__.__dict__["value_specs"] = value_specs
+            __props__.__dict__["members"] = None
         super(ServerGroup, __self__).__init__(
             'openstack:compute/serverGroup:ServerGroup',
             resource_name,
@@ -275,13 +373,13 @@ class ServerGroup(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ServerGroupState.__new__(_ServerGroupState)
 
-        __props__["members"] = members
-        __props__["name"] = name
-        __props__["policies"] = policies
-        __props__["region"] = region
-        __props__["value_specs"] = value_specs
+        __props__.__dict__["members"] = members
+        __props__.__dict__["name"] = name
+        __props__.__dict__["policies"] = policies
+        __props__.__dict__["region"] = region
+        __props__.__dict__["value_specs"] = value_specs
         return ServerGroup(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -328,10 +426,4 @@ class ServerGroup(pulumi.CustomResource):
         Map of additional options.
         """
         return pulumi.get(self, "value_specs")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

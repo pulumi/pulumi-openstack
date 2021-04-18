@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Manages a V1 stack resource within OpenStack.
@@ -21,8 +21,8 @@ import (
 // import (
 // 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/orchestration"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/orchestration"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {

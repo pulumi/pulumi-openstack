@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['TempUrlArgs', 'TempUrl']
 
@@ -129,6 +129,146 @@ class TempUrlArgs:
     @split.setter
     def split(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "split", value)
+
+
+@pulumi.input_type
+class _TempUrlState:
+    def __init__(__self__, *,
+                 container: Optional[pulumi.Input[str]] = None,
+                 method: Optional[pulumi.Input[str]] = None,
+                 object: Optional[pulumi.Input[str]] = None,
+                 regenerate: Optional[pulumi.Input[bool]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 split: Optional[pulumi.Input[str]] = None,
+                 ttl: Optional[pulumi.Input[int]] = None,
+                 url: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering TempUrl resources.
+        :param pulumi.Input[str] container: The container name the object belongs to.
+        :param pulumi.Input[str] method: The method allowed when accessing this URL.
+               Valid values are `GET`, and `POST`. Default is `GET`.
+        :param pulumi.Input[str] object: The object name the tempurl is for.
+        :param pulumi.Input[bool] regenerate: Whether to automatically regenerate the URL when
+               it has expired. If set to true, this will create a new resource with a new
+               ID and new URL. Defaults to false.
+        :param pulumi.Input[str] region: The region the tempurl is located in.
+        :param pulumi.Input[int] ttl: The TTL, in seconds, for the URL. For how long it should
+               be valid.
+        :param pulumi.Input[str] url: The URL
+        """
+        if container is not None:
+            pulumi.set(__self__, "container", container)
+        if method is not None:
+            pulumi.set(__self__, "method", method)
+        if object is not None:
+            pulumi.set(__self__, "object", object)
+        if regenerate is not None:
+            pulumi.set(__self__, "regenerate", regenerate)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if split is not None:
+            pulumi.set(__self__, "split", split)
+        if ttl is not None:
+            pulumi.set(__self__, "ttl", ttl)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter
+    def container(self) -> Optional[pulumi.Input[str]]:
+        """
+        The container name the object belongs to.
+        """
+        return pulumi.get(self, "container")
+
+    @container.setter
+    def container(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "container", value)
+
+    @property
+    @pulumi.getter
+    def method(self) -> Optional[pulumi.Input[str]]:
+        """
+        The method allowed when accessing this URL.
+        Valid values are `GET`, and `POST`. Default is `GET`.
+        """
+        return pulumi.get(self, "method")
+
+    @method.setter
+    def method(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "method", value)
+
+    @property
+    @pulumi.getter
+    def object(self) -> Optional[pulumi.Input[str]]:
+        """
+        The object name the tempurl is for.
+        """
+        return pulumi.get(self, "object")
+
+    @object.setter
+    def object(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "object", value)
+
+    @property
+    @pulumi.getter
+    def regenerate(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to automatically regenerate the URL when
+        it has expired. If set to true, this will create a new resource with a new
+        ID and new URL. Defaults to false.
+        """
+        return pulumi.get(self, "regenerate")
+
+    @regenerate.setter
+    def regenerate(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "regenerate", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region the tempurl is located in.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter
+    def split(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "split")
+
+    @split.setter
+    def split(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "split", value)
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> Optional[pulumi.Input[int]]:
+        """
+        The TTL, in seconds, for the URL. For how long it should
+        be valid.
+        """
+        return pulumi.get(self, "ttl")
+
+    @ttl.setter
+    def ttl(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ttl", value)
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URL
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "url", value)
 
 
 class TempUrl(pulumi.CustomResource):
@@ -261,22 +401,22 @@ class TempUrl(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = TempUrlArgs.__new__(TempUrlArgs)
 
             if container is None and not opts.urn:
                 raise TypeError("Missing required property 'container'")
-            __props__['container'] = container
-            __props__['method'] = method
+            __props__.__dict__["container"] = container
+            __props__.__dict__["method"] = method
             if object is None and not opts.urn:
                 raise TypeError("Missing required property 'object'")
-            __props__['object'] = object
-            __props__['regenerate'] = regenerate
-            __props__['region'] = region
-            __props__['split'] = split
+            __props__.__dict__["object"] = object
+            __props__.__dict__["regenerate"] = regenerate
+            __props__.__dict__["region"] = region
+            __props__.__dict__["split"] = split
             if ttl is None and not opts.urn:
                 raise TypeError("Missing required property 'ttl'")
-            __props__['ttl'] = ttl
-            __props__['url'] = None
+            __props__.__dict__["ttl"] = ttl
+            __props__.__dict__["url"] = None
         super(TempUrl, __self__).__init__(
             'openstack:objectstorage/tempUrl:TempUrl',
             resource_name,
@@ -316,16 +456,16 @@ class TempUrl(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _TempUrlState.__new__(_TempUrlState)
 
-        __props__["container"] = container
-        __props__["method"] = method
-        __props__["object"] = object
-        __props__["regenerate"] = regenerate
-        __props__["region"] = region
-        __props__["split"] = split
-        __props__["ttl"] = ttl
-        __props__["url"] = url
+        __props__.__dict__["container"] = container
+        __props__.__dict__["method"] = method
+        __props__.__dict__["object"] = object
+        __props__.__dict__["regenerate"] = regenerate
+        __props__.__dict__["region"] = region
+        __props__.__dict__["split"] = split
+        __props__.__dict__["ttl"] = ttl
+        __props__.__dict__["url"] = url
         return TempUrl(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -392,10 +532,4 @@ class TempUrl(pulumi.CustomResource):
         The URL
         """
         return pulumi.get(self, "url")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

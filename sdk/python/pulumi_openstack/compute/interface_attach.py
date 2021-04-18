@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['InterfaceAttachArgs', 'InterfaceAttach']
 
@@ -65,6 +65,104 @@ class InterfaceAttachArgs:
     @fixed_ip.setter
     def fixed_ip(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "fixed_ip", value)
+
+    @property
+    @pulumi.getter(name="networkId")
+    def network_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the Network to attach to an Instance. A port will be created automatically.
+        _NOTE_: This option and `port_id` are mutually exclusive.
+        """
+        return pulumi.get(self, "network_id")
+
+    @network_id.setter
+    def network_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_id", value)
+
+    @property
+    @pulumi.getter(name="portId")
+    def port_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the Port to attach to an Instance.
+        _NOTE_: This option and `network_id` are mutually exclusive.
+        """
+        return pulumi.get(self, "port_id")
+
+    @port_id.setter
+    def port_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "port_id", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to create the interface attachment.
+        If omitted, the `region` argument of the provider is used. Changing this
+        creates a new attachment.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+
+@pulumi.input_type
+class _InterfaceAttachState:
+    def __init__(__self__, *,
+                 fixed_ip: Optional[pulumi.Input[str]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
+                 network_id: Optional[pulumi.Input[str]] = None,
+                 port_id: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering InterfaceAttach resources.
+        :param pulumi.Input[str] fixed_ip: An IP address to assosciate with the port.
+               _NOTE_: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.
+        :param pulumi.Input[str] instance_id: The ID of the Instance to attach the Port or Network to.
+        :param pulumi.Input[str] network_id: The ID of the Network to attach to an Instance. A port will be created automatically.
+               _NOTE_: This option and `port_id` are mutually exclusive.
+        :param pulumi.Input[str] port_id: The ID of the Port to attach to an Instance.
+               _NOTE_: This option and `network_id` are mutually exclusive.
+        :param pulumi.Input[str] region: The region in which to create the interface attachment.
+               If omitted, the `region` argument of the provider is used. Changing this
+               creates a new attachment.
+        """
+        if fixed_ip is not None:
+            pulumi.set(__self__, "fixed_ip", fixed_ip)
+        if instance_id is not None:
+            pulumi.set(__self__, "instance_id", instance_id)
+        if network_id is not None:
+            pulumi.set(__self__, "network_id", network_id)
+        if port_id is not None:
+            pulumi.set(__self__, "port_id", port_id)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter(name="fixedIp")
+    def fixed_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        An IP address to assosciate with the port.
+        _NOTE_: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.
+        """
+        return pulumi.get(self, "fixed_ip")
+
+    @fixed_ip.setter
+    def fixed_ip(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fixed_ip", value)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the Instance to attach the Port or Network to.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_id", value)
 
     @property
     @pulumi.getter(name="networkId")
@@ -285,15 +383,15 @@ class InterfaceAttach(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = InterfaceAttachArgs.__new__(InterfaceAttachArgs)
 
-            __props__['fixed_ip'] = fixed_ip
+            __props__.__dict__["fixed_ip"] = fixed_ip
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
-            __props__['instance_id'] = instance_id
-            __props__['network_id'] = network_id
-            __props__['port_id'] = port_id
-            __props__['region'] = region
+            __props__.__dict__["instance_id"] = instance_id
+            __props__.__dict__["network_id"] = network_id
+            __props__.__dict__["port_id"] = port_id
+            __props__.__dict__["region"] = region
         super(InterfaceAttach, __self__).__init__(
             'openstack:compute/interfaceAttach:InterfaceAttach',
             resource_name,
@@ -329,13 +427,13 @@ class InterfaceAttach(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _InterfaceAttachState.__new__(_InterfaceAttachState)
 
-        __props__["fixed_ip"] = fixed_ip
-        __props__["instance_id"] = instance_id
-        __props__["network_id"] = network_id
-        __props__["port_id"] = port_id
-        __props__["region"] = region
+        __props__.__dict__["fixed_ip"] = fixed_ip
+        __props__.__dict__["instance_id"] = instance_id
+        __props__.__dict__["network_id"] = network_id
+        __props__.__dict__["port_id"] = port_id
+        __props__.__dict__["region"] = region
         return InterfaceAttach(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -382,10 +480,4 @@ class InterfaceAttach(pulumi.CustomResource):
         creates a new attachment.
         """
         return pulumi.get(self, "region")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

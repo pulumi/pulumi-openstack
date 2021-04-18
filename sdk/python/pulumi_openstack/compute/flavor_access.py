@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['FlavorAccessArgs', 'FlavorAccess']
 
@@ -68,6 +68,68 @@ class FlavorAccessArgs:
     @region.setter
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
+
+
+@pulumi.input_type
+class _FlavorAccessState:
+    def __init__(__self__, *,
+                 flavor_id: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 tenant_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering FlavorAccess resources.
+        :param pulumi.Input[str] flavor_id: The UUID of flavor to use. Changing this creates a new flavor access.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Compute client.
+               If omitted, the `region` argument of the provider is used.
+               Changing this creates a new flavor access.
+        :param pulumi.Input[str] tenant_id: The UUID of tenant which is allowed to use the flavor.
+               Changing this creates a new flavor access.
+        """
+        if flavor_id is not None:
+            pulumi.set(__self__, "flavor_id", flavor_id)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if tenant_id is not None:
+            pulumi.set(__self__, "tenant_id", tenant_id)
+
+    @property
+    @pulumi.getter(name="flavorId")
+    def flavor_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The UUID of flavor to use. Changing this creates a new flavor access.
+        """
+        return pulumi.get(self, "flavor_id")
+
+    @flavor_id.setter
+    def flavor_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "flavor_id", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V2 Compute client.
+        If omitted, the `region` argument of the provider is used.
+        Changing this creates a new flavor access.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The UUID of tenant which is allowed to use the flavor.
+        Changing this creates a new flavor access.
+        """
+        return pulumi.get(self, "tenant_id")
+
+    @tenant_id.setter
+    def tenant_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tenant_id", value)
 
 
 class FlavorAccess(pulumi.CustomResource):
@@ -198,15 +260,15 @@ class FlavorAccess(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = FlavorAccessArgs.__new__(FlavorAccessArgs)
 
             if flavor_id is None and not opts.urn:
                 raise TypeError("Missing required property 'flavor_id'")
-            __props__['flavor_id'] = flavor_id
-            __props__['region'] = region
+            __props__.__dict__["flavor_id"] = flavor_id
+            __props__.__dict__["region"] = region
             if tenant_id is None and not opts.urn:
                 raise TypeError("Missing required property 'tenant_id'")
-            __props__['tenant_id'] = tenant_id
+            __props__.__dict__["tenant_id"] = tenant_id
         super(FlavorAccess, __self__).__init__(
             'openstack:compute/flavorAccess:FlavorAccess',
             resource_name,
@@ -236,11 +298,11 @@ class FlavorAccess(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _FlavorAccessState.__new__(_FlavorAccessState)
 
-        __props__["flavor_id"] = flavor_id
-        __props__["region"] = region
-        __props__["tenant_id"] = tenant_id
+        __props__.__dict__["flavor_id"] = flavor_id
+        __props__.__dict__["region"] = region
+        __props__.__dict__["tenant_id"] = tenant_id
         return FlavorAccess(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -269,10 +331,4 @@ class FlavorAccess(pulumi.CustomResource):
         Changing this creates a new flavor access.
         """
         return pulumi.get(self, "tenant_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

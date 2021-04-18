@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -201,6 +201,216 @@ class VolumeV1Args:
         pulumi.set(self, "volume_type", value)
 
 
+@pulumi.input_type
+class _VolumeV1State:
+    def __init__(__self__, *,
+                 attachments: Optional[pulumi.Input[Sequence[pulumi.Input['VolumeV1AttachmentArgs']]]] = None,
+                 availability_zone: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 image_id: Optional[pulumi.Input[str]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 size: Optional[pulumi.Input[int]] = None,
+                 snapshot_id: Optional[pulumi.Input[str]] = None,
+                 source_vol_id: Optional[pulumi.Input[str]] = None,
+                 volume_type: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering VolumeV1 resources.
+        :param pulumi.Input[Sequence[pulumi.Input['VolumeV1AttachmentArgs']]] attachments: If a volume is attached to an instance, this attribute will
+               display the Attachment ID, Instance ID, and the Device as the Instance
+               sees it.
+        :param pulumi.Input[str] availability_zone: The availability zone for the volume.
+               Changing this creates a new volume.
+        :param pulumi.Input[str] description: A description of the volume. Changing this updates
+               the volume's description.
+        :param pulumi.Input[str] image_id: The image ID from which to create the volume.
+               Changing this creates a new volume.
+        :param pulumi.Input[Mapping[str, Any]] metadata: Metadata key/value pairs to associate with the volume.
+               Changing this updates the existing volume metadata.
+        :param pulumi.Input[str] name: A unique name for the volume. Changing this updates the
+               volume's name.
+        :param pulumi.Input[str] region: The region in which to create the volume. If
+               omitted, the `region` argument of the provider is used. Changing this
+               creates a new volume.
+        :param pulumi.Input[int] size: The size of the volume to create (in gigabytes). Changing
+               this creates a new volume.
+        :param pulumi.Input[str] snapshot_id: The snapshot ID from which to create the volume.
+               Changing this creates a new volume.
+        :param pulumi.Input[str] source_vol_id: The volume ID from which to create the volume.
+               Changing this creates a new volume.
+        :param pulumi.Input[str] volume_type: The type of volume to create.
+               Changing this creates a new volume.
+        """
+        if attachments is not None:
+            pulumi.set(__self__, "attachments", attachments)
+        if availability_zone is not None:
+            pulumi.set(__self__, "availability_zone", availability_zone)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if image_id is not None:
+            pulumi.set(__self__, "image_id", image_id)
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+        if snapshot_id is not None:
+            pulumi.set(__self__, "snapshot_id", snapshot_id)
+        if source_vol_id is not None:
+            pulumi.set(__self__, "source_vol_id", source_vol_id)
+        if volume_type is not None:
+            pulumi.set(__self__, "volume_type", volume_type)
+
+    @property
+    @pulumi.getter
+    def attachments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VolumeV1AttachmentArgs']]]]:
+        """
+        If a volume is attached to an instance, this attribute will
+        display the Attachment ID, Instance ID, and the Device as the Instance
+        sees it.
+        """
+        return pulumi.get(self, "attachments")
+
+    @attachments.setter
+    def attachments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VolumeV1AttachmentArgs']]]]):
+        pulumi.set(self, "attachments", value)
+
+    @property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        The availability zone for the volume.
+        Changing this creates a new volume.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @availability_zone.setter
+    def availability_zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "availability_zone", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A description of the volume. Changing this updates
+        the volume's description.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="imageId")
+    def image_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The image ID from which to create the volume.
+        Changing this creates a new volume.
+        """
+        return pulumi.get(self, "image_id")
+
+    @image_id.setter
+    def image_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image_id", value)
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Metadata key/value pairs to associate with the volume.
+        Changing this updates the existing volume metadata.
+        """
+        return pulumi.get(self, "metadata")
+
+    @metadata.setter
+    def metadata(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "metadata", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A unique name for the volume. Changing this updates the
+        volume's name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to create the volume. If
+        omitted, the `region` argument of the provider is used. Changing this
+        creates a new volume.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter
+    def size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The size of the volume to create (in gigabytes). Changing
+        this creates a new volume.
+        """
+        return pulumi.get(self, "size")
+
+    @size.setter
+    def size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "size", value)
+
+    @property
+    @pulumi.getter(name="snapshotId")
+    def snapshot_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The snapshot ID from which to create the volume.
+        Changing this creates a new volume.
+        """
+        return pulumi.get(self, "snapshot_id")
+
+    @snapshot_id.setter
+    def snapshot_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "snapshot_id", value)
+
+    @property
+    @pulumi.getter(name="sourceVolId")
+    def source_vol_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The volume ID from which to create the volume.
+        Changing this creates a new volume.
+        """
+        return pulumi.get(self, "source_vol_id")
+
+    @source_vol_id.setter
+    def source_vol_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_vol_id", value)
+
+    @property
+    @pulumi.getter(name="volumeType")
+    def volume_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of volume to create.
+        Changing this creates a new volume.
+        """
+        return pulumi.get(self, "volume_type")
+
+    @volume_type.setter
+    def volume_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "volume_type", value)
+
+
 class VolumeV1(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -338,21 +548,21 @@ class VolumeV1(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = VolumeV1Args.__new__(VolumeV1Args)
 
-            __props__['availability_zone'] = availability_zone
-            __props__['description'] = description
-            __props__['image_id'] = image_id
-            __props__['metadata'] = metadata
-            __props__['name'] = name
-            __props__['region'] = region
+            __props__.__dict__["availability_zone"] = availability_zone
+            __props__.__dict__["description"] = description
+            __props__.__dict__["image_id"] = image_id
+            __props__.__dict__["metadata"] = metadata
+            __props__.__dict__["name"] = name
+            __props__.__dict__["region"] = region
             if size is None and not opts.urn:
                 raise TypeError("Missing required property 'size'")
-            __props__['size'] = size
-            __props__['snapshot_id'] = snapshot_id
-            __props__['source_vol_id'] = source_vol_id
-            __props__['volume_type'] = volume_type
-            __props__['attachments'] = None
+            __props__.__dict__["size"] = size
+            __props__.__dict__["snapshot_id"] = snapshot_id
+            __props__.__dict__["source_vol_id"] = source_vol_id
+            __props__.__dict__["volume_type"] = volume_type
+            __props__.__dict__["attachments"] = None
         super(VolumeV1, __self__).__init__(
             'openstack:blockstorage/volumeV1:VolumeV1',
             resource_name,
@@ -408,19 +618,19 @@ class VolumeV1(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _VolumeV1State.__new__(_VolumeV1State)
 
-        __props__["attachments"] = attachments
-        __props__["availability_zone"] = availability_zone
-        __props__["description"] = description
-        __props__["image_id"] = image_id
-        __props__["metadata"] = metadata
-        __props__["name"] = name
-        __props__["region"] = region
-        __props__["size"] = size
-        __props__["snapshot_id"] = snapshot_id
-        __props__["source_vol_id"] = source_vol_id
-        __props__["volume_type"] = volume_type
+        __props__.__dict__["attachments"] = attachments
+        __props__.__dict__["availability_zone"] = availability_zone
+        __props__.__dict__["description"] = description
+        __props__.__dict__["image_id"] = image_id
+        __props__.__dict__["metadata"] = metadata
+        __props__.__dict__["name"] = name
+        __props__.__dict__["region"] = region
+        __props__.__dict__["size"] = size
+        __props__.__dict__["snapshot_id"] = snapshot_id
+        __props__.__dict__["source_vol_id"] = source_vol_id
+        __props__.__dict__["volume_type"] = volume_type
         return VolumeV1(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -523,10 +733,4 @@ class VolumeV1(pulumi.CustomResource):
         Changing this creates a new volume.
         """
         return pulumi.get(self, "volume_type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

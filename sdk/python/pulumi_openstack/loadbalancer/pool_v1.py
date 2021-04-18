@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['PoolV1Args', 'PoolV1']
 
@@ -152,6 +152,166 @@ class PoolV1Args:
     @region.setter
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The owner of the member. Required if admin wants to
+        create a pool member for another tenant. Changing this creates a new member.
+        """
+        return pulumi.get(self, "tenant_id")
+
+    @tenant_id.setter
+    def tenant_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tenant_id", value)
+
+
+@pulumi.input_type
+class _PoolV1State:
+    def __init__(__self__, *,
+                 lb_method: Optional[pulumi.Input[str]] = None,
+                 lb_provider: Optional[pulumi.Input[str]] = None,
+                 monitor_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 protocol: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 subnet_id: Optional[pulumi.Input[str]] = None,
+                 tenant_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering PoolV1 resources.
+        :param pulumi.Input[str] lb_method: The algorithm used to distribute load between the
+               members of the pool. The current specification supports 'ROUND_ROBIN' and
+               'LEAST_CONNECTIONS' as valid values for this attribute.
+        :param pulumi.Input[str] lb_provider: The backend load balancing provider. For example:
+               `haproxy`, `F5`, etc.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] monitor_ids: A list of IDs of monitors to associate with the
+               pool.
+        :param pulumi.Input[str] name: The name of the pool. Changing this updates the name of
+               the existing pool.
+        :param pulumi.Input[str] protocol: The protocol used by the pool members, you can use
+               either 'TCP, 'HTTP', or 'HTTPS'. Changing this creates a new pool.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
+               A Networking client is needed to create an LB pool. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               LB pool.
+        :param pulumi.Input[str] subnet_id: The network on which the members of the pool will be
+               located. Only members that are on this network can be added to the pool.
+               Changing this creates a new pool.
+        :param pulumi.Input[str] tenant_id: The owner of the member. Required if admin wants to
+               create a pool member for another tenant. Changing this creates a new member.
+        """
+        if lb_method is not None:
+            pulumi.set(__self__, "lb_method", lb_method)
+        if lb_provider is not None:
+            pulumi.set(__self__, "lb_provider", lb_provider)
+        if monitor_ids is not None:
+            pulumi.set(__self__, "monitor_ids", monitor_ids)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if subnet_id is not None:
+            pulumi.set(__self__, "subnet_id", subnet_id)
+        if tenant_id is not None:
+            pulumi.set(__self__, "tenant_id", tenant_id)
+
+    @property
+    @pulumi.getter(name="lbMethod")
+    def lb_method(self) -> Optional[pulumi.Input[str]]:
+        """
+        The algorithm used to distribute load between the
+        members of the pool. The current specification supports 'ROUND_ROBIN' and
+        'LEAST_CONNECTIONS' as valid values for this attribute.
+        """
+        return pulumi.get(self, "lb_method")
+
+    @lb_method.setter
+    def lb_method(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "lb_method", value)
+
+    @property
+    @pulumi.getter(name="lbProvider")
+    def lb_provider(self) -> Optional[pulumi.Input[str]]:
+        """
+        The backend load balancing provider. For example:
+        `haproxy`, `F5`, etc.
+        """
+        return pulumi.get(self, "lb_provider")
+
+    @lb_provider.setter
+    def lb_provider(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "lb_provider", value)
+
+    @property
+    @pulumi.getter(name="monitorIds")
+    def monitor_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of IDs of monitors to associate with the
+        pool.
+        """
+        return pulumi.get(self, "monitor_ids")
+
+    @monitor_ids.setter
+    def monitor_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "monitor_ids", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the pool. Changing this updates the name of
+        the existing pool.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> Optional[pulumi.Input[str]]:
+        """
+        The protocol used by the pool members, you can use
+        either 'TCP, 'HTTP', or 'HTTPS'. Changing this creates a new pool.
+        """
+        return pulumi.get(self, "protocol")
+
+    @protocol.setter
+    def protocol(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "protocol", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V2 Networking client.
+        A Networking client is needed to create an LB pool. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        LB pool.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The network on which the members of the pool will be
+        located. Only members that are on this network can be added to the pool.
+        Changing this creates a new pool.
+        """
+        return pulumi.get(self, "subnet_id")
+
+    @subnet_id.setter
+    def subnet_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subnet_id", value)
 
     @property
     @pulumi.getter(name="tenantId")
@@ -447,22 +607,22 @@ class PoolV1(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = PoolV1Args.__new__(PoolV1Args)
 
             if lb_method is None and not opts.urn:
                 raise TypeError("Missing required property 'lb_method'")
-            __props__['lb_method'] = lb_method
-            __props__['lb_provider'] = lb_provider
-            __props__['monitor_ids'] = monitor_ids
-            __props__['name'] = name
+            __props__.__dict__["lb_method"] = lb_method
+            __props__.__dict__["lb_provider"] = lb_provider
+            __props__.__dict__["monitor_ids"] = monitor_ids
+            __props__.__dict__["name"] = name
             if protocol is None and not opts.urn:
                 raise TypeError("Missing required property 'protocol'")
-            __props__['protocol'] = protocol
-            __props__['region'] = region
+            __props__.__dict__["protocol"] = protocol
+            __props__.__dict__["region"] = region
             if subnet_id is None and not opts.urn:
                 raise TypeError("Missing required property 'subnet_id'")
-            __props__['subnet_id'] = subnet_id
-            __props__['tenant_id'] = tenant_id
+            __props__.__dict__["subnet_id"] = subnet_id
+            __props__.__dict__["tenant_id"] = tenant_id
         super(PoolV1, __self__).__init__(
             'openstack:loadbalancer/poolV1:PoolV1',
             resource_name,
@@ -511,16 +671,16 @@ class PoolV1(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _PoolV1State.__new__(_PoolV1State)
 
-        __props__["lb_method"] = lb_method
-        __props__["lb_provider"] = lb_provider
-        __props__["monitor_ids"] = monitor_ids
-        __props__["name"] = name
-        __props__["protocol"] = protocol
-        __props__["region"] = region
-        __props__["subnet_id"] = subnet_id
-        __props__["tenant_id"] = tenant_id
+        __props__.__dict__["lb_method"] = lb_method
+        __props__.__dict__["lb_provider"] = lb_provider
+        __props__.__dict__["monitor_ids"] = monitor_ids
+        __props__.__dict__["name"] = name
+        __props__.__dict__["protocol"] = protocol
+        __props__.__dict__["region"] = region
+        __props__.__dict__["subnet_id"] = subnet_id
+        __props__.__dict__["tenant_id"] = tenant_id
         return PoolV1(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -598,10 +758,4 @@ class PoolV1(pulumi.CustomResource):
         create a pool member for another tenant. Changing this creates a new member.
         """
         return pulumi.get(self, "tenant_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

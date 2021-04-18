@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['AggregateV2Args', 'AggregateV2']
 
@@ -19,6 +19,84 @@ class AggregateV2Args:
                  zone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AggregateV2 resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] hosts: The list of hosts contained in the Host Aggregate. The hosts must be added
+               to Openstack and visible in the web interface, or the provider will fail to add them to the host
+               aggregate.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: The metadata of the Host Aggregate. Can be useful to indicate scheduler hints.
+        :param pulumi.Input[str] name: The name of the Host Aggregate
+        :param pulumi.Input[str] zone: The name of the Availability Zone to use. If ommited, it will take the default
+               availability zone.
+        """
+        if hosts is not None:
+            pulumi.set(__self__, "hosts", hosts)
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter
+    def hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The list of hosts contained in the Host Aggregate. The hosts must be added
+        to Openstack and visible in the web interface, or the provider will fail to add them to the host
+        aggregate.
+        """
+        return pulumi.get(self, "hosts")
+
+    @hosts.setter
+    def hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "hosts", value)
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The metadata of the Host Aggregate. Can be useful to indicate scheduler hints.
+        """
+        return pulumi.get(self, "metadata")
+
+    @metadata.setter
+    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "metadata", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Host Aggregate
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Availability Zone to use. If ommited, it will take the default
+        availability zone.
+        """
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone", value)
+
+
+@pulumi.input_type
+class _AggregateV2State:
+    def __init__(__self__, *,
+                 hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 zone: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering AggregateV2 resources.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] hosts: The list of hosts contained in the Host Aggregate. The hosts must be added
                to Openstack and visible in the web interface, or the provider will fail to add them to the host
                aggregate.
@@ -235,12 +313,12 @@ class AggregateV2(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = AggregateV2Args.__new__(AggregateV2Args)
 
-            __props__['hosts'] = hosts
-            __props__['metadata'] = metadata
-            __props__['name'] = name
-            __props__['zone'] = zone
+            __props__.__dict__["hosts"] = hosts
+            __props__.__dict__["metadata"] = metadata
+            __props__.__dict__["name"] = name
+            __props__.__dict__["zone"] = zone
         super(AggregateV2, __self__).__init__(
             'openstack:compute/aggregateV2:AggregateV2',
             resource_name,
@@ -272,12 +350,12 @@ class AggregateV2(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _AggregateV2State.__new__(_AggregateV2State)
 
-        __props__["hosts"] = hosts
-        __props__["metadata"] = metadata
-        __props__["name"] = name
-        __props__["zone"] = zone
+        __props__.__dict__["hosts"] = hosts
+        __props__.__dict__["metadata"] = metadata
+        __props__.__dict__["name"] = name
+        __props__.__dict__["zone"] = zone
         return AggregateV2(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -314,10 +392,4 @@ class AggregateV2(pulumi.CustomResource):
         availability zone.
         """
         return pulumi.get(self, "zone")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

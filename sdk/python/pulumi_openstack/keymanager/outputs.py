@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 
 __all__ = [
@@ -37,12 +37,30 @@ class ContainerV1Acl(dict):
     def read(self) -> Optional['outputs.ContainerV1AclRead']:
         return pulumi.get(self, "read")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ContainerV1AclRead(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createdAt":
+            suggest = "created_at"
+        elif key == "projectAccess":
+            suggest = "project_access"
+        elif key == "updatedAt":
+            suggest = "updated_at"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ContainerV1AclRead. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ContainerV1AclRead.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ContainerV1AclRead.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  created_at: Optional[str] = None,
                  project_access: Optional[bool] = None,
@@ -99,9 +117,6 @@ class ContainerV1AclRead(dict):
         """
         return pulumi.get(self, "users")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ContainerV1Consumer(dict):
@@ -133,12 +148,26 @@ class ContainerV1Consumer(dict):
         """
         return pulumi.get(self, "url")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ContainerV1SecretRef(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "secretRef":
+            suggest = "secret_ref"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ContainerV1SecretRef. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ContainerV1SecretRef.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ContainerV1SecretRef.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  secret_ref: str,
                  name: Optional[str] = None):
@@ -166,12 +195,28 @@ class ContainerV1SecretRef(dict):
         """
         return pulumi.get(self, "name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class OrderV1Meta(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bitLength":
+            suggest = "bit_length"
+        elif key == "payloadContentType":
+            suggest = "payload_content_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OrderV1Meta. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OrderV1Meta.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OrderV1Meta.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  algorithm: str,
                  bit_length: int,
@@ -246,9 +291,6 @@ class OrderV1Meta(dict):
         """
         return pulumi.get(self, "payload_content_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SecretV1Acl(dict):
@@ -262,12 +304,30 @@ class SecretV1Acl(dict):
     def read(self) -> Optional['outputs.SecretV1AclRead']:
         return pulumi.get(self, "read")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SecretV1AclRead(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createdAt":
+            suggest = "created_at"
+        elif key == "projectAccess":
+            suggest = "project_access"
+        elif key == "updatedAt":
+            suggest = "updated_at"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecretV1AclRead. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecretV1AclRead.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecretV1AclRead.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  created_at: Optional[str] = None,
                  project_access: Optional[bool] = None,
@@ -323,9 +383,6 @@ class SecretV1AclRead(dict):
         secret, when `project_access` is set to `false`.
         """
         return pulumi.get(self, "users")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type

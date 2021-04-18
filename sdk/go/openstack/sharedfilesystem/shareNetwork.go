@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Use this resource to configure a share network.
@@ -23,9 +23,9 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/networking"
-// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/sharedfilesystem"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
+// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/sharedfilesystem"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -62,9 +62,9 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/networking"
-// 	"github.com/pulumi/pulumi-openstack/sdk/v2/go/openstack/sharedfilesystem"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
+// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/sharedfilesystem"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {

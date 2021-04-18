@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = [
     'MembersMember',
@@ -15,6 +15,27 @@ __all__ = [
 
 @pulumi.output_type
 class MembersMember(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "protocolPort":
+            suggest = "protocol_port"
+        elif key == "adminStateUp":
+            suggest = "admin_state_up"
+        elif key == "subnetId":
+            suggest = "subnet_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MembersMember. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MembersMember.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MembersMember.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  address: str,
                  protocol_port: int,
@@ -111,12 +132,26 @@ class MembersMember(dict):
         """
         return pulumi.get(self, "weight")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PoolPersistence(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cookieName":
+            suggest = "cookie_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PoolPersistence. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PoolPersistence.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PoolPersistence.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  cookie_name: Optional[str] = None):
@@ -147,8 +182,5 @@ class PoolPersistence(dict):
         appropriately. Required if `type = APP_COOKIE`.
         """
         return pulumi.get(self, "cookie_name")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

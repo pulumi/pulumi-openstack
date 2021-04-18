@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['ImageAccessAcceptArgs', 'ImageAccessAccept']
 
@@ -88,6 +88,136 @@ class ImageAccessAcceptArgs:
     @region.setter
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
+
+
+@pulumi.input_type
+class _ImageAccessAcceptState:
+    def __init__(__self__, *,
+                 created_at: Optional[pulumi.Input[str]] = None,
+                 image_id: Optional[pulumi.Input[str]] = None,
+                 member_id: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 schema: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 updated_at: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering ImageAccessAccept resources.
+        :param pulumi.Input[str] created_at: The date the image membership was created.
+        :param pulumi.Input[str] image_id: The proposed image ID.
+        :param pulumi.Input[str] member_id: The member ID, e.g. the target project ID. Optional
+               for admin accounts. Defaults to the current scope project ID.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Glance client.
+               A Glance client is needed to manage Image memberships. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               membership.
+        :param pulumi.Input[str] schema: The membership schema.
+        :param pulumi.Input[str] status: The membership proposal status. Can either be
+               `accepted`, `rejected` or `pending`.
+        :param pulumi.Input[str] updated_at: The date the image membership was last updated.
+        """
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if image_id is not None:
+            pulumi.set(__self__, "image_id", image_id)
+        if member_id is not None:
+            pulumi.set(__self__, "member_id", member_id)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if schema is not None:
+            pulumi.set(__self__, "schema", schema)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        The date the image membership was created.
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_at", value)
+
+    @property
+    @pulumi.getter(name="imageId")
+    def image_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The proposed image ID.
+        """
+        return pulumi.get(self, "image_id")
+
+    @image_id.setter
+    def image_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image_id", value)
+
+    @property
+    @pulumi.getter(name="memberId")
+    def member_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The member ID, e.g. the target project ID. Optional
+        for admin accounts. Defaults to the current scope project ID.
+        """
+        return pulumi.get(self, "member_id")
+
+    @member_id.setter
+    def member_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "member_id", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V2 Glance client.
+        A Glance client is needed to manage Image memberships. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        membership.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter
+    def schema(self) -> Optional[pulumi.Input[str]]:
+        """
+        The membership schema.
+        """
+        return pulumi.get(self, "schema")
+
+    @schema.setter
+    def schema(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "schema", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The membership proposal status. Can either be
+        `accepted`, `rejected` or `pending`.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        The date the image membership was last updated.
+        """
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "updated_at", value)
 
 
 class ImageAccessAccept(pulumi.CustomResource):
@@ -213,19 +343,19 @@ class ImageAccessAccept(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ImageAccessAcceptArgs.__new__(ImageAccessAcceptArgs)
 
             if image_id is None and not opts.urn:
                 raise TypeError("Missing required property 'image_id'")
-            __props__['image_id'] = image_id
-            __props__['member_id'] = member_id
-            __props__['region'] = region
+            __props__.__dict__["image_id"] = image_id
+            __props__.__dict__["member_id"] = member_id
+            __props__.__dict__["region"] = region
             if status is None and not opts.urn:
                 raise TypeError("Missing required property 'status'")
-            __props__['status'] = status
-            __props__['created_at'] = None
-            __props__['schema'] = None
-            __props__['updated_at'] = None
+            __props__.__dict__["status"] = status
+            __props__.__dict__["created_at"] = None
+            __props__.__dict__["schema"] = None
+            __props__.__dict__["updated_at"] = None
         super(ImageAccessAccept, __self__).__init__(
             'openstack:images/imageAccessAccept:ImageAccessAccept',
             resource_name,
@@ -265,15 +395,15 @@ class ImageAccessAccept(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ImageAccessAcceptState.__new__(_ImageAccessAcceptState)
 
-        __props__["created_at"] = created_at
-        __props__["image_id"] = image_id
-        __props__["member_id"] = member_id
-        __props__["region"] = region
-        __props__["schema"] = schema
-        __props__["status"] = status
-        __props__["updated_at"] = updated_at
+        __props__.__dict__["created_at"] = created_at
+        __props__.__dict__["image_id"] = image_id
+        __props__.__dict__["member_id"] = member_id
+        __props__.__dict__["region"] = region
+        __props__.__dict__["schema"] = schema
+        __props__.__dict__["status"] = status
+        __props__.__dict__["updated_at"] = updated_at
         return ImageAccessAccept(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -336,10 +466,4 @@ class ImageAccessAccept(pulumi.CustomResource):
         The date the image membership was last updated.
         """
         return pulumi.get(self, "updated_at")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 
