@@ -9,17 +9,4 @@ using Pulumi.Serialization;
 
 namespace Pulumi.OpenStack.SharedFileSystem.Inputs
 {
-
-    public sealed class ShareExportLocationArgs : Pulumi.ResourceArgs
-    {
-        [Input("path")]
-        public Input<string>? Path { get; set; }
-
-        [Input("preferred")]
-        public Input<string>? Preferred { get; set; }
-
-        public ShareExportLocationArgs()
-        {
-        }
-    }
 }
