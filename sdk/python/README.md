@@ -3,7 +3,7 @@
 [![NPM version](https://badge.fury.io/js/%40pulumi%2Fopenstack.svg)](https://www.npmjs.com/package/@pulumi/openstack)
 [![Python version](https://badge.fury.io/py/pulumi-openstack.svg)](https://pypi.org/project/pulumi-openstack)
 [![NuGet version](https://badge.fury.io/nu/pulumi.openstack.svg)](https://badge.fury.io/nu/pulumi.openstack)
-[![PkgGoDev](https://pkg.go.dev/badge/github.com/pulumi/pulumi-openstack/sdk/v2/go)](https://pkg.go.dev/github.com/pulumi/pulumi-openstack/sdk/v2/go)
+[![PkgGoDev](https://pkg.go.dev/badge/github.com/pulumi/pulumi-openstack/sdk/v3/go)](https://pkg.go.dev/github.com/pulumi/pulumi-openstack/sdk/v3/go)
 [![License](https://img.shields.io/npm/l/%40pulumi%2Fpulumi.svg)](https://github.com/pulumi/pulumi-openstack/blob/master/LICENSE)
 
 # OpenStack Resource Provider
@@ -35,7 +35,7 @@ To use from Python, install using `pip`:
 
 To use from Go, use `go get` to grab the latest version of the library
 
-    $ go get github.com/pulumi/pulumi-openstack/sdk/v2/go/...
+    $ go get github.com/pulumi/pulumi-openstack/sdk/v3/go/...
     
 ### .NET
 
