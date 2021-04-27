@@ -70,6 +70,12 @@ export class RecordSet extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * Disable wait for recordset to reach ACTIVE
+     * status. This argumen is disabled by default. If it is set to true, the recordset
+     * will be considered as created/updated/deleted if OpenStack request returned success.
+     */
+    public readonly disableStatusCheck!: pulumi.Output<boolean | undefined>;
+    /**
      * The name of the record set. Note the `.` at the end of the name.
      * Changing this creates a new DNS  record set.
      */
@@ -120,6 +126,7 @@ export class RecordSet extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as RecordSetState | undefined;
             inputs["description"] = state ? state.description : undefined;
+            inputs["disableStatusCheck"] = state ? state.disableStatusCheck : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["records"] = state ? state.records : undefined;
             inputs["region"] = state ? state.region : undefined;
@@ -133,6 +140,7 @@ export class RecordSet extends pulumi.CustomResource {
                 throw new Error("Missing required property 'zoneId'");
             }
             inputs["description"] = args ? args.description : undefined;
+            inputs["disableStatusCheck"] = args ? args.disableStatusCheck : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["records"] = args ? args.records : undefined;
             inputs["region"] = args ? args.region : undefined;
@@ -156,6 +164,12 @@ export interface RecordSetState {
      * A description of the  record set.
      */
     readonly description?: pulumi.Input<string>;
+    /**
+     * Disable wait for recordset to reach ACTIVE
+     * status. This argumen is disabled by default. If it is set to true, the recordset
+     * will be considered as created/updated/deleted if OpenStack request returned success.
+     */
+    readonly disableStatusCheck?: pulumi.Input<boolean>;
     /**
      * The name of the record set. Note the `.` at the end of the name.
      * Changing this creates a new DNS  record set.
@@ -202,6 +216,12 @@ export interface RecordSetArgs {
      * A description of the  record set.
      */
     readonly description?: pulumi.Input<string>;
+    /**
+     * Disable wait for recordset to reach ACTIVE
+     * status. This argumen is disabled by default. If it is set to true, the recordset
+     * will be considered as created/updated/deleted if OpenStack request returned success.
+     */
+    readonly disableStatusCheck?: pulumi.Input<boolean>;
     /**
      * The name of the record set. Note the `.` at the end of the name.
      * Changing this creates a new DNS  record set.

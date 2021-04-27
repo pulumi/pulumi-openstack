@@ -64,6 +64,14 @@ namespace Pulumi.OpenStack.Dns
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// Disable wait for recordset to reach ACTIVE
+        /// status. This argumen is disabled by default. If it is set to true, the recordset
+        /// will be considered as created/updated/deleted if OpenStack request returned success.
+        /// </summary>
+        [Output("disableStatusCheck")]
+        public Output<bool?> DisableStatusCheck { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the record set. Note the `.` at the end of the name.
         /// Changing this creates a new DNS  record set.
         /// </summary>
@@ -166,6 +174,14 @@ namespace Pulumi.OpenStack.Dns
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Disable wait for recordset to reach ACTIVE
+        /// status. This argumen is disabled by default. If it is set to true, the recordset
+        /// will be considered as created/updated/deleted if OpenStack request returned success.
+        /// </summary>
+        [Input("disableStatusCheck")]
+        public Input<bool>? DisableStatusCheck { get; set; }
+
+        /// <summary>
         /// The name of the record set. Note the `.` at the end of the name.
         /// Changing this creates a new DNS  record set.
         /// </summary>
@@ -239,6 +255,14 @@ namespace Pulumi.OpenStack.Dns
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Disable wait for recordset to reach ACTIVE
+        /// status. This argumen is disabled by default. If it is set to true, the recordset
+        /// will be considered as created/updated/deleted if OpenStack request returned success.
+        /// </summary>
+        [Input("disableStatusCheck")]
+        public Input<bool>? DisableStatusCheck { get; set; }
 
         /// <summary>
         /// The name of the record set. Note the `.` at the end of the name.

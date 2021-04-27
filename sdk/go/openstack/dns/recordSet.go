@@ -64,6 +64,10 @@ type RecordSet struct {
 
 	// A description of the  record set.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Disable wait for recordset to reach ACTIVE
+	// status. This argumen is disabled by default. If it is set to true, the recordset
+	// will be considered as created/updated/deleted if OpenStack request returned success.
+	DisableStatusCheck pulumi.BoolPtrOutput `pulumi:"disableStatusCheck"`
 	// The name of the record set. Note the `.` at the end of the name.
 	// Changing this creates a new DNS  record set.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -122,6 +126,10 @@ func GetRecordSet(ctx *pulumi.Context,
 type recordSetState struct {
 	// A description of the  record set.
 	Description *string `pulumi:"description"`
+	// Disable wait for recordset to reach ACTIVE
+	// status. This argumen is disabled by default. If it is set to true, the recordset
+	// will be considered as created/updated/deleted if OpenStack request returned success.
+	DisableStatusCheck *bool `pulumi:"disableStatusCheck"`
 	// The name of the record set. Note the `.` at the end of the name.
 	// Changing this creates a new DNS  record set.
 	Name *string `pulumi:"name"`
@@ -149,6 +157,10 @@ type recordSetState struct {
 type RecordSetState struct {
 	// A description of the  record set.
 	Description pulumi.StringPtrInput
+	// Disable wait for recordset to reach ACTIVE
+	// status. This argumen is disabled by default. If it is set to true, the recordset
+	// will be considered as created/updated/deleted if OpenStack request returned success.
+	DisableStatusCheck pulumi.BoolPtrInput
 	// The name of the record set. Note the `.` at the end of the name.
 	// Changing this creates a new DNS  record set.
 	Name pulumi.StringPtrInput
@@ -180,6 +192,10 @@ func (RecordSetState) ElementType() reflect.Type {
 type recordSetArgs struct {
 	// A description of the  record set.
 	Description *string `pulumi:"description"`
+	// Disable wait for recordset to reach ACTIVE
+	// status. This argumen is disabled by default. If it is set to true, the recordset
+	// will be considered as created/updated/deleted if OpenStack request returned success.
+	DisableStatusCheck *bool `pulumi:"disableStatusCheck"`
 	// The name of the record set. Note the `.` at the end of the name.
 	// Changing this creates a new DNS  record set.
 	Name *string `pulumi:"name"`
@@ -208,6 +224,10 @@ type recordSetArgs struct {
 type RecordSetArgs struct {
 	// A description of the  record set.
 	Description pulumi.StringPtrInput
+	// Disable wait for recordset to reach ACTIVE
+	// status. This argumen is disabled by default. If it is set to true, the recordset
+	// will be considered as created/updated/deleted if OpenStack request returned success.
+	DisableStatusCheck pulumi.BoolPtrInput
 	// The name of the record set. Note the `.` at the end of the name.
 	// Changing this creates a new DNS  record set.
 	Name pulumi.StringPtrInput

@@ -24,6 +24,7 @@
         "blockstorage/volume.ts",
         "blockstorage/volumeAttach.ts",
         "blockstorage/volumeAttachV2.ts",
+        "blockstorage/volumeTypeAccessV3.ts",
         "blockstorage/volumeTypeV3.ts",
         "blockstorage/volumeV1.ts",
         "blockstorage/volumeV2.ts",

@@ -19,6 +19,7 @@ class MembersMemberArgs:
                  address: pulumi.Input[str],
                  protocol_port: pulumi.Input[int],
                  admin_state_up: Optional[pulumi.Input[bool]] = None,
+                 backup: Optional[pulumi.Input[bool]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  subnet_id: Optional[pulumi.Input[str]] = None,
@@ -29,6 +30,8 @@ class MembersMemberArgs:
         :param pulumi.Input[int] protocol_port: The port on which to listen for client traffic.
         :param pulumi.Input[bool] admin_state_up: The administrative state of the member.
                A valid value is true (UP) or false (DOWN). Defaults to true.
+        :param pulumi.Input[bool] backup: A bool that indicates whether the the member is
+               backup. Requires octavia microversion 2.1 or later.
         :param pulumi.Input[str] id: The unique ID for the members.
         :param pulumi.Input[str] name: Human-readable name for the member.
         :param pulumi.Input[str] subnet_id: The subnet in which to access the member.
@@ -41,6 +44,8 @@ class MembersMemberArgs:
         pulumi.set(__self__, "protocol_port", protocol_port)
         if admin_state_up is not None:
             pulumi.set(__self__, "admin_state_up", admin_state_up)
+        if backup is not None:
+            pulumi.set(__self__, "backup", backup)
         if id is not None:
             pulumi.set(__self__, "id", id)
         if name is not None:
@@ -87,6 +92,19 @@ class MembersMemberArgs:
     @admin_state_up.setter
     def admin_state_up(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "admin_state_up", value)
+
+    @property
+    @pulumi.getter
+    def backup(self) -> Optional[pulumi.Input[bool]]:
+        """
+        A bool that indicates whether the the member is
+        backup. Requires octavia microversion 2.1 or later.
+        """
+        return pulumi.get(self, "backup")
+
+    @backup.setter
+    def backup(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "backup", value)
 
     @property
     @pulumi.getter

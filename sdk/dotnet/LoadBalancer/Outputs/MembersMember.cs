@@ -24,6 +24,11 @@ namespace Pulumi.OpenStack.LoadBalancer.Outputs
         /// </summary>
         public readonly bool? AdminStateUp;
         /// <summary>
+        /// A bool that indicates whether the the member is
+        /// backup. Requires octavia microversion 2.1 or later.
+        /// </summary>
+        public readonly bool? Backup;
+        /// <summary>
         /// The unique ID for the members.
         /// </summary>
         public readonly string? Id;
@@ -53,6 +58,8 @@ namespace Pulumi.OpenStack.LoadBalancer.Outputs
 
             bool? adminStateUp,
 
+            bool? backup,
+
             string? id,
 
             string? name,
@@ -65,6 +72,7 @@ namespace Pulumi.OpenStack.LoadBalancer.Outputs
         {
             Address = address;
             AdminStateUp = adminStateUp;
+            Backup = backup;
             Id = id;
             Name = name;
             ProtocolPort = protocolPort;

@@ -593,6 +593,11 @@ export namespace loadbalancer {
          */
         adminStateUp?: pulumi.Input<boolean>;
         /**
+         * A bool that indicates whether the the member is
+         * backup. Requires octavia microversion 2.1 or later.
+         */
+        backup?: pulumi.Input<boolean>;
+        /**
          * The unique ID for the members.
          */
         id?: pulumi.Input<string>;

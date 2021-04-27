@@ -40,6 +40,7 @@ class MembersMember(dict):
                  address: str,
                  protocol_port: int,
                  admin_state_up: Optional[bool] = None,
+                 backup: Optional[bool] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  subnet_id: Optional[str] = None,
@@ -50,6 +51,8 @@ class MembersMember(dict):
         :param int protocol_port: The port on which to listen for client traffic.
         :param bool admin_state_up: The administrative state of the member.
                A valid value is true (UP) or false (DOWN). Defaults to true.
+        :param bool backup: A bool that indicates whether the the member is
+               backup. Requires octavia microversion 2.1 or later.
         :param str id: The unique ID for the members.
         :param str name: Human-readable name for the member.
         :param str subnet_id: The subnet in which to access the member.
@@ -62,6 +65,8 @@ class MembersMember(dict):
         pulumi.set(__self__, "protocol_port", protocol_port)
         if admin_state_up is not None:
             pulumi.set(__self__, "admin_state_up", admin_state_up)
+        if backup is not None:
+            pulumi.set(__self__, "backup", backup)
         if id is not None:
             pulumi.set(__self__, "id", id)
         if name is not None:
@@ -96,6 +101,15 @@ class MembersMember(dict):
         A valid value is true (UP) or false (DOWN). Defaults to true.
         """
         return pulumi.get(self, "admin_state_up")
+
+    @property
+    @pulumi.getter
+    def backup(self) -> Optional[bool]:
+        """
+        A bool that indicates whether the the member is
+        backup. Requires octavia microversion 2.1 or later.
+        """
+        return pulumi.get(self, "backup")
 
     @property
     @pulumi.getter

@@ -17,6 +17,9 @@ type MembersMember struct {
 	// The administrative state of the member.
 	// A valid value is true (UP) or false (DOWN). Defaults to true.
 	AdminStateUp *bool `pulumi:"adminStateUp"`
+	// A bool that indicates whether the the member is
+	// backup. Requires octavia microversion 2.1 or later.
+	Backup *bool `pulumi:"backup"`
 	// The unique ID for the members.
 	Id *string `pulumi:"id"`
 	// Human-readable name for the member.
@@ -50,6 +53,9 @@ type MembersMemberArgs struct {
 	// The administrative state of the member.
 	// A valid value is true (UP) or false (DOWN). Defaults to true.
 	AdminStateUp pulumi.BoolPtrInput `pulumi:"adminStateUp"`
+	// A bool that indicates whether the the member is
+	// backup. Requires octavia microversion 2.1 or later.
+	Backup pulumi.BoolPtrInput `pulumi:"backup"`
 	// The unique ID for the members.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Human-readable name for the member.
@@ -126,6 +132,12 @@ func (o MembersMemberOutput) Address() pulumi.StringOutput {
 // A valid value is true (UP) or false (DOWN). Defaults to true.
 func (o MembersMemberOutput) AdminStateUp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v MembersMember) *bool { return v.AdminStateUp }).(pulumi.BoolPtrOutput)
+}
+
+// A bool that indicates whether the the member is
+// backup. Requires octavia microversion 2.1 or later.
+func (o MembersMemberOutput) Backup() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MembersMember) *bool { return v.Backup }).(pulumi.BoolPtrOutput)
 }
 
 // The unique ID for the members.

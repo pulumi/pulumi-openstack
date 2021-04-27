@@ -136,14 +136,15 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		Resources: map[string]*tfbridge.ResourceInfo{
 			// Block Storage
-			"openstack_blockstorage_volume_v1":        {Tok: openstackResource(blockstorageMod, "VolumeV1")},
-			"openstack_blockstorage_volume_v2":        {Tok: openstackResource(blockstorageMod, "VolumeV2")},
-			"openstack_blockstorage_volume_attach_v2": {Tok: openstackResource(blockstorageMod, "VolumeAttachV2")},
-			"openstack_blockstorage_volume_v3":        {Tok: openstackResource(blockstorageMod, "Volume")},
-			"openstack_blockstorage_volume_attach_v3": {Tok: openstackResource(blockstorageMod, "VolumeAttach")},
-			"openstack_blockstorage_quotaset_v2":      {Tok: openstackResource(blockstorageMod, "QuoteSetV2")},
-			"openstack_blockstorage_quotaset_v3":      {Tok: openstackResource(blockstorageMod, "QuoteSetV3")},
-			"openstack_blockstorage_volume_type_v3":   {Tok: openstackResource(blockstorageMod, "VolumeTypeV3")},
+			"openstack_blockstorage_volume_v1":             {Tok: openstackResource(blockstorageMod, "VolumeV1")},
+			"openstack_blockstorage_volume_v2":             {Tok: openstackResource(blockstorageMod, "VolumeV2")},
+			"openstack_blockstorage_volume_attach_v2":      {Tok: openstackResource(blockstorageMod, "VolumeAttachV2")},
+			"openstack_blockstorage_volume_v3":             {Tok: openstackResource(blockstorageMod, "Volume")},
+			"openstack_blockstorage_volume_attach_v3":      {Tok: openstackResource(blockstorageMod, "VolumeAttach")},
+			"openstack_blockstorage_quotaset_v2":           {Tok: openstackResource(blockstorageMod, "QuoteSetV2")},
+			"openstack_blockstorage_quotaset_v3":           {Tok: openstackResource(blockstorageMod, "QuoteSetV3")},
+			"openstack_blockstorage_volume_type_v3":        {Tok: openstackResource(blockstorageMod, "VolumeTypeV3")},
+			"openstack_blockstorage_volume_type_access_v3": {Tok: openstackResource(blockstorageMod, "VolumeTypeAccessV3")},
 
 			// Compute
 			"openstack_compute_flavor_v2":               {Tok: openstackResource(computeMod, "Flavor")},
@@ -371,7 +372,7 @@ func Provider() tfbridge.ProviderInfo {
 				"@types/node": "^10.0.0", // so we can access strongly typed node definitions.
 			},
 			Dependencies: map[string]string{
-				"@pulumi/pulumi": "^3.0.0-alpha.0",
+				"@pulumi/pulumi": "^3.0.0",
 			},
 			Overlay: &tfbridge.OverlayInfo{
 				Modules: map[string]*tfbridge.OverlayInfo{},
@@ -379,7 +380,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		Python: &tfbridge.PythonInfo{
 			Requires: map[string]string{
-				"pulumi": ">=3.0.0a1,<4.0.0",
+				"pulumi": ">=3.0.0,<4.0.0",
 			},
 		},
 		Golang: &tfbridge.GolangInfo{
@@ -393,7 +394,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		CSharp: &tfbridge.CSharpInfo{
 			PackageReferences: map[string]string{
-				"Pulumi":                       "3.*-*",
+				"Pulumi":                       "3.*",
 				"System.Collections.Immutable": "1.6.0",
 			},
 			Namespaces: namespaceMap,

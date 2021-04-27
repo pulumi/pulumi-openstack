@@ -7,7 +7,7 @@ require (
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.0.0
 	github.com/pulumi/pulumi/pkg/v3 v3.0.0
 	github.com/pulumi/pulumi/sdk/v3 v3.0.0
-	github.com/terraform-provider-openstack/terraform-provider-openstack v1.40.0
+	github.com/terraform-provider-openstack/terraform-provider-openstack v1.41.0
 )
 
 replace (

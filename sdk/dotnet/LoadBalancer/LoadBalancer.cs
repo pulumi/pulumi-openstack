@@ -50,6 +50,14 @@ namespace Pulumi.OpenStack.LoadBalancer
         public Output<bool?> AdminStateUp { get; private set; } = null!;
 
         /// <summary>
+        /// The availability zone of the Loadbalancer.
+        /// Changing this creates a new loadbalancer. Available only for Octavia
+        /// microversion 2.14 or later.
+        /// </summary>
+        [Output("availabilityZone")]
+        public Output<string?> AvailabilityZone { get; private set; } = null!;
+
+        /// <summary>
         /// Human-readable description for the Loadbalancer.
         /// </summary>
         [Output("description")]
@@ -189,6 +197,14 @@ namespace Pulumi.OpenStack.LoadBalancer
         public Input<bool>? AdminStateUp { get; set; }
 
         /// <summary>
+        /// The availability zone of the Loadbalancer.
+        /// Changing this creates a new loadbalancer. Available only for Octavia
+        /// microversion 2.14 or later.
+        /// </summary>
+        [Input("availabilityZone")]
+        public Input<string>? AvailabilityZone { get; set; }
+
+        /// <summary>
         /// Human-readable description for the Loadbalancer.
         /// </summary>
         [Input("description")]
@@ -293,6 +309,14 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// </summary>
         [Input("adminStateUp")]
         public Input<bool>? AdminStateUp { get; set; }
+
+        /// <summary>
+        /// The availability zone of the Loadbalancer.
+        /// Changing this creates a new loadbalancer. Available only for Octavia
+        /// microversion 2.14 or later.
+        /// </summary>
+        [Input("availabilityZone")]
+        public Input<string>? AvailabilityZone { get; set; }
 
         /// <summary>
         /// Human-readable description for the Loadbalancer.

@@ -719,6 +719,11 @@ export namespace loadbalancer {
          */
         adminStateUp?: boolean;
         /**
+         * A bool that indicates whether the the member is
+         * backup. Requires octavia microversion 2.1 or later.
+         */
+        backup?: boolean;
+        /**
          * The unique ID for the members.
          */
         id: string;

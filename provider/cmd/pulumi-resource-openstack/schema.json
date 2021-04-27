@@ -1840,6 +1840,15 @@
                         }
                     }
                 },
+                "backup": {
+                    "type": "boolean",
+                    "description": "A bool that indicates whether the the member is\nbackup. Requires octavia microversion 2.1 or later.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "id": {
                     "type": "string",
                     "description": "The unique ID for the members.\n",
@@ -3897,6 +3906,64 @@
                             "type": "string"
                         },
                         "description": "An array of wwpn strings. Used for Fibre Channel\nconnections.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "openstack:blockstorage/volumeTypeAccessV3:VolumeTypeAccessV3": {
+            "description": "Manages a V3 block storage volume type access resource within OpenStack.\n\n\u003e **Note:** This usually requires admin privileges.\n\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst project1 = new openstack.identity.Project(\"project_1\", {});\nconst volumeType1 = new openstack.blockstorage.VolumeTypeV3(\"volume_type_1\", {\n    isPublic: false,\n});\nconst volumeTypeAccess = new openstack.blockstorage.VolumeTypeAccessV3(\"volume_type_access\", {\n    projectId: project1.id,\n    volumeTypeId: volumeType1.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nproject1 = openstack.identity.Project(\"project1\")\nvolume_type1 = openstack.blockstorage.VolumeTypeV3(\"volumeType1\", is_public=False)\nvolume_type_access = openstack.blockstorage.VolumeTypeAccessV3(\"volumeTypeAccess\",\n    project_id=project1.id,\n    volume_type_id=volume_type1.id)\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var project1 = new OpenStack.Identity.Project(\"project1\", new OpenStack.Identity.ProjectArgs\n        {\n        });\n        var volumeType1 = new OpenStack.BlockStorage.VolumeTypeV3(\"volumeType1\", new OpenStack.BlockStorage.VolumeTypeV3Args\n        {\n            IsPublic = false,\n        });\n        var volumeTypeAccess = new OpenStack.BlockStorage.VolumeTypeAccessV3(\"volumeTypeAccess\", new OpenStack.BlockStorage.VolumeTypeAccessV3Args\n        {\n            ProjectId = project1.Id,\n            VolumeTypeId = volumeType1.Id,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/blockstorage\"\n\t\"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/identity\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tproject1, err := identity.NewProject(ctx, \"project1\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tvolumeType1, err := blockstorage.NewVolumeTypeV3(ctx, \"volumeType1\", \u0026blockstorage.VolumeTypeV3Args{\n\t\t\tIsPublic: pulumi.Bool(false),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = blockstorage.NewVolumeTypeAccessV3(ctx, \"volumeTypeAccess\", \u0026blockstorage.VolumeTypeAccessV3Args{\n\t\t\tProjectId:    project1.ID(),\n\t\t\tVolumeTypeId: volumeType1.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nVolume types access can be imported using the `volume_type_id/project_id`, e.g.\n\n```sh\n $ pulumi import openstack:blockstorage/volumeTypeAccessV3:VolumeTypeAccessV3 volume_type_access 941793f0-0a34-4bc4-b72e-a6326ae58283/ed498e81f0cc448bae0ad4f8f21bf67f\n```\n\n ",
+            "properties": {
+                "projectId": {
+                    "type": "string",
+                    "description": "ID of the project to give access to. Changing this\ncreates a new resource.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region in which to create the volume. If\nomitted, the `region` argument of the provider is used. Changing this\ncreates a new quotaset.\n"
+                },
+                "volumeTypeId": {
+                    "type": "string",
+                    "description": "ID of the volume type to give access to. Changing\nthis creates a new resource.\n"
+                }
+            },
+            "required": [
+                "projectId",
+                "region",
+                "volumeTypeId"
+            ],
+            "inputProperties": {
+                "projectId": {
+                    "type": "string",
+                    "description": "ID of the project to give access to. Changing this\ncreates a new resource.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region in which to create the volume. If\nomitted, the `region` argument of the provider is used. Changing this\ncreates a new quotaset.\n"
+                },
+                "volumeTypeId": {
+                    "type": "string",
+                    "description": "ID of the volume type to give access to. Changing\nthis creates a new resource.\n"
+                }
+            },
+            "requiredInputs": [
+                "projectId",
+                "volumeTypeId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering VolumeTypeAccessV3 resources.\n",
+                "properties": {
+                    "projectId": {
+                        "type": "string",
+                        "description": "ID of the project to give access to. Changing this\ncreates a new resource.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region in which to create the volume. If\nomitted, the `region` argument of the provider is used. Changing this\ncreates a new quotaset.\n"
+                    },
+                    "volumeTypeId": {
+                        "type": "string",
+                        "description": "ID of the volume type to give access to. Changing\nthis creates a new resource.\n"
                     }
                 },
                 "type": "object"
@@ -6934,6 +7001,10 @@
                     "type": "string",
                     "description": "A description of the  record set.\n"
                 },
+                "disableStatusCheck": {
+                    "type": "boolean",
+                    "description": "Disable wait for recordset to reach ACTIVE\nstatus. This argumen is disabled by default. If it is set to true, the recordset\nwill be considered as created/updated/deleted if OpenStack request returned success.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "The name of the record set. Note the `.` at the end of the name.\nChanging this creates a new DNS  record set.\n"
@@ -6981,6 +7052,10 @@
                     "type": "string",
                     "description": "A description of the  record set.\n"
                 },
+                "disableStatusCheck": {
+                    "type": "boolean",
+                    "description": "Disable wait for recordset to reach ACTIVE\nstatus. This argumen is disabled by default. If it is set to true, the recordset\nwill be considered as created/updated/deleted if OpenStack request returned success.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "The name of the record set. Note the `.` at the end of the name.\nChanging this creates a new DNS  record set.\n"
@@ -7025,6 +7100,10 @@
                     "description": {
                         "type": "string",
                         "description": "A description of the  record set.\n"
+                    },
+                    "disableStatusCheck": {
+                        "type": "boolean",
+                        "description": "Disable wait for recordset to reach ACTIVE\nstatus. This argumen is disabled by default. If it is set to true, the recordset\nwill be considered as created/updated/deleted if OpenStack request returned success.\n"
                     },
                     "name": {
                         "type": "string",
@@ -10386,6 +10465,10 @@
                     "type": "boolean",
                     "description": "The administrative state of the Loadbalancer.\nA valid value is true (UP) or false (DOWN).\n"
                 },
+                "availabilityZone": {
+                    "type": "string",
+                    "description": "The availability zone of the Loadbalancer.\nChanging this creates a new loadbalancer. Available only for Octavia\nmicroversion 2.14 or later.\n"
+                },
                 "description": {
                     "type": "string",
                     "description": "Human-readable description for the Loadbalancer.\n"
@@ -10451,6 +10534,10 @@
                     "type": "boolean",
                     "description": "The administrative state of the Loadbalancer.\nA valid value is true (UP) or false (DOWN).\n"
                 },
+                "availabilityZone": {
+                    "type": "string",
+                    "description": "The availability zone of the Loadbalancer.\nChanging this creates a new loadbalancer. Available only for Octavia\nmicroversion 2.14 or later.\n"
+                },
                 "description": {
                     "type": "string",
                     "description": "Human-readable description for the Loadbalancer.\n"
@@ -10505,6 +10592,10 @@
                     "adminStateUp": {
                         "type": "boolean",
                         "description": "The administrative state of the Loadbalancer.\nA valid value is true (UP) or false (DOWN).\n"
+                    },
+                    "availabilityZone": {
+                        "type": "string",
+                        "description": "The availability zone of the Loadbalancer.\nChanging this creates a new loadbalancer. Available only for Octavia\nmicroversion 2.14 or later.\n"
                     },
                     "description": {
                         "type": "string",
@@ -22447,7 +22538,7 @@
                 "vpnaas": "VPNaaS"
             },
             "packageReferences": {
-                "Pulumi": "3.*-*",
+                "Pulumi": "3.*",
                 "System.Collections.Immutable": "1.6.0"
             }
         },
@@ -22458,7 +22549,7 @@
         "nodejs": {
             "compatibility": "tfbridge20",
             "dependencies": {
-                "@pulumi/pulumi": "^3.0.0-alpha.0"
+                "@pulumi/pulumi": "^3.0.0"
             },
             "devDependencies": {
                 "@types/node": "^10.0.0"
@@ -22473,7 +22564,7 @@
             "compatibility": "tfbridge20",
             "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/terraform-provider-openstack/terraform-provider-openstack)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-openstack` repo](https://github.com/pulumi/pulumi-openstack/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-openstack/terraform-provider-openstack` repo](https://github.com/terraform-provider-openstack/terraform-provider-openstack/issues).",
             "requires": {
-                "pulumi": "\u003e=3.0.0a1,\u003c4.0.0"
+                "pulumi": "\u003e=3.0.0,\u003c4.0.0"
             }
         }
     }
