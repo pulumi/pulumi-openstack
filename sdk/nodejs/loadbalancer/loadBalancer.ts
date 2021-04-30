@@ -60,6 +60,12 @@ export class LoadBalancer extends pulumi.CustomResource {
      */
     public readonly adminStateUp!: pulumi.Output<boolean | undefined>;
     /**
+     * The availability zone of the Loadbalancer.
+     * Changing this creates a new loadbalancer. Available only for Octavia
+     * microversion 2.14 or later.
+     */
+    public readonly availabilityZone!: pulumi.Output<string | undefined>;
+    /**
      * Human-readable description for the Loadbalancer.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -138,6 +144,7 @@ export class LoadBalancer extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as LoadBalancerState | undefined;
             inputs["adminStateUp"] = state ? state.adminStateUp : undefined;
+            inputs["availabilityZone"] = state ? state.availabilityZone : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["flavorId"] = state ? state.flavorId : undefined;
             inputs["loadbalancerProvider"] = state ? state.loadbalancerProvider : undefined;
@@ -152,6 +159,7 @@ export class LoadBalancer extends pulumi.CustomResource {
         } else {
             const args = argsOrState as LoadBalancerArgs | undefined;
             inputs["adminStateUp"] = args ? args.adminStateUp : undefined;
+            inputs["availabilityZone"] = args ? args.availabilityZone : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["flavorId"] = args ? args.flavorId : undefined;
             inputs["loadbalancerProvider"] = args ? args.loadbalancerProvider : undefined;
@@ -180,6 +188,12 @@ export interface LoadBalancerState {
      * A valid value is true (UP) or false (DOWN).
      */
     readonly adminStateUp?: pulumi.Input<boolean>;
+    /**
+     * The availability zone of the Loadbalancer.
+     * Changing this creates a new loadbalancer. Available only for Octavia
+     * microversion 2.14 or later.
+     */
+    readonly availabilityZone?: pulumi.Input<string>;
     /**
      * Human-readable description for the Loadbalancer.
      */
@@ -255,6 +269,12 @@ export interface LoadBalancerArgs {
      * A valid value is true (UP) or false (DOWN).
      */
     readonly adminStateUp?: pulumi.Input<boolean>;
+    /**
+     * The availability zone of the Loadbalancer.
+     * Changing this creates a new loadbalancer. Available only for Octavia
+     * microversion 2.14 or later.
+     */
+    readonly availabilityZone?: pulumi.Input<string>;
     /**
      * Human-readable description for the Loadbalancer.
      */

@@ -48,6 +48,10 @@ type LoadBalancer struct {
 	// The administrative state of the Loadbalancer.
 	// A valid value is true (UP) or false (DOWN).
 	AdminStateUp pulumi.BoolPtrOutput `pulumi:"adminStateUp"`
+	// The availability zone of the Loadbalancer.
+	// Changing this creates a new loadbalancer. Available only for Octavia
+	// microversion 2.14 or later.
+	AvailabilityZone pulumi.StringPtrOutput `pulumi:"availabilityZone"`
 	// Human-readable description for the Loadbalancer.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The UUID of a flavor. Changing this creates a new
@@ -124,6 +128,10 @@ type loadBalancerState struct {
 	// The administrative state of the Loadbalancer.
 	// A valid value is true (UP) or false (DOWN).
 	AdminStateUp *bool `pulumi:"adminStateUp"`
+	// The availability zone of the Loadbalancer.
+	// Changing this creates a new loadbalancer. Available only for Octavia
+	// microversion 2.14 or later.
+	AvailabilityZone *string `pulumi:"availabilityZone"`
 	// Human-readable description for the Loadbalancer.
 	Description *string `pulumi:"description"`
 	// The UUID of a flavor. Changing this creates a new
@@ -172,6 +180,10 @@ type LoadBalancerState struct {
 	// The administrative state of the Loadbalancer.
 	// A valid value is true (UP) or false (DOWN).
 	AdminStateUp pulumi.BoolPtrInput
+	// The availability zone of the Loadbalancer.
+	// Changing this creates a new loadbalancer. Available only for Octavia
+	// microversion 2.14 or later.
+	AvailabilityZone pulumi.StringPtrInput
 	// Human-readable description for the Loadbalancer.
 	Description pulumi.StringPtrInput
 	// The UUID of a flavor. Changing this creates a new
@@ -224,6 +236,10 @@ type loadBalancerArgs struct {
 	// The administrative state of the Loadbalancer.
 	// A valid value is true (UP) or false (DOWN).
 	AdminStateUp *bool `pulumi:"adminStateUp"`
+	// The availability zone of the Loadbalancer.
+	// Changing this creates a new loadbalancer. Available only for Octavia
+	// microversion 2.14 or later.
+	AvailabilityZone *string `pulumi:"availabilityZone"`
 	// Human-readable description for the Loadbalancer.
 	Description *string `pulumi:"description"`
 	// The UUID of a flavor. Changing this creates a new
@@ -273,6 +289,10 @@ type LoadBalancerArgs struct {
 	// The administrative state of the Loadbalancer.
 	// A valid value is true (UP) or false (DOWN).
 	AdminStateUp pulumi.BoolPtrInput
+	// The availability zone of the Loadbalancer.
+	// Changing this creates a new loadbalancer. Available only for Octavia
+	// microversion 2.14 or later.
+	AvailabilityZone pulumi.StringPtrInput
 	// Human-readable description for the Loadbalancer.
 	Description pulumi.StringPtrInput
 	// The UUID of a flavor. Changing this creates a new

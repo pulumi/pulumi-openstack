@@ -31,6 +31,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &VolumeAttach{}
 	case "openstack:blockstorage/volumeAttachV2:VolumeAttachV2":
 		r = &VolumeAttachV2{}
+	case "openstack:blockstorage/volumeTypeAccessV3:VolumeTypeAccessV3":
+		r = &VolumeTypeAccessV3{}
 	case "openstack:blockstorage/volumeTypeV3:VolumeTypeV3":
 		r = &VolumeTypeV3{}
 	case "openstack:blockstorage/volumeV1:VolumeV1":
@@ -73,6 +75,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"openstack",
 		"blockstorage/volumeAttachV2",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"openstack",
+		"blockstorage/volumeTypeAccessV3",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

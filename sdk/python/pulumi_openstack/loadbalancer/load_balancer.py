@@ -14,6 +14,7 @@ __all__ = ['LoadBalancerArgs', 'LoadBalancer']
 class LoadBalancerArgs:
     def __init__(__self__, *,
                  admin_state_up: Optional[pulumi.Input[bool]] = None,
+                 availability_zone: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  flavor_id: Optional[pulumi.Input[str]] = None,
                  loadbalancer_provider: Optional[pulumi.Input[str]] = None,
@@ -29,6 +30,9 @@ class LoadBalancerArgs:
         The set of arguments for constructing a LoadBalancer resource.
         :param pulumi.Input[bool] admin_state_up: The administrative state of the Loadbalancer.
                A valid value is true (UP) or false (DOWN).
+        :param pulumi.Input[str] availability_zone: The availability zone of the Loadbalancer.
+               Changing this creates a new loadbalancer. Available only for Octavia
+               microversion 2.14 or later.
         :param pulumi.Input[str] description: Human-readable description for the Loadbalancer.
         :param pulumi.Input[str] flavor_id: The UUID of a flavor. Changing this creates a new
                loadbalancer.
@@ -63,6 +67,8 @@ class LoadBalancerArgs:
         """
         if admin_state_up is not None:
             pulumi.set(__self__, "admin_state_up", admin_state_up)
+        if availability_zone is not None:
+            pulumi.set(__self__, "availability_zone", availability_zone)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if flavor_id is not None:
@@ -98,6 +104,20 @@ class LoadBalancerArgs:
     @admin_state_up.setter
     def admin_state_up(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "admin_state_up", value)
+
+    @property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        The availability zone of the Loadbalancer.
+        Changing this creates a new loadbalancer. Available only for Octavia
+        microversion 2.14 or later.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @availability_zone.setter
+    def availability_zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "availability_zone", value)
 
     @property
     @pulumi.getter
@@ -256,6 +276,7 @@ class LoadBalancerArgs:
 class _LoadBalancerState:
     def __init__(__self__, *,
                  admin_state_up: Optional[pulumi.Input[bool]] = None,
+                 availability_zone: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  flavor_id: Optional[pulumi.Input[str]] = None,
                  loadbalancer_provider: Optional[pulumi.Input[str]] = None,
@@ -271,6 +292,9 @@ class _LoadBalancerState:
         Input properties used for looking up and filtering LoadBalancer resources.
         :param pulumi.Input[bool] admin_state_up: The administrative state of the Loadbalancer.
                A valid value is true (UP) or false (DOWN).
+        :param pulumi.Input[str] availability_zone: The availability zone of the Loadbalancer.
+               Changing this creates a new loadbalancer. Available only for Octavia
+               microversion 2.14 or later.
         :param pulumi.Input[str] description: Human-readable description for the Loadbalancer.
         :param pulumi.Input[str] flavor_id: The UUID of a flavor. Changing this creates a new
                loadbalancer.
@@ -305,6 +329,8 @@ class _LoadBalancerState:
         """
         if admin_state_up is not None:
             pulumi.set(__self__, "admin_state_up", admin_state_up)
+        if availability_zone is not None:
+            pulumi.set(__self__, "availability_zone", availability_zone)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if flavor_id is not None:
@@ -340,6 +366,20 @@ class _LoadBalancerState:
     @admin_state_up.setter
     def admin_state_up(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "admin_state_up", value)
+
+    @property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        The availability zone of the Loadbalancer.
+        Changing this creates a new loadbalancer. Available only for Octavia
+        microversion 2.14 or later.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @availability_zone.setter
+    def availability_zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "availability_zone", value)
 
     @property
     @pulumi.getter
@@ -500,6 +540,7 @@ class LoadBalancer(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin_state_up: Optional[pulumi.Input[bool]] = None,
+                 availability_zone: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  flavor_id: Optional[pulumi.Input[str]] = None,
                  loadbalancer_provider: Optional[pulumi.Input[str]] = None,
@@ -536,6 +577,9 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] admin_state_up: The administrative state of the Loadbalancer.
                A valid value is true (UP) or false (DOWN).
+        :param pulumi.Input[str] availability_zone: The availability zone of the Loadbalancer.
+               Changing this creates a new loadbalancer. Available only for Octavia
+               microversion 2.14 or later.
         :param pulumi.Input[str] description: Human-readable description for the Loadbalancer.
         :param pulumi.Input[str] flavor_id: The UUID of a flavor. Changing this creates a new
                loadbalancer.
@@ -610,6 +654,7 @@ class LoadBalancer(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin_state_up: Optional[pulumi.Input[bool]] = None,
+                 availability_zone: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  flavor_id: Optional[pulumi.Input[str]] = None,
                  loadbalancer_provider: Optional[pulumi.Input[str]] = None,
@@ -634,6 +679,7 @@ class LoadBalancer(pulumi.CustomResource):
             __props__ = LoadBalancerArgs.__new__(LoadBalancerArgs)
 
             __props__.__dict__["admin_state_up"] = admin_state_up
+            __props__.__dict__["availability_zone"] = availability_zone
             __props__.__dict__["description"] = description
             __props__.__dict__["flavor_id"] = flavor_id
             __props__.__dict__["loadbalancer_provider"] = loadbalancer_provider
@@ -656,6 +702,7 @@ class LoadBalancer(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             admin_state_up: Optional[pulumi.Input[bool]] = None,
+            availability_zone: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             flavor_id: Optional[pulumi.Input[str]] = None,
             loadbalancer_provider: Optional[pulumi.Input[str]] = None,
@@ -676,6 +723,9 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] admin_state_up: The administrative state of the Loadbalancer.
                A valid value is true (UP) or false (DOWN).
+        :param pulumi.Input[str] availability_zone: The availability zone of the Loadbalancer.
+               Changing this creates a new loadbalancer. Available only for Octavia
+               microversion 2.14 or later.
         :param pulumi.Input[str] description: Human-readable description for the Loadbalancer.
         :param pulumi.Input[str] flavor_id: The UUID of a flavor. Changing this creates a new
                loadbalancer.
@@ -713,6 +763,7 @@ class LoadBalancer(pulumi.CustomResource):
         __props__ = _LoadBalancerState.__new__(_LoadBalancerState)
 
         __props__.__dict__["admin_state_up"] = admin_state_up
+        __props__.__dict__["availability_zone"] = availability_zone
         __props__.__dict__["description"] = description
         __props__.__dict__["flavor_id"] = flavor_id
         __props__.__dict__["loadbalancer_provider"] = loadbalancer_provider
@@ -734,6 +785,16 @@ class LoadBalancer(pulumi.CustomResource):
         A valid value is true (UP) or false (DOWN).
         """
         return pulumi.get(self, "admin_state_up")
+
+    @property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> pulumi.Output[Optional[str]]:
+        """
+        The availability zone of the Loadbalancer.
+        Changing this creates a new loadbalancer. Available only for Octavia
+        microversion 2.14 or later.
+        """
+        return pulumi.get(self, "availability_zone")
 
     @property
     @pulumi.getter

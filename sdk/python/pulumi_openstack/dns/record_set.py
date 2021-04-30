@@ -15,6 +15,7 @@ class RecordSetArgs:
     def __init__(__self__, *,
                  zone_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
+                 disable_status_check: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  records: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -26,6 +27,9 @@ class RecordSetArgs:
         :param pulumi.Input[str] zone_id: The ID of the zone in which to create the record set.
                Changing this creates a new DNS  record set.
         :param pulumi.Input[str] description: A description of the  record set.
+        :param pulumi.Input[bool] disable_status_check: Disable wait for recordset to reach ACTIVE
+               status. This argumen is disabled by default. If it is set to true, the recordset
+               will be considered as created/updated/deleted if OpenStack request returned success.
         :param pulumi.Input[str] name: The name of the record set. Note the `.` at the end of the name.
                Changing this creates a new DNS  record set.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] records: An array of DNS records. _Note:_ if an IPv6 address
@@ -43,6 +47,8 @@ class RecordSetArgs:
         pulumi.set(__self__, "zone_id", zone_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if disable_status_check is not None:
+            pulumi.set(__self__, "disable_status_check", disable_status_check)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if records is not None:
@@ -80,6 +86,20 @@ class RecordSetArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="disableStatusCheck")
+    def disable_status_check(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Disable wait for recordset to reach ACTIVE
+        status. This argumen is disabled by default. If it is set to true, the recordset
+        will be considered as created/updated/deleted if OpenStack request returned success.
+        """
+        return pulumi.get(self, "disable_status_check")
+
+    @disable_status_check.setter
+    def disable_status_check(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_status_check", value)
 
     @property
     @pulumi.getter
@@ -165,6 +185,7 @@ class RecordSetArgs:
 class _RecordSetState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
+                 disable_status_check: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  records: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -175,6 +196,9 @@ class _RecordSetState:
         """
         Input properties used for looking up and filtering RecordSet resources.
         :param pulumi.Input[str] description: A description of the  record set.
+        :param pulumi.Input[bool] disable_status_check: Disable wait for recordset to reach ACTIVE
+               status. This argumen is disabled by default. If it is set to true, the recordset
+               will be considered as created/updated/deleted if OpenStack request returned success.
         :param pulumi.Input[str] name: The name of the record set. Note the `.` at the end of the name.
                Changing this creates a new DNS  record set.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] records: An array of DNS records. _Note:_ if an IPv6 address
@@ -193,6 +217,8 @@ class _RecordSetState:
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if disable_status_check is not None:
+            pulumi.set(__self__, "disable_status_check", disable_status_check)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if records is not None:
@@ -219,6 +245,20 @@ class _RecordSetState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="disableStatusCheck")
+    def disable_status_check(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Disable wait for recordset to reach ACTIVE
+        status. This argumen is disabled by default. If it is set to true, the recordset
+        will be considered as created/updated/deleted if OpenStack request returned success.
+        """
+        return pulumi.get(self, "disable_status_check")
+
+    @disable_status_check.setter
+    def disable_status_check(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_status_check", value)
 
     @property
     @pulumi.getter
@@ -319,6 +359,7 @@ class RecordSet(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disable_status_check: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  records: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -361,6 +402,9 @@ class RecordSet(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description of the  record set.
+        :param pulumi.Input[bool] disable_status_check: Disable wait for recordset to reach ACTIVE
+               status. This argumen is disabled by default. If it is set to true, the recordset
+               will be considered as created/updated/deleted if OpenStack request returned success.
         :param pulumi.Input[str] name: The name of the record set. Note the `.` at the end of the name.
                Changing this creates a new DNS  record set.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] records: An array of DNS records. _Note:_ if an IPv6 address
@@ -430,6 +474,7 @@ class RecordSet(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disable_status_check: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  records: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -450,6 +495,7 @@ class RecordSet(pulumi.CustomResource):
             __props__ = RecordSetArgs.__new__(RecordSetArgs)
 
             __props__.__dict__["description"] = description
+            __props__.__dict__["disable_status_check"] = disable_status_check
             __props__.__dict__["name"] = name
             __props__.__dict__["records"] = records
             __props__.__dict__["region"] = region
@@ -470,6 +516,7 @@ class RecordSet(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
+            disable_status_check: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             records: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             region: Optional[pulumi.Input[str]] = None,
@@ -485,6 +532,9 @@ class RecordSet(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description of the  record set.
+        :param pulumi.Input[bool] disable_status_check: Disable wait for recordset to reach ACTIVE
+               status. This argumen is disabled by default. If it is set to true, the recordset
+               will be considered as created/updated/deleted if OpenStack request returned success.
         :param pulumi.Input[str] name: The name of the record set. Note the `.` at the end of the name.
                Changing this creates a new DNS  record set.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] records: An array of DNS records. _Note:_ if an IPv6 address
@@ -506,6 +556,7 @@ class RecordSet(pulumi.CustomResource):
         __props__ = _RecordSetState.__new__(_RecordSetState)
 
         __props__.__dict__["description"] = description
+        __props__.__dict__["disable_status_check"] = disable_status_check
         __props__.__dict__["name"] = name
         __props__.__dict__["records"] = records
         __props__.__dict__["region"] = region
@@ -522,6 +573,16 @@ class RecordSet(pulumi.CustomResource):
         A description of the  record set.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="disableStatusCheck")
+    def disable_status_check(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Disable wait for recordset to reach ACTIVE
+        status. This argumen is disabled by default. If it is set to true, the recordset
+        will be considered as created/updated/deleted if OpenStack request returned success.
+        """
+        return pulumi.get(self, "disable_status_check")
 
     @property
     @pulumi.getter
