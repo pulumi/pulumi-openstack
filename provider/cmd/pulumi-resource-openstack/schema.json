@@ -10230,7 +10230,7 @@
                 },
                 "protocol": {
                     "type": "string",
-                    "description": "The protocol - can either be TCP, HTTP, HTTPS,\nTERMINATED_HTTPS or UDP (supported only in Octavia). Changing this creates a\nnew Listener.\n"
+                    "description": "The protocol - can either be TCP, HTTP, HTTPS,\nTERMINATED_HTTPS, UDP (supported only in Octavia) or SCTP (supported only\nin Octavia microversion \u003e= 2.23). Changing this creates a new Listener.\n"
                 },
                 "protocolPort": {
                     "type": "integer",
@@ -10327,7 +10327,7 @@
                 },
                 "protocol": {
                     "type": "string",
-                    "description": "The protocol - can either be TCP, HTTP, HTTPS,\nTERMINATED_HTTPS or UDP (supported only in Octavia). Changing this creates a\nnew Listener.\n"
+                    "description": "The protocol - can either be TCP, HTTP, HTTPS,\nTERMINATED_HTTPS, UDP (supported only in Octavia) or SCTP (supported only\nin Octavia microversion \u003e= 2.23). Changing this creates a new Listener.\n"
                 },
                 "protocolPort": {
                     "type": "integer",
@@ -10417,7 +10417,7 @@
                     },
                     "protocol": {
                         "type": "string",
-                        "description": "The protocol - can either be TCP, HTTP, HTTPS,\nTERMINATED_HTTPS or UDP (supported only in Octavia). Changing this creates a\nnew Listener.\n"
+                        "description": "The protocol - can either be TCP, HTTP, HTTPS,\nTERMINATED_HTTPS, UDP (supported only in Octavia) or SCTP (supported only\nin Octavia microversion \u003e= 2.23). Changing this creates a new Listener.\n"
                     },
                     "protocolPort": {
                         "type": "integer",
@@ -13747,7 +13747,7 @@
                 },
                 "objectType": {
                     "type": "string",
-                    "description": "The type of the object that the RBAC policy\naffects. Can either be `qos-policy` or `network`.\n"
+                    "description": "The type of the object that the RBAC policy\naffects. Can be one of the following: `address_scope`, `address_group`,\n`network`, `qos_policy`, `security_group` or `subnetpool`.\n"
                 },
                 "projectId": {
                     "type": "string"
@@ -13780,7 +13780,7 @@
                 },
                 "objectType": {
                     "type": "string",
-                    "description": "The type of the object that the RBAC policy\naffects. Can either be `qos-policy` or `network`.\n"
+                    "description": "The type of the object that the RBAC policy\naffects. Can be one of the following: `address_scope`, `address_group`,\n`network`, `qos_policy`, `security_group` or `subnetpool`.\n"
                 },
                 "region": {
                     "type": "string",
@@ -13810,7 +13810,7 @@
                     },
                     "objectType": {
                         "type": "string",
-                        "description": "The type of the object that the RBAC policy\naffects. Can either be `qos-policy` or `network`.\n"
+                        "description": "The type of the object that the RBAC policy\naffects. Can be one of the following: `address_scope`, `address_group`,\n`network`, `qos_policy`, `security_group` or `subnetpool`.\n"
                     },
                     "projectId": {
                         "type": "string"

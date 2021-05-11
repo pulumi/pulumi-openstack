@@ -75,7 +75,8 @@ type RbacPolicyV2 struct {
 	// `qosPolicy` returns a QoS ID.
 	ObjectId pulumi.StringOutput `pulumi:"objectId"`
 	// The type of the object that the RBAC policy
-	// affects. Can either be `qos-policy` or `network`.
+	// affects. Can be one of the following: `addressScope`, `addressGroup`,
+	// `network`, `qosPolicy`, `securityGroup` or `subnetpool`.
 	ObjectType pulumi.StringOutput `pulumi:"objectType"`
 	ProjectId  pulumi.StringOutput `pulumi:"projectId"`
 	// The region in which to obtain the V2 networking client.
@@ -137,7 +138,8 @@ type rbacPolicyV2State struct {
 	// `qosPolicy` returns a QoS ID.
 	ObjectId *string `pulumi:"objectId"`
 	// The type of the object that the RBAC policy
-	// affects. Can either be `qos-policy` or `network`.
+	// affects. Can be one of the following: `addressScope`, `addressGroup`,
+	// `network`, `qosPolicy`, `securityGroup` or `subnetpool`.
 	ObjectType *string `pulumi:"objectType"`
 	ProjectId  *string `pulumi:"projectId"`
 	// The region in which to obtain the V2 networking client.
@@ -159,7 +161,8 @@ type RbacPolicyV2State struct {
 	// `qosPolicy` returns a QoS ID.
 	ObjectId pulumi.StringPtrInput
 	// The type of the object that the RBAC policy
-	// affects. Can either be `qos-policy` or `network`.
+	// affects. Can be one of the following: `addressScope`, `addressGroup`,
+	// `network`, `qosPolicy`, `securityGroup` or `subnetpool`.
 	ObjectType pulumi.StringPtrInput
 	ProjectId  pulumi.StringPtrInput
 	// The region in which to obtain the V2 networking client.
@@ -185,7 +188,8 @@ type rbacPolicyV2Args struct {
 	// `qosPolicy` returns a QoS ID.
 	ObjectId string `pulumi:"objectId"`
 	// The type of the object that the RBAC policy
-	// affects. Can either be `qos-policy` or `network`.
+	// affects. Can be one of the following: `addressScope`, `addressGroup`,
+	// `network`, `qosPolicy`, `securityGroup` or `subnetpool`.
 	ObjectType string `pulumi:"objectType"`
 	// The region in which to obtain the V2 networking client.
 	// A networking client is needed to configure a routing entry on a subnet. If omitted, the
@@ -207,7 +211,8 @@ type RbacPolicyV2Args struct {
 	// `qosPolicy` returns a QoS ID.
 	ObjectId pulumi.StringInput
 	// The type of the object that the RBAC policy
-	// affects. Can either be `qos-policy` or `network`.
+	// affects. Can be one of the following: `addressScope`, `addressGroup`,
+	// `network`, `qosPolicy`, `securityGroup` or `subnetpool`.
 	ObjectType pulumi.StringInput
 	// The region in which to obtain the V2 networking client.
 	// A networking client is needed to configure a routing entry on a subnet. If omitted, the

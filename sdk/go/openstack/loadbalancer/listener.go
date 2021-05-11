@@ -82,8 +82,8 @@ type Listener struct {
 	// to be unique.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The protocol - can either be TCP, HTTP, HTTPS,
-	// TERMINATED_HTTPS or UDP (supported only in Octavia). Changing this creates a
-	// new Listener.
+	// TERMINATED_HTTPS, UDP (supported only in Octavia) or SCTP (supported only
+	// in Octavia microversion >= 2.23). Changing this creates a new Listener.
 	Protocol pulumi.StringOutput `pulumi:"protocol"`
 	// The port on which to listen for client traffic.
 	// Changing this creates a new Listener.
@@ -182,8 +182,8 @@ type listenerState struct {
 	// to be unique.
 	Name *string `pulumi:"name"`
 	// The protocol - can either be TCP, HTTP, HTTPS,
-	// TERMINATED_HTTPS or UDP (supported only in Octavia). Changing this creates a
-	// new Listener.
+	// TERMINATED_HTTPS, UDP (supported only in Octavia) or SCTP (supported only
+	// in Octavia microversion >= 2.23). Changing this creates a new Listener.
 	Protocol *string `pulumi:"protocol"`
 	// The port on which to listen for client traffic.
 	// Changing this creates a new Listener.
@@ -245,8 +245,8 @@ type ListenerState struct {
 	// to be unique.
 	Name pulumi.StringPtrInput
 	// The protocol - can either be TCP, HTTP, HTTPS,
-	// TERMINATED_HTTPS or UDP (supported only in Octavia). Changing this creates a
-	// new Listener.
+	// TERMINATED_HTTPS, UDP (supported only in Octavia) or SCTP (supported only
+	// in Octavia microversion >= 2.23). Changing this creates a new Listener.
 	Protocol pulumi.StringPtrInput
 	// The port on which to listen for client traffic.
 	// Changing this creates a new Listener.
@@ -312,8 +312,8 @@ type listenerArgs struct {
 	// to be unique.
 	Name *string `pulumi:"name"`
 	// The protocol - can either be TCP, HTTP, HTTPS,
-	// TERMINATED_HTTPS or UDP (supported only in Octavia). Changing this creates a
-	// new Listener.
+	// TERMINATED_HTTPS, UDP (supported only in Octavia) or SCTP (supported only
+	// in Octavia microversion >= 2.23). Changing this creates a new Listener.
 	Protocol string `pulumi:"protocol"`
 	// The port on which to listen for client traffic.
 	// Changing this creates a new Listener.
@@ -376,8 +376,8 @@ type ListenerArgs struct {
 	// to be unique.
 	Name pulumi.StringPtrInput
 	// The protocol - can either be TCP, HTTP, HTTPS,
-	// TERMINATED_HTTPS or UDP (supported only in Octavia). Changing this creates a
-	// new Listener.
+	// TERMINATED_HTTPS, UDP (supported only in Octavia) or SCTP (supported only
+	// in Octavia microversion >= 2.23). Changing this creates a new Listener.
 	Protocol pulumi.StringInput
 	// The port on which to listen for client traffic.
 	// Changing this creates a new Listener.

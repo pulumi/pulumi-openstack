@@ -78,7 +78,8 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// The type of the object that the RBAC policy
-        /// affects. Can either be `qos-policy` or `network`.
+        /// affects. Can be one of the following: `address_scope`, `address_group`,
+        /// `network`, `qos_policy`, `security_group` or `subnetpool`.
         /// </summary>
         [Output("objectType")]
         public Output<string> ObjectType { get; private set; } = null!;
@@ -165,7 +166,8 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// The type of the object that the RBAC policy
-        /// affects. Can either be `qos-policy` or `network`.
+        /// affects. Can be one of the following: `address_scope`, `address_group`,
+        /// `network`, `qos_policy`, `security_group` or `subnetpool`.
         /// </summary>
         [Input("objectType", required: true)]
         public Input<string> ObjectType { get; set; } = null!;
@@ -210,7 +212,8 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// The type of the object that the RBAC policy
-        /// affects. Can either be `qos-policy` or `network`.
+        /// affects. Can be one of the following: `address_scope`, `address_group`,
+        /// `network`, `qos_policy`, `security_group` or `subnetpool`.
         /// </summary>
         [Input("objectType")]
         public Input<string>? ObjectType { get; set; }
