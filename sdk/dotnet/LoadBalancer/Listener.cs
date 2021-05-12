@@ -116,8 +116,8 @@ namespace Pulumi.OpenStack.LoadBalancer
 
         /// <summary>
         /// The protocol - can either be TCP, HTTP, HTTPS,
-        /// TERMINATED_HTTPS or UDP (supported only in Octavia). Changing this creates a
-        /// new Listener.
+        /// TERMINATED_HTTPS, UDP (supported only in Octavia) or SCTP (supported only
+        /// in Octavia microversion &gt;= 2.23). Changing this creates a new Listener.
         /// </summary>
         [Output("protocol")]
         public Output<string> Protocol { get; private set; } = null!;
@@ -306,8 +306,8 @@ namespace Pulumi.OpenStack.LoadBalancer
 
         /// <summary>
         /// The protocol - can either be TCP, HTTP, HTTPS,
-        /// TERMINATED_HTTPS or UDP (supported only in Octavia). Changing this creates a
-        /// new Listener.
+        /// TERMINATED_HTTPS, UDP (supported only in Octavia) or SCTP (supported only
+        /// in Octavia microversion &gt;= 2.23). Changing this creates a new Listener.
         /// </summary>
         [Input("protocol", required: true)]
         public Input<string> Protocol { get; set; } = null!;
@@ -463,8 +463,8 @@ namespace Pulumi.OpenStack.LoadBalancer
 
         /// <summary>
         /// The protocol - can either be TCP, HTTP, HTTPS,
-        /// TERMINATED_HTTPS or UDP (supported only in Octavia). Changing this creates a
-        /// new Listener.
+        /// TERMINATED_HTTPS, UDP (supported only in Octavia) or SCTP (supported only
+        /// in Octavia microversion &gt;= 2.23). Changing this creates a new Listener.
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }

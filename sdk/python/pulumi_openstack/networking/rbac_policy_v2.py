@@ -26,7 +26,8 @@ class RbacPolicyV2Args:
                `object_type` of `network` returns a network ID and an `object_type` of
                `qos_policy` returns a QoS ID.
         :param pulumi.Input[str] object_type: The type of the object that the RBAC policy
-               affects. Can either be `qos-policy` or `network`.
+               affects. Can be one of the following: `address_scope`, `address_group`,
+               `network`, `qos_policy`, `security_group` or `subnetpool`.
         :param pulumi.Input[str] target_tenant: The ID of the tenant to which the RBAC policy
                will be enforced.
         :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
@@ -73,7 +74,8 @@ class RbacPolicyV2Args:
     def object_type(self) -> pulumi.Input[str]:
         """
         The type of the object that the RBAC policy
-        affects. Can either be `qos-policy` or `network`.
+        affects. Can be one of the following: `address_scope`, `address_group`,
+        `network`, `qos_policy`, `security_group` or `subnetpool`.
         """
         return pulumi.get(self, "object_type")
 
@@ -127,7 +129,8 @@ class _RbacPolicyV2State:
                `object_type` of `network` returns a network ID and an `object_type` of
                `qos_policy` returns a QoS ID.
         :param pulumi.Input[str] object_type: The type of the object that the RBAC policy
-               affects. Can either be `qos-policy` or `network`.
+               affects. Can be one of the following: `address_scope`, `address_group`,
+               `network`, `qos_policy`, `security_group` or `subnetpool`.
         :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
                A networking client is needed to configure a routing entry on a subnet. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
@@ -180,7 +183,8 @@ class _RbacPolicyV2State:
     def object_type(self) -> Optional[pulumi.Input[str]]:
         """
         The type of the object that the RBAC policy
-        affects. Can either be `qos-policy` or `network`.
+        affects. Can be one of the following: `address_scope`, `address_group`,
+        `network`, `qos_policy`, `security_group` or `subnetpool`.
         """
         return pulumi.get(self, "object_type")
 
@@ -282,7 +286,8 @@ class RbacPolicyV2(pulumi.CustomResource):
                `object_type` of `network` returns a network ID and an `object_type` of
                `qos_policy` returns a QoS ID.
         :param pulumi.Input[str] object_type: The type of the object that the RBAC policy
-               affects. Can either be `qos-policy` or `network`.
+               affects. Can be one of the following: `address_scope`, `address_group`,
+               `network`, `qos_policy`, `security_group` or `subnetpool`.
         :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
                A networking client is needed to configure a routing entry on a subnet. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
@@ -408,7 +413,8 @@ class RbacPolicyV2(pulumi.CustomResource):
                `object_type` of `network` returns a network ID and an `object_type` of
                `qos_policy` returns a QoS ID.
         :param pulumi.Input[str] object_type: The type of the object that the RBAC policy
-               affects. Can either be `qos-policy` or `network`.
+               affects. Can be one of the following: `address_scope`, `address_group`,
+               `network`, `qos_policy`, `security_group` or `subnetpool`.
         :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
                A networking client is needed to configure a routing entry on a subnet. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
@@ -452,7 +458,8 @@ class RbacPolicyV2(pulumi.CustomResource):
     def object_type(self) -> pulumi.Output[str]:
         """
         The type of the object that the RBAC policy
-        affects. Can either be `qos-policy` or `network`.
+        affects. Can be one of the following: `address_scope`, `address_group`,
+        `network`, `qos_policy`, `security_group` or `subnetpool`.
         """
         return pulumi.get(self, "object_type")
 
