@@ -79,6 +79,14 @@ namespace Pulumi.OpenStack.Dns
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the project DNS zone is created
+        /// for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+        /// user role in target project)
+        /// </summary>
+        [Output("projectId")]
+        public Output<string> ProjectId { get; private set; } = null!;
+
+        /// <summary>
         /// An array of DNS records. _Note:_ if an IPv6 address
         /// contains brackets (`[ ]`), the brackets will be stripped and the modified
         /// address will be recorded in the state.
@@ -188,6 +196,14 @@ namespace Pulumi.OpenStack.Dns
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The ID of the project DNS zone is created
+        /// for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+        /// user role in target project)
+        /// </summary>
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
+
         [Input("records")]
         private InputList<string>? _records;
 
@@ -270,6 +286,14 @@ namespace Pulumi.OpenStack.Dns
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The ID of the project DNS zone is created
+        /// for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+        /// user role in target project)
+        /// </summary>
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
 
         [Input("records")]
         private InputList<string>? _records;

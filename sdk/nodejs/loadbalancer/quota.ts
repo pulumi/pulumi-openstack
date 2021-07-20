@@ -17,6 +17,9 @@ import * as utilities from "../utilities";
  * > **Note:** This resource has all-in creation so all optional quota arguments that were not specified are
  *    created with zero value.
  *
+ * > **Note:** This resource has attributes that depend on octavia minor versions.
+ * Please ensure your Openstack cloud supports the required minor version.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -80,13 +83,13 @@ export class Quota extends pulumi.CustomResource {
     /**
      * Quota value for l7_policies. Changing this
      * updates the existing quota. Omitting it sets it to 0. Available in
-     * Octavia 2.19.
+     * **Octavia minor version 2.19**.
      */
     public readonly l7Policy!: pulumi.Output<number>;
     /**
      * Quota value for l7_rules. Changing this
      * updates the existing quota. Omitting it sets it to 0. Available in
-     * Octavia 2.19.
+     * **Octavia minor version 2.19**.
      */
     public readonly l7Rule!: pulumi.Output<number>;
     /**
@@ -176,13 +179,13 @@ export interface QuotaState {
     /**
      * Quota value for l7_policies. Changing this
      * updates the existing quota. Omitting it sets it to 0. Available in
-     * Octavia 2.19.
+     * **Octavia minor version 2.19**.
      */
     readonly l7Policy?: pulumi.Input<number>;
     /**
      * Quota value for l7_rules. Changing this
      * updates the existing quota. Omitting it sets it to 0. Available in
-     * Octavia 2.19.
+     * **Octavia minor version 2.19**.
      */
     readonly l7Rule?: pulumi.Input<number>;
     /**
@@ -229,13 +232,13 @@ export interface QuotaArgs {
     /**
      * Quota value for l7_policies. Changing this
      * updates the existing quota. Omitting it sets it to 0. Available in
-     * Octavia 2.19.
+     * **Octavia minor version 2.19**.
      */
     readonly l7Policy?: pulumi.Input<number>;
     /**
      * Quota value for l7_rules. Changing this
      * updates the existing quota. Omitting it sets it to 0. Available in
-     * Octavia 2.19.
+     * **Octavia minor version 2.19**.
      */
     readonly l7Rule?: pulumi.Input<number>;
     /**

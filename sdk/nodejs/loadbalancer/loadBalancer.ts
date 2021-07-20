@@ -7,6 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a V2 loadbalancer resource within OpenStack.
  *
+ * > **Note:** This resource has attributes that depend on octavia minor versions.
+ * Please ensure your Openstack cloud supports the required minor version.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -62,7 +65,7 @@ export class LoadBalancer extends pulumi.CustomResource {
     /**
      * The availability zone of the Loadbalancer.
      * Changing this creates a new loadbalancer. Available only for Octavia
-     * microversion 2.14 or later.
+     * **minor version 2.14 or later**.
      */
     public readonly availabilityZone!: pulumi.Output<string | undefined>;
     /**
@@ -191,7 +194,7 @@ export interface LoadBalancerState {
     /**
      * The availability zone of the Loadbalancer.
      * Changing this creates a new loadbalancer. Available only for Octavia
-     * microversion 2.14 or later.
+     * **minor version 2.14 or later**.
      */
     readonly availabilityZone?: pulumi.Input<string>;
     /**
@@ -272,7 +275,7 @@ export interface LoadBalancerArgs {
     /**
      * The availability zone of the Loadbalancer.
      * Changing this creates a new loadbalancer. Available only for Octavia
-     * microversion 2.14 or later.
+     * **minor version 2.14 or later**.
      */
     readonly availabilityZone?: pulumi.Input<string>;
     /**

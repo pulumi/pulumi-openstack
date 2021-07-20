@@ -22,6 +22,9 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// &gt; **Note:** This resource has all-in creation so all optional quota arguments that were not specified are
     ///    created with zero value.
     /// 
+    /// &gt; **Note:** This resource has attributes that depend on octavia minor versions.
+    /// Please ensure your Openstack cloud supports the required minor version.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -72,7 +75,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// <summary>
         /// Quota value for l7_policies. Changing this
         /// updates the existing quota. Omitting it sets it to 0. Available in
-        /// Octavia 2.19.
+        /// **Octavia minor version 2.19**.
         /// </summary>
         [Output("l7Policy")]
         public Output<int> L7Policy { get; private set; } = null!;
@@ -80,7 +83,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// <summary>
         /// Quota value for l7_rules. Changing this
         /// updates the existing quota. Omitting it sets it to 0. Available in
-        /// Octavia 2.19.
+        /// **Octavia minor version 2.19**.
         /// </summary>
         [Output("l7Rule")]
         public Output<int> L7Rule { get; private set; } = null!;
@@ -183,7 +186,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// <summary>
         /// Quota value for l7_policies. Changing this
         /// updates the existing quota. Omitting it sets it to 0. Available in
-        /// Octavia 2.19.
+        /// **Octavia minor version 2.19**.
         /// </summary>
         [Input("l7Policy")]
         public Input<int>? L7Policy { get; set; }
@@ -191,7 +194,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// <summary>
         /// Quota value for l7_rules. Changing this
         /// updates the existing quota. Omitting it sets it to 0. Available in
-        /// Octavia 2.19.
+        /// **Octavia minor version 2.19**.
         /// </summary>
         [Input("l7Rule")]
         public Input<int>? L7Rule { get; set; }
@@ -255,7 +258,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// <summary>
         /// Quota value for l7_policies. Changing this
         /// updates the existing quota. Omitting it sets it to 0. Available in
-        /// Octavia 2.19.
+        /// **Octavia minor version 2.19**.
         /// </summary>
         [Input("l7Policy")]
         public Input<int>? L7Policy { get; set; }
@@ -263,7 +266,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// <summary>
         /// Quota value for l7_rules. Changing this
         /// updates the existing quota. Omitting it sets it to 0. Available in
-        /// Octavia 2.19.
+        /// **Octavia minor version 2.19**.
         /// </summary>
         [Input("l7Rule")]
         public Input<int>? L7Rule { get; set; }

@@ -81,6 +81,12 @@ export class RecordSet extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * The ID of the project DNS zone is created
+     * for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+     * user role in target project)
+     */
+    public readonly projectId!: pulumi.Output<string>;
+    /**
      * An array of DNS records. _Note:_ if an IPv6 address
      * contains brackets (`[ ]`), the brackets will be stripped and the modified
      * address will be recorded in the state.
@@ -128,6 +134,7 @@ export class RecordSet extends pulumi.CustomResource {
             inputs["description"] = state ? state.description : undefined;
             inputs["disableStatusCheck"] = state ? state.disableStatusCheck : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["projectId"] = state ? state.projectId : undefined;
             inputs["records"] = state ? state.records : undefined;
             inputs["region"] = state ? state.region : undefined;
             inputs["ttl"] = state ? state.ttl : undefined;
@@ -142,6 +149,7 @@ export class RecordSet extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["disableStatusCheck"] = args ? args.disableStatusCheck : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["projectId"] = args ? args.projectId : undefined;
             inputs["records"] = args ? args.records : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["ttl"] = args ? args.ttl : undefined;
@@ -175,6 +183,12 @@ export interface RecordSetState {
      * Changing this creates a new DNS  record set.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The ID of the project DNS zone is created
+     * for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+     * user role in target project)
+     */
+    readonly projectId?: pulumi.Input<string>;
     /**
      * An array of DNS records. _Note:_ if an IPv6 address
      * contains brackets (`[ ]`), the brackets will be stripped and the modified
@@ -227,6 +241,12 @@ export interface RecordSetArgs {
      * Changing this creates a new DNS  record set.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The ID of the project DNS zone is created
+     * for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+     * user role in target project)
+     */
+    readonly projectId?: pulumi.Input<string>;
     /**
      * An array of DNS records. _Note:_ if an IPv6 address
      * contains brackets (`[ ]`), the brackets will be stripped and the modified

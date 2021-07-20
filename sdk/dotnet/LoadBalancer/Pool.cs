@@ -12,6 +12,9 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// <summary>
     /// Manages a V2 pool resource within OpenStack.
     /// 
+    /// &gt; **Note:** This resource has attributes that depend on octavia minor versions.
+    /// Please ensure your Openstack cloud supports the required minor version.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -102,8 +105,9 @@ namespace Pulumi.OpenStack.LoadBalancer
         public Output<Outputs.PoolPersistence> Persistence { get; private set; } = null!;
 
         /// <summary>
-        /// The protocol - can either be TCP, HTTP, HTTPS, PROXY
-        /// or UDP (supported only in Octavia). Changing this creates a new pool.
+        /// The protocol - can either be TCP, HTTP, HTTPS, PROXY,
+        /// UDP (supported only in Octavia), PROXYV2 (**Octavia minor version &gt;= 2.22**)
+        /// or SCTP (**Octavia minor version &gt;= 2.23**). Changing this creates a new pool.
         /// </summary>
         [Output("protocol")]
         public Output<string> Protocol { get; private set; } = null!;
@@ -224,8 +228,9 @@ namespace Pulumi.OpenStack.LoadBalancer
         public Input<Inputs.PoolPersistenceArgs>? Persistence { get; set; }
 
         /// <summary>
-        /// The protocol - can either be TCP, HTTP, HTTPS, PROXY
-        /// or UDP (supported only in Octavia). Changing this creates a new pool.
+        /// The protocol - can either be TCP, HTTP, HTTPS, PROXY,
+        /// UDP (supported only in Octavia), PROXYV2 (**Octavia minor version &gt;= 2.22**)
+        /// or SCTP (**Octavia minor version &gt;= 2.23**). Changing this creates a new pool.
         /// </summary>
         [Input("protocol", required: true)]
         public Input<string> Protocol { get; set; } = null!;
@@ -307,8 +312,9 @@ namespace Pulumi.OpenStack.LoadBalancer
         public Input<Inputs.PoolPersistenceGetArgs>? Persistence { get; set; }
 
         /// <summary>
-        /// The protocol - can either be TCP, HTTP, HTTPS, PROXY
-        /// or UDP (supported only in Octavia). Changing this creates a new pool.
+        /// The protocol - can either be TCP, HTTP, HTTPS, PROXY,
+        /// UDP (supported only in Octavia), PROXYV2 (**Octavia minor version &gt;= 2.22**)
+        /// or SCTP (**Octavia minor version &gt;= 2.23**). Changing this creates a new pool.
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }

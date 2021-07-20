@@ -279,7 +279,7 @@ class InstanceUserArgs:
         """
         :param pulumi.Input[str] name: Database to be created on new instance. Changing this creates a
                new instance.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] databases: A list of databases that user will have access to. If not specified, 
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] databases: A list of databases that user will have access to. If not specified,
                user has access to all databases on th einstance. Changing this creates a new instance.
         :param pulumi.Input[str] host: An ip address or % sign indicating what ip addresses can connect with
                this user credentials. Changing this creates a new instance.
@@ -311,7 +311,7 @@ class InstanceUserArgs:
     @pulumi.getter
     def databases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of databases that user will have access to. If not specified, 
+        A list of databases that user will have access to. If not specified,
         user has access to all databases on th einstance. Changing this creates a new instance.
         """
         return pulumi.get(self, "databases")

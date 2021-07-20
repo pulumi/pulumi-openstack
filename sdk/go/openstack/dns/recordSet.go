@@ -71,6 +71,10 @@ type RecordSet struct {
 	// The name of the record set. Note the `.` at the end of the name.
 	// Changing this creates a new DNS  record set.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The ID of the project DNS zone is created
+	// for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+	// user role in target project)
+	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// An array of DNS records. _Note:_ if an IPv6 address
 	// contains brackets (`[ ]`), the brackets will be stripped and the modified
 	// address will be recorded in the state.
@@ -133,6 +137,10 @@ type recordSetState struct {
 	// The name of the record set. Note the `.` at the end of the name.
 	// Changing this creates a new DNS  record set.
 	Name *string `pulumi:"name"`
+	// The ID of the project DNS zone is created
+	// for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+	// user role in target project)
+	ProjectId *string `pulumi:"projectId"`
 	// An array of DNS records. _Note:_ if an IPv6 address
 	// contains brackets (`[ ]`), the brackets will be stripped and the modified
 	// address will be recorded in the state.
@@ -164,6 +172,10 @@ type RecordSetState struct {
 	// The name of the record set. Note the `.` at the end of the name.
 	// Changing this creates a new DNS  record set.
 	Name pulumi.StringPtrInput
+	// The ID of the project DNS zone is created
+	// for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+	// user role in target project)
+	ProjectId pulumi.StringPtrInput
 	// An array of DNS records. _Note:_ if an IPv6 address
 	// contains brackets (`[ ]`), the brackets will be stripped and the modified
 	// address will be recorded in the state.
@@ -199,6 +211,10 @@ type recordSetArgs struct {
 	// The name of the record set. Note the `.` at the end of the name.
 	// Changing this creates a new DNS  record set.
 	Name *string `pulumi:"name"`
+	// The ID of the project DNS zone is created
+	// for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+	// user role in target project)
+	ProjectId *string `pulumi:"projectId"`
 	// An array of DNS records. _Note:_ if an IPv6 address
 	// contains brackets (`[ ]`), the brackets will be stripped and the modified
 	// address will be recorded in the state.
@@ -231,6 +247,10 @@ type RecordSetArgs struct {
 	// The name of the record set. Note the `.` at the end of the name.
 	// Changing this creates a new DNS  record set.
 	Name pulumi.StringPtrInput
+	// The ID of the project DNS zone is created
+	// for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+	// user role in target project)
+	ProjectId pulumi.StringPtrInput
 	// An array of DNS records. _Note:_ if an IPv6 address
 	// contains brackets (`[ ]`), the brackets will be stripped and the modified
 	// address will be recorded in the state.

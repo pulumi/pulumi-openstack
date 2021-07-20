@@ -418,7 +418,7 @@ export namespace database {
 
     export interface InstanceUser {
         /**
-         * A list of databases that user will have access to. If not specified, 
+         * A list of databases that user will have access to. If not specified,
          * user has access to all databases on th einstance. Changing this creates a new instance.
          */
         databases?: string[];
@@ -720,7 +720,7 @@ export namespace loadbalancer {
         adminStateUp?: boolean;
         /**
          * A bool that indicates whether the the member is
-         * backup. Requires octavia microversion 2.1 or later.
+         * backup. **Requires octavia minor version 2.1 or later**.
          */
         backup?: boolean;
         /**

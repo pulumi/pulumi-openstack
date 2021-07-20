@@ -14,7 +14,7 @@ namespace Pulumi.OpenStack.Database.Outputs
     public sealed class InstanceUser
     {
         /// <summary>
-        /// A list of databases that user will have access to. If not specified, 
+        /// A list of databases that user will have access to. If not specified,
         /// user has access to all databases on th einstance. Changing this creates a new instance.
         /// </summary>
         public readonly ImmutableArray<string> Databases;

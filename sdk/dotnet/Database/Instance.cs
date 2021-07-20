@@ -13,6 +13,12 @@ namespace Pulumi.OpenStack.Database
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>
+        /// A list of IP addresses assigned to the instance.
+        /// </summary>
+        [Output("addresses")]
+        public Output<ImmutableArray<string>> Addresses { get; private set; } = null!;
+
+        /// <summary>
         /// Configuration ID to be attached to the instance. Database instance
         /// will be rebooted when configuration is detached.
         /// </summary>
@@ -209,6 +215,18 @@ namespace Pulumi.OpenStack.Database
 
     public sealed class InstanceState : Pulumi.ResourceArgs
     {
+        [Input("addresses")]
+        private InputList<string>? _addresses;
+
+        /// <summary>
+        /// A list of IP addresses assigned to the instance.
+        /// </summary>
+        public InputList<string> Addresses
+        {
+            get => _addresses ?? (_addresses = new InputList<string>());
+            set => _addresses = value;
+        }
+
         /// <summary>
         /// Configuration ID to be attached to the instance. Database instance
         /// will be rebooted when configuration is detached.

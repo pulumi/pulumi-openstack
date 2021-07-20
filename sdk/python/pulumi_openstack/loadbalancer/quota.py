@@ -30,10 +30,10 @@ class QuotaArgs:
                this updates the existing quota. Omitting it sets it to 0.
         :param pulumi.Input[int] l7_policy: Quota value for l7_policies. Changing this
                updates the existing quota. Omitting it sets it to 0. Available in
-               Octavia 2.19.
+               **Octavia minor version 2.19**.
         :param pulumi.Input[int] l7_rule: Quota value for l7_rules. Changing this
                updates the existing quota. Omitting it sets it to 0. Available in
-               Octavia 2.19.
+               **Octavia minor version 2.19**.
         :param pulumi.Input[int] listener: Quota value for listeners. Changing this updates
                the existing quota. Omitting it sets it to 0.
         :param pulumi.Input[int] loadbalancer: Quota value for loadbalancers. Changing this
@@ -95,7 +95,7 @@ class QuotaArgs:
         """
         Quota value for l7_policies. Changing this
         updates the existing quota. Omitting it sets it to 0. Available in
-        Octavia 2.19.
+        **Octavia minor version 2.19**.
         """
         return pulumi.get(self, "l7_policy")
 
@@ -109,7 +109,7 @@ class QuotaArgs:
         """
         Quota value for l7_rules. Changing this
         updates the existing quota. Omitting it sets it to 0. Available in
-        Octavia 2.19.
+        **Octavia minor version 2.19**.
         """
         return pulumi.get(self, "l7_rule")
 
@@ -201,10 +201,10 @@ class _QuotaState:
                this updates the existing quota. Omitting it sets it to 0.
         :param pulumi.Input[int] l7_policy: Quota value for l7_policies. Changing this
                updates the existing quota. Omitting it sets it to 0. Available in
-               Octavia 2.19.
+               **Octavia minor version 2.19**.
         :param pulumi.Input[int] l7_rule: Quota value for l7_rules. Changing this
                updates the existing quota. Omitting it sets it to 0. Available in
-               Octavia 2.19.
+               **Octavia minor version 2.19**.
         :param pulumi.Input[int] listener: Quota value for listeners. Changing this updates
                the existing quota. Omitting it sets it to 0.
         :param pulumi.Input[int] loadbalancer: Quota value for loadbalancers. Changing this
@@ -256,7 +256,7 @@ class _QuotaState:
         """
         Quota value for l7_policies. Changing this
         updates the existing quota. Omitting it sets it to 0. Available in
-        Octavia 2.19.
+        **Octavia minor version 2.19**.
         """
         return pulumi.get(self, "l7_policy")
 
@@ -270,7 +270,7 @@ class _QuotaState:
         """
         Quota value for l7_rules. Changing this
         updates the existing quota. Omitting it sets it to 0. Available in
-        Octavia 2.19.
+        **Octavia minor version 2.19**.
         """
         return pulumi.get(self, "l7_rule")
 
@@ -385,6 +385,9 @@ class Quota(pulumi.CustomResource):
         > **Note:** This resource has all-in creation so all optional quota arguments that were not specified are
            created with zero value.
 
+        > **Note:** This resource has attributes that depend on octavia minor versions.
+        Please ensure your Openstack cloud supports the required minor version.
+
         ## Example Usage
 
         ```python
@@ -417,10 +420,10 @@ class Quota(pulumi.CustomResource):
                this updates the existing quota. Omitting it sets it to 0.
         :param pulumi.Input[int] l7_policy: Quota value for l7_policies. Changing this
                updates the existing quota. Omitting it sets it to 0. Available in
-               Octavia 2.19.
+               **Octavia minor version 2.19**.
         :param pulumi.Input[int] l7_rule: Quota value for l7_rules. Changing this
                updates the existing quota. Omitting it sets it to 0. Available in
-               Octavia 2.19.
+               **Octavia minor version 2.19**.
         :param pulumi.Input[int] listener: Quota value for listeners. Changing this updates
                the existing quota. Omitting it sets it to 0.
         :param pulumi.Input[int] loadbalancer: Quota value for loadbalancers. Changing this
@@ -452,6 +455,9 @@ class Quota(pulumi.CustomResource):
 
         > **Note:** This resource has all-in creation so all optional quota arguments that were not specified are
            created with zero value.
+
+        > **Note:** This resource has attributes that depend on octavia minor versions.
+        Please ensure your Openstack cloud supports the required minor version.
 
         ## Example Usage
 
@@ -556,10 +562,10 @@ class Quota(pulumi.CustomResource):
                this updates the existing quota. Omitting it sets it to 0.
         :param pulumi.Input[int] l7_policy: Quota value for l7_policies. Changing this
                updates the existing quota. Omitting it sets it to 0. Available in
-               Octavia 2.19.
+               **Octavia minor version 2.19**.
         :param pulumi.Input[int] l7_rule: Quota value for l7_rules. Changing this
                updates the existing quota. Omitting it sets it to 0. Available in
-               Octavia 2.19.
+               **Octavia minor version 2.19**.
         :param pulumi.Input[int] listener: Quota value for listeners. Changing this updates
                the existing quota. Omitting it sets it to 0.
         :param pulumi.Input[int] loadbalancer: Quota value for loadbalancers. Changing this
@@ -603,7 +609,7 @@ class Quota(pulumi.CustomResource):
         """
         Quota value for l7_policies. Changing this
         updates the existing quota. Omitting it sets it to 0. Available in
-        Octavia 2.19.
+        **Octavia minor version 2.19**.
         """
         return pulumi.get(self, "l7_policy")
 
@@ -613,7 +619,7 @@ class Quota(pulumi.CustomResource):
         """
         Quota value for l7_rules. Changing this
         updates the existing quota. Omitting it sets it to 0. Available in
-        Octavia 2.19.
+        **Octavia minor version 2.19**.
         """
         return pulumi.get(self, "l7_rule")
 

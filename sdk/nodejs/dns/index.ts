@@ -7,10 +7,14 @@ import * as utilities from "../utilities";
 // Export members:
 export * from "./getDnsZone";
 export * from "./recordSet";
+export * from "./transferAccept";
+export * from "./transferRequest";
 export * from "./zone";
 
 // Import resources to register:
 import { RecordSet } from "./recordSet";
+import { TransferAccept } from "./transferAccept";
+import { TransferRequest } from "./transferRequest";
 import { Zone } from "./zone";
 
 const _module = {
@@ -19,6 +23,10 @@ const _module = {
         switch (type) {
             case "openstack:dns/recordSet:RecordSet":
                 return new RecordSet(name, <any>undefined, { urn })
+            case "openstack:dns/transferAccept:TransferAccept":
+                return new TransferAccept(name, <any>undefined, { urn })
+            case "openstack:dns/transferRequest:TransferRequest":
+                return new TransferRequest(name, <any>undefined, { urn })
             case "openstack:dns/zone:Zone":
                 return new Zone(name, <any>undefined, { urn })
             default:
@@ -27,4 +35,6 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("openstack", "dns/recordSet", _module)
+pulumi.runtime.registerResourceModule("openstack", "dns/transferAccept", _module)
+pulumi.runtime.registerResourceModule("openstack", "dns/transferRequest", _module)
 pulumi.runtime.registerResourceModule("openstack", "dns/zone", _module)

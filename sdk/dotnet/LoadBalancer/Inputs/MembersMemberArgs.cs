@@ -28,7 +28,7 @@ namespace Pulumi.OpenStack.LoadBalancer.Inputs
 
         /// <summary>
         /// A bool that indicates whether the the member is
-        /// backup. Requires octavia microversion 2.1 or later.
+        /// backup. **Requires octavia minor version 2.1 or later**.
         /// </summary>
         [Input("backup")]
         public Input<bool>? Backup { get; set; }

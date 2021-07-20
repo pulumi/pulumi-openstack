@@ -31,8 +31,9 @@ class PoolArgs:
                distribute traffic to the pool's members. Must be one of
                ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT (supported only
                in Octavia).
-        :param pulumi.Input[str] protocol: The protocol - can either be TCP, HTTP, HTTPS, PROXY
-               or UDP (supported only in Octavia). Changing this creates a new pool.
+        :param pulumi.Input[str] protocol: The protocol - can either be TCP, HTTP, HTTPS, PROXY,
+               UDP (supported only in Octavia), PROXYV2 (**Octavia minor version >= 2.22**)
+               or SCTP (**Octavia minor version >= 2.23**). Changing this creates a new pool.
         :param pulumi.Input[bool] admin_state_up: The administrative state of the pool.
                A valid value is true (UP) or false (DOWN).
         :param pulumi.Input[str] description: Human-readable description for the pool.
@@ -92,8 +93,9 @@ class PoolArgs:
     @pulumi.getter
     def protocol(self) -> pulumi.Input[str]:
         """
-        The protocol - can either be TCP, HTTP, HTTPS, PROXY
-        or UDP (supported only in Octavia). Changing this creates a new pool.
+        The protocol - can either be TCP, HTTP, HTTPS, PROXY,
+        UDP (supported only in Octavia), PROXYV2 (**Octavia minor version >= 2.22**)
+        or SCTP (**Octavia minor version >= 2.23**). Changing this creates a new pool.
         """
         return pulumi.get(self, "protocol")
 
@@ -242,8 +244,9 @@ class _PoolState:
         :param pulumi.Input['PoolPersistenceArgs'] persistence: Omit this field to prevent session persistence.  Indicates
                whether connections in the same session will be processed by the same Pool
                member or not. Changing this creates a new pool.
-        :param pulumi.Input[str] protocol: The protocol - can either be TCP, HTTP, HTTPS, PROXY
-               or UDP (supported only in Octavia). Changing this creates a new pool.
+        :param pulumi.Input[str] protocol: The protocol - can either be TCP, HTTP, HTTPS, PROXY,
+               UDP (supported only in Octavia), PROXYV2 (**Octavia minor version >= 2.22**)
+               or SCTP (**Octavia minor version >= 2.23**). Changing this creates a new pool.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
                A Networking client is needed to create an . If omitted, the
                `region` argument of the provider is used. Changing this creates a new
@@ -371,8 +374,9 @@ class _PoolState:
     @pulumi.getter
     def protocol(self) -> Optional[pulumi.Input[str]]:
         """
-        The protocol - can either be TCP, HTTP, HTTPS, PROXY
-        or UDP (supported only in Octavia). Changing this creates a new pool.
+        The protocol - can either be TCP, HTTP, HTTPS, PROXY,
+        UDP (supported only in Octavia), PROXYV2 (**Octavia minor version >= 2.22**)
+        or SCTP (**Octavia minor version >= 2.23**). Changing this creates a new pool.
         """
         return pulumi.get(self, "protocol")
 
@@ -429,6 +433,9 @@ class Pool(pulumi.CustomResource):
         """
         Manages a V2 pool resource within OpenStack.
 
+        > **Note:** This resource has attributes that depend on octavia minor versions.
+        Please ensure your Openstack cloud supports the required minor version.
+
         ## Example Usage
 
         ```python
@@ -472,8 +479,9 @@ class Pool(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['PoolPersistenceArgs']] persistence: Omit this field to prevent session persistence.  Indicates
                whether connections in the same session will be processed by the same Pool
                member or not. Changing this creates a new pool.
-        :param pulumi.Input[str] protocol: The protocol - can either be TCP, HTTP, HTTPS, PROXY
-               or UDP (supported only in Octavia). Changing this creates a new pool.
+        :param pulumi.Input[str] protocol: The protocol - can either be TCP, HTTP, HTTPS, PROXY,
+               UDP (supported only in Octavia), PROXYV2 (**Octavia minor version >= 2.22**)
+               or SCTP (**Octavia minor version >= 2.23**). Changing this creates a new pool.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
                A Networking client is needed to create an . If omitted, the
                `region` argument of the provider is used. Changing this creates a new
@@ -490,6 +498,9 @@ class Pool(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a V2 pool resource within OpenStack.
+
+        > **Note:** This resource has attributes that depend on octavia minor versions.
+        Please ensure your Openstack cloud supports the required minor version.
 
         ## Example Usage
 
@@ -610,8 +621,9 @@ class Pool(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['PoolPersistenceArgs']] persistence: Omit this field to prevent session persistence.  Indicates
                whether connections in the same session will be processed by the same Pool
                member or not. Changing this creates a new pool.
-        :param pulumi.Input[str] protocol: The protocol - can either be TCP, HTTP, HTTPS, PROXY
-               or UDP (supported only in Octavia). Changing this creates a new pool.
+        :param pulumi.Input[str] protocol: The protocol - can either be TCP, HTTP, HTTPS, PROXY,
+               UDP (supported only in Octavia), PROXYV2 (**Octavia minor version >= 2.22**)
+               or SCTP (**Octavia minor version >= 2.23**). Changing this creates a new pool.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
                A Networking client is needed to create an . If omitted, the
                `region` argument of the provider is used. Changing this creates a new
@@ -706,8 +718,9 @@ class Pool(pulumi.CustomResource):
     @pulumi.getter
     def protocol(self) -> pulumi.Output[str]:
         """
-        The protocol - can either be TCP, HTTP, HTTPS, PROXY
-        or UDP (supported only in Octavia). Changing this creates a new pool.
+        The protocol - can either be TCP, HTTP, HTTPS, PROXY,
+        UDP (supported only in Octavia), PROXYV2 (**Octavia minor version >= 2.22**)
+        or SCTP (**Octavia minor version >= 2.23**). Changing this creates a new pool.
         """
         return pulumi.get(self, "protocol")
 

@@ -52,7 +52,7 @@ class MembersMember(dict):
         :param bool admin_state_up: The administrative state of the member.
                A valid value is true (UP) or false (DOWN). Defaults to true.
         :param bool backup: A bool that indicates whether the the member is
-               backup. Requires octavia microversion 2.1 or later.
+               backup. **Requires octavia minor version 2.1 or later**.
         :param str id: The unique ID for the members.
         :param str name: Human-readable name for the member.
         :param str subnet_id: The subnet in which to access the member.
@@ -107,7 +107,7 @@ class MembersMember(dict):
     def backup(self) -> Optional[bool]:
         """
         A bool that indicates whether the the member is
-        backup. Requires octavia microversion 2.1 or later.
+        backup. **Requires octavia minor version 2.1 or later**.
         """
         return pulumi.get(self, "backup")
 

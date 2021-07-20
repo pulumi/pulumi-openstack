@@ -171,8 +171,10 @@ func Provider() tfbridge.ProviderInfo {
 			"openstack_db_configuration_v1": {Tok: openstackResource(databaseMod, "Configuration")},
 
 			// DNS
-			"openstack_dns_recordset_v2": {Tok: openstackResource(dnsMod, "RecordSet")},
-			"openstack_dns_zone_v2":      {Tok: openstackResource(dnsMod, "Zone")},
+			"openstack_dns_recordset_v2":        {Tok: openstackResource(dnsMod, "RecordSet")},
+			"openstack_dns_zone_v2":             {Tok: openstackResource(dnsMod, "Zone")},
+			"openstack_dns_transfer_request_v2": {Tok: openstackResource(dnsMod, "TransferRequest")},
+			"openstack_dns_transfer_accept_v2":  {Tok: openstackResource(dnsMod, "TransferAccept")},
 
 			// Identity
 			"openstack_identity_application_credential_v3": {Tok: openstackResource(identityMod, "ApplicationCredential")},
@@ -394,8 +396,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		CSharp: &tfbridge.CSharpInfo{
 			PackageReferences: map[string]string{
-				"Pulumi":                       "3.*",
-				"System.Collections.Immutable": "1.6.0",
+				"Pulumi": "3.*",
 			},
 			Namespaces: namespaceMap,
 		},

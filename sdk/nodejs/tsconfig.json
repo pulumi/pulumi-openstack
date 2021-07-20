@@ -62,6 +62,8 @@
         "dns/getDnsZone.ts",
         "dns/index.ts",
         "dns/recordSet.ts",
+        "dns/transferAccept.ts",
+        "dns/transferRequest.ts",
         "dns/zone.ts",
         "firewall/firewall.ts",
         "firewall/getPolicy.ts",

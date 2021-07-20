@@ -5,6 +5,8 @@
 # Export this package's modules as members:
 from .get_dns_zone import *
 from .record_set import *
+from .transfer_accept import *
+from .transfer_request import *
 from .zone import *
 
 def _register_module():
@@ -21,6 +23,10 @@ def _register_module():
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
             if typ == "openstack:dns/recordSet:RecordSet":
                 return RecordSet(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "openstack:dns/transferAccept:TransferAccept":
+                return TransferAccept(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "openstack:dns/transferRequest:TransferRequest":
+                return TransferRequest(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "openstack:dns/zone:Zone":
                 return Zone(name, pulumi.ResourceOptions(urn=urn))
             else:
@@ -29,6 +35,8 @@ def _register_module():
 
     _module_instance = Module()
     pulumi.runtime.register_resource_module("openstack", "dns/recordSet", _module_instance)
+    pulumi.runtime.register_resource_module("openstack", "dns/transferAccept", _module_instance)
+    pulumi.runtime.register_resource_module("openstack", "dns/transferRequest", _module_instance)
     pulumi.runtime.register_resource_module("openstack", "dns/zone", _module_instance)
 
 _register_module()
