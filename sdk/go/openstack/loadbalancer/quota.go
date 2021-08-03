@@ -23,6 +23,9 @@ import (
 // > **Note:** This resource has all-in creation so all optional quota arguments that were not specified are
 //    created with zero value.
 //
+// > **Note:** This resource has attributes that depend on octavia minor versions.
+// Please ensure your Openstack cloud supports the required minor version.
+//
 // ## Example Usage
 //
 // ```go
@@ -73,11 +76,11 @@ type Quota struct {
 	HealthMonitor pulumi.IntOutput `pulumi:"healthMonitor"`
 	// Quota value for l7_policies. Changing this
 	// updates the existing quota. Omitting it sets it to 0. Available in
-	// Octavia 2.19.
+	// **Octavia minor version 2.19**.
 	L7Policy pulumi.IntOutput `pulumi:"l7Policy"`
 	// Quota value for l7_rules. Changing this
 	// updates the existing quota. Omitting it sets it to 0. Available in
-	// Octavia 2.19.
+	// **Octavia minor version 2.19**.
 	L7Rule pulumi.IntOutput `pulumi:"l7Rule"`
 	// Quota value for listeners. Changing this updates
 	// the existing quota. Omitting it sets it to 0.
@@ -136,11 +139,11 @@ type quotaState struct {
 	HealthMonitor *int `pulumi:"healthMonitor"`
 	// Quota value for l7_policies. Changing this
 	// updates the existing quota. Omitting it sets it to 0. Available in
-	// Octavia 2.19.
+	// **Octavia minor version 2.19**.
 	L7Policy *int `pulumi:"l7Policy"`
 	// Quota value for l7_rules. Changing this
 	// updates the existing quota. Omitting it sets it to 0. Available in
-	// Octavia 2.19.
+	// **Octavia minor version 2.19**.
 	L7Rule *int `pulumi:"l7Rule"`
 	// Quota value for listeners. Changing this updates
 	// the existing quota. Omitting it sets it to 0.
@@ -168,11 +171,11 @@ type QuotaState struct {
 	HealthMonitor pulumi.IntPtrInput
 	// Quota value for l7_policies. Changing this
 	// updates the existing quota. Omitting it sets it to 0. Available in
-	// Octavia 2.19.
+	// **Octavia minor version 2.19**.
 	L7Policy pulumi.IntPtrInput
 	// Quota value for l7_rules. Changing this
 	// updates the existing quota. Omitting it sets it to 0. Available in
-	// Octavia 2.19.
+	// **Octavia minor version 2.19**.
 	L7Rule pulumi.IntPtrInput
 	// Quota value for listeners. Changing this updates
 	// the existing quota. Omitting it sets it to 0.
@@ -204,11 +207,11 @@ type quotaArgs struct {
 	HealthMonitor *int `pulumi:"healthMonitor"`
 	// Quota value for l7_policies. Changing this
 	// updates the existing quota. Omitting it sets it to 0. Available in
-	// Octavia 2.19.
+	// **Octavia minor version 2.19**.
 	L7Policy *int `pulumi:"l7Policy"`
 	// Quota value for l7_rules. Changing this
 	// updates the existing quota. Omitting it sets it to 0. Available in
-	// Octavia 2.19.
+	// **Octavia minor version 2.19**.
 	L7Rule *int `pulumi:"l7Rule"`
 	// Quota value for listeners. Changing this updates
 	// the existing quota. Omitting it sets it to 0.
@@ -237,11 +240,11 @@ type QuotaArgs struct {
 	HealthMonitor pulumi.IntPtrInput
 	// Quota value for l7_policies. Changing this
 	// updates the existing quota. Omitting it sets it to 0. Available in
-	// Octavia 2.19.
+	// **Octavia minor version 2.19**.
 	L7Policy pulumi.IntPtrInput
 	// Quota value for l7_rules. Changing this
 	// updates the existing quota. Omitting it sets it to 0. Available in
-	// Octavia 2.19.
+	// **Octavia minor version 2.19**.
 	L7Rule pulumi.IntPtrInput
 	// Quota value for listeners. Changing this updates
 	// the existing quota. Omitting it sets it to 0.

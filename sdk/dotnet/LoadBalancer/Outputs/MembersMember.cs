@@ -25,7 +25,7 @@ namespace Pulumi.OpenStack.LoadBalancer.Outputs
         public readonly bool? AdminStateUp;
         /// <summary>
         /// A bool that indicates whether the the member is
-        /// backup. Requires octavia microversion 2.1 or later.
+        /// backup. **Requires octavia minor version 2.1 or later**.
         /// </summary>
         public readonly bool? Backup;
         /// <summary>

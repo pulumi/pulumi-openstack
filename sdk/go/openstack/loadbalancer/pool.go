@@ -13,6 +13,9 @@ import (
 
 // Manages a V2 pool resource within OpenStack.
 //
+// > **Note:** This resource has attributes that depend on octavia minor versions.
+// Please ensure your Openstack cloud supports the required minor version.
+//
 // ## Example Usage
 //
 // ```go
@@ -76,8 +79,9 @@ type Pool struct {
 	// whether connections in the same session will be processed by the same Pool
 	// member or not. Changing this creates a new pool.
 	Persistence PoolPersistenceOutput `pulumi:"persistence"`
-	// The protocol - can either be TCP, HTTP, HTTPS, PROXY
-	// or UDP (supported only in Octavia). Changing this creates a new pool.
+	// The protocol - can either be TCP, HTTP, HTTPS, PROXY,
+	// UDP (supported only in Octavia), PROXYV2 (**Octavia minor version >= 2.22**)
+	// or SCTP (**Octavia minor version >= 2.23**). Changing this creates a new pool.
 	Protocol pulumi.StringOutput `pulumi:"protocol"`
 	// The region in which to obtain the V2 Networking client.
 	// A Networking client is needed to create an . If omitted, the
@@ -149,8 +153,9 @@ type poolState struct {
 	// whether connections in the same session will be processed by the same Pool
 	// member or not. Changing this creates a new pool.
 	Persistence *PoolPersistence `pulumi:"persistence"`
-	// The protocol - can either be TCP, HTTP, HTTPS, PROXY
-	// or UDP (supported only in Octavia). Changing this creates a new pool.
+	// The protocol - can either be TCP, HTTP, HTTPS, PROXY,
+	// UDP (supported only in Octavia), PROXYV2 (**Octavia minor version >= 2.22**)
+	// or SCTP (**Octavia minor version >= 2.23**). Changing this creates a new pool.
 	Protocol *string `pulumi:"protocol"`
 	// The region in which to obtain the V2 Networking client.
 	// A Networking client is needed to create an . If omitted, the
@@ -188,8 +193,9 @@ type PoolState struct {
 	// whether connections in the same session will be processed by the same Pool
 	// member or not. Changing this creates a new pool.
 	Persistence PoolPersistencePtrInput
-	// The protocol - can either be TCP, HTTP, HTTPS, PROXY
-	// or UDP (supported only in Octavia). Changing this creates a new pool.
+	// The protocol - can either be TCP, HTTP, HTTPS, PROXY,
+	// UDP (supported only in Octavia), PROXYV2 (**Octavia minor version >= 2.22**)
+	// or SCTP (**Octavia minor version >= 2.23**). Changing this creates a new pool.
 	Protocol pulumi.StringPtrInput
 	// The region in which to obtain the V2 Networking client.
 	// A Networking client is needed to create an . If omitted, the
@@ -231,8 +237,9 @@ type poolArgs struct {
 	// whether connections in the same session will be processed by the same Pool
 	// member or not. Changing this creates a new pool.
 	Persistence *PoolPersistence `pulumi:"persistence"`
-	// The protocol - can either be TCP, HTTP, HTTPS, PROXY
-	// or UDP (supported only in Octavia). Changing this creates a new pool.
+	// The protocol - can either be TCP, HTTP, HTTPS, PROXY,
+	// UDP (supported only in Octavia), PROXYV2 (**Octavia minor version >= 2.22**)
+	// or SCTP (**Octavia minor version >= 2.23**). Changing this creates a new pool.
 	Protocol string `pulumi:"protocol"`
 	// The region in which to obtain the V2 Networking client.
 	// A Networking client is needed to create an . If omitted, the
@@ -271,8 +278,9 @@ type PoolArgs struct {
 	// whether connections in the same session will be processed by the same Pool
 	// member or not. Changing this creates a new pool.
 	Persistence PoolPersistencePtrInput
-	// The protocol - can either be TCP, HTTP, HTTPS, PROXY
-	// or UDP (supported only in Octavia). Changing this creates a new pool.
+	// The protocol - can either be TCP, HTTP, HTTPS, PROXY,
+	// UDP (supported only in Octavia), PROXYV2 (**Octavia minor version >= 2.22**)
+	// or SCTP (**Octavia minor version >= 2.23**). Changing this creates a new pool.
 	Protocol pulumi.StringInput
 	// The region in which to obtain the V2 Networking client.
 	// A Networking client is needed to create an . If omitted, the

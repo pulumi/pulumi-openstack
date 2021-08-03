@@ -12,6 +12,9 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// <summary>
     /// Manages a V2 listener resource within OpenStack.
     /// 
+    /// &gt; **Note:** This resource has attributes that depend on octavia minor versions.
+    /// Please ensure your Openstack cloud supports the required minor version.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -117,7 +120,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// <summary>
         /// The protocol - can either be TCP, HTTP, HTTPS,
         /// TERMINATED_HTTPS, UDP (supported only in Octavia) or SCTP (supported only
-        /// in Octavia microversion &gt;= 2.23). Changing this creates a new Listener.
+        /// in **Octavia minor version &gt;= 2.23**). Changing this creates a new Listener.
         /// </summary>
         [Output("protocol")]
         public Output<string> Protocol { get; private set; } = null!;
@@ -307,7 +310,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// <summary>
         /// The protocol - can either be TCP, HTTP, HTTPS,
         /// TERMINATED_HTTPS, UDP (supported only in Octavia) or SCTP (supported only
-        /// in Octavia microversion &gt;= 2.23). Changing this creates a new Listener.
+        /// in **Octavia minor version &gt;= 2.23**). Changing this creates a new Listener.
         /// </summary>
         [Input("protocol", required: true)]
         public Input<string> Protocol { get; set; } = null!;
@@ -464,7 +467,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// <summary>
         /// The protocol - can either be TCP, HTTP, HTTPS,
         /// TERMINATED_HTTPS, UDP (supported only in Octavia) or SCTP (supported only
-        /// in Octavia microversion &gt;= 2.23). Changing this creates a new Listener.
+        /// in **Octavia minor version &gt;= 2.23**). Changing this creates a new Listener.
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }

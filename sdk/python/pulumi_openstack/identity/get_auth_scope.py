@@ -219,26 +219,6 @@ def get_auth_scope(name: Optional[str] = None,
     auth scope in use. This can be used as self-discovery or introspection of
     the username or project name currently in use as well as the service catalog.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    scope = openstack.identity.get_auth_scope(name="my_scope")
-    ```
-
-    To find the the public object storage endpoint for "region1" as listed in the
-    service catalog:
-
-    ```python
-    import pulumi
-
-    object_store_service = [entry for entry in data["openstack_identity_auth_scope_v3"]["scope"]["service_catalog"] if entry["type"] == "object-store"][0]
-    object_store_endpoint = [endpoint for endpoint in object_store_service["endpoints"] if endpoint["interface"] == "public" and endpoint["region"] == "region1"][0]
-    object_store_public_url = object_store_endpoint["url"]
-    ```
-
 
     :param str name: The name of the scope. This is an arbitrary name which is
            only used as a unique identifier so an actual token isn't used as the ID.

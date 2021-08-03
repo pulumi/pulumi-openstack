@@ -183,6 +183,7 @@ class InstanceArgs:
 @pulumi.input_type
 class _InstanceState:
     def __init__(__self__, *,
+                 addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  configuration_id: Optional[pulumi.Input[str]] = None,
                  databases: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDatabaseArgs']]]] = None,
                  datastore: Optional[pulumi.Input['InstanceDatastoreArgs']] = None,
@@ -194,6 +195,7 @@ class _InstanceState:
                  users: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceUserArgs']]]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] addresses: A list of IP addresses assigned to the instance.
         :param pulumi.Input[str] configuration_id: Configuration ID to be attached to the instance. Database instance
                will be rebooted when configuration is detached.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceDatabaseArgs']]] databases: An array of database name, charset and collate. The database
@@ -213,6 +215,8 @@ class _InstanceState:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceUserArgs']]] users: An array of username, password, host and databases. The user
                object structure is documented below.
         """
+        if addresses is not None:
+            pulumi.set(__self__, "addresses", addresses)
         if configuration_id is not None:
             pulumi.set(__self__, "configuration_id", configuration_id)
         if databases is not None:
@@ -231,6 +235,18 @@ class _InstanceState:
             pulumi.set(__self__, "size", size)
         if users is not None:
             pulumi.set(__self__, "users", users)
+
+    @property
+    @pulumi.getter
+    def addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of IP addresses assigned to the instance.
+        """
+        return pulumi.get(self, "addresses")
+
+    @addresses.setter
+    def addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "addresses", value)
 
     @property
     @pulumi.getter(name="configurationId")
@@ -445,6 +461,7 @@ class Instance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'size'")
             __props__.__dict__["size"] = size
             __props__.__dict__["users"] = users
+            __props__.__dict__["addresses"] = None
         super(Instance, __self__).__init__(
             'openstack:database/instance:Instance',
             resource_name,
@@ -455,6 +472,7 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             configuration_id: Optional[pulumi.Input[str]] = None,
             databases: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceDatabaseArgs']]]]] = None,
             datastore: Optional[pulumi.Input[pulumi.InputType['InstanceDatastoreArgs']]] = None,
@@ -471,6 +489,7 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] addresses: A list of IP addresses assigned to the instance.
         :param pulumi.Input[str] configuration_id: Configuration ID to be attached to the instance. Database instance
                will be rebooted when configuration is detached.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceDatabaseArgs']]]] databases: An array of database name, charset and collate. The database
@@ -494,6 +513,7 @@ class Instance(pulumi.CustomResource):
 
         __props__ = _InstanceState.__new__(_InstanceState)
 
+        __props__.__dict__["addresses"] = addresses
         __props__.__dict__["configuration_id"] = configuration_id
         __props__.__dict__["databases"] = databases
         __props__.__dict__["datastore"] = datastore
@@ -504,6 +524,14 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["size"] = size
         __props__.__dict__["users"] = users
         return Instance(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def addresses(self) -> pulumi.Output[Sequence[str]]:
+        """
+        A list of IP addresses assigned to the instance.
+        """
+        return pulumi.get(self, "addresses")
 
     @property
     @pulumi.getter(name="configurationId")

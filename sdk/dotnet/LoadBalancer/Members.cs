@@ -12,6 +12,9 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// <summary>
     /// Manages a V2 members resource within OpenStack (batch members update).
     /// 
+    /// &gt; **Note:** This resource has attributes that depend on octavia minor versions.
+    /// Please ensure your Openstack cloud supports the required minor version.
+    /// 
     /// &gt; **Note:** This resource works only within Octavia API. For
     /// legacy Neutron LBaaS v2 extension please use
     /// openstack.loadbalancer.Member resource.

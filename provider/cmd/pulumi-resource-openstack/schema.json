@@ -1105,7 +1105,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of databases that user will have access to. If not specified, \nuser has access to all databases on th einstance. Changing this creates a new instance.\n",
+                    "description": "A list of databases that user will have access to. If not specified,\nuser has access to all databases on th einstance. Changing this creates a new instance.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1842,7 +1842,7 @@
                 },
                 "backup": {
                     "type": "boolean",
-                    "description": "A bool that indicates whether the the member is\nbackup. Requires octavia microversion 2.1 or later.\n",
+                    "description": "A bool that indicates whether the the member is\nbackup. **Requires octavia minor version 2.1 or later**.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -6740,6 +6740,13 @@
         },
         "openstack:database/instance:Instance": {
             "properties": {
+                "addresses": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of IP addresses assigned to the instance.\n"
+                },
                 "configurationId": {
                     "type": "string",
                     "description": "Configuration ID to be attached to the instance. Database instance\nwill be rebooted when configuration is detached.\n"
@@ -6787,6 +6794,7 @@
                 }
             },
             "required": [
+                "addresses",
                 "datastore",
                 "flavorId",
                 "name",
@@ -6847,6 +6855,13 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Instance resources.\n",
                 "properties": {
+                    "addresses": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of IP addresses assigned to the instance.\n"
+                    },
                     "configurationId": {
                         "type": "string",
                         "description": "Configuration ID to be attached to the instance. Database instance\nwill be rebooted when configuration is detached.\n"
@@ -7009,6 +7024,10 @@
                     "type": "string",
                     "description": "The name of the record set. Note the `.` at the end of the name.\nChanging this creates a new DNS  record set.\n"
                 },
+                "projectId": {
+                    "type": "string",
+                    "description": "The ID of the project DNS zone is created\nfor, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned\nuser role in target project)\n"
+                },
                 "records": {
                     "type": "array",
                     "items": {
@@ -7042,6 +7061,7 @@
             },
             "required": [
                 "name",
+                "projectId",
                 "region",
                 "ttl",
                 "type",
@@ -7059,6 +7079,10 @@
                 "name": {
                     "type": "string",
                     "description": "The name of the record set. Note the `.` at the end of the name.\nChanging this creates a new DNS  record set.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "The ID of the project DNS zone is created\nfor, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned\nuser role in target project)\n"
                 },
                 "records": {
                     "type": "array",
@@ -7109,6 +7133,10 @@
                         "type": "string",
                         "description": "The name of the record set. Note the `.` at the end of the name.\nChanging this creates a new DNS  record set.\n"
                     },
+                    "projectId": {
+                        "type": "string",
+                        "description": "The ID of the project DNS zone is created\nfor, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned\nuser role in target project)\n"
+                    },
                     "records": {
                         "type": "array",
                         "items": {
@@ -7138,6 +7166,209 @@
                     "zoneId": {
                         "type": "string",
                         "description": "The ID of the zone in which to create the record set.\nChanging this creates a new DNS  record set.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "openstack:dns/transferAccept:TransferAccept": {
+            "description": "Manages a DNS zone transfer accept in the OpenStack DNS Service.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### Automatically detect the correct network\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst exampleZone = new openstack.dns.Zone(\"example_zone\", {\n    description: \"An example zone\",\n    email: \"jdoe@example.com\",\n    ttl: 3000,\n    type: \"PRIMARY\",\n});\nconst request1 = new openstack.dns.TransferRequest(\"request_1\", {\n    description: \"a transfer accept\",\n    zoneId: exampleZone.id,\n});\nconst accept1 = new openstack.dns.TransferAccept(\"accept_1\", {\n    key: request1.key,\n    zoneTransferRequestId: request1.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nexample_zone = openstack.dns.Zone(\"exampleZone\",\n    description=\"An example zone\",\n    email=\"jdoe@example.com\",\n    ttl=3000,\n    type=\"PRIMARY\")\nrequest1 = openstack.dns.TransferRequest(\"request1\",\n    description=\"a transfer accept\",\n    zone_id=example_zone.id)\naccept1 = openstack.dns.TransferAccept(\"accept1\",\n    key=request1.key,\n    zone_transfer_request_id=request1.id)\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var exampleZone = new OpenStack.Dns.Zone(\"exampleZone\", new OpenStack.Dns.ZoneArgs\n        {\n            Description = \"An example zone\",\n            Email = \"jdoe@example.com\",\n            Ttl = 3000,\n            Type = \"PRIMARY\",\n        });\n        var request1 = new OpenStack.Dns.TransferRequest(\"request1\", new OpenStack.Dns.TransferRequestArgs\n        {\n            Description = \"a transfer accept\",\n            ZoneId = exampleZone.Id,\n        });\n        var accept1 = new OpenStack.Dns.TransferAccept(\"accept1\", new OpenStack.Dns.TransferAcceptArgs\n        {\n            Key = request1.Key,\n            ZoneTransferRequestId = request1.Id,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/dns\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texampleZone, err := dns.NewZone(ctx, \"exampleZone\", \u0026dns.ZoneArgs{\n\t\t\tDescription: pulumi.String(\"An example zone\"),\n\t\t\tEmail:       pulumi.String(\"jdoe@example.com\"),\n\t\t\tTtl:         pulumi.Int(3000),\n\t\t\tType:        pulumi.String(\"PRIMARY\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\trequest1, err := dns.NewTransferRequest(ctx, \"request1\", \u0026dns.TransferRequestArgs{\n\t\t\tDescription: pulumi.String(\"a transfer accept\"),\n\t\t\tZoneId:      exampleZone.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = dns.NewTransferAccept(ctx, \"accept1\", \u0026dns.TransferAcceptArgs{\n\t\t\tKey:                   request1.Key,\n\t\t\tZoneTransferRequestId: request1.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nThis resource can be imported by specifying the transferAccept ID\n\n```sh\n $ pulumi import openstack:dns/transferAccept:TransferAccept accept_1 \u003caccept_id\u003e\n```\n\n ",
+            "properties": {
+                "disableStatusCheck": {
+                    "type": "boolean",
+                    "description": "Disable wait for zone to reach ACTIVE\nstatus. The check is enabled by default. If this argument is true, zone\nwill be considered as created/updated if OpenStack accept returned success.\n"
+                },
+                "key": {
+                    "type": "string",
+                    "description": "The transfer key.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region in which to obtain the V2 Compute client.\nKeypairs are associated with accounts, but a Compute client is needed to\ncreate one. If omitted, the `region` argument of the provider is used.\nChanging this creates a new DNS zone.\n"
+                },
+                "valueSpecs": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Map of additional options. Changing this creates a\nnew transfer accept.\n"
+                },
+                "zoneTransferRequestId": {
+                    "type": "string",
+                    "description": "The ID of the zone transfer request.\n"
+                }
+            },
+            "required": [
+                "key",
+                "region",
+                "zoneTransferRequestId"
+            ],
+            "inputProperties": {
+                "disableStatusCheck": {
+                    "type": "boolean",
+                    "description": "Disable wait for zone to reach ACTIVE\nstatus. The check is enabled by default. If this argument is true, zone\nwill be considered as created/updated if OpenStack accept returned success.\n"
+                },
+                "key": {
+                    "type": "string",
+                    "description": "The transfer key.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region in which to obtain the V2 Compute client.\nKeypairs are associated with accounts, but a Compute client is needed to\ncreate one. If omitted, the `region` argument of the provider is used.\nChanging this creates a new DNS zone.\n"
+                },
+                "valueSpecs": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Map of additional options. Changing this creates a\nnew transfer accept.\n"
+                },
+                "zoneTransferRequestId": {
+                    "type": "string",
+                    "description": "The ID of the zone transfer request.\n"
+                }
+            },
+            "requiredInputs": [
+                "key",
+                "zoneTransferRequestId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering TransferAccept resources.\n",
+                "properties": {
+                    "disableStatusCheck": {
+                        "type": "boolean",
+                        "description": "Disable wait for zone to reach ACTIVE\nstatus. The check is enabled by default. If this argument is true, zone\nwill be considered as created/updated if OpenStack accept returned success.\n"
+                    },
+                    "key": {
+                        "type": "string",
+                        "description": "The transfer key.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region in which to obtain the V2 Compute client.\nKeypairs are associated with accounts, but a Compute client is needed to\ncreate one. If omitted, the `region` argument of the provider is used.\nChanging this creates a new DNS zone.\n"
+                    },
+                    "valueSpecs": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "Map of additional options. Changing this creates a\nnew transfer accept.\n"
+                    },
+                    "zoneTransferRequestId": {
+                        "type": "string",
+                        "description": "The ID of the zone transfer request.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "openstack:dns/transferRequest:TransferRequest": {
+            "description": "Manages a DNS zone transfer request in the OpenStack DNS Service.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### Automatically detect the correct network\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst exampleZone = new openstack.dns.Zone(\"example_zone\", {\n    description: \"An example zone\",\n    email: \"jdoe@example.com\",\n    ttl: 3000,\n    type: \"PRIMARY\",\n});\nconst request1 = new openstack.dns.TransferRequest(\"request_1\", {\n    description: \"a transfer request\",\n    zoneId: exampleZone.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nexample_zone = openstack.dns.Zone(\"exampleZone\",\n    description=\"An example zone\",\n    email=\"jdoe@example.com\",\n    ttl=3000,\n    type=\"PRIMARY\")\nrequest1 = openstack.dns.TransferRequest(\"request1\",\n    description=\"a transfer request\",\n    zone_id=example_zone.id)\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var exampleZone = new OpenStack.Dns.Zone(\"exampleZone\", new OpenStack.Dns.ZoneArgs\n        {\n            Description = \"An example zone\",\n            Email = \"jdoe@example.com\",\n            Ttl = 3000,\n            Type = \"PRIMARY\",\n        });\n        var request1 = new OpenStack.Dns.TransferRequest(\"request1\", new OpenStack.Dns.TransferRequestArgs\n        {\n            Description = \"a transfer request\",\n            ZoneId = exampleZone.Id,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/dns\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texampleZone, err := dns.NewZone(ctx, \"exampleZone\", \u0026dns.ZoneArgs{\n\t\t\tDescription: pulumi.String(\"An example zone\"),\n\t\t\tEmail:       pulumi.String(\"jdoe@example.com\"),\n\t\t\tTtl:         pulumi.Int(3000),\n\t\t\tType:        pulumi.String(\"PRIMARY\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = dns.NewTransferRequest(ctx, \"request1\", \u0026dns.TransferRequestArgs{\n\t\t\tDescription: pulumi.String(\"a transfer request\"),\n\t\t\tZoneId:      exampleZone.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nThis resource can be imported by specifying the transferRequest ID\n\n```sh\n $ pulumi import openstack:dns/transferRequest:TransferRequest request_1 \u003crequest_id\u003e\n```\n\n ",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "A description of the zone tranfer request.\n"
+                },
+                "disableStatusCheck": {
+                    "type": "boolean",
+                    "description": "Disable wait for zone to reach ACTIVE\nstatus. The check is enabled by default. If this argument is true, zone\nwill be considered as created/updated if OpenStack request returned success.\n"
+                },
+                "key": {
+                    "type": "string"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region in which to obtain the V2 Compute client.\nKeypairs are associated with accounts, but a Compute client is needed to\ncreate one. If omitted, the `region` argument of the provider is used.\nChanging this creates a new DNS zone.\n"
+                },
+                "targetProjectId": {
+                    "type": "string",
+                    "description": "The target Project ID to transfer to.\n"
+                },
+                "valueSpecs": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Map of additional options. Changing this creates a\nnew transfer request.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The ID of the zone for which to create the transfer\nrequest.\n"
+                }
+            },
+            "required": [
+                "key",
+                "region",
+                "targetProjectId",
+                "zoneId"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "A description of the zone tranfer request.\n"
+                },
+                "disableStatusCheck": {
+                    "type": "boolean",
+                    "description": "Disable wait for zone to reach ACTIVE\nstatus. The check is enabled by default. If this argument is true, zone\nwill be considered as created/updated if OpenStack request returned success.\n"
+                },
+                "key": {
+                    "type": "string"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region in which to obtain the V2 Compute client.\nKeypairs are associated with accounts, but a Compute client is needed to\ncreate one. If omitted, the `region` argument of the provider is used.\nChanging this creates a new DNS zone.\n"
+                },
+                "targetProjectId": {
+                    "type": "string",
+                    "description": "The target Project ID to transfer to.\n"
+                },
+                "valueSpecs": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Map of additional options. Changing this creates a\nnew transfer request.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The ID of the zone for which to create the transfer\nrequest.\n"
+                }
+            },
+            "requiredInputs": [
+                "zoneId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering TransferRequest resources.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "A description of the zone tranfer request.\n"
+                    },
+                    "disableStatusCheck": {
+                        "type": "boolean",
+                        "description": "Disable wait for zone to reach ACTIVE\nstatus. The check is enabled by default. If this argument is true, zone\nwill be considered as created/updated if OpenStack request returned success.\n"
+                    },
+                    "key": {
+                        "type": "string"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region in which to obtain the V2 Compute client.\nKeypairs are associated with accounts, but a Compute client is needed to\ncreate one. If omitted, the `region` argument of the provider is used.\nChanging this creates a new DNS zone.\n"
+                    },
+                    "targetProjectId": {
+                        "type": "string",
+                        "description": "The target Project ID to transfer to.\n"
+                    },
+                    "valueSpecs": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "Map of additional options. Changing this creates a\nnew transfer request.\n"
+                    },
+                    "zoneId": {
+                        "type": "string",
+                        "description": "The ID of the zone for which to create the transfer\nrequest.\n"
                     }
                 },
                 "type": "object"
@@ -10184,7 +10415,7 @@
             }
         },
         "openstack:loadbalancer/listener:Listener": {
-            "description": "Manages a V2 listener resource within OpenStack.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst listener1 = new openstack.loadbalancer.Listener(\"listener_1\", {\n    insertHeaders: {\n        \"X-Forwarded-For\": \"true\",\n    },\n    loadbalancerId: \"d9415786-5f1a-428b-b35f-2f1523e146d2\",\n    protocol: \"HTTP\",\n    protocolPort: 8080,\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nlistener1 = openstack.loadbalancer.Listener(\"listener1\",\n    insert_headers={\n        \"X-Forwarded-For\": \"true\",\n    },\n    loadbalancer_id=\"d9415786-5f1a-428b-b35f-2f1523e146d2\",\n    protocol=\"HTTP\",\n    protocol_port=8080)\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var listener1 = new OpenStack.LoadBalancer.Listener(\"listener1\", new OpenStack.LoadBalancer.ListenerArgs\n        {\n            InsertHeaders = \n            {\n                { \"X-Forwarded-For\", \"true\" },\n            },\n            LoadbalancerId = \"d9415786-5f1a-428b-b35f-2f1523e146d2\",\n            Protocol = \"HTTP\",\n            ProtocolPort = 8080,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/loadbalancer\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := loadbalancer.NewListener(ctx, \"listener1\", \u0026loadbalancer.ListenerArgs{\n\t\t\tInsertHeaders: pulumi.StringMap{\n\t\t\t\t\"X-Forwarded-For\": pulumi.String(\"true\"),\n\t\t\t},\n\t\t\tLoadbalancerId: pulumi.String(\"d9415786-5f1a-428b-b35f-2f1523e146d2\"),\n\t\t\tProtocol:       pulumi.String(\"HTTP\"),\n\t\t\tProtocolPort:   pulumi.Int(8080),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nLoad Balancer Listener can be imported using the Listener ID, e.g.\n\n```sh\n $ pulumi import openstack:loadbalancer/listener:Listener listener_1 b67ce64e-8b26-405d-afeb-4a078901f15a\n```\n\n ",
+            "description": "Manages a V2 listener resource within OpenStack.\n\n\u003e **Note:** This resource has attributes that depend on octavia minor versions.\nPlease ensure your Openstack cloud supports the required minor version.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst listener1 = new openstack.loadbalancer.Listener(\"listener_1\", {\n    insertHeaders: {\n        \"X-Forwarded-For\": \"true\",\n    },\n    loadbalancerId: \"d9415786-5f1a-428b-b35f-2f1523e146d2\",\n    protocol: \"HTTP\",\n    protocolPort: 8080,\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nlistener1 = openstack.loadbalancer.Listener(\"listener1\",\n    insert_headers={\n        \"X-Forwarded-For\": \"true\",\n    },\n    loadbalancer_id=\"d9415786-5f1a-428b-b35f-2f1523e146d2\",\n    protocol=\"HTTP\",\n    protocol_port=8080)\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var listener1 = new OpenStack.LoadBalancer.Listener(\"listener1\", new OpenStack.LoadBalancer.ListenerArgs\n        {\n            InsertHeaders = \n            {\n                { \"X-Forwarded-For\", \"true\" },\n            },\n            LoadbalancerId = \"d9415786-5f1a-428b-b35f-2f1523e146d2\",\n            Protocol = \"HTTP\",\n            ProtocolPort = 8080,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/loadbalancer\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := loadbalancer.NewListener(ctx, \"listener1\", \u0026loadbalancer.ListenerArgs{\n\t\t\tInsertHeaders: pulumi.StringMap{\n\t\t\t\t\"X-Forwarded-For\": pulumi.String(\"true\"),\n\t\t\t},\n\t\t\tLoadbalancerId: pulumi.String(\"d9415786-5f1a-428b-b35f-2f1523e146d2\"),\n\t\t\tProtocol:       pulumi.String(\"HTTP\"),\n\t\t\tProtocolPort:   pulumi.Int(8080),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nLoad Balancer Listener can be imported using the Listener ID, e.g.\n\n```sh\n $ pulumi import openstack:loadbalancer/listener:Listener listener_1 b67ce64e-8b26-405d-afeb-4a078901f15a\n```\n\n ",
             "properties": {
                 "adminStateUp": {
                     "type": "boolean",
@@ -10230,7 +10461,7 @@
                 },
                 "protocol": {
                     "type": "string",
-                    "description": "The protocol - can either be TCP, HTTP, HTTPS,\nTERMINATED_HTTPS, UDP (supported only in Octavia) or SCTP (supported only\nin Octavia microversion \u003e= 2.23). Changing this creates a new Listener.\n"
+                    "description": "The protocol - can either be TCP, HTTP, HTTPS,\nTERMINATED_HTTPS, UDP (supported only in Octavia) or SCTP (supported only\nin **Octavia minor version \u003e= 2.23**). Changing this creates a new Listener.\n"
                 },
                 "protocolPort": {
                     "type": "integer",
@@ -10327,7 +10558,7 @@
                 },
                 "protocol": {
                     "type": "string",
-                    "description": "The protocol - can either be TCP, HTTP, HTTPS,\nTERMINATED_HTTPS, UDP (supported only in Octavia) or SCTP (supported only\nin Octavia microversion \u003e= 2.23). Changing this creates a new Listener.\n"
+                    "description": "The protocol - can either be TCP, HTTP, HTTPS,\nTERMINATED_HTTPS, UDP (supported only in Octavia) or SCTP (supported only\nin **Octavia minor version \u003e= 2.23**). Changing this creates a new Listener.\n"
                 },
                 "protocolPort": {
                     "type": "integer",
@@ -10417,7 +10648,7 @@
                     },
                     "protocol": {
                         "type": "string",
-                        "description": "The protocol - can either be TCP, HTTP, HTTPS,\nTERMINATED_HTTPS, UDP (supported only in Octavia) or SCTP (supported only\nin Octavia microversion \u003e= 2.23). Changing this creates a new Listener.\n"
+                        "description": "The protocol - can either be TCP, HTTP, HTTPS,\nTERMINATED_HTTPS, UDP (supported only in Octavia) or SCTP (supported only\nin **Octavia minor version \u003e= 2.23**). Changing this creates a new Listener.\n"
                     },
                     "protocolPort": {
                         "type": "integer",
@@ -10459,7 +10690,7 @@
             }
         },
         "openstack:loadbalancer/loadBalancer:LoadBalancer": {
-            "description": "Manages a V2 loadbalancer resource within OpenStack.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst lb1 = new openstack.loadbalancer.LoadBalancer(\"lb_1\", {\n    vipSubnetId: \"d9415786-5f1a-428b-b35f-2f1523e146d2\",\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nlb1 = openstack.loadbalancer.LoadBalancer(\"lb1\", vip_subnet_id=\"d9415786-5f1a-428b-b35f-2f1523e146d2\")\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var lb1 = new OpenStack.LoadBalancer.LoadBalancer(\"lb1\", new OpenStack.LoadBalancer.LoadBalancerArgs\n        {\n            VipSubnetId = \"d9415786-5f1a-428b-b35f-2f1523e146d2\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/loadbalancer\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := loadbalancer.NewLoadBalancer(ctx, \"lb1\", \u0026loadbalancer.LoadBalancerArgs{\n\t\t\tVipSubnetId: pulumi.String(\"d9415786-5f1a-428b-b35f-2f1523e146d2\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nLoad Balancer can be imported using the Load Balancer ID, e.g.\n\n```sh\n $ pulumi import openstack:loadbalancer/loadBalancer:LoadBalancer loadbalancer_1 19bcfdc7-c521-4a7e-9459-6750bd16df76\n```\n\n ",
+            "description": "Manages a V2 loadbalancer resource within OpenStack.\n\n\u003e **Note:** This resource has attributes that depend on octavia minor versions.\nPlease ensure your Openstack cloud supports the required minor version.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst lb1 = new openstack.loadbalancer.LoadBalancer(\"lb_1\", {\n    vipSubnetId: \"d9415786-5f1a-428b-b35f-2f1523e146d2\",\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nlb1 = openstack.loadbalancer.LoadBalancer(\"lb1\", vip_subnet_id=\"d9415786-5f1a-428b-b35f-2f1523e146d2\")\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var lb1 = new OpenStack.LoadBalancer.LoadBalancer(\"lb1\", new OpenStack.LoadBalancer.LoadBalancerArgs\n        {\n            VipSubnetId = \"d9415786-5f1a-428b-b35f-2f1523e146d2\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/loadbalancer\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := loadbalancer.NewLoadBalancer(ctx, \"lb1\", \u0026loadbalancer.LoadBalancerArgs{\n\t\t\tVipSubnetId: pulumi.String(\"d9415786-5f1a-428b-b35f-2f1523e146d2\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nLoad Balancer can be imported using the Load Balancer ID, e.g.\n\n```sh\n $ pulumi import openstack:loadbalancer/loadBalancer:LoadBalancer loadbalancer_1 19bcfdc7-c521-4a7e-9459-6750bd16df76\n```\n\n ",
             "properties": {
                 "adminStateUp": {
                     "type": "boolean",
@@ -10467,7 +10698,7 @@
                 },
                 "availabilityZone": {
                     "type": "string",
-                    "description": "The availability zone of the Loadbalancer.\nChanging this creates a new loadbalancer. Available only for Octavia\nmicroversion 2.14 or later.\n"
+                    "description": "The availability zone of the Loadbalancer.\nChanging this creates a new loadbalancer. Available only for Octavia\n**minor version 2.14 or later**.\n"
                 },
                 "description": {
                     "type": "string",
@@ -10536,7 +10767,7 @@
                 },
                 "availabilityZone": {
                     "type": "string",
-                    "description": "The availability zone of the Loadbalancer.\nChanging this creates a new loadbalancer. Available only for Octavia\nmicroversion 2.14 or later.\n"
+                    "description": "The availability zone of the Loadbalancer.\nChanging this creates a new loadbalancer. Available only for Octavia\n**minor version 2.14 or later**.\n"
                 },
                 "description": {
                     "type": "string",
@@ -10595,7 +10826,7 @@
                     },
                     "availabilityZone": {
                         "type": "string",
-                        "description": "The availability zone of the Loadbalancer.\nChanging this creates a new loadbalancer. Available only for Octavia\nmicroversion 2.14 or later.\n"
+                        "description": "The availability zone of the Loadbalancer.\nChanging this creates a new loadbalancer. Available only for Octavia\n**minor version 2.14 or later**.\n"
                     },
                     "description": {
                         "type": "string",
@@ -10891,7 +11122,7 @@
             }
         },
         "openstack:loadbalancer/members:Members": {
-            "description": "Manages a V2 members resource within OpenStack (batch members update).\n\n\u003e **Note:** This resource works only within Octavia API. For\nlegacy Neutron LBaaS v2 extension please use\nopenstack.loadbalancer.Member resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst members1 = new openstack.loadbalancer.Members(\"members_1\", {\n    members: [\n        {\n            address: \"192.168.199.23\",\n            protocolPort: 8080,\n        },\n        {\n            address: \"192.168.199.24\",\n            protocolPort: 8080,\n        },\n    ],\n    poolId: \"935685fb-a896-40f9-9ff4-ae531a3a00fe\",\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nmembers1 = openstack.loadbalancer.Members(\"members1\",\n    members=[\n        openstack.loadbalancer.MembersMemberArgs(\n            address=\"192.168.199.23\",\n            protocol_port=8080,\n        ),\n        openstack.loadbalancer.MembersMemberArgs(\n            address=\"192.168.199.24\",\n            protocol_port=8080,\n        ),\n    ],\n    pool_id=\"935685fb-a896-40f9-9ff4-ae531a3a00fe\")\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var members1 = new OpenStack.LoadBalancer.Members(\"members1\", new OpenStack.LoadBalancer.MembersArgs\n        {\n            Members = \n            {\n                new OpenStack.LoadBalancer.Inputs.MembersMemberArgs\n                {\n                    Address = \"192.168.199.23\",\n                    ProtocolPort = 8080,\n                },\n                new OpenStack.LoadBalancer.Inputs.MembersMemberArgs\n                {\n                    Address = \"192.168.199.24\",\n                    ProtocolPort = 8080,\n                },\n            },\n            PoolId = \"935685fb-a896-40f9-9ff4-ae531a3a00fe\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/loadbalancer\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := loadbalancer.NewMembers(ctx, \"members1\", \u0026loadbalancer.MembersArgs{\n\t\t\tMembers: loadbalancer.MembersMemberArray{\n\t\t\t\t\u0026loadbalancer.MembersMemberArgs{\n\t\t\t\t\tAddress:      pulumi.String(\"192.168.199.23\"),\n\t\t\t\t\tProtocolPort: pulumi.Int(8080),\n\t\t\t\t},\n\t\t\t\t\u0026loadbalancer.MembersMemberArgs{\n\t\t\t\t\tAddress:      pulumi.String(\"192.168.199.24\"),\n\t\t\t\t\tProtocolPort: pulumi.Int(8080),\n\t\t\t\t},\n\t\t\t},\n\t\t\tPoolId: pulumi.String(\"935685fb-a896-40f9-9ff4-ae531a3a00fe\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nLoad Balancer Pool Members can be imported using the Pool ID, e.g.\n\n```sh\n $ pulumi import openstack:loadbalancer/members:Members members_1 c22974d2-4c95-4bcb-9819-0afc5ed303d5\n```\n\n ",
+            "description": "Manages a V2 members resource within OpenStack (batch members update).\n\n\u003e **Note:** This resource has attributes that depend on octavia minor versions.\nPlease ensure your Openstack cloud supports the required minor version.\n\n\u003e **Note:** This resource works only within Octavia API. For\nlegacy Neutron LBaaS v2 extension please use\nopenstack.loadbalancer.Member resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst members1 = new openstack.loadbalancer.Members(\"members_1\", {\n    members: [\n        {\n            address: \"192.168.199.23\",\n            protocolPort: 8080,\n        },\n        {\n            address: \"192.168.199.24\",\n            protocolPort: 8080,\n        },\n    ],\n    poolId: \"935685fb-a896-40f9-9ff4-ae531a3a00fe\",\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nmembers1 = openstack.loadbalancer.Members(\"members1\",\n    members=[\n        openstack.loadbalancer.MembersMemberArgs(\n            address=\"192.168.199.23\",\n            protocol_port=8080,\n        ),\n        openstack.loadbalancer.MembersMemberArgs(\n            address=\"192.168.199.24\",\n            protocol_port=8080,\n        ),\n    ],\n    pool_id=\"935685fb-a896-40f9-9ff4-ae531a3a00fe\")\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var members1 = new OpenStack.LoadBalancer.Members(\"members1\", new OpenStack.LoadBalancer.MembersArgs\n        {\n            Members = \n            {\n                new OpenStack.LoadBalancer.Inputs.MembersMemberArgs\n                {\n                    Address = \"192.168.199.23\",\n                    ProtocolPort = 8080,\n                },\n                new OpenStack.LoadBalancer.Inputs.MembersMemberArgs\n                {\n                    Address = \"192.168.199.24\",\n                    ProtocolPort = 8080,\n                },\n            },\n            PoolId = \"935685fb-a896-40f9-9ff4-ae531a3a00fe\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/loadbalancer\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := loadbalancer.NewMembers(ctx, \"members1\", \u0026loadbalancer.MembersArgs{\n\t\t\tMembers: loadbalancer.MembersMemberArray{\n\t\t\t\t\u0026loadbalancer.MembersMemberArgs{\n\t\t\t\t\tAddress:      pulumi.String(\"192.168.199.23\"),\n\t\t\t\t\tProtocolPort: pulumi.Int(8080),\n\t\t\t\t},\n\t\t\t\t\u0026loadbalancer.MembersMemberArgs{\n\t\t\t\t\tAddress:      pulumi.String(\"192.168.199.24\"),\n\t\t\t\t\tProtocolPort: pulumi.Int(8080),\n\t\t\t\t},\n\t\t\t},\n\t\t\tPoolId: pulumi.String(\"935685fb-a896-40f9-9ff4-ae531a3a00fe\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nLoad Balancer Pool Members can be imported using the Pool ID, e.g.\n\n```sh\n $ pulumi import openstack:loadbalancer/members:Members members_1 c22974d2-4c95-4bcb-9819-0afc5ed303d5\n```\n\n ",
             "properties": {
                 "members": {
                     "type": "array",
@@ -11309,7 +11540,7 @@
             }
         },
         "openstack:loadbalancer/pool:Pool": {
-            "description": "Manages a V2 pool resource within OpenStack.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst pool1 = new openstack.loadbalancer.Pool(\"pool_1\", {\n    lbMethod: \"ROUND_ROBIN\",\n    listenerId: \"d9415786-5f1a-428b-b35f-2f1523e146d2\",\n    persistence: {\n        cookieName: \"testCookie\",\n        type: \"APP_COOKIE\",\n    },\n    protocol: \"HTTP\",\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\npool1 = openstack.loadbalancer.Pool(\"pool1\",\n    lb_method=\"ROUND_ROBIN\",\n    listener_id=\"d9415786-5f1a-428b-b35f-2f1523e146d2\",\n    persistence=openstack.loadbalancer.PoolPersistenceArgs(\n        cookie_name=\"testCookie\",\n        type=\"APP_COOKIE\",\n    ),\n    protocol=\"HTTP\")\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var pool1 = new OpenStack.LoadBalancer.Pool(\"pool1\", new OpenStack.LoadBalancer.PoolArgs\n        {\n            LbMethod = \"ROUND_ROBIN\",\n            ListenerId = \"d9415786-5f1a-428b-b35f-2f1523e146d2\",\n            Persistence = new OpenStack.LoadBalancer.Inputs.PoolPersistenceArgs\n            {\n                CookieName = \"testCookie\",\n                Type = \"APP_COOKIE\",\n            },\n            Protocol = \"HTTP\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/loadbalancer\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := loadbalancer.NewPool(ctx, \"pool1\", \u0026loadbalancer.PoolArgs{\n\t\t\tLbMethod:   pulumi.String(\"ROUND_ROBIN\"),\n\t\t\tListenerId: pulumi.String(\"d9415786-5f1a-428b-b35f-2f1523e146d2\"),\n\t\t\tPersistence: \u0026loadbalancer.PoolPersistenceArgs{\n\t\t\t\tCookieName: pulumi.String(\"testCookie\"),\n\t\t\t\tType:       pulumi.String(\"APP_COOKIE\"),\n\t\t\t},\n\t\t\tProtocol: pulumi.String(\"HTTP\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nLoad Balancer Pool can be imported using the Pool ID, e.g.\n\n```sh\n $ pulumi import openstack:loadbalancer/pool:Pool pool_1 60ad9ee4-249a-4d60-a45b-aa60e046c513\n```\n\n ",
+            "description": "Manages a V2 pool resource within OpenStack.\n\n\u003e **Note:** This resource has attributes that depend on octavia minor versions.\nPlease ensure your Openstack cloud supports the required minor version.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst pool1 = new openstack.loadbalancer.Pool(\"pool_1\", {\n    lbMethod: \"ROUND_ROBIN\",\n    listenerId: \"d9415786-5f1a-428b-b35f-2f1523e146d2\",\n    persistence: {\n        cookieName: \"testCookie\",\n        type: \"APP_COOKIE\",\n    },\n    protocol: \"HTTP\",\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\npool1 = openstack.loadbalancer.Pool(\"pool1\",\n    lb_method=\"ROUND_ROBIN\",\n    listener_id=\"d9415786-5f1a-428b-b35f-2f1523e146d2\",\n    persistence=openstack.loadbalancer.PoolPersistenceArgs(\n        cookie_name=\"testCookie\",\n        type=\"APP_COOKIE\",\n    ),\n    protocol=\"HTTP\")\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var pool1 = new OpenStack.LoadBalancer.Pool(\"pool1\", new OpenStack.LoadBalancer.PoolArgs\n        {\n            LbMethod = \"ROUND_ROBIN\",\n            ListenerId = \"d9415786-5f1a-428b-b35f-2f1523e146d2\",\n            Persistence = new OpenStack.LoadBalancer.Inputs.PoolPersistenceArgs\n            {\n                CookieName = \"testCookie\",\n                Type = \"APP_COOKIE\",\n            },\n            Protocol = \"HTTP\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/loadbalancer\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := loadbalancer.NewPool(ctx, \"pool1\", \u0026loadbalancer.PoolArgs{\n\t\t\tLbMethod:   pulumi.String(\"ROUND_ROBIN\"),\n\t\t\tListenerId: pulumi.String(\"d9415786-5f1a-428b-b35f-2f1523e146d2\"),\n\t\t\tPersistence: \u0026loadbalancer.PoolPersistenceArgs{\n\t\t\t\tCookieName: pulumi.String(\"testCookie\"),\n\t\t\t\tType:       pulumi.String(\"APP_COOKIE\"),\n\t\t\t},\n\t\t\tProtocol: pulumi.String(\"HTTP\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nLoad Balancer Pool can be imported using the Pool ID, e.g.\n\n```sh\n $ pulumi import openstack:loadbalancer/pool:Pool pool_1 60ad9ee4-249a-4d60-a45b-aa60e046c513\n```\n\n ",
             "properties": {
                 "adminStateUp": {
                     "type": "boolean",
@@ -11341,7 +11572,7 @@
                 },
                 "protocol": {
                     "type": "string",
-                    "description": "The protocol - can either be TCP, HTTP, HTTPS, PROXY\nor UDP (supported only in Octavia). Changing this creates a new pool.\n"
+                    "description": "The protocol - can either be TCP, HTTP, HTTPS, PROXY,\nUDP (supported only in Octavia), PROXYV2 (**Octavia minor version \u003e= 2.22**)\nor SCTP (**Octavia minor version \u003e= 2.23**). Changing this creates a new pool.\n"
                 },
                 "region": {
                     "type": "string",
@@ -11391,7 +11622,7 @@
                 },
                 "protocol": {
                     "type": "string",
-                    "description": "The protocol - can either be TCP, HTTP, HTTPS, PROXY\nor UDP (supported only in Octavia). Changing this creates a new pool.\n"
+                    "description": "The protocol - can either be TCP, HTTP, HTTPS, PROXY,\nUDP (supported only in Octavia), PROXYV2 (**Octavia minor version \u003e= 2.22**)\nor SCTP (**Octavia minor version \u003e= 2.23**). Changing this creates a new pool.\n"
                 },
                 "region": {
                     "type": "string",
@@ -11439,7 +11670,7 @@
                     },
                     "protocol": {
                         "type": "string",
-                        "description": "The protocol - can either be TCP, HTTP, HTTPS, PROXY\nor UDP (supported only in Octavia). Changing this creates a new pool.\n"
+                        "description": "The protocol - can either be TCP, HTTP, HTTPS, PROXY,\nUDP (supported only in Octavia), PROXYV2 (**Octavia minor version \u003e= 2.22**)\nor SCTP (**Octavia minor version \u003e= 2.23**). Changing this creates a new pool.\n"
                     },
                     "region": {
                         "type": "string",
@@ -11586,7 +11817,7 @@
             }
         },
         "openstack:loadbalancer/quota:Quota": {
-            "description": "Manages a V2 load balancer quota resource within OpenStack.\n\n\u003e **Note:** This usually requires admin privileges.\n\n\u003e **Note:** This resource is only available for Octavia.\n\n\u003e **Note:** This resource has a no-op deletion so no actual actions will be done against the OpenStack\n   API in case of delete call.\n\n\u003e **Note:** This resource has all-in creation so all optional quota arguments that were not specified are\n   created with zero value.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst project1 = new openstack.identity.Project(\"project_1\", {});\nconst quota1 = new openstack.loadbalancer.Quota(\"quota_1\", {\n    healthMonitor: 10,\n    l7Policy: 11,\n    l7Rule: 12,\n    listener: 7,\n    loadbalancer: 6,\n    member: 8,\n    pool: 9,\n    projectId: project1.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nproject1 = openstack.identity.Project(\"project1\")\nquota1 = openstack.loadbalancer.Quota(\"quota1\",\n    health_monitor=10,\n    l7_policy=11,\n    l7_rule=12,\n    listener=7,\n    loadbalancer=6,\n    member=8,\n    pool=9,\n    project_id=project1.id)\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var project1 = new OpenStack.Identity.Project(\"project1\", new OpenStack.Identity.ProjectArgs\n        {\n        });\n        var quota1 = new OpenStack.LoadBalancer.Quota(\"quota1\", new OpenStack.LoadBalancer.QuotaArgs\n        {\n            HealthMonitor = 10,\n            L7Policy = 11,\n            L7Rule = 12,\n            Listener = 7,\n            Loadbalancer = 6,\n            Member = 8,\n            Pool = 9,\n            ProjectId = project1.Id,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/identity\"\n\t\"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/loadbalancer\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tproject1, err := identity.NewProject(ctx, \"project1\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = loadbalancer.NewQuota(ctx, \"quota1\", \u0026loadbalancer.QuotaArgs{\n\t\t\tHealthMonitor: pulumi.Int(10),\n\t\t\tL7Policy:      pulumi.Int(11),\n\t\t\tL7Rule:        pulumi.Int(12),\n\t\t\tListener:      pulumi.Int(7),\n\t\t\tLoadbalancer:  pulumi.Int(6),\n\t\t\tMember:        pulumi.Int(8),\n\t\t\tPool:          pulumi.Int(9),\n\t\t\tProjectId:     project1.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nQuotas can be imported using the `project_id/region_name`, where region_name is the one defined is the Openstack credentials that are in use. E.g.\n\n```sh\n $ pulumi import openstack:loadbalancer/quota:Quota quota_1 2a0f2240-c5e6-41de-896d-e80d97428d6b/region_1\n```\n\n ",
+            "description": "Manages a V2 load balancer quota resource within OpenStack.\n\n\u003e **Note:** This usually requires admin privileges.\n\n\u003e **Note:** This resource is only available for Octavia.\n\n\u003e **Note:** This resource has a no-op deletion so no actual actions will be done against the OpenStack\n   API in case of delete call.\n\n\u003e **Note:** This resource has all-in creation so all optional quota arguments that were not specified are\n   created with zero value.\n\n\u003e **Note:** This resource has attributes that depend on octavia minor versions.\nPlease ensure your Openstack cloud supports the required minor version.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst project1 = new openstack.identity.Project(\"project_1\", {});\nconst quota1 = new openstack.loadbalancer.Quota(\"quota_1\", {\n    healthMonitor: 10,\n    l7Policy: 11,\n    l7Rule: 12,\n    listener: 7,\n    loadbalancer: 6,\n    member: 8,\n    pool: 9,\n    projectId: project1.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nproject1 = openstack.identity.Project(\"project1\")\nquota1 = openstack.loadbalancer.Quota(\"quota1\",\n    health_monitor=10,\n    l7_policy=11,\n    l7_rule=12,\n    listener=7,\n    loadbalancer=6,\n    member=8,\n    pool=9,\n    project_id=project1.id)\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var project1 = new OpenStack.Identity.Project(\"project1\", new OpenStack.Identity.ProjectArgs\n        {\n        });\n        var quota1 = new OpenStack.LoadBalancer.Quota(\"quota1\", new OpenStack.LoadBalancer.QuotaArgs\n        {\n            HealthMonitor = 10,\n            L7Policy = 11,\n            L7Rule = 12,\n            Listener = 7,\n            Loadbalancer = 6,\n            Member = 8,\n            Pool = 9,\n            ProjectId = project1.Id,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/identity\"\n\t\"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/loadbalancer\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tproject1, err := identity.NewProject(ctx, \"project1\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = loadbalancer.NewQuota(ctx, \"quota1\", \u0026loadbalancer.QuotaArgs{\n\t\t\tHealthMonitor: pulumi.Int(10),\n\t\t\tL7Policy:      pulumi.Int(11),\n\t\t\tL7Rule:        pulumi.Int(12),\n\t\t\tListener:      pulumi.Int(7),\n\t\t\tLoadbalancer:  pulumi.Int(6),\n\t\t\tMember:        pulumi.Int(8),\n\t\t\tPool:          pulumi.Int(9),\n\t\t\tProjectId:     project1.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nQuotas can be imported using the `project_id/region_name`, where region_name is the one defined is the Openstack credentials that are in use. E.g.\n\n```sh\n $ pulumi import openstack:loadbalancer/quota:Quota quota_1 2a0f2240-c5e6-41de-896d-e80d97428d6b/region_1\n```\n\n ",
             "properties": {
                 "healthMonitor": {
                     "type": "integer",
@@ -11594,11 +11825,11 @@
                 },
                 "l7Policy": {
                     "type": "integer",
-                    "description": "Quota value for l7_policies. Changing this\nupdates the existing quota. Omitting it sets it to 0. Available in\nOctavia 2.19.\n"
+                    "description": "Quota value for l7_policies. Changing this\nupdates the existing quota. Omitting it sets it to 0. Available in\n**Octavia minor version 2.19**.\n"
                 },
                 "l7Rule": {
                     "type": "integer",
-                    "description": "Quota value for l7_rules. Changing this\nupdates the existing quota. Omitting it sets it to 0. Available in\nOctavia 2.19.\n"
+                    "description": "Quota value for l7_rules. Changing this\nupdates the existing quota. Omitting it sets it to 0. Available in\n**Octavia minor version 2.19**.\n"
                 },
                 "listener": {
                     "type": "integer",
@@ -11643,11 +11874,11 @@
                 },
                 "l7Policy": {
                     "type": "integer",
-                    "description": "Quota value for l7_policies. Changing this\nupdates the existing quota. Omitting it sets it to 0. Available in\nOctavia 2.19.\n"
+                    "description": "Quota value for l7_policies. Changing this\nupdates the existing quota. Omitting it sets it to 0. Available in\n**Octavia minor version 2.19**.\n"
                 },
                 "l7Rule": {
                     "type": "integer",
-                    "description": "Quota value for l7_rules. Changing this\nupdates the existing quota. Omitting it sets it to 0. Available in\nOctavia 2.19.\n"
+                    "description": "Quota value for l7_rules. Changing this\nupdates the existing quota. Omitting it sets it to 0. Available in\n**Octavia minor version 2.19**.\n"
                 },
                 "listener": {
                     "type": "integer",
@@ -11686,11 +11917,11 @@
                     },
                     "l7Policy": {
                         "type": "integer",
-                        "description": "Quota value for l7_policies. Changing this\nupdates the existing quota. Omitting it sets it to 0. Available in\nOctavia 2.19.\n"
+                        "description": "Quota value for l7_policies. Changing this\nupdates the existing quota. Omitting it sets it to 0. Available in\n**Octavia minor version 2.19**.\n"
                     },
                     "l7Rule": {
                         "type": "integer",
-                        "description": "Quota value for l7_rules. Changing this\nupdates the existing quota. Omitting it sets it to 0. Available in\nOctavia 2.19.\n"
+                        "description": "Quota value for l7_rules. Changing this\nupdates the existing quota. Omitting it sets it to 0. Available in\n**Octavia minor version 2.19**.\n"
                     },
                     "listener": {
                         "type": "integer",
@@ -19199,7 +19430,7 @@
             }
         },
         "openstack:identity/getAuthScope:getAuthScope": {
-            "description": "Use this data source to get authentication information about the current\nauth scope in use. This can be used as self-discovery or introspection of\nthe username or project name currently in use as well as the service catalog.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst scope = pulumi.output(openstack.identity.getAuthScope({\n    name: \"my_scope\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nscope = openstack.identity.get_auth_scope(name=\"my_scope\")\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var scope = Output.Create(OpenStack.Identity.GetAuthScope.InvokeAsync(new OpenStack.Identity.GetAuthScopeArgs\n        {\n            Name = \"my_scope\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/identity\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := identity.GetAuthScope(ctx, \u0026identity.GetAuthScopeArgs{\n\t\t\tName: \"my_scope\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\nTo find the the public object storage endpoint for \"region1\" as listed in the\nservice catalog:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n\nconst objectStoreService = .filter(entry =\u003e entry.type == \"object-store\").map(entry =\u003e entry)[0];\nconst objectStoreEndpoint = .filter(endpoint =\u003e endpoint[\"interface\"] == \"public\" \u0026\u0026 endpoint.region == \"region1\").map(endpoint =\u003e endpoint)[0];\nconst objectStorePublicUrl = objectStoreEndpoint.url;\n```\n```python\nimport pulumi\n\nobject_store_service = [entry for entry in data[\"openstack_identity_auth_scope_v3\"][\"scope\"][\"service_catalog\"] if entry[\"type\"] == \"object-store\"][0]\nobject_store_endpoint = [endpoint for endpoint in object_store_service[\"endpoints\"] if endpoint[\"interface\"] == \"public\" and endpoint[\"region\"] == \"region1\"][0]\nobject_store_public_url = object_store_endpoint[\"url\"]\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Use this data source to get authentication information about the current\nauth scope in use. This can be used as self-discovery or introspection of\nthe username or project name currently in use as well as the service catalog.\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getAuthScope.\n",
                 "properties": {
@@ -22538,8 +22769,7 @@
                 "vpnaas": "VPNaaS"
             },
             "packageReferences": {
-                "Pulumi": "3.*",
-                "System.Collections.Immutable": "1.6.0"
+                "Pulumi": "3.*"
             }
         },
         "go": {

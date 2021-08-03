@@ -155,6 +155,9 @@ class Members(pulumi.CustomResource):
         """
         Manages a V2 members resource within OpenStack (batch members update).
 
+        > **Note:** This resource has attributes that depend on octavia minor versions.
+        Please ensure your Openstack cloud supports the required minor version.
+
         > **Note:** This resource works only within Octavia API. For
         legacy Neutron LBaaS v2 extension please use
         loadbalancer.Member resource.
@@ -206,6 +209,9 @@ class Members(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a V2 members resource within OpenStack (batch members update).
+
+        > **Note:** This resource has attributes that depend on octavia minor versions.
+        Please ensure your Openstack cloud supports the required minor version.
 
         > **Note:** This resource works only within Octavia API. For
         legacy Neutron LBaaS v2 extension please use

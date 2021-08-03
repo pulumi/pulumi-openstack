@@ -34,6 +34,10 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /**
+     * A list of IP addresses assigned to the instance.
+     */
+    public /*out*/ readonly addresses!: pulumi.Output<string[]>;
+    /**
      * Configuration ID to be attached to the instance. Database instance
      * will be rebooted when configuration is detached.
      */
@@ -92,6 +96,7 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
+            inputs["addresses"] = state ? state.addresses : undefined;
             inputs["configurationId"] = state ? state.configurationId : undefined;
             inputs["databases"] = state ? state.databases : undefined;
             inputs["datastore"] = state ? state.datastore : undefined;
@@ -118,6 +123,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["region"] = args ? args.region : undefined;
             inputs["size"] = args ? args.size : undefined;
             inputs["users"] = args ? args.users : undefined;
+            inputs["addresses"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -130,6 +136,10 @@ export class Instance extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Instance resources.
  */
 export interface InstanceState {
+    /**
+     * A list of IP addresses assigned to the instance.
+     */
+    readonly addresses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Configuration ID to be attached to the instance. Database instance
      * will be rebooted when configuration is detached.

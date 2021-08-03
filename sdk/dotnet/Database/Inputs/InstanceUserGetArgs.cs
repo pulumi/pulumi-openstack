@@ -16,7 +16,7 @@ namespace Pulumi.OpenStack.Database.Inputs
         private InputList<string>? _databases;
 
         /// <summary>
-        /// A list of databases that user will have access to. If not specified, 
+        /// A list of databases that user will have access to. If not specified,
         /// user has access to all databases on th einstance. Changing this creates a new instance.
         /// </summary>
         public InputList<string> Databases

@@ -32,7 +32,7 @@ class LoadBalancerArgs:
                A valid value is true (UP) or false (DOWN).
         :param pulumi.Input[str] availability_zone: The availability zone of the Loadbalancer.
                Changing this creates a new loadbalancer. Available only for Octavia
-               microversion 2.14 or later.
+               **minor version 2.14 or later**.
         :param pulumi.Input[str] description: Human-readable description for the Loadbalancer.
         :param pulumi.Input[str] flavor_id: The UUID of a flavor. Changing this creates a new
                loadbalancer.
@@ -111,7 +111,7 @@ class LoadBalancerArgs:
         """
         The availability zone of the Loadbalancer.
         Changing this creates a new loadbalancer. Available only for Octavia
-        microversion 2.14 or later.
+        **minor version 2.14 or later**.
         """
         return pulumi.get(self, "availability_zone")
 
@@ -294,7 +294,7 @@ class _LoadBalancerState:
                A valid value is true (UP) or false (DOWN).
         :param pulumi.Input[str] availability_zone: The availability zone of the Loadbalancer.
                Changing this creates a new loadbalancer. Available only for Octavia
-               microversion 2.14 or later.
+               **minor version 2.14 or later**.
         :param pulumi.Input[str] description: Human-readable description for the Loadbalancer.
         :param pulumi.Input[str] flavor_id: The UUID of a flavor. Changing this creates a new
                loadbalancer.
@@ -373,7 +373,7 @@ class _LoadBalancerState:
         """
         The availability zone of the Loadbalancer.
         Changing this creates a new loadbalancer. Available only for Octavia
-        microversion 2.14 or later.
+        **minor version 2.14 or later**.
         """
         return pulumi.get(self, "availability_zone")
 
@@ -556,6 +556,9 @@ class LoadBalancer(pulumi.CustomResource):
         """
         Manages a V2 loadbalancer resource within OpenStack.
 
+        > **Note:** This resource has attributes that depend on octavia minor versions.
+        Please ensure your Openstack cloud supports the required minor version.
+
         ## Example Usage
 
         ```python
@@ -579,7 +582,7 @@ class LoadBalancer(pulumi.CustomResource):
                A valid value is true (UP) or false (DOWN).
         :param pulumi.Input[str] availability_zone: The availability zone of the Loadbalancer.
                Changing this creates a new loadbalancer. Available only for Octavia
-               microversion 2.14 or later.
+               **minor version 2.14 or later**.
         :param pulumi.Input[str] description: Human-readable description for the Loadbalancer.
         :param pulumi.Input[str] flavor_id: The UUID of a flavor. Changing this creates a new
                loadbalancer.
@@ -620,6 +623,9 @@ class LoadBalancer(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a V2 loadbalancer resource within OpenStack.
+
+        > **Note:** This resource has attributes that depend on octavia minor versions.
+        Please ensure your Openstack cloud supports the required minor version.
 
         ## Example Usage
 
@@ -725,7 +731,7 @@ class LoadBalancer(pulumi.CustomResource):
                A valid value is true (UP) or false (DOWN).
         :param pulumi.Input[str] availability_zone: The availability zone of the Loadbalancer.
                Changing this creates a new loadbalancer. Available only for Octavia
-               microversion 2.14 or later.
+               **minor version 2.14 or later**.
         :param pulumi.Input[str] description: Human-readable description for the Loadbalancer.
         :param pulumi.Input[str] flavor_id: The UUID of a flavor. Changing this creates a new
                loadbalancer.
@@ -792,7 +798,7 @@ class LoadBalancer(pulumi.CustomResource):
         """
         The availability zone of the Loadbalancer.
         Changing this creates a new loadbalancer. Available only for Octavia
-        microversion 2.14 or later.
+        **minor version 2.14 or later**.
         """
         return pulumi.get(self, "availability_zone")
 

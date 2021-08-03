@@ -23,6 +23,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "openstack:dns/recordSet:RecordSet":
 		r = &RecordSet{}
+	case "openstack:dns/transferAccept:TransferAccept":
+		r = &TransferAccept{}
+	case "openstack:dns/transferRequest:TransferRequest":
+		r = &TransferRequest{}
 	case "openstack:dns/zone:Zone":
 		r = &Zone{}
 	default:
@@ -41,6 +45,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"openstack",
 		"dns/recordSet",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"openstack",
+		"dns/transferAccept",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"openstack",
+		"dns/transferRequest",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -12,6 +12,9 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// <summary>
     /// Manages a V2 loadbalancer resource within OpenStack.
     /// 
+    /// &gt; **Note:** This resource has attributes that depend on octavia minor versions.
+    /// Please ensure your Openstack cloud supports the required minor version.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -52,7 +55,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// <summary>
         /// The availability zone of the Loadbalancer.
         /// Changing this creates a new loadbalancer. Available only for Octavia
-        /// microversion 2.14 or later.
+        /// **minor version 2.14 or later**.
         /// </summary>
         [Output("availabilityZone")]
         public Output<string?> AvailabilityZone { get; private set; } = null!;
@@ -199,7 +202,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// <summary>
         /// The availability zone of the Loadbalancer.
         /// Changing this creates a new loadbalancer. Available only for Octavia
-        /// microversion 2.14 or later.
+        /// **minor version 2.14 or later**.
         /// </summary>
         [Input("availabilityZone")]
         public Input<string>? AvailabilityZone { get; set; }
@@ -313,7 +316,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// <summary>
         /// The availability zone of the Loadbalancer.
         /// Changing this creates a new loadbalancer. Available only for Octavia
-        /// microversion 2.14 or later.
+        /// **minor version 2.14 or later**.
         /// </summary>
         [Input("availabilityZone")]
         public Input<string>? AvailabilityZone { get; set; }

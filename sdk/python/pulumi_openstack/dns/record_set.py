@@ -17,6 +17,7 @@ class RecordSetArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  disable_status_check: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
                  records: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  ttl: Optional[pulumi.Input[int]] = None,
@@ -32,6 +33,9 @@ class RecordSetArgs:
                will be considered as created/updated/deleted if OpenStack request returned success.
         :param pulumi.Input[str] name: The name of the record set. Note the `.` at the end of the name.
                Changing this creates a new DNS  record set.
+        :param pulumi.Input[str] project_id: The ID of the project DNS zone is created
+               for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+               user role in target project)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] records: An array of DNS records. _Note:_ if an IPv6 address
                contains brackets (`[ ]`), the brackets will be stripped and the modified
                address will be recorded in the state.
@@ -51,6 +55,8 @@ class RecordSetArgs:
             pulumi.set(__self__, "disable_status_check", disable_status_check)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
         if records is not None:
             pulumi.set(__self__, "records", records)
         if region is not None:
@@ -113,6 +119,20 @@ class RecordSetArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project DNS zone is created
+        for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+        user role in target project)
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_id", value)
 
     @property
     @pulumi.getter
@@ -187,6 +207,7 @@ class _RecordSetState:
                  description: Optional[pulumi.Input[str]] = None,
                  disable_status_check: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
                  records: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  ttl: Optional[pulumi.Input[int]] = None,
@@ -201,6 +222,9 @@ class _RecordSetState:
                will be considered as created/updated/deleted if OpenStack request returned success.
         :param pulumi.Input[str] name: The name of the record set. Note the `.` at the end of the name.
                Changing this creates a new DNS  record set.
+        :param pulumi.Input[str] project_id: The ID of the project DNS zone is created
+               for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+               user role in target project)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] records: An array of DNS records. _Note:_ if an IPv6 address
                contains brackets (`[ ]`), the brackets will be stripped and the modified
                address will be recorded in the state.
@@ -221,6 +245,8 @@ class _RecordSetState:
             pulumi.set(__self__, "disable_status_check", disable_status_check)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
         if records is not None:
             pulumi.set(__self__, "records", records)
         if region is not None:
@@ -272,6 +298,20 @@ class _RecordSetState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project DNS zone is created
+        for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+        user role in target project)
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_id", value)
 
     @property
     @pulumi.getter
@@ -361,6 +401,7 @@ class RecordSet(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  disable_status_check: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
                  records: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  ttl: Optional[pulumi.Input[int]] = None,
@@ -407,6 +448,9 @@ class RecordSet(pulumi.CustomResource):
                will be considered as created/updated/deleted if OpenStack request returned success.
         :param pulumi.Input[str] name: The name of the record set. Note the `.` at the end of the name.
                Changing this creates a new DNS  record set.
+        :param pulumi.Input[str] project_id: The ID of the project DNS zone is created
+               for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+               user role in target project)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] records: An array of DNS records. _Note:_ if an IPv6 address
                contains brackets (`[ ]`), the brackets will be stripped and the modified
                address will be recorded in the state.
@@ -476,6 +520,7 @@ class RecordSet(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  disable_status_check: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
                  records: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  ttl: Optional[pulumi.Input[int]] = None,
@@ -497,6 +542,7 @@ class RecordSet(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["disable_status_check"] = disable_status_check
             __props__.__dict__["name"] = name
+            __props__.__dict__["project_id"] = project_id
             __props__.__dict__["records"] = records
             __props__.__dict__["region"] = region
             __props__.__dict__["ttl"] = ttl
@@ -518,6 +564,7 @@ class RecordSet(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             disable_status_check: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            project_id: Optional[pulumi.Input[str]] = None,
             records: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             region: Optional[pulumi.Input[str]] = None,
             ttl: Optional[pulumi.Input[int]] = None,
@@ -537,6 +584,9 @@ class RecordSet(pulumi.CustomResource):
                will be considered as created/updated/deleted if OpenStack request returned success.
         :param pulumi.Input[str] name: The name of the record set. Note the `.` at the end of the name.
                Changing this creates a new DNS  record set.
+        :param pulumi.Input[str] project_id: The ID of the project DNS zone is created
+               for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+               user role in target project)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] records: An array of DNS records. _Note:_ if an IPv6 address
                contains brackets (`[ ]`), the brackets will be stripped and the modified
                address will be recorded in the state.
@@ -558,6 +608,7 @@ class RecordSet(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["disable_status_check"] = disable_status_check
         __props__.__dict__["name"] = name
+        __props__.__dict__["project_id"] = project_id
         __props__.__dict__["records"] = records
         __props__.__dict__["region"] = region
         __props__.__dict__["ttl"] = ttl
@@ -592,6 +643,16 @@ class RecordSet(pulumi.CustomResource):
         Changing this creates a new DNS  record set.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the project DNS zone is created
+        for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+        user role in target project)
+        """
+        return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter

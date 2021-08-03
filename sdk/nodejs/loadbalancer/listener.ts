@@ -7,6 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a V2 listener resource within OpenStack.
  *
+ * > **Note:** This resource has attributes that depend on octavia minor versions.
+ * Please ensure your Openstack cloud supports the required minor version.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -110,7 +113,7 @@ export class Listener extends pulumi.CustomResource {
     /**
      * The protocol - can either be TCP, HTTP, HTTPS,
      * TERMINATED_HTTPS, UDP (supported only in Octavia) or SCTP (supported only
-     * in Octavia microversion >= 2.23). Changing this creates a new Listener.
+     * in **Octavia minor version >= 2.23**). Changing this creates a new Listener.
      */
     public readonly protocol!: pulumi.Output<string>;
     /**
@@ -279,7 +282,7 @@ export interface ListenerState {
     /**
      * The protocol - can either be TCP, HTTP, HTTPS,
      * TERMINATED_HTTPS, UDP (supported only in Octavia) or SCTP (supported only
-     * in Octavia microversion >= 2.23). Changing this creates a new Listener.
+     * in **Octavia minor version >= 2.23**). Changing this creates a new Listener.
      */
     readonly protocol?: pulumi.Input<string>;
     /**
@@ -381,7 +384,7 @@ export interface ListenerArgs {
     /**
      * The protocol - can either be TCP, HTTP, HTTPS,
      * TERMINATED_HTTPS, UDP (supported only in Octavia) or SCTP (supported only
-     * in Octavia microversion >= 2.23). Changing this creates a new Listener.
+     * in **Octavia minor version >= 2.23**). Changing this creates a new Listener.
      */
     readonly protocol: pulumi.Input<string>;
     /**

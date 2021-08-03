@@ -14,6 +14,8 @@ import (
 type Instance struct {
 	pulumi.CustomResourceState
 
+	// A list of IP addresses assigned to the instance.
+	Addresses pulumi.StringArrayOutput `pulumi:"addresses"`
 	// Configuration ID to be attached to the instance. Database instance
 	// will be rebooted when configuration is detached.
 	ConfigurationId pulumi.StringPtrOutput `pulumi:"configurationId"`
@@ -78,6 +80,8 @@ func GetInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Instance resources.
 type instanceState struct {
+	// A list of IP addresses assigned to the instance.
+	Addresses []string `pulumi:"addresses"`
 	// Configuration ID to be attached to the instance. Database instance
 	// will be rebooted when configuration is detached.
 	ConfigurationId *string `pulumi:"configurationId"`
@@ -108,6 +112,8 @@ type instanceState struct {
 }
 
 type InstanceState struct {
+	// A list of IP addresses assigned to the instance.
+	Addresses pulumi.StringArrayInput
 	// Configuration ID to be attached to the instance. Database instance
 	// will be rebooted when configuration is detached.
 	ConfigurationId pulumi.StringPtrInput
