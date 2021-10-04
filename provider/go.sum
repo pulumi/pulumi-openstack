@@ -850,6 +850,8 @@ github.com/terraform-provider-openstack/terraform-provider-openstack v1.42.0 h1:
 github.com/terraform-provider-openstack/terraform-provider-openstack v1.42.0/go.mod h1:QOJGo4C9n+2rjYMUx++Oa4c1SVSX1V41+I3gjWvP5v0=
 github.com/terraform-provider-openstack/terraform-provider-openstack v1.43.0 h1:6d9JMUdmSqS8XePJmox8cuMFxfRY3Yd/SNDTEgn32Bo=
 github.com/terraform-provider-openstack/terraform-provider-openstack v1.43.0/go.mod h1:NnX8fVap0+elxB521bm7iHwXxyR1REYU47uBoSsggmw=
+github.com/terraform-provider-openstack/terraform-provider-openstack v1.43.1 h1:afue+FAXIK44JdI+a/zKlhhpjeo0R6TitgNMHgrO2bw=
+github.com/terraform-provider-openstack/terraform-provider-openstack v1.43.1/go.mod h1:NnX8fVap0+elxB521bm7iHwXxyR1REYU47uBoSsggmw=
 github.com/terraform-providers/terraform-provider-archive v1.3.0 h1:8WzDXMwTdTd4Z7KAUjnYwopk1DgGJ/DLH0xowJ8h+/8=
 github.com/terraform-providers/terraform-provider-archive v1.3.0/go.mod h1:7oAwNW55F65KauS++/XmAnrXhLfQRTYt549eYs4zU0w=
 github.com/terraform-providers/terraform-provider-http v1.2.0 h1:pOP/SNlLjB18CydtTJJwzkZGkHYX3LWzIoQpYQuBdyw=
