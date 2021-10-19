@@ -181,6 +181,15 @@ namespace Pulumi.OpenStack.LoadBalancer
         public Output<string> LbProvider { get; private set; } = null!;
 
         /// <summary>
+        /// An existing node to add to the pool. Changing this
+        /// updates the members of the pool. The member object structure is documented
+        /// below. Please note that the `member` block is deprecated in favor of the
+        /// `openstack.loadbalancer.MemberV1` resource.
+        /// </summary>
+        [Output("members")]
+        public Output<ImmutableArray<string>> Members { get; private set; } = null!;
+
+        /// <summary>
         /// A list of IDs of monitors to associate with the
         /// pool.
         /// </summary>
@@ -286,6 +295,22 @@ namespace Pulumi.OpenStack.LoadBalancer
         [Input("lbProvider")]
         public Input<string>? LbProvider { get; set; }
 
+        [Input("members")]
+        private InputList<string>? _members;
+
+        /// <summary>
+        /// An existing node to add to the pool. Changing this
+        /// updates the members of the pool. The member object structure is documented
+        /// below. Please note that the `member` block is deprecated in favor of the
+        /// `openstack.loadbalancer.MemberV1` resource.
+        /// </summary>
+        [Obsolete(@"Use openstack_lb_member_v1 instead")]
+        public InputList<string> Members
+        {
+            get => _members ?? (_members = new InputList<string>());
+            set => _members = value;
+        }
+
         [Input("monitorIds")]
         private InputList<string>? _monitorIds;
 
@@ -358,6 +383,22 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// </summary>
         [Input("lbProvider")]
         public Input<string>? LbProvider { get; set; }
+
+        [Input("members")]
+        private InputList<string>? _members;
+
+        /// <summary>
+        /// An existing node to add to the pool. Changing this
+        /// updates the members of the pool. The member object structure is documented
+        /// below. Please note that the `member` block is deprecated in favor of the
+        /// `openstack.loadbalancer.MemberV1` resource.
+        /// </summary>
+        [Obsolete(@"Use openstack_lb_member_v1 instead")]
+        public InputList<string> Members
+        {
+            get => _members ?? (_members = new InputList<string>());
+            set => _members = value;
+        }
 
         [Input("monitorIds")]
         private InputList<string>? _monitorIds;

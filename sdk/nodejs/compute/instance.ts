@@ -92,6 +92,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly flavorName!: pulumi.Output<string>;
     /**
+     * @deprecated Use the openstack_compute_floatingip_associate_v2 resource instead
+     */
+    public readonly floatingIp!: pulumi.Output<string | undefined>;
+    /**
      * Whether to force the OpenStack instance to be
      * forcefully deleted. This is useful for environments that have reclaim / soft
      * deletion enabled.
@@ -191,6 +195,10 @@ export class Instance extends pulumi.CustomResource {
      * Supported options are described below.
      */
     public readonly vendorOptions!: pulumi.Output<outputs.compute.InstanceVendorOptions | undefined>;
+    /**
+     * @deprecated Use block_device or openstack_compute_volume_attach_v2 instead
+     */
+    public readonly volumes!: pulumi.Output<outputs.compute.InstanceVolume[] | undefined>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -216,6 +224,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["configDrive"] = state ? state.configDrive : undefined;
             inputs["flavorId"] = state ? state.flavorId : undefined;
             inputs["flavorName"] = state ? state.flavorName : undefined;
+            inputs["floatingIp"] = state ? state.floatingIp : undefined;
             inputs["forceDelete"] = state ? state.forceDelete : undefined;
             inputs["imageId"] = state ? state.imageId : undefined;
             inputs["imageName"] = state ? state.imageName : undefined;
@@ -233,6 +242,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["tags"] = state ? state.tags : undefined;
             inputs["userData"] = state ? state.userData : undefined;
             inputs["vendorOptions"] = state ? state.vendorOptions : undefined;
+            inputs["volumes"] = state ? state.volumes : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
             inputs["accessIpV4"] = args ? args.accessIpV4 : undefined;
@@ -244,6 +254,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["configDrive"] = args ? args.configDrive : undefined;
             inputs["flavorId"] = args ? args.flavorId : undefined;
             inputs["flavorName"] = args ? args.flavorName : undefined;
+            inputs["floatingIp"] = args ? args.floatingIp : undefined;
             inputs["forceDelete"] = args ? args.forceDelete : undefined;
             inputs["imageId"] = args ? args.imageId : undefined;
             inputs["imageName"] = args ? args.imageName : undefined;
@@ -261,6 +272,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["tags"] = args ? args.tags : undefined;
             inputs["userData"] = args ? args.userData : undefined;
             inputs["vendorOptions"] = args ? args.vendorOptions : undefined;
+            inputs["volumes"] = args ? args.volumes : undefined;
             inputs["allMetadata"] = undefined /*out*/;
             inputs["allTags"] = undefined /*out*/;
         }
@@ -334,6 +346,10 @@ export interface InstanceState {
      */
     readonly flavorName?: pulumi.Input<string>;
     /**
+     * @deprecated Use the openstack_compute_floatingip_associate_v2 resource instead
+     */
+    readonly floatingIp?: pulumi.Input<string>;
+    /**
      * Whether to force the OpenStack instance to be
      * forcefully deleted. This is useful for environments that have reclaim / soft
      * deletion enabled.
@@ -433,6 +449,10 @@ export interface InstanceState {
      * Supported options are described below.
      */
     readonly vendorOptions?: pulumi.Input<inputs.compute.InstanceVendorOptions>;
+    /**
+     * @deprecated Use block_device or openstack_compute_volume_attach_v2 instead
+     */
+    readonly volumes?: pulumi.Input<pulumi.Input<inputs.compute.InstanceVolume>[]>;
 }
 
 /**
@@ -492,6 +512,10 @@ export interface InstanceArgs {
      */
     readonly flavorName?: pulumi.Input<string>;
     /**
+     * @deprecated Use the openstack_compute_floatingip_associate_v2 resource instead
+     */
+    readonly floatingIp?: pulumi.Input<string>;
+    /**
      * Whether to force the OpenStack instance to be
      * forcefully deleted. This is useful for environments that have reclaim / soft
      * deletion enabled.
@@ -591,4 +615,8 @@ export interface InstanceArgs {
      * Supported options are described below.
      */
     readonly vendorOptions?: pulumi.Input<inputs.compute.InstanceVendorOptions>;
+    /**
+     * @deprecated Use block_device or openstack_compute_volume_attach_v2 instead
+     */
+    readonly volumes?: pulumi.Input<pulumi.Input<inputs.compute.InstanceVolume>[]>;
 }

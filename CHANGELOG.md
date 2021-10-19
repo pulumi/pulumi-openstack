@@ -2,7 +2,8 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Upgrade to v1.44.0 of the OpenStack Terraform Provider
+  **Please Note:** Please note, this includes a breaking change to `openstack.containerinfra.Cluster` that changes the shape of the `kubeconfig` output structure
 
 ---
 

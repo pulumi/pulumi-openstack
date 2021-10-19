@@ -68,6 +68,10 @@ export class VolumeAttachV2 extends pulumi.CustomResource {
      */
     public readonly initiator!: pulumi.Output<string | undefined>;
     /**
+     * @deprecated instance_id is no longer used in this resource
+     */
+    public readonly instanceId!: pulumi.Output<string | undefined>;
+    /**
      * The IP address of the `hostName` above.
      */
     public readonly ipAddress!: pulumi.Output<string | undefined>;
@@ -127,6 +131,7 @@ export class VolumeAttachV2 extends pulumi.CustomResource {
             inputs["driverVolumeType"] = state ? state.driverVolumeType : undefined;
             inputs["hostName"] = state ? state.hostName : undefined;
             inputs["initiator"] = state ? state.initiator : undefined;
+            inputs["instanceId"] = state ? state.instanceId : undefined;
             inputs["ipAddress"] = state ? state.ipAddress : undefined;
             inputs["mountPointBase"] = state ? state.mountPointBase : undefined;
             inputs["multipath"] = state ? state.multipath : undefined;
@@ -148,6 +153,7 @@ export class VolumeAttachV2 extends pulumi.CustomResource {
             inputs["device"] = args ? args.device : undefined;
             inputs["hostName"] = args ? args.hostName : undefined;
             inputs["initiator"] = args ? args.initiator : undefined;
+            inputs["instanceId"] = args ? args.instanceId : undefined;
             inputs["ipAddress"] = args ? args.ipAddress : undefined;
             inputs["multipath"] = args ? args.multipath : undefined;
             inputs["osType"] = args ? args.osType : undefined;
@@ -201,6 +207,10 @@ export interface VolumeAttachV2State {
      * The iSCSI initiator string to make the connection.
      */
     readonly initiator?: pulumi.Input<string>;
+    /**
+     * @deprecated instance_id is no longer used in this resource
+     */
+    readonly instanceId?: pulumi.Input<string>;
     /**
      * The IP address of the `hostName` above.
      */
@@ -267,6 +277,10 @@ export interface VolumeAttachV2Args {
      * The iSCSI initiator string to make the connection.
      */
     readonly initiator?: pulumi.Input<string>;
+    /**
+     * @deprecated instance_id is no longer used in this resource
+     */
+    readonly instanceId?: pulumi.Input<string>;
     /**
      * The IP address of the `hostName` above.
      */

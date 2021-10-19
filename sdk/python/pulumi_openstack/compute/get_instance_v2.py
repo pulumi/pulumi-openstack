@@ -21,7 +21,7 @@ class GetInstanceV2Result:
     """
     A collection of values returned by getInstanceV2.
     """
-    def __init__(__self__, access_ip_v4=None, access_ip_v6=None, availability_zone=None, flavor_id=None, flavor_name=None, id=None, image_id=None, key_pair=None, metadata=None, name=None, networks=None, region=None, security_groups=None, tags=None, user_data=None):
+    def __init__(__self__, access_ip_v4=None, access_ip_v6=None, availability_zone=None, flavor_id=None, flavor_name=None, id=None, image_id=None, image_name=None, key_pair=None, metadata=None, name=None, networks=None, power_state=None, region=None, security_groups=None, tags=None, user_data=None):
         if access_ip_v4 and not isinstance(access_ip_v4, str):
             raise TypeError("Expected argument 'access_ip_v4' to be a str")
         pulumi.set(__self__, "access_ip_v4", access_ip_v4)
@@ -43,6 +43,9 @@ class GetInstanceV2Result:
         if image_id and not isinstance(image_id, str):
             raise TypeError("Expected argument 'image_id' to be a str")
         pulumi.set(__self__, "image_id", image_id)
+        if image_name and not isinstance(image_name, str):
+            raise TypeError("Expected argument 'image_name' to be a str")
+        pulumi.set(__self__, "image_name", image_name)
         if key_pair and not isinstance(key_pair, str):
             raise TypeError("Expected argument 'key_pair' to be a str")
         pulumi.set(__self__, "key_pair", key_pair)
@@ -55,6 +58,9 @@ class GetInstanceV2Result:
         if networks and not isinstance(networks, list):
             raise TypeError("Expected argument 'networks' to be a list")
         pulumi.set(__self__, "networks", networks)
+        if power_state and not isinstance(power_state, str):
+            raise TypeError("Expected argument 'power_state' to be a str")
+        pulumi.set(__self__, "power_state", power_state)
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
@@ -122,6 +128,14 @@ class GetInstanceV2Result:
         return pulumi.get(self, "image_id")
 
     @property
+    @pulumi.getter(name="imageName")
+    def image_name(self) -> str:
+        """
+        The image name used to create the server.
+        """
+        return pulumi.get(self, "image_name")
+
+    @property
     @pulumi.getter(name="keyPair")
     def key_pair(self) -> str:
         """
@@ -152,6 +166,11 @@ class GetInstanceV2Result:
         An array of maps, detailed below.
         """
         return pulumi.get(self, "networks")
+
+    @property
+    @pulumi.getter(name="powerState")
+    def power_state(self) -> str:
+        return pulumi.get(self, "power_state")
 
     @property
     @pulumi.getter
@@ -196,10 +215,12 @@ class AwaitableGetInstanceV2Result(GetInstanceV2Result):
             flavor_name=self.flavor_name,
             id=self.id,
             image_id=self.image_id,
+            image_name=self.image_name,
             key_pair=self.key_pair,
             metadata=self.metadata,
             name=self.name,
             networks=self.networks,
+            power_state=self.power_state,
             region=self.region,
             security_groups=self.security_groups,
             tags=self.tags,
@@ -247,10 +268,12 @@ def get_instance_v2(id: Optional[str] = None,
         flavor_name=__ret__.flavor_name,
         id=__ret__.id,
         image_id=__ret__.image_id,
+        image_name=__ret__.image_name,
         key_pair=__ret__.key_pair,
         metadata=__ret__.metadata,
         name=__ret__.name,
         networks=__ret__.networks,
+        power_state=__ret__.power_state,
         region=__ret__.region,
         security_groups=__ret__.security_groups,
         tags=__ret__.tags,

@@ -51,6 +51,8 @@ type Instance struct {
 	// The name of the
 	// desired flavor for the server. Changing this resizes the existing server.
 	FlavorName pulumi.StringOutput `pulumi:"flavorName"`
+	// Deprecated: Use the openstack_compute_floatingip_associate_v2 resource instead
+	FloatingIp pulumi.StringPtrOutput `pulumi:"floatingIp"`
 	// Whether to force the OpenStack instance to be
 	// forcefully deleted. This is useful for environments that have reclaim / soft
 	// deletion enabled.
@@ -117,6 +119,8 @@ type Instance struct {
 	// Map of additional vendor-specific options.
 	// Supported options are described below.
 	VendorOptions InstanceVendorOptionsPtrOutput `pulumi:"vendorOptions"`
+	// Deprecated: Use block_device or openstack_compute_volume_attach_v2 instead
+	Volumes InstanceVolumeArrayOutput `pulumi:"volumes"`
 }
 
 // NewInstance registers a new resource with the given unique name, arguments, and options.
@@ -186,6 +190,8 @@ type instanceState struct {
 	// The name of the
 	// desired flavor for the server. Changing this resizes the existing server.
 	FlavorName *string `pulumi:"flavorName"`
+	// Deprecated: Use the openstack_compute_floatingip_associate_v2 resource instead
+	FloatingIp *string `pulumi:"floatingIp"`
 	// Whether to force the OpenStack instance to be
 	// forcefully deleted. This is useful for environments that have reclaim / soft
 	// deletion enabled.
@@ -252,6 +258,8 @@ type instanceState struct {
 	// Map of additional vendor-specific options.
 	// Supported options are described below.
 	VendorOptions *InstanceVendorOptions `pulumi:"vendorOptions"`
+	// Deprecated: Use block_device or openstack_compute_volume_attach_v2 instead
+	Volumes []InstanceVolume `pulumi:"volumes"`
 }
 
 type InstanceState struct {
@@ -293,6 +301,8 @@ type InstanceState struct {
 	// The name of the
 	// desired flavor for the server. Changing this resizes the existing server.
 	FlavorName pulumi.StringPtrInput
+	// Deprecated: Use the openstack_compute_floatingip_associate_v2 resource instead
+	FloatingIp pulumi.StringPtrInput
 	// Whether to force the OpenStack instance to be
 	// forcefully deleted. This is useful for environments that have reclaim / soft
 	// deletion enabled.
@@ -359,6 +369,8 @@ type InstanceState struct {
 	// Map of additional vendor-specific options.
 	// Supported options are described below.
 	VendorOptions InstanceVendorOptionsPtrInput
+	// Deprecated: Use block_device or openstack_compute_volume_attach_v2 instead
+	Volumes InstanceVolumeArrayInput
 }
 
 func (InstanceState) ElementType() reflect.Type {
@@ -400,6 +412,8 @@ type instanceArgs struct {
 	// The name of the
 	// desired flavor for the server. Changing this resizes the existing server.
 	FlavorName *string `pulumi:"flavorName"`
+	// Deprecated: Use the openstack_compute_floatingip_associate_v2 resource instead
+	FloatingIp *string `pulumi:"floatingIp"`
 	// Whether to force the OpenStack instance to be
 	// forcefully deleted. This is useful for environments that have reclaim / soft
 	// deletion enabled.
@@ -466,6 +480,8 @@ type instanceArgs struct {
 	// Map of additional vendor-specific options.
 	// Supported options are described below.
 	VendorOptions *InstanceVendorOptions `pulumi:"vendorOptions"`
+	// Deprecated: Use block_device or openstack_compute_volume_attach_v2 instead
+	Volumes []InstanceVolume `pulumi:"volumes"`
 }
 
 // The set of arguments for constructing a Instance resource.
@@ -504,6 +520,8 @@ type InstanceArgs struct {
 	// The name of the
 	// desired flavor for the server. Changing this resizes the existing server.
 	FlavorName pulumi.StringPtrInput
+	// Deprecated: Use the openstack_compute_floatingip_associate_v2 resource instead
+	FloatingIp pulumi.StringPtrInput
 	// Whether to force the OpenStack instance to be
 	// forcefully deleted. This is useful for environments that have reclaim / soft
 	// deletion enabled.
@@ -570,6 +588,8 @@ type InstanceArgs struct {
 	// Map of additional vendor-specific options.
 	// Supported options are described below.
 	VendorOptions InstanceVendorOptionsPtrInput
+	// Deprecated: Use block_device or openstack_compute_volume_attach_v2 instead
+	Volumes InstanceVolumeArrayInput
 }
 
 func (InstanceArgs) ElementType() reflect.Type {

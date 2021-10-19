@@ -85,6 +85,10 @@ export interface GetInstanceV2Result {
      */
     readonly imageId: string;
     /**
+     * The image name used to create the server.
+     */
+    readonly imageName: string;
+    /**
      * The name of the key pair assigned to this server.
      */
     readonly keyPair: string;
@@ -100,6 +104,7 @@ export interface GetInstanceV2Result {
      * An array of maps, detailed below.
      */
     readonly networks: outputs.compute.GetInstanceV2Network[];
+    readonly powerState: string;
     readonly region: string;
     /**
      * An array of security group names associated with this server.
