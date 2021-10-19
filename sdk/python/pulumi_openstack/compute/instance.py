@@ -24,6 +24,7 @@ class InstanceArgs:
                  config_drive: Optional[pulumi.Input[bool]] = None,
                  flavor_id: Optional[pulumi.Input[str]] = None,
                  flavor_name: Optional[pulumi.Input[str]] = None,
+                 floating_ip: Optional[pulumi.Input[str]] = None,
                  force_delete: Optional[pulumi.Input[bool]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
                  image_name: Optional[pulumi.Input[str]] = None,
@@ -40,7 +41,8 @@ class InstanceArgs:
                  stop_before_destroy: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
-                 vendor_options: Optional[pulumi.Input['InstanceVendorOptionsArgs']] = None):
+                 vendor_options: Optional[pulumi.Input['InstanceVendorOptionsArgs']] = None,
+                 volumes: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceVolumeArgs']]]] = None):
         """
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input[str] access_ip_v4: The first detected Fixed IPv4 address.
@@ -136,6 +138,11 @@ class InstanceArgs:
             pulumi.set(__self__, "flavor_id", flavor_id)
         if flavor_name is not None:
             pulumi.set(__self__, "flavor_name", flavor_name)
+        if floating_ip is not None:
+            warnings.warn("""Use the openstack_compute_floatingip_associate_v2 resource instead""", DeprecationWarning)
+            pulumi.log.warn("""floating_ip is deprecated: Use the openstack_compute_floatingip_associate_v2 resource instead""")
+        if floating_ip is not None:
+            pulumi.set(__self__, "floating_ip", floating_ip)
         if force_delete is not None:
             pulumi.set(__self__, "force_delete", force_delete)
         if image_id is not None:
@@ -170,6 +177,11 @@ class InstanceArgs:
             pulumi.set(__self__, "user_data", user_data)
         if vendor_options is not None:
             pulumi.set(__self__, "vendor_options", vendor_options)
+        if volumes is not None:
+            warnings.warn("""Use block_device or openstack_compute_volume_attach_v2 instead""", DeprecationWarning)
+            pulumi.log.warn("""volumes is deprecated: Use block_device or openstack_compute_volume_attach_v2 instead""")
+        if volumes is not None:
+            pulumi.set(__self__, "volumes", volumes)
 
     @property
     @pulumi.getter(name="accessIpV4")
@@ -294,6 +306,15 @@ class InstanceArgs:
     @flavor_name.setter
     def flavor_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "flavor_name", value)
+
+    @property
+    @pulumi.getter(name="floatingIp")
+    def floating_ip(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "floating_ip")
+
+    @floating_ip.setter
+    def floating_ip(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "floating_ip", value)
 
     @property
     @pulumi.getter(name="forceDelete")
@@ -531,6 +552,15 @@ class InstanceArgs:
     def vendor_options(self, value: Optional[pulumi.Input['InstanceVendorOptionsArgs']]):
         pulumi.set(self, "vendor_options", value)
 
+    @property
+    @pulumi.getter
+    def volumes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceVolumeArgs']]]]:
+        return pulumi.get(self, "volumes")
+
+    @volumes.setter
+    def volumes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceVolumeArgs']]]]):
+        pulumi.set(self, "volumes", value)
+
 
 @pulumi.input_type
 class _InstanceState:
@@ -546,6 +576,7 @@ class _InstanceState:
                  config_drive: Optional[pulumi.Input[bool]] = None,
                  flavor_id: Optional[pulumi.Input[str]] = None,
                  flavor_name: Optional[pulumi.Input[str]] = None,
+                 floating_ip: Optional[pulumi.Input[str]] = None,
                  force_delete: Optional[pulumi.Input[bool]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
                  image_name: Optional[pulumi.Input[str]] = None,
@@ -562,7 +593,8 @@ class _InstanceState:
                  stop_before_destroy: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
-                 vendor_options: Optional[pulumi.Input['InstanceVendorOptionsArgs']] = None):
+                 vendor_options: Optional[pulumi.Input['InstanceVendorOptionsArgs']] = None,
+                 volumes: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceVolumeArgs']]]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
         :param pulumi.Input[str] access_ip_v4: The first detected Fixed IPv4 address.
@@ -664,6 +696,11 @@ class _InstanceState:
             pulumi.set(__self__, "flavor_id", flavor_id)
         if flavor_name is not None:
             pulumi.set(__self__, "flavor_name", flavor_name)
+        if floating_ip is not None:
+            warnings.warn("""Use the openstack_compute_floatingip_associate_v2 resource instead""", DeprecationWarning)
+            pulumi.log.warn("""floating_ip is deprecated: Use the openstack_compute_floatingip_associate_v2 resource instead""")
+        if floating_ip is not None:
+            pulumi.set(__self__, "floating_ip", floating_ip)
         if force_delete is not None:
             pulumi.set(__self__, "force_delete", force_delete)
         if image_id is not None:
@@ -698,6 +735,11 @@ class _InstanceState:
             pulumi.set(__self__, "user_data", user_data)
         if vendor_options is not None:
             pulumi.set(__self__, "vendor_options", vendor_options)
+        if volumes is not None:
+            warnings.warn("""Use block_device or openstack_compute_volume_attach_v2 instead""", DeprecationWarning)
+            pulumi.log.warn("""volumes is deprecated: Use block_device or openstack_compute_volume_attach_v2 instead""")
+        if volumes is not None:
+            pulumi.set(__self__, "volumes", volumes)
 
     @property
     @pulumi.getter(name="accessIpV4")
@@ -846,6 +888,15 @@ class _InstanceState:
         pulumi.set(self, "flavor_name", value)
 
     @property
+    @pulumi.getter(name="floatingIp")
+    def floating_ip(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "floating_ip")
+
+    @floating_ip.setter
+    def floating_ip(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "floating_ip", value)
+
+    @property
     @pulumi.getter(name="forceDelete")
     def force_delete(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -1081,6 +1132,15 @@ class _InstanceState:
     def vendor_options(self, value: Optional[pulumi.Input['InstanceVendorOptionsArgs']]):
         pulumi.set(self, "vendor_options", value)
 
+    @property
+    @pulumi.getter
+    def volumes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceVolumeArgs']]]]:
+        return pulumi.get(self, "volumes")
+
+    @volumes.setter
+    def volumes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceVolumeArgs']]]]):
+        pulumi.set(self, "volumes", value)
+
 
 class Instance(pulumi.CustomResource):
     @overload
@@ -1096,6 +1156,7 @@ class Instance(pulumi.CustomResource):
                  config_drive: Optional[pulumi.Input[bool]] = None,
                  flavor_id: Optional[pulumi.Input[str]] = None,
                  flavor_name: Optional[pulumi.Input[str]] = None,
+                 floating_ip: Optional[pulumi.Input[str]] = None,
                  force_delete: Optional[pulumi.Input[bool]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
                  image_name: Optional[pulumi.Input[str]] = None,
@@ -1113,6 +1174,7 @@ class Instance(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
                  vendor_options: Optional[pulumi.Input[pulumi.InputType['InstanceVendorOptionsArgs']]] = None,
+                 volumes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceVolumeArgs']]]]] = None,
                  __props__=None):
         """
         Create a Instance resource with the given unique name, props, and options.
@@ -1225,6 +1287,7 @@ class Instance(pulumi.CustomResource):
                  config_drive: Optional[pulumi.Input[bool]] = None,
                  flavor_id: Optional[pulumi.Input[str]] = None,
                  flavor_name: Optional[pulumi.Input[str]] = None,
+                 floating_ip: Optional[pulumi.Input[str]] = None,
                  force_delete: Optional[pulumi.Input[bool]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
                  image_name: Optional[pulumi.Input[str]] = None,
@@ -1242,6 +1305,7 @@ class Instance(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
                  vendor_options: Optional[pulumi.Input[pulumi.InputType['InstanceVendorOptionsArgs']]] = None,
+                 volumes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceVolumeArgs']]]]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -1263,6 +1327,10 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["config_drive"] = config_drive
             __props__.__dict__["flavor_id"] = flavor_id
             __props__.__dict__["flavor_name"] = flavor_name
+            if floating_ip is not None and not opts.urn:
+                warnings.warn("""Use the openstack_compute_floatingip_associate_v2 resource instead""", DeprecationWarning)
+                pulumi.log.warn("""floating_ip is deprecated: Use the openstack_compute_floatingip_associate_v2 resource instead""")
+            __props__.__dict__["floating_ip"] = floating_ip
             __props__.__dict__["force_delete"] = force_delete
             __props__.__dict__["image_id"] = image_id
             __props__.__dict__["image_name"] = image_name
@@ -1280,6 +1348,10 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["tags"] = tags
             __props__.__dict__["user_data"] = user_data
             __props__.__dict__["vendor_options"] = vendor_options
+            if volumes is not None and not opts.urn:
+                warnings.warn("""Use block_device or openstack_compute_volume_attach_v2 instead""", DeprecationWarning)
+                pulumi.log.warn("""volumes is deprecated: Use block_device or openstack_compute_volume_attach_v2 instead""")
+            __props__.__dict__["volumes"] = volumes
             __props__.__dict__["all_metadata"] = None
             __props__.__dict__["all_tags"] = None
         super(Instance, __self__).__init__(
@@ -1303,6 +1375,7 @@ class Instance(pulumi.CustomResource):
             config_drive: Optional[pulumi.Input[bool]] = None,
             flavor_id: Optional[pulumi.Input[str]] = None,
             flavor_name: Optional[pulumi.Input[str]] = None,
+            floating_ip: Optional[pulumi.Input[str]] = None,
             force_delete: Optional[pulumi.Input[bool]] = None,
             image_id: Optional[pulumi.Input[str]] = None,
             image_name: Optional[pulumi.Input[str]] = None,
@@ -1319,7 +1392,8 @@ class Instance(pulumi.CustomResource):
             stop_before_destroy: Optional[pulumi.Input[bool]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             user_data: Optional[pulumi.Input[str]] = None,
-            vendor_options: Optional[pulumi.Input[pulumi.InputType['InstanceVendorOptionsArgs']]] = None) -> 'Instance':
+            vendor_options: Optional[pulumi.Input[pulumi.InputType['InstanceVendorOptionsArgs']]] = None,
+            volumes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceVolumeArgs']]]]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1419,6 +1493,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["config_drive"] = config_drive
         __props__.__dict__["flavor_id"] = flavor_id
         __props__.__dict__["flavor_name"] = flavor_name
+        __props__.__dict__["floating_ip"] = floating_ip
         __props__.__dict__["force_delete"] = force_delete
         __props__.__dict__["image_id"] = image_id
         __props__.__dict__["image_name"] = image_name
@@ -1436,6 +1511,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         __props__.__dict__["user_data"] = user_data
         __props__.__dict__["vendor_options"] = vendor_options
+        __props__.__dict__["volumes"] = volumes
         return Instance(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1539,6 +1615,11 @@ class Instance(pulumi.CustomResource):
         desired flavor for the server. Changing this resizes the existing server.
         """
         return pulumi.get(self, "flavor_name")
+
+    @property
+    @pulumi.getter(name="floatingIp")
+    def floating_ip(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "floating_ip")
 
     @property
     @pulumi.getter(name="forceDelete")
@@ -1707,4 +1788,9 @@ class Instance(pulumi.CustomResource):
         Supported options are described below.
         """
         return pulumi.get(self, "vendor_options")
+
+    @property
+    @pulumi.getter
+    def volumes(self) -> pulumi.Output[Optional[Sequence['outputs.InstanceVolume']]]:
+        return pulumi.get(self, "volumes")
 

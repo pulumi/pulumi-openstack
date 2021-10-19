@@ -34,7 +34,7 @@ type Cluster struct {
 	Flavor            pulumi.StringOutput      `pulumi:"flavor"`
 	FloatingIpEnabled pulumi.BoolOutput        `pulumi:"floatingIpEnabled"`
 	Keypair           pulumi.StringOutput      `pulumi:"keypair"`
-	Kubeconfig        ClusterKubeconfigOutput  `pulumi:"kubeconfig"`
+	Kubeconfig        pulumi.StringMapOutput   `pulumi:"kubeconfig"`
 	Labels            pulumi.MapOutput         `pulumi:"labels"`
 	MasterAddresses   pulumi.StringArrayOutput `pulumi:"masterAddresses"`
 	MasterCount       pulumi.IntOutput         `pulumi:"masterCount"`
@@ -95,7 +95,7 @@ type clusterState struct {
 	Flavor            *string                `pulumi:"flavor"`
 	FloatingIpEnabled *bool                  `pulumi:"floatingIpEnabled"`
 	Keypair           *string                `pulumi:"keypair"`
-	Kubeconfig        *ClusterKubeconfig     `pulumi:"kubeconfig"`
+	Kubeconfig        map[string]string      `pulumi:"kubeconfig"`
 	Labels            map[string]interface{} `pulumi:"labels"`
 	MasterAddresses   []string               `pulumi:"masterAddresses"`
 	MasterCount       *int                   `pulumi:"masterCount"`
@@ -125,7 +125,7 @@ type ClusterState struct {
 	Flavor            pulumi.StringPtrInput
 	FloatingIpEnabled pulumi.BoolPtrInput
 	Keypair           pulumi.StringPtrInput
-	Kubeconfig        ClusterKubeconfigPtrInput
+	Kubeconfig        pulumi.StringMapInput
 	Labels            pulumi.MapInput
 	MasterAddresses   pulumi.StringArrayInput
 	MasterCount       pulumi.IntPtrInput

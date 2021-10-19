@@ -7,8 +7,6 @@ from .cluster import *
 from .cluster_template import *
 from .get_cluster import *
 from .get_cluster_template import *
-from ._inputs import *
-from . import outputs
 
 def _register_module():
     import pulumi

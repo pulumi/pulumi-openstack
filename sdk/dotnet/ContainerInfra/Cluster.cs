@@ -61,7 +61,7 @@ namespace Pulumi.OpenStack.ContainerInfra
         public Output<string> Keypair { get; private set; } = null!;
 
         [Output("kubeconfig")]
-        public Output<Outputs.ClusterKubeconfig> Kubeconfig { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> Kubeconfig { get; private set; } = null!;
 
         [Output("labels")]
         public Output<ImmutableDictionary<string, object>> Labels { get; private set; } = null!;
@@ -248,7 +248,12 @@ namespace Pulumi.OpenStack.ContainerInfra
         public Input<string>? Keypair { get; set; }
 
         [Input("kubeconfig")]
-        public Input<Inputs.ClusterKubeconfigGetArgs>? Kubeconfig { get; set; }
+        private InputMap<string>? _kubeconfig;
+        public InputMap<string> Kubeconfig
+        {
+            get => _kubeconfig ?? (_kubeconfig = new InputMap<string>());
+            set => _kubeconfig = value;
+        }
 
         [Input("labels")]
         private InputMap<object>? _labels;

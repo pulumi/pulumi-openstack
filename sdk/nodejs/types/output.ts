@@ -191,6 +191,9 @@ export namespace compute {
          */
         fixedIpV4: string;
         fixedIpV6: string;
+        /**
+         * @deprecated Use the openstack_compute_floatingip_associate_v2 resource instead
+         */
         floatingIp: string;
         mac: string;
         /**
@@ -282,6 +285,12 @@ export namespace compute {
         ignoreResizeConfirmation?: boolean;
     }
 
+    export interface InstanceVolume {
+        device: string;
+        id: string;
+        volumeId: string;
+    }
+
     export interface SecGroupRule {
         /**
          * Required if `fromGroupId` or `self` is empty. The IP range
@@ -327,16 +336,6 @@ export namespace compute {
          * to work with some OpenStack clouds which don't have the Block Storage V3 API available.
          */
         ignoreVolumeConfirmation?: boolean;
-    }
-}
-
-export namespace containerinfra {
-    export interface ClusterKubeconfig {
-        clientCertificate: string;
-        clientKey: string;
-        clusterCaCertificate: string;
-        host: string;
-        rawConfig: string;
     }
 }
 

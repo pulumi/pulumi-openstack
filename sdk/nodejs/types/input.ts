@@ -191,6 +191,9 @@ export namespace compute {
          */
         fixedIpV4?: pulumi.Input<string>;
         fixedIpV6?: pulumi.Input<string>;
+        /**
+         * @deprecated Use the openstack_compute_floatingip_associate_v2 resource instead
+         */
         floatingIp?: pulumi.Input<string>;
         mac?: pulumi.Input<string>;
         /**
@@ -282,6 +285,12 @@ export namespace compute {
         ignoreResizeConfirmation?: pulumi.Input<boolean>;
     }
 
+    export interface InstanceVolume {
+        device?: pulumi.Input<string>;
+        id?: pulumi.Input<string>;
+        volumeId: pulumi.Input<string>;
+    }
+
     export interface SecGroupRule {
         /**
          * Required if `fromGroupId` or `self` is empty. The IP range
@@ -327,16 +336,6 @@ export namespace compute {
          * to work with some OpenStack clouds which don't have the Block Storage V3 API available.
          */
         ignoreVolumeConfirmation?: pulumi.Input<boolean>;
-    }
-}
-
-export namespace containerinfra {
-    export interface ClusterKubeconfig {
-        clientCertificate?: pulumi.Input<string>;
-        clientKey?: pulumi.Input<string>;
-        clusterCaCertificate?: pulumi.Input<string>;
-        host?: pulumi.Input<string>;
-        rawConfig?: pulumi.Input<string>;
     }
 }
 

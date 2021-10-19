@@ -18,6 +18,7 @@ class VolumeAttachV2Args:
                  attach_mode: Optional[pulumi.Input[str]] = None,
                  device: Optional[pulumi.Input[str]] = None,
                  initiator: Optional[pulumi.Input[str]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  multipath: Optional[pulumi.Input[bool]] = None,
                  os_type: Optional[pulumi.Input[str]] = None,
@@ -56,6 +57,11 @@ class VolumeAttachV2Args:
             pulumi.set(__self__, "device", device)
         if initiator is not None:
             pulumi.set(__self__, "initiator", initiator)
+        if instance_id is not None:
+            warnings.warn("""instance_id is no longer used in this resource""", DeprecationWarning)
+            pulumi.log.warn("""instance_id is deprecated: instance_id is no longer used in this resource""")
+        if instance_id is not None:
+            pulumi.set(__self__, "instance_id", instance_id)
         if ip_address is not None:
             pulumi.set(__self__, "ip_address", ip_address)
         if multipath is not None:
@@ -134,6 +140,15 @@ class VolumeAttachV2Args:
     @initiator.setter
     def initiator(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "initiator", value)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_id", value)
 
     @property
     @pulumi.getter(name="ipAddress")
@@ -233,6 +248,7 @@ class _VolumeAttachV2State:
                  driver_volume_type: Optional[pulumi.Input[str]] = None,
                  host_name: Optional[pulumi.Input[str]] = None,
                  initiator: Optional[pulumi.Input[str]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  mount_point_base: Optional[pulumi.Input[str]] = None,
                  multipath: Optional[pulumi.Input[bool]] = None,
@@ -282,6 +298,11 @@ class _VolumeAttachV2State:
             pulumi.set(__self__, "host_name", host_name)
         if initiator is not None:
             pulumi.set(__self__, "initiator", initiator)
+        if instance_id is not None:
+            warnings.warn("""instance_id is no longer used in this resource""", DeprecationWarning)
+            pulumi.log.warn("""instance_id is deprecated: instance_id is no longer used in this resource""")
+        if instance_id is not None:
+            pulumi.set(__self__, "instance_id", instance_id)
         if ip_address is not None:
             pulumi.set(__self__, "ip_address", ip_address)
         if mount_point_base is not None:
@@ -378,6 +399,15 @@ class _VolumeAttachV2State:
     @initiator.setter
     def initiator(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "initiator", value)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_id", value)
 
     @property
     @pulumi.getter(name="ipAddress")
@@ -501,6 +531,7 @@ class VolumeAttachV2(pulumi.CustomResource):
                  device: Optional[pulumi.Input[str]] = None,
                  host_name: Optional[pulumi.Input[str]] = None,
                  initiator: Optional[pulumi.Input[str]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  multipath: Optional[pulumi.Input[bool]] = None,
                  os_type: Optional[pulumi.Input[str]] = None,
@@ -568,6 +599,7 @@ class VolumeAttachV2(pulumi.CustomResource):
                  device: Optional[pulumi.Input[str]] = None,
                  host_name: Optional[pulumi.Input[str]] = None,
                  initiator: Optional[pulumi.Input[str]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  multipath: Optional[pulumi.Input[bool]] = None,
                  os_type: Optional[pulumi.Input[str]] = None,
@@ -594,6 +626,10 @@ class VolumeAttachV2(pulumi.CustomResource):
                 raise TypeError("Missing required property 'host_name'")
             __props__.__dict__["host_name"] = host_name
             __props__.__dict__["initiator"] = initiator
+            if instance_id is not None and not opts.urn:
+                warnings.warn("""instance_id is no longer used in this resource""", DeprecationWarning)
+                pulumi.log.warn("""instance_id is deprecated: instance_id is no longer used in this resource""")
+            __props__.__dict__["instance_id"] = instance_id
             __props__.__dict__["ip_address"] = ip_address
             __props__.__dict__["multipath"] = multipath
             __props__.__dict__["os_type"] = os_type
@@ -623,6 +659,7 @@ class VolumeAttachV2(pulumi.CustomResource):
             driver_volume_type: Optional[pulumi.Input[str]] = None,
             host_name: Optional[pulumi.Input[str]] = None,
             initiator: Optional[pulumi.Input[str]] = None,
+            instance_id: Optional[pulumi.Input[str]] = None,
             ip_address: Optional[pulumi.Input[str]] = None,
             mount_point_base: Optional[pulumi.Input[str]] = None,
             multipath: Optional[pulumi.Input[bool]] = None,
@@ -675,6 +712,7 @@ class VolumeAttachV2(pulumi.CustomResource):
         __props__.__dict__["driver_volume_type"] = driver_volume_type
         __props__.__dict__["host_name"] = host_name
         __props__.__dict__["initiator"] = initiator
+        __props__.__dict__["instance_id"] = instance_id
         __props__.__dict__["ip_address"] = ip_address
         __props__.__dict__["mount_point_base"] = mount_point_base
         __props__.__dict__["multipath"] = multipath
@@ -739,6 +777,11 @@ class VolumeAttachV2(pulumi.CustomResource):
         The iSCSI initiator string to make the connection.
         """
         return pulumi.get(self, "initiator")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "instance_id")
 
     @property
     @pulumi.getter(name="ipAddress")

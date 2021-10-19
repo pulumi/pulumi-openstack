@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -55,7 +54,7 @@ export class Cluster extends pulumi.CustomResource {
     public readonly flavor!: pulumi.Output<string>;
     public readonly floatingIpEnabled!: pulumi.Output<boolean>;
     public readonly keypair!: pulumi.Output<string>;
-    public /*out*/ readonly kubeconfig!: pulumi.Output<outputs.containerinfra.ClusterKubeconfig>;
+    public /*out*/ readonly kubeconfig!: pulumi.Output<{[key: string]: string}>;
     public readonly labels!: pulumi.Output<{[key: string]: any}>;
     public /*out*/ readonly masterAddresses!: pulumi.Output<string[]>;
     public readonly masterCount!: pulumi.Output<number>;
@@ -167,7 +166,7 @@ export interface ClusterState {
     readonly flavor?: pulumi.Input<string>;
     readonly floatingIpEnabled?: pulumi.Input<boolean>;
     readonly keypair?: pulumi.Input<string>;
-    readonly kubeconfig?: pulumi.Input<inputs.containerinfra.ClusterKubeconfig>;
+    readonly kubeconfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly labels?: pulumi.Input<{[key: string]: any}>;
     readonly masterAddresses?: pulumi.Input<pulumi.Input<string>[]>;
     readonly masterCount?: pulumi.Input<number>;

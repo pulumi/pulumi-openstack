@@ -20,10 +20,9 @@ import (
 	"strings"
 	"unicode"
 
-	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/pulumi/pulumi-openstack/provider/v3/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	shimv1 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v1"
+	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 	"github.com/terraform-provider-openstack/terraform-provider-openstack/openstack"
 )
@@ -81,7 +80,7 @@ func openstackResource(mod string, res string) tokens.Type {
 
 // Provider returns additional overlaid schema and metadata associated with the openstack package.
 func Provider() tfbridge.ProviderInfo {
-	p := shimv1.NewProvider(openstack.Provider().(*schema.Provider))
+	p := shimv2.NewProvider(openstack.Provider())
 
 	prov := tfbridge.ProviderInfo{
 		P:           p,

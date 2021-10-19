@@ -106,6 +106,10 @@ namespace Pulumi.OpenStack.Compute
         /// </summary>
         public readonly string ImageId;
         /// <summary>
+        /// The image name used to create the server.
+        /// </summary>
+        public readonly string ImageName;
+        /// <summary>
         /// The name of the key pair assigned to this server.
         /// </summary>
         public readonly string KeyPair;
@@ -121,6 +125,7 @@ namespace Pulumi.OpenStack.Compute
         /// An array of maps, detailed below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceV2NetworkResult> Networks;
+        public readonly string PowerState;
         public readonly string Region;
         /// <summary>
         /// An array of security group names associated with this server.
@@ -151,6 +156,8 @@ namespace Pulumi.OpenStack.Compute
 
             string imageId,
 
+            string imageName,
+
             string keyPair,
 
             ImmutableDictionary<string, object> metadata,
@@ -158,6 +165,8 @@ namespace Pulumi.OpenStack.Compute
             string name,
 
             ImmutableArray<Outputs.GetInstanceV2NetworkResult> networks,
+
+            string powerState,
 
             string region,
 
@@ -174,10 +183,12 @@ namespace Pulumi.OpenStack.Compute
             FlavorName = flavorName;
             Id = id;
             ImageId = imageId;
+            ImageName = imageName;
             KeyPair = keyPair;
             Metadata = metadata;
             Name = name;
             Networks = networks;
+            PowerState = powerState;
             Region = region;
             SecurityGroups = securityGroups;
             Tags = tags;

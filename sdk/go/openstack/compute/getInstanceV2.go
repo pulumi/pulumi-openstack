@@ -66,6 +66,8 @@ type GetInstanceV2Result struct {
 	Id         string `pulumi:"id"`
 	// The image ID used to create the server.
 	ImageId string `pulumi:"imageId"`
+	// The image name used to create the server.
+	ImageName string `pulumi:"imageName"`
 	// The name of the key pair assigned to this server.
 	KeyPair string `pulumi:"keyPair"`
 	// A set of key/value pairs made available to the server.
@@ -73,8 +75,9 @@ type GetInstanceV2Result struct {
 	// The name of the network
 	Name string `pulumi:"name"`
 	// An array of maps, detailed below.
-	Networks []GetInstanceV2Network `pulumi:"networks"`
-	Region   string                 `pulumi:"region"`
+	Networks   []GetInstanceV2Network `pulumi:"networks"`
+	PowerState string                 `pulumi:"powerState"`
+	Region     string                 `pulumi:"region"`
 	// An array of security group names associated with this server.
 	SecurityGroups []string `pulumi:"securityGroups"`
 	// A set of string tags assigned to this server.

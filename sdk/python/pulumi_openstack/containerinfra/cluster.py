@@ -7,8 +7,6 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
-from . import outputs
-from ._inputs import *
 
 __all__ = ['ClusterArgs', 'Cluster']
 
@@ -227,7 +225,7 @@ class _ClusterState:
                  flavor: Optional[pulumi.Input[str]] = None,
                  floating_ip_enabled: Optional[pulumi.Input[bool]] = None,
                  keypair: Optional[pulumi.Input[str]] = None,
-                 kubeconfig: Optional[pulumi.Input['ClusterKubeconfigArgs']] = None,
+                 kubeconfig: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  master_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  master_count: Optional[pulumi.Input[int]] = None,
@@ -418,11 +416,11 @@ class _ClusterState:
 
     @property
     @pulumi.getter
-    def kubeconfig(self) -> Optional[pulumi.Input['ClusterKubeconfigArgs']]:
+    def kubeconfig(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "kubeconfig")
 
     @kubeconfig.setter
-    def kubeconfig(self, value: Optional[pulumi.Input['ClusterKubeconfigArgs']]):
+    def kubeconfig(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "kubeconfig", value)
 
     @property
@@ -687,7 +685,7 @@ class Cluster(pulumi.CustomResource):
             flavor: Optional[pulumi.Input[str]] = None,
             floating_ip_enabled: Optional[pulumi.Input[bool]] = None,
             keypair: Optional[pulumi.Input[str]] = None,
-            kubeconfig: Optional[pulumi.Input[pulumi.InputType['ClusterKubeconfigArgs']]] = None,
+            kubeconfig: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             master_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             master_count: Optional[pulumi.Input[int]] = None,
@@ -809,7 +807,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def kubeconfig(self) -> pulumi.Output['outputs.ClusterKubeconfig']:
+    def kubeconfig(self) -> pulumi.Output[Mapping[str, str]]:
         return pulumi.get(self, "kubeconfig")
 
     @property

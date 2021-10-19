@@ -14,6 +14,7 @@ __all__ = [
     'InstancePersonality',
     'InstanceSchedulerHint',
     'InstanceVendorOptions',
+    'InstanceVolume',
     'SecGroupRule',
     'VolumeAttachVendorOptions',
     'GetInstanceV2NetworkResult',
@@ -579,6 +580,51 @@ class InstanceVendorOptions(dict):
         instances after some timeout.
         """
         return pulumi.get(self, "ignore_resize_confirmation")
+
+
+@pulumi.output_type
+class InstanceVolume(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "volumeId":
+            suggest = "volume_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceVolume. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceVolume.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceVolume.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 volume_id: str,
+                 device: Optional[str] = None,
+                 id: Optional[str] = None):
+        pulumi.set(__self__, "volume_id", volume_id)
+        if device is not None:
+            pulumi.set(__self__, "device", device)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> str:
+        return pulumi.get(self, "volume_id")
+
+    @property
+    @pulumi.getter
+    def device(self) -> Optional[str]:
+        return pulumi.get(self, "device")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        return pulumi.get(self, "id")
 
 
 @pulumi.output_type

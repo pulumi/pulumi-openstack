@@ -189,6 +189,13 @@ type PoolV1 struct {
 	// The backend load balancing provider. For example:
 	// `haproxy`, `F5`, etc.
 	LbProvider pulumi.StringOutput `pulumi:"lbProvider"`
+	// An existing node to add to the pool. Changing this
+	// updates the members of the pool. The member object structure is documented
+	// below. Please note that the `member` block is deprecated in favor of the
+	// `loadbalancer.MemberV1` resource.
+	//
+	// Deprecated: Use openstack_lb_member_v1 instead
+	Members pulumi.StringArrayOutput `pulumi:"members"`
 	// A list of IDs of monitors to associate with the
 	// pool.
 	MonitorIds pulumi.StringArrayOutput `pulumi:"monitorIds"`
@@ -257,6 +264,13 @@ type poolV1State struct {
 	// The backend load balancing provider. For example:
 	// `haproxy`, `F5`, etc.
 	LbProvider *string `pulumi:"lbProvider"`
+	// An existing node to add to the pool. Changing this
+	// updates the members of the pool. The member object structure is documented
+	// below. Please note that the `member` block is deprecated in favor of the
+	// `loadbalancer.MemberV1` resource.
+	//
+	// Deprecated: Use openstack_lb_member_v1 instead
+	Members []string `pulumi:"members"`
 	// A list of IDs of monitors to associate with the
 	// pool.
 	MonitorIds []string `pulumi:"monitorIds"`
@@ -288,6 +302,13 @@ type PoolV1State struct {
 	// The backend load balancing provider. For example:
 	// `haproxy`, `F5`, etc.
 	LbProvider pulumi.StringPtrInput
+	// An existing node to add to the pool. Changing this
+	// updates the members of the pool. The member object structure is documented
+	// below. Please note that the `member` block is deprecated in favor of the
+	// `loadbalancer.MemberV1` resource.
+	//
+	// Deprecated: Use openstack_lb_member_v1 instead
+	Members pulumi.StringArrayInput
 	// A list of IDs of monitors to associate with the
 	// pool.
 	MonitorIds pulumi.StringArrayInput
@@ -323,6 +344,13 @@ type poolV1Args struct {
 	// The backend load balancing provider. For example:
 	// `haproxy`, `F5`, etc.
 	LbProvider *string `pulumi:"lbProvider"`
+	// An existing node to add to the pool. Changing this
+	// updates the members of the pool. The member object structure is documented
+	// below. Please note that the `member` block is deprecated in favor of the
+	// `loadbalancer.MemberV1` resource.
+	//
+	// Deprecated: Use openstack_lb_member_v1 instead
+	Members []string `pulumi:"members"`
 	// A list of IDs of monitors to associate with the
 	// pool.
 	MonitorIds []string `pulumi:"monitorIds"`
@@ -355,6 +383,13 @@ type PoolV1Args struct {
 	// The backend load balancing provider. For example:
 	// `haproxy`, `F5`, etc.
 	LbProvider pulumi.StringPtrInput
+	// An existing node to add to the pool. Changing this
+	// updates the members of the pool. The member object structure is documented
+	// below. Please note that the `member` block is deprecated in favor of the
+	// `loadbalancer.MemberV1` resource.
+	//
+	// Deprecated: Use openstack_lb_member_v1 instead
+	Members pulumi.StringArrayInput
 	// A list of IDs of monitors to associate with the
 	// pool.
 	MonitorIds pulumi.StringArrayInput

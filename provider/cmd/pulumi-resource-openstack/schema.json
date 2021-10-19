@@ -543,6 +543,7 @@
                 },
                 "floatingIp": {
                     "type": "string",
+                    "deprecationMessage": "Use the openstack_compute_floatingip_associate_v2 resource instead",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -742,6 +743,47 @@
             },
             "type": "object"
         },
+        "openstack:compute/InstanceVolume:InstanceVolume": {
+            "properties": {
+                "device": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "volumeId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "volumeId"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "device",
+                        "id",
+                        "volumeId"
+                    ]
+                }
+            }
+        },
         "openstack:compute/SecGroupRule:SecGroupRule": {
             "properties": {
                 "cidr": {
@@ -907,37 +949,6 @@
             "language": {
                 "nodejs": {
                     "requiredInputs": []
-                }
-            }
-        },
-        "openstack:containerinfra/ClusterKubeconfig:ClusterKubeconfig": {
-            "properties": {
-                "clientCertificate": {
-                    "type": "string"
-                },
-                "clientKey": {
-                    "type": "string"
-                },
-                "clusterCaCertificate": {
-                    "type": "string"
-                },
-                "host": {
-                    "type": "string"
-                },
-                "rawConfig": {
-                    "type": "string"
-                }
-            },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "clientCertificate",
-                        "clientKey",
-                        "clusterCaCertificate",
-                        "host",
-                        "rawConfig"
-                    ]
                 }
             }
         },
@@ -3733,6 +3744,10 @@
                     "type": "string",
                     "description": "The iSCSI initiator string to make the connection.\n"
                 },
+                "instanceId": {
+                    "type": "string",
+                    "deprecationMessage": "instance_id is no longer used in this resource"
+                },
                 "ipAddress": {
                     "type": "string",
                     "description": "The IP address of the `host_name` above.\n"
@@ -3797,6 +3812,10 @@
                 "initiator": {
                     "type": "string",
                     "description": "The iSCSI initiator string to make the connection.\n"
+                },
+                "instanceId": {
+                    "type": "string",
+                    "deprecationMessage": "instance_id is no longer used in this resource"
                 },
                 "ipAddress": {
                     "type": "string",
@@ -3867,6 +3886,10 @@
                     "initiator": {
                         "type": "string",
                         "description": "The iSCSI initiator string to make the connection.\n"
+                    },
+                    "instanceId": {
+                        "type": "string",
+                        "deprecationMessage": "instance_id is no longer used in this resource"
                     },
                     "ipAddress": {
                         "type": "string",
@@ -4951,6 +4974,10 @@
                     "type": "string",
                     "description": "The name of the\ndesired flavor for the server. Changing this resizes the existing server.\n"
                 },
+                "floatingIp": {
+                    "type": "string",
+                    "deprecationMessage": "Use the openstack_compute_floatingip_associate_v2 resource instead"
+                },
                 "forceDelete": {
                     "type": "boolean",
                     "description": "Whether to force the OpenStack instance to be\nforcefully deleted. This is useful for environments that have reclaim / soft\ndeletion enabled.\n"
@@ -5036,6 +5063,13 @@
                 "vendorOptions": {
                     "$ref": "#/types/openstack:compute/InstanceVendorOptions:InstanceVendorOptions",
                     "description": "Map of additional vendor-specific options.\nSupported options are described below.\n"
+                },
+                "volumes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/openstack:compute/InstanceVolume:InstanceVolume"
+                    },
+                    "deprecationMessage": "Use block_device or openstack_compute_volume_attach_v2 instead"
                 }
             },
             "required": [
@@ -5093,6 +5127,10 @@
                     "type": "string",
                     "description": "The name of the\ndesired flavor for the server. Changing this resizes the existing server.\n"
                 },
+                "floatingIp": {
+                    "type": "string",
+                    "deprecationMessage": "Use the openstack_compute_floatingip_associate_v2 resource instead"
+                },
                 "forceDelete": {
                     "type": "boolean",
                     "description": "Whether to force the OpenStack instance to be\nforcefully deleted. This is useful for environments that have reclaim / soft\ndeletion enabled.\n"
@@ -5178,6 +5216,13 @@
                 "vendorOptions": {
                     "$ref": "#/types/openstack:compute/InstanceVendorOptions:InstanceVendorOptions",
                     "description": "Map of additional vendor-specific options.\nSupported options are described below.\n"
+                },
+                "volumes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/openstack:compute/InstanceVolume:InstanceVolume"
+                    },
+                    "deprecationMessage": "Use block_device or openstack_compute_volume_attach_v2 instead"
                 }
             },
             "stateInputs": {
@@ -5234,6 +5279,10 @@
                     "flavorName": {
                         "type": "string",
                         "description": "The name of the\ndesired flavor for the server. Changing this resizes the existing server.\n"
+                    },
+                    "floatingIp": {
+                        "type": "string",
+                        "deprecationMessage": "Use the openstack_compute_floatingip_associate_v2 resource instead"
                     },
                     "forceDelete": {
                         "type": "boolean",
@@ -5320,6 +5369,13 @@
                     "vendorOptions": {
                         "$ref": "#/types/openstack:compute/InstanceVendorOptions:InstanceVendorOptions",
                         "description": "Map of additional vendor-specific options.\nSupported options are described below.\n"
+                    },
+                    "volumes": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/openstack:compute/InstanceVolume:InstanceVolume"
+                        },
+                        "deprecationMessage": "Use block_device or openstack_compute_volume_attach_v2 instead"
                     }
                 },
                 "type": "object"
@@ -6042,7 +6098,10 @@
                     "type": "string"
                 },
                 "kubeconfig": {
-                    "$ref": "#/types/openstack:containerinfra/ClusterKubeconfig:ClusterKubeconfig"
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
                 },
                 "labels": {
                     "type": "object",
@@ -6220,7 +6279,10 @@
                         "type": "string"
                     },
                     "kubeconfig": {
-                        "$ref": "#/types/openstack:containerinfra/ClusterKubeconfig:ClusterKubeconfig"
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
                     },
                     "labels": {
                         "type": "object",
@@ -11695,6 +11757,14 @@
                     "type": "string",
                     "description": "The backend load balancing provider. For example:\n`haproxy`, `F5`, etc.\n"
                 },
+                "members": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "An existing node to add to the pool. Changing this\nupdates the members of the pool. The member object structure is documented\nbelow. Please note that the `member` block is deprecated in favor of the\n`openstack.loadbalancer.MemberV1` resource.\n",
+                    "deprecationMessage": "Use openstack_lb_member_v1 instead"
+                },
                 "monitorIds": {
                     "type": "array",
                     "items": {
@@ -11741,6 +11811,14 @@
                     "type": "string",
                     "description": "The backend load balancing provider. For example:\n`haproxy`, `F5`, etc.\n"
                 },
+                "members": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "An existing node to add to the pool. Changing this\nupdates the members of the pool. The member object structure is documented\nbelow. Please note that the `member` block is deprecated in favor of the\n`openstack.loadbalancer.MemberV1` resource.\n",
+                    "deprecationMessage": "Use openstack_lb_member_v1 instead"
+                },
                 "monitorIds": {
                     "type": "array",
                     "items": {
@@ -11784,6 +11862,14 @@
                     "lbProvider": {
                         "type": "string",
                         "description": "The backend load balancing provider. For example:\n`haproxy`, `F5`, etc.\n"
+                    },
+                    "members": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "An existing node to add to the pool. Changing this\nupdates the members of the pool. The member object structure is documented\nbelow. Please note that the `member` block is deprecated in favor of the\n`openstack.loadbalancer.MemberV1` resource.\n",
+                        "deprecationMessage": "Use openstack_lb_member_v1 instead"
                     },
                     "monitorIds": {
                         "type": "array",
@@ -18693,6 +18779,10 @@
                         "type": "string",
                         "description": "The image ID used to create the server.\n"
                     },
+                    "imageName": {
+                        "type": "string",
+                        "description": "The image name used to create the server.\n"
+                    },
                     "keyPair": {
                         "type": "string",
                         "description": "The name of the key pair assigned to this server.\n"
@@ -18714,6 +18804,9 @@
                             "$ref": "#/types/openstack:compute/getInstanceV2Network:getInstanceV2Network"
                         },
                         "description": "An array of maps, detailed below.\n"
+                    },
+                    "powerState": {
+                        "type": "string"
                     },
                     "region": {
                         "type": "string"
@@ -18746,10 +18839,12 @@
                     "flavorName",
                     "id",
                     "imageId",
+                    "imageName",
                     "keyPair",
                     "metadata",
                     "name",
                     "networks",
+                    "powerState",
                     "region",
                     "securityGroups",
                     "tags",
@@ -19430,7 +19525,7 @@
             }
         },
         "openstack:identity/getAuthScope:getAuthScope": {
-            "description": "Use this data source to get authentication information about the current\nauth scope in use. This can be used as self-discovery or introspection of\nthe username or project name currently in use as well as the service catalog.\n",
+            "description": "Use this data source to get authentication information about the current\nauth scope in use. This can be used as self-discovery or introspection of\nthe username or project name currently in use as well as the service catalog.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst scope = pulumi.output(openstack.identity.getAuthScope({\n    name: \"my_scope\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nscope = openstack.identity.get_auth_scope(name=\"my_scope\")\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var scope = Output.Create(OpenStack.Identity.GetAuthScope.InvokeAsync(new OpenStack.Identity.GetAuthScopeArgs\n        {\n            Name = \"my_scope\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/identity\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := identity.GetAuthScope(ctx, \u0026identity.GetAuthScopeArgs{\n\t\t\tName: \"my_scope\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\nTo find the the public object storage endpoint for \"region1\" as listed in the\nservice catalog:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n\nconst objectStoreService = .filter(entry =\u003e entry.type == \"object-store\").map(entry =\u003e entry)[0];\nconst objectStoreEndpoint = .filter(endpoint =\u003e endpoint[\"interface\"] == \"public\" \u0026\u0026 endpoint.region == \"region1\").map(endpoint =\u003e endpoint)[0];\nconst objectStorePublicUrl = objectStoreEndpoint.url;\n```\n```python\nimport pulumi\n\nobject_store_service = [entry for entry in data[\"openstack_identity_auth_scope_v3\"][\"scope\"][\"service_catalog\"] if entry[\"type\"] == \"object-store\"][0]\nobject_store_endpoint = [endpoint for endpoint in object_store_service[\"endpoints\"] if endpoint[\"interface\"] == \"public\" and endpoint[\"region\"] == \"region1\"][0]\nobject_store_public_url = object_store_endpoint[\"url\"]\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getAuthScope.\n",
                 "properties": {

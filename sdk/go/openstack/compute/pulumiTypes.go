@@ -254,8 +254,9 @@ type InstanceNetwork struct {
 	AccessNetwork *bool `pulumi:"accessNetwork"`
 	// Specifies a fixed IPv4 address to be used on this
 	// network. Changing this creates a new server.
-	FixedIpV4  *string `pulumi:"fixedIpV4"`
-	FixedIpV6  *string `pulumi:"fixedIpV6"`
+	FixedIpV4 *string `pulumi:"fixedIpV4"`
+	FixedIpV6 *string `pulumi:"fixedIpV6"`
+	// Deprecated: Use the openstack_compute_floatingip_associate_v2 resource instead
 	FloatingIp *string `pulumi:"floatingIp"`
 	Mac        *string `pulumi:"mac"`
 	// The human-readable
@@ -286,8 +287,9 @@ type InstanceNetworkArgs struct {
 	AccessNetwork pulumi.BoolPtrInput `pulumi:"accessNetwork"`
 	// Specifies a fixed IPv4 address to be used on this
 	// network. Changing this creates a new server.
-	FixedIpV4  pulumi.StringPtrInput `pulumi:"fixedIpV4"`
-	FixedIpV6  pulumi.StringPtrInput `pulumi:"fixedIpV6"`
+	FixedIpV4 pulumi.StringPtrInput `pulumi:"fixedIpV4"`
+	FixedIpV6 pulumi.StringPtrInput `pulumi:"fixedIpV6"`
+	// Deprecated: Use the openstack_compute_floatingip_associate_v2 resource instead
 	FloatingIp pulumi.StringPtrInput `pulumi:"floatingIp"`
 	Mac        pulumi.StringPtrInput `pulumi:"mac"`
 	// The human-readable
@@ -368,6 +370,7 @@ func (o InstanceNetworkOutput) FixedIpV6() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceNetwork) *string { return v.FixedIpV6 }).(pulumi.StringPtrOutput)
 }
 
+// Deprecated: Use the openstack_compute_floatingip_associate_v2 resource instead
 func (o InstanceNetworkOutput) FloatingIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceNetwork) *string { return v.FloatingIp }).(pulumi.StringPtrOutput)
 }
@@ -880,6 +883,112 @@ func (o InstanceVendorOptionsPtrOutput) IgnoreResizeConfirmation() pulumi.BoolPt
 	}).(pulumi.BoolPtrOutput)
 }
 
+type InstanceVolume struct {
+	Device   *string `pulumi:"device"`
+	Id       *string `pulumi:"id"`
+	VolumeId string  `pulumi:"volumeId"`
+}
+
+// InstanceVolumeInput is an input type that accepts InstanceVolumeArgs and InstanceVolumeOutput values.
+// You can construct a concrete instance of `InstanceVolumeInput` via:
+//
+//          InstanceVolumeArgs{...}
+type InstanceVolumeInput interface {
+	pulumi.Input
+
+	ToInstanceVolumeOutput() InstanceVolumeOutput
+	ToInstanceVolumeOutputWithContext(context.Context) InstanceVolumeOutput
+}
+
+type InstanceVolumeArgs struct {
+	Device   pulumi.StringPtrInput `pulumi:"device"`
+	Id       pulumi.StringPtrInput `pulumi:"id"`
+	VolumeId pulumi.StringInput    `pulumi:"volumeId"`
+}
+
+func (InstanceVolumeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceVolume)(nil)).Elem()
+}
+
+func (i InstanceVolumeArgs) ToInstanceVolumeOutput() InstanceVolumeOutput {
+	return i.ToInstanceVolumeOutputWithContext(context.Background())
+}
+
+func (i InstanceVolumeArgs) ToInstanceVolumeOutputWithContext(ctx context.Context) InstanceVolumeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceVolumeOutput)
+}
+
+// InstanceVolumeArrayInput is an input type that accepts InstanceVolumeArray and InstanceVolumeArrayOutput values.
+// You can construct a concrete instance of `InstanceVolumeArrayInput` via:
+//
+//          InstanceVolumeArray{ InstanceVolumeArgs{...} }
+type InstanceVolumeArrayInput interface {
+	pulumi.Input
+
+	ToInstanceVolumeArrayOutput() InstanceVolumeArrayOutput
+	ToInstanceVolumeArrayOutputWithContext(context.Context) InstanceVolumeArrayOutput
+}
+
+type InstanceVolumeArray []InstanceVolumeInput
+
+func (InstanceVolumeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceVolume)(nil)).Elem()
+}
+
+func (i InstanceVolumeArray) ToInstanceVolumeArrayOutput() InstanceVolumeArrayOutput {
+	return i.ToInstanceVolumeArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceVolumeArray) ToInstanceVolumeArrayOutputWithContext(ctx context.Context) InstanceVolumeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceVolumeArrayOutput)
+}
+
+type InstanceVolumeOutput struct{ *pulumi.OutputState }
+
+func (InstanceVolumeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceVolume)(nil)).Elem()
+}
+
+func (o InstanceVolumeOutput) ToInstanceVolumeOutput() InstanceVolumeOutput {
+	return o
+}
+
+func (o InstanceVolumeOutput) ToInstanceVolumeOutputWithContext(ctx context.Context) InstanceVolumeOutput {
+	return o
+}
+
+func (o InstanceVolumeOutput) Device() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceVolume) *string { return v.Device }).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceVolumeOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceVolume) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceVolumeOutput) VolumeId() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceVolume) string { return v.VolumeId }).(pulumi.StringOutput)
+}
+
+type InstanceVolumeArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceVolumeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceVolume)(nil)).Elem()
+}
+
+func (o InstanceVolumeArrayOutput) ToInstanceVolumeArrayOutput() InstanceVolumeArrayOutput {
+	return o
+}
+
+func (o InstanceVolumeArrayOutput) ToInstanceVolumeArrayOutputWithContext(ctx context.Context) InstanceVolumeArrayOutput {
+	return o
+}
+
+func (o InstanceVolumeArrayOutput) Index(i pulumi.IntInput) InstanceVolumeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceVolume {
+		return vs[0].([]InstanceVolume)[vs[1].(int)]
+	}).(InstanceVolumeOutput)
+}
+
 type SecGroupRule struct {
 	// Required if `fromGroupId` or `self` is empty. The IP range
 	// that will be the source of network traffic to the security group. Use 0.0.0.0/0
@@ -1350,6 +1459,8 @@ func init() {
 	pulumi.RegisterOutputType(InstanceSchedulerHintArrayOutput{})
 	pulumi.RegisterOutputType(InstanceVendorOptionsOutput{})
 	pulumi.RegisterOutputType(InstanceVendorOptionsPtrOutput{})
+	pulumi.RegisterOutputType(InstanceVolumeOutput{})
+	pulumi.RegisterOutputType(InstanceVolumeArrayOutput{})
 	pulumi.RegisterOutputType(SecGroupRuleOutput{})
 	pulumi.RegisterOutputType(SecGroupRuleArrayOutput{})
 	pulumi.RegisterOutputType(VolumeAttachVendorOptionsOutput{})
