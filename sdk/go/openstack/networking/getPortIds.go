@@ -4,6 +4,9 @@
 package networking
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -103,4 +106,152 @@ type GetPortIdsResult struct {
 	Status           *string  `pulumi:"status"`
 	Tags             []string `pulumi:"tags"`
 	TenantId         *string  `pulumi:"tenantId"`
+}
+
+func GetPortIdsOutput(ctx *pulumi.Context, args GetPortIdsOutputArgs, opts ...pulumi.InvokeOption) GetPortIdsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetPortIdsResult, error) {
+			args := v.(GetPortIdsArgs)
+			r, err := GetPortIds(ctx, &args, opts...)
+			return *r, err
+		}).(GetPortIdsResultOutput)
+}
+
+// A collection of arguments for invoking getPortIds.
+type GetPortIdsOutputArgs struct {
+	// The administrative state of the port.
+	AdminStateUp pulumi.BoolPtrInput `pulumi:"adminStateUp"`
+	// Human-readable description of the port.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The ID of the device the port belongs to.
+	DeviceId pulumi.StringPtrInput `pulumi:"deviceId"`
+	// The device owner of the port.
+	DeviceOwner pulumi.StringPtrInput `pulumi:"deviceOwner"`
+	DnsName     pulumi.StringPtrInput `pulumi:"dnsName"`
+	// The port IP address filter.
+	FixedIp pulumi.StringPtrInput `pulumi:"fixedIp"`
+	// The MAC address of the port.
+	MacAddress pulumi.StringPtrInput `pulumi:"macAddress"`
+	// The name of the port.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The ID of the network the port belongs to.
+	NetworkId pulumi.StringPtrInput `pulumi:"networkId"`
+	// The owner of the port.
+	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+	// The region in which to obtain the V2 Neutron client.
+	// A Neutron client is needed to retrieve port ids. If omitted, the
+	// `region` argument of the provider is used.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// The list of port security group IDs to filter.
+	SecurityGroupIds pulumi.StringArrayInput `pulumi:"securityGroupIds"`
+	// Order the results in either `asc` or `desc`.
+	// Defaults to none.
+	SortDirection pulumi.StringPtrInput `pulumi:"sortDirection"`
+	// Sort ports based on a certain key. Defaults to none.
+	SortKey pulumi.StringPtrInput `pulumi:"sortKey"`
+	// The status of the port.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// The list of port tags to filter.
+	Tags     pulumi.StringArrayInput `pulumi:"tags"`
+	TenantId pulumi.StringPtrInput   `pulumi:"tenantId"`
+}
+
+func (GetPortIdsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortIdsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getPortIds.
+type GetPortIdsResultOutput struct{ *pulumi.OutputState }
+
+func (GetPortIdsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortIdsResult)(nil)).Elem()
+}
+
+func (o GetPortIdsResultOutput) ToGetPortIdsResultOutput() GetPortIdsResultOutput {
+	return o
+}
+
+func (o GetPortIdsResultOutput) ToGetPortIdsResultOutputWithContext(ctx context.Context) GetPortIdsResultOutput {
+	return o
+}
+
+func (o GetPortIdsResultOutput) AdminStateUp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPortIdsResult) *bool { return v.AdminStateUp }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetPortIdsResultOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPortIdsResult) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o GetPortIdsResultOutput) DeviceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPortIdsResult) *string { return v.DeviceId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetPortIdsResultOutput) DeviceOwner() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPortIdsResult) *string { return v.DeviceOwner }).(pulumi.StringPtrOutput)
+}
+
+func (o GetPortIdsResultOutput) DnsName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPortIdsResult) *string { return v.DnsName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetPortIdsResultOutput) FixedIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPortIdsResult) *string { return v.FixedIp }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetPortIdsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortIdsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetPortIdsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPortIdsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetPortIdsResultOutput) MacAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPortIdsResult) *string { return v.MacAddress }).(pulumi.StringPtrOutput)
+}
+
+func (o GetPortIdsResultOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPortIdsResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o GetPortIdsResultOutput) NetworkId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPortIdsResult) *string { return v.NetworkId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetPortIdsResultOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPortIdsResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetPortIdsResultOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPortIdsResult) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+func (o GetPortIdsResultOutput) SecurityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPortIdsResult) []string { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+func (o GetPortIdsResultOutput) SortDirection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPortIdsResult) *string { return v.SortDirection }).(pulumi.StringPtrOutput)
+}
+
+func (o GetPortIdsResultOutput) SortKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPortIdsResult) *string { return v.SortKey }).(pulumi.StringPtrOutput)
+}
+
+func (o GetPortIdsResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPortIdsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func (o GetPortIdsResultOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPortIdsResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+func (o GetPortIdsResultOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPortIdsResult) *string { return v.TenantId }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetPortIdsResultOutput{})
 }

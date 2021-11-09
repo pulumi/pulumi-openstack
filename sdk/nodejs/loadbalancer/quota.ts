@@ -175,49 +175,49 @@ export interface QuotaState {
      * Quota value for health_monitors. Changing
      * this updates the existing quota. Omitting it sets it to 0.
      */
-    readonly healthMonitor?: pulumi.Input<number>;
+    healthMonitor?: pulumi.Input<number>;
     /**
      * Quota value for l7_policies. Changing this
      * updates the existing quota. Omitting it sets it to 0. Available in
      * **Octavia minor version 2.19**.
      */
-    readonly l7Policy?: pulumi.Input<number>;
+    l7Policy?: pulumi.Input<number>;
     /**
      * Quota value for l7_rules. Changing this
      * updates the existing quota. Omitting it sets it to 0. Available in
      * **Octavia minor version 2.19**.
      */
-    readonly l7Rule?: pulumi.Input<number>;
+    l7Rule?: pulumi.Input<number>;
     /**
      * Quota value for listeners. Changing this updates
      * the existing quota. Omitting it sets it to 0.
      */
-    readonly listener?: pulumi.Input<number>;
+    listener?: pulumi.Input<number>;
     /**
      * Quota value for loadbalancers. Changing this
      * updates the existing quota. Omitting it sets it to 0.
      */
-    readonly loadbalancer?: pulumi.Input<number>;
+    loadbalancer?: pulumi.Input<number>;
     /**
      * Quota value for members. Changing this updates
      * the existing quota. Omitting it sets it to 0.
      */
-    readonly member?: pulumi.Input<number>;
+    member?: pulumi.Input<number>;
     /**
      * Quota value for pools. Changing this updates the
      * the existing quota. Omitting it sets it to 0.
      */
-    readonly pool?: pulumi.Input<number>;
+    pool?: pulumi.Input<number>;
     /**
      * ID of the project to manage quotas. Changing this
      * creates a new quota.
      */
-    readonly projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string>;
     /**
      * Region in which to manage quotas. Changing this
      * creates a new quota. If ommited, the region of the credentials is used.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
 }
 
 /**
@@ -228,47 +228,47 @@ export interface QuotaArgs {
      * Quota value for health_monitors. Changing
      * this updates the existing quota. Omitting it sets it to 0.
      */
-    readonly healthMonitor?: pulumi.Input<number>;
+    healthMonitor?: pulumi.Input<number>;
     /**
      * Quota value for l7_policies. Changing this
      * updates the existing quota. Omitting it sets it to 0. Available in
      * **Octavia minor version 2.19**.
      */
-    readonly l7Policy?: pulumi.Input<number>;
+    l7Policy?: pulumi.Input<number>;
     /**
      * Quota value for l7_rules. Changing this
      * updates the existing quota. Omitting it sets it to 0. Available in
      * **Octavia minor version 2.19**.
      */
-    readonly l7Rule?: pulumi.Input<number>;
+    l7Rule?: pulumi.Input<number>;
     /**
      * Quota value for listeners. Changing this updates
      * the existing quota. Omitting it sets it to 0.
      */
-    readonly listener?: pulumi.Input<number>;
+    listener?: pulumi.Input<number>;
     /**
      * Quota value for loadbalancers. Changing this
      * updates the existing quota. Omitting it sets it to 0.
      */
-    readonly loadbalancer?: pulumi.Input<number>;
+    loadbalancer?: pulumi.Input<number>;
     /**
      * Quota value for members. Changing this updates
      * the existing quota. Omitting it sets it to 0.
      */
-    readonly member?: pulumi.Input<number>;
+    member?: pulumi.Input<number>;
     /**
      * Quota value for pools. Changing this updates the
      * the existing quota. Omitting it sets it to 0.
      */
-    readonly pool?: pulumi.Input<number>;
+    pool?: pulumi.Input<number>;
     /**
      * ID of the project to manage quotas. Changing this
      * creates a new quota.
      */
-    readonly projectId: pulumi.Input<string>;
+    projectId: pulumi.Input<string>;
     /**
      * Region in which to manage quotas. Changing this
      * creates a new quota. If ommited, the region of the credentials is used.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
 }

@@ -89,6 +89,33 @@ export namespace blockstorage {
 }
 
 export namespace compute {
+    export interface GetInstanceV2NetworkArgs {
+        /**
+         * The IPv4 address assigned to this network port.
+         */
+        fixedIpV4?: pulumi.Input<string>;
+        /**
+         * The IPv6 address assigned to this network port.
+         */
+        fixedIpV6?: pulumi.Input<string>;
+        /**
+         * The MAC address assigned to this network interface.
+         */
+        mac?: pulumi.Input<string>;
+        /**
+         * The name of the network
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * The port UUID for this network
+         */
+        port?: pulumi.Input<string>;
+        /**
+         * The UUID of the network
+         */
+        uuid?: pulumi.Input<string>;
+    }
+
     export interface GetInstanceV2Network {
         /**
          * The IPv4 address assigned to this network port.
@@ -782,6 +809,7 @@ export namespace networking {
          */
         segmentationType: pulumi.Input<string>;
     }
+
 }
 
 export namespace objectstorage {

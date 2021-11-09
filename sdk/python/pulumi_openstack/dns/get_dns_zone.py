@@ -12,6 +12,7 @@ __all__ = [
     'GetDnsZoneResult',
     'AwaitableGetDnsZoneResult',
     'get_dns_zone',
+    'get_dns_zone_output',
 ]
 
 @pulumi.output_type
@@ -339,3 +340,60 @@ def get_dns_zone(all_projects: Optional[str] = None,
         type=__ret__.type,
         updated_at=__ret__.updated_at,
         version=__ret__.version)
+
+
+@_utilities.lift_output_func(get_dns_zone)
+def get_dns_zone_output(all_projects: Optional[pulumi.Input[Optional[str]]] = None,
+                        attributes: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                        created_at: Optional[pulumi.Input[Optional[str]]] = None,
+                        description: Optional[pulumi.Input[Optional[str]]] = None,
+                        email: Optional[pulumi.Input[Optional[str]]] = None,
+                        masters: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                        name: Optional[pulumi.Input[Optional[str]]] = None,
+                        pool_id: Optional[pulumi.Input[Optional[str]]] = None,
+                        project_id: Optional[pulumi.Input[Optional[str]]] = None,
+                        region: Optional[pulumi.Input[Optional[str]]] = None,
+                        serial: Optional[pulumi.Input[Optional[int]]] = None,
+                        status: Optional[pulumi.Input[Optional[str]]] = None,
+                        transferred_at: Optional[pulumi.Input[Optional[str]]] = None,
+                        ttl: Optional[pulumi.Input[Optional[int]]] = None,
+                        type: Optional[pulumi.Input[Optional[str]]] = None,
+                        updated_at: Optional[pulumi.Input[Optional[str]]] = None,
+                        version: Optional[pulumi.Input[Optional[int]]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDnsZoneResult]:
+    """
+    Use this data source to get the ID of an available OpenStack DNS zone.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    zone1 = openstack.dns.get_dns_zone(name="example.com")
+    ```
+
+
+    :param str all_projects: Try to obtain zone ID by listing all projects
+           (requires admin role by default, depends on your policy configuration)
+    :param Mapping[str, Any] attributes: Attributes of the DNS Service scheduler.
+    :param str created_at: The time the zone was created.
+    :param str description: A description of the zone.
+    :param str email: The email contact for the zone record.
+    :param Sequence[str] masters: An array of master DNS servers. When `type` is  `SECONDARY`.
+    :param str name: The name of the zone.
+    :param str pool_id: The ID of the pool hosting the zone.
+    :param str project_id: The ID of the project the DNS zone is obtained from,
+           sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned user role in target project)
+    :param str region: The region in which to obtain the V2 DNS client.
+           A DNS client is needed to retrieve zone ids. If omitted, the
+           `region` argument of the provider is used.
+    :param int serial: The serial number of the zone.
+    :param str status: The zone's status.
+    :param str transferred_at: The time the zone was transferred.
+    :param int ttl: The time to live (TTL) of the zone.
+    :param str type: The type of the zone. Can either be `PRIMARY` or `SECONDARY`.
+    :param str updated_at: The time the zone was last updated.
+    :param int version: The version of the zone.
+    """
+    ...

@@ -321,7 +321,7 @@ type IkePolicyArrayInput interface {
 type IkePolicyArray []IkePolicyInput
 
 func (IkePolicyArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*IkePolicy)(nil))
+	return reflect.TypeOf((*[]*IkePolicy)(nil)).Elem()
 }
 
 func (i IkePolicyArray) ToIkePolicyArrayOutput() IkePolicyArrayOutput {
@@ -346,7 +346,7 @@ type IkePolicyMapInput interface {
 type IkePolicyMap map[string]IkePolicyInput
 
 func (IkePolicyMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*IkePolicy)(nil))
+	return reflect.TypeOf((*map[string]*IkePolicy)(nil)).Elem()
 }
 
 func (i IkePolicyMap) ToIkePolicyMapOutput() IkePolicyMapOutput {
@@ -357,9 +357,7 @@ func (i IkePolicyMap) ToIkePolicyMapOutputWithContext(ctx context.Context) IkePo
 	return pulumi.ToOutputWithContext(ctx, i).(IkePolicyMapOutput)
 }
 
-type IkePolicyOutput struct {
-	*pulumi.OutputState
-}
+type IkePolicyOutput struct{ *pulumi.OutputState }
 
 func (IkePolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*IkePolicy)(nil))
@@ -378,14 +376,12 @@ func (o IkePolicyOutput) ToIkePolicyPtrOutput() IkePolicyPtrOutput {
 }
 
 func (o IkePolicyOutput) ToIkePolicyPtrOutputWithContext(ctx context.Context) IkePolicyPtrOutput {
-	return o.ApplyT(func(v IkePolicy) *IkePolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IkePolicy) *IkePolicy {
 		return &v
 	}).(IkePolicyPtrOutput)
 }
 
-type IkePolicyPtrOutput struct {
-	*pulumi.OutputState
-}
+type IkePolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (IkePolicyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**IkePolicy)(nil))
@@ -397,6 +393,16 @@ func (o IkePolicyPtrOutput) ToIkePolicyPtrOutput() IkePolicyPtrOutput {
 
 func (o IkePolicyPtrOutput) ToIkePolicyPtrOutputWithContext(ctx context.Context) IkePolicyPtrOutput {
 	return o
+}
+
+func (o IkePolicyPtrOutput) Elem() IkePolicyOutput {
+	return o.ApplyT(func(v *IkePolicy) IkePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret IkePolicy
+		return ret
+	}).(IkePolicyOutput)
 }
 
 type IkePolicyArrayOutput struct{ *pulumi.OutputState }
@@ -440,6 +446,10 @@ func (o IkePolicyMapOutput) MapIndex(k pulumi.StringInput) IkePolicyOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*IkePolicyInput)(nil)).Elem(), &IkePolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IkePolicyPtrInput)(nil)).Elem(), &IkePolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IkePolicyArrayInput)(nil)).Elem(), IkePolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IkePolicyMapInput)(nil)).Elem(), IkePolicyMap{})
 	pulumi.RegisterOutputType(IkePolicyOutput{})
 	pulumi.RegisterOutputType(IkePolicyPtrOutput{})
 	pulumi.RegisterOutputType(IkePolicyArrayOutput{})

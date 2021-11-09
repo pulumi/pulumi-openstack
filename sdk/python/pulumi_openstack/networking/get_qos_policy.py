@@ -12,6 +12,7 @@ __all__ = [
     'GetQosPolicyResult',
     'AwaitableGetQosPolicyResult',
     'get_qos_policy',
+    'get_qos_policy_output',
 ]
 
 @pulumi.output_type
@@ -226,3 +227,38 @@ def get_qos_policy(description: Optional[str] = None,
         shared=__ret__.shared,
         tags=__ret__.tags,
         updated_at=__ret__.updated_at)
+
+
+@_utilities.lift_output_func(get_qos_policy)
+def get_qos_policy_output(description: Optional[pulumi.Input[Optional[str]]] = None,
+                          is_default: Optional[pulumi.Input[Optional[bool]]] = None,
+                          name: Optional[pulumi.Input[Optional[str]]] = None,
+                          project_id: Optional[pulumi.Input[Optional[str]]] = None,
+                          region: Optional[pulumi.Input[Optional[str]]] = None,
+                          shared: Optional[pulumi.Input[Optional[bool]]] = None,
+                          tags: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetQosPolicyResult]:
+    """
+    Use this data source to get the ID of an available OpenStack QoS policy.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    qos_policy1 = openstack.networking.get_qos_policy(name="qos_policy_1")
+    ```
+
+
+    :param str description: The human-readable description for the QoS policy.
+    :param bool is_default: Whether the QoS policy is default policy or not.
+    :param str name: The name of the QoS policy.
+    :param str project_id: The owner of the QoS policy.
+    :param str region: The region in which to obtain the V2 Networking client.
+           A Networking client is needed to retrieve a QoS policy ID. If omitted, the
+           `region` argument of the provider is used.
+    :param bool shared: Whether this QoS policy is shared across all projects.
+    :param Sequence[str] tags: The list of QoS policy tags to filter.
+    """
+    ...

@@ -14,6 +14,7 @@ __all__ = [
     'GetInstanceV2Result',
     'AwaitableGetInstanceV2Result',
     'get_instance_v2',
+    'get_instance_v2_output',
 ]
 
 @pulumi.output_type
@@ -278,3 +279,29 @@ def get_instance_v2(id: Optional[str] = None,
         security_groups=__ret__.security_groups,
         tags=__ret__.tags,
         user_data=__ret__.user_data)
+
+
+@_utilities.lift_output_func(get_instance_v2)
+def get_instance_v2_output(id: Optional[pulumi.Input[str]] = None,
+                           networks: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetInstanceV2NetworkArgs']]]]] = None,
+                           region: Optional[pulumi.Input[Optional[str]]] = None,
+                           user_data: Optional[pulumi.Input[Optional[str]]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceV2Result]:
+    """
+    Use this data source to get the details of a running server
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    instance = openstack.compute.get_instance_v2(id="2ba26dc6-a12d-4889-8f25-794ea5bf4453")
+    ```
+
+
+    :param str id: The UUID of the instance
+    :param Sequence[pulumi.InputType['GetInstanceV2NetworkArgs']] networks: An array of maps, detailed below.
+    :param str user_data: The user data added when the server was created.
+    """
+    ...

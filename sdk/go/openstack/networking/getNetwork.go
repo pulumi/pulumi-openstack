@@ -4,6 +4,9 @@
 package networking
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -106,4 +109,153 @@ type LookupNetworkResult struct {
 	TenantId *string  `pulumi:"tenantId"`
 	// See Argument Reference above.
 	TransparentVlan *bool `pulumi:"transparentVlan"`
+}
+
+func LookupNetworkOutput(ctx *pulumi.Context, args LookupNetworkOutputArgs, opts ...pulumi.InvokeOption) LookupNetworkResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupNetworkResult, error) {
+			args := v.(LookupNetworkArgs)
+			r, err := LookupNetwork(ctx, &args, opts...)
+			return *r, err
+		}).(LookupNetworkResultOutput)
+}
+
+// A collection of arguments for invoking getNetwork.
+type LookupNetworkOutputArgs struct {
+	// Human-readable description of the network.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The external routing facility of the network.
+	External pulumi.BoolPtrInput `pulumi:"external"`
+	// The CIDR of a subnet within the network.
+	MatchingSubnetCidr pulumi.StringPtrInput `pulumi:"matchingSubnetCidr"`
+	// The network MTU to filter. Available, when Neutron `net-mtu`
+	// extension is enabled.
+	Mtu pulumi.IntPtrInput `pulumi:"mtu"`
+	// The name of the network.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The ID of the network.
+	NetworkId pulumi.StringPtrInput `pulumi:"networkId"`
+	// The region in which to obtain the V2 Neutron client.
+	// A Neutron client is needed to retrieve networks ids. If omitted, the
+	// `region` argument of the provider is used.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// The status of the network.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// The list of network tags to filter.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// The owner of the network.
+	TenantId pulumi.StringPtrInput `pulumi:"tenantId"`
+	// The VLAN transparent attribute for the
+	// network.
+	TransparentVlan pulumi.BoolPtrInput `pulumi:"transparentVlan"`
+}
+
+func (LookupNetworkOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupNetworkArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getNetwork.
+type LookupNetworkResultOutput struct{ *pulumi.OutputState }
+
+func (LookupNetworkResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupNetworkResult)(nil)).Elem()
+}
+
+func (o LookupNetworkResultOutput) ToLookupNetworkResultOutput() LookupNetworkResultOutput {
+	return o
+}
+
+func (o LookupNetworkResultOutput) ToLookupNetworkResultOutputWithContext(ctx context.Context) LookupNetworkResultOutput {
+	return o
+}
+
+// The administrative state of the network.
+func (o LookupNetworkResultOutput) AdminStateUp() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkResult) string { return v.AdminStateUp }).(pulumi.StringOutput)
+}
+
+// The set of string tags applied on the network.
+func (o LookupNetworkResultOutput) AllTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupNetworkResult) []string { return v.AllTags }).(pulumi.StringArrayOutput)
+}
+
+// The availability zone candidates for the network.
+func (o LookupNetworkResultOutput) AvailabilityZoneHints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupNetworkResult) []string { return v.AvailabilityZoneHints }).(pulumi.StringArrayOutput)
+}
+
+// See Argument Reference above.
+func (o LookupNetworkResultOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupNetworkResult) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The network DNS domain. Available, when Neutron DNS extension
+// is enabled
+func (o LookupNetworkResultOutput) DnsDomain() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkResult) string { return v.DnsDomain }).(pulumi.StringOutput)
+}
+
+// See Argument Reference above.
+func (o LookupNetworkResultOutput) External() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupNetworkResult) *bool { return v.External }).(pulumi.BoolPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupNetworkResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupNetworkResultOutput) MatchingSubnetCidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupNetworkResult) *string { return v.MatchingSubnetCidr }).(pulumi.StringPtrOutput)
+}
+
+// See Argument Reference above.
+func (o LookupNetworkResultOutput) Mtu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LookupNetworkResult) *int { return v.Mtu }).(pulumi.IntPtrOutput)
+}
+
+// See Argument Reference above.
+func (o LookupNetworkResultOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupNetworkResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupNetworkResultOutput) NetworkId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupNetworkResult) *string { return v.NetworkId }).(pulumi.StringPtrOutput)
+}
+
+// See Argument Reference above.
+func (o LookupNetworkResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkResult) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// Specifies whether the network resource can be accessed by any
+// tenant or not.
+func (o LookupNetworkResultOutput) Shared() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkResult) string { return v.Shared }).(pulumi.StringOutput)
+}
+
+func (o LookupNetworkResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupNetworkResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// A list of subnet IDs belonging to the network.
+func (o LookupNetworkResultOutput) Subnets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupNetworkResult) []string { return v.Subnets }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupNetworkResultOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupNetworkResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupNetworkResultOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupNetworkResult) *string { return v.TenantId }).(pulumi.StringPtrOutput)
+}
+
+// See Argument Reference above.
+func (o LookupNetworkResultOutput) TransparentVlan() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupNetworkResult) *bool { return v.TransparentVlan }).(pulumi.BoolPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupNetworkResultOutput{})
 }

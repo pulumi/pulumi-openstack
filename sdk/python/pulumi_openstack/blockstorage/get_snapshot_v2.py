@@ -12,6 +12,7 @@ __all__ = [
     'GetSnapshotV2Result',
     'AwaitableGetSnapshotV2Result',
     'get_snapshot_v2',
+    'get_snapshot_v2_output',
 ]
 
 @pulumi.output_type
@@ -185,3 +186,35 @@ def get_snapshot_v2(most_recent: Optional[bool] = None,
         size=__ret__.size,
         status=__ret__.status,
         volume_id=__ret__.volume_id)
+
+
+@_utilities.lift_output_func(get_snapshot_v2)
+def get_snapshot_v2_output(most_recent: Optional[pulumi.Input[Optional[bool]]] = None,
+                           name: Optional[pulumi.Input[Optional[str]]] = None,
+                           region: Optional[pulumi.Input[Optional[str]]] = None,
+                           status: Optional[pulumi.Input[Optional[str]]] = None,
+                           volume_id: Optional[pulumi.Input[Optional[str]]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSnapshotV2Result]:
+    """
+    Use this data source to get information about an existing snapshot.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    snapshot1 = openstack.blockstorage.get_snapshot_v2(most_recent=True,
+        name="snapshot_1")
+    ```
+
+
+    :param bool most_recent: Pick the most recently created snapshot if there
+           are multiple results.
+    :param str name: The name of the snapshot.
+    :param str region: The region in which to obtain the V2 Block Storage
+           client. If omitted, the `region` argument of the provider is used.
+    :param str status: The status of the snapshot.
+    :param str volume_id: The ID of the snapshot's volume.
+    """
+    ...

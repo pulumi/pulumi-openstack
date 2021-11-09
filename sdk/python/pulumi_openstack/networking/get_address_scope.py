@@ -12,6 +12,7 @@ __all__ = [
     'GetAddressScopeResult',
     'AwaitableGetAddressScopeResult',
     'get_address_scope',
+    'get_address_scope_output',
 ]
 
 @pulumi.output_type
@@ -148,3 +149,37 @@ def get_address_scope(ip_version: Optional[int] = None,
         project_id=__ret__.project_id,
         region=__ret__.region,
         shared=__ret__.shared)
+
+
+@_utilities.lift_output_func(get_address_scope)
+def get_address_scope_output(ip_version: Optional[pulumi.Input[Optional[int]]] = None,
+                             name: Optional[pulumi.Input[Optional[str]]] = None,
+                             project_id: Optional[pulumi.Input[Optional[str]]] = None,
+                             region: Optional[pulumi.Input[Optional[str]]] = None,
+                             shared: Optional[pulumi.Input[Optional[bool]]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAddressScopeResult]:
+    """
+    Use this data source to get the ID of an available OpenStack address-scope.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    public_addressscope = openstack.networking.get_address_scope(ip_version=4,
+        name="public_addressscope",
+        shared=True)
+    ```
+
+
+    :param int ip_version: IP version.
+    :param str name: Name of the address-scope.
+    :param str project_id: The owner of the address-scope.
+    :param str region: The region in which to obtain the V2 Neutron client.
+           A Neutron client is needed to retrieve address-scopes. If omitted, the
+           `region` argument of the provider is used.
+    :param bool shared: Indicates whether this address-scope is shared across
+           all projects.
+    """
+    ...

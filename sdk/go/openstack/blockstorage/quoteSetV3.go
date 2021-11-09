@@ -47,10 +47,10 @@ import (
 // 			Backups:            pulumi.Int(4),
 // 			BackupGigabytes:    pulumi.Int(10),
 // 			Groups:             pulumi.Int(100),
-// 			VolumeTypeQuota: pulumi.Float64Map{
-// 				"volumes_ssd":   pulumi.Float64(30),
-// 				"gigabytes_ssd": pulumi.Float64(500),
-// 				"snapshots_ssd": pulumi.Float64(10),
+// 			VolumeTypeQuota: pulumi.AnyMap{
+// 				"volumes_ssd":   pulumi.Any(30),
+// 				"gigabytes_ssd": pulumi.Any(500),
+// 				"snapshots_ssd": pulumi.Any(10),
 // 			},
 // 		})
 // 		if err != nil {
@@ -347,7 +347,7 @@ type QuoteSetV3ArrayInput interface {
 type QuoteSetV3Array []QuoteSetV3Input
 
 func (QuoteSetV3Array) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*QuoteSetV3)(nil))
+	return reflect.TypeOf((*[]*QuoteSetV3)(nil)).Elem()
 }
 
 func (i QuoteSetV3Array) ToQuoteSetV3ArrayOutput() QuoteSetV3ArrayOutput {
@@ -372,7 +372,7 @@ type QuoteSetV3MapInput interface {
 type QuoteSetV3Map map[string]QuoteSetV3Input
 
 func (QuoteSetV3Map) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*QuoteSetV3)(nil))
+	return reflect.TypeOf((*map[string]*QuoteSetV3)(nil)).Elem()
 }
 
 func (i QuoteSetV3Map) ToQuoteSetV3MapOutput() QuoteSetV3MapOutput {
@@ -383,9 +383,7 @@ func (i QuoteSetV3Map) ToQuoteSetV3MapOutputWithContext(ctx context.Context) Quo
 	return pulumi.ToOutputWithContext(ctx, i).(QuoteSetV3MapOutput)
 }
 
-type QuoteSetV3Output struct {
-	*pulumi.OutputState
-}
+type QuoteSetV3Output struct{ *pulumi.OutputState }
 
 func (QuoteSetV3Output) ElementType() reflect.Type {
 	return reflect.TypeOf((*QuoteSetV3)(nil))
@@ -404,14 +402,12 @@ func (o QuoteSetV3Output) ToQuoteSetV3PtrOutput() QuoteSetV3PtrOutput {
 }
 
 func (o QuoteSetV3Output) ToQuoteSetV3PtrOutputWithContext(ctx context.Context) QuoteSetV3PtrOutput {
-	return o.ApplyT(func(v QuoteSetV3) *QuoteSetV3 {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v QuoteSetV3) *QuoteSetV3 {
 		return &v
 	}).(QuoteSetV3PtrOutput)
 }
 
-type QuoteSetV3PtrOutput struct {
-	*pulumi.OutputState
-}
+type QuoteSetV3PtrOutput struct{ *pulumi.OutputState }
 
 func (QuoteSetV3PtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**QuoteSetV3)(nil))
@@ -423,6 +419,16 @@ func (o QuoteSetV3PtrOutput) ToQuoteSetV3PtrOutput() QuoteSetV3PtrOutput {
 
 func (o QuoteSetV3PtrOutput) ToQuoteSetV3PtrOutputWithContext(ctx context.Context) QuoteSetV3PtrOutput {
 	return o
+}
+
+func (o QuoteSetV3PtrOutput) Elem() QuoteSetV3Output {
+	return o.ApplyT(func(v *QuoteSetV3) QuoteSetV3 {
+		if v != nil {
+			return *v
+		}
+		var ret QuoteSetV3
+		return ret
+	}).(QuoteSetV3Output)
 }
 
 type QuoteSetV3ArrayOutput struct{ *pulumi.OutputState }
@@ -466,6 +472,10 @@ func (o QuoteSetV3MapOutput) MapIndex(k pulumi.StringInput) QuoteSetV3Output {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*QuoteSetV3Input)(nil)).Elem(), &QuoteSetV3{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QuoteSetV3PtrInput)(nil)).Elem(), &QuoteSetV3{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QuoteSetV3ArrayInput)(nil)).Elem(), QuoteSetV3Array{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QuoteSetV3MapInput)(nil)).Elem(), QuoteSetV3Map{})
 	pulumi.RegisterOutputType(QuoteSetV3Output{})
 	pulumi.RegisterOutputType(QuoteSetV3PtrOutput{})
 	pulumi.RegisterOutputType(QuoteSetV3ArrayOutput{})

@@ -13,6 +13,7 @@ __all__ = [
     'GetPortResult',
     'AwaitableGetPortResult',
     'get_port',
+    'get_port_output',
 ]
 
 @pulumi.output_type
@@ -405,3 +406,56 @@ def get_port(admin_state_up: Optional[bool] = None,
         status=__ret__.status,
         tags=__ret__.tags,
         tenant_id=__ret__.tenant_id)
+
+
+@_utilities.lift_output_func(get_port)
+def get_port_output(admin_state_up: Optional[pulumi.Input[Optional[bool]]] = None,
+                    description: Optional[pulumi.Input[Optional[str]]] = None,
+                    device_id: Optional[pulumi.Input[Optional[str]]] = None,
+                    device_owner: Optional[pulumi.Input[Optional[str]]] = None,
+                    dns_name: Optional[pulumi.Input[Optional[str]]] = None,
+                    fixed_ip: Optional[pulumi.Input[Optional[str]]] = None,
+                    mac_address: Optional[pulumi.Input[Optional[str]]] = None,
+                    name: Optional[pulumi.Input[Optional[str]]] = None,
+                    network_id: Optional[pulumi.Input[Optional[str]]] = None,
+                    port_id: Optional[pulumi.Input[Optional[str]]] = None,
+                    project_id: Optional[pulumi.Input[Optional[str]]] = None,
+                    region: Optional[pulumi.Input[Optional[str]]] = None,
+                    security_group_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                    status: Optional[pulumi.Input[Optional[str]]] = None,
+                    tags: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                    tenant_id: Optional[pulumi.Input[Optional[str]]] = None,
+                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPortResult]:
+    """
+    Use this data source to get the ID of an available OpenStack port.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    port1 = openstack.networking.get_port(name="port_1")
+    ```
+
+
+    :param bool admin_state_up: The administrative state of the port.
+    :param str description: Human-readable description of the port.
+    :param str device_id: The ID of the device the port belongs to.
+    :param str device_owner: The device owner of the port.
+    :param str dns_name: The port DNS name to filter. Available, when Neutron
+           DNS extension is enabled.
+    :param str fixed_ip: The port IP address filter.
+    :param str mac_address: The MAC address of the port.
+    :param str name: The name of the port.
+    :param str network_id: The ID of the network the port belongs to.
+    :param str port_id: The ID of the port.
+    :param str project_id: The owner of the port.
+    :param str region: The region in which to obtain the V2 Neutron client.
+           A Neutron client is needed to retrieve port ids. If omitted, the
+           `region` argument of the provider is used.
+    :param Sequence[str] security_group_ids: The list of port security group IDs to filter.
+    :param str status: The status of the port.
+    :param Sequence[str] tags: The list of port tags to filter.
+    """
+    ...

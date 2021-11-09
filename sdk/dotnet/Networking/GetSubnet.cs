@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.OpenStack.Networking
 {
@@ -39,6 +40,35 @@ namespace Pulumi.OpenStack.Networking
         /// </summary>
         public static Task<GetSubnetResult> InvokeAsync(GetSubnetArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSubnetResult>("openstack:networking/getSubnet:getSubnet", args ?? new GetSubnetArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to get the ID of an available OpenStack subnet.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var subnet1 = Output.Create(OpenStack.Networking.GetSubnet.InvokeAsync(new OpenStack.Networking.GetSubnetArgs
+        ///         {
+        ///             Name = "subnet_1",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetSubnetResult> Invoke(GetSubnetInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetSubnetResult>("openstack:networking/getSubnet:getSubnet", args ?? new GetSubnetInvokeArgs(), options.WithVersion());
     }
 
 
@@ -142,6 +172,110 @@ namespace Pulumi.OpenStack.Networking
         public string? TenantId { get; set; }
 
         public GetSubnetArgs()
+        {
+        }
+    }
+
+    public sealed class GetSubnetInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The CIDR of the subnet.
+        /// </summary>
+        [Input("cidr")]
+        public Input<string>? Cidr { get; set; }
+
+        /// <summary>
+        /// Human-readable description of the subnet.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("dhcpDisabled")]
+        public Input<bool>? DhcpDisabled { get; set; }
+
+        /// <summary>
+        /// If the subnet has DHCP enabled.
+        /// </summary>
+        [Input("dhcpEnabled")]
+        public Input<bool>? DhcpEnabled { get; set; }
+
+        /// <summary>
+        /// The IP of the subnet's gateway.
+        /// </summary>
+        [Input("gatewayIp")]
+        public Input<string>? GatewayIp { get; set; }
+
+        /// <summary>
+        /// The IP version of the subnet (either 4 or 6).
+        /// </summary>
+        [Input("ipVersion")]
+        public Input<int>? IpVersion { get; set; }
+
+        /// <summary>
+        /// The IPv6 address mode. Valid values are
+        /// `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.
+        /// </summary>
+        [Input("ipv6AddressMode")]
+        public Input<string>? Ipv6AddressMode { get; set; }
+
+        /// <summary>
+        /// The IPv6 Router Advertisement mode. Valid values
+        /// are `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.
+        /// </summary>
+        [Input("ipv6RaMode")]
+        public Input<string>? Ipv6RaMode { get; set; }
+
+        /// <summary>
+        /// The name of the subnet.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The ID of the network the subnet belongs to.
+        /// </summary>
+        [Input("networkId")]
+        public Input<string>? NetworkId { get; set; }
+
+        /// <summary>
+        /// The region in which to obtain the V2 Neutron client.
+        /// A Neutron client is needed to retrieve subnet ids. If omitted, the
+        /// `region` argument of the provider is used.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// The ID of the subnet.
+        /// </summary>
+        [Input("subnetId")]
+        public Input<string>? SubnetId { get; set; }
+
+        /// <summary>
+        /// The ID of the subnetpool associated with the subnet.
+        /// </summary>
+        [Input("subnetpoolId")]
+        public Input<string>? SubnetpoolId { get; set; }
+
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// The list of subnet tags to filter.
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// The owner of the subnet.
+        /// </summary>
+        [Input("tenantId")]
+        public Input<string>? TenantId { get; set; }
+
+        public GetSubnetInvokeArgs()
         {
         }
     }

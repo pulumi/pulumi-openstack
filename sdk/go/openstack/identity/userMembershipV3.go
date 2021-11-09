@@ -244,7 +244,7 @@ type UserMembershipV3ArrayInput interface {
 type UserMembershipV3Array []UserMembershipV3Input
 
 func (UserMembershipV3Array) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*UserMembershipV3)(nil))
+	return reflect.TypeOf((*[]*UserMembershipV3)(nil)).Elem()
 }
 
 func (i UserMembershipV3Array) ToUserMembershipV3ArrayOutput() UserMembershipV3ArrayOutput {
@@ -269,7 +269,7 @@ type UserMembershipV3MapInput interface {
 type UserMembershipV3Map map[string]UserMembershipV3Input
 
 func (UserMembershipV3Map) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*UserMembershipV3)(nil))
+	return reflect.TypeOf((*map[string]*UserMembershipV3)(nil)).Elem()
 }
 
 func (i UserMembershipV3Map) ToUserMembershipV3MapOutput() UserMembershipV3MapOutput {
@@ -280,9 +280,7 @@ func (i UserMembershipV3Map) ToUserMembershipV3MapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(UserMembershipV3MapOutput)
 }
 
-type UserMembershipV3Output struct {
-	*pulumi.OutputState
-}
+type UserMembershipV3Output struct{ *pulumi.OutputState }
 
 func (UserMembershipV3Output) ElementType() reflect.Type {
 	return reflect.TypeOf((*UserMembershipV3)(nil))
@@ -301,14 +299,12 @@ func (o UserMembershipV3Output) ToUserMembershipV3PtrOutput() UserMembershipV3Pt
 }
 
 func (o UserMembershipV3Output) ToUserMembershipV3PtrOutputWithContext(ctx context.Context) UserMembershipV3PtrOutput {
-	return o.ApplyT(func(v UserMembershipV3) *UserMembershipV3 {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UserMembershipV3) *UserMembershipV3 {
 		return &v
 	}).(UserMembershipV3PtrOutput)
 }
 
-type UserMembershipV3PtrOutput struct {
-	*pulumi.OutputState
-}
+type UserMembershipV3PtrOutput struct{ *pulumi.OutputState }
 
 func (UserMembershipV3PtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**UserMembershipV3)(nil))
@@ -320,6 +316,16 @@ func (o UserMembershipV3PtrOutput) ToUserMembershipV3PtrOutput() UserMembershipV
 
 func (o UserMembershipV3PtrOutput) ToUserMembershipV3PtrOutputWithContext(ctx context.Context) UserMembershipV3PtrOutput {
 	return o
+}
+
+func (o UserMembershipV3PtrOutput) Elem() UserMembershipV3Output {
+	return o.ApplyT(func(v *UserMembershipV3) UserMembershipV3 {
+		if v != nil {
+			return *v
+		}
+		var ret UserMembershipV3
+		return ret
+	}).(UserMembershipV3Output)
 }
 
 type UserMembershipV3ArrayOutput struct{ *pulumi.OutputState }
@@ -363,6 +369,10 @@ func (o UserMembershipV3MapOutput) MapIndex(k pulumi.StringInput) UserMembership
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*UserMembershipV3Input)(nil)).Elem(), &UserMembershipV3{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserMembershipV3PtrInput)(nil)).Elem(), &UserMembershipV3{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserMembershipV3ArrayInput)(nil)).Elem(), UserMembershipV3Array{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserMembershipV3MapInput)(nil)).Elem(), UserMembershipV3Map{})
 	pulumi.RegisterOutputType(UserMembershipV3Output{})
 	pulumi.RegisterOutputType(UserMembershipV3PtrOutput{})
 	pulumi.RegisterOutputType(UserMembershipV3ArrayOutput{})

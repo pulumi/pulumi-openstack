@@ -147,24 +147,24 @@ export interface RouterRouteState {
      * CIDR block to match on the packet’s destination IP. Changing
      * this creates a new routing entry.
      */
-    readonly destinationCidr?: pulumi.Input<string>;
+    destinationCidr?: pulumi.Input<string>;
     /**
      * IP address of the next hop gateway.  Changing
      * this creates a new routing entry.
      */
-    readonly nextHop?: pulumi.Input<string>;
+    nextHop?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 networking client.
      * A networking client is needed to configure a routing entry on a router. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * routing entry.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * ID of the router this routing entry belongs to. Changing
      * this creates a new routing entry.
      */
-    readonly routerId?: pulumi.Input<string>;
+    routerId?: pulumi.Input<string>;
 }
 
 /**
@@ -175,22 +175,22 @@ export interface RouterRouteArgs {
      * CIDR block to match on the packet’s destination IP. Changing
      * this creates a new routing entry.
      */
-    readonly destinationCidr: pulumi.Input<string>;
+    destinationCidr: pulumi.Input<string>;
     /**
      * IP address of the next hop gateway.  Changing
      * this creates a new routing entry.
      */
-    readonly nextHop: pulumi.Input<string>;
+    nextHop: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 networking client.
      * A networking client is needed to configure a routing entry on a router. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * routing entry.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * ID of the router this routing entry belongs to. Changing
      * this creates a new routing entry.
      */
-    readonly routerId: pulumi.Input<string>;
+    routerId: pulumi.Input<string>;
 }

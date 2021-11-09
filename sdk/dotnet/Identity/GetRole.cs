@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.OpenStack.Identity
 {
@@ -39,6 +40,35 @@ namespace Pulumi.OpenStack.Identity
         /// </summary>
         public static Task<GetRoleResult> InvokeAsync(GetRoleArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRoleResult>("openstack:identity/getRole:getRole", args ?? new GetRoleArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to get the ID of an OpenStack role.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var admin = Output.Create(OpenStack.Identity.GetRole.InvokeAsync(new OpenStack.Identity.GetRoleArgs
+        ///         {
+        ///             Name = "admin",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetRoleResult> Invoke(GetRoleInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetRoleResult>("openstack:identity/getRole:getRole", args ?? new GetRoleInvokeArgs(), options.WithVersion());
     }
 
 
@@ -64,6 +94,32 @@ namespace Pulumi.OpenStack.Identity
         public string? Region { get; set; }
 
         public GetRoleArgs()
+        {
+        }
+    }
+
+    public sealed class GetRoleInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The domain the role belongs to.
+        /// </summary>
+        [Input("domainId")]
+        public Input<string>? DomainId { get; set; }
+
+        /// <summary>
+        /// The name of the role.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The region in which to obtain the V3 Keystone client.
+        /// If omitted, the `region` argument of the provider is used.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        public GetRoleInvokeArgs()
         {
         }
     }

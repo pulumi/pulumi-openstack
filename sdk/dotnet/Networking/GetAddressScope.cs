@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.OpenStack.Networking
 {
@@ -41,6 +42,37 @@ namespace Pulumi.OpenStack.Networking
         /// </summary>
         public static Task<GetAddressScopeResult> InvokeAsync(GetAddressScopeArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAddressScopeResult>("openstack:networking/getAddressScope:getAddressScope", args ?? new GetAddressScopeArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to get the ID of an available OpenStack address-scope.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var publicAddressscope = Output.Create(OpenStack.Networking.GetAddressScope.InvokeAsync(new OpenStack.Networking.GetAddressScopeArgs
+        ///         {
+        ///             IpVersion = 4,
+        ///             Name = "public_addressscope",
+        ///             Shared = true,
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetAddressScopeResult> Invoke(GetAddressScopeInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAddressScopeResult>("openstack:networking/getAddressScope:getAddressScope", args ?? new GetAddressScopeInvokeArgs(), options.WithVersion());
     }
 
 
@@ -80,6 +112,46 @@ namespace Pulumi.OpenStack.Networking
         public bool? Shared { get; set; }
 
         public GetAddressScopeArgs()
+        {
+        }
+    }
+
+    public sealed class GetAddressScopeInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// IP version.
+        /// </summary>
+        [Input("ipVersion")]
+        public Input<int>? IpVersion { get; set; }
+
+        /// <summary>
+        /// Name of the address-scope.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The owner of the address-scope.
+        /// </summary>
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
+
+        /// <summary>
+        /// The region in which to obtain the V2 Neutron client.
+        /// A Neutron client is needed to retrieve address-scopes. If omitted, the
+        /// `region` argument of the provider is used.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// Indicates whether this address-scope is shared across
+        /// all projects.
+        /// </summary>
+        [Input("shared")]
+        public Input<bool>? Shared { get; set; }
+
+        public GetAddressScopeInvokeArgs()
         {
         }
     }

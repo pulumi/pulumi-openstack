@@ -235,31 +235,31 @@ export interface VolumeAttachState {
      * information is dependent upon the hypervisor in use. In some cases, this
      * should not be used as an authoritative piece of information.
      */
-    readonly device?: pulumi.Input<string>;
+    device?: pulumi.Input<string>;
     /**
      * The ID of the Instance to attach the Volume to.
      */
-    readonly instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string>;
     /**
      * Enable attachment of multiattach-capable volumes.
      */
-    readonly multiattach?: pulumi.Input<boolean>;
+    multiattach?: pulumi.Input<boolean>;
     /**
      * The region in which to obtain the V2 Compute client.
      * A Compute client is needed to create a volume attachment. If omitted, the
      * `region` argument of the provider is used. Changing this creates a
      * new volume attachment.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * Map of additional vendor-specific options.
      * Supported options are described below.
      */
-    readonly vendorOptions?: pulumi.Input<inputs.compute.VolumeAttachVendorOptions>;
+    vendorOptions?: pulumi.Input<inputs.compute.VolumeAttachVendorOptions>;
     /**
      * The ID of the Volume to attach to an Instance.
      */
-    readonly volumeId?: pulumi.Input<string>;
+    volumeId?: pulumi.Input<string>;
 }
 
 /**
@@ -271,29 +271,29 @@ export interface VolumeAttachArgs {
      * information is dependent upon the hypervisor in use. In some cases, this
      * should not be used as an authoritative piece of information.
      */
-    readonly device?: pulumi.Input<string>;
+    device?: pulumi.Input<string>;
     /**
      * The ID of the Instance to attach the Volume to.
      */
-    readonly instanceId: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
     /**
      * Enable attachment of multiattach-capable volumes.
      */
-    readonly multiattach?: pulumi.Input<boolean>;
+    multiattach?: pulumi.Input<boolean>;
     /**
      * The region in which to obtain the V2 Compute client.
      * A Compute client is needed to create a volume attachment. If omitted, the
      * `region` argument of the provider is used. Changing this creates a
      * new volume attachment.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * Map of additional vendor-specific options.
      * Supported options are described below.
      */
-    readonly vendorOptions?: pulumi.Input<inputs.compute.VolumeAttachVendorOptions>;
+    vendorOptions?: pulumi.Input<inputs.compute.VolumeAttachVendorOptions>;
     /**
      * The ID of the Volume to attach to an Instance.
      */
-    readonly volumeId: pulumi.Input<string>;
+    volumeId: pulumi.Input<string>;
 }

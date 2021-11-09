@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -16,7 +15,7 @@ import * as utilities from "../utilities";
  *
  * const zone1 = pulumi.output(openstack.dns.getDnsZone({
  *     name: "example.com",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getDnsZone(args?: GetDnsZoneArgs, opts?: pulumi.InvokeOptions): Promise<GetDnsZoneResult> {
@@ -57,74 +56,74 @@ export interface GetDnsZoneArgs {
      * Try to obtain zone ID by listing all projects
      * (requires admin role by default, depends on your policy configuration)
      */
-    readonly allProjects?: string;
+    allProjects?: string;
     /**
      * Attributes of the DNS Service scheduler.
      */
-    readonly attributes?: {[key: string]: any};
+    attributes?: {[key: string]: any};
     /**
      * The time the zone was created.
      */
-    readonly createdAt?: string;
+    createdAt?: string;
     /**
      * A description of the zone.
      */
-    readonly description?: string;
+    description?: string;
     /**
      * The email contact for the zone record.
      */
-    readonly email?: string;
+    email?: string;
     /**
      * An array of master DNS servers. When `type` is  `SECONDARY`.
      */
-    readonly masters?: string[];
+    masters?: string[];
     /**
      * The name of the zone.
      */
-    readonly name?: string;
+    name?: string;
     /**
      * The ID of the pool hosting the zone.
      */
-    readonly poolId?: string;
+    poolId?: string;
     /**
      * The ID of the project the DNS zone is obtained from,
      * sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned user role in target project)
      */
-    readonly projectId?: string;
+    projectId?: string;
     /**
      * The region in which to obtain the V2 DNS client.
      * A DNS client is needed to retrieve zone ids. If omitted, the
      * `region` argument of the provider is used.
      */
-    readonly region?: string;
+    region?: string;
     /**
      * The serial number of the zone.
      */
-    readonly serial?: number;
+    serial?: number;
     /**
      * The zone's status.
      */
-    readonly status?: string;
+    status?: string;
     /**
      * The time the zone was transferred.
      */
-    readonly transferredAt?: string;
+    transferredAt?: string;
     /**
      * The time to live (TTL) of the zone.
      */
-    readonly ttl?: number;
+    ttl?: number;
     /**
      * The type of the zone. Can either be `PRIMARY` or `SECONDARY`.
      */
-    readonly type?: string;
+    type?: string;
     /**
      * The time the zone was last updated.
      */
-    readonly updatedAt?: string;
+    updatedAt?: string;
     /**
      * The version of the zone.
      */
-    readonly version?: number;
+    version?: number;
 }
 
 /**
@@ -200,4 +199,86 @@ export interface GetDnsZoneResult {
      * The version of the zone.
      */
     readonly version: number;
+}
+
+export function getDnsZoneOutput(args?: GetDnsZoneOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDnsZoneResult> {
+    return pulumi.output(args).apply(a => getDnsZone(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDnsZone.
+ */
+export interface GetDnsZoneOutputArgs {
+    /**
+     * Try to obtain zone ID by listing all projects
+     * (requires admin role by default, depends on your policy configuration)
+     */
+    allProjects?: pulumi.Input<string>;
+    /**
+     * Attributes of the DNS Service scheduler.
+     */
+    attributes?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The time the zone was created.
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * A description of the zone.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The email contact for the zone record.
+     */
+    email?: pulumi.Input<string>;
+    /**
+     * An array of master DNS servers. When `type` is  `SECONDARY`.
+     */
+    masters?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The name of the zone.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The ID of the pool hosting the zone.
+     */
+    poolId?: pulumi.Input<string>;
+    /**
+     * The ID of the project the DNS zone is obtained from,
+     * sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned user role in target project)
+     */
+    projectId?: pulumi.Input<string>;
+    /**
+     * The region in which to obtain the V2 DNS client.
+     * A DNS client is needed to retrieve zone ids. If omitted, the
+     * `region` argument of the provider is used.
+     */
+    region?: pulumi.Input<string>;
+    /**
+     * The serial number of the zone.
+     */
+    serial?: pulumi.Input<number>;
+    /**
+     * The zone's status.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * The time the zone was transferred.
+     */
+    transferredAt?: pulumi.Input<string>;
+    /**
+     * The time to live (TTL) of the zone.
+     */
+    ttl?: pulumi.Input<number>;
+    /**
+     * The type of the zone. Can either be `PRIMARY` or `SECONDARY`.
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * The time the zone was last updated.
+     */
+    updatedAt?: pulumi.Input<string>;
+    /**
+     * The version of the zone.
+     */
+    version?: pulumi.Input<number>;
 }

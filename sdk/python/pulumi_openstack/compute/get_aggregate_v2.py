@@ -12,6 +12,7 @@ __all__ = [
     'GetAggregateV2Result',
     'AwaitableGetAggregateV2Result',
     'get_aggregate_v2',
+    'get_aggregate_v2_output',
 ]
 
 @pulumi.output_type
@@ -128,3 +129,29 @@ def get_aggregate_v2(hosts: Optional[Sequence[str]] = None,
         metadata=__ret__.metadata,
         name=__ret__.name,
         zone=__ret__.zone)
+
+
+@_utilities.lift_output_func(get_aggregate_v2)
+def get_aggregate_v2_output(hosts: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                            metadata: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
+                            name: Optional[pulumi.Input[str]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAggregateV2Result]:
+    """
+    Use this data source to get information about host aggregates
+    by name.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    test = openstack.compute.get_aggregate_v2(name="test")
+    ```
+
+
+    :param Sequence[str] hosts: List of Hypervisors contained in the Host Aggregate
+    :param Mapping[str, str] metadata: Metadata of the Host Aggregate
+    :param str name: The name of the host aggregate
+    """
+    ...

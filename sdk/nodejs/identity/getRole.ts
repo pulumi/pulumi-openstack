@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -16,7 +15,7 @@ import * as utilities from "../utilities";
  *
  * const admin = pulumi.output(openstack.identity.getRole({
  *     name: "admin",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getRole(args: GetRoleArgs, opts?: pulumi.InvokeOptions): Promise<GetRoleResult> {
@@ -41,16 +40,16 @@ export interface GetRoleArgs {
     /**
      * The domain the role belongs to.
      */
-    readonly domainId?: string;
+    domainId?: string;
     /**
      * The name of the role.
      */
-    readonly name: string;
+    name: string;
     /**
      * The region in which to obtain the V3 Keystone client.
      * If omitted, the `region` argument of the provider is used.
      */
-    readonly region?: string;
+    region?: string;
 }
 
 /**
@@ -73,4 +72,27 @@ export interface GetRoleResult {
      * See Argument Reference above.
      */
     readonly region: string;
+}
+
+export function getRoleOutput(args: GetRoleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRoleResult> {
+    return pulumi.output(args).apply(a => getRole(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getRole.
+ */
+export interface GetRoleOutputArgs {
+    /**
+     * The domain the role belongs to.
+     */
+    domainId?: pulumi.Input<string>;
+    /**
+     * The name of the role.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The region in which to obtain the V3 Keystone client.
+     * If omitted, the `region` argument of the provider is used.
+     */
+    region?: pulumi.Input<string>;
 }

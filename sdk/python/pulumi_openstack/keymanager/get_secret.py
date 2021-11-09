@@ -13,6 +13,7 @@ __all__ = [
     'GetSecretResult',
     'AwaitableGetSecretResult',
     'get_secret',
+    'get_secret_output',
 ]
 
 @pulumi.output_type
@@ -384,3 +385,42 @@ def get_secret(acl_only: Optional[bool] = None,
         status=__ret__.status,
         updated_at=__ret__.updated_at,
         updated_at_filter=__ret__.updated_at_filter)
+
+
+@_utilities.lift_output_func(get_secret)
+def get_secret_output(acl_only: Optional[pulumi.Input[Optional[bool]]] = None,
+                      algorithm: Optional[pulumi.Input[Optional[str]]] = None,
+                      bit_length: Optional[pulumi.Input[Optional[int]]] = None,
+                      created_at_filter: Optional[pulumi.Input[Optional[str]]] = None,
+                      expiration_filter: Optional[pulumi.Input[Optional[str]]] = None,
+                      mode: Optional[pulumi.Input[Optional[str]]] = None,
+                      name: Optional[pulumi.Input[Optional[str]]] = None,
+                      region: Optional[pulumi.Input[Optional[str]]] = None,
+                      secret_type: Optional[pulumi.Input[Optional[str]]] = None,
+                      updated_at_filter: Optional[pulumi.Input[Optional[str]]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSecretResult]:
+    """
+    Use this data source to access information about an existing resource.
+
+    :param bool acl_only: Select the Secret with an ACL that contains the user.
+           Project scope is ignored. Defaults to `false`.
+    :param str algorithm: The Secret algorithm.
+    :param int bit_length: The Secret bit length.
+    :param str created_at_filter: Date filter to select the Secret with
+           created matching the specified criteria. See Date Filters below for more
+           detail.
+    :param str expiration_filter: Date filter to select the Secret with
+           expiration matching the specified criteria. See Date Filters below for more
+           detail.
+    :param str mode: The Secret mode.
+    :param str name: The Secret name.
+    :param str region: The region in which to obtain the V1 KeyManager client.
+           A KeyManager client is needed to fetch a secret. If omitted, the `region`
+           argument of the provider is used.
+    :param str secret_type: The Secret type. For more information see
+           [Secret types](https://docs.openstack.org/barbican/latest/api/reference/secret_types.html).
+    :param str updated_at_filter: Date filter to select the Secret with
+           updated matching the specified criteria. See Date Filters below for more
+           detail.
+    """
+    ...

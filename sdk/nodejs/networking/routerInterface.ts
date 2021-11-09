@@ -131,24 +131,24 @@ export interface RouterInterfaceState {
      * ID of the port this interface connects to. Changing
      * this creates a new router interface.
      */
-    readonly portId?: pulumi.Input<string>;
+    portId?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 networking client.
      * A networking client is needed to create a router. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * router interface.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * ID of the router this interface belongs to. Changing
      * this creates a new router interface.
      */
-    readonly routerId?: pulumi.Input<string>;
+    routerId?: pulumi.Input<string>;
     /**
      * ID of the subnet this interface connects to. Changing
      * this creates a new router interface.
      */
-    readonly subnetId?: pulumi.Input<string>;
+    subnetId?: pulumi.Input<string>;
 }
 
 /**
@@ -159,22 +159,22 @@ export interface RouterInterfaceArgs {
      * ID of the port this interface connects to. Changing
      * this creates a new router interface.
      */
-    readonly portId?: pulumi.Input<string>;
+    portId?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 networking client.
      * A networking client is needed to create a router. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * router interface.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * ID of the router this interface belongs to. Changing
      * this creates a new router interface.
      */
-    readonly routerId: pulumi.Input<string>;
+    routerId: pulumi.Input<string>;
     /**
      * ID of the subnet this interface connects to. Changing
      * this creates a new router interface.
      */
-    readonly subnetId?: pulumi.Input<string>;
+    subnetId?: pulumi.Input<string>;
 }

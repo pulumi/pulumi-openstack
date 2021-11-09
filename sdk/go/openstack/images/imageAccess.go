@@ -34,8 +34,8 @@ import (
 // 			ContainerFormat: pulumi.String("bare"),
 // 			DiskFormat:      pulumi.String("qcow2"),
 // 			ImageSourceUrl:  pulumi.String("https://releases.rancher.com/os/latest/rancheros-openstack.img"),
-// 			Properties: pulumi.StringMap{
-// 				"key": pulumi.String("value"),
+// 			Properties: pulumi.AnyMap{
+// 				"key": pulumi.Any("value"),
 // 			},
 // 			Visibility: pulumi.String("shared"),
 // 		})
@@ -72,8 +72,8 @@ import (
 // 			ContainerFormat: pulumi.String("bare"),
 // 			DiskFormat:      pulumi.String("qcow2"),
 // 			ImageSourceUrl:  pulumi.String("https://releases.rancher.com/os/latest/rancheros-openstack.img"),
-// 			Properties: pulumi.StringMap{
-// 				"key": pulumi.String("value"),
+// 			Properties: pulumi.AnyMap{
+// 				"key": pulumi.Any("value"),
 // 			},
 // 			Visibility: pulumi.String("shared"),
 // 		})
@@ -300,7 +300,7 @@ type ImageAccessArrayInput interface {
 type ImageAccessArray []ImageAccessInput
 
 func (ImageAccessArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ImageAccess)(nil))
+	return reflect.TypeOf((*[]*ImageAccess)(nil)).Elem()
 }
 
 func (i ImageAccessArray) ToImageAccessArrayOutput() ImageAccessArrayOutput {
@@ -325,7 +325,7 @@ type ImageAccessMapInput interface {
 type ImageAccessMap map[string]ImageAccessInput
 
 func (ImageAccessMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ImageAccess)(nil))
+	return reflect.TypeOf((*map[string]*ImageAccess)(nil)).Elem()
 }
 
 func (i ImageAccessMap) ToImageAccessMapOutput() ImageAccessMapOutput {
@@ -336,9 +336,7 @@ func (i ImageAccessMap) ToImageAccessMapOutputWithContext(ctx context.Context) I
 	return pulumi.ToOutputWithContext(ctx, i).(ImageAccessMapOutput)
 }
 
-type ImageAccessOutput struct {
-	*pulumi.OutputState
-}
+type ImageAccessOutput struct{ *pulumi.OutputState }
 
 func (ImageAccessOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ImageAccess)(nil))
@@ -357,14 +355,12 @@ func (o ImageAccessOutput) ToImageAccessPtrOutput() ImageAccessPtrOutput {
 }
 
 func (o ImageAccessOutput) ToImageAccessPtrOutputWithContext(ctx context.Context) ImageAccessPtrOutput {
-	return o.ApplyT(func(v ImageAccess) *ImageAccess {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ImageAccess) *ImageAccess {
 		return &v
 	}).(ImageAccessPtrOutput)
 }
 
-type ImageAccessPtrOutput struct {
-	*pulumi.OutputState
-}
+type ImageAccessPtrOutput struct{ *pulumi.OutputState }
 
 func (ImageAccessPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ImageAccess)(nil))
@@ -376,6 +372,16 @@ func (o ImageAccessPtrOutput) ToImageAccessPtrOutput() ImageAccessPtrOutput {
 
 func (o ImageAccessPtrOutput) ToImageAccessPtrOutputWithContext(ctx context.Context) ImageAccessPtrOutput {
 	return o
+}
+
+func (o ImageAccessPtrOutput) Elem() ImageAccessOutput {
+	return o.ApplyT(func(v *ImageAccess) ImageAccess {
+		if v != nil {
+			return *v
+		}
+		var ret ImageAccess
+		return ret
+	}).(ImageAccessOutput)
 }
 
 type ImageAccessArrayOutput struct{ *pulumi.OutputState }
@@ -419,6 +425,10 @@ func (o ImageAccessMapOutput) MapIndex(k pulumi.StringInput) ImageAccessOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ImageAccessInput)(nil)).Elem(), &ImageAccess{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImageAccessPtrInput)(nil)).Elem(), &ImageAccess{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImageAccessArrayInput)(nil)).Elem(), ImageAccessArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImageAccessMapInput)(nil)).Elem(), ImageAccessMap{})
 	pulumi.RegisterOutputType(ImageAccessOutput{})
 	pulumi.RegisterOutputType(ImageAccessPtrOutput{})
 	pulumi.RegisterOutputType(ImageAccessArrayOutput{})

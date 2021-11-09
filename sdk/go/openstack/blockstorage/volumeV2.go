@@ -371,7 +371,7 @@ type VolumeV2ArrayInput interface {
 type VolumeV2Array []VolumeV2Input
 
 func (VolumeV2Array) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*VolumeV2)(nil))
+	return reflect.TypeOf((*[]*VolumeV2)(nil)).Elem()
 }
 
 func (i VolumeV2Array) ToVolumeV2ArrayOutput() VolumeV2ArrayOutput {
@@ -396,7 +396,7 @@ type VolumeV2MapInput interface {
 type VolumeV2Map map[string]VolumeV2Input
 
 func (VolumeV2Map) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*VolumeV2)(nil))
+	return reflect.TypeOf((*map[string]*VolumeV2)(nil)).Elem()
 }
 
 func (i VolumeV2Map) ToVolumeV2MapOutput() VolumeV2MapOutput {
@@ -407,9 +407,7 @@ func (i VolumeV2Map) ToVolumeV2MapOutputWithContext(ctx context.Context) VolumeV
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeV2MapOutput)
 }
 
-type VolumeV2Output struct {
-	*pulumi.OutputState
-}
+type VolumeV2Output struct{ *pulumi.OutputState }
 
 func (VolumeV2Output) ElementType() reflect.Type {
 	return reflect.TypeOf((*VolumeV2)(nil))
@@ -428,14 +426,12 @@ func (o VolumeV2Output) ToVolumeV2PtrOutput() VolumeV2PtrOutput {
 }
 
 func (o VolumeV2Output) ToVolumeV2PtrOutputWithContext(ctx context.Context) VolumeV2PtrOutput {
-	return o.ApplyT(func(v VolumeV2) *VolumeV2 {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VolumeV2) *VolumeV2 {
 		return &v
 	}).(VolumeV2PtrOutput)
 }
 
-type VolumeV2PtrOutput struct {
-	*pulumi.OutputState
-}
+type VolumeV2PtrOutput struct{ *pulumi.OutputState }
 
 func (VolumeV2PtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**VolumeV2)(nil))
@@ -447,6 +443,16 @@ func (o VolumeV2PtrOutput) ToVolumeV2PtrOutput() VolumeV2PtrOutput {
 
 func (o VolumeV2PtrOutput) ToVolumeV2PtrOutputWithContext(ctx context.Context) VolumeV2PtrOutput {
 	return o
+}
+
+func (o VolumeV2PtrOutput) Elem() VolumeV2Output {
+	return o.ApplyT(func(v *VolumeV2) VolumeV2 {
+		if v != nil {
+			return *v
+		}
+		var ret VolumeV2
+		return ret
+	}).(VolumeV2Output)
 }
 
 type VolumeV2ArrayOutput struct{ *pulumi.OutputState }
@@ -490,6 +496,10 @@ func (o VolumeV2MapOutput) MapIndex(k pulumi.StringInput) VolumeV2Output {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeV2Input)(nil)).Elem(), &VolumeV2{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeV2PtrInput)(nil)).Elem(), &VolumeV2{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeV2ArrayInput)(nil)).Elem(), VolumeV2Array{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeV2MapInput)(nil)).Elem(), VolumeV2Map{})
 	pulumi.RegisterOutputType(VolumeV2Output{})
 	pulumi.RegisterOutputType(VolumeV2PtrOutput{})
 	pulumi.RegisterOutputType(VolumeV2ArrayOutput{})

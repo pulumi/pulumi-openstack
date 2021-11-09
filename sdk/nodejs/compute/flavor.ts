@@ -179,58 +179,58 @@ export interface FlavorState {
      * The amount of disk space in GiB to use for the root
      * (/) partition. Changing this creates a new flavor.
      */
-    readonly disk?: pulumi.Input<number>;
+    disk?: pulumi.Input<number>;
     /**
      * The amount of ephemeral in GiB. If unspecified,
      * the default is 0. Changing this creates a new flavor.
      */
-    readonly ephemeral?: pulumi.Input<number>;
+    ephemeral?: pulumi.Input<number>;
     /**
      * Key/Value pairs of metadata for the flavor.
      */
-    readonly extraSpecs?: pulumi.Input<{[key: string]: any}>;
+    extraSpecs?: pulumi.Input<{[key: string]: any}>;
     /**
      * Unique ID (integer or UUID) of flavor to create. Changing
      * this creates a new flavor.
      */
-    readonly flavorId?: pulumi.Input<string>;
+    flavorId?: pulumi.Input<string>;
     /**
      * Whether the flavor is public. Changing this creates
      * a new flavor.
      */
-    readonly isPublic?: pulumi.Input<boolean>;
+    isPublic?: pulumi.Input<boolean>;
     /**
      * A unique name for the flavor. Changing this creates a new
      * flavor.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The amount of RAM to use, in megabytes. Changing this
      * creates a new flavor.
      */
-    readonly ram?: pulumi.Input<number>;
+    ram?: pulumi.Input<number>;
     /**
      * The region in which to obtain the V2 Compute client.
      * Flavors are associated with accounts, but a Compute client is needed to
      * create one. If omitted, the `region` argument of the provider is used.
      * Changing this creates a new flavor.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * RX/TX bandwith factor. The default is 1. Changing
      * this creates a new flavor.
      */
-    readonly rxTxFactor?: pulumi.Input<number>;
+    rxTxFactor?: pulumi.Input<number>;
     /**
      * The amount of disk space in megabytes to use. If
      * unspecified, the default is 0. Changing this creates a new flavor.
      */
-    readonly swap?: pulumi.Input<number>;
+    swap?: pulumi.Input<number>;
     /**
      * The number of virtual CPUs to use. Changing this creates
      * a new flavor.
      */
-    readonly vcpus?: pulumi.Input<number>;
+    vcpus?: pulumi.Input<number>;
 }
 
 /**
@@ -241,56 +241,56 @@ export interface FlavorArgs {
      * The amount of disk space in GiB to use for the root
      * (/) partition. Changing this creates a new flavor.
      */
-    readonly disk: pulumi.Input<number>;
+    disk: pulumi.Input<number>;
     /**
      * The amount of ephemeral in GiB. If unspecified,
      * the default is 0. Changing this creates a new flavor.
      */
-    readonly ephemeral?: pulumi.Input<number>;
+    ephemeral?: pulumi.Input<number>;
     /**
      * Key/Value pairs of metadata for the flavor.
      */
-    readonly extraSpecs?: pulumi.Input<{[key: string]: any}>;
+    extraSpecs?: pulumi.Input<{[key: string]: any}>;
     /**
      * Unique ID (integer or UUID) of flavor to create. Changing
      * this creates a new flavor.
      */
-    readonly flavorId?: pulumi.Input<string>;
+    flavorId?: pulumi.Input<string>;
     /**
      * Whether the flavor is public. Changing this creates
      * a new flavor.
      */
-    readonly isPublic?: pulumi.Input<boolean>;
+    isPublic?: pulumi.Input<boolean>;
     /**
      * A unique name for the flavor. Changing this creates a new
      * flavor.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The amount of RAM to use, in megabytes. Changing this
      * creates a new flavor.
      */
-    readonly ram: pulumi.Input<number>;
+    ram: pulumi.Input<number>;
     /**
      * The region in which to obtain the V2 Compute client.
      * Flavors are associated with accounts, but a Compute client is needed to
      * create one. If omitted, the `region` argument of the provider is used.
      * Changing this creates a new flavor.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * RX/TX bandwith factor. The default is 1. Changing
      * this creates a new flavor.
      */
-    readonly rxTxFactor?: pulumi.Input<number>;
+    rxTxFactor?: pulumi.Input<number>;
     /**
      * The amount of disk space in megabytes to use. If
      * unspecified, the default is 0. Changing this creates a new flavor.
      */
-    readonly swap?: pulumi.Input<number>;
+    swap?: pulumi.Input<number>;
     /**
      * The number of virtual CPUs to use. Changing this creates
      * a new flavor.
      */
-    readonly vcpus: pulumi.Input<number>;
+    vcpus: pulumi.Input<number>;
 }

@@ -212,57 +212,57 @@ export interface ShareNetworkState {
     /**
      * The share network CIDR.
      */
-    readonly cidr?: pulumi.Input<string>;
+    cidr?: pulumi.Input<string>;
     /**
      * The human-readable description for the share network.
      * Changing this updates the description of the existing share network.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The IP version of the share network. Can either be 4 or 6.
      */
-    readonly ipVersion?: pulumi.Input<number>;
+    ipVersion?: pulumi.Input<number>;
     /**
      * The name for the share network. Changing this updates the name
      * of the existing share network.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The share network type. Can either be VLAN, VXLAN, GRE, or flat.
      */
-    readonly networkType?: pulumi.Input<string>;
+    networkType?: pulumi.Input<string>;
     /**
      * The UUID of a neutron network when setting up or updating
      * a share network. Changing this updates the existing share network if it's not used by
      * shares.
      */
-    readonly neutronNetId?: pulumi.Input<string>;
+    neutronNetId?: pulumi.Input<string>;
     /**
      * The UUID of the neutron subnet when setting up or
      * updating a share network. Changing this updates the existing share network if it's
      * not used by shares.
      */
-    readonly neutronSubnetId?: pulumi.Input<string>;
+    neutronSubnetId?: pulumi.Input<string>;
     /**
      * The owner of the Share Network.
      */
-    readonly projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 Shared File System client.
      * A Shared File System client is needed to create a share network. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * share network.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The list of security service IDs to associate with
      * the share network. The security service must be specified by ID and not name.
      */
-    readonly securityServiceIds?: pulumi.Input<pulumi.Input<string>[]>;
+    securityServiceIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The share network segmentation ID.
      */
-    readonly segmentationId?: pulumi.Input<number>;
+    segmentationId?: pulumi.Input<number>;
 }
 
 /**
@@ -273,34 +273,34 @@ export interface ShareNetworkArgs {
      * The human-readable description for the share network.
      * Changing this updates the description of the existing share network.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The name for the share network. Changing this updates the name
      * of the existing share network.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The UUID of a neutron network when setting up or updating
      * a share network. Changing this updates the existing share network if it's not used by
      * shares.
      */
-    readonly neutronNetId: pulumi.Input<string>;
+    neutronNetId: pulumi.Input<string>;
     /**
      * The UUID of the neutron subnet when setting up or
      * updating a share network. Changing this updates the existing share network if it's
      * not used by shares.
      */
-    readonly neutronSubnetId: pulumi.Input<string>;
+    neutronSubnetId: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 Shared File System client.
      * A Shared File System client is needed to create a share network. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * share network.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The list of security service IDs to associate with
      * the share network. The security service must be specified by ID and not name.
      */
-    readonly securityServiceIds?: pulumi.Input<pulumi.Input<string>[]>;
+    securityServiceIds?: pulumi.Input<pulumi.Input<string>[]>;
 }

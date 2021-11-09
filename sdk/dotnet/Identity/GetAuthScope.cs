@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.OpenStack.Identity
 {
@@ -18,6 +19,14 @@ namespace Pulumi.OpenStack.Identity
         /// </summary>
         public static Task<GetAuthScopeResult> InvokeAsync(GetAuthScopeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAuthScopeResult>("openstack:identity/getAuthScope:getAuthScope", args ?? new GetAuthScopeArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to get authentication information about the current
+        /// auth scope in use. This can be used as self-discovery or introspection of
+        /// the username or project name currently in use as well as the service catalog.
+        /// </summary>
+        public static Output<GetAuthScopeResult> Invoke(GetAuthScopeInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAuthScopeResult>("openstack:identity/getAuthScope:getAuthScope", args ?? new GetAuthScopeInvokeArgs(), options.WithVersion());
     }
 
 
@@ -39,6 +48,28 @@ namespace Pulumi.OpenStack.Identity
         public string? Region { get; set; }
 
         public GetAuthScopeArgs()
+        {
+        }
+    }
+
+    public sealed class GetAuthScopeInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The name of the scope. This is an arbitrary name which is
+        /// only used as a unique identifier so an actual token isn't used as the ID.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The region in which to obtain the V3 Identity client.
+        /// A Identity client is needed to retrieve tokens IDs. If omitted, the
+        /// `region` argument of the provider is used.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        public GetAuthScopeInvokeArgs()
         {
         }
     }

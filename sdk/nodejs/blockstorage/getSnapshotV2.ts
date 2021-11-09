@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -17,7 +16,7 @@ import * as utilities from "../utilities";
  * const snapshot1 = pulumi.output(openstack.blockstorage.getSnapshotV2({
  *     mostRecent: true,
  *     name: "snapshot_1",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getSnapshotV2(args?: GetSnapshotV2Args, opts?: pulumi.InvokeOptions): Promise<GetSnapshotV2Result> {
@@ -46,24 +45,24 @@ export interface GetSnapshotV2Args {
      * Pick the most recently created snapshot if there
      * are multiple results.
      */
-    readonly mostRecent?: boolean;
+    mostRecent?: boolean;
     /**
      * The name of the snapshot.
      */
-    readonly name?: string;
+    name?: string;
     /**
      * The region in which to obtain the V2 Block Storage
      * client. If omitted, the `region` argument of the provider is used.
      */
-    readonly region?: string;
+    region?: string;
     /**
      * The status of the snapshot.
      */
-    readonly status?: string;
+    status?: string;
     /**
      * The ID of the snapshot's volume.
      */
-    readonly volumeId?: string;
+    volumeId?: string;
 }
 
 /**
@@ -103,4 +102,36 @@ export interface GetSnapshotV2Result {
      * See Argument Reference above.
      */
     readonly volumeId: string;
+}
+
+export function getSnapshotV2Output(args?: GetSnapshotV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSnapshotV2Result> {
+    return pulumi.output(args).apply(a => getSnapshotV2(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getSnapshotV2.
+ */
+export interface GetSnapshotV2OutputArgs {
+    /**
+     * Pick the most recently created snapshot if there
+     * are multiple results.
+     */
+    mostRecent?: pulumi.Input<boolean>;
+    /**
+     * The name of the snapshot.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The region in which to obtain the V2 Block Storage
+     * client. If omitted, the `region` argument of the provider is used.
+     */
+    region?: pulumi.Input<string>;
+    /**
+     * The status of the snapshot.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * The ID of the snapshot's volume.
+     */
+    volumeId?: pulumi.Input<string>;
 }

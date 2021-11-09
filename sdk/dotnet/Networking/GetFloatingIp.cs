@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.OpenStack.Networking
 {
@@ -39,6 +40,35 @@ namespace Pulumi.OpenStack.Networking
         /// </summary>
         public static Task<GetFloatingIpResult> InvokeAsync(GetFloatingIpArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetFloatingIpResult>("openstack:networking/getFloatingIp:getFloatingIp", args ?? new GetFloatingIpArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to get the ID of an available OpenStack floating IP.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var floatingip1 = Output.Create(OpenStack.Networking.GetFloatingIp.InvokeAsync(new OpenStack.Networking.GetFloatingIpArgs
+        ///         {
+        ///             Address = "192.168.0.4",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetFloatingIpResult> Invoke(GetFloatingIpInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetFloatingIpResult>("openstack:networking/getFloatingIp:getFloatingIp", args ?? new GetFloatingIpInvokeArgs(), options.WithVersion());
     }
 
 
@@ -107,6 +137,75 @@ namespace Pulumi.OpenStack.Networking
         public string? TenantId { get; set; }
 
         public GetFloatingIpArgs()
+        {
+        }
+    }
+
+    public sealed class GetFloatingIpInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The IP address of the floating IP.
+        /// </summary>
+        [Input("address")]
+        public Input<string>? Address { get; set; }
+
+        /// <summary>
+        /// Human-readable description of the floating IP.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The specific IP address of the internal port which should be associated with the floating IP.
+        /// </summary>
+        [Input("fixedIp")]
+        public Input<string>? FixedIp { get; set; }
+
+        /// <summary>
+        /// The name of the pool from which the floating IP belongs to.
+        /// </summary>
+        [Input("pool")]
+        public Input<string>? Pool { get; set; }
+
+        /// <summary>
+        /// The ID of the port the floating IP is attached.
+        /// </summary>
+        [Input("portId")]
+        public Input<string>? PortId { get; set; }
+
+        /// <summary>
+        /// The region in which to obtain the V2 Neutron client.
+        /// A Neutron client is needed to retrieve floating IP ids. If omitted, the
+        /// `region` argument of the provider is used.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// status of the floating IP (ACTIVE/DOWN).
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// The list of floating IP tags to filter.
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// The owner of the floating IP.
+        /// </summary>
+        [Input("tenantId")]
+        public Input<string>? TenantId { get; set; }
+
+        public GetFloatingIpInvokeArgs()
         {
         }
     }

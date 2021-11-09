@@ -273,7 +273,7 @@ type TransferRequestArrayInput interface {
 type TransferRequestArray []TransferRequestInput
 
 func (TransferRequestArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*TransferRequest)(nil))
+	return reflect.TypeOf((*[]*TransferRequest)(nil)).Elem()
 }
 
 func (i TransferRequestArray) ToTransferRequestArrayOutput() TransferRequestArrayOutput {
@@ -298,7 +298,7 @@ type TransferRequestMapInput interface {
 type TransferRequestMap map[string]TransferRequestInput
 
 func (TransferRequestMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*TransferRequest)(nil))
+	return reflect.TypeOf((*map[string]*TransferRequest)(nil)).Elem()
 }
 
 func (i TransferRequestMap) ToTransferRequestMapOutput() TransferRequestMapOutput {
@@ -309,9 +309,7 @@ func (i TransferRequestMap) ToTransferRequestMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(TransferRequestMapOutput)
 }
 
-type TransferRequestOutput struct {
-	*pulumi.OutputState
-}
+type TransferRequestOutput struct{ *pulumi.OutputState }
 
 func (TransferRequestOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TransferRequest)(nil))
@@ -330,14 +328,12 @@ func (o TransferRequestOutput) ToTransferRequestPtrOutput() TransferRequestPtrOu
 }
 
 func (o TransferRequestOutput) ToTransferRequestPtrOutputWithContext(ctx context.Context) TransferRequestPtrOutput {
-	return o.ApplyT(func(v TransferRequest) *TransferRequest {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransferRequest) *TransferRequest {
 		return &v
 	}).(TransferRequestPtrOutput)
 }
 
-type TransferRequestPtrOutput struct {
-	*pulumi.OutputState
-}
+type TransferRequestPtrOutput struct{ *pulumi.OutputState }
 
 func (TransferRequestPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TransferRequest)(nil))
@@ -349,6 +345,16 @@ func (o TransferRequestPtrOutput) ToTransferRequestPtrOutput() TransferRequestPt
 
 func (o TransferRequestPtrOutput) ToTransferRequestPtrOutputWithContext(ctx context.Context) TransferRequestPtrOutput {
 	return o
+}
+
+func (o TransferRequestPtrOutput) Elem() TransferRequestOutput {
+	return o.ApplyT(func(v *TransferRequest) TransferRequest {
+		if v != nil {
+			return *v
+		}
+		var ret TransferRequest
+		return ret
+	}).(TransferRequestOutput)
 }
 
 type TransferRequestArrayOutput struct{ *pulumi.OutputState }
@@ -392,6 +398,10 @@ func (o TransferRequestMapOutput) MapIndex(k pulumi.StringInput) TransferRequest
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TransferRequestInput)(nil)).Elem(), &TransferRequest{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransferRequestPtrInput)(nil)).Elem(), &TransferRequest{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransferRequestArrayInput)(nil)).Elem(), TransferRequestArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransferRequestMapInput)(nil)).Elem(), TransferRequestMap{})
 	pulumi.RegisterOutputType(TransferRequestOutput{})
 	pulumi.RegisterOutputType(TransferRequestPtrOutput{})
 	pulumi.RegisterOutputType(TransferRequestArrayOutput{})

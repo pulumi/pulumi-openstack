@@ -4,6 +4,9 @@
 package identity
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -66,4 +69,72 @@ type GetGroupResult struct {
 	Name string `pulumi:"name"`
 	// See Argument Reference above.
 	Region string `pulumi:"region"`
+}
+
+func GetGroupOutput(ctx *pulumi.Context, args GetGroupOutputArgs, opts ...pulumi.InvokeOption) GetGroupResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetGroupResult, error) {
+			args := v.(GetGroupArgs)
+			r, err := GetGroup(ctx, &args, opts...)
+			return *r, err
+		}).(GetGroupResultOutput)
+}
+
+// A collection of arguments for invoking getGroup.
+type GetGroupOutputArgs struct {
+	// The domain the group belongs to.
+	DomainId pulumi.StringPtrInput `pulumi:"domainId"`
+	// The name of the group.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The region in which to obtain the V3 Keystone client.
+	// If omitted, the `region` argument of the provider is used.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+}
+
+func (GetGroupOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getGroup.
+type GetGroupResultOutput struct{ *pulumi.OutputState }
+
+func (GetGroupResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupResult)(nil)).Elem()
+}
+
+func (o GetGroupResultOutput) ToGetGroupResultOutput() GetGroupResultOutput {
+	return o
+}
+
+func (o GetGroupResultOutput) ToGetGroupResultOutputWithContext(ctx context.Context) GetGroupResultOutput {
+	return o
+}
+
+// A description of the group.
+func (o GetGroupResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// See Argument Reference above.
+func (o GetGroupResultOutput) DomainId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupResult) string { return v.DomainId }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetGroupResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// See Argument Reference above.
+func (o GetGroupResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// See Argument Reference above.
+func (o GetGroupResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupResult) string { return v.Region }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetGroupResultOutput{})
 }

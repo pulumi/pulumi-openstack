@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -16,7 +15,7 @@ import * as utilities from "../utilities";
  *
  * const network = pulumi.output(openstack.networking.getNetwork({
  *     name: "tf_test_network",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getNetwork(args?: GetNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkResult> {
@@ -50,51 +49,51 @@ export interface GetNetworkArgs {
     /**
      * Human-readable description of the network.
      */
-    readonly description?: string;
+    description?: string;
     /**
      * The external routing facility of the network.
      */
-    readonly external?: boolean;
+    external?: boolean;
     /**
      * The CIDR of a subnet within the network.
      */
-    readonly matchingSubnetCidr?: string;
+    matchingSubnetCidr?: string;
     /**
      * The network MTU to filter. Available, when Neutron `net-mtu`
      * extension is enabled.
      */
-    readonly mtu?: number;
+    mtu?: number;
     /**
      * The name of the network.
      */
-    readonly name?: string;
+    name?: string;
     /**
      * The ID of the network.
      */
-    readonly networkId?: string;
+    networkId?: string;
     /**
      * The region in which to obtain the V2 Neutron client.
      * A Neutron client is needed to retrieve networks ids. If omitted, the
      * `region` argument of the provider is used.
      */
-    readonly region?: string;
+    region?: string;
     /**
      * The status of the network.
      */
-    readonly status?: string;
+    status?: string;
     /**
      * The list of network tags to filter.
      */
-    readonly tags?: string[];
+    tags?: string[];
     /**
      * The owner of the network.
      */
-    readonly tenantId?: string;
+    tenantId?: string;
     /**
      * The VLAN transparent attribute for the
      * network.
      */
-    readonly transparentVlan?: boolean;
+    transparentVlan?: boolean;
 }
 
 /**
@@ -160,4 +159,62 @@ export interface GetNetworkResult {
      * See Argument Reference above.
      */
     readonly transparentVlan?: boolean;
+}
+
+export function getNetworkOutput(args?: GetNetworkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkResult> {
+    return pulumi.output(args).apply(a => getNetwork(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getNetwork.
+ */
+export interface GetNetworkOutputArgs {
+    /**
+     * Human-readable description of the network.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The external routing facility of the network.
+     */
+    external?: pulumi.Input<boolean>;
+    /**
+     * The CIDR of a subnet within the network.
+     */
+    matchingSubnetCidr?: pulumi.Input<string>;
+    /**
+     * The network MTU to filter. Available, when Neutron `net-mtu`
+     * extension is enabled.
+     */
+    mtu?: pulumi.Input<number>;
+    /**
+     * The name of the network.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The ID of the network.
+     */
+    networkId?: pulumi.Input<string>;
+    /**
+     * The region in which to obtain the V2 Neutron client.
+     * A Neutron client is needed to retrieve networks ids. If omitted, the
+     * `region` argument of the provider is used.
+     */
+    region?: pulumi.Input<string>;
+    /**
+     * The status of the network.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * The list of network tags to filter.
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The owner of the network.
+     */
+    tenantId?: pulumi.Input<string>;
+    /**
+     * The VLAN transparent attribute for the
+     * network.
+     */
+    transparentVlan?: pulumi.Input<boolean>;
 }

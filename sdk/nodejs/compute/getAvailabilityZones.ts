@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -14,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const zones = pulumi.output(openstack.compute.getAvailabilityZones({ async: true }));
+ * const zones = pulumi.output(openstack.compute.getAvailabilityZones());
  * ```
  */
 export function getAvailabilityZones(args?: GetAvailabilityZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetAvailabilityZonesResult> {
@@ -39,11 +38,11 @@ export interface GetAvailabilityZonesArgs {
     /**
      * The `region` to fetch availability zones from, defaults to the provider's `region`
      */
-    readonly region?: string;
+    region?: string;
     /**
      * The `state` of the availability zones to match, default ("available").
      */
-    readonly state?: string;
+    state?: string;
 }
 
 /**
@@ -60,4 +59,22 @@ export interface GetAvailabilityZonesResult {
     readonly names: string[];
     readonly region: string;
     readonly state?: string;
+}
+
+export function getAvailabilityZonesOutput(args?: GetAvailabilityZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAvailabilityZonesResult> {
+    return pulumi.output(args).apply(a => getAvailabilityZones(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAvailabilityZones.
+ */
+export interface GetAvailabilityZonesOutputArgs {
+    /**
+     * The `region` to fetch availability zones from, defaults to the provider's `region`
+     */
+    region?: pulumi.Input<string>;
+    /**
+     * The `state` of the availability zones to match, default ("available").
+     */
+    state?: pulumi.Input<string>;
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.OpenStack.Networking
 {
@@ -13,9 +14,61 @@ namespace Pulumi.OpenStack.Networking
     {
         /// <summary>
         /// Use this data source to get the ID of an available OpenStack QoS DSCP marking rule.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var qosDscpMarkingRule1 = Output.Create(OpenStack.Networking.GetQosDscpMarkingRule.InvokeAsync(new OpenStack.Networking.GetQosDscpMarkingRuleArgs
+        ///         {
+        ///             DscpMark = 26,
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetQosDscpMarkingRuleResult> InvokeAsync(GetQosDscpMarkingRuleArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetQosDscpMarkingRuleResult>("openstack:networking/getQosDscpMarkingRule:getQosDscpMarkingRule", args ?? new GetQosDscpMarkingRuleArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to get the ID of an available OpenStack QoS DSCP marking rule.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var qosDscpMarkingRule1 = Output.Create(OpenStack.Networking.GetQosDscpMarkingRule.InvokeAsync(new OpenStack.Networking.GetQosDscpMarkingRuleArgs
+        ///         {
+        ///             DscpMark = 26,
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetQosDscpMarkingRuleResult> Invoke(GetQosDscpMarkingRuleInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetQosDscpMarkingRuleResult>("openstack:networking/getQosDscpMarkingRule:getQosDscpMarkingRule", args ?? new GetQosDscpMarkingRuleInvokeArgs(), options.WithVersion());
     }
 
 
@@ -42,6 +95,33 @@ namespace Pulumi.OpenStack.Networking
         public string? Region { get; set; }
 
         public GetQosDscpMarkingRuleArgs()
+        {
+        }
+    }
+
+    public sealed class GetQosDscpMarkingRuleInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The value of a DSCP mark.
+        /// </summary>
+        [Input("dscpMark")]
+        public Input<int>? DscpMark { get; set; }
+
+        /// <summary>
+        /// The QoS policy reference.
+        /// </summary>
+        [Input("qosPolicyId", required: true)]
+        public Input<string> QosPolicyId { get; set; } = null!;
+
+        /// <summary>
+        /// The region in which to obtain the V2 Networking client.
+        /// A Networking client is needed to create a Neutron QoS DSCP marking rule. If omitted, the
+        /// `region` argument of the provider is used.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        public GetQosDscpMarkingRuleInvokeArgs()
         {
         }
     }

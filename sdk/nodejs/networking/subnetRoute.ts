@@ -138,24 +138,24 @@ export interface SubnetRouteState {
      * CIDR block to match on the packet’s destination IP. Changing
      * this creates a new routing entry.
      */
-    readonly destinationCidr?: pulumi.Input<string>;
+    destinationCidr?: pulumi.Input<string>;
     /**
      * IP address of the next hop gateway.  Changing
      * this creates a new routing entry.
      */
-    readonly nextHop?: pulumi.Input<string>;
+    nextHop?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 networking client.
      * A networking client is needed to configure a routing entry on a subnet. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * routing entry.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * ID of the subnet this routing entry belongs to. Changing
      * this creates a new routing entry.
      */
-    readonly subnetId?: pulumi.Input<string>;
+    subnetId?: pulumi.Input<string>;
 }
 
 /**
@@ -166,22 +166,22 @@ export interface SubnetRouteArgs {
      * CIDR block to match on the packet’s destination IP. Changing
      * this creates a new routing entry.
      */
-    readonly destinationCidr: pulumi.Input<string>;
+    destinationCidr: pulumi.Input<string>;
     /**
      * IP address of the next hop gateway.  Changing
      * this creates a new routing entry.
      */
-    readonly nextHop: pulumi.Input<string>;
+    nextHop: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 networking client.
      * A networking client is needed to configure a routing entry on a subnet. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * routing entry.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * ID of the subnet this routing entry belongs to. Changing
      * this creates a new routing entry.
      */
-    readonly subnetId: pulumi.Input<string>;
+    subnetId: pulumi.Input<string>;
 }

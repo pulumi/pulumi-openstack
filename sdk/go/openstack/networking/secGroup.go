@@ -237,7 +237,7 @@ type SecGroupArrayInput interface {
 type SecGroupArray []SecGroupInput
 
 func (SecGroupArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*SecGroup)(nil))
+	return reflect.TypeOf((*[]*SecGroup)(nil)).Elem()
 }
 
 func (i SecGroupArray) ToSecGroupArrayOutput() SecGroupArrayOutput {
@@ -262,7 +262,7 @@ type SecGroupMapInput interface {
 type SecGroupMap map[string]SecGroupInput
 
 func (SecGroupMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*SecGroup)(nil))
+	return reflect.TypeOf((*map[string]*SecGroup)(nil)).Elem()
 }
 
 func (i SecGroupMap) ToSecGroupMapOutput() SecGroupMapOutput {
@@ -273,9 +273,7 @@ func (i SecGroupMap) ToSecGroupMapOutputWithContext(ctx context.Context) SecGrou
 	return pulumi.ToOutputWithContext(ctx, i).(SecGroupMapOutput)
 }
 
-type SecGroupOutput struct {
-	*pulumi.OutputState
-}
+type SecGroupOutput struct{ *pulumi.OutputState }
 
 func (SecGroupOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*SecGroup)(nil))
@@ -294,14 +292,12 @@ func (o SecGroupOutput) ToSecGroupPtrOutput() SecGroupPtrOutput {
 }
 
 func (o SecGroupOutput) ToSecGroupPtrOutputWithContext(ctx context.Context) SecGroupPtrOutput {
-	return o.ApplyT(func(v SecGroup) *SecGroup {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecGroup) *SecGroup {
 		return &v
 	}).(SecGroupPtrOutput)
 }
 
-type SecGroupPtrOutput struct {
-	*pulumi.OutputState
-}
+type SecGroupPtrOutput struct{ *pulumi.OutputState }
 
 func (SecGroupPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**SecGroup)(nil))
@@ -313,6 +309,16 @@ func (o SecGroupPtrOutput) ToSecGroupPtrOutput() SecGroupPtrOutput {
 
 func (o SecGroupPtrOutput) ToSecGroupPtrOutputWithContext(ctx context.Context) SecGroupPtrOutput {
 	return o
+}
+
+func (o SecGroupPtrOutput) Elem() SecGroupOutput {
+	return o.ApplyT(func(v *SecGroup) SecGroup {
+		if v != nil {
+			return *v
+		}
+		var ret SecGroup
+		return ret
+	}).(SecGroupOutput)
 }
 
 type SecGroupArrayOutput struct{ *pulumi.OutputState }
@@ -356,6 +362,10 @@ func (o SecGroupMapOutput) MapIndex(k pulumi.StringInput) SecGroupOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SecGroupInput)(nil)).Elem(), &SecGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecGroupPtrInput)(nil)).Elem(), &SecGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecGroupArrayInput)(nil)).Elem(), SecGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecGroupMapInput)(nil)).Elem(), SecGroupMap{})
 	pulumi.RegisterOutputType(SecGroupOutput{})
 	pulumi.RegisterOutputType(SecGroupPtrOutput{})
 	pulumi.RegisterOutputType(SecGroupArrayOutput{})

@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -18,7 +17,7 @@ import * as utilities from "../utilities";
  *
  * const service1 = pulumi.output(openstack.identity.getService({
  *     name: "keystone",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getService(args?: GetServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceResult> {
@@ -45,20 +44,20 @@ export interface GetServiceArgs {
     /**
      * The service status.
      */
-    readonly enabled?: boolean;
+    enabled?: boolean;
     /**
      * The service name.
      */
-    readonly name?: string;
+    name?: string;
     /**
      * The region in which to obtain the V3 Keystone client.
      * If omitted, the `region` argument of the provider is used.
      */
-    readonly region?: string;
+    region?: string;
     /**
      * The service type.
      */
-    readonly type?: string;
+    type?: string;
 }
 
 /**
@@ -89,4 +88,31 @@ export interface GetServiceResult {
      * See Argument Reference above.
      */
     readonly type?: string;
+}
+
+export function getServiceOutput(args?: GetServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceResult> {
+    return pulumi.output(args).apply(a => getService(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getService.
+ */
+export interface GetServiceOutputArgs {
+    /**
+     * The service status.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * The service name.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The region in which to obtain the V3 Keystone client.
+     * If omitted, the `region` argument of the provider is used.
+     */
+    region?: pulumi.Input<string>;
+    /**
+     * The service type.
+     */
+    type?: pulumi.Input<string>;
 }

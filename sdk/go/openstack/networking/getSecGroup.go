@@ -4,6 +4,9 @@
 package networking
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -74,4 +77,91 @@ type LookupSecGroupResult struct {
 	SecgroupId *string  `pulumi:"secgroupId"`
 	Tags       []string `pulumi:"tags"`
 	TenantId   string   `pulumi:"tenantId"`
+}
+
+func LookupSecGroupOutput(ctx *pulumi.Context, args LookupSecGroupOutputArgs, opts ...pulumi.InvokeOption) LookupSecGroupResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupSecGroupResult, error) {
+			args := v.(LookupSecGroupArgs)
+			r, err := LookupSecGroup(ctx, &args, opts...)
+			return *r, err
+		}).(LookupSecGroupResultOutput)
+}
+
+// A collection of arguments for invoking getSecGroup.
+type LookupSecGroupOutputArgs struct {
+	// Human-readable description the the subnet.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The name of the security group.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The region in which to obtain the V2 Neutron client.
+	// A Neutron client is needed to retrieve security groups ids. If omitted, the
+	// `region` argument of the provider is used.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// The ID of the security group.
+	SecgroupId pulumi.StringPtrInput `pulumi:"secgroupId"`
+	// The list of security group tags to filter.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// The owner of the security group.
+	TenantId pulumi.StringPtrInput `pulumi:"tenantId"`
+}
+
+func (LookupSecGroupOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSecGroupArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getSecGroup.
+type LookupSecGroupResultOutput struct{ *pulumi.OutputState }
+
+func (LookupSecGroupResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSecGroupResult)(nil)).Elem()
+}
+
+func (o LookupSecGroupResultOutput) ToLookupSecGroupResultOutput() LookupSecGroupResultOutput {
+	return o
+}
+
+func (o LookupSecGroupResultOutput) ToLookupSecGroupResultOutputWithContext(ctx context.Context) LookupSecGroupResultOutput {
+	return o
+}
+
+// The set of string tags applied on the security group.
+func (o LookupSecGroupResultOutput) AllTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupSecGroupResult) []string { return v.AllTags }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupSecGroupResultOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupSecGroupResult) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupSecGroupResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecGroupResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// See Argument Reference above.
+// * `description`- See Argument Reference above.
+func (o LookupSecGroupResultOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupSecGroupResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// See Argument Reference above.
+func (o LookupSecGroupResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecGroupResult) string { return v.Region }).(pulumi.StringOutput)
+}
+
+func (o LookupSecGroupResultOutput) SecgroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupSecGroupResult) *string { return v.SecgroupId }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupSecGroupResultOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupSecGroupResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupSecGroupResultOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecGroupResult) string { return v.TenantId }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupSecGroupResultOutput{})
 }

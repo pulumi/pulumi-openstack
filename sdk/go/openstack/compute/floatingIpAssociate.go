@@ -297,7 +297,7 @@ type FloatingIpAssociateArrayInput interface {
 type FloatingIpAssociateArray []FloatingIpAssociateInput
 
 func (FloatingIpAssociateArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*FloatingIpAssociate)(nil))
+	return reflect.TypeOf((*[]*FloatingIpAssociate)(nil)).Elem()
 }
 
 func (i FloatingIpAssociateArray) ToFloatingIpAssociateArrayOutput() FloatingIpAssociateArrayOutput {
@@ -322,7 +322,7 @@ type FloatingIpAssociateMapInput interface {
 type FloatingIpAssociateMap map[string]FloatingIpAssociateInput
 
 func (FloatingIpAssociateMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*FloatingIpAssociate)(nil))
+	return reflect.TypeOf((*map[string]*FloatingIpAssociate)(nil)).Elem()
 }
 
 func (i FloatingIpAssociateMap) ToFloatingIpAssociateMapOutput() FloatingIpAssociateMapOutput {
@@ -333,9 +333,7 @@ func (i FloatingIpAssociateMap) ToFloatingIpAssociateMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(FloatingIpAssociateMapOutput)
 }
 
-type FloatingIpAssociateOutput struct {
-	*pulumi.OutputState
-}
+type FloatingIpAssociateOutput struct{ *pulumi.OutputState }
 
 func (FloatingIpAssociateOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*FloatingIpAssociate)(nil))
@@ -354,14 +352,12 @@ func (o FloatingIpAssociateOutput) ToFloatingIpAssociatePtrOutput() FloatingIpAs
 }
 
 func (o FloatingIpAssociateOutput) ToFloatingIpAssociatePtrOutputWithContext(ctx context.Context) FloatingIpAssociatePtrOutput {
-	return o.ApplyT(func(v FloatingIpAssociate) *FloatingIpAssociate {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FloatingIpAssociate) *FloatingIpAssociate {
 		return &v
 	}).(FloatingIpAssociatePtrOutput)
 }
 
-type FloatingIpAssociatePtrOutput struct {
-	*pulumi.OutputState
-}
+type FloatingIpAssociatePtrOutput struct{ *pulumi.OutputState }
 
 func (FloatingIpAssociatePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**FloatingIpAssociate)(nil))
@@ -373,6 +369,16 @@ func (o FloatingIpAssociatePtrOutput) ToFloatingIpAssociatePtrOutput() FloatingI
 
 func (o FloatingIpAssociatePtrOutput) ToFloatingIpAssociatePtrOutputWithContext(ctx context.Context) FloatingIpAssociatePtrOutput {
 	return o
+}
+
+func (o FloatingIpAssociatePtrOutput) Elem() FloatingIpAssociateOutput {
+	return o.ApplyT(func(v *FloatingIpAssociate) FloatingIpAssociate {
+		if v != nil {
+			return *v
+		}
+		var ret FloatingIpAssociate
+		return ret
+	}).(FloatingIpAssociateOutput)
 }
 
 type FloatingIpAssociateArrayOutput struct{ *pulumi.OutputState }
@@ -416,6 +422,10 @@ func (o FloatingIpAssociateMapOutput) MapIndex(k pulumi.StringInput) FloatingIpA
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*FloatingIpAssociateInput)(nil)).Elem(), &FloatingIpAssociate{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FloatingIpAssociatePtrInput)(nil)).Elem(), &FloatingIpAssociate{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FloatingIpAssociateArrayInput)(nil)).Elem(), FloatingIpAssociateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FloatingIpAssociateMapInput)(nil)).Elem(), FloatingIpAssociateMap{})
 	pulumi.RegisterOutputType(FloatingIpAssociateOutput{})
 	pulumi.RegisterOutputType(FloatingIpAssociatePtrOutput{})
 	pulumi.RegisterOutputType(FloatingIpAssociateArrayOutput{})

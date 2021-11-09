@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -16,7 +15,7 @@ import * as utilities from "../utilities";
  *
  * const kp = pulumi.output(openstack.compute.getKeypair({
  *     name: "sand",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getKeypair(args: GetKeypairArgs, opts?: pulumi.InvokeOptions): Promise<GetKeypairResult> {
@@ -40,12 +39,12 @@ export interface GetKeypairArgs {
     /**
      * The unique name of the keypair.
      */
-    readonly name: string;
+    name: string;
     /**
      * The region in which to obtain the V2 Compute client.
      * If omitted, the `region` argument of the provider is used.
      */
-    readonly region?: string;
+    region?: string;
 }
 
 /**
@@ -72,4 +71,23 @@ export interface GetKeypairResult {
      * See Argument Reference above.
      */
     readonly region: string;
+}
+
+export function getKeypairOutput(args: GetKeypairOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeypairResult> {
+    return pulumi.output(args).apply(a => getKeypair(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getKeypair.
+ */
+export interface GetKeypairOutputArgs {
+    /**
+     * The unique name of the keypair.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The region in which to obtain the V2 Compute client.
+     * If omitted, the `region` argument of the provider is used.
+     */
+    region?: pulumi.Input<string>;
 }

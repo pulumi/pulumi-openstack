@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.OpenStack.Networking
 {
@@ -39,6 +40,35 @@ namespace Pulumi.OpenStack.Networking
         /// </summary>
         public static Task<GetSecGroupResult> InvokeAsync(GetSecGroupArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSecGroupResult>("openstack:networking/getSecGroup:getSecGroup", args ?? new GetSecGroupArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to get the ID of an available OpenStack security group.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var secgroup = Output.Create(OpenStack.Networking.GetSecGroup.InvokeAsync(new OpenStack.Networking.GetSecGroupArgs
+        ///         {
+        ///             Name = "tf_test_secgroup",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetSecGroupResult> Invoke(GetSecGroupInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetSecGroupResult>("openstack:networking/getSecGroup:getSecGroup", args ?? new GetSecGroupInvokeArgs(), options.WithVersion());
     }
 
 
@@ -89,6 +119,57 @@ namespace Pulumi.OpenStack.Networking
         public string? TenantId { get; set; }
 
         public GetSecGroupArgs()
+        {
+        }
+    }
+
+    public sealed class GetSecGroupInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Human-readable description the the subnet.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The name of the security group.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The region in which to obtain the V2 Neutron client.
+        /// A Neutron client is needed to retrieve security groups ids. If omitted, the
+        /// `region` argument of the provider is used.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// The ID of the security group.
+        /// </summary>
+        [Input("secgroupId")]
+        public Input<string>? SecgroupId { get; set; }
+
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// The list of security group tags to filter.
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// The owner of the security group.
+        /// </summary>
+        [Input("tenantId")]
+        public Input<string>? TenantId { get; set; }
+
+        public GetSecGroupInvokeArgs()
         {
         }
     }

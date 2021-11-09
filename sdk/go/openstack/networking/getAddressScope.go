@@ -4,6 +4,9 @@
 package networking
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -75,4 +78,82 @@ type LookupAddressScopeResult struct {
 	Region    *string `pulumi:"region"`
 	// See Argument Reference above.
 	Shared *bool `pulumi:"shared"`
+}
+
+func LookupAddressScopeOutput(ctx *pulumi.Context, args LookupAddressScopeOutputArgs, opts ...pulumi.InvokeOption) LookupAddressScopeResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupAddressScopeResult, error) {
+			args := v.(LookupAddressScopeArgs)
+			r, err := LookupAddressScope(ctx, &args, opts...)
+			return *r, err
+		}).(LookupAddressScopeResultOutput)
+}
+
+// A collection of arguments for invoking getAddressScope.
+type LookupAddressScopeOutputArgs struct {
+	// IP version.
+	IpVersion pulumi.IntPtrInput `pulumi:"ipVersion"`
+	// Name of the address-scope.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The owner of the address-scope.
+	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+	// The region in which to obtain the V2 Neutron client.
+	// A Neutron client is needed to retrieve address-scopes. If omitted, the
+	// `region` argument of the provider is used.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// Indicates whether this address-scope is shared across
+	// all projects.
+	Shared pulumi.BoolPtrInput `pulumi:"shared"`
+}
+
+func (LookupAddressScopeOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAddressScopeArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getAddressScope.
+type LookupAddressScopeResultOutput struct{ *pulumi.OutputState }
+
+func (LookupAddressScopeResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAddressScopeResult)(nil)).Elem()
+}
+
+func (o LookupAddressScopeResultOutput) ToLookupAddressScopeResultOutput() LookupAddressScopeResultOutput {
+	return o
+}
+
+func (o LookupAddressScopeResultOutput) ToLookupAddressScopeResultOutputWithContext(ctx context.Context) LookupAddressScopeResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupAddressScopeResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAddressScopeResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// See Argument Reference above.
+func (o LookupAddressScopeResultOutput) IpVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LookupAddressScopeResult) *int { return v.IpVersion }).(pulumi.IntPtrOutput)
+}
+
+// See Argument Reference above.
+func (o LookupAddressScopeResultOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAddressScopeResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// See Argument Reference above.
+func (o LookupAddressScopeResultOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAddressScopeResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupAddressScopeResultOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAddressScopeResult) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// See Argument Reference above.
+func (o LookupAddressScopeResultOutput) Shared() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupAddressScopeResult) *bool { return v.Shared }).(pulumi.BoolPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupAddressScopeResultOutput{})
 }

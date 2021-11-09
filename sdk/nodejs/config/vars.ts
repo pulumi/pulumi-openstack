@@ -4,128 +4,346 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-let __config = new pulumi.Config("openstack");
+declare var exports: any;
+const __config = new pulumi.Config("openstack");
 
 /**
  * If set to `false`, OpenStack authorization won't be perfomed automatically, if the initial auth token get expired.
  * Defaults to `true`
  */
-export let allowReauth: boolean | undefined = __config.getObject<boolean>("allowReauth") || <any>utilities.getEnvBoolean("OS_ALLOW_REAUTH");
+export declare const allowReauth: boolean | undefined;
+Object.defineProperty(exports, "allowReauth", {
+    get() {
+        return __config.getObject<boolean>("allowReauth") ?? <any>utilities.getEnvBoolean("OS_ALLOW_REAUTH");
+    },
+    enumerable: true,
+});
+
 /**
  * Application Credential ID to login with.
  */
-export let applicationCredentialId: string | undefined = __config.get("applicationCredentialId");
+export declare const applicationCredentialId: string | undefined;
+Object.defineProperty(exports, "applicationCredentialId", {
+    get() {
+        return __config.get("applicationCredentialId");
+    },
+    enumerable: true,
+});
+
 /**
  * Application Credential name to login with.
  */
-export let applicationCredentialName: string | undefined = __config.get("applicationCredentialName");
+export declare const applicationCredentialName: string | undefined;
+Object.defineProperty(exports, "applicationCredentialName", {
+    get() {
+        return __config.get("applicationCredentialName");
+    },
+    enumerable: true,
+});
+
 /**
  * Application Credential secret to login with.
  */
-export let applicationCredentialSecret: string | undefined = __config.get("applicationCredentialSecret");
+export declare const applicationCredentialSecret: string | undefined;
+Object.defineProperty(exports, "applicationCredentialSecret", {
+    get() {
+        return __config.get("applicationCredentialSecret");
+    },
+    enumerable: true,
+});
+
 /**
  * The Identity authentication URL.
  */
-export let authUrl: string | undefined = __config.get("authUrl");
+export declare const authUrl: string | undefined;
+Object.defineProperty(exports, "authUrl", {
+    get() {
+        return __config.get("authUrl");
+    },
+    enumerable: true,
+});
+
 /**
  * A Custom CA certificate.
  */
-export let cacertFile: string | undefined = __config.get("cacertFile");
+export declare const cacertFile: string | undefined;
+Object.defineProperty(exports, "cacertFile", {
+    get() {
+        return __config.get("cacertFile");
+    },
+    enumerable: true,
+});
+
 /**
  * A client certificate to authenticate with.
  */
-export let cert: string | undefined = __config.get("cert");
+export declare const cert: string | undefined;
+Object.defineProperty(exports, "cert", {
+    get() {
+        return __config.get("cert");
+    },
+    enumerable: true,
+});
+
 /**
  * An entry in a `clouds.yaml` file to use.
  */
-export let cloud: string | undefined = __config.get("cloud") || utilities.getEnv("OS_CLOUD");
+export declare const cloud: string | undefined;
+Object.defineProperty(exports, "cloud", {
+    get() {
+        return __config.get("cloud") ?? utilities.getEnv("OS_CLOUD");
+    },
+    enumerable: true,
+});
+
 /**
  * The name of the Domain ID to scope to if no other domain is specified. Defaults to `default` (Identity v3).
  */
-export let defaultDomain: string | undefined = __config.get("defaultDomain");
+export declare const defaultDomain: string | undefined;
+Object.defineProperty(exports, "defaultDomain", {
+    get() {
+        return __config.get("defaultDomain");
+    },
+    enumerable: true,
+});
+
 /**
  * If set to `false`, OpenStack authorization will be perfomed, every time the service provider client is called. Defaults
  * to `true`.
  */
-export let delayedAuth: boolean | undefined = __config.getObject<boolean>("delayedAuth") || <any>utilities.getEnvBoolean("OS_DELAYED_AUTH");
+export declare const delayedAuth: boolean | undefined;
+Object.defineProperty(exports, "delayedAuth", {
+    get() {
+        return __config.getObject<boolean>("delayedAuth") ?? <any>utilities.getEnvBoolean("OS_DELAYED_AUTH");
+    },
+    enumerable: true,
+});
+
 /**
  * If set to `true`, the HTTP `Cache-Control: no-cache` header will not be added by default to all API requests.
  */
-export let disableNoCacheHeader: boolean | undefined = __config.getObject<boolean>("disableNoCacheHeader");
+export declare const disableNoCacheHeader: boolean | undefined;
+Object.defineProperty(exports, "disableNoCacheHeader", {
+    get() {
+        return __config.getObject<boolean>("disableNoCacheHeader");
+    },
+    enumerable: true,
+});
+
 /**
  * The ID of the Domain to scope to (Identity v3).
  */
-export let domainId: string | undefined = __config.get("domainId");
+export declare const domainId: string | undefined;
+Object.defineProperty(exports, "domainId", {
+    get() {
+        return __config.get("domainId");
+    },
+    enumerable: true,
+});
+
 /**
  * The name of the Domain to scope to (Identity v3).
  */
-export let domainName: string | undefined = __config.get("domainName");
+export declare const domainName: string | undefined;
+Object.defineProperty(exports, "domainName", {
+    get() {
+        return __config.get("domainName");
+    },
+    enumerable: true,
+});
+
 /**
  * A map of services with an endpoint to override what was from the Keystone catalog
  */
-export let endpointOverrides: {[key: string]: any} | undefined = __config.getObject<{[key: string]: any}>("endpointOverrides");
-export let endpointType: string | undefined = __config.get("endpointType") || utilities.getEnv("OS_ENDPOINT_TYPE");
+export declare const endpointOverrides: {[key: string]: any} | undefined;
+Object.defineProperty(exports, "endpointOverrides", {
+    get() {
+        return __config.getObject<{[key: string]: any}>("endpointOverrides");
+    },
+    enumerable: true,
+});
+
+export declare const endpointType: string | undefined;
+Object.defineProperty(exports, "endpointType", {
+    get() {
+        return __config.get("endpointType") ?? utilities.getEnv("OS_ENDPOINT_TYPE");
+    },
+    enumerable: true,
+});
+
 /**
  * Trust self-signed certificates.
  */
-export let insecure: boolean | undefined = __config.getObject<boolean>("insecure") || <any>utilities.getEnvBoolean("OS_INSECURE");
+export declare const insecure: boolean | undefined;
+Object.defineProperty(exports, "insecure", {
+    get() {
+        return __config.getObject<boolean>("insecure") ?? <any>utilities.getEnvBoolean("OS_INSECURE");
+    },
+    enumerable: true,
+});
+
 /**
  * A client private key to authenticate with.
  */
-export let key: string | undefined = __config.get("key");
+export declare const key: string | undefined;
+Object.defineProperty(exports, "key", {
+    get() {
+        return __config.get("key");
+    },
+    enumerable: true,
+});
+
 /**
  * How many times HTTP connection should be retried until giving up.
  */
-export let maxRetries: number | undefined = __config.getObject<number>("maxRetries");
+export declare const maxRetries: number | undefined;
+Object.defineProperty(exports, "maxRetries", {
+    get() {
+        return __config.getObject<number>("maxRetries");
+    },
+    enumerable: true,
+});
+
 /**
  * Password to login with.
  */
-export let password: string | undefined = __config.get("password");
+export declare const password: string | undefined;
+Object.defineProperty(exports, "password", {
+    get() {
+        return __config.get("password");
+    },
+    enumerable: true,
+});
+
 /**
  * The ID of the domain where the proejct resides (Identity v3).
  */
-export let projectDomainId: string | undefined = __config.get("projectDomainId");
+export declare const projectDomainId: string | undefined;
+Object.defineProperty(exports, "projectDomainId", {
+    get() {
+        return __config.get("projectDomainId");
+    },
+    enumerable: true,
+});
+
 /**
  * The name of the domain where the project resides (Identity v3).
  */
-export let projectDomainName: string | undefined = __config.get("projectDomainName");
+export declare const projectDomainName: string | undefined;
+Object.defineProperty(exports, "projectDomainName", {
+    get() {
+        return __config.get("projectDomainName");
+    },
+    enumerable: true,
+});
+
 /**
  * The OpenStack region to connect to.
  */
-export let region: string | undefined = __config.get("region") || utilities.getEnv("OS_REGION_NAME");
+export declare const region: string | undefined;
+Object.defineProperty(exports, "region", {
+    get() {
+        return __config.get("region") ?? utilities.getEnv("OS_REGION_NAME");
+    },
+    enumerable: true,
+});
+
 /**
  * Use Swift's authentication system instead of Keystone. Only used for interaction with Swift.
  */
-export let swauth: boolean | undefined = __config.getObject<boolean>("swauth") || <any>utilities.getEnvBoolean("OS_SWAUTH");
+export declare const swauth: boolean | undefined;
+Object.defineProperty(exports, "swauth", {
+    get() {
+        return __config.getObject<boolean>("swauth") ?? <any>utilities.getEnvBoolean("OS_SWAUTH");
+    },
+    enumerable: true,
+});
+
 /**
  * The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.
  */
-export let tenantId: string | undefined = __config.get("tenantId");
+export declare const tenantId: string | undefined;
+Object.defineProperty(exports, "tenantId", {
+    get() {
+        return __config.get("tenantId");
+    },
+    enumerable: true,
+});
+
 /**
  * The name of the Tenant (Identity v2) or Project (Identity v3) to login with.
  */
-export let tenantName: string | undefined = __config.get("tenantName");
+export declare const tenantName: string | undefined;
+Object.defineProperty(exports, "tenantName", {
+    get() {
+        return __config.get("tenantName");
+    },
+    enumerable: true,
+});
+
 /**
  * Authentication token to use as an alternative to username/password.
  */
-export let token: string | undefined = __config.get("token");
+export declare const token: string | undefined;
+Object.defineProperty(exports, "token", {
+    get() {
+        return __config.get("token");
+    },
+    enumerable: true,
+});
+
 /**
  * If set to `true`, API requests will go the Load Balancer service (Octavia) instead of the Networking service (Neutron).
  */
-export let useOctavia: boolean | undefined = __config.getObject<boolean>("useOctavia") || <any>utilities.getEnvBoolean("OS_USE_OCTAVIA");
+export declare const useOctavia: boolean | undefined;
+Object.defineProperty(exports, "useOctavia", {
+    get() {
+        return __config.getObject<boolean>("useOctavia") ?? <any>utilities.getEnvBoolean("OS_USE_OCTAVIA");
+    },
+    enumerable: true,
+});
+
 /**
  * The ID of the domain where the user resides (Identity v3).
  */
-export let userDomainId: string | undefined = __config.get("userDomainId");
+export declare const userDomainId: string | undefined;
+Object.defineProperty(exports, "userDomainId", {
+    get() {
+        return __config.get("userDomainId");
+    },
+    enumerable: true,
+});
+
 /**
  * The name of the domain where the user resides (Identity v3).
  */
-export let userDomainName: string | undefined = __config.get("userDomainName");
+export declare const userDomainName: string | undefined;
+Object.defineProperty(exports, "userDomainName", {
+    get() {
+        return __config.get("userDomainName");
+    },
+    enumerable: true,
+});
+
 /**
  * Username to login with.
  */
-export let userId: string | undefined = __config.get("userId");
+export declare const userId: string | undefined;
+Object.defineProperty(exports, "userId", {
+    get() {
+        return __config.get("userId");
+    },
+    enumerable: true,
+});
+
 /**
  * Username to login with.
  */
-export let userName: string | undefined = __config.get("userName");
+export declare const userName: string | undefined;
+Object.defineProperty(exports, "userName", {
+    get() {
+        return __config.get("userName");
+    },
+    enumerable: true,
+});
+

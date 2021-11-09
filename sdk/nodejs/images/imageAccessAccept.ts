@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  *     memberStatus: "all",
  *     name: "RancherOS",
  *     visibility: "shared",
- * }, { async: true }));
+ * }));
  * const rancherosMember = new openstack.images.ImageAccessAccept("rancheros_member", {
  *     imageId: rancheros.id,
  *     status: "accepted",
@@ -147,36 +147,36 @@ export interface ImageAccessAcceptState {
     /**
      * The date the image membership was created.
      */
-    readonly createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
     /**
      * The proposed image ID.
      */
-    readonly imageId?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string>;
     /**
      * The member ID, e.g. the target project ID. Optional
      * for admin accounts. Defaults to the current scope project ID.
      */
-    readonly memberId?: pulumi.Input<string>;
+    memberId?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 Glance client.
      * A Glance client is needed to manage Image memberships. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * membership.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The membership schema.
      */
-    readonly schema?: pulumi.Input<string>;
+    schema?: pulumi.Input<string>;
     /**
      * The membership proposal status. Can either be
      * `accepted`, `rejected` or `pending`.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The date the image membership was last updated.
      */
-    readonly updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string>;
 }
 
 /**
@@ -186,22 +186,22 @@ export interface ImageAccessAcceptArgs {
     /**
      * The proposed image ID.
      */
-    readonly imageId: pulumi.Input<string>;
+    imageId: pulumi.Input<string>;
     /**
      * The member ID, e.g. the target project ID. Optional
      * for admin accounts. Defaults to the current scope project ID.
      */
-    readonly memberId?: pulumi.Input<string>;
+    memberId?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 Glance client.
      * A Glance client is needed to manage Image memberships. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * membership.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The membership proposal status. Can either be
      * `accepted`, `rejected` or `pending`.
      */
-    readonly status: pulumi.Input<string>;
+    status: pulumi.Input<string>;
 }

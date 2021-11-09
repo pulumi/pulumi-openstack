@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -18,7 +17,7 @@ import * as utilities from "../utilities";
  *     ipVersion: 4,
  *     name: "public_addressscope",
  *     shared: true,
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getAddressScope(args?: GetAddressScopeArgs, opts?: pulumi.InvokeOptions): Promise<GetAddressScopeResult> {
@@ -46,26 +45,26 @@ export interface GetAddressScopeArgs {
     /**
      * IP version.
      */
-    readonly ipVersion?: number;
+    ipVersion?: number;
     /**
      * Name of the address-scope.
      */
-    readonly name?: string;
+    name?: string;
     /**
      * The owner of the address-scope.
      */
-    readonly projectId?: string;
+    projectId?: string;
     /**
      * The region in which to obtain the V2 Neutron client.
      * A Neutron client is needed to retrieve address-scopes. If omitted, the
      * `region` argument of the provider is used.
      */
-    readonly region?: string;
+    region?: string;
     /**
      * Indicates whether this address-scope is shared across
      * all projects.
      */
-    readonly shared?: boolean;
+    shared?: boolean;
 }
 
 /**
@@ -93,4 +92,37 @@ export interface GetAddressScopeResult {
      * See Argument Reference above.
      */
     readonly shared?: boolean;
+}
+
+export function getAddressScopeOutput(args?: GetAddressScopeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAddressScopeResult> {
+    return pulumi.output(args).apply(a => getAddressScope(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAddressScope.
+ */
+export interface GetAddressScopeOutputArgs {
+    /**
+     * IP version.
+     */
+    ipVersion?: pulumi.Input<number>;
+    /**
+     * Name of the address-scope.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The owner of the address-scope.
+     */
+    projectId?: pulumi.Input<string>;
+    /**
+     * The region in which to obtain the V2 Neutron client.
+     * A Neutron client is needed to retrieve address-scopes. If omitted, the
+     * `region` argument of the provider is used.
+     */
+    region?: pulumi.Input<string>;
+    /**
+     * Indicates whether this address-scope is shared across
+     * all projects.
+     */
+    shared?: pulumi.Input<boolean>;
 }

@@ -12,6 +12,7 @@ __all__ = [
     'GetGroupResult',
     'AwaitableGetGroupResult',
     'get_group',
+    'get_group_output',
 ]
 
 @pulumi.output_type
@@ -131,3 +132,32 @@ def get_group(domain_id: Optional[str] = None,
         id=__ret__.id,
         name=__ret__.name,
         region=__ret__.region)
+
+
+@_utilities.lift_output_func(get_group)
+def get_group_output(domain_id: Optional[pulumi.Input[Optional[str]]] = None,
+                     name: Optional[pulumi.Input[str]] = None,
+                     region: Optional[pulumi.Input[Optional[str]]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupResult]:
+    """
+    Use this data source to get the ID of an OpenStack group.
+
+    > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
+    this resource.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    admins = openstack.identity.get_group(name="admins")
+    ```
+
+
+    :param str domain_id: The domain the group belongs to.
+    :param str name: The name of the group.
+    :param str region: The region in which to obtain the V3 Keystone client.
+           If omitted, the `region` argument of the provider is used.
+    """
+    ...

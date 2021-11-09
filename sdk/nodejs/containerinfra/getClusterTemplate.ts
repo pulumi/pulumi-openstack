@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -17,7 +16,7 @@ import * as utilities from "../utilities";
  *
  * const clustertemplate1 = pulumi.output(openstack.containerinfra.getClusterTemplate({
  *     name: "clustertemplate_1",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getClusterTemplate(args: GetClusterTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterTemplateResult> {
@@ -41,13 +40,13 @@ export interface GetClusterTemplateArgs {
     /**
      * The name of the cluster template.
      */
-    readonly name: string;
+    name: string;
     /**
      * The region in which to obtain the V1 Container Infra
      * client.
      * If omitted, the `region` argument of the provider is used.
      */
-    readonly region?: string;
+    region?: string;
 }
 
 /**
@@ -198,4 +197,24 @@ export interface GetClusterTemplateResult {
      * cluster nodes.
      */
     readonly volumeDriver: string;
+}
+
+export function getClusterTemplateOutput(args: GetClusterTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterTemplateResult> {
+    return pulumi.output(args).apply(a => getClusterTemplate(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getClusterTemplate.
+ */
+export interface GetClusterTemplateOutputArgs {
+    /**
+     * The name of the cluster template.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The region in which to obtain the V1 Container Infra
+     * client.
+     * If omitted, the `region` argument of the provider is used.
+     */
+    region?: pulumi.Input<string>;
 }

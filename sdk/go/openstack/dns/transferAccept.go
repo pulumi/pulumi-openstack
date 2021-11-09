@@ -263,7 +263,7 @@ type TransferAcceptArrayInput interface {
 type TransferAcceptArray []TransferAcceptInput
 
 func (TransferAcceptArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*TransferAccept)(nil))
+	return reflect.TypeOf((*[]*TransferAccept)(nil)).Elem()
 }
 
 func (i TransferAcceptArray) ToTransferAcceptArrayOutput() TransferAcceptArrayOutput {
@@ -288,7 +288,7 @@ type TransferAcceptMapInput interface {
 type TransferAcceptMap map[string]TransferAcceptInput
 
 func (TransferAcceptMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*TransferAccept)(nil))
+	return reflect.TypeOf((*map[string]*TransferAccept)(nil)).Elem()
 }
 
 func (i TransferAcceptMap) ToTransferAcceptMapOutput() TransferAcceptMapOutput {
@@ -299,9 +299,7 @@ func (i TransferAcceptMap) ToTransferAcceptMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(TransferAcceptMapOutput)
 }
 
-type TransferAcceptOutput struct {
-	*pulumi.OutputState
-}
+type TransferAcceptOutput struct{ *pulumi.OutputState }
 
 func (TransferAcceptOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TransferAccept)(nil))
@@ -320,14 +318,12 @@ func (o TransferAcceptOutput) ToTransferAcceptPtrOutput() TransferAcceptPtrOutpu
 }
 
 func (o TransferAcceptOutput) ToTransferAcceptPtrOutputWithContext(ctx context.Context) TransferAcceptPtrOutput {
-	return o.ApplyT(func(v TransferAccept) *TransferAccept {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransferAccept) *TransferAccept {
 		return &v
 	}).(TransferAcceptPtrOutput)
 }
 
-type TransferAcceptPtrOutput struct {
-	*pulumi.OutputState
-}
+type TransferAcceptPtrOutput struct{ *pulumi.OutputState }
 
 func (TransferAcceptPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TransferAccept)(nil))
@@ -339,6 +335,16 @@ func (o TransferAcceptPtrOutput) ToTransferAcceptPtrOutput() TransferAcceptPtrOu
 
 func (o TransferAcceptPtrOutput) ToTransferAcceptPtrOutputWithContext(ctx context.Context) TransferAcceptPtrOutput {
 	return o
+}
+
+func (o TransferAcceptPtrOutput) Elem() TransferAcceptOutput {
+	return o.ApplyT(func(v *TransferAccept) TransferAccept {
+		if v != nil {
+			return *v
+		}
+		var ret TransferAccept
+		return ret
+	}).(TransferAcceptOutput)
 }
 
 type TransferAcceptArrayOutput struct{ *pulumi.OutputState }
@@ -382,6 +388,10 @@ func (o TransferAcceptMapOutput) MapIndex(k pulumi.StringInput) TransferAcceptOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TransferAcceptInput)(nil)).Elem(), &TransferAccept{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransferAcceptPtrInput)(nil)).Elem(), &TransferAccept{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransferAcceptArrayInput)(nil)).Elem(), TransferAcceptArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransferAcceptMapInput)(nil)).Elem(), TransferAcceptMap{})
 	pulumi.RegisterOutputType(TransferAcceptOutput{})
 	pulumi.RegisterOutputType(TransferAcceptPtrOutput{})
 	pulumi.RegisterOutputType(TransferAcceptArrayOutput{})

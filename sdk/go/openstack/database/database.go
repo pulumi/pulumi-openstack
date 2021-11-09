@@ -193,7 +193,7 @@ type DatabaseArrayInput interface {
 type DatabaseArray []DatabaseInput
 
 func (DatabaseArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Database)(nil))
+	return reflect.TypeOf((*[]*Database)(nil)).Elem()
 }
 
 func (i DatabaseArray) ToDatabaseArrayOutput() DatabaseArrayOutput {
@@ -218,7 +218,7 @@ type DatabaseMapInput interface {
 type DatabaseMap map[string]DatabaseInput
 
 func (DatabaseMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Database)(nil))
+	return reflect.TypeOf((*map[string]*Database)(nil)).Elem()
 }
 
 func (i DatabaseMap) ToDatabaseMapOutput() DatabaseMapOutput {
@@ -229,9 +229,7 @@ func (i DatabaseMap) ToDatabaseMapOutputWithContext(ctx context.Context) Databas
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseMapOutput)
 }
 
-type DatabaseOutput struct {
-	*pulumi.OutputState
-}
+type DatabaseOutput struct{ *pulumi.OutputState }
 
 func (DatabaseOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Database)(nil))
@@ -250,14 +248,12 @@ func (o DatabaseOutput) ToDatabasePtrOutput() DatabasePtrOutput {
 }
 
 func (o DatabaseOutput) ToDatabasePtrOutputWithContext(ctx context.Context) DatabasePtrOutput {
-	return o.ApplyT(func(v Database) *Database {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Database) *Database {
 		return &v
 	}).(DatabasePtrOutput)
 }
 
-type DatabasePtrOutput struct {
-	*pulumi.OutputState
-}
+type DatabasePtrOutput struct{ *pulumi.OutputState }
 
 func (DatabasePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Database)(nil))
@@ -269,6 +265,16 @@ func (o DatabasePtrOutput) ToDatabasePtrOutput() DatabasePtrOutput {
 
 func (o DatabasePtrOutput) ToDatabasePtrOutputWithContext(ctx context.Context) DatabasePtrOutput {
 	return o
+}
+
+func (o DatabasePtrOutput) Elem() DatabaseOutput {
+	return o.ApplyT(func(v *Database) Database {
+		if v != nil {
+			return *v
+		}
+		var ret Database
+		return ret
+	}).(DatabaseOutput)
 }
 
 type DatabaseArrayOutput struct{ *pulumi.OutputState }
@@ -312,6 +318,10 @@ func (o DatabaseMapOutput) MapIndex(k pulumi.StringInput) DatabaseOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInput)(nil)).Elem(), &Database{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabasePtrInput)(nil)).Elem(), &Database{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseArrayInput)(nil)).Elem(), DatabaseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseMapInput)(nil)).Elem(), DatabaseMap{})
 	pulumi.RegisterOutputType(DatabaseOutput{})
 	pulumi.RegisterOutputType(DatabasePtrOutput{})
 	pulumi.RegisterOutputType(DatabaseArrayOutput{})

@@ -4,6 +4,9 @@
 package sharedfilesystem
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -96,4 +99,128 @@ type LookupShareNetworkResult struct {
 	SecurityServiceIds []string `pulumi:"securityServiceIds"`
 	// See Argument Reference above.
 	SegmentationId int `pulumi:"segmentationId"`
+}
+
+func LookupShareNetworkOutput(ctx *pulumi.Context, args LookupShareNetworkOutputArgs, opts ...pulumi.InvokeOption) LookupShareNetworkResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupShareNetworkResult, error) {
+			args := v.(LookupShareNetworkArgs)
+			r, err := LookupShareNetwork(ctx, &args, opts...)
+			return *r, err
+		}).(LookupShareNetworkResultOutput)
+}
+
+// A collection of arguments for invoking getShareNetwork.
+type LookupShareNetworkOutputArgs struct {
+	// The human-readable description of the share network.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The IP version of the share network. Can either be 4 or 6.
+	IpVersion pulumi.IntPtrInput `pulumi:"ipVersion"`
+	// The name of the share network.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The share network type. Can either be VLAN, VXLAN,
+	// GRE, or flat.
+	NetworkType pulumi.StringPtrInput `pulumi:"networkType"`
+	// The neutron network UUID of the share network.
+	NeutronNetId pulumi.StringPtrInput `pulumi:"neutronNetId"`
+	// The neutron subnet UUID of the share network.
+	NeutronSubnetId pulumi.StringPtrInput `pulumi:"neutronSubnetId"`
+	// The region in which to obtain the V2 Shared File System client.
+	// A Shared File System client is needed to read a share network. If omitted, the
+	// `region` argument of the provider is used.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// The security service IDs associated with
+	// the share network.
+	SecurityServiceId pulumi.StringPtrInput `pulumi:"securityServiceId"`
+	// The share network segmentation ID.
+	SegmentationId pulumi.IntPtrInput `pulumi:"segmentationId"`
+}
+
+func (LookupShareNetworkOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupShareNetworkArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getShareNetwork.
+type LookupShareNetworkResultOutput struct{ *pulumi.OutputState }
+
+func (LookupShareNetworkResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupShareNetworkResult)(nil)).Elem()
+}
+
+func (o LookupShareNetworkResultOutput) ToLookupShareNetworkResultOutput() LookupShareNetworkResultOutput {
+	return o
+}
+
+func (o LookupShareNetworkResultOutput) ToLookupShareNetworkResultOutputWithContext(ctx context.Context) LookupShareNetworkResultOutput {
+	return o
+}
+
+// See Argument Reference above.
+func (o LookupShareNetworkResultOutput) Cidr() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupShareNetworkResult) string { return v.Cidr }).(pulumi.StringOutput)
+}
+
+// See Argument Reference above.
+func (o LookupShareNetworkResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupShareNetworkResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupShareNetworkResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupShareNetworkResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// See Argument Reference above.
+func (o LookupShareNetworkResultOutput) IpVersion() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupShareNetworkResult) int { return v.IpVersion }).(pulumi.IntOutput)
+}
+
+// See Argument Reference above.
+func (o LookupShareNetworkResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupShareNetworkResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// See Argument Reference above.
+func (o LookupShareNetworkResultOutput) NetworkType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupShareNetworkResult) string { return v.NetworkType }).(pulumi.StringOutput)
+}
+
+// See Argument Reference above.
+func (o LookupShareNetworkResultOutput) NeutronNetId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupShareNetworkResult) string { return v.NeutronNetId }).(pulumi.StringOutput)
+}
+
+// See Argument Reference above.
+func (o LookupShareNetworkResultOutput) NeutronSubnetId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupShareNetworkResult) string { return v.NeutronSubnetId }).(pulumi.StringOutput)
+}
+
+// The owner of the Share Network.
+func (o LookupShareNetworkResultOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupShareNetworkResult) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// See Argument Reference above.
+func (o LookupShareNetworkResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupShareNetworkResult) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// See Argument Reference above.
+func (o LookupShareNetworkResultOutput) SecurityServiceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupShareNetworkResult) *string { return v.SecurityServiceId }).(pulumi.StringPtrOutput)
+}
+
+// The list of security service IDs associated with
+// the share network.
+func (o LookupShareNetworkResultOutput) SecurityServiceIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupShareNetworkResult) []string { return v.SecurityServiceIds }).(pulumi.StringArrayOutput)
+}
+
+// See Argument Reference above.
+func (o LookupShareNetworkResultOutput) SegmentationId() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupShareNetworkResult) int { return v.SegmentationId }).(pulumi.IntOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupShareNetworkResultOutput{})
 }

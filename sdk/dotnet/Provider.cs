@@ -19,6 +19,142 @@ namespace Pulumi.OpenStack
     public partial class Provider : Pulumi.ProviderResource
     {
         /// <summary>
+        /// Application Credential ID to login with.
+        /// </summary>
+        [Output("applicationCredentialId")]
+        public Output<string?> ApplicationCredentialId { get; private set; } = null!;
+
+        /// <summary>
+        /// Application Credential name to login with.
+        /// </summary>
+        [Output("applicationCredentialName")]
+        public Output<string?> ApplicationCredentialName { get; private set; } = null!;
+
+        /// <summary>
+        /// Application Credential secret to login with.
+        /// </summary>
+        [Output("applicationCredentialSecret")]
+        public Output<string?> ApplicationCredentialSecret { get; private set; } = null!;
+
+        /// <summary>
+        /// The Identity authentication URL.
+        /// </summary>
+        [Output("authUrl")]
+        public Output<string?> AuthUrl { get; private set; } = null!;
+
+        /// <summary>
+        /// A Custom CA certificate.
+        /// </summary>
+        [Output("cacertFile")]
+        public Output<string?> CacertFile { get; private set; } = null!;
+
+        /// <summary>
+        /// A client certificate to authenticate with.
+        /// </summary>
+        [Output("cert")]
+        public Output<string?> Cert { get; private set; } = null!;
+
+        /// <summary>
+        /// An entry in a `clouds.yaml` file to use.
+        /// </summary>
+        [Output("cloud")]
+        public Output<string?> Cloud { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the Domain ID to scope to if no other domain is specified. Defaults to `default` (Identity v3).
+        /// </summary>
+        [Output("defaultDomain")]
+        public Output<string?> DefaultDomain { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the Domain to scope to (Identity v3).
+        /// </summary>
+        [Output("domainId")]
+        public Output<string?> DomainId { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the Domain to scope to (Identity v3).
+        /// </summary>
+        [Output("domainName")]
+        public Output<string?> DomainName { get; private set; } = null!;
+
+        [Output("endpointType")]
+        public Output<string?> EndpointType { get; private set; } = null!;
+
+        /// <summary>
+        /// A client private key to authenticate with.
+        /// </summary>
+        [Output("key")]
+        public Output<string?> Key { get; private set; } = null!;
+
+        /// <summary>
+        /// Password to login with.
+        /// </summary>
+        [Output("password")]
+        public Output<string?> Password { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the domain where the proejct resides (Identity v3).
+        /// </summary>
+        [Output("projectDomainId")]
+        public Output<string?> ProjectDomainId { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the domain where the project resides (Identity v3).
+        /// </summary>
+        [Output("projectDomainName")]
+        public Output<string?> ProjectDomainName { get; private set; } = null!;
+
+        /// <summary>
+        /// The OpenStack region to connect to.
+        /// </summary>
+        [Output("region")]
+        public Output<string?> Region { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.
+        /// </summary>
+        [Output("tenantId")]
+        public Output<string?> TenantId { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the Tenant (Identity v2) or Project (Identity v3) to login with.
+        /// </summary>
+        [Output("tenantName")]
+        public Output<string?> TenantName { get; private set; } = null!;
+
+        /// <summary>
+        /// Authentication token to use as an alternative to username/password.
+        /// </summary>
+        [Output("token")]
+        public Output<string?> Token { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the domain where the user resides (Identity v3).
+        /// </summary>
+        [Output("userDomainId")]
+        public Output<string?> UserDomainId { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the domain where the user resides (Identity v3).
+        /// </summary>
+        [Output("userDomainName")]
+        public Output<string?> UserDomainName { get; private set; } = null!;
+
+        /// <summary>
+        /// Username to login with.
+        /// </summary>
+        [Output("userId")]
+        public Output<string?> UserId { get; private set; } = null!;
+
+        /// <summary>
+        /// Username to login with.
+        /// </summary>
+        [Output("userName")]
+        public Output<string?> UserName { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Provider resource with the given unique name, arguments, and options.
         /// </summary>
         ///

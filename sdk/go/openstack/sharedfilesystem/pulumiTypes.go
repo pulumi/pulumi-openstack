@@ -211,6 +211,10 @@ func (o GetShareExportLocationArrayOutput) Index(i pulumi.IntInput) GetShareExpo
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ShareExportLocationInput)(nil)).Elem(), ShareExportLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ShareExportLocationArrayInput)(nil)).Elem(), ShareExportLocationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetShareExportLocationInput)(nil)).Elem(), GetShareExportLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetShareExportLocationArrayInput)(nil)).Elem(), GetShareExportLocationArray{})
 	pulumi.RegisterOutputType(ShareExportLocationOutput{})
 	pulumi.RegisterOutputType(ShareExportLocationArrayOutput{})
 	pulumi.RegisterOutputType(GetShareExportLocationOutput{})

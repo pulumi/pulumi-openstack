@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.OpenStack.Identity
 {
@@ -42,6 +43,38 @@ namespace Pulumi.OpenStack.Identity
         /// </summary>
         public static Task<GetGroupResult> InvokeAsync(GetGroupArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetGroupResult>("openstack:identity/getGroup:getGroup", args ?? new GetGroupArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to get the ID of an OpenStack group.
+        /// 
+        /// &gt; **Note:** You _must_ have admin privileges in your OpenStack cloud to use
+        /// this resource.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var admins = Output.Create(OpenStack.Identity.GetGroup.InvokeAsync(new OpenStack.Identity.GetGroupArgs
+        ///         {
+        ///             Name = "admins",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetGroupResult> Invoke(GetGroupInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetGroupResult>("openstack:identity/getGroup:getGroup", args ?? new GetGroupInvokeArgs(), options.WithVersion());
     }
 
 
@@ -67,6 +100,32 @@ namespace Pulumi.OpenStack.Identity
         public string? Region { get; set; }
 
         public GetGroupArgs()
+        {
+        }
+    }
+
+    public sealed class GetGroupInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The domain the group belongs to.
+        /// </summary>
+        [Input("domainId")]
+        public Input<string>? DomainId { get; set; }
+
+        /// <summary>
+        /// The name of the group.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The region in which to obtain the V3 Keystone client.
+        /// If omitted, the `region` argument of the provider is used.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        public GetGroupInvokeArgs()
         {
         }
     }

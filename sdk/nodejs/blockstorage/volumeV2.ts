@@ -192,72 +192,72 @@ export interface VolumeV2State {
      * display the Attachment ID, Instance ID, and the Device as the Instance
      * sees it.
      */
-    readonly attachments?: pulumi.Input<pulumi.Input<inputs.blockstorage.VolumeV2Attachment>[]>;
+    attachments?: pulumi.Input<pulumi.Input<inputs.blockstorage.VolumeV2Attachment>[]>;
     /**
      * The availability zone for the volume.
      * Changing this creates a new volume.
      */
-    readonly availabilityZone?: pulumi.Input<string>;
+    availabilityZone?: pulumi.Input<string>;
     /**
      * The consistency group to place the volume
      * in.
      */
-    readonly consistencyGroupId?: pulumi.Input<string>;
+    consistencyGroupId?: pulumi.Input<string>;
     /**
      * A description of the volume. Changing this updates
      * the volume's description.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The image ID from which to create the volume.
      * Changing this creates a new volume.
      */
-    readonly imageId?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string>;
     /**
      * Metadata key/value pairs to associate with the volume.
      * Changing this updates the existing volume metadata.
      */
-    readonly metadata?: pulumi.Input<{[key: string]: any}>;
+    metadata?: pulumi.Input<{[key: string]: any}>;
     /**
      * A unique name for the volume. Changing this updates the
      * volume's name.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The region in which to create the volume. If
      * omitted, the `region` argument of the provider is used. Changing this
      * creates a new volume.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * Provide the Cinder scheduler with hints on where
      * to instantiate a volume in the OpenStack cloud. The available hints are described below.
      */
-    readonly schedulerHints?: pulumi.Input<pulumi.Input<inputs.blockstorage.VolumeV2SchedulerHint>[]>;
+    schedulerHints?: pulumi.Input<pulumi.Input<inputs.blockstorage.VolumeV2SchedulerHint>[]>;
     /**
      * The size of the volume to create (in gigabytes). Changing
      * this creates a new volume.
      */
-    readonly size?: pulumi.Input<number>;
+    size?: pulumi.Input<number>;
     /**
      * The snapshot ID from which to create the volume.
      * Changing this creates a new volume.
      */
-    readonly snapshotId?: pulumi.Input<string>;
+    snapshotId?: pulumi.Input<string>;
     /**
      * The volume ID to replicate with.
      */
-    readonly sourceReplica?: pulumi.Input<string>;
+    sourceReplica?: pulumi.Input<string>;
     /**
      * The volume ID from which to create the volume.
      * Changing this creates a new volume.
      */
-    readonly sourceVolId?: pulumi.Input<string>;
+    sourceVolId?: pulumi.Input<string>;
     /**
      * The type of volume to create.
      * Changing this creates a new volume.
      */
-    readonly volumeType?: pulumi.Input<string>;
+    volumeType?: pulumi.Input<string>;
 }
 
 /**
@@ -268,65 +268,65 @@ export interface VolumeV2Args {
      * The availability zone for the volume.
      * Changing this creates a new volume.
      */
-    readonly availabilityZone?: pulumi.Input<string>;
+    availabilityZone?: pulumi.Input<string>;
     /**
      * The consistency group to place the volume
      * in.
      */
-    readonly consistencyGroupId?: pulumi.Input<string>;
+    consistencyGroupId?: pulumi.Input<string>;
     /**
      * A description of the volume. Changing this updates
      * the volume's description.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The image ID from which to create the volume.
      * Changing this creates a new volume.
      */
-    readonly imageId?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string>;
     /**
      * Metadata key/value pairs to associate with the volume.
      * Changing this updates the existing volume metadata.
      */
-    readonly metadata?: pulumi.Input<{[key: string]: any}>;
+    metadata?: pulumi.Input<{[key: string]: any}>;
     /**
      * A unique name for the volume. Changing this updates the
      * volume's name.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The region in which to create the volume. If
      * omitted, the `region` argument of the provider is used. Changing this
      * creates a new volume.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * Provide the Cinder scheduler with hints on where
      * to instantiate a volume in the OpenStack cloud. The available hints are described below.
      */
-    readonly schedulerHints?: pulumi.Input<pulumi.Input<inputs.blockstorage.VolumeV2SchedulerHint>[]>;
+    schedulerHints?: pulumi.Input<pulumi.Input<inputs.blockstorage.VolumeV2SchedulerHint>[]>;
     /**
      * The size of the volume to create (in gigabytes). Changing
      * this creates a new volume.
      */
-    readonly size: pulumi.Input<number>;
+    size: pulumi.Input<number>;
     /**
      * The snapshot ID from which to create the volume.
      * Changing this creates a new volume.
      */
-    readonly snapshotId?: pulumi.Input<string>;
+    snapshotId?: pulumi.Input<string>;
     /**
      * The volume ID to replicate with.
      */
-    readonly sourceReplica?: pulumi.Input<string>;
+    sourceReplica?: pulumi.Input<string>;
     /**
      * The volume ID from which to create the volume.
      * Changing this creates a new volume.
      */
-    readonly sourceVolId?: pulumi.Input<string>;
+    sourceVolId?: pulumi.Input<string>;
     /**
      * The type of volume to create.
      * Changing this creates a new volume.
      */
-    readonly volumeType?: pulumi.Input<string>;
+    volumeType?: pulumi.Input<string>;
 }

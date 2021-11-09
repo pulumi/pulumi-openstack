@@ -260,7 +260,7 @@ type SubnetRouteArrayInput interface {
 type SubnetRouteArray []SubnetRouteInput
 
 func (SubnetRouteArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*SubnetRoute)(nil))
+	return reflect.TypeOf((*[]*SubnetRoute)(nil)).Elem()
 }
 
 func (i SubnetRouteArray) ToSubnetRouteArrayOutput() SubnetRouteArrayOutput {
@@ -285,7 +285,7 @@ type SubnetRouteMapInput interface {
 type SubnetRouteMap map[string]SubnetRouteInput
 
 func (SubnetRouteMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*SubnetRoute)(nil))
+	return reflect.TypeOf((*map[string]*SubnetRoute)(nil)).Elem()
 }
 
 func (i SubnetRouteMap) ToSubnetRouteMapOutput() SubnetRouteMapOutput {
@@ -296,9 +296,7 @@ func (i SubnetRouteMap) ToSubnetRouteMapOutputWithContext(ctx context.Context) S
 	return pulumi.ToOutputWithContext(ctx, i).(SubnetRouteMapOutput)
 }
 
-type SubnetRouteOutput struct {
-	*pulumi.OutputState
-}
+type SubnetRouteOutput struct{ *pulumi.OutputState }
 
 func (SubnetRouteOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*SubnetRoute)(nil))
@@ -317,14 +315,12 @@ func (o SubnetRouteOutput) ToSubnetRoutePtrOutput() SubnetRoutePtrOutput {
 }
 
 func (o SubnetRouteOutput) ToSubnetRoutePtrOutputWithContext(ctx context.Context) SubnetRoutePtrOutput {
-	return o.ApplyT(func(v SubnetRoute) *SubnetRoute {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubnetRoute) *SubnetRoute {
 		return &v
 	}).(SubnetRoutePtrOutput)
 }
 
-type SubnetRoutePtrOutput struct {
-	*pulumi.OutputState
-}
+type SubnetRoutePtrOutput struct{ *pulumi.OutputState }
 
 func (SubnetRoutePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**SubnetRoute)(nil))
@@ -336,6 +332,16 @@ func (o SubnetRoutePtrOutput) ToSubnetRoutePtrOutput() SubnetRoutePtrOutput {
 
 func (o SubnetRoutePtrOutput) ToSubnetRoutePtrOutputWithContext(ctx context.Context) SubnetRoutePtrOutput {
 	return o
+}
+
+func (o SubnetRoutePtrOutput) Elem() SubnetRouteOutput {
+	return o.ApplyT(func(v *SubnetRoute) SubnetRoute {
+		if v != nil {
+			return *v
+		}
+		var ret SubnetRoute
+		return ret
+	}).(SubnetRouteOutput)
 }
 
 type SubnetRouteArrayOutput struct{ *pulumi.OutputState }
@@ -379,6 +385,10 @@ func (o SubnetRouteMapOutput) MapIndex(k pulumi.StringInput) SubnetRouteOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SubnetRouteInput)(nil)).Elem(), &SubnetRoute{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubnetRoutePtrInput)(nil)).Elem(), &SubnetRoute{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubnetRouteArrayInput)(nil)).Elem(), SubnetRouteArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubnetRouteMapInput)(nil)).Elem(), SubnetRouteMap{})
 	pulumi.RegisterOutputType(SubnetRouteOutput{})
 	pulumi.RegisterOutputType(SubnetRoutePtrOutput{})
 	pulumi.RegisterOutputType(SubnetRouteArrayOutput{})

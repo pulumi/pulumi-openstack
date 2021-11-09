@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.OpenStack.Networking
 {
@@ -13,9 +14,61 @@ namespace Pulumi.OpenStack.Networking
     {
         /// <summary>
         /// Use this data source to get the ID of an available OpenStack QoS bandwidth limit rule.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var qosBandwidthLimitRule1 = Output.Create(OpenStack.Networking.GetQosBandwidthLimitRule.InvokeAsync(new OpenStack.Networking.GetQosBandwidthLimitRuleArgs
+        ///         {
+        ///             MaxKbps = 300,
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetQosBandwidthLimitRuleResult> InvokeAsync(GetQosBandwidthLimitRuleArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetQosBandwidthLimitRuleResult>("openstack:networking/getQosBandwidthLimitRule:getQosBandwidthLimitRule", args ?? new GetQosBandwidthLimitRuleArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to get the ID of an available OpenStack QoS bandwidth limit rule.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var qosBandwidthLimitRule1 = Output.Create(OpenStack.Networking.GetQosBandwidthLimitRule.InvokeAsync(new OpenStack.Networking.GetQosBandwidthLimitRuleArgs
+        ///         {
+        ///             MaxKbps = 300,
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetQosBandwidthLimitRuleResult> Invoke(GetQosBandwidthLimitRuleInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetQosBandwidthLimitRuleResult>("openstack:networking/getQosBandwidthLimitRule:getQosBandwidthLimitRule", args ?? new GetQosBandwidthLimitRuleInvokeArgs(), options.WithVersion());
     }
 
 
@@ -48,6 +101,39 @@ namespace Pulumi.OpenStack.Networking
         public string? Region { get; set; }
 
         public GetQosBandwidthLimitRuleArgs()
+        {
+        }
+    }
+
+    public sealed class GetQosBandwidthLimitRuleInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The maximum burst size in kilobits of a QoS bandwidth limit rule.
+        /// </summary>
+        [Input("maxBurstKbps")]
+        public Input<int>? MaxBurstKbps { get; set; }
+
+        /// <summary>
+        /// The maximum kilobits per second of a QoS bandwidth limit rule.
+        /// </summary>
+        [Input("maxKbps")]
+        public Input<int>? MaxKbps { get; set; }
+
+        /// <summary>
+        /// The QoS policy reference.
+        /// </summary>
+        [Input("qosPolicyId", required: true)]
+        public Input<string> QosPolicyId { get; set; } = null!;
+
+        /// <summary>
+        /// The region in which to obtain the V2 Networking client.
+        /// A Networking client is needed to create a Neutron QoS bandwidth limit rule. If omitted, the
+        /// `region` argument of the provider is used.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        public GetQosBandwidthLimitRuleInvokeArgs()
         {
         }
     }

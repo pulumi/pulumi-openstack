@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  *
  * const scope = pulumi.output(openstack.identity.getAuthScope({
  *     name: "my_scope",
- * }, { async: true }));
+ * }));
  * ```
  *
  * To find the the public object storage endpoint for "region1" as listed in the
@@ -54,13 +54,13 @@ export interface GetAuthScopeArgs {
      * The name of the scope. This is an arbitrary name which is
      * only used as a unique identifier so an actual token isn't used as the ID.
      */
-    readonly name: string;
+    name: string;
     /**
      * The region in which to obtain the V3 Identity client.
      * A Identity client is needed to retrieve tokens IDs. If omitted, the
      * `region` argument of the provider is used.
      */
-    readonly region?: string;
+    region?: string;
 }
 
 /**
@@ -127,4 +127,25 @@ export interface GetAuthScopeResult {
      * The username of the scope.
      */
     readonly userName: string;
+}
+
+export function getAuthScopeOutput(args: GetAuthScopeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAuthScopeResult> {
+    return pulumi.output(args).apply(a => getAuthScope(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAuthScope.
+ */
+export interface GetAuthScopeOutputArgs {
+    /**
+     * The name of the scope. This is an arbitrary name which is
+     * only used as a unique identifier so an actual token isn't used as the ID.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The region in which to obtain the V3 Identity client.
+     * A Identity client is needed to retrieve tokens IDs. If omitted, the
+     * `region` argument of the provider is used.
+     */
+    region?: pulumi.Input<string>;
 }

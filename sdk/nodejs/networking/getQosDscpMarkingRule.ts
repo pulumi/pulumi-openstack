@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -16,7 +15,7 @@ import * as utilities from "../utilities";
  *
  * const qosDscpMarkingRule1 = pulumi.output(openstack.networking.getQosDscpMarkingRule({
  *     dscpMark: 26,
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getQosDscpMarkingRule(args: GetQosDscpMarkingRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetQosDscpMarkingRuleResult> {
@@ -41,17 +40,17 @@ export interface GetQosDscpMarkingRuleArgs {
     /**
      * The value of a DSCP mark.
      */
-    readonly dscpMark?: number;
+    dscpMark?: number;
     /**
      * The QoS policy reference.
      */
-    readonly qosPolicyId: string;
+    qosPolicyId: string;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a Neutron QoS DSCP marking rule. If omitted, the
      * `region` argument of the provider is used.
      */
-    readonly region?: string;
+    region?: string;
 }
 
 /**
@@ -74,4 +73,28 @@ export interface GetQosDscpMarkingRuleResult {
      * See Argument Reference above.
      */
     readonly region: string;
+}
+
+export function getQosDscpMarkingRuleOutput(args: GetQosDscpMarkingRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQosDscpMarkingRuleResult> {
+    return pulumi.output(args).apply(a => getQosDscpMarkingRule(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getQosDscpMarkingRule.
+ */
+export interface GetQosDscpMarkingRuleOutputArgs {
+    /**
+     * The value of a DSCP mark.
+     */
+    dscpMark?: pulumi.Input<number>;
+    /**
+     * The QoS policy reference.
+     */
+    qosPolicyId: pulumi.Input<string>;
+    /**
+     * The region in which to obtain the V2 Networking client.
+     * A Networking client is needed to create a Neutron QoS DSCP marking rule. If omitted, the
+     * `region` argument of the provider is used.
+     */
+    region?: pulumi.Input<string>;
 }

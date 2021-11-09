@@ -125,25 +125,25 @@ export interface ConfigurationState {
     /**
      * An array of configuration parameter name and value. Can be specified multiple times. The configuration object structure is documented below.
      */
-    readonly configurations?: pulumi.Input<pulumi.Input<inputs.database.ConfigurationConfiguration>[]>;
+    configurations?: pulumi.Input<pulumi.Input<inputs.database.ConfigurationConfiguration>[]>;
     /**
      * An array of database engine type and version. The datastore
      * object structure is documented below. Changing this creates resource.
      */
-    readonly datastore?: pulumi.Input<inputs.database.ConfigurationDatastore>;
+    datastore?: pulumi.Input<inputs.database.ConfigurationDatastore>;
     /**
      * Description of the resource.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Configuration parameter name. Changing this creates a new resource.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The region in which to create the db instance. Changing this
      * creates a new instance.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
 }
 
 /**
@@ -153,23 +153,23 @@ export interface ConfigurationArgs {
     /**
      * An array of configuration parameter name and value. Can be specified multiple times. The configuration object structure is documented below.
      */
-    readonly configurations?: pulumi.Input<pulumi.Input<inputs.database.ConfigurationConfiguration>[]>;
+    configurations?: pulumi.Input<pulumi.Input<inputs.database.ConfigurationConfiguration>[]>;
     /**
      * An array of database engine type and version. The datastore
      * object structure is documented below. Changing this creates resource.
      */
-    readonly datastore: pulumi.Input<inputs.database.ConfigurationDatastore>;
+    datastore: pulumi.Input<inputs.database.ConfigurationDatastore>;
     /**
      * Description of the resource.
      */
-    readonly description: pulumi.Input<string>;
+    description: pulumi.Input<string>;
     /**
      * Configuration parameter name. Changing this creates a new resource.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The region in which to create the db instance. Changing this
      * creates a new instance.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
 }

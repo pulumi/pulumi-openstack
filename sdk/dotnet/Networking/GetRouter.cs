@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.OpenStack.Networking
 {
@@ -39,6 +40,35 @@ namespace Pulumi.OpenStack.Networking
         /// </summary>
         public static Task<GetRouterResult> InvokeAsync(GetRouterArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRouterResult>("openstack:networking/getRouter:getRouter", args ?? new GetRouterArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to get the ID of an available OpenStack router.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var router = Output.Create(OpenStack.Networking.GetRouter.InvokeAsync(new OpenStack.Networking.GetRouterArgs
+        ///         {
+        ///             Name = "router_1",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetRouterResult> Invoke(GetRouterInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetRouterResult>("openstack:networking/getRouter:getRouter", args ?? new GetRouterInvokeArgs(), options.WithVersion());
     }
 
 
@@ -113,6 +143,81 @@ namespace Pulumi.OpenStack.Networking
         public string? TenantId { get; set; }
 
         public GetRouterArgs()
+        {
+        }
+    }
+
+    public sealed class GetRouterInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Administrative up/down status for the router (must be "true" or "false" if provided).
+        /// </summary>
+        [Input("adminStateUp")]
+        public Input<bool>? AdminStateUp { get; set; }
+
+        /// <summary>
+        /// Human-readable description of the router.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Indicates whether or not to get a distributed router.
+        /// </summary>
+        [Input("distributed")]
+        public Input<bool>? Distributed { get; set; }
+
+        /// <summary>
+        /// The value that points out if the Source NAT is enabled on the router.
+        /// </summary>
+        [Input("enableSnat")]
+        public Input<bool>? EnableSnat { get; set; }
+
+        /// <summary>
+        /// The name of the router.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The region in which to obtain the V2 Neutron client.
+        /// A Neutron client is needed to retrieve router ids. If omitted, the
+        /// `region` argument of the provider is used.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// The UUID of the router resource.
+        /// </summary>
+        [Input("routerId")]
+        public Input<string>? RouterId { get; set; }
+
+        /// <summary>
+        /// The status of the router (ACTIVE/DOWN).
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// The list of router tags to filter.
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// The owner of the router.
+        /// </summary>
+        [Input("tenantId")]
+        public Input<string>? TenantId { get; set; }
+
+        public GetRouterInvokeArgs()
         {
         }
     }

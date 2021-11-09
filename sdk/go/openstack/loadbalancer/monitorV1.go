@@ -375,7 +375,7 @@ type MonitorV1ArrayInput interface {
 type MonitorV1Array []MonitorV1Input
 
 func (MonitorV1Array) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*MonitorV1)(nil))
+	return reflect.TypeOf((*[]*MonitorV1)(nil)).Elem()
 }
 
 func (i MonitorV1Array) ToMonitorV1ArrayOutput() MonitorV1ArrayOutput {
@@ -400,7 +400,7 @@ type MonitorV1MapInput interface {
 type MonitorV1Map map[string]MonitorV1Input
 
 func (MonitorV1Map) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*MonitorV1)(nil))
+	return reflect.TypeOf((*map[string]*MonitorV1)(nil)).Elem()
 }
 
 func (i MonitorV1Map) ToMonitorV1MapOutput() MonitorV1MapOutput {
@@ -411,9 +411,7 @@ func (i MonitorV1Map) ToMonitorV1MapOutputWithContext(ctx context.Context) Monit
 	return pulumi.ToOutputWithContext(ctx, i).(MonitorV1MapOutput)
 }
 
-type MonitorV1Output struct {
-	*pulumi.OutputState
-}
+type MonitorV1Output struct{ *pulumi.OutputState }
 
 func (MonitorV1Output) ElementType() reflect.Type {
 	return reflect.TypeOf((*MonitorV1)(nil))
@@ -432,14 +430,12 @@ func (o MonitorV1Output) ToMonitorV1PtrOutput() MonitorV1PtrOutput {
 }
 
 func (o MonitorV1Output) ToMonitorV1PtrOutputWithContext(ctx context.Context) MonitorV1PtrOutput {
-	return o.ApplyT(func(v MonitorV1) *MonitorV1 {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitorV1) *MonitorV1 {
 		return &v
 	}).(MonitorV1PtrOutput)
 }
 
-type MonitorV1PtrOutput struct {
-	*pulumi.OutputState
-}
+type MonitorV1PtrOutput struct{ *pulumi.OutputState }
 
 func (MonitorV1PtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**MonitorV1)(nil))
@@ -451,6 +447,16 @@ func (o MonitorV1PtrOutput) ToMonitorV1PtrOutput() MonitorV1PtrOutput {
 
 func (o MonitorV1PtrOutput) ToMonitorV1PtrOutputWithContext(ctx context.Context) MonitorV1PtrOutput {
 	return o
+}
+
+func (o MonitorV1PtrOutput) Elem() MonitorV1Output {
+	return o.ApplyT(func(v *MonitorV1) MonitorV1 {
+		if v != nil {
+			return *v
+		}
+		var ret MonitorV1
+		return ret
+	}).(MonitorV1Output)
 }
 
 type MonitorV1ArrayOutput struct{ *pulumi.OutputState }
@@ -494,6 +500,10 @@ func (o MonitorV1MapOutput) MapIndex(k pulumi.StringInput) MonitorV1Output {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorV1Input)(nil)).Elem(), &MonitorV1{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorV1PtrInput)(nil)).Elem(), &MonitorV1{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorV1ArrayInput)(nil)).Elem(), MonitorV1Array{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorV1MapInput)(nil)).Elem(), MonitorV1Map{})
 	pulumi.RegisterOutputType(MonitorV1Output{})
 	pulumi.RegisterOutputType(MonitorV1PtrOutput{})
 	pulumi.RegisterOutputType(MonitorV1ArrayOutput{})

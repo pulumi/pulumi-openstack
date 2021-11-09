@@ -25,6 +25,95 @@ export class Provider extends pulumi.ProviderResource {
         return obj['__pulumiType'] === Provider.__pulumiType;
     }
 
+    /**
+     * Application Credential ID to login with.
+     */
+    public readonly applicationCredentialId!: pulumi.Output<string | undefined>;
+    /**
+     * Application Credential name to login with.
+     */
+    public readonly applicationCredentialName!: pulumi.Output<string | undefined>;
+    /**
+     * Application Credential secret to login with.
+     */
+    public readonly applicationCredentialSecret!: pulumi.Output<string | undefined>;
+    /**
+     * The Identity authentication URL.
+     */
+    public readonly authUrl!: pulumi.Output<string | undefined>;
+    /**
+     * A Custom CA certificate.
+     */
+    public readonly cacertFile!: pulumi.Output<string | undefined>;
+    /**
+     * A client certificate to authenticate with.
+     */
+    public readonly cert!: pulumi.Output<string | undefined>;
+    /**
+     * An entry in a `clouds.yaml` file to use.
+     */
+    public readonly cloud!: pulumi.Output<string | undefined>;
+    /**
+     * The name of the Domain ID to scope to if no other domain is specified. Defaults to `default` (Identity v3).
+     */
+    public readonly defaultDomain!: pulumi.Output<string | undefined>;
+    /**
+     * The ID of the Domain to scope to (Identity v3).
+     */
+    public readonly domainId!: pulumi.Output<string | undefined>;
+    /**
+     * The name of the Domain to scope to (Identity v3).
+     */
+    public readonly domainName!: pulumi.Output<string | undefined>;
+    public readonly endpointType!: pulumi.Output<string | undefined>;
+    /**
+     * A client private key to authenticate with.
+     */
+    public readonly key!: pulumi.Output<string | undefined>;
+    /**
+     * Password to login with.
+     */
+    public readonly password!: pulumi.Output<string | undefined>;
+    /**
+     * The ID of the domain where the proejct resides (Identity v3).
+     */
+    public readonly projectDomainId!: pulumi.Output<string | undefined>;
+    /**
+     * The name of the domain where the project resides (Identity v3).
+     */
+    public readonly projectDomainName!: pulumi.Output<string | undefined>;
+    /**
+     * The OpenStack region to connect to.
+     */
+    public readonly region!: pulumi.Output<string | undefined>;
+    /**
+     * The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.
+     */
+    public readonly tenantId!: pulumi.Output<string | undefined>;
+    /**
+     * The name of the Tenant (Identity v2) or Project (Identity v3) to login with.
+     */
+    public readonly tenantName!: pulumi.Output<string | undefined>;
+    /**
+     * Authentication token to use as an alternative to username/password.
+     */
+    public readonly token!: pulumi.Output<string | undefined>;
+    /**
+     * The ID of the domain where the user resides (Identity v3).
+     */
+    public readonly userDomainId!: pulumi.Output<string | undefined>;
+    /**
+     * The name of the domain where the user resides (Identity v3).
+     */
+    public readonly userDomainName!: pulumi.Output<string | undefined>;
+    /**
+     * Username to login with.
+     */
+    public readonly userId!: pulumi.Output<string | undefined>;
+    /**
+     * Username to login with.
+     */
+    public readonly userName!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -84,123 +173,123 @@ export interface ProviderArgs {
      * If set to `false`, OpenStack authorization won't be perfomed automatically, if the initial auth token get expired.
      * Defaults to `true`
      */
-    readonly allowReauth?: pulumi.Input<boolean>;
+    allowReauth?: pulumi.Input<boolean>;
     /**
      * Application Credential ID to login with.
      */
-    readonly applicationCredentialId?: pulumi.Input<string>;
+    applicationCredentialId?: pulumi.Input<string>;
     /**
      * Application Credential name to login with.
      */
-    readonly applicationCredentialName?: pulumi.Input<string>;
+    applicationCredentialName?: pulumi.Input<string>;
     /**
      * Application Credential secret to login with.
      */
-    readonly applicationCredentialSecret?: pulumi.Input<string>;
+    applicationCredentialSecret?: pulumi.Input<string>;
     /**
      * The Identity authentication URL.
      */
-    readonly authUrl?: pulumi.Input<string>;
+    authUrl?: pulumi.Input<string>;
     /**
      * A Custom CA certificate.
      */
-    readonly cacertFile?: pulumi.Input<string>;
+    cacertFile?: pulumi.Input<string>;
     /**
      * A client certificate to authenticate with.
      */
-    readonly cert?: pulumi.Input<string>;
+    cert?: pulumi.Input<string>;
     /**
      * An entry in a `clouds.yaml` file to use.
      */
-    readonly cloud?: pulumi.Input<string>;
+    cloud?: pulumi.Input<string>;
     /**
      * The name of the Domain ID to scope to if no other domain is specified. Defaults to `default` (Identity v3).
      */
-    readonly defaultDomain?: pulumi.Input<string>;
+    defaultDomain?: pulumi.Input<string>;
     /**
      * If set to `false`, OpenStack authorization will be perfomed, every time the service provider client is called. Defaults
      * to `true`.
      */
-    readonly delayedAuth?: pulumi.Input<boolean>;
+    delayedAuth?: pulumi.Input<boolean>;
     /**
      * If set to `true`, the HTTP `Cache-Control: no-cache` header will not be added by default to all API requests.
      */
-    readonly disableNoCacheHeader?: pulumi.Input<boolean>;
+    disableNoCacheHeader?: pulumi.Input<boolean>;
     /**
      * The ID of the Domain to scope to (Identity v3).
      */
-    readonly domainId?: pulumi.Input<string>;
+    domainId?: pulumi.Input<string>;
     /**
      * The name of the Domain to scope to (Identity v3).
      */
-    readonly domainName?: pulumi.Input<string>;
+    domainName?: pulumi.Input<string>;
     /**
      * A map of services with an endpoint to override what was from the Keystone catalog
      */
-    readonly endpointOverrides?: pulumi.Input<{[key: string]: any}>;
-    readonly endpointType?: pulumi.Input<string>;
+    endpointOverrides?: pulumi.Input<{[key: string]: any}>;
+    endpointType?: pulumi.Input<string>;
     /**
      * Trust self-signed certificates.
      */
-    readonly insecure?: pulumi.Input<boolean>;
+    insecure?: pulumi.Input<boolean>;
     /**
      * A client private key to authenticate with.
      */
-    readonly key?: pulumi.Input<string>;
+    key?: pulumi.Input<string>;
     /**
      * How many times HTTP connection should be retried until giving up.
      */
-    readonly maxRetries?: pulumi.Input<number>;
+    maxRetries?: pulumi.Input<number>;
     /**
      * Password to login with.
      */
-    readonly password?: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
     /**
      * The ID of the domain where the proejct resides (Identity v3).
      */
-    readonly projectDomainId?: pulumi.Input<string>;
+    projectDomainId?: pulumi.Input<string>;
     /**
      * The name of the domain where the project resides (Identity v3).
      */
-    readonly projectDomainName?: pulumi.Input<string>;
+    projectDomainName?: pulumi.Input<string>;
     /**
      * The OpenStack region to connect to.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * Use Swift's authentication system instead of Keystone. Only used for interaction with Swift.
      */
-    readonly swauth?: pulumi.Input<boolean>;
+    swauth?: pulumi.Input<boolean>;
     /**
      * The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.
      */
-    readonly tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string>;
     /**
      * The name of the Tenant (Identity v2) or Project (Identity v3) to login with.
      */
-    readonly tenantName?: pulumi.Input<string>;
+    tenantName?: pulumi.Input<string>;
     /**
      * Authentication token to use as an alternative to username/password.
      */
-    readonly token?: pulumi.Input<string>;
+    token?: pulumi.Input<string>;
     /**
      * If set to `true`, API requests will go the Load Balancer service (Octavia) instead of the Networking service (Neutron).
      */
-    readonly useOctavia?: pulumi.Input<boolean>;
+    useOctavia?: pulumi.Input<boolean>;
     /**
      * The ID of the domain where the user resides (Identity v3).
      */
-    readonly userDomainId?: pulumi.Input<string>;
+    userDomainId?: pulumi.Input<string>;
     /**
      * The name of the domain where the user resides (Identity v3).
      */
-    readonly userDomainName?: pulumi.Input<string>;
+    userDomainName?: pulumi.Input<string>;
     /**
      * Username to login with.
      */
-    readonly userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string>;
     /**
      * Username to login with.
      */
-    readonly userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string>;
 }

@@ -14,6 +14,102 @@ import (
 // Manages a V1 Barbican container resource within OpenStack.
 //
 // ## Example Usage
+// ### Simple secret
+//
+// The container with the TLS certificates, which can be used by the loadbalancer HTTPS listener.
+//
+// ```go
+// package main
+//
+// import (
+// 	"io/ioutil"
+//
+// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/keymanager"
+// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/loadbalancer"
+// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func readFileOrPanic(path string) pulumi.StringPtrInput {
+// 	data, err := ioutil.ReadFile(path)
+// 	if err != nil {
+// 		panic(err.Error())
+// 	}
+// 	return pulumi.String(string(data))
+// }
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		certificate1, err := keymanager.NewSecretV1(ctx, "certificate1", &keymanager.SecretV1Args{
+// 			Payload:            readFileOrPanic("cert.pem"),
+// 			PayloadContentType: pulumi.String("text/plain"),
+// 			SecretType:         pulumi.String("certificate"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		privateKey1, err := keymanager.NewSecretV1(ctx, "privateKey1", &keymanager.SecretV1Args{
+// 			Payload:            readFileOrPanic("cert-key.pem"),
+// 			PayloadContentType: pulumi.String("text/plain"),
+// 			SecretType:         pulumi.String("private"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		intermediate1, err := keymanager.NewSecretV1(ctx, "intermediate1", &keymanager.SecretV1Args{
+// 			Payload:            readFileOrPanic("intermediate-ca.pem"),
+// 			PayloadContentType: pulumi.String("text/plain"),
+// 			SecretType:         pulumi.String("certificate"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		tls1, err := keymanager.NewContainerV1(ctx, "tls1", &keymanager.ContainerV1Args{
+// 			SecretRefs: keymanager.ContainerV1SecretRefArray{
+// 				&keymanager.ContainerV1SecretRefArgs{
+// 					Name:      pulumi.String("certificate"),
+// 					SecretRef: certificate1.SecretRef,
+// 				},
+// 				&keymanager.ContainerV1SecretRefArgs{
+// 					Name:      pulumi.String("private_key"),
+// 					SecretRef: privateKey1.SecretRef,
+// 				},
+// 				&keymanager.ContainerV1SecretRefArgs{
+// 					Name:      pulumi.String("intermediates"),
+// 					SecretRef: intermediate1.SecretRef,
+// 				},
+// 			},
+// 			Type: pulumi.String("certificate"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		opt0 := "my-subnet"
+// 		subnet1, err := networking.LookupSubnet(ctx, &networking.LookupSubnetArgs{
+// 			Name: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		lb1, err := loadbalancer.NewLoadBalancer(ctx, "lb1", &loadbalancer.LoadBalancerArgs{
+// 			VipSubnetId: pulumi.String(subnet1.Id),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = loadbalancer.NewListener(ctx, "listener1", &loadbalancer.ListenerArgs{
+// 			DefaultTlsContainerRef: tls1.ContainerRef,
+// 			LoadbalancerId:         lb1.ID(),
+// 			Protocol:               pulumi.String("TERMINATED_HTTPS"),
+// 			ProtocolPort:           pulumi.Int(443),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 // ### Container with the ACL
 //
 // > **Note** Only read ACLs are supported
@@ -304,7 +400,7 @@ type ContainerV1ArrayInput interface {
 type ContainerV1Array []ContainerV1Input
 
 func (ContainerV1Array) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ContainerV1)(nil))
+	return reflect.TypeOf((*[]*ContainerV1)(nil)).Elem()
 }
 
 func (i ContainerV1Array) ToContainerV1ArrayOutput() ContainerV1ArrayOutput {
@@ -329,7 +425,7 @@ type ContainerV1MapInput interface {
 type ContainerV1Map map[string]ContainerV1Input
 
 func (ContainerV1Map) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ContainerV1)(nil))
+	return reflect.TypeOf((*map[string]*ContainerV1)(nil)).Elem()
 }
 
 func (i ContainerV1Map) ToContainerV1MapOutput() ContainerV1MapOutput {
@@ -340,9 +436,7 @@ func (i ContainerV1Map) ToContainerV1MapOutputWithContext(ctx context.Context) C
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerV1MapOutput)
 }
 
-type ContainerV1Output struct {
-	*pulumi.OutputState
-}
+type ContainerV1Output struct{ *pulumi.OutputState }
 
 func (ContainerV1Output) ElementType() reflect.Type {
 	return reflect.TypeOf((*ContainerV1)(nil))
@@ -361,14 +455,12 @@ func (o ContainerV1Output) ToContainerV1PtrOutput() ContainerV1PtrOutput {
 }
 
 func (o ContainerV1Output) ToContainerV1PtrOutputWithContext(ctx context.Context) ContainerV1PtrOutput {
-	return o.ApplyT(func(v ContainerV1) *ContainerV1 {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContainerV1) *ContainerV1 {
 		return &v
 	}).(ContainerV1PtrOutput)
 }
 
-type ContainerV1PtrOutput struct {
-	*pulumi.OutputState
-}
+type ContainerV1PtrOutput struct{ *pulumi.OutputState }
 
 func (ContainerV1PtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ContainerV1)(nil))
@@ -380,6 +472,16 @@ func (o ContainerV1PtrOutput) ToContainerV1PtrOutput() ContainerV1PtrOutput {
 
 func (o ContainerV1PtrOutput) ToContainerV1PtrOutputWithContext(ctx context.Context) ContainerV1PtrOutput {
 	return o
+}
+
+func (o ContainerV1PtrOutput) Elem() ContainerV1Output {
+	return o.ApplyT(func(v *ContainerV1) ContainerV1 {
+		if v != nil {
+			return *v
+		}
+		var ret ContainerV1
+		return ret
+	}).(ContainerV1Output)
 }
 
 type ContainerV1ArrayOutput struct{ *pulumi.OutputState }
@@ -423,6 +525,10 @@ func (o ContainerV1MapOutput) MapIndex(k pulumi.StringInput) ContainerV1Output {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerV1Input)(nil)).Elem(), &ContainerV1{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerV1PtrInput)(nil)).Elem(), &ContainerV1{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerV1ArrayInput)(nil)).Elem(), ContainerV1Array{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerV1MapInput)(nil)).Elem(), ContainerV1Map{})
 	pulumi.RegisterOutputType(ContainerV1Output{})
 	pulumi.RegisterOutputType(ContainerV1PtrOutput{})
 	pulumi.RegisterOutputType(ContainerV1ArrayOutput{})

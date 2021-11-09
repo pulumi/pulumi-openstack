@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.OpenStack.KeyManager
 {
@@ -39,6 +40,35 @@ namespace Pulumi.OpenStack.KeyManager
         /// </summary>
         public static Task<GetContainerResult> InvokeAsync(GetContainerArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetContainerResult>("openstack:keymanager/getContainer:getContainer", args ?? new GetContainerArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to get the ID of an available Barbican container.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(OpenStack.KeyManager.GetContainer.InvokeAsync(new OpenStack.KeyManager.GetContainerArgs
+        ///         {
+        ///             Name = "my_container",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetContainerResult> Invoke(GetContainerInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetContainerResult>("openstack:keymanager/getContainer:getContainer", args ?? new GetContainerInvokeArgs(), options.WithVersion());
     }
 
 
@@ -59,6 +89,27 @@ namespace Pulumi.OpenStack.KeyManager
         public string? Region { get; set; }
 
         public GetContainerArgs()
+        {
+        }
+    }
+
+    public sealed class GetContainerInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The Container name.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The region in which to obtain the V1 KeyManager client.
+        /// A KeyManager client is needed to fetch a container. If omitted, the `region`
+        /// argument of the provider is used.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        public GetContainerInvokeArgs()
         {
         }
     }

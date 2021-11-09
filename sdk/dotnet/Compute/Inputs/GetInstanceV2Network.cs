@@ -10,45 +10,45 @@ using Pulumi.Serialization;
 namespace Pulumi.OpenStack.Compute.Inputs
 {
 
-    public sealed class GetInstanceV2NetworkInputArgs : Pulumi.ResourceArgs
+    public sealed class GetInstanceV2NetworkArgs : Pulumi.InvokeArgs
     {
         /// <summary>
         /// The IPv4 address assigned to this network port.
         /// </summary>
         [Input("fixedIpV4", required: true)]
-        public Input<string> FixedIpV4 { get; set; } = null!;
+        public string FixedIpV4 { get; set; } = null!;
 
         /// <summary>
         /// The IPv6 address assigned to this network port.
         /// </summary>
         [Input("fixedIpV6", required: true)]
-        public Input<string> FixedIpV6 { get; set; } = null!;
+        public string FixedIpV6 { get; set; } = null!;
 
         /// <summary>
         /// The MAC address assigned to this network interface.
         /// </summary>
         [Input("mac", required: true)]
-        public Input<string> Mac { get; set; } = null!;
+        public string Mac { get; set; } = null!;
 
         /// <summary>
         /// The name of the network
         /// </summary>
         [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        public string Name { get; set; } = null!;
 
         /// <summary>
         /// The port UUID for this network
         /// </summary>
         [Input("port", required: true)]
-        public Input<string> Port { get; set; } = null!;
+        public string Port { get; set; } = null!;
 
         /// <summary>
         /// The UUID of the network
         /// </summary>
         [Input("uuid", required: true)]
-        public Input<string> Uuid { get; set; } = null!;
+        public string Uuid { get; set; } = null!;
 
-        public GetInstanceV2NetworkInputArgs()
+        public GetInstanceV2NetworkArgs()
         {
         }
     }

@@ -12,6 +12,7 @@ __all__ = [
     'GetUserResult',
     'AwaitableGetUserResult',
     'get_user',
+    'get_user_output',
 ]
 
 @pulumi.output_type
@@ -221,3 +222,39 @@ def get_user(domain_id: Optional[str] = None,
         protocol_id=__ret__.protocol_id,
         region=__ret__.region,
         unique_id=__ret__.unique_id)
+
+
+@_utilities.lift_output_func(get_user)
+def get_user_output(domain_id: Optional[pulumi.Input[Optional[str]]] = None,
+                    enabled: Optional[pulumi.Input[Optional[bool]]] = None,
+                    idp_id: Optional[pulumi.Input[Optional[str]]] = None,
+                    name: Optional[pulumi.Input[Optional[str]]] = None,
+                    password_expires_at: Optional[pulumi.Input[Optional[str]]] = None,
+                    protocol_id: Optional[pulumi.Input[Optional[str]]] = None,
+                    region: Optional[pulumi.Input[Optional[str]]] = None,
+                    unique_id: Optional[pulumi.Input[Optional[str]]] = None,
+                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUserResult]:
+    """
+    Use this data source to get the ID of an OpenStack user.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    user1 = openstack.identity.get_user(name="user_1")
+    ```
+
+
+    :param str domain_id: The domain this user belongs to.
+    :param bool enabled: Whether the user is enabled or disabled. Valid
+           values are `true` and `false`.
+    :param str idp_id: The identity provider ID of the user.
+    :param str name: The name of the user.
+    :param str password_expires_at: Query for expired passwords. See the [OpenStack API docs](https://developer.openstack.org/api-ref/identity/v3/#list-users) for more information on the query format.
+    :param str protocol_id: The protocol ID of the user.
+    :param str region: The region the user is located in.
+    :param str unique_id: The unique ID of the user.
+    """
+    ...

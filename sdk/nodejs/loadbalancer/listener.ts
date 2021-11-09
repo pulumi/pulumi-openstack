@@ -235,22 +235,22 @@ export interface ListenerState {
      * The administrative state of the Listener.
      * A valid value is true (UP) or false (DOWN).
      */
-    readonly adminStateUp?: pulumi.Input<boolean>;
+    adminStateUp?: pulumi.Input<boolean>;
     /**
      * A list of CIDR blocks that are permitted to connect to this listener, denying
      * all other source addresses. If not present, defaults to allow all.
      */
-    readonly allowedCidrs?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedCidrs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The maximum number of connections allowed
      * for the Listener.
      */
-    readonly connectionLimit?: pulumi.Input<number>;
+    connectionLimit?: pulumi.Input<number>;
     /**
      * The ID of the default pool with which the
      * Listener is associated.
      */
-    readonly defaultPoolId?: pulumi.Input<string>;
+    defaultPoolId?: pulumi.Input<string>;
     /**
      * A reference to a Barbican Secrets
      * container which stores TLS information. This is required if the protocol
@@ -258,75 +258,75 @@ export interface ListenerState {
      * [here](https://wiki.openstack.org/wiki/Network/LBaaS/docs/how-to-create-tls-loadbalancer)
      * for more information.
      */
-    readonly defaultTlsContainerRef?: pulumi.Input<string>;
+    defaultTlsContainerRef?: pulumi.Input<string>;
     /**
      * Human-readable description for the Listener.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The list of key value pairs representing headers to insert
      * into the request before it is sent to the backend members. Changing this updates the headers of the
      * existing listener.
      */
-    readonly insertHeaders?: pulumi.Input<{[key: string]: any}>;
+    insertHeaders?: pulumi.Input<{[key: string]: any}>;
     /**
      * The load balancer on which to provision this
      * Listener. Changing this creates a new Listener.
      */
-    readonly loadbalancerId?: pulumi.Input<string>;
+    loadbalancerId?: pulumi.Input<string>;
     /**
      * Human-readable name for the Listener. Does not have
      * to be unique.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The protocol - can either be TCP, HTTP, HTTPS,
      * TERMINATED_HTTPS, UDP (supported only in Octavia) or SCTP (supported only
      * in **Octavia minor version >= 2.23**). Changing this creates a new Listener.
      */
-    readonly protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string>;
     /**
      * The port on which to listen for client traffic.
      * Changing this creates a new Listener.
      */
-    readonly protocolPort?: pulumi.Input<number>;
+    protocolPort?: pulumi.Input<number>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create an . If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * Listener.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * A list of references to Barbican Secrets
      * containers which store SNI information. See
      * [here](https://wiki.openstack.org/wiki/Network/LBaaS/docs/how-to-create-tls-loadbalancer)
      * for more information.
      */
-    readonly sniContainerRefs?: pulumi.Input<pulumi.Input<string>[]>;
+    sniContainerRefs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Required for admins. The UUID of the tenant who owns
      * the Listener.  Only administrative users can specify a tenant UUID
      * other than their own. Changing this creates a new Listener.
      */
-    readonly tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string>;
     /**
      * The client inactivity timeout in milliseconds.
      */
-    readonly timeoutClientData?: pulumi.Input<number>;
+    timeoutClientData?: pulumi.Input<number>;
     /**
      * The member connection timeout in milliseconds.
      */
-    readonly timeoutMemberConnect?: pulumi.Input<number>;
+    timeoutMemberConnect?: pulumi.Input<number>;
     /**
      * The member inactivity timeout in milliseconds.
      */
-    readonly timeoutMemberData?: pulumi.Input<number>;
+    timeoutMemberData?: pulumi.Input<number>;
     /**
      * The time in milliseconds, to wait for additional
      * TCP packets for content inspection.
      */
-    readonly timeoutTcpInspect?: pulumi.Input<number>;
+    timeoutTcpInspect?: pulumi.Input<number>;
 }
 
 /**
@@ -337,22 +337,22 @@ export interface ListenerArgs {
      * The administrative state of the Listener.
      * A valid value is true (UP) or false (DOWN).
      */
-    readonly adminStateUp?: pulumi.Input<boolean>;
+    adminStateUp?: pulumi.Input<boolean>;
     /**
      * A list of CIDR blocks that are permitted to connect to this listener, denying
      * all other source addresses. If not present, defaults to allow all.
      */
-    readonly allowedCidrs?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedCidrs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The maximum number of connections allowed
      * for the Listener.
      */
-    readonly connectionLimit?: pulumi.Input<number>;
+    connectionLimit?: pulumi.Input<number>;
     /**
      * The ID of the default pool with which the
      * Listener is associated.
      */
-    readonly defaultPoolId?: pulumi.Input<string>;
+    defaultPoolId?: pulumi.Input<string>;
     /**
      * A reference to a Barbican Secrets
      * container which stores TLS information. This is required if the protocol
@@ -360,73 +360,73 @@ export interface ListenerArgs {
      * [here](https://wiki.openstack.org/wiki/Network/LBaaS/docs/how-to-create-tls-loadbalancer)
      * for more information.
      */
-    readonly defaultTlsContainerRef?: pulumi.Input<string>;
+    defaultTlsContainerRef?: pulumi.Input<string>;
     /**
      * Human-readable description for the Listener.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The list of key value pairs representing headers to insert
      * into the request before it is sent to the backend members. Changing this updates the headers of the
      * existing listener.
      */
-    readonly insertHeaders?: pulumi.Input<{[key: string]: any}>;
+    insertHeaders?: pulumi.Input<{[key: string]: any}>;
     /**
      * The load balancer on which to provision this
      * Listener. Changing this creates a new Listener.
      */
-    readonly loadbalancerId: pulumi.Input<string>;
+    loadbalancerId: pulumi.Input<string>;
     /**
      * Human-readable name for the Listener. Does not have
      * to be unique.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The protocol - can either be TCP, HTTP, HTTPS,
      * TERMINATED_HTTPS, UDP (supported only in Octavia) or SCTP (supported only
      * in **Octavia minor version >= 2.23**). Changing this creates a new Listener.
      */
-    readonly protocol: pulumi.Input<string>;
+    protocol: pulumi.Input<string>;
     /**
      * The port on which to listen for client traffic.
      * Changing this creates a new Listener.
      */
-    readonly protocolPort: pulumi.Input<number>;
+    protocolPort: pulumi.Input<number>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create an . If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * Listener.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * A list of references to Barbican Secrets
      * containers which store SNI information. See
      * [here](https://wiki.openstack.org/wiki/Network/LBaaS/docs/how-to-create-tls-loadbalancer)
      * for more information.
      */
-    readonly sniContainerRefs?: pulumi.Input<pulumi.Input<string>[]>;
+    sniContainerRefs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Required for admins. The UUID of the tenant who owns
      * the Listener.  Only administrative users can specify a tenant UUID
      * other than their own. Changing this creates a new Listener.
      */
-    readonly tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string>;
     /**
      * The client inactivity timeout in milliseconds.
      */
-    readonly timeoutClientData?: pulumi.Input<number>;
+    timeoutClientData?: pulumi.Input<number>;
     /**
      * The member connection timeout in milliseconds.
      */
-    readonly timeoutMemberConnect?: pulumi.Input<number>;
+    timeoutMemberConnect?: pulumi.Input<number>;
     /**
      * The member inactivity timeout in milliseconds.
      */
-    readonly timeoutMemberData?: pulumi.Input<number>;
+    timeoutMemberData?: pulumi.Input<number>;
     /**
      * The time in milliseconds, to wait for additional
      * TCP packets for content inspection.
      */
-    readonly timeoutTcpInspect?: pulumi.Input<number>;
+    timeoutTcpInspect?: pulumi.Input<number>;
 }

@@ -356,6 +356,12 @@ func (o SiteConnectionDpdArrayOutput) Index(i pulumi.IntInput) SiteConnectionDpd
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*IkePolicyLifetimeInput)(nil)).Elem(), IkePolicyLifetimeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IkePolicyLifetimeArrayInput)(nil)).Elem(), IkePolicyLifetimeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IpSecPolicyLifetimeInput)(nil)).Elem(), IpSecPolicyLifetimeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IpSecPolicyLifetimeArrayInput)(nil)).Elem(), IpSecPolicyLifetimeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SiteConnectionDpdInput)(nil)).Elem(), SiteConnectionDpdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SiteConnectionDpdArrayInput)(nil)).Elem(), SiteConnectionDpdArray{})
 	pulumi.RegisterOutputType(IkePolicyLifetimeOutput{})
 	pulumi.RegisterOutputType(IkePolicyLifetimeArrayOutput{})
 	pulumi.RegisterOutputType(IpSecPolicyLifetimeOutput{})

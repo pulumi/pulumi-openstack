@@ -4,6 +4,9 @@
 package compute
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -67,4 +70,87 @@ type GetHypervisorV2Result struct {
 	Type string `pulumi:"type"`
 	// The number of virtual CPUs the hypervisor can provide
 	Vcpus int `pulumi:"vcpus"`
+}
+
+func GetHypervisorV2Output(ctx *pulumi.Context, args GetHypervisorV2OutputArgs, opts ...pulumi.InvokeOption) GetHypervisorV2ResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetHypervisorV2Result, error) {
+			args := v.(GetHypervisorV2Args)
+			r, err := GetHypervisorV2(ctx, &args, opts...)
+			return *r, err
+		}).(GetHypervisorV2ResultOutput)
+}
+
+// A collection of arguments for invoking getHypervisorV2.
+type GetHypervisorV2OutputArgs struct {
+	// The hostname of the hypervisor
+	Hostname pulumi.StringInput `pulumi:"hostname"`
+}
+
+func (GetHypervisorV2OutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHypervisorV2Args)(nil)).Elem()
+}
+
+// A collection of values returned by getHypervisorV2.
+type GetHypervisorV2ResultOutput struct{ *pulumi.OutputState }
+
+func (GetHypervisorV2ResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHypervisorV2Result)(nil)).Elem()
+}
+
+func (o GetHypervisorV2ResultOutput) ToGetHypervisorV2ResultOutput() GetHypervisorV2ResultOutput {
+	return o
+}
+
+func (o GetHypervisorV2ResultOutput) ToGetHypervisorV2ResultOutputWithContext(ctx context.Context) GetHypervisorV2ResultOutput {
+	return o
+}
+
+// The amount in GigaBytes of local storage the hypervisor can provide
+func (o GetHypervisorV2ResultOutput) Disk() pulumi.IntOutput {
+	return o.ApplyT(func(v GetHypervisorV2Result) int { return v.Disk }).(pulumi.IntOutput)
+}
+
+// The IP address of the Hypervisor
+func (o GetHypervisorV2ResultOutput) HostIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHypervisorV2Result) string { return v.HostIp }).(pulumi.StringOutput)
+}
+
+// See Argument Reference above.
+func (o GetHypervisorV2ResultOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHypervisorV2Result) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetHypervisorV2ResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHypervisorV2Result) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The number in MegaBytes of memory the hypervisor can provide
+func (o GetHypervisorV2ResultOutput) Memory() pulumi.IntOutput {
+	return o.ApplyT(func(v GetHypervisorV2Result) int { return v.Memory }).(pulumi.IntOutput)
+}
+
+// The state of the hypervisor (`up` or `down`)
+func (o GetHypervisorV2ResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHypervisorV2Result) string { return v.State }).(pulumi.StringOutput)
+}
+
+// The status of the hypervisor (`enabled` or `disabled`)
+func (o GetHypervisorV2ResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHypervisorV2Result) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The type of the hypervisor (example: `QEMU`)
+func (o GetHypervisorV2ResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHypervisorV2Result) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The number of virtual CPUs the hypervisor can provide
+func (o GetHypervisorV2ResultOutput) Vcpus() pulumi.IntOutput {
+	return o.ApplyT(func(v GetHypervisorV2Result) int { return v.Vcpus }).(pulumi.IntOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetHypervisorV2ResultOutput{})
 }

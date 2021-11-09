@@ -321,7 +321,7 @@ type IpSecPolicyArrayInput interface {
 type IpSecPolicyArray []IpSecPolicyInput
 
 func (IpSecPolicyArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*IpSecPolicy)(nil))
+	return reflect.TypeOf((*[]*IpSecPolicy)(nil)).Elem()
 }
 
 func (i IpSecPolicyArray) ToIpSecPolicyArrayOutput() IpSecPolicyArrayOutput {
@@ -346,7 +346,7 @@ type IpSecPolicyMapInput interface {
 type IpSecPolicyMap map[string]IpSecPolicyInput
 
 func (IpSecPolicyMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*IpSecPolicy)(nil))
+	return reflect.TypeOf((*map[string]*IpSecPolicy)(nil)).Elem()
 }
 
 func (i IpSecPolicyMap) ToIpSecPolicyMapOutput() IpSecPolicyMapOutput {
@@ -357,9 +357,7 @@ func (i IpSecPolicyMap) ToIpSecPolicyMapOutputWithContext(ctx context.Context) I
 	return pulumi.ToOutputWithContext(ctx, i).(IpSecPolicyMapOutput)
 }
 
-type IpSecPolicyOutput struct {
-	*pulumi.OutputState
-}
+type IpSecPolicyOutput struct{ *pulumi.OutputState }
 
 func (IpSecPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*IpSecPolicy)(nil))
@@ -378,14 +376,12 @@ func (o IpSecPolicyOutput) ToIpSecPolicyPtrOutput() IpSecPolicyPtrOutput {
 }
 
 func (o IpSecPolicyOutput) ToIpSecPolicyPtrOutputWithContext(ctx context.Context) IpSecPolicyPtrOutput {
-	return o.ApplyT(func(v IpSecPolicy) *IpSecPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IpSecPolicy) *IpSecPolicy {
 		return &v
 	}).(IpSecPolicyPtrOutput)
 }
 
-type IpSecPolicyPtrOutput struct {
-	*pulumi.OutputState
-}
+type IpSecPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (IpSecPolicyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**IpSecPolicy)(nil))
@@ -397,6 +393,16 @@ func (o IpSecPolicyPtrOutput) ToIpSecPolicyPtrOutput() IpSecPolicyPtrOutput {
 
 func (o IpSecPolicyPtrOutput) ToIpSecPolicyPtrOutputWithContext(ctx context.Context) IpSecPolicyPtrOutput {
 	return o
+}
+
+func (o IpSecPolicyPtrOutput) Elem() IpSecPolicyOutput {
+	return o.ApplyT(func(v *IpSecPolicy) IpSecPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret IpSecPolicy
+		return ret
+	}).(IpSecPolicyOutput)
 }
 
 type IpSecPolicyArrayOutput struct{ *pulumi.OutputState }
@@ -440,6 +446,10 @@ func (o IpSecPolicyMapOutput) MapIndex(k pulumi.StringInput) IpSecPolicyOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*IpSecPolicyInput)(nil)).Elem(), &IpSecPolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IpSecPolicyPtrInput)(nil)).Elem(), &IpSecPolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IpSecPolicyArrayInput)(nil)).Elem(), IpSecPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IpSecPolicyMapInput)(nil)).Elem(), IpSecPolicyMap{})
 	pulumi.RegisterOutputType(IpSecPolicyOutput{})
 	pulumi.RegisterOutputType(IpSecPolicyPtrOutput{})
 	pulumi.RegisterOutputType(IpSecPolicyArrayOutput{})

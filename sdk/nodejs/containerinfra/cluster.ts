@@ -153,53 +153,53 @@ export class Cluster extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Cluster resources.
  */
 export interface ClusterState {
-    readonly apiAddress?: pulumi.Input<string>;
-    readonly clusterTemplateId?: pulumi.Input<string>;
-    readonly coeVersion?: pulumi.Input<string>;
-    readonly containerVersion?: pulumi.Input<string>;
-    readonly createTimeout?: pulumi.Input<number>;
-    readonly createdAt?: pulumi.Input<string>;
-    readonly discoveryUrl?: pulumi.Input<string>;
-    readonly dockerVolumeSize?: pulumi.Input<number>;
-    readonly fixedNetwork?: pulumi.Input<string>;
-    readonly fixedSubnet?: pulumi.Input<string>;
-    readonly flavor?: pulumi.Input<string>;
-    readonly floatingIpEnabled?: pulumi.Input<boolean>;
-    readonly keypair?: pulumi.Input<string>;
-    readonly kubeconfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
-    readonly masterAddresses?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly masterCount?: pulumi.Input<number>;
-    readonly masterFlavor?: pulumi.Input<string>;
-    readonly mergeLabels?: pulumi.Input<boolean>;
-    readonly name?: pulumi.Input<string>;
-    readonly nodeAddresses?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly nodeCount?: pulumi.Input<number>;
-    readonly projectId?: pulumi.Input<string>;
-    readonly region?: pulumi.Input<string>;
-    readonly stackId?: pulumi.Input<string>;
-    readonly updatedAt?: pulumi.Input<string>;
-    readonly userId?: pulumi.Input<string>;
+    apiAddress?: pulumi.Input<string>;
+    clusterTemplateId?: pulumi.Input<string>;
+    coeVersion?: pulumi.Input<string>;
+    containerVersion?: pulumi.Input<string>;
+    createTimeout?: pulumi.Input<number>;
+    createdAt?: pulumi.Input<string>;
+    discoveryUrl?: pulumi.Input<string>;
+    dockerVolumeSize?: pulumi.Input<number>;
+    fixedNetwork?: pulumi.Input<string>;
+    fixedSubnet?: pulumi.Input<string>;
+    flavor?: pulumi.Input<string>;
+    floatingIpEnabled?: pulumi.Input<boolean>;
+    keypair?: pulumi.Input<string>;
+    kubeconfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: any}>;
+    masterAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    masterCount?: pulumi.Input<number>;
+    masterFlavor?: pulumi.Input<string>;
+    mergeLabels?: pulumi.Input<boolean>;
+    name?: pulumi.Input<string>;
+    nodeAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    nodeCount?: pulumi.Input<number>;
+    projectId?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
+    stackId?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string>;
+    userId?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a Cluster resource.
  */
 export interface ClusterArgs {
-    readonly clusterTemplateId: pulumi.Input<string>;
-    readonly createTimeout?: pulumi.Input<number>;
-    readonly discoveryUrl?: pulumi.Input<string>;
-    readonly dockerVolumeSize?: pulumi.Input<number>;
-    readonly fixedNetwork?: pulumi.Input<string>;
-    readonly fixedSubnet?: pulumi.Input<string>;
-    readonly flavor?: pulumi.Input<string>;
-    readonly floatingIpEnabled?: pulumi.Input<boolean>;
-    readonly keypair?: pulumi.Input<string>;
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
-    readonly masterCount?: pulumi.Input<number>;
-    readonly masterFlavor?: pulumi.Input<string>;
-    readonly mergeLabels?: pulumi.Input<boolean>;
-    readonly name?: pulumi.Input<string>;
-    readonly nodeCount?: pulumi.Input<number>;
-    readonly region?: pulumi.Input<string>;
+    clusterTemplateId: pulumi.Input<string>;
+    createTimeout?: pulumi.Input<number>;
+    discoveryUrl?: pulumi.Input<string>;
+    dockerVolumeSize?: pulumi.Input<number>;
+    fixedNetwork?: pulumi.Input<string>;
+    fixedSubnet?: pulumi.Input<string>;
+    flavor?: pulumi.Input<string>;
+    floatingIpEnabled?: pulumi.Input<boolean>;
+    keypair?: pulumi.Input<string>;
+    labels?: pulumi.Input<{[key: string]: any}>;
+    masterCount?: pulumi.Input<number>;
+    masterFlavor?: pulumi.Input<string>;
+    mergeLabels?: pulumi.Input<boolean>;
+    name?: pulumi.Input<string>;
+    nodeCount?: pulumi.Input<number>;
+    region?: pulumi.Input<string>;
 }

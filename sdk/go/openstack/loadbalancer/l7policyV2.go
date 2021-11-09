@@ -361,7 +361,7 @@ type L7PolicyV2ArrayInput interface {
 type L7PolicyV2Array []L7PolicyV2Input
 
 func (L7PolicyV2Array) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*L7PolicyV2)(nil))
+	return reflect.TypeOf((*[]*L7PolicyV2)(nil)).Elem()
 }
 
 func (i L7PolicyV2Array) ToL7PolicyV2ArrayOutput() L7PolicyV2ArrayOutput {
@@ -386,7 +386,7 @@ type L7PolicyV2MapInput interface {
 type L7PolicyV2Map map[string]L7PolicyV2Input
 
 func (L7PolicyV2Map) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*L7PolicyV2)(nil))
+	return reflect.TypeOf((*map[string]*L7PolicyV2)(nil)).Elem()
 }
 
 func (i L7PolicyV2Map) ToL7PolicyV2MapOutput() L7PolicyV2MapOutput {
@@ -397,9 +397,7 @@ func (i L7PolicyV2Map) ToL7PolicyV2MapOutputWithContext(ctx context.Context) L7P
 	return pulumi.ToOutputWithContext(ctx, i).(L7PolicyV2MapOutput)
 }
 
-type L7PolicyV2Output struct {
-	*pulumi.OutputState
-}
+type L7PolicyV2Output struct{ *pulumi.OutputState }
 
 func (L7PolicyV2Output) ElementType() reflect.Type {
 	return reflect.TypeOf((*L7PolicyV2)(nil))
@@ -418,14 +416,12 @@ func (o L7PolicyV2Output) ToL7PolicyV2PtrOutput() L7PolicyV2PtrOutput {
 }
 
 func (o L7PolicyV2Output) ToL7PolicyV2PtrOutputWithContext(ctx context.Context) L7PolicyV2PtrOutput {
-	return o.ApplyT(func(v L7PolicyV2) *L7PolicyV2 {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v L7PolicyV2) *L7PolicyV2 {
 		return &v
 	}).(L7PolicyV2PtrOutput)
 }
 
-type L7PolicyV2PtrOutput struct {
-	*pulumi.OutputState
-}
+type L7PolicyV2PtrOutput struct{ *pulumi.OutputState }
 
 func (L7PolicyV2PtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**L7PolicyV2)(nil))
@@ -437,6 +433,16 @@ func (o L7PolicyV2PtrOutput) ToL7PolicyV2PtrOutput() L7PolicyV2PtrOutput {
 
 func (o L7PolicyV2PtrOutput) ToL7PolicyV2PtrOutputWithContext(ctx context.Context) L7PolicyV2PtrOutput {
 	return o
+}
+
+func (o L7PolicyV2PtrOutput) Elem() L7PolicyV2Output {
+	return o.ApplyT(func(v *L7PolicyV2) L7PolicyV2 {
+		if v != nil {
+			return *v
+		}
+		var ret L7PolicyV2
+		return ret
+	}).(L7PolicyV2Output)
 }
 
 type L7PolicyV2ArrayOutput struct{ *pulumi.OutputState }
@@ -480,6 +486,10 @@ func (o L7PolicyV2MapOutput) MapIndex(k pulumi.StringInput) L7PolicyV2Output {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*L7PolicyV2Input)(nil)).Elem(), &L7PolicyV2{})
+	pulumi.RegisterInputType(reflect.TypeOf((*L7PolicyV2PtrInput)(nil)).Elem(), &L7PolicyV2{})
+	pulumi.RegisterInputType(reflect.TypeOf((*L7PolicyV2ArrayInput)(nil)).Elem(), L7PolicyV2Array{})
+	pulumi.RegisterInputType(reflect.TypeOf((*L7PolicyV2MapInput)(nil)).Elem(), L7PolicyV2Map{})
 	pulumi.RegisterOutputType(L7PolicyV2Output{})
 	pulumi.RegisterOutputType(L7PolicyV2PtrOutput{})
 	pulumi.RegisterOutputType(L7PolicyV2ArrayOutput{})

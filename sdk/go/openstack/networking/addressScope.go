@@ -286,7 +286,7 @@ type AddressScopeArrayInput interface {
 type AddressScopeArray []AddressScopeInput
 
 func (AddressScopeArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*AddressScope)(nil))
+	return reflect.TypeOf((*[]*AddressScope)(nil)).Elem()
 }
 
 func (i AddressScopeArray) ToAddressScopeArrayOutput() AddressScopeArrayOutput {
@@ -311,7 +311,7 @@ type AddressScopeMapInput interface {
 type AddressScopeMap map[string]AddressScopeInput
 
 func (AddressScopeMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*AddressScope)(nil))
+	return reflect.TypeOf((*map[string]*AddressScope)(nil)).Elem()
 }
 
 func (i AddressScopeMap) ToAddressScopeMapOutput() AddressScopeMapOutput {
@@ -322,9 +322,7 @@ func (i AddressScopeMap) ToAddressScopeMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(AddressScopeMapOutput)
 }
 
-type AddressScopeOutput struct {
-	*pulumi.OutputState
-}
+type AddressScopeOutput struct{ *pulumi.OutputState }
 
 func (AddressScopeOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AddressScope)(nil))
@@ -343,14 +341,12 @@ func (o AddressScopeOutput) ToAddressScopePtrOutput() AddressScopePtrOutput {
 }
 
 func (o AddressScopeOutput) ToAddressScopePtrOutputWithContext(ctx context.Context) AddressScopePtrOutput {
-	return o.ApplyT(func(v AddressScope) *AddressScope {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AddressScope) *AddressScope {
 		return &v
 	}).(AddressScopePtrOutput)
 }
 
-type AddressScopePtrOutput struct {
-	*pulumi.OutputState
-}
+type AddressScopePtrOutput struct{ *pulumi.OutputState }
 
 func (AddressScopePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AddressScope)(nil))
@@ -362,6 +358,16 @@ func (o AddressScopePtrOutput) ToAddressScopePtrOutput() AddressScopePtrOutput {
 
 func (o AddressScopePtrOutput) ToAddressScopePtrOutputWithContext(ctx context.Context) AddressScopePtrOutput {
 	return o
+}
+
+func (o AddressScopePtrOutput) Elem() AddressScopeOutput {
+	return o.ApplyT(func(v *AddressScope) AddressScope {
+		if v != nil {
+			return *v
+		}
+		var ret AddressScope
+		return ret
+	}).(AddressScopeOutput)
 }
 
 type AddressScopeArrayOutput struct{ *pulumi.OutputState }
@@ -405,6 +411,10 @@ func (o AddressScopeMapOutput) MapIndex(k pulumi.StringInput) AddressScopeOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AddressScopeInput)(nil)).Elem(), &AddressScope{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddressScopePtrInput)(nil)).Elem(), &AddressScope{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddressScopeArrayInput)(nil)).Elem(), AddressScopeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddressScopeMapInput)(nil)).Elem(), AddressScopeMap{})
 	pulumi.RegisterOutputType(AddressScopeOutput{})
 	pulumi.RegisterOutputType(AddressScopePtrOutput{})
 	pulumi.RegisterOutputType(AddressScopeArrayOutput{})

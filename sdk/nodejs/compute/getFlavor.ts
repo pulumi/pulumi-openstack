@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -17,7 +16,7 @@ import * as utilities from "../utilities";
  * const small = pulumi.output(openstack.compute.getFlavor({
  *     ram: 512,
  *     vcpus: 1,
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getFlavor(args?: GetFlavorArgs, opts?: pulumi.InvokeOptions): Promise<GetFlavorResult> {
@@ -51,51 +50,51 @@ export interface GetFlavorArgs {
     /**
      * The exact amount of disk (in gigabytes).
      */
-    readonly disk?: number;
+    disk?: number;
     /**
      * The ID of the flavor. Conflicts with the `name`,
      * `minRam` and `minDisk`
      */
-    readonly flavorId?: string;
+    flavorId?: string;
     /**
      * The flavor visibility.
      */
-    readonly isPublic?: boolean;
+    isPublic?: boolean;
     /**
      * The minimum amount of disk (in gigabytes). Conflicts
      * with the `flavorId`.
      */
-    readonly minDisk?: number;
+    minDisk?: number;
     /**
      * The minimum amount of RAM (in megabytes). Conflicts
      * with the `flavorId`.
      */
-    readonly minRam?: number;
+    minRam?: number;
     /**
      * The name of the flavor. Conflicts with the `flavorId`.
      */
-    readonly name?: string;
+    name?: string;
     /**
      * The exact amount of RAM (in megabytes).
      */
-    readonly ram?: number;
+    ram?: number;
     /**
      * The region in which to obtain the V2 Compute client.
      * If omitted, the `region` argument of the provider is used.
      */
-    readonly region?: string;
+    region?: string;
     /**
      * The `rxTxFactor` of the flavor.
      */
-    readonly rxTxFactor?: number;
+    rxTxFactor?: number;
     /**
      * The amount of swap (in gigabytes).
      */
-    readonly swap?: number;
+    swap?: number;
     /**
      * The amount of VCPUs.
      */
-    readonly vcpus?: number;
+    vcpus?: number;
 }
 
 /**
@@ -121,4 +120,62 @@ export interface GetFlavorResult {
     readonly rxTxFactor?: number;
     readonly swap?: number;
     readonly vcpus?: number;
+}
+
+export function getFlavorOutput(args?: GetFlavorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFlavorResult> {
+    return pulumi.output(args).apply(a => getFlavor(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getFlavor.
+ */
+export interface GetFlavorOutputArgs {
+    /**
+     * The exact amount of disk (in gigabytes).
+     */
+    disk?: pulumi.Input<number>;
+    /**
+     * The ID of the flavor. Conflicts with the `name`,
+     * `minRam` and `minDisk`
+     */
+    flavorId?: pulumi.Input<string>;
+    /**
+     * The flavor visibility.
+     */
+    isPublic?: pulumi.Input<boolean>;
+    /**
+     * The minimum amount of disk (in gigabytes). Conflicts
+     * with the `flavorId`.
+     */
+    minDisk?: pulumi.Input<number>;
+    /**
+     * The minimum amount of RAM (in megabytes). Conflicts
+     * with the `flavorId`.
+     */
+    minRam?: pulumi.Input<number>;
+    /**
+     * The name of the flavor. Conflicts with the `flavorId`.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The exact amount of RAM (in megabytes).
+     */
+    ram?: pulumi.Input<number>;
+    /**
+     * The region in which to obtain the V2 Compute client.
+     * If omitted, the `region` argument of the provider is used.
+     */
+    region?: pulumi.Input<string>;
+    /**
+     * The `rxTxFactor` of the flavor.
+     */
+    rxTxFactor?: pulumi.Input<number>;
+    /**
+     * The amount of swap (in gigabytes).
+     */
+    swap?: pulumi.Input<number>;
+    /**
+     * The amount of VCPUs.
+     */
+    vcpus?: pulumi.Input<number>;
 }

@@ -13,6 +13,7 @@ __all__ = [
     'GetSubnetResult',
     'AwaitableGetSubnetResult',
     'get_subnet',
+    'get_subnet_output',
 ]
 
 @pulumi.output_type
@@ -337,3 +338,55 @@ def get_subnet(cidr: Optional[str] = None,
         subnetpool_id=__ret__.subnetpool_id,
         tags=__ret__.tags,
         tenant_id=__ret__.tenant_id)
+
+
+@_utilities.lift_output_func(get_subnet)
+def get_subnet_output(cidr: Optional[pulumi.Input[Optional[str]]] = None,
+                      description: Optional[pulumi.Input[Optional[str]]] = None,
+                      dhcp_disabled: Optional[pulumi.Input[Optional[bool]]] = None,
+                      dhcp_enabled: Optional[pulumi.Input[Optional[bool]]] = None,
+                      gateway_ip: Optional[pulumi.Input[Optional[str]]] = None,
+                      ip_version: Optional[pulumi.Input[Optional[int]]] = None,
+                      ipv6_address_mode: Optional[pulumi.Input[Optional[str]]] = None,
+                      ipv6_ra_mode: Optional[pulumi.Input[Optional[str]]] = None,
+                      name: Optional[pulumi.Input[Optional[str]]] = None,
+                      network_id: Optional[pulumi.Input[Optional[str]]] = None,
+                      region: Optional[pulumi.Input[Optional[str]]] = None,
+                      subnet_id: Optional[pulumi.Input[Optional[str]]] = None,
+                      subnetpool_id: Optional[pulumi.Input[Optional[str]]] = None,
+                      tags: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                      tenant_id: Optional[pulumi.Input[Optional[str]]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSubnetResult]:
+    """
+    Use this data source to get the ID of an available OpenStack subnet.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    subnet1 = openstack.networking.get_subnet(name="subnet_1")
+    ```
+
+
+    :param str cidr: The CIDR of the subnet.
+    :param str description: Human-readable description of the subnet.
+    :param bool dhcp_enabled: If the subnet has DHCP enabled.
+    :param str gateway_ip: The IP of the subnet's gateway.
+    :param int ip_version: The IP version of the subnet (either 4 or 6).
+    :param str ipv6_address_mode: The IPv6 address mode. Valid values are
+           `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.
+    :param str ipv6_ra_mode: The IPv6 Router Advertisement mode. Valid values
+           are `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.
+    :param str name: The name of the subnet.
+    :param str network_id: The ID of the network the subnet belongs to.
+    :param str region: The region in which to obtain the V2 Neutron client.
+           A Neutron client is needed to retrieve subnet ids. If omitted, the
+           `region` argument of the provider is used.
+    :param str subnet_id: The ID of the subnet.
+    :param str subnetpool_id: The ID of the subnetpool associated with the subnet.
+    :param Sequence[str] tags: The list of subnet tags to filter.
+    :param str tenant_id: The owner of the subnet.
+    """
+    ...

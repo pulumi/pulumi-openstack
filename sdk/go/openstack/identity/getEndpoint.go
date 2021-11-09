@@ -4,6 +4,9 @@
 package identity
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -84,4 +87,102 @@ type GetEndpointResult struct {
 	ServiceType *string `pulumi:"serviceType"`
 	// The endpoint URL.
 	Url string `pulumi:"url"`
+}
+
+func GetEndpointOutput(ctx *pulumi.Context, args GetEndpointOutputArgs, opts ...pulumi.InvokeOption) GetEndpointResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetEndpointResult, error) {
+			args := v.(GetEndpointArgs)
+			r, err := GetEndpoint(ctx, &args, opts...)
+			return *r, err
+		}).(GetEndpointResultOutput)
+}
+
+// A collection of arguments for invoking getEndpoint.
+type GetEndpointOutputArgs struct {
+	// The region the endpoint is assigned to. The
+	// `region` and `endpointRegion` can be different.
+	EndpointRegion pulumi.StringPtrInput `pulumi:"endpointRegion"`
+	// The endpoint interface. Valid values are `public`,
+	// `internal`, and `admin`. Default value is `public`
+	Interface pulumi.StringPtrInput `pulumi:"interface"`
+	// The name of the endpoint.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The region in which to obtain the V3 Keystone client.
+	// If omitted, the `region` argument of the provider is used.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// The service id this endpoint belongs to.
+	ServiceId pulumi.StringPtrInput `pulumi:"serviceId"`
+	// The service name of the endpoint.
+	ServiceName pulumi.StringPtrInput `pulumi:"serviceName"`
+	// The service type of the endpoint.
+	ServiceType pulumi.StringPtrInput `pulumi:"serviceType"`
+}
+
+func (GetEndpointOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEndpointArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getEndpoint.
+type GetEndpointResultOutput struct{ *pulumi.OutputState }
+
+func (GetEndpointResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEndpointResult)(nil)).Elem()
+}
+
+func (o GetEndpointResultOutput) ToGetEndpointResultOutput() GetEndpointResultOutput {
+	return o
+}
+
+func (o GetEndpointResultOutput) ToGetEndpointResultOutputWithContext(ctx context.Context) GetEndpointResultOutput {
+	return o
+}
+
+// See Argument Reference above.
+func (o GetEndpointResultOutput) EndpointRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEndpointResult) *string { return v.EndpointRegion }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetEndpointResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndpointResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// See Argument Reference above.
+func (o GetEndpointResultOutput) Interface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEndpointResult) *string { return v.Interface }).(pulumi.StringPtrOutput)
+}
+
+// See Argument Reference above.
+func (o GetEndpointResultOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEndpointResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// See Argument Reference above.
+func (o GetEndpointResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndpointResult) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// See Argument Reference above.
+func (o GetEndpointResultOutput) ServiceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEndpointResult) *string { return v.ServiceId }).(pulumi.StringPtrOutput)
+}
+
+// See Argument Reference above.
+func (o GetEndpointResultOutput) ServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEndpointResult) *string { return v.ServiceName }).(pulumi.StringPtrOutput)
+}
+
+// See Argument Reference above.
+func (o GetEndpointResultOutput) ServiceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEndpointResult) *string { return v.ServiceType }).(pulumi.StringPtrOutput)
+}
+
+// The endpoint URL.
+func (o GetEndpointResultOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndpointResult) string { return v.Url }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetEndpointResultOutput{})
 }

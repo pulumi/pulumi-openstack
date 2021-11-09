@@ -12,6 +12,7 @@ __all__ = [
     'GetAvailbilityZonesResult',
     'AwaitableGetAvailbilityZonesResult',
     'get_availbility_zones',
+    'get_availbility_zones_output',
 ]
 
 @pulumi.output_type
@@ -97,3 +98,26 @@ def get_availbility_zones(region: Optional[str] = None,
         id=__ret__.id,
         names=__ret__.names,
         region=__ret__.region)
+
+
+@_utilities.lift_output_func(get_availbility_zones)
+def get_availbility_zones_output(region: Optional[pulumi.Input[Optional[str]]] = None,
+                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAvailbilityZonesResult]:
+    """
+    Use this data source to get a list of Shared File System availability zones
+    from OpenStack
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    zones = openstack.sharedfilesystem.get_availbility_zones()
+    ```
+
+
+    :param str region: The region in which to obtain the V2 Shared File System
+           client. If omitted, the `region` argument of the provider is used.
+    """
+    ...

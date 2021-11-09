@@ -141,27 +141,27 @@ export interface TransferAcceptState {
      * status. The check is enabled by default. If this argument is true, zone
      * will be considered as created/updated if OpenStack accept returned success.
      */
-    readonly disableStatusCheck?: pulumi.Input<boolean>;
+    disableStatusCheck?: pulumi.Input<boolean>;
     /**
      * The transfer key.
      */
-    readonly key?: pulumi.Input<string>;
+    key?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 Compute client.
      * Keypairs are associated with accounts, but a Compute client is needed to
      * create one. If omitted, the `region` argument of the provider is used.
      * Changing this creates a new DNS zone.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * Map of additional options. Changing this creates a
      * new transfer accept.
      */
-    readonly valueSpecs?: pulumi.Input<{[key: string]: any}>;
+    valueSpecs?: pulumi.Input<{[key: string]: any}>;
     /**
      * The ID of the zone transfer request.
      */
-    readonly zoneTransferRequestId?: pulumi.Input<string>;
+    zoneTransferRequestId?: pulumi.Input<string>;
 }
 
 /**
@@ -173,25 +173,25 @@ export interface TransferAcceptArgs {
      * status. The check is enabled by default. If this argument is true, zone
      * will be considered as created/updated if OpenStack accept returned success.
      */
-    readonly disableStatusCheck?: pulumi.Input<boolean>;
+    disableStatusCheck?: pulumi.Input<boolean>;
     /**
      * The transfer key.
      */
-    readonly key: pulumi.Input<string>;
+    key: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 Compute client.
      * Keypairs are associated with accounts, but a Compute client is needed to
      * create one. If omitted, the `region` argument of the provider is used.
      * Changing this creates a new DNS zone.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * Map of additional options. Changing this creates a
      * new transfer accept.
      */
-    readonly valueSpecs?: pulumi.Input<{[key: string]: any}>;
+    valueSpecs?: pulumi.Input<{[key: string]: any}>;
     /**
      * The ID of the zone transfer request.
      */
-    readonly zoneTransferRequestId: pulumi.Input<string>;
+    zoneTransferRequestId: pulumi.Input<string>;
 }

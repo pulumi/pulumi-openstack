@@ -4,6 +4,9 @@
 package networking
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -115,4 +118,165 @@ type LookupSubnetPoolResult struct {
 	Tags   []string `pulumi:"tags"`
 	// The time at which subnetpool was created.
 	UpdatedAt string `pulumi:"updatedAt"`
+}
+
+func LookupSubnetPoolOutput(ctx *pulumi.Context, args LookupSubnetPoolOutputArgs, opts ...pulumi.InvokeOption) LookupSubnetPoolResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupSubnetPoolResult, error) {
+			args := v.(LookupSubnetPoolArgs)
+			r, err := LookupSubnetPool(ctx, &args, opts...)
+			return *r, err
+		}).(LookupSubnetPoolResultOutput)
+}
+
+// A collection of arguments for invoking getSubnetPool.
+type LookupSubnetPoolOutputArgs struct {
+	// The Neutron address scope that subnetpools
+	// is assigned to.
+	AddressScopeId pulumi.StringPtrInput `pulumi:"addressScopeId"`
+	// The size of the subnetpool default prefix
+	// length.
+	DefaultPrefixlen pulumi.IntPtrInput `pulumi:"defaultPrefixlen"`
+	// The per-project quota on the prefix space that
+	// can be allocated from the subnetpool for project subnets.
+	DefaultQuota pulumi.IntPtrInput `pulumi:"defaultQuota"`
+	// The human-readable description for the subnetpool.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The IP protocol version.
+	IpVersion pulumi.IntPtrInput `pulumi:"ipVersion"`
+	// Whether the subnetpool is default subnetpool or not.
+	IsDefault pulumi.BoolPtrInput `pulumi:"isDefault"`
+	// The size of the subnetpool max prefix length.
+	MaxPrefixlen pulumi.IntPtrInput `pulumi:"maxPrefixlen"`
+	// The size of the subnetpool min prefix length.
+	MinPrefixlen pulumi.IntPtrInput `pulumi:"minPrefixlen"`
+	// The name of the subnetpool.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The owner of the subnetpool.
+	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+	// The region in which to obtain the V2 Networking client.
+	// A Networking client is needed to retrieve a subnetpool id. If omitted, the
+	// `region` argument of the provider is used.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// Whether this subnetpool is shared across all projects.
+	Shared pulumi.BoolPtrInput `pulumi:"shared"`
+	// The list of subnetpool tags to filter.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+}
+
+func (LookupSubnetPoolOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSubnetPoolArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getSubnetPool.
+type LookupSubnetPoolResultOutput struct{ *pulumi.OutputState }
+
+func (LookupSubnetPoolResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSubnetPoolResult)(nil)).Elem()
+}
+
+func (o LookupSubnetPoolResultOutput) ToLookupSubnetPoolResultOutput() LookupSubnetPoolResultOutput {
+	return o
+}
+
+func (o LookupSubnetPoolResultOutput) ToLookupSubnetPoolResultOutputWithContext(ctx context.Context) LookupSubnetPoolResultOutput {
+	return o
+}
+
+// See Argument Reference above.
+// * `ipVersion` -The IP protocol version.
+func (o LookupSubnetPoolResultOutput) AddressScopeId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSubnetPoolResult) string { return v.AddressScopeId }).(pulumi.StringOutput)
+}
+
+// The set of string tags applied on the subnetpool.
+func (o LookupSubnetPoolResultOutput) AllTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupSubnetPoolResult) []string { return v.AllTags }).(pulumi.StringArrayOutput)
+}
+
+// The time at which subnetpool was created.
+func (o LookupSubnetPoolResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSubnetPoolResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// See Argument Reference above.
+func (o LookupSubnetPoolResultOutput) DefaultPrefixlen() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupSubnetPoolResult) int { return v.DefaultPrefixlen }).(pulumi.IntOutput)
+}
+
+// See Argument Reference above.
+func (o LookupSubnetPoolResultOutput) DefaultQuota() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupSubnetPoolResult) int { return v.DefaultQuota }).(pulumi.IntOutput)
+}
+
+// See Argument Reference above.
+func (o LookupSubnetPoolResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSubnetPoolResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupSubnetPoolResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSubnetPoolResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupSubnetPoolResultOutput) IpVersion() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupSubnetPoolResult) int { return v.IpVersion }).(pulumi.IntOutput)
+}
+
+// See Argument Reference above.
+func (o LookupSubnetPoolResultOutput) IsDefault() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupSubnetPoolResult) bool { return v.IsDefault }).(pulumi.BoolOutput)
+}
+
+// See Argument Reference above.
+func (o LookupSubnetPoolResultOutput) MaxPrefixlen() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupSubnetPoolResult) int { return v.MaxPrefixlen }).(pulumi.IntOutput)
+}
+
+// See Argument Reference above.
+func (o LookupSubnetPoolResultOutput) MinPrefixlen() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupSubnetPoolResult) int { return v.MinPrefixlen }).(pulumi.IntOutput)
+}
+
+// See Argument Reference above.
+func (o LookupSubnetPoolResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSubnetPoolResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// See Argument Reference above.
+func (o LookupSubnetPoolResultOutput) Prefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupSubnetPoolResult) []string { return v.Prefixes }).(pulumi.StringArrayOutput)
+}
+
+// See Argument Reference above.
+func (o LookupSubnetPoolResultOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSubnetPoolResult) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// See Argument Reference above.
+func (o LookupSubnetPoolResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSubnetPoolResult) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// The revision number of the subnetpool.
+func (o LookupSubnetPoolResultOutput) RevisionNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupSubnetPoolResult) int { return v.RevisionNumber }).(pulumi.IntOutput)
+}
+
+// See Argument Reference above.
+func (o LookupSubnetPoolResultOutput) Shared() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupSubnetPoolResult) bool { return v.Shared }).(pulumi.BoolOutput)
+}
+
+func (o LookupSubnetPoolResultOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupSubnetPoolResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// The time at which subnetpool was created.
+func (o LookupSubnetPoolResultOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSubnetPoolResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupSubnetPoolResultOutput{})
 }

@@ -139,52 +139,52 @@ export interface InstanceState {
     /**
      * A list of IP addresses assigned to the instance.
      */
-    readonly addresses?: pulumi.Input<pulumi.Input<string>[]>;
+    addresses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Configuration ID to be attached to the instance. Database instance
      * will be rebooted when configuration is detached.
      */
-    readonly configurationId?: pulumi.Input<string>;
+    configurationId?: pulumi.Input<string>;
     /**
      * An array of database name, charset and collate. The database
      * object structure is documented below.
      */
-    readonly databases?: pulumi.Input<pulumi.Input<inputs.database.InstanceDatabase>[]>;
+    databases?: pulumi.Input<pulumi.Input<inputs.database.InstanceDatabase>[]>;
     /**
      * An array of database engine type and version. The datastore
      * object structure is documented below. Changing this creates a new instance.
      */
-    readonly datastore?: pulumi.Input<inputs.database.InstanceDatastore>;
+    datastore?: pulumi.Input<inputs.database.InstanceDatastore>;
     /**
      * The flavor ID of the desired flavor for the instance.
      * Changing this creates new instance.
      */
-    readonly flavorId?: pulumi.Input<string>;
+    flavorId?: pulumi.Input<string>;
     /**
      * Database to be created on new instance. Changing this creates a
      * new instance.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * An array of one or more networks to attach to the
      * instance. The network object structure is documented below. Changing this
      * creates a new instance.
      */
-    readonly networks?: pulumi.Input<pulumi.Input<inputs.database.InstanceNetwork>[]>;
+    networks?: pulumi.Input<pulumi.Input<inputs.database.InstanceNetwork>[]>;
     /**
      * The region in which to create the db instance. Changing this
      * creates a new instance.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * Specifies the volume size in GB. Changing this creates new instance.
      */
-    readonly size?: pulumi.Input<number>;
+    size?: pulumi.Input<number>;
     /**
      * An array of username, password, host and databases. The user
      * object structure is documented below.
      */
-    readonly users?: pulumi.Input<pulumi.Input<inputs.database.InstanceUser>[]>;
+    users?: pulumi.Input<pulumi.Input<inputs.database.InstanceUser>[]>;
 }
 
 /**
@@ -195,45 +195,45 @@ export interface InstanceArgs {
      * Configuration ID to be attached to the instance. Database instance
      * will be rebooted when configuration is detached.
      */
-    readonly configurationId?: pulumi.Input<string>;
+    configurationId?: pulumi.Input<string>;
     /**
      * An array of database name, charset and collate. The database
      * object structure is documented below.
      */
-    readonly databases?: pulumi.Input<pulumi.Input<inputs.database.InstanceDatabase>[]>;
+    databases?: pulumi.Input<pulumi.Input<inputs.database.InstanceDatabase>[]>;
     /**
      * An array of database engine type and version. The datastore
      * object structure is documented below. Changing this creates a new instance.
      */
-    readonly datastore: pulumi.Input<inputs.database.InstanceDatastore>;
+    datastore: pulumi.Input<inputs.database.InstanceDatastore>;
     /**
      * The flavor ID of the desired flavor for the instance.
      * Changing this creates new instance.
      */
-    readonly flavorId?: pulumi.Input<string>;
+    flavorId?: pulumi.Input<string>;
     /**
      * Database to be created on new instance. Changing this creates a
      * new instance.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * An array of one or more networks to attach to the
      * instance. The network object structure is documented below. Changing this
      * creates a new instance.
      */
-    readonly networks?: pulumi.Input<pulumi.Input<inputs.database.InstanceNetwork>[]>;
+    networks?: pulumi.Input<pulumi.Input<inputs.database.InstanceNetwork>[]>;
     /**
      * The region in which to create the db instance. Changing this
      * creates a new instance.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * Specifies the volume size in GB. Changing this creates new instance.
      */
-    readonly size: pulumi.Input<number>;
+    size: pulumi.Input<number>;
     /**
      * An array of username, password, host and databases. The user
      * object structure is documented below.
      */
-    readonly users?: pulumi.Input<pulumi.Input<inputs.database.InstanceUser>[]>;
+    users?: pulumi.Input<pulumi.Input<inputs.database.InstanceUser>[]>;
 }

@@ -170,61 +170,61 @@ export interface QosPolicyState {
      * The collection of tags assigned on the QoS policy, which have been
      * explicitly and implicitly added.
      */
-    readonly allTags?: pulumi.Input<pulumi.Input<string>[]>;
+    allTags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The time at which QoS policy was created.
      */
-    readonly createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
     /**
      * The human-readable description for the QoS policy.
      * Changing this updates the description of the existing QoS policy.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Indicates whether the QoS policy is default
      * QoS policy or not. Changing this updates the default status of the existing
      * QoS policy.
      */
-    readonly isDefault?: pulumi.Input<boolean>;
+    isDefault?: pulumi.Input<boolean>;
     /**
      * The name of the QoS policy. Changing this updates the name of
      * the existing QoS policy.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The owner of the QoS policy. Required if admin wants to
      * create a QoS policy for another project. Changing this creates a new QoS policy.
      */
-    readonly projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a Neutron Qos policy. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * QoS policy.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The revision number of the QoS policy.
      */
-    readonly revisionNumber?: pulumi.Input<number>;
+    revisionNumber?: pulumi.Input<number>;
     /**
      * Indicates whether this QoS policy is shared across
      * all projects. Changing this updates the shared status of the existing
      * QoS policy.
      */
-    readonly shared?: pulumi.Input<boolean>;
+    shared?: pulumi.Input<boolean>;
     /**
      * A set of string tags for the QoS policy.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The time at which QoS policy was created.
      */
-    readonly updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string>;
     /**
      * Map of additional options.
      */
-    readonly valueSpecs?: pulumi.Input<{[key: string]: any}>;
+    valueSpecs?: pulumi.Input<{[key: string]: any}>;
 }
 
 /**
@@ -235,42 +235,42 @@ export interface QosPolicyArgs {
      * The human-readable description for the QoS policy.
      * Changing this updates the description of the existing QoS policy.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Indicates whether the QoS policy is default
      * QoS policy or not. Changing this updates the default status of the existing
      * QoS policy.
      */
-    readonly isDefault?: pulumi.Input<boolean>;
+    isDefault?: pulumi.Input<boolean>;
     /**
      * The name of the QoS policy. Changing this updates the name of
      * the existing QoS policy.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The owner of the QoS policy. Required if admin wants to
      * create a QoS policy for another project. Changing this creates a new QoS policy.
      */
-    readonly projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a Neutron Qos policy. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * QoS policy.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * Indicates whether this QoS policy is shared across
      * all projects. Changing this updates the shared status of the existing
      * QoS policy.
      */
-    readonly shared?: pulumi.Input<boolean>;
+    shared?: pulumi.Input<boolean>;
     /**
      * A set of string tags for the QoS policy.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Map of additional options.
      */
-    readonly valueSpecs?: pulumi.Input<{[key: string]: any}>;
+    valueSpecs?: pulumi.Input<{[key: string]: any}>;
 }

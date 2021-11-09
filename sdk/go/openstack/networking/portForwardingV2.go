@@ -299,7 +299,7 @@ type PortForwardingV2ArrayInput interface {
 type PortForwardingV2Array []PortForwardingV2Input
 
 func (PortForwardingV2Array) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*PortForwardingV2)(nil))
+	return reflect.TypeOf((*[]*PortForwardingV2)(nil)).Elem()
 }
 
 func (i PortForwardingV2Array) ToPortForwardingV2ArrayOutput() PortForwardingV2ArrayOutput {
@@ -324,7 +324,7 @@ type PortForwardingV2MapInput interface {
 type PortForwardingV2Map map[string]PortForwardingV2Input
 
 func (PortForwardingV2Map) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*PortForwardingV2)(nil))
+	return reflect.TypeOf((*map[string]*PortForwardingV2)(nil)).Elem()
 }
 
 func (i PortForwardingV2Map) ToPortForwardingV2MapOutput() PortForwardingV2MapOutput {
@@ -335,9 +335,7 @@ func (i PortForwardingV2Map) ToPortForwardingV2MapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(PortForwardingV2MapOutput)
 }
 
-type PortForwardingV2Output struct {
-	*pulumi.OutputState
-}
+type PortForwardingV2Output struct{ *pulumi.OutputState }
 
 func (PortForwardingV2Output) ElementType() reflect.Type {
 	return reflect.TypeOf((*PortForwardingV2)(nil))
@@ -356,14 +354,12 @@ func (o PortForwardingV2Output) ToPortForwardingV2PtrOutput() PortForwardingV2Pt
 }
 
 func (o PortForwardingV2Output) ToPortForwardingV2PtrOutputWithContext(ctx context.Context) PortForwardingV2PtrOutput {
-	return o.ApplyT(func(v PortForwardingV2) *PortForwardingV2 {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PortForwardingV2) *PortForwardingV2 {
 		return &v
 	}).(PortForwardingV2PtrOutput)
 }
 
-type PortForwardingV2PtrOutput struct {
-	*pulumi.OutputState
-}
+type PortForwardingV2PtrOutput struct{ *pulumi.OutputState }
 
 func (PortForwardingV2PtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**PortForwardingV2)(nil))
@@ -375,6 +371,16 @@ func (o PortForwardingV2PtrOutput) ToPortForwardingV2PtrOutput() PortForwardingV
 
 func (o PortForwardingV2PtrOutput) ToPortForwardingV2PtrOutputWithContext(ctx context.Context) PortForwardingV2PtrOutput {
 	return o
+}
+
+func (o PortForwardingV2PtrOutput) Elem() PortForwardingV2Output {
+	return o.ApplyT(func(v *PortForwardingV2) PortForwardingV2 {
+		if v != nil {
+			return *v
+		}
+		var ret PortForwardingV2
+		return ret
+	}).(PortForwardingV2Output)
 }
 
 type PortForwardingV2ArrayOutput struct{ *pulumi.OutputState }
@@ -418,6 +424,10 @@ func (o PortForwardingV2MapOutput) MapIndex(k pulumi.StringInput) PortForwarding
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*PortForwardingV2Input)(nil)).Elem(), &PortForwardingV2{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PortForwardingV2PtrInput)(nil)).Elem(), &PortForwardingV2{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PortForwardingV2ArrayInput)(nil)).Elem(), PortForwardingV2Array{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PortForwardingV2MapInput)(nil)).Elem(), PortForwardingV2Map{})
 	pulumi.RegisterOutputType(PortForwardingV2Output{})
 	pulumi.RegisterOutputType(PortForwardingV2PtrOutput{})
 	pulumi.RegisterOutputType(PortForwardingV2ArrayOutput{})

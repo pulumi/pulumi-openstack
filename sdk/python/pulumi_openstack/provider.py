@@ -731,3 +731,184 @@ class Provider(pulumi.ProviderResource):
             __props__,
             opts)
 
+    @property
+    @pulumi.getter(name="applicationCredentialId")
+    def application_credential_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        Application Credential ID to login with.
+        """
+        return pulumi.get(self, "application_credential_id")
+
+    @property
+    @pulumi.getter(name="applicationCredentialName")
+    def application_credential_name(self) -> pulumi.Output[Optional[str]]:
+        """
+        Application Credential name to login with.
+        """
+        return pulumi.get(self, "application_credential_name")
+
+    @property
+    @pulumi.getter(name="applicationCredentialSecret")
+    def application_credential_secret(self) -> pulumi.Output[Optional[str]]:
+        """
+        Application Credential secret to login with.
+        """
+        return pulumi.get(self, "application_credential_secret")
+
+    @property
+    @pulumi.getter(name="authUrl")
+    def auth_url(self) -> pulumi.Output[Optional[str]]:
+        """
+        The Identity authentication URL.
+        """
+        return pulumi.get(self, "auth_url")
+
+    @property
+    @pulumi.getter(name="cacertFile")
+    def cacert_file(self) -> pulumi.Output[Optional[str]]:
+        """
+        A Custom CA certificate.
+        """
+        return pulumi.get(self, "cacert_file")
+
+    @property
+    @pulumi.getter
+    def cert(self) -> pulumi.Output[Optional[str]]:
+        """
+        A client certificate to authenticate with.
+        """
+        return pulumi.get(self, "cert")
+
+    @property
+    @pulumi.getter
+    def cloud(self) -> pulumi.Output[Optional[str]]:
+        """
+        An entry in a `clouds.yaml` file to use.
+        """
+        return pulumi.get(self, "cloud")
+
+    @property
+    @pulumi.getter(name="defaultDomain")
+    def default_domain(self) -> pulumi.Output[Optional[str]]:
+        """
+        The name of the Domain ID to scope to if no other domain is specified. Defaults to `default` (Identity v3).
+        """
+        return pulumi.get(self, "default_domain")
+
+    @property
+    @pulumi.getter(name="domainId")
+    def domain_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ID of the Domain to scope to (Identity v3).
+        """
+        return pulumi.get(self, "domain_id")
+
+    @property
+    @pulumi.getter(name="domainName")
+    def domain_name(self) -> pulumi.Output[Optional[str]]:
+        """
+        The name of the Domain to scope to (Identity v3).
+        """
+        return pulumi.get(self, "domain_name")
+
+    @property
+    @pulumi.getter(name="endpointType")
+    def endpoint_type(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "endpoint_type")
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Output[Optional[str]]:
+        """
+        A client private key to authenticate with.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def password(self) -> pulumi.Output[Optional[str]]:
+        """
+        Password to login with.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter(name="projectDomainId")
+    def project_domain_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ID of the domain where the proejct resides (Identity v3).
+        """
+        return pulumi.get(self, "project_domain_id")
+
+    @property
+    @pulumi.getter(name="projectDomainName")
+    def project_domain_name(self) -> pulumi.Output[Optional[str]]:
+        """
+        The name of the domain where the project resides (Identity v3).
+        """
+        return pulumi.get(self, "project_domain_name")
+
+    @property
+    @pulumi.getter
+    def region(self) -> pulumi.Output[Optional[str]]:
+        """
+        The OpenStack region to connect to.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.
+        """
+        return pulumi.get(self, "tenant_id")
+
+    @property
+    @pulumi.getter(name="tenantName")
+    def tenant_name(self) -> pulumi.Output[Optional[str]]:
+        """
+        The name of the Tenant (Identity v2) or Project (Identity v3) to login with.
+        """
+        return pulumi.get(self, "tenant_name")
+
+    @property
+    @pulumi.getter
+    def token(self) -> pulumi.Output[Optional[str]]:
+        """
+        Authentication token to use as an alternative to username/password.
+        """
+        return pulumi.get(self, "token")
+
+    @property
+    @pulumi.getter(name="userDomainId")
+    def user_domain_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ID of the domain where the user resides (Identity v3).
+        """
+        return pulumi.get(self, "user_domain_id")
+
+    @property
+    @pulumi.getter(name="userDomainName")
+    def user_domain_name(self) -> pulumi.Output[Optional[str]]:
+        """
+        The name of the domain where the user resides (Identity v3).
+        """
+        return pulumi.get(self, "user_domain_name")
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        Username to login with.
+        """
+        return pulumi.get(self, "user_id")
+
+    @property
+    @pulumi.getter(name="userName")
+    def user_name(self) -> pulumi.Output[Optional[str]]:
+        """
+        Username to login with.
+        """
+        return pulumi.get(self, "user_name")
+

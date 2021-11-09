@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -14,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const zones = pulumi.output(openstack.blockstorage.getAvailabilityZonesV3({ async: true }));
+ * const zones = pulumi.output(openstack.blockstorage.getAvailabilityZonesV3());
  * ```
  */
 export function getAvailabilityZonesV3(args?: GetAvailabilityZonesV3Args, opts?: pulumi.InvokeOptions): Promise<GetAvailabilityZonesV3Result> {
@@ -40,12 +39,12 @@ export interface GetAvailabilityZonesV3Args {
      * The region in which to obtain the Block Storage client.
      * If omitted, the `region` argument of the provider is used.
      */
-    readonly region?: string;
+    region?: string;
     /**
      * The `state` of the availability zones to match. Can
      * either be `available` or `unavailable`. Default is `available`.
      */
-    readonly state?: string;
+    state?: string;
 }
 
 /**
@@ -69,4 +68,24 @@ export interface GetAvailabilityZonesV3Result {
      * See Argument Reference above.
      */
     readonly state?: string;
+}
+
+export function getAvailabilityZonesV3Output(args?: GetAvailabilityZonesV3OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAvailabilityZonesV3Result> {
+    return pulumi.output(args).apply(a => getAvailabilityZonesV3(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAvailabilityZonesV3.
+ */
+export interface GetAvailabilityZonesV3OutputArgs {
+    /**
+     * The region in which to obtain the Block Storage client.
+     * If omitted, the `region` argument of the provider is used.
+     */
+    region?: pulumi.Input<string>;
+    /**
+     * The `state` of the availability zones to match. Can
+     * either be `available` or `unavailable`. Default is `available`.
+     */
+    state?: pulumi.Input<string>;
 }

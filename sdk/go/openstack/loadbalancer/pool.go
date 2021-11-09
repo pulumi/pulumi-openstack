@@ -359,7 +359,7 @@ type PoolArrayInput interface {
 type PoolArray []PoolInput
 
 func (PoolArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Pool)(nil))
+	return reflect.TypeOf((*[]*Pool)(nil)).Elem()
 }
 
 func (i PoolArray) ToPoolArrayOutput() PoolArrayOutput {
@@ -384,7 +384,7 @@ type PoolMapInput interface {
 type PoolMap map[string]PoolInput
 
 func (PoolMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Pool)(nil))
+	return reflect.TypeOf((*map[string]*Pool)(nil)).Elem()
 }
 
 func (i PoolMap) ToPoolMapOutput() PoolMapOutput {
@@ -395,9 +395,7 @@ func (i PoolMap) ToPoolMapOutputWithContext(ctx context.Context) PoolMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PoolMapOutput)
 }
 
-type PoolOutput struct {
-	*pulumi.OutputState
-}
+type PoolOutput struct{ *pulumi.OutputState }
 
 func (PoolOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Pool)(nil))
@@ -416,14 +414,12 @@ func (o PoolOutput) ToPoolPtrOutput() PoolPtrOutput {
 }
 
 func (o PoolOutput) ToPoolPtrOutputWithContext(ctx context.Context) PoolPtrOutput {
-	return o.ApplyT(func(v Pool) *Pool {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Pool) *Pool {
 		return &v
 	}).(PoolPtrOutput)
 }
 
-type PoolPtrOutput struct {
-	*pulumi.OutputState
-}
+type PoolPtrOutput struct{ *pulumi.OutputState }
 
 func (PoolPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Pool)(nil))
@@ -435,6 +431,16 @@ func (o PoolPtrOutput) ToPoolPtrOutput() PoolPtrOutput {
 
 func (o PoolPtrOutput) ToPoolPtrOutputWithContext(ctx context.Context) PoolPtrOutput {
 	return o
+}
+
+func (o PoolPtrOutput) Elem() PoolOutput {
+	return o.ApplyT(func(v *Pool) Pool {
+		if v != nil {
+			return *v
+		}
+		var ret Pool
+		return ret
+	}).(PoolOutput)
 }
 
 type PoolArrayOutput struct{ *pulumi.OutputState }
@@ -478,6 +484,10 @@ func (o PoolMapOutput) MapIndex(k pulumi.StringInput) PoolOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*PoolInput)(nil)).Elem(), &Pool{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PoolPtrInput)(nil)).Elem(), &Pool{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PoolArrayInput)(nil)).Elem(), PoolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PoolMapInput)(nil)).Elem(), PoolMap{})
 	pulumi.RegisterOutputType(PoolOutput{})
 	pulumi.RegisterOutputType(PoolPtrOutput{})
 	pulumi.RegisterOutputType(PoolArrayOutput{})

@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -19,7 +18,7 @@ import * as utilities from "../utilities";
  *
  * const admins = pulumi.output(openstack.identity.getGroup({
  *     name: "admins",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getGroup(args: GetGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupResult> {
@@ -44,16 +43,16 @@ export interface GetGroupArgs {
     /**
      * The domain the group belongs to.
      */
-    readonly domainId?: string;
+    domainId?: string;
     /**
      * The name of the group.
      */
-    readonly name: string;
+    name: string;
     /**
      * The region in which to obtain the V3 Keystone client.
      * If omitted, the `region` argument of the provider is used.
      */
-    readonly region?: string;
+    region?: string;
 }
 
 /**
@@ -80,4 +79,27 @@ export interface GetGroupResult {
      * See Argument Reference above.
      */
     readonly region: string;
+}
+
+export function getGroupOutput(args: GetGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupResult> {
+    return pulumi.output(args).apply(a => getGroup(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getGroup.
+ */
+export interface GetGroupOutputArgs {
+    /**
+     * The domain the group belongs to.
+     */
+    domainId?: pulumi.Input<string>;
+    /**
+     * The name of the group.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The region in which to obtain the V3 Keystone client.
+     * If omitted, the `region` argument of the provider is used.
+     */
+    region?: pulumi.Input<string>;
 }

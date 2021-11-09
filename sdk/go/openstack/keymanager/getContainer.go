@@ -4,6 +4,9 @@
 package keymanager
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -80,4 +83,109 @@ type GetContainerResult struct {
 	Type string `pulumi:"type"`
 	// The date the container ACL was last updated.
 	UpdatedAt string `pulumi:"updatedAt"`
+}
+
+func GetContainerOutput(ctx *pulumi.Context, args GetContainerOutputArgs, opts ...pulumi.InvokeOption) GetContainerResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetContainerResult, error) {
+			args := v.(GetContainerArgs)
+			r, err := GetContainer(ctx, &args, opts...)
+			return *r, err
+		}).(GetContainerResultOutput)
+}
+
+// A collection of arguments for invoking getContainer.
+type GetContainerOutputArgs struct {
+	// The Container name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The region in which to obtain the V1 KeyManager client.
+	// A KeyManager client is needed to fetch a container. If omitted, the `region`
+	// argument of the provider is used.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+}
+
+func (GetContainerOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetContainerArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getContainer.
+type GetContainerResultOutput struct{ *pulumi.OutputState }
+
+func (GetContainerResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetContainerResult)(nil)).Elem()
+}
+
+func (o GetContainerResultOutput) ToGetContainerResultOutput() GetContainerResultOutput {
+	return o
+}
+
+func (o GetContainerResultOutput) ToGetContainerResultOutputWithContext(ctx context.Context) GetContainerResultOutput {
+	return o
+}
+
+// The list of ACLs assigned to a container. The `read` structure is
+// described below.
+func (o GetContainerResultOutput) Acls() GetContainerAclArrayOutput {
+	return o.ApplyT(func(v GetContainerResult) []GetContainerAcl { return v.Acls }).(GetContainerAclArrayOutput)
+}
+
+// The list of the container consumers. The structure is described
+// below.
+func (o GetContainerResultOutput) Consumers() GetContainerConsumerArrayOutput {
+	return o.ApplyT(func(v GetContainerResult) []GetContainerConsumer { return v.Consumers }).(GetContainerConsumerArrayOutput)
+}
+
+// The container reference / where to find the container.
+func (o GetContainerResultOutput) ContainerRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetContainerResult) string { return v.ContainerRef }).(pulumi.StringOutput)
+}
+
+// The date the container ACL was created.
+func (o GetContainerResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetContainerResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The creator of the container.
+func (o GetContainerResultOutput) CreatorId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetContainerResult) string { return v.CreatorId }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetContainerResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetContainerResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the consumer.
+func (o GetContainerResultOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetContainerResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// See Argument Reference above.
+func (o GetContainerResultOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetContainerResult) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// A set of dictionaries containing references to secrets. The
+// structure is described below.
+func (o GetContainerResultOutput) SecretRefs() GetContainerSecretRefArrayOutput {
+	return o.ApplyT(func(v GetContainerResult) []GetContainerSecretRef { return v.SecretRefs }).(GetContainerSecretRefArrayOutput)
+}
+
+// The status of the container.
+func (o GetContainerResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetContainerResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The container type.
+func (o GetContainerResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetContainerResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The date the container ACL was last updated.
+func (o GetContainerResultOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetContainerResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetContainerResultOutput{})
 }

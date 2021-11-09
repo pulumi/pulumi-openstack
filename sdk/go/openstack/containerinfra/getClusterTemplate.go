@@ -4,6 +4,9 @@
 package containerinfra
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -131,4 +134,223 @@ type LookupClusterTemplateResult struct {
 	// The name of the driver that is used for the volumes of the
 	// cluster nodes.
 	VolumeDriver string `pulumi:"volumeDriver"`
+}
+
+func LookupClusterTemplateOutput(ctx *pulumi.Context, args LookupClusterTemplateOutputArgs, opts ...pulumi.InvokeOption) LookupClusterTemplateResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupClusterTemplateResult, error) {
+			args := v.(LookupClusterTemplateArgs)
+			r, err := LookupClusterTemplate(ctx, &args, opts...)
+			return *r, err
+		}).(LookupClusterTemplateResultOutput)
+}
+
+// A collection of arguments for invoking getClusterTemplate.
+type LookupClusterTemplateOutputArgs struct {
+	// The name of the cluster template.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The region in which to obtain the V1 Container Infra
+	// client.
+	// If omitted, the `region` argument of the provider is used.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+}
+
+func (LookupClusterTemplateOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupClusterTemplateArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getClusterTemplate.
+type LookupClusterTemplateResultOutput struct{ *pulumi.OutputState }
+
+func (LookupClusterTemplateResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupClusterTemplateResult)(nil)).Elem()
+}
+
+func (o LookupClusterTemplateResultOutput) ToLookupClusterTemplateResultOutput() LookupClusterTemplateResultOutput {
+	return o
+}
+
+func (o LookupClusterTemplateResultOutput) ToLookupClusterTemplateResultOutputWithContext(ctx context.Context) LookupClusterTemplateResultOutput {
+	return o
+}
+
+// The API server port for the Container Orchestration
+// Engine for this cluster template.
+func (o LookupClusterTemplateResultOutput) ApiserverPort() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupClusterTemplateResult) int { return v.ApiserverPort }).(pulumi.IntOutput)
+}
+
+// The distro for the cluster (fedora-atomic, coreos, etc.).
+func (o LookupClusterTemplateResultOutput) ClusterDistro() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterTemplateResult) string { return v.ClusterDistro }).(pulumi.StringOutput)
+}
+
+// The Container Orchestration Engine for this cluster template.
+func (o LookupClusterTemplateResultOutput) Coe() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterTemplateResult) string { return v.Coe }).(pulumi.StringOutput)
+}
+
+// The time at which cluster template was created.
+func (o LookupClusterTemplateResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterTemplateResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Address of the DNS nameserver that is used in nodes of the
+// cluster.
+func (o LookupClusterTemplateResultOutput) DnsNameserver() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterTemplateResult) string { return v.DnsNameserver }).(pulumi.StringOutput)
+}
+
+// Docker storage driver. Changing this updates the
+// Docker storage driver of the existing cluster template.
+func (o LookupClusterTemplateResultOutput) DockerStorageDriver() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterTemplateResult) string { return v.DockerStorageDriver }).(pulumi.StringOutput)
+}
+
+// The size (in GB) of the Docker volume.
+func (o LookupClusterTemplateResultOutput) DockerVolumeSize() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupClusterTemplateResult) int { return v.DockerVolumeSize }).(pulumi.IntOutput)
+}
+
+// The ID of the external network that will be used for
+// the cluster.
+func (o LookupClusterTemplateResultOutput) ExternalNetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterTemplateResult) string { return v.ExternalNetworkId }).(pulumi.StringOutput)
+}
+
+// The fixed network that will be attached to the cluster.
+func (o LookupClusterTemplateResultOutput) FixedNetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterTemplateResult) string { return v.FixedNetwork }).(pulumi.StringOutput)
+}
+
+// =The fixed subnet that will be attached to the cluster.
+func (o LookupClusterTemplateResultOutput) FixedSubnet() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterTemplateResult) string { return v.FixedSubnet }).(pulumi.StringOutput)
+}
+
+// The flavor for the nodes of the cluster.
+func (o LookupClusterTemplateResultOutput) Flavor() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterTemplateResult) string { return v.Flavor }).(pulumi.StringOutput)
+}
+
+// Indicates whether created cluster should create IP
+// floating IP for every node or not.
+func (o LookupClusterTemplateResultOutput) FloatingIpEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupClusterTemplateResult) bool { return v.FloatingIpEnabled }).(pulumi.BoolOutput)
+}
+
+// The address of a proxy for receiving all HTTP requests and
+// relay them.
+func (o LookupClusterTemplateResultOutput) HttpProxy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterTemplateResult) string { return v.HttpProxy }).(pulumi.StringOutput)
+}
+
+// The address of a proxy for receiving all HTTPS requests and
+// relay them.
+func (o LookupClusterTemplateResultOutput) HttpsProxy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterTemplateResult) string { return v.HttpsProxy }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupClusterTemplateResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterTemplateResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The reference to an image that is used for nodes of the cluster.
+func (o LookupClusterTemplateResultOutput) Image() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterTemplateResult) string { return v.Image }).(pulumi.StringOutput)
+}
+
+// The insecure registry URL for the cluster template.
+func (o LookupClusterTemplateResultOutput) InsecureRegistry() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterTemplateResult) string { return v.InsecureRegistry }).(pulumi.StringOutput)
+}
+
+// The name of the Compute service SSH keypair.
+func (o LookupClusterTemplateResultOutput) KeypairId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterTemplateResult) string { return v.KeypairId }).(pulumi.StringOutput)
+}
+
+// The list of key value pairs representing additional properties
+// of the cluster template.
+func (o LookupClusterTemplateResultOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupClusterTemplateResult) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+}
+
+// The flavor for the master nodes.
+func (o LookupClusterTemplateResultOutput) MasterFlavor() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterTemplateResult) string { return v.MasterFlavor }).(pulumi.StringOutput)
+}
+
+// Indicates whether created cluster should has a
+// loadbalancer for master nodes or not.
+func (o LookupClusterTemplateResultOutput) MasterLbEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupClusterTemplateResult) bool { return v.MasterLbEnabled }).(pulumi.BoolOutput)
+}
+
+// See Argument Reference above.
+func (o LookupClusterTemplateResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterTemplateResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name of the driver for the container network.
+func (o LookupClusterTemplateResultOutput) NetworkDriver() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterTemplateResult) string { return v.NetworkDriver }).(pulumi.StringOutput)
+}
+
+// A comma-separated list of IP addresses that shouldn't be used in
+// the cluster.
+func (o LookupClusterTemplateResultOutput) NoProxy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterTemplateResult) string { return v.NoProxy }).(pulumi.StringOutput)
+}
+
+// The project of the cluster template.
+func (o LookupClusterTemplateResultOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterTemplateResult) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// Indicates whether cluster template should be public.
+func (o LookupClusterTemplateResultOutput) Public() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupClusterTemplateResult) bool { return v.Public }).(pulumi.BoolOutput)
+}
+
+// See Argument Reference above.
+func (o LookupClusterTemplateResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterTemplateResult) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// Indicates whether Docker registry is enabled in the
+// cluster.
+func (o LookupClusterTemplateResultOutput) RegistryEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupClusterTemplateResult) bool { return v.RegistryEnabled }).(pulumi.BoolOutput)
+}
+
+// The server type for the cluster template.
+func (o LookupClusterTemplateResultOutput) ServerType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterTemplateResult) string { return v.ServerType }).(pulumi.StringOutput)
+}
+
+// Indicates whether the TLS should be disabled in the cluster.
+func (o LookupClusterTemplateResultOutput) TlsDisabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupClusterTemplateResult) bool { return v.TlsDisabled }).(pulumi.BoolOutput)
+}
+
+// The time at which cluster template was updated.
+func (o LookupClusterTemplateResultOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterTemplateResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// The user of the cluster template.
+func (o LookupClusterTemplateResultOutput) UserId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterTemplateResult) string { return v.UserId }).(pulumi.StringOutput)
+}
+
+// The name of the driver that is used for the volumes of the
+// cluster nodes.
+func (o LookupClusterTemplateResultOutput) VolumeDriver() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterTemplateResult) string { return v.VolumeDriver }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupClusterTemplateResultOutput{})
 }

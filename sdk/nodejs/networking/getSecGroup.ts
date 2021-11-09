@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -16,7 +15,7 @@ import * as utilities from "../utilities";
  *
  * const secgroup = pulumi.output(openstack.networking.getSecGroup({
  *     name: "tf_test_secgroup",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getSecGroup(args?: GetSecGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetSecGroupResult> {
@@ -45,29 +44,29 @@ export interface GetSecGroupArgs {
     /**
      * Human-readable description the the subnet.
      */
-    readonly description?: string;
+    description?: string;
     /**
      * The name of the security group.
      */
-    readonly name?: string;
+    name?: string;
     /**
      * The region in which to obtain the V2 Neutron client.
      * A Neutron client is needed to retrieve security groups ids. If omitted, the
      * `region` argument of the provider is used.
      */
-    readonly region?: string;
+    region?: string;
     /**
      * The ID of the security group.
      */
-    readonly secgroupId?: string;
+    secgroupId?: string;
     /**
      * The list of security group tags to filter.
      */
-    readonly tags?: string[];
+    tags?: string[];
     /**
      * The owner of the security group.
      */
-    readonly tenantId?: string;
+    tenantId?: string;
 }
 
 /**
@@ -95,4 +94,40 @@ export interface GetSecGroupResult {
     readonly secgroupId?: string;
     readonly tags?: string[];
     readonly tenantId: string;
+}
+
+export function getSecGroupOutput(args?: GetSecGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecGroupResult> {
+    return pulumi.output(args).apply(a => getSecGroup(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getSecGroup.
+ */
+export interface GetSecGroupOutputArgs {
+    /**
+     * Human-readable description the the subnet.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The name of the security group.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The region in which to obtain the V2 Neutron client.
+     * A Neutron client is needed to retrieve security groups ids. If omitted, the
+     * `region` argument of the provider is used.
+     */
+    region?: pulumi.Input<string>;
+    /**
+     * The ID of the security group.
+     */
+    secgroupId?: pulumi.Input<string>;
+    /**
+     * The list of security group tags to filter.
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The owner of the security group.
+     */
+    tenantId?: pulumi.Input<string>;
 }

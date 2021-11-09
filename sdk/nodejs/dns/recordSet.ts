@@ -171,55 +171,55 @@ export interface RecordSetState {
     /**
      * A description of the  record set.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Disable wait for recordset to reach ACTIVE
      * status. This argumen is disabled by default. If it is set to true, the recordset
      * will be considered as created/updated/deleted if OpenStack request returned success.
      */
-    readonly disableStatusCheck?: pulumi.Input<boolean>;
+    disableStatusCheck?: pulumi.Input<boolean>;
     /**
      * The name of the record set. Note the `.` at the end of the name.
      * Changing this creates a new DNS  record set.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project DNS zone is created
      * for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
      * user role in target project)
      */
-    readonly projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string>;
     /**
      * An array of DNS records. _Note:_ if an IPv6 address
      * contains brackets (`[ ]`), the brackets will be stripped and the modified
      * address will be recorded in the state.
      */
-    readonly records?: pulumi.Input<pulumi.Input<string>[]>;
+    records?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The region in which to obtain the V2 DNS client.
      * If omitted, the `region` argument of the provider is used.
      * Changing this creates a new DNS  record set.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The time to live (TTL) of the record set.
      */
-    readonly ttl?: pulumi.Input<number>;
+    ttl?: pulumi.Input<number>;
     /**
      * The type of record set. Examples: "A", "MX".
      * Changing this creates a new DNS  record set.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
     /**
      * Map of additional options. Changing this creates a
      * new record set.
      */
-    readonly valueSpecs?: pulumi.Input<{[key: string]: any}>;
+    valueSpecs?: pulumi.Input<{[key: string]: any}>;
     /**
      * The ID of the zone in which to create the record set.
      * Changing this creates a new DNS  record set.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
@@ -229,53 +229,53 @@ export interface RecordSetArgs {
     /**
      * A description of the  record set.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Disable wait for recordset to reach ACTIVE
      * status. This argumen is disabled by default. If it is set to true, the recordset
      * will be considered as created/updated/deleted if OpenStack request returned success.
      */
-    readonly disableStatusCheck?: pulumi.Input<boolean>;
+    disableStatusCheck?: pulumi.Input<boolean>;
     /**
      * The name of the record set. Note the `.` at the end of the name.
      * Changing this creates a new DNS  record set.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project DNS zone is created
      * for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
      * user role in target project)
      */
-    readonly projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string>;
     /**
      * An array of DNS records. _Note:_ if an IPv6 address
      * contains brackets (`[ ]`), the brackets will be stripped and the modified
      * address will be recorded in the state.
      */
-    readonly records?: pulumi.Input<pulumi.Input<string>[]>;
+    records?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The region in which to obtain the V2 DNS client.
      * If omitted, the `region` argument of the provider is used.
      * Changing this creates a new DNS  record set.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The time to live (TTL) of the record set.
      */
-    readonly ttl?: pulumi.Input<number>;
+    ttl?: pulumi.Input<number>;
     /**
      * The type of record set. Examples: "A", "MX".
      * Changing this creates a new DNS  record set.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
     /**
      * Map of additional options. Changing this creates a
      * new record set.
      */
-    readonly valueSpecs?: pulumi.Input<{[key: string]: any}>;
+    valueSpecs?: pulumi.Input<{[key: string]: any}>;
     /**
      * The ID of the zone in which to create the record set.
      * Changing this creates a new DNS  record set.
      */
-    readonly zoneId: pulumi.Input<string>;
+    zoneId: pulumi.Input<string>;
 }

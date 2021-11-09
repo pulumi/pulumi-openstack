@@ -219,7 +219,7 @@ type ServiceV3ArrayInput interface {
 type ServiceV3Array []ServiceV3Input
 
 func (ServiceV3Array) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ServiceV3)(nil))
+	return reflect.TypeOf((*[]*ServiceV3)(nil)).Elem()
 }
 
 func (i ServiceV3Array) ToServiceV3ArrayOutput() ServiceV3ArrayOutput {
@@ -244,7 +244,7 @@ type ServiceV3MapInput interface {
 type ServiceV3Map map[string]ServiceV3Input
 
 func (ServiceV3Map) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ServiceV3)(nil))
+	return reflect.TypeOf((*map[string]*ServiceV3)(nil)).Elem()
 }
 
 func (i ServiceV3Map) ToServiceV3MapOutput() ServiceV3MapOutput {
@@ -255,9 +255,7 @@ func (i ServiceV3Map) ToServiceV3MapOutputWithContext(ctx context.Context) Servi
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceV3MapOutput)
 }
 
-type ServiceV3Output struct {
-	*pulumi.OutputState
-}
+type ServiceV3Output struct{ *pulumi.OutputState }
 
 func (ServiceV3Output) ElementType() reflect.Type {
 	return reflect.TypeOf((*ServiceV3)(nil))
@@ -276,14 +274,12 @@ func (o ServiceV3Output) ToServiceV3PtrOutput() ServiceV3PtrOutput {
 }
 
 func (o ServiceV3Output) ToServiceV3PtrOutputWithContext(ctx context.Context) ServiceV3PtrOutput {
-	return o.ApplyT(func(v ServiceV3) *ServiceV3 {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceV3) *ServiceV3 {
 		return &v
 	}).(ServiceV3PtrOutput)
 }
 
-type ServiceV3PtrOutput struct {
-	*pulumi.OutputState
-}
+type ServiceV3PtrOutput struct{ *pulumi.OutputState }
 
 func (ServiceV3PtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ServiceV3)(nil))
@@ -295,6 +291,16 @@ func (o ServiceV3PtrOutput) ToServiceV3PtrOutput() ServiceV3PtrOutput {
 
 func (o ServiceV3PtrOutput) ToServiceV3PtrOutputWithContext(ctx context.Context) ServiceV3PtrOutput {
 	return o
+}
+
+func (o ServiceV3PtrOutput) Elem() ServiceV3Output {
+	return o.ApplyT(func(v *ServiceV3) ServiceV3 {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceV3
+		return ret
+	}).(ServiceV3Output)
 }
 
 type ServiceV3ArrayOutput struct{ *pulumi.OutputState }
@@ -338,6 +344,10 @@ func (o ServiceV3MapOutput) MapIndex(k pulumi.StringInput) ServiceV3Output {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceV3Input)(nil)).Elem(), &ServiceV3{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceV3PtrInput)(nil)).Elem(), &ServiceV3{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceV3ArrayInput)(nil)).Elem(), ServiceV3Array{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceV3MapInput)(nil)).Elem(), ServiceV3Map{})
 	pulumi.RegisterOutputType(ServiceV3Output{})
 	pulumi.RegisterOutputType(ServiceV3PtrOutput{})
 	pulumi.RegisterOutputType(ServiceV3ArrayOutput{})

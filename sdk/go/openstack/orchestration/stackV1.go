@@ -29,14 +29,14 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := orchestration.NewStackV1(ctx, "stack1", &orchestration.StackV1Args{
 // 			DisableRollback: pulumi.Bool(true),
-// 			EnvironmentOpts: pulumi.StringMap{
-// 				"Bin": pulumi.String(fmt.Sprintf("%v%v", "\n", "\n")),
+// 			EnvironmentOpts: pulumi.AnyMap{
+// 				"Bin": pulumi.Any(fmt.Sprintf("%v%v", "\n", "\n")),
 // 			},
-// 			Parameters: pulumi.Float64Map{
-// 				"length": pulumi.Float64(4),
+// 			Parameters: pulumi.AnyMap{
+// 				"length": pulumi.Any(4),
 // 			},
-// 			TemplateOpts: pulumi.StringMap{
-// 				"Bin": pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v", "heat_template_version: 2013-05-23\n", "parameters:\n", "  length:\n", "    type: number\n", "resources:\n", "  test_res:\n", "    type: OS::Heat::TestResource\n", "  random:\n", "    type: OS::Heat::RandomString\n", "    properties:\n", "      length: {get_param: length}\n", "\n")),
+// 			TemplateOpts: pulumi.AnyMap{
+// 				"Bin": pulumi.Any(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v", "heat_template_version: 2013-05-23\n", "parameters:\n", "  length:\n", "    type: number\n", "resources:\n", "  test_res:\n", "    type: OS::Heat::TestResource\n", "  random:\n", "    type: OS::Heat::RandomString\n", "    properties:\n", "      length: {get_param: length}\n", "\n")),
 // 			},
 // 			Timeout: pulumi.Int(30),
 // 		})
@@ -434,7 +434,7 @@ type StackV1ArrayInput interface {
 type StackV1Array []StackV1Input
 
 func (StackV1Array) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*StackV1)(nil))
+	return reflect.TypeOf((*[]*StackV1)(nil)).Elem()
 }
 
 func (i StackV1Array) ToStackV1ArrayOutput() StackV1ArrayOutput {
@@ -459,7 +459,7 @@ type StackV1MapInput interface {
 type StackV1Map map[string]StackV1Input
 
 func (StackV1Map) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*StackV1)(nil))
+	return reflect.TypeOf((*map[string]*StackV1)(nil)).Elem()
 }
 
 func (i StackV1Map) ToStackV1MapOutput() StackV1MapOutput {
@@ -470,9 +470,7 @@ func (i StackV1Map) ToStackV1MapOutputWithContext(ctx context.Context) StackV1Ma
 	return pulumi.ToOutputWithContext(ctx, i).(StackV1MapOutput)
 }
 
-type StackV1Output struct {
-	*pulumi.OutputState
-}
+type StackV1Output struct{ *pulumi.OutputState }
 
 func (StackV1Output) ElementType() reflect.Type {
 	return reflect.TypeOf((*StackV1)(nil))
@@ -491,14 +489,12 @@ func (o StackV1Output) ToStackV1PtrOutput() StackV1PtrOutput {
 }
 
 func (o StackV1Output) ToStackV1PtrOutputWithContext(ctx context.Context) StackV1PtrOutput {
-	return o.ApplyT(func(v StackV1) *StackV1 {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StackV1) *StackV1 {
 		return &v
 	}).(StackV1PtrOutput)
 }
 
-type StackV1PtrOutput struct {
-	*pulumi.OutputState
-}
+type StackV1PtrOutput struct{ *pulumi.OutputState }
 
 func (StackV1PtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**StackV1)(nil))
@@ -510,6 +506,16 @@ func (o StackV1PtrOutput) ToStackV1PtrOutput() StackV1PtrOutput {
 
 func (o StackV1PtrOutput) ToStackV1PtrOutputWithContext(ctx context.Context) StackV1PtrOutput {
 	return o
+}
+
+func (o StackV1PtrOutput) Elem() StackV1Output {
+	return o.ApplyT(func(v *StackV1) StackV1 {
+		if v != nil {
+			return *v
+		}
+		var ret StackV1
+		return ret
+	}).(StackV1Output)
 }
 
 type StackV1ArrayOutput struct{ *pulumi.OutputState }
@@ -553,6 +559,10 @@ func (o StackV1MapOutput) MapIndex(k pulumi.StringInput) StackV1Output {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*StackV1Input)(nil)).Elem(), &StackV1{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StackV1PtrInput)(nil)).Elem(), &StackV1{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StackV1ArrayInput)(nil)).Elem(), StackV1Array{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StackV1MapInput)(nil)).Elem(), StackV1Map{})
 	pulumi.RegisterOutputType(StackV1Output{})
 	pulumi.RegisterOutputType(StackV1PtrOutput{})
 	pulumi.RegisterOutputType(StackV1ArrayOutput{})

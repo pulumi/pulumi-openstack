@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -16,7 +15,7 @@ import * as utilities from "../utilities";
  *
  * const snapshot1 = pulumi.output(openstack.sharedfilesystem.getSnapshot({
  *     name: "snapshot_1",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getSnapshot(args?: GetSnapshotArgs, opts?: pulumi.InvokeOptions): Promise<GetSnapshotResult> {
@@ -44,25 +43,25 @@ export interface GetSnapshotArgs {
     /**
      * The human-readable description of the snapshot.
      */
-    readonly description?: string;
+    description?: string;
     /**
      * The name of the snapshot.
      */
-    readonly name?: string;
+    name?: string;
     /**
      * The region in which to obtain the V2 Shared File System client.
      */
-    readonly region?: string;
+    region?: string;
     /**
      * The UUID of the source share that was used to create the snapshot.
      */
-    readonly shareId?: string;
+    shareId?: string;
     /**
      * A snapshot status filter. A valid value is `available`, `error`,
      * `creating`, `deleting`, `manageStarting`, `manageError`, `unmanageStarting`,
      * `unmanageError` or `errorDeleting`.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -106,4 +105,36 @@ export interface GetSnapshotResult {
      * See Argument Reference above.
      */
     readonly status: string;
+}
+
+export function getSnapshotOutput(args?: GetSnapshotOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSnapshotResult> {
+    return pulumi.output(args).apply(a => getSnapshot(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getSnapshot.
+ */
+export interface GetSnapshotOutputArgs {
+    /**
+     * The human-readable description of the snapshot.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The name of the snapshot.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The region in which to obtain the V2 Shared File System client.
+     */
+    region?: pulumi.Input<string>;
+    /**
+     * The UUID of the source share that was used to create the snapshot.
+     */
+    shareId?: pulumi.Input<string>;
+    /**
+     * A snapshot status filter. A valid value is `available`, `error`,
+     * `creating`, `deleting`, `manageStarting`, `manageError`, `unmanageStarting`,
+     * `unmanageError` or `errorDeleting`.
+     */
+    status?: pulumi.Input<string>;
 }

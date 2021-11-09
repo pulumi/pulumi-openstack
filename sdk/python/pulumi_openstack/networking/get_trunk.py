@@ -13,6 +13,7 @@ __all__ = [
     'GetTrunkResult',
     'AwaitableGetTrunkResult',
     'get_trunk',
+    'get_trunk_output',
 ]
 
 @pulumi.output_type
@@ -216,3 +217,42 @@ def get_trunk(admin_state_up: Optional[bool] = None,
         sub_ports=__ret__.sub_ports,
         tags=__ret__.tags,
         trunk_id=__ret__.trunk_id)
+
+
+@_utilities.lift_output_func(get_trunk)
+def get_trunk_output(admin_state_up: Optional[pulumi.Input[Optional[bool]]] = None,
+                     description: Optional[pulumi.Input[Optional[str]]] = None,
+                     name: Optional[pulumi.Input[Optional[str]]] = None,
+                     port_id: Optional[pulumi.Input[Optional[str]]] = None,
+                     project_id: Optional[pulumi.Input[Optional[str]]] = None,
+                     region: Optional[pulumi.Input[Optional[str]]] = None,
+                     status: Optional[pulumi.Input[Optional[str]]] = None,
+                     tags: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                     trunk_id: Optional[pulumi.Input[Optional[str]]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTrunkResult]:
+    """
+    Use this data source to get the ID of an available OpenStack trunk.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    trunk1 = openstack.networking.get_trunk(name="trunk_1")
+    ```
+
+
+    :param bool admin_state_up: The administrative state of the trunk.
+    :param str description: Human-readable description of the trunk.
+    :param str name: The name of the trunk.
+    :param str port_id: The ID of the trunk parent port.
+    :param str project_id: The owner of the trunk.
+    :param str region: The region in which to obtain the V2 Neutron client.
+           A Neutron client is needed to retrieve trunk ids. If omitted, the
+           `region` argument of the provider is used.
+    :param str status: The status of the trunk.
+    :param Sequence[str] tags: The list of trunk tags to filter.
+    :param str trunk_id: The ID of the trunk.
+    """
+    ...

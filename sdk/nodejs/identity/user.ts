@@ -161,65 +161,65 @@ export interface UserState {
     /**
      * The default project this user belongs to.
      */
-    readonly defaultProjectId?: pulumi.Input<string>;
+    defaultProjectId?: pulumi.Input<string>;
     /**
      * A description of the user.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The domain this user belongs to.
      */
-    readonly domainId?: pulumi.Input<string>;
+    domainId?: pulumi.Input<string>;
     /**
      * Whether the user is enabled or disabled. Valid
      * values are `true` and `false`.
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * Free-form key/value pairs of extra information.
      */
-    readonly extra?: pulumi.Input<{[key: string]: any}>;
+    extra?: pulumi.Input<{[key: string]: any}>;
     /**
      * User will not have to
      * change their password upon first use. Valid values are `true` and `false`.
      */
-    readonly ignoreChangePasswordUponFirstUse?: pulumi.Input<boolean>;
+    ignoreChangePasswordUponFirstUse?: pulumi.Input<boolean>;
     /**
      * User will not have a failure
      * lockout placed on their account. Valid values are `true` and `false`.
      */
-    readonly ignoreLockoutFailureAttempts?: pulumi.Input<boolean>;
+    ignoreLockoutFailureAttempts?: pulumi.Input<boolean>;
     /**
      * User's password will not expire.
      * Valid values are `true` and `false`.
      */
-    readonly ignorePasswordExpiry?: pulumi.Input<boolean>;
+    ignorePasswordExpiry?: pulumi.Input<boolean>;
     /**
      * Whether to enable multi-factor
      * authentication. Valid values are `true` and `false`.
      */
-    readonly multiFactorAuthEnabled?: pulumi.Input<boolean>;
+    multiFactorAuthEnabled?: pulumi.Input<boolean>;
     /**
      * A multi-factor authentication rule.
      * The structure is documented below. Please see the
      * [Ocata release notes](https://docs.openstack.org/releasenotes/keystone/ocata.html)
      * for more information on how to use mulit-factor rules.
      */
-    readonly multiFactorAuthRules?: pulumi.Input<pulumi.Input<inputs.identity.UserMultiFactorAuthRule>[]>;
+    multiFactorAuthRules?: pulumi.Input<pulumi.Input<inputs.identity.UserMultiFactorAuthRule>[]>;
     /**
      * The name of the user.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The password for the user.
      */
-    readonly password?: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V3 Keystone client.
      * If omitted, the `region` argument of the provider is used. Changing this
      * creates a new User.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
 }
 
 /**
@@ -229,63 +229,63 @@ export interface UserArgs {
     /**
      * The default project this user belongs to.
      */
-    readonly defaultProjectId?: pulumi.Input<string>;
+    defaultProjectId?: pulumi.Input<string>;
     /**
      * A description of the user.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The domain this user belongs to.
      */
-    readonly domainId?: pulumi.Input<string>;
+    domainId?: pulumi.Input<string>;
     /**
      * Whether the user is enabled or disabled. Valid
      * values are `true` and `false`.
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * Free-form key/value pairs of extra information.
      */
-    readonly extra?: pulumi.Input<{[key: string]: any}>;
+    extra?: pulumi.Input<{[key: string]: any}>;
     /**
      * User will not have to
      * change their password upon first use. Valid values are `true` and `false`.
      */
-    readonly ignoreChangePasswordUponFirstUse?: pulumi.Input<boolean>;
+    ignoreChangePasswordUponFirstUse?: pulumi.Input<boolean>;
     /**
      * User will not have a failure
      * lockout placed on their account. Valid values are `true` and `false`.
      */
-    readonly ignoreLockoutFailureAttempts?: pulumi.Input<boolean>;
+    ignoreLockoutFailureAttempts?: pulumi.Input<boolean>;
     /**
      * User's password will not expire.
      * Valid values are `true` and `false`.
      */
-    readonly ignorePasswordExpiry?: pulumi.Input<boolean>;
+    ignorePasswordExpiry?: pulumi.Input<boolean>;
     /**
      * Whether to enable multi-factor
      * authentication. Valid values are `true` and `false`.
      */
-    readonly multiFactorAuthEnabled?: pulumi.Input<boolean>;
+    multiFactorAuthEnabled?: pulumi.Input<boolean>;
     /**
      * A multi-factor authentication rule.
      * The structure is documented below. Please see the
      * [Ocata release notes](https://docs.openstack.org/releasenotes/keystone/ocata.html)
      * for more information on how to use mulit-factor rules.
      */
-    readonly multiFactorAuthRules?: pulumi.Input<pulumi.Input<inputs.identity.UserMultiFactorAuthRule>[]>;
+    multiFactorAuthRules?: pulumi.Input<pulumi.Input<inputs.identity.UserMultiFactorAuthRule>[]>;
     /**
      * The name of the user.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The password for the user.
      */
-    readonly password?: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V3 Keystone client.
      * If omitted, the `region` argument of the provider is used. Changing this
      * creates a new User.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
 }

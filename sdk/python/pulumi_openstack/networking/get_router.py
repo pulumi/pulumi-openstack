@@ -13,6 +13,7 @@ __all__ = [
     'GetRouterResult',
     'AwaitableGetRouterResult',
     'get_router',
+    'get_router_output',
 ]
 
 @pulumi.output_type
@@ -254,3 +255,44 @@ def get_router(admin_state_up: Optional[bool] = None,
         status=__ret__.status,
         tags=__ret__.tags,
         tenant_id=__ret__.tenant_id)
+
+
+@_utilities.lift_output_func(get_router)
+def get_router_output(admin_state_up: Optional[pulumi.Input[Optional[bool]]] = None,
+                      description: Optional[pulumi.Input[Optional[str]]] = None,
+                      distributed: Optional[pulumi.Input[Optional[bool]]] = None,
+                      enable_snat: Optional[pulumi.Input[Optional[bool]]] = None,
+                      name: Optional[pulumi.Input[Optional[str]]] = None,
+                      region: Optional[pulumi.Input[Optional[str]]] = None,
+                      router_id: Optional[pulumi.Input[Optional[str]]] = None,
+                      status: Optional[pulumi.Input[Optional[str]]] = None,
+                      tags: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                      tenant_id: Optional[pulumi.Input[Optional[str]]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRouterResult]:
+    """
+    Use this data source to get the ID of an available OpenStack router.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    router = openstack.networking.get_router(name="router_1")
+    ```
+
+
+    :param bool admin_state_up: Administrative up/down status for the router (must be "true" or "false" if provided).
+    :param str description: Human-readable description of the router.
+    :param bool distributed: Indicates whether or not to get a distributed router.
+    :param bool enable_snat: The value that points out if the Source NAT is enabled on the router.
+    :param str name: The name of the router.
+    :param str region: The region in which to obtain the V2 Neutron client.
+           A Neutron client is needed to retrieve router ids. If omitted, the
+           `region` argument of the provider is used.
+    :param str router_id: The UUID of the router resource.
+    :param str status: The status of the router (ACTIVE/DOWN).
+    :param Sequence[str] tags: The list of router tags to filter.
+    :param str tenant_id: The owner of the router.
+    """
+    ...

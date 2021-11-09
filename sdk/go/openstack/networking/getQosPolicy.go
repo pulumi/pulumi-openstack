@@ -4,6 +4,9 @@
 package networking
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -85,4 +88,114 @@ type LookupQosPolicyResult struct {
 	Tags   []string `pulumi:"tags"`
 	// The time at which QoS policy was created.
 	UpdatedAt string `pulumi:"updatedAt"`
+}
+
+func LookupQosPolicyOutput(ctx *pulumi.Context, args LookupQosPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupQosPolicyResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupQosPolicyResult, error) {
+			args := v.(LookupQosPolicyArgs)
+			r, err := LookupQosPolicy(ctx, &args, opts...)
+			return *r, err
+		}).(LookupQosPolicyResultOutput)
+}
+
+// A collection of arguments for invoking getQosPolicy.
+type LookupQosPolicyOutputArgs struct {
+	// The human-readable description for the QoS policy.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Whether the QoS policy is default policy or not.
+	IsDefault pulumi.BoolPtrInput `pulumi:"isDefault"`
+	// The name of the QoS policy.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The owner of the QoS policy.
+	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+	// The region in which to obtain the V2 Networking client.
+	// A Networking client is needed to retrieve a QoS policy ID. If omitted, the
+	// `region` argument of the provider is used.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// Whether this QoS policy is shared across all projects.
+	Shared pulumi.BoolPtrInput `pulumi:"shared"`
+	// The list of QoS policy tags to filter.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+}
+
+func (LookupQosPolicyOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupQosPolicyArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getQosPolicy.
+type LookupQosPolicyResultOutput struct{ *pulumi.OutputState }
+
+func (LookupQosPolicyResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupQosPolicyResult)(nil)).Elem()
+}
+
+func (o LookupQosPolicyResultOutput) ToLookupQosPolicyResultOutput() LookupQosPolicyResultOutput {
+	return o
+}
+
+func (o LookupQosPolicyResultOutput) ToLookupQosPolicyResultOutputWithContext(ctx context.Context) LookupQosPolicyResultOutput {
+	return o
+}
+
+// The set of string tags applied on the QoS policy.
+func (o LookupQosPolicyResultOutput) AllTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupQosPolicyResult) []string { return v.AllTags }).(pulumi.StringArrayOutput)
+}
+
+// The time at which QoS policy was created.
+func (o LookupQosPolicyResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupQosPolicyResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// See Argument Reference above.
+func (o LookupQosPolicyResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupQosPolicyResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupQosPolicyResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupQosPolicyResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// See Argument Reference above.
+func (o LookupQosPolicyResultOutput) IsDefault() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupQosPolicyResult) bool { return v.IsDefault }).(pulumi.BoolOutput)
+}
+
+// See Argument Reference above.
+func (o LookupQosPolicyResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupQosPolicyResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupQosPolicyResultOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupQosPolicyResult) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// See Argument Reference above.
+func (o LookupQosPolicyResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupQosPolicyResult) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// The revision number of the QoS policy.
+func (o LookupQosPolicyResultOutput) RevisionNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupQosPolicyResult) int { return v.RevisionNumber }).(pulumi.IntOutput)
+}
+
+// See Argument Reference above.
+func (o LookupQosPolicyResultOutput) Shared() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupQosPolicyResult) bool { return v.Shared }).(pulumi.BoolOutput)
+}
+
+func (o LookupQosPolicyResultOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupQosPolicyResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// The time at which QoS policy was created.
+func (o LookupQosPolicyResultOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupQosPolicyResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupQosPolicyResultOutput{})
 }

@@ -208,29 +208,29 @@ export interface SecGroupRuleState {
     /**
      * A description of the rule. Changing this creates a new security group rule.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The direction of the rule, valid values are __ingress__
      * or __egress__. Changing this creates a new security group rule.
      */
-    readonly direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string>;
     /**
      * The layer 3 protocol type, valid values are __IPv4__
      * or __IPv6__. Changing this creates a new security group rule.
      */
-    readonly ethertype?: pulumi.Input<string>;
+    ethertype?: pulumi.Input<string>;
     /**
      * The higher part of the allowed port range, valid
      * integer value needs to be between 1 and 65535. Changing this creates a new
      * security group rule.
      */
-    readonly portRangeMax?: pulumi.Input<number>;
+    portRangeMax?: pulumi.Input<number>;
     /**
      * The lower part of the allowed port range, valid
      * integer value needs to be between 1 and 65535. Changing this creates a new
      * security group rule.
      */
-    readonly portRangeMin?: pulumi.Input<number>;
+    portRangeMin?: pulumi.Input<number>;
     /**
      * The layer 4 protocol type, valid values are following. Changing this creates a new security group rule. This is required if you want to specify a port range.
      * * __tcp__
@@ -255,37 +255,37 @@ export interface SecGroupRuleState {
      * * __udplite__
      * * __vrrp__
      */
-    readonly protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 networking client.
      * A networking client is needed to create a port. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * security group rule.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The remote group id, the value needs to be an
      * Openstack ID of a security group in the same tenant. Changing this creates
      * a new security group rule.
      */
-    readonly remoteGroupId?: pulumi.Input<string>;
+    remoteGroupId?: pulumi.Input<string>;
     /**
      * The remote CIDR, the value needs to be a valid
      * CIDR (i.e. 192.168.0.0/16). Changing this creates a new security group rule.
      */
-    readonly remoteIpPrefix?: pulumi.Input<string>;
+    remoteIpPrefix?: pulumi.Input<string>;
     /**
      * The security group id the rule should belong
      * to, the value needs to be an Openstack ID of a security group in the same
      * tenant. Changing this creates a new security group rule.
      */
-    readonly securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string>;
     /**
      * The owner of the security group. Required if admin
      * wants to create a port for another tenant. Changing this creates a new
      * security group rule.
      */
-    readonly tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string>;
 }
 
 /**
@@ -295,29 +295,29 @@ export interface SecGroupRuleArgs {
     /**
      * A description of the rule. Changing this creates a new security group rule.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The direction of the rule, valid values are __ingress__
      * or __egress__. Changing this creates a new security group rule.
      */
-    readonly direction: pulumi.Input<string>;
+    direction: pulumi.Input<string>;
     /**
      * The layer 3 protocol type, valid values are __IPv4__
      * or __IPv6__. Changing this creates a new security group rule.
      */
-    readonly ethertype: pulumi.Input<string>;
+    ethertype: pulumi.Input<string>;
     /**
      * The higher part of the allowed port range, valid
      * integer value needs to be between 1 and 65535. Changing this creates a new
      * security group rule.
      */
-    readonly portRangeMax?: pulumi.Input<number>;
+    portRangeMax?: pulumi.Input<number>;
     /**
      * The lower part of the allowed port range, valid
      * integer value needs to be between 1 and 65535. Changing this creates a new
      * security group rule.
      */
-    readonly portRangeMin?: pulumi.Input<number>;
+    portRangeMin?: pulumi.Input<number>;
     /**
      * The layer 4 protocol type, valid values are following. Changing this creates a new security group rule. This is required if you want to specify a port range.
      * * __tcp__
@@ -342,35 +342,35 @@ export interface SecGroupRuleArgs {
      * * __udplite__
      * * __vrrp__
      */
-    readonly protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 networking client.
      * A networking client is needed to create a port. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * security group rule.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The remote group id, the value needs to be an
      * Openstack ID of a security group in the same tenant. Changing this creates
      * a new security group rule.
      */
-    readonly remoteGroupId?: pulumi.Input<string>;
+    remoteGroupId?: pulumi.Input<string>;
     /**
      * The remote CIDR, the value needs to be a valid
      * CIDR (i.e. 192.168.0.0/16). Changing this creates a new security group rule.
      */
-    readonly remoteIpPrefix?: pulumi.Input<string>;
+    remoteIpPrefix?: pulumi.Input<string>;
     /**
      * The security group id the rule should belong
      * to, the value needs to be an Openstack ID of a security group in the same
      * tenant. Changing this creates a new security group rule.
      */
-    readonly securityGroupId: pulumi.Input<string>;
+    securityGroupId: pulumi.Input<string>;
     /**
      * The owner of the security group. Required if admin
      * wants to create a port for another tenant. Changing this creates a new
      * security group rule.
      */
-    readonly tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string>;
 }

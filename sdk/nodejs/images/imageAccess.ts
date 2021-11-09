@@ -176,35 +176,35 @@ export interface ImageAccessState {
     /**
      * The date the image access was created.
      */
-    readonly createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
     /**
      * The image ID.
      */
-    readonly imageId?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string>;
     /**
      * The member ID, e.g. the target project ID.
      */
-    readonly memberId?: pulumi.Input<string>;
+    memberId?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 Glance client.
      * A Glance client is needed to manage Image members. If omitted, the `region`
      * argument of the provider is used. Changing this creates a new resource.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The member schema.
      */
-    readonly schema?: pulumi.Input<string>;
+    schema?: pulumi.Input<string>;
     /**
      * The member proposal status. Optional if admin wants to
      * force the member proposal acceptance. Can either be `accepted`, `rejected` or
      * `pending`. Defaults to `pending`. Foridden for non-admin users.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The date the image access was last updated.
      */
-    readonly updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string>;
 }
 
 /**
@@ -214,21 +214,21 @@ export interface ImageAccessArgs {
     /**
      * The image ID.
      */
-    readonly imageId: pulumi.Input<string>;
+    imageId: pulumi.Input<string>;
     /**
      * The member ID, e.g. the target project ID.
      */
-    readonly memberId: pulumi.Input<string>;
+    memberId: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 Glance client.
      * A Glance client is needed to manage Image members. If omitted, the `region`
      * argument of the provider is used. Changing this creates a new resource.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The member proposal status. Optional if admin wants to
      * force the member proposal acceptance. Can either be `accepted`, `rejected` or
      * `pending`. Defaults to `pending`. Foridden for non-admin users.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
 }

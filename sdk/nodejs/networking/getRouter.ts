@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *
  * const router = pulumi.output(openstack.networking.getRouter({
  *     name: "router_1",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getRouter(args?: GetRouterArgs, opts?: pulumi.InvokeOptions): Promise<GetRouterResult> {
@@ -49,45 +49,45 @@ export interface GetRouterArgs {
     /**
      * Administrative up/down status for the router (must be "true" or "false" if provided).
      */
-    readonly adminStateUp?: boolean;
+    adminStateUp?: boolean;
     /**
      * Human-readable description of the router.
      */
-    readonly description?: string;
+    description?: string;
     /**
      * Indicates whether or not to get a distributed router.
      */
-    readonly distributed?: boolean;
+    distributed?: boolean;
     /**
      * The value that points out if the Source NAT is enabled on the router.
      */
-    readonly enableSnat?: boolean;
+    enableSnat?: boolean;
     /**
      * The name of the router.
      */
-    readonly name?: string;
+    name?: string;
     /**
      * The region in which to obtain the V2 Neutron client.
      * A Neutron client is needed to retrieve router ids. If omitted, the
      * `region` argument of the provider is used.
      */
-    readonly region?: string;
+    region?: string;
     /**
      * The UUID of the router resource.
      */
-    readonly routerId?: string;
+    routerId?: string;
     /**
      * The status of the router (ACTIVE/DOWN).
      */
-    readonly status?: string;
+    status?: string;
     /**
      * The list of router tags to filter.
      */
-    readonly tags?: string[];
+    tags?: string[];
     /**
      * The owner of the router.
      */
-    readonly tenantId?: string;
+    tenantId?: string;
 }
 
 /**
@@ -127,4 +127,56 @@ export interface GetRouterResult {
     readonly status?: string;
     readonly tags?: string[];
     readonly tenantId?: string;
+}
+
+export function getRouterOutput(args?: GetRouterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRouterResult> {
+    return pulumi.output(args).apply(a => getRouter(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getRouter.
+ */
+export interface GetRouterOutputArgs {
+    /**
+     * Administrative up/down status for the router (must be "true" or "false" if provided).
+     */
+    adminStateUp?: pulumi.Input<boolean>;
+    /**
+     * Human-readable description of the router.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Indicates whether or not to get a distributed router.
+     */
+    distributed?: pulumi.Input<boolean>;
+    /**
+     * The value that points out if the Source NAT is enabled on the router.
+     */
+    enableSnat?: pulumi.Input<boolean>;
+    /**
+     * The name of the router.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The region in which to obtain the V2 Neutron client.
+     * A Neutron client is needed to retrieve router ids. If omitted, the
+     * `region` argument of the provider is used.
+     */
+    region?: pulumi.Input<string>;
+    /**
+     * The UUID of the router resource.
+     */
+    routerId?: pulumi.Input<string>;
+    /**
+     * The status of the router (ACTIVE/DOWN).
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * The list of router tags to filter.
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The owner of the router.
+     */
+    tenantId?: pulumi.Input<string>;
 }

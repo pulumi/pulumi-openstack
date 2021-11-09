@@ -4,6 +4,9 @@
 package blockstorage
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -59,4 +62,67 @@ type GetAvailabilityZonesV3Result struct {
 	Region string `pulumi:"region"`
 	// See Argument Reference above.
 	State *string `pulumi:"state"`
+}
+
+func GetAvailabilityZonesV3Output(ctx *pulumi.Context, args GetAvailabilityZonesV3OutputArgs, opts ...pulumi.InvokeOption) GetAvailabilityZonesV3ResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetAvailabilityZonesV3Result, error) {
+			args := v.(GetAvailabilityZonesV3Args)
+			r, err := GetAvailabilityZonesV3(ctx, &args, opts...)
+			return *r, err
+		}).(GetAvailabilityZonesV3ResultOutput)
+}
+
+// A collection of arguments for invoking getAvailabilityZonesV3.
+type GetAvailabilityZonesV3OutputArgs struct {
+	// The region in which to obtain the Block Storage client.
+	// If omitted, the `region` argument of the provider is used.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// The `state` of the availability zones to match. Can
+	// either be `available` or `unavailable`. Default is `available`.
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (GetAvailabilityZonesV3OutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAvailabilityZonesV3Args)(nil)).Elem()
+}
+
+// A collection of values returned by getAvailabilityZonesV3.
+type GetAvailabilityZonesV3ResultOutput struct{ *pulumi.OutputState }
+
+func (GetAvailabilityZonesV3ResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAvailabilityZonesV3Result)(nil)).Elem()
+}
+
+func (o GetAvailabilityZonesV3ResultOutput) ToGetAvailabilityZonesV3ResultOutput() GetAvailabilityZonesV3ResultOutput {
+	return o
+}
+
+func (o GetAvailabilityZonesV3ResultOutput) ToGetAvailabilityZonesV3ResultOutputWithContext(ctx context.Context) GetAvailabilityZonesV3ResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetAvailabilityZonesV3ResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAvailabilityZonesV3Result) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The names of the availability zones, ordered alphanumerically, that
+// match the queried `state`.
+func (o GetAvailabilityZonesV3ResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAvailabilityZonesV3Result) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+// See Argument Reference above.
+func (o GetAvailabilityZonesV3ResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAvailabilityZonesV3Result) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// See Argument Reference above.
+func (o GetAvailabilityZonesV3ResultOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAvailabilityZonesV3Result) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetAvailabilityZonesV3ResultOutput{})
 }

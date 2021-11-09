@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.OpenStack.Networking
 {
@@ -39,6 +40,35 @@ namespace Pulumi.OpenStack.Networking
         /// </summary>
         public static Task<GetPortResult> InvokeAsync(GetPortArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPortResult>("openstack:networking/getPort:getPort", args ?? new GetPortArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to get the ID of an available OpenStack port.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var port1 = Output.Create(OpenStack.Networking.GetPort.InvokeAsync(new OpenStack.Networking.GetPortArgs
+        ///         {
+        ///             Name = "port_1",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetPortResult> Invoke(GetPortInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetPortResult>("openstack:networking/getPort:getPort", args ?? new GetPortInvokeArgs(), options.WithVersion());
     }
 
 
@@ -153,6 +183,121 @@ namespace Pulumi.OpenStack.Networking
         public string? TenantId { get; set; }
 
         public GetPortArgs()
+        {
+        }
+    }
+
+    public sealed class GetPortInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The administrative state of the port.
+        /// </summary>
+        [Input("adminStateUp")]
+        public Input<bool>? AdminStateUp { get; set; }
+
+        /// <summary>
+        /// Human-readable description of the port.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The ID of the device the port belongs to.
+        /// </summary>
+        [Input("deviceId")]
+        public Input<string>? DeviceId { get; set; }
+
+        /// <summary>
+        /// The device owner of the port.
+        /// </summary>
+        [Input("deviceOwner")]
+        public Input<string>? DeviceOwner { get; set; }
+
+        /// <summary>
+        /// The port DNS name to filter. Available, when Neutron
+        /// DNS extension is enabled.
+        /// </summary>
+        [Input("dnsName")]
+        public Input<string>? DnsName { get; set; }
+
+        /// <summary>
+        /// The port IP address filter.
+        /// </summary>
+        [Input("fixedIp")]
+        public Input<string>? FixedIp { get; set; }
+
+        /// <summary>
+        /// The MAC address of the port.
+        /// </summary>
+        [Input("macAddress")]
+        public Input<string>? MacAddress { get; set; }
+
+        /// <summary>
+        /// The name of the port.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The ID of the network the port belongs to.
+        /// </summary>
+        [Input("networkId")]
+        public Input<string>? NetworkId { get; set; }
+
+        /// <summary>
+        /// The ID of the port.
+        /// </summary>
+        [Input("portId")]
+        public Input<string>? PortId { get; set; }
+
+        /// <summary>
+        /// The owner of the port.
+        /// </summary>
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
+
+        /// <summary>
+        /// The region in which to obtain the V2 Neutron client.
+        /// A Neutron client is needed to retrieve port ids. If omitted, the
+        /// `region` argument of the provider is used.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        [Input("securityGroupIds")]
+        private InputList<string>? _securityGroupIds;
+
+        /// <summary>
+        /// The list of port security group IDs to filter.
+        /// </summary>
+        public InputList<string> SecurityGroupIds
+        {
+            get => _securityGroupIds ?? (_securityGroupIds = new InputList<string>());
+            set => _securityGroupIds = value;
+        }
+
+        /// <summary>
+        /// The status of the port.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// The list of port tags to filter.
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
+
+        [Input("tenantId")]
+        public Input<string>? TenantId { get; set; }
+
+        public GetPortInvokeArgs()
         {
         }
     }

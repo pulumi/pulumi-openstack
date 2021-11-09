@@ -134,20 +134,20 @@ export interface AggregateV2State {
      * to Openstack and visible in the web interface, or the provider will fail to add them to the host
      * aggregate.
      */
-    readonly hosts?: pulumi.Input<pulumi.Input<string>[]>;
+    hosts?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The metadata of the Host Aggregate. Can be useful to indicate scheduler hints.
      */
-    readonly metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the Host Aggregate
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The name of the Availability Zone to use. If ommited, it will take the default
      * availability zone.
      */
-    readonly zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string>;
 }
 
 /**
@@ -159,18 +159,18 @@ export interface AggregateV2Args {
      * to Openstack and visible in the web interface, or the provider will fail to add them to the host
      * aggregate.
      */
-    readonly hosts?: pulumi.Input<pulumi.Input<string>[]>;
+    hosts?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The metadata of the Host Aggregate. Can be useful to indicate scheduler hints.
      */
-    readonly metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the Host Aggregate
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The name of the Availability Zone to use. If ommited, it will take the default
      * availability zone.
      */
-    readonly zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string>;
 }

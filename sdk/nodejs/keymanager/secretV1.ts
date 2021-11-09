@@ -196,84 +196,84 @@ export interface SecretV1State {
      * `read` operation is supported. If not specified, the secret is accessible
      * project wide.
      */
-    readonly acl?: pulumi.Input<inputs.keymanager.SecretV1Acl>;
+    acl?: pulumi.Input<inputs.keymanager.SecretV1Acl>;
     /**
      * Metadata provided by a user or system for informational purposes.
      */
-    readonly algorithm?: pulumi.Input<string>;
+    algorithm?: pulumi.Input<string>;
     /**
      * The map of metadata, assigned on the secret, which has been
      * explicitly and implicitly added.
      */
-    readonly allMetadata?: pulumi.Input<{[key: string]: any}>;
+    allMetadata?: pulumi.Input<{[key: string]: any}>;
     /**
      * Metadata provided by a user or system for informational purposes.
      */
-    readonly bitLength?: pulumi.Input<number>;
+    bitLength?: pulumi.Input<number>;
     /**
      * The map of the content types, assigned on the secret.
      */
-    readonly contentTypes?: pulumi.Input<{[key: string]: any}>;
+    contentTypes?: pulumi.Input<{[key: string]: any}>;
     /**
      * The date the secret ACL was created.
      */
-    readonly createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
     /**
      * The creator of the secret.
      */
-    readonly creatorId?: pulumi.Input<string>;
+    creatorId?: pulumi.Input<string>;
     /**
      * The expiration time of the secret in the RFC3339 timestamp format (e.g. `2019-03-09T12:58:49Z`). If omitted, a secret will never expire. Changing this creates a new secret.
      */
-    readonly expiration?: pulumi.Input<string>;
+    expiration?: pulumi.Input<string>;
     /**
      * Additional Metadata for the secret.
      */
-    readonly metadata?: pulumi.Input<{[key: string]: any}>;
+    metadata?: pulumi.Input<{[key: string]: any}>;
     /**
      * Metadata provided by a user or system for informational purposes.
      */
-    readonly mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string>;
     /**
      * Human-readable name for the Secret. Does not have
      * to be unique.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The secret's data to be stored. **payload\_content\_type** must also be supplied if **payload** is included.
      */
-    readonly payload?: pulumi.Input<string>;
+    payload?: pulumi.Input<string>;
     /**
      * (required if **payload** is encoded) The encoding used for the payload to be able to include it in the JSON request. Must be either `base64` or `binary`.
      */
-    readonly payloadContentEncoding?: pulumi.Input<string>;
+    payloadContentEncoding?: pulumi.Input<string>;
     /**
      * (required if **payload** is included) The media type for the content of the payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.
      */
-    readonly payloadContentType?: pulumi.Input<string>;
+    payloadContentType?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V1 KeyManager client.
      * A KeyManager client is needed to create a secret. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * V1 secret.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The secret reference / where to find the secret.
      */
-    readonly secretRef?: pulumi.Input<string>;
+    secretRef?: pulumi.Input<string>;
     /**
      * Used to indicate the type of secret being stored. For more information see [Secret types](https://docs.openstack.org/barbican/latest/api/reference/secret_types.html).
      */
-    readonly secretType?: pulumi.Input<string>;
+    secretType?: pulumi.Input<string>;
     /**
      * The status of the secret.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The date the secret ACL was last updated.
      */
-    readonly updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string>;
 }
 
 /**
@@ -285,53 +285,53 @@ export interface SecretV1Args {
      * `read` operation is supported. If not specified, the secret is accessible
      * project wide.
      */
-    readonly acl?: pulumi.Input<inputs.keymanager.SecretV1Acl>;
+    acl?: pulumi.Input<inputs.keymanager.SecretV1Acl>;
     /**
      * Metadata provided by a user or system for informational purposes.
      */
-    readonly algorithm?: pulumi.Input<string>;
+    algorithm?: pulumi.Input<string>;
     /**
      * Metadata provided by a user or system for informational purposes.
      */
-    readonly bitLength?: pulumi.Input<number>;
+    bitLength?: pulumi.Input<number>;
     /**
      * The expiration time of the secret in the RFC3339 timestamp format (e.g. `2019-03-09T12:58:49Z`). If omitted, a secret will never expire. Changing this creates a new secret.
      */
-    readonly expiration?: pulumi.Input<string>;
+    expiration?: pulumi.Input<string>;
     /**
      * Additional Metadata for the secret.
      */
-    readonly metadata?: pulumi.Input<{[key: string]: any}>;
+    metadata?: pulumi.Input<{[key: string]: any}>;
     /**
      * Metadata provided by a user or system for informational purposes.
      */
-    readonly mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string>;
     /**
      * Human-readable name for the Secret. Does not have
      * to be unique.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The secret's data to be stored. **payload\_content\_type** must also be supplied if **payload** is included.
      */
-    readonly payload?: pulumi.Input<string>;
+    payload?: pulumi.Input<string>;
     /**
      * (required if **payload** is encoded) The encoding used for the payload to be able to include it in the JSON request. Must be either `base64` or `binary`.
      */
-    readonly payloadContentEncoding?: pulumi.Input<string>;
+    payloadContentEncoding?: pulumi.Input<string>;
     /**
      * (required if **payload** is included) The media type for the content of the payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.
      */
-    readonly payloadContentType?: pulumi.Input<string>;
+    payloadContentType?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V1 KeyManager client.
      * A KeyManager client is needed to create a secret. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * V1 secret.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * Used to indicate the type of secret being stored. For more information see [Secret types](https://docs.openstack.org/barbican/latest/api/reference/secret_types.html).
      */
-    readonly secretType?: pulumi.Input<string>;
+    secretType?: pulumi.Input<string>;
 }

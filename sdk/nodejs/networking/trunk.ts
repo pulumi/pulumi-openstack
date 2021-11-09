@@ -177,47 +177,47 @@ export interface TrunkState {
      * (must be "true" or "false" if provided). Changing this updates the
      * `adminStateUp` of an existing trunk.
      */
-    readonly adminStateUp?: pulumi.Input<boolean>;
+    adminStateUp?: pulumi.Input<boolean>;
     /**
      * The collection of tags assigned on the trunk, which have been
      * explicitly and implicitly added.
      */
-    readonly allTags?: pulumi.Input<pulumi.Input<string>[]>;
+    allTags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Human-readable description of the trunk. Changing this
      * updates the name of the existing trunk.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * A unique name for the trunk. Changing this
      * updates the `name` of an existing trunk.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the port to be made a subport of the trunk.
      */
-    readonly portId?: pulumi.Input<string>;
+    portId?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 networking client.
      * A networking client is needed to create a trunk. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * trunk.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The set of ports that will be made subports of the trunk.
      * The structure of each subport is described below.
      */
-    readonly subPorts?: pulumi.Input<pulumi.Input<inputs.networking.TrunkSubPort>[]>;
+    subPorts?: pulumi.Input<pulumi.Input<inputs.networking.TrunkSubPort>[]>;
     /**
      * A set of string tags for the port.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The owner of the Trunk. Required if admin wants
      * to create a trunk on behalf of another tenant. Changing this creates a new trunk.
      */
-    readonly tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string>;
 }
 
 /**
@@ -229,40 +229,40 @@ export interface TrunkArgs {
      * (must be "true" or "false" if provided). Changing this updates the
      * `adminStateUp` of an existing trunk.
      */
-    readonly adminStateUp?: pulumi.Input<boolean>;
+    adminStateUp?: pulumi.Input<boolean>;
     /**
      * Human-readable description of the trunk. Changing this
      * updates the name of the existing trunk.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * A unique name for the trunk. Changing this
      * updates the `name` of an existing trunk.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the port to be made a subport of the trunk.
      */
-    readonly portId: pulumi.Input<string>;
+    portId: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 networking client.
      * A networking client is needed to create a trunk. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * trunk.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The set of ports that will be made subports of the trunk.
      * The structure of each subport is described below.
      */
-    readonly subPorts?: pulumi.Input<pulumi.Input<inputs.networking.TrunkSubPort>[]>;
+    subPorts?: pulumi.Input<pulumi.Input<inputs.networking.TrunkSubPort>[]>;
     /**
      * A set of string tags for the port.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The owner of the Trunk. Required if admin wants
      * to create a trunk on behalf of another tenant. Changing this creates a new trunk.
      */
-    readonly tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string>;
 }

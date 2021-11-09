@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -16,7 +15,7 @@ import * as utilities from "../utilities";
  *
  * const project1 = pulumi.output(openstack.identity.getProject({
  *     name: "demo",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getProject(args?: GetProjectArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectResult> {
@@ -45,29 +44,29 @@ export interface GetProjectArgs {
     /**
      * The domain this project belongs to.
      */
-    readonly domainId?: string;
+    domainId?: string;
     /**
      * Whether the project is enabled or disabled. Valid
      * values are `true` and `false`.
      */
-    readonly enabled?: boolean;
+    enabled?: boolean;
     /**
      * Whether this project is a domain. Valid values
      * are `true` and `false`.
      */
-    readonly isDomain?: boolean;
+    isDomain?: boolean;
     /**
      * The name of the project.
      */
-    readonly name?: string;
+    name?: string;
     /**
      * The parent of this project.
      */
-    readonly parentId?: string;
+    parentId?: string;
     /**
      * The region the project is located in.
      */
-    readonly region?: string;
+    region?: string;
 }
 
 /**
@@ -110,4 +109,40 @@ export interface GetProjectResult {
      * See Argument Reference above.
      */
     readonly tags: string[];
+}
+
+export function getProjectOutput(args?: GetProjectOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectResult> {
+    return pulumi.output(args).apply(a => getProject(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getProject.
+ */
+export interface GetProjectOutputArgs {
+    /**
+     * The domain this project belongs to.
+     */
+    domainId?: pulumi.Input<string>;
+    /**
+     * Whether the project is enabled or disabled. Valid
+     * values are `true` and `false`.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * Whether this project is a domain. Valid values
+     * are `true` and `false`.
+     */
+    isDomain?: pulumi.Input<boolean>;
+    /**
+     * The name of the project.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The parent of this project.
+     */
+    parentId?: pulumi.Input<string>;
+    /**
+     * The region the project is located in.
+     */
+    region?: pulumi.Input<string>;
 }

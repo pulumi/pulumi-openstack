@@ -163,50 +163,50 @@ export interface MemberState {
      * The IP address of the member to receive traffic from
      * the load balancer. Changing this creates a new member.
      */
-    readonly address?: pulumi.Input<string>;
+    address?: pulumi.Input<string>;
     /**
      * The administrative state of the member.
      * A valid value is true (UP) or false (DOWN). Defaults to true.
      */
-    readonly adminStateUp?: pulumi.Input<boolean>;
+    adminStateUp?: pulumi.Input<boolean>;
     /**
      * Human-readable name for the member.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The id of the pool that this member will be assigned
      * to. Changing this creates a new member.
      */
-    readonly poolId?: pulumi.Input<string>;
+    poolId?: pulumi.Input<string>;
     /**
      * The port on which to listen for client traffic.
      * Changing this creates a new member.
      */
-    readonly protocolPort?: pulumi.Input<number>;
+    protocolPort?: pulumi.Input<number>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a member. If omitted, the `region`
      * argument of the provider is used. Changing this creates a new member.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The subnet in which to access the member. Changing
      * this creates a new member.
      */
-    readonly subnetId?: pulumi.Input<string>;
+    subnetId?: pulumi.Input<string>;
     /**
      * Required for admins. The UUID of the tenant who owns
      * the member.  Only administrative users can specify a tenant UUID
      * other than their own. Changing this creates a new member.
      */
-    readonly tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string>;
     /**
      * A positive integer value that indicates the relative
      * portion of traffic that this member should receive from the pool. For
      * example, a member with a weight of 10 receives five times as much traffic
      * as a member with a weight of 2. Defaults to 1.
      */
-    readonly weight?: pulumi.Input<number>;
+    weight?: pulumi.Input<number>;
 }
 
 /**
@@ -217,48 +217,48 @@ export interface MemberArgs {
      * The IP address of the member to receive traffic from
      * the load balancer. Changing this creates a new member.
      */
-    readonly address: pulumi.Input<string>;
+    address: pulumi.Input<string>;
     /**
      * The administrative state of the member.
      * A valid value is true (UP) or false (DOWN). Defaults to true.
      */
-    readonly adminStateUp?: pulumi.Input<boolean>;
+    adminStateUp?: pulumi.Input<boolean>;
     /**
      * Human-readable name for the member.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The id of the pool that this member will be assigned
      * to. Changing this creates a new member.
      */
-    readonly poolId: pulumi.Input<string>;
+    poolId: pulumi.Input<string>;
     /**
      * The port on which to listen for client traffic.
      * Changing this creates a new member.
      */
-    readonly protocolPort: pulumi.Input<number>;
+    protocolPort: pulumi.Input<number>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a member. If omitted, the `region`
      * argument of the provider is used. Changing this creates a new member.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The subnet in which to access the member. Changing
      * this creates a new member.
      */
-    readonly subnetId?: pulumi.Input<string>;
+    subnetId?: pulumi.Input<string>;
     /**
      * Required for admins. The UUID of the tenant who owns
      * the member.  Only administrative users can specify a tenant UUID
      * other than their own. Changing this creates a new member.
      */
-    readonly tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string>;
     /**
      * A positive integer value that indicates the relative
      * portion of traffic that this member should receive from the pool. For
      * example, a member with a weight of 10 receives five times as much traffic
      * as a member with a weight of 2. Defaults to 1.
      */
-    readonly weight?: pulumi.Input<number>;
+    weight?: pulumi.Input<number>;
 }

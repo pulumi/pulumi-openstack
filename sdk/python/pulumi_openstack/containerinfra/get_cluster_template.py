@@ -12,6 +12,7 @@ __all__ = [
     'GetClusterTemplateResult',
     'AwaitableGetClusterTemplateResult',
     'get_cluster_template',
+    'get_cluster_template_output',
 ]
 
 @pulumi.output_type
@@ -503,3 +504,29 @@ def get_cluster_template(name: Optional[str] = None,
         updated_at=__ret__.updated_at,
         user_id=__ret__.user_id,
         volume_driver=__ret__.volume_driver)
+
+
+@_utilities.lift_output_func(get_cluster_template)
+def get_cluster_template_output(name: Optional[pulumi.Input[str]] = None,
+                                region: Optional[pulumi.Input[Optional[str]]] = None,
+                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClusterTemplateResult]:
+    """
+    Use this data source to get the ID of an available OpenStack Magnum cluster
+    template.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    clustertemplate1 = openstack.containerinfra.get_cluster_template(name="clustertemplate_1")
+    ```
+
+
+    :param str name: The name of the cluster template.
+    :param str region: The region in which to obtain the V1 Container Infra
+           client.
+           If omitted, the `region` argument of the provider is used.
+    """
+    ...

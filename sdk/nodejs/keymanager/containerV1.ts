@@ -52,7 +52,7 @@ import * as utilities from "../utilities";
  * });
  * const subnet1 = pulumi.output(openstack.networking.getSubnet({
  *     name: "my-subnet",
- * }, { async: true }));
+ * }));
  * const lb1 = new openstack.loadbalancer.LoadBalancer("lb_1", {
  *     vipSubnetId: subnet1.id,
  * });
@@ -243,51 +243,51 @@ export interface ContainerV1State {
      * the `read` operation is supported. If not specified, the container is
      * accessible project wide. The `read` structure is described below.
      */
-    readonly acl?: pulumi.Input<inputs.keymanager.ContainerV1Acl>;
+    acl?: pulumi.Input<inputs.keymanager.ContainerV1Acl>;
     /**
      * The list of the container consumers. The structure is described below.
      */
-    readonly consumers?: pulumi.Input<pulumi.Input<inputs.keymanager.ContainerV1Consumer>[]>;
+    consumers?: pulumi.Input<pulumi.Input<inputs.keymanager.ContainerV1Consumer>[]>;
     /**
      * The container reference / where to find the container.
      */
-    readonly containerRef?: pulumi.Input<string>;
+    containerRef?: pulumi.Input<string>;
     /**
      * The date the container ACL was created.
      */
-    readonly createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
     /**
      * The creator of the container.
      */
-    readonly creatorId?: pulumi.Input<string>;
+    creatorId?: pulumi.Input<string>;
     /**
      * The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V1 KeyManager client.
      * A KeyManager client is needed to create a container. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * V1 container.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * A set of dictionaries containing references to secrets. The structure is described
      * below.
      */
-    readonly secretRefs?: pulumi.Input<pulumi.Input<inputs.keymanager.ContainerV1SecretRef>[]>;
+    secretRefs?: pulumi.Input<pulumi.Input<inputs.keymanager.ContainerV1SecretRef>[]>;
     /**
      * The status of the container.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * Used to indicate the type of container. Must be one of `generic`, `rsa` or `certificate`.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
     /**
      * The date the container ACL was last updated.
      */
-    readonly updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string>;
 }
 
 /**
@@ -299,25 +299,25 @@ export interface ContainerV1Args {
      * the `read` operation is supported. If not specified, the container is
      * accessible project wide. The `read` structure is described below.
      */
-    readonly acl?: pulumi.Input<inputs.keymanager.ContainerV1Acl>;
+    acl?: pulumi.Input<inputs.keymanager.ContainerV1Acl>;
     /**
      * The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V1 KeyManager client.
      * A KeyManager client is needed to create a container. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * V1 container.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * A set of dictionaries containing references to secrets. The structure is described
      * below.
      */
-    readonly secretRefs?: pulumi.Input<pulumi.Input<inputs.keymanager.ContainerV1SecretRef>[]>;
+    secretRefs?: pulumi.Input<pulumi.Input<inputs.keymanager.ContainerV1SecretRef>[]>;
     /**
      * Used to indicate the type of container. Must be one of `generic`, `rsa` or `certificate`.
      */
-    readonly type: pulumi.Input<string>;
+    type: pulumi.Input<string>;
 }

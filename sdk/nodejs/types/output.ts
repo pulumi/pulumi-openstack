@@ -86,6 +86,7 @@ export namespace blockstorage {
          */
         sameHosts?: string[];
     }
+
 }
 
 export namespace compute {
@@ -337,6 +338,7 @@ export namespace compute {
          */
         ignoreVolumeConfirmation?: boolean;
     }
+
 }
 
 export namespace database {
@@ -437,6 +439,7 @@ export namespace database {
          */
         password?: string;
     }
+
 }
 
 export namespace identity {
@@ -532,6 +535,7 @@ export namespace identity {
          */
         rules: string[];
     }
+
 }
 
 export namespace keymanager {
@@ -703,6 +707,7 @@ export namespace keymanager {
          */
         users?: string[];
     }
+
 }
 
 export namespace loadbalancer {
@@ -759,6 +764,7 @@ export namespace loadbalancer {
          */
         type: string;
     }
+
 }
 
 export namespace networking {
@@ -1004,6 +1010,7 @@ export namespace objectstorage {
          */
         type: string;
     }
+
 }
 
 export namespace orchestration {
@@ -1015,6 +1022,7 @@ export namespace orchestration {
         outputKey: string;
         outputValue: string;
     }
+
 }
 
 export namespace sharedfilesystem {
@@ -1027,6 +1035,7 @@ export namespace sharedfilesystem {
         path: string;
         preferred: string;
     }
+
 }
 
 export namespace vpnaas {
@@ -1068,4 +1077,5 @@ export namespace vpnaas {
          */
         timeout: number;
     }
+
 }

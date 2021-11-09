@@ -281,148 +281,148 @@ export interface ImageState {
     /**
      * The checksum of the data associated with the image.
      */
-    readonly checksum?: pulumi.Input<string>;
+    checksum?: pulumi.Input<string>;
     /**
      * The container format. Must be one of
      * "ami", "ari", "aki", "bare", "ovf".
      */
-    readonly containerFormat?: pulumi.Input<string>;
+    containerFormat?: pulumi.Input<string>;
     /**
      * The date the image was created.
      */
-    readonly createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
     /**
      * The disk format. Must be one of
      * "ami", "ari", "aki", "vhd", "vmdk", "raw", "qcow2", "vdi", "iso".
      */
-    readonly diskFormat?: pulumi.Input<string>;
+    diskFormat?: pulumi.Input<string>;
     /**
      * the trailing path after the glance
      * endpoint that represent the location of the image
      * or the path to retrieve it.
      */
-    readonly file?: pulumi.Input<string>;
+    file?: pulumi.Input<string>;
     /**
      * If true, image will be hidden from public list.
      * Defaults to false.
      */
-    readonly hidden?: pulumi.Input<boolean>;
-    readonly imageCachePath?: pulumi.Input<string>;
+    hidden?: pulumi.Input<boolean>;
+    imageCachePath?: pulumi.Input<string>;
     /**
      * Unique ID (valid UUID) of image to create. Changing 
      * this creates a new image.
      */
-    readonly imageId?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string>;
     /**
      * The password of basic auth to download `imageSourceUrl`.
      */
-    readonly imageSourcePassword?: pulumi.Input<string>;
+    imageSourcePassword?: pulumi.Input<string>;
     /**
      * This is the url of the raw image. If `webDownload`
      * is not used, then the image will be downloaded in the `imageCachePath` before
      * being uploaded to Glance.
      * Conflicts with `localFilePath`.
      */
-    readonly imageSourceUrl?: pulumi.Input<string>;
+    imageSourceUrl?: pulumi.Input<string>;
     /**
      * The username of basic auth to download `imageSourceUrl`.
      */
-    readonly imageSourceUsername?: pulumi.Input<string>;
+    imageSourceUsername?: pulumi.Input<string>;
     /**
      * This is the filepath of the raw image file
      * that will be uploaded to Glance. Conflicts with `imageSourceUrl` and
      * `webDownload`.
      */
-    readonly localFilePath?: pulumi.Input<string>;
+    localFilePath?: pulumi.Input<string>;
     /**
      * The metadata associated with the image.
      * Image metadata allow for meaningfully define the image properties
      * and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
      */
-    readonly metadata?: pulumi.Input<{[key: string]: any}>;
+    metadata?: pulumi.Input<{[key: string]: any}>;
     /**
      * Amount of disk space (in GB) required to boot image.
      * Defaults to 0.
      */
-    readonly minDiskGb?: pulumi.Input<number>;
+    minDiskGb?: pulumi.Input<number>;
     /**
      * Amount of ram (in MB) required to boot image.
      * Defauts to 0.
      */
-    readonly minRamMb?: pulumi.Input<number>;
+    minRamMb?: pulumi.Input<number>;
     /**
      * The name of the image.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The id of the openstack user who owns the image.
      */
-    readonly owner?: pulumi.Input<string>;
+    owner?: pulumi.Input<string>;
     /**
      * A map of key/value pairs to set freeform
      * information about an image. See the "Notes" section for further
      * information about properties.
      */
-    readonly properties?: pulumi.Input<{[key: string]: any}>;
+    properties?: pulumi.Input<{[key: string]: any}>;
     /**
      * If true, image will not be deletable.
      * Defaults to false.
      */
-    readonly protected?: pulumi.Input<boolean>;
+    protected?: pulumi.Input<boolean>;
     /**
      * The region in which to obtain the V2 Glance client.
      * A Glance client is needed to create an Image that can be used with
      * a compute instance. If omitted, the `region` argument of the provider
      * is used. Changing this creates a new Image.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The path to the JSON-schema that represent
      * the image or image
      */
-    readonly schema?: pulumi.Input<string>;
+    schema?: pulumi.Input<string>;
     /**
      * The size in bytes of the data associated with the image.
      */
-    readonly sizeBytes?: pulumi.Input<number>;
+    sizeBytes?: pulumi.Input<number>;
     /**
      * The status of the image. It can be "queued", "active"
      * or "saving".
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The tags of the image. It must be a list of strings.
      * At this time, it is not possible to delete all tags of an image.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * (**Deprecated** - use `updatedAt` instead)
      *
      * @deprecated Use updated_at instead
      */
-    readonly updateAt?: pulumi.Input<string>;
+    updateAt?: pulumi.Input<string>;
     /**
      * The date the image was last updated.
      */
-    readonly updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string>;
     /**
      * If false, the checksum will not be verified
      * once the image is finished uploading. Conflicts with `webDownload`.
      * Defaults to true when not using `webDownload`.
      */
-    readonly verifyChecksum?: pulumi.Input<boolean>;
+    verifyChecksum?: pulumi.Input<boolean>;
     /**
      * The visibility of the image. Must be one of
      * "public", "private", "community", or "shared". The ability to set the
      * visibility depends upon the configuration of the OpenStack cloud.
      */
-    readonly visibility?: pulumi.Input<string>;
+    visibility?: pulumi.Input<string>;
     /**
      * If true, the "web-download" import method will
      * be used to let Openstack download the image directly from the remote source.
      * Conflicts with `localFilePath`. Defaults to false.
      */
-    readonly webDownload?: pulumi.Input<boolean>;
+    webDownload?: pulumi.Input<boolean>;
 }
 
 /**
@@ -433,97 +433,97 @@ export interface ImageArgs {
      * The container format. Must be one of
      * "ami", "ari", "aki", "bare", "ovf".
      */
-    readonly containerFormat: pulumi.Input<string>;
+    containerFormat: pulumi.Input<string>;
     /**
      * The disk format. Must be one of
      * "ami", "ari", "aki", "vhd", "vmdk", "raw", "qcow2", "vdi", "iso".
      */
-    readonly diskFormat: pulumi.Input<string>;
+    diskFormat: pulumi.Input<string>;
     /**
      * If true, image will be hidden from public list.
      * Defaults to false.
      */
-    readonly hidden?: pulumi.Input<boolean>;
-    readonly imageCachePath?: pulumi.Input<string>;
+    hidden?: pulumi.Input<boolean>;
+    imageCachePath?: pulumi.Input<string>;
     /**
      * Unique ID (valid UUID) of image to create. Changing 
      * this creates a new image.
      */
-    readonly imageId?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string>;
     /**
      * The password of basic auth to download `imageSourceUrl`.
      */
-    readonly imageSourcePassword?: pulumi.Input<string>;
+    imageSourcePassword?: pulumi.Input<string>;
     /**
      * This is the url of the raw image. If `webDownload`
      * is not used, then the image will be downloaded in the `imageCachePath` before
      * being uploaded to Glance.
      * Conflicts with `localFilePath`.
      */
-    readonly imageSourceUrl?: pulumi.Input<string>;
+    imageSourceUrl?: pulumi.Input<string>;
     /**
      * The username of basic auth to download `imageSourceUrl`.
      */
-    readonly imageSourceUsername?: pulumi.Input<string>;
+    imageSourceUsername?: pulumi.Input<string>;
     /**
      * This is the filepath of the raw image file
      * that will be uploaded to Glance. Conflicts with `imageSourceUrl` and
      * `webDownload`.
      */
-    readonly localFilePath?: pulumi.Input<string>;
+    localFilePath?: pulumi.Input<string>;
     /**
      * Amount of disk space (in GB) required to boot image.
      * Defaults to 0.
      */
-    readonly minDiskGb?: pulumi.Input<number>;
+    minDiskGb?: pulumi.Input<number>;
     /**
      * Amount of ram (in MB) required to boot image.
      * Defauts to 0.
      */
-    readonly minRamMb?: pulumi.Input<number>;
+    minRamMb?: pulumi.Input<number>;
     /**
      * The name of the image.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * A map of key/value pairs to set freeform
      * information about an image. See the "Notes" section for further
      * information about properties.
      */
-    readonly properties?: pulumi.Input<{[key: string]: any}>;
+    properties?: pulumi.Input<{[key: string]: any}>;
     /**
      * If true, image will not be deletable.
      * Defaults to false.
      */
-    readonly protected?: pulumi.Input<boolean>;
+    protected?: pulumi.Input<boolean>;
     /**
      * The region in which to obtain the V2 Glance client.
      * A Glance client is needed to create an Image that can be used with
      * a compute instance. If omitted, the `region` argument of the provider
      * is used. Changing this creates a new Image.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The tags of the image. It must be a list of strings.
      * At this time, it is not possible to delete all tags of an image.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * If false, the checksum will not be verified
      * once the image is finished uploading. Conflicts with `webDownload`.
      * Defaults to true when not using `webDownload`.
      */
-    readonly verifyChecksum?: pulumi.Input<boolean>;
+    verifyChecksum?: pulumi.Input<boolean>;
     /**
      * The visibility of the image. Must be one of
      * "public", "private", "community", or "shared". The ability to set the
      * visibility depends upon the configuration of the OpenStack cloud.
      */
-    readonly visibility?: pulumi.Input<string>;
+    visibility?: pulumi.Input<string>;
     /**
      * If true, the "web-download" import method will
      * be used to let Openstack download the image directly from the remote source.
      * Conflicts with `localFilePath`. Defaults to false.
      */
-    readonly webDownload?: pulumi.Input<boolean>;
+    webDownload?: pulumi.Input<boolean>;
 }

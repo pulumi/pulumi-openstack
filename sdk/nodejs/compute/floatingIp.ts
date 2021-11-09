@@ -129,20 +129,20 @@ export interface FloatingIpState {
     /**
      * The actual floating IP address itself.
      */
-    readonly address?: pulumi.Input<string>;
+    address?: pulumi.Input<string>;
     /**
      * The fixed IP address corresponding to the floating IP.
      */
-    readonly fixedIp?: pulumi.Input<string>;
+    fixedIp?: pulumi.Input<string>;
     /**
      * UUID of the compute instance associated with the floating IP.
      */
-    readonly instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string>;
     /**
      * The name of the pool from which to obtain the floating
      * IP. Changing this creates a new floating IP.
      */
-    readonly pool?: pulumi.Input<string>;
+    pool?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 Compute client.
      * A Compute client is needed to create a floating IP that can be used with
@@ -150,7 +150,7 @@ export interface FloatingIpState {
      * is used. Changing this creates a new floating IP (which may or may not
      * have a different address).
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
 }
 
 /**
@@ -161,7 +161,7 @@ export interface FloatingIpArgs {
      * The name of the pool from which to obtain the floating
      * IP. Changing this creates a new floating IP.
      */
-    readonly pool: pulumi.Input<string>;
+    pool: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 Compute client.
      * A Compute client is needed to create a floating IP that can be used with
@@ -169,5 +169,5 @@ export interface FloatingIpArgs {
      * is used. Changing this creates a new floating IP (which may or may not
      * have a different address).
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
 }

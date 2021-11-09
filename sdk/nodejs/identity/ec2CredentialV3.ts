@@ -112,31 +112,31 @@ export interface Ec2CredentialV3State {
     /**
      * contains an EC2 credential access UUID
      */
-    readonly access?: pulumi.Input<string>;
+    access?: pulumi.Input<string>;
     /**
      * The ID of the project the EC2 credential is created
      * for and that authentication requests using this EC2 credential will
      * be scoped to.
      */
-    readonly projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V3 Keystone client.
      * If omitted, the `region` argument of the provider is used. Changing this
      * creates a new EC2 credential.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * contains an EC2 credential secret UUID
      */
-    readonly secret?: pulumi.Input<string>;
+    secret?: pulumi.Input<string>;
     /**
      * contains an EC2 credential trust ID scope
      */
-    readonly trustId?: pulumi.Input<string>;
+    trustId?: pulumi.Input<string>;
     /**
      * The ID of the user the EC2 credential is created for.
      */
-    readonly userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string>;
 }
 
 /**
@@ -148,15 +148,15 @@ export interface Ec2CredentialV3Args {
      * for and that authentication requests using this EC2 credential will
      * be scoped to.
      */
-    readonly projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V3 Keystone client.
      * If omitted, the `region` argument of the provider is used. Changing this
      * creates a new EC2 credential.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The ID of the user the EC2 credential is created for.
      */
-    readonly userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string>;
 }

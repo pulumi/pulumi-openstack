@@ -289,7 +289,7 @@ func (o PoolPersistenceOutput) ToPoolPersistencePtrOutput() PoolPersistencePtrOu
 }
 
 func (o PoolPersistenceOutput) ToPoolPersistencePtrOutputWithContext(ctx context.Context) PoolPersistencePtrOutput {
-	return o.ApplyT(func(v PoolPersistence) *PoolPersistence {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PoolPersistence) *PoolPersistence {
 		return &v
 	}).(PoolPersistencePtrOutput)
 }
@@ -321,7 +321,13 @@ func (o PoolPersistencePtrOutput) ToPoolPersistencePtrOutputWithContext(ctx cont
 }
 
 func (o PoolPersistencePtrOutput) Elem() PoolPersistenceOutput {
-	return o.ApplyT(func(v *PoolPersistence) PoolPersistence { return *v }).(PoolPersistenceOutput)
+	return o.ApplyT(func(v *PoolPersistence) PoolPersistence {
+		if v != nil {
+			return *v
+		}
+		var ret PoolPersistence
+		return ret
+	}).(PoolPersistenceOutput)
 }
 
 // The name of the cookie if persistence mode is set
@@ -347,6 +353,10 @@ func (o PoolPersistencePtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*MembersMemberInput)(nil)).Elem(), MembersMemberArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MembersMemberArrayInput)(nil)).Elem(), MembersMemberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PoolPersistenceInput)(nil)).Elem(), PoolPersistenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PoolPersistencePtrInput)(nil)).Elem(), PoolPersistenceArgs{})
 	pulumi.RegisterOutputType(MembersMemberOutput{})
 	pulumi.RegisterOutputType(MembersMemberArrayOutput{})
 	pulumi.RegisterOutputType(PoolPersistenceOutput{})

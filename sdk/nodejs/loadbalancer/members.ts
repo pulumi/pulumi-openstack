@@ -130,19 +130,19 @@ export interface MembersState {
      * A set of dictionaries containing member parameters. The
      * structure is described below.
      */
-    readonly members?: pulumi.Input<pulumi.Input<inputs.loadbalancer.MembersMember>[]>;
+    members?: pulumi.Input<pulumi.Input<inputs.loadbalancer.MembersMember>[]>;
     /**
      * The id of the pool that members will be assigned to.
      * Changing this creates a new members resource.
      */
-    readonly poolId?: pulumi.Input<string>;
+    poolId?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create pool members. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * members resource.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
 }
 
 /**
@@ -153,17 +153,17 @@ export interface MembersArgs {
      * A set of dictionaries containing member parameters. The
      * structure is described below.
      */
-    readonly members?: pulumi.Input<pulumi.Input<inputs.loadbalancer.MembersMember>[]>;
+    members?: pulumi.Input<pulumi.Input<inputs.loadbalancer.MembersMember>[]>;
     /**
      * The id of the pool that members will be assigned to.
      * Changing this creates a new members resource.
      */
-    readonly poolId: pulumi.Input<string>;
+    poolId: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create pool members. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * members resource.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
 }

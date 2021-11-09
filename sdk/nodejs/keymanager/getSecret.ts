@@ -36,52 +36,52 @@ export interface GetSecretArgs {
      * Select the Secret with an ACL that contains the user.
      * Project scope is ignored. Defaults to `false`.
      */
-    readonly aclOnly?: boolean;
+    aclOnly?: boolean;
     /**
      * The Secret algorithm.
      */
-    readonly algorithm?: string;
+    algorithm?: string;
     /**
      * The Secret bit length.
      */
-    readonly bitLength?: number;
+    bitLength?: number;
     /**
      * Date filter to select the Secret with
      * created matching the specified criteria. See Date Filters below for more
      * detail.
      */
-    readonly createdAtFilter?: string;
+    createdAtFilter?: string;
     /**
      * Date filter to select the Secret with
      * expiration matching the specified criteria. See Date Filters below for more
      * detail.
      */
-    readonly expirationFilter?: string;
+    expirationFilter?: string;
     /**
      * The Secret mode.
      */
-    readonly mode?: string;
+    mode?: string;
     /**
      * The Secret name.
      */
-    readonly name?: string;
+    name?: string;
     /**
      * The region in which to obtain the V1 KeyManager client.
      * A KeyManager client is needed to fetch a secret. If omitted, the `region`
      * argument of the provider is used.
      */
-    readonly region?: string;
+    region?: string;
     /**
      * The Secret type. For more information see
      * [Secret types](https://docs.openstack.org/barbican/latest/api/reference/secret_types.html).
      */
-    readonly secretType?: string;
+    secretType?: string;
     /**
      * Date filter to select the Secret with
      * updated matching the specified criteria. See Date Filters below for more
      * detail.
      */
-    readonly updatedAtFilter?: string;
+    updatedAtFilter?: string;
 }
 
 /**
@@ -181,4 +181,64 @@ export interface GetSecretResult {
      * See Argument Reference above.
      */
     readonly updatedAtFilter?: string;
+}
+
+export function getSecretOutput(args?: GetSecretOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretResult> {
+    return pulumi.output(args).apply(a => getSecret(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getSecret.
+ */
+export interface GetSecretOutputArgs {
+    /**
+     * Select the Secret with an ACL that contains the user.
+     * Project scope is ignored. Defaults to `false`.
+     */
+    aclOnly?: pulumi.Input<boolean>;
+    /**
+     * The Secret algorithm.
+     */
+    algorithm?: pulumi.Input<string>;
+    /**
+     * The Secret bit length.
+     */
+    bitLength?: pulumi.Input<number>;
+    /**
+     * Date filter to select the Secret with
+     * created matching the specified criteria. See Date Filters below for more
+     * detail.
+     */
+    createdAtFilter?: pulumi.Input<string>;
+    /**
+     * Date filter to select the Secret with
+     * expiration matching the specified criteria. See Date Filters below for more
+     * detail.
+     */
+    expirationFilter?: pulumi.Input<string>;
+    /**
+     * The Secret mode.
+     */
+    mode?: pulumi.Input<string>;
+    /**
+     * The Secret name.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The region in which to obtain the V1 KeyManager client.
+     * A KeyManager client is needed to fetch a secret. If omitted, the `region`
+     * argument of the provider is used.
+     */
+    region?: pulumi.Input<string>;
+    /**
+     * The Secret type. For more information see
+     * [Secret types](https://docs.openstack.org/barbican/latest/api/reference/secret_types.html).
+     */
+    secretType?: pulumi.Input<string>;
+    /**
+     * Date filter to select the Secret with
+     * updated matching the specified criteria. See Date Filters below for more
+     * detail.
+     */
+    updatedAtFilter?: pulumi.Input<string>;
 }

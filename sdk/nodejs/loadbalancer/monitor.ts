@@ -208,73 +208,73 @@ export interface MonitorState {
      * The administrative state of the monitor.
      * A valid value is true (UP) or false (DOWN).
      */
-    readonly adminStateUp?: pulumi.Input<boolean>;
+    adminStateUp?: pulumi.Input<boolean>;
     /**
      * The time, in seconds, between sending probes to members.
      */
-    readonly delay?: pulumi.Input<number>;
+    delay?: pulumi.Input<number>;
     /**
      * Required for HTTP(S) types. Expected HTTP codes
      * for a passing HTTP(S) monitor. You can either specify a single status like
      * "200", or a range like "200-202".
      */
-    readonly expectedCodes?: pulumi.Input<string>;
+    expectedCodes?: pulumi.Input<string>;
     /**
      * Required for HTTP(S) types. The HTTP method used
      * for requests by the monitor. If this attribute is not specified, it
      * defaults to "GET".
      */
-    readonly httpMethod?: pulumi.Input<string>;
+    httpMethod?: pulumi.Input<string>;
     /**
      * Number of permissible ping failures before
      * changing the member's status to INACTIVE. Must be a number between 1
      * and 10.
      */
-    readonly maxRetries?: pulumi.Input<number>;
+    maxRetries?: pulumi.Input<number>;
     /**
      * Number of permissible ping failures befor changing the member's
      * status to ERROR. Must be a number between 1 and 10 (supported only in Octavia).
      * Changing this updates the maxRetriesDown of the existing monitor.
      */
-    readonly maxRetriesDown?: pulumi.Input<number>;
+    maxRetriesDown?: pulumi.Input<number>;
     /**
      * The Name of the Monitor.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The id of the pool that this monitor will be assigned to.
      */
-    readonly poolId?: pulumi.Input<string>;
+    poolId?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create an . If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * monitor.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * Required for admins. The UUID of the tenant who owns
      * the monitor.  Only administrative users can specify a tenant UUID
      * other than their own. Changing this creates a new monitor.
      */
-    readonly tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string>;
     /**
      * Maximum number of seconds for a monitor to wait for a
      * ping reply before it times out. The value must be less than the delay
      * value.
      */
-    readonly timeout?: pulumi.Input<number>;
+    timeout?: pulumi.Input<number>;
     /**
      * The type of probe, which is PING, TCP, HTTP, HTTPS,
      * TLS-HELLO or UDP-CONNECT (supported only in Octavia), that is sent by the load
      * balancer to verify the member state. Changing this creates a new monitor.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
     /**
      * Required for HTTP(S) types. URI path that will be
      * accessed if monitor type is HTTP or HTTPS.
      */
-    readonly urlPath?: pulumi.Input<string>;
+    urlPath?: pulumi.Input<string>;
 }
 
 /**
@@ -285,71 +285,71 @@ export interface MonitorArgs {
      * The administrative state of the monitor.
      * A valid value is true (UP) or false (DOWN).
      */
-    readonly adminStateUp?: pulumi.Input<boolean>;
+    adminStateUp?: pulumi.Input<boolean>;
     /**
      * The time, in seconds, between sending probes to members.
      */
-    readonly delay: pulumi.Input<number>;
+    delay: pulumi.Input<number>;
     /**
      * Required for HTTP(S) types. Expected HTTP codes
      * for a passing HTTP(S) monitor. You can either specify a single status like
      * "200", or a range like "200-202".
      */
-    readonly expectedCodes?: pulumi.Input<string>;
+    expectedCodes?: pulumi.Input<string>;
     /**
      * Required for HTTP(S) types. The HTTP method used
      * for requests by the monitor. If this attribute is not specified, it
      * defaults to "GET".
      */
-    readonly httpMethod?: pulumi.Input<string>;
+    httpMethod?: pulumi.Input<string>;
     /**
      * Number of permissible ping failures before
      * changing the member's status to INACTIVE. Must be a number between 1
      * and 10.
      */
-    readonly maxRetries: pulumi.Input<number>;
+    maxRetries: pulumi.Input<number>;
     /**
      * Number of permissible ping failures befor changing the member's
      * status to ERROR. Must be a number between 1 and 10 (supported only in Octavia).
      * Changing this updates the maxRetriesDown of the existing monitor.
      */
-    readonly maxRetriesDown?: pulumi.Input<number>;
+    maxRetriesDown?: pulumi.Input<number>;
     /**
      * The Name of the Monitor.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The id of the pool that this monitor will be assigned to.
      */
-    readonly poolId: pulumi.Input<string>;
+    poolId: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create an . If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * monitor.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * Required for admins. The UUID of the tenant who owns
      * the monitor.  Only administrative users can specify a tenant UUID
      * other than their own. Changing this creates a new monitor.
      */
-    readonly tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string>;
     /**
      * Maximum number of seconds for a monitor to wait for a
      * ping reply before it times out. The value must be less than the delay
      * value.
      */
-    readonly timeout: pulumi.Input<number>;
+    timeout: pulumi.Input<number>;
     /**
      * The type of probe, which is PING, TCP, HTTP, HTTPS,
      * TLS-HELLO or UDP-CONNECT (supported only in Octavia), that is sent by the load
      * balancer to verify the member state. Changing this creates a new monitor.
      */
-    readonly type: pulumi.Input<string>;
+    type: pulumi.Input<string>;
     /**
      * Required for HTTP(S) types. URI path that will be
      * accessed if monitor type is HTTP or HTTPS.
      */
-    readonly urlPath?: pulumi.Input<string>;
+    urlPath?: pulumi.Input<string>;
 }

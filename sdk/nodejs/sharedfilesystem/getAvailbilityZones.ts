@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -15,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const zones = pulumi.output(openstack.sharedfilesystem.getAvailbilityZones({ async: true }));
+ * const zones = pulumi.output(openstack.sharedfilesystem.getAvailbilityZones());
  * ```
  */
 export function getAvailbilityZones(args?: GetAvailbilityZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetAvailbilityZonesResult> {
@@ -40,7 +39,7 @@ export interface GetAvailbilityZonesArgs {
      * The region in which to obtain the V2 Shared File System
      * client. If omitted, the `region` argument of the provider is used.
      */
-    readonly region?: string;
+    region?: string;
 }
 
 /**
@@ -59,4 +58,19 @@ export interface GetAvailbilityZonesResult {
      * See Argument Reference above.
      */
     readonly region: string;
+}
+
+export function getAvailbilityZonesOutput(args?: GetAvailbilityZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAvailbilityZonesResult> {
+    return pulumi.output(args).apply(a => getAvailbilityZones(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAvailbilityZones.
+ */
+export interface GetAvailbilityZonesOutputArgs {
+    /**
+     * The region in which to obtain the V2 Shared File System
+     * client. If omitted, the `region` argument of the provider is used.
+     */
+    region?: pulumi.Input<string>;
 }

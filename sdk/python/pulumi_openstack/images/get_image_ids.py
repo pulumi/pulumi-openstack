@@ -12,6 +12,7 @@ __all__ = [
     'GetImageIdsResult',
     'AwaitableGetImageIdsResult',
     'get_image_ids',
+    'get_image_ids_output',
 ]
 
 @pulumi.output_type
@@ -278,3 +279,73 @@ def get_image_ids(member_status: Optional[str] = None,
         sort_key=__ret__.sort_key,
         tag=__ret__.tag,
         visibility=__ret__.visibility)
+
+
+@_utilities.lift_output_func(get_image_ids)
+def get_image_ids_output(member_status: Optional[pulumi.Input[Optional[str]]] = None,
+                         name: Optional[pulumi.Input[Optional[str]]] = None,
+                         name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                         owner: Optional[pulumi.Input[Optional[str]]] = None,
+                         properties: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                         region: Optional[pulumi.Input[Optional[str]]] = None,
+                         size_max: Optional[pulumi.Input[Optional[int]]] = None,
+                         size_min: Optional[pulumi.Input[Optional[int]]] = None,
+                         sort: Optional[pulumi.Input[Optional[str]]] = None,
+                         sort_direction: Optional[pulumi.Input[Optional[str]]] = None,
+                         sort_key: Optional[pulumi.Input[Optional[str]]] = None,
+                         tag: Optional[pulumi.Input[Optional[str]]] = None,
+                         visibility: Optional[pulumi.Input[Optional[str]]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetImageIdsResult]:
+    """
+    Use this data source to get a list of Openstack Image IDs matching the
+    specified criteria.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    images = openstack.images.get_image_ids(name_regex="^Ubuntu 16\\.04.*-amd64",
+        properties={
+            "key": "value",
+        },
+        sort="updated_at")
+    ```
+
+
+    :param str member_status: The status of the image. Must be one of
+           "accepted", "pending", "rejected", or "all".
+    :param str name: The name of the image. Cannot be used simultaneously
+           with `name_regex`.
+    :param str name_regex: The regular expressian of the name of the image.
+           Cannot be used simultaneously with `name`. Unlike filtering by `name` the
+           `name_regex` filtering does by client on the result of OpenStack search
+           query.
+    :param str owner: The owner (UUID) of the image.
+    :param Mapping[str, Any] properties: a map of key/value pairs to match an image with.
+           All specified properties must be matched. Unlike other options filtering
+           by `properties` does by client on the result of OpenStack search query.
+    :param str region: The region in which to obtain the V2 Glance client.
+           A Glance client is needed to create an Image that can be used with
+           a compute instance. If omitted, the `region` argument of the provider
+           is used.
+    :param int size_max: The maximum size (in bytes) of the image to return.
+    :param int size_min: The minimum size (in bytes) of the image to return.
+    :param str sort: Sorts the response by one or more attribute and sort
+           direction combinations. You can also set multiple sort keys and directions.
+           Default direction is `desc`. Use the comma (,) character to separate
+           multiple values. For example expression `sort = "name:asc,status"`
+           sorts ascending by name and descending by status. `sort` cannot be used
+           simultaneously with `sort_key`. If both are present in a configuration
+           then only `sort` will be used.
+    :param str sort_direction: Order the results in either `asc` or `desc`.
+           Can be applied only with `sort_key`. Defaults to `asc`
+    :param str sort_key: Sort images based on a certain key. Defaults to
+           `name`. `sort_key` cannot be used simultaneously with `sort`. If both
+           are present in a configuration then only `sort` will be used.
+    :param str tag: Search for images with a specific tag.
+    :param str visibility: The visibility of the image. Must be one of
+           "public", "private", "community", or "shared". Defaults to "private".
+    """
+    ...

@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *
  * const example = pulumi.output(openstack.keymanager.getContainer({
  *     name: "my_container",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getContainer(args?: GetContainerArgs, opts?: pulumi.InvokeOptions): Promise<GetContainerResult> {
@@ -41,13 +41,13 @@ export interface GetContainerArgs {
     /**
      * The Container name.
      */
-    readonly name?: string;
+    name?: string;
     /**
      * The region in which to obtain the V1 KeyManager client.
      * A KeyManager client is needed to fetch a container. If omitted, the `region`
      * argument of the provider is used.
      */
-    readonly region?: string;
+    region?: string;
 }
 
 /**
@@ -105,4 +105,24 @@ export interface GetContainerResult {
      * The date the container ACL was last updated.
      */
     readonly updatedAt: string;
+}
+
+export function getContainerOutput(args?: GetContainerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetContainerResult> {
+    return pulumi.output(args).apply(a => getContainer(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getContainer.
+ */
+export interface GetContainerOutputArgs {
+    /**
+     * The Container name.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The region in which to obtain the V1 KeyManager client.
+     * A KeyManager client is needed to fetch a container. If omitted, the `region`
+     * argument of the provider is used.
+     */
+    region?: pulumi.Input<string>;
 }

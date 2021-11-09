@@ -107,7 +107,7 @@ func (o ContainerVersioningOutput) ToContainerVersioningPtrOutput() ContainerVer
 }
 
 func (o ContainerVersioningOutput) ToContainerVersioningPtrOutputWithContext(ctx context.Context) ContainerVersioningPtrOutput {
-	return o.ApplyT(func(v ContainerVersioning) *ContainerVersioning {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContainerVersioning) *ContainerVersioning {
 		return &v
 	}).(ContainerVersioningPtrOutput)
 }
@@ -137,7 +137,13 @@ func (o ContainerVersioningPtrOutput) ToContainerVersioningPtrOutputWithContext(
 }
 
 func (o ContainerVersioningPtrOutput) Elem() ContainerVersioningOutput {
-	return o.ApplyT(func(v *ContainerVersioning) ContainerVersioning { return *v }).(ContainerVersioningOutput)
+	return o.ApplyT(func(v *ContainerVersioning) ContainerVersioning {
+		if v != nil {
+			return *v
+		}
+		var ret ContainerVersioning
+		return ret
+	}).(ContainerVersioningOutput)
 }
 
 // Container in which versions will be stored.
@@ -161,6 +167,8 @@ func (o ContainerVersioningPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerVersioningInput)(nil)).Elem(), ContainerVersioningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerVersioningPtrInput)(nil)).Elem(), ContainerVersioningArgs{})
 	pulumi.RegisterOutputType(ContainerVersioningOutput{})
 	pulumi.RegisterOutputType(ContainerVersioningPtrOutput{})
 }

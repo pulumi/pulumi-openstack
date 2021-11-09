@@ -259,7 +259,7 @@ export interface SubnetState {
      * The collection of ags assigned on the subnet, which have been
      * explicitly and implicitly added.
      */
-    readonly allTags?: pulumi.Input<pulumi.Input<string>[]>;
+    allTags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A block declaring the start and end range of
      * the IP addresses available for use with DHCP in this subnet. Multiple
@@ -268,7 +268,7 @@ export interface SubnetState {
      * must be from the same CIDR that the subnet is part of.
      * The `allocationPool` block is documented below.
      */
-    readonly allocationPools?: pulumi.Input<pulumi.Input<inputs.networking.SubnetAllocationPool>[]>;
+    allocationPools?: pulumi.Input<pulumi.Input<inputs.networking.SubnetAllocationPool>[]>;
     /**
      * A block declaring the start and end range of the IP addresses available for
      * use with DHCP in this subnet.
@@ -276,37 +276,37 @@ export interface SubnetState {
      *
      * @deprecated use allocation_pool instead
      */
-    readonly allocationPoolsCollection?: pulumi.Input<pulumi.Input<inputs.networking.SubnetAllocationPoolsCollection>[]>;
+    allocationPoolsCollection?: pulumi.Input<pulumi.Input<inputs.networking.SubnetAllocationPoolsCollection>[]>;
     /**
      * CIDR representing IP range for this subnet, based on IP
      * version. You can omit this option if you are creating a subnet from a
      * subnet pool.
      */
-    readonly cidr?: pulumi.Input<string>;
+    cidr?: pulumi.Input<string>;
     /**
      * Human-readable description of the subnet. Changing this
      * updates the name of the existing subnet.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * An array of DNS name server names used by hosts
      * in this subnet. Changing this updates the DNS name servers for the existing
      * subnet.
      */
-    readonly dnsNameservers?: pulumi.Input<pulumi.Input<string>[]>;
+    dnsNameservers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The administrative state of the network.
      * Acceptable values are "true" and "false". Changing this value enables or
      * disables the DHCP capabilities of the existing subnet. Defaults to true.
      */
-    readonly enableDhcp?: pulumi.Input<boolean>;
+    enableDhcp?: pulumi.Input<boolean>;
     /**
      * Default gateway used by devices in this subnet.
      * Leaving this blank and not setting `noGateway` will cause a default
      * gateway of `.1` to be used. Changing this updates the gateway IP of the
      * existing subnet.
      */
-    readonly gatewayIp?: pulumi.Input<string>;
+    gatewayIp?: pulumi.Input<string>;
     /**
      * (**Deprecated** - use `openstack.networking.SubnetRoute`
      * instead) An array of routes that should be used by devices
@@ -316,68 +316,68 @@ export interface SubnetState {
      *
      * @deprecated Use openstack_networking_subnet_route_v2 instead
      */
-    readonly hostRoutes?: pulumi.Input<pulumi.Input<inputs.networking.SubnetHostRoute>[]>;
+    hostRoutes?: pulumi.Input<pulumi.Input<inputs.networking.SubnetHostRoute>[]>;
     /**
      * IP version, either 4 (default) or 6. Changing this creates a
      * new subnet.
      */
-    readonly ipVersion?: pulumi.Input<number>;
+    ipVersion?: pulumi.Input<number>;
     /**
      * The IPv6 address mode. Valid values are
      * `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.
      */
-    readonly ipv6AddressMode?: pulumi.Input<string>;
+    ipv6AddressMode?: pulumi.Input<string>;
     /**
      * The IPv6 Router Advertisement mode. Valid values
      * are `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.
      */
-    readonly ipv6RaMode?: pulumi.Input<string>;
+    ipv6RaMode?: pulumi.Input<string>;
     /**
      * The name of the subnet. Changing this updates the name of
      * the existing subnet.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The UUID of the parent network. Changing this
      * creates a new subnet.
      */
-    readonly networkId?: pulumi.Input<string>;
+    networkId?: pulumi.Input<string>;
     /**
      * Do not set a gateway IP on this subnet. Changing
      * this removes or adds a default gateway IP of the existing subnet.
      */
-    readonly noGateway?: pulumi.Input<boolean>;
+    noGateway?: pulumi.Input<boolean>;
     /**
      * The prefix length to use when creating a subnet
      * from a subnet pool. The default subnet pool prefix length that was defined
      * when creating the subnet pool will be used if not provided. Changing this
      * creates a new subnet.
      */
-    readonly prefixLength?: pulumi.Input<number>;
+    prefixLength?: pulumi.Input<number>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a Neutron subnet. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * subnet.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The ID of the subnetpool associated with the subnet.
      */
-    readonly subnetpoolId?: pulumi.Input<string>;
+    subnetpoolId?: pulumi.Input<string>;
     /**
      * A set of string tags for the subnet.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The owner of the subnet. Required if admin wants to
      * create a subnet for another tenant. Changing this creates a new subnet.
      */
-    readonly tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string>;
     /**
      * Map of additional options.
      */
-    readonly valueSpecs?: pulumi.Input<{[key: string]: any}>;
+    valueSpecs?: pulumi.Input<{[key: string]: any}>;
 }
 
 /**
@@ -392,7 +392,7 @@ export interface SubnetArgs {
      * must be from the same CIDR that the subnet is part of.
      * The `allocationPool` block is documented below.
      */
-    readonly allocationPools?: pulumi.Input<pulumi.Input<inputs.networking.SubnetAllocationPool>[]>;
+    allocationPools?: pulumi.Input<pulumi.Input<inputs.networking.SubnetAllocationPool>[]>;
     /**
      * A block declaring the start and end range of the IP addresses available for
      * use with DHCP in this subnet.
@@ -400,37 +400,37 @@ export interface SubnetArgs {
      *
      * @deprecated use allocation_pool instead
      */
-    readonly allocationPoolsCollection?: pulumi.Input<pulumi.Input<inputs.networking.SubnetAllocationPoolsCollection>[]>;
+    allocationPoolsCollection?: pulumi.Input<pulumi.Input<inputs.networking.SubnetAllocationPoolsCollection>[]>;
     /**
      * CIDR representing IP range for this subnet, based on IP
      * version. You can omit this option if you are creating a subnet from a
      * subnet pool.
      */
-    readonly cidr?: pulumi.Input<string>;
+    cidr?: pulumi.Input<string>;
     /**
      * Human-readable description of the subnet. Changing this
      * updates the name of the existing subnet.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * An array of DNS name server names used by hosts
      * in this subnet. Changing this updates the DNS name servers for the existing
      * subnet.
      */
-    readonly dnsNameservers?: pulumi.Input<pulumi.Input<string>[]>;
+    dnsNameservers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The administrative state of the network.
      * Acceptable values are "true" and "false". Changing this value enables or
      * disables the DHCP capabilities of the existing subnet. Defaults to true.
      */
-    readonly enableDhcp?: pulumi.Input<boolean>;
+    enableDhcp?: pulumi.Input<boolean>;
     /**
      * Default gateway used by devices in this subnet.
      * Leaving this blank and not setting `noGateway` will cause a default
      * gateway of `.1` to be used. Changing this updates the gateway IP of the
      * existing subnet.
      */
-    readonly gatewayIp?: pulumi.Input<string>;
+    gatewayIp?: pulumi.Input<string>;
     /**
      * (**Deprecated** - use `openstack.networking.SubnetRoute`
      * instead) An array of routes that should be used by devices
@@ -440,66 +440,66 @@ export interface SubnetArgs {
      *
      * @deprecated Use openstack_networking_subnet_route_v2 instead
      */
-    readonly hostRoutes?: pulumi.Input<pulumi.Input<inputs.networking.SubnetHostRoute>[]>;
+    hostRoutes?: pulumi.Input<pulumi.Input<inputs.networking.SubnetHostRoute>[]>;
     /**
      * IP version, either 4 (default) or 6. Changing this creates a
      * new subnet.
      */
-    readonly ipVersion?: pulumi.Input<number>;
+    ipVersion?: pulumi.Input<number>;
     /**
      * The IPv6 address mode. Valid values are
      * `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.
      */
-    readonly ipv6AddressMode?: pulumi.Input<string>;
+    ipv6AddressMode?: pulumi.Input<string>;
     /**
      * The IPv6 Router Advertisement mode. Valid values
      * are `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.
      */
-    readonly ipv6RaMode?: pulumi.Input<string>;
+    ipv6RaMode?: pulumi.Input<string>;
     /**
      * The name of the subnet. Changing this updates the name of
      * the existing subnet.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The UUID of the parent network. Changing this
      * creates a new subnet.
      */
-    readonly networkId: pulumi.Input<string>;
+    networkId: pulumi.Input<string>;
     /**
      * Do not set a gateway IP on this subnet. Changing
      * this removes or adds a default gateway IP of the existing subnet.
      */
-    readonly noGateway?: pulumi.Input<boolean>;
+    noGateway?: pulumi.Input<boolean>;
     /**
      * The prefix length to use when creating a subnet
      * from a subnet pool. The default subnet pool prefix length that was defined
      * when creating the subnet pool will be used if not provided. Changing this
      * creates a new subnet.
      */
-    readonly prefixLength?: pulumi.Input<number>;
+    prefixLength?: pulumi.Input<number>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a Neutron subnet. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * subnet.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The ID of the subnetpool associated with the subnet.
      */
-    readonly subnetpoolId?: pulumi.Input<string>;
+    subnetpoolId?: pulumi.Input<string>;
     /**
      * A set of string tags for the subnet.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The owner of the subnet. Required if admin wants to
      * create a subnet for another tenant. Changing this creates a new subnet.
      */
-    readonly tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string>;
     /**
      * Map of additional options.
      */
-    readonly valueSpecs?: pulumi.Input<{[key: string]: any}>;
+    valueSpecs?: pulumi.Input<{[key: string]: any}>;
 }

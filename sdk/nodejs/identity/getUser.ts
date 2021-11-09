@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -16,7 +15,7 @@ import * as utilities from "../utilities";
  *
  * const user1 = pulumi.output(openstack.identity.getUser({
  *     name: "user_1",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getUser(args?: GetUserArgs, opts?: pulumi.InvokeOptions): Promise<GetUserResult> {
@@ -47,36 +46,36 @@ export interface GetUserArgs {
     /**
      * The domain this user belongs to.
      */
-    readonly domainId?: string;
+    domainId?: string;
     /**
      * Whether the user is enabled or disabled. Valid
      * values are `true` and `false`.
      */
-    readonly enabled?: boolean;
+    enabled?: boolean;
     /**
      * The identity provider ID of the user.
      */
-    readonly idpId?: string;
+    idpId?: string;
     /**
      * The name of the user.
      */
-    readonly name?: string;
+    name?: string;
     /**
      * Query for expired passwords. See the [OpenStack API docs](https://developer.openstack.org/api-ref/identity/v3/#list-users) for more information on the query format.
      */
-    readonly passwordExpiresAt?: string;
+    passwordExpiresAt?: string;
     /**
      * The protocol ID of the user.
      */
-    readonly protocolId?: string;
+    protocolId?: string;
     /**
      * The region the user is located in.
      */
-    readonly region?: string;
+    region?: string;
     /**
      * The unique ID of the user.
      */
-    readonly uniqueId?: string;
+    uniqueId?: string;
 }
 
 /**
@@ -127,4 +126,47 @@ export interface GetUserResult {
      * See Argument Reference above.
      */
     readonly uniqueId?: string;
+}
+
+export function getUserOutput(args?: GetUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserResult> {
+    return pulumi.output(args).apply(a => getUser(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getUser.
+ */
+export interface GetUserOutputArgs {
+    /**
+     * The domain this user belongs to.
+     */
+    domainId?: pulumi.Input<string>;
+    /**
+     * Whether the user is enabled or disabled. Valid
+     * values are `true` and `false`.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * The identity provider ID of the user.
+     */
+    idpId?: pulumi.Input<string>;
+    /**
+     * The name of the user.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Query for expired passwords. See the [OpenStack API docs](https://developer.openstack.org/api-ref/identity/v3/#list-users) for more information on the query format.
+     */
+    passwordExpiresAt?: pulumi.Input<string>;
+    /**
+     * The protocol ID of the user.
+     */
+    protocolId?: pulumi.Input<string>;
+    /**
+     * The region the user is located in.
+     */
+    region?: pulumi.Input<string>;
+    /**
+     * The unique ID of the user.
+     */
+    uniqueId?: pulumi.Input<string>;
 }

@@ -483,7 +483,7 @@ type RouterArrayInput interface {
 type RouterArray []RouterInput
 
 func (RouterArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Router)(nil))
+	return reflect.TypeOf((*[]*Router)(nil)).Elem()
 }
 
 func (i RouterArray) ToRouterArrayOutput() RouterArrayOutput {
@@ -508,7 +508,7 @@ type RouterMapInput interface {
 type RouterMap map[string]RouterInput
 
 func (RouterMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Router)(nil))
+	return reflect.TypeOf((*map[string]*Router)(nil)).Elem()
 }
 
 func (i RouterMap) ToRouterMapOutput() RouterMapOutput {
@@ -519,9 +519,7 @@ func (i RouterMap) ToRouterMapOutputWithContext(ctx context.Context) RouterMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(RouterMapOutput)
 }
 
-type RouterOutput struct {
-	*pulumi.OutputState
-}
+type RouterOutput struct{ *pulumi.OutputState }
 
 func (RouterOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Router)(nil))
@@ -540,14 +538,12 @@ func (o RouterOutput) ToRouterPtrOutput() RouterPtrOutput {
 }
 
 func (o RouterOutput) ToRouterPtrOutputWithContext(ctx context.Context) RouterPtrOutput {
-	return o.ApplyT(func(v Router) *Router {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Router) *Router {
 		return &v
 	}).(RouterPtrOutput)
 }
 
-type RouterPtrOutput struct {
-	*pulumi.OutputState
-}
+type RouterPtrOutput struct{ *pulumi.OutputState }
 
 func (RouterPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Router)(nil))
@@ -559,6 +555,16 @@ func (o RouterPtrOutput) ToRouterPtrOutput() RouterPtrOutput {
 
 func (o RouterPtrOutput) ToRouterPtrOutputWithContext(ctx context.Context) RouterPtrOutput {
 	return o
+}
+
+func (o RouterPtrOutput) Elem() RouterOutput {
+	return o.ApplyT(func(v *Router) Router {
+		if v != nil {
+			return *v
+		}
+		var ret Router
+		return ret
+	}).(RouterOutput)
 }
 
 type RouterArrayOutput struct{ *pulumi.OutputState }
@@ -602,6 +608,10 @@ func (o RouterMapOutput) MapIndex(k pulumi.StringInput) RouterOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterInput)(nil)).Elem(), &Router{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterPtrInput)(nil)).Elem(), &Router{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterArrayInput)(nil)).Elem(), RouterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterMapInput)(nil)).Elem(), RouterMap{})
 	pulumi.RegisterOutputType(RouterOutput{})
 	pulumi.RegisterOutputType(RouterPtrOutput{})
 	pulumi.RegisterOutputType(RouterArrayOutput{})

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.OpenStack.Images
 {
@@ -44,6 +45,40 @@ namespace Pulumi.OpenStack.Images
         /// </summary>
         public static Task<GetImageResult> InvokeAsync(GetImageArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetImageResult>("openstack:images/getImage:getImage", args ?? new GetImageArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to get the ID of an available OpenStack image.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var ubuntu = Output.Create(OpenStack.Images.GetImage.InvokeAsync(new OpenStack.Images.GetImageArgs
+        ///         {
+        ///             MostRecent = true,
+        ///             Name = "Ubuntu 16.04",
+        ///             Properties = 
+        ///             {
+        ///                 { "key", "value" },
+        ///             },
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetImageResult> Invoke(GetImageInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetImageResult>("openstack:images/getImage:getImage", args ?? new GetImageInvokeArgs(), options.WithVersion());
     }
 
 
@@ -144,6 +179,107 @@ namespace Pulumi.OpenStack.Images
         public string? Visibility { get; set; }
 
         public GetImageArgs()
+        {
+        }
+    }
+
+    public sealed class GetImageInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Whether or not the image is hidden from public list.
+        /// </summary>
+        [Input("hidden")]
+        public Input<bool>? Hidden { get; set; }
+
+        /// <summary>
+        /// The status of the image. Must be one of
+        /// "accepted", "pending", "rejected", or "all".
+        /// </summary>
+        [Input("memberStatus")]
+        public Input<string>? MemberStatus { get; set; }
+
+        /// <summary>
+        /// If more than one result is returned, use the most
+        /// recent image.
+        /// </summary>
+        [Input("mostRecent")]
+        public Input<bool>? MostRecent { get; set; }
+
+        /// <summary>
+        /// The name of the image.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The owner (UUID) of the image.
+        /// </summary>
+        [Input("owner")]
+        public Input<string>? Owner { get; set; }
+
+        [Input("properties")]
+        private InputMap<object>? _properties;
+
+        /// <summary>
+        /// a map of key/value pairs to match an image with.
+        /// All specified properties must be matched. Unlike other options filtering
+        /// by `properties` does by client on the result of OpenStack search query.
+        /// Filtering is applied if server responce contains at least 2 images. In
+        /// case there is only one image the `properties` ignores.
+        /// </summary>
+        public InputMap<object> Properties
+        {
+            get => _properties ?? (_properties = new InputMap<object>());
+            set => _properties = value;
+        }
+
+        /// <summary>
+        /// The region in which to obtain the V2 Glance client.
+        /// A Glance client is needed to create an Image that can be used with
+        /// a compute instance. If omitted, the `region` argument of the provider
+        /// is used.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// The maximum size (in bytes) of the image to return.
+        /// </summary>
+        [Input("sizeMax")]
+        public Input<int>? SizeMax { get; set; }
+
+        /// <summary>
+        /// The minimum size (in bytes) of the image to return.
+        /// </summary>
+        [Input("sizeMin")]
+        public Input<int>? SizeMin { get; set; }
+
+        /// <summary>
+        /// Order the results in either `asc` or `desc`.
+        /// </summary>
+        [Input("sortDirection")]
+        public Input<string>? SortDirection { get; set; }
+
+        /// <summary>
+        /// Sort images based on a certain key. Defaults to `name`.
+        /// </summary>
+        [Input("sortKey")]
+        public Input<string>? SortKey { get; set; }
+
+        /// <summary>
+        /// Search for images with a specific tag.
+        /// </summary>
+        [Input("tag")]
+        public Input<string>? Tag { get; set; }
+
+        /// <summary>
+        /// The visibility of the image. Must be one of
+        /// "public", "private", "community", or "shared". Defaults to "private".
+        /// </summary>
+        [Input("visibility")]
+        public Input<string>? Visibility { get; set; }
+
+        public GetImageInvokeArgs()
         {
         }
     }

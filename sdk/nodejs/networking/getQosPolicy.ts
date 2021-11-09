@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -16,7 +15,7 @@ import * as utilities from "../utilities";
  *
  * const qosPolicy1 = pulumi.output(openstack.networking.getQosPolicy({
  *     name: "qos_policy_1",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getQosPolicy(args?: GetQosPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetQosPolicyResult> {
@@ -46,33 +45,33 @@ export interface GetQosPolicyArgs {
     /**
      * The human-readable description for the QoS policy.
      */
-    readonly description?: string;
+    description?: string;
     /**
      * Whether the QoS policy is default policy or not.
      */
-    readonly isDefault?: boolean;
+    isDefault?: boolean;
     /**
      * The name of the QoS policy.
      */
-    readonly name?: string;
+    name?: string;
     /**
      * The owner of the QoS policy.
      */
-    readonly projectId?: string;
+    projectId?: string;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to retrieve a QoS policy ID. If omitted, the
      * `region` argument of the provider is used.
      */
-    readonly region?: string;
+    region?: string;
     /**
      * Whether this QoS policy is shared across all projects.
      */
-    readonly shared?: boolean;
+    shared?: boolean;
     /**
      * The list of QoS policy tags to filter.
      */
-    readonly tags?: string[];
+    tags?: string[];
 }
 
 /**
@@ -121,4 +120,44 @@ export interface GetQosPolicyResult {
      * The time at which QoS policy was created.
      */
     readonly updatedAt: string;
+}
+
+export function getQosPolicyOutput(args?: GetQosPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQosPolicyResult> {
+    return pulumi.output(args).apply(a => getQosPolicy(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getQosPolicy.
+ */
+export interface GetQosPolicyOutputArgs {
+    /**
+     * The human-readable description for the QoS policy.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Whether the QoS policy is default policy or not.
+     */
+    isDefault?: pulumi.Input<boolean>;
+    /**
+     * The name of the QoS policy.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The owner of the QoS policy.
+     */
+    projectId?: pulumi.Input<string>;
+    /**
+     * The region in which to obtain the V2 Networking client.
+     * A Networking client is needed to retrieve a QoS policy ID. If omitted, the
+     * `region` argument of the provider is used.
+     */
+    region?: pulumi.Input<string>;
+    /**
+     * Whether this QoS policy is shared across all projects.
+     */
+    shared?: pulumi.Input<boolean>;
+    /**
+     * The list of QoS policy tags to filter.
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
 }
