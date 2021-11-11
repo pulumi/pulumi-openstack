@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -16,7 +15,7 @@ import * as utilities from "../utilities";
  *
  * const subnetpool1 = pulumi.output(openstack.networking.getSubnetPool({
  *     name: "subnetpool_1",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getSubnetPool(args?: GetSubnetPoolArgs, opts?: pulumi.InvokeOptions): Promise<GetSubnetPoolResult> {
@@ -53,59 +52,59 @@ export interface GetSubnetPoolArgs {
      * The Neutron address scope that subnetpools
      * is assigned to.
      */
-    readonly addressScopeId?: string;
+    addressScopeId?: string;
     /**
      * The size of the subnetpool default prefix
      * length.
      */
-    readonly defaultPrefixlen?: number;
+    defaultPrefixlen?: number;
     /**
      * The per-project quota on the prefix space that
      * can be allocated from the subnetpool for project subnets.
      */
-    readonly defaultQuota?: number;
+    defaultQuota?: number;
     /**
      * The human-readable description for the subnetpool.
      */
-    readonly description?: string;
+    description?: string;
     /**
      * The IP protocol version.
      */
-    readonly ipVersion?: number;
+    ipVersion?: number;
     /**
      * Whether the subnetpool is default subnetpool or not.
      */
-    readonly isDefault?: boolean;
+    isDefault?: boolean;
     /**
      * The size of the subnetpool max prefix length.
      */
-    readonly maxPrefixlen?: number;
+    maxPrefixlen?: number;
     /**
      * The size of the subnetpool min prefix length.
      */
-    readonly minPrefixlen?: number;
+    minPrefixlen?: number;
     /**
      * The name of the subnetpool.
      */
-    readonly name?: string;
+    name?: string;
     /**
      * The owner of the subnetpool.
      */
-    readonly projectId?: string;
+    projectId?: string;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to retrieve a subnetpool id. If omitted, the
      * `region` argument of the provider is used.
      */
-    readonly region?: string;
+    region?: string;
     /**
      * Whether this subnetpool is shared across all projects.
      */
-    readonly shared?: boolean;
+    shared?: boolean;
     /**
      * The list of subnetpool tags to filter.
      */
-    readonly tags?: string[];
+    tags?: string[];
 }
 
 /**
@@ -183,4 +182,71 @@ export interface GetSubnetPoolResult {
      * The time at which subnetpool was created.
      */
     readonly updatedAt: string;
+}
+
+export function getSubnetPoolOutput(args?: GetSubnetPoolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSubnetPoolResult> {
+    return pulumi.output(args).apply(a => getSubnetPool(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getSubnetPool.
+ */
+export interface GetSubnetPoolOutputArgs {
+    /**
+     * The Neutron address scope that subnetpools
+     * is assigned to.
+     */
+    addressScopeId?: pulumi.Input<string>;
+    /**
+     * The size of the subnetpool default prefix
+     * length.
+     */
+    defaultPrefixlen?: pulumi.Input<number>;
+    /**
+     * The per-project quota on the prefix space that
+     * can be allocated from the subnetpool for project subnets.
+     */
+    defaultQuota?: pulumi.Input<number>;
+    /**
+     * The human-readable description for the subnetpool.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The IP protocol version.
+     */
+    ipVersion?: pulumi.Input<number>;
+    /**
+     * Whether the subnetpool is default subnetpool or not.
+     */
+    isDefault?: pulumi.Input<boolean>;
+    /**
+     * The size of the subnetpool max prefix length.
+     */
+    maxPrefixlen?: pulumi.Input<number>;
+    /**
+     * The size of the subnetpool min prefix length.
+     */
+    minPrefixlen?: pulumi.Input<number>;
+    /**
+     * The name of the subnetpool.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The owner of the subnetpool.
+     */
+    projectId?: pulumi.Input<string>;
+    /**
+     * The region in which to obtain the V2 Networking client.
+     * A Networking client is needed to retrieve a subnetpool id. If omitted, the
+     * `region` argument of the provider is used.
+     */
+    region?: pulumi.Input<string>;
+    /**
+     * Whether this subnetpool is shared across all projects.
+     */
+    shared?: pulumi.Input<boolean>;
+    /**
+     * The list of subnetpool tags to filter.
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

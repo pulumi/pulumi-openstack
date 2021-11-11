@@ -28,9 +28,9 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := blockstorage.NewVolumeTypeV3(ctx, "volumeType1", &blockstorage.VolumeTypeV3Args{
 // 			Description: pulumi.String("Volume type 1"),
-// 			ExtraSpecs: pulumi.StringMap{
-// 				"capabilities":        pulumi.String("gpu"),
-// 				"volume_backend_name": pulumi.String("ssd"),
+// 			ExtraSpecs: pulumi.AnyMap{
+// 				"capabilities":        pulumi.Any("gpu"),
+// 				"volume_backend_name": pulumi.Any("ssd"),
 // 			},
 // 		})
 // 		if err != nil {
@@ -239,7 +239,7 @@ type VolumeTypeV3ArrayInput interface {
 type VolumeTypeV3Array []VolumeTypeV3Input
 
 func (VolumeTypeV3Array) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*VolumeTypeV3)(nil))
+	return reflect.TypeOf((*[]*VolumeTypeV3)(nil)).Elem()
 }
 
 func (i VolumeTypeV3Array) ToVolumeTypeV3ArrayOutput() VolumeTypeV3ArrayOutput {
@@ -264,7 +264,7 @@ type VolumeTypeV3MapInput interface {
 type VolumeTypeV3Map map[string]VolumeTypeV3Input
 
 func (VolumeTypeV3Map) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*VolumeTypeV3)(nil))
+	return reflect.TypeOf((*map[string]*VolumeTypeV3)(nil)).Elem()
 }
 
 func (i VolumeTypeV3Map) ToVolumeTypeV3MapOutput() VolumeTypeV3MapOutput {
@@ -275,9 +275,7 @@ func (i VolumeTypeV3Map) ToVolumeTypeV3MapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeTypeV3MapOutput)
 }
 
-type VolumeTypeV3Output struct {
-	*pulumi.OutputState
-}
+type VolumeTypeV3Output struct{ *pulumi.OutputState }
 
 func (VolumeTypeV3Output) ElementType() reflect.Type {
 	return reflect.TypeOf((*VolumeTypeV3)(nil))
@@ -296,14 +294,12 @@ func (o VolumeTypeV3Output) ToVolumeTypeV3PtrOutput() VolumeTypeV3PtrOutput {
 }
 
 func (o VolumeTypeV3Output) ToVolumeTypeV3PtrOutputWithContext(ctx context.Context) VolumeTypeV3PtrOutput {
-	return o.ApplyT(func(v VolumeTypeV3) *VolumeTypeV3 {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VolumeTypeV3) *VolumeTypeV3 {
 		return &v
 	}).(VolumeTypeV3PtrOutput)
 }
 
-type VolumeTypeV3PtrOutput struct {
-	*pulumi.OutputState
-}
+type VolumeTypeV3PtrOutput struct{ *pulumi.OutputState }
 
 func (VolumeTypeV3PtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**VolumeTypeV3)(nil))
@@ -315,6 +311,16 @@ func (o VolumeTypeV3PtrOutput) ToVolumeTypeV3PtrOutput() VolumeTypeV3PtrOutput {
 
 func (o VolumeTypeV3PtrOutput) ToVolumeTypeV3PtrOutputWithContext(ctx context.Context) VolumeTypeV3PtrOutput {
 	return o
+}
+
+func (o VolumeTypeV3PtrOutput) Elem() VolumeTypeV3Output {
+	return o.ApplyT(func(v *VolumeTypeV3) VolumeTypeV3 {
+		if v != nil {
+			return *v
+		}
+		var ret VolumeTypeV3
+		return ret
+	}).(VolumeTypeV3Output)
 }
 
 type VolumeTypeV3ArrayOutput struct{ *pulumi.OutputState }
@@ -358,6 +364,10 @@ func (o VolumeTypeV3MapOutput) MapIndex(k pulumi.StringInput) VolumeTypeV3Output
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeTypeV3Input)(nil)).Elem(), &VolumeTypeV3{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeTypeV3PtrInput)(nil)).Elem(), &VolumeTypeV3{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeTypeV3ArrayInput)(nil)).Elem(), VolumeTypeV3Array{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeTypeV3MapInput)(nil)).Elem(), VolumeTypeV3Map{})
 	pulumi.RegisterOutputType(VolumeTypeV3Output{})
 	pulumi.RegisterOutputType(VolumeTypeV3PtrOutput{})
 	pulumi.RegisterOutputType(VolumeTypeV3ArrayOutput{})

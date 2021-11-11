@@ -328,7 +328,7 @@ type SecretV1ArrayInput interface {
 type SecretV1Array []SecretV1Input
 
 func (SecretV1Array) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*SecretV1)(nil))
+	return reflect.TypeOf((*[]*SecretV1)(nil)).Elem()
 }
 
 func (i SecretV1Array) ToSecretV1ArrayOutput() SecretV1ArrayOutput {
@@ -353,7 +353,7 @@ type SecretV1MapInput interface {
 type SecretV1Map map[string]SecretV1Input
 
 func (SecretV1Map) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*SecretV1)(nil))
+	return reflect.TypeOf((*map[string]*SecretV1)(nil)).Elem()
 }
 
 func (i SecretV1Map) ToSecretV1MapOutput() SecretV1MapOutput {
@@ -364,9 +364,7 @@ func (i SecretV1Map) ToSecretV1MapOutputWithContext(ctx context.Context) SecretV
 	return pulumi.ToOutputWithContext(ctx, i).(SecretV1MapOutput)
 }
 
-type SecretV1Output struct {
-	*pulumi.OutputState
-}
+type SecretV1Output struct{ *pulumi.OutputState }
 
 func (SecretV1Output) ElementType() reflect.Type {
 	return reflect.TypeOf((*SecretV1)(nil))
@@ -385,14 +383,12 @@ func (o SecretV1Output) ToSecretV1PtrOutput() SecretV1PtrOutput {
 }
 
 func (o SecretV1Output) ToSecretV1PtrOutputWithContext(ctx context.Context) SecretV1PtrOutput {
-	return o.ApplyT(func(v SecretV1) *SecretV1 {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretV1) *SecretV1 {
 		return &v
 	}).(SecretV1PtrOutput)
 }
 
-type SecretV1PtrOutput struct {
-	*pulumi.OutputState
-}
+type SecretV1PtrOutput struct{ *pulumi.OutputState }
 
 func (SecretV1PtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**SecretV1)(nil))
@@ -404,6 +400,16 @@ func (o SecretV1PtrOutput) ToSecretV1PtrOutput() SecretV1PtrOutput {
 
 func (o SecretV1PtrOutput) ToSecretV1PtrOutputWithContext(ctx context.Context) SecretV1PtrOutput {
 	return o
+}
+
+func (o SecretV1PtrOutput) Elem() SecretV1Output {
+	return o.ApplyT(func(v *SecretV1) SecretV1 {
+		if v != nil {
+			return *v
+		}
+		var ret SecretV1
+		return ret
+	}).(SecretV1Output)
 }
 
 type SecretV1ArrayOutput struct{ *pulumi.OutputState }
@@ -447,6 +453,10 @@ func (o SecretV1MapOutput) MapIndex(k pulumi.StringInput) SecretV1Output {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretV1Input)(nil)).Elem(), &SecretV1{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretV1PtrInput)(nil)).Elem(), &SecretV1{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretV1ArrayInput)(nil)).Elem(), SecretV1Array{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretV1MapInput)(nil)).Elem(), SecretV1Map{})
 	pulumi.RegisterOutputType(SecretV1Output{})
 	pulumi.RegisterOutputType(SecretV1PtrOutput{})
 	pulumi.RegisterOutputType(SecretV1ArrayOutput{})

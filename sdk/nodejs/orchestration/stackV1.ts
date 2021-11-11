@@ -230,89 +230,89 @@ export interface StackV1State {
     /**
      * A list of stack outputs.
      */
-    readonly StackOutputs?: pulumi.Input<pulumi.Input<inputs.orchestration.StackV1StackOutput>[]>;
+    StackOutputs?: pulumi.Input<pulumi.Input<inputs.orchestration.StackV1StackOutput>[]>;
     /**
      * List of stack capabilities for stack.
      */
-    readonly capabilities?: pulumi.Input<pulumi.Input<string>[]>;
+    capabilities?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The date and time when the resource was created. The date
      * and time stamp format is ISO 8601: CCYY-MM-DDThh:mm:ss±hh:mm
      * For example, 2015-08-27T09:49:58-05:00. The ±hh:mm value, if included,
      * is the time zone as an offset from UTC.
      */
-    readonly creationTime?: pulumi.Input<string>;
+    creationTime?: pulumi.Input<string>;
     /**
      * The description of the stack resource.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Enables or disables deletion of all stack
      * resources when a stack creation fails. Default is true, meaning all
      * resources are not deleted when stack creation fails.
      */
-    readonly disableRollback?: pulumi.Input<boolean>;
+    disableRollback?: pulumi.Input<boolean>;
     /**
      * Environment key/value pairs to associate with
      * the stack which contains details for the environment of the stack.
      * Allowed keys: Bin, URL, Files. Changing this updates the existing stack
      * Environment Opts.
      */
-    readonly environmentOpts?: pulumi.Input<{[key: string]: any}>;
+    environmentOpts?: pulumi.Input<{[key: string]: any}>;
     /**
      * A unique name for the stack. It must start with an
      * alphabetic character. Changing this updates the stack's name.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * List of notification topics for stack.
      */
-    readonly notificationTopics?: pulumi.Input<pulumi.Input<string>[]>;
+    notificationTopics?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * User-defined key/value pairs as parameters to pass
      * to the template. Changing this updates the existing stack parameters.
      */
-    readonly parameters?: pulumi.Input<{[key: string]: any}>;
+    parameters?: pulumi.Input<{[key: string]: any}>;
     /**
      * The region in which to create the stack. If
      * omitted, the `region` argument of the provider is used. Changing this
      * creates a new stack.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The status of the stack.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The reason for the current status of the stack.
      */
-    readonly statusReason?: pulumi.Input<string>;
+    statusReason?: pulumi.Input<string>;
     /**
      * A list of tags to assosciate with the Stack
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The description of the stack template.
      */
-    readonly templateDescription?: pulumi.Input<string>;
+    templateDescription?: pulumi.Input<string>;
     /**
      * Template key/value pairs to associate with the
      * stack which contains either the template file or url.
      * Allowed keys: Bin, URL, Files. Changing this updates the existing stack
      * Template Opts.
      */
-    readonly templateOpts?: pulumi.Input<{[key: string]: any}>;
+    templateOpts?: pulumi.Input<{[key: string]: any}>;
     /**
      * The timeout for stack action in minutes.
      */
-    readonly timeout?: pulumi.Input<number>;
+    timeout?: pulumi.Input<number>;
     /**
      * The date and time when the resource was updated. The date
      * and time stamp format is ISO 8601: CCYY-MM-DDThh:mm:ss±hh:mm
      * For example, 2015-08-27T09:49:58-05:00. The ±hh:mm value, if included,
      * is the time zone as an offset from UTC.
      */
-    readonly updatedTime?: pulumi.Input<string>;
+    updatedTime?: pulumi.Input<string>;
 }
 
 /**
@@ -322,87 +322,87 @@ export interface StackV1Args {
     /**
      * A list of stack outputs.
      */
-    readonly StackOutputs?: pulumi.Input<pulumi.Input<inputs.orchestration.StackV1StackOutput>[]>;
+    StackOutputs?: pulumi.Input<pulumi.Input<inputs.orchestration.StackV1StackOutput>[]>;
     /**
      * List of stack capabilities for stack.
      */
-    readonly capabilities?: pulumi.Input<pulumi.Input<string>[]>;
+    capabilities?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The date and time when the resource was created. The date
      * and time stamp format is ISO 8601: CCYY-MM-DDThh:mm:ss±hh:mm
      * For example, 2015-08-27T09:49:58-05:00. The ±hh:mm value, if included,
      * is the time zone as an offset from UTC.
      */
-    readonly creationTime?: pulumi.Input<string>;
+    creationTime?: pulumi.Input<string>;
     /**
      * The description of the stack resource.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Enables or disables deletion of all stack
      * resources when a stack creation fails. Default is true, meaning all
      * resources are not deleted when stack creation fails.
      */
-    readonly disableRollback?: pulumi.Input<boolean>;
+    disableRollback?: pulumi.Input<boolean>;
     /**
      * Environment key/value pairs to associate with
      * the stack which contains details for the environment of the stack.
      * Allowed keys: Bin, URL, Files. Changing this updates the existing stack
      * Environment Opts.
      */
-    readonly environmentOpts?: pulumi.Input<{[key: string]: any}>;
+    environmentOpts?: pulumi.Input<{[key: string]: any}>;
     /**
      * A unique name for the stack. It must start with an
      * alphabetic character. Changing this updates the stack's name.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * List of notification topics for stack.
      */
-    readonly notificationTopics?: pulumi.Input<pulumi.Input<string>[]>;
+    notificationTopics?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * User-defined key/value pairs as parameters to pass
      * to the template. Changing this updates the existing stack parameters.
      */
-    readonly parameters?: pulumi.Input<{[key: string]: any}>;
+    parameters?: pulumi.Input<{[key: string]: any}>;
     /**
      * The region in which to create the stack. If
      * omitted, the `region` argument of the provider is used. Changing this
      * creates a new stack.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The status of the stack.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The reason for the current status of the stack.
      */
-    readonly statusReason?: pulumi.Input<string>;
+    statusReason?: pulumi.Input<string>;
     /**
      * A list of tags to assosciate with the Stack
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The description of the stack template.
      */
-    readonly templateDescription?: pulumi.Input<string>;
+    templateDescription?: pulumi.Input<string>;
     /**
      * Template key/value pairs to associate with the
      * stack which contains either the template file or url.
      * Allowed keys: Bin, URL, Files. Changing this updates the existing stack
      * Template Opts.
      */
-    readonly templateOpts: pulumi.Input<{[key: string]: any}>;
+    templateOpts: pulumi.Input<{[key: string]: any}>;
     /**
      * The timeout for stack action in minutes.
      */
-    readonly timeout?: pulumi.Input<number>;
+    timeout?: pulumi.Input<number>;
     /**
      * The date and time when the resource was updated. The date
      * and time stamp format is ISO 8601: CCYY-MM-DDThh:mm:ss±hh:mm
      * For example, 2015-08-27T09:49:58-05:00. The ±hh:mm value, if included,
      * is the time zone as an offset from UTC.
      */
-    readonly updatedTime?: pulumi.Input<string>;
+    updatedTime?: pulumi.Input<string>;
 }

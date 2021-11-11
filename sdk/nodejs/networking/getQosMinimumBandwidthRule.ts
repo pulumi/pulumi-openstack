@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -16,7 +15,7 @@ import * as utilities from "../utilities";
  *
  * const qosMinBwRule1 = pulumi.output(openstack.networking.getQosMinimumBandwidthRule({
  *     minKbps: 2000,
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getQosMinimumBandwidthRule(args: GetQosMinimumBandwidthRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetQosMinimumBandwidthRuleResult> {
@@ -39,21 +38,21 @@ export function getQosMinimumBandwidthRule(args: GetQosMinimumBandwidthRuleArgs,
  * A collection of arguments for invoking getQosMinimumBandwidthRule.
  */
 export interface GetQosMinimumBandwidthRuleArgs {
-    readonly direction?: string;
+    direction?: string;
     /**
      * The value of a minimum kbps bandwidth.
      */
-    readonly minKbps?: number;
+    minKbps?: number;
     /**
      * The QoS policy reference.
      */
-    readonly qosPolicyId: string;
+    qosPolicyId: string;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a Neutron QoS minimum bandwidth rule. If omitted, the
      * `region` argument of the provider is used.
      */
-    readonly region?: string;
+    region?: string;
 }
 
 /**
@@ -77,4 +76,29 @@ export interface GetQosMinimumBandwidthRuleResult {
      * See Argument Reference above.
      */
     readonly region: string;
+}
+
+export function getQosMinimumBandwidthRuleOutput(args: GetQosMinimumBandwidthRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQosMinimumBandwidthRuleResult> {
+    return pulumi.output(args).apply(a => getQosMinimumBandwidthRule(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getQosMinimumBandwidthRule.
+ */
+export interface GetQosMinimumBandwidthRuleOutputArgs {
+    direction?: pulumi.Input<string>;
+    /**
+     * The value of a minimum kbps bandwidth.
+     */
+    minKbps?: pulumi.Input<number>;
+    /**
+     * The QoS policy reference.
+     */
+    qosPolicyId: pulumi.Input<string>;
+    /**
+     * The region in which to obtain the V2 Networking client.
+     * A Networking client is needed to create a Neutron QoS minimum bandwidth rule. If omitted, the
+     * `region` argument of the provider is used.
+     */
+    region?: pulumi.Input<string>;
 }

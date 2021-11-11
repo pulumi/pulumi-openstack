@@ -188,53 +188,53 @@ export interface L7PolicyV2State {
      * The L7 Policy action - can either be REDIRECT\_TO\_POOL,
      * REDIRECT\_TO\_URL or REJECT.
      */
-    readonly action?: pulumi.Input<string>;
+    action?: pulumi.Input<string>;
     /**
      * The administrative state of the L7 Policy.
      * A valid value is true (UP) or false (DOWN).
      */
-    readonly adminStateUp?: pulumi.Input<boolean>;
+    adminStateUp?: pulumi.Input<boolean>;
     /**
      * Human-readable description for the L7 Policy.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The Listener on which the L7 Policy will be associated with.
      * Changing this creates a new L7 Policy.
      */
-    readonly listenerId?: pulumi.Input<string>;
+    listenerId?: pulumi.Input<string>;
     /**
      * Human-readable name for the L7 Policy. Does not have
      * to be unique.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The position of this policy on the listener. Positions start at 1.
      */
-    readonly position?: pulumi.Input<number>;
+    position?: pulumi.Input<number>;
     /**
      * Requests matching this policy will be redirected to the
      * pool with this ID. Only valid if action is REDIRECT\_TO\_POOL.
      */
-    readonly redirectPoolId?: pulumi.Input<string>;
+    redirectPoolId?: pulumi.Input<string>;
     /**
      * Requests matching this policy will be redirected to this URL.
      * Only valid if action is REDIRECT\_TO\_URL.
      */
-    readonly redirectUrl?: pulumi.Input<string>;
+    redirectUrl?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create an . If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * L7 Policy.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * Required for admins. The UUID of the tenant who owns
      * the L7 Policy.  Only administrative users can specify a tenant UUID
      * other than their own. Changing this creates a new L7 Policy.
      */
-    readonly tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string>;
 }
 
 /**
@@ -245,51 +245,51 @@ export interface L7PolicyV2Args {
      * The L7 Policy action - can either be REDIRECT\_TO\_POOL,
      * REDIRECT\_TO\_URL or REJECT.
      */
-    readonly action: pulumi.Input<string>;
+    action: pulumi.Input<string>;
     /**
      * The administrative state of the L7 Policy.
      * A valid value is true (UP) or false (DOWN).
      */
-    readonly adminStateUp?: pulumi.Input<boolean>;
+    adminStateUp?: pulumi.Input<boolean>;
     /**
      * Human-readable description for the L7 Policy.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The Listener on which the L7 Policy will be associated with.
      * Changing this creates a new L7 Policy.
      */
-    readonly listenerId: pulumi.Input<string>;
+    listenerId: pulumi.Input<string>;
     /**
      * Human-readable name for the L7 Policy. Does not have
      * to be unique.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The position of this policy on the listener. Positions start at 1.
      */
-    readonly position?: pulumi.Input<number>;
+    position?: pulumi.Input<number>;
     /**
      * Requests matching this policy will be redirected to the
      * pool with this ID. Only valid if action is REDIRECT\_TO\_POOL.
      */
-    readonly redirectPoolId?: pulumi.Input<string>;
+    redirectPoolId?: pulumi.Input<string>;
     /**
      * Requests matching this policy will be redirected to this URL.
      * Only valid if action is REDIRECT\_TO\_URL.
      */
-    readonly redirectUrl?: pulumi.Input<string>;
+    redirectUrl?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create an . If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * L7 Policy.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * Required for admins. The UUID of the tenant who owns
      * the L7 Policy.  Only administrative users can specify a tenant UUID
      * other than their own. Changing this creates a new L7 Policy.
      */
-    readonly tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string>;
 }

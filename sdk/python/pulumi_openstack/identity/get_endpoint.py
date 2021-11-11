@@ -12,6 +12,7 @@ __all__ = [
     'GetEndpointResult',
     'AwaitableGetEndpointResult',
     'get_endpoint',
+    'get_endpoint_output',
 ]
 
 @pulumi.output_type
@@ -196,3 +197,41 @@ def get_endpoint(endpoint_region: Optional[str] = None,
         service_name=__ret__.service_name,
         service_type=__ret__.service_type,
         url=__ret__.url)
+
+
+@_utilities.lift_output_func(get_endpoint)
+def get_endpoint_output(endpoint_region: Optional[pulumi.Input[Optional[str]]] = None,
+                        interface: Optional[pulumi.Input[Optional[str]]] = None,
+                        name: Optional[pulumi.Input[Optional[str]]] = None,
+                        region: Optional[pulumi.Input[Optional[str]]] = None,
+                        service_id: Optional[pulumi.Input[Optional[str]]] = None,
+                        service_name: Optional[pulumi.Input[Optional[str]]] = None,
+                        service_type: Optional[pulumi.Input[Optional[str]]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEndpointResult]:
+    """
+    Use this data source to get the ID of an OpenStack endpoint.
+
+    > **Note:** This usually requires admin privileges.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    endpoint1 = openstack.identity.get_endpoint(service_name="demo")
+    ```
+
+
+    :param str endpoint_region: The region the endpoint is assigned to. The
+           `region` and `endpoint_region` can be different.
+    :param str interface: The endpoint interface. Valid values are `public`,
+           `internal`, and `admin`. Default value is `public`
+    :param str name: The name of the endpoint.
+    :param str region: The region in which to obtain the V3 Keystone client.
+           If omitted, the `region` argument of the provider is used.
+    :param str service_id: The service id this endpoint belongs to.
+    :param str service_name: The service name of the endpoint.
+    :param str service_type: The service type of the endpoint.
+    """
+    ...

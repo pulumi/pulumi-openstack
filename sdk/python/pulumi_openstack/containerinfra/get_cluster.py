@@ -12,6 +12,7 @@ __all__ = [
     'GetClusterResult',
     'AwaitableGetClusterResult',
     'get_cluster',
+    'get_cluster_output',
 ]
 
 @pulumi.output_type
@@ -394,3 +395,28 @@ def get_cluster(name: Optional[str] = None,
         stack_id=__ret__.stack_id,
         updated_at=__ret__.updated_at,
         user_id=__ret__.user_id)
+
+
+@_utilities.lift_output_func(get_cluster)
+def get_cluster_output(name: Optional[pulumi.Input[str]] = None,
+                       region: Optional[pulumi.Input[Optional[str]]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClusterResult]:
+    """
+    Use this data source to get the ID of an available OpenStack Magnum cluster.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    cluster1 = openstack.containerinfra.get_cluster(name="cluster_1")
+    ```
+
+
+    :param str name: The name of the cluster.
+    :param str region: The region in which to obtain the V1 Container Infra
+           client.
+           If omitted, the `region` argument of the provider is used.
+    """
+    ...

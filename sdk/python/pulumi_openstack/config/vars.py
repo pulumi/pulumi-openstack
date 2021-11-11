@@ -8,193 +8,225 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = [
-    'allow_reauth',
-    'application_credential_id',
-    'application_credential_name',
-    'application_credential_secret',
-    'auth_url',
-    'cacert_file',
-    'cert',
-    'cloud',
-    'default_domain',
-    'delayed_auth',
-    'disable_no_cache_header',
-    'domain_id',
-    'domain_name',
-    'endpoint_overrides',
-    'endpoint_type',
-    'insecure',
-    'key',
-    'max_retries',
-    'password',
-    'project_domain_id',
-    'project_domain_name',
-    'region',
-    'swauth',
-    'tenant_id',
-    'tenant_name',
-    'token',
-    'use_octavia',
-    'user_domain_id',
-    'user_domain_name',
-    'user_id',
-    'user_name',
-]
+import types
 
 __config__ = pulumi.Config('openstack')
 
-allow_reauth = __config__.get('allowReauth') or _utilities.get_env_bool('OS_ALLOW_REAUTH')
-"""
-If set to `false`, OpenStack authorization won't be perfomed automatically, if the initial auth token get expired.
-Defaults to `true`
-"""
 
-application_credential_id = __config__.get('applicationCredentialId')
-"""
-Application Credential ID to login with.
-"""
+class _ExportableConfig(types.ModuleType):
+    @property
+    def allow_reauth(self) -> Optional[bool]:
+        """
+        If set to `false`, OpenStack authorization won't be perfomed automatically, if the initial auth token get expired.
+        Defaults to `true`
+        """
+        return __config__.get_bool('allowReauth') or _utilities.get_env_bool('OS_ALLOW_REAUTH')
 
-application_credential_name = __config__.get('applicationCredentialName')
-"""
-Application Credential name to login with.
-"""
+    @property
+    def application_credential_id(self) -> Optional[str]:
+        """
+        Application Credential ID to login with.
+        """
+        return __config__.get('applicationCredentialId')
 
-application_credential_secret = __config__.get('applicationCredentialSecret')
-"""
-Application Credential secret to login with.
-"""
+    @property
+    def application_credential_name(self) -> Optional[str]:
+        """
+        Application Credential name to login with.
+        """
+        return __config__.get('applicationCredentialName')
 
-auth_url = __config__.get('authUrl')
-"""
-The Identity authentication URL.
-"""
+    @property
+    def application_credential_secret(self) -> Optional[str]:
+        """
+        Application Credential secret to login with.
+        """
+        return __config__.get('applicationCredentialSecret')
 
-cacert_file = __config__.get('cacertFile')
-"""
-A Custom CA certificate.
-"""
+    @property
+    def auth_url(self) -> Optional[str]:
+        """
+        The Identity authentication URL.
+        """
+        return __config__.get('authUrl')
 
-cert = __config__.get('cert')
-"""
-A client certificate to authenticate with.
-"""
+    @property
+    def cacert_file(self) -> Optional[str]:
+        """
+        A Custom CA certificate.
+        """
+        return __config__.get('cacertFile')
 
-cloud = __config__.get('cloud') or _utilities.get_env('OS_CLOUD')
-"""
-An entry in a `clouds.yaml` file to use.
-"""
+    @property
+    def cert(self) -> Optional[str]:
+        """
+        A client certificate to authenticate with.
+        """
+        return __config__.get('cert')
 
-default_domain = __config__.get('defaultDomain')
-"""
-The name of the Domain ID to scope to if no other domain is specified. Defaults to `default` (Identity v3).
-"""
+    @property
+    def cloud(self) -> Optional[str]:
+        """
+        An entry in a `clouds.yaml` file to use.
+        """
+        return __config__.get('cloud') or _utilities.get_env('OS_CLOUD')
 
-delayed_auth = __config__.get('delayedAuth') or _utilities.get_env_bool('OS_DELAYED_AUTH')
-"""
-If set to `false`, OpenStack authorization will be perfomed, every time the service provider client is called. Defaults
-to `true`.
-"""
+    @property
+    def default_domain(self) -> Optional[str]:
+        """
+        The name of the Domain ID to scope to if no other domain is specified. Defaults to `default` (Identity v3).
+        """
+        return __config__.get('defaultDomain')
 
-disable_no_cache_header = __config__.get('disableNoCacheHeader')
-"""
-If set to `true`, the HTTP `Cache-Control: no-cache` header will not be added by default to all API requests.
-"""
+    @property
+    def delayed_auth(self) -> Optional[bool]:
+        """
+        If set to `false`, OpenStack authorization will be perfomed, every time the service provider client is called. Defaults
+        to `true`.
+        """
+        return __config__.get_bool('delayedAuth') or _utilities.get_env_bool('OS_DELAYED_AUTH')
 
-domain_id = __config__.get('domainId')
-"""
-The ID of the Domain to scope to (Identity v3).
-"""
+    @property
+    def disable_no_cache_header(self) -> Optional[bool]:
+        """
+        If set to `true`, the HTTP `Cache-Control: no-cache` header will not be added by default to all API requests.
+        """
+        return __config__.get_bool('disableNoCacheHeader')
 
-domain_name = __config__.get('domainName')
-"""
-The name of the Domain to scope to (Identity v3).
-"""
+    @property
+    def domain_id(self) -> Optional[str]:
+        """
+        The ID of the Domain to scope to (Identity v3).
+        """
+        return __config__.get('domainId')
 
-endpoint_overrides = __config__.get('endpointOverrides')
-"""
-A map of services with an endpoint to override what was from the Keystone catalog
-"""
+    @property
+    def domain_name(self) -> Optional[str]:
+        """
+        The name of the Domain to scope to (Identity v3).
+        """
+        return __config__.get('domainName')
 
-endpoint_type = __config__.get('endpointType') or _utilities.get_env('OS_ENDPOINT_TYPE')
+    @property
+    def endpoint_overrides(self) -> Optional[str]:
+        """
+        A map of services with an endpoint to override what was from the Keystone catalog
+        """
+        return __config__.get('endpointOverrides')
 
-insecure = __config__.get('insecure') or _utilities.get_env_bool('OS_INSECURE')
-"""
-Trust self-signed certificates.
-"""
+    @property
+    def endpoint_type(self) -> Optional[str]:
+        return __config__.get('endpointType') or _utilities.get_env('OS_ENDPOINT_TYPE')
 
-key = __config__.get('key')
-"""
-A client private key to authenticate with.
-"""
+    @property
+    def insecure(self) -> Optional[bool]:
+        """
+        Trust self-signed certificates.
+        """
+        return __config__.get_bool('insecure') or _utilities.get_env_bool('OS_INSECURE')
 
-max_retries = __config__.get('maxRetries')
-"""
-How many times HTTP connection should be retried until giving up.
-"""
+    @property
+    def key(self) -> Optional[str]:
+        """
+        A client private key to authenticate with.
+        """
+        return __config__.get('key')
 
-password = __config__.get('password')
-"""
-Password to login with.
-"""
+    @property
+    def max_retries(self) -> Optional[int]:
+        """
+        How many times HTTP connection should be retried until giving up.
+        """
+        return __config__.get_int('maxRetries')
 
-project_domain_id = __config__.get('projectDomainId')
-"""
-The ID of the domain where the proejct resides (Identity v3).
-"""
+    @property
+    def password(self) -> Optional[str]:
+        """
+        Password to login with.
+        """
+        return __config__.get('password')
 
-project_domain_name = __config__.get('projectDomainName')
-"""
-The name of the domain where the project resides (Identity v3).
-"""
+    @property
+    def project_domain_id(self) -> Optional[str]:
+        """
+        The ID of the domain where the proejct resides (Identity v3).
+        """
+        return __config__.get('projectDomainId')
 
-region = __config__.get('region') or _utilities.get_env('OS_REGION_NAME')
-"""
-The OpenStack region to connect to.
-"""
+    @property
+    def project_domain_name(self) -> Optional[str]:
+        """
+        The name of the domain where the project resides (Identity v3).
+        """
+        return __config__.get('projectDomainName')
 
-swauth = __config__.get('swauth') or _utilities.get_env_bool('OS_SWAUTH')
-"""
-Use Swift's authentication system instead of Keystone. Only used for interaction with Swift.
-"""
+    @property
+    def region(self) -> Optional[str]:
+        """
+        The OpenStack region to connect to.
+        """
+        return __config__.get('region') or _utilities.get_env('OS_REGION_NAME')
 
-tenant_id = __config__.get('tenantId')
-"""
-The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.
-"""
+    @property
+    def swauth(self) -> Optional[bool]:
+        """
+        Use Swift's authentication system instead of Keystone. Only used for interaction with Swift.
+        """
+        return __config__.get_bool('swauth') or _utilities.get_env_bool('OS_SWAUTH')
 
-tenant_name = __config__.get('tenantName')
-"""
-The name of the Tenant (Identity v2) or Project (Identity v3) to login with.
-"""
+    @property
+    def tenant_id(self) -> Optional[str]:
+        """
+        The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.
+        """
+        return __config__.get('tenantId')
 
-token = __config__.get('token')
-"""
-Authentication token to use as an alternative to username/password.
-"""
+    @property
+    def tenant_name(self) -> Optional[str]:
+        """
+        The name of the Tenant (Identity v2) or Project (Identity v3) to login with.
+        """
+        return __config__.get('tenantName')
 
-use_octavia = __config__.get('useOctavia') or _utilities.get_env_bool('OS_USE_OCTAVIA')
-"""
-If set to `true`, API requests will go the Load Balancer service (Octavia) instead of the Networking service (Neutron).
-"""
+    @property
+    def token(self) -> Optional[str]:
+        """
+        Authentication token to use as an alternative to username/password.
+        """
+        return __config__.get('token')
 
-user_domain_id = __config__.get('userDomainId')
-"""
-The ID of the domain where the user resides (Identity v3).
-"""
+    @property
+    def use_octavia(self) -> Optional[bool]:
+        """
+        If set to `true`, API requests will go the Load Balancer service (Octavia) instead of the Networking service (Neutron).
+        """
+        return __config__.get_bool('useOctavia') or _utilities.get_env_bool('OS_USE_OCTAVIA')
 
-user_domain_name = __config__.get('userDomainName')
-"""
-The name of the domain where the user resides (Identity v3).
-"""
+    @property
+    def user_domain_id(self) -> Optional[str]:
+        """
+        The ID of the domain where the user resides (Identity v3).
+        """
+        return __config__.get('userDomainId')
 
-user_id = __config__.get('userId')
-"""
-Username to login with.
-"""
+    @property
+    def user_domain_name(self) -> Optional[str]:
+        """
+        The name of the domain where the user resides (Identity v3).
+        """
+        return __config__.get('userDomainName')
 
-user_name = __config__.get('userName')
-"""
-Username to login with.
-"""
+    @property
+    def user_id(self) -> Optional[str]:
+        """
+        Username to login with.
+        """
+        return __config__.get('userId')
+
+    @property
+    def user_name(self) -> Optional[str]:
+        """
+        Username to login with.
+        """
+        return __config__.get('userName')
 

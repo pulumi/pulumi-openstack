@@ -197,75 +197,75 @@ export interface RuleState {
      * firewall rule matches. Changing this updates the `action` of an existing
      * firewall rule.
      */
-    readonly action?: pulumi.Input<string>;
+    action?: pulumi.Input<string>;
     /**
      * A description for the firewall rule. Changing this
      * updates the `description` of an existing firewall rule.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The destination IP address on which the
      * firewall rule operates. Changing this updates the `destinationIpAddress`
      * of an existing firewall rule.
      */
-    readonly destinationIpAddress?: pulumi.Input<string>;
+    destinationIpAddress?: pulumi.Input<string>;
     /**
      * The destination port on which the firewall
      * rule operates. Changing this updates the `destinationPort` of an existing
      * firewall rule.
      */
-    readonly destinationPort?: pulumi.Input<string>;
+    destinationPort?: pulumi.Input<string>;
     /**
      * Enabled status for the firewall rule (must be "true"
      * or "false" if provided - defaults to "true"). Changing this updates the
      * `enabled` status of an existing firewall rule.
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * IP version, either 4 (default) or 6. Changing this
      * updates the `ipVersion` of an existing firewall rule.
      */
-    readonly ipVersion?: pulumi.Input<number>;
+    ipVersion?: pulumi.Input<number>;
     /**
      * A unique name for the firewall rule. Changing this
      * updates the `name` of an existing firewall rule.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The protocol type on which the firewall rule operates.
      * Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
      * `protocol` of an existing firewall rule.
      */
-    readonly protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string>;
     /**
      * The region in which to obtain the v1 Compute client.
      * A Compute client is needed to create a firewall rule. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * firewall rule.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The source IP address on which the firewall
      * rule operates. Changing this updates the `sourceIpAddress` of an existing
      * firewall rule.
      */
-    readonly sourceIpAddress?: pulumi.Input<string>;
+    sourceIpAddress?: pulumi.Input<string>;
     /**
      * The source port on which the firewall
      * rule operates. Changing this updates the `sourcePort` of an existing
      * firewall rule.
      */
-    readonly sourcePort?: pulumi.Input<string>;
+    sourcePort?: pulumi.Input<string>;
     /**
      * The owner of the firewall rule. Required if admin
      * wants to create a firewall rule for another tenant. Changing this creates a
      * new firewall rule.
      */
-    readonly tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string>;
     /**
      * Map of additional options.
      */
-    readonly valueSpecs?: pulumi.Input<{[key: string]: any}>;
+    valueSpecs?: pulumi.Input<{[key: string]: any}>;
 }
 
 /**
@@ -277,73 +277,73 @@ export interface RuleArgs {
      * firewall rule matches. Changing this updates the `action` of an existing
      * firewall rule.
      */
-    readonly action: pulumi.Input<string>;
+    action: pulumi.Input<string>;
     /**
      * A description for the firewall rule. Changing this
      * updates the `description` of an existing firewall rule.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The destination IP address on which the
      * firewall rule operates. Changing this updates the `destinationIpAddress`
      * of an existing firewall rule.
      */
-    readonly destinationIpAddress?: pulumi.Input<string>;
+    destinationIpAddress?: pulumi.Input<string>;
     /**
      * The destination port on which the firewall
      * rule operates. Changing this updates the `destinationPort` of an existing
      * firewall rule.
      */
-    readonly destinationPort?: pulumi.Input<string>;
+    destinationPort?: pulumi.Input<string>;
     /**
      * Enabled status for the firewall rule (must be "true"
      * or "false" if provided - defaults to "true"). Changing this updates the
      * `enabled` status of an existing firewall rule.
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * IP version, either 4 (default) or 6. Changing this
      * updates the `ipVersion` of an existing firewall rule.
      */
-    readonly ipVersion?: pulumi.Input<number>;
+    ipVersion?: pulumi.Input<number>;
     /**
      * A unique name for the firewall rule. Changing this
      * updates the `name` of an existing firewall rule.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The protocol type on which the firewall rule operates.
      * Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
      * `protocol` of an existing firewall rule.
      */
-    readonly protocol: pulumi.Input<string>;
+    protocol: pulumi.Input<string>;
     /**
      * The region in which to obtain the v1 Compute client.
      * A Compute client is needed to create a firewall rule. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * firewall rule.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The source IP address on which the firewall
      * rule operates. Changing this updates the `sourceIpAddress` of an existing
      * firewall rule.
      */
-    readonly sourceIpAddress?: pulumi.Input<string>;
+    sourceIpAddress?: pulumi.Input<string>;
     /**
      * The source port on which the firewall
      * rule operates. Changing this updates the `sourcePort` of an existing
      * firewall rule.
      */
-    readonly sourcePort?: pulumi.Input<string>;
+    sourcePort?: pulumi.Input<string>;
     /**
      * The owner of the firewall rule. Required if admin
      * wants to create a firewall rule for another tenant. Changing this creates a
      * new firewall rule.
      */
-    readonly tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string>;
     /**
      * Map of additional options.
      */
-    readonly valueSpecs?: pulumi.Input<{[key: string]: any}>;
+    valueSpecs?: pulumi.Input<{[key: string]: any}>;
 }

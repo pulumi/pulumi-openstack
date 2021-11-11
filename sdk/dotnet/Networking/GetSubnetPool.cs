@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.OpenStack.Networking
 {
@@ -39,6 +40,35 @@ namespace Pulumi.OpenStack.Networking
         /// </summary>
         public static Task<GetSubnetPoolResult> InvokeAsync(GetSubnetPoolArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSubnetPoolResult>("openstack:networking/getSubnetPool:getSubnetPool", args ?? new GetSubnetPoolArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to get the ID of an available OpenStack subnetpool.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var subnetpool1 = Output.Create(OpenStack.Networking.GetSubnetPool.InvokeAsync(new OpenStack.Networking.GetSubnetPoolArgs
+        ///         {
+        ///             Name = "subnetpool_1",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetSubnetPoolResult> Invoke(GetSubnetPoolInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetSubnetPoolResult>("openstack:networking/getSubnetPool:getSubnetPool", args ?? new GetSubnetPoolInvokeArgs(), options.WithVersion());
     }
 
 
@@ -134,6 +164,102 @@ namespace Pulumi.OpenStack.Networking
         }
 
         public GetSubnetPoolArgs()
+        {
+        }
+    }
+
+    public sealed class GetSubnetPoolInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The Neutron address scope that subnetpools
+        /// is assigned to.
+        /// </summary>
+        [Input("addressScopeId")]
+        public Input<string>? AddressScopeId { get; set; }
+
+        /// <summary>
+        /// The size of the subnetpool default prefix
+        /// length.
+        /// </summary>
+        [Input("defaultPrefixlen")]
+        public Input<int>? DefaultPrefixlen { get; set; }
+
+        /// <summary>
+        /// The per-project quota on the prefix space that
+        /// can be allocated from the subnetpool for project subnets.
+        /// </summary>
+        [Input("defaultQuota")]
+        public Input<int>? DefaultQuota { get; set; }
+
+        /// <summary>
+        /// The human-readable description for the subnetpool.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The IP protocol version.
+        /// </summary>
+        [Input("ipVersion")]
+        public Input<int>? IpVersion { get; set; }
+
+        /// <summary>
+        /// Whether the subnetpool is default subnetpool or not.
+        /// </summary>
+        [Input("isDefault")]
+        public Input<bool>? IsDefault { get; set; }
+
+        /// <summary>
+        /// The size of the subnetpool max prefix length.
+        /// </summary>
+        [Input("maxPrefixlen")]
+        public Input<int>? MaxPrefixlen { get; set; }
+
+        /// <summary>
+        /// The size of the subnetpool min prefix length.
+        /// </summary>
+        [Input("minPrefixlen")]
+        public Input<int>? MinPrefixlen { get; set; }
+
+        /// <summary>
+        /// The name of the subnetpool.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The owner of the subnetpool.
+        /// </summary>
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
+
+        /// <summary>
+        /// The region in which to obtain the V2 Networking client.
+        /// A Networking client is needed to retrieve a subnetpool id. If omitted, the
+        /// `region` argument of the provider is used.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// Whether this subnetpool is shared across all projects.
+        /// </summary>
+        [Input("shared")]
+        public Input<bool>? Shared { get; set; }
+
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// The list of subnetpool tags to filter.
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
+
+        public GetSubnetPoolInvokeArgs()
         {
         }
     }

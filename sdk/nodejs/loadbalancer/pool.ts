@@ -179,59 +179,59 @@ export interface PoolState {
      * The administrative state of the pool.
      * A valid value is true (UP) or false (DOWN).
      */
-    readonly adminStateUp?: pulumi.Input<boolean>;
+    adminStateUp?: pulumi.Input<boolean>;
     /**
      * Human-readable description for the pool.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The load balancing algorithm to
      * distribute traffic to the pool's members. Must be one of
      * ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT (supported only
      * in Octavia).
      */
-    readonly lbMethod?: pulumi.Input<string>;
+    lbMethod?: pulumi.Input<string>;
     /**
      * The Listener on which the members of the pool
      * will be associated with. Changing this creates a new pool.
      * Note:  One of LoadbalancerID or ListenerID must be provided.
      */
-    readonly listenerId?: pulumi.Input<string>;
+    listenerId?: pulumi.Input<string>;
     /**
      * The load balancer on which to provision this
      * pool. Changing this creates a new pool.
      * Note:  One of LoadbalancerID or ListenerID must be provided.
      */
-    readonly loadbalancerId?: pulumi.Input<string>;
+    loadbalancerId?: pulumi.Input<string>;
     /**
      * Human-readable name for the pool.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Omit this field to prevent session persistence.  Indicates
      * whether connections in the same session will be processed by the same Pool
      * member or not. Changing this creates a new pool.
      */
-    readonly persistence?: pulumi.Input<inputs.loadbalancer.PoolPersistence>;
+    persistence?: pulumi.Input<inputs.loadbalancer.PoolPersistence>;
     /**
      * The protocol - can either be TCP, HTTP, HTTPS, PROXY,
      * UDP (supported only in Octavia), PROXYV2 (**Octavia minor version >= 2.22**)
      * or SCTP (**Octavia minor version >= 2.23**). Changing this creates a new pool.
      */
-    readonly protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create an . If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * pool.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * Required for admins. The UUID of the tenant who owns
      * the pool.  Only administrative users can specify a tenant UUID
      * other than their own. Changing this creates a new pool.
      */
-    readonly tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string>;
 }
 
 /**
@@ -242,57 +242,57 @@ export interface PoolArgs {
      * The administrative state of the pool.
      * A valid value is true (UP) or false (DOWN).
      */
-    readonly adminStateUp?: pulumi.Input<boolean>;
+    adminStateUp?: pulumi.Input<boolean>;
     /**
      * Human-readable description for the pool.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The load balancing algorithm to
      * distribute traffic to the pool's members. Must be one of
      * ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT (supported only
      * in Octavia).
      */
-    readonly lbMethod: pulumi.Input<string>;
+    lbMethod: pulumi.Input<string>;
     /**
      * The Listener on which the members of the pool
      * will be associated with. Changing this creates a new pool.
      * Note:  One of LoadbalancerID or ListenerID must be provided.
      */
-    readonly listenerId?: pulumi.Input<string>;
+    listenerId?: pulumi.Input<string>;
     /**
      * The load balancer on which to provision this
      * pool. Changing this creates a new pool.
      * Note:  One of LoadbalancerID or ListenerID must be provided.
      */
-    readonly loadbalancerId?: pulumi.Input<string>;
+    loadbalancerId?: pulumi.Input<string>;
     /**
      * Human-readable name for the pool.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Omit this field to prevent session persistence.  Indicates
      * whether connections in the same session will be processed by the same Pool
      * member or not. Changing this creates a new pool.
      */
-    readonly persistence?: pulumi.Input<inputs.loadbalancer.PoolPersistence>;
+    persistence?: pulumi.Input<inputs.loadbalancer.PoolPersistence>;
     /**
      * The protocol - can either be TCP, HTTP, HTTPS, PROXY,
      * UDP (supported only in Octavia), PROXYV2 (**Octavia minor version >= 2.22**)
      * or SCTP (**Octavia minor version >= 2.23**). Changing this creates a new pool.
      */
-    readonly protocol: pulumi.Input<string>;
+    protocol: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create an . If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * pool.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * Required for admins. The UUID of the tenant who owns
      * the pool.  Only administrative users can specify a tenant UUID
      * other than their own. Changing this creates a new pool.
      */
-    readonly tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string>;
 }

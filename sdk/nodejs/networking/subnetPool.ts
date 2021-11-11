@@ -254,62 +254,62 @@ export interface SubnetPoolState {
      * subnetpool. Changing this updates the address scope id of the existing
      * subnetpool.
      */
-    readonly addressScopeId?: pulumi.Input<string>;
+    addressScopeId?: pulumi.Input<string>;
     /**
      * The collection of tags assigned on the subnetpool, which have been
      * explicitly and implicitly added.
      */
-    readonly allTags?: pulumi.Input<pulumi.Input<string>[]>;
+    allTags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The time at which subnetpool was created.
      */
-    readonly createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
     /**
      * The size of the prefix to allocate when the cidr
      * or prefixlen attributes are omitted when you create the subnet. Defaults to the
      * MinPrefixLen. Changing this updates the default prefixlen of the existing
      * subnetpool.
      */
-    readonly defaultPrefixlen?: pulumi.Input<number>;
+    defaultPrefixlen?: pulumi.Input<number>;
     /**
      * The per-project quota on the prefix space that can be
      * allocated from the subnetpool for project subnets. Changing this updates the
      * default quota of the existing subnetpool.
      */
-    readonly defaultQuota?: pulumi.Input<number>;
+    defaultQuota?: pulumi.Input<number>;
     /**
      * The human-readable description for the subnetpool.
      * Changing this updates the description of the existing subnetpool.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The IP protocol version.
      */
-    readonly ipVersion?: pulumi.Input<number>;
+    ipVersion?: pulumi.Input<number>;
     /**
      * Indicates whether the subnetpool is default
      * subnetpool or not. Changing this updates the default status of the existing
      * subnetpool.
      */
-    readonly isDefault?: pulumi.Input<boolean>;
+    isDefault?: pulumi.Input<boolean>;
     /**
      * The maximum prefix size that can be allocated from
      * the subnetpool. For IPv4 subnetpools, default is 32. For IPv6 subnetpools,
      * default is 128. Changing this updates the max prefixlen of the existing
      * subnetpool.
      */
-    readonly maxPrefixlen?: pulumi.Input<number>;
+    maxPrefixlen?: pulumi.Input<number>;
     /**
      * The smallest prefix that can be allocated from a
      * subnetpool. For IPv4 subnetpools, default is 8. For IPv6 subnetpools, default
      * is 64. Changing this updates the min prefixlen of the existing subnetpool.
      */
-    readonly minPrefixlen?: pulumi.Input<number>;
+    minPrefixlen?: pulumi.Input<number>;
     /**
      * The name of the subnetpool. Changing this updates the name of
      * the existing subnetpool.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * A list of subnet prefixes to assign to the subnetpool.
      * Neutron API merges adjacent prefixes and treats them as a single prefix. Each
@@ -317,41 +317,41 @@ export interface SubnetPoolState {
      * are associated with the address scope. Changing this updates the prefixes list
      * of the existing subnetpool.
      */
-    readonly prefixes?: pulumi.Input<pulumi.Input<string>[]>;
+    prefixes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The owner of the subnetpool. Required if admin wants to
      * create a subnetpool for another project. Changing this creates a new subnetpool.
      */
-    readonly projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a Neutron subnetpool. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * subnetpool.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The revision number of the subnetpool.
      */
-    readonly revisionNumber?: pulumi.Input<number>;
+    revisionNumber?: pulumi.Input<number>;
     /**
      * Indicates whether this subnetpool is shared across
      * all projects. Changing this updates the shared status of the existing
      * subnetpool.
      */
-    readonly shared?: pulumi.Input<boolean>;
+    shared?: pulumi.Input<boolean>;
     /**
      * A set of string tags for the subnetpool.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The time at which subnetpool was created.
      */
-    readonly updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string>;
     /**
      * Map of additional options.
      */
-    readonly valueSpecs?: pulumi.Input<{[key: string]: any}>;
+    valueSpecs?: pulumi.Input<{[key: string]: any}>;
 }
 
 /**
@@ -363,53 +363,53 @@ export interface SubnetPoolArgs {
      * subnetpool. Changing this updates the address scope id of the existing
      * subnetpool.
      */
-    readonly addressScopeId?: pulumi.Input<string>;
+    addressScopeId?: pulumi.Input<string>;
     /**
      * The size of the prefix to allocate when the cidr
      * or prefixlen attributes are omitted when you create the subnet. Defaults to the
      * MinPrefixLen. Changing this updates the default prefixlen of the existing
      * subnetpool.
      */
-    readonly defaultPrefixlen?: pulumi.Input<number>;
+    defaultPrefixlen?: pulumi.Input<number>;
     /**
      * The per-project quota on the prefix space that can be
      * allocated from the subnetpool for project subnets. Changing this updates the
      * default quota of the existing subnetpool.
      */
-    readonly defaultQuota?: pulumi.Input<number>;
+    defaultQuota?: pulumi.Input<number>;
     /**
      * The human-readable description for the subnetpool.
      * Changing this updates the description of the existing subnetpool.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The IP protocol version.
      */
-    readonly ipVersion?: pulumi.Input<number>;
+    ipVersion?: pulumi.Input<number>;
     /**
      * Indicates whether the subnetpool is default
      * subnetpool or not. Changing this updates the default status of the existing
      * subnetpool.
      */
-    readonly isDefault?: pulumi.Input<boolean>;
+    isDefault?: pulumi.Input<boolean>;
     /**
      * The maximum prefix size that can be allocated from
      * the subnetpool. For IPv4 subnetpools, default is 32. For IPv6 subnetpools,
      * default is 128. Changing this updates the max prefixlen of the existing
      * subnetpool.
      */
-    readonly maxPrefixlen?: pulumi.Input<number>;
+    maxPrefixlen?: pulumi.Input<number>;
     /**
      * The smallest prefix that can be allocated from a
      * subnetpool. For IPv4 subnetpools, default is 8. For IPv6 subnetpools, default
      * is 64. Changing this updates the min prefixlen of the existing subnetpool.
      */
-    readonly minPrefixlen?: pulumi.Input<number>;
+    minPrefixlen?: pulumi.Input<number>;
     /**
      * The name of the subnetpool. Changing this updates the name of
      * the existing subnetpool.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * A list of subnet prefixes to assign to the subnetpool.
      * Neutron API merges adjacent prefixes and treats them as a single prefix. Each
@@ -417,31 +417,31 @@ export interface SubnetPoolArgs {
      * are associated with the address scope. Changing this updates the prefixes list
      * of the existing subnetpool.
      */
-    readonly prefixes: pulumi.Input<pulumi.Input<string>[]>;
+    prefixes: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The owner of the subnetpool. Required if admin wants to
      * create a subnetpool for another project. Changing this creates a new subnetpool.
      */
-    readonly projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a Neutron subnetpool. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * subnetpool.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * Indicates whether this subnetpool is shared across
      * all projects. Changing this updates the shared status of the existing
      * subnetpool.
      */
-    readonly shared?: pulumi.Input<boolean>;
+    shared?: pulumi.Input<boolean>;
     /**
      * A set of string tags for the subnetpool.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Map of additional options.
      */
-    readonly valueSpecs?: pulumi.Input<{[key: string]: any}>;
+    valueSpecs?: pulumi.Input<{[key: string]: any}>;
 }

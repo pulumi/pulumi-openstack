@@ -123,24 +123,24 @@ export interface RoleAssignmentState {
     /**
      * The domain to assign the role in.
      */
-    readonly domainId?: pulumi.Input<string>;
+    domainId?: pulumi.Input<string>;
     /**
      * The group to assign the role to.
      */
-    readonly groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string>;
     /**
      * The project to assign the role in.
      */
-    readonly projectId?: pulumi.Input<string>;
-    readonly region?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The role to assign.
      */
-    readonly roleId?: pulumi.Input<string>;
+    roleId?: pulumi.Input<string>;
     /**
      * The user to assign the role to.
      */
-    readonly userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string>;
 }
 
 /**
@@ -150,22 +150,22 @@ export interface RoleAssignmentArgs {
     /**
      * The domain to assign the role in.
      */
-    readonly domainId?: pulumi.Input<string>;
+    domainId?: pulumi.Input<string>;
     /**
      * The group to assign the role to.
      */
-    readonly groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string>;
     /**
      * The project to assign the role in.
      */
-    readonly projectId?: pulumi.Input<string>;
-    readonly region?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The role to assign.
      */
-    readonly roleId: pulumi.Input<string>;
+    roleId: pulumi.Input<string>;
     /**
      * The user to assign the role to.
      */
-    readonly userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string>;
 }

@@ -107,15 +107,15 @@ export interface DatabaseState {
     /**
      * The ID for the database instance.
      */
-    readonly instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string>;
     /**
      * A unique name for the resource.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Openstack region resource is created in.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
 }
 
 /**
@@ -125,13 +125,13 @@ export interface DatabaseArgs {
     /**
      * The ID for the database instance.
      */
-    readonly instanceId: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
     /**
      * A unique name for the resource.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Openstack region resource is created in.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
 }

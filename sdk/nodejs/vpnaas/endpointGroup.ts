@@ -140,38 +140,38 @@ export interface EndpointGroupState {
      * The human-readable description for the group.
      * Changing this updates the description of the existing group.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * List of endpoints of the same type, for the endpoint group. The values will depend on the type.
      * Changing this creates a new group.
      */
-    readonly endpoints?: pulumi.Input<pulumi.Input<string>[]>;
+    endpoints?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The name of the group. Changing this updates the name of
      * the existing group.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create an endpoint group. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * group.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The owner of the group. Required if admin wants to
      * create an endpoint group for another project. Changing this creates a new group.
      */
-    readonly tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string>;
     /**
      * The type of the endpoints in the group. A valid value is subnet, cidr, network, router, or vlan.
      * Changing this creates a new group.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
     /**
      * Map of additional options.
      */
-    readonly valueSpecs?: pulumi.Input<{[key: string]: any}>;
+    valueSpecs?: pulumi.Input<{[key: string]: any}>;
 }
 
 /**
@@ -182,36 +182,36 @@ export interface EndpointGroupArgs {
      * The human-readable description for the group.
      * Changing this updates the description of the existing group.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * List of endpoints of the same type, for the endpoint group. The values will depend on the type.
      * Changing this creates a new group.
      */
-    readonly endpoints?: pulumi.Input<pulumi.Input<string>[]>;
+    endpoints?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The name of the group. Changing this updates the name of
      * the existing group.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create an endpoint group. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * group.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The owner of the group. Required if admin wants to
      * create an endpoint group for another project. Changing this creates a new group.
      */
-    readonly tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string>;
     /**
      * The type of the endpoints in the group. A valid value is subnet, cidr, network, router, or vlan.
      * Changing this creates a new group.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
     /**
      * Map of additional options.
      */
-    readonly valueSpecs?: pulumi.Input<{[key: string]: any}>;
+    valueSpecs?: pulumi.Input<{[key: string]: any}>;
 }

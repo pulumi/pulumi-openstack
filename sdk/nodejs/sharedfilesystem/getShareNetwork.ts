@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -16,7 +15,7 @@ import * as utilities from "../utilities";
  *
  * const sharenetwork1 = pulumi.output(openstack.sharedfilesystem.getShareNetwork({
  *     name: "sharenetwork_1",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getShareNetwork(args?: GetShareNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetShareNetworkResult> {
@@ -48,43 +47,43 @@ export interface GetShareNetworkArgs {
     /**
      * The human-readable description of the share network.
      */
-    readonly description?: string;
+    description?: string;
     /**
      * The IP version of the share network. Can either be 4 or 6.
      */
-    readonly ipVersion?: number;
+    ipVersion?: number;
     /**
      * The name of the share network.
      */
-    readonly name?: string;
+    name?: string;
     /**
      * The share network type. Can either be VLAN, VXLAN,
      * GRE, or flat.
      */
-    readonly networkType?: string;
+    networkType?: string;
     /**
      * The neutron network UUID of the share network.
      */
-    readonly neutronNetId?: string;
+    neutronNetId?: string;
     /**
      * The neutron subnet UUID of the share network.
      */
-    readonly neutronSubnetId?: string;
+    neutronSubnetId?: string;
     /**
      * The region in which to obtain the V2 Shared File System client.
      * A Shared File System client is needed to read a share network. If omitted, the
      * `region` argument of the provider is used.
      */
-    readonly region?: string;
+    region?: string;
     /**
      * The security service IDs associated with
      * the share network.
      */
-    readonly securityServiceId?: string;
+    securityServiceId?: string;
     /**
      * The share network segmentation ID.
      */
-    readonly segmentationId?: number;
+    segmentationId?: number;
 }
 
 /**
@@ -144,4 +143,54 @@ export interface GetShareNetworkResult {
      * See Argument Reference above.
      */
     readonly segmentationId: number;
+}
+
+export function getShareNetworkOutput(args?: GetShareNetworkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetShareNetworkResult> {
+    return pulumi.output(args).apply(a => getShareNetwork(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getShareNetwork.
+ */
+export interface GetShareNetworkOutputArgs {
+    /**
+     * The human-readable description of the share network.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The IP version of the share network. Can either be 4 or 6.
+     */
+    ipVersion?: pulumi.Input<number>;
+    /**
+     * The name of the share network.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The share network type. Can either be VLAN, VXLAN,
+     * GRE, or flat.
+     */
+    networkType?: pulumi.Input<string>;
+    /**
+     * The neutron network UUID of the share network.
+     */
+    neutronNetId?: pulumi.Input<string>;
+    /**
+     * The neutron subnet UUID of the share network.
+     */
+    neutronSubnetId?: pulumi.Input<string>;
+    /**
+     * The region in which to obtain the V2 Shared File System client.
+     * A Shared File System client is needed to read a share network. If omitted, the
+     * `region` argument of the provider is used.
+     */
+    region?: pulumi.Input<string>;
+    /**
+     * The security service IDs associated with
+     * the share network.
+     */
+    securityServiceId?: pulumi.Input<string>;
+    /**
+     * The share network segmentation ID.
+     */
+    segmentationId?: pulumi.Input<number>;
 }

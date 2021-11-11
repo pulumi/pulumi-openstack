@@ -4,6 +4,9 @@
 package identity
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -61,4 +64,67 @@ type LookupRoleResult struct {
 	Name string `pulumi:"name"`
 	// See Argument Reference above.
 	Region string `pulumi:"region"`
+}
+
+func LookupRoleOutput(ctx *pulumi.Context, args LookupRoleOutputArgs, opts ...pulumi.InvokeOption) LookupRoleResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupRoleResult, error) {
+			args := v.(LookupRoleArgs)
+			r, err := LookupRole(ctx, &args, opts...)
+			return *r, err
+		}).(LookupRoleResultOutput)
+}
+
+// A collection of arguments for invoking getRole.
+type LookupRoleOutputArgs struct {
+	// The domain the role belongs to.
+	DomainId pulumi.StringPtrInput `pulumi:"domainId"`
+	// The name of the role.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The region in which to obtain the V3 Keystone client.
+	// If omitted, the `region` argument of the provider is used.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+}
+
+func (LookupRoleOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupRoleArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getRole.
+type LookupRoleResultOutput struct{ *pulumi.OutputState }
+
+func (LookupRoleResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupRoleResult)(nil)).Elem()
+}
+
+func (o LookupRoleResultOutput) ToLookupRoleResultOutput() LookupRoleResultOutput {
+	return o
+}
+
+func (o LookupRoleResultOutput) ToLookupRoleResultOutputWithContext(ctx context.Context) LookupRoleResultOutput {
+	return o
+}
+
+// See Argument Reference above.
+func (o LookupRoleResultOutput) DomainId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRoleResult) string { return v.DomainId }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupRoleResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRoleResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// See Argument Reference above.
+func (o LookupRoleResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRoleResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// See Argument Reference above.
+func (o LookupRoleResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRoleResult) string { return v.Region }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupRoleResultOutput{})
 }

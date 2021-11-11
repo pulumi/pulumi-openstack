@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -18,7 +17,7 @@ import * as utilities from "../utilities";
  *
  * const endpoint1 = pulumi.output(openstack.identity.getEndpoint({
  *     serviceName: "demo",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getEndpoint(args?: GetEndpointArgs, opts?: pulumi.InvokeOptions): Promise<GetEndpointResult> {
@@ -49,33 +48,33 @@ export interface GetEndpointArgs {
      * The region the endpoint is assigned to. The
      * `region` and `endpointRegion` can be different.
      */
-    readonly endpointRegion?: string;
+    endpointRegion?: string;
     /**
      * The endpoint interface. Valid values are `public`,
      * `internal`, and `admin`. Default value is `public`
      */
-    readonly interface?: string;
+    interface?: string;
     /**
      * The name of the endpoint.
      */
-    readonly name?: string;
+    name?: string;
     /**
      * The region in which to obtain the V3 Keystone client.
      * If omitted, the `region` argument of the provider is used.
      */
-    readonly region?: string;
+    region?: string;
     /**
      * The service id this endpoint belongs to.
      */
-    readonly serviceId?: string;
+    serviceId?: string;
     /**
      * The service name of the endpoint.
      */
-    readonly serviceName?: string;
+    serviceName?: string;
     /**
      * The service type of the endpoint.
      */
-    readonly serviceType?: string;
+    serviceType?: string;
 }
 
 /**
@@ -118,4 +117,45 @@ export interface GetEndpointResult {
      * The endpoint URL.
      */
     readonly url: string;
+}
+
+export function getEndpointOutput(args?: GetEndpointOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEndpointResult> {
+    return pulumi.output(args).apply(a => getEndpoint(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getEndpoint.
+ */
+export interface GetEndpointOutputArgs {
+    /**
+     * The region the endpoint is assigned to. The
+     * `region` and `endpointRegion` can be different.
+     */
+    endpointRegion?: pulumi.Input<string>;
+    /**
+     * The endpoint interface. Valid values are `public`,
+     * `internal`, and `admin`. Default value is `public`
+     */
+    interface?: pulumi.Input<string>;
+    /**
+     * The name of the endpoint.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The region in which to obtain the V3 Keystone client.
+     * If omitted, the `region` argument of the provider is used.
+     */
+    region?: pulumi.Input<string>;
+    /**
+     * The service id this endpoint belongs to.
+     */
+    serviceId?: pulumi.Input<string>;
+    /**
+     * The service name of the endpoint.
+     */
+    serviceName?: pulumi.Input<string>;
+    /**
+     * The service type of the endpoint.
+     */
+    serviceType?: pulumi.Input<string>;
 }

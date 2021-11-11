@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -17,7 +16,7 @@ import * as utilities from "../utilities";
  *
  * const ports = pulumi.output(openstack.networking.getPortIds({
  *     name: "port",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getPortIds(args?: GetPortIdsArgs, opts?: pulumi.InvokeOptions): Promise<GetPortIdsResult> {
@@ -57,68 +56,68 @@ export interface GetPortIdsArgs {
     /**
      * The administrative state of the port.
      */
-    readonly adminStateUp?: boolean;
+    adminStateUp?: boolean;
     /**
      * Human-readable description of the port.
      */
-    readonly description?: string;
+    description?: string;
     /**
      * The ID of the device the port belongs to.
      */
-    readonly deviceId?: string;
+    deviceId?: string;
     /**
      * The device owner of the port.
      */
-    readonly deviceOwner?: string;
-    readonly dnsName?: string;
+    deviceOwner?: string;
+    dnsName?: string;
     /**
      * The port IP address filter.
      */
-    readonly fixedIp?: string;
+    fixedIp?: string;
     /**
      * The MAC address of the port.
      */
-    readonly macAddress?: string;
+    macAddress?: string;
     /**
      * The name of the port.
      */
-    readonly name?: string;
+    name?: string;
     /**
      * The ID of the network the port belongs to.
      */
-    readonly networkId?: string;
+    networkId?: string;
     /**
      * The owner of the port.
      */
-    readonly projectId?: string;
+    projectId?: string;
     /**
      * The region in which to obtain the V2 Neutron client.
      * A Neutron client is needed to retrieve port ids. If omitted, the
      * `region` argument of the provider is used.
      */
-    readonly region?: string;
+    region?: string;
     /**
      * The list of port security group IDs to filter.
      */
-    readonly securityGroupIds?: string[];
+    securityGroupIds?: string[];
     /**
      * Order the results in either `asc` or `desc`.
      * Defaults to none.
      */
-    readonly sortDirection?: string;
+    sortDirection?: string;
     /**
      * Sort ports based on a certain key. Defaults to none.
      */
-    readonly sortKey?: string;
+    sortKey?: string;
     /**
      * The status of the port.
      */
-    readonly status?: string;
+    status?: string;
     /**
      * The list of port tags to filter.
      */
-    readonly tags?: string[];
-    readonly tenantId?: string;
+    tags?: string[];
+    tenantId?: string;
 }
 
 /**
@@ -147,4 +146,79 @@ export interface GetPortIdsResult {
     readonly status?: string;
     readonly tags?: string[];
     readonly tenantId?: string;
+}
+
+export function getPortIdsOutput(args?: GetPortIdsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPortIdsResult> {
+    return pulumi.output(args).apply(a => getPortIds(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getPortIds.
+ */
+export interface GetPortIdsOutputArgs {
+    /**
+     * The administrative state of the port.
+     */
+    adminStateUp?: pulumi.Input<boolean>;
+    /**
+     * Human-readable description of the port.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The ID of the device the port belongs to.
+     */
+    deviceId?: pulumi.Input<string>;
+    /**
+     * The device owner of the port.
+     */
+    deviceOwner?: pulumi.Input<string>;
+    dnsName?: pulumi.Input<string>;
+    /**
+     * The port IP address filter.
+     */
+    fixedIp?: pulumi.Input<string>;
+    /**
+     * The MAC address of the port.
+     */
+    macAddress?: pulumi.Input<string>;
+    /**
+     * The name of the port.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The ID of the network the port belongs to.
+     */
+    networkId?: pulumi.Input<string>;
+    /**
+     * The owner of the port.
+     */
+    projectId?: pulumi.Input<string>;
+    /**
+     * The region in which to obtain the V2 Neutron client.
+     * A Neutron client is needed to retrieve port ids. If omitted, the
+     * `region` argument of the provider is used.
+     */
+    region?: pulumi.Input<string>;
+    /**
+     * The list of port security group IDs to filter.
+     */
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Order the results in either `asc` or `desc`.
+     * Defaults to none.
+     */
+    sortDirection?: pulumi.Input<string>;
+    /**
+     * Sort ports based on a certain key. Defaults to none.
+     */
+    sortKey?: pulumi.Input<string>;
+    /**
+     * The status of the port.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * The list of port tags to filter.
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tenantId?: pulumi.Input<string>;
 }

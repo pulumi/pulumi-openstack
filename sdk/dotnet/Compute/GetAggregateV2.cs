@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.OpenStack.Compute
 {
@@ -40,6 +41,36 @@ namespace Pulumi.OpenStack.Compute
         /// </summary>
         public static Task<GetAggregateV2Result> InvokeAsync(GetAggregateV2Args args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAggregateV2Result>("openstack:compute/getAggregateV2:getAggregateV2", args ?? new GetAggregateV2Args(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to get information about host aggregates
+        /// by name.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var test = Output.Create(OpenStack.Compute.GetAggregateV2.InvokeAsync(new OpenStack.Compute.GetAggregateV2Args
+        ///         {
+        ///             Name = "test",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetAggregateV2Result> Invoke(GetAggregateV2InvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAggregateV2Result>("openstack:compute/getAggregateV2:getAggregateV2", args ?? new GetAggregateV2InvokeArgs(), options.WithVersion());
     }
 
 
@@ -76,6 +107,43 @@ namespace Pulumi.OpenStack.Compute
         public string Name { get; set; } = null!;
 
         public GetAggregateV2Args()
+        {
+        }
+    }
+
+    public sealed class GetAggregateV2InvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("hosts")]
+        private InputList<string>? _hosts;
+
+        /// <summary>
+        /// List of Hypervisors contained in the Host Aggregate
+        /// </summary>
+        public InputList<string> Hosts
+        {
+            get => _hosts ?? (_hosts = new InputList<string>());
+            set => _hosts = value;
+        }
+
+        [Input("metadata")]
+        private InputMap<string>? _metadata;
+
+        /// <summary>
+        /// Metadata of the Host Aggregate
+        /// </summary>
+        public InputMap<string> Metadata
+        {
+            get => _metadata ?? (_metadata = new InputMap<string>());
+            set => _metadata = value;
+        }
+
+        /// <summary>
+        /// The name of the host aggregate
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        public GetAggregateV2InvokeArgs()
         {
         }
     }

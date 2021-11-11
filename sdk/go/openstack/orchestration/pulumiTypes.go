@@ -120,6 +120,8 @@ func (o StackV1StackOutputArrayOutput) Index(i pulumi.IntInput) StackV1StackOutp
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*StackV1StackOutputInput)(nil)).Elem(), StackV1StackOutputArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StackV1StackOutputArrayInput)(nil)).Elem(), StackV1StackOutputArray{})
 	pulumi.RegisterOutputType(StackV1StackOutputOutput{})
 	pulumi.RegisterOutputType(StackV1StackOutputArrayOutput{})
 }

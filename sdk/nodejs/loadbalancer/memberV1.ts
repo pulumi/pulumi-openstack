@@ -145,36 +145,36 @@ export interface MemberV1State {
      * The IP address of the member. Changing this creates a
      * new member.
      */
-    readonly address?: pulumi.Input<string>;
+    address?: pulumi.Input<string>;
     /**
      * The administrative state of the member.
      * Acceptable values are 'true' and 'false'. Changing this value updates the
      * state of the existing member.
      */
-    readonly adminStateUp?: pulumi.Input<boolean>;
+    adminStateUp?: pulumi.Input<boolean>;
     /**
      * The ID of the LB pool. Changing this creates a new
      * member.
      */
-    readonly poolId?: pulumi.Input<string>;
+    poolId?: pulumi.Input<string>;
     /**
      * An integer representing the port on which the member is
      * hosted. Changing this creates a new member.
      */
-    readonly port?: pulumi.Input<number>;
+    port?: pulumi.Input<number>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create an LB member. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * LB member.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The owner of the member. Required if admin wants to
      * create a member for another tenant. Changing this creates a new member.
      */
-    readonly tenantId?: pulumi.Input<string>;
-    readonly weight?: pulumi.Input<number>;
+    tenantId?: pulumi.Input<string>;
+    weight?: pulumi.Input<number>;
 }
 
 /**
@@ -185,34 +185,34 @@ export interface MemberV1Args {
      * The IP address of the member. Changing this creates a
      * new member.
      */
-    readonly address: pulumi.Input<string>;
+    address: pulumi.Input<string>;
     /**
      * The administrative state of the member.
      * Acceptable values are 'true' and 'false'. Changing this value updates the
      * state of the existing member.
      */
-    readonly adminStateUp?: pulumi.Input<boolean>;
+    adminStateUp?: pulumi.Input<boolean>;
     /**
      * The ID of the LB pool. Changing this creates a new
      * member.
      */
-    readonly poolId: pulumi.Input<string>;
+    poolId: pulumi.Input<string>;
     /**
      * An integer representing the port on which the member is
      * hosted. Changing this creates a new member.
      */
-    readonly port: pulumi.Input<number>;
+    port: pulumi.Input<number>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create an LB member. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * LB member.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The owner of the member. Required if admin wants to
      * create a member for another tenant. Changing this creates a new member.
      */
-    readonly tenantId?: pulumi.Input<string>;
-    readonly weight?: pulumi.Input<number>;
+    tenantId?: pulumi.Input<string>;
+    weight?: pulumi.Input<number>;
 }

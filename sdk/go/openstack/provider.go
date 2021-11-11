@@ -16,6 +16,52 @@ import (
 // [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
 type Provider struct {
 	pulumi.ProviderResourceState
+
+	// Application Credential ID to login with.
+	ApplicationCredentialId pulumi.StringPtrOutput `pulumi:"applicationCredentialId"`
+	// Application Credential name to login with.
+	ApplicationCredentialName pulumi.StringPtrOutput `pulumi:"applicationCredentialName"`
+	// Application Credential secret to login with.
+	ApplicationCredentialSecret pulumi.StringPtrOutput `pulumi:"applicationCredentialSecret"`
+	// The Identity authentication URL.
+	AuthUrl pulumi.StringPtrOutput `pulumi:"authUrl"`
+	// A Custom CA certificate.
+	CacertFile pulumi.StringPtrOutput `pulumi:"cacertFile"`
+	// A client certificate to authenticate with.
+	Cert pulumi.StringPtrOutput `pulumi:"cert"`
+	// An entry in a `clouds.yaml` file to use.
+	Cloud pulumi.StringPtrOutput `pulumi:"cloud"`
+	// The name of the Domain ID to scope to if no other domain is specified. Defaults to `default` (Identity v3).
+	DefaultDomain pulumi.StringPtrOutput `pulumi:"defaultDomain"`
+	// The ID of the Domain to scope to (Identity v3).
+	DomainId pulumi.StringPtrOutput `pulumi:"domainId"`
+	// The name of the Domain to scope to (Identity v3).
+	DomainName   pulumi.StringPtrOutput `pulumi:"domainName"`
+	EndpointType pulumi.StringPtrOutput `pulumi:"endpointType"`
+	// A client private key to authenticate with.
+	Key pulumi.StringPtrOutput `pulumi:"key"`
+	// Password to login with.
+	Password pulumi.StringPtrOutput `pulumi:"password"`
+	// The ID of the domain where the proejct resides (Identity v3).
+	ProjectDomainId pulumi.StringPtrOutput `pulumi:"projectDomainId"`
+	// The name of the domain where the project resides (Identity v3).
+	ProjectDomainName pulumi.StringPtrOutput `pulumi:"projectDomainName"`
+	// The OpenStack region to connect to.
+	Region pulumi.StringPtrOutput `pulumi:"region"`
+	// The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.
+	TenantId pulumi.StringPtrOutput `pulumi:"tenantId"`
+	// The name of the Tenant (Identity v2) or Project (Identity v3) to login with.
+	TenantName pulumi.StringPtrOutput `pulumi:"tenantName"`
+	// Authentication token to use as an alternative to username/password.
+	Token pulumi.StringPtrOutput `pulumi:"token"`
+	// The ID of the domain where the user resides (Identity v3).
+	UserDomainId pulumi.StringPtrOutput `pulumi:"userDomainId"`
+	// The name of the domain where the user resides (Identity v3).
+	UserDomainName pulumi.StringPtrOutput `pulumi:"userDomainName"`
+	// Username to login with.
+	UserId pulumi.StringPtrOutput `pulumi:"userId"`
+	// Username to login with.
+	UserName pulumi.StringPtrOutput `pulumi:"userName"`
 }
 
 // NewProvider registers a new resource with the given unique name, arguments, and options.
@@ -242,9 +288,7 @@ func (i *providerPtrType) ToProviderPtrOutputWithContext(ctx context.Context) Pr
 	return pulumi.ToOutputWithContext(ctx, i).(ProviderPtrOutput)
 }
 
-type ProviderOutput struct {
-	*pulumi.OutputState
-}
+type ProviderOutput struct{ *pulumi.OutputState }
 
 func (ProviderOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Provider)(nil))
@@ -263,14 +307,12 @@ func (o ProviderOutput) ToProviderPtrOutput() ProviderPtrOutput {
 }
 
 func (o ProviderOutput) ToProviderPtrOutputWithContext(ctx context.Context) ProviderPtrOutput {
-	return o.ApplyT(func(v Provider) *Provider {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Provider) *Provider {
 		return &v
 	}).(ProviderPtrOutput)
 }
 
-type ProviderPtrOutput struct {
-	*pulumi.OutputState
-}
+type ProviderPtrOutput struct{ *pulumi.OutputState }
 
 func (ProviderPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Provider)(nil))
@@ -284,7 +326,19 @@ func (o ProviderPtrOutput) ToProviderPtrOutputWithContext(ctx context.Context) P
 	return o
 }
 
+func (o ProviderPtrOutput) Elem() ProviderOutput {
+	return o.ApplyT(func(v *Provider) Provider {
+		if v != nil {
+			return *v
+		}
+		var ret Provider
+		return ret
+	}).(ProviderOutput)
+}
+
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ProviderInput)(nil)).Elem(), &Provider{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProviderPtrInput)(nil)).Elem(), &Provider{})
 	pulumi.RegisterOutputType(ProviderOutput{})
 	pulumi.RegisterOutputType(ProviderPtrOutput{})
 }

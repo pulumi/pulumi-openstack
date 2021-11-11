@@ -12,6 +12,7 @@ __all__ = [
     'GetSecGroupResult',
     'AwaitableGetSecGroupResult',
     'get_sec_group',
+    'get_sec_group_output',
 ]
 
 @pulumi.output_type
@@ -166,3 +167,36 @@ def get_sec_group(description: Optional[str] = None,
         secgroup_id=__ret__.secgroup_id,
         tags=__ret__.tags,
         tenant_id=__ret__.tenant_id)
+
+
+@_utilities.lift_output_func(get_sec_group)
+def get_sec_group_output(description: Optional[pulumi.Input[Optional[str]]] = None,
+                         name: Optional[pulumi.Input[Optional[str]]] = None,
+                         region: Optional[pulumi.Input[Optional[str]]] = None,
+                         secgroup_id: Optional[pulumi.Input[Optional[str]]] = None,
+                         tags: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                         tenant_id: Optional[pulumi.Input[Optional[str]]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSecGroupResult]:
+    """
+    Use this data source to get the ID of an available OpenStack security group.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    secgroup = openstack.networking.get_sec_group(name="tf_test_secgroup")
+    ```
+
+
+    :param str description: Human-readable description the the subnet.
+    :param str name: The name of the security group.
+    :param str region: The region in which to obtain the V2 Neutron client.
+           A Neutron client is needed to retrieve security groups ids. If omitted, the
+           `region` argument of the provider is used.
+    :param str secgroup_id: The ID of the security group.
+    :param Sequence[str] tags: The list of security group tags to filter.
+    :param str tenant_id: The owner of the security group.
+    """
+    ...

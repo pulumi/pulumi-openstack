@@ -219,29 +219,29 @@ export interface RouterState {
      * (must be "true" or "false" if provided). Changing this updates the
      * `adminStateUp` of an existing router.
      */
-    readonly adminStateUp?: pulumi.Input<boolean>;
+    adminStateUp?: pulumi.Input<boolean>;
     /**
      * The collection of tags assigned on the router, which have been
      * explicitly and implicitly added.
      */
-    readonly allTags?: pulumi.Input<pulumi.Input<string>[]>;
+    allTags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * An availability zone is used to make 
      * network resources highly available. Used for resources with high availability
      * so that they are scheduled on different availability zones. Changing this
      * creates a new router.
      */
-    readonly availabilityZoneHints?: pulumi.Input<pulumi.Input<string>[]>;
+    availabilityZoneHints?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Human-readable description for the router.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Indicates whether or not to create a
      * distributed router. The default policy setting in Neutron restricts
      * usage of this property to administrative users only.
      */
-    readonly distributed?: pulumi.Input<boolean>;
+    distributed?: pulumi.Input<boolean>;
     /**
      * Enable Source NAT for the router. Valid values are
      * "true" or "false". An `externalNetworkId` has to be set in order to
@@ -249,14 +249,14 @@ export interface RouterState {
      * Setting this value **requires** an **ext-gw-mode** extension to be enabled
      * in OpenStack Neutron.
      */
-    readonly enableSnat?: pulumi.Input<boolean>;
+    enableSnat?: pulumi.Input<boolean>;
     /**
      * An external fixed IP for the router. This
      * can be repeated. The structure is described below. An `externalNetworkId`
      * has to be set in order to set this property. Changing this updates the
      * external fixed IPs of the router.
      */
-    readonly externalFixedIps?: pulumi.Input<pulumi.Input<inputs.networking.RouterExternalFixedIp>[]>;
+    externalFixedIps?: pulumi.Input<pulumi.Input<inputs.networking.RouterExternalFixedIp>[]>;
     /**
      * The
      * network UUID of an external gateway for the router. A router with an
@@ -266,14 +266,14 @@ export interface RouterState {
      *
      * @deprecated use external_network_id instead
      */
-    readonly externalGateway?: pulumi.Input<string>;
+    externalGateway?: pulumi.Input<string>;
     /**
      * The network UUID of an external gateway
      * for the router. A router with an external gateway is required if any
      * compute instances or load balancers will be using floating IPs. Changing
      * this updates the external gateway of the router.
      */
-    readonly externalNetworkId?: pulumi.Input<string>;
+    externalNetworkId?: pulumi.Input<string>;
     /**
      * A list of external subnet IDs to try over
      * each to obtain a fixed IP for the router. If a subnet ID in a list has
@@ -281,37 +281,37 @@ export interface RouterState {
      * used only during the router creation and allows to set only one external fixed
      * IP. Conflicts with an `externalFixedIp` argument.
      */
-    readonly externalSubnetIds?: pulumi.Input<pulumi.Input<string>[]>;
+    externalSubnetIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A unique name for the router. Changing this
      * updates the `name` of an existing router.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 networking client.
      * A networking client is needed to create a router. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * router.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * A set of string tags for the router.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The owner of the floating IP. Required if admin wants
      * to create a router for another tenant. Changing this creates a new router.
      */
-    readonly tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string>;
     /**
      * Map of additional driver-specific options.
      */
-    readonly valueSpecs?: pulumi.Input<{[key: string]: any}>;
+    valueSpecs?: pulumi.Input<{[key: string]: any}>;
     /**
      * Map of additional vendor-specific options.
      * Supported options are described below.
      */
-    readonly vendorOptions?: pulumi.Input<inputs.networking.RouterVendorOptions>;
+    vendorOptions?: pulumi.Input<inputs.networking.RouterVendorOptions>;
 }
 
 /**
@@ -323,24 +323,24 @@ export interface RouterArgs {
      * (must be "true" or "false" if provided). Changing this updates the
      * `adminStateUp` of an existing router.
      */
-    readonly adminStateUp?: pulumi.Input<boolean>;
+    adminStateUp?: pulumi.Input<boolean>;
     /**
      * An availability zone is used to make 
      * network resources highly available. Used for resources with high availability
      * so that they are scheduled on different availability zones. Changing this
      * creates a new router.
      */
-    readonly availabilityZoneHints?: pulumi.Input<pulumi.Input<string>[]>;
+    availabilityZoneHints?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Human-readable description for the router.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Indicates whether or not to create a
      * distributed router. The default policy setting in Neutron restricts
      * usage of this property to administrative users only.
      */
-    readonly distributed?: pulumi.Input<boolean>;
+    distributed?: pulumi.Input<boolean>;
     /**
      * Enable Source NAT for the router. Valid values are
      * "true" or "false". An `externalNetworkId` has to be set in order to
@@ -348,14 +348,14 @@ export interface RouterArgs {
      * Setting this value **requires** an **ext-gw-mode** extension to be enabled
      * in OpenStack Neutron.
      */
-    readonly enableSnat?: pulumi.Input<boolean>;
+    enableSnat?: pulumi.Input<boolean>;
     /**
      * An external fixed IP for the router. This
      * can be repeated. The structure is described below. An `externalNetworkId`
      * has to be set in order to set this property. Changing this updates the
      * external fixed IPs of the router.
      */
-    readonly externalFixedIps?: pulumi.Input<pulumi.Input<inputs.networking.RouterExternalFixedIp>[]>;
+    externalFixedIps?: pulumi.Input<pulumi.Input<inputs.networking.RouterExternalFixedIp>[]>;
     /**
      * The
      * network UUID of an external gateway for the router. A router with an
@@ -365,14 +365,14 @@ export interface RouterArgs {
      *
      * @deprecated use external_network_id instead
      */
-    readonly externalGateway?: pulumi.Input<string>;
+    externalGateway?: pulumi.Input<string>;
     /**
      * The network UUID of an external gateway
      * for the router. A router with an external gateway is required if any
      * compute instances or load balancers will be using floating IPs. Changing
      * this updates the external gateway of the router.
      */
-    readonly externalNetworkId?: pulumi.Input<string>;
+    externalNetworkId?: pulumi.Input<string>;
     /**
      * A list of external subnet IDs to try over
      * each to obtain a fixed IP for the router. If a subnet ID in a list has
@@ -380,35 +380,35 @@ export interface RouterArgs {
      * used only during the router creation and allows to set only one external fixed
      * IP. Conflicts with an `externalFixedIp` argument.
      */
-    readonly externalSubnetIds?: pulumi.Input<pulumi.Input<string>[]>;
+    externalSubnetIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A unique name for the router. Changing this
      * updates the `name` of an existing router.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 networking client.
      * A networking client is needed to create a router. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * router.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * A set of string tags for the router.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The owner of the floating IP. Required if admin wants
      * to create a router for another tenant. Changing this creates a new router.
      */
-    readonly tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string>;
     /**
      * Map of additional driver-specific options.
      */
-    readonly valueSpecs?: pulumi.Input<{[key: string]: any}>;
+    valueSpecs?: pulumi.Input<{[key: string]: any}>;
     /**
      * Map of additional vendor-specific options.
      * Supported options are described below.
      */
-    readonly vendorOptions?: pulumi.Input<inputs.networking.RouterVendorOptions>;
+    vendorOptions?: pulumi.Input<inputs.networking.RouterVendorOptions>;
 }

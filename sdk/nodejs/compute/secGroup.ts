@@ -169,26 +169,26 @@ export interface SecGroupState {
      * A description for the security group. Changing this
      * updates the `description` of an existing security group.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * A unique name for the security group. Changing this
      * updates the `name` of an existing security group.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 Compute client.
      * A Compute client is needed to create a security group. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * security group.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * A rule describing how the security group operates. The
      * rule object structure is documented below. Changing this updates the
      * security group rules. As shown in the example above, multiple rule blocks
      * may be used.
      */
-    readonly rules?: pulumi.Input<pulumi.Input<inputs.compute.SecGroupRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.compute.SecGroupRule>[]>;
 }
 
 /**
@@ -199,24 +199,24 @@ export interface SecGroupArgs {
      * A description for the security group. Changing this
      * updates the `description` of an existing security group.
      */
-    readonly description: pulumi.Input<string>;
+    description: pulumi.Input<string>;
     /**
      * A unique name for the security group. Changing this
      * updates the `name` of an existing security group.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 Compute client.
      * A Compute client is needed to create a security group. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * security group.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * A rule describing how the security group operates. The
      * rule object structure is documented below. Changing this updates the
      * security group rules. As shown in the example above, multiple rule blocks
      * may be used.
      */
-    readonly rules?: pulumi.Input<pulumi.Input<inputs.compute.SecGroupRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.compute.SecGroupRule>[]>;
 }

@@ -242,95 +242,95 @@ export interface SiteConnectionState {
      * The administrative state of the resource. Can either be up(true) or down(false).
      * Changing this updates the administrative state of the existing connection.
      */
-    readonly adminStateUp?: pulumi.Input<boolean>;
+    adminStateUp?: pulumi.Input<boolean>;
     /**
      * The human-readable description for the connection.
      * Changing this updates the description of the existing connection.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * A dictionary with dead peer detection (DPD) protocol controls.
      */
-    readonly dpds?: pulumi.Input<pulumi.Input<inputs.vpnaas.SiteConnectionDpd>[]>;
+    dpds?: pulumi.Input<pulumi.Input<inputs.vpnaas.SiteConnectionDpd>[]>;
     /**
      * The ID of the IKE policy. Changing this creates a new connection.
      */
-    readonly ikepolicyId?: pulumi.Input<string>;
+    ikepolicyId?: pulumi.Input<string>;
     /**
      * A valid value is response-only or bi-directional. Default is bi-directional.
      */
-    readonly initiator?: pulumi.Input<string>;
+    initiator?: pulumi.Input<string>;
     /**
      * The ID of the IPsec policy. Changing this creates a new connection.
      */
-    readonly ipsecpolicyId?: pulumi.Input<string>;
+    ipsecpolicyId?: pulumi.Input<string>;
     /**
      * The ID for the endpoint group that contains private subnets for the local side of the connection.
      * You must specify this parameter with the peerEpGroupId parameter unless
      * in backward- compatible mode where peerCidrs is provided with a subnetId for the VPN service.
      * Changing this updates the existing connection.
      */
-    readonly localEpGroupId?: pulumi.Input<string>;
+    localEpGroupId?: pulumi.Input<string>;
     /**
      * An ID to be used instead of the external IP address for a virtual router used in traffic between instances on different networks in east-west traffic.
      * Most often, local ID would be domain name, email address, etc.
      * If this is not configured then the external IP address will be used as the ID.
      */
-    readonly localId?: pulumi.Input<string>;
+    localId?: pulumi.Input<string>;
     /**
      * The maximum transmission unit (MTU) value to address fragmentation.
      * Minimum value is 68 for IPv4, and 1280 for IPv6.
      */
-    readonly mtu?: pulumi.Input<number>;
+    mtu?: pulumi.Input<number>;
     /**
      * The name of the connection. Changing this updates the name of
      * the existing connection.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The peer gateway public IPv4 or IPv6 address or FQDN.
      */
-    readonly peerAddress?: pulumi.Input<string>;
+    peerAddress?: pulumi.Input<string>;
     /**
      * Unique list of valid peer private CIDRs in the form < netAddress > / < prefix > .
      */
-    readonly peerCidrs?: pulumi.Input<pulumi.Input<string>[]>;
+    peerCidrs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID for the endpoint group that contains private CIDRs in the form < netAddress > / < prefix > for the peer side of the connection.
      * You must specify this parameter with the localEpGroupId parameter unless in backward-compatible mode
      * where peerCidrs is provided with a subnetId for the VPN service.
      */
-    readonly peerEpGroupId?: pulumi.Input<string>;
+    peerEpGroupId?: pulumi.Input<string>;
     /**
      * The peer router identity for authentication. A valid value is an IPv4 address, IPv6 address, e-mail address, key ID, or FQDN.
      * Typically, this value matches the peerAddress value.
      * Changing this updates the existing policy.
      */
-    readonly peerId?: pulumi.Input<string>;
+    peerId?: pulumi.Input<string>;
     /**
      * The pre-shared key. A valid value is any string.
      */
-    readonly psk?: pulumi.Input<string>;
+    psk?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create an IPSec site connection. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * site connection.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The owner of the connection. Required if admin wants to
      * create a connection for another project. Changing this creates a new connection.
      */
-    readonly tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string>;
     /**
      * Map of additional options.
      */
-    readonly valueSpecs?: pulumi.Input<{[key: string]: any}>;
+    valueSpecs?: pulumi.Input<{[key: string]: any}>;
     /**
      * The ID of the VPN service. Changing this creates a new connection.
      */
-    readonly vpnserviceId?: pulumi.Input<string>;
+    vpnserviceId?: pulumi.Input<string>;
 }
 
 /**
@@ -341,93 +341,93 @@ export interface SiteConnectionArgs {
      * The administrative state of the resource. Can either be up(true) or down(false).
      * Changing this updates the administrative state of the existing connection.
      */
-    readonly adminStateUp?: pulumi.Input<boolean>;
+    adminStateUp?: pulumi.Input<boolean>;
     /**
      * The human-readable description for the connection.
      * Changing this updates the description of the existing connection.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * A dictionary with dead peer detection (DPD) protocol controls.
      */
-    readonly dpds?: pulumi.Input<pulumi.Input<inputs.vpnaas.SiteConnectionDpd>[]>;
+    dpds?: pulumi.Input<pulumi.Input<inputs.vpnaas.SiteConnectionDpd>[]>;
     /**
      * The ID of the IKE policy. Changing this creates a new connection.
      */
-    readonly ikepolicyId: pulumi.Input<string>;
+    ikepolicyId: pulumi.Input<string>;
     /**
      * A valid value is response-only or bi-directional. Default is bi-directional.
      */
-    readonly initiator?: pulumi.Input<string>;
+    initiator?: pulumi.Input<string>;
     /**
      * The ID of the IPsec policy. Changing this creates a new connection.
      */
-    readonly ipsecpolicyId: pulumi.Input<string>;
+    ipsecpolicyId: pulumi.Input<string>;
     /**
      * The ID for the endpoint group that contains private subnets for the local side of the connection.
      * You must specify this parameter with the peerEpGroupId parameter unless
      * in backward- compatible mode where peerCidrs is provided with a subnetId for the VPN service.
      * Changing this updates the existing connection.
      */
-    readonly localEpGroupId?: pulumi.Input<string>;
+    localEpGroupId?: pulumi.Input<string>;
     /**
      * An ID to be used instead of the external IP address for a virtual router used in traffic between instances on different networks in east-west traffic.
      * Most often, local ID would be domain name, email address, etc.
      * If this is not configured then the external IP address will be used as the ID.
      */
-    readonly localId?: pulumi.Input<string>;
+    localId?: pulumi.Input<string>;
     /**
      * The maximum transmission unit (MTU) value to address fragmentation.
      * Minimum value is 68 for IPv4, and 1280 for IPv6.
      */
-    readonly mtu?: pulumi.Input<number>;
+    mtu?: pulumi.Input<number>;
     /**
      * The name of the connection. Changing this updates the name of
      * the existing connection.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The peer gateway public IPv4 or IPv6 address or FQDN.
      */
-    readonly peerAddress: pulumi.Input<string>;
+    peerAddress: pulumi.Input<string>;
     /**
      * Unique list of valid peer private CIDRs in the form < netAddress > / < prefix > .
      */
-    readonly peerCidrs?: pulumi.Input<pulumi.Input<string>[]>;
+    peerCidrs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID for the endpoint group that contains private CIDRs in the form < netAddress > / < prefix > for the peer side of the connection.
      * You must specify this parameter with the localEpGroupId parameter unless in backward-compatible mode
      * where peerCidrs is provided with a subnetId for the VPN service.
      */
-    readonly peerEpGroupId?: pulumi.Input<string>;
+    peerEpGroupId?: pulumi.Input<string>;
     /**
      * The peer router identity for authentication. A valid value is an IPv4 address, IPv6 address, e-mail address, key ID, or FQDN.
      * Typically, this value matches the peerAddress value.
      * Changing this updates the existing policy.
      */
-    readonly peerId: pulumi.Input<string>;
+    peerId: pulumi.Input<string>;
     /**
      * The pre-shared key. A valid value is any string.
      */
-    readonly psk: pulumi.Input<string>;
+    psk: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create an IPSec site connection. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * site connection.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The owner of the connection. Required if admin wants to
      * create a connection for another project. Changing this creates a new connection.
      */
-    readonly tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string>;
     /**
      * Map of additional options.
      */
-    readonly valueSpecs?: pulumi.Input<{[key: string]: any}>;
+    valueSpecs?: pulumi.Input<{[key: string]: any}>;
     /**
      * The ID of the VPN service. Changing this creates a new connection.
      */
-    readonly vpnserviceId: pulumi.Input<string>;
+    vpnserviceId: pulumi.Input<string>;
 }

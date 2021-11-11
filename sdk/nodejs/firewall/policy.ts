@@ -166,30 +166,30 @@ export interface PolicyState {
      * rules are changed. Changing this updates the `audited` status of an existing
      * firewall policy.
      */
-    readonly audited?: pulumi.Input<boolean>;
+    audited?: pulumi.Input<boolean>;
     /**
      * A description for the firewall policy. Changing
      * this updates the `description` of an existing firewall policy.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * A name for the firewall policy. Changing this
      * updates the `name` of an existing firewall policy.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The region in which to obtain the v1 networking client.
      * A networking client is needed to create a firewall policy. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * firewall policy.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * An array of one or more firewall rules that comprise
      * the policy. Changing this results in adding/removing rules from the
      * existing firewall policy.
      */
-    readonly rules?: pulumi.Input<pulumi.Input<string>[]>;
+    rules?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Sharing status of the firewall policy (must be "true"
      * or "false" if provided). If this is "true" the policy is visible to, and
@@ -197,12 +197,12 @@ export interface PolicyState {
      * `shared` status of an existing firewall policy. Only administrative users
      * can specify if the policy should be shared.
      */
-    readonly shared?: pulumi.Input<boolean>;
-    readonly tenantId?: pulumi.Input<string>;
+    shared?: pulumi.Input<boolean>;
+    tenantId?: pulumi.Input<string>;
     /**
      * Map of additional options.
      */
-    readonly valueSpecs?: pulumi.Input<{[key: string]: any}>;
+    valueSpecs?: pulumi.Input<{[key: string]: any}>;
 }
 
 /**
@@ -216,30 +216,30 @@ export interface PolicyArgs {
      * rules are changed. Changing this updates the `audited` status of an existing
      * firewall policy.
      */
-    readonly audited?: pulumi.Input<boolean>;
+    audited?: pulumi.Input<boolean>;
     /**
      * A description for the firewall policy. Changing
      * this updates the `description` of an existing firewall policy.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * A name for the firewall policy. Changing this
      * updates the `name` of an existing firewall policy.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The region in which to obtain the v1 networking client.
      * A networking client is needed to create a firewall policy. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * firewall policy.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * An array of one or more firewall rules that comprise
      * the policy. Changing this results in adding/removing rules from the
      * existing firewall policy.
      */
-    readonly rules?: pulumi.Input<pulumi.Input<string>[]>;
+    rules?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Sharing status of the firewall policy (must be "true"
      * or "false" if provided). If this is "true" the policy is visible to, and
@@ -247,10 +247,10 @@ export interface PolicyArgs {
      * `shared` status of an existing firewall policy. Only administrative users
      * can specify if the policy should be shared.
      */
-    readonly shared?: pulumi.Input<boolean>;
-    readonly tenantId?: pulumi.Input<string>;
+    shared?: pulumi.Input<boolean>;
+    tenantId?: pulumi.Input<string>;
     /**
      * Map of additional options.
      */
-    readonly valueSpecs?: pulumi.Input<{[key: string]: any}>;
+    valueSpecs?: pulumi.Input<{[key: string]: any}>;
 }

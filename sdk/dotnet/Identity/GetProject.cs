@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.OpenStack.Identity
 {
@@ -39,6 +40,35 @@ namespace Pulumi.OpenStack.Identity
         /// </summary>
         public static Task<GetProjectResult> InvokeAsync(GetProjectArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("openstack:identity/getProject:getProject", args ?? new GetProjectArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to get the ID of an OpenStack project.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var project1 = Output.Create(OpenStack.Identity.GetProject.InvokeAsync(new OpenStack.Identity.GetProjectArgs
+        ///         {
+        ///             Name = "demo",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetProjectResult> Invoke(GetProjectInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetProjectResult>("openstack:identity/getProject:getProject", args ?? new GetProjectInvokeArgs(), options.WithVersion());
     }
 
 
@@ -83,6 +113,51 @@ namespace Pulumi.OpenStack.Identity
         public string? Region { get; set; }
 
         public GetProjectArgs()
+        {
+        }
+    }
+
+    public sealed class GetProjectInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The domain this project belongs to.
+        /// </summary>
+        [Input("domainId")]
+        public Input<string>? DomainId { get; set; }
+
+        /// <summary>
+        /// Whether the project is enabled or disabled. Valid
+        /// values are `true` and `false`.
+        /// </summary>
+        [Input("enabled")]
+        public Input<bool>? Enabled { get; set; }
+
+        /// <summary>
+        /// Whether this project is a domain. Valid values
+        /// are `true` and `false`.
+        /// </summary>
+        [Input("isDomain")]
+        public Input<bool>? IsDomain { get; set; }
+
+        /// <summary>
+        /// The name of the project.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The parent of this project.
+        /// </summary>
+        [Input("parentId")]
+        public Input<string>? ParentId { get; set; }
+
+        /// <summary>
+        /// The region the project is located in.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        public GetProjectInvokeArgs()
         {
         }
     }

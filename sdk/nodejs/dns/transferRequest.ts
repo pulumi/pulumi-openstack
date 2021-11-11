@@ -142,35 +142,35 @@ export interface TransferRequestState {
     /**
      * A description of the zone tranfer request.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Disable wait for zone to reach ACTIVE
      * status. The check is enabled by default. If this argument is true, zone
      * will be considered as created/updated if OpenStack request returned success.
      */
-    readonly disableStatusCheck?: pulumi.Input<boolean>;
-    readonly key?: pulumi.Input<string>;
+    disableStatusCheck?: pulumi.Input<boolean>;
+    key?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 Compute client.
      * Keypairs are associated with accounts, but a Compute client is needed to
      * create one. If omitted, the `region` argument of the provider is used.
      * Changing this creates a new DNS zone.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The target Project ID to transfer to.
      */
-    readonly targetProjectId?: pulumi.Input<string>;
+    targetProjectId?: pulumi.Input<string>;
     /**
      * Map of additional options. Changing this creates a
      * new transfer request.
      */
-    readonly valueSpecs?: pulumi.Input<{[key: string]: any}>;
+    valueSpecs?: pulumi.Input<{[key: string]: any}>;
     /**
      * The ID of the zone for which to create the transfer
      * request.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
@@ -180,33 +180,33 @@ export interface TransferRequestArgs {
     /**
      * A description of the zone tranfer request.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Disable wait for zone to reach ACTIVE
      * status. The check is enabled by default. If this argument is true, zone
      * will be considered as created/updated if OpenStack request returned success.
      */
-    readonly disableStatusCheck?: pulumi.Input<boolean>;
-    readonly key?: pulumi.Input<string>;
+    disableStatusCheck?: pulumi.Input<boolean>;
+    key?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 Compute client.
      * Keypairs are associated with accounts, but a Compute client is needed to
      * create one. If omitted, the `region` argument of the provider is used.
      * Changing this creates a new DNS zone.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The target Project ID to transfer to.
      */
-    readonly targetProjectId?: pulumi.Input<string>;
+    targetProjectId?: pulumi.Input<string>;
     /**
      * Map of additional options. Changing this creates a
      * new transfer request.
      */
-    readonly valueSpecs?: pulumi.Input<{[key: string]: any}>;
+    valueSpecs?: pulumi.Input<{[key: string]: any}>;
     /**
      * The ID of the zone for which to create the transfer
      * request.
      */
-    readonly zoneId: pulumi.Input<string>;
+    zoneId: pulumi.Input<string>;
 }

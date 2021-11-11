@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.OpenStack.Identity
 {
@@ -41,6 +42,37 @@ namespace Pulumi.OpenStack.Identity
         /// </summary>
         public static Task<GetEndpointResult> InvokeAsync(GetEndpointArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetEndpointResult>("openstack:identity/getEndpoint:getEndpoint", args ?? new GetEndpointArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to get the ID of an OpenStack endpoint.
+        /// 
+        /// &gt; **Note:** This usually requires admin privileges.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var endpoint1 = Output.Create(OpenStack.Identity.GetEndpoint.InvokeAsync(new OpenStack.Identity.GetEndpointArgs
+        ///         {
+        ///             ServiceName = "demo",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetEndpointResult> Invoke(GetEndpointInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetEndpointResult>("openstack:identity/getEndpoint:getEndpoint", args ?? new GetEndpointInvokeArgs(), options.WithVersion());
     }
 
 
@@ -92,6 +124,58 @@ namespace Pulumi.OpenStack.Identity
         public string? ServiceType { get; set; }
 
         public GetEndpointArgs()
+        {
+        }
+    }
+
+    public sealed class GetEndpointInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The region the endpoint is assigned to. The
+        /// `region` and `endpoint_region` can be different.
+        /// </summary>
+        [Input("endpointRegion")]
+        public Input<string>? EndpointRegion { get; set; }
+
+        /// <summary>
+        /// The endpoint interface. Valid values are `public`,
+        /// `internal`, and `admin`. Default value is `public`
+        /// </summary>
+        [Input("interface")]
+        public Input<string>? Interface { get; set; }
+
+        /// <summary>
+        /// The name of the endpoint.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The region in which to obtain the V3 Keystone client.
+        /// If omitted, the `region` argument of the provider is used.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// The service id this endpoint belongs to.
+        /// </summary>
+        [Input("serviceId")]
+        public Input<string>? ServiceId { get; set; }
+
+        /// <summary>
+        /// The service name of the endpoint.
+        /// </summary>
+        [Input("serviceName")]
+        public Input<string>? ServiceName { get; set; }
+
+        /// <summary>
+        /// The service type of the endpoint.
+        /// </summary>
+        [Input("serviceType")]
+        public Input<string>? ServiceType { get; set; }
+
+        public GetEndpointInvokeArgs()
         {
         }
     }

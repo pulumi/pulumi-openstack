@@ -190,56 +190,56 @@ export interface LoadBalancerState {
      * The administrative state of the Loadbalancer.
      * A valid value is true (UP) or false (DOWN).
      */
-    readonly adminStateUp?: pulumi.Input<boolean>;
+    adminStateUp?: pulumi.Input<boolean>;
     /**
      * The availability zone of the Loadbalancer.
      * Changing this creates a new loadbalancer. Available only for Octavia
      * **minor version 2.14 or later**.
      */
-    readonly availabilityZone?: pulumi.Input<string>;
+    availabilityZone?: pulumi.Input<string>;
     /**
      * Human-readable description for the Loadbalancer.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The UUID of a flavor. Changing this creates a new
      * loadbalancer.
      */
-    readonly flavorId?: pulumi.Input<string>;
+    flavorId?: pulumi.Input<string>;
     /**
      * The name of the provider. Changing this
      * creates a new loadbalancer.
      */
-    readonly loadbalancerProvider?: pulumi.Input<string>;
+    loadbalancerProvider?: pulumi.Input<string>;
     /**
      * Human-readable name for the Loadbalancer. Does not have
      * to be unique.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create an LB member. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * LB member.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * A list of security group IDs to apply to the
      * loadbalancer. The security groups must be specified by ID and not name (as
      * opposed to how they are configured with the Compute Instance).
      */
-    readonly securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Required for admins. The UUID of the tenant who owns
      * the Loadbalancer.  Only administrative users can specify a tenant UUID
      * other than their own.  Changing this creates a new loadbalancer.
      */
-    readonly tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string>;
     /**
      * The ip address of the load balancer.
      * Changing this creates a new loadbalancer.
      */
-    readonly vipAddress?: pulumi.Input<string>;
+    vipAddress?: pulumi.Input<string>;
     /**
      * The network on which to allocate the
      * Loadbalancer's address. A tenant can only create Loadbalancers on networks
@@ -247,12 +247,12 @@ export interface LoadBalancerState {
      * are shared).  Changing this creates a new loadbalancer.
      * It is available only for Octavia.
      */
-    readonly vipNetworkId?: pulumi.Input<string>;
+    vipNetworkId?: pulumi.Input<string>;
     /**
      * The port UUID that the loadbalancer will use.
      * Changing this creates a new loadbalancer. It is available only for Octavia.
      */
-    readonly vipPortId?: pulumi.Input<string>;
+    vipPortId?: pulumi.Input<string>;
     /**
      * The subnet on which to allocate the
      * Loadbalancer's address. A tenant can only create Loadbalancers on networks
@@ -260,7 +260,7 @@ export interface LoadBalancerState {
      * are shared).  Changing this creates a new loadbalancer.
      * It is required to Neutron LBaaS but optional for Octavia.
      */
-    readonly vipSubnetId?: pulumi.Input<string>;
+    vipSubnetId?: pulumi.Input<string>;
 }
 
 /**
@@ -271,56 +271,56 @@ export interface LoadBalancerArgs {
      * The administrative state of the Loadbalancer.
      * A valid value is true (UP) or false (DOWN).
      */
-    readonly adminStateUp?: pulumi.Input<boolean>;
+    adminStateUp?: pulumi.Input<boolean>;
     /**
      * The availability zone of the Loadbalancer.
      * Changing this creates a new loadbalancer. Available only for Octavia
      * **minor version 2.14 or later**.
      */
-    readonly availabilityZone?: pulumi.Input<string>;
+    availabilityZone?: pulumi.Input<string>;
     /**
      * Human-readable description for the Loadbalancer.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The UUID of a flavor. Changing this creates a new
      * loadbalancer.
      */
-    readonly flavorId?: pulumi.Input<string>;
+    flavorId?: pulumi.Input<string>;
     /**
      * The name of the provider. Changing this
      * creates a new loadbalancer.
      */
-    readonly loadbalancerProvider?: pulumi.Input<string>;
+    loadbalancerProvider?: pulumi.Input<string>;
     /**
      * Human-readable name for the Loadbalancer. Does not have
      * to be unique.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create an LB member. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * LB member.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * A list of security group IDs to apply to the
      * loadbalancer. The security groups must be specified by ID and not name (as
      * opposed to how they are configured with the Compute Instance).
      */
-    readonly securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Required for admins. The UUID of the tenant who owns
      * the Loadbalancer.  Only administrative users can specify a tenant UUID
      * other than their own.  Changing this creates a new loadbalancer.
      */
-    readonly tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string>;
     /**
      * The ip address of the load balancer.
      * Changing this creates a new loadbalancer.
      */
-    readonly vipAddress?: pulumi.Input<string>;
+    vipAddress?: pulumi.Input<string>;
     /**
      * The network on which to allocate the
      * Loadbalancer's address. A tenant can only create Loadbalancers on networks
@@ -328,12 +328,12 @@ export interface LoadBalancerArgs {
      * are shared).  Changing this creates a new loadbalancer.
      * It is available only for Octavia.
      */
-    readonly vipNetworkId?: pulumi.Input<string>;
+    vipNetworkId?: pulumi.Input<string>;
     /**
      * The port UUID that the loadbalancer will use.
      * Changing this creates a new loadbalancer. It is available only for Octavia.
      */
-    readonly vipPortId?: pulumi.Input<string>;
+    vipPortId?: pulumi.Input<string>;
     /**
      * The subnet on which to allocate the
      * Loadbalancer's address. A tenant can only create Loadbalancers on networks
@@ -341,5 +341,5 @@ export interface LoadBalancerArgs {
      * are shared).  Changing this creates a new loadbalancer.
      * It is required to Neutron LBaaS but optional for Octavia.
      */
-    readonly vipSubnetId?: pulumi.Input<string>;
+    vipSubnetId?: pulumi.Input<string>;
 }

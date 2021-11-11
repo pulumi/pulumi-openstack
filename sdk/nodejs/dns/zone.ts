@@ -172,58 +172,58 @@ export interface ZoneState {
      * Attributes for the DNS Service scheduler.
      * Changing this creates a new zone.
      */
-    readonly attributes?: pulumi.Input<{[key: string]: any}>;
+    attributes?: pulumi.Input<{[key: string]: any}>;
     /**
      * A description of the zone.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Disable wait for zone to reach ACTIVE
      * status. The check is enabled by default. If this argument is true, zone
      * will be considered as created/updated if OpenStack request returned success.
      */
-    readonly disableStatusCheck?: pulumi.Input<boolean>;
+    disableStatusCheck?: pulumi.Input<boolean>;
     /**
      * The email contact for the zone record.
      */
-    readonly email?: pulumi.Input<string>;
+    email?: pulumi.Input<string>;
     /**
      * An array of master DNS servers. For when `type` is
      * `SECONDARY`.
      */
-    readonly masters?: pulumi.Input<pulumi.Input<string>[]>;
+    masters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The name of the zone. Note the `.` at the end of the name.
      * Changing this creates a new DNS zone.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project DNS zone is created
      * for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
      * user role in target project)
      */
-    readonly projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 Compute client.
      * Keypairs are associated with accounts, but a Compute client is needed to
      * create one. If omitted, the `region` argument of the provider is used.
      * Changing this creates a new DNS zone.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The time to live (TTL) of the zone.
      */
-    readonly ttl?: pulumi.Input<number>;
+    ttl?: pulumi.Input<number>;
     /**
      * The type of zone. Can either be `PRIMARY` or `SECONDARY`.
      * Changing this creates a new zone.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
     /**
      * Map of additional options. Changing this creates a
      * new zone.
      */
-    readonly valueSpecs?: pulumi.Input<{[key: string]: any}>;
+    valueSpecs?: pulumi.Input<{[key: string]: any}>;
 }
 
 /**
@@ -234,56 +234,56 @@ export interface ZoneArgs {
      * Attributes for the DNS Service scheduler.
      * Changing this creates a new zone.
      */
-    readonly attributes?: pulumi.Input<{[key: string]: any}>;
+    attributes?: pulumi.Input<{[key: string]: any}>;
     /**
      * A description of the zone.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Disable wait for zone to reach ACTIVE
      * status. The check is enabled by default. If this argument is true, zone
      * will be considered as created/updated if OpenStack request returned success.
      */
-    readonly disableStatusCheck?: pulumi.Input<boolean>;
+    disableStatusCheck?: pulumi.Input<boolean>;
     /**
      * The email contact for the zone record.
      */
-    readonly email?: pulumi.Input<string>;
+    email?: pulumi.Input<string>;
     /**
      * An array of master DNS servers. For when `type` is
      * `SECONDARY`.
      */
-    readonly masters?: pulumi.Input<pulumi.Input<string>[]>;
+    masters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The name of the zone. Note the `.` at the end of the name.
      * Changing this creates a new DNS zone.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project DNS zone is created
      * for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
      * user role in target project)
      */
-    readonly projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 Compute client.
      * Keypairs are associated with accounts, but a Compute client is needed to
      * create one. If omitted, the `region` argument of the provider is used.
      * Changing this creates a new DNS zone.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The time to live (TTL) of the zone.
      */
-    readonly ttl?: pulumi.Input<number>;
+    ttl?: pulumi.Input<number>;
     /**
      * The type of zone. Can either be `PRIMARY` or `SECONDARY`.
      * Changing this creates a new zone.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
     /**
      * Map of additional options. Changing this creates a
      * new zone.
      */
-    readonly valueSpecs?: pulumi.Input<{[key: string]: any}>;
+    valueSpecs?: pulumi.Input<{[key: string]: any}>;
 }

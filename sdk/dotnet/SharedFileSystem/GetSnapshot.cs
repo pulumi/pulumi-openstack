@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.OpenStack.SharedFileSystem
 {
@@ -39,6 +40,35 @@ namespace Pulumi.OpenStack.SharedFileSystem
         /// </summary>
         public static Task<GetSnapshotResult> InvokeAsync(GetSnapshotArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSnapshotResult>("openstack:sharedfilesystem/getSnapshot:getSnapshot", args ?? new GetSnapshotArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to get the ID of an available Shared File System snapshot.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var snapshot1 = Output.Create(OpenStack.SharedFileSystem.GetSnapshot.InvokeAsync(new OpenStack.SharedFileSystem.GetSnapshotArgs
+        ///         {
+        ///             Name = "snapshot_1",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetSnapshotResult> Invoke(GetSnapshotInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetSnapshotResult>("openstack:sharedfilesystem/getSnapshot:getSnapshot", args ?? new GetSnapshotInvokeArgs(), options.WithVersion());
     }
 
 
@@ -77,6 +107,45 @@ namespace Pulumi.OpenStack.SharedFileSystem
         public string? Status { get; set; }
 
         public GetSnapshotArgs()
+        {
+        }
+    }
+
+    public sealed class GetSnapshotInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The human-readable description of the snapshot.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The name of the snapshot.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The region in which to obtain the V2 Shared File System client.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// The UUID of the source share that was used to create the snapshot.
+        /// </summary>
+        [Input("shareId")]
+        public Input<string>? ShareId { get; set; }
+
+        /// <summary>
+        /// A snapshot status filter. A valid value is `available`, `error`,
+        /// `creating`, `deleting`, `manage_starting`, `manage_error`, `unmanage_starting`,
+        /// `unmanage_error` or `error_deleting`.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetSnapshotInvokeArgs()
         {
         }
     }

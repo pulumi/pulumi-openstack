@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -16,7 +15,7 @@ import * as utilities from "../utilities";
  *
  * const cluster1 = pulumi.output(openstack.containerinfra.getCluster({
  *     name: "cluster_1",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getCluster(args: GetClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterResult> {
@@ -40,13 +39,13 @@ export interface GetClusterArgs {
     /**
      * The name of the cluster.
      */
-    readonly name: string;
+    name: string;
     /**
      * The region in which to obtain the V1 Container Infra
      * client.
      * If omitted, the `region` argument of the provider is used.
      */
-    readonly region?: string;
+    region?: string;
 }
 
 /**
@@ -152,4 +151,24 @@ export interface GetClusterResult {
      * The user of the cluster.
      */
     readonly userId: string;
+}
+
+export function getClusterOutput(args: GetClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterResult> {
+    return pulumi.output(args).apply(a => getCluster(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getCluster.
+ */
+export interface GetClusterOutputArgs {
+    /**
+     * The name of the cluster.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The region in which to obtain the V1 Container Infra
+     * client.
+     * If omitted, the `region` argument of the provider is used.
+     */
+    region?: pulumi.Input<string>;
 }

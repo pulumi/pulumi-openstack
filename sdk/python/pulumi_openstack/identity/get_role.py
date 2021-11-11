@@ -12,6 +12,7 @@ __all__ = [
     'GetRoleResult',
     'AwaitableGetRoleResult',
     'get_role',
+    'get_role_output',
 ]
 
 @pulumi.output_type
@@ -115,3 +116,29 @@ def get_role(domain_id: Optional[str] = None,
         id=__ret__.id,
         name=__ret__.name,
         region=__ret__.region)
+
+
+@_utilities.lift_output_func(get_role)
+def get_role_output(domain_id: Optional[pulumi.Input[Optional[str]]] = None,
+                    name: Optional[pulumi.Input[str]] = None,
+                    region: Optional[pulumi.Input[Optional[str]]] = None,
+                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRoleResult]:
+    """
+    Use this data source to get the ID of an OpenStack role.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    admin = openstack.identity.get_role(name="admin")
+    ```
+
+
+    :param str domain_id: The domain the role belongs to.
+    :param str name: The name of the role.
+    :param str region: The region in which to obtain the V3 Keystone client.
+           If omitted, the `region` argument of the provider is used.
+    """
+    ...

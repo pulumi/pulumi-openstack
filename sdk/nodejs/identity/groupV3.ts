@@ -114,21 +114,21 @@ export interface GroupV3State {
     /**
      * A description of the group.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The domain the group belongs to.
      */
-    readonly domainId?: pulumi.Input<string>;
+    domainId?: pulumi.Input<string>;
     /**
      * The name of the group.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V3 Keystone client.
      * If omitted, the `region` argument of the provider is used. Changing this
      * creates a new group.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
 }
 
 /**
@@ -138,19 +138,19 @@ export interface GroupV3Args {
     /**
      * A description of the group.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The domain the group belongs to.
      */
-    readonly domainId?: pulumi.Input<string>;
+    domainId?: pulumi.Input<string>;
     /**
      * The name of the group.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V3 Keystone client.
      * If omitted, the `region` argument of the provider is used. Changing this
      * creates a new group.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
 }

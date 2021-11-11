@@ -211,7 +211,7 @@ type GroupV3ArrayInput interface {
 type GroupV3Array []GroupV3Input
 
 func (GroupV3Array) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*GroupV3)(nil))
+	return reflect.TypeOf((*[]*GroupV3)(nil)).Elem()
 }
 
 func (i GroupV3Array) ToGroupV3ArrayOutput() GroupV3ArrayOutput {
@@ -236,7 +236,7 @@ type GroupV3MapInput interface {
 type GroupV3Map map[string]GroupV3Input
 
 func (GroupV3Map) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*GroupV3)(nil))
+	return reflect.TypeOf((*map[string]*GroupV3)(nil)).Elem()
 }
 
 func (i GroupV3Map) ToGroupV3MapOutput() GroupV3MapOutput {
@@ -247,9 +247,7 @@ func (i GroupV3Map) ToGroupV3MapOutputWithContext(ctx context.Context) GroupV3Ma
 	return pulumi.ToOutputWithContext(ctx, i).(GroupV3MapOutput)
 }
 
-type GroupV3Output struct {
-	*pulumi.OutputState
-}
+type GroupV3Output struct{ *pulumi.OutputState }
 
 func (GroupV3Output) ElementType() reflect.Type {
 	return reflect.TypeOf((*GroupV3)(nil))
@@ -268,14 +266,12 @@ func (o GroupV3Output) ToGroupV3PtrOutput() GroupV3PtrOutput {
 }
 
 func (o GroupV3Output) ToGroupV3PtrOutputWithContext(ctx context.Context) GroupV3PtrOutput {
-	return o.ApplyT(func(v GroupV3) *GroupV3 {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GroupV3) *GroupV3 {
 		return &v
 	}).(GroupV3PtrOutput)
 }
 
-type GroupV3PtrOutput struct {
-	*pulumi.OutputState
-}
+type GroupV3PtrOutput struct{ *pulumi.OutputState }
 
 func (GroupV3PtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**GroupV3)(nil))
@@ -287,6 +283,16 @@ func (o GroupV3PtrOutput) ToGroupV3PtrOutput() GroupV3PtrOutput {
 
 func (o GroupV3PtrOutput) ToGroupV3PtrOutputWithContext(ctx context.Context) GroupV3PtrOutput {
 	return o
+}
+
+func (o GroupV3PtrOutput) Elem() GroupV3Output {
+	return o.ApplyT(func(v *GroupV3) GroupV3 {
+		if v != nil {
+			return *v
+		}
+		var ret GroupV3
+		return ret
+	}).(GroupV3Output)
 }
 
 type GroupV3ArrayOutput struct{ *pulumi.OutputState }
@@ -330,6 +336,10 @@ func (o GroupV3MapOutput) MapIndex(k pulumi.StringInput) GroupV3Output {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupV3Input)(nil)).Elem(), &GroupV3{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupV3PtrInput)(nil)).Elem(), &GroupV3{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupV3ArrayInput)(nil)).Elem(), GroupV3Array{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupV3MapInput)(nil)).Elem(), GroupV3Map{})
 	pulumi.RegisterOutputType(GroupV3Output{})
 	pulumi.RegisterOutputType(GroupV3PtrOutput{})
 	pulumi.RegisterOutputType(GroupV3ArrayOutput{})

@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -17,7 +16,7 @@ import * as utilities from "../utilities";
  *
  * const test = pulumi.output(openstack.compute.getAggregateV2({
  *     name: "test",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getAggregateV2(args: GetAggregateV2Args, opts?: pulumi.InvokeOptions): Promise<GetAggregateV2Result> {
@@ -42,15 +41,15 @@ export interface GetAggregateV2Args {
     /**
      * List of Hypervisors contained in the Host Aggregate
      */
-    readonly hosts?: string[];
+    hosts?: string[];
     /**
      * Metadata of the Host Aggregate
      */
-    readonly metadata?: {[key: string]: string};
+    metadata?: {[key: string]: string};
     /**
      * The name of the host aggregate
      */
-    readonly name: string;
+    name: string;
 }
 
 /**
@@ -77,4 +76,26 @@ export interface GetAggregateV2Result {
      * Availability zone of the Host Aggregate
      */
     readonly zone: string;
+}
+
+export function getAggregateV2Output(args: GetAggregateV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAggregateV2Result> {
+    return pulumi.output(args).apply(a => getAggregateV2(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAggregateV2.
+ */
+export interface GetAggregateV2OutputArgs {
+    /**
+     * List of Hypervisors contained in the Host Aggregate
+     */
+    hosts?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Metadata of the Host Aggregate
+     */
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The name of the host aggregate
+     */
+    name: pulumi.Input<string>;
 }

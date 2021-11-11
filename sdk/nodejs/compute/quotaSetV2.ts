@@ -217,83 +217,83 @@ export interface QuotaSetV2State {
      * Quota value for cores.
      * Changing this updates the existing quotaset.
      */
-    readonly cores?: pulumi.Input<number>;
+    cores?: pulumi.Input<number>;
     /**
      * Quota value for fixed IPs.
      * Changing this updates the existing quotaset.
      */
-    readonly fixedIps?: pulumi.Input<number>;
+    fixedIps?: pulumi.Input<number>;
     /**
      * Quota value for floating IPs.
      * Changing this updates the existing quotaset.
      */
-    readonly floatingIps?: pulumi.Input<number>;
+    floatingIps?: pulumi.Input<number>;
     /**
      * Quota value for content bytes
      * of injected files. Changing this updates the existing quotaset.
      */
-    readonly injectedFileContentBytes?: pulumi.Input<number>;
+    injectedFileContentBytes?: pulumi.Input<number>;
     /**
      * Quota value for path bytes of
      * injected files. Changing this updates the existing quotaset.
      */
-    readonly injectedFilePathBytes?: pulumi.Input<number>;
+    injectedFilePathBytes?: pulumi.Input<number>;
     /**
      * Quota value for injected files.
      * Changing this updates the existing quotaset.
      */
-    readonly injectedFiles?: pulumi.Input<number>;
+    injectedFiles?: pulumi.Input<number>;
     /**
      * Quota value for instances.
      * Changing this updates the existing quotaset.
      */
-    readonly instances?: pulumi.Input<number>;
+    instances?: pulumi.Input<number>;
     /**
      * Quota value for key pairs.
      * Changing this updates the existing quotaset.
      */
-    readonly keyPairs?: pulumi.Input<number>;
+    keyPairs?: pulumi.Input<number>;
     /**
      * Quota value for metadata items.
      * Changing this updates the existing quotaset.
      */
-    readonly metadataItems?: pulumi.Input<number>;
+    metadataItems?: pulumi.Input<number>;
     /**
      * ID of the project to manage quotas.
      * Changing this creates a new quotaset.
      */
-    readonly projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string>;
     /**
      * Quota value for RAM.
      * Changing this updates the existing quotaset.
      */
-    readonly ram?: pulumi.Input<number>;
+    ram?: pulumi.Input<number>;
     /**
      * The region in which to create the volume. If
      * omitted, the `region` argument of the provider is used. Changing this
      * creates a new quotaset.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * Quota value for security group rules.
      * Changing this updates the existing quotaset.
      */
-    readonly securityGroupRules?: pulumi.Input<number>;
+    securityGroupRules?: pulumi.Input<number>;
     /**
      * Quota value for security groups.
      * Changing this updates the existing quotaset.
      */
-    readonly securityGroups?: pulumi.Input<number>;
+    securityGroups?: pulumi.Input<number>;
     /**
      * Quota value for server groups members.
      * Changing this updates the existing quotaset.
      */
-    readonly serverGroupMembers?: pulumi.Input<number>;
+    serverGroupMembers?: pulumi.Input<number>;
     /**
      * Quota value for server groups.
      * Changing this updates the existing quotaset.
      */
-    readonly serverGroups?: pulumi.Input<number>;
+    serverGroups?: pulumi.Input<number>;
 }
 
 /**
@@ -304,81 +304,81 @@ export interface QuotaSetV2Args {
      * Quota value for cores.
      * Changing this updates the existing quotaset.
      */
-    readonly cores?: pulumi.Input<number>;
+    cores?: pulumi.Input<number>;
     /**
      * Quota value for fixed IPs.
      * Changing this updates the existing quotaset.
      */
-    readonly fixedIps?: pulumi.Input<number>;
+    fixedIps?: pulumi.Input<number>;
     /**
      * Quota value for floating IPs.
      * Changing this updates the existing quotaset.
      */
-    readonly floatingIps?: pulumi.Input<number>;
+    floatingIps?: pulumi.Input<number>;
     /**
      * Quota value for content bytes
      * of injected files. Changing this updates the existing quotaset.
      */
-    readonly injectedFileContentBytes?: pulumi.Input<number>;
+    injectedFileContentBytes?: pulumi.Input<number>;
     /**
      * Quota value for path bytes of
      * injected files. Changing this updates the existing quotaset.
      */
-    readonly injectedFilePathBytes?: pulumi.Input<number>;
+    injectedFilePathBytes?: pulumi.Input<number>;
     /**
      * Quota value for injected files.
      * Changing this updates the existing quotaset.
      */
-    readonly injectedFiles?: pulumi.Input<number>;
+    injectedFiles?: pulumi.Input<number>;
     /**
      * Quota value for instances.
      * Changing this updates the existing quotaset.
      */
-    readonly instances?: pulumi.Input<number>;
+    instances?: pulumi.Input<number>;
     /**
      * Quota value for key pairs.
      * Changing this updates the existing quotaset.
      */
-    readonly keyPairs?: pulumi.Input<number>;
+    keyPairs?: pulumi.Input<number>;
     /**
      * Quota value for metadata items.
      * Changing this updates the existing quotaset.
      */
-    readonly metadataItems?: pulumi.Input<number>;
+    metadataItems?: pulumi.Input<number>;
     /**
      * ID of the project to manage quotas.
      * Changing this creates a new quotaset.
      */
-    readonly projectId: pulumi.Input<string>;
+    projectId: pulumi.Input<string>;
     /**
      * Quota value for RAM.
      * Changing this updates the existing quotaset.
      */
-    readonly ram?: pulumi.Input<number>;
+    ram?: pulumi.Input<number>;
     /**
      * The region in which to create the volume. If
      * omitted, the `region` argument of the provider is used. Changing this
      * creates a new quotaset.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * Quota value for security group rules.
      * Changing this updates the existing quotaset.
      */
-    readonly securityGroupRules?: pulumi.Input<number>;
+    securityGroupRules?: pulumi.Input<number>;
     /**
      * Quota value for security groups.
      * Changing this updates the existing quotaset.
      */
-    readonly securityGroups?: pulumi.Input<number>;
+    securityGroups?: pulumi.Input<number>;
     /**
      * Quota value for server groups members.
      * Changing this updates the existing quotaset.
      */
-    readonly serverGroupMembers?: pulumi.Input<number>;
+    serverGroupMembers?: pulumi.Input<number>;
     /**
      * Quota value for server groups.
      * Changing this updates the existing quotaset.
      */
-    readonly serverGroups?: pulumi.Input<number>;
+    serverGroups?: pulumi.Input<number>;
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.OpenStack.Identity
 {
@@ -39,6 +40,35 @@ namespace Pulumi.OpenStack.Identity
         /// </summary>
         public static Task<GetUserResult> InvokeAsync(GetUserArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetUserResult>("openstack:identity/getUser:getUser", args ?? new GetUserArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to get the ID of an OpenStack user.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var user1 = Output.Create(OpenStack.Identity.GetUser.InvokeAsync(new OpenStack.Identity.GetUserArgs
+        ///         {
+        ///             Name = "user_1",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetUserResult> Invoke(GetUserInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetUserResult>("openstack:identity/getUser:getUser", args ?? new GetUserInvokeArgs(), options.WithVersion());
     }
 
 
@@ -94,6 +124,62 @@ namespace Pulumi.OpenStack.Identity
         public string? UniqueId { get; set; }
 
         public GetUserArgs()
+        {
+        }
+    }
+
+    public sealed class GetUserInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The domain this user belongs to.
+        /// </summary>
+        [Input("domainId")]
+        public Input<string>? DomainId { get; set; }
+
+        /// <summary>
+        /// Whether the user is enabled or disabled. Valid
+        /// values are `true` and `false`.
+        /// </summary>
+        [Input("enabled")]
+        public Input<bool>? Enabled { get; set; }
+
+        /// <summary>
+        /// The identity provider ID of the user.
+        /// </summary>
+        [Input("idpId")]
+        public Input<string>? IdpId { get; set; }
+
+        /// <summary>
+        /// The name of the user.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Query for expired passwords. See the [OpenStack API docs](https://developer.openstack.org/api-ref/identity/v3/#list-users) for more information on the query format.
+        /// </summary>
+        [Input("passwordExpiresAt")]
+        public Input<string>? PasswordExpiresAt { get; set; }
+
+        /// <summary>
+        /// The protocol ID of the user.
+        /// </summary>
+        [Input("protocolId")]
+        public Input<string>? ProtocolId { get; set; }
+
+        /// <summary>
+        /// The region the user is located in.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// The unique ID of the user.
+        /// </summary>
+        [Input("uniqueId")]
+        public Input<string>? UniqueId { get; set; }
+
+        public GetUserInvokeArgs()
         {
         }
     }

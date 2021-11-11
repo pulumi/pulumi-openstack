@@ -348,7 +348,7 @@ func (o PortBindingOutput) ToPortBindingPtrOutput() PortBindingPtrOutput {
 }
 
 func (o PortBindingOutput) ToPortBindingPtrOutputWithContext(ctx context.Context) PortBindingPtrOutput {
-	return o.ApplyT(func(v PortBinding) *PortBinding {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PortBinding) *PortBinding {
 		return &v
 	}).(PortBindingPtrOutput)
 }
@@ -397,7 +397,13 @@ func (o PortBindingPtrOutput) ToPortBindingPtrOutputWithContext(ctx context.Cont
 }
 
 func (o PortBindingPtrOutput) Elem() PortBindingOutput {
-	return o.ApplyT(func(v *PortBinding) PortBinding { return *v }).(PortBindingOutput)
+	return o.ApplyT(func(v *PortBinding) PortBinding {
+		if v != nil {
+			return *v
+		}
+		var ret PortBinding
+		return ret
+	}).(PortBindingOutput)
 }
 
 // The ID of the host to allocate port on.
@@ -879,7 +885,7 @@ func (o RouterVendorOptionsOutput) ToRouterVendorOptionsPtrOutput() RouterVendor
 }
 
 func (o RouterVendorOptionsOutput) ToRouterVendorOptionsPtrOutputWithContext(ctx context.Context) RouterVendorOptionsPtrOutput {
-	return o.ApplyT(func(v RouterVendorOptions) *RouterVendorOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RouterVendorOptions) *RouterVendorOptions {
 		return &v
 	}).(RouterVendorOptionsPtrOutput)
 }
@@ -905,7 +911,13 @@ func (o RouterVendorOptionsPtrOutput) ToRouterVendorOptionsPtrOutputWithContext(
 }
 
 func (o RouterVendorOptionsPtrOutput) Elem() RouterVendorOptionsOutput {
-	return o.ApplyT(func(v *RouterVendorOptions) RouterVendorOptions { return *v }).(RouterVendorOptionsOutput)
+	return o.ApplyT(func(v *RouterVendorOptions) RouterVendorOptions {
+		if v != nil {
+			return *v
+		}
+		var ret RouterVendorOptions
+		return ret
+	}).(RouterVendorOptionsOutput)
 }
 
 // Boolean to control whether
@@ -2128,6 +2140,42 @@ func (o GetTrunkSubPortArrayOutput) Index(i pulumi.IntInput) GetTrunkSubPortOutp
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkSegmentInput)(nil)).Elem(), NetworkSegmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkSegmentArrayInput)(nil)).Elem(), NetworkSegmentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PortAllowedAddressPairInput)(nil)).Elem(), PortAllowedAddressPairArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PortAllowedAddressPairArrayInput)(nil)).Elem(), PortAllowedAddressPairArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PortBindingInput)(nil)).Elem(), PortBindingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PortBindingPtrInput)(nil)).Elem(), PortBindingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PortExtraDhcpOptionInput)(nil)).Elem(), PortExtraDhcpOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PortExtraDhcpOptionArrayInput)(nil)).Elem(), PortExtraDhcpOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PortFixedIpInput)(nil)).Elem(), PortFixedIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PortFixedIpArrayInput)(nil)).Elem(), PortFixedIpArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterExternalFixedIpInput)(nil)).Elem(), RouterExternalFixedIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterExternalFixedIpArrayInput)(nil)).Elem(), RouterExternalFixedIpArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterVendorOptionsInput)(nil)).Elem(), RouterVendorOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterVendorOptionsPtrInput)(nil)).Elem(), RouterVendorOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubnetAllocationPoolInput)(nil)).Elem(), SubnetAllocationPoolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubnetAllocationPoolArrayInput)(nil)).Elem(), SubnetAllocationPoolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubnetAllocationPoolsCollectionInput)(nil)).Elem(), SubnetAllocationPoolsCollectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubnetAllocationPoolsCollectionArrayInput)(nil)).Elem(), SubnetAllocationPoolsCollectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubnetHostRouteInput)(nil)).Elem(), SubnetHostRouteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubnetHostRouteArrayInput)(nil)).Elem(), SubnetHostRouteArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TrunkSubPortInput)(nil)).Elem(), TrunkSubPortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TrunkSubPortArrayInput)(nil)).Elem(), TrunkSubPortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortAllowedAddressPairInput)(nil)).Elem(), GetPortAllowedAddressPairArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortAllowedAddressPairArrayInput)(nil)).Elem(), GetPortAllowedAddressPairArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortBindingInput)(nil)).Elem(), GetPortBindingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortBindingArrayInput)(nil)).Elem(), GetPortBindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortExtraDhcpOptionInput)(nil)).Elem(), GetPortExtraDhcpOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortExtraDhcpOptionArrayInput)(nil)).Elem(), GetPortExtraDhcpOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterExternalFixedIpInput)(nil)).Elem(), GetRouterExternalFixedIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterExternalFixedIpArrayInput)(nil)).Elem(), GetRouterExternalFixedIpArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetAllocationPoolInput)(nil)).Elem(), GetSubnetAllocationPoolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetAllocationPoolArrayInput)(nil)).Elem(), GetSubnetAllocationPoolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetHostRouteInput)(nil)).Elem(), GetSubnetHostRouteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetHostRouteArrayInput)(nil)).Elem(), GetSubnetHostRouteArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTrunkSubPortInput)(nil)).Elem(), GetTrunkSubPortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTrunkSubPortArrayInput)(nil)).Elem(), GetTrunkSubPortArray{})
 	pulumi.RegisterOutputType(NetworkSegmentOutput{})
 	pulumi.RegisterOutputType(NetworkSegmentArrayOutput{})
 	pulumi.RegisterOutputType(PortAllowedAddressPairOutput{})

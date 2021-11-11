@@ -4,6 +4,9 @@
 package compute
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -61,4 +64,70 @@ type LookupKeypairResult struct {
 	PublicKey string `pulumi:"publicKey"`
 	// See Argument Reference above.
 	Region string `pulumi:"region"`
+}
+
+func LookupKeypairOutput(ctx *pulumi.Context, args LookupKeypairOutputArgs, opts ...pulumi.InvokeOption) LookupKeypairResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupKeypairResult, error) {
+			args := v.(LookupKeypairArgs)
+			r, err := LookupKeypair(ctx, &args, opts...)
+			return *r, err
+		}).(LookupKeypairResultOutput)
+}
+
+// A collection of arguments for invoking getKeypair.
+type LookupKeypairOutputArgs struct {
+	// The unique name of the keypair.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The region in which to obtain the V2 Compute client.
+	// If omitted, the `region` argument of the provider is used.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+}
+
+func (LookupKeypairOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupKeypairArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getKeypair.
+type LookupKeypairResultOutput struct{ *pulumi.OutputState }
+
+func (LookupKeypairResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupKeypairResult)(nil)).Elem()
+}
+
+func (o LookupKeypairResultOutput) ToLookupKeypairResultOutput() LookupKeypairResultOutput {
+	return o
+}
+
+func (o LookupKeypairResultOutput) ToLookupKeypairResultOutputWithContext(ctx context.Context) LookupKeypairResultOutput {
+	return o
+}
+
+// The fingerprint of the OpenSSH key.
+func (o LookupKeypairResultOutput) Fingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKeypairResult) string { return v.Fingerprint }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupKeypairResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKeypairResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// See Argument Reference above.
+func (o LookupKeypairResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKeypairResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The OpenSSH-formatted public key of the keypair.
+func (o LookupKeypairResultOutput) PublicKey() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKeypairResult) string { return v.PublicKey }).(pulumi.StringOutput)
+}
+
+// See Argument Reference above.
+func (o LookupKeypairResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKeypairResult) string { return v.Region }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupKeypairResultOutput{})
 }

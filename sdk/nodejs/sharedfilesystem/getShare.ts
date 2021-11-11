@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *
  * const share1 = pulumi.output(openstack.sharedfilesystem.getShare({
  *     name: "share_1",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getShare(args?: GetShareArgs, opts?: pulumi.InvokeOptions): Promise<GetShareResult> {
@@ -48,38 +48,38 @@ export interface GetShareArgs {
     /**
      * The human-readable description for the share.
      */
-    readonly description?: string;
+    description?: string;
     /**
      * The export location path of the share. Available
      * since Manila API version 2.35.
      */
-    readonly exportLocationPath?: string;
+    exportLocationPath?: string;
     /**
      * The level of visibility for the share.
      * length.
      */
-    readonly isPublic?: boolean;
+    isPublic?: boolean;
     /**
      * One or more metadata key and value pairs as a dictionary of
      * strings.
      */
-    readonly metadata?: {[key: string]: any};
+    metadata?: {[key: string]: any};
     /**
      * The name of the share.
      */
-    readonly name?: string;
+    name?: string;
     /**
      * The region in which to obtain the V2 Shared File System client.
      */
-    readonly region?: string;
+    region?: string;
     /**
      * The UUID of the share's share network.
      */
-    readonly shareNetworkId?: string;
+    shareNetworkId?: string;
     /**
      * The UUID of the share's base snapshot.
      */
-    readonly snapshotId?: string;
+    snapshotId?: string;
     /**
      * A share status filter. A valid value is `creating`,
      * `error`, `available`, `deleting`, `errorDeleting`, `manageStarting`,
@@ -87,7 +87,7 @@ export interface GetShareArgs {
      * `extending`, `extendingError`, `shrinking`, `shrinkingError`, or
      * `shrinkingPossibleDataLossError`.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -156,4 +156,57 @@ export interface GetShareResult {
      * See Argument Reference above.
      */
     readonly status: string;
+}
+
+export function getShareOutput(args?: GetShareOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetShareResult> {
+    return pulumi.output(args).apply(a => getShare(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getShare.
+ */
+export interface GetShareOutputArgs {
+    /**
+     * The human-readable description for the share.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The export location path of the share. Available
+     * since Manila API version 2.35.
+     */
+    exportLocationPath?: pulumi.Input<string>;
+    /**
+     * The level of visibility for the share.
+     * length.
+     */
+    isPublic?: pulumi.Input<boolean>;
+    /**
+     * One or more metadata key and value pairs as a dictionary of
+     * strings.
+     */
+    metadata?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The name of the share.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The region in which to obtain the V2 Shared File System client.
+     */
+    region?: pulumi.Input<string>;
+    /**
+     * The UUID of the share's share network.
+     */
+    shareNetworkId?: pulumi.Input<string>;
+    /**
+     * The UUID of the share's base snapshot.
+     */
+    snapshotId?: pulumi.Input<string>;
+    /**
+     * A share status filter. A valid value is `creating`,
+     * `error`, `available`, `deleting`, `errorDeleting`, `manageStarting`,
+     * `manageError`, `unmanageStarting`, `unmanageError`, `unmanaged`,
+     * `extending`, `extendingError`, `shrinking`, `shrinkingError`, or
+     * `shrinkingPossibleDataLossError`.
+     */
+    status?: pulumi.Input<string>;
 }

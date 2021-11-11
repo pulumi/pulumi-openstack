@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.OpenStack.Networking
 {
@@ -39,6 +40,35 @@ namespace Pulumi.OpenStack.Networking
         /// </summary>
         public static Task<GetTrunkResult> InvokeAsync(GetTrunkArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTrunkResult>("openstack:networking/getTrunk:getTrunk", args ?? new GetTrunkArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to get the ID of an available OpenStack trunk.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var trunk1 = Output.Create(OpenStack.Networking.GetTrunk.InvokeAsync(new OpenStack.Networking.GetTrunkArgs
+        ///         {
+        ///             Name = "trunk_1",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetTrunkResult> Invoke(GetTrunkInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetTrunkResult>("openstack:networking/getTrunk:getTrunk", args ?? new GetTrunkInvokeArgs(), options.WithVersion());
     }
 
 
@@ -107,6 +137,75 @@ namespace Pulumi.OpenStack.Networking
         public string? TrunkId { get; set; }
 
         public GetTrunkArgs()
+        {
+        }
+    }
+
+    public sealed class GetTrunkInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The administrative state of the trunk.
+        /// </summary>
+        [Input("adminStateUp")]
+        public Input<bool>? AdminStateUp { get; set; }
+
+        /// <summary>
+        /// Human-readable description of the trunk.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The name of the trunk.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The ID of the trunk parent port.
+        /// </summary>
+        [Input("portId")]
+        public Input<string>? PortId { get; set; }
+
+        /// <summary>
+        /// The owner of the trunk.
+        /// </summary>
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
+
+        /// <summary>
+        /// The region in which to obtain the V2 Neutron client.
+        /// A Neutron client is needed to retrieve trunk ids. If omitted, the
+        /// `region` argument of the provider is used.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// The status of the trunk.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// The list of trunk tags to filter.
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// The ID of the trunk.
+        /// </summary>
+        [Input("trunkId")]
+        public Input<string>? TrunkId { get; set; }
+
+        public GetTrunkInvokeArgs()
         {
         }
     }

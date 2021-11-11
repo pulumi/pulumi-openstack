@@ -12,6 +12,7 @@ __all__ = [
     'GetFlavorResult',
     'AwaitableGetFlavorResult',
     'get_flavor',
+    'get_flavor_output',
 ]
 
 @pulumi.output_type
@@ -227,3 +228,49 @@ def get_flavor(disk: Optional[int] = None,
         rx_tx_factor=__ret__.rx_tx_factor,
         swap=__ret__.swap,
         vcpus=__ret__.vcpus)
+
+
+@_utilities.lift_output_func(get_flavor)
+def get_flavor_output(disk: Optional[pulumi.Input[Optional[int]]] = None,
+                      flavor_id: Optional[pulumi.Input[Optional[str]]] = None,
+                      is_public: Optional[pulumi.Input[Optional[bool]]] = None,
+                      min_disk: Optional[pulumi.Input[Optional[int]]] = None,
+                      min_ram: Optional[pulumi.Input[Optional[int]]] = None,
+                      name: Optional[pulumi.Input[Optional[str]]] = None,
+                      ram: Optional[pulumi.Input[Optional[int]]] = None,
+                      region: Optional[pulumi.Input[Optional[str]]] = None,
+                      rx_tx_factor: Optional[pulumi.Input[Optional[float]]] = None,
+                      swap: Optional[pulumi.Input[Optional[int]]] = None,
+                      vcpus: Optional[pulumi.Input[Optional[int]]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFlavorResult]:
+    """
+    Use this data source to get the ID of an available OpenStack flavor.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    small = openstack.compute.get_flavor(ram=512,
+        vcpus=1)
+    ```
+
+
+    :param int disk: The exact amount of disk (in gigabytes).
+    :param str flavor_id: The ID of the flavor. Conflicts with the `name`,
+           `min_ram` and `min_disk`
+    :param bool is_public: The flavor visibility.
+    :param int min_disk: The minimum amount of disk (in gigabytes). Conflicts
+           with the `flavor_id`.
+    :param int min_ram: The minimum amount of RAM (in megabytes). Conflicts
+           with the `flavor_id`.
+    :param str name: The name of the flavor. Conflicts with the `flavor_id`.
+    :param int ram: The exact amount of RAM (in megabytes).
+    :param str region: The region in which to obtain the V2 Compute client.
+           If omitted, the `region` argument of the provider is used.
+    :param float rx_tx_factor: The `rx_tx_factor` of the flavor.
+    :param int swap: The amount of swap (in gigabytes).
+    :param int vcpus: The amount of VCPUs.
+    """
+    ...

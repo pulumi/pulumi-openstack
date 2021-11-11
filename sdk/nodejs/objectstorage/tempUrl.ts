@@ -153,36 +153,36 @@ export interface TempUrlState {
     /**
      * The container name the object belongs to.
      */
-    readonly container?: pulumi.Input<string>;
+    container?: pulumi.Input<string>;
     /**
      * The method allowed when accessing this URL.
      * Valid values are `GET`, and `POST`. Default is `GET`.
      */
-    readonly method?: pulumi.Input<string>;
+    method?: pulumi.Input<string>;
     /**
      * The object name the tempurl is for.
      */
-    readonly object?: pulumi.Input<string>;
+    object?: pulumi.Input<string>;
     /**
      * Whether to automatically regenerate the URL when
      * it has expired. If set to true, this will create a new resource with a new
      * ID and new URL. Defaults to false.
      */
-    readonly regenerate?: pulumi.Input<boolean>;
+    regenerate?: pulumi.Input<boolean>;
     /**
      * The region the tempurl is located in.
      */
-    readonly region?: pulumi.Input<string>;
-    readonly split?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
+    split?: pulumi.Input<string>;
     /**
      * The TTL, in seconds, for the URL. For how long it should
      * be valid.
      */
-    readonly ttl?: pulumi.Input<number>;
+    ttl?: pulumi.Input<number>;
     /**
      * The URL
      */
-    readonly url?: pulumi.Input<string>;
+    url?: pulumi.Input<string>;
 }
 
 /**
@@ -192,30 +192,30 @@ export interface TempUrlArgs {
     /**
      * The container name the object belongs to.
      */
-    readonly container: pulumi.Input<string>;
+    container: pulumi.Input<string>;
     /**
      * The method allowed when accessing this URL.
      * Valid values are `GET`, and `POST`. Default is `GET`.
      */
-    readonly method?: pulumi.Input<string>;
+    method?: pulumi.Input<string>;
     /**
      * The object name the tempurl is for.
      */
-    readonly object: pulumi.Input<string>;
+    object: pulumi.Input<string>;
     /**
      * Whether to automatically regenerate the URL when
      * it has expired. If set to true, this will create a new resource with a new
      * ID and new URL. Defaults to false.
      */
-    readonly regenerate?: pulumi.Input<boolean>;
+    regenerate?: pulumi.Input<boolean>;
     /**
      * The region the tempurl is located in.
      */
-    readonly region?: pulumi.Input<string>;
-    readonly split?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
+    split?: pulumi.Input<string>;
     /**
      * The TTL, in seconds, for the URL. For how long it should
      * be valid.
      */
-    readonly ttl: pulumi.Input<number>;
+    ttl: pulumi.Input<number>;
 }

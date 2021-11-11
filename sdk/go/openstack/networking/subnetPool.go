@@ -512,7 +512,7 @@ type SubnetPoolArrayInput interface {
 type SubnetPoolArray []SubnetPoolInput
 
 func (SubnetPoolArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*SubnetPool)(nil))
+	return reflect.TypeOf((*[]*SubnetPool)(nil)).Elem()
 }
 
 func (i SubnetPoolArray) ToSubnetPoolArrayOutput() SubnetPoolArrayOutput {
@@ -537,7 +537,7 @@ type SubnetPoolMapInput interface {
 type SubnetPoolMap map[string]SubnetPoolInput
 
 func (SubnetPoolMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*SubnetPool)(nil))
+	return reflect.TypeOf((*map[string]*SubnetPool)(nil)).Elem()
 }
 
 func (i SubnetPoolMap) ToSubnetPoolMapOutput() SubnetPoolMapOutput {
@@ -548,9 +548,7 @@ func (i SubnetPoolMap) ToSubnetPoolMapOutputWithContext(ctx context.Context) Sub
 	return pulumi.ToOutputWithContext(ctx, i).(SubnetPoolMapOutput)
 }
 
-type SubnetPoolOutput struct {
-	*pulumi.OutputState
-}
+type SubnetPoolOutput struct{ *pulumi.OutputState }
 
 func (SubnetPoolOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*SubnetPool)(nil))
@@ -569,14 +567,12 @@ func (o SubnetPoolOutput) ToSubnetPoolPtrOutput() SubnetPoolPtrOutput {
 }
 
 func (o SubnetPoolOutput) ToSubnetPoolPtrOutputWithContext(ctx context.Context) SubnetPoolPtrOutput {
-	return o.ApplyT(func(v SubnetPool) *SubnetPool {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubnetPool) *SubnetPool {
 		return &v
 	}).(SubnetPoolPtrOutput)
 }
 
-type SubnetPoolPtrOutput struct {
-	*pulumi.OutputState
-}
+type SubnetPoolPtrOutput struct{ *pulumi.OutputState }
 
 func (SubnetPoolPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**SubnetPool)(nil))
@@ -588,6 +584,16 @@ func (o SubnetPoolPtrOutput) ToSubnetPoolPtrOutput() SubnetPoolPtrOutput {
 
 func (o SubnetPoolPtrOutput) ToSubnetPoolPtrOutputWithContext(ctx context.Context) SubnetPoolPtrOutput {
 	return o
+}
+
+func (o SubnetPoolPtrOutput) Elem() SubnetPoolOutput {
+	return o.ApplyT(func(v *SubnetPool) SubnetPool {
+		if v != nil {
+			return *v
+		}
+		var ret SubnetPool
+		return ret
+	}).(SubnetPoolOutput)
 }
 
 type SubnetPoolArrayOutput struct{ *pulumi.OutputState }
@@ -631,6 +637,10 @@ func (o SubnetPoolMapOutput) MapIndex(k pulumi.StringInput) SubnetPoolOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SubnetPoolInput)(nil)).Elem(), &SubnetPool{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubnetPoolPtrInput)(nil)).Elem(), &SubnetPool{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubnetPoolArrayInput)(nil)).Elem(), SubnetPoolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubnetPoolMapInput)(nil)).Elem(), SubnetPoolMap{})
 	pulumi.RegisterOutputType(SubnetPoolOutput{})
 	pulumi.RegisterOutputType(SubnetPoolPtrOutput{})
 	pulumi.RegisterOutputType(SubnetPoolArrayOutput{})

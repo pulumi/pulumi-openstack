@@ -143,31 +143,31 @@ export interface AddressScopeState {
      * IP version, either 4 (default) or 6. Changing this
      * creates a new address-scope.
      */
-    readonly ipVersion?: pulumi.Input<number>;
+    ipVersion?: pulumi.Input<number>;
     /**
      * The name of the address-scope. Changing this updates the
      * name of the existing address-scope.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The owner of the address-scope. Required if admin
      * wants to create a address-scope for another project. Changing this creates a
      * new address-scope.
      */
-    readonly projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a Neutron address-scope. If omitted,
      * the `region` argument of the provider is used. Changing this creates a new
      * address-scope.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * Indicates whether this address-scope is shared across
      * all projects. Changing this updates the shared status of the existing
      * address-scope.
      */
-    readonly shared?: pulumi.Input<boolean>;
+    shared?: pulumi.Input<boolean>;
 }
 
 /**
@@ -178,29 +178,29 @@ export interface AddressScopeArgs {
      * IP version, either 4 (default) or 6. Changing this
      * creates a new address-scope.
      */
-    readonly ipVersion?: pulumi.Input<number>;
+    ipVersion?: pulumi.Input<number>;
     /**
      * The name of the address-scope. Changing this updates the
      * name of the existing address-scope.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The owner of the address-scope. Required if admin
      * wants to create a address-scope for another project. Changing this creates a
      * new address-scope.
      */
-    readonly projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a Neutron address-scope. If omitted,
      * the `region` argument of the provider is used. Changing this creates a new
      * address-scope.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * Indicates whether this address-scope is shared across
      * all projects. Changing this updates the shared status of the existing
      * address-scope.
      */
-    readonly shared?: pulumi.Input<boolean>;
+    shared?: pulumi.Input<boolean>;
 }

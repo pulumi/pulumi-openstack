@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -17,7 +16,7 @@ import * as utilities from "../utilities";
  *
  * const host01 = pulumi.output(openstack.compute.getHypervisorV2({
  *     hostname: "host01",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getHypervisorV2(args: GetHypervisorV2Args, opts?: pulumi.InvokeOptions): Promise<GetHypervisorV2Result> {
@@ -40,7 +39,7 @@ export interface GetHypervisorV2Args {
     /**
      * The hostname of the hypervisor
      */
-    readonly hostname: string;
+    hostname: string;
 }
 
 /**
@@ -83,4 +82,18 @@ export interface GetHypervisorV2Result {
      * The number of virtual CPUs the hypervisor can provide
      */
     readonly vcpus: number;
+}
+
+export function getHypervisorV2Output(args: GetHypervisorV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHypervisorV2Result> {
+    return pulumi.output(args).apply(a => getHypervisorV2(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getHypervisorV2.
+ */
+export interface GetHypervisorV2OutputArgs {
+    /**
+     * The hostname of the hypervisor
+     */
+    hostname: pulumi.Input<string>;
 }

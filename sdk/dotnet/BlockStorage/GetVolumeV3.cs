@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.OpenStack.BlockStorage
 {
@@ -39,6 +40,35 @@ namespace Pulumi.OpenStack.BlockStorage
         /// </summary>
         public static Task<GetVolumeV3Result> InvokeAsync(GetVolumeV3Args? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVolumeV3Result>("openstack:blockstorage/getVolumeV3:getVolumeV3", args ?? new GetVolumeV3Args(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to get information about an existing volume.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var volume1 = Output.Create(OpenStack.BlockStorage.GetVolumeV3.InvokeAsync(new OpenStack.BlockStorage.GetVolumeV3Args
+        ///         {
+        ///             Name = "volume_1",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetVolumeV3Result> Invoke(GetVolumeV3InvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetVolumeV3Result>("openstack:blockstorage/getVolumeV3:getVolumeV3", args ?? new GetVolumeV3InvokeArgs(), options.WithVersion());
     }
 
 
@@ -88,6 +118,56 @@ namespace Pulumi.OpenStack.BlockStorage
         public string? VolumeType { get; set; }
 
         public GetVolumeV3Args()
+        {
+        }
+    }
+
+    public sealed class GetVolumeV3InvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Indicates if the volume is bootable.
+        /// </summary>
+        [Input("bootable")]
+        public Input<string>? Bootable { get; set; }
+
+        [Input("metadata")]
+        private InputMap<object>? _metadata;
+
+        /// <summary>
+        /// Metadata key/value pairs associated with the volume.
+        /// </summary>
+        public InputMap<object> Metadata
+        {
+            get => _metadata ?? (_metadata = new InputMap<object>());
+            set => _metadata = value;
+        }
+
+        /// <summary>
+        /// The name of the volume.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The region in which to obtain the V3 Block Storage
+        /// client. If omitted, the `region` argument of the provider is used.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// The status of the volume.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// The type of the volume.
+        /// </summary>
+        [Input("volumeType")]
+        public Input<string>? VolumeType { get; set; }
+
+        public GetVolumeV3InvokeArgs()
         {
         }
     }

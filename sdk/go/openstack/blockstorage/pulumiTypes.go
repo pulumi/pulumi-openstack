@@ -649,6 +649,16 @@ func (o VolumeV2SchedulerHintArrayOutput) Index(i pulumi.IntInput) VolumeV2Sched
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeAttachmentInput)(nil)).Elem(), VolumeAttachmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeAttachmentArrayInput)(nil)).Elem(), VolumeAttachmentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeSchedulerHintInput)(nil)).Elem(), VolumeSchedulerHintArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeSchedulerHintArrayInput)(nil)).Elem(), VolumeSchedulerHintArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeV1AttachmentInput)(nil)).Elem(), VolumeV1AttachmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeV1AttachmentArrayInput)(nil)).Elem(), VolumeV1AttachmentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeV2AttachmentInput)(nil)).Elem(), VolumeV2AttachmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeV2AttachmentArrayInput)(nil)).Elem(), VolumeV2AttachmentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeV2SchedulerHintInput)(nil)).Elem(), VolumeV2SchedulerHintArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeV2SchedulerHintArrayInput)(nil)).Elem(), VolumeV2SchedulerHintArray{})
 	pulumi.RegisterOutputType(VolumeAttachmentOutput{})
 	pulumi.RegisterOutputType(VolumeAttachmentArrayOutput{})
 	pulumi.RegisterOutputType(VolumeSchedulerHintOutput{})

@@ -637,6 +637,16 @@ func (o GetAuthScopeServiceCatalogEndpointArrayOutput) Index(i pulumi.IntInput) 
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationCredentialAccessRuleInput)(nil)).Elem(), ApplicationCredentialAccessRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationCredentialAccessRuleArrayInput)(nil)).Elem(), ApplicationCredentialAccessRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserMultiFactorAuthRuleInput)(nil)).Elem(), UserMultiFactorAuthRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserMultiFactorAuthRuleArrayInput)(nil)).Elem(), UserMultiFactorAuthRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthScopeRoleInput)(nil)).Elem(), GetAuthScopeRoleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthScopeRoleArrayInput)(nil)).Elem(), GetAuthScopeRoleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthScopeServiceCatalogInput)(nil)).Elem(), GetAuthScopeServiceCatalogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthScopeServiceCatalogArrayInput)(nil)).Elem(), GetAuthScopeServiceCatalogArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthScopeServiceCatalogEndpointInput)(nil)).Elem(), GetAuthScopeServiceCatalogEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthScopeServiceCatalogEndpointArrayInput)(nil)).Elem(), GetAuthScopeServiceCatalogEndpointArray{})
 	pulumi.RegisterOutputType(ApplicationCredentialAccessRuleOutput{})
 	pulumi.RegisterOutputType(ApplicationCredentialAccessRuleArrayOutput{})
 	pulumi.RegisterOutputType(UserMultiFactorAuthRuleOutput{})

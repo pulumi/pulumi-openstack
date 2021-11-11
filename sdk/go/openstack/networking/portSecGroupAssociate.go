@@ -212,7 +212,7 @@ type PortSecGroupAssociateArrayInput interface {
 type PortSecGroupAssociateArray []PortSecGroupAssociateInput
 
 func (PortSecGroupAssociateArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*PortSecGroupAssociate)(nil))
+	return reflect.TypeOf((*[]*PortSecGroupAssociate)(nil)).Elem()
 }
 
 func (i PortSecGroupAssociateArray) ToPortSecGroupAssociateArrayOutput() PortSecGroupAssociateArrayOutput {
@@ -237,7 +237,7 @@ type PortSecGroupAssociateMapInput interface {
 type PortSecGroupAssociateMap map[string]PortSecGroupAssociateInput
 
 func (PortSecGroupAssociateMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*PortSecGroupAssociate)(nil))
+	return reflect.TypeOf((*map[string]*PortSecGroupAssociate)(nil)).Elem()
 }
 
 func (i PortSecGroupAssociateMap) ToPortSecGroupAssociateMapOutput() PortSecGroupAssociateMapOutput {
@@ -248,9 +248,7 @@ func (i PortSecGroupAssociateMap) ToPortSecGroupAssociateMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(PortSecGroupAssociateMapOutput)
 }
 
-type PortSecGroupAssociateOutput struct {
-	*pulumi.OutputState
-}
+type PortSecGroupAssociateOutput struct{ *pulumi.OutputState }
 
 func (PortSecGroupAssociateOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*PortSecGroupAssociate)(nil))
@@ -269,14 +267,12 @@ func (o PortSecGroupAssociateOutput) ToPortSecGroupAssociatePtrOutput() PortSecG
 }
 
 func (o PortSecGroupAssociateOutput) ToPortSecGroupAssociatePtrOutputWithContext(ctx context.Context) PortSecGroupAssociatePtrOutput {
-	return o.ApplyT(func(v PortSecGroupAssociate) *PortSecGroupAssociate {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PortSecGroupAssociate) *PortSecGroupAssociate {
 		return &v
 	}).(PortSecGroupAssociatePtrOutput)
 }
 
-type PortSecGroupAssociatePtrOutput struct {
-	*pulumi.OutputState
-}
+type PortSecGroupAssociatePtrOutput struct{ *pulumi.OutputState }
 
 func (PortSecGroupAssociatePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**PortSecGroupAssociate)(nil))
@@ -288,6 +284,16 @@ func (o PortSecGroupAssociatePtrOutput) ToPortSecGroupAssociatePtrOutput() PortS
 
 func (o PortSecGroupAssociatePtrOutput) ToPortSecGroupAssociatePtrOutputWithContext(ctx context.Context) PortSecGroupAssociatePtrOutput {
 	return o
+}
+
+func (o PortSecGroupAssociatePtrOutput) Elem() PortSecGroupAssociateOutput {
+	return o.ApplyT(func(v *PortSecGroupAssociate) PortSecGroupAssociate {
+		if v != nil {
+			return *v
+		}
+		var ret PortSecGroupAssociate
+		return ret
+	}).(PortSecGroupAssociateOutput)
 }
 
 type PortSecGroupAssociateArrayOutput struct{ *pulumi.OutputState }
@@ -331,6 +337,10 @@ func (o PortSecGroupAssociateMapOutput) MapIndex(k pulumi.StringInput) PortSecGr
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*PortSecGroupAssociateInput)(nil)).Elem(), &PortSecGroupAssociate{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PortSecGroupAssociatePtrInput)(nil)).Elem(), &PortSecGroupAssociate{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PortSecGroupAssociateArrayInput)(nil)).Elem(), PortSecGroupAssociateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PortSecGroupAssociateMapInput)(nil)).Elem(), PortSecGroupAssociateMap{})
 	pulumi.RegisterOutputType(PortSecGroupAssociateOutput{})
 	pulumi.RegisterOutputType(PortSecGroupAssociatePtrOutput{})
 	pulumi.RegisterOutputType(PortSecGroupAssociateArrayOutput{})

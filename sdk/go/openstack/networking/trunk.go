@@ -46,7 +46,7 @@ import (
 // 			AdminStateUp: pulumi.Bool(true),
 // 			NetworkId:    network1.ID(),
 // 		}, pulumi.DependsOn([]pulumi.Resource{
-// 			"openstack_networking_subnet_v2.subnet_1",
+// 			pulumi.Resource("openstack_networking_subnet_v2.subnet_1"),
 // 		}))
 // 		if err != nil {
 // 			return err
@@ -55,7 +55,7 @@ import (
 // 			AdminStateUp: pulumi.Bool(true),
 // 			NetworkId:    network1.ID(),
 // 		}, pulumi.DependsOn([]pulumi.Resource{
-// 			"openstack_networking_subnet_v2.subnet_1",
+// 			pulumi.Resource("openstack_networking_subnet_v2.subnet_1"),
 // 		}))
 // 		if err != nil {
 // 			return err
@@ -344,7 +344,7 @@ type TrunkArrayInput interface {
 type TrunkArray []TrunkInput
 
 func (TrunkArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Trunk)(nil))
+	return reflect.TypeOf((*[]*Trunk)(nil)).Elem()
 }
 
 func (i TrunkArray) ToTrunkArrayOutput() TrunkArrayOutput {
@@ -369,7 +369,7 @@ type TrunkMapInput interface {
 type TrunkMap map[string]TrunkInput
 
 func (TrunkMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Trunk)(nil))
+	return reflect.TypeOf((*map[string]*Trunk)(nil)).Elem()
 }
 
 func (i TrunkMap) ToTrunkMapOutput() TrunkMapOutput {
@@ -380,9 +380,7 @@ func (i TrunkMap) ToTrunkMapOutputWithContext(ctx context.Context) TrunkMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(TrunkMapOutput)
 }
 
-type TrunkOutput struct {
-	*pulumi.OutputState
-}
+type TrunkOutput struct{ *pulumi.OutputState }
 
 func (TrunkOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Trunk)(nil))
@@ -401,14 +399,12 @@ func (o TrunkOutput) ToTrunkPtrOutput() TrunkPtrOutput {
 }
 
 func (o TrunkOutput) ToTrunkPtrOutputWithContext(ctx context.Context) TrunkPtrOutput {
-	return o.ApplyT(func(v Trunk) *Trunk {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Trunk) *Trunk {
 		return &v
 	}).(TrunkPtrOutput)
 }
 
-type TrunkPtrOutput struct {
-	*pulumi.OutputState
-}
+type TrunkPtrOutput struct{ *pulumi.OutputState }
 
 func (TrunkPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Trunk)(nil))
@@ -420,6 +416,16 @@ func (o TrunkPtrOutput) ToTrunkPtrOutput() TrunkPtrOutput {
 
 func (o TrunkPtrOutput) ToTrunkPtrOutputWithContext(ctx context.Context) TrunkPtrOutput {
 	return o
+}
+
+func (o TrunkPtrOutput) Elem() TrunkOutput {
+	return o.ApplyT(func(v *Trunk) Trunk {
+		if v != nil {
+			return *v
+		}
+		var ret Trunk
+		return ret
+	}).(TrunkOutput)
 }
 
 type TrunkArrayOutput struct{ *pulumi.OutputState }
@@ -463,6 +469,10 @@ func (o TrunkMapOutput) MapIndex(k pulumi.StringInput) TrunkOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TrunkInput)(nil)).Elem(), &Trunk{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TrunkPtrInput)(nil)).Elem(), &Trunk{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TrunkArrayInput)(nil)).Elem(), TrunkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TrunkMapInput)(nil)).Elem(), TrunkMap{})
 	pulumi.RegisterOutputType(TrunkOutput{})
 	pulumi.RegisterOutputType(TrunkPtrOutput{})
 	pulumi.RegisterOutputType(TrunkArrayOutput{})

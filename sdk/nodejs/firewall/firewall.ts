@@ -178,51 +178,51 @@ export interface FirewallState {
      * (must be "true" or "false" if provided - defaults to "true").
      * Changing this updates the `adminStateUp` of an existing firewall.
      */
-    readonly adminStateUp?: pulumi.Input<boolean>;
+    adminStateUp?: pulumi.Input<boolean>;
     /**
      * Router(s) to associate this firewall instance
      * with. Must be a list of strings. Changing this updates the associated routers
      * of an existing firewall. Conflicts with `noRouters`.
      */
-    readonly associatedRouters?: pulumi.Input<pulumi.Input<string>[]>;
+    associatedRouters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A description for the firewall. Changing this
      * updates the `description` of an existing firewall.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * A name for the firewall. Changing this
      * updates the `name` of an existing firewall.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Should this firewall not be associated with any routers
      * (must be "true" or "false" if provide - defaults to "false").
      * Conflicts with `associatedRouters`.
      */
-    readonly noRouters?: pulumi.Input<boolean>;
+    noRouters?: pulumi.Input<boolean>;
     /**
      * The policy resource id for the firewall. Changing
      * this updates the `policyId` of an existing firewall.
      */
-    readonly policyId?: pulumi.Input<string>;
+    policyId?: pulumi.Input<string>;
     /**
      * The region in which to obtain the v1 networking client.
      * A networking client is needed to create a firewall. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * firewall.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The owner of the floating IP. Required if admin wants
      * to create a firewall for another tenant. Changing this creates a new
      * firewall.
      */
-    readonly tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string>;
     /**
      * Map of additional options.
      */
-    readonly valueSpecs?: pulumi.Input<{[key: string]: any}>;
+    valueSpecs?: pulumi.Input<{[key: string]: any}>;
 }
 
 /**
@@ -234,49 +234,49 @@ export interface FirewallArgs {
      * (must be "true" or "false" if provided - defaults to "true").
      * Changing this updates the `adminStateUp` of an existing firewall.
      */
-    readonly adminStateUp?: pulumi.Input<boolean>;
+    adminStateUp?: pulumi.Input<boolean>;
     /**
      * Router(s) to associate this firewall instance
      * with. Must be a list of strings. Changing this updates the associated routers
      * of an existing firewall. Conflicts with `noRouters`.
      */
-    readonly associatedRouters?: pulumi.Input<pulumi.Input<string>[]>;
+    associatedRouters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A description for the firewall. Changing this
      * updates the `description` of an existing firewall.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * A name for the firewall. Changing this
      * updates the `name` of an existing firewall.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Should this firewall not be associated with any routers
      * (must be "true" or "false" if provide - defaults to "false").
      * Conflicts with `associatedRouters`.
      */
-    readonly noRouters?: pulumi.Input<boolean>;
+    noRouters?: pulumi.Input<boolean>;
     /**
      * The policy resource id for the firewall. Changing
      * this updates the `policyId` of an existing firewall.
      */
-    readonly policyId: pulumi.Input<string>;
+    policyId: pulumi.Input<string>;
     /**
      * The region in which to obtain the v1 networking client.
      * A networking client is needed to create a firewall. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * firewall.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The owner of the floating IP. Required if admin wants
      * to create a firewall for another tenant. Changing this creates a new
      * firewall.
      */
-    readonly tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string>;
     /**
      * Map of additional options.
      */
-    readonly valueSpecs?: pulumi.Input<{[key: string]: any}>;
+    valueSpecs?: pulumi.Input<{[key: string]: any}>;
 }

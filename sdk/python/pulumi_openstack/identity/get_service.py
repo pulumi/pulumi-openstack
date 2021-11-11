@@ -12,6 +12,7 @@ __all__ = [
     'GetServiceResult',
     'AwaitableGetServiceResult',
     'get_service',
+    'get_service_output',
 ]
 
 @pulumi.output_type
@@ -146,3 +147,33 @@ def get_service(enabled: Optional[bool] = None,
         name=__ret__.name,
         region=__ret__.region,
         type=__ret__.type)
+
+
+@_utilities.lift_output_func(get_service)
+def get_service_output(enabled: Optional[pulumi.Input[Optional[bool]]] = None,
+                       name: Optional[pulumi.Input[Optional[str]]] = None,
+                       region: Optional[pulumi.Input[Optional[str]]] = None,
+                       type: Optional[pulumi.Input[Optional[str]]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceResult]:
+    """
+    Use this data source to get the ID of an OpenStack service.
+
+    > **Note:** This usually requires admin privileges.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    service1 = openstack.identity.get_service(name="keystone")
+    ```
+
+
+    :param bool enabled: The service status.
+    :param str name: The service name.
+    :param str region: The region in which to obtain the V3 Keystone client.
+           If omitted, the `region` argument of the provider is used.
+    :param str type: The service type.
+    """
+    ...

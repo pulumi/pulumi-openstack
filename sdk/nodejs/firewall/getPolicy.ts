@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -16,7 +15,7 @@ import * as utilities from "../utilities";
  *
  * const policy = pulumi.output(openstack.firewall.getPolicy({
  *     name: "tf_test_policy",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getPolicy(args?: GetPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicyResult> {
@@ -43,21 +42,21 @@ export interface GetPolicyArgs {
     /**
      * The name of the firewall policy.
      */
-    readonly name?: string;
+    name?: string;
     /**
      * The ID of the firewall policy.
      */
-    readonly policyId?: string;
+    policyId?: string;
     /**
      * The region in which to obtain the V2 Neutron client.
      * A Neutron client is needed to retrieve firewall policy ids. If omitted, the
      * `region` argument of the provider is used.
      */
-    readonly region?: string;
+    region?: string;
     /**
      * The owner of the firewall policy.
      */
-    readonly tenantId?: string;
+    tenantId?: string;
 }
 
 /**
@@ -100,4 +99,32 @@ export interface GetPolicyResult {
      * See Argument Reference above.
      */
     readonly tenantId: string;
+}
+
+export function getPolicyOutput(args?: GetPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPolicyResult> {
+    return pulumi.output(args).apply(a => getPolicy(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getPolicy.
+ */
+export interface GetPolicyOutputArgs {
+    /**
+     * The name of the firewall policy.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The ID of the firewall policy.
+     */
+    policyId?: pulumi.Input<string>;
+    /**
+     * The region in which to obtain the V2 Neutron client.
+     * A Neutron client is needed to retrieve firewall policy ids. If omitted, the
+     * `region` argument of the provider is used.
+     */
+    region?: pulumi.Input<string>;
+    /**
+     * The owner of the firewall policy.
+     */
+    tenantId?: pulumi.Input<string>;
 }

@@ -57,7 +57,7 @@ import * as utilities from "../utilities";
  *
  * const current = pulumi.output(openstack.identity.getAuthScope({
  *     name: "current",
- * }, { async: true }));
+ * }));
  * const container1 = new openstack.objectstorage.Container("container_1", {
  *     containerRead: `.r:-${var_username}`,
  *     containerWrite: pulumi.interpolate`${current.projectId}:${var_username}`,
@@ -206,51 +206,51 @@ export interface ContainerState {
      * can read the container (allows the GET method for all objects in the
      * container). Changing this updates the access control list read access.
      */
-    readonly containerRead?: pulumi.Input<string>;
+    containerRead?: pulumi.Input<string>;
     /**
      * The secret key for container synchronization.
      * Changing this updates container synchronization.
      */
-    readonly containerSyncKey?: pulumi.Input<string>;
+    containerSyncKey?: pulumi.Input<string>;
     /**
      * The destination for container synchronization.
      * Changing this updates container synchronization.
      */
-    readonly containerSyncTo?: pulumi.Input<string>;
+    containerSyncTo?: pulumi.Input<string>;
     /**
      * Sets an ACL that grants write access.
      * Changing this updates the access control list write access.
      */
-    readonly containerWrite?: pulumi.Input<string>;
+    containerWrite?: pulumi.Input<string>;
     /**
      * The MIME type for the container. Changing this
      * updates the MIME type.
      */
-    readonly contentType?: pulumi.Input<string>;
+    contentType?: pulumi.Input<string>;
     /**
      * A boolean that indicates all objects should be deleted from the container so that the container can be destroyed without error. These objects are not recoverable.
      */
-    readonly forceDestroy?: pulumi.Input<boolean>;
+    forceDestroy?: pulumi.Input<boolean>;
     /**
      * Custom key/value pairs to associate with the container.
      * Changing this updates the existing container metadata.
      */
-    readonly metadata?: pulumi.Input<{[key: string]: any}>;
+    metadata?: pulumi.Input<{[key: string]: any}>;
     /**
      * A unique name for the container. Changing this creates a
      * new container.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The region in which to create the container. If
      * omitted, the `region` argument of the provider is used. Changing this
      * creates a new container.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * Enable object versioning. The structure is described below.
      */
-    readonly versioning?: pulumi.Input<inputs.objectstorage.ContainerVersioning>;
+    versioning?: pulumi.Input<inputs.objectstorage.ContainerVersioning>;
 }
 
 /**
@@ -263,49 +263,49 @@ export interface ContainerArgs {
      * can read the container (allows the GET method for all objects in the
      * container). Changing this updates the access control list read access.
      */
-    readonly containerRead?: pulumi.Input<string>;
+    containerRead?: pulumi.Input<string>;
     /**
      * The secret key for container synchronization.
      * Changing this updates container synchronization.
      */
-    readonly containerSyncKey?: pulumi.Input<string>;
+    containerSyncKey?: pulumi.Input<string>;
     /**
      * The destination for container synchronization.
      * Changing this updates container synchronization.
      */
-    readonly containerSyncTo?: pulumi.Input<string>;
+    containerSyncTo?: pulumi.Input<string>;
     /**
      * Sets an ACL that grants write access.
      * Changing this updates the access control list write access.
      */
-    readonly containerWrite?: pulumi.Input<string>;
+    containerWrite?: pulumi.Input<string>;
     /**
      * The MIME type for the container. Changing this
      * updates the MIME type.
      */
-    readonly contentType?: pulumi.Input<string>;
+    contentType?: pulumi.Input<string>;
     /**
      * A boolean that indicates all objects should be deleted from the container so that the container can be destroyed without error. These objects are not recoverable.
      */
-    readonly forceDestroy?: pulumi.Input<boolean>;
+    forceDestroy?: pulumi.Input<boolean>;
     /**
      * Custom key/value pairs to associate with the container.
      * Changing this updates the existing container metadata.
      */
-    readonly metadata?: pulumi.Input<{[key: string]: any}>;
+    metadata?: pulumi.Input<{[key: string]: any}>;
     /**
      * A unique name for the container. Changing this creates a
      * new container.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The region in which to create the container. If
      * omitted, the `region` argument of the provider is used. Changing this
      * creates a new container.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * Enable object versioning. The structure is described below.
      */
-    readonly versioning?: pulumi.Input<inputs.objectstorage.ContainerVersioning>;
+    versioning?: pulumi.Input<inputs.objectstorage.ContainerVersioning>;
 }

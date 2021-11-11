@@ -189,54 +189,54 @@ export interface OrderV1State {
     /**
      * The container reference / where to find the container.
      */
-    readonly containerRef?: pulumi.Input<string>;
+    containerRef?: pulumi.Input<string>;
     /**
      * The date the order was created.
      */
-    readonly created?: pulumi.Input<string>;
+    created?: pulumi.Input<string>;
     /**
      * The creator of the order.
      */
-    readonly creatorId?: pulumi.Input<string>;
+    creatorId?: pulumi.Input<string>;
     /**
      * Dictionary containing the order metadata used to generate the order. The structure is described below.
      */
-    readonly meta?: pulumi.Input<inputs.keymanager.OrderV1Meta>;
+    meta?: pulumi.Input<inputs.keymanager.OrderV1Meta>;
     /**
      * The order reference / where to find the order.
      */
-    readonly orderRef?: pulumi.Input<string>;
+    orderRef?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V1 KeyManager client.
      * A KeyManager client is needed to create a order. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * V1 order.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The secret reference / where to find the secret.
      */
-    readonly secretRef?: pulumi.Input<string>;
+    secretRef?: pulumi.Input<string>;
     /**
      * The status of the order.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The sub status of the order.
      */
-    readonly subStatus?: pulumi.Input<string>;
+    subStatus?: pulumi.Input<string>;
     /**
      * The sub status message of the order.
      */
-    readonly subStatusMessage?: pulumi.Input<string>;
+    subStatusMessage?: pulumi.Input<string>;
     /**
      * The type of key to be generated. Must be one of `asymmetric`, `key`.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
     /**
      * The date the order was last updated.
      */
-    readonly updated?: pulumi.Input<string>;
+    updated?: pulumi.Input<string>;
 }
 
 /**
@@ -246,16 +246,16 @@ export interface OrderV1Args {
     /**
      * Dictionary containing the order metadata used to generate the order. The structure is described below.
      */
-    readonly meta: pulumi.Input<inputs.keymanager.OrderV1Meta>;
+    meta: pulumi.Input<inputs.keymanager.OrderV1Meta>;
     /**
      * The region in which to obtain the V1 KeyManager client.
      * A KeyManager client is needed to create a order. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * V1 order.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The type of key to be generated. Must be one of `asymmetric`, `key`.
      */
-    readonly type: pulumi.Input<string>;
+    type: pulumi.Input<string>;
 }

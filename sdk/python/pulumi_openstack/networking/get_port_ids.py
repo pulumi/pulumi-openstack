@@ -12,6 +12,7 @@ __all__ = [
     'GetPortIdsResult',
     'AwaitableGetPortIdsResult',
     'get_port_ids',
+    'get_port_ids_output',
 ]
 
 @pulumi.output_type
@@ -299,3 +300,58 @@ def get_port_ids(admin_state_up: Optional[bool] = None,
         status=__ret__.status,
         tags=__ret__.tags,
         tenant_id=__ret__.tenant_id)
+
+
+@_utilities.lift_output_func(get_port_ids)
+def get_port_ids_output(admin_state_up: Optional[pulumi.Input[Optional[bool]]] = None,
+                        description: Optional[pulumi.Input[Optional[str]]] = None,
+                        device_id: Optional[pulumi.Input[Optional[str]]] = None,
+                        device_owner: Optional[pulumi.Input[Optional[str]]] = None,
+                        dns_name: Optional[pulumi.Input[Optional[str]]] = None,
+                        fixed_ip: Optional[pulumi.Input[Optional[str]]] = None,
+                        mac_address: Optional[pulumi.Input[Optional[str]]] = None,
+                        name: Optional[pulumi.Input[Optional[str]]] = None,
+                        network_id: Optional[pulumi.Input[Optional[str]]] = None,
+                        project_id: Optional[pulumi.Input[Optional[str]]] = None,
+                        region: Optional[pulumi.Input[Optional[str]]] = None,
+                        security_group_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                        sort_direction: Optional[pulumi.Input[Optional[str]]] = None,
+                        sort_key: Optional[pulumi.Input[Optional[str]]] = None,
+                        status: Optional[pulumi.Input[Optional[str]]] = None,
+                        tags: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                        tenant_id: Optional[pulumi.Input[Optional[str]]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPortIdsResult]:
+    """
+    Use this data source to get a list of Openstack Port IDs matching the
+    specified criteria.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    ports = openstack.networking.get_port_ids(name="port")
+    ```
+
+
+    :param bool admin_state_up: The administrative state of the port.
+    :param str description: Human-readable description of the port.
+    :param str device_id: The ID of the device the port belongs to.
+    :param str device_owner: The device owner of the port.
+    :param str fixed_ip: The port IP address filter.
+    :param str mac_address: The MAC address of the port.
+    :param str name: The name of the port.
+    :param str network_id: The ID of the network the port belongs to.
+    :param str project_id: The owner of the port.
+    :param str region: The region in which to obtain the V2 Neutron client.
+           A Neutron client is needed to retrieve port ids. If omitted, the
+           `region` argument of the provider is used.
+    :param Sequence[str] security_group_ids: The list of port security group IDs to filter.
+    :param str sort_direction: Order the results in either `asc` or `desc`.
+           Defaults to none.
+    :param str sort_key: Sort ports based on a certain key. Defaults to none.
+    :param str status: The status of the port.
+    :param Sequence[str] tags: The list of port tags to filter.
+    """
+    ...

@@ -4,6 +4,9 @@
 package blockstorage
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -80,4 +83,103 @@ type GetVolumeV3Result struct {
 	Status string `pulumi:"status"`
 	// The type of the volume.
 	VolumeType string `pulumi:"volumeType"`
+}
+
+func GetVolumeV3Output(ctx *pulumi.Context, args GetVolumeV3OutputArgs, opts ...pulumi.InvokeOption) GetVolumeV3ResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetVolumeV3Result, error) {
+			args := v.(GetVolumeV3Args)
+			r, err := GetVolumeV3(ctx, &args, opts...)
+			return *r, err
+		}).(GetVolumeV3ResultOutput)
+}
+
+// A collection of arguments for invoking getVolumeV3.
+type GetVolumeV3OutputArgs struct {
+	// Indicates if the volume is bootable.
+	Bootable pulumi.StringPtrInput `pulumi:"bootable"`
+	// Metadata key/value pairs associated with the volume.
+	Metadata pulumi.MapInput `pulumi:"metadata"`
+	// The name of the volume.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The region in which to obtain the V3 Block Storage
+	// client. If omitted, the `region` argument of the provider is used.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// The status of the volume.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// The type of the volume.
+	VolumeType pulumi.StringPtrInput `pulumi:"volumeType"`
+}
+
+func (GetVolumeV3OutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVolumeV3Args)(nil)).Elem()
+}
+
+// A collection of values returned by getVolumeV3.
+type GetVolumeV3ResultOutput struct{ *pulumi.OutputState }
+
+func (GetVolumeV3ResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVolumeV3Result)(nil)).Elem()
+}
+
+func (o GetVolumeV3ResultOutput) ToGetVolumeV3ResultOutput() GetVolumeV3ResultOutput {
+	return o
+}
+
+func (o GetVolumeV3ResultOutput) ToGetVolumeV3ResultOutputWithContext(ctx context.Context) GetVolumeV3ResultOutput {
+	return o
+}
+
+// Indicates if the volume is bootable.
+func (o GetVolumeV3ResultOutput) Bootable() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVolumeV3Result) string { return v.Bootable }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetVolumeV3ResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVolumeV3Result) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// See Argument Reference above.
+func (o GetVolumeV3ResultOutput) Metadata() pulumi.MapOutput {
+	return o.ApplyT(func(v GetVolumeV3Result) map[string]interface{} { return v.Metadata }).(pulumi.MapOutput)
+}
+
+// Indicates if the volume can be attached to more then one server.
+func (o GetVolumeV3ResultOutput) Multiattach() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetVolumeV3Result) bool { return v.Multiattach }).(pulumi.BoolOutput)
+}
+
+// See Argument Reference above.
+func (o GetVolumeV3ResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVolumeV3Result) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// See Argument Reference above.
+func (o GetVolumeV3ResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVolumeV3Result) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// The size of the volume in GBs.
+func (o GetVolumeV3ResultOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVolumeV3Result) int { return v.Size }).(pulumi.IntOutput)
+}
+
+// The ID of the volume from which the current volume was created.
+func (o GetVolumeV3ResultOutput) SourceVolumeId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVolumeV3Result) string { return v.SourceVolumeId }).(pulumi.StringOutput)
+}
+
+// See Argument Reference above.
+func (o GetVolumeV3ResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVolumeV3Result) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The type of the volume.
+func (o GetVolumeV3ResultOutput) VolumeType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVolumeV3Result) string { return v.VolumeType }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetVolumeV3ResultOutput{})
 }

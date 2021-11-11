@@ -12,6 +12,7 @@ __all__ = [
     'GetHypervisorV2Result',
     'AwaitableGetHypervisorV2Result',
     'get_hypervisor_v2',
+    'get_hypervisor_v2_output',
 ]
 
 @pulumi.output_type
@@ -174,3 +175,25 @@ def get_hypervisor_v2(hostname: Optional[str] = None,
         status=__ret__.status,
         type=__ret__.type,
         vcpus=__ret__.vcpus)
+
+
+@_utilities.lift_output_func(get_hypervisor_v2)
+def get_hypervisor_v2_output(hostname: Optional[pulumi.Input[str]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHypervisorV2Result]:
+    """
+    Use this data source to get information about hypervisors
+    by hostname.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    host01 = openstack.compute.get_hypervisor_v2(hostname="host01")
+    ```
+
+
+    :param str hostname: The hostname of the hypervisor
+    """
+    ...

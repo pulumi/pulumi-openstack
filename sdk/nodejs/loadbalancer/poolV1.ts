@@ -254,12 +254,12 @@ export interface PoolV1State {
      * members of the pool. The current specification supports 'ROUND_ROBIN' and
      * 'LEAST_CONNECTIONS' as valid values for this attribute.
      */
-    readonly lbMethod?: pulumi.Input<string>;
+    lbMethod?: pulumi.Input<string>;
     /**
      * The backend load balancing provider. For example:
      * `haproxy`, `F5`, etc.
      */
-    readonly lbProvider?: pulumi.Input<string>;
+    lbProvider?: pulumi.Input<string>;
     /**
      * An existing node to add to the pool. Changing this
      * updates the members of the pool. The member object structure is documented
@@ -268,40 +268,40 @@ export interface PoolV1State {
      *
      * @deprecated Use openstack_lb_member_v1 instead
      */
-    readonly members?: pulumi.Input<pulumi.Input<string>[]>;
+    members?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A list of IDs of monitors to associate with the
      * pool.
      */
-    readonly monitorIds?: pulumi.Input<pulumi.Input<string>[]>;
+    monitorIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The name of the pool. Changing this updates the name of
      * the existing pool.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The protocol used by the pool members, you can use
      * either 'TCP, 'HTTP', or 'HTTPS'. Changing this creates a new pool.
      */
-    readonly protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create an LB pool. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * LB pool.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The network on which the members of the pool will be
      * located. Only members that are on this network can be added to the pool.
      * Changing this creates a new pool.
      */
-    readonly subnetId?: pulumi.Input<string>;
+    subnetId?: pulumi.Input<string>;
     /**
      * The owner of the member. Required if admin wants to
      * create a pool member for another tenant. Changing this creates a new member.
      */
-    readonly tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string>;
 }
 
 /**
@@ -313,12 +313,12 @@ export interface PoolV1Args {
      * members of the pool. The current specification supports 'ROUND_ROBIN' and
      * 'LEAST_CONNECTIONS' as valid values for this attribute.
      */
-    readonly lbMethod: pulumi.Input<string>;
+    lbMethod: pulumi.Input<string>;
     /**
      * The backend load balancing provider. For example:
      * `haproxy`, `F5`, etc.
      */
-    readonly lbProvider?: pulumi.Input<string>;
+    lbProvider?: pulumi.Input<string>;
     /**
      * An existing node to add to the pool. Changing this
      * updates the members of the pool. The member object structure is documented
@@ -327,38 +327,38 @@ export interface PoolV1Args {
      *
      * @deprecated Use openstack_lb_member_v1 instead
      */
-    readonly members?: pulumi.Input<pulumi.Input<string>[]>;
+    members?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A list of IDs of monitors to associate with the
      * pool.
      */
-    readonly monitorIds?: pulumi.Input<pulumi.Input<string>[]>;
+    monitorIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The name of the pool. Changing this updates the name of
      * the existing pool.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The protocol used by the pool members, you can use
      * either 'TCP, 'HTTP', or 'HTTPS'. Changing this creates a new pool.
      */
-    readonly protocol: pulumi.Input<string>;
+    protocol: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create an LB pool. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * LB pool.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The network on which the members of the pool will be
      * located. Only members that are on this network can be added to the pool.
      * Changing this creates a new pool.
      */
-    readonly subnetId: pulumi.Input<string>;
+    subnetId: pulumi.Input<string>;
     /**
      * The owner of the member. Required if admin wants to
      * create a pool member for another tenant. Changing this creates a new member.
      */
-    readonly tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string>;
 }

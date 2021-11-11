@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.OpenStack.SharedFileSystem
 {
@@ -39,6 +40,35 @@ namespace Pulumi.OpenStack.SharedFileSystem
         /// </summary>
         public static Task<GetShareResult> InvokeAsync(GetShareArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetShareResult>("openstack:sharedfilesystem/getShare:getShare", args ?? new GetShareArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to get the ID of an available Shared File System share.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var share1 = Output.Create(OpenStack.SharedFileSystem.GetShare.InvokeAsync(new OpenStack.SharedFileSystem.GetShareArgs
+        ///         {
+        ///             Name = "share_1",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetShareResult> Invoke(GetShareInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetShareResult>("openstack:sharedfilesystem/getShare:getShare", args ?? new GetShareInvokeArgs(), options.WithVersion());
     }
 
 
@@ -112,6 +142,80 @@ namespace Pulumi.OpenStack.SharedFileSystem
         public string? Status { get; set; }
 
         public GetShareArgs()
+        {
+        }
+    }
+
+    public sealed class GetShareInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The human-readable description for the share.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The export location path of the share. Available
+        /// since Manila API version 2.35.
+        /// </summary>
+        [Input("exportLocationPath")]
+        public Input<string>? ExportLocationPath { get; set; }
+
+        /// <summary>
+        /// The level of visibility for the share.
+        /// length.
+        /// </summary>
+        [Input("isPublic")]
+        public Input<bool>? IsPublic { get; set; }
+
+        [Input("metadata")]
+        private InputMap<object>? _metadata;
+
+        /// <summary>
+        /// One or more metadata key and value pairs as a dictionary of
+        /// strings.
+        /// </summary>
+        public InputMap<object> Metadata
+        {
+            get => _metadata ?? (_metadata = new InputMap<object>());
+            set => _metadata = value;
+        }
+
+        /// <summary>
+        /// The name of the share.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The region in which to obtain the V2 Shared File System client.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// The UUID of the share's share network.
+        /// </summary>
+        [Input("shareNetworkId")]
+        public Input<string>? ShareNetworkId { get; set; }
+
+        /// <summary>
+        /// The UUID of the share's base snapshot.
+        /// </summary>
+        [Input("snapshotId")]
+        public Input<string>? SnapshotId { get; set; }
+
+        /// <summary>
+        /// A share status filter. A valid value is `creating`,
+        /// `error`, `available`, `deleting`, `error_deleting`, `manage_starting`,
+        /// `manage_error`, `unmanage_starting`, `unmanage_error`, `unmanaged`,
+        /// `extending`, `extending_error`, `shrinking`, `shrinking_error`, or
+        /// `shrinking_possible_data_loss_error`.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetShareInvokeArgs()
         {
         }
     }

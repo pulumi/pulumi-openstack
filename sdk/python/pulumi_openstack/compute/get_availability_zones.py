@@ -12,6 +12,7 @@ __all__ = [
     'GetAvailabilityZonesResult',
     'AwaitableGetAvailabilityZonesResult',
     'get_availability_zones',
+    'get_availability_zones_output',
 ]
 
 @pulumi.output_type
@@ -105,3 +106,26 @@ def get_availability_zones(region: Optional[str] = None,
         names=__ret__.names,
         region=__ret__.region,
         state=__ret__.state)
+
+
+@_utilities.lift_output_func(get_availability_zones)
+def get_availability_zones_output(region: Optional[pulumi.Input[Optional[str]]] = None,
+                                  state: Optional[pulumi.Input[Optional[str]]] = None,
+                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAvailabilityZonesResult]:
+    """
+    Use this data source to get a list of availability zones from OpenStack
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    zones = openstack.compute.get_availability_zones()
+    ```
+
+
+    :param str region: The `region` to fetch availability zones from, defaults to the provider's `region`
+    :param str state: The `state` of the availability zones to match, default ("available").
+    """
+    ...

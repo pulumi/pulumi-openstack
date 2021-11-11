@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -16,7 +15,7 @@ import * as utilities from "../utilities";
  *
  * const volume1 = pulumi.output(openstack.blockstorage.getVolumeV3({
  *     name: "volume_1",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getVolumeV3(args?: GetVolumeV3Args, opts?: pulumi.InvokeOptions): Promise<GetVolumeV3Result> {
@@ -45,28 +44,28 @@ export interface GetVolumeV3Args {
     /**
      * Indicates if the volume is bootable.
      */
-    readonly bootable?: string;
+    bootable?: string;
     /**
      * Metadata key/value pairs associated with the volume.
      */
-    readonly metadata?: {[key: string]: any};
+    metadata?: {[key: string]: any};
     /**
      * The name of the volume.
      */
-    readonly name?: string;
+    name?: string;
     /**
      * The region in which to obtain the V3 Block Storage
      * client. If omitted, the `region` argument of the provider is used.
      */
-    readonly region?: string;
+    region?: string;
     /**
      * The status of the volume.
      */
-    readonly status?: string;
+    status?: string;
     /**
      * The type of the volume.
      */
-    readonly volumeType?: string;
+    volumeType?: string;
 }
 
 /**
@@ -113,4 +112,39 @@ export interface GetVolumeV3Result {
      * The type of the volume.
      */
     readonly volumeType: string;
+}
+
+export function getVolumeV3Output(args?: GetVolumeV3OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVolumeV3Result> {
+    return pulumi.output(args).apply(a => getVolumeV3(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getVolumeV3.
+ */
+export interface GetVolumeV3OutputArgs {
+    /**
+     * Indicates if the volume is bootable.
+     */
+    bootable?: pulumi.Input<string>;
+    /**
+     * Metadata key/value pairs associated with the volume.
+     */
+    metadata?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The name of the volume.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The region in which to obtain the V3 Block Storage
+     * client. If omitted, the `region` argument of the provider is used.
+     */
+    region?: pulumi.Input<string>;
+    /**
+     * The status of the volume.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * The type of the volume.
+     */
+    volumeType?: pulumi.Input<string>;
 }

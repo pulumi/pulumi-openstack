@@ -99,21 +99,21 @@ export interface UserState {
     /**
      * A list of database user should have access to.
      */
-    readonly databases?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly host?: pulumi.Input<string>;
-    readonly instanceId?: pulumi.Input<string>;
+    databases?: pulumi.Input<pulumi.Input<string>[]>;
+    host?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string>;
     /**
      * A unique name for the resource.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * User's password.
      */
-    readonly password?: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
     /**
      * Openstack region resource is created in.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
 }
 
 /**
@@ -123,19 +123,19 @@ export interface UserArgs {
     /**
      * A list of database user should have access to.
      */
-    readonly databases?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly host?: pulumi.Input<string>;
-    readonly instanceId: pulumi.Input<string>;
+    databases?: pulumi.Input<pulumi.Input<string>[]>;
+    host?: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
     /**
      * A unique name for the resource.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * User's password.
      */
-    readonly password: pulumi.Input<string>;
+    password: pulumi.Input<string>;
     /**
      * Openstack region resource is created in.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
 }

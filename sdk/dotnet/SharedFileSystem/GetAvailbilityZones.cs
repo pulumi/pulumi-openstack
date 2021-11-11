@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.OpenStack.SharedFileSystem
 {
@@ -37,6 +38,33 @@ namespace Pulumi.OpenStack.SharedFileSystem
         /// </summary>
         public static Task<GetAvailbilityZonesResult> InvokeAsync(GetAvailbilityZonesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAvailbilityZonesResult>("openstack:sharedfilesystem/getAvailbilityZones:getAvailbilityZones", args ?? new GetAvailbilityZonesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to get a list of Shared File System availability zones
+        /// from OpenStack
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var zones = Output.Create(OpenStack.SharedFileSystem.GetAvailbilityZones.InvokeAsync());
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetAvailbilityZonesResult> Invoke(GetAvailbilityZonesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAvailbilityZonesResult>("openstack:sharedfilesystem/getAvailbilityZones:getAvailbilityZones", args ?? new GetAvailbilityZonesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -50,6 +78,20 @@ namespace Pulumi.OpenStack.SharedFileSystem
         public string? Region { get; set; }
 
         public GetAvailbilityZonesArgs()
+        {
+        }
+    }
+
+    public sealed class GetAvailbilityZonesInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The region in which to obtain the V2 Shared File System
+        /// client. If omitted, the `region` argument of the provider is used.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        public GetAvailbilityZonesInvokeArgs()
         {
         }
     }

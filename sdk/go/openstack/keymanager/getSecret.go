@@ -4,6 +4,9 @@
 package keymanager
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -99,4 +102,186 @@ type GetSecretResult struct {
 	UpdatedAt string `pulumi:"updatedAt"`
 	// See Argument Reference above.
 	UpdatedAtFilter *string `pulumi:"updatedAtFilter"`
+}
+
+func GetSecretOutput(ctx *pulumi.Context, args GetSecretOutputArgs, opts ...pulumi.InvokeOption) GetSecretResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetSecretResult, error) {
+			args := v.(GetSecretArgs)
+			r, err := GetSecret(ctx, &args, opts...)
+			return *r, err
+		}).(GetSecretResultOutput)
+}
+
+// A collection of arguments for invoking getSecret.
+type GetSecretOutputArgs struct {
+	// Select the Secret with an ACL that contains the user.
+	// Project scope is ignored. Defaults to `false`.
+	AclOnly pulumi.BoolPtrInput `pulumi:"aclOnly"`
+	// The Secret algorithm.
+	Algorithm pulumi.StringPtrInput `pulumi:"algorithm"`
+	// The Secret bit length.
+	BitLength pulumi.IntPtrInput `pulumi:"bitLength"`
+	// Date filter to select the Secret with
+	// created matching the specified criteria. See Date Filters below for more
+	// detail.
+	CreatedAtFilter pulumi.StringPtrInput `pulumi:"createdAtFilter"`
+	// Date filter to select the Secret with
+	// expiration matching the specified criteria. See Date Filters below for more
+	// detail.
+	ExpirationFilter pulumi.StringPtrInput `pulumi:"expirationFilter"`
+	// The Secret mode.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// The Secret name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The region in which to obtain the V1 KeyManager client.
+	// A KeyManager client is needed to fetch a secret. If omitted, the `region`
+	// argument of the provider is used.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// The Secret type. For more information see
+	// [Secret types](https://docs.openstack.org/barbican/latest/api/reference/secret_types.html).
+	SecretType pulumi.StringPtrInput `pulumi:"secretType"`
+	// Date filter to select the Secret with
+	// updated matching the specified criteria. See Date Filters below for more
+	// detail.
+	UpdatedAtFilter pulumi.StringPtrInput `pulumi:"updatedAtFilter"`
+}
+
+func (GetSecretOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getSecret.
+type GetSecretResultOutput struct{ *pulumi.OutputState }
+
+func (GetSecretResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretResult)(nil)).Elem()
+}
+
+func (o GetSecretResultOutput) ToGetSecretResultOutput() GetSecretResultOutput {
+	return o
+}
+
+func (o GetSecretResultOutput) ToGetSecretResultOutputWithContext(ctx context.Context) GetSecretResultOutput {
+	return o
+}
+
+// See Argument Reference above.
+func (o GetSecretResultOutput) AclOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetSecretResult) *bool { return v.AclOnly }).(pulumi.BoolPtrOutput)
+}
+
+// The list of ACLs assigned to a secret. The `read` structure is described below.
+func (o GetSecretResultOutput) Acls() GetSecretAclArrayOutput {
+	return o.ApplyT(func(v GetSecretResult) []GetSecretAcl { return v.Acls }).(GetSecretAclArrayOutput)
+}
+
+// See Argument Reference above.
+func (o GetSecretResultOutput) Algorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretResult) *string { return v.Algorithm }).(pulumi.StringPtrOutput)
+}
+
+// See Argument Reference above.
+func (o GetSecretResultOutput) BitLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetSecretResult) *int { return v.BitLength }).(pulumi.IntPtrOutput)
+}
+
+// The map of the content types, assigned on the secret.
+func (o GetSecretResultOutput) ContentTypes() pulumi.MapOutput {
+	return o.ApplyT(func(v GetSecretResult) map[string]interface{} { return v.ContentTypes }).(pulumi.MapOutput)
+}
+
+// The date the secret ACL was created.
+func (o GetSecretResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// See Argument Reference above.
+func (o GetSecretResultOutput) CreatedAtFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretResult) *string { return v.CreatedAtFilter }).(pulumi.StringPtrOutput)
+}
+
+// The creator of the secret.
+func (o GetSecretResultOutput) CreatorId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretResult) string { return v.CreatorId }).(pulumi.StringOutput)
+}
+
+// The date the secret will expire.
+func (o GetSecretResultOutput) Expiration() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretResult) string { return v.Expiration }).(pulumi.StringOutput)
+}
+
+// See Argument Reference above.
+func (o GetSecretResultOutput) ExpirationFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretResult) *string { return v.ExpirationFilter }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetSecretResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The map of metadata, assigned on the secret, which has been
+// explicitly and implicitly added.
+func (o GetSecretResultOutput) Metadata() pulumi.MapOutput {
+	return o.ApplyT(func(v GetSecretResult) map[string]interface{} { return v.Metadata }).(pulumi.MapOutput)
+}
+
+// See Argument Reference above.
+func (o GetSecretResultOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretResult) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// See Argument Reference above.
+func (o GetSecretResultOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The secret payload.
+func (o GetSecretResultOutput) Payload() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretResult) string { return v.Payload }).(pulumi.StringOutput)
+}
+
+// The Secret encoding.
+func (o GetSecretResultOutput) PayloadContentEncoding() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretResult) string { return v.PayloadContentEncoding }).(pulumi.StringOutput)
+}
+
+// The Secret content type.
+func (o GetSecretResultOutput) PayloadContentType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretResult) string { return v.PayloadContentType }).(pulumi.StringOutput)
+}
+
+// See Argument Reference above.
+func (o GetSecretResultOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretResult) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// The secret reference / where to find the secret.
+func (o GetSecretResultOutput) SecretRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretResult) string { return v.SecretRef }).(pulumi.StringOutput)
+}
+
+// See Argument Reference above.
+func (o GetSecretResultOutput) SecretType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretResult) *string { return v.SecretType }).(pulumi.StringPtrOutput)
+}
+
+// The status of the secret.
+func (o GetSecretResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The date the secret ACL was last updated.
+func (o GetSecretResultOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// See Argument Reference above.
+func (o GetSecretResultOutput) UpdatedAtFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretResult) *string { return v.UpdatedAtFilter }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetSecretResultOutput{})
 }

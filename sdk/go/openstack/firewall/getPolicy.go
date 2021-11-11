@@ -4,6 +4,9 @@
 package firewall
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -75,4 +78,95 @@ type LookupPolicyResult struct {
 	Shared bool `pulumi:"shared"`
 	// See Argument Reference above.
 	TenantId string `pulumi:"tenantId"`
+}
+
+func LookupPolicyOutput(ctx *pulumi.Context, args LookupPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupPolicyResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupPolicyResult, error) {
+			args := v.(LookupPolicyArgs)
+			r, err := LookupPolicy(ctx, &args, opts...)
+			return *r, err
+		}).(LookupPolicyResultOutput)
+}
+
+// A collection of arguments for invoking getPolicy.
+type LookupPolicyOutputArgs struct {
+	// The name of the firewall policy.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The ID of the firewall policy.
+	PolicyId pulumi.StringPtrInput `pulumi:"policyId"`
+	// The region in which to obtain the V2 Neutron client.
+	// A Neutron client is needed to retrieve firewall policy ids. If omitted, the
+	// `region` argument of the provider is used.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// The owner of the firewall policy.
+	TenantId pulumi.StringPtrInput `pulumi:"tenantId"`
+}
+
+func (LookupPolicyOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupPolicyArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getPolicy.
+type LookupPolicyResultOutput struct{ *pulumi.OutputState }
+
+func (LookupPolicyResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupPolicyResult)(nil)).Elem()
+}
+
+func (o LookupPolicyResultOutput) ToLookupPolicyResultOutput() LookupPolicyResultOutput {
+	return o
+}
+
+func (o LookupPolicyResultOutput) ToLookupPolicyResultOutputWithContext(ctx context.Context) LookupPolicyResultOutput {
+	return o
+}
+
+// The audit status of the firewall policy.
+func (o LookupPolicyResultOutput) Audited() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupPolicyResult) bool { return v.Audited }).(pulumi.BoolOutput)
+}
+
+// The description of the firewall policy.
+func (o LookupPolicyResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPolicyResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupPolicyResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPolicyResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// See Argument Reference above.
+func (o LookupPolicyResultOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupPolicyResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// See Argument Reference above.
+func (o LookupPolicyResultOutput) PolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupPolicyResult) *string { return v.PolicyId }).(pulumi.StringPtrOutput)
+}
+
+// See Argument Reference above.
+func (o LookupPolicyResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPolicyResult) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// The array of one or more firewall rules that comprise the policy.
+func (o LookupPolicyResultOutput) Rules() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupPolicyResult) []string { return v.Rules }).(pulumi.StringArrayOutput)
+}
+
+// The sharing status of the firewall policy.
+func (o LookupPolicyResultOutput) Shared() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupPolicyResult) bool { return v.Shared }).(pulumi.BoolOutput)
+}
+
+// See Argument Reference above.
+func (o LookupPolicyResultOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPolicyResult) string { return v.TenantId }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupPolicyResultOutput{})
 }

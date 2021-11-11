@@ -158,43 +158,43 @@ export interface PortForwardingV2State {
      * A text describing the port forwarding. Changing this
      * updates the `description` of an existing port forwarding.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The TCP/UDP/other protocol port number of the port forwarding. Changing this
      * updates the `externalPort` of an existing port forwarding.
      */
-    readonly externalPort?: pulumi.Input<number>;
+    externalPort?: pulumi.Input<number>;
     /**
      * The ID of the Neutron floating IP address. Changing this creates a new port forwarding.
      */
-    readonly floatingipId?: pulumi.Input<string>;
+    floatingipId?: pulumi.Input<string>;
     /**
      * The fixed IPv4 address of the Neutron port associated with the port forwarding.
      * Changing this updates the `internalIpAddress` of an existing port forwarding.
      */
-    readonly internalIpAddress?: pulumi.Input<string>;
+    internalIpAddress?: pulumi.Input<string>;
     /**
      * The TCP/UDP/other protocol port number of the Neutron port fixed IP address associated to the
      * port forwarding. Changing this updates the `internalPort` of an existing port forwarding.
      */
-    readonly internalPort?: pulumi.Input<number>;
+    internalPort?: pulumi.Input<number>;
     /**
      * The ID of the Neutron port associated with the port forwarding. Changing
      * this updates the `internalPortId` of an existing port forwarding.
      */
-    readonly internalPortId?: pulumi.Input<string>;
+    internalPortId?: pulumi.Input<string>;
     /**
      * The IP protocol used in the port forwarding. Changing this updates the `protocol`
      * of an existing port forwarding.
      */
-    readonly protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 networking client.
      * A networking client is needed to create a port forwarding. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * port forwarding.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
 }
 
 /**
@@ -205,41 +205,41 @@ export interface PortForwardingV2Args {
      * A text describing the port forwarding. Changing this
      * updates the `description` of an existing port forwarding.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The TCP/UDP/other protocol port number of the port forwarding. Changing this
      * updates the `externalPort` of an existing port forwarding.
      */
-    readonly externalPort: pulumi.Input<number>;
+    externalPort: pulumi.Input<number>;
     /**
      * The ID of the Neutron floating IP address. Changing this creates a new port forwarding.
      */
-    readonly floatingipId: pulumi.Input<string>;
+    floatingipId: pulumi.Input<string>;
     /**
      * The fixed IPv4 address of the Neutron port associated with the port forwarding.
      * Changing this updates the `internalIpAddress` of an existing port forwarding.
      */
-    readonly internalIpAddress: pulumi.Input<string>;
+    internalIpAddress: pulumi.Input<string>;
     /**
      * The TCP/UDP/other protocol port number of the Neutron port fixed IP address associated to the
      * port forwarding. Changing this updates the `internalPort` of an existing port forwarding.
      */
-    readonly internalPort: pulumi.Input<number>;
+    internalPort: pulumi.Input<number>;
     /**
      * The ID of the Neutron port associated with the port forwarding. Changing
      * this updates the `internalPortId` of an existing port forwarding.
      */
-    readonly internalPortId: pulumi.Input<string>;
+    internalPortId: pulumi.Input<string>;
     /**
      * The IP protocol used in the port forwarding. Changing this updates the `protocol`
      * of an existing port forwarding.
      */
-    readonly protocol: pulumi.Input<string>;
+    protocol: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 networking client.
      * A networking client is needed to create a port forwarding. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * port forwarding.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
 }

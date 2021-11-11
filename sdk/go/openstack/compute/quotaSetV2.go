@@ -426,7 +426,7 @@ type QuotaSetV2ArrayInput interface {
 type QuotaSetV2Array []QuotaSetV2Input
 
 func (QuotaSetV2Array) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*QuotaSetV2)(nil))
+	return reflect.TypeOf((*[]*QuotaSetV2)(nil)).Elem()
 }
 
 func (i QuotaSetV2Array) ToQuotaSetV2ArrayOutput() QuotaSetV2ArrayOutput {
@@ -451,7 +451,7 @@ type QuotaSetV2MapInput interface {
 type QuotaSetV2Map map[string]QuotaSetV2Input
 
 func (QuotaSetV2Map) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*QuotaSetV2)(nil))
+	return reflect.TypeOf((*map[string]*QuotaSetV2)(nil)).Elem()
 }
 
 func (i QuotaSetV2Map) ToQuotaSetV2MapOutput() QuotaSetV2MapOutput {
@@ -462,9 +462,7 @@ func (i QuotaSetV2Map) ToQuotaSetV2MapOutputWithContext(ctx context.Context) Quo
 	return pulumi.ToOutputWithContext(ctx, i).(QuotaSetV2MapOutput)
 }
 
-type QuotaSetV2Output struct {
-	*pulumi.OutputState
-}
+type QuotaSetV2Output struct{ *pulumi.OutputState }
 
 func (QuotaSetV2Output) ElementType() reflect.Type {
 	return reflect.TypeOf((*QuotaSetV2)(nil))
@@ -483,14 +481,12 @@ func (o QuotaSetV2Output) ToQuotaSetV2PtrOutput() QuotaSetV2PtrOutput {
 }
 
 func (o QuotaSetV2Output) ToQuotaSetV2PtrOutputWithContext(ctx context.Context) QuotaSetV2PtrOutput {
-	return o.ApplyT(func(v QuotaSetV2) *QuotaSetV2 {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v QuotaSetV2) *QuotaSetV2 {
 		return &v
 	}).(QuotaSetV2PtrOutput)
 }
 
-type QuotaSetV2PtrOutput struct {
-	*pulumi.OutputState
-}
+type QuotaSetV2PtrOutput struct{ *pulumi.OutputState }
 
 func (QuotaSetV2PtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**QuotaSetV2)(nil))
@@ -502,6 +498,16 @@ func (o QuotaSetV2PtrOutput) ToQuotaSetV2PtrOutput() QuotaSetV2PtrOutput {
 
 func (o QuotaSetV2PtrOutput) ToQuotaSetV2PtrOutputWithContext(ctx context.Context) QuotaSetV2PtrOutput {
 	return o
+}
+
+func (o QuotaSetV2PtrOutput) Elem() QuotaSetV2Output {
+	return o.ApplyT(func(v *QuotaSetV2) QuotaSetV2 {
+		if v != nil {
+			return *v
+		}
+		var ret QuotaSetV2
+		return ret
+	}).(QuotaSetV2Output)
 }
 
 type QuotaSetV2ArrayOutput struct{ *pulumi.OutputState }
@@ -545,6 +551,10 @@ func (o QuotaSetV2MapOutput) MapIndex(k pulumi.StringInput) QuotaSetV2Output {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*QuotaSetV2Input)(nil)).Elem(), &QuotaSetV2{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QuotaSetV2PtrInput)(nil)).Elem(), &QuotaSetV2{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QuotaSetV2ArrayInput)(nil)).Elem(), QuotaSetV2Array{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QuotaSetV2MapInput)(nil)).Elem(), QuotaSetV2Map{})
 	pulumi.RegisterOutputType(QuotaSetV2Output{})
 	pulumi.RegisterOutputType(QuotaSetV2PtrOutput{})
 	pulumi.RegisterOutputType(QuotaSetV2ArrayOutput{})

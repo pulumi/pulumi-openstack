@@ -233,90 +233,90 @@ export interface ShareState {
      * The map of metadata, assigned on the share, which has been
      * explicitly and implicitly added.
      */
-    readonly allMetadata?: pulumi.Input<{[key: string]: any}>;
+    allMetadata?: pulumi.Input<{[key: string]: any}>;
     /**
      * The share availability zone. Changing this creates a
      * new share.
      */
-    readonly availabilityZone?: pulumi.Input<string>;
+    availabilityZone?: pulumi.Input<string>;
     /**
      * The human-readable description for the share.
      * Changing this updates the description of the existing share.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * A list of export locations. For example, when a share server
      * has more than one network interface, it can have multiple export locations.
      */
-    readonly exportLocations?: pulumi.Input<pulumi.Input<inputs.sharedfilesystem.ShareExportLocation>[]>;
+    exportLocations?: pulumi.Input<pulumi.Input<inputs.sharedfilesystem.ShareExportLocation>[]>;
     /**
      * Indicates whether a share has replicas or not.
      */
-    readonly hasReplicas?: pulumi.Input<boolean>;
+    hasReplicas?: pulumi.Input<boolean>;
     /**
      * The share host name.
      */
-    readonly host?: pulumi.Input<string>;
+    host?: pulumi.Input<string>;
     /**
      * The level of visibility for the share. Set to true to make
      * share public. Set to false to make it private. Default value is false. Changing this
      * updates the existing share.
      */
-    readonly isPublic?: pulumi.Input<boolean>;
+    isPublic?: pulumi.Input<boolean>;
     /**
      * One or more metadata key and value pairs as a dictionary of
      * strings.
      */
-    readonly metadata?: pulumi.Input<{[key: string]: any}>;
+    metadata?: pulumi.Input<{[key: string]: any}>;
     /**
      * The name of the share. Changing this updates the name
      * of the existing share.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The owner of the Share.
      */
-    readonly projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 Shared File System client.
      * A Shared File System client is needed to create a share. Changing this
      * creates a new share.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The share replication type.
      */
-    readonly replicationType?: pulumi.Input<string>;
+    replicationType?: pulumi.Input<string>;
     /**
      * The UUID of a share network where the share server exists
      * or will be created. If `shareNetworkId` is not set and you provide a `snapshotId`,
      * the shareNetworkId value from the snapshot is used. Changing this creates a new share.
      */
-    readonly shareNetworkId?: pulumi.Input<string>;
+    shareNetworkId?: pulumi.Input<string>;
     /**
      * The share protocol - can either be NFS, CIFS,
      * CEPHFS, GLUSTERFS, HDFS or MAPRFS. Changing this creates a new share.
      */
-    readonly shareProto?: pulumi.Input<string>;
+    shareProto?: pulumi.Input<string>;
     /**
      * The UUID of the share server.
      */
-    readonly shareServerId?: pulumi.Input<string>;
+    shareServerId?: pulumi.Input<string>;
     /**
      * The share type name. If you omit this parameter, the default
      * share type is used.
      */
-    readonly shareType?: pulumi.Input<string>;
+    shareType?: pulumi.Input<string>;
     /**
      * The share size, in GBs. The requested share size cannot be greater
      * than the allowed GB quota. Changing this resizes the existing share.
      */
-    readonly size?: pulumi.Input<number>;
+    size?: pulumi.Input<number>;
     /**
      * The UUID of the share's base snapshot. Changing this creates
      * a new share.
      */
-    readonly snapshotId?: pulumi.Input<string>;
+    snapshotId?: pulumi.Input<string>;
 }
 
 /**
@@ -327,58 +327,58 @@ export interface ShareArgs {
      * The share availability zone. Changing this creates a
      * new share.
      */
-    readonly availabilityZone?: pulumi.Input<string>;
+    availabilityZone?: pulumi.Input<string>;
     /**
      * The human-readable description for the share.
      * Changing this updates the description of the existing share.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The level of visibility for the share. Set to true to make
      * share public. Set to false to make it private. Default value is false. Changing this
      * updates the existing share.
      */
-    readonly isPublic?: pulumi.Input<boolean>;
+    isPublic?: pulumi.Input<boolean>;
     /**
      * One or more metadata key and value pairs as a dictionary of
      * strings.
      */
-    readonly metadata?: pulumi.Input<{[key: string]: any}>;
+    metadata?: pulumi.Input<{[key: string]: any}>;
     /**
      * The name of the share. Changing this updates the name
      * of the existing share.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 Shared File System client.
      * A Shared File System client is needed to create a share. Changing this
      * creates a new share.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The UUID of a share network where the share server exists
      * or will be created. If `shareNetworkId` is not set and you provide a `snapshotId`,
      * the shareNetworkId value from the snapshot is used. Changing this creates a new share.
      */
-    readonly shareNetworkId?: pulumi.Input<string>;
+    shareNetworkId?: pulumi.Input<string>;
     /**
      * The share protocol - can either be NFS, CIFS,
      * CEPHFS, GLUSTERFS, HDFS or MAPRFS. Changing this creates a new share.
      */
-    readonly shareProto: pulumi.Input<string>;
+    shareProto: pulumi.Input<string>;
     /**
      * The share type name. If you omit this parameter, the default
      * share type is used.
      */
-    readonly shareType?: pulumi.Input<string>;
+    shareType?: pulumi.Input<string>;
     /**
      * The share size, in GBs. The requested share size cannot be greater
      * than the allowed GB quota. Changing this resizes the existing share.
      */
-    readonly size: pulumi.Input<number>;
+    size: pulumi.Input<number>;
     /**
      * The UUID of the share's base snapshot. Changing this creates
      * a new share.
      */
-    readonly snapshotId?: pulumi.Input<string>;
+    snapshotId?: pulumi.Input<string>;
 }

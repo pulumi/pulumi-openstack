@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.OpenStack.Compute
 {
@@ -39,6 +40,35 @@ namespace Pulumi.OpenStack.Compute
         /// </summary>
         public static Task<GetKeypairResult> InvokeAsync(GetKeypairArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKeypairResult>("openstack:compute/getKeypair:getKeypair", args ?? new GetKeypairArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to get the ID and public key of an OpenStack keypair.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var kp = Output.Create(OpenStack.Compute.GetKeypair.InvokeAsync(new OpenStack.Compute.GetKeypairArgs
+        ///         {
+        ///             Name = "sand",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetKeypairResult> Invoke(GetKeypairInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetKeypairResult>("openstack:compute/getKeypair:getKeypair", args ?? new GetKeypairInvokeArgs(), options.WithVersion());
     }
 
 
@@ -58,6 +88,26 @@ namespace Pulumi.OpenStack.Compute
         public string? Region { get; set; }
 
         public GetKeypairArgs()
+        {
+        }
+    }
+
+    public sealed class GetKeypairInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The unique name of the keypair.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The region in which to obtain the V2 Compute client.
+        /// If omitted, the `region` argument of the provider is used.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        public GetKeypairInvokeArgs()
         {
         }
     }

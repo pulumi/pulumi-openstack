@@ -12,6 +12,7 @@ __all__ = [
     'GetShareNetworkResult',
     'AwaitableGetShareNetworkResult',
     'get_share_network',
+    'get_share_network_output',
 ]
 
 @pulumi.output_type
@@ -254,3 +255,44 @@ def get_share_network(description: Optional[str] = None,
         security_service_id=__ret__.security_service_id,
         security_service_ids=__ret__.security_service_ids,
         segmentation_id=__ret__.segmentation_id)
+
+
+@_utilities.lift_output_func(get_share_network)
+def get_share_network_output(description: Optional[pulumi.Input[Optional[str]]] = None,
+                             ip_version: Optional[pulumi.Input[Optional[int]]] = None,
+                             name: Optional[pulumi.Input[Optional[str]]] = None,
+                             network_type: Optional[pulumi.Input[Optional[str]]] = None,
+                             neutron_net_id: Optional[pulumi.Input[Optional[str]]] = None,
+                             neutron_subnet_id: Optional[pulumi.Input[Optional[str]]] = None,
+                             region: Optional[pulumi.Input[Optional[str]]] = None,
+                             security_service_id: Optional[pulumi.Input[Optional[str]]] = None,
+                             segmentation_id: Optional[pulumi.Input[Optional[int]]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetShareNetworkResult]:
+    """
+    Use this data source to get the ID of an available Shared File System share network.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    sharenetwork1 = openstack.sharedfilesystem.get_share_network(name="sharenetwork_1")
+    ```
+
+
+    :param str description: The human-readable description of the share network.
+    :param int ip_version: The IP version of the share network. Can either be 4 or 6.
+    :param str name: The name of the share network.
+    :param str network_type: The share network type. Can either be VLAN, VXLAN,
+           GRE, or flat.
+    :param str neutron_net_id: The neutron network UUID of the share network.
+    :param str neutron_subnet_id: The neutron subnet UUID of the share network.
+    :param str region: The region in which to obtain the V2 Shared File System client.
+           A Shared File System client is needed to read a share network. If omitted, the
+           `region` argument of the provider is used.
+    :param str security_service_id: The security service IDs associated with
+           the share network.
+    :param int segmentation_id: The share network segmentation ID.
+    """
+    ...

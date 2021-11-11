@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.OpenStack.KeyManager
 {
@@ -13,6 +14,9 @@ namespace Pulumi.OpenStack.KeyManager
     {
         public static Task<GetSecretResult> InvokeAsync(GetSecretArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSecretResult>("openstack:keymanager/getSecret:getSecret", args ?? new GetSecretArgs(), options.WithVersion());
+
+        public static Output<GetSecretResult> Invoke(GetSecretInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetSecretResult>("openstack:keymanager/getSecret:getSecret", args ?? new GetSecretInvokeArgs(), options.WithVersion());
     }
 
 
@@ -89,6 +93,83 @@ namespace Pulumi.OpenStack.KeyManager
         public string? UpdatedAtFilter { get; set; }
 
         public GetSecretArgs()
+        {
+        }
+    }
+
+    public sealed class GetSecretInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Select the Secret with an ACL that contains the user.
+        /// Project scope is ignored. Defaults to `false`.
+        /// </summary>
+        [Input("aclOnly")]
+        public Input<bool>? AclOnly { get; set; }
+
+        /// <summary>
+        /// The Secret algorithm.
+        /// </summary>
+        [Input("algorithm")]
+        public Input<string>? Algorithm { get; set; }
+
+        /// <summary>
+        /// The Secret bit length.
+        /// </summary>
+        [Input("bitLength")]
+        public Input<int>? BitLength { get; set; }
+
+        /// <summary>
+        /// Date filter to select the Secret with
+        /// created matching the specified criteria. See Date Filters below for more
+        /// detail.
+        /// </summary>
+        [Input("createdAtFilter")]
+        public Input<string>? CreatedAtFilter { get; set; }
+
+        /// <summary>
+        /// Date filter to select the Secret with
+        /// expiration matching the specified criteria. See Date Filters below for more
+        /// detail.
+        /// </summary>
+        [Input("expirationFilter")]
+        public Input<string>? ExpirationFilter { get; set; }
+
+        /// <summary>
+        /// The Secret mode.
+        /// </summary>
+        [Input("mode")]
+        public Input<string>? Mode { get; set; }
+
+        /// <summary>
+        /// The Secret name.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The region in which to obtain the V1 KeyManager client.
+        /// A KeyManager client is needed to fetch a secret. If omitted, the `region`
+        /// argument of the provider is used.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// The Secret type. For more information see
+        /// [Secret types](https://docs.openstack.org/barbican/latest/api/reference/secret_types.html).
+        /// </summary>
+        [Input("secretType")]
+        public Input<string>? SecretType { get; set; }
+
+        /// <summary>
+        /// Date filter to select the Secret with
+        /// updated matching the specified criteria. See Date Filters below for more
+        /// detail.
+        /// </summary>
+        [Input("updatedAtFilter")]
+        public Input<string>? UpdatedAtFilter { get; set; }
+
+        public GetSecretInvokeArgs()
         {
         }
     }

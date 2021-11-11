@@ -101,10 +101,11 @@ func (o ContainerV1AclOutput) ToContainerV1AclPtrOutput() ContainerV1AclPtrOutpu
 }
 
 func (o ContainerV1AclOutput) ToContainerV1AclPtrOutputWithContext(ctx context.Context) ContainerV1AclPtrOutput {
-	return o.ApplyT(func(v ContainerV1Acl) *ContainerV1Acl {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContainerV1Acl) *ContainerV1Acl {
 		return &v
 	}).(ContainerV1AclPtrOutput)
 }
+
 func (o ContainerV1AclOutput) Read() ContainerV1AclReadPtrOutput {
 	return o.ApplyT(func(v ContainerV1Acl) *ContainerV1AclRead { return v.Read }).(ContainerV1AclReadPtrOutput)
 }
@@ -124,7 +125,13 @@ func (o ContainerV1AclPtrOutput) ToContainerV1AclPtrOutputWithContext(ctx contex
 }
 
 func (o ContainerV1AclPtrOutput) Elem() ContainerV1AclOutput {
-	return o.ApplyT(func(v *ContainerV1Acl) ContainerV1Acl { return *v }).(ContainerV1AclOutput)
+	return o.ApplyT(func(v *ContainerV1Acl) ContainerV1Acl {
+		if v != nil {
+			return *v
+		}
+		var ret ContainerV1Acl
+		return ret
+	}).(ContainerV1AclOutput)
 }
 
 func (o ContainerV1AclPtrOutput) Read() ContainerV1AclReadPtrOutput {
@@ -245,7 +252,7 @@ func (o ContainerV1AclReadOutput) ToContainerV1AclReadPtrOutput() ContainerV1Acl
 }
 
 func (o ContainerV1AclReadOutput) ToContainerV1AclReadPtrOutputWithContext(ctx context.Context) ContainerV1AclReadPtrOutput {
-	return o.ApplyT(func(v ContainerV1AclRead) *ContainerV1AclRead {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContainerV1AclRead) *ContainerV1AclRead {
 		return &v
 	}).(ContainerV1AclReadPtrOutput)
 }
@@ -287,7 +294,13 @@ func (o ContainerV1AclReadPtrOutput) ToContainerV1AclReadPtrOutputWithContext(ct
 }
 
 func (o ContainerV1AclReadPtrOutput) Elem() ContainerV1AclReadOutput {
-	return o.ApplyT(func(v *ContainerV1AclRead) ContainerV1AclRead { return *v }).(ContainerV1AclReadOutput)
+	return o.ApplyT(func(v *ContainerV1AclRead) ContainerV1AclRead {
+		if v != nil {
+			return *v
+		}
+		var ret ContainerV1AclRead
+		return ret
+	}).(ContainerV1AclReadOutput)
 }
 
 // The date the container ACL was created.
@@ -657,7 +670,7 @@ func (o OrderV1MetaOutput) ToOrderV1MetaPtrOutput() OrderV1MetaPtrOutput {
 }
 
 func (o OrderV1MetaOutput) ToOrderV1MetaPtrOutputWithContext(ctx context.Context) OrderV1MetaPtrOutput {
-	return o.ApplyT(func(v OrderV1Meta) *OrderV1Meta {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrderV1Meta) *OrderV1Meta {
 		return &v
 	}).(OrderV1MetaPtrOutput)
 }
@@ -707,7 +720,13 @@ func (o OrderV1MetaPtrOutput) ToOrderV1MetaPtrOutputWithContext(ctx context.Cont
 }
 
 func (o OrderV1MetaPtrOutput) Elem() OrderV1MetaOutput {
-	return o.ApplyT(func(v *OrderV1Meta) OrderV1Meta { return *v }).(OrderV1MetaOutput)
+	return o.ApplyT(func(v *OrderV1Meta) OrderV1Meta {
+		if v != nil {
+			return *v
+		}
+		var ret OrderV1Meta
+		return ret
+	}).(OrderV1MetaOutput)
 }
 
 // Algorithm to use for key generation.
@@ -861,10 +880,11 @@ func (o SecretV1AclOutput) ToSecretV1AclPtrOutput() SecretV1AclPtrOutput {
 }
 
 func (o SecretV1AclOutput) ToSecretV1AclPtrOutputWithContext(ctx context.Context) SecretV1AclPtrOutput {
-	return o.ApplyT(func(v SecretV1Acl) *SecretV1Acl {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretV1Acl) *SecretV1Acl {
 		return &v
 	}).(SecretV1AclPtrOutput)
 }
+
 func (o SecretV1AclOutput) Read() SecretV1AclReadPtrOutput {
 	return o.ApplyT(func(v SecretV1Acl) *SecretV1AclRead { return v.Read }).(SecretV1AclReadPtrOutput)
 }
@@ -884,7 +904,13 @@ func (o SecretV1AclPtrOutput) ToSecretV1AclPtrOutputWithContext(ctx context.Cont
 }
 
 func (o SecretV1AclPtrOutput) Elem() SecretV1AclOutput {
-	return o.ApplyT(func(v *SecretV1Acl) SecretV1Acl { return *v }).(SecretV1AclOutput)
+	return o.ApplyT(func(v *SecretV1Acl) SecretV1Acl {
+		if v != nil {
+			return *v
+		}
+		var ret SecretV1Acl
+		return ret
+	}).(SecretV1AclOutput)
 }
 
 func (o SecretV1AclPtrOutput) Read() SecretV1AclReadPtrOutput {
@@ -1005,7 +1031,7 @@ func (o SecretV1AclReadOutput) ToSecretV1AclReadPtrOutput() SecretV1AclReadPtrOu
 }
 
 func (o SecretV1AclReadOutput) ToSecretV1AclReadPtrOutputWithContext(ctx context.Context) SecretV1AclReadPtrOutput {
-	return o.ApplyT(func(v SecretV1AclRead) *SecretV1AclRead {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretV1AclRead) *SecretV1AclRead {
 		return &v
 	}).(SecretV1AclReadPtrOutput)
 }
@@ -1047,7 +1073,13 @@ func (o SecretV1AclReadPtrOutput) ToSecretV1AclReadPtrOutputWithContext(ctx cont
 }
 
 func (o SecretV1AclReadPtrOutput) Elem() SecretV1AclReadOutput {
-	return o.ApplyT(func(v *SecretV1AclRead) SecretV1AclRead { return *v }).(SecretV1AclReadOutput)
+	return o.ApplyT(func(v *SecretV1AclRead) SecretV1AclRead {
+		if v != nil {
+			return *v
+		}
+		var ret SecretV1AclRead
+		return ret
+	}).(SecretV1AclReadOutput)
 }
 
 // The date the secret ACL was created.
@@ -1657,6 +1689,30 @@ func (o GetSecretAclReadOutput) Users() pulumi.StringArrayOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerV1AclInput)(nil)).Elem(), ContainerV1AclArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerV1AclPtrInput)(nil)).Elem(), ContainerV1AclArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerV1AclReadInput)(nil)).Elem(), ContainerV1AclReadArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerV1AclReadPtrInput)(nil)).Elem(), ContainerV1AclReadArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerV1ConsumerInput)(nil)).Elem(), ContainerV1ConsumerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerV1ConsumerArrayInput)(nil)).Elem(), ContainerV1ConsumerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerV1SecretRefInput)(nil)).Elem(), ContainerV1SecretRefArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerV1SecretRefArrayInput)(nil)).Elem(), ContainerV1SecretRefArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrderV1MetaInput)(nil)).Elem(), OrderV1MetaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrderV1MetaPtrInput)(nil)).Elem(), OrderV1MetaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretV1AclInput)(nil)).Elem(), SecretV1AclArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretV1AclPtrInput)(nil)).Elem(), SecretV1AclArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretV1AclReadInput)(nil)).Elem(), SecretV1AclReadArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretV1AclReadPtrInput)(nil)).Elem(), SecretV1AclReadArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerAclInput)(nil)).Elem(), GetContainerAclArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerAclArrayInput)(nil)).Elem(), GetContainerAclArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerAclReadInput)(nil)).Elem(), GetContainerAclReadArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerConsumerInput)(nil)).Elem(), GetContainerConsumerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerConsumerArrayInput)(nil)).Elem(), GetContainerConsumerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerSecretRefInput)(nil)).Elem(), GetContainerSecretRefArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerSecretRefArrayInput)(nil)).Elem(), GetContainerSecretRefArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretAclInput)(nil)).Elem(), GetSecretAclArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretAclArrayInput)(nil)).Elem(), GetSecretAclArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretAclReadInput)(nil)).Elem(), GetSecretAclReadArgs{})
 	pulumi.RegisterOutputType(ContainerV1AclOutput{})
 	pulumi.RegisterOutputType(ContainerV1AclPtrOutput{})
 	pulumi.RegisterOutputType(ContainerV1AclReadOutput{})

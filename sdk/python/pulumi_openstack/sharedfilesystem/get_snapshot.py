@@ -12,6 +12,7 @@ __all__ = [
     'GetSnapshotResult',
     'AwaitableGetSnapshotResult',
     'get_snapshot',
+    'get_snapshot_output',
 ]
 
 @pulumi.output_type
@@ -197,3 +198,34 @@ def get_snapshot(description: Optional[str] = None,
         share_size=__ret__.share_size,
         size=__ret__.size,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_snapshot)
+def get_snapshot_output(description: Optional[pulumi.Input[Optional[str]]] = None,
+                        name: Optional[pulumi.Input[Optional[str]]] = None,
+                        region: Optional[pulumi.Input[Optional[str]]] = None,
+                        share_id: Optional[pulumi.Input[Optional[str]]] = None,
+                        status: Optional[pulumi.Input[Optional[str]]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSnapshotResult]:
+    """
+    Use this data source to get the ID of an available Shared File System snapshot.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    snapshot1 = openstack.sharedfilesystem.get_snapshot(name="snapshot_1")
+    ```
+
+
+    :param str description: The human-readable description of the snapshot.
+    :param str name: The name of the snapshot.
+    :param str region: The region in which to obtain the V2 Shared File System client.
+    :param str share_id: The UUID of the source share that was used to create the snapshot.
+    :param str status: A snapshot status filter. A valid value is `available`, `error`,
+           `creating`, `deleting`, `manage_starting`, `manage_error`, `unmanage_starting`,
+           `unmanage_error` or `error_deleting`.
+    """
+    ...

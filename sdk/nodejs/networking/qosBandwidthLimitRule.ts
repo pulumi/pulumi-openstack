@@ -134,27 +134,27 @@ export interface QosBandwidthLimitRuleState {
      * The direction of traffic. Defaults to "egress". Changing this updates the direction of the
      * existing QoS bandwidth limit rule.
      */
-    readonly direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string>;
     /**
      * The maximum burst size in kilobits of a QoS bandwidth limit rule. Changing this updates the
      * maximum burst size in kilobits of the existing QoS bandwidth limit rule.
      */
-    readonly maxBurstKbps?: pulumi.Input<number>;
+    maxBurstKbps?: pulumi.Input<number>;
     /**
      * The maximum kilobits per second of a QoS bandwidth limit rule. Changing this updates the
      * maximum kilobits per second of the existing QoS bandwidth limit rule.
      */
-    readonly maxKbps?: pulumi.Input<number>;
+    maxKbps?: pulumi.Input<number>;
     /**
      * The QoS policy reference. Changing this creates a new QoS bandwidth limit rule.
      */
-    readonly qosPolicyId?: pulumi.Input<string>;
+    qosPolicyId?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a Neutron QoS bandwidth limit rule. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new QoS bandwidth limit rule.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
 }
 
 /**
@@ -165,25 +165,25 @@ export interface QosBandwidthLimitRuleArgs {
      * The direction of traffic. Defaults to "egress". Changing this updates the direction of the
      * existing QoS bandwidth limit rule.
      */
-    readonly direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string>;
     /**
      * The maximum burst size in kilobits of a QoS bandwidth limit rule. Changing this updates the
      * maximum burst size in kilobits of the existing QoS bandwidth limit rule.
      */
-    readonly maxBurstKbps?: pulumi.Input<number>;
+    maxBurstKbps?: pulumi.Input<number>;
     /**
      * The maximum kilobits per second of a QoS bandwidth limit rule. Changing this updates the
      * maximum kilobits per second of the existing QoS bandwidth limit rule.
      */
-    readonly maxKbps: pulumi.Input<number>;
+    maxKbps: pulumi.Input<number>;
     /**
      * The QoS policy reference. Changing this creates a new QoS bandwidth limit rule.
      */
-    readonly qosPolicyId: pulumi.Input<string>;
+    qosPolicyId: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a Neutron QoS bandwidth limit rule. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new QoS bandwidth limit rule.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
 }

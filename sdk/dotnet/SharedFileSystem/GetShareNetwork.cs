@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.OpenStack.SharedFileSystem
 {
@@ -39,6 +40,35 @@ namespace Pulumi.OpenStack.SharedFileSystem
         /// </summary>
         public static Task<GetShareNetworkResult> InvokeAsync(GetShareNetworkArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetShareNetworkResult>("openstack:sharedfilesystem/getShareNetwork:getShareNetwork", args ?? new GetShareNetworkArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to get the ID of an available Shared File System share network.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var sharenetwork1 = Output.Create(OpenStack.SharedFileSystem.GetShareNetwork.InvokeAsync(new OpenStack.SharedFileSystem.GetShareNetworkArgs
+        ///         {
+        ///             Name = "sharenetwork_1",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetShareNetworkResult> Invoke(GetShareNetworkInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetShareNetworkResult>("openstack:sharedfilesystem/getShareNetwork:getShareNetwork", args ?? new GetShareNetworkInvokeArgs(), options.WithVersion());
     }
 
 
@@ -103,6 +133,71 @@ namespace Pulumi.OpenStack.SharedFileSystem
         public int? SegmentationId { get; set; }
 
         public GetShareNetworkArgs()
+        {
+        }
+    }
+
+    public sealed class GetShareNetworkInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The human-readable description of the share network.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The IP version of the share network. Can either be 4 or 6.
+        /// </summary>
+        [Input("ipVersion")]
+        public Input<int>? IpVersion { get; set; }
+
+        /// <summary>
+        /// The name of the share network.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The share network type. Can either be VLAN, VXLAN,
+        /// GRE, or flat.
+        /// </summary>
+        [Input("networkType")]
+        public Input<string>? NetworkType { get; set; }
+
+        /// <summary>
+        /// The neutron network UUID of the share network.
+        /// </summary>
+        [Input("neutronNetId")]
+        public Input<string>? NeutronNetId { get; set; }
+
+        /// <summary>
+        /// The neutron subnet UUID of the share network.
+        /// </summary>
+        [Input("neutronSubnetId")]
+        public Input<string>? NeutronSubnetId { get; set; }
+
+        /// <summary>
+        /// The region in which to obtain the V2 Shared File System client.
+        /// A Shared File System client is needed to read a share network. If omitted, the
+        /// `region` argument of the provider is used.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// The security service IDs associated with
+        /// the share network.
+        /// </summary>
+        [Input("securityServiceId")]
+        public Input<string>? SecurityServiceId { get; set; }
+
+        /// <summary>
+        /// The share network segmentation ID.
+        /// </summary>
+        [Input("segmentationId")]
+        public Input<int>? SegmentationId { get; set; }
+
+        public GetShareNetworkInvokeArgs()
         {
         }
     }

@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -16,7 +15,7 @@ import * as utilities from "../utilities";
  *
  * const floatingip1 = pulumi.output(openstack.networking.getFloatingIp({
  *     address: "192.168.0.4",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getFloatingIp(args?: GetFloatingIpArgs, opts?: pulumi.InvokeOptions): Promise<GetFloatingIpResult> {
@@ -48,41 +47,41 @@ export interface GetFloatingIpArgs {
     /**
      * The IP address of the floating IP.
      */
-    readonly address?: string;
+    address?: string;
     /**
      * Human-readable description of the floating IP.
      */
-    readonly description?: string;
+    description?: string;
     /**
      * The specific IP address of the internal port which should be associated with the floating IP.
      */
-    readonly fixedIp?: string;
+    fixedIp?: string;
     /**
      * The name of the pool from which the floating IP belongs to.
      */
-    readonly pool?: string;
+    pool?: string;
     /**
      * The ID of the port the floating IP is attached.
      */
-    readonly portId?: string;
+    portId?: string;
     /**
      * The region in which to obtain the V2 Neutron client.
      * A Neutron client is needed to retrieve floating IP ids. If omitted, the
      * `region` argument of the provider is used.
      */
-    readonly region?: string;
+    region?: string;
     /**
      * status of the floating IP (ACTIVE/DOWN).
      */
-    readonly status?: string;
+    status?: string;
     /**
      * The list of floating IP tags to filter.
      */
-    readonly tags?: string[];
+    tags?: string[];
     /**
      * The owner of the floating IP.
      */
-    readonly tenantId?: string;
+    tenantId?: string;
 }
 
 /**
@@ -116,4 +115,52 @@ export interface GetFloatingIpResult {
     readonly status?: string;
     readonly tags?: string[];
     readonly tenantId?: string;
+}
+
+export function getFloatingIpOutput(args?: GetFloatingIpOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFloatingIpResult> {
+    return pulumi.output(args).apply(a => getFloatingIp(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getFloatingIp.
+ */
+export interface GetFloatingIpOutputArgs {
+    /**
+     * The IP address of the floating IP.
+     */
+    address?: pulumi.Input<string>;
+    /**
+     * Human-readable description of the floating IP.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The specific IP address of the internal port which should be associated with the floating IP.
+     */
+    fixedIp?: pulumi.Input<string>;
+    /**
+     * The name of the pool from which the floating IP belongs to.
+     */
+    pool?: pulumi.Input<string>;
+    /**
+     * The ID of the port the floating IP is attached.
+     */
+    portId?: pulumi.Input<string>;
+    /**
+     * The region in which to obtain the V2 Neutron client.
+     * A Neutron client is needed to retrieve floating IP ids. If omitted, the
+     * `region` argument of the provider is used.
+     */
+    region?: pulumi.Input<string>;
+    /**
+     * status of the floating IP (ACTIVE/DOWN).
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * The list of floating IP tags to filter.
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The owner of the floating IP.
+     */
+    tenantId?: pulumi.Input<string>;
 }

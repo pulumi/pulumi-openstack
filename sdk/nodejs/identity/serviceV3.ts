@@ -121,24 +121,24 @@ export interface ServiceV3State {
     /**
      * The service description.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The service status. Defaults to `true`.
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * The service name.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V3 Keystone client.
      * If omitted, the `region` argument of the provider is used.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The service type.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
 }
 
 /**
@@ -148,22 +148,22 @@ export interface ServiceV3Args {
     /**
      * The service description.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The service status. Defaults to `true`.
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * The service name.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V3 Keystone client.
      * If omitted, the `region` argument of the provider is used.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The service type.
      */
-    readonly type: pulumi.Input<string>;
+    type: pulumi.Input<string>;
 }

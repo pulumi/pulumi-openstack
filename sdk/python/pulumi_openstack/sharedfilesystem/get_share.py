@@ -13,6 +13,7 @@ __all__ = [
     'GetShareResult',
     'AwaitableGetShareResult',
     'get_share',
+    'get_share_output',
 ]
 
 @pulumi.output_type
@@ -285,3 +286,47 @@ def get_share(description: Optional[str] = None,
         size=__ret__.size,
         snapshot_id=__ret__.snapshot_id,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_share)
+def get_share_output(description: Optional[pulumi.Input[Optional[str]]] = None,
+                     export_location_path: Optional[pulumi.Input[Optional[str]]] = None,
+                     is_public: Optional[pulumi.Input[Optional[bool]]] = None,
+                     metadata: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                     name: Optional[pulumi.Input[Optional[str]]] = None,
+                     region: Optional[pulumi.Input[Optional[str]]] = None,
+                     share_network_id: Optional[pulumi.Input[Optional[str]]] = None,
+                     snapshot_id: Optional[pulumi.Input[Optional[str]]] = None,
+                     status: Optional[pulumi.Input[Optional[str]]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetShareResult]:
+    """
+    Use this data source to get the ID of an available Shared File System share.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    share1 = openstack.sharedfilesystem.get_share(name="share_1")
+    ```
+
+
+    :param str description: The human-readable description for the share.
+    :param str export_location_path: The export location path of the share. Available
+           since Manila API version 2.35.
+    :param bool is_public: The level of visibility for the share.
+           length.
+    :param Mapping[str, Any] metadata: One or more metadata key and value pairs as a dictionary of
+           strings.
+    :param str name: The name of the share.
+    :param str region: The region in which to obtain the V2 Shared File System client.
+    :param str share_network_id: The UUID of the share's share network.
+    :param str snapshot_id: The UUID of the share's base snapshot.
+    :param str status: A share status filter. A valid value is `creating`,
+           `error`, `available`, `deleting`, `error_deleting`, `manage_starting`,
+           `manage_error`, `unmanage_starting`, `unmanage_error`, `unmanaged`,
+           `extending`, `extending_error`, `shrinking`, `shrinking_error`, or
+           `shrinking_possible_data_loss_error`.
+    """
+    ...

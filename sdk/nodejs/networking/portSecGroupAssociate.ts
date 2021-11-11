@@ -107,29 +107,29 @@ export interface PortSecGroupAssociateState {
      * The collection of Security Group IDs on the port
      * which have been explicitly and implicitly added.
      */
-    readonly allSecurityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    allSecurityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Whether to replace or append the list of security
      * groups, specified in the `securityGroupIds`. Defaults to `false`.
      */
-    readonly enforce?: pulumi.Input<boolean>;
+    enforce?: pulumi.Input<boolean>;
     /**
      * An UUID of the port to apply security groups to.
      */
-    readonly portId?: pulumi.Input<string>;
+    portId?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 networking client.
      * A networking client is needed to manage a port. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * resource.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * A list of security group IDs to apply to
      * the port. The security groups must be specified by ID and not name (as
      * opposed to how they are configured with the Compute Instance).
      */
-    readonly securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -140,22 +140,22 @@ export interface PortSecGroupAssociateArgs {
      * Whether to replace or append the list of security
      * groups, specified in the `securityGroupIds`. Defaults to `false`.
      */
-    readonly enforce?: pulumi.Input<boolean>;
+    enforce?: pulumi.Input<boolean>;
     /**
      * An UUID of the port to apply security groups to.
      */
-    readonly portId: pulumi.Input<string>;
+    portId: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 networking client.
      * A networking client is needed to manage a port. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * resource.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * A list of security group IDs to apply to
      * the port. The security groups must be specified by ID and not name (as
      * opposed to how they are configured with the Compute Instance).
      */
-    readonly securityGroupIds: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupIds: pulumi.Input<pulumi.Input<string>[]>;
 }

@@ -820,7 +820,7 @@ func (o InstanceVendorOptionsOutput) ToInstanceVendorOptionsPtrOutput() Instance
 }
 
 func (o InstanceVendorOptionsOutput) ToInstanceVendorOptionsPtrOutputWithContext(ctx context.Context) InstanceVendorOptionsPtrOutput {
-	return o.ApplyT(func(v InstanceVendorOptions) *InstanceVendorOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceVendorOptions) *InstanceVendorOptions {
 		return &v
 	}).(InstanceVendorOptionsPtrOutput)
 }
@@ -855,7 +855,13 @@ func (o InstanceVendorOptionsPtrOutput) ToInstanceVendorOptionsPtrOutputWithCont
 }
 
 func (o InstanceVendorOptionsPtrOutput) Elem() InstanceVendorOptionsOutput {
-	return o.ApplyT(func(v *InstanceVendorOptions) InstanceVendorOptions { return *v }).(InstanceVendorOptionsOutput)
+	return o.ApplyT(func(v *InstanceVendorOptions) InstanceVendorOptions {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceVendorOptions
+		return ret
+	}).(InstanceVendorOptionsOutput)
 }
 
 // Whether to try to detach all attached
@@ -1264,7 +1270,7 @@ func (o VolumeAttachVendorOptionsOutput) ToVolumeAttachVendorOptionsPtrOutput() 
 }
 
 func (o VolumeAttachVendorOptionsOutput) ToVolumeAttachVendorOptionsPtrOutputWithContext(ctx context.Context) VolumeAttachVendorOptionsPtrOutput {
-	return o.ApplyT(func(v VolumeAttachVendorOptions) *VolumeAttachVendorOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VolumeAttachVendorOptions) *VolumeAttachVendorOptions {
 		return &v
 	}).(VolumeAttachVendorOptionsPtrOutput)
 }
@@ -1291,7 +1297,13 @@ func (o VolumeAttachVendorOptionsPtrOutput) ToVolumeAttachVendorOptionsPtrOutput
 }
 
 func (o VolumeAttachVendorOptionsPtrOutput) Elem() VolumeAttachVendorOptionsOutput {
-	return o.ApplyT(func(v *VolumeAttachVendorOptions) VolumeAttachVendorOptions { return *v }).(VolumeAttachVendorOptionsOutput)
+	return o.ApplyT(func(v *VolumeAttachVendorOptions) VolumeAttachVendorOptions {
+		if v != nil {
+			return *v
+		}
+		var ret VolumeAttachVendorOptions
+		return ret
+	}).(VolumeAttachVendorOptionsOutput)
 }
 
 // Boolean to control whether
@@ -1449,6 +1461,24 @@ func (o GetInstanceV2NetworkArrayOutput) Index(i pulumi.IntInput) GetInstanceV2N
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceBlockDeviceInput)(nil)).Elem(), InstanceBlockDeviceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceBlockDeviceArrayInput)(nil)).Elem(), InstanceBlockDeviceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkInput)(nil)).Elem(), InstanceNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkArrayInput)(nil)).Elem(), InstanceNetworkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstancePersonalityInput)(nil)).Elem(), InstancePersonalityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstancePersonalityArrayInput)(nil)).Elem(), InstancePersonalityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceSchedulerHintInput)(nil)).Elem(), InstanceSchedulerHintArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceSchedulerHintArrayInput)(nil)).Elem(), InstanceSchedulerHintArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceVendorOptionsInput)(nil)).Elem(), InstanceVendorOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceVendorOptionsPtrInput)(nil)).Elem(), InstanceVendorOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceVolumeInput)(nil)).Elem(), InstanceVolumeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceVolumeArrayInput)(nil)).Elem(), InstanceVolumeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecGroupRuleInput)(nil)).Elem(), SecGroupRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecGroupRuleArrayInput)(nil)).Elem(), SecGroupRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeAttachVendorOptionsInput)(nil)).Elem(), VolumeAttachVendorOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeAttachVendorOptionsPtrInput)(nil)).Elem(), VolumeAttachVendorOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceV2NetworkInput)(nil)).Elem(), GetInstanceV2NetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceV2NetworkArrayInput)(nil)).Elem(), GetInstanceV2NetworkArray{})
 	pulumi.RegisterOutputType(InstanceBlockDeviceOutput{})
 	pulumi.RegisterOutputType(InstanceBlockDeviceArrayOutput{})
 	pulumi.RegisterOutputType(InstanceNetworkOutput{})

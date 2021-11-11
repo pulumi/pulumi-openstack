@@ -123,38 +123,38 @@ export interface SecGroupState {
      * The collection of tags assigned on the security group, which have
      * been explicitly and implicitly added.
      */
-    readonly allTags?: pulumi.Input<pulumi.Input<string>[]>;
+    allTags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Whether or not to delete the default
      * egress security rules. This is `false` by default. See the below note
      * for more information.
      */
-    readonly deleteDefaultRules?: pulumi.Input<boolean>;
+    deleteDefaultRules?: pulumi.Input<boolean>;
     /**
      * A unique name for the security group.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * A unique name for the security group.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 networking client.
      * A networking client is needed to create a port. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * security group.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * A set of string tags for the security group.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The owner of the security group. Required if admin
      * wants to create a port for another tenant. Changing this creates a new
      * security group.
      */
-    readonly tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string>;
 }
 
 /**
@@ -166,30 +166,30 @@ export interface SecGroupArgs {
      * egress security rules. This is `false` by default. See the below note
      * for more information.
      */
-    readonly deleteDefaultRules?: pulumi.Input<boolean>;
+    deleteDefaultRules?: pulumi.Input<boolean>;
     /**
      * A unique name for the security group.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * A unique name for the security group.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 networking client.
      * A networking client is needed to create a port. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * security group.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * A set of string tags for the security group.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The owner of the security group. Required if admin
      * wants to create a port for another tenant. Changing this creates a new
      * security group.
      */
-    readonly tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string>;
 }

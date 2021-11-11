@@ -158,32 +158,32 @@ export interface RbacPolicyV2State {
      * Action for the RBAC policy. Can either be
      * `accessAsExternal` or `accessAsShared`.
      */
-    readonly action?: pulumi.Input<string>;
+    action?: pulumi.Input<string>;
     /**
      * The ID of the `objectType` resource. An
      * `objectType` of `network` returns a network ID and an `objectType` of
      * `qosPolicy` returns a QoS ID.
      */
-    readonly objectId?: pulumi.Input<string>;
+    objectId?: pulumi.Input<string>;
     /**
      * The type of the object that the RBAC policy
      * affects. Can be one of the following: `addressScope`, `addressGroup`,
      * `network`, `qosPolicy`, `securityGroup` or `subnetpool`.
      */
-    readonly objectType?: pulumi.Input<string>;
-    readonly projectId?: pulumi.Input<string>;
+    objectType?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 networking client.
      * A networking client is needed to configure a routing entry on a subnet. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * routing entry.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The ID of the tenant to which the RBAC policy
      * will be enforced.
      */
-    readonly targetTenant?: pulumi.Input<string>;
+    targetTenant?: pulumi.Input<string>;
 }
 
 /**
@@ -194,29 +194,29 @@ export interface RbacPolicyV2Args {
      * Action for the RBAC policy. Can either be
      * `accessAsExternal` or `accessAsShared`.
      */
-    readonly action: pulumi.Input<string>;
+    action: pulumi.Input<string>;
     /**
      * The ID of the `objectType` resource. An
      * `objectType` of `network` returns a network ID and an `objectType` of
      * `qosPolicy` returns a QoS ID.
      */
-    readonly objectId: pulumi.Input<string>;
+    objectId: pulumi.Input<string>;
     /**
      * The type of the object that the RBAC policy
      * affects. Can be one of the following: `addressScope`, `addressGroup`,
      * `network`, `qosPolicy`, `securityGroup` or `subnetpool`.
      */
-    readonly objectType: pulumi.Input<string>;
+    objectType: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 networking client.
      * A networking client is needed to configure a routing entry on a subnet. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * routing entry.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The ID of the tenant to which the RBAC policy
      * will be enforced.
      */
-    readonly targetTenant: pulumi.Input<string>;
+    targetTenant: pulumi.Input<string>;
 }

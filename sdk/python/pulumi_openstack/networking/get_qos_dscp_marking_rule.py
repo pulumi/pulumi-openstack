@@ -12,6 +12,7 @@ __all__ = [
     'GetQosDscpMarkingRuleResult',
     'AwaitableGetQosDscpMarkingRuleResult',
     'get_qos_dscp_marking_rule',
+    'get_qos_dscp_marking_rule_output',
 ]
 
 @pulumi.output_type
@@ -85,6 +86,15 @@ def get_qos_dscp_marking_rule(dscp_mark: Optional[int] = None,
     """
     Use this data source to get the ID of an available OpenStack QoS DSCP marking rule.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    qos_dscp_marking_rule1 = openstack.networking.get_qos_dscp_marking_rule(dscp_mark=26)
+    ```
+
 
     :param int dscp_mark: The value of a DSCP mark.
     :param str qos_policy_id: The QoS policy reference.
@@ -107,3 +117,30 @@ def get_qos_dscp_marking_rule(dscp_mark: Optional[int] = None,
         id=__ret__.id,
         qos_policy_id=__ret__.qos_policy_id,
         region=__ret__.region)
+
+
+@_utilities.lift_output_func(get_qos_dscp_marking_rule)
+def get_qos_dscp_marking_rule_output(dscp_mark: Optional[pulumi.Input[Optional[int]]] = None,
+                                     qos_policy_id: Optional[pulumi.Input[str]] = None,
+                                     region: Optional[pulumi.Input[Optional[str]]] = None,
+                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetQosDscpMarkingRuleResult]:
+    """
+    Use this data source to get the ID of an available OpenStack QoS DSCP marking rule.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    qos_dscp_marking_rule1 = openstack.networking.get_qos_dscp_marking_rule(dscp_mark=26)
+    ```
+
+
+    :param int dscp_mark: The value of a DSCP mark.
+    :param str qos_policy_id: The QoS policy reference.
+    :param str region: The region in which to obtain the V2 Networking client.
+           A Networking client is needed to create a Neutron QoS DSCP marking rule. If omitted, the
+           `region` argument of the provider is used.
+    """
+    ...

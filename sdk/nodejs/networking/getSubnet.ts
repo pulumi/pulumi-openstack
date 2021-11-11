@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *
  * const subnet1 = pulumi.output(openstack.networking.getSubnet({
  *     name: "subnet_1",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getSubnet(args?: GetSubnetArgs, opts?: pulumi.InvokeOptions): Promise<GetSubnetResult> {
@@ -54,67 +54,67 @@ export interface GetSubnetArgs {
     /**
      * The CIDR of the subnet.
      */
-    readonly cidr?: string;
+    cidr?: string;
     /**
      * Human-readable description of the subnet.
      */
-    readonly description?: string;
+    description?: string;
     /**
      * @deprecated use dhcp_enabled instead
      */
-    readonly dhcpDisabled?: boolean;
+    dhcpDisabled?: boolean;
     /**
      * If the subnet has DHCP enabled.
      */
-    readonly dhcpEnabled?: boolean;
+    dhcpEnabled?: boolean;
     /**
      * The IP of the subnet's gateway.
      */
-    readonly gatewayIp?: string;
+    gatewayIp?: string;
     /**
      * The IP version of the subnet (either 4 or 6).
      */
-    readonly ipVersion?: number;
+    ipVersion?: number;
     /**
      * The IPv6 address mode. Valid values are
      * `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.
      */
-    readonly ipv6AddressMode?: string;
+    ipv6AddressMode?: string;
     /**
      * The IPv6 Router Advertisement mode. Valid values
      * are `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.
      */
-    readonly ipv6RaMode?: string;
+    ipv6RaMode?: string;
     /**
      * The name of the subnet.
      */
-    readonly name?: string;
+    name?: string;
     /**
      * The ID of the network the subnet belongs to.
      */
-    readonly networkId?: string;
+    networkId?: string;
     /**
      * The region in which to obtain the V2 Neutron client.
      * A Neutron client is needed to retrieve subnet ids. If omitted, the
      * `region` argument of the provider is used.
      */
-    readonly region?: string;
+    region?: string;
     /**
      * The ID of the subnet.
      */
-    readonly subnetId?: string;
+    subnetId?: string;
     /**
      * The ID of the subnetpool associated with the subnet.
      */
-    readonly subnetpoolId?: string;
+    subnetpoolId?: string;
     /**
      * The list of subnet tags to filter.
      */
-    readonly tags?: string[];
+    tags?: string[];
     /**
      * The owner of the subnet.
      */
-    readonly tenantId?: string;
+    tenantId?: string;
 }
 
 /**
@@ -166,4 +166,78 @@ export interface GetSubnetResult {
     readonly subnetpoolId: string;
     readonly tags?: string[];
     readonly tenantId: string;
+}
+
+export function getSubnetOutput(args?: GetSubnetOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSubnetResult> {
+    return pulumi.output(args).apply(a => getSubnet(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getSubnet.
+ */
+export interface GetSubnetOutputArgs {
+    /**
+     * The CIDR of the subnet.
+     */
+    cidr?: pulumi.Input<string>;
+    /**
+     * Human-readable description of the subnet.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * @deprecated use dhcp_enabled instead
+     */
+    dhcpDisabled?: pulumi.Input<boolean>;
+    /**
+     * If the subnet has DHCP enabled.
+     */
+    dhcpEnabled?: pulumi.Input<boolean>;
+    /**
+     * The IP of the subnet's gateway.
+     */
+    gatewayIp?: pulumi.Input<string>;
+    /**
+     * The IP version of the subnet (either 4 or 6).
+     */
+    ipVersion?: pulumi.Input<number>;
+    /**
+     * The IPv6 address mode. Valid values are
+     * `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.
+     */
+    ipv6AddressMode?: pulumi.Input<string>;
+    /**
+     * The IPv6 Router Advertisement mode. Valid values
+     * are `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.
+     */
+    ipv6RaMode?: pulumi.Input<string>;
+    /**
+     * The name of the subnet.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The ID of the network the subnet belongs to.
+     */
+    networkId?: pulumi.Input<string>;
+    /**
+     * The region in which to obtain the V2 Neutron client.
+     * A Neutron client is needed to retrieve subnet ids. If omitted, the
+     * `region` argument of the provider is used.
+     */
+    region?: pulumi.Input<string>;
+    /**
+     * The ID of the subnet.
+     */
+    subnetId?: pulumi.Input<string>;
+    /**
+     * The ID of the subnetpool associated with the subnet.
+     */
+    subnetpoolId?: pulumi.Input<string>;
+    /**
+     * The list of subnet tags to filter.
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The owner of the subnet.
+     */
+    tenantId?: pulumi.Input<string>;
 }

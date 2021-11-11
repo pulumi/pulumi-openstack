@@ -12,6 +12,7 @@ __all__ = [
     'GetNetworkResult',
     'AwaitableGetNetworkResult',
     'get_network',
+    'get_network_output',
 ]
 
 @pulumi.output_type
@@ -311,3 +312,48 @@ def get_network(description: Optional[str] = None,
         tags=__ret__.tags,
         tenant_id=__ret__.tenant_id,
         transparent_vlan=__ret__.transparent_vlan)
+
+
+@_utilities.lift_output_func(get_network)
+def get_network_output(description: Optional[pulumi.Input[Optional[str]]] = None,
+                       external: Optional[pulumi.Input[Optional[bool]]] = None,
+                       matching_subnet_cidr: Optional[pulumi.Input[Optional[str]]] = None,
+                       mtu: Optional[pulumi.Input[Optional[int]]] = None,
+                       name: Optional[pulumi.Input[Optional[str]]] = None,
+                       network_id: Optional[pulumi.Input[Optional[str]]] = None,
+                       region: Optional[pulumi.Input[Optional[str]]] = None,
+                       status: Optional[pulumi.Input[Optional[str]]] = None,
+                       tags: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                       tenant_id: Optional[pulumi.Input[Optional[str]]] = None,
+                       transparent_vlan: Optional[pulumi.Input[Optional[bool]]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNetworkResult]:
+    """
+    Use this data source to get the ID of an available OpenStack network.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    network = openstack.networking.get_network(name="tf_test_network")
+    ```
+
+
+    :param str description: Human-readable description of the network.
+    :param bool external: The external routing facility of the network.
+    :param str matching_subnet_cidr: The CIDR of a subnet within the network.
+    :param int mtu: The network MTU to filter. Available, when Neutron `net-mtu`
+           extension is enabled.
+    :param str name: The name of the network.
+    :param str network_id: The ID of the network.
+    :param str region: The region in which to obtain the V2 Neutron client.
+           A Neutron client is needed to retrieve networks ids. If omitted, the
+           `region` argument of the provider is used.
+    :param str status: The status of the network.
+    :param Sequence[str] tags: The list of network tags to filter.
+    :param str tenant_id: The owner of the network.
+    :param bool transparent_vlan: The VLAN transparent attribute for the
+           network.
+    """
+    ...

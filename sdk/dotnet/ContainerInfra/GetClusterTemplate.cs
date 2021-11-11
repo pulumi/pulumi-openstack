@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.OpenStack.ContainerInfra
 {
@@ -40,6 +41,36 @@ namespace Pulumi.OpenStack.ContainerInfra
         /// </summary>
         public static Task<GetClusterTemplateResult> InvokeAsync(GetClusterTemplateArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetClusterTemplateResult>("openstack:containerinfra/getClusterTemplate:getClusterTemplate", args ?? new GetClusterTemplateArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to get the ID of an available OpenStack Magnum cluster
+        /// template.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var clustertemplate1 = Output.Create(OpenStack.ContainerInfra.GetClusterTemplate.InvokeAsync(new OpenStack.ContainerInfra.GetClusterTemplateArgs
+        ///         {
+        ///             Name = "clustertemplate_1",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetClusterTemplateResult> Invoke(GetClusterTemplateInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetClusterTemplateResult>("openstack:containerinfra/getClusterTemplate:getClusterTemplate", args ?? new GetClusterTemplateInvokeArgs(), options.WithVersion());
     }
 
 
@@ -60,6 +91,27 @@ namespace Pulumi.OpenStack.ContainerInfra
         public string? Region { get; set; }
 
         public GetClusterTemplateArgs()
+        {
+        }
+    }
+
+    public sealed class GetClusterTemplateInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The name of the cluster template.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The region in which to obtain the V1 Container Infra
+        /// client.
+        /// If omitted, the `region` argument of the provider is used.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        public GetClusterTemplateInvokeArgs()
         {
         }
     }

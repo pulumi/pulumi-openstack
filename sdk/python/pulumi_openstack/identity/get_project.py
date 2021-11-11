@@ -12,6 +12,7 @@ __all__ = [
     'GetProjectResult',
     'AwaitableGetProjectResult',
     'get_project',
+    'get_project_output',
 ]
 
 @pulumi.output_type
@@ -190,3 +191,36 @@ def get_project(domain_id: Optional[str] = None,
         parent_id=__ret__.parent_id,
         region=__ret__.region,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_project)
+def get_project_output(domain_id: Optional[pulumi.Input[Optional[str]]] = None,
+                       enabled: Optional[pulumi.Input[Optional[bool]]] = None,
+                       is_domain: Optional[pulumi.Input[Optional[bool]]] = None,
+                       name: Optional[pulumi.Input[Optional[str]]] = None,
+                       parent_id: Optional[pulumi.Input[Optional[str]]] = None,
+                       region: Optional[pulumi.Input[Optional[str]]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectResult]:
+    """
+    Use this data source to get the ID of an OpenStack project.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    project1 = openstack.identity.get_project(name="demo")
+    ```
+
+
+    :param str domain_id: The domain this project belongs to.
+    :param bool enabled: Whether the project is enabled or disabled. Valid
+           values are `true` and `false`.
+    :param bool is_domain: Whether this project is a domain. Valid values
+           are `true` and `false`.
+    :param str name: The name of the project.
+    :param str parent_id: The parent of this project.
+    :param str region: The region the project is located in.
+    """
+    ...

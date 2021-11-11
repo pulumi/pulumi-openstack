@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.OpenStack.Networking
 {
@@ -39,6 +40,35 @@ namespace Pulumi.OpenStack.Networking
         /// </summary>
         public static Task<GetQosPolicyResult> InvokeAsync(GetQosPolicyArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetQosPolicyResult>("openstack:networking/getQosPolicy:getQosPolicy", args ?? new GetQosPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to get the ID of an available OpenStack QoS policy.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var qosPolicy1 = Output.Create(OpenStack.Networking.GetQosPolicy.InvokeAsync(new OpenStack.Networking.GetQosPolicyArgs
+        ///         {
+        ///             Name = "qos_policy_1",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetQosPolicyResult> Invoke(GetQosPolicyInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetQosPolicyResult>("openstack:networking/getQosPolicy:getQosPolicy", args ?? new GetQosPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -95,6 +125,63 @@ namespace Pulumi.OpenStack.Networking
         }
 
         public GetQosPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetQosPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The human-readable description for the QoS policy.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Whether the QoS policy is default policy or not.
+        /// </summary>
+        [Input("isDefault")]
+        public Input<bool>? IsDefault { get; set; }
+
+        /// <summary>
+        /// The name of the QoS policy.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The owner of the QoS policy.
+        /// </summary>
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
+
+        /// <summary>
+        /// The region in which to obtain the V2 Networking client.
+        /// A Networking client is needed to retrieve a QoS policy ID. If omitted, the
+        /// `region` argument of the provider is used.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// Whether this QoS policy is shared across all projects.
+        /// </summary>
+        [Input("shared")]
+        public Input<bool>? Shared { get; set; }
+
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// The list of QoS policy tags to filter.
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
+
+        public GetQosPolicyInvokeArgs()
         {
         }
     }

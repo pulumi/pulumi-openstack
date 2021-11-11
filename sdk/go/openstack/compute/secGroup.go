@@ -77,6 +77,36 @@ import (
 //
 // A list of ICMP types and codes can be found [here](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages).
 //
+// ### Referencing Security Groups
+//
+// When referencing a security group in a configuration (for example, a configuration creates a new security group and then needs to apply it to an instance being created in the same configuration), it is currently recommended to reference the security group by name and not by ID, like this:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := compute.NewInstance(ctx, "test_server", &compute.InstanceArgs{
+// 			FlavorId: pulumi.String("3"),
+// 			ImageId:  pulumi.String("ad091b52-742f-469e-8f3c-fd81cadf0743"),
+// 			KeyPair:  pulumi.String("my_key_pair_name"),
+// 			SecurityGroups: pulumi.StringArray{
+// 				pulumi.Any(openstack_compute_secgroup_v2.Secgroup_1.Name),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // Security Groups can be imported using the `id`, e.g.
@@ -283,7 +313,7 @@ type SecGroupArrayInput interface {
 type SecGroupArray []SecGroupInput
 
 func (SecGroupArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*SecGroup)(nil))
+	return reflect.TypeOf((*[]*SecGroup)(nil)).Elem()
 }
 
 func (i SecGroupArray) ToSecGroupArrayOutput() SecGroupArrayOutput {
@@ -308,7 +338,7 @@ type SecGroupMapInput interface {
 type SecGroupMap map[string]SecGroupInput
 
 func (SecGroupMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*SecGroup)(nil))
+	return reflect.TypeOf((*map[string]*SecGroup)(nil)).Elem()
 }
 
 func (i SecGroupMap) ToSecGroupMapOutput() SecGroupMapOutput {
@@ -319,9 +349,7 @@ func (i SecGroupMap) ToSecGroupMapOutputWithContext(ctx context.Context) SecGrou
 	return pulumi.ToOutputWithContext(ctx, i).(SecGroupMapOutput)
 }
 
-type SecGroupOutput struct {
-	*pulumi.OutputState
-}
+type SecGroupOutput struct{ *pulumi.OutputState }
 
 func (SecGroupOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*SecGroup)(nil))
@@ -340,14 +368,12 @@ func (o SecGroupOutput) ToSecGroupPtrOutput() SecGroupPtrOutput {
 }
 
 func (o SecGroupOutput) ToSecGroupPtrOutputWithContext(ctx context.Context) SecGroupPtrOutput {
-	return o.ApplyT(func(v SecGroup) *SecGroup {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecGroup) *SecGroup {
 		return &v
 	}).(SecGroupPtrOutput)
 }
 
-type SecGroupPtrOutput struct {
-	*pulumi.OutputState
-}
+type SecGroupPtrOutput struct{ *pulumi.OutputState }
 
 func (SecGroupPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**SecGroup)(nil))
@@ -359,6 +385,16 @@ func (o SecGroupPtrOutput) ToSecGroupPtrOutput() SecGroupPtrOutput {
 
 func (o SecGroupPtrOutput) ToSecGroupPtrOutputWithContext(ctx context.Context) SecGroupPtrOutput {
 	return o
+}
+
+func (o SecGroupPtrOutput) Elem() SecGroupOutput {
+	return o.ApplyT(func(v *SecGroup) SecGroup {
+		if v != nil {
+			return *v
+		}
+		var ret SecGroup
+		return ret
+	}).(SecGroupOutput)
 }
 
 type SecGroupArrayOutput struct{ *pulumi.OutputState }
@@ -402,6 +438,10 @@ func (o SecGroupMapOutput) MapIndex(k pulumi.StringInput) SecGroupOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SecGroupInput)(nil)).Elem(), &SecGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecGroupPtrInput)(nil)).Elem(), &SecGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecGroupArrayInput)(nil)).Elem(), SecGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecGroupMapInput)(nil)).Elem(), SecGroupMap{})
 	pulumi.RegisterOutputType(SecGroupOutput{})
 	pulumi.RegisterOutputType(SecGroupPtrOutput{})
 	pulumi.RegisterOutputType(SecGroupArrayOutput{})

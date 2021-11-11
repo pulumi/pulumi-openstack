@@ -12,6 +12,7 @@ __all__ = [
     'GetQosMinimumBandwidthRuleResult',
     'AwaitableGetQosMinimumBandwidthRuleResult',
     'get_qos_minimum_bandwidth_rule',
+    'get_qos_minimum_bandwidth_rule_output',
 ]
 
 @pulumi.output_type
@@ -95,6 +96,15 @@ def get_qos_minimum_bandwidth_rule(direction: Optional[str] = None,
     """
     Use this data source to get the ID of an available OpenStack QoS minimum bandwidth rule.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    qos_min_bw_rule1 = openstack.networking.get_qos_minimum_bandwidth_rule(min_kbps=2000)
+    ```
+
 
     :param int min_kbps: The value of a minimum kbps bandwidth.
     :param str qos_policy_id: The QoS policy reference.
@@ -119,3 +129,31 @@ def get_qos_minimum_bandwidth_rule(direction: Optional[str] = None,
         min_kbps=__ret__.min_kbps,
         qos_policy_id=__ret__.qos_policy_id,
         region=__ret__.region)
+
+
+@_utilities.lift_output_func(get_qos_minimum_bandwidth_rule)
+def get_qos_minimum_bandwidth_rule_output(direction: Optional[pulumi.Input[Optional[str]]] = None,
+                                          min_kbps: Optional[pulumi.Input[Optional[int]]] = None,
+                                          qos_policy_id: Optional[pulumi.Input[str]] = None,
+                                          region: Optional[pulumi.Input[Optional[str]]] = None,
+                                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetQosMinimumBandwidthRuleResult]:
+    """
+    Use this data source to get the ID of an available OpenStack QoS minimum bandwidth rule.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    qos_min_bw_rule1 = openstack.networking.get_qos_minimum_bandwidth_rule(min_kbps=2000)
+    ```
+
+
+    :param int min_kbps: The value of a minimum kbps bandwidth.
+    :param str qos_policy_id: The QoS policy reference.
+    :param str region: The region in which to obtain the V2 Networking client.
+           A Networking client is needed to create a Neutron QoS minimum bandwidth rule. If omitted, the
+           `region` argument of the provider is used.
+    """
+    ...

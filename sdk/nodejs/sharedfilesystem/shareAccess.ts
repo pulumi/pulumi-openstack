@@ -125,32 +125,32 @@ export interface ShareAccessState {
     /**
      * The access credential of the entity granted access.
      */
-    readonly accessKey?: pulumi.Input<string>;
+    accessKey?: pulumi.Input<string>;
     /**
      * The access level to the share. Can either be `rw` or `ro`.
      */
-    readonly accessLevel?: pulumi.Input<string>;
+    accessLevel?: pulumi.Input<string>;
     /**
      * The value that defines the access. Can either be an IP
      * address or a username verified by configured Security Service of the Share Network.
      */
-    readonly accessTo?: pulumi.Input<string>;
+    accessTo?: pulumi.Input<string>;
     /**
      * The access rule type. Can either be an ip, user,
      * cert, or cephx. cephx support requires an OpenStack environment that supports
      * Shared Filesystem microversion 2.13 (Mitaka) or later.
      */
-    readonly accessType?: pulumi.Input<string>;
+    accessType?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 Shared File System client.
      * A Shared File System client is needed to create a share access. Changing this
      * creates a new share access.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The UUID of the share to which you are granted access.
      */
-    readonly shareId?: pulumi.Input<string>;
+    shareId?: pulumi.Input<string>;
 }
 
 /**
@@ -160,26 +160,26 @@ export interface ShareAccessArgs {
     /**
      * The access level to the share. Can either be `rw` or `ro`.
      */
-    readonly accessLevel: pulumi.Input<string>;
+    accessLevel: pulumi.Input<string>;
     /**
      * The value that defines the access. Can either be an IP
      * address or a username verified by configured Security Service of the Share Network.
      */
-    readonly accessTo: pulumi.Input<string>;
+    accessTo: pulumi.Input<string>;
     /**
      * The access rule type. Can either be an ip, user,
      * cert, or cephx. cephx support requires an OpenStack environment that supports
      * Shared Filesystem microversion 2.13 (Mitaka) or later.
      */
-    readonly accessType: pulumi.Input<string>;
+    accessType: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 Shared File System client.
      * A Shared File System client is needed to create a share access. Changing this
      * creates a new share access.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The UUID of the share to which you are granted access.
      */
-    readonly shareId: pulumi.Input<string>;
+    shareId: pulumi.Input<string>;
 }

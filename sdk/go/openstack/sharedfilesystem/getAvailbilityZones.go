@@ -4,6 +4,9 @@
 package sharedfilesystem
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -54,4 +57,58 @@ type GetAvailbilityZonesResult struct {
 	Names []string `pulumi:"names"`
 	// See Argument Reference above.
 	Region string `pulumi:"region"`
+}
+
+func GetAvailbilityZonesOutput(ctx *pulumi.Context, args GetAvailbilityZonesOutputArgs, opts ...pulumi.InvokeOption) GetAvailbilityZonesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetAvailbilityZonesResult, error) {
+			args := v.(GetAvailbilityZonesArgs)
+			r, err := GetAvailbilityZones(ctx, &args, opts...)
+			return *r, err
+		}).(GetAvailbilityZonesResultOutput)
+}
+
+// A collection of arguments for invoking getAvailbilityZones.
+type GetAvailbilityZonesOutputArgs struct {
+	// The region in which to obtain the V2 Shared File System
+	// client. If omitted, the `region` argument of the provider is used.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+}
+
+func (GetAvailbilityZonesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAvailbilityZonesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getAvailbilityZones.
+type GetAvailbilityZonesResultOutput struct{ *pulumi.OutputState }
+
+func (GetAvailbilityZonesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAvailbilityZonesResult)(nil)).Elem()
+}
+
+func (o GetAvailbilityZonesResultOutput) ToGetAvailbilityZonesResultOutput() GetAvailbilityZonesResultOutput {
+	return o
+}
+
+func (o GetAvailbilityZonesResultOutput) ToGetAvailbilityZonesResultOutputWithContext(ctx context.Context) GetAvailbilityZonesResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetAvailbilityZonesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAvailbilityZonesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The names of the availability zones, ordered alphanumerically.
+func (o GetAvailbilityZonesResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAvailbilityZonesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+// See Argument Reference above.
+func (o GetAvailbilityZonesResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAvailbilityZonesResult) string { return v.Region }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetAvailbilityZonesResultOutput{})
 }

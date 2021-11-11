@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * const instance = pulumi.output(openstack.compute.getInstanceV2({
  *     // Randomly generated UUID, for demonstration purposes
  *     id: "2ba26dc6-a12d-4889-8f25-794ea5bf4453",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getInstanceV2(args: GetInstanceV2Args, opts?: pulumi.InvokeOptions): Promise<GetInstanceV2Result> {
@@ -43,16 +43,16 @@ export interface GetInstanceV2Args {
     /**
      * The UUID of the instance
      */
-    readonly id: string;
+    id: string;
     /**
      * An array of maps, detailed below.
      */
-    readonly networks?: inputs.compute.GetInstanceV2Network[];
-    readonly region?: string;
+    networks?: inputs.compute.GetInstanceV2Network[];
+    region?: string;
     /**
      * The user data added when the server was created.
      */
-    readonly userData?: string;
+    userData?: string;
 }
 
 /**
@@ -118,4 +118,27 @@ export interface GetInstanceV2Result {
      * The user data added when the server was created.
      */
     readonly userData: string;
+}
+
+export function getInstanceV2Output(args: GetInstanceV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceV2Result> {
+    return pulumi.output(args).apply(a => getInstanceV2(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getInstanceV2.
+ */
+export interface GetInstanceV2OutputArgs {
+    /**
+     * The UUID of the instance
+     */
+    id: pulumi.Input<string>;
+    /**
+     * An array of maps, detailed below.
+     */
+    networks?: pulumi.Input<pulumi.Input<inputs.compute.GetInstanceV2NetworkArgs>[]>;
+    region?: pulumi.Input<string>;
+    /**
+     * The user data added when the server was created.
+     */
+    userData?: pulumi.Input<string>;
 }

@@ -116,16 +116,16 @@ export interface KeypairState {
     /**
      * The fingerprint of the public key.
      */
-    readonly fingerprint?: pulumi.Input<string>;
+    fingerprint?: pulumi.Input<string>;
     /**
      * A unique name for the keypair. Changing this creates a new
      * keypair.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The generated private key when no public key is specified.
      */
-    readonly privateKey?: pulumi.Input<string>;
+    privateKey?: pulumi.Input<string>;
     /**
      * A pregenerated OpenSSH-formatted public key.
      * Changing this creates a new keypair. If a public key is not specified, then
@@ -133,18 +133,18 @@ export interface KeypairState {
      * created, then destroying this resource means you will lose access to that
      * keypair forever.
      */
-    readonly publicKey?: pulumi.Input<string>;
+    publicKey?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 Compute client.
      * Keypairs are associated with accounts, but a Compute client is needed to
      * create one. If omitted, the `region` argument of the provider is used.
      * Changing this creates a new keypair.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * Map of additional options.
      */
-    readonly valueSpecs?: pulumi.Input<{[key: string]: any}>;
+    valueSpecs?: pulumi.Input<{[key: string]: any}>;
 }
 
 /**
@@ -155,7 +155,7 @@ export interface KeypairArgs {
      * A unique name for the keypair. Changing this creates a new
      * keypair.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * A pregenerated OpenSSH-formatted public key.
      * Changing this creates a new keypair. If a public key is not specified, then
@@ -163,16 +163,16 @@ export interface KeypairArgs {
      * created, then destroying this resource means you will lose access to that
      * keypair forever.
      */
-    readonly publicKey?: pulumi.Input<string>;
+    publicKey?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 Compute client.
      * Keypairs are associated with accounts, but a Compute client is needed to
      * create one. If omitted, the `region` argument of the provider is used.
      * Changing this creates a new keypair.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * Map of additional options.
      */
-    readonly valueSpecs?: pulumi.Input<{[key: string]: any}>;
+    valueSpecs?: pulumi.Input<{[key: string]: any}>;
 }

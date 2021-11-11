@@ -137,28 +137,28 @@ export interface ServerGroupState {
     /**
      * The instances that are part of this server group.
      */
-    readonly members?: pulumi.Input<pulumi.Input<string>[]>;
+    members?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A unique name for the server group. Changing this creates
      * a new server group.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The set of policies for the server group. All policies
      * are mutually exclusive. See the Policies section for more information.
      * Changing this creates a new server group.
      */
-    readonly policies?: pulumi.Input<pulumi.Input<string>[]>;
+    policies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The region in which to obtain the V2 Compute client.
      * If omitted, the `region` argument of the provider is used. Changing
      * this creates a new server group.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * Map of additional options.
      */
-    readonly valueSpecs?: pulumi.Input<{[key: string]: any}>;
+    valueSpecs?: pulumi.Input<{[key: string]: any}>;
 }
 
 /**
@@ -169,21 +169,21 @@ export interface ServerGroupArgs {
      * A unique name for the server group. Changing this creates
      * a new server group.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The set of policies for the server group. All policies
      * are mutually exclusive. See the Policies section for more information.
      * Changing this creates a new server group.
      */
-    readonly policies?: pulumi.Input<pulumi.Input<string>[]>;
+    policies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The region in which to obtain the V2 Compute client.
      * If omitted, the `region` argument of the provider is used. Changing
      * this creates a new server group.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * Map of additional options.
      */
-    readonly valueSpecs?: pulumi.Input<{[key: string]: any}>;
+    valueSpecs?: pulumi.Input<{[key: string]: any}>;
 }

@@ -153,37 +153,37 @@ export interface EndpointV3State {
      * The endpoint region. The `region` and
      * `endpointRegion` can be different.
      */
-    readonly endpointRegion?: pulumi.Input<string>;
+    endpointRegion?: pulumi.Input<string>;
     /**
      * The endpoint interface. Valid values are `public`,
      * `internal` and `admin`. Default value is `public`
      */
-    readonly interface?: pulumi.Input<string>;
+    interface?: pulumi.Input<string>;
     /**
      * The endpoint name.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V3 Keystone client.
      * If omitted, the `region` argument of the provider is used.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The endpoint service ID.
      */
-    readonly serviceId?: pulumi.Input<string>;
+    serviceId?: pulumi.Input<string>;
     /**
      * The service name of the endpoint.
      */
-    readonly serviceName?: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string>;
     /**
      * The service type of the endpoint.
      */
-    readonly serviceType?: pulumi.Input<string>;
+    serviceType?: pulumi.Input<string>;
     /**
      * The endpoint url.
      */
-    readonly url?: pulumi.Input<string>;
+    url?: pulumi.Input<string>;
 }
 
 /**
@@ -194,27 +194,27 @@ export interface EndpointV3Args {
      * The endpoint region. The `region` and
      * `endpointRegion` can be different.
      */
-    readonly endpointRegion: pulumi.Input<string>;
+    endpointRegion: pulumi.Input<string>;
     /**
      * The endpoint interface. Valid values are `public`,
      * `internal` and `admin`. Default value is `public`
      */
-    readonly interface?: pulumi.Input<string>;
+    interface?: pulumi.Input<string>;
     /**
      * The endpoint name.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V3 Keystone client.
      * If omitted, the `region` argument of the provider is used.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The endpoint service ID.
      */
-    readonly serviceId: pulumi.Input<string>;
+    serviceId: pulumi.Input<string>;
     /**
      * The endpoint url.
      */
-    readonly url: pulumi.Input<string>;
+    url: pulumi.Input<string>;
 }

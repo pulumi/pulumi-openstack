@@ -213,7 +213,7 @@ func (o ConfigurationDatastoreOutput) ToConfigurationDatastorePtrOutput() Config
 }
 
 func (o ConfigurationDatastoreOutput) ToConfigurationDatastorePtrOutputWithContext(ctx context.Context) ConfigurationDatastorePtrOutput {
-	return o.ApplyT(func(v ConfigurationDatastore) *ConfigurationDatastore {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigurationDatastore) *ConfigurationDatastore {
 		return &v
 	}).(ConfigurationDatastorePtrOutput)
 }
@@ -243,7 +243,13 @@ func (o ConfigurationDatastorePtrOutput) ToConfigurationDatastorePtrOutputWithCo
 }
 
 func (o ConfigurationDatastorePtrOutput) Elem() ConfigurationDatastoreOutput {
-	return o.ApplyT(func(v *ConfigurationDatastore) ConfigurationDatastore { return *v }).(ConfigurationDatastoreOutput)
+	return o.ApplyT(func(v *ConfigurationDatastore) ConfigurationDatastore {
+		if v != nil {
+			return *v
+		}
+		var ret ConfigurationDatastore
+		return ret
+	}).(ConfigurationDatastoreOutput)
 }
 
 // Database engine type to be used with this configuration. Changing this creates a new resource.
@@ -488,7 +494,7 @@ func (o InstanceDatastoreOutput) ToInstanceDatastorePtrOutput() InstanceDatastor
 }
 
 func (o InstanceDatastoreOutput) ToInstanceDatastorePtrOutputWithContext(ctx context.Context) InstanceDatastorePtrOutput {
-	return o.ApplyT(func(v InstanceDatastore) *InstanceDatastore {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceDatastore) *InstanceDatastore {
 		return &v
 	}).(InstanceDatastorePtrOutput)
 }
@@ -520,7 +526,13 @@ func (o InstanceDatastorePtrOutput) ToInstanceDatastorePtrOutputWithContext(ctx 
 }
 
 func (o InstanceDatastorePtrOutput) Elem() InstanceDatastoreOutput {
-	return o.ApplyT(func(v *InstanceDatastore) InstanceDatastore { return *v }).(InstanceDatastoreOutput)
+	return o.ApplyT(func(v *InstanceDatastore) InstanceDatastore {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceDatastore
+		return ret
+	}).(InstanceDatastoreOutput)
 }
 
 // Database engine type to be used in new instance. Changing this
@@ -818,6 +830,18 @@ func (o InstanceUserArrayOutput) Index(i pulumi.IntInput) InstanceUserOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigurationConfigurationInput)(nil)).Elem(), ConfigurationConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigurationConfigurationArrayInput)(nil)).Elem(), ConfigurationConfigurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigurationDatastoreInput)(nil)).Elem(), ConfigurationDatastoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigurationDatastorePtrInput)(nil)).Elem(), ConfigurationDatastoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceDatabaseInput)(nil)).Elem(), InstanceDatabaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceDatabaseArrayInput)(nil)).Elem(), InstanceDatabaseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceDatastoreInput)(nil)).Elem(), InstanceDatastoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceDatastorePtrInput)(nil)).Elem(), InstanceDatastoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkInput)(nil)).Elem(), InstanceNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkArrayInput)(nil)).Elem(), InstanceNetworkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceUserInput)(nil)).Elem(), InstanceUserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceUserArrayInput)(nil)).Elem(), InstanceUserArray{})
 	pulumi.RegisterOutputType(ConfigurationConfigurationOutput{})
 	pulumi.RegisterOutputType(ConfigurationConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(ConfigurationDatastoreOutput{})

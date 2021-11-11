@@ -12,6 +12,7 @@ __all__ = [
     'GetFloatingIpResult',
     'AwaitableGetFloatingIpResult',
     'get_floating_ip',
+    'get_floating_ip_output',
 ]
 
 @pulumi.output_type
@@ -226,3 +227,42 @@ def get_floating_ip(address: Optional[str] = None,
         status=__ret__.status,
         tags=__ret__.tags,
         tenant_id=__ret__.tenant_id)
+
+
+@_utilities.lift_output_func(get_floating_ip)
+def get_floating_ip_output(address: Optional[pulumi.Input[Optional[str]]] = None,
+                           description: Optional[pulumi.Input[Optional[str]]] = None,
+                           fixed_ip: Optional[pulumi.Input[Optional[str]]] = None,
+                           pool: Optional[pulumi.Input[Optional[str]]] = None,
+                           port_id: Optional[pulumi.Input[Optional[str]]] = None,
+                           region: Optional[pulumi.Input[Optional[str]]] = None,
+                           status: Optional[pulumi.Input[Optional[str]]] = None,
+                           tags: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                           tenant_id: Optional[pulumi.Input[Optional[str]]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFloatingIpResult]:
+    """
+    Use this data source to get the ID of an available OpenStack floating IP.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    floatingip1 = openstack.networking.get_floating_ip(address="192.168.0.4")
+    ```
+
+
+    :param str address: The IP address of the floating IP.
+    :param str description: Human-readable description of the floating IP.
+    :param str fixed_ip: The specific IP address of the internal port which should be associated with the floating IP.
+    :param str pool: The name of the pool from which the floating IP belongs to.
+    :param str port_id: The ID of the port the floating IP is attached.
+    :param str region: The region in which to obtain the V2 Neutron client.
+           A Neutron client is needed to retrieve floating IP ids. If omitted, the
+           `region` argument of the provider is used.
+    :param str status: status of the floating IP (ACTIVE/DOWN).
+    :param Sequence[str] tags: The list of floating IP tags to filter.
+    :param str tenant_id: The owner of the floating IP.
+    """
+    ...

@@ -320,7 +320,7 @@ type MemberArrayInput interface {
 type MemberArray []MemberInput
 
 func (MemberArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Member)(nil))
+	return reflect.TypeOf((*[]*Member)(nil)).Elem()
 }
 
 func (i MemberArray) ToMemberArrayOutput() MemberArrayOutput {
@@ -345,7 +345,7 @@ type MemberMapInput interface {
 type MemberMap map[string]MemberInput
 
 func (MemberMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Member)(nil))
+	return reflect.TypeOf((*map[string]*Member)(nil)).Elem()
 }
 
 func (i MemberMap) ToMemberMapOutput() MemberMapOutput {
@@ -356,9 +356,7 @@ func (i MemberMap) ToMemberMapOutputWithContext(ctx context.Context) MemberMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(MemberMapOutput)
 }
 
-type MemberOutput struct {
-	*pulumi.OutputState
-}
+type MemberOutput struct{ *pulumi.OutputState }
 
 func (MemberOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Member)(nil))
@@ -377,14 +375,12 @@ func (o MemberOutput) ToMemberPtrOutput() MemberPtrOutput {
 }
 
 func (o MemberOutput) ToMemberPtrOutputWithContext(ctx context.Context) MemberPtrOutput {
-	return o.ApplyT(func(v Member) *Member {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Member) *Member {
 		return &v
 	}).(MemberPtrOutput)
 }
 
-type MemberPtrOutput struct {
-	*pulumi.OutputState
-}
+type MemberPtrOutput struct{ *pulumi.OutputState }
 
 func (MemberPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Member)(nil))
@@ -396,6 +392,16 @@ func (o MemberPtrOutput) ToMemberPtrOutput() MemberPtrOutput {
 
 func (o MemberPtrOutput) ToMemberPtrOutputWithContext(ctx context.Context) MemberPtrOutput {
 	return o
+}
+
+func (o MemberPtrOutput) Elem() MemberOutput {
+	return o.ApplyT(func(v *Member) Member {
+		if v != nil {
+			return *v
+		}
+		var ret Member
+		return ret
+	}).(MemberOutput)
 }
 
 type MemberArrayOutput struct{ *pulumi.OutputState }
@@ -439,6 +445,10 @@ func (o MemberMapOutput) MapIndex(k pulumi.StringInput) MemberOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*MemberInput)(nil)).Elem(), &Member{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MemberPtrInput)(nil)).Elem(), &Member{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MemberArrayInput)(nil)).Elem(), MemberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MemberMapInput)(nil)).Elem(), MemberMap{})
 	pulumi.RegisterOutputType(MemberOutput{})
 	pulumi.RegisterOutputType(MemberPtrOutput{})
 	pulumi.RegisterOutputType(MemberArrayOutput{})

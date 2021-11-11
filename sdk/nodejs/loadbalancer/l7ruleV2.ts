@@ -201,54 +201,54 @@ export interface L7RuleV2State {
      * The administrative state of the L7 Rule.
      * A valid value is true (UP) or false (DOWN).
      */
-    readonly adminStateUp?: pulumi.Input<boolean>;
+    adminStateUp?: pulumi.Input<boolean>;
     /**
      * The comparison type for the L7 rule - can either be
      * CONTAINS, STARTS\_WITH, ENDS_WITH, EQUAL_TO or REGEX
      */
-    readonly compareType?: pulumi.Input<string>;
+    compareType?: pulumi.Input<string>;
     /**
      * When true the logic of the rule is inverted. For example, with invert
      * true, equal to would become not equal to. Default is false.
      */
-    readonly invert?: pulumi.Input<boolean>;
+    invert?: pulumi.Input<boolean>;
     /**
      * The key to use for the comparison. For example, the name of the cookie to
      * evaluate. Valid when `type` is set to COOKIE or HEADER.
      */
-    readonly key?: pulumi.Input<string>;
+    key?: pulumi.Input<string>;
     /**
      * The ID of the L7 Policy to query. Changing this creates a new
      * L7 Rule.
      */
-    readonly l7policyId?: pulumi.Input<string>;
+    l7policyId?: pulumi.Input<string>;
     /**
      * The ID of the Listener owning this resource.
      */
-    readonly listenerId?: pulumi.Input<string>;
+    listenerId?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create an . If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * L7 Rule.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * Required for admins. The UUID of the tenant who owns
      * the L7 Rule.  Only administrative users can specify a tenant UUID
      * other than their own. Changing this creates a new L7 Rule.
      */
-    readonly tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string>;
     /**
      * The L7 Rule type - can either be COOKIE, FILE\_TYPE, HEADER,
      * HOST\_NAME or PATH.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
     /**
      * The value to use for the comparison. For example, the file type to
      * compare.
      */
-    readonly value?: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
 }
 
 /**
@@ -259,48 +259,48 @@ export interface L7RuleV2Args {
      * The administrative state of the L7 Rule.
      * A valid value is true (UP) or false (DOWN).
      */
-    readonly adminStateUp?: pulumi.Input<boolean>;
+    adminStateUp?: pulumi.Input<boolean>;
     /**
      * The comparison type for the L7 rule - can either be
      * CONTAINS, STARTS\_WITH, ENDS_WITH, EQUAL_TO or REGEX
      */
-    readonly compareType: pulumi.Input<string>;
+    compareType: pulumi.Input<string>;
     /**
      * When true the logic of the rule is inverted. For example, with invert
      * true, equal to would become not equal to. Default is false.
      */
-    readonly invert?: pulumi.Input<boolean>;
+    invert?: pulumi.Input<boolean>;
     /**
      * The key to use for the comparison. For example, the name of the cookie to
      * evaluate. Valid when `type` is set to COOKIE or HEADER.
      */
-    readonly key?: pulumi.Input<string>;
+    key?: pulumi.Input<string>;
     /**
      * The ID of the L7 Policy to query. Changing this creates a new
      * L7 Rule.
      */
-    readonly l7policyId: pulumi.Input<string>;
+    l7policyId: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create an . If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * L7 Rule.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * Required for admins. The UUID of the tenant who owns
      * the L7 Rule.  Only administrative users can specify a tenant UUID
      * other than their own. Changing this creates a new L7 Rule.
      */
-    readonly tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string>;
     /**
      * The L7 Rule type - can either be COOKIE, FILE\_TYPE, HEADER,
      * HOST\_NAME or PATH.
      */
-    readonly type: pulumi.Input<string>;
+    type: pulumi.Input<string>;
     /**
      * The value to use for the comparison. For example, the file type to
      * compare.
      */
-    readonly value: pulumi.Input<string>;
+    value: pulumi.Input<string>;
 }

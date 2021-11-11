@@ -290,28 +290,28 @@ export interface InstanceState {
     /**
      * The first detected Fixed IPv4 address.
      */
-    readonly accessIpV4?: pulumi.Input<string>;
+    accessIpV4?: pulumi.Input<string>;
     /**
      * The first detected Fixed IPv6 address.
      */
-    readonly accessIpV6?: pulumi.Input<string>;
+    accessIpV6?: pulumi.Input<string>;
     /**
      * The administrative password to assign to the server.
      * Changing this changes the root password on the existing server.
      */
-    readonly adminPass?: pulumi.Input<string>;
-    readonly allMetadata?: pulumi.Input<{[key: string]: any}>;
+    adminPass?: pulumi.Input<string>;
+    allMetadata?: pulumi.Input<{[key: string]: any}>;
     /**
      * The collection of tags assigned on the instance, which have
      * been explicitly and implicitly added.
      */
-    readonly allTags?: pulumi.Input<pulumi.Input<string>[]>;
+    allTags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The availability zone in which to create
      * the server. Conflicts with `availabilityZoneHints`. Changing this creates
      * a new server.
      */
-    readonly availabilityZone?: pulumi.Input<string>;
+    availabilityZone?: pulumi.Input<string>;
     /**
      * The availability zone in which to
      * create the server. This argument is preferred to `availabilityZone`, when
@@ -320,7 +320,7 @@ export interface InstanceState {
      * host or node. Conflicts with `availabilityZone`. Changing this creates a
      * new server.
      */
-    readonly availabilityZoneHints?: pulumi.Input<string>;
+    availabilityZoneHints?: pulumi.Input<string>;
     /**
      * Configuration of block devices. The blockDevice
      * structure is documented below. Changing this creates a new server.
@@ -329,96 +329,96 @@ export interface InstanceState {
      * following [reference](https://docs.openstack.org/nova/latest/user/block-device-mapping.html)
      * for more information.
      */
-    readonly blockDevices?: pulumi.Input<pulumi.Input<inputs.compute.InstanceBlockDevice>[]>;
+    blockDevices?: pulumi.Input<pulumi.Input<inputs.compute.InstanceBlockDevice>[]>;
     /**
      * Whether to use the configDrive feature to
      * configure the instance. Changing this creates a new server.
      */
-    readonly configDrive?: pulumi.Input<boolean>;
+    configDrive?: pulumi.Input<boolean>;
     /**
      * The flavor ID of
      * the desired flavor for the server. Changing this resizes the existing server.
      */
-    readonly flavorId?: pulumi.Input<string>;
+    flavorId?: pulumi.Input<string>;
     /**
      * The name of the
      * desired flavor for the server. Changing this resizes the existing server.
      */
-    readonly flavorName?: pulumi.Input<string>;
+    flavorName?: pulumi.Input<string>;
     /**
      * @deprecated Use the openstack_compute_floatingip_associate_v2 resource instead
      */
-    readonly floatingIp?: pulumi.Input<string>;
+    floatingIp?: pulumi.Input<string>;
     /**
      * Whether to force the OpenStack instance to be
      * forcefully deleted. This is useful for environments that have reclaim / soft
      * deletion enabled.
      */
-    readonly forceDelete?: pulumi.Input<boolean>;
+    forceDelete?: pulumi.Input<boolean>;
     /**
      * (Optional; Required if `imageName` is empty and not booting
      * from a volume. Do not specify if booting from a volume.) The image ID of
      * the desired image for the server. Changing this creates a new server.
      */
-    readonly imageId?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string>;
     /**
      * (Optional; Required if `imageId` is empty and not booting
      * from a volume. Do not specify if booting from a volume.) The name of the
      * desired image for the server. Changing this creates a new server.
      */
-    readonly imageName?: pulumi.Input<string>;
+    imageName?: pulumi.Input<string>;
     /**
      * The name of a key pair to put on the server. The key
      * pair must already be created and associated with the tenant's account.
      * Changing this creates a new server.
      */
-    readonly keyPair?: pulumi.Input<string>;
+    keyPair?: pulumi.Input<string>;
     /**
      * Metadata key/value pairs to make available from
      * within the instance. Changing this updates the existing server metadata.
      */
-    readonly metadata?: pulumi.Input<{[key: string]: any}>;
+    metadata?: pulumi.Input<{[key: string]: any}>;
     /**
      * The human-readable
      * name of the network. Changing this creates a new server.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Special string for `network` option to create
      * the server. `networkMode` can be `"auto"` or `"none"`.
      * Please see the following [reference](https://docs.openstack.org/api-ref/compute/?expanded=create-server-detail#id11) for more information. Conflicts with `network`.
      */
-    readonly networkMode?: pulumi.Input<string>;
+    networkMode?: pulumi.Input<string>;
     /**
      * An array of one or more networks to attach to the
      * instance. The network object structure is documented below. Changing this
      * creates a new server.
      */
-    readonly networks?: pulumi.Input<pulumi.Input<inputs.compute.InstanceNetwork>[]>;
+    networks?: pulumi.Input<pulumi.Input<inputs.compute.InstanceNetwork>[]>;
     /**
      * Customize the personality of an instance by
      * defining one or more files and their contents. The personality structure
      * is described below.
      */
-    readonly personalities?: pulumi.Input<pulumi.Input<inputs.compute.InstancePersonality>[]>;
+    personalities?: pulumi.Input<pulumi.Input<inputs.compute.InstancePersonality>[]>;
     /**
      * Provide the VM state. Only 'active' and 'shutoff'
      * are supported values. *Note*: If the initial powerState is the shutoff
      * the VM will be stopped immediately after build and the provisioners like
      * remote-exec or files are not supported.
      */
-    readonly powerState?: pulumi.Input<string>;
+    powerState?: pulumi.Input<string>;
     /**
      * The region in which to create the server instance. If
      * omitted, the `region` argument of the provider is used. Changing this
      * creates a new server.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * Provide the Nova scheduler with hints on how
      * the instance should be launched. The available hints are described below.
      */
-    readonly schedulerHints?: pulumi.Input<pulumi.Input<inputs.compute.InstanceSchedulerHint>[]>;
+    schedulerHints?: pulumi.Input<pulumi.Input<inputs.compute.InstanceSchedulerHint>[]>;
     /**
      * An array of one or more security group names
      * to associate with the server. Changing this results in adding/removing
@@ -427,32 +427,32 @@ export interface InstanceState {
      * and not the instance. *Note*: Names should be used and not ids, as ids
      * trigger unnecessary updates.
      */
-    readonly securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Whether to try stop instance gracefully
      * before destroying it, thus giving chance for guest OS daemons to stop correctly.
      * If instance doesn't stop within timeout, it will be destroyed anyway.
      */
-    readonly stopBeforeDestroy?: pulumi.Input<boolean>;
+    stopBeforeDestroy?: pulumi.Input<boolean>;
     /**
      * A set of string tags for the instance. Changing this
      * updates the existing instance tags.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The user data to provide when launching the instance.
      * Changing this creates a new server.
      */
-    readonly userData?: pulumi.Input<string>;
+    userData?: pulumi.Input<string>;
     /**
      * Map of additional vendor-specific options.
      * Supported options are described below.
      */
-    readonly vendorOptions?: pulumi.Input<inputs.compute.InstanceVendorOptions>;
+    vendorOptions?: pulumi.Input<inputs.compute.InstanceVendorOptions>;
     /**
      * @deprecated Use block_device or openstack_compute_volume_attach_v2 instead
      */
-    readonly volumes?: pulumi.Input<pulumi.Input<inputs.compute.InstanceVolume>[]>;
+    volumes?: pulumi.Input<pulumi.Input<inputs.compute.InstanceVolume>[]>;
 }
 
 /**
@@ -462,22 +462,22 @@ export interface InstanceArgs {
     /**
      * The first detected Fixed IPv4 address.
      */
-    readonly accessIpV4?: pulumi.Input<string>;
+    accessIpV4?: pulumi.Input<string>;
     /**
      * The first detected Fixed IPv6 address.
      */
-    readonly accessIpV6?: pulumi.Input<string>;
+    accessIpV6?: pulumi.Input<string>;
     /**
      * The administrative password to assign to the server.
      * Changing this changes the root password on the existing server.
      */
-    readonly adminPass?: pulumi.Input<string>;
+    adminPass?: pulumi.Input<string>;
     /**
      * The availability zone in which to create
      * the server. Conflicts with `availabilityZoneHints`. Changing this creates
      * a new server.
      */
-    readonly availabilityZone?: pulumi.Input<string>;
+    availabilityZone?: pulumi.Input<string>;
     /**
      * The availability zone in which to
      * create the server. This argument is preferred to `availabilityZone`, when
@@ -486,7 +486,7 @@ export interface InstanceArgs {
      * host or node. Conflicts with `availabilityZone`. Changing this creates a
      * new server.
      */
-    readonly availabilityZoneHints?: pulumi.Input<string>;
+    availabilityZoneHints?: pulumi.Input<string>;
     /**
      * Configuration of block devices. The blockDevice
      * structure is documented below. Changing this creates a new server.
@@ -495,96 +495,96 @@ export interface InstanceArgs {
      * following [reference](https://docs.openstack.org/nova/latest/user/block-device-mapping.html)
      * for more information.
      */
-    readonly blockDevices?: pulumi.Input<pulumi.Input<inputs.compute.InstanceBlockDevice>[]>;
+    blockDevices?: pulumi.Input<pulumi.Input<inputs.compute.InstanceBlockDevice>[]>;
     /**
      * Whether to use the configDrive feature to
      * configure the instance. Changing this creates a new server.
      */
-    readonly configDrive?: pulumi.Input<boolean>;
+    configDrive?: pulumi.Input<boolean>;
     /**
      * The flavor ID of
      * the desired flavor for the server. Changing this resizes the existing server.
      */
-    readonly flavorId?: pulumi.Input<string>;
+    flavorId?: pulumi.Input<string>;
     /**
      * The name of the
      * desired flavor for the server. Changing this resizes the existing server.
      */
-    readonly flavorName?: pulumi.Input<string>;
+    flavorName?: pulumi.Input<string>;
     /**
      * @deprecated Use the openstack_compute_floatingip_associate_v2 resource instead
      */
-    readonly floatingIp?: pulumi.Input<string>;
+    floatingIp?: pulumi.Input<string>;
     /**
      * Whether to force the OpenStack instance to be
      * forcefully deleted. This is useful for environments that have reclaim / soft
      * deletion enabled.
      */
-    readonly forceDelete?: pulumi.Input<boolean>;
+    forceDelete?: pulumi.Input<boolean>;
     /**
      * (Optional; Required if `imageName` is empty and not booting
      * from a volume. Do not specify if booting from a volume.) The image ID of
      * the desired image for the server. Changing this creates a new server.
      */
-    readonly imageId?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string>;
     /**
      * (Optional; Required if `imageId` is empty and not booting
      * from a volume. Do not specify if booting from a volume.) The name of the
      * desired image for the server. Changing this creates a new server.
      */
-    readonly imageName?: pulumi.Input<string>;
+    imageName?: pulumi.Input<string>;
     /**
      * The name of a key pair to put on the server. The key
      * pair must already be created and associated with the tenant's account.
      * Changing this creates a new server.
      */
-    readonly keyPair?: pulumi.Input<string>;
+    keyPair?: pulumi.Input<string>;
     /**
      * Metadata key/value pairs to make available from
      * within the instance. Changing this updates the existing server metadata.
      */
-    readonly metadata?: pulumi.Input<{[key: string]: any}>;
+    metadata?: pulumi.Input<{[key: string]: any}>;
     /**
      * The human-readable
      * name of the network. Changing this creates a new server.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Special string for `network` option to create
      * the server. `networkMode` can be `"auto"` or `"none"`.
      * Please see the following [reference](https://docs.openstack.org/api-ref/compute/?expanded=create-server-detail#id11) for more information. Conflicts with `network`.
      */
-    readonly networkMode?: pulumi.Input<string>;
+    networkMode?: pulumi.Input<string>;
     /**
      * An array of one or more networks to attach to the
      * instance. The network object structure is documented below. Changing this
      * creates a new server.
      */
-    readonly networks?: pulumi.Input<pulumi.Input<inputs.compute.InstanceNetwork>[]>;
+    networks?: pulumi.Input<pulumi.Input<inputs.compute.InstanceNetwork>[]>;
     /**
      * Customize the personality of an instance by
      * defining one or more files and their contents. The personality structure
      * is described below.
      */
-    readonly personalities?: pulumi.Input<pulumi.Input<inputs.compute.InstancePersonality>[]>;
+    personalities?: pulumi.Input<pulumi.Input<inputs.compute.InstancePersonality>[]>;
     /**
      * Provide the VM state. Only 'active' and 'shutoff'
      * are supported values. *Note*: If the initial powerState is the shutoff
      * the VM will be stopped immediately after build and the provisioners like
      * remote-exec or files are not supported.
      */
-    readonly powerState?: pulumi.Input<string>;
+    powerState?: pulumi.Input<string>;
     /**
      * The region in which to create the server instance. If
      * omitted, the `region` argument of the provider is used. Changing this
      * creates a new server.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * Provide the Nova scheduler with hints on how
      * the instance should be launched. The available hints are described below.
      */
-    readonly schedulerHints?: pulumi.Input<pulumi.Input<inputs.compute.InstanceSchedulerHint>[]>;
+    schedulerHints?: pulumi.Input<pulumi.Input<inputs.compute.InstanceSchedulerHint>[]>;
     /**
      * An array of one or more security group names
      * to associate with the server. Changing this results in adding/removing
@@ -593,30 +593,30 @@ export interface InstanceArgs {
      * and not the instance. *Note*: Names should be used and not ids, as ids
      * trigger unnecessary updates.
      */
-    readonly securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Whether to try stop instance gracefully
      * before destroying it, thus giving chance for guest OS daemons to stop correctly.
      * If instance doesn't stop within timeout, it will be destroyed anyway.
      */
-    readonly stopBeforeDestroy?: pulumi.Input<boolean>;
+    stopBeforeDestroy?: pulumi.Input<boolean>;
     /**
      * A set of string tags for the instance. Changing this
      * updates the existing instance tags.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The user data to provide when launching the instance.
      * Changing this creates a new server.
      */
-    readonly userData?: pulumi.Input<string>;
+    userData?: pulumi.Input<string>;
     /**
      * Map of additional vendor-specific options.
      * Supported options are described below.
      */
-    readonly vendorOptions?: pulumi.Input<inputs.compute.InstanceVendorOptions>;
+    vendorOptions?: pulumi.Input<inputs.compute.InstanceVendorOptions>;
     /**
      * @deprecated Use block_device or openstack_compute_volume_attach_v2 instead
      */
-    readonly volumes?: pulumi.Input<pulumi.Input<inputs.compute.InstanceVolume>[]>;
+    volumes?: pulumi.Input<pulumi.Input<inputs.compute.InstanceVolume>[]>;
 }

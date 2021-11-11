@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.OpenStack.Compute
 {
@@ -39,6 +40,35 @@ namespace Pulumi.OpenStack.Compute
         /// </summary>
         public static Task<GetInstanceV2Result> InvokeAsync(GetInstanceV2Args args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceV2Result>("openstack:compute/getInstanceV2:getInstanceV2", args ?? new GetInstanceV2Args(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to get the details of a running server
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var instance = Output.Create(OpenStack.Compute.GetInstanceV2.InvokeAsync(new OpenStack.Compute.GetInstanceV2Args
+        ///         {
+        ///             Id = "2ba26dc6-a12d-4889-8f25-794ea5bf4453",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetInstanceV2Result> Invoke(GetInstanceV2InvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetInstanceV2Result>("openstack:compute/getInstanceV2:getInstanceV2", args ?? new GetInstanceV2InvokeArgs(), options.WithVersion());
     }
 
 
@@ -72,6 +102,40 @@ namespace Pulumi.OpenStack.Compute
         public string? UserData { get; set; }
 
         public GetInstanceV2Args()
+        {
+        }
+    }
+
+    public sealed class GetInstanceV2InvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The UUID of the instance
+        /// </summary>
+        [Input("id", required: true)]
+        public Input<string> Id { get; set; } = null!;
+
+        [Input("networks")]
+        private InputList<Inputs.GetInstanceV2NetworkInputArgs>? _networks;
+
+        /// <summary>
+        /// An array of maps, detailed below.
+        /// </summary>
+        public InputList<Inputs.GetInstanceV2NetworkInputArgs> Networks
+        {
+            get => _networks ?? (_networks = new InputList<Inputs.GetInstanceV2NetworkInputArgs>());
+            set => _networks = value;
+        }
+
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// The user data added when the server was created.
+        /// </summary>
+        [Input("userData")]
+        public Input<string>? UserData { get; set; }
+
+        public GetInstanceV2InvokeArgs()
         {
         }
     }

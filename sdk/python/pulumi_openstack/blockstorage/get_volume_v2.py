@@ -12,6 +12,7 @@ __all__ = [
     'GetVolumeV2Result',
     'AwaitableGetVolumeV2Result',
     'get_volume_v2',
+    'get_volume_v2_output',
 ]
 
 @pulumi.output_type
@@ -189,3 +190,35 @@ def get_volume_v2(bootable: Optional[str] = None,
         source_volume_id=__ret__.source_volume_id,
         status=__ret__.status,
         volume_type=__ret__.volume_type)
+
+
+@_utilities.lift_output_func(get_volume_v2)
+def get_volume_v2_output(bootable: Optional[pulumi.Input[Optional[str]]] = None,
+                         metadata: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                         name: Optional[pulumi.Input[Optional[str]]] = None,
+                         region: Optional[pulumi.Input[Optional[str]]] = None,
+                         status: Optional[pulumi.Input[Optional[str]]] = None,
+                         volume_type: Optional[pulumi.Input[Optional[str]]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVolumeV2Result]:
+    """
+    Use this data source to get information about an existing volume.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    volume1 = openstack.blockstorage.get_volume_v2(name="volume_1")
+    ```
+
+
+    :param str bootable: Indicates if the volume is bootable.
+    :param Mapping[str, Any] metadata: Metadata key/value pairs associated with the volume.
+    :param str name: The name of the volume.
+    :param str region: The region in which to obtain the V2 Block Storage
+           client. If omitted, the `region` argument of the provider is used.
+    :param str status: The status of the volume.
+    :param str volume_type: The type of the volume.
+    """
+    ...

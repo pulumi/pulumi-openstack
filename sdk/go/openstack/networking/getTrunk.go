@@ -4,6 +4,9 @@
 package networking
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -84,4 +87,113 @@ type LookupTrunkResult struct {
 	SubPorts []GetTrunkSubPort `pulumi:"subPorts"`
 	Tags     []string          `pulumi:"tags"`
 	TrunkId  *string           `pulumi:"trunkId"`
+}
+
+func LookupTrunkOutput(ctx *pulumi.Context, args LookupTrunkOutputArgs, opts ...pulumi.InvokeOption) LookupTrunkResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupTrunkResult, error) {
+			args := v.(LookupTrunkArgs)
+			r, err := LookupTrunk(ctx, &args, opts...)
+			return *r, err
+		}).(LookupTrunkResultOutput)
+}
+
+// A collection of arguments for invoking getTrunk.
+type LookupTrunkOutputArgs struct {
+	// The administrative state of the trunk.
+	AdminStateUp pulumi.BoolPtrInput `pulumi:"adminStateUp"`
+	// Human-readable description of the trunk.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The name of the trunk.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The ID of the trunk parent port.
+	PortId pulumi.StringPtrInput `pulumi:"portId"`
+	// The owner of the trunk.
+	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+	// The region in which to obtain the V2 Neutron client.
+	// A Neutron client is needed to retrieve trunk ids. If omitted, the
+	// `region` argument of the provider is used.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// The status of the trunk.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// The list of trunk tags to filter.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// The ID of the trunk.
+	TrunkId pulumi.StringPtrInput `pulumi:"trunkId"`
+}
+
+func (LookupTrunkOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupTrunkArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getTrunk.
+type LookupTrunkResultOutput struct{ *pulumi.OutputState }
+
+func (LookupTrunkResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupTrunkResult)(nil)).Elem()
+}
+
+func (o LookupTrunkResultOutput) ToLookupTrunkResultOutput() LookupTrunkResultOutput {
+	return o
+}
+
+func (o LookupTrunkResultOutput) ToLookupTrunkResultOutputWithContext(ctx context.Context) LookupTrunkResultOutput {
+	return o
+}
+
+func (o LookupTrunkResultOutput) AdminStateUp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupTrunkResult) *bool { return v.AdminStateUp }).(pulumi.BoolPtrOutput)
+}
+
+// The set of string tags applied on the trunk.
+func (o LookupTrunkResultOutput) AllTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupTrunkResult) []string { return v.AllTags }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupTrunkResultOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupTrunkResult) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupTrunkResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTrunkResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupTrunkResultOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupTrunkResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the trunk subport.
+func (o LookupTrunkResultOutput) PortId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupTrunkResult) *string { return v.PortId }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupTrunkResultOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTrunkResult) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+func (o LookupTrunkResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTrunkResult) string { return v.Region }).(pulumi.StringOutput)
+}
+
+func (o LookupTrunkResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupTrunkResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// The set of the trunk subports. The structure of each subport is
+// described below.
+func (o LookupTrunkResultOutput) SubPorts() GetTrunkSubPortArrayOutput {
+	return o.ApplyT(func(v LookupTrunkResult) []GetTrunkSubPort { return v.SubPorts }).(GetTrunkSubPortArrayOutput)
+}
+
+func (o LookupTrunkResultOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupTrunkResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupTrunkResultOutput) TrunkId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupTrunkResult) *string { return v.TrunkId }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupTrunkResultOutput{})
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.OpenStack.ContainerInfra
 {
@@ -39,6 +40,35 @@ namespace Pulumi.OpenStack.ContainerInfra
         /// </summary>
         public static Task<GetClusterResult> InvokeAsync(GetClusterArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetClusterResult>("openstack:containerinfra/getCluster:getCluster", args ?? new GetClusterArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to get the ID of an available OpenStack Magnum cluster.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var cluster1 = Output.Create(OpenStack.ContainerInfra.GetCluster.InvokeAsync(new OpenStack.ContainerInfra.GetClusterArgs
+        ///         {
+        ///             Name = "cluster_1",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetClusterResult> Invoke(GetClusterInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetClusterResult>("openstack:containerinfra/getCluster:getCluster", args ?? new GetClusterInvokeArgs(), options.WithVersion());
     }
 
 
@@ -59,6 +89,27 @@ namespace Pulumi.OpenStack.ContainerInfra
         public string? Region { get; set; }
 
         public GetClusterArgs()
+        {
+        }
+    }
+
+    public sealed class GetClusterInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The name of the cluster.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The region in which to obtain the V1 Container Infra
+        /// client.
+        /// If omitted, the `region` argument of the provider is used.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        public GetClusterInvokeArgs()
         {
         }
     }

@@ -161,23 +161,23 @@ export interface FloatingIpAssociateState {
     /**
      * The specific IP address to direct traffic to.
      */
-    readonly fixedIp?: pulumi.Input<string>;
+    fixedIp?: pulumi.Input<string>;
     /**
      * The floating IP to associate.
      */
-    readonly floatingIp?: pulumi.Input<string>;
+    floatingIp?: pulumi.Input<string>;
     /**
      * The instance to associte the floating IP with.
      */
-    readonly instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 Compute client.
      * Keypairs are associated with accounts, but a Compute client is needed to
      * create one. If omitted, the `region` argument of the provider is used.
      * Changing this creates a new floatingip_associate.
      */
-    readonly region?: pulumi.Input<string>;
-    readonly waitUntilAssociated?: pulumi.Input<boolean>;
+    region?: pulumi.Input<string>;
+    waitUntilAssociated?: pulumi.Input<boolean>;
 }
 
 /**
@@ -187,21 +187,21 @@ export interface FloatingIpAssociateArgs {
     /**
      * The specific IP address to direct traffic to.
      */
-    readonly fixedIp?: pulumi.Input<string>;
+    fixedIp?: pulumi.Input<string>;
     /**
      * The floating IP to associate.
      */
-    readonly floatingIp: pulumi.Input<string>;
+    floatingIp: pulumi.Input<string>;
     /**
      * The instance to associte the floating IP with.
      */
-    readonly instanceId: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 Compute client.
      * Keypairs are associated with accounts, but a Compute client is needed to
      * create one. If omitted, the `region` argument of the provider is used.
      * Changing this creates a new floatingip_associate.
      */
-    readonly region?: pulumi.Input<string>;
-    readonly waitUntilAssociated?: pulumi.Input<boolean>;
+    region?: pulumi.Input<string>;
+    waitUntilAssociated?: pulumi.Input<boolean>;
 }

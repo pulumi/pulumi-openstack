@@ -4,6 +4,9 @@
 package networking
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -106,4 +109,149 @@ type GetSubnetIdsV2Result struct {
 	SubnetpoolId    *string  `pulumi:"subnetpoolId"`
 	Tags            []string `pulumi:"tags"`
 	TenantId        *string  `pulumi:"tenantId"`
+}
+
+func GetSubnetIdsV2Output(ctx *pulumi.Context, args GetSubnetIdsV2OutputArgs, opts ...pulumi.InvokeOption) GetSubnetIdsV2ResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetSubnetIdsV2Result, error) {
+			args := v.(GetSubnetIdsV2Args)
+			r, err := GetSubnetIdsV2(ctx, &args, opts...)
+			return *r, err
+		}).(GetSubnetIdsV2ResultOutput)
+}
+
+// A collection of arguments for invoking getSubnetIdsV2.
+type GetSubnetIdsV2OutputArgs struct {
+	// The CIDR of the subnet.
+	Cidr pulumi.StringPtrInput `pulumi:"cidr"`
+	// Human-readable description of the subnet.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// If the subnet has DHCP enabled.
+	DhcpEnabled pulumi.BoolPtrInput `pulumi:"dhcpEnabled"`
+	// The IP of the subnet's gateway.
+	GatewayIp pulumi.StringPtrInput `pulumi:"gatewayIp"`
+	// The IP version of the subnet (either 4 or 6).
+	IpVersion pulumi.IntPtrInput `pulumi:"ipVersion"`
+	// The IPv6 address mode. Valid values are
+	// `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.
+	Ipv6AddressMode pulumi.StringPtrInput `pulumi:"ipv6AddressMode"`
+	// The IPv6 Router Advertisement mode. Valid values
+	// are `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.
+	Ipv6RaMode pulumi.StringPtrInput `pulumi:"ipv6RaMode"`
+	// The name of the subnet.
+	Name      pulumi.StringPtrInput `pulumi:"name"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// The ID of the network the subnet belongs to.
+	NetworkId pulumi.StringPtrInput `pulumi:"networkId"`
+	// The region in which to obtain the V2 Neutron client.
+	// A Neutron client is needed to retrieve subnet ids. If omitted, the
+	// `region` argument of the provider is used.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// Order the results in either `asc` or `desc`.
+	// Defaults to none.
+	SortDirection pulumi.StringPtrInput `pulumi:"sortDirection"`
+	// Sort subnets based on a certain key. Defaults to none.
+	SortKey pulumi.StringPtrInput `pulumi:"sortKey"`
+	// The ID of the subnetpool associated with the subnet.
+	SubnetpoolId pulumi.StringPtrInput `pulumi:"subnetpoolId"`
+	// The list of subnet tags to filter.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// The owner of the subnet.
+	TenantId pulumi.StringPtrInput `pulumi:"tenantId"`
+}
+
+func (GetSubnetIdsV2OutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSubnetIdsV2Args)(nil)).Elem()
+}
+
+// A collection of values returned by getSubnetIdsV2.
+type GetSubnetIdsV2ResultOutput struct{ *pulumi.OutputState }
+
+func (GetSubnetIdsV2ResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSubnetIdsV2Result)(nil)).Elem()
+}
+
+func (o GetSubnetIdsV2ResultOutput) ToGetSubnetIdsV2ResultOutput() GetSubnetIdsV2ResultOutput {
+	return o
+}
+
+func (o GetSubnetIdsV2ResultOutput) ToGetSubnetIdsV2ResultOutputWithContext(ctx context.Context) GetSubnetIdsV2ResultOutput {
+	return o
+}
+
+func (o GetSubnetIdsV2ResultOutput) Cidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSubnetIdsV2Result) *string { return v.Cidr }).(pulumi.StringPtrOutput)
+}
+
+func (o GetSubnetIdsV2ResultOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSubnetIdsV2Result) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o GetSubnetIdsV2ResultOutput) DhcpEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetSubnetIdsV2Result) *bool { return v.DhcpEnabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetSubnetIdsV2ResultOutput) GatewayIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSubnetIdsV2Result) *string { return v.GatewayIp }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetSubnetIdsV2ResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSubnetIdsV2Result) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetSubnetIdsV2ResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSubnetIdsV2Result) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetSubnetIdsV2ResultOutput) IpVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetSubnetIdsV2Result) *int { return v.IpVersion }).(pulumi.IntPtrOutput)
+}
+
+func (o GetSubnetIdsV2ResultOutput) Ipv6AddressMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSubnetIdsV2Result) *string { return v.Ipv6AddressMode }).(pulumi.StringPtrOutput)
+}
+
+func (o GetSubnetIdsV2ResultOutput) Ipv6RaMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSubnetIdsV2Result) string { return v.Ipv6RaMode }).(pulumi.StringOutput)
+}
+
+func (o GetSubnetIdsV2ResultOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSubnetIdsV2Result) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o GetSubnetIdsV2ResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSubnetIdsV2Result) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetSubnetIdsV2ResultOutput) NetworkId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSubnetIdsV2Result) *string { return v.NetworkId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetSubnetIdsV2ResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSubnetIdsV2Result) string { return v.Region }).(pulumi.StringOutput)
+}
+
+func (o GetSubnetIdsV2ResultOutput) SortDirection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSubnetIdsV2Result) *string { return v.SortDirection }).(pulumi.StringPtrOutput)
+}
+
+func (o GetSubnetIdsV2ResultOutput) SortKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSubnetIdsV2Result) *string { return v.SortKey }).(pulumi.StringPtrOutput)
+}
+
+func (o GetSubnetIdsV2ResultOutput) SubnetpoolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSubnetIdsV2Result) *string { return v.SubnetpoolId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetSubnetIdsV2ResultOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSubnetIdsV2Result) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+func (o GetSubnetIdsV2ResultOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSubnetIdsV2Result) *string { return v.TenantId }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetSubnetIdsV2ResultOutput{})
 }

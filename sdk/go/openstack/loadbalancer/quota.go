@@ -332,7 +332,7 @@ type QuotaArrayInput interface {
 type QuotaArray []QuotaInput
 
 func (QuotaArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Quota)(nil))
+	return reflect.TypeOf((*[]*Quota)(nil)).Elem()
 }
 
 func (i QuotaArray) ToQuotaArrayOutput() QuotaArrayOutput {
@@ -357,7 +357,7 @@ type QuotaMapInput interface {
 type QuotaMap map[string]QuotaInput
 
 func (QuotaMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Quota)(nil))
+	return reflect.TypeOf((*map[string]*Quota)(nil)).Elem()
 }
 
 func (i QuotaMap) ToQuotaMapOutput() QuotaMapOutput {
@@ -368,9 +368,7 @@ func (i QuotaMap) ToQuotaMapOutputWithContext(ctx context.Context) QuotaMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(QuotaMapOutput)
 }
 
-type QuotaOutput struct {
-	*pulumi.OutputState
-}
+type QuotaOutput struct{ *pulumi.OutputState }
 
 func (QuotaOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Quota)(nil))
@@ -389,14 +387,12 @@ func (o QuotaOutput) ToQuotaPtrOutput() QuotaPtrOutput {
 }
 
 func (o QuotaOutput) ToQuotaPtrOutputWithContext(ctx context.Context) QuotaPtrOutput {
-	return o.ApplyT(func(v Quota) *Quota {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Quota) *Quota {
 		return &v
 	}).(QuotaPtrOutput)
 }
 
-type QuotaPtrOutput struct {
-	*pulumi.OutputState
-}
+type QuotaPtrOutput struct{ *pulumi.OutputState }
 
 func (QuotaPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Quota)(nil))
@@ -408,6 +404,16 @@ func (o QuotaPtrOutput) ToQuotaPtrOutput() QuotaPtrOutput {
 
 func (o QuotaPtrOutput) ToQuotaPtrOutputWithContext(ctx context.Context) QuotaPtrOutput {
 	return o
+}
+
+func (o QuotaPtrOutput) Elem() QuotaOutput {
+	return o.ApplyT(func(v *Quota) Quota {
+		if v != nil {
+			return *v
+		}
+		var ret Quota
+		return ret
+	}).(QuotaOutput)
 }
 
 type QuotaArrayOutput struct{ *pulumi.OutputState }
@@ -451,6 +457,10 @@ func (o QuotaMapOutput) MapIndex(k pulumi.StringInput) QuotaOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*QuotaInput)(nil)).Elem(), &Quota{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QuotaPtrInput)(nil)).Elem(), &Quota{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QuotaArrayInput)(nil)).Elem(), QuotaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QuotaMapInput)(nil)).Elem(), QuotaMap{})
 	pulumi.RegisterOutputType(QuotaOutput{})
 	pulumi.RegisterOutputType(QuotaPtrOutput{})
 	pulumi.RegisterOutputType(QuotaArrayOutput{})

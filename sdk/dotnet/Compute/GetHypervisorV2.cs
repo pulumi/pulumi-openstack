@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.OpenStack.Compute
 {
@@ -40,6 +41,36 @@ namespace Pulumi.OpenStack.Compute
         /// </summary>
         public static Task<GetHypervisorV2Result> InvokeAsync(GetHypervisorV2Args args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetHypervisorV2Result>("openstack:compute/getHypervisorV2:getHypervisorV2", args ?? new GetHypervisorV2Args(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to get information about hypervisors
+        /// by hostname.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var host01 = Output.Create(OpenStack.Compute.GetHypervisorV2.InvokeAsync(new OpenStack.Compute.GetHypervisorV2Args
+        ///         {
+        ///             Hostname = "host01",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetHypervisorV2Result> Invoke(GetHypervisorV2InvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetHypervisorV2Result>("openstack:compute/getHypervisorV2:getHypervisorV2", args ?? new GetHypervisorV2InvokeArgs(), options.WithVersion());
     }
 
 
@@ -52,6 +83,19 @@ namespace Pulumi.OpenStack.Compute
         public string Hostname { get; set; } = null!;
 
         public GetHypervisorV2Args()
+        {
+        }
+    }
+
+    public sealed class GetHypervisorV2InvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The hostname of the hypervisor
+        /// </summary>
+        [Input("hostname", required: true)]
+        public Input<string> Hostname { get; set; } = null!;
+
+        public GetHypervisorV2InvokeArgs()
         {
         }
     }

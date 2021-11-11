@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.OpenStack.Dns
 {
@@ -39,6 +40,35 @@ namespace Pulumi.OpenStack.Dns
         /// </summary>
         public static Task<GetDnsZoneResult> InvokeAsync(GetDnsZoneArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDnsZoneResult>("openstack:dns/getDnsZone:getDnsZone", args ?? new GetDnsZoneArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to get the ID of an available OpenStack DNS zone.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var zone1 = Output.Create(OpenStack.Dns.GetDnsZone.InvokeAsync(new OpenStack.Dns.GetDnsZoneArgs
+        ///         {
+        ///             Name = "example.com",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetDnsZoneResult> Invoke(GetDnsZoneInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDnsZoneResult>("openstack:dns/getDnsZone:getDnsZone", args ?? new GetDnsZoneInvokeArgs(), options.WithVersion());
     }
 
 
@@ -163,6 +193,131 @@ namespace Pulumi.OpenStack.Dns
         public int? Version { get; set; }
 
         public GetDnsZoneArgs()
+        {
+        }
+    }
+
+    public sealed class GetDnsZoneInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Try to obtain zone ID by listing all projects
+        /// (requires admin role by default, depends on your policy configuration)
+        /// </summary>
+        [Input("allProjects")]
+        public Input<string>? AllProjects { get; set; }
+
+        [Input("attributes")]
+        private InputMap<object>? _attributes;
+
+        /// <summary>
+        /// Attributes of the DNS Service scheduler.
+        /// </summary>
+        public InputMap<object> Attributes
+        {
+            get => _attributes ?? (_attributes = new InputMap<object>());
+            set => _attributes = value;
+        }
+
+        /// <summary>
+        /// The time the zone was created.
+        /// </summary>
+        [Input("createdAt")]
+        public Input<string>? CreatedAt { get; set; }
+
+        /// <summary>
+        /// A description of the zone.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The email contact for the zone record.
+        /// </summary>
+        [Input("email")]
+        public Input<string>? Email { get; set; }
+
+        [Input("masters")]
+        private InputList<string>? _masters;
+
+        /// <summary>
+        /// An array of master DNS servers. When `type` is  `SECONDARY`.
+        /// </summary>
+        public InputList<string> Masters
+        {
+            get => _masters ?? (_masters = new InputList<string>());
+            set => _masters = value;
+        }
+
+        /// <summary>
+        /// The name of the zone.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The ID of the pool hosting the zone.
+        /// </summary>
+        [Input("poolId")]
+        public Input<string>? PoolId { get; set; }
+
+        /// <summary>
+        /// The ID of the project the DNS zone is obtained from,
+        /// sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned user role in target project)
+        /// </summary>
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
+
+        /// <summary>
+        /// The region in which to obtain the V2 DNS client.
+        /// A DNS client is needed to retrieve zone ids. If omitted, the
+        /// `region` argument of the provider is used.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// The serial number of the zone.
+        /// </summary>
+        [Input("serial")]
+        public Input<int>? Serial { get; set; }
+
+        /// <summary>
+        /// The zone's status.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// The time the zone was transferred.
+        /// </summary>
+        [Input("transferredAt")]
+        public Input<string>? TransferredAt { get; set; }
+
+        /// <summary>
+        /// The time to live (TTL) of the zone.
+        /// </summary>
+        [Input("ttl")]
+        public Input<int>? Ttl { get; set; }
+
+        /// <summary>
+        /// The type of the zone. Can either be `PRIMARY` or `SECONDARY`.
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
+        /// <summary>
+        /// The time the zone was last updated.
+        /// </summary>
+        [Input("updatedAt")]
+        public Input<string>? UpdatedAt { get; set; }
+
+        /// <summary>
+        /// The version of the zone.
+        /// </summary>
+        [Input("version")]
+        public Input<int>? Version { get; set; }
+
+        public GetDnsZoneInvokeArgs()
         {
         }
     }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.OpenStack.Compute
 {
@@ -36,6 +37,32 @@ namespace Pulumi.OpenStack.Compute
         /// </summary>
         public static Task<GetAvailabilityZonesResult> InvokeAsync(GetAvailabilityZonesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAvailabilityZonesResult>("openstack:compute/getAvailabilityZones:getAvailabilityZones", args ?? new GetAvailabilityZonesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to get a list of availability zones from OpenStack
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var zones = Output.Create(OpenStack.Compute.GetAvailabilityZones.InvokeAsync());
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetAvailabilityZonesResult> Invoke(GetAvailabilityZonesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAvailabilityZonesResult>("openstack:compute/getAvailabilityZones:getAvailabilityZones", args ?? new GetAvailabilityZonesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -54,6 +81,25 @@ namespace Pulumi.OpenStack.Compute
         public string? State { get; set; }
 
         public GetAvailabilityZonesArgs()
+        {
+        }
+    }
+
+    public sealed class GetAvailabilityZonesInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The `region` to fetch availability zones from, defaults to the provider's `region`
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// The `state` of the availability zones to match, default ("available").
+        /// </summary>
+        [Input("state")]
+        public Input<string>? State { get; set; }
+
+        public GetAvailabilityZonesInvokeArgs()
         {
         }
     }

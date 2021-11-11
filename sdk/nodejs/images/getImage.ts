@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -20,7 +19,7 @@ import * as utilities from "../utilities";
  *     properties: {
  *         key: "value",
  *     },
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getImage(args?: GetImageArgs, opts?: pulumi.InvokeOptions): Promise<GetImageResult> {
@@ -56,25 +55,25 @@ export interface GetImageArgs {
     /**
      * Whether or not the image is hidden from public list.
      */
-    readonly hidden?: boolean;
+    hidden?: boolean;
     /**
      * The status of the image. Must be one of
      * "accepted", "pending", "rejected", or "all".
      */
-    readonly memberStatus?: string;
+    memberStatus?: string;
     /**
      * If more than one result is returned, use the most
      * recent image.
      */
-    readonly mostRecent?: boolean;
+    mostRecent?: boolean;
     /**
      * The name of the image.
      */
-    readonly name?: string;
+    name?: string;
     /**
      * The owner (UUID) of the image.
      */
-    readonly owner?: string;
+    owner?: string;
     /**
      * a map of key/value pairs to match an image with.
      * All specified properties must be matched. Unlike other options filtering
@@ -82,39 +81,39 @@ export interface GetImageArgs {
      * Filtering is applied if server responce contains at least 2 images. In
      * case there is only one image the `properties` ignores.
      */
-    readonly properties?: {[key: string]: any};
+    properties?: {[key: string]: any};
     /**
      * The region in which to obtain the V2 Glance client.
      * A Glance client is needed to create an Image that can be used with
      * a compute instance. If omitted, the `region` argument of the provider
      * is used.
      */
-    readonly region?: string;
+    region?: string;
     /**
      * The maximum size (in bytes) of the image to return.
      */
-    readonly sizeMax?: number;
+    sizeMax?: number;
     /**
      * The minimum size (in bytes) of the image to return.
      */
-    readonly sizeMin?: number;
+    sizeMin?: number;
     /**
      * Order the results in either `asc` or `desc`.
      */
-    readonly sortDirection?: string;
+    sortDirection?: string;
     /**
      * Sort images based on a certain key. Defaults to `name`.
      */
-    readonly sortKey?: string;
+    sortKey?: string;
     /**
      * Search for images with a specific tag.
      */
-    readonly tag?: string;
+    tag?: string;
     /**
      * The visibility of the image. Must be one of
      * "public", "private", "community", or "shared". Defaults to "private".
      */
-    readonly visibility?: string;
+    visibility?: string;
 }
 
 /**
@@ -193,4 +192,76 @@ export interface GetImageResult {
      */
     readonly updatedAt: string;
     readonly visibility?: string;
+}
+
+export function getImageOutput(args?: GetImageOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetImageResult> {
+    return pulumi.output(args).apply(a => getImage(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getImage.
+ */
+export interface GetImageOutputArgs {
+    /**
+     * Whether or not the image is hidden from public list.
+     */
+    hidden?: pulumi.Input<boolean>;
+    /**
+     * The status of the image. Must be one of
+     * "accepted", "pending", "rejected", or "all".
+     */
+    memberStatus?: pulumi.Input<string>;
+    /**
+     * If more than one result is returned, use the most
+     * recent image.
+     */
+    mostRecent?: pulumi.Input<boolean>;
+    /**
+     * The name of the image.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The owner (UUID) of the image.
+     */
+    owner?: pulumi.Input<string>;
+    /**
+     * a map of key/value pairs to match an image with.
+     * All specified properties must be matched. Unlike other options filtering
+     * by `properties` does by client on the result of OpenStack search query.
+     * Filtering is applied if server responce contains at least 2 images. In
+     * case there is only one image the `properties` ignores.
+     */
+    properties?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The region in which to obtain the V2 Glance client.
+     * A Glance client is needed to create an Image that can be used with
+     * a compute instance. If omitted, the `region` argument of the provider
+     * is used.
+     */
+    region?: pulumi.Input<string>;
+    /**
+     * The maximum size (in bytes) of the image to return.
+     */
+    sizeMax?: pulumi.Input<number>;
+    /**
+     * The minimum size (in bytes) of the image to return.
+     */
+    sizeMin?: pulumi.Input<number>;
+    /**
+     * Order the results in either `asc` or `desc`.
+     */
+    sortDirection?: pulumi.Input<string>;
+    /**
+     * Sort images based on a certain key. Defaults to `name`.
+     */
+    sortKey?: pulumi.Input<string>;
+    /**
+     * Search for images with a specific tag.
+     */
+    tag?: pulumi.Input<string>;
+    /**
+     * The visibility of the image. Must be one of
+     * "public", "private", "community", or "shared". Defaults to "private".
+     */
+    visibility?: pulumi.Input<string>;
 }

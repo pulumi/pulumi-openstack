@@ -12,6 +12,7 @@ __all__ = [
     'GetPolicyResult',
     'AwaitableGetPolicyResult',
     'get_policy',
+    'get_policy_output',
 ]
 
 @pulumi.output_type
@@ -184,3 +185,32 @@ def get_policy(name: Optional[str] = None,
         rules=__ret__.rules,
         shared=__ret__.shared,
         tenant_id=__ret__.tenant_id)
+
+
+@_utilities.lift_output_func(get_policy)
+def get_policy_output(name: Optional[pulumi.Input[Optional[str]]] = None,
+                      policy_id: Optional[pulumi.Input[Optional[str]]] = None,
+                      region: Optional[pulumi.Input[Optional[str]]] = None,
+                      tenant_id: Optional[pulumi.Input[Optional[str]]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPolicyResult]:
+    """
+    Use this data source to get firewall policy information of an available OpenStack firewall policy.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    policy = openstack.firewall.get_policy(name="tf_test_policy")
+    ```
+
+
+    :param str name: The name of the firewall policy.
+    :param str policy_id: The ID of the firewall policy.
+    :param str region: The region in which to obtain the V2 Neutron client.
+           A Neutron client is needed to retrieve firewall policy ids. If omitted, the
+           `region` argument of the provider is used.
+    :param str tenant_id: The owner of the firewall policy.
+    """
+    ...

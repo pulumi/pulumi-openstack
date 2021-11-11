@@ -4,6 +4,9 @@
 package blockstorage
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -78,4 +81,96 @@ type GetSnapshotV2Result struct {
 	Status string `pulumi:"status"`
 	// See Argument Reference above.
 	VolumeId string `pulumi:"volumeId"`
+}
+
+func GetSnapshotV2Output(ctx *pulumi.Context, args GetSnapshotV2OutputArgs, opts ...pulumi.InvokeOption) GetSnapshotV2ResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetSnapshotV2Result, error) {
+			args := v.(GetSnapshotV2Args)
+			r, err := GetSnapshotV2(ctx, &args, opts...)
+			return *r, err
+		}).(GetSnapshotV2ResultOutput)
+}
+
+// A collection of arguments for invoking getSnapshotV2.
+type GetSnapshotV2OutputArgs struct {
+	// Pick the most recently created snapshot if there
+	// are multiple results.
+	MostRecent pulumi.BoolPtrInput `pulumi:"mostRecent"`
+	// The name of the snapshot.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The region in which to obtain the V2 Block Storage
+	// client. If omitted, the `region` argument of the provider is used.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// The status of the snapshot.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// The ID of the snapshot's volume.
+	VolumeId pulumi.StringPtrInput `pulumi:"volumeId"`
+}
+
+func (GetSnapshotV2OutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSnapshotV2Args)(nil)).Elem()
+}
+
+// A collection of values returned by getSnapshotV2.
+type GetSnapshotV2ResultOutput struct{ *pulumi.OutputState }
+
+func (GetSnapshotV2ResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSnapshotV2Result)(nil)).Elem()
+}
+
+func (o GetSnapshotV2ResultOutput) ToGetSnapshotV2ResultOutput() GetSnapshotV2ResultOutput {
+	return o
+}
+
+func (o GetSnapshotV2ResultOutput) ToGetSnapshotV2ResultOutputWithContext(ctx context.Context) GetSnapshotV2ResultOutput {
+	return o
+}
+
+// The snapshot's description.
+func (o GetSnapshotV2ResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotV2Result) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetSnapshotV2ResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotV2Result) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The snapshot's metadata.
+func (o GetSnapshotV2ResultOutput) Metadata() pulumi.MapOutput {
+	return o.ApplyT(func(v GetSnapshotV2Result) map[string]interface{} { return v.Metadata }).(pulumi.MapOutput)
+}
+
+func (o GetSnapshotV2ResultOutput) MostRecent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetSnapshotV2Result) *bool { return v.MostRecent }).(pulumi.BoolPtrOutput)
+}
+
+// See Argument Reference above.
+func (o GetSnapshotV2ResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotV2Result) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// See Argument Reference above.
+func (o GetSnapshotV2ResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotV2Result) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// The size of the snapshot.
+func (o GetSnapshotV2ResultOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSnapshotV2Result) int { return v.Size }).(pulumi.IntOutput)
+}
+
+// See Argument Reference above.
+func (o GetSnapshotV2ResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotV2Result) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// See Argument Reference above.
+func (o GetSnapshotV2ResultOutput) VolumeId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotV2Result) string { return v.VolumeId }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetSnapshotV2ResultOutput{})
 }
