@@ -309,6 +309,7 @@ func Provider() tfbridge.ProviderInfo {
 			"openstack_compute_instance_v2":           {Tok: openstackDataSource(computeMod, "getInstanceV2")},
 			"openstack_compute_aggregate_v2":          {Tok: openstackDataSource(computeMod, "getAggregateV2")},
 			"openstack_compute_hypervisor_v2":         {Tok: openstackDataSource(computeMod, "getHypervisorV2")},
+			"openstack_compute_quotaset_v2":           {Tok: openstackDataSource(computeMod, "getQuotaSetV2")},
 
 			// Container Infrastructure
 			"openstack_containerinfra_cluster_v1":         {Tok: openstackDataSource(containerinfraMod, "getCluster")},

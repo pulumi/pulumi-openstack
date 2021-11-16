@@ -19033,6 +19033,119 @@
                 ]
             }
         },
+        "openstack:compute/getQuotaSetV2:getQuotaSetV2": {
+            "description": "Use this data source to get the compute quotaset of an OpenStack project.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst quota = pulumi.output(openstack.compute.getQuotaSetV2({\n    projectId: \"2e367a3d29f94fd988e6ec54e305ec9d\",\n}));\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nquota = openstack.compute.get_quota_set_v2(project_id=\"2e367a3d29f94fd988e6ec54e305ec9d\")\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var quota = Output.Create(OpenStack.Compute.GetQuotaSetV2.InvokeAsync(new OpenStack.Compute.GetQuotaSetV2Args\n        {\n            ProjectId = \"2e367a3d29f94fd988e6ec54e305ec9d\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := compute.LookupQuotaSetV2(ctx, \u0026compute.LookupQuotaSetV2Args{\n\t\t\tProjectId: \"2e367a3d29f94fd988e6ec54e305ec9d\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getQuotaSetV2.\n",
+                "properties": {
+                    "projectId": {
+                        "type": "string",
+                        "description": "The id of the project to retrieve the quotaset.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region in which to obtain the V2 Compute client.\nIf omitted, the `region` argument of the provider is used.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "projectId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getQuotaSetV2.\n",
+                "properties": {
+                    "cores": {
+                        "type": "integer",
+                        "description": "The number of allowed server cores.\n"
+                    },
+                    "fixedIps": {
+                        "type": "integer",
+                        "description": "The number of allowed fixed IP addresses. Available until version 2.35.\n"
+                    },
+                    "floatingIps": {
+                        "type": "integer",
+                        "description": "The number of allowed floating IP addresses. Available until version 2.35.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "injectedFileContentBytes": {
+                        "type": "integer",
+                        "description": "The number of allowed bytes of content for each injected file. Available until version 2.56.\n"
+                    },
+                    "injectedFilePathBytes": {
+                        "type": "integer",
+                        "description": "The number of allowed bytes for each injected file path. Available until version 2.56.\n"
+                    },
+                    "injectedFiles": {
+                        "type": "integer",
+                        "description": "The number of allowed injected files. Available until version 2.56.\n"
+                    },
+                    "instances": {
+                        "type": "integer",
+                        "description": "The number of allowed servers.\n"
+                    },
+                    "keyPairs": {
+                        "type": "integer",
+                        "description": "The number of allowed key pairs for each user.\n"
+                    },
+                    "metadataItems": {
+                        "type": "integer",
+                        "description": "The number of allowed metadata items for each server.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "See Argument Reference above.\n"
+                    },
+                    "ram": {
+                        "type": "integer",
+                        "description": "The amount of allowed server RAM, in MiB.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "See Argument Reference above.\n"
+                    },
+                    "securityGroupRules": {
+                        "type": "integer",
+                        "description": "The number of allowed rules for each security group. Available until version 2.35.\n"
+                    },
+                    "securityGroups": {
+                        "type": "integer",
+                        "description": "The number of allowed security groups. Available until version 2.35.\n"
+                    },
+                    "serverGroupMembers": {
+                        "type": "integer",
+                        "description": "The number of allowed members for each server group.\n"
+                    },
+                    "serverGroups": {
+                        "type": "integer",
+                        "description": "The number of allowed server groups.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "cores",
+                    "fixedIps",
+                    "floatingIps",
+                    "injectedFileContentBytes",
+                    "injectedFilePathBytes",
+                    "injectedFiles",
+                    "instances",
+                    "keyPairs",
+                    "metadataItems",
+                    "projectId",
+                    "ram",
+                    "region",
+                    "securityGroupRules",
+                    "securityGroups",
+                    "serverGroupMembers",
+                    "serverGroups",
+                    "id"
+                ]
+            }
+        },
         "openstack:containerinfra/getCluster:getCluster": {
             "description": "Use this data source to get the ID of an available OpenStack Magnum cluster.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst cluster1 = pulumi.output(openstack.containerinfra.getCluster({\n    name: \"cluster_1\",\n}));\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\ncluster1 = openstack.containerinfra.get_cluster(name=\"cluster_1\")\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var cluster1 = Output.Create(OpenStack.ContainerInfra.GetCluster.InvokeAsync(new OpenStack.ContainerInfra.GetClusterArgs\n        {\n            Name = \"cluster_1\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/containerinfra\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := containerinfra.LookupCluster(ctx, \u0026containerinfra.LookupClusterArgs{\n\t\t\tName: \"cluster_1\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
