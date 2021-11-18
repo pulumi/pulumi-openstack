@@ -39,6 +39,7 @@
         "compute/getHypervisorV2.ts",
         "compute/getInstanceV2.ts",
         "compute/getKeypair.ts",
+        "compute/getQuotaSetV2.ts",
         "compute/index.ts",
         "compute/instance.ts",
         "compute/interfaceAttach.ts",
