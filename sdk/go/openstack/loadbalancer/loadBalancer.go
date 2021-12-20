@@ -75,6 +75,9 @@ type LoadBalancer struct {
 	// loadbalancer. The security groups must be specified by ID and not name (as
 	// opposed to how they are configured with the Compute Instance).
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
+	// A list of simple strings assigned to the loadbalancer.
+	// Available only for Octavia **minor version 2.5 or later**.
+	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// Required for admins. The UUID of the tenant who owns
 	// the Loadbalancer.  Only administrative users can specify a tenant UUID
 	// other than their own.  Changing this creates a new loadbalancer.
@@ -155,6 +158,9 @@ type loadBalancerState struct {
 	// loadbalancer. The security groups must be specified by ID and not name (as
 	// opposed to how they are configured with the Compute Instance).
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
+	// A list of simple strings assigned to the loadbalancer.
+	// Available only for Octavia **minor version 2.5 or later**.
+	Tags []string `pulumi:"tags"`
 	// Required for admins. The UUID of the tenant who owns
 	// the Loadbalancer.  Only administrative users can specify a tenant UUID
 	// other than their own.  Changing this creates a new loadbalancer.
@@ -207,6 +213,9 @@ type LoadBalancerState struct {
 	// loadbalancer. The security groups must be specified by ID and not name (as
 	// opposed to how they are configured with the Compute Instance).
 	SecurityGroupIds pulumi.StringArrayInput
+	// A list of simple strings assigned to the loadbalancer.
+	// Available only for Octavia **minor version 2.5 or later**.
+	Tags pulumi.StringArrayInput
 	// Required for admins. The UUID of the tenant who owns
 	// the Loadbalancer.  Only administrative users can specify a tenant UUID
 	// other than their own.  Changing this creates a new loadbalancer.
@@ -263,6 +272,9 @@ type loadBalancerArgs struct {
 	// loadbalancer. The security groups must be specified by ID and not name (as
 	// opposed to how they are configured with the Compute Instance).
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
+	// A list of simple strings assigned to the loadbalancer.
+	// Available only for Octavia **minor version 2.5 or later**.
+	Tags []string `pulumi:"tags"`
 	// Required for admins. The UUID of the tenant who owns
 	// the Loadbalancer.  Only administrative users can specify a tenant UUID
 	// other than their own.  Changing this creates a new loadbalancer.
@@ -316,6 +328,9 @@ type LoadBalancerArgs struct {
 	// loadbalancer. The security groups must be specified by ID and not name (as
 	// opposed to how they are configured with the Compute Instance).
 	SecurityGroupIds pulumi.StringArrayInput
+	// A list of simple strings assigned to the loadbalancer.
+	// Available only for Octavia **minor version 2.5 or later**.
+	Tags pulumi.StringArrayInput
 	// Required for admins. The UUID of the tenant who owns
 	// the Loadbalancer.  Only administrative users can specify a tenant UUID
 	// other than their own.  Changing this creates a new loadbalancer.

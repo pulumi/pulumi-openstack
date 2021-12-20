@@ -21,6 +21,10 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "openstack:blockstorage/qosAssociationV3:QosAssociationV3":
+		r = &QosAssociationV3{}
+	case "openstack:blockstorage/qosV3:QosV3":
+		r = &QosV3{}
 	case "openstack:blockstorage/quoteSetV2:QuoteSetV2":
 		r = &QuoteSetV2{}
 	case "openstack:blockstorage/quoteSetV3:QuoteSetV3":
@@ -52,6 +56,16 @@ func init() {
 	if err != nil {
 		fmt.Printf("failed to determine package version. defaulting to v1: %v\n", err)
 	}
+	pulumi.RegisterResourceModule(
+		"openstack",
+		"blockstorage/qosAssociationV3",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"openstack",
+		"blockstorage/qosV3",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"openstack",
 		"blockstorage/quoteSetV2",

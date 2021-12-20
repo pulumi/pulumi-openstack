@@ -17,6 +17,7 @@ from .get_qos_bandwidth_limit_rule import *
 from .get_qos_dscp_marking_rule import *
 from .get_qos_minimum_bandwidth_rule import *
 from .get_qos_policy import *
+from .get_quota_v2 import *
 from .get_router import *
 from .get_sec_group import *
 from .get_subnet import *

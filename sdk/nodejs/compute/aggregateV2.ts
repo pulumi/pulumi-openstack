@@ -22,6 +22,7 @@ import * as utilities from "../utilities";
  *     metadata: {
  *         cpus: "56",
  *     },
+ *     region: "RegionOne",
  *     zone: "nova",
  * });
  * ```
@@ -89,6 +90,12 @@ export class AggregateV2 extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * The region in which to create the Host Aggregate. If
+     * omitted, the `region` argument of the provider is used. Changing this
+     * creates a new Host Aggregate.
+     */
+    public readonly region!: pulumi.Output<string>;
+    /**
      * The name of the Availability Zone to use. If ommited, it will take the default
      * availability zone.
      */
@@ -110,12 +117,14 @@ export class AggregateV2 extends pulumi.CustomResource {
             inputs["hosts"] = state ? state.hosts : undefined;
             inputs["metadata"] = state ? state.metadata : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["region"] = state ? state.region : undefined;
             inputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as AggregateV2Args | undefined;
             inputs["hosts"] = args ? args.hosts : undefined;
             inputs["metadata"] = args ? args.metadata : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["region"] = args ? args.region : undefined;
             inputs["zone"] = args ? args.zone : undefined;
         }
         if (!opts.version) {
@@ -144,6 +153,12 @@ export interface AggregateV2State {
      */
     name?: pulumi.Input<string>;
     /**
+     * The region in which to create the Host Aggregate. If
+     * omitted, the `region` argument of the provider is used. Changing this
+     * creates a new Host Aggregate.
+     */
+    region?: pulumi.Input<string>;
+    /**
      * The name of the Availability Zone to use. If ommited, it will take the default
      * availability zone.
      */
@@ -168,6 +183,12 @@ export interface AggregateV2Args {
      * The name of the Host Aggregate
      */
     name?: pulumi.Input<string>;
+    /**
+     * The region in which to create the Host Aggregate. If
+     * omitted, the `region` argument of the provider is used. Changing this
+     * creates a new Host Aggregate.
+     */
+    region?: pulumi.Input<string>;
     /**
      * The name of the Availability Zone to use. If ommited, it will take the default
      * availability zone.

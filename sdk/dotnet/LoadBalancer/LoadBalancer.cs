@@ -105,6 +105,13 @@ namespace Pulumi.OpenStack.LoadBalancer
         public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
 
         /// <summary>
+        /// A list of simple strings assigned to the loadbalancer.
+        /// Available only for Octavia **minor version 2.5 or later**.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
+
+        /// <summary>
         /// Required for admins. The UUID of the tenant who owns
         /// the Loadbalancer.  Only administrative users can specify a tenant UUID
         /// other than their own.  Changing this creates a new loadbalancer.
@@ -257,6 +264,19 @@ namespace Pulumi.OpenStack.LoadBalancer
             set => _securityGroupIds = value;
         }
 
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// A list of simple strings assigned to the loadbalancer.
+        /// Available only for Octavia **minor version 2.5 or later**.
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
+
         /// <summary>
         /// Required for admins. The UUID of the tenant who owns
         /// the Loadbalancer.  Only administrative users can specify a tenant UUID
@@ -369,6 +389,19 @@ namespace Pulumi.OpenStack.LoadBalancer
         {
             get => _securityGroupIds ?? (_securityGroupIds = new InputList<string>());
             set => _securityGroupIds = value;
+        }
+
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// A list of simple strings assigned to the loadbalancer.
+        /// Available only for Octavia **minor version 2.5 or later**.
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
         }
 
         /// <summary>

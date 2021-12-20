@@ -144,6 +144,8 @@ func Provider() tfbridge.ProviderInfo {
 			"openstack_blockstorage_quotaset_v3":           {Tok: openstackResource(blockstorageMod, "QuoteSetV3")},
 			"openstack_blockstorage_volume_type_v3":        {Tok: openstackResource(blockstorageMod, "VolumeTypeV3")},
 			"openstack_blockstorage_volume_type_access_v3": {Tok: openstackResource(blockstorageMod, "VolumeTypeAccessV3")},
+			"openstack_blockstorage_qos_v3":                {Tok: openstackResource(blockstorageMod, "QosV3")},
+			"openstack_blockstorage_qos_association_v3":    {Tok: openstackResource(blockstorageMod, "QosAssociationV3")},
 
 			// Compute
 			"openstack_compute_flavor_v2":               {Tok: openstackResource(computeMod, "Flavor")},
@@ -301,6 +303,7 @@ func Provider() tfbridge.ProviderInfo {
 			"openstack_blockstorage_snapshot_v3": {Tok: openstackDataSource(blockstorageMod, "getSnapshotV3")},
 			"openstack_blockstorage_volume_v2":   {Tok: openstackDataSource(blockstorageMod, "getVolumeV2")},
 			"openstack_blockstorage_volume_v3":   {Tok: openstackDataSource(blockstorageMod, "getVolumeV3")},
+			"openstack_blockstorage_quotaset_v3": {Tok: openstackDataSource(blockstorageMod, "getQuotasetV3")},
 
 			// Compute
 			"openstack_compute_availability_zones_v2": {Tok: openstackDataSource(computeMod, "getAvailabilityZones")},
@@ -353,6 +356,7 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"openstack_networking_qos_policy_v2": {Tok: openstackDataSource(networkingMod, "getQosPolicy")},
 			"openstack_networking_subnet_ids_v2": {Tok: openstackDataSource(networkingMod, "getSubnetIdsV2")},
+			"openstack_networking_quota_v2":      {Tok: openstackDataSource(networkingMod, "getQuotaV2")},
 
 			// Firewall
 			"openstack_fw_policy_v1": {Tok: openstackDataSource(firewallMod, "getPolicy")},

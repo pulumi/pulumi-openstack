@@ -16,6 +16,7 @@ class AggregateV2Args:
                  hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AggregateV2 resource.
@@ -24,6 +25,9 @@ class AggregateV2Args:
                aggregate.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: The metadata of the Host Aggregate. Can be useful to indicate scheduler hints.
         :param pulumi.Input[str] name: The name of the Host Aggregate
+        :param pulumi.Input[str] region: The region in which to create the Host Aggregate. If
+               omitted, the `region` argument of the provider is used. Changing this
+               creates a new Host Aggregate.
         :param pulumi.Input[str] zone: The name of the Availability Zone to use. If ommited, it will take the default
                availability zone.
         """
@@ -33,6 +37,8 @@ class AggregateV2Args:
             pulumi.set(__self__, "metadata", metadata)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
 
@@ -73,6 +79,20 @@ class AggregateV2Args:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to create the Host Aggregate. If
+        omitted, the `region` argument of the provider is used. Changing this
+        creates a new Host Aggregate.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
 
     @property
     @pulumi.getter
@@ -94,6 +114,7 @@ class _AggregateV2State:
                  hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AggregateV2 resources.
@@ -102,6 +123,9 @@ class _AggregateV2State:
                aggregate.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: The metadata of the Host Aggregate. Can be useful to indicate scheduler hints.
         :param pulumi.Input[str] name: The name of the Host Aggregate
+        :param pulumi.Input[str] region: The region in which to create the Host Aggregate. If
+               omitted, the `region` argument of the provider is used. Changing this
+               creates a new Host Aggregate.
         :param pulumi.Input[str] zone: The name of the Availability Zone to use. If ommited, it will take the default
                availability zone.
         """
@@ -111,6 +135,8 @@ class _AggregateV2State:
             pulumi.set(__self__, "metadata", metadata)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
 
@@ -151,6 +177,20 @@ class _AggregateV2State:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to create the Host Aggregate. If
+        omitted, the `region` argument of the provider is used. Changing this
+        creates a new Host Aggregate.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
 
     @property
     @pulumi.getter
@@ -174,6 +214,7 @@ class AggregateV2(pulumi.CustomResource):
                  hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -194,6 +235,7 @@ class AggregateV2(pulumi.CustomResource):
             metadata={
                 "cpus": "56",
             },
+            region="RegionOne",
             zone="nova")
         ```
         ### Minimum required example
@@ -224,6 +266,9 @@ class AggregateV2(pulumi.CustomResource):
                aggregate.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: The metadata of the Host Aggregate. Can be useful to indicate scheduler hints.
         :param pulumi.Input[str] name: The name of the Host Aggregate
+        :param pulumi.Input[str] region: The region in which to create the Host Aggregate. If
+               omitted, the `region` argument of the provider is used. Changing this
+               creates a new Host Aggregate.
         :param pulumi.Input[str] zone: The name of the Availability Zone to use. If ommited, it will take the default
                availability zone.
         """
@@ -251,6 +296,7 @@ class AggregateV2(pulumi.CustomResource):
             metadata={
                 "cpus": "56",
             },
+            region="RegionOne",
             zone="nova")
         ```
         ### Minimum required example
@@ -292,6 +338,7 @@ class AggregateV2(pulumi.CustomResource):
                  hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -308,6 +355,7 @@ class AggregateV2(pulumi.CustomResource):
             __props__.__dict__["hosts"] = hosts
             __props__.__dict__["metadata"] = metadata
             __props__.__dict__["name"] = name
+            __props__.__dict__["region"] = region
             __props__.__dict__["zone"] = zone
         super(AggregateV2, __self__).__init__(
             'openstack:compute/aggregateV2:AggregateV2',
@@ -322,6 +370,7 @@ class AggregateV2(pulumi.CustomResource):
             hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            region: Optional[pulumi.Input[str]] = None,
             zone: Optional[pulumi.Input[str]] = None) -> 'AggregateV2':
         """
         Get an existing AggregateV2 resource's state with the given name, id, and optional extra
@@ -335,6 +384,9 @@ class AggregateV2(pulumi.CustomResource):
                aggregate.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: The metadata of the Host Aggregate. Can be useful to indicate scheduler hints.
         :param pulumi.Input[str] name: The name of the Host Aggregate
+        :param pulumi.Input[str] region: The region in which to create the Host Aggregate. If
+               omitted, the `region` argument of the provider is used. Changing this
+               creates a new Host Aggregate.
         :param pulumi.Input[str] zone: The name of the Availability Zone to use. If ommited, it will take the default
                availability zone.
         """
@@ -345,6 +397,7 @@ class AggregateV2(pulumi.CustomResource):
         __props__.__dict__["hosts"] = hosts
         __props__.__dict__["metadata"] = metadata
         __props__.__dict__["name"] = name
+        __props__.__dict__["region"] = region
         __props__.__dict__["zone"] = zone
         return AggregateV2(resource_name, opts=opts, __props__=__props__)
 
@@ -373,6 +426,16 @@ class AggregateV2(pulumi.CustomResource):
         The name of the Host Aggregate
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def region(self) -> pulumi.Output[str]:
+        """
+        The region in which to create the Host Aggregate. If
+        omitted, the `region` argument of the provider is used. Changing this
+        creates a new Host Aggregate.
+        """
+        return pulumi.get(self, "region")
 
     @property
     @pulumi.getter
