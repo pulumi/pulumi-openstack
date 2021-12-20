@@ -17,6 +17,7 @@ export * from "./getQosBandwidthLimitRule";
 export * from "./getQosDscpMarkingRule";
 export * from "./getQosMinimumBandwidthRule";
 export * from "./getQosPolicy";
+export * from "./getQuotaV2";
 export * from "./getRouter";
 export * from "./getSecGroup";
 export * from "./getSubnet";

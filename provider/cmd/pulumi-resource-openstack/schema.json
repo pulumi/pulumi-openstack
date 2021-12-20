@@ -3085,6 +3085,138 @@
         }
     },
     "resources": {
+        "openstack:blockstorage/qosAssociationV3:QosAssociationV3": {
+            "description": "Manages a V3 block storage Qos Association resource within OpenStack.\n\n\u003e **Note:** This usually requires admin privileges.\n\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst qos = new openstack.blockstorage.QosV3(\"qos\", {\n    consumer: \"front-end\",\n    specs: {\n        read_iops_sec: \"20000\",\n    },\n});\nconst volumeType = new openstack.blockstorage.VolumeTypeV3(\"volumeType\", {});\nconst qosAssociation = new openstack.blockstorage.QosAssociationV3(\"qosAssociation\", {\n    qosId: qos.id,\n    volumeTypeId: volumeType.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nqos = openstack.blockstorage.QosV3(\"qos\",\n    consumer=\"front-end\",\n    specs={\n        \"read_iops_sec\": \"20000\",\n    })\nvolume_type = openstack.blockstorage.VolumeTypeV3(\"volumeType\")\nqos_association = openstack.blockstorage.QosAssociationV3(\"qosAssociation\",\n    qos_id=qos.id,\n    volume_type_id=volume_type.id)\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var qos = new OpenStack.BlockStorage.QosV3(\"qos\", new OpenStack.BlockStorage.QosV3Args\n        {\n            Consumer = \"front-end\",\n            Specs = \n            {\n                { \"read_iops_sec\", \"20000\" },\n            },\n        });\n        var volumeType = new OpenStack.BlockStorage.VolumeTypeV3(\"volumeType\", new OpenStack.BlockStorage.VolumeTypeV3Args\n        {\n        });\n        var qosAssociation = new OpenStack.BlockStorage.QosAssociationV3(\"qosAssociation\", new OpenStack.BlockStorage.QosAssociationV3Args\n        {\n            QosId = qos.Id,\n            VolumeTypeId = volumeType.Id,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/blockstorage\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tqos, err := blockstorage.NewQosV3(ctx, \"qos\", \u0026blockstorage.QosV3Args{\n\t\t\tConsumer: pulumi.String(\"front-end\"),\n\t\t\tSpecs: pulumi.AnyMap{\n\t\t\t\t\"read_iops_sec\": pulumi.Any(\"20000\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tvolumeType, err := blockstorage.NewVolumeTypeV3(ctx, \"volumeType\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = blockstorage.NewQosAssociationV3(ctx, \"qosAssociation\", \u0026blockstorage.QosAssociationV3Args{\n\t\t\tQosId:        qos.ID(),\n\t\t\tVolumeTypeId: volumeType.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nQos association can be imported using the `qos_id/volume_type_id`, e.g.\n\n```sh\n $ pulumi import openstack:blockstorage/qosAssociationV3:QosAssociationV3 qos_association 941793f0-0a34-4bc4-b72e-a6326ae58283/ea257959-eeb1-4c10-8d33-26f0409a755d\n```\n\n ",
+            "properties": {
+                "qosId": {
+                    "type": "string",
+                    "description": "ID of the qos to associate. Changing this creates\na new qos association.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region in which to create the qos association.\nIf omitted, the `region` argument of the provider is used. Changing\nthis creates a new qos association.\n"
+                },
+                "volumeTypeId": {
+                    "type": "string",
+                    "description": "ID of the volume_type to associate.\nChanging this creates a new qos association.\n"
+                }
+            },
+            "required": [
+                "qosId",
+                "region",
+                "volumeTypeId"
+            ],
+            "inputProperties": {
+                "qosId": {
+                    "type": "string",
+                    "description": "ID of the qos to associate. Changing this creates\na new qos association.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region in which to create the qos association.\nIf omitted, the `region` argument of the provider is used. Changing\nthis creates a new qos association.\n"
+                },
+                "volumeTypeId": {
+                    "type": "string",
+                    "description": "ID of the volume_type to associate.\nChanging this creates a new qos association.\n"
+                }
+            },
+            "requiredInputs": [
+                "qosId",
+                "volumeTypeId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering QosAssociationV3 resources.\n",
+                "properties": {
+                    "qosId": {
+                        "type": "string",
+                        "description": "ID of the qos to associate. Changing this creates\na new qos association.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region in which to create the qos association.\nIf omitted, the `region` argument of the provider is used. Changing\nthis creates a new qos association.\n"
+                    },
+                    "volumeTypeId": {
+                        "type": "string",
+                        "description": "ID of the volume_type to associate.\nChanging this creates a new qos association.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "openstack:blockstorage/qosV3:QosV3": {
+            "description": "Manages a V3 block storage Quality-Of-Servirce (qos) resource within OpenStack.\n\n\u003e **Note:** This usually requires admin privileges.\n\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst qos = new openstack.blockstorage.QosV3(\"qos\", {\n    consumer: \"back-end\",\n    specs: {\n        read_iops_sec: \"40000\",\n        write_iops_sec: \"40000\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nqos = openstack.blockstorage.QosV3(\"qos\",\n    consumer=\"back-end\",\n    specs={\n        \"read_iops_sec\": \"40000\",\n        \"write_iops_sec\": \"40000\",\n    })\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var qos = new OpenStack.BlockStorage.QosV3(\"qos\", new OpenStack.BlockStorage.QosV3Args\n        {\n            Consumer = \"back-end\",\n            Specs = \n            {\n                { \"read_iops_sec\", \"40000\" },\n                { \"write_iops_sec\", \"40000\" },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/blockstorage\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := blockstorage.NewQosV3(ctx, \"qos\", \u0026blockstorage.QosV3Args{\n\t\t\tConsumer: pulumi.String(\"back-end\"),\n\t\t\tSpecs: pulumi.AnyMap{\n\t\t\t\t\"read_iops_sec\":  pulumi.Any(\"40000\"),\n\t\t\t\t\"write_iops_sec\": pulumi.Any(\"40000\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nQos can be imported using the `qos_id`, e.g.\n\n```sh\n $ pulumi import openstack:blockstorage/qosV3:QosV3 qos 941793f0-0a34-4bc4-b72e-a6326ae58283\n```\n\n ",
+            "properties": {
+                "consumer": {
+                    "type": "string",
+                    "description": "The consumer of qos. Can be one of `front-end`,\n`back-end` or `both`. Changing this updates the `consumer` of an\nexisting qos.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the qos.  Changing this creates a new qos.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region in which to create the qos. If omitted,\nthe `region` argument of the provider is used. Changing this creates\na new qos.\n"
+                },
+                "specs": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Key/Value pairs of specs for the qos.\n"
+                }
+            },
+            "required": [
+                "name",
+                "region"
+            ],
+            "inputProperties": {
+                "consumer": {
+                    "type": "string",
+                    "description": "The consumer of qos. Can be one of `front-end`,\n`back-end` or `both`. Changing this updates the `consumer` of an\nexisting qos.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the qos.  Changing this creates a new qos.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region in which to create the qos. If omitted,\nthe `region` argument of the provider is used. Changing this creates\na new qos.\n"
+                },
+                "specs": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Key/Value pairs of specs for the qos.\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering QosV3 resources.\n",
+                "properties": {
+                    "consumer": {
+                        "type": "string",
+                        "description": "The consumer of qos. Can be one of `front-end`,\n`back-end` or `both`. Changing this updates the `consumer` of an\nexisting qos.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the qos.  Changing this creates a new qos.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region in which to create the qos. If omitted,\nthe `region` argument of the provider is used. Changing this creates\na new qos.\n"
+                    },
+                    "specs": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "Key/Value pairs of specs for the qos.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "openstack:blockstorage/quoteSetV2:QuoteSetV2": {
             "description": "Manages a V2 block storage quotaset resource within OpenStack.\n\n\u003e **Note:** This usually requires admin privileges.\n\n\u003e **Note:** This resource has a no-op deletion so no actual actions will be done against the OpenStack API\n    in case of delete call.\n\n\u003e **Note:** This resource has all-in creation so all optional quota arguments that were not specified are\n    created with zero value. This excludes volume type quota.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst project1 = new openstack.identity.Project(\"project1\", {});\nconst quotaset1 = new openstack.blockstorage.QuoteSetV2(\"quotaset1\", {\n    projectId: project1.id,\n    volumes: 10,\n    snapshots: 4,\n    gigabytes: 100,\n    perVolumeGigabytes: 10,\n    backups: 4,\n    backupGigabytes: 10,\n    groups: 100,\n    volumeTypeQuota: {\n        volumes_ssd: 30,\n        gigabytes_ssd: 500,\n        snapshots_ssd: 10,\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nproject1 = openstack.identity.Project(\"project1\")\nquotaset1 = openstack.blockstorage.QuoteSetV2(\"quotaset1\",\n    project_id=project1.id,\n    volumes=10,\n    snapshots=4,\n    gigabytes=100,\n    per_volume_gigabytes=10,\n    backups=4,\n    backup_gigabytes=10,\n    groups=100,\n    volume_type_quota={\n        \"volumes_ssd\": 30,\n        \"gigabytes_ssd\": 500,\n        \"snapshots_ssd\": 10,\n    })\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var project1 = new OpenStack.Identity.Project(\"project1\", new OpenStack.Identity.ProjectArgs\n        {\n        });\n        var quotaset1 = new OpenStack.BlockStorage.QuoteSetV2(\"quotaset1\", new OpenStack.BlockStorage.QuoteSetV2Args\n        {\n            ProjectId = project1.Id,\n            Volumes = 10,\n            Snapshots = 4,\n            Gigabytes = 100,\n            PerVolumeGigabytes = 10,\n            Backups = 4,\n            BackupGigabytes = 10,\n            Groups = 100,\n            VolumeTypeQuota = \n            {\n                { \"volumes_ssd\", 30 },\n                { \"gigabytes_ssd\", 500 },\n                { \"snapshots_ssd\", 10 },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/blockstorage\"\n\t\"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/identity\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tproject1, err := identity.NewProject(ctx, \"project1\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = blockstorage.NewQuoteSetV2(ctx, \"quotaset1\", \u0026blockstorage.QuoteSetV2Args{\n\t\t\tProjectId:          project1.ID(),\n\t\t\tVolumes:            pulumi.Int(10),\n\t\t\tSnapshots:          pulumi.Int(4),\n\t\t\tGigabytes:          pulumi.Int(100),\n\t\t\tPerVolumeGigabytes: pulumi.Int(10),\n\t\t\tBackups:            pulumi.Int(4),\n\t\t\tBackupGigabytes:    pulumi.Int(10),\n\t\t\tGroups:             pulumi.Int(100),\n\t\t\tVolumeTypeQuota: pulumi.AnyMap{\n\t\t\t\t\"volumes_ssd\":   pulumi.Any(30),\n\t\t\t\t\"gigabytes_ssd\": pulumi.Any(500),\n\t\t\t\t\"snapshots_ssd\": pulumi.Any(10),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nQuotasets can be imported using the `project_id/region`, e.g.\n\n```sh\n $ pulumi import openstack:blockstorage/quoteSetV2:QuoteSetV2 quotaset_1 2a0f2240-c5e6-41de-896d-e80d97428d6b/region_1\n```\n\n ",
             "properties": {
@@ -4591,7 +4723,7 @@
             }
         },
         "openstack:compute/aggregateV2:AggregateV2": {
-            "description": "Manages a Host Aggregate within Openstack Nova.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### Full example\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst dellServers = new openstack.compute.AggregateV2(\"dell_servers\", {\n    hosts: [\n        \"myhost01.example.com\",\n        \"myhost02.example.com\",\n    ],\n    metadata: {\n        cpus: \"56\",\n    },\n    zone: \"nova\",\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\ndell_servers = openstack.compute.AggregateV2(\"dellServers\",\n    hosts=[\n        \"myhost01.example.com\",\n        \"myhost02.example.com\",\n    ],\n    metadata={\n        \"cpus\": \"56\",\n    },\n    zone=\"nova\")\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var dellServers = new OpenStack.Compute.AggregateV2(\"dellServers\", new OpenStack.Compute.AggregateV2Args\n        {\n            Hosts = \n            {\n                \"myhost01.example.com\",\n                \"myhost02.example.com\",\n            },\n            Metadata = \n            {\n                { \"cpus\", \"56\" },\n            },\n            Zone = \"nova\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := compute.NewAggregateV2(ctx, \"dellServers\", \u0026compute.AggregateV2Args{\n\t\t\tHosts: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"myhost01.example.com\"),\n\t\t\t\tpulumi.String(\"myhost02.example.com\"),\n\t\t\t},\n\t\t\tMetadata: pulumi.StringMap{\n\t\t\t\t\"cpus\": pulumi.String(\"56\"),\n\t\t\t},\n\t\t\tZone: pulumi.String(\"nova\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### Minimum required example\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst test = new openstack.compute.AggregateV2(\"test\", {});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\ntest = openstack.compute.AggregateV2(\"test\")\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var test = new OpenStack.Compute.AggregateV2(\"test\", new OpenStack.Compute.AggregateV2Args\n        {\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := compute.NewAggregateV2(ctx, \"test\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nYou can import an existing Host Aggregate by their ID.\n\n```sh\n $ pulumi import openstack:compute/aggregateV2:AggregateV2 myaggregate 24\n```\n\n The ID can be obtained with an openstack command$ openstack aggregate list +----+------+-------------------+ | ID | Name | Availability Zone | +----+------+-------------------+ | 59 | test | None\n\n\n\n\n\n\n\n\n\n\n\n\n\n| +----+------+-------------------+ ",
+            "description": "Manages a Host Aggregate within Openstack Nova.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### Full example\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst dellServers = new openstack.compute.AggregateV2(\"dell_servers\", {\n    hosts: [\n        \"myhost01.example.com\",\n        \"myhost02.example.com\",\n    ],\n    metadata: {\n        cpus: \"56\",\n    },\n    region: \"RegionOne\",\n    zone: \"nova\",\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\ndell_servers = openstack.compute.AggregateV2(\"dellServers\",\n    hosts=[\n        \"myhost01.example.com\",\n        \"myhost02.example.com\",\n    ],\n    metadata={\n        \"cpus\": \"56\",\n    },\n    region=\"RegionOne\",\n    zone=\"nova\")\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var dellServers = new OpenStack.Compute.AggregateV2(\"dellServers\", new OpenStack.Compute.AggregateV2Args\n        {\n            Hosts = \n            {\n                \"myhost01.example.com\",\n                \"myhost02.example.com\",\n            },\n            Metadata = \n            {\n                { \"cpus\", \"56\" },\n            },\n            Region = \"RegionOne\",\n            Zone = \"nova\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := compute.NewAggregateV2(ctx, \"dellServers\", \u0026compute.AggregateV2Args{\n\t\t\tHosts: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"myhost01.example.com\"),\n\t\t\t\tpulumi.String(\"myhost02.example.com\"),\n\t\t\t},\n\t\t\tMetadata: pulumi.StringMap{\n\t\t\t\t\"cpus\": pulumi.String(\"56\"),\n\t\t\t},\n\t\t\tRegion: pulumi.String(\"RegionOne\"),\n\t\t\tZone:   pulumi.String(\"nova\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### Minimum required example\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst test = new openstack.compute.AggregateV2(\"test\", {});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\ntest = openstack.compute.AggregateV2(\"test\")\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var test = new OpenStack.Compute.AggregateV2(\"test\", new OpenStack.Compute.AggregateV2Args\n        {\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := compute.NewAggregateV2(ctx, \"test\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nYou can import an existing Host Aggregate by their ID.\n\n```sh\n $ pulumi import openstack:compute/aggregateV2:AggregateV2 myaggregate 24\n```\n\n The ID can be obtained with an openstack command$ openstack aggregate list +----+------+-------------------+ | ID | Name | Availability Zone | +----+------+-------------------+ | 59 | test | None\n\n\n\n\n\n\n\n\n\n\n\n\n\n| +----+------+-------------------+ ",
             "properties": {
                 "hosts": {
                     "type": "array",
@@ -4611,13 +4743,18 @@
                     "type": "string",
                     "description": "The name of the Host Aggregate\n"
                 },
+                "region": {
+                    "type": "string",
+                    "description": "The region in which to create the Host Aggregate. If\nomitted, the `region` argument of the provider is used. Changing this\ncreates a new Host Aggregate.\n"
+                },
                 "zone": {
                     "type": "string",
                     "description": "The name of the Availability Zone to use. If ommited, it will take the default\navailability zone.\n"
                 }
             },
             "required": [
-                "name"
+                "name",
+                "region"
             ],
             "inputProperties": {
                 "hosts": {
@@ -4637,6 +4774,10 @@
                 "name": {
                     "type": "string",
                     "description": "The name of the Host Aggregate\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region in which to create the Host Aggregate. If\nomitted, the `region` argument of the provider is used. Changing this\ncreates a new Host Aggregate.\n"
                 },
                 "zone": {
                     "type": "string",
@@ -4663,6 +4804,10 @@
                     "name": {
                         "type": "string",
                         "description": "The name of the Host Aggregate\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region in which to create the Host Aggregate. If\nomitted, the `region` argument of the provider is used. Changing this\ncreates a new Host Aggregate.\n"
                     },
                     "zone": {
                         "type": "string",
@@ -10917,6 +11062,13 @@
                     },
                     "description": "A list of security group IDs to apply to the\nloadbalancer. The security groups must be specified by ID and not name (as\nopposed to how they are configured with the Compute Instance).\n"
                 },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of simple strings assigned to the loadbalancer.\nAvailable only for Octavia **minor version 2.5 or later**.\n"
+                },
                 "tenantId": {
                     "type": "string",
                     "description": "Required for admins. The UUID of the tenant who owns\nthe Loadbalancer.  Only administrative users can specify a tenant UUID\nother than their own.  Changing this creates a new loadbalancer.\n"
@@ -10986,6 +11138,13 @@
                     },
                     "description": "A list of security group IDs to apply to the\nloadbalancer. The security groups must be specified by ID and not name (as\nopposed to how they are configured with the Compute Instance).\n"
                 },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of simple strings assigned to the loadbalancer.\nAvailable only for Octavia **minor version 2.5 or later**.\n"
+                },
                 "tenantId": {
                     "type": "string",
                     "description": "Required for admins. The UUID of the tenant who owns\nthe Loadbalancer.  Only administrative users can specify a tenant UUID\nother than their own.  Changing this creates a new loadbalancer.\n"
@@ -11044,6 +11203,13 @@
                             "type": "string"
                         },
                         "description": "A list of security group IDs to apply to the\nloadbalancer. The security groups must be specified by ID and not name (as\nopposed to how they are configured with the Compute Instance).\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of simple strings assigned to the loadbalancer.\nAvailable only for Octavia **minor version 2.5 or later**.\n"
                     },
                     "tenantId": {
                         "type": "string",
@@ -18202,6 +18368,92 @@
                 ]
             }
         },
+        "openstack:blockstorage/getQuotasetV3:getQuotasetV3": {
+            "description": "Use this data source to get the blockstorage quotaset v3 of an OpenStack project.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst quota = pulumi.output(openstack.blockstorage.getQuotasetV3({\n    projectId: \"2e367a3d29f94fd988e6ec54e305ec9d\",\n}));\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nquota = openstack.blockstorage.get_quotaset_v3(project_id=\"2e367a3d29f94fd988e6ec54e305ec9d\")\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var quota = Output.Create(OpenStack.BlockStorage.GetQuotasetV3.InvokeAsync(new OpenStack.BlockStorage.GetQuotasetV3Args\n        {\n            ProjectId = \"2e367a3d29f94fd988e6ec54e305ec9d\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/blockstorage\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := blockstorage.GetQuotasetV3(ctx, \u0026blockstorage.GetQuotasetV3Args{\n\t\t\tProjectId: \"2e367a3d29f94fd988e6ec54e305ec9d\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getQuotasetV3.\n",
+                "properties": {
+                    "projectId": {
+                        "type": "string",
+                        "description": "The id of the project to retrieve the quotaset.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region in which to obtain the V3 Blockstorage client.\nIf omitted, the `region` argument of the provider is used.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "projectId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getQuotasetV3.\n",
+                "properties": {
+                    "backupGigabytes": {
+                        "type": "integer",
+                        "description": "The size (GB) of backups that are allowed.\n"
+                    },
+                    "backups": {
+                        "type": "integer",
+                        "description": "The number of backups that are allowed.\n"
+                    },
+                    "gigabytes": {
+                        "type": "integer",
+                        "description": "The size (GB) of volumes and snapshots that are allowed.\n"
+                    },
+                    "groups": {
+                        "type": "integer",
+                        "description": "The number of groups that are allowed.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "perVolumeGigabytes": {
+                        "type": "integer",
+                        "description": "The size (GB) of volumes that are allowed for each volume.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "See Argument Reference above.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "See Argument Reference above.\n"
+                    },
+                    "snapshots": {
+                        "type": "integer",
+                        "description": "The number of snapshots that are allowed.\n"
+                    },
+                    "volumeTypeQuota": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "Map with gigabytes_{volume_type}, snapshots_{volume_type}, volumes_{volume_type} for each volume type.\n"
+                    },
+                    "volumes": {
+                        "type": "integer",
+                        "description": "The number of volumes that are allowed.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "backupGigabytes",
+                    "backups",
+                    "gigabytes",
+                    "groups",
+                    "perVolumeGigabytes",
+                    "projectId",
+                    "region",
+                    "snapshots",
+                    "volumeTypeQuota",
+                    "volumes",
+                    "id"
+                ]
+            }
+        },
         "openstack:blockstorage/getSnapshotV2:getSnapshotV2": {
             "description": "Use this data source to get information about an existing snapshot.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst snapshot1 = pulumi.output(openstack.blockstorage.getSnapshotV2({\n    mostRecent: true,\n    name: \"snapshot_1\",\n}));\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nsnapshot1 = openstack.blockstorage.get_snapshot_v2(most_recent=True,\n    name=\"snapshot_1\")\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var snapshot1 = Output.Create(OpenStack.BlockStorage.GetSnapshotV2.InvokeAsync(new OpenStack.BlockStorage.GetSnapshotV2Args\n        {\n            MostRecent = true,\n            Name = \"snapshot_1\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/blockstorage\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := true\n\t\topt1 := \"snapshot_1\"\n\t\t_, err := blockstorage.GetSnapshotV2(ctx, \u0026blockstorage.GetSnapshotV2Args{\n\t\t\tMostRecent: \u0026opt0,\n\t\t\tName:       \u0026opt1,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
@@ -21871,6 +22123,89 @@
                     "revisionNumber",
                     "shared",
                     "updatedAt",
+                    "id"
+                ]
+            }
+        },
+        "openstack:networking/getQuotaV2:getQuotaV2": {
+            "description": "Use this data source to get the networking quota of an OpenStack project.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst quota = pulumi.output(openstack.networking.getQuotaV2({\n    projectId: \"2e367a3d29f94fd988e6ec54e305ec9d\",\n}));\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nquota = openstack.networking.get_quota_v2(project_id=\"2e367a3d29f94fd988e6ec54e305ec9d\")\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var quota = Output.Create(OpenStack.Networking.GetQuotaV2.InvokeAsync(new OpenStack.Networking.GetQuotaV2Args\n        {\n            ProjectId = \"2e367a3d29f94fd988e6ec54e305ec9d\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := networking.LookupQuotaV2(ctx, \u0026networking.LookupQuotaV2Args{\n\t\t\tProjectId: \"2e367a3d29f94fd988e6ec54e305ec9d\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getQuotaV2.\n",
+                "properties": {
+                    "projectId": {
+                        "type": "string",
+                        "description": "The id of the project to retrieve the quota.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "projectId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getQuotaV2.\n",
+                "properties": {
+                    "floatingip": {
+                        "type": "integer",
+                        "description": "The number of allowed floating ips.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "network": {
+                        "type": "integer",
+                        "description": "The number of allowed networks.\n"
+                    },
+                    "port": {
+                        "type": "integer",
+                        "description": "The number of allowed ports.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "See Argument Reference above.\n"
+                    },
+                    "rbacPolicy": {
+                        "type": "integer",
+                        "description": "The number of allowed rbac policies.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "See Argument Reference above.\n"
+                    },
+                    "router": {
+                        "type": "integer",
+                        "description": "The amount of allowed routers.\n"
+                    },
+                    "securityGroup": {
+                        "type": "integer",
+                        "description": "The number of allowed security groups.\n"
+                    },
+                    "securityGroupRule": {
+                        "type": "integer",
+                        "description": "The number of allowed security group rules.\n"
+                    },
+                    "subnet": {
+                        "type": "integer",
+                        "description": "The number of allowed subnets.\n* `subnetpool-` - The number of allowed subnet pools.\n"
+                    },
+                    "subnetpool": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "floatingip",
+                    "network",
+                    "port",
+                    "projectId",
+                    "rbacPolicy",
+                    "region",
+                    "router",
+                    "securityGroup",
+                    "securityGroupRule",
+                    "subnet",
+                    "subnetpool",
                     "id"
                 ]
             }

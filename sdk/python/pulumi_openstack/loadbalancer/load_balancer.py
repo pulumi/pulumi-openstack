@@ -21,6 +21,7 @@ class LoadBalancerArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  vip_address: Optional[pulumi.Input[str]] = None,
                  vip_network_id: Optional[pulumi.Input[str]] = None,
@@ -47,6 +48,8 @@ class LoadBalancerArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of security group IDs to apply to the
                loadbalancer. The security groups must be specified by ID and not name (as
                opposed to how they are configured with the Compute Instance).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of simple strings assigned to the loadbalancer.
+               Available only for Octavia **minor version 2.5 or later**.
         :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
                the Loadbalancer.  Only administrative users can specify a tenant UUID
                other than their own.  Changing this creates a new loadbalancer.
@@ -81,6 +84,8 @@ class LoadBalancerArgs:
             pulumi.set(__self__, "region", region)
         if security_group_ids is not None:
             pulumi.set(__self__, "security_group_ids", security_group_ids)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if tenant_id is not None:
             pulumi.set(__self__, "tenant_id", tenant_id)
         if vip_address is not None:
@@ -198,6 +203,19 @@ class LoadBalancerArgs:
     @security_group_ids.setter
     def security_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "security_group_ids", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of simple strings assigned to the loadbalancer.
+        Available only for Octavia **minor version 2.5 or later**.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
 
     @property
     @pulumi.getter(name="tenantId")
@@ -283,6 +301,7 @@ class _LoadBalancerState:
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  vip_address: Optional[pulumi.Input[str]] = None,
                  vip_network_id: Optional[pulumi.Input[str]] = None,
@@ -309,6 +328,8 @@ class _LoadBalancerState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of security group IDs to apply to the
                loadbalancer. The security groups must be specified by ID and not name (as
                opposed to how they are configured with the Compute Instance).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of simple strings assigned to the loadbalancer.
+               Available only for Octavia **minor version 2.5 or later**.
         :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
                the Loadbalancer.  Only administrative users can specify a tenant UUID
                other than their own.  Changing this creates a new loadbalancer.
@@ -343,6 +364,8 @@ class _LoadBalancerState:
             pulumi.set(__self__, "region", region)
         if security_group_ids is not None:
             pulumi.set(__self__, "security_group_ids", security_group_ids)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if tenant_id is not None:
             pulumi.set(__self__, "tenant_id", tenant_id)
         if vip_address is not None:
@@ -460,6 +483,19 @@ class _LoadBalancerState:
     @security_group_ids.setter
     def security_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "security_group_ids", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of simple strings assigned to the loadbalancer.
+        Available only for Octavia **minor version 2.5 or later**.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
 
     @property
     @pulumi.getter(name="tenantId")
@@ -547,6 +583,7 @@ class LoadBalancer(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  vip_address: Optional[pulumi.Input[str]] = None,
                  vip_network_id: Optional[pulumi.Input[str]] = None,
@@ -597,6 +634,8 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of security group IDs to apply to the
                loadbalancer. The security groups must be specified by ID and not name (as
                opposed to how they are configured with the Compute Instance).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of simple strings assigned to the loadbalancer.
+               Available only for Octavia **minor version 2.5 or later**.
         :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
                the Loadbalancer.  Only administrative users can specify a tenant UUID
                other than their own.  Changing this creates a new loadbalancer.
@@ -667,6 +706,7 @@ class LoadBalancer(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  vip_address: Optional[pulumi.Input[str]] = None,
                  vip_network_id: Optional[pulumi.Input[str]] = None,
@@ -692,6 +732,7 @@ class LoadBalancer(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["region"] = region
             __props__.__dict__["security_group_ids"] = security_group_ids
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["tenant_id"] = tenant_id
             __props__.__dict__["vip_address"] = vip_address
             __props__.__dict__["vip_network_id"] = vip_network_id
@@ -715,6 +756,7 @@ class LoadBalancer(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             tenant_id: Optional[pulumi.Input[str]] = None,
             vip_address: Optional[pulumi.Input[str]] = None,
             vip_network_id: Optional[pulumi.Input[str]] = None,
@@ -746,6 +788,8 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of security group IDs to apply to the
                loadbalancer. The security groups must be specified by ID and not name (as
                opposed to how they are configured with the Compute Instance).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of simple strings assigned to the loadbalancer.
+               Available only for Octavia **minor version 2.5 or later**.
         :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
                the Loadbalancer.  Only administrative users can specify a tenant UUID
                other than their own.  Changing this creates a new loadbalancer.
@@ -776,6 +820,7 @@ class LoadBalancer(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["region"] = region
         __props__.__dict__["security_group_ids"] = security_group_ids
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["tenant_id"] = tenant_id
         __props__.__dict__["vip_address"] = vip_address
         __props__.__dict__["vip_network_id"] = vip_network_id
@@ -857,6 +902,15 @@ class LoadBalancer(pulumi.CustomResource):
         opposed to how they are configured with the Compute Instance).
         """
         return pulumi.get(self, "security_group_ids")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        A list of simple strings assigned to the loadbalancer.
+        Available only for Octavia **minor version 2.5 or later**.
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="tenantId")

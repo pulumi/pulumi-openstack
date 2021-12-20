@@ -101,6 +101,11 @@ export class LoadBalancer extends pulumi.CustomResource {
      */
     public readonly securityGroupIds!: pulumi.Output<string[]>;
     /**
+     * A list of simple strings assigned to the loadbalancer.
+     * Available only for Octavia **minor version 2.5 or later**.
+     */
+    public readonly tags!: pulumi.Output<string[] | undefined>;
+    /**
      * Required for admins. The UUID of the tenant who owns
      * the Loadbalancer.  Only administrative users can specify a tenant UUID
      * other than their own.  Changing this creates a new loadbalancer.
@@ -154,6 +159,7 @@ export class LoadBalancer extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
             inputs["region"] = state ? state.region : undefined;
             inputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
+            inputs["tags"] = state ? state.tags : undefined;
             inputs["tenantId"] = state ? state.tenantId : undefined;
             inputs["vipAddress"] = state ? state.vipAddress : undefined;
             inputs["vipNetworkId"] = state ? state.vipNetworkId : undefined;
@@ -169,6 +175,7 @@ export class LoadBalancer extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
+            inputs["tags"] = args ? args.tags : undefined;
             inputs["tenantId"] = args ? args.tenantId : undefined;
             inputs["vipAddress"] = args ? args.vipAddress : undefined;
             inputs["vipNetworkId"] = args ? args.vipNetworkId : undefined;
@@ -229,6 +236,11 @@ export interface LoadBalancerState {
      * opposed to how they are configured with the Compute Instance).
      */
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of simple strings assigned to the loadbalancer.
+     * Available only for Octavia **minor version 2.5 or later**.
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Required for admins. The UUID of the tenant who owns
      * the Loadbalancer.  Only administrative users can specify a tenant UUID
@@ -310,6 +322,11 @@ export interface LoadBalancerArgs {
      * opposed to how they are configured with the Compute Instance).
      */
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of simple strings assigned to the loadbalancer.
+     * Available only for Octavia **minor version 2.5 or later**.
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Required for admins. The UUID of the tenant who owns
      * the Loadbalancer.  Only administrative users can specify a tenant UUID

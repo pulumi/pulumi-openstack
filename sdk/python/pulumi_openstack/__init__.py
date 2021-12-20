@@ -64,6 +64,22 @@ _utilities.register(
 [
  {
   "pkg": "openstack",
+  "mod": "blockstorage/qosAssociationV3",
+  "fqn": "pulumi_openstack.blockstorage",
+  "classes": {
+   "openstack:blockstorage/qosAssociationV3:QosAssociationV3": "QosAssociationV3"
+  }
+ },
+ {
+  "pkg": "openstack",
+  "mod": "blockstorage/qosV3",
+  "fqn": "pulumi_openstack.blockstorage",
+  "classes": {
+   "openstack:blockstorage/qosV3:QosV3": "QosV3"
+  }
+ },
+ {
+  "pkg": "openstack",
   "mod": "blockstorage/quoteSetV2",
   "fqn": "pulumi_openstack.blockstorage",
   "classes": {

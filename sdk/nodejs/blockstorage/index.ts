@@ -6,10 +6,13 @@ import * as utilities from "../utilities";
 
 // Export members:
 export * from "./getAvailabilityZonesV3";
+export * from "./getQuotasetV3";
 export * from "./getSnapshotV2";
 export * from "./getSnapshotV3";
 export * from "./getVolumeV2";
 export * from "./getVolumeV3";
+export * from "./qosAssociationV3";
+export * from "./qosV3";
 export * from "./quoteSetV2";
 export * from "./quoteSetV3";
 export * from "./volume";
@@ -21,6 +24,8 @@ export * from "./volumeV1";
 export * from "./volumeV2";
 
 // Import resources to register:
+import { QosAssociationV3 } from "./qosAssociationV3";
+import { QosV3 } from "./qosV3";
 import { QuoteSetV2 } from "./quoteSetV2";
 import { QuoteSetV3 } from "./quoteSetV3";
 import { Volume } from "./volume";
@@ -35,6 +40,10 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "openstack:blockstorage/qosAssociationV3:QosAssociationV3":
+                return new QosAssociationV3(name, <any>undefined, { urn })
+            case "openstack:blockstorage/qosV3:QosV3":
+                return new QosV3(name, <any>undefined, { urn })
             case "openstack:blockstorage/quoteSetV2:QuoteSetV2":
                 return new QuoteSetV2(name, <any>undefined, { urn })
             case "openstack:blockstorage/quoteSetV3:QuoteSetV3":
@@ -58,6 +67,8 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("openstack", "blockstorage/qosAssociationV3", _module)
+pulumi.runtime.registerResourceModule("openstack", "blockstorage/qosV3", _module)
 pulumi.runtime.registerResourceModule("openstack", "blockstorage/quoteSetV2", _module)
 pulumi.runtime.registerResourceModule("openstack", "blockstorage/quoteSetV3", _module)
 pulumi.runtime.registerResourceModule("openstack", "blockstorage/volume", _module)

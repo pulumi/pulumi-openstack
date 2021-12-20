@@ -33,7 +33,8 @@ import (
 // 			Metadata: pulumi.StringMap{
 // 				"cpus": pulumi.String("56"),
 // 			},
-// 			Zone: pulumi.String("nova"),
+// 			Region: pulumi.String("RegionOne"),
+// 			Zone:   pulumi.String("nova"),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -85,6 +86,10 @@ type AggregateV2 struct {
 	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
 	// The name of the Host Aggregate
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The region in which to create the Host Aggregate. If
+	// omitted, the `region` argument of the provider is used. Changing this
+	// creates a new Host Aggregate.
+	Region pulumi.StringOutput `pulumi:"region"`
 	// The name of the Availability Zone to use. If ommited, it will take the default
 	// availability zone.
 	Zone pulumi.StringPtrOutput `pulumi:"zone"`
@@ -127,6 +132,10 @@ type aggregateV2State struct {
 	Metadata map[string]string `pulumi:"metadata"`
 	// The name of the Host Aggregate
 	Name *string `pulumi:"name"`
+	// The region in which to create the Host Aggregate. If
+	// omitted, the `region` argument of the provider is used. Changing this
+	// creates a new Host Aggregate.
+	Region *string `pulumi:"region"`
 	// The name of the Availability Zone to use. If ommited, it will take the default
 	// availability zone.
 	Zone *string `pulumi:"zone"`
@@ -141,6 +150,10 @@ type AggregateV2State struct {
 	Metadata pulumi.StringMapInput
 	// The name of the Host Aggregate
 	Name pulumi.StringPtrInput
+	// The region in which to create the Host Aggregate. If
+	// omitted, the `region` argument of the provider is used. Changing this
+	// creates a new Host Aggregate.
+	Region pulumi.StringPtrInput
 	// The name of the Availability Zone to use. If ommited, it will take the default
 	// availability zone.
 	Zone pulumi.StringPtrInput
@@ -159,6 +172,10 @@ type aggregateV2Args struct {
 	Metadata map[string]string `pulumi:"metadata"`
 	// The name of the Host Aggregate
 	Name *string `pulumi:"name"`
+	// The region in which to create the Host Aggregate. If
+	// omitted, the `region` argument of the provider is used. Changing this
+	// creates a new Host Aggregate.
+	Region *string `pulumi:"region"`
 	// The name of the Availability Zone to use. If ommited, it will take the default
 	// availability zone.
 	Zone *string `pulumi:"zone"`
@@ -174,6 +191,10 @@ type AggregateV2Args struct {
 	Metadata pulumi.StringMapInput
 	// The name of the Host Aggregate
 	Name pulumi.StringPtrInput
+	// The region in which to create the Host Aggregate. If
+	// omitted, the `region` argument of the provider is used. Changing this
+	// creates a new Host Aggregate.
+	Region pulumi.StringPtrInput
 	// The name of the Availability Zone to use. If ommited, it will take the default
 	// availability zone.
 	Zone pulumi.StringPtrInput

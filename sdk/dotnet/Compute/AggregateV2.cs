@@ -34,6 +34,7 @@ namespace Pulumi.OpenStack.Compute
     ///             {
     ///                 { "cpus", "56" },
     ///             },
+    ///             Region = "RegionOne",
     ///             Zone = "nova",
     ///         });
     ///     }
@@ -92,6 +93,14 @@ namespace Pulumi.OpenStack.Compute
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The region in which to create the Host Aggregate. If
+        /// omitted, the `region` argument of the provider is used. Changing this
+        /// creates a new Host Aggregate.
+        /// </summary>
+        [Output("region")]
+        public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
         /// The name of the Availability Zone to use. If ommited, it will take the default
@@ -179,6 +188,14 @@ namespace Pulumi.OpenStack.Compute
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// The region in which to create the Host Aggregate. If
+        /// omitted, the `region` argument of the provider is used. Changing this
+        /// creates a new Host Aggregate.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        /// <summary>
         /// The name of the Availability Zone to use. If ommited, it will take the default
         /// availability zone.
         /// </summary>
@@ -223,6 +240,14 @@ namespace Pulumi.OpenStack.Compute
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The region in which to create the Host Aggregate. If
+        /// omitted, the `region` argument of the provider is used. Changing this
+        /// creates a new Host Aggregate.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         /// <summary>
         /// The name of the Availability Zone to use. If ommited, it will take the default
